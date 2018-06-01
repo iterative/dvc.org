@@ -24,6 +24,7 @@ export function fontFace(
 
 export const global = `
   ${fontFace('BrandonGrotesque', 'brandongrotesque-regular-webfont')}
+  ${fontFace('BrandonGrotesqueLight', 'brandongrotesque-regular-webfont')}
   
 	body {
 		padding: 0px;
