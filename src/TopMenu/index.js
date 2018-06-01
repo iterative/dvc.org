@@ -4,7 +4,7 @@ import { container, media } from '../styles'
 
 import Nav from '../Nav'
 
-const MIN_HEIGHT = 88
+const MIN_HEIGHT = 98
 const STICKY_FROM = 25 / 2
 
 export default class TopMenu extends Component {
@@ -14,7 +14,7 @@ export default class TopMenu extends Component {
   }
 
   componentDidMount() {
-    return;
+    return
     window.addEventListener('scroll', this.handleScroll)
     this.handleScroll()
   }
@@ -64,7 +64,8 @@ const Wrapper = styled.div`
   left: 0px;
   right: 0px;
 
-  min-height: ${MIN_HEIGHT}px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
 
   ${props =>
     props.sticky &&
@@ -94,6 +95,7 @@ const Wrapper = styled.div`
 const Container = styled.section`
   ${container};
   width: auto;
+  min-height: ${MIN_HEIGHT}px;
 
   z-index: 3;
   position: relative;
@@ -101,6 +103,7 @@ const Container = styled.section`
   color: #ffffff;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   ${media.phablet`
      flex-direction: column;
@@ -108,6 +111,6 @@ const Container = styled.section`
 `
 
 const Logo = styled.a`
-  margin-top: 25px;
   display: block;
+  padding-top: 10px;
 `

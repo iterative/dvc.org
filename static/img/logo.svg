@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="23px" viewBox="0 0 36 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49 (51002) - http://www.bohemiancoding.com/sketch -->
+    <title>Logo dummy</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-family="BrandonGrotesque-Bold, Brandon Grotesque" font-size="24" font-weight="bold">
+        <g id="Landing-page" transform="translate(-125.000000, -38.000000)">
+            <g id="Header--/--Nav" transform="translate(-3.000000, 0.000000)">
+                <g id="Bar-and-logo" transform="translate(3.000000, 0.000000)">
+                    <g id="Logo-dummy" transform="translate(123.000000, 30.153846)">
+                        <text id="D" fill="#13ADC7">
+                            <tspan x="0" y="25">D</tspan>
+                        </text>
+                        <text id="V" fill="#945DD6">
+                            <tspan x="12" y="29.3076923">V</tspan>
+                        </text>
+                        <text id="C" fill="#F46837">
+                            <tspan x="22" y="25">C</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
