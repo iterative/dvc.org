@@ -10,7 +10,7 @@ export default ({ mobile = false }) => (
   <Nav mobile={mobile}>
     <Links>
       <Link href="/features">Features</Link>
-      <Link href="/features">Documentation</Link>
+      <Link href="/documentation">Documentation</Link>
 	    <Link href="https://github.com/iterative">Github</Link>
     </Links>
 	  <GetStartedButton>Get Started</GetStartedButton>
