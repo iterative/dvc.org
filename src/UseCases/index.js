@@ -11,7 +11,8 @@ export default ({}) => (
 )
 
 const UseCases = styled.section`
-  
+  padding-top: 80px;
+  padding-bottom: 57px;
 `
 
 const Container = styled.div`

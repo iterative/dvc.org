@@ -1,5 +1,10 @@
 import React, { Component } from 'react'
 
+import styled from 'styled-components'
+
+
+import LearnMore from '../src/LearnMore'
+
 import Page from '../src/Page'
 import Hero from '../src/Hero'
 import LandingHero from '../src/LandingHero'
@@ -11,11 +16,22 @@ import Subscribe from '../src/Subscribe'
 export default () => (
   <Page stickHeader={true}>
     <Hero>
-	    <LandingHero />
+      <LandingHero />
+      <LearnMoreSection>
+        <LearnMore />
+      </LearnMoreSection>
     </Hero>
-	  <Diagram />
-	  <PromoSection />
-	  <UseCases />
-	  <Subscribe />
+    <Diagram />
+    <PromoSection />
+    <UseCases />
+    <Subscribe />
   </Page>
 )
+
+const LearnMoreSection = styled.div`
+  z-index: 2;
+  position: absolute;
+  transform: translate(-50%, 0%);
+  left: 50%;
+  bottom: 16px;
+`

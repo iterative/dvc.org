@@ -11,7 +11,8 @@ export default ({}) => (
 )
 
 const Diagram = styled.section`
-  
+  padding-top: 80px;
+  padding-bottom: 91px;
 `
 
 const Container = styled.div`
