@@ -2,18 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import { media, container } from '../styles'
 
-export default ({children}) => (
-  <Hero>
+export default ({}) => (
+  <Subscribe>
     <Container>
-	    {children}
+	    <h3>Subscribe for updates. We wont spam you.</h3>
     </Container>
-  </Hero>
+  </Subscribe>
 )
 
-const Hero = styled.section`
-  background-color: #eef4f8;
-  padding-top: 222px;
-  padding-bottom: 166px;
+const Subscribe = styled.section`
+  
 `
 
 const Container = styled.div`

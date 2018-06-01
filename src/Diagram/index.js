@@ -2,18 +2,16 @@ import React from 'react'
 import styled from 'styled-components'
 import { media, container } from '../styles'
 
-export default ({children}) => (
-  <Hero>
+export default ({}) => (
+  <Diagram>
     <Container>
-	    {children}
+	    Diagram
     </Container>
-  </Hero>
+  </Diagram>
 )
 
-const Hero = styled.section`
-  background-color: #eef4f8;
-  padding-top: 222px;
-  padding-bottom: 166px;
+const Diagram = styled.section`
+  
 `
 
 const Container = styled.div`
