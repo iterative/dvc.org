@@ -14,7 +14,7 @@ export default () => (
     <Container>
       <Top>
         <Logo href="/">
-          <img src="/static/img/logo_white.svg" alt="iterative.ai" />
+          <img src="/static/img/logo_white.svg" alt="iterative.ai" width={36} height={23}/>
         </Logo>
       </Top>
       <Columns>

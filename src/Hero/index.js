@@ -12,8 +12,7 @@ export default ({children}) => (
 
 const Hero = styled.section`
   background-color: #eef4f8;
-  padding-top: 222px;
-  padding-bottom: 166px;
+  margin-top: 80px;
 `
 
 const Container = styled.div`

@@ -8,10 +8,7 @@ export default ({}) => (
   </LandingHero>
 )
 
-const LandingHero = styled.div`
-  
-`
-
-const Container = styled.div`
-	${container}
+const LandingHero = styled.div` 
+  padding-top: 222px;
+  padding-bottom: 166px;
 `
