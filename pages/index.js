@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import Layout from '../src/Layout'
+import Page from '../src/Page'
 import Hero from '../src/Hero'
 import LandingHero from '../src/LandingHero'
 import Diagram from '../src/Diagram'
@@ -9,7 +9,7 @@ import UseCases from '../src/UseCases'
 import Subscribe from '../src/Subscribe'
 
 export default () => (
-  <Layout stickHeader={true}>
+  <Page stickHeader={true}>
     <Hero>
 	    <LandingHero />
     </Hero>
@@ -17,5 +17,5 @@ export default () => (
 	  <PromoSection />
 	  <UseCases />
 	  <Subscribe />
-  </Layout>
+  </Page>
 )
