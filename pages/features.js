@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
-
 import styled from 'styled-components'
+
+import { container } from '../src/styles'
 
 import Page from '../src/Page'
 import Hero from '../src/Hero'
 import FeaturesHero from '../src/FeaturesHero'
-import { container } from '../src/styles'
+import TrySection from '../src/TrySection'
 
 export default () => (
   <Page stickHeader={true}>
@@ -149,7 +150,9 @@ export default () => (
           </Description>
         </Feature>
       </Features>
+
     </Container>
+    <TrySection />
   </Page>
 )
 
