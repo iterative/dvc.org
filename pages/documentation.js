@@ -1690,8 +1690,8 @@ const Side = styled.div`
 `
 
 const Menu = styled.div`
-  min-width: 295px;
-  padding-right: 42px;
+  max-width: 280px;
+  margin-right: 18px;
 `
 
 const Heading = styled.h3`
