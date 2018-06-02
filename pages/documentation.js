@@ -26,6 +26,8 @@ export default () => (
         <Menu>
           <Heading>Documentation</Heading>
 
+	        <br/>
+	        <br/>
           {/* IN DEV */}
           {/*<SearchArea>*/}
             {/*<SearchForm />*/}
