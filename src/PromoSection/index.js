@@ -4,6 +4,7 @@ import { media, container } from '../styles'
 
 export default ({}) => (
   <PromoSection>
+    <a name="video" />
     <Container>
       <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
       <Title>For data scientists, by data scientists</Title>
@@ -57,12 +58,12 @@ const Button = styled.button`
   font-size: 20px;
   font-weight: 500;
   line-height: 0.9;
-  
+
   text-align: left;
   padding: 0px 21px;
 
   color: #ffffff;
-  
+
   background: url('/static/img/arrow_right_white.svg') right center no-repeat;
   background-position-x: 147px;
 
@@ -93,9 +94,7 @@ const Glyph = styled.img`
     `
 		top: -102px;
 		left: -158px;
-	`} 
-	
-	${props =>
+	`} ${props =>
     props.gid === 'rigthbottom' &&
     `
     bottom: -144px;

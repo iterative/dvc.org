@@ -1,6 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-import { media, container } from '../styles'
+import styled, { css } from 'styled-components'
 
 const os = `OS X`
 
@@ -26,7 +25,7 @@ export default ({}) => (
             <Description>({os})</Description>
           </ActionInner>
         </DownloadButton>
-        <WatchButton>
+        <WatchButton href="#video">
           <ActionIcon>
             <img
               src="/static/img/play-icon.svg"
@@ -89,7 +88,7 @@ const Buttons = styled.div`
   display: flex;
 `
 
-const ActionButton = styled.button`
+const actionButton = css`
   cursor: pointer;
   align-items: center;
   width: 186px;
@@ -119,14 +118,18 @@ const Description = styled.p`
   text-align: left;
 `
 
-const DownloadButton = ActionButton.extend`
+const DownloadButton = styled.button`
+  ${actionButton};
   background-color: #945dd6;
 
   line-height: 1.29;
   color: #ffffff;
 `
 
-const WatchButton = ActionButton.extend`
+const WatchButton = styled.a`
+  ${actionButton};
+  text-decoration: none;
+  color: #40364d;
   background-color: transparent;
   margin-left: 15px;
   border: solid 2px rgba(176, 184, 197, 0.47);

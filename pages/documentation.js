@@ -5,6 +5,7 @@ import SyntaxHighlighter from 'react-syntax-highlighter'
 import { style as codeStyle } from 'react-syntax-highlighter/styles/prism'
 
 import Page from '../src/Page'
+import SearchForm from '../src/SearchForm'
 
 const Code = ({ source }) => (
 	<CodeBlock language="bash" style={codeStyle}>
@@ -24,6 +25,10 @@ export default () => (
       <Side>
         <Menu>
           <Heading>Documentation</Heading>
+
+          <SearchArea>
+            <SearchForm />
+          </SearchArea>
 
           {/* Sections */}
           <Sections>
@@ -1678,15 +1683,24 @@ const Side = styled.div`
   justify-content: flex-end;
   background-color: #eef4f8;
   padding-top: 32px;
+  padding-rigth: 42px;
 `
 
 const Menu = styled.div`
-  width: 295px;
+  min-width: 295px;
+  padding-right: 42px;
 `
 
 const Heading = styled.h3`
   font-size: 24px;
   color: #b0b8c5;
+`
+
+const SearchArea = styled.div`
+  margin-top: 10px;
+  margin-bottom: 20px;
+  min-width: 280px;
+  height: 44px;
 `
 
 const Content = styled.article`
