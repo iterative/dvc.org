@@ -8,15 +8,15 @@ import Page from '../src/Page'
 import SearchForm from '../src/SearchForm'
 
 const Code = ({ source }) => (
-	<CodeBlock language="bash" style={codeStyle}>
-		{source}
-	</CodeBlock>
+  <CodeBlock language="bash" style={codeStyle}>
+    {source}
+  </CodeBlock>
 )
 
 const PartTitle = ({ name, children, small, noline }) => (
-	<PartTitleLink id={name} href={`#${name}`} noline={small || noline}>
-		<SubHeading small={small}>{children}</SubHeading>
-	</PartTitleLink>
+  <PartTitleLink id={name} href={`#${name}`} noline={small || noline}>
+    <SubHeading small={small}>{children}</SubHeading>
+  </PartTitleLink>
 )
 
 export default () => (
@@ -26,11 +26,11 @@ export default () => (
         <Menu>
           <Heading>Documentation</Heading>
 
-	        <br/>
-	        <br/>
+          <br />
+          <br />
           {/* IN DEV */}
           {/*<SearchArea>*/}
-            {/*<SearchForm />*/}
+          {/*<SearchForm />*/}
           {/*</SearchArea>*/}
 
           {/* Sections */}
@@ -169,7 +169,9 @@ export default () => (
         <Inner>
           {/* Content */}
           <Parts>
-            <PartTitle name="tutorial" noline>DVC Tutorial</PartTitle>
+            <PartTitle name="tutorial" noline>
+              DVC Tutorial
+            </PartTitle>
             <Paragraph>
               <a
                 href={`https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46`}
@@ -1732,7 +1734,7 @@ const SectionLink = styled.a`
   font-weight: 500;
   color: #b0b8c5;
   text-decoration: none;
-  
+
   line-height: 26px;
   min-height: 26px;
   margin-bottom: 5px;
@@ -1753,12 +1755,12 @@ const SectionLink = styled.a`
   }
 
   ${props =>
-	props.level === 1 &&
-	`
+    props.level === 1 &&
+    `
     padding-left: 14px;
   `} ${props =>
-	props.level === 2 &&
-	`
+    props.level === 2 &&
+    `
       padding-left: 44px;
       
       &::before {
@@ -1767,12 +1769,11 @@ const SectionLink = styled.a`
   `};
 
   ${props =>
-	props.underlined &&
-	`
+    props.underlined &&
+    `
 	  font-weight: bold;
 	`};
 `
-
 
 const Parts = styled.article`
   > ul,
@@ -1807,8 +1808,8 @@ const CodeBlock = styled(SyntaxHighlighter)`
 `
 
 const Definition = styled.b`
-  font-size: 15px;
   color: #40364d;
+  font-weight: bold;
 `
 
 const Line = styled.div`
@@ -1825,7 +1826,7 @@ const Paragraph = styled.p`
   a {
     color: #1b72df;
   }
-  
+
   font-size: 18px;
   color: #5f6c72;
 
@@ -1844,8 +1845,8 @@ const Paragraph = styled.p`
     p {
       margin: 12px 0px;
     }
-  } 
-  
+  }
+
   ul {
     list-style: disc;
   }
@@ -1859,27 +1860,29 @@ const PartTitleLink = styled.a`
   padding-top: 18px;
   color: rgb(27, 27, 27);
   text-decoration: none;
- 
- display: block;
+
+  display: block;
   margin-top: 18px;
   margin-bottom: 18px;
   border-top: 1px solid #f0f0f0;
-  
-  ${props => props.noline && `
+
+  ${props =>
+    props.noline &&
+    `
     margin-top: 0px;
     margin-bottom: 0px;
     border-top: none;
-  `}
+  `};
 `
 
 const SubHeading = styled.h2`
   font-size: 30px;
   margin-bottom: 5px;
   color: #40364d;
-  
+
   ${props =>
-	props.small &&
-	`
+    props.small &&
+    `
     padding-top: 1em;
     padding-bottom: 1em;
     font-size: 20px;
