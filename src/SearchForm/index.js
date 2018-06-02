@@ -7,6 +7,7 @@ export default ({ onChange = () => {}}) => (
   >
     <Input
       type="text"
+      placeholder={`Search documentation`}
       onChange={onChange}
     />
   </SearchForm>
@@ -25,4 +26,11 @@ const Input = styled.input`
   border-radius: 200px;
   background-color: #ffffff;
   border: solid 1px #dbe4ea;
+  padding-left: 48px;
+  padding-right: 24px;
+  background-image: url('/static/img/search.svg');
+  background-repeat: no-repeat;
+  background-position: 15px center;
+  font-size: 14px;
+  font-weight: 500;
 `

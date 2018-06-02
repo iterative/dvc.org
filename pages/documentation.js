@@ -13,8 +13,8 @@ const Code = ({ source }) => (
 	</CodeBlock>
 )
 
-const PartTitle = ({ name, children, small }) => (
-	<PartTitleLink id={name} href={`#${name}`}>
+const PartTitle = ({ name, children, small, noline }) => (
+	<PartTitleLink id={name} href={`#${name}`} noline={small || noline}>
 		<SubHeading small={small}>{children}</SubHeading>
 	</PartTitleLink>
 )
@@ -26,9 +26,10 @@ export default () => (
         <Menu>
           <Heading>Documentation</Heading>
 
-          <SearchArea>
-            <SearchForm />
-          </SearchArea>
+          {/* IN DEV */}
+          {/*<SearchArea>*/}
+            {/*<SearchForm />*/}
+          {/*</SearchArea>*/}
 
           {/* Sections */}
           <Sections>
@@ -166,7 +167,7 @@ export default () => (
         <Inner>
           {/* Content */}
           <Parts>
-            <PartTitle name="tutorial">DVC Tutorial</PartTitle>
+            <PartTitle name="tutorial" noline>DVC Tutorial</PartTitle>
             <Paragraph>
               <a
                 href={`https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46`}
@@ -196,7 +197,7 @@ export default () => (
               questions need to be answered in an unified, principled way:
             </Paragraph>
             <Paragraph inline>
-              <ol>
+              <ul>
                 <li>
                   <Definition>Source code and data versioning.</Definition>
                   <p>
@@ -243,7 +244,7 @@ export default () => (
                     of its data sources, intermediate data files, and models?
                   </p>
                 </li>
-              </ol>
+              </ul>
             </Paragraph>
             <Paragraph>
               Some of these questions are easy to answer individually. Any data
@@ -1725,42 +1726,41 @@ const SectionLinks = styled.div`
 const SectionLink = styled.a`
   display: block;
   position: relative;
-  line-height: 40px;
   font-size: 18px;
-  color: #26b2e9;
+  font-weight: 500;
+  color: #b0b8c5;
   text-decoration: none;
+  
+  line-height: 26px;
+  min-height: 26px;
+  margin-bottom: 5px;
 
-  &:hover,
-  &:visited {
-    color: #26b2e9;
+  &:hover {
+    color: #3c3937;
   }
 
   &::before {
-    content: '-';
+    content: '';
     display: block;
     position: absolute;
-    font-family: Font Awesome\\ 5 Free;
-    font-weight: normal;
+    width: 8px;
+    height: 4.7px;
+    background: url('/static/img/triangle.svg') no-repeat center center;
+    left: 0px;
+    top: 10px;
   }
 
   ${props =>
 	props.level === 1 &&
 	`
-    padding-left: 18px;
-    
-    &::before {
-      content: '\\f105';
-      left: 0px;
-    }
+    padding-left: 14px;
   `} ${props =>
 	props.level === 2 &&
 	`
       padding-left: 44px;
       
-       &::before {
-        left: 22px;
-        content: '\\f111';
-        font-size: 4px;
+      &::before {
+        display: none;
       }
   `};
 
@@ -1805,15 +1805,27 @@ const CodeBlock = styled(SyntaxHighlighter)`
 `
 
 const Definition = styled.b`
-  background: rgba(202, 224, 250, 0.25);
+  font-size: 15px;
+  color: #40364d;
+`
+
+const Line = styled.div`
+  height: 1px;
+  background-color: #f0f0f0;
+  margin-top: 20px;
+  margin-bottom: 20px;
 `
 
 const Paragraph = styled.p`
-  margin: 46px 0px;
+  margin: 22px 0px;
+  line-height: 1.5;
 
   a {
     color: #1b72df;
   }
+  
+  font-size: 18px;
+  color: #5f6c72;
 
   ${props =>
     props.inline &&
@@ -1830,6 +1842,10 @@ const Paragraph = styled.p`
     p {
       margin: 12px 0px;
     }
+  } 
+  
+  ul {
+    list-style: disc;
   }
 `
 
@@ -1838,16 +1854,27 @@ const Note = Paragraph.extend`
 `
 
 const PartTitleLink = styled.a`
+  padding-top: 18px;
   color: rgb(27, 27, 27);
   text-decoration: none;
+ 
+ display: block;
+  margin-top: 18px;
+  margin-bottom: 18px;
+  border-top: 1px solid #f0f0f0;
+  
+  ${props => props.noline && `
+    margin-top: 0px;
+    margin-bottom: 0px;
+    border-top: none;
+  `}
 `
 
-
 const SubHeading = styled.h2`
-  color: rgb(27, 27, 27);
-  font-size: 22px;
-  margin-bottom: 1em;
-
+  font-size: 30px;
+  margin-bottom: 5px;
+  color: #40364d;
+  
   ${props =>
 	props.small &&
 	`
