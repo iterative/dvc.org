@@ -2,10 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { media, container } from '../styles'
 
+import { default as YoutubeVideo } from '../Video'
+
 export default ({}) => (
   <UseCases>
     <Container>
-      <Video>video</Video>
+      <Video>
+        <YoutubeVideo />
+      </Video>
       <Right>
         <Heading>Use cases</Heading>
         <Cases>
@@ -84,7 +88,7 @@ const Heading = styled.div`
 `
 
 const Cases = styled.div`
-	margin-top: 15px;
+  margin-top: 15px;
 `
 
 const Case = styled.div`
@@ -99,7 +103,7 @@ const Top = styled.div`
 `
 
 const Icon = styled.div`
-	margin-right: 8px;
+  margin-right: 8px;
 `
 
 const Title = styled.h3`
@@ -109,7 +113,7 @@ const Title = styled.h3`
 `
 
 const Description = styled.div`
-	padding-top: 15px;
+  padding-top: 15px;
   font-size: 16px;
   color: #5f6c72;
 `
