@@ -6,6 +6,7 @@ import { style as codeStyle } from 'react-syntax-highlighter/styles/prism'
 
 import Page from '../src/Page'
 import SearchForm from '../src/SearchForm'
+import DownloadButton from '../src/DownloadButton'
 
 const Code = ({ source }) => (
   <CodeBlock language="bash" style={codeStyle}>
@@ -161,8 +162,9 @@ export default () => (
               </SectionLink>
             </SectionLinks>
           </Sections>
-
           {/* /Sections */}
+
+          <DownloadButton />
         </Menu>
       </Side>
       <Content>
@@ -173,12 +175,11 @@ export default () => (
               DVC Tutorial
             </PartTitle>
             <Paragraph>
-              <a
+              <TutorialLink
                 href={`https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46`}
               >
-                {' '}
-                Tutorial <i className="fas fa-share-square" />
-              </a>
+                Tutorial link
+              </TutorialLink>
             </Paragraph>
             {/*
             */}
@@ -1719,7 +1720,22 @@ const Inner = styled.div`
   max-width: 615px;
 `
 
-const Sections = styled.div``
+const TutorialLink = styled.a`
+  font-size: 18px;
+  color: #945dd6;
+  
+  padding-right: 26px;
+  background: url('/static/img/link.svg') no-repeat center right;
+  
+  &:hover,
+  &:visited {
+    color: #945dd6;
+  }
+`
+
+const Sections = styled.div`
+  margin-bottom: 40px;
+`
 
 const SectionLinks = styled.div`
   @media (max-width: 768px) {
@@ -1821,14 +1837,13 @@ const Line = styled.div`
 
 const Paragraph = styled.p`
   margin: 22px 0px;
+  font-size: 18px;
+  color: #5f6c72;
   line-height: 1.5;
 
   a {
     color: #1b72df;
   }
-
-  font-size: 18px;
-  color: #5f6c72;
 
   ${props =>
     props.inline &&

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
-const os = `OS X`
+import DownloadButton from '../DownloadButton'
 
 export default ({}) => (
   <LandingHero>
@@ -11,20 +11,7 @@ export default ({}) => (
         Open-source Version Control System for Data Science Projects.
       </Title>
       <Buttons>
-        <DownloadButton>
-          <ActionIcon>
-            <img
-              src="/static/img/download-arrow.svg"
-              alt="Download"
-              width={14}
-              height={20}
-            />
-          </ActionIcon>
-          <ActionInner>
-            <Action>Download</Action>
-            <Description>({os})</Description>
-          </ActionInner>
-        </DownloadButton>
+        <DownloadButton />
         <WatchButton href="#video">
           <ActionIcon>
             <img
@@ -74,6 +61,8 @@ const SubTitle = styled.h3`
   height: 40px;
   font-size: 30px;
   color: #b0b8c5;
+  font-style: italic;
+  text-decoration: line-through;
 `
 
 const Title = styled.h1`
@@ -116,14 +105,6 @@ const Action = styled.h6`
 const Description = styled.p`
   font-size: 14px;
   text-align: left;
-`
-
-const DownloadButton = styled.button`
-  ${actionButton};
-  background-color: #945dd6;
-
-  line-height: 1.29;
-  color: #ffffff;
 `
 
 const WatchButton = styled.a`
