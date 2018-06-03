@@ -120,8 +120,7 @@ const Buttons = styled.div`
 const actionButton = css`
   cursor: pointer;
   align-items: center;
-  max-width: 186px;
-  height: 60px;
+  min-width: 186px;
   border-radius: 4px;
   border: none;
 
@@ -133,6 +132,7 @@ const actionButton = css`
     margin: 0px;
     margin-bottom: 12px;
     max-width: none;
+    min-height: 60px;
   `}
 `
 

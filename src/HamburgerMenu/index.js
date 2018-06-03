@@ -20,6 +20,13 @@ export default class HamburgerMenu extends Component {
       menu: !prevState.menu
     }))
 
+  close = () =>
+    this.setState({
+      menu: false
+    })
+
+  itemClick = () => this.close
+
   render() {
     const { menu } = this.state
 
@@ -46,22 +53,34 @@ export default class HamburgerMenu extends Component {
               <Column>
                 <Heading>Product</Heading>
                 <Links>
-                  <Link href="/#">Overview</Link>
-                  <Link href="/features">Features</Link>
+                  <Link href="/#" onClick={this.itemClick}>
+                    Overview
+                  </Link>
+                  <Link href="/features" onClick={this.itemClick}>
+                    Features
+                  </Link>
                 </Links>
               </Column>
               <Column>
                 <Heading>Help</Heading>
                 <Links>
-                  <Link href="/#">Get started</Link>
-                  <Link href="/documentation">Documentation</Link>
+                  <Link href="/#" onClick={this.itemClick}>
+                    Get started
+                  </Link>
+                  <Link href="/documentation" onClick={this.itemClick}>
+                    Documentation
+                  </Link>
                 </Links>
               </Column>
               <Column>
                 <Heading>Company</Heading>
                 <Links>
-                  <Link href="/about">About Us</Link>
-                  <Link href="/contacts">Contact Us</Link>
+                  <Link href="/about" onClick={this.itemClick}>
+                    About Us
+                  </Link>
+                  <Link href="/contacts" onClick={this.itemClick}>
+                    Contact Us
+                  </Link>
                 </Links>
               </Column>
               <Column>
