@@ -34,7 +34,7 @@ export default class HamburgerMenu extends Component {
             <Top>
               <Logo href="/">
                 <img
-                  src="/static/img/logo_mobile.svg"
+                  src="/static/img/logo_white.svg"
                   alt="dvc.org"
                   width={34}
                   height={34}
@@ -44,13 +44,28 @@ export default class HamburgerMenu extends Component {
 
             <Columns>
               <Column>
+                <Heading>Product</Heading>
                 <Links>
-                  <Link href="https://dvc.org" bold>
-                    DVC.ORG
-                  </Link>
+                  <Link href="/#">Overview</Link>
+                  <Link href="/features">Features</Link>
                 </Links>
               </Column>
               <Column>
+                <Heading>Help</Heading>
+                <Links>
+                  <Link href="/#">Get started</Link>
+                  <Link href="/documentation">Documentation</Link>
+                </Links>
+              </Column>
+              <Column>
+                <Heading>Company</Heading>
+                <Links>
+                  <Link href="/about">About Us</Link>
+                  <Link href="/contacts">Contact Us</Link>
+                </Links>
+              </Column>
+              <Column>
+                <Heading>Social</Heading>
                 <Links>
                   <SocialLink
                     src="/static/img/twitter.png"
@@ -68,14 +83,6 @@ export default class HamburgerMenu extends Component {
               </Column>
             </Columns>
           </Section>
-          <DemoButton
-            onClick={e => {
-              e.preventDefault()
-              showPopup()
-            }}
-          >
-            Request a demo
-          </DemoButton>
         </Menu>
       </Wrapper>
     )
@@ -97,6 +104,7 @@ const Wrapper = styled.div`
   }
 
   ${media.phablet`
+    top: 0px;
     display: block;
   `};
 
@@ -105,8 +113,9 @@ const Wrapper = styled.div`
     `
     top: 0px;
     bottom: 0px;
-    background: #fff;
-    background-color: #a4c4c9;
+    
+    background-color: #40364d;
+    color: #fff;
   `};
 `
 
@@ -161,12 +170,20 @@ const Column = styled.div`
   display: flex;
   flex-direction: column;
   flex-basis: 100px;
+  margin-bottom: 24px;
 `
 
 const Links = styled.div`
   margin-top: 26px;
   display: flex;
   flex-direction: column;
+`
+
+const Heading = styled.h2`
+  opacity: 0.61;
+  color: #fff;
+  font-size: 20px;
+  font-weight: 100;
 `
 
 const Link = styled.a`
@@ -195,19 +212,4 @@ const Link = styled.a`
       background-size: contain;
     }
   `};
-`
-
-const DemoButton = styled.button`
-  width: 100%;
-  height: 50px;
-  margin-top: 8px;
-  margin-left: 0px;
-  font-size: 16px;
-  border-radius: 4px;
-  background-image: linear-gradient(to top, #26b077, #50eb5a);
-  padding-left: 3px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  font-weight: 500;
 `

@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, { css } from 'styled-components'
 
+import { media } from '../styles'
 import DownloadButton from '../DownloadButton'
 
 export default ({}) => (
@@ -11,7 +12,14 @@ export default ({}) => (
         Open-source Version Control System for Data Science Projects.
       </Title>
       <Buttons>
-        <DownloadButton />
+        <OnlyMobile>
+	        <GetStartedButton>
+            Get started
+          </GetStartedButton>
+        </OnlyMobile>
+        <OnlyDesktop>
+	        <DownloadButton />
+        </OnlyDesktop>
         <WatchButton href="#video">
           <ActionIcon>
             <img
@@ -46,15 +54,43 @@ export default ({}) => (
   </LandingHero>
 )
 
+const OnlyMobile = styled.div`
+  display: none;
+  ${media.giant`display: none;`};
+  ${media.desktop`display: none;`};
+  ${media.tablet`display: none;`};
+  ${media.phablet`display: initial;`};
+  ${media.phone`display: initial;`};
+`
+
+const OnlyDesktop = styled.div`
+  display: initial;
+  ${media.giant`display: initial;`};
+  ${media.desktop`display: initial;`};
+  ${media.tablet`display: initial;`};
+  ${media.phablet`display: none;`};
+  ${media.phone`display: none;`};
+`
+
 const LandingHero = styled.div`
   padding-top: 146px;
   padding-bottom: 166px;
 
   display: flex;
+  
+  ${media.phablet`
+    flex-direction: column;
+    padding-top: 46px;
+    padding-bottom: 66px;
+  `}
 `
 
 const About = styled.div`
-  flex-basis: 543px;
+  flex-basis: auto;
+  
+  ${media.phablet`
+    flex-basis: none;
+  `}
 `
 
 const SubTitle = styled.h3`
@@ -75,12 +111,16 @@ const Title = styled.h1`
 const Buttons = styled.div`
   margin-top: 28px;
   display: flex;
+ 
+  ${media.phablet`
+    flex-direction: column;
+  `}
 `
 
 const actionButton = css`
   cursor: pointer;
   align-items: center;
-  width: 186px;
+  max-width: 186px;
   height: 60px;
   border-radius: 4px;
   border: none;
@@ -88,6 +128,12 @@ const actionButton = css`
   display: flex;
   flex-direction: row;
   padding: 0px;
+  
+  ${media.phablet`
+    margin: 0px;
+    margin-bottom: 12px;
+    max-width: none;
+  `}
 `
 
 const ActionIcon = styled.div`
@@ -116,12 +162,30 @@ const WatchButton = styled.a`
   border: solid 2px rgba(176, 184, 197, 0.47);
 `
 
+const GetStartedButton = styled.a`
+  ${actionButton};
+  text-decoration: none;
+  background-color: #13adc7;
+  display: flex;
+  padding: 0px 0px 0px 20px;
+  font-size: 20px;
+  font-weight: 500;
+  color: #fff;
+  line-height: 0.9;
+  border: solid 2px transparent;
+`
+
 const Commands = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
   padding-top: 40px;
+  
+  ${media.phablet`
+    align-items: center;
+    padding-top: 24px;
+  `}
 `
 
 const Command = styled.div`
@@ -133,7 +197,6 @@ const Command = styled.div`
 
   display: flex;
   align-items: center;
-  padding: 0px 20px;
 
   ${props =>
     props.active &&
@@ -170,9 +233,14 @@ const Command = styled.div`
     opacity: 0.28;
       color: #b4b9c4;
   `}
+
+  ${media.phablet`
+    width: 100%;
+  `}
 `
 
 const Line = styled.span`
   font-size: 20px;
   font-weight: 500;
+  padding: 0px 20px;
 `

@@ -17,7 +17,9 @@ export default ({}) => (
         model files and metrics along with code.
       </Abstract>
 
-      <Graphic src="/static/img/graphic.svg" />
+      <Graphic>
+	      <img src="/static/img/graphic.svg" />
+      </Graphic>
 
       <Columns>
         <Column>
@@ -104,11 +106,19 @@ const Abstract = styled.div`
   color: #5f6c72;
 `
 
-const Graphic = styled.img`
+const Graphic = styled.section`
   width: 100%;
-  max-width: 1005px;
-  max-height: 445px;
   margin-top: 49px;
+  
+  img {
+    max-width: 1005px;
+    max-height: 445px;
+  }
+  
+  ${media.phablet`
+    overflow-x: scroll;
+     overflow-y: hidden;
+  `}
 `
 
 const Columns = styled.div`

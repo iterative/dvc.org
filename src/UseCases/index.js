@@ -70,14 +70,28 @@ const Container = styled.div`
   ${container};
   display: flex;
   justify-content: space-between;
+
+  ${media.phablet`
+    flex-direction: column;
+  `};
 `
 
 const Video = styled.div`
   flex-basis: 476px;
+
+  ${media.phablet`
+    flex-basis: auto;
+    order: 2;
+  `};
 `
 
 const Right = styled.div`
   flex-basis: 373px;
+
+  ${media.phablet`
+    flex-basis: auto;
+    order: 1;
+  `};
 `
 
 const Heading = styled.div`

@@ -20,12 +20,21 @@ export default ({}) => (
 const Subscribe = styled.section`
   min-height: 300px;
   background-color: #13ADC7;
+
+	${media.phablet`
+    display: flex;
+    align-items: center;
+	`}
 `
 
 const Container = styled.div`
 	${container};
   position: relative;
 	padding-top: 90px;
+	
+	${media.phablet`
+    padding: 0px 10px;
+	`}
 `
 
 const Glyph = styled.img`
@@ -46,7 +55,12 @@ const Glyph = styled.img`
     bottom: -154px;
     right: -158px;
 	`}
+	
+	${media.phablet`
+	  display: none;
+	`}
 `
+
 
 const Title = styled.h3`
 	min-width: 550px;
@@ -56,6 +70,10 @@ const Title = styled.h3`
   color: #ffffff;
 	margin: 0px auto;
 	text-align: center;
+	
+	${media.phablet`
+		min-width: auto;
+	`}
 `
 
 const SubscribeContainer = styled.div`

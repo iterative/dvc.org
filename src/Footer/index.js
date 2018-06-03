@@ -1,7 +1,7 @@
 import React from 'react'
 
 import styled from 'styled-components'
-import { container } from '../styles'
+import { columns, container, media } from '../styles'
 
 const SocialLink = ({ src, href, children }) => (
   <Link src={src} href={href}>
@@ -14,7 +14,12 @@ export default () => (
     <Container>
       <Top>
         <Logo href="/">
-          <img src="/static/img/logo_white.svg" alt="iterative.ai" width={36} height={23}/>
+          <img
+            src="/static/img/logo_white.svg"
+            alt="iterative.ai"
+            width={36}
+            height={23}
+          />
         </Logo>
       </Top>
       <Columns>
@@ -69,12 +74,21 @@ const Footer = styled.section`
   min-height: 555px;
   background-color: #40364d;
   color: #fff;
+
+  ${media.phablet`
+    min-height: auto;
+  `};
 `
 
 const Container = styled.div`
   ${container};
   padding-top: 88px;
   padding-bottom: 176px;
+
+  ${media.phablet`
+       padding-top: 31px !important;
+    padding-bottom: 31px !important;
+  `};
 `
 
 const Top = styled.div`
@@ -85,8 +99,7 @@ const Top = styled.div`
 const Logo = styled.a``
 
 const Columns = styled.div`
-  display: flex;
-  flex-direction: row;
+  ${columns};
 `
 
 const Column = styled.div`
@@ -94,6 +107,10 @@ const Column = styled.div`
   flex-direction: column;
   flex-basis: 150px;
   margin-right: 66px;
+
+  ${media.phablet`
+    margin-right: 0px;
+  `};
 `
 
 const Heading = styled.h2`

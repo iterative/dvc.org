@@ -102,4 +102,8 @@ const Glyph = styled.img`
     bottom: -144px;
     right: -158px;
 	`};
+
+	${media.phablet`
+	  display: none;
+	`}
 `

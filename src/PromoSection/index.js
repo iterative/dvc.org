@@ -42,10 +42,15 @@ const Title = styled.h3`
 `
 
 const Buttons = styled.div`
+  display: flex;
   max-width: 386px;
   margin: 0px auto;
   margin-top: 20px;
   align-items: center;
+  flex-direction: row;
+  ${media.phablet`
+    flex-direction: column;
+  `}
 `
 
 const Button = styled.button`
@@ -77,7 +82,16 @@ const Button = styled.button`
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
     
     background-image: url('/static/img/arrow_right_dark.svg');
+    
+     ${media.phablet`
+      margin-right: 0px;
+   `}
   `};
+  
+  ${media.phablet`
+    margin-bottom: 12px;
+    margin-right: 0px !important;
+  `}
 `
 
 const Glyph = styled.img`
@@ -100,4 +114,8 @@ const Glyph = styled.img`
     bottom: -144px;
     right: -158px;
 	`};
+	
+	${media.phablet`
+	  display: none;
+	`}
 `
