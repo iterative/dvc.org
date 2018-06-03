@@ -4,7 +4,7 @@ import { container, media } from '../styles'
 
 import Nav from '../Nav'
 
-const MIN_HEIGHT = 98
+const MIN_HEIGHT = 78
 const STICKY_FROM = 25 / 2
 
 export default class TopMenu extends Component {
@@ -71,7 +71,7 @@ const Wrapper = styled.div`
     props.sticky &&
     `
     transform: translateZ(0);
-    min-height: 85px;
+    min-height: 78px;
     background-color: rgba(23, 48, 66, ${props.level});
   `};
 
@@ -95,7 +95,7 @@ const Wrapper = styled.div`
 const Container = styled.section`
   ${container};
   width: auto;
-  min-height: ${MIN_HEIGHT}px;
+  min-height: ${MIN_HEIGHT + 20}px;
 
   z-index: 3;
   position: relative;
@@ -106,11 +106,19 @@ const Container = styled.section`
   align-items: center;
 
   ${media.phablet`
-     flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    min-height: ${MIN_HEIGHT}px;
   `};
 `
 
 const Logo = styled.a`
   display: block;
   padding-top: 10px;
+  
+  ${media.phablet`
+    padding-top: 10px;
+    padding-bottom: 0px;
+  `}
 `

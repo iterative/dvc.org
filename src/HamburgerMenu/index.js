@@ -144,7 +144,7 @@ const Menu = styled.div`
     !props.visible &&
     `
     z-index: -99999;
-    visibility:hidden;
+    display: none;
   `};
 `
 

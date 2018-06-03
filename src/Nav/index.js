@@ -67,7 +67,9 @@ const Nav = styled.div`
     props.mobile &&
     `
     display: none;
- `} ${media.phablet` 
+ `} 
+ 
+ ${media.phablet` 
      ${props =>
        !props.mobile &&
        `
