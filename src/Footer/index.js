@@ -77,6 +77,10 @@ const Footer = styled.section`
   ${media.phablet`
     min-height: auto;
   `};
+  
+  @media only screen and (orientation: landscape) {
+   min-height: auto;
+  }
 `
 
 const Container = styled.div`
@@ -85,9 +89,14 @@ const Container = styled.div`
   padding-bottom: 176px;
 
   ${media.phablet`
-       padding-top: 31px !important;
+    padding-top: 31px !important;
     padding-bottom: 31px !important;
   `};
+  
+  @media only screen and (orientation: landscape) {
+    padding-top: 31px !important;
+    padding-bottom: 31px !important;
+  }
 `
 
 const Top = styled.div`

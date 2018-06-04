@@ -25,6 +25,11 @@ const Subscribe = styled.section`
     display: flex;
     align-items: center;
 	`}
+	
+	 @media only screen and (orientation: landscape) {
+			display: flex;
+			align-items: center;
+	 }
 `
 
 const Container = styled.div`

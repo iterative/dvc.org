@@ -117,8 +117,17 @@ const Graphic = styled.section`
   
   ${media.phablet`
     overflow-x: scroll;
-     overflow-y: hidden;
+    overflow-y: hidden;
   `}
+
+  @media only screen and (orientation: landscape) {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+  
+  @media only screen and (orientation: portrait) {
+    
+  }
 `
 
 const Columns = styled.div`

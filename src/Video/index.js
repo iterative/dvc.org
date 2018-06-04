@@ -37,4 +37,10 @@ const Video = styled.div`
     width: 313px;
     height: 320px;
   }
+  
+  @media only screen and (orientation: landscape) {
+    width: 100%;
+    height: 100%;
+    margin: 0px auto;
+  }
 `

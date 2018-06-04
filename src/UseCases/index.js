@@ -71,6 +71,10 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
 
+  @media only screen and (orientation: landscape) {
+    flex-direction: column;
+  }
+  
   ${media.phablet`
     flex-direction: column;
   `};
@@ -78,6 +82,12 @@ const Container = styled.div`
 
 const Video = styled.div`
   flex-basis: 476px;
+
+  @media only screen and (orientation: landscape) {
+    flex-basis: auto;
+    order: 2;
+    text-align: center;
+  }
 
   ${media.phablet`
     flex-basis: auto;
@@ -87,6 +97,11 @@ const Video = styled.div`
 
 const Right = styled.div`
   flex-basis: 373px;
+  
+  @media only screen and (orientation: landscape) {
+    flex-basis: auto;
+    order: 1;
+  }
 
   ${media.phablet`
     flex-basis: auto;

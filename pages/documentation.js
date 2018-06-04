@@ -166,7 +166,9 @@ export default () => (
           </Sections>
           {/* /Sections */}
 
-          <DownloadButton />
+          <OnlyDesktop>
+            <DownloadButton />
+          </OnlyDesktop>
         </Menu>
       </Side>
       <Content>
@@ -344,7 +346,7 @@ export default () => (
             </Paragraph>
             <Paragraph>
               DVC uses a few core concepts:
-              <ol>
+              <ul>
                 <li>
                   <Definition>Experiment</Definition> is equivalent to a Git
                   branch. Each experiment (extract new features, change model
@@ -398,11 +400,11 @@ export default () => (
                   transfers large data files or shares a trained on GPU model to
                   whom who does not have GPU.
                 </li>
-              </ol>
+              </ul>
             </Paragraph>
             <PartTitle name="core_features">Core features</PartTitle>
             <Paragraph>
-              <ol>
+              <ul>
                 <li>
                   DVC works <Definition>on top of Git repositories</Definition>{' '}
                   and has a similar command line interface and Git workflow.
@@ -436,7 +438,7 @@ export default () => (
                     data sources and pre-trained models sharing
                   </Definition>.
                 </li>
-              </ol>
+              </ul>
             </Paragraph>
             <PartTitle name="related">Related technologies</PartTitle>
             <Paragraph>
@@ -447,7 +449,7 @@ export default () => (
               into the data science process.
             </Paragraph>
             <Paragraph inline>
-              <ol>
+              <ul>
                 <li>
                   <Definition>Git</Definition>. The difference is: -
                   <p>
@@ -586,7 +588,7 @@ export default () => (
                     copying files is a heavy operation for large files (30Gb+).
                   </p>
                 </li>
-              </ol>
+              </ul>
             </Paragraph>
             <PartTitle name="how_does_it_work">How does it work?</PartTitle>
             <Paragraph>
@@ -1084,7 +1086,7 @@ export default () => (
               Converts files and directories to DVC data files. The command does
               the conversion from a <Definition>regular file</Definition> to{' '}
               <Definition>DVC data file</Definition> in a few steps:
-              <ol>
+              <ul>
                 <li>Calculate the file checksum.</li>
                 <li>
                   Create a cache file in the cache dir{' '}
@@ -1106,7 +1108,7 @@ export default () => (
                   in
                   <Definition>.dvc/cache</Definition>.
                 </li>
-              </ol>
+              </ul>
             </Paragraph>
             <Code
               source={`.. code-block:: shell
@@ -1567,7 +1569,7 @@ Reproduce the part of the pipeline where *Posts.tsv.dvc* is the target DVC file:
               statuses of all corrupted data files (if any). Use{' '}
               <Definition>--all</Definition> option to see statuses of all data
               files. The command checks:
-              <ol>
+              <ul>
                 <li>
                   Cache file name which is equal to the file content checksum
                   when DVC created the file.
@@ -1584,7 +1586,7 @@ Reproduce the part of the pipeline where *Posts.tsv.dvc* is the target DVC file:
                   option. Data file is considered to be corrupted if one of the
                   checksums does not match all others.
                 </li>
-              </ol>
+              </ul>
             </Paragraph>
             <Code
               source={`.. code-block:: shell
@@ -1683,11 +1685,14 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   min-height: 80vh;
-  
+
   ${media.phablet`
     margin-top: 63px;
     flex-direction: column;
-  `}
+  `} @media only screen and (orientation: landscape) {
+    margin-top: 63px;
+    flex-direction: column;
+  }
 `
 
 const Side = styled.div`
@@ -1697,21 +1702,31 @@ const Side = styled.div`
   background-color: #eef4f8;
   padding-top: 32px;
   padding-rigth: 42px;
-  
+
   ${media.phablet`
     flex-basis: auto;
     flex: 1;
-  `}
+  `} @media only screen and (orientation: landscape) {
+    flex-basis: auto;
+    flex: 1;
+  }
 `
 
 const Menu = styled.div`
   max-width: 280px;
   margin-right: 18px;
-  
+
   ${media.phablet`
     padding: 30px;
     width: 100%;
-  `}
+    max-width: none;
+    margin-right: 0px;
+  `} @media only screen and (orientation: landscape) {
+    padding: 30px;
+    width: 100%;
+    max-width: none;
+    margin-right: 0px;
+  }
 `
 
 const Heading = styled.h3`
@@ -1731,27 +1746,33 @@ const Content = styled.article`
 
   padding-top: 69px;
   padding-left: 62px;
-  
+
   ${media.phablet`
     padding: 30px;
-  `}
+  `};
 `
 
 const Inner = styled.div`
   max-width: 615px;
-  
+
   ${media.phablet`
     max-width: auto;
-  `}
+  `} @media only screen and (orientation: landscape) {
+    max-width: auto;
+  }
+
+  color: #5f6c72;
+  font-size: 18px;
+  line-height: 1.5;
 `
 
 const TutorialLink = styled.a`
   font-size: 18px;
   color: #945dd6;
-  
+
   padding-right: 26px;
   background: url('/static/img/link.svg') no-repeat center right;
-  
+
   &:hover,
   &:visited {
     color: #945dd6;
@@ -1866,6 +1887,12 @@ const Paragraph = styled.p`
   color: #5f6c72;
   line-height: 1.5;
 
+  * {
+    color: #5f6c72;
+    font-size: 18px;
+    line-height: 1.5;
+  }
+
   a {
     color: #1b72df;
   }
@@ -1932,4 +1959,13 @@ const SubHeading = styled.h2`
     text-decoration: none;
     color: rgb(27, 27, 27);
   }
+`
+
+const OnlyDesktop = styled.div`
+  display: initial;
+  ${media.giant`display: initial;`};
+  ${media.desktop`display: initial;`};
+  ${media.tablet`display: initial;`};
+  ${media.phablet`display: none;`};
+  ${media.phone`display: none;`};
 `

@@ -64,6 +64,10 @@ export const container = css`
 
   ${media.tablet`padding: 0px 61px 0px 67px;`} ${media.phablet`
       padding: 0px 31px 0px 31px;`};
+
+  @media only screen and (orientation: landscape) {
+    max-width: none;
+  }
 `
 
 export const Mark = styled.span`
