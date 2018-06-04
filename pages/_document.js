@@ -4,9 +4,9 @@ import reset from 'styled-reset'
 import { global } from '../src/styles'
 import Router from 'next/router'
 
-const TITLE = `Data Version Control – Open-source Version Control System for Data Science Projects.`
-const DESCRIPTION = `Open-source Version Control System for Data Science Projects.`
-const KEYWORDS = ``
+const TITLE = `DVC | Data Science Version Control System`
+const DESCRIPTION = `Open-source Version Control System for Data Science Projects. Data Version Control.`
+const KEYWORDS = `data version control machine learning models management`
 
 const dev = process.env.NODE_ENV !== 'production'
 
@@ -94,7 +94,7 @@ export default class MyDocument extends Document {
                 document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
 
                 require(["mojo/signup-forms/Loader"], function(L) {
-                  L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"00d8c23945d0bb53d4a4c8c74","lid":"b36ebfc8ca"})
+                  L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"a08bf93caae4063c4e6a351f6","lid":"24c0ecc49a"})
                 })
               }
             </script>`
