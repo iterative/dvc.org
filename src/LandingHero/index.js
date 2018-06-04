@@ -112,6 +112,7 @@ const Title = styled.h1`
   font-weight: 500;
   line-height: 1.4;
   color: #40364d;
+  font-family: BrandonGrotesqueMed;
 `
 
 const Buttons = styled.div`

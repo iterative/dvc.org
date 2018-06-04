@@ -9,13 +9,7 @@ export function fontFace(
   return `
         @font-face{
             font-family: "${name}";
-            src: url(${'/static/fonts/' + src + '.eot'});
-            src: url(${'/static/fonts/' +
-              src +
-              '.eot'}?#iefix) format("embedded-opentype"),
-                 url(${'/static/fonts/' + src + '.woff'}) format("woff"),
-                 url(${'/static/fonts/' + src + '.ttf'}) format("truetype"),
-                 url(${'/static/fonts/' + src + '.svg'}#${name}) format("svg");
+            src: url(${'/static/fonts/' + src + '.otf'});
             font-style: ${fontStyle};
             font-weight: ${fontWeight};
         }
@@ -23,13 +17,15 @@ export function fontFace(
 }
 
 export const global = `
-  ${fontFace('BrandonGrotesque', 'brandongrotesque-regular-webfont')}
-  ${fontFace('BrandonGrotesqueLight', 'brandongrotesque-regular-webfont')}
+  ${fontFace('BrandonGrotesque', 'Brandon_reg')}
+  ${fontFace('BrandonGrotesqueMed', 'Brandon_med')}
+  ${fontFace('BrandonGrotesqueLight', 'Brandon_light')}
   
 	body {
 		padding: 0px;
 		font-family: BrandonGrotesque, Tahoma, Arial;
 		font-size: 14px;
+    line-height: 1.5;
 	}
 	
 	*:focus {

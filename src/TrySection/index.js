@@ -74,6 +74,8 @@ const Button = styled.button`
 
   background: url('/static/img/arrow_right_white.svg') right center no-repeat;
   background-position-x: 147px;
+  
+  cursor: pointer;
 
   ${props =>
     props.first &&

@@ -87,7 +87,7 @@ const GetStartedButton = styled.button`
   background-color: #13adc7;
   color: #fff;
   height: 36px;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   border: none;
   cursor: pointer;
