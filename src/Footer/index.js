@@ -26,22 +26,21 @@ export default () => (
         <Column>
           <Heading>Product</Heading>
           <Links>
-            <Link href="/#">Overview</Link>
+            <Link href="/?">Overview</Link>
             <Link href="/features">Features</Link>
           </Links>
         </Column>
         <Column>
           <Heading>Help</Heading>
           <Links>
-            <Link href="/#">Get started</Link>
+            <Link href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46">Get started</Link>
             <Link href="/documentation">Documentation</Link>
           </Links>
         </Column>
         <Column>
           <Heading>Company</Heading>
           <Links>
-            <Link href="/about">About Us</Link>
-            <Link href="/contacts">Contact Us</Link>
+            <Link href="http://iterative.ai/">iterative.ai</Link>
           </Links>
         </Column>
         <Column>
@@ -55,7 +54,7 @@ export default () => (
             </SocialLink>
             <SocialLink
               src="/static/img/github.png"
-              href="https://github.com/iterative"
+              href="https://github.com/iterative/dvc"
             >
               Github
             </SocialLink>
@@ -64,7 +63,7 @@ export default () => (
       </Columns>
       <Address>450 Townsend St. Suite 100, San Francisco, CA 94107</Address>
       <Copyright>
-        ©2018 <small>DataVersionControl INC</small>
+        ©2018 <small>Iterative, Inc</small>
       </Copyright>
     </Container>
   </Footer>

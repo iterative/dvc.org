@@ -1,29 +1,33 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import isClient from '../utils/isClient'
 
 const OSX = `osx`
 const WINDOWS = `win`
 const LINUX = `linux`
+const LINUX_RPM = `linux_rpm`
 const UNKNOWN = `...`
 
 const links = {
   [OSX]: {
     title: 'Mac OS',
-    url: `https://github.com/dataversioncontrol/dataversioncontrol.github.io`
+    url: `https://github.com/iterative/dvc/releases/download/0.9.7/dvc-0.9.7.pkg`
   },
   [WINDOWS]: {
     title: 'Windows',
-    url: `https://github.com/dataversioncontrol/dataversioncontrol.github.io`
+    url: `https://github.com/iterative/dvc/releases/download/0.9.7/dvc-0.9.7.exe`
   },
   [LINUX]: {
-    title: 'Linux',
-    url: `https://github.com/dataversioncontrol/dataversioncontrol.github.io`
+    title: 'Linux Deb',
+    url: `https://github.com/iterative/dvc/releases/download/0.9.7/dvc_0.9.7_amd64.deb`
+  },
+  [LINUX_RPM]: {
+    title: 'Linux RPM',
+    url: `https://github.com/iterative/dvc/releases/download/0.9.7/dvc-0.9.7-1.x86_64.rpm`
   },
   [UNKNOWN]: {
-    title: 'Unknown',
-    url: `https://github.com/dataversioncontrol/dataversioncontrol.github.io`
+    title: 'pip install dvc'
   }
 }
 
@@ -84,8 +88,20 @@ export default class DownloadButton extends Component {
 
   renderLinks = () => (
     <Links>
-      {[OSX, WINDOWS, LINUX].map(id => {
+      {[OSX, WINDOWS, LINUX, UNKNOWN].map(id => {
         const link = links[id]
+
+        if (!link.url) {
+          return (
+            <DownloadInput
+              key={id}
+              value={link.title}
+              onClick={function(e) {
+                e.target.select()
+              }}
+            />
+          )
+        }
 
         return (
           <DownloadLink
@@ -194,7 +210,7 @@ const Popup = styled.div`
   position: absolute;
   left: 0px;
   right: 0px;
-  top: -85%;
+  top: -150%;
   transform: translateY(100%);
   background-color: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
@@ -205,7 +221,7 @@ const Links = styled.div`
   flex-direction: column;
 `
 
-const DownloadLink = styled.a`
+const item = css`
   display: block;
   min-height: 36px;
   line-height: 1.29;
@@ -217,12 +233,31 @@ const DownloadLink = styled.a`
   text-decoration: none;
 
   color: #b0b8c5;
+`
+
+const DownloadInput = styled.input`
+  ${item};
+  border: none !important;
+  font-style: italic;
+
+  ${props =>
+    props.active &&
+    `
+    color: #40364d;
+  `};
+`
+
+const DownloadLink = styled.a`
+  ${item};
+  color: #b0b8c5;
 
   &:hover {
     color: #40364d;
   }
-  
-  ${props => props.active && `
+
+  ${props =>
+    props.active &&
+    `
     color: #40364d;
-  `}
+  `};
 `

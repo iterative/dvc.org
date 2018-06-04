@@ -6,14 +6,16 @@ const popup = () => {
   showPopup()
 }
 
+const getStarted = () => window.location = "https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46"
+
 export default ({ mobile = false }) => (
   <Nav mobile={mobile}>
     <Links>
       <Link href="/features">Features</Link>
       <Link href="/documentation">Documentation</Link>
-	    <Link href="https://github.com/iterative">Github</Link>
+	    <Link href="https://github.com/iterative/dvc">Github</Link>
     </Links>
-	  <GetStartedButton>Get Started</GetStartedButton>
+	  <GetStartedButton onClick={this.getStarted}>Get Started</GetStartedButton>
   </Nav>
 )
 
@@ -79,6 +81,7 @@ const Nav = styled.div`
 `
 
 const GetStartedButton = styled.button`
+  text-decoration: none;
   margin-left: 40px;
   border-radius: 4px;
   background-color: #13adc7;
@@ -87,4 +90,5 @@ const GetStartedButton = styled.button`
   font-size: 16px;
   font-weight: 500;
   border: none;
+  cursor: pointer;
 `

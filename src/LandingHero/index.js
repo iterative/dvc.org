@@ -1,5 +1,5 @@
 import React from 'react'
-import styled, { css } from 'styled-components'
+import styled, { css, keyframes } from 'styled-components'
 
 import { media } from '../styles'
 import DownloadButton from '../DownloadButton'
@@ -175,6 +175,96 @@ const GetStartedButton = styled.a`
   border: solid 2px transparent;
 `
 
+
+/*
+
+ ${props =>
+  props.active &&
+  `
+     border: solid 1px #945dd6;
+  `};
+
+  ${props =>
+  props.level === 1 &&
+  `
+    color: #40364d;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  `}
+
+  ${props =>
+  props.level === 2 &&
+  `
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.09);
+    color: #b4b9c4;
+  `}
+
+  ${props =>
+  props.level === 3 &&
+  `
+
+  opacity: 0.53;
+    color: #b4b9c4;
+
+  `}
+
+  ${props =>
+  props.level === 4 &&
+  `
+    opacity: 0.28;
+      color: #b4b9c4;
+  `}
+
+ */
+
+
+export const keyFrameExampleOne = keyframes`
+  0% {
+    opacity: 1;
+    color: #40364d;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+    border: solid 1px #945dd6;
+  }
+  
+  40% {
+    border: 1px solid transparent;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.09);
+    color: #b4b9c4;
+  }
+  
+  60% {
+    opacity: 0.53;
+    color: #b4b9c4;
+  }
+  
+  80% {
+    opacity: 0.28;
+    color: #b4b9c4;
+  }
+`
+
+const Command = styled.div`
+  width: 362px;
+  height: 57px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  border: 1px solid transparent;
+  margin-bottom: 13px;
+
+  display: flex;
+  align-items: center;
+  
+  ${media.phablet`
+    width: 100%;
+  `}
+  
+  opacity: 0.28;
+  color: #b4b9c4;
+  
+  animation: ${keyFrameExampleOne} 9s ease-in-out 0s infinite;
+  animation-delay: ${props => props.level * 2}s;
+`
+
+
 const Commands = styled.div`
   flex: 1;
   display: flex;
@@ -188,56 +278,6 @@ const Commands = styled.div`
   `}
 `
 
-const Command = styled.div`
-  width: 362px;
-  height: 57px;
-  border-radius: 8px;
-  background-color: #ffffff;
-  margin-bottom: 13px;
-
-  display: flex;
-  align-items: center;
-
-  ${props =>
-    props.active &&
-    `
-       border: solid 1px #945dd6;
-  `};
-  
-  ${props =>
-    props.level === 1 &&
-    `
-    color: #40364d;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-  `}
-  
-  ${props =>
-    props.level === 2 &&
-    `
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.09);
-    color: #b4b9c4;
-  `}
-  
-  ${props =>
-    props.level === 3 &&
-    `
-    
-  opacity: 0.53;
-    color: #b4b9c4;
-     
-  `}
-  
-  ${props =>
-    props.level === 4 &&
-    `
-    opacity: 0.28;
-      color: #b4b9c4;
-  `}
-
-  ${media.phablet`
-    width: 100%;
-  `}
-`
 
 const Line = styled.span`
   font-size: 20px;

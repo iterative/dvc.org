@@ -64,7 +64,7 @@ export default class HamburgerMenu extends Component {
               <Column>
                 <Heading>Help</Heading>
                 <Links>
-                  <Link href="/#" onClick={this.itemClick}>
+                  <Link href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46" onClick={this.itemClick}>
                     Get started
                   </Link>
                   <Link href="/documentation" onClick={this.itemClick}>
@@ -75,12 +75,7 @@ export default class HamburgerMenu extends Component {
               <Column>
                 <Heading>Company</Heading>
                 <Links>
-                  <Link href="/about" onClick={this.itemClick}>
-                    About Us
-                  </Link>
-                  <Link href="/contacts" onClick={this.itemClick}>
-                    Contact Us
-                  </Link>
+                  <Link href="http://iterative.ai/">Iterative.ai</Link>
                 </Links>
               </Column>
               <Column>
