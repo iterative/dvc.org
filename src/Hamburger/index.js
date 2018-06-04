@@ -20,14 +20,14 @@ const Wrapper = styled.div`
 const Line = styled.div`
   width: ${WIDTH}px;
   height: ${HEIGHT}px;
-  background-color: #fff;
+  background-color: #173042;
   margin: 5px 0;
   transition: 0.4s;
 
   ${props =>
     props.open &&
     `
-    background-color: #173042;
+      background-color: #fff;
 	`} ${props =>
     props.open &&
     props.first &&

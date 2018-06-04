@@ -4,7 +4,7 @@ import { container, media } from '../styles'
 
 import Nav from '../Nav'
 
-const MIN_HEIGHT = 88
+const MIN_HEIGHT = 78
 const STICKY_FROM = 25 / 2
 
 export default class TopMenu extends Component {
@@ -14,7 +14,7 @@ export default class TopMenu extends Component {
   }
 
   componentDidMount() {
-    return;
+    return
     window.addEventListener('scroll', this.handleScroll)
     this.handleScroll()
   }
@@ -48,7 +48,12 @@ export default class TopMenu extends Component {
       <Wrapper sticky={sticky} level={level} fullySticky={level === 1}>
         <Container>
           <Logo href="/">
-            <img src="/static/img/logo.svg" alt="dvc.org" />
+            <img
+              src="/static/img/logo.svg"
+              alt="dvc.org"
+              width={36}
+              height={23}
+            />
           </Logo>
           <Nav mobile={false} />
         </Container>
@@ -64,13 +69,14 @@ const Wrapper = styled.div`
   left: 0px;
   right: 0px;
 
-  min-height: ${MIN_HEIGHT}px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
 
   ${props =>
     props.sticky &&
     `
     transform: translateZ(0);
-    min-height: 85px;
+    min-height: 78px;
     background-color: rgba(23, 48, 66, ${props.level});
   `};
 
@@ -94,6 +100,7 @@ const Wrapper = styled.div`
 const Container = styled.section`
   ${container};
   width: auto;
+  min-height: ${MIN_HEIGHT + 20}px;
 
   z-index: 3;
   position: relative;
@@ -101,13 +108,23 @@ const Container = styled.section`
   color: #ffffff;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
   ${media.phablet`
-     flex-direction: column;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    min-height: ${MIN_HEIGHT}px;
   `};
 `
 
 const Logo = styled.a`
-  margin-top: 25px;
   display: block;
+  padding-top: 10px;
+  z-index: 999;
+
+  ${media.phablet`
+    padding-top: 10px;
+    padding-bottom: 0px;
+  `};
 `

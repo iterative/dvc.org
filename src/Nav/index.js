@@ -6,13 +6,18 @@ const popup = () => {
   showPopup()
 }
 
+const getStarted = () =>
+  (window.location =
+    'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46')
+
 export default ({ mobile = false }) => (
   <Nav mobile={mobile}>
     <Links>
       <Link href="/features">Features</Link>
-      <Link href="/features">Documentation</Link>
-	    <Link href="https://github.com/iterative">Github</Link>
+      <Link href="/documentation">Documentation</Link>
+      <Link href="https://github.com/iterative/dvc">Github</Link>
     </Links>
+    <GetStartedButton onClick={this.getStarted}>Get Started</GetStartedButton>
   </Nav>
 )
 
@@ -23,12 +28,13 @@ const Links = styled.div`
 
 const Link = styled.a`
   text-decoration: none;
-  margin-left: 30px;
+  text-transform: uppercase;
+
   font-size: 13px;
   font-weight: bold;
-  color: #fff;
-  text-transform: uppercase;
-  border-bottom: 1px solid transparent;
+  color: #838d93;
+
+  margin-left: 30px;
 
   &:hover {
     text-decoration: none;
@@ -60,7 +66,6 @@ const Nav = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 31px;
 
   ${props =>
     props.mobile &&
@@ -73,4 +78,17 @@ const Nav = styled.div`
         display: none;
      `} 
   `};
+`
+
+const GetStartedButton = styled.button`
+  text-decoration: none;
+  margin-left: 40px;
+  border-radius: 4px;
+  background-color: #13adc7;
+  color: #fff;
+  height: 36px;
+  font-size: 15px;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
 `

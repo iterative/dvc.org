@@ -9,13 +9,7 @@ export function fontFace(
   return `
         @font-face{
             font-family: "${name}";
-            src: url(${'/static/fonts/' + src + '.eot'});
-            src: url(${'/static/fonts/' +
-              src +
-              '.eot'}?#iefix) format("embedded-opentype"),
-                 url(${'/static/fonts/' + src + '.woff'}) format("woff"),
-                 url(${'/static/fonts/' + src + '.ttf'}) format("truetype"),
-                 url(${'/static/fonts/' + src + '.svg'}#${name}) format("svg");
+            src: url(${'/static/fonts/' + src + '.otf'});
             font-style: ${fontStyle};
             font-weight: ${fontWeight};
         }
@@ -23,12 +17,15 @@ export function fontFace(
 }
 
 export const global = `
-  ${fontFace('BrandonGrotesque', 'brandongrotesque-regular-webfont')}
-
+  ${fontFace('BrandonGrotesque', 'Brandon_reg')}
+  ${fontFace('BrandonGrotesqueMed', 'Brandon_med')}
+  ${fontFace('BrandonGrotesqueLight', 'Brandon_light')}
+  
 	body {
 		padding: 0px;
 		font-family: BrandonGrotesque, Tahoma, Arial;
 		font-size: 14px;
+    line-height: 1.5;
 	}
 	
 	*:focus {
@@ -36,7 +33,7 @@ export const global = `
   }
 `
 
-const maxWidth = 1240
+const maxWidth = 1005
 
 const sizes = {
   giant: 1170,
@@ -59,10 +56,17 @@ export const media = Object.keys(sizes).reduce((accumulator, label) => {
 export const container = css`
   margin: 0 auto;
   max-width: ${maxWidth}px;
-  padding: 0px 111px 0px 117px;
+  padding: 0px;
 
-  ${media.tablet`padding: 0px 61px 0px 67px;`} ${media.phablet`
-      padding: 0px 31px 0px 31px;`};
+  ${media.tablet`
+  
+  padding: 0px 61px 0px 67px;
+   
+  `} ${media.phablet`
+       
+      padding: 0px 31px 0px 31px;
+      
+      `};
 `
 
 export const Mark = styled.span`
