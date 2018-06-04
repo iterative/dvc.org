@@ -6,16 +6,18 @@ const popup = () => {
   showPopup()
 }
 
-const getStarted = () => window.location = "https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46"
+const getStarted = () =>
+  (window.location =
+    'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46')
 
 export default ({ mobile = false }) => (
   <Nav mobile={mobile}>
     <Links>
       <Link href="/features">Features</Link>
       <Link href="/documentation">Documentation</Link>
-	    <Link href="https://github.com/iterative/dvc">Github</Link>
+      <Link href="https://github.com/iterative/dvc">Github</Link>
     </Links>
-	  <GetStartedButton onClick={this.getStarted}>Get Started</GetStartedButton>
+    <GetStartedButton onClick={this.getStarted}>Get Started</GetStartedButton>
   </Nav>
 )
 
@@ -27,11 +29,11 @@ const Links = styled.div`
 const Link = styled.a`
   text-decoration: none;
   text-transform: uppercase;
-  
+
   font-size: 13px;
   font-weight: bold;
   color: #838d93;
-  
+
   margin-left: 30px;
 
   &:hover {
@@ -69,9 +71,7 @@ const Nav = styled.div`
     props.mobile &&
     `
     display: none;
- `} 
- 
- ${media.phablet` 
+ `} ${media.phablet` 
      ${props =>
        !props.mobile &&
        `

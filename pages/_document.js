@@ -23,9 +23,10 @@ export default class MyDocument extends Document {
   static getInitialProps({ req, res, renderPage }) {
     let redirect
 
-	  if (req.headers['host'].match(/^www/) !== null ) {
-		  redirect = 'https://' + req.headers['host'].replace(/^www\./, '') + req.url
-	  } else if (req.headers['x-forwarded-proto'] !== 'https' && !dev) {
+    if (req.headers['host'].match(/^www/) !== null) {
+      redirect =
+        'https://' + req.headers['host'].replace(/^www\./, '') + req.url
+    } else if (req.headers['x-forwarded-proto'] !== 'https' && !dev) {
       const host = req.headers['host'].replace(/^www\./, '')
       redirect = 'https://' + host + req.url
     }
@@ -59,8 +60,8 @@ export default class MyDocument extends Document {
           <meta name="description" content={DESCRIPTION} />
           <meta name="keywords" content={KEYWORDS} />
           <meta
-	          name='viewport'
-	          content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           />
           <link
             rel="icon"

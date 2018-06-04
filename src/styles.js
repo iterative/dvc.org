@@ -62,12 +62,15 @@ export const container = css`
   max-width: ${maxWidth}px;
   padding: 0px;
 
-  ${media.tablet`padding: 0px 61px 0px 67px;`} ${media.phablet`
-      padding: 0px 31px 0px 31px;`};
-
-  @media only screen and (orientation: landscape) {
-    max-width: none;
-  }
+  ${media.tablet`
+  
+  padding: 0px 61px 0px 67px;
+   
+  `} ${media.phablet`
+       
+      padding: 0px 31px 0px 31px;
+      
+      `};
 `
 
 export const Mark = styled.span`

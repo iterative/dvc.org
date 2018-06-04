@@ -4,7 +4,7 @@ import Router from 'next/router'
 import { media, container } from '../styles'
 
 const getStarted = () => {
-  window.scrollTo(0,0)
+  window.scrollTo(0, 0)
   Router.push('/documentation')
 }
 
@@ -14,7 +14,9 @@ export default ({}) => (
       <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
       <Title>Ready to give it a try?</Title>
       <Buttons>
-        <Button first onClick={() => getStarted()}>Get Started</Button>
+        <Button first onClick={() => getStarted()}>
+          Get Started
+        </Button>
       </Buttons>
       <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
     </Container>
@@ -64,12 +66,12 @@ const Button = styled.button`
   font-size: 20px;
   font-weight: 500;
   line-height: 0.9;
-  
+
   text-align: left;
   padding: 0px 21px;
 
   color: #ffffff;
-  
+
   background: url('/static/img/arrow_right_white.svg') right center no-repeat;
   background-position-x: 147px;
 
@@ -100,16 +102,14 @@ const Glyph = styled.img`
     `
 		top: -102px;
 		left: -158px;
-	`} 
-	
-	${props =>
+	`} ${props =>
     props.gid === 'rigthbottom' &&
     `
     bottom: -144px;
     right: -158px;
 	`};
 
-	${media.phablet`
+  ${media.phablet`
 	  display: none;
-	`}
+	`};
 `

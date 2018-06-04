@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 
 import styled from 'styled-components'
 
-
 import LearnMore from '../src/LearnMore'
 
 import Page from '../src/Page'

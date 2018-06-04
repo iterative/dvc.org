@@ -48,7 +48,12 @@ export default class TopMenu extends Component {
       <Wrapper sticky={sticky} level={level} fullySticky={level === 1}>
         <Container>
           <Logo href="/">
-            <img src="/static/img/logo.svg" alt="dvc.org" width={36} height={23}/>
+            <img
+              src="/static/img/logo.svg"
+              alt="dvc.org"
+              width={36}
+              height={23}
+            />
           </Logo>
           <Nav mobile={false} />
         </Container>
@@ -117,9 +122,9 @@ const Logo = styled.a`
   display: block;
   padding-top: 10px;
   z-index: 999;
-  
+
   ${media.phablet`
     padding-top: 10px;
     padding-bottom: 0px;
-  `}
+  `};
 `

@@ -6,7 +6,7 @@ import Hero from '../src/Hero'
 export default () => (
   <Page stickHeader={true}>
     <Hero>
-	    <h1>Contact Us</h1>
+      <h1>Contact Us</h1>
     </Hero>
   </Page>
 )

@@ -4,12 +4,12 @@ import { media, container } from '../styles'
 import Router from 'next/router'
 
 const getStarted = () => {
-  window.scrollTo(0,0)
+  window.scrollTo(0, 0)
   Router.push('/documentation')
 }
 
 const features = () => {
-  window.scrollTo(0,0)
+  window.scrollTo(0, 0)
   Router.push('/features')
 }
 
@@ -20,7 +20,9 @@ export default ({}) => (
       <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
       <Title>For data scientists, by data scientists</Title>
       <Buttons>
-        <Button first onClick={() => getStarted()}>Get Started</Button>
+        <Button first onClick={() => getStarted()}>
+          Get Started
+        </Button>
         <Button onClick={() => features()}>Full Features</Button>
       </Buttons>
       <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
@@ -61,7 +63,7 @@ const Buttons = styled.div`
   flex-direction: row;
   ${media.phablet`
     flex-direction: column;
-  `}
+  `};
 `
 
 const Button = styled.button`
@@ -99,11 +101,11 @@ const Button = styled.button`
       margin-right: 0px;
    `}
   `};
-  
+
   ${media.phablet`
     margin-bottom: 12px;
     margin-right: 0px !important;
-  `}
+  `};
 `
 
 const Glyph = styled.img`
@@ -126,8 +128,8 @@ const Glyph = styled.img`
     bottom: -144px;
     right: -158px;
 	`};
-	
-	${media.phablet`
+
+  ${media.phablet`
 	  display: none;
-	`}
+	`};
 `

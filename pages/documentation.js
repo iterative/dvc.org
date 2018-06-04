@@ -1689,10 +1689,7 @@ const Container = styled.div`
   ${media.phablet`
     margin-top: 63px;
     flex-direction: column;
-  `} @media only screen and (orientation: landscape) {
-    margin-top: 63px;
-    flex-direction: column;
-  }
+  `};
 `
 
 const Side = styled.div`
@@ -1706,10 +1703,7 @@ const Side = styled.div`
   ${media.phablet`
     flex-basis: auto;
     flex: 1;
-  `} @media only screen and (orientation: landscape) {
-    flex-basis: auto;
-    flex: 1;
-  }
+  `};
 `
 
 const Menu = styled.div`
@@ -1721,12 +1715,7 @@ const Menu = styled.div`
     width: 100%;
     max-width: none;
     margin-right: 0px;
-  `} @media only screen and (orientation: landscape) {
-    padding: 30px;
-    width: 100%;
-    max-width: none;
-    margin-right: 0px;
-  }
+  `};
 `
 
 const Heading = styled.h3`
@@ -1757,11 +1746,7 @@ const Inner = styled.div`
 
   ${media.phablet`
     max-width: auto;
-  `} @media only screen and (orientation: landscape) {
-    max-width: auto;
-  }
-
-  color: #5f6c72;
+  `} color: #5f6c72;
   font-size: 18px;
   line-height: 1.5;
 `
@@ -1811,7 +1796,7 @@ const SectionLink = styled.a`
     position: absolute;
     width: 8px;
     height: 4.7px;
-    background: url('/static/img/triangle.svg') no-repeat center center;
+    background: url('/static/img/triangle_dark.svg') no-repeat center center;
     left: 0px;
     top: 10px;
   }

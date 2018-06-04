@@ -89,12 +89,6 @@ const LandingHero = styled.div`
     padding-top: 46px;
     padding-bottom: 66px;
   `};
-
-  @media only screen and (orientation: landscape) {
-    flex-direction: column;
-    padding-top: 46px;
-    padding-bottom: 66px;
-  }
 `
 
 const About = styled.div`
@@ -103,10 +97,6 @@ const About = styled.div`
   ${media.phablet`
     flex-basis: none;
   `};
-
-  @media only screen and (orientation: landscape) {
-    flex-basis: none;
-  }
 `
 
 const SubTitle = styled.h3`
@@ -131,10 +121,6 @@ const Buttons = styled.div`
   ${media.phablet`
     flex-direction: column;
   `};
-
-  @media only screen and (orientation: landscape) {
-    justify-content: center;
-  }
 `
 
 const actionButton = css`
@@ -291,11 +277,6 @@ const Commands = styled.div`
     align-items: center;
     padding-top: 24px;
   `};
-
-  @media only screen and (orientation: landscape) {
-    align-items: center;
-    padding-top: 24px;
-  }
 `
 
 const Line = styled.span`

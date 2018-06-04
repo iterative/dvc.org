@@ -150,7 +150,6 @@ export default () => (
           </Description>
         </Feature>
       </Features>
-
     </Container>
     <TrySection />
   </Page>

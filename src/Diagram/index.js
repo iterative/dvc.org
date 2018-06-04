@@ -2,10 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { media, container, columns, column } from '../styles'
 
-const LearnMore = () => <LearnMoreArea>
-	Learn more
-	<img src="/static/img/learn_more_arrow.svg" width={10} height={18}/>
-</LearnMoreArea>
+const LearnMore = () => (
+  <LearnMoreArea>
+    Learn more
+    <img src="/static/img/learn_more_arrow.svg" width={10} height={18} />
+  </LearnMoreArea>
+)
 
 export default ({}) => (
   <Diagram>
@@ -18,7 +20,7 @@ export default ({}) => (
       </Abstract>
 
       <Graphic>
-	      <img src="/static/img/graphic.svg" />
+        <img src="/static/img/graphic.svg" />
       </Graphic>
 
       <Columns>
@@ -109,25 +111,16 @@ const Abstract = styled.div`
 const Graphic = styled.section`
   width: 100%;
   margin-top: 49px;
-  
+
   img {
     max-width: 1005px;
     max-height: 445px;
   }
-  
+
   ${media.phablet`
     overflow-x: scroll;
     overflow-y: hidden;
-  `}
-
-  @media only screen and (orientation: landscape) {
-    overflow-x: scroll;
-    overflow-y: hidden;
-  }
-  
-  @media only screen and (orientation: portrait) {
-    
-  }
+  `};
 `
 
 const Columns = styled.div`
@@ -160,13 +153,13 @@ const Description = styled.div`
 `
 
 const LearnMoreArea = styled.a`
-	display: flex;
+  display: flex;
   align-items: center;
-	line-height: 28px;
+  line-height: 28px;
   font-size: 20px;
   font-weight: 500;
   color: #945dd6;
-  
+
   img {
     margin-left: 19px;
   }

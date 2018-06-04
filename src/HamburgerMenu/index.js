@@ -27,7 +27,7 @@ export default class HamburgerMenu extends Component {
 
   itemClick = () => {
     this.close()
-    window.scrollTo(0,0)
+    window.scrollTo(0, 0)
   }
 
   render() {
@@ -67,7 +67,10 @@ export default class HamburgerMenu extends Component {
               <Column>
                 <Heading>Help</Heading>
                 <Links>
-                  <Link href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46" onClick={this.itemClick}>
+                  <Link
+                    href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46"
+                    onClick={this.itemClick}
+                  >
                     Get started
                   </Link>
                   <Link href="/documentation" onClick={this.itemClick}>

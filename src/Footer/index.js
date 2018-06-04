@@ -33,7 +33,9 @@ export default () => (
         <Column>
           <Heading>Help</Heading>
           <Links>
-            <Link href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46">Get started</Link>
+            <Link href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46">
+              Get started
+            </Link>
             <Link href="/documentation">Documentation</Link>
           </Links>
         </Column>
@@ -77,10 +79,6 @@ const Footer = styled.section`
   ${media.phablet`
     min-height: auto;
   `};
-  
-  @media only screen and (orientation: landscape) {
-   min-height: auto;
-  }
 `
 
 const Container = styled.div`
@@ -92,11 +90,6 @@ const Container = styled.div`
     padding-top: 31px !important;
     padding-bottom: 31px !important;
   `};
-  
-  @media only screen and (orientation: landscape) {
-    padding-top: 31px !important;
-    padding-bottom: 31px !important;
-  }
 `
 
 const Top = styled.div`
@@ -108,10 +101,10 @@ const Logo = styled.a``
 
 const Columns = styled.div`
   ${columns};
-  
+
   ${media.phablet`
       justify-content: space-between;
-  `}
+  `};
 `
 
 const Column = styled.div`
