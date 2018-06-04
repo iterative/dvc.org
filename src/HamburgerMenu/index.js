@@ -25,7 +25,10 @@ export default class HamburgerMenu extends Component {
       menu: false
     })
 
-  itemClick = () => this.close
+  itemClick = () => {
+    this.close()
+    window.scrollTo(0,0)
+  }
 
   render() {
     const { menu } = this.state

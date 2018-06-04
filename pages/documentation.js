@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import SyntaxHighlighter from 'react-syntax-highlighter'
 import { style as codeStyle } from 'react-syntax-highlighter/styles/prism'
 
+import { media } from '../src/styles'
+
 import Page from '../src/Page'
 import SearchForm from '../src/SearchForm'
 import DownloadButton from '../src/DownloadButton'
@@ -1681,6 +1683,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   min-height: 80vh;
+  
+  ${media.phablet`
+    margin-top: 63px;
+    flex-direction: column;
+  `}
 `
 
 const Side = styled.div`
@@ -1690,11 +1697,21 @@ const Side = styled.div`
   background-color: #eef4f8;
   padding-top: 32px;
   padding-rigth: 42px;
+  
+  ${media.phablet`
+    flex-basis: auto;
+    flex: 1;
+  `}
 `
 
 const Menu = styled.div`
   max-width: 280px;
   margin-right: 18px;
+  
+  ${media.phablet`
+    padding: 30px;
+    width: 100%;
+  `}
 `
 
 const Heading = styled.h3`
@@ -1714,10 +1731,18 @@ const Content = styled.article`
 
   padding-top: 69px;
   padding-left: 62px;
+  
+  ${media.phablet`
+    padding: 30px;
+  `}
 `
 
 const Inner = styled.div`
   max-width: 615px;
+  
+  ${media.phablet`
+    max-width: auto;
+  `}
 `
 
 const TutorialLink = styled.a`

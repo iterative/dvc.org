@@ -1,6 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
+import Router from 'next/router'
 import { media, container } from '../styles'
+
+const getStarted = () => {
+  window.scrollTo(0,0)
+  Router.push('/documentation')
+}
 
 export default ({}) => (
   <TrySection>
@@ -8,7 +14,7 @@ export default ({}) => (
       <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
       <Title>Ready to give it a try?</Title>
       <Buttons>
-        <Button first>Get Started</Button>
+        <Button first onClick={() => getStarted()}>Get Started</Button>
       </Buttons>
       <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
     </Container>

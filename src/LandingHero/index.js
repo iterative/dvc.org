@@ -1,8 +1,14 @@
 import React from 'react'
 import styled, { css, keyframes } from 'styled-components'
+import Router from 'next/router'
 
 import { media } from '../styles'
 import DownloadButton from '../DownloadButton'
+
+const getStarted = () => {
+  window.scrollTo(0,0)
+  Router.push('/documentation')
+}
 
 export default ({}) => (
   <LandingHero>
@@ -13,12 +19,12 @@ export default ({}) => (
       </Title>
       <Buttons>
         <OnlyMobile>
-	        <GetStartedButton>
+          <GetStartedButton onClick={() => getStared()}>
             Get started
           </GetStartedButton>
         </OnlyMobile>
         <OnlyDesktop>
-	        <DownloadButton />
+          <DownloadButton />
         </OnlyDesktop>
         <WatchButton href="#video">
           <ActionIcon>
@@ -77,20 +83,20 @@ const LandingHero = styled.div`
   padding-bottom: 166px;
 
   display: flex;
-  
+
   ${media.phablet`
     flex-direction: column;
     padding-top: 46px;
     padding-bottom: 66px;
-  `}
+  `};
 `
 
 const About = styled.div`
   flex-basis: auto;
-  
+
   ${media.phablet`
     flex-basis: none;
-  `}
+  `};
 `
 
 const SubTitle = styled.h3`
@@ -111,10 +117,10 @@ const Title = styled.h1`
 const Buttons = styled.div`
   margin-top: 28px;
   display: flex;
- 
+
   ${media.phablet`
     flex-direction: column;
-  `}
+  `};
 `
 
 const actionButton = css`
@@ -127,13 +133,13 @@ const actionButton = css`
   display: flex;
   flex-direction: row;
   padding: 0px;
-  
+
   ${media.phablet`
     margin: 0px;
     margin-bottom: 12px;
     max-width: none;
     min-height: 60px;
-  `}
+  `};
 `
 
 const ActionIcon = styled.div`
@@ -175,7 +181,6 @@ const GetStartedButton = styled.a`
   border: solid 2px transparent;
 `
 
-
 /*
 
  ${props =>
@@ -216,7 +221,6 @@ const GetStartedButton = styled.a`
 
  */
 
-
 export const keyFrameExampleOne = keyframes`
   0% {
     opacity: 1;
@@ -252,18 +256,15 @@ const Command = styled.div`
 
   display: flex;
   align-items: center;
-  
+
   ${media.phablet`
     width: 100%;
-  `}
-  
-  opacity: 0.28;
+  `} opacity: 0.28;
   color: #b4b9c4;
-  
+
   animation: ${keyFrameExampleOne} 9s ease-in-out 0s infinite;
   animation-delay: ${props => props.level * 2}s;
 `
-
 
 const Commands = styled.div`
   flex: 1;
@@ -271,13 +272,12 @@ const Commands = styled.div`
   flex-direction: column;
   align-items: flex-end;
   padding-top: 40px;
-  
+
   ${media.phablet`
     align-items: center;
     padding-top: 24px;
-  `}
+  `};
 `
-
 
 const Line = styled.span`
   font-size: 20px;

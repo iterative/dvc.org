@@ -1,6 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media, container } from '../styles'
+import Router from 'next/router'
+
+const getStarted = () => {
+  window.scrollTo(0,0)
+  Router.push('/documentation')
+}
+
+const features = () => {
+  window.scrollTo(0,0)
+  Router.push('/features')
+}
 
 export default ({}) => (
   <PromoSection>
@@ -9,8 +20,8 @@ export default ({}) => (
       <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
       <Title>For data scientists, by data scientists</Title>
       <Buttons>
-        <Button first>Get Started</Button>
-        <Button>Full Features</Button>
+        <Button first onClick={() => getStarted()}>Get Started</Button>
+        <Button onClick={() => features()}>Full Features</Button>
       </Buttons>
       <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
     </Container>
@@ -54,6 +65,7 @@ const Buttons = styled.div`
 `
 
 const Button = styled.button`
+  cursor: pointer;
   min-width: 186px;
   height: 60px;
   border-radius: 4px;

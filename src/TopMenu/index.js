@@ -116,6 +116,7 @@ const Container = styled.section`
 const Logo = styled.a`
   display: block;
   padding-top: 10px;
+  z-index: 999;
   
   ${media.phablet`
     padding-top: 10px;

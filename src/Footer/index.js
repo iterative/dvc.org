@@ -99,6 +99,10 @@ const Logo = styled.a``
 
 const Columns = styled.div`
   ${columns};
+  
+  ${media.phablet`
+      justify-content: space-between;
+  `}
 `
 
 const Column = styled.div`
