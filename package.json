@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dataversioncontrol/website.git"
+    "url": "git+https://github.com/iterative/dvc.org.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dataversioncontrol/website/issues"
+    "url": "https://github.com/iterative/dvc.org/issues"
   },
-  "homepage": "https://github.com/dataversioncontrol/website#readme",
+  "homepage": "https://github.com/iterative/dvc.org#readme",
   "dependencies": {
     "babel-plugin-transform-define": "^1.3.0",
     "force-ssl-heroku": "^1.0.2",
