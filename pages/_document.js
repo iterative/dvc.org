@@ -4,7 +4,7 @@ import reset from 'styled-reset'
 import { global } from '../src/styles'
 import Router from 'next/router'
 
-const TITLE = `DVC | Data Science Version Control System`
+const TITLE = `Data Science Version Control System`
 const DESCRIPTION = `Open-source Version Control System for Data Science Projects. Data Version Control.`
 const KEYWORDS = `data version control machine learning models management`
 
