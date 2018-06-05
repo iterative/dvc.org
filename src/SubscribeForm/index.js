@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export default () => (
   <Form
-    action="https://iterative.us18.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&amp;id=24c0ecc49a"
+    action="https://sweedom.us18.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&amp;id=24c0ecc49a"
     method="post"
     id="mc-embedded-subscribe-form"
     name="mc-embedded-subscribe-form"
