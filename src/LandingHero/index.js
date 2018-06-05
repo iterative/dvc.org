@@ -13,7 +13,6 @@ const getStarted = () => {
 export default ({}) => (
   <LandingHero>
     <About>
-      <SubTitle>Git for Machine Learning.</SubTitle>
       <Title>
         Open-source Version Control System for Data Science Projects.
       </Title>
@@ -97,14 +96,6 @@ const About = styled.div`
   ${media.phablet`
     flex-basis: none;
   `};
-`
-
-const SubTitle = styled.h3`
-  height: 40px;
-  font-size: 30px;
-  color: #b0b8c5;
-  font-style: italic;
-  text-decoration: line-through;
 `
 
 const Title = styled.h1`
