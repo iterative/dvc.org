@@ -17,7 +17,7 @@ export default ({ mobile = false }) => (
       <Link href="/documentation">Documentation</Link>
       <Link href="https://github.com/iterative/dvc">Github</Link>
     </Links>
-    <GetStartedButton onClick={this.getStarted()}>Get Started</GetStartedButton>
+    <GetStartedButton onClick={this.getStarted}>Get Started</GetStartedButton>
   </Nav>
 )
 
