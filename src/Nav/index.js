@@ -11,9 +11,9 @@ export default ({ mobile = false }) => (
   <Nav mobile={mobile}>
     <Links>
       <Link href="/features">Features</Link>
-      <Link href="/documentation">Documentation</Link>
+      <Link href="/documentation">Doc</Link>
       <Link href="https://github.com/iterative/dvc">Github</Link>
-      <Link href="">Support</Link>
+      <Link href="https://discuss.dvc.org">Discuss</Link>
     </Links>
     <GetStartedButton onClick={getStarted}>Get Started</GetStartedButton>
   </Nav>
