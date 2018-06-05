@@ -94,7 +94,7 @@ export default class MyDocument extends Document {
                 document.cookie = "MCPopupSubscribed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
 
                 require(["mojo/signup-forms/Loader"], function(L) {
-                  L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"a08bf93caae4063c4e6a351f6","lid":"24c0ecc49a"})
+                  L.start({"baseUrl":"mc.us18.list-manage.com","uuid":"00d8c23945d0bb53d4a4c8c74","lid":"b36ebfc8ca"})
                 })
               }
             </script>`
