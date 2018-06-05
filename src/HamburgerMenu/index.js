@@ -44,7 +44,7 @@ export default class HamburgerMenu extends Component {
             <Top>
               <Logo href="/">
                 <img
-                  src="/static/img/logo_white.svg"
+                  src="/static/img/logo_white.png"
                   alt="dvc.org"
                   width={34}
                   height={34}

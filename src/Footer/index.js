@@ -15,7 +15,7 @@ export default () => (
       <Top>
         <Logo href="/">
           <img
-            src="/static/img/logo_white.svg"
+            src="/static/img/logo_white.png"
             alt="DVC.org"
             width={36}
             height={23}

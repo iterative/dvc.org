@@ -49,7 +49,7 @@ export default class TopMenu extends Component {
         <Container>
           <Logo href="/">
             <img
-              src="/static/img/logo.svg"
+              src="/static/img/logo.png"
               alt="dvc.org"
               width={36}
               height={23}
