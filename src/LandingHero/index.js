@@ -263,7 +263,7 @@ const Commands = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding-top: 40px;
+  padding-top: 10px;
 
   ${media.phablet`
     align-items: center;
