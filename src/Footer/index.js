@@ -16,7 +16,7 @@ export default () => (
         <Logo href="/">
           <img
             src="/static/img/logo_white.svg"
-            alt="iterative.ai"
+            alt="DVC.org"
             width={36}
             height={23}
           />
@@ -42,7 +42,7 @@ export default () => (
         <Column>
           <Heading>Company</Heading>
           <Links>
-            <Link href="http://iterative.ai/">iterative.ai</Link>
+            <Link href="https://iterative.ai/">Iterative.ai</Link>
           </Links>
         </Column>
         <Column>
@@ -65,7 +65,7 @@ export default () => (
       </Columns>
       <Address>450 Townsend St. Suite 100, San Francisco, CA 94107</Address>
       <Copyright>
-        ©2018 <small>Iterative, Inc</small>
+        © 2018 <small>Iterative, Inc</small>
       </Copyright>
     </Container>
   </Footer>
