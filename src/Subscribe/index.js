@@ -8,7 +8,7 @@ export default ({}) => (
   <Subscribe>
     <Container>
       <Glyph src="/static/img/glyph-1.svg" gid={'topleft'} />
-      <Title>Subscribe for updates. We wont spam you.</Title>
+      <Title>Subscribe for updates. We won&#39;t spam you.</Title>
       <SubscribeContainer>
         <SubscribeForm />
       </SubscribeContainer>
