@@ -13,6 +13,7 @@ export default ({ mobile = false }) => (
       <Link href="/features">Features</Link>
       <Link href="/documentation">Documentation</Link>
       <Link href="https://github.com/iterative/dvc">Github</Link>
+      <Link href="">Support</Link>
     </Links>
     <GetStartedButton onClick={getStarted}>Get Started</GetStartedButton>
   </Nav>
