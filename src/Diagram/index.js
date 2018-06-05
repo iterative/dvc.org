@@ -126,7 +126,7 @@ const Graphic = styled.section`
 
 const Columns = styled.div`
   ${columns};
-  margin-top: 70px;
+  margin-top: 10px;
 `
 
 const Column = styled.div`
