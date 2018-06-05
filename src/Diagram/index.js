@@ -20,7 +20,7 @@ export default ({}) => (
       </Abstract>
 
       <Graphic>
-        <img src="/static/img/graphic.svg" />
+        <img src="/static/img/graphic.png" />
       </Graphic>
 
       <Columns>
