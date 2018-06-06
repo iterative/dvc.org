@@ -78,8 +78,10 @@ const Container = styled.div`
 
 const Video = styled.div`
   flex-basis: 476px;
+  padding-top: 107px;
 
   ${media.phablet`
+    padding-top: 0px;
     flex-basis: auto;
     order: 2;
   `};
