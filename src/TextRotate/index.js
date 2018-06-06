@@ -4,13 +4,14 @@ import styled, { css } from 'styled-components'
 export default class TextRotate extends Component {
   static defaultProps = {
     words: [],
-    delay: Math.round(80 * 1.4),
+    delay: 80,
     wordDelay: 1000,
     textBefore: ``,
     textAfter: ``
   }
 
   state = {
+    ready: false,
     currentWordIndex: 0,
     pos: 1,
     length: 0,
@@ -21,7 +22,8 @@ export default class TextRotate extends Component {
   componentDidMount() {
     this.initTimer()
     this.setState({
-      grow: true
+      grow: true,
+      ready: true
     })
   }
 
@@ -38,7 +40,6 @@ export default class TextRotate extends Component {
     })
 
     setTimeout(() => {
-      console.dir('set timeout')
       const timer = setInterval(this.animate, this.props.delay)
       this.setState({
         timer
@@ -97,7 +98,11 @@ export default class TextRotate extends Component {
   }
 
   getCurrentWord() {
-    return this.props.words[this.state.currentWordIndex].slice(
+    const currentWord = this.props.words[this.state.currentWordIndex]
+
+    if (!this.state.ready) return currentWord
+
+    return currentWord.slice(
       0,
       this.state.pos + 1
     )
@@ -117,4 +122,6 @@ export default class TextRotate extends Component {
 }
 
 const Wrapper = styled.span``
-const Cursor = styled.span``
+const Cursor = styled.span`
+  vertical-align: 4px;
+`
