@@ -15,15 +15,7 @@ export default ({}) => (
   <LandingHero>
     <About>
       <Title>
-        <TextRotate
-          textBefore={`Open-source`}
-          words={[
-            `Version Control System`,
-            `Experiments Framework`,
-            `Deployment & Collaboration`
-          ]}
-          textAfter={`for Data Science Projects.`}
-        />
+       Open-source Version Control System for Data Science Projects.
       </Title>
       <Buttons>
         <OnlyMobile>
