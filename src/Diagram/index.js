@@ -52,7 +52,7 @@ export default ({}) => (
               DVC was designed to keep branching as simple and fast as in Git —
               no matter the file size. Along with first-class citizen metrics
               and ML pipelines, it means that a project has cleaner structure.
-              It's easy to compare ideas and pick the best. Iterations become
+              It&#39;s easy to compare ideas and pick the best. Iterations become
               faster with intermediate artifact caching.
             </p>
           </Description>
@@ -64,7 +64,7 @@ export default ({}) => (
             <p>
               Instead of ad-hoc scripts, use push/pull commands to move
               consistent bundles of ML models, data, and code into production,
-              remote machines, or a colleague's computer.
+              remote machines, or a colleague&#39;s computer.
             </p>
             <p>
               DVC introduces lightweight pipelines as a first-class citizen
