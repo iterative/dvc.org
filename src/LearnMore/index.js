@@ -1,9 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { container } from '../styles'
 
 export default () => (
-  <LearnMore>
+  <LearnMore href={'/#nextSlide'}>
     <Icon>
       <img src="/static/img/learn-more.svg" alt="Learn More" />
     </Icon>
@@ -11,10 +10,11 @@ export default () => (
   </LearnMore>
 )
 
-const LearnMore = styled.div`
+const LearnMore = styled.a`
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-decoration: none;
 `
 
 const Icon = styled.div`
