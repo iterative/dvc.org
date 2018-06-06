@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { media } from "../styles";
 
 export default () => (
   <Form
@@ -42,6 +43,10 @@ const Form = styled.form`
   border-radius: 4px;
   background-color: #ffffff;
   display: flex;
+  
+  ${media.phablet`
+    flex-direction: column;
+  `}
 `
 
 const Input = styled.input`
@@ -56,7 +61,6 @@ const Input = styled.input`
 
 const Button = styled.button`
   width: 115px;
-  height: 100%;
   border: none;
   border-radius: 0px 4px 4px 0px;
   background-color: #e4fbff;
@@ -64,4 +68,11 @@ const Button = styled.button`
   font-weight: 500;
   color: #13adc7;
   cursor: pointer;
+  
+  ${media.phablet`
+    min-height: 60px;
+    width: 100%;
+    border-radius: 0px 0px 4px 4px;
+    justify-content: center;
+  `}
 `

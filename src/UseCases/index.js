@@ -74,6 +74,12 @@ const Container = styled.div`
   ${media.phablet`
     flex-direction: column;
   `};
+  
+  @media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)  { 
+    flex-direction: column;
+  }
 `
 
 const Video = styled.div`
@@ -85,6 +91,14 @@ const Video = styled.div`
     flex-basis: auto;
     order: 2;
   `};
+  
+  @media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)  { 
+    padding-top: 107px;
+    flex-basis: auto;
+    order: 2;
+  }
 `
 
 const Right = styled.div`

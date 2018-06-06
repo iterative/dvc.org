@@ -97,6 +97,14 @@ const LandingHero = styled.div`
     padding-top: 46px;
     padding-bottom: 66px;
   `};
+  
+  @media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)  { 
+    flex-direction: column;
+    padding-top: 46px;
+    padding-bottom: 66px;
+  }
 `
 
 const About = styled.div`
@@ -105,6 +113,14 @@ const About = styled.div`
   ${media.phablet`
     flex-basis: none;
   `};
+  
+  @media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)  { 
+     flex-basis: none;
+     max-width: 362px;
+     margin: 0px auto;
+  }
 `
 
 const Title = styled.h1`
@@ -123,6 +139,12 @@ const Buttons = styled.div`
   ${media.phablet`
     flex-direction: column;
   `};
+  
+ @media only screen 
+  and (min-device-width : 768px) 
+  and (max-device-width : 1024px)  { 
+    justify-content: center;
+  }
 `
 
 const actionButton = css`
@@ -183,46 +205,6 @@ const GetStartedButton = styled.a`
   border: solid 2px transparent;
 `
 
-/*
-
- ${props =>
-  props.active &&
-  `
-     border: solid 1px #945dd6;
-  `};
-
-  ${props =>
-  props.level === 1 &&
-  `
-    color: #40364d;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-  `}
-
-  ${props =>
-  props.level === 2 &&
-  `
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.09);
-    color: #b4b9c4;
-  `}
-
-  ${props =>
-  props.level === 3 &&
-  `
-
-  opacity: 0.53;
-    color: #b4b9c4;
-
-  `}
-
-  ${props =>
-  props.level === 4 &&
-  `
-    opacity: 0.28;
-      color: #b4b9c4;
-  `}
-
- */
-
 export const keyFrameExampleOne = keyframes`
   0% {
     opacity: 1;
@@ -279,6 +261,13 @@ const Commands = styled.div`
     align-items: center;
     padding-top: 24px;
   `};
+  
+  @media only screen 
+  and (min-device-width : 768px) 
+  and (max-device-width : 1024px)  { 
+    align-items: center;
+    padding-top: 24px;
+  }
 `
 
 const Line = styled.span`

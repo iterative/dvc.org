@@ -25,6 +25,13 @@ const Subscribe = styled.section`
     display: flex;
     align-items: center;
 	`};
+	
+  @media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)  { 
+    display: flex;
+    align-items: center;
+  }
 `
 
 const Container = styled.div`
@@ -35,6 +42,12 @@ const Container = styled.div`
   ${media.phablet`
     padding: 0px 10px;
 	`};
+	
+	@media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)  { 
+    padding: 0px 10px;
+  }
 `
 
 const Glyph = styled.img`
@@ -83,7 +96,22 @@ const SubscribeContainer = styled.div`
   margin: 0px auto;
   margin-top: 15px;
   max-width: 510px;
-  height: 60px;
   border-radius: 8px;
   background-color: #ffffff;
+  
+  ${media.phablet`
+    width: 100%;
+    margin: 0px;
+    margin-top: 40px;
+    min-height: auto;
+  `}
+  
+ @media only screen 
+  and (min-device-width : 768px) 
+  and (max-device-width : 1024px)  { 
+    width: 100%;
+    margin: 0px;
+    margin-top: 40px;
+    min-height: auto;
+  }
 `
