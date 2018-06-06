@@ -4,6 +4,7 @@ import Router from 'next/router'
 
 import { media } from '../styles'
 import DownloadButton from '../DownloadButton'
+import TextRotate from '../TextRotate'
 
 const getStarted = () => {
   window.scrollTo(0, 0)
@@ -14,7 +15,15 @@ export default ({}) => (
   <LandingHero>
     <About>
       <Title>
-        Open-source Version Control System for Data Science Projects.
+        <TextRotate
+          textBefore={`Open-source`}
+          words={[
+            `Version Control System`,
+            `Experiments Framework`,
+            `Deployment & Collaboration`
+          ]}
+          textAfter={`for Data Science Projects.`}
+        />
       </Title>
       <Buttons>
         <OnlyMobile>
@@ -104,6 +113,7 @@ const Title = styled.h1`
   line-height: 1.4;
   color: #40364d;
   font-family: BrandonGrotesqueMed;
+  padding-right: 2em;
 `
 
 const Buttons = styled.div`
