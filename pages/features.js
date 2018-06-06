@@ -25,8 +25,8 @@ export default () => (
           <Name>Git-compatible</Name>
           <Description>
             DVC runs on top of any Git repository and is compatible with any
-            standard Git server or provider (Github, Gitlab, etc), while
-            file contents can be shared by one of the supported cloud or
+            standard Git server or provider (Github, Gitlab, etc).
+            File contents can be shared by one of the supported cloud or
             network storage platforms. DVC offers all the advantages of a distributed version control
             system — lock-free, local branching, and versioning.
           </Description>
@@ -49,15 +49,15 @@ export default () => (
           <Icon>
             <img
               src="/static/img/features/icons/repro.svg"
-              alt="Reproducibility"
+              alt="Reproducible"
             />
           </Icon>
-          <Name>Reproducibility </Name>
+          <Name>Reproducible </Name>
           <Description>
             A single command, ‘dvc repro,’ reproduces an experiment end-to-end.
-            DVC guarantees reproducibility by consistently keeping a combination
+            DVC guarantees reproducibility by consistently maintaining a combination
             of input data, configuration, and the code that was initially used
-            to run an experiment
+            to run an experiment.
           </Description>
         </Feature>
         <Feature>
@@ -67,24 +67,24 @@ export default () => (
               alt="Low-friction branching"
             />
           </Icon>
-          <Name>Low-friction branching </Name>
+          <Name>Low friction branching </Name>
           <Description>
             DVC fully supports instantaneous Git branching, even with large
             files. Branches beautifully reflect the non-linear structure and highly
             iterative nature of a ML process. Data is not duplicated — one file
             version can belong to dozens of experiments. Create as many
             experiments as you want, instantaneously switch back and forth, and save
-            history of all attempts.
+            a history of all attempts.
           </Description>
         </Feature>
         <Feature>
           <Icon>
             <img src="/static/img/features/icons/storage-icon.svg" alt="" />
           </Icon>
-          <Name>Metrics </Name>
+          <Name>Metric tracking </Name>
           <Description>
             Metrics are first-class citizens in DVC. DVC includes a command to
-            list all branches, along with metric values to track the progress or
+            list all branches, along with metric values, to track the progress or
             pick the best version.
           </Description>
         </Feature>
@@ -92,10 +92,10 @@ export default () => (
           <Icon>
             <img
               src="/static/img/features/icons/ml-pipe.svg"
-              alt="ML Pipelines framework"
+              alt="ML pipelines framework"
             />
           </Icon>
-          <Name>ML Pipelines framework</Name>
+          <Name>ML p framework</Name>
           <Description>
             DVC has a built-in way to connect ML steps into a DAG and run the
             full pipeline end-to-end. DVC handles caching of intermediate
@@ -141,7 +141,7 @@ export default () => (
               alt="Failure tracking"
             />
           </Icon>
-          <Name>Failure tracking</Name>
+          <Name>Track failures</Name>
           <Description>
             Bad ideas can sometimes bring more information to colleagues than the
             the successful ones. Retaining knowledge of failed attempts can save

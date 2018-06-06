@@ -18,11 +18,11 @@ export default ({}) => (
               <Icon>
                 <img src="/static/img/save-reprro.svg" width={30} height={30} />
               </Icon>
-              <Title>Easily save and reproduce your experiments</Title>
+              <Title>Save and reproduce your experiments</Title>
             </Top>
             <Description>
               At any time, fetch the full context about any experiment you or your
-              team ran. DVC guarantees that all files and metrics will
+              team has run. DVC guarantees that all files and metrics will
               be consistent and in the right place to reproduce the experiment or
               use it as a baseline for a new iteration.
             </Description>

@@ -16,7 +16,7 @@ export default ({}) => (
       <Abstract>
         DVC is an open-source framework and distributed version control system
         for machine learning projects. DVS is designed to handle large files,
-        model files, and metrics — along with code.
+        models, and metrics as well as code.
       </Abstract>
 
       <Graphic>
@@ -28,8 +28,8 @@ export default ({}) => (
           <Caption text={`#945dd6`}>ML project version control</Caption>
           <Description>
             <p>
-              Keep pointers in Git to large input files, ML models, and
-              intermediate files along the code. Use S3, GCP, or any
+              Keep Git pointers to large input files, ML models, and
+              intermediate files along with the code. Use S3, GCP, or any
               network-accessible storage to store file contents.
             </p>
             <p>
