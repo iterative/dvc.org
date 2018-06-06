@@ -72,7 +72,7 @@ export default () => (
 )
 
 const Footer = styled.section`
-  min-height: 555px;
+  min-height: 300px;
   background-color: #40364d;
   color: #fff;
 
@@ -83,13 +83,20 @@ const Footer = styled.section`
 
 const Container = styled.div`
   ${container};
-  padding-top: 88px;
-  padding-bottom: 176px;
-
+  padding-top: 64px;
+  padding-bottom: 44px;
+  
   ${media.phablet`
     padding-top: 31px !important;
     padding-bottom: 31px !important;
   `};
+  
+  @media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)  { 
+    padding-top: 31px !important;
+    padding-bottom: 31px !important;
+  }
 `
 
 const Top = styled.div`

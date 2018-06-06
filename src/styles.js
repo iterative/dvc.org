@@ -56,17 +56,20 @@ export const media = Object.keys(sizes).reduce((accumulator, label) => {
 export const container = css`
   margin: 0 auto;
   max-width: ${maxWidth}px;
-  padding: 0px;
+  padding: 0px 15px;
 
   ${media.tablet`
-  
   padding: 0px 61px 0px 67px;
-   
+    max-width: auto;
   `} ${media.phablet`
-       
       padding: 0px 31px 0px 31px;
-      
+        max-width: auto;
       `};
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    padding: 0px 61px 0px 67px;
+    max-width: auto;
+  }
 `
 
 export const Mark = styled.span`

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-
 import styled from 'styled-components'
+import Animate, { BounceIn } from 'animate-css-styled-components'
 
 import LearnMore from '../src/LearnMore'
 
@@ -16,8 +16,11 @@ export default () => (
   <Page stickHeader={true}>
     <Hero>
       <LandingHero />
+      <a name="nextSlide" style={{ marginTop: `-58px` }} />
       <LearnMoreSection>
+        <Animate Animation={BounceIn} duration={`1s`} delay={`2s`}>
         <LearnMore />
+        </Animate>
       </LearnMoreSection>
     </Hero>
     <Diagram />
