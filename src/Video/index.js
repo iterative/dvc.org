@@ -101,19 +101,29 @@ const Handler = styled.div`
   overflow: hidden;
   background: #000;
 
-  width: 476px;
-  height: 273px;
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
 
   background-color: rgba(23, 23, 23, 0.59);
 
   @media (max-width: 768px) {
     width: 100%;
-    min-height: 320px;
+  }
+  
+  iframe, object, embed {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
   }
 `
 
 const Overflow = styled.div`
   position: absolute;
+  z-index: 1;
   top: 0px;
   bottom: 0px;
   left: 0px;
