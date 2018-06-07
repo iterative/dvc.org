@@ -88,7 +88,7 @@ export default class DownloadButton extends Component {
 
   renderLinks = () => (
     <Links>
-      {[OSX, WINDOWS, LINUX, UNKNOWN].map(id => {
+      {[OSX, WINDOWS, LINUX, LINUX_RPM, UNKNOWN].map(id => {
         const link = links[id]
 
         if (!link.url) {
