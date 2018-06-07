@@ -54,7 +54,7 @@ export default () => (
           </Icon>
           <Name>Reproducible </Name>
           <Description>
-            A single command, ‘dvc repro,’ reproduces an experiment end-to-end.
+            The single 'dvc repro' command reproduces experiments end-to-end.
             DVC guarantees reproducibility by consistently maintaining a combination
             of input data, configuration, and the code that was initially used
             to run an experiment.
