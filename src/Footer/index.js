@@ -42,6 +42,7 @@ export default () => (
         <Column>
           <Heading>Company</Heading>
           <Links>
+            <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
             <Link href="https://iterative.ai/">Iterative.ai</Link>
           </Links>
         </Column>

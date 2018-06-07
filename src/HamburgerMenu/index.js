@@ -47,7 +47,6 @@ export default class HamburgerMenu extends Component {
                   src="/static/img/logo_white.png"
                   alt="dvc.org"
                   width={34}
-                  height={34}
                 />
               </Logo>
             </Top>
@@ -76,11 +75,15 @@ export default class HamburgerMenu extends Component {
                   <Link href="/documentation" onClick={this.itemClick}>
                     Documentation
                   </Link>
+                  <Link href="/documentation" onClick={this.itemClick}>
+                    Discuss
+                  </Link>
                 </Links>
               </Column>
               <Column>
                 <Heading>Company</Heading>
                 <Links>
+                  <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
                   <Link href="http://iterative.ai/">Iterative.ai</Link>
                 </Links>
               </Column>
@@ -176,6 +179,7 @@ const Top = styled.div`
 `
 
 const Logo = styled.a`
+  margin-top: 5px;
   display: block;
   -webkit-transform-style: preserve-3d;
   transform: translate3d(0, 0, 0);
@@ -183,18 +187,18 @@ const Logo = styled.a`
 
 const Columns = styled.div`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-flow: wrap;
 `
 
 const Column = styled.div`
   display: flex;
   flex-direction: column;
-  flex-basis: 100px;
   margin-bottom: 24px;
+  flex-basis: 50%;
 `
 
 const Links = styled.div`
-  margin-top: 26px;
   display: flex;
   flex-direction: column;
 `
@@ -207,9 +211,8 @@ const Heading = styled.h2`
 `
 
 const Link = styled.a`
-  line-height: 23px;
   font-size: 18px;
-  margin-bottom: 17px;
+  padding: 8px 0px;
   display: flex;
   color: #fff;
   text-decoration: none;
