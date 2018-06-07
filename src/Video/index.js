@@ -77,12 +77,12 @@ export default class Video extends Component {
       <Wrapper>
         <Handler>
           {!watching && this.renderOverflow()}
-          <YouTube
-            videoId={id}
-            opts={opts}
-            onReady={this.onReady}
-            onPause={this.onPause}
-          />
+          {/*<YouTube*/}
+            {/*videoId={id}*/}
+            {/*opts={opts}*/}
+            {/*onReady={this.onReady}*/}
+            {/*onPause={this.onPause}*/}
+          {/*/>*/}
         </Handler>
       </Wrapper>
     )
