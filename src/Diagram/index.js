@@ -15,8 +15,8 @@ export default ({}) => (
       <Title>DVC streamlines machine learning projects</Title>
       <Abstract>
         DVC is an open-source framework and distributed version control system
-        for machine learning projects — designed to handle large data files,
-        model files and metrics along with code.
+        for machine learning projects. DVS is designed to handle large files,
+        models, and metrics as well as code.
       </Abstract>
 
       <Graphic>
@@ -28,32 +28,32 @@ export default ({}) => (
           <Caption text={`#945dd6`}>ML project version control</Caption>
           <Description>
             <p>
-              Keep in Git pointers to large data input files, ML models and
-              intermediate data files along the code. Use S3, GCP or any network
-              accessible storage to store files content.
+              Keep pointers in Git to large data input files, ML models, and
+              intermediate data files along with the code. Use S3, GCP, or any
+              network-accessible storage to store file contents.
             </p>
             <p>
-              Full code and data provenance helps tracking complete evolution of
-              every ML experiment, guarantees reproducibility and makes it easy
+              Full code and data provenance help track the complete evolution of
+              every ML experiment. This guarantees reproducibility and makes it easy
               to switch back and forth between experiments.
             </p>
           </Description>
           <LearnMore />
         </Column>
         <Column>
-          <Caption text={`#13adc7`}>ML experiments management</Caption>
+          <Caption text={`#13adc7`}>ML experiment management</Caption>
           <Description>
             <p>
-              Full power of Git branches to try different ideas instead of
-              sloppy file suffixes and comments in code. Auto metric tracking to
+              Harness the full power of Git branches to try different ideas instead of
+              sloppy file suffixes and comments in code. Use automatic metric-tracking to
               navigate instead of paper and pencil.
             </p>
             <p>
-              DVC was designed to keep branching as simple and fast as in Git,
-              large data files or not. Along with first class citizen metrics
-              and ML pipelines it means that project has a cleaner structure,
-              it’s easy to compare ideas and pick the best. Iterations become
-              faster with intermediate artifacts caching.
+              DVC was designed to keep branching as simple and fast as in Git —
+              no matter the data file size. Along with first-class citizen metrics
+              and ML pipelines, it means that a project has cleaner structure.
+              It&#39;s easy to compare ideas and pick the best. Iterations become
+              faster with intermediate artifact caching.
             </p>
           </Description>
           <LearnMore />
@@ -63,14 +63,14 @@ export default ({}) => (
           <Description>
             <p>
               Instead of ad-hoc scripts, use push/pull commands to move
-              consistent bundle of ML model, data and code into production,
-              remote machine or colleague's computer.
+              consistent bundles of ML models, data, and code into production,
+              remote machines, or a colleague&#39;s computer.
             </p>
             <p>
-              DVC introduces lightweight pipelines as a first class citizen
-              mechanism in Git. They are language agnostic and connect multiple
+              DVC introduces lightweight pipelines as a first-class citizen
+              mechanism in Git. They are language-agnostic and connect multiple
               steps into a DAG. These pipelines are used to remove friction from
-              getting all the code into production.
+              getting code into production.
             </p>
           </Description>
           <LearnMore />
