@@ -126,10 +126,21 @@ const About = styled.div`
 const Title = styled.h1`
   font-size: 40px;
   font-weight: 500;
-  line-height: 1.4;
   color: #40364d;
   font-family: BrandonGrotesqueMed;
   padding-right: 2em;
+  
+  ${media.phablet`
+    font-size: 22px;
+    padding: 0px;
+  `};
+  
+  @media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px)  { 
+    font-size: 22px;
+    padding: 0px;
+  }
 `
 
 const Buttons = styled.div`
