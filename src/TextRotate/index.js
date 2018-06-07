@@ -114,8 +114,8 @@ export default class TextRotate extends Component {
 
     return (
       <Wrapper>
-        <span>{textBefore}</span> <span>{word}</span>
-        <Cursor>|</Cursor> <span>{textAfter}</span>
+        <p>{textBefore}</p> <p>{word}<Cursor>|</Cursor> </p>
+        <p>{textAfter}</p>
       </Wrapper>
     )
   }
