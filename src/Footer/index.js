@@ -86,15 +86,13 @@ const Container = styled.div`
   ${container};
   padding-top: 64px;
   padding-bottom: 44px;
-  
+
   ${media.phablet`
     padding-top: 31px !important;
     padding-bottom: 31px !important;
   `};
-  
-  @media only screen 
-    and (min-device-width : 768px) 
-    and (max-device-width : 1024px)  { 
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     padding-top: 31px !important;
     padding-bottom: 31px !important;
   }

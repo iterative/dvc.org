@@ -122,10 +122,8 @@ const Graphic = styled.section`
     overflow-x: scroll;
     overflow-y: hidden;
   `};
-  
-  @media only screen 
-    and (min-device-width : 768px) 
-    and (max-device-width : 1024px)  { 
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     overflow-x: scroll;
     overflow-y: hidden;
   }
@@ -134,16 +132,13 @@ const Graphic = styled.section`
 const Columns = styled.div`
   ${columns};
   margin-top: 10px;
-  
-  @media only screen 
-   and (min-device-width : 768px) 
-   and (max-device-width : 1024px)  { 
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
 `
-
 
 const Column = styled.div`
   ${column};
