@@ -28,8 +28,8 @@ export default ({}) => (
           <Caption text={`#945dd6`}>ML project version control</Caption>
           <Description>
             <p>
-              Keep Git pointers to large input files, ML models, and
-              intermediate files along with the code. Use S3, GCP, or any
+              Keep pointers in Git to large data input files, ML models, and
+              intermediate data files along with the code. Use S3, GCP, or any
               network-accessible storage to store file contents.
             </p>
             <p>
@@ -50,7 +50,7 @@ export default ({}) => (
             </p>
             <p>
               DVC was designed to keep branching as simple and fast as in Git —
-              no matter the file size. Along with first-class citizen metrics
+              no matter the data file size. Along with first-class citizen metrics
               and ML pipelines, it means that a project has cleaner structure.
               It&#39;s easy to compare ideas and pick the best. Iterations become
               faster with intermediate artifact caching.

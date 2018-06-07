@@ -26,8 +26,8 @@ export default () => (
           <Description>
             DVC runs on top of any Git repository and is compatible with any
             standard Git server or provider (Github, Gitlab, etc).
-            File contents can be shared by one of the supported cloud or
-            network storage platforms. DVC offers all the advantages of a distributed version control
+            Data file contents can be shared by network-accessible storage or any supported
+            cloud solution. DVC offers all the advantages of a distributed version control
             system — lock-free, local branching, and versioning.
           </Description>
         </Feature>
@@ -49,7 +49,7 @@ export default () => (
           <Icon>
             <img
               src="/static/img/features/icons/repro.svg"
-              alt="Reproducible"
+              alt="Reproducibility"
             />
           </Icon>
           <Name>Reproducible </Name>
@@ -95,7 +95,7 @@ export default () => (
               alt="ML pipelines framework"
             />
           </Icon>
-          <Name>ML p framework</Name>
+          <Name>ML pipeline framework</Name>
           <Description>
             DVC has a built-in way to connect ML steps into a DAG and run the
             full pipeline end-to-end. DVC handles caching of intermediate
@@ -114,7 +114,7 @@ export default () => (
           <Description>
           No matter which programming language or libraries are in use or how
           code is structured, reproducibility and pipelines are based on input
-          and output files. Python, R, Julia, Scala Spark, custom binary/
+          and output files. Python, R, Julia, Scala Spark, custom binary,
           Notebooks, flatfiles/TensorFlow, PyTorch, etc. are all supported.
           </Description>
         </Feature>
