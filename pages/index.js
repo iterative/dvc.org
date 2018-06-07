@@ -18,9 +18,9 @@ export default () => (
       <LandingHero />
       <a name="nextSlide" style={{ marginTop: `-58px` }} />
       <LearnMoreSection>
-        <Animate Animation={BounceIn} duration={`1s`} delay={`2s`}>
+        {/*<Animate Animation={BounceIn} duration={`1s`} delay={`2s`}>*/}
         <LearnMore />
-        </Animate>
+        {/*</Animate>*/}
       </LearnMoreSection>
     </Hero>
     <Diagram />

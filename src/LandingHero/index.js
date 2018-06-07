@@ -89,10 +89,8 @@ const LandingHero = styled.div`
     padding-top: 46px;
     padding-bottom: 66px;
   `};
-  
-  @media only screen 
-    and (min-device-width : 768px) 
-    and (max-device-width : 1024px)  { 
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     flex-direction: column;
     padding-top: 46px;
     padding-bottom: 66px;
@@ -105,23 +103,30 @@ const About = styled.div`
   ${media.phablet`
     flex-basis: none;
   `};
-  
-  @media only screen 
-    and (min-device-width : 768px) 
-    and (max-device-width : 1024px)  { 
-     flex-basis: none;
-     max-width: 362px;
-     margin: 0px auto;
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    flex-basis: none;
+    max-width: 362px;
+    margin: 0px auto;
   }
 `
 
 const Title = styled.h1`
   font-size: 40px;
   font-weight: 500;
-  line-height: 1.4;
   color: #40364d;
   font-family: BrandonGrotesqueMed;
   padding-right: 2em;
+
+  ${media.phablet`
+    font-size: 22px;
+    padding: 0px;
+  `};
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    font-size: 22px;
+    padding: 0px;
+  }
 `
 
 const Buttons = styled.div`
@@ -131,10 +136,8 @@ const Buttons = styled.div`
   ${media.phablet`
     flex-direction: column;
   `};
-  
- @media only screen 
-  and (min-device-width : 768px) 
-  and (max-device-width : 1024px)  { 
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     justify-content: center;
   }
 `
@@ -253,10 +256,8 @@ const Commands = styled.div`
     align-items: center;
     padding-top: 24px;
   `};
-  
-  @media only screen 
-  and (min-device-width : 768px) 
-  and (max-device-width : 1024px)  { 
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     align-items: center;
     padding-top: 24px;
   }

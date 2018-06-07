@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { media } from '../styles'
 
-
 const getStarted = () =>
   (window.location =
     'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46')
@@ -12,6 +11,7 @@ export default ({ mobile = false }) => (
     <Links>
       <Link href="/features">Features</Link>
       <Link href="/documentation">Doc</Link>
+      <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
       <Link href="https://github.com/iterative/dvc">Github</Link>
       <Link href="https://discuss.dvc.org">Discuss</Link>
     </Links>

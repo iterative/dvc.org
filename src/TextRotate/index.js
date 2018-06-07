@@ -102,10 +102,7 @@ export default class TextRotate extends Component {
 
     if (!this.state.ready) return currentWord
 
-    return currentWord.slice(
-      0,
-      this.state.pos + 1
-    )
+    return currentWord.slice(0, this.state.pos + 1)
   }
 
   render() {
@@ -114,8 +111,12 @@ export default class TextRotate extends Component {
 
     return (
       <Wrapper>
-        <span>{textBefore}</span> <span>{word}</span>
-        <Cursor>|</Cursor> <span>{textAfter}</span>
+        <p>{textBefore}</p>{' '}
+        <p>
+          {word}
+          <Cursor>|</Cursor>{' '}
+        </p>
+        <p>{textAfter}</p>
       </Wrapper>
     )
   }

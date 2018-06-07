@@ -34,24 +34,21 @@ const WatchButton = ({ onClick, disabled }) => (
 export default class Video extends Component {
   state = {
     ready: false,
-    watching: false,
-    player: null
+    watching: false
   }
 
-  onReady = event =>
+  componentDidMount() {
     this.setState({
-      ready: true,
-      player: event.target
+      ready: true
     })
+  }
 
   watch = () => {
     this.setState({ watching: true })
     this.play()
   }
 
-  play = () => {
-    this.state.player && this.state.player.playVideo()
-  }
+  play = () => {}
 
   onPause = () => {
     this.setState({ watching: false })
@@ -73,15 +70,19 @@ export default class Video extends Component {
     const { id } = this.props
     const { watching } = this.state
 
+    const playing = watching ? `&autoplay=1` : ''
+
     return (
       <Wrapper>
         <Handler>
           {!watching && this.renderOverflow()}
-          <YouTube
-            videoId={id}
-            opts={opts}
-            onReady={this.onReady}
-            onPause={this.onPause}
+          <iframe
+            width="560"
+            height="315"
+            src={`https://www.youtube.com/embed/${id}?rel=0&amp;controls=0&amp;showinfo=0;${playing}`}
+            frameBorder="0"
+            allow="autoplay; encrypted-media"
+            allowFullScreen
           />
         </Handler>
       </Wrapper>
@@ -111,13 +112,20 @@ const Handler = styled.div`
   @media (max-width: 768px) {
     width: 100%;
   }
-  
-  iframe, object, embed {
+
+  iframe,
+  object,
+  embed {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+
+    .ytplayer {
+      pointer-events: none;
+      position: absolute;
+    }
   }
 `
 
@@ -155,10 +163,12 @@ const Button = styled.button`
   color: #ffffff;
   border: none;
   background-color: #13adc7;
-  
-  ${props => props.disabled && `
+
+  ${props =>
+    props.disabled &&
+    `
     background-color: #b0b8c5;
-  `}
+  `};
 `
 
 const ButtonIcon = styled.div`

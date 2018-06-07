@@ -1,4 +1,4 @@
 {
   "presets": ["next/babel"],
-  "plugins": [["transform-define"]]
+  "plugins": ["transform-define", "transform-object-assign"]
 }
