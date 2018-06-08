@@ -98,7 +98,7 @@ const LandingHero = styled.div`
 `
 
 const About = styled.div`
-  flex-basis: auto;
+  flex-basis: 640px;
 
   ${media.phablet`
     flex-basis: none;
