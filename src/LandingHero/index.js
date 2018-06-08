@@ -180,11 +180,16 @@ const Description = styled.p`
 
 const WatchButton = styled.a`
   ${actionButton};
+  height: 44px;
   text-decoration: none;
   color: #40364d;
   background-color: transparent;
   margin-left: 15px;
   border: solid 2px rgba(176, 184, 197, 0.47);
+  
+  ${ActionIcon} {
+    padding-top: 6px;
+  }
 `
 
 const GetStartedButton = styled.a`
