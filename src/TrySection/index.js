@@ -3,10 +3,9 @@ import styled from 'styled-components'
 import Router from 'next/router'
 import { media, container } from '../styles'
 
-const getStarted = () => {
-  window.scrollTo(0, 0)
-  Router.push('/documentation')
-}
+const getStarted = () =>
+  (window.location =
+    'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46')
 
 export default ({}) => (
   <TrySection>
@@ -24,11 +23,12 @@ export default ({}) => (
 )
 
 const TrySection = styled.section`
-  min-height: 278px;
+  height: 278px;
   background-color: #945dd6;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow-x: hidden;
 `
 
 const Container = styled.div`
@@ -91,6 +91,7 @@ const Button = styled.button`
 `
 
 const Glyph = styled.img`
+  display: none;
   position: absolute;
   z-index: 9;
 

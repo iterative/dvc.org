@@ -8,6 +8,7 @@ const WINDOWS = `win`
 const LINUX = `linux`
 const LINUX_RPM = `linux_rpm`
 const UNKNOWN = `...`
+const LINE = `line`
 
 const links = {
   [OSX]: {
@@ -28,6 +29,9 @@ const links = {
   },
   [UNKNOWN]: {
     title: 'pip install dvc'
+  },
+  [LINE]: {
+    line: true
   }
 }
 
@@ -77,10 +81,11 @@ export default class DownloadButton extends Component {
 
   close = () => this.setState({ open: false })
 
-  toggle = () =>
+  toggle = () => {
     this.setState(prevState => ({
       open: !prevState.open
     }))
+  }
 
   download = () => {
     this.close()
@@ -88,8 +93,12 @@ export default class DownloadButton extends Component {
 
   renderLinks = () => (
     <Links>
-      {[OSX, WINDOWS, LINUX, LINUX_RPM, UNKNOWN].map(id => {
+      {[OSX, WINDOWS, LINUX, LINUX_RPM, LINE, UNKNOWN].map(id => {
         const link = links[id]
+
+        if (link.line) {
+          return <Delimiter key={id} />
+        }
 
         if (!link.url) {
           return (
@@ -98,6 +107,7 @@ export default class DownloadButton extends Component {
               value={link.title}
               onClick={function(e) {
                 e.target.select()
+                e.stopPropagation()
               }}
             />
           )
@@ -123,30 +133,39 @@ export default class DownloadButton extends Component {
     const currentOS = links[os]
 
     return (
-      <Button innerRef={this.setRef}>
-        <Icon onClick={this.toggle}>
-          <img
-            src="/static/img/download-arrow.svg"
-            alt="Download"
-            width={14}
-            height={20}
-          />
-        </Icon>
-        <Inner onClick={this.toggle}>
-          <div>
-            <Action>Download</Action>
-            <Description>({currentOS.title})</Description>
-          </div>
+      <Handler onClick={this.toggle} innerRef={this.setRef}>
+        <Button>
+          <Icon>
+            <img
+              src="/static/img/download-arrow.svg"
+              alt="Download"
+              width={14}
+              height={20}
+            />
+          </Icon>
+          <Inner>
+            <div>
+              <Action>Download</Action>
+              <Description>({currentOS.title})</Description>
+            </div>
 
-          <Triangle open={open}>
-            <img src="/static/img/triangle.svg" alt="" />
-          </Triangle>
-        </Inner>
+            <Triangle open={open}>
+              <img src="/static/img/triangle.svg" alt="" />
+            </Triangle>
+          </Inner>
+        </Button>
         {open && <Popup>{this.renderLinks()}</Popup>}
-      </Button>
+      </Handler>
     )
   }
 }
+
+const Handler = styled.span`
+  position: relative;
+  display: inline-block;
+  width: 186px;
+  height: 60px;
+`
 
 const Button = styled.button`
   position: relative;
@@ -156,9 +175,6 @@ const Button = styled.button`
   border-radius: 4px;
   background-color: #945dd6;
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   padding: 0px;
   background-color: #945dd6;
   line-height: 1.29;
@@ -166,6 +182,10 @@ const Button = styled.button`
 
   cursor: pointer;
   z-index: 9;
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `
 
 const Icon = styled.div`
@@ -210,7 +230,7 @@ const Popup = styled.div`
   position: absolute;
   left: 0px;
   right: 0px;
-  top: -150%;
+  bottom: 3px;
   transform: translateY(100%);
   background-color: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
@@ -235,10 +255,15 @@ const item = css`
   color: #b0b8c5;
 `
 
+const Delimiter = styled.div`
+  background-color: rgba(0, 0, 0, 0.1);
+  height: 1px;
+`
+
 const DownloadInput = styled.input`
   ${item};
   border: none !important;
-  font-style: italic;
+  font-family: Monospace;
 
   ${props =>
     props.active &&

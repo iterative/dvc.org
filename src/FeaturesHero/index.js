@@ -14,6 +14,7 @@ export default ({}) => (
 const FeaturesHero = styled.div`
   padding-top: 87px;
   padding-bottom: 58px;
+  overflow: hidden;
 `
 
 const Heading = styled.h1`

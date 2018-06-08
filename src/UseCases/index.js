@@ -21,10 +21,10 @@ export default ({}) => (
               <Title>Save and reproduce your experiments</Title>
             </Top>
             <Description>
-              At any time, fetch the full context about any experiment you or your
-              team has run. DVC guarantees that all files and metrics will
-              be consistent and in the right place to reproduce the experiment or
-              use it as a baseline for a new iteration.
+              At any time, fetch the full context about any experiment you or
+              your team has run. DVC guarantees that all files and metrics will
+              be consistent and in the right place to reproduce the experiment
+              or use it as a baseline for a new iteration.
             </Description>
           </Case>
           <Case>
@@ -36,9 +36,8 @@ export default ({}) => (
             </Top>
             <Description>
               DVC keeps metafiles in Git instead of Google Docs to describe and
-              version control your data sets and models. DVC supports a
-              variety of external storage types as a remote cache for large
-              files.
+              version control your data sets and models. DVC supports a variety
+              of external storage types as a remote cache for large files.
             </Description>
           </Case>
           <Case>
@@ -64,6 +63,7 @@ export default ({}) => (
 const UseCases = styled.section`
   padding-top: 80px;
   padding-bottom: 57px;
+  overflow-x: hidden;
 `
 
 const Container = styled.div`
@@ -83,14 +83,17 @@ const Container = styled.div`
 const Video = styled.div`
   flex-basis: 476px;
   padding-top: 107px;
+  padding-right: 107px;
 
   ${media.phablet`
     padding-top: 0px;
+    padding-right: 0px;
     flex-basis: auto;
     order: 2;
   `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    padding-right: 0px;
     padding-top: 107px;
     flex-basis: auto;
     order: 2;

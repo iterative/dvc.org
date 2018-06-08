@@ -15,7 +15,15 @@ export default ({}) => (
   <LandingHero>
     <About>
       <Title>
-       Open-source Version Control System for Data Science Projects.
+        <TextRotate
+          textBefore={`Open-source`}
+          words={[
+            `Version Control System`,
+            `Experiments Framework`,
+            `Deployment & Collaboration`
+          ]}
+          textAfter={`for Data Science Projects.`}
+        />
       </Title>
       <Buttons>
         <OnlyMobile>
@@ -98,14 +106,14 @@ const LandingHero = styled.div`
 `
 
 const About = styled.div`
-  flex-basis: auto;
+  flex-basis: 640px;
 
   ${media.phablet`
-    flex-basis: none;
+    flex-basis: auto;
   `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    flex-basis: none;
+    flex-basis: auto;
     max-width: 362px;
     margin: 0px auto;
   }
@@ -180,11 +188,16 @@ const Description = styled.p`
 
 const WatchButton = styled.a`
   ${actionButton};
+  height: 56px;
   text-decoration: none;
   color: #40364d;
   background-color: transparent;
   margin-left: 15px;
   border: solid 2px rgba(176, 184, 197, 0.47);
+
+  ${ActionIcon} {
+    padding-top: 6px;
+  }
 `
 
 const GetStartedButton = styled.a`
@@ -251,6 +264,7 @@ const Commands = styled.div`
   flex-direction: column;
   align-items: flex-end;
   padding-top: 10px;
+  font-family: monospace, monospace;
 
   ${media.phablet`
     align-items: center;
@@ -264,7 +278,7 @@ const Commands = styled.div`
 `
 
 const Line = styled.span`
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 500;
-  padding: 0px 20px;
+  padding: 0px 0px 0px 12px;
 `

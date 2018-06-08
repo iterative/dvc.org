@@ -5,12 +5,13 @@ import Router from 'next/router'
 
 const getStarted = () => {
   window.scrollTo(0, 0)
-  Router.push('/documentation')
+  window.location =
+    'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
 }
 
 const features = () => {
   window.scrollTo(0, 0)
-  Router.push('/features')
+  window.location = '/features'
 }
 
 export default ({}) => (
@@ -31,7 +32,7 @@ export default ({}) => (
 )
 
 const PromoSection = styled.section`
-  min-height: 278px;
+  height: 278px;
   background-color: #945dd6;
   display: flex;
   align-items: center;
@@ -39,9 +40,9 @@ const PromoSection = styled.section`
 `
 
 const Container = styled.div`
-  ${container};
   position: relative;
   width: 100%;
+  max-width: 1035px;
 `
 
 const Title = styled.h3`
@@ -109,6 +110,7 @@ const Button = styled.button`
 `
 
 const Glyph = styled.img`
+  display: none;
   position: absolute;
   z-index: 9;
 

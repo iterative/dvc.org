@@ -100,7 +100,7 @@ const Wrapper = styled.div`
 const Container = styled.section`
   ${container};
   width: auto;
-  min-height: ${MIN_HEIGHT + 20}px;
+  height: ${MIN_HEIGHT + 20}px;
 
   z-index: 3;
   position: relative;
@@ -114,8 +114,13 @@ const Container = styled.section`
     flex-direction: column;
     justify-content: center;
     align-items: start;
+    height: auto;
     min-height: ${MIN_HEIGHT}px;
   `};
+  
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    height: auto;
+  }
 `
 
 const Logo = styled.a`
