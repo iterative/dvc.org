@@ -8,6 +8,7 @@ const WINDOWS = `win`
 const LINUX = `linux`
 const LINUX_RPM = `linux_rpm`
 const UNKNOWN = `...`
+const LINE = `line`
 
 const links = {
   [OSX]: {
@@ -28,6 +29,9 @@ const links = {
   },
   [UNKNOWN]: {
     title: 'pip install dvc'
+  },
+  [LINE]: {
+    line: true
   }
 }
 
@@ -88,8 +92,12 @@ export default class DownloadButton extends Component {
 
   renderLinks = () => (
     <Links>
-      {[OSX, WINDOWS, LINUX, LINUX_RPM, UNKNOWN].map(id => {
+      {[OSX, WINDOWS, LINUX, LINUX_RPM, LINE, UNKNOWN].map(id => {
         const link = links[id]
+
+        if (link.line) {
+          return <Delimiter key={id} />
+        }
 
         if (!link.url) {
           return (
@@ -235,10 +243,15 @@ const item = css`
   color: #b0b8c5;
 `
 
+const Delimiter = styled.div`
+  background-color: rgba(0,0,0,0.10);
+  height: 1px;
+`
+
 const DownloadInput = styled.input`
   ${item};
   border: none !important;
-  font-style: italic;
+  font-family: Monospace;
 
   ${props =>
     props.active &&
