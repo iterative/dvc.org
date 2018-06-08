@@ -5,12 +5,13 @@ import Router from 'next/router'
 
 const getStarted = () => {
   window.scrollTo(0, 0)
-  Router.push('/documentation')
+  window.location =
+    'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
 }
 
 const features = () => {
   window.scrollTo(0, 0)
-  Router.push('/features')
+  window.location = '/features'
 }
 
 export default ({}) => (
