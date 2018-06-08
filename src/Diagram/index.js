@@ -2,10 +2,12 @@ import React from 'react'
 import styled from 'styled-components'
 import { media, container, columns, column } from '../styles'
 
-const LearnMore = () => (
-  <LearnMoreArea>
-    Learn more
-    <img src="/static/img/learn_more_arrow.svg" width={10} height={18} />
+const LearnMore = ({ href }) => (
+  <LearnMoreArea href={href}>
+    <a href={href}>
+      Learn more
+      <img src="/static/img/learn_more_arrow.svg" width={10} height={18} />
+    </a>
   </LearnMoreArea>
 )
 
@@ -34,29 +36,29 @@ export default ({}) => (
             </p>
             <p>
               Full code and data provenance help track the complete evolution of
-              every ML experiment. This guarantees reproducibility and makes it easy
-              to switch back and forth between experiments.
+              every ML experiment. This guarantees reproducibility and makes it
+              easy to switch back and forth between experiments.
             </p>
           </Description>
-          <LearnMore />
+          <LearnMore href={'/features'} />
         </Column>
         <Column>
           <Caption text={`#13adc7`}>ML experiment management</Caption>
           <Description>
             <p>
-              Harness the full power of Git branches to try different ideas instead of
-              sloppy file suffixes and comments in code. Use automatic metric-tracking to
-              navigate instead of paper and pencil.
+              Harness the full power of Git branches to try different ideas
+              instead of sloppy file suffixes and comments in code. Use
+              automatic metric-tracking to navigate instead of paper and pencil.
             </p>
             <p>
               DVC was designed to keep branching as simple and fast as in Git —
-              no matter the data file size. Along with first-class citizen metrics
-              and ML pipelines, it means that a project has cleaner structure.
-              It&#39;s easy to compare ideas and pick the best. Iterations become
-              faster with intermediate artifact caching.
+              no matter the data file size. Along with first-class citizen
+              metrics and ML pipelines, it means that a project has cleaner
+              structure. It&#39;s easy to compare ideas and pick the best.
+              Iterations become faster with intermediate artifact caching.
             </p>
           </Description>
-          <LearnMore />
+          <LearnMore href={'/features'} />
         </Column>
         <Column>
           <Caption text={`#f46837`}>Deployment & Collaboration</Caption>
@@ -73,7 +75,7 @@ export default ({}) => (
               getting code into production.
             </p>
           </Description>
-          <LearnMore />
+          <LearnMore href={'/features'} />
         </Column>
       </Columns>
     </Container>
@@ -164,9 +166,7 @@ const Description = styled.div`
   }
 `
 
-const LearnMoreArea = styled.a`
-  display: flex;
-  align-items: center;
+const LearnMoreArea = styled.div`
   line-height: 28px;
   font-size: 20px;
   font-weight: 500;
@@ -174,5 +174,11 @@ const LearnMoreArea = styled.a`
 
   img {
     margin-left: 19px;
+  }
+  
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
   }
 `
