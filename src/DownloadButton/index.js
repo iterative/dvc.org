@@ -82,7 +82,6 @@ export default class DownloadButton extends Component {
   close = () => this.setState({ open: false })
 
   toggle = () => {
-    console.dir(`toggle`)
     this.setState(prevState => ({
       open: !prevState.open
     }))
@@ -108,6 +107,7 @@ export default class DownloadButton extends Component {
               value={link.title}
               onClick={function(e) {
                 e.target.select()
+                e.stopPropagation();
               }}
             />
           )
@@ -133,8 +133,8 @@ export default class DownloadButton extends Component {
     const currentOS = links[os]
 
     return (
-      <Handler onClick={this.toggle}>
-        <Button innerRef={this.setRef}>
+      <Handler onClick={this.toggle} innerRef={this.setRef}>
+        <Button>
           <Icon>
             <img
               src="/static/img/download-arrow.svg"
