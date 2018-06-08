@@ -18,7 +18,7 @@ export default ({}) => (
 )
 
 const Subscribe = styled.section`
-  min-height: 300px;
+  height: 300px;
   overflow-x: hidden;
   background-color: #13adc7;
 

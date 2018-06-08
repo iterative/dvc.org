@@ -100,7 +100,7 @@ const Wrapper = styled.div`
 const Container = styled.section`
   ${container};
   width: auto;
-  min-height: ${MIN_HEIGHT + 20}px;
+  height: ${MIN_HEIGHT + 20}px;
 
   z-index: 3;
   position: relative;

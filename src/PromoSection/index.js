@@ -32,7 +32,7 @@ export default ({}) => (
 )
 
 const PromoSection = styled.section`
-  min-height: 278px;
+  height: 278px;
   background-color: #945dd6;
   display: flex;
   align-items: center;
