@@ -81,10 +81,12 @@ export default class DownloadButton extends Component {
 
   close = () => this.setState({ open: false })
 
-  toggle = () =>
+  toggle = () => {
+    console.dir(`toggle`)
     this.setState(prevState => ({
       open: !prevState.open
     }))
+  }
 
   download = () => {
     this.close()
@@ -132,7 +134,8 @@ export default class DownloadButton extends Component {
 
     return (
       <Button innerRef={this.setRef}>
-        <Icon onClick={this.toggle}>
+        <Handler onClick={this.toggle}>
+        <Icon>
           <img
             src="/static/img/download-arrow.svg"
             alt="Download"
@@ -140,7 +143,7 @@ export default class DownloadButton extends Component {
             height={20}
           />
         </Icon>
-        <Inner onClick={this.toggle}>
+        <Inner>
           <div>
             <Action>Download</Action>
             <Description>({currentOS.title})</Description>
@@ -150,6 +153,7 @@ export default class DownloadButton extends Component {
             <img src="/static/img/triangle.svg" alt="" />
           </Triangle>
         </Inner>
+        </Handler>
         {open && <Popup>{this.renderLinks()}</Popup>}
       </Button>
     )
@@ -164,9 +168,6 @@ const Button = styled.button`
   border-radius: 4px;
   background-color: #945dd6;
 
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   padding: 0px;
   background-color: #945dd6;
   line-height: 1.29;
@@ -174,6 +175,12 @@ const Button = styled.button`
 
   cursor: pointer;
   z-index: 9;
+`
+
+const Handler = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `
 
 const Icon = styled.div`
