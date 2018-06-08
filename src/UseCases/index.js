@@ -83,14 +83,17 @@ const Container = styled.div`
 const Video = styled.div`
   flex-basis: 476px;
   padding-top: 107px;
+  padding-right: 107px;
 
   ${media.phablet`
     padding-top: 0px;
+    padding-right: 0px;
     flex-basis: auto;
     order: 2;
   `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    padding-right: 0px;
     padding-top: 107px;
     flex-basis: auto;
     order: 2;
