@@ -21,9 +21,9 @@ export default ({}) => (
               <Title>Save and reproduce your experiments</Title>
             </Top>
             <Description>
-              Anytime fetch the full context about any experiment your or your
-              team was running. DVC guarantees that all files and metrics will
-              be consistent and in a right place to reproduce the experiment or
+              At any time, fetch the full context about any experiment you or your
+              team has run. DVC guarantees that all files and metrics will
+              be consistent and in the right place to reproduce the experiment or
               use it as a baseline for a new iteration.
             </Description>
           </Case>
@@ -35,9 +35,9 @@ export default ({}) => (
               <Title>Version control data files</Title>
             </Top>
             <Description>
-              DVC keeps metafiles in Git instead of Google docs to describe and
-              version control your data sets and model files. DVC supports
-              variety of external storages as a remote cache for large data
+              DVC keeps metafiles in Git instead of Google Docs to describe and
+              version control your data sets and models. DVC supports a
+              variety of external storage types as a remote cache for large
               files.
             </Description>
           </Case>
@@ -46,12 +46,12 @@ export default ({}) => (
               <Icon>
                 <img src="/static/img/share.svg" width={30} height={31} />
               </Icon>
-              <Title>Establish deployment & collaboration workflow</Title>
+              <Title>Establish workflow for deployment & collaboration</Title>
             </Top>
             <Description>
-              DVC defines rules and processes to work effectively and
+              DVC defines rules and processes for working effectively and
               consistently as a team. It serves as a protocol for collaboration,
-              sharing results, getting and running a finished model in a
+              sharing results, and getting and running a finished model in a
               production environment.
             </Description>
           </Case>

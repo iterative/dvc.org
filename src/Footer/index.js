@@ -37,6 +37,7 @@ export default () => (
               Get started
             </Link>
             <Link href="/documentation">Documentation</Link>
+            <Link href="https://discuss.dvc.org">Discuss</Link>
           </Links>
         </Column>
         <Column>

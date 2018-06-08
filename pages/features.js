@@ -22,13 +22,13 @@ export default () => (
               alt="Git compatible"
             />
           </Icon>
-          <Name>Git compatible</Name>
+          <Name>Git-compatible</Name>
           <Description>
             DVC runs on top of any Git repository and is compatible with any
-            standard Git server or provider (Github, Gitlab, etc), while data
-            files contents can be shared by one of the supported cloud or
-            network storages. All advantages of a distributed version control
-            system - lock-free, local branching and versioning.
+            standard Git server or provider (Github, Gitlab, etc).
+            Data file contents can be shared by network-accessible storage or any supported
+            cloud solution. DVC offers all the advantages of a distributed version control
+            system — lock-free, local branching, and versioning.
           </Description>
         </Feature>
         <Feature>
@@ -40,8 +40,8 @@ export default () => (
           </Icon>
           <Name>Storage agnostic</Name>
           <Description>
-            Use S3, GCP, SSH, SFTP, rsync or any network attached storage to
-            store data files content. The list of supported protocols is
+            Use S3, GCP, SSH, SFTP, rsync or any network-attached storage to
+            store data. The list of supported protocols is constantly
             expanding.
           </Description>
         </Feature>
@@ -52,39 +52,39 @@ export default () => (
               alt="Reproducibility"
             />
           </Icon>
-          <Name>Reproducibility </Name>
+          <Name>Reproducible </Name>
           <Description>
-            A single command ‘dvc repro’ reproduces an experiment end-to-end.
-            DVC guarantees reproducibility by keeping consistently a combination
-            of input data files, configuration and code that was initially used
-            to run an experiment
+            The single 'dvc repro' command reproduces experiments end-to-end.
+            DVC guarantees reproducibility by consistently maintaining a combination
+            of input data, configuration, and the code that was initially used
+            to run an experiment.
           </Description>
         </Feature>
         <Feature>
           <Icon>
             <img
               src="/static/img/features/icons/branching.svg"
-              alt="Low friction branching"
+              alt="Low-friction branching"
             />
           </Icon>
           <Name>Low friction branching </Name>
           <Description>
-            DVC fully supports instantaneous Git branching even with large data
-            files. Branches beautifully reflect the non-linear structure, highly
-            iterative nature of a ML process. No data duplication - one file
+            DVC fully supports instantaneous Git branching, even with large
+            files. Branches beautifully reflect the non-linear structure and highly
+            iterative nature of a ML process. Data is not duplicated — one file
             version can belong to dozens of experiments. Create as many
-            experiments as you want, instantaneously switch back and forth, save
-            history of all attempts.
+            experiments as you want, instantaneously switch back and forth, and save
+            a history of all attempts.
           </Description>
         </Feature>
         <Feature>
           <Icon>
             <img src="/static/img/features/icons/storage-icon.svg" alt="" />
           </Icon>
-          <Name>Metrics tracking</Name>
+          <Name>Metric tracking </Name>
           <Description>
-            Metrics are first class citizen in DVC. DVC includes a command to
-            list all branches along with metric values to track the progress or
+            Metrics are first-class citizens in DVC. DVC includes a command to
+            list all branches, along with metric values, to track the progress or
             pick the best version.
           </Description>
         </Feature>
@@ -92,10 +92,10 @@ export default () => (
           <Icon>
             <img
               src="/static/img/features/icons/ml-pipe.svg"
-              alt="ML Pipelines framework"
+              alt="ML pipelines framework"
             />
           </Icon>
-          <Name>ML Pipelines framework</Name>
+          <Name>ML pipeline framework</Name>
           <Description>
             DVC has a built-in way to connect ML steps into a DAG and run the
             full pipeline end-to-end. DVC handles caching of intermediate
@@ -110,12 +110,12 @@ export default () => (
               alt="Language & framework agnostic"
             />
           </Icon>
-          <Name>Language & framework agnostic</Name>
+          <Name>Language- & framework-agnostic</Name>
           <Description>
-            Python, R, Julia, Scala Spark, custom binary/ Notebooks or flat
-            files/TensorFlow, PyTorch, etc. No matter which programming language
-            or library are in use or how code is structured, reproducibility and
-            pipelines are based on input and output files.
+          No matter which programming language or libraries are in use or how
+          code is structured, reproducibility and pipelines are based on input
+          and output files. Python, R, Julia, Scala Spark, custom binary,
+          Notebooks, flatfiles/TensorFlow, PyTorch, etc. are all supported.
           </Description>
         </Feature>
         <Feature>
@@ -127,7 +127,7 @@ export default () => (
           </Icon>
           <Name>HDFS, Hive & Apache Spark</Name>
           <Description>
-            Include Spark and Hive jobs into DVC data versioning cycle along
+            Include Spark and Hive jobs in the DVC data versioning cycle along
             with local ML modeling steps or manage Spark and Hive jobs with DVC
             end-to-end. Drastically decrease a feedback loop by decomposing a
             heavy cluster job into smaller DVC pipeline steps. Iterate on the
@@ -138,15 +138,15 @@ export default () => (
           <Icon>
             <img
               src="/static/img/features/icons/failures.svg"
-              alt="Track failures"
+              alt="Failure tracking"
             />
           </Icon>
           <Name>Track failures</Name>
           <Description>
-            Some bad ideas can bring more information to colleagues then some of
-            the successful ones. Keeping knowledge of failed attempts can save
+            Bad ideas can sometimes bring more information to colleagues than the
+            the successful ones. Retaining knowledge of failed attempts can save
             time in the future. DVC is built to track everything in a
-            reproducible, easily accessible way.
+            reproducible and easily accessible way.
           </Description>
         </Feature>
       </Features>
