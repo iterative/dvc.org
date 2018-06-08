@@ -107,7 +107,7 @@ export default class DownloadButton extends Component {
               value={link.title}
               onClick={function(e) {
                 e.target.select()
-                e.stopPropagation();
+                e.stopPropagation()
               }}
             />
           )
@@ -160,7 +160,6 @@ export default class DownloadButton extends Component {
   }
 }
 
-
 const Handler = styled.span`
   position: relative;
   display: inline-block;
@@ -183,12 +182,11 @@ const Button = styled.button`
 
   cursor: pointer;
   z-index: 9;
-  
+
   display: flex;
   flex-direction: row;
   align-items: center;
 `
-
 
 const Icon = styled.div`
   flex-basis: 48px;

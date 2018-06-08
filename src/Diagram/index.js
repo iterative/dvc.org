@@ -175,7 +175,7 @@ const LearnMoreArea = styled.div`
   img {
     margin-left: 19px;
   }
-  
+
   a {
     display: flex;
     align-items: center;

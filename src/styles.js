@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components'
 
-
 export function fontFace(
   name,
   src,
@@ -17,7 +16,6 @@ export function fontFace(
         }
     `
 }
-
 
 export const global = `
   ${fontFace('BrandonGrotesque', 'Brandon_reg')}

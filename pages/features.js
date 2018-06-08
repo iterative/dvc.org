@@ -25,10 +25,11 @@ export default () => (
           <Name>Git-compatible</Name>
           <Description>
             DVC runs on top of any Git repository and is compatible with any
-            standard Git server or provider (Github, Gitlab, etc).
-            Data file contents can be shared by network-accessible storage or any supported
-            cloud solution. DVC offers all the advantages of a distributed version control
-            system — lock-free, local branching, and versioning.
+            standard Git server or provider (Github, Gitlab, etc). Data file
+            contents can be shared by network-accessible storage or any
+            supported cloud solution. DVC offers all the advantages of a
+            distributed version control system — lock-free, local branching, and
+            versioning.
           </Description>
         </Feature>
         <Feature>
@@ -41,8 +42,7 @@ export default () => (
           <Name>Storage agnostic</Name>
           <Description>
             Use S3, GCP, SSH, SFTP, rsync or any network-attached storage to
-            store data. The list of supported protocols is constantly
-            expanding.
+            store data. The list of supported protocols is constantly expanding.
           </Description>
         </Feature>
         <Feature>
@@ -55,9 +55,9 @@ export default () => (
           <Name>Reproducible </Name>
           <Description>
             The single 'dvc repro' command reproduces experiments end-to-end.
-            DVC guarantees reproducibility by consistently maintaining a combination
-            of input data, configuration, and the code that was initially used
-            to run an experiment.
+            DVC guarantees reproducibility by consistently maintaining a
+            combination of input data, configuration, and the code that was
+            initially used to run an experiment.
           </Description>
         </Feature>
         <Feature>
@@ -70,11 +70,11 @@ export default () => (
           <Name>Low friction branching </Name>
           <Description>
             DVC fully supports instantaneous Git branching, even with large
-            files. Branches beautifully reflect the non-linear structure and highly
-            iterative nature of a ML process. Data is not duplicated — one file
-            version can belong to dozens of experiments. Create as many
-            experiments as you want, instantaneously switch back and forth, and save
-            a history of all attempts.
+            files. Branches beautifully reflect the non-linear structure and
+            highly iterative nature of a ML process. Data is not duplicated —
+            one file version can belong to dozens of experiments. Create as many
+            experiments as you want, instantaneously switch back and forth, and
+            save a history of all attempts.
           </Description>
         </Feature>
         <Feature>
@@ -84,8 +84,8 @@ export default () => (
           <Name>Metric tracking </Name>
           <Description>
             Metrics are first-class citizens in DVC. DVC includes a command to
-            list all branches, along with metric values, to track the progress or
-            pick the best version.
+            list all branches, along with metric values, to track the progress
+            or pick the best version.
           </Description>
         </Feature>
         <Feature>
@@ -112,10 +112,10 @@ export default () => (
           </Icon>
           <Name>Language- & framework-agnostic</Name>
           <Description>
-          No matter which programming language or libraries are in use or how
-          code is structured, reproducibility and pipelines are based on input
-          and output files. Python, R, Julia, Scala Spark, custom binary,
-          Notebooks, flatfiles/TensorFlow, PyTorch, etc. are all supported.
+            No matter which programming language or libraries are in use or how
+            code is structured, reproducibility and pipelines are based on input
+            and output files. Python, R, Julia, Scala Spark, custom binary,
+            Notebooks, flatfiles/TensorFlow, PyTorch, etc. are all supported.
           </Description>
         </Feature>
         <Feature>
@@ -143,9 +143,9 @@ export default () => (
           </Icon>
           <Name>Track failures</Name>
           <Description>
-            Bad ideas can sometimes bring more information to colleagues than the
-            the successful ones. Retaining knowledge of failed attempts can save
-            time in the future. DVC is built to track everything in a
+            Bad ideas can sometimes bring more information to colleagues than
+            the the successful ones. Retaining knowledge of failed attempts can
+            save time in the future. DVC is built to track everything in a
             reproducible and easily accessible way.
           </Description>
         </Feature>

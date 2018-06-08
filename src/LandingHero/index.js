@@ -15,7 +15,7 @@ export default ({}) => (
   <LandingHero>
     <About>
       <Title>
-       Open-source Version Control System for Data Science Projects.
+        Open-source Version Control System for Data Science Projects.
       </Title>
       <Buttons>
         <OnlyMobile>
@@ -103,7 +103,7 @@ const About = styled.div`
   ${media.phablet`
     flex-basis: auto;
   `};
-  
+
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     flex-basis: auto;
     max-width: 362px;
@@ -186,7 +186,7 @@ const WatchButton = styled.a`
   background-color: transparent;
   margin-left: 15px;
   border: solid 2px rgba(176, 184, 197, 0.47);
-  
+
   ${ActionIcon} {
     padding-top: 6px;
   }
