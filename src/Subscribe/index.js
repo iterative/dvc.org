@@ -20,6 +20,7 @@ export default ({}) => (
 const Subscribe = styled.section`
   min-height: 300px;
   background-color: #13adc7;
+  overflow: hidden;
 
   ${media.phablet`
     display: flex;

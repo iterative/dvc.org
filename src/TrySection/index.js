@@ -29,6 +29,7 @@ const TrySection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 `
 
 const Container = styled.div`
