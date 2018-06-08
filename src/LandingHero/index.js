@@ -251,6 +251,7 @@ const Commands = styled.div`
   flex-direction: column;
   align-items: flex-end;
   padding-top: 10px;
+  font-family: monospace, monospace;
 
   ${media.phablet`
     align-items: center;
@@ -264,7 +265,7 @@ const Commands = styled.div`
 `
 
 const Line = styled.span`
-  font-size: 20px;
+  font-size: 15px;
   font-weight: 500;
   padding: 0px 20px;
 `
