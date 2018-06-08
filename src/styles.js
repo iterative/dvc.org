@@ -29,6 +29,10 @@ export const global = `
 		font-family: BrandonGrotesque, Tahoma, Arial;
 		font-size: 14px;
     line-height: 1.5;
+    
+    // IE flex min-height fix https://stackoverflow.com/a/40491316
+    display: flex;
+    flex-direction: column;
 	}
 	
 	*:focus {

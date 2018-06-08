@@ -103,7 +103,7 @@ const About = styled.div`
   ${media.phablet`
     flex-basis: none;
   `};
-
+  
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     flex-basis: none;
     max-width: 362px;
