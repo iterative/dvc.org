@@ -114,7 +114,7 @@ const Graphic = styled.section`
   margin-top: 49px;
 
   img {
-    max-width: 1005px;
+    max-width: 900px;
     max-height: 445px;
   }
 
