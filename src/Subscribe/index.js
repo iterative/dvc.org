@@ -101,7 +101,7 @@ const SubscribeContainer = styled.div`
 
   ${media.phablet`
     width: 100%;
-    margin: 0px;
+    margin: 0px auto;
     margin-top: 40px;
     min-height: auto;
   `} @media only screen 

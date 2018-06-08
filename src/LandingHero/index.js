@@ -101,11 +101,11 @@ const About = styled.div`
   flex-basis: 640px;
 
   ${media.phablet`
-    flex-basis: none;
+    flex-basis: auto;
   `};
   
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    flex-basis: none;
+    flex-basis: auto;
     max-width: 362px;
     margin: 0px auto;
   }
@@ -180,7 +180,7 @@ const Description = styled.p`
 
 const WatchButton = styled.a`
   ${actionButton};
-  height: 44px;
+  height: 56px;
   text-decoration: none;
   color: #40364d;
   background-color: transparent;
