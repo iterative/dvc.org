@@ -29,7 +29,7 @@ const TrySection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
+  overflow-x: hidden;
 `
 
 const Container = styled.div`
@@ -92,6 +92,7 @@ const Button = styled.button`
 `
 
 const Glyph = styled.img`
+  display: none;
   position: absolute;
   z-index: 9;
 

@@ -6,21 +6,21 @@ import SubscribeForm from '../SubscribeForm'
 
 export default ({}) => (
   <Subscribe>
+    <Glyph src="/static/img/glyph-1.svg" gid={'topleft'} />
     <Container>
-      <Glyph src="/static/img/glyph-1.svg" gid={'topleft'} />
       <Title>Subscribe for updates. We won&#39;t spam you.</Title>
       <SubscribeContainer>
         <SubscribeForm />
       </SubscribeContainer>
-      <Glyph src="/static/img/glyph-2.svg" gid={'rigthbottom'} />
     </Container>
+    <Glyph src="/static/img/glyph-2.svg" gid={'rigthbottom'} />
   </Subscribe>
 )
 
 const Subscribe = styled.section`
   min-height: 300px;
+  overflow-x: hidden;
   background-color: #13adc7;
-  overflow: hidden;
 
   ${media.phablet`
     display: flex;
@@ -34,7 +34,9 @@ const Subscribe = styled.section`
 `
 
 const Container = styled.div`
-  ${container};
+  width: 100%;
+  margin: 0px auto;
+  max-width: 1035px;
   position: relative;
   padding-top: 90px;
 
@@ -48,6 +50,7 @@ const Container = styled.div`
 `
 
 const Glyph = styled.img`
+  display: none;
 	position: absolute;
 	z-index: 9;
 	
@@ -60,14 +63,14 @@ const Glyph = styled.img`
     props.gid === 'topleft' &&
     `
 		top: -32px;
-		left: -158px;
+		left: 28px;
 	`}
 	
 	${props =>
     props.gid === 'rigthbottom' &&
     `
     bottom: -154px;
-    right: -158px;
+    right: 28px;
 	`}
 	
 	${media.phablet`

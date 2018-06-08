@@ -64,6 +64,7 @@ export default ({}) => (
 const UseCases = styled.section`
   padding-top: 80px;
   padding-bottom: 57px;
+  overflow-x: hidden;
 `
 
 const Container = styled.div`

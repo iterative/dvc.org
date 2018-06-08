@@ -133,32 +133,40 @@ export default class DownloadButton extends Component {
     const currentOS = links[os]
 
     return (
-      <Button innerRef={this.setRef}>
-        <Handler onClick={this.toggle}>
-        <Icon>
-          <img
-            src="/static/img/download-arrow.svg"
-            alt="Download"
-            width={14}
-            height={20}
-          />
-        </Icon>
-        <Inner>
-          <div>
-            <Action>Download</Action>
-            <Description>({currentOS.title})</Description>
-          </div>
+      <Handler onClick={this.toggle}>
+        <Button innerRef={this.setRef}>
+          <Icon>
+            <img
+              src="/static/img/download-arrow.svg"
+              alt="Download"
+              width={14}
+              height={20}
+            />
+          </Icon>
+          <Inner>
+            <div>
+              <Action>Download</Action>
+              <Description>({currentOS.title})</Description>
+            </div>
 
-          <Triangle open={open}>
-            <img src="/static/img/triangle.svg" alt="" />
-          </Triangle>
-        </Inner>
-        </Handler>
+            <Triangle open={open}>
+              <img src="/static/img/triangle.svg" alt="" />
+            </Triangle>
+          </Inner>
+        </Button>
         {open && <Popup>{this.renderLinks()}</Popup>}
-      </Button>
+      </Handler>
     )
   }
 }
+
+
+const Handler = styled.span`
+  position: relative;
+  display: inline-block;
+  width: 186px;
+  height: 60px;
+`
 
 const Button = styled.button`
   position: relative;
@@ -175,13 +183,12 @@ const Button = styled.button`
 
   cursor: pointer;
   z-index: 9;
-`
-
-const Handler = styled.div`
+  
   display: flex;
   flex-direction: row;
   align-items: center;
 `
+
 
 const Icon = styled.div`
   flex-basis: 48px;
@@ -251,7 +258,7 @@ const item = css`
 `
 
 const Delimiter = styled.div`
-  background-color: rgba(0,0,0,0.10);
+  background-color: rgba(0, 0, 0, 0.1);
   height: 1px;
 `
 

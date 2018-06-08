@@ -37,13 +37,12 @@ const PromoSection = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
 `
 
 const Container = styled.div`
-  ${container};
   position: relative;
   width: 100%;
+  max-width: 1035px;
 `
 
 const Title = styled.h3`
@@ -111,6 +110,7 @@ const Button = styled.button`
 `
 
 const Glyph = styled.img`
+  display: none;
   position: absolute;
   z-index: 9;
 
