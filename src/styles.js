@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 
+
 export function fontFace(
   name,
   src,
@@ -10,11 +11,13 @@ export function fontFace(
         @font-face{
             font-family: "${name}";
             src: url(${'/static/fonts/' + src + '.otf'});
+            src: url(${'/static/fonts/' + src + '.woff'}) format("woff");
             font-style: ${fontStyle};
             font-weight: ${fontWeight};
         }
     `
 }
+
 
 export const global = `
   ${fontFace('BrandonGrotesque', 'Brandon_reg')}
