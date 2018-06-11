@@ -4,6 +4,7 @@ import styled, { css, keyframes } from 'styled-components'
 import { media } from '../styles'
 import DownloadButton from '../DownloadButton'
 import TextRotate from '../TextRotate'
+import GithubLine from '../GithubLine'
 
 const getStarted = () => {
   window.location =
@@ -54,6 +55,10 @@ export default ({}) => (
           </ActionInner>
         </WatchButton>
       </Buttons>
+
+      <Github>
+        <GithubLine />
+      </Github>
     </About>
 
     <OnlyDesktop>
@@ -186,7 +191,6 @@ const ActionInner = styled.div``
 const Action = styled.h6`
   font-family: BrandonGrotesqueMed;
   font-size: 20px;
-  font-weight: 500;
   line-height: 0.9;
 `
 const Description = styled.p`
@@ -296,4 +300,23 @@ const Line = styled.span`
   font-size: 15px;
   font-weight: 700;
   padding: 0px 0px 0px 12px;
+`
+
+const Github = styled.div`
+  margin-top: 51px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #b0b8c5;
+
+  ${media.phablet`
+    align-items: center;
+    margin-top: 24px;
+    font-size: 18px;
+  `};
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    align-items: center;
+    margin-top: 24px;
+    font-size: 18px;
+  }
 `
