@@ -1,5 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
+import { media } from "../styles";
 
 export default () => (
   <LearnMore href={'/#nextSlide'}>
@@ -37,6 +38,9 @@ const Icon = styled.div`
   height: 19px;
   will-change: transform;
   animation: ${bounce} 3s infinite;
+  
+  ${media.phone`animation: none;`};
+  ${media.phablet`animation: none;`};
 `
 
 

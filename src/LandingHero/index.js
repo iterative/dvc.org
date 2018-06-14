@@ -134,7 +134,7 @@ const Title = styled.h1`
   padding-right: 2em;
 
   ${media.phablet`
-    font-size: 34px;
+    font-size: 32px;
     padding: 0px;
   `};
 
