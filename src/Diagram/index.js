@@ -6,7 +6,7 @@ const LearnMore = ({ href }) => (
   <LearnMoreArea href={href}>
     <a href={href}>
       Learn more
-      <img src="/static/img/learn_more_arrow.svg" width={10} height={18} />
+      <img src="/static/img/learn_more_arrow.svg" width={18} height={18} />
     </a>
   </LearnMoreArea>
 )
@@ -178,11 +178,16 @@ const LearnMoreArea = styled.div`
 
   img {
     margin-left: 19px;
+    margin-top: 3px;
   }
 
   a {
     display: flex;
     align-items: center;
     text-decoration: none;
+  }
+  
+  a:visited {
+    color: #945dd6;
   }
 `
