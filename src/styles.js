@@ -24,9 +24,10 @@ export const global = `
   
 	html {
     -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased !important;
     font-smoothing: antialiased;
     font-weight: 400;
+    text-rendering: optimizeLegibility !important;
   }
   
   @-moz-document url-prefix() {
