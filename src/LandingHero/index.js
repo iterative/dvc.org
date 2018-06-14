@@ -15,15 +15,20 @@ export default ({}) => (
   <LandingHero>
     <About>
       <Title>
-        <TextRotate
-          textBefore={`Open-source`}
-          words={[
-            `Version Control System`,
-            `Experiments Framework`,
-            `Deployment & Collaboration`
-          ]}
-          textAfter={`for Data Science Projects.`}
-        />
+        <OnlyMobile>
+          Open-source Version Control System for Data Science Projects.
+        </OnlyMobile>
+        <OnlyDesktop>
+          <TextRotate
+            textBefore={`Open-source`}
+            words={[
+              `Version Control System`,
+              `Experiments Framework`,
+              `Deployment & Collaboration`
+            ]}
+            textAfter={`for Data Science Projects.`}
+          />
+        </OnlyDesktop>
       </Title>
       <Buttons>
         <OnlyMobile>
@@ -51,20 +56,22 @@ export default ({}) => (
       </Buttons>
     </About>
 
-    <Commands>
-      <Command level={1} active>
-        <Line>$ dvc add images.z|</Line>
-      </Command>
-      <Command level={2}>
-        <Line>$ dvc run python cnn.py</Line>
-      </Command>
-      <Command level={3}>
-        <Line>$ dvc remote add s3_cnn s3://mybucket</Line>
-      </Command>
-      <Command level={4}>
-        <Line>$ dvc push</Line>
-      </Command>
-    </Commands>
+    <OnlyDesktop>
+      <Commands>
+        <Command level={1} active>
+          <Line>$ dvc add images.z|</Line>
+        </Command>
+        <Command level={2}>
+          <Line>$ dvc run python cnn.py</Line>
+        </Command>
+        <Command level={3}>
+          <Line>$ dvc remote add s3_cnn s3://mybucket</Line>
+        </Command>
+        <Command level={4}>
+          <Line>$ dvc push</Line>
+        </Command>
+      </Commands>
+    </OnlyDesktop>
   </LandingHero>
 )
 
@@ -127,12 +134,12 @@ const Title = styled.h1`
   padding-right: 2em;
 
   ${media.phablet`
-    font-size: 22px;
+    font-size: 36px;
     padding: 0px;
   `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    font-size: 22px;
+    font-size: 36px;
     padding: 0px;
   }
 `
@@ -279,6 +286,6 @@ const Commands = styled.div`
 
 const Line = styled.span`
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 700;
   padding: 0px 0px 0px 12px;
 `

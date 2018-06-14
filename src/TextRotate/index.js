@@ -63,7 +63,6 @@ export default class TextRotate extends Component {
           if (!this.state.grow) {
             clearInterval(this.state.timer)
             this.initTimer()
-            return
           }
         }
       )
