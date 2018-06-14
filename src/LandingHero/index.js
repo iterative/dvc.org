@@ -16,7 +16,7 @@ export default ({}) => (
     <About>
       <Title>
         <OnlyMobile>
-          Open-source <br/> Version Control System <br/> for Data Science Projects.
+          Open-source <br/> Version Control System <br/> for Data Science Projects
         </OnlyMobile>
         <OnlyDesktop>
           <TextRotate
@@ -26,7 +26,7 @@ export default ({}) => (
               `Experiments Framework`,
               `Deployment & Collaboration`
             ]}
-            textAfter={`for Data Science Projects.`}
+            textAfter={`for Data Science Projects`}
           />
         </OnlyDesktop>
       </Title>
@@ -134,12 +134,12 @@ const Title = styled.h1`
   padding-right: 2em;
 
   ${media.phablet`
-    font-size: 32px;
+    font-size: 34px;
     padding: 0px;
   `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    font-size: 32px;
+    font-size: 34px;
     padding: 0px;
   }
 `
