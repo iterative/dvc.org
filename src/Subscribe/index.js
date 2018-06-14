@@ -79,6 +79,7 @@ const Glyph = styled.img`
 `
 
 const Title = styled.h3`
+  font-family: BrandonGrotesqueMed;
   min-width: 550px;
   min-height: 44px;
   font-size: 30px;

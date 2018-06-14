@@ -43,6 +43,7 @@ const Container = styled.div`
 `
 
 const Title = styled.h3`
+  font-family: BrandonGrotesqueMed;
   max-width: 438px;
   min-height: 44px;
   font-size: 30px;
@@ -65,6 +66,7 @@ const Buttons = styled.div`
 `
 
 const Button = styled.button`
+  font-family: BrandonGrotesqueMed;
   cursor: pointer;
   min-width: 186px;
   height: 60px;
