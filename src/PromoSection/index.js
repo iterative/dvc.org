@@ -1,10 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media, container } from '../styles'
-import Router from 'next/router'
+import { media } from '../styles'
 
 const getStarted = () => {
-  window.scrollTo(0, 0)
   window.location =
     'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
 }

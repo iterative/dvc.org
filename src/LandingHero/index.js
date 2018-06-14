@@ -1,15 +1,15 @@
 import React from 'react'
 import styled, { css, keyframes } from 'styled-components'
-import Router from 'next/router'
 
 import { media } from '../styles'
 import DownloadButton from '../DownloadButton'
 import TextRotate from '../TextRotate'
 
 const getStarted = () => {
-  window.scrollTo(0, 0)
-  Router.push('/documentation')
+  window.location =
+    'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
 }
+
 
 export default ({}) => (
   <LandingHero>
@@ -27,7 +27,7 @@ export default ({}) => (
       </Title>
       <Buttons>
         <OnlyMobile>
-          <GetStartedButton onClick={() => getStared()}>
+          <GetStartedButton onClick={() => getStarted()}>
             Get started
           </GetStartedButton>
         </OnlyMobile>
