@@ -17,6 +17,7 @@ const FeaturesHero = styled.div`
 `
 
 const Heading = styled.h1`
+  font-family: BrandonGrotesqueMed;
   margin: 0px auto;
   max-width: 610px;
   min-height: 185px;

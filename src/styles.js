@@ -22,6 +22,19 @@ export const global = `
   ${fontFace('BrandonGrotesqueMed', 'Brandon_med')}
   ${fontFace('BrandonGrotesqueLight', 'Brandon_light')}
   
+	html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+    font-weight: 400;
+  }
+  
+  @-moz-document url-prefix() {
+    body {
+      font-weight: lighter !important;
+    }
+  }
+	
 	body {
 		padding: 0px;
 		font-family: BrandonGrotesque, Tahoma, Arial;

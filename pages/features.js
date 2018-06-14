@@ -183,6 +183,7 @@ const Icon = styled.div`
 `
 
 const Name = styled.h3`
+  font-family: BrandonGrotesqueMed;
   margin-top: 10px;
   margin-bottom: 10px;
 
