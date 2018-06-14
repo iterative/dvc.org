@@ -92,6 +92,7 @@ const Container = styled.div`
 `
 
 const Title = styled.div`
+  font-family: BrandonGrotesqueMed;
   max-width: 550px;
   min-height: 44px;
   font-size: 30px;
@@ -103,6 +104,7 @@ const Title = styled.div`
 
 const Abstract = styled.div`
   margin: 0px auto;
+  padding-top: 10px;
   max-width: 590px;
   min-height: 50px;
   font-size: 16px;
@@ -150,6 +152,7 @@ const Column = styled.div`
 `
 
 const Caption = styled.h3`
+  font-family: BrandonGrotesqueMed;
   margin-bottom: 12px;
   font-size: 20px;
   font-weight: 500;
@@ -167,6 +170,7 @@ const Description = styled.div`
 `
 
 const LearnMoreArea = styled.div`
+  font-family: BrandonGrotesqueMed;
   line-height: 28px;
   font-size: 20px;
   font-weight: 500;

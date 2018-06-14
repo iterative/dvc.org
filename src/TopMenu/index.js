@@ -21,7 +21,7 @@ export default class TopMenu extends Component {
   }
 
   handleScroll = () => {
-    let level = Math.min(window.scrollY, 20)
+    let level = Math.min(window.scrollY, 25)
 
     this.setState({
       level
