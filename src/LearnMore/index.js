@@ -23,8 +23,9 @@ const Icon = styled.div`
 `
 
 const Caption = styled.p`
+  font-family: BrandonGrotesqueMed;
   line-height: 23px;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
   color: #b0b8c5;
 `

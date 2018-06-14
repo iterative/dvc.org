@@ -177,7 +177,6 @@ const Button = styled.button`
 
   padding: 0px;
   background-color: #945dd6;
-  line-height: 1.29;
   color: #ffffff;
 
   cursor: pointer;
@@ -201,13 +200,14 @@ const Inner = styled.div`
 `
 
 const Action = styled.h6`
+  font-family: BrandonGrotesqueMed;
   font-size: 20px;
   font-weight: 500;
   line-height: 0.9;
 `
 const Description = styled.p`
-  padding-top: 4px;
-  font-size: 13px;
+  font-family: BrandonGrotesque;
+  font-size: 14px;
   text-align: left;
 `
 
@@ -275,7 +275,7 @@ const DownloadInput = styled.input`
 const DownloadLink = styled.a`
   ${item};
   color: #b0b8c5;
-
+  
   &:hover {
     color: #40364d;
   }

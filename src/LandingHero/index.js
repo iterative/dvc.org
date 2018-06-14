@@ -184,11 +184,14 @@ const ActionIcon = styled.div`
 
 const ActionInner = styled.div``
 const Action = styled.h6`
+  font-family: BrandonGrotesqueMed;
   font-size: 20px;
   font-weight: 500;
   line-height: 0.9;
 `
 const Description = styled.p`
+  font-family: BrandonGrotesque;
+  font-weight: normal;
   font-size: 14px;
   text-align: left;
 `
