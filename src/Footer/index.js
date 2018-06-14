@@ -125,6 +125,7 @@ const Column = styled.div`
 `
 
 const Heading = styled.h2`
+  font-family: BrandonGrotesqueLight;
   opacity: 0.61;
   color: #ffffff;
   font-size: 20px;
@@ -139,7 +140,7 @@ const Links = styled.div`
 
 const Link = styled.a`
   line-height: 23px;
-  font-size: 18px;
+  font-size: 20px;
   margin-bottom: 17px;
   display: flex;
   color: #fff;
