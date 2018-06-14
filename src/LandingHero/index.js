@@ -134,12 +134,12 @@ const Title = styled.h1`
   padding-right: 2em;
 
   ${media.phablet`
-    font-size: 36px;
+    font-size: 32px;
     padding: 0px;
   `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    font-size: 36px;
+    font-size: 32px;
     padding: 0px;
   }
 `
