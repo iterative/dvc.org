@@ -180,11 +180,13 @@ const ButtonIcon = styled.div`
 
 const ButtonInner = styled.div``
 const Action = styled.h6`
+  font-family: BrandonGrotesqueMed, Tahoma, Arial;
   font-size: 20px;
   font-weight: 500;
   line-height: 0.9;
 `
 const Description = styled.p`
-  font-size: 14px;
+  font-size: 12px;
   text-align: left;
+  line-height: 1.29;
 `
