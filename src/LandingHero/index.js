@@ -16,7 +16,7 @@ export default ({}) => (
     <About>
       <Title>
         <OnlyMobile>
-          Open-source Version Control System for Data Science Projects.
+          Open-source <br/> Version Control System <br/> for Data Science Projects.
         </OnlyMobile>
         <OnlyDesktop>
           <TextRotate
