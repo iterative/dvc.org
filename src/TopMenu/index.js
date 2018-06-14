@@ -5,16 +5,13 @@ import { container, media } from '../styles'
 import Nav from '../Nav'
 
 const MIN_HEIGHT = 78
-const STICKY_FROM = 25 / 2
 
 export default class TopMenu extends Component {
   state = {
-    sticky: false,
     level: 0
   }
 
   componentDidMount() {
-    return
     window.addEventListener('scroll', this.handleScroll)
     this.handleScroll()
   }
@@ -24,29 +21,18 @@ export default class TopMenu extends Component {
   }
 
   handleScroll = () => {
-    const top = window.scrollY
-    const heroHeight = document.getElementById('hero').clientHeight
-
-    const nextSticky = top >= STICKY_FROM
-    let level = top / heroHeight
-    if (level >= 1) level = 1
+    let level = Math.min(window.scrollY, 20)
 
     this.setState({
       level
     })
-
-    if (nextSticky !== this.state.sticky) {
-      this.setState({
-        sticky: nextSticky
-      })
-    }
   }
 
   render() {
-    const { sticky, level } = this.state
+    const { level } = this.state
     return (
-      <Wrapper sticky={sticky} level={level} fullySticky={level === 1}>
-        <Container>
+      <Wrapper>
+        <Container level={level}>
           <Logo href="/">
             <img
               src="/static/img/logo.png"
@@ -71,36 +57,15 @@ const Wrapper = styled.div`
 
   background-color: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-
-  ${props =>
-    props.sticky &&
-    `
-    transform: translateZ(0);
-    min-height: 78px;
-    background-color: rgba(23, 48, 66, ${props.level});
-  `};
-
-  ${props =>
-    props.fullySticky &&
-    `
-      &::before {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        opacity: 0.18;
-        z-index: 0;
-        background-image: url('/static/img/hero-bg.png');
-      }
-    `};
 `
 
 const Container = styled.section`
   ${container};
   width: auto;
-  height: ${MIN_HEIGHT + 20}px;
+
+  ${props => `
+    height: ${MIN_HEIGHT + 20 - props.level}px;
+  `}
 
   z-index: 3;
   position: relative;

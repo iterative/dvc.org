@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import styled from 'styled-components'
 import Layout from '../Layout'
 
 export default class Page extends Component {

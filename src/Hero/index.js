@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media, container } from '../styles'
+import { container } from '../styles'
 
 export default ({ children }) => (
   <Hero>

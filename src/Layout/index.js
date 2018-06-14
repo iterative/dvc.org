@@ -21,7 +21,7 @@ export default class Layout extends Component {
 
     return (
       <Wrapper>
-        <TopMenu stickHeader={stickHeader} />
+        <TopMenu />
         <HamburgerMenu />
         {children}
         <Footer />

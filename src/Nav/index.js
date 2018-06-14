@@ -28,36 +28,18 @@ const Link = styled.a`
   text-decoration: none;
   text-transform: uppercase;
 
+  font-family: BrandonGrotesqueBold, Tahoma, Arial;
   font-size: 13px;
-  font-weight: bold;
   color: #838d93;
-
+  padding-top: 10px;
+  padding-bottom: 3px;
+  border-bottom: 1.5px solid #fff;
   margin-left: 30px;
 
   &:hover {
-    text-decoration: none;
-    border-bottom-color: #fff;
-  }
-
-  ${props =>
-    props.bold &&
-    `
-    font-weight: bold;
-  `};
-`
-
-const Button = styled.button`
-  width: 151px;
-  height: 36px;
-  border-radius: 4px;
-  background-image: linear-gradient(to top, #26b077, #50eb5a);
-  margin-left: 35px;
-  padding-left: 3px;
-  border: none;
-  color: #fff;
-  cursor: pointer;
-  font-size: 14px;
-  font-weight: 500;
+    color: #40364d;
+    border-bottom: 1.5px solid #40364d;  
+   }
 `
 
 const Nav = styled.div`
@@ -83,10 +65,11 @@ const GetStartedButton = styled.button`
   margin-left: 40px;
   border-radius: 4px;
   background-color: #13adc7;
+  font-family: BrandonGrotesqueMed, Tahoma, Arial;
   color: #fff;
-  height: 36px;
-  font-size: 15px;
-  font-weight: 500;
+  width: 113px;
+  height: 38px;
+  font-size: 16px;
   border: none;
   cursor: pointer;
 `

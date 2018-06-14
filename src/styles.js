@@ -10,7 +10,6 @@ export function fontFace(
         @font-face{
             font-family: "${name}";
             src: url(${'/static/fonts/' + src + '.otf'});
-            src: url(${'/static/fonts/' + src + '.woff'}) format("woff");
             font-style: ${fontStyle};
             font-weight: ${fontWeight};
         }
@@ -19,13 +18,15 @@ export function fontFace(
 
 export const global = `
   ${fontFace('BrandonGrotesque', 'Brandon_reg')}
+  ${fontFace('BrandonGrotesqueBold', 'Brandon_bld')}
   ${fontFace('BrandonGrotesqueMed', 'Brandon_med')}
   ${fontFace('BrandonGrotesqueLight', 'Brandon_light')}
   
 	body {
 		padding: 0px;
 		font-family: BrandonGrotesque, Tahoma, Arial;
-		font-size: 14px;
+		font-weight: normal;
+		-webkit-font-smoothing: antialiased;
     line-height: 1.5;
     
     // IE flex min-height fix https://stackoverflow.com/a/40491316

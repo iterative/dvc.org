@@ -65,9 +65,8 @@ export default () => (
           </Links>
         </Column>
       </Columns>
-      <Address>450 Townsend St. Suite 100, San Francisco, CA 94107</Address>
       <Copyright>
-        © 2018 <small>Iterative, Inc</small>
+        Copyright © 2018 <small>Iterative, Inc</small>
       </Copyright>
     </Container>
   </Footer>
@@ -164,17 +163,6 @@ const Link = styled.a`
       background-size: contain;
     }
   `};
-`
-
-const SocialIcon = styled.img`
-  width: 26px;
-  height: 26px;
-  margin-right: 14px;
-`
-
-const Address = styled.div`
-  padding-bottom: 18px;
-  padding-top: 36px;
 `
 
 const Copyright = styled.div`
