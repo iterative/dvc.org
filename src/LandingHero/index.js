@@ -58,16 +58,16 @@ export default ({}) => (
 
     <OnlyDesktop>
       <Commands>
-        <Command level={1} active>
+        <Command level={0} active>
           <Line>$ dvc add images.z|</Line>
         </Command>
-        <Command level={2}>
+        <Command level={1}>
           <Line>$ dvc run python cnn.py</Line>
         </Command>
-        <Command level={3}>
+        <Command level={2}>
           <Line>$ dvc remote add s3_cnn s3://mybucket</Line>
         </Command>
-        <Command level={4}>
+        <Command level={3}>
           <Line>$ dvc push</Line>
         </Command>
       </Commands>
@@ -238,11 +238,13 @@ export const keyFrameExampleOne = keyframes`
   }
   
   60% {
+    border: 1px solid transparent;
     opacity: 0.53;
     color: #b4b9c4;
   }
   
   80% {
+    border: 1px solid transparent;
     opacity: 0.28;
     color: #b4b9c4;
   }
@@ -253,17 +255,20 @@ const Command = styled.div`
   height: 57px;
   border-radius: 8px;
   background-color: #ffffff;
-  border: 1px solid transparent;
+  border: solid 1px #945dd6;
   margin-bottom: 13px;
+  color: #b4b9c4;
+  transform: translateZ(0);
 
   display: flex;
   align-items: center;
 
   ${media.phablet`
     width: 100%;
-  `} opacity: 0.28;
-  color: #b4b9c4;
+  `}
+  opacity: 0.20;
 
+  will-change: color, opacity, border, box-shadow;
   animation: ${keyFrameExampleOne} 9s ease-in-out 0s infinite;
   animation-delay: ${props => props.level * 2}s;
 `

@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 export default () => (
   <LearnMore href={'/#nextSlide'}>
@@ -17,10 +17,28 @@ const LearnMore = styled.a`
   text-decoration: none;
 `
 
+export const bounce = keyframes`
+  0%, 30%, 50%, 70%, 100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-25px);
+  }
+
+  60% {
+    transform: translateY(-10px);
+  }
+`
+
+
 const Icon = styled.div`
   width: 11px;
   height: 19px;
+  will-change: transform;
+  animation: ${bounce} 3s infinite;
 `
+
 
 const Caption = styled.p`
   font-family: BrandonGrotesqueMed;
