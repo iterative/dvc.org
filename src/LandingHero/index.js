@@ -100,7 +100,7 @@ const OnlyDesktop = styled.div`
 
 const LandingHero = styled.div`
   padding-top: 146px;
-  padding-bottom: 166px;
+  padding-bottom: 146px;
 
   display: flex;
 
