@@ -65,13 +65,16 @@ const Button = styled.button`
   border: solid 2px rgba(255, 255, 255, 0.3);
 
   font-size: 20px;
-  font-weight: 500;
   line-height: 0.9;
 
   text-align: left;
   padding: 0px 21px;
 
   color: #ffffff;
+  
+  &:hover {
+    background-color: #F5F5F5
+  }
 
   background: url('/static/img/arrow_right_white.svg') right center no-repeat;
   background-position-x: 147px;
