@@ -185,6 +185,7 @@ const LearnMoreArea = styled.div`
     display: flex;
     align-items: center;
     text-decoration: none;
+    color: #945dd6
   }
   
   a:hover {
