@@ -62,6 +62,7 @@ export default class MyDocument extends Document {
           <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://dvc.org/static/social-share.png" />
           <meta prefix="og: http://ogp.me/ns#" property="og:image:secure_url" content="https://dvc.org/static/social-share.png" />
           <meta prefix="og: http://ogp.me/ns#" property="og:description" content="DVC is designed to handle large data files, models, and metrics as well as code. DVC is an open-source framework and distributed version control system for machine learning projects." />
+          <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Data Science Version Control System" />
           <meta property="twitter:image" content="https://dvc.org/static/social-share.png" />
           <meta property="twitter:description" content="DVC is designed to handle large data files, models, and metrics as well as code. DVC is an open-source framework and distributed version control system for machine learning projects." />
           <meta
