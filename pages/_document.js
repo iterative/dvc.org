@@ -84,7 +84,7 @@ export default class MyDocument extends Document {
           />
           <link
             rel="shortcut icon"
-            type="image/png"
+            type="image/ico"
             href="/static/favicon.ico"
           />
           {this.props.styleTags}
