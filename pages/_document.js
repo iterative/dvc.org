@@ -59,6 +59,9 @@ export default class MyDocument extends Document {
           <title>{TITLE}</title>
           <meta name="description" content={DESCRIPTION} />
           <meta name="keywords" content={KEYWORDS} />
+          <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://dvc.org/static/social-share.png" />
+          <meta prefix="og: http://ogp.me/ns#" property="og:image:secure_url" content="https://dvc.org/static/social-share.png" />
+          <meta property="twitter:image" content="https://dvc.org/static/social-share.png" />
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
