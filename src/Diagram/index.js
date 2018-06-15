@@ -187,7 +187,15 @@ const LearnMoreArea = styled.div`
     text-decoration: none;
   }
   
+  a:hover {
+    color: #745CB7;
+  }
+  
   a:visited {
     color: #945dd6;
+  }
+  
+  a:visited:hover {
+    color: #745CB7;
   }
 `

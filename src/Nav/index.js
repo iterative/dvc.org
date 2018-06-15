@@ -72,4 +72,8 @@ const GetStartedButton = styled.button`
   font-size: 16px;
   border: none;
   cursor: pointer;
+  
+  &:hover {
+    background-color: #13A3BD;  
+  }
 `

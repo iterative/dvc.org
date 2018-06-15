@@ -134,7 +134,7 @@ export default class DownloadButton extends Component {
 
     return (
       <Handler onClick={this.toggle} innerRef={this.setRef}>
-        <Button>
+        <Button open={open}>
           <Icon>
             <img
               src="/static/img/download-arrow.svg"
@@ -176,7 +176,6 @@ const Button = styled.button`
   background-color: #945dd6;
 
   padding: 0px;
-  background-color: #945dd6;
   color: #ffffff;
 
   cursor: pointer;
@@ -185,6 +184,15 @@ const Button = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
+  
+  ${props =>
+    props.open && `
+    background-color: #885CCB;
+  `}
+  
+  &:hover {
+    background-color: #885CCB;  
+  }
 `
 
 const Icon = styled.div`
@@ -202,7 +210,6 @@ const Inner = styled.div`
 const Action = styled.h6`
   font-family: BrandonGrotesqueMed;
   font-size: 20px;
-  font-weight: 500;
   line-height: 0.9;
 `
 const Description = styled.p`
@@ -242,6 +249,7 @@ const Links = styled.div`
 `
 
 const item = css`
+  font-family: BrandonGrotesque;
   display: block;
   min-height: 36px;
   line-height: 1.29;
@@ -249,7 +257,6 @@ const item = css`
 
   display: flex;
   align-items: center;
-  font-weight: bold;
   text-decoration: none;
 
   color: #b0b8c5;
@@ -264,6 +271,7 @@ const DownloadInput = styled.input`
   ${item};
   border: none !important;
   font-family: Monospace;
+  font-weight: bold;
 
   ${props =>
     props.active &&

@@ -44,7 +44,12 @@ export default () => (
           <Heading>Company</Heading>
           <Links>
             <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
-            <Link href="https://iterative.ai/">Iterative.ai</Link>
+            <SocialLink
+              src="/static/img/iterative.png"
+              href="https://iterative.ai/"
+            >
+              Iterative.ai
+            </SocialLink>
           </Links>
         </Column>
         <Column>
@@ -147,8 +152,10 @@ const Link = styled.a`
   text-decoration: none;
 
   &:hover {
-    color: #fff;
+    color: #ccc;
   }
+  
+  
 
   ${props =>
     props.src &&

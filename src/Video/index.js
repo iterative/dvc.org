@@ -164,10 +164,16 @@ const Button = styled.button`
   border: none;
   background-color: #13adc7;
 
+  &:hover {
+    background-color: #13a3bd;
+  }
+
   ${props =>
-    props.disabled &&
-    `
+    props.disabled && `
     background-color: #b0b8c5;
+    &:hover {
+      background-color: #b0b8c5;
+    }
   `};
 `
 

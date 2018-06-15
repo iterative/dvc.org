@@ -76,6 +76,10 @@ const Button = styled.button`
   color: #13adc7;
   cursor: pointer;
 
+  &:hover {
+    background-color: #daf1f5
+  }
+
   ${media.phablet`
     min-height: 60px;
     width: 100%;

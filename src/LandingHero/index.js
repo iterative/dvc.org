@@ -99,20 +99,20 @@ const OnlyDesktop = styled.div`
 `
 
 const LandingHero = styled.div`
-  padding-top: 146px;
+  padding-top: 136px;
   padding-bottom: 146px;
 
   display: flex;
 
   ${media.phablet`
     flex-direction: column;
-    padding-top: 46px;
+    padding-top: 26px;
     padding-bottom: 66px;
   `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     flex-direction: column;
-    padding-top: 46px;
+    padding-top: 26px;
     padding-bottom: 66px;
   }
 `
@@ -205,9 +205,13 @@ const WatchButton = styled.a`
   height: 56px;
   text-decoration: none;
   color: #40364d;
-  background-color: transparent;
+  background-color: #eef4f8;
   margin-left: 15px;
   border: solid 2px rgba(176, 184, 197, 0.47);
+
+  &:hover {
+    background-color: #e4eaee;
+  }
 
   ${ActionIcon} {
     padding-top: 6px;
@@ -225,6 +229,10 @@ const GetStartedButton = styled.a`
   color: #fff;
   line-height: 0.9;
   border: solid 2px transparent;
+  
+  &:hover {
+    background-color: #13A3BD
+  }
 `
 
 export const keyFrameExampleOne = keyframes`

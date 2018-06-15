@@ -84,7 +84,12 @@ export default class HamburgerMenu extends Component {
                 <Heading>Company</Heading>
                 <Links>
                   <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
-                  <Link href="http://iterative.ai/">Iterative.ai</Link>
+                  <SocialLink
+                    src="/static/img/iterative.png"
+                    href="https://iterative.ai/"
+                  >
+                    Iterative.ai
+                  </SocialLink>
                 </Links>
               </Column>
               <Column>
