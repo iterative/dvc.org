@@ -33,7 +33,7 @@ export default class MyDocument extends Document {
 
     if (redirect) {
       if (res) {
-        res.writeHead(302, {
+        res.writeHead(301, {
           Location: redirect
         })
         res.end()
