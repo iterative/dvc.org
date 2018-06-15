@@ -71,6 +71,11 @@ export default class MyDocument extends Document {
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           />
           <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="/static/favicon.ico"
+          />
+          <link
             rel="icon"
             type="image/png"
             href="/static/favicon-32x32.png"
@@ -81,11 +86,6 @@ export default class MyDocument extends Document {
             type="image/png"
             href="/static/favicon-16x16.png"
             sizes="16x16"
-          />
-          <link
-            rel="shortcut icon"
-            type="image/ico"
-            href="/static/favicon.ico"
           />
           {this.props.styleTags}
         </Head>
