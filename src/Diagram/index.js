@@ -17,7 +17,7 @@ export default ({}) => (
       <Title>DVC streamlines machine learning projects</Title>
       <Abstract>
         DVC is an open-source framework and distributed version control system
-        for machine learning projects. DVS is designed to handle large files,
+        for machine learning projects. DVC is designed to handle large files,
         models, and metrics as well as code.
       </Abstract>
 
