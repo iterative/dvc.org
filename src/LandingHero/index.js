@@ -51,7 +51,7 @@ export default ({}) => (
     <OnlyDesktop>
       <Commands>
         <Command level={0} active>
-          <Line>$ dvc add images.zip|</Line>
+          <Line>$ dvc add images.zip</Line>
         </Command>
         <Command level={1}>
           <Line>$ dvc run -d images.zip -o model.p ./cnn.py</Line>
@@ -250,7 +250,7 @@ export const keyFrameExampleOne = keyframes`
 `
 
 const Command = styled.div`
-  width: 362px;
+  width: 412px;
   height: 57px;
   border-radius: 8px;
   background-color: #ffffff;
