@@ -18,8 +18,8 @@ export default ({}) => (
 )
 
 const Subscribe = styled.section`
+  position: relative;
   height: 300px;
-  overflow-x: hidden;
   background-color: #13adc7;
 
   ${media.phablet`
@@ -37,7 +37,6 @@ const Container = styled.div`
   width: 100%;
   margin: 0px auto;
   max-width: 1035px;
-  position: relative;
   padding-top: 90px;
 
   ${media.phablet`
@@ -50,9 +49,8 @@ const Container = styled.div`
 `
 
 const Glyph = styled.img`
-  display: none;
 	position: absolute;
-	z-index: 9;
+	z-index: 0;
 	
   width: 158px;
   height: 192px;
@@ -69,7 +67,7 @@ const Glyph = styled.img`
 	${props =>
     props.gid === 'rigthbottom' &&
     `
-    bottom: -154px;
+    bottom: -60px;
     right: 28px;
 	`}
 	
@@ -109,7 +107,7 @@ const SubscribeContainer = styled.div`
   and (min-device-width : 768px) 
   and (max-device-width : 1024px) {
     width: 100%;
-    margin: 0px;
+    margin: 0px auto;
     margin-top: 40px;
     min-height: auto;
   }

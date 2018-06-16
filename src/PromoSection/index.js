@@ -29,6 +29,7 @@ export default ({}) => (
 )
 
 const PromoSection = styled.section`
+  position: relative;
   height: 278px;
   background-color: #945dd6;
   display: flex;
@@ -37,7 +38,6 @@ const PromoSection = styled.section`
 `
 
 const Container = styled.div`
-  position: relative;
   width: 100%;
   max-width: 1035px;
 `
@@ -117,9 +117,8 @@ const Button = styled.button`
 `
 
 const Glyph = styled.img`
-  display: none;
   position: absolute;
-  z-index: 9;
+  z-index: 0;
 
   width: 158px;
   height: 192px;
@@ -129,13 +128,13 @@ const Glyph = styled.img`
   ${props =>
     props.gid === 'topleft' &&
     `
-		top: -102px;
-		left: -158px;
+		top: -25px;
+		left: 40px;
 	`} ${props =>
     props.gid === 'rigthbottom' &&
     `
-    bottom: -144px;
-    right: -158px;
+    bottom: -60px;
+    right: 30px;
 	`};
 
   ${media.phablet`
