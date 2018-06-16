@@ -6,6 +6,7 @@ import { scroller } from 'react-scroll'
 const scrollToDiagram = () => {
   scroller.scrollTo('diagram-section', {
     duration: 800,
+    offset: -75,
     delay: 0,
     smooth: 'easeInOut',
   })

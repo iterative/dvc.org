@@ -9,6 +9,21 @@ import GithubLine from '../GithubLine'
 import { scroller } from 'react-scroll'
 
 export default class LandingHero extends Component {
+  state = {
+    activeCommand: 0
+  }
+
+  componentDidMount() {
+    this.commandsFadeInterval = setInterval(() => {
+      this.setState((prevState) => ({
+        activeCommand: (prevState.activeCommand + 1) % 4
+      }))
+    }, 3000)
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.commandsFadeInterval);
+  }
 
   getStarted = () => {
     window.location =
@@ -18,12 +33,15 @@ export default class LandingHero extends Component {
   scrollToVideo = () => {
     scroller.scrollTo('how-it-works', {
       duration: 800,
+      offset: -75,
       delay: 0,
       smooth: 'easeInOut',
     })
   }
 
   render() {
+    const { activeCommand } = this.state;
+
     return (
       <Wrapper>
         <About>
@@ -60,32 +78,22 @@ export default class LandingHero extends Component {
           </Github>
         </About>
     
-        {/* we use recorded video instead of css animation to reduce cpu usage */}
         <OnlyDesktop>
-          <video 
-            src="/static/video/commands.mp4"
-            width="425"
-            height="305"
-            autoPlay="on"
-            loop
-            style={{ pointerEvents: 'none' }}
-          />
-          {/* 
           <Commands>
-            <Command level={0} active>
+            <Command active={activeCommand === 0}>
               <Line>$ dvc add images.zip</Line>
             </Command>
-            <Command level={1}>
+            <Command active={activeCommand === 1}>
               <Line>$ dvc run -d images.zip -o model.p ./cnn.py</Line>
             </Command>
-            <Command level={2}>
+            <Command active={activeCommand === 2}>
               <Line>$ dvc remote add myrepo s3://mybucket</Line>
             </Command>
-            <Command level={3}>
+            <Command active={activeCommand === 3}>
               <Line>$ dvc push</Line>
             </Command>
           </Commands> 
-          */}
+         
         </OnlyDesktop>
       </Wrapper>
     )
@@ -247,41 +255,15 @@ const GetStartedButton = styled.a`
   }
 `
 
-export const keyFrameExampleOne = keyframes`
-  0% {
-    opacity: 1;
-    color: #40364d;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
-    border: solid 1px #945dd6;
-  }
-  
-  40% {
-    border: 1px solid transparent;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.09);
-    color: #b4b9c4;
-  }
-  
-  60% {
-    border: 1px solid transparent;
-    opacity: 0.53;
-    color: #b4b9c4;
-  }
-  
-  80% {
-    border: 1px solid transparent;
-    opacity: 0.28;
-    color: #b4b9c4;
-  }
-`
-
 const Command = styled.div`
   width: 412px;
   height: 57px;
   border-radius: 8px;
   background-color: #ffffff;
-  border: solid 1px #945dd6;
+  border: solid 1px ${({ active }) => active ? '#945dd6' : 'transparent'};
   margin-bottom: 13px;
-  color: #b4b9c4;
+  color: ${({ active }) => active ? '#40364d' : '#b4b9c4'};
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
   transform: translateZ(0);
 
   display: flex;
@@ -290,11 +272,8 @@ const Command = styled.div`
   ${media.phablet`
     width: 100%;
   `}
-  opacity: 0.20;
-
-  will-change: color, opacity, border, box-shadow;
-  animation: ${keyFrameExampleOne} 9s ease-in-out 0s infinite;
-  animation-delay: ${props => props.level * 2}s;
+  opacity: ${({ active }) => active ? 1 : 0.30};
+  transition: opacity 3s, border .5s, color 1s;
 `
 
 const Commands = styled.div`
