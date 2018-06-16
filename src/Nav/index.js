@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { media } from '../styles'
 
 const getStarted = () => {
-  window.open('https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46')
+  window.location = 'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
 }
 
 export default ({ mobile = false }) => (

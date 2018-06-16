@@ -52,8 +52,8 @@ export default ({}) => (
     <OnlyDesktop>
       <video 
         src="/static/video/commands.mp4"
-        width="390"
-        height="280"
+        width="425"
+        height="305"
         autoPlay="on"
         loop
         style={{ pointerEvents: 'none' }}
