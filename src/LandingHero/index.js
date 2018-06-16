@@ -16,20 +16,7 @@ export default ({}) => (
   <LandingHero>
     <About>
       <Title>
-        <OnlyMobile>
           Open-source <br/> Version Control System <br/> for Data Science Projects
-        </OnlyMobile>
-        <OnlyDesktop>
-          <TextRotate
-            textBefore={`Open-source`}
-            words={[
-              `Version Control System`,
-              `Experiments Framework`,
-              `Deployment & Collaboration`
-            ]}
-            textAfter={`for Data Science Projects`}
-          />
-        </OnlyDesktop>
       </Title>
       <Buttons>
         <OnlyMobile>
@@ -64,13 +51,13 @@ export default ({}) => (
     <OnlyDesktop>
       <Commands>
         <Command level={0} active>
-          <Line>$ dvc add images.z|</Line>
+          <Line>$ dvc add images.zip|</Line>
         </Command>
         <Command level={1}>
-          <Line>$ dvc run python cnn.py</Line>
+          <Line>$ dvc run -d images.zip -o model.p ./cnn.py</Line>
         </Command>
         <Command level={2}>
-          <Line>$ dvc remote add s3_cnn s3://mybucket</Line>
+          <Line>$ dvc remote add myrepo s3://mybucket</Line>
         </Command>
         <Command level={3}>
           <Line>$ dvc push</Line>
