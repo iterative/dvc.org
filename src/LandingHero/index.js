@@ -48,7 +48,17 @@ export default ({}) => (
       </Github>
     </About>
 
+    {/* we use recorded video instead of css animation to reduce cpu usage */}
     <OnlyDesktop>
+      <video 
+        src="/static/video/commands.mp4"
+        width="390"
+        height="280"
+        autoPlay="on"
+        loop
+        style={{ pointerEvents: 'none' }}
+      />
+      {/* 
       <Commands>
         <Command level={0} active>
           <Line>$ dvc add images.zip</Line>
@@ -62,7 +72,8 @@ export default ({}) => (
         <Command level={3}>
           <Line>$ dvc push</Line>
         </Command>
-      </Commands>
+      </Commands> 
+      */}
     </OnlyDesktop>
   </LandingHero>
 )

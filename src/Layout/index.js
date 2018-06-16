@@ -30,4 +30,6 @@ export default class Layout extends Component {
   }
 }
 
-const Wrapper = styled.div``
+const Wrapper = styled.div`
+  overflow: hidden;
+`
