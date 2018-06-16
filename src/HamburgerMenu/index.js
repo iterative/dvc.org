@@ -34,85 +34,88 @@ export default class HamburgerMenu extends Component {
     const { menu } = this.state
 
     return (
-      <Wrapper open={menu}>
+      <div>          
         <Button onClick={this.toggleMobileMenu}>
           <Hamburger open={menu} />
         </Button>
+        
+        <Wrapper open={menu}>
+          <Menu>
+            <Section>
+              <Top>
+                <Logo href="/">
+                  <img
+                    src="/static/img/logo_white.png"
+                    alt="dvc.org"
+                    width={34}
+                  />
+                </Logo>
+              </Top>
 
-        <Menu visible={menu}>
-          <Section>
-            <Top>
-              <Logo href="/">
-                <img
-                  src="/static/img/logo_white.png"
-                  alt="dvc.org"
-                  width={34}
-                />
-              </Logo>
-            </Top>
-
-            <Columns>
-              <Column>
-                <Heading>Product</Heading>
-                <Links>
-                  <Link href="/#" onClick={this.itemClick}>
-                    Overview
-                  </Link>
-                  <Link href="/features" onClick={this.itemClick}>
-                    Features
-                  </Link>
-                </Links>
-              </Column>
-              <Column>
-                <Heading>Help</Heading>
-                <Links>
-                  <Link
-                    href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46"
-                    onClick={this.itemClick}
-                  >
-                    Get started
-                  </Link>
-                  <Link href="/documentation" onClick={this.itemClick}>
-                    Documentation
-                  </Link>
-                  <Link href="/documentation" onClick={this.itemClick}>
-                    Discuss
-                  </Link>
-                </Links>
-              </Column>
-              <Column>
-                <Heading>Company</Heading>
-                <Links>
-                  <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
-                  <SocialLink
-                    src="/static/img/iterative.png"
-                    href="https://iterative.ai/"
-                  >
-                    Iterative.ai
-                  </SocialLink>
-                </Links>
-              </Column>
-              <Column>
-                <Heading>Social</Heading>
-                <Links>
-                  <SocialLink
-                    src="/static/img/twitter.png"
-                    href="https://twitter.com/Iterativeai "
-                  >
-                    Twitter
-                  </SocialLink>
-                  <SocialLink
-                    src="/static/img/github.png"
-                    href="https://github.com/iterative"
-                  >
-                    Github
-                  </SocialLink>
-                </Links>
-              </Column>
-            </Columns>
-          </Section>
-        </Menu>
-      </Wrapper>
+              <Columns>
+                <Column>
+                  <Heading>Product</Heading>
+                  <Links>
+                    <Link href="/#" onClick={this.itemClick}>
+                      Overview
+                    </Link>
+                    <Link href="/features" onClick={this.itemClick}>
+                      Features
+                    </Link>
+                  </Links>
+                </Column>
+                <Column>
+                  <Heading>Help</Heading>
+                  <Links>
+                    <Link
+                      href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46"
+                      onClick={this.itemClick}
+                    >
+                      Get started
+                    </Link>
+                    <Link href="/documentation" onClick={this.itemClick}>
+                      Documentation
+                    </Link>
+                    <Link href="/documentation" onClick={this.itemClick}>
+                      Discuss
+                    </Link>
+                  </Links>
+                </Column>
+                <Column>
+                  <Heading>Company</Heading>
+                  <Links>
+                    <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
+                    <SocialLink
+                      src="/static/img/iterative.png"
+                      href="https://iterative.ai/"
+                    >
+                      Iterative.ai
+                    </SocialLink>
+                  </Links>
+                </Column>
+                <Column>
+                  <Heading>Social</Heading>
+                  <Links>
+                    <SocialLink
+                      src="/static/img/twitter.png"
+                      href="https://twitter.com/Iterativeai "
+                    >
+                      Twitter
+                    </SocialLink>
+                    <SocialLink
+                      src="/static/img/github.png"
+                      href="https://github.com/iterative"
+                    >
+                      Github
+                    </SocialLink>
+                  </Links>
+                </Column>
+              </Columns>
+            </Section>
+          </Menu>
+        </Wrapper>
+      </div>
+      
     )
   }
 }
@@ -122,33 +125,30 @@ const Wrapper = styled.div`
   display: none;
   position: fixed;
   z-index: 10;
-  transform: translate3d(0, 0, 0);
+  transform: translateX(100%);
+  transition: transform .4s ease;
+  will-change: transform;
   left: 0px;
   right: 0px;
-  -webkit-transform-style: preserve-3d;
-
-  > * {
-    transform: translateZ(0);
-  }
+  top: 0px;
+  bottom: 0px;
+  background-color: #40364d;
+  color: #fff;
 
   ${media.phablet`
-    top: 0px;
     display: block;
   `};
 
   ${props =>
     props.open &&
     `
-    top: 0px;
-    bottom: 0px;
-    
-    background-color: #40364d;
-    color: #fff;
+    transform: translateX(0);
   `};
 `
 
 const Button = styled.button`
-  position: absolute;
+  position: fixed;
+  display: none;
   z-index: 999;
 
   right: 15px;
@@ -159,6 +159,10 @@ const Button = styled.button`
 
   border: none;
   background: transparent;
+
+  ${media.phablet`
+    display: block;
+  `};
 `
 
 const Menu = styled.div`
@@ -167,13 +171,6 @@ const Menu = styled.div`
   flex-direction: column;
   justify-content: space-between;
   color: #fff;
-
-  ${props =>
-    !props.visible &&
-    `
-    z-index: -99999;
-    display: none;
-  `};
 `
 
 const Section = styled.div``
