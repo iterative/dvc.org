@@ -32,6 +32,7 @@
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
     "react-ga": "^2.5.3",
+    "react-scroll": "^1.7.9",
     "react-syntax-highlighter": "^7.0.4",
     "react-youtube": "^7.6.0",
     "styled-components": "^3.3.2",

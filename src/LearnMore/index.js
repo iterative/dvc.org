@@ -1,9 +1,18 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
 import { media } from "../styles";
+import { scroller } from 'react-scroll'
+
+const scrollToDiagram = () => {
+  scroller.scrollTo('diagram-section', {
+    duration: 800,
+    delay: 0,
+    smooth: 'easeInOut',
+  })
+}
 
 export default () => (
-  <LearnMore href={'/#nextSlide'}>
+  <LearnMore onClick={scrollToDiagram}>
     <Icon>
       <img src="/static/img/learn-more.svg" alt="Learn More" />
     </Icon>
@@ -16,6 +25,7 @@ const LearnMore = styled.a`
   flex-direction: column;
   align-items: center;
   text-decoration: none;
+  cursor: pointer;
 `
 
 export const bounce = keyframes`

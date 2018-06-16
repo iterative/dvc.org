@@ -3,60 +3,63 @@ import styled from 'styled-components'
 import { media, container } from '../styles'
 
 import { default as YoutubeVideo } from '../Video'
+import { Element } from 'react-scroll'
 
 export default ({}) => (
   <UseCases>
-    <Container>
-      <Video>
-        <YoutubeVideo id={`4h6I9_xeYA4`} />
-      </Video>
-      <Right>
-        <Heading>Use cases</Heading>
-        <Cases>
-          <Case>
-            <Top>
-              <Icon>
-                <img src="/static/img/save-reprro.svg" width={30} height={30} />
-              </Icon>
-              <Title>Save and reproduce your experiments</Title>
-            </Top>
-            <Description>
-              At any time, fetch the full context about any experiment you or
-              your team has run. DVC guarantees that all files and metrics will
-              be consistent and in the right place to reproduce the experiment
-              or use it as a baseline for a new iteration.
-            </Description>
-          </Case>
-          <Case>
-            <Top>
-              <Icon>
-                <img src="/static/img/git-icon.svg" width={30} height={30} />
-              </Icon>
-              <Title>Version control data files</Title>
-            </Top>
-            <Description>
-              DVC keeps metafiles in Git instead of Google Docs to describe and
-              version control your data sets and models. DVC supports a variety
-              of external storage types as a remote cache for large files.
-            </Description>
-          </Case>
-          <Case>
-            <Top>
-              <Icon>
-                <img src="/static/img/share.svg" width={30} height={31} />
-              </Icon>
-              <Title>Establish workflow for deployment & collaboration</Title>
-            </Top>
-            <Description>
-              DVC defines rules and processes for working effectively and
-              consistently as a team. It serves as a protocol for collaboration,
-              sharing results, and getting and running a finished model in a
-              production environment.
-            </Description>
-          </Case>
-        </Cases>
-      </Right>
-    </Container>
+    <Element name="how-it-works">
+      <Container>
+        <Video>
+          <YoutubeVideo id={`4h6I9_xeYA4`} />
+        </Video>
+        <Right>
+          <Heading>Use cases</Heading>
+          <Cases>
+            <Case>
+              <Top>
+                <Icon>
+                  <img src="/static/img/save-reprro.svg" width={30} height={30} />
+                </Icon>
+                <Title>Save and reproduce your experiments</Title>
+              </Top>
+              <Description>
+                At any time, fetch the full context about any experiment you or
+                your team has run. DVC guarantees that all files and metrics will
+                be consistent and in the right place to reproduce the experiment
+                or use it as a baseline for a new iteration.
+              </Description>
+            </Case>
+            <Case>
+              <Top>
+                <Icon>
+                  <img src="/static/img/git-icon.svg" width={30} height={30} />
+                </Icon>
+                <Title>Version control data files</Title>
+              </Top>
+              <Description>
+                DVC keeps metafiles in Git instead of Google Docs to describe and
+                version control your data sets and models. DVC supports a variety
+                of external storage types as a remote cache for large files.
+              </Description>
+            </Case>
+            <Case>
+              <Top>
+                <Icon>
+                  <img src="/static/img/share.svg" width={30} height={31} />
+                </Icon>
+                <Title>Establish workflow for deployment & collaboration</Title>
+              </Top>
+              <Description>
+                DVC defines rules and processes for working effectively and
+                consistently as a team. It serves as a protocol for collaboration,
+                sharing results, and getting and running a finished model in a
+                production environment.
+              </Description>
+            </Case>
+          </Cases>
+        </Right>
+      </Container>
+    </Element>
   </UseCases>
 )
 

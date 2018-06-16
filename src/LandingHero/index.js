@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled, { css, keyframes } from 'styled-components'
 
 import { media } from '../styles'
@@ -6,77 +6,91 @@ import DownloadButton from '../DownloadButton'
 import TextRotate from '../TextRotate'
 import GithubLine from '../GithubLine'
 
-const getStarted = () => {
-  window.location =
-    'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
-}
+import { scroller } from 'react-scroll'
 
+export default class LandingHero extends Component {
 
-export default ({}) => (
-  <LandingHero>
-    <About>
-      <Title>
-          Open-source <br/> Version Control System <br/> for Data Science Projects
-      </Title>
-      <Buttons>
-        <OnlyMobile>
-          <GetStartedButton onClick={() => getStarted()}>
-            Get started
-          </GetStartedButton>
-        </OnlyMobile>
+  getStarted = () => {
+    window.location =
+      'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
+  }
+
+  scrollToVideo = () => {
+    scroller.scrollTo('how-it-works', {
+      duration: 800,
+      delay: 0,
+      smooth: 'easeInOut',
+    })
+  }
+
+  render() {
+    return (
+      <Wrapper>
+        <About>
+          <Title>
+            Open-source <br/> Version Control System <br/> for Data Science Projects
+          </Title>
+          <Buttons>
+            <OnlyMobile>
+              <GetStartedButton onClick={this.getStarted}>
+                Get started
+              </GetStartedButton>
+            </OnlyMobile>
+            <OnlyDesktop>
+              <DownloadButton />
+            </OnlyDesktop>
+            <WatchButton onClick={this.scrollToVideo}>
+              <ActionIcon>
+                <img
+                  src="/static/img/play-icon.svg"
+                  alt="Watch video"
+                  width={20}
+                  height={20}
+                />
+              </ActionIcon>
+              <ActionInner>
+                <Action>Watch video</Action>
+                <Description>How it works</Description>
+              </ActionInner>
+            </WatchButton>
+          </Buttons>
+    
+          <Github>
+            <GithubLine />
+          </Github>
+        </About>
+    
+        {/* we use recorded video instead of css animation to reduce cpu usage */}
         <OnlyDesktop>
-          <DownloadButton />
+          <video 
+            src="/static/video/commands.mp4"
+            width="425"
+            height="305"
+            autoPlay="on"
+            loop
+            style={{ pointerEvents: 'none' }}
+          />
+          {/* 
+          <Commands>
+            <Command level={0} active>
+              <Line>$ dvc add images.zip</Line>
+            </Command>
+            <Command level={1}>
+              <Line>$ dvc run -d images.zip -o model.p ./cnn.py</Line>
+            </Command>
+            <Command level={2}>
+              <Line>$ dvc remote add myrepo s3://mybucket</Line>
+            </Command>
+            <Command level={3}>
+              <Line>$ dvc push</Line>
+            </Command>
+          </Commands> 
+          */}
         </OnlyDesktop>
-        <WatchButton href="#video">
-          <ActionIcon>
-            <img
-              src="/static/img/play-icon.svg"
-              alt="Watch video"
-              width={20}
-              height={20}
-            />
-          </ActionIcon>
-          <ActionInner>
-            <Action>Watch video</Action>
-            <Description>How it works</Description>
-          </ActionInner>
-        </WatchButton>
-      </Buttons>
-
-      <Github>
-        <GithubLine />
-      </Github>
-    </About>
-
-    {/* we use recorded video instead of css animation to reduce cpu usage */}
-    <OnlyDesktop>
-      <video 
-        src="/static/video/commands.mp4"
-        width="425"
-        height="305"
-        autoPlay="on"
-        loop
-        style={{ pointerEvents: 'none' }}
-      />
-      {/* 
-      <Commands>
-        <Command level={0} active>
-          <Line>$ dvc add images.zip</Line>
-        </Command>
-        <Command level={1}>
-          <Line>$ dvc run -d images.zip -o model.p ./cnn.py</Line>
-        </Command>
-        <Command level={2}>
-          <Line>$ dvc remote add myrepo s3://mybucket</Line>
-        </Command>
-        <Command level={3}>
-          <Line>$ dvc push</Line>
-        </Command>
-      </Commands> 
-      */}
-    </OnlyDesktop>
-  </LandingHero>
-)
+      </Wrapper>
+    )
+  }
+}
 
 const OnlyMobile = styled.div`
   display: none;
@@ -96,7 +110,7 @@ const OnlyDesktop = styled.div`
   ${media.phone`display: none;`};
 `
 
-const LandingHero = styled.div`
+const Wrapper = styled.div`
   padding-top: 136px;
   padding-bottom: 146px;
 

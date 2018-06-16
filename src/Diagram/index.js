@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media, container, columns, column } from '../styles'
+import { Element } from 'react-scroll'
 
 const LearnMore = ({ href }) => (
   <LearnMoreArea href={href}>
@@ -13,6 +14,7 @@ const LearnMore = ({ href }) => (
 
 export default ({}) => (
   <Diagram>
+    <Element name="diagram-section" />
     <Container>
       <Title>DVC streamlines machine learning projects</Title>
       <Abstract>
