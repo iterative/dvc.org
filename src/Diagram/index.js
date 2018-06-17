@@ -1,7 +1,9 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
-import { media, container, columns, column } from '../styles'
+import { media, container, columns, column, sizes } from '../styles'
 import { Element } from 'react-scroll'
+import Slider from 'react-slick'
+import withSizes from 'react-sizes'
 
 const LearnMore = ({ href }) => (
   <LearnMoreArea href={href}>
@@ -12,77 +14,117 @@ const LearnMore = ({ href }) => (
   </LearnMoreArea>
 )
 
-export default ({}) => (
-  <Diagram>
-    <Element name="diagram-section" />
-    <Container>
-      <Title>DVC streamlines machine learning projects</Title>
-      <Abstract>
-        DVC is an open-source framework and distributed version control system
-        for machine learning projects. DVC is designed to handle large files,
-        models, and metrics as well as code.
-      </Abstract>
+export class DiagramSection extends Component {
+  render() {
+    const { isPhablet } = this.props;
+    const sliderOptions = {
+      dots: true,
+      infinite: true,
+      speed: 600,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      autoplay: true,
+      autoplaySpeed: 4000,
+      appendDots: dots => <SliderDots>{dots}</SliderDots>,
+    };
 
-      <Graphic>
-        <img src="/static/img/graphic.png" />
-      </Graphic>
+    return (
+      <Diagram>
+        <Element name="diagram-section" />
+        <Container>
+          <Title>DVC streamlines machine learning projects</Title>
+          <Abstract>
+            DVC is an open-source framework and distributed version control system
+            for machine learning projects. DVC is designed to handle large files,
+            models, and metrics as well as code.
+          </Abstract>
+    
+          <OnlyDesktop>
+            <Graphic>
+              <img src="/static/img/graphic.png" />
+            </Graphic>
+          </OnlyDesktop>
+    
+          <OnlyMobile>
+            {isPhablet && (
+              <Slider {...sliderOptions}>
+                <Slide>
+                  <img src="/static/img/flow-1.png" alt="ML project version control" />
+                </Slide>
+                <Slide>
+                  <img src="/static/img/flow-2.png" alt="ML experiment management" />
+                </Slide>
+                <Slide>
+                  <img src="/static/img/flow-3.png" alt="Deployment & Collaboration" />
+                </Slide>
+              </Slider>
+            )}
+          </OnlyMobile>
 
-      <Columns>
-        <Column>
-          <Caption text={`#945dd6`}>ML project version control</Caption>
-          <Description>
-            <p>
-              Keep pointers in Git to large data input files, ML models, and
-              intermediate data files along with the code. Use S3, GCP, or any
-              network-accessible storage to store file contents.
-            </p>
-            <p>
-              Full code and data provenance help track the complete evolution of
-              every ML experiment. This guarantees reproducibility and makes it
-              easy to switch back and forth between experiments.
-            </p>
-          </Description>
-          <LearnMore href={'/features'} />
-        </Column>
-        <Column>
-          <Caption text={`#13adc7`}>ML experiment management</Caption>
-          <Description>
-            <p>
-              Harness the full power of Git branches to try different ideas
-              instead of sloppy file suffixes and comments in code. Use
-              automatic metric-tracking to navigate instead of paper and pencil.
-            </p>
-            <p>
-              DVC was designed to keep branching as simple and fast as in Git —
-              no matter the data file size. Along with first-class citizen
-              metrics and ML pipelines, it means that a project has cleaner
-              structure. It&#39;s easy to compare ideas and pick the best.
-              Iterations become faster with intermediate artifact caching.
-            </p>
-          </Description>
-          <LearnMore href={'/features'} />
-        </Column>
-        <Column>
-          <Caption text={`#f46837`}>Deployment & Collaboration</Caption>
-          <Description>
-            <p>
-              Instead of ad-hoc scripts, use push/pull commands to move
-              consistent bundles of ML models, data, and code into production,
-              remote machines, or a colleague&#39;s computer.
-            </p>
-            <p>
-              DVC introduces lightweight pipelines as a first-class citizen
-              mechanism in Git. They are language-agnostic and connect multiple
-              steps into a DAG. These pipelines are used to remove friction from
-              getting code into production.
-            </p>
-          </Description>
-          <LearnMore href={'/features'} />
-        </Column>
-      </Columns>
-    </Container>
-  </Diagram>
-)
+          <Columns>
+            <Column>
+              <Caption text={`#945dd6`}>ML project version control</Caption>
+              <Description>
+                <p>
+                  Keep pointers in Git to large data input files, ML models, and
+                  intermediate data files along with the code. Use S3, GCP, or any
+                  network-accessible storage to store file contents.
+                </p>
+                <p>
+                  Full code and data provenance help track the complete evolution of
+                  every ML experiment. This guarantees reproducibility and makes it
+                  easy to switch back and forth between experiments.
+                </p>
+              </Description>
+              <LearnMore href={'/features'} />
+            </Column>
+            <Column>
+              <Caption text={`#13adc7`}>ML experiment management</Caption>
+              <Description>
+                <p>
+                  Harness the full power of Git branches to try different ideas
+                  instead of sloppy file suffixes and comments in code. Use
+                  automatic metric-tracking to navigate instead of paper and pencil.
+                </p>
+                <p>
+                  DVC was designed to keep branching as simple and fast as in Git —
+                  no matter the data file size. Along with first-class citizen
+                  metrics and ML pipelines, it means that a project has cleaner
+                  structure. It&#39;s easy to compare ideas and pick the best.
+                  Iterations become faster with intermediate artifact caching.
+                </p>
+              </Description>
+              <LearnMore href={'/features'} />
+            </Column>
+            <Column>
+              <Caption text={`#f46837`}>Deployment & Collaboration</Caption>
+              <Description>
+                <p>
+                  Instead of ad-hoc scripts, use push/pull commands to move
+                  consistent bundles of ML models, data, and code into production,
+                  remote machines, or a colleague&#39;s computer.
+                </p>
+                <p>
+                  DVC introduces lightweight pipelines as a first-class citizen
+                  mechanism in Git. They are language-agnostic and connect multiple
+                  steps into a DAG. These pipelines are used to remove friction from
+                  getting code into production.
+                </p>
+              </Description>
+              <LearnMore href={'/features'} />
+            </Column>
+          </Columns>
+        </Container>
+      </Diagram>
+    )
+  }
+}
+
+const mapSizesToProps = ({ width }) => ({
+  isPhablet: width <= sizes.phablet,
+})
+
+export default withSizes(mapSizesToProps)(DiagramSection)
 
 const Diagram = styled.section`
   padding-top: 80px;
@@ -120,6 +162,7 @@ const Graphic = styled.section`
   margin-top: 49px;
 
   img {
+    width: 100%;
     max-width: 900px;
     max-height: 445px;
   }
@@ -202,3 +245,36 @@ const LearnMoreArea = styled.div`
     color: #745CB7;
   }
 `
+
+const OnlyMobile = styled.div`
+  display: none;
+  ${media.giant`display: none;`};
+  ${media.desktop`display: none;`};
+  ${media.tablet`display: none;`};
+  ${media.phablet`display: initial;`};
+  ${media.phone`display: initial;`};
+`
+
+const OnlyDesktop = styled.div`
+  display: initial;
+  ${media.giant`display: initial;`};
+  ${media.desktop`display: initial;`};
+  ${media.tablet`display: initial;`};
+  ${media.phablet`display: none;`};
+  ${media.phone`display: none;`};
+`
+
+const Slide = styled.div`
+  width: 100%;
+  img {
+    width: 100%;
+    max-width: 380px;
+    margin: 0 auto;
+  }
+`;
+
+const SliderDots = styled.ul` 
+  li button::before {
+    font-size: 10px;
+  }
+`;

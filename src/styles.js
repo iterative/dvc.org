@@ -55,7 +55,7 @@ export const global = `
 
 const maxWidth = 1005
 
-const sizes = {
+export const sizes = {
   giant: 1170,
   desktop: 992,
   tablet: 768,
