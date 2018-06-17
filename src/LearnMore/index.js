@@ -30,16 +30,16 @@ const LearnMore = styled.a`
 `
 
 export const bounce = keyframes`
-  0%, 30%, 50%, 70%, 100% {
+  0%, 30%, 45%, 65%, 100% {
     transform: translateY(0);
   }
 
   40% {
-    transform: translateY(-25px);
+    transform: translateY(-13px);
   }
 
   60% {
-    transform: translateY(-10px);
+    transform: translateY(-5px);
   }
 `
 
