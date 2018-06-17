@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import { container } from '../src/styles'
+import { media } from '../src/styles'
 
 import Page from '../src/Page'
 import Hero from '../src/Hero'
@@ -164,7 +165,12 @@ const Features = styled.div`
   flex-flow: row;
   flex-wrap: wrap;
   padding-top: 110px;
-  padding-bottom: 110px;
+  padding-bottom: 90px;
+  
+  ${media.phablet`
+    padding-top: 70px;
+    padding-bottom: 50px;
+	`};
 `
 
 const Feature = styled.div`
