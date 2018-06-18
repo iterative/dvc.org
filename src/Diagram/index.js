@@ -7,7 +7,7 @@ import Slider from 'react-slick'
 const LearnMore = ({ href }) => (
   <LearnMoreArea href={href}>
     <a href={href}>
-      Learn more
+      <span>Learn&nbsp;more</span>
       <img src="/static/img/learn_more_arrow.svg" width={18} height={18} />
     </a>
   </LearnMoreArea>
