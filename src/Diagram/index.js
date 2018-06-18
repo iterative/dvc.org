@@ -285,18 +285,18 @@ const SliderWrapper = styled.div`
   }
 
   .slick-next {
-    right: -15px;
+    right: -25px;
   }
 
   .slick-prev {
-    left: -15px;
+    left: -25px;
   }
 
   .slick-next:before, 
   .slick-prev:before {
     font-size: 30px;
     line-height: 1;
-    opacity: .65;
+    opacity: .35;
     color: #40364d;
   }
 `;
