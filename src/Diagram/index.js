@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { media, container, columns, column, sizes } from '../styles'
 import { Element } from 'react-scroll'
 import Slider from 'react-slick'
-import withSizes from 'react-sizes'
 
 const LearnMore = ({ href }) => (
   <LearnMoreArea href={href}>
@@ -14,10 +13,10 @@ const LearnMore = ({ href }) => (
   </LearnMoreArea>
 )
 
-const ColumnOne = ({ wide }) => (
+const ColumnOne = ({ fullWidth }) => (
   <Column>
     <Caption text={`#945dd6`}>ML project version control</Caption>
-    <Description wide>
+    <Description fullWidth>
       <p>
         Keep pointers in Git to large data input files, ML models, and
         intermediate data files along with the code. Use S3, GCP, or any
@@ -33,10 +32,10 @@ const ColumnOne = ({ wide }) => (
   </Column>
 )
 
-const ColumnTwo = ({ wide }) => (
+const ColumnTwo = ({ fullWidth }) => (
   <Column>
     <Caption text={`#13adc7`}>ML experiment management</Caption>
-    <Description wide>
+    <Description fullWidth>
       <p>
         Harness the full power of Git branches to try different ideas
         instead of sloppy file suffixes and comments in code. Use
@@ -54,10 +53,10 @@ const ColumnTwo = ({ wide }) => (
   </Column>
 )
 
-const ColumnThree = ({ wide }) => (
+const ColumnThree = ({ fullWidth }) => (
   <Column>
     <Caption text={`#f46837`}>Deployment & Collaboration</Caption>
-    <Description wide>
+    <Description fullWidth>
       <p>
         Instead of ad-hoc scripts, use push/pull commands to move
         consistent bundles of ML models, data, and code into production,
@@ -75,24 +74,8 @@ const ColumnThree = ({ wide }) => (
 )
 
 export class DiagramSection extends Component {
-  constructor() {
-    super();
-    this.state = {
-      slider1: null,
-      slider2: null
-    };
-  }
-
-  componentDidMount() {
-    this.setState({
-      slider1: this.slider1,
-      slider2: this.slider2
-    });
-  }
 
   render() {
-    const { isPhablet } = this.props;
-    const { slider1, slider2 } = this.state;
     const imagesSliderProps = {
       slidesToShow: 1,
       slidesToScroll: 1,
@@ -102,15 +85,6 @@ export class DiagramSection extends Component {
       buttons: true,
       dots: true,
       appendDots: dots => <SliderDots>{dots}</SliderDots>,
-    };
-    const columnsSliderProps = {
-      slidesToShow: 1,
-      slidesToScroll: 1,
-      initialSlide: 1,
-      infinite: true,
-      speed: 600,
-      dots: false,
-      buttons: false,
     };
 
     return (
@@ -137,32 +111,21 @@ export class DiagramSection extends Component {
  
           <OnlyMobile>
             <SliderWrapper>
-              <Slider 
-                {...imagesSliderProps}
-                ref={(ref) => this.slider1 = ref}
-                asNavFor={slider2}
-              >
+              <Slider {...imagesSliderProps}>
                 <Slide>
                   <img src="/static/img/flow-1.png" alt="ML project version control" />
+                  <ColumnOne fullWidth />
                 </Slide>
                 <Slide>
                   <img src="/static/img/flow-2.png" alt="ML experiment management" />
+                  <ColumnTwo fullWidth />
                 </Slide>
                 <Slide>
                   <img src="/static/img/flow-3.png" alt="Deployment & Collaboration" />
+                  <ColumnThree fullWidth />
                 </Slide>
               </Slider>
             </SliderWrapper>
-
-            <Slider 
-              {...columnsSliderProps}
-              ref={(ref) => this.slider2 = ref}
-              asNavFor={slider1}
-            >
-              <ColumnOne wide />
-              <ColumnTwo wide />
-              <ColumnThree wide />
-            </Slider>
           </OnlyMobile>
 
         </Container>
@@ -171,11 +134,7 @@ export class DiagramSection extends Component {
   }
 }
 
-const mapSizesToProps = ({ width }) => ({
-  isPhablet: width <= sizes.phablet,
-})
-
-export default withSizes(mapSizesToProps)(DiagramSection)
+export default DiagramSection;
 
 const Diagram = styled.section`
   padding-top: 80px;
@@ -234,14 +193,19 @@ const Columns = styled.div`
   margin-top: 10px;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
 `
 
 const Column = styled.div`
   ${column};
+  display: block;
   margin-top: 49px;
+  padding: 0 10px;
+  box-sizing: border-box;
 
   ${media.tablet`margin-right: 0px;`};
+  ${media.phablet`margin-top: 20px;`};
+
 `
 
 const Caption = styled.h3`
@@ -253,7 +217,7 @@ const Caption = styled.h3`
 `
 
 const Description = styled.div`
-  max-width: ${(props) => props.wide ? '100%' : '311px'};
+  max-width: ${(props) => props.fullWidth ? '100%' : '311px'};
   font-size: 16px;
   color: #5f6c72;
 
@@ -317,7 +281,7 @@ const SliderWrapper = styled.div`
   .slick-prev {
     height: 30px;
     width: 30px;
-    z-index: 10;
+    z-index: 3;
   }
 
   .slick-next {
@@ -335,10 +299,6 @@ const SliderWrapper = styled.div`
     opacity: .65;
     color: #40364d;
   }
-
-  Description {
-    max-width: 100%;
-  }
 `;
 
 const Slide = styled.div`
@@ -350,7 +310,9 @@ const Slide = styled.div`
   }
 `;
 
-const SliderDots = styled.ul` 
+const SliderDots = styled.ul`
+  margin-bottom: -20px;
+
   li button::before {
     font-size: 8px;
   }
