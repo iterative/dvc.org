@@ -61,3 +61,6 @@ typings/
 .idea
 .next/
 *.log
+
+# Mac finder artifacts
+.DS_Store

@@ -113,15 +113,15 @@ export class DiagramSection extends Component {
             <SliderWrapper>
               <Slider {...imagesSliderProps}>
                 <Slide>
-                  <img src="/static/img/flow-1.png" alt="ML project version control" />
+                  <img src="/static/img/experiments.png" alt="ML project version control" />
                   <ColumnOne fullWidth />
                 </Slide>
                 <Slide>
-                  <img src="/static/img/flow-2.png" alt="ML experiment management" />
+                  <img src="/static/img/graph.png" alt="ML experiment management" />
                   <ColumnTwo fullWidth />
                 </Slide>
                 <Slide>
-                  <img src="/static/img/flow-3.png" alt="Deployment & Collaboration" />
+                  <img src="/static/img/result.png" alt="Deployment & Collaboration" />
                   <ColumnThree fullWidth />
                 </Slide>
               </Slider>
@@ -304,6 +304,8 @@ const SliderWrapper = styled.div`
 const Slide = styled.div`
   width: 100%;
   img {
+    padding-top: 20px;
+    padding-bottom: 20px;
     width: 100%;
     max-width: 380px;
     margin: 0 auto;
