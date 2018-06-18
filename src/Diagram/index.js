@@ -14,18 +14,103 @@ const LearnMore = ({ href }) => (
   </LearnMoreArea>
 )
 
+const ColumnOne = ({ wide }) => (
+  <Column>
+    <Caption text={`#945dd6`}>ML project version control</Caption>
+    <Description wide>
+      <p>
+        Keep pointers in Git to large data input files, ML models, and
+        intermediate data files along with the code. Use S3, GCP, or any
+        network-accessible storage to store file contents.
+      </p>
+      <p>
+        Full code and data provenance help track the complete evolution of
+        every ML experiment. This guarantees reproducibility and makes it
+        easy to switch back and forth between experiments.
+      </p>
+    </Description>
+    <LearnMore href={'/features'} />
+  </Column>
+)
+
+const ColumnTwo = ({ wide }) => (
+  <Column>
+    <Caption text={`#13adc7`}>ML experiment management</Caption>
+    <Description wide>
+      <p>
+        Harness the full power of Git branches to try different ideas
+        instead of sloppy file suffixes and comments in code. Use
+        automatic metric-tracking to navigate instead of paper and pencil.
+      </p>
+      <p>
+        DVC was designed to keep branching as simple and fast as in Git —
+        no matter the data file size. Along with first-class citizen
+        metrics and ML pipelines, it means that a project has cleaner
+        structure. It&#39;s easy to compare ideas and pick the best.
+        Iterations become faster with intermediate artifact caching.
+      </p>
+    </Description>
+    <LearnMore href={'/features'} />
+  </Column>
+)
+
+const ColumnThree = ({ wide }) => (
+  <Column>
+    <Caption text={`#f46837`}>Deployment & Collaboration</Caption>
+    <Description wide>
+      <p>
+        Instead of ad-hoc scripts, use push/pull commands to move
+        consistent bundles of ML models, data, and code into production,
+        remote machines, or a colleague&#39;s computer.
+      </p>
+      <p>
+        DVC introduces lightweight pipelines as a first-class citizen
+        mechanism in Git. They are language-agnostic and connect multiple
+        steps into a DAG. These pipelines are used to remove friction from
+        getting code into production.
+      </p>
+    </Description>
+    <LearnMore href={'/features'} />
+  </Column>
+)
+
 export class DiagramSection extends Component {
+  constructor() {
+    super();
+    this.state = {
+      slider1: null,
+      slider2: null
+    };
+  }
+
+  componentDidMount() {
+    this.setState({
+      slider1: this.slider1,
+      slider2: this.slider2
+    });
+  }
+
   render() {
     const { isPhablet } = this.props;
-    const sliderOptions = {
-      dots: true,
-      infinite: true,
-      speed: 600,
+    const { slider1, slider2 } = this.state;
+    const imagesSliderProps = {
       slidesToShow: 1,
       slidesToScroll: 1,
-      autoplay: true,
-      autoplaySpeed: 4000,
+      initialSlide: 1,
+      infinite: true,
+      speed: 600,
+      buttons: true,
+      dots: true,
       appendDots: dots => <SliderDots>{dots}</SliderDots>,
+    };
+    const columnsSliderProps = {
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      initialSlide: 1,
+      infinite: true,
+      speed: 600,
+      dots: false,
+      buttons: false,
     };
 
     return (
@@ -43,11 +128,20 @@ export class DiagramSection extends Component {
             <Graphic>
               <img src="/static/img/graphic.png" />
             </Graphic>
-          </OnlyDesktop>
-    
+            <Columns>
+              <ColumnOne />
+              <ColumnTwo />
+              <ColumnThree />
+            </Columns>
+          </OnlyDesktop>  
+ 
           <OnlyMobile>
-            {isPhablet && (
-              <Slider {...sliderOptions}>
+            <SliderWrapper>
+              <Slider 
+                {...imagesSliderProps}
+                ref={(ref) => this.slider1 = ref}
+                asNavFor={slider2}
+              >
                 <Slide>
                   <img src="/static/img/flow-1.png" alt="ML project version control" />
                 </Slide>
@@ -58,62 +152,19 @@ export class DiagramSection extends Component {
                   <img src="/static/img/flow-3.png" alt="Deployment & Collaboration" />
                 </Slide>
               </Slider>
-            )}
+            </SliderWrapper>
+
+            <Slider 
+              {...columnsSliderProps}
+              ref={(ref) => this.slider2 = ref}
+              asNavFor={slider1}
+            >
+              <ColumnOne wide />
+              <ColumnTwo wide />
+              <ColumnThree wide />
+            </Slider>
           </OnlyMobile>
 
-          <Columns>
-            <Column>
-              <Caption text={`#945dd6`}>ML project version control</Caption>
-              <Description>
-                <p>
-                  Keep pointers in Git to large data input files, ML models, and
-                  intermediate data files along with the code. Use S3, GCP, or any
-                  network-accessible storage to store file contents.
-                </p>
-                <p>
-                  Full code and data provenance help track the complete evolution of
-                  every ML experiment. This guarantees reproducibility and makes it
-                  easy to switch back and forth between experiments.
-                </p>
-              </Description>
-              <LearnMore href={'/features'} />
-            </Column>
-            <Column>
-              <Caption text={`#13adc7`}>ML experiment management</Caption>
-              <Description>
-                <p>
-                  Harness the full power of Git branches to try different ideas
-                  instead of sloppy file suffixes and comments in code. Use
-                  automatic metric-tracking to navigate instead of paper and pencil.
-                </p>
-                <p>
-                  DVC was designed to keep branching as simple and fast as in Git —
-                  no matter the data file size. Along with first-class citizen
-                  metrics and ML pipelines, it means that a project has cleaner
-                  structure. It&#39;s easy to compare ideas and pick the best.
-                  Iterations become faster with intermediate artifact caching.
-                </p>
-              </Description>
-              <LearnMore href={'/features'} />
-            </Column>
-            <Column>
-              <Caption text={`#f46837`}>Deployment & Collaboration</Caption>
-              <Description>
-                <p>
-                  Instead of ad-hoc scripts, use push/pull commands to move
-                  consistent bundles of ML models, data, and code into production,
-                  remote machines, or a colleague&#39;s computer.
-                </p>
-                <p>
-                  DVC introduces lightweight pipelines as a first-class citizen
-                  mechanism in Git. They are language-agnostic and connect multiple
-                  steps into a DAG. These pipelines are used to remove friction from
-                  getting code into production.
-                </p>
-              </Description>
-              <LearnMore href={'/features'} />
-            </Column>
-          </Columns>
         </Container>
       </Diagram>
     )
@@ -181,12 +232,9 @@ const Graphic = styled.section`
 const Columns = styled.div`
   ${columns};
   margin-top: 10px;
-
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 `
 
 const Column = styled.div`
@@ -205,7 +253,7 @@ const Caption = styled.h3`
 `
 
 const Description = styled.div`
-  max-width: 311px;
+  max-width: ${(props) => props.wide ? '100%' : '311px'};
   font-size: 16px;
   color: #5f6c72;
 
@@ -264,6 +312,35 @@ const OnlyDesktop = styled.div`
   ${media.phone`display: none;`};
 `
 
+const SliderWrapper = styled.div`
+  .slick-next, 
+  .slick-prev {
+    height: 30px;
+    width: 30px;
+    z-index: 10;
+  }
+
+  .slick-next {
+    right: -15px;
+  }
+
+  .slick-prev {
+    left: -15px;
+  }
+
+  .slick-next:before, 
+  .slick-prev:before {
+    font-size: 30px;
+    line-height: 1;
+    opacity: .65;
+    color: #40364d;
+  }
+
+  Description {
+    max-width: 100%;
+  }
+`;
+
 const Slide = styled.div`
   width: 100%;
   img {
@@ -275,6 +352,6 @@ const Slide = styled.div`
 
 const SliderDots = styled.ul` 
   li button::before {
-    font-size: 10px;
+    font-size: 8px;
   }
 `;
