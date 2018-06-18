@@ -76,7 +76,7 @@ export default class HamburgerMenu extends Component {
                     <Link href="/documentation" onClick={this.itemClick}>
                       Documentation
                     </Link>
-                    <Link href="/documentation" onClick={this.itemClick}>
+                    <Link href="https://discuss.dvc.org" onClick={this.itemClick}>
                       Discuss
                     </Link>
                   </Links>
