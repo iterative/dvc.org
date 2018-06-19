@@ -1,44 +1,37 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import Collapse from 'react-collapse'
+import { presets } from 'react-motion';
 
 class TextCollapse extends Component {
   state = {
-    collapsed: true
+    isOpened: false
   }
 
   toggleCollapsed = () => {
     this.setState((prevState) => ({
-      collapsed: !prevState.collapsed
+      isOpened: !prevState.isOpened
     }))
   }
 
   render() { 
-    const { children, minHeight } = this.props;
-    const { collapsed } = this.state;
+    const { children, header } = this.props;
+    const { isOpened } = this.state;
 
     return (
-      <Collapse isOpened onClick={this.toggleCollapsed}>
-        <TextWrapper collapsed={collapsed} minHeight={minHeight}>
+      <div onClick={this.toggleCollapsed}>
+        {header}
+        <Collapse isOpened={isOpened} springConfig={presets.gentle}>
           {children}
-        </TextWrapper>
-        {collapsed && <MoreText>More...</MoreText>}
-      </Collapse>
+        </Collapse>
+        {!isOpened && <MoreText>More...</MoreText>}
+      </div>
     )
   }
 }
 
-TextCollapse.defaultProps = {
-  minHeight: 63
-}
-
 export default TextCollapse
 
-const TextWrapper = styled.div`
-  height: ${props => props.collapsed ? `${props.minHeight}px` : 'auto'};
-  overflow: hidden;
-`;
-
-const MoreText = styled.span`
+const MoreText = styled.div`
   color: #13adc7;
 `;

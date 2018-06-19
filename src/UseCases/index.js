@@ -6,6 +6,33 @@ import { default as YoutubeVideo } from '../Video'
 import { Element } from 'react-scroll'
 import TextCollapse from '../TextCollapse'
 
+const Heading1 = () => (
+  <Top>
+    <Icon>
+      <img src="/static/img/save-reprro.svg" width={30} height={30} />
+    </Icon>
+    <Title>Save and reproduce your experiments</Title>
+  </Top>
+)
+
+const Heading2 = () => (
+  <Top>
+    <Icon>
+      <img src="/static/img/git-icon.svg" width={30} height={30} />
+    </Icon>
+    <Title>Version control data files</Title>
+  </Top>
+)
+
+const Heading3 = () => (
+  <Top>
+    <Icon>
+      <img src="/static/img/share.svg" width={30} height={31} />
+    </Icon>
+    <Title>Establish workflow for deployment & collaboration</Title>
+  </Top>
+)
+
 const Description1 = () => (
   <Description>
     At any time, fetch the full context about any experiment you or
@@ -41,56 +68,44 @@ export default ({}) => (
         </Video>
         <Right>
           <Heading>Use cases</Heading>
-          <Cases>
-            <Case>
-              <Top>
-                <Icon>
-                  <img src="/static/img/save-reprro.svg" width={30} height={30} />
-                </Icon>
-                <Title>Save and reproduce your experiments</Title>
-              </Top>
-              <OnlyDesktop>
+
+          <OnlyDesktop>
+            <Cases>
+              <Case>
+                <Heading1 />
                 <Description1 />
-              </OnlyDesktop>
-              <OnlyMobile>
-                <TextCollapse>
+              </Case>
+              <Case>
+                <Heading2/>
+                <Description2 />
+              </Case>
+              <Case>
+                <Heading3 />
+                <Description3 />
+              </Case>
+            </Cases>
+          </OnlyDesktop>
+
+          <OnlyMobile>
+            <Cases>
+              <Case>
+                <TextCollapse header={<Heading1 />}>
                   <Description1 />
                 </TextCollapse>
-              </OnlyMobile>
-            </Case>
-            <Case>
-              <Top>
-                <Icon>
-                  <img src="/static/img/git-icon.svg" width={30} height={30} />
-                </Icon>
-                <Title>Version control data files</Title>
-              </Top>
-              <OnlyDesktop>
-                <Description2 />
-              </OnlyDesktop>
-              <OnlyMobile>
-                <TextCollapse>
+              </Case>
+              <Case>
+                <TextCollapse header={<Heading2 />}>
                   <Description2 />
                 </TextCollapse>
-              </OnlyMobile>
-            </Case>
-            <Case>
-              <Top>
-                <Icon>
-                  <img src="/static/img/share.svg" width={30} height={31} />
-                </Icon>
-                <Title>Establish workflow for deployment & collaboration</Title>
-              </Top>
-              <OnlyDesktop>
-                <Description3 />
-              </OnlyDesktop>
-              <OnlyMobile>
-                <TextCollapse>
+              </Case>
+              <Case>
+                <TextCollapse header={<Heading3 />}>
                   <Description3 />
                 </TextCollapse>
-              </OnlyMobile>
-            </Case>
-          </Cases>
+              </Case>
+            </Cases>
+          </OnlyMobile>
+
         </Right>
       </Container>
     </Element>
