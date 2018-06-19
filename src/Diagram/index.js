@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { media, container, columns, column, sizes } from '../styles'
+import { media, container, columns, column, OnlyDesktop, OnlyMobile } from '../styles'
 import { Element } from 'react-scroll'
 import Slider from 'react-slick'
 
@@ -256,24 +256,6 @@ const LearnMoreArea = styled.div`
   a:visited:hover {
     color: #745CB7;
   }
-`
-
-const OnlyMobile = styled.div`
-  display: none;
-  ${media.giant`display: none;`};
-  ${media.desktop`display: none;`};
-  ${media.tablet`display: none;`};
-  ${media.phablet`display: initial;`};
-  ${media.phone`display: initial;`};
-`
-
-const OnlyDesktop = styled.div`
-  display: initial;
-  ${media.giant`display: initial;`};
-  ${media.desktop`display: initial;`};
-  ${media.tablet`display: initial;`};
-  ${media.phablet`display: none;`};
-  ${media.phone`display: none;`};
 `
 
 const SliderWrapper = styled.div`

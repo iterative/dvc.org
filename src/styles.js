@@ -139,3 +139,21 @@ export const centered = css`
   align-items: center;
   flex-direction: column;
 `
+
+export const OnlyMobile = styled.div`
+  display: none;
+  ${media.giant`display: none;`};
+  ${media.desktop`display: none;`};
+  ${media.tablet`display: none;`};
+  ${media.phablet`display: initial;`};
+  ${media.phone`display: initial;`};
+`
+
+export const OnlyDesktop = styled.div`
+  display: initial;
+  ${media.giant`display: initial;`};
+  ${media.desktop`display: initial;`};
+  ${media.tablet`display: initial;`};
+  ${media.phablet`display: none;`};
+  ${media.phone`display: none;`};
+`

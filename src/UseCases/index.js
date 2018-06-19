@@ -1,9 +1,36 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media, container } from '../styles'
+import { media, container, OnlyDesktop, OnlyMobile } from '../styles'
 
 import { default as YoutubeVideo } from '../Video'
 import { Element } from 'react-scroll'
+import TextCollapse from '../TextCollapse'
+
+const Description1 = () => (
+  <Description>
+    At any time, fetch the full context about any experiment you or
+    your team has run. DVC guarantees that all files and metrics will
+    be consistent and in the right place to reproduce the experiment
+    or use it as a baseline for a new iteration.
+  </Description>
+)
+
+const Description2 = () => (
+  <Description>
+    DVC keeps metafiles in Git instead of Google Docs to describe and
+    version control your data sets and models. DVC supports a variety
+    of external storage types as a remote cache for large files.
+  </Description>
+)
+
+const Description3 = () => (
+  <Description>
+    DVC defines rules and processes for working effectively and
+    consistently as a team. It serves as a protocol for collaboration,
+    sharing results, and getting and running a finished model in a
+    production environment.
+  </Description>
+)
 
 export default ({}) => (
   <UseCases>
@@ -22,12 +49,14 @@ export default ({}) => (
                 </Icon>
                 <Title>Save and reproduce your experiments</Title>
               </Top>
-              <Description>
-                At any time, fetch the full context about any experiment you or
-                your team has run. DVC guarantees that all files and metrics will
-                be consistent and in the right place to reproduce the experiment
-                or use it as a baseline for a new iteration.
-              </Description>
+              <OnlyDesktop>
+                <Description1 />
+              </OnlyDesktop>
+              <OnlyMobile>
+                <TextCollapse>
+                  <Description1 />
+                </TextCollapse>
+              </OnlyMobile>
             </Case>
             <Case>
               <Top>
@@ -36,11 +65,14 @@ export default ({}) => (
                 </Icon>
                 <Title>Version control data files</Title>
               </Top>
-              <Description>
-                DVC keeps metafiles in Git instead of Google Docs to describe and
-                version control your data sets and models. DVC supports a variety
-                of external storage types as a remote cache for large files.
-              </Description>
+              <OnlyDesktop>
+                <Description2 />
+              </OnlyDesktop>
+              <OnlyMobile>
+                <TextCollapse>
+                  <Description2 />
+                </TextCollapse>
+              </OnlyMobile>
             </Case>
             <Case>
               <Top>
@@ -49,12 +81,14 @@ export default ({}) => (
                 </Icon>
                 <Title>Establish workflow for deployment & collaboration</Title>
               </Top>
-              <Description>
-                DVC defines rules and processes for working effectively and
-                consistently as a team. It serves as a protocol for collaboration,
-                sharing results, and getting and running a finished model in a
-                production environment.
-              </Description>
+              <OnlyDesktop>
+                <Description3 />
+              </OnlyDesktop>
+              <OnlyMobile>
+                <TextCollapse>
+                  <Description3 />
+                </TextCollapse>
+              </OnlyMobile>
             </Case>
           </Cases>
         </Right>
