@@ -230,7 +230,7 @@ const GetStartedButton = styled.a`
 `
 
 const Command = styled.div`
-  width: 412px;
+  width: 100%;
   height: 57px;
   border-radius: 8px;
   background-color: #ffffff;
@@ -246,7 +246,8 @@ const Command = styled.div`
 `
 
 const Commands = styled.div`
-  flex: 1;
+  flex: 1 1 auto;
+  max-width: 412px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -256,7 +257,7 @@ const Commands = styled.div`
   ${media.tablet`
     align-items: center;
     padding-top: 24px;
-    margin-top: 30px;
+    margin: 30px auto 0;
   `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
