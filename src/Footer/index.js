@@ -89,18 +89,18 @@ const Footer = styled.section`
 
 const Container = styled.div`
   ${container};
-  padding-top: 64px;
+  padding-top: 64px !important;
   padding-bottom: 44px;
 
-  ${media.phablet`
-    padding-top: 31px !important;
-    padding-bottom: 31px !important;
-  `};
+  ${media.tablet`
+    padding: 64px 61px 44px 67px;
+    max-width: auto;
+  `}
 
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    padding-top: 31px !important;
-    padding-bottom: 31px !important;
-  }
+  ${media.phablet`
+    padding: 31px 31px 31px 31px;
+    max-width: auto;
+  `};
 `
 
 const Top = styled.div`

@@ -61,14 +61,16 @@ const Description3 = () => (
 
 export default ({}) => (
   <UseCases>
-    <Element name="how-it-works">
-      <Container>
+    <Element name="how-it-works" />
+
+    <Container>
+      <Heading>Use cases</Heading>
+      <FlexWrap>
         <Video>
           <YoutubeVideo id={`4h6I9_xeYA4`} />
         </Video>
-        <Right>
-          <Heading>Use cases</Heading>
 
+        <Right>
           <OnlyDesktop>
             <Cases>
               <Case>
@@ -105,68 +107,60 @@ export default ({}) => (
               </Case>
             </Cases>
           </OnlyMobile>
-
         </Right>
-      </Container>
-    </Element>
+      </FlexWrap>
+    </Container>
   </UseCases>
 )
 
 const UseCases = styled.section`
   padding-top: 80px;
   padding-bottom: 57px;
-  overflow-x: hidden;
 `
 
 const Container = styled.div`
   ${container};
+`
+
+const FlexWrap = styled.div`
   display: flex;
   justify-content: space-between;
 
-  ${media.phablet`
+  ${media.tablet`
     flex-direction: column;
   `};
 
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    flex-direction: column;
-  }
-`
+  ${media.phablet`
+    flex-direction: column-reverse;
+  `};
+`;
 
 const Video = styled.div`
-  flex-basis: 476px;
-  padding-top: 107px;
-  padding-right: 107px;
+  display: flex;
+  flex: 1;
+  margin-top: 15px;
+  margin-right: 30px;
 
-  ${media.phablet`
-    padding-top: 0px;
-    padding-right: 0px;
-    flex-basis: auto;
-    order: 2;
+  ${media.tablet`
+    margin-bottom: 20px;
   `};
-
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    padding-right: 0px;
-    padding-top: 107px;
-    flex-basis: auto;
-    order: 2;
-  }
 `
 
 const Right = styled.div`
-  flex-basis: 373px;
-
-  ${media.phablet`
-    flex-basis: auto;
-    order: 1;
-  `};
+  flex: 1;
 `
 
 const Heading = styled.div`
   font-family: BrandonGrotesqueMed;
-  min-height: 44px;
+  min-height: 50px;
   font-size: 30px;
   font-weight: 500;
+  text-align: center;
   color: #40364d;
+
+  ${media.tablet`
+    text-align: left;
+  `};
 `
 
 const Cases = styled.div`

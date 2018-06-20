@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import styled, { css, keyframes } from 'styled-components'
+import styled, { css } from 'styled-components'
 
-import { media } from '../styles'
+import { media, OnlyDesktop, OnlyMobile } from '../styles'
 import DownloadButton from '../DownloadButton'
-import TextRotate from '../TextRotate'
 import GithubLine from '../GithubLine'
 
 import { scroller } from 'react-scroll'
@@ -100,55 +99,25 @@ export default class LandingHero extends Component {
   }
 }
 
-const OnlyMobile = styled.div`
-  display: none;
-  ${media.giant`display: none;`};
-  ${media.desktop`display: none;`};
-  ${media.tablet`display: none;`};
-  ${media.phablet`display: initial;`};
-  ${media.phone`display: initial;`};
-`
-
-const OnlyDesktop = styled.div`
-  display: initial;
-  ${media.giant`display: initial;`};
-  ${media.desktop`display: initial;`};
-  ${media.tablet`display: initial;`};
-  ${media.phablet`display: none;`};
-  ${media.phone`display: none;`};
-`
-
 const Wrapper = styled.div`
   padding-top: 136px;
   padding-bottom: 146px;
 
   display: flex;
+  justify-content: center;
 
-  ${media.phablet`
+  ${media.tablet`
     flex-direction: column;
-    padding-top: 26px;
-    padding-bottom: 66px;
+    padding-top: 46px;
+    padding-bottom: 86px;
   `};
-
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    flex-direction: column;
-    padding-top: 26px;
-    padding-bottom: 66px;
-  }
 `
 
 const About = styled.div`
-  flex-basis: 640px;
-
-  ${media.phablet`
-    flex-basis: auto;
-  `};
-
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    flex-basis: auto;
-    max-width: 362px;
+  ${media.tablet`
+    max-width: 412px;
     margin: 0px auto;
-  }
+  `};
 `
 
 const Title = styled.h1`
@@ -157,6 +126,11 @@ const Title = styled.h1`
   color: #40364d;
   font-family: BrandonGrotesqueMed;
   padding-right: 2em;
+
+  ${media.tablet`
+    padding-right: 0;
+    font-size: 36px;
+  `};
 
   ${media.phablet`
     font-size: 32px;
@@ -265,13 +239,8 @@ const Command = styled.div`
   color: ${({ active }) => active ? '#40364d' : '#b4b9c4'};
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
   transform: translateZ(0);
-
   display: flex;
   align-items: center;
-
-  ${media.phablet`
-    width: 100%;
-  `}
   opacity: ${({ active }) => active ? 1 : 0.30};
   transition: opacity 3s, border .5s, color 1s;
 `
@@ -284,9 +253,10 @@ const Commands = styled.div`
   padding-top: 10px;
   font-family: monospace, monospace;
 
-  ${media.phablet`
+  ${media.tablet`
     align-items: center;
     padding-top: 24px;
+    margin-top: 30px;
   `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
@@ -307,7 +277,7 @@ const Github = styled.div`
   font-weight: 500;
   color: #b0b8c5;
 
-  ${media.phablet`
+  ${media.tablet`
     align-items: center;
     margin-top: 24px;
     font-size: 18px;

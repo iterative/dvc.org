@@ -194,6 +194,7 @@ const Columns = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
+  ${media.tablet`flex-direction: column;`};
 `
 
 const Column = styled.div`
@@ -223,6 +224,10 @@ const Description = styled.div`
 
   p {
     margin-bottom: 24px;
+
+    ${media.tablet`
+      margin-bottom: 12px;
+    `};
   }
 `
 
