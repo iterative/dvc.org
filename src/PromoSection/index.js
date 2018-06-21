@@ -119,9 +119,12 @@ const Button = styled.button`
 const Glyph = styled.img`
   position: absolute;
   z-index: 0;
-
   width: 158px;
-  height: 192px;
+  height: auto;
+
+  ${media.tablet`
+    width: 110px;
+  `};
 
   object-fit: contain;
 

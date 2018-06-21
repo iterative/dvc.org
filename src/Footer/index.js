@@ -98,7 +98,7 @@ const Container = styled.div`
   `}
 
   ${media.phablet`
-    padding: 31px 31px 31px 31px;
+    padding: 30px 25px;
     max-width: auto;
   `};
 `
@@ -154,8 +154,6 @@ const Link = styled.a`
   &:hover {
     color: #ccc;
   }
-  
-  
 
   ${props =>
     props.src &&

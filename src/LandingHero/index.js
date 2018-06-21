@@ -104,7 +104,7 @@ const Wrapper = styled.div`
   padding-bottom: 146px;
 
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 
   ${media.tablet`
     flex-direction: column;
@@ -269,7 +269,7 @@ const Commands = styled.div`
 const Line = styled.span`
   font-size: 15px;
   font-weight: 700;
-  padding: 0px 0px 0px 12px;
+  padding: 0px 10px 0px 12px;
 `
 
 const Github = styled.div`

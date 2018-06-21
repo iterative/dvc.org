@@ -137,12 +137,16 @@ const FlexWrap = styled.div`
 
 const Video = styled.div`
   display: flex;
+  align-items: center;
   flex: 1;
-  margin-top: 15px;
   margin-right: 30px;
 
   ${media.tablet`
     margin-bottom: 20px;
+  `};
+
+  ${media.phablet`
+    margin: 0;
   `};
 `
 
