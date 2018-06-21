@@ -204,9 +204,15 @@ const Column = styled.div`
   padding: 0 10px;
   box-sizing: border-box;
 
-  ${media.tablet`margin-right: 0px;`};
-  ${media.phablet`margin-top: 20px;`};
+  ${media.tablet`
+    margin-right: 0px;
+    flex-basis: auto;
+  `};
 
+  ${media.phablet`
+    margin-top: 20px;
+    flex-basis: auto;
+  `};
 `
 
 const Caption = styled.h3`

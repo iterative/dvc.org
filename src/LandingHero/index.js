@@ -152,7 +152,7 @@ const Buttons = styled.div`
   `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    justify-content: center;
+    justify-content: flex-start;
   }
 `
 

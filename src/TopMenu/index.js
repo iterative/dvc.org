@@ -26,18 +26,17 @@ export default class TopMenu extends Component {
   }
 
   handleScroll = () => {
-    let level = Math.min(window.scrollY, 25)
-
     this.setState({
-      level
+      scrolled: window.scrollY > 25
     })
   }
 
   render() {
-    const { level } = this.state
+    const { scrolled } = this.state
+
     return (
       <Wrapper>
-        <Container level={level}>
+        <Container scrolled={scrolled}>
           <Logo href="/">
             <img
               src="/static/img/logo.png"
@@ -67,19 +66,19 @@ const Wrapper = styled.div`
 const Container = styled.section`
   ${container};
   width: auto;
+  min-height: ${MIN_HEIGHT}px;
 
   ${props => `
-    height: ${MIN_HEIGHT + 20 - props.level}px;
+    height: ${MIN_HEIGHT + (props.scrolled ? 0 : 20)}px;
   `}
 
   z-index: 3;
   position: relative;
-
   color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  transition: height .3s ease;
+  transition: height .2s ease;
   will-change: height;
 
   ${media.phablet`
@@ -87,12 +86,7 @@ const Container = styled.section`
     justify-content: center;
     align-items: start;
     height: auto;
-    min-height: ${MIN_HEIGHT}px;
   `};
-  
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    height: auto;
-  }
 `
 
 const Logo = styled.a`
