@@ -162,7 +162,8 @@ const Link = styled.a`
       margin-right: 14px;
       width: 26px;
       height: 26px;
-      content: '';
+      content: ' ';
+      display: block;
       background-image: url(${props.src});
       background-repeat: no-repeat;
       background-position: center center;

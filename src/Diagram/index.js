@@ -199,6 +199,7 @@ const Columns = styled.div`
 
 const Column = styled.div`
   ${column};
+  max-width: 33.3%;
   display: block;
   margin-top: 49px;
   padding: 0 10px;
@@ -207,11 +208,13 @@ const Column = styled.div`
   ${media.tablet`
     margin-right: 0px;
     flex-basis: auto;
+    max-width: 100%;
   `};
 
   ${media.phablet`
     margin-top: 20px;
     flex-basis: auto;
+    max-width: 100%;
   `};
 `
 
