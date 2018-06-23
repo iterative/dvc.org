@@ -44,6 +44,7 @@ const Link = styled.a`
 
 const Nav = styled.div`
   display: flex;
+  flex-shrink: 0;
   flex-direction: row;
   align-items: center;
 

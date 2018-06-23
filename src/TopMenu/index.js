@@ -11,7 +11,7 @@ export default class TopMenu extends Component {
   constructor() {
     super()
     this.state = {
-      level: 0
+      scrolled: false
     }
     this.handleScrollThrottled = throttle(this.handleScroll, 300)
   }
@@ -27,7 +27,7 @@ export default class TopMenu extends Component {
 
   handleScroll = () => {
     this.setState({
-      scrolled: window.scrollY > 25
+      scrolled: (window.scrollY || window.pageYOffset) > 25
     })
   }
 
@@ -76,6 +76,7 @@ const Container = styled.section`
   position: relative;
   color: #ffffff;
   display: flex;
+  flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
   transition: height .2s ease;

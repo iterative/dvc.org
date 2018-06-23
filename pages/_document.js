@@ -70,23 +70,10 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           />
-          <link
-            rel="shortcut icon"
-            type="image/x-icon"
-            href="/static/favicon.ico"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            href="/static/favicon-32x32.png"
-            sizes="32x32"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            href="/static/favicon-16x16.png"
-            sizes="16x16"
-          />
+          <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
+          <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/static/favicon.ico" />
+          <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32" />
+          <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16" />
           <link rel="stylesheet" type="text/css" charset="UTF-8" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" />
           <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" />
           {this.props.styleTags}

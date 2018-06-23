@@ -116,6 +116,7 @@ const Wrapper = styled.div`
 const About = styled.div`
   ${media.tablet`
     max-width: 412px;
+    width: 100%;
     margin: 0px auto;
   `};
 `
