@@ -137,14 +137,16 @@ const FlexWrap = styled.div`
 
 const Video = styled.div`
   display: flex;
+  flex: 1 2 60%;
   flex-direction: column;
   width: 100%;
   align-self: center;
-  margin-right: 30px;
+  margin-right: 10%;
 
   ${media.tablet`
     margin-bottom: 20px;
     margin-right: 0;
+    flex: auto;
   `};
 
   ${media.phablet`
@@ -153,7 +155,15 @@ const Video = styled.div`
 `
 
 const Right = styled.div`
-  // flex: 1 0 auto;
+  flex: 1 1 40%;
+
+  ${media.tablet`
+    flex: auto;
+  `};
+
+  ${media.phablet`
+    flex: auto;
+  `};
 `
 
 const Heading = styled.div`
