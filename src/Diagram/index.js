@@ -295,6 +295,10 @@ const SliderWrapper = styled.div`
     opacity: .35;
     color: #40364d;
   }
+
+  img {
+    pointer-events: none;
+  }
 `;
 
 const Slide = styled.div`
