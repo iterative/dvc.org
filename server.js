@@ -3,7 +3,7 @@
 // See https://github.com/zeit/next.js/issues/1245 for discussions on Universal Webpack or universal Babel
 const { createServer } = require('http')
 const { parse } = require('url')
-const forceSsl = require('force-ssl-heroku')
+const _ = require('force-ssl-heroku')
 const next = require('next')
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -15,8 +15,14 @@ app.prepare().then(() => {
   createServer((req, res) => {
     const parsedUrl = parse(req.url, true)
     const { pathname, query } = parsedUrl
+    const doc = /\/doc.*/i
 
-    handle(req, res, parsedUrl)
+    if (doc.test(pathname)) {
+      app.render(req, res, '/doc', query)
+    } else {
+      handle(req, res, parsedUrl)
+    }
+
   }).listen(port, err => {
     if (err) throw err
     console.log('> Ready on http://localhost:3000')
