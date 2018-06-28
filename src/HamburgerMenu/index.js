@@ -3,30 +3,41 @@ import styled from 'styled-components'
 import { media } from '../styles'
 
 import Hamburger from '../Hamburger'
+import { logEvent } from "../utils/ga";
 
-const SocialLink = ({ src, href, children }) => (
-  <Link src={src} href={href}>
+const SocialLink = ({ src, href, click, children }) => (
+  <Link src={src} href={href} onClick={click}>
     {children}
   </Link>
 )
 
 export default class HamburgerMenu extends Component {
   state = {
-    menu: false
+    menu: false,
+    clicked: false
   }
 
-  toggleMobileMenu = () =>
+  toggleMobileMenu = () => {
+    if (!this.state.clicked) {
+      logEvent('hamburger', 'open')
+    }
     this.setState(prevState => ({
-      menu: !prevState.menu
+      menu: !prevState.menu,
+      clicked: false
     }))
+  }
 
   close = () =>
     this.setState({
       menu: false
     })
 
-  itemClick = () => {
+  itemClick = (item) => () => {
     this.close()
+    logEvent('hamburger', item)
+  }
+
+  scrollToTop = () => {
     window.scrollTo(0, 0)
   }
 
@@ -56,10 +67,10 @@ export default class HamburgerMenu extends Component {
                 <Column>
                   <Heading>Product</Heading>
                   <Links>
-                    <Link href="/#" onClick={this.itemClick}>
+                    <Link href="/#" onClick={this.scrollToTop}>
                       Overview
                     </Link>
-                    <Link href="/features" onClick={this.itemClick}>
+                    <Link href="/features" onClick={this.itemClick('features')}>
                       Features
                     </Link>
                   </Links>
@@ -69,14 +80,14 @@ export default class HamburgerMenu extends Component {
                   <Links>
                     <Link
                       href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46"
-                      onClick={this.itemClick}
+                      onClick={this.itemClick('tutorial')}
                     >
                       Get started
                     </Link>
-                    <Link href="/documentation" onClick={this.itemClick}>
+                    <Link href="/documentation" onClick={this.itemClick('documentation')}>
                       Documentation
                     </Link>
-                    <Link href="https://discuss.dvc.org" onClick={this.itemClick}>
+                    <Link href="https://discuss.dvc.org" onClick={this.itemClick('discuss')}>
                       Discuss
                     </Link>
                   </Links>
@@ -84,10 +95,11 @@ export default class HamburgerMenu extends Component {
                 <Column>
                   <Heading>Company</Heading>
                   <Links>
-                    <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
+                    <Link href="https://blog.dataversioncontrol.com/" onClick={this.itemClick('blog')}>Blog</Link>
                     <SocialLink
                       src="/static/img/iterative.png"
                       href="https://iterative.ai/"
+                      click={this.itemClick('iterative')}
                     >
                       Iterative.ai
                     </SocialLink>
@@ -99,12 +111,14 @@ export default class HamburgerMenu extends Component {
                     <SocialLink
                       src="/static/img/twitter.png"
                       href="https://twitter.com/Iterativeai "
+                      click={this.itemClick('twitter')}
                     >
                       Twitter
                     </SocialLink>
                     <SocialLink
                       src="/static/img/github.png"
                       href="https://github.com/iterative"
+                      click={this.itemClick('github')}
                     >
                       Github
                     </SocialLink>

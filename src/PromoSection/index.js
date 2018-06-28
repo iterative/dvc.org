@@ -1,13 +1,16 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media } from '../styles'
+import { logEvent } from '../utils/ga'
 
 const getStarted = () => {
+  logEvent('promo', 'get-started')
   window.location =
     'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
 }
 
 const features = () => {
+  logEvent('promo', 'features')
   window.location = '/features'
 }
 

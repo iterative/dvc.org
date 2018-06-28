@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import { media, OnlyDesktop, OnlyMobile } from '../styles'
 import DownloadButton from '../DownloadButton'
 import GithubLine from '../GithubLine'
-
+import { logEvent } from "../utils/ga";
 import { scroller } from 'react-scroll'
 
 export default class LandingHero extends Component {
@@ -30,6 +30,7 @@ export default class LandingHero extends Component {
   }
 
   scrollToVideo = () => {
+    logEvent('button', 'how-it-works')
     scroller.scrollTo('how-it-works', {
       duration: 800,
       offset: -75,
