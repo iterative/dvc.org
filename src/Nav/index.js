@@ -1,19 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
 import { media } from '../styles'
+import { logEvent } from '../utils/ga'
 
 const getStarted = () => {
+  logEvent('menu', 'get-started')
   window.location = 'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
 }
 
 export default ({ mobile = false }) => (
   <Nav mobile={mobile}>
     <Links>
-      <Link href="/features">Features</Link>
-      <Link href="/documentation">Doc</Link>
-      <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
-      <Link href="https://github.com/iterative/dvc">Github</Link>
-      <Link href="https://discuss.dvc.org">Discuss</Link>
+      <Link href="/features" onClick={() => {logEvent('menu', 'features')}}>Features</Link>
+      <Link href="/documentation" onClick={() => {logEvent('menu', 'doc')}}>Doc</Link>
+      <Link href="https://blog.dataversioncontrol.com/" onClick={() => {logEvent('menu', 'blog')}}>Blog</Link>
+      <Link href="https://github.com/iterative/dvc" onClick={() => {logEvent('menu', 'github')}}>Github</Link>
+      <Link href="https://discuss.dvc.org" onClick={() => {logEvent('menu', 'discuss')}}>Discuss</Link>
     </Links>
     <GetStartedButton onClick={getStarted}>Get Started</GetStartedButton>
   </Nav>

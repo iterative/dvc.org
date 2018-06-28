@@ -19,7 +19,7 @@ export default class HamburgerMenu extends Component {
 
   toggleMobileMenu = () => {
     if (!this.state.clicked) {
-      logEvent('menu', 'open')
+      logEvent('hamburger', 'open')
     }
     this.setState(prevState => ({
       menu: !prevState.menu,
@@ -34,7 +34,7 @@ export default class HamburgerMenu extends Component {
 
   itemClick = (item) => () => {
     this.close()
-    logEvent('menu', item)
+    logEvent('hamburger', item)
   }
 
   scrollToTop = () => {
