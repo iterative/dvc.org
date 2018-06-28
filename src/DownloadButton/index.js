@@ -93,7 +93,7 @@ export default class DownloadButton extends Component {
     }))
   }
 
-  download = (id) => () => {
+  download = (id) => {
     this.close()
     logEvent('download', id)
   }
@@ -123,6 +123,7 @@ export default class DownloadButton extends Component {
 
         return (
           <DownloadLink
+            download={true}
             key={id}
             href={link.url}
             onClick={() => this.download(id)}
