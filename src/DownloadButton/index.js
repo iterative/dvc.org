@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 
 import isClient from '../utils/isClient'
+import { logEvent } from '../utils/ga'
 
 const OSX = `osx`
 const WINDOWS = `win`
@@ -38,7 +39,8 @@ const links = {
 export default class DownloadButton extends Component {
   state = {
     os: UNKNOWN,
-    open: false
+    open: false,
+    clicked: false
   }
 
   constructor() {
@@ -82,13 +84,18 @@ export default class DownloadButton extends Component {
   close = () => this.setState({ open: false })
 
   toggle = () => {
+    if (!this.state.clicked) {
+      logEvent('button', 'download')
+    }
     this.setState(prevState => ({
-      open: !prevState.open
+      open: !prevState.open,
+      clicked: true
     }))
   }
 
-  download = () => {
+  download = (id) => () => {
     this.close()
+    logEvent('download', id)
   }
 
   renderLinks = () => (
@@ -103,6 +110,7 @@ export default class DownloadButton extends Component {
         if (!link.url) {
           return (
             <DownloadInput
+              readOnly
               key={id}
               value={link.title}
               onClick={function(e) {
@@ -117,8 +125,7 @@ export default class DownloadButton extends Component {
           <DownloadLink
             key={id}
             href={link.url}
-            target="_blank"
-            onClick={() => this.download(link)}
+            onClick={() => this.download(id)}
             active={id === this.state.os}
           >
             {link.title}

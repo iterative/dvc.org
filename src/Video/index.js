@@ -1,18 +1,7 @@
 import React, { Component } from 'react'
-import YouTube from 'react-youtube'
 import styled from 'styled-components'
-import { media } from '../styles'
+import { logEvent } from "../utils/ga";
 
-const opts = {
-  height: '100%',
-  width: '100%',
-  playerVars: {
-    // https://developers.google.com/youtube/player_parameters
-    autoplay: 0,
-    showinfo: 0,
-    controls: 0
-  }
-}
 
 const WatchButton = ({ onClick, disabled }) => (
   <Button onClick={onClick} disabled={disabled}>
@@ -44,6 +33,7 @@ export default class Video extends Component {
   }
 
   watch = () => {
+    logEvent('button', 'video')
     this.setState({ watching: true })
     this.play()
   }
