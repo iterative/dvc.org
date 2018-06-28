@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Markdown Demo",
+    "file": "/static/docs/markdown-test.md",
+    "links": [
+      {
+        "name": "Some commands",
+        "href": "#some-commands"
+      },
+      {
+        "name": "How about some code?",
+        "href": "#how-about-some-code"
+      },
+      {
+        "name": "Python code example",
+        "href": "#python-code-example"
+      },
+      {
+        "name": "Tables?",
+        "href": "#tables"
+      }
+    ]
+  },
+  {
+    "name": "Redux Saga (tutorial)",
+    "file": "/static/docs/redux-saga.md",
+    "links": [
+      {
+        "name": "The initial setup",
+        "href": "#the-initial-setup"
+      },
+      {
+        "name": "Hello Sagas!",
+        "href": "#hello-sagas"
+      },
+      {
+        "name": "Making Asynchronous calls",
+        "href": "#making-asynchronous-calls"
+      },
+      {
+        "name": "Making our code testable",
+        "href": "#making-our-code-testable"
+      }
+    ]
+  },
+  {
+    "name": "Declarative Effects",
+    "file": "/static/docs/declarative-effects.md"
+  },
+  {
+    "name": "Tutorial #4",
+    "file": "/static/docs/markdown-test.md"
+  }
+]
