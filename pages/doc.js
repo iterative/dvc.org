@@ -158,7 +158,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: row;
   min-height: 80vh;
-  max-width: 1005px;
   margin-left: auto;
   margin-right: auto;
 
@@ -209,7 +208,7 @@ const Content = styled.article`
   flex: 1;
   box-sizing: border-box;
   min-width: 200px;
-  max-width: 980px;
+  max-width: 675px;
   margin: 30px 0 30px 30px;
 
   ${media.phablet`
