@@ -29,6 +29,7 @@
     "github-markdown-css": "^2.10.0",
     "heroku-ssl-redirect": "0.0.4",
     "lodash.kebabcase": "^4.1.1",
+    "lodash.startcase": "^4.4.0",
     "lodash.throttle": "^4.1.1",
     "next": "^6.0.3",
     "raw-loader": "^0.5.1",

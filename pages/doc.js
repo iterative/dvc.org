@@ -13,6 +13,7 @@ import bash from 'react-syntax-highlighter/languages/hljs/bash'
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
+import startCase from 'lodash.startcase'
 import { scroller, animateScroll } from 'react-scroll'
 // styles
 import styled from 'styled-components'
@@ -30,11 +31,11 @@ function flatten(text, child) {
     : React.Children.toArray(child.props.children).reduce(flatten, text)
 }
 
-const HeadingRenderer = (props) => {
-  var children = React.Children.toArray(props.children)
+const HeadingRenderer = ({ level, children }) => {
+  var content = React.Children.toArray(children)
   var text = children.reduce(flatten, '')
   var slug = kebabCase(text)
-  return React.createElement('h' + props.level, { id: slug }, props.children)
+  return React.createElement('h' + level, { id: slug }, content)
 }
 
 const CodeBlock = ({ value, language }) => (
@@ -48,18 +49,53 @@ const CodeBlock = ({ value, language }) => (
 
 export default class Documentation extends Component {
   state = {
-    activeSection: 0,
+    currentSection: 0,
+    currentFile: null,
     markdown: '',
+    headings: [],
   }
 
   componentDidMount() {
-    this.loadFile(sidebar[0].file)
+    this.onSectionSelect(0)
   }
 
-  selectSection = (index) => () => {
-    this.loadFile(sidebar[index].file)
+  onSectionSelect = (idx) => {
+    const { indexFile, files } = sidebar[idx]
+    this.onFileSelect(indexFile || files[0], idx)
     this.setState({
-      activeSection: index
+      currentSection: idx,
+    })
+  }
+
+  onFileSelect = (file, section) => {
+    const src = `${sidebar[section].folder}/${file}`
+    fetch(src).then(res => {
+      res.text().then(text => {
+        this.setState({
+          currentFile: file,
+          markdown: text,
+        }, () => {
+          this.scrollTop();
+          this.parseHeadings(text);
+        })
+      })
+    })
+  }
+
+  parseHeadings = (text) => {
+    const headingRegex = /\n(## \s*)(.*)/g;
+    const matches = [];
+    let match;
+    do {
+        match = headingRegex.exec(text);
+        if (match) matches.push({
+          text: match[2],
+          slug: kebabCase(match[2])
+        })
+    } while (match);
+
+    this.setState({
+      headings: matches,
     })
   }
 
@@ -81,18 +117,8 @@ export default class Documentation extends Component {
     })
   }
 
-  loadFile = (file) => {
-    fetch(file)
-      .then(res => {
-        res.text().then(r => {
-          this.setState({ markdown: r })
-          this.scrollTop()
-        })
-      })
-  }
-
   render() {
-    const { activeSection, markdown } = this.state
+    const { currentSection, currentFile, markdown, headings } = this.state
 
     return (
       <Page stickHeader={true}>
@@ -110,19 +136,47 @@ export default class Documentation extends Component {
               <Sections>
                 <SectionLinks>
                   {
-                    sidebar.map(({ name, links = [] }, index) => {
-                      const isActive = activeSection === index;
+                    sidebar.map(({ name, files = [] }, index) => {
+                      const isSectionActive = currentSection === index;
                       return (
                         <div key={index}>
-                          <SectionLink level={1} onClick={this.selectSection(index)} isActive={isActive}>
+                          <SectionLink
+                            level={1} 
+                            onClick={() => this.onSectionSelect(index)} 
+                            isActive={isSectionActive}
+                          >
                             {name}
                           </SectionLink>
-                          <Collapse items={links.length} isOpen={isActive}>
-                            {links && links.map((link, idx) => (
-                              <SectionLink level={2} onClick={this.scrollToLink(link.href)} key={idx}>
-                                {link.name}
-                              </SectionLink>
-                            ))}
+
+                          {/* Section Files */}
+                          <Collapse isOpen={isSectionActive} items={files.length + headings.length}>
+                            {files && files.map((file, fileIndex) => {
+                              const isFileActive = currentFile === file;
+                              return (
+                                <div key={`file-${fileIndex}`}>
+                                  <SectionLink 
+                                    level={2} 
+                                    onClick={() => this.onFileSelect(file, index)}
+                                    isActive={isFileActive}
+                                  >
+                                    {startCase(file.slice(0, -3))}
+                                  </SectionLink>
+
+                                  {/* File Headings */}
+                                  <Collapse isOpen={isFileActive} items={headings.length}>
+                                    {!!headings.length && headings.map(({ text, slug }, headingIndex) => (
+                                      <SectionLink 
+                                        level={3}
+                                        key={`link-${headingIndex}`}
+                                        onClick={this.scrollToLink('#' + slug)}
+                                      >
+                                        {text}
+                                      </SectionLink>
+                                    ))}
+                                  </Collapse>
+                                </div>
+                              )}
+                            )}
                           </Collapse>
                         </div>
                       )
@@ -238,8 +292,10 @@ const SectionLink = styled.a`
   font-weight: 400;
   line-height: 26px;
   min-height: 26px;
-  margin-bottom: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
   cursor: pointer;
+  margin: 0;
 
   &:hover {
     color: #3c3937;
@@ -259,13 +315,19 @@ const SectionLink = styled.a`
   ${props =>
     props.level === 1 &&
     `
-    padding-left: 14px;
+    margin-left: 15px;
   `} 
   
   ${props =>
     props.level === 2 &&
     `
-      padding-left: 44px;
+      margin-left: 40px;
+  `};
+  
+  ${props =>
+    props.level === 3 &&
+    `
+      margin-left: 65px;
 
       &::before {
         display: none;
@@ -275,12 +337,13 @@ const SectionLink = styled.a`
   ${props =>
     props.isActive &&
     `
-    color: #333;
+    color: #40364d;
 	`};
 `
 
 const Collapse = styled.div`
-  height: ${({ items, isOpen }) => isOpen ? items * 30 + 5*(!!items) : 0}px
+  height: 0;
   overflow: hidden;
-  transition: height .3s ease;
+  height: ${({ isOpen, items }) => isOpen ? items * 31 : 0}px;
+  transition: height .3s linear;
 `
