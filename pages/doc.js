@@ -56,27 +56,37 @@ export default class Documentation extends Component {
   }
 
   componentDidMount() {
-    this.onSectionSelect(0)
+    const { hash } =  window.location
+    const file = hash.slice(1) + '.md'
+    const section = sidebar.findIndex((section) => section.files.includes(file))
+    if (section !== -1) {
+      this.setState({ currentSection: section }, () => this.onFileSelect(file, section))
+    } else {
+      this.onSectionSelect(0)
+    }
   }
 
   onSectionSelect = (idx) => {
     const { indexFile, files } = sidebar[idx]
-    this.onFileSelect(indexFile || files[0], idx)
+    window.history.pushState(null, null, window.location.pathname)
+    this.onFileSelect(indexFile || files[0], idx, indexFile)
     this.setState({
       currentSection: idx,
     })
   }
 
-  onFileSelect = (file, section) => {
+  onFileSelect = (file, section, isIndexFile) => {
     const src = `${sidebar[section].folder}/${file}`
+    isIndexFile || window.history.pushState(null, null, `#${file.slice(0, -3)}`)
     fetch(src).then(res => {
       res.text().then(text => {
         this.setState({
           currentFile: file,
           markdown: text,
+          headings: [],
         }, () => {
           this.scrollTop();
-          this.parseHeadings(text);
+          isIndexFile || this.parseHeadings(text);
         })
       })
     })
@@ -158,6 +168,7 @@ export default class Documentation extends Component {
                                     level={2} 
                                     onClick={() => this.onFileSelect(file, index)}
                                     isActive={isFileActive}
+                                    href={`#${file.slice(0, -3)}`}
                                   >
                                     {startCase(file.slice(0, -3))}
                                   </SectionLink>
@@ -310,6 +321,12 @@ const SectionLink = styled.a`
     background: url('/static/img/triangle_dark.svg') no-repeat center center;
     left: 0px;
     top: 10px;
+
+    ${props =>
+      props.isActive &&
+      `
+      transform: rotate(-90deg);
+    `} 
   }
 
   ${props =>
@@ -327,7 +344,7 @@ const SectionLink = styled.a`
   ${props =>
     props.level === 3 &&
     `
-      margin-left: 65px;
+      margin-left: 60px;
 
       &::before {
         display: none;

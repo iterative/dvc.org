@@ -10,8 +10,9 @@
   {
     "name": "Get Stared",
     "folder": "/static/docs/get-started",
+    "indexFile": "documentation.md",
     "files": [
-      "documentation.md",
+      "recipes.md",
       "redux-saga.md"
     ]
   }
