@@ -1,4 +1,4 @@
-# How Does It Work?
+# How It Works?
 
 1. DVC is a command line tool that works on top of Git:
 

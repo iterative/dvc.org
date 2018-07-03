@@ -1,21 +1,15 @@
 [
   {
-    "name": "Tutorial",
-    "folder": "/static/docs",
-    "indexFile": "tutorial.md",
-    "files": []
-  },
-  {
-    "name": "What Is DVC?",
-    "folder": "/static/docs",
-    "indexFile": "what-is-dvc.md",
-    "files": []
-  },
-  {
-    "name": "How Does It Work?",
-    "folder": "/static/docs",
-    "indexFile": "how-does-it-work.md",
-    "files": []
+    "name": "Introduction",
+    "folder": "/static/docs/introduction",
+    "files": [
+      "collaboration-issues.md",
+      "existing-tools.md",
+      "what-is-dvc.md",
+      "core-features.md",
+      "how-it-works.md",
+      "related-technologies.md"
+    ]
   },
   {
     "name": "Get Stared",
@@ -25,6 +19,12 @@
       "configuration.md",
       "example.md"
     ]
+  },
+  {
+    "name": "Tutorial",
+    "folder": "/static/docs",
+    "indexFile": "tutorial.md",
+    "files": []
   },
   {
     "name": "Basics",
