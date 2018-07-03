@@ -20,13 +20,10 @@
   {
     "name": "Get Stared",
     "folder": "/static/docs/get-started",
-    "indexFile": "documentation.md",
     "files": [
       "installation.md",
       "configuration.md",
-      "example.md",
-      "recipes.md",
-      "redux-saga.md"
+      "example.md"
     ]
   },
   {
@@ -34,7 +31,9 @@
     "folder": "/static/docs/basics",
     "files": [
       "markdown-test.md",
-      "declarative-effects.md"
+      "declarative-effects.md",
+      "recipes.md",
+      "redux-saga.md"
     ]
   }
 ]
