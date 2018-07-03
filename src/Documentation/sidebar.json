@@ -24,6 +24,7 @@
     "files": [
       "installation.md",
       "configuration.md",
+      "example.md",
       "recipes.md",
       "redux-saga.md"
     ]
