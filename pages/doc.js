@@ -32,9 +32,9 @@ function flatten(text, child) {
 }
 
 const HeadingRenderer = ({ level, children }) => {
-  var content = React.Children.toArray(children)
-  var text = children.reduce(flatten, '')
-  var slug = kebabCase(text)
+  const content = React.Children.toArray(children);
+  const text = children.reduce(flatten, '')
+  const slug = kebabCase(text)
   return React.createElement('h' + level, { id: slug }, content)
 }
 

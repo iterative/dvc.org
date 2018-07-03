@@ -1,19 +1,39 @@
 [
   {
-    "name": "Basics",
-    "folder": "/static/docs/basics",
-    "files": [
-      "markdown-test.md",
-      "declarative-effects.md"
-    ]
+    "name": "Tutorial",
+    "folder": "/static/docs",
+    "indexFile": "tutorial.md",
+    "files": []
+  },
+  {
+    "name": "What Is DVC?",
+    "folder": "/static/docs",
+    "indexFile": "what-is-dvc.md",
+    "files": []
+  },
+  {
+    "name": "How Does It Work?",
+    "folder": "/static/docs",
+    "indexFile": "how-does-it-work.md",
+    "files": []
   },
   {
     "name": "Get Stared",
     "folder": "/static/docs/get-started",
     "indexFile": "documentation.md",
     "files": [
+      "installation.md",
+      "configuration.md",
       "recipes.md",
       "redux-saga.md"
+    ]
+  },
+  {
+    "name": "Basics",
+    "folder": "/static/docs/basics",
+    "files": [
+      "markdown-test.md",
+      "declarative-effects.md"
     ]
   }
 ]
