@@ -14,6 +14,7 @@ import bash from 'react-syntax-highlighter/languages/hljs/bash'
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
 import startCase from 'lodash.startcase'
+import compact from 'lodash.compact'
 import { scroller, animateScroll } from 'react-scroll'
 // styles
 import styled from 'styled-components'
@@ -66,9 +67,15 @@ export default class Documentation extends Component {
     }
   }
 
+  setCurrentPath = ({ section, file }) => {
+    const folderSlug = sidebar[section].folder.split('/').reverse()[0]
+    const fileSlug = file ? file.slice(0, -3) : undefined
+    window.history.pushState(null, null, `/documentation/${compact([folderSlug, fileSlug]).join('/')}`)
+  }
+
   onSectionSelect = (idx) => {
     const { indexFile, files } = sidebar[idx]
-    window.history.pushState(null, null, window.location.pathname)
+    this.setCurrentPath({ section: idx})
     this.onFileSelect(indexFile || files[0], idx, indexFile)
     this.setState({
       currentSection: idx,
@@ -76,9 +83,8 @@ export default class Documentation extends Component {
   }
 
   onFileSelect = (file, section, isIndexFile) => {
-    const src = `${sidebar[section].folder}/${file}`
-    isIndexFile || window.history.pushState(null, null, `#${file.slice(0, -3)}`)
-    fetch(src).then(res => {
+    isIndexFile || this.setCurrentPath({ section, file })
+    fetch(`${sidebar[section].folder}/${file}`).then(res => {
       res.text().then(text => {
         this.setState({
           currentFile: file,
@@ -97,11 +103,11 @@ export default class Documentation extends Component {
     const matches = [];
     let match;
     do {
-        match = headingRegex.exec(text);
-        if (match) matches.push({
-          text: match[2],
-          slug: kebabCase(match[2])
-        })
+      match = headingRegex.exec(text);
+      if (match) matches.push({
+        text: match[2],
+        slug: kebabCase(match[2])
+      })
     } while (match);
 
     this.setState({
@@ -111,10 +117,10 @@ export default class Documentation extends Component {
 
   scrollToLink = (href) => () => {
     scroller.scrollTo(href.slice(1), {
-      duration: 500,
+      duration: 600,
       offset: -85,
       delay: 0,
-      smooth: 'easeInOut',
+      smooth: 'ease',
     })
   }
 
@@ -123,7 +129,7 @@ export default class Documentation extends Component {
       duration: 300,
       offset: -85,
       delay: 0,
-      smooth: 'easeInOut',
+      smooth: 'ease',
     })
   }
 
@@ -168,7 +174,6 @@ export default class Documentation extends Component {
                                     level={2} 
                                     onClick={() => this.onFileSelect(file, index)}
                                     isActive={isFileActive}
-                                    href={`#${file.slice(0, -3)}`}
                                   >
                                     {startCase(file.slice(0, -3))}
                                   </SectionLink>
@@ -180,6 +185,7 @@ export default class Documentation extends Component {
                                         level={3}
                                         key={`link-${headingIndex}`}
                                         onClick={this.scrollToLink('#' + slug)}
+                                        href={`#${slug}`}
                                       >
                                         {text}
                                       </SectionLink>
