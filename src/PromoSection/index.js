@@ -6,7 +6,7 @@ import { logEvent } from '../utils/ga'
 const getStarted = () => {
   logEvent('promo', 'get-started')
   window.location =
-    '/doc#installation'
+    '/doc/get-started'
 }
 
 const features = () => {

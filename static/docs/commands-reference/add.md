@@ -18,7 +18,8 @@ copy) to try to avoid copying any file contents and make dvc file operations
 very quick even for large files. Reflink is the best link type we could have,
 but even though it is becoming more and more common in modern filesystems, many
 filesystems still don't support it and thus dvc has to resort to a much more
-common hardlinks. See (https://dvc.org/documentation#config) for more info.
+common hardlinks. See [`config`](https://dvc.org/doc/commands-reference#config)
+for more information.
 
 For directories, the command does the same steps for each file recursively.
 To retain information about the directory structure, a corresponding cache

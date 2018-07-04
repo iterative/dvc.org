@@ -33,13 +33,13 @@ export default () => (
         <Column>
           <Heading>Help</Heading>
           <Links>
-            <Link href="/doc#installation">
+            <Link href="/doc/get-started">
               Get started
             </Link>
             <Link href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46">
               Tutorial
             </Link>
-            <Link href="/documentation">Documentation</Link>
+            <Link href="/doc">Documentation</Link>
             <Link href="https://discuss.dvc.org">Discuss</Link>
           </Links>
         </Column>

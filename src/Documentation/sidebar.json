@@ -12,7 +12,7 @@
     ]
   },
   {
-    "name": "Get Stared",
+    "name": "Get Started",
     "folder": "/static/docs/get-started",
     "files": [
       "installation.md",

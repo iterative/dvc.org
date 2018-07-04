@@ -79,7 +79,7 @@ export default class HamburgerMenu extends Component {
                   <Heading>Help</Heading>
                   <Links>
                     <Link
-                      href="/doc#installation"
+                      href="/doc/get-started"
                       onClick={this.itemClick('get-started')}
                     >
                       Get started
@@ -90,7 +90,7 @@ export default class HamburgerMenu extends Component {
                     >
                       Tutorial
                     </Link>
-                    <Link href="/documentation" onClick={this.itemClick('documentation')}>
+                    <Link href="/doc" onClick={this.itemClick('documentation')}>
                       Documentation
                     </Link>
                     <Link href="https://discuss.dvc.org" onClick={this.itemClick('discuss')}>

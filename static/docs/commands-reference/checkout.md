@@ -1,16 +1,17 @@
 # checkout
 
 Checkout data files from cache.
+
 This command has to be called after `git checkout` since Git does not handle DVC
 data files. You can also use `dvc install` to install a git hook that will call
-`dvc checkout` for you. See (https://dvc.org/documentation#install) for more
-info.
+`dvc checkout` for you. See
+[`config`](https://dvc.org/doc/commands-reference#config) for more information.
 
 The command restores data files from cache to the working tree and removes data
 files that are no longer on the working tree.
 
-Note, this command does NOT copy any files(exception: cache.type == copy) - DVC
-uses links to perform data file restoration. This is crucial for large files
+Note, this command does NOT copy any files (exception: `cache.type == copy`) -
+DVC uses links to perform data file restoration. This is crucial for large files
 where checking out as a 50Gb file might take a few minutes. For DVC, it will
 take less than a second to restore a 50Gb data file.
 

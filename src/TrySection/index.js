@@ -4,7 +4,7 @@ import { media, container } from '../styles'
 
 const getStarted = () =>
   (window.location =
-    '/doc#installation')
+    '/doc/get-started')
 
 export default ({}) => (
   <TrySection>

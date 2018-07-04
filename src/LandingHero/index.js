@@ -26,7 +26,7 @@ export default class LandingHero extends Component {
 
   getStarted = () => {
     window.location =
-      '/doc#installation'
+      '/doc/get-started'
   }
 
   scrollToVideo = () => {

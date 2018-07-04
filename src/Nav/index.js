@@ -5,14 +5,14 @@ import { logEvent } from '../utils/ga'
 
 const getStarted = () => {
   logEvent('menu', 'get-started')
-  window.location = '/doc#installation'
+  window.location = '/doc/get-started'
 }
 
 export default ({ mobile = false }) => (
   <Nav mobile={mobile}>
     <Links>
       <Link href="/features" onClick={() => {logEvent('menu', 'features')}}>Features</Link>
-      <Link href="/documentation" onClick={() => {logEvent('menu', 'doc')}}>Doc</Link>
+      <Link href="/doc" onClick={() => {logEvent('menu', 'doc')}}>Doc</Link>
       <Link href="https://blog.dataversioncontrol.com/" onClick={() => {logEvent('menu', 'blog')}}>Blog</Link>
       <Link href="https://github.com/iterative/dvc" onClick={() => {logEvent('menu', 'github')}}>Github</Link>
       <Link href="https://discuss.dvc.org" onClick={() => {logEvent('menu', 'discuss')}}>Discuss</Link>

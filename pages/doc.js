@@ -93,7 +93,7 @@ export default class Documentation extends Component {
   setCurrentPath = ({ section, file }) => {
     const sectionSlug = sidebar[section].slug || kebabCase(sidebar[section].name)
     const fileSlug = file ? kebabCase(file.slice(0, -3)) : undefined
-    window.history.pushState(null, null, `/documentation/${compact([sectionSlug, fileSlug]).join('/')}`)
+    window.history.pushState(null, null, `/doc/${compact([sectionSlug, fileSlug]).join('/')}`)
   }
 
   onSectionSelect = (section) => {
