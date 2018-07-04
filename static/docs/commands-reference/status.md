@@ -1,6 +1,7 @@
 # status
 
-Show changed stages in the pipeline and mismatches between local cache and cloud remote.
+Show changed stages in the pipeline and mismatches between local cache and cloud
+remote.
 
 ```sh
     usage: dvc status [-h] [-q] [-v] [-j JOBS] [-c] [-r REMOTE]

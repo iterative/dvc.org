@@ -26,7 +26,6 @@
     "indexFile": "index.md",
     "files": [
       "cheat-sheet.md",
-      "common-arguments.md",
       "init.md",
       "add.md",
       "checkout.md",
@@ -37,12 +36,20 @@
       "repro.md",
       "remove.md",
       "gc.md",
-      "config.md",
-      "fsck.md"
+      "config.md"
     ],
     "labels": {
       "run.md": "run",
-      "push.md": "push"
+      "push.md": "push",
+      "init.md": "init",
+      "add.md": "add",
+      "checkout.md": "checkout",
+      "pull.md": "pull",
+      "status.md": "status",
+      "repro.md": "repro",
+      "remove.md": "remove",
+      "gc.md": "gc",
+      "config.md": "config"
     }
   },
   {

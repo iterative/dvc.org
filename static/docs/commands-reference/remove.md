@@ -23,11 +23,15 @@ Remove `data.csv` data file:
 ```sh
     $ dvc add data.csv
     $ ls data.csv*
-     data.csv
-     data.csv.dvc
+
+        data.csv
+        data.csv.dvc
+
     $ dvc remove data.csv.dvc
     $ ls data.csv*
-     data.csv.dvc
+
+         data.csv.dvc
+
     $ dvc remove data.csv.dvc -p
     $ ls data.csv*
 ```
