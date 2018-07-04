@@ -46,15 +46,5 @@
     "folder": "/static/docs",
     "indexFile": "tutorial.md",
     "files": []
-  },
-  {
-    "name": "Basics",
-    "folder": "/static/docs/basics",
-    "files": [
-      "markdown-test.md",
-      "declarative-effects.md",
-      "recipes.md",
-      "redux-saga.md"
-    ]
   }
 ]
