@@ -26,7 +26,6 @@
     "indexFile": "index.md",
     "files": [
       "cheat-sheet.md",
-      "common-arguments.md",
       "init.md",
       "add.md",
       "checkout.md",
@@ -37,8 +36,7 @@
       "repro.md",
       "remove.md",
       "gc.md",
-      "config.md",
-      "fsck.md"
+      "config.md"
     ]
   },
   {
