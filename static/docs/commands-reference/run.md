@@ -12,7 +12,7 @@ by Rscript command.
 
 ```sh
     usage: dvc run [-h] [-q] [-v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
-                   [-f FILE] [-c CWD] [--no-exec]
+                   [-M METRICS_NO_CACHE] [-f FILE] [-c CWD] [--no-exec]
                    ...
 
     positional arguments:
@@ -27,6 +27,9 @@ by Rscript command.
       -O OUTS_NO_CACHE, --outs-no-cache OUTS_NO_CACHE
                             Declare output regular file or directory (sync to
                             Git, not DVC cache).
+      -M METRICS_NO_CACHE, --metrics-no-cache METRICS_NO_CACHE
+                            Declare output metric file or directory (not cached by
+                            DVC).
       -f FILE, --file FILE  Specify name of the state file
       -c CWD, --cwd CWD     Directory to run your command and place state file in
       --no-exec             Only create stage file without actually running it

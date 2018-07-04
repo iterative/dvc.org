@@ -5,13 +5,20 @@ cloud storage. Cloud storage settings need to be configured. See cloud storage
 configuration for more details on how to set up cloud storage.
 
 ```sh
-    usage: dvc push [-h] [-q] [-v] [-j JOBS]
+    usage: dvc push [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [--all-branches]
+                    [targets [targets ...]]
+
+    positional arguments:
+      targets               DVC files.
 
     optional arguments:
       -h, --help            show this help message and exit
       -q, --quiet           Be quiet.
       -v, --verbose         Be verbose.
       -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
+      -r REMOTE, --remote REMOTE
+                            Remote repository to push to
+      --all-branches        Push cache for all branches.
 ```
 
 ## Examples

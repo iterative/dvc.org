@@ -16,25 +16,15 @@ Get or set config options. This command reads and overwrites the DVC config file
         -q, --quiet           Be quiet.
         -v, --verbose         Be verbose.
         -u, --unset           Unset option
+        --local               Use local config
 ```
 
 ## Examples
 
-Specify an option name to get the option's value from config file:
-
 ```sh
-    $ dvc config config Global.Cloud
+    $ dvc config core.remote myremote
+    $ dvc config core.remote
 
-    AWS
-```
-
-Overwrite the value::
-
-```sh
-    $ dvc config Global.Cloud GCP
-    $ git add .dvc/config
-    $ git commit -m 'Change cloud to GCP'
-
-    [input_100K a4c985f] Change cloud to GCP
-     1 file changed, 1 insertion(+), 1 deletion(-)
+    myremote
+    $ dvc config core.remote --unset
 ```

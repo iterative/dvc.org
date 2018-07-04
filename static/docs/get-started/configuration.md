@@ -13,15 +13,16 @@ Once installed, DVC populates its installation folder (hereafter referred to
 as .dvc)
 
 * `.dvc/config` - This is a configuration file.
-  The config file can be edited with a command: `dvc config NAME VALUE`.
+  The config file can be edited by hand or with a special command: `dvc config`.
 * `.dvc/cache` - the cache directory will contain your data files (the data
-  directories of DVC repositories will only contain hardlinks to the data files
-  in the global cache).
+  directories of DVC repositories will only contain links to the data files
+  in the cache).
   **Note:** DVC includes the cache directory to `.gitignore` file during the
   initialization. And no data files (with actual content) will ever be pushed to
-  Git repository, only dvc-files are needed to reproduce them.
-* `.dvc/state` - this file is created for optimization. The file contains data
-  files checksum, timestamps, inodes, etc.
+  Git repository, only dvc-files that are needed to reproduce them.
+* `.dvc/state` - this file is used for optimization. The file contains data
+  files checksums with respective timestamps and inodes to avoid unnecessary
+  checksum computations.
 
 
 ## Cloud Data Storages
@@ -35,67 +36,36 @@ With cloud storage, you might use models and data files which were created by
 your team members without spending time and resources to re-build models and
 re-process data files.
 
-As of this version, DVC supports two types of cloud-based storage providers:
+As of this version, DVC supports four types of cloud-based storage providers:
 
-* `AWS` - Amazon Web Services
-* `GCP` - Google Cloud Platform
+* `S3` - Amazon Simple Storage Service
+* `GS` - Google Cloud Storage
+* `SSH` - Secure Shell
+* `HDFS` - The Hadoop Distributed File System
 
 The subsections below explain how to configure DVC to use each of them.
 
 
-### Using AWS
-
-To use AWS as cloud storage for your DVC repositories, you should update these
-`.dvc/config` options
-
-* `Cloud = AWS` in the `Global` section.
-* `StoragePath = /mybucket/dvc/tag_classifier` in the `AWS` section - path to a
-    cloud storage bucket and directory in the bucket.
-* `CredentialPath = ~/aws/credentials` in the `AWS` section - path to AWS
-    credentials in your local machine (AWS cli command line tools creates this
-    directory). On Mac, default value is `~/.aws/credentials`, and it is
-    *%USERPATH%/.aws/credentials` on Windows.
-
-Instead of manual file modification, we recommend you run the following
-commands:
+### S3
 
 ```sh
-    # This step is not needed for new DVC repositories
-    $ dvc config Global.Cloud AWS
-    $ dvc config AWS.StoragePath /mybucket/dvc/tag_classifier
-
-    # Not needed if AWS CLI is installed to default path
-    $ dvc config AWS.CredentialPath ~/.aws/credentials
-
-    # Not needed if you have only one AWS account
-    $ dvc config AWS.CredentialSection default
-
-    $ git commit -am "Change cloud to AWS"
+    $ dvc remote add -d myremote s3://mybucket/myproject
 ```
 
-**Important:** do not forget to commit the config file change to Git:
-`git commit -am "Change cloud to AWS"`
-
-
-### Using Google Cloud
-
-For using GCP (Google Cloud Platform) as cloud storage for your DVC
-repositories, you should update these `.dvc/config` options
-
-* `Cloud = GCP` in the `Global` section.
-* `StoragePath = /mybucket/dvc/tag_classifier` in the GCP section - run
-    `dvc config GCP.StoragePath /my/path/to/a/bucket`
-* `ProjectName = MyCloud` - a GCP specific project name.
-
-**Important:** do not forget to commit the config file change to Git:
-`git commit -am "Change cloud to GCP"`
-
-Instead of manual file modification, we recommend you run the following
-commands:
+### GS
 
 ```sh
-    $ dvc config Global.Cloud GCP
-    $ dvc config GCP.StoragePath /mybucket/dvc/tag_classifier
-    $ dvc config GCP.ProjectName MyCloud
-    $ git commit -am "Change cloud to AWS"
+    $ dvc remote add -d myremote gs://mybucket/myproject
+```
+
+### SSH
+
+```sh
+    $ dvc remote add -d myremote ssh://user@example.com:/path/to/myproject
+```
+
+### HDFS
+
+```sh
+   $ dvc remote add -d myremote hdfs://user@example.com/path/to/myproject
 ```

@@ -32,53 +32,62 @@ The full pipeline can be built by running the code below::
     $ dvc init
 ```
 
-* Download a file and put it into the data/ directory.
+* Download a file to the data/ directory and add it to dvc.
 
 ```sh
-    $ dvc import \
-        https://s3-us-west-2.amazonaws.com/dvc-share/so/25K/Posts.xml.tgz data/
+    $ mkdir data
+    $ cd data
+    $ wget https://s3-us-west-2.amazonaws.com/dvc-share/so/25K/Posts.xml.tgz
+    $ dvc add Posts.xml.tgz
 ```
 
 * Extract XML from the archive.
 
 ```sh
-    $ dvc run tar zxf data/Posts.xml.tgz -C data/
+    $ dvc run -d data/Posts.xml.tgz -o data/Posts.xml tar zxf data/Posts.xml.tgz
 ```
 
 * Prepare the data.
 
 ```sh
-    $ dvc run python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv python
+    $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml -o data/Posts.tsv \
+          python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
 ```
 
 * Split training and testing dataset. Two output files.
 
 ```sh
     $ # 0.33 - test dataset split ratio. 20170426 is a seed for randomization.
-    $ dvc run python code/split_train_test.py data/Posts.tsv \
-        0.33 20170426 data/Posts-train.tsv data/Posts-test.tsv
+    $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
+              -o data/Posts-train.tsv -o data/Posts-test.tsvpython \
+          code/split_train_test.py data/Posts.tsv 0.33 20170426 \
+                       data/Posts-train.tsv data/Posts-test.tsv
 ```
 
 * Extract features from the data. Two TSV as inputs with two pickle matrices as
 outputs.
 
 ```sh
-    $ dvc run python code/featurization.py data/Posts-train.tsv \
-        data/Posts-test.tsv data/matrix-train.p data/matrix-test.p
+    $ dvc run -d code/featurization.py -d data/Posts-train.tsv \
+              -d data/Posts-test.tsv \
+	      -o data/matrix-train.p -o data/matrix-test.p \
+	  python code/featurization.py data/Posts-train.tsv \
+                 data/Posts-test.tsv data/matrix-train.p data/matrix-test.p
 ```
 
 * Train ML model on the training dataset. 20170426 is another seed value.
 
 ```sh
-    $ dvc run python code/train_model.py data/matrix-train.p 20170426 \
-        data/model.p
+    $ dvc run -d code/train_model.py -d data/matrix-train.py -o data/model.py \
+          python code/train_model.py data/matrix-train.p 20170426 data/model.p
 ```
 
 * Evaluate the model on the test dataset.
 
 ```sh
-    $ dvc run python code/evaluate.py data/model.p data/matrix-test.p \
-        data/evaluation.txt
+    $ dvc run -d code/evaluate.py -d data/model.py \
+	      -d data/matrix-test.p -o data/evaluation.txt \
+     python code/evaluate.py data/model.p data/matrix-test.p data/evaluation.txt
 ```
 
 * Get the result.
@@ -98,24 +107,23 @@ the `code/featurization.py`:
     $ vi code/featurization.py
 ```
 
+Specify ngram parameter in CountVectorizer (lines 50–53) and increase number of features to 6000:
+```
+bag_of_words = CountVectorizer(stop_words='english',
+                               max_features=6000,
+                               ngram_range=(1, 2))
+```
+
 * Commit all the changes:
 
 ```sh
     $ git commit -am "Add bigram features"
-
-    [master 50b5a2a] Add bigram features
-    1 file changed, 5 insertion(+), 2 deletion(-)
 ```
 
 * Reproduce all required steps to get our target metrics file:
 
 ```sh
-    $ dvc repro data/evaluation.txt
-
-    Reproducing run command for data item data/matrix-train.p. Args: python code/featurization.py data/Posts-train.tsv data/Posts-test.tsv data/matrix-train.p data/matrix-test.p
-    Reproducing run command for data item data/model.p. Args: python code/train_model.py data/matrix-train.p 20170426 data/model.p
-    Reproducing run command for data item data/evaluation.txt. Args: python code/evaluate.py data/model.p data/matrix-test.p data/evaluation.txt
-    Data item "data/evaluation.txt" was reproduced.
+    $ dvc repro evaluation.txt.dvc
 ```
 
 * Take a look at the target metric improvement:

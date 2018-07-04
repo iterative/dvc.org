@@ -2,13 +2,13 @@
 
 
 Operating system dependent packages are the recommended way to install DVC.
-Some other methods of installation are available.
+Some other methods of installation are also available.
 
 ## OS packages
 
 DVC installation packages are available for Mac OS, Linux, and Windows.
 You can download the packages
-[here](https://github.com/dataversioncontrol/dvc/releases/).
+[here](https://github.com/iterative/dvc/releases/).
 
 ## Python pip
 
@@ -22,12 +22,21 @@ Another option is to use the standard Python pip package:
 not provide a special installation package for the native *Anaconda* package
 manager *conda*.
 
-## Homebrew Cask
+## Homebrew
 
-Mac OS users can install DVC by using the **brew** command:
+Mac OS users can also install DVC by using either **brew formula** or
+**brew cask**.
+
+### Formula
 
 ```sh
-    $ brew cask install dataversioncontrol/homebrew-dvc/dvc
+    $ brew install iterative/homebrew-dvc/dvc
+```
+
+### Cask
+
+```sh
+    $ brew cask install iterative/homebrew-dvc/dvc
 ```
 
 ## Development Version
@@ -35,8 +44,8 @@ Mac OS users can install DVC by using the **brew** command:
 If you would like to pull the latest version of DVC, you can do the following:
 
 ```sh
-    $ pip install git+git://github.com/dataversioncontrol/dvc
+    $ pip install git+git://github.com/iterative/dvc
 ```
 
 **Note**: this will automatically upgrade your DVC version to the latest
-version.
+development version.

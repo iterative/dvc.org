@@ -4,13 +4,20 @@ This command pulls all data file caches from cloud storage.
 Cloud storage settings need to be configured.
 
 ```sh
-    usage: dvc pull [-h] [-q] [-v] [-j JOBS]
+    usage: dvc pull [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [--all-branches]
+                    [targets [targets ...]]
+
+    positional arguments:
+      targets               DVC files.
 
     optional arguments:
       -h, --help            show this help message and exit
       -q, --quiet           Be quiet.
       -v, --verbose         Be verbose.
       -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
+      -r REMOTE, --remote REMOTE
+                            Remote repository to pull from
+      --all-branches        Fetch cache for all branches.
 ```
 
 ## Examples

@@ -3,17 +3,19 @@
 This command collects the garbage, removing unused cache files based on the
 current Git branch.
 
-If a data file was created in a different branch, then it will be removed by gc.
-If a data file has a few versions (and, of course. corresponding caches) - all
-caches except the current one will be removed.
+If a data file was created in a different branch, then it will be removed by
+gc, unless --all-branches option is specified. If a data file has a few
+versions (and, of course. corresponding caches) - all caches except the current
+one will be removed.
 
 ```sh
-    usage: dvc gc [-h] [-q] [-v]
+    usage: dvc gc [-h] [-q] [-v] [--all-branches]
 
     optional arguments:
         -h, --help            show this help message and exit
         -q, --quiet           Be quiet.
         -v, --verbose         Be verbose.
+        --all-branches        Collect garbage for all branches.
 ```
 
 ## Examples

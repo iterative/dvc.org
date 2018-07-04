@@ -3,21 +3,31 @@
 Remove data file or data directory.
 
 ```sh
-    usage: dvc remove [-h] [-q] [-v] targets [targets ...]
+    usage: dvc remove [-h] [-q] [-v] [-o | -p] targets [targets ...]
 
     positional arguments:
-        targets               Target to remove - file or directory.
+        targets               DVC files.
 
     optional arguments:
         -h, --help            show this help message and exit
         -q, --quiet           Be quiet.
         -v, --verbose         Be verbose.
+        -o, --outs            Only remove DVC file outputs.
+        -p, --purge           Remove DVC file and all its outputs
 ```
 
 ## Examples
 
-Remove `matrix-train.p` data file:
+Remove `data.csv` data file:
 
 ```sh
-    $ dvc remove matrix-train.p
+    $ dvc add data.csv
+    $ ls data.csv*
+     data.csv
+     data.csv.dvc
+    $ dvc remove data.csv.dvc
+    $ ls data.csv*
+     data.csv.dvc
+    $ dvc remove data.csv.dvc -p
+    $ ls data.csv*
 ```

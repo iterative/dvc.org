@@ -6,7 +6,8 @@ Default file name is `Dvcfile`. However, DVC files can have any name followed by
 the `.dvc` suffix.
 
 ```sh
-    usage: dvc repro [-h] [-q] [-v] [-f] [-s] [targets [targets ...]]
+    usage: dvc repro [-h] [-q] [-v] [-f] [-s] [-c CWD] [-m]
+                     [targets [targets ...]]
 
     positional arguments:
         target                DVC file to reproduce.
@@ -18,6 +19,8 @@ the `.dvc` suffix.
         -f, --force           Reproduce even if dependencies were not changed.
         -s, --single-item     Reproduce only single data item without recursive
                               dependencies check.
+        -c CWD, --cwd CWD     Directory to reproduce from.
+        -m, --metrics         Show metrics after reproduction
 ```
 
 ## Examples
