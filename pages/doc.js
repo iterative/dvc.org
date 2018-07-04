@@ -315,12 +315,13 @@ const Content = styled.article`
   flex: 1;
   box-sizing: border-box;
   min-width: 200px;
-  max-width: 675px;
+  max-width: 670px;
   margin: 30px 0 30px 30px;
   position: relative;
 
   ${media.phablet`
-    padding: 15px;
+    padding-top: 50px;
+    margin: 20px;
   `};
 
   ul, ol {
@@ -384,19 +385,19 @@ const SectionLink = styled.a`
   ${props =>
     props.level === 1 &&
     `
-    margin-left: 15px;
+    margin-left: 5px;
   `} 
   
   ${props =>
     props.level === 2 &&
     `
-      margin-left: 40px;
+      margin-left: 30px;
   `};
   
   ${props =>
     props.level === 3 &&
     `
-      margin-left: 60px;
+      margin-left: 50px;
 
       &::before {
         display: none;
