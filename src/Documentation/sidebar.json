@@ -21,6 +21,27 @@
     ]
   },
   {
+    "name": "Commands Reference",
+    "folder": "static/docs/commands-reference",
+    "indexFile": "index.md",
+    "files": [
+      "cheat-sheet.md",
+      "common-arguments.md",
+      "init.md",
+      "add.md",
+      "checkout.md",
+      "run.md",
+      "push.md",
+      "pull.md",
+      "status.md",
+      "repro.md",
+      "remove.md",
+      "gc.md",
+      "config.md",
+      "fsck.md"
+    ]
+  },
+  {
     "name": "Tutorial",
     "folder": "/static/docs",
     "indexFile": "tutorial.md",
