@@ -4,7 +4,7 @@ import { media, container } from '../styles'
 
 const getStarted = () =>
   (window.location =
-    'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46')
+    '/doc#installation')
 
 export default ({}) => (
   <TrySection>

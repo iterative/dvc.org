@@ -5,7 +5,7 @@ import { logEvent } from '../utils/ga'
 
 const getStarted = () => {
   logEvent('menu', 'get-started')
-  window.location = 'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
+  window.location = '/doc#installation'
 }
 
 export default ({ mobile = false }) => (

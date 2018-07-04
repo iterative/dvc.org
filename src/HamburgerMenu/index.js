@@ -79,10 +79,16 @@ export default class HamburgerMenu extends Component {
                   <Heading>Help</Heading>
                   <Links>
                     <Link
+                      href="/doc#installation"
+                      onClick={this.itemClick('get-started')}
+                    >
+                      Get started
+                    </Link>
+                    <Link
                       href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46"
                       onClick={this.itemClick('tutorial')}
                     >
-                      Get started
+                      Tutorial
                     </Link>
                     <Link href="/documentation" onClick={this.itemClick('documentation')}>
                       Documentation

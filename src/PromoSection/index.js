@@ -6,7 +6,7 @@ import { logEvent } from '../utils/ga'
 const getStarted = () => {
   logEvent('promo', 'get-started')
   window.location =
-    'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
+    '/doc#installation'
 }
 
 const features = () => {

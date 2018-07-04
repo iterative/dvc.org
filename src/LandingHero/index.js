@@ -26,7 +26,7 @@ export default class LandingHero extends Component {
 
   getStarted = () => {
     window.location =
-      'https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46'
+      '/doc#installation'
   }
 
   scrollToVideo = () => {
