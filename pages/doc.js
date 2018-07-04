@@ -48,8 +48,6 @@ const CodeBlock = ({ value, language }) => (
   </SyntaxHighlighter>  
 )
 
-
-
 export default class Documentation extends Component {
   state = {
     currentSection: 0,
@@ -169,6 +167,7 @@ export default class Documentation extends Component {
 
   render() {
     const { currentSection, currentFile, markdown, headings } = this.state
+    const githubLink = `https://github.com/iterative/dvc.org/blob/master${sidebar[currentSection].folder}/${currentFile}`
 
     return (
       <Page stickHeader={true}>
@@ -243,6 +242,9 @@ export default class Documentation extends Component {
           </Side>
 
           <Content>
+            <GithubLink href={githubLink} target="_blank">
+              <i /> Edit on Github
+            </GithubLink>
             <ReactMarkdown 
               className="markdown-body"
               source={markdown}
@@ -315,6 +317,7 @@ const Content = styled.article`
   min-width: 200px;
   max-width: 675px;
   margin: 30px 0 30px 30px;
+  position: relative;
 
   ${media.phablet`
     padding: 15px;
@@ -412,4 +415,36 @@ const Collapse = styled.div`
   overflow: hidden;
   height: ${({ isOpen, items }) => isOpen ? items * 31 : 0}px;
   transition: height .3s linear;
+`
+
+const GithubLink = styled.a`
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  font-weight: 600;
+  color: #242A31;
+  background-color: #FFFFFF;
+  border: 1px solid #D3DCE4;
+  box-shadow: 0 1px 1px 0 rgba(116, 129, 141, 0.1);
+  line-height: 30px;
+  padding: 2px 16px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: 0.2s ease-out;
+
+  &:hover {
+    background-color: #F5F7F9;
+  }
+
+  i {
+    background-image: url(/static/img/github_icon.svg);
+    background-size: contain;
+    width: 1em;
+    height: 1em;
+    margin-right: 7px;
+  }
 `
