@@ -47,8 +47,10 @@
   },
   {
     "name": "Tutorial",
-    "folder": "/static/docs",
-    "indexFile": "tutorial.md",
-    "files": []
+    "folder": "/static/docs/tutorial",
+    "indexFile": "index.md",
+    "files": [
+      "preparation.md"
+    ]
   }
 ]
