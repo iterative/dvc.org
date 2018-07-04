@@ -48,6 +48,8 @@ const CodeBlock = ({ value, language }) => (
   </SyntaxHighlighter>  
 )
 
+
+
 export default class Documentation extends Component {
   state = {
     currentSection: 0,
@@ -57,42 +59,71 @@ export default class Documentation extends Component {
   }
 
   componentDidMount() {
-    const { hash } =  window.location
-    const file = hash.slice(1) + '.md'
-    const section = sidebar.findIndex((section) => section.files.includes(file))
-    if (section !== -1) {
-      this.setState({ currentSection: section }, () => this.onFileSelect(file, section))
-    } else {
+    this.loadStateFromURL()
+  }
+
+  loadStateFromURL = () => {
+    const { pathname } =  window.location
+
+    // match section from URL
+    const sectionURL = pathname.split('/')[2]
+    const sectionIndex = sidebar.findIndex((section) => 
+      (section.slug || kebabCase(section.name)) === sectionURL
+    )
+    
+    if (sectionIndex === -1) {
       this.onSectionSelect(0)
+    } else {
+      // match file from URL
+      const fileURL = pathname.split('/')[3]
+      const fileIndex = sidebar[sectionIndex].files.findIndex((file) => 
+        kebabCase(file.slice(0, -3)) === fileURL
+      )
+
+      if (fileIndex === -1) {
+        this.onSectionSelect(sectionIndex)
+      } else {
+        this.loadFile({
+          section: sectionIndex, 
+          file: sidebar[sectionIndex].files[fileIndex], 
+          parseHeadings: true
+        })
+      }
     }
   }
 
   setCurrentPath = ({ section, file }) => {
-    const folderSlug = sidebar[section].folder.split('/').reverse()[0]
-    const fileSlug = file ? file.slice(0, -3) : undefined
-    window.history.pushState(null, null, `/documentation/${compact([folderSlug, fileSlug]).join('/')}`)
+    const sectionSlug = sidebar[section].slug || kebabCase(sidebar[section].name)
+    const fileSlug = file ? kebabCase(file.slice(0, -3)) : undefined
+    window.history.pushState(null, null, `/documentation/${compact([sectionSlug, fileSlug]).join('/')}`)
   }
 
-  onSectionSelect = (idx) => {
-    const { indexFile, files } = sidebar[idx]
-    this.setCurrentPath({ section: idx})
-    this.onFileSelect(indexFile || files[0], idx, indexFile)
+  onSectionSelect = (section) => {
+    const { indexFile, files } = sidebar[section]
+    const file = indexFile || files[0]
+    this.setCurrentPath({ section })
+    this.loadFile({ file, section, parseHeadings: false })
     this.setState({
-      currentSection: idx,
+      currentSection: section,
     })
   }
 
-  onFileSelect = (file, section, isIndexFile) => {
-    isIndexFile || this.setCurrentPath({ section, file })
+  onFileSelect = (file, section) => {
+    this.setCurrentPath({ section, file })
+    this.loadFile({ file, section, parseHeadings: true })
+  }
+
+  loadFile = ({ file, section, parseHeadings }) => {
     fetch(`${sidebar[section].folder}/${file}`).then(res => {
       res.text().then(text => {
         this.setState({
+          currentSection: section,
           currentFile: file,
           markdown: text,
           headings: [],
         }, () => {
           this.scrollTop();
-          isIndexFile || this.parseHeadings(text);
+          parseHeadings && this.parseHeadings(text);
         })
       })
     })
@@ -110,12 +141,15 @@ export default class Documentation extends Component {
       })
     } while (match);
 
-    this.setState({
-      headings: matches,
-    })
+    this.setState({ headings: matches }, this.autoScroll)
   }
 
-  scrollToLink = (href) => () => {
+  autoScroll = () => {
+    const { hash } =  window.location
+    if (hash) this.scrollToLink(hash)
+  }
+
+  scrollToLink = (href) => {
     scroller.scrollTo(href.slice(1), {
       duration: 600,
       offset: -85,
@@ -184,7 +218,7 @@ export default class Documentation extends Component {
                                       <SectionLink 
                                         level={3}
                                         key={`link-${headingIndex}`}
-                                        onClick={this.scrollToLink('#' + slug)}
+                                        onClick={() => this.scrollToLink('#' + slug)}
                                         href={`#${slug}`}
                                       >
                                         {text}

@@ -22,7 +22,7 @@
   },
   {
     "name": "Commands Reference",
-    "folder": "static/docs/commands-reference",
+    "folder": "/static/docs/commands-reference",
     "indexFile": "index.md",
     "files": [
       "cheat-sheet.md",
