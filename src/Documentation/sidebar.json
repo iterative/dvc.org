@@ -39,7 +39,11 @@
       "gc.md",
       "config.md",
       "fsck.md"
-    ]
+    ],
+    "labels": {
+      "run.md": "run",
+      "push.md": "push"
+    }
   },
   {
     "name": "Tutorial",

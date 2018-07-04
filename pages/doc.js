@@ -186,7 +186,7 @@ export default class Documentation extends Component {
               <Sections>
                 <SectionLinks>
                   {
-                    sidebar.map(({ name, files = [] }, index) => {
+                    sidebar.map(({ name, files = [], labels = {} }, index) => {
                       const isSectionActive = currentSection === index;
                       return (
                         <div key={index}>
@@ -209,7 +209,7 @@ export default class Documentation extends Component {
                                     onClick={() => this.onFileSelect(file, index)}
                                     isActive={isFileActive}
                                   >
-                                    {startCase(file.slice(0, -3))}
+                                    {labels[file] || startCase(file.slice(0, -3))}
                                   </SectionLink>
 
                                   {/* File Headings */}
@@ -319,6 +319,15 @@ const Content = styled.article`
   ${media.phablet`
     padding: 15px;
   `};
+
+  ul, ol {
+    list-style-type: inherit;
+  }
+
+  .markdown-body {
+    font-family: inherit;
+    font-size: 18px;
+  }
 `
 
 const Sections = styled.div`
