@@ -67,7 +67,10 @@
       "install.md": "install",
       "root.md": "root",
       "lock.md": "lock",
-      "unlock.md": "unlock"
+      "unlock.md": "unlock",
+      "import.md": "import",
+      "move.md": "move"
+
     }
   },
   {
