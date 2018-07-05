@@ -36,7 +36,7 @@ export default () => (
             <Link href="/doc/get-started">
               Get started
             </Link>
-            <Link href="https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46">
+            <Link href="/docs/tutorial">
               Tutorial
             </Link>
             <Link href="/doc">Documentation</Link>
