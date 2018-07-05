@@ -13,7 +13,7 @@ projects, it its reproducibility.
 
 DVC has been built to address the reproducibility.
 
-![](https://cdn-images-1.medium.com/max/2000/1*fzAB7hHovBAGsBJ4i8J_ww.jpeg)
+![](/static/img/flow1.jpg)
 
 Git branches should beautifully reflect the non-linear structure common to the
 ML process, where each hypotheses can be presented as a Git branch. However,
@@ -28,4 +28,4 @@ and this approach will not require storing binary files in your Git repository.
 The diagram below describes all the DVC commands and relationships between local
 cache and cloud.
 
-![](https://cdn-images-1.medium.com/max/2000/1*InGGPhAHCghqCY84CZ4UDA.jpeg)
+![](/static/img/flow.png)
