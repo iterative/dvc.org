@@ -22,7 +22,7 @@ Cloud storage settings need to be configured.
 
 ## Examples
 
-Pull all files from the current Git branch::
+Pull all files from the current Git branch:
 
 ```sh
     $ dvc pull

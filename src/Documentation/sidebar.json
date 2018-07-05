@@ -9,7 +9,10 @@
       "core-features.md",
       "how-it-works.md",
       "related-technologies.md"
-    ]
+    ],
+    "labels": {
+      "what-is-dvc.md": "What is DVC?"
+    }
   },
   {
     "name": "Get Started",

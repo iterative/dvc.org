@@ -4,7 +4,7 @@
 Operating system dependent packages are the recommended way to install DVC.
 Some other methods of installation are also available.
 
-## OS packages
+## OS Packages
 
 DVC installation packages are available for Mac OS, Linux, and Windows.
 You can download the packages

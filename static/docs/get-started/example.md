@@ -5,7 +5,7 @@ Let's explore the natural language processing (NLP) problem of predicting tags
 for a given StackOverflow question. For example, we want one classifier which
 can predict a post that is about the Java language by tagging it "Java".
 
-First, let's download the model code and set up the Git repository::
+First, let's download the model code and set up the Git repository:
 
 ```sh
     $ mkdir myrepo
@@ -24,7 +24,7 @@ First, let's download the model code and set up the Git repository::
     $ git commit -m 'Download code'
 ```
 
-The full pipeline can be built by running the code below::
+The full pipeline can be built by running the code below:
 
 * Initialize DVC repository (in your Git repository):
 

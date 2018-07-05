@@ -30,7 +30,7 @@ take less than a second to restore a 50Gb data file.
 
 ## Examples
 
-Checking out a branch example::
+Checking out a branch example:
 
 ```sh
     $ git checkout input_100K

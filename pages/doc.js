@@ -243,7 +243,7 @@ export default class Documentation extends Component {
 
           <Content>
             <GithubLink href={githubLink} target="_blank">
-              <i /> Edit on Github
+              <i/> Edit on Github
             </GithubLink>
             <ReactMarkdown 
               className="markdown-body"
@@ -275,7 +275,7 @@ const Container = styled.div`
 `
 
 const Side = styled.div`
-  flex-basis: 35.7%;
+  flex-basis: 33.7%;
   display: flex;
   justify-content: flex-end;
   background-color: #eef4f8;
@@ -290,12 +290,16 @@ const Side = styled.div`
 const Menu = styled.div`
   max-width: 280px;
   margin-right: 18px;
+  margin-left: 10px;
 
   ${media.phablet`
-    padding: 30px;
+    padding-top: 30px;
+    padding-right: 30px;
+    padding-bottom: 30px;
     width: 100%;
     max-width: none;
     margin-right: 0px;
+    margin-left: 20px;
   `};
 `
 
@@ -316,7 +320,7 @@ const Content = styled.article`
   box-sizing: border-box;
   min-width: 200px;
   max-width: 670px;
-  margin: 30px 0 30px 30px;
+  margin: 30px 15px 30px 30px;
   position: relative;
 
   ${media.phablet`
@@ -422,6 +426,7 @@ const GithubLink = styled.a`
   position: absolute;
   top: 0;
   right: 0;
+  margin-top: 5px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -430,7 +435,7 @@ const GithubLink = styled.a`
   color: #242A31;
   background-color: #FFFFFF;
   border: 1px solid #D3DCE4;
-  box-shadow: 0 1px 1px 0 rgba(116, 129, 141, 0.1);
+  
   line-height: 30px;
   padding: 2px 16px;
   border-radius: 3px;

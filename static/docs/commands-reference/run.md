@@ -38,7 +38,7 @@ by Rscript command.
 ## Examples
 
 Execute a Python script as the DVC pipeline step. Stage file was not specified,
-so a `model.p.dvc` stage file will be created::
+so a `model.p.dvc` stage file will be created:
 
 ```sh
     $ # Train ML model on the training dataset. 20180226 is a seed value.
@@ -46,14 +46,14 @@ so a `model.p.dvc` stage file will be created::
         train_model.py matrix-train.p 20180226 model.p
 ```
 
-Execute an R script as the DVC pipeline step::
+Execute an R script as the DVC pipeline step:
 
 ```sh
     $ dvc run -d parsingxml.R -d Posts.xml -o Posts.csv Rscript parsingxml.R \
         Posts.xml Posts.csv
 ```
 
-Extract an XML file from an archive to the `data/` folder::
+Extract an XML file from an archive to the `data/` folder:
 
 ```sh
     $ mkdir data
