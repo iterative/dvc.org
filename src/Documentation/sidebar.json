@@ -79,7 +79,11 @@
     "indexFile": "index.md",
     "files": [
       "preparation.md",
-      "define-ml-pipeline.md"
-    ]
+      "define-ml-pipeline.md",
+      "reproducibility.md"
+    ],
+    "labels": {
+      "define-ml-pipeline.md": "Define ML Pipeline"
+    }
   }
 ]

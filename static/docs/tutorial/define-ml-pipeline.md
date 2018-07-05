@@ -3,9 +3,8 @@
 ## Get data file
 
 To include a data file into your data science environment you need to copy the 
-file in on of the the repository directories. We create a special directory 
-`data` for the data files and download 40MB source data file into this 
-directory.
+file in on of the repository directories. We create a special directory `data`
+for the data files and download 40MB source data file into this directory.
 
 ```sh
     $ mkdir data
