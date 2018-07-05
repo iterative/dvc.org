@@ -31,15 +31,23 @@
       "cheat-sheet.md",
       "init.md",
       "add.md",
+      "import.md",
       "checkout.md",
       "run.md",
       "push.md",
       "pull.md",
+      "fetch.md",
       "status.md",
       "repro.md",
       "remove.md",
+      "move.md",
       "gc.md",
-      "config.md"
+      "config.md",
+      "metrics.md",
+      "install.md",
+      "root.md",
+      "lock.md",
+      "unlock.md"
     ],
     "labels": {
       "run.md": "run",
@@ -50,9 +58,16 @@
       "pull.md": "pull",
       "status.md": "status",
       "repro.md": "repro",
+      "fetch.md": "fetch",
       "remove.md": "remove",
       "gc.md": "gc",
-      "config.md": "config"
+      "config.md": "config",
+      "remote.md": "remote",
+      "metrics.md": "metrics",
+      "install.md": "install",
+      "root.md": "root",
+      "lock.md": "lock",
+      "unlock.md": "unlock"
     }
   },
   {

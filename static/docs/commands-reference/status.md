@@ -20,3 +20,20 @@ remote.
       -r REMOTE, --remote REMOTE
                             Remote repository to compare local cache to
 ```
+
+## Examples
+
+```sh
+    $ dvc status
+      bar.dvc
+              outs
+                      changed:  bar
+              deps
+                      changed:  foo
+      foo.dvc
+              outs
+                      changed:  foo
+    $ dvc status -c
+        new:      32e366fae424b7bd1a522c528f46daa4
+
+```

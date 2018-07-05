@@ -38,6 +38,7 @@ re-process data files.
 
 As of this version, DVC supports four types of cloud-based storage providers:
 
+* `LOCAL` - Local directory
 * `S3` - Amazon Simple Storage Service
 * `GS` - Google Cloud Storage
 * `SSH` - Secure Shell
