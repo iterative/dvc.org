@@ -78,7 +78,8 @@
     "folder": "/static/docs/tutorial",
     "indexFile": "index.md",
     "files": [
-      "preparation.md"
+      "preparation.md",
+      "define-ml-pipeline.md"
     ]
   }
 ]
