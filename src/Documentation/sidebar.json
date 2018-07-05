@@ -47,7 +47,8 @@
       "install.md",
       "root.md",
       "lock.md",
-      "unlock.md"
+      "unlock.md",
+      "remote.md"
     ],
     "labels": {
       "run.md": "run",
