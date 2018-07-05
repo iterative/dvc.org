@@ -15,5 +15,8 @@ Install dvc hooks into the repository
 
 ```sh
     $ dvc install
+    $ cat .git/hooks/post-checkout
+      #!/bin/sh
+      exec dvc checkout
     $ git checkout mybranch # will call `dvc checkout` automatically
 ```
