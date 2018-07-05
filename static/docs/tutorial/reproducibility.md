@@ -1,6 +1,6 @@
 # Reproducibility
 
-## How does reproducibility work?
+## How does it work?
 
 The most exciting part of DVC is reproducibility.
 

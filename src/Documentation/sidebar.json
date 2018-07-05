@@ -80,7 +80,8 @@
     "files": [
       "preparation.md",
       "define-ml-pipeline.md",
-      "reproducibility.md"
+      "reproducibility.md",
+      "sharing-data.md"
     ],
     "labels": {
       "define-ml-pipeline.md": "Define ML Pipeline"
