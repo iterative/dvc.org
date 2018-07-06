@@ -36,7 +36,7 @@ remotes provide a central place to keep and share data and model files. With a
 remote data storage, you can pull models and data files which were created by
 your team members without spending time and resources to re-build models and
 re-process data files. It also saves space on your local environment - DVC can
-fetch into a local cache only the data you need for a specific branch/commit.
+fetch into the local cache only the data you need for a specific branch/commit.
 
 As of this version, DVC supports five types of data storages (remotes):
 
