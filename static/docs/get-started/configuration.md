@@ -25,7 +25,7 @@ as .dvc)
   checksum computations.
 
 
-## Cloud Data Storages
+## Data Storages
 
 Using DVC with Cloud-based data storage is optional. By default, DVC is
 configured to use a local data storage only (.dvc/cache directory), which
@@ -36,36 +36,36 @@ With cloud storage, you might use models and data files which were created by
 your team members without spending time and resources to re-build models and
 re-process data files.
 
-As of this version, DVC supports four types of cloud-based storage providers:
+As of this version, DVC supports four types of data storages (remotes):
 
-* `LOCAL` - Local directory
-* `S3` - Amazon Simple Storage Service
-* `GS` - Google Cloud Storage
-* `SSH` - Secure Shell
-* `HDFS` - The Hadoop Distributed File System
+* `local` - Local directory
+* `s3` - Amazon Simple Storage Service
+* `gs` - Google Cloud Storage
+* `ssh` - Secure Shell
+* `hdfs` - The Hadoop Distributed File System
 
 The subsections below explain how to configure DVC to use each of them.
 
 
-### S3
+#### S3
 
 ```sh
     $ dvc remote add -d myremote s3://mybucket/myproject
 ```
 
-### GS
+#### GS
 
 ```sh
     $ dvc remote add -d myremote gs://mybucket/myproject
 ```
 
-### SSH
+#### SSH
 
 ```sh
     $ dvc remote add -d myremote ssh://user@example.com:/path/to/myproject
 ```
 
-### HDFS
+#### HDFS
 
 ```sh
    $ dvc remote add -d myremote hdfs://user@example.com/path/to/myproject
