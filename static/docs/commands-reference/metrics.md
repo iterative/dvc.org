@@ -15,3 +15,17 @@ Manage metrics.
         -q, --quiet           Be quiet.
         -v, --verbose         Be verbose.
 ```
+
+## Example
+```sh
+    $ dvc run -d data/model.p -d data/matrix-test.p \
+              -d code/evaluate.py -d code/conf.py -O data/eval.txt \
+              -f Dvcfile \
+              python code/evaluate.py
+    $ dvc metrics add data/eval.txt
+    $ dvc metrics show
+      master:
+          data/eval.txt: AUC: 0.624652
+    $ dvc metrics remove data/eval.txt
+    $ dvc metrics show
+```
