@@ -5,7 +5,7 @@ Checkout data files from cache.
 This command has to be called after `git checkout` since Git does not handle DVC
 data files. You can also use `dvc install` to install a git hook that will call
 `dvc checkout` for you. See
-[`config`](https://dvc.org/doc/commands-reference#config) for more information.
+[`config`](https://dvc.org/doc/commands-reference/config) for more information.
 
 The command restores data files from cache to the working tree and removes data
 files that are no longer on the working tree.
