@@ -38,11 +38,12 @@ your team members without spending time and resources to re-build models and
 re-process data files. It also saves space on your local environment - DVC can
 fetch into the local cache only the data you need for a specific branch/commit.
 
-As of this version, DVC supports five types of data storages (remotes):
+As of this version, DVC supports six types of data storages (remotes):
 
 * `local` - Local directory
 * `s3` - Amazon Simple Storage Service
 * `gs` - Google Cloud Storage
+* `azure` - Azure Blob Storage
 * `ssh` - Secure Shell
 * `hdfs` - The Hadoop Distributed File System
 
@@ -59,6 +60,13 @@ The subsections below explain how to configure DVC to use each of them.
 
 ```sh
     $ dvc remote add -d myremote gs://mybucket/myproject
+```
+
+#### Azure
+
+```sh
+    $ export AZURE_STORAGE_CONNECTION_STRING="<connection string>"
+    $ dvc remote add -d myremote azure://ContainerName=mybucket;
 ```
 
 #### SSH
