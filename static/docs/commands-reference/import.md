@@ -7,7 +7,7 @@ Supported schemes:
 * `local` - Local path
 * `s3` - URL to a file on Amazon S3
 * `gs` - URL to a file on Google Storage
-* `azure` - URL to a file on Azure Storage
+* `azure` - URL to a file on Azure Blob Storage
 * `ssh` - URL to a file on another machine with SSH access
 * `hdfs` - URL to a file on HDFS
 

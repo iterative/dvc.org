@@ -66,7 +66,7 @@ through any Git server, and allows for experiments to be easily reproduced:
 ```
 
 7. DVC's local cache can be transferred to your colleagues and partners through
-AWS S3 or GCP Storage:
+AWS S3, Azure Blob Storage or GCP Storage:
 
 ```dvc
     $ git push
