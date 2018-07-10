@@ -19,7 +19,7 @@ const ColumnOne = ({ fullWidth }) => (
     <Description fullWidth>
       <p>
         Keep pointers in Git to large data input files, ML models, and
-        intermediate data files along with the code. Use S3, GCP, or any
+        intermediate data files along with the code. Use S3, Azure, GCP, or any
         network-accessible storage to store file contents.
       </p>
       <p>
