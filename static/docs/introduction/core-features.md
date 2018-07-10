@@ -16,5 +16,5 @@ ML library agnostic: Keras, Tensorflow, PyTorch, scipy, etc.
 5. **Open-sourced** and **Self-served**. DVC is free and does not require any
 additional services.
 
-6. DVC supports cloud storage (AWS S3 and GCP storage) for
+6. DVC supports cloud storage (AWS S3, Azure Blob Storage and GCP storage) for
 **data sources and pre-trained models sharing**.
