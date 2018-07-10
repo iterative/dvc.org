@@ -1,8 +1,9 @@
 # push
 
 This command pushes all data file caches related to the current Git branch to
-cloud storage. Cloud storage settings need to be configured. See cloud storage
-configuration for more details on how to set up cloud storage.
+the remote storage. Remote storage settings need to be configured. See [remote
+storage configuration](/doc/get-started/configuration#remote-data-storages)
+for more details.
 
 ```usage
     usage: dvc push [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [--all-branches]

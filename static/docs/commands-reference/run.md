@@ -41,7 +41,7 @@ Execute a Python script as the DVC pipeline step. Stage file was not specified,
 so a `model.p.dvc` stage file will be created:
 
 ```dvc
-    $ # Train ML model on the training dataset. 20180226 is a seed value.
+    # Train ML model on the training dataset. 20180226 is a seed value.
     $ dvc run -d matrix-train.p -d train_model.py -o model.p python \
         train_model.py matrix-train.p 20180226 model.p
 ```

@@ -4,12 +4,13 @@ This command initializes a DVC environment in a current Git repository.
 
 ```usage
     usage: dvc init [-h] [-q] [-v] [--no-scm]
+
     optional arguments:
       -h, --help     show this help message and exit
       -q, --quiet    Be quiet.
       -v, --verbose  Be verbose.
       --no-scm       Initiate dvc in directory that is not tracked by any scm
-                     tool(e.g. git)
+                     tool (e.g. git)
 ```
 
 ## Examples

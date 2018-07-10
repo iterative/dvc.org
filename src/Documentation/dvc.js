@@ -38,7 +38,7 @@ var _javascript = function(hljs) {
         end: /([^\\]\n)|\Z/,
         keywords: {
           keyword:
-          'ls cat vi mkdir cd wget du python cp',
+          'ls cat vi mkdir cd wget du python cp export',
         },
         contains: [
           {

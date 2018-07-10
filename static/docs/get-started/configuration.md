@@ -31,7 +31,7 @@ Using DVC with a remote data storage is optional. By default, DVC is
 configured to use a local data storage only (`.dvc/cache` directory), which
 enables basic DVC usage scenarios out of the box.
 
-The same way as Github serves as a master storage for Git-based projecs, DVC
+The same way as Github serves as a master storage for Git-based projects, DVC
 remotes provide a central place to keep and share data and model files. With a
 remote data storage, you can pull models and data files which were created by
 your team members without spending time and resources to re-build models and
