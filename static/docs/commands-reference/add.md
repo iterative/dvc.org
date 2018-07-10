@@ -13,7 +13,7 @@ few steps:
 DVC stores the file's last modification timestamp, inode, and the checksum into
 a global state file `.dvc/state` to reduce time recomputing checksums later.
 
-Note, by default dvc tries a range of link types(reflink, hardlink, symlink,
+Note, by default dvc tries a range of link types (reflink, hardlink, symlink,
 copy) to try to avoid copying any file contents and make dvc file operations
 very quick even for large files. Reflink is the best link type we could have,
 but even though it is becoming more and more common in modern filesystems, many
@@ -25,7 +25,7 @@ For directories, the command does the same steps for each file recursively.
 To retain information about the directory structure, a corresponding cache
 file will be created in `.dvc/cache`.
 
-```sh
+```usage
     usage: dvc add [-h] [-q] [-v] targets [targets ...]
 
     positional arguments:
@@ -41,7 +41,7 @@ file will be created in `.dvc/cache`.
 
 Convert files into data files:
 
-```sh
+```dvc
     $ mkdir raw
     $ cp ~/Downloads/dataset/* raw
     $ ls raw

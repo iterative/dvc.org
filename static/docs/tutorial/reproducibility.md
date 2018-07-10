@@ -22,14 +22,14 @@ designed in a such way to localize specification of DAG nodes.
 If you run repro on any created DVC-file from our repository nothing happens
 because nothing was changed in the defined pipeline.
 
-```sh
+```dvc
     # Nothing to reproduce
     $ dvc repro model.p.dvc
 ```
 
 By default `dvc repro` reads DVC-file with name `Dvcfile`:
 
-```sh
+```dvc
     # Reproduce Dvcfile.
     # But it is still nothing to reproduce:
     $ dvc repro
@@ -46,7 +46,7 @@ the target metric.
 Before editing the `code/featurization.py` file please create and checkout a new
 branch `bigrams`.
 
-```sh
+```dvc
     $ git checkout -b bigram
     # Please use your favorite text editor:
     $ vi code/featurization.py
@@ -63,19 +63,22 @@ of features to 6000:
 
 Reproduce the pipeline:
 
-```sh
+```dvc
     $ dvc repro
+
     Reproducing 'matrix-train.p.dvc':
         python code/featurization.py
     The input data frame data/Posts-train.tsv size is (66999, 3)
     The output matrix data/matrix-train.p size is (66999, 6002) and data type is float64
     The input data frame data/Posts-test.tsv size is (33001, 3)
     The output matrix data/matrix-test.p size is (33001, 6002) and data type is float64
+
     Reproducing 'model.p.dvc':
         python code/train_model.py 20180319
     Input matrix size (66999, 6002)
     X matrix size (66999, 6000)
     Y matrix size (66999,)
+
     Reproducing 'Dvcfile':
         python code/evaluate.py
 ```
@@ -87,7 +90,7 @@ dependent steps were regenerates as well.
 Let’s take a look at the metric’s change. The result improvement is close to
 zero (+0.0075% to be precise):
 
-```sh
+```dvc
     $ cat data/eval.txt
     AUC: 0.624727
 ```
@@ -103,17 +106,17 @@ not add value to the current model and change that.
 
 Many DVC-files were changed. This happened due to md5 checksum changes.
 
-```sh
+```dvc
     $ git status -s
-     M Dvcfile
-     M code/featurization.py
-     M matrix-train.p.dvc
-     M model.p.dvc
+    M Dvcfile
+    M code/featurization.py
+    M matrix-train.p.dvc
+    M model.p.dvc
 ```
 
 Now we can commit the changes:
 
-```sh
+```dvc
     $ git add .
     $ git commit -m Bigrams
 ```
@@ -129,7 +132,7 @@ the original model from the master branch.
 > Note, after checking out code and DVC-files from Git, data files have to be
 checked out as well by the `dvc checkout` command.
 
-```sh
+```dvc
     $ git checkout master
     $ dvc checkout
     # Nothing to reproduce since code was checked out by `git checkout`
@@ -150,7 +153,7 @@ the data files based on them.
 You should create a new branch for this new experiment. It will help you to
 organize all the experiments in a repository and checkout them when needed.
 
-```sh
+```dvc
     $ git checkout -b tuning
     # Please use your favorite text editor:
     $ vi code/train_model.py
@@ -166,8 +169,9 @@ Increase number of trees in the forest to 500 by `n_estimators` parameter in the
 
 Only the modeling and the evaluation step needs to be reproduced. Just run repro:
 
-```sh
+```dvc
     $ dvc repro
+
     Reproducing 'model.p.dvc':
         python code/train_model.py 20180319
     Input matrix size (66999, 5002)
@@ -179,14 +183,14 @@ Only the modeling and the evaluation step needs to be reproduced. Just run repro
 
 Validate the metric and commit all the changes.
 
-```sh
+```dvc
     $ cat data/eval.txt
     AUC: 0.637561
 ```
 
 This seems like a good model improvement +1.28%. Please commit all the changes:
 
-```sh
+```dvc
     $ git add .
     $ git commit -m '500 trees in the forest'
 ```
@@ -203,7 +207,7 @@ a regular Git merge command.
 
 But first, let’s create a branch as usual.
 
-```sh
+```dvc
     $ git checkout -b train_bigram
     $ git merge bigram
     Auto-merging model.p.dvc
@@ -223,7 +227,7 @@ The only disadvantage of the last, empty string tricks — DVC will recompute th
 outputs checksums. After resolving the conflicts you need to checkout a proper
 version of the data files:
 
-```sh
+```dvc
     # Replace conflicting checksums to empty string ''
     $ vi model.p.dvc
     $ vi Dvcfile
@@ -232,8 +236,9 @@ version of the data files:
 
 And reproduce the result:
 
-```sh
+```dvc
     $ dvc repro
+
     Reproducing 'model.p.dvc':
         python code/train_model.py 20180319
     Input matrix size (66999, 6002)
@@ -245,7 +250,7 @@ And reproduce the result:
 
 The target metric:
 
-```sh
+```dvc
     $ cat data/eval.txt
     AUC: 0.640389
 ```
@@ -253,14 +258,14 @@ The target metric:
 The bigrams increased the target metric to 0.28% and the last change looks like
 a reasonable improvement of the ML model. So, the result should be committed:
 
-```sh
+```dvc
     $ git add .
     $ git commit -m 'Merge bigrams into the tuned model'
 ```
 
 Now our current branch contains the best model and it can be merged into master.
 
-```sh
+```dvc
     $ git checkout master
     $ dvc checkout
     $ git merge train_bigram
@@ -277,7 +282,7 @@ Now our current branch contains the best model and it can be merged into master.
 Fast-forward strategy was applied to this merge. It means that we have all the
 changes in the right place and reproduction is not needed.
 
-```sh
+```dvc
     $ dvc checkout
     # Nothing to reproduce:
     $ dvc repro

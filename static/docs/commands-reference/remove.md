@@ -2,7 +2,7 @@
 
 Remove data file or data directory.
 
-```sh
+```usage
     usage: dvc remove [-h] [-q] [-v] [-o | -p] targets [targets ...]
 
     positional arguments:
@@ -20,7 +20,7 @@ Remove data file or data directory.
 
 Remove `data.csv` data file:
 
-```sh
+```dvc
     $ dvc add data.csv
     $ ls data.csv*
 

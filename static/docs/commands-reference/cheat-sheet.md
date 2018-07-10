@@ -2,28 +2,24 @@
 
 Below is the quick summary of the most important commands
 
-```sh
-$ dvc --help
-
-usage: dvc [-h] [-q] [-v] [-V]
-           {init,add,import,checkout,run,pull,push,fetch,status,repro,remove,move,gc,config,remote,metrics,install,root,lock,unlock}
-           ...
-
-Data Version Control
+```usage
+usage: dvc [-h] [-q] [-v] [-V] ...
 
 positional arguments:
-  {init,add,import,checkout,run,pull,push,fetch,status,repro,remove,move,gc,config,remote,metrics,install,root,lock,unlock}
                         Use dvc CMD --help for command-specific help
-    init                Initialize dvc over a directory (should already be a git dir)
+    init                Initialize dvc over a directory
+                        (should already be a git dir)
     add                 Add files/directories to dvc
     import              Import files from URL
     checkout            Checkout data files from cache
-    run                 Generate a stage file from a given command and execute the command
+    run                 Generate a stage file from a given command
+                        and execute the command
     pull                Pull data files from the cloud
     push                Push data files to the cloud
     fetch               Fetch data files from the cloud
     status              Show the project status
-    repro               Reproduce DVC file. Default file name - 'Dvcfile'
+    repro               Reproduce DVC file. Default file name -
+                        'Dvcfile'
     remove              Remove outputs of DVC file.
     move                Move output of DVC file.
     gc                  Collect garbage

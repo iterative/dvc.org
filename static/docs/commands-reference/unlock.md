@@ -2,7 +2,7 @@
 
 Unlock DVC file for reproduction.
 
-```sh
+```usage
     usage: dvc unlock [-h] [-q] [-v] targets [targets ...]
 
     positional arguments:
@@ -15,7 +15,7 @@ Unlock DVC file for reproduction.
 ```
 
 ## Example
-```sh
+```dvc
     $ echo foo > foo
     $ dvc add foo
     $ dvc run -d foo -o bar cp foo bar

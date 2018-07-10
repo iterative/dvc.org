@@ -52,31 +52,31 @@ The subsections below explain how to configure DVC to use each of them.
 
 #### S3
 
-```sh
+```dvc
     $ dvc remote add -d myremote s3://mybucket/myproject
 ```
 
 #### GS
 
-```sh
+```dvc
     $ dvc remote add -d myremote gs://mybucket/myproject
 ```
 
 #### Azure
 
-```sh
+```dvc
     $ export AZURE_STORAGE_CONNECTION_STRING="<connection string>"
     $ dvc remote add -d myremote azure://ContainerName=mybucket;
 ```
 
 #### SSH
 
-```sh
+```dvc
     $ dvc remote add -d myremote ssh://user@example.com:/path/to/myproject
 ```
 
 #### HDFS
 
-```sh
+```dvc
    $ dvc remote add -d myremote hdfs://user@example.com/path/to/myproject
 ```

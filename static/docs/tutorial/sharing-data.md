@@ -15,7 +15,7 @@ your machine.
 First you need to modify cloud settings in DVC config file. This can be done
 programmatically:
 
-```sh
+```dvc
     $ dvc config core.cloud AWS
     $ dvc config AWS.StoragePath dvc-share/classify
     $ git status -s
@@ -24,7 +24,7 @@ programmatically:
 
 Then, a simple command pushes files from your local cache to the cloud:
 
-```sh
+```dvc
     $ dvc push
     (1/9): [#########################] 100% 23/404ed8212fc1ee6f5a81ff6f6df2ef
     (2/9): [##########               ] 34% 5f/42ecd9a121b4382cd6510534533ec3
@@ -42,7 +42,7 @@ pushed because the rest of the data files belong to different branches like
 In order to reuse your data files a colleagues of yours needs to pull data the
 sam way from the master branch.
 
-```sh
+```dvc
     $ git clone https://github.com/dmpetrov/classify.git
     $ dvc config AWS.StoragePath dvc-share/classify
     $ dvc pull
@@ -51,7 +51,7 @@ sam way from the master branch.
 After this command all the data files will be in the right place. You can check
 that by trying to reproduce the default goal:
 
-```sh
+```dvc
     # Nothing to reproduce:
     $ dvc repro
 ```

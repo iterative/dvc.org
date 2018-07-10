@@ -2,7 +2,7 @@
 
 Relative path to project's directory
 
-```sh
+```usage
     usage: dvc root [-h] [-q] [-v]
 
     optional arguments:
@@ -13,7 +13,7 @@ Relative path to project's directory
 
 ## Examples
 
-```sh
+```dvc
     $ dvc root
       .
     $ cd subdir

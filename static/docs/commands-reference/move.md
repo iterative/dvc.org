@@ -2,7 +2,7 @@
 
 Move output of a DVC file.
 
-```sh
+```usage
     usage: dvc move [-h] [-q] [-v] src dst
 
     positional arguments:
@@ -17,13 +17,16 @@ Move output of a DVC file.
 
 ## Examples
 
-```sh
+```dvc
     $ dvc add data.csv
     $ ls
+
      data.csv
      data.csv.dvc
+
     $ dvc move data.csv input.csv
     $ ls
+
      input.csv
      input.csv.dvc
 ```

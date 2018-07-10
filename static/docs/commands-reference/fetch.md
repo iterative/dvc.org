@@ -2,7 +2,7 @@
 
 This command fetches all currently used data file caches from cloud storage.
 
-```sh
+```usage
     usage: dvc fetch [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [--all-branches]
                      [targets [targets ...]]
 
@@ -23,8 +23,9 @@ This command fetches all currently used data file caches from cloud storage.
 
 Fetch all files used in the current Git branch:
 
-```sh
+```dvc
     $ dvc fetch
+
     (1/8): [#################################] 100% 54a6f1787490ba13fb811a46b
     (2/8): [#################################] 100% 5806dc797c08fb6ddd5d97d46
     (3/8): [#################################] 100% 5988519f8465218abb23ce0e0

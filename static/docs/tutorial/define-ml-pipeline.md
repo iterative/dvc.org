@@ -6,7 +6,7 @@ To include a data file into your data science environment you need to copy the
 file in on of the repository directories. We create a special directory `data`
 for the data files and download 40MB source data file into this directory.
 
-```sh
+```dvc
     $ mkdir data
     $ wget -P data $S3_DIR/100K/Posts.xml.tgz
     $ du -sh data/*
@@ -18,7 +18,7 @@ the file under DVC control by `dvc add` command. After the command execution
 you will see a new file `data/Posts.xml.tgz.dvc` and there is a change in
 `data/.gitignore`. Both of these files have to be committed into the repository.
 
-```sh
+```dvc
     $ dvc add data/Posts.xml.tgz
     $ du -sh data/*
      40M data/Posts.xml.tgz
@@ -49,7 +49,7 @@ of the actual content file in DVC cache directory `.dvc/cache`.
 > Output from DVC-file defines the relationship between the data file path in a
 repository and the path in a cache directory.
 
-```sh
+```dvc
     $ cat data/Posts.xml.tgz.dvc
     cmd: null
     deps: []
@@ -82,7 +82,7 @@ contains 40MB of data the overall size of the repository is still 40MB. And both
 of the files are corresponded to the same `inode` (actual file content) in a
 file system. Use `ls -l` to see file system inodes:
 
-```sh
+```dvc
     $ ls -i data/Posts.xml.tgz
     78483929 data/Posts.xml.tgz
 
@@ -125,7 +125,7 @@ before the list of the command to run.
 Let see how a unarchiving command `tar` works under DVC:
 
 
-```sh
+```dvc
     $ dvc run -d data/Posts.xml.tgz -o data/Posts.xml \
             tar zxf data/Posts.xml.tgz -C data/
     Using 'Posts.xml.dvc' as a stage file
@@ -160,7 +160,7 @@ end (can be changed by `-f` option).
 
 Let's take a look at the DVC-file example:
 
-```sh
+```dvc
     $ cat Posts.xml.dvc
     cmd: tar zxf data/Posts.xml.tgz -C data/
     deps:
@@ -183,7 +183,7 @@ Sections of the file above include:
 As previously with `dvc add` command `data/.gitignore` file was modified. Now it
 includes the unarchive command output file `Posts.xml`.
 
-```sh
+```dvc
     $ git status -s
      M data/.gitignore
     ?? Posts.xml.dvc
@@ -199,7 +199,7 @@ data file in accordance with the `-o` option.
 You can find the corresponded cache file by the checksum which starts from
 `cfdaa4b` according to the DVC-file `Posts.xml.dvc`:
 
-```sh
+```dvc
     $ ls .dvc/cache/
     2f/ a8/
 
@@ -214,7 +214,7 @@ You can find the corresponded cache file by the checksum which starts from
 Let’s commit the result of the unarchived command. This is the first step of our
 ML pipeline.
 
-```sh
+```dvc
     $ git add .
     $ git commit -m Unarchive
 ```
@@ -228,7 +228,7 @@ few steps and commit later.
 Let’s run the next step of converting a XML file to TSV and the following step
 of separating training and testing datasets one by one:
 
-```sh
+```dvc
     $ dvc run -d data/Posts.xml -d code/xml_to_tsv.py -d code/conf.py \
             -o data/Posts.tsv \
             python code/xml_to_tsv.py
@@ -251,7 +251,7 @@ The result of the steps are two DVC-files corresponding to each of the commands
 created. These type of files should not be tracked by Git. Let’s manually
 include this type of file into `.gitignore`.
 
-```sh
+```dvc
     $ git status -s
      M data/.gitignore
     ?? Posts-test.tsv.dvc
@@ -263,7 +263,7 @@ include this type of file into `.gitignore`.
 
 Both of the steps can be committed to the repository together.
 
-```sh
+```dvc
     $ git add .
     $ git commit -m 'Process to TSV and separate test and train'
 ```
@@ -272,7 +272,7 @@ Let’s run and commit the following steps of the pipeline. Define the feature
 extraction step which takes train and test TSVs and generates corresponding
 matrix files:
 
-```sh
+```dvc
     $ dvc run -d code/featurization.py -d code/conf.py \
             -d data/Posts-train.tsv -d data/Posts-test.tsv \
             -o data/matrix-train.p -o data/matrix-test.p \
@@ -288,7 +288,7 @@ matrix files:
 
 Train model out of the train matrix file:
 
-```sh
+```dvc
     $ dvc run -d data/matrix-train.p -d code/train_model.py \
             -d code/conf.py -o data/model.p \
             python code/train_model.py 20180319
@@ -302,7 +302,7 @@ Train model out of the train matrix file:
 
 And evaluate the result by the trained model and the test feature matrix:
 
-```sh
+```dvc
     $ dvc run -d data/model.p -d data/matrix-test.p \
             -d code/evaluate.py -d code/conf.py -o data/eval.txt \
             -f Dvcfile \
@@ -318,7 +318,7 @@ chapter in more details.
 The result of the last three run commands execution is three DVC-files and
 modified .gitignore file. All the changes should be committed into Git.
 
-```sh
+```dvc
     $ git status -s
      M data/.gitignore
     ?? Dvcfile
@@ -331,7 +331,7 @@ modified .gitignore file. All the changes should be committed into Git.
 
 The evaluation step output contains the target metrics value in a simple text form:
 
-```sh
+```dvc
     $ cat data/eval.txt
     AUC: 0.624652
 ```

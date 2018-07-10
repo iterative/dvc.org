@@ -7,7 +7,7 @@ can predict a post that is about the Java language by tagging it "Java".
 
 First, let's download the model code and set up the Git repository:
 
-```sh
+```dvc
     $ mkdir myrepo
     $ cd myrepo
     $ mkdir code
@@ -28,13 +28,13 @@ The full pipeline can be built by running the code below:
 
 * Initialize DVC repository (in your Git repository):
 
-```sh
+```dvc
     $ dvc init
 ```
 
 * Download a file to the data/ directory and add it to dvc.
 
-```sh
+```dvc
     $ mkdir data
     $ cd data
     $ wget https://s3-us-west-2.amazonaws.com/dvc-share/so/25K/Posts.xml.tgz
@@ -43,20 +43,20 @@ The full pipeline can be built by running the code below:
 
 * Extract XML from the archive.
 
-```sh
+```dvc
     $ dvc run -d data/Posts.xml.tgz -o data/Posts.xml tar zxf data/Posts.xml.tgz
 ```
 
 * Prepare the data.
 
-```sh
+```dvc
     $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml -o data/Posts.tsv \
           python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
 ```
 
 * Split training and testing dataset. Two output files.
 
-```sh
+```dvc
     $ # 0.33 - test dataset split ratio. 20170426 is a seed for randomization.
     $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
               -o data/Posts-train.tsv -o data/Posts-test.tsvpython \
@@ -67,7 +67,7 @@ The full pipeline can be built by running the code below:
 * Extract features from the data. Two TSV as inputs with two pickle matrices as
 outputs.
 
-```sh
+```dvc
     $ dvc run -d code/featurization.py -d data/Posts-train.tsv \
               -d data/Posts-test.tsv \
 	      -o data/matrix-train.p -o data/matrix-test.p \
@@ -77,14 +77,14 @@ outputs.
 
 * Train ML model on the training dataset. 20170426 is another seed value.
 
-```sh
+```dvc
     $ dvc run -d code/train_model.py -d data/matrix-train.py -o data/model.py \
           python code/train_model.py data/matrix-train.p 20170426 data/model.p
 ```
 
 * Evaluate the model on the test dataset.
 
-```sh
+```dvc
     $ dvc run -d code/evaluate.py -d data/model.py \
 	      -d data/matrix-test.p -o data/evaluation.txt \
      python code/evaluate.py data/model.p data/matrix-test.p data/evaluation.txt
@@ -92,7 +92,7 @@ outputs.
 
 * Get the result.
 
-```sh
+```dvc
     $ cat data/evaluation.txt
     AUC: 0.596182
 ```
@@ -103,7 +103,7 @@ files have been modified. For example:
 * Let's improve the feature extraction algorithm by making some modification to
 the `code/featurization.py`:
 
-```sh
+```dvc
     $ vi code/featurization.py
 ```
 
@@ -116,19 +116,19 @@ bag_of_words = CountVectorizer(stop_words='english',
 
 * Commit all the changes:
 
-```sh
+```dvc
     $ git commit -am "Add bigram features"
 ```
 
 * Reproduce all required steps to get our target metrics file:
 
-```sh
+```dvc
     $ dvc repro evaluation.txt.dvc
 ```
 
 * Take a look at the target metric improvement:
 
-```sh
+```dvc
     $ cat data/evaluation.txt
 
     AUC: 0.627196

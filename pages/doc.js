@@ -7,9 +7,9 @@ import DownloadButton from '../src/DownloadButton'
 // code highlighter
 import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/light'
 import docco from 'react-syntax-highlighter/styles/hljs/docco'
-import js from 'react-syntax-highlighter/languages/hljs/javascript'
+import usage from '../src/Documentation/usage'
+import dvc from '../src/Documentation/dvc'
 import python from 'react-syntax-highlighter/languages/hljs/python'
-import bash from 'react-syntax-highlighter/languages/hljs/bash'
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
@@ -22,9 +22,9 @@ import { media, OnlyDesktop } from '../src/styles'
 // documentation
 import sidebar from '../src/Documentation/sidebar'
 
-registerLanguage('js', js)
+registerLanguage('dvc', dvc)
 registerLanguage('python', python)
-registerLanguage('sh', bash)
+registerLanguage('usage', usage)
 
 function flatten(text, child) {
   return typeof child === 'string'
@@ -33,20 +33,23 @@ function flatten(text, child) {
 }
 
 const HeadingRenderer = ({ level, children }) => {
-  const content = React.Children.toArray(children);
+  const content = React.Children.toArray(children)
   const text = children.reduce(flatten, '')
   const slug = kebabCase(text)
   return React.createElement('h' + level, { id: slug }, content)
 }
 
-const CodeBlock = ({ value, language }) => (
-  <SyntaxHighlighter
+const CodeBlock = ({ value, language }) => {
+  const dvcStyle = Object.assign({}, docco)
+  dvcStyle["hljs-comment"] = {"color": "#999"}
+  dvcStyle["hljs-meta"] = {"color": "#333", "fontSize": "14px"}
+  return <SyntaxHighlighter
     language={language}
-    style={docco}
+    style={dvcStyle}
   >
     {value}
   </SyntaxHighlighter>  
-)
+}
 
 export default class Documentation extends Component {
   state = {
@@ -330,6 +333,10 @@ const Content = styled.article`
 
   ul, ol {
     list-style-type: inherit;
+  }
+  
+  em {
+    font-style: italic;
   }
 
   .markdown-body {

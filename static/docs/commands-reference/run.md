@@ -10,7 +10,7 @@ first output.
 For example, launch Python with a given python script and arguments. Or R script
 by Rscript command.
 
-```sh
+```usage
     usage: dvc run [-h] [-q] [-v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
                    [-M METRICS_NO_CACHE] [-f FILE] [-c CWD] [--no-exec]
                    ...
@@ -40,7 +40,7 @@ by Rscript command.
 Execute a Python script as the DVC pipeline step. Stage file was not specified,
 so a `model.p.dvc` stage file will be created:
 
-```sh
+```dvc
     $ # Train ML model on the training dataset. 20180226 is a seed value.
     $ dvc run -d matrix-train.p -d train_model.py -o model.p python \
         train_model.py matrix-train.p 20180226 model.p
@@ -48,14 +48,14 @@ so a `model.p.dvc` stage file will be created:
 
 Execute an R script as the DVC pipeline step:
 
-```sh
+```dvc
     $ dvc run -d parsingxml.R -d Posts.xml -o Posts.csv Rscript parsingxml.R \
         Posts.xml Posts.csv
 ```
 
 Extract an XML file from an archive to the `data/` folder:
 
-```sh
+```dvc
     $ mkdir data
     $ dvc run -d Posts.xml.tgz -o data/Posts.xml tar zxf Posts.xml.tgz -C data/
 ```

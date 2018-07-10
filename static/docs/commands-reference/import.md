@@ -7,10 +7,11 @@ Supported schemes:
 * `local` - Local path
 * `s3` - URL to a file on Amazon S3
 * `gs` - URL to a file on Google Storage
+* `azure` - URL to a file on Azure Storage
 * `ssh` - URL to a file on another machine with SSH access
 * `hdfs` - URL to a file on HDFS
 
-```sh
+```usage
     usage: dvc import [-h] [-q] [-v] url out
     
     positional arguments:
@@ -25,10 +26,11 @@ Supported schemes:
 
 ## Examples
 
-```sh
+```dvc
     $ dvc import /path/to/data.csv local_data.csv
     $ dvc import s3://mybucket/data.csv s3_data.csv
     $ dvc import gs://mybucket/data.csv gs_data.csv
+    $ dvc import azure://mybucket/data.csv azure_data.csv
     $ dvc import ssh://user@example.com:/path/to/data.csv ssh_data.csv
     $ dvc import hdfs://user@example.com/path/to/data.csv hdfs_data.csv
 ```

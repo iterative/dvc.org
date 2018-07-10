@@ -14,7 +14,7 @@ You can download the packages
 
 Another option is to use the standard Python pip package:
 
-```sh
+```dvc
     $ pip install dvc
 ```
 
@@ -29,13 +29,13 @@ Mac OS users can also install DVC by using either **brew formula** or
 
 ### Formula
 
-```sh
+```dvc
     $ brew install iterative/homebrew-dvc/dvc
 ```
 
 ### Cask
 
-```sh
+```dvc
     $ brew cask install iterative/homebrew-dvc/dvc
 ```
 
@@ -43,7 +43,7 @@ Mac OS users can also install DVC by using either **brew formula** or
 
 If you would like to pull the latest version of DVC, you can do the following:
 
-```sh
+```dvc
     $ pip install git+git://github.com/iterative/dvc
 ```
 

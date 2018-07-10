@@ -5,7 +5,7 @@ Reproduce DVC file and all stages the file depends on (recursively).
 Default file name is `Dvcfile`. However, DVC files can have any name followed by
 the `.dvc` suffix.
 
-```sh
+```usage
     usage: dvc repro [-h] [-q] [-v] [-f] [-s] [-c CWD] [-m]
                      [targets [targets ...]]
 
@@ -27,7 +27,7 @@ the `.dvc` suffix.
 
 Reproduce default stage file:
 
-```sh
+```dvc
     $ dvc repro
 
     Verifying data sources in 'data/Posts.xml.tgz.dvc'
@@ -47,7 +47,7 @@ Reproduce default stage file:
 
 Reproduce the part of the pipeline where `Posts.tsv.dvc` is the target DVC file:
 
-```sh
+```dvc
     $ dvc repro Posts.tsv.dvc
 
     Reproducing 'Posts.xml.dvc':

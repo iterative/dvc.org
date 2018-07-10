@@ -8,7 +8,7 @@ gc, unless --all-branches option is specified. If a data file has a few
 versions (and, of course. corresponding caches) - all caches except the current
 one will be removed.
 
-```sh
+```usage
     usage: dvc gc [-h] [-q] [-v] [--all-branches]
 
     optional arguments:
@@ -20,7 +20,7 @@ one will be removed.
 
 ## Examples
 
-```sh
+```dvc
     $ du -sh .dvc/cache/
     7.4G    .dvc/cache/
 

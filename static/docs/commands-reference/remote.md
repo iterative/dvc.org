@@ -2,7 +2,7 @@
 
 Manage set of tracked repositories.
 
-```sh
+```usage
     usage: dvc remote [-h] [-q] [-v] {add,remove,modify,list} ... 
 
     positional arguments:
@@ -23,7 +23,7 @@ Manage set of tracked repositories.
 Remote location.
 
 #### Example
-```sh
+```dvc
 dvc remote modify myremote url gs://bucket/path 
 ```
 
@@ -31,7 +31,7 @@ dvc remote modify myremote url gs://bucket/path
 Local remote.
 
 #### Example
-```sh
+```dvc
 dvc remote add myremote /path/to/dir
 ```
 
@@ -41,7 +41,7 @@ Possbile values: `reflink`, `symlink`, `hardlink`, `copy` or a combination of
 those separated by the comma: `reflink,copy`.
 
 ##### Example
-```sh
+```dvc
 dvc remote modify myremote type reflink,copy
 ```
 
@@ -49,7 +49,7 @@ dvc remote modify myremote type reflink,copy
 AWS S3 remote.
 
 #### Example
-```sh
+```dvc
 dvc remote add myremote s3://bucket/path
 ```
 
@@ -57,7 +57,7 @@ dvc remote add myremote s3://bucket/path
 AWS S3 region.
 
 ##### Example
-```sh
+```dvc
 dvc remote modify myremote region us-east-2
 ```
 
@@ -65,7 +65,7 @@ dvc remote modify myremote region us-east-2
 Profile to use to access AWS S3.
 
 ##### Example
-```sh
+```dvc
 dvc remote modify myremote profile myprofile
 ```
 
@@ -73,7 +73,7 @@ dvc remote modify myremote profile myprofile
 Path to credentials to use to access AWS S3.
 
 ##### Example
-```sh
+```dvc
 dvc remote modify myremote credentialpath /path/to/my/creds
 ```
 
@@ -81,7 +81,7 @@ dvc remote modify myremote credentialpath /path/to/my/creds
 Endpoint URL to use to access AWS S3.
 
 ##### Example
-```sh
+```dvc
 dvc remote modify myremote endpointurl myendpoint.com
 ```
 
@@ -89,7 +89,7 @@ dvc remote modify myremote endpointurl myendpoint.com
 Google Cloud Storage remote.
 
 #### Example
-```sh
+```dvc
 dvc remote add myremote gs://bucket/path
 ```
 
@@ -97,7 +97,7 @@ dvc remote add myremote gs://bucket/path
 Project name to use.
 
 ##### Example
-```sh
+```dvc
 dvc remote modify myremote projectname myproject
 ```
 
@@ -105,7 +105,7 @@ dvc remote modify myremote projectname myproject
 SSH remote.
 
 #### Example
-```sh
+```dvc
 dvc remote add myremote ssh://user@example.com:/path/to/dir
 ```
 
@@ -113,7 +113,7 @@ dvc remote add myremote ssh://user@example.com:/path/to/dir
 Username to use to access a remote.
 
 ##### Example
-```sh
+```dvc
 dvc remote modify myremote user myuser
 ```
 
@@ -121,7 +121,7 @@ dvc remote modify myremote user myuser
 HDFS remote.
 
 #### Example
-```sh
+```dvc
 dvc remote add myremote hdfs://user@example.com/path/to/dir
 ```
 
@@ -129,13 +129,13 @@ dvc remote add myremote hdfs://user@example.com/path/to/dir
 Username to use to access a remote.
 
 ##### Example
-```sh
+```dvc
 dvc remote modify myremote user myuser
 ```
 
 ## Examples
 
-```sh
+```dvc
     $ dvc remote add myremote s3://mybucket/myproject
     $ dvc remote list
       myremote

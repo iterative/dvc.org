@@ -1,0 +1,80 @@
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _javascript = function(hljs) {
+  var VAR = {
+    className: 'variable',
+    variants: [
+      {begin: /\$[\w\d#@][\w\d_]*/},
+      {begin: /\$\{(.*?)}/}
+    ]
+  };
+  var QUOTE_STRING = {
+    className: 'string',
+    begin: /"/, end: /"/,
+    contains: [
+      hljs.BACKSLASH_ESCAPE,
+      VAR,
+      {
+        className: 'variable',
+        begin: /\$\(/, end: /\)/,
+        contains: [hljs.BACKSLASH_ESCAPE]
+      }
+    ]
+  };
+  var APOS_STRING = {
+    className: 'string',
+    begin: /'/, end: /'/
+  };
+
+  return {
+    aliases: ['dvc'],
+    contains: [
+      {
+        begin: /^\s*\$/,
+        end: /([^\\]\n)|\Z/,
+        keywords: {
+          keyword:
+          'ls cat vi mkdir cd wget du python',
+        },
+        contains: [
+          {
+            begin: / dvc [a-z\-]+/,
+            keywords: {
+              built_in:
+                'help dvc init add import checkout run pull push fetch status ' +
+                'repro remove move gc config remote metrics install root lock unlock',
+            },
+            className: 'strong',
+          },
+          {
+            begin: / git [a-z\-]+/,
+            keywords: {
+              keyword: 'git commit status pull push fetch add init checkout merge',
+            },
+          },
+          QUOTE_STRING,
+          APOS_STRING,
+          VAR,
+          hljs.HASH_COMMENT_MODE
+        ]
+      },
+      hljs.HASH_COMMENT_MODE,
+      {
+        begin: /^\s*[^\s#$]/,
+        end: /\n|\Z/,
+        className: 'meta',
+      }
+    ],
+
+  };
+};
+
+var _javascript2 = _interopRequireDefault(_javascript);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = _javascript2.default;

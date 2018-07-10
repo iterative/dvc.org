@@ -1,10 +1,11 @@
 # config
 
-Get or set config options. This command reads and overwrites the DVC config file
-`.dvc/config`.
+Get or set config options.
+
+This command reads and overwrites the DVC config file `.dvc/config`.
 
 
-```sh
+```usage
     usage: dvc config [-h] [-q] [-v] [-u] name [value]
 
     positional arguments:
@@ -21,27 +22,24 @@ Get or set config options. This command reads and overwrites the DVC config file
 
 ## Options
 
-### Core
-This is the main section with the core options.
+1. `core` - this is the main section with the core options.
 
-#### Log Level
-Log level that dvc should use. Possible values: info, debug, warning, error.
+    * `loglevel` - log level that dvc should use. Possible values: `info`,
+    `debug`, `warning`, `error`.
 
-##### Example
-```sh
-dvc config core.loglevel debug
+```dvc
+            $ dvc config core.loglevel debug
 ```
 
-#### Remote
-Name of the remote that should be used by default.
+    * `remote` - name of the remote that should be used by default.
 
-##### Example
-```sh
-dvc remote add myremote s3://bucket/path
-dvc config core.remote myremote
+```dvc
+    $ dvc remote add myremote s3://bucket/path
+    $ dvc config core.remote myremote
 ```
 
-### Remote
+2. `remote` -
+
 Sections that describe particular remotes. See
 [`dvc remote`](https://dvc.org/doc/commands-reference/remote) for more info.
 
@@ -54,6 +52,9 @@ Remote name to use for local cache.
 Remote name to use for s3 cache.
 
 #### GS
+Remote name to use for gs cache.
+
+#### Azure
 Remote name to use for gs cache.
 
 #### SSH
@@ -78,8 +79,8 @@ priority of link types:
 4. copy
 
 ##### Example
-```sh
-dvc config cache.type reflink,copy
+```dvc
+    $ dvc config cache.type reflink,copy
 ```
 
 ##### reflink
@@ -113,7 +114,7 @@ files, where copying them is not a performance/storage concern.
 
 ## Examples
 
-```sh
+```dvc
     $ dvc config core.remote myremote
     $ dvc config core.remote
 

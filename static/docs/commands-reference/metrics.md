@@ -2,7 +2,7 @@
 
 Manage metrics.
 
-```sh
+```usage
     usage: dvc metrics [-h] [-q] [-v] {show,add,remove} ...
 
     positional arguments:
@@ -17,7 +17,7 @@ Manage metrics.
 ```
 
 ## Example
-```sh
+```dvc
     $ dvc run -d data/model.p -d data/matrix-test.p \
               -d code/evaluate.py -d code/conf.py -O data/eval.txt \
               -f Dvcfile \

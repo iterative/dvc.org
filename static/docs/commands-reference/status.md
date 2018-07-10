@@ -3,7 +3,7 @@
 Show changed stages in the pipeline and mismatches between local cache and cloud
 remote.
 
-```sh
+```usage
     usage: dvc status [-h] [-q] [-v] [-j JOBS] [-c] [-r REMOTE]
                       [targets [targets ...]]
 
@@ -23,8 +23,9 @@ remote.
 
 ## Examples
 
-```sh
+```dvc
     $ dvc status
+
       bar.dvc
               outs
                       changed:  bar
@@ -33,7 +34,9 @@ remote.
       foo.dvc
               outs
                       changed:  foo
+
     $ dvc status -c
+
         new:      32e366fae424b7bd1a522c528f46daa4
 
 ```

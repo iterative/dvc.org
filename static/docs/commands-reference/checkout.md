@@ -16,7 +16,7 @@ where checking out as a 50Gb file might take a few minutes. For DVC, it will
 take less than a second to restore a 50Gb data file.
 
 
-```sh
+```usage
     usage: dvc checkout [-h] [-q] [-v] [targets [targets ...]]
 
     positional arguments:
@@ -32,7 +32,7 @@ take less than a second to restore a 50Gb data file.
 
 Checking out a branch example:
 
-```sh
+```dvc
     $ git checkout input_100K
     $ dvc checkout
 ```

@@ -13,7 +13,7 @@ steps. Later we will be modifying the code a bit to improve the model.
 Take the following steps to initialize a new Git repository and get the sample
 code into it:
 
-```sh
+```dvc
     $ mkdir classify
     $ cd classify
     $ git init
@@ -35,7 +35,7 @@ code into it:
 
 Install the code requirements:
 
-```sh
+```dvc
     $ pip install -r code/requirements.txt
 ```
 
@@ -49,7 +49,7 @@ and Windows. You can find the latest version of the package on the
 Alternatively, you can install DVC by Python package manager — PIP if you use
 Python:
 
-```sh
+```dvc
     $ pip install dvc
 ```
 
@@ -64,7 +64,7 @@ hidden from the user in general and the user does not interact with these files
 directly. However, we describe DVC internals a bit for better understanding on
 how it works.
 
-```sh
+```dvc
     $ dvc init
     $ ls -a .dvc
     ./      ../     .gitignore  cache/  config

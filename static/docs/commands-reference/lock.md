@@ -2,7 +2,7 @@
 
 Lock DVC file from reproduction.
 
-```sh
+```usage
     usage: dvc lock [-h] [-q] [-v] targets [targets ...]
 
     positional arguments:
@@ -15,7 +15,7 @@ Lock DVC file from reproduction.
 ```
 
 ## Example
-```sh
+```dvc
     $ echo foo > foo
     $ dvc add foo
     $ dvc run -d foo -o bar cp foo bar

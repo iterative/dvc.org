@@ -2,7 +2,7 @@
 
 Install dvc hooks into the repository
 
-```sh
+```usage
     usage: dvc install [-h] [-q] [-v]
 
     optional arguments:
@@ -13,7 +13,7 @@ Install dvc hooks into the repository
 
 ## Examples
 
-```sh
+```dvc
     $ dvc install
     $ cat .git/hooks/post-checkout
       #!/bin/sh
