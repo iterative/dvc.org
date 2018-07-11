@@ -327,12 +327,16 @@ const Content = styled.article`
   position: relative;
 
   ${media.phablet`
-    padding-top: 50px;
+    padding-top: 20px;
     margin: 20px;
   `};
 
-  ul, ol {
+  ul {
     list-style-type: inherit;
+  }
+
+  ol {
+    list-style-type: decimal;
   }
   
   em {
@@ -430,16 +434,14 @@ const Collapse = styled.div`
 `
 
 const GithubLink = styled.a`
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin-top: 5px;
+  float: right;
+  margin: 5px 0 10px 10px;
   display: inline-flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
   font-weight: 600;
-  color: #242A31;
+  color: #242A31 !important;
   background-color: #FFFFFF;
   border: 1px solid #D3DCE4;
   
@@ -447,7 +449,12 @@ const GithubLink = styled.a`
   padding: 2px 16px;
   border-radius: 3px;
   cursor: pointer;
-  transition: 0.2s ease-out;
+  transition: 0.2s background-color ease-out;
+
+  ${media.tablet`
+    float: none;
+    margin: 0 0 15px 0;
+  `};
 
   &:hover {
     background-color: #F5F7F9;
