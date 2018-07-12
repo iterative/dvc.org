@@ -332,7 +332,7 @@ const Content = styled.article`
   `};
 
   ul {
-    list-style-type: inherit;
+    list-style-type: disc;
   }
 
   ol {
