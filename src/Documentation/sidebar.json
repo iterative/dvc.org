@@ -1,20 +1,5 @@
 [
   {
-    "name": "Introduction",
-    "folder": "/static/docs/introduction",
-    "files": [
-      "collaboration-issues.md",
-      "existing-tools.md",
-      "what-is-dvc.md",
-      "core-features.md",
-      "how-it-works.md",
-      "related-technologies.md"
-    ],
-    "labels": {
-      "what-is-dvc.md": "What is DVC?"
-    }
-  },
-  {
     "name": "Get Started",
     "folder": "/static/docs/get-started",
     "files": [
@@ -86,6 +71,21 @@
     ],
     "labels": {
       "define-ml-pipeline.md": "Define ML Pipeline"
+    }
+  },
+  {
+    "name": "DVC Philosophy",
+    "folder": "/static/docs/philosophy",
+    "files": [
+      "collaboration-issues.md",
+      "existing-tools.md",
+      "what-is-dvc.md",
+      "core-features.md",
+      "how-it-works.md",
+      "related-technologies.md"
+    ],
+    "labels": {
+      "what-is-dvc.md": "What is DVC?"
     }
   }
 ]
