@@ -10,6 +10,7 @@ import docco from 'react-syntax-highlighter/styles/hljs/docco'
 import usage from '../src/Documentation/usage'
 import dvc from '../src/Documentation/dvc'
 import python from 'react-syntax-highlighter/languages/hljs/python'
+import linker from '../src/Documentation/remark-linker'
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
@@ -255,6 +256,7 @@ export default class Documentation extends Component {
                 code: CodeBlock,
                 heading: HeadingRenderer,
               }}
+              astPlugins={[linker()]}
             />
           </Content>
         </Container>
