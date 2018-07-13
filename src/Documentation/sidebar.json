@@ -12,10 +12,10 @@
     "name": "Use Cases",
     "folder": "/static/docs/use-cases",
     "files": [
-      "how-to-store-files-in-dvc.md"
+      "data-and-model-files-versioning.md"
     ],
     "labels": {
-      "how-to-store-files-in-dvc.md": "How to Store Files in DVC"
+      "data-and-model-files-versioning.md": "Data & Model Files Versioning"
     }
   },
   {
