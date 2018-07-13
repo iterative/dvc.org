@@ -10,9 +10,9 @@ cached versions all of them except the current one will be removed.
 Note, this action is not removing data files from the the remote storage. Make
 sure thoufg that remote is configured and all the data you need in the future 
 is pushed there. See `dvc remote` and `dvc config` for more information. This
-command it just cleans a working cache which is usually located on the machine
-your are running experiments on and helps to save some space. You can `dvc fetch`
-all the needed files back anytime you want.
+command is just a way to clean the working cache which is usually located on the
+machine your are running experiments on and usually helps to save some space.
+You can `dvc fetch` all the needed files back anytime you want.
 
 ```usage
     usage: dvc gc [-h] [-q] [-v] [--all-branches]
