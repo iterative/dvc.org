@@ -14,9 +14,9 @@
     "files": [
       "how-to-store-files-in-dvc.md"
     ],
-    "labels": [
-      "how-to-store-files-in-dvc.md": "How To Store Files In DVC"
-    ]
+    "labels": {
+      "how-to-store-files-in-dvc.md": "How to Store Files in DVC"
+    }
   },
   {
     "name": "User Guide",
@@ -24,9 +24,9 @@
     "files": [
       "dvc-file-format.md"
     ],
-    "labels": [
+    "labels": {
       "dvc-file-format.md": "DVC File Format"
-    ]
+    }
   },
   {
     "name": "Commands Reference",
