@@ -10,6 +10,7 @@ import docco from 'react-syntax-highlighter/styles/hljs/docco'
 import usage from '../src/Documentation/usage'
 import dvc from '../src/Documentation/dvc'
 import python from 'react-syntax-highlighter/languages/hljs/python'
+import yaml from 'react-syntax-highlighter/languages/hljs/yaml'
 import linker from '../src/Documentation/remark-linker'
 // utils
 import fetch from 'isomorphic-fetch'
@@ -26,6 +27,7 @@ import sidebar from '../src/Documentation/sidebar'
 registerLanguage('dvc', dvc)
 registerLanguage('python', python)
 registerLanguage('usage', usage)
+registerLanguage('yaml', yaml)
 
 function flatten(text, child) {
   return typeof child === 'string'

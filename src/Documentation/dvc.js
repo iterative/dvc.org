@@ -4,15 +4,15 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _javascript = function(hljs) {
-  var VAR = {
+let _javascript = function(hljs) {
+  let VAR = {
     className: 'variable',
     variants: [
       {begin: /\$[\w\d#@][\w\d_]*/},
       {begin: /\$\{(.*?)}/}
     ]
   };
-  var QUOTE_STRING = {
+  let QUOTE_STRING = {
     className: 'string',
     begin: /"/, end: /"/,
     contains: [
@@ -25,7 +25,7 @@ var _javascript = function(hljs) {
       }
     ]
   };
-  var APOS_STRING = {
+  let APOS_STRING = {
     className: 'string',
     begin: /'/, end: /'/
   };
@@ -73,7 +73,7 @@ var _javascript = function(hljs) {
   };
 };
 
-var _javascript2 = _interopRequireDefault(_javascript);
+let _javascript2 = _interopRequireDefault(_javascript);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
