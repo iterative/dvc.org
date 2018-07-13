@@ -1,6 +1,10 @@
 # fetch
 
-This command fetches all currently used data file caches from cloud storage.
+This command fetches all currently used data file caches from the remote storage.
+
+See `dvc remote`, `dvc config` and 
+[remote storages](https://dvc.org/doc/get-started/configuration#remote-data-storages)
+for more information on how to configure the remote storage.
 
 ```usage
     usage: dvc fetch [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [--all-branches]
