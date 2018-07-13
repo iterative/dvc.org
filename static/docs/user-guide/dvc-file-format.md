@@ -1,13 +1,13 @@
 # DVC File Format
 
-When you add a file or a stage to your pipeline, DVC creates a special ```.dvc```
+When you add a file or a stage to your pipeline, DVC creates a special `.dvc`
 file that contains all the needed information to track your data. The file
 itself is in a simple YAML format and could be easily written or altered
-(after being created by `dvc run`) by hand.
+(after being created by `dvc run` or `dvc add`) by hand.
 
-Here is an example of dvc file:
+Here is an example of a DVC file:
 
-```
+```yaml
     cmd: python cleanup.py
     deps:
     - md5: da2259ee7c12ace6db43644aef2b754c
@@ -26,7 +26,7 @@ Here is an example of dvc file:
 
 ## Structure
 
-On the top level, ```.dvc``` file consists of such fields:
+On the top level, `.dvc` file consists of such fields:
 
 * `cmd`: a command that is being run in this stage of the pipeline;
 * `deps`: a list of dependencies for this stage;
