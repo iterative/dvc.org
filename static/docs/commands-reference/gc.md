@@ -4,9 +4,15 @@ This command collects the garbage, removing unused cache files based on the
 current Git branch.
 
 If a data file was created in a different branch, then it will be removed by
-gc, unless --all-branches option is specified. If a data file has a few
-versions (and, of course. corresponding caches) - all caches except the current
-one will be removed.
+`gc`, unless `--all-branches` option is specified. If a data file has a few
+cached versions all of them except the current one will be removed.
+
+Note, this action is not removing data files from the the remote storage. Make
+sure thoufg that remote is configured and all the data you need in the future 
+is pushed there. See `dvc remote` and `dvc config` for more information. This
+command it just cleans a working cache which is usually located on the machine
+your are running experiments on and helps to save some space. You can `dvc fetch`
+all the needed files back anytime you want.
 
 ```usage
     usage: dvc gc [-h] [-q] [-v] [--all-branches]
