@@ -9,6 +9,26 @@
     ]
   },
   {
+    "name": "Use Cases",
+    "folder": "/static/docs/use-cases",
+    "files": [
+      "how-to-store-files-in-dvc.md"
+    ],
+    "labels": [
+      "how-to-store-files-in-dvc.md": "How To Store Files In DVC"
+    ]
+  },
+  {
+    "name": "User Guide",
+    "folder": "/static/docs/user-guide",
+    "files": [
+      "dvc-file-format.md"
+    ],
+    "labels": [
+      "dvc-file-format.md": "DVC File Format"
+    ]
+  },
+  {
     "name": "Commands Reference",
     "folder": "/static/docs/commands-reference",
     "indexFile": "index.md",
