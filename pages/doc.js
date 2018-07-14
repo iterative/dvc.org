@@ -96,13 +96,20 @@ export default class Documentation extends Component {
     }
   }
 
+  getLinkHref = (section, file) => {
+    const sectionSlug = sidebar[section].slug || kebabCase(sidebar[section].name)
+    const fileSlug = file ? kebabCase(file.slice(0, -3)) : undefined
+    return `/doc/${compact([sectionSlug, fileSlug]).join('/')}`;
+  }
+
   setCurrentPath = ({ section, file }) => {
     const sectionSlug = sidebar[section].slug || kebabCase(sidebar[section].name)
     const fileSlug = file ? kebabCase(file.slice(0, -3)) : undefined
     window.history.pushState(null, null, `/doc/${compact([sectionSlug, fileSlug]).join('/')}`)
   }
 
-  onSectionSelect = (section) => {
+  onSectionSelect = (section, e) => {
+    e && e.preventDefault();
     const { indexFile, files } = sidebar[section]
     const file = indexFile || files[0]
     this.setCurrentPath({ section })
@@ -112,7 +119,8 @@ export default class Documentation extends Component {
     })
   }
 
-  onFileSelect = (file, section) => {
+  onFileSelect = (file, section, e) => {
+    e && e.preventDefault();
     this.setCurrentPath({ section, file })
     this.loadFile({ file, section, parseHeadings: true })
   }
@@ -197,7 +205,8 @@ export default class Documentation extends Component {
                         <div key={index}>
                           <SectionLink
                             level={1} 
-                            onClick={() => this.onSectionSelect(index)} 
+                            href={this.getLinkHref(index)}
+                            onClick={(e) => this.onSectionSelect(index, e)} 
                             isActive={isSectionActive}
                           >
                             {name}
@@ -210,8 +219,9 @@ export default class Documentation extends Component {
                               return (
                                 <div key={`file-${fileIndex}`}>
                                   <SectionLink 
-                                    level={2} 
-                                    onClick={() => this.onFileSelect(file, index)}
+                                    level={2}
+                                    href={this.getLinkHref(index, file)}
+                                    onClick={(e) => this.onFileSelect(file, index, e)}
                                     isActive={isFileActive}
                                   >
                                     {labels[file] || startCase(file.slice(0, -3))}
