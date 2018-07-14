@@ -45,6 +45,7 @@
       "lock.md",
       "metrics.md",
       "move.md",
+      "pipeline.md",
       "push.md",
       "pull.md",
       "remote.md",
@@ -53,8 +54,7 @@
       "root.md",
       "run.md",
       "status.md",
-      "unlock.md",
-      "pipeline.md"
+      "unlock.md"
     ],
     "labels": {
       "run.md": "run",
