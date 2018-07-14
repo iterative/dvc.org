@@ -12,10 +12,12 @@
     "name": "Use Cases",
     "folder": "/static/docs/use-cases",
     "files": [
-      "data-and-model-files-versioning.md"
+      "data-and-model-files-versioning.md",
+      "share-data-and-model-files.md"
     ],
     "labels": {
-      "data-and-model-files-versioning.md": "Data & Model Files Versioning"
+      "data-and-model-files-versioning.md": "Data & Model Files Versioning",
+      "share-data-and-model-files.md": "Share Data And Model Files"
     }
   },
   {
