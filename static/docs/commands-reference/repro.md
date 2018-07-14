@@ -1,9 +1,12 @@
 # repro
 
-Reproduce DVC file and all stages the file depends on (recursively).
+Reproduce a stage that is specified by a `.dvc` file and all stages the file
+lists as dependencies (recursively).
 
-Default file name is `Dvcfile`. However, DVC files can have any name followed by
-the `.dvc` suffix.
+See `dvc run` for more information on creating pipelines.
+
+DVC file (`target`) can have any name followed by the `.dvc` suffix. If file
+name is omitted, `Dvcfile` will be used by default.
 
 ```usage
     usage: dvc repro [-h] [-q] [-v] [-f] [-s] [-c CWD] [-m]
