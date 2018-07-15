@@ -22,6 +22,7 @@ Here is an example of a DVC file:
       md5: 70f3c9157e3b92a6d2c93eb51439f822
       metric: false
       path: data
+   locked: True
 ```
 
 ## Structure
@@ -32,6 +33,7 @@ On the top level, `.dvc` file consists of such fields:
 * `deps`: a list of dependencies for this stage;
 * `outs`: a list of outputs for this stage;
 * `md5`: md5 checksum for this dvc file;
+* 'locked': whether or not this stage is locked from reproduction;
 
 A dependency entry consists of such fields:
 
