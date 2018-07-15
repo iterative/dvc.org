@@ -46,7 +46,8 @@ let _javascript = function(hljs) {
             keywords: {
               built_in:
                 'help dvc init add import checkout run pull push fetch status ' +
-                'repro remove move gc config remote metrics install root lock unlock pipeline',
+                'repro remove move gc config remote metrics install root lock ' +
+                'unlock pipeline destroy',
             },
             className: 'strong',
           },
