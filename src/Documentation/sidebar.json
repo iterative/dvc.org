@@ -39,6 +39,7 @@
       "add.md",
       "checkout.md",
       "config.md",
+      "destroy.md",
       "fetch.md",
       "gc.md",
       "init.md",
@@ -56,8 +57,7 @@
       "root.md",
       "run.md",
       "status.md",
-      "unlock.md",
-      "destroy.md"
+      "unlock.md"
     ],
     "labels": {
       "run.md": "run",

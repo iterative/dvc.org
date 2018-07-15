@@ -10,6 +10,7 @@ positional arguments:
     init                Initialize dvc over a directory
                         (should already be a git dir)
     add                 Add files/directories to dvc
+    destroy             Remove DVC cache and files
     import              Import files from URL
     checkout            Checkout data files from cache
     run                 Generate a stage file from a given command
