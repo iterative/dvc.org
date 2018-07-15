@@ -56,7 +56,8 @@
       "root.md",
       "run.md",
       "status.md",
-      "unlock.md"
+      "unlock.md",
+      "destroy.md"
     ],
     "labels": {
       "run.md": "run",
@@ -79,8 +80,8 @@
       "unlock.md": "unlock",
       "import.md": "import",
       "move.md": "move",
-      "pipeline.md": "pipeline"
-
+      "pipeline.md": "pipeline",
+      "destroy.md": "destroy"
     }
   },
   {
