@@ -27,6 +27,7 @@ default local cache is located in the `.dvc/cache` directory).
     .dvc .git code.py foo foo.dvc
 
     $ dvc destroy
+    
     This will destroy all information about your pipelines as well as cache in .dvc/cache.
     Are you sure you want to continue?
     yes
