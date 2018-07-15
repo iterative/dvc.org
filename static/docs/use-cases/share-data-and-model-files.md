@@ -51,12 +51,11 @@ To upload data from your project run:
 
 ## Upload code 
 
-Code with DVC meta-files should be uploaded through Git:
+Code with DVC metafiles should be uploaded through Git:
 
 ```dvc
     $ git push
 ```
-
 
 ## Download code
 
