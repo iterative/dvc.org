@@ -2,7 +2,7 @@
 
 Remove DVC files from your repository.
 
-It removes `.dvc` and `Dvcfile` files, `.dvc` folder. It means cache will be
+It removes `.dvc` and `Dvcfile` files, `.dvc` directory. It means cache will be
 removed as well by default, if it's not set to an external location (by
 default local cache is located in the `.dvc/cache` directory).
 
