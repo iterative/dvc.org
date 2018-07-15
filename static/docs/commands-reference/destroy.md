@@ -7,12 +7,13 @@ removed as well by default, if it's not set to an external location (by
 default local cache is located in the `.dvc/cache` directory).
 
 ```usage
-    usage: dvc destroy [-h] [-q] [-v]
+    usage: dvc destroy [-h] [-q] [-v] [-f]
 
     optional arguments:
       -h, --help     show this help message and exit
       -q, --quiet    Be quiet.
       -v, --verbose  Be verbose.
+      -f, --force    Force destruction
 ```
 
 ## Example
@@ -26,6 +27,10 @@ default local cache is located in the `.dvc/cache` directory).
     .dvc .git code.py foo foo.dvc
 
     $ dvc destroy
+    This will destroy all information about your pipelines as well as cache in .dvc/cache.
+    Are you sure you want to continue?
+    yes
+
     $ ls -a
 
     .git code.py
