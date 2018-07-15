@@ -49,9 +49,32 @@ To upload data from your project run:
     (5/5): [##############################] 100% 18d51187e9602848514499047bb6de7f
 ```
 
+## Upload code 
+
+Code with DVC metafiles should be uploaded through Git:
+
+```dvc
+    $ git push
+```
+
+## Download code
+
+Please use resular Git commands to download code and DVC metafiles from your Git servers.
+
+```dvc
+    $ git clone https://github.com/myaccount/myproject.git
+    $ cd myproject
+```
+
+or 
+
+```dvc
+    $ git pull
+```
+
 ## Download data
 
-To download data for your project run:
+To download data files for your project run:
 
 ```dvc
     $ dvc pull
