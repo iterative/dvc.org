@@ -14,6 +14,7 @@ positional arguments:
     checkout            Checkout data files from cache
     run                 Generate a stage file from a given command
                         and execute the command
+    pipeline            Manage pipeline
     pull                Pull data files from the cloud
     push                Push data files to the cloud
     fetch               Fetch data files from the cloud
