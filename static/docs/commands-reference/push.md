@@ -1,9 +1,11 @@
 # push
 
 This command pushes all data file caches related to the current Git branch to
-the remote storage. Remote storage settings need to be configured. See [remote
-storage configuration](/doc/get-started/configuration#remote-data-storages)
-for more details.
+the remote storage.
+
+See `dvc remote`, `dvc config` and
+[remote storages](https://dvc.org/doc/get-started/configuration#remote-data-storages)
+for more information on how to configure the remote storage.
 
 ```usage
     usage: dvc push [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [--all-branches]
@@ -24,7 +26,7 @@ for more details.
 
 ## Examples
 
-Push all data file caches from the current Git branch to cloud:
+Push all data file caches from the current Git branch to the default remote:
 
 ```dvc
     $ dvc push

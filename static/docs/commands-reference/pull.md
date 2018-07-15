@@ -1,7 +1,13 @@
 # pull
 
-This command pulls all data file caches from cloud storage.
-Cloud storage settings need to be configured.
+This command pulls all data file caches from a remote.
+
+If target is not specified it pulls all files from the current Git branch.
+
+See `dvc remote`, `dvc config` and
+[remote storages](https://dvc.org/doc/get-started/configuration#remote-data-storages)
+for more information on how to configure the remote storage.
+
 
 ```usage
     usage: dvc pull [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [--all-branches]
