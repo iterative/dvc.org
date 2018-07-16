@@ -1,13 +1,20 @@
 # add
 
-Take a data file under DVC control.
+Take a data file or a directory under DVC control.
 
-The command does the conversion from a *regular file* to a *DVC data file* in a
-few steps:
-1. Move the file content to DVC cache - `.dvc/cache`.
-2. Replace the file by a hardlink to the file in the cache.
-3. Create a corresponded DVC file (metafile).
-4. Calculate and store the file checksum for consistancy.
+Under the hood a few steps are happening:
+
+1. Move the file content to the DVC cache (default location is `.dvc/cache`).
+2. Replace the file by a link to the file in the cache (see details below).
+3. Calculate the file checksum.
+4. Create a corresponding DVC file (metafile `.dvc`) and store the checksum
+to identify the right file in cache.
+
+Only _metafile_ (basically, pointer to the data in cache) is stored in Git,
+DVC manages data file contents.
+
+See [DVC File Format](/doc/user-guide/dvc-file-format) for the detailed
+description of the _metafile_ format.
 
 DVC stores the file's last modification timestamp, inode, and the checksum into
 a global state file `.dvc/state` to reduce time recomputing checksums later.
@@ -63,4 +70,4 @@ Convert files into data files:
 
 ```
 
-Note, DVC files are created.
+Note, DVC files have been created.
