@@ -1,14 +1,13 @@
 # add
 
-Converts files and directories to DVC data files.
+Take a data file under DVC control.
 
 The command does the conversion from a *regular file* to a *DVC data file* in a
 few steps:
-
-1. Calculate the file checksum.
-2. Create a cache file in the cache dir `.dvc/cache`.
-3. Create a corresponding DVC file.
-4. Replace the file with a link to the cache file.
+1. Move the file content to DVC cache - `.dvc/cache`.
+2. Replace the file by a hardlink to the file in the cache.
+3. Create a corresponded DVC file (metafile).
+4. Calculate and store the file checksum for consistancy.
 
 DVC stores the file's last modification timestamp, inode, and the checksum into
 a global state file `.dvc/state` to reduce time recomputing checksums later.
