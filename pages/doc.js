@@ -166,7 +166,8 @@ export default class Documentation extends Component {
                           <SectionLink
                             level={1} 
                             href={this.getLinkHref(index)}
-                            onClick={(e) => this.onSectionSelect(index, e)} 
+                            onClick={(e) => this.onSectionSelect(index, e)}
+                            className={isSectionActive ? 'docSearch-lvl0' : ''} 
                             isActive={isSectionActive}
                           >
                             {name}
