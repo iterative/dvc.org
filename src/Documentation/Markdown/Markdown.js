@@ -14,6 +14,8 @@ import kebabCase from 'lodash.kebabcase'
 // styles
 import styled from 'styled-components'
 import { media } from '../../../src/styles'
+// json
+import sidebar from '../../../src/Documentation/sidebar'
 
 registerLanguage('dvc', dvc)
 registerLanguage('python', python)
@@ -48,7 +50,11 @@ const CodeBlock = ({ value, language }) => {
 export default class Markdown extends Component {
   
   render() {
-    const { markdown, githubLink } = this.props;
+    const { markdown, githubLink, section, file, onFileSelect } = this.props;
+    const files = sidebar[section].files;
+    const fileIndex = files.findIndex((f) => f === file);
+    const showPrev = fileIndex > 0;
+    const showNext = fileIndex + 1 < sidebar[section].files.length;
 
     return (
       <Content>
@@ -64,6 +70,14 @@ export default class Markdown extends Component {
           }}
           astPlugins={[linker()]}
         />
+        <NavigationButtons>
+          <Button onClick={() => onFileSelect(files[fileIndex - 1], section)} disabled={!showPrev}>
+            <i className="prev" /> Prev
+          </Button>
+          <Button onClick={() => onFileSelect(files[fileIndex + 1], section)} disabled={!showNext}>
+            Next <i className="next" />
+          </Button>
+        </NavigationButtons>
       </Content>
     );
   }
@@ -134,5 +148,52 @@ const GithubLink = styled.a`
     width: 1em;
     height: 1em;
     margin-right: 7px;
+  }
+`
+
+const NavigationButtons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  font-weight: 600;
+`
+
+const Button = styled.button`
+  border: none;
+  background: white;
+  padding: 10px 15px;
+  text-transform: uppercase;
+  color: #333;
+  border-bottom: 3px solid #13adc7;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+
+  i {
+    display: inline-block;
+    mask-image: url(/static/img/arrow_right_dark.svg);
+    mask-size: contain;
+    mask-repeat: no-repeat;
+    background-color: black;
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    transition: all .3s;
+
+    &.next {
+      margin-left: 7px;
+    }
+
+    &.prev {
+      margin-right: 7px;
+      transform: rotate(180deg);
+      margin-top: -10px;
+    }
+  }
+
+  &[disabled] {
+    pointer-events: none;
+    opacity: 0.5;
   }
 `

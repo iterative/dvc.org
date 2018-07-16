@@ -221,6 +221,9 @@ export default class Documentation extends Component {
           <Markdown
             markdown={markdown}
             githubLink={githubLink}
+            section={currentSection}
+            file={currentFile}
+            onFileSelect={this.onFileSelect}
           />
         </Container>
       </Page>
