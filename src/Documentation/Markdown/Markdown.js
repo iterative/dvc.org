@@ -174,6 +174,7 @@ const Button = styled.button`
     display: inline-block;
     mask-image: url(/static/img/arrow_right_dark.svg);
     mask-size: contain;
+    mask-position: center;
     mask-repeat: no-repeat;
     background-color: black;
     width: 1em;
@@ -187,8 +188,9 @@ const Button = styled.button`
 
     &.prev {
       margin-right: 7px;
+      mask-position: center;
       transform: rotate(180deg);
-      margin-top: -10px;
+      margin-top: 2px;
     }
   }
 
