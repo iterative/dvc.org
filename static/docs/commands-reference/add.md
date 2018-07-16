@@ -5,8 +5,8 @@ Take a data file or a directory under DVC control.
 Under the hood a few steps are happening:
 
 1. Move the file content to the DVC cache (default location is `.dvc/cache`).
-2. Replace the file by a link to the file in the cache (see details below).
-3. Calculate the file checksum.
+2. Calculate the file checksum.
+3. Replace the file by a link to the file in the cache (see details below).
 4. Create a corresponding DVC file (metafile `.dvc`) and store the checksum
 to identify the right file in cache.
 
