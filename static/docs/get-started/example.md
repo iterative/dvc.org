@@ -57,7 +57,7 @@ The full pipeline can be built by running the code below:
 * Split training and testing dataset. Two output files.
 
 ```dvc
-    $ # 0.33 - test dataset split ratio. 20170426 is a seed for randomization.
+    # 0.33 - test dataset split ratio. 20170426 is a seed for randomization.
     $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
               -o data/Posts-train.tsv -o data/Posts-test.tsvpython \
           code/split_train_test.py data/Posts.tsv 0.33 20170426 \
