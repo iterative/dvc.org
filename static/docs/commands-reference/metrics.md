@@ -10,7 +10,7 @@ DVC expects a metric file to be a text in `TSV`, `CSV` or `JSON` format. Each
 metric could be any project specific number - `AUC`, `ROC`, etc. DVC itself
 does not imply any specific meaning for these numbers. Usually these numbers are
 produced by the model evaluation script and serve as a way to compare and pick
-the best performing variation.
+the best performing experiment variant.
 
 
 ```usage
