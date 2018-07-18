@@ -12,7 +12,7 @@ In this very basic scenario, DVC is a better replacement for `git-lfs` and
 ad-hoc scripts on top of Amazon S3 (or name-it cloud) that are usually used to
 manage ML artifacts like model files, data files, etc. Unlike `git-lfs`, DVC
 is open, free (you are paying only for the remote storage), can be used
-on-premise (NAS via SSH, for example) or with any major cloud provider
+on-premise (NAS or via SSH, for example) or with any major cloud provider
 (S3, Google Could, Azure). 
 
 Let's say you already have a project that uses a bunch of images that are
