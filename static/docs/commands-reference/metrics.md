@@ -1,6 +1,6 @@
 # metrics
 
-Add, remove or show project metrics.
+Add, remove, or show project metrics.
 
 DVC has the ability to tag a specified output file as a file that contains
 metrics to track. Typically people use this functionality to find the best
@@ -30,7 +30,7 @@ the best performing variation.
 ## Options
 
 * `add` - makes target a metrics file to be tracked. Sets a special flag
-(see [/doc/user-guide/dvc-file-format]('DVC File Format')) in `.dvc` file to
+(see (/doc/user-guide/dvc-file-format)['DVC File Format']) in `.dvc` file to
 identify a specified output as a metric file. Alternatively, metrics file could
 be specified via`-m` parameter of the `dvc run` command.
 
