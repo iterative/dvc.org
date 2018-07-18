@@ -30,7 +30,7 @@ the best performing variation.
 ## Options
 
 * `add` - makes target a metrics file to be tracked. Sets a special flag
-(see (/doc/user-guide/dvc-file-format)['DVC File Format']) in `.dvc` file to
+(see ['DVC File Format'](/doc/user-guide/dvc-file-format)) in `.dvc` file to
 identify a specified output as a metric file. Alternatively, metrics file could
 be specified via`-m` parameter of the `dvc run` command.
 
