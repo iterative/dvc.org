@@ -1,10 +1,10 @@
 # checkout
 
-Checkout data files from cache.
+Checkout data files from cache into the working space.
 
-This command has to be called after `git checkout` since Git does not handle DVC
-data files. You can also use `dvc install` to install a git hook that will call
-`dvc checkout` for you. See `dvc config` for more information.
+This command has to be called after `git checkout` since Git does not handle
+that are under DVC control. You can also use `dvc install` to install a git hook
+that will call `dvc checkout` for you. See `dvc config` for more information.
 
 The command restores data files from cache to the working tree and removes data
 files that are no longer on the working tree.
@@ -27,6 +27,12 @@ take less than a second to restore a 50Gb data file.
         -v, --verbose         Be verbose.
 ```
 
+DVC does not report in the output which data files were restored. However, it
+reports removed files and files that DVC was unable to restore due to missing
+cache. To restore a file with a missing cache, the reproduction command should
+be called (`dvc repro`) or the cache can be pulled from the remote storage
+(`dvc pull`).
+
 ## Examples
 
 Checking out a branch example:
@@ -35,8 +41,3 @@ Checking out a branch example:
     $ git checkout input_100K
     $ dvc checkout
 ```
-
-DVC does not report in the output which data files were restored.
-However, it reports removed files and files that DVC was unable to restore due
-to missing cache. To restore a file with a missing cache, the reproduction
-command should be called or the cache can be pulled from the cloud.

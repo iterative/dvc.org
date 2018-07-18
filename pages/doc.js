@@ -10,13 +10,13 @@ import kebabCase from 'lodash.kebabcase'
 import startCase from 'lodash.startcase'
 import compact from 'lodash.compact'
 import { scroller, animateScroll } from 'react-scroll'
+import 'core-js/fn/array/find-index'
 // styles
 import styled from 'styled-components'
 import { media, OnlyDesktop } from '../src/styles'
 // json
 import sidebar from '../src/Documentation/sidebar'
 
-import 'core-js/fn/array/find-index'
 
 export default class Documentation extends Component {
   state = {
