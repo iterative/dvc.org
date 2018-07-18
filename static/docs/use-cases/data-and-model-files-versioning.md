@@ -11,9 +11,9 @@ and share your data alongside your code.
 In this very basic scenario, DVC is a better replacement for `git-lfs` and
 ad-hoc scripts on top of Amazon S3 (or name-it cloud) that are usually used to
 manage ML artifacts like model files, data files, etc. Unlike `git-lfs`, DVC
-is open, free (you are paying only for the remote storage), can be used
-on-premise (NAS or via SSH, for example) or with any major cloud provider
-(S3, Google Could, Azure). 
+is open, free (you are paying only for the remote storage) and does not require
+installing a server, can be used on-premise (NAS, SSH, for example) or with any
+major cloud provider (S3, Google Could, Azure). 
 
 Let's say you already have a project that uses a bunch of images that are
 stored in `images` directory and has a `model.pkl` file - your model file that
@@ -27,8 +27,8 @@ is deployed to production.
     model.pkl ...
 ```
 
-To start using dvc and keeping track of model and images we need to first
-initialize it in your repository:
+To start using dvc and keeping track of a model and images we need first
+to initialize it in your repository:
 
 ```dvc
     $ dvc init
