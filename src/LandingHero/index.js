@@ -204,6 +204,7 @@ const WatchButton = styled.a`
   background-color: #eef4f8;
   margin-left: 15px;
   border: solid 2px rgba(176, 184, 197, 0.47);
+  transition: 0.2s background-color ease-out;
 
   &:hover {
     background-color: #e4eaee;
@@ -225,6 +226,7 @@ const GetStartedButton = styled.a`
   color: #fff;
   line-height: 0.9;
   border: solid 2px transparent;
+  transition: 0.2s background-color ease-out;
   
   &:hover {
     background-color: #13A3BD

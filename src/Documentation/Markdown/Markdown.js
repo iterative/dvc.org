@@ -169,6 +169,11 @@ const Button = styled.button`
   display: inline-flex;
   align-items: center;
   cursor: pointer;
+  transition: 0.2s border-color ease-out;
+
+  &:hover {
+    border-bottom: 3px solid #11849B;
+  }
 
   i {
     display: inline-block;

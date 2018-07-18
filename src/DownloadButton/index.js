@@ -192,6 +192,7 @@ const Button = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
+  transition: 0.2s background-color ease-out;
   
   ${props =>
     props.open && `

@@ -75,6 +75,7 @@ const GetStartedButton = styled.button`
   font-size: 16px;
   border: none;
   cursor: pointer;
+  transition: 0.2s background-color ease-out;
   
   &:hover {
     background-color: #13A3BD;  

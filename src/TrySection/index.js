@@ -70,6 +70,7 @@ const Button = styled.button`
   padding: 0px 21px;
 
   color: #ffffff;
+  transition: 0.2s background-color ease-out;
   
   &:hover {
     background-color: #F5F5F5
