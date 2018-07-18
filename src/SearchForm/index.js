@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default ({ onChange = () => {} }) => (
+export default (props) => (
   <SearchForm novalidate>
     <Input
       type="text"
+      id="doc-search"
       placeholder={`Search documentation`}
-      onChange={onChange}
+      {...props}
     />
   </SearchForm>
 )

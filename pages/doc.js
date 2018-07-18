@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+// nextjs
+import Head from 'next/head'
 // components
 import Markdown from '../src/Documentation/Markdown/Markdown'
 import Page from '../src/Page'
@@ -18,6 +20,14 @@ import { media, OnlyDesktop } from '../src/styles'
 import sidebar from '../src/Documentation/sidebar'
 
 
+const HeadInjector = () => (
+  <Head>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" />
+  </Head>
+);
+
 export default class Documentation extends Component {
   state = {
     currentSection: 0,
@@ -27,7 +37,17 @@ export default class Documentation extends Component {
   }
 
   componentDidMount() {
-    this.loadStateFromURL()
+    this.loadStateFromURL();
+    this.initDocsearch();
+  }
+
+  initDocsearch = () => {
+    docsearch({
+      apiKey: '755929839e113a981f481601c4f52082', 
+      indexName: 'dvc', 
+      inputSelector: '#doc-search', 
+      debug: false // Set debug to true if you want to inspect the dropdown 
+    }); 
   }
 
   loadStateFromURL = () => {
@@ -147,6 +167,7 @@ export default class Documentation extends Component {
 
     return (
       <Page stickHeader={true}>
+        <HeadInjector />
         <Container>
           <Side>
             <Menu>
