@@ -1,5 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+// nextjs
+import Head from 'next/head'
 
 import { container } from '../src/styles'
 import { media } from '../src/styles'
@@ -9,8 +11,15 @@ import Hero from '../src/Hero'
 import FeaturesHero from '../src/FeaturesHero'
 import TrySection from '../src/TrySection'
 
+const HeadInjector = () => (
+  <Head>
+    <title>Features | Data Science Version Control System</title>
+  </Head>
+);
+
 export default () => (
   <Page stickHeader={true}>
+    <HeadInjector />
     <Hero>
       <FeaturesHero />
     </Hero>

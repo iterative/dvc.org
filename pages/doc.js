@@ -19,12 +19,12 @@ import { media, OnlyDesktop } from '../src/styles'
 // json
 import sidebar from '../src/Documentation/sidebar'
 
-
 const HeadInjector = () => (
   <Head>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" />
+    <title>Documentation | Data Science Version Control System</title>
   </Head>
 );
 
@@ -39,6 +39,8 @@ export default class Documentation extends Component {
   componentDidMount() {
     this.loadStateFromURL();
     this.initDocsearch();
+    // todo: handle here history change
+    // window.addEventListener('popstate', this.loadStateFromURL)
   }
 
   initDocsearch = () => {
@@ -159,6 +161,10 @@ export default class Documentation extends Component {
       delay: 0,
       smooth: 'ease',
     })
+  }
+
+  componentWillUnmount() {
+    // window.removeEventListener('popstate', this.loadStateFromURL)
   }
 
   render() {
