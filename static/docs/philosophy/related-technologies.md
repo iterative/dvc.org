@@ -98,7 +98,6 @@ differences are:
    *dvc checkout* command has to be run after each `git checkout` and `git
    clone` command.
 
-   - DVC creates hardlinks instead and changes data file permissions to read
-   only. The `dvc checkout` command does not actually copy data files from cache
-   to the working tree, as copying files is a heavy operation for large files
-   (30Gb+).
+   - DVC creates hardlinks (or even reflinks if they are supported) instead. The
+    `dvc checkout` command does not actually copy data files from cache to the
+    working tree, as copying files is a heavy operation for large files (30Gb+).
