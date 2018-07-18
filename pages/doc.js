@@ -182,13 +182,13 @@ export default class Documentation extends Component {
               <Sections>
                 <SectionLinks>
                   {
-                    sidebar.map(({ name, files = [], labels = {} }, index) => {
+                    sidebar.map(({ name, files = [], labels = {}, indexFile }, index) => {
                       const isSectionActive = currentSection === index;
                       return (
                         <div key={index}>
                           <SectionLink
                             level={1} 
-                            href={this.getLinkHref(index)}
+                            href={this.getLinkHref(index, indexFile ? undefined : files[0])}
                             onClick={(e) => this.onSectionSelect(index, e)}
                             className={isSectionActive ? 'docSearch-lvl0' : ''} 
                             isActive={isSectionActive}
