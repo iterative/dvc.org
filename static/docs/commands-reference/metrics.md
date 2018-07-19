@@ -32,8 +32,8 @@ file to identify a specified output as a metric file. Alternatively, an output
 file could be made a metric via`-m` parameter of the `dvc run` command.
 
 While any text file could be used as a metric file to track, it's recommended to
-use `TSV`, `CSV` or `JSON` formats, DVC provides a way (see `show` below), to
-parse these formats to get to a specific number of file contains multiple
+use `TSV`, `CSV`, or `JSON` formats. DVC provides a way (see `show` below), to
+parse these formats to get to a specific value if file contains multiple
 metrics.
 
 ```usage
@@ -96,8 +96,21 @@ should be used to compare different variants of an experiment.
 Keep target as an output, stop tracking as a metric file. It does not remove
 or delete file. It changes a flag in the relevant `.dvc` file.
 
+```usage
+usage: dvc metrics remove [-h] [-q] [-v] path
+
+positional arguments:
+  path           Path to metrics file
+
+optional arguments:
+  -h, --help     show this help message and exit
+  -q, --quiet    Be quiet.
+  -v, --verbose  Be verbose.
+```
+
 
 ## Example
+
 ```dvc
     $ dvc run -d code/evaluate.py -O data/eval.txt -f Dvcfile \
           python code/evaluate.py
