@@ -19,12 +19,12 @@ import { media, OnlyDesktop } from '../src/styles'
 // json
 import sidebar from '../src/Documentation/sidebar'
 
-const HeadInjector = () => (
+const HeadInjector = ({ sectionName = 'Documentation' }) => (
   <Head>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" />
-    <title>Documentation | Data Science Version Control System</title>
+    <title>{sectionName} | Data Science Version Control System</title>
   </Head>
 );
 
@@ -39,8 +39,7 @@ export default class Documentation extends Component {
   componentDidMount() {
     this.loadStateFromURL();
     this.initDocsearch();
-    // todo: handle here history change
-    // window.addEventListener('popstate', this.loadStateFromURL)
+    window.addEventListener('popstate', this.loadStateFromURL)
   }
 
   initDocsearch = () => {
@@ -93,10 +92,10 @@ export default class Documentation extends Component {
   }
 
   onSectionSelect = (section, e) => {
-    e && e.preventDefault();
+    e && e.preventDefault()
     const { indexFile, files } = sidebar[section]
     const file = indexFile || files[0]
-    this.setCurrentPath(section)
+    !e || this.setCurrentPath(section)
     this.loadFile({ file, section, parseHeadings: false })
     this.setState({
       currentSection: section,
@@ -164,16 +163,17 @@ export default class Documentation extends Component {
   }
 
   componentWillUnmount() {
-    // window.removeEventListener('popstate', this.loadStateFromURL)
+    window.removeEventListener('popstate', this.loadStateFromURL)
   }
 
   render() {
     const { currentSection, currentFile, markdown, headings } = this.state
     const githubLink = `https://github.com/iterative/dvc.org/blob/master${sidebar[currentSection].folder}/${currentFile}`
+    const sectionName = sidebar[currentSection].name;
 
     return (
       <Page stickHeader={true}>
-        <HeadInjector />
+        <HeadInjector sectionName={sectionName} />
         <Container>
           <Side>
             <Menu>
