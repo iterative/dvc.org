@@ -8,6 +8,8 @@ description of a file that can be used for versioning. DVC supports various
 types of remote locations for your data files and allows you to easily store
 and share your data alongside your code.
 
+![](/static/img/model-versioning-diagram.png)
+
 In this very basic scenario, DVC is a better replacement for `git-lfs` and
 ad-hoc scripts on top of Amazon S3 (or name-it cloud) that are usually used to
 manage ML artifacts like model files, data files, etc. Unlike `git-lfs`, DVC
