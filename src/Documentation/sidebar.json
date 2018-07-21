@@ -13,11 +13,14 @@
     "folder": "/static/docs/use-cases",
     "files": [
       "data-and-model-files-versioning.md",
-      "share-data-and-model-files.md"
+      "share-data-and-model-files.md",
+      "multiple-data-scientists-on-a-single-machine.md"
     ],
     "labels": {
       "data-and-model-files-versioning.md": "Data & Model Files Versioning",
-      "share-data-and-model-files.md": "Share Data And Model Files"
+      "share-data-and-model-files.md": "Share Data And Model Files",
+      "multiple-data-scientists-on-a-single-machine.md":
+      "Multiple Data Scientists On A Single Machine"
     }
   },
   {
