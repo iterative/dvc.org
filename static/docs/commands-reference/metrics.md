@@ -144,15 +144,22 @@ optional arguments:
 ## Example
 
 ```dvc
-    $ dvc run -d code/evaluate.py -O data/eval.txt -f Dvcfile \
+    $ dvc run -d code/evaluate.py -O data/eval.json -f Dvcfile \
           python code/evaluate.py
 
-    $ dvc metrics add data/eval.txt
+    $ dvc metrics add data/eval.json
+    $ dvc metrics show
+   
+      master:
+          data/eval.json: {"AUC": "0.624652"}
+    
+    $ dvc metrics modify data/eval.json --type json --xpath AUC
     $ dvc metrics show
 
       master:
-          data/eval.txt: AUC: 0.624652
+          data/eval.json: 0.624652
 
     $ dvc metrics remove data/eval.txt
     $ dvc metrics show
+    Failed to show metrics: No metric files in this repository. Use 'dvc metrics add' to add a metric file to track.
 ```
