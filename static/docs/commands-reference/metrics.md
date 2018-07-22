@@ -143,22 +143,41 @@ optional arguments:
 
 ## Example
 
-```dvc
-    $ dvc run -d code/evaluate.py -O data/eval.json -f Dvcfile \
-          python code/evaluate.py
+First, let's create a simple DVC file:
 
-    $ dvc metrics add data/eval.json
-    $ dvc metrics show
+```dvc
+    $ dvc run -d code/evaluate.py -M data/eval.json -f Dvcfile \
+          python code/evaluate.py
+```
+
+NOTE: `-M|--metrics-no-cache` is telling DVC to mark `data/eval.json`
+as a metrics file. Using this option is equivalent to using
+`-O|--outs-no-cache` and then using `dvc metrics add data/eval.json`
+to explicitly mark `data/eval.json` as a metrics file.
+
+Now let's specify show metrics that we have in a current project:
+
+```dvc
+    $ dvc metrics show -a
    
       master:
           data/eval.json: {"AUC": "0.624652"}
-    
+```
+
+Then we can tell DVC an XPATH for the metrics file, so that it can
+output only the value of AUC without any garbage:
+
+```dvc
     $ dvc metrics modify data/eval.json --type json --xpath AUC
     $ dvc metrics show
 
       master:
           data/eval.json: 0.624652
+```
 
+And finally let's delete data/eval.txt from metrics for our project:
+
+```dvc
     $ dvc metrics remove data/eval.txt
     $ dvc metrics show
     Failed to show metrics: No metric files in this repository. Use 'dvc metrics add' to add a metric file to track.
