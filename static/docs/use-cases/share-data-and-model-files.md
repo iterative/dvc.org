@@ -9,6 +9,8 @@ constantly growing. To get a full info about supported remote types and their
 configuration take a look at `dvc remote`. As an example, let's take a look
 at how you could setup DVC remote on Amazon S3 as an example.
 
+![](/static/img/model-sharing-digram.png)
+
 ## Create a bucket at Amazon S3
 If you don't already have it, get Amazon S3 account and them follow
 instructions at
