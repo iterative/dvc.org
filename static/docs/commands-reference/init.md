@@ -13,9 +13,27 @@ This command initializes a DVC environment in a current Git repository.
                      tool (e.g. git)
 ```
 
+## Options
+
+* `--no-scm` - skip Git specific initializations, `.dvc/.gitignore` will not be
+populated and added to Git.
+
+## Details
+
+After DVC initialization, a new directory `.dvc` will be created with `config`
+and `.gitignore` files and `cache` directory. These files and directories are
+hidden from the user in general and the user does not interact with these files
+directly.
+
+`.dvc/cache directory` is one of the most important parts of any DVC
+repositories. The directory contains all content of data files. The most
+important part about this directory is that `.dvc/.gitignore` file is containing
+this directory which means that the cache directory is not under Git control —
+this is your local directory and you cannot push it to any Git remote.
+
 ## Examples
 
-Creating a new DVC repository:
+* Creating a new DVC repository:
 
 ```dvc
     $ mkdir tag_classifier
@@ -25,17 +43,18 @@ Creating a new DVC repository:
     $ dvc init
     $ git status
 
-    Initial commit
-    Changes to be committed:
-      (use "git rm --cached <file>..." to unstage)
-
             new file:   .dvc/.gitignore
             new file:   .dvc/config
 
     $ git commit -m 'Init DVC'
+```
 
-    [master (root-commit) 2db4618] Init DVC
-     2 files changed, 41 insertions(+)
-     create mode 100644 .dvc/.gitignore
-     create mode 100644 .dvc/config
+* Cache directory is not under git control, it contains data and model files and
+is managed by DVC:
+
+```dvc
+    $ cat .dvc/.gitignore
+    cache
+    state
+    lock
 ```

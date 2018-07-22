@@ -5,6 +5,7 @@
     "files": [
       "installation.md",
       "configuration.md",
+      "initialize.md",
       "example.md"
     ]
   },
