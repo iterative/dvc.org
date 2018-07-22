@@ -38,7 +38,7 @@ parse these formats to get to a specific value if file contains multiple
 metrics.
 
 ```usage
-    usage: dvc metrics add [-h] [-q] [-v] path
+    usage: dvc metrics add [-h] [-q] [-v] [-t TYPE] [-x XPATH] path
 
     positional arguments:
       path           Path to metrics file
