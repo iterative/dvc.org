@@ -6,10 +6,12 @@ All you need to do is to setup a remote DVC repository, that will store cache
 files for your project. Currently DVC supports AWS S3, Google Cloud Storage,
 Microsoft Azure Blob Storage, SSH and HDFS as remote location and the list is
 constantly growing. To get a full info about supported remote types and their
-configuration take a look at `dvc remote`. As an example, let's take a look
-at how you could setup DVC remote on Amazon S3 as an example.
+configuration take a look at `dvc remote`.
 
 ![](/static/img/model-sharing-digram.png)
+
+As an example, let's take a look at how you could setup DVC remote on Amazon S3
+and push/pull to/from it.
 
 ## Create a bucket at Amazon S3
 If you don't already have it, get Amazon S3 account and them follow
