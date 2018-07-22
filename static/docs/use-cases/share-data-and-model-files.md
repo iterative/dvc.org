@@ -13,13 +13,13 @@ configuration take a look at `dvc remote`.
 As an example, let's take a look at how you could setup DVC remote on Amazon S3
 and push/pull to/from it.
 
-## Create a bucket at Amazon S3
+### Create a bucket at Amazon S3
 If you don't already have it, get Amazon S3 account and them follow
 instructions at
 [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
 to create your bucket.
 
-## Setup DVC remote
+### Setup DVC remote
 
 To setup DVC remote on s3, you need to supply an URL to the location where you
 wish to store data:
@@ -39,7 +39,7 @@ your code:
     $ git push
 ```
 
-## Upload data
+### Upload data
 
 To upload data from your project run:
 
@@ -53,7 +53,7 @@ To upload data from your project run:
     (5/5): [##############################] 100% 18d51187e9602848514499047bb6de7f
 ```
 
-## Upload code 
+### Upload code
 
 Code with DVC metafiles should be uploaded through Git:
 
@@ -61,7 +61,7 @@ Code with DVC metafiles should be uploaded through Git:
     $ git push
 ```
 
-## Download code
+### Download code
 
 Please use resular Git commands to download code and DVC metafiles from your Git servers.
 
@@ -76,7 +76,7 @@ or
     $ git pull
 ```
 
-## Download data
+### Download data
 
 To download data files for your project run:
 
