@@ -63,7 +63,8 @@ Code with DVC metafiles should be uploaded through Git:
 
 ### Download code
 
-Please use resular Git commands to download code and DVC metafiles from your Git servers.
+Please use regular Git commands to download code and DVC metafiles from your Git
+servers.
 
 ```dvc
     $ git clone https://github.com/myaccount/myproject.git
