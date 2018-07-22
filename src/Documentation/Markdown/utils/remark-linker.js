@@ -10,7 +10,7 @@ function linker() {
         let parts = node.value.split(' ')
         let url = 'https://dvc.org/doc/commands-reference/' + parts[1]
 
-        if (parts.length >= 2) {
+        if (parts.length > 2) {
           url += ("#" + parts[2])
         }
 
