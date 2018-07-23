@@ -3,7 +3,7 @@
 To retrieve data files to your local machine and your project workspace run:
 
 ```dvc
-   $ dvc pull
+    $ dvc pull
 ```
 
 This commands retrieves data files that are specified in `.dvc` files in the
