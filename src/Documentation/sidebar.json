@@ -32,11 +32,13 @@
     "files": [
       "dvc-files-and-directories.md",
       "dvc-file-format.md",
-      "development.md"
+      "development.md",
+      "contributing.md"
     ],
     "labels": {
       "dvc-files-and-directories.md": "DVC Files and Directories",
-      "dvc-file-format.md": "DVC File Format"
+      "dvc-file-format.md": "DVC File Format",
+      "contributing.md": "Contributing"
     }
   },
   {
