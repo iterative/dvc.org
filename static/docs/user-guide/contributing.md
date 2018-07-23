@@ -12,7 +12,10 @@ creating a new issue. Feel free to add issues related to the project and
 ## Submitting changes
 
 * Open a new issue in the [issue tracker](https://github.com/iterative/dvc/issues).
-* Fork and clone the repo with `git clone https://github.com/your-username/dvc`.
+* Fork and clone the repo:
+  ```dvc
+  $ git clone https://github.com/iterative/dvc.git
+  ```
 * Install requirements with `pip install -r requirements.txt` and
 `pip install -r test-requirements.txt`.
 * Make changes.
@@ -20,7 +23,7 @@ creating a new issue. Feel free to add issues related to the project and
 * Run tests with `python -m tests` and make sure all of them pass.
 * Submit a pull request, referencing any issues it addresses.
 
-We will review your Pull Request as soon as possible. Thank you for contributing!
+We will review your pull request as soon as possible. Thank you for contributing!
 
 ## Running development version
 
