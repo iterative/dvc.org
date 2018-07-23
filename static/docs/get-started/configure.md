@@ -20,4 +20,4 @@ For example, to setup an S3 remote:
 ```
 
 See `dvc config` to get information about more configuration options and `dvc
-remote` to learn more about remotes and see other examples.
+remote` to learn more about remotes and get more examples.

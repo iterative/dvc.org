@@ -7,7 +7,7 @@ function linker() {
   function transformer(tree) {
     visit(tree, 'inlineCode', function(node, index, parent) {
       if (parent.type !== 'link' && /dvc\s+[a-z-.]+/.test(node.value)) {
-        let parts = node.value.split(' ')
+        let parts = node.value.split(/\s+/)
         let url = '/doc/commands-reference/' + parts[1]
 
         if (parts.length > 2) {
