@@ -16,12 +16,19 @@ creating a new issue. Feel free to add issues related to the project and
 * Install requirements with `pip install -r requirements.txt` and
 `pip install -r test-requirements.txt`;
 * (OPTIONAL) Setup your environment to use DVC from git repository:
-    ```dvc
-    $ export DVC_HOME=/home/user/git/dvc
-    $ export PATH=$PATH:$(DVC_HOME)/bin
-    $ which dvc
-    /home/user/git/dvc/bin/dvc
-    ```
+    * Export `DVC_HOME` variable that is pointing to the root of your repository:
+        ```dvc
+        $ export DVC_HOME=/home/user/git/dvc
+        ```
+    * Modify and export `PATH` variable to include location of our wrapper script:
+        ```dvc
+        $ export PATH=$PATH:$(DVC_HOME)/bin
+        ```
+    * Check that `dvc` points to your repository:
+        ```dvc
+        $ which dvc
+        /home/user/git/dvc/bin/dvc
+        ```
 * Make changes.
 * Add tests for your change to `tests/test_*.py`.
 * Run tests with `python -m tests` and make sure all of them pass.
