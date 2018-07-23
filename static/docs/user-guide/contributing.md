@@ -9,32 +9,38 @@ Please search [issue tracker](https://github.com/iterative/dvc/issues) before
 creating a new issue. Feel free to add issues related to the project and
 [dvc.org](https://dvc.org) site.
 
-## Submitting сhanges
+## Submitting changes
 
 * Open a new issue in the [issue tracker](https://github.com/iterative/dvc/issues).
 * Fork and clone the repo with `git clone https://github.com/your-username/dvc`.
 * Install requirements with `pip install -r requirements.txt` and
-`pip install -r test-requirements.txt`;
-* (OPTIONAL) Setup your environment to use DVC from git repository:
-    * Export `DVC_HOME` variable that is pointing to the root of your repository:
-        ```dvc
-        $ export DVC_HOME=/home/user/git/dvc
-        ```
-    * Modify and export `PATH` variable to include location of our wrapper script:
-        ```dvc
-        $ export PATH=$PATH:$(DVC_HOME)/bin
-        ```
-    * Check that `dvc` points to your repository:
-        ```dvc
-        $ which dvc
-        /home/user/git/dvc/bin/dvc
-        ```
+`pip install -r test-requirements.txt`.
 * Make changes.
 * Add tests for your change to `tests/test_*.py`.
 * Run tests with `python -m tests` and make sure all of them pass.
 * Submit a pull request, referencing any issues it addresses.
 
 We will review your Pull Request as soon as possible. Thank you for contributing!
+
+## Run development version
+
+To run DVC from its Git repository you need to setup your environment:
+
+* Export `DVC_HOME` variable that is pointing to the root of your repository:
+  ```dvc
+  $ export DVC_HOME=/home/user/git/dvc
+  ```
+
+* Modify and export `PATH` variable to include location of our wrapper script:
+  ```dvc
+  $ export PATH=$PATH:$(DVC_HOME)/bin
+  ```
+
+* Check that `dvc` points to your repository:
+  ```dvc
+   $ which dvc
+   /home/user/git/dvc/bin/dvc
+   ```
 
 ## Style guides
 ### Commit messages
@@ -59,9 +65,9 @@ details;
 
 Example:
 ```
-remote: add support for Amazon S3
+  remote: add support for Amazon S3
 
-Fixes #123
+  Fixes #123
 ```
 
 ### Python style guide
