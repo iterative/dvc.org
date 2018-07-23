@@ -8,7 +8,7 @@ function linker() {
     visit(tree, 'inlineCode', function(node, index, parent) {
       if (parent.type !== 'link' && /dvc [a-z-.]+/.test(node.value)) {
         let parts = node.value.split(' ')
-        let url = 'https://dvc.org/doc/commands-reference/' + parts[1]
+        let url = '/doc/commands-reference/' + parts[1]
 
         if (parts.length > 2) {
           url += ("#" + parts[2])

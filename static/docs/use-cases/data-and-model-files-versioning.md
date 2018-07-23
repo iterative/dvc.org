@@ -43,7 +43,7 @@ a `.dvc/cache` directory that will be used to store cache for your data.
     $ git status
     
     ...
-            new file:   .dvc/.gitignore
+        new file:   .dvc/.gitignore
 	    new file:   .dvc/config
     
     $ git commit -m "Initialize dvc"
@@ -65,7 +65,7 @@ Commit your changes:
     Untracked files:
         .gitignore
         images.dvc
-	model.pkl.dvc
+        model.pkl.dvc
     
     $ git add .gitignore images.dvc model.pkl.dvc
     $ git commit -m "track images and models with dvc"

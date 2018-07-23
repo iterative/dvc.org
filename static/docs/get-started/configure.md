@@ -1,4 +1,4 @@
-# Configuration
+# Configure
 
 Once you install DVC, you will be able to start using it (in its local setup)
 immediately.

@@ -1,4 +1,4 @@
-# Installation
+# Install
 
 
 Operating system dependent packages are the recommended way to install DVC.
