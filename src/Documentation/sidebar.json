@@ -4,8 +4,8 @@
     "folder": "/static/docs/get-started",
     "files": [
       "install.md",
-      "configure.md",
       "initialize.md",
+      "configure.md",
       "add-files.md",
       "example.md"
     ]
@@ -29,9 +29,12 @@
     "name": "User Guide",
     "folder": "/static/docs/user-guide",
     "files": [
-      "dvc-file-format.md"
+      "dvc-files-and-directories.md",
+      "dvc-file-format.md",
+      "development.md"
     ],
     "labels": {
+      "dvc-files-and-directories.md": "DVC Files And Directories",
       "dvc-file-format.md": "DVC File Format"
     }
   },

@@ -24,6 +24,10 @@ fetch into the local cache only the data you need for a specific branch/commit.
         -v, --verbose         Be verbose.
 ```
 
+Using DVC with a remote data storage is optional. By default, DVC is
+configured to use a local data storage only (`.dvc/cache` directory), which
+enables basic DVC usage scenarios out of the box.
+
 ## Options
 
 * **`url`** - remote location URL.
