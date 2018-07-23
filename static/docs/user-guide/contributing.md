@@ -15,6 +15,13 @@ creating a new issue. Feel free to add issues related to the project and
 * Fork and clone the repo with `git clone https://github.com/your-username/dvc`.
 * Install requirements with `pip install -r requirements.txt` and
 `pip install -r test-requirements.txt`;
+* (OPTIONAL) Setup your environment to use DVC from git repository:
+    ```dvc
+    $ export DVC_HOME=/home/user/git/dvc
+    $ export PATH=$PATH:$(DVC_HOME)/bin
+    $ which dvc
+    /home/user/git/dvc/bin/dvc
+    ```
 * Make changes.
 * Add tests for your change to `tests/test_*.py`.
 * Run tests with `python -m tests` and make sure all of them pass.
