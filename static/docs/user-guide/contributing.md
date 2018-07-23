@@ -22,7 +22,7 @@ creating a new issue. Feel free to add issues related to the project and
 
 We will review your Pull Request as soon as possible. Thank you for contributing!
 
-## Run development version
+## Running development version
 
 To run DVC from its Git repository you need to setup your environment:
 
