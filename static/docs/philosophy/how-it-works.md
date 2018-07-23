@@ -46,8 +46,8 @@ files outside of the repository but retains the metadata in Git:
     $ ls -l data/ # These LARGE files were copied from DVC cache, not from Git
 
     total 1017488
-    -r--------  2 501  staff   273M Jan 27 03:48 Posts-test.tsv -r--------  2
-    501  staff    12G Jan 27 03:48 Posts-train.tsv
+    -r--------  2 501  staff   273M Jan 27 03:48 Posts-test.tsv
+    -r--------  2 501  staff    12G Jan 27 03:48 Posts-train.tsv
 ```
 
 6. DVC makes repositories reproducible. DVC metadata can be easily shared
@@ -70,7 +70,7 @@ AWS S3, Azure Blob Storage or GCP Storage:
 
 ```dvc
     $ git push
-    $ dvc push # push the data cache to your cloud bucket
+    $ dvc push # push the data cache to the remote storage
 
     # On a colleague machine:
     $ git clone https://github.com/dataversioncontrol/myrepo.git

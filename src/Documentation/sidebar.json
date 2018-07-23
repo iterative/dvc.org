@@ -7,6 +7,8 @@
       "initialize.md",
       "configure.md",
       "add-files.md",
+      "save-data.md",
+      "retrieve-data.md",
       "example.md"
     ]
   },
@@ -20,9 +22,8 @@
     ],
     "labels": {
       "data-and-model-files-versioning.md": "Data & Model Files Versioning",
-      "share-data-and-model-files.md": "Share Data And Model Files",
-      "multiple-data-scientists-on-a-single-machine.md":
-      "Single Shared Dev Machine"
+      "share-data-and-model-files.md": "Share Data & Model Files",
+      "multiple-data-scientists-on-a-single-machine.md": "Single Shared Dev Machine"
     }
   },
   {
@@ -34,7 +35,7 @@
       "development.md"
     ],
     "labels": {
-      "dvc-files-and-directories.md": "DVC Files And Directories",
+      "dvc-files-and-directories.md": "DVC Files and Directories",
       "dvc-file-format.md": "DVC File Format"
     }
   },
