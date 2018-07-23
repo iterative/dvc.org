@@ -3,8 +3,8 @@
     "name": "Get Started",
     "folder": "/static/docs/get-started",
     "files": [
-      "installation.md",
-      "configuration.md",
+      "install.md",
+      "configure.md",
       "initialize.md",
       "add-files.md",
       "example.md"
