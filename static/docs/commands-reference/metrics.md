@@ -155,7 +155,7 @@ as a metrics file. Using this option is equivalent to using
 `-O|--outs-no-cache` and then using `dvc metrics add data/eval.json`
 to explicitly mark `data/eval.json` as a metrics file.
 
-Now let's specify show metrics that we have in a current project:
+Now let's show metrics that we have in a current project:
 
 ```dvc
     $ dvc metrics show -a
