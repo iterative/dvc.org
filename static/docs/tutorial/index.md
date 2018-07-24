@@ -13,7 +13,7 @@ projects, it its reproducibility.
 
 DVC has been built to address the reproducibility.
 
-![](/static/img/flow1.jpg)
+![](/static/img/reproducibility.png)
 
 Git branches should beautifully reflect the non-linear structure common to the
 ML process, where each hypotheses can be presented as a Git branch. However,
