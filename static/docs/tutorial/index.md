@@ -28,4 +28,4 @@ and this approach will not require storing binary files in your Git repository.
 The diagram below describes all the DVC commands and relationships between local
 cache and cloud.
 
-![](/static/img/flow.png)
+![](/static/img/flow-large.png)
