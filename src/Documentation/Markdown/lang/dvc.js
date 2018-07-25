@@ -38,7 +38,7 @@ let _javascript = function(hljs) {
         end: /([^\\]\n)|\Z/,
         keywords: {
           keyword:
-          'ls cat vi mkdir cd wget du python cp export echo',
+          'ls cat vi mkdir cd wget du python cp export echo pip curl tar',
         },
         contains: [
           {
@@ -55,7 +55,7 @@ let _javascript = function(hljs) {
             begin: / git [a-z\-]+/,
             keywords: {
               keyword: 'git commit status pull push fetch add init checkout ' +
-              'merge pip curl tar',
+              'merge',
             },
           },
           QUOTE_STRING,
