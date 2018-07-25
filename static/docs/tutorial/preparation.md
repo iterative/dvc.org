@@ -17,18 +17,8 @@ code into it:
     $ mkdir classify
     $ cd classify
     $ git init
-
-    $ mkdir code
-    $ S3_DIR="https://s3-us-west-2.amazonaws.com/dvc-share/so"
-    $ wget -nv -P code/ \
-            $S3_DIR/code/featurization.py \
-            $S3_DIR/code/evaluate.py \
-            $S3_DIR/code/train_model.py \
-            $S3_DIR/code/split_train_test.py \
-            $S3_DIR/code/xml_to_tsv.py \
-            $S3_DIR/code/conf.py \
-            $S3_DIR/code/requirements.txt
-
+    $ wget https://dvc.org/s3/so/code.tgz
+    $ tar zxf code
     $ git add code/
     $ git commit -m 'Download code'
 ```
