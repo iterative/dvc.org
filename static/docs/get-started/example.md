@@ -11,7 +11,7 @@ First, let's download the model code and set up the Git repository:
     $ mkdir myrepo
     $ cd myrepo
     $ wget https://dvc.org/s3/so/code.tgz
-    $ tar zxf code
+    $ tar zxf code.tgz && rm -f code.tgz
     $ pip install -U -r code/requirements.txt
     $ git init
     $ git add code/
