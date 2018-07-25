@@ -95,7 +95,7 @@ export default class Documentation extends Component {
     e && e.preventDefault()
     const { indexFile, files } = sidebar[section]
     const file = indexFile || files[0]
-    !e || this.setCurrentPath(section)
+    e && this.setCurrentPath(section, indexFile ? undefined : file)
     this.loadFile({ file, section, parseHeadings: false })
     this.setState({
       currentSection: section,
