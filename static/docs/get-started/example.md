@@ -10,7 +10,7 @@ First, let's download the model code and set up the Git repository:
 ```dvc
     $ mkdir myrepo
     $ cd myrepo
-    $ curl https://dvc.org/s3/so/code.tgz
+    $ wget https://dvc.org/s3/so/code.tgz
     $ tar zxf code
     $ pip install -U -r code/requirements.txt
     $ git init
