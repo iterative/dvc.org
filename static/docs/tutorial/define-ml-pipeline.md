@@ -116,7 +116,7 @@ file.
 2. `-O file.tsv` (big O) specifies regular output file.
 
 3. `-o file.tsv` (small o) specifies output data file which means DVC will
-transforms this file into a data file (think — it will run `$ dvc add
+transforms this file into a data file (think — it will run `dvc add
 file.tsv`).
 
 It is important to specify the dependencies and the outputs of the run command

@@ -26,6 +26,6 @@ and this approach will not require storing binary files in your Git repository.
 ## DVC Workflow
 
 The diagram below describes all the DVC commands and relationships between local
-cache and cloud.
+cache and remote storage.
 
 ![](/static/img/flow-large.png)
