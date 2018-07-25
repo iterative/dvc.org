@@ -10,14 +10,8 @@ First, let's download the model code and set up the Git repository:
 ```dvc
     $ mkdir myrepo
     $ cd myrepo
-    $ mkdir code
-    $ wget -nv -P code/ \
-        https://s3-us-west-2.amazonaws.com/dvc-share/so/code/featurization.py \
-        https://s3-us-west-2.amazonaws.com/dvc-share/so/code/evaluate.py \
-        https://s3-us-west-2.amazonaws.com/dvc-share/so/code/train_model.py \
-        https://s3-us-west-2.amazonaws.com/dvc-share/so/code/split_train_test.py \
-        https://s3-us-west-2.amazonaws.com/dvc-share/so/code/xml_to_tsv.py \
-        https://s3-us-west-2.amazonaws.com/dvc-share/so/code/requirements.txt
+    $ curl https://dvc.org/s3/so/code.tgz
+    $ tar zxf code
     $ pip install -U -r code/requirements.txt
     $ git init
     $ git add code/
@@ -37,7 +31,7 @@ The full pipeline can be built by running the code below:
 ```dvc
     $ mkdir data
     $ cd data
-    $ wget https://s3-us-west-2.amazonaws.com/dvc-share/so/25K/Posts.xml.tgz
+    $ wget https://dvc.org/s3/so/25K/Posts.xml.tgz
     $ dvc add Posts.xml.tgz
 ```
 

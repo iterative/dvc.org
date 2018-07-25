@@ -1,6 +1,8 @@
 # Save Data
 
-To push data files from your machine to the default remote storage:
+Now, that our data files are managed by DVC (see
+[Add Files](/doc/get-started/add-files)) and to push data files from your
+machine to the default [remote](/doc/commands-reference/remote) storage:
 
 ```dvc
     $ dvc push

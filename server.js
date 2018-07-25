@@ -15,10 +15,16 @@ app.prepare().then(() => {
   createServer((req, res) => {
     const parsedUrl = parse(req.url, true)
     const { pathname, query } = parsedUrl
-    const doc = /\/doc.*/i
+    const doc = /^\/doc.*/i
+    const s3 = /^\/s3\/.*/i
 
     if (doc.test(pathname)) {
       app.render(req, res, '/doc', query)
+    } else if (s3.test(pathname)) {
+      res.writeHead(301, {'Location':
+        "https://s3-us-west-2.amazonaws.com/dvc-share/" +
+        pathname.substring(4)})
+      res.end()
     } else {
       handle(req, res, parsedUrl)
     }
