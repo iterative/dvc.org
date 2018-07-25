@@ -18,7 +18,7 @@ code into it:
     $ cd classify
     $ git init
     $ wget https://dvc.org/s3/so/code.tgz
-    $ tar zxf code
+    $ tar zxf code.tgz && rm -f code.tgz
     $ git add code/
     $ git commit -m 'Download code'
 ```
