@@ -8,7 +8,7 @@ for the data files and download 40MB source data file into this directory.
 
 ```dvc
     $ mkdir data
-    $ wget -P data $S3_DIR/100K/Posts.xml.tgz
+    $ wget -P data https://dvc.org/s3/so/100K/Posts.xml.tgz
     $ du -sh data/*
      40M data/Posts.xml.tgz
 ```
