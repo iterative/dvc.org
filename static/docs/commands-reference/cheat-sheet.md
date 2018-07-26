@@ -16,9 +16,9 @@ positional arguments:
     run                 Generate a stage file from a given command
                         and execute the command
     pipeline            Manage pipeline
-    pull                Pull data files from the cloud
-    push                Push data files to the cloud
-    fetch               Fetch data files from the cloud
+    pull                Pull data files from the remote storage
+    push                Push data files to the remote storage
+    fetch               Fetch data files from the remote storage
     status              Show the project status
     repro               Reproduce DVC file. Default file name -
                         'Dvcfile'
