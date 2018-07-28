@@ -9,9 +9,9 @@ configuration with the data it processes to produce the result:
 
 ```dvc
     $ dvc run \
-        -d train.py -d data.csv \
-        -o model.pkl \
-        python train.py data.csv
+        -d train.py -d data.csv \   # dependencies
+        -o model.pkl \              # outputs
+        python train.py data.csv    # command
 ```
 
 `dvc run` command creates a `.dvc` file which has the same
