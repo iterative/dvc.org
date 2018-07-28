@@ -6,7 +6,7 @@ To take a file under DVC control just run `dvc add`:
 
 ```dvc
     # It takes any file or directory
-    $ dvc add model.pkl
+    $ dvc add data.csv
 ```
 
 DVC stores information about your data file in a special `.dvc` file, that has a
@@ -18,10 +18,10 @@ committed to Git to track versions of your file:
 
     Untracked files:
         .gitignore
-        model.pkl.dvc
+        data.csv.dvc
 
-    $ git add .gitignore model.pkl.dvc
-    $ git commit -m "track model with dvc"
+    $ git add .gitignore data.csv.dvc
+    $ git commit -m "add source data to dvc"
 ```
 
 See [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)

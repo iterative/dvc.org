@@ -9,8 +9,12 @@
       "add-files.md",
       "save-data.md",
       "retrieve-data.md",
+      "connect-code-and-data.md",
       "example.md"
-    ]
+    ],
+    "labels": {
+      "connect-code-and-data.md": "Connect Code and Data"
+    }
   },
   {
     "name": "Use Cases",
