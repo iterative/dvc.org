@@ -5,7 +5,7 @@ This command pulls all data file caches from a remote.
 If target is not specified it pulls all files from the current Git branch.
 
 See `dvc remote`, `dvc config` and
-[remote storages](https://dvc.org/doc/get-started/configuration#remote-data-storages)
+[remote storages](https://dvc.org/doc/get-started/configure)
 for more information on how to configure the remote storage.
 
 

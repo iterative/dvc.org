@@ -4,7 +4,7 @@ This command pushes all data file caches related to the current Git branch to
 the remote storage.
 
 See `dvc remote`, `dvc config` and
-[remote storages](https://dvc.org/doc/get-started/configuration#remote-data-storages)
+[remote storages](https://dvc.org/doc/get-started/configure)
 for more information on how to configure the remote storage.
 
 ```usage
