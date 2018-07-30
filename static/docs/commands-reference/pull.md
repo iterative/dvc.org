@@ -1,13 +1,18 @@
 # pull
 
-This command pulls all data file caches from a remote.
+Pulls data files to the working space.
 
-If target is not specified it pulls all files from the current Git branch.
+The set of data files to pull (usually it means downloading from the remote
+storage if file is not in the local cache yet) is determined by analyzing all
+`.dvc` files in the current branch, unless `--all-branches` is specified.
+
+After data file is in cache DVC utilizes OS specific mechanisms like reflinks or
+hardlinks to put it into the working space without copying. See `dvc checkout`
+for more details.
 
 See `dvc remote`, `dvc config` and
 [remote storages](https://dvc.org/doc/get-started/configure)
 for more information on how to configure the remote storage.
-
 
 ```usage
     usage: dvc pull [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [--all-branches]
@@ -23,7 +28,7 @@ for more information on how to configure the remote storage.
       -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
       -r REMOTE, --remote REMOTE
                             Remote repository to pull from
-      --all-branches        Fetch cache for all branches.
+      -a, --all-branches    Fetch cache for all branches.
 ```
 
 ## Examples

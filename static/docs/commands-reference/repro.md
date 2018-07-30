@@ -26,6 +26,9 @@ name is omitted, `Dvcfile` will be used by default.
         -m, --metrics         Show metrics after reproduction
 ```
 
+`dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
+data files, intermediate or final results.
+
 ## Examples
 
 Reproduce default stage file:

@@ -1,6 +1,10 @@
 # fetch
 
-This command fetches all currently used data file caches from the remote storage.
+Fetches data files from the remote storage to the local cache.
+
+The set of data files to fetch (usually it means downloading from the remote
+storage) is determined by analyzing all `.dvc` files in the current branch,
+unless `--all-branches` is specified.
 
 See `dvc remote`, `dvc config` and 
 [remote storages](https://dvc.org/doc/get-started/configure)
@@ -20,7 +24,7 @@ for more information on how to configure the remote storage.
       -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
       -r REMOTE, --remote REMOTE
                             Remote repository to fetch from
-      --all-branches        Fetch cache for all branches.
+      -a, --all-branches    Fetch cache for all branches.
 ```
 
 ## Examples

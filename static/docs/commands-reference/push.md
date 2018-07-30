@@ -21,7 +21,7 @@ for more information on how to configure the remote storage.
       -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
       -r REMOTE, --remote REMOTE
                             Remote repository to push to
-      --all-branches        Push cache for all branches.
+      -a, --all-branches    Push cache for all branches.
 ```
 
 ## Examples
