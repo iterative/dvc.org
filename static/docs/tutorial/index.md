@@ -9,7 +9,7 @@ longer simple *tribal knowledge* but are still difficult to implement, manage
 and reuse.
 
 > One of the biggest challenges in reusing, and hence the managing of ML
-projects, it its reproducibility.
+projects, is its reproducibility.
 
 DVC has been built to address the reproducibility.
 
