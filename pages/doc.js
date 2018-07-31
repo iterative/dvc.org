@@ -6,6 +6,7 @@ import Markdown from '../src/Documentation/Markdown/Markdown'
 import Page from '../src/Page'
 import SearchForm from '../src/SearchForm'
 import DownloadButton from '../src/DownloadButton'
+import Page404 from '../src/Page404'
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
@@ -34,6 +35,7 @@ export default class Documentation extends Component {
     currentFile: null,
     markdown: '',
     headings: [],
+    pageNotFound: false,
   }
 
   componentDidMount() {
@@ -47,7 +49,7 @@ export default class Documentation extends Component {
       apiKey: '755929839e113a981f481601c4f52082', 
       indexName: 'dvc', 
       inputSelector: '#doc-search', 
-      debug: false // Set debug to true if you want to inspect the dropdown 
+      debug: true // Set debug to true if you want to inspect the dropdown 
     }); 
   }
 
@@ -61,7 +63,9 @@ export default class Documentation extends Component {
     )
     
     if (sectionIndex === -1) {
-      this.onSectionSelect(0)
+      sectionURL 
+        ? this.setState({ pageNotFound: true })
+        : this.onSectionSelect(0)
     } else {
       // match file from URL
       const fileURL = pathname.split('/')[3]
@@ -70,12 +74,15 @@ export default class Documentation extends Component {
       )
 
       if (fileIndex === -1) {
-        this.onSectionSelect(sectionIndex)
+        fileURL 
+        ? this.setState({ pageNotFound: true })
+        : this.onSectionSelect(sectionIndex)        
       } else {
         this.loadFile({
           section: sectionIndex, 
           file: sidebar[sectionIndex].files[fileIndex], 
-          parseHeadings: true
+          parseHeadings: true,
+          pageNotFound: false,
         })
       }
     }
@@ -99,6 +106,7 @@ export default class Documentation extends Component {
     this.loadFile({ file, section, parseHeadings: false })
     this.setState({
       currentSection: section,
+      pageNotFound: false,
     })
   }
 
@@ -116,6 +124,7 @@ export default class Documentation extends Component {
           currentFile: file,
           markdown: text,
           headings: [],
+          pageNotFound: false,
         }, () => {
           this.scrollTop();
           parseHeadings && this.parseHeadings(text);
@@ -167,7 +176,7 @@ export default class Documentation extends Component {
   }
 
   render() {
-    const { currentSection, currentFile, markdown, headings } = this.state
+    const { currentSection, currentFile, markdown, headings, pageNotFound } = this.state
     const githubLink = `https://github.com/iterative/dvc.org/blob/master${sidebar[currentSection].folder}/${currentFile}`
     const sectionName = sidebar[currentSection].name;
 
@@ -247,13 +256,16 @@ export default class Documentation extends Component {
             </Menu>
           </Side>
 
-          <Markdown
+          {pageNotFound
+            ? <Page404 />
+            : <Markdown
             markdown={markdown}
             githubLink={githubLink}
             section={currentSection}
             file={currentFile}
             onFileSelect={this.onFileSelect}
           />
+            }
         </Container>
       </Page>
     )
