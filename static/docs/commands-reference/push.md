@@ -19,6 +19,7 @@ for more information on how to configure the remote storage.
       -q, --quiet           Be quiet.
       -v, --verbose         Be verbose.
       -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
+      --show-checksums      Show checksums instead of file names.
       -r REMOTE, --remote REMOTE
                             Remote repository to push to
       -a, --all-branches    Push cache for all branches.
