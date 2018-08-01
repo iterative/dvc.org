@@ -15,6 +15,7 @@ remote.
       -q, --quiet           Be quiet.
       -v, --verbose         Be verbose.
       -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
+      --show-checksums      Show checksums instead of file names.
       -c, --cloud           Show status of a local cache compared to a remote
                             repository
       -r REMOTE, --remote REMOTE
