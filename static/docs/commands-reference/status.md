@@ -37,6 +37,6 @@ remote.
 
     $ dvc status -c
 
-        new:      32e366fae424b7bd1a522c528f46daa4
+        new:      foo
 
 ```
