@@ -29,7 +29,7 @@
     "labels": {
       "data-and-model-files-versioning.md": "Data & Model Files Versioning",
       "share-data-and-model-files.md": "Share Data & Model Files",
-      "multiple-data-scientists-on-a-single-machine.md": "Single Shared Dev Machine"
+      "multiple-data-scientists-on-a-single-machine.md": "Shared Development Machine"
     }
   },
   {
