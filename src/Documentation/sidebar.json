@@ -39,6 +39,8 @@
     "files": [
       "dvc-files-and-directories.md",
       "dvc-file-format.md",
+      "external-dependencies.md",
+      "external-outputs.md",
       "development.md",
       "contributing.md"
     ],
@@ -46,6 +48,8 @@
       "dvc-files-and-directories.md": "DVC Files and Directories",
       "dvc-file-format.md": "DVC File Format",
       "development.md": "Development Version",
+      "external-dependencies.md": "External Dependencies",
+      "external-outputs.md": "External Outputs",
       "contributing.md": "Contributing"
     }
   },
