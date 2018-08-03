@@ -85,9 +85,14 @@ differences are:
 
    - DVC optimizes checksum calculation.
 
-   - DVC stores data file metadata in Git repository `.dvc/`, not in the Git
-   tree `.git/annex/`. As a result, all metadata can be shared through any Git
-   server like Github (Git-annex loses all metadata when shared by Git server).
+   - Git-annex is data file centric-system and it requires to use special data
+   remote to transfer data in addition to Git remotes to transfer code. As a result,
+   `git clone` is not enough to reuse a repository. In contrast, DVC was designed
+   to support ML workflow where data file versioning is just a piece of it.
+   In DVC, a project (ML workflow) can be easily cloned `git clone` and reused
+   with a different data files without pulling the original data files. To reuse
+   a repository (ML workflow) with original data files data remote is also required.
+   
 
 7. **Git-LFS** (Large File Storage). The differences are:
 
