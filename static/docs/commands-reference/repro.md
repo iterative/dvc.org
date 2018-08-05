@@ -24,6 +24,9 @@ name is omitted, `Dvcfile` will be used by default.
                               dependencies check.
         -c CWD, --cwd CWD     Directory to reproduce from.
         -m, --metrics         Show metrics after reproduction
+        --dry                 Only print the commands that would be executed without
+                              actually executing.
+        -i, --interactive     Ask for confirmation before reproducing each stage.
 ```
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
