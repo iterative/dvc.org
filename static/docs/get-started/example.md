@@ -1,5 +1,7 @@
 # Example
 
+This is a short version of the [Tutorial](/doc/tutorial).
+
 To show DVC in action, let's play with an actual machine learning scenario.
 Let's explore the natural language processing (NLP) problem of predicting tags
 for a given StackOverflow question. For example, we want one classifier which
@@ -38,14 +40,17 @@ The full pipeline can be built by running the code below:
 * Extract XML from the archive.
 
 ```dvc
-    $ dvc run -d data/Posts.xml.tgz -o data/Posts.xml tar zxf data/Posts.xml.tgz
+    $ dvc run -d data/Posts.xml.tgz \
+              -o data/Posts.xml \
+              tar zxf data/Posts.xml.tgz
 ```
 
 * Prepare the data.
 
 ```dvc
-    $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml -o data/Posts.tsv \
-          python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
+    $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml 
+              -o data/Posts.tsv \
+              python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
 ```
 
 * Split training and testing dataset. Two output files.
@@ -53,8 +58,8 @@ The full pipeline can be built by running the code below:
 ```dvc
     # 0.33 - test dataset split ratio. 20170426 is a seed for randomization.
     $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
-              -o data/Posts-train.tsv -o data/Posts-test.tsvpython \
-          code/split_train_test.py data/Posts.tsv 0.33 20170426 \
+              -o data/Posts-train.tsv -o data/Posts-test.tsv \
+	      python code/split_train_test.py data/Posts.tsv 0.33 20170426 \
                        data/Posts-train.tsv data/Posts-test.tsv
 ```
 
@@ -72,8 +77,9 @@ outputs.
 * Train ML model on the training dataset. 20170426 is another seed value.
 
 ```dvc
-    $ dvc run -d code/train_model.py -d data/matrix-train.py -o data/model.py \
-          python code/train_model.py data/matrix-train.p 20170426 data/model.p
+    $ dvc run -d code/train_model.py -d data/matrix-train.py \
+              -o data/model.py \
+             python code/train_model.py data/matrix-train.p 20170426 data/model.p
 ```
 
 * Evaluate the model on the test dataset.
@@ -81,7 +87,8 @@ outputs.
 ```dvc
     $ dvc run -d code/evaluate.py -d data/model.py \
 	      -d data/matrix-test.p -o data/evaluation.txt \
-     python code/evaluate.py data/model.p data/matrix-test.p data/evaluation.txt
+              python code/evaluate.py data/model.p data/matrix-test.p \
+	             data/evaluation.txt
 ```
 
 * Get the result.
@@ -101,11 +108,13 @@ the `code/featurization.py`:
     $ vi code/featurization.py
 ```
 
-Specify ngram parameter in CountVectorizer (lines 50–53) and increase number of features to 6000:
-```
-bag_of_words = CountVectorizer(stop_words='english',
-                               max_features=6000,
-                               ngram_range=(1, 2))
+Specify ngram parameter in CountVectorizer (lines 50–53) and increase number of
+features to 6000:
+
+```python
+    bag_of_words = CountVectorizer(stop_words='english',
+                                   max_features=6000,
+                                   ngram_range=(1, 2))
 ```
 
 * Commit all the changes:
