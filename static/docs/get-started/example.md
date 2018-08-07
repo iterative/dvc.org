@@ -59,16 +59,17 @@ The full pipeline can be built by running the code below:
     # 0.33 - test dataset split ratio. 20170426 is a seed for randomization.
     $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
               -o data/Posts-train.tsv -o data/Posts-test.tsv \
-	      python code/split_train_test.py data/Posts.tsv 0.33 20170426 \
-                     data/Posts-train.tsv data/Posts-test.tsv
+              python code/split_train_test.py data/Posts.tsv 0.33 20170426 \
+                       data/Posts-train.tsv data/Posts-test.tsv
 ```
 
 * Extract features from the data. Two TSV as inputs with two pickle matrices as
 outputs.
 
 ```dvc
-    $ dvc run -d code/featurization.py -d data/Posts-train.tsv -d data/Posts-test.tsv \
-	      -o data/matrix-train.p -o data/matrix-test.p \
+    $ dvc run -d code/featurization.py -d data/Posts-train.tsv \
+              -d data/Posts-test.tsv \
+              -o data/matrix-train.p -o data/matrix-test.p \
               python code/featurization.py data/Posts-train.tsv \
                      data/Posts-test.tsv data/matrix-train.p data/matrix-test.p
 ```
@@ -84,10 +85,10 @@ outputs.
 * Evaluate the model on the test dataset.
 
 ```dvc
-    $ dvc run -d code/evaluate.py -d data/model.py -d data/matrix-test.p  \
-	      -o data/evaluation.txt \
+    $ dvc run -d code/evaluate.py -d data/model.py -d data/matrix-test.p \
+              -o data/evaluation.txt \
               python code/evaluate.py data/model.p data/matrix-test.p \
-	             data/evaluation.txt
+	                 data/evaluation.txt
 ```
 
 * Get the result.
