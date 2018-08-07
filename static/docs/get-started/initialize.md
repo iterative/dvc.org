@@ -4,6 +4,8 @@ DVC works on top of Git repositories. You run DVC initialization in a repository
 directory to create DVC metafiles and directories:
 
 ```dvc
+    $ mkdit myrepo
+    $ git init
     $ cd myrepo
     $ dvc init
     $ git commit -m 'Init DVC'
