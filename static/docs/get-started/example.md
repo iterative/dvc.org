@@ -70,9 +70,9 @@ outputs.
 ```dvc
     $ dvc run -d code/featurization.py -d data/Posts-train.tsv \
               -d data/Posts-test.tsv \
-	      -o data/matrix-train.p -o data/matrix-test.p \
-	  python code/featurization.py data/Posts-train.tsv \
-                 data/Posts-test.tsv data/matrix-train.p data/matrix-test.p
+              -o data/matrix-train.p -o data/matrix-test.p \
+              python code/featurization.py data/Posts-train.tsv \
+                     data/Posts-test.tsv data/matrix-train.p data/matrix-test.p
 ```
 
 * Train ML model on the training dataset. 20170426 is another seed value.
@@ -80,16 +80,16 @@ outputs.
 ```dvc
     $ dvc run -d code/train_model.py -d data/matrix-train.py \
               -o data/model.py \
-             python code/train_model.py data/matrix-train.p 20170426 data/model.p
+              python code/train_model.py data/matrix-train.p 20170426 data/model.p
 ```
 
 * Evaluate the model on the test dataset.
 
 ```dvc
-    $ dvc run -d code/evaluate.py -d data/model.py \
-	      -d data/matrix-test.p -o data/evaluation.txt \
+    $ dvc run -d code/evaluate.py -d data/model.py -d data/matrix-test.p \
+              -o data/evaluation.txt \
               python code/evaluate.py data/model.p data/matrix-test.p \
-	             data/evaluation.txt
+	                 data/evaluation.txt
 ```
 
 * Get the result.
