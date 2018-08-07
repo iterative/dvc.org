@@ -159,6 +159,7 @@ export default class Documentation extends Component {
       offset: -85,
       delay: 0,
       smooth: 'ease',
+      containerId: 'bodybag',
     })
   }
 
@@ -168,6 +169,7 @@ export default class Documentation extends Component {
       offset: -85,
       delay: 0,
       smooth: 'ease',
+      containerId: 'bodybag'
     })
   }
 
@@ -184,10 +186,8 @@ export default class Documentation extends Component {
       <Page stickHeader={true}>
         <HeadInjector sectionName={sectionName} />
         <Container>
-          <Side>
+          <Side id="doc-sidebar">
             <Menu>
-              <SidebarHeading>Documentation</SidebarHeading>
-
               {/* Search */}
               <SearchArea>
                 <SearchForm />
@@ -251,21 +251,24 @@ export default class Documentation extends Component {
               </Sections>
 
               <OnlyDesktop>
-                <DownloadButton />
+                <SideFooter>
+                  <DownloadButton />
+                </SideFooter>
               </OnlyDesktop>
             </Menu>
           </Side>
 
           {pageNotFound
             ? <Page404 />
-            : <Markdown
-            markdown={markdown}
-            githubLink={githubLink}
-            section={currentSection}
-            file={currentFile}
-            onFileSelect={this.onFileSelect}
-          />
-            }
+            : (
+              <Markdown
+                markdown={markdown}
+                githubLink={githubLink}
+                section={currentSection}
+                file={currentFile}
+                onFileSelect={this.onFileSelect}
+              />
+            )}
         </Container>
       </Page>
     )
@@ -273,25 +276,36 @@ export default class Documentation extends Component {
 }
 
 const Container = styled.div`
-  margin-top: 93px;
   display: flex;
   flex-direction: row;
-  min-height: 80vh;
   margin-left: auto;
   margin-right: auto;
 
   ${media.phablet`
-    margin-top: 63px;
     flex-direction: column;
   `};
 `
 
 const Side = styled.div`
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 80px);
   flex-basis: 33.7%;
   display: flex;
   justify-content: flex-end;
   background-color: #eef4f8;
-  padding: 20px 10px 30px 0;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: rgba(150, 150, 150, 0.5);
+    border-radius: 6px;
+    border-width: 1px 1px 1px 3px;
+  }
 
   ${media.phablet`
     flex-basis: auto;
@@ -303,21 +317,14 @@ const Menu = styled.div`
   max-width: 280px;
   margin-right: 18px;
   margin-left: 10px;
+  padding: 30px 10px 30px 0;
 
   ${media.phablet`
-    padding-top: 30px;
-    padding-right: 30px;
-    padding-bottom: 30px;
     width: 100%;
     max-width: none;
     margin-right: 0px;
     margin-left: 20px;
   `};
-`
-
-const SidebarHeading = styled.h3`
-  font-size: 24px;
-  color: #b0b8c5;
 `
 
 const SearchArea = styled.div`
@@ -328,7 +335,7 @@ const SearchArea = styled.div`
 `
 
 const Sections = styled.div`
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   margin-top: 10px;
   min-width: 280px;
 `
@@ -409,4 +416,8 @@ const Collapse = styled.div`
   overflow: hidden;
   height: ${({ isOpen, items }) => isOpen ? items * 31 : 0}px;
   transition: height .3s linear;
+`
+
+const SideFooter = styled.div`
+  margin-bottom: 20px;
 `
