@@ -10,6 +10,7 @@ For simplicity, let's setup a local remote:
 
 ```dvc
     $ dvc remote add -d myremote /tmp/dvc-storage
+    $ git commit .dvc/config -m "initialize DVC local remote"
 ```
 A remote can be specified by the remote type preffix and a path. As of this
 version, DVC supports six types of remotes:
