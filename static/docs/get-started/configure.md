@@ -9,7 +9,6 @@ outside of a local environment.
 For simplicity, let's setup a local remote:
 
 ```dvc
-    $ mkdir /tmp/dvc-storage
     $ dvc remote add -d myremote /tmp/dvc-storage
 ```
 A remote can be specified by the remote type preffix and a path. As of this
