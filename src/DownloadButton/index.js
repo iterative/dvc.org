@@ -137,6 +137,7 @@ export default class DownloadButton extends Component {
   )
 
   render() {
+    const { openTop } = this.props
     const { os, open } = this.state
     const currentOS = links[os]
 
@@ -162,7 +163,11 @@ export default class DownloadButton extends Component {
             </Triangle>
           </Inner>
         </Button>
-        {open && <Popup>{this.renderLinks()}</Popup>}
+        {open && (
+          <Popup openTop={openTop}>
+            {this.renderLinks()}
+          </Popup>
+        )}
       </Handler>
     )
   }
@@ -246,9 +251,16 @@ const Popup = styled.div`
   position: absolute;
   left: 0px;
   right: 0px;
-  bottom: calc(100% + 3px);
+  top: calc(100% + 3px);
   background-color: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+
+  ${props =>
+    props.openTop &&
+    `
+    bottom: calc(100% + 3px);
+    top: auto;
+  `};
 `
 
 const Links = styled.div`
