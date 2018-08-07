@@ -30,8 +30,6 @@ export default class Layout extends Component {
     this.bodybag = document.getElementById('bodybag');
     this.bodybag.addEventListener('scroll', this.handleScrollThrottled)
     this.handleScroll()
-    this.isDocPage = window.location.pathname.split('/')[1] === 'doc'
-
   }
 
   componentWillUnmount() {
@@ -51,7 +49,7 @@ export default class Layout extends Component {
 
     return (
       <Wrapper>
-        <TopMenu scrolled={this.isDocPage || scrolled} />
+        <TopMenu scrolled={scrolled} />
         <HamburgerMenu />
         <Bodybag id="bodybag" ref={ref => this.bodybag = ref}>
           {children}
@@ -76,5 +74,4 @@ const Bodybag = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
   transition: top .2s linear;
-  scroll-behavior: smooth;
 `

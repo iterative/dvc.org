@@ -7,7 +7,6 @@ import Page from '../src/Page'
 import SearchForm from '../src/SearchForm'
 import DownloadButton from '../src/DownloadButton'
 import Page404 from '../src/Page404'
-import PerfectScrollbar from 'perfect-scrollbar';
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
@@ -25,7 +24,6 @@ const HeadInjector = ({ sectionName = 'Documentation' }) => (
   <Head>
     <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.4.0/css/perfect-scrollbar.min.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" />
     <title>{sectionName} | Data Science Version Control System</title>
   </Head>
@@ -43,12 +41,7 @@ export default class Documentation extends Component {
   componentDidMount() {
     this.loadStateFromURL();
     this.initDocsearch();
-    window.addEventListener('popstate', this.loadStateFromURL);
-    this.ps = new PerfectScrollbar('#sidebar-menu');
-  }
-
-  componentDidUpdate() {
-    this.ps.update();
+    window.addEventListener('popstate', this.loadStateFromURL)
   }
 
   initDocsearch = () => {
@@ -184,64 +177,8 @@ export default class Documentation extends Component {
     window.removeEventListener('popstate', this.loadStateFromURL)
   }
 
-  renderMenu = ({ currentSection, currentFile, headings }) => (
-    <SectionLinks>
-      {
-        sidebar.map(({ name, files = [], labels = {}, indexFile }, index) => {
-          const isSectionActive = currentSection === index;
-          return (
-            <div key={index}>
-              <SectionLink
-                level={1} 
-                href={this.getLinkHref(index, indexFile ? undefined : files[0])}
-                onClick={(e) => this.onSectionSelect(index, e)}
-                className={isSectionActive ? 'docSearch-lvl0' : ''} 
-                isActive={isSectionActive}
-              >
-                {name}
-              </SectionLink>
-
-              {/* Section Files */}
-              <Collapse isOpen={isSectionActive} items={files.length + headings.length}>
-                {files && files.map((file, fileIndex) => {
-                  const isFileActive = currentFile === file;
-                  return (
-                    <div key={`file-${fileIndex}`}>
-                      <SectionLink 
-                        level={2}
-                        href={this.getLinkHref(index, file)}
-                        onClick={(e) => this.onFileSelect(file, index, e)}
-                        isActive={isFileActive}
-                      >
-                        {labels[file] || startCase(file.slice(0, -3))}
-                      </SectionLink>
-
-                      {/* File Headings */}
-                      <Collapse isOpen={isFileActive} items={headings.length}>
-                        {!!headings.length && headings.map(({ text, slug }, headingIndex) => (
-                          <SectionLink 
-                            level={3}
-                            key={`link-${headingIndex}`}
-                            onClick={() => this.scrollToLink('#' + slug)}
-                            href={`#${slug}`}
-                          >
-                            {text}
-                          </SectionLink>
-                        ))}
-                      </Collapse>
-                    </div>
-                  )}
-                )}
-              </Collapse>
-            </div>
-          )
-        })
-      }
-    </SectionLinks>
-  );
-
   render() {
-    const { currentSection, currentFile, markdown, pageNotFound } = this.state
+    const { currentSection, currentFile, markdown, headings, pageNotFound } = this.state
     const githubLink = `https://github.com/iterative/dvc.org/blob/master${sidebar[currentSection].folder}/${currentFile}`
     const sectionName = sidebar[currentSection].name;
 
@@ -249,21 +186,76 @@ export default class Documentation extends Component {
       <Page stickHeader={true}>
         <HeadInjector sectionName={sectionName} />
         <Container>
-          <Side>
-            <SearchArea>
-              <SearchForm />
-            </SearchArea>
-            <Menu id="sidebar-menu">
+          <Side id="doc-sidebar">
+            <Menu>
+              {/* Search */}
+              <SearchArea>
+                <SearchForm />
+              </SearchArea>
+
+              {/* Sections */}
               <Sections>
-                {this.renderMenu(this.state)}
+                <SectionLinks>
+                  {
+                    sidebar.map(({ name, files = [], labels = {}, indexFile }, index) => {
+                      const isSectionActive = currentSection === index;
+                      return (
+                        <div key={index}>
+                          <SectionLink
+                            level={1} 
+                            href={this.getLinkHref(index, indexFile ? undefined : files[0])}
+                            onClick={(e) => this.onSectionSelect(index, e)}
+                            className={isSectionActive ? 'docSearch-lvl0' : ''} 
+                            isActive={isSectionActive}
+                          >
+                            {name}
+                          </SectionLink>
+
+                          {/* Section Files */}
+                          <Collapse isOpen={isSectionActive} items={files.length + headings.length}>
+                            {files && files.map((file, fileIndex) => {
+                              const isFileActive = currentFile === file;
+                              return (
+                                <div key={`file-${fileIndex}`}>
+                                  <SectionLink 
+                                    level={2}
+                                    href={this.getLinkHref(index, file)}
+                                    onClick={(e) => this.onFileSelect(file, index, e)}
+                                    isActive={isFileActive}
+                                  >
+                                    {labels[file] || startCase(file.slice(0, -3))}
+                                  </SectionLink>
+
+                                  {/* File Headings */}
+                                  <Collapse isOpen={isFileActive} items={headings.length}>
+                                    {!!headings.length && headings.map(({ text, slug }, headingIndex) => (
+                                      <SectionLink 
+                                        level={3}
+                                        key={`link-${headingIndex}`}
+                                        onClick={() => this.scrollToLink('#' + slug)}
+                                        href={`#${slug}`}
+                                      >
+                                        {text}
+                                      </SectionLink>
+                                    ))}
+                                  </Collapse>
+                                </div>
+                              )}
+                            )}
+                          </Collapse>
+                        </div>
+                      )
+                    })
+                  }
+                </SectionLinks>
               </Sections>
+
               <OnlyDesktop>
                 <SideFooter>
                   <DownloadButton />
                 </SideFooter>
               </OnlyDesktop>
             </Menu>
-
           </Side>
 
           {pageNotFound
@@ -295,74 +287,51 @@ const Container = styled.div`
 `
 
 const Side = styled.div`
+  position: sticky;
+  top: 0;
+  height: calc(100vh - 80px);
   flex-basis: 33.7%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-end;
+  justify-content: flex-end;
   background-color: #eef4f8;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-clip: padding-box;
+    background-color: rgba(150, 150, 150, 0.5);
+    border-radius: 6px;
+    border-width: 1px 1px 1px 3px;
+  }
 
   ${media.phablet`
     flex-basis: auto;
     flex: 1;
-    align-items: flex-start;
   `};
-`
-
-const SearchArea = styled.div`
-  min-width: 280px;
-  height: 60px;
-  margin-right: 25px;
-  display: flex;
-  align-items: center;
-  background-color: #eef4f8;
-  z-index: 10;
-
-  position: sticky;
-  top: 0;
-
-
-  ${media.phablet`
-    position: relative;
-    margin-left: 25px;
-  `};
-
-  form {
-    height: 40px;
-  }
 `
 
 const Menu = styled.div`
   max-width: 280px;
-  padding-right: 20px;
+  margin-right: 18px;
   margin-left: 10px;
-
-  position: sticky;
-  top: 60px;
-  height: calc(100vh - 140px);
-  overflow-y: scroll;
+  padding: 30px 10px 30px 0;
 
   ${media.phablet`
     width: 100%;
     max-width: none;
-    position: relative;
-    top: 0;
-    height: auto;
-    overflow-y: auto;
-    padding: 0 20px;
+    margin-right: 0px;
+    margin-left: 20px;
   `};
+`
 
-
-  // &::-webkit-scrollbar {
-  //   width: 6px;
-  // }
-
-  // &::-webkit-scrollbar-thumb {
-  //   background-clip: padding-box;
-  //   background-color: rgba(150, 150, 150, 0.5);
-  //   border-radius: 6px;
-  //   border-width: 1px 1px 1px 3px;
-  // }
+const SearchArea = styled.div`
+  margin-top: 10px;
+  margin-bottom: 20px;
+  min-width: 280px;
+  height: 44px;
 `
 
 const Sections = styled.div`
@@ -450,6 +419,5 @@ const Collapse = styled.div`
 `
 
 const SideFooter = styled.div`
-  margin-bottom: 30px;
-  margin-top: 30px;
+  margin-bottom: 20px;
 `
