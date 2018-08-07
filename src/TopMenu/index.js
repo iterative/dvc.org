@@ -1,38 +1,14 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { container, media } from '../styles'
-import throttle from 'lodash.throttle'
 
 import Nav from '../Nav'
 
 const MIN_HEIGHT = 78
 
 export default class TopMenu extends Component {
-  constructor() {
-    super()
-    this.state = {
-      scrolled: false
-    }
-    this.handleScrollThrottled = throttle(this.handleScroll, 300)
-  }
-
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScrollThrottled)
-    this.handleScroll()
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('scroll', this.handleScrollThrottled)
-  }
-
-  handleScroll = () => {
-    this.setState({
-      scrolled: (window.scrollY || window.pageYOffset) > 25
-    })
-  }
-
   render() {
-    const { scrolled } = this.state
+    const { scrolled } = this.props
 
     return (
       <Wrapper>
@@ -79,7 +55,7 @@ const Container = styled.section`
   flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
-  transition: height .2s ease;
+  transition: height .2s linear;
   will-change: height;
 
   ${media.phablet`

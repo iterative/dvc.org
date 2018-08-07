@@ -246,8 +246,7 @@ const Popup = styled.div`
   position: absolute;
   left: 0px;
   right: 0px;
-  bottom: 3px;
-  transform: translateY(100%);
+  bottom: calc(100% + 3px);
   background-color: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
 `
