@@ -11,6 +11,7 @@ const scrollToDiagram = () => {
     offset: -75,
     delay: 0,
     smooth: 'easeInOut',
+    containerId: 'bodybag',
   })
 }
 

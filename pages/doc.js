@@ -259,7 +259,7 @@ export default class Documentation extends Component {
               </Sections>
               <OnlyDesktop>
                 <SideFooter>
-                  <DownloadButton />
+                  <DownloadButton openTop />
                 </SideFooter>
               </OnlyDesktop>
             </Menu>

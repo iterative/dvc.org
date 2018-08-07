@@ -36,6 +36,7 @@ export default class LandingHero extends Component {
       offset: -75,
       delay: 0,
       smooth: 'easeInOut',
+      containerId: 'bodybag',
     })
   }
 
