@@ -48,7 +48,7 @@ The full pipeline can be built by running the code below:
 * Prepare the data.
 
 ```dvc
-    $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml 
+    $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml \
               -o data/Posts.tsv \
               python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
 ```
