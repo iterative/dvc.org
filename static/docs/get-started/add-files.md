@@ -27,7 +27,7 @@ committed to Git to track versions of your file:
         data.xml.dvc
 
     $ git add .gitignore data.xml.dvc
-    $ git commit -m "add source data to dvc"
+    $ git commit -m "add source data to DVC"
 ```
 
 See [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
