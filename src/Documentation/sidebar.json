@@ -2,6 +2,7 @@
   {
     "name": "Get Started",
     "folder": "/static/docs/get-started",
+    "indexFile": "index.md",
     "files": [
       "install.md",
       "initialize.md",
