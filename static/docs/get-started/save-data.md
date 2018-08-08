@@ -16,3 +16,13 @@ Usually you run it along with `git commit` and `git push` to save changes to
 `.dvc` files to Git.
 
 See `dvc push` for more details and options for this command.
+
+**Internals:** you can check now that actual data file has been copied to the
+remote we created in the [configuration](/doc/get-started/configuration)
+chapter:
+
+```dvc
+    $ ls -R /tmp/dvc-storage
+        .dvc/cache/a3:
+        04afb96060aad90176268345e10355
+```
