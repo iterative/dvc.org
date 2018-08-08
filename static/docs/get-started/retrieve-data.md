@@ -17,8 +17,8 @@ As a an easy way to test it:
     $ dvc pull
 ```
 Note, make sure that the steps described in
-[initialization](/doc/get-started/initialization) and
-[configuration](/doc/get-started/configuration) are compeleted before
+[initialization](/doc/get-started/initialize) and
+[configuration](/doc/get-started/configure) are compeleted before
 you run the `dvc pull` command in a newly cloned or initialized Git
 repository.
 
