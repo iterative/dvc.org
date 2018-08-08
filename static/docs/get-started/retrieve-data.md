@@ -16,10 +16,10 @@ As a an easy way to test it:
     $ rm -f data.xml
     $ dvc pull
 ```
-Note, make sure that the steps described in  
-[initialization](/doc/get-started/initialization) and 
+Note, make sure that the steps described in
+[initialization](/doc/get-started/initialization) and
 [configuration](/doc/get-started/configuration) are compeleted before
-you run the `dvc pull` command in the newly cloned or initialized Git
+you run the `dvc pull` command in a newly cloned or initialized Git
 repository.
 
 DVC remotes, `dvc push`, and `dvc pull` provide basic collaboration workflow,
