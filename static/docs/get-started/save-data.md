@@ -23,6 +23,6 @@ chapter:
 
 ```dvc
     $ ls -R /tmp/dvc-storage
-        .dvc/cache/a3:
+        /tmp/dvc-storage/a3:
         04afb96060aad90176268345e10355
 ```
