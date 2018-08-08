@@ -3,13 +3,14 @@ import React, { Component } from 'react'
 import Nav from '../Nav'
 // utils
 import throttle from 'lodash.throttle'
+import withSizes from 'react-sizes'
 // styles
 import styled from 'styled-components'
 import { container, media } from '../styles'
 
 const MIN_HEIGHT = 78
 
-export default class TopMenu extends Component {
+class TopMenu extends Component {
 
   constructor() {
     super()
@@ -21,13 +22,18 @@ export default class TopMenu extends Component {
 
   componentDidMount() {
     this.bodybag = document.getElementById('bodybag');
-    this.bodybag.addEventListener('scroll', this.handleScrollThrottled)
     this.isDocPage = window.location.pathname.split('/')[1] === 'doc'
-    this.handleScroll()
+
+    if (!this.props.isPhablet) {
+      this.bodybag.addEventListener('scroll', this.handleScrollThrottled)
+      this.handleScroll()
+    }
   }
 
   componentWillUnmount() {
-    this.bodybag.removeEventListener('scroll', this.handleScrollThrottled)
+    if (!this.props.isPhablet) {
+      this.bodybag.removeEventListener('scroll', this.handleScrollThrottled)
+    }
   }
 
   handleScroll = (e) => {
@@ -58,6 +64,12 @@ export default class TopMenu extends Component {
     )
   }
 }
+
+export default withSizes(
+  ({ width }) => ({
+    isPhablet: width <= 572,
+  })  
+)(TopMenu);
 
 const Wrapper = styled.div`
   position: fixed;

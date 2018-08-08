@@ -341,6 +341,7 @@ const Menu = styled.div`
   top: 60px;
   height: calc(100vh - 140px);
   overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
 
   ${media.phablet`
     max-width: none;

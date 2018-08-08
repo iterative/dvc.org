@@ -26,7 +26,7 @@ export default class Layout extends Component {
 
     return (
       <Wrapper>
-        <TopMenu minified={this.isDocPage} />
+        <TopMenu />
         <HamburgerMenu />
         <Bodybag id="bodybag">
           {children}
@@ -51,4 +51,5 @@ const Bodybag = styled.div`
   overflow-x: hidden;
   overflow-y: auto;
   transition: top .2s linear;
+  -webkit-overflow-scrolling: touch;
 `
