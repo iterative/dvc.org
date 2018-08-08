@@ -1,7 +1,7 @@
 # Compare Experiments
 
 DVC makes it easy to experiment with your project using git branches. We've
-created additional tools to enable you to conviniently visualize the metrics
+created additional tools to enable you to conveniently visualize the metrics
 for your experiments and compare them. All you need to do is to tell DVC which
 files are metrics files in your pipeline. DVC supports a variety of different
 file types in order to help you pick the most important parts in your metrics.
@@ -40,7 +40,7 @@ achieve better AUC value. In this case our metric file is in JSON format:
     # Compare your experiments
     $ dvc metrics show --all-branches
     master:
-        eval.json: 0.624652
+        eval.json: 0.521324
     experiment:
         eval.json: 0.624652
 ```
