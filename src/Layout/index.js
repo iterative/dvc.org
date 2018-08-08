@@ -6,7 +6,6 @@ import Footer from '../Footer'
 import HamburgerMenu from '../HamburgerMenu'
 // utils
 import { initGA, logPageView } from '../utils/ga'
-import throttle from 'lodash.throttle'
 
 function googleAnalytics() {
   if (!window.GA_INITIALIZED) {
@@ -17,43 +16,19 @@ function googleAnalytics() {
 }
 
 export default class Layout extends Component {
-  constructor() {
-    super()
-    this.state = {
-      scrolled: false
-    }
-    this.handleScrollThrottled = throttle(this.handleScroll, 300)
-  }
 
   componentDidMount() {
     googleAnalytics()
-    this.bodybag = document.getElementById('bodybag');
-    this.bodybag.addEventListener('scroll', this.handleScrollThrottled)
-    this.handleScroll()
-    this.isDocPage = window.location.pathname.split('/')[1] === 'doc'
-
-  }
-
-  componentWillUnmount() {
-    this.bodybag.removeEventListener('scroll', this.handleScrollThrottled)
-  }
-
-  handleScroll = (e) => {
-    const scrollTop = e ? e.target.scrollTop : 0;
-    this.setState({
-      scrolled: scrollTop > 25
-    })
   }
 
   render() {
     const { children } = this.props
-    const { scrolled } = this.state
 
     return (
       <Wrapper>
-        <TopMenu scrolled={this.isDocPage || scrolled} />
+        <TopMenu minified={this.isDocPage} />
         <HamburgerMenu />
-        <Bodybag id="bodybag" ref={ref => this.bodybag = ref}>
+        <Bodybag id="bodybag">
           {children}
           <Footer />
         </Bodybag>

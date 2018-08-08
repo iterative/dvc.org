@@ -343,26 +343,14 @@ const Menu = styled.div`
   overflow-y: scroll;
 
   ${media.phablet`
-    width: 100%;
     max-width: none;
     position: relative;
+    margin: 0;
     top: 0;
     height: auto;
     overflow-y: auto;
     padding: 0 20px;
   `};
-
-
-  // &::-webkit-scrollbar {
-  //   width: 6px;
-  // }
-
-  // &::-webkit-scrollbar-thumb {
-  //   background-clip: padding-box;
-  //   background-color: rgba(150, 150, 150, 0.5);
-  //   border-radius: 6px;
-  //   border-width: 1px 1px 1px 3px;
-  // }
 `
 
 const Sections = styled.div`

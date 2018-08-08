@@ -1,18 +1,49 @@
 import React, { Component } from 'react'
+// components
+import Nav from '../Nav'
+// utils
+import throttle from 'lodash.throttle'
+// styles
 import styled from 'styled-components'
 import { container, media } from '../styles'
-
-import Nav from '../Nav'
 
 const MIN_HEIGHT = 78
 
 export default class TopMenu extends Component {
+
+  constructor() {
+    super()
+    this.state = {
+      scrolled: false
+    }
+    this.handleScrollThrottled = throttle(this.handleScroll, 300)
+  }
+
+  componentDidMount() {
+    this.bodybag = document.getElementById('bodybag');
+    this.bodybag.addEventListener('scroll', this.handleScrollThrottled)
+    this.isDocPage = window.location.pathname.split('/')[1] === 'doc'
+    this.handleScroll()
+  }
+
+  componentWillUnmount() {
+    this.bodybag.removeEventListener('scroll', this.handleScrollThrottled)
+  }
+
+  handleScroll = (e) => {
+    if (this.isDocPage) return;
+    const scrollTop = e ? e.target.scrollTop : 0;
+    this.setState({
+      scrolled: scrollTop > 25
+    })
+  }
+
   render() {
-    const { scrolled } = this.props
+    const { scrolled } = this.state
 
     return (
       <Wrapper>
-        <Container scrolled={scrolled}>
+        <Container scrolled={this.isDocPage || scrolled}>
           <Logo href="/">
             <img
               src="/static/img/logo.png"
