@@ -36,3 +36,8 @@ reflink is created, so no physical copying is happening) to the `.dvc/cache`:
         04afb96060aad90176268345e10355
 ```
 
+where `04afb96060aad90176268345e10355` name is an MD5 hash of the `data.xml` file,
+and if you check the `data.xml.dvc` metafile you will see that it has this hash
+inside.
+
+
