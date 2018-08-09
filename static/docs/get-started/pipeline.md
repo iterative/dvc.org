@@ -7,16 +7,17 @@ another command (stage) we can, essentially, describe a sequence of commands
 that is required to get to the final result:
 
 ```dvc
-    # first stage - extract data:
-    $ dvc run -d data.csv.tgz -o data.csv tar zxf data.csv.tgz
+    # first stage - extract features:
+    $ dvc run -d featurization.py -d data.tsv \
+              -o matrix.p \
+              python featurization.py data.tsv matrix.pkl
 
-    # second stage - train:
-    $ dvc run \
-            -d train.py -d data.csv \   # dependencies
-            -o model.pkl \              # outputs
-            python train.py data.csv    # command
+    # second stage - train (20170426 is a seed):
+    $ dvc run -d train.py -d matrix.pkl \
+              -o model.pkl \
+              python train.py matrix.p 20170426 model.pkl
 ```
 
-This example is oversimplified just to show you an idea of the pipeline, check
+This example is simplified just to show you an idea of the pipeline, check
 [example](/doc/get-started/example) or complete
-[tutorial](/doc/tutorial) to see the real-life NLP processing pipeline.
+[tutorial](/doc/tutorial) to see the NLP processing pipeline end-to-end.
