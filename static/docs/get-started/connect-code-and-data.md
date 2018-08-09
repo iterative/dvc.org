@@ -14,11 +14,11 @@ configuration with the data it processes to produce the result:
         python prepare.py data.xml data.tsv
 ```
 
-`dvc run` command creates a `.dvc` file which has the same
+`dvc run` command creates a `data.tsv.dvc` file which has the same
 [format](/doc/user-guide/dvc-file-format) as the file we created in the
 [previous section](/doc/get-started/add-files) to track `data.csv`, except in
-this case it has additional information that `model.pkl` depends on `train.py`
-and `data.csv`, and the command `python train.py data.csv` is required to build
+this case it has additional information that `data.tsv` depends on `prepare.py`
+and `data.xml`, and the command `prepare.py data.xml data.tsv` is required to build
 it.
 
 To be able to actually try this, execute first these commands to get the code
