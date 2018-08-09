@@ -17,12 +17,20 @@ Usually you run it along with `git commit` and `git push` to save changes to
 
 See `dvc push` for more details and options for this command.
 
-**Internals:** you can check now that actual data file has been copied to the
-remote we created in the [configuration](/doc/get-started/configuration)
+<details><summary><strong>Expand to learn more about internals</strong></summary>
+<p>
+You can check now that actual data file has been copied to the
+remote we created in the <a href="/doc/get-started/configure">configuration</a>
 chapter:
-
-```dvc
+</p>
+<pre>
     $ ls -R /tmp/dvc-storage
-        /tmp/dvc-storage/a3:
-        04afb96060aad90176268345e10355
-```
+            /tmp/dvc-storage/a3:
+            04afb96060aad90176268345e10355
+</pre>
+<p>
+where <code>a3/04afb96060aad90176268345e10355</code> is an MD5 hash of the
+<code>data.xml</code> file, and if you check the <code>data.xml.dvc</code>
+meta-file you will see that it has this hash inside.
+</p>
+</details>

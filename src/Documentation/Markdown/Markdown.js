@@ -114,6 +114,20 @@ const Content = styled.article`
     font-family: inherit;
     font-size: 18px;
   }
+  
+  details p {
+    font-size: 17px;
+    color: #454E53;
+    margin-left: 20px;
+    margin-right: 10px;
+  }
+  
+  details pre {
+    font-size: 14px;
+    color: #454E53;
+    margin-left: 20px;
+    margin-right: 10px;
+  }
 `
 
 const GithubLink = styled.a`

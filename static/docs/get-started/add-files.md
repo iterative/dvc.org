@@ -27,17 +27,21 @@ committed to Git to track versions of your file:
 See [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
 and `dvc add` for more information.
 
-**Internals**: you can see that actual data file has been moved (usually hardlink or
-reflink is created, so no physical copying is happening) to the `.dvc/cache`:
-
-```dvc
+<details><summary><strong>Expand to learn more about internals</strong></summary>
+<p>
+You can see that actual data file has been moved (usually hardlink or
+reflink is created, so no physical copying is happening) to the
+<code>.dvc/cache</code>:
+</p>
+<pre>
     $ ls -R .dvc/cache
         .dvc/cache/a3:
         04afb96060aad90176268345e10355
-```
-
-where `a3/04afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file,
-and if you check the `data.xml.dvc` metafile you will see that it has this hash
-inside.
-
+</pre>
+<p>
+where <code>a3/04afb96060aad90176268345e10355</code> is an MD5 hash of the
+<code>data.xml</code> file, and if you check the <code>data.xml.dvc</code>
+meta-file you will see that it has this hash inside.
+</p>
+</details>
 
