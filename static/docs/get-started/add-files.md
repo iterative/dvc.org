@@ -5,7 +5,7 @@ intermediate results with Git, without checking the file contents into Git.
 Let's get a sample StackOverflow data set to play with:
 
 ```dvc
-    $ wget https://dvc.org/s3/so/25K/data.xml
+    $ wget https://dvc.org/s3/get-started/data.xml
 ```
 
 To take a file under DVC control just run `dvc add`, it accepts any file or
