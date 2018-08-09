@@ -18,7 +18,6 @@ to isolate your environment:
     $ git add .
     $ git commit -m 'add code'
 </pre>
-You should be ready to run the next command now!
 </p>
 </details>
 </br>
