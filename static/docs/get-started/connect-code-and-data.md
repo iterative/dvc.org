@@ -9,9 +9,9 @@ configuration with the data it processes to produce the result:
 
 ```dvc
     $ dvc run \
-        -d prepare.py -d data.xml \           # dependencies
-        -o data.tsv \                         # outputs
-        python prepare.py data.xml data.tsv   # command
+        -d prepare.py -d data.xml            # dependencies \
+        -o data.tsv                          # outputs \
+        python prepare.py data.xml data.tsv  # command
 ```
 
 `dvc run` command creates a `.dvc` file which has the same
