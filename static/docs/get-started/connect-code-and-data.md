@@ -4,7 +4,7 @@ Even in its basic scenarios, commands like `dvc add`, `dvc push`, `dvc pull`
 described in the previous sections could be used independently and provide a
 basic useful framework to track, save and share models and large data files.
 
-<details><summary><strong>(Optional) Prepare code to run</strong></summary>
+<details><summary><strong>Expand to prepare sample code</strong></summary>
 <p>
 If you have been following along the get started from the very beginning,
 run these commands to get the sample code and install dependencies. It will
