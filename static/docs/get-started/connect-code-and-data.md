@@ -22,7 +22,6 @@ You should be ready to run the next command now!
 </p>
 </details>
 </br>
-
 To achieve full reproducibility though you have to connect your code and
 configuration with the data it processes to produce the result:
 
@@ -37,5 +36,5 @@ configuration with the data it processes to produce the result:
 [format](/doc/user-guide/dvc-file-format) as the file we created in the
 [previous section](/doc/get-started/add-files) to track `data.csv`, except in
 this case it has additional information that `data.tsv` depends on `prepare.py`
-and `data.xml`, and the command `prepare.py data.xml data.tsv` is required to build
-it.
+and `data.xml`, and the command `prepare.py data.xml data.tsv` is required to
+build it.
