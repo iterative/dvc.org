@@ -9,13 +9,13 @@ that is required to get to the final result:
 ```dvc
     # first stage - extract features:
     $ dvc run -d featurization.py -d data.tsv \
-              -o matrix.p \
+              -o matrix.pkl \
               python featurization.py data.tsv matrix.pkl
 
     # second stage - train (20170426 is a seed):
     $ dvc run -d train.py -d matrix.pkl \
               -o model.pkl \
-              python train.py matrix.p 20170426 model.pkl
+              python train.py matrix.pkl 20170426 model.pkl
 ```
 
 This example is simplified just to show you an idea of the pipeline, check
