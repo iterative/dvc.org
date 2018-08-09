@@ -1,12 +1,12 @@
 # Retrieve Data
 
-To retrieve data files to your local machine and your project workspace run:
+To retrieve data files to your local machine and your project's workspace run:
 
 ```dvc
     $ dvc pull
 ```
 
-This commands retrieves data files that are specified in `.dvc` files in the
+This command retrieves data files that are specified in `.dvc` files in the
 current Git branch. So, you usually run it after `git clone`, `git pull`, or
 `git checkout`.
 
