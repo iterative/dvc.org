@@ -1,11 +1,21 @@
 # Initialize
 
-DVC works on top of Git repositories. You run DVC initialization in a repository
-directory to create DVC metafiles and directories:
+In order to start using DVC, you need to first initialize it in your project's directory. DVC doesn't require Git and can work without any source control management system, but for the best experience we recommend using DVC on top of Git repositories. 
+
+## (OPTIONAL) Create Git repository
+
+If you don't have a directory for your project already, create it now with these commands:
 
 ```dvc
     $ mkdir myrepo && cd myrepo
     $ git init
+```
+
+## Initialize DVC
+
+Run DVC initialization in a repository directory to create DVC metafiles and directories:
+
+```dvc
     $ dvc init
     $ git commit -m 'initialize DVC'
 ```
