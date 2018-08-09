@@ -63,6 +63,7 @@ export default class Markdown extends Component {
         </GithubLink>
         <ReactMarkdown 
           className="markdown-body"
+          escapeHtml={false}
           source={markdown}
           renderers={{
             code: CodeBlock,

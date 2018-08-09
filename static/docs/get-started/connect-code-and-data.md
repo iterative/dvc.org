@@ -1,23 +1,31 @@
 # Connect Code and Data
 
-If you have been following along the get started from the very beginning, 
-run these commands to get the sample code and install dependencies. It will
-install packages like `pandas` and  `scikit-learn`, that are required to run this
-example, consider using `virtualenv` to isolate your environment:
-
-```dvc
-    $ wget -q -O - https://dvc.org/s3/get-started/code.tgz | tar zx
-    $ pip install -U -r requirements.txt
-    $ git add .
-    $ git commit -m 'add code'
-```
-
 Even in its basic scenarios, commands like `dvc add`, `dvc push`, `dvc pull`
 described in the previous sections could be used independently and provide a
 basic useful framework to track, save and share models and large data files.
 
 To achieve full reproducibility though you have to connect your code and
 configuration with the data it processes to produce the result:
+
+<details><summary><strong>Prepare code to run</strong></summary>
+<p>
+If you have been following along the get started from the very beginning,
+run these commands to get the sample code and install dependencies. It will
+install packages like <code>panda</code> and  <code>scikit-learn</code>,
+that are required to run this example, consider using <code>virtualenv</code>
+to isolate your environment:
+</br>
+<pre>
+    $ wget -q -O - https://dvc.org/s3/get-started/code.tgz | tar zx
+    $ pip install -U -r requirements.txt
+    $ git add .
+    $ git commit -m 'add code'
+</pre>
+You should be ready to run the next command now!
+</p>
+</details>
+
+<br/>
 
 ```dvc
     $ dvc run \
