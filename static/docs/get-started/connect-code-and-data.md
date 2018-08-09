@@ -21,6 +21,7 @@ to isolate your environment:
 You should be ready to run the next command now!
 </p>
 </details>
+</br>
 
 To achieve full reproducibility though you have to connect your code and
 configuration with the data it processes to produce the result:
