@@ -1,7 +1,7 @@
 # Connect Code and Data
 
 If you have been following along the get started from the very beginning, 
-execute first these commands to get this sample code and install dependencies. It will
+run these commands to get the sample code and install dependencies. It will
 install packages like `pandas` and  `scikit-learn`, that are required to run this
 example, consider using `virtualenv` to isolate your environment:
 
