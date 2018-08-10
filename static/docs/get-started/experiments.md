@@ -7,7 +7,7 @@ times before the required level of a metric is achieved.
 DVC is built to provide a way to capture different experiments and navigate
 easily between them. Let's imagine we want to try a modified feature extraction:
 
-<details><summary><strong>Expand to see code modifications:</strong></summary>
+<details><summary><strong>Expand to see code modifications</strong></summary>
 <p>
 Edit <code>featurization.py</code> to enable bigrams and increase number of
 features:
