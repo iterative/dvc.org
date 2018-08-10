@@ -3,7 +3,7 @@
 Checkout data files from cache into the working space.
 
 This command has to be called after `git checkout` since Git does not handle
-file that are under DVC control. You can also use `dvc install` to install a git
+files that are under DVC control. You can also use `dvc install` to install a git
 hook that will call `dvc checkout` for you. See `dvc config` for more
 information.
 
