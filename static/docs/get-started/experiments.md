@@ -32,7 +32,7 @@ Now, we have a new `model.pkl` captured and saved. To get back to the initial
 version we run `git checkout` along with `dvc checkout` commands:
 
 ```
-    $ git check master
+    $ git checkout master
     $ dvc checkout
 ```
 
