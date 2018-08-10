@@ -29,7 +29,7 @@ features:
 ```
 
 Now, we have a new `model.pkl` captured and saved. To get back to the initial
-version we run `git checkout` along with `dvc checkout` commands:
+version we run `git checkout` along with `dvc checkout` command:
 
 ```
     $ git checkout master
