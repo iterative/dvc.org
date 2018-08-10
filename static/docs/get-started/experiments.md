@@ -23,8 +23,8 @@ features:
 
 ```dvc
     $ git checkout -b bigram
-    $ vi featurization.py   # edit to use bigrams (see above)
-    $ dvc repro              # get and save the new model.pkl
+    $ vi featurization.py        # edit to use bigrams (see above)
+    $ dvc repro model.pkl.dvc    # get and save the new model.pkl
     $ git commit -a -m "bigram model"
 ```
 
