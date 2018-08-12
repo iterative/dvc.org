@@ -73,10 +73,12 @@ export default class Markdown extends Component {
         />
         <NavigationButtons>
           <Button onClick={() => onFileSelect(files[fileIndex - 1], section)} disabled={!showPrev}>
-            <i className="prev" /> Prev
+            <i className="prev" />
+            <span>Prev</span>
           </Button>
           <Button onClick={() => onFileSelect(files[fileIndex + 1], section)} disabled={!showNext}>
-            Next <i className="next" />
+            <span>Next</span>
+            <i className="next" />
           </Button>
         </NavigationButtons>
       </Content>
@@ -172,9 +174,10 @@ const NavigationButtons = styled.div`
   align-items: center;
   margin-top: 40px;
   font-weight: 600;
+  font-size: 14px;
 `
 
-const Button = styled.button`
+const Button = styled.div`
   border: none;
   background: white;
   padding: 10px 15px;
@@ -192,11 +195,10 @@ const Button = styled.button`
 
   i {
     display: inline-block;
-    mask-image: url(/static/img/arrow_right_dark.svg);
-    mask-size: contain;
-    mask-position: center;
-    mask-repeat: no-repeat;
-    background-color: black;
+    background-image: url(/static/img/arrow.svg);
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
     width: 1em;
     height: 1em;
     line-height: 1;

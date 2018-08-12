@@ -3,7 +3,6 @@ import React, { Component } from 'react'
 import Nav from '../Nav'
 // utils
 import throttle from 'lodash.throttle'
-import withSizes from 'react-sizes'
 // styles
 import styled from 'styled-components'
 import { container, media } from '../styles'
@@ -23,15 +22,16 @@ class TopMenu extends Component {
   componentDidMount() {
     this.bodybag = document.getElementById('bodybag');
     this.isDocPage = window.location.pathname.split('/')[1] === 'doc'
+    this.isPhablet = window.innerWidth <= 572;
 
-    if (!this.props.isPhablet) {
+    if (!this.isPhablet) {
       this.bodybag.addEventListener('scroll', this.handleScrollThrottled)
       this.handleScroll()
     }
   }
 
   componentWillUnmount() {
-    if (!this.props.isPhablet) {
+    if (!this.isPhablet) {
       this.bodybag.removeEventListener('scroll', this.handleScrollThrottled)
     }
   }
@@ -65,11 +65,7 @@ class TopMenu extends Component {
   }
 }
 
-export default withSizes(
-  ({ width }) => ({
-    isPhablet: width <= 572,
-  })  
-)(TopMenu);
+export default TopMenu;
 
 const Wrapper = styled.div`
   position: fixed;
