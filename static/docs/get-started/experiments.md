@@ -37,5 +37,5 @@ version we run `git checkout` along with `dvc checkout` command:
     $ dvc checkout
 ```
 
-DVC is designed to checkout large data files (no matter how large is it) into
+DVC is designed to checkout large data files (no matter how large they are) into
 your workspace instantly on almost all modern operating systems.
