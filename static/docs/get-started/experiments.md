@@ -10,8 +10,8 @@ easily between them. Let's imagine we want to try a modified feature extraction:
 <details><summary><strong>Expand to see code modifications</strong></summary>
 <p>
 Edit <code>featurization.py</code> to enable bigrams and increase number of
-features. Find and chage the `CountVectorizer` arguments, specify `ngram_range`
-and increase number of features:
+features. Find and chage the <code>CountVectorizer's</code> arguments, specify
+<code>ngram_range</code> and increase number of features:
 </br>
 <pre>
     bag_of_words = CountVectorizer(stop_words='english',
