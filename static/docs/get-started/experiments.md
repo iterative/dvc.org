@@ -10,7 +10,8 @@ easily between them. Let's imagine we want to try a modified feature extraction:
 <details><summary><strong>Expand to see code modifications</strong></summary>
 <p>
 Edit <code>featurization.py</code> to enable bigrams and increase number of
-features:
+features. Find and chage the <code>CountVectorizer's</code> arguments, specify
+<code>ngram_range</code> and increase number of features:
 </br>
 <pre>
     bag_of_words = CountVectorizer(stop_words='english',
@@ -36,5 +37,5 @@ version we run `git checkout` along with `dvc checkout` command:
     $ dvc checkout
 ```
 
-DVC is built to do this navigation extremely fast on all modern operating
-systems.
+DVC is designed to checkout large data files (no matter how large they are) into
+your workspace instantly on almost all modern operating systems.
