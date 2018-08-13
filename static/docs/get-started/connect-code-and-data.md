@@ -28,7 +28,7 @@ configuration with the data it processes to produce the result:
     $ dvc run \
         -d prepare.py -d data.xml \
         -o data.tsv -o data-test.tsv \
-        python prepare.py data.xml data.tsv
+        python prepare.py data.xml
 ```
 
 `dvc run` command creates a `data.tsv.dvc` file which has the same
