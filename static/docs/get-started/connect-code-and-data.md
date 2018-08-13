@@ -27,13 +27,14 @@ configuration with the data it processes to produce the result:
 ```dvc
     $ dvc run \
         -d prepare.py -d data.xml \
-        -o data.tsv \
+        -o data.tsv -o data-test.tsv \
         python prepare.py data.xml data.tsv
 ```
 
 `dvc run` command creates a `data.tsv.dvc` file which has the same
 [format](/doc/user-guide/dvc-file-format) as the file we created in the
-[previous section](/doc/get-started/add-files) to track `data.csv`, except in
+[previous section](/doc/get-started/add-files) to track `data.tsv`, except in
 this case it has additional information that `data.tsv` depends on `prepare.py`
 and `data.xml`, and the command `prepare.py data.xml data.tsv` is required to
-build it.
+build it. Test data set `data-test.tsv` is generated to run evaluation script at
+the last steps of this guide.
