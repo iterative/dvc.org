@@ -16,6 +16,7 @@ To provide an unbiased evaluation of the final model fit on the training data
 set are going to use the test data set. We need to adjust the feature extraction
 to take into account this split for training and test data sets. No code
 modifications are required, let's just change the stage definition:
+</p>
 </br>
 <pre>
     $ git checkout master
@@ -26,6 +27,7 @@ modifications are required, let's just change the stage definition:
                                       data-test.tsv matrix-test.pkl
     $ git commit .gitignore matrix.plk.dvc -m "change featurization stage"
 </pre>
+<p>
 DVC will aks for confirmation to overwrite the stage. Type `yes` and proceed.
 </p>
 </details>
