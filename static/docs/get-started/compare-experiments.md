@@ -69,5 +69,5 @@ metric file:
 ```
 
 DVC provides built-in support to track and navigate `JSON`, `TSV` or `CVS` metric
-files if you want to track additional information. Check the `dvc metrics` command
-documentation to learn more.
+files if you want to track additional information. Check `dvc metrics` to learn
+more.
