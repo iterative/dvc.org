@@ -11,13 +11,16 @@ This command initializes a DVC environment in a current Git repository.
       -v, --verbose  Be verbose.
       --no-scm       Initiate dvc in directory that is not tracked by any scm
                      tool (e.g. git).
-      -f, --force    Force initialization even if '.dvc' exists.
+      -f, --force    Overwrite '.dvc' if it exists. Will remove all local cache.
 ```
 
 ## Options
 
 * `--no-scm` - skip Git specific initializations, `.dvc/.gitignore` will not be
 populated and added to Git.
+
+* `-f|--force` - remove `.dvc` if it exists before initialization. Will remove
+all local cache. Useful when first `dvc init` got corrupted for some reason.
 
 ## Details
 
