@@ -6,7 +6,7 @@ way to try different ideas, keep track of them, switch back and forth. To find
 the best performing experiment or track the progress, a special *metric* output
 type is supported in DVC.
 
-Metric file is usually a plain text file with any project specific numbers -
+Metric file is usually a plain text file with any project-specific numbers -
 `AUC`, `ROC`, etc. With a `-M` option of `dvc run` you can specify outputs that
 contain your project metrics:
 
@@ -35,8 +35,6 @@ DVC will aks for confirmation to overwrite the stage. Type `yes` and proceed.
     $ dvc run -d evaluate.py -d model.pkl -d matrix-test.pkl \
               -M auc.metric \
               python evaluate.py model.pkl matrix-test.pkl auc.metric
-    $ git add auc.metric auc.metric.dvc          
-    $ git commit -m "add evaluation step with AUC metric"
 ```
 
 `evaluate.py` calculates AUC value using the test data set. `auc.metric` -
@@ -45,19 +43,20 @@ command provides a way to compare different experiments:
 
 <details><summary><strong>Expand to run evaluation for bigrams</strong></summary>
 <p>
-To evaluate `bigram` model we need to merge the changes and get the metric:
+To evaluate `bigram` model we need to merge the changes and get reproduce the
+metric file:
 </br>
 <pre>
-    $ git checkout bigram
-    $ dvc checkout
-    $ git merge -X theirs master
+    $ git add auc.metric auc.metric.dvc
+    $ git commit -m "add evaluation step with AUC metric"
+    $ git checkout bigram && dvc checkout
+    $ git merge -X theirs master 
     $ dvc repro auc.metric.dvc
     $ git commit -m "evaluate bigram model"
 </pre>
 </p>
 </details>
 </br>
-
 
 ```dvc
     $ dvc metrics show -a
@@ -67,5 +66,6 @@ To evaluate `bigram` model we need to merge the changes and get the metric:
         auc.metric: 0.620421
 ```
 
-DVC metrics provides a flexible way to specify and navigate by multiple numbers.
-Check the `dvc metrics` command documentation to learn more.
+DVC provides built-in support to track and navigate `JSON`, `TSV` or `CVS` metric
+files if you want to track additional information. Check the `dvc metrics` command
+documentation to learn more.
