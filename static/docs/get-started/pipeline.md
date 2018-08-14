@@ -19,7 +19,14 @@ Second stage, training:
 ```dvc
     $ dvc run -d train.py -d matrix.pkl \
               -o model.pkl \
-              python train.py matrix.pkl 20170426 model.pkl
+              python train.py matrix.pkl model.pkl
+```
+
+Let's commit meta-files that describe our pipeline:
+
+```dvc
+    $ git add .gitignore matrix.pkl.dvc model.pkl.dvc
+    $ git commit -m "add featurization and train steps to the pipeline"
 ```
 
 This example is simplified just to show you an idea of the pipeline, check
