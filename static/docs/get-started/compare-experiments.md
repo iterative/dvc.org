@@ -45,7 +45,7 @@ command provides a way to compare different experiments:
 
 <details><summary><strong>Expand to run evaluation for bigrams</strong></summary>
 <p>
-To evaluate `bigram` model we need to merge the changes and get reproduce the
+To evaluate the `bigram` model we need to merge the changes and reproduce the
 metric file:
 </br>
 <pre>
