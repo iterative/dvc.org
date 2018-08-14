@@ -24,7 +24,7 @@ modifications are required, let's just change the stage definition:
               -o matrix.pkl -o matrix-test.pkl \
               python featurization.py data.tsv matrix.pkl \
                                       data-test.tsv matrix-test.pkl
-    $ git commit matrix.plk.dvc -m "change featurization stage"
+    $ git commit .gitignore matrix.plk.dvc -m "change featurization stage"
 </pre>
 DVC will aks for confirmation to overwrite the stage. Type `yes` and proceed.
 </p>
@@ -35,7 +35,8 @@ DVC will aks for confirmation to overwrite the stage. Type `yes` and proceed.
     $ dvc run -d evaluate.py -d model.pkl -d matrix-test.pkl \
               -M auc.metric \
               python evaluate.py model.pkl matrix-test.pkl auc.metric
-    $ git commit auc.metric* -m "add evaluation step with AUC metric"
+    $ git add auc.metric auc.metric.dvc          
+    $ git commit -m "add evaluation step with AUC metric"
 ```
 
 `evaluate.py` calculates AUC value using the test data set. `auc.metric` -

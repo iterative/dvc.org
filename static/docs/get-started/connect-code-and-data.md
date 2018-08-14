@@ -28,7 +28,7 @@ configuration with the data it processes to produce the result:
     $ dvc run \
         -d prepare.py -d data.xml \
         -o data.tsv -o data-test.tsv \
-        python prepare.py data.xml data.tsv
+        python prepare.py data.xml
 ```
 
 `dvc run` command creates a `data.tsv.dvc` file which has the same
@@ -38,3 +38,10 @@ this case it has additional information that `data.tsv` depends on `prepare.py`
 and `data.xml`, and the command `prepare.py data.xml data.tsv` is required to
 build it. Test data set `data-test.tsv` is generated to run evaluation script at
 the last steps of this guide.
+
+Let's commit metafiles to save the stage we built:
+
+```dvc
+    $ git add .gitignore data.tsv.dvc
+    $ git commit -m "add data preparation stage"
+```
