@@ -286,12 +286,26 @@ export default class Documentation extends Component {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 1005px;
+  margin: 0 auto;
+  background: white;
+  z-index: 1;
 
   ${media.phablet`
     flex-direction: column;
   `};
+
+  &:before {
+    content: '';
+    display: block;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 50%;
+    background-color: #eef4f8;
+    z-index: -1;
+  }
 `
 
 const Side = styled.div`
@@ -299,7 +313,7 @@ const Side = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-end;
+  align-items: flex-start;
   background-color: #eef4f8;
 
   ${media.phablet`
@@ -310,9 +324,7 @@ const Side = styled.div`
 `
 
 const SearchArea = styled.div`
-  min-width: 280px;
   height: 60px;
-  margin-right: 25px;
   display: flex;
   align-items: center;
   background-color: #eef4f8;
@@ -333,12 +345,9 @@ const SearchArea = styled.div`
 `
 
 const Menu = styled.div`
-  max-width: 280px;
-  padding-right: 20px;
-  margin-left: 10px;
-
   position: sticky;
   top: 60px;
+  width: 100%;
   height: calc(100vh - 140px);
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;

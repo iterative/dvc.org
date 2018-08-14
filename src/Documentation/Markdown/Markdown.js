@@ -91,8 +91,7 @@ const Content = styled.article`
   flex: 1;
   box-sizing: border-box;
   min-width: 200px;
-  max-width: 670px;
-  margin: 40px 15px 30px 30px;
+  margin: 30px 0 30px 30px;
   position: relative;
 
   ${media.phablet`
