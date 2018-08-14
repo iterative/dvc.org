@@ -49,7 +49,7 @@ To evaluate `bigram` model we need to merge the changes and get the metric:
 <pre>
     $ git checkout bigram
     $ dvc checkout
-    $ git merge master
+    $ git merge -X theirs master
     $ dvc repro auc.metric.dvc
     $ git commit -m "evaluate bigram model"
 </pre>
