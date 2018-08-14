@@ -17,7 +17,6 @@ set are going to use the test data set. We need to adjust the feature extraction
 to take into account this split for training and test data sets. No code
 modifications are required, let's just change the stage definition:
 </p>
-</br>
 <pre>
     $ git checkout master
     $ dvc checkout
