@@ -33,9 +33,10 @@ DVC will aks for confirmation to overwrite the stage. Type `yes` and proceed.
 </br>
 
 ```dvc
-    $ dvc run -d evaluate.py -d model.pkl -d matrix-test.pkl \
-              -M auc.metric \
-              python evaluate.py model.pkl matrix-test.pkl auc.metric
+    $ dvc run \
+          -d evaluate.py -d model.pkl -d matrix-test.pkl \
+          -M auc.metric \
+          python evaluate.py model.pkl matrix-test.pkl auc.metric
 ```
 
 `evaluate.py` calculates AUC value using the test data set. `auc.metric` -
