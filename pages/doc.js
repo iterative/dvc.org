@@ -38,13 +38,16 @@ export default class Documentation extends Component {
     markdown: '',
     headings: [],
     pageNotFound: false,
+    isMenuOpen: true,
   }
 
   componentDidMount() {
     this.loadStateFromURL();
     this.initDocsearch();
     window.addEventListener('popstate', this.loadStateFromURL);
-    this.ps = new PerfectScrollbar('#sidebar-menu');
+    this.ps = new PerfectScrollbar('#sidebar-menu', {
+      wheelPropagation: window.innerWidth <= 572,
+    });
   }
 
   componentDidUpdate() {
@@ -56,7 +59,7 @@ export default class Documentation extends Component {
       apiKey: '755929839e113a981f481601c4f52082', 
       indexName: 'dvc', 
       inputSelector: '#doc-search', 
-      debug: true // Set debug to true if you want to inspect the dropdown 
+      debug: false // Set debug to true if you want to inspect the dropdown 
     }); 
   }
 
@@ -124,6 +127,7 @@ export default class Documentation extends Component {
   }
 
   loadFile = ({ file, section, parseHeadings }) => {
+    const { isMenuOpen } = this.state;
     fetch(`${sidebar[section].folder}/${file}`).then(res => {
       res.text().then(text => {
         this.setState({
@@ -132,6 +136,7 @@ export default class Documentation extends Component {
           markdown: text,
           headings: [],
           pageNotFound: false,
+          isMenuOpen: isMenuOpen && !parseHeadings
         }, () => {
           this.scrollTop();
           parseHeadings && this.parseHeadings(text);
@@ -240,16 +245,24 @@ export default class Documentation extends Component {
     </SectionLinks>
   );
 
+  toggleMenu = () => {
+    this.setState((prevState) => ({
+      isMenuOpen: !prevState.isMenuOpen
+    }));
+  }
+
   render() {
-    const { currentSection, currentFile, markdown, pageNotFound } = this.state
+    const { currentSection, currentFile, markdown, pageNotFound, isMenuOpen } = this.state
     const githubLink = `https://github.com/iterative/dvc.org/blob/master${sidebar[currentSection].folder}/${currentFile}`
     const sectionName = sidebar[currentSection].name;
 
     return (
       <Page stickHeader={true}>
         <HeadInjector sectionName={sectionName} />
-        <Container>
-          <Side>
+        <Container >
+          <Backdrop onClick={this.toggleMenu} visible={isMenuOpen} />
+          <SideToggle onClick={this.toggleMenu} isMenuOpen={isMenuOpen} />
+          <Side isOpen={isMenuOpen}>
             <SearchArea>
               <SearchForm />
             </SearchArea>
@@ -263,7 +276,6 @@ export default class Documentation extends Component {
                 </SideFooter>
               </OnlyDesktop>
             </Menu>
-
           </Side>
 
           {pageNotFound
@@ -291,10 +303,6 @@ const Container = styled.div`
   background: white;
   z-index: 1;
 
-  ${media.phablet`
-    flex-direction: column;
-  `};
-
   &:before {
     content: '';
     display: block;
@@ -307,6 +315,31 @@ const Container = styled.div`
     z-index: -1;
   }
 `
+const Backdrop = styled.div`
+  display: none;
+
+  ${media.phablet`
+    display: block;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .3s linear;
+
+    ${props => 
+      props.visible &&
+      `
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+      opacity: 1;
+      pointer-events: all;    
+    `} 
+  `};
+`;
 
 const Side = styled.div`
   flex-basis: 33.7%;
@@ -317,9 +350,22 @@ const Side = styled.div`
   background-color: #eef4f8;
 
   ${media.phablet`
-    flex-basis: auto;
-    flex: 1;
-    align-items: flex-start;
+    position: fixed;
+    display: block;
+    z-index: 1;
+    top: 78px;
+    bottom: 0;
+    left: 0;
+    right: 60px;
+    box-shadow: rgba(0, 0, 0, 0.14) 0px 0px 4px, rgba(0, 0, 0, 0.28) 0px 4px 8px;
+    transform: translateX(-110%);
+    transition: transform .35s ease;
+
+    ${props => 
+      props.isOpen &&
+      `
+      transform: translateX(0);
+    `} 
   `};
 `
 
@@ -329,14 +375,12 @@ const SearchArea = styled.div`
   align-items: center;
   background-color: #eef4f8;
   z-index: 10;
-
   position: sticky;
   top: 0;
 
-
   ${media.phablet`
     position: relative;
-    margin-left: 25px;
+    padding: 0 20px;
   `};
 
   form {
@@ -348,18 +392,17 @@ const Menu = styled.div`
   position: sticky;
   top: 60px;
   width: 100%;
-  height: calc(100vh - 140px);
-  overflow-y: scroll;
+  height: calc(100vh - 138px);
+  overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 
   ${media.phablet`
-    max-width: none;
+    width: auto;
     position: relative;
     margin: 0;
     top: 0;
-    height: auto;
     overflow-y: auto;
-    padding: 0 20px;
+    margin-left: 20px;
   `};
 `
 
@@ -450,4 +493,39 @@ const Collapse = styled.div`
 const SideFooter = styled.div`
   margin-bottom: 30px;
   margin-top: 30px;
+`
+
+const SideToggle = styled.div`
+  display: none;
+  position: fixed;
+  z-index: 1;
+  right: 8px;
+  bottom: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 0px 9px 0 rgba(0, 0, 0, 0.15);
+  transition: transform .3s ease;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(/static/img/arrow.svg);
+    background-position: center;
+    background-size: 50%;
+    background-repeat: no-repeat;
+  }
+
+  ${media.phablet`
+    display: block;
+  `};
+
+  ${({ isMenuOpen }) => isMenuOpen && `
+    transform: translateX(80px);
+  `};
 `
