@@ -48,7 +48,48 @@ const CodeBlock = ({ value, language }) => {
 }
 
 export default class Markdown extends Component {
-  
+
+  constructor() {
+    super();
+    this.touchstartX = 0;
+    this.touchendX = 0;
+  }
+
+  componentDidMount() {
+    document.addEventListener('touchstart', this.onTouchStart, false);
+    document.addEventListener('touchend', this.onTouchEnd, false); 
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('touchstart', this.onTouchStart);
+    document.removeEventListener('touchend', this.onTouchEnd); 
+  }
+
+  onTouchStart = () => {
+    this.touchstartX = event.changedTouches[0].screenX;
+  }
+
+  onTouchEnd = () => {
+    this.touchendX = event.changedTouches[0].screenX;
+    this.handleSwipeGesture();
+  }
+
+  handleSwipeGesture = () => {
+    const {  section, file, onFileSelect } = this.props;
+    const files = sidebar[section].files;
+    const fileIndex = files.findIndex((f) => f === file);
+    const showPrev = fileIndex > 0;
+    const showNext = fileIndex + 1 < sidebar[section].files.length;
+
+    if (this.touchstartX - this.touchendX > 100) {
+      showNext && onFileSelect(files[fileIndex + 1], section)
+    }
+
+    if (this.touchendX - this.touchstartX > 100) {
+      showPrev && onFileSelect(files[fileIndex - 1], section);
+    }
+  }
+
   render() {
     const { markdown, githubLink, section, file, onFileSelect } = this.props;
     const files = sidebar[section].files;
@@ -61,7 +102,8 @@ export default class Markdown extends Component {
         <GithubLink href={githubLink} target="_blank">
           <i/> Edit on Github
         </GithubLink>
-        <ReactMarkdown 
+        <ReactMarkdown
+          key={`${section}-${fileIndex}`}
           className="markdown-body"
           escapeHtml={false}
           source={markdown}
@@ -114,6 +156,19 @@ const Content = styled.article`
   .markdown-body {
     font-family: inherit;
     font-size: 18px;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    animation-name: fadeIn;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+  
+    to {
+      opacity: 1;
+    }
   }
   
   details p {
