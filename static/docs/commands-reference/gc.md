@@ -15,13 +15,16 @@ machine your are running experiments on and usually helps to save some space.
 You can `dvc fetch` all the needed files back anytime you want.
 
 ```usage
-    usage: dvc gc [-h] [-q] [-v] [--all-branches]
+    usage: dvc gc [-h] [-q] [-v] [-a] [-c] [-r REMOTE] 
 
     optional arguments:
         -h, --help            show this help message and exit
         -q, --quiet           Be quiet.
         -v, --verbose         Be verbose.
-        --all-branches        Collect garbage for all branches.
+        -a, --all-branches    Collect garbage for all branches.
+        -c, --cloud           Collect garbage in remote repository.
+        -r REMOTE, --remote REMOTE
+                              Remote repository to collect garbage in.
 ```
 
 ## Examples
