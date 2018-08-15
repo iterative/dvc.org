@@ -32,13 +32,16 @@ const HeadInjector = ({ sectionName = 'Documentation' }) => (
 );
 
 export default class Documentation extends Component {
-  state = {
-    currentSection: 0,
-    currentFile: null,
-    markdown: '',
-    headings: [],
-    pageNotFound: false,
-    isMenuOpen: true,
+  constructor() {
+    super()
+    this.state = {
+      currentSection: 0,
+      currentFile: null,
+      markdown: '',
+      headings: [],
+      pageNotFound: false,
+      isMenuOpen: false,
+    }
   }
 
   componentDidMount() {
@@ -52,6 +55,10 @@ export default class Documentation extends Component {
 
   componentDidUpdate() {
     this.ps.update();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('popstate', this.loadStateFromURL)
   }
 
   initDocsearch = () => {
@@ -136,7 +143,7 @@ export default class Documentation extends Component {
           markdown: text,
           headings: [],
           pageNotFound: false,
-          isMenuOpen: isMenuOpen && !parseHeadings
+          isMenuOpen: false,
         }, () => {
           this.scrollTop();
           parseHeadings && this.parseHeadings(text);
@@ -183,10 +190,6 @@ export default class Documentation extends Component {
       smooth: 'ease',
       containerId: 'bodybag'
     })
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('popstate', this.loadStateFromURL)
   }
 
   renderMenu = ({ currentSection, currentFile, headings }) => (
@@ -491,8 +494,8 @@ const Collapse = styled.div`
 `
 
 const SideFooter = styled.div`
-  margin-bottom: 30px;
   margin-top: 30px;
+  padding-bottom: 30px;
 `
 
 const SideToggle = styled.div`
