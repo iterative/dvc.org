@@ -8,6 +8,7 @@ import SearchForm from '../src/SearchForm'
 import DownloadButton from '../src/DownloadButton'
 import Page404 from '../src/Page404'
 import PerfectScrollbar from 'perfect-scrollbar';
+import Hamburger from '../src/Hamburger';
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
@@ -264,7 +265,9 @@ export default class Documentation extends Component {
         <HeadInjector sectionName={sectionName} />
         <Container >
           <Backdrop onClick={this.toggleMenu} visible={isMenuOpen} />
-          <SideToggle onClick={this.toggleMenu} isMenuOpen={isMenuOpen} />
+          <SideToggle onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
+            <Hamburger />
+          </SideToggle>
           <Side isOpen={isMenuOpen}>
             <SearchArea>
               <SearchForm />
@@ -502,7 +505,7 @@ const SideToggle = styled.div`
   display: none;
   position: fixed;
   z-index: 1;
-  right: 8px;
+  left: 8px;
   bottom: 20px;
   width: 45px;
   height: 45px;
@@ -510,25 +513,18 @@ const SideToggle = styled.div`
   background-color: rgba(255, 255, 255, 0.9);
   box-shadow: 0 0px 9px 0 rgba(0, 0, 0, 0.15);
   transition: transform .3s ease;
-
-  &:after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: url(/static/img/arrow.svg);
-    background-position: center;
-    background-size: 50%;
-    background-repeat: no-repeat;
-  }
+  justify-content: center;
+  align-items: center;
 
   ${media.phablet`
-    display: block;
+    display: flex;
+
+    > div {
+      transform: scale(0.75);
+    }
   `};
 
   ${({ isMenuOpen }) => isMenuOpen && `
-    transform: translateX(80px);
+    transform: translateX(calc(100vw - 60px));
   `};
 `
