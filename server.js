@@ -28,7 +28,7 @@ app.prepare().then(() => {
       res.end()
     } else if (pkg.test(pathname)) {
       res.writeHead(301, {'Location':
-        "https://s3-us-west-2.amazonaws.com/dvc-" + pathname.substring(1, 4) + '/' +
+        "https://s3-us-east-2.amazonaws.com/dvc-" + pathname.substring(1, 4) + '/' +
         pathname.substring(5)})
       res.end()
     } else {
