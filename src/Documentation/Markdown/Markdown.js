@@ -53,6 +53,7 @@ export default class Markdown extends Component {
     super();
     this.touchstartX = 0;
     this.touchendX = 0;
+    this.isCodeBlock = false;
   }
 
   componentDidMount() {
@@ -65,7 +66,16 @@ export default class Markdown extends Component {
     document.removeEventListener('touchend', this.onTouchEnd); 
   }
 
-  onTouchStart = () => {
+  isInsideCodeBlock = (elem) => {
+    for ( ;elem && elem !== document; elem = elem.parentNode) {
+      if (elem.tagName === 'PRE') return true;
+      if (elem.tagName === 'ARTICLE') return false;
+    }
+    return false;
+  };
+
+  onTouchStart = (e) => {
+    this.isCodeBlock = this.isInsideCodeBlock(e.target);
     this.touchstartX = event.changedTouches[0].screenX;
   }
 
@@ -75,6 +85,7 @@ export default class Markdown extends Component {
   }
 
   handleSwipeGesture = () => {
+    if (this.isCodeBlock) return;
     const {  section, file, onFileSelect } = this.props;
     const files = sidebar[section].files;
     const fileIndex = files.findIndex((f) => f === file);
