@@ -31,17 +31,16 @@ configuration with the data it processes to produce the result:
         python prepare.py data.xml
 ```
 
-`dvc run` command creates a `data.tsv.dvc` file which has the same
+`dvc run` generates a `data.tsv.dvc` file. It has the same
 [format](/doc/user-guide/dvc-file-format) as the file we created in the
-[previous section](/doc/get-started/add-files) to track `data.tsv`, except in
-this case it has additional information that `data.tsv` depends on `prepare.py`
-and `data.xml`, and the command `prepare.py data.xml data.tsv` is required to
-build it. Test data set `data-test.tsv` is generated to run evaluation script at
-the last steps of this guide.
+[previous section](/doc/get-started/add-files) to track `data.xml`, except in
+this case it has additional information about `data.tsv` dependencies and
+command that is required to build it.
 
 You don't need to run `dvc add` to take output files - `data.tsv` and
-`data-test.tsv` under control. `dvc run` takes care of this. You only need to
-run `dvc push`, usually along with git commit.
+`data-test.tsv` - under control. `dvc run` takes care of this. You only need to
+run `dvc push`, usually along with git commit to save them to the remote when
+you done.
 
 Let's commit metafiles to save the stage we built:
 
