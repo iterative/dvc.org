@@ -39,9 +39,14 @@ and `data.xml`, and the command `prepare.py data.xml data.tsv` is required to
 build it. Test data set `data-test.tsv` is generated to run evaluation script at
 the last steps of this guide.
 
+You don't need to run `dvc add` to take output files - `data.tsv` and
+`data-test.tsv` under control. `dvc run` takes care of this. You only need to
+run `dvc push`, usually along with git commit.
+
 Let's commit metafiles to save the stage we built:
 
 ```dvc
     $ git add .gitignore data.tsv.dvc
     $ git commit -m "add data preparation stage"
+    $ dvc push
 ```

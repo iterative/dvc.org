@@ -7,20 +7,33 @@ Let's explore the natural language processing (NLP) problem of predicting tags
 for a given StackOverflow question. For example, we want one classifier which
 can predict a post that is about the Java language by tagging it "Java".
 
-First, let's download the model code and set up the Git repository:
+In this example, we'll focus on building a simple pipeline that takes an archive
+with StackOverflow posts and trains the prediction model and saves it as an
+output. The pipeline itself is a sequence of transformation we apply to the data
+file:
+
+* Extract data
+* Prepare (convert XML to TSV)
+* Split into training and testing data sets
+* Build a feature matrix
+* Trains the model (using training data sets)
+* And finally evaluate the model (using the test data set)
+
+Okay, let's first download the code and set up the Git repository. This step has
+nothing to do with DVC so far, it's just a simple preparation:
 
 ```dvc
-    $ mkdir myrepo
-    $ cd myrepo
-    $ wget https://dvc.org/s3/so/code.tgz
-    $ tar zxf code.tgz && rm -f code.tgz
-    $ pip install -U -r code/requirements.txt
+    $ mkdir example
+    $ cd example
     $ git init
-    $ git add code/
-    $ git commit -m 'Download code'
+    $ wget -q -O - https://dvc.org/s3/so/code.tgz | tar zx
+    $ pip install -U -r code/requirements.txt
+    $ git add .
+    $ git commit -m 'download and initialize code'
 ```
 
-The full pipeline can be built by running the code below:
+Then, we gonna step by step build the pipeline, utilizing the same set of
+commands that should are described in the get started chapters.
 
 * Initialize DVC repository (in your Git repository):
 
@@ -28,16 +41,19 @@ The full pipeline can be built by running the code below:
     $ dvc init
 ```
 
-* Download a file to the data/ directory and add it to dvc.
+* Download a file to the data/ directory and add it to DVC:
 
 ```dvc
     $ mkdir data
     $ cd data
     $ wget https://dvc.org/s3/so/25K/Posts.xml.tgz
     $ dvc add Posts.xml.tgz
+    $ cd ..
 ```
 
-* Extract XML from the archive.
+* The first actual step, extract XML from the archive. Note, we don't need to
+run `dvc add` on `Posts.xml`, `dvc run` saves (commits into cache)
+automatically:
 
 ```dvc
     $ dvc run -d data/Posts.xml.tgz \
@@ -45,7 +61,7 @@ The full pipeline can be built by running the code below:
               tar zxf data/Posts.xml.tgz
 ```
 
-* Prepare the data.
+* Next step, let's convert XML into TSV to make feature extraction easier:
 
 ```dvc
     $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml \
@@ -53,7 +69,7 @@ The full pipeline can be built by running the code below:
               python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
 ```
 
-* Split training and testing dataset. Two output files.
+* Split training and testing data sets. There are two output output files:
 
 ```dvc
     # 0.33 - test dataset split ratio. 20170426 is a seed for randomization.
@@ -64,7 +80,7 @@ The full pipeline can be built by running the code below:
 ```
 
 * Extract features from the data. Two TSV as inputs with two pickle matrices as
-outputs.
+outputs:
 
 ```dvc
     $ dvc run -d code/featurization.py -d data/Posts-train.tsv \
@@ -74,7 +90,7 @@ outputs.
                      data/Posts-test.tsv data/matrix-train.p data/matrix-test.p
 ```
 
-* Train ML model on the training dataset. 20170426 is another seed value.
+* Train ML model on the training data set. 20170426 is a seed value here:
 
 ```dvc
     $ dvc run -d code/train_model.p -d data/matrix-train.p \
@@ -82,11 +98,11 @@ outputs.
               python code/train_model.py data/matrix-train.p 20170426 data/model.p
 ```
 
-* Evaluate the model on the test dataset.
+* Finally, evaluate the model on the test data set and get the metrics file:
 
 ```dvc
     $ dvc run -d code/evaluate.py -d data/model.p -d data/matrix-test.p \
-              -o data/evaluation.txt \
+              -M data/evaluation.txt \
               python code/evaluate.py data/model.p data/matrix-test.p \
 	                 data/evaluation.txt
 ```
