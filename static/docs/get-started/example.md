@@ -93,7 +93,7 @@ outputs:
 * Train ML model on the training data set. 20170426 is a seed value here:
 
 ```dvc
-    $ dvc run -d code/train_model.p -d data/matrix-train.p \
+    $ dvc run -d code/train_model.py -d data/matrix-train.p \
               -o data/model.p \
               python code/train_model.py data/matrix-train.p 20170426 data/model.p
 ```
