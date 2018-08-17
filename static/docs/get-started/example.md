@@ -26,7 +26,7 @@ nothing to do with DVC so far, it's just a simple preparation:
     $ mkdir example
     $ cd example
     $ git init
-    $ wget -q -O - https://dvc.org/s3/so/code.tgz | tar zx
+    $ wget -q -O - https://dvc.org/s3/so/code.tgz | tar -xvf -
     $ pip install -U -r code/requirements.txt
     $ git add .
     $ git commit -m 'download and initialize code'
@@ -58,7 +58,7 @@ automatically:
 ```dvc
     $ dvc run -d data/Posts.xml.tgz \
               -o data/Posts.xml \
-              tar zxf data/Posts.xml.tgz
+              tar -xvf data/Posts.xml.tgz -C data
 ```
 
 * Next step, let's convert XML into TSV to make feature extraction easier:
