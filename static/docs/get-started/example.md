@@ -26,7 +26,7 @@ nothing to do with DVC so far, it's just a simple preparation:
     $ mkdir example
     $ cd example
     $ git init
-    $ wget -q -O - https://dvc.org/s3/so/code.tgz | tar zx
+    $ wget -q -O - https://dvc.org/s3/so/code.tgz | tar -xvf -
     $ pip install -U -r code/requirements.txt
     $ git add .
     $ git commit -m 'download and initialize code'
@@ -45,10 +45,8 @@ commands that should are described in the get started chapters.
 
 ```dvc
     $ mkdir data
-    $ cd data
-    $ wget https://dvc.org/s3/so/25K/Posts.xml.tgz
-    $ dvc add Posts.xml.tgz
-    $ cd ..
+    $ wget -P data https://dvc.org/s3/so/25K/Posts.xml.tgz
+    $ dvc add data/Posts.xml.tgz
 ```
 
 * The first actual step, extract XML from the archive. Note, we don't need to
@@ -58,59 +56,57 @@ automatically:
 ```dvc
     $ dvc run -d data/Posts.xml.tgz \
               -o data/Posts.xml \
-              tar zxf data/Posts.xml.tgz
+              tar -xvf data/Posts.xml.tgz -C data
 ```
 
 * Next step, let's convert XML into TSV to make feature extraction easier:
 
 ```dvc
-    $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml \
+    $ dvc run -d code/xml_to_tsv.py -d code/conf.py -d data/Posts.xml \
               -o data/Posts.tsv \
-              python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
+              python code/xml_to_tsv.py
 ```
 
 * Split training and testing data sets. There are two output output files:
 
 ```dvc
     # 0.33 - test dataset split ratio. 20170426 is a seed for randomization.
-    $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
+    $ dvc run -d code/split_train_test.py -d code/conf.py -d data/Posts.tsv \
               -o data/Posts-train.tsv -o data/Posts-test.tsv \
-              python code/split_train_test.py data/Posts.tsv 0.33 20170426 \
-                       data/Posts-train.tsv data/Posts-test.tsv
+              python code/split_train_test.py 0.33 20170426
 ```
 
 * Extract features from the data. Two TSV as inputs with two pickle matrices as
 outputs:
 
 ```dvc
-    $ dvc run -d code/featurization.py -d data/Posts-train.tsv \
-              -d data/Posts-test.tsv \
+    $ dvc run -d code/featurization.py -d code/conf.py \
+              -d data/Posts-train.tsv -d data/Posts-test.tsv \
               -o data/matrix-train.p -o data/matrix-test.p \
-              python code/featurization.py data/Posts-train.tsv \
-                     data/Posts-test.tsv data/matrix-train.p data/matrix-test.p
+              python code/featurization.py
 ```
 
 * Train ML model on the training data set. 20170426 is a seed value here:
 
 ```dvc
-    $ dvc run -d code/train_model.p -d data/matrix-train.p \
+    $ dvc run -d code/train_model.py -d code/conf.py -d data/matrix-train.p \
               -o data/model.p \
-              python code/train_model.py data/matrix-train.p 20170426 data/model.p
+              python code/train_model.py 20170426
 ```
 
 * Finally, evaluate the model on the test data set and get the metrics file:
 
 ```dvc
-    $ dvc run -d code/evaluate.py -d data/model.p -d data/matrix-test.p \
-              -M data/evaluation.txt \
-              python code/evaluate.py data/model.p data/matrix-test.p \
-	                 data/evaluation.txt
+    $ dvc run -d code/evaluate.py -d code/conf.py \
+              -d data/model.p -d data/matrix-test.p \
+              -M data/eval.txt \
+              python code/evaluate.py
 ```
 
 * Get the result.
 
 ```dvc
-    $ cat data/evaluation.txt
+    $ cat data/eval.txt
     AUC: 0.596182
 ```
 
@@ -142,13 +138,13 @@ features to 6000:
 * Reproduce all required steps to get our target metrics file:
 
 ```dvc
-    $ dvc repro evaluation.txt.dvc
+    $ dvc repro data/eval.txt.dvc
 ```
 
 * Take a look at the target metric improvement:
 
 ```dvc
-    $ cat data/evaluation.txt
+    $ cat data/eval.txt
 
     AUC: 0.627196
 ```

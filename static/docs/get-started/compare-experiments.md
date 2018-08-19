@@ -21,7 +21,7 @@ modifications are required, let's just change the stage definition:
     $ git checkout master
     $ dvc checkout
     $ dvc run -d featurization.py -d data.tsv -d data-test.tsv \
-              -o matrix-test.pkl -o matrix.pkl \
+              -o matrix.pkl -o matrix-test.pkl \
               python featurization.py data.tsv matrix.pkl \
                                       data-test.tsv matrix-test.pkl
     $ git commit .gitignore matrix.plk.dvc -m "change featurization stage"
