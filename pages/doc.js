@@ -307,7 +307,7 @@ const Container = styled.div`
   max-width: 1005px;
   margin: 0 auto;
   background: white;
-  z-index: 1;
+  z-index: 2;
 
   &:before {
     content: '';
@@ -358,7 +358,7 @@ const Side = styled.div`
   ${media.phablet`
     position: fixed;
     display: block;
-    z-index: 1;
+    z-index: 2;
     top: 78px;
     bottom: 0;
     left: 0;
@@ -504,7 +504,7 @@ const SideFooter = styled.div`
 const SideToggle = styled.div`
   display: none;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   left: 8px;
   bottom: 20px;
   width: 45px;

@@ -215,7 +215,7 @@ const GithubLink = styled.a`
   cursor: pointer;
   transition: 0.2s background-color ease-out;
   position: relative
-  z-index: 100
+  z-index: 1
 
   ${media.tablet`
     float: none;
