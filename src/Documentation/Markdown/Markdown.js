@@ -214,6 +214,8 @@ const GithubLink = styled.a`
   border-radius: 3px;
   cursor: pointer;
   transition: 0.2s background-color ease-out;
+  position: relative
+  z-index: 100
 
   ${media.tablet`
     float: none;
