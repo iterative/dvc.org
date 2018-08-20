@@ -14,7 +14,7 @@ are provided, use Download button to the left or get them
 [here](https://github.com/iterative/dvc/releases/). We also provide `deb` and
 `rpm` repositories:
 
-<details><summary><strong>Expand to install deb repository (Ubuntu, Debian)</strong></summary>
+<details><summary><strong>Expand to install from deb repository (Ubuntu, Debian)</strong></summary>
 <p>
 </br>
 <pre>
@@ -27,7 +27,7 @@ are provided, use Download button to the left or get them
 </details>
 </br>
 
-<details><summary><strong>Expand to install rpm repository (Fedora, Centos)</strong></summary>
+<details><summary><strong>Expand to install from rpm repository (Fedora, Centos)</strong></summary>
 <p>
 </br>
 <pre>
