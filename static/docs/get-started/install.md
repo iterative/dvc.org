@@ -11,7 +11,34 @@ The simplest way to install DVC is:
 
 If you have troubles installing it with `pip`, self-contained binary packages
 are provided, use Download button to the left or get them
-[here](https://github.com/iterative/dvc/releases/).
+[here](https://github.com/iterative/dvc/releases/). We also provide `deb` and
+`rpm` repositories:
+
+<details><summary><strong>Expand to install deb repository(Ubuntu, Debian)</strong></summary>
+<p>
+</br>
+<pre>
+    $ wget https://dvc.org/deb/dvc.list
+    $ sudo cp dvc.list /etc/apt/sources.list.d/
+    $ sudo apt-get update
+    $ sudo apt-get install dvc
+</pre>
+</p>
+</details>
+</br>
+
+<details><summary><strong>Expand to install rpm repository(Fedora, Centos)</strong></summary>
+<p>
+</br>
+<pre>
+    $ wget https://dvc.org/rpm/dvc.repo
+    $ sudo cp dvc.repo /etc/yum.repos.d/
+    $ sudo dnf update
+    $ sudo dnf install dvc
+</pre>
+</p>
+</details>
+</br>
 
 See [Development](/doc/user-guide/development) if you want to install the most
 recent development version.
