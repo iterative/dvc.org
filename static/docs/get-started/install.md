@@ -47,6 +47,7 @@ are provided, use Download button to the left or get them
     $ brew install iterative/homebrew-dvc/dvc
 </pre>
 or:
+</br>
 <pre>
     $ brew cask install iterative/homebrew-dvc/dvc
 </pre>
