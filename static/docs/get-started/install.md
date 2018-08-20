@@ -40,21 +40,20 @@ are provided, use Download button to the left or get them
 </details>
 </br>
 
+<details><summary><strong>Expand to install via Homebrew (Mac OS)</strong></summary>
+<p>
+</br>
+<pre>
+    $ brew install iterative/homebrew-dvc/dvc
+</pre>
+or:
+<pre>
+    $ brew cask install iterative/homebrew-dvc/dvc
+</pre>
+
+</p>
+</details>
+</br>
+
 See [Development](/doc/user-guide/development) if you want to install the most
 recent development version.
-
-### Homebrew
-
-Mac OS users can also install DVC by using either **brew formula** or
-**brew cask**:
-
-```dvc
-    $ brew install iterative/homebrew-dvc/dvc
-```
-
-or:
-
-```dvc
-    $ brew cask install iterative/homebrew-dvc/dvc
-```
-
