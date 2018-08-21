@@ -11,8 +11,8 @@ The simplest way to install DVC is:
 
 If you have troubles installing it with `pip`, self-contained binary packages
 are provided, use Download button to the left or get them
-[here](https://github.com/iterative/dvc/releases/). We also provide `deb` and
-`rpm` repositories:
+[here](https://github.com/iterative/dvc/releases/). We also provide `deb`, `rpm`
+and `homebrew` repositories:
 
 <details><summary><strong>Expand to install from deb repository (Ubuntu, Debian)</strong></summary>
 <p>
