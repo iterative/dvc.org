@@ -54,7 +54,7 @@ metric file:
     $ git checkout bigram && dvc checkout
     $ git merge -X theirs master 
     $ dvc repro auc.metric.dvc
-    $ git commit -m "evaluate bigram model"
+    $ git commit -a -m "evaluate bigram model"
 </pre>
 </p>
 </details>
