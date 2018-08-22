@@ -137,5 +137,15 @@
     "labels": {
       "what-is-dvc.md": "What is DVC?"
     }
+  },
+  {
+    "name": "Changelog",
+    "folder": "/static/docs/changelog",
+    "files": [
+      "0.18.md"
+    ],
+    "labels": {
+      "0.18.md": "v0.12 - v0.18"
+    }
   }
 ]
