@@ -7,6 +7,9 @@ At the very end there is a complete step-by-step
 [example](/doc/get-started/example). It covers pipelines and reproducibility.
 It's a short version of the [tutorial](/doc/tutorial).
 
+Check out the [Github](https://github.com/iterative/dvc) page and give us a ⭐ if
+you like the project!
+
 We also have other short tutorials to describe different use cases:
 
 * In the [data and model versioning](/doc/use-cases/data-and-model-files-versioning)
