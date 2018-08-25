@@ -30,7 +30,11 @@ by Rscript command.
       -M METRICS_NO_CACHE, --metrics-no-cache METRICS_NO_CACHE
                             Declare output metric file or directory (not cached by
                             DVC).
-      -f FILE, --file FILE  Specify name of the state file
+      -f FILE, --file FILE  Specify name of the stage file. It should be either    
+                            'Dvcfile' or have a '.dvc' suffix (e.g. 'prepare.dvc', 
+                            'clean.dvc', etc) in order for dvc to be able to find  
+                            it later. By default the first output basename + .dvc  
+                            is used as a stage filename.                           
       -c CWD, --cwd CWD     Directory to run your command and place state file in
       --no-exec             Only create stage file without actually running it
 ```
