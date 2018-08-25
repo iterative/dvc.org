@@ -46,20 +46,24 @@ so a `model.p.dvc` stage file will be created:
 
 ```dvc
     # Train ML model on the training dataset. 20180226 is a seed value.
-    $ dvc run -d matrix-train.p -d train_model.py -o model.p python \
-        train_model.py matrix-train.p 20180226 model.p
+    $ dvc run -d matrix-train.p -d train_model.py \
+              -o model.p \
+              python train_model.py matrix-train.p 20180226 model.p
 ```
 
 Execute an R script as the DVC pipeline step:
 
 ```dvc
-    $ dvc run -d parsingxml.R -d Posts.xml -o Posts.csv Rscript parsingxml.R \
-        Posts.xml Posts.csv
+    $ dvc run -d parsingxml.R -d Posts.xml \
+             -o Posts.csv \
+             Rscript parsingxml.R Posts.xml Posts.csv
 ```
 
 Extract an XML file from an archive to the `data/` folder:
 
 ```dvc
     $ mkdir data
-    $ dvc run -d Posts.xml.tgz -o data/Posts.xml tar zxf Posts.xml.tgz -C data/
+    $ dvc run -d Posts.xml.tgz \
+              -o data/Posts.xml \
+              tar zxf Posts.xml.tgz -C data/
 ```
