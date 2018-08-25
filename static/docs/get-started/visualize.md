@@ -1,6 +1,6 @@
 # Visualize
 
-Now that we have build our pipeline, we need a good way to visualize it to be
+Now that we have built our pipeline, we need a good way to visualize it to be
 able to wrap our heads around it. Luckily, dvc allows us to do that without
 leaving the terminal, making the experience distraction-less.
 
