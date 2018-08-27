@@ -137,6 +137,18 @@ Available configuration options:
     $ dvc remote modify myremote user myuser
   ```
 
+* **`port`** - port to use to access a remote (default: 22).
+
+  ```dvc
+    $ dvc remote modify myremote port 2222
+  ```
+
+* **`keyfile`** - path to private key to use to access a remote.
+
+  ```dvc
+    $ dvc remote modify myremote keyfile /path/to/keyfile
+  ```
+
 ### HDFS remote
 
 ```dvc
