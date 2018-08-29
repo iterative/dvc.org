@@ -8,7 +8,6 @@ metrics to track. Metrics are usually any project specific numbers - `AUC`,
 Usually these numbers are produced by the model evaluation script and serve as
 a way to compare and pick the best performing experiment variant.
 
-
 ```usage
     usage: dvc metrics [-h] [-q] [-v] {show,add,modify,remove} ...
 
