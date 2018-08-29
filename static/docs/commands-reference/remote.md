@@ -1,6 +1,7 @@
 # remote
 
-Add, list, modify, and remove available data remotes.
+[Add](#add), [list](#list), [modify](#modify), and [remove](#remove) available
+data remotes.
 
 The same way as Github serves as a master storage for Git-based projects, DVC
 data remotes provide a central place to keep and share data and model files.
