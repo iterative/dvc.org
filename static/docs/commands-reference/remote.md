@@ -68,6 +68,88 @@ don't want to track and share through Git (credentials, private locations, etc).
 using this remote by default to save or retrieve data files unless `-r` option
 is specified for them.
 
+<details>
+
+### Click for AWS S3 example
+
+```dvc
+    $ dvc remote add myremote s3://bucket/path
+```
+
+By default DVC expects your AWS CLI is already
+[configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
+DVC will be using default AWS credentials file to access S3. To override some of
+these settings, you could the options described in `dvc remote modify`.
+
+</details>
+
+<details>
+
+### Click for Azure example
+
+```dvc
+    $ export AZURE_STORAGE_CONNECTION_STRING="<my-connection-string>"
+    $ dvc remote add myremote "azure://ContainerName=my-bucket;"
+```
+
+The Azure Blob Storage remote can also be configured entirely via environment
+variables:
+
+```dvc
+    $ export AZURE_STORAGE_CONNECTION_STRING="<my-connection-string>"
+    $ export AZURE_STORAGE_CONTAINER_NAME="my-bucket"
+    $ dvc remote add myremote "azure://"
+```
+
+Alternatively, all the configuration can also be passed via the remote URL:
+
+```dvc
+    $ dvc remote add myremote "azure://ContainerName=my-bucket;<my-connection-string>"
+```
+
+* **`connection string`** - this is the connection string to access your Azure
+Storage Account. If you don't already have a storage account, you can create
+one following [these instructions](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account).
+The connection string can be found in the "Access Keys" pane of your Storage
+Account resource in the Azure portal.
+
+* **`container name`** this is the top-level container in your Azure Storage
+Account under which all the files for this remote will be uploaded. If the
+container doesn't already exist, it will be created automatically.
+
+</details>
+
+
+<details>
+
+### Click for Google Cloud Storage example
+
+```dvc
+    $ dvc remote add myremote gs://bucket/path
+```
+
+</details>
+
+<details>
+
+### Click for SSH example
+
+```dvc
+    $ dvc remote add myremote ssh://user@example.com:/path/to/dir
+```
+
+</details>
+
+<details>
+
+### Click for HDFS example
+
+```dvc
+    $ dvc remote add myremote hdfs://user@example.com/path/to/dir
+```
+
+</details>
+
 
 ## modify
 
@@ -91,12 +173,7 @@ Modify remote settings.
       --local        Use local config.
 ```
 
-Remote `name` and `option` name are required. Option names are remote type
-specific. See below examples and a list of
-[supported options](#configuration-options) per remote type - AWS S3, Google
-cloud, Azure, SSH, and others.
-
-**Options:**
+**Optional arguments:**
 
 * **`unset`** - delete configuration value
 
@@ -104,6 +181,124 @@ cloud, Azure, SSH, and others.
 configuration file (`.dvc/config.local`). This is useful when you are modifying
 private options in your config, that you don't want to track and share through
 Git (credentials, private locations, etc).
+
+Remote `name` and `option` name are required. Option names are remote type
+specific. See below examples and a list of per remote type - AWS S3, Google
+cloud, Azure, SSH, and others.
+
+<details>
+
+### Click for AWS S3 available options
+
+By default DVC expects your AWS CLI is already
+[configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
+DVC will be using default AWS credentials file to access S3. To override some of
+these settings, you could use the following options:
+
+* **`region`** - change AWS S3 remote region::
+
+  ```dvc
+    $ dvc remote modify myremote region us-east-2
+  ```
+
+* **`profile`** - credentials profile name to use to access AWS S3:
+
+  ```dvc
+    $ dvc remote modify myremote profile myprofile
+  ```
+
+* **`credentialpath`** - credentials path to use to access AWS S3:
+
+  ```dvc
+    $ dvc remote modify myremote credentialpath /path/to/my/creds
+  ```
+
+* **`endpointurl`** - endpoint URL to use to access AWS S3:
+
+  ```dvc
+    $ dvc remote modify myremote endpointurl myendpoint.com
+  ```
+
+* **`url`** - remote location URL
+
+  ```dvc
+    $ dvc remote modify myremote url s3://bucket/remote
+  ```
+
+</details>
+
+<details>
+
+### Click for Azure available options
+
+* **`url`** - remote location URL
+
+  ```dvc
+    $ dvc remote modify myremote url "azure://ContainerName=remote;"
+  ```
+
+</details>
+
+
+<details>
+
+### Click for Google Cloud Storage available options
+
+* **`projectname`** - project name to use.
+
+  ```dvc
+    $ dvc remote modify myremote projectname myproject
+  ```
+
+* **`url`** - remote location URL.
+
+  ```dvc
+    $ dvc remote modify myremote url gs://bucket/remote
+  ```
+
+</details>
+
+<details>
+
+### Click for SSH available options
+
+* **`url`** - remote location URL.
+
+  ```dvc
+    $ dvc remote modify myremote url ssh://user@example.com:/path/to/remote
+  ```
+
+* **`user`** - username to use to access a remote.
+
+  ```dvc
+    $ dvc remote modify myremote user myuser
+  ```
+
+* **`port`** - port to use to access a remote (default: 22).
+
+  ```dvc
+    $ dvc remote modify myremote port 2222
+  ```
+
+* **`keyfile`** - path to private key to use to access a remote.
+
+  ```dvc
+    $ dvc remote modify myremote keyfile /path/to/keyfile
+  ```
+
+</details>
+
+<details>
+
+### Click for HDFS available options
+
+* **`user`** - username to use to access a remote.
+
+  ```dvc
+    $ dvc remote modify myremote user myuser
+  ```
+
+</details>
 
 
 ## list
@@ -159,138 +354,6 @@ Remote `name` is required.
 (`.dvc/config.local`). Local configuration files stores private settings that
 should not be tracked by Git.
 
-
-## Configuration options
-
-Most of the available configuration options depend on the storage type/cloud
-provider you are using. DVC supports SSH, S3, Google Cloud, Azure, HDFS remote
-types at the moment. Below, is the list of available configuration parameters
-split by remote type you can pass to the `dvc remote modify`.
-
-**Common:**
-
-* **`url`** - remote location URL.
-
-  ```dvc
-    $ dvc remote modify myremote url gs://bucket/path
-  ```
-
-
-**AWS S3 remote**:
-
-```dvc
-    $ dvc remote add myremote s3://bucket/path
-```
-
-By default DVC expects your AWS CLI is already
-[configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
-DVC will be using default AWS credentials file to access S3. To override some of
-these settings, you could use the following options:
-
-* **`region`** - change AWS S3 remote region::
-
-  ```dvc
-    $ dvc remote modify myremote region us-east-2
-  ```
-
-* **`profile`** - credentials profile name to use to access AWS S3:
-
-  ```dvc
-    $ dvc remote modify myremote profile myprofile
-  ```
-
-* **`credentialpath`** - credentials path to use to access AWS S3:
-
-  ```dvc
-    $ dvc remote modify myremote credentialpath /path/to/my/creds
-  ```
-
-* **`endpointurl`** - endpoint URL to use to access AWS S3:
-
-  ```dvc
-    $ dvc remote modify myremote endpointurl myendpoint.com
-  ```
-
-
-**Azure remote:**
-
-```dvc
-    $ export AZURE_STORAGE_CONNECTION_STRING="<my-connection-string>"
-    $ dvc remote add myremote "azure://ContainerName=my-bucket;"
-```
-
-The Azure Blob Storage remote can also be configured entirely via environment
-variables:
-
-```dvc
-    $ export AZURE_STORAGE_CONNECTION_STRING="<my-connection-string>"
-    $ export AZURE_STORAGE_CONTAINER_NAME="my-bucket"
-    $ dvc remote add myremote "azure://"
-```
-
-Alternatively, all the configuration can also be passed via the remote URL:
-
-```dvc
-    $ dvc remote add myremote "azure://ContainerName=my-bucket;<my-connection-string>"
-```
-
-* **`connection string`** - this is the connection string to access your Azure
-Storage Account. If you don't already have a storage account, you can create
-one following [these instructions](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account).
-The connection string can be found in the "Access Keys" pane of your Storage
-Account resource in the Azure portal.
-
-* **`container name`** this is the top-level container in your Azure Storage
-Account under which all the files for this remote will be uploaded. If the
-container doesn't already exist, it will be created automatically.
-
-**Google Cloud Storage remote:**
-
-```dvc
-    $ dvc remote add myremote gs://bucket/path
-```
-
-* **`projectname`** - project name to use.
-
-  ```dvc
-    $ dvc remote modify myremote projectname myproject
-  ```
-
-**SSH remote:**
-
-```dvc
-    $ dvc remote add myremote ssh://user@example.com:/path/to/dir
-```
-
-* **`user`** - username to use to access a remote.
-
-  ```dvc
-    $ dvc remote modify myremote user myuser
-  ```
-
-* **`port`** - port to use to access a remote (default: 22).
-
-  ```dvc
-    $ dvc remote modify myremote port 2222
-  ```
-
-* **`keyfile`** - path to private key to use to access a remote.
-
-  ```dvc
-    $ dvc remote modify myremote keyfile /path/to/keyfile
-  ```
-
-**HDFS remote:**
-
-```dvc
-    $ dvc remote add myremote hdfs://user@example.com/path/to/dir
-```
-
-* **`user`** - username to use to access a remote.
-
-  ```dvc
-    $ dvc remote modify myremote user myuser
-  ```
 
 ## Examples
 

@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import ReactMarkdown from 'react-markdown'
 // syntax highlighter
 import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/light'
+import Collapsible from 'react-collapsible'
 import docco from 'react-syntax-highlighter/styles/hljs/docco'
 import python from 'react-syntax-highlighter/languages/hljs/python'
 import yaml from 'react-syntax-highlighter/languages/hljs/yaml'
@@ -33,6 +34,17 @@ const HeadingRenderer = ({ level, children }) => {
   const text = children.reduce(flatten, '')
   const slug = kebabCase(text)
   return React.createElement('h' + level, { id: slug }, content)
+}
+
+const HtmlRenderer = (props) => {
+  if (props.tag !== 'details') {
+    return React.createElement(props.tag, {}, props.children)
+  } else {
+    const text = props.children[0].props.children[0]
+    return <Collapsible trigger={text} transitionTime={200}>
+      {props.children.slice(1)}
+    </Collapsible>
+  }
 }
 
 const CodeBlock = ({ value, language }) => {
@@ -121,6 +133,7 @@ export default class Markdown extends Component {
           renderers={{
             code: CodeBlock,
             heading: HeadingRenderer,
+            virtualHtml: HtmlRenderer
           }}
           astPlugins={[linker()]}
         />
@@ -170,6 +183,44 @@ const Content = styled.article`
     animation-duration: 1s;
     animation-fill-mode: both;
     animation-name: fadeIn;
+  }
+  
+  .Collapsible {
+    margin-bottom: 10px;
+  }
+  
+  .Collapsible__trigger {
+    font-family: BrandonGrotesqueMed;
+    
+     &:before {
+      display: inline-block;
+      content: '▶';
+      font-family: monospace;
+      color: #F26840;
+      margin-right: 10px;
+      vertical-align: center;
+      font-size: 14px;
+      transition: transform 200ms;
+    }
+    
+    &.is-open {
+      &:before {
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+        font-size: 14px;
+        font-family: monospace;
+      }
+    }
+  }
+  
+  .Collapsible__contentInner {
+    background-color: rgba(36, 173, 197, 0.05);
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    padding: 10px;
   }
 
   @keyframes fadeIn {
