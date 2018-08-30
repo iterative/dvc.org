@@ -39,8 +39,6 @@ remote modify` to provide credentials and/or configure other remote parameters.
 ```usage
     usage: dvc remote add [-h] [-q] [-v] [--local] [-d] name url
 
-    Add remote.
-
     positional arguments:
         name           Name.
         url            URL.
@@ -157,8 +155,6 @@ Modify remote settings.
 
 ```usage
     usage: dvc remote modify [-h] [-q] [-v] [-u] [--local] name option [value]
-
-    Modify remote.
 
     positional arguments:
       name           Name.
@@ -332,8 +328,6 @@ does not physically remove your data files stored remotely.
 
 ```usage
     usage: dvc remote remove [-h] [-q] [-v] [--local] name
-
-    Remove remote.
 
     positional arguments:
       name           Name
