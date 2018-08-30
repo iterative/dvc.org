@@ -386,10 +386,10 @@ local environment specific settings that should not be tracked by Git.
 DVC config file would look like:
 
 ```ini
-['remote "myremote"']
-url = /path/to/remote
-[core]
-remote = myremote
+   ['remote "myremote"']
+   url = /path/to/remote
+   [core]
+   remote = myremote
 ```
 
 2. Add AWS S3 remote and modify it's region:

@@ -23,7 +23,7 @@ registerLanguage('dvc', dvc)
 registerLanguage('python', python)
 registerLanguage('usage', usage)
 registerLanguage('yaml', yaml)
-registerLanguage('ini', yaml)
+registerLanguage('ini', ini)
 
 function flatten(text, child) {
   return typeof child === 'string'
