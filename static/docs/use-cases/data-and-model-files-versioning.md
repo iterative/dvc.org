@@ -86,6 +86,7 @@ your code:
 
 ```dvc
     $ git add .dvc/config
+    $ git commit -m "Add myremote"
     $ git push
 ```
 
