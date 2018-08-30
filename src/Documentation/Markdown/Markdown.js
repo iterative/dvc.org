@@ -7,6 +7,7 @@ import Collapsible from 'react-collapsible'
 import docco from 'react-syntax-highlighter/styles/hljs/docco'
 import python from 'react-syntax-highlighter/languages/hljs/python'
 import yaml from 'react-syntax-highlighter/languages/hljs/yaml'
+import ini from 'react-syntax-highlighter/languages/hljs/ini'
 import usage from './lang/usage'
 import dvc from './lang/dvc'
 import linker from './utils/remark-linker'
@@ -22,6 +23,7 @@ registerLanguage('dvc', dvc)
 registerLanguage('python', python)
 registerLanguage('usage', usage)
 registerLanguage('yaml', yaml)
+registerLanguage('ini', yaml)
 
 function flatten(text, child) {
   return typeof child === 'string'

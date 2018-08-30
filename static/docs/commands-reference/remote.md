@@ -3,16 +3,8 @@
 [Add](#add), [list](#list), [modify](#modify), and [remove](#remove) available
 data remotes.
 
-The same way as Github serves as a master storage for Git-based projects, DVC
-data remotes provide a central place to keep and share data and model files.
-With a remote data storage, you can pull models and data files which were
-created by your team members without spending time and resources to re-build
-models and re-process data files. It also saves space on your local environment -
-DVC can [fetch](/doc/commands-reference/fetch) into the local cache only the
-data you need for a specific branch/commit.
-
 ```usage
-    usage: dvc remote [-h] [-q] [-v] {add,remove,modify,list} ... 
+    usage: dvc remote [-h] [-q] [-v] {add,remove,modify,list} ...
 
     positional arguments:
         add                   Add remote
@@ -26,9 +18,21 @@ data you need for a specific branch/commit.
         -v, --verbose         Be verbose.
 ```
 
+The same way as Github serves as a master storage for Git-based projects, DVC
+data remotes provide a central place to keep and share data and model files.
+With a remote data storage, you can pull models and data files which were
+created by your team members without spending time and resources to re-build
+models and re-process data files. It also saves space on your local environment -
+DVC can [fetch](/doc/commands-reference/fetch) into the local cache only the
+data you need for a specific branch/commit.
+
 Using DVC with a remote data storage is optional. By default, DVC is
 configured to use a local data storage only (usually `.dvc/cache` directory
 inside your repository), which enables basic DVC usage scenarios out of the box.
+
+[Add](#add), [list](#list), [modify](#modify), and [remove](#remove) commands
+read or modify DVC [config files](/doc/user-guide/dvc-files-and-directories).
+Alternatively, `dvc config` can be used or these files could be edited manually.
 
 
 ## add
@@ -55,16 +59,29 @@ remote modify` to provide credentials and/or configure other remote parameters.
 could be S3 path, SSH path, Azure, Google cloud, local directory, etc - see more
 examples below.
 
+This command creates a section in the DVC [config file](/doc/user-guide/dvc-files-and-directories)
+and optionally assigns a default remote in the core section:
+
+```ini
+   ['remote "myremote"']
+   url = /tmp/dvc-storage
+   [core]
+   remote = myremote
+```
+
 **Options:**
 
 * **`local`** - save the remote configuration to the
 [local](/doc/user-guide/dvc-files-and-directories) config (`.dvc/config.local`).
-This is useful when you need to specify private options in your config, that you
-don't want to track and share through Git (credentials, private locations, etc).
+This is useful when you need to specify private options or local environment
+specific settings in your config, that you don't want to track and share through
+ Git (credentials, private locations, etc).
 
 * **`default`** - commands like `dvc pull`, `dvc push`, `dvc fetch` will be
 using this remote by default to save or retrieve data files unless `-r` option
-is specified for them.
+is specified for them. Use `dvc config` to unset/change the default remote:
+`dvc config -u core.remote`.
+
 
 <details>
 
@@ -175,12 +192,15 @@ Modify remote settings.
 
 * **`local`** - modify the [local](/doc/user-guide/dvc-files-and-directories)
 configuration file (`.dvc/config.local`). This is useful when you are modifying
-private options in your config, that you don't want to track and share through
-Git (credentials, private locations, etc).
+private options or local environment specific settings in your config, that you
+don't want to track and share through Git (credentials, private locations, etc).
 
 Remote `name` and `option` name are required. Option names are remote type
 specific. See below examples and a list of per remote type - AWS S3, Google
 cloud, Azure, SSH, and others.
+
+This command modifies a section in the DVC [config file](/doc/user-guide/dvc-files-and-directories).
+Alternatively, `dvc config` or manual editing could be used to change settings.
 
 <details>
 
@@ -341,23 +361,35 @@ does not physically remove your data files stored remotely.
 
 Remote `name` is required.
 
+This command removes a section in the DVC [config file](/doc/user-guide/dvc-files-and-directories).
+Alternatively, it is possible to edit config files manually.
+
 **Options:**
 
 * **`local`** - remove remote specified in the
 [local](/doc/user-guide/dvc-files-and-directories) configuration file
-(`.dvc/config.local`). Local configuration files stores private settings that
-should not be tracked by Git.
+(`.dvc/config.local`). Local configuration files stores private settings or
+local environment specific settings that should not be tracked by Git.
 
 
 ## Examples
 
-1. Add local remote:
+1. Let's for simplicity add a default local remote:
 
 ```dvc
-    $ dvc remote add myremote /path/to/remote
+    $ dvc remote add -d myremote /path/to/remote
     $ dvc remote list
 
       myremote
+```
+
+DVC config file would look like:
+
+```ini
+['remote "myremote"']
+url = /path/to/remote
+[core]
+remote = myremote
 ```
 
 2. Add AWS S3 remote and modify it's region:
