@@ -57,7 +57,9 @@ remote modify` to provide credentials and/or configure other remote parameters.
 
 `name` and `url` are required. `url` specifies a location to store your data. It
 could be S3 path, SSH path, Azure, Google cloud, local directory, etc - see more
-examples below.
+examples below. Whenever possible DVC will create a remote directory if does not
+exists yet. It won't create an S3 bucket though and will rely on default access
+settings.
 
 This command creates a section in the DVC [config file](/doc/user-guide/dvc-files-and-directories)
 and optionally assigns a default remote in the core section:
