@@ -39,6 +39,7 @@ commands that are described in the get started chapters.
 
 ```dvc
     $ dvc init
+    $ git commit -m "initialize DVC"
 ```
 
 * Download an input data set to the `data` directory and take it into DVC
@@ -48,6 +49,7 @@ control:
     $ mkdir data
     $ wget -P data https://dvc.org/s3/so/25K/Posts.xml.tgz
     $ dvc add data/Posts.xml.tgz
+    $ git add . && git commit -a -m "add data files"
 ```
 
 * The first actual step, extract XML from the archive. Note, we don't need to
