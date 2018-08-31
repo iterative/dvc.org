@@ -7,16 +7,16 @@ Let's explore the natural language processing (NLP) problem of predicting tags
 for a given StackOverflow question. For example, we want one classifier which
 can predict a post that is about the Java language by tagging it "Java".
 
-In this example, we'll focus on building a simple pipeline that takes an archive
-with StackOverflow posts and trains the prediction model and saves it as an
-output. The pipeline itself is a sequence of transformation we apply to the data
-file:
+In this example, we will focus on building a simple pipeline that takes an
+archive with StackOverflow posts and trains the prediction model and saves it as
+an output. The pipeline itself is a sequence of transformation we apply to the
+data file:
 
 * Extract data
 * Prepare (convert XML to TSV)
 * Split into training and testing data sets
 * Build a feature matrix
-* Trains the model (using training data sets)
+* Trains the model (using the training data set)
 * And finally evaluate the model (using the test data set)
 
 Okay, let's first download the code and set up the Git repository. This step has
@@ -32,21 +32,24 @@ nothing to do with DVC so far, it's just a simple preparation:
     $ git commit -m 'download and initialize code'
 ```
 
-Then, we gonna step by step build the pipeline, utilizing the same set of
-commands that should are described in the get started chapters.
+Then, we are creating the pipeline step-by-step, utilizing the same set of
+commands that are described in the get started chapters.
 
 * Initialize DVC repository (in your Git repository):
 
 ```dvc
     $ dvc init
+    $ git commit -m "initialize DVC"
 ```
 
-* Download a file to the data/ directory and add it to DVC:
+* Download an input data set to the `data` directory and take it into DVC
+control:
 
 ```dvc
     $ mkdir data
     $ wget -P data https://dvc.org/s3/so/25K/Posts.xml.tgz
     $ dvc add data/Posts.xml.tgz
+    $ git add . && git commit -a -m "add data files"
 ```
 
 * The first actual step, extract XML from the archive. Note, we don't need to
@@ -57,6 +60,7 @@ automatically:
     $ dvc run -d data/Posts.xml.tgz \
               -o data/Posts.xml \
               tar -xvf data/Posts.xml.tgz -C data
+    $ git add . && git commit -a -m "add data extraction stage"          
 ```
 
 * Next step, let's convert XML into TSV to make feature extraction easier:
