@@ -196,7 +196,7 @@ const Content = styled.article`
     
      &:before {
       display: inline-block;
-      content: '▶';
+      content: '\00FE0E▶';
       font-family: monospace;
       color: #F26840;
       margin-right: 10px;
