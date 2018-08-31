@@ -196,7 +196,7 @@ const Content = styled.article`
     
      &:before {
       display: inline-block;
-      content: '\00FE0E▶';
+      content: "\\00FE0E\\0025B6";
       font-family: monospace;
       color: #F26840;
       margin-right: 10px;
