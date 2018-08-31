@@ -196,12 +196,12 @@ const Content = styled.article`
     
      &:before {
       display: inline-block;
-      content: "\\0025B6\\00FE0E";
+      content: "\\25B8";
       font-family: monospace;
       color: #F26840;
       margin-right: 10px;
       vertical-align: center;
-      font-size: 14px;
+      font-size: 20px;
       transition: transform 200ms;
     }
     
@@ -212,8 +212,6 @@ const Content = styled.article`
         -o-transform: rotate(45deg);
         -ms-transform: rotate(45deg);
         transform: rotate(45deg);
-        font-size: 14px;
-        font-family: monospace;
       }
     }
   }
