@@ -60,6 +60,7 @@ automatically:
     $ dvc run -d data/Posts.xml.tgz \
               -o data/Posts.xml \
               tar -xvf data/Posts.xml.tgz -C data
+    $ git add . && git commit -a -m "add data extraction stage"          
 ```
 
 * Next step, let's convert XML into TSV to make feature extraction easier:
