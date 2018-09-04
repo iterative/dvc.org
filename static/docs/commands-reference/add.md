@@ -53,7 +53,7 @@ Convert files into data files:
 
     Badges.xml          PostLinks.xml           Votes.xml
 
-    $ dvc add raw/Badges.tsv raw/PostLinks.tsv raw/Votes.tsv
+    $ dvc add raw/Badges.xml raw/PostLinks.xml raw/Votes.xml
     $ ls raw
 
     Badges.xml          PostLinks.xml           Votes.xml
