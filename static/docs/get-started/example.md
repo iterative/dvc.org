@@ -149,8 +149,7 @@ the `code/featurization.py`:
     $ vi code/featurization.py
 ```
 
-Specify `ngram` parameter in `CountVectorizer` (lines 63–65) and increase number
-of features to 6000:
+Specify `ngram` parameter in `CountVectorizer` (lines 63–65):
 
 ```python
     bag_of_words = CountVectorizer(stop_words='english',
