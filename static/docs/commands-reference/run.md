@@ -12,7 +12,7 @@ by Rscript command.
 
 ```usage
     usage: dvc run [-h] [-q] [-v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
-                   [-M METRICS_NO_CACHE] [-f FILE] [-c CWD] [--no-exec]
+                   [-M METRICS_NO_CACHE] [-f FILE] [-c CWD] [--no-exec] [-y]
                    ...
 
     positional arguments:
@@ -36,7 +36,10 @@ by Rscript command.
                             it later. By default the first output basename + .dvc  
                             is used as a stage filename.                           
       -c CWD, --cwd CWD     Directory to run your command and place state file in
-      --no-exec             Only create stage file without actually running it
+      --no-exec             Only create stage file without actually running it.
+      -y, --yes             Automatic 'yes' answer to all prompts. E.g. when
+                            '.dvc' file exists and dvc asks if you want to
+                            overwrite it.
 ```
 
 ## Examples
