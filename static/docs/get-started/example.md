@@ -191,6 +191,63 @@ matrices as outputs:
               python code/evaluate.py data/model.pkl data/matrix-test.pkl auc.metric
 ```
 
+<details>
+
+### Expand to learn more about DVC internals
+
+By analyzing dependencies and outputs DVC files describe we can restore the
+full chain (DAG) of commands we need to apply. This is important when you run
+`dvc repro` to reproduce the final or intermediate result.
+
+`dvc pipeline show` helps to visualuize the pipeline (run it with `-c` option to
+see actual commands instead of DVC-files):
+
+```dvc
+    $ dvc pipeline show --ascii evaluate.dvc
+
+           .------------------------.
+           | data/Posts.xml.tgz.dvc |
+           `------------------------'
+                        *
+                        *
+                        *
+                .-------------.
+                | extract.dvc |
+                `-------------'
+                        *
+                        *
+                        *
+                .-------------.
+                | prepare.dvc |
+                `-------------'
+                        *
+                        *
+                        *
+                  .-----------.
+                  | split.dvc |
+                  `-----------'
+                        *
+                        *
+                        *
+                .---------------.
+                | featurize.dvc |
+                `---------------'
+                 **           ***
+               **                **
+             **                    **
+    .-----------.                    **
+    | train.dvc |                  **
+    `-----------'                **
+                 **           ***
+                   **       **
+                     **   **
+                .--------------.
+                | evaluate.dvc |
+                `--------------'
+```
+
+</details>
+
 ## Check results
 
 > Since the data set for this example is an extremely simplified to make it
