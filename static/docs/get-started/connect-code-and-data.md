@@ -42,6 +42,10 @@ You don't need to run `dvc add` to take output files - `data.tsv` and
 run `dvc push`, usually along with git commit to save them to the remote when
 you done.
 
+> We don't do it here and in the next chapters to keep commands as simple as
+possible, but it's recommended to use `-f` optional argument that `dvc add`
+provides to specify a meaningful stage name.
+
 Let's commit metafiles to save the stage we built:
 
 ```dvc
