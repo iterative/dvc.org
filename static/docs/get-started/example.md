@@ -15,12 +15,7 @@ tutorials, use cases if you want to cover other aspects of the DVC.
 The pipeline itself is a sequence of transformation we apply to the
 data file:
 
-* Extract data
-* Prepare data (convert XML to TSV)
-* Split data into training and testing data sets
-* Build a feature matrix
-* Trains the model (using the training data set)
-* And finally evaluate the model (using the test data set)
+![](/static/img/example-flow-2x.png)
 
 DVC helps to describe these transformations and capture actual data involved -
 input data set we are processing, intermediate artifacts (useful if some
