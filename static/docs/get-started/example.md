@@ -71,11 +71,11 @@ When we run `dvc add Posts.xml.tgz` the following happens. DVC creates an
 *orphaned* version of the [stage file](/doc/user-guide/dvc-file-format):
 
 ```yaml
-md5: 19804bad370d1dd60fe55306e2bf379d
-outs:
-- cache: true
-  md5: 2f412200dc53fb97dcac0353b609d199
-  path: Posts.xml.tgz
+   md5: 19804bad370d1dd60fe55306e2bf379d
+   outs:
+   - cache: true
+     md5: 2f412200dc53fb97dcac0353b609d199
+     path: Posts.xml.tgz
 ```
 
 This is the file that should be committed into a version control system instead
@@ -105,6 +105,42 @@ file under DVC control) automatically:
               -f extract.dvc \
               tar -xvf data/Posts.xml.tgz -C data
 ```
+
+<details>
+
+### Expand to learn more about DVC internals
+
+Similar to `dvc add`, `dvc run` creates a [stage file](/doc/user-guide/dvc-file-format):
+
+```yaml
+   cmd: tar -xvf data/Posts.xml.tgz -C data
+   deps:
+   - md5: 2f412200dc53fb97dcac0353b609d199
+     path: data/Posts.xml.tgz
+   md5: fabc15ed44c71020744e5cdd7a665f50
+   outs:
+   - cache: true
+     md5: a304afb96060aad90176268345e10355
+     path: data/Posts.xml
+```
+
+This file is using the same technique - pointers (md5 hashes) to the cache to
+describe and version control dependencies and outputs. Output `Posts.xml` file
+is automatically added to the `.gitignore` file and a ink created into a cache
+`.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
+
+Two thing are worth noticing here. First, by analyzing dependencies and outputs
+DVC files describe we can restore the full chain (DAG) of commands we need to
+apply. This is important when you run `dvc repro` to reproduce the final or
+intermediate result.
+
+Second, you should see by now that the actual data is stored in the `.dvc\cache`
+directory, each file having a name in a form of an md5 hash. This cache is
+similar to Git's internal objects store but made specifically to handle large
+data files. DVC is using reflinks, hardlinks and other optimizations to manage
+your actual workspace without copying every time object from/to the cache.
+
+</details>
 
 * Next step, let's convert XML into TSV to make feature extraction easier:
 
