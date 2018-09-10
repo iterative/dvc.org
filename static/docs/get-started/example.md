@@ -57,7 +57,43 @@ control:
     $ dvc add data/Posts.xml.tgz
 ```
 
+<details>
+
+### Expand to learn more about DVC internals
+
+`dvc init` created a new directory `example\.dvc` with `config`, `.gitignore`
+files and `cache` directory. These files and directories are hidden from a user
+in general and a user does not interact with these files directly. Check
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
+to learn more.
+
+When we run `dvc add Posts.xml.tgz` the following happens. DVC creates an
+*orphaned* version of the [stage file](/doc/user-guide/dvc-file-format):
+
+```yaml
+md5: 19804bad370d1dd60fe55306e2bf379d
+outs:
+- cache: true
+  md5: 2f412200dc53fb97dcac0353b609d199
+  path: Posts.xml.tgz
+```
+
+This is the file that should be committed into a version control system instead
+of the data file itself.
+
+Actual data file `Posts.xml.tgz` is linked into the `.dvc\cache` directory,
+using the `.dvc\cache\2f\412200dc53fb97dcac0353b609d199` name and is added to
+`.gitignore`. Even if you remove it in the workspace, or checkout a different
+branch/commit the data is not lost if a corresponding DVC file is committed.
+It's enough to run `dvc checkout` or `dvc pull` to restore data files.
+
+</details>
+
 ## Define steps
+
+Each step is described by providing a command to run, input data it takes and
+a list of output files. DVC is not Python or any other language specific and
+can wrap any command runnable via CLI.
 
 * The first actual step, extract XML from the archive. Note, we don't need to
 run `dvc add` on `Posts.xml`, `dvc run` saves (commits into cache, takes the
