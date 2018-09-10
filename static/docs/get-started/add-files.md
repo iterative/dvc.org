@@ -44,4 +44,10 @@ where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file,
 and if you check the `data.xml.dvc` meta-file you will see that it has this hash
 inside.
 
+Unless your workspace supports reflinks (if you are on a recent Mac then chances
+are you are using reflinks) or you've manually specified `cache.type copy`, you
+are corrupting the cache if you are editing the file in your workspace. We are
+currently [working](https://github.com/iterative/dvc/issues/799) on protecting
+hard/symlinks with read-only permissions to avoid such inconvenience.
+
 </details>

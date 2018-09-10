@@ -53,7 +53,13 @@ specified this command returns current value of the option.
     or a combination of those separated by the comma: `reflink,copy`. By
     default, dvc will try every link type in order to choose the most effective
     link type. Here is a default priority of link types. From the best and the
-    most efficient to the most inefficient:
+    most efficient to the most inefficient. **Note!** Unless your workspace
+    supports `reflinks` (if you are on a recent Mac then chances are you are
+    using `reflinks`) or you've manually specified `cache.type copy`, you are
+    **corrupting** the cache if you are editing the data file in your workspace.
+    We are currently [working](https://github.com/iterative/dvc/issues/799) on
+    protecting hard/symlinks with read-only permissions to avoid such
+    inconvenience.
 
       1. **`reflink`** - this is the best link type that could be. It is as
         fast as hard/symlinks, but doesn't carry a risk of cache corruption,
