@@ -23,6 +23,8 @@ transformations take a lot of time to run), output models. This way we can
 capture what data and code were used to produce a specific model in a sharable
 and reproducible way.
 
+## Initialize
+
 Okay, let's first download the code and set up a Git repository. This step has
 nothing to do with DVC so far, it's just a simple preparation:
 
@@ -54,6 +56,8 @@ control:
     $ wget -P data https://dvc.org/s3/so/25K/Posts.xml.tgz
     $ dvc add data/Posts.xml.tgz
 ```
+
+## Define steps
 
 * The first actual step, extract XML from the archive. Note, we don't need to
 run `dvc add` on `Posts.xml`, `dvc run` saves (commits into cache, takes the
@@ -115,6 +119,12 @@ matrices as outputs:
               python code/evaluate.py data/model.pkl data/matrix-test.pkl auc.metric
 ```
 
+## Check results
+
+> Since the data set for this example is an extremely simplified to make it
+simpler to run this pipeline, exact metric number may vary sufficiently
+depending on Python version you are using and other environment parameters.
+
 * An easy way to see metrics across different branches:
 
 ```dvc
@@ -133,6 +143,8 @@ relationships between them.
     $ git add *.dvc auc.metric
     $ git commit -am "create pipeline"
 ```
+
+## Reproduce
 
 All steps could be automatically and efficiently reproduced even if some source
 files have been modified. For example:
@@ -158,6 +170,10 @@ Specify `ngram` parameter in `CountVectorizer` (lines 63–65):
     $ dvc repro evaluate.dvc
 ```
 
+> Since the data set for this example is an extremely simplified to make it
+simpler to run this pipeline, exact metric number may vary sufficiently
+depending on Python version you are using and other environment parameters.
+
 * Take a look at the target metric improvement:
 
 ```dvc
@@ -166,6 +182,8 @@ Specify `ngram` parameter in `CountVectorizer` (lines 63–65):
     master:
         auc.metric: 0.603121
 ```
+
+## Conclusions
 
 By wrapping your commands with `dvc run` it's easy to integrate DVC into your
 existing ML development pipeline/processes without any significant effort to
