@@ -1,19 +1,16 @@
 # Example
 
-This is a short version of the [Tutorial](/doc/tutorial).
-
 To show DVC in action, let's play with an actual machine learning scenario.
 Let's explore the natural language processing (NLP) problem of predicting tags
 for a given StackOverflow question. For example, we want one classifier which
 can predict a post that is about the Python language by tagging it `python`.
+This is a short version of the [Tutorial](/doc/tutorial).
 
 In this example, we will focus on building a simple pipeline that takes an
 archive with StackOverflow posts and trains the prediction model and saves it as
 an output. Check [get started](/doc/get-started) to see links to other examples,
-tutorials, use cases if you want to cover other aspects of the DVC.
-
-The pipeline itself is a sequence of transformation we apply to the
-data file:
+tutorials, use cases if you want to cover other aspects of the DVC. The pipeline
+itself is a sequence of transformation we apply to the data file:
 
 ![](/static/img/example-flow-2x.png)
 
