@@ -90,6 +90,20 @@ specified this command returns current value of the option.
       relatively small data files, where copying them is not a
       performance/storage concern.
 
+4. **`state`** - state settings.
+
+    * `row_limit` - maximum number of entries in the state database which will
+    affect the physical size of the state file itself as well as the performance
+    of dvc. The bigger the limit the more checksum history dvc can keep in order
+    to avoid sequential checksum recalculations for the files. Default limit is
+    set to 10 000 000 rows.
+    
+    * `row_cleanup_quota` - percentage of the state database that is going to be
+    deleted when it hits the `row_limit`. When an entry in the database is used
+    (e.g. during the `dvc status`) dvc updates the timestamp on that entry so
+    that when it needs to cleanup the database it could sort them by the timestamp
+    and remove the oldest ones. Default quota is set to 50(percent).
+    
 ## Examples
 
 1. Use remote `myremote` by default:
