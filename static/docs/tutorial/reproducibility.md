@@ -85,7 +85,7 @@ Reproduce the pipeline:
 
 The process started from the feature creation step because one of it’s
 parameters was changed — the edited source code `code/featurization.py`. All
-dependent steps were regenerates as well.
+dependent steps were regenerated as well.
 
 Let’s take a look at the metric’s change. The result improvement is close to
 zero (+0.0075% to be precise):
