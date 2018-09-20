@@ -309,7 +309,7 @@ depending on Python version you are using and other environment parameters.
         auc.metric: 0.603121
 ```
 
-## Conclusions
+## Conclusion
 
 By wrapping your commands with `dvc run` it's easy to integrate DVC into your
 existing ML development pipeline/processes without any significant effort to

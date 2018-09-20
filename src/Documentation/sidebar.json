@@ -19,7 +19,7 @@
       "example.md"
     ],
     "labels": {
-      "connect-code-and-data.md": "Connect Code and Data",
+      "connect-code-and-data.md": "Add Transformations",
       "example.md": "Example: Pipeline"
     }
   },
