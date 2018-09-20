@@ -180,8 +180,8 @@ Sections of the file above include:
 
 * `outs` — outputs with md5 checksums.
 
-As previously with `dvc add` command `data/.gitignore` file was modified. Now it
-includes the unarchive command output file `Posts.xml`.
+As previously with the `dvc add` command, the `data/.gitignore` file was modified. Now it
+includes the unarchived command output file `Posts.xml`.
 
 ```dvc
     $ git status -s
@@ -193,11 +193,11 @@ includes the unarchive command output file `Posts.xml`.
     Posts.xml
 ```
 
-It is important than output `Posts.xml` file was transformed by the DVC into a
+Note that the output file `Posts.xml` was transformed by DVC into a
 data file in accordance with the `-o` option.
 
-You can find the corresponded cache file by the checksum which starts from
-`cfdaa4b` according to the DVC-file `Posts.xml.dvc`:
+You can find the corresponding cache file with the checksum, which starts with
+`cfdaa4b` as we can see in the DVC-file `Posts.xml.dvc`:
 
 ```dvc
     $ ls .dvc/cache/
@@ -211,7 +211,7 @@ You can find the corresponded cache file by the checksum which starts from
     186M .
 ```
 
-Let’s commit the result of the unarchived command. This is the first step of our
+Let’s commit the result of the unarchive command. This is the first step of our
 ML pipeline.
 
 ```dvc
@@ -219,13 +219,13 @@ ML pipeline.
     $ git commit -m Unarchive
 ```
 
-## Running in a bulk
+## Running in bulk
 
 One single step of our ML pipeline was defined and committed into repository.
-It is not necessary to commit steps right after steps definition. You can run a
-few steps and commit later.
+It is not necessary to commit steps right after a step's definition. You can run a
+few steps and commit them later.
 
-Let’s run the next step of converting a XML file to TSV and the following step
+Let’s run the next step of converting an XML file to TSV and the following step
 of separating training and testing datasets one by one:
 
 ```dvc
@@ -248,7 +248,7 @@ of separating training and testing datasets one by one:
 
 The result of the steps are two DVC-files corresponding to each of the commands
 `Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file was
-created. These type of files should not be tracked by Git. Let’s manually
+created. This type of file should not be tracked by Git. Let’s manually
 include this type of file into `.gitignore`.
 
 ```dvc
@@ -286,7 +286,7 @@ matrix files:
     The output matrix data/matrix-test.p size is (33001, 5002) and data type is float64
 ```
 
-Train model out of the train matrix file:
+Train a model using the train matrix file:
 
 ```dvc
     $ dvc run -d data/matrix-train.p -d code/train_model.py \
@@ -300,7 +300,7 @@ Train model out of the train matrix file:
     Y matrix size (66999,)
 ```
 
-And evaluate the result by the trained model and the test feature matrix:
+And evaluate the result of the trained model using the test feature matrix:
 
 ```dvc
     $ dvc run -d data/model.p -d data/matrix-test.p \
@@ -316,7 +316,7 @@ default we specify DVC-file as `Dvcfile`. This will be discussed in the next
 chapter in more details.
 
 The result of the last three run commands execution is three DVC-files and
-modified .gitignore file. All the changes should be committed into Git.
+a modified .gitignore file. All the changes should be committed into Git.
 
 ```dvc
     $ git status -s
@@ -338,7 +338,7 @@ The evaluation step output contains the target metrics value in a simple text fo
 
 This is probably not the best AUC that you have seen. In this document our focus
 is DVC, not ML modeling and we use a relatively small dataset without any
-advanced ML technics.
+advanced ML techniques.
 
 In the next chapter we will try to improve the metrics by changing our modeling
 code and using reproducibility in the pipeline regeneration.
