@@ -27,6 +27,8 @@ name is omitted, `Dvcfile` will be used by default.
         --dry                 Only print the commands that would be executed without
                               actually executing.
         -i, --interactive     Ask for confirmation before reproducing each stage.
+        -p, --pipeline        Reproduce the whole pipeline that the specified stage
+                              file belongs to.
 ```
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
