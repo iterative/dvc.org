@@ -90,8 +90,8 @@ export default () => (
     </Container>
 
     <TrySection
-      title="Are you try to find answer in documentation?"
-      buttonText="Go to Docs"
+      title="Don't know where to start?"
+      buttonText="Get Started"
     />
   </Page>
 )
