@@ -78,24 +78,19 @@ export default class HamburgerMenu extends Component {
                 <Column>
                   <Heading>Help</Heading>
                   <Links>
-                    <Link
-                      href="/doc/get-started"
-                      onClick={this.itemClick('get-started')}
-                    >
+                    <Link href="/support" onClick={this.itemClick('support')}>
+                      Support
+                    </Link>
+                    <Link href="/doc/get-started" onClick={this.itemClick('get-started')}>
                       Get started
                     </Link>
-                    <Link
-                      href="/docs/tutorial"
-                      onClick={this.itemClick('tutorial')}
-                    >
-                      Tutorial
-                    </Link>
-                    <Link href="/doc" onClick={this.itemClick('documentation')}>
-                      Documentation
-                    </Link>
-                    <Link href="https://discuss.dvc.org" onClick={this.itemClick('discuss')}>
-                      Discuss
-                    </Link>
+                    <SocialLink
+                      src="/static/img/chat.png"
+                      href="https://discordapp.com/invite/KGXf8d"
+                      onClick={this.itemClick('chat')} >
+                      Chat
+                    </SocialLink>
+                    <Link href="/doc" onClick={this.itemClick('doc')}>Documentation</Link>
                   </Links>
                 </Column>
                 <Column>
@@ -127,6 +122,13 @@ export default class HamburgerMenu extends Component {
                       click={this.itemClick('github')}
                     >
                       Github
+                    </SocialLink>
+                    <SocialLink
+                      src="/static/img/discord.png"
+                      href="https://discordapp.com/invite/KGXf8d"
+                      click={this.itemClick('discord')}
+                    >
+                      Discord
                     </SocialLink>
                   </Links>
                 </Column>
