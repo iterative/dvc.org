@@ -33,14 +33,19 @@ export default () => (
         <Column>
           <Heading>Help</Heading>
           <Links>
+            <Link href="/support">
+              Support
+            </Link>
             <Link href="/doc/get-started">
               Get started
             </Link>
-            <Link href="/docs/tutorial">
-              Tutorial
-            </Link>
+            <SocialLink
+              src="/static/img/chat.png"
+              href="https://discordapp.com/invite/KGXf8d"
+            >
+              Chat
+            </SocialLink>
             <Link href="/doc">Documentation</Link>
-            <Link href="https://discuss.dvc.org">Discuss</Link>
           </Links>
         </Column>
         <Column>
@@ -69,6 +74,12 @@ export default () => (
               href="https://github.com/iterative/dvc"
             >
               Github
+            </SocialLink>
+            <SocialLink
+              src="/static/img/discord.png"
+              href="https://discordapp.com/invite/KGXf8d"
+            >
+              Discord
             </SocialLink>
           </Links>
         </Column>
