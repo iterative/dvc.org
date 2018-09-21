@@ -161,7 +161,7 @@ export default () => (
         </Feature>
       </Features>
     </Container>
-    <TrySection />
+    <TrySection title="Ready to give it a try?" />
   </Page>
 )
 

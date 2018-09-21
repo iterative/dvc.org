@@ -15,6 +15,7 @@ export default ({ mobile = false }) => (
       <Link href="/doc" onClick={() => {logEvent('menu', 'doc')}}>Doc</Link>
       <Link href="https://blog.dataversioncontrol.com/" onClick={() => {logEvent('menu', 'blog')}}>Blog</Link>
       <Link href="https://github.com/iterative/dvc" onClick={() => {logEvent('menu', 'github')}}>Github</Link>
+      <Link href="/support" onClick={() => {logEvent('menu', 'support')}}>Support</Link>
       <Link href="https://discuss.dvc.org" onClick={() => {logEvent('menu', 'discuss')}}>Discuss</Link>
     </Links>
     <GetStartedButton onClick={getStarted}>Get Started</GetStartedButton>

@@ -1,20 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
+
 import { media, container } from '../styles'
 
-const getStarted = () =>
-  (window.location =
-    '/doc/get-started')
-
-export default ({}) => (
+export default ({
+  title,
+  buttonText = 'Get Started',
+}) => (
   <TrySection>
     <Container>
       <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
-      <Title>Ready to give it a try?</Title>
+      <Title>{title}</Title>
       <Buttons>
-        <Button first onClick={() => getStarted()}>
-          Get Started
-        </Button>
+        <a href="/doc/get-started">
+          <Button first>{buttonText}</Button>
+        </a>
       </Buttons>
       <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
     </Container>
@@ -37,7 +37,7 @@ const Container = styled.div`
 
 const Title = styled.h3`
   font-family: BrandonGrotesqueMed;
-  max-width: 438px;
+  max-width: 600px;
   min-height: 44px;
   font-size: 30px;
   font-weight: 500;
@@ -67,7 +67,7 @@ const Button = styled.button`
   line-height: 0.9;
 
   text-align: left;
-  padding: 0px 21px;
+  padding: 0px 50px 0 20px;
 
   color: #ffffff;
   transition: 0.2s background-color ease-out;
@@ -77,7 +77,7 @@ const Button = styled.button`
   }
 
   background: url('/static/img/arrow_right_white.svg') right center no-repeat;
-  background-position-x: 147px;
+  background-position-x: calc(100% - 15px);
 
   cursor: pointer;
 
