@@ -7,10 +7,14 @@ At the very end there is a complete step-by-step
 [example](/doc/get-started/example). It covers pipelines and reproducibility.
 It's a short version of the [tutorial](/doc/tutorial).
 
-Check out the [Github](https://github.com/iterative/dvc) page and give us a ⭐ if
-you like the project!
+✅ Please, join our [community](https://discordapp.com/invite/KGXf8d) or check
+these [support](/support) options if you have any questions or need any help.
+We are very responsive ⚡.
 
-We also have other short tutorials to describe different use cases:
+✅ Check out the [Github](https://github.com/iterative/dvc) page and give us a ⭐
+if you like the project!
+
+✅ We also have other short tutorials to describe different use cases:
 
 * In the [data and model versioning](/doc/use-cases/data-and-model-files-versioning)
 you can learn how to use DVC to take under control large data or model files.
