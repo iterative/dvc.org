@@ -17,7 +17,8 @@ app.prepare().then(() => {
     const { pathname, query } = parsedUrl
     const doc = /^\/doc.*/i
     const s3 = /^\/s3\/.*/i
-    const pkg = /^\/deb|rpm\/.*/i
+    const pkg = /^\/(deb|rpm)\/.*/i
+    const chat = /^\/(help|chat)\/?$/i
 
     if (doc.test(pathname)) {
       app.render(req, res, '/doc', query)
@@ -30,6 +31,9 @@ app.prepare().then(() => {
       res.writeHead(301, {'Location':
         "https://s3-us-east-2.amazonaws.com/dvc-" + pathname.substring(1, 4) + '/' +
         pathname.substring(5)})
+      res.end()
+    } else if (chat.test(pathname)) {
+      res.writeHead(301, {'Location': "https://discordapp.com/invite/KGXf8d"})
       res.end()
     } else {
       handle(req, res, parsedUrl)

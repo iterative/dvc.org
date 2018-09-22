@@ -41,7 +41,7 @@ export default () => (
             </Link>
             <SocialLink
               src="/static/img/chat.png"
-              href="https://discordapp.com/invite/KGXf8d"
+              href="/chat"
             >
               Chat
             </SocialLink>
@@ -77,7 +77,7 @@ export default () => (
             </SocialLink>
             <SocialLink
               src="/static/img/discord.png"
-              href="https://discordapp.com/invite/KGXf8d"
+              href="/chat"
             >
               Discord
             </SocialLink>

@@ -86,7 +86,7 @@ export default class HamburgerMenu extends Component {
                     </Link>
                     <SocialLink
                       src="/static/img/chat.png"
-                      href="https://discordapp.com/invite/KGXf8d"
+                      href="/chat"
                       onClick={this.itemClick('chat')} >
                       Chat
                     </SocialLink>
@@ -125,8 +125,8 @@ export default class HamburgerMenu extends Component {
                     </SocialLink>
                     <SocialLink
                       src="/static/img/discord.png"
-                      href="https://discordapp.com/invite/KGXf8d"
-                      click={this.itemClick('discord')}
+                      href="/chat"
+                      click={this.itemClick('chat')}
                     >
                       Discord
                     </SocialLink>

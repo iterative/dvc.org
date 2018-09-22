@@ -40,8 +40,8 @@ export default () => (
             Join data science practitioners in our welcoming DVC community.
             It’s the fastest way to ask for a help.
           </Description>
-          <Link href="https://discord.gg/tW6t4gV" target="_blank">
-            <Button color="#945dd6">Discrod Chat</Button>
+          <Link href="/chat" target="_blank">
+            <Button color="#945dd6">Discord Chat</Button>
           </Link>
         </Feature>
 
