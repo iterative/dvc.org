@@ -8,7 +8,7 @@ At the very end there is a complete step-by-step
 It's a short version of the [tutorial](/doc/tutorial).
 
 ✅ Please, join our [community](/chat) or check these [support](/support)
-options if you have any questions or need any help. sWe are very responsive ⚡.
+options if you have any questions or need any help. We are very responsive ⚡.
 
 ✅ Check out the [Github](https://github.com/iterative/dvc) page and give us a ⭐
 if you like the project!
