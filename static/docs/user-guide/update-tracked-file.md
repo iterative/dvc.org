@@ -4,7 +4,8 @@ Due to the way dvc handles linking between the data files in the cache and
 their counterparts in the working directory (see
 [#799](https://github.com/iterative/dvc/issues/799) and
 [#599](https://github.com/iterative/dvc/issues/599) for example), updating
-tracked files has to be carried out with caution.
+tracked files has to be carried out with caution (unless your workspace
+supports `reflinks` or you've manually specified `cache.type copy`, run ).
 
 Assume `train.tsv` is tracked by dvc and you want to update it.
 Here updating may mean either replacing `train.tsv` with a new file having the
@@ -38,7 +39,7 @@ And start tracking it again:
 
 This case is very similar to the previous one:
 
-First, save a backup of the file
+First, save a backup of the file (optional):
 
 ```dvc
    $ cp train.tsv train.tsv.tmp
@@ -64,8 +65,8 @@ And start tracking the file again:
     $ git commit -m 'modify train data'
 ```
 
-### Careful
+## Updating generated files
 
-If `train.tsv` is generated during your pipeline (e.g. some intermidate
+If `train.tsv` is generated during your pipeline (e.g. some intermediate
 result), you have to be careful and remove it from tracking prior to the
-execution of the pipeline which will alter it.
+execution of the pipeline which modifies it.

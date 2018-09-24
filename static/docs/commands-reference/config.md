@@ -66,7 +66,7 @@ specified this command returns current value of the option.
         since filesystem takes care of copying the file if you try to edit it in
         place, thus keeping a linked cache file intact. Unfortunately reflinks
         are currently supported on a limited number of filesystems (Linux: Btrfs,
-        XFS, OCFS2; MacOS: APFS;), but they are coming to every new filesystem
+        XFS, OCFS2; MacOS: APFS), but they are coming to every new filesystem
         and in the future will be supported by the majority of filesystems in
         use.
 
