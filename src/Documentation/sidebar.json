@@ -29,12 +29,14 @@
     "files": [
       "data-and-model-files-versioning.md",
       "share-data-and-model-files.md",
-      "multiple-data-scientists-on-a-single-machine.md"
+      "multiple-data-scientists-on-a-single-machine.md",
+      "update-tracked-file.md"
     ],
     "labels": {
       "data-and-model-files-versioning.md": "Data & Model Files Versioning",
       "share-data-and-model-files.md": "Share Data & Model Files",
-      "multiple-data-scientists-on-a-single-machine.md": "Shared Development Machine"
+      "multiple-data-scientists-on-a-single-machine.md": "Shared Development Machine",
+      "update-tracked-file.md": "Update a tracked file"
     }
   },
   {
