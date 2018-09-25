@@ -25,8 +25,8 @@ committed to Git to track versions of your file:
 ```
 
 To modify or replace a data file that is under DVC control you need to run
-`dvc remove` first, check [Update Tracked File](/doc/user-guide/update-tracked-file)
-for an example. Refer to [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
+`dvc remove` first (check [Update Tracked File](/doc/user-guide/update-tracked-file)).
+Refer to [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
 and `dvc add` for more information.
 
 <details>
