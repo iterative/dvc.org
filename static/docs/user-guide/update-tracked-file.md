@@ -4,8 +4,7 @@ Due to the way dvc handles linking between the data files in the cache and
 their counterparts in the working directory (see
 [#799](https://github.com/iterative/dvc/issues/799) and
 [#599](https://github.com/iterative/dvc/issues/599) for example), updating
-tracked files has to be carried out with caution (unless your workspace
-supports `reflinks` or you've manually specified `cache.type copy`, run ).
+tracked files has to be carried out with caution.
 
 Assume `train.tsv` is tracked by dvc and you want to update it.
 Here updating may mean either replacing `train.tsv` with a new file having the
