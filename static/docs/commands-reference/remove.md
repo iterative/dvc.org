@@ -12,7 +12,7 @@ Remove data file or data directory.
         -h, --help            show this help message and exit
         -q, --quiet           Be quiet.
         -v, --verbose         Be verbose.
-        -o, --outs            Only remove DVC file outputs.
+        -o, --outs            Only remove DVC file outputs.(default)
         -p, --purge           Remove DVC file and all its outputs
 ```
 
