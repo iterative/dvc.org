@@ -66,6 +66,5 @@ And start tracking the file again:
 
 ## Updating generated files
 
-If `train.tsv` is generated during your pipeline (e.g. some intermediate
-result), you have to be careful and remove it from tracking prior to the
-execution of the pipeline which modifies it.
+`dvc repro` removes all outputs before running commands.
+
