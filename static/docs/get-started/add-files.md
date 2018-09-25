@@ -24,7 +24,9 @@ committed to Git to track versions of your file:
     $ git commit -m "add source data to DVC"
 ```
 
-See [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
+To modify or replace a data file that is under DVC control you need to run
+`dvc remove` first, check [Update Tracked File](/doc/user-guide/update-tracked-file)
+for an example. Refer to [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
 and `dvc add` for more information.
 
 <details>
@@ -43,11 +45,5 @@ created, so no physical copying is happening) to the `.dvc/cache`:
 where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file,
 and if you check the `data.xml.dvc` meta-file you will see that it has this hash
 inside.
-
-Unless your workspace supports reflinks (if you are on a recent Mac then chances
-are you are using reflinks) or you've manually specified `cache.type copy`, you
-are corrupting the cache if you are editing the file in your workspace. We are
-currently [working](https://github.com/iterative/dvc/issues/799) on protecting
-hard/symlinks with read-only permissions to avoid such inconvenience.
 
 </details>
