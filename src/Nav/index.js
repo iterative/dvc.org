@@ -13,7 +13,7 @@ export default ({ mobile = false }) => (
     <Links>
       <Link href="/features" onClick={() => {logEvent('menu', 'features')}}>Features</Link>
       <Link href="/doc" onClick={() => {logEvent('menu', 'doc')}}>Doc</Link>
-      <Link href="https://blog.dataversioncontrol.com/" onClick={() => {logEvent('menu', 'blog')}}>Blog</Link>
+      <Link href="/chat" onClick={() => {logEvent('menu', 'chat')}}>Chat</Link>
       <Link href="https://github.com/iterative/dvc" onClick={() => {logEvent('menu', 'github')}}>Github</Link>
       <Link href="/support" onClick={() => {logEvent('menu', 'support')}}>Support</Link>
     </Links>
