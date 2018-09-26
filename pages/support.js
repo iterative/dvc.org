@@ -67,7 +67,7 @@ export default () => (
           <Description>
             Discuss your ideas or best practices in the DVC forum.
           </Description>
-          <Link href="" target="_blank">
+          <Link href="https://discuss.dvc.org" target="_blank">
             <Button color="#f46837">Go To Forum</Button>
           </Link>
         </Feature>
