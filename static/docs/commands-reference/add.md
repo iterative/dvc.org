@@ -2,6 +2,18 @@
 
 Take a data file or a directory under DVC control.
 
+```usage
+    usage: dvc add [-h] [-q] [-v] targets [targets ...]
+
+    positional arguments:
+      targets               Input files/directories
+
+    optional arguments:
+      -h, --help            show this help message and exit
+      -q, --quiet           Be quiet.
+      -v, --verbose         Be verbose.
+```
+
 Under the hood a few steps are happening:
 
 1. Move the file content to the DVC cache (default location is `.dvc/cache`).
@@ -30,35 +42,30 @@ For directories, the command does the same steps for each file recursively.
 To retain information about the directory structure, a corresponding cache
 file will be created in `.dvc/cache`.
 
-```usage
-    usage: dvc add [-h] [-q] [-v] targets [targets ...]
-
-    positional arguments:
-      targets               Input files/directories
-
-    optional arguments:
-      -h, --help            show this help message and exit
-      -q, --quiet           Be quiet.
-      -v, --verbose         Be verbose.
-```
-
 ## Examples
 
-Convert files into data files:
+Take files under DVC control:
 
 ```dvc
-    $ mkdir raw
-    $ cp ~/Downloads/dataset/* raw
     $ ls raw
 
     Badges.xml          PostLinks.xml           Votes.xml
 
     $ dvc add raw/Badges.xml raw/PostLinks.xml raw/Votes.xml
+```
+
+Note, DVC files have been created:
+
+```dvc
     $ ls raw
 
     Badges.xml          PostLinks.xml           Votes.xml
     Badges.xml.dvc      PostLinks.xml.dvc       Votes.xml.dvc
+```
 
+Let's check one of them:
+
+```
     $ cat raw/Badges.xml.dvc
 
     md5: e16f4a8bb4cd3c30562221b3271b92a6
@@ -70,4 +77,5 @@ Convert files into data files:
 
 ```
 
-Note, DVC files have been created.
+You can see that the file contains a checksum for the file. It basically serves
+as a pointer to the remote storage or local cache.

@@ -1,5 +1,4 @@
-run
-===
+# run
 
 Generate a stage file from a given command and execute the command.
 The command dependencies and outputs should be specified.

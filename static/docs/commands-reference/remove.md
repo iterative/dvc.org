@@ -2,6 +2,14 @@
 
 Remove data file or data directory.
 
+This command safely removes data files or stage outputs that are under DVC
+control from your *workspace*. It takes a `.dvc` file and removes all outputs
+and optionally removes the file itself.
+
+Note, it *does not* remove files from the local cache or remote storage. However,
+remember to run `dvc push` to save the files you actually want to use in the
+future or share.
+
 ```usage
     usage: dvc remove [-h] [-q] [-v] [-o | -p] targets [targets ...]
 
@@ -12,13 +20,20 @@ Remove data file or data directory.
         -h, --help            show this help message and exit
         -q, --quiet           Be quiet.
         -v, --verbose         Be verbose.
-        -o, --outs            Only remove DVC file outputs.
+        -o, --outs            Only remove DVC file outputs (default).
         -p, --purge           Remove DVC file and all its outputs
 ```
 
+## Options
+
+* **`outs`** (default) - remove outputs described in the provided DVC file(s),
+keep the DVC files.
+
+* **`purge`** - remove outputs and DVC files
+
 ## Examples
 
-Remove `data.csv` data file:
+Let's imagine we have a `data.csv` under DVC control:
 
 ```dvc
     $ dvc add data.csv
@@ -26,12 +41,21 @@ Remove `data.csv` data file:
 
         data.csv
         data.csv.dvc
+```
 
+Remove `data.csv` data file:
+
+
+```dvc
     $ dvc remove data.csv.dvc
     $ ls data.csv*
 
          data.csv.dvc
+```
 
+Purge DVC files:
+
+```dvc
     $ dvc remove data.csv.dvc -p
     $ ls data.csv*
 ```
