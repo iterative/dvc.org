@@ -33,7 +33,7 @@ app.prepare().then(() => {
         pathname.substring(5)})
       res.end()
     } else if (chat.test(pathname)) {
-      res.writeHead(301, {'Location': "https://discordapp.com/invite/uXNaWph"})
+      res.writeHead(301, {'Location': "https://discordapp.com/invite/cRK9WVk"})
       res.end()
     } else {
       handle(req, res, parsedUrl)
