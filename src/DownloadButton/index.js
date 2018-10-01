@@ -14,19 +14,19 @@ const LINE = `line`
 const links = {
   [OSX]: {
     title: 'Mac OS',
-    url: `https://github.com/iterative/dvc/releases/download/0.19.5/dvc-0.19.5.pkg`
+    url: `https://github.com/iterative/dvc/releases/download/0.19.6/dvc-0.19.6.pkg`
   },
   [WINDOWS]: {
     title: 'Windows',
-    url: `https://github.com/iterative/dvc/releases/download/0.19.5/dvc-0.19.5.exe`
+    url: `https://github.com/iterative/dvc/releases/download/0.19.6/dvc-0.19.6.exe`
   },
   [LINUX]: {
     title: 'Linux Deb',
-    url: `https://github.com/iterative/dvc/releases/download/0.19.5/dvc_0.19.5_amd64.deb`
+    url: `https://github.com/iterative/dvc/releases/download/0.19.6/dvc_0.19.6_amd64.deb`
   },
   [LINUX_RPM]: {
     title: 'Linux RPM',
-    url: `https://github.com/iterative/dvc/releases/download/0.19.5/dvc-0.19.5-1.x86_64.rpm`
+    url: `https://github.com/iterative/dvc/releases/download/0.19.6/dvc-0.19.6-1.x86_64.rpm`
   },
   [UNKNOWN]: {
     title: 'pip install dvc'
