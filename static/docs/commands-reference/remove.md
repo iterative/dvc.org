@@ -26,10 +26,10 @@ future or share.
 
 ## Options
 
-* *`--outs`* (default) - remove outputs described in the provided DVC file(s),
+* `--outs` (default) - remove outputs described in the provided DVC file(s),
 keep the DVC files.
 
-* *`--purge`* - remove outputs and DVC files
+* `--purge` - remove outputs and DVC files
 
 ## Examples
 
