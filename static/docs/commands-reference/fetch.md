@@ -11,7 +11,8 @@ See `dvc remote`, `dvc config` and
 for more information on how to configure the remote storage.
 
 ```usage
-    usage: dvc fetch [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [--all-branches]
+    usage: dvc fetch [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [-a]
+                     [-T] [-d]
                      [targets [targets ...]]
 
     positional arguments:
@@ -26,6 +27,9 @@ for more information on how to configure the remote storage.
       -r REMOTE, --remote REMOTE
                             Remote repository to fetch from
       -a, --all-branches    Fetch cache for all branches.
+      -T, --all-tags        Fetch cache for all tags.
+      -d, --with-deps       Fetch cache for all dependencies of the specified
+                            target.
 ```
 
 ## Examples
