@@ -2,9 +2,9 @@
 
 Remove data file or data directory.
 
-This command safely removes data files or stage outputs that are under DVC
-control from your *workspace*. It takes a `.dvc` file and removes all outputs
-and optionally removes the file itself.
+This command safely removes data files or stage outputs that are tracked by DVC
+from your *workspace*. It takes a `.dvc` file and removes all outputs and
+optionally removes the file itself.
 
 Note, it *does not* remove files from the local cache or remote storage. However,
 remember to run `dvc push` to save the files you actually want to use in the
@@ -23,6 +23,9 @@ future or share.
         -o, --outs            Only remove DVC file outputs (default).
         -p, --purge           Remove DVC file and all its outputs
 ```
+
+Check also [Update Tracked Files](/doc/user-guide/update-tracked-file) to see
+how it can be used to replace or modify files that are under DVC control.
 
 ## Options
 
