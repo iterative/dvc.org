@@ -16,7 +16,7 @@ experiments on and usually helps to save some space. You can `dvc fetch` all
 the needed files back anytime you want.
 
 ```usage
-    usage: dvc gc [-h] [-q] [-v] [-a] [-c] [-r REMOTE] 
+    usage: dvc gc [-h] [-q] [-v] [-a] [-T] [-d] [-c] [-r REMOTE] 
 
     optional arguments:
         -h, --help            show this help message and exit
@@ -26,6 +26,11 @@ the needed files back anytime you want.
         -c, --cloud           Collect garbage in remote repository.
         -r REMOTE, --remote REMOTE
                               Remote repository to collect garbage in.
+        -T, --all-tags        Show status of a local cache compared to a remote
+                              repository for all tags.
+        -d, --with-deps       Show status of a local cache compared to a remote
+                              repository for all dependencies of the specified
+                              target.
 ```
 
 ## Examples
