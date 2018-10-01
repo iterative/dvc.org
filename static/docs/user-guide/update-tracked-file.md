@@ -1,6 +1,6 @@
 # Update a Tracked File
 
-Due to the way dvc handles linking between the data files in the cache and
+Due to the way DVC handles linking between the data files in the cache and
 their counterparts in the working directory (see
 [#799](https://github.com/iterative/dvc/issues/799) and
 [#599](https://github.com/iterative/dvc/issues/599) for example), updating
@@ -10,11 +10,11 @@ Assume `train.tsv` is tracked by dvc and you want to update it. Here updating
 may mean either replacing `train.tsv` with a new file having the same name or
 editing the content of the file.
 
-If you track a file that is generated during your pipeline (e.g. some
+If use DVC to track a file that is generated during your pipeline (e.g. some
 intermediate result or a final model file - `model.pkl`) and you don't use
 `dvc run` and `dvc repro` to manage your pipeline, use the procedure below
-(`dvc remove` and `dvc add`) to remove it from tracking prior to the execution
-of the script which modifies it.
+(`dvc remove`, execute, `dvc add`) to remove it from tracking prior to the
+execution of the script which modifies it.
 
 If you run `dvc repro` there is no need to remove generated (output) files
 manually, DVC removes them for you before running the stage which generates
