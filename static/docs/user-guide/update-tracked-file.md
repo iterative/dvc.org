@@ -10,9 +10,9 @@ Assume `train.tsv` is tracked by dvc and you want to update it. Here updating
 may mean either replacing `train.tsv` with a new file having the same name or
 editing the content of the file.
 
-If use DVC to track a file that is generated during your pipeline (e.g. some
-intermediate result or a final model file - `model.pkl`) and you don't use
-`dvc run` and `dvc repro` to manage your pipeline, use the procedure below
+If you use DVC to track a file that is generated during your pipeline (e.g.
+some intermediate result or a final model file - `model.pkl`) and you don't
+use `dvc run` and `dvc repro` to manage your pipeline, use the procedure below
 (`dvc remove`, execute, `dvc add`) to remove it from tracking prior to the
 execution of the script which modifies it.
 
