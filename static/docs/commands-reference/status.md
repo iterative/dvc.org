@@ -5,6 +5,7 @@ remote.
 
 ```usage
     usage: dvc status [-h] [-q] [-v] [-j JOBS] [-c] [-r REMOTE]
+                      [-a] [-T] [-d]
                       [targets [targets ...]]
 
     positional arguments:
@@ -17,9 +18,16 @@ remote.
       -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
       --show-checksums      Show checksums instead of file names.
       -c, --cloud           Show status of a local cache compared to a remote
-                            repository
+                            repository.
       -r REMOTE, --remote REMOTE
-                            Remote repository to compare local cache to
+                            Remote repository to compare local cache to.
+      -a, --all-branches    Show status of a local cache compared to a remote
+                            repository for all branches.
+      -T, --all-tags        Show status of a local cache compared to a remote
+                            repository for all tags.
+      -d, --with-deps       Show status of a local cache compared to a remote
+                            repository for all dependencies of the specified
+                            target.
 ```
 
 ## Examples
