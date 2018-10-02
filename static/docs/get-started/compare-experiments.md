@@ -26,7 +26,7 @@ modifications are required, let's just change the stage definition:
               -o matrix.pkl -o matrix-test.pkl \
               python featurization.py data.tsv matrix.pkl \
                                       data-test.tsv matrix-test.pkl
-    $ git commit .gitignore matrix.plk.dvc -m "change featurization stage"
+    $ git commit .gitignore matrix.pkl.dvc -m "change featurization stage"
 ```
 
 DVC will aks for confirmation to overwrite the stage. Type `yes` and proceed.
