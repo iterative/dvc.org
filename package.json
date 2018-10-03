@@ -43,6 +43,7 @@
     "react-ga": "^2.5.3",
     "react-markdown": "^3.4.1",
     "react-motion": "^0.5.2",
+    "react-popover": "^0.5.10",
     "react-scroll": "^1.7.9",
     "react-slick": "^0.23.1",
     "react-syntax-highlighter": "^7.0.4",

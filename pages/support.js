@@ -11,6 +11,7 @@ import { media } from '../src/styles'
 import Page from '../src/Page'
 import Hero from '../src/Hero'
 import TrySection from '../src/TrySection'
+import Popover from '../src/Popover/Popover';
 
 const HeadInjector = () => (
   <Head>
@@ -40,9 +41,17 @@ export default () => (
             Join data science practitioners in our welcoming DVC community.
             It’s the fastest way to ask for a help.
           </Description>
-          <Link href="/chat" target="_blank">
-            <Button color="#945dd6">Discord Chat</Button>
-          </Link>
+          <FlexRow>
+            <Link href="/chat" target="_blank">
+              <Button color="#945dd6">Discord Chat</Button>
+            </Link>
+            <Popover
+              body={<iframe src="https://discordapp.com/widget?id=485586884165107732&theme=light" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>}
+              enterExitTransitionDurationMs={200}
+            >
+              <DiscrodWidget />
+            </Popover>
+          </FlexRow>
         </Feature>
 
         <Feature>
@@ -162,6 +171,27 @@ const Icon = styled.div`
     mask-position: center;
     background-color: ${props => props.color};
     transform: translate(-10px, 0);
+  }
+`
+const FlexRow = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+const DiscrodWidget = styled.img`
+  display: block;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  mask-image: url("/static/img/support/discord.svg");
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-color: #b88eeb;
+
+  &:hover {
+    opacity: .7;
   }
 `
 
