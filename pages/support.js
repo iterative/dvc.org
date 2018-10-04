@@ -95,7 +95,7 @@ export default () => (
           <Description>
             Don’t hesitate to shoot us an email at{' '}
             <Link href="mailto:support@dvc.org"><Mark text={'#945dd6'} bg={'#FFFFFF'}>support@dvc.org</Mark></Link>{' '}
-            questions. We are very responsive.
+            with any questions.
           </Description>
           <Link href="mailto:support@dvc.org">
             <Button color="#945dd6">Drop Us a Line</Button>
