@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Mark } from '../src/styles'
 import color from 'color'
 
 // nextjs
@@ -38,7 +39,9 @@ export default () => (
             <Name>Slack-like Chat</Name>
           </FeatureHeading>
           <Description>
-            Join data science practitioners in our welcoming DVC community.
+            Join data science practitioners in our welcoming{' '}
+            <Mark text={'#945dd6'} bg={'#FFFFFF'}>
+            DVC community</Mark>.
             It’s the fastest way to ask for a help.
           </Description>
           <FlexRow>
@@ -60,7 +63,8 @@ export default () => (
             <Name>Bugs & Features</Name>
           </FeatureHeading>
           <Description>
-            Found an issue or have an idea? Check our github issues tracker
+            Found an issue or have an idea? Check our GitHub{' '}
+            <Mark text={'#13adc7'} bg={'#FFFFFF'}>issues tracker</Mark>{' '}
             to see if there is already a fix or report a new one.
           </Description>
           <Link href="https://github.com/iterative/dvc.org/issues" target="_blank">
@@ -74,7 +78,9 @@ export default () => (
             <Name>Forum</Name>
           </FeatureHeading>
           <Description>
-            Discuss your ideas or best practices in the DVC forum.
+            Discuss your ideas or{' '}
+            <Mark text={'#f46837'} bg={'#FFFFFF'}>best practices</Mark>{' '}
+            in the DVC forum.
           </Description>
           <Link href="https://discuss.dvc.org" target="_blank">
             <Button color="#f46837">Go To Forum</Button>
@@ -87,7 +93,8 @@ export default () => (
             <Name>Email</Name>
           </FeatureHeading>
           <Description>
-            Don’t hesitate to shoot us an email at support@dvc.org for any
+            Don’t hesitate to shoot us an email at{' '}
+            <Link href="mailto:support@dvc.org"><Mark text={'#945dd6'} bg={'#FFFFFF'}>support@dvc.org</Mark></Link>{' '}
             questions. We are very responsive.
           </Description>
           <Link href="mailto:support@dvc.org">
