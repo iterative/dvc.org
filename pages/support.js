@@ -6,8 +6,7 @@ import color from 'color'
 // nextjs
 import Head from 'next/head'
 
-import { container } from '../src/styles'
-import { media } from '../src/styles'
+import { container, media, OnlyDesktop } from '../src/styles'
 
 import Page from '../src/Page'
 import Hero from '../src/Hero'
@@ -48,12 +47,14 @@ export default () => (
             <Link href="/chat" target="_blank">
               <Button color="#945dd6">Discord Chat</Button>
             </Link>
-            <Popover
-              body={<iframe src="https://discordapp.com/widget?id=485586884165107732&theme=light" width="350" height="500" allowtransparency="true" frameborder="0"></iframe>}
-              enterExitTransitionDurationMs={200}
-            >
-              <DiscrodWidget />
-            </Popover>
+            <OnlyDesktop>
+              <Popover
+                body={<iframe src="https://discordapp.com/widget?id=485586884165107732&theme=light" width="350" height="500" allowtransparency="true" frameBorder="0"></iframe>}
+                enterExitTransitionDurationMs={200}
+              >
+                <DiscrodWidget />
+              </Popover>
+            </OnlyDesktop>
           </FlexRow>
         </Feature>
 
