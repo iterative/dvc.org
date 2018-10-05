@@ -13,7 +13,7 @@ import TrySection from '../src/TrySection'
 
 const HeadInjector = () => (
   <Head>
-    <title>Features | Data Science Version Control System</title>
+    <title>Features | Machine Learning Version Control System</title>
   </Head>
 );
 

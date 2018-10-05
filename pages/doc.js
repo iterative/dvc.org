@@ -28,7 +28,7 @@ const HeadInjector = ({ sectionName = 'Documentation' }) => (
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.4.0/css/perfect-scrollbar.min.css" />
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js" />
-    <title>{sectionName} | Data Science Version Control System</title>
+    <title>{sectionName} | Machine Learning Version Control System</title>
   </Head>
 );
 

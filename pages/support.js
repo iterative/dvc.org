@@ -15,7 +15,7 @@ import Popover from '../src/Popover/Popover';
 
 const HeadInjector = () => (
   <Head>
-    <title>Support | Data Science Version Control System</title>
+    <title>Support | Machine Learning Version Control System</title>
   </Head>
 );
 

@@ -20,7 +20,7 @@ const Heading2 = () => (
     <Icon>
       <img src="/static/img/git-icon.svg" width={30} height={30} />
     </Icon>
-    <Title>Version control data files</Title>
+    <Title>Version control models and data</Title>
   </Top>
 )
 
