@@ -47,7 +47,7 @@ export default class LandingHero extends Component {
       <Wrapper>
         <About>
           <Title>
-            Open-source <br/> Version Control System <br/> for Machine Learning Projects
+            Open-source <br/> Version Control System for <br/> Machine Learning Projects
           </Title>
           <Buttons>
             <OnlyMobile>
