@@ -5,6 +5,9 @@ number of `*.dvc` files. Each file describes a single step we need to run to get
 to the final result. Each depends on some data (either source data files or some
 intermediate results from another `*.dvc` file) and code files.
 
+If you freshly checked out the project, make sure you first fetch the input data
+from DVC by calling `dvc pull`.
+
 It's now extremely easy for you or anyone in your team to reproduce the result
 end-to-end:
 
