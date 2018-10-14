@@ -2,9 +2,9 @@
 
 ## Get data file
 
-To include a data file into your data science environment you need to copy the 
-file in on of the repository directories. We create a special directory `data`
-for the data files and download 40MB source data file into this directory.
+To include a data file into your data science environment, you need to copy the 
+file into one of the repository directories. We create a special directory `data`
+for the data files and download a 40MB data archive into this directory.
 
 ```dvc
     $ mkdir data
@@ -14,9 +14,9 @@ for the data files and download 40MB source data file into this directory.
 ```
 
 This `data/Posts.xml.tgz` is still just a regular file. Now it is time to move
-the file under DVC control by `dvc add` command. After the command execution
-you will see a new file `data/Posts.xml.tgz.dvc` and there is a change in
-`data/.gitignore`. Both of these files have to be committed into the repository.
+the file under DVC control using the `dvc add` command. After executing the command
+you will see a new file `data/Posts.xml.tgz.dvc` and a change in
+`data/.gitignore`. Both of these files have to be committed to the repository.
 
 ```dvc
     $ dvc add data/Posts.xml.tgz
@@ -34,19 +34,19 @@ you will see a new file `data/Posts.xml.tgz.dvc` and there is a change in
 
 You have probably already noticed that the actual file was not committed to the
 repository. This happened because DVC included the file into `data/.gitignore`
-and Git ignores this data file from now.
+and Git ignores this data file from now on.
 
-> Excluding large data files from the Git repository by including them to
-`.gitignore` is a general DVC behavior.
+> DVC will always exclude large data files from the Git repository by including them in
+`.gitignore`.
 
 ## Data file internals
 
-If you take a look at the DVC-file you will see that only outputs are defined in
-`outs`. In this file only one output is defined. The output contains the data
+If you take a look at the DVC-file, you will see that only outputs are defined in
+`outs`. In this file, only one output is defined. The output contains the data
 file path in the repository and md5 cache. This md5 cache determines location
 of the actual content file in DVC cache directory `.dvc/cache`.
 
-> Output from DVC-file defines the relationship between the data file path in a
+> Output from DVC-files defines the relationship between the data file path in a
 repository and the path in a cache directory.
 
 ```dvc
@@ -63,23 +63,23 @@ repository and the path in a cache directory.
 ```
 
 Keeping actual file content in a cache directory and a copy of the caches in
-user workspace during `$ git checkout` is a regular trick that Git uses and
-[Git-LFS](https://git-lfs.github.com/) (Git for Large File Storage). This trick
+user workspace during `$ git checkout` is a regular trick that 
+[Git-LFS](https://git-lfs.github.com/) (Git for Large File Storage) uses. This trick
 works fine for tracking small files with source code. For large data files this
-might not be the best approach. Because* checkout *operation for a 10Gb data
-file might take many seconds and 50GB file checkout (think copy) might take
-couple minutes.
+might not be the best approach, because a *checkout* operation for a 10Gb data
+file might take many seconds and a 50GB file checkout (think copy) might take
+a couple of minutes.
 
 > DVC was designed with large data files in mind. This means gigabytes or even
 hundreds of gigabytes in file size. Instead of copying files from cache to
-workspace DVC created [hardlinks](https://en.wikipedia.org/wiki/Hard_link).
+workspace, DVC creates [hardlinks](https://en.wikipedia.org/wiki/Hard_link).
 
 This is pretty similar to what [Git-annex](https://git-annex.branchable.com/)
 does. Creating file hardlinks is a quick operation. So, with DVC you can easily
-checkout a few dozens of files with any size. And hardlink does not require you
+checkout a few dozen files of any size. A hardlink does not require you
 to have twice as much space in the hard drive. Even if each of the files
-contains 40MB of data the overall size of the repository is still 40MB. And both
-of the files are corresponded to the same `inode` (actual file content) in a
+contains 40MB of data, the overall size of the repository is still 40MB. Both
+of the files correspond to the same `inode` (actual file content) in a
 file system. Use `ls -l` to see file system inodes:
 
 ```dvc
@@ -93,8 +93,8 @@ file system. Use `ls -l` to see file system inodes:
      41M .
 ```
 
-Note, DVC uses hardlinks in all the supported OS including Mac OS, Linux and
-Windows. Some details (like inode) might differ where the overall DVC behavior
+Note that DVC uses hardlinks in all the supported OSs, including Mac OS, Linux and
+Windows. Some implementation details (like inode) might differ, but the overall DVC behavior
 is the same.
 
 ## Running commands
