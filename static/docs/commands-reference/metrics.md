@@ -62,8 +62,8 @@ automatically in `dvc metrics show`.
 
 ## show
 
-Find and print project metrics. It will finds and prints all (default) or a
-specified metric file in the current branch (default) or across all branches.
+Find and print project metrics. It will find and print all metric files (default) or a
+specified metric file in the current branch (default) or across all branches/tags.
 
 ```usage
 usage: dvc metrics show [-h] [-q] [-v] [-t TYPE] [-x XPATH]
@@ -82,10 +82,11 @@ optional arguments:
   -x XPATH, --xpath XPATH JSON/TSV/HTSV/CSV/HCSV path
   --json-path JSON_PATH   JSON path
   --tsv-path TSV_PATH     TSV path 'row,column'(e.g. '1,2')
-  --htsv-path HTSV_PATH   Headed TSV path 'row,column'(e.g. 'Name,3'
-  --csv-path CSV_PATH     CSV path 'row,column'(e.g. '1,2')
-  --hcsv-path HCSV_PATH   Headed CSV path 'row,column'(e.g. 'Name,3'
-  -a, --all-branches      Show metrics for all branches
+  --htsv-path HTSV_PATH   Headed TSV path 'row,column'(e.g. 'Name,3').
+  --csv-path CSV_PATH     CSV path 'row,column'(e.g. '1,2').
+  --hcsv-path HCSV_PATH   Headed CSV path 'row,column'(e.g. 'Name,3').
+  -a, --all-branches      Show metrics for all branches.
+  -T, --all-tags          Show metrics for all tags.
 ```
 
 **Options:**
