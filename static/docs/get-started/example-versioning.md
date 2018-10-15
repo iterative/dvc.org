@@ -19,10 +19,6 @@ itself since it's a great demonstration on how a general pre-trained model can
 be leveraged to build a model with a great performance with very limited
 resources.
 
-We picked this example and data sets to be small enough. You should to be able
-to execute it on a local machine in a reasonable amount of time (a few minutes
-to train a model).
-
 ## Preparation
 
 If DVC is not installed, please follow the [instruction](/doc/get-started/install)
