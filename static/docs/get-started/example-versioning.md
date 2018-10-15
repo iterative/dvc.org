@@ -11,7 +11,7 @@ working with different versions of data sets and ML models.
 
 The specific algorithm that is used to train and validate the classifier is not
 important. No prior knowledge is required about Keras. We reuse the
-[scipt](https://gist.github.com/fchollet/f35fbc80e066a49d65f1688a7e99f069) (it
+[script](https://gist.github.com/fchollet/f35fbc80e066a49d65f1688a7e99f069) (it
 goes along the blog post) in a "black box" way - it takes some data and produces
 a model file. We though would highly recommend reading the
 [post](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
