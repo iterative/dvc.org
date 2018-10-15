@@ -68,7 +68,7 @@ export default () => (
             <Mark text={'#13adc7'} bg={'#FFFFFF'}>issues tracker</Mark>{' '}
             to see if there is already a fix or report a new one.
           </Description>
-          <Link href="https://github.com/iterative/dvc.org/issues" target="_blank">
+          <Link href="https://github.com/iterative/dvc/issues" target="_blank">
             <Button color="#13adc7">Open GitHub</Button>
           </Link>
         </Feature>
