@@ -82,10 +82,10 @@ export default class LandingHero extends Component {
         <OnlyDesktop>
           <Commands>
             <Command active={activeCommand === 0}>
-              <Line>$ dvc add images.zip</Line>
+              <Line>$ dvc add images</Line>
             </Command>
             <Command active={activeCommand === 1}>
-              <Line>$ dvc run -d images.zip -o model.p ./cnn.py</Line>
+              <Line>$ dvc run -d images -o model.p cnn.py</Line>
             </Command>
             <Command active={activeCommand === 2}>
               <Line>$ dvc remote add myrepo s3://mybucket</Line>

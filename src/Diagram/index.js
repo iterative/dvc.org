@@ -18,13 +18,13 @@ const ColumnOne = ({ fullWidth }) => (
     <Caption text={`#945dd6`}>ML project version control</Caption>
     <Description fullWidth>
       <p>
-        Keep pointers in Git to large data input files, ML models, and
-        intermediate data files along with the code. Use S3, Azure, GCP, or any
-        network-accessible storage to store file contents.
+        Version control machine learning models, data sets and
+        intermediate files. DVC connects them with code and uses
+        S3, Azure, GCP, SSH or to store file contents.
       </p>
       <p>
         Full code and data provenance help track the complete evolution of
-        every ML experiment. This guarantees reproducibility and makes it
+        every ML model. This guarantees reproducibility and makes it
         easy to switch back and forth between experiments.
       </p>
     </Description>
@@ -91,11 +91,11 @@ export class DiagramSection extends Component {
       <Diagram>
         <Element name="diagram-section" />
         <Container>
-          <Title>DVC streamlines machine learning projects</Title>
+          <Title>DVC tracks evolution of ML project</Title>
           <Abstract>
             DVC is an open-source framework and distributed version control system
-            for machine learning projects. DVC is designed to handle large files,
-            models, and metrics as well as code.
+            for machine learning projects. It is designed to handle large files,
+            data sets, machine learning models, and metrics as well as code.
           </Abstract>
     
           <OnlyDesktop>
