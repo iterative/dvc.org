@@ -91,11 +91,11 @@ export class DiagramSection extends Component {
       <Diagram>
         <Element name="diagram-section" />
         <Container>
-          <Title>DVC tracks evolution of ML project</Title>
+          <Title>DVC tracks ML models and data sets</Title>
           <Abstract>
-            DVC is an open-source framework and distributed version control system
-            for machine learning projects. It is designed to handle large files,
-            data sets, machine learning models, and metrics as well as code.
+            DVC is built to make ML models shareable and reproducible.
+            It is designed to handle large files, data sets, machine
+            learning models, and metrics as well as code.
           </Abstract>
     
           <OnlyDesktop>
