@@ -4,7 +4,7 @@ In the next few chapters you can learn how to install DVC, do basic configuratio
 and use basic features. Following along should be enough to get a feel for DVC.
 
 At the very end there is a complete step-by-step
-[example](/doc/get-started/example). It covers pipelines and reproducibility.
+[example](/doc/get-started/example-pipeline). It covers pipelines and reproducibility.
 It's a short version of the [tutorial](/doc/tutorial).
 
 ✅ Please, join our [community](/chat) or check these [support](/support)

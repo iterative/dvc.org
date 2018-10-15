@@ -1,4 +1,4 @@
-# Example
+# Example: Pipelines
 
 To show DVC in action, let's play with an actual machine learning scenario.
 Let's explore the natural language processing (NLP) problem of predicting tags

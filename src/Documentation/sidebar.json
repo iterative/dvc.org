@@ -16,11 +16,13 @@
       "reproduce.md",
       "experiments.md",
       "compare-experiments.md",
-      "example.md"
+      "example-versioning.md",
+      "example-pipeline.md"
     ],
     "labels": {
       "connect-code-and-data.md": "Add Transformations",
-      "example.md": "Example: Pipeline"
+      "example-pipeline.md": "Example: Pipeline",
+      "example-versioning.md": "Example: Versioning"
     }
   },
   {
