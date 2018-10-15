@@ -7,8 +7,7 @@ feel for DVC.
 At the very end there are a few complete step-by-step examples to give you more
 hands-on experience with real life scenarios - model and data set
 [versioning](/doc/get-started/example-versioning), build
-[pipelines](/doc/get-started/example-pipeline) that covers pipelines and
-reproducibility.
+[pipelines](/doc/get-started/example-pipeline) and reproducibility.
 
 ✅ Please, join our [community](/chat) or check these [support](/support)
 options if you have any questions or need any help. We are very responsive ⚡.
