@@ -274,8 +274,8 @@ ML models, which would similar to makefiles in software engineering.
 In this example our focus was on giving you a hands-on experience on ML models
 and data sets versioning. We specifically focused on `dvc add` and `dvc
 checkout` commands. Here we would like to outline some next topics and ideas
-you would be interested to try to learn more about DVC and it makes managing ML
-projects simpler.
+you would be interested to try to learn more about DVC and how it makes managing
+ML projects simpler.
 
 First of all, you should have probably noticed that the script that trains a
 model is written in a monolithic way. It runs the `save_bottleneck_feature`
