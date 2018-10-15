@@ -62,8 +62,8 @@ automatically in `dvc metrics show`.
 
 ## show
 
-Find and print project metrics. It will finds and prints all (default) or a
-specified metric file in the current branch (default) or across all branches.
+Find and print project metrics. It will find and print all metric files (default) or a
+specified metric file in the current branch (default) or across all branches/tags.
 
 ```usage
 usage: dvc metrics show [-h] [-q] [-v] [-t TYPE] [-x XPATH]
