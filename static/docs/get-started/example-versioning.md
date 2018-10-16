@@ -7,7 +7,7 @@ that
 [François Chollet](https://twitter.com/fchollet) put together to show how to
 build a powerful image classifier, using only a small data set. The goal of this
 example is to give you some hands-on experience with a very basic scenario -
-working with different versions of data sets and ML models.
+working with multiple versions of data sets and ML models using DVC commands.
 
 ![](/static/img/cats-and-dogs.png)
 
