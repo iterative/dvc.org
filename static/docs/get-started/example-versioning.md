@@ -9,6 +9,8 @@ build a powerful image classifier, using only a small data set. The goal of this
 example is to give you some hands-on experience with a very basic scenario -
 working with different versions of data sets and ML models.
 
+![](/static/img/cats-and-dogs.png)
+
 The specific algorithm that is used to train and validate the classifier is not
 important. No prior knowledge is required about Keras. We reuse the
 [script](https://gist.github.com/fchollet/f35fbc80e066a49d65f1688a7e99f069) (it
@@ -38,6 +40,12 @@ your global packages clean and untouched:
 ```dvc
     $ virtualenv --system-site-packages .env
     $ source .env/bin/activate
+```
+
+Install required dependencies:
+
+```dvc
+    $ pip install -r requirements.txt
 ```
 
 <details>
