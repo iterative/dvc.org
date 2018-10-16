@@ -126,7 +126,7 @@ it a little bit later. For now, let's commit the current state:
 
 ### Expand to learn more about DVC internals
 
-As we mentioned briefly, DVC do not commit `data` directory and `model.h5` file
+As we mentioned briefly, DVC does not commit `data` directory and `model.h5` file
 into git, `dvc add` pushed them into the DVC cache and added to the
 `.gitignore`. Instead, we commit `.dvc` meta-files that serve as pointers to the
 cache (usually, a `.dvc/cache` directory inside the repository) where actual
