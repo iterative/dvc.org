@@ -76,24 +76,15 @@ directory structure looks like:
 
 ```sh
    data/
-       train/
-           dogs/
-               dog.1.jpg
-               ...
-               dog.500.jpg
-           cats/
-               cat.1.jpg
-               ...
-               cat.500.jpg
-       validation/
-           dogs/
-               dog.1001.jpg
-               ...
-               dog.1400.jpg
-           cats/
-               cat.1001.jpg
-               ...
-               cat.1400.jpg
+       train/                               validation/
+           dogs/                                dogs/
+               dog.1.jpg                            dog.1001.jpg
+               ...                                  ...
+               dog.500.jpg                          dog.1400.jpg
+           cats/                                cats/
+               cat.1.jpg                            cat.1001.jpg
+               ...                                  ...
+               cat.500.jpg                          cat.1400.jpg
 ```
 
 Let's capture the current state of this data set with `dvc add`:
@@ -160,24 +151,15 @@ look like this:
 
 ```sh
    data/
-       train/
-           dogs/
-               dog.1.jpg
-               ...
-               dog.1000.jpg
-           cats/
-               cat.1.jpg
-               ...
-               cat.1000.jpg
-       validation/
-           dogs/
-               dog.1001.jpg
-               ...
-               dog.1400.jpg
-           cats/
-               cat.1001.jpg
-               ...
-               cat.1400.jpg
+       train/                               validation/
+           dogs/                                dogs/
+               dog.1.jpg                            dog.1001.jpg
+               ...                                  ...
+               dog.1000.jpg                         dog.1400.jpg
+           cats/                                cats/
+               cat.1.jpg                            cat.1001.jpg
+               ...                                  ...
+               cat.1000.jpg                         cat.1400.jpg
 ```
 
 Of course, we want to leverage these new labels and train the model again.
