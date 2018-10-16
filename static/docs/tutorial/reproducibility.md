@@ -10,16 +10,16 @@ spending time defining the ML pipelines.
 DVC tracks all the dependencies, which helps you iterate on ML models faster
 without thinking what was affected by your last change.
 
-> In order to track all the dependencies DVC finds and reads ALL the DVC-files
+> In order to track all the dependencies, DVC finds and reads ALL the DVC-files
 in a repository and builds a dependency graph
 ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) based on these
 files.
 
 This is one of the differences between DVC reproducibility and traditional
 Makefile-like build automation tools (Make, Maven, Ant, Rakefile etc). It was
-designed in a such way to localize specification of DAG nodes.
+designed in such a way to localize specification of DAG nodes.
 
-If you run repro on any created DVC-file from our repository nothing happens
+If you run `repro` on any created DVC-file from our repository, nothing happens
 because nothing was changed in the defined pipeline.
 
 ```dvc
@@ -27,11 +27,11 @@ because nothing was changed in the defined pipeline.
     $ dvc repro model.p.dvc
 ```
 
-By default `dvc repro` reads DVC-file with name `Dvcfile`:
+By default, `dvc repro` reads DVC-files named `Dvcfile`:
 
 ```dvc
     # Reproduce Dvcfile.
-    # But it is still nothing to reproduce:
+    # But there is still nothing to reproduce:
     $ dvc repro
 ```
 
@@ -43,7 +43,7 @@ signals not only from separate words but also from two word combinations. This
 eventually increases the number of features for the model and hopefully improves
 the target metric.
 
-Before editing the `code/featurization.py` file please create and checkout a new
+Before editing the `code/featurization.py` file, please create and checkout a new
 branch `bigrams`.
 
 ```dvc
@@ -83,11 +83,11 @@ Reproduce the pipeline:
         python code/evaluate.py
 ```
 
-The process started from the feature creation step because one of it’s
+The process started from the feature creation step because one of its
 parameters was changed — the edited source code `code/featurization.py`. All
 dependent steps were regenerated as well.
 
-Let’s take a look at the metric’s change. The result improvement is close to
+Let’s take a look at the metric’s change. The improvement is close to
 zero (+0.0075% to be precise):
 
 ```dvc
@@ -95,7 +95,7 @@ zero (+0.0075% to be precise):
     AUC: 0.624727
 ```
 
-This is not a perfect result but this result gives us some information about the
+This is not a great result but it gives us some information about the
 model.
 
 > It is convenient to keep track of information even for failed experiments.
@@ -124,13 +124,13 @@ Now we can commit the changes:
 ## Checkout code and data files
 
 The previous experiment was done in the feature extraction step and provided no
-improvements. This might be related with not having perfect model
+improvements. This might be caused by not having perfect model
 hyperparameters. Let’s try to improve the model by changing the hyperparameters.
 
 There is no good reason to improve the last bigram based model. Let’s checkout
 the original model from the master branch.
 > Note, after checking out code and DVC-files from Git, data files have to be
-checked out as well by the `dvc checkout` command.
+checked out as well using the `dvc checkout` command.
 
 ```dvc
     $ git checkout master
@@ -141,11 +141,11 @@ checked out as well by the `dvc checkout` command.
 ```
 
 After proper checkout there is nothing to reproduce because all the correct
-files were checked out by Git and all data files — by DVC.
+files were checked out by Git and all data files by DVC.
 
 In more detail — `git checkout master` checked out the code and DVC-files. The
 DVC-files from the master branch point to old (unigram based) data file outputs
-and dependencies. $ dvc checkout command found all the DVC-files and restored
+and dependencies. `dvc checkout` command found all the DVC-files and restored
 the data files based on them.
 
 ## Tune the model
@@ -159,15 +159,15 @@ organize all the experiments in a repository and checkout them when needed.
     $ vi code/train_model.py
 ```
 
-Increase number of trees in the forest to 500 by `n_estimators` parameter in the
-`RandomForestClassifier` class and number of jobs (line 27):
+Increase number of trees in the forest to 500 by changing the `n_estimators` parameter and the number of jobs in the
+`RandomForestClassifier` class (line 27):
 
 ```python
     clf = RandomForestClassifier(n_estimators=700,
                                  n_jobs=6, random_state=seed)
 ```
 
-Only the modeling and the evaluation step needs to be reproduced. Just run repro:
+Only the modeling and the evaluation step need to be reproduced. Just run repro:
 
 ```dvc
     $ dvc repro
@@ -188,7 +188,7 @@ Validate the metric and commit all the changes.
     AUC: 0.637561
 ```
 
-This seems like a good model improvement +1.28%. Please commit all the changes:
+This seems like a good model improvement (+1.28%). Please commit all the changes:
 
 ```dvc
     $ git add .
@@ -197,11 +197,11 @@ This seems like a good model improvement +1.28%. Please commit all the changes:
 
 ## Merge the model to master
 
-Now we can revisit the failing hypotheses with bigrams which didn’t provide any
+Now we can revisit the failing hypothesis with bigrams, which didn’t provide any
 model improvement even with one thousand more features. The current model with
 500 trees in the forest is stronger and we might be able to get more information
-with bigrams. So, let’s incorporate the bigram changes into the current model by
-a regular Git merge command.
+using bigrams. So, let’s incorporate the bigram changes into the current model 
+using a regular Git merge command.
 
 > Git merge logic works for data files and respectively for DVC models.
 
@@ -255,8 +255,8 @@ The target metric:
     AUC: 0.640389
 ```
 
-The bigrams increased the target metric to 0.28% and the last change looks like
-a reasonable improvement of the ML model. So, the result should be committed:
+The bigrams increased the target metric by 0.28% and the last change looks like
+a reasonable improvement to the ML model. So, the result should be committed:
 
 ```dvc
     $ git add .
