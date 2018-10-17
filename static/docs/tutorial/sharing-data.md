@@ -16,8 +16,7 @@ First, you need to modify the cloud settings in the DVC config file. This can be
 done using the CLI:
 
 ```dvc
-    $ dvc config core.cloud AWS
-    $ dvc config AWS.StoragePath dvc-share/classify
+    $ dvc remote add -d upstream s3://dvc-share/classify
     $ git status -s
      M .dvc/config
 ```
