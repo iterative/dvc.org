@@ -223,7 +223,7 @@ the right place.
 
 </details>
 
-## Automating the workflow
+## Automating with pipelines
 
 `dvc add` is a perfectly reasonable choice when you need to keep track of
 different versions of data sets or model files that come and are updated from
