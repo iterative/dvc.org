@@ -189,6 +189,8 @@ version if we need to.
 
 ## Switching between versions
 
+![](/static/img/versioning.png)
+
 Operation that helps getting the specific committed version of data is designed
 to be similar to Git. In Git (or any other code version control system) when you
 need to get to a previous committed version of code you run `git checkout`. All
@@ -247,7 +249,7 @@ produces other data files, a better way to capture them is to use `dvc run`:
 
 Similar to `dvc add`, `dvc run` creates a single DVC file (`Dvcfile` in this
 case, specified by the `-f` option). It puts all outputs (`-o`) under DVC
-control the same was as `dvc add` does. Unlike, `dvc add`, `dvc run` also tracks
+control the same way as `dvc add` does. Unlike, `dvc add`, `dvc run` also tracks
 dependencies (`-d`) and the command (`python train.py`) that was run to produce
 the result.
 
@@ -257,7 +259,7 @@ outputs and puts them into the cache.
 
 If `dvc add` and `dvc checkout` provide a basic mechanism to version control
 large data files or models, `dvc run` and `dvc repro` provide a build system for
-ML models, which would similar to makefiles in software engineering.
+ML models, which would be similar to makefiles in software engineering.
 
 ## What's next?
 
