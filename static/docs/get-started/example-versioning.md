@@ -1,5 +1,10 @@
 # Example: Versioning
 
+>Reading time is 10-13 minutes. Running the training is 30-40 minutes (including
+downloading the data set). Running the code is optional, and reading alone
+should be enough to learn how to manipulate different versions of data and
+models.
+
 To show how DVC can be used to manage and version control machine learning
 models and data sets, let's play with a
 [tutorial](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
@@ -10,6 +15,11 @@ example is to give you some hands-on experience with a very basic scenario -
 working with multiple versions of data sets and ML models using DVC commands.
 
 ![](/static/img/cats-and-dogs.png)
+
+We first train a classifier model using 1000 labeled images, then we double the
+number and run the training again. We capture both data sets and both results
+and show how to use `dvc checkout` along with `git checkout` to switch between
+different versions.
 
 The specific algorithm that is used to train and validate the classifier is not
 important. No prior knowledge is required about Keras. We reuse the
@@ -34,6 +44,9 @@ nothing to do with DVC so far, it's just a simple preparation:
     $ cd example-versioning
 ```
 
+This command pulls a repository with a single script `train.py` that runs the
+training.
+
 (Optional) It's highly recommended to initialize a virtual environment to keep
 your global packages clean and untouched:
 
@@ -47,6 +60,9 @@ Install required dependencies:
 ```dvc
     $ pip install -r requirements.txt
 ```
+
+**Note!** As of October 2018, Tensorflow does not support Python 3.7. Model
+training was tested on Python 2.7 and 3.6.
 
 <details>
 
@@ -70,9 +86,9 @@ including input data set and metrics.
     $ wget -q -O - https://dvc.org/s3/examples/versioning/data.tgz | tar -xzvf -
 ```
 
-This command downloads and extracts our initial data set - 1000 labeled images
-of cats and dogs and 400 labeled images to validate. In summary, this is how
-directory structure looks like:
+This command downloads and extracts our initial data set - **1000 labeled
+images** of cats and dogs and 400 labeled images to validate. In summary,
+it's a 43M data set, with a directory structure like this:
 
 ```sh
    data/
@@ -85,6 +101,8 @@ directory structure looks like:
                cat.1.jpg                            cat.1001.jpg
                ...                                  ...
                cat.500.jpg                          cat.1400.jpg
+
+   Total size: 43M
 ```
 
 Let's capture the current state of this data set with `dvc add`:
@@ -119,7 +137,7 @@ it a little bit later. For now, let's commit the current state:
 ```dvc
     $ git add .gitignore model.h5.dvc data.dvc metrics.json
     $ git commit -m "model first version, 1000 images"
-    $ git tag -a "v1.0" -m "v1.0"
+    $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ```
 
 <details>
@@ -140,14 +158,15 @@ files are organized.
 
 ## Second model version
 
-Let's imagine that our images data set is growing, we were able to double it:
+Let's imagine that our images data set is growing, we were able to double it.
+Next command extracts 500 cat and 500 dog images into `data/train`:
 
 ```dvc
     $ wget -q -O - https://dvc.org/s3/examples/versioning/new-labels.tgz | tar -xzvf -
 ```
 
-For simplicity we keep the validation data set the same. Now our data set should
-look like this:
+For simplicity we keep the validation data set the same. Now our data set has
+**2000 images** to train, and 400 images to validate, with a total size of 67M:
 
 ```sh
    data/
@@ -160,6 +179,8 @@ look like this:
                cat.1.jpg                            cat.1001.jpg
                ...                                  ...
                cat.1000.jpg                         cat.1400.jpg
+
+   Total size: 67M
 ```
 
 Of course, we want to leverage these new labels and train the model again.
@@ -180,7 +201,7 @@ Let's commit the second version:
 ```dvc
     $ git add model.h5.dvc data.dvc metrics.json
     $ git commit -m "model second version, 2000 images"
-    $ git tag -a "v2.0" -m "v2.0"
+    $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
 That's it, we have a second model and data set saved and pointers to them
@@ -223,7 +244,7 @@ the right place.
 
 </details>
 
-## Automating with pipelines
+## Automating capturing
 
 `dvc add` is a perfectly reasonable choice when you need to keep track of
 different versions of data sets or model files that come and are updated from
@@ -235,8 +256,8 @@ DVC control).
 On the other hand, there are files that are result of running some code. In our
 example, you should have noticed, that `train.py` produces binary files (e.g.
 `bottlneck_features_train.npy`), the model file `model.h5`, and the metric file
-`metrics.json`. When you have a script that takes some data as an input and
-produces other data files, a better way to capture them is to use `dvc run`:
+`metrics.json`. **When you have a script that takes some data as an input and
+produces other data files, a better way to capture them is to use `dvc run`:**
 
 ```dvc
     $ dvc remove -p model.h5.dvc
