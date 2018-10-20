@@ -86,8 +86,7 @@ It's enough to run `dvc checkout` or `dvc pull` to restore data files.
 
 </details>
 
-* Download an input data set to the `data` directory and take it under DVC
-control:
+* Commit the data file meta-information to Git repository:
 
 ```dvc
     $ git add data/Posts.xml.tgz.dvc data/.gitignore
@@ -312,7 +311,6 @@ depending on Python version you are using and other environment parameters.
 
 ```dvc
     $ dvc metrics show -a
-
     master:
         auc.metric: 0.603121
 ```
