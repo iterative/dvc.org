@@ -86,6 +86,14 @@ It's enough to run `dvc checkout` or `dvc pull` to restore data files.
 
 </details>
 
+* Download an input data set to the `data` directory and take it under DVC
+control:
+
+```dvc
+    $ git add data/Posts.xml.tgz.dvc data/.gitignore
+    $ git commit -m 'add dataset'
+```
+
 ## Define steps
 
 Each step is described by providing a command to run, input data it takes and
