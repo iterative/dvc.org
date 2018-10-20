@@ -31,7 +31,7 @@ nothing to do with DVC so far, it's just a simple preparation:
     $ git init
     $ wget -q -O - https://dvc.org/s3/examples/so/code.tgz | tar -xzvf -
     $ pip install -U -r code/requirements.txt
-    $ git add .
+    $ git add code/
     $ git commit -m 'download and initialize code'
 ```
 
