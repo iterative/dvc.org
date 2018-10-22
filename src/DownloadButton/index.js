@@ -4,6 +4,7 @@ import styled, { css } from 'styled-components'
 import isClient from '../utils/isClient'
 import { logEvent } from '../utils/ga'
 
+const VERSION = `0.19.14`
 const OSX = `osx`
 const WINDOWS = `win`
 const LINUX = `linux`
@@ -14,19 +15,19 @@ const LINE = `line`
 const links = {
   [OSX]: {
     title: 'Mac OS',
-    url: `https://github.com/iterative/dvc/releases/download/0.19.13/dvc-0.19.13.pkg`
+    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}.pkg`
   },
   [WINDOWS]: {
     title: 'Windows',
-    url: `https://github.com/iterative/dvc/releases/download/0.19.13/dvc-0.19.13.exe`
+    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}.exe`
   },
   [LINUX]: {
     title: 'Linux Deb',
-    url: `https://github.com/iterative/dvc/releases/download/0.19.13/dvc_0.19.13_amd64.deb`
+    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc_${VERSION}_amd64.deb`
   },
   [LINUX_RPM]: {
     title: 'Linux RPM',
-    url: `https://github.com/iterative/dvc/releases/download/0.19.13/dvc-0.19.13-1.x86_64.rpm`
+    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}-1.x86_64.rpm`
   },
   [UNKNOWN]: {
     title: 'pip install dvc'
