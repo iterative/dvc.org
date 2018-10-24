@@ -34,7 +34,8 @@ by Rscript command.
                             'clean.dvc', etc) in order for dvc to be able to find  
                             it later. By default the first output basename + .dvc  
                             is used as a stage filename.                           
-      -c CWD, --cwd CWD     Directory to run your command and place state file in
+      -c CWD, --cwd CWD     Directory within your project to run your command and
+                            place state file in
       --no-exec             Only create stage file without actually running it.
       -y, --yes             Automatic 'yes' answer to all prompts. E.g. when
                             '.dvc' file exists and dvc asks if you want to
