@@ -22,7 +22,7 @@ name is omitted, `Dvcfile` will be used by default.
         -f, --force           Reproduce even if dependencies were not changed.
         -s, --single-item     Reproduce only single data item without recursive
                               dependencies check.
-        -c CWD, --cwd CWD     Directory to reproduce from.
+        -c CWD, --cwd CWD     Directory within your project to reproduce from.
         -m, --metrics         Show metrics after reproduction
         --dry                 Only print the commands that would be executed without
                               actually executing.
