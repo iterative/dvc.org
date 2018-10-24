@@ -28,6 +28,7 @@
   {
     "name": "Use Cases",
     "folder": "/static/docs/use-cases",
+    "indexFile": "index.md",
     "files": [
       "data-and-model-files-versioning.md",
       "share-data-and-model-files.md",

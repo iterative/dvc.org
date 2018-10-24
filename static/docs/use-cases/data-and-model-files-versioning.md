@@ -44,7 +44,7 @@ a `.dvc/cache` directory that will be used to store cache for your data.
     
     ...
         new file:   .dvc/.gitignore
-	    new file:   .dvc/config
+        new file:   .dvc/config
     
     $ git commit -m "Initialize dvc"
 ```
@@ -102,7 +102,7 @@ Now, to upload your cache use:
     (5/5): [##############################] 100% model.pkl
 ```
 
-In order for your collagues to obtain the cache, they will simply need to run:
+In order for your colleagues to obtain the cache, they will simply need to run:
 
 ```dvc
    $ git pull
