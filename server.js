@@ -5,6 +5,7 @@ const { createServer } = require('http')
 const { parse } = require('url')
 const _ = require('force-ssl-heroku')
 const next = require('next')
+const querystring = require('querystring')
 
 const dev = process.env.NODE_ENV !== 'production'
 const port = process.env.PORT || 3000
@@ -21,7 +22,15 @@ app.prepare().then(() => {
     const chat = /^\/(help|chat)\/?$/i
 
     if (doc.test(pathname)) {
-      app.render(req, res, '/doc', query)
+      let normalized_pathname = pathname.replace(/^\/doc[^?\/]*/i, '/doc')
+      if (normalized_pathname !== pathname) {
+        res.writeHead(301, { 'Location': normalized_pathname +
+          (Object.keys(query).length === 0 ? '' : '?') +
+          querystring.stringify(query)})
+        res.end()
+      } else {
+        app.render(req, res, '/doc', query)
+      }
     } else if (s3.test(pathname)) {
       res.writeHead(301, {'Location':
         "https://s3-us-west-2.amazonaws.com/dvc-share/" +
