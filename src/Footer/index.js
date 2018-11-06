@@ -85,7 +85,6 @@ export default () => (
         </Column>
       </Columns>
       <Copyright>
-        Copyright © 2018 <small>Iterative, Inc</small>
       </Copyright>
     </Container>
   </Footer>
