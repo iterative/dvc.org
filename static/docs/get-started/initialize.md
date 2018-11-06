@@ -30,5 +30,5 @@ The last command, `git commit`, puts `.dvc/config` and `.dvc/.gitignore` files
 under Git control.
 
 Check `dvc init` if you want to get more details about the initialization process
-or [DVC Files and Directories](/doc/dvc-files-and-directories) to learn about
-DVC files and directories structure.
+or [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
+learn about DVC files and directories structure.
