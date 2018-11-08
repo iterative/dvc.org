@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import isClient from '../utils/isClient'
 import { logEvent } from '../utils/ga'
 
-const VERSION = `0.20.1`
+const VERSION = `0.20.2`
 const OSX = `osx`
 const WINDOWS = `win`
 const LINUX = `linux`
