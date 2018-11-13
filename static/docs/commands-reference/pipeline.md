@@ -35,6 +35,7 @@ Show stages in the pipeline that lead to the specified stage.
 ```
 
 ### Example
+
 ```dvc
     $ dvc pipeline show output.dvc
 

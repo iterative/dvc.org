@@ -91,18 +91,24 @@ optional arguments:
 
 **Options:**
 
-* `type` - specify a type of the metric file that will be used to determine
- how to handle `xpath` parameter from down below.
+* `-t`, `--type` -
+  specify a type of the metric file that will be used to determine how to handle
+  `xpath` parameter from down below.
 
-* `*path` - specify a path within a metric file to get a specific metric value.
+* `-x`, `*path` -
+ specify a path within a metric file to get a specific metric value.
  Should be used if metric file contains multiple numbers and you need to get a
  only one of them. Only single path is allowed. If multiple metric files exist
  in the project, the same parser and path will be applied to all of them. It may
  fail to produce any results or parse files that are not in a corresponding
  format in this case.
 
-* `all-branches` - get and print metric file contents across all branches. It's
-should be used to compare different variants of an experiment.
+* `-a`, `--all-branches` - get and print metric file contents across all
+branches. It's should be used to compare different variants of an experiment.
+
+* `-T`, `--all-tags` - get and print metric file contents across all tags. It's
+should be used to compare different variants of an experiment if tags are used
+for checkpoints.
 
 ## modify
 

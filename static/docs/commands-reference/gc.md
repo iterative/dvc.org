@@ -1,22 +1,23 @@
 # gc
 
-This command collects the garbage, removing unused cache files based on the
-current Git branch.
+Remove unused objects from cache.
 
-If a data file was created in a different branch, then it will be removed by
-`gc`, unless `--all-branches` option is specified. If a data file has a few
-cached versions all of them except the current one will be removed.
+If a data file was created in a different branch or commit than current, then it
+will be removed by `dvc gc`, unless `--all-branches` or `--all-tags` option is
+specified. If a data file has a few cached versions all of them except the
+current one will be removed.
 
 Note, that unless `-c|--cloud` is specified, this action does NOT remove data
-files from the remote storage. Make sure though that remote is configured and
-all the data you will need in the future  is pushed there. See `dvc remote`
+files from the remote storage. **Make sure though that remote is configured and
+all the data you will need in the future is pushed there.** See `dvc remote`
 and `dvc config` for more information. This command is just a way to clean the
 working cache which is usually located on the machine your are running
 experiments on and usually helps to save some space. You can `dvc fetch` all
 the needed files back anytime you want.
 
 ```usage
-    usage: dvc gc [-h] [-q] [-v] [-a] [-T] [-c] [-r REMOTE] 
+    usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c] [-r REMOTE] [-f] [-j JOBS]
+                  [-p [PROJECTS [PROJECTS ...]]]
 
     optional arguments:
         -h, --help            show this help message and exit
@@ -28,7 +29,36 @@ the needed files back anytime you want.
                               Remote repository to collect garbage in.
         -T, --all-tags        Show status of a local cache compared to a remote
                               repository for all tags.
+        -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
+        -p [PROJECTS [PROJECTS ...]], --projects [PROJECTS [PROJECTS ...]]
+                              Collect garbage for all given projects.
 ```
+
+## Options
+
+* `-a`, `--all-branches` - keep cached objects referenced from the latest commit
+across all branches. It should be used if you want to keep data for the latest
+experiment revisions. Especially, if you intend to use `dvc gc -c` this option
+is much safer.
+
+* `-T`, `--all-tags` - the same as `-a` but keeps cache for existing tags. It's
+useful if tags are used to track "checkpoints" of an experiment or project.
+
+* `-p`, `--projects` - if a single remote or a single cache are shared (e.g. a
+configuration one describe
+[here](/doc/use-cases/multiple-data-scientists-on-a-single-machine)) among
+different projects this option can be used to specify a list of them (each
+project is a path) to keep data that is currently referenced from them.
+
+* `-c`, `--cloud` - also remove files in the remote storage. *This operation is
+dangerous.* It removes data sets, models, other files that are not linked in the
+current branch/commit (unless `-a` or `-T` is specified).
+
+* `-r`, `--remote` - name of the remote storage to collect unused objects from
+if `-c` option is specified.
+
+* `-j`, `--jobs` - garbage collector parallelism level. Default is
+`4 * cpu_count()`. For SSH remotes default is 4.
 
 ## Examples
 
