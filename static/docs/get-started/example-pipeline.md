@@ -155,7 +155,7 @@ your actual workspace without copying every time object from/to the cache.
               python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
 ```
 
-* Split training and testing data sets. Here `0.1` test dataset split ratio,
+* Split training and testing data sets. Here `0.2` test dataset split ratio,
 `20170426` is a seed for randomization. There are two output output files:
 
 ```dvc
