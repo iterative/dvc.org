@@ -20,7 +20,7 @@ Manage pipeline.
 Show stages in the pipeline that lead to the specified stage.
 
 ```usage
-    usage: dvc pipeline show [-h] [-q] [-v] [-c] targets [targets ...]
+    usage: dvc pipeline show [-h] [-q] [-v] [-c] [--dot DOT] targets [targets ...]
 
     positional arguments:
       targets         DVC files.
@@ -32,6 +32,7 @@ Show stages in the pipeline that lead to the specified stage.
       -c, --commands  Print commands instead of paths to DVC files.
       -o, --outs      Print output files instead of paths to DVC files.
       --ascii         Output DAG as ASCII.
+      --dot DOT       Write DAG in .dot format.
 ```
 
 ### Example

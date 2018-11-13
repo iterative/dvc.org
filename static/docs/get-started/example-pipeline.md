@@ -130,7 +130,7 @@ Similar to `dvc add`, `dvc run` creates a [stage file](/doc/user-guide/dvc-file-
 
 This file is using the same technique - pointers (md5 hashes) to the cache to
 describe and version control dependencies and outputs. Output `Posts.xml` file
-is automatically added to the `.gitignore` file and a ink created into a cache
+is automatically added to the `.gitignore` file and a link is created into a cache
 `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
 
 Two thing are worth noticing here. First, by analyzing dependencies and outputs
@@ -155,7 +155,7 @@ your actual workspace without copying every time object from/to the cache.
               python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
 ```
 
-* Split training and testing data sets. Here `0.1` test dataset split ratio,
+* Split training and testing data sets. Here `0.2` test dataset split ratio,
 `20170426` is a seed for randomization. There are two output output files:
 
 ```dvc

@@ -70,6 +70,6 @@ metric file:
         auc.metric: 0.620421
 ```
 
-DVC provides built-in support to track and navigate `JSON`, `TSV` or `CVS` metric
+DVC provides built-in support to track and navigate `JSON`, `TSV` or `CSV` metric
 files if you want to track additional information. Check `dvc metrics` to learn
 more.
