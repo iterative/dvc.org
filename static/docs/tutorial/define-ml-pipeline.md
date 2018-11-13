@@ -80,7 +80,7 @@ checkout a few dozen files of any size. A hardlink does not require you
 to have twice as much space in the hard drive. Even if each of the files
 contains 40MB of data, the overall size of the repository is still 40MB. Both
 of the files correspond to the same `inode` (actual file content) in a
-file system. Use `ls -l` to see file system inodes:
+file system. Use `ls -i` to see file system inodes:
 
 ```dvc
     $ ls -i data/Posts.xml.tgz
