@@ -241,7 +241,9 @@ don't have some uncommitted changes in the `data.dvc`):
     $ dvc checkout data.dvc
 ```
 
-If you run `git status` you will that `data.dvc` is modified
+If you run `git status` you will see that `data.dvc` is modified and currently
+points to the `v1.0` of the data set. While code and model files are from the
+`v2.0` version.
 
 <details>
 
