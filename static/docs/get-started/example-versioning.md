@@ -210,13 +210,17 @@ version if we need to.
 
 ## Switching between versions
 
-![](/static/img/versioning.png)
-
 Operation that helps getting the specific committed version of data is designed
 to be similar to Git. In Git (or any other code version control system) when you
 need to get to a previous committed version of code you run `git checkout`. All
 we need to do in our case is to run additionally `dvc checkout` to get the right
-data to the working space:
+data to the working space.
+
+![](/static/img/versioning.png)
+
+There are two ways of doing this - a full workspace checkout or checkout of a
+specific data or mode file. Let's consider the full checkout first. It's quite
+straightforward:
 
 ```dvc
     $ git checkout v1.0
@@ -227,6 +231,17 @@ These commands will restore the working tree to the first snapshot we made -
 code, data files, model. DVC optimizes this operation internally to avoid
 copying data or model files each time. So `dvc checkout` is quick even if you
 have large data sets, data files, or model.
+
+On the other hand, if we want to keep the current version of code and go back to
+the previous data set only, we can do something like this (make sure that you
+don't have some uncommitted changes in the `data.dvc`):
+
+```dvc
+    $ git checkout v1.0 data.dvc
+    $ dvc checkout data.dvc
+```
+
+If you run `git status` you will that `data.dvc` is modified
 
 <details>
 
