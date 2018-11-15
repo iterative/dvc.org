@@ -1,4 +1,4 @@
-# Pipeline
+# pipeline
 
 Utilities to manage pipelines. [Show](#show) - visualize or [list](#list) - list
 existing pipelines.
