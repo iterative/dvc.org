@@ -1,5 +1,10 @@
 # Data and Model Files Versioning
 
+>This document provides an overview of the basic files versioning DVC workflow.
+To get a hands on experience and try it yourself we recommend you to follow
+along the [versioning](/doc/get-started/example-versioning) get started
+example.
+
 DVC allows storing and versioning source data files, ML models, intermediate
 results with Git, without checking the file contents into Git. It is useful
 when dealing with files that are too large for Git to handle. DVC stores
@@ -71,46 +76,41 @@ Commit your changes:
     $ git commit -m "track images and models with dvc"
 ```
 
-To share your data with others you need to setup a remote repository.
-DVC supports a variety of remote types (see `dvc remote`) but for this
-example let's use AWS S3 remote to store your cache. To add your S3
-repository and set it as a default one run:
+There are to get to the previous version of the data set or model - a full
+workspace checkout or checkout of a specific data or mode file. Let's consider
+the full checkout first. It's quite straightforward:
+
+> `v1.0` is a git tag that should be created in advance to identify the data set
+version you are interested in, it can be just a git commit hash instead.
 
 ```dvc
-    $ dvc remote add -d myremote s3://mybucket/mycache
-    Setting 'myremote' as a default remote.
+    $ git checkout v1.0
+    $ dvc checkout
 ```
 
-This will add `myremote` to your `.dvc/config`. Commit your changes and push
-your code:
+These commands will restore the working tree to the first snapshot we made -
+code, data files, model. DVC optimizes this operation internally to avoid
+copying data or model files each time. So `dvc checkout` is quick even if you
+have large data sets, data files, or model.
+
+On the other hand, if we want to keep the current version of code and go back to
+the previous data set only, we can do something like this (make sure that you
+don't have some uncommitted changes in the `data.dvc`):
 
 ```dvc
-    $ git add .dvc/config
-    $ git commit -m "Add myremote"
-    $ git push
+    $ git checkout v1.0 data.dvc
+    $ dvc checkout data.dvc
 ```
 
-Now, to upload your cache use:
+If you run `git status` you will see that `data.dvc` is modified and currently
+points to the `v1.0` of the data set. While code and model files are from the
+`v2.0` version.
 
-```dvc
-    $ dvc push
-    
-    (1/5): [##############################] 100% images/0001.jpg
-    (2/5): [##############################] 100% images/0002.jpg
-    (3/5): [##############################] 100% images/0003.jpg
-    (4/5): [##############################] 100% images
-    (5/5): [##############################] 100% model.pkl
-```
+![](/static/img/versioning.png)
 
-In order for your colleagues to obtain the cache, they will simply need to run:
-
-```dvc
-   $ git pull
-   $ dvc pull
-   
-   (1/5): [##############################] 100% images/0001.jpg
-   (2/5): [##############################] 100% images/0002.jpg
-   (3/5): [##############################] 100% images/0003.jpg
-   (4/5): [##############################] 100% images
-   (5/5): [##############################] 100% model.pkl
-```
+To share your data with others you need to setup a remote repository. Check the
+[Share Data And Model Files] use case to get a high level overview on how to
+setup it and use `dvc pull` and `dvc push` commands to collaborate. Please,
+don't forget to check the the [versioning](/doc/get-started/example-versioning)
+get started example to get a hands-on experience with data sets and models
+versioning.
