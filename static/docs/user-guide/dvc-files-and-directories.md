@@ -26,8 +26,8 @@ Once installed, DVC populates its installation folder per repository
   workspace) created by dvc and is used to cleanup your workspace when
   calling `dvc checkout`.
    
-* `.dvc/updater` - this file is used to remember the last time dvc has checked
-   for available updates.
+* `.dvc/updater` - this file is used store latest available version of dvc, which
+   is used to remind user to upgrade.
    
 * `.dvc/updater.lock` - a lock file for `.dvc/updater`.
 
