@@ -12,7 +12,7 @@ easily between them. Let's imagine we want to try a modified feature extraction:
 ### Expand to see code modifications
 
 Edit `featurization.py` to enable bigrams and increase number of features. Find
-and chage the `CountVectorizer` arguments, specify `ngram_range` and increase
+and change the `CountVectorizer` arguments, specify `ngram_range` and increase
 number of features:
 
 ```python
