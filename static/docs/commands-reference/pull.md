@@ -16,7 +16,7 @@ for more information on how to configure the remote storage.
 
 ```usage
     usage: dvc pull [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [-a]
-                    [-T] [-d]
+                    [-T] [-d] [-f]
                     [targets [targets ...]]
 
     positional arguments:
