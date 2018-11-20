@@ -17,7 +17,7 @@ take less than a second to restore a 50Gb data file.
 
 
 ```usage
-    usage: dvc checkout [-h] [-q] [-v] [targets [targets ...]]
+    usage: dvc checkout [-h] [-q] [-v] [-d] [-f] [targets [targets ...]]
 
     positional arguments:
       targets        DVC files
@@ -26,6 +26,8 @@ take less than a second to restore a 50Gb data file.
         -h, --help            show this help message and exit
         -q, --quiet           Be quiet.
         -v, --verbose         Be verbose.
+        -d, --with-deps       Checkout all dependencies of the specified target.
+        -f, --force           Do not prompt when removing working directory files.
 ```
 
 DVC does not report in the output which data files were restored. However, it
