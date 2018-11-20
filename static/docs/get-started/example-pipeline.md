@@ -289,7 +289,7 @@ the `code/featurization.py`:
     $ vi code/featurization.py
 ```
 
-Specify `ngram` parameter in `CountVectorizer` (lines 63–65):
+Specify `ngram` parameter in `CountVectorizer` (lines 72–73):
 
 ```python
     bag_of_words = CountVectorizer(stop_words='english',
