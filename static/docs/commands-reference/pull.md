@@ -34,6 +34,7 @@ for more information on how to configure the remote storage.
       -T, --all-tags        Fetch cache for all tags.
       -d, --with-deps       Fetch cache for all dependencies of the specified
                             target.
+      -f, --force           Do not prompt when removing working directory files.
 ```
 
 ## Examples
