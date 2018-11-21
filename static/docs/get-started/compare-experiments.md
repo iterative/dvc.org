@@ -42,8 +42,8 @@ DVC will aks for confirmation to overwrite the stage. Type `yes` and proceed.
 ```
 
 `evaluate.py` calculates AUC value using the test data set. `auc.metric` -
-is just a plain text file with a single number inside. A `dvc metrics show`
-command provides a way to compare different experiments:
+in this case it's just a plain text file with a single number inside. A 
+`dvc metrics show` command provides a way to compare different experiments:
 
 <details>
 
