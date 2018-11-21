@@ -99,16 +99,24 @@ differences are:
 
 7. **Git-LFS** (Large File Storage). The differences are:
 
-   - DVC is fully compatible with Git. It does not require special Git servers
-   like Git-LFS demands.
+   - It does not require special Git servers like Git-LFS demands. Any cloud
+   storage like S3, GCS, or on-premise SSH server can be used as a backend
+   for data sets and models, no additional databases, serves or infrastructure
+   is required.
 
    - DVC does not add any hooks to Git by default. To checkout data files, the
    *dvc checkout* command has to be run after each `git checkout` and `git
-   clone` command.
+   clone` command. It gives more granularity on managing data and code
+   separately. Hooks could be configured to make workflow simpler.
 
-   - DVC creates hardlinks (or even reflinks if they are supported) instead. The
+   - DVC creates hardlinks (or even reflinks if they are supported). The
    `dvc checkout` command does not actually copy data files from cache to the
    working tree, as copying files is a heavy operation for large files (30Gb+).
+   
+   - `git-lfs` was not made with data science scenarious in mind thus it does
+   not support certain features like pipelines and metrics, and thus Github has
+   a limit of 2GB files.
+   
 
    - DVC is not fundamentally bound to Git, having the option of changing the
    repository format.
