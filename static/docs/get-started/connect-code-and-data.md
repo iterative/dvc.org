@@ -25,6 +25,8 @@ consider using `virtualenv` to isolate your environment:
 </details>
 
 ```dvc
+    # Click the "Click to prepare sample code" above to download
+    # `prepare.py` if you want to run it.
     $ dvc run \
         -d prepare.py -d data.xml \
         -o data.tsv -o data-test.tsv \
