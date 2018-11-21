@@ -1,14 +1,15 @@
 # Compare Experiments
 
 DVC makes it easy to iterate on your project using
-[Git branches](https://git-scm.com/about/branching-and-merging). It provides a
-way to try different ideas, keep track of them, switch back and forth. To find
-the best performing experiment or track the progress, a special *metric* output
-type is supported in DVC.
+[Git branches](https://git-scm.com/about/branching-and-merging) or Git tags.
+It provides a way to try different ideas, keep track of them, switch back and
+forth. To find the best performing experiment or track the progress, a
+special *metric* output type is supported in DVC.
 
-Metric file is usually a plain text file with any project-specific numbers -
-`AUC`, `ROC`, etc. With a `-M` option of `dvc run` you can specify outputs that
-contain your project metrics:
+Metric file is usually a plain text file (though file of any complexity and
+structure could be used, check `dvc metrics` to get more details) with any
+project-specific numbers - `AUC`, `ROC`, etc. With a `-M` option of `dvc run`
+you can specify outputs that contain your project metrics:
 
 <details>
 
