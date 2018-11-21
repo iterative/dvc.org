@@ -15,11 +15,12 @@ and share your data alongside your code.
 
 ![](/static/img/model-versioning-diagram.png)
 
-In this very basic scenario, DVC is a better replacement for `git-lfs` and
-ad-hoc scripts on top of Amazon S3 (or name-it cloud) that are usually used to
-manage ML artifacts like model files, data files, etc. Unlike `git-lfs`, DVC is
-does not require installing a server, can be used on-premise (NAS, SSH, for example)
-or with any major cloud provider (S3, Google Could, Azure). 
+In this very basic scenario, DVC is a better replacement for `git-lfs` (check
+the [Related Technologies](/doc/dvc-philosophy/related-technologies) to get a
+better sense why) and ad-hoc scripts on top of Amazon S3 (or name-it cloud) that are
+usually used to manage ML artifacts like model files, data files, etc. Unlike
+`git-lfs`, DVC is does not require installing a server, can be used on-premise
+(NAS, SSH, for example) or with any major cloud provider (S3, Google Could, Azure). 
 
 Let's say you already have a project that uses a bunch of images that are
 stored in `images` directory and has a `model.pkl` file - your model file that
