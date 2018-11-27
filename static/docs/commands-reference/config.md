@@ -69,6 +69,14 @@ value can be an absolute path or relative to the path to the `.dvc` directory.
 ```dvc
     $ dvc config cache.dir /mnt/cache
 ```  
+Or
+```dvc
+    $ dvc config cache.dir ../../mycache
+    $ dvc pull -q
+    $ ls ../mycache
+    2f/
+```  
+
 
 * `protected` - makes files in the workspace read-only. Run `dvc checkout` for
 the change go into effect. It affects only files that are under DVC control and
