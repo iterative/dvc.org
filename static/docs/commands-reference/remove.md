@@ -6,9 +6,9 @@ This command safely removes data files or stage outputs that are tracked by DVC
 from your *workspace*. It takes a `.dvc` file and removes all outputs and
 optionally removes the file itself.
 
-Note, it *does not* remove files from the local cache or remote storage (see `dvc gc`).
-However, remember to run `dvc push` to save the files you actually want to use in the
-future or share.
+Note, it *does not* remove files from the local cache or remote storage (see
+`dvc gc`). However, remember to run `dvc push` to save the files you actually
+want to use in the future or share.
 
 ```usage
     usage: dvc remove [-h] [-q] [-v] [-o | -p] targets [targets ...]
@@ -29,10 +29,10 @@ how it can be used to replace or modify files that are under DVC control.
 
 ## Options
 
-* `--outs` (default) - remove outputs described in the provided DVC file(s),
-keep the DVC files.
+* `-o`, `--outs` (default) - remove outputs described in the provided DVC
+file(s), keep the DVC files.
 
-* `--purge` - remove outputs and DVC files
+* `-p`, `--purge` - remove outputs and DVC files.
 
 ## Examples
 

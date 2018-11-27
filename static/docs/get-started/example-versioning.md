@@ -192,8 +192,8 @@ Of course, we want to leverage these new labels and train the model again.
     $ dvc add model.h5
 ```
 
-Note! `dvc remove` is required, otherwise `python train.py` will overwrite the
-existing file and may corrupt the cached version. Check this
+Note! `dvc remove` or `dvc unprotect` is required, otherwise `python train.py`
+will overwrite the existing file and may corrupt the cached version. Check this
 [guide](/doc/user-guide/update-tracked-file) to learn more.
 
 Let's commit the second version:
@@ -266,9 +266,9 @@ the right place.
 `dvc add` is a perfectly reasonable choice when you need to keep track of
 different versions of data sets or model files that come and are updated from
 external sources. `data` directory above with cats and dogs images is a good
-example (just don't forget to run `dvc remove` when you need to
-[modify or replace](/doc/user-guide/update-tracked-file) a file that is under
-DVC control).
+example (just don't forget to run `dvc remove` or `dvc unprotect` when you need
+to [modify or replace](/doc/user-guide/update-tracked-file) a file that is
+under DVC control).
 
 On the other hand, there are files that are result of running some code. In our
 example, you should have noticed, that `train.py` produces binary files (e.g.
