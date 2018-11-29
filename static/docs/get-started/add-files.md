@@ -8,8 +8,8 @@ Let's get a sample StackOverflow data set to play with:
 
 ### Expand to learn how to dowload on Windows
 
-Windows doesn't ship `wget` utility by default, so you'll need to install it
-from a third party. We recommend using
+Windows doesn't ship `wget` utility by default, so you'll need to use browser to
+download `data.xml` or install it from a third party. We recommend using
 [chocolatey](https://chocolatey.org/). First, if you haven't already, install
 chocolatey using [official guide](https://chocolatey.org/install). Then install
 `wget` with the following command in the `Command Prompt`:
