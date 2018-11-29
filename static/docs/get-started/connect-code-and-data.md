@@ -16,7 +16,8 @@ packages like `panda` and `scikit-learn`, that are required to run this example,
 consider using `virtualenv` to isolate your environment:
 
 ```dvc
-    $ wget -q -O - https://dvc.org/s3/get-started/code.tgz | tar zx
+    $ wget https://dvc.org/s3/get-started/code.zip
+    $ unzip code.zip
     $ pip install -U -r requirements.txt
     $ git add .
     $ git commit -m 'add code'
