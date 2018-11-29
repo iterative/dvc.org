@@ -4,6 +4,21 @@ DVC allows storing and versioning source data files, ML models, directories,
 intermediate results with Git, without checking the file contents into Git.
 Let's get a sample StackOverflow data set to play with:
 
+<details>
+
+### Expand to learn how to dowload on Windows
+
+Windows doesn't ship `wget` utility by default, so you need to install one
+from a third party. We recommend using
+[chocolatey](https://chocolatey.org/). First, if you haven't already, install
+chocolatey using [official guide](https://chocolatey.org/install). Then install
+`wget` with the following command in the `Command Prompt`:
+```dvc
+    C:\> choco install wget
+```
+
+</details>
+
 ```dvc
     $ wget https://dvc.org/s3/get-started/data.xml
 ```
