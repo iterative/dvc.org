@@ -62,8 +62,7 @@ workspace:
 
 ### HTTP
 ```dvc
-    $ dvc run -d https://dvc.org/s3/examples/versioning/data.tgz \
-              -o data \
-               'wget -q -O - https://dvc.org/s3/examples/versioning/data.tgz \
-                  | tar -xzvf -'
+    $ dvc run -d https://example.com/data.txt \
+              -o data.txt \
+              wget https://example.com/data.txt -O data.txt
 ```
