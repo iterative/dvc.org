@@ -9,6 +9,7 @@ pipeline state. Currently DVC supports such types of external dependencies:
 3. Google Cloud Storage;
 4. SSH;
 5. HFDS;
+6. HTTP;
 
 In order to specify an external dependency for your stage use usual '-d' keys
 with URLs pointing to your desired files. As an example, let's take a look at
@@ -57,4 +58,12 @@ workspace:
                hdfs fs -copyToLocal \
                                 hdfs://user@example.com/home/shared/data.txt \
                                 data.txt
+```
+
+### HTTP
+```dvc
+    $ dvc run -d https://dvc.org/s3/examples/versioning/data.tgz \
+              -o data \
+               'wget -q -O - https://dvc.org/s3/examples/versioning/data.tgz \
+                  | tar -xzvf -'
 ```
