@@ -189,6 +189,10 @@ const Content = styled.article`
   
   .Collapsible {
     margin-bottom: 10px;
+    background-color: rgba(36, 173, 197, 0.2);
+    border-radius: 15px;
+    -moz-border-radius: 15px;
+    padding: 10px;
   }
   
   .Collapsible__trigger {
@@ -217,7 +221,7 @@ const Content = styled.article`
   }
   
   .Collapsible__contentInner {
-    background-color: rgba(36, 173, 197, 0.05);
+    background-color: rgba(36, 173, 197, 0.00);
     border-radius: 15px;
     -moz-border-radius: 15px;
     padding: 10px;
