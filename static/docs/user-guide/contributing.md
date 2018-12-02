@@ -36,7 +36,7 @@ To run DVC from its Git repository you need to setup your environment:
 
 * Modify and export `PATH` variable to include location of our wrapper script:
   ```dvc
-  $ export PATH=$PATH:$(DVC_HOME)/bin
+  $ export PATH=$PATH:$DVC_HOME/bin
   ```
 
 * Check that `dvc` points to your repository:
