@@ -60,3 +60,10 @@ or:
 
 See [Development](/doc/user-guide/development) if you want to install the most
 recent development version.
+
+
+## Auto complete & Syntax highlighting
+
+Visit [Usability](/doc/user-guide/usability) for reference on how to enable
+syntax highlighting for stage files and to find the completion scripts for
+your shell.
