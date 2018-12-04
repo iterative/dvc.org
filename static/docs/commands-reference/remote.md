@@ -182,6 +182,21 @@ container doesn't already exist, it will be created automatically.
 
 </details>
 
+<details>
+
+### Click for HTTP example
+
+**NOTE**: Currently HTTP remote only supports downloads:
+  - `pull`
+  - `fetch`
+  - `import`
+  - As a dependency on remote
+
+```dvc
+    $ dvc remote add myremote https://example.com/path/to/dir
+```
+
+</details>
 
 ## modify
 

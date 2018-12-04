@@ -10,14 +10,15 @@ Supported schemes:
 * `azure` - URL to a file on Azure Blob Storage
 * `ssh` - URL to a file on another machine with SSH access
 * `hdfs` - URL to a file on HDFS
+* `http` - URL to a file with a _strong ETag_ served with HTTP or HTTPS
 
 ```usage
     usage: dvc import [-h] [-q] [-v] url out
-    
+
     positional arguments:
       url            URL
       out            Output
-    
+
     optional arguments:
       -h, --help     show this help message and exit
       -q, --quiet    Be quiet.
@@ -33,4 +34,5 @@ Supported schemes:
     $ dvc import azure://mybucket/data.csv azure_data.csv
     $ dvc import ssh://user@example.com:/path/to/data.csv ssh_data.csv
     $ dvc import hdfs://user@example.com/path/to/data.csv hdfs_data.csv
+    $ dvc import https://example.com/path/to/data.csv http_data.csv
 ```

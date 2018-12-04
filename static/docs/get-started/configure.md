@@ -4,7 +4,7 @@ Once you install DVC, you will be able to start using it (in its local setup)
 immediately.
 
 However, a remote storage (or remote) should be set up if you need to share data
-outside of a local environment. 
+outside of a local environment.
 
 For simplicity, let's setup a local remote:
 
@@ -13,7 +13,7 @@ For simplicity, let's setup a local remote:
     $ git commit .dvc/config -m "initialize DVC local remote"
 ```
 A remote can be specified by the remote type preffix and a path. As of this
-version, DVC supports six types of remotes:
+version, DVC supports seven types of remotes:
 
 * `local` - Local directory
 * `s3` - Amazon Simple Storage Service
@@ -21,6 +21,7 @@ version, DVC supports six types of remotes:
 * `azure` - Azure Blob Storage
 * `ssh` - Secure Shell
 * `hdfs` - The Hadoop Distributed File System
+* `http` - Support for HTTP and HTTPS protocol
 
 For example, to setup an S3 remote:
 

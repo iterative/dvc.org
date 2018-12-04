@@ -9,6 +9,7 @@ pipeline state. Currently DVC supports such types of external dependencies:
 3. Google Cloud Storage;
 4. SSH;
 5. HFDS;
+6. HTTP;
 
 In order to specify an external dependency for your stage use usual '-d' keys
 with URLs pointing to your desired files. As an example, let's take a look at
@@ -58,3 +59,37 @@ workspace:
                                 hdfs://user@example.com/home/shared/data.txt \
                                 data.txt
 ```
+
+### HTTP
+```dvc
+    $ dvc run -d https://example.com/data.txt \
+              -o data.txt \
+              wget https://example.com/data.txt -O data.txt
+```
+
+### Using import
+
+Instead of downloading add adding the the data yourself, you can rely on the
+`dvc import` command:
+
+```dvc
+    $ dvc import https://dvc.org/s3/get-started/data.xml
+```
+
+### Expand to learn more about DVC internals
+
+If you open the resulting DVC file, you will see something like this:
+```yaml
+deps:
+  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
+    path: https://dvc.org/s3/get-started/data.xml
+  md5: bea9674331a4b1d165f2b0abaf2cb0ef
+  outs:
+  - cache: true
+    md5: a304afb96060aad90176268345e10355
+    path: data.xml
+```
+
+DVC checks the headers returned by the server, looking for a strong
+[ETag](https://en.wikipedia.org/wiki/HTTP_ETag), and uses it
+to know if the file has changed and we need to download it again.
