@@ -9,7 +9,7 @@ configuration with the data it processes to produce the result:
 
 <details>
 
-### Click to prepare sample code
+### Click to prepare sample code ...
 If you have been following along the get started from the very beginning, run
 these commands to get the sample code and install dependencies. It will install
 packages like `panda` and `scikit-learn`, that are required to run this example,

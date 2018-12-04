@@ -197,25 +197,27 @@ const Content = styled.article`
   
   .Collapsible__trigger {
     font-family: BrandonGrotesqueMed;
+    display: block;
+    position: relative;
+    opacity: 0.9;
     
-     &:before {
+     &:after {
+      position: absolute;
       display: inline-block;
-      content: "\\25B8";
+      background-size: 20px 20px;
+      right: 0;
+      width: 20px; 
+      height: 20px;
+      background-image: url('/static/img/click.png');
+      content: '';
       font-family: monospace;
-      color: #F26840;
-      margin-right: 10px;
-      vertical-align: center;
-      font-size: 20px;
       transition: transform 200ms;
     }
     
+    
     &.is-open {
-      &:before {
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
+      &:after {
+        opacity: 0.5;
       }
     }
   }
