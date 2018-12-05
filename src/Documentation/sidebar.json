@@ -50,16 +50,21 @@
       "external-outputs.md",
       "development.md",
       "contributing.md",
-      "update-tracked-file.md"
+      "update-tracked-file.md",
+      "autocomplete.md",
+      "plugins.md"
     ],
     "labels": {
-      "dvc-files-and-directories.md": "DVC Files and Directories",
-      "dvc-file-format.md": "DVC File Format",
+      "dvc-files-and-directories.md": "Files and Directories",
+      "dvc-file-format.md": "File Format (.dvc)",
       "development.md": "Development Version",
       "external-dependencies.md": "External Dependencies",
       "external-outputs.md": "External Outputs",
       "contributing.md": "Contributing",
-      "update-tracked-file.md": "Update a Tracked File"
+      "update-tracked-file.md": "Update a Tracked File",
+      "autocomplete.md": "Shell Autocomplete",
+      "plugins.md": "Syntax Highlighting & IDE Integrations"
+
     }
   },
   {

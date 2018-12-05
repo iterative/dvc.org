@@ -82,6 +82,22 @@ to learn more.
 Let's now add some data, then train the first model and capture it with DVC,
 including input data set and metrics.
 
+<details>
+
+### Expand to learn how to download on Windows
+
+Windows does not ship `wget` or `tar` utility by default, so you'll need to use
+browser to download `data.xml` or install it from a third party. We recommend
+using [chocolatey](https://chocolatey.org/). First, if you haven't already,
+install chocolatey using [official guide](https://chocolatey.org/install). Then
+install `wget` and `tar` with the following command in the `Command Prompt`:
+```dvc
+    C:\> choco install wget
+```
+
+</details>
+
+
 ```dvc
     $ wget -q -O - https://dvc.org/s3/examples/versioning/data.tgz | tar -xzvf -
 ```

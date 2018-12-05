@@ -62,8 +62,12 @@ See [Development](/doc/user-guide/development) if you want to install the most
 recent development version.
 
 
-## Auto complete & Syntax highlighting
+### Shell autocomplete
 
-Visit [Usability](/doc/user-guide/usability) for reference on how to enable
-syntax highlighting for stage files and to find the completion scripts for
-your shell.
+Visit [Shell Autocomplete](/doc/user-guide/autocomplete) section to find and
+install the completion scripts for your shell.
+
+### Editors and IDEs integration
+
+Visit [Vim and IDE Integrations](/doc/user-guide/plugins) for reference on how
+to enable shell syntax highlighting and install DVC support for different IDEs. 

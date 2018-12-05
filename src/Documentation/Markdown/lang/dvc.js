@@ -38,7 +38,8 @@ let _javascript = function(hljs) {
         end: /([^\\]\n)|\Z/,
         keywords: {
           keyword:
-          'ls cat vi mkdir cd wget du python cp export echo pip curl tar',
+          'ls cat vi mkdir cd wget du python cp export echo pip curl tar ' +
+            'exec autoload sudo',
         },
         contains: [
           {
@@ -47,7 +48,7 @@ let _javascript = function(hljs) {
               built_in:
                 'help dvc init add import checkout run pull push fetch status ' +
                 'repro remove move gc config remote metrics install root lock ' +
-                'unlock pipeline destroy',
+                'unlock pipeline destroy unprotect r',
             },
             className: 'strong',
           },
