@@ -10,11 +10,11 @@ state. Currently DVC supports such types of external outputs:
 4. SSH;
 5. HFDS;
 
-In order to specify an external output for your stage use usual '-o' and
-'-O' keys with URLs pointing to your desired files. For cached external outputs
-(specified using '-o') you will need to setup an external cache location, that
+In order to specify an external output for your stage use usual `-o` and
+`-O` keys with URLs pointing to your desired files. For cached external outputs
+(specified using `-o`) you will need to setup an external cache location, that
 will be used by dvc to store versions of your external file. Non-cached
-external outputs(specified using '-O') do not require external cache to be
+external outputs(specified using `-O`) do not require external cache to be
 setup.
 
 ## Examples
