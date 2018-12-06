@@ -25,8 +25,7 @@ remote.
                             repository for all branches.
       -T, --all-tags        Show status of a local cache compared to a remote
                             repository for all tags.
-      -d, --with-deps       Show status of a local cache compared to a remote
-                            repository for all dependencies of the specified
+      -d, --with-deps       Show status for all dependencies of the specified
                             target.
 ```
 
