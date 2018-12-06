@@ -30,7 +30,7 @@ nothing to do with DVC so far, it's just a simple preparation:
 ### Expand to learn how to download on Windows
 
 Windows does not ship `wget` utility by default, so you'll need to use
-browser to download `data.zip` or install it from a third party. We recommend
+browser to download `code.zip` or install it from a third party. We recommend
 using [chocolatey](https://chocolatey.org/). First, if you haven't already,
 install chocolatey using [official guide](https://chocolatey.org/install). Then
 install `wget` and `tar` with the following command in the `Command Prompt`:
