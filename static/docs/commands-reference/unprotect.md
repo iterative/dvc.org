@@ -46,31 +46,31 @@ to `copy` and DVC [protected mode](/doc/commands-reference/config#cache) is off.
 
 ```dvc
     $ ls -lh
-    -rw-r--r--  1 10576022 Nov 27 13:30 Posts.xml.tgz
+    -rw-r--r--  1 10576022 Nov 27 13:30 Posts.xml.zip
     
-    $ dvc add Posts.xml.tgz
-    Adding 'Posts.xml.tgz' to '.gitignore'.
-    Saving 'Posts.xml.tgz' to cache '.dvc/cache'.
-    Saving information to 'Posts.xml.tgz.dvc'.
+    $ dvc add Posts.xml.zip
+    Adding 'Posts.xml.zip' to '.gitignore'.
+    Saving 'Posts.xml.zip' to cache '.dvc/cache'.
+    Saving information to 'Posts.xml.zip.dvc'.
     
     To track the changes with git run:
     
-    	git add .gitignore Posts.xml.tgz.dvc
+    	git add .gitignore Posts.xml.zip.dvc
 ```
 
 3. Check that file is a read-only link (@ sign means a link): 
     
 ```dvc    
     $ ls -lh
-    -r--r--r--@ 1 10576022 Apr 25  2017 Posts.xml.tgz
-    -rw-r--r--  1      120 Nov 27 13:29 Posts.xml.tgz.dvc
+    -r--r--r--@ 1 10576022 Apr 25  2017 Posts.xml.zip
+    -rw-r--r--  1      120 Nov 27 13:29 Posts.xml.zip.dvc
 ```
 
 4. Unprotect the file:
 
 ```dvc
-    $ dvc unprotect Posts.xml.tgz
-    [##############################] 100% Posts.xml.tgz
+    $ dvc unprotect Posts.xml.zip
+    [##############################] 100% Posts.xml.zip
 ```
 
 4. Check that the file is writable now, the cached version is intact, and they
@@ -78,9 +78,9 @@ are not linked (the file in the workspace is a copy of the file):
 
 ```dvc
    $ ls -lh
-   -rw-r--r--  1  120B Nov 27 13:29 Posts.xml.tgz.dvc
-   -rw-r--r--  1   10M Nov 27 13:30 Posts.xml.tgz
+   -rw-r--r--  1  120B Nov 27 13:29 Posts.xml.zip.dvc
+   -rw-r--r--  1   10M Nov 27 13:30 Posts.xml.zip
    
-   $ ls -lh ls -lh .dvc/cache/2f/
-   -rw-r--r--@ 1 10M Apr 25  2017 412200dc53fb97dcac0353b609d199
+   $ ls -lh ls -lh .dvc/cache/ce/
+   -rw-r--r--@ 1 10M Apr 25  2017 68b98d82545628782c66192c96f2d2
 ``` 

@@ -83,7 +83,7 @@ to third party visualization utilities.
 ```dvc
     $ dvc pipeline show eval.txt.dvc --ascii
               .------------------------.
-              | data/Posts.xml.tgz.dvc |
+              | data/Posts.xml.zip.dvc |
               `------------------------'
                            *
                            *

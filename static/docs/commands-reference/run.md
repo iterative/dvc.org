@@ -58,15 +58,16 @@ Execute an R script as the DVC pipeline step:
 
 ```dvc
     $ dvc run -d parsingxml.R -d Posts.xml \
-             -o Posts.csv \
-             Rscript parsingxml.R Posts.xml Posts.csv
+              -o Posts.csv \
+              Rscript parsingxml.R Posts.xml Posts.csv
 ```
 
 Extract an XML file from an archive to the `data/` folder:
 
 ```dvc
     $ mkdir data
-    $ dvc run -d Posts.xml.tgz \
+    $ dvc run -d Posts.xml.zip \
               -o data/Posts.xml \
-              tar zxf Posts.xml.tgz -C data/
+              -f extract.dvc \
+              unzip Posts.xml.zip -d data/
 ```

@@ -13,14 +13,39 @@ steps. Later we will be modifying the code a bit to improve the model.
 Take the following steps to initialize a new Git repository and get the sample
 code into it:
 
+<details>
+
+### Expand to learn how to download on Windows
+
+Windows does not ship `wget` utility by default, so you'll need to use
+browser to download `data.zip` or install it from a third party. We recommend
+using [chocolatey](https://chocolatey.org/). First, if you haven't already,
+install chocolatey using [official guide](https://chocolatey.org/install). Then
+install `wget` and `tar` with the following command in the `Command Prompt`:
+```dvc
+    C:\> choco install wget
+```
+
+</details>
+
+
 ```dvc
     $ mkdir classify
     $ cd classify
     $ git init
-    $ wget https://dvc.org/s3/so/code.tgz
-    $ tar -xvf code.tgz && rm -f code.tgz
+    $ wget https://dvc.org/s3/so/code.zip
+    $ unzip code.zip && rm -f code.zip
     $ git add code/
-    $ git commit -m 'Download code'
+    $ git commit -m 'download code'
+```
+
+(Optional) It's highly recommended to initialize a virtual environment to keep
+your global packages clean and untouched:
+
+```dvc
+    $ virtualenv --system-site-packages .env
+    $ source .env/bin/activate
+    $ echo '.env/' >> .gitignore
 ```
 
 Install the code requirements:
@@ -68,7 +93,7 @@ how it works.
     state
     lock
 
-    $ git commit -m 'Init DVC'
+    $ git commit -m 'init DVC'
 ```
 
 The `.dvc/cache` directory is one of the most important parts of any DVC

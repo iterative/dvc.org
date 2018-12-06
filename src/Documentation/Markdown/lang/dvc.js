@@ -39,7 +39,7 @@ let _javascript = function(hljs) {
         keywords: {
           keyword:
           'ls cat vi mkdir cd wget du python cp export echo pip curl tar ' +
-            'exec autoload sudo',
+            'exec autoload sudo unzip rm',
         },
         contains: [
           {

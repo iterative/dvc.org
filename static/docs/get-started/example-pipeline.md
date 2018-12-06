@@ -25,14 +25,45 @@ and reproducible way.
 Okay, let's first download the code and set up a Git repository. This step has
 nothing to do with DVC so far, it's just a simple preparation:
 
+<details>
+
+### Expand to learn how to download on Windows
+
+Windows does not ship `wget` utility by default, so you'll need to use
+browser to download `data.zip` or install it from a third party. We recommend
+using [chocolatey](https://chocolatey.org/). First, if you haven't already,
+install chocolatey using [official guide](https://chocolatey.org/install). Then
+install `wget` and `tar` with the following command in the `Command Prompt`:
+```dvc
+    C:\> choco install wget
+```
+
+</details>
+
 ```dvc
     $ mkdir example
     $ cd example
     $ git init
-    $ wget -q -O - https://dvc.org/s3/examples/so/code.tgz | tar -xzvf -
-    $ pip install -U -r code/requirements.txt
+    $ wget https://dvc.org/s3/examples/so/code.zip
+    $ unzip code.zip
+    $ rm -f code.zip
     $ git add code/
     $ git commit -m 'download and initialize code'
+```
+
+(Optional) It's highly recommended to initialize a virtual environment to keep
+your global packages clean and untouched:
+
+```dvc
+    $ virtualenv --system-site-packages .env
+    $ source .env/bin/activate
+    $ echo '.env/' >> .gitignore
+```
+
+Install the required dependencies:
+
+```dvc
+    $ pip install -r code/requirements.txt
 ```
 
 Then, we are creating the pipeline step-by-step, utilizing the same set of
@@ -50,8 +81,8 @@ control:
 
 ```dvc
     $ mkdir data
-    $ wget -P data https://dvc.org/s3/so/25K/Posts.xml.tgz
-    $ dvc add data/Posts.xml.tgz
+    $ wget -P data https://dvc.org/s3/examples/so/Posts.xml.zip
+    $ dvc add data/Posts.xml.zip
 ```
 
 <details>
@@ -64,22 +95,22 @@ in general and a user does not interact with these files directly. Check
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
 to learn more.
 
-When we run `dvc add Posts.xml.tgz` the following happens. DVC creates an
+When we run `dvc add Posts.xml.zip` the following happens. DVC creates an
 *orphaned* version of the [stage file](/doc/user-guide/dvc-file-format):
 
 ```yaml
-   md5: 19804bad370d1dd60fe55306e2bf379d
+   md5: 4dbe7a4e5a0d41b652f3d6286c4ae788
    outs:
    - cache: true
-     md5: 2f412200dc53fb97dcac0353b609d199
-     path: Posts.xml.tgz
+     md5: ce68b98d82545628782c66192c96f2d2
+     path: Posts.xml.zip
 ```
 
 This is the file that should be committed into a version control system instead
 of the data file itself.
 
-Actual data file `Posts.xml.tgz` is linked into the `.dvc\cache` directory,
-using the `.dvc\cache\2f\412200dc53fb97dcac0353b609d199` name and is added to
+Actual data file `Posts.xml.zip` is linked into the `.dvc\cache` directory,
+under the `.dvc\cache\ce\68b98d82545628782c66192c96f2d2` name and is added to
 `.gitignore`. Even if you remove it in the workspace, or checkout a different
 branch/commit the data is not lost if a corresponding DVC file is committed.
 It's enough to run `dvc checkout` or `dvc pull` to restore data files.
@@ -89,7 +120,7 @@ It's enough to run `dvc checkout` or `dvc pull` to restore data files.
 * Commit the data file meta-information to Git repository:
 
 ```dvc
-    $ git add data/Posts.xml.tgz.dvc data/.gitignore
+    $ git add data/Posts.xml.zip.dvc data/.gitignore
     $ git commit -m 'add dataset'
 ```
 
@@ -104,10 +135,10 @@ run `dvc add` on `Posts.xml`, `dvc run` saves (commits into cache, takes the
 file under DVC control) automatically:
 
 ```dvc
-    $ dvc run -d data/Posts.xml.tgz \
+    $ dvc run -d data/Posts.xml.zip \
               -o data/Posts.xml \
               -f extract.dvc \
-              tar -xvf data/Posts.xml.tgz -C data
+              unzip data/Posts.xml.zip -d data
 ```
 
 <details>
@@ -117,11 +148,11 @@ file under DVC control) automatically:
 Similar to `dvc add`, `dvc run` creates a [stage file](/doc/user-guide/dvc-file-format):
 
 ```yaml
-   cmd: tar -xvf data/Posts.xml.tgz -C data
+   cmd: ' unzip data/Posts.xml.zip -d data'
    deps:
-   - md5: 2f412200dc53fb97dcac0353b609d199
-     path: data/Posts.xml.tgz
-   md5: fabc15ed44c71020744e5cdd7a665f50
+   - md5: ce68b98d82545628782c66192c96f2d2
+     path: data/Posts.xml.zip
+   md5: abaf651846ec4fb7a4a8e1a685546ed9
    outs:
    - cache: true
      md5: a304afb96060aad90176268345e10355
@@ -164,7 +195,7 @@ your actual workspace without copying every time object from/to the cache.
               -f split.dvc \
               python code/split_train_test.py data/Posts.tsv 0.2 20170426 \
                                               data/Posts-train.tsv data/Posts-test.tsv
-```
+```cd
 
 * Extract features and labels from the data. Two TSV as inputs with two pickle
 matrices as outputs:
@@ -210,7 +241,7 @@ see actual commands instead of DVC-files):
     $ dvc pipeline show --ascii evaluate.dvc
 
            .------------------------.
-           | data/Posts.xml.tgz.dvc |
+           | data/Posts.xml.zip.dvc |
            `------------------------'
                         *
                         *
@@ -264,7 +295,7 @@ depending on Python version you are using and other environment parameters.
     $ dvc metrics show -a
 
     master:
-        auc.metric: 0.587951
+        auc.metric: 0.620091
 ```
 
 It's time to save the pipeline. You can check using `git status` command that we
@@ -312,7 +343,7 @@ depending on Python version you are using and other environment parameters.
 ```dvc
     $ dvc metrics show -a
     master:
-        auc.metric: 0.603121
+        auc.metric: 0.666618
 ```
 
 ## Conclusion

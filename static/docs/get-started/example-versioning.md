@@ -53,6 +53,7 @@ your global packages clean and untouched:
 ```dvc
     $ virtualenv --system-site-packages .env
     $ source .env/bin/activate
+    $ echo '.env/' >> .gitignore
 ```
 
 Install required dependencies:
@@ -86,8 +87,8 @@ including input data set and metrics.
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` or `tar` utility by default, so you'll need to use
-browser to download `data.xml` or install it from a third party. We recommend
+Windows does not ship `wget` utility by default, so you'll need to use
+browser to download `data.zip` or install it from a third party. We recommend
 using [chocolatey](https://chocolatey.org/). First, if you haven't already,
 install chocolatey using [official guide](https://chocolatey.org/install). Then
 install `wget` and `tar` with the following command in the `Command Prompt`:
@@ -97,9 +98,10 @@ install `wget` and `tar` with the following command in the `Command Prompt`:
 
 </details>
 
-
 ```dvc
-    $ wget -q -O - https://dvc.org/s3/examples/versioning/data.tgz | tar -xzvf -
+    $ wget https://dvc.org/s3/examples/versioning/data.zip
+    $ unzip data.zip
+    $ rm -f data.zip
 ```
 
 This command downloads and extracts our initial data set - **1000 labeled
@@ -178,7 +180,9 @@ Let's imagine that our images data set is growing, we were able to double it.
 Next command extracts 500 cat and 500 dog images into `data/train`:
 
 ```dvc
-    $ wget -q -O - https://dvc.org/s3/examples/versioning/new-labels.tgz | tar -xzvf -
+    $ wget https://dvc.org/s3/examples/versioning/new-labels.zip
+    $ unzip new-labels.zip
+    $ rm -f new-labels.zip
 ```
 
 For simplicity we keep the validation data set the same. Now our data set has

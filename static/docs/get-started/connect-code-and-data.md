@@ -18,6 +18,7 @@ consider using `virtualenv` to isolate your environment:
 ```dvc
     $ wget https://dvc.org/s3/get-started/code.zip
     $ unzip code.zip
+    $ rm -f code.zip
     $ pip install -U -r requirements.txt
     $ git add .
     $ git commit -m 'add code'
