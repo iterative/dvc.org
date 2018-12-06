@@ -195,7 +195,7 @@ your actual workspace without copying every time object from/to the cache.
               -f split.dvc \
               python code/split_train_test.py data/Posts.tsv 0.2 20170426 \
                                               data/Posts-train.tsv data/Posts-test.tsv
-```cd
+```
 
 * Extract features and labels from the data. Two TSV as inputs with two pickle
 matrices as outputs:
