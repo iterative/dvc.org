@@ -45,3 +45,9 @@ Push all data file caches from the current Git branch to the default remote:
     (7/8): [##################################] 100% images/0007.jpg
     (8/8): [#######################           ] 57% model.pkl
 ```
+
+Push outputs of a specific dvc file:
+```dvc
+    $ dvc push data.zip.dvc
+    [#################################] 100% data.zip
+```
