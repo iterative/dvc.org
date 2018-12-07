@@ -53,3 +53,9 @@ Pull all files from the current Git branch:
     (7/8): [#################################] 100% images/0007.jpg
     (8/8): [#################################] 100% model.pkl
 ```
+
+Pull outputs of a specific dvc file:
+```dvc
+    $ dvc pull data.zip.dvc
+    [#################################] 100% data.zip
+```
