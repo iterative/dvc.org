@@ -48,3 +48,9 @@ Fetch all files used in the current Git branch:
     (7/8): [#################################] 100% images/0007.jpg
     (8/8): [#################################] 100% model.pkl
 ```
+
+Fetch outputs of a specific dvc file:
+```dvc
+    $ dvc fetch data.zip.dvc
+    [#################################] 100% data.zip
+```
