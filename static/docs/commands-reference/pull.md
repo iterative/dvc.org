@@ -6,6 +6,8 @@ The set of data files to pull (usually it means downloading from the remote
 storage if file is not in the local cache yet) is determined by analyzing all
 `.dvc` files in the current branch, unless `--all-branches` is specified.
 
+The command pulls only output of a specific stage if dvc file is specified `dvc pull data.zip.dvc`.
+
 After data file is in cache DVC utilizes OS specific mechanisms like reflinks or
 hardlinks to put it into the working space without copying. See `dvc checkout`
 for more details.
