@@ -6,6 +6,8 @@ The set of data files to pull (usually it means downloading from the remote
 storage if file is not in the local cache yet) is determined by analyzing all
 `.dvc` files in the current branch, unless `--all-branches` is specified.
 
+The command pulls only output of a specific stage if dvc file is specified `dvc pull data.zip.dvc`.
+
 After data file is in cache DVC utilizes OS specific mechanisms like reflinks or
 hardlinks to put it into the working space without copying. See `dvc checkout`
 for more details.
@@ -52,4 +54,10 @@ Pull all files from the current Git branch:
     (6/8): [#################################] 100% images/0006.jpg
     (7/8): [#################################] 100% images/0007.jpg
     (8/8): [#################################] 100% model.pkl
+```
+
+Pull outputs of a specific dvc file:
+```dvc
+    $ dvc pull data.zip.dvc
+    [#################################] 100% data.zip
 ```

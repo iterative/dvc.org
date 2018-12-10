@@ -3,6 +3,9 @@
 This command pushes all data file caches related to the current Git branch to
 the remote storage.
 
+The command pushes only output of a specific stage if dvc file is specified `dvc push data.zip.dvc`.
+
+
 See `dvc remote`, `dvc config` and
 [remote storages](https://dvc.org/doc/get-started/configure)
 for more information on how to configure the remote storage.
@@ -44,4 +47,10 @@ Push all data file caches from the current Git branch to the default remote:
     (6/8): [##################################] 100% images/0006.jpg
     (7/8): [##################################] 100% images/0007.jpg
     (8/8): [#######################           ] 57% model.pkl
+```
+
+Push outputs of a specific dvc file:
+```dvc
+    $ dvc push data.zip.dvc
+    [#################################] 100% data.zip
 ```

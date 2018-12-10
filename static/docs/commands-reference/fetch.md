@@ -6,6 +6,8 @@ The set of data files to fetch (usually it means downloading from the remote
 storage) is determined by analyzing all `.dvc` files in the current branch,
 unless `--all-branches` is specified.
 
+The command fetches only outputs of a specific stage if dvc file is specified `dvc push data.zip.dvc`.
+
 See `dvc remote`, `dvc config` and 
 [remote storages](https://dvc.org/doc/get-started/configure)
 for more information on how to configure the remote storage.
@@ -47,4 +49,10 @@ Fetch all files used in the current Git branch:
     (6/8): [#################################] 100% images/0006.jpg
     (7/8): [#################################] 100% images/0007.jpg
     (8/8): [#################################] 100% model.pkl
+```
+
+Fetch outputs of a specific dvc file:
+```dvc
+    $ dvc fetch data.zip.dvc
+    [#################################] 100% data.zip
 ```
