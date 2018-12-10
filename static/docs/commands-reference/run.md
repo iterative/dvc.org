@@ -2,38 +2,19 @@
 
 Generate a stage file from a given command and execute the command.
 
+## Synopsis
+
 ```usage
     usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
                    [-M METRICS_NO_CACHE] [-f FILE] [-c CWD] [--no-exec] [-y]
                    [--overwrite-dvcfile] [--ignore-build-cache] [--remove-outs]
-                   ...
+                   command
     
     positional arguments:
-      command               Command or command file to execute.
-    
-    optional arguments:
-      -h, --help            show this help message and exit
-      -q, --quiet           Be quiet.
-      -v, --verbose         Be verbose.
-      -d DEPS, --deps DEPS  Declare dependencies for reproducible cmd.
-      -o OUTS, --outs OUTS  Declare output data file or data directory.
-      -O OUTS_NO_CACHE, --outs-no-cache OUTS_NO_CACHE
-                            Declare output regular file or directory (sync to
-                            Git, not DVC cache).
-      -M METRICS_NO_CACHE, --metrics-no-cache METRICS_NO_CACHE
-                            Declare output metric file or directory (not cached
-                            by DVC).
-      -f FILE, --file FILE  Specify name of the stage file.
-      -c CWD, --cwd CWD     Directory within your project to run your command and
-                            place stage file in.
-      --no-exec             Only create stage file without actually running it.
-      -y, --yes             OBSOLETED, use --overwrite-dvcfile instead
-      --overwrite-dvcfile   Overwrite existing dvc file without asking for
-                            confirmation.
-      --ignore-build-cache  Run this stage even if it has been already ran with
-                            the same command/dependencies/outputs/etc before.
-      --remove-outs         Remove outputs before running the command.
+      command               Command to execute.
 ```
+
+## Description
 
 `dvc run` provides an interface to build a computational graph (aka pipeline).
 It's a way to describe commands, data inputs and intermediate results that went
@@ -130,7 +111,7 @@ more details.
 
 ## Examples
 
-A trivial example to play with, try different set of options to see how they
+* A trivial example to play with, try different set of options to see how they
 work. You don't need any actual data or scripts to play with this example:
 
 ```dvc
@@ -152,7 +133,7 @@ work. You don't need any actual data or scripts to play with this example:
    	git add .gitignore metric.dvc
 ```
 
-Execute a Python script as the DVC pipeline step. Stage file name is not
+* Execute a Python script as a DVC pipeline step. Stage file name is not
 specified, so a `model.p.dvc` stage file is created:
 
 ```dvc
@@ -162,7 +143,7 @@ specified, so a `model.p.dvc` stage file is created:
               python train_model.py matrix-train.p 20180226 model.p
 ```
 
-Execute an R script as the DVC pipeline step:
+* Execute an R script as s DVC pipeline step:
 
 ```dvc
     $ dvc run -d parsingxml.R -d Posts.xml \
@@ -170,7 +151,7 @@ Execute an R script as the DVC pipeline step:
               Rscript parsingxml.R Posts.xml Posts.csv
 ```
 
-Extract an XML file from an archive to the `data/` folder:
+* Extract an XML file from an archive to the `data/` folder:
 
 ```dvc
     $ mkdir data
