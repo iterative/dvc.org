@@ -52,11 +52,12 @@ metrics.
 
 **Options:**
 
-* `type` - specify a type of the metric file that will be used to determine how
-`dvc metrics show` will handle displaying it. This type will be saved into the
-respective `.dvc` file and will be used automatically in `dvc metrics show`.
+* `-t`, `--type` - specify a type of the metric file. It will be used to
+determine how `dvc metrics show` handles displaying it. This type will be saved
+into the respective `.dvc` file and will be used automatically in the `dvc
+metrics show`.
 
-* `xpath` - specify a path within a metric file. Similar to XPath for XML. This
+* `-x`, `--xpath` - specify a path within a metric file. Similar to XPath for XML. This
 path will be saved into the respective `.dvc` file and will be used
 automatically in `dvc metrics show`.
 
@@ -186,5 +187,6 @@ And finally let's delete data/eval.txt from metrics for our project:
 ```dvc
     $ dvc metrics remove data/eval.txt
     $ dvc metrics show
-    Failed to show metrics: No metric files in this repository. Use 'dvc metrics add' to add a metric file to track.
+    Failed to show metrics: No metric files in this repository.
+    Use 'dvc metrics add' to add a metric file to track.
 ```
