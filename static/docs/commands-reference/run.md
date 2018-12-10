@@ -5,9 +5,10 @@ Generate a stage file from a given command and execute the command.
 ## Synopsis
 
 ```usage
-    usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
-                   [-M METRICS_NO_CACHE] [-f FILE] [-c CWD] [--no-exec] [-y]
-                   [--overwrite-dvcfile] [--ignore-build-cache] [--remove-outs]
+    usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS]
+                   [-O OUTS_NO_CACHE] [-M METRICS_NO_CACHE] [-f FILE]
+                   [-c CWD] [--no-exec] [-y] [--overwrite-dvcfile]
+                   [--ignore-build-cache] [--remove-outs]
                    command
     
     positional arguments:
