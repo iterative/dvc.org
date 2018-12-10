@@ -72,7 +72,6 @@
     "folder": "/static/docs/commands-reference",
     "indexFile": "index.md",
     "files": [
-      "cheat-sheet.md",
       "add.md",
       "checkout.md",
       "config.md",

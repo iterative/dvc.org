@@ -54,8 +54,7 @@ This is the main section with the global options.
 
 ## remote
 
-Sections that describe particular remotes. See
-[`dvc remote`](https://dvc.org/doc/commands-reference/remote) for more info.
+Sections that describe particular remotes. See `dvc remote` for more info.
 
 ## cache
 
