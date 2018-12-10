@@ -9,7 +9,7 @@ Generate a stage file from a given command and execute the command.
                    ...
     
     positional arguments:
-      command               Command or command file to execute.
+      command               Command to execute.
     
     optional arguments:
       -h, --help            show this help message and exit
