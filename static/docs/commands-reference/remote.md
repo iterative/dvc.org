@@ -273,6 +273,11 @@ these settings, you could use the following options:
     $ dvc remote modify myremote url s3://bucket/remote
   ```
 
+* **`use_ssl`** - whether or not to use SSL. By default, SSL is used
+
+  ```dvc
+    $ dvc remote modify myremote use_ssl false
+  ```
 </details>
 
 <details>
