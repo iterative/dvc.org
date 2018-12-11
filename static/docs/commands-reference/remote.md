@@ -334,13 +334,15 @@ these settings, you could use the following options:
     $ dvc remote modify myremote keyfile /path/to/keyfile
   ```
   
-* **`password`** - password to use to access a remote.
+* **`password`** - a private key passphrase or a password to use to
+  use when accessing a remote.
 
   ```dvc
     $ dvc remote modify myremote password mypassword
   ```
 
-* **`ask_password`** - ask for password to use when accessing a remote.
+* **`ask_password`** - ask for a private key passphrase or a password
+  to use when accessing a remote.
 
   ```dvc
     $ dvc remote modify myremote ask_password true
