@@ -25,4 +25,4 @@ You can download the plugin from
 [JetBrains Plugins repository](https://plugins.jetbrains.com/plugin/11368-dvc-support-poc)
 
 For more information, visit the plugin's repository:
-[prihoda/intellij-dvc-support-poc](https://github.com/iteraticve/intellij-dvc-support-poc/)
+[iterative/intellij-dvc/](https://github.com/iterative/intellij-dvc/)
