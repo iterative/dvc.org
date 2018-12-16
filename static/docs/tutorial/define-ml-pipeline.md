@@ -123,7 +123,7 @@ file.tsv`).
 It is important to specify the dependencies and the outputs of the run command
 before the list of the command to run.
 
-Let see how an extract command `unzip` works under DVC:
+Let's see how an extract command `unzip` works under DVC:
 
 ```dvc
     $ dvc run -d data/Posts.xml.zip -o data/Posts.xml \
