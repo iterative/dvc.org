@@ -17,7 +17,7 @@ done using the CLI:
 
 > Please note that we are using `dvc-share` s3 bucket as an example and you don't
 have a write access to it, so in order to follow the tutorial you will need to
-either create your own s3 bucket or use other type of
+either create your own s3 bucket or use other types of
 [remote storage](/doc/commands-reference/remote). E.g. you can set up a local
 remote as we did in our ["Get Started" section](/doc/get-started/configure).
 
