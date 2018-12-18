@@ -17,7 +17,7 @@ you can specify outputs that contain your project metrics:
 
 To provide an unbiased evaluation of the final model fit on the training data
 set are going to use the test data set. We need to adjust the feature extraction
-to take into account this split for training and test data sets. No code
+to take into account this split for training and test datasets. No code
 modifications are required, let's just change the stage definition:
 
 ```dvc
@@ -42,12 +42,12 @@ DVC will aks for confirmation to overwrite the stage. Type `yes` and proceed.
 ```
 
 `evaluate.py` calculates AUC value using the test data set. `auc.metric` -
-in this case it's just a plain text file with a single number inside. A 
+in this case, it's just a plain text file with a single number inside. A 
 `dvc metrics show` command provides a way to compare different experiments:
 
 <details>
 
-### Expand to run evaluation for bigrams
+### Expand to run an evaluation for bigrams
 
 To evaluate the `bigram` model we need to merge the changes and reproduce the
 metric file:

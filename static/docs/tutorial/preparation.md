@@ -1,8 +1,8 @@
 # Preparation
 
-In this document we will be building an ML classification model which classify
+In this document, we will be building an ML classification model which classify
 [Stackoverflow](https://stackoverflow.com) questions by two classes: with
-`python` tag and without `python` tag. For training purposes a small subset of
+`python` tag and without `python` tag. For training purposes, a small subset of
 data will be used — only 180Mb xml files.
 
 Most of the code for the problem is ready and will be downloaded in the first
@@ -57,7 +57,7 @@ Install the code requirements:
 ## Install DVC
 
 Now DVC software should be installed. The best way to install DVC is a system
-dependent package. DVC supports all common operation systems: Max OS X, Linux
+dependent package. DVC supports all common operating systems: Mac OS X, Linux
 and Windows. You can find the latest version of the package on the
 [home page](https://dvc.org).
 
@@ -76,7 +76,7 @@ directory to create DVC metafiles and directories.
 After DVC initialization, a new directory `.dvc` will be created with `config`
 and `.gitignore` files and `cache` directory. These files and directories are
 hidden from the user in general and the user does not interact with these files
-directly. However, we describe DVC internals a bit for better understanding on
+directly. However, we describe DVC internals a bit for a better understanding of
 how it works.
 
 ```dvc
@@ -97,7 +97,7 @@ how it works.
 ```
 
 The `.dvc/cache` directory is one of the most important parts of any DVC
-repository. The directory contains all content of data files and will be
+repository. The directory contains all the content of data files and will be
 described in the next chapter in more detail. The most important part about
 this directory is that it is contained in the `.dvc/.gitignore` file, which
 means that the cache directory is not under Git control — this is your local

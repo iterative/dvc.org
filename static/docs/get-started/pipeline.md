@@ -6,7 +6,7 @@ multiple times and specifying outputs of a command (stage) as dependencies in
 another command (stage) we can, essentially, describe a sequence of commands
 that is required to get to the final result:
 
-First stage, feature extraction:
+The first stage, feature extraction:
 
 ```dvc
     $ dvc run -d featurization.py -d data.tsv \
@@ -14,7 +14,7 @@ First stage, feature extraction:
               python featurization.py data.tsv matrix.pkl
 ```
 
-Second stage, training:
+The second stage, training:
 
 ```dvc
     $ dvc run -d train.py -d matrix.pkl \
