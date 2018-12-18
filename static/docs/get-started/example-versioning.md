@@ -1,23 +1,23 @@
 # Example: Versioning
 
 >Reading time is 10-13 minutes. Running the training is 30-40 minutes (including
-downloading the data set). Running the code is optional, and reading alone
+downloading the dataset). Running the code is optional, and reading alone
 should be enough to learn how to manipulate different versions of data and
 models.
 
 To show how DVC can be used to manage and version control machine learning
-models and data sets, let's play with a
+models and datasets, let's play with a
 [tutorial](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
 that
 [François Chollet](https://twitter.com/fchollet) put together to show how to
-build a powerful image classifier, using only a small data set. The goal of this
+build a powerful image classifier, using only a small dataset. The goal of this
 example is to give you some hands-on experience with a very basic scenario -
-working with multiple versions of data sets and ML models using DVC commands.
+working with multiple versions of datasets and ML models using DVC commands.
 
 ![](/static/img/cats-and-dogs.png)
 
 We first train a classifier model using 1000 labeled images, then we double the
-number and run the training again. We capture both data sets and both results
+number and run the training again. We capture both datasets and both results
 and show how to use `dvc checkout` along with `git checkout` to switch between
 different versions.
 
@@ -25,7 +25,7 @@ The specific algorithm that is used to train and validate the classifier is not
 important. No prior knowledge is required about Keras. We reuse the
 [script](https://gist.github.com/fchollet/f35fbc80e066a49d65f1688a7e99f069) (it
 goes along the blog post) in a "black box" way - it takes some data and produces
-a model file. We though would highly recommend reading the
+a model file. We thought would highly recommend reading the
 [post](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
 itself since it's a great demonstration on how a general pre-trained model can
 be leveraged to build a model with a great performance with very limited
@@ -69,7 +69,7 @@ training was tested on Python 2.7 and 3.6.
 
 ### Expand to learn more about DVC internals
 
-Repository you cloned is already DVC-initialized. There should be `.dvc`
+The repository you cloned is already DVC-initialized. There should be `.dvc`
 directory with `config`, `.gitignore` files. These files and directories are
 hidden from a user in general and a user does not interact with these files
 directly. Check
@@ -81,14 +81,14 @@ to learn more.
 ## First model version
 
 Let's now add some data, then train the first model and capture it with DVC,
-including input data set and metrics.
+including input dataset and metrics.
 
 <details>
 
 ### Expand to learn how to download on Windows
 
 Windows does not ship `wget` utility by default, so you'll need to use
-browser to download `data.zip` or install it from a third party. We recommend
+a browser to download `data.zip` or install it from a third party. We recommend
 using [chocolatey](https://chocolatey.org/). First, if you haven't already,
 install chocolatey using [official guide](https://chocolatey.org/install). Then
 install `wget` and `tar` with the following command in the `Command Prompt`:
@@ -104,9 +104,9 @@ install `wget` and `tar` with the following command in the `Command Prompt`:
     $ rm -f data.zip
 ```
 
-This command downloads and extracts our initial data set - **1000 labeled
+This command downloads and extracts our initial dataset - **1000 labeled
 images** of cats and dogs and 400 labeled images to validate. In summary,
-it's a 43M data set, with a directory structure like this:
+it's a 43M dataset, with a directory structure like this:
 
 ```sh
    data/
@@ -123,22 +123,22 @@ it's a 43M data set, with a directory structure like this:
    Total size: 43M
 ```
 
-Let's capture the current state of this data set with `dvc add`:
+Let's capture the current state of this dataset with `dvc add`:
 
 ```dvc
     $ dvc add data
 ```
 
 This command should be used instead of `git add` on files or directories that
-are too large to be put into Git. Usually, input data sets, models, some
+are too large to be put into Git. Usually, input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it
 into the DVC cache (of course, it keeps a link to it in the working tree, so you
 can continue working with it the same way as before). Instead, it creates a
-simple human readable meta-file that can be considered as a pointer to the
+simple human-readable meta-file that can be considered as a pointer to the
 cache.
 
 Next, we run the training with `python train.py`. We picked this example and
-data sets to be small enough to be run on your machine in a reasonable amount of
+datasets to be small enough to be run on your machine in a reasonable amount of
 time (a few minutes to train a model). This command produces a bunch of files,
 among them `model.h5` and `metrics.json` - weights of the trained model and
 metrics history. The simplest way to capture the current version of the model is
@@ -176,7 +176,7 @@ files are organized.
 
 ## Second model version
 
-Let's imagine that our images data set is growing, we were able to double it.
+Let's imagine that our images dataset is growing, we were able to double it.
 Next command extracts 500 cat and 500 dog images into `data/train`:
 
 ```dvc
@@ -185,7 +185,7 @@ Next command extracts 500 cat and 500 dog images into `data/train`:
     $ rm -f new-labels.zip
 ```
 
-For simplicity we keep the validation data set the same. Now our data set has
+For simplicity we keep the validation dataset the same. Now our dataset has
 **2000 images** to train, and 400 images to validate, with a total size of 67M:
 
 ```sh
@@ -224,15 +224,15 @@ Let's commit the second version:
     $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
-That's it, we have a second model and data set saved and pointers to them
+That's it, we have a second model and dataset saved and pointers to them
 committed into git. Let's now see how DVC can help to go back to the previous
 version if we need to.
 
 ## Switching between versions
 
-Operation that helps getting the specific committed version of data is designed
+An operation that helps to get the specific committed version of data is designed
 to be similar to Git. In Git (or any other code version control system) when you
-need to get to a previous committed version of code you run `git checkout`. All
+need to get to a previous committed version of the code you run `git checkout`. All
 we need to do in our case is to run additionally `dvc checkout` to get the right
 data to the working space.
 
@@ -250,10 +250,10 @@ straightforward:
 These commands will restore the working tree to the first snapshot we made -
 code, data files, model. DVC optimizes this operation internally to avoid
 copying data or model files each time. So `dvc checkout` is quick even if you
-have large data sets, data files, or model.
+have large datasets, data files, or model.
 
-On the other hand, if we want to keep the current version of code and go back to
-the previous data set only, we can do something like this (make sure that you
+On the other hand, if we want to keep the current version of the code and go back to
+the previous dataset only, we can do something like this (make sure that you
 don't have some uncommitted changes in the `data.dvc`):
 
 ```dvc
@@ -262,7 +262,7 @@ don't have some uncommitted changes in the `data.dvc`):
 ```
 
 If you run `git status` you will see that `data.dvc` is modified and currently
-points to the `v1.0` of the data set. While code and model files are from the
+points to the `v1.0` of the dataset. While code and model files are from the
 `v2.0` version.
 
 <details>
@@ -272,7 +272,7 @@ points to the `v1.0` of the data set. While code and model files are from the
 As we have learned already, DVC keeps data files out of Git (by adjusting
 `.gitignore`) and puts them into the cache (usually it's a `.dvc/cache`
 directory inside the repository). Instead, DVC creates simple meta-files that
-have `.dvc` extension. These meta-files serve as pointers (`md5` hash) to
+have `.dvc` extension. These meta-files serve as pointers (`md5` hash)
 to the cache and are version controlled by Git.
 
 When we run `git checkout` we restore pointers (or meta-files) first, then
@@ -284,13 +284,13 @@ the right place.
 ## Automating capturing
 
 `dvc add` is a perfectly reasonable choice when you need to keep track of
-different versions of data sets or model files that come and are updated from
+different versions of datasets or model files that come and are updated from
 external sources. `data` directory above with cats and dogs images is a good
 example (just don't forget to run `dvc remove` or `dvc unprotect` when you need
 to [modify or replace](/doc/user-guide/update-tracked-file) a file that is
 under DVC control).
 
-On the other hand, there are files that are result of running some code. In our
+On the other hand, there are files that are a result of running some code. In our
 example, you should have noticed, that `train.py` produces binary files (e.g.
 `bottlneck_features_train.npy`), the model file `model.h5`, and the metric file
 `metrics.json`. **When you have a script that takes some data as an input and
@@ -321,8 +321,8 @@ ML models, which would be similar to makefiles in software engineering.
 
 ## What's next?
 
-In this example our focus was on giving you a hands-on experience on ML models
-and data sets versioning. We specifically focused on `dvc add` and `dvc
+In this example, our focus was on giving you hands-on experience on ML models
+and datasets versioning. We specifically focused on `dvc add` and `dvc
 checkout` commands. Here we would like to outline some next topics and ideas
 you would be interested to try to learn more about DVC and how it makes managing
 ML projects simpler.
@@ -332,7 +332,7 @@ model is written in a monolithic way. It runs the `save_bottleneck_feature`
 function to pre-calculate bottom, "frozen" part of the net every time it is run.
 Features are written into files, and intention probably was that the
 `save_bottleneck_feature` can be commented out after the first run. It's not
-very convenient to remember to comment/uncomment it every time data set is
+very convenient to remember to comment/uncomment it every time dataset is
 changed.
 
 Here where DVC pipelines feature comes very handy and was designed for. We

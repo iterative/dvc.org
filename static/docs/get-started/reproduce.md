@@ -1,6 +1,6 @@
 # Reproduce
 
-In the previous section we described our first pipeline. Basically, we created a
+In the previous section, we described our first pipeline. Basically, we created a
 number of `*.dvc` files. Each file describes a single step we need to run to get
 to the final result. Each depends on some data (either source data files or some
 intermediate results from another `*.dvc` file) and code files.
