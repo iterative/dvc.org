@@ -16,7 +16,7 @@ DVC has been built to address the reproducibility.
 ![](/static/img/reproducibility.png)
 
 Git branches should beautifully reflect the non-linear structure common to the
-ML process, where each hypotheses can be presented as a Git branch. However,
+ML process, where each hypothesis can be presented as a Git branch. However,
 inability to store data in a repository and the discrepancy between code and
 data make it extremely difficult to manage a data science project with Git.
 

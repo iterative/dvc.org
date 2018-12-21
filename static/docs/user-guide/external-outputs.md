@@ -8,7 +8,7 @@ state. Currently DVC supports such types of external outputs:
 2. Amazon S3;
 3. Google Cloud Storage;
 4. SSH;
-5. HFDS;
+5. HDFS;
 
 In order to specify an external output for your stage use usual `-o` and
 `-O` keys with URLs pointing to your desired files. For cached external outputs

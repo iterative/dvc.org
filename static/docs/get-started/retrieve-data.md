@@ -10,7 +10,7 @@ This command retrieves data files that are referenced in _all_ `.dvc` files in
 the current workspace. So, you usually run it after `git clone`, `git pull`, or
 `git checkout`.
 
-As a an easy way to test it:
+As an easy way to test it:
 
 ```dvc
     $ rm -f data.xml

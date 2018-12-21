@@ -44,7 +44,7 @@ them in `.gitignore`.
 If you take a look at the DVC-file, you will see that only outputs are defined
 in `outs`. In this file, only one output is defined. The output contains the
 data file path in the repository and md5 cache. This md5 cache determines
-location of the actual content file in DVC cache directory `.dvc/cache`.
+a location of the actual content file in DVC cache directory `.dvc/cache`.
 
 > Output from DVC-files defines the relationship between the data file path in a
 repository and the path in a cache directory.
@@ -65,7 +65,7 @@ Keeping actual file content in a cache directory and a copy of the caches in
 user workspace during `$ git checkout` is a regular trick that 
 [Git-LFS](https://git-lfs.github.com/) (Git for Large File Storage) uses. This
 trick works fine for tracking small files with source code. For large data
-files this might not be the best approach, because a *checkout* operation for a
+files, this might not be the best approach, because of *checkout* operation for a
 10Gb data file might take many seconds and a 50GB file checkout (think copy)
 might take a couple of minutes.
 
@@ -106,15 +106,15 @@ your ML process and pipe them together into an ML pipeline.
 
 Command `dvc run` executes any command that you pass into it as a list of
 parameters. However, the command alone is not as interesting as a command in a
-pipeline. The command can be piped by it’s dependencies and output files.
-Dependencies and outputs include input files, input directories and source code
+pipeline. The command can be piped by its dependencies and output files.
+Dependencies and outputs include input files, input directories, and source code
 files or directories.
 
 1. Option `-d file.tsv` should be used to specify a dependency file or
 directory. The dependency can be a regular file from a repository or a data
 file.
 
-2. `-O file.tsv` (big O) specifies regular output file.
+2. `-O file.tsv` (big O) specifies a regular output file.
 
 3. `-o file.tsv` (small o) specifies output data file which means DVC will
 transform this file into a data file (think — it will run `dvc add
@@ -123,7 +123,7 @@ file.tsv`).
 It is important to specify the dependencies and the outputs of the run command
 before the list of the command to run.
 
-Let see how a extract command `uzzip` works under DVC:
+Let's see how an extract command `unzip` works under DVC:
 
 ```dvc
     $ dvc run -d data/Posts.xml.zip -o data/Posts.xml \
@@ -349,7 +349,7 @@ form:
     AUC: 0.624652
 ```
 
-This is probably not the best AUC that you have seen. In this document our
+This is probably not the best AUC that you have seen. In this document, our
 focus is DVC, not ML modeling and we use a relatively small dataset without any
 advanced ML techniques.
 

@@ -39,7 +39,7 @@ By default, `dvc repro` reads DVC-files named `Dvcfile`:
 
 Our NLP model was based on [unigrams](https://en.wikipedia.org/wiki/N-gram)
 only. Let’s improve the model by adding bigrams. The bigram model will extract
-signals not only from separate words but also from two word combinations. This
+signals not only from separate words but also from two-word combinations. This
 eventually increases the number of features for the model and hopefully improves
 the target metric.
 
@@ -52,7 +52,7 @@ branch `bigrams`.
     $ vi code/featurization.py
 ```
 
-Specify `ngram` parameter in `CountVectorizer` (lines 50–53) and increase number
+Specify `ngram` parameter in `CountVectorizer` (lines 50–53) and increase the number
 of features to 6000:
 
 ```python
@@ -83,7 +83,7 @@ Reproduce the pipeline:
         python code/evaluate.py
 ```
 
-The process started from the feature creation step because one of its
+The process started with the feature creation step because one of its
 parameters was changed — the edited source code `code/featurization.py`. All
 dependent steps were regenerated as well.
 
@@ -140,11 +140,11 @@ checked out as well using the `dvc checkout` command.
     $ dvc repro
 ```
 
-After proper checkout there is nothing to reproduce because all the correct
+After proper checkout, there is nothing to reproduce because all the correct
 files were checked out by Git and all data files by DVC.
 
 In more detail — `git checkout master` checked out the code and DVC-files. The
-DVC-files from the master branch point to old (unigram based) data file outputs
+DVC-files from the master branch point to old (unigram based) data files outputs
 and dependencies. `dvc checkout` command found all the DVC-files and restored
 the data files based on them.
 
@@ -159,7 +159,7 @@ organize all the experiments in a repository and checkout them when needed.
     $ vi code/train_model.py
 ```
 
-Increase number of trees in the forest to 500 by changing the `n_estimators` parameter and the number of jobs in the
+Increase the number of trees in the forest to 500 by changing the `n_estimators` parameter and the number of jobs in the
 `RandomForestClassifier` class (line 27):
 
 ```python

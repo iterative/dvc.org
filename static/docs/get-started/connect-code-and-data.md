@@ -12,7 +12,7 @@ configuration with the data it processes to produce the result:
 ### Click to prepare sample code ...
 If you have been following along the get started from the very beginning, run
 these commands to get the sample code and install dependencies. It will install
-packages like `panda` and `scikit-learn`, that are required to run this example,
+packages like `pandas` and `scikit-learn`, that are required to run this example,
 consider using `virtualenv` to isolate your environment:
 
 ```dvc
@@ -43,8 +43,8 @@ command that is required to build it.
 
 You don't need to run `dvc add` to take output files - `data.tsv` and
 `data-test.tsv` - under control. `dvc run` takes care of this. You only need to
-run `dvc push`, usually along with git commit to save them to the remote when
-you done.
+run `dvc push`, usually along with git commit to saving them to the remote when
+you have done.
 
 > We don't do it here and in the next chapters to keep commands as simple as
 possible, but it's recommended to use `-f` optional argument that `dvc add`

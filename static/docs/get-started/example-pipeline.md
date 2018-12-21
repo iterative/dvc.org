@@ -30,7 +30,7 @@ nothing to do with DVC so far, it's just a simple preparation:
 ### Expand to learn how to download on Windows
 
 Windows does not ship `wget` utility by default, so you'll need to use
-browser to download `code.zip` or install it from a third party. We recommend
+a browser to download `code.zip` or install it from a third party. We recommend
 using [chocolatey](https://chocolatey.org/). First, if you haven't already,
 install chocolatey using [official guide](https://chocolatey.org/install). Then
 install `wget` and `tar` with the following command in the `Command Prompt`:
@@ -131,7 +131,7 @@ a list of output files. DVC is not Python or any other language specific and
 can wrap any command runnable via CLI.
 
 * The first actual step, extract XML from the archive. Note, we don't need to
-run `dvc add` on `Posts.xml`, `dvc run` saves (commits into cache, takes the
+run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache, takes the
 file under DVC control) automatically:
 
 ```dvc
@@ -164,7 +164,7 @@ describe and version control dependencies and outputs. Output `Posts.xml` file
 is automatically added to the `.gitignore` file and a link is created into a cache
 `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
 
-Two thing are worth noticing here. First, by analyzing dependencies and outputs
+Two things are worth noticing here. First, by analyzing dependencies and outputs
 DVC files describe we can restore the full chain (DAG) of commands we need to
 apply. This is important when you run `dvc repro` to reproduce the final or
 intermediate result.
@@ -187,7 +187,7 @@ your actual workspace without copying every time object from/to the cache.
 ```
 
 * Split training and testing data sets. Here `0.2` test dataset split ratio,
-`20170426` is a seed for randomization. There are two output output files:
+`20170426` is a seed for randomization. There are two output files:
 
 ```dvc
     $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
@@ -234,7 +234,7 @@ By analyzing dependencies and outputs DVC files describe we can restore the
 full chain (DAG) of commands we need to apply. This is important when you run
 `dvc repro` to reproduce the final or intermediate result.
 
-`dvc pipeline show` helps to visualuize the pipeline (run it with `-c` option to
+`dvc pipeline show` helps to visualize the pipeline (run it with `-c` option to
 see actual commands instead of DVC-files):
 
 ```dvc

@@ -8,7 +8,7 @@ pipeline state. Currently DVC supports such types of external dependencies:
 2. Amazon S3;
 3. Google Cloud Storage;
 4. SSH;
-5. HFDS;
+5. HDFS;
 6. HTTP;
 
 In order to specify an external dependency for your stage use usual '-d' keys

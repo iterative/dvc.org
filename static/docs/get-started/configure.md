@@ -3,7 +3,7 @@
 Once you install DVC, you will be able to start using it (in its local setup)
 immediately.
 
-However, a remote storage (or remote) should be set up if you need to share data
+However, remote storage (or remote) should be set up if you need to share data
 outside of a local environment.
 
 For simplicity, let's setup a local remote:
@@ -12,7 +12,7 @@ For simplicity, let's setup a local remote:
     $ dvc remote add -d myremote /tmp/dvc-storage
     $ git commit .dvc/config -m "initialize DVC local remote"
 ```
-A remote can be specified by the remote type preffix and a path. As of this
+A remote can be specified by the remote type prefix and a path. As of this
 version, DVC supports seven types of remotes:
 
 * `local` - Local directory
