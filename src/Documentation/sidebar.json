@@ -52,7 +52,8 @@
       "contributing.md",
       "update-tracked-file.md",
       "autocomplete.md",
-      "plugins.md"
+      "plugins.md",
+      "analytics.md"
     ],
     "labels": {
       "dvc-files-and-directories.md": "Files and Directories",
@@ -63,7 +64,8 @@
       "contributing.md": "Contributing",
       "update-tracked-file.md": "Update a Tracked File",
       "autocomplete.md": "Shell Autocomplete",
-      "plugins.md": "Syntax Highlighting & IDE Integrations"
+      "plugins.md": "Syntax Highlighting & IDE Integrations",
+      "analytics.md": "Anonymized Usage Analytics"
 
     }
   },
