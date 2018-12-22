@@ -69,8 +69,11 @@ workspace:
 
 ### Using import
 
-Instead of downloading and adding the data yourself, you can rely on the
-`dvc import` command:
+In the previous command examples downloading commands were in use:
+ `cp`, `aws s3 cp`, `wget`, etc.
+
+`dvc import` simplifies the downloading part for all the supported
+types of dependencies.
 
 ```dvc
     $ dvc import https://dvc.org/s3/get-started/data.xml
