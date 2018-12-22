@@ -69,7 +69,7 @@ workspace:
 
 ### Using import
 
-Instead of downloading add adding the the data yourself, you can rely on the
+Instead of downloading and adding the data yourself, you can rely on the
 `dvc import` command:
 
 ```dvc
