@@ -51,7 +51,7 @@ training.
 your global packages clean and untouched:
 
 ```dvc
-    $ virtualenv --system-site-packages .env
+    $ virtualenv .env
     $ source .env/bin/activate
     $ echo '.env/' >> .gitignore
 ```

@@ -43,7 +43,7 @@ install `wget` and `tar` with the following command in the `Command Prompt`:
 your global packages clean and untouched:
 
 ```dvc
-    $ virtualenv --system-site-packages .env
+    $ virtualenv .env
     $ source .env/bin/activate
     $ echo '.env/' >> .gitignore
 ```
