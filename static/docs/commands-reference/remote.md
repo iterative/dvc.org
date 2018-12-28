@@ -120,8 +120,8 @@ So, make sure you have the following permissions enabled:
 ### Click for Azure example
 
 ```dvc
-    $ export AZURE_STORAGE_CONNECTION_STRING="<my-connection-string>"
-    $ dvc remote add myremote "azure://ContainerName=my-bucket;"
+    $ dvc remote add myremote azure://my-container-name/path
+    $ dvc remote modify myremote connection_string my-connection-string
 ```
 
 The Azure Blob Storage remote can also be configured entirely via environment
@@ -129,14 +129,8 @@ variables:
 
 ```dvc
     $ export AZURE_STORAGE_CONNECTION_STRING="<my-connection-string>"
-    $ export AZURE_STORAGE_CONTAINER_NAME="my-bucket"
+    $ export AZURE_STORAGE_CONTAINER_NAME="my-container-name"
     $ dvc remote add myremote "azure://"
-```
-
-Alternatively, all the configuration can also be passed via the remote URL:
-
-```dvc
-    $ dvc remote add myremote "azure://ContainerName=my-bucket;<my-connection-string>"
 ```
 
 * **`connection string`** - this is the connection string to access your Azure
