@@ -41,7 +41,8 @@ Add a new data remote. Depending on your storage type you might need to run `dvc
 remote modify` to provide credentials and/or configure other remote parameters.
 
 ```usage
-    usage: dvc remote add [-h] [-q] [-v] [--local] [-d] name url
+    usage: dvc remote add [-h] [-q | -v] [--global] [--system] [--local] [-d]
+                          name url
 
     positional arguments:
         name           Name.
@@ -51,6 +52,8 @@ remote modify` to provide credentials and/or configure other remote parameters.
         -h, --help     show this help message and exit
         -q, --quiet    Be quiet.
         -v, --verbose  Be verbose.
+        --global       Use global config.
+        --system       Use system config.
         --local        Use local config.
         -d, --default  Set as default remote.
 ```
@@ -74,6 +77,12 @@ and optionally assigns a default remote in the core section:
 ```
 
 **Options:**
+
+* **`global`** - save remote configuration to the global config (e.g.
+`~/.config/dvc/config`) instead of `.dvc/config`.
+
+* **`system`** - save remote configuration to the system config (e.g.
+`/etc/dvc.config`) instead of `.dvc/config`.
 
 * **`local`** - save the remote configuration to the
 [local](/doc/user-guide/dvc-files-and-directories) config (`.dvc/config.local`).
@@ -229,7 +238,8 @@ container doesn't already exist, it will be created automatically.
 Modify remote settings.
 
 ```usage
-    usage: dvc remote modify [-h] [-q] [-v] [-u] [--local] name option [value]
+    usage: dvc remote modify [-h] [-q | -v] [-u] [--global] [--system]
+                             [--local] name option [value]
 
     positional arguments:
       name           Name.
@@ -241,12 +251,20 @@ Modify remote settings.
       -q, --quiet    Be quiet.
       -v, --verbose  Be verbose.
       -u, --unset    Unset option.
+      --global       Use global config.
+      --system       Use system config.
       --local        Use local config.
 ```
 
 **Optional arguments:**
 
 * **`unset`** - delete configuration value
+
+* **`global`** - save remote configuration to the global config (e.g.
+`~/.config/dvc/config`) instead of `.dvc/config`.
+
+* **`system`** - save remote configuration to the system config (e.g.
+`/etc/dvc.config`) instead of `.dvc/config`.
 
 * **`local`** - modify the [local](/doc/user-guide/dvc-files-and-directories)
 configuration file (`.dvc/config.local`). This is useful when you are modifying
@@ -399,7 +417,7 @@ these settings, you could use the following options:
 Show all available remotes.
 
 ```usage
-    usage: dvc remote list [-h] [-q] [-v] [--local]
+    usage: dvc remote list [-h] [-q | -v] [--global] [--system] [--local]
 
     List remotes.
 
@@ -407,10 +425,18 @@ Show all available remotes.
       -h, --help     show this help message and exit
       -q, --quiet    Be quiet.
       -v, --verbose  Be verbose.
+      --global       Use global config.
+      --system       Use system config.
       --local        Use local config.
 ```
 
 **Options:**
+
+* **`global`** - save remote configuration to the global config (e.g.
+`~/.config/dvc/config`) instead of `.dvc/config`.
+
+* **`system`** - save remote configuration to the system config (e.g.
+`/etc/dvc.config`) instead of `.dvc/config`.
 
 * **`local`** - list remotes specified in the
 [local](/doc/user-guide/dvc-files-and-directories) configuration file
@@ -424,7 +450,7 @@ Remove a specified remote. This command affects DVC configuration files only, it
 does not physically remove your data files stored remotely.
 
 ```usage
-    usage: dvc remote remove [-h] [-q] [-v] [--local] name
+    usage: dvc remote remove [-h] [-q | -v] [--global] [--system] [--local] name
 
     positional arguments:
       name           Name
@@ -433,6 +459,8 @@ does not physically remove your data files stored remotely.
       -h, --help     show this help message and exit
       -q, --quiet    Be quiet.
       -v, --verbose  Be verbose.
+      --global       Use global config.
+      --system       Use system config.
       --local        Use local config.
 ```
 
@@ -442,6 +470,12 @@ This command removes a section in the DVC [config file](/doc/user-guide/dvc-file
 Alternatively, it is possible to edit config files manually.
 
 **Options:**
+
+* **`global`** - save remote configuration to the global config (e.g.
+`~/.config/dvc/config`) instead of `.dvc/config`.
+
+* **`system`** - save remote configuration to the system config (e.g.
+`/etc/dvc.config`) instead of `.dvc/config`.
 
 * **`local`** - remove remote specified in the
 [local](/doc/user-guide/dvc-files-and-directories) configuration file

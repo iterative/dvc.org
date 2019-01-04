@@ -11,7 +11,8 @@ If option value is not provided and `--unset` is not specified this command
 returns current value of the option.
 
 ```usage
-    usage: dvc config [-h] [-q] [-v] [-u] name [value]
+    usage: dvc config [-h] [-q | -v] [--global] [--system] [--local] [-u] name
+                      [value]
 
     positional arguments:
         name                  Option name
@@ -21,18 +22,26 @@ returns current value of the option.
         -h, --help            show this help message and exit
         -q, --quiet           Be quiet.
         -v, --verbose         Be verbose.
-        -u, --unset           Unset option
-        --local               Use local config
+        -u, --unset           Unset option.
+        --global              Use global config.
+        --system              Use system config.
+        --local               Use local config.
 ```
 
 ## Options
 
 * `-u`, `--unset` - remove a specified option from a config file.
 
-* `--local` - modify a local config file instead of a global one. It is located
-in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-specify private options in your config, that you don't want to track and share
-through Git.
+* `--global` - modify a global config file(e.g. `~/.config/dvc/config`) instead
+of a `.dvc/config`.
+
+* `--system` - modify a system config file(e.g. `/etc/dvc.config`) instead of a
+`.dvc/config`.
+
+* `--local` - modify a local config file instead of a `.dvc/config`. It is
+located in `.dvc/config.local` and is Git-ignored. This is useful when you need
+to specify private options in your config, that you don't want to track and
+share through Git.
 
 ## core 
 
