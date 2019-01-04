@@ -57,9 +57,11 @@ remote modify` to provide credentials and/or configure other remote parameters.
 
 `name` and `url` are required. `url` specifies a location to store your data. It
 could be S3 path, SSH path, Azure, Google cloud, local directory, etc - see more
-examples below. Whenever possible DVC will create a remote directory if does not
-exists yet. It won't create an S3 bucket though and will rely on default access
-settings.
+examples below. If `url1` is a local relative path, it will be resolved relative
+to the current directory and saved to config relative to the config file
+location(see LOCAL example below). Whenever possible DVC will create a remote
+directory if does not exists yet. It won't create an S3 bucket though and will
+rely on default access settings.
 
 This command creates a section in the DVC [config file](/doc/user-guide/dvc-files-and-directories)
 and optionally assigns a default remote in the core section:
@@ -84,6 +86,36 @@ using this remote by default to save or retrieve data files unless `-r` option
 is specified for them. Use `dvc config` to unset/change the default remote:
 `dvc config -u core.remote`.
 
+<details>
+
+### Click for LOCAL example
+
+Using a relative path:
+
+```dvc
+    $ dvc remote add myremote ../dir
+    $ cat .dvc/config
+      ...
+      ['remote "myremote"']
+          url = ../../dir
+      ...
+    $ # NOTE: `../dir` has been resolved relative to `.dvc/config` location,
+    $ # resulting in `../../dir`.
+```
+
+Using an absolute path:
+
+```dvc
+    $ dvc remote add myremote /path/to/dir
+    $ cat .dvc/config
+      ...
+      ['remote "myremote"']
+          url = /path/to/dir
+      ...
+    $ # NOTE: absolute path `/path/to/dir` saved as is.
+```
+
+</details>
 
 <details>
 
