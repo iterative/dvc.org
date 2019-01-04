@@ -75,6 +75,7 @@
     "indexFile": "index.md",
     "files": [
       "add.md",
+      "cache.md",
       "checkout.md",
       "config.md",
       "destroy.md",
@@ -121,7 +122,8 @@
       "move.md": "move",
       "pipeline.md": "pipeline",
       "destroy.md": "destroy",
-      "unprotect.md": "unprotect"
+      "unprotect.md": "unprotect",
+      "cache.md": "cache"
     }
   },
   {
