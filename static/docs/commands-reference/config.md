@@ -71,8 +71,12 @@ DVC cache is a hidden (by default it's located in the `.dvc/cache` directory)
 storage. For files that are under DVC control it keeps them and their
 different versions. 
 
-* `dir` - directory to use for the cache. Default value is `.dvc/cache`. The
-value can be an absolute path or relative to the path to the `.dvc` directory.
+* `dir` - directory to use for the cache. The value can be an absolute path or
+a path relative to the config file location that it is specified in (see
+helper command `dvc cache dir` that helps to properly transform paths specified
+relative to the current directory into paths relative to the specified config
+file). The default value is `cache`, which, when resolved relative to the
+project config location `.dvc/config` results in `.dvc/cache`.
 
 ```dvc
     $ dvc config cache.dir /mnt/cache
