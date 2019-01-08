@@ -202,7 +202,7 @@ container doesn't already exist, it will be created automatically.
 ### Click for SSH example
 
 ```dvc
-    $ dvc remote add myremote ssh://user@example.com:/path/to/dir
+    $ dvc remote add myremote ssh://user@example.com/path/to/dir
 ```
 
 </details>
@@ -362,16 +362,26 @@ these settings, you could use the following options:
 * **`url`** - remote location URL.
 
   ```dvc
-    $ dvc remote modify myremote url ssh://user@example.com:/path/to/remote
+    $ dvc remote modify myremote url ssh://user@example.com:1234/path/to/remote
   ```
 
-* **`user`** - username to use to access a remote.
+* **`user`** - username to use to access a remote. The order in which dvc
+  searches for username:
+
+    1) `user` specified in one of the dvc configs;
+    2) `user` specified in the url(e.g. `ssh://user@example.com/path`);
+    3) current user;
 
   ```dvc
     $ dvc remote modify myremote user myuser
   ```
 
-* **`port`** - port to use to access a remote (default: 22).
+* **`port`** - port to use to access a remote. The order in which dvc searches
+  for port:
+
+    1) `port` specified in one of the dvc configs;
+    2) `port` specified in the url(e.g. `ssh://example.com:1234/path`);
+    3) default ssh port 22;
 
   ```dvc
     $ dvc remote modify myremote port 2222
