@@ -11,7 +11,8 @@ If option value is not provided and `--unset` is not specified this command
 returns current value of the option.
 
 ```usage
-    usage: dvc config [-h] [-q] [-v] [-u] name [value]
+    usage: dvc config [-h] [-q | -v] [--global] [--system] [--local] [-u] name
+                      [value]
 
     positional arguments:
         name                  Option name
@@ -21,18 +22,26 @@ returns current value of the option.
         -h, --help            show this help message and exit
         -q, --quiet           Be quiet.
         -v, --verbose         Be verbose.
-        -u, --unset           Unset option
-        --local               Use local config
+        -u, --unset           Unset option.
+        --global              Use global config.
+        --system              Use system config.
+        --local               Use local config.
 ```
 
 ## Options
 
 * `-u`, `--unset` - remove a specified option from a config file.
 
-* `--local` - modify a local config file instead of a global one. It is located
-in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-specify private options in your config, that you don't want to track and share
-through Git.
+* `--global` - modify a global config file(e.g. `~/.config/dvc/config`) instead
+of a `.dvc/config`.
+
+* `--system` - modify a system config file(e.g. `/etc/dvc.config`) instead of a
+`.dvc/config`.
+
+* `--local` - modify a local config file instead of a `.dvc/config`. It is
+located in `.dvc/config.local` and is Git-ignored. This is useful when you need
+to specify private options in your config, that you don't want to track and
+share through Git.
 
 ## core 
 
@@ -62,8 +71,12 @@ DVC cache is a hidden (by default it's located in the `.dvc/cache` directory)
 storage. For files that are under DVC control it keeps them and their
 different versions. 
 
-* `dir` - directory to use for the cache. Default value is `.dvc/cache`. The
-value can be an absolute path or relative to the path to the `.dvc` directory.
+* `dir` - directory to use for the cache. The value can be an absolute path or
+a path relative to the config file location that it is specified in (see
+helper command `dvc cache dir` that helps to properly transform paths specified
+relative to the current directory into paths relative to the specified config
+file). The default value is `cache`, which, when resolved relative to the
+project config location `.dvc/config` results in `.dvc/cache`.
 
 ```dvc
     $ dvc config cache.dir /mnt/cache

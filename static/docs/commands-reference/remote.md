@@ -41,7 +41,8 @@ Add a new data remote. Depending on your storage type you might need to run `dvc
 remote modify` to provide credentials and/or configure other remote parameters.
 
 ```usage
-    usage: dvc remote add [-h] [-q] [-v] [--local] [-d] name url
+    usage: dvc remote add [-h] [-q | -v] [--global] [--system] [--local] [-d]
+                          name url
 
     positional arguments:
         name           Name.
@@ -51,15 +52,19 @@ remote modify` to provide credentials and/or configure other remote parameters.
         -h, --help     show this help message and exit
         -q, --quiet    Be quiet.
         -v, --verbose  Be verbose.
+        --global       Use global config.
+        --system       Use system config.
         --local        Use local config.
         -d, --default  Set as default remote.
 ```
 
 `name` and `url` are required. `url` specifies a location to store your data. It
 could be S3 path, SSH path, Azure, Google cloud, local directory, etc - see more
-examples below. Whenever possible DVC will create a remote directory if does not
-exists yet. It won't create an S3 bucket though and will rely on default access
-settings.
+examples below. If `url1` is a local relative path, it will be resolved relative
+to the current directory and saved to config relative to the config file
+location(see LOCAL example below). Whenever possible DVC will create a remote
+directory if does not exists yet. It won't create an S3 bucket though and will
+rely on default access settings.
 
 This command creates a section in the DVC [config file](/doc/user-guide/dvc-files-and-directories)
 and optionally assigns a default remote in the core section:
@@ -73,6 +78,12 @@ and optionally assigns a default remote in the core section:
 
 **Options:**
 
+* **`global`** - save remote configuration to the global config (e.g.
+`~/.config/dvc/config`) instead of `.dvc/config`.
+
+* **`system`** - save remote configuration to the system config (e.g.
+`/etc/dvc.config`) instead of `.dvc/config`.
+
 * **`local`** - save the remote configuration to the
 [local](/doc/user-guide/dvc-files-and-directories) config (`.dvc/config.local`).
 This is useful when you need to specify private options or local environment
@@ -84,6 +95,36 @@ using this remote by default to save or retrieve data files unless `-r` option
 is specified for them. Use `dvc config` to unset/change the default remote:
 `dvc config -u core.remote`.
 
+<details>
+
+### Click for LOCAL example
+
+Using a relative path:
+
+```dvc
+    $ dvc remote add myremote ../dir
+    $ cat .dvc/config
+      ...
+      ['remote "myremote"']
+          url = ../../dir
+      ...
+    $ # NOTE: `../dir` has been resolved relative to `.dvc/config` location,
+    $ # resulting in `../../dir`.
+```
+
+Using an absolute path:
+
+```dvc
+    $ dvc remote add myremote /path/to/dir
+    $ cat .dvc/config
+      ...
+      ['remote "myremote"']
+          url = /path/to/dir
+      ...
+    $ # NOTE: absolute path `/path/to/dir` saved as is.
+```
+
+</details>
 
 <details>
 
@@ -161,7 +202,7 @@ container doesn't already exist, it will be created automatically.
 ### Click for SSH example
 
 ```dvc
-    $ dvc remote add myremote ssh://user@example.com:/path/to/dir
+    $ dvc remote add myremote ssh://user@example.com/path/to/dir
 ```
 
 </details>
@@ -197,7 +238,8 @@ container doesn't already exist, it will be created automatically.
 Modify remote settings.
 
 ```usage
-    usage: dvc remote modify [-h] [-q] [-v] [-u] [--local] name option [value]
+    usage: dvc remote modify [-h] [-q | -v] [-u] [--global] [--system]
+                             [--local] name option [value]
 
     positional arguments:
       name           Name.
@@ -209,12 +251,20 @@ Modify remote settings.
       -q, --quiet    Be quiet.
       -v, --verbose  Be verbose.
       -u, --unset    Unset option.
+      --global       Use global config.
+      --system       Use system config.
       --local        Use local config.
 ```
 
 **Optional arguments:**
 
 * **`unset`** - delete configuration value
+
+* **`global`** - save remote configuration to the global config (e.g.
+`~/.config/dvc/config`) instead of `.dvc/config`.
+
+* **`system`** - save remote configuration to the system config (e.g.
+`/etc/dvc.config`) instead of `.dvc/config`.
 
 * **`local`** - modify the [local](/doc/user-guide/dvc-files-and-directories)
 configuration file (`.dvc/config.local`). This is useful when you are modifying
@@ -312,16 +362,26 @@ these settings, you could use the following options:
 * **`url`** - remote location URL.
 
   ```dvc
-    $ dvc remote modify myremote url ssh://user@example.com:/path/to/remote
+    $ dvc remote modify myremote url ssh://user@example.com:1234/path/to/remote
   ```
 
-* **`user`** - username to use to access a remote.
+* **`user`** - username to use to access a remote. The order in which dvc
+  searches for username:
+
+    1) `user` specified in one of the dvc configs;
+    2) `user` specified in the url(e.g. `ssh://user@example.com/path`);
+    3) current user;
 
   ```dvc
     $ dvc remote modify myremote user myuser
   ```
 
-* **`port`** - port to use to access a remote (default: 22).
+* **`port`** - port to use to access a remote. The order in which dvc searches
+  for port:
+
+    1) `port` specified in one of the dvc configs;
+    2) `port` specified in the url(e.g. `ssh://example.com:1234/path`);
+    3) default ssh port 22;
 
   ```dvc
     $ dvc remote modify myremote port 2222
@@ -367,7 +427,7 @@ these settings, you could use the following options:
 Show all available remotes.
 
 ```usage
-    usage: dvc remote list [-h] [-q] [-v] [--local]
+    usage: dvc remote list [-h] [-q | -v] [--global] [--system] [--local]
 
     List remotes.
 
@@ -375,10 +435,18 @@ Show all available remotes.
       -h, --help     show this help message and exit
       -q, --quiet    Be quiet.
       -v, --verbose  Be verbose.
+      --global       Use global config.
+      --system       Use system config.
       --local        Use local config.
 ```
 
 **Options:**
+
+* **`global`** - save remote configuration to the global config (e.g.
+`~/.config/dvc/config`) instead of `.dvc/config`.
+
+* **`system`** - save remote configuration to the system config (e.g.
+`/etc/dvc.config`) instead of `.dvc/config`.
 
 * **`local`** - list remotes specified in the
 [local](/doc/user-guide/dvc-files-and-directories) configuration file
@@ -392,7 +460,7 @@ Remove a specified remote. This command affects DVC configuration files only, it
 does not physically remove your data files stored remotely.
 
 ```usage
-    usage: dvc remote remove [-h] [-q] [-v] [--local] name
+    usage: dvc remote remove [-h] [-q | -v] [--global] [--system] [--local] name
 
     positional arguments:
       name           Name
@@ -401,6 +469,8 @@ does not physically remove your data files stored remotely.
       -h, --help     show this help message and exit
       -q, --quiet    Be quiet.
       -v, --verbose  Be verbose.
+      --global       Use global config.
+      --system       Use system config.
       --local        Use local config.
 ```
 
@@ -410,6 +480,12 @@ This command removes a section in the DVC [config file](/doc/user-guide/dvc-file
 Alternatively, it is possible to edit config files manually.
 
 **Options:**
+
+* **`global`** - save remote configuration to the global config (e.g.
+`~/.config/dvc/config`) instead of `.dvc/config`.
+
+* **`system`** - save remote configuration to the system config (e.g.
+`/etc/dvc.config`) instead of `.dvc/config`.
 
 * **`local`** - remove remote specified in the
 [local](/doc/user-guide/dvc-files-and-directories) configuration file
