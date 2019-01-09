@@ -39,7 +39,7 @@
     "react": "^16.4.1",
     "react-collapse": "^4.0.3",
     "react-collapsible": "^2.3.1",
-    "react-dom": "^16.4.0",
+    "react-dom": "^16.4.2",
     "react-ga": "^2.5.3",
     "react-markdown": "^3.4.1",
     "react-motion": "^0.5.2",
