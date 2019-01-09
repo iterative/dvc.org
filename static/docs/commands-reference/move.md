@@ -20,7 +20,7 @@ Move a file DVC file, meaning move a file that is under DVC control.
  *  `-v, --verbose`         verbose
 
 ## Description
-DVC keeps track of incremental changes to a file via the DVC cache.  Moving a file is the same a changing its name.  So `dvc move` changes the file's name in the DVC cache.
+DVC keeps track of incremental changes to a file via the DVC cache.  Moving a file is the same as changing its name.  So `dvc move` changes the file's name in the DVC cache.
 
 ## Examples
 Here we use `dvc add`to put a file under DVC control.  Then we change the name of it using `dvc move`.
