@@ -30,6 +30,9 @@ for more information on how to configure the remote storage.
       -T, --all-tags        Push cache for all tags.
       -d, --with-deps       Push cache for all dependencies of the specified
                             target.
+      -R RECURSIVE, --recursive RECURSIVE
+                            Push cache from subdirectories of specified directory.
+
 ```
 
 ## Examples
