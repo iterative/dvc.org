@@ -30,24 +30,23 @@ DVC works by creating a stage file (the one ending with .dvc) with enough inform
 It only works with datasets.   It's not designed to handle dvc run outputs.
 
 let's imagine the following scenario:
-echo "hello" > hello
+echo `"hello" > hello`
 
-`dvc add` hello
+`dvc add hello`
 
 
-The add command would create a hello.dvc file with the following content:
+The add command would create a **hello.dvc** file with the following content:
 
-```md5: 3a9a9ce3c80ac2a4c5156e1feaa341fb
+```json
+md5: 3a9a9ce3c80ac2a4c5156e1feaa341fb
 outs:
 - cache: true
   md5: b1946ac92492d2347c6235b4d2611184
   metric: false
-  path: hello```
+  path: hello
+```
 
-
-if we move the output "hello" by our own means (`mv hello other`)
-
-The stage file wouldn't know that we changed the "path" of the output to other instead of hello, and also, it would be misleading to have a stage file named hello.dvc that creates a file named other...
+If we move the output **hello** using the regular Linux `mv hello other` the stage file wouldn't know that we changed the "path" of the output to **other** instead of **hello**. Also it would be misleading to have a stage file named **hello.dvc** that creates a file named **other**.
 
 So, we introduced dvc move that will rename the stagefile, will adjust its content to the new path; it also prevents "recomputing the checksum" as we know that the file has the same content, just different path & inode
 
