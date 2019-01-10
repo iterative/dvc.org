@@ -26,7 +26,7 @@ DVC works by creating a **cache** file (ending with .dvc) with enough informatio
 
 DVC move only works with datasets.   It's not designed to handle dvc run outputs.
 
-let's imagine the following scenario:
+Let's imagine the following scenario:
 
 echo `"hello" > hello`
 
