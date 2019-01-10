@@ -22,9 +22,6 @@ Move a file DVC file, meaning move a file that is under DVC control.
  *  `-v, --verbose`         verbose
 
 ## Description
-
-
-### The Reason DVC Move is Required and MV is not Enough
 DVC works by creating a stage file (the one ending with .dvc) with enough information to reproduce it and to prevent re-running the command we use a "cache" to store the outputs, if the dependencies haven't change and the command haven't change, we can look up for the cached output and just "check it out" to the working directory.
 
 It only works with datasets.   It's not designed to handle dvc run outputs.
