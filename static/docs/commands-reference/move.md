@@ -22,17 +22,17 @@ Move a file DVC file, meaning move a file that is under DVC control.
  *  `-v, --verbose`         verbose
 
 ## Description
-DVC works by creating a stage file (the one ending with .dvc) with enough information to reproduce it and to prevent re-running the command we use a "cache" to store the outputs, if the dependencies haven't change and the command haven't change, we can look up for the cached output and just "check it out" to the working directory.
+DVC works by creating a **cache** file (ending with .dvc) with enough information to reproduce it on the remote DVC repository. The cache tracks incremental changes. If the dependencies haven't changed and the commands to create it on the remote repository haven't changed, we can look at the cached output and just check it out to the working directory.   
 
-It only works with datasets.   It's not designed to handle dvc run outputs.
+DVC move only works with datasets.   It's not designed to handle dvc run outputs.
 
 let's imagine the following scenario:
+
 echo `"hello" > hello`
 
 `dvc add hello`
 
-
-The add command would create a **hello.dvc** file with the following content:
+The **add** command would create a **hello.dvc** file with the following content:
 
 ```json
 md5: 3a9a9ce3c80ac2a4c5156e1feaa341fb
@@ -43,9 +43,9 @@ outs:
   path: hello
 ```
 
-If we move the output **hello** using the regular Linux `mv hello other` the stage file wouldn't know that we changed the "path" of the output to **other** instead of **hello**. Also it would be misleading to have a stage file named **hello.dvc** that creates a file named **other**.
+If we move the output **hello** using the regular Linux `mv hello other` the stage file wouldn't know that we changed the **path** of the output to **other** instead of **hello**. Also it would be misleading to have a stage file named **hello.dvc** that would create a file name **other** on the remote repository.
 
-So, we introduced dvc move that will rename the stagefile, will adjust its content to the new path; it also prevents "recomputing the checksum" as we know that the file has the same content, just different path & inode
+So, we introduced `dvc move` that will rename the stagefile and adjust its content to the new path in the .dvc file. It also prevents recomputing the checksum as we know that the file has the same content with just different path and inode.
 
 
 ## Examples
