@@ -1,8 +1,8 @@
 # move
 
- Renames an output file and modifies the stage file (i.e, the one ending with .dvc) to reflect the change on the pipeline. If the output has the same name as its stage, it would also rename the corresponding stage file.
+Renames an output file and modifies the stage file (i.e, the one ending with .dvc) to reflect the change on the pipeline. If the output has the same name as its stage, it would also rename the corresponding stage file.
 
-```text
+```
         e.g.
               Having: (hello, hello.dvc)
 
@@ -10,9 +10,8 @@
 
               Result: (greeting, hello.dvc)
 	      
-	      ```
-
-      with the **path** in hello.dcv changed to **greetings**:
+```
+with the **path** in hello.dcv changed to **greetings**:
 
 ```text
 md5: 3d1a3e5a5b662490e198d6a6ae84984b
