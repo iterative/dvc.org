@@ -52,7 +52,7 @@ outs:
 
 If we move this using the regular Linux `mv data.csv other.csv` the stage file wouldn't know that we changed the **path** of **data.csv** to **other.csv**. Also it would be misleading to have a stage file named **data.dvc** that would create a file named **other.csv** on the remote repository.
 
-So, we introduced `dvc move` that will rename the stagefile and adjust its content to the new path in the .dvc file. It also prevents recomputing the checksum as we know that the file has the same content with just different path and inode.
+So, we introduced `dvc move` adjust the content of the stage file to update **path**.  So it saves some steps.
 
 So it works like this:
 
