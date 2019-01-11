@@ -11,7 +11,7 @@
 
 with the **path** in hello.dcv changed to **greetings**:
 
-```json
+json
 md5: 3d1a3e5a5b662490e198d6a6ae84984b
 outs:
 - cache: true
