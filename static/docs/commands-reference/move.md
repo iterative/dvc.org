@@ -68,7 +68,7 @@ So, we introduced `dvc move` adjust the content of the stage file to update **pa
 
 So it works like this:
 
-```bash
+```text
 dvc move data.csv other.csv
 
 cat data.csv.dvc
@@ -85,7 +85,7 @@ outs:
 ## Examples
 Here we use `dvc add`to put a file under DVC control.  Then we change the name of it using `dvc move`.
 
-```dvc
+```text
 
   $ dvc add data.csv
      
