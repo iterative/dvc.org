@@ -54,7 +54,7 @@ dvc add data.csv
 
 The **add** command would create a **data.csv.dvc** file with the following content:
 
-```json
+```text
 md5: 3d1a3e5a5b662490e198d6a6ae84984b
 outs:
 - cache: true
