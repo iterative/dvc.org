@@ -10,11 +10,9 @@
 
               Result: (greeting, hello.dvc)
 
-      with the **path** in hello.dcv changed to **greetings**:
-```
+      with the path in hello.dcv changed to greetings:
 
 
-```text
 md5: 3d1a3e5a5b662490e198d6a6ae84984b
 outs:
 - cache: true
