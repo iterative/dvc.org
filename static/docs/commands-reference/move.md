@@ -62,7 +62,7 @@ outs:
   path: data.csv
 ```
 
-If we move this using the regular Linux `mv data.csv other.csv` the stage file wouldn't know that we changed the **path** of **data.csv** to **other.csv**. Also it would be misleading to have a stage file named **data.dvc** that would create a file named **other.csv** on the remote repository.
+If we move this using the regular Linux `mv data.csv other.csv` the stage file wouldn't know that we changed the **path** of **data.csv** to **other.csv**.  
 
 So, we introduced `dvc move` adjust the content of the stage file to update **path**.  So it saves some steps.
 
