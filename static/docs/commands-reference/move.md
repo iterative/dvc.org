@@ -1,6 +1,6 @@
 # move
 
-Renames an output file and modifies the stage file (i.e, the one ending with .dvc) to reflect the change. If the output has the same name as its stage, it would also rename the corresponding stage file.
+Renames an output file and modifies the stage (aka cache) file (i.e, the one ending with .dvc) to reflect the change. If the output has the same name as its stage, it would also rename the corresponding stage file.
 
 ```
         e.g.
