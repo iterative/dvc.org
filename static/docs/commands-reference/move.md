@@ -64,9 +64,9 @@ outs:
 
 If we move this using the regular Linux `mv data.csv other.csv` the stage file wouldn't know that we changed the **path** of **data.csv** to **other.csv**.  
 
-So, we introduced `dvc move` adjust the content of the stage file to update **path**.  So it saves some steps.
+So, we introduced `dvc move` to adjust the content of the stage file to update **path**.  So that saves some manual and programming steps.
 
-So it works like this:
+To illustrate:
 
 ```text
 dvc move data.csv other.csv
