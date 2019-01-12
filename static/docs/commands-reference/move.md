@@ -66,7 +66,7 @@ If we move this using the regular Linux `mv data.csv other.csv` the stage file w
 
 So, we introduced `dvc move` to adjust the content of the stage file to update **path**.  So that saves some manual and programming steps.
 
-To illustrate:
+To illustrate, notice that the name of the cache file is not changed, only the **path** value:
 
 ```text
 dvc move data.csv other.csv
