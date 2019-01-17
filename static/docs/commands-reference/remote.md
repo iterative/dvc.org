@@ -322,6 +322,18 @@ these settings, you could use the following options:
   ```dvc
     $ dvc remote modify myremote use_ssl false
   ```
+
+AWS S3 remote can also be configured entirely via environment variables:
+
+```dvc
+    $ export AWS_ACCESS_KEY_ID="<my-access-key>"
+    $ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
+    $ dvc remote add myremote "s3://bucket/myremote"
+```
+
+For more information about the variables DVC supports, please visit
+[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
+
 </details>
 
 <details>
