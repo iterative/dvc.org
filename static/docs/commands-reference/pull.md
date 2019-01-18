@@ -38,7 +38,7 @@ for more information on how to configure the remote storage.
                             target.
       -f, --force           Do not prompt when removing working directory files.
       -R RECURSIVE, --recursive RECURSIVE
-                            Pull cache for subdirectories of the specified
+                            Pull cache for subdirectories of the current 
                             directory.
 ```
 

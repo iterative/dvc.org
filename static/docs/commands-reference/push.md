@@ -31,7 +31,7 @@ for more information on how to configure the remote storage.
       -d, --with-deps       Push cache for all dependencies of the specified
                             target.
       -R RECURSIVE, --recursive RECURSIVE
-                            Push cache from subdirectories of specified directory.
+                            Push cache from subdirectories of current directory.
 
 ```
 
