@@ -29,7 +29,7 @@ a way to compare and pick the best performing experiment variant.
 Tag the file located at `path` as a metric file. Sets a special flag
 (see [DVC File Format](/doc/user-guide/dvc-file-format)) in the relevant `.dvc`
 file to identify a specified output as a metric file. Alternatively, an output
-file could be made a metric via`-m` parameter of the `dvc run` command.
+file could be made a metric via `-M` parameter of the `dvc run` command.
 
 While any text file could be used as a metric file to track, it's recommended to
 use `TSV`, `CSV`, or `JSON` formats. DVC provides a way (see `show` below), to
