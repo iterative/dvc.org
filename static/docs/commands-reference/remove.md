@@ -35,7 +35,7 @@ file(s), keep the DVC files.
 
 * `-p`, `--purge` - remove outputs and DVC files.
 
-* `-f`, `--force` - force purge. Skip confirmation prompt
+* `-f`, `--force` - force purge. Skip confirmation prompt.
 
 
 ## Examples
