@@ -228,7 +228,7 @@ ML pipeline.
 
 ```dvc
     $ git add .
-    $ git commit -m 'extract data`
+    $ git commit -m 'extract data'
 ```
 
 ## Running in bulk
