@@ -62,6 +62,10 @@ if `-c` option is specified.
 `4 * cpu_count()`. For SSH remotes default is 4. For now only some phases of GC
 are parallel.
 
+* `-f`, `--force` - force garbage collection. Skip confirmation prompt
+are parallel.
+
+
 ## Examples
 
 ```dvc
