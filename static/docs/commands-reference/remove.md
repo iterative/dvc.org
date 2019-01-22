@@ -11,7 +11,7 @@ Note, it *does not* remove files from the local cache or remote storage (see
 want to use in the future or share.
 
 ```usage
-    usage: dvc remove [-h] [-q] [-v] [-o | -p] targets [targets ...]
+    usage: dvc remove [-h] [-q] [-v] [-o | -p] [-f] targets [targets ...]
 
     positional arguments:
         targets               DVC files.
@@ -22,6 +22,7 @@ want to use in the future or share.
         -v, --verbose         Be verbose.
         -o, --outs            Only remove DVC file outputs (default).
         -p, --purge           Remove DVC file and all its outputs
+        -f, --force           Force purge.
 ```
 
 Check also [Update Tracked Files](/doc/user-guide/update-tracked-file) to see
