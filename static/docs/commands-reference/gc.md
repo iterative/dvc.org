@@ -29,6 +29,7 @@ the needed files back anytime you want.
                               Remote repository to collect garbage in.
         -T, --all-tags        Show status of a local cache compared to a remote
                               repository for all tags.
+        -f, --force           Force garbage collection.
         -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
         -p [PROJECTS [PROJECTS ...]], --projects [PROJECTS [PROJECTS ...]]
                               Collect garbage for all given projects.
@@ -60,6 +61,9 @@ if `-c` option is specified.
 * `-j`, `--jobs` - garbage collector parallelism level. Default is
 `4 * cpu_count()`. For SSH remotes default is 4. For now only some phases of GC
 are parallel.
+
+* `-f`, `--force` - force garbage collection. Skip confirmation prompt.
+
 
 ## Examples
 
