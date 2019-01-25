@@ -105,9 +105,9 @@ optional arguments:
  format in this case.
 
 * `-a`, `--all-branches` - get and print metric file contents across all
-branches. It's should be used to compare different variants of an experiment.
+branches. It should be used to compare different variants of an experiment.
 
-* `-T`, `--all-tags` - get and print metric file contents across all tags. It's
+* `-T`, `--all-tags` - get and print metric file contents across all tags. It
 should be used to compare different variants of an experiment if tags are used
 for checkpoints.
 
