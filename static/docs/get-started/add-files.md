@@ -23,8 +23,8 @@ chocolatey using [official guide](https://chocolatey.org/install). Then install
     $ wget https://dvc.org/s3/get-started/data.xml
 ```
 
-To take a file under DVC control just run `dvc add`, it accepts any file or
-directory:
+To take a file (or a directory) under DVC control just run `dvc add`, it accepts
+any **file** or **directory**:
 
 ```dvc
     $ dvc add data.xml
@@ -43,7 +43,8 @@ To modify or replace a data file that is under DVC control you may need to run
 `dvc unprotect` or `dvc remove` first (check the 
 [Update Tracked File](/doc/user-guide/update-tracked-file) guide). Refer to
 [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
-and `dvc add` for more information.
+and `dvc add` for more information. Use `dvc move` to rename or move a data file
+that is under `dvc` control.
 
 <details>
 
