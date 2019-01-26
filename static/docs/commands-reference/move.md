@@ -55,7 +55,7 @@ name:
 
 And here is the updated content of the `data.csv.dvc`:
         
-```dvc
+```yaml
     md5: 3d1a3e5a5b662490e198d6a6ae84984b
     outs:
     - cache: true
