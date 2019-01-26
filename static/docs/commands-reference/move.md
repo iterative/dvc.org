@@ -15,7 +15,7 @@ the corresponding DVC file, it would also rename the DVC file.
    
 ```
 
-## Details
+## Description
 
 `dvc move` moves the file named by the `src` operand to the destination path
 named by the `dst` operand. It also renames and updates the corresponding DVC
