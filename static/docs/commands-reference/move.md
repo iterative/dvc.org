@@ -10,8 +10,8 @@ the corresponding DVC file, it would also rename the DVC file.
     usage: dvc move [-h] [-q] [-v] src dst
 
     positional arguments:
-        src                   Source (path to a directory or a file).
-        dst                   Destination (destination path).
+        src                   Source path to a data file or directory.
+        dst                   Destination path.
    
 ```
 
@@ -21,6 +21,9 @@ the corresponding DVC file, it would also rename the DVC file.
 named by the `dst` operand. It also renames and updates the corresponding DVC
 file. In general it behaves the same way as `mv src dst`, but takes care of a
 DVC file.
+
+If destination path already exists and is a directory, source file or directory
+is moved unchanged into this folder along with the corresponding DVC file.
 
 Let's imagine the following scenario:
 
@@ -70,26 +73,18 @@ Here we use `dvc add`to put a file under DVC control.  Then we change the name
 of it using `dvc move`.
 
 ```dvc
-
-  $ dvc add data.csv
-     
-     Adding 'data.csv' to '.gitignore'.
-     Saving 'data.csv' to cache '.dvc/cache'.
-     Saving information to 'data.csv.dvc'.
-
-    To track the changes with git run:
-        
-        git add .gitignore data.csv.dvc
-     
-   $ dvc move data.csv data.csv.moved
-     
-     Output 'data.csv.moved' didn't change. Skipping saving.
-     Adding 'data.csv.moved' to '.gitignore'.
-     Saving information to 'data.csv.dvc'.
-
-    To track the changes with git run:
-
-	    git add .gitignore data.csv.dvc  
+    $ dvc add data.csv
+    $ tree
+    .
+    ├── data.csv
+    └── data.csv.dvc
+    
+    
+    $ dvc move data.csv other.csv
+    $ tree
+    .
+    ├── other.csv
+    └── other.csv.dvc
 ```
 
 Here we use `dvc add` to put a file under DVC control. Then we use `dvc move`
@@ -99,29 +94,29 @@ into this folder.
 
 ```dvc
     $ tree
-        .
-        ├── data
-        │   └── foo
-        └── data2
-            └── subdir
+    .
+    ├── data
+    │   └── foo
+    └── data2
+        └── subdir
 
     $  dvc add data/foo
     $  tree
-        .
-        ├── data
-        │   ├── foo
-        │   └── foo.dvc
-        └── data2
-            └── subdir
+    .
+    ├── data
+    │   ├── foo
+    │   └── foo.dvc
+    └── data2
+        └── subdir
 
     $ dvc move data/foo data2/subdir/
     $ tree
-        .
-        ├── data
-        └── data2
-            └── subdir
-                ├── foo
-                └── foo.dvc
+    .
+    ├── data
+    └── data2
+        └── subdir
+            ├── foo
+            └── foo.dvc
 ```
 
 In this example we use `dvc add` to put a directory under DVC control. Then we
@@ -130,28 +125,28 @@ also moved.
 
 ```dvc
     $ tree
-        .
-        ├── data
-        │   ├── bar
-        │   └── foo
-        └── data2
+    .
+    ├── data
+    │   ├── bar
+    │   └── foo
+    └── data2
 
     $ dvc add data
     $ tree
-        .
-        ├── data
-        │   ├── bar
-        │   └── foo
-        ├── data2
-        └── data.dvc
+    .
+    ├── data
+    │   ├── bar
+    │   └── foo
+    ├── data2
+    └── data.dvc
 
     $ dvc move data data2/data3
     $ tree
-        .
-        └── data2
-            ├── data3
-            │   ├── bar
-            │   └── foo
-            └── data3.dvc
+    .
+    └── data2
+        ├── data3
+        │   ├── bar
+        │   └── foo
+        └── data3.dvc
 ```
 
