@@ -19,8 +19,14 @@ creating a new issue. Feel free to add issues related to the project and
 * Install requirements with `pip install -r requirements.txt` and
 `pip install -r test-requirements.txt`. We **strongly** recommend initializing a
 [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
-installing the required libraries. For example: `cd dvc; virtualenv .env; source 
-.env/bin/activate`.
+installing the required libraries. For example: 
+  ```dvc
+      $ cd dvc
+      $ virtualenv .env
+      $ source .env/bin/activate
+      $ pip install -r requirements.txt
+      $ pip install -r test-requirements.txt
+  ```
 * Make changes. Check the paragraph below if you need to run it with your changes.
 * Add tests for your change to `tests/test_*.py`.
 * Run tests with `python -m tests` and make sure all of them pass.
