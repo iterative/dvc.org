@@ -12,13 +12,16 @@ creating a new issue. Feel free to add issues related to the project and
 ## Submitting changes
 
 * Open a new issue in the [issue tracker](https://github.com/iterative/dvc/issues).
-* Fork and clone the repo:
+* Get the latest development version. Fork and clone the repo:
   ```dvc
-  $ git clone https://github.com/iterative/dvc.git
+      $ git clone https://github.com/iterative/dvc.git
   ```
 * Install requirements with `pip install -r requirements.txt` and
-`pip install -r test-requirements.txt`.
-* Make changes.
+`pip install -r test-requirements.txt`. We **strongly** recommend initializing a
+[virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
+installing the required libraries. For example: `cd dvc; virtualenv .env; source 
+.env/bin/activate`.
+* Make changes. Check the paragraph below if you need to run it with your changes.
 * Add tests for your change to `tests/test_*.py`.
 * Run tests with `python -m tests` and make sure all of them pass.
 * Submit a pull request, referencing any issues it addresses.
