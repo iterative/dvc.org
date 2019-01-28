@@ -63,7 +63,7 @@ If instead differences have been detected, `dvc status` lists those changes.  Fo
 
 * `-v`, `--verbose` displays detailed tracing information from executing the `dvc status` command.
 
-* `-q`, `--quiet` suppresses all output.
+* `-q`, `--quiet` do not write anything to standard output. Exit with 0 if pipeline is up to date, otherwise 1.
 
 * `targets` names zero or more `.dvc` files
 
