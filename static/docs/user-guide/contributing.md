@@ -30,6 +30,14 @@ installing the required libraries. For example:
 * Make changes. Check the paragraph below if you need to run it with your changes.
 * Add tests for your change to `tests/test_*.py`.
 * Run tests with `python -m tests` and make sure all of them pass.
+* Make sure you format your code and tests with
+ [black](https://github.com/ambv/black).
+
+  ```dvc
+      $ black dvc
+      $ black tests
+  ```
+
 * Submit a pull request, referencing any issues it addresses.
 
 We will review your pull request as soon as possible. Thank you for contributing!
@@ -83,4 +91,5 @@ Example:
 ```
 
 ### Python style guide
-We are generally using [PEP8](https://www.python.org/dev/peps/pep-0008/?).
+We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and are 
+checking that our code is formated with [black](https://github.com/ambv/black).
