@@ -159,7 +159,7 @@ organize all the experiments in a repository and checkout them when needed.
     $ vi code/train_model.py
 ```
 
-Increase the number of trees in the forest to 500 by changing the `n_estimators` parameter and the number of jobs in the
+Increase the number of trees in the forest to 700 by changing the `n_estimators` parameter and the number of jobs in the
 `RandomForestClassifier` class (line 27):
 
 ```python
