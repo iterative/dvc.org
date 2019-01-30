@@ -26,7 +26,7 @@ The `dvc status` command runs in one of two modes, _local_ and _cloud_ (triggere
 
 ## Options
 
-* `-d`, `--with-deps` ... Applies whether or not `--cloud` is specified.
+* `-d`, `--with-deps` shows the changes that occurred when taking dependencies into account.  Applies whether or not `--cloud` is specified.
 
 * `-v`, `--verbose` displays detailed tracing information from executing the `dvc status` command.
 
@@ -72,12 +72,34 @@ Pipeline is up to date. Nothing to reproduce.
 
 This message explains that the workspace is in sync and there is nothing to reproduce.
 
+```dvc
+$ vi code/featurization.py
+... edit the code
+$ dvc status model.p.dvc 
+Pipeline is up to date. Nothing to reproduce.
+$ dvc status model.p.dvc --with-deps
+matrix-train.p.dvc
+	deps
+		changed:  code/featurization.py
+$ dvc status Posts.xml.dvc 
+Pipeline is up to date. Nothing to reproduce.
+$ dvc status Posts.xml.dvc --with-deps
+Pipeline is up to date. Nothing to reproduce.
+```
+
+Specifying a target, in this case `model.p.dvc`, shows the information for that stage in the pipeline.  In this case the change to `code/featurization.py` is not shown because that file is not referenced from the named stage.
+
+The `--with-deps` option checks further to find changes.  With that flag the change is found, as it is a dependency of a preceding stage.
+
+The change is not found when the `Posts.xml.dvc` target is specified.  Because that target precedes `matrix-train.p.dvc` the `Posts.xml.dvc` stage is not affected by the change.  Instead the change is only shown, when using `--with-deps` for stages which follow `matrix-train.p.dvc` in the pipeline, such as `model.p.dvc`.
+
 While setting up an experiment in a DVC workspace, one creates a git branch for that experiment then make some modifications:
 
 ```dvc
 $ git checkout -b bigram
 Switched to a new branch 'bigram'
 $ vi code/featurization.py
+... edit the code
 $ dvc status
 matrix-train.p.dvc
 	deps
