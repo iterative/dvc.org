@@ -316,7 +316,7 @@ And evaluate the result of the trained model using the test feature matrix:
 
 ```dvc
     $ dvc run -d data/model.p -d data/matrix-test.p \
-            -d code/evaluate.py -d code/conf.py -o data/eval.txt \
+            -d code/evaluate.py -d code/conf.py -M data/eval.txt \
             -f Dvcfile \
             python code/evaluate.py
     Reproducing 'Dvcfile':
@@ -326,6 +326,9 @@ And evaluate the result of the trained model using the test feature matrix:
 The model evaluation step is the last one. To make it a reproducibility goal by
 default we specify DVC-file as `Dvcfile`. This will be discussed in the next
 chapter in more details.
+
+Note that the output file `data/eval.txt` was transformed by DVC into a
+metric file in accordance with the `-M` option.
 
 The result of the last three run commands execution is three DVC-files and
 a modified .gitignore file. All the changes should be committed into Git.
@@ -347,6 +350,12 @@ form:
 ```dvc
     $ cat data/eval.txt
     AUC: 0.624652
+```
+
+You can also show the metrics using the `DVC metrics` command:
+```dvc
+    $ dvc metrics show
+    data/eval.txt:AUC: 0.624652
 ```
 
 This is probably not the best AUC that you have seen. In this document, our
