@@ -12,21 +12,24 @@ Show changed stages in the pipeline and mismatches either between the local cach
 
 ## Description
 
-`dvc status` searches for changes in the pipeline, showing which stages have changed and must be reproduced (`dvc repro`).  Stages go out of date when the dependencies, either code or data files, have changed from what is in the DVC cache.  The output indicates the detected changes, indicating what will be updated when `dvc repro` is executed.
+`dvc status` searches for changes in the pipeline, showing which stages have changed and must be reproduced (`dvc repro`).  Changes are detected through the `md5` hash of every file listed in every stage file in the pipeline against the corresponding file in the filesystem.  The output indicates the detected changes, indicating what will be updated when `dvc repro` is executed.
 
-If nothing differs between files in the repository and the data cache, `dvc status` prints this message:
+If no differences are detected, `dvc status` prints this message:
 
 > Pipeline is up to date. Nothing to reproduce.
 
 The first sentence means that no differences were detected, and the second therefore means that no stages would be rerun if `dvc repro` were executed.
 
-If instead differences have been detected, `dvc status` lists those changes.  For each stage, that is for each `.dvc` file, or `Dvcfile`, it lists any changed dependency or output.
+If instead differences have been detected, `dvc status` lists those changes.  For each stage with differences, the _dependencies_ and/or _outputs_ that differ are listed.
 
-The `dvc status` command runs in one of two modes, _local_ and _cloud_ (triggered by using the `--cloud` option).  In local mode comparison are made between files in the workspace and corresponding files in the local cache (`.dvc/cache`).  In cloud mode comparisons are made between the local cache, and a cache stored elsewhere.  Remote caches are defined using the `dvc remote` command, and are most often used for sharing data between collaborators.
+The `dvc status` command runs in one of two modes, _local_ and _cloud_ (triggered by using the `--cloud` option).  In local mode comparison are made between data files in the workspace and corresponding files in the local cache (`.dvc/cache`).  In cloud mode comparisons are made between the local cache, and a cache stored elsewhere.  Remote caches are defined using the `dvc remote` command.
+
+The command can be limited to one or more stages by listing the stage file(s) as `targets`.  When combined with the `--with-deps` option, a search is made for changes in other stages that affect the target stage. 
+
 
 ## Options
 
-* `-d`, `--with-deps` shows the changes that occurred when taking dependencies into account.  Applies whether or not `--cloud` is specified.
+* `-d`, `--with-deps` shows finds changes by tracking dependencies to the named target stage.  This option only has effect when one or more target stages are named.  By traversing the dependencies, DVC searches backward through the pipeline from the named target(s).  This means DVC will not show changes occurring later in the pipeline than the named target(s).  Applies whether or not `--cloud` is specified.
 
 * `-v`, `--verbose` displays detailed tracing information from executing the `dvc status` command.
 
@@ -43,8 +46,6 @@ The `dvc status` command runs in one of two modes, _local_ and _cloud_ (triggere
 * `-r REMOTE`, `--remote REMOTE` specifies which remote (see `dvc remote list`) to compare against.    Applies only if `--cloud` is specified.
 
 * `-j JOBS`, `--jobs JOBS` specifies the number of jobs DVC can use to retrieve information from remote servers.  This only applies when the `--cloud` option is used.
-
-* `targets` names zero or more `.dvc` files
 
 ## Examples
 
@@ -71,27 +72,6 @@ Pipeline is up to date. Nothing to reproduce.
 ```
 
 This message explains that the workspace is in sync and there is nothing to reproduce.
-
-```dvc
-$ vi code/featurization.py
-... edit the code
-$ dvc status model.p.dvc 
-Pipeline is up to date. Nothing to reproduce.
-$ dvc status model.p.dvc --with-deps
-matrix-train.p.dvc
-	deps
-		changed:  code/featurization.py
-$ dvc status Posts.xml.dvc 
-Pipeline is up to date. Nothing to reproduce.
-$ dvc status Posts.xml.dvc --with-deps
-Pipeline is up to date. Nothing to reproduce.
-```
-
-Specifying a target, in this case `model.p.dvc`, shows the information for that stage in the pipeline.  In this case the change to `code/featurization.py` is not shown because that file is not referenced from the named stage.
-
-The `--with-deps` option checks further to find changes.  With that flag the change is found, as it is a dependency of a preceding stage.
-
-The change is not found when the `Posts.xml.dvc` target is specified.  Because that target precedes `matrix-train.p.dvc` the `Posts.xml.dvc` stage is not affected by the change.  Instead the change is only shown, when using `--with-deps` for stages which follow `matrix-train.p.dvc` in the pipeline, such as `model.p.dvc`.
 
 While setting up an experiment in a DVC workspace, one creates a git branch for that experiment then make some modifications:
 
