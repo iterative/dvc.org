@@ -18,7 +18,7 @@ If no differences are detected, `dvc status` prints this message:
 
 > Pipeline is up to date. Nothing to reproduce.
 
-The first sentence means that no differences were detected, and the second therefore means that no stages would be rerun if `dvc repro` were executed.
+The says that no differences were detected, and therefore that no stages would be rerun if `dvc repro` were executed.
 
 If instead differences have been detected, `dvc status` lists those changes.  For each stage with differences, the _dependencies_ and/or _outputs_ that differ are listed.
 
@@ -40,9 +40,11 @@ The command can be limited to one or more stages by listing the stage file(s) as
 
 * `-r REMOTE`, `--remote REMOTE` specifies which remote cache (see `dvc remote list`) to compare against.  The argument, `REMOTE`, is the name given for a remote defined using the `dvc remote` command.   Applies only if `--cloud` is specified.
 
-* `-a`, `--all-branches` compares cache content against all git branches.  The corresponding branches are shown in the status output.  Applies only if `--cloud` is specified.
+* `-a`, `--all-branches` compares cache content against all git branches.  It should be used to compare different variants of an experiment.  The corresponding branches are shown in the status output.  Applies only if `--cloud` is specified.
 
-* `-T`, `--all-tags`  compares cache content against all git tags.  The corresponding tags are shown in the status output.  Applies only if `--cloud` is specified.
+* `-T`, `--all-tags`  compares cache content against all git tags.  It
+should be used to compare different variants of an experiment if tags are used
+for checkpoints.  The corresponding tags are shown in the status output.  Applies only if `--cloud` is specified.
 
 * `--show-checksums`  shows the DVC checksum for the file, rather than the file name.  Applies only if `--cloud` is specified.
 
@@ -81,14 +83,9 @@ matrix-train.p.dvc
 		changed:  code/featurization.py
 ```
 
-The status output indicates that in the `matrix-train.p.dvc` stage the dependency `code/featurization.py` has changed, because that file was changed. 
-
-If the `dvc status` command is limited to a target that had no changes, result shows no changes.  By adding `--with-deps` the change will be found, so long as it is in a preceding stage.
+Editing a file, such as the dependency `code/featurization.py`, causes the corresponding stage to be marked as changed.  If the `dvc status` command is limited to a target that had no changes, result shows no changes.  By adding `--with-deps` the change will be found, so long as the change is in a preceding stage.
 
 ```dvc
-... changes made to workspace
-$ dvc repro
-... output 
 $ dvc remote list
 rcache	/Volumes/Extra/dvc/classify/rcache
 $ dvc status --cloud --remote rcache
@@ -98,11 +95,6 @@ Preparing to collect status from /Volumes/Extra/dvc/classify/rcache
 	new:      data/eval.txt
 	new:      data/matrix-train.p
 	new:      data/matrix-test.p
-```
-
-The output shows where the location of the remote cache as well as any differences between the local cache and remote cache.  The word `new` means the local cache has files that do not exist in the remote cache.
-
-```dvc
 $ dvc status --cloud --remote rcache --show-checksums
 Preparing to collect status from /Volumes/Extra/dvc/classify/rcache
 [##############################] 100% Collecting information
@@ -110,11 +102,6 @@ Preparing to collect status from /Volumes/Extra/dvc/classify/rcache
 	new:      d6b228f7904bd200d4eb643fe0e8efd8
 	new:      f506aa14271f793ffd7eca113f5920cd
 	new:      9c0b1f5c3560b6a2838b3fbcd7d72665
-```
-
-If desired, we can list the cache objects by their checksum instead of file name.
-
-```dvc
 $ dvc status --cloud --remote rcache --all-branches
 Preparing to collect status from /Volumes/Extra/dvc/classify/rcache
 [##############################] 100% Collecting information
@@ -122,11 +109,6 @@ Preparing to collect status from /Volumes/Extra/dvc/classify/rcache
 	new:      data/matrix-test.p(master)
 	new:      data/model.p(master)
 	new:      data/eval.txt(master)
-```
-
-The `--all-branches` option shows the corresponding git brach for each file.
-
-```dvc
 $ dvc status -c --remote rcache --all-tags
 Preparing to collect status from /Volumes/Extra/dvc/classify/rcache
 [##############################] 100% Collecting information
@@ -134,19 +116,7 @@ Preparing to collect status from /Volumes/Extra/dvc/classify/rcache
 	new:      data/model.p(master) data/model.p(train-model-more-trees)
 ```
 
-The `--all-tags` option shows the corresponding git tags.
-
-```dvc
-$ dvc status --cloud --remote rcache matrix-train.p.dvc 
-Preparing to collect status from /Volumes/Extra/dvc/classify/rcache
-[##############################] 100% Collecting information
-	new:      data/matrix-test.p
-	new:      data/matrix-train.p
-```
-
-Specifying a target correspondingly limits the output.
-
-One can detect when a remote cache is updated:
+The output shows where the location of the remote cache as well as any differences between the local cache and remote cache.  The word `new` means the local cache has files that do not exist in the remote cache.
 
 ```dvc
 $ dvc status --cloud --remote rcache
@@ -158,25 +128,4 @@ Preparing to collect status from /Volumes/Extra/dvc/classify/rcache
 	deleted:  data/model.p
 ```
 
-In this case work was performed in another workspace, updated code was pushed to the git repository (`git push`), and updated data to the shared remote cache (`dvc push`).  Unlike the previous example where a workspace had data to push to a remote cache, in this case the remote cache has data to be pulled into the local workspace.  Using `git pull` code changes are retrieved from the other workspace, after which `dvc status` will show this output.  In the previous examples the word `new` meant the workspace had files to be uploaded to the remote cache.  In this example the word `deleted` means the local cache does not have some of the files present in the remote cache.
-
-After performing a `dvc pull`, running `dvc status` shows the pipeline to be up-to-date:
-
-```dvc
-$ dvc pull --remote rcache
-Preparing to download data from '/Volumes/Extra/dvc/classify/rcache'
-Preparing to collect status from /Volumes/Extra/dvc/classify/rcache
-[##############################] 100% Collecting information
-[##############################] 100% Analysing status.
-(1/4): [##############################] 100% data/eval.txt
-(2/4): [##############################] 100% data/model.p
-(3/4): [##############################] 100% data/matrix-test.p
-(4/4): [##############################] 100% data/matrix-train.p
-... much more output
-$ dvc status -c --remote rcache
-Preparing to collect status from /Volumes/Extra/dvc/classify/rcache
-[##############################] 100% Collecting information
-Pipeline is up to date. Nothing to reproduce.
-```
-
-
+The word `deleted` means the local cache does not have some of the files present in the remote cache.  The remote cache may have been updated from elsewhere and therefore have additional files.  For the typical process to update workspaces, see [Share Data And Model Files](/doc/use-cases/share-data-and-model-files)
