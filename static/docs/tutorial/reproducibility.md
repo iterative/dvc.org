@@ -159,7 +159,7 @@ organize all the experiments in a repository and checkout them when needed.
     $ vi code/train_model.py
 ```
 
-Increase the number of trees in the forest to 500 by changing the `n_estimators` parameter and the number of jobs in the
+Increase the number of trees in the forest to 700 by changing the `n_estimators` parameter and the number of jobs in the
 `RandomForestClassifier` class (line 27):
 
 ```python
@@ -192,14 +192,14 @@ This seems like a good model improvement (+1.28%). Please commit all the changes
 
 ```dvc
     $ git add .
-    $ git commit -m '500 trees in the forest'
+    $ git commit -m '700 trees in the forest'
 ```
 
 ## Merge the model to master
 
 Now we can revisit the failing hypothesis with bigrams, which didn’t provide any
 model improvement even with one thousand more features. The current model with
-500 trees in the forest is stronger and we might be able to get more information
+700 trees in the forest is stronger and we might be able to get more information
 using bigrams. So, let’s incorporate the bigram changes into the current model 
 using a regular Git merge command.
 
