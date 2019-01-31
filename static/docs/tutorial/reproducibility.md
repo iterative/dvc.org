@@ -99,11 +99,12 @@ This is not a great result but it gives us some information about the
 model.
 
 To compare it with the previous AUC, you can use the `metrics` command:
+
 ```dvc
     $ dvc metrics show -a
     
     bigram:
-	    data/eval.txt: AUC: 0.624727
+    	data/eval.txt: AUC: 0.624727
 
     master:
     	data/eval.txt: AUC: 0.624652
