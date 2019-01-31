@@ -98,6 +98,17 @@ zero (+0.0075% to be precise):
 This is not a great result but it gives us some information about the
 model.
 
+To compare it with the previous AUC, you can use the `metrics` command:
+```dvc
+    $ dvc metrics show -a
+    
+    bigram:
+	    data/eval.txt: AUC: 0.624727
+
+    master:
+    	data/eval.txt: AUC: 0.624652
+```
+
 > It is convenient to keep track of information even for failed experiments.
 Sometimes a failed hypothesis gives more information than a successful one.
 
