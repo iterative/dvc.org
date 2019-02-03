@@ -84,8 +84,13 @@ generated is `<file>.dvc` where `<file>` is file name of the first output (
 contain subdirectories, use `-c` options to change location of the stage file. 
 
 * `-c`, `--cwd` - changes a current working directory before running the
-command. All dependencies and outputs will be ... 
-
+command. All dependencies and outputs will be expanded relative to that 
+directory. Thus `dvc --cwd <DIR> [...]` is equivalent to 
+```dvc
+pushd <DIR>; 
+dvc run [...] ;
+popd;
+```
 * `--no-exec` - create a stage file, do not run the command specified do not
 take dependencies or outputs under DVC control. On the stage file level `md5`
 hash sums will be empty. They will be populated next time this stage is
