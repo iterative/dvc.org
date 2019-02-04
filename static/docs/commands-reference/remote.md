@@ -340,11 +340,17 @@ For more information about the variables DVC supports, please visit
 
 ### Click for Azure available options
 
-* **`url`** - remote location URL
+* **`url`** - remote location URL.
 
   ```dvc
-    $ dvc remote modify myremote url "azure://ContainerName=remote;"
+      $ dvc remote modify myremote url "azure://ContainerName=remote;"
   ```
+
+* **`connection_string`** - connection string.
+
+   ```dvc
+       $ dvc remote modify myremote connection_string my-connection-string
+   ```
 
 </details>
 
