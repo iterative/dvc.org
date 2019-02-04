@@ -87,9 +87,9 @@ contain subdirectories, use `-c` options to change location of the stage file.
 command. All dependencies and outputs will be expanded relative to that 
 directory. Thus `dvc run --cwd <DIR> [...]` is equivalent to 
 ```dvc
-    $ pushd <DIR>; 
-    $ dvc run [...] ;
-    $ popd;
+    $ pushd <DIR>
+    $ dvc run [...]
+    $ popd
 ```
 * `--no-exec` - create a stage file, do not run the command specified do not
 take dependencies or outputs under DVC control. On the stage file level `md5`
