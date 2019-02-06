@@ -10,11 +10,17 @@ Install dvc hooks into the repository
         -q, --quiet           Be quiet.
         -v, --verbose         Be verbose.
 ```
+## Installed hooks
+- pre-commit : dvc status
+- post-checkout : dvc checkout
 
 ## Examples
 
 ```dvc
     $ dvc install
+    $ cat .git/hooks/pre-commit
+      #!/bin/sh
+      exec dvc status
     $ cat .git/hooks/post-checkout
       #!/bin/sh
       exec dvc checkout
