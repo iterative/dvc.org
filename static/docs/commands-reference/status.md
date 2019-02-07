@@ -12,27 +12,34 @@ Show changed stages in the pipeline and mismatches either between the local cach
 
 ## Description
 
-`dvc status` searches for changes in the pipeline, showing which stages have changed and must be reproduced (`dvc repro`).  Changes are detected through the `md5` hash of every file listed in every stage file in the pipeline against the corresponding file in the filesystem.  The output indicates the detected changes, indicating what will be updated when `dvc repro` is executed.
+`dvc status` searches for changes in the pipeline, either showing which stages have changed in the local workspace and must be reproduced (`dvc repro`), or differences between the local workspace and a remote cache.  Changes are detected through the `md5` hash of every file listed in every stage file in the pipeline against the corresponding file in the filesystem.  The output indicates the detected changes, indicating what will be updated when `dvc repro` is executed.
 
 If no differences are detected, `dvc status` prints this message:
 
 > Pipeline is up to date. Nothing to reproduce.
 
-The says that no differences were detected, and therefore that no stages would be rerun if `dvc repro` were executed.
+This says that no differences were detected, and therefore that no stages would be rerun if `dvc repro` were executed.
 
 If instead differences have been detected, `dvc status` lists those changes.  For each stage with differences, the _dependencies_ and/or _outputs_ that differ are listed.  For each item listed, either the file name or the checksum is shown, and additionally a status word is shown describing the change:
 
-* _changed_ means the file exists in both local and remote caches, and has changed
-* _new_ means the file exists in the local cache but not the remote cache
-* _deleted_ means the file does not exist in the local cache, and exists in the remote cache
+* For the local workspace:
+    * _changed_ means the named file has changed
+* For comparison against a remote cache:
+    * _new_ means the file exists in the local cache but not the remote cache
+    * _deleted_ means the file does not exist in the local cache, and exists in the remote cache
 
-For either the _new_ and _deleted_ cases, it is probably necessary to update either the local git repository and local cache, or the remote git repository and remote cache.  For the typical process to update workspaces, see [Share Data And Model Files](/doc/use-cases/share-data-and-model-files)
+For the _changed_ case, the `dvc repro` command is indicated.  For either the _new_ and _deleted_ cases, a combination of `git pull` or `git push` along with `dvc pull` or `dvc push` is indicated.  For the typical process to update workspaces, see [Share Data And Model Files](/doc/use-cases/share-data-and-model-files)
 
-DVC stage files lists both files managed in the git repository, and in the DVC cache.  The pipeline therefore comprises both sets of file, and `dvc status` will detect any changes in either set of files.
+The `dvc status` command runs in one of two modes, _local_ and _cloud_ (triggered by using the `--cloud` option):
 
-The `dvc status` command runs in one of two modes, _local_ and _cloud_ (triggered by using the `--cloud` option).  In local mode comparison are made between data files in the workspace and corresponding files in the local cache (`.dvc/cache`).  In cloud mode comparisons are made between the local cache, and a cache stored elsewhere.  Remote caches are defined using the `dvc remote` command.
+Mode   | CLI Option | Description
+-------|------------|----------------------------------
+local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the local cache (`.dvc/cache`)
+remote | `-c`  | Comparisons are made between the local cache, and a cache stored elsewhere.  Remote caches are defined using the `dvc remote` command.
 
-The command can be limited to one or more stages by listing the stage file(s) as `targets`.  When combined with the `--with-deps` option, a search is made for changes in other stages that affect the target stage. 
+DVC stage files lists both files managed in the git repository, and in the DVC cache.  The pipeline therefore comprises both sets of files, and `dvc status` will detect any changes in either set of files.
+
+The comparison can be limited to one or more stages by listing the stage file(s) as `targets`.  Changes are reported only against the named target stage or stages.  When combined with the `--with-deps` option, a search is made for changes in other stages that affect the target stage. 
 
 ## Options
 
@@ -56,7 +63,7 @@ for checkpoints.  The corresponding tags are shown in the status output.  Applie
 
 * `-j JOBS`, `--jobs JOBS` specifies the number of jobs DVC can use to retrieve information from remote servers.  This only applies when the `--cloud` option is used.
 
-## Examples
+## Example: Simple usage
 
 ```dvc
 $ dvc status
@@ -73,6 +80,8 @@ $ dvc status
 
 This shows that for `bar.dvc` the dependency, `foo`, has changed, and the output, `bar` has changed.  Likewise for `foo.dvc` the dependency `foo` has changed, but no output has changed.
 
+## Example: Dependencies
+
 ```dvc
 $ vi code/featurization.py
 ... edit the code
@@ -85,6 +94,8 @@ matrix-train.p.dvc
 ```
 
 If the `dvc status` command is limited to a target that had no changes, result shows no changes.  By adding `--with-deps` the change will be found, so long as the change is in a preceding stage.
+
+## Example: Remote comparisons
 
 ```dvc
 $ dvc remote list
