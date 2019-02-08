@@ -12,9 +12,14 @@ Show changed stages in the pipeline and mismatches either between the local cach
 
 ## Description
 
-`dvc status` searches for changes in the pipeline, either showing which stages have changed in the local workspace and must be reproduced (`dvc repro`), or differences between the local workspace and a remote cache.  Changes are detected through the `md5` hash of every file listed in every stage file in the pipeline against the corresponding file in the filesystem.  The output indicates the detected changes, indicating what will be updated when `dvc repro` is executed.
+`dvc status` searches for changes in the pipeline, either showing which stages have changed in the local workspace and must be reproduced (`dvc repro`), or differences between the local workspace and a remote cache.  The two modes, _local_ and _cloud_ are triggered by using the `--cloud` option:
 
-If no differences are detected, `dvc status` prints this message:
+Mode   | CLI Option | Description
+-------|------------|----------------------------------
+local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the local cache (`.dvc/cache`)
+remote | `-c`  | Comparisons are made between the local cache, and a cache stored elsewhere.  Remote caches are defined using the `dvc remote` command.
+
+Changes are detected through the `md5` hash of every file listed in every stage file in the pipeline against the corresponding file in the filesystem.  The output indicates the detected changes, if any.  If no differences are detected, `dvc status` prints this message:
 
 > Pipeline is up to date. Nothing to reproduce.
 
@@ -28,18 +33,11 @@ If instead differences have been detected, `dvc status` lists those changes.  Fo
     * _new_ means the file exists in the local cache but not the remote cache
     * _deleted_ means the file does not exist in the local cache, and exists in the remote cache
 
-For the _changed_ case, the `dvc repro` command is indicated.  For either the _new_ and _deleted_ cases, a combination of `git pull` or `git push` along with `dvc pull` or `dvc push` is indicated.  For the typical process to update workspaces, see [Share Data And Model Files](/doc/use-cases/share-data-and-model-files)
+For the _changed_ case, the `dvc repro` command is indicated.  
 
-The `dvc status` command runs in one of two modes, _local_ and _cloud_ (triggered by using the `--cloud` option):
+For either the _new_ and _deleted_ cases, the local workspace is different from the remote cache.  Bringing the two into sync requires  `dvc pull` or `dvc push` to synchronize the DVC cache, and `git` commands to synchronize what's managed with _git_.  For the typical process to update workspaces, see [Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
 
-Mode   | CLI Option | Description
--------|------------|----------------------------------
-local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the local cache (`.dvc/cache`)
-remote | `-c`  | Comparisons are made between the local cache, and a cache stored elsewhere.  Remote caches are defined using the `dvc remote` command.
-
-DVC stage files lists both files managed in the git repository, and in the DVC cache.  The pipeline therefore comprises both sets of files, and `dvc status` will detect any changes in either set of files.
-
-The comparison can be limited to one or more stages by listing the stage file(s) as `targets`.  Changes are reported only against the named target stage or stages.  When combined with the `--with-deps` option, a search is made for changes in other stages that affect the target stage. 
+DVC determines data and code files to compare by analyzing all stage files in the workspace.  The comparison can be limited to one or more stages by listing the stage file(s) as `targets`.  Changes are reported only against the named target stage or stages.  When combined with the `--with-deps` option, a search is made for changes in other stages that affect the target stage. 
 
 ## Options
 
@@ -53,11 +51,9 @@ The comparison can be limited to one or more stages by listing the stage file(s)
 
 * `-r REMOTE`, `--remote REMOTE` specifies which remote cache (see `dvc remote list`) to compare against.  The argument, `REMOTE`, is a remote name defined using the `dvc remote` command.   Applies only if `--cloud` is specified.
 
-* `-a`, `--all-branches` compares cache content against all git branches.  It should be used to compare different variants of an experiment.  The corresponding branches are shown in the status output.  Applies only if `--cloud` is specified.
+* `-a`, `--all-branches` compares cache content against all git branches.  Instead of checking just the currently checked out workspace, it checks against all other branches of this workspace.  The corresponding branches are shown in the status output.  Applies only if `--cloud` is specified.
 
-* `-T`, `--all-tags`  compares cache content against all git tags.  It
-should be used to compare different variants of an experiment if tags are used
-for checkpoints.  The corresponding tags are shown in the status output.  Applies only if `--cloud` is specified.
+* `-T`, `--all-tags`  compares cache content against all git tags.  Both the `--all-branches` and `--all-tags` options cause DVC to check more than just the currently checked out workspace.  The corresponding tags are shown in the status output.  Applies only if `--cloud` is specified.
 
 * `--show-checksums`  shows the DVC checksum for the file, rather than the file name.  Applies only if `--cloud` is specified.
 
