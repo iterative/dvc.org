@@ -8,18 +8,23 @@ Show changed stages in the pipeline and mismatches either between the local cach
     usage: dvc status [-h] [-q | -v] [-j JOBS] [--show-checksums]
                       [-c] [-r REMOTE] [-a] [-T] [-d]
                       [targets [targets ...]]
+    
+    positional arguments:
+      targets               Limit the scope to these stage files.
 ```
 
 ## Description
 
-`dvc status` searches for changes in the pipeline, either showing which stages have changed in the local workspace and must be reproduced (`dvc repro`), or differences between the local workspace and a remote cache.  The two modes, _local_ and _cloud_ are triggered by using the `--cloud` option:
+`dvc status` searches for changes in the pipeline, either showing which stages have changed in the local workspace and must be reproduced (`dvc repro`), or differences between the local cache and a remote cache (meaning `dvc push` or `dvc pull` could be run to synchronize them). The two modes, _local_ and _cloud_ are triggered by using the `--cloud` option:
 
 Mode   | CLI Option | Description
 -------|------------|----------------------------------
 local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the local cache (`.dvc/cache`)
 remote | `-c`  | Comparisons are made between the local cache, and a cache stored elsewhere.  Remote caches are defined using the `dvc remote` command.
 
-Changes are detected through the `md5` hash of every file listed in every stage file in the pipeline against the corresponding file in the filesystem.  The output indicates the detected changes, if any.  If no differences are detected, `dvc status` prints this message:
+DVC determines data and code files to compare by analyzing all stage files in the current workspace (`--all-branches` and `--all-tags` in the `cloud` mode compare multiple wokspaces - accross all brances or tags). The comparison can be limited to one or more stages by listing the stage file(s) as `targets`. Changes are reported only against the named target stage or stages. When combined with the `--with-deps` option, a search is made for changes in other stages that affect the target stage.
+
+In the `local` mode, changes are detected through the `md5` hash of every file listed in every stage file in the pipeline against the corresponding file in the filesystem.  The output indicates the detected changes, if any.  If no differences are detected, `dvc status` prints this message:
 
 > Pipeline is up to date. Nothing to reproduce.
 
@@ -33,12 +38,10 @@ If instead differences have been detected, `dvc status` lists those changes.  Fo
     * _new_ means the file exists in the local cache but not the remote cache
     * _deleted_ means the file does not exist in the local cache, and exists in the remote cache
 
-For the _changed_ case, the `dvc repro` command is indicated.  
+For the _changed_ case, the `dvc repro` command is indicated.
 
-For either the _new_ and _deleted_ cases, the local workspace is different from the remote cache.  Bringing the two into sync requires  `dvc pull` or `dvc push` to synchronize the DVC cache, and `git` commands to synchronize what's managed with _git_.  For the typical process to update workspaces, see [Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
-
-DVC determines data and code files to compare by analyzing all stage files in the workspace.  The comparison can be limited to one or more stages by listing the stage file(s) as `targets`.  Changes are reported only against the named target stage or stages.  When combined with the `--with-deps` option, a search is made for changes in other stages that affect the target stage. 
-
+For either the _new_ and _deleted_ cases, the local cache (subset of it, that is determined by the active workspace) is different from the remote cache.  Bringing the two into sync requires  `dvc pull` or `dvc push` to synchronize the DVC cache.  For the typical process to update workspaces, see [Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
+ 
 ## Options
 
 * `-d`, `--with-deps` finds changes by tracking dependencies to the named target stage.  This option only has effect when one or more target stages are named.  By traversing the dependencies, DVC searches backward through the pipeline from the named target(s).  This means DVC will not show changes occurring later in the pipeline than the named target(s).  Applies whether or not `--cloud` is specified.
