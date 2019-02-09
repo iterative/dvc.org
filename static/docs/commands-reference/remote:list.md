@@ -2,6 +2,11 @@
 
 Show all available remotes.
 
+See also [add](/doc/commands-reference/remote-add), 
+[modify](/doc/commands-reference/remote-modify), 
+and [remove](/doc/commands-reference/remote-remove) commands to manage data
+remotes.
+
 ## Synopsis
 
 ```usage

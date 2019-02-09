@@ -2,6 +2,11 @@
 
 Modify remote settings.
 
+See also [add](/doc/commands-reference/remote-add),
+[list](/doc/commands-reference/remote-list),
+and [remove](/doc/commands-reference/remote-remove) commands to manage data
+remotes.
+
 ## Synopsis
 
 ```usage

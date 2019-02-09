@@ -3,12 +3,18 @@
 Add a new data remote. Depending on your storage type you might need to run `dvc
 remote modify` to provide credentials and/or configure other remote parameters.
 
+See also [list](/doc/commands-reference/remote-list), 
+[modify](/doc/commands-reference/remote-modify), 
+and [remove](/doc/commands-reference/remote-remove) commands to manage data
+remotes.
+
+
 ## Synopsis
 
 ```usage
-    uage: dvc remote add [-h] [-q | -v] [-d]
-                         [--global] [--system] [--local]
-                         name url
+    usage: dvc remote add [-h] [-q | -v] [-d]
+                          [--global] [--system] [--local]
+                          name url
 
     positional arguments:
         name           Name.

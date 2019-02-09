@@ -9,8 +9,8 @@ commands to set up and manage data remotes.
 ## Synopsis
 
 ```usage
-    uage: dvc remote [-h] [-q] [-v] 
-                     {add,remove,modify,list} ...
+    usage: dvc remote [-h] [-q] [-v] 
+                      {add,remove,modify,list} ...
 
     positional arguments:
         add                   Add remote

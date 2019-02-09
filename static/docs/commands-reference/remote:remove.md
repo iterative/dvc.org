@@ -3,6 +3,12 @@
 Remove a specified remote. This command affects DVC configuration files only, it
 does not physically remove your data files stored remotely.
 
+See also [add](/doc/commands-reference/remote-add),
+[list](/doc/commands-reference/remote-list),
+and [modify](/doc/commands-reference/remote-modify) commands to manage data
+remotes.
+
+
 ## Synopsis
 
 ```usage
