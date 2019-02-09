@@ -6,8 +6,9 @@ remote modify` to provide credentials and/or configure other remote parameters.
 ## Synopsis
 
 ```usage
-    usage: dvc remote add [-h] [-q | -v] [--global] [--system] [--local] [-d]
-                          name url
+    dvc remote add [-h] [-q | -v] [-d]
+                   [--global] [--system] [--local]
+                   name url
 
     positional arguments:
         name           Name.

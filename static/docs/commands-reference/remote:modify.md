@@ -5,13 +5,14 @@ Modify remote settings.
 ## Synopsis
 
 ```usage
-    usage: dvc remote modify [-h] [-q | -v] [-u] [--global] [--system]
-                             [--local] name option [value]
+    dvc remote modify [-h] [-q | -v] [-u]
+                      [--global] [--system] [--local]
+                      name option [value]
 
     positional arguments:
-      name           Name.
-      option         Option.
-      value          Value.
+      name           Name of the remote
+      option         Name of the option to modify
+      value          (optional) Value of the option
 ```
 
 ## Description
@@ -237,4 +238,3 @@ Now the config file should look like (run `cat .dvc/config`):
     [core]
     remote = myremote
 ```
-  
