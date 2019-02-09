@@ -5,7 +5,7 @@ Modify remote settings.
 ## Synopsis
 
 ```usage
-    dvc remote modify [-h] [-q | -v] [-u]
+    usage: dvc remote modify [-h] [-q | -v] [-u]
                       [--global] [--system] [--local]
                       name option [value]
 

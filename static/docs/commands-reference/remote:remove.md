@@ -6,9 +6,9 @@ does not physically remove your data files stored remotely.
 ## Synopsis
 
 ```usage
-    dvc remote remove [-h] [-q | -v]
-                      [--global] [--system] [--local] 
-                      name
+    usage: dvc remote remove [-h] [-q | -v]
+                             [--global] [--system] [--local] 
+                             name
 
     positional arguments:
       name           Name of the remote to remove

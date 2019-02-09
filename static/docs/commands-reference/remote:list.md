@@ -5,8 +5,8 @@ Show all available remotes.
 ## Synopsis
 
 ```usage
-    dvc remote list [-h] [-q | -v] 
-                    [--global] [--system] [--local]
+    usage: dvc remote list [-h] [-q | -v] 
+                           [--global] [--system] [--local]
 
     List remotes.
 ```
