@@ -29,7 +29,7 @@ remote | `-c`  | Comparisons are made between the local cache, and a cache store
 
 DVC determines data and code files to compare by analyzing all stage files in
 the current workspace (`--all-branches` and `--all-tags` in the `cloud` mode
-compare multiple wokspaces - across all branches or tags). The comparison can be
+compare multiple workspaces - across all branches or tags). The comparison can be
 limited to one or more stages by listing the stage file(s) as `targets`. Changes
 are reported only against the named target stage or stages. When combined with
 the `--with-deps` option, a search is made for changes in other stages that
