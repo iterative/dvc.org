@@ -65,7 +65,7 @@ For the _changed_ case, the `dvc repro` command is indicated.
 For either the _new_ and _deleted_ cases, the local cache (subset of it, that is
 determined by the active workspace) is different from the remote cache. 
 Bringing the two into sync requires  `dvc pull` or `dvc push` to synchronize the
-DVC cache.  For the typical process to update workspaces, see [Share Data And
+DVC cache. For the typical process to update workspaces, see [Share Data And
 Model Files](/doc/use-cases/share-data-and-model-files).
  
 ## Options
