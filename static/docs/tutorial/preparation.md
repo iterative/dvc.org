@@ -34,7 +34,7 @@ install `wget` and `tar` with the following command in the `Command Prompt`:
     $ cd classify
     $ git init
     $ wget https://dvc.org/s3/so/code.zip
-    $ unzip code.zip && rm -f code.zip
+    $ unzip code.zip -d code && rm -f code.zip
     $ git add code/
     $ git commit -m 'download code'
 ```
