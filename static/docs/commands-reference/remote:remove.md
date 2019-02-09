@@ -1,4 +1,4 @@
-# remove
+# remote remove
 
 Remove a specified remote. This command affects DVC configuration files only, it
 does not physically remove your data files stored remotely.

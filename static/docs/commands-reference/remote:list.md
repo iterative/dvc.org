@@ -1,4 +1,4 @@
-# list
+# remote list
 
 Show all available remotes.
 

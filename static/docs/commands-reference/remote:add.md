@@ -1,4 +1,4 @@
-# add
+# remote add
 
 Add a new data remote. Depending on your storage type you might need to run `dvc
 remote modify` to provide credentials and/or configure other remote parameters.
