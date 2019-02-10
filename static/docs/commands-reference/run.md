@@ -6,8 +6,9 @@ Generate a stage file from a given command and execute the command.
 
 ```usage
     usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS]
-                   [-O OUTS_NO_CACHE] [-M METRICS_NO_CACHE] [-f FILE]
-                   [-c CWD] [--no-exec] [-y] [--overwrite-dvcfile]
+                   [-O OUTS_NO_CACHE] [-M METRICS_NO_CACHE]
+                   [-m METRICS] [-f FILE] [-c CWD]
+                   [--no-exec] [-y] [--overwrite-dvcfile]
                    [--ignore-build-cache] [--remove-outs]
                    command
     
@@ -61,14 +62,14 @@ with each other. DVC takes all output files and directories under its control
 and will put them into the cache (this is similar to what's happening when you
 run `dvc add`).
 
-* `-O`, `--outs-no-cache` - the same as `-o` except outputs are not put 
+* `-O`, `--outs-no-cache` - the same as `-o` except outputs are not put
 automatically under DVC control. It means that they are not cached, and it's
 up to a user to save and version control them. Usually, it's useful if outputs
 are small enough to be put into Git or other underlying version control system,
 or these files are not of any interest and there is no requirement to save and
 share them. 
 
-* `-M`, `--metrics-no-cache` - another kind of output files. It is usually a
+* `-m`, `--metrics` - another kind of output files. It is usually a
 small human readable file (JSON, CSV, text, whatnot) with some numbers or other
 meta-information that describes a model or other outputs. Check `dvc metrics`
 to learn more about tracking metrics and comparing them across different
@@ -76,6 +77,11 @@ model or experiment versions. Metrics are not cached (put under DVC control),
 you should see `cache: false` in the stage file. Since these files are small
 enough it's beneficial to use Git or any other underlying regular version
 control system to track them.
+
+* `-M`, `--metrics-no-cache` - the same as `-m` except files are not put
+automatically under DVC control. In case of metrics it's pretty usual because
+metric files are small enough to be put into Git or other underlying version
+control system. See also the difference between `-o` and `-O` options.
 
 * `-f`, `--file` - specify stage file name. By default stage file name
 generated is `<file>.dvc` where `<file>` is file name of the first output (
