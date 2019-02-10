@@ -121,8 +121,7 @@ To pass additional arguments:
 
 To run DVC from its Git repository you need to setup your environment:
 
-* Export `DVC_HOME` variable that is pointing to the root of your
-repository:
+* Export `DVC_HOME` variable that is pointing to the root of your repository:
     ```dvc
       $ export DVC_HOME=/home/user/git/dvc
     ```
