@@ -38,7 +38,7 @@ contributing!
 to run style checkers on pre-commit. On Mac OS, use `brew` to install the
 latest version of python.
 * Install the requirements with `pip install -r requirements.txt` and
-`pip install -r test-requirements.txt`. We **strongly** recommend initializing a
+`pip install -r tests/requirements.txt`. We **strongly** recommend initializing a
 [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
 installing the required libraries. For example: 
   ```dvc
@@ -46,12 +46,11 @@ installing the required libraries. For example:
       $ virtualenv --python python3 .env
       $ source .env/bin/activate
       $ pip install -r requirements.txt
-      $ pip install -r test-requirements.txt
+      $ pip install -r tests/requirements.txt
   ```
-* Install style checkers and pre-commit hooks with
+* Install coding style pre-commit hooks with
   ```dvc
       $ pip install pre-commit
-      $ pip install -r test-style-requirements.txt
       $ pre-commit install
   ```
 
