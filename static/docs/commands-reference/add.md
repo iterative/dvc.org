@@ -3,7 +3,7 @@
 Take a data file or a directory under DVC control.
 
 ```usage
-    usage: dvc add [-h] [-q] [-v] targets [targets ...]
+    usage: dvc add [-h] [-q] [-v] [-R] [--no-commit] targets [targets ...]
 
     positional arguments:
       targets               Input files/directories
@@ -12,6 +12,8 @@ Take a data file or a directory under DVC control.
       -h, --help            show this help message and exit
       -q, --quiet           Be quiet.
       -v, --verbose         Be verbose.
+      -R, --recursive       Recursively add each file under the directory.
+      --no-commit           Don't save changes to cache.
 ```
 
 Under the hood a few steps are happening:
