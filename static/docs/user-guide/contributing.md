@@ -50,9 +50,9 @@ installing the required libraries. For example:
   ```
 * Install style checkers and pre-commit hooks with
   ```dvc
-      pip install pre-commit
-      pip install -r test-style-requirements.txt
-      pre-commit install
+      $ pip install pre-commit
+      $ pip install -r test-style-requirements.txt
+      $ pre-commit install
   ```
 
 That should be it. You should be ready to make changes, run tests do commits! If
