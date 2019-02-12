@@ -96,7 +96,7 @@ optional arguments:
   specify a type of the metric file that will be used to determine how to handle
   `xpath` parameter from down below.
 
-* `-x`, `*path` -
+* `-x`, `--xpath` -
  specify a path within a metric file to get a specific metric value.
  Should be used if metric file contains multiple numbers and you need to get a
  only one of them. Only single path is allowed. If multiple metric files exist
