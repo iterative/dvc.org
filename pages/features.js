@@ -154,7 +154,7 @@ export default () => (
           <Name>Track failures</Name>
           <Description>
             Bad ideas can sometimes bring more information to colleagues than
-            the the successful ones. Retaining knowledge of failed attempts can
+            the successful ones. Retaining knowledge of failed attempts can
             save time in the future. DVC is built to track everything in a
             reproducible and easily accessible way.
           </Description>
