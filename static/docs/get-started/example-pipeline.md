@@ -334,9 +334,9 @@ Specify `ngram` parameter in `CountVectorizer` (lines 72–73):
     $ dvc repro evaluate.dvc
 ```
 
-> Since the data set for this example is an extremely simplified to make it
-simpler to run this pipeline, exact metric number may vary sufficiently
-depending on Python version you are using and other environment parameters.
+> Since the data set for this example is extremely simplified to make it
+simpler to run this pipeline, exact metric numbers may vary significantly
+depending on the Python version you are using and other environment parameters.
 
 * Take a look at the target metric improvement:
 
