@@ -49,13 +49,12 @@ It may fail to produce any results or parse files that are not in a
 corresponding format in this case. Accepted value depends on the metric file
 type (`-t` option):
 
-    - `json` - check [JSONPath spec](https://goessner.net/articles/JsonPath/) to
-    see available options. For example, `"AUC"` extracts the value from the
-    following json formatted metric file: `{"AUC": "0.624652"}`.
-    - `tsv`/`csv` - `row, column`, e.g. `1,2`. Indices are 0-based.
-    - `htsv`/`hcsv` - `row, column name`. Row index is 0-based. First row is
-    used to specify column names and is not included into index. For example:
-    `0, Name`.
+  - `json` - check [JSONPath spec](https://goessner.net/articles/JsonPath/) to
+  see available options. For example, `"AUC"` extracts the value from the
+  following json-formatted metric file: `{"AUC": "0.624652"}`.
+  - `tsv`/`csv` - `row,column`, e.g. `1,2`. Indices are 0-based.
+  - `htsv`/`hcsv` - `row,column name`. Row index is 0-based. First row is used
+  to specify column names and is not included into index. For example: `0,Name`.
 
 * `-a`, `--all-branches` - get and print metric file contents across all
 branches. It can be used to compare different variants of an experiment.
@@ -73,7 +72,7 @@ branch and a regular file in another.
 ## Examples
 
 Examples in [add](/doc/commands-reference/metrics-add),
-[modify](/doc/commands-reference/metrics-modify),and
+[modify](/doc/commands-reference/metrics-modify), and
 [remove](/doc/commands-reference/metrics-remove) cover most of the basic cases
 for the `dvc metrics show`.
 

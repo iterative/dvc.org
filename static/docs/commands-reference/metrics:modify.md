@@ -46,13 +46,12 @@ get a only one of them. Only single path is allowed. This path will be saved
 into the corresponding `.dvc` file and will be used automatically in `dvc
 metrics show`. Accepted value depends on the metric file type (`-t` option):
 
-    - `json` - check [JSONPath spec](https://goessner.net/articles/JsonPath/) to
-    see available options. For example, `"AUC"` extracts the value from the
-    following json formatted metric file: `{"AUC": "0.624652"}`.
-    - `tsv`/`csv` - `row, column`, e.g. `1,2`. Indices are 0-based.
-    - `htsv`/`hcsv` - `row, column name`. Row index is 0-based. First row is
-    used to specify column names and is not included into index. For example:
-    `0, Name`.
+  - `json` - check [JSONPath spec](https://goessner.net/articles/JsonPath/) to
+  see available options. For example, `"AUC"` extracts the value from the
+  following json-formatted metric file: `{"AUC": "0.624652"}`.
+  - `tsv`/`csv` - `row,column`, e.g. `1,2`. Indices are 0-based.
+  - `htsv`/`hcsv` - `row,column name`. Row index is 0-based. First row is used
+  to specify column names and is not included into index. For example: `0,Name`.
 
 ## Examples
 
