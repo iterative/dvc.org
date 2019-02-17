@@ -1,6 +1,16 @@
 # gc
 
-Remove unused objects from cache.
+Remove unused objects from cache or remote storage.
+
+## Synopsis
+
+```usage
+    usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c]
+                  [-r REMOTE] [-f] [-j JOBS]
+                  [-p [PROJECTS [PROJECTS ...]]]
+```
+
+## Description
 
 If a data file was created in a different branch or commit than current, then it
 will be removed by `dvc gc`, unless `--all-branches` or `--all-tags` option is
@@ -14,26 +24,6 @@ and `dvc config` for more information. This command is just a way to clean the
 working cache which is usually located on the machine your are running
 experiments on and usually helps to save some space. You can `dvc fetch` all
 the needed files back anytime you want.
-
-```usage
-    usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c] [-r REMOTE] [-f] [-j JOBS]
-                  [-p [PROJECTS [PROJECTS ...]]]
-
-    optional arguments:
-        -h, --help            show this help message and exit
-        -q, --quiet           Be quiet.
-        -v, --verbose         Be verbose.
-        -a, --all-branches    Collect garbage for all branches.
-        -c, --cloud           Collect garbage in remote repository.
-        -r REMOTE, --remote REMOTE
-                              Remote repository to collect garbage in.
-        -T, --all-tags        Show status of a local cache compared to a remote
-                              repository for all tags.
-        -f, --force           Force garbage collection.
-        -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
-        -p [PROJECTS [PROJECTS ...]], --projects [PROJECTS [PROJECTS ...]]
-                              Collect garbage for all given projects.
-```
 
 ## Options
 
@@ -64,13 +54,19 @@ are parallel.
 
 * `-f`, `--force` - force garbage collection. Skip confirmation prompt.
 
-
 ## Examples
+
+Basic example of cleaning up the cache:
 
 ```dvc
     $ du -sh .dvc/cache/
     7.4G    .dvc/cache/
+```
 
+When you run `dvc gc` it removes all objects from cache that are not referenced
+in the current workspace (by collecting hash sums from the stage DVC files):
+
+```dvc
     $ dvc gc
 
     '.dvc/cache/27e30965256ed4d3e71c2bf0c4caad2e' was removed
@@ -82,7 +78,11 @@ are parallel.
     '.dvc/cache/9ff7365a8256766be8c363fac47fc0d4' was removed
     '.dvc/cache/a86ca87250ed8e54a9e2e8d6d34c252e' was removed
     '.dvc/cache/f64d65d4ccef9ff9d37ea4cf70b18700' was removed
+```
 
+Let's check the size now:
+
+```dvc
     $ du -sh .dvc/cache/
     3.1G    .dvc/cache/
 ```

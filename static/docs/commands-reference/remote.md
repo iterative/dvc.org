@@ -3,7 +3,7 @@
 [Add](/doc/commands-reference/remote-add), 
 [list](/doc/commands-reference/remote-list), 
 [modify](/doc/commands-reference/remote-modify), 
-and [remove](/doc/commands-reference/remote-remove) available
+and [remove](/doc/commands-reference/remote-remove) are available
 commands to set up and manage data remotes.
 
 ## Synopsis

@@ -19,7 +19,8 @@ done using the CLI:
 have a write access to it, so in order to follow the tutorial you will need to
 either create your own s3 bucket or use other types of
 [remote storage](/doc/commands-reference/remote). E.g. you can set up a local
-remote as we did in our ["Get Started" section](/doc/get-started/configure).
+remote as we did in the [Get Started configure](/doc/get-started/configure)
+section.
 
 ```dvc
     $ dvc remote add -d upstream s3://dvc-share/classify
