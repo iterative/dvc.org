@@ -1,15 +1,15 @@
 # modify
 
 Modify metric settings (like type, path expression that is used to parse it,
-etc). 
+etc).
 
 ## Synopsis
 
 ```usage
-    usage: dvc metrics modify [-h] [-q] [-v] 
-                              [-t TYPE] [-x XPATH] 
+    usage: dvc metrics modify [-h] [-q] [-v]
+                              [-t TYPE] [-x XPATH]
                               path
-    
+
     positional arguments:
       path                  Path to a metric file.
 ```
@@ -27,7 +27,7 @@ raised:
 ```
     Error: failed to modify metrics - unable
            to find file '<path>' in the pipeline
-``` 
+```
 
 ## Options
 
@@ -38,26 +38,26 @@ corresponding `.dvc` file and will be used automatically in the `dvc metrics
 show`. `htsv` and `hcsv` are `tsv` and `csv` but the values in the first row of
 the file will be used as the field names and can be used to address columns in
 the `--xpath` option. `raw` means that no additional parsing is applied, and
-`--xpath` is ignored. `raw` is the same as default when no type is provided.  
+`--xpath` is ignored. `raw` is the same as default when no type is provided.
 
 * `-x`, `--xpath` - specify a path within a metric file to get a specific metric
 value. Should be used if metric file contains multiple numbers and you need to
 get a only one of them. Only single path is allowed. This path will be saved
 into the corresponding `.dvc` file and will be used automatically in `dvc
-metrics show`. Accepted value depends on the metric file type (`-t` option): 
-    
+metrics show`. Accepted value depends on the metric file type (`-t` option):
+
     - `json` - check [JSONPath spec](https://goessner.net/articles/JsonPath/) to
     see available options. For example, `"AUC"` extracts the value from the
-    following json formatted metric file: `{"AUC": "0.624652"}`.  
-    - `tsv`/`csv` - `row, column`, e.g. `1,2`. Indices are 0-based.  
+    following json formatted metric file: `{"AUC": "0.624652"}`.
+    - `tsv`/`csv` - `row, column`, e.g. `1,2`. Indices are 0-based.
     - `htsv`/`hcsv` - `row, column name`. Row index is 0-based. First row is
     used to specify column names and is not included into index. For example:
     `0, Name`.
-  
+
 ## Examples
 
 Let's first imagine we have stage with a generic raw metric file initially. The
-stage below is dummy and is made completely for the sake or this examples 
+stage below is dummy and is made completely for the sake or this examples
 section:
 
 ```dvc
@@ -81,7 +81,7 @@ of the file:
 
 ```dvc
     $ dvc metrics show metrics.csv
-    
+
         metrics.csv: auc, 0.9567
 ```
 
@@ -98,6 +98,6 @@ and exclude names:
 
 ```dvc
     $ dvc metrics show metrics.csv
-    
+
         metrics.csv: [' 0.9567']
 ```

@@ -9,7 +9,7 @@ Find and print project metrics.
                             [-t TYPE] [-x XPATH]
                             [-a, --all-branches], [-T, --all-tags]
                             [path]
-    
+
     positional arguments:
       path                  Path to a metric file or directory.
 ```
@@ -48,10 +48,10 @@ exist in the project, the same parser and path will be applied to all of them.
 It may fail to produce any results or parse files that are not in a
 corresponding format in this case. Accepted value depends on the metric file
 type (`-t` option):
-                                       
+
     - `json` - check [JSONPath spec](https://goessner.net/articles/JsonPath/) to
     see available options. For example, `"AUC"` extracts the value from the
-    following json formatted metric file: `{"AUC": "0.624652"}`. 
+    following json formatted metric file: `{"AUC": "0.624652"}`.
     - `tsv`/`csv` - `row, column`, e.g. `1,2`. Indices are 0-based.
     - `htsv`/`hcsv` - `row, column name`. Row index is 0-based. First row is
     used to specify column names and is not included into index. For example:
@@ -80,6 +80,3 @@ for the `dvc metrics show`.
 Example in the [compare experiments](/doc/get-started/compare-experiments)
 section covers the `-a` option to collect and output a metric file value within
 multiple branches.
- 
-
-  

@@ -5,9 +5,9 @@ Keep file as an output, remove metric flag and stop tracking as a metric file.
 ## Synopsis
 
 ```usage
-    usage: dvc metrics remove [-h] [-q] [-v] 
+    usage: dvc metrics remove [-h] [-q] [-v]
                               path
-    
+
     positional arguments:
       path           Path to a metric file.
 
@@ -48,7 +48,7 @@ command to learn how to apply `-t` and `-x` permanently):
 
 ```dvc
     $ dvc metrics show -t htsv -x 0,auc metrics.tsv
-    
+
     metrics.tsv: ['0.9643']
 ```
 
@@ -69,7 +69,7 @@ Now, let's reset the flag with the `dvc metrics remove` command:
 
 ```dvc
     $ dvc metrics remove metrics.tsv
-    
+
     Saving information to 'metrics.tsv.dvc'.
 ```
 
@@ -90,7 +90,7 @@ both files are still here:
 
 ```dvc
     $ tree .
-    
+
     .
     ├── metrics.tsv
     └── metrics.tsv.dvc

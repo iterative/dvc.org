@@ -5,8 +5,8 @@ Tag the file located at `path` as a metric file.
 ## Synopsis
 
 ```usage
-    usage: dvc metrics add [-h] [-q] [-v] 
-                           [-t TYPE] [-x XPATH] 
+    usage: dvc metrics add [-h] [-q] [-v]
+                           [-t TYPE] [-x XPATH]
                            path
 
     positional arguments:
@@ -21,9 +21,9 @@ Alternatively, an output file could be made a metric via `-M` or `-m` parameter
 of the `dvc run` command.
 
 While any text file could be used as a metric file to track, it's recommended to
-use `TSV`, `CSV`, or `JSON` formats. DVC provides a way (see `show` below), to
-parse those formats to get to a specific value if file contains multiple
-metrics.
+use `TSV`, `CSV`, or `JSON` formats. DVC provides a way (see `dvc metrics
+show`), to parse those formats to get to a specific value if file contains
+multiple metrics.
 
 ## Options
 
@@ -40,16 +40,16 @@ in the `--xpath` option. `raw` means that no additional parsing is applied, and
 value. Should be used if metric file contains multiple numbers and you need to
 get a only one of them. Only single path is allowed. This path will be saved
 into the corresponding `.dvc` file and will be used automatically in `dvc
-metrics show`. Accepted value depends on the metric file type (`-t` option): 
-    
+metrics show`. Accepted value depends on the metric file type (`-t` option):
+
     - `json` - check [JSONPath spec](https://goessner.net/articles/JsonPath/) to
     see available options. For example, `"AUC"` extracts the value from the
-    following json formatted metric file: `{"AUC": "0.624652"}`.  
-    - `tsv`/`csv` - `row, column`, e.g. `1,2`. Indices are 0-based.  
+    following json formatted metric file: `{"AUC": "0.624652"}`.
+    - `tsv`/`csv` - `row, column`, e.g. `1,2`. Indices are 0-based.
     - `htsv`/`hcsv` - `row, column name`. Row index is 0-based. First row is
     used to specify column names and is not included into index. For example:
     `0, Name`.
-        
+
 ## Examples
 
 Let's first create an output that is not a metric file:
@@ -83,7 +83,7 @@ Now, let's make a metric file out it:
 
 ```dvc
     $ dvc metrics add metrics.txt
-    
+
     Saving information to 'metrics.txt.dvc'.
 ```
 

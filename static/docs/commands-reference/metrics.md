@@ -1,21 +1,21 @@
 # metrics
 
-A set of simple commands (see [add](/doc/commands-reference/metrics-add), 
-[show](/doc/commands-reference/metrics-show), 
+A set of simple commands (see [add](/doc/commands-reference/metrics-add),
+[show](/doc/commands-reference/metrics-show),
 [modify](/doc/commands-reference/metrics-modify),and
 [remove](/doc/commands-reference/metrics-remove)) to collect and display project
-metrics. 
+metrics.
 
 ## Synopsis
 
 ```usage
-    usage: dvc metrics [-h] [-q] [-v] 
-                       {show, add, modify, remove} 
+    usage: dvc metrics [-h] [-q] [-v]
+                       {show, add, modify, remove}
                        ...
 
     positional arguments:
         show                  Output metric values.
-        add                   Tag file as a metric file. 
+        add                   Tag file as a metric file.
         modify                Modify metric file options.
         remove                Remove files's metric tag.
 ```
@@ -28,13 +28,13 @@ metrics to track. Metrics are usually any project specific numbers - `AUC`,
 Usually these numbers are produced by the model evaluation script and serve as
 a way to compare and pick the best performing experiment variant.
 
-[Add](/doc/commands-reference/metrics-add), 
-[show](/doc/commands-reference/metrics-show), 
-[modify](/doc/commands-reference/metrics-modify), 
+[Add](/doc/commands-reference/metrics-add),
+[show](/doc/commands-reference/metrics-show),
+[modify](/doc/commands-reference/metrics-modify),
 and [remove](/doc/commands-reference/metrics-remove) commands are available to
 set up and manage DVC metrics.
 
-## Example
+## Examples
 
 First, let's create a simple DVC stage file:
 
@@ -52,7 +52,7 @@ Now let's print metric values that we are tracking in the current project:
 
 ```dvc
     $ dvc metrics show -a
-   
+
       master:
           data/eval.json: {"AUC": "0.624652"}
 ```
@@ -73,7 +73,7 @@ And finally let's remove `data/eval.txt` from project's metrics:
 ```dvc
     $ dvc metrics remove data/eval.txt
     $ dvc metrics show
-    
+
     Failed to show metrics: No metric files in this repository.
     Use 'dvc metrics add' to add a metric file to track.
 ```
