@@ -24,7 +24,7 @@ metric.
 It the path provided is not part of the pipeline, the following error will be
 raised:
 
-```
+```text
     Error: failed to modify metrics - unable
            to find file '<path>' in the pipeline
 ```
