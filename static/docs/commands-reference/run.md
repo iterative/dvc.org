@@ -10,6 +10,7 @@ Generate a stage file from a given command and execute the command.
                    [-m METRICS] [-f FILE] [-c CWD]
                    [--no-exec] [-y] [--overwrite-dvcfile]
                    [--ignore-build-cache] [--remove-outs]
+                   [--no-commit]
                    command
     
     positional arguments:
@@ -120,6 +121,10 @@ outputs from the same list of inputs).
 * `--remove-outs` - it removes stage outputs before running the command. If
 `--no-exec` specified outputs are removed anyway. See `dvc remove` as well for
 more details.     
+
+* `--no-commit` - doesn't save outputs to cache. Useful when running different
+experiments and you don't want to fill up your cache with temporary files.
+Use `dvc commit` when you are ready to save your results to cache.
 
 ## Examples
 
