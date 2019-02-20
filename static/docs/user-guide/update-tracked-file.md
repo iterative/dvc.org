@@ -62,7 +62,7 @@ Edit the content of the file:
     $ echo "new data item" >> train.tsv
 ```
 
-Add a mew version of the file back to DVC:
+Add a new version of the file back to DVC:
 
 ```dvc
     $ dvc add train.tsv
