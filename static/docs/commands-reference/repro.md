@@ -89,46 +89,86 @@ data files, intermediate or final results.
 
 ## Examples
 
-Reproduce default stage file:
+For the following examples, assume a pipeline defined as so:
 
 ```dvc
-    $ dvc repro
-
-    Verifying data sources in 'data/Posts.xml.zip.dvc'
-    Stage 'extract.dvc' changed.
-    Reproducing 'extract.dvc':
-            unzip data/Posts.xml.zip -d data
-    Stage 'extract.dvc' changed.
-    Reproducing 'prepare.dvc':
-            python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv python
-    Stage 'featurize.dvc' changed.
-    Reproducing 'featurize.dvc':
-            python code/split_train_test.py data/Posts.tsv 0.33 20170426 \
-                   data/Posts-train.tsv data/Posts-test.tsv
-    Stage 'train.dvc' changed.
-    Reproducing 'train.dvc':
-            python code/train_model.py data/matrix-train.p 20170426 data/model.p
+    git init
+    dvc init
+    echo dep1 > dep1
+    dvc run -d dep1 -o out1 -f 1.dvc "echo out1 > out1"
+    dvc run -d out1 -o out2 -f 2.dvc "echo out2 > out2"
+    dvc run -d out2 -o out3 -f 3.dvc "echo out3 > out3"
+    dvc run -d out3 -o out4 -f 4.dvc "echo out4 > out4"
+    dvc run -d out4 -o out5 -f 5.dvc "echo out5 > out5"
+    dvc run -d out5 -o out6 -f Dvcfile "echo out6 > out6"
 ```
 
-Reproduce the part of the pipeline where `Posts.tsv.dvc` is the target DVC file:
+Reproduce default stage file, using `--force` to force rerunning every stage:
 
 ```dvc
-    $ dvc repro Posts.tsv.dvc
-
-    Reproducing 'Posts.xml.dvc':
-            unzip data/Posts.xml.zip -d data/
-    Reproducing 'Posts.tsv.dvc':
-            python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv python
+    $ dvc repro --force
+    
+    Warning: assuming default target 'Dvcfile'.
+    Stage '1.dvc' didn't change.
+    Reproducing '1.dvc'
+    Running command:
+    	echo out1 > out1
+    Checking out '{'scheme': 'local', 'path': '/Volumes/Extra/dvc/simple/out1'}' with cache '9f0c0340f365f475723dfd8639783088'.
+    Output 'out1' didn't change. Skipping saving.
+    Saving 'out1' to cache '.dvc/cache'.
+    Saving information to '1.dvc'.
+    Stage '2.dvc' didn't change.
+    Reproducing '2.dvc'
+    Running command:
+	echo out2 > out2
+    Checking out '{'scheme': 'local', 'path': '/Volumes/Extra/dvc/simple/out2'}' with cache '5639d8ce29228e40b5bcb7f763c06f98'.
+    Output 'out2' didn't change. Skipping saving.
+    Saving 'out2' to cache '.dvc/cache'.
+    Saving information to '2.dvc'.
+    Stage '3.dvc' didn't change.
+    Reproducing '3.dvc'
+    Running command:
+	echo out3 > out3
+    Checking out '{'scheme': 'local', 'path': '/Volumes/Extra/dvc/simple/out3'}' with cache 'd24d3640da56f018b0925a67687769c0'.
+    Output 'out3' didn't change. Skipping saving.
+    Saving 'out3' to cache '.dvc/cache'.
+    Saving information to '3.dvc'.
+    ...
+    Saving information to 'Dvcfile'.
 ```
 
-Reproduce a stage located in a subdirectory:
+Reproduce a single stage:
 
 ```dvc
-    $ dvc repro --force --single-item --cwd data Posts.xml.zip.dvc 
-    Stage 'Posts.xml.zip.dvc' didn't change.
-    Reproducing 'Posts.xml.zip.dvc'
-    Verifying data sources in 'Posts.xml.zip.dvc'
-    Output 'Posts.xml.zip' didn't change. Skipping saving.
-    Saving information to 'Posts.xml.zip.dvc'.
+    $ dvc repro 3.dvc --force --single-item
+
+    Stage '3.dvc' didn't change.
+    Reproducing '3.dvc'
+    Running command:
+	echo out3 > out3
+    Checking out '{'path': '/Volumes/Extra/dvc/simple/out3', 'scheme': 'local'}' with cache 'd24d3640da56f018b0925a67687769c0'.
+    Output 'out3' didn't change. Skipping saving.
+    Saving 'out3' to cache '.dvc/cache'.
+    Saving information to '3.dvc'.
 ```
 
+If `--single-item` is not given, stages `1.dvc`, `2.dvc` and `3.dvc` will be rerun.
+
+Inspect what would happen (dry run):
+
+```dvc
+    $ dvc repro 3.dvc --force --dry
+
+    Stage '1.dvc' didn't change.
+    Reproducing '1.dvc'
+    Running command:
+	echo out1 > out1
+    Stage '2.dvc' didn't change.
+    Reproducing '2.dvc'
+    Running command:
+	echo out2 > out2
+    Stage '3.dvc' didn't change.
+    Reproducing '3.dvc'
+    Running command:
+	echo out3 > out3
+```
