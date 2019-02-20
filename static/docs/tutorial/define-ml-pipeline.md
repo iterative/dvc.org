@@ -163,10 +163,11 @@ applying `dvc add file1` for each of the outputs. As a result, all the actual
 data files content goes to the cache directory `.dvc/cache` and each of the
 filenames will be added to `.gitignore`.
 
-3. For reproducibility purposes, DVC creates the DVC-file `Posts.xml.dvc ` —
-the file with meta-information about the command. DVC assigns a name to the
-DVC-file based on the first output file name by adding the `.dvc` suffix at the
-end (can be changed by `-f` option).
+3. For reproducibility purposes, DVC creates the DVC-file `Posts.xml.dvc` —
+the file with meta-information about the command — in the current working directory.
+By default, DVC assigns a name to the DVC-file based on the first output file name by adding
+the `.dvc` suffix at the end. This name can be changed by using the `-f` option,
+for example by specifying `-f extract.dvc`.
 
 Let's take a look at the DVC-file example:
 
