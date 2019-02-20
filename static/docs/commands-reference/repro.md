@@ -1,12 +1,9 @@
 # repro
 
-Rerun all commands recorded in the pipeline in the same order, 
-or rerun specific commands associated with stages named on the command line.
+Rerun commands recorded in the pipeline in the same order, 
+depending on command line options and the current workspace status.
 
-See `dvc run` for more information on creating pipelines.
-
-DVC file (`target`) can have any name followed by the `.dvc` suffix. If file
-name is omitted, `Dvcfile` will be used by default.
+## Synopsis
 
 ```usage
     usage: dvc repro [-h] [-q] [-v] [-f] [-s] [-c CWD] [-m]
@@ -20,61 +17,47 @@ name is omitted, `Dvcfile` will be used by default.
 
 ## Description
 
+DVC file (`target`) can have any name followed by the `.dvc` suffix. If file
+name is omitted, `Dvcfile` will be used by default.
+
 `dvc repro` provides an interface to rerun the commands in the 
 computational graph (a.k.a. pipeline) defined by the stage files 
 in the current workspace.  By default, this command searches, 
 starting from the `Dvcfile`, the pipeline stages to find any
 which have changed.  It then reruns the corresponding commands.  The
-pipeline is defined using the `dvc run` command.
+pipeline is defined using either the `dvc run` command 
+or the `dvc add` command.
 
-There are several ways to limit the stages to rerun:
+To find stages to rerun, a recursive search is performed through
+the pipeline stage files.
 
-* Listing stage file(s) as `targets`
-* The `--single-item` option ensures that only a single stage is rerun.
-* The `--pipeline` option limits execution to the pipeline
- containing the named stage, especially useful if the
- workspace contains multiple pipelines.  
-* The `--cwd` option limits execution to the pipeline 
- located in a subdirectory.
-
-There are two ways to ensure rerunning additional stages beyond
-a changed stage:
-
-* The `--force` option causes the entire pipeline to be rerun
-* The `--ignore-build-cache` causes all stages following a changed stage
- to be rerun.
+There are several ways to restrict the stages to rerun, by listing
+stage file(s) as targets, or using the `--single-item`, `--pipeline`,
+or `--cwd` options.
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
 data files, intermediate or final results.
 
 ## Options
 
-* `-q`, `--quiet` do not write anything to standard output.  The command
-  run by the stage is free to make output irregardless of this flag.
-  Exit with 0 if all stages are up to date or if all stages
-  are successfully rerun, otherwise exit with 1. 
-
-* `-v`, `--verbose` displays detailed tracing information from executing the
-  `dvc repro` command.
-
 * `-f`, `--force`  Rerun the pipeline, reproducing its results, even
  if no changes were found.  By default this reruns the entire pipeline.
  To rerun a single stage, specify the stage name on the command-line
  along with the `--single-item` option.
 
-* `-s`, `--single-item`  Reproduce only a single data item without 
- recursively checking for changed dependencies.
+* `-s`, `--single-item`  Reproduce only a single stage by 
+ turning off the recursive search for changed dependencies.
  Multiple stages are rerun if multiple stage names are listed on the command-line.
 
 * `-c`, `--cwd`  Directory within your project to reproduce from.  If no 
- target names are given, it attempts to use `Dvcfile`, if it exists
- in the named directory, for stages to rerun.
+ target names are given, it attempts to use `Dvcfile` in the 
+ specified directory, if it exists, for stages to rerun.
  Instead of using `--cwd` one can alternately specify a target in
  a subdirectory as `path/to/target.dvc`.
 
 * `-m`, `--metrics`  Show metrics after reproduction.  The pipeline must
  have at least one metrics file defined either with the `dvc metrics` command,
- or by the `--metrics-no-cach` option on the `dvc run` command.
+ or by the `--metrics-no-cache` (`-M`) option on the `dvc run` command.
 
 * `--dry`  Only print the commands that would be executed without
  actually executing the commands.
@@ -89,8 +72,20 @@ data files, intermediate or final results.
 * `--ignore-build-cache`  Reproduce all descendants of a changed stage, or 
  the stages following the changed stage, even if their direct dependencies
  did not change.  Like with the same option on `dvc run`, this is a way to
- force certain stages to run if they would not otherwise be rerun.
+ force certain stages to run if they would not otherwise be rerun.  This
+ can be useful for pipelines containing stages that produce nondeterministic
+ (semi-random) outputs.  For nondeterministic stages the outputs can vary on each
+ execution, meaning the cache cannot be trusted for such stages.
 
+* `-q`, `--quiet` do not write anything to standard output.  The command
+  run by the stage is free to make output irregardless of this flag.
+  Exit with 0 if all stages are up to date or if all stages
+  are successfully rerun, otherwise exit with 1. 
+
+* `-v`, `--verbose` displays detailed tracing information from executing the
+  `dvc repro` command.
+
+* `-h`, `--help` Prints the usage/help message, and exit.
 
 ## Examples
 
