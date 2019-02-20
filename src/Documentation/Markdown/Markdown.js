@@ -1,8 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 // components
 import ReactMarkdown from 'react-markdown'
 // syntax highlighter
-import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/light'
+import SyntaxHighlighter, {
+  registerLanguage
+} from 'react-syntax-highlighter/light'
 import Collapsible from 'react-collapsible'
 import docco from 'react-syntax-highlighter/styles/hljs/docco'
 import python from 'react-syntax-highlighter/languages/hljs/python'
@@ -42,94 +44,94 @@ const HeadingRenderer = ({ level, children }) => {
   return React.createElement('h' + level, { id: slug }, content)
 }
 
-const HtmlRenderer = (props) => {
+const HtmlRenderer = props => {
   if (props.tag !== 'details') {
     return React.createElement(props.tag, {}, props.children)
   } else {
     const text = props.children[0].props.children[0]
-    return <Collapsible trigger={text} transitionTime={200}>
-      {props.children.slice(1)}
-    </Collapsible>
+    return (
+      <Collapsible trigger={text} transitionTime={200}>
+        {props.children.slice(1)}
+      </Collapsible>
+    )
   }
 }
 
 const CodeBlock = ({ value, language }) => {
   const dvcStyle = Object.assign({}, docco)
-  dvcStyle["hljs-comment"] = {"color": "#999"}
-  dvcStyle["hljs-meta"] = {"color": "#333", "fontSize": "14px"}
-  return <SyntaxHighlighter
-    language={language}
-    style={dvcStyle}
-  >
-    {value}
-  </SyntaxHighlighter>  
+  dvcStyle['hljs-comment'] = { color: '#999' }
+  dvcStyle['hljs-meta'] = { color: '#333', fontSize: '14px' }
+  return (
+    <SyntaxHighlighter language={language} style={dvcStyle}>
+      {value}
+    </SyntaxHighlighter>
+  )
 }
 
 export default class Markdown extends Component {
-
   constructor() {
-    super();
-    this.touchstartX = 0;
-    this.touchendX = 0;
-    this.isCodeBlock = false;
+    super()
+    this.touchstartX = 0
+    this.touchendX = 0
+    this.isCodeBlock = false
   }
 
   componentDidMount() {
-    document.addEventListener('touchstart', this.onTouchStart, false);
-    document.addEventListener('touchend', this.onTouchEnd, false); 
+    document.addEventListener('touchstart', this.onTouchStart, false)
+    document.addEventListener('touchend', this.onTouchEnd, false)
   }
 
   componentWillUnmount() {
-    document.removeEventListener('touchstart', this.onTouchStart);
-    document.removeEventListener('touchend', this.onTouchEnd); 
+    document.removeEventListener('touchstart', this.onTouchStart)
+    document.removeEventListener('touchend', this.onTouchEnd)
   }
 
-  isInsideCodeBlock = (elem) => {
-    for ( ;elem && elem !== document; elem = elem.parentNode) {
-      if (elem.tagName === 'PRE') return true;
-      if (elem.tagName === 'ARTICLE') return false;
+  isInsideCodeBlock = elem => {
+    for (; elem && elem !== document; elem = elem.parentNode) {
+      if (elem.tagName === 'PRE') return true
+      if (elem.tagName === 'ARTICLE') return false
     }
-    return false;
-  };
+    return false
+  }
 
-  onTouchStart = (e) => {
-    this.isCodeBlock = this.isInsideCodeBlock(e.target);
-    this.touchstartX = event.changedTouches[0].screenX;
+  onTouchStart = e => {
+    this.isCodeBlock = this.isInsideCodeBlock(e.target)
+    this.touchstartX = event.changedTouches[0].screenX
   }
 
   onTouchEnd = () => {
-    this.touchendX = event.changedTouches[0].screenX;
-    this.handleSwipeGesture();
+    this.touchendX = event.changedTouches[0].screenX
+    this.handleSwipeGesture()
   }
 
   handleSwipeGesture = () => {
-    if (this.isCodeBlock) return;
-    const {  section, file, onFileSelect } = this.props;
-    const files = sidebar[section].files;
-    const fileIndex = files.findIndex((f) => f === file);
-    const showPrev = fileIndex > 0;
-    const showNext = fileIndex + 1 < sidebar[section].files.length;
+    if (this.isCodeBlock) return
+    const { section, file, onFileSelect } = this.props
+    const files = sidebar[section].files
+    const fileIndex = files.findIndex(f => f === file)
+    const showPrev = fileIndex > 0
+    const showNext = fileIndex + 1 < sidebar[section].files.length
 
     if (this.touchstartX - this.touchendX > 100) {
       showNext && onFileSelect(files[fileIndex + 1], section)
     }
 
     if (this.touchendX - this.touchstartX > 100) {
-      showPrev && onFileSelect(files[fileIndex - 1], section);
+      showPrev && onFileSelect(files[fileIndex - 1], section)
     }
   }
 
   render() {
-    const { markdown, githubLink, section, file, onFileSelect } = this.props;
-    const files = sidebar[section].files;
-    const fileIndex = files.findIndex((f) => f === file);
-    const showPrev = fileIndex > 0;
-    const showNext = fileIndex + 1 < sidebar[section].files.length;
+    const { markdown, githubLink, section, file, onFileSelect } = this.props
+    const files = sidebar[section].files
+    const fileIndex = files.findIndex(f => f === file)
+    const showPrev = fileIndex > 0
+    const showNext = fileIndex + 1 < sidebar[section].files.length
 
     return (
       <Content>
         <GithubLink href={githubLink} target="_blank">
-          <i/> Edit on Github
+          <i /> Edit on Github
         </GithubLink>
         <ReactMarkdown
           key={`${section}-${fileIndex}`}
@@ -144,30 +146,31 @@ export default class Markdown extends Component {
           astPlugins={[linker()]}
         />
         <NavigationButtons>
-          <Button onClick={() => onFileSelect(files[fileIndex - 1], section)} disabled={!showPrev}>
+          <Button
+            onClick={() => onFileSelect(files[fileIndex - 1], section)}
+            disabled={!showPrev}
+          >
             <i className="prev" />
             <span>Prev</span>
           </Button>
-          <Button onClick={() => onFileSelect(files[fileIndex + 1], section)} disabled={!showNext}>
+          <Button
+            onClick={() => onFileSelect(files[fileIndex + 1], section)}
+            disabled={!showNext}
+          >
             <span>Next</span>
             <i className="next" />
           </Button>
         </NavigationButtons>
       </Content>
-    );
+    )
   }
-} 
-
+}
 
 const Content = styled.article`
-  flex: 1;
-  box-sizing: border-box;
   min-width: 200px;
-  margin: 30px 0 30px 30px;
-  position: relative;
+  margin: 30px;
 
   ${media.phablet`
-    padding-top: 20px;
     margin: 20px;
   `};
 
@@ -178,7 +181,7 @@ const Content = styled.article`
   ol {
     list-style-type: decimal;
   }
-  
+
   em {
     font-style: italic;
   }
@@ -190,7 +193,7 @@ const Content = styled.article`
     animation-fill-mode: both;
     animation-name: fadeIn;
   }
-  
+
   .Collapsible {
     margin-bottom: 10px;
     background-color: rgba(36, 173, 197, 0.2);
@@ -198,36 +201,35 @@ const Content = styled.article`
     -moz-border-radius: 15px;
     padding: 10px;
   }
-  
+
   .Collapsible__trigger {
     font-family: BrandonGrotesqueMed;
     display: block;
     position: relative;
     opacity: 0.9;
-    
-     &:after {
+
+    &:after {
       position: absolute;
       display: inline-block;
       background-size: 20px 20px;
       right: 0;
-      width: 20px; 
+      width: 20px;
       height: 20px;
       background-image: url('/static/img/click.png');
       content: '';
       font-family: monospace;
       transition: transform 200ms;
     }
-    
-    
+
     &.is-open {
       &:after {
         opacity: 0.5;
       }
     }
   }
-  
+
   .Collapsible__contentInner {
-    background-color: rgba(36, 173, 197, 0.00);
+    background-color: rgba(36, 173, 197, 0);
     border-radius: 15px;
     -moz-border-radius: 15px;
     padding: 10px;
@@ -237,22 +239,22 @@ const Content = styled.article`
     from {
       opacity: 0;
     }
-  
+
     to {
       opacity: 1;
     }
   }
-  
+
   details p {
     font-size: 17px;
-    color: #454E53;
+    color: #454e53;
     margin-left: 20px;
     margin-right: 10px;
   }
-  
+
   details pre {
     font-size: 14px;
-    color: #454E53;
+    color: #454e53;
     margin-left: 20px;
     margin-right: 10px;
   }
@@ -318,7 +320,7 @@ const Button = styled.div`
   transition: 0.2s border-color ease-out;
 
   &:hover {
-    border-bottom: 3px solid #11849B;
+    border-bottom: 3px solid #11849b;
   }
 
   i {
@@ -330,7 +332,7 @@ const Button = styled.div`
     width: 1em;
     height: 1em;
     line-height: 1;
-    transition: all .3s;
+    transition: all 0.3s;
 
     &.next {
       margin-left: 7px;

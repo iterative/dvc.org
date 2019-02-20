@@ -8,33 +8,13 @@ import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
 
 export default class SidebarMenu extends React.Component {
-  renderFileHeadings = isOpen => {
-    const { headings, scrollToLink } = this.props
-
-    return (
-      <Collapse isOpen={isOpen} items={headings.length}>
-        {!!headings.length &&
-          headings.map(({ text, slug }, headingIndex) => (
-            <SectionLink
-              level={3}
-              key={`link-${headingIndex}`}
-              onClick={() => scrollToLink('#' + slug)}
-              href={`#${slug}`}
-            >
-              {text}
-            </SectionLink>
-          ))}
-      </Collapse>
-    )
-  }
-
   render() {
     const {
       sidebar,
       currentSection,
       currentFile,
-      headings,
       onSectionSelect,
+      onFileSelect,
       getLinkHref
     } = this.props
 
@@ -61,10 +41,7 @@ export default class SidebarMenu extends React.Component {
                     </SectionLink>
 
                     {/* Section Files */}
-                    <Collapse
-                      isOpen={isSectionActive}
-                      items={files.length + headings.length}
-                    >
+                    <Collapse isOpen={isSectionActive} items={files.length}>
                       {files &&
                         files.map((file, fileIndex) => {
                           const isFileActive = currentFile === file
@@ -78,8 +55,6 @@ export default class SidebarMenu extends React.Component {
                               >
                                 {labels[file] || startCase(file.slice(0, -3))}
                               </SectionLink>
-
-                              {this.renderFileHeadings(isFileActive)}
                             </div>
                           )
                         })}

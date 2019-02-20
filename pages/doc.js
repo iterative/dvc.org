@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 // nextjs
-import Head from 'next/head'
+import { HeadInjector } from '../src/Documentation/HeadInjector'
 // components
 import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
 import Markdown from '../src/Documentation/Markdown/Markdown'
+import { RightPanel } from '../src/Documentation/RightPanel/RightPanel'
 import Page from '../src/Page'
 import SearchForm from '../src/SearchForm'
 import Page404 from '../src/Page404'
@@ -39,7 +40,8 @@ export default class Documentation extends Component {
     this.initDocsearch()
     window.addEventListener('popstate', this.loadStateFromURL)
     this.ps = new PerfectScrollbar('#sidebar-menu', {
-      wheelPropagation: window.innerWidth <= 572
+      // wheelPropagation: window.innerWidth <= 572
+      wheelPropagation: true
     })
   }
 
@@ -206,13 +208,16 @@ export default class Documentation extends Component {
         <HeadInjector sectionName={sectionName} />
         <Container>
           <Backdrop onClick={this.toggleMenu} visible={isMenuOpen} />
+
           <SideToggle onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
             <Hamburger />
           </SideToggle>
+
           <Side isOpen={isMenuOpen}>
             <SearchArea>
               <SearchForm />
             </SearchArea>
+
             <SidebarMenu
               sidebar={sidebar}
               currentSection={currentSection}
@@ -236,39 +241,18 @@ export default class Documentation extends Component {
               onFileSelect={this.onFileSelect}
             />
           )}
+
+          <RightPanel headings={headings} scrollToLink={this.scrollToLink} />
         </Container>
       </Page>
     )
   }
 }
 
-const HeadInjector = ({ sectionName = 'Documentation' }) => (
-  <Head>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/perfect-scrollbar@1.4.0/css/perfect-scrollbar.min.css"
-    />
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.js"
-    />
-    <title>{sectionName} | Machine Learning Version Control System</title>
-  </Head>
-)
-
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  max-width: 1005px;
+  max-width: 1170px;
   margin: 0 auto;
   background: white;
   z-index: 2;
@@ -312,12 +296,9 @@ const Backdrop = styled.div`
 `
 
 const Side = styled.div`
-  flex-basis: 33.7%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
+  min-width: 280px;
   background-color: #eef4f8;
+  padding: 0 10px;
 
   ${media.phablet`
     position: fixed;
