@@ -292,10 +292,9 @@ depending on Python version you are using and other environment parameters.
 * An easy way to see metrics across different branches:
 
 ```dvc
-    $ dvc metrics show -a
+    $ dvc metrics show
 
-    master:
-        auc.metric: 0.620091
+      auc.metric: 0.620091
 ```
 
 It's time to save the pipeline. You can check using `git status` command that we
