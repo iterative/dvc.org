@@ -53,7 +53,10 @@ data files, intermediate or final results.
  target names are given, it attempts to use `Dvcfile` in the 
  specified directory, if it exists, for stages to rerun.
  Instead of using `--cwd` one can alternately specify a target in
- a subdirectory as `path/to/target.dvc`.
+ a subdirectory as `path/to/target.dvc`.  This could be useful for
+ subdirectories containing a semi-independent pipeline, that can 
+ either be rerun as part of the pipeline in the parent directory, or
+ as an independent unit.
 
 * `-m`, `--metrics`  Show metrics after reproduction.  The pipeline must
  have at least one metrics file defined either with the `dvc metrics` command,
@@ -74,8 +77,10 @@ data files, intermediate or final results.
  did not change.  Like with the same option on `dvc run`, this is a way to
  force certain stages to run if they would not otherwise be rerun.  This
  can be useful for pipelines containing stages that produce nondeterministic
- (semi-random) outputs.  For nondeterministic stages the outputs can vary on each
- execution, meaning the cache cannot be trusted for such stages.
+ (semi-random) outputs, such as the example below containing a stage that
+ sorts its output into a random order.  For nondeterministic stages 
+ the outputs can vary on each execution, meaning the cache cannot
+ be trusted for such stages.
 
 * `-q`, `--quiet` do not write anything to standard output.  The command
   run by the stage is free to make output irregardless of this flag.
@@ -94,81 +99,83 @@ For the following examples, assume a pipeline defined as so:
 ```dvc
     git init
     dvc init
-    echo dep1 > dep1
-    dvc run -d dep1 -o out1 -f 1.dvc "echo out1 > out1"
-    dvc run -d out1 -o out2 -f 2.dvc "echo out2 > out2"
-    dvc run -d out2 -o out3 -f 3.dvc "echo out3 > out3"
-    dvc run -d out3 -o out4 -f 4.dvc "echo out4 > out4"
-    dvc run -d out4 -o out5 -f 5.dvc "echo out5 > out5"
-    dvc run -d out5 -o out6 -f Dvcfile "echo out6 > out6"
+
+    echo "hello\n1231\nworld\n3\n434\nsomething" > dep1.txt
+    dvc run -d dep1.txt -o sorted.txt -f sort.dvc "sort <dep1.txt > sorted.txt"
+    dvc run -d sorted.txt -o random.txt -f random.dvc "sort --random-sort <sorted.txt >random.txt"
+    dvc run -d random.txt -o numbers.txt -f numbers.dvc "egrep '[0-9]+' <random.txt >numbers.txt"
+    dvc run -d numbers.txt --metrics-no-cache numcount.txt -f Dvcfile "wc -l numbers.txt sorted.txt >numcount.txt"
 ```
 
-Reproduce default stage file, using `--force` to force rerunning every stage:
+Reproduce the pipeline (defaulting to `Dvcfile`) after making a change:
 
 ```dvc
-    $ dvc repro --force
-    
+    $ vi dep1.txt 
+    $ dvc repro
+
     Warning: assuming default target 'Dvcfile'.
-    Stage '1.dvc' didn't change.
-    Reproducing '1.dvc'
+    Warning: Dependency 'dep1.txt' of 'sort.dvc' changed.
+    Stage 'sort.dvc' changed.
+    Reproducing 'sort.dvc'
     Running command:
-    	echo out1 > out1
-    Checking out '{'scheme': 'local', 'path': '/Volumes/Extra/dvc/simple/out1'}' with cache '9f0c0340f365f475723dfd8639783088'.
-    Output 'out1' didn't change. Skipping saving.
-    Saving 'out1' to cache '.dvc/cache'.
-    Saving information to '1.dvc'.
-    Stage '2.dvc' didn't change.
-    Reproducing '2.dvc'
+	sort <dep1.txt > sorted.txt
+    Saving 'sorted.txt' to cache '.dvc/cache'.
+    Saving information to 'sort.dvc'.
+    Warning: Dependency 'sorted.txt' of 'random.dvc' changed.
+    Stage 'random.dvc' changed.
+    Reproducing 'random.dvc'
     Running command:
-	echo out2 > out2
-    Checking out '{'scheme': 'local', 'path': '/Volumes/Extra/dvc/simple/out2'}' with cache '5639d8ce29228e40b5bcb7f763c06f98'.
-    Output 'out2' didn't change. Skipping saving.
-    Saving 'out2' to cache '.dvc/cache'.
-    Saving information to '2.dvc'.
-    Stage '3.dvc' didn't change.
-    Reproducing '3.dvc'
+	sort --random-sort <sorted.txt >random.txt
+    Saving 'random.txt' to cache '.dvc/cache'.
+    Saving information to 'random.dvc'.
+    Warning: Dependency 'random.txt' of 'numbers.dvc' changed.
+    Stage 'numbers.dvc' changed.
+    Reproducing 'numbers.dvc'
     Running command:
-	echo out3 > out3
-    Checking out '{'scheme': 'local', 'path': '/Volumes/Extra/dvc/simple/out3'}' with cache 'd24d3640da56f018b0925a67687769c0'.
-    Output 'out3' didn't change. Skipping saving.
-    Saving 'out3' to cache '.dvc/cache'.
-    Saving information to '3.dvc'.
-    ...
+	egrep '[0-9]+' <random.txt >numbers.txt
+    Saving 'numbers.txt' to cache '.dvc/cache'.
+    Saving information to 'numbers.dvc'.
+    Warning: Dependency 'numbers.txt' of 'Dvcfile' changed.
+    Stage 'Dvcfile' changed.
+    Reproducing 'Dvcfile'
+    Running command:
+	wc -l numbers.txt sorted.txt >numcount.txt
+    Output 'numcount.txt' doesn't use cache. Skipping saving.
     Saving information to 'Dvcfile'.
 ```
 
 Reproduce a single stage:
 
 ```dvc
-    $ dvc repro 3.dvc --force --single-item
+    $ dvc repro random.dvc --force --single-item
 
-    Stage '3.dvc' didn't change.
-    Reproducing '3.dvc'
+    Stage 'random.dvc' didn't change.
+    Reproducing 'random.dvc'
     Running command:
-	echo out3 > out3
-    Checking out '{'path': '/Volumes/Extra/dvc/simple/out3', 'scheme': 'local'}' with cache 'd24d3640da56f018b0925a67687769c0'.
-    Output 'out3' didn't change. Skipping saving.
-    Saving 'out3' to cache '.dvc/cache'.
-    Saving information to '3.dvc'.
+	sort --random-sort <sorted.txt >random.txt
+    Checking out '{'scheme': 'local', 'path': '/Volumes/Extra/dvc/simple2/random.txt'}' with cache '3978209308cd24ed94ab1ad2fdacaa28'.
+    Output 'random.txt' didn't change. Skipping saving.
+    Saving 'random.txt' to cache '.dvc/cache'.
+    Saving information to 'random.dvc'.
 ```
 
-If `--single-item` is not given, stages `1.dvc`, `2.dvc` and `3.dvc` will be rerun.
+If `--single-item` is not given, stages `random.dvc` and `sort.dvc` will be rerun.
 
 Inspect what would happen (dry run):
 
 ```dvc
-    $ dvc repro 3.dvc --force --dry
+    $ dvc repro sorted2.dvc --force --dry
 
-    Stage '1.dvc' didn't change.
-    Reproducing '1.dvc'
+    Stage 'sort.dvc' didn't change.
+    Reproducing 'sort.dvc'
     Running command:
-	echo out1 > out1
-    Stage '2.dvc' didn't change.
-    Reproducing '2.dvc'
+	sort <dep1.txt > sorted.txt
+    Stage 'random.dvc' didn't change.
+    Reproducing 'random.dvc'
     Running command:
-	echo out2 > out2
-    Stage '3.dvc' didn't change.
-    Reproducing '3.dvc'
+	sort --random-sort <sorted.txt >random.txt
+    Stage 'sorted2.dvc' didn't change.
+    Reproducing 'sorted2.dvc'
     Running command:
-	echo out3 > out3
+	sort <random.txt >sorted2.txt
 ```
