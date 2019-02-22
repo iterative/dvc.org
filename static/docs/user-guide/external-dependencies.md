@@ -78,6 +78,7 @@ types of dependencies.
 ```dvc
     $ dvc import https://dvc.org/s3/get-started/data.xml
 ```
+<details>
 
 ### Expand to learn more about DVC internals
 
@@ -97,3 +98,5 @@ DVC checks the headers returned by the server, looking for a strong
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
 [Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it
 to know if the file has changed and we need to download it again.
+
+</details>
