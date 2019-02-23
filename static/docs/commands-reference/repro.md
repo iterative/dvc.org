@@ -6,7 +6,8 @@ depending on command line options and the current workspace status.
 ## Synopsis
 
 ```usage
-    usage: dvc repro [-h] [-q] [-v] [-f] [-s] [-c CWD] [-m]
+    usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c CWD] [-m] [--dry] [-i]
+                     [-p] [-P] [--ignore-build-cache] [--no-commit]
                      [targets [targets ...]]
 
     positional arguments:
@@ -36,7 +37,9 @@ stage file(s) as targets, or using the `--single-item`, `--pipeline`,
 or `--cwd` options.
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
-data files, intermediate or final results.
+data files, intermediate or final results.  It though saves (unless --no-commit 
+option is specified) all the data files, intermediate or final results into the 
+DVC local cache and updates stage files with the new checksum information.
 
 ## Options
 
@@ -45,18 +48,21 @@ data files, intermediate or final results.
  To rerun a single stage, specify the stage name on the command-line
  along with the `--single-item` option.
 
-* `-s`, `--single-item`  Reproduce only a single stage by 
- turning off the recursive search for changed dependencies.
- Multiple stages are rerun if multiple stage names are listed on the command-line.
+* `-s`, `--single-item`  Reproduce only a single stage by turning off the
+ recursive search for changed dependencies. Multiple stages are rerun if
+ multiple stage names are listed on the command-line.
 
-* `-c`, `--cwd`  Directory within your project to reproduce from.  If no 
- target names are given, it attempts to use `Dvcfile` in the 
- specified directory, if it exists, for stages to rerun.
- Instead of using `--cwd` one can alternately specify a target in
- a subdirectory as `path/to/target.dvc`.  This could be useful for
- subdirectories containing a semi-independent pipeline, that can 
+* `-c`, `--cwd`  Directory within your project to reproduce from.  If no target
+ names are given, it attempts to use `Dvcfile` in the specified directory, if it 
+ exists, for stages to rerun.  Instead of using `--cwd` one can alternately 
+ specify a target in a subdirectory as `path/to/target.dvc`.  This could be
+ useful for subdirectories containing a semi-independent pipeline, that can
  either be rerun as part of the pipeline in the parent directory, or
  as an independent unit.
+
+* `--no-commit` Does not save outputs to cache. Useful when running different
+ experiments and you don't want to fill up your cache with temporary files. 
+ Use dvc commit when you are ready to save your results to cache.
 
 * `-m`, `--metrics`  Show metrics after reproduction.  The pipeline must
  have at least one metrics file defined either with the `dvc metrics` command,
@@ -71,6 +77,9 @@ data files, intermediate or final results.
 * `-p`, `--pipeline`  Reproduce the whole pipeline that the specified stage
  file belongs to.  Use `dvc pipeline show target.dvc` to show the entire
  pipeline the named stage belongs to.
+
+* `-P`, `--all-pipelines` Reproduce all pipelines in the repository.  This
+ is useful for workspaces containing multiple pipelines.
 
 * `--ignore-build-cache`  Reproduce all descendants of a changed stage, or 
  the stages following the changed stage, even if their direct dependencies
@@ -94,88 +103,89 @@ data files, intermediate or final results.
 
 ## Examples
 
-For the following examples, assume a pipeline defined as so:
+For simplicity, let's build a pipeline defined below (if you want get your hands
+on something more real, check this
+[mini-tutorial](/doc/get-started/example-pipeline)). It takes this `text.txt`
+file:
 
-```dvc
-    git init
-    dvc init
-
-    echo "hello\n1231\nworld\n3\n434\nsomething" > dep1.txt
-    dvc run -d dep1.txt -o sorted.txt -f sort.dvc "sort <dep1.txt > sorted.txt"
-    dvc run -d sorted.txt -o random.txt -f random.dvc "sort --random-sort <sorted.txt >random.txt"
-    dvc run -d random.txt -o numbers.txt -f numbers.dvc "egrep '[0-9]+' <random.txt >numbers.txt"
-    dvc run -d numbers.txt --metrics-no-cache numcount.txt -f Dvcfile "wc -l numbers.txt sorted.txt >numcount.txt"
+```
+dvc
+1231
+is
+3
+the
+best
 ```
 
-Reproduce the pipeline (defaulting to `Dvcfile`) after making a change:
+And runs a few simple transformations to filter and count numbers:
 
 ```dvc
-    $ vi dep1.txt 
+    $ dvc run -f filter.dvc -d text.txt -o numbers.txt \
+               "cat text.txt | egrep '[0-9]+' > numbers.txt"
+
+    $ dvc run -f Dvcfile -d numbers.txt -d process.py -M count.txt \
+               "python process.py numbers.txt > count.txt"
+```
+
+Where `process.py` is a script which for simplicity just prints the number of
+lines:
+
+```python
+import sys
+num_lines = 0
+with open(sys.argv[1], 'r') as f:
+    for line in f:
+        num_lines += 1
+print(num_lines)
+```
+
+The result of executing these `dvc run` commands should look like this:
+
+```dvc
+    $ tree
+    .
+    ├── Dvcfile        <---- second stage with a default DVC name
+    ├── count.txt      <---- result: "2"
+    ├── filter.dvc     <---- first stage
+    ├── numbers.txt    <---- intermediate result of the first stage
+    ├── process.py     <---- code that runs some transformation
+    └── text.txt       <---- text file to process
+```
+
+Ok, now, let's run the `dvc repro` command (remember, by default it reproduces
+outputs defined in `Dvcfile`, `count.txt` in this case):
+
+```dvc
     $ dvc repro
 
-    Warning: assuming default target 'Dvcfile'.
-    Warning: Dependency 'dep1.txt' of 'sort.dvc' changed.
-    Stage 'sort.dvc' changed.
-    Reproducing 'sort.dvc'
-    Running command:
-	sort <dep1.txt > sorted.txt
-    Saving 'sorted.txt' to cache '.dvc/cache'.
-    Saving information to 'sort.dvc'.
-    Warning: Dependency 'sorted.txt' of 'random.dvc' changed.
-    Stage 'random.dvc' changed.
-    Reproducing 'random.dvc'
-    Running command:
-	sort --random-sort <sorted.txt >random.txt
-    Saving 'random.txt' to cache '.dvc/cache'.
-    Saving information to 'random.dvc'.
-    Warning: Dependency 'random.txt' of 'numbers.dvc' changed.
-    Stage 'numbers.dvc' changed.
-    Reproducing 'numbers.dvc'
-    Running command:
-	egrep '[0-9]+' <random.txt >numbers.txt
-    Saving 'numbers.txt' to cache '.dvc/cache'.
-    Saving information to 'numbers.dvc'.
-    Warning: Dependency 'numbers.txt' of 'Dvcfile' changed.
+    Stage 'filter.dvc' didn't change.
+    Stage 'Dvcfile' didn't change.
+    Pipeline is up to date. Nothing to reproduce.
+```
+
+It makes sense, since we haven't changed neither of the dependencies this
+pipeline has: `text.txt` or `process.py`. Now, let's imagine we want to print a
+description and we add this line to the `process.py`:
+
+```python
+...
+print('Number of lines:')
+print(num_lines)
+```
+
+If we now run `dvc repro`, that's what we should see:
+
+```dvc
+    $ dvc repro
+
+    Stage 'filter.dvc' didn't change.
     Stage 'Dvcfile' changed.
     Reproducing 'Dvcfile'
     Running command:
-	wc -l numbers.txt sorted.txt >numcount.txt
-    Output 'numcount.txt' doesn't use cache. Skipping saving.
+	    python process.py numbers.txt > count.txt
+
     Saving information to 'Dvcfile'.
 ```
 
-Reproduce a single stage:
-
-```dvc
-    $ dvc repro random.dvc --force --single-item
-
-    Stage 'random.dvc' didn't change.
-    Reproducing 'random.dvc'
-    Running command:
-	sort --random-sort <sorted.txt >random.txt
-    Checking out '{'scheme': 'local', 'path': '/Volumes/Extra/dvc/simple2/random.txt'}' with cache '3978209308cd24ed94ab1ad2fdacaa28'.
-    Output 'random.txt' didn't change. Skipping saving.
-    Saving 'random.txt' to cache '.dvc/cache'.
-    Saving information to 'random.dvc'.
-```
-
-If `--single-item` is not given, stages `random.dvc` and `sort.dvc` will be rerun.
-
-Inspect what would happen (dry run):
-
-```dvc
-    $ dvc repro sorted2.dvc --force --dry
-
-    Stage 'sort.dvc' didn't change.
-    Reproducing 'sort.dvc'
-    Running command:
-	sort <dep1.txt > sorted.txt
-    Stage 'random.dvc' didn't change.
-    Reproducing 'random.dvc'
-    Running command:
-	sort --random-sort <sorted.txt >random.txt
-    Stage 'sorted2.dvc' didn't change.
-    Reproducing 'sorted2.dvc'
-    Running command:
-	sort <random.txt >sorted2.txt
-```
+You can check now that `Dvcfile` and `count.txt` have been updated with the new
+information, new `md5` checksums and a new result respectively.
