@@ -50,7 +50,6 @@ same way from the master branch:
 
 ```dvc
     $ git clone https://github.com/dmpetrov/classify.git
-    $ dvc config AWS.StoragePath dvc-share/classify
     $ dvc pull
 ```
 
