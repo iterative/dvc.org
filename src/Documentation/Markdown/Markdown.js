@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 // components
 import ReactMarkdown from 'react-markdown'
+import { GithubLink } from '../GithubLink'
 // syntax highlighter
 import SyntaxHighlighter, {
   registerLanguage
@@ -19,7 +20,7 @@ import linker from './utils/remark-linker'
 import kebabCase from 'lodash.kebabcase'
 // styles
 import styled from 'styled-components'
-import { media } from '../../../src/styles'
+import { media, OnlyDesktop } from '../../../src/styles'
 // json
 import sidebar from '../../../src/Documentation/sidebar'
 
@@ -169,6 +170,7 @@ export default class Markdown extends Component {
 const Content = styled.article`
   min-width: 200px;
   margin: 30px;
+  flex: 1;
 
   ${media.phablet`
     margin: 20px;
@@ -257,44 +259,6 @@ const Content = styled.article`
     color: #454e53;
     margin-left: 20px;
     margin-right: 10px;
-  }
-`
-
-const GithubLink = styled.a`
-  float: right;
-  margin: 5px 0 10px 10px;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  text-decoration: none;
-  font-weight: 600;
-  color: #242A31 !important;
-  background-color: #FFFFFF;
-  border: 1px solid #D3DCE4;
-  
-  line-height: 30px;
-  padding: 2px 16px;
-  border-radius: 3px;
-  cursor: pointer;
-  transition: 0.2s background-color ease-out;
-  position: relative
-  z-index: 1
-
-  ${media.tablet`
-    float: none;
-    margin: 0 0 15px 0;
-  `};
-
-  &:hover {
-    background-color: #F5F7F9;
-  }
-
-  i {
-    background-image: url(/static/img/github_icon.svg);
-    background-size: contain;
-    width: 1em;
-    height: 1em;
-    margin-right: 7px;
   }
 `
 

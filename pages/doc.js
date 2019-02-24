@@ -242,7 +242,11 @@ export default class Documentation extends Component {
             />
           )}
 
-          <RightPanel headings={headings} scrollToLink={this.scrollToLink} />
+          <RightPanel
+            headings={headings}
+            scrollToLink={this.scrollToLink}
+            githubLink={githubLink}
+          />
         </Container>
       </Page>
     )
@@ -298,7 +302,10 @@ const Backdrop = styled.div`
 const Side = styled.div`
   min-width: 280px;
   background-color: #eef4f8;
-  padding: 0 10px;
+
+  @media only screen and (max-width: 1170px) {
+    padding-left: 15px;
+  }
 
   ${media.phablet`
     position: fixed;
