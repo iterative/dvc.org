@@ -30,7 +30,7 @@ modifications are required, let's just change the stage definition:
     $ git commit .gitignore matrix.pkl.dvc -m "change featurization stage"
 ```
 
-DVC will aks for confirmation to overwrite the stage. Type `yes` and proceed.
+DVC will ask for confirmation to overwrite the stage. Type `yes` and proceed.
 
 </details>
 
