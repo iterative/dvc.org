@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 // components
 import ReactMarkdown from 'react-markdown'
-import { GithubLink } from '../GithubLink'
+import { LightButton } from '../LightButton'
 // syntax highlighter
 import SyntaxHighlighter, {
   registerLanguage
@@ -20,7 +20,7 @@ import linker from './utils/remark-linker'
 import kebabCase from 'lodash.kebabcase'
 // styles
 import styled from 'styled-components'
-import { media, OnlyDesktop } from '../../../src/styles'
+import { media } from '../../../src/styles'
 // json
 import sidebar from '../../../src/Documentation/sidebar'
 
@@ -313,5 +313,26 @@ const Button = styled.div`
   &[disabled] {
     pointer-events: none;
     opacity: 0.5;
+  }
+`
+
+export const GithubLink = styled(LightButton)`
+  display: none;
+  float: right;
+  margin: 5px 0 10px 10px;
+  z-index: 1;
+  position relative;
+  
+  ${media.tablet`
+    float: none;
+    margin: 0 0 15px 0;
+  `};
+
+  @media only screen and (max-width: 1170px) {
+    display: inline-flex;
+  }
+
+  i {
+    background-image: url(/static/img/github_icon.svg);
   }
 `

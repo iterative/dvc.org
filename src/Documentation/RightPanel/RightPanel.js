@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { LightButton } from '../LightButton'
 
 export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
   <Wrapper>
@@ -24,13 +25,26 @@ export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
       ))}
 
     <br />
+    <Description>
+      Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+    </Description>
 
     <Link href={githubLink} target="_blank">
-      <HollowButton color="#13adc7">Edit on Github</HollowButton>
+      <GithubButton>
+        <i />Edit on Github
+      </GithubButton>
     </Link>
 
+    <br />
+    <br />
+    <Description>
+      Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+    </Description>
+
     <Link href="/chat" target="_blank">
-      <HollowButton color="#945dd6">Discord Chat</HollowButton>
+      <DiscordButton>
+        <i />Discord Chat
+      </DiscordButton>
     </Link>
   </Wrapper>
 )
@@ -56,7 +70,7 @@ const Header = styled.p`
   color: #3c3937;
   font-size: 14px;
   text-transform: uppercase;
-  margin-top: 30px;
+  margin-top: 56px;
 `
 
 const HeadingLink = styled.a`
@@ -77,25 +91,23 @@ const HeadingLink = styled.a`
   }
 `
 
-const HollowButton = styled.button`
-  width: 100%;
-  text-align: center;
-  text-decoration: none;
-  margin-bottom: 20px;
-  border-radius: 4px;
-  background-color: white;
-  border: 2px solid ${props => props.color};
-  color: ${props => props.color};
-  font-family: BrandonGrotesqueMed, Tahoma, Arial;
-  height: 40px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: 0.2s background-color ease-out;
-  text-transform: uppercase;
+const GithubButton = styled(LightButton)`
+  min-width: 120px;
+  margin: 10px 0;
 
-  &:hover {
-    background-color: ${props => props.color};
-    color: white;
+  i {
+    background-image: url(/static/img/github_icon.svg);
+  }
+`
+
+const DiscordButton = styled(LightButton)`
+  min-width: 120px;
+  margin: 10px 0;
+
+  i {
+    background-image: url(/static/img/discord.svg);
+    width: 1.2em;
+    height: 1.2em;
   }
 `
 
@@ -105,4 +117,8 @@ const Link = styled.a`
 
 const Spacer = styled.div`
   height: 65px;
+`
+
+const Description = styled.p`
+  color: #3c3937;
 `
