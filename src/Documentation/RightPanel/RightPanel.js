@@ -26,7 +26,7 @@ export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
 
     <br />
     <Description>
-      Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+      Found an issue? It's one click to let us know or fix it:
     </Description>
 
     <Link href={githubLink} target="_blank">
@@ -38,7 +38,7 @@ export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
     <br />
     <br />
     <Description>
-      Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
+      Have a question? Join our chat, we will help you:
     </Description>
 
     <Link href="/chat" target="_blank">
