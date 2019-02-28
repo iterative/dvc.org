@@ -26,7 +26,7 @@ export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
 
     <br />
     <Description>
-      Found an issue? It's one click to let us know or fix it:
+      Found an issue? Let us know or fix it:
     </Description>
 
     <Link href={githubLink} target="_blank">
