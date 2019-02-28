@@ -10,7 +10,6 @@ import { container, media } from '../styles'
 const MIN_HEIGHT = 78
 
 class TopMenu extends Component {
-
   constructor() {
     super()
     this.state = {
@@ -20,9 +19,9 @@ class TopMenu extends Component {
   }
 
   componentDidMount() {
-    this.bodybag = document.getElementById('bodybag');
+    this.bodybag = document.getElementById('bodybag')
     this.isDocPage = window.location.pathname.split('/')[1] === 'doc'
-    this.isPhablet = window.innerWidth <= 572;
+    this.isPhablet = window.innerWidth <= 572
 
     if (!this.isPhablet) {
       this.bodybag.addEventListener('scroll', this.handleScrollThrottled)
@@ -36,9 +35,9 @@ class TopMenu extends Component {
     }
   }
 
-  handleScroll = (e) => {
-    if (this.isDocPage) return;
-    const scrollTop = e ? e.target.scrollTop : 0;
+  handleScroll = e => {
+    if (this.isDocPage) return
+    const scrollTop = e ? e.target.scrollTop : 0
     this.setState({
       scrolled: scrollTop > 25
     })
@@ -49,7 +48,10 @@ class TopMenu extends Component {
 
     return (
       <Wrapper>
-        <Container scrolled={this.isDocPage || scrolled}>
+        <Container
+          scrolled={this.isDocPage || scrolled}
+          isDocPage={this.isDocPage}
+        >
           <Logo href="/">
             <img
               src="/static/img/logo.png"
@@ -65,7 +67,7 @@ class TopMenu extends Component {
   }
 }
 
-export default TopMenu;
+export default TopMenu
 
 const Wrapper = styled.div`
   position: fixed;
@@ -76,16 +78,23 @@ const Wrapper = styled.div`
 
   background-color: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    visibility: hidden;
+  }
 `
 
 const Container = styled.section`
-  ${container};
-  width: auto;
+  margin: 0 auto;
+  padding: 0px 15px;
+  max-width: ${props => (props.isDocPage ? '1170px' : '1005px')};
   min-height: ${MIN_HEIGHT}px;
+  width: auto;
 
   ${props => `
     height: ${MIN_HEIGHT + (props.scrolled ? 0 : 20)}px;
-  `}
+  `};
 
   z-index: 3;
   position: relative;
@@ -94,7 +103,7 @@ const Container = styled.section`
   flex-shrink: 0;
   justify-content: space-between;
   align-items: center;
-  transition: height .2s linear;
+  transition: height 0.2s linear;
   will-change: height;
 
   ${media.phablet`
