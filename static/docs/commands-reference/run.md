@@ -7,7 +7,7 @@ Generate a stage file from a given command and execute the command.
 ```usage
     usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS]
                    [-O OUTS_NO_CACHE] [-M METRICS_NO_CACHE]
-                   [-m METRICS] [-f FILE] [-c CWD]
+                   [-m METRICS] [-f FILE] [-w WDIR]
                    [--no-exec] [-y] [--overwrite-dvcfile]
                    [--ignore-build-cache] [--remove-outs]
                    [--no-commit]
@@ -84,20 +84,23 @@ automatically under DVC control. In case of metrics it's pretty usual because
 metric files are small enough to be put into Git or other underlying version
 control system. See also the difference between `-o` and `-O` options.
 
-* `-f`, `--file` - specify stage file name. By default stage file name
-generated is `<file>.dvc` where `<file>` is file name of the first output (
-`-o`, `-O`, or `-M` option). If neither `-f`, nor outputs (with `-o`, `-O`,
-`-M`) are specified stage name defaults to `Dvcfile`. Stage file name may not
-contain subdirectories, use `-c` options to change location of the stage file. 
+* `-f`, `--file` - specify stage file name. By default stage file name generated
+is `<file>.dvc` where `<file>` is file name of the first output (`-o`, `-O`, or
+`-M` option). If neither `-f`, nor outputs (with `-o`, `-O`, `-M`) are specified
+stage name defaults to `Dvcfile`. By default stage file is placed in the same
+directory `dvc run` is executed.  `-f` can be used to change this place, by
+including path into provided value (e.g. `-f stages/stage.dvc`).
 
-* `-c`, `--cwd` - changes a current working directory before running the
-command. All dependencies and outputs will be expanded relative to that 
-directory. Thus `dvc run --cwd <DIR> [...]` is equivalent to 
-```dvc
-    $ pushd <DIR>
-    $ dvc run [...]
-    $ popd
-```
+* `-c`, `--cwd` - deprecated, use `-f` and `-w` to change location and working
+directory of a stage file.
+
+* `-w`, `--wdir` - specifies a working directory for the `command` to run it in.
+`dvc run` expects that dependencies, outputs, metric files are specified
+relative to this directory. This value (as a relative path to the location of
+the DVC stage file) is saved in the generated DVC stage file in the `wdir` field
+and is used by `dvc repro` to change the working directory before running the
+command.
+
 * `--no-exec` - create a stage file, do not run the command specified do not
 take dependencies or outputs under DVC control. On the stage file level `md5`
 hash sums will be empty. They will be populated next time this stage is
@@ -176,4 +179,19 @@ specified, so a `model.p.dvc` stage file is created:
               -o data/Posts.xml \
               -f extract.dvc \
               unzip Posts.xml.zip -d data/
+```
+
+* Place the generated stage file into a subdirectory:
+
+```dvc
+    $ dvc run -d test.txt -f stages/test.dvc -o result.out \
+       "cat test.txt | wc -l > result.out"
+
+    $ tree .
+
+    .
+    ├── result.out
+    ├── stages
+    │   └── test.dvc
+    └── test.txt
 ```

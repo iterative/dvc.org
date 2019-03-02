@@ -6,7 +6,8 @@ The set of data files to fetch (usually it means downloading from the remote
 storage) is determined by analyzing all `.dvc` files in the current branch,
 unless `--all-branches` is specified.
 
-The command fetches only outputs of a specific stage if dvc file is specified `dvc push data.zip.dvc`.
+The command fetches only outputs of a specific stage if dvc file is specified
+`dvc push data.zip.dvc`.
 
 See `dvc remote`, `dvc config` and 
 [remote storages](https://dvc.org/doc/get-started/configure)
