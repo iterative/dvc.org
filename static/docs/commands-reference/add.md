@@ -57,6 +57,10 @@ to work with directory hierarchies with `dvc add`.
   file for the directory has a corresponding file in the DVC cache containing 
   references to the files in the directory hierarchy.
 
+The `dvc add` command is useful for manually maintaining updates to files.  For
+files that are the outputs of running a command, it is better to use the 
+`dvc run` command to create a DVC stage file listing dependencies and outputs.
+
 ## Options
 
 * `-R`, `--recursive`  Recursively add each file under the named directory.  For 
