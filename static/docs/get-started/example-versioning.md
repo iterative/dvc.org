@@ -14,7 +14,7 @@ build a powerful image classifier, using only a small dataset. The goal of this
 example is to give you some hands-on experience with a very basic scenario -
 working with multiple versions of datasets and ML models using DVC commands.
 
-![](/static/img/cats-and-dogs.png)
+![](/static/img/cats-and-dogs.jpg)
 
 We first train a classifier model using 1000 labeled images, then we double the
 number and run the training again. We capture both datasets and both results
