@@ -16,7 +16,6 @@ dependencies to find only those that have to be rerun.
 
 ```
 
-
 ## Description
 
 DVC file (`target`) can have any name followed by the `.dvc` suffix. If file
