@@ -92,14 +92,9 @@ your project reproducible.
 
 ## Examples: Single file
 
-Take files under DVC control:
+Take a file under DVC control:
 
 ```dvc
-
-    $ tree
-    .
-    └── data.xml
-
     $ dvc add data.xml
 
     Adding 'data.xml' to '.gitignore'.
@@ -111,10 +106,8 @@ Take files under DVC control:
     	git add .gitignore data.xml.dvc
 ```
 
-As the output says, stage files have been created for the file. Let us explore
-the results.
-
-We see that DVC files were created:
+As the output says, stage file have been created for the file. Let us explore
+the result:
 
 ```dvc
     $ tree
