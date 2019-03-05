@@ -210,9 +210,9 @@ us treat the entire directory structure in one unit. It lets you pass the whole
 directory tree as input to a `dvc run` stage like so:
 
 ```dvc
-    $ dvc run -f train.dvc -d train.py -d data -M metrics.json -o model.h5 \
-              -o bottleneck_features_train.npy \
-              -o bottleneck_features_validation.npy \
+    $ dvc run -f train.dvc \
+              -d train.py -d data \
+              -M metrics.json -o model.h5 \
               python train.py
 ```
 
