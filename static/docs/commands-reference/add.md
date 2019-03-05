@@ -23,11 +23,11 @@ will not be added to the cache and instead the `dvc commit` command is used when
 
 Under the hood a few actions are taken for each file in the target(s):
 
-1. Move the file content to the DVC cache (default location is `.dvc/cache`).
-2. Calculate the file checksum.
+1. Calculate the file checksum.
+2. Move the file content to the DVC cache (default location is `.dvc/cache`).
 3. Replace the file by a link to the file in the cache (see details below).
 4. Create a corresponding DVC file (metafile `.dvc`) and store the checksum to
-   identify the cache entry.
+  identify the cache entry.
 5. Add the _target_ filename to `.gitignore` (if Git is used in this workspace)
   to prevent it from being committed to the Git repository.
 6. Instructions are printed showing `git` commands for adding the files to a Git
