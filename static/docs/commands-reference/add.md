@@ -26,13 +26,13 @@ Under the hood a few actions are taken for each file in the target(s):
 1. Move the file content to the DVC cache (default location is `.dvc/cache`).
 2. Calculate the file checksum.
 3. Replace the file by a link to the file in the cache (see details below).
-4. Create a corresponding DVC file (metafile `.dvc`) and store the checksum
-  to identify the cache entry.
+4. Create a corresponding DVC file (metafile `.dvc`) and store the checksum to
+   identify the cache entry.
 5. Add the _target_ filename to `.gitignore` (if Git is used in this workspace)
   to prevent it from being committed to the Git repository. This behavior is
   prevented if the workspace is initialized with the `--no-scm` option.
-6. Instructions are printed showing `git` commands for adding the files to a
-  Git repository. If a different SCM system is being used, use the equivalent
+6. Instructions are printed showing `git` commands for adding the files to a Git
+  repository. If a different SCM system is being used, use the equivalent
   command for that system.
 
 The result is data file is added to the DVC cache, and the Git repository stores
@@ -41,8 +41,8 @@ the metafile (`.dvc`). The stage file (metafile) lists the added file as an
 checksum. See [DVC File Format](/doc/user-guide/dvc-file-format) for the
 detailed description of the DVC _metafile_ format.
 
-By default DVC tries a range of link types (`reflink`, `hardlink`, `symlink`,
-or `copy`) to try to avoid copying any file contents and to optimize DVC file
+By default DVC tries a range of link types (`reflink`, `hardlink`, `symlink`, or
+`copy`) to try to avoid copying any file contents and to optimize DVC file
 operations even for large files. The `reflink` is the best link type available,
 but even though it is frequently supported by modern filesystems, many others
 still don't support it. DVC has the other link types for use on filesystems
@@ -86,94 +86,85 @@ and outputs.
 * `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc add` command.
 
-
-## Examples
+## Examples: Single file
 
 Take files under DVC control:
 
-```
+```dvc
 
-    $ ls raw
+    $ tree
+    .
+    └── data.xml
 
-    dog.111.jpg
+    $ dvc add data.xml
 
-    $ dvc add raw/dog.111.jpg
-
-    Adding 'raw/dog.111.jpg' to 'raw/.gitignore'.
-    Saving 'raw/dog.111.jpg' to cache '.dvc/cache'.
-    Saving information to 'raw/dog.111.jpg.dvc'.
+    Adding 'data.xml' to '.gitignore'.
+    Saving 'data.xml' to cache '.dvc/cache'.
+    Saving information to 'data.xml.dvc'.
 
     To track the changes with git run:
 
-    	git add raw/.gitignore raw/dog.111.jpg.dvc
-
+    	git add .gitignore data.xml.dvc
 ```
 
-As the output says, stage files have been created for each file. Let us explore
+As the output says, stage files have been created for the file. Let us explore
 the results.
 
 We see that DVC files were created:
 
+```dvc
+    $ tree
+    .
+    ├── data.xml
+    └── data.xml.dvc
 ```
-    $ ls raw
 
-    dog.111.jpg   dog.111.jpg.dvc
-```
+Let's check the `data.xml.dvc` file inside:
 
-Let's check the format used for the DVC files.
-
-```
-    $ cat raw/dog.111.jpg.dvc
-
+```yaml
     md5: aae37d74224b05178153acd94e15956b
     outs:
     - cache: true
       md5: d8acabbfd4ee51c95da5d7628c7ef74b
       metric: false
-      path: dog.111.jpg
+      path: data.xml.jpg
 ```
 
 This is a standard DVC stage file with only an `outs` entry. The checksum should
 correspond to an entry in the cache.
 
-```
-    $ ls .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
-    .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
-
+```dvc
     $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
-    .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, baseline, precision 8, 499x375, frames 3
+
+    .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b: ASCII text
 ```
 
-Then we can individually verify each has a corresponding DVC cache entry. With
-the `file` command we verify that each is a JPEG image with the expected
-characteristics.
+## Examples: Directory
 
 What if you have not one dog picture, but hundreds of pictures of dogs and cats?
 Your goal might be to build an algorithm to identify dogs and cats in pictures,
-and this is your training data set.
+and this is your training data set:
 
+```dvc
+    $ tree pics
+    pics
+    ├── train
+    │   ├── cats        <-- a lot of images of cats
+    │   └── dogs        <-- a lot of images of dogs
+    └── validation
+        ├── cats        <-- images of cats
+        └── dogs        <-- images of dogs
 ```
-    $ du pics
-    11092	pics/train/cats
-    13044	pics/train/dogs
-    24140	pics/train
-    9244	pics/validation/cats
-    10496	pics/validation/dogs
-    19744	pics/validation
-    43888	pics
 
+Taking a directory under DVC control as simple as taking a single file:
+
+```dvc
     $ dvc add pics
+
     Computing md5 for a large directory pics/train/cats. This is only done once.
     [##############################] 100% pics/train/cats
 
-    Computing md5 for a large directory pics/train/dogs. This is only done once.
-    [##############################] 100% pics/train/dogs
-
-    Computing md5 for a large directory pics/validation/cats. This is only done once.
-    [##############################] 100% pics/validation/cats
-
-    Computing md5 for a large directory pics/validation/dogs. This is only done once.
-    [##############################] 100% pics/validation/dogs
+    ...
 
     Saving 'pics' to cache '.dvc/cache'.
 
@@ -204,8 +195,9 @@ top-level directory, and it contains this:
 
 If instead you use the `--recursive` option, the output looks as so:
 
-```
+```dvc
     $ dvc add --recursive pix
+
     Saving 'pix/train/cats/cat.150.jpg' to cache '.dvc/cache'.
     Saving 'pix/train/cats/cat.130.jpg' to cache '.dvc/cache'.
     Saving 'pix/train/cats/cat.111.jpg' to cache '.dvc/cache'.
@@ -220,7 +212,7 @@ With the `dvc add pics` a single DVC file is generated, `pics.dvc`, which lets
 us treat the entire directory structure in one unit. It lets you pass the whole
 directory tree as input to a `dvc run` stage like so:
 
-```
+```dvc
     $ dvc run -f train.dvc -d train.py -d data -M metrics.json -o model.h5 \
               -o bottleneck_features_train.npy \
               -o bottleneck_features_validation.npy \
@@ -230,5 +222,5 @@ directory tree as input to a `dvc run` stage like so:
 To see this whole example go to
 [Example: Versioning](/doc/get-started/example-versioning).
 
-Since no top-level DVC file is generated with the `--recursive` option we
-cannot use the directory structure as a whole.
+Since no top-level DVC file is generated with the `--recursive` option we cannot
+use the directory structure as a whole.
