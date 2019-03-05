@@ -5,8 +5,8 @@ Take a data file or a directory under DVC control.
 ## Synopsis
 
 ```usage
-    usage: dvc add [-h] [-q | -v] 
-                   [-R] [--no-commit] 
+    usage: dvc add [-h] [-q | -v]
+                   [-R] [--no-commit]
                    targets [targets ...]
 
     positional arguments:
@@ -116,14 +116,14 @@ We see that DVC files were created:
 
 ```
     $ ls raw
-    
+
     dog.111.jpg   dog.111.jpg.dvc
 ```
 
 Let's check the format used for the DVC files.
 
 ```
-    $ cat raw/dog.111.jpg.dvc 
+    $ cat raw/dog.111.jpg.dvc
 
     md5: aae37d74224b05178153acd94e15956b
     outs:
@@ -137,10 +137,10 @@ This is a standard DVC stage file with only an `outs` entry.  The checksum
 should correspond to an entry in the cache.
 
 ```
-    $ ls .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b 
+    $ ls .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
     .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
-  
-    $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b 
+
+    $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
     .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b: JPEG image data, JFIF standard 1.01, aspect ratio, density 1x1, segment length 16, baseline, precision 8, 499x375, frames 3
 ```
 
