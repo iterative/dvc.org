@@ -76,9 +76,9 @@ Commit your changes:
     $ git commit -m "track images and models with dvc"
 ```
 
-There are to get to the previous version of the data set or model - a full
-workspace checkout or checkout of a specific data or mode file. Let's consider
-the full checkout first. It's quite straightforward:
+There are two ways to get to the previous version of the dataset or model - a
+full workspace checkout or checkout of a specific data or mode file. Let's
+consider the full checkout first. It's quite straightforward:
 
 > `v1.0` is a git tag that should be created in advance to identify the data set
 version you are interested in, it can be just a git commit hash instead.
