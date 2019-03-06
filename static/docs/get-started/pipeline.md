@@ -27,6 +27,7 @@ Let's commit meta-files that describe our pipeline:
 ```dvc
     $ git add .gitignore matrix.pkl.dvc model.pkl.dvc
     $ git commit -m "add featurization and train steps to the pipeline"
+    $ dvc push
 ```
 
 This example is simplified just to show you an idea of the pipeline, check
