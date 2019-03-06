@@ -23,8 +23,8 @@ Generate a stage file from a given command and execute the command.
 It's a way to describe commands, data inputs and intermediate results that went
 into a model (or other data results). By explicitly specifying a list of
 dependencies (with `-d` option) and outputs (with `-o`, `-O`, or `-M` options)
-DVC can connect individual stages (commands) into a direct acyclic graph (DAG).
-`dvc repro` provides an interface to check state and reproduce this graph
+DVC can connect individual stages (commands) into a directed acyclic graph
+(DAG). `dvc repro` provides an interface to check state and reproduce this graph
 later. This concept is similar to the one of the `Makefile` but DVC captures
 data and caches data artifacts along the way. Check this 
 [example](/doc/get-started/example-pipeline) to learn more and try to build a
