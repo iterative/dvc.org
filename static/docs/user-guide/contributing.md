@@ -47,6 +47,7 @@ installing the required libraries. For example:
       $ source .env/bin/activate
       $ pip install -r requirements.txt
       $ pip install -r tests/requirements.txt
+      $ pip install -e .
   ```
 * Install coding style pre-commit hooks with
   ```dvc
