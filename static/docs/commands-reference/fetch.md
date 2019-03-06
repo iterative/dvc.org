@@ -1,42 +1,41 @@
 # fetch
 
-Fetches data files from the remote storage to the local cache.
+Fetch files under DVC control from remote storage into the local cache.
 
-The set of data files to fetch (usually it means downloading from the remote
-storage) is determined by analyzing all `.dvc` files in the current branch,
-unless `--all-branches` is specified.
-
-The command fetches only outputs of a specific stage if dvc file is specified
-`dvc push data.zip.dvc`.
-
-See `dvc remote`, `dvc config` and 
-[remote storages](https://dvc.org/doc/get-started/configure)
-for more information on how to configure the remote storage.
+## Synopsis
 
 ```usage
-    usage: dvc fetch [-h] [-q] [-v] [-j JOBS] [-r REMOTE] [-a]
-                     [-T] [-d]
+    usage: dvc fetch [-h] [-q | -v] [-j JOBS] [--show-checksums] [-r REMOTE] [-a]
+                     [-T] [-d] [-R]
                      [targets [targets ...]]
-
+    
+    Fetch data files from the cloud.
+    
     positional arguments:
       targets               DVC files.
-
-    optional arguments:
-      -h, --help            show this help message and exit
-      -q, --quiet           Be quiet.
-      -v, --verbose         Be verbose.
-      -j JOBS, --jobs JOBS  Number of jobs to run simultaneously.
-      --show-checksums      Show checksums instead of file names.
-      -r REMOTE, --remote REMOTE
-                            Remote repository to fetch from
-      -a, --all-branches    Fetch cache for all branches.
-      -T, --all-tags        Fetch cache for all tags.
-      -d, --with-deps       Fetch cache for all dependencies of the specified
-                            target.
-      -R RECURSIVE, --recursive RECURSIVE
-                            Fetch cache for subdirectories of specified directory.
-
 ```
+
+## Description
+
+Files under DVC control have been
+[added](https://dvc.org/doc/get-started/add-files) and
+[pushed](https://dvc.org/doc/get-started/share-data) to the remote previously,
+and are now listed as outputs in a DVC file (`target`). See DVC File Format for
+more info on outputs. If no `targets` are specified, the set of data files to
+fetch is determined by analyzing all `.dvc` files in the current branch, unless
+`--all-branches` is specified.
+
+Fetching usually means downloading from the remote storage. See
+`dvc remote add` for more information on how to configure different remote
+storage providers.
+
+`dvc fetch` is performed automatically by `dvc pull` when the target files are
+not already in the local cache. Fetching brings files in from a remote to the
+local DVC cache, in effect making them available for pulling to the workspace.
+
+## Options
+
+- ...
 
 ## Examples
 
