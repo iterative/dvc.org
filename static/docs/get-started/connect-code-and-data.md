@@ -47,7 +47,7 @@ run `dvc push`, usually along with git commit to saving them to the remote when
 you have done.
 
 > We don't do it here and in the next chapters to keep commands as simple as
-possible, but it's recommended to use `-f` optional argument that `dvc add`
+possible, but it's recommended to use `-f` optional argument that `dvc run`
 provides to specify a meaningful stage name.
 
 Let's commit metafiles to save the stage we built:
