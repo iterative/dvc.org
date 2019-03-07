@@ -155,7 +155,7 @@ Fetch only outputs of a specific stage bt specifying its DVC file (`target`):
 
 ### Specific remotes
 
-Fetch all target stored in a specific remote?
+Fetch all targets stored in a specific remote
 
 ```dvc
     $ dvc fetch -r bak
