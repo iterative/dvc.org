@@ -48,19 +48,22 @@ workspace.
   `target`. This indicates that you would like to have all the files needed
   for the entire pipeline(s) in local cache.
 
-- `-R`, `--recursive` - Fetch cache for subdirectories of the specified
-  directory?
+- `-R`, `--recursive` - When a specified `target` describes a directory, 
+  this option indicates to fetch its subdirectories recursively as well? 
+  Otherwise only the files directly under the target dir are fetched?
+  This is the default behavior when no targets are specified?
 
-- `-j JOBS`, `--jobs JOBS` - Number of threads to run simultaneously. Using
-  more jobs may improve the total download speed if a combination of small
-  and large files are being fetched. Default = 1?
+- `-j JOBS`, `--jobs JOBS` - Number of threads to run simultaneously for 
+  fetching the cache. Using more jobs may improve the total download speed if
+  a combination of small and large files are being fetched.
+  Default = 1
 
-- `-a`, `--all-branches` - Fetch cache for all Git branches, not just the
+- `-a`, `--all-branches` - Fetch cache for all branches, not just the
   active one. This means that you'll the files needed to reproduce different
   versions of a DVC file ([experiments](/doc/get-started/experiments)), not
   just the current one.
 
-- `-T`, `--all-tags` - Fetch cache for all Git tags. Similar to `-a` above
+- `-T`, `--all-tags` - Fetch cache for all tags. Similar to `-a` above
 
 - `--show-checksums` - Show checksums instead of file names when printing the
   download progress.
@@ -68,7 +71,7 @@ workspace.
 - `-v`, `--verbose` - Displays detailed tracing information.
 
 - `-q`, `--quiet` - Do not write anything to standard output. Exit with 0 if
-  all `targets` are successfully fetched to cache (or already there), 
+  all `targets` are successfully fetched to cache (or already there),
   otherwise exit with 1.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
@@ -76,30 +79,89 @@ workspace.
 ## Examples
 
 Fetch `targets` are files that have been [added](/doc/get-started/add-files)
-and [pushed](/doc/get-started/share-data) to a remote previously.
+to the local cache and [pushed](/doc/get-started/share-data) to a remote.
+Let's imagine a `data.xml` file has just been placed in the workspace:
 
-[Retrieve Data](/doc/get-started/retrieve-data)
+```dvc
+    $ dvc add data.xml
 
-Fetch all files needed in the current Git branch:
+    ...
+    Saving 'data.xml' to cache '.dvc/cache'.
+    Saving information to 'data.xml.dvc'.
+
+    ...
+```
+
+DVC file `data.xml.dvc` now contains describes `data.xml` as its output file.
+The data file can now be pushed to one or more remotes:
+
+```dvc
+    $ dvc push data.xml.dvc
+
+    [#################################] 100% data.xml
+
+    $ dvc push -r bak data.xml.dvc
+
+    [#################################] 100% data.xml
+```
+
+Now both the default remote and an SSH remote called `bak` hold a copy of the
+data file. Let's say the project also contains an `images` directory we want
+DVC to control:
+
+```dvc
+    $ dvc add images
+
+    ...
+
+    Saving 'images' to cache '.dvc/cache'.
+
+    Linking directory 'images'.
+    [##############################] 100% images
+
+    Saving information to 'images.dvc'.
+    
+    ...
+
+    $ dvc push images.dvc
+
+    [#################################] 100% images
+```
+
+The `images` directory and its files are now held in the default remote only.
+
+### Default behavior
+
+Fetch all files needed by all DVC files in the current branch, including 
+for directories:
 
 ```dvc
     $ dvc fetch
 
-    (1/8): [#################################] 100% images/0001.jpg
-    (2/8): [#################################] 100% images/0002.jpg
-    (3/8): [#################################] 100% images/0003.jpg
-    (4/8): [#################################] 100% images/0004.jpg
-    (5/8): [#################################] 100% images/0005.jpg
-    (6/8): [#################################] 100% images/0006.jpg
-    (7/8): [#################################] 100% images/0007.jpg
-    (8/8): [#################################] 100% model.pkl
+    (1/4): [#################################] 100% data.xml
+    (2/4): [#################################] 100% images/0001.jpg
+    (3/4): [#################################] 100% images/0002.jpg
+    (4/4): [#################################] 100% images/0003.jpg
 ```
 
-Fetch only outputs of a specific stage bt specifying the DVC file (`target`):
+### Specific stages
+
+Fetch only outputs of a specific stage bt specifying its DVC file (`target`):
 
 ```dvc
-    $ dvc fetch data.zip.dvc
-    [#################################] 100% data.zip
+    $ dvc fetch data.xml.dvc
+
+    [#################################] 100% data.xml
+```
+
+### Specific remotes
+
+Fetch all target stored in a specific remote?
+
+```dvc
+    $ dvc fetch -r bak
+
+    [#################################] 100% data.xml
 ```
 
 ## Source code
