@@ -48,15 +48,14 @@ workspace.
   `target`. This indicates that you would like to have all the files needed
   for the entire pipeline(s) in local cache.
 
-- `-R`, `--recursive` - When a specified `target` describes a directory, 
-  this option indicates to fetch its subdirectories recursively as well? 
-  Otherwise only the files directly under the target dir are fetched?
-  This is the default behavior when no targets are specified?
+- `-R`, `--recursive` - This option tells fetch that `targets` is a
+  directory (instead of DVC files), and to traverse it looking for DVC files 
+  to determine the set of data files to fetch.
 
 - `-j JOBS`, `--jobs JOBS` - Number of threads to run simultaneously for 
   fetching the cache. Using more jobs may improve the total download speed if
   a combination of small and large files are being fetched.
-  Default = 1
+  The default is generally 4 (but may vary depending on the kind of remote).
 
 - `-a`, `--all-branches` - Fetch cache for all branches, not just the
   active one. This means that you'll the files needed to reproduce different
