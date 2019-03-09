@@ -1,6 +1,6 @@
 # pull
 
-Pulls data files to the local workspace from a remote workspace.
+Pulls data files to the local workspace from a remote DVC cache based on relative changes between the two.
 
 ## Usage
 
@@ -23,10 +23,6 @@ be working with the same data, but using different algorithms, and will find
 it useful to share data.  The `dvc pull` command is analogous to `git pull`,
 and allows one to retrieve data from a remote cache.
 
-Specifically, the `dvc pull` command downloads files from a remote cache based
-on which have been updated in, or are new to, the remote cache.  By definition
-the `dvc pull` command will always interact between a local and remote cache.
-
 For an overview of the process of sharing data between DVC workspaces and remote
 caches, see:
 [Share Data And Model Files](/doc/use-cases/share-data-and-model-files)
@@ -35,20 +31,17 @@ Using the command `dvc status --remote REMOTE` determines whether the local
 cache has differences from the named remote cache.
 
 The value for `REMOTE` is a cache name defined using the `dvc remote` command.
-If the `--remote REMOTE` option is not specified, then the default remote,
-configured with the `core.config` config option, is used.  See `dvc remote`,
-`dvc config` and [remote storages](/doc/get-started/configure) for more
-information on how to configure remote storage.
+If no REMOTE is given, an error message is printed.  If the `--remote REMOTE`
+option is not specified, then the default remote, configured with the
+`core.config` config option, is used.  See `dvc remote`, `dvc config` and
+[remote storages](/doc/get-started/configure) for more information on how to
+configure remote storage.
 
-With no arguments, just `dvc pull` or `dvc pull --remote _remoteName_`, it
+With no arguments, just `dvc pull` or `dvc pull --remote REMOTE`, it
 downloads only the changed files corresponding to the currently checked-out DVC
 files in the project directory.  It will not download files associated with
 earlier versions or branches of the project directory, nor will it download
 files which have not changed.
-
-If the `--all-branches` or `--all-tags` options are specified, `dvc pull` will
-examine files associated with all branches or tags of the DVC files in
-the project directory.
 
 If one or more _target_'s are specified, DVC only considers the files associated
 with those stages.  Using the `--with-deps` option DVC tracks dependences
@@ -56,7 +49,7 @@ backward through the pipeline to find files to pull.
 
 ??? --force
 
-With the `--recursive dirname` option DVC searches the named directory and its
+With the `--recursive DIRNAME` option DVC searches the named directory and its
 subdirectories for files to download.
 
 After data file is in cache DVC utilizes OS specific mechanisms like reflinks or
@@ -65,36 +58,36 @@ for more details.
 
 ## Options
 
-* `--show-checksums` Show checksums instead of file names.
+* `--show-checksums` shows checksums instead of file names.
 
 * `-r REMOTE`, `--remote REMOTE` specifies which remote cache 
   (see `dvc remote list`) to pull from. The argument, `REMOTE`, is a
   remote name defined using the `dvc remote add` command.
 
-* `-a`, `--all-branches`  Determines the files to download by comparing across
-  all branches of the workspace.
+* `-a`, `--all-branches`  determines the files to download by examining files
+  associated with all branches of the DVC files in the project directory.
 
-* `-T`, `--all-tags` Determines the files to download by comparing across
-  all tags of the workspace.
+* `-T`, `--all-tags` determines the files to download by examining files
+  associated with all tags of the DVC files in the project directory.
 
-* `-d`, `--with-deps` Determines the files to download by searching backwards
+* `-d`, `--with-deps` determines the files to download by searching backwards
   in the pipeline from the named stage(s).  The only files which will be
   considered are associated with the named stage, and the stages which execute
   earlier in the pipeline.
 
-* `-f`, `--force` Do not prompt when removing working directory files.
+* `-f`, `--force` does not prompt when removing working directory files.
 
-* `-R dirname`, `--recursive dirname` Determines the files to download by
+* `-R dirname`, `--recursive dirname` determines the files to download by
   searching the named directory and its subdirectories for changed files.
 
-* `-j JOBS`, `--jobs JOBS` Number of jobs to run simultaneously while
+* `-j JOBS`, `--jobs JOBS` specifies number of jobs to run simultaneously while
   downloading files from the remote cache.  The effect is to control the number
   of files downloaded simultaneously.  For example with `-j 1` DVC downloads
   one file at a time, with `-j 2` it downloads two at a time, and so forth.
 
-* `-h`, `--help` show the help message and exit
+* `-h`, `--help` shows the help message and exit
 
-* `-q`, `--quiet` do not write anything to standard output. Exit with 0 if
+* `-q`, `--quiet` does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
 * `-v`, `--verbose` displays detailed tracing information from executing the

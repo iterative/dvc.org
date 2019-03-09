@@ -43,10 +43,11 @@ assigns a default remote in the core section if the `--default` option is used:
 ```
 
 DVC supports the concept of a _default remote_.  For the commands which take
-a `--remote` option, this option can be left off the command line and the
-default remote will be used instead.
+a `--remote` option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`),
+this option can be left off the command line and the default remote will be
+used instead.
 
-Use `dvc config` to unset/change the default remote as so:
+Use `dvc config` to unset/change the default remote as so: 
 `dvc config -u core.remote`.
 
 ## Options
