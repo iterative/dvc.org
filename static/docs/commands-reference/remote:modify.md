@@ -89,6 +89,15 @@ these settings, you could use the following options:
     $ dvc remote modify myremote use_ssl false
   ```
 
+* `listobjects` - whether or not to use `list_objects`.  
+   By default, `list_objects_v2` is used.
+   Useful for ceph and other s3 emulators.
+
+  ```dvc
+    $ dvc remote modify myremote listobjects true
+  ```
+
+
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://minio.io/), [Wasabi](https://wasabi.com/),
 [Eucalyptus](https://www.eucalyptus.cloud/index.html), [DigitalOcean
@@ -189,7 +198,7 @@ For more information about the variables DVC supports, please visit
   ```dvc
     $ dvc remote modify myremote keyfile /path/to/keyfile
   ```
-  
+
 * `password` - a private key passphrase or a password to use to
   use when accessing a remote.
 
@@ -224,7 +233,7 @@ Let's first set up a _default_ S3 remote:
 
 ```dvc
     $ dvc remote add -d myremote s3://path/to/dir
-    
+
     Setting 'myremote' as a default remote.
 ```
 

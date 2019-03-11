@@ -3,8 +3,8 @@
 Add a new data remote. Depending on your storage type you might need to run `dvc
 remote modify` to provide credentials and/or configure other remote parameters.
 
-See also [list](/doc/commands-reference/remote-list), 
-[modify](/doc/commands-reference/remote-modify), 
+See also [list](/doc/commands-reference/remote-list),
+[modify](/doc/commands-reference/remote-modify),
 and [remove](/doc/commands-reference/remote-remove) commands to manage data
 remotes.
 
@@ -106,7 +106,7 @@ these settings, you could the options described in `dvc remote modify`.
 
 We use `boto3` library to set up a client and communicate with AWS S3.
 The following API methods are performed:
-- `list_objects_v2`
+- `list_objects_v2`, `list_objects`
 - `head_object`
 - `download_file`
 - `upload_file`
@@ -123,7 +123,7 @@ So, make sure you have the following permissions enabled:
 
 <details>
 
-### Click for an S3 API compatible storage 
+### Click for an S3 API compatible storage
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://minio.io/), [Wasabi](https://wasabi.com/),
@@ -252,6 +252,6 @@ And list of remotes like this:
 
 ```dvc
     $ dvc remote list
-    
-    myremote	s3://mybucket/myproject 
+
+    myremote	s3://mybucket/myproject
 ```
