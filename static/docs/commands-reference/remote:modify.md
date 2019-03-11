@@ -89,7 +89,9 @@ these settings, you could use the following options:
     $ dvc remote modify myremote use_ssl false
   ```
 
-* `listobjects` - whether or not to use `list_objects`. By default, `list_objects_v2` is used. Useful for ceph and other s3 emulators.
+* `listobjects` - whether or not to use `list_objects`.  
+   By default, `list_objects_v2` is used.
+   Useful for ceph and other s3 emulators.
 
   ```dvc
     $ dvc remote modify myremote listobjects true
