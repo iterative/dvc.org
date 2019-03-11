@@ -71,15 +71,18 @@ for more details.
   considered are associated with the named stage, and the stages which execute
   earlier in the pipeline.
 
-* `-f`, `--force` - does not prompt when removing working directory files.
+* `-f`, `--force` - does not prompt when removing working directory files. This
+  option surfaces behavior from the `dvc checkout` command because `dvc pull`
+  in effect performs a _checkout_ after downloading files.
 
 * `-R dirname`, `--recursive dirname` - determines the files to download by
   searching the named directory and its subdirectories for changed files.
 
 * `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously while
   downloading files from the remote cache.  The effect is to control the number
-  of files downloaded simultaneously.  For example with `-j 1` DVC downloads
-  one file at a time, with `-j 2` it downloads two at a time, and so forth.
+  of files downloaded simultaneously.  Default is `4 * cpu_count()`. For example
+  with `-j 1` DVC downloads one file at a time, with `-j 2` it downloads two at
+  a time, and so forth.
 
 * `-h`, `--help` - shows the help message and exit
 
