@@ -142,7 +142,7 @@ In this case we left off the `--remote` option, so it will have pulled from the
 default remote.  The only files considered in this case are what is listed in
 the `out` section of the named target DVC file.
 
-## Examples: `--with-deps`
+## Examples: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example.  First, assume
 a pipeline has been setup with these stages:
@@ -201,7 +201,7 @@ Later we ran `dvc pull` specifying the stage `model.p.dvc`, and its data was
 downloaded.  And finally we ran `dvc pull` with no options to show that all
 data was updated.
 
-## Examples: `--show-checksums`
+## Examples: Show checksums
 
 Normally the file names are shown, but DVC can display the checksums instead.
 
