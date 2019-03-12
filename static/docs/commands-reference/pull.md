@@ -20,33 +20,36 @@ DVC files in the workspace. Then links the downloaded files into the workspace.
 
 ## Description
 
-DVC supports sharing a data cache between workspaces.  The `dvc pull` and
-`dvc push` commands are the means for uploading and downloading data with a
-shared cache.  These commands are analogous to the `git pull` and `git push`
-commands. The `dvc pull` command allows one to retrieve data from a remote cache.
+The `dvc pull` and `dvc push` commands are the means for uploading and
+downloading data to and from a remote storage. These commands are analogous to
+the `git pull` and `git push` commands.
+[Data sharing](/doc/use-cases/share-data-and-model-files) across environments
+and preserving data versions (input datasets, intermediate results,
+models, metrics, etc) remotely (S3, SSH, GCS, etc) are the most common use cases
+for these commands.
 
-For an overview of the process of sharing data between DVC workspaces and remote
-caches, see:
-[Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
+The `dvc pull` command allows one to retrieve data from a remote storage.
+`dvc pull` has the same effect as running `dvc fetch` and `dvc checkout`
+immediately after that.
 
-The command `dvc status --remote REMOTE` searches for files missing from the
-local cache that are in the named remote cache.
-
-The value for `REMOTE` is a cache name defined using the `dvc remote` command.
-If no REMOTE is given, or if no remote's are defined in the workspace, an error
-message is printed.  If the `--remote REMOTE` option is not specified, then the
-default remote, configured with the `core.config` config option, is used.  See
-`dvc remote`, `dvc config` and [remote storages](/doc/get-started/configure)
-for more information on how to configure remote storage.
+If the `--remote REMOTE` option is not specified, then the
+default remote, configured with the `core.config` config option, is used. See
+`dvc remote`, `dvc config` and this [example](/doc/get-started/configure) for
+more information on how to configure a remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote REMOTE`, it downloads
-only the files missing from the local repository to the project directory.  It
-will not download files associated with earlier versions or branches of the
-project directory, nor will it download files which have not changed.
+only the files (or directories) missing from the local repository to the project
+directory. It will not download files associated with earlier versions or
+branches of the project directory, nor will it download files which have not
+changed.
 
-If one or more _target_'s are specified, DVC only considers the files associated
-with those stages.  Using the `--with-deps` option DVC tracks dependences
-backward through the pipeline to find files to pull.
+The command `dvc status -c` can list files that are missing in the local cache
+and are referenced in the current workspace. It can be used to see what files
+would `dvc pull` download.
+
+If one or more `targets` are specified, DVC only considers the files associated
+with those stages. Using the `--with-deps` option DVC tracks dependencies
+backward through the pipeline to find data files to pull.
 
 After data file is in cache DVC utilizes OS specific mechanisms like reflinks or
 hardlinks to put it into the working space without copying. See `dvc checkout`
@@ -56,9 +59,12 @@ for more details.
 
 * `--show-checksums` - shows checksums instead of file names.
 
-* `-r REMOTE`, `--remote REMOTE` specifies which remote cache 
-  (see `dvc remote list`) to pull from. The argument, `REMOTE`, is a
-  remote name defined using the `dvc remote add` command.
+* `-r REMOTE`, `--remote REMOTE` specifies which remote cache
+  (see `dvc remote list`) to pull from. The value for `REMOTE` is a cache name
+  defined using the `dvc remote` command. If no REMOTE is given, or if no
+  remote's are defined in the workspace, an error message is printed. If the
+  option is not specified, then the default remote, configured with the
+  `core.config` config option, is used.
 
 * `-a`, `--all-branches` - determines the files to download by examining files
   associated with all branches of the DVC files in the project directory.
@@ -67,7 +73,7 @@ for more details.
   associated with all tags of the DVC files in the project directory.
 
 * `-d`, `--with-deps` - determines the files to download by searching backwards
-  in the pipeline from the named stage(s).  The only files which will be
+  in the pipeline from the named stage(s). The only files which will be
   considered are associated with the named stage, and the stages which execute
   earlier in the pipeline.
 
@@ -76,15 +82,17 @@ for more details.
   behavior from the `dvc checkout` command because `dvc pull` in effect performs
   a _checkout_ after downloading files.
 
-* `-R dirname`, `--recursive dirname` - determines the files to download by
-  searching the named directory and its subdirectories for missing files in the
-  workspace.
+* `-R`, `--recursive` - `targets` values is expected to be a directory path.
+  Determines the files to download by searching the named directory and its
+  subdirectories for DVC files to download data for. Along with providing a
+  `target`, or `target` along with `--with-deps` it is yet another way to cut
+  the scope of DVC files to download files for.
 
 * `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
-  while downloading files from the remote cache.  The effect is to control the
-  number of files downloaded simultaneously.  Default is `4 * cpu_count()`. For
+  while downloading files from the remote cache. The effect is to control the
+  number of files downloaded simultaneously. Default is `4 * cpu_count()`. For
   example with `-j 1` DVC downloads one file at a time, with `-j 2` it downloads
-  two at a time, and so forth.
+  two at a time, and so forth. For SSH remotes default is set to 4.
 
 * `-h`, `--help` - shows the help message and exit.
 
@@ -96,8 +104,10 @@ for more details.
 
 ## Examples
 
-Using the `dvc pull` command requires us to define a remote cache.  To start,
-one uses the `dvc remote add` command with this as an example of an SSH remote.
+Using the `dvc pull` command remote storage to be defined. For an existing
+projects is usually already defined and you can use `dvc remote list` to check
+existing remotes. Just to remind how it is done and set a context for the
+example, let's define an SSH remote with the `dvc remote add` command:
 
 ```dvc
     $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
@@ -105,13 +115,8 @@ one uses the `dvc remote add` command with this as an example of an SSH remote.
     r1	ssh://_username_@_host_/path/to/dvc/cache/directory
 ```
 
-DVC supports several protocols for remote caches.  For details, see the
+> DVC supports several protocols for remote storage. For details, see the
 [`remote add`](/doc/commands-reference/remote-add) documentation.
-
-The next step after defining the remote for DVC is ensuring the remote location
-in fact exists.  For example with an SSH remote, you must go to the destination
-server and ensure the directory path does exist.  If the location does not exist
-you will receive an error message.
 
 With a remote cache containing some images and other files, we can pull all
 changed files from the current Git branch:
@@ -119,40 +124,25 @@ changed files from the current Git branch:
 ```dvc
     $ dvc pull --remote r1
 
-    (1/8): [#################################] 100% images/0001.jpg
-    (2/8): [#################################] 100% images/0002.jpg
-    (3/8): [#################################] 100% images/0003.jpg
-    (4/8): [#################################] 100% images/0004.jpg
-    (5/8): [#################################] 100% images/0005.jpg
-    (6/8): [#################################] 100% images/0006.jpg
-    (7/8): [#################################] 100% images/0007.jpg
-    (8/8): [#################################] 100% model.pkl
+    (1/8): [####################] 100% images/0001.jpg
+    (2/8): [####################] 100% images/0002.jpg
+    ...
+    (7/8): [####################] 100% images/0007.jpg
+    (8/8): [####################] 100% model.pkl
 ```
 
 We can download specific files that are outputs of a specific dvc file:
 
 ```dvc
     $ dvc pull data.zip.dvc
-    [#################################] 100% data.zip
+    [####################] 100% data.zip
 ```
 
 In this case we left off the `--remote` option, so it will have pulled from the
 default remote.  The only files considered in this case are what is listed in
 the `out` section of the named target DVC file.
 
-## Example: `--show-checksums`
-
-Normally the file names are shown, but DVC can display the checksums instead.
-
-```dvc
-    $ dvc pull --remote r1 --show-checksums
-
-    (1/3): [##############################] 100% 844ef0cd13ff786c686d76bb1627081c
-    (2/3): [##############################] 100% c5409fafe56c3b0d4d4d8d72dcc009c0
-    (3/3): [##############################] 100% a8c5ae04775fcde33bf03b7e59960e18
-```
-
-## Example: `--with-deps`
+## Examples: `--with-deps`
 
 Demonstrating the `--with-deps` flag requires a larger example.  First, assume
 a pipeline has been setup with these stages:
@@ -184,20 +174,20 @@ One could do a simple `dvc pull` to get all the data, but what if you only want
 to retrieve part of the data?
 
 ```dvc
-    $ dvc pull --remote r1 --with-deps matrix-train.p.dvc 
+    $ dvc pull --remote r1 --with-deps matrix-train.p.dvc
 
-    (1/2): [##############################] 100% data/matrix-test.p data/matrix-test.p
-    (2/2): [##############################] 100% data/matrix-train.p data/matrix-train.p
+    (1/2): [####################] 100% data/matrix-test.p data/matrix-test.p
+    (2/2): [####################] 100% data/matrix-train.p data/matrix-train.p
 
     ... Do some work based on the partial update
 
-    $ dvc pull --remote r1 --with-deps model.p.dvc 
+    $ dvc pull --remote r1 --with-deps model.p.dvc
 
-    [##############################] 100% data/model.p data/model.p
+    (1/1): [####################] 100% data/model.p data/model.p
 
     ... Pull the rest of the data
 
-    $ dvc pull --remote r1 
+    $ dvc pull --remote r1
 
     Everything is up to date.
 ```
@@ -210,3 +200,15 @@ named `model.p.dvc` occurs later in the pipeline its data was not updated.
 Later we ran `dvc pull` specifying the stage `model.p.dvc`, and its data was
 downloaded.  And finally we ran `dvc pull` with no options to show that all
 data was updated.
+
+## Examples: `--show-checksums`
+
+Normally the file names are shown, but DVC can display the checksums instead.
+
+```dvc
+    $ dvc pull --remote r1 --show-checksums
+
+    (1/3): [####################] 100% 844ef0cd13ff786c686d76bb1627081c
+    (2/3): [####################] 100% c5409fafe56c3b0d4d4d8d72dcc009c0
+    (3/3): [####################] 100% a8c5ae04775fcde33bf03b7e59960e18
+```
