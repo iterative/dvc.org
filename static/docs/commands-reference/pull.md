@@ -21,14 +21,14 @@ DVC files in the workspace. Then links the downloaded files into the workspace.
 ## Description
 
 The `dvc pull` and `dvc push` commands are the means for uploading and
-downloading data to and from a remote storage. These commands are analogous to
+downloading data to and from remote storage. These commands are analogous to
 the `git pull` and `git push` commands.
 [Data sharing](/doc/use-cases/share-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results,
 models, metrics, etc) remotely (S3, SSH, GCS, etc) are the most common use cases
 for these commands.
 
-The `dvc pull` command allows one to retrieve data from a remote storage.
+The `dvc pull` command allows one to retrieve data from remote storage.
 `dvc pull` has the same effect as running `dvc fetch` and `dvc checkout`
 immediately after that.
 
@@ -45,7 +45,7 @@ changed.
 
 The command `dvc status -c` can list files that are missing in the local cache
 and are referenced in the current workspace. It can be used to see what files
-would `dvc pull` download.
+`dvc pull` would download.
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those stages. Using the `--with-deps` option DVC tracks dependencies
