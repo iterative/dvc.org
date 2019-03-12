@@ -61,7 +61,7 @@ for more details.
 
 * `-r REMOTE`, `--remote REMOTE` specifies which remote cache
   (see `dvc remote list`) to pull from. The value for `REMOTE` is a cache name
-  defined using the `dvc remote` command. If no REMOTE is given, or if no
+  defined using the `dvc remote` command. If no `REMOTE` is given, or if no
   remote's are defined in the workspace, an error message is printed. If the
   option is not specified, then the default remote, configured with the
   `core.config` config option, is used.
@@ -144,7 +144,7 @@ In this case we left off the `--remote` option, so it will have pulled from the
 default remote.  The only files considered in this case are what is listed in
 the `out` section of the named target DVC file.
 
-## Examples: `--with-deps`
+## Examples: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example.  First, assume
 a pipeline has been setup with these stages:
@@ -203,7 +203,7 @@ Later we ran `dvc pull` specifying the stage `model.p.dvc`, and its data was
 downloaded.  And finally we ran `dvc pull` with no options to show that all
 data was updated.
 
-## Examples: `--show-checksums`
+## Examples: Show checksums
 
 Normally the file names are shown, but DVC can display the checksums instead.
 
