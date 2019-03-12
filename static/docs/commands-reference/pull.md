@@ -67,10 +67,12 @@ for more details.
   `core.config` config option, is used.
 
 * `-a`, `--all-branches` - determines the files to download by examining files
-  associated with all branches of the DVC files in the project directory.
+  associated with all branches of the DVC files in the project directory. It's
+  useful if branches are used to track "checkpoints" of an experiment or
+  project.
 
-* `-T`, `--all-tags` - determines the files to download by examining files
-  associated with all tags of the DVC files in the project directory.
+* `-T`, `--all-tags` - the same as `-a`, `--all-branches` but tags are used to
+  save different experiments or project checkpoints.
 
 * `-d`, `--with-deps` - determines the files to download by searching backwards
   in the pipeline from the named stage(s). The only files which will be
