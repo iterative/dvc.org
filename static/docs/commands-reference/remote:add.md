@@ -31,8 +31,9 @@ location(see LOCAL example below). Whenever possible DVC will create a remote
 directory if does not exists yet. It won't create an S3 bucket though and will
 rely on default access settings.
 
-This command creates a section in the DVC [config file](/doc/user-guide/dvc-files-and-directories)
-and optionally assigns a default remote in the core section:
+This command creates a section in the DVC
+[config file](/doc/user-guide/dvc-files-and-directories) and optionally
+assigns a default remote in the core section if the `--default` option is used:
 
 ```ini
    ['remote "myremote"']
@@ -40,6 +41,14 @@ and optionally assigns a default remote in the core section:
    [core]
    remote = myremote
 ```
+
+DVC supports the concept of a _default remote_.  For the commands which take
+a `--remote` option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`),
+this option can be left off the command line and the default remote will be
+used instead.
+
+Use `dvc config` to unset/change the default remote as so: 
+`dvc config -u core.remote`.
 
 ## Options
 
@@ -57,8 +66,7 @@ specific settings in your config, that you don't want to track and share through
 
 * `-d`, `-default` - commands like `dvc pull`, `dvc push`, `dvc fetch` will be
 using this remote by default to save or retrieve data files unless `-r` option
-is specified for them. Use `dvc config` to unset/change the default remote:
-`dvc config -u core.remote`.
+is specified for them. 
 
 <details>
 

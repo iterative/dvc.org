@@ -80,21 +80,21 @@ Model Files](/doc/use-cases/share-data-and-model-files).
   not `--cloud` is specified.
 
 * `-c`, `--cloud` - enables comparison against a remote cache. If no `--remote`
-  option has been given, DVC will compare against the default remote cache.
-  Otherwise the comparison will be against the remote specified in the
-  `--remote` option.
+  option has been given, DVC will compare against the default remote cache,
+  which is specified in the `core.remote` config option.  Otherwise the
+  comparison will be against the remote specified in the `--remote` option.
 
 * `-r REMOTE`, `--remote REMOTE` - specifies which remote cache (see `dvc remote
   list`) to compare against. The argument, `REMOTE`, is a remote name defined
   using the `dvc remote` command. Implies `--cloud`.
 
-* `-a`, `--all-branches` - compares cache content against all git branches.
+* `-a`, `--all-branches` - compares cache content against all Git branches.
   Instead of checking just the currently checked out workspace, it checks
   against all other branches of this workspace. The corresponding branches are
   shown in the status output. Applies only if `--cloud` or a remote is
   specified.
 
-* `-T`, `--all-tags` - compares cache content against all git tags. Both the
+* `-T`, `--all-tags` - compares cache content against all Git tags. Both the
   `--all-branches` and `--all-tags` options cause DVC to check more than just
   the currently checked out workspace. The corresponding tags are shown in the
   status output. Applies only if `--cloud` or a remote is specified.
