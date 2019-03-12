@@ -1,8 +1,8 @@
 # pull
 
-Pulls data files from a remote DVC cache to the local workspace based on files
-that are missing in the local cache, then checks out files to the local
-workspace.
+Downloads missing files and directories from
+[remote storage]('doc/commands-reference/remote') to the local cache based on
+DVC files in the workspace. Then links the downloaded files into the workspace.
 
 ## Synopsis
 
@@ -71,20 +71,22 @@ for more details.
   considered are associated with the named stage, and the stages which execute
   earlier in the pipeline.
 
-* `-f`, `--force` - does not prompt when removing working directory files. This
-  option surfaces behavior from the `dvc checkout` command because `dvc pull`
-  in effect performs a _checkout_ after downloading files.
+* `-f`, `--force` - does not prompt when removing working directory files, which
+  occurs during the process of updating the workspace. This option surfaces
+  behavior from the `dvc checkout` command because `dvc pull` in effect performs
+  a _checkout_ after downloading files.
 
 * `-R dirname`, `--recursive dirname` - determines the files to download by
-  searching the named directory and its subdirectories for changed files.
+  searching the named directory and its subdirectories for missing files in the
+  workspace.
 
-* `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously while
-  downloading files from the remote cache.  The effect is to control the number
-  of files downloaded simultaneously.  Default is `4 * cpu_count()`. For example
-  with `-j 1` DVC downloads one file at a time, with `-j 2` it downloads two at
-  a time, and so forth.
+* `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
+  while downloading files from the remote cache.  The effect is to control the
+  number of files downloaded simultaneously.  Default is `4 * cpu_count()`. For
+  example with `-j 1` DVC downloads one file at a time, with `-j 2` it downloads
+  two at a time, and so forth.
 
-* `-h`, `--help` - shows the help message and exit
+* `-h`, `--help` - shows the help message and exit.
 
 * `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
