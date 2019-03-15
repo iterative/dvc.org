@@ -176,7 +176,7 @@ to upload part of the data?
 
     (1/1): [####################] 100% data/model.p data/model.p
 
-    ... Pull the rest of the data
+    ... Push the rest of the data
 
     $ dvc push --remote r1
 
@@ -193,8 +193,140 @@ backwards through the pipeline for data files to upload.  Because the stage
 named `model.p.dvc` occurs later in the pipeline its data was not uploaded.
 
 Later we ran `dvc push` specifying the stage `model.p.dvc`, and its data was
-uploaded.  And finally we ran `dvc push` with no options to show that all
-data had been uploaded.
+uploaded.  And finally we ran `dvc push` then `dvc status` with no options to
+show that all data had been uploaded.
+
+## Examples: What happens in the cache
+
+Let's take a detailed look at what happens to the DVC cache as you run an
+experiment in a local workspace and push data to a remote cache.  To set the
+stage consider having created a workspace that contains some code and data, and
+having created a remote cache.  In this section we'll show the cache of a very
+simple project, but the details of this project does not matter so much as what
+happens in the caches as data is pushed.
+
+Some work has been performed in the local workspace, and it contains new data
+to upload to the shared remote cache.  When running `dvc status --cloud` the
+report will list several files in `new` state.  By looking in the cache
+directories we can see exactly what that means.
+
+```dvc
+    $ tree .dvc/cache
+    .dvc/cache
+    ├── 02
+    │   └── 423d88d184649a7157a64f28af5a73
+    ├── 0b
+    │   └── d48000c6a4e359f4b81285abf059b5
+    ├── 38
+    │   └── 64e70211d3bdb367ad1432bfc14c1f.dir
+    ├── 3f
+    │   └── 957fa0f1bb46534d07f4fc2116d73d
+    ├── 4a
+    │   └── 8c47036c79c01522e79ac0f518d0f7
+    ├── 5e
+    │   └── 4a7d0cbe26eda55624439661db925d
+    ├── 6c
+    │   └── 3074754e3a9b563b62c8f1a38670dc
+    ├── 77
+    │   └── bea77463abe2b7c6b4d13f00d2c7b4
+    ├── 88
+    │   └── c3db1c257136090dbb4a7ddf31e678.dir
+    └── f4
+
+    10 directories, 9 files
+    $ tree ../vault/recursive
+    ../vault/recursive
+    ├── 0b
+    │   └── d48000c6a4e359f4b81285abf059b5
+    ├── 4a
+    │   └── 8c47036c79c01522e79ac0f518d0f7
+    ├── 6c
+    │   └── 3074754e3a9b563b62c8f1a38670dc
+    ├── 88
+    │   └── c3db1c257136090dbb4a7ddf31e678.dir
+    └── f4
+        └── 7482b18ecca728ba4ae931e5d568fb
+
+    5 directories, 5 files
+```
+
+The directory `.dvc/cache` is the local cache, while `../vault/recursive` is
+the remote cache.  This listing clearly shows the local cache has more files in
+it than the remote cache.  Therefore `new` literally means that new files exist
+in the local cache relative to this remote cache.
+
+Next we can upload part of the data from the local cache to remote cache using
+the command `dvc push --with-deps STAGE-FILE.dvc`.  Remember that `--with-deps`
+searches backwards from the named stage to locate files to upload, and does not
+upload files in subsequent stages.
+
+After doing that we can inspect the remote cache again:
+
+```dvc
+    $ tree ../vault/recursive
+    ../vault/recursive
+    ├── 0b
+    │   └── d48000c6a4e359f4b81285abf059b5
+    ├── 38
+    │   └── 64e70211d3bdb367ad1432bfc14c1f.dir
+    ├── 4a
+    │   └── 8c47036c79c01522e79ac0f518d0f7
+    ├── 5e
+    │   └── 4a7d0cbe26eda55624439661db925d
+    ├── 6c
+    │   └── 3074754e3a9b563b62c8f1a38670dc
+    ├── 77
+    │   └── bea77463abe2b7c6b4d13f00d2c7b4
+    ├── 88
+    │   └── c3db1c257136090dbb4a7ddf31e678.dir
+    └── f4
+        └── 7482b18ecca728ba4ae931e5d568fb
+
+    8 directories, 8 files
+```
+
+The remote cache now has some of the files which had been missing, but not all
+of them.  Indeed `dvc status --cloud` still lists a couple files as `new`.  We
+can clearly see this in that a couple files are in the local cache and not in
+the remote cache.
+
+After running `dvc push` to cause all files to be uploaded the remote cache
+now has all the files:
+
+```dvc
+    $ tree ../vault/recursive
+    ../vault/recursive
+    ├── 02
+    │   └── 423d88d184649a7157a64f28af5a73
+    ├── 0b
+    │   └── d48000c6a4e359f4b81285abf059b5
+    ├── 38
+    │   └── 64e70211d3bdb367ad1432bfc14c1f.dir
+    ├── 3f
+    │   └── 957fa0f1bb46534d07f4fc2116d73d
+    ├── 4a
+    │   └── 8c47036c79c01522e79ac0f518d0f7
+    ├── 5e
+    │   └── 4a7d0cbe26eda55624439661db925d
+    ├── 6c
+    │   └── 3074754e3a9b563b62c8f1a38670dc
+    ├── 77
+    │   └── bea77463abe2b7c6b4d13f00d2c7b4
+    ├── 88
+    │   └── c3db1c257136090dbb4a7ddf31e678.dir
+    └── f4
+        └── 7482b18ecca728ba4ae931e5d568fb
+
+    10 directories, 10 files
+
+    $ dvc status --cloud
+
+    Pipeline is up to date. Nothing to reproduce.
+
+```
+
+And running `dvc status --cloud` verifies that indeed there are no more files
+to upload to the remote cache.
 
 ## Examples: Show checksums
 
