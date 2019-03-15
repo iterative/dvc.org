@@ -29,19 +29,21 @@ The `dvc push` command allows one to upload data to remote storage.
 
 Under the hood a few actions are taken:
 
-* The pipeline DAG is constructed by default from all current DVC stages.  The
-  command-line options listed below will either limit or expand the set of
+* The push command by default searches for files from all current DVC stages.
+  The command-line options listed below will either limit or expand the set of
   stages to consult.  
 * For each file referenced from each selected stage there is a corresponding
   entry in the local cache.  DVC checks if the file exists, or not, in the remote
-  cache simply by looking for it using the hash code.  From this DVC gathers a
+  cache simply by looking for it using the checksum.  From this DVC gathers a
   list of files missing from the remote cache.
-* Upload the cache files, if any, missing from the remote cache. 
+* Upload the cache files missing from the remote cache, if any, to the remote. 
 
-If the `--remote REMOTE` option is not specified, then the default remote,
-configured with the `core.config` config option, is used. See `dvc remote`,
-`dvc config` and this [example](/doc/get-started/configure) for more information
-on how to configure a remote.
+The DVC `push` command always works with a remote cache, and it is an error if
+none are specified on the command line nor in the configuration.  If a
+`--remote REMOTE` option is not specified, then the default remote, configured
+with the `core.config` config option, is used.  See `dvc remote`, `dvc config`
+and this [example](/doc/get-started/configure) for more information on how to
+configure a remote.
 
 With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
 only the files (or directories) that are new in the local repository to the
@@ -49,13 +51,13 @@ remote cache. It will not upload files associated with earlier versions or
 branches of the project directory, nor will it upload files which have not
 changed.
 
-See `dvc remote`, `dvc config` and
-[remote storages](https://dvc.org/doc/get-started/configure)
-for more information on how to configure the remote storage.
-
 The command `dvc status -c` can list files that are new in the local cache and
 are referenced in the current workspace. It can be used to see what files
 `dvc push` would upload.
+
+The `dvc status -c` command can show files which exist in the remote cache and
+not exist in the local cache.  Running `dvc push` from the local cache does not
+remove nor modify those files in the remote cache.
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those stages. Using the `--with-deps` option DVC tracks dependencies
