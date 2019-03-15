@@ -27,6 +27,17 @@ these commands.
 
 The `dvc push` command allows one to upload data to remote storage.
 
+Under the hood a few actions are taken:
+
+* The pipeline DAG is constructed by default from all current DVC stages.  The
+  command-line options listed below will either limit or expand the set of
+  stages to consult.  
+* For each file referenced from each selected stage there is a corresponding
+  entry in the local cache.  DVC checks if the file exists, or not, in the remote
+  cache simply by looking for it using the hash code.  From this DVC gathers a
+  list of files missing from the remote cache.
+* Upload the cache files, if any, missing from the remote cache. 
+
 If the `--remote REMOTE` option is not specified, then the default remote,
 configured with the `core.config` config option, is used. See `dvc remote`,
 `dvc config` and this [example](/doc/get-started/configure) for more information
