@@ -227,25 +227,3 @@ Fetch all targets stored in a specific remote
 branch pipeline which are held in that remote. Notice that it does not
 necessarily include everything since we're able to distribute the asset
 storage in different remotes.
-
-### Retrieve metrics
-
-A possible use for `dvc fetch` that doesn't involve other data 
-synchronization commands (`dvc pull`, `dvc push`) or other parts of the
-`dvc pull` workflow (`dvc checkout`) is as it relates to metrics. Metrics are
-output file that contain performance information about the pipeline in any 
-branch or tag. You may learn more about metrics in the
-[Comparing Experiments](https://dvc.org/doc/get-started/compare-experiments)
-article.
-
-After checking out a project, we could want to know how the different code 
-versions compare by running `metrics show` with the `--all-branches` flag, 
-which indicates to get and print metric file contents across all branches:
-
-```dvc
-    metrics show -a
-    ...
-```
-> You do fetch -a to be able to do dvc metrics show -a if some metrics files 
-are cached otherwise it won't be able to find certain artifacts in cache to 
-execute that command properly.
