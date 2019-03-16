@@ -48,7 +48,7 @@ current branch/commit (unless `-a` or `-T` is specified).
 * `-r`, `--remote` - name of the remote storage to collect unused objects from
 if `-c` option is specified.
 
-* `-j`, `--jobs` - garbage collector parallelism level. Default is
+* `-j`, `--jobs` - garbage collector parallelism level. The default value is
 `4 * cpu_count()`. For SSH remotes default is 4. For now only some phases of GC
 are parallel.
 
