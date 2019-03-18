@@ -88,7 +88,7 @@ for more details.
   Determines the files to download by searching the named directory and its
   subdirectories for DVC files to download data for. Along with providing a
   `target`, or `target` along with `--with-deps` it is yet another way to cut
-  the scope of DVC files to download files for.
+  the scope of DVC files to download.
 
 * `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while downloading files from the remote cache. The effect is to control the
@@ -106,8 +106,8 @@ for more details.
 
 ## Examples
 
-Using the `dvc pull` command remote storage to be defined. For an existing
-projects is usually already defined and you can use `dvc remote list` to check
+Using the `dvc pull` command remote storage must be defined. For an existing
+projects a remote is usually defined and you can use `dvc remote list` to check
 existing remotes. Just to remind how it is done and set a context for the
 example, let's define an SSH remote with the `dvc remote add` command:
 
