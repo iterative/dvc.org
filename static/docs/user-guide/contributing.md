@@ -68,7 +68,7 @@ The simplest way to run tests:
     $ python -m tests
 ```
 
-Internally, it is using `nosetest` to run the full test suite and report the
+Internally, it is using `pytest` to run the full test suite and report the
 result. At the very end you should see something like this:
 
 ```dvc
@@ -76,9 +76,7 @@ result. At the very end you should see something like this:
 
     ...
 
-    Ran 344 tests in 22.446s
-
-    OK (SKIP=7)
+    ============= 434 passed, 6 skipped, 8 warnings in 131.43 seconds ==============
 ```
 
 Otherwise, for each failed test you should see and output like this that should
@@ -89,21 +87,18 @@ help you identify the problem:
 
     ...
 
-    ============================================================
-    ERROR: test_run (tests.test_metrics.TestCachedMetrics)
-    ------------------------------------------------------------
-
-
-    -------------------- >> begin captured stdout << ---------------------
-
+    [gw2] [ 84%] FAILED tests/unit/test_progress.py::TestProgressAware::test 
+    tests/unit/test_prompt.py::TestConfirm::test_eof 
+    tests/test_updater.py::TestUpdater::test 
     ...
-
-
-    FAILED
+    =================================== FAILURES ===================================
+    ____________________________ TestProgressAware.test ____________________________
+    ...
+    ======== 1 failed, 433 passed, 6 skipped, 8 warnings in 137.49 seconds =========
 ```
 
 You can pass any additional arguments to the script that will override the
-default `--all-modules` `nosetests`'s scope:
+default `pytest`'s scope:
 
 To run a single test case:
 
@@ -114,7 +109,7 @@ To run a single test case:
 To pass additional arguments:
 
 ```dvc
-    $ python -m tests -x -s tests
+    $ python -m tests --pdb
 ```
 
 ## Running development version
