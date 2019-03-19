@@ -35,10 +35,10 @@ is much safer.
 * `-T`, `--all-tags` - the same as `-a` but keeps cache for existing tags. It's
 useful if tags are used to track "checkpoints" of an experiment or project.
 
-* `-p`, `--projects` - if a single remote or a single cache are shared (e.g. a
+* `-p`, `--projects` - if a single remote or a single cache is shared (e.g. a
 configuration one describe
 [here](/doc/use-cases/multiple-data-scientists-on-a-single-machine)) among
-different projects this option can be used to specify a list of them (each
+different projects, this option can be used to specify a list of them (each
 project is a path) to keep data that is currently referenced from them.
 
 * `-c`, `--cloud` - also remove files in the remote storage. *This operation is
