@@ -25,7 +25,7 @@ The specific algorithm that is used to train and validate the classifier is not
 important. No prior knowledge is required about Keras. We reuse the
 [script](https://gist.github.com/fchollet/f35fbc80e066a49d65f1688a7e99f069) (it
 goes along the blog post) in a "black box" way - it takes some data and produces
-a model file. We thought would highly recommend reading the
+a model file. We would highly recommend reading the
 [post](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
 itself since it's a great demonstration on how a general pre-trained model can
 be leveraged to build a model with a great performance with very limited
