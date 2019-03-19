@@ -1,46 +1,219 @@
 # checkout
 
-Checkout data files from cache into the working space.
+Update data files in workspace from the cache based on current DVC files.
 
-This command has to be called after `git checkout` since Git does not handle
-files that are under DVC control. You can also use `dvc install` to install a git
-hook that will call `dvc checkout` for you. See `dvc config` for more
-information.
+ORIG: Checkout data files from cache into the working space.
 
-The command restores data files from cache to the working tree and removes data
-files that are no longer on the working tree.
-
-Note, this command does NOT copy any files (exception: `cache.type == copy`) -
-DVC uses links to perform data file restoration. This is crucial for large files
-where checking out as a 50Gb file might take a few minutes. For DVC, it will
-take less than a second to restore a 50Gb data file.
-
+## Synopsis
 
 ```usage
-    usage: dvc checkout [-h] [-q] [-v] [-d] [-f] [targets [targets ...]]
+    usage: dvc checkout [-h] [-q | -v] [-d] [-f] [targets [targets ...]]
 
     positional arguments:
-      targets        DVC files
-
-    optional arguments:
-        -h, --help            show this help message and exit
-        -q, --quiet           Be quiet.
-        -v, --verbose         Be verbose.
-        -d, --with-deps       Checkout all dependencies of the specified target.
-        -f, --force           Do not prompt when removing working directory files.
+        targets          DVC files.
 ```
 
-DVC does not report in the output which data files were restored. However, it
-reports removed files and files that DVC was unable to restore due to missing
-cache. To restore a file with a missing cache, the reproduction command should
-be called (`dvc repro`) or the cache can be pulled from the remote storage
-(`dvc pull`).
+## Description
+
+The current DVC files identify in the `deps` and `outs` fields which instance of
+each data file, using the checksum, is to be used.  The `dvc checkout` command
+updates the workspace data files to match up with the cache files corresponding
+to the checksums in the DVC files.
+
+Using an SCM like Git, the DVC files are kept under version control.  At a given
+branch or tag of the SCM workspace, the DVC files will contain checksums for the
+corresponding data files kept in the DVC cache.  After an SCM command like
+`git checkout` is run, the DVC files will change to the state at the specified
+branch or commit or tag.  Afterward the `dvc checkout` command is required in
+order to synchronize the data files with the currently checked out DVC files.
+
+During execution the `dvc checkout` command does:
+
+* Scan the `deps` and `outs` entries in DVC files to compare with the currently
+  checked out data files.  The scanned DVC files is limited by the listed
+  targets (if any) on the command line.  And if the `--with-deps` option is
+  specified, it scans backward in the pipeline from the named targets.
+* For any data files where the checksum does not match with the DVC file entry,
+  the data file is restored from the cache.  The link type (`reflink`,
+  `hardlink`, `symlink`, or `copy`) appropriate to the operating system is used.
+* Any data files not listed in the DVC files are removed.
+
+This command must be executed after `git checkout` since Git does not handle
+files that are under DVC control.  For convenience a Git hook is available,
+simply by running `dvc install`, that will automate running `dvc checkout`
+after `git checkout`.  See `dvc install` for more information.
+
+Note, this command does NOT copy any files (exception: `cache.type == copy`).
+Instead, DVC uses links to perform data file restoration. This is crucial for
+large files where checking out a 50Gb file might take a few minutes. With DVC
+links, restoring a 50Gb data file will take less than a second.
+
+The output of `dvc checkout` does not list which data files were restored. It
+does report removed files and files that DVC was unable to restore due to it
+missing from the cache.
+
+There are two methods to restore a file missing from the cache, depending on the
+situation.  In some cases the pipeline must be rerun using the `dvc repro`
+command.  In other cases the cache can be pulled from a remote cache using the
+`dvc pull` command.
+
+## Options
+
+* `-d`, `--with-deps` - determines the files to download by searching backwards
+  in the pipeline from the named stage(s). The only files which will be
+  updated are associated with the named stage, and the stages which execute
+  earlier in the pipeline.
+
+* `-f`, `--force` - does not prompt when removing working directory files, which
+  occurs during the process of updating the workspace.  Changing the current
+  set of DVC files with SCM commands like `git checkout` can result in the need
+  for DVC to remove files which should not exist in the current state.  This
+  option controls whether the user will be asked to confirm directory removal.
+
+* `-h`, `--help` - shows the help message and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information from executing the
+  `dvc pull` command.
 
 ## Examples
 
-Checking out a branch example:
+To explore `dvc checkout` let's use a truncated version of the project shown
+in [Get Started](/doc/get-started/example-pipeline). 
 
-```dvc
-    $ git checkout input_100K
-    $ dvc checkout
+<details>
+
+### Expand to see how to set up the pipeline
+
+A workspace was initialized using the following commands, which is the first
+half of the _Example Pipeline_ tutorial.
+
 ```
+    git init
+    wget https://dvc.org/s3/examples/so/code.zip
+    unzip code.zip
+    rm -f code.zip
+    git add code/
+    git commit -m 'download and initialize code'
+    dvc init
+    git commit -m "initialize DVC"
+    mkdir data
+    wget -P data https://dvc.org/s3/examples/so/Posts.xml.zip
+    dvc add data/Posts.xml.zip
+    git add data/Posts.xml.zip.dvc data/.gitignore
+    git commit -m 'add dataset'
+    git tag dataset
+    dvc run -d data/Posts.xml.zip \
+                -o data/Posts.xml \
+                -f extract.dvc \
+                unzip data/Posts.xml.zip -d data
+    git add extract.dvc data
+    git commit -m 'extract data'
+    git tag extract
+    dvc run -d code/xml_to_tsv.py -d data/Posts.xml \
+                -o data/Posts.tsv \
+                -f prepare.dvc \
+                python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
+    git add prepare.dvc data
+    git commit -m 'convert XML to TSV'
+    git tag prepare
+```
+
+</details>
+
+The pipeline generated by the setup consists of these stages:
+
+```
+    $ dvc pipeline show prepare.dvc 
+    data/Posts.xml.zip.dvc
+    extract.dvc
+    prepare.dvc
+```
+
+And we have these tags in the Git repository
+
+```
+    $ git tag --list
+    dataset
+    extract
+    prepare
+```
+
+Once the workspace is set up, it contains the following files
+
+```
+    $ tree .
+    .
+    ├── code
+    │   ├── evaluate.py
+    │   ├── featurization.py
+    │   ├── requirements.txt
+    │   ├── split_train_test.py
+    │   ├── train_model.py
+    │   └── xml_to_tsv.py
+    ├── data
+    │   ├── Posts.tsv
+    │   ├── Posts.xml
+    │   ├── Posts.xml.zip
+    │   └── Posts.xml.zip.dvc
+    ├── extract.dvc
+    └── prepare.dvc
+
+    2 directories, 12 files
+```
+
+We can use `git checkout` to rewind history, so to speak, and examine an earlier
+state of the workspace.  In this case we're using a Git tag name, but this could
+easily have been a branch name:
+
+```
+    $ git checkout extract
+    Previous HEAD position was 801645d... convert XML to TSV
+    HEAD is now at 8bff719... extract data
+    $ tree .
+    .
+    ├── code
+    │   ├── evaluate.py
+    │   ├── featurization.py
+    │   ├── requirements.txt
+    │   ├── split_train_test.py
+    │   ├── train_model.py
+    │   └── xml_to_tsv.py
+    ├── data
+    │   ├── Posts.tsv
+    │   ├── Posts.xml
+    │   ├── Posts.xml.zip
+    │   └── Posts.xml.zip.dvc
+    └── extract.dvc
+
+    2 directories, 11 files
+    $ dvc checkout
+    $ tree .
+    .
+    ├── code
+    │   ├── evaluate.py
+    │   ├── featurization.py
+    │   ├── requirements.txt
+    │   ├── split_train_test.py
+    │   ├── train_model.py
+    │   └── xml_to_tsv.py
+    ├── data
+    │   ├── Posts.xml
+    │   ├── Posts.xml.zip
+    │   └── Posts.xml.zip.dvc
+    └── extract.dvc
+
+    2 directories, 10 files
+```
+
+Notice that we used `git checkout` to rewind the state of the workspace to the
+`extract` tag and that as a result `prepare.dvc` was removed.  That file is under
+Git control, and Git goes ahead and removes/adds files based on the status of
+the repository at any one commit.  However the `data` directory still had the
+full complement of files corresponding to the HEAD commit.  Some of those files
+were created in the `prepare.dvc` stage and should not exist now that we have
+rewound history to the `extract` tag.  Running `dvc checkout` takes care of
+synchronizing the data files managed by DVC.  In this case the data files
+created during the `prepare.dvc` stage were removed.
