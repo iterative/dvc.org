@@ -230,7 +230,7 @@ matrices as outputs:
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and outputs DVC files describe we can restore the
+By analyzing dependencies and outputs of DVC files description, we can restore the
 full chain (DAG) of commands we need to apply. This is important when you run
 `dvc repro` to reproduce the final or intermediate result.
 
