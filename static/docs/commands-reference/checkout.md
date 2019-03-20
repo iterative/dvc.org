@@ -2,8 +2,6 @@
 
 Update data files in workspace from the cache based on current DVC files.
 
-ORIG: Checkout data files from cache into the working space.
-
 ## Synopsis
 
 ```usage
