@@ -165,7 +165,7 @@ is automatically added to the `.gitignore` file and a link is created into a cac
 `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
-that DVC files describe we can restore the full chain (DAG) of commands we need
+that DVC files describe, we can restore the full chain (DAG) of commands we need
 to apply. This is important when you run `dvc repro` to reproduce the final or
 intermediate result.
 
