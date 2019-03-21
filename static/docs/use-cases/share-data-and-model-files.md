@@ -14,7 +14,7 @@ As an example, let's take a look at how you could setup DVC remote on Amazon S3
 and push/pull to/from it.
 
 ### Create a bucket at Amazon S3
-If you don't already have it, get Amazon S3 account and them follow
+If you don't already have it, get Amazon S3 account and then follow
 instructions at
 [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
 to create your bucket.
