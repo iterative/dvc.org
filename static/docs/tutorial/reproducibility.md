@@ -229,7 +229,7 @@ But first, let’s create a branch as usual.
     Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-The merge has a few conflicts. All of the conflicts are related to md5 sum
+The merge has a few conflicts. All of the conflicts are related to md5 checksum
 miss-matches in the branches. You can properly merge conflicts by prioritizing
 the checksums from the bigram branch.
 
