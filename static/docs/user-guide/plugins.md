@@ -15,6 +15,8 @@ In order to recognize DVC stage files as YAML in Vim, you should add:
     autocmd! BufNewFile,BufRead Dvcfile,*.dvc setfiletype yaml
 ```
 
+to your `~/.vimrc`.
+
 ## IntelliJ IDEs
 
 A community member, [@prihoda](https://github.com/prihoda), maintains a
