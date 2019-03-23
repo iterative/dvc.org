@@ -56,7 +56,7 @@ let _javascript = function(hljs) {
             begin: / git [a-z\-]+/,
             keywords: {
               keyword: 'git commit status pull push fetch add init checkout ' +
-              'merge',
+              'merge clone',
             },
           },
           QUOTE_STRING,
