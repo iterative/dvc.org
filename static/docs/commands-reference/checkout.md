@@ -112,35 +112,35 @@ Now, we can install requirements for the project:
 </details>
 
 The existing pipeline looks almost like in this
-[example](/doc/get-started/example-pipeline). We have these tags in the Git
-repository:
+[example](/doc/get-started/example-pipeline):
+
+```dvc
+    .
+    ├── data
+    │   └── data.xml.dvc
+    ├── evaluate.dvc
+    ├── featurize.dvc
+    ├── prepare.dvc
+    ├── src
+        <some code files here>
+    └── train.dvc
+```
+ 
+We have these tags in the repository that represent different iterations of
+solving the problem:
 
 ```dvc
     $ git tag
 
-    baseline
-    bigrams
+    baseline     <- first simple version of the model
+    bigram       <- use bigrams to improve the model
 ```
 
 This project comes with a predefined S3
-[remote storage](https://man.dvc.org/remote):
-
-```dvc
-.
-├── data
-│   └── data.xml.dvc
-├── evaluate.dvc
-├── featurize.dvc
-├── prepare.dvc
-├── src
-    <some code files here>
-└── train.dvc
-```
-
-We can now just run `dvc pull` that will fetch and checkout the most recent
-`model.pkl`, `data.xml` and other files that are under DVC control, the model
-file checksum `3863d0e317dee0a55c4e59d2ec0eef33` is specified in the `train.dvc`
-file:
+[remote storage](https://man.dvc.org/remote). We can now just run `dvc pull`
+that will fetch and checkout the most recent `model.pkl`, `data.xml` and other
+files that are under DVC control, the model file checksum
+`3863d0e317dee0a55c4e59d2ec0eef33` is specified in the `train.dvc` file:
 
 ```dvc
     $ dvc pull
@@ -173,7 +173,7 @@ Let's check the `model.pkl` and `train.dvc` files again:
         path: model.pkl
 ```
 
-but if you check the `model.pkl` it is still the same:
+but if you check the `model.pkl` the file is still the same:
 
 ```dvc
     $ md5 model.pkl
