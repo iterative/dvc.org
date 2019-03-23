@@ -121,9 +121,10 @@ The existing pipeline looks almost like in this
     ├── evaluate.dvc
     ├── featurize.dvc
     ├── prepare.dvc
-    ├── src
-        <some code files here>
-    └── train.dvc
+    ├── train.dvc
+    └── src
+        └── <code files here>
+
 ```
  
 We have these tags in the repository that represent different iterations of
