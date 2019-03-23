@@ -39,7 +39,7 @@ let _javascript = function(hljs) {
         keywords: {
           keyword:
           'ls cat vi mkdir cd wget du python cp export echo pip curl tar ' +
-            'exec autoload sudo unzip rm tree file',
+            'exec autoload sudo unzip rm tree file md5',
         },
         contains: [
           {
@@ -48,7 +48,7 @@ let _javascript = function(hljs) {
               built_in:
                 'help dvc init add import checkout run pull push fetch status ' +
                 'repro remove move gc config remote metrics install root lock ' +
-                'unlock pipeline destroy unprotect commit cache',
+                'unlock pipeline destroy unprotect commit cache pkg tag',
             },
             className: 'strong',
           },
