@@ -63,7 +63,7 @@ command. In other cases the cache can be pulled from a remote cache using the
   updated are associated with the named stage, and the stages which execute
   earlier in the pipeline.
 
-* `-f`, `--force` - does not prompt when removing worspace files. Changing the
+* `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC files with SCM commands like `git checkout` can result in
   the need for DVC to remove files which should not exist in the current state
   and are missing in the local cache (they are not committed in DVC terms). This
@@ -88,7 +88,7 @@ happens as we shift from tag to tag.
 ### Click and expand to setup the project
 
 This step is optional, and you can run it only if you want to run this examples
-in your environemt. First, you need to dowload the project:
+in your environment. First, you need to download the project:
 
 ```dvc
     $ git clone https://github.com/iterative/example-get-started
@@ -137,7 +137,7 @@ This project comes with a predefined S3
 └── train.dvc
 ```
 
-We can now just run `dvc pull` that will fetch and chekout the most recent
+We can now just run `dvc pull` that will fetch and checkout the most recent
 `model.pkl`, `data.xml` and other files that are under DVC control, the model
 file checksum `3863d0e317dee0a55c4e59d2ec0eef33` is specified in the `train.dvc`
 file:
@@ -173,14 +173,14 @@ Let's check the `model.pkl` and `train.dvc` files again:
         path: model.pkl
 ```
 
-but if you chec the `model.pkl` it is still the same:
+but if you check the `model.pkl` it is still the same:
 
 ```dvc
     $ md5 model.pkl
     MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
-What's happened is that `git checkout` chaged `featurize.dvc`, `train.dvc`, and
+What's happened is that `git checkout` changed `featurize.dvc`, `train.dvc`, and
 other DVC files. But it did nothing with the `model.pkl` and `matrix.pkl` files.
 Git does not manage those files. Instead DVC manages those files, and we must
 therefore do this:
