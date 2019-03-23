@@ -94,7 +94,7 @@ in your environment. First, you need to download the project:
     $ git clone https://github.com/iterative/example-get-started
 ```
 
-Second, let's install the requirements. But before we do that, we strongly
+Second, let's install the requirements. But before we do that, we **strongly**
 recommend creating a virtual environment with `virtualenv` or a similar tool:
 
 ```dvc
