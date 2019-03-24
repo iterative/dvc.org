@@ -126,7 +126,7 @@ The existing pipeline looks almost like in this
         └── <code files here>
 
 ```
- 
+
 We have these tags in the repository that represent different iterations of
 solving the problem:
 
