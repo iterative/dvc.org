@@ -2,7 +2,7 @@
 
 Get files that are under DVC control from remote storage into the local cache.
 Fetching means downloading from the
-[remote](https://dvc.org/doc/commands-reference/remote) unless the files in 
+[remote](https://dvc.org/doc/commands-reference/remote) unless the files in
 question already exist in the local cache, in which case nothing is done.
 
 ## Synopsis
@@ -21,13 +21,12 @@ question already exist in the local cache, in which case nothing is done.
 
 ## Description
 
-When checking out an existing project repository, files under DVC control may
-exist in a remote, but won't be in your local machine.
-DVC remotes provide a place to keep and share data and model files. Refer to 
-`dvc remote`.
-These data or model wiles should be listed as outputs in a DVC file 
-(`target`) however.
-See DVC File Format for more info on outputs.
+When checking out an existing project repository, files under DVC control should
+exist in a remote, but won't be in your local machine. (Refer to `dvc remote`
+for more information on DVC remotes.) These necessary data or model files
+are be listed as dependencies or outputs in a DVC file (`target`) however. (See
+[DVC File Format](https://dvc.org/doc/user-guide/dvc-file-format) for  more
+info on outputs.)
 
 `dvc fetch` ensures that the files needed for a DVC file to be
 [reproduced](/doc/get-started/reproduce) exist in the local cache. If no
@@ -39,7 +38,9 @@ The default remote is used unless `--remote` is specified. See `dvc remote add`
 for more information on how to configure different remote storage providers.
 
 Fetching brings files in from a remote to the local cache, making them 
-available for linking them to the workspace.
+available for linking (or copying) into the workspace. (Refer to
+[dvc config cache.type](https://dvc.org/doc/commands-reference/config#cache).)
+
 Note, `dvc fetch` is performed automatically by `dvc pull` when the target 
 files are not already in the local cache. Specifically,
 `dvc pull` = `dvc fetch` + `dev checkout`:
