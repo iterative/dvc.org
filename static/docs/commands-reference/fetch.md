@@ -31,8 +31,17 @@ info on outputs.)
 `dvc fetch` ensures that the files needed for a DVC file to be
 [reproduced](/doc/get-started/reproduce) exist in the local cache. If no
 `targets` are specified, the set of data files to fetch is determined by
-analyzing all `.dvc` files in the current branch, unless `--all-branches` is
-specified.
+analyzing all `.dvc` files in the current branch, unless `--all-branches` or
+`--all-tags` is specified.
+
+Note, `dvc push`, `dvc fetch`, and `dvc pull` are related in that these 3
+commands perform data synchronization among local and remote storage. The
+specific way in which the set of files to push/fetch/pull is determined
+begins with calculating the checksums of the files in question, when these
+are [added](https://dvc.org/doc/get-started/add-files) to DVC. File checksums
+are then stored in the corresponding DVC files (usually saved in a Git
+branch). Only the checksums specified in DVC files currently in the workspace
+are considered by `dvc fetch` (unless the `-a` or `-T` options are used).
 
 The default remote is used unless `--remote` is specified. See `dvc remote add`
 for more information on how to configure different remote storage providers.
@@ -63,9 +72,6 @@ pull ++      local cache
        +          v
         ++    workspace
 ```
-
-Note, `dvc push`, `dvc fetch`, and `dvc pull` are related in that these 3
-commands perform data synchronization among local and remote storage.
 
 ## Options
 
