@@ -2,8 +2,9 @@
 
 Get files that are under DVC control from remote storage into the local cache.
 Fetching means downloading from the
-[remote](https://dvc.org/doc/commands-reference/remote) unless the files in
-question already exist in the local cache, in which case nothing is done.
+[remote](https://dvc.org/doc/commands-reference/remote#description) unless the
+files in question already exist in the local cache, in which case nothing is
+done.
 
 ## Synopsis
 
@@ -16,7 +17,7 @@ question already exist in the local cache, in which case nothing is done.
     Fetch data files from the cloud.
     
     positional arguments:
-      targets               DVC files.
+      targets               DVC files (stages).
 ```
 
 ## Description
@@ -24,9 +25,9 @@ question already exist in the local cache, in which case nothing is done.
 When checking out an existing project repository, files under DVC control should
 exist in a remote, but won't be in your local machine. (Refer to `dvc remote`
 for more information on DVC remotes.) These necessary data or model files
-are be listed as dependencies or outputs in a DVC file (`target`) however. (See
-[DVC File Format](https://dvc.org/doc/user-guide/dvc-file-format) for  more
-info on outputs.)
+are be listed as dependencies or outputs in a DVC file (target stage) however.
+(See [DVC File Format](https://dvc.org/doc/user-guide/dvc-file-format) for  more
+information on dependencies and outputs.)
 
 `dvc fetch` ensures that the files needed for a DVC file to be
 [reproduced](/doc/get-started/reproduce) exist in the local cache. If no
@@ -50,7 +51,7 @@ Fetching brings files in from a remote to the local cache, making them
 available for linking (or copying) into the workspace. (Refer to
 [dvc config cache.type](https://dvc.org/doc/commands-reference/config#cache).)
 
-Note, `dvc fetch` is performed automatically by `dvc pull` when the target 
+Note, `dvc fetch` is performed automatically by `dvc pull` when the target stage
 files are not already in the local cache. Specifically,
 `dvc pull` = `dvc fetch` + `dev checkout`:
 
@@ -73,13 +74,17 @@ Controlled files             Commands
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` - specify a `REMOTE` storage to fetch from. 
-  (See `dvc remote` for more information about remotes.) It not provided, the
-  default remote is used (shown with `dvc config core.remote`).
+- `-r REMOTE`, `--remote REMOTE` - name of the
+  [remote storage](https://dvc.org/doc/commands-reference/remote#description)
+  to fetch from (see `dvc remote list`). If not specified, the default 
+  remote is used (see `dvc config core.remote`). The argument `REMOTE` is a
+  remote name defined using the `dvc remote` command.
 
-- `-d`, `--with-deps` - fetch cache for all dependencies of the specified
-  `target`. This indicates that you would like to have all the files needed
-  for the entire pipeline(s), up to the `taget`, in local cache.
+- `-d`, `--with-deps` - fetch cache by tracking dependencies to the named
+  target stages. This option only has effect when one or more `targets` are
+  specified. By traversing the dependencies, DVC searches backward through the
+  pipeline from the named target(s). This means DVC will not fetch files needed
+  later in the pipeline than the named target(s).
 
 - `-R`, `--recursive` - this option tells DVC that `targets` are
   directories (not DVC files), and to traverse them recursively. All DVC 
@@ -193,7 +198,8 @@ default remote (for the current branch).
 
 ### Specific stages
 
-Fetch only outputs of a specific stage bt specifying its DVC file (`target`):
+Fetch only outputs of a specific stage bt specifying its DVC file (target
+stage):
 
 ```dvc
     $ ls -la .dvc/cache 
