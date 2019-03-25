@@ -55,22 +55,20 @@ files are not already in the local cache. Specifically,
 `dvc pull` = `dvc fetch` + `dev checkout`:
 
 ```
-           controlled files     commands     
-           ----------------   ------------
-        ++
-       +    remote storage
-       |          +
-       |          |          +--------------+
-       |          | - - - - -|  dvc fetch   | 
-       |          |          +------+-------+ 
-dvc    +          v
-pull ++      local cache
-       +          +
-       |          |          +------+-------+
-       |          | - - - - -| dvc checkout |
-       |          |          +--------------+
-       +          v
-        ++    workspace
+Controlled files             Commands
+---------------- ---------------------------------
+
+ remote storage                 ++
+       +                          +
+       |         +------------+   |
+       |         | dvc fetch  |   |
+       v         +------------+   +   +----------+
+  local cache                      ++ | dvc pull |
+       +         +------------+   +   +----------+
+       |         |dvc checkout|   |
+       |         +------------+   |
+       v                          +
+   workspace                    ++
 ```
 
 ## Options
