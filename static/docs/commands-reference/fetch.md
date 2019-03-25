@@ -59,17 +59,17 @@ files are not already in the local cache. Specifically,
 Controlled files             Commands
 ---------------- ---------------------------------
 
- remote storage                 ++
-       +                          +
-       |         +------------+   |
-       |         | dvc fetch  |   |
+ remote storage
+       +
+       |         +------------+ 
+       | - - - - | dvc fetch  | ++
        v         +------------+   +   +----------+
   local cache                      ++ | dvc pull |
        +         +------------+   +   +----------+
-       |         |dvc checkout|   |
-       |         +------------+   |
-       v                          +
-   workspace                    ++
+       | - - - - |dvc checkout| ++
+       |         +------------+
+       v
+   workspace
 ```
 
 ## Options
