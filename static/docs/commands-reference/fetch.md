@@ -224,7 +224,8 @@ stage):
 `d4` directory containing this branch version of `data.xml` was downloaded
 from the default remote into the local cache.
 See
-[DVC Files and Directories](https://dvc.org/doc/user-guide/dvc-files-and-directories)
+[DVC Files and
+Directories](https://dvc.org/doc/user-guide/dvc-files-and-directories)
 for more information on the local cache directory.
 
 ## Examples: Specific remotes
