@@ -15,10 +15,10 @@ you can specify outputs that contain your project metrics:
 
 ### Expand to prepare the evaluation stage
 
-To provide an unbiased evaluation of the final model fit on the training data
-set are going to use the test data set. We need to adjust the feature extraction
-to take into account this split for training and test datasets. No code
-modifications are required, let's just change the stage definition:
+To provide an unbiased evaluation of the final model fitted on the training data
+set, we are going to use the test data set. We need to adjust the feature
+extraction to take into account this split for training and test datasets. No
+code modifications are required, let's just change the stage definition:
 
 ```dvc
     $ git checkout master
@@ -30,7 +30,7 @@ modifications are required, let's just change the stage definition:
     $ git commit .gitignore matrix.pkl.dvc -m "change featurization stage"
 ```
 
-DVC will aks for confirmation to overwrite the stage. Type `yes` and proceed.
+DVC will ask for confirmation to overwrite the stage. Type `yes` and proceed.
 
 </details>
 

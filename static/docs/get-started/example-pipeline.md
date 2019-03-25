@@ -165,8 +165,8 @@ is automatically added to the `.gitignore` file and a link is created into a cac
 `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
-DVC files describe we can restore the full chain (DAG) of commands we need to
-apply. This is important when you run `dvc repro` to reproduce the final or
+that DVC files describe, we can restore the full chain (DAG) of commands we need
+to apply. This is important when you run `dvc repro` to reproduce the final or
 intermediate result.
 
 Second, you should see by now that the actual data is stored in the `.dvc\cache`
@@ -186,7 +186,7 @@ your actual workspace without copying every time object from/to the cache.
               python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
 ```
 
-* Split training and testing data sets. Here `0.2` test dataset split ratio,
+* Split training and test data sets. Here `0.2` is a test dataset split ratio,
 `20170426` is a seed for randomization. There are two output files:
 
 ```dvc
