@@ -168,7 +168,7 @@ Let's see what happens when someone checks out the project in a fresh location
 (or if you clear the local cache), and then use the command in different 
 scenarios:
 
-### Default behavior
+## Examples: Default behavior
 
 Used with no arguments, `dvc fetch` will download all assets needed by all DVC 
 files in the current branch, including for directories:
@@ -196,7 +196,7 @@ files in the current branch, including for directories:
 > `dvc status -c` compares the contents of our local cache against those in the 
 default remote (for the current branch).
 
-### Specific stages
+## Examples: Specific stages
 
 Fetch only outputs of a specific stage bt specifying its DVC file (target
 stage):
@@ -227,7 +227,7 @@ See
 [DVC Files and Directories](https://dvc.org/doc/user-guide/dvc-files-and-directories)
 for more information on the local cache directory.
 
-### Specific remotes
+## Examples: Specific remotes
 
 Fetch all targets stored in a specific remote
 
