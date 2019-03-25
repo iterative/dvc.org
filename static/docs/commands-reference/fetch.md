@@ -1,7 +1,9 @@
 # fetch
 
 Get files that are under DVC control from remote storage into the local cache.
-Fetching usually means downloading from the remote.
+Fetching means downloading from the
+[remote](https://dvc.org/doc/commands-reference/remote) unless the files in 
+question already exist in the local cache, in which case nothing is done.
 
 ## Synopsis
 
