@@ -84,6 +84,17 @@ automatically under DVC control. In case of metrics it's pretty usual because
 metric files are small enough to be put into Git or other underlying version
 control system. See also the difference between `-o` and `-O` options.
 
+* `--outs-persist` - the same as `-o` except outputs will not be removed in case
+of [`dvc repro`](https://dvc.org/doc/commands-reference/repro#repro) command. 
+Upon running [`dvc repro`](https://dvc.org/doc/commands-reference/repro#repro), 
+In case of `-o` target file is removed (if exists) before performing command 
+provided in `run`. `--outs-persist` should be used when one does not want to 
+remove previously generated out, but rather (for example) append new data each 
+time stage file is reproduced.
+
+* `--outs-persist-no-cache` - the same as `--outs-persist` except outputs are not
+put automatically under DVC control. 
+
 * `-f`, `--file` - specify stage file name. By default stage file name generated
 is `<file>.dvc` where `<file>` is file name of the first output (`-o`, `-O`, or
 `-M` option). If neither `-f`, nor outputs (with `-o`, `-O`, `-M`) are specified
@@ -194,4 +205,30 @@ specified, so a `model.p.dvc` stage file is created:
     ├── stages
     │   └── test.dvc
     └── test.txt
+```
+
+* Difference between `run --outs` and `run --outs-persist`
+
+```dvc
+    $ dvc run --outs foo "echo foo >> foo"
+    $ cat foo
+
+    foo
+
+    $ dvc repro foo.dvc
+    $ cat foo
+
+    foo
+
+    ----------
+    $ dvc run --outs-persist foo "echo foo >> foo"
+    $ cat foo
+
+    foo
+
+    $ dvc repro foo.dvc
+    $ cat foo
+
+    foo
+    foo
 ```
