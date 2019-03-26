@@ -95,8 +95,8 @@ options might be useful for warm start of ML projects. Both options perform
 cons, so it is guaranteed that cache will not be corrupted, but also in some
 cache types (symlink, hardlink) reproduction step will be prolonged by time 
 necessary to create copies. `--outs-persist` might still overwrite existing
-outputs if `run` command somehow removes existing output (example in
-[Examples](#Examples)).
+outputs if `run` command somehow removes existing output 
+([Examples](#Examples)).
 
 * `--outs-persist-no-cache` - similar to `--outs-persist`. Differs the same way
 as `-O` differs from `-o`
@@ -213,9 +213,8 @@ specified, so a `model.p.dvc` stage file is created:
     └── test.txt
 ```
 
-* Difference between `run --outs` and `run --outs-persist`.
-This example shows how using `--outs-persist` influences
-reproduction step.
+* Difference between `run --outs` and `run --outs-persist`. This example shows 
+how using `--outs-persist` influences reproduction step.
 
 Run command writing current date to file date.txt
 
