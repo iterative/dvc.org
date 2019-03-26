@@ -6,7 +6,7 @@ back and forth. To find the best performing experiment or track the progress, a
 special *metric* output type is supported in DVC lie it was described in one of
 the previous steps.
 
-Let's run evaluate the latest `bigram` experiment we created in one of the
+Let's run evaluate for the latest `bigram` experiment we created in one of the
 previous steps. It mostly takes just running the `dvc repro`:
 
 ```dvc
