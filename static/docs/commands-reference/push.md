@@ -13,7 +13,6 @@ Uploads files and directories under DVC control to the
 
     positional arguments:
       targets               DVC files.
-
 ```
 
 ## Description
