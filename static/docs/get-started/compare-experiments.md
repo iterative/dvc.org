@@ -3,13 +3,8 @@
 DVC makes it easy to iterate on your project using Git commits with tags or Git
 branches. It provides a way to try different ideas, keep track of them, switch
 back and forth. To find the best performing experiment or track the progress, a
-special *metric* output type is supported in DVC.
-
-Metric file is usually a plain text file (though file of any complexity and
-structure could be used, check `dvc metrics` to get more details) with any
-project-specific numbers - `AUC`, `ROC`, etc. We've learned already that with
-the `-M` option of `dvc run` you can specify outputs that contain your project
-metrics.
+special *metric* output type is supported in DVC lie it was described in one of
+the previous steps.
 
 Let's run evaluate the latest `bigram` experiment we created in one of the
 previous steps. It mostly takes just running the `dvc repro`:
@@ -26,7 +21,7 @@ compare experiments, or if we need to go back and checkout it and the
 corresponding data:
 
 ```dvc
-    $ git tag -a "bigram-experiment" -m "bigram experiment"
+    $ git tag -a "bigram-experiment" -m "bigrams"
 ```
 Now, we can use `-T` option of the `dvc metrics show` command to see the
 difference between the `baseline` and `bigrams` experiments:
