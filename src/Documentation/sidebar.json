@@ -13,6 +13,7 @@
       "connect-code-and-data.md",
       "pipeline.md",
       "visualize.md",
+      "metrics.md",
       "reproduce.md",
       "experiments.md",
       "compare-experiments.md",

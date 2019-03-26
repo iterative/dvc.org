@@ -11,9 +11,9 @@ easily between them. Let's imagine we want to try a modified feature extraction:
 
 ### Expand to see code modifications
 
-Edit `featurization.py` to enable bigrams and increase the number of features. Find
-and change the `CountVectorizer` arguments, specify `ngram_range` and increase
-number of features:
+Edit `src/featurization.py` to enable bigrams and increase the number of
+features. Find and change the `CountVectorizer` arguments, specify `ngram_range`
+and increase number of features:
 
 ```python
     bag_of_words = CountVectorizer(stop_words='english',
@@ -24,9 +24,8 @@ number of features:
 
 
 ```dvc
-    $ git checkout -b bigram
     $ vi featurization.py        # edit to use bigrams (see above)
-    $ dvc repro model.pkl.dvc    # get and save the new model.pkl
+    $ dvc repro train.dvc        # get and save the new model.pkl
     $ git commit -a -m "bigram model"
 ```
 
@@ -34,7 +33,7 @@ Now, we have a new `model.pkl` captured and saved. To get back to the initial
 version we run `git checkout` along with `dvc checkout` command:
 
 ```
-    $ git checkout master
+    $ git checkout baseline-experiment
     $ dvc checkout
 ```
 
