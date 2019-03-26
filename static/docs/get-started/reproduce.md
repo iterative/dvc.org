@@ -27,4 +27,4 @@ modified dependencies or missing outputs and recursively executes this graph
 starting from these stages.
 
 Thus, `dvc run` and `dvc repro` provide a powerful framework for *reproducible
-experiments* and *reproducible projects*
+experiments* and *reproducible projects*.
