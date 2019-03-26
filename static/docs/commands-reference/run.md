@@ -85,15 +85,21 @@ metric files are small enough to be put into Git or other underlying version
 control system. See also the difference between `-o` and `-O` options.
 
 * `--outs-persist` - the same as `-o` except outputs will not be removed in case
-of [`dvc repro`](https://dvc.org/doc/commands-reference/repro#repro) command. 
-Upon running [`dvc repro`](https://dvc.org/doc/commands-reference/repro#repro), 
-In case of `-o` target file is removed (if exists) before performing command 
+of `dvc repro` command. Upon running `dvc repro`, in case of `-o` outputs
+created in previous run are removed (if exists) before performing command 
 provided in `run`. `--outs-persist` should be used when one does not want to 
 remove previously generated out, but rather (for example) append new data each 
-time stage file is reproduced.
+time stage file is reproduced. This and following `--outs-persist-no-cache`
+options might be useful for warm start of ML projects. Both options perform 
+`dvc unprotect` on outputs before reproduction step with all of its pros and 
+cons, so it is guaranteed that cache will not be corrupted, but also in some
+cache types (symlink, hardlink) reproduction step will be prolonged by time 
+necessary to create copies. `--outs-persist` might still overwrite existing
+outputs if `run` command somehow removes existing output (example in
+[Examples](#Examples)).
 
-* `--outs-persist-no-cache` - the same as `--outs-persist` except outputs are not
-put automatically under DVC control. 
+* `--outs-persist-no-cache` - similar to `--outs-persist`. Differs the same way
+as `-O` differs from `-o`
 
 * `-f`, `--file` - specify stage file name. By default stage file name generated
 is `<file>.dvc` where `<file>` is file name of the first output (`-o`, `-O`, or
@@ -207,28 +213,50 @@ specified, so a `model.p.dvc` stage file is created:
     └── test.txt
 ```
 
-* Difference between `run --outs` and `run --outs-persist`
+* Difference between `run --outs` and `run --outs-persist`.
+This example shows how using `--outs-persist` influences
+reproduction step.
+
+Run command writing current date to file date.txt
 
 ```dvc
-    $ dvc run --outs foo "echo foo >> foo"
-    $ cat foo
+    $ dvc run --outs date.txt  "date -R >> date.txt"
+    $ cat date.txt
 
-    foo
-
-    $ dvc repro foo.dvc
-    $ cat foo
-
-    foo
-
-    ----------
-    $ dvc run --outs-persist foo "echo foo >> foo"
-    $ cat foo
-
-    foo
-
-    $ dvc repro foo.dvc
-    $ cat foo
-
-    foo
-    foo
+    Tue, 26 Mar 2019 12:25:44 +0100
 ```
+
+Upon reproduction, dvc will remove previous version of file and run command
+again resulting in file containing updated date only.
+
+```dvc
+
+    $ dvc repro date.txt.dvc 
+    $ cat date.txt
+
+    Tue, 26 Mar 2019 12:28:11 +0100
+```
+
+In case of `--outs-persist`:
+
+```dvc 
+    $ dvc run --outs-persist date.txt  "date -R >> date.txt"
+    $ cat date.txt
+
+    Tue, 26 Mar 2019 12:37:57 +0100
+```
+
+Upon reproduction, dvc will not remove previous version of file. This time
+resulting file will contain both results.
+
+```dvc
+    $ dvc repro date.txt.dvc 
+    $ cat date.txt 
+
+    Tue, 26 Mar 2019 12:37:57 +0100
+    Tue, 26 Mar 2019 12:40:07 +0100
+```
+
+Take note, that this functionality works only because our `run` command appends
+to file. If command would use `>` instead of `>>`, then `date.txt` would still
+be overwritten, even though we used `--outs-persist`
