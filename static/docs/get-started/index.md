@@ -5,7 +5,8 @@ go into detais much, but provides links and expandable sections to learn more.
 It's made to be runnable and you should be able to create a simple DVC project
 from scratch, but there is also a prepared
 [Github repository](https://github.com/iterative/example-get-started) that has
-the final and all intermediate resuls in it.
+the final and all the intermediate steps in it (we are using git tags as
+markers).
 
 At the very end there are a few complete step-by-step examples to give you
 more hands-on experience with real-life scenarios - first is about model and
