@@ -32,4 +32,4 @@ models, data sets and you want to:
 * being able to compare them,
 * bring best practices to your team and get everyone on the same page.
 
-Then you are in a good place! Click ↘ this button to start.
+Then you are in a good place! Click the `Next` button below to start ↘.
