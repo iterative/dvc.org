@@ -13,14 +13,15 @@ previous steps. It mostly takes just running the `dvc repro`:
     $ git checkout master
     $ dvc checkout
     $ dvc repro evaluate.dvc
-    $ git commit -a -m "evaluate bigram model"
 ```
 
-Let's also assign a Git tag again, it will serve as a checkpoint for us to
-compare experiments, or if we need to go back and checkout it and the
-corresponding data:
+`git checkout master` and `dvc checkout` commands ensure that we have the latest
+experiment code and data respectively. And `dvc repro`, as we discussed in the
+[reproduce](/doc/get-started/reproduce) step, is a way to run all the necessary
+commands to build the model and measure its performance.
 
 ```dvc
+    $ git commit -a -m "evaluate bigram model"
     $ git tag -a "bigram-experiment" -m "bigrams"
 ```
 Now, we can use `-T` option of the `dvc metrics show` command to see the
@@ -28,6 +29,7 @@ difference between the `baseline` and `bigrams` experiments:
 
 ```dvc
     $ dvc metrics show -T
+
     baseline-experiment:
         auc.metric: 0.588765
     bigram-experiment:
