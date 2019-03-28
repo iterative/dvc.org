@@ -4,6 +4,7 @@
     "folder": "/static/docs/get-started",
     "indexFile": "index.md",
     "files": [
+      "agenda.md",
       "install.md",
       "initialize.md",
       "configure.md",
