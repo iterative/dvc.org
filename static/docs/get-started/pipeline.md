@@ -20,9 +20,10 @@ step), feature extraction:
 The third stage, training:
 
 ```dvc
-    $ dvc run -d src/train.py -d data/features \
+    $ dvc run -f train.dvc \
+              -d src/train.py -d data/features \
               -o model.pkl \
-              python src/train.py -d data/features model.pkl
+              python src/train.py data/features model.pkl
 ```
 
 Let's commit DVC files that describe our pipeline so far:

@@ -39,6 +39,7 @@ visualize a pipeline commands or data files flow instead.
       -o, --outs      Print output files instead of paths to DVC files.
       --ascii         Output DAG as ASCII.
       --dot DOT       Write DAG in .dot format.
+      --tree          Output DAG as Dependencies Tree.
 ```
 
 **Options**
@@ -54,6 +55,8 @@ list of path to DVC files.
 
 * `--dot` - produce a `.dot` files with a DVC pipeline graph. It can be passed
 to third party visualization utilities.
+
+* `--tree` - list dependencies tree like recursive directory listing.
 
 
 **Examples**
@@ -121,6 +124,17 @@ to third party visualization utilities.
                    .--------------.
                    | eval.txt.dvc |
                    `--------------'
+```
+
+* List dependencies recursively if graph have tree structure
+
+```dvc
+    dvc pipeline show e.file.dvc --tree
+    e.file.dvc
+    ├── c.file.dvc
+    │   └── b.file.dvc
+    │       └── a.file.dvc
+    └── d.file.dvc
 ```
 
 ## list
