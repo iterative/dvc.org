@@ -27,7 +27,7 @@ If you have data files or data sets and/or you produce other data files, models,
 data sets and you want to:
 
 * capture and save those data artifacts the same way we capture code,
-* track and switch between different version of these artifacts easily,
+* track and switch between different versions of these artifacts easily,
 * being able to answer the question of how those artifacts or models were built
   in the first place,
 * being able to compare them,
