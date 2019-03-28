@@ -20,10 +20,10 @@ predict a post that is about the Python language by tagging it `python`.
 ![](https://dvc.org/static/img/example-flow-2x.png)
 
 Let the NLP nature of the example not to discourage you from using DVC in other
-areas for Data Science. There was no strong reason behind picking the NLP area.
-On contrary, DVC is designed to be pretty agnostic of frameworks, languages,
-etc. If you have data files or data sets and/or you produce other data files,
-models, data sets and you want to:
+Data Science areas. There was no strong reason behind picking the NLP area. On
+contrary, DVC is designed to be pretty agnostic of frameworks, languages, etc.
+If you have data files or data sets and/or you produce other data files, models,
+data sets and you want to:
 
 * capture and save those data artifacts the same way we capture code,
 * track and switch between different version of these artifacts easily,
