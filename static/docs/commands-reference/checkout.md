@@ -77,6 +77,8 @@ command. In other cases the cache can be pulled from a remote cache using the
 * `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
 
+* `-R`, `--recursive` - performs recursive checkout for target directory.
+
 ## Examples
 
 To explore `dvc checkout` let's consider a simple workspace with several stages,
