@@ -25,7 +25,8 @@
     "labels": {
       "connect-code-and-data.md": "Add Transformations",
       "example-pipeline.md": "Example: Pipelines",
-      "example-versioning.md": "Example: Versioning"
+      "example-versioning.md": "Example: Versioning",
+      "restore.md": "Get Older Files"
     }
   },
   {
