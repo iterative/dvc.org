@@ -1,8 +1,8 @@
 # Get Older Data Version
 
 Now that we have multiple experiments, models, processed data sets, the question
-is how do revert back to an older version of a model file? Or how can we get the
-previous version of the data set if we changed it at some point?
+is how do we revert back to an older version of a model file? Or how can we get
+the previous version of the data set if it was changed at some point?
 
 The answer is the `dvc checkout` command, and we already touched briefly the
 process of switching between different data versions in the
