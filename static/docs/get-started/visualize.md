@@ -5,7 +5,8 @@ able to wrap our heads around it. Luckily, DVC allows us to do that without
 leaving the terminal, making the experience distraction-less.
 
 We are using `--ascii` option below to better illustrate the pipeline. Please,
-refer to the `dvc pipeline show` documentation to explore other options.
+refer to the `dvc pipeline show` documentation to explore other options this
+command supports (e.g. `.dot` files that can be used then in other tools).
 
 ## Stages
 

@@ -39,7 +39,7 @@ To modify or replace a data file that is under DVC control you may need to run
 [Update Tracked File](/doc/user-guide/update-tracked-file) guide). Refer to
 [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
 and `dvc add` for more information. Use `dvc move` to rename or move a data file
-that is under `dvc` control.
+that is under DVC control.
 
 <details>
 
