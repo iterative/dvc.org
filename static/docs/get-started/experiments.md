@@ -5,7 +5,7 @@ try many different approaches, different hyper-parameter values and "fail" many
 times before the required level of a metric is achieved.
 
 DVC is built to provide a way to capture different experiments and navigate
-easily between them. Let's imagine we want to try a modified feature extraction:
+easily between them. Let's say we want to try a modified feature extraction:
 
 <details>
 
