@@ -74,15 +74,14 @@ share them.
 small human readable file (JSON, CSV, text, whatnot) with some numbers or other
 meta-information that describes a model or other outputs. Check `dvc metrics`
 to learn more about tracking metrics and comparing them across different
-model or experiment versions. Metrics are not cached (put under DVC control),
-you should see `cache: false` in the stage file. Since these files are small
-enough it's beneficial to use Git or any other underlying regular version
-control system to track them.
+model or experiment versions.
 
 * `-M`, `--metrics-no-cache` - the same as `-m` except files are not put
-automatically under DVC control. In case of metrics it's pretty usual because
-metric files are small enough to be put into Git or other underlying version
-control system. See also the difference between `-o` and `-O` options.
+automatically under DVC control. It means that they are not cached, and it's
+up to a user to save and version control them. In case of metrics it's pretty
+usual because metric files are small enough to be put into Git or other
+underlying version control system. See also the difference between `-o` and
+`-O` options.
 
 * `-f`, `--file` - specify stage file name. By default stage file name generated
 is `<file>.dvc` where `<file>` is file name of the first output (`-o`, `-O`, or
