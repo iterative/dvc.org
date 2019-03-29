@@ -106,10 +106,11 @@ for more details.
 
 ## Examples
 
-Using the `dvc pull` command remote storage must be defined. For an existing
-projects a remote is usually defined and you can use `dvc remote list` to check
-existing remotes. Just to remind how it is done and set a context for the
-example, let's define an SSH remote with the `dvc remote add` command:
+For using the `dvc pull` command, remote storage must be defined. For an
+existing project a remote is usually defined and you can use `dvc remote
+list` to check existing remotes. Just to remind how it is done and set a
+context for the example, let's define an SSH remote with the `dvc remote add`
+command:
 
 ```dvc
     $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
@@ -146,7 +147,7 @@ the `out` section of the named target DVC file.
 
 ## Examples: With dependencies
 
-Demonstrating the `--with-deps` flag requires a larger example.  First, assume
+Demonstrating the `--with-deps` flag requires a larger example. First, assume
 a pipeline has been setup with these stages:
 
 ```dvc
@@ -161,7 +162,7 @@ a pipeline has been setup with these stages:
     Dvcfile
 ```
 
-The remote cache has been modified such that the data files in some of these
+The remote storage has been modified such that the data files in some of these
 stages should be updated into the local cache.
 
 ```dvc

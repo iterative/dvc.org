@@ -234,6 +234,7 @@ Fetch all targets stored in a specific remote
 
 ```dvc
     $ dvc fetch -r backup
+    
     [#################################] 100% data.xml
 ```
 
@@ -241,3 +242,52 @@ Fetch all targets stored in a specific remote
 branch pipeline which are held in that remote. Notice that it does not
 necessarily include everything since we're able to distribute the asset
 storage in different remotes.
+
+## Examples: With dependencies
+
+Demonstrating the `--with-deps` flag requires a larger example. First, assume
+a pipeline has been setup with these stages:
+
+```dvc
+    $ dvc pipeline show
+
+    data/Posts.xml.zip.dvc
+    Posts.xml.dvc
+    Posts.tsv.dvc
+    Posts-test.tsv.dvc
+    matrix-train.p.dvc
+    model.p.dvc
+    Dvcfile
+```
+
+The remote storage has been modified such that the data files in some of these
+stages should be updated into the local cache.
+
+```dvc
+   $ dvc status --cloud
+
+    	deleted:            data/model.p
+	    deleted:            data/matrix-test.p
+	    deleted:            data/matrix-train.p
+```
+
+One could do a simple `dvc fetch` to get all the data, but what if you only want
+to retrieve part of the data?
+
+```dvc
+    $ dvc fetch --remote r1 --with-deps matrix-train.p.dvc
+
+    (1/2): [####################] 100% data/matrix-test.p
+    (2/2): [####################] 100% data/matrix-train.p
+```
+
+With this `dvc fetch` we specified a stage in the middle of the pipeline
+while using `--with-deps`. This started with the named stage and searched
+backwards through the pipeline for data files to download into our local
+cache. We could now use `dvc checkout` to get the updated `matrix-test.p` and
+`matrix-train.p` files into the workspace.
+
+Note though, that the stage named `model.p.dvc` occurs later in
+the pipeline, so its data was not updated. For that reason, `dvc checkout` would
+be moving a previous version of the `model.p` specific data files into the
+workspace.
