@@ -22,10 +22,10 @@ cache.
 
 The `dvc fetch` command is a means to download files from remote storage into
 the local cache, but not directly into the workspace. This makes the data files
-available for linking (or copying) into the workspace. (Refer to
-[dvc config cache.type](/doc/commands-reference/config#cache).)
-Along with `dvc checkout`, it's performed automatically by `dvc pull` when the
-target stage files are not already in the local cache:
+available for linking (or copying) into the workspace. (Refer to [dvc config
+cache.type](/doc/commands-reference/config#cache).) Along with `dvc checkout`,
+it's performed automatically by `dvc pull` when the target stage files are not
+already in the local cache:
 
 ```
 Controlled files             Commands
@@ -47,11 +47,11 @@ Controlled files             Commands
 Fetching could be useful then first checking out an existing DVC project, since
 files under DVC control could already exist in remote storage, but won't be in
 your local cache. (Refer to `dvc remote` for more information on DVC remotes.)
-These necessary data or model files are listed as dependencies or outputs
-in a DVC file (target stage) so they are required to
-[reproduce](/doc/get-started/reproduce) the pipeline. (See
-[DVC File Format](/doc/user-guide/dvc-file-format) for more information on
-dependencies and outputs.)
+These necessary data or model files are listed as dependencies or outputs in a
+DVC file (target stage) so they are required to
+[reproduce](/doc/get-started/reproduce) the pipeline. (See [DVC File
+Format](/doc/user-guide/dvc-file-format) for more information on dependencies
+and outputs.)
 
 `dvc fetch` ensures that the files needed for a DVC file to be
 [reproduced](/doc/get-started/reproduce) exist in the local cache. If no
@@ -73,34 +73,33 @@ specified in DVC files currently in the workspace are considered by `dvc fetch`
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` - name of the
-  [remote storage](/doc/commands-reference/remote#description)
-  to fetch from (see `dvc remote list`). If not specified, the default 
-  remote is used (see `dvc config core.remote`). The argument `REMOTE` is a
-  remote name defined using the `dvc remote` command.
+- `-r REMOTE`, `--remote REMOTE` - name of the [remote
+  storage](/doc/commands-reference/remote#description) to fetch from (see `dvc
+  remote list`). If not specified, the default remote is used (see `dvc config
+  core.remote`). The argument `REMOTE` is a remote name defined using the `dvc
+  remote` command.
 
-- `-d`, `--with-deps` - fetch cache by tracking dependencies to the named
-  target stages. This option only has effect when one or more `targets` are
-  specified. By traversing the dependencies, DVC searches backward through the
-  pipeline from the named target(s). This means DVC will not fetch files
-  referenced later in the pipeline than the named target(s).
+- `-d`, `--with-deps` - fetch cache by tracking dependencies to the named target
+  stages. This option only has effect when one or more `targets` are specified.
+  By traversing the dependencies, DVC searches backward through the pipeline
+  from the named target(s). This means DVC will not fetch files referenced later
+  in the pipeline than the named target(s).
 
-- `-R`, `--recursive` - this option tells DVC that `targets` are
-  directories (not DVC files), and to traverse them recursively. All DVC 
-  files found will be read in order to determine the set of data files to fetch.
+- `-R`, `--recursive` - this option tells DVC that `targets` are directories
+  (not DVC files), and to traverse them recursively. All DVC files found will be
+  read in order to determine the set of data files to fetch.
 
 - `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
   the downloading of files from the remote. Using more jobs may improve the
   total download speed if a combination of small and large files are being
-  fetched.
-  The default value is `4 * cpu_count()`. For SSH remotes default is 4.
+  fetched. The default value is `4 * cpu_count()`. For SSH remotes default is 4.
   > Note, this option applies only to fetching from local remotes or from SSH 
   remotes. (See `dvc remote` for more information about remotes.)
 
 - `-a`, `--all-branches` - fetch cache for all branches, not just the active
-  one. This means that you'll the files needed to reproduce different
-  versions of a DVC file ([experiments](/doc/get-started/experiments)), not
-  just the current one.
+  one. This means that you'll the files needed to reproduce different versions
+  of a DVC file ([experiments](/doc/get-started/experiments)), not just the
+  current one.
 
 - `-T`, `--all-tags` - fetch cache for all tags. Similar to `-a` above
 
@@ -115,9 +114,9 @@ specified in DVC files currently in the workspace are considered by `dvc fetch`
 
 ## Examples
 
-Let's add a couple remotes to the project first, so DVC can control our files
-in them. (See `dvc remote add` for more details.) `myremote` will be the 
-default, a LOCAL remote; `backup` will be an SSH remote:
+Let's add a couple remotes to the project first, so DVC can control our files in
+them. (See `dvc remote add` for more details.) `myremote` will be the default, a
+LOCAL remote; `backup` will be an SSH remote:
 
 ```dvc
     $ dvc remote add -d myremote ../dir
@@ -126,7 +125,7 @@ default, a LOCAL remote; `backup` will be an SSH remote:
 
 Let's now [add](/doc/get-started/add-files) and
 [push](/doc/get-started/share-data) data files to the remotes, so they can be
-fetch `targets` later. For example, if a `data.xml` file is placed in the 
+fetch `targets` later. For example, if a `data.xml` file is placed in the
 workspace:
 
 ```dvc
@@ -144,7 +143,7 @@ workspace:
 
 DVC file `data.xml.dvc` now describes `data.xml` as its output file, and both
 the default remote and the SSH remote `backup` hold a copy of the data file.
-Let's say the project also contains an `images` directory we want DVC to 
+Let's say the project also contains an `images` directory we want DVC to
 control:
 
 ```dvc
@@ -160,16 +159,16 @@ control:
 ```
 
 The `images` directory and its files are now held in the default remote only.
-The following examples assume the same project is checked out clean in 
-another location or machine altogether.
+The following examples assume the same project is checked out clean in another
+location or machine altogether.
 
-Let's see what happens when someone checks out the project in a fresh location 
-(or if you clear the local cache), and then use the command in different 
+Let's see what happens when someone checks out the project in a fresh location
+(or if you clear the local cache), and then use the command in different
 scenarios:
 
 ## Examples: Default behavior
 
-Used with no arguments, `dvc fetch` will download all assets needed by all DVC 
+Used with no arguments, `dvc fetch` will download all assets needed by all DVC
 files in the current branch, including for directories:
 
 ```dvc
@@ -192,7 +191,7 @@ files in the current branch, including for directories:
     Pipeline is up to date. Nothing to reproduce.
 ```
 
-> `dvc status -c` compares the contents of our local cache against those in the 
+> `dvc status -c` compares the contents of our local cache against those in the
 default remote (for the current branch).
 
 ## Examples: Specific stages
@@ -219,13 +218,11 @@ stage):
     drwxr-xr-x  3 usr  staff   96 Mar 16 13:29 d4
 ```
 
-> As you can see by listing the `.dvc/cache` directory with `ls`, the
-`d4` directory containing this branch version of `data.xml` was downloaded
-from the default remote into the local cache.
-See
-[DVC Files and
-Directories](/doc/user-guide/dvc-files-and-directories)
-for more information on the local cache directory.
+> As you can see by listing the `.dvc/cache` directory with `ls`, the `d4`
+directory containing this branch version of `data.xml` was downloaded from the
+default remote into the local cache. See [DVC Files and
+Directories](/doc/user-guide/dvc-files-and-directories) for more information on
+the local cache directory.
 
 ## Examples: Specific remotes
 
@@ -237,10 +234,10 @@ Fetch all targets stored in a specific remote
     [#################################] 100% data.xml
 ```
 
-> Specifying only a remote will get all the files needed for the current
-branch pipeline which are held in that remote. Notice that it does not
-necessarily include everything since we're able to distribute the asset
-storage in different remotes.
+> Specifying only a remote will get all the files needed for the current branch
+pipeline which are held in that remote. Notice that it does not necessarily
+include everything since we're able to distribute the asset storage in different
+remotes.
 
 ## Examples: With dependencies
 
@@ -280,13 +277,12 @@ to retrieve part of the data?
     (2/2): [####################] 100% data/matrix-train.p
 ```
 
-With this `dvc fetch` we specified a stage in the middle of the pipeline
-while using `--with-deps`. This started with the named stage and searched
-backwards through the pipeline for data files to download into our local
-cache. We could now use `dvc checkout` to get the updated `matrix-test.p` and
-`matrix-train.p` files into the workspace.
+With this `dvc fetch` we specified a stage in the middle of the pipeline while
+using `--with-deps`. This started with the named stage and searched backwards
+through the pipeline for data files to download into our local cache. We could
+now use `dvc checkout` to get the updated `matrix-test.p` and `matrix-train.p`
+files into the workspace.
 
-Note though, that the stage named `model.p.dvc` occurs later in
-the pipeline, so its data was not updated. For that reason, `dvc checkout` would
-be moving a previous version of the `model.p` specific data files into the
-workspace.
+Note though, that the stage named `model.p.dvc` occurs later in the pipeline, so
+its data was not updated. For that reason, `dvc checkout` would be moving a
+previous version of the `model.p` specific data files into the workspace.
