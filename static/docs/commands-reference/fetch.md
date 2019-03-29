@@ -11,9 +11,7 @@ cache.
                      [--show-checksums] [-r REMOTE]
                      [-a] [-T] [-d] [-R]
                      [targets [targets ...]]
-    
-    Fetch data files from the cloud.
-    
+
     positional arguments:
       targets               DVC files (stages).
 ```
