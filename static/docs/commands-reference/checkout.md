@@ -105,7 +105,8 @@ recommend creating a virtual environment with `virtualenv` or a similar tool:
     $ source .env/bin/activate
 ```
 
-Now, we can install requirements for the project:
+Now, we can install requirements for the project, which include DVC with S3
+support:
 
 ```dvc
     $ pip install -r requirements.txt
@@ -126,7 +127,6 @@ The existing pipeline looks almost like in this
     ├── train.dvc
     └── src
         └── <code files here>
-
 ```
 
 We have these tags in the repository that represent different iterations of
@@ -139,10 +139,10 @@ solving the problem:
     bigram       <- use bigrams to improve the model
 ```
 
-This project comes with a predefined S3
-[remote storage](https://man.dvc.org/remote). We can now just run `dvc pull`
-that will fetch and checkout the most recent `model.pkl`, `data.xml` and other
-files that are under DVC control, the model file checksum
+This project comes with a predefined S3 [remote
+storage](https://man.dvc.org/remote). We can now just run `dvc pull` that will
+fetch and checkout the most recent `model.pkl`, `data.xml`, and other files that
+are under DVC control. The model file checksum
 `3863d0e317dee0a55c4e59d2ec0eef33` is specified in the `train.dvc` file:
 
 ```dvc

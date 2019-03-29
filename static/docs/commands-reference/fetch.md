@@ -114,130 +114,131 @@ specified in DVC files currently in the workspace are considered by `dvc fetch`
 
 ## Examples
 
-Let's add a couple remotes to the project first, so DVC can control our files in
-them. (See `dvc remote add` for more details.) `myremote` will be the default, a
-LOCAL remote; `backup` will be an SSH remote:
+To explore `dvc fetch` let's consider a simple workspace with several stages and
+a few Git tags. Then we can see what happens with `git` and `dvc fetch` as we
+shift from tag to tag.
 
-```dvc
-    $ dvc remote add -d myremote ../dir
-    $ dvc remote add backup ssh://user@example.com/path/to/dir
+<details>
+
+### Click and expand to setup the project
+
+This step is optional, and you can run it only if you want to run this examples
+in your environment. First, you need to download the project:
+
+```shell
+    $ git clone https://github.com/iterative/example-get-started
 ```
 
-Let's now [add](/doc/get-started/add-files) and
-[push](/doc/get-started/share-data) data files to the remotes, so they can be
-fetch `targets` later. For example, if a `data.xml` file is placed in the
-workspace:
+Second, let's install the requirements. But before we do that, we **strongly**
+recommend creating a virtual environment with `virtualenv` or a similar tool:
 
-```dvc
-    $ dvc add data.xml
-    Saving 'data.xml' to cache '.dvc/cache'.
-    Saving information to 'data.xml.dvc'.
-    ...
-
-    $ dvc push data.xml.dvc
-    [#################################] 100% data.xml
-
-    $ dvc push -r backup data.xml.dvc
-    [#################################] 100% data.xml
+```shell
+    $ cd example-get-started
+    $ virtualenv -p python3 .env
+    $ source .env/bin/activate
 ```
 
-DVC file `data.xml.dvc` now describes `data.xml` as its output file, and both
-the default remote and the SSH remote `backup` hold a copy of the data file.
-Let's say the project also contains an `images` directory we want DVC to
-control:
+Now, we can install requirements for the project, which include DVC with S3
+support:
 
-```dvc
-    $ dvc add images
-    Saving 'images' to cache '.dvc/cache'.
-    Linking directory 'images'.
-    Saving information to 'images.dvc'.
-    ...
-
-    $ dvc push images.dvc
-    ...
-    [#################################] 100% images
+```shell
+    $ pip install -r requirements.txt
 ```
 
-The `images` directory and its files are now held in the default remote only.
-The following examples assume the same project is checked out clean in another
-location or machine altogether.
+</details>
 
-Let's see what happens when someone checks out the project in a fresh location
-(or if you clear the local cache), and then use the command in different
-scenarios:
+The existing pipeline looks almost like in this
+[example](/doc/get-started/example-pipeline):
+
+```shell
+    .
+    ├── data
+    │   └── data.xml.dvc
+    ├── evaluate.dvc
+    ├── featurize.dvc
+    ├── prepare.dvc
+    ├── train.dvc
+    └── src
+        └── <code files here>
+```
+
+We have these tags in the repository that represent different iterations of
+solving the problem:
+
+```shell
+    $ git tag
+
+    baseline     <- first simple version of the model
+    bigram       <- use bigrams to improve the model
+```
 
 ## Examples: Default behavior
 
-Used with no arguments, `dvc fetch` will download all assets needed by all DVC
-files in the current branch, including for directories:
+This project comes with a predefined S3 [remote
+storage](https://man.dvc.org/remote). We can now just run `dvc fetch`
+that will download the most recent `model.pkl`, `data.xml`, and other files that
+are under DVC control into our local cache:
 
-```dvc
-    $ dvc status -c
-    Preparing to collect status from ../dir
-    [##########################] 100% Collecting information
-    	deleted:            data.xml images/0001.jpg
-    	                             images/0002.jpg
-    	                             images/0003.jpg
+```shell
+    $ ldvc status -c    <- compares local cache vs default remote
 
     $ dvc fetch
-    (1/4): [##########################] 100% data.xml
-    (2/4): [##########################] 100% images/0001.jpg
-    (3/4): [##########################] 100% images/0002.jpg
-    (4/4): [##########################] 100% images/0003.jpg
+    ...
+    (2/6): [##############################] 100% data/features/test.pkl
+    (3/6): [##############################] 100% model.pkl
+    (4/6): [##############################] 100% data/features/train.pkl
+    ...
 
-    $ dvc status -c
-    Preparing to collect status from ../dir
-    [########################] 100% Collecting information
-    Pipeline is up to date. Nothing to reproduce.
+    $ tree .dvc
+    .dvc
+    ├── cache           <- dir .dvc/cache was created and populated
+    │   ├── 38
+    │   │   └── 63d0e317dee0a55c4e59d2ec0eef33
+    │   ├── 42
+    │   │   └── c7025fc0edeb174069280d17add2d4.dir
+    │   ├── ...
+    ├── config
+    ├── ...
 ```
 
-> `dvc status -c` compares the contents of our local cache against those in the
-default remote (for the current branch).
+As seen above, used without arguments, `dvc fetch` downloads all assets needed
+by all DVC files in∑ the current branch, including for directories. The checksums
+`3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
+correspond to the `model.pkl` file and `data/features/` directory, respectively.
+
+```shell
+    $ dvc checkout      <- links files from local cache to workspace
+    Checking out '{'scheme': 'local', 'path': '.../example-get-started/model.pkl'}' with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
+    Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/features'}' with cache '42c7025fc0edeb174069280d17add2d4.dir'.
+    ...
+```
 
 ## Examples: Specific stages
 
 Fetch only outputs of a specific stage bt specifying its DVC file (target
 stage):
 
-```dvc
-    $ ls -la .dvc/cache 
-    total 0
-    drwxr-xr-x  2 usr  staff   64 Mar 16 13:28 .
-    drwxr-xr-x  8 usr  staff  256 Mar 16 13:15 ..
-
-    $ dvc fetch data.xml.dvc
-    Preparing to download data from '../dir'
+```shell
+    $ dvc fetch prepare.dvc
     ...
-    [##############################] 100% Analysing status.
-    [##############################] 100% data.xml
+    (1/2): [##############################] 100% data/prepared/test.tsv
+    (2/2): [##############################] 100% data/prepared/train.tsv
 
-    $ ls -la .dvc/cache     
-    total 0
-    drwxr-xr-x  3 usr  staff   96 Mar 16 13:29 .
-    drwxr-xr-x  8 usr  staff  256 Mar 16 13:29 ..
-    drwxr-xr-x  3 usr  staff   96 Mar 16 13:29 d4
+    $ tree .dvc/cache      
+.dvc/cache
+├── 42
+│   └── c7025fc0edeb174069280d17add2d4.dir
+├── 58
+│   └── 245acfdc65b519c44e37f7cce12931
+├── 68
+│   └── 36f797f3924fb46fcfd6b9f6aa6416.dir
+└── 9d
+    └── 603888ec04a6e75a560df8678317fb
 ```
 
-> As you can see by listing the `.dvc/cache` directory with `ls`, the `d4`
-directory containing this branch version of `data.xml` was downloaded from the
-default remote into the local cache. See [DVC Files and
-Directories](/doc/user-guide/dvc-files-and-directories) for more information on
-the local cache directory.
-
-## Examples: Specific remotes
-
-Fetch all targets stored in a specific remote
-
-```dvc
-    $ dvc fetch -r backup
-    
-    [#################################] 100% data.xml
-```
-
-> Specifying only a remote will get all the files needed for the current branch
-pipeline which are held in that remote. Notice that it does not necessarily
-include everything since we're able to distribute the asset storage in different
-remotes.
+Cache entries for the necessary directories, as well as the actual
+`data/prepared/test.tsv` and `data/prepared/train.tsv` files were download,
+checksums shown above.
 
 ## Examples: With dependencies
 
