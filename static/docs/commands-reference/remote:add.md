@@ -8,7 +8,6 @@ See also [list](/doc/commands-reference/remote-list),
 and [remove](/doc/commands-reference/remote-remove) commands to manage data
 remotes.
 
-
 ## Synopsis
 
 ```usage
@@ -31,6 +30,12 @@ location(see LOCAL example below). Whenever possible DVC will create a remote
 directory if does not exists yet. It won't create an S3 bucket though and will
 rely on default access settings.
 
+> If you installed DVC via `pip`, and depending on the remote type you plan to
+use you might need to install optional dependencies: `s3`, `gs`, `azure`, `ssh`.
+Or `all_remotes` to include them all. The command should look like this:
+`pip install -U dvc[s3]` - it installs `boto3` library along with DVC to support
+AWS S3 storage.
+
 This command creates a section in the DVC
 [config file](/doc/user-guide/dvc-files-and-directories) and optionally
 assigns a default remote in the core section if the `--default` option is used:
@@ -47,7 +52,7 @@ a `--remote` option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`
 this option can be left off the command line and the default remote will be
 used instead.
 
-Use `dvc config` to unset/change the default remote as so: 
+Use `dvc config` to unset/change the default remote as so:
 `dvc config -u core.remote`.
 
 ## Options
@@ -66,7 +71,7 @@ specific settings in your config, that you don't want to track and share through
 
 * `-d`, `-default` - commands like `dvc pull`, `dvc push`, `dvc fetch` will be
 using this remote by default to save or retrieve data files unless `-r` option
-is specified for them. 
+is specified for them.
 
 <details>
 

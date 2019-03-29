@@ -1,73 +1,38 @@
 # Compare Experiments
 
-DVC makes it easy to iterate on your project using
-[Git branches](https://git-scm.com/about/branching-and-merging) or Git tags.
-It provides a way to try different ideas, keep track of them, switch back and
-forth. To find the best performing experiment or track the progress, a
-special *metric* output type is supported in DVC.
+DVC makes it easy to iterate on your project using Git commits with tags or Git
+branches. It provides a way to try different ideas, keep track of them, switch
+back and forth. To find the best performing experiment or track the progress, a
+special *metric* output type is supported in DVC (described in one of the
+previous steps).
 
-Metric file is usually a plain text file (though file of any complexity and
-structure could be used, check `dvc metrics` to get more details) with any
-project-specific numbers - `AUC`, `ROC`, etc. With a `-M` option of `dvc run`
-you can specify outputs that contain your project metrics:
-
-<details>
-
-### Expand to prepare the evaluation stage
-
-To provide an unbiased evaluation of the final model fitted on the training data
-set, we are going to use the test data set. We need to adjust the feature
-extraction to take into account this split for training and test datasets. No
-code modifications are required, let's just change the stage definition:
+Let's run evaluate for the latest `bigram` experiment we created in one of the
+previous steps. It mostly takes just running the `dvc repro`:
 
 ```dvc
     $ git checkout master
     $ dvc checkout
-    $ dvc run -d featurization.py -d data.tsv -d data-test.tsv \
-              -o matrix.pkl -o matrix-test.pkl \
-              python featurization.py data.tsv matrix.pkl \
-                                      data-test.tsv matrix-test.pkl
-    $ git commit .gitignore matrix.pkl.dvc -m "change featurization stage"
+    $ dvc repro evaluate.dvc
 ```
 
-DVC will ask for confirmation to overwrite the stage. Type `yes` and proceed.
-
-</details>
-
-```dvc
-    $ dvc run \
-          -d evaluate.py -d model.pkl -d matrix-test.pkl \
-          -M auc.metric \
-          python evaluate.py model.pkl matrix-test.pkl auc.metric
-```
-
-`evaluate.py` calculates AUC value using the test data set. `auc.metric` -
-in this case, it's just a plain text file with a single number inside. A 
-`dvc metrics show` command provides a way to compare different experiments:
-
-<details>
-
-### Expand to run an evaluation for bigrams
-
-To evaluate the `bigram` model we need to merge the changes and reproduce the
-metric file:
+`git checkout master` and `dvc checkout` commands ensure that we have the latest
+experiment code and data respectively. And `dvc repro`, as we discussed in the
+[reproduce](/doc/get-started/reproduce) step, is a way to run all the necessary
+commands to build the model and measure its performance.
 
 ```dvc
-    $ git add auc.metric auc.metric.dvc
-    $ git commit -m "add evaluation step with AUC metric"
-    $ git checkout bigram && dvc checkout
-    $ git merge -X theirs master 
-    $ dvc repro auc.metric.dvc
     $ git commit -a -m "evaluate bigram model"
+    $ git tag -a "bigram-experiment" -m "bigrams"
 ```
-
-</details>
+Now, we can use `-T` option of the `dvc metrics show` command to see the
+difference between the `baseline` and `bigrams` experiments:
 
 ```dvc
-    $ dvc metrics show -a
-    master:
+    $ dvc metrics show -T
+
+    baseline-experiment:
         auc.metric: 0.588765
-    bigram:
+    bigram-experiment:
         auc.metric: 0.620421
 ```
 

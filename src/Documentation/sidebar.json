@@ -4,6 +4,7 @@
     "folder": "/static/docs/get-started",
     "indexFile": "index.md",
     "files": [
+      "agenda.md",
       "install.md",
       "initialize.md",
       "configure.md",
@@ -14,15 +15,18 @@
       "pipeline.md",
       "visualize.md",
       "reproduce.md",
+      "metrics.md",
       "experiments.md",
       "compare-experiments.md",
+      "older-versions.md",
       "example-versioning.md",
       "example-pipeline.md"
     ],
     "labels": {
       "connect-code-and-data.md": "Add Transformations",
       "example-pipeline.md": "Example: Pipelines",
-      "example-versioning.md": "Example: Versioning"
+      "example-versioning.md": "Example: Versioning",
+      "older-versions.md": "Get Older Files"
     }
   },
   {

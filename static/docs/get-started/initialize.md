@@ -9,7 +9,7 @@ If you don't have a directory for your project already, create it now with
 these commands:
 
 ```dvc
-    $ mkdir myrepo && cd myrepo
+    $ mkdir example-get-started && cd example-get-started
     $ git init
 ```
 

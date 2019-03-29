@@ -12,6 +12,7 @@ import python from 'react-syntax-highlighter/languages/hljs/python'
 import yaml from 'react-syntax-highlighter/languages/hljs/yaml'
 import ini from 'react-syntax-highlighter/languages/hljs/ini'
 import bash from 'react-syntax-highlighter/languages/hljs/bash'
+import diff from 'react-syntax-highlighter/languages/hljs/diff'
 import vim from 'react-syntax-highlighter/languages/hljs/vim'
 import usage from './lang/usage'
 import dvc from './lang/dvc'
@@ -31,6 +32,7 @@ registerLanguage('yaml', yaml)
 registerLanguage('ini', ini)
 registerLanguage('bash', bash)
 registerLanguage('vim', vim)
+registerLanguage('diff', diff)
 
 function flatten(text, child) {
   return typeof child === 'string'
