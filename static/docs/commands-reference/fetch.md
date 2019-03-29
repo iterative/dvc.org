@@ -1,10 +1,8 @@
 # fetch
 
-Get files that are under DVC control from remote storage into the local cache.
-Fetching means downloading from the
-[remote](https://dvc.org/doc/commands-reference/remote#description) unless the
-files in question already exist in the local cache, in which case nothing is
-done.
+Get files that are under DVC control from
+[remote](/doc/commands-reference/remote#description) storage into the local
+cache.
 
 ## Synopsis
 
@@ -22,38 +20,12 @@ done.
 
 ## Description
 
-When checking out an existing project repository, files under DVC control should
-exist in a remote, but won't be in your local machine. (Refer to `dvc remote`
-for more information on DVC remotes.) These necessary data or model files
-are be listed as dependencies or outputs in a DVC file (target stage) however.
-(See [DVC File Format](https://dvc.org/doc/user-guide/dvc-file-format) for  more
-information on dependencies and outputs.)
-
-`dvc fetch` ensures that the files needed for a DVC file to be
-[reproduced](/doc/get-started/reproduce) exist in the local cache. If no
-`targets` are specified, the set of data files to fetch is determined by
-analyzing all `.dvc` files in the current branch, unless `--all-branches` or
-`--all-tags` is specified.
-
-Note, `dvc push`, `dvc fetch`, and `dvc pull` are related in that these 3
-commands perform data synchronization among local and remote storage. The
-specific way in which the set of files to push/fetch/pull is determined
-begins with calculating the checksums of the files in question, when these
-are [added](https://dvc.org/doc/get-started/add-files) to DVC. File checksums
-are then stored in the corresponding DVC files (usually saved in a Git
-branch). Only the checksums specified in DVC files currently in the workspace
-are considered by `dvc fetch` (unless the `-a` or `-T` options are used).
-
-The default remote is used unless `--remote` is specified. See `dvc remote add`
-for more information on how to configure different remote storage providers.
-
-Fetching brings files in from a remote to the local cache, making them 
+The `dvc fetch` command is a means to download files from remote storage into
+the local cache, but not directly into the workspace. This makes the data files
 available for linking (or copying) into the workspace. (Refer to
-[dvc config cache.type](https://dvc.org/doc/commands-reference/config#cache).)
-
-Note, `dvc fetch` is performed automatically by `dvc pull` when the target stage
-files are not already in the local cache. Specifically,
-`dvc pull` = `dvc fetch` + `dev checkout`:
+[dvc config cache.type](/doc/commands-reference/config#cache).)
+Along with `dvc checkout`, it's performed automatically by `dvc pull` when the
+target stage files are not already in the local cache:
 
 ```
 Controlled files             Commands
@@ -72,10 +44,37 @@ Controlled files             Commands
    workspace
 ```
 
+Fetching could be useful then first checking out an existing DVC project, since
+files under DVC control could already exist in remote storage, but won't be in
+your local cache. (Refer to `dvc remote` for more information on DVC remotes.)
+These necessary data or model files are listed as dependencies or outputs
+in a DVC file (target stage) so they are required to
+[reproduce](/doc/get-started/reproduce) the pipeline. (See
+[DVC File Format](/doc/user-guide/dvc-file-format) for more information on
+dependencies and outputs.)
+
+`dvc fetch` ensures that the files needed for a DVC file to be
+[reproduced](/doc/get-started/reproduce) exist in the local cache. If no
+`targets` are specified, the set of data files to fetch is determined by
+analyzing all `.dvc` files in the current branch, unless `--all-branches` or
+`--all-tags` is specified.
+
+The default remote is used unless `--remote` is specified. See `dvc remote add`
+for more information on how to configure different remote storage providers.
+
+`dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
+perform data synchronization among local and remote storage. The specific way in
+which the set of files to push/fetch/pull is determined begins with calculating
+the checksums of the files in question, when these are
+[added](/doc/get-started/add-files) to DVC. File checksums are then stored in
+the corresponding DVC files (usually saved in a Git branch). Only the checksums
+specified in DVC files currently in the workspace are considered by `dvc fetch`
+(unless the `-a` or `-T` options are used).
+
 ## Options
 
 - `-r REMOTE`, `--remote REMOTE` - name of the
-  [remote storage](https://dvc.org/doc/commands-reference/remote#description)
+  [remote storage](/doc/commands-reference/remote#description)
   to fetch from (see `dvc remote list`). If not specified, the default 
   remote is used (see `dvc config core.remote`). The argument `REMOTE` is a
   remote name defined using the `dvc remote` command.
@@ -83,20 +82,20 @@ Controlled files             Commands
 - `-d`, `--with-deps` - fetch cache by tracking dependencies to the named
   target stages. This option only has effect when one or more `targets` are
   specified. By traversing the dependencies, DVC searches backward through the
-  pipeline from the named target(s). This means DVC will not fetch files needed
-  later in the pipeline than the named target(s).
+  pipeline from the named target(s). This means DVC will not fetch files
+  referenced later in the pipeline than the named target(s).
 
 - `-R`, `--recursive` - this option tells DVC that `targets` are
   directories (not DVC files), and to traverse them recursively. All DVC 
   files found will be read in order to determine the set of data files to fetch.
 
-- `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to 
-  handle the downloading of files from the remote. Using more jobs may 
-  improve the total download speed if a combination of small and large files 
-  are being fetched.
+- `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
+  the downloading of files from the remote. Using more jobs may improve the
+  total download speed if a combination of small and large files are being
+  fetched.
   The default value is `4 * cpu_count()`. For SSH remotes default is 4.
-  > Note, this applies only to local remotes and for SSH remotes. (See `dvc 
-  remote` for more information about  remotes.)
+  > Note, this option applies only to fetching from local remotes or from SSH 
+  remotes. (See `dvc remote` for more information about remotes.)
 
 - `-a`, `--all-branches` - fetch cache for all branches, not just the active
   one. This means that you'll the files needed to reproduce different
@@ -225,7 +224,7 @@ stage):
 from the default remote into the local cache.
 See
 [DVC Files and
-Directories](https://dvc.org/doc/user-guide/dvc-files-and-directories)
+Directories](/doc/user-guide/dvc-files-and-directories)
 for more information on the local cache directory.
 
 ## Examples: Specific remotes
