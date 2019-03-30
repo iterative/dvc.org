@@ -84,9 +84,9 @@ Model Files](/doc/use-cases/share-data-and-model-files).
   which is specified in the `core.remote` config option.  Otherwise the
   comparison will be against the remote specified in the `--remote` option.
 
-* `-r REMOTE`, `--remote REMOTE` - specifies which remote cache (see `dvc remote
-  list`) to compare against. The argument, `REMOTE`, is a remote name defined
-  using the `dvc remote` command. Implies `--cloud`.
+* `-r REMOTE`, `--remote REMOTE` - specifies which remote storage (see
+  `dvc remote list`) to compare against. The argument, `REMOTE`, is a remote
+  name defined using the `dvc remote` command. Implies `--cloud`.
 
 * `-a`, `--all-branches` - compares cache content against all Git branches.
   Instead of checking just the currently checked out workspace, it checks

@@ -13,7 +13,6 @@ Uploads files and directories under DVC control to the
 
     positional arguments:
       targets               DVC files.
-
 ```
 
 ## Description
@@ -109,10 +108,11 @@ backward through the pipeline to find data files to push.
 
 ## Examples
 
-Using the `dvc push` command remote storage must be defined. For an existing
-project a remote is usually defined and you can use `dvc remote list` to check
-existing remotes. Just to remind how it is done and set a context for the
-example, let's define an SSH remote with the `dvc remote add` command:
+For using the `dvc push` command, remote storage must be defined. For an
+existing project a remote is usually defined and you can use `dvc remote
+list` to check existing remotes. Just to remind how it is done and set a
+context for the example, let's define an SSH remote with the `dvc remote add`
+command:
 
 ```dvc
     $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
