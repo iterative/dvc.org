@@ -177,7 +177,7 @@ download the most recent `model.pkl`, `data.xml`, and other files that are under
 DVC control into our local cache:
 
 ```dvc
-    $ dvc status -c
+    $ dvc status --cloud
     ...
         deleted:            model.pkl
         deleted:            data/features/...
@@ -201,7 +201,7 @@ DVC control into our local cache:
     ├── ...
 ```
 
-> `dvc status -c` compares local cache vs default remote
+> `dvc status --cloud` (or `-c`) compares local cache vs default remote.
 
 As seen above, used without arguments, `dvc fetch` downloads all assets needed
 by all DVC files in the current branch, including for directories. The checksums
@@ -217,8 +217,11 @@ correspond to the `model.pkl` file and `data/features/` directory, respectively.
 
 ## Examples: Specific stages
 
-Fetch only outputs of a specific stage bt specifying its DVC file (target
-stage):
+> Please delete the `.dvc/cache/` directory first (with `rm -Rf .dvc/cache`) to
+> follow this example if you tried the previous one (**Default behavior**).
+
+fetch only downloads the data files of a specific stage by specifying the
+corresponding DVC file (target stage):
 
 ```dvc
     $ dvc fetch prepare.dvc
@@ -238,54 +241,68 @@ stage):
         └── 603888ec04a6e75a560df8678317fb
 ```
 
+> Note that `prepare.dvc` is the first stage in our example's implicit pipeline.
+
 Cache entries for the necessary directories, as well as the actual
 `data/prepared/test.tsv` and `data/prepared/train.tsv` files were download,
 checksums shown above.
 
 ## Examples: With dependencies
 
-Demonstrating the `--with-deps` flag requires a larger example. First, assume
-a pipeline has been setup with these stages:
+After following the previous example (**Specific stages**), only the files
+associated with the `prepare.dvc` stage have been fetched. Several
+dependencies/outputs for the full pipeline are still missing from local cache:
 
 ```dvc
-    $ dvc pipeline show
-
-    data/Posts.xml.zip.dvc
-    Posts.xml.dvc
-    Posts.tsv.dvc
-    Posts-test.tsv.dvc
-    matrix-train.p.dvc
-    model.p.dvc
-    Dvcfile
-```
-
-The remote storage has been modified such that the data files in some of these
-stages should be updated into the local cache.
-
-```dvc
-   $ dvc status --cloud
-
-    	deleted:            data/model.p
-	    deleted:            data/matrix-test.p
-	    deleted:            data/matrix-train.p
+   $ dvc status -c
+    ...
+        deleted:            model.pkl
+        deleted:            data/features/test.pkl
+        deleted:            data/features/train.pkl
+        deleted:            data/data.xml
 ```
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
-to retrieve part of the data?
+to retrieve the data up to our third stage, `train.dvc`? We can use the
+`--with-deps` (or `-d`) flag:
 
 ```dvc
-    $ dvc fetch --remote r1 --with-deps matrix-train.p.dvc
+    $ dvc fetch --with-deps train.dvc
+    ...
+    (1/4): [##############################] 100% model.pkl
+    (2/4): [######                        ] 21% data/data.xml
+    (2/4): [##############################] 100% data/features/train.pkl
+    (3/4): [##############################] 100% data/features/test.pkl
+    (4/4): [##############################] 100% data/data.xml
 
-    (1/2): [####################] 100% data/matrix-test.p
-    (2/2): [####################] 100% data/matrix-train.p
+    $ tree .dvc/cache
+    .dvc/cache
+    ├── 38
+    │   └── 63d0e317dee0a55c4e59d2ec0eef33
+    ├── 42
+    │   └── c7025fc0edeb174069280d17add2d4.dir
+    ├── 58
+    │   └── 245acfdc65b519c44e37f7cce12931
+    ├── 68
+    │   └── 36f797f3924fb46fcfd6b9f6aa6416.dir
+    ├── 9d
+    │   └── 603888ec04a6e75a560df8678317fb
+    ├── a3
+    │   └── 04afb96060aad90176268345e10355
+    ├── aa
+    │   └── 35101ce881d04b41d5b4ff3593b423
+    └── dc
+        └── a9c512fda11293cfee7617b66648dc
 ```
 
-With this `dvc fetch` we specified a stage in the middle of the pipeline while
-using `--with-deps`. This started with the named stage and searched backwards
-through the pipeline for data files to download into our local cache. We could
-now use `dvc checkout` to get the updated `matrix-test.p` and `matrix-train.p`
-files into the workspace.
+Feching using `--with-deps` starts with the named stage and searches backwards
+through the pipeline for data files to download into our local cache. All the
+data for the second and third stages ("featurize" and "train") has now been
+downloaded to cache. We could now use `dvc checkout` to get the data files
+needed to reproduce the pipeline up to the third stage (with `dvc repro
+train.dvc`) workspace.
 
-Note though, that the stage named `model.p.dvc` occurs later in the pipeline, so
-its data was not updated. For that reason, `dvc checkout` would be moving a
-previous version of the `model.p` specific data files into the workspace.
+> Note that in this sample project the last stage `evaluate.dvc` doesn't add any
+> more data files than those form previous stages so at this point all the
+> pipeline's files are in local cache and `dvc status -c` would output "Pipeline
+> is up to date. Nothing to reproduce."
