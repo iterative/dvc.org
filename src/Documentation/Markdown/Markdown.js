@@ -330,7 +330,7 @@ export const GithubLink = styled(LightButton)`
     margin: 0 0 15px 0;
   `};
 
-  @media only screen and (max-width: 1170px) {
+  @media only screen and (max-width: 1200px) {
     display: inline-flex;
   }
 

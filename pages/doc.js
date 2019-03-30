@@ -256,7 +256,7 @@ export default class Documentation extends Component {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  max-width: 1170px;
+  max-width: 1200px;
   margin: 0 auto;
   background: white;
   z-index: 2;
@@ -300,10 +300,10 @@ const Backdrop = styled.div`
 `
 
 const Side = styled.div`
-  min-width: 280px;
+  width: 280px;
   background-color: #eef4f8;
 
-  @media only screen and (max-width: 1170px) {
+  @media only screen and (max-width: 1200px) {
     padding-left: 15px;
   }
 
