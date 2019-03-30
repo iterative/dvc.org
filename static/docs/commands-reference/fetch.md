@@ -42,7 +42,7 @@ Controlled files             Commands
    workspace
 ```
 
-Fetching could be useful then first checking out an existing DVC project, since
+Fetching could be useful when first checking out an existing DVC project, since
 files under DVC control could already exist in remote storage, but won't be in
 your local cache. (Refer to `dvc remote` for more information on DVC remotes.)
 These necessary data or model files are listed as dependencies or outputs in a
@@ -90,9 +90,8 @@ specified in DVC files currently in the workspace are considered by `dvc fetch`
 - `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
   the downloading of files from the remote. Using more jobs may improve the
   total download speed if a combination of small and large files are being
-  fetched. The default value is `4 * cpu_count()`. For SSH remotes default is 4.
-  > Note, this option applies only to fetching from local remotes or from SSH 
-  remotes. (See `dvc remote` for more information about remotes.)
+  fetched. The default value is `4 * cpu_count()`. For SSH remotes default is
+  just 4.
 
 - `-a`, `--all-branches` - fetch cache for all branches, not just the active
   one. This means that you'll the files needed to reproduce different versions
@@ -123,14 +122,14 @@ shift from tag to tag.
 This step is optional, and you can run it only if you want to run this examples
 in your environment. First, you need to download the project:
 
-```shell
+```dvc
     $ git clone https://github.com/iterative/example-get-started
 ```
 
 Second, let's install the requirements. But before we do that, we **strongly**
 recommend creating a virtual environment with `virtualenv` or a similar tool:
 
-```shell
+```dvc
     $ cd example-get-started
     $ virtualenv -p python3 .env
     $ source .env/bin/activate
@@ -139,7 +138,7 @@ recommend creating a virtual environment with `virtualenv` or a similar tool:
 Now, we can install requirements for the project, which include DVC with S3
 support:
 
-```shell
+```dvc
     $ pip install -r requirements.txt
 ```
 
@@ -148,7 +147,7 @@ support:
 The existing pipeline looks almost like in this
 [example](/doc/get-started/example-pipeline):
 
-```shell
+```dvc
     .
     ├── data
     │   └── data.xml.dvc
@@ -163,7 +162,7 @@ The existing pipeline looks almost like in this
 We have these tags in the repository that represent different iterations of
 solving the problem:
 
-```shell
+```dvc
     $ git tag
 
     baseline     <- first simple version of the model
@@ -173,12 +172,15 @@ solving the problem:
 ## Examples: Default behavior
 
 This project comes with a predefined S3 [remote
-storage](https://man.dvc.org/remote). We can now just run `dvc fetch`
-that will download the most recent `model.pkl`, `data.xml`, and other files that
-are under DVC control into our local cache:
+storage](https://man.dvc.org/remote). We can now just run `dvc fetch` that will
+download the most recent `model.pkl`, `data.xml`, and other files that are under
+DVC control into our local cache:
 
-```shell
-    $ ldvc status -c    <- compares local cache vs default remote
+```dvc
+    $ dvc status -c
+    ...
+        deleted:            model.pkl
+        deleted:            data/features/...
 
     $ dvc fetch
     ...
@@ -199,12 +201,14 @@ are under DVC control into our local cache:
     ├── ...
 ```
 
+> `dvc status -c` compares local cache vs default remote
+
 As seen above, used without arguments, `dvc fetch` downloads all assets needed
-by all DVC files in∑ the current branch, including for directories. The checksums
+by all DVC files in the current branch, including for directories. The checksums
 `3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
 correspond to the `model.pkl` file and `data/features/` directory, respectively.
 
-```shell
+```dvc
     $ dvc checkout      <- links files from local cache to workspace
     Checking out '{'scheme': 'local', 'path': '.../example-get-started/model.pkl'}' with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
     Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/features'}' with cache '42c7025fc0edeb174069280d17add2d4.dir'.
@@ -216,22 +220,22 @@ correspond to the `model.pkl` file and `data/features/` directory, respectively.
 Fetch only outputs of a specific stage bt specifying its DVC file (target
 stage):
 
-```shell
+```dvc
     $ dvc fetch prepare.dvc
     ...
     (1/2): [##############################] 100% data/prepared/test.tsv
     (2/2): [##############################] 100% data/prepared/train.tsv
 
     $ tree .dvc/cache      
-.dvc/cache
-├── 42
-│   └── c7025fc0edeb174069280d17add2d4.dir
-├── 58
-│   └── 245acfdc65b519c44e37f7cce12931
-├── 68
-│   └── 36f797f3924fb46fcfd6b9f6aa6416.dir
-└── 9d
-    └── 603888ec04a6e75a560df8678317fb
+    .dvc/cache
+    ├── 42
+    │   └── c7025fc0edeb174069280d17add2d4.dir
+    ├── 58
+    │   └── 245acfdc65b519c44e37f7cce12931
+    ├── 68
+    │   └── 36f797f3924fb46fcfd6b9f6aa6416.dir
+    └── 9d
+        └── 603888ec04a6e75a560df8678317fb
 ```
 
 Cache entries for the necessary directories, as well as the actual
