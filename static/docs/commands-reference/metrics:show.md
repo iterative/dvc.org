@@ -32,7 +32,7 @@ command). If `-t` is not specified `-x` is ignored.
 
 * `-t`, `--type` - specify a type of the metric file(s) that will be used to
 determine how to handle `xpath` parameter from down below. Accepted values are:
-`raw`, `json`, `tsv`, `htsv`, `csv`, `hcsv`. If any other value is specified it
+`raw`, `json`, `tsv`, `htsv`, `csv`, `hcsv`. If this parameter is not given, the type can be detected by the file extension automatically if the type is supported. If any other value is specified it
 is ignored and `type` is defaulted to `raw`. `htsv`/`hcsv` are the same
 `tsv`/`csv` but the values in the first row of the file will be used as the
 field names and should be used to address columns in the `--xpath` option.
