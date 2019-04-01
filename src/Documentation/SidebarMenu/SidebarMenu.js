@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 // components
 import DownloadButton from '../../DownloadButton'
 // utils
@@ -43,19 +43,59 @@ export default class SidebarMenu extends React.Component {
                     {/* Section Files */}
                     <Collapse isOpen={isSectionActive} items={files.length}>
                       {files &&
-                        files.map((file, fileIndex) => {
+                        files.map((fileOrGroup, fileIndex) => {
+                          const file = Array.isArray(fileOrGroup)
+                            ? fileOrGroup[0]
+                            : fileOrGroup
+                          const subgroup = Array.isArray(fileOrGroup)
+                            ? fileOrGroup.slice(1)
+                            : null
                           const isFileActive = currentFile === file
+
                           return (
-                            <div key={`file-${fileIndex}`}>
-                              <SectionLink
-                                level={2}
-                                href={getLinkHref(index, file)}
-                                onClick={e => onFileSelect(file, index, e)}
-                                isActive={isFileActive}
-                              >
-                                {labels[file] || startCase(file.slice(0, -3))}
-                              </SectionLink>
-                            </div>
+                            <Fragment>
+                              <div key={`file-${fileIndex}`}>
+                                <SectionLink
+                                  level={2}
+                                  href={getLinkHref(index, file)}
+                                  onClick={e => onFileSelect(file, index, e)}
+                                  isActive={isFileActive}
+                                >
+                                  {labels[file] || startCase(file.slice(0, -3))}
+                                </SectionLink>
+                              </div>
+
+                              {/* Subgroup files */}
+                              {subgroup && (
+                                <Collapse
+                                  isOpen={
+                                    Array.isArray(fileOrGroup) &&
+                                    fileOrGroup.includes(currentFile)
+                                  }
+                                  items={subgroup.length}
+                                >
+                                  {subgroup.map((sub, subIndex) => {
+                                    return (
+                                      <div
+                                        key={`file-${fileIndex}-${subIndex}`}
+                                      >
+                                        <SectionLink
+                                          level={3}
+                                          href={getLinkHref(index, sub)}
+                                          onClick={e =>
+                                            onFileSelect(sub, index, e)
+                                          }
+                                          isActive={currentFile === sub}
+                                        >
+                                          {labels[sub] ||
+                                            startCase(sub.slice(0, -3))}
+                                        </SectionLink>
+                                      </div>
+                                    )
+                                  })}
+                                </Collapse>
+                              )}
+                            </Fragment>
                           )
                         })}
                     </Collapse>
@@ -154,7 +194,7 @@ const SectionLink = styled.a`
   ${props =>
     props.level === 3 &&
     `
-      margin-left: 50px;
+      margin-left: 45px;
 
       &::before {
         display: none;
