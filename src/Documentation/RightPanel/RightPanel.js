@@ -57,7 +57,7 @@ const Wrapper = styled.div`
   position: sticky;
   top: 0;
 
-  @media only screen and (max-width: 1170px) {
+  @media only screen and (max-width: 1200px) {
     display: none;
   }
 

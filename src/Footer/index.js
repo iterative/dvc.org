@@ -1,5 +1,4 @@
 import React from 'react'
-
 import styled from 'styled-components'
 import { columns, container, media } from '../styles'
 
@@ -9,9 +8,9 @@ const SocialLink = ({ src, href, children }) => (
   </Link>
 )
 
-export default () => (
+export default props => (
   <Footer>
-    <Container>
+    <Container wide={props.isDocPage}>
       <Top>
         <Logo href="/">
           <img
@@ -33,16 +32,9 @@ export default () => (
         <Column>
           <Heading>Help</Heading>
           <Links>
-            <Link href="/support">
-              Support
-            </Link>
-            <Link href="/doc/get-started">
-              Get started
-            </Link>
-            <SocialLink
-              src="/static/img/chat.png"
-              href="/chat"
-            >
+            <Link href="/support">Support</Link>
+            <Link href="/doc/get-started">Get started</Link>
+            <SocialLink src="/static/img/chat.png" href="/chat">
               Chat
             </SocialLink>
             <Link href="/doc">Documentation</Link>
@@ -75,17 +67,13 @@ export default () => (
             >
               Github
             </SocialLink>
-            <SocialLink
-              src="/static/img/discord.png"
-              href="/chat"
-            >
+            <SocialLink src="/static/img/discord.png" href="/chat">
               Discord
             </SocialLink>
           </Links>
         </Column>
       </Columns>
-      <Copyright>
-      </Copyright>
+      <Copyright />
     </Container>
   </Footer>
 )
@@ -102,15 +90,14 @@ const Footer = styled.section`
 
 const Container = styled.div`
   ${container};
+  ${props => props.wide && `max-width: 1200px;`};
   padding-top: 64px !important;
   padding-bottom: 44px;
 
   ${media.tablet`
     padding: 64px 61px 44px 67px;
     max-width: auto;
-  `}
-
-  ${media.phablet`
+  `} ${media.phablet`
     padding: 30px 25px;
     max-width: auto;
   `};
@@ -127,7 +114,7 @@ const Columns = styled.div`
   ${columns};
 
   ${media.phablet`
-      justify-content: space-between;
+    justify-content: space-between;
   `};
 `
 
@@ -189,7 +176,4 @@ const Copyright = styled.div`
   padding-bottom: 18px;
   padding-top: 18px;
   font-size: 14px;
-
-  small {
-  }
 `

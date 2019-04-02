@@ -41,7 +41,8 @@
     "labels": {
       "data-and-model-files-versioning.md": "Data & Model Files Versioning",
       "share-data-and-model-files.md": "Share Data & Model Files",
-      "multiple-data-scientists-on-a-single-machine.md": "Shared Development Machine"
+      "multiple-data-scientists-on-a-single-machine.md":
+        "Shared Development Machine"
     }
   },
   {
@@ -70,7 +71,6 @@
       "autocomplete.md": "Shell Autocomplete",
       "plugins.md": "Syntax Highlighting & IDE Integrations",
       "analytics.md": "Anonymized Usage Analytics"
-
     }
   },
   {
@@ -90,20 +90,24 @@
       "install.md",
       "import.md",
       "lock.md",
-      "metrics.md",
-      "metrics:add.md",
-      "metrics:modify.md",
-      "metrics:remove.md",
-      "metrics:show.md",
+      [
+        "metrics.md",
+        "metrics:add.md",
+        "metrics:modify.md",
+        "metrics:remove.md",
+        "metrics:show.md"
+      ],
       "move.md",
       "pipeline.md",
       "push.md",
       "pull.md",
-      "remote.md",
-      "remote:add.md",
-      "remote:list.md",
-      "remote:modify.md",
-      "remote:remove.md",
+      [
+        "remote.md",
+        "remote:add.md",
+        "remote:list.md",
+        "remote:modify.md",
+        "remote:remove.md"
+      ],
       "remove.md",
       "repro.md",
       "root.md",
@@ -180,9 +184,7 @@
   {
     "name": "Changelog",
     "folder": "/static/docs/changelog",
-    "files": [
-      "0.18.md"
-    ],
+    "files": ["0.18.md"],
     "labels": {
       "0.18.md": "v0.12 - v0.18"
     }
