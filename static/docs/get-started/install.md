@@ -10,12 +10,12 @@ The simplest way to install DVC is:
 ```
 
 > Depending on the [remote storage](/doc/commands-reference/remote) type you
-plan to use to keep and share your data you might need to specify one of the
+plan to use to keep and share your data, you might need to specify one of the
 optional dependencies: `s3`, `gs`, `azure`, `ssh`. Or `all_remotes` to include
-them all. The command should look like this: `pip install dvc[s3]` - it will
-install `boto3` library along with DVC to support AWS S3 storage. This is valid
-for `pip install` option only. Other ways to install DVC already include support
-for all remotes.
+them all. The command should look like this: `pip install dvc[s3]` - it
+installs the `boto3` library along with DVC to support the AWS S3 storage. This
+is valid for `pip install` option only. Other ways to install DVC already include
+support for all remotes.
 
 If you have troubles installing it with `pip`, self-contained binary packages
 are provided, use Download button to the left or get them
