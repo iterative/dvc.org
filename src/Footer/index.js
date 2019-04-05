@@ -57,7 +57,7 @@ export default props => (
           <Links>
             <SocialLink
               src="/static/img/twitter.png"
-              href="https://twitter.com/Iterativeai "
+              href="https://twitter.com/DVCorg"
             >
               Twitter
             </SocialLink>

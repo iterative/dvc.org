@@ -69,7 +69,7 @@
       "contributing.md": "Contributing",
       "update-tracked-file.md": "Update a Tracked File",
       "autocomplete.md": "Shell Autocomplete",
-      "plugins.md": "Syntax Highlighting & IDE Integrations",
+      "plugins.md": "Plugins & Integrations",
       "analytics.md": "Anonymized Usage Analytics"
     }
   },
