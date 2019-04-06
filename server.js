@@ -26,7 +26,7 @@ app.prepare().then(() => {
       res.writeHead(301, { 'Location': "https://dvc.org" + doc_pathname })
       res.end()
     } else if (req.headers.host === 'remote.dvc.org') {
-      res.writeHead(301, { 'Location': "https://s3-us-west-2.amazonaws.com/" + pathname})
+      res.writeHead(301, { 'Location': "https://s3-us-west-2.amazonaws.com/dvc-storage/" + pathname})
       res.end()
     } else if (doc.test(pathname)) {
       let normalized_pathname = pathname.replace(/^\/doc[^?\/]*/i, '/doc')
