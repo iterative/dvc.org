@@ -135,8 +135,7 @@ recommend creating a virtual environment with `virtualenv` or a similar tool:
     $ source .env/bin/activate
 ```
 
-Now, we can install requirements for the project, which include DVC with S3
-support:
+Now, we can install requirements for the project:
 
 ```dvc
     $ pip install -r requirements.txt
@@ -171,7 +170,8 @@ solving the problem:
 
 ## Examples: Default behavior
 
-This project comes with a predefined S3 [remote
+This project comes with a predefined HTTP
+[remote
 storage](https://man.dvc.org/remote). We can now just run `dvc fetch` that will
 download the most recent `model.pkl`, `data.xml`, and other files that are under
 DVC control into our local cache:
