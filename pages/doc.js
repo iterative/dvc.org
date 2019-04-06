@@ -273,6 +273,7 @@ const Container = styled.div`
     width: 50%;
     background-color: #eef4f8;
     z-index: -1;
+    pointer-events: none;
   }
 `
 const Backdrop = styled.div`

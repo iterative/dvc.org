@@ -3,6 +3,7 @@ import React, { Fragment } from 'react'
 import DownloadButton from '../../DownloadButton'
 // utils
 import startCase from 'lodash.startcase'
+import includes from 'lodash.includes'
 // styles
 import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
@@ -70,7 +71,7 @@ export default class SidebarMenu extends React.Component {
                                 <Collapse
                                   isOpen={
                                     Array.isArray(fileOrGroup) &&
-                                    fileOrGroup.includes(currentFile)
+                                    includes(fileOrGroup, currentFile)
                                   }
                                   items={subgroup.length}
                                 >
