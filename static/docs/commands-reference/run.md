@@ -121,8 +121,8 @@ considered a non-deterministic for some reason (it means it produces different
 outputs from the same list of inputs). 
 
 * `--remove-outs` - it removes stage outputs before running the command. If
-`--no-exec` specified outputs are removed anyway. See `dvc remove` as well for
-more details.
+`--no-exec` specified outputs are removed anyway. This option is enabled by
+default and deprecated. See `dvc remove` as well for more details.
 
 * `--no-commit` - doesn't save outputs to cache. Useful when running different
 experiments and you don't want to fill up your cache with temporary files.
