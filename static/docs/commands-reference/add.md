@@ -11,7 +11,6 @@ Take a data file or a directory under DVC control.
 
     positional arguments:
       targets                  Input files/directories.
-
 ```
 
 ## Description
@@ -27,20 +26,20 @@ Under the hood a few actions are taken for each file in the target(s):
 2. Move the file content to the DVC cache (default location is `.dvc/cache`).
 3. Replace the file by a link to the file in the cache (see details below).
 4. Create a corresponding DVC file (metafile `.dvc`) and store the checksum to
-  identify the cache entry.
+   identify the cache entry.
 5. Add the _target_ filename to `.gitignore` (if Git is used in this workspace)
-  to prevent it from being committed to the Git repository.
+   to prevent it from being committed to the Git repository.
 6. Instructions are printed showing `git` commands for adding the files to a Git
-  repository. If a different SCM system is being used, use the equivalent
-  command for that system or nothing is printed if `--no-scm` was specified for
-  the repository.
+   repository. If a different SCM system is being used, use the equivalent
+   command for that system or nothing is printed if `--no-scm` was specified for
+   the repository.
 
 The result is data file is added to the DVC cache, and DVC metafiles (`.dvc`)
 can be tracked via Git or other version control system. The stage file
 (metafile) lists the added file as an `out` (output) of the stage, and
-references the DVC cache entry using the checksum. See
-[DVC File Format](/doc/user-guide/dvc-file-format) for the detailed description
-of the DVC _metafile_ format.
+references the DVC cache entry using the checksum. See [DVC File
+Format](/doc/user-guide/dvc-file-format) for the detailed description of the DVC
+_metafile_ format.
 
 By default DVC tries a range of link types (`reflink`, `hardlink`, `symlink`, or
 `copy`) to try to avoid copying any file contents and to optimize DVC file
@@ -53,15 +52,15 @@ A `dvc add` target can be an individual file or a directory. There are two ways
 to work with directory hierarchies with `dvc add`.
 
 1. With `dvc add --recursive`, the hierarchy is traversed and every file is
-  added individually as described above. This means every file has its own
-  `.dvc` file, and a corresponding DVC cache entry is made (unless `--no-commit`
-   flag is added).
-2. When not using `--recursive` a DVC stage file is created for the top of
-  the directory (`dirname.dvc`), and every file in the hierarchy is added to the
-  DVC cache (unless `--no-commit` flag is added), but these files do not have
-  individual DVC files. Instead the DVC file for the directory has a
-  corresponding file in the DVC cache containing references to the files in the
-  directory hierarchy.
+   added individually as described above. This means every file has its own
+   `.dvc` file, and a corresponding DVC cache entry is made (unless
+   `--no-commit` flag is added).
+2. When not using `--recursive` a DVC stage file is created for the top of the
+   directory (`dirname.dvc`), and every file in the hierarchy is added to the
+   DVC cache (unless `--no-commit` flag is added), but these files do not have
+   individual DVC files. Instead the DVC file for the directory has a
+   corresponding file in the DVC cache containing references to the files in the
+   directory hierarchy.
 
 In a DVC project `dvc add` can be used to version control any data artifacts -
 input, itermediate, output files and directories, as well as model files. It is
@@ -216,8 +215,8 @@ directory tree as input to a `dvc run` stage like so:
               python train.py
 ```
 
-To see this whole example go to
-[Example: Versioning](/doc/get-started/example-versioning).
+To see this whole example go to [Example:
+Versioning](/doc/get-started/example-versioning).
 
 Since no top-level DVC file is generated with the `--recursive` option we cannot
 use the directory structure as a whole.
