@@ -39,14 +39,12 @@ SCM, for example when `dvc init` was used with the `--no-scm` option
 
 * `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples: Previous version of the same branch
+## Example
 
 For the setup of our examples we can use the steps in our [Get
 Started](/doc/get-started) guide. Lets assume you've followed them up to the
 [Add Files](https://dvc.org/doc/get-started/add-files) section (or checked out
 the corresponding commit in your Git repo).
-
-> TODO: Use https://github.com/iterative/example-get-started and `git checkout`?
 
 The minimal `dvc diff` command only includes the A reference (`a_ref`) from
 which the difference is to be calculated. The B reference (`b_ref`) defaults to
@@ -63,7 +61,3 @@ Git reference.
 
     added file with size 37.9 MB
 ```
-
-## Examples: Specific target accross branches
-
-> WIP
