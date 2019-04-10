@@ -98,13 +98,12 @@ backward through the pipeline to find data files to push.
   with `-j 1` DVC uploads one file at a time, with `-j 2` it uploads two at a
   time, and so forth. For SSH remotes default is set to 4.
 
-* `-h`, `--help` - shows the help message and exit.
+* `-h`, `--help` - prints the usage/help message, and exit.
 
 * `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information from executing the
-  `dvc push` command.
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 

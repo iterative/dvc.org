@@ -18,9 +18,20 @@ if `--force` is provided.
         -v, --verbose         Be verbose
 ```
 
+## Description
+
 Lock is useful to avoid syncing data from the top of a pipeline and keep
 iterating on the last stages only. In this sense `lock` makes a stage file to
 behave as a `.dvc` file that would be created by `dvc add` ran on outputs.
+
+## Options
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Example
 

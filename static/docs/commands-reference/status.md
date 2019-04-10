@@ -106,11 +106,12 @@ Model Files](/doc/use-cases/share-data-and-model-files).
   retrieve information from remote servers. This only applies when the
   `--cloud` option is used or a remote is given.
 
-* `-v`, `--verbose` - displays detailed tracing information from executing the
-  `dvc status` command.
+* `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   pipeline is up to date, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Example: Simple usage
 

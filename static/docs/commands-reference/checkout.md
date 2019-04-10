@@ -69,6 +69,8 @@ command. In other cases the cache can be pulled from a remote cache using the
   and are missing in the local cache (they are not committed in DVC terms). This
   option controls whether the user will be asked to confirm these files removal.
 
+* `-R`, `--recursive` - performs recursive checkout for target directory.
+
 * `-h`, `--help` - shows the help message and exit.
 
 * `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
@@ -76,8 +78,6 @@ command. In other cases the cache can be pulled from a remote cache using the
 
 * `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
-
-* `-R`, `--recursive` - performs recursive checkout for target directory.
 
 ## Examples
 

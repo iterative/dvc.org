@@ -12,14 +12,18 @@ existing pipelines.
       {show,list}    Use dvc pipeline CMD --help for command-specific help.
         show         Show pipeline.
         list         List pipelines.
-
-    optional arguments:
-      -h, --help     show this help message and exit
-      -q, --quiet    Be quiet.
-      -v, --verbose  Be verbose.
 ```
 
-## show
+## Options
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
+
+# show
 
 Show stages in a pipeline that lead to the specified stage. By default it lists
 stage files (usually `.dvc` files). There are `-c` or `-o` options to list or
@@ -32,9 +36,6 @@ visualize a pipeline commands or data files flow instead.
       targets         DVC files.
 
     optional arguments:
-      -h, --help      show this help message and exit
-      -q, --quiet     Be quiet.
-      -v, --verbose   Be verbose.
       -c, --commands  Print commands instead of paths to DVC files.
       -o, --outs      Print output files instead of paths to DVC files.
       --ascii         Output DAG as ASCII.
@@ -42,7 +43,7 @@ visualize a pipeline commands or data files flow instead.
       --tree          Output DAG as Dependencies Tree.
 ```
 
-**Options**
+## Options
 
 * `-c`, `--commands` - show pipeline as a list (graph, if `--ascii` or `--dot`
 option is specified) of commands instead of paths to DVC files.
@@ -58,8 +59,7 @@ to third party visualization utilities.
 
 * `--tree` - list dependencies tree like recursive directory listing.
 
-
-**Examples**
+## Examples
 
 * Default mode, show stages `output.dvc` recursively depends on:
 
@@ -137,7 +137,7 @@ to third party visualization utilities.
     └── d.file.dvc
 ```
 
-## list
+# list
 
 Show connected groups (pipelines) of DVC stages (files) that are independent of
 each other.
@@ -146,14 +146,9 @@ each other.
     usage: dvc pipeline list [-h] [-q | -v]
 
     List pipelines.
-
-    optional arguments:
-      -h, --help     show this help message and exit
-      -q, --quiet    Be quiet.
-      -v, --verbose  Be verbose.
 ```
 
-**Examples**
+## Examples
 
 * List available pipelines:
 

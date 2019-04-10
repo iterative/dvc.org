@@ -15,8 +15,27 @@ statistics summary, how many files were deleted/changed.
                           a_ref
 ```
 
+## Description
+
+...
+
 ## Options
 
 * `-t TARGET`, `--target TARGET` - Source path to a data file or directory.
   Default None,If not specified, compares all files and directories that are
   under DVC control in the current working space.
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
+
+## Examples: A
+
+...
+
+## Examples: B
+
+...

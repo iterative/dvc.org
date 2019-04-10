@@ -82,12 +82,10 @@ This way you bring data provenance and make your project reproducible.
 
 * `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
-  stages are up to date or if all stages are successfully rerun, otherwise exit
-  with 1.
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information from executing the
-  `dvc add` command.
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples: Single file
 
