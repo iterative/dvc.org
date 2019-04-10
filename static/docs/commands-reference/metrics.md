@@ -34,6 +34,15 @@ a way to compare and pick the best performing experiment variant.
 and [remove](/doc/commands-reference/metrics-remove) commands are available to
 set up and manage DVC metrics.
 
+## Options
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
+
 ## Examples
 
 First, let's create a simple DVC stage file:

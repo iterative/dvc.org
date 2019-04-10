@@ -81,15 +81,14 @@ DVC local cache and updates stage files with the new checksum information.
   outputs. For nondeterministic stages the outputs can vary on each execution,
   meaning the cache cannot be trusted for such stages.
 
-- `-q`, `--quiet` - do not write anything to standard output. The command run by
-  the stage is free to make output irregardless of this flag. Exit with 0 if all
-  stages are up to date or if all stages are successfully rerun, otherwise exit
-  with 1.
+* `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-v`, `--verbose` - displays detailed tracing information from executing the
-  `dvc repro` command.
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  all stages are up to date or if all stages are successfully rerun, otherwise
+  exit with 1. The command run by the stage is free to make output irregardless
+  of this flag.
 
-- `-h`, `--help` - prints the usage/help message, and exit.
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 

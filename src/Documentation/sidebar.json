@@ -79,10 +79,14 @@
     "indexFile": "index.md",
     "files": [
       "add.md",
-      "cache.md",
+      [
+        "cache.md",
+        "cache:dir.md"
+      ],
       "checkout.md",
       "commit.md",
       "config.md",
+      "diff.md",
       "destroy.md",
       "fetch.md",
       "gc.md",
@@ -98,7 +102,11 @@
         "metrics:show.md"
       ],
       "move.md",
-      "pipeline.md",
+      [
+        "pipeline.md",
+        "pipeline:list.md",
+        "pipeline:show.md"
+      ],
       "push.md",
       "pull.md",
       [

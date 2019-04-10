@@ -103,11 +103,12 @@ specified in DVC files currently in the workspace are considered by `dvc fetch`
 - `--show-checksums` - show checksums instead of file names when printing the
   download progress.
 
-- `-v`, `--verbose` - displays detailed tracing information.
+* `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - do not write anything to standard output.
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
 
-- `-h`, `--help` - prints the usage/help message, and exit.
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 

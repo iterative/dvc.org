@@ -2,16 +2,10 @@
 
 This command initializes a DVC environment in a current Git repository.
 
+## Synopsis
+
 ```usage
     usage: dvc init [-h] [-q] [-v] [--no-scm]
-
-    optional arguments:
-      -h, --help     show this help message and exit.
-      -q, --quiet    Be quiet.
-      -v, --verbose  Be verbose.
-      --no-scm       Initiate dvc in directory that is not tracked by any scm
-                     tool (e.g. git).
-      -f, --force    Overwrite '.dvc' if it exists. Will remove all local cache.
 ```
 
 ## Options
@@ -19,8 +13,15 @@ This command initializes a DVC environment in a current Git repository.
 * `--no-scm` - skip Git specific initializations, `.dvc/.gitignore` will not be
 populated and added to Git.
 
-* `-f|--force` - remove `.dvc` if it exists before initialization. Will remove
+* `-f`, `--force` - remove `.dvc` if it exists before initialization. Will remove
 all local cache. Useful when first `dvc init` got corrupted for some reason.
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Details
 

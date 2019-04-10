@@ -128,6 +128,13 @@ default and deprecated. See `dvc remove` as well for more details.
 experiments and you don't want to fill up your cache with temporary files.
 Use `dvc commit` when you are ready to save your results to cache.
 
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
+
 ## Examples
 
 * A trivial example to play with, try different set of options to see how they

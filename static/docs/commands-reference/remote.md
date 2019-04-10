@@ -51,6 +51,15 @@ Alternatively, `dvc config` can be used or these files could be edited manually.
 For the typical process to share the project via remote, see
 [Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
 
+## Options
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
+
 ## Examples
 
 1. Let's for simplicity add a default local remote:
