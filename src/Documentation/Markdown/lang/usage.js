@@ -36,7 +36,7 @@ var _javascript = function(hljs) {
               built_in:
               'help dvc init add import checkout run pull push fetch status repro ' +
               'remove move gc config remote metrics install root lock unlock ' +
-              'pipeline destroy unprotect commit cache',
+              'pipeline destroy unprotect commit cache diff tag pkg',
             },
             className: 'strong',
           }
