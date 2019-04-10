@@ -2,17 +2,24 @@
 
 Install dvc hooks into the repository
 
+## Synopsis
+
 ```usage
     usage: dvc install [-h] [-q] [-v]
-
-    optional arguments:
-        -h, --help            show this help message and exit
-        -q, --quiet           Be quiet.
-        -v, --verbose         Be verbose.
 ```
+
 ## Installed hooks
 - pre-commit : dvc status
 - post-checkout : dvc checkout
+
+## Options
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 

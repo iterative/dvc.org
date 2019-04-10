@@ -9,15 +9,21 @@ Record changes to the repository by saving outputs to cache.
       targets               DVC files.
 
     optional arguments:
-      -h, --help            show this help message and exit
-      -q, --quiet           Be quiet.
-      -v, --verbose         Be verbose.
       -f, --force           Commit even if checksums for dependencies/outputs
                             changed.
       -d, --with-deps       Commit all dependencies of the specified target.
       -R, --recursive       Commit cache for subdirectories of the specified
                             directory.
 ```
+
+## Options
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 

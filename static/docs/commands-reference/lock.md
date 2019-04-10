@@ -11,11 +11,6 @@ if `--force` is provided.
 
     positional arguments:
         targets               DVC files
-
-    optional arguments:
-        -h, --help            show this help message and exit
-        -q, --quiet           Be quiet
-        -v, --verbose         Be verbose
 ```
 
 ## Description
