@@ -27,8 +27,7 @@ and `homebrew` repositories:
 ### Expand to install from deb repository (Ubuntu, Debian)
 
 ```dvc
-    $ wget https://dvc.org/deb/dvc.list
-    $ sudo cp dvc.list /etc/apt/sources.list.d/
+    $ sudo wget https://dvc.org/deb/dvc.list -O /etc/apt/sources.list.d/dvc.list
     $ sudo apt-get update
     $ sudo apt-get install dvc
 ```
@@ -41,10 +40,9 @@ and `homebrew` repositories:
 ### Expand to install from rpm repository (Fedora, CentOS)
 
 ```dvc
-    $ wget https://dvc.org/rpm/dvc.repo
-    $ sudo cp dvc.repo /etc/yum.repos.d/
-    $ sudo dnf update
-    $ sudo dnf install dvc
+    $ sudo wget https://dvc.org/rpm/dvc.repo -O /etc/yum.repos.d/dvc.repo
+    $ sudo yum update
+    $ sudo yum install dvc
 ```
 
 </details>
