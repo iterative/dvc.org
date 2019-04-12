@@ -32,9 +32,9 @@ There are several ways to restrict the stages to rerun, by listing stage file(s)
 as targets, or using the `--single-item`, `--pipeline`, or `--cwd` options.
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
-data files, intermediate or final results. It though saves (unless `--no-commit`
-option is specified) all the data files, intermediate or final results into the
-DVC local cache and updates stage files with the new checksum information.
+data files, intermediate or final results. It saves (unless `--no-commit` option
+is specified) all the data files, intermediate or final results into the DVC
+local cache and updates stage files with the new checksum information.
 
 ## Options
 
