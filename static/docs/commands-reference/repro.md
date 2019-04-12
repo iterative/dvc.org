@@ -73,11 +73,11 @@ DVC local cache and updates stage files with the new checksum information.
   file belongs to. Use `dvc pipeline show target.dvc` to show the entire
   pipeline the named stage belongs to.
   
-- --ignore-build-cache - in case like `... -> A (changed) -> B -> C` it will
+- `--ignore-build-cache` - in case like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B` even if `B` was previously executed with the
-  same inputs from `A`. It might be useful when we have a common dependency
-  among all stages and want to specify it once (for the stage `A` here). For
-  example, if we know that all stages - `A` and below - depend on
+  same inputs from `A` (cached). It might be useful when we have a common
+  dependency among all stages and want to specify it once (for the stage `A`
+  here). For example, if we know that all stages - `A` and below - depend on
   `requirements.txt`, we can specify it only once in `A` and omit in `B` and
   `C`. To be precise - it reproduces all descendants of a changed stage, or the
   stages following the changed stage, even if their direct dependencies did not
