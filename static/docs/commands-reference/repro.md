@@ -7,7 +7,8 @@ dependencies to find only those that have to be rerun.
 ## Synopsis
 
 ```usage
-    usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c CWD] [-m] [--dry] [-i]
+    usage: dvc repro [-h] [-q | -v]
+                     [-f] [-s] [-c CWD] [-m] [--dry] [-i]
                      [-p] [-P] [--ignore-build-cache] [--no-commit]
                      [targets [targets ...]]
 
