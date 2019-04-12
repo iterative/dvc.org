@@ -66,8 +66,11 @@ Now let's print metric values that we are tracking in the current project:
           data/eval.json: {"AUC": "0.624652"}
 ```
 
-Then we can tell DVC an `xpath` for the metric file, so that it can
-output only the value of AUC without any garbage:
+Then we can tell DVC an `xpath` for the metric file, so that it can output
+only the value of AUC.
+In the case of JSON, it uses
+[JSONPath expressions](https://goessner.net/articles/JsonPath/index.html) to
+selectively extract data out of metric files:
 
 ```dvc
     $ dvc metrics modify data/eval.json --type json --xpath AUC
