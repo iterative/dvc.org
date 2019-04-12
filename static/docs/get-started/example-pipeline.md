@@ -30,13 +30,7 @@ nothing to do with DVC so far, it's just a simple preparation:
 ### Expand to learn how to download on Windows
 
 Windows does not ship `wget` utility by default, so you'll need to use
-a browser to download `code.zip` or install it from a third party. We recommend
-using [chocolatey](https://chocolatey.org/). First, if you haven't already,
-install chocolatey using [official guide](https://chocolatey.org/install). Then
-install `wget` and `tar` with the following command in the `Command Prompt`:
-```dvc
-    C:\> choco install wget
-```
+just use your browser to download `code.zip`.
 
 </details>
 
@@ -165,8 +159,8 @@ is automatically added to the `.gitignore` file and a link is created into a cac
 `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
-DVC files describe we can restore the full chain (DAG) of commands we need to
-apply. This is important when you run `dvc repro` to reproduce the final or
+that DVC files describe, we can restore the full chain (DAG) of commands we need
+to apply. This is important when you run `dvc repro` to reproduce the final or
 intermediate result.
 
 Second, you should see by now that the actual data is stored in the `.dvc\cache`

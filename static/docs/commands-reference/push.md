@@ -13,7 +13,6 @@ Uploads files and directories under DVC control to the
 
     positional arguments:
       targets               DVC files.
-
 ```
 
 ## Description
@@ -99,20 +98,20 @@ backward through the pipeline to find data files to push.
   with `-j 1` DVC uploads one file at a time, with `-j 2` it uploads two at a
   time, and so forth. For SSH remotes default is set to 4.
 
-* `-h`, `--help` - shows the help message and exit.
+* `-h`, `--help` - prints the usage/help message, and exit.
 
 * `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information from executing the
-  `dvc push` command.
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 
-Using the `dvc push` command remote storage must be defined. For an existing
-project a remote is usually defined and you can use `dvc remote list` to check
-existing remotes. Just to remind how it is done and set a context for the
-example, let's define an SSH remote with the `dvc remote add` command:
+For using the `dvc push` command, remote storage must be defined. For an
+existing project a remote is usually defined and you can use `dvc remote
+list` to check existing remotes. Just to remind how it is done and set a
+context for the example, let's define an SSH remote with the `dvc remote add`
+command:
 
 ```dvc
     $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory

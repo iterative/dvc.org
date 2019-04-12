@@ -5,7 +5,7 @@ import Nav from '../Nav'
 import throttle from 'lodash.throttle'
 // styles
 import styled from 'styled-components'
-import { container, media } from '../styles'
+import { media } from '../styles'
 
 const MIN_HEIGHT = 78
 
@@ -20,7 +20,6 @@ class TopMenu extends Component {
 
   componentDidMount() {
     this.bodybag = document.getElementById('bodybag')
-    this.isDocPage = window.location.pathname.split('/')[1] === 'doc'
     this.isPhablet = window.innerWidth <= 572
 
     if (!this.isPhablet) {
@@ -36,7 +35,7 @@ class TopMenu extends Component {
   }
 
   handleScroll = e => {
-    if (this.isDocPage) return
+    if (this.props.isDocPage) return
     const scrollTop = e ? e.target.scrollTop : 0
     this.setState({
       scrolled: scrollTop > 25
@@ -44,14 +43,12 @@ class TopMenu extends Component {
   }
 
   render() {
+    const { isDocPage } = this.props
     const { scrolled } = this.state
 
     return (
       <Wrapper>
-        <Container
-          scrolled={this.isDocPage || scrolled}
-          isDocPage={this.isDocPage}
-        >
+        <Container scrolled={isDocPage || scrolled} wide={isDocPage}>
           <Logo href="/">
             <img
               src="/static/img/logo.png"
@@ -88,7 +85,7 @@ const Wrapper = styled.div`
 const Container = styled.section`
   margin: 0 auto;
   padding: 0px 15px;
-  max-width: ${props => (props.isDocPage ? '1170px' : '1005px')};
+  max-width: ${props => (props.wide ? '1200px' : '1005px')};
   min-height: ${MIN_HEIGHT}px;
   width: auto;
 

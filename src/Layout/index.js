@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { withRouter } from 'next/router'
 // components
 import TopMenu from '../TopMenu'
 import Footer from '../Footer'
@@ -7,18 +8,18 @@ import HamburgerMenu from '../HamburgerMenu'
 // utils
 import { initGA, logPageView } from '../utils/ga'
 
-function googleAnalytics() {
-  if (!window.GA_INITIALIZED) {
-    initGA()
-    window.GA_INITIALIZED = true
-  }
-  logPageView()
-}
-
-export default class Layout extends Component {
-
+class Layout extends Component {
   componentDidMount() {
-    googleAnalytics()
+    if (!window.GA_INITIALIZED) {
+      initGA()
+      window.GA_INITIALIZED = true
+    }
+    logPageView()
+  }
+
+  componentWillReceiveProps(nextProps) {
+    const { router } = nextProps
+    this.isDocPage = router.pathname.split('/')[1] === 'doc'
   }
 
   render() {
@@ -26,16 +27,18 @@ export default class Layout extends Component {
 
     return (
       <Wrapper>
-        <TopMenu />
+        <TopMenu isDocPage={this.isDocPage} />
         <HamburgerMenu />
         <Bodybag id="bodybag">
           {children}
-          <Footer />
+          <Footer isDocPage={this.isDocPage} />
         </Bodybag>
       </Wrapper>
     )
   }
 }
+
+export default withRouter(Layout)
 
 const Wrapper = styled.div`
   overflow: hidden;
@@ -50,6 +53,6 @@ const Bodybag = styled.div`
   height: 100%;
   overflow-x: hidden;
   overflow-y: auto;
-  transition: top .2s linear;
+  transition: top 0.2s linear;
   -webkit-overflow-scrolling: touch;
 `

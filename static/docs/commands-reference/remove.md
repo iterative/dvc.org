@@ -15,14 +15,6 @@ want to use in the future or share.
 
     positional arguments:
         targets               DVC files.
-
-    optional arguments:
-        -h, --help            show this help message and exit
-        -q, --quiet           Be quiet.
-        -v, --verbose         Be verbose.
-        -o, --outs            Only remove DVC file outputs (default).
-        -p, --purge           Remove DVC file and all its outputs
-        -f, --force           Force purge.
 ```
 
 Check also [Update Tracked Files](/doc/user-guide/update-tracked-file) to see
@@ -37,6 +29,12 @@ file(s), keep the DVC files.
 
 * `-f`, `--force` - force purge. Skip confirmation prompt.
 
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 
@@ -51,7 +49,6 @@ Let's imagine we have a `data.csv` under DVC control:
 ```
 
 Remove `data.csv` data file:
-
 
 ```dvc
     $ dvc remove data.csv.dvc

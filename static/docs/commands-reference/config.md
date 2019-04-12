@@ -17,15 +17,6 @@ returns current value of the option.
     positional arguments:
         name                  Option name
         value                 Option value
-
-    optional arguments:
-        -h, --help            show this help message and exit
-        -q, --quiet           Be quiet.
-        -v, --verbose         Be verbose.
-        -u, --unset           Unset option.
-        --global              Use global config.
-        --system              Use system config.
-        --local               Use local config.
 ```
 
 ## Options
@@ -42,6 +33,13 @@ of a `.dvc/config`.
 located in `.dvc/config.local` and is Git-ignored. This is useful when you need
 to specify private options in your config, that you don't want to track and
 share through Git.
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## core 
 

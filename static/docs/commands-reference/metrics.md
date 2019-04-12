@@ -34,6 +34,15 @@ a way to compare and pick the best performing experiment variant.
 and [remove](/doc/commands-reference/metrics-remove) commands are available to
 set up and manage DVC metrics.
 
+## Options
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
+
 ## Examples
 
 First, let's create a simple DVC stage file:
@@ -57,8 +66,11 @@ Now let's print metric values that we are tracking in the current project:
           data/eval.json: {"AUC": "0.624652"}
 ```
 
-Then we can tell DVC an `xpath` for the metric file, so that it can
-output only the value of AUC without any garbage:
+Then we can tell DVC an `xpath` for the metric file, so that it can output
+only the value of AUC.
+In the case of JSON, it uses
+[JSONPath expressions](https://goessner.net/articles/JsonPath/index.html) to
+selectively extract data out of metric files:
 
 ```dvc
     $ dvc metrics modify data/eval.json --type json --xpath AUC

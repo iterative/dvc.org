@@ -48,11 +48,18 @@ current branch/commit (unless `-a` or `-T` is specified).
 * `-r`, `--remote` - name of the remote storage to collect unused objects from
 if `-c` option is specified.
 
-* `-j`, `--jobs` - garbage collector parallelism level. Default is
+* `-j`, `--jobs` - garbage collector parallelism level. The default value is
 `4 * cpu_count()`. For SSH remotes default is 4. For now only some phases of GC
 are parallel.
 
 * `-f`, `--force` - force garbage collection. Skip confirmation prompt.
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 

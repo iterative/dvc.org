@@ -14,6 +14,7 @@ import Hamburger from '../src/Hamburger'
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
 import compact from 'lodash.compact'
+import flatten from 'lodash.flatten'
 import { scroller, animateScroll } from 'react-scroll'
 import 'core-js/fn/array/find-index'
 // styles
@@ -65,7 +66,8 @@ export default class Documentation extends Component {
         : this.onSectionSelect(0)
     } else {
       const fileURL = pathname.split('/')[3] // match file from URL
-      const fileIndex = sidebar[sectionIndex].files.findIndex(
+      const sectionFiles = flatten(sidebar[sectionIndex].files)
+      const fileIndex = sectionFiles.findIndex(
         file => kebabCase(file.slice(0, -3)) === fileURL
       )
       if (fileIndex === -1) {
@@ -75,7 +77,7 @@ export default class Documentation extends Component {
       } else {
         this.loadFile({
           section: sectionIndex,
-          file: sidebar[sectionIndex].files[fileIndex],
+          file: sectionFiles[fileIndex],
           parseHeadings: true,
           pageNotFound: false
         })
@@ -106,7 +108,7 @@ export default class Documentation extends Component {
   onSectionSelect = (section, e) => {
     e && e.preventDefault()
     const { indexFile, files } = sidebar[section]
-    const file = indexFile || files[0]
+    const file = indexFile || flatten(files)[0]
     e && this.setCurrentPath(section, indexFile ? undefined : file)
     this.loadFile({ file, section, parseHeadings: false })
     this.setState({
@@ -256,7 +258,7 @@ export default class Documentation extends Component {
 const Container = styled.div`
   display: flex;
   flex-direction: row;
-  max-width: 1170px;
+  max-width: 1200px;
   margin: 0 auto;
   background: white;
   z-index: 2;
@@ -271,6 +273,7 @@ const Container = styled.div`
     width: 50%;
     background-color: #eef4f8;
     z-index: -1;
+    pointer-events: none;
   }
 `
 const Backdrop = styled.div`
@@ -300,10 +303,10 @@ const Backdrop = styled.div`
 `
 
 const Side = styled.div`
-  min-width: 280px;
+  width: 280px;
   background-color: #eef4f8;
 
-  @media only screen and (max-width: 1170px) {
+  @media only screen and (max-width: 1200px) {
     padding-left: 15px;
   }
 

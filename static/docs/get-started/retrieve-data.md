@@ -13,7 +13,7 @@ the current workspace. So, you usually run it after `git clone`, `git pull`, or
 As an easy way to test it:
 
 ```dvc
-    $ rm -f data.xml
+    $ rm -f data/data.xml
     $ dvc pull
 ```
 > Note, make sure that the steps described in

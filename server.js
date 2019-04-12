@@ -21,7 +21,14 @@ app.prepare().then(() => {
     const pkg = /^\/(deb|rpm)\/.*/i
     const chat = /^\/(help|chat)\/?$/i
 
-    if (doc.test(pathname)) {
+    if (req.headers.host === 'man.dvc.org') {
+      const doc_pathname = "/doc/commands-reference" + pathname
+      res.writeHead(301, { 'Location': "https://dvc.org" + doc_pathname })
+      res.end()
+    } else if (req.headers.host === 'remote.dvc.org') {
+      res.writeHead(301, { 'Location': "https://s3-us-west-2.amazonaws.com/dvc-storage" + pathname})
+      res.end()
+    } else if (doc.test(pathname)) {
       let normalized_pathname = pathname.replace(/^\/doc[^?\/]*/i, '/doc')
       if (normalized_pathname !== pathname) {
         res.writeHead(301, { 'Location': normalized_pathname +

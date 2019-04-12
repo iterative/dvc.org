@@ -96,20 +96,20 @@ for more details.
   example with `-j 1` DVC downloads one file at a time, with `-j 2` it downloads
   two at a time, and so forth. For SSH remotes default is set to 4.
 
-* `-h`, `--help` - shows the help message and exit.
+* `-h`, `--help` - prints the usage/help message, and exit.
 
 * `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information from executing the
-  `dvc pull` command.
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 
-Using the `dvc pull` command remote storage must be defined. For an existing
-projects a remote is usually defined and you can use `dvc remote list` to check
-existing remotes. Just to remind how it is done and set a context for the
-example, let's define an SSH remote with the `dvc remote add` command:
+For using the `dvc pull` command, remote storage must be defined. For an
+existing project a remote is usually defined and you can use `dvc remote
+list` to check existing remotes. Just to remind how it is done and set a
+context for the example, let's define an SSH remote with the `dvc remote add`
+command:
 
 ```dvc
     $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
@@ -146,7 +146,7 @@ the `out` section of the named target DVC file.
 
 ## Examples: With dependencies
 
-Demonstrating the `--with-deps` flag requires a larger example.  First, assume
+Demonstrating the `--with-deps` flag requires a larger example. First, assume
 a pipeline has been setup with these stages:
 
 ```dvc
@@ -161,7 +161,7 @@ a pipeline has been setup with these stages:
     Dvcfile
 ```
 
-The remote cache has been modified such that the data files in some of these
+The remote storage has been modified such that the data files in some of these
 stages should be updated into the local cache.
 
 ```dvc

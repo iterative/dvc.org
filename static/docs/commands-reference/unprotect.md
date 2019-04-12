@@ -13,11 +13,6 @@ is physically "unlinked" from the cache and can be safely updated. Check the
     
     positional arguments:
       targets        Data files/directory.
-    
-    optional arguments:
-      -h, --help     show this help message and exit
-      -q, --quiet    Be quiet.
-      -v, --verbose  Be verbose.
 ```
 
 `dvc unprotect` can be an expensive operation (involves copying data), check
@@ -33,6 +28,15 @@ write) and DVC [protected mode](/doc/commands-reference/config#cache) is off.
 
 * *Advanced*. If your [cache type](/doc/commands-reference/config#cache) is set
 to `copy` and DVC [protected mode](/doc/commands-reference/config#cache) is off. 
+
+## Options
+
+* `-h`, `--help` - prints the usage/help message, and exit.
+
+* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
+
+* `-v`, `--verbose` - displays detailed tracing information.
 
 ## Example
 
