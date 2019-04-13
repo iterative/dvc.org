@@ -7,7 +7,8 @@ dependencies to find only those that have to be rerun.
 ## Synopsis
 
 ```usage
-    usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c CWD] [-m] [--dry] [-i]
+    usage: dvc repro [-h] [-q | -v]
+                     [-f] [-s] [-c CWD] [-m] [--dry] [-i]
                      [-p] [-P] [--ignore-build-cache] [--no-commit]
                      [targets [targets ...]]
 
@@ -72,14 +73,20 @@ DVC local cache and updates stage files with the new checksum information.
 - `-p`, `--pipeline` - reproduce the whole pipeline that the specified stage
   file belongs to. Use `dvc pipeline show target.dvc` to show the entire
   pipeline the named stage belongs to.
-
-- `--ignore-build-cache` - reproduce all descendants of a changed stage, or the
+  
+- `--ignore-build-cache` - in case like `... -> A (changed) -> B -> C` it will
+  reproduce `A` first and then `B` even if `B` was previously executed with the
+  same inputs from `A` (cached). It might be useful when we have a common
+  dependency among all stages and want to specify it once (for the stage `A`
+  here). For example, if we know that all stages - `A` and below - depend on
+  `requirements.txt`, we can specify it only once in `A` and omit in `B` and
+  `C`. To be precise - it reproduces all descendants of a changed stage, or the
   stages following the changed stage, even if their direct dependencies did not
   change. Like with the same option on `dvc run`, this is a way to force certain
-  stages to run if they would not otherwise be rerun. This can be useful for
-  pipelines containing stages that produce nondeterministic (semi-random)
-  outputs. For nondeterministic stages the outputs can vary on each execution,
-  meaning the cache cannot be trusted for such stages.
+  stages to run if they would not otherwise be rerun (thus the name). This can
+  be useful also for pipelines containing stages that produce nondeterministic
+  (semi-random) outputs. For nondeterministic stages the outputs can vary on
+  each execution, meaning the cache cannot be trusted for such stages.  
 
 * `-h`, `--help` - prints the usage/help message, and exit.
 

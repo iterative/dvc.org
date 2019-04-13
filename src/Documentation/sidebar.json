@@ -130,6 +130,7 @@
       "init.md": "init",
       "add.md": "add",
       "checkout.md": "checkout",
+      "diff.md": "diff",
       "pull.md": "pull",
       "status.md": "status",
       "repro.md": "repro",
