@@ -9,7 +9,7 @@ Let's get a sample StackOverflow data set to play with:
 ### Expand to learn how to download on Windows
 
 Windows does not ship `wget` utility by default, so you'll need to use a browser
-to download `data.xml`and save it into `data` subdirectory.
+to download `data.xml`and save it into the `data` subdirectory.
 
 </details>
 

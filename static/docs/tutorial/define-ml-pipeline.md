@@ -2,9 +2,18 @@
 
 ## Get data file
 
-To include a data file into your data science environment, you need to copy the 
-file into one of the repository directories. We create a special directory
-`data` for the data files and download a 40MB data archive into this directory.
+To include a data file into your data science environment, you need to copy the
+file into the repository. We'll create a special `data` directory for the data
+files and download a 40MB data archive into this directory.
+
+<details>
+
+### Expand to learn how to download on Windows
+
+Windows does not ship `wget` utility by default, so you'll need to use a browser
+to download `data.xml`and save it into the `data` subdirectory.
+
+</details>
 
 ```dvc
     $ mkdir data
@@ -13,8 +22,8 @@ file into one of the repository directories. We create a special directory
      41M data/Posts.xml.zip
 ```
 
-This `data/Posts.xml.zip` is still just a regular file. Now it is time to move
-the file under DVC control using the `dvc add` command. After executing the
+At this time, `data/Posts.xml.zip` is an untracked regular file. It's time to
+place it under DVC control using the `dvc add` command. After executing the
 command you will see a new file `data/Posts.xml.zip.dvc` and a change in
 `data/.gitignore`. Both of these files have to be committed to the repository.
 
@@ -32,12 +41,12 @@ command you will see a new file `data/Posts.xml.zip.dvc` and a change in
     $ git commit -m 'add source dataset'
 ```
 
-You have probably already noticed that the actual file was not committed to the
-repository. This happened because DVC included the file into `data/.gitignore`
-and Git ignores this data file from now on.
+You have probably already noticed that the actual data file was not committed to
+the repository. The reason is that DVC included the file into `data/.gitignore`,
+so Git ignores this data file from now on.
 
-> DVC will always exclude large data files from the Git repository by including
-them in `.gitignore`.
+> DVC will always exclude data files from the Git repository by listing them in
+`.gitignore`.
 
 ## Data file internals
 
