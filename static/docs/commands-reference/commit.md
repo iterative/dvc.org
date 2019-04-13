@@ -33,25 +33,20 @@ That's where the `dvc commit` command comes into play. It handles that last
 step of adding the file to the DVC cache.
 
 The `dvc commit` command is useful for several scenarios where a file is being
-added, a stage is in development, or takes a long time to run, or must be run on
-another machine with higher compute power. The key is to run DVC commands in a
-mode where data is not immediately committed to the cache (the `--no-commit` or
-`--no-exec` options), and to commit the data as a separate step performed when
-it is certain the data is finalized.
+added, a stage is in development, or one wishes to run commands outside the
+control of DVC. One must first use `dvc unprotect` to allow editing some of the
+data files, and otherwise run DVC commands using the `--no-commit` option.
+See [Update a Tracked File](/doc/user-guide/update-tracked-file) for further
+advice.
 
 * Code or data for a stage is under active development, with rapid iteration of
-  code or configuration or data.  Often there is no purpose for committing
-  intermediate results
-
-
- lots of temporary
-  files in the workspace. Committing those temporary files would clutter up
-  the cache, so it's better to commit them when development is finished.
-* Execution of a stage takes a long time to run, like 24 hours, or requires
-  specialized hardware like GPU's or an HPC cluster. The pipeline and cache
-  might be on one machine, like a laptop, and execution of the long-running
-  stage might be manually coordinated with the data added to the cache using
-  `dvc commit` when ready.
+  code or configuration or data. Run DVC commands using the `--no-commit`
+  option, and use `dvc commit` when the files are finalized.
+* One can always execute the code used in a stage without using DVC, but the
+  output files must first be unprotected. Or one could be developing code or
+  data, repeatedly manually executing the code until it is working. Once it is
+  finished, use `dvc add` or `dvc commit` or `dvc run` where appropriate to
+  add files or DVC stages to the pipeline, or to store data to the cache.
 
 ## Options
 
@@ -126,8 +121,10 @@ We start with unprotecting a file to edit:
     $ dvc unprotect data/data.xml 
 ```
 
-In this example pipeline everything is derived from that file.  We may want to
-change the input data along with changing code in the `src` directory.
+In this example pipeline everything is derived from that file. We may want to
+change the input data, for example to increase the training data set. This step
+lets us safely edit the data file. If we instead wish to edit code in the `src`
+directory it is not necessary to unprotect this file.
 
 To rerun the pipeline without committing data to the cache:
 
@@ -170,9 +167,13 @@ and to the SCM repository:
 ## Example: Adding a data file without immediate commit
 
 Sometimes we want to add a file to a pipeline, but the file is not finalized.
-We do this with the `dvc add --no-commit` command, and after the file content is
-finished we run `dvc commit` to save it in the cache.  Let us take a look at
-what happens in the process.
+In this example pipeline, we might have additional data to use. Rather than add
+that data to `data.xml` we might want to put it in a second file. Then we would
+rewrite scripts like `prepare.py` to use both data files. 
+
+For this example let's only look at the process of using `dvc add --no-commit`
+to add the file without immediately saving it to the cache, and later running
+`dvc commit` to save it to the cache.
 
 In the workspace setup for the previous example, run these commands:
 
@@ -181,6 +182,9 @@ In the workspace setup for the previous example, run these commands:
 ```
 
 Now edit `data2.xml`, it doesn't matter what change you make just change it.
+This mimics having a new data file. Editing the file ensures the copy will have
+a different checksum. If two files happen to have the same checksum, DVC will
+store one entry in the cache for both files.
 
 ```dvc
     $ dvc add data/data2.xml --no-commit
@@ -193,10 +197,20 @@ Now edit `data2.xml`, it doesn't matter what change you make just change it.
         git add data/.gitignore data/data2.xml.dvc
 ```
 
-This created a matching DVC file, added an entry to `.gitignore` and suggests we
-can commit the files to the SCM.
+This created a matching DVC file for `data2.xml`, added an entry to `.gitignore`
+and suggests we can commit the files to the SCM.
 
 ```dvc
+    $ cat data/data.xml.dvc 
+    md5: dd3616a28331a1a47e63dde650ce05f6
+    outs:
+    - cache: true
+      md5: 19c0d5556733569ad5a57c5ffae4247b
+      metric: false
+      path: data/data.xml
+      persist: false
+    wdir: ..
+
     $ cat data/data2.xml.dvc 
     md5: 9383739085d4b2eb95fd34a23384391d
     outs:
@@ -208,18 +222,21 @@ can commit the files to the SCM.
     wdir: ..
 ```
 
-In the DVC file we see a checksum was calculated.  In the DVC cache the first
-two characters of the checksum are used as a directory name, and the file name
-is the remaining characters.  If the file were committed to the cache it would
-appear in the directory `.dvc/cache/9f` but:
+In the DVC file we see a checksum was calculated, and that the checksum indeed
+differs from `data.xml`. In the DVC cache the first two characters of the
+checksum are used as a directory name, and the file name is the remaining
+characters. Therefore, if the file had been committed to the cache it would
+appear in the directory `.dvc/cache/9f`. But:
 
 ```dvc
     $ ls .dvc/cache/9f
     ls: .dvc/cache/9f: No such file or directory
 ```
 
-Then after working with the new file we decide it is ready to be committed to
-the cache.  We will see this:
+Indeed it is not in the cache, as desired.
+
+After working with the new file we decide it is ready to be committed to the
+cache. We will see this:
 
 ```dvc
     $ dvc commit
