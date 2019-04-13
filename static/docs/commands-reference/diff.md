@@ -39,12 +39,44 @@ SCM, for example when `dvc init` was used with the `--no-scm` option
 
 * `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Examples: Previous version of the same branch
 
 For the setup of our examples we can use the steps in our [Get
-Started](/doc/get-started) guide. Lets assume you've followed them up to the
-[Add Files](https://dvc.org/doc/get-started/add-files) section (or checked out
-the corresponding commit in your Git repo).
+Started](/doc/get-started) guide up to the
+[Add Files](https://dvc.org/doc/get-started/add-files) section.
+
+<details>
+
+### Click and expand to setup this example
+
+Start by cloning our sample repo if you don't already have it. Then move into
+the repo and checkout the
+[version](https://github.com/iterative/example-get-started/commit/ed10968bcb0dab72563d05712f24ddfff698c87b)
+corresponding to the add-files section mentioned above
+
+```dvc
+    $ git clone https://github.com/iterative/example-get-started
+    Cloning into 'example-get-started'...
+
+    $ cd example-get-started
+    $ git checkout ed10968
+    Note: checking out 'ed10968'...
+
+    $ dvc pull
+    Preparing to download data from 'https://remote.dvc.org/get-started'
+    ...
+```
+
+Now let's create a virtual environment with `virtualenv` and install the
+requirements.
+
+```dvc
+    $ virtualenv -p python3 .env
+    $ source .env/bin/activate
+    $ pip install -r requirements.txt
+```
+
+</details>
 
 The minimal `dvc diff` command only includes the A reference (`a_ref`) from
 which the difference is to be calculated. The B reference (`b_ref`) defaults to
@@ -54,7 +86,7 @@ Git reference.
 
 ```dvc
     $ dvc diff HEAD^
-    dvc diff from 6a819f8fa053f124f6a5487efc824a8c17366c71 to 612f6caf5c5daeb172167db285efd8b169d41b60
+    dvc diff from df613bce6dc0738f71c62d1748e1edfb3b7e4893 to ed10968bcb0dab72563d05712f24ddfff698c87b
 
     diff for 'data/data.xml'
     +data/data.xml with md5 a304afb96060aad90176268345e10355
