@@ -11,7 +11,7 @@ Let's get a sample StackOverflow data set to play with:
 Windows does not ship `wget` utility by default, so you'll need to use a browser
 to download `data.xml`and save it into `data` subdirectory. To download,
 right-click [this link](https://dvc.org/s3/get-started/data.xml) and click
-`Save link as`.
+`Save link as`(Chrome) or `Save object as`(Firefox).
 
 </details>
 
