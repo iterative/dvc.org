@@ -109,18 +109,25 @@ images** of cats and dogs and 400 labeled images to validate. In summary,
 it's a 43M dataset, with a directory structure like this:
 
 ```sh
-   data/
-       train/                               validation/
-           dogs/                                dogs/
-               dog.1.jpg                            dog.1001.jpg
-               ...                                  ...
-               dog.500.jpg                          dog.1400.jpg
-           cats/                                cats/
-               cat.1.jpg                            cat.1001.jpg
-               ...                                  ...
-               cat.500.jpg                          cat.1400.jpg
-
-   Total size: 43M
+   data
+   ├── train
+   │   ├── dogs
+   │   │   ├── dog.1.jpg
+   │   │   ├── ...
+   │   │   └── dog.500.jpg
+   │   └── cats
+   │       ├── cat.1.jpg
+   │       ├── ...
+   │       └── cat.500.jpg
+   └── validation
+       ├── dogs
+       │   ├── dog.1001.jpg
+       │   ├── ...
+       │   └── dog.1400.jpg
+       └── cats
+           ├── cat.1001.jpg
+           ├── ...
+           └── cat.1400.jpg
 ```
 
 Let's capture the current state of this dataset with `dvc add`:
