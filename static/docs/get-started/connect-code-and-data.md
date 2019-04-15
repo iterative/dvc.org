@@ -27,13 +27,13 @@ After running this, your project structure should look like:
     .
     ├── data
     │   ├── data.xml
-    │   ├── data.xml.dvc
+    │   └── data.xml.dvc
     ├── requirements.txt
-    ├── src
-    │   ├── evaluate.py
-    │   ├── featurization.py
-    │   ├── prepare.py
-    └── └── train.py
+    └── src
+        ├── evaluate.py
+        ├── featurization.py
+        ├── prepare.py
+        └── train.py
 ```
 
 We **strongly** recommend using `virtualenv` or a similar tool to isolate your
@@ -87,11 +87,11 @@ This is how the result should look like now:
 +   │       └── train.tsv
 +   ├── prepare.dvc
     ├── requirements.txt
-    ├── src
-    │   ├── evaluate.py
-    │   ├── featurization.py
-    │   ├── prepare.py
-    └── └── train.py
+    └── src
+        ├── evaluate.py
+        ├── featurization.py
+        ├── prepare.py
+        └── train.py
 ```
 
 This is how `prepare.dvc` looks like internally:
@@ -126,7 +126,7 @@ briefly mention what each of the options that were used in this example mean:
 `-f prepare.dvc` specifies a name for the stage file. It's optional but we
 highly recommend using it to make your project structure more readable.
 
-`-d src/prepare.py` and `-d data/data.xml` mean that that the `prepare.dvc`
+`-d src/prepare.py` and `-d data/data.xml` mean that the `prepare.dvc`
 stage depends on them to produce the result. When you run next time `dvc repro`
 (see the next chapter) DVC will automatically check these dependencies and
 decide if this stage is up to date or not and requires rebuilding.
