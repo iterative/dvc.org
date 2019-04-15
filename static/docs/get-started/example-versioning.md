@@ -105,8 +105,8 @@ install `wget` and `tar` with the following command in the `Command Prompt`:
 ```
 
 This command downloads and extracts our initial dataset - **1000 labeled
-images** of cats and dogs and 400 labeled images to validate. In summary,
-it's a 43M dataset, with a directory structure like this:
+images** for training and 800 labeled images for validatation. In summary,
+it's a 43 MB dataset, with a directory structure like this:
 
 ```sh
    data
@@ -193,21 +193,29 @@ Next command extracts 500 cat and 500 dog images into `data/train`:
 ```
 
 For simplicity we keep the validation dataset the same. Now our dataset has
-**2000 images** to train, and 400 images to validate, with a total size of 67M:
+**2000 images** for training and 800 images for validation, with a total size of
+67 MB:
 
 ```sh
-   data/
-       train/                               validation/
-           dogs/                                dogs/
-               dog.1.jpg                            dog.1001.jpg
-               ...                                  ...
-               dog.1000.jpg                         dog.1400.jpg
-           cats/                                cats/
-               cat.1.jpg                            cat.1001.jpg
-               ...                                  ...
-               cat.1000.jpg                         cat.1400.jpg
-
-   Total size: 67M
+   data
+   ├── train
+   │   ├── dogs
+   │   │   ├── dog.1.jpg
+   │   │   ├── ...
+   │   │   └── dog.1000.jpg
+   │   └── cats
+   │       ├── cat.1.jpg
+   │       ├── ...
+   │       └── cat.1000.jpg
+   └── validation
+       ├── dogs
+       │   ├── dog.1001.jpg
+       │   ├── ...
+       │   └── dog.1400.jpg
+       └── cats
+           ├── cat.1001.jpg
+           ├── ...
+           └── cat.1400.jpg
 ```
 
 Of course, we want to leverage these new labels and train the model again.
