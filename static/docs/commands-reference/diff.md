@@ -128,8 +128,7 @@ of our sample repo in https://github.com/jorgeorpinel/example-get-started/tags.
     diff for 'model.pkl'
     -model.pkl with md5 a66489653d1b6a8ba989799367b32c43
     +model.pkl with md5 3863d0e317dee0a55c4e59d2ec0eef33
-
-    added file with size -202464 Bytes
+    ...
 ````
 
 The output from this command confirms that there's a difference in the
