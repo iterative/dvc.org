@@ -42,12 +42,12 @@ SCM, for example when `dvc init` was used with the `--no-scm` option
 ## Examples: Previous version of the same branch
 
 For the setup of our examples we can use the steps in our [Get
-Started](/doc/get-started) guide up to the
-[Add Files](https://dvc.org/doc/get-started/add-files) section.
+Started](/doc/get-started) guide up to the [Add
+Files](/doc/get-started/add-files) section.
 
 <details>
 
-### Click and expand to setup this example
+### Click and expand to setup example
 
 Start by cloning our sample repo if you don't already have it. Then move into
 the repo and checkout the
@@ -93,3 +93,39 @@ Git reference.
 
     added file with size 37.9 MB
 ```
+
+## Examples: Specific target accross Git references
+
+We can base this example in the [Experiment Metrics](/doc/get-started/metrics)
+and [Compare Experiments](/doc/get-started/compare-experiments) sections of our
+Get Started guide.
+> Our sample already repository has the `bigrams-experiment` and
+`baseline-experiment`
+[tags](https://github.com/jorgeorpinel/example-get-started/tags) respectively.
+
+### Click and expand to setup example
+
+Having followed the previous example's setup, move into the
+**example-get-started** directory. Then make sure that you have the latest code
+and data.
+
+```dvc
+    $ git checkout master
+    $ dvc checkout
+```
+
+You can also take a look at the available tags in our sample repo in
+https://github.com/jorgeorpinel/example-get-started/tags
+
+</details>
+
+```dvc
+    $ dvc diff -t data/features baseline-experiment bigrams-experiment
+    ...
+    diff for 'data/features'
+    -data/features with md5 3338d2c21bdb521cda0ba4add89e1cb0.dir
+    +data/features with md5 42c7025fc0edeb174069280d17add2d4.dir
+````
+
+The output from this command confirms that there's a difference in the
+`data/features` directory between the 2 Git references we indicated.
