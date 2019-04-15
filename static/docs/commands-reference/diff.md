@@ -98,34 +98,39 @@ Git reference.
 
 We can base this example in the [Experiment Metrics](/doc/get-started/metrics)
 and [Compare Experiments](/doc/get-started/compare-experiments) sections of our
-Get Started guide.
-> Our sample already repository has the `bigrams-experiment` and
-`baseline-experiment`
-[tags](https://github.com/jorgeorpinel/example-get-started/tags) respectively.
+Get Started guide, which describe different experiments to produce the
+`model.pkl` file.
+> Our sample repository has the `bigrams-experiment` and `baseline-experiment`
+[tags](https://github.com/jorgeorpinel/example-get-started/tags) respectively to
+refernce these experiments.
 
 ### Click and expand to setup example
 
 Having followed the previous example's setup, move into the
 **example-get-started** directory. Then make sure that you have the latest code
-and data.
+and data with the following commands.
 
 ```dvc
     $ git checkout master
-    $ dvc checkout
+    $ dvc fetch -aT
 ```
 
-You can also take a look at the available tags in our sample repo in
-https://github.com/jorgeorpinel/example-get-started/tags
+The `-aT` flag passed to `dvc fetch` makes sure we have all the data files
+related to all existing tags in the repo. You take a look at the available tags
+of our sample repo in https://github.com/jorgeorpinel/example-get-started/tags.
 
 </details>
 
 ```dvc
-    $ dvc diff -t data/features baseline-experiment bigrams-experiment
-    ...
-    diff for 'data/features'
-    -data/features with md5 3338d2c21bdb521cda0ba4add89e1cb0.dir
-    +data/features with md5 42c7025fc0edeb174069280d17add2d4.dir
+    $ dvc diff -t model.pkl baseline-experiment bigrams-experiment
+    dvc diff from bc1722d7eeb4cba9a5c8e401199e995739c474a9 to 8c1169d1819c5cf0a4e2aa7e7d8c43854563b251
+
+    diff for 'model.pkl'
+    -model.pkl with md5 a66489653d1b6a8ba989799367b32c43
+    +model.pkl with md5 3863d0e317dee0a55c4e59d2ec0eef33
+
+    added file with size -202464 Bytes
 ````
 
 The output from this command confirms that there's a difference in the
-`data/features` directory between the 2 Git references we indicated.
+`model.pkl` file between the 2 Git references we indicated.
