@@ -25,7 +25,7 @@ You will have to make sure that the directory has proper permissions setup, so
 that every one on your team can read and write to it and can access cache
 files written by others. The most straightforward way to do that is to make
 sure that you and your colleagues are members of the same group (e.g. 'users')
-and that your shared cache dir is owned by that group and has has respective
+and that your shared cache directory is owned by that group and has respective
 permissions.
 
 ### Transfer Existing Cache (Optional)
@@ -58,7 +58,7 @@ Commit changes to `.dvc/config` and push them to your git remote:
 
 ### Example
 
-You and your colleagues can work in your own workspaces as usual and dvc will
+You and your colleagues can work in your own workspaces as usual and DVC will
 handle all your data in the most effective way possible. Let's say you are
 cleaning up the data:
 
