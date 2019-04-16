@@ -105,44 +105,52 @@ Now, we can install requirements for the project:
     $ pip install -r requirements.txt
 ```
 
+Then download the precomputed data using:
+
+```dvc
+    $ dvc pull
+```
+
+This data will be retrieved from a preconfigured remote cache.
+
 </details>
 
-## Example: Running the pipeline without committing data changes
+## Example: Developing/executing pipeline stages without committing data changes
 
-Sometimes we want to iterate through multiple changes to data, or configuration,
-or to code, trying multiple options. To avoid filling the cache with temporary
-results we can unprotect some files, so we can edit them, and rerun the pipeline
-using the `dvc repro --no-commit` option to prevent the cache from being
-updated.
+Sometimes we want to iterate through multiple changes to configuration, or to
+code, sometimes to data, trying multiple options, and improving the output of a
+stage. To avoid filling the DVC cache with undesired intermediate results, we
+can rerun the pipeline using the `dvc repro --no-commit` option to prevent the
+cache from being updated. When development of the stage is finished `dvc commit`
+is used to store data files in the DVC cache.
 
-We start with unprotecting a file to edit:
+In the `featurize.dvc` stage, `src/featurize.py` is executed.  A useful change
+to make is adjusting a parameter to `CountVectorizer` in that script.  Namely,
+adjusting the `max_features` option in this line changes the resulting model:
 
-```dvc
-    $ dvc unprotect data/data.xml 
+```python
+    bag_of_words = CountVectorizer(stop_words='english',
+                max_features=6000, ngram_range=(1, 2))
 ```
 
-In this example pipeline everything is derived from that file. We may want to
-change the input data, for example to increase the training data set. This step
-lets us safely edit the data file. If we instead wish to edit code in the `src`
-directory it is not necessary to unprotect this file.
-
-To rerun the pipeline without committing data to the cache:
+This option not only changes the trained model, it also introduces a change
+which would cause the `featurize.dvc`, `train.dvc` and `evaluate.dvc` stages to
+execute if we ran `dvc repro`.  But if we want to try several values for this
+option and save only the best result to the DVC cache, we can execute as so:
 
 ```dvc
-    $ dvc repro --no-commit train.dvc 
+    $ dvc repro --no-commit evaluate.dvc
 ```
 
-We can repeat editing files and rerunning the pipeline as many times as desired
-until we're satisfied with the result.
+We can run this command as many times as we like, editing `featurize.py` any way
+we like, and so long as we use `--no-commit` the data does not get saved to the
+DVC cache.  But it is instructive to verify that's the case.
 
-After rerunning the pipeline with `--no-commit` the status might look like this:
+First verification:
 
 ```dvc
     $ dvc status
 
-    data/data.xml.dvc:
-        changed outs:
-            not in cache:       data/data.xml
     evaluate.dvc:
         changed deps:
             modified:           data/features
@@ -152,96 +160,118 @@ After rerunning the pipeline with `--no-commit` the status might look like this:
             not in cache:       model.pkl
 ```
 
-Once we're satisfied with the changes, they can be committed to the DVC cache
-and to the SCM repository:
+And we can look in the DVC cache to see if the new version of `model.pkl` is
+indeed _not in cache_ as claimed. Look at `train.dvc` first:
 
 ```dvc
-    $ git commit
-    ... as needed to record changes into the repository
+    $ cat train.dvc 
+    cmd: python src/train.py data/features model.pkl
+    deps:
+    - md5: d05e0201a3fb47c878defea65bd85e4d
+      path: src/train.py
+    - md5: b7a357ba7fa6b726e615dd62b34190b4.dir
+      path: data/features
+      md5: b91b22bfd8d9e5af13e8f48523e80250
+    outs:
+    - cache: true
+      md5: 70599f166c2098d7ffca91a369a78b0d
+      metric: false
+      path: model.pkl
+      persist: false
+    wdir: .
+```
+
+To verify this instance of `model.pkl` is not in the cache, we must know how the
+cache files are named. In the DVC cache the first two characters of the checksum
+are used as a directory name, and the file name is the remaining characters.
+Therefore, if the file had been committed to the cache it would appear in the
+directory `.dvc/cache/70`. But:
+
+```dvc
+    $ ls .dvc/cache/70
+    ls: .dvc/cache/70: No such file or directory
+```
+
+If we've determined the changes to `featurize.py` were successful, we can
+execute this set of commands:
+
+```dvc
     $ dvc commit
-    ... commit output
     $ dvc status
+    Pipeline is up to date. Nothing to reproduce.
+    $ ls .dvc/cache/70
+    599f166c2098d7ffca91a369a78b0d
+```
+
+And we've verified that `dvc commit` has saved the changes into the cache, and
+that the new instance of `model.pkl` is in the cache.
+
+### Variation: Running commands outside of DVC control
+
+It is also possible to execute the commands that are executed by `dvc repro` by
+hand. You won't have DVC helping you, but you have the freedom to run any script
+you like, even ones not recorded in a DVC file.
+
+In this case if your command is going to modify a file under DVC control, you
+must first unprotect it.  Therefore if we're going to execute `featurize.py` by
+hand, we do this:
+
+```dvc
+    $ dvc unprotect data/features model.pkl
+```
+
+Then to run the script:
+
+```dvc
+    $ python src/featurization.py data/prepared data/features
+    $ python src/train.py data/features model.pkl
+    $ python src/evaluate.py model.pkl data/features auc.metric
+```
+
+As before `dvc status` will show which the files have changed, and when your
+work is finalized `dvc commit` will commit everything to the cache.
+
+## Example: Making inconsequential code changes
+
+Sometimes we want to clean up a code or configuration file in a way that does
+not cause an execution change. We might write in-line documentation with
+comments (we do document our code don't we?), or change indentation, or
+comment-out some debugging printouts, or any other change which does not
+introduce a change in the pipeline result.
+
+```dvc
+    $ git status -s
+    M src/train.py
+
+    $ dvc status
+
+    train.dvc:
+        changed deps:
+            modified:           src/train.py
+```
+
+Let's edit one of the source files.  It doesn't matter which one.  You'll see
+that both Git and DVC recognize a change was made.
+
+If we ran `dvc repro` at this point the pipeline would be rerun. But since the
+change was inconsequential, that would be a waste of time and CPU resources.
+That's especially critical if the pipeline takes a long time to execute.  
+
+```dvc
+    $ git add src/train.py 
+
+    $ git commit -m 'CHANGED'
+    [master 72327bd] CHANGED
+    1 file changed, 2 insertions(+)
+
+    $ dvc commit
+    dependencies ['src/train.py'] of 'train.dvc' changed. Are you sure you commit it? [y/n] y
+
+    $ dvc status
+
     Pipeline is up to date. Nothing to reproduce.
 ```
 
-## Example: Adding a data file without immediate commit
-
-Sometimes we want to add a file to a pipeline, but the file is not finalized.
-In this example pipeline, we might have additional data to use. Rather than add
-that data to `data.xml` we might want to put it in a second file. Then we would
-rewrite scripts like `prepare.py` to use both data files. 
-
-For this example let's only look at the process of using `dvc add --no-commit`
-to add the file without immediately saving it to the cache, and later running
-`dvc commit` to save it to the cache.
-
-In the workspace setup for the previous example, run these commands:
-
-```dvc
-    $ cp data/data.xml data/data2.xml
-```
-
-Now edit `data2.xml`, it doesn't matter what change you make just change it.
-This mimics having a new data file. Editing the file ensures the copy will have
-a different checksum. If two files happen to have the same checksum, DVC will
-store one entry in the cache for both files.
-
-```dvc
-    $ dvc add data/data2.xml --no-commit
-
-    Adding 'data/data2.xml' to 'data/.gitignore'.
-    Saving information to 'data/data2.xml.dvc'.
-
-    To track the changes with git run:
-
-        git add data/.gitignore data/data2.xml.dvc
-```
-
-This created a matching DVC file for `data2.xml`, added an entry to `.gitignore`
-and suggests we can commit the files to the SCM.
-
-```dvc
-    $ cat data/data.xml.dvc 
-    md5: dd3616a28331a1a47e63dde650ce05f6
-    outs:
-    - cache: true
-      md5: 19c0d5556733569ad5a57c5ffae4247b
-      metric: false
-      path: data/data.xml
-      persist: false
-    wdir: ..
-
-    $ cat data/data2.xml.dvc 
-    md5: 9383739085d4b2eb95fd34a23384391d
-    outs:
-    - cache: true
-      md5: 9f3470fcf2a5eaca2e38fddd1f83ebdd
-      metric: false
-      path: data/data2.xml
-      persist: false
-    wdir: ..
-```
-
-In the DVC file we see a checksum was calculated, and that the checksum indeed
-differs from `data.xml`. In the DVC cache the first two characters of the
-checksum are used as a directory name, and the file name is the remaining
-characters. Therefore, if the file had been committed to the cache it would
-appear in the directory `.dvc/cache/9f`. But:
-
-```dvc
-    $ ls .dvc/cache/9f
-    ls: .dvc/cache/9f: No such file or directory
-```
-
-Indeed it is not in the cache, as desired.
-
-After working with the new file we decide it is ready to be committed to the
-cache. We will see this:
-
-```dvc
-    $ dvc commit
-    ... commit output
-    $ ls .dvc/cache/9f
-    3470fcf2a5eaca2e38fddd1f83ebdd
-```
+Nothing special is required, we simply `commit` to both the SCM and DVC.  Since
+the pipeline is up to date, `dvc repro` will not do anything.
 
