@@ -33,9 +33,8 @@ Supported schemes:
 * `--resume` - resume previously started download.
 
 * `-f`, `--file` - specify name of the DVC file it generates. It should be 
-  either 'Dvcfile' or have a '.dvc' suffix (e.g. 'prepare.dvc', 'clean.dvc', etc) 
-  in order for dvc to be able to find it later. By default the first output 
-  basename + .dvc is used as a stage filename.
+  either `Dvcfile` or have a `.dvc` suffix (e.g. `data.dvc`) in order 
+  for `dvc` to be able to find it later. 
 
 ## Examples
 
