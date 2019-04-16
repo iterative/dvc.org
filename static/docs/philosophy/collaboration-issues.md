@@ -41,7 +41,7 @@ principled way:
     - How do you share models trained in a GPU environment with colleagues who
       do not have access to a GPU?
 
-    - How do you share the entire 147Gb of your project, with all of its data
+    - How do you share the entire 147 GB of your project, with all of its data
       sources, intermediate data files, and models?
 
 Some of these questions are easy to answer individually. Any data scientist,
