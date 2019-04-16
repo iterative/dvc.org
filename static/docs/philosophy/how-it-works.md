@@ -32,7 +32,7 @@ dependencies in a Git repository:
     # The input dataset was changed
     $ dvc repro plots.jpg.dvc
 
-    Reproducing 'mnodel.pkl':
+    Reproducing 'model.pkl':
         python cnn_train.py --seed 20180227 --epoch 20 input.csv model.pkl results.csv
     Reproducing 'plots.jpg':
         Rscript plot.R result.csv plots.jpg
