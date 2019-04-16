@@ -5,7 +5,7 @@ Take a data file or a directory under DVC control.
 ## Synopsis
 
 ```usage
-    usage: dvc add [-h] [-q | -v]
+    usage: dvc add [-h] [-q | -v] [-f]
                    [-R] [--no-commit]
                    targets [targets ...]
 
@@ -86,6 +86,11 @@ This way you bring data provenance and make your project reproducible.
   no problems arise, otherwise 1.
 
 * `-v`, `--verbose` - displays detailed tracing information.
+
+* `-f`, `--file` - specify name of the DVC file it generates. It should be 
+  either 'Dvcfile' or have a '.dvc' suffix (e.g. 'prepare.dvc', 'clean.dvc', etc) 
+  in order for dvc to be able to find it later. By default the first output 
+  basename + .dvc is used as a stage filename.
 
 ## Examples: Single file
 

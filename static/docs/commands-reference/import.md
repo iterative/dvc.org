@@ -14,7 +14,7 @@ Supported schemes:
 ## Synopsis
 
 ```usage
-    usage: dvc import [-h] [-q] [-v] url out
+    usage: dvc import [-h] [-q] [-v] [-f] [--resume] url out
 
     positional arguments:
       url            URL
@@ -29,6 +29,13 @@ Supported schemes:
   no problems arise, otherwise 1.
 
 * `-v`, `--verbose` - displays detailed tracing information.
+
+* `--resume` - resume previously started download.
+
+* `-f`, `--file` - specify name of the DVC file it generates. It should be 
+  either 'Dvcfile' or have a '.dvc' suffix (e.g. 'prepare.dvc', 'clean.dvc', etc) 
+  in order for dvc to be able to find it later. By default the first output 
+  basename + .dvc is used as a stage filename.
 
 ## Examples
 
