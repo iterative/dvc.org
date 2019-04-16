@@ -29,6 +29,9 @@ to third party visualization utilities.
 
 * `--tree` - list dependencies tree like recursive directory listing.
 
+* `--locked` - print locked DVC stages.
+
+
 ## Examples
 
 * Default mode, show stages `output.dvc` recursively depends on:
