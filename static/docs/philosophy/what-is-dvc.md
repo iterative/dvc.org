@@ -35,7 +35,7 @@ action usually changes experiment state.
 
 - **Pipeline** - directed acyclic graph (DAG) of commands to reproduce an
 experiment state. The commands are connected by input and output files. Pipeline
-is defined by special **dvc-files** (which act like Makefiles).
+is defined by special **DVC files** (which act like Makefiles).
 
 - **Workflow** - set of experiments and relationships among them. Workflow
 corresponds to the entire Git repository.
@@ -48,6 +48,6 @@ reproducibility).
 - **Data cache** - directory with all data files on a local hard drive or in
 cloud storage, but not in the Git repository.
 
-- **Cloud storage** support is a compliment to the core DVC features. This is
-how a data scientist transfers large data files or shares a trained on GPU model
+- **Cloud storage** support is a complement to the core DVC features. This is
+how a data scientist transfers large data files or shares a GPU-trained model
 to whom who does not have GPU.
