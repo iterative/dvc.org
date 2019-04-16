@@ -1,6 +1,6 @@
 # Share Data And Model Files
 
-Same as git, dvc allows for distributed environment and collaboration. It is
+Same as git, DVC allows for distributed environment and collaboration. It is
 dead easy to consistently get all your data files and code to any machine.
 All you need to do is to setup a remote DVC repository, that will store cache
 files for your project. Currently DVC supports AWS S3, Google Cloud Storage,
