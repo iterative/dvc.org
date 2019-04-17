@@ -128,7 +128,7 @@ This data will be retrieved from a preconfigured remote cache.
 
 </details>
 
-## Example: Avoid caching
+## Example: Rapid iterations
 
 Sometimes we want to iterate through multiple changes to configuration, or to
 code, sometimes to data, trying multiple options, and improving the output of a
@@ -220,7 +220,7 @@ execute this set of commands:
 And we've verified that `dvc commit` has saved the changes into the cache, and
 that the new instance of `model.pkl` is in the cache.
 
-## Example: Update DVC files
+## Example: Running without DVC
 
 It is also possible to execute the commands that are executed by `dvc repro` by
 hand. You won't have DVC helping you, but you have the freedom to run any script
@@ -245,7 +245,7 @@ Then to run the script:
 As before `dvc status` will show which the files have changed, and when your
 work is finalized `dvc commit` will commit everything to the cache.
 
-## Example: Update DVC files
+## Example: Updating dependencies
 
 Sometimes we want to clean up a code or configuration file in a way that does
 not cause an execution change. We might write in-line documentation with
