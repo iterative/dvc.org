@@ -177,8 +177,7 @@ First verification:
 And we can look in the DVC cache to see if the new version of `model.pkl` is
 indeed _not in cache_ as claimed. Look at `train.dvc` first:
 
-```dvc
-    $ cat train.dvc
+```yaml
     cmd: python src/train.py data/features model.pkl
     deps:
     - md5: d05e0201a3fb47c878defea65bd85e4d
