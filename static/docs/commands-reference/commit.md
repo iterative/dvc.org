@@ -38,10 +38,10 @@ rerunning the pipeline or a stage:
   change in the pipeline result. `dvc commit` can help to avoid rerunning the
   pipeline in these cases by forcing the update of the DVC files.
 
-The last two use cases are **not recommended**, and are essentially force update
-the DVC files and save data to cache. They are still useful, but keep in mind
-that DVC can't guarantee reproducibility in those cases - you commit any data
-your want. Let's take a look at what is happening in the fist scenario closely:
+The last two use cases are **not recommended**, and essentially force update the
+DVC files and save data to cache. They are still useful, but keep in mind that
+DVC can't guarantee reproducibility in those cases - you commit any data your
+want. Let's take a look at what is happening in the fist scenario closely:
 
 Normally DVC commands like `dvc add`, `dvc repro` or `dvc run`, commit the data
 to the DVC cache as the last step. What _commit_ means is that DVC:
