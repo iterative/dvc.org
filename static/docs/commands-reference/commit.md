@@ -23,8 +23,8 @@ rerunning the pipeline or a stage:
 
 * Code or data for a stage is under active development, with rapid iteration of
   code or configuration or data. Run DVC commands (`dvc run`, `dvc repro`, and
-  even `dvc add`) using the `--no-commit` option, and use `dvc commit` when the
-  files are finalized.
+  even `dvc add`) using the `--no-commit` option to avoid caching unnecessary
+  data over and over again. Use `dvc commit` when the files are finalized.
 * One can always execute the code used in a stage without using DVC (keep in
   mind that output files or directories in certain cases must first be
   unprotected or removed, see `dvc unprotect`). Or one could be developing code
@@ -36,12 +36,12 @@ rerunning the pipeline or a stage:
   (we do document our code don't we?), or change indentation, or comment-out
   some debugging printouts, or any other change which does not introduce a
   change in the pipeline result. `dvc commit` can help to avoid rerunning the
-  pipeline in these cases by forcing the update of DVC files.
+  pipeline in these cases by forcing the update of the DVC files.
 
-The last two use cases are not recommended and are essentially force update DVC
-files and save data to cache. They are still useful, by keep in mind that DVC
-can't guarantee reproducibility in those cases - you commit any data your want.
-Let's take a look at what's happening in the fist scenario closely:
+The last two use cases are **not recommended**, and are essentially force update
+the DVC files and save data to cache. They are still useful, but keep in mind
+that DVC can't guarantee reproducibility in those cases - you commit any data
+your want. Let's take a look at what is happening in the fist scenario closely:
 
 Normally DVC commands like `dvc add`, `dvc repro` or `dvc run`, commit the data
 to the DVC cache as the last step. What _commit_ means is that DVC:
@@ -128,7 +128,7 @@ This data will be retrieved from a preconfigured remote cache.
 
 </details>
 
-## Example: Rapid development and avoid uncontrolled cache growth
+## Example: Avoid caching
 
 Sometimes we want to iterate through multiple changes to configuration, or to
 code, sometimes to data, trying multiple options, and improving the output of a
@@ -220,7 +220,7 @@ execute this set of commands:
 And we've verified that `dvc commit` has saved the changes into the cache, and
 that the new instance of `model.pkl` is in the cache.
 
-## Example: Running commands outside of DVC control
+## Example: Update DVC files
 
 It is also possible to execute the commands that are executed by `dvc repro` by
 hand. You won't have DVC helping you, but you have the freedom to run any script
@@ -245,7 +245,7 @@ Then to run the script:
 As before `dvc status` will show which the files have changed, and when your
 work is finalized `dvc commit` will commit everything to the cache.
 
-## Example: Making inconsequential code changes
+## Example: Update DVC files
 
 Sometimes we want to clean up a code or configuration file in a way that does
 not cause an execution change. We might write in-line documentation with
