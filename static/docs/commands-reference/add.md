@@ -63,7 +63,7 @@ to work with directory hierarchies with `dvc add`.
    directory hierarchy.
 
 In a DVC project `dvc add` can be used to version control any data artifacts -
-input, itermediate, output files and directories, as well as model files. It is
+input, intermediate, output files and directories, as well as model files. It is
 useful by itself to go back and forth between different versions of datasets or
 models. Usually though, it is recommended to use `dvc run` and `dvc repro`
 mechanism to version control intermediate and output artifacts (like models).
