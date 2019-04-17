@@ -1,12 +1,14 @@
 # commit
 
-Record changes to the repository by recording changes to DVC files and saving
-outputs to cache.
+Record changes to the repository by updating DVC files and saving outputs to
+cache.
 
 ## Synopsis
 
 ```usage
-    usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R] [targets [targets ...]]
+    usage: dvc commit [-h] [-q | -v]
+                      [-f] [-d] [-R]
+                      [targets [targets ...]]
 
     positional arguments:
       targets               DVC files.
