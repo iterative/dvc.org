@@ -1,6 +1,7 @@
 # commit
 
-Record changes to the repository by saving outputs to cache.
+Record changes to the repository by recording changes to DVC files and saving
+outputs to cache.
 
 ## Synopsis
 
@@ -13,40 +14,50 @@ Record changes to the repository by saving outputs to cache.
 
 ## Description
 
+The `dvc commit` command is useful for several scenarios where a dataset is
+being changed, a stage  or pipeline is in development or one wishes to run
+commands outside the control of DVC, or force DVC files update to save some time
+rerunning the pipeline or a stage:
+
+* Code or data for a stage is under active development, with rapid iteration of
+  code or configuration or data. Run DVC commands (`dvc run`, `dvc repro`, and
+  even `dvc add`) using the `--no-commit` option, and use `dvc commit` when the
+  files are finalized.
+* One can always execute the code used in a stage without using DVC (keep in
+  mind that output files or directories in certain cases must first be
+  unprotected or removed, see `dvc unprotect`). Or one could be developing code
+  or data, repeatedly manually executing the code until it is working. Once it
+  is finished, use `dvc add` or `dvc commit` or `dvc run` where appropriate
+  update DVC stage files and to store data to the cache.
+* Sometimes we want to clean up a code or configuration file in a way that does
+  not cause a result change. We might write in-line documentation with comments
+  (we do document our code don't we?), or change indentation, or comment-out
+  some debugging printouts, or any other change which does not introduce a
+  change in the pipeline result. `dvc commit` can help to avoid rerunning the
+  pipeline in these cases by forcing the update of DVC files.
+
+The last two use cases are not recommended and are essentially force update DVC
+files and save data to cache. They are still useful, by keep in mind that DVC
+can't guarantee reproducibility in those cases - you commit any data your want.
+Let's take a look at what's happening in the fist scenario closely:
+
 Normally DVC commands like `dvc add`, `dvc repro` or `dvc run`, commit the data
 to the DVC cache as the last step. What _commit_ means is that DVC:
 
-* Computes a checksum for the file, or for the contents of a directory 
-  structure.
-* Enters the checksum and file name into the DVC stage file
-* Tells the SCM to ignore the file (e.g. add entry to `.gitignore`).  If the
-  workspace was initialized with no SCM support (`dvc init --no-scm`) this does
-  not happen.
-* Adds the file to the DVC cache
+* Computes a checksum for the file/directory.
+* Enters the checksum and file name into the DVC stage file.
+* Tells the SCM to ignore the file/directory (e.g. add entry to `.gitignore`).
+  If the workspace was initialized with no SCM support (`dvc init --no-scm`)
+  this does not happen.
+* Adds the file/directory or to the DVC cache.
 
-There are many cases where the last step is not desirable. For the DVC commands
-where it is appropriate the `--no-commit` option prevents the last step from
-occurring. The checksum is still computed and added to the DVC file, but the
-file is not added to the cache.
-
-That's where the `dvc commit` command comes into play. It handles that last
-step of adding the file to the DVC cache.
-
-The `dvc commit` command is useful for several scenarios where a file is being
-added, a stage is in development, or one wishes to run commands outside the
-control of DVC. One must first use `dvc unprotect` to allow editing some of the
-data files, and otherwise run DVC commands using the `--no-commit` option.
-See [Update a Tracked File](/doc/user-guide/update-tracked-file) for further
-advice.
-
-* Code or data for a stage is under active development, with rapid iteration of
-  code or configuration or data. Run DVC commands using the `--no-commit`
-  option, and use `dvc commit` when the files are finalized.
-* One can always execute the code used in a stage without using DVC, but the
-  output files must first be unprotected. Or one could be developing code or
-  data, repeatedly manually executing the code until it is working. Once it is
-  finished, use `dvc add` or `dvc commit` or `dvc run` where appropriate to
-  add files or DVC stages to the pipeline, or to store data to the cache.
+There are many cases where the last step is not desirable (usually, rapid
+iteration on some experiment). For the DVC commands where it is appropriate the
+`--no-commit` option prevents the last step from occurring - thus, we are saving
+some time and space, by not storing all the data artifacts for all the attempts
+we do. The checksum is still computed and added to the DVC file, but the file is
+not added to the cache. That's where the `dvc commit` command comes into play.
+It handles that last step of adding the file to the DVC cache.
 
 ## Options
 
@@ -115,17 +126,18 @@ This data will be retrieved from a preconfigured remote cache.
 
 </details>
 
-## Example: Developing/executing pipeline stages without committing data changes
+## Example: Rapid development and avoid uncontrolled cache growth
 
 Sometimes we want to iterate through multiple changes to configuration, or to
 code, sometimes to data, trying multiple options, and improving the output of a
 stage. To avoid filling the DVC cache with undesired intermediate results, we
-can rerun the pipeline using the `dvc repro --no-commit` option to prevent the
-cache from being updated. When development of the stage is finished `dvc commit`
-is used to store data files in the DVC cache.
+can rerun the pipeline using the `dvc repro --no-commit` or a stage using the
+`dvc run --no-commit` option to prevent data from being pushed to cache. When
+development of the stage is finished `dvc commit` is used to store data files in
+the DVC cache.
 
-In the `featurize.dvc` stage, `src/featurize.py` is executed.  A useful change
-to make is adjusting a parameter to `CountVectorizer` in that script.  Namely,
+In the `featurize.dvc` stage, `src/featurize.py` is executed. A useful change to
+make is adjusting a parameter to `CountVectorizer` in that script. Namely,
 adjusting the `max_features` option in this line changes the resulting model:
 
 ```python
@@ -135,7 +147,7 @@ adjusting the `max_features` option in this line changes the resulting model:
 
 This option not only changes the trained model, it also introduces a change
 which would cause the `featurize.dvc`, `train.dvc` and `evaluate.dvc` stages to
-execute if we ran `dvc repro`.  But if we want to try several values for this
+execute if we ran `dvc repro`. But if we want to try several values for this
 option and save only the best result to the DVC cache, we can execute as so:
 
 ```dvc
@@ -144,7 +156,7 @@ option and save only the best result to the DVC cache, we can execute as so:
 
 We can run this command as many times as we like, editing `featurize.py` any way
 we like, and so long as we use `--no-commit` the data does not get saved to the
-DVC cache.  But it is instructive to verify that's the case.
+DVC cache. But it is instructive to verify that's the case.
 
 First verification:
 
@@ -164,7 +176,7 @@ And we can look in the DVC cache to see if the new version of `model.pkl` is
 indeed _not in cache_ as claimed. Look at `train.dvc` first:
 
 ```dvc
-    $ cat train.dvc 
+    $ cat train.dvc
     cmd: python src/train.py data/features model.pkl
     deps:
     - md5: d05e0201a3fb47c878defea65bd85e4d
@@ -206,15 +218,15 @@ execute this set of commands:
 And we've verified that `dvc commit` has saved the changes into the cache, and
 that the new instance of `model.pkl` is in the cache.
 
-### Variation: Running commands outside of DVC control
+## Example: Running commands outside of DVC control
 
 It is also possible to execute the commands that are executed by `dvc repro` by
 hand. You won't have DVC helping you, but you have the freedom to run any script
 you like, even ones not recorded in a DVC file.
 
 In this case if your command is going to modify a file under DVC control, you
-must first unprotect it.  Therefore if we're going to execute `featurize.py` by
-hand, we do this:
+must first unprotect it using the `dvc unprotect`. Therefore if we're going to
+execute `featurize.py` by hand, we do this:
 
 ```dvc
     $ dvc unprotect data/features model.pkl
@@ -250,28 +262,28 @@ introduce a change in the pipeline result.
             modified:           src/train.py
 ```
 
-Let's edit one of the source files.  It doesn't matter which one.  You'll see
+Let's edit one of the source files. It doesn't matter which one. You'll see
 that both Git and DVC recognize a change was made.
 
 If we ran `dvc repro` at this point the pipeline would be rerun. But since the
 change was inconsequential, that would be a waste of time and CPU resources.
-That's especially critical if the pipeline takes a long time to execute.  
+That's especially critical if the pipeline takes a long time to execute.
 
 ```dvc
-    $ git add src/train.py 
+    $ git add src/train.py
 
     $ git commit -m 'CHANGED'
     [master 72327bd] CHANGED
     1 file changed, 2 insertions(+)
 
     $ dvc commit
-    dependencies ['src/train.py'] of 'train.dvc' changed. Are you sure you commit it? [y/n] y
+    dependencies ['src/train.py'] of 'train.dvc' changed.
+    Are you sure you commit it? [y/n] y
 
     $ dvc status
 
     Pipeline is up to date. Nothing to reproduce.
 ```
 
-Nothing special is required, we simply `commit` to both the SCM and DVC.  Since
+Nothing special is required, we simply `commit` to both the SCM and DVC. Since
 the pipeline is up to date, `dvc repro` will not do anything.
-
