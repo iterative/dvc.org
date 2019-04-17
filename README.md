@@ -1,4 +1,4 @@
-![owl logo](https://dvc.org/static/img/logo-owl-readme.png)
+![owl logo](https://dvc.org/static/img/logo-github-readme.png)
 
 [DVC](https://github.com/iterative/dvc) project documenation and website source
 code.
