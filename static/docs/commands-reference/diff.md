@@ -55,7 +55,7 @@ Files](/doc/get-started/add-files) section.
 
 Start by cloning our sample repo if you don't already have it. Then move into
 the repo and checkout the
-[version](https://github.com/iterative/example-get-started/commit/ed10968)
+[version](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
 corresponding to the add-files section mentioned above
 
 ```dvc
@@ -63,8 +63,8 @@ corresponding to the add-files section mentioned above
     Cloning into 'example-get-started'...
 
     $ cd example-get-started
-    $ git checkout ed10968
-    Note: checking out 'ed10968'...
+    $ git checkout 3-add-file
+    Note: checking out '3-add-file'...
 
     $ dvc pull
     Preparing to download data from 'https://remote.dvc.org/get-started'
@@ -90,8 +90,7 @@ Git reference.
 
 ```dvc
     $ dvc diff HEAD^
-    dvc diff from df613bce6dc0738f71c62d1748e1edfb3b7e4893
-    to ed10968bcb0dab72563d05712f24ddfff698c87b
+    dvc diff from df613bc to ed10968
 
     diff for 'data/data.xml'
     +data/data.xml with md5 a304afb96060aad90176268345e10355
@@ -106,8 +105,10 @@ and [Compare Experiments](/doc/get-started/compare-experiments) sections of our
 Get Started guide, which describe different experiments to produce the
 `model.pkl` file.
 > Our sample repository has the `bigrams-experiment` and `baseline-experiment`
-[tags](https://github.com/jorgeorpinel/example-get-started/tags) respectively to
+[tags](https://github.com/iterative/example-get-started/tags) respectively to
 refernce these experiments.
+
+<details>
 
 ### Click and expand to setup example
 
@@ -122,7 +123,8 @@ and data with the following commands.
 
 The `-aT` flag passed to `dvc fetch` makes sure we have all the data files
 related to all existing tags in the repo. You take a look at the available tags
-of our sample repo in https://github.com/jorgeorpinel/example-get-started/tags.
+of our sample repo in
+[https://github.com/iterative/example-get-started/tags](https://github.com/iterative/example-get-started/tags).
 
 </details>
 
