@@ -1,6 +1,7 @@
 # diff
 
-Show changes between files or directories that are under DVC control.
+Show changes between versions of the DVC repository. It can be narrowed down to
+specific target files and directories under DVC control.
 
 ## Synopsis
 
@@ -17,8 +18,11 @@ Show changes between files or directories that are under DVC control.
 ## Description
 
 Given two Git commit references (commit hash, branch or tag name, etc) `a_ref`
-and `b_ref`, this command shows a a summary of basic statistics: how many files were
-deleted/changed. Note, this does not work like `git diff` works.
+and `b_ref`, this command shows a a summary of basic statistics: how many files
+were deleted/changed, and the file size differences.
+
+Note that `dvc diff` does not show the line-to-line comparisson among the target
+files in each revision, like `git diff` does.
 
 If the `-t` option is used, the diff is limited to the `TARGET` file or
 directory specified.
@@ -28,9 +32,9 @@ SCM, for example when `dvc init` was used with the `--no-scm` option
 
 ## Options
 
-* `-t TARGET`, `--target TARGET` - Source path to a data file or directory.
-  Default None. If not specified, compares all files and directories that are
-  under DVC control in the current working space.
+* `-t TARGET`, `--target TARGET` - Source path to a data file or directory. If
+  not specified, compares all files and directories that are under DVC control
+  in the current working space.
 
 * `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -51,7 +55,7 @@ Files](/doc/get-started/add-files) section.
 
 Start by cloning our sample repo if you don't already have it. Then move into
 the repo and checkout the
-[version](https://github.com/iterative/example-get-started/commit/ed10968bcb0dab72563d05712f24ddfff698c87b)
+[version](https://github.com/iterative/example-get-started/commit/ed10968)
 corresponding to the add-files section mentioned above
 
 ```dvc
@@ -86,7 +90,8 @@ Git reference.
 
 ```dvc
     $ dvc diff HEAD^
-    dvc diff from df613bce6dc0738f71c62d1748e1edfb3b7e4893 to ed10968bcb0dab72563d05712f24ddfff698c87b
+    dvc diff from df613bce6dc0738f71c62d1748e1edfb3b7e4893
+    to ed10968bcb0dab72563d05712f24ddfff698c87b
 
     diff for 'data/data.xml'
     +data/data.xml with md5 a304afb96060aad90176268345e10355
@@ -123,7 +128,8 @@ of our sample repo in https://github.com/jorgeorpinel/example-get-started/tags.
 
 ```dvc
     $ dvc diff -t model.pkl baseline-experiment bigrams-experiment
-    dvc diff from bc1722d7eeb4cba9a5c8e401199e995739c474a9 to 8c1169d1819c5cf0a4e2aa7e7d8c43854563b251
+    dvc diff from bc1722d7eeb4cba9a5c8e401199e995739c474a9
+    to 8c1169d1819c5cf0a4e2aa7e7d8c43854563b251
 
     diff for 'model.pkl'
     -model.pkl with md5 a66489653d1b6a8ba989799367b32c43
