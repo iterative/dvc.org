@@ -122,9 +122,8 @@ and data with the following commands.
 ```
 
 The `-aT` flag passed to `dvc fetch` makes sure we have all the data files
-related to all existing tags in the repo. You take a look at the available tags
-of our sample repo in
-[https://github.com/iterative/example-get-started/tags](https://github.com/iterative/example-get-started/tags).
+related to all existing tags in the repo. You take a look at the [available
+tags](https://github.com/iterative/example-get-started/tags) of our sample repo.
 
 </details>
 
@@ -140,3 +139,52 @@ of our sample repo in
 
 The output from this command confirms that there's a difference in the
 `model.pkl` file between the 2 Git references we indicated.
+
+## Examples: Compare a directory
+
+Unlike Git, DVC features controling enire directories without having to add each
+individual file. See `dvc add` without `--recursive` for example. `dvc run` can
+also put whole directories under DVC control (when these are specified as
+command dependencies or outputs).
+
+Using the same sample repository as in previous examples, lets use `dvc diff` to
+check for changes in a directory among Git versions by specifying the directory
+as the target (`-t`).
+
+<details>
+
+### Click and expand to setup example
+
+Same as the previous example setup: Having a terminal open in the
+**example-get-started** directory, make sure that you have the latest code and
+data with the following commands.
+
+```dvc
+    $ git checkout master
+    $ dvc fetch -aT
+```
+
+</details>
+
+Out sample repo has several [available
+tags](https://github.com/iterative/example-get-started/tags) for conveniency.
+The `5-preparation` tag corresponds to the [Connect Code and
+Data](https://dvc.org/doc/get-started/connect-code-and-data) section of our Get
+Started guide, in which the `dvc run` command is used to create the
+`prepare.dvc` stage. The output of this stage is the `data/prepared` directory.
+
+```dvc
+    dvc diff -t data/prepared 5-preparation 
+    dvc diff from 3deeec1176c63419f97cf80e9ead88146e4593fd to 8c1169d1819c5cf0a4e2aa7e7d8c43854563b251
+
+    diff for 'data/prepared'
+    -data/prepared with md5 6836f797f3924fb46fcfd6b9f6aa6416.dir
+    +data/prepared with md5 6836f797f3924fb46fcfd6b9f6aa6416.dir
+
+    2 files not changed, 0 files modified, 0 files added, 0 files deleted, size was not changed
+```
+
+The command above checks whether there have been any changes to the
+`data/prepared` directory after the `5-preparation` version (since the `b_ref`
+is the current version, `HEAD` by default). The output tells us that there have
+been no changes to that directory (or to any other file).
