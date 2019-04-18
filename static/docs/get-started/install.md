@@ -63,6 +63,27 @@ or:
 
 </details>
 
+<details>
+
+### Expand to install from pkg installer (Mac OS)
+
+Click the `Download` button on the main page and download `.pkg` to install
+it. Alternatively, you can always find the latest version of this installer
+[here](https://github.com/iterative/dvc/releases).
+
+</details>
+
+<details>
+
+### Expand to install using installer (Windows)
+
+If you have any problems with `pip install`, click the `Download` button on
+the main page and download `.exe` to install DVC. Alternatively, you can
+always find the latest version of this binary installer here:
+[here](https://github.com/iterative/dvc/releases).
+
+</details>
+
 See [Development](/doc/user-guide/development) if you want to install the most
 recent development version.
 

@@ -7,7 +7,10 @@ visualize a pipeline commands or data files flow instead.
 ## Synopsis
 
 ```usage
-    usage: dvc pipeline show [-h] [-q] [-v] [-c] [--dot DOT] targets [targets ...]
+    usage: dvc pipeline show [-h] [-q | -v] [-c | -o]
+                             [--dot DOT] [--ascii]
+                             [--tree] [-l]
+                             [targets [targets ...]]
 
     positional arguments:
       targets         DVC files.
@@ -28,6 +31,9 @@ list of path to DVC files.
 to third party visualization utilities.
 
 * `--tree` - list dependencies tree like recursive directory listing.
+
+* `-l`, `--locked` - print locked DVC stages only.
+
 
 ## Examples
 

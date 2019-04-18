@@ -13,16 +13,16 @@ process.
     that should NOT be stored in a Git repository but still need to be tracked
     and versioned.
 
-2. **Workflow management tools** (pipelines and DAGs): Apache Airflow, Luigi and
-etc. The differences are:
+2. **Workflow management tools** (pipelines and DAGs): Airflow, Luigi, etc.
+The differences are:
 
    - DVC is focused on data science and modeling. As a result, DVC pipelines are
    lightweight, easy to create and modify. However, DVC lacks pipeline execution
    features like execution monitoring, execution error handling, and recovering.
 
-   - DVC is purely a command line tool that does not have a user interface and
-   does not run any servers. Nevertheless, DVC can generate images with pipeline
-   and experiment workflow visualization.
+   - DVC is purely a command line tool that does not have a graphical user
+   interface and does not run any servers. Nevertheless, DVC can generate images
+   with pipeline and experiment workflow visualization.
 
 3. **Experiment management** software today is mostly designed for enterprise
 usage. An open-sourced experimentation tool example: http://studio.ml/. The
@@ -31,11 +31,12 @@ differences are:
    - DVC uses Git as the underlying platform for experiment tracking instead of
    a web application.
 
-   - DVC does not need to run any services. No user interface as a result, but
-   we expect some UI services will be created on top of DVC.
+   - DVC does not need to run any services. No graphical user interface as a
+   result, but we expect some GUI services will be created on top of DVC.
 
-   - DVC has transparent design: DVC-files, meta files, state file, cache dirs
-   have a simple format and can be easily reused by external tools.
+   - DVC has transparent design: metadata files (DVC file), configuration files,
+   cache directories have a simple format and can be easily reused by external
+   tools.
 
 4. **Git workflows** and Git usage methodologies such as Gitflow. The
 differences are:
@@ -44,7 +45,7 @@ differences are:
    a Git workflow. A separate branch should be created for each experiment, with
    a subsequent merge of this branch if it was successful.
 
-   - DVC innovates by allowing experimenters the ability to easily navigate
+   - DVC innovates by giving experimenters the ability to easily navigate
    through past experiments without recomputing them.
 
 
@@ -52,15 +53,15 @@ differences are:
 
    - DVC utilizes a DAG:
 
-     - The DAG is defined by dvc-files with filenames `Dvcfile` or
+     - The DAG is defined by DVC files with filenames `Dvcfile` or
      `<filename>.dvc`.
 
-     - One dvc-file defines one node in the DAG. All dvc-files in a repository
-     make up a single pipeline (think a single Makefile). All dvc-files (and
+     - One DVC file defines one node in the DAG. All DVC files in a repository
+     make up a single pipeline (think a single Makefile). All DVC files (and
      corresponding pipeline commands) are implicitly combined through their
      inputs and outputs, to simplify conflict resolving during merges.
 
-     - DVC provides a simple command `dvc run CMD` to generate a dvc-file
+     - DVC provides a simple command `dvc run CMD` to generate a DVC file
      automatically based on the provided command, dependencies, and outputs.
 
    - File tracking:
@@ -70,9 +71,9 @@ differences are:
      checkout a previous, trained version of a modeling code (Makefile will
      retrain the model).
 
-     - DVC uses the files timestamps and inodes for optimization. This allows
-     DVC to avoid recomputing all dependency files checksum, which would be
-     highly problematic when working with large files (10Gb+).
+     - DVC uses file timestamps and inodes for optimization. This allows DVC
+     to avoid recomputing all dependency files checksum, which would be
+     highly problematic when working with large files (10 GB+).
 
 
 6. **Git-annex**. The differences are:
@@ -100,23 +101,22 @@ differences are:
 7. **Git-LFS** (Large File Storage). The differences are:
 
    - It does not require special Git servers like Git-LFS demands. Any cloud
-   storage like S3, GCS, or on-premise SSH server can be used as a backend
-   for data sets and models, no additional databases, serves or infrastructure
+   storage like S3, GCS, or on-premises SSH server can be used as a backend
+   for datasets and models, no additional databases, servers or infrastructure
    are required.
    
    - DVC is not fundamentally bound to Git, having the option of changing the
    repository format.
 
    - DVC does not add any hooks to Git by default. To checkout data files, the
-   *dvc checkout* command has to be run after each `git checkout` and `git
+   `dvc checkout` command has to be run after each `git checkout` and `git
    clone` command. It gives more granularity on managing data and code
    separately. Hooks could be configured to make workflow simpler.
 
    - DVC creates hardlinks (or even reflinks if they are supported). The
    `dvc checkout` command does not actually copy data files from cache to the
-   working tree, as copying files is a heavy operation for large files (30Gb+).
+   working tree, as copying files is a heavy operation for large files (30 GB+).
    
    - `git-lfs` was not made with data science scenarios in mind, thus it does
    not support certain features, e.g. pipelines and metrics, and thus Github has
-   a limit of 2GB files.
-   
+   a limit of 2 GB per repository.

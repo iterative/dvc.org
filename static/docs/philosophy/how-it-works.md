@@ -11,9 +11,10 @@
 dependencies in a Git repository:
 
 ```dvc
-    $ dvc run -d input.csv -o results.csv python cnn_train.py --seed 20180227 \
-      --epoch 20 input.csv result.csv
-    $ git add results.csv.dvc
+    $ dvc run -d input.csv -o model.pkl -o results.csv \
+              python cnn_train.py --seed 20180227 --epoch 20 \
+              input.csv model.pkl results.csv
+    $ git add model.pkl.dvc
     $ git commit -m  'Train CNN. 20 epochs.'
 ```
 
@@ -31,8 +32,8 @@ dependencies in a Git repository:
     # The input dataset was changed
     $ dvc repro plots.jpg.dvc
 
-    Reproducing 'output.p':
-        python cnn_train.py --seed 20180227 --epoch 20 input.csv output.p
+    Reproducing 'model.pkl':
+        python cnn_train.py --seed 20180227 --epoch 20 input.csv model.pkl results.csv
     Reproducing 'plots.jpg':
         Rscript plot.R result.csv plots.jpg
 ```
@@ -60,7 +61,7 @@ through any Git server, and allows for experiments to be easily reproduced:
     $ dvc repro
 
     Reproducing 'output.p':
-        python cnn_train.py --seed 20180227 --epoch 20 input.csv output.p
+        python cnn_train.py --seed 20180227 --epoch 20 input.csv model.pkl results.csv
     Reproducing 'plots.jpg':
         Rscript plot.R result.csv plots.jpg
 ```

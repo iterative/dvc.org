@@ -155,9 +155,12 @@
       "import.md": "import",
       "move.md": "move",
       "pipeline.md": "pipeline",
+      "pipeline:list.md": "pipeline list",
+      "pipeline:show.md": "pipeline show",
       "destroy.md": "destroy",
       "unprotect.md": "unprotect",
       "cache.md": "cache",
+      "cache:dir.md": "cache dir",
       "commit.md": "commit"
     }
   },

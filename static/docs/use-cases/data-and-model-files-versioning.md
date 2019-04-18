@@ -19,7 +19,7 @@ In this very basic scenario, DVC is a better replacement for `git-lfs` (check
 the [Related Technologies](/doc/dvc-philosophy/related-technologies) to get a
 better sense why) and ad-hoc scripts on top of Amazon S3 (or name-it cloud) that are
 usually used to manage ML artifacts like model files, data files, etc. Unlike
-`git-lfs`, DVC is does not require installing a server, can be used on-premise
+`git-lfs`, DVC does not require installing a server; it can be used on-premises
 (NAS, SSH, for example) or with any major cloud provider (S3, Google Could, Azure). 
 
 Let's say you already have a project that uses a bunch of images that are
@@ -77,11 +77,11 @@ Commit your changes:
 ```
 
 There are two ways to get to the previous version of the dataset or model - a
-full workspace checkout or checkout of a specific data or mode file. Let's
+full workspace checkout or checkout of a specific data or model file. Let's
 consider the full checkout first. It's quite straightforward:
 
-> `v1.0` is a git tag that should be created in advance to identify the data set
-version you are interested in, it can be just a git commit hash instead.
+> `v1.0` is a Git tag that should be created in advance to identify the data set
+version you are interested in, it can be just a Git commit hash instead.
 
 ```dvc
     $ git checkout v1.0
@@ -89,12 +89,12 @@ version you are interested in, it can be just a git commit hash instead.
 ```
 
 These commands will restore the working tree to the first snapshot we made -
-code, data files, model. DVC optimizes this operation internally to avoid
-copying data or model files each time. So `dvc checkout` is quick even if you
-have large data sets, data files, or model.
+code, dataset and model files. DVC optimizes this operation internally to avoid
+copying dataset or model files each time. So `dvc checkout` is quick even if you
+have large dataset or model files.
 
 On the other hand, if we want to keep the current version of code and go back to
-the previous data set only, we can do something like this (make sure that you
+the previous dataset only, we can do something like this (make sure that you
 don't have some uncommitted changes in the `data.dvc`):
 
 ```dvc
@@ -111,6 +111,6 @@ points to the `v1.0` of the data set. While code and model files are from the
 To share your data with others you need to setup a remote repository. Check the
 [Share Data And Model Files] use case to get a high level overview on how to
 setup it and use `dvc pull` and `dvc push` commands to collaborate. Please,
-don't forget to check the the [versioning](/doc/get-started/example-versioning)
-get started example to get a hands-on experience with data sets and models
+don't forget to check the [versioning](/doc/get-started/example-versioning)
+get started example to get a hands-on experience with datasets and models
 versioning.
