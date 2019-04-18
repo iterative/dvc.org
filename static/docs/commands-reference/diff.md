@@ -130,8 +130,7 @@ of our sample repo in
 
 ```dvc
     $ dvc diff -t model.pkl baseline-experiment bigrams-experiment
-    dvc diff from bc1722d7eeb4cba9a5c8e401199e995739c474a9
-    to 8c1169d1819c5cf0a4e2aa7e7d8c43854563b251
+    dvc diff from bc1722d to 8c1169d
 
     diff for 'model.pkl'
     -model.pkl with md5 a66489653d1b6a8ba989799367b32c43
