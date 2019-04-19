@@ -132,8 +132,8 @@ tags](https://github.com/iterative/example-get-started/tags) of our sample repo.
     dvc diff from bc1722d to 8c1169d
 
     diff for 'model.pkl'
-    -model.pkl with md5 a66489653d1b6a8ba989799367b32c43
-    +model.pkl with md5 3863d0e317dee0a55c4e59d2ec0eef33
+    -model.pkl with md5 a664896
+    +model.pkl with md5 3863d0e
     ...
 ````
 
@@ -175,11 +175,11 @@ Started guide, in which the `dvc run` command is used to create the
 
 ```dvc
     dvc diff -t data/prepared 5-preparation 
-    dvc diff from 3deeec1176c63419f97cf80e9ead88146e4593fd to 8c1169d1819c5cf0a4e2aa7e7d8c43854563b251
+    dvc diff from 3deeec1 to 8c1169d
 
     diff for 'data/prepared'
-    -data/prepared with md5 6836f797f3924fb46fcfd6b9f6aa6416.dir
-    +data/prepared with md5 6836f797f3924fb46fcfd6b9f6aa6416.dir
+    -data/prepared with md5 6836f79.dir
+    +data/prepared with md5 6836f79.dir
 
     2 files not changed, 0 files modified, 0 files added, 0 files deleted, size was not changed
 ```
