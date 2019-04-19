@@ -296,7 +296,7 @@ to retrieve the data up to our third stage, `train.dvc`? We can use the
         └── a9c512fda11293cfee7617b66648dc
 ```
 
-Feching using `--with-deps` starts with the named stage and searches backwards
+Fetching using `--with-deps` starts with the named stage and searches backwards
 through the pipeline for data files to download into our local cache. All the
 data for the second and third stages ("featurize" and "train") has now been
 downloaded to cache. We could now use `dvc checkout` to get the data files
