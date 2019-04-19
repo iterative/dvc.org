@@ -21,7 +21,7 @@ Given two Git commit references (commit hash, branch or tag name, etc) `a_ref`
 and `b_ref`, this command shows a a summary of basic statistics: how many files
 were deleted/changed, and the file size differences.
 
-Note that `dvc diff` does not show the line-to-line comparisson among the target
+Note that `dvc diff` does not show the line-to-line comparison among the target
 files in each revision, like `git diff` does.
 
 If the `-t` option is used, the diff is limited to the `TARGET` file or
@@ -98,7 +98,7 @@ Git reference.
     added file with size 37.9 MB
 ```
 
-## Examples: Specific target accross Git references
+## Examples: Specific target across Git references
 
 We can base this example in the [Experiment Metrics](/doc/get-started/metrics)
 and [Compare Experiments](/doc/get-started/compare-experiments) sections of our
@@ -106,7 +106,7 @@ Get Started guide, which describe different experiments to produce the
 `model.pkl` file.
 > Our sample repository has the `bigrams-experiment` and `baseline-experiment`
 [tags](https://github.com/iterative/example-get-started/tags) respectively to
-refernce these experiments.
+reference these experiments.
 
 <details>
 
@@ -142,14 +142,14 @@ The output from this command confirms that there's a difference in the
 
 ## Examples: Compare a directory
 
-Unlike Git, DVC features controling enire directories without having to add each
+Unlike Git, DVC features controlling entire directories without having to add each
 individual file. See `dvc add` without `--recursive` for example. `dvc run` can
 also put whole directories under DVC control (when these are specified as
 command dependencies or outputs).
 
-Using the same sample repository as in previous examples, lets use `dvc diff` to
-check for changes in a directory among Git versions by specifying the directory
-as the target (`-t`).
+Using the same sample repository as in previous examples, let's use `dvc diff`
+to check for changes in a directory among Git versions by specifying the
+directory as the target (`-t`).
 
 <details>
 
@@ -166,7 +166,7 @@ data with the following commands.
 
 </details>
 
-Out sample repo has several [available
+Our sample repo has several [available
 tags](https://github.com/iterative/example-get-started/tags) for conveniency.
 The `5-preparation` tag corresponds to the [Connect Code and
 Data](https://dvc.org/doc/get-started/connect-code-and-data) section of our Get
