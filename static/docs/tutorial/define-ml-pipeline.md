@@ -48,6 +48,15 @@ so Git ignores this data file from now on.
 > DVC will always exclude data files from the Git repository by listing them in
 `.gitignore`.
 
+Refer to [Data and Model Files
+Versioning](/doc/use-cases/data-and-model-files-versioning), `dvc add`, and `dvc
+run` for more information on storing and versioning data files with DVC.
+
+Note that to modify or replace a data file that is under DVC control you may
+need to run `dvc unprotect` or `dvc remove` first (check the [Update Tracked
+File](/doc/user-guide/update-tracked-file) guide).  Use `dvc move` to rename or
+move a data file that is under DVC control.
+
 ## Data file internals
 
 If you take a look at the DVC-file, you will see that only outputs are defined
