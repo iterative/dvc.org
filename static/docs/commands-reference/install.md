@@ -1,6 +1,6 @@
 # install
 
-Install DVC hooks into the Git repository to automate certain common actions
+Install DVC hooks into the Git repository to automate certain common actions.
 
 ## Synopsis
 
@@ -17,8 +17,8 @@ saves the DVC user from having to remember to perform both DVC and SCM actions.
 
 There are two modes of tracking files in a DVC workspace:
 
-* Data files are managed by DVC in the DVC cache
-* Code, configuration and DVC files are managed by an SCM like Git
+* Data files are managed by DVC in the DVC cache.
+* Code, configuration and DVC files are managed by an SCM like Git.
 
 **Checkout** For any given SCM branch or tag, the SCM checks-out the DVC files
 corresponding to that branch or tag. The DVC files in turn refer to data files
@@ -209,7 +209,7 @@ not in the detached HEAD state from the previous example.
 If we simply edit one of the code files:
 
 ```dvc
-    $ vi src/featurization.py 
+    $ vi src/featurization.py
 
     $ git commit -a -m 'modified featurization'
 
@@ -226,7 +226,7 @@ helpfully informs us the workspace is out of sync.  We should therefore run
 the `dvc repro` command.
 
 ```dvc
-    $ dvc repro evaluate.dvc 
+    $ dvc repro evaluate.dvc
 
     ... much output
     To track the changes with git run:
