@@ -36,19 +36,12 @@ committed to Git to track versions of your file:
     $ git commit -m "add source data to DVC"
 ```
 
-To modify or replace a data file that is under DVC control you may need to run
-`dvc unprotect` or `dvc remove` first (check the
-[Update Tracked File](/doc/user-guide/update-tracked-file) guide). Refer to
-[Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
-and `dvc add` for more information. Use `dvc move` to rename or move a data file
-that is under DVC control.
-
 <details>
 
-### Expand to learn more about DVC internals
+### Expand to learn about DVC internals
 
-You can see that actual data file has been moved (usually hardlink or reflink is
-created, so no physical copying is happening) to the `.dvc/cache`:
+You can see that actual data file has been moved to the `.dvc/cache` directory
+(usually hardlink or reflink is created, so no physical copying is happening).
 
 ```dvc
     $ ls -R .dvc/cache
@@ -56,8 +49,17 @@ created, so no physical copying is happening) to the `.dvc/cache`:
         04afb96060aad90176268345e10355
 ```
 
-where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file,
-and if you check the `data/data.xml.dvc` meta-file you will see that it has this
+where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file.
+And if you check the `data/data.xml.dvc` meta-file you will see that it has this
 hash inside.
 
 </details>
+
+Refer to [Data and Model Files
+Versioning](/doc/use-cases/data-and-model-files-versioning), `dvc add`, and `dvc
+run` for more information on storing and versioning data files with DVC.
+
+Note that to modify or replace a data file that is under DVC control you may
+need to run `dvc unprotect` or `dvc remove` first (check the [Update Tracked
+File](/doc/user-guide/update-tracked-file) guide).  Use `dvc move` to rename or
+move a data file that is under DVC control.

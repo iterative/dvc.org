@@ -22,10 +22,10 @@ to download `data.xml`and save it into the `data` subdirectory.
      41M data/Posts.xml.zip
 ```
 
-At this time, `data/Posts.xml.zip` is an untracked regular file. It's time to
-place it under DVC control using the `dvc add` command. After executing the
-command you will see a new file `data/Posts.xml.zip.dvc` and a change in
-`data/.gitignore`. Both of these files have to be committed to the repository.
+At this time, `data/Posts.xml.zip` is an untracked regular file. We can place it
+under DVC control using `dvc add` (see below). After executing the command you
+will see a new file `data/Posts.xml.zip.dvc` and a change in `data/.gitignore`.
+Both of these files have to be committed to the repository.
 
 ```dvc
     $ dvc add data/Posts.xml.zip
