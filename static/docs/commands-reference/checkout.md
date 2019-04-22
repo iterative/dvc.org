@@ -51,10 +51,15 @@ The output of `dvc checkout` does not list which data files were restored. It
 does report removed files and files that DVC was unable to restore due to it
 missing from the cache.
 
+This command will fail to checkout files that are missing from the cache. In
+such a case, `dvc checkout` prints a warning message. Any files that can be
+checked out without error will be restored.
+
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases the pipeline must be rerun using the `dvc repro`
 command. In other cases the cache can be pulled from a remote cache using the
-`dvc pull` command.
+`dvc pull` command.  It may be necessary to use `--all-tags` or `--all-branches`
+with the `dvc pull` command.
 
 ## Options
 

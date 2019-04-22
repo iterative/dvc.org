@@ -19,16 +19,21 @@ Namely:
 
 **Checkout** For any given SCM branch or tag, the SCM checks-out the DVC files
 corresponding to that branch or tag. The DVC files in turn refer to data files
-in the DVC cache by checksum. Hence, switching from one SCM branch or tag to
-another, the SCM retrieves the corresponding DVC files. By default that leaves
+in the DVC cache by checksum. When switching from one SCM branch or tag to
+another the SCM retrieves the corresponding DVC files. By default that leaves
 the workspace in a state where the DVC files refer to data files other than what
 is currently in the workspace. The user at this point should run `dvc checkout`
 so that the data files will match the current DVC files.
+
+The installed Git hook automates running `dvc checkout`.
 
 **Commit** When committing a change to the SCM repository, that change possibly
 requires rerunning the pipeline to reproduce the workspace results, which is a
 reminder to run `dvc repro`. Or there might be files not yet in the cache, which
 is a reminder to run `dvc commit`.
+
+The installed Git hook automates reminding the user to run either `dvc repro`
+or `dvc commit`.
 
 ## Installed SCM hooks
 
