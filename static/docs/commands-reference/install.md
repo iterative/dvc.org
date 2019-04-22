@@ -12,13 +12,10 @@ Install DVC hooks into the Git repository to automate certain common actions.
 
 As designed DVC combines an intelligent data repository with using a regular SCM
 like Git to store code and configuration files. With `dvc install` the two are
-more tightly integrated, causing certain actions to happen automatically. This
-saves the DVC user from having to remember to perform both DVC and SCM actions.
+more tightly integrated, to conveniently cause certain useful actions to happen
+automatically.
 
-There are two modes of tracking files in a DVC workspace:
-
-* Data files are managed by DVC in the DVC cache.
-* Code, configuration and DVC files are managed by an SCM like Git.
+Namely:
 
 **Checkout** For any given SCM branch or tag, the SCM checks-out the DVC files
 corresponding to that branch or tag. The DVC files in turn refer to data files
@@ -29,15 +26,16 @@ is currently in the workspace. The user at this point should run `dvc checkout`
 so that the data files will match the current DVC files.
 
 **Commit** When committing a change to the SCM repository, that change possibly
-requires rerunning the pipeline to reproduce the workspace results. It is
-helpful to know automatically this as a reminder to run `dvc repro`.
+requires rerunning the pipeline to reproduce the workspace results, which is a
+reminder to run `dvc repro`. Or there might be files not yet in the cache, which
+is a reminder to run `dvc commit`.
 
 ## Installed SCM hooks
 
-* Git `pre-commit` hook executes `dvc status` to inform the user about the
-  workspace status.
-* Git `post-checkout` hook executes `dvc checkout` to automatically synchronize
-  the data files with the new workspace state.
+* Git `pre-commit` hook executes `dvc status` before `git commit` to inform the
+  user about the workspace status.
+* Git `post-checkout` hook executes `dvc checkout` after `git checkout` to
+  automatically synchronize the data files with the new workspace state.
 
 ## Options
 
@@ -153,8 +151,6 @@ inform us the data files in the workspace no longer matched the checksums in
 the DVC files. Running `dvc checkout` then checks out the corresponding data
 files, and now `dvc status` tells us the data files match the DVC files.
 
-Now let's see how this changes after running `dvc install`
-
 ```dvc
     $ git checkout master
     Previous HEAD position was d13ba9a add featurization stage
@@ -165,7 +161,9 @@ Now let's see how this changes after running `dvc install`
     [##############################] 100% Checkout finished!
 ```
 
-Start by resetting the workspace to he at the head commit.
+We've seen the default behavior with there being no Git hooks installed. We want
+to see how the behavior changes after installing the Git hooks.  We must first
+reset the workspace to he at the head commit before installing the hooks.
 
 ```dvc
     $ dvc install
@@ -180,7 +178,9 @@ Start by resetting the workspace to he at the head commit.
 ```
 
 The two Git hooks have been installed, and the one of interest for this exercise
-is the `post-checkout` script which runs after `git checkout`. 
+is the `post-checkout` script which runs after `git checkout`.
+
+We can now repeat the command run earlier, to see the difference.
 
 ```dvc
     $ git checkout 6-featurization
@@ -241,7 +241,9 @@ the `dvc repro` command.
      M train.dvc
 
     $ git commit -a -m 'updated data after modified featurization'
+
     Pipeline is up to date. Nothing to reproduce.
+    
     [master 78d0c44] modified featurization
      5 files changed, 12 insertions(+), 12 deletions(-)
 
