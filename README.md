@@ -10,8 +10,8 @@ aprovide the full text search. Motivation for bulding it from scratch was lack o
 flexibility (customization, sidebar tuning) and ads in engines like
 readthedocs, docsify, etc.
 
-Please, feel free to use it for your own sites and reach us out if you have
-any questions.
+Please, feel free to use it for your own sites and
+[reach us out](https://dvc.org/support) if you have any questions.
 
 # Contributing
 
