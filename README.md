@@ -45,7 +45,7 @@ edit it to registre a new section with the navigation menu.
 
 **Guidelines:**
 
-We treat or documenation as a code and have code style convention:
+We treat the documenation as code and use code style conventions:
 
 * No trailing whitespaces are allowed.
 * Content must be properly formatted at 80 symbols width. We recommend using
