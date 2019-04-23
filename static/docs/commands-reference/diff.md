@@ -3,6 +3,9 @@
 Show changes between versions of the DVC repository. It can be narrowed down to
 specific target files and directories under DVC control.
 
+> This command requires the repository to be versioned with
+> [Git](https://git-scm.com/).
+
 ## Synopsis
 
 ```usage
