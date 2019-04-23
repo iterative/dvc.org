@@ -65,7 +65,8 @@ data file path in the repository and md5 cache. This md5 cache determines
 a location of the actual content file in DVC cache directory `.dvc/cache`.
 
 > Output from DVC-files defines the relationship between the data file path in a
-repository and the path in a cache directory.
+repository and the path in a cache directory. See also [DVC File
+Format](/doc/user-guide/dvc-file-format)
 
 ```dvc
     $ cat data/Posts.xml.zip.dvc
@@ -80,26 +81,26 @@ repository and the path in a cache directory.
 ```
 
 Keeping actual file content in a cache directory and a copy of the caches in
-user workspace during `$ git checkout` is a regular trick that 
+user workspace during `$ git checkout` is a regular trick that
 [Git-LFS](https://git-lfs.github.com/) (Git for Large File Storage) uses. This
 trick works fine for tracking small files with source code. For large data
-files, this might not be the best approach, because of *checkout* operation for a
-10Gb data file might take many seconds and a 50GB file checkout (think copy)
-might take a couple of minutes.
+files, this might not be the best approach, because of *checkout* operation for
+a 10Gb data file might take several seconds and a 50GB file checkout (think
+copy) might take a few minutes.
 
-> DVC was designed with large data files in mind. This means gigabytes or even
+DVC was designed with large data files in mind. This means gigabytes or even
 hundreds of gigabytes in file size. Instead of copying files from cache to
 workspace, DVC creates [hardlinks](https://en.wikipedia.org/wiki/Hard_link).
+(This is similar to what [Git-annex](https://git-annex.branchable.com/) does.)
 
-This is pretty similar to what [Git-annex](https://git-annex.branchable.com/)
-does. Creating file hardlinks (or reflinks on the modern file systems) is a
-quick operation. So, with DVC you can easily checkout a few dozen files of any
-size. A hardlink does not require you to have twice as much space in the hard
-drive. Even if each of the files contains 41MB of data, the overall size of the
-repository is still 41MB. Both of the files correspond to the same `inode`
-(actual file content) in a file system. Use `ls -i` to see file system inodes
-(if you are using a modern file system with reflinks you might see different
-inodes, still the only copy is stored):
+Creating file hardlinks (or reflinks on the modern file systems) is a quick
+operation. So, with DVC you can easily checkout a few dozen files of any size. A
+hardlink does not require you to have twice as much space in the hard drive.
+Even if each of the files contains 41MB of data, the overall size of the
+repository is still 41MB. Both of the files correspond to the same `inode` (file
+meta-data record) in a file system. Use `ls -i` to see file system inodes. If
+you are using a modern file system with reflinks you might see different inodes,
+still only one copy if the actual file data is stored.
 
 ```dvc
     $ ls -i data/Posts.xml.zip
@@ -112,9 +113,10 @@ inodes, still the only copy is stored):
      41M .
 ```
 
-Note that DVC uses hardlinks in all the supported OSs, including Mac OS, Linux
-and Windows. Some implementation details (like inode) might differ, but the
-overall DVC behavior is the same.
+> Note that DVC uses hardlinks in all the supported OSs, including Mac OS, Linux
+and Windows. Some implementation details (like inodes) might differ, but the
+overall DVC behavior is the same. See also [DVC Files and
+Directories](/doc/user-guide/dvc-files-and-directories)
 
 ## Running commands
 
