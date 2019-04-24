@@ -74,8 +74,8 @@ command transforms it into a reproducible **stage** for the ML **pipeline**
 [format](/doc/user-guide/dvc-file-format) as the file we created in the
 [previous section](/doc/get-started/add-files) to track `data.xml`, except in
 this case it has additional information about the `data/prepared` output (a
-directory that contains two files, `train.tsv` and `test.tsv`), and about the
-Python command that is required to build it.
+directory where two files, `train.tsv` and `test.tsv`, will be written to), and
+about the Python command that is required to build it.
 
 <details>
 
@@ -118,16 +118,17 @@ This is how `prepare.dvc` looks like internally:
     wdir: .
 ```
 
-> `dvc run` is just the first part of the DVC commands that are required to
-generate a [pipeline's](/doc/get-started/pipeline) computational graph, or in
-other words, an instruction how to build a certain ML model (data file) from
-previous data file(s).
+> `dvc run` is just the first of a set of DVC command required to generate a
+[pipeline](/doc/get-started/pipeline) computational graph, or in other words,
+instructions on how to build a ML model (data file) from previous data files (or
+directories).
 
 We would recommend to try to read a few next chapters first, before switching to
 other documents. Hopefully, `dvc run` and `dvc repro` will make more sense after
 finishing up this guide. You can always refer to the `dvc run` and `dvc repro`
 documentation to learn the specific details about how they behave and all of
-their options. Let's briefly mention what the options used above mean:
+their options. Let's briefly mention what the options used above mean for this
+particular example:
 
 `-f prepare.dvc` specifies a name for the pipeline stage file. It's optional but
 we highly recommend using it to make your project structure more readable.
@@ -138,8 +139,8 @@ next chapter) DVC will automatically check these dependencies and decide whether
 this stage is up to date or or whether it requires rebuilding.
 
 `-o data/prepared` specifies the output directory processed data will be put
-into. The script creates two files in it: `train.tsv` and `test.tsv` – that will
-be used later to generate features, train and evaluate the model.
+into. The script creates two files in it – that will be used later to generate
+features, train and evaluate the model.
 
 And, the last line, `python src/prepare.py data/data.xml`, specifies a command
 to run. This command is saved to the generated DVC file and required by `dvc

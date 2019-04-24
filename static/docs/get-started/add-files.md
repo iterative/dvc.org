@@ -1,4 +1,4 @@
-# Add Data Files
+# Add Files or Directories
 
 DVC allows storing and versioning source data files, ML models, directories,
 intermediate results with Git, without checking the file contents into Git.
