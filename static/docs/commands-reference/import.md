@@ -1,6 +1,6 @@
 # import
 
-Import file from URL to local directory and track changes in remote file.
+Import file from any supported URL or local directory to local workspace and track changes in remote file.
 
 ## Synopsis
 
@@ -14,18 +14,20 @@ Import file from URL to local directory and track changes in remote file.
 
 ## Description
 
+In some cases it is convenient to add a data file to a workspace such that it
+will be automatically updated when the data source is updated. One project might
+produce occasional data files that are used in other projects, for example. Or
+a government agency might produce occasionally updated data of use in a project.
+
 DVC supports `.dvc` files which refer to an external data file, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such a DVC
-file, the `deps` section will list the remote file specification and the `outs`
-section will list the local file name in the workspace. It records enough data
-from the remote file to enable DVC to efficiently check the remote file to
-determine if the local file is out of date.
+file, the `deps` section lists a remote file specification, and the `outs`
+section lists the corresponding local file name in the workspace. It records
+enough data from the remote file to enable DVC to efficiently check the remote
+file to determine if the local file is out of date.  DVC uses this data to then
+download the file to the workspace, and to re-download it upon changes.
 
 The `dvc import` command helps the user create such an external data dependency.
-
-It generates a DVC file listing in the `deps` section the resource named in
-the `url` parameter, and in the `outs` section the file named in the `out`
-parameter.
 
 DVC supports several types of remote files:
 
@@ -37,15 +39,20 @@ Type | Discussion | URL format
 `ssh` | SSH server | `ssh://user@example.com:/path/to/data.csv`
 `hdfs` | HDFS | `hdfs://user@example.com/path/to/data.csv`
 `http` | HTTP to file with _strong ETag_ | `https://example.com/path/to/data.csv`
+`remote` | Remote path | `remote://myremote/path/to/file`
 
-In the _External Dependencies_ documentation, an alternative is demonstrated for
-each of these schemes.  Instead of:
+Another way to understand the `dvc import` command is as a short-cut for more
+verbose `dvc run` commands. This is discussed in the
+[External Dependencies](/doc/user-guide/external-dependencies) documentation,
+where an alternative is demonstrated for each of these schemes.
+
+Instead of `dvc import`:
 
 ```dvc
     $ dvc import https://example.com/path/to/data.csv data.csv
 ```
 
-It is possible to instead run
+It is possible to instead use `dvc run`:
 
 ```dvc
     $ dvc run -d https://example.com/path/to/data.csv \
@@ -53,9 +60,10 @@ It is possible to instead run
               wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a DVC file with an external dependency. The `dvc import`
-command saves the user from using the command to copy files from each of the
-remote storage schemes, and from having to install CLI tools for each service.
+Both methods generate a DVC file with an external dependency, and they perform
+a roughly equivalent result. The `dvc import` command saves the user from using
+the command to copy files from each of the remote storage schemes, and from
+having to install CLI tools for each service.
 
 When DVC inspects a DVC file, one step is inspecting the dependencies to see if
 any have changed. A changed dependency will appear in the `dvc status` report,
@@ -65,11 +73,12 @@ to test its current status.
 
 ## Options
 
-* `--resume` - resume previously started download.
+* `--resume` - resume previously started download. This is useful if the
+  connection to the remote resource is unstable.
 
-* `-f`, `--file` - specify name of the DVC file it generates. It should be 
-  either `Dvcfile` or have a `.dvc` suffix (e.g. `data.dvc`) in order 
-  for `dvc` to be able to find it later. 
+* `-f`, `--file` - specify name of the DVC file it generates. It should be
+  either `Dvcfile` or have a `.dvc` suffix (e.g. `data.dvc`) in order for `dvc`
+  to be able to find it later.
 
 * `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -78,14 +87,14 @@ to test its current status.
 
 * `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: Initializing a workspace using a remote file
+## Example: Tracking a remote file
 
 The [DVC getting started tutorial](/doc/get-started) demonstrates a simple DVC
 pipeline.  In the [Add Files step](/doc/get-started/add-files) we are told to
 download a file, then use `dvc add` to integrate it with the workspace.
 
-An alternate way to initialize the _Getting Started_ workspace, using
-`dvc import`, is
+An advanced alternate way to initialize the _Getting Started_ workspace, using
+`dvc import`, is:
 
 ```dvc
     $ mkdir get-started
@@ -127,18 +136,19 @@ The `etag` field in the DVC file contains the ETAG recorded from the HTTP
 request. If the remote file changes, the ETAG changes, letting DVC know when
 the file has changed. 
 
-## Example: Remote file that is updated
+## Example: Detecting remote file changes
 
 What if that remote file is one which will be updated regularly? The project
 goal might include regenerating some artifact based on the updated data. With a
 DVC external dependency, the pipeline can be triggered to re-execute based on a
 changed external dependency.
 
-Let us again use the _Getting Started_ example, in a way which will mimic an
-updated external data source.
+Let us again use the [Getting Started](/doc/get-started) example, in a way which
+will mimic an updated external data source.
 
-The first step is to set up an SSH remote for the data file. On a server you can
-access using SSH, run these commands:
+To make it easy to experiment with this, let us use a local directory as our
+remote data store. In real life the data file will probably be on a remote
+server, of course. Run these commands:
 
 ```dvc
     $ mkdir /path/to/data-store
@@ -158,7 +168,7 @@ On your laptop initialize the workspace again:
     $ git init
     $ dvc init
     $ mkdir data
-    $ dvc import ssh://USER-NAME@HOST-NAME:/path/to/data-store/data.xml data/data.xml
+    $ dvc import /path/to/data-store/data.xml data/data.xml
     Importing '/path/to/data-store/data.xml' -> '/Volumes/Extra/dvc/get-started/data/data.xml'
     [##############################] 100% data.xml
     Adding 'data/data.xml' to 'data/.gitignore'.
@@ -171,13 +181,13 @@ On your laptop initialize the workspace again:
 ```
 
 At this point we have the workspace set up in a similar fashion. The difference
-is that DVC file references now references the editable data file on the SSH
-data store we just set up. We did this to make it easy to edit the data file.
+is that DVC file references now references the editable data file in the data
+store directory we just set up. We did this to make it easy to edit the data file.
 
 ```yaml
     deps:
     - md5: a86ca87250ed8e54a9e2e8d6d34c252e
-      path: ssh://USER-NAME@HOST-NAME:/tmp/data-store/data.xml
+      path: /path/to/data-store/data.xml
     md5: 361728a3b037c9a4bcb897cdf856edfc
     outs:
     - cache: true
@@ -188,8 +198,8 @@ data store we just set up. We did this to make it easy to edit the data file.
     wdir: .
 ```
 
-The DVC file is nearly the same as before. The `path` has the URL for the SSH
-data store, and instead of an `etag` we have an `md5` checksum.
+The DVC file is nearly the same as before. The `path` has the URL for the data
+store, and instead of an `etag` we have an `md5` checksum.
 
 Let's also set up one of the processing stages from the Getting Started example.
 
@@ -234,7 +244,7 @@ The workspace says it is fine:
     Pipeline is up to date. Nothing to reproduce.
 ```
 
-Then over on the SSH server, edit `data.xml`. It doesn't matter what you
+Then in the data store directory, edit `data.xml`. It doesn't matter what you
 change, other than it still being a valid XML file, just that a change is made
 because any change will change the checksum. Once we do so, we'll see this:
 
@@ -242,7 +252,7 @@ because any change will change the checksum. Once we do so, we'll see this:
     $ dvc status
     data.xml.dvc:
         changed deps:
-            modified:     ssh://USER-NAME@HOST-NAME:/path/to/data-store/data.xml
+            modified:     /path/to/data-store/data.xml
 ```
 
 DVC has noticed the external dependency has changed. It is telling us that it
@@ -251,7 +261,7 @@ is necessary to now run `dvc repro`.
 ```dvc
     $ dvc repro prepare.dvc
 
-    WARNING: Dependency 'ssh://USER-NAME@HOST-NAME:/path/to/data-store/data.xml' of 'data.xml.dvc' changed because it is 'modified'.
+    WARNING: Dependency '/path/to/data-store/data.xml' of 'data.xml.dvc' changed because it is 'modified'.
     WARNING: Stage 'data.xml.dvc' changed.
     Reproducing 'data.xml.dvc'
     Importing '/path/to/data-store/data.xml' -> '/Volumes/Extra/dvc/get-started/data/data.xml'
@@ -274,12 +284,12 @@ is necessary to now run `dvc repro`.
     
     $ git add .
     $ git commit -a -m 'updated data'
+
     [master a8d4ce8] updated data
      2 files changed, 6 insertions(+), 6 deletions(-)
 
     $ dvc status
     Pipeline is up to date. Nothing to reproduce.
-
 ```
 
 Because the external source for the data file changed, the change was noticed

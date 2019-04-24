@@ -251,10 +251,10 @@ the `dvc repro` command.
     
     [master 78d0c44] modified featurization
      5 files changed, 12 insertions(+), 12 deletions(-)
-
 ```
 
 After rerunning the DVC pipeline, of course the data files are in sync with
 the other files but we must now commit some files to the Git repository.
 Looking closely we see that `dvc status` is again run, informing us that the
-data files are synchronized.
+data files are synchronized with the statement: _Pipeline is up to date. Nothing
+to reproduce_.
