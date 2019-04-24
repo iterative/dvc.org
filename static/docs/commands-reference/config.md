@@ -103,8 +103,8 @@ unprotect` before updating a file.
 * `type` - link type that dvc should use to link data files from cache to
 your workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy`
 or a combination of those separated by the comma: `reflink,copy`. By
-default, dvc will try `reflink` and `copy` link type in order to choose the 
-most effectivelink type of those two. By default dvc is not trying `symlink`
+default, DVC will try `reflink` and `copy` link type in order to choose the 
+most effectivelink type of those two. By default DVC is not trying `symlink`
 and `hardlink` to protect user from  accidental cache and repository 
 corruption. Here are pros and cons of different link types. Ordered from the
 best and the most efficient to the most inefficient. **Note!** Unless your 
