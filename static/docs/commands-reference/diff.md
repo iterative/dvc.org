@@ -3,6 +3,9 @@
 Show changes between versions of the DVC repository. It can be narrowed down to
 specific target files and directories under DVC control.
 
+> This command requires the repository to be versioned with
+> [Git](https://git-scm.com/).
+
 ## Synopsis
 
 ```usage
@@ -166,7 +169,7 @@ this time, which defaults to `HEAD`.)
     0 files deleted, size was increased by 2.9 MB
 ```
 
-## Examples: Confirming that a target hasn't changed
+## Examples: Confirming that a target has not changed
 
 Let's use our sample repo once again, which has several [available
 tags](https://github.com/iterative/example-get-started/tags) for conveniency.

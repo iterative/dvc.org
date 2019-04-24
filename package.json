@@ -8,7 +8,6 @@
     "build": "next build",
     "start": "NODE_ENV=production node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "heroku-postbuild": "npm run build",
     "prettier-src": "prettier --no-semi --write '{pages,src}/**/*.{js,jsx}'"
   },
   "repository": {

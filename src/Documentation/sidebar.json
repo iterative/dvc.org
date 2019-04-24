@@ -23,7 +23,7 @@
       "example-pipeline.md"
     ],
     "labels": {
-      "connect-code-and-data.md": "Add Transformations",
+      "connect-code-and-data.md": "Connect with Code",
       "example-pipeline.md": "Example: Pipelines",
       "example-versioning.md": "Example: Versioning",
       "older-versions.md": "Get Older Files"
