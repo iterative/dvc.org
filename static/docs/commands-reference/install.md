@@ -95,7 +95,7 @@ This data will be retrieved from a preconfigured remote cache.
 ## Example: Checkout both DVC and SCM
 
 Let's start our exploration with the impact of `dvc install` on the
-`dvc checkout` command.  Remember that switching from one SCM tag or branch to
+`dvc checkout` command. Remember that switching from one SCM tag or branch to
 another changes the set of DVC files in the workspace, which then also changes
 the data files that should be in the workspace.
 
@@ -120,7 +120,7 @@ the available tags:
 ```
 
 These tags are used to mark points in the development of this workspace, and to
-document specific experiments conducted in the workspace.  To take a look at one
+document specific experiments conducted in the workspace. To take a look at one
 we check-out the workspace using the SCM (in this case Git):
 
 ```dvc
@@ -167,7 +167,7 @@ files, and now `dvc status` tells us the data files match the DVC files.
 ```
 
 We've seen the default behavior with there being no Git hooks installed. We want
-to see how the behavior changes after installing the Git hooks.  We must first
+to see how the behavior changes after installing the Git hooks. We must first
 reset the workspace to he at the head commit before installing the hooks.
 
 ```dvc
@@ -227,7 +227,7 @@ If we simply edit one of the code files:
 
 We see that `dvc status` output has appeared in the `git commit` interaction.
 This new behavior corresponds to the Git hook which was installed, and it
-helpfully informs us the workspace is out of sync.  We should therefore run
+helpfully informs us the workspace is out of sync. We should therefore run
 the `dvc repro` command.
 
 ```dvc
@@ -253,8 +253,8 @@ the `dvc repro` command.
      5 files changed, 12 insertions(+), 12 deletions(-)
 ```
 
-After rerunning the DVC pipeline, of course the data files are in sync with
-the other files but we must now commit some files to the Git repository.
-Looking closely we see that `dvc status` is again run, informing us that the
-data files are synchronized with the statement: _Pipeline is up to date. Nothing
-to reproduce_.
+After rerunning the DVC pipeline, of course the data files are in sync with the
+other files but we must now commit some files to the Git repository. Looking
+closely we see that `dvc status` is again run, informing us that the data files
+are synchronized with the statement: _Pipeline is up to date. Nothing to
+reproduce_.
