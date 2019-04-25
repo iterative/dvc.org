@@ -56,7 +56,6 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <meta charSet="utf-8" />
-          <title>{TITLE}</title>
           <meta name="description" content={DESCRIPTION} />
           <meta name="keywords" content={KEYWORDS} />
           <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://dvc.org/static/social-share.png" />
