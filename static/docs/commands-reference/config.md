@@ -5,7 +5,7 @@ Get or set per repository or global options.
 You can query/set/replace/unset options with this command. It takes a name - is
 a section and a key separated by a dot. This command reads and overwrites the
 DVC config file `.dvc/config` (if `--local` option is specified
-`.dvc/config.local` is modified instead). 
+`.dvc/config.local` is modified instead).
 
 If option value is not provided and `--unset` is not specified this command
 returns current value of the option.
@@ -41,7 +41,7 @@ share through Git.
 
 * `-v`, `--verbose` - displays detailed tracing information.
 
-## core 
+## core
 
 This is the main section with the global options.
 
@@ -67,25 +67,25 @@ Sections that describe particular remotes. See `dvc remote` for more info.
 
 DVC cache is a hidden (by default it's located in the `.dvc/cache` directory)
 storage. For files that are under DVC control it keeps them and their
-different versions. 
+different versions.
 
-* `dir` - directory to use for the cache. The value can be an absolute path or
-a path relative to the config file location that it is specified in (see
-helper command `dvc cache dir` that helps to properly transform paths specified
-relative to the current directory into paths relative to the specified config
-file). The default value is `cache`, which, when resolved relative to the
-project config location `.dvc/config` results in `.dvc/cache`.
+* `dir` - directory to use for the cache. The value can be an absolute path or a
+  path relative to the config file location that it is specified in (see helper
+  command `dvc cache dir` that helps to properly transform paths specified
+  relative to the current directory into paths relative to the specified config
+  file). The default value is `cache`, which, when resolved relative to the
+  project config location `.dvc/config` results in `.dvc/cache`.
 
 ```dvc
     $ dvc config cache.dir /mnt/cache
-```  
+```
 Or
 ```dvc
     $ dvc config cache.dir ../../mycache
     $ dvc pull -q
     $ ls ../mycache
     2f/
-```  
+```
 
 
 * `protected` - makes files in the workspace read-only. Run `dvc checkout` for
@@ -98,21 +98,21 @@ unprotect` before updating a file.
 
 ```dvc
     $ dvc config cache.protected true
-```  
+```
 
-* `type` - link type that dvc should use to link data files from cache to
-your workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy`
-or a combination of those separated by the comma: `reflink,copy`. By
-default, DVC will try `reflink` and `copy` link type in order to choose the 
-most effectivelink type of those two. By default DVC is not trying `symlink`
-and `hardlink` to protect user from  accidental cache and repository 
-corruption. Here are pros and cons of different link types. Ordered from the
-best and the most efficient to the most inefficient. **Note!** Unless your 
-workspace supports `reflinks` (if you are on a recent Mac then chances are you
-are using `reflinks`) or you've manually specified `cache.type copy`, you are
-**corrupting** the cache if you are editing the data file in the workspace.
-Check the `protected` mode option above and corresponding `dvc unprotect`
-command to modify files safely. 
+* `type` - link type that dvc should use to link data files from cache to your
+  workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
+  combination of those separated by the comma: `reflink,copy`. By default, DVC
+  will try `reflink` and `copy` link type in order to choose the most
+  effectivelink type of those two. By default DVC is not trying `symlink` and
+  `hardlink` to protect user from accidental cache and repository corruption.
+  Here are pros and cons of different link types. Ordered from the best and the
+  most efficient to the most inefficient. **Note!** Unless your workspace
+  supports `reflinks` (if you are on a recent Mac then chances are you are using
+  `reflinks`) or you've manually specified `cache.type copy`, you are
+  **corrupting** the cache if you are editing the data file in the workspace.
+  Check the `protected` mode option above and corresponding `dvc unprotect`
+  command to modify files safely.
 
   1. **`reflink`** - this is the best link type that could be. It is as
     fast as hard/symlinks, but doesn't carry a risk of cache corruption,
@@ -145,22 +145,22 @@ command to modify files safely.
 
 ## state
 
-State settings. Check the 
+State settings. Check the
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more about the state file that is used for optimization.
 
 * `row_limit` - maximum number of entries in the state database which affects
-the physical size of the state file itself as well as the performance
-of certain DVC operations. The bigger the limit the more checksum history DVC
-can keep in order to avoid sequential checksum recalculations for the files.
-Default limit is set to 10 000 000 rows.
-    
+  the physical size of the state file itself as well as the performance of
+  certain DVC operations. The bigger the limit the more checksum history DVC can
+  keep in order to avoid sequential checksum recalculations for the files.
+  Default limit is set to 10 000 000 rows.
+
 * `row_cleanup_quota` - percentage of the state database that is going to be
-deleted when it hits the `row_limit`. When an entry in the database is used
-(e.g. during the `dvc status`) dvc updates the timestamp on that entry so
-that when it needs to cleanup the database it could sort them by the timestamp
-and remove the oldest ones. Default quota is set to 50(percent).
-    
+  deleted when it hits the `row_limit`. When an entry in the database is used
+  (e.g. during the `dvc status`) dvc updates the timestamp on that entry so that
+  when it needs to cleanup the database it could sort them by the timestamp and
+  remove the oldest ones. Default quota is set to 50(percent).
+
 ## Examples
 
 1. Use remote `myremote` by default:
@@ -193,4 +193,4 @@ and remove the oldest ones. Default quota is set to 50(percent).
 
 ```dvc
     $ dvc config cache.protected true
-```  
+```
