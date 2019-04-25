@@ -1,8 +1,8 @@
 # import
 
-Import file from any supported URL (it could be HTTP, as well as AWS S3, SSH,
-and other supported external storages) or local directory to local workspace and
-track changes in remote file or directory.
+Import file from any supported URL (it could be `http://`, as well as `s3://`,
+`ssh://`, and other supported external storage URLs) or local directory to local
+workspace and track changes in remote file or directory.
 
 ## Synopsis
 
