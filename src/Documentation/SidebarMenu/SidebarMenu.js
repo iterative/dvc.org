@@ -9,7 +9,8 @@ import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
 
 export default class SidebarMenu extends React.Component {
-  render() {
+    render() {
+        let self = this;
     const {
       sidebar,
       currentSection,
@@ -42,17 +43,18 @@ export default class SidebarMenu extends React.Component {
                     </SectionLink>
 
                     {/* Section Files */}
-                    <Collapse isOpen={isSectionActive} items={files.length}>
+                    <Collapse isOpen={isSectionActive} items={files.length} subitems={
+                            files.filter(fileOrGroup=>{
+                                return (Array.isArray(fileOrGroup) && includes(fileOrGroup, currentFile))
+                            }).map(fileOrGroup => {
+                                return fileOrGroup.slice(1).length
+                            })
+                    }>
                       {files &&
                         files.map((fileOrGroup, fileIndex) => {
-                          const file = Array.isArray(fileOrGroup)
-                            ? fileOrGroup[0]
-                            : fileOrGroup
-                          const subgroup = Array.isArray(fileOrGroup)
-                            ? fileOrGroup.slice(1)
-                            : null
-                          const isFileActive = currentFile === file
-
+                          const file = Array.isArray(fileOrGroup) ? fileOrGroup[0] : fileOrGroup;
+                          const subgroup = Array.isArray(fileOrGroup) ? fileOrGroup.slice(1) : null;
+                          const isFileActive = currentFile === file;
                           return (
                             <Fragment>
                               <div key={`file-${fileIndex}`}>
@@ -212,7 +214,7 @@ const SectionLink = styled.a`
 const Collapse = styled.div`
   height: 0;
   overflow: hidden;
-  height: ${({ isOpen, items }) => (isOpen ? items * 31 : 0)}px;
+  height: ${({ isOpen, items, subitems }) => (isOpen ? (items + ((subitems && subitems.length>0) ? subitems[0] : 0)) * 31 : 0)}px;
   transition: height 0.3s linear;
 `
 
