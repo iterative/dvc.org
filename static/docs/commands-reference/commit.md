@@ -121,7 +121,7 @@ Now, we can install requirements for the project:
 Then download the precomputed data using:
 
 ```dvc
-    $ dvc pull
+    $ dvc pull --all-branches --all-tags
 ```
 
 This data will be retrieved from a preconfigured remote cache.
