@@ -196,9 +196,13 @@
   {
     "name": "Changelog",
     "folder": "/static/docs/changelog",
-    "files": ["0.18.md"],
+    "files": [
+      "0.35.md",
+      "0.18.md"
+    ],
     "labels": {
-      "0.18.md": "v0.12 - v0.18"
+      "0.18.md": "v0.12 - v0.18",
+      "0.35.md": "v0.19 - v0.35"
     }
   }
 ]

@@ -4,7 +4,6 @@ import reset from 'styled-reset'
 import { global } from '../src/styles'
 import Router from 'next/router'
 
-const TITLE = `Data Science Version Control System`
 const DESCRIPTION = `Open-source Version Control System for Data Science Projects. Data Version Control.`
 const KEYWORDS = `data version control machine learning models management`
 
@@ -56,7 +55,6 @@ export default class MyDocument extends Document {
       <html>
         <Head>
           <meta charSet="utf-8" />
-          <title>{TITLE}</title>
           <meta name="description" content={DESCRIPTION} />
           <meta name="keywords" content={KEYWORDS} />
           <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://dvc.org/static/social-share.png" />
