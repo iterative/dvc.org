@@ -58,7 +58,8 @@
       "update-tracked-file.md",
       "autocomplete.md",
       "plugins.md",
-      "analytics.md"
+      "analytics.md",
+      "dvcignore.md"
     ],
     "labels": {
       "dvc-files-and-directories.md": "Files and Directories",
