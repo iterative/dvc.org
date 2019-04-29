@@ -176,7 +176,7 @@ reset the workspace to he at the head commit before installing the hooks.
     $ cat .git/hooks/pre-commit
     #!/bin/sh
     exec dvc status
-    
+
     $ cat .git/hooks/post-checkout
     #!/bin/sh
     exec dvc checkout
@@ -248,7 +248,7 @@ the `dvc repro` command.
     $ git commit -a -m 'updated data after modified featurization'
 
     Pipeline is up to date. Nothing to reproduce.
-    
+
     [master 78d0c44] modified featurization
      5 files changed, 12 insertions(+), 12 deletions(-)
 ```
