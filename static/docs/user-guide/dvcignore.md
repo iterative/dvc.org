@@ -1,37 +1,37 @@
 # dvcignore
 
-Mark which files and/or direcotries should be ignored when traversing
+Mark which files and/or directories should be ignored when traversing
 repository.
 
 Sometimes you might want DVC to ignore files while traversing the project
-directory. For example, when working on project with many files in its data
-directory, you might encounter extended execution time for operations
-that are as simple as `dvc status`. To prevent this, we are implementing
-`.dvcignore` files handling. When fully implemented, their implementation is
-intended to provide similar funcionality as `.gitignore` files provide for
-`git`.
+directory. For example, when working on a project with many files in its data
+directory, you might encounter extended execution time for operations that are
+as simple as `dvc status`. To prevent this, we are implementing `.dvcignore`
+files handling. When fully implemented, their implementation is intended to
+provide similar functionality as `.gitignore` files provide for `git`.
 
 ## How does it work
 
-* You need to create `.dvcignore` file. 
-* Populate it with patterns that you would like to ignore.
+* You need to create `.dvcignore` file.
+* Populate it with [patterns](https://git-scm.com/docs/gitignore) that you would
+  like to ignore.
 * Each line should contain only one pattern.
 * During execution of commands that traverse directories, DVC will ignore
-matching paths.
-* Not every operation supports `.dvcignore`. To see current limitations, 
-read following paragraph.
+  matching paths.
+* Not every operation supports `.dvcignore`. To see current limitations, read
+  following paragraph.
 
 ## Current limitations
 
 During development, we noticed that there are few potential uses cases that
-might be tricky to handle (e.g. what to do when we are `dvc add`-ing
-directory containing `.dvcignore` file). Therefore, we decided to enable
-this feature gradually in different parts of the project.
+might be tricky to handle (e.g. what to do when we are `dvc add`-ing directory
+containing `.dvcignore` file). Therefore, we decided to enable this feature
+gradually in different parts of the project.
 
-Currently .dvcignore files will be read and applied in any operation that
-collects stage files(e.g. `checkout`, `metrics`, `status`, `run`,
-`repro`), so it is advised to use it in case described in first paragraph,
-when amount of files in tree of repository directory causes performance issues.
+Currently `.dvcignore` files will be read and applied in any operation that
+collects stage files (e.g. `checkout`, `metrics`, `status`, `run`, `repro`), so
+it is advised to use it in cases described in the first paragraph, when amount
+of files in tree of repository directory causes performance issues.
 
 ## Syntax
 
@@ -39,7 +39,7 @@ The same as for [`.gitignore`](https://git-scm.com/docs/gitignore).
 
 ## Example
 
-Lets analyse example project:
+Lets analyse an example project:
 
 ```dvc
     $ mkdir dir1 dir2
@@ -55,12 +55,16 @@ Lets analyse example project:
         ├── data2
         └── data2.dvc
 ```
-Modify data files
+
+Modify data files:
+
 ```dvc
     $ echo mod > dir1/data1
     $ echo mod > dir2/data2
 ```
-Check status
+
+Check status:
+
 ```dvc
     $ dvc status
     dir1/data1.dvc:
@@ -70,17 +74,21 @@ Check status
 	changed outs:
 		modified:           dir2/data2
 ```
+
 Note, that both data files are displayed as modified
 Create `.dvcignore` file and insert pattern matching one of the files:
+
 ```dvc
     $ echo dir1/* >> .dvcignore
 ```
-Check status again
+
+Check status again:
+
 ```dvc
     $ dvc status
     dir2/data2.dvc:
 	changed outs:
 		modified:           dir2/data2
 ```
-Only second file is displayed because DVC ignores `data1.dvc` and `data1`
-when collecting stage files.
+Only second file is displayed because DVC ignores `data1.dvc` and `data1` when
+collecting stage files.
