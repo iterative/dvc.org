@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "node server.js",
+    "start": "NODE_ENV=production node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier-src": "prettier --no-semi --write '{pages,src}/**/*.{js,jsx}'"
   },
