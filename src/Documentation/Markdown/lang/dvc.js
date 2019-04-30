@@ -34,43 +34,44 @@ let _javascript = function(hljs) {
     aliases: ['dvc'],
     contains: [
       {
-        begin: /^\s*\$/,
-        end: /([^\\]\n)|\Z/,
+        begin: /ls|cat|vi|mkdir|cd|wget|du|python|cp|export|echo|pip|curl|tar|exec|autoload|sudo|unzip|rm|tree|file|md5|source|virtualenv/,
         keywords: {
-          keyword:
-          'ls cat vi mkdir cd wget du python cp export echo pip curl tar ' +
-            'exec autoload sudo unzip rm tree file md5 source virtualenv',
+            keyword:
+                'ls cat vi mkdir cd wget du python cp export echo pip curl tar ' +
+                'exec autoload sudo unzip rm tree file md5 source virtualenv',
         },
-        contains: [
-          {
-            begin: / dvc [a-z\-]+/,
-            keywords: {
-              built_in:
+      },
+      {
+        begin: /\$/,
+        className: 'skipped',
+      },
+      {
+        begin: / dvc [a-z\-]+/,
+        keywords: {
+            built_in:
                 'help dvc init add import checkout run pull push fetch status ' +
                 'repro remove move gc config remote metrics install root lock ' +
                 'unlock pipeline destroy unprotect commit cache pkg tag diff',
-            },
-            className: 'strong',
-          },
-          {
-            begin: / git [a-z\-]+/,
-            keywords: {
-              keyword: 'git commit status pull push fetch add init checkout ' +
-              'merge clone',
-            },
-          },
-          QUOTE_STRING,
-          APOS_STRING,
-          VAR,
-          hljs.HASH_COMMENT_MODE
-        ]
+        },
+        className: 'strong',
       },
+      {
+        begin: / git [a-z\-]+/,
+        keywords: {
+            keyword: 'git commit status pull push fetch add init checkout ' +
+                'merge clone',
+        },
+      },
+      QUOTE_STRING,
+      APOS_STRING,
+      VAR,
+      hljs.HASH_COMMENT_MODE,
       hljs.HASH_COMMENT_MODE,
       {
         begin: /^\s*[^\s#$]/,
         end: /\n|\Z/,
         className: 'meta',
-      }
+      },
     ],
 
   };
