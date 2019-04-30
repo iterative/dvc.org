@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import { LightButton } from '../LightButton'
 // syntax highlighter
 import SyntaxHighlighter, {
-  registerLanguage
+    registerLanguage
 } from 'react-syntax-highlighter/light'
 import Collapsible from 'react-collapsible'
 import docco from 'react-syntax-highlighter/styles/hljs/docco'
@@ -35,138 +35,141 @@ registerLanguage('vim', vim)
 registerLanguage('diff', diff)
 
 function flatten(text, child) {
-  return typeof child === 'string'
-    ? text + child
-    : React.Children.toArray(child.props.children).reduce(flatten, text)
+    return typeof child === 'string'
+        ? text + child
+        : React.Children.toArray(child.props.children).reduce(flatten, text)
 }
 
 const HeadingRenderer = ({ level, children }) => {
-  const content = React.Children.toArray(children)
-  const text = children.reduce(flatten, '')
-  const slug = kebabCase(text)
-  return React.createElement('h' + level, { id: slug }, content)
+    const content = React.Children.toArray(children)
+    const text = children.reduce(flatten, '')
+    const slug = kebabCase(text)
+    return React.createElement('h' + level, { id: slug }, content)
 }
 
 const HtmlRenderer = props => {
-  if (props.tag !== 'details') {
-    return React.createElement(props.tag, {}, props.children)
-  } else {
-    const text = props.children[0].props.children[0]
-    return (
-      <Collapsible trigger={text} transitionTime={200}>
-        {props.children.slice(1)}
-      </Collapsible>
-    )
-  }
+    if (props.tag !== 'details') {
+        return React.createElement(props.tag, {}, props.children)
+    } else {
+        const text = props.children[0].props.children[0]
+        return (
+            <Collapsible trigger={text} transitionTime={200}>
+                {props.children.slice(1)}
+            </Collapsible>
+        )
+    }
 }
 
 const CodeBlock = ({ value, language }) => {
-  const dvcStyle = Object.assign({}, docco)
-  dvcStyle['hljs-comment'] = { color: '#999' }
-  dvcStyle['hljs-meta'] = { color: '#333', fontSize: '14px' }
-  return (
-    <SyntaxHighlighter language={language} style={dvcStyle}>
-      {value}
-    </SyntaxHighlighter>
-  )
+    const dvcStyle = Object.assign({}, docco);
+    dvcStyle['hljs-comment'] = { color: '#999' };
+    dvcStyle['hljs-meta'] = { color: '#333', fontSize: '14px' };
+    dvcStyle['hljs-skipped'] = {
+        userSelect: 'none'
+    };
+    return (
+        <SyntaxHighlighter language={language} style={dvcStyle}>
+            {value}
+        </SyntaxHighlighter>
+    )
 }
 
 export default class Markdown extends Component {
-  constructor() {
-    super()
-    this.touchstartX = 0
-    this.touchendX = 0
-    this.isCodeBlock = false
-  }
-
-  componentDidMount() {
-    document.addEventListener('touchstart', this.onTouchStart, false)
-    document.addEventListener('touchend', this.onTouchEnd, false)
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('touchstart', this.onTouchStart)
-    document.removeEventListener('touchend', this.onTouchEnd)
-  }
-
-  isInsideCodeBlock = elem => {
-    for (; elem && elem !== document; elem = elem.parentNode) {
-      if (elem.tagName === 'PRE') return true
-      if (elem.tagName === 'ARTICLE') return false
-    }
-    return false
-  }
-
-  onTouchStart = e => {
-    this.isCodeBlock = this.isInsideCodeBlock(e.target)
-    this.touchstartX = event.changedTouches[0].screenX
-  }
-
-  onTouchEnd = () => {
-    this.touchendX = event.changedTouches[0].screenX
-    this.handleSwipeGesture()
-  }
-
-  handleSwipeGesture = () => {
-    if (this.isCodeBlock) return
-    const { section, file, onFileSelect } = this.props
-    const files = sidebar[section].files
-    const fileIndex = files.findIndex(f => f === file)
-    const showPrev = fileIndex > 0
-    const showNext = fileIndex + 1 < sidebar[section].files.length
-
-    if (this.touchstartX - this.touchendX > 100) {
-      showNext && onFileSelect(files[fileIndex + 1], section)
+    constructor() {
+        super()
+        this.touchstartX = 0
+        this.touchendX = 0
+        this.isCodeBlock = false
     }
 
-    if (this.touchendX - this.touchstartX > 100) {
-      showPrev && onFileSelect(files[fileIndex - 1], section)
+    componentDidMount() {
+        document.addEventListener('touchstart', this.onTouchStart, false)
+        document.addEventListener('touchend', this.onTouchEnd, false)
     }
-  }
 
-  render() {
-    const { markdown, githubLink, section, file, onFileSelect } = this.props
-    const files = sidebar[section].files
-    const fileIndex = files.findIndex(f => f === file)
-    const showPrev = fileIndex > 0
-    const showNext = fileIndex + 1 < sidebar[section].files.length
+    componentWillUnmount() {
+        document.removeEventListener('touchstart', this.onTouchStart)
+        document.removeEventListener('touchend', this.onTouchEnd)
+    }
 
-    return (
-      <Content>
-        <GithubLink href={githubLink} target="_blank">
-          <i /> Edit on Github
-        </GithubLink>
-        <ReactMarkdown
-          key={`${section}-${fileIndex}`}
-          className="markdown-body"
-          escapeHtml={false}
-          source={markdown}
-          renderers={{
-            code: CodeBlock,
-            heading: HeadingRenderer,
-            virtualHtml: HtmlRenderer
-          }}
-          astPlugins={[linker()]}
-        />
-        <NavigationButtons>
-          <Button
-            onClick={() => onFileSelect(files[fileIndex - 1], section)}
-            disabled={!showPrev}
-          >
-            <i className="prev" />
-            <span>Prev</span>
-          </Button>
-          <Button
-            onClick={() => onFileSelect(files[fileIndex + 1], section)}
-            disabled={!showNext}
-          >
-            <span>Next</span>
-            <i className="next" />
-          </Button>
-        </NavigationButtons>
-      </Content>
-    )
-  }
+    isInsideCodeBlock = elem => {
+        for (; elem && elem !== document; elem = elem.parentNode) {
+            if (elem.tagName === 'PRE') return true
+            if (elem.tagName === 'ARTICLE') return false
+        }
+        return false
+    }
+
+    onTouchStart = e => {
+        this.isCodeBlock = this.isInsideCodeBlock(e.target)
+        this.touchstartX = event.changedTouches[0].screenX
+    }
+
+    onTouchEnd = () => {
+        this.touchendX = event.changedTouches[0].screenX
+        this.handleSwipeGesture()
+    }
+
+    handleSwipeGesture = () => {
+        if (this.isCodeBlock) return
+        const { section, file, onFileSelect } = this.props
+        const files = sidebar[section].files
+        const fileIndex = files.findIndex(f => f === file)
+        const showPrev = fileIndex > 0
+        const showNext = fileIndex + 1 < sidebar[section].files.length
+
+        if (this.touchstartX - this.touchendX > 100) {
+            showNext && onFileSelect(files[fileIndex + 1], section)
+        }
+
+        if (this.touchendX - this.touchstartX > 100) {
+            showPrev && onFileSelect(files[fileIndex - 1], section)
+        }
+    }
+
+    render() {
+        const { markdown, githubLink, section, file, onFileSelect } = this.props
+        const files = sidebar[section].files
+        const fileIndex = files.findIndex(f => f === file)
+        const showPrev = fileIndex > 0
+        const showNext = fileIndex + 1 < sidebar[section].files.length
+
+        return (
+            <Content>
+                <GithubLink href={githubLink} target="_blank">
+                    <i /> Edit on Github
+                </GithubLink>
+                <ReactMarkdown
+                    key={`${section}-${fileIndex}`}
+                    className="markdown-body"
+                    escapeHtml={false}
+                    source={markdown}
+                    renderers={{
+                        code: CodeBlock,
+                        heading: HeadingRenderer,
+                        virtualHtml: HtmlRenderer
+                    }}
+                    astPlugins={[linker()]}
+                />
+                <NavigationButtons>
+                    <Button
+                        onClick={() => onFileSelect(files[fileIndex - 1], section)}
+                        disabled={!showPrev}
+                    >
+                        <i className="prev" />
+                        <span>Prev</span>
+                    </Button>
+                    <Button
+                        onClick={() => onFileSelect(files[fileIndex + 1], section)}
+                        disabled={!showNext}
+                    >
+                        <span>Next</span>
+                        <i className="next" />
+                    </Button>
+                </NavigationButtons>
+            </Content>
+        )
+    }
 }
 
 const Content = styled.article`
