@@ -64,6 +64,7 @@ const CodeBlock = ({ value, language }) => {
   const dvcStyle = Object.assign({}, docco)
   dvcStyle['hljs-comment'] = { color: '#999' }
   dvcStyle['hljs-meta'] = { color: '#333', fontSize: '14px' }
+  dvcStyle['hljs-skipped'] = { userSelect: 'none' }
   return (
     <SyntaxHighlighter language={language} style={dvcStyle}>
       {value}
