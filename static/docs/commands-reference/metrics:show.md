@@ -52,9 +52,14 @@ the file extension automatically if the type is supported.
   corresponding format in this case. Accepted value depends on the metric file
   type (`-t` option):
 
-  - `json` - check [JSONPath spec](https://goessner.net/articles/JsonPath/) to
-    see available options. For example, `"AUC"` extracts the value from the
-    following json-formatted metric file: `{"AUC": "0.624652"}`.
+  - `json` - check [JSONPath spec](https://goessner.net/articles/JsonPath/) or 
+    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) to see available options. 
+    For example, `"AUC"` extracts the value from the following json-formatted 
+    metric file: `{"AUC": "0.624652"}`. You can also filter on certain values. 
+    For example, `"$.metrics[?(@.deviation_mse<0.30) & (@.value_mse>0.4)]"` 
+    extracts only the values for model versions if they meet the given 
+    condition(s) from the metric file: 
+    `{"metrics": [{"dataset": "train", "deviation_mse": 0.173461, "value_mse": 0.421601}]}`
   - `tsv`/`csv` - `row,column`, e.g. `1,2`. Indices are 0-based.
   - `htsv`/`hcsv` - `row,column name`. Row index is 0-based. First row is used
     to specify column names and is not included into index. For example:

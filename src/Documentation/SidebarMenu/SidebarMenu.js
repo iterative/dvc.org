@@ -9,111 +9,113 @@ import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
 
 export default class SidebarMenu extends React.Component {
-  render() {
-    const {
-      sidebar,
-      currentSection,
-      currentFile,
-      onSectionSelect,
-      onFileSelect,
-      getLinkHref
-    } = this.props
+    render() {
+        let self = this;
+        const {
+            sidebar,
+            currentSection,
+            currentFile,
+            onSectionSelect,
+            onFileSelect,
+            getLinkHref
+        } = this.props
 
-    return (
-      <Menu id="sidebar-menu">
-        <Sections>
-          <SectionLinks>
-            {sidebar.map(
-              ({ name, files = [], labels = {}, indexFile }, index) => {
-                const isSectionActive = currentSection === index
-                return (
-                  <div key={index}>
-                    <SectionLink
-                      level={1}
-                      href={getLinkHref(
-                        index,
-                        indexFile ? undefined : files[0]
-                      )}
-                      onClick={e => onSectionSelect(index, e)}
-                      className={isSectionActive ? 'docSearch-lvl0' : ''}
-                      isActive={isSectionActive}
-                    >
-                      {name}
-                    </SectionLink>
-
-                    {/* Section Files */}
-                    <Collapse isOpen={isSectionActive} items={files.length}>
-                      {files &&
-                        files.map((fileOrGroup, fileIndex) => {
-                          const file = Array.isArray(fileOrGroup)
-                            ? fileOrGroup[0]
-                            : fileOrGroup
-                          const subgroup = Array.isArray(fileOrGroup)
-                            ? fileOrGroup.slice(1)
-                            : null
-                          const isFileActive = currentFile === file
-
-                          return (
-                            <Fragment>
-                              <div key={`file-${fileIndex}`}>
-                                <SectionLink
-                                  level={2}
-                                  href={getLinkHref(index, file)}
-                                  onClick={e => onFileSelect(file, index, e)}
-                                  isActive={isFileActive}
-                                >
-                                  {labels[file] || startCase(file.slice(0, -3))}
-                                </SectionLink>
-                              </div>
-
-                              {/* Subgroup files */}
-                              {subgroup && (
-                                <Collapse
-                                  isOpen={
-                                    Array.isArray(fileOrGroup) &&
-                                    includes(fileOrGroup, currentFile)
-                                  }
-                                  items={subgroup.length}
-                                >
-                                  {subgroup.map((sub, subIndex) => {
-                                    return (
-                                      <div
-                                        key={`file-${fileIndex}-${subIndex}`}
-                                      >
+        return (
+            <Menu id="sidebar-menu">
+                <Sections>
+                    <SectionLinks>
+                        {sidebar.map(
+                            ({ name, files = [], labels = {}, indexFile }, index) => {
+                                const isSectionActive = currentSection === index
+                                return (
+                                    <div key={index}>
                                         <SectionLink
-                                          level={3}
-                                          href={getLinkHref(index, sub)}
-                                          onClick={e =>
-                                            onFileSelect(sub, index, e)
-                                          }
-                                          isActive={currentFile === sub}
+                                            level={1}
+                                            href={getLinkHref(
+                                                index,
+                                                indexFile ? undefined : files[0]
+                                            )}
+                                            onClick={e => onSectionSelect(index, e)}
+                                            className={isSectionActive ? 'docSearch-lvl0' : ''}
+                                            isActive={isSectionActive}
                                         >
-                                          {labels[sub] ||
-                                            startCase(sub.slice(0, -3))}
+                                            {name}
                                         </SectionLink>
-                                      </div>
-                                    )
-                                  })}
-                                </Collapse>
-                              )}
-                            </Fragment>
-                          )
-                        })}
-                    </Collapse>
-                  </div>
-                )
-              }
-            )}
-          </SectionLinks>
-        </Sections>
-        <OnlyDesktop>
-          <SideFooter>
-            <DownloadButton openTop />
-          </SideFooter>
-        </OnlyDesktop>
-      </Menu>
-    )
-  }
+
+                                        {/* Section Files */}
+                                        <Collapse isOpen={isSectionActive} items={files.length} subitems={
+                                            files.filter(fileOrGroup=>{
+                                                return (Array.isArray(fileOrGroup) && includes(fileOrGroup, currentFile))
+                                            }).map(fileOrGroup => {
+                                                return fileOrGroup.slice(1).length
+                                            })
+                                        }>
+                                            {files &&
+                                            files.map((fileOrGroup, fileIndex) => {
+                                                const file = Array.isArray(fileOrGroup) ? fileOrGroup[0] : fileOrGroup;
+                                                const subgroup = Array.isArray(fileOrGroup) ? fileOrGroup.slice(1) : null;
+                                                const isFileActive = currentFile === file;
+                                                return (
+                                                    <Fragment>
+                                                        <div key={`file-${fileIndex}`}>
+                                                            <SectionLink
+                                                                level={2}
+                                                                href={getLinkHref(index, file)}
+                                                                onClick={e => onFileSelect(file, index, e)}
+                                                                isActive={isFileActive}
+                                                            >
+                                                                {labels[file] || startCase(file.slice(0, -3))}
+                                                            </SectionLink>
+                                                        </div>
+
+                                                        {/* Subgroup files */}
+                                                        {subgroup && (
+                                                            <Collapse
+                                                                isOpen={
+                                                                    Array.isArray(fileOrGroup) &&
+                                                                    includes(fileOrGroup, currentFile)
+                                                                }
+                                                                items={subgroup.length}
+                                                            >
+                                                                {subgroup.map((sub, subIndex) => {
+                                                                    return (
+                                                                        <div
+                                                                            key={`file-${fileIndex}-${subIndex}`}
+                                                                        >
+                                                                            <SectionLink
+                                                                                level={3}
+                                                                                href={getLinkHref(index, sub)}
+                                                                                onClick={e =>
+                                                                                    onFileSelect(sub, index, e)
+                                                                                }
+                                                                                isActive={currentFile === sub}
+                                                                            >
+                                                                                {labels[sub] ||
+                                                                                startCase(sub.slice(0, -3))}
+                                                                            </SectionLink>
+                                                                        </div>
+                                                                    )
+                                                                })}
+                                                            </Collapse>
+                                                        )}
+                                                    </Fragment>
+                                                )
+                                            })}
+                                        </Collapse>
+                                    </div>
+                                )
+                            }
+                        )}
+                    </SectionLinks>
+                </Sections>
+                <OnlyDesktop>
+                    <SideFooter>
+                        <DownloadButton openTop />
+                    </SideFooter>
+                </OnlyDesktop>
+            </Menu>
+        )
+    }
 }
 
 const Menu = styled.div`
@@ -176,8 +178,8 @@ const SectionLink = styled.a`
     top: 10px;
 
     ${props =>
-      props.isActive &&
-      `
+    props.isActive &&
+    `
       transform: rotate(-90deg);
     `};
   }
@@ -212,7 +214,7 @@ const SectionLink = styled.a`
 const Collapse = styled.div`
   height: 0;
   overflow: hidden;
-  height: ${({ isOpen, items }) => (isOpen ? items * 31 : 0)}px;
+  height: ${({ isOpen, items, subitems }) => (isOpen ? (items + ((subitems && subitems.length>0) ? subitems[0] : 0)) * 31 : 0)}px;
   transition: height 0.3s linear;
 `
 
