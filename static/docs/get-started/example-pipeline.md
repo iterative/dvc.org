@@ -42,7 +42,7 @@ just use your browser to download `code.zip`.
     $ unzip code.zip
     $ rm -f code.zip
     $ git add code/
-    $ git commit -m 'download and initialize code'
+    $ git commit -m "download and initialize code"
 ```
 
 (Optional) It's highly recommended to initialize a virtual environment to keep
@@ -51,7 +51,7 @@ your global packages clean and untouched:
 ```dvc
     $ virtualenv .env
     $ source .env/bin/activate
-    $ echo '.env/' >> .gitignore
+    $ echo ".env/" >> .gitignore
 ```
 
 Install the required dependencies:
@@ -115,7 +115,7 @@ It's enough to run `dvc checkout` or `dvc pull` to restore data files.
 
 ```dvc
     $ git add data/Posts.xml.zip.dvc data/.gitignore
-    $ git commit -m 'add dataset'
+    $ git commit -m "add dataset"
 ```
 
 ## Define steps

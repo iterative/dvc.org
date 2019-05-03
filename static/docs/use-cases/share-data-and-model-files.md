@@ -26,7 +26,7 @@ wish to store data:
 
 ```dvc
     $ dvc remote add -d myremote s3://mybucket/myproject
-    Setting 'myremote' as a default remote.
+    Setting "myremote" as a default remote.
 ```
 
 NOTE: `-d|--default` option sets myremote as a default repository for the project.

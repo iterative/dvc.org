@@ -60,7 +60,7 @@ stage below is dummy and is made completely for the sake or this examples
 section:
 
 ```dvc
-    $ dvc run -M metrics.csv 'echo auc, 0.9567 > metrics.csv'
+    $ dvc run -M metrics.csv "echo auc, 0.9567 > metrics.csv"
 ```
 
 The stage `metrics.csv.dvc` file should look like this:

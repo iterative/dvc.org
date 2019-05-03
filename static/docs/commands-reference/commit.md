@@ -273,7 +273,7 @@ That's especially critical if the pipeline takes a long time to execute.
 ```dvc
     $ git add src/train.py
 
-    $ git commit -m 'CHANGED'
+    $ git commit -m "CHANGED"
     [master 72327bd] CHANGED
     1 file changed, 2 insertions(+)
 

@@ -365,7 +365,7 @@ is necessary to now run `dvc repro`.
         git add data.xml.dvc prepare.dvc
 
     $ git add .
-    $ git commit -a -m 'updated data'
+    $ git commit -a -m "updated data"
 
     [master a8d4ce8] updated data
      2 files changed, 6 insertions(+), 6 deletions(-)
