@@ -97,3 +97,6 @@ to specify it explicitly.
                                 data.txt \
                                 hdfs://user@example.com/home/shared/data.txt
 ```
+
+Note that as long as there is a `hdfs://...` path for your data, DVC can handle
+it. So systems like Hadoop, Hive, and HBase are supported!
