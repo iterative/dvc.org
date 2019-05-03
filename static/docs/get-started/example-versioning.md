@@ -53,7 +53,7 @@ your global packages clean and untouched:
 ```dvc
     $ virtualenv .env
     $ source .env/bin/activate
-    $ echo '.env/' >> .gitignore
+    $ echo ".env/" >> .gitignore
 ```
 
 Install required dependencies:

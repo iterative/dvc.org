@@ -1,8 +1,8 @@
 # External Outputs
 
-With DVC you can specify external files as outputs for your pipeline stages.
-DVC will track changes in those files and will reflect that in your pipeline
-state. Currently DVC supports such types of external outputs:
+With DVC you can specify external files as outputs for your pipeline stages. DVC
+will track changes in those files and will reflect that in your pipeline state.
+Currently DVC supports such types of external outputs:
 
 1. Local files and directories outside of your dvc repository;
 2. Amazon S3;
@@ -10,22 +10,21 @@ state. Currently DVC supports such types of external outputs:
 4. SSH;
 5. HDFS;
 
-In order to specify an external output for your stage use usual `-o` and
-`-O` keys with URLs pointing to your desired files. For cached external outputs
+In order to specify an external output for your stage use usual `-o` and `-O`
+keys with URLs pointing to your desired files. For cached external outputs
 (specified using `-o`) you will need to setup an external cache location, that
-will be used by dvc to store versions of your external file. Non-cached
-external outputs(specified using `-O`) do not require external cache to be
-setup.
+will be used by dvc to store versions of your external file. Non-cached external
+outputs(specified using `-O`) do not require external cache to be setup.
 
 ## Examples
 
-As an example, let's take a look at dvc stages that simply upload your local
-file to external location:
+As an example, let's take a look at DVC stages that simply moves local file
+to/from external location:
 
 ### Local
 
-Your local cache location already defaults to `.dvc/cache`, so there is no
-need to specify it explicitly.
+Your local cache location already defaults to `.dvc/cache`, so there is no need
+to specify it explicitly.
 
 ```dvc
     $ dvc run -d /home/shared/data.txt \
@@ -36,13 +35,13 @@ need to specify it explicitly.
 ### Amazon S3
 
 ```dvc
-    # Add S3 remote that will be used as a cache location for your s3 files
+    # Add S3 remote to be uses as cache location for S3 files
     $ dvc remote add s3cache s3://mybucket/cache
 
-    # Tell dvc to use your 's3cache' remote as s3 cache location
+    # Tell dvc to use the 's3cache' remote as S3 cache location
     $ dvc config cache.s3 s3cache
 
-    # Run your stage with external S3 output
+    # Run the stage with external S3 output
     $ dvc run \
               -d data.txt \
               -o s3://mybucket/data.txt \
@@ -52,13 +51,13 @@ need to specify it explicitly.
 ### Google Cloud Storage
 
 ```dvc
-    # Add GS remote that will be used as a cache location for your gs files
+    # Add GS remote to be used as cache location for GS files
     $ dvc remote add gscache gs://mybucket/cache
 
-    # Tell dvc to use your 'gscache' remote as gs cache location
+    # Tell dvc to use the 'gscache' remote as GS cache location
     $ dvc config cache.gs gscache
 
-    # Run your stage with external GS output
+    # Run the stage with external GS output
     $ dvc run \
               -d data.txt \
               -o gs://mybucket/data.txt \
@@ -68,13 +67,13 @@ need to specify it explicitly.
 ### SSH
 
 ```dvc
-    # Add SSH remote that will be used as a cache location for your ssh files
+    # Add SSH remote to be used as cache location for SSH files
     $ dvc remote add sshcache ssh://user@example.com:/cache
 
-    # Tell dvc to use your 'sshcache' remote as ssh cache location
+    # Tell dvc to use the 'sshcache' remote as SSH cache location
     $ dvc config cache.ssh sshcache
 
-    # Run your stage with external SSH output
+    # Run the stage with external SSH output
     $ dvc run \
               -d data.txt \
               -o ssh://user@example.com:/home/shared/data.txt \
@@ -84,13 +83,13 @@ need to specify it explicitly.
 ### HDFS
 
 ```dvc
-    # Add HDFS remote that will be used as a cache location for your hdfs files
+    # Add HDFS remote to be used as cache location for HDFS files
     $ dvc remote add hdfscache hdfs://user@example.com/cache
 
-    # Tell dvc to use your 'hdfscache' remote as hdfs cache location
+    # Tell dvc to use the 'hdfscache' remote as HDFS cache location
     $ dvc config cache.hdfs hdfscache
 
-    # Run your stage with external HDFS output
+    # Run the stage with external HDFS output
     $ dvc run \
               -d data.txt \
               -o hdfs://user@example.com/home/shared/data.txt \
@@ -98,3 +97,6 @@ need to specify it explicitly.
                                 data.txt \
                                 hdfs://user@example.com/home/shared/data.txt
 ```
+
+Note that as long as there is a `hdfs://...` path for your data, DVC can handle
+it. So systems like Hadoop, Hive, and HBase are supported!

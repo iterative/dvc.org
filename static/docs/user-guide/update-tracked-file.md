@@ -44,7 +44,7 @@ And start tracking it again:
 ```dvc
     $ dvc add train.tsv
     $ git add train.tsv.dvc
-    $ git commit -m 'new train data'
+    $ git commit -m "new train data"
 ```
 
 ## Modifying content
@@ -67,5 +67,5 @@ Add a new version of the file back to DVC:
 ```dvc
     $ dvc add train.tsv
     $ git add train.tsv.dvc
-    $ git commit -m 'modify train data'
+    $ git commit -m "modify train data"
 ```

@@ -38,7 +38,7 @@ Both of these files have to be committed to the repository.
     ?? data/Posts.xml.zip.dvc
 
     $ git add .
-    $ git commit -m 'add source dataset'
+    $ git commit -m "add source dataset"
 ```
 
 You have probably already noticed that the actual data file was not committed to
@@ -249,7 +249,7 @@ our ML pipeline.
 
 ```dvc
     $ git add .
-    $ git commit -m 'extract data'
+    $ git commit -m "extract data"
 ```
 
 ## Running in bulk
@@ -298,7 +298,7 @@ Both of the steps can be committed to the repository together.
 
 ```dvc
     $ git add .
-    $ git commit -m 'Process to TSV and separate test and train'
+    $ git commit -m "Process to TSV and separate test and train"
 ```
 
 Let’s run and commit the following steps of the pipeline. Define the feature

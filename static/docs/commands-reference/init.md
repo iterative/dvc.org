@@ -51,7 +51,7 @@ this is your local directory and you cannot push it to any Git remote.
             new file:   .dvc/.gitignore
             new file:   .dvc/config
 
-    $ git commit -m 'Init DVC'
+    $ git commit -m "Init DVC"
 ```
 
 * Cache directory is not under git control, it contains data and model files and

@@ -29,7 +29,7 @@ to download `code.zip`.
     $ wget https://dvc.org/s3/so/code.zip
     $ unzip code.zip -d code && rm -f code.zip
     $ git add code/
-    $ git commit -m 'download code'
+    $ git commit -m "download code"
 ```
 
 (Optional) It's highly recommended to initialize a virtual environment to keep
@@ -38,7 +38,7 @@ your global packages clean and untouched:
 ```dvc
     $ virtualenv .env
     $ source .env/bin/activate
-    $ echo '.env/' >> .git/info/exclude
+    $ echo ".env/" >> .git/info/exclude
 ```
 
 Install the code requirements:
@@ -88,7 +88,7 @@ understanding of how it works.
     state
     lock
 
-    $ git commit -m 'init DVC'
+    $ git commit -m "init DVC"
 ```
 
 The `.dvc/cache` directory is one of the most important parts of any DVC

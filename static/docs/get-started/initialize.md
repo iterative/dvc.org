@@ -18,7 +18,7 @@ directories:
 
 ```dvc
     $ dvc init
-    $ git commit -m 'initialize DVC'
+    $ git commit -m "initialize DVC"
 ```
 
 After DVC initialization, a new directory `.dvc` will be created with `config`

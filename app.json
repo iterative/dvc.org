@@ -17,5 +17,5 @@
   "name": "dvc.org",
   "scripts": {
   },
-  "stack": "heroku-16"
+  "stack": "heroku-18"
 }

@@ -54,7 +54,7 @@ Now, we are ready to install dependencies to run the code:
 ```dvc
     $ pip install -U -r requirements.txt
     $ git add .
-    $ git commit -m 'add code'
+    $ git commit -m "add code"
 ```
 
 </details>
