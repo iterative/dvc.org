@@ -103,7 +103,7 @@ default `pytest`'s scope:
 To run a single test case:
 
 ```dvc
-    $ python -m tests tests/test_metrics.py:TestCachedMetrics
+    $ python -m tests tests/func/test_metrics.py::TestCachedMetrics
 ```
 
 To pass additional arguments:
