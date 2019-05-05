@@ -176,7 +176,8 @@ For more information about the variables DVC supports, please visit
 
     1) `user` specified in one of the dvc configs;
     2) `user` specified in the url(e.g. `ssh://user@example.com/path`);
-    3) current user;
+    3) `user` specified in `~/.ssh/config` for remote host;
+    4) current user;
 
   ```dvc
     $ dvc remote modify myremote user myuser
@@ -187,7 +188,8 @@ For more information about the variables DVC supports, please visit
 
     1) `port` specified in one of the dvc configs;
     2) `port` specified in the url(e.g. `ssh://example.com:1234/path`);
-    3) default ssh port 22;
+    3) `port` specified in `~/.ssh/config` for remote host;
+    4) default ssh port 22;
 
   ```dvc
     $ dvc remote modify myremote port 2222
