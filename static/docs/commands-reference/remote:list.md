@@ -18,7 +18,7 @@ remotes.
 
 ## Description
 
-Reads DCV configuration files and prints the list of available remotes. 
+Reads DVC configuration files and prints the list of available remotes. 
 Including names and URLs.
 
 ## Options
