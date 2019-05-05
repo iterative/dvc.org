@@ -41,6 +41,9 @@ to specify it explicitly.
     # Tell dvc to use the 's3cache' remote as S3 cache location
     $ dvc config cache.s3 s3cache
 
+    # Add data on S3 directly
+    $ dvc add s3://mybucket/mydata
+
     # Run the stage with external S3 output
     $ dvc run \
               -d data.txt \
@@ -56,6 +59,9 @@ to specify it explicitly.
 
     # Tell dvc to use the 'gscache' remote as GS cache location
     $ dvc config cache.gs gscache
+
+    # Add data on GS directly
+    $ dvc add gs://mybucket/mydata
 
     # Run the stage with external GS output
     $ dvc run \
@@ -73,6 +79,9 @@ to specify it explicitly.
     # Tell dvc to use the 'sshcache' remote as SSH cache location
     $ dvc config cache.ssh sshcache
 
+    # Add data on SSH directly
+    $ dvc add ssh://user@example.com:/mydata
+
     # Run the stage with external SSH output
     $ dvc run \
               -d data.txt \
@@ -88,6 +97,9 @@ to specify it explicitly.
 
     # Tell dvc to use the 'hdfscache' remote as HDFS cache location
     $ dvc config cache.hdfs hdfscache
+
+    # Add data on HDFS directly
+    $ dvc add hdfs://user@example.com/mydata
 
     # Run the stage with external HDFS output
     $ dvc run \
