@@ -29,6 +29,23 @@ Depending on what you typed on the command line so far, it completes:
 - Arguments for selected options. For example, `dvc repro` completes with stage
   files to reproduce.
 
+Depending upon the availability of both Bash and Zsh on your system, follow the
+steps given below to Configure Bash and/or Zsh.
+
+You can view shells available on your system by:
+
+```dvc
+    $ cat /etc/shells
+
+    # /etc/shells: valid login shells
+      /bin/sh
+      /bin/bash
+      /bin/rbash
+      /bin/dash
+```
+
+For instance, here since Zsh is unavailable, you only need to configure Bash.
+
 ## Configure Bash
 
 First, make sure Bash completion support is installed:
