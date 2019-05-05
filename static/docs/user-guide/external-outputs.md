@@ -27,6 +27,7 @@ Your local cache location already defaults to `.dvc/cache`, so there is no need
 to specify it explicitly.
 
 ```dvc
+    $ dvc add /home/shared/mydata
     $ dvc run -d /home/shared/data.txt \
               -o data.txt \
               cp /home/shared/data.txt data.txt
