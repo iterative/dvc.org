@@ -162,6 +162,10 @@ const SectionLink = styled.a`
   padding-left: 15px;
   cursor: pointer;
   margin: 0;
+  white-space: nowrap;
+  padding-right: 36px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 
   &:hover {
     color: #3c3937;
