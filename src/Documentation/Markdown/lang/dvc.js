@@ -34,7 +34,7 @@ let _javascript = function(hljs) {
     aliases: ['dvc'],
     contains: [
       {
-        begin: /    \$/,
+        begin: /\s*\$/,
         className: 'skipped'
       },
       {
@@ -67,8 +67,8 @@ let _javascript = function(hljs) {
       VAR,
       hljs.HASH_COMMENT_MODE,
       {
-        begin: /^\s*[^\s#$]/,
-        end: /\n|\Z/,
+        begin: /#/,
+        end: /\n/,
         className: 'meta',
       }
     ],
