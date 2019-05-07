@@ -69,8 +69,8 @@ export default class SidebarMenu extends React.Component {
                         const subgroup = Array.isArray(fileOrGroup) ? fileOrGroup.slice(1) : null;
                         const isFileActive = currentFile === file;
                         return (
-                          <Fragment>
-                            <div key={`file-${fileIndex}`}>
+                          <Fragment key={`file-${fileIndex}`}>
+                            <div>
                               <SectionLink
                                 level={2}
                                 href={getLinkHref(index, file)}
