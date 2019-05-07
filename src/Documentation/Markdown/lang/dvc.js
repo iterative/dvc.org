@@ -46,7 +46,7 @@ let _javascript = function(hljs) {
         },
       },
       {
-        begin: / dvc [a-z\-]+/,
+        begin: /\s*dvc [a-z\-]+/,
         keywords: {
           built_in:
             'help dvc init add import checkout run pull push fetch status ' +
@@ -56,7 +56,7 @@ let _javascript = function(hljs) {
         className: 'strong',
       },
       {
-        begin: / git [a-z\-]+/,
+        begin: /\s*git [a-z\-]+/,
         keywords: {
           keyword: 'git commit status pull push fetch add init checkout ' +
             'merge clone',
