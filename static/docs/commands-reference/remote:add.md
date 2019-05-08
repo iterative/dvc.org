@@ -85,26 +85,26 @@ specifically to the project/repository itself.
 Using an absolute path (recommended):
 
 ```dvc
-    $ dvc remote add myremote /path/to/dir
+    $ dvc remote add myremote /tmp/my-dvc-storage
     $ cat .dvc/config
       ...
       ['remote "myremote"']
-          url = /path/to/dir
+          url = /tmp/my-dvc-storage
       ...
-    $ # NOTE: absolute path `/path/to/dir` saved as is.
+    $ # NOTE: absolute path `/tmp/my-dvc-storage` saved as is.
 ```
 
 Using a relative path:
 
 ```dvc
-    $ dvc remote add myremote ../dir
+    $ dvc remote add myremote ../my-dvc-storage
     $ cat .dvc/config
       ...
       ['remote "myremote"']
-          url = ../../dir
+          url = ../../my-dvc-storage
       ...
-    $ # NOTE: `../dir` has been resolved relative to `.dvc/config` location,
-    $ # resulting in `../../dir`.
+    $ # NOTE: `../my-dvc-storage` has been resolved relative to `.dvc/config` location,
+    $ # resulting in `../../my-dvc-storage`.
 ```
 
 </details>
