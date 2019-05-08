@@ -11,7 +11,7 @@ remotes.
 ## Synopsis
 
 ```usage
-    usage: dvc remote add [-h] [-q | -v] [-d]
+    usage: dvc remote add [-h] [-q | -v] [-d] [-f]
                           [--global] [--system] [--local]
                           name url
 
@@ -24,7 +24,7 @@ remotes.
 
 `name` and `url` are required. `url` specifies a location to store your data. It
 could be S3 path, SSH path, Azure, Google cloud, local directory, etc - see more
-examples below. If `url1` is a local relative path, it will be resolved relative
+examples below. If `url` is a local relative path, it will be resolved relative
 to the current directory and saved to config relative to the config file
 location (see LOCAL example below). Whenever possible DVC will create a remote
 directory if does not exists yet. It won't create an S3 bucket though and will
@@ -72,6 +72,8 @@ specific settings in your config, that you don't want to track and share through
 * `-d`, `-default` - commands like `dvc pull`, `dvc push`, `dvc fetch` will be
 using this remote by default to save or retrieve data files unless `-r` option
 is specified for them.
+
+* `-f`, `--force` - to overwrite existing remote with new `url` value.
 
 <details>
 
@@ -248,7 +250,7 @@ container doesn't already exist, it will be created automatically.
 
 ## Examples
 
-Add AWS S3 _default_ (via `-d` option )remote and modify its region:
+Add AWS S3 _default_ (via `-d` option) remote and modify its region:
 
 ```dvc
     $ dvc remote add -d myremote s3://mybucket/myproject
@@ -261,7 +263,8 @@ DVC config file would look like (run `cat .dvc/config`):
 
 ```ini
     ['remote "myremote"']
-    url = /path/to/remote
+    url = s3://mybucket/myproject
+    region = us-east-2
     [core]
     remote = myremote
 ```
@@ -273,3 +276,18 @@ And list of remotes like this:
 
     myremote	s3://mybucket/myproject
 ```
+
+You can overwrite existing remote using `-f` with `dvc remote add` as under:
+
+```dvc
+    $ dvc remote add -f myremote s3://mybucket/mynewproject
+```
+
+List remotes to view the updated remote:
+
+```dvc
+    $ dvc remote list
+
+    myremote	s3://mybucket/mynewproject
+```
+
