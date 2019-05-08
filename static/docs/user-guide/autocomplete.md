@@ -29,22 +29,21 @@ Depending on what you typed on the command line so far, it completes:
 - Arguments for selected options. For example, `dvc repro` completes with stage
   files to reproduce.
 
-Depending upon the availability of both Bash and Zsh on your system, follow the
-steps given below to Configure Bash and/or Zsh.
+Depending upon your preference and the availability of both Bash and Zsh on
+your system, follow the steps given below to Configure Bash and/or Zsh.
 
-You can view shells available on your system by:
+If you are new to working with shell or uncertain about your active shell, use
+`$0` to check your active shell.
+
+For example:
 
 ```dvc
-    $ cat /etc/shells
-
-    # /etc/shells: valid login shells
-      /bin/sh
-      /bin/bash
-      /bin/rbash
-      /bin/dash
+    $ echo $0
+     
+      /bin/bash      
 ```
 
-For instance, here since Zsh is unavailable, you only need to configure Bash.
+In this case, follow the steps to configure Bash as it is your active shell.
 
 ## Configure Bash
 
