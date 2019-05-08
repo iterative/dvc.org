@@ -26,7 +26,7 @@ remotes.
 could be S3 path, SSH path, Azure, Google cloud, local directory, etc - see more
 examples below. If `url1` is a local relative path, it will be resolved relative
 to the current directory and saved to config relative to the config file
-location(see LOCAL example below). Whenever possible DVC will create a remote
+location (see LOCAL example below). Whenever possible DVC will create a remote
 directory if does not exists yet. It won't create an S3 bucket though and will
 rely on default access settings.
 
@@ -75,7 +75,24 @@ is specified for them.
 
 <details>
 
-### Click for LOCAL example
+### Click for a local remote example
+
+> While the term may seem contradictory, it doesn't have to be.
+The "local" part refers to the machine where the project is stored, so it can be
+any directory accessible to the same system. The "remote" part refers
+specifically to the project/repository itself.
+
+Using an absolute path (recommended):
+
+```dvc
+    $ dvc remote add myremote /path/to/dir
+    $ cat .dvc/config
+      ...
+      ['remote "myremote"']
+          url = /path/to/dir
+      ...
+    $ # NOTE: absolute path `/path/to/dir` saved as is.
+```
 
 Using a relative path:
 
@@ -88,18 +105,6 @@ Using a relative path:
       ...
     $ # NOTE: `../dir` has been resolved relative to `.dvc/config` location,
     $ # resulting in `../../dir`.
-```
-
-Using an absolute path:
-
-```dvc
-    $ dvc remote add myremote /path/to/dir
-    $ cat .dvc/config
-      ...
-      ['remote "myremote"']
-          url = /path/to/dir
-      ...
-    $ # NOTE: absolute path `/path/to/dir` saved as is.
 ```
 
 </details>
@@ -136,7 +141,7 @@ So, make sure you have the following permissions enabled:
 
 <details>
 
-### Click for an S3 API compatible storage
+### Click for an S3 API compatible storage example
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://minio.io/), [Wasabi](https://wasabi.com/),
