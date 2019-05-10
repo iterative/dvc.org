@@ -16,7 +16,7 @@ system/environment:
 
 Type | Detail
 ---- | ------
-`DVC version` | Version of DVC along with information about the project's Git repository
+`DVC version` | Version of DVC (along with a Git commit hash in case of a development version)
 `Python version` | Version of the Python being used for the project in which DVC is initialized
 `Platform` | Information about the operating system of the machine
 
