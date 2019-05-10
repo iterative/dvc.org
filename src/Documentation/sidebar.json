@@ -123,8 +123,8 @@
       "run.md",
       "status.md",
       "unlock.md",
-	    "unprotect.md",
-	    "version.md"
+      "unprotect.md",
+      "version.md"
     ],
     "labels": {
       "run.md": "run",

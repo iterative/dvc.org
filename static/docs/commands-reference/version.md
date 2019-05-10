@@ -8,6 +8,17 @@ This command shows the system/environment information along with the DVC version
     usage: dvc version [-h] [-q | -v]
 ```
 
+## Description
+
+Running the command `dvc version` outputs the
+following information about the system/environment:
+
+Type | Detail
+---- | ------
+`DVC version` | Version of DVC along with information about the project's Git repository
+`Python version` | Version of the Python being used for the project in which DVC is initialized
+`Platform` | Information about the operating system of the machine
+
 ## Options
 
 * `-h`, `--help` - prints the usage/help message, and exit.
@@ -17,20 +28,9 @@ This command shows the system/environment information along with the DVC version
 
 * `-v`, `--verbose` - displays detailed tracing information.
 
-## Details
+## Example
 
-Running the command [`dvc version`](/doc/commands-reference/version) outputs the
-following information about the system/environment:
-
-Type | Detail
----- | ------
-`DVC version` | Version of DVC along with information about the project's Git repository
-`Python version` | Version of the Python being used for the project in which DVC is iniitialized
-`Platform` | Information about the operating system of the machine
-
-## Examples
-
-* Getting the DVC version and environment information:
+Getting the DVC version and environment information:
 
 ```dvc
     $ dvc version
