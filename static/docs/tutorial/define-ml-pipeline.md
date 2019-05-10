@@ -15,6 +15,11 @@ to download `data.xml`and save it into the `data` subdirectory.
 
 </details>
 
+> Note: In case of systems supporting reflink, use `df` utility to see that free 
+space on the drive didn't decline by the file size that we are adding and no 
+duplication takes place. As `du` is inaccurate in modern file systems using
+reflinks.
+
 ```dvc
     $ mkdir data
     $ wget -P data https://dvc.org/s3/so/100K/Posts.xml.zip
@@ -115,8 +120,7 @@ still only one copy if the actual file data is stored.
 
 > Note that DVC uses hardlinks in all the supported OSs, including Mac OS, Linux
 and Windows. Some implementation details (like inodes) might differ, but the
-overall DVC behavior is the same. See also [DVC Files and
-Directories](/doc/user-guide/dvc-files-and-directories)
+overall DVC behavior is the same. 
 
 ## Running commands
 
