@@ -1,6 +1,7 @@
 # version
 
-This command shows the system/environment information along with the DVC version.
+This command shows the system/environment information along with the DVC
+version.
 
 ## Synopsis
 
@@ -10,8 +11,8 @@ This command shows the system/environment information along with the DVC version
 
 ## Description
 
-Running the command `dvc version` outputs the
-following information about the system/environment:
+Running the command `dvc version` outputs the following information about the
+system/environment:
 
 Type | Detail
 ---- | ------
@@ -34,7 +35,7 @@ Getting the DVC version and environment information:
 
 ```dvc
     $ dvc version
-    
+
     DVC version: 0.40.0+45f94e
     Python version: 3.6.7
     Platform: Linux-4.15.0-47-generic-x86_64-with-Ubuntu-18.04-bionic
