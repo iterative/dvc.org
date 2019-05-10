@@ -123,7 +123,8 @@
       "run.md",
       "status.md",
       "unlock.md",
-      "unprotect.md"
+	  "unprotect.md",
+	  "version.md"
     ],
     "labels": {
       "run.md": "run",
@@ -162,7 +163,8 @@
       "unprotect.md": "unprotect",
       "cache.md": "cache",
       "cache:dir.md": "cache dir",
-      "commit.md": "commit"
+	  "commit.md": "commit",
+	  "version.md": "version"
     }
   },
   {
