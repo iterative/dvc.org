@@ -97,6 +97,9 @@ local cache and updates stage files with the new checksum information.
 
 * `-v`, `--verbose` - displays detailed tracing information.
 
+- `--downstream` - rerun the commands present in the downstream of the
+  pipeline.
+
 ## Examples
 
 For simplicity, let's build a pipeline defined below (if you want get your hands
