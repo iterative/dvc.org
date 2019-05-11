@@ -2,8 +2,9 @@
 
 Show all available remotes.
 
-See also [add](/doc/commands-reference/remote-add), 
-[modify](/doc/commands-reference/remote-modify), 
+See also [add](/doc/commands-reference/remote-add),
+[default](/doc/commands-reference/remote-default),
+[modify](/doc/commands-reference/remote-modify),
 and [remove](/doc/commands-reference/remote-remove) commands to manage data
 remotes.
 
@@ -18,7 +19,7 @@ remotes.
 
 ## Description
 
-Reads DVC configuration files and prints the list of available remotes. 
+Reads DVC configuration files and prints the list of available remotes.
 Including names and URLs.
 
 ## Options
@@ -53,9 +54,9 @@ project/repository itself.
     $ dvc remote add -d myremote /path/to/remote
     Setting 'myremote' as a default remote.
 ```
-And now the list of remotes should look like:    
+And now the list of remotes should look like:
 
-```dvc    
+```dvc
     $ dvc remote list
 
     myremote        /path/to/remote
