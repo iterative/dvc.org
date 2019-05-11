@@ -1,6 +1,7 @@
 # remote
 
 [Add](/doc/commands-reference/remote-add),
+[default](/doc/commands-reference/remote-default),
 [list](/doc/commands-reference/remote-list),
 [modify](/doc/commands-reference/remote-modify),
 and [remove](/doc/commands-reference/remote-remove) are available
@@ -10,10 +11,11 @@ commands to set up and manage data remotes.
 
 ```usage
     usage: dvc remote [-h] [-q] [-v]
-                      {add,remove,modify,list} ...
+                      {add,default,remove,modify,list} ...
 
     positional arguments:
         add                   Add remote
+        default               Default remote  
         remove                Remove remote
         modify                Modify remote
         list                  List remotes
@@ -42,6 +44,7 @@ configured to use a local data storage only (usually `.dvc/cache` directory
 inside your repository), which enables basic DVC usage scenarios out of the box.
 
 [Add](/doc/commands-reference/remote-add),
+[default](/doc/commands-reference/remote-default),
 [list](/doc/commands-reference/remote-list),
 [modify](/doc/commands-reference/remote-modify),
 and [remove](/doc/commands-reference/remote-remove) commands
@@ -94,7 +97,7 @@ DVC config file would look like:
 2. Add AWS S3 remote and modify its region:
 
 ```dvc
-    $ dvc remote add myremote s3://mybucket/myproject
+    $ dvc remote add -f myremote s3://mybucket/myproject
     $ dvc remote modify myremote region us-east-2
 ```
 
