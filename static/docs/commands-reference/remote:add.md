@@ -5,6 +5,7 @@ remote modify` to provide credentials and/or configure other remote parameters.
 
 See also [list](/doc/commands-reference/remote-list),
 [modify](/doc/commands-reference/remote-modify),
+[default](/doc/commands-reference/remote-default),
 and [remove](/doc/commands-reference/remote-remove) commands to manage data
 remotes.
 
