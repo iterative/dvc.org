@@ -52,8 +52,8 @@ contributing!
 
 ## Development environment
 
-To submit your changes in the documentation, you will first need to setup the
-development environment of the project.
+If you need to submit a change to the JS engine, or a substantial change to the
+docs and would like to test them locally, then please follow the steps below:
 
 * Get the latest development version. Fork and clone the repo using one of the
   following methods:
