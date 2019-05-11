@@ -71,6 +71,7 @@ development environment of the project.
 * [Run the development server](#run-the-development-server).
 
 ## Run the development server
+
 * Start the development server using `npm run dev` which will start the server
   at port `3000`.
 * Visit `http://localhost:3000/`, where the site is being served.
