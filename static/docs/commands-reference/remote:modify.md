@@ -235,7 +235,7 @@ For more information about the variables DVC supports, please visit
 Let's first set up a _default_ S3 remote:
 
 ```dvc
-    $ dvc remote add -d myremote s3://path/to/dir
+    $ dvc remote add -d myremote s3://mybucket/storage
 
     Setting 'myremote' as a default remote.
 ```
@@ -250,7 +250,7 @@ Now the config file should look like (run `cat .dvc/config`):
 
 ```ini
     ['remote "myremote"']
-    url = s3://path/to/dir
+    url = s3://mybucket/storage
     endpointurl = object-storage.example.com
     [core]
     remote = myremote
