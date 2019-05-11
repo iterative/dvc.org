@@ -113,6 +113,7 @@
       [
         "remote.md",
         "remote:add.md",
+        "remote:default.md",
         "remote:list.md",
         "remote:modify.md",
         "remote:remove.md"
@@ -142,6 +143,7 @@
       "config.md": "config",
       "remote.md": "remote",
       "remote:add.md": "remote add",
+      "remote:default.md": "remote default",
       "remote:list.md": "remote list",
       "remote:modify.md": "remote modify",
       "remote:remove.md": "remote remove",
