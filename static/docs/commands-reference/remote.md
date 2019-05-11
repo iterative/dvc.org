@@ -97,12 +97,12 @@ DVC config file would look like:
 2. Add AWS S3 remote and modify its region:
 
 ```dvc
-    $ dvc remote add -f myremote s3://mybucket/myproject
-    $ dvc remote modify myremote region us-east-2
+    $ dvc remote add mynewremote s3://mybucket/myproject
+    $ dvc remote modify mynewremote region us-east-2
 ```
 
 3. Remove remote:
 
 ```dvc
-    $ dvc remote remove myremote
+    $ dvc remote remove mynewremote
 ```
