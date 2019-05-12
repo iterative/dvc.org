@@ -1,19 +1,21 @@
-# Contributing Documentation
+# Contributing to the Documentation
 
-We welcome contributions to [DVC.org](https://github.com/iterative/dvc.org) by
-the community.
+We welcome any contributions to [DVC.org](https://github.com/iterative/dvc.org).
 
-## How to report a problem
+## How to suggest a change
 
-Please search [issue tracker](https://github.com/iterative/dvc.org/issues)
+Excluding very trivial changes, all contributions should be connected to an
+existing issue.
+
+Please search the [issue tracker](https://github.com/iterative/dvc.org/issues)
 before creating a new issue. This issue can be about a typographical error, an
 updation of the documentation or simply an improvement in generation of
 documentation.
 
-If you feel that you can fix or implement it, please read a few paragraphs below
-to learn how to submit your changes.
+If you want to fix or implement it, please read a few paragraphs below to learn
+how to submit your changes.
 
-## Structure of project
+## Structure of the project
 
 * [Content](https://github.com/iterative/dvc.org/tree/master/static/docs) -
   static Markdown files that are rendered dynamically in the browser. Merging
@@ -29,18 +31,18 @@ to learn how to submit your changes.
 
 ## Submitting changes
 
-In case of a minor change, please use the **Edit on Github** button (at the left
-of the page) to fork the project, edit it in place and create a PR.
+In case of a minor change, you can use the **Edit on Github** button (at the
+left of the page) to fork the project, edit it in place and create a PR.
 Alternatively, create a fork, clone, edit it with your regular editor and submit
 a PR to the master branch. We'll review and merge it as soon as possible.
 
-Else, please refer to the following procedure:
+Otherwise, please refer to the following procedure:
 
-* Open a new issue in the
-[issue tracker](https://github.com/iterative/dvc.org/issues).
+* Open a new issue in the [issue
+  tracker](https://github.com/iterative/dvc.org/issues).
 * Setup the [development environment](#development-environment).
 * Fork [DVC.org](https://github.com/iterative/dvc.org.git) and prepare necessary
-  changes by referring to [structure of project](#structure-of-project).
+  changes by referring to [structure of project](#structure-of-the-project).
 * Format the code by following the [code style guide](#code-style-guide).
 * Format JavaScript code styles by running `npm run prettier-src`.
 * Submit a pull request, referencing any issues it addresses.
@@ -50,8 +52,11 @@ contributing!
 
 ## Development environment
 
-* Get the latest development version. Fork and clone the repo using either of
-  the method:
+To submit your changes in the documentation, you will first need to setup the
+development environment of the project.
+
+* Get the latest development version. Fork and clone the repo using one of the
+  following methods:
 
   1. Using HTTPS
   ```dvc
@@ -63,38 +68,31 @@ contributing!
   ```
 * Make sure you have the latest version of node and npm installed.
 * Install the dependencies by running the command `npm install`.
-* [Run development server](#run-development-server).
+* [Run the development server](#run-the-development-server).
 
-## Run development server
+## Run the development server
 * Start the development server using `npm run dev` which will start the server
   at port `3000`.
-* Visit `http://localhost:3000/` where the site is being served.
+* Visit `http://localhost:3000/`, where the site is being served.
 
 ## Commit style guide
 
 Format:
 
 ```
-    (short description)
+  (short description)
 
-    (long description)
+  (long description)
 
-    Fixes #(github issue id).
+  Fix #(github issue id).
 ```
-
-Message types:
-
-* *short description* - short description of the patch;
-* *long description* - If needed, longer message describing the patch in more
-details;
-* *github issue id* - An id of the github issue that this patch is addressing;
 
 Example:
 
 ```
   Add documentation for `dvc version` command
 
-  Fixes #307
+  Fix #307
 ```
 
 ## Code style guide

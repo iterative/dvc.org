@@ -17,7 +17,7 @@ Please, feel free to use it for your own sites and
 
 We welcome contributions to DVC by the community!
 
-You can refer to our [Contributing
+You can refer to our [Contribution
 Guide](https://dvc.org/doc/user-guide/contributing-documentation/) for more
 details. Thank you!
 
