@@ -3,10 +3,7 @@ import styled from 'styled-components'
 
 import { media, container } from '../styles'
 
-export default ({
-  title,
-  buttonText = 'Get Started',
-}) => (
+export default ({ title, buttonText = 'Get Started' }) => (
   <TrySection>
     <Container>
       <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
@@ -71,9 +68,9 @@ const Button = styled.button`
 
   color: #ffffff;
   transition: 0.2s background-color ease-out;
-  
+
   &:hover {
-    background-color: #F5F5F5
+    background-color: #f5f5f5;
   }
 
   background: url('/static/img/arrow_right_white.svg') right center no-repeat;
