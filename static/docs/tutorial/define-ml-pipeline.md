@@ -102,6 +102,11 @@ meta-data record) in a file system. Use `ls -i` to see file system inodes. If
 you are using a modern file system with reflinks you might see different inodes,
 still only one copy if the actual file data is stored.
 
+> Note: In case of systems supporting reflink, use `df` utility to see that free 
+space on the drive didn't decline by the file size that we are adding and no 
+duplication takes place. As `du` is inaccurate in modern file systems using
+reflinks.
+
 ```dvc
     $ ls -i data/Posts.xml.zip
     78483929 data/Posts.xml.zip
@@ -115,8 +120,7 @@ still only one copy if the actual file data is stored.
 
 > Note that DVC uses hardlinks in all the supported OSs, including Mac OS, Linux
 and Windows. Some implementation details (like inodes) might differ, but the
-overall DVC behavior is the same. See also [DVC Files and
-Directories](/doc/user-guide/dvc-files-and-directories)
+overall DVC behavior is the same. 
 
 ## Running commands
 
