@@ -25,7 +25,7 @@ to learn how to submit your changes.
   `![](/static/img/reproducibility.png)`.
 
 * [Sections](https://github.com/iterative/dvc.org/tree/master/src/Documentation/sidebar.json) - 
-  edit it to registre a new section with the navigation menu.
+  edit it to register a new section with the navigation menu.
 
 ## Submitting changes
 
