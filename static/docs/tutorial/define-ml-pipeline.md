@@ -15,11 +15,6 @@ to download `data.xml`and save it into the `data` subdirectory.
 
 </details>
 
-> Note: In case of systems supporting reflink, use `df` utility to see that free 
-space on the drive didn't decline by the file size that we are adding and no 
-duplication takes place. As `du` is inaccurate in modern file systems using
-reflinks.
-
 ```dvc
     $ mkdir data
     $ wget -P data https://dvc.org/s3/so/100K/Posts.xml.zip
@@ -106,6 +101,11 @@ repository is still 41MB. Both of the files correspond to the same `inode` (file
 meta-data record) in a file system. Use `ls -i` to see file system inodes. If
 you are using a modern file system with reflinks you might see different inodes,
 still only one copy if the actual file data is stored.
+
+> Note: In case of systems supporting reflink, use `df` utility to see that free 
+space on the drive didn't decline by the file size that we are adding and no 
+duplication takes place. As `du` is inaccurate in modern file systems using
+reflinks.
 
 ```dvc
     $ ls -i data/Posts.xml.zip
