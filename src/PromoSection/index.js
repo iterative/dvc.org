@@ -5,8 +5,7 @@ import { logEvent } from '../utils/ga'
 
 const getStarted = () => {
   logEvent('promo', 'get-started')
-  window.location =
-    '/doc/get-started'
+  window.location = '/doc/get-started'
 }
 
 const features = () => {
@@ -89,9 +88,9 @@ const Button = styled.button`
   background: url('/static/img/arrow_right_white.svg') right center no-repeat;
   background-position-x: 147px;
   transition: 0.2s background-color ease-out;
-  
+
   &:hover {
-    background-color: #885CCB
+    background-color: #885ccb;
   }
 
   ${props =>

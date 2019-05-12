@@ -1,22 +1,24 @@
-"use strict";
+'use strict'
 
-Object.defineProperty(exports, "__esModule", {
+Object.defineProperty(exports, '__esModule', {
   value: true
-});
+})
 
 var _javascript = function(hljs) {
   var QUOTE_STRING = {
     className: 'string',
-    begin: /"/, end: /"/,
+    begin: /"/,
+    end: /"/,
     contains: [
       hljs.BACKSLASH_ESCAPE,
-        {
+      {
         className: 'variable',
-        begin: /\$\(/, end: /\)/,
+        begin: /\$\(/,
+        end: /\)/,
         contains: [hljs.BACKSLASH_ESCAPE]
       }
     ]
-  };
+  }
 
   return {
     aliases: ['usage'],
@@ -26,19 +28,18 @@ var _javascript = function(hljs) {
         end: /\n|\Z/,
         lexemes: /\b-?[a-z\._]+\b/,
         keywords: {
-          keyword:
-            'usage arguments optional positional',
+          keyword: 'usage arguments optional positional'
         },
         contains: [
           {
             begin: / dvc [a-z]+/,
             keywords: {
               built_in:
-              'help dvc init add import checkout run pull push fetch status repro ' +
-              'remove move gc config remote metrics install root lock unlock ' +
-              'pipeline destroy unprotect commit cache diff tag pkg version',
+                'help dvc init add import checkout run pull push fetch status repro ' +
+                'remove move gc config remote metrics install root lock unlock ' +
+                'pipeline destroy unprotect commit cache diff tag pkg version'
             },
-            className: 'strong',
+            className: 'strong'
           }
         ]
       },
@@ -46,11 +47,13 @@ var _javascript = function(hljs) {
       QUOTE_STRING,
       hljs.HASH_COMMENT_MODE
     ]
-  };
-};
+  }
+}
 
-var _javascript2 = _interopRequireDefault(_javascript);
+var _javascript2 = _interopRequireDefault(_javascript)
 
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+function _interopRequireDefault(obj) {
+  return obj && obj.__esModule ? obj : { default: obj }
+}
 
-exports.default = _javascript2.default;
+exports.default = _javascript2.default

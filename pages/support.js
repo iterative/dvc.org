@@ -11,22 +11,20 @@ import { container, media, OnlyDesktop } from '../src/styles'
 import Page from '../src/Page'
 import Hero from '../src/Hero'
 import TrySection from '../src/TrySection'
-import Popover from '../src/Popover/Popover';
+import Popover from '../src/Popover/Popover'
 
 const HeadInjector = () => (
   <Head>
     <title>Support | Machine Learning Version Control System</title>
   </Head>
-);
+)
 
 export default () => (
   <Page stickHeader>
     <HeadInjector />
     <Hero>
       <SupportHero>
-        <Heading>
-          Questions, feedback, or just need to get in touch?
-        </Heading>
+        <Heading>Questions, feedback, or just need to get in touch?</Heading>
       </SupportHero>
     </Hero>
 
@@ -40,8 +38,9 @@ export default () => (
           <Description>
             Join data science practitioners in our welcoming{' '}
             <Mark text={'#945dd6'} bg={'#FFFFFF'}>
-            DVC community</Mark>.
-            It’s the fastest way to ask for a help.
+              DVC community
+            </Mark>
+            . It’s the fastest way to ask for a help.
           </Description>
           <FlexRow>
             <Link href="/chat" target="_blank">
@@ -49,7 +48,15 @@ export default () => (
             </Link>
             <OnlyDesktop>
               <Popover
-                body={<iframe src="https://discordapp.com/widget?id=485586884165107732&theme=light" width="350" height="500" allowtransparency="true" frameBorder="0"></iframe>}
+                body={
+                  <iframe
+                    src="https://discordapp.com/widget?id=485586884165107732&theme=light"
+                    width="350"
+                    height="500"
+                    allowtransparency="true"
+                    frameBorder="0"
+                  />
+                }
                 enterExitTransitionDurationMs={200}
               >
                 <DiscrodWidget />
@@ -65,7 +72,9 @@ export default () => (
           </FeatureHeading>
           <Description>
             Found an issue or have an idea? Check our GitHub{' '}
-            <Mark text={'#13adc7'} bg={'#FFFFFF'}>issues tracker</Mark>{' '}
+            <Mark text={'#13adc7'} bg={'#FFFFFF'}>
+              issues tracker
+            </Mark>{' '}
             to see if there is already a fix or report a new one.
           </Description>
           <Link href="https://github.com/iterative/dvc/issues" target="_blank">
@@ -80,7 +89,9 @@ export default () => (
           </FeatureHeading>
           <Description>
             Discuss your ideas or{' '}
-            <Mark text={'#f46837'} bg={'#FFFFFF'}>best practices</Mark>{' '}
+            <Mark text={'#f46837'} bg={'#FFFFFF'}>
+              best practices
+            </Mark>{' '}
             in the DVC forum.
           </Description>
           <Link href="https://discuss.dvc.org" target="_blank">
@@ -95,21 +106,21 @@ export default () => (
           </FeatureHeading>
           <Description>
             Don’t hesitate to shoot us an email at{' '}
-            <Link href="mailto:support@dvc.org"><Mark text={'#945dd6'} bg={'#FFFFFF'}>support@dvc.org</Mark></Link>{' '}
+            <Link href="mailto:support@dvc.org">
+              <Mark text={'#945dd6'} bg={'#FFFFFF'}>
+                support@dvc.org
+              </Mark>
+            </Link>{' '}
             with any questions.
           </Description>
           <Link href="mailto:support@dvc.org">
             <Button color="#945dd6">Drop Us a Line</Button>
           </Link>
         </Feature>
-
       </Features>
     </Container>
 
-    <TrySection
-      title="Don't know where to start?"
-      buttonText="Get Started"
-    />
+    <TrySection title="Don't know where to start?" buttonText="Get Started" />
   </Page>
 )
 
@@ -142,7 +153,7 @@ const Features = styled.div`
   padding-bottom: 70px;
   max-width: 800px;
   margin: 0 auto;
-  
+
   ${media.phablet`
     padding-top: 70px;
     padding-bottom: 50px;
@@ -165,9 +176,12 @@ const Icon = styled.div`
   height: 50px;
   width: 50px;
   border-radius: 50%;
-  background-color: ${props => color(props.color).alpha(0.15).string()};
+  background-color: ${props =>
+    color(props.color)
+      .alpha(0.15)
+      .string()};
   margin-right: 10px;
-  
+
   &::after {
     content: ' ';
     display: block;
@@ -193,13 +207,13 @@ const DiscrodWidget = styled.img`
   width: 50px;
   height: 50px;
   cursor: pointer;
-  mask-image: url("/static/img/support/discord.svg");
+  mask-image: url('/static/img/support/discord.svg');
   mask-repeat: no-repeat;
   mask-position: center;
   background-color: #b88eeb;
 
   &:hover {
-    opacity: .7;
+    opacity: 0.7;
   }
 `
 
@@ -223,17 +237,17 @@ const Button = styled.button`
   margin-top: 20px;
   border-radius: 4px;
   background-color: white;
-  border: 2px solid ${(props) => props.color};
-  color: ${(props) => props.color};
+  border: 2px solid ${props => props.color};
+  color: ${props => props.color};
   font-family: BrandonGrotesqueMed, Tahoma, Arial;
   height: 42px;
   font-size: 18px;
   cursor: pointer;
   transition: 0.2s background-color ease-out;
   padding: 5px 20px;
-  
+
   &:hover {
-    background-color: ${(props) => props.color};
+    background-color: ${props => props.color};
     color: white;
   }
 `

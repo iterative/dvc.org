@@ -15,7 +15,7 @@ const HeadInjector = () => (
   <Head>
     <title>Features | Machine Learning Version Control System</title>
   </Head>
-);
+)
 
 export default () => (
   <Page stickHeader={true}>
@@ -27,64 +27,48 @@ export default () => (
       <Features>
         <Feature>
           <Icon>
-            <img
-              src="/static/img/features/icons/git-icon.svg"
-              alt="Git compatible"
-            />
+            <img src="/static/img/features/icons/git-icon.svg" alt="Git compatible" />
           </Icon>
           <Name>Git-compatible</Name>
           <Description>
-            DVC runs on top of any Git repository and is compatible with any
-            standard Git server or provider (Github, Gitlab, etc). Data file
-            contents can be shared by network-accessible storage or any
-            supported cloud solution. DVC offers all the advantages of a
-            distributed version control system — lock-free, local branching, and
-            versioning.
+            DVC runs on top of any Git repository and is compatible with any standard Git server or
+            provider (Github, Gitlab, etc). Data file contents can be shared by network-accessible
+            storage or any supported cloud solution. DVC offers all the advantages of a distributed
+            version control system — lock-free, local branching, and versioning.
           </Description>
         </Feature>
         <Feature>
           <Icon>
-            <img
-              src="/static/img/features/icons/storage-icon.svg"
-              alt="Storage agnostic"
-            />
+            <img src="/static/img/features/icons/storage-icon.svg" alt="Storage agnostic" />
           </Icon>
           <Name>Storage agnostic</Name>
           <Description>
-            Use S3, Azure, GCP, SSH, SFTP, rsync or any network-attached storage to
-            store data. The list of supported protocols is constantly expanding.
+            Use S3, Azure, GCP, SSH, SFTP, rsync or any network-attached storage to store data. The
+            list of supported protocols is constantly expanding.
           </Description>
         </Feature>
         <Feature>
           <Icon>
-            <img
-              src="/static/img/features/icons/repro.svg"
-              alt="Reproducibility"
-            />
+            <img src="/static/img/features/icons/repro.svg" alt="Reproducibility" />
           </Icon>
           <Name>Reproducible </Name>
           <Description>
-            The single 'dvc repro' command reproduces experiments end-to-end.
-            DVC guarantees reproducibility by consistently maintaining a
-            combination of input data, configuration, and the code that was
-            initially used to run an experiment.
+            The single 'dvc repro' command reproduces experiments end-to-end. DVC guarantees
+            reproducibility by consistently maintaining a combination of input data, configuration,
+            and the code that was initially used to run an experiment.
           </Description>
         </Feature>
         <Feature>
           <Icon>
-            <img
-              src="/static/img/features/icons/branching.svg"
-              alt="Low-friction branching"
-            />
+            <img src="/static/img/features/icons/branching.svg" alt="Low-friction branching" />
           </Icon>
           <Name>Low friction branching </Name>
           <Description>
-            DVC fully supports instantaneous Git branching, even with large
-            files. Branches beautifully reflect the non-linear structure and
-            highly iterative nature of a ML process. Data is not duplicated —
-            one file version can belong to dozens of experiments. Create as many
-            experiments as you want, instantaneously switch back and forth, and
-            save a history of all attempts.
+            DVC fully supports instantaneous Git branching, even with large files. Branches
+            beautifully reflect the non-linear structure and highly iterative nature of a ML
+            process. Data is not duplicated — one file version can belong to dozens of experiments.
+            Create as many experiments as you want, instantaneously switch back and forth, and save
+            a history of all attempts.
           </Description>
         </Feature>
         <Feature>
@@ -93,24 +77,19 @@ export default () => (
           </Icon>
           <Name>Metric tracking </Name>
           <Description>
-            Metrics are first-class citizens in DVC. DVC includes a command to
-            list all branches, along with metric values, to track the progress
-            or pick the best version.
+            Metrics are first-class citizens in DVC. DVC includes a command to list all branches,
+            along with metric values, to track the progress or pick the best version.
           </Description>
         </Feature>
         <Feature>
           <Icon>
-            <img
-              src="/static/img/features/icons/ml-pipe.svg"
-              alt="ML pipelines framework"
-            />
+            <img src="/static/img/features/icons/ml-pipe.svg" alt="ML pipelines framework" />
           </Icon>
           <Name>ML pipeline framework</Name>
           <Description>
-            DVC has a built-in way to connect ML steps into a DAG and run the
-            full pipeline end-to-end. DVC handles caching of intermediate
-            results and does not run a step again if input data or code are the
-            same.
+            DVC has a built-in way to connect ML steps into a DAG and run the full pipeline
+            end-to-end. DVC handles caching of intermediate results and does not run a step again if
+            input data or code are the same.
           </Description>
         </Feature>
         <Feature>
@@ -122,41 +101,33 @@ export default () => (
           </Icon>
           <Name>Language- & framework-agnostic</Name>
           <Description>
-            No matter which programming language or libraries are in use or how
-            code is structured, reproducibility and pipelines are based on input
-            and output files. Python, R, Julia, Scala Spark, custom binary,
-            Notebooks, flatfiles/TensorFlow, PyTorch, etc. are all supported.
+            No matter which programming language or libraries are in use or how code is structured,
+            reproducibility and pipelines are based on input and output files. Python, R, Julia,
+            Scala Spark, custom binary, Notebooks, flatfiles/TensorFlow, PyTorch, etc. are all
+            supported.
           </Description>
         </Feature>
         <Feature>
           <Icon>
-            <img
-              src="/static/img/features/icons/cluster.svg"
-              alt="HDFS, Hive & Apache Spark"
-            />
+            <img src="/static/img/features/icons/cluster.svg" alt="HDFS, Hive & Apache Spark" />
           </Icon>
           <Name>HDFS, Hive & Apache Spark</Name>
           <Description>
-            Include Spark and Hive jobs in the DVC data versioning cycle along
-            with local ML modeling steps or manage Spark and Hive jobs with DVC
-            end-to-end. Drastically decrease a feedback loop by decomposing a
-            heavy cluster job into smaller DVC pipeline steps. Iterate on the
-            steps independently with respect to dependencies.
+            Include Spark and Hive jobs in the DVC data versioning cycle along with local ML
+            modeling steps or manage Spark and Hive jobs with DVC end-to-end. Drastically decrease a
+            feedback loop by decomposing a heavy cluster job into smaller DVC pipeline steps.
+            Iterate on the steps independently with respect to dependencies.
           </Description>
         </Feature>
         <Feature>
           <Icon>
-            <img
-              src="/static/img/features/icons/failures.svg"
-              alt="Failure tracking"
-            />
+            <img src="/static/img/features/icons/failures.svg" alt="Failure tracking" />
           </Icon>
           <Name>Track failures</Name>
           <Description>
-            Bad ideas can sometimes bring more information to colleagues than
-            the successful ones. Retaining knowledge of failed attempts can
-            save time in the future. DVC is built to track everything in a
-            reproducible and easily accessible way.
+            Bad ideas can sometimes bring more information to colleagues than the successful ones.
+            Retaining knowledge of failed attempts can save time in the future. DVC is built to
+            track everything in a reproducible and easily accessible way.
           </Description>
         </Feature>
       </Features>
@@ -175,7 +146,7 @@ const Features = styled.div`
   flex-wrap: wrap;
   padding-top: 110px;
   padding-bottom: 90px;
-  
+
   ${media.phablet`
     padding-top: 70px;
     padding-bottom: 50px;

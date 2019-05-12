@@ -1,14 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default (props) => (
+export default props => (
   <SearchForm novalidate>
-    <Input
-      type="text"
-      id="doc-search"
-      placeholder={`Search documentation`}
-      {...props}
-    />
+    <Input type="text" id="doc-search" placeholder={`Search documentation`} {...props} />
   </SearchForm>
 )
 

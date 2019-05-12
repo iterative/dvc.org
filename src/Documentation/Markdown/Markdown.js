@@ -3,9 +3,7 @@ import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { LightButton } from '../LightButton'
 // syntax highlighter
-import SyntaxHighlighter, {
-  registerLanguage
-} from 'react-syntax-highlighter/light'
+import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/light'
 import Collapsible from 'react-collapsible'
 import docco from 'react-syntax-highlighter/styles/hljs/docco'
 import python from 'react-syntax-highlighter/languages/hljs/python'
@@ -149,17 +147,11 @@ export default class Markdown extends Component {
           astPlugins={[linker()]}
         />
         <NavigationButtons>
-          <Button
-            onClick={() => onFileSelect(files[fileIndex - 1], section)}
-            disabled={!showPrev}
-          >
+          <Button onClick={() => onFileSelect(files[fileIndex - 1], section)} disabled={!showPrev}>
             <i className="prev" />
             <span>Prev</span>
           </Button>
-          <Button
-            onClick={() => onFileSelect(files[fileIndex + 1], section)}
-            disabled={!showNext}
-          >
+          <Button onClick={() => onFileSelect(files[fileIndex + 1], section)} disabled={!showNext}>
             <span>Next</span>
             <i className="next" />
           </Button>
