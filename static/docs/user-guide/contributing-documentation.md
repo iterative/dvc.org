@@ -48,6 +48,20 @@ follow the steps below:
 - Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
   installed.
 - Install the dependencies by running the command `npm install`.
+- Make sure you have python 3.6 or higher installed. It will be required to run
+  style checkers on pre-commit. On Mac OS, use `brew` to install the lastest
+  version of python.
+- We **strongly** recommend initializing a [virtual
+  environment](https://virtualenv.pypa.io/en/latest/userguide/) before
+  installing the required libraries for style checkers. Follow the instructions
+  to create one:
+  ```dvc
+    $ cd dvc.org
+    $ virtualenv --python python3 .env
+    $ source .env/bin/activate
+  ```
+- Install the style checker's requirements using `pip install -r requirements.txt`.
+- Install coding style pre-commit hook with `pre-commit install`.
 - Start the development server using `npm run dev` which will start the server
   on the default port `3000`.
 - Visit `http://localhost:3000/` and navigate to the docs in question.
