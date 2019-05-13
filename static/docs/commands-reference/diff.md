@@ -35,16 +35,16 @@ SCM, for example when `dvc init` was used with the `--no-scm` option
 
 ## Options
 
-* `-t TARGET`, `--target TARGET` - Source path to a data file or directory. If
+- `-t TARGET`, `--target TARGET` - Source path to a data file or directory. If
   not specified, compares all files and directories that are under DVC control
   in the current working space.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples: Previous version of the same branch
 
@@ -141,7 +141,7 @@ following command.
     -model.pkl with md5 a664896
     +model.pkl with md5 3863d0e
     ...
-````
+```
 
 The output from this command confirms that there's a difference in the
 `model.pkl` file between the 2 Git references we indicated.
@@ -179,7 +179,7 @@ Started guide, in which the `dvc run` command is used to create the
 `prepare.dvc` stage. The output of this stage is the `data/prepared` directory.
 
 ```dvc
-    $ dvc diff -t data/prepared 5-preparation 
+    $ dvc diff -t data/prepared 5-preparation
     dvc diff from 3deeec1 to 8c1169d
 
     diff for 'data/prepared'

@@ -39,8 +39,8 @@ For example:
 
 ```dvc
     $ echo $0
-     
-      /bin/bash      
+
+      /bin/bash
 ```
 
 In this case, follow the steps to configure Bash as it is your active shell.

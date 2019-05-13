@@ -36,10 +36,9 @@ contributing!
 - Make sure that you have python 3 installed. Version 3.6 or higher is required
   to run style checkers on pre-commit. On Mac OS, use `brew` to install the
   latest version of python.
-- Install the requirements with `pip install -r requirements.txt` and `pip
-  install -r tests/requirements.txt`. We **strongly** recommend initializing a
+- Install the requirements with `pip install -r requirements.txt` and `pip install -r tests/requirements.txt`. We **strongly** recommend initializing a
   [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
-  installing the required libraries. For example: 
+  installing the required libraries. For example:
   ```dvc
       $ cd dvc
       $ virtualenv --python python3 .env
@@ -86,9 +85,9 @@ help you identify the problem:
 
     ...
 
-    [gw2] [ 84%] FAILED tests/unit/test_progress.py::TestProgressAware::test 
-    tests/unit/test_prompt.py::TestConfirm::test_eof 
-    tests/test_updater.py::TestUpdater::test 
+    [gw2] [ 84%] FAILED tests/unit/test_progress.py::TestProgressAware::test
+    tests/unit/test_prompt.py::TestConfirm::test_eof
+    tests/test_updater.py::TestUpdater::test
     ...
     =================================== FAILURES ===================================
     ____________________________ TestProgressAware.test ____________________________
@@ -116,11 +115,13 @@ To pass additional arguments:
 To run DVC from its Git repository you need to setup your environment:
 
 - Export `DVC_HOME` variable that is pointing to the root of your repository:
+
   ```dvc
       $ export DVC_HOME=/home/user/git/dvc
   ```
 
 - Modify and export `PATH` variable to include location of our wrapper script:
+
   ```dvc
       $ export PATH=$PATH:$DVC_HOME/bin
   ```
@@ -152,10 +153,10 @@ Message types:
 
 - *component* - name of a component that this patch is affecting. Use `dvc` in a
   general case;
-- *short description* - short description of the patch;
-- *long description* - If needed, longer message describing the patch in more
+- _short description_ - short description of the patch;
+- _long description_ - If needed, longer message describing the patch in more
   details;
-- *github issue id* - An id of the github issue that this patch is addressing;
+- _github issue id_ - An id of the github issue that this patch is addressing;
 
 Example:
 

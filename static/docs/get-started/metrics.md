@@ -21,7 +21,7 @@ It is a special DVC output file type, in this case it's just a plain text file
 with a single number inside.
 
 > Please, refer to the `dvc metrics` command documentation to see more available
-options and details.
+> options and details.
 
 Let's again commit and save results:
 

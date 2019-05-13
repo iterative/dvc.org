@@ -37,19 +37,19 @@ or `dvc commit`.
 
 ## Installed SCM hooks
 
-* Git `pre-commit` hook executes `dvc status` before `git commit` to inform the
+- Git `pre-commit` hook executes `dvc status` before `git commit` to inform the
   user about the workspace status.
-* Git `post-checkout` hook executes `dvc checkout` after `git checkout` to
+- Git `post-checkout` hook executes `dvc checkout` after `git checkout` to
   automatically synchronize the data files with the new workspace state.
 
 ## Options
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 

@@ -12,7 +12,7 @@ the corresponding DVC file, it would also rename the DVC file.
     positional arguments:
         src                   Source path to a data file or directory.
         dst                   Destination path.
-   
+
 ```
 
 ## Description
@@ -31,21 +31,21 @@ Let's imagine the following scenario:
     $ dvc add data.csv
 ```
 
-The `dvc add` command would create a `data.csv.dvc` DVC file with the following 
+The `dvc add` command would create a `data.csv.dvc` DVC file with the following
 content:
 
 ```yaml
-    md5: 3d1a3e5a5b662490e198d6a6ae84984b
-    outs:
-    - cache: true
-      md5: c8263e8422925b0872ee1fb7c953742a
-      path: data.csv
+md5: 3d1a3e5a5b662490e198d6a6ae84984b
+outs:
+  - cache: true
+    md5: c8263e8422925b0872ee1fb7c953742a
+    path: data.csv
 ```
 
 If we move this using the regular `mv data.csv other.csv` the DVC file would
-not know that we changed the `path` of `data.csv` to `other.csv`.  
+not know that we changed the `path` of `data.csv` to `other.csv`.
 
-`dvc move` adjusts the content of the DVC file to update `path`.  So that saves
+`dvc move` adjusts the content of the DVC file to update `path`. So that saves
 some manual and programming steps.
 
 To illustrate, notice that `path` value has changed, as well as the DVC file
@@ -57,27 +57,27 @@ name:
 ```
 
 And here is the updated content of the `data.csv.dvc`:
-        
+
 ```yaml
-    md5: 3d1a3e5a5b662490e198d6a6ae84984b
-    outs:
-    - cache: true
-      md5: c8263e8422925b0872ee1fb7c953742a
-      path: other.csv
+md5: 3d1a3e5a5b662490e198d6a6ae84984b
+outs:
+  - cache: true
+    md5: c8263e8422925b0872ee1fb7c953742a
+    path: other.csv
 ```
 
 ## Options
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 
-Here we use `dvc add`to put a file under DVC control.  Then we change the name
+Here we use `dvc add`to put a file under DVC control. Then we change the name
 of it using `dvc move`.
 
 ```dvc
@@ -86,8 +86,8 @@ of it using `dvc move`.
     .
     ├── data.csv
     └── data.csv.dvc
-    
-    
+
+
     $ dvc move data.csv other.csv
     $ tree
     .
@@ -96,7 +96,7 @@ of it using `dvc move`.
 ```
 
 Here we use `dvc add` to put a file under DVC control. Then we use `dvc move`
-to change data directory. Note, that data stage file is also moved. If target 
+to change data directory. Note, that data stage file is also moved. If target
 path already exists and is a directory, data file is moved with unchanged name
 into this folder.
 
@@ -157,4 +157,3 @@ also moved.
         │   └── foo
         └── data3.dvc
 ```
-

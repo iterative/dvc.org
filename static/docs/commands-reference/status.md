@@ -18,16 +18,14 @@ cache and local files, or between the local cache and remote cache.
 
 `dvc status` searches for changes in the pipeline, either showing which stages
 have changed in the local workspace and must be reproduced (`dvc repro`), or
-differences between the local cache and remote cache (meaning `dvc push` or `dvc
-pull` should be run to synchronize them). The two modes, _local_ and _cloud_ are
+differences between the local cache and remote cache (meaning `dvc push` or `dvc pull` should be run to synchronize them). The two modes, _local_ and _cloud_ are
 triggered by using the `--cloud` or `--remote` options:
 
-Mode   | CLI Option | Description
--------|------------|----------------------------------
-local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the local cache (`.dvc/cache`)
-remote | `--remote`  | Comparisons are made between the local cache, and the given remote. Remote caches are defined using the `dvc remote` command.
-remote | `--cloud`  | Comparisons are made between the local cache, and the default remote, defined with `dvc remote --default` command.
-
+| Mode   | CLI Option | Description                                                                                                                   |
+| ------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the local cache (`.dvc/cache`)            |
+| remote | `--remote` | Comparisons are made between the local cache, and the given remote. Remote caches are defined using the `dvc remote` command. |
+| remote | `--cloud`  | Comparisons are made between the local cache, and the default remote, defined with `dvc remote --default` command.            |
 
 DVC determines data and code files to compare by analyzing all stage files in
 the current workspace (`--all-branches` and `--all-tags` in the `cloud` mode
@@ -55,12 +53,12 @@ For each stage with differences, the _dependencies_ and/or _outputs_ that differ
 are listed. For each item listed, either the file name or the checksum is shown,
 and additionally a status word is shown describing the change:
 
-* For the local workspace:
-    * _changed_ means the named file has changed
-* For comparison against a remote cache:
-    * _new_ means the file exists in the local cache but not the remote cache
-    * _deleted_ means the file does not exist in the local cache, and exists in
-      the remote cache
+- For the local workspace:
+  - _changed_ means the named file has changed
+- For comparison against a remote cache:
+  - _new_ means the file exists in the local cache but not the remote cache
+  - _deleted_ means the file does not exist in the local cache, and exists in
+    the remote cache
 
 For the _changed_ case, the `dvc repro` command is indicated.
 
@@ -72,46 +70,46 @@ Model Files](/doc/use-cases/share-data-and-model-files).
 
 ## Options
 
-* `-d`, `--with-deps` - finds changes by tracking dependencies to the named
+- `-d`, `--with-deps` - finds changes by tracking dependencies to the named
   target stage. This option only has effect when one or more target stages are
   named. By traversing the dependencies, DVC searches backward through the
   pipeline from the named target(s). This means DVC will not show changes
   occurring later in the pipeline than the named target(s). Applies whether or
   not `--cloud` is specified.
 
-* `-c`, `--cloud` - enables comparison against a remote cache. If no `--remote`
+- `-c`, `--cloud` - enables comparison against a remote cache. If no `--remote`
   option has been given, DVC will compare against the default remote cache,
-  which is specified in the `core.remote` config option.  Otherwise the
+  which is specified in the `core.remote` config option. Otherwise the
   comparison will be against the remote specified in the `--remote` option.
 
-* `-r REMOTE`, `--remote REMOTE` - specifies which remote storage (see
+- `-r REMOTE`, `--remote REMOTE` - specifies which remote storage (see
   `dvc remote list`) to compare against. The argument, `REMOTE`, is a remote
   name defined using the `dvc remote` command. Implies `--cloud`.
 
-* `-a`, `--all-branches` - compares cache content against all Git branches.
+- `-a`, `--all-branches` - compares cache content against all Git branches.
   Instead of checking just the currently checked out workspace, it checks
   against all other branches of this workspace. The corresponding branches are
   shown in the status output. Applies only if `--cloud` or a remote is
   specified.
 
-* `-T`, `--all-tags` - compares cache content against all Git tags. Both the
+- `-T`, `--all-tags` - compares cache content against all Git tags. Both the
   `--all-branches` and `--all-tags` options cause DVC to check more than just
   the currently checked out workspace. The corresponding tags are shown in the
   status output. Applies only if `--cloud` or a remote is specified.
 
-* `--show-checksums` - shows the DVC checksum for the file, rather than the file
+- `--show-checksums` - shows the DVC checksum for the file, rather than the file
   name. Applies only if `--cloud` is specified.
 
-* `-j JOBS`, `--jobs JOBS` - specifies the number of jobs DVC can use to
+- `-j JOBS`, `--jobs JOBS` - specifies the number of jobs DVC can use to
   retrieve information from remote servers. This only applies when the
   `--cloud` option is used or a remote is given.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   pipeline is up to date, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Example: Simple usage
 
@@ -137,10 +135,10 @@ changed, but no output has changed.
 ```dvc
     $ vi code/featurization.py
     ... edit the code
-    
+
     $ dvc status model.p.dvc
     Pipeline is up to date. Nothing to reproduce.
-    
+
     $ dvc status model.p.dvc --with-deps
     matrix-train.p.dvc
         deps

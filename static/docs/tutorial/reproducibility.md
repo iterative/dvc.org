@@ -5,15 +5,15 @@
 The most exciting part of DVC is reproducibility.
 
 > Reproducibility is the time you are getting benefits out of DVC instead of
-spending time defining the ML pipelines.
+> spending time defining the ML pipelines.
 
 DVC tracks all the dependencies, which helps you iterate on ML models faster
 without thinking what was affected by your last change.
 
 > In order to track all the dependencies, DVC finds and reads ALL the DVC-files
-in a repository and builds a dependency graph
-([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) based on these
-files.
+> in a repository and builds a dependency graph
+> ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) based on these
+> files.
 
 This is one of the differences between DVC reproducibility and traditional
 Makefile-like build automation tools (Make, Maven, Ant, Rakefile etc). It was
@@ -102,7 +102,7 @@ To compare it with the previous AUC, you can use the `metrics` command:
 
 ```dvc
     $ dvc metrics show -a
-    
+
     bigram:
     	data/eval.txt: AUC: 0.624727
 
@@ -111,7 +111,7 @@ To compare it with the previous AUC, you can use the `metrics` command:
 ```
 
 > It is convenient to keep track of information even for failed experiments.
-Sometimes a failed hypothesis gives more information than a successful one.
+> Sometimes a failed hypothesis gives more information than a successful one.
 
 Let’s keep the result in the repository. Later we can find out why bigram does
 not add value to the current model and change that.
@@ -141,8 +141,9 @@ hyperparameters. Let’s try to improve the model by changing the hyperparameter
 
 There is no good reason to improve the last bigram based model. Let’s checkout
 the original model from the master branch.
+
 > Note, after checking out code and DVC-files from Git, data files have to be
-checked out as well using the `dvc checkout` command.
+> checked out as well using the `dvc checkout` command.
 
 ```dvc
     $ git checkout master
@@ -212,7 +213,7 @@ This seems like a good model improvement (+1.28%). Please commit all the changes
 Now we can revisit the failing hypothesis with bigrams, which didn’t provide any
 model improvement even with one thousand more features. The current model with
 700 trees in the forest is stronger and we might be able to get more information
-using bigrams. So, let’s incorporate the bigram changes into the current model 
+using bigrams. So, let’s incorporate the bigram changes into the current model
 using a regular Git merge command.
 
 > Git merge logic works for data files and respectively for DVC models.

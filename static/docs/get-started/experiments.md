@@ -20,8 +20,8 @@ and increase number of features:
                                    max_features=6000,
                                    ngram_range=(1, 2))
 ```
-</details>
 
+</details>
 
 ```dvc
     $ vi featurization.py        # edit to use bigrams (see above)

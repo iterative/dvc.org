@@ -1,6 +1,6 @@
 # Get Started
 
-Get started is a step by step introduction into basic DVC concepts. It does not 
+Get started is a step by step introduction into basic DVC concepts. It does not
 go into details much, but provides links and expandable sections to learn more.
 
 At the very end there are a few complete step-by-step examples to give you

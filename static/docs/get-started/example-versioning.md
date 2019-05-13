@@ -1,9 +1,9 @@
 # Example: Versioning
 
->Reading time is 10-13 minutes. Running the training is 30-40 minutes (including
-downloading the dataset). Running the code is optional, and reading alone
-should be enough to learn how to manipulate different versions of data and
-models.
+> Reading time is 10-13 minutes. Running the training is 30-40 minutes (including
+> downloading the dataset). Running the code is optional, and reading alone
+> should be enough to learn how to manipulate different versions of data and
+> models.
 
 To show how DVC can be used to manage and version control machine learning
 models and datasets, let's play with a
@@ -92,6 +92,7 @@ a browser to download `data.zip` or install it from a third party. We recommend
 using [chocolatey](https://chocolatey.org/). First, if you haven't already,
 install chocolatey using [official guide](https://chocolatey.org/install). Then
 install `wget` and `tar` with the following command in the `Command Prompt`:
+
 ```dvc
     C:\> choco install wget
 ```
@@ -337,8 +338,7 @@ ML models, which would be similar to makefiles in software engineering.
 ## What's next?
 
 In this example, our focus was on giving you hands-on experience on ML models
-and datasets versioning. We specifically focused on `dvc add` and `dvc
-checkout` commands. Here we would like to outline some next topics and ideas
+and datasets versioning. We specifically focused on `dvc add` and `dvc checkout` commands. Here we would like to outline some next topics and ideas
 you would be interested to try to learn more about DVC and how it makes managing
 ML projects simpler.
 
@@ -365,5 +365,3 @@ or branches. Check `dvc metrics` command and
 managing metrics. Next step you should try on your own is converting both
 iterations we had into `dvc run` and then utilize `dvc metrics show` to compare
 them.
-
-

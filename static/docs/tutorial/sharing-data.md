@@ -10,17 +10,17 @@ GitHub or other Git services.
 DVC is able to push the cache to a cloud.
 
 > Using your shared cache a colleague can reuse ML models that were trained on
-your machine.
+> your machine.
 
-First, you need to modify the cloud settings in the DVC config file. This can be 
+First, you need to modify the cloud settings in the DVC config file. This can be
 done using the CLI:
 
 > Please note that we are using `dvc-share` s3 bucket as an example and you don't
-have a write access to it, so in order to follow the tutorial you will need to
-either create your own s3 bucket or use other types of
-[remote storage](/doc/commands-reference/remote). E.g. you can set up a local
-remote as we did in the [Get Started configure](/doc/get-started/configure)
-section.
+> have a write access to it, so in order to follow the tutorial you will need to
+> either create your own s3 bucket or use other types of
+> [remote storage](/doc/commands-reference/remote). E.g. you can set up a local
+> remote as we did in the [Get Started configure](/doc/get-started/configure)
+> section.
 
 ```dvc
     $ dvc remote add -d upstream s3://dvc-share/classify
@@ -36,7 +36,7 @@ Then, a simple command pushes files from your local cache to the cloud:
     (2/9): [##########               ] 34% 5f/42ecd9a121b4382cd6510534533ec3
 ```
 
-The command does not push all cached files, but only the ones that belong 
+The command does not push all cached files, but only the ones that belong
 to the currently active Git repository and branch.
 
 For example, in this tutorial 16 data files were created and only 9 will be

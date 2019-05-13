@@ -15,12 +15,12 @@ local cache is located in the `.dvc/cache` directory).
 
 ## Options
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Example
 
@@ -33,7 +33,7 @@ local cache is located in the `.dvc/cache` directory).
     .dvc .git code.py foo foo.dvc
 
     $ dvc destroy
-    
+
     This will destroy all information about your pipelines as well as cache in .dvc/cache.
     Are you sure you want to continue?
     yes

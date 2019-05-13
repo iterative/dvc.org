@@ -46,15 +46,14 @@ the repository. The reason is that DVC included the file into `data/.gitignore`,
 so Git ignores this data file from now on.
 
 > DVC will always exclude data files from the Git repository by listing them in
-`.gitignore`.
+> `.gitignore`.
 
 Refer to [Data and Model Files
-Versioning](/doc/use-cases/data-and-model-files-versioning), `dvc add`, and `dvc
-run` for more information on storing and versioning data files with DVC.
+Versioning](/doc/use-cases/data-and-model-files-versioning), `dvc add`, and `dvc run` for more information on storing and versioning data files with DVC.
 
 Note that to modify or replace a data file that is under DVC control you may
 need to run `dvc unprotect` or `dvc remove` first (check the [Update Tracked
-File](/doc/user-guide/update-tracked-file) guide).  Use `dvc move` to rename or
+File](/doc/user-guide/update-tracked-file) guide). Use `dvc move` to rename or
 move a data file that is under DVC control.
 
 ## Data file internals
@@ -65,8 +64,8 @@ data file path in the repository and md5 cache. This md5 cache determines
 a location of the actual content file in DVC cache directory `.dvc/cache`.
 
 > Output from DVC-files defines the relationship between the data file path in a
-repository and the path in a cache directory. See also [DVC File
-Format](/doc/user-guide/dvc-file-format)
+> repository and the path in a cache directory. See also [DVC File
+> Format](/doc/user-guide/dvc-file-format)
 
 ```dvc
     $ cat data/Posts.xml.zip.dvc
@@ -84,7 +83,7 @@ Keeping actual file content in a cache directory and a copy of the caches in
 user workspace during `$ git checkout` is a regular trick that
 [Git-LFS](https://git-lfs.github.com/) (Git for Large File Storage) uses. This
 trick works fine for tracking small files with source code. For large data
-files, this might not be the best approach, because of *checkout* operation for
+files, this might not be the best approach, because of _checkout_ operation for
 a 10Gb data file might take several seconds and a 50GB file checkout (think
 copy) might take a few minutes.
 
@@ -102,10 +101,10 @@ meta-data record) in a file system. Use `ls -i` to see file system inodes. If
 you are using a modern file system with reflinks you might see different inodes,
 still only one copy if the actual file data is stored.
 
-> Note: In case of systems supporting reflink, use `df` utility to see that free 
-space on the drive didn't decline by the file size that we are adding and no 
-duplication takes place. As `du` is inaccurate in modern file systems using
-reflinks.
+> Note: In case of systems supporting reflink, use `df` utility to see that free
+> space on the drive didn't decline by the file size that we are adding and no
+> duplication takes place. As `du` is inaccurate in modern file systems using
+> reflinks.
 
 ```dvc
     $ ls -i data/Posts.xml.zip
@@ -119,8 +118,8 @@ reflinks.
 ```
 
 > Note that DVC uses hardlinks in all the supported OSs, including Mac OS, Linux
-and Windows. Some implementation details (like inodes) might differ, but the
-overall DVC behavior is the same. 
+> and Windows. Some implementation details (like inodes) might differ, but the
+> overall DVC behavior is the same.
 
 ## Running commands
 
@@ -140,8 +139,7 @@ command, if any.
    file.
 
 2. `-o file.tsv` (lower case o) specifies output data file which means DVC will
-   transform this file into a data file (think — it will run `dvc add
-   file.tsv`).
+   transform this file into a data file (think — it will run `dvc add file.tsv`).
 
 3. `-O file.tsv` (upper case O) specifies a regular output file (not to be added
    to DVC).
@@ -154,7 +152,7 @@ Let's see how an extract command `unzip` works under DVC:
 ```dvc
     $ dvc run -d data/Posts.xml.zip -o data/Posts.xml \
             unzip data/Posts.xml.zip -d data/
-    
+
     Running command:
 	    unzip data/Posts.xml.zip -d data/
     Archive:  data/Posts.xml.zip
@@ -165,10 +163,10 @@ Let's see how an extract command `unzip` works under DVC:
 
     To track the changes with git run:
 
-	    git add data/.gitignore Posts.xml.dvc      
+	    git add data/.gitignore Posts.xml.dvc
 
     $ du -sh data/*
-    
+
     145M data/Posts.xml
     41M data/Posts.xml.zip
     4.0K data/Posts.xml.zip.dvc
@@ -198,7 +196,7 @@ Let's take a look at the resulting DVC-file from the above example:
 
 ```dvc
     $ cat Posts.xml.dvc
-    
+
     cmd: ' unzip data/Posts.xml.zip -d data/'
     deps:
     - md5: ec1d2935f811b77cc49b031b999cbf17
@@ -212,11 +210,11 @@ Let's take a look at the resulting DVC-file from the above example:
 
 Sections of the file above include:
 
-* `cmd` — the command to run.
+- `cmd` — the command to run.
 
-* `deps` — dependencies with md5 checksums.
+- `deps` — dependencies with md5 checksums.
 
-* `outs` — outputs with md5 checksums.
+- `outs` — outputs with md5 checksums.
 
 And (as with the `dvc add` command) the `data/.gitignore` file was modified. Now
 it includes the unarchived command output file `Posts.xml`.
@@ -378,6 +376,7 @@ form:
 ```
 
 You can also show the metrics using the `DVC metrics` command:
+
 ```dvc
     $ dvc metrics show
     data/eval.txt:AUC: 0.624652

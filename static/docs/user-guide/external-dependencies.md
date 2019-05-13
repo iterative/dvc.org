@@ -61,6 +61,7 @@ workspace:
 ```
 
 ### HTTP
+
 ```dvc
     $ dvc run -d https://example.com/data.txt \
               -o data.txt \
@@ -70,7 +71,7 @@ workspace:
 ### Using import
 
 In the previous command examples downloading commands were in use:
- `cp`, `aws s3 cp`, `wget`, etc.
+`cp`, `aws s3 cp`, `wget`, etc.
 
 `dvc import` simplifies the downloading part for all the supported
 types of dependencies.
@@ -78,11 +79,13 @@ types of dependencies.
 ```dvc
     $ dvc import https://dvc.org/s3/get-started/data.xml
 ```
+
 <details>
 
 ### Expand to learn more about DVC internals
 
 If you open the resulting DVC file, you will see something like this:
+
 ```yaml
 deps:
   - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'

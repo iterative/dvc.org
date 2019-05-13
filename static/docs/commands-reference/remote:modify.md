@@ -32,18 +32,18 @@ Alternatively, `dvc config` or manual editing could be used to change settings.
 
 ## Options
 
-* `-u`, `--unset` - delete configuration value
+- `-u`, `--unset` - delete configuration value
 
-* `--global` - save remote configuration to the global config (e.g.
-`~/.config/dvc/config`) instead of `.dvc/config`.
+- `--global` - save remote configuration to the global config (e.g.
+  `~/.config/dvc/config`) instead of `.dvc/config`.
 
-* `--system` - save remote configuration to the system config (e.g.
-`/etc/dvc.config`) instead of `.dvc/config`.
+- `--system` - save remote configuration to the system config (e.g.
+  `/etc/dvc.config`) instead of `.dvc/config`.
 
-* `--local` - modify the [local](/doc/user-guide/dvc-files-and-directories)
-configuration file (`.dvc/config.local`). This is useful when you are modifying
-private options or local environment specific settings in your config, that you
-don't want to track and share through Git (credentials, private locations, etc).
+- `--local` - modify the [local](/doc/user-guide/dvc-files-and-directories)
+  configuration file (`.dvc/config.local`). This is useful when you are modifying
+  private options or local environment specific settings in your config, that you
+  don't want to track and share through Git (credentials, private locations, etc).
 
 <details>
 
@@ -54,50 +54,49 @@ By default DVC expects your AWS CLI is already
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could use the following options:
 
-* `region` - change AWS S3 remote region:
+- `region` - change AWS S3 remote region:
 
   ```dvc
     $ dvc remote modify myremote region us-east-2
   ```
 
-* `profile` - credentials profile name to use to access AWS S3:
+- `profile` - credentials profile name to use to access AWS S3:
 
   ```dvc
     $ dvc remote modify myremote profile myprofile
   ```
 
-* `credentialpath` - credentials path to use to access AWS S3:
+- `credentialpath` - credentials path to use to access AWS S3:
 
   ```dvc
     $ dvc remote modify myremote credentialpath /path/to/my/creds
   ```
 
-* `endpointurl` - endpoint URL to use to access AWS S3:
+- `endpointurl` - endpoint URL to use to access AWS S3:
 
   ```dvc
     $ dvc remote modify myremote endpointurl myendpoint.com
   ```
 
-* `url` - remote location URL
+- `url` - remote location URL
 
   ```dvc
     $ dvc remote modify myremote url s3://bucket/remote
   ```
 
-* `use_ssl` - whether or not to use SSL. By default, SSL is used
+- `use_ssl` - whether or not to use SSL. By default, SSL is used
 
   ```dvc
     $ dvc remote modify myremote use_ssl false
   ```
 
-* `listobjects` - whether or not to use `list_objects`.  
+- `listobjects` - whether or not to use `list_objects`.  
    By default, `list_objects_v2` is used.
-   Useful for ceph and other s3 emulators.
+  Useful for ceph and other s3 emulators.
 
   ```dvc
     $ dvc remote modify myremote listobjects true
   ```
-
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://minio.io/), [Wasabi](https://wasabi.com/),
@@ -107,10 +106,10 @@ explicitly set the `endpointurl` in the configuration:
 
 For example:
 
-  ```dvc
-    $ dvc remote add -d mybucket s3://path/to/dir
-    $ dvc remote modify mybucket endpointurl object-storage.example.com
-  ```
+```dvc
+  $ dvc remote add -d mybucket s3://path/to/dir
+  $ dvc remote modify mybucket endpointurl object-storage.example.com
+```
 
 AWS S3 remote can also be configured entirely via environment variables:
 
@@ -129,32 +128,31 @@ For more information about the variables DVC supports, please visit
 
 ### Click for Azure available options
 
-* `url` - remote location URL.
+- `url` - remote location URL.
 
   ```dvc
       $ dvc remote modify myremote url "azure://ContainerName=remote;"
   ```
 
-* `connection_string` - connection string.
+- `connection_string` - connection string.
 
-   ```dvc
-       $ dvc remote modify myremote connection_string my-connection-string
-   ```
+  ```dvc
+      $ dvc remote modify myremote connection_string my-connection-string
+  ```
 
 </details>
-
 
 <details>
 
 ### Click for Google Cloud Storage available options
 
-* `projectname` - project name to use.
+- `projectname` - project name to use.
 
   ```dvc
     $ dvc remote modify myremote projectname myproject
   ```
 
-* `url` - remote location URL.
+- `url` - remote location URL.
 
   ```dvc
     $ dvc remote modify myremote url gs://bucket/remote
@@ -166,50 +164,50 @@ For more information about the variables DVC supports, please visit
 
 ### Click for SSH available options
 
-* `url` - remote location URL.
+- `url` - remote location URL.
 
   ```dvc
     $ dvc remote modify myremote url ssh://user@example.com:1234/path/to/remote
   ```
 
-* `user` - username to use to access a remote. The order in which dvc
+- `user` - username to use to access a remote. The order in which dvc
   searches for username:
 
-    1) `user` specified in one of the dvc configs;
-    2) `user` specified in the url(e.g. `ssh://user@example.com/path`);
-    3) `user` specified in `~/.ssh/config` for remote host;
-    4) current user;
+  1. `user` specified in one of the dvc configs;
+  2. `user` specified in the url(e.g. `ssh://user@example.com/path`);
+  3. `user` specified in `~/.ssh/config` for remote host;
+  4. current user;
 
   ```dvc
     $ dvc remote modify myremote user myuser
   ```
 
-* `port` - port to use to access a remote. The order in which dvc searches
+- `port` - port to use to access a remote. The order in which dvc searches
   for port:
 
-    1) `port` specified in one of the dvc configs;
-    2) `port` specified in the url(e.g. `ssh://example.com:1234/path`);
-    3) `port` specified in `~/.ssh/config` for remote host;
-    4) default ssh port 22;
+  1. `port` specified in one of the dvc configs;
+  2. `port` specified in the url(e.g. `ssh://example.com:1234/path`);
+  3. `port` specified in `~/.ssh/config` for remote host;
+  4. default ssh port 22;
 
   ```dvc
     $ dvc remote modify myremote port 2222
   ```
 
-* `keyfile` - path to private key to use to access a remote.
+- `keyfile` - path to private key to use to access a remote.
 
   ```dvc
     $ dvc remote modify myremote keyfile /path/to/keyfile
   ```
 
-* `password` - a private key passphrase or a password to use to
+- `password` - a private key passphrase or a password to use to
   use when accessing a remote.
 
   ```dvc
     $ dvc remote modify myremote password mypassword
   ```
 
-* `ask_password` - ask for a private key passphrase or a password
+- `ask_password` - ask for a private key passphrase or a password
   to use when accessing a remote.
 
   ```dvc
@@ -222,7 +220,7 @@ For more information about the variables DVC supports, please visit
 
 ### Click for HDFS available options
 
-* `user` - username to use to access a remote.
+- `user` - username to use to access a remote.
 
   ```dvc
     $ dvc remote modify myremote user myuser

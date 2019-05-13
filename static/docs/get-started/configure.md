@@ -26,6 +26,7 @@ project/repository itself.
     $ dvc remote add -d myremote /tmp/dvc-storage
     $ git commit .dvc/config -m "initialize DVC local remote"
 ```
+
 > We only use a local remote in this guide for simplicity's sake in following
 > these basic steps as you are learning to use DVC. We realize that for most
 > [use cases](/doc/use-cases), other "more remote" types of remotes will be
@@ -34,27 +35,28 @@ project/repository itself.
 Adding a remote should be specified by both its type prefix and its path. DVC
 currently supports seven types of remotes:
 
-* `local` - Local directory
-* `s3` - Amazon Simple Storage Service
-* `gs` - Google Cloud Storage
-* `azure` - Azure Blob Storage
-* `ssh` - Secure Shell
-* `hdfs` - The Hadoop Distributed File System
-* `http` - Support for HTTP and HTTPS protocol
+- `local` - Local directory
+- `s3` - Amazon Simple Storage Service
+- `gs` - Google Cloud Storage
+- `azure` - Azure Blob Storage
+- `ssh` - Secure Shell
+- `hdfs` - The Hadoop Distributed File System
+- `http` - Support for HTTP and HTTPS protocol
 
 > Depending on the [remote storage](/doc/commands-reference/remote) type you
-plan to use to keep and share your data you might need to specify one of the
-optional dependencies: `s3`, `gs`, `azure`, `ssh`. Or `all_remotes` to include
-them all. The command should look like this: `pip install dvc[s3]` - it will
-install `boto3` library along with DVC to support AWS S3 storage. This is valid
-for `pip install` option only. Other ways to install DVC already include support
-for all remotes.
+> plan to use to keep and share your data you might need to specify one of the
+> optional dependencies: `s3`, `gs`, `azure`, `ssh`. Or `all_remotes` to include
+> them all. The command should look like this: `pip install dvc[s3]` - it will
+> install `boto3` library along with DVC to support AWS S3 storage. This is valid
+> for `pip install` option only. Other ways to install DVC already include support
+> for all remotes.
 
 For example, to setup an S3 remote we would use something like:
 
 ```dvc
     $ dvc remote add -d s3remote s3://mybucket/myproject
 ```
+
 > This command is only shown for informational purposes. No need to actually run
 > it in order to continue with this guide.
 

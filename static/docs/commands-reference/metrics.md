@@ -36,12 +36,12 @@ set up and manage DVC metrics.
 
 ## Options
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 
@@ -53,9 +53,9 @@ First, let's create a simple DVC stage file:
 ```
 
 > `-M|--metrics-no-cache` is telling DVC to mark `data/eval.json` as a metric
-file. Using this option is equivalent to using `-O|--outs-no-cache` and then
-using `dvc metrics add data/eval.json` to explicitly mark `data/eval.json` as a
-metric file.
+> file. Using this option is equivalent to using `-O|--outs-no-cache` and then
+> using `dvc metrics add data/eval.json` to explicitly mark `data/eval.json` as a
+> metric file.
 
 Now let's print metric values that we are tracking in the current project:
 

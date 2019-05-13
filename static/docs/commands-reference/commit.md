@@ -17,21 +17,21 @@ cache.
 ## Description
 
 The `dvc commit` command is useful for several scenarios where a dataset is
-being changed, a stage  or pipeline is in development or one wishes to run
+being changed, a stage or pipeline is in development or one wishes to run
 commands outside the control of DVC, or force DVC files update to save some time
 rerunning the pipeline or a stage:
 
-* Code or data for a stage is under active development, with rapid iteration of
+- Code or data for a stage is under active development, with rapid iteration of
   code or configuration or data. Run DVC commands (`dvc run`, `dvc repro`, and
   even `dvc add`) using the `--no-commit` option to avoid caching unnecessary
   data over and over again. Use `dvc commit` when the files are finalized.
-* One can always execute the code used in a stage without using DVC (keep in
+- One can always execute the code used in a stage without using DVC (keep in
   mind that output files or directories in certain cases must first be
   unprotected or removed, see `dvc unprotect`). Or one could be developing code
   or data, repeatedly manually executing the code until it is working. Once it
   is finished, use `dvc add` or `dvc commit` or `dvc run` where appropriate
   update DVC stage files and to store data to the cache.
-* Sometimes we want to clean up a code or configuration file in a way that does
+- Sometimes we want to clean up a code or configuration file in a way that does
   not cause a result change. We might write in-line documentation with comments
   (we do document our code don't we?), or change indentation, or comment-out
   some debugging printouts, or any other change which does not introduce a
@@ -46,12 +46,12 @@ want. Let's take a look at what is happening in the fist scenario closely:
 Normally DVC commands like `dvc add`, `dvc repro` or `dvc run`, commit the data
 to the DVC cache as the last step. What _commit_ means is that DVC:
 
-* Computes a checksum for the file/directory.
-* Enters the checksum and file name into the DVC stage file.
-* Tells the SCM to ignore the file/directory (e.g. add entry to `.gitignore`).
+- Computes a checksum for the file/directory.
+- Enters the checksum and file name into the DVC stage file.
+- Tells the SCM to ignore the file/directory (e.g. add entry to `.gitignore`).
   If the workspace was initialized with no SCM support (`dvc init --no-scm`)
   this does not happen.
-* Adds the file/directory or to the DVC cache.
+- Adds the file/directory or to the DVC cache.
 
 There are many cases where the last step is not desirable (usually, rapid
 iteration on some experiment). For the DVC commands where it is appropriate the
@@ -63,29 +63,28 @@ It handles that last step of adding the file to the DVC cache.
 
 ## Options
 
-* `-d`, `--with-deps` - determines the files to commit by searching backwards in
+- `-d`, `--with-deps` - determines the files to commit by searching backwards in
   the pipeline from the named stage(s). The only files which will be committed
   are associated with the named stage, and the stages which execute earlier in
   the pipeline.
 
-* `-R`, `--recursive` - the `targets` value is expected to be a directory path.
+- `-R`, `--recursive` - the `targets` value is expected to be a directory path.
   With this option, `dvc commit` determines the files to commit by searching the
   named directory, and its subdirectories, for DVC files for which to commit
   data. Along with providing a `target`, or `target` along with `--with-deps`,
   it is yet another way to limit the scope of DVC files to upload.
 
-* `-f`, `--force` - commit data even if checksums for dependencies or outputs
+- `-f`, `--force` - commit data even if checksums for dependencies or outputs
   did not change.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
   stages are up to date or if all stages are successfully rerun, otherwise exit
   with 1.
 
-* `-v`, `--verbose` - displays detailed tracing information from executing the
+- `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc add` command.
-
 
 ## Examples
 

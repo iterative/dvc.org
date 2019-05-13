@@ -8,8 +8,7 @@ such as ability to use multiple GPUs, store all your data in one place, etc.
 
 With DVC, you can easily setup a shared data storage on the server that will
 allow your team to share and store data for your projects as effectively as
-possible and have a workspace restoration/switching speed as instant as` git
-checkout` for your code.
+possible and have a workspace restoration/switching speed as instant as`git checkout` for your code.
 
 ### Preparation
 

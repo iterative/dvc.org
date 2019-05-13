@@ -31,7 +31,7 @@ Controlled files             Commands
 
  remote storage
        +
-       |         +------------+ 
+       |         +------------+
        | - - - - | dvc fetch  | ++
        v         +------------+   +   +----------+
   local cache                      ++ | dvc pull |
@@ -72,10 +72,7 @@ specified in DVC files currently in the workspace are considered by `dvc fetch`
 ## Options
 
 - `-r REMOTE`, `--remote REMOTE` - name of the [remote
-  storage](/doc/commands-reference/remote#description) to fetch from (see `dvc
-  remote list`). If not specified, the default remote is used (see `dvc config
-  core.remote`). The argument `REMOTE` is a remote name defined using the `dvc
-  remote` command.
+  storage](/doc/commands-reference/remote#description) to fetch from (see `dvc remote list`). If not specified, the default remote is used (see `dvc config core.remote`). The argument `REMOTE` is a remote name defined using the `dvc remote` command.
 
 - `-d`, `--with-deps` - fetch cache by tracking dependencies to the named target
   stages. This option only has effect when one or more `targets` are specified.
@@ -230,7 +227,7 @@ corresponding DVC file (target stage):
     (1/2): [##############################] 100% data/prepared/test.tsv
     (2/2): [##############################] 100% data/prepared/train.tsv
 
-    $ tree .dvc/cache      
+    $ tree .dvc/cache
     .dvc/cache
     ├── 42
     │   └── c7025fc0edeb174069280d17add2d4.dir
@@ -300,8 +297,7 @@ Fetching using `--with-deps` starts with the named stage and searches backwards
 through the pipeline for data files to download into our local cache. All the
 data for the second and third stages ("featurize" and "train") has now been
 downloaded to cache. We could now use `dvc checkout` to get the data files
-needed to reproduce the pipeline up to the third stage (with `dvc repro
-train.dvc`) workspace.
+needed to reproduce the pipeline up to the third stage (with `dvc repro train.dvc`) workspace.
 
 > Note that in this sample project the last stage `evaluate.dvc` doesn't add any
 > more data files than those form previous stages so at this point all the

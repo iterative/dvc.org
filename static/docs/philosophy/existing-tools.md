@@ -1,6 +1,5 @@
 # Tools for Data Scientists
 
-
 ## Existing engineering tools
 
 There is one common opinion regarding data science tooling. Data scientists as

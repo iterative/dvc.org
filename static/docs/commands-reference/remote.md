@@ -15,7 +15,7 @@ commands to set up and manage data remotes.
 
     positional arguments:
         add                   Add remote
-        default               Default remote  
+        default               Default remote
         remove                Remove remote
         modify                Modify remote
         list                  List remotes
@@ -34,10 +34,10 @@ DVC can [fetch](/doc/commands-reference/fetch) into the local cache only the
 data you need for a specific branch/commit.
 
 > If you installed DVC via `pip`, and depending on the remote type you plan to
-use you might need to install optional dependencies: `s3`, `gs`, `azure`, `ssh`.
-Or `all_remotes` to include them all. The command should look like this:
-`pip install -U dvc[s3]` - it installs `boto3` library along with DVC to support
-AWS S3 storage.
+> use you might need to install optional dependencies: `s3`, `gs`, `azure`, `ssh`.
+> Or `all_remotes` to include them all. The command should look like this:
+> `pip install -U dvc[s3]` - it installs `boto3` library along with DVC to support
+> AWS S3 storage.
 
 Using DVC with a remote data storage is optional. By default, DVC is
 configured to use a local data storage only (usually `.dvc/cache` directory
@@ -56,12 +56,12 @@ For the typical process to share the project via remote, see
 
 ## Options
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 

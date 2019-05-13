@@ -1,9 +1,9 @@
 # Data and Model Files Versioning
 
->This document provides an overview of the basic files versioning DVC workflow.
-To get a hands on experience and try it yourself we recommend you to follow
-along the [versioning](/doc/get-started/example-versioning) get started
-example.
+> This document provides an overview of the basic files versioning DVC workflow.
+> To get a hands on experience and try it yourself we recommend you to follow
+> along the [versioning](/doc/get-started/example-versioning) get started
+> example.
 
 DVC allows storing and versioning source data files, ML models, intermediate
 results with Git, without checking the file contents into Git. It is useful
@@ -20,11 +20,11 @@ the [Related Technologies](/doc/dvc-philosophy/related-technologies) to get a
 better sense why) and ad-hoc scripts on top of Amazon S3 (or name-it cloud) that are
 usually used to manage ML artifacts like model files, data files, etc. Unlike
 `git-lfs`, DVC does not require installing a server; it can be used on-premises
-(NAS, SSH, for example) or with any major cloud provider (S3, Google Cloud, Azure). 
+(NAS, SSH, for example) or with any major cloud provider (S3, Google Cloud, Azure).
 
 Let's say you already have a project that uses a bunch of images that are
 stored in `images` directory and has a `model.pkl` file - your model file that
-is deployed to production. 
+is deployed to production.
 
 ```dvc
     $ ls images
@@ -46,11 +46,11 @@ a `.dvc/cache` directory that will be used to store cache for your data.
 
 ```dvc
     $ git status
-    
+
     ...
         new file:   .dvc/.gitignore
         new file:   .dvc/config
-    
+
     $ git commit -m "Initialize dvc"
 ```
 
@@ -65,13 +65,13 @@ Commit your changes:
 
 ```dvc
     $ git status
-    
+
     ...
     Untracked files:
         .gitignore
         images.dvc
         model.pkl.dvc
-    
+
     $ git add .gitignore images.dvc model.pkl.dvc
     $ git commit -m "track images and models with dvc"
 ```
@@ -81,7 +81,7 @@ full workspace checkout or checkout of a specific data or model file. Let's
 consider the full checkout first. It's quite straightforward:
 
 > `v1.0` is a Git tag that should be created in advance to identify the data set
-version you are interested in, it can be just a Git commit hash instead.
+> version you are interested in, it can be just a Git commit hash instead.
 
 ```dvc
     $ git checkout v1.0

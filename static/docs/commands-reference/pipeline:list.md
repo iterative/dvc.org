@@ -13,7 +13,7 @@ each other.
 
 ## Examples
 
-* List available pipelines:
+- List available pipelines:
 
 ```dvc
     $ dvc pipeline list
