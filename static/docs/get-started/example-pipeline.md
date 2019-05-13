@@ -83,7 +83,7 @@ control:
 
 ### Expand to learn more about DVC internals
 
-`dvc init` created a new directory `example\.dvc` with `config`, `.gitignore`
+`dvc init` created a new directory `example/.dvc/` with `config`, `.gitignore`
 files and `cache` directory. These files and directories are hidden from a user
 in general and a user does not interact with these files directly. Check
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)

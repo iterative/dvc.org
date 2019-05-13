@@ -66,7 +66,7 @@ Python:
 DVC works on top of Git repositories. You run DVC initialization in a repository
 directory to create DVC metafiles and directories.
 
-After DVC initialization, a new directory `.dvc` will be created with `config`
+After DVC initialization, a new directory `.dvc/` will be created with `config`
 and `.gitignore` files and `cache` directory. These files and directories are
 hidden from the user in general and the user does not interact with these files
 directly. However, we describe some DVC internals below for a better
