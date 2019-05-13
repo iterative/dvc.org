@@ -14,33 +14,32 @@ to learn how to submit your changes.
 
 ## Submitting changes
 
-* Open a new issue in the
-[issue tracker](https://github.com/iterative/dvc/issues).
-* Setup the [development environment](#development-environment) if you need to
-run tests or [run](#running-development-version) the
-DVC with your changes.
-* Fork [DVC](https://github.com/iterative/dvc.git) and prepare necessary
-changes.
-* Add tests for your changes to `tests/test_*.py`.
-* [Run tests](#running-tests) and make sure all of them pass.
-* Submit a pull request, referencing any issues it addresses.
+- Open a new issue in the [issue
+  tracker](https://github.com/iterative/dvc/issues).
+- Setup the [development environment](#development-environment) if you need to
+  run tests or [run](#running-development-version) the DVC with your changes.
+- Fork [DVC](https://github.com/iterative/dvc.git) and prepare necessary
+  changes.
+- Add tests for your changes to `tests/test_*.py`.
+- [Run tests](#running-tests) and make sure all of them pass.
+- Submit a pull request, referencing any issues it addresses.
 
 We will review your pull request as soon as possible. Thank you for
 contributing!
 
 ## Development environment
 
-* Get the latest development version. Fork and clone the repo:
+- Get the latest development version. Fork and clone the repo:
   ```dvc
       $ git clone git@github.com:<username>/dvc.git
   ```
-* Make sure that you have python 3 installed. Version 3.6 or higher is required
-to run style checkers on pre-commit. On Mac OS, use `brew` to install the
-latest version of python.
-* Install the requirements with `pip install -r requirements.txt` and
-`pip install -r tests/requirements.txt`. We **strongly** recommend initializing a
-[virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
-installing the required libraries. For example: 
+- Make sure that you have python 3 installed. Version 3.6 or higher is required
+  to run style checkers on pre-commit. On Mac OS, use `brew` to install the
+  latest version of python.
+- Install the requirements with `pip install -r requirements.txt` and `pip
+  install -r tests/requirements.txt`. We **strongly** recommend initializing a
+  [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
+  installing the required libraries. For example: 
   ```dvc
       $ cd dvc
       $ virtualenv --python python3 .env
@@ -49,7 +48,7 @@ installing the required libraries. For example:
       $ pip install -r tests/requirements.txt
       $ pip install -e .
   ```
-* Install coding style pre-commit hooks with
+- Install coding style pre-commit hooks with
   ```dvc
       $ pip install pre-commit
       $ pre-commit install
@@ -116,23 +115,28 @@ To pass additional arguments:
 
 To run DVC from its Git repository you need to setup your environment:
 
-* Export `DVC_HOME` variable that is pointing to the root of your repository:
-    ```dvc
+- Export `DVC_HOME` variable that is pointing to the root of your repository:
+  ```dvc
       $ export DVC_HOME=/home/user/git/dvc
-    ```
+  ```
 
-* Modify and export `PATH` variable to include location of our wrapper script:
-    ```dvc
+- Modify and export `PATH` variable to include location of our wrapper script:
+  ```dvc
       $ export PATH=$PATH:$DVC_HOME/bin
-    ```
+  ```
 
-* Check that `dvc` points to your repository:
-    ```dvc
+- Check that `dvc` points to your repository:
+  ```dvc
       $ which dvc
       /home/user/git/dvc/bin/dvc
-    ```
+  ```
 
-## Commit style guide
+## Code style guidelines
+
+We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and are checking
+that our code is formatted with [black](https://github.com/ambv/black).
+
+## Commit style guidelines
 
 Format:
 
@@ -146,12 +150,12 @@ Format:
 
 Message types:
 
-* *component* - name of a component that this patch is affecting. Use `dvc`
-in a general case;
-* *short description* - short description of the patch;
-* *long description* - If needed, longer message describing the patch in more
-details;
-* *github issue id* - An id of the github issue that this patch is addressing;
+- *component* - name of a component that this patch is affecting. Use `dvc` in a
+  general case;
+- *short description* - short description of the patch;
+- *long description* - If needed, longer message describing the patch in more
+  details;
+- *github issue id* - An id of the github issue that this patch is addressing;
 
 Example:
 
@@ -160,8 +164,3 @@ Example:
 
   Fixes #123
 ```
-
-## Code style guide
-
-We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and are 
-checking that our code is formated with [black](https://github.com/ambv/black).
