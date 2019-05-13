@@ -30,7 +30,7 @@ Let's first create an output that is not a metric file:
 
 ```dvc
     $ dvc run -M metrics.tsv \
-              "echo -e 'time\tauc\n2019-02-13\t0.9643' > metrics.tsv"
+              "echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv"
 ```
 This command produces the following metrics file:
 
@@ -56,7 +56,7 @@ If you check the `metrics.tsv.dvc` file, you should see that `metric: true` is
 set:
 
 ```yaml
-    cmd: echo -e 'time\tauc\n2019-02-13\t0.9643' > metrics.tsv
+    cmd: echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv
     md5: 6f910c9000bb03492d1e66035ba8faf6
     outs:
     - cache: false
@@ -76,7 +76,7 @@ Now, let's reset the flag with the `dvc metrics remove` command:
 Let's check the stage file now:
 
 ```yaml
-cmd: echo -e 'time\tauc\n2019-02-13\t0.9643' > metrics.tsv
+cmd: echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv
 md5: 6f910c9000bb03492d1e66035ba8faf6
 outs:
 - cache: false
