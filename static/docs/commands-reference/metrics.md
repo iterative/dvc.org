@@ -80,10 +80,10 @@ selectively extract data out of metric files:
           data/eval.json: 0.624652
 ```
 
-And finally let's remove `data/eval.txt` from project's metrics:
+And finally let's remove `data/eval.json` from project's metrics:
 
 ```dvc
-    $ dvc metrics remove data/eval.txt
+    $ dvc metrics remove data/eval.json
     $ dvc metrics show
 
     Failed to show metrics: No metric files in this repository.
