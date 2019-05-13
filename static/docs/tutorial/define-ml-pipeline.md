@@ -191,8 +191,8 @@ and does some additional work if the command was successful:
    file with meta-information about the pipeline stage, see [DVC File
    Format](/doc/user-guide/dvc-file-format) — in the current working directory.
    By default, DVC assigns a name to the DVC-file based on the first output file
-   name by adding the `.dvc` suffix at the end. This name can be changed by
-   using the `-f` option, for example by specifying `-f extract.dvc`.
+   name, by adding the `.dvc` file extension. This name can be changed by using
+   the `-f` option, for example by specifying `-f extract.dvc`.
 
 Let's take a look at the resulting DVC-file from the above example:
 
@@ -349,8 +349,8 @@ And evaluate the result of the trained model using the test feature matrix:
 ```
 
 The model evaluation step is the last one. To make it a reproducibility goal by
-default we specify DVC-file as `Dvcfile`. This will be discussed in the next
-chapter in more details.
+default we specify a DVC-file named `Dvcfile`. This will be discussed in the
+next chapter in more details.
 
 Note that the output file `data/eval.txt` was transformed by DVC into a
 metric file in accordance with the `-M` option.

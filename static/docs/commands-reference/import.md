@@ -90,8 +90,8 @@ to test its current status.
   connection to the remote resource is unstable.
 
 * `-f`, `--file` - specify name of the DVC file it generates. It should be
-  either `Dvcfile` or have a `.dvc` suffix (e.g. `data.dvc`) in order for `dvc`
-  to be able to find it later.
+  either `Dvcfile` or have a `.dvc` file extension (e.g. `data.dvc`) in order
+  for `dvc` to be able to find it later.
 
 * `-h`, `--help` - prints the usage/help message, and exit.
 

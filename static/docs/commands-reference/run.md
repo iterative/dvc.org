@@ -33,7 +33,7 @@ pipeline.
 By default, unless `-f` options is specified, stage file name generated is
 `<file>.dvc` where `<file>` is the file name of the first output (`-o`, `-O`,
 or `-M` option). If neither `-f`, nor outputs (with `-o`, `-O`, `-M` options)
-are specified stage name defaults to `Dvcfile`. 
+are specified, the stage name defaults to `Dvcfile`. 
 
 Since `dvc run` provides a way to build a graph of computations, using
 dependencies and outputs to connect different stages it checks computational
@@ -85,8 +85,8 @@ underlying version control system. See also the difference between `-o` and
 
 * `-f`, `--file` - specify stage file name. By default stage file name generated
 is `<file>.dvc` where `<file>` is file name of the first output (`-o`, `-O`, or
-`-M` option). If neither `-f`, nor outputs (with `-o`, `-O`, `-M`) are specified
-stage name defaults to `Dvcfile`. By default stage file is placed in the same
+`-M` option). If neither `-f`, nor outputs (with `-o`, `-O`, `-M`) are specified,
+the stage name defaults to `Dvcfile`. By default stage file is placed in the same
 directory `dvc run` is executed.  `-f` can be used to change this place, by
 including path into provided value (e.g. `-f stages/stage.dvc`).
 
