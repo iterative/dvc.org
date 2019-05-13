@@ -349,8 +349,8 @@ And evaluate the result of the trained model using the test feature matrix:
 ```
 
 The model evaluation step is the last one. To make it a reproducibility goal by
-default we specify DVC-file as `Dvcfile`. This will be discussed in the next
-chapter in more details.
+default we specify a DVC-file named `Dvcfile`. This will be discussed in the
+next chapter in more details.
 
 Note that the output file `data/eval.txt` was transformed by DVC into a
 metric file in accordance with the `-M` option.

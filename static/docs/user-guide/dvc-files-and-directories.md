@@ -16,9 +16,9 @@ special DVC internal files and directories:
   directories of DVC repositories will only contain links to the data files
   in the cache).
 
-  **Note:** DVC includes the cache directory to `.gitignore` file during the
-  initialization. And no data files (with actual content) will ever be pushed to
-  Git repository, only dvc-files that are needed to reproduce them.
+  **Note:** DVC includes the cache directory in `.gitignore` during the
+  initialization. No data files (with actual content) will ever be pushed to the
+  Git repository, only DVC-files that are needed to reproduce them.
 
 * `.dvc/state` - this file is used for optimization. It is a SQLite db, that
   contains checksums for files in a project with respective timestamps

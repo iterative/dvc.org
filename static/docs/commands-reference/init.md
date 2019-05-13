@@ -28,8 +28,7 @@ populated and added to Git.
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`
 and `.gitignore` files and `cache` directory. These files and directories are
-hidden from the user in general and the user does not interact with these files
-directly.
+hidden from the user generally and are not meant to be manipulated directly.
 
 `.dvc/cache directory` is one of the most important parts of any DVC
 repositories. The directory contains all content of data files. The most

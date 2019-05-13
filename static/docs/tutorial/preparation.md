@@ -68,9 +68,9 @@ directory to create DVC metafiles and directories.
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`
 and `.gitignore` files and `cache` directory. These files and directories are
-hidden from the user in general and the user does not interact with these files
-directly. However, we describe some DVC internals below for a better
-understanding of how it works.
+hidden from the user generally and are not meant to be manipulated directly.
+However, we describe some DVC internals below for a better understanding of how
+it works.
 
 ```dvc
     $ dvc init
