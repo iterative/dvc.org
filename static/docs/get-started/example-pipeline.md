@@ -83,7 +83,7 @@ control:
 
 ### Expand to learn more about DVC internals
 
-`dvc init` created a new directory `example\.dvc` with `config`, `.gitignore`
+`dvc init` created a new directory `example/.dvc/` with `config`, `.gitignore`
 files and `cache` directory. These files and directories are hidden from a user
 in general and a user does not interact with these files directly. Check
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
@@ -103,8 +103,8 @@ When we run `dvc add Posts.xml.zip` the following happens. DVC creates an
 This is the file that should be committed into a version control system instead
 of the data file itself.
 
-Actual data file `Posts.xml.zip` is linked into the `.dvc\cache` directory,
-under the `.dvc\cache\ce\68b98d82545628782c66192c96f2d2` name and is added to
+Actual data file `Posts.xml.zip` is linked into the `.dvc/cache` directory,
+under the `.dvc/cache/ce/68b98d82545628782c66192c96f2d2` name and is added to
 `.gitignore`. Even if you remove it in the workspace, or checkout a different
 branch/commit the data is not lost if a corresponding DVC file is committed.
 It's enough to run `dvc checkout` or `dvc pull` to restore data files.
@@ -163,7 +163,7 @@ that DVC files describe, we can restore the full chain (DAG) of commands we need
 to apply. This is important when you run `dvc repro` to reproduce the final or
 intermediate result.
 
-Second, you should see by now that the actual data is stored in the `.dvc\cache`
+Second, you should see by now that the actual data is stored in the `.dvc/cache`
 directory, each file having a name in a form of an md5 hash. This cache is
 similar to Git's internal objects store but made specifically to handle large
 data files. DVC is using reflinks, hardlinks and other optimizations to manage

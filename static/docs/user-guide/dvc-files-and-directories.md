@@ -1,7 +1,7 @@
 # DVC Files and Directories
 
-Once installed, DVC populates its installation folder per repository
-(hereafter referred to as `.dvc`):
+Once initialized in a project, DVC populates its installation directory (`.dvc/`) with
+special DVC internal files and directories:
 
 * `.dvc/config` - this is a configuration file.
   The config file can be edited by hand or with a special command: `dvc config`.

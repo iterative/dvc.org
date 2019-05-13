@@ -21,7 +21,7 @@ directories:
     $ git commit -m "initialize DVC"
 ```
 
-After DVC initialization, a new directory `.dvc` will be created with `config`
+After DVC initialization, a new directory `.dvc/` will be created with `config`
 and `.gitignore` files and `cache` directory. These files and directories are
 hidden from the user in general and the user does not interact with these files
 directly.
