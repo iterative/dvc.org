@@ -40,8 +40,8 @@ Okay, let's first download the code and set up a Git repository. This step has
 nothing to do with DVC so far, it's just a simple preparation:
 
 ```dvc
-    $ git clone https://github.com/iterative/example-versioning.git
-    $ cd example-versioning
+$ git clone https://github.com/iterative/example-versioning.git
+$ cd example-versioning
 ```
 
 This command pulls a repository with a single script `train.py` that runs the
@@ -51,15 +51,15 @@ training.
 your global packages clean and untouched:
 
 ```dvc
-    $ virtualenv .env
-    $ source .env/bin/activate
-    $ echo ".env/" >> .gitignore
+$ virtualenv .env
+$ source .env/bin/activate
+$ echo ".env/" >> .gitignore
 ```
 
 Install required dependencies:
 
 ```dvc
-    $ pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 **Note!** As of October 2018, Tensorflow does not support Python 3.7. Model
@@ -99,9 +99,9 @@ install `wget` and `tar` with the following command in the `Command Prompt`:
 </details>
 
 ```dvc
-    $ wget https://dvc.org/s3/examples/versioning/data.zip
-    $ unzip data.zip
-    $ rm -f data.zip
+$ wget https://dvc.org/s3/examples/versioning/data.zip
+$ unzip data.zip
+$ rm -f data.zip
 ```
 
 This command downloads and extracts our initial dataset - **1000 labeled
@@ -133,7 +133,7 @@ it's a 43 MB dataset, with a directory structure like this:
 Let's capture the current state of this dataset with `dvc add`:
 
 ```dvc
-    $ dvc add data
+$ dvc add data
 ```
 
 This command should be used instead of `git add` on files or directories that
@@ -152,17 +152,17 @@ metrics history. The simplest way to capture the current version of the model is
 to use `dvc add` again:
 
 ```dvc
-    $ python train.py
-    $ dvc add model.h5
+$ python train.py
+$ dvc add model.h5
 ```
 
 The recommended way of capturing script outputs is using `dvc run`. We'll touch
 it a little bit later. For now, let's commit the current state:
 
 ```dvc
-    $ git add .gitignore model.h5.dvc data.dvc metrics.json
-    $ git commit -m "model first version, 1000 images"
-    $ git tag -a "v1.0" -m "model v1.0, 1000 images"
+$ git add .gitignore model.h5.dvc data.dvc metrics.json
+$ git commit -m "model first version, 1000 images"
+$ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ```
 
 <details>
@@ -187,9 +187,9 @@ Let's imagine that our images dataset is growing, we were able to double it.
 Next command extracts 500 cat and 500 dog images into `data/train`:
 
 ```dvc
-    $ wget https://dvc.org/s3/examples/versioning/new-labels.zip
-    $ unzip new-labels.zip
-    $ rm -f new-labels.zip
+$ wget https://dvc.org/s3/examples/versioning/new-labels.zip
+$ unzip new-labels.zip
+$ rm -f new-labels.zip
 ```
 
 For simplicity we keep the validation dataset the same. Now our dataset has
@@ -221,10 +221,10 @@ For simplicity we keep the validation dataset the same. Now our dataset has
 Of course, we want to leverage these new labels and train the model again.
 
 ```dvc
-    $ dvc add data
-    $ dvc remove model.h5.dvc
-    $ python train.py
-    $ dvc add model.h5
+$ dvc add data
+$ dvc remove model.h5.dvc
+$ python train.py
+$ dvc add model.h5
 ```
 
 Note! `dvc remove` or `dvc unprotect` is required, otherwise `python train.py`
@@ -234,9 +234,9 @@ will overwrite the existing file and may corrupt the cached version. Check this
 Let's commit the second version:
 
 ```dvc
-    $ git add model.h5.dvc data.dvc metrics.json
-    $ git commit -m "model second version, 2000 images"
-    $ git tag -a "v2.0" -m "model v2.0, 2000 images"
+$ git add model.h5.dvc data.dvc metrics.json
+$ git commit -m "model second version, 2000 images"
+$ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
 That's it, we have a second model and dataset saved and pointers to them
@@ -258,8 +258,8 @@ specific data or mode file. Let's consider the full checkout first. It's quite
 straightforward:
 
 ```dvc
-    $ git checkout v1.0
-    $ dvc checkout
+$ git checkout v1.0
+$ dvc checkout
 ```
 
 These commands will restore the working tree to the first snapshot we made -
@@ -272,8 +272,8 @@ the previous dataset only, we can do something like this (make sure that you
 don't have some uncommitted changes in the `data.dvc`):
 
 ```dvc
-    $ git checkout v1.0 data.dvc
-    $ dvc checkout data.dvc
+$ git checkout v1.0 data.dvc
+$ dvc checkout data.dvc
 ```
 
 If you run `git status` you will see that `data.dvc` is modified and currently
@@ -312,12 +312,12 @@ example, you should have noticed, that `train.py` produces binary files (e.g.
 produces other data files, a better way to capture them is to use `dvc run`:**
 
 ```dvc
-    $ dvc remove -p model.h5.dvc
-    $ dvc run -f Dvcfile \
-              -d train.py -d data \
-              -M metrics.json \
-              -o model.h5 -o bottleneck_features_train.npy -o bottleneck_features_validation.npy \
-              python train.py
+$ dvc remove -p model.h5.dvc
+$ dvc run -f Dvcfile \
+          -d train.py -d data \
+          -M metrics.json \
+          -o model.h5 -o bottleneck_features_train.npy -o bottleneck_features_validation.npy \
+          python train.py
 ```
 
 Similar to `dvc add`, `dvc run` creates a single DVC file (`Dvcfile` in this
