@@ -26,5 +26,5 @@ it needs to execute to get the model file.
 modified dependencies or missing outputs and recursively executes this graph
 starting from these stages.
 
-Thus, `dvc run` and `dvc repro` provide a powerful framework for *reproducible
-experiments* and *reproducible projects*.
+Thus, `dvc run` and `dvc repro` provide a powerful framework for _reproducible
+experiments_ and _reproducible projects_.

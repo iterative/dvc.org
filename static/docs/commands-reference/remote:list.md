@@ -4,14 +4,13 @@ Show all available remotes.
 
 See also [add](/doc/commands-reference/remote-add),
 [default](/doc/commands-reference/remote-default),
-[modify](/doc/commands-reference/remote-modify),
-and [remove](/doc/commands-reference/remote-remove) commands to manage data
-remotes.
+[modify](/doc/commands-reference/remote-modify), and
+[remove](/doc/commands-reference/remote-remove) commands to manage data remotes.
 
 ## Synopsis
 
 ```usage
-    usage: dvc remote list [-h] [-q | -v] 
+    usage: dvc remote list [-h] [-q | -v]
                            [--global] [--system] [--local]
 
     List remotes.
@@ -24,16 +23,16 @@ Including names and URLs.
 
 ## Options
 
-* `--global` - save remote configuration to the global config (e.g.
-`~/.config/dvc/config`) instead of `.dvc/config`.
+- `--global` - save remote configuration to the global config (e.g.
+  `~/.config/dvc/config`) instead of `.dvc/config`.
 
-* `--system` - save remote configuration to the system config (e.g.
-`/etc/dvc.config`) instead of `.dvc/config`.
+- `--system` - save remote configuration to the system config (e.g.
+  `/etc/dvc.config`) instead of `.dvc/config`.
 
-* `--local` - list remotes specified in the
-[local](/doc/user-guide/dvc-files-and-directories) configuration file
-(`.dvc/config.local`). Local configuration files stores private settings that
-should not be tracked by Git.
+- `--local` - list remotes specified in the
+  [local](/doc/user-guide/dvc-files-and-directories) configuration file
+  (`.dvc/config.local`). Local configuration files stores private settings that
+  should not be tracked by Git.
 
 ## Examples
 
@@ -54,6 +53,7 @@ project/repository itself.
     $ dvc remote add -d myremote /path/to/remote
     Setting 'myremote' as a default remote.
 ```
+
 And now the list of remotes should look like:
 
 ```dvc

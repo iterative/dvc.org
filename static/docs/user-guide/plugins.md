@@ -19,9 +19,9 @@ to your `~/.vimrc`(to be created if it doesn't exist).
 
 ## IntelliJ IDEs
 
-A community member, [@prihoda](https://github.com/prihoda), maintains a
-plugin for IntelliJ IDEs, it offers a more robust integration than just
-syntax highlighting.
+A community member, [@prihoda](https://github.com/prihoda), maintains a plugin
+for IntelliJ IDEs, it offers a more robust integration than just syntax
+highlighting.
 
 You can download the plugin from
 [JetBrains Plugins repository](https://plugins.jetbrains.com/plugin/11368-dvc-support-poc)

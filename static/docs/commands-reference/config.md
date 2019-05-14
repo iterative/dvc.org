@@ -38,12 +38,12 @@ config file.
   specify private settings in your config, that you don't want to track and
   share through Git.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Available settings and sections
 

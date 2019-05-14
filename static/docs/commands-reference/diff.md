@@ -35,22 +35,22 @@ SCM, for example when `dvc init` was used with the `--no-scm` option
 
 ## Options
 
-* `-t TARGET`, `--target TARGET` - Source path to a data file or directory. If
+- `-t TARGET`, `--target TARGET` - Source path to a data file or directory. If
   not specified, compares all files and directories that are under DVC control
   in the current working space.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples: Previous version of the same branch
 
-For the setup of our examples we can use the steps in our [Get
-Started](/doc/get-started) guide up to the [Add
-Files](/doc/get-started/add-files) section.
+For the setup of our examples we can use the steps in our
+[Get Started](/doc/get-started) guide up to the
+[Add Files](/doc/get-started/add-files) section.
 
 <details>
 
@@ -106,8 +106,8 @@ Git reference.
 We can base this example in the [Experiment Metrics](/doc/get-started/metrics)
 and [Compare Experiments](/doc/get-started/compare-experiments) sections of our
 Get Started guide, which describe different experiments to produce the
-`model.pkl` file. Our sample repository has the
-`bigrams-experiment` and `baseline-experiment`
+`model.pkl` file. Our sample repository has the `bigrams-experiment` and
+`baseline-experiment`
 [tags](https://github.com/iterative/example-get-started/tags) respectively to
 reference these experiments.
 
@@ -125,8 +125,9 @@ and data with the following commands.
 ```
 
 The `-T` flag passed to `dvc fetch` makes sure we have all the data files
-related to all existing tags in the repo. You take a look at the [available
-tags](https://github.com/iterative/example-get-started/tags) of our sample repo.
+related to all existing tags in the repo. You take a look at the
+[available tags](https://github.com/iterative/example-get-started/tags) of our
+sample repo.
 
 </details>
 
@@ -141,21 +142,21 @@ following command.
     -model.pkl with md5 a664896
     +model.pkl with md5 3863d0e
     ...
-````
+```
 
 The output from this command confirms that there's a difference in the
 `model.pkl` file between the 2 Git references we indicated.
 
 ### What about directories?
 
-Unlike Git, DVC features controlling entire directories without having to add each
-individual file. See `dvc add` without `--recursive` for example. `dvc run` can
-also put whole directories under DVC control (when these are specified as
+Unlike Git, DVC features controlling entire directories without having to add
+each individual file. See `dvc add` without `--recursive` for example. `dvc run`
+can also put whole directories under DVC control (when these are specified as
 command dependencies or outputs).
 
 We can use `dvc diff` to check for changes in a directory by specifying the
-directory as the target (`-t`). (Note that we skip the `b_ref` argument
-this time, which defaults to `HEAD`.)
+directory as the target (`-t`). (Note that we skip the `b_ref` argument this
+time, which defaults to `HEAD`.)
 
 ```dvc
     $ dvc diff -t data/features baseline-experiment
@@ -171,15 +172,16 @@ this time, which defaults to `HEAD`.)
 
 ## Examples: Confirming that a target has not changed
 
-Let's use our sample repo once again, which has several [available
-tags](https://github.com/iterative/example-get-started/tags) for conveniency.
-The `5-preparation` tag corresponds to the [Connect Code and
-Data](https://dvc.org/doc/get-started/connect-code-and-data) section of our Get
-Started guide, in which the `dvc run` command is used to create the
-`prepare.dvc` stage. The output of this stage is the `data/prepared` directory.
+Let's use our sample repo once again, which has several
+[available tags](https://github.com/iterative/example-get-started/tags) for
+conveniency. The `5-preparation` tag corresponds to the
+[Connect Code and Data](https://dvc.org/doc/get-started/connect-code-and-data)
+section of our Get Started guide, in which the `dvc run` command is used to
+create the `prepare.dvc` stage. The output of this stage is the `data/prepared`
+directory.
 
 ```dvc
-    $ dvc diff -t data/prepared 5-preparation 
+    $ dvc diff -t data/prepared 5-preparation
     dvc diff from 3deeec1 to 8c1169d
 
     diff for 'data/prepared'

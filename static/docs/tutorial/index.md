@@ -5,11 +5,11 @@ tool.
 
 Today the data science community is still lacking good practices for organizing
 their projects and effectively collaborating. ML algorithms and methods are no
-longer simple *tribal knowledge* but are still difficult to implement, manage
+longer simple _tribal knowledge_ but are still difficult to implement, manage
 and reuse.
 
 > One of the biggest challenges in reusing, and hence the managing of ML
-projects, is its reproducibility.
+> projects, is its reproducibility.
 
 DVC has been built to address the reproducibility.
 

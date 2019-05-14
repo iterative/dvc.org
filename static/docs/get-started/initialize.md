@@ -26,9 +26,9 @@ and `.gitignore` files and `cache` directory. These files and directories are
 hidden from the user generally and are not meant to be manipulated directly.
 
 > See `dvc init` if you want to get more details about the initialization
-process, and [DVC Files and
-Directories](/doc/user-guide/dvc-files-and-directories) to learn about the DVC
-internal file and directories structure.
+> process, and
+> [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
+> learn about the DVC internal file and directories structure.
 
 The last command, `git commit`, puts the `.dvc/config` and `.dvc/.gitignore`
 files (DVC internals) under Git control.

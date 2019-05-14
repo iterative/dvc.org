@@ -119,9 +119,9 @@ This is how `prepare.dvc` looks like internally:
 ```
 
 > `dvc run` is just the first of a set of DVC command required to generate a
-[pipeline](/doc/get-started/pipeline) computational graph, or in other words,
-instructions on how to build a ML model (data file) from previous data files (or
-directories).
+> [pipeline](/doc/get-started/pipeline) computational graph, or in other words,
+> instructions on how to build a ML model (data file) from previous data files
+> (or directories).
 
 We would recommend to try to read a few next chapters first, before switching to
 other documents. Hopefully, `dvc run` and `dvc repro` will make more sense after
@@ -143,8 +143,8 @@ into. The script creates two files in it – that will be used later to generate
 features, train and evaluate the model.
 
 And, the last line, `python src/prepare.py data/data.xml`, specifies a command
-to run. This command is saved to the generated DVC file and required by `dvc
-repro`.
+to run. This command is saved to the generated DVC file and required by
+`dvc repro`.
 
 </details>
 
