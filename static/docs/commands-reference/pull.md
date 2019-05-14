@@ -1,7 +1,7 @@
 # pull
 
 Downloads missing files and directories from
-[remote storage]('doc/commands-reference/remote') to the local cache based on
+[remote storage](/doc/commands-reference/remote) to the local cache based on
 DVC files in the workspace. Then links the downloaded files into the workspace.
 
 ## Synopsis

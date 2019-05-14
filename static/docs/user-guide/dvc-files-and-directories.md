@@ -1,7 +1,7 @@
 # DVC Files and Directories
 
-Once installed, DVC populates its installation folder per repository
-(hereafter referred to as `.dvc`):
+Once initialized in a project, DVC populates its installation directory (`.dvc/`) with
+special DVC internal files and directories:
 
 * `.dvc/config` - this is a configuration file.
   The config file can be edited by hand or with a special command: `dvc config`.
@@ -16,9 +16,9 @@ Once installed, DVC populates its installation folder per repository
   directories of DVC repositories will only contain links to the data files
   in the cache).
 
-  **Note:** DVC includes the cache directory to `.gitignore` file during the
-  initialization. And no data files (with actual content) will ever be pushed to
-  Git repository, only dvc-files that are needed to reproduce them.
+  **Note:** DVC includes the cache directory in `.gitignore` during the
+  initialization. No data files (with actual content) will ever be pushed to the
+  Git repository, only DVC-files that are needed to reproduce them.
 
 * `.dvc/state` - this file is used for optimization. It is a SQLite db, that
   contains checksums for files in a project with respective timestamps

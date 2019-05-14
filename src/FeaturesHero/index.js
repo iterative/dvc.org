@@ -4,8 +4,8 @@ import styled from 'styled-components'
 export default ({}) => (
   <FeaturesHero>
     <Heading>
-      DVC brings agility, reproducibility, and collaboration into your existing
-      data science workflow
+      DVC brings agility, reproducibility, and collaboration into your existing data science
+      workflow
     </Heading>
   </FeaturesHero>
 )

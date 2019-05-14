@@ -55,6 +55,7 @@
       "external-outputs.md",
       "development.md",
       "contributing.md",
+      "contributing-documentation.md",
       "update-tracked-file.md",
       "autocomplete.md",
       "plugins.md",
@@ -68,6 +69,7 @@
       "external-dependencies.md": "External Dependencies",
       "external-outputs.md": "External Outputs",
       "contributing.md": "Contributing",
+      "contributing-documentation.md": "Contributing Documentation",
       "update-tracked-file.md": "Update a Tracked File",
       "autocomplete.md": "Shell Autocomplete",
       "plugins.md": "Plugins & Integrations",
@@ -113,6 +115,7 @@
       [
         "remote.md",
         "remote:add.md",
+        "remote:default.md",
         "remote:list.md",
         "remote:modify.md",
         "remote:remove.md"
@@ -123,7 +126,8 @@
       "run.md",
       "status.md",
       "unlock.md",
-      "unprotect.md"
+      "unprotect.md",
+      "version.md"
     ],
     "labels": {
       "run.md": "run",
@@ -141,6 +145,7 @@
       "config.md": "config",
       "remote.md": "remote",
       "remote:add.md": "remote add",
+      "remote:default.md": "remote default",
       "remote:list.md": "remote list",
       "remote:modify.md": "remote modify",
       "remote:remove.md": "remote remove",
@@ -162,7 +167,8 @@
       "unprotect.md": "unprotect",
       "cache.md": "cache",
       "cache:dir.md": "cache dir",
-      "commit.md": "commit"
+      "commit.md": "commit",
+      "version.md": "version"
     }
   },
   {

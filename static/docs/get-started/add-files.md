@@ -16,15 +16,15 @@ link as`(Chrome) or `Save object as`(Firefox).
 </details>
 
 ```dvc
-    $ mkdir data
-    $ wget https://dvc.org/s3/get-started/data.xml -O data/data.xml
+$ mkdir data
+$ wget https://dvc.org/s3/get-started/data.xml -O data/data.xml
 ```
 
 To take a file (or a directory) under DVC control just run `dvc add`, it accepts
 any **file** or a **directory**:
 
 ```dvc
-    $ dvc add data/data.xml
+$ dvc add data/data.xml
 ```
 
 DVC stores information about your data file in a special `.dvc` file, that has a
@@ -32,8 +32,8 @@ human-readable [description](/doc/user-guide/dvc-file-format) and can be
 committed to Git to track versions of your file:
 
 ```dvc
-    $ git add data/.gitignore data/data.xml.dvc
-    $ git commit -m "add source data to DVC"
+$ git add data/.gitignore data/data.xml.dvc
+$ git commit -m "add source data to DVC"
 ```
 
 <details>
@@ -44,9 +44,9 @@ You can see that actual data file has been moved to the `.dvc/cache` directory
 (usually hardlink or reflink is created, so no physical copying is happening).
 
 ```dvc
-    $ ls -R .dvc/cache
-        .dvc/cache/a3:
-        04afb96060aad90176268345e10355
+$ ls -R .dvc/cache
+    .dvc/cache/a3:
+    04afb96060aad90176268345e10355
 ```
 
 where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file.

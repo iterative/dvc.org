@@ -3,9 +3,8 @@ import ReactPopover from 'react-popover'
 import { injectGlobal } from 'styled-components'
 
 class Popover extends Component {
-
   constructor() {
-    super();
+    super()
     this.state = {
       isOpen: false
     }
@@ -13,38 +12,35 @@ class Popover extends Component {
 
   componentDidMount() {
     if (this.trigger) {
-      this.trigger.addEventListener('click', this.togglePopover);
+      this.trigger.addEventListener('click', this.togglePopover)
     }
   }
-  
+
   componentWillUnmount() {
     if (this.trigger) {
-      this.trigger.removeEventListener('click', this.togglePopover);
+      this.trigger.removeEventListener('click', this.togglePopover)
     }
   }
 
   togglePopover = () => {
-    this.setState(prevState => ({ isOpen: !prevState.isOpen }));
+    this.setState(prevState => ({ isOpen: !prevState.isOpen }))
   }
 
-  closePopover = () => this.setState({ isOpen: false });
+  closePopover = () => this.setState({ isOpen: false })
 
   render() {
-    const { children, ...rest } = this.props;
-    const { isOpen } = this.state;
+    const { children, ...rest } = this.props
+    const { isOpen } = this.state
 
     return (
       <ReactPopover isOpen={isOpen} onOuterAction={this.closePopover} {...rest}>
-        <div ref={ref => this.trigger = ref}>
-          {children}
-        </div>
+        <div ref={ref => (this.trigger = ref)}>{children}</div>
       </ReactPopover>
     )
   }
 }
 
-export default Popover;
-
+export default Popover
 
 injectGlobal`
   .Popover {

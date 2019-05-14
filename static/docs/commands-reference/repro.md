@@ -19,8 +19,8 @@ dependencies to find only those that have to be rerun.
 
 ## Description
 
-DVC file (`target`) can have any name followed by the `.dvc` suffix. If file
-name is omitted, `Dvcfile` will be used by default.
+DVC file (`target`) can have any name followed by the `.dvc` file extension. If
+file name is omitted, `Dvcfile` will be used by default.
 
 `dvc repro` provides an interface to rerun the commands in the computational
 graph (a.k.a. pipeline) defined by the stage files in the current workspace. By

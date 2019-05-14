@@ -6,13 +6,13 @@ the previous version of the data set if it was changed at some point?
 
 The answer is the `dvc checkout` command, and we already touched briefly the
 process of switching between different data versions in the
-[Experiments]('/doc/get-started/experiments') step of this get started guide.
+[Experiments](/doc/get-started/experiments) step of this get started guide.
 
 Let's say we want to get the previous `model.pkl` file. The short answer is:
 
 ```dvc
-    $ git checkout baseline-experiment train.dvc
-    $ dvc checkout train.dvc
+$ git checkout baseline-experiment train.dvc
+$ dvc checkout train.dvc
 ```
 
 These two commands will bring the previous model file to its place in the
@@ -44,8 +44,8 @@ To fully restore the previous experiment we just run `git checkout` and
 `dvc checkout` without specifying a target:
 
 ```dvc
-    $ git checkout baseline-experiment
-    $ dvc checkout
+$ git checkout baseline-experiment
+$ dvc checkout
 ```
 
 Read `dvc checkout` command reference and a dedicated data versioning

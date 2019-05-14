@@ -3,7 +3,8 @@
 Add a new data remote. Depending on your storage type you might need to run `dvc
 remote modify` to provide credentials and/or configure other remote parameters.
 
-See also [list](/doc/commands-reference/remote-list),
+See also [default](/doc/commands-reference/remote-default),
+[list](/doc/commands-reference/remote-list),
 [modify](/doc/commands-reference/remote-modify),
 and [remove](/doc/commands-reference/remote-remove) commands to manage data
 remotes.
@@ -11,7 +12,7 @@ remotes.
 ## Synopsis
 
 ```usage
-    usage: dvc remote add [-h] [-q | -v] [-d]
+    usage: dvc remote add [-h] [-q | -v] [-d] [-f]
                           [--global] [--system] [--local]
                           name url
 
@@ -24,9 +25,9 @@ remotes.
 
 `name` and `url` are required. `url` specifies a location to store your data. It
 could be S3 path, SSH path, Azure, Google cloud, local directory, etc - see more
-examples below. If `url1` is a local relative path, it will be resolved relative
+examples below. If `url` is a local relative path, it will be resolved relative
 to the current directory and saved to config relative to the config file
-location(see LOCAL example below). Whenever possible DVC will create a remote
+location (see LOCAL example below). Whenever possible DVC will create a remote
 directory if does not exists yet. It won't create an S3 bucket though and will
 rely on default access settings.
 
@@ -73,33 +74,40 @@ specific settings in your config, that you don't want to track and share through
 using this remote by default to save or retrieve data files unless `-r` option
 is specified for them.
 
+* `-f`, `--force` - to overwrite existing remote with new `url` value.
+
 <details>
 
-### Click for LOCAL example
+### Click for a local remote example
+
+> While the term may seem contradictory, it doesn't have to be.
+The "local" part refers to the machine where the project is stored, so it can be
+any directory accessible to the same system. The "remote" part refers
+specifically to the project/repository itself.
+
+Using an absolute path (recommended):
+
+```dvc
+    $ dvc remote add myremote /tmp/my-dvc-storage
+    $ cat .dvc/config
+      ...
+      ['remote "myremote"']
+          url = /tmp/my-dvc-storage
+      ...
+    $ # NOTE: absolute path `/tmp/my-dvc-storage` saved as is.
+```
 
 Using a relative path:
 
 ```dvc
-    $ dvc remote add myremote ../dir
+    $ dvc remote add myremote ../my-dvc-storage
     $ cat .dvc/config
       ...
       ['remote "myremote"']
-          url = ../../dir
+          url = ../../my-dvc-storage
       ...
-    $ # NOTE: `../dir` has been resolved relative to `.dvc/config` location,
-    $ # resulting in `../../dir`.
-```
-
-Using an absolute path:
-
-```dvc
-    $ dvc remote add myremote /path/to/dir
-    $ cat .dvc/config
-      ...
-      ['remote "myremote"']
-          url = /path/to/dir
-      ...
-    $ # NOTE: absolute path `/path/to/dir` saved as is.
+    $ # NOTE: `../my-dvc-storage` has been resolved relative to `.dvc/config` location,
+    $ # resulting in `../../my-dvc-storage`.
 ```
 
 </details>
@@ -136,7 +144,7 @@ So, make sure you have the following permissions enabled:
 
 <details>
 
-### Click for an S3 API compatible storage
+### Click for an S3 API compatible storage example
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://minio.io/), [Wasabi](https://wasabi.com/),
@@ -243,7 +251,7 @@ container doesn't already exist, it will be created automatically.
 
 ## Examples
 
-Add AWS S3 _default_ (via `-d` option )remote and modify its region:
+Add AWS S3 _default_ (via `-d` option) remote and modify its region:
 
 ```dvc
     $ dvc remote add -d myremote s3://mybucket/myproject
@@ -256,7 +264,8 @@ DVC config file would look like (run `cat .dvc/config`):
 
 ```ini
     ['remote "myremote"']
-    url = /path/to/remote
+    url = s3://mybucket/myproject
+    region = us-east-2
     [core]
     remote = myremote
 ```
@@ -268,3 +277,18 @@ And list of remotes like this:
 
     myremote	s3://mybucket/myproject
 ```
+
+You can overwrite existing remote using `-f` with `dvc remote add` as under:
+
+```dvc
+    $ dvc remote add -f myremote s3://mybucket/mynewproject
+```
+
+List remotes to view the updated remote:
+
+```dvc
+    $ dvc remote list
+
+    myremote	s3://mybucket/mynewproject
+```
+

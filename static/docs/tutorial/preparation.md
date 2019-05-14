@@ -29,7 +29,7 @@ to download `code.zip`.
     $ wget https://dvc.org/s3/so/code.zip
     $ unzip code.zip -d code && rm -f code.zip
     $ git add code/
-    $ git commit -m 'download code'
+    $ git commit -m "download code"
 ```
 
 (Optional) It's highly recommended to initialize a virtual environment to keep
@@ -38,7 +38,7 @@ your global packages clean and untouched:
 ```dvc
     $ virtualenv .env
     $ source .env/bin/activate
-    $ echo '.env/' >> .git/info/exclude
+    $ echo ".env/" >> .git/info/exclude
 ```
 
 Install the code requirements:
@@ -66,11 +66,11 @@ Python:
 DVC works on top of Git repositories. You run DVC initialization in a repository
 directory to create DVC metafiles and directories.
 
-After DVC initialization, a new directory `.dvc` will be created with `config`
+After DVC initialization, a new directory `.dvc/` will be created with `config`
 and `.gitignore` files and `cache` directory. These files and directories are
-hidden from the user in general and the user does not interact with these files
-directly. However, we describe some DVC internals below for a better
-understanding of how it works.
+hidden from the user generally and are not meant to be manipulated directly.
+However, we describe some DVC internals below for a better understanding of how
+it works.
 
 ```dvc
     $ dvc init
@@ -88,7 +88,7 @@ understanding of how it works.
     state
     lock
 
-    $ git commit -m 'init DVC'
+    $ git commit -m "init DVC"
 ```
 
 The `.dvc/cache` directory is one of the most important parts of any DVC

@@ -15,7 +15,7 @@ dependencies in a Git repository:
               python cnn_train.py --seed 20180227 --epoch 20 \
               input.csv model.pkl results.csv
     $ git add model.pkl.dvc
-    $ git commit -m  'Train CNN. 20 epochs.'
+    $ git commit -m  "Train CNN. 20 epochs."
 ```
 
 3. DVC is programming language agnostic. R command example:
@@ -23,7 +23,7 @@ dependencies in a Git repository:
 ```dvc
     $ dvc run -d result.csv -o plots.jpg Rscript plot.R result.csv plots.jpg
     $ git add plots.jpg.dvc
-    $ git commit -m 'CNN plots'
+    $ git commit -m "CNN plots"
 ```
 
 4. DVC can reproduce a pipeline with respect to the pipeline's dependencies:

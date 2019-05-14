@@ -54,7 +54,7 @@ metrics show`. Accepted value depends on the metric file type (`-t` option):
 Let's first create an output that is not a metric file:
 
 ```dvc
-    $ dvc run -o metrics.txt 'echo 0.9643 > metrics.txt'
+    $ dvc run -o metrics.txt "echo 0.9643 > metrics.txt"
 ```
 
 The content of `metrics.txt.dvc` should look like (note the `mertic: false`

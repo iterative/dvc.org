@@ -2,10 +2,10 @@
 
 Now, that your data files are managed by DVC (see
 [Add Files](/doc/get-started/add-files)), you can push them from your repository
-to the default [remote](/doc/commands-reference/remote) storage:
+to the default [remote](/doc/commands-reference/remote) storage*:
 
 ```dvc
-    $ dvc push
+$ dvc push
 ```
 
 The same way as with Git remote, it ensures that your data files and your models
@@ -16,6 +16,9 @@ Usually, you run it along with `git commit` and `git push` to save changes to
 `.dvc` files to Git.
 
 See `dvc push` for more details and options for this command.
+
+> \*As noted in the DVC [configuration](/doc/get-started/configure) chapter, we
+> are using a **local remote** in this guide for educational purposes.
 
 <details>
 

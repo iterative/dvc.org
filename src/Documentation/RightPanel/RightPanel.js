@@ -25,25 +25,23 @@ export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
       ))}
 
     <br />
-    <Description>
-      Found an issue? Let us know or fix it:
-    </Description>
+    <Description>Found an issue? Let us know or fix it:</Description>
 
     <Link href={githubLink} target="_blank">
       <GithubButton>
-        <i />Edit on Github
+        <i />
+        Edit on Github
       </GithubButton>
     </Link>
 
     <br />
     <br />
-    <Description>
-      Have a question? Join our chat, we will help you:
-    </Description>
+    <Description>Have a question? Join our chat, we will help you:</Description>
 
     <Link href="/chat" target="_blank">
       <DiscordButton>
-        <i />Discord Chat
+        <i />
+        Discord Chat
       </DiscordButton>
     </Link>
   </Wrapper>

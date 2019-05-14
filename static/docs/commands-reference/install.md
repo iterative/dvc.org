@@ -216,7 +216,7 @@ If we simply edit one of the code files:
 ```dvc
     $ vi src/featurization.py
 
-    $ git commit -a -m 'modified featurization'
+    $ git commit -a -m "modified featurization"
 
     featurize.dvc:
         changed deps:
@@ -245,7 +245,7 @@ the `dvc repro` command.
      M src/featurization.py
      M train.dvc
 
-    $ git commit -a -m 'updated data after modified featurization'
+    $ git commit -a -m "updated data after modified featurization"
 
     Pipeline is up to date. Nothing to reproduce.
 

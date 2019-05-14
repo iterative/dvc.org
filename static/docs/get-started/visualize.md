@@ -11,74 +11,74 @@ command supports (e.g. `.dot` files that can be used then in other tools).
 ## Stages
 
 ```dvc
-    $ dvc pipeline show --ascii train.dvc
-          +-------------------+
-          | data/data.xml.dvc |
-          +-------------------+
-                    *
-                    *
-                    *
-             +-------------+
-             | prepare.dvc |
-             +-------------+
-                    *
-                    *
-                    *
-            +---------------+
-            | featurize.dvc |
-            +---------------+
-                    *
-                    *
-                    *
-            .---------------.
-            | model.pkl.dvc |
-            `---------------'
+$ dvc pipeline show --ascii train.dvc
+     +-------------------+
+     | data/data.xml.dvc |
+     +-------------------+
+               *
+               *
+               *
+        +-------------+
+        | prepare.dvc |
+        +-------------+
+               *
+               *
+               *
+       +---------------+
+       | featurize.dvc |
+       +---------------+
+               *
+               *
+               *
+       .---------------.
+       | model.pkl.dvc |
+       `---------------'
 ```
 
 ## Commands
 
 ```dvc
-    $ dvc pipeline show --ascii train.dvc --commands
-                +-------------------------------------+
-                | python src/prepare.py data/data.xml |
-                +-------------------------------------+
-                                *
-                                *
-                                *
-        +---------------------------------------------------------+
-        | python src/featurization.py data/prepared data/features |
-        +---------------------------------------------------------+
-                                *
-                                *
-                                *
-                +---------------------------------------------+
-                | python src/train.py data/features model.pkl |
-                +---------------------------------------------+
+$ dvc pipeline show --ascii train.dvc --commands
+          +-------------------------------------+
+          | python src/prepare.py data/data.xml |
+          +-------------------------------------+
+                          *
+                          *
+                          *
+   +---------------------------------------------------------+
+   | python src/featurization.py data/prepared data/features |
+   +---------------------------------------------------------+
+                          *
+                          *
+                          *
+          +---------------------------------------------+
+          | python src/train.py data/features model.pkl |
+          +---------------------------------------------+
 ```
 
 ## Outputs
 
 ```dvc
-    $ dvc pipeline show --ascii train.dvc --outs
-                +---------------+
-                | data/data.xml |
-                +---------------+
-                        *
-                        *
-                        *
-                +---------------+
-                | data/prepared |
-                +---------------+
-                        *
-                        *
-                        *
-                +---------------+
-                | data/features |
-                +---------------+
-                        *
-                        *
-                        *
-                  +-----------+
-                  | model.pkl |
-                  +-----------+
+$ dvc pipeline show --ascii train.dvc --outs
+          +---------------+
+          | data/data.xml |
+          +---------------+
+                  *
+                  *
+                  *
+          +---------------+
+          | data/prepared |
+          +---------------+
+                  *
+                  *
+                  *
+          +---------------+
+          | data/features |
+          +---------------+
+                  *
+                  *
+                  *
+            +-----------+
+            | model.pkl |
+            +-----------+
 ```

@@ -3,6 +3,7 @@
 Modify remote settings.
 
 See also [add](/doc/commands-reference/remote-add),
+[default](/doc/commands-reference/remote-default),
 [list](/doc/commands-reference/remote-list),
 and [remove](/doc/commands-reference/remote-remove) commands to manage data
 remotes.
@@ -11,8 +12,8 @@ remotes.
 
 ```usage
     usage: dvc remote modify [-h] [-q | -v] [-u]
-                      [--global] [--system] [--local]
-                      name option [value]
+                             [--global] [--system] [--local]
+                             name option [value]
 
     positional arguments:
       name           Name of the remote
@@ -53,7 +54,7 @@ By default DVC expects your AWS CLI is already
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could use the following options:
 
-* `region` - change AWS S3 remote region::
+* `region` - change AWS S3 remote region:
 
   ```dvc
     $ dvc remote modify myremote region us-east-2
@@ -176,7 +177,8 @@ For more information about the variables DVC supports, please visit
 
     1) `user` specified in one of the dvc configs;
     2) `user` specified in the url(e.g. `ssh://user@example.com/path`);
-    3) current user;
+    3) `user` specified in `~/.ssh/config` for remote host;
+    4) current user;
 
   ```dvc
     $ dvc remote modify myremote user myuser
@@ -187,7 +189,8 @@ For more information about the variables DVC supports, please visit
 
     1) `port` specified in one of the dvc configs;
     2) `port` specified in the url(e.g. `ssh://example.com:1234/path`);
-    3) default ssh port 22;
+    3) `port` specified in `~/.ssh/config` for remote host;
+    4) default ssh port 22;
 
   ```dvc
     $ dvc remote modify myremote port 2222
@@ -232,7 +235,7 @@ For more information about the variables DVC supports, please visit
 Let's first set up a _default_ S3 remote:
 
 ```dvc
-    $ dvc remote add -d myremote s3://path/to/dir
+    $ dvc remote add -d myremote s3://mybucket/storage
 
     Setting 'myremote' as a default remote.
 ```
@@ -247,7 +250,7 @@ Now the config file should look like (run `cat .dvc/config`):
 
 ```ini
     ['remote "myremote"']
-    url = s3://mybucket/myproject
+    url = s3://mybucket/storage
     endpointurl = object-storage.example.com
     [core]
     remote = myremote

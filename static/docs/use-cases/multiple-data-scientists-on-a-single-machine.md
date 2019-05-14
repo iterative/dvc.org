@@ -66,7 +66,7 @@ cleaning up the data:
     $ dvc add raw
     $ dvc run -d raw -o clean ./cleanup.py raw clean
     $ git add raw.dvc clean.dvc
-    $ git commit -m 'cleanup raw data'
+    $ git commit -m "cleanup raw data"
     $ git push
 ```
 
@@ -79,7 +79,7 @@ building the pipeline and process the cleaned up data:
     $ dvc checkout
     $ dvc run -d clean -o processed ./process.py clean process
     $ git add processed.dvc
-    $ git commit -m 'process clean data'
+    $ git commit -m "process clean data"
     $ git push
 ```
 

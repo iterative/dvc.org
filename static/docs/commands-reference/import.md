@@ -90,8 +90,8 @@ to test its current status.
   connection to the remote resource is unstable.
 
 * `-f`, `--file` - specify name of the DVC file it generates. It should be
-  either `Dvcfile` or have a `.dvc` suffix (e.g. `data.dvc`) in order for `dvc`
-  to be able to find it later.
+  either `Dvcfile` or have a `.dvc` file extension (e.g. `data.dvc`) in order
+  for `dvc` to be able to find it later.
 
 * `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -365,7 +365,7 @@ is necessary to now run `dvc repro`.
         git add data.xml.dvc prepare.dvc
 
     $ git add .
-    $ git commit -a -m 'updated data'
+    $ git commit -a -m "updated data"
 
     [master a8d4ce8] updated data
      2 files changed, 6 insertions(+), 6 deletions(-)

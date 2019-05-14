@@ -3,9 +3,7 @@ import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { LightButton } from '../LightButton'
 // syntax highlighter
-import SyntaxHighlighter, {
-  registerLanguage
-} from 'react-syntax-highlighter/light'
+import SyntaxHighlighter, { registerLanguage } from 'react-syntax-highlighter/light'
 import Collapsible from 'react-collapsible'
 import docco from 'react-syntax-highlighter/styles/hljs/docco'
 import python from 'react-syntax-highlighter/languages/hljs/python'
@@ -61,10 +59,11 @@ const HtmlRenderer = props => {
 }
 
 const CodeBlock = ({ value, language }) => {
-  const dvcStyle = Object.assign({}, docco);
+  const dvcStyle = Object.assign({}, docco)
   dvcStyle['hljs-comment'] = { color: '#999' };
   dvcStyle['hljs-meta'] = { color: '#333', fontSize: '14px' };
   dvcStyle['hljs-skipped'] = { userSelect: 'none' };
+  dvcStyle['hljs']['padding'] = '0.5em 0.5em 0.5em 2em'
   dvcStyle['hljs-built_in'] = {
     color: "#0086b3",
     fontWeight: "bold"
@@ -154,17 +153,11 @@ export default class Markdown extends Component {
           astPlugins={[linker()]}
         />
         <NavigationButtons>
-          <Button
-            onClick={() => onFileSelect(files[fileIndex - 1], section)}
-            disabled={!showPrev}
-          >
+          <Button onClick={() => onFileSelect(files[fileIndex - 1], section)} disabled={!showPrev}>
             <i className="prev" />
             <span>Prev</span>
           </Button>
-          <Button
-            onClick={() => onFileSelect(files[fileIndex + 1], section)}
-            disabled={!showNext}
-          >
+          <Button onClick={() => onFileSelect(files[fileIndex + 1], section)} disabled={!showNext}>
             <span>Next</span>
             <i className="next" />
           </Button>

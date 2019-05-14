@@ -1,17 +1,11 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { logEvent } from "../utils/ga";
-
+import { logEvent } from '../utils/ga'
 
 const WatchButton = ({ onClick, disabled }) => (
   <Button onClick={onClick} disabled={disabled}>
     <ButtonIcon>
-      <img
-        src="/static/img/watch_white.svg"
-        alt="Watch video"
-        width={20}
-        height={20}
-      />
+      <img src="/static/img/watch_white.svg" alt="Watch video" width={20} height={20} />
     </ButtonIcon>
     <ButtonInner>
       <Action>Watch video</Action>
@@ -158,7 +152,8 @@ const Button = styled.button`
   }
 
   ${props =>
-    props.disabled && `
+    props.disabled &&
+    `
     background-color: #b0b8c5;
     &:hover {
       background-color: #b0b8c5;

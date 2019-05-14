@@ -1,7 +1,7 @@
 # push
 
 Uploads files and directories under DVC control to the
-[remote storage]('doc/commands-reference/remote').
+[remote storage](/doc/commands-reference/remote).
 
 ## Synopsis
 
