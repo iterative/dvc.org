@@ -38,7 +38,7 @@ let _javascript = function(hljs) {
         className: 'skipped',
       },
       {
-        begin: /^\s\s\s\s(?!(\$|\s))/,
+        begin: /^\s{3,5}(?!(\$|\s))/,
         end: /([^\\]\n)|\Z|\n/,
         className: 'meta',
       },
