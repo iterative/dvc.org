@@ -43,7 +43,7 @@ follow the steps below:
   [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
   repo from GitHub:
   ```dvc
-      $ git clone git@github.com:<username>/dvc.org.git
+  $ git clone git@github.com:<username>/dvc.org.git
   ```
 - Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
   installed.
@@ -56,9 +56,9 @@ follow the steps below:
   installing the required libraries for style checkers. Follow the instructions
   to create one:
   ```dvc
-    $ cd dvc.org
-    $ virtualenv --python python3 .env
-    $ source .env/bin/activate
+  $ cd dvc.org
+  $ virtualenv --python python3 .env
+  $ source .env/bin/activate
   ```
 - Install the style checker's requirements using `pip install -r requirements.txt`.
 - Install coding style pre-commit hook with `pre-commit install`.
@@ -111,17 +111,17 @@ We will review your PR as soon as possible. Thank you for contributing!
 Format:
 
 ```
-    (short description)
+(short description)
 
-    (long description)
+(long description)
 
-    Fixes #(github issue id).
+Fixes #(github issue id).
 ```
 
 Example:
 
 ```
-    Add documentation for `dvc version` command
+Add documentation for `dvc version` command
 
-    Fixes #123
+Fixes #123
 ```
