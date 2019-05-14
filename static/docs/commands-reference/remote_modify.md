@@ -25,7 +25,7 @@ remotes.
 
 Remote `name` and `option` name are required. Option names are remote type
 specific. See below examples and a list of per remote type - AWS S3, Google
-cloud, Azure, SSH, and others.
+cloud, Azure, SSH, ALiyun OSS, and others.
 
 This command modifies a section in the DVC [config file](/doc/user-guide/dvc-files-and-directories).
 Alternatively, `dvc config` or manual editing could be used to change settings.
@@ -228,6 +228,27 @@ For more information about the variables DVC supports, please visit
     $ dvc remote modify myremote user myuser
   ```
 
+</details>
+
+<details>
+
+### Click for Aliyun OSS available options
+
+* `oss_key_id` - oss key id to use to access a remote.
+
+  ```dvc
+    $ dvc remote modify myremote oss_key_id my-key-id
+  ```
+* `oss_key_secret` - oss secret key for authorizing access into a remote.
+
+  ```dvc
+    $ dvc remote modify myremote oss_key_secret my-key-secret
+  ```
+* `oss_endpoint endpoint` - oss endpoint valuesfor  accessing remote container.
+
+  ```dvc
+      $ dvc remote modify myremote oss_endpoint endpoint
+  ```
 </details>
 
 ## Examples

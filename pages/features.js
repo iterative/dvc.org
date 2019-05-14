@@ -43,7 +43,7 @@ export default () => (
           </Icon>
           <Name>Storage agnostic</Name>
           <Description>
-            Use S3, Azure, GCP, SSH, SFTP, rsync or any network-attached storage to store data. The
+            Use S3, Azure, GCP, SSH, Aliyun OSS, SFTP, rsync or any network-attached storage to store data. The
             list of supported protocols is constantly expanding.
           </Description>
         </Feature>
