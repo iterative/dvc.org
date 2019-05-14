@@ -12,7 +12,7 @@ It's now extremely easy for you or anyone in your team to reproduce the result
 end-to-end:
 
 ```dvc
-    $ dvc repro train.dvc
+$ dvc repro train.dvc
 ```
 
 `train.dvc` file internally describes what data files and code we should take

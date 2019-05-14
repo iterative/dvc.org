@@ -6,7 +6,7 @@ There are three ways to install DVC: `pip`, OS-specific package, and Homebrew
 To install DVC from terminal, run:
 
 ```dvc
-    $ pip install dvc
+$ pip install dvc
 ```
 
 > Depending on the [remote storage](/doc/commands-reference/remote) type you
@@ -27,9 +27,9 @@ and `homebrew` repositories:
 ### Expand to install from deb repository (Ubuntu, Debian)
 
 ```dvc
-    $ sudo wget https://dvc.org/deb/dvc.list -O /etc/apt/sources.list.d/dvc.list
-    $ sudo apt-get update
-    $ sudo apt-get install dvc
+$ sudo wget https://dvc.org/deb/dvc.list -O /etc/apt/sources.list.d/dvc.list
+$ sudo apt-get update
+$ sudo apt-get install dvc
 ```
 
 </details>
@@ -40,9 +40,9 @@ and `homebrew` repositories:
 ### Expand to install from rpm repository (Fedora, CentOS)
 
 ```dvc
-    $ sudo wget https://dvc.org/rpm/dvc.repo -O /etc/yum.repos.d/dvc.repo
-    $ sudo yum update
-    $ sudo yum install dvc
+$ sudo wget https://dvc.org/rpm/dvc.repo -O /etc/yum.repos.d/dvc.repo
+$ sudo yum update
+$ sudo yum install dvc
 ```
 
 </details>
@@ -53,12 +53,12 @@ and `homebrew` repositories:
 ### Expand to install via Homebrew (Mac OS)
 
 ```dvc
-    $ brew install iterative/homebrew-dvc/dvc
+$ brew install iterative/homebrew-dvc/dvc
 ```
 or:
 
 ```dvc
-    $ brew cask install iterative/homebrew-dvc/dvc
+$ brew cask install iterative/homebrew-dvc/dvc
 ```
 
 </details>

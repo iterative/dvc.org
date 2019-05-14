@@ -5,7 +5,7 @@ Now, that your data files are managed by DVC (see
 to the default [remote](/doc/commands-reference/remote) storage*:
 
 ```dvc
-    $ dvc push
+$ dvc push
 ```
 
 The same way as with Git remote, it ensures that your data files and your models
