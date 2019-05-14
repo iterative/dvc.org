@@ -18,26 +18,25 @@ visualize a pipeline commands or data files flow instead.
 
 ## Options
 
-* `-c`, `--commands` - show pipeline as a list (graph, if `--ascii` or `--dot`
-option is specified) of commands instead of paths to DVC files.
+- `-c`, `--commands` - show pipeline as a list (graph, if `--ascii` or `--dot`
+  option is specified) of commands instead of paths to DVC files.
 
-* `-o`, `--outs` - show pipeline as a list (graph, if `--ascii` or `--dot`
-option is specified) of stage output files instead of paths to DVC files.
+- `-o`, `--outs` - show pipeline as a list (graph, if `--ascii` or `--dot`
+  option is specified) of stage output files instead of paths to DVC files.
 
-* `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
-list of path to DVC files.
+- `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
+  list of path to DVC files.
 
-* `--dot` - produce a `.dot` files with a DVC pipeline graph. It can be passed
-to third party visualization utilities.
+- `--dot` - produce a `.dot` files with a DVC pipeline graph. It can be passed
+  to third party visualization utilities.
 
-* `--tree` - list dependencies tree like recursive directory listing.
+- `--tree` - list dependencies tree like recursive directory listing.
 
-* `-l`, `--locked` - print locked DVC stages only.
-
+- `-l`, `--locked` - print locked DVC stages only.
 
 ## Examples
 
-* Default mode, show stages `output.dvc` recursively depends on:
+- Default mode, show stages `output.dvc` recursively depends on:
 
 ```dvc
     $ dvc pipeline show output.dvc
@@ -47,7 +46,7 @@ to third party visualization utilities.
     output.dvc
 ```
 
-* The same as previous, but show commands instead of DVC files:
+- The same as previous, but show commands instead of DVC files:
 
 ```dvc
     $ dvc pipeline show output.dvc --commands
@@ -57,7 +56,7 @@ to third party visualization utilities.
     process.py data output
 ```
 
-* Visualize DVC pipeline:
+- Visualize DVC pipeline:
 
 ```dvc
     $ dvc pipeline show eval.txt.dvc --ascii
@@ -102,7 +101,7 @@ to third party visualization utilities.
                    `--------------'
 ```
 
-* List dependencies recursively if graph have tree structure
+- List dependencies recursively if graph have tree structure
 
 ```dvc
     dvc pipeline show e.file.dvc --tree

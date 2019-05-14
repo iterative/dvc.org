@@ -1,6 +1,7 @@
 semi: false
 singleQuote: true
 trailingComma: none
-printWidth: 100
+printWidth: 80
 tabWidth: 2
 useTabs: false
+proseWrap: always

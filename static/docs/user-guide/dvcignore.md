@@ -12,13 +12,13 @@ provide similar functionality as `.gitignore` files provide for `git`.
 
 ## How does it work
 
-* You need to create `.dvcignore` file.
-* Populate it with [patterns](https://git-scm.com/docs/gitignore) that you would
+- You need to create `.dvcignore` file.
+- Populate it with [patterns](https://git-scm.com/docs/gitignore) that you would
   like to ignore.
-* Each line should contain only one pattern.
-* During execution of commands that traverse directories, DVC will ignore
+- Each line should contain only one pattern.
+- During execution of commands that traverse directories, DVC will ignore
   matching paths.
-* Not every operation supports `.dvcignore`. To see current limitations, read
+- Not every operation supports `.dvcignore`. To see current limitations, read
   following paragraph.
 
 ## Current limitations
@@ -75,8 +75,8 @@ Check status:
 		modified:           dir2/data2
 ```
 
-Note, that both data files are displayed as modified
-Create `.dvcignore` file and insert pattern matching one of the files:
+Note, that both data files are displayed as modified Create `.dvcignore` file
+and insert pattern matching one of the files:
 
 ```dvc
     $ echo dir1/* >> .dvcignore
@@ -90,5 +90,6 @@ Check status again:
 	changed outs:
 		modified:           dir2/data2
 ```
+
 Only second file is displayed because DVC ignores `data1.dvc` and `data1` when
 collecting stage files.

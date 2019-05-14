@@ -2,7 +2,7 @@
 
 Now, that your data files are managed by DVC (see
 [Add Files](/doc/get-started/add-files)), you can push them from your repository
-to the default [remote](/doc/commands-reference/remote) storage*:
+to the default [remote](/doc/commands-reference/remote) storage\*:
 
 ```dvc
 $ dvc push

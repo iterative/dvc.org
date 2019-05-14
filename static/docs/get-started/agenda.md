@@ -26,11 +26,11 @@ contrary, DVC is designed to be pretty agnostic of frameworks, languages, etc.
 If you have data files or data sets and/or you produce other data files, models,
 data sets and you want to:
 
-* capture and save those data artifacts the same way we capture code,
-* track and switch between different versions of these artifacts easily,
-* being able to answer the question of how those artifacts or models were built
+- capture and save those data artifacts the same way we capture code,
+- track and switch between different versions of these artifacts easily,
+- being able to answer the question of how those artifacts or models were built
   in the first place,
-* being able to compare them,
-* bring best practices to your team and get everyone on the same page.
+- being able to compare them,
+- bring best practices to your team and get everyone on the same page.
 
 Then you are in a good place! Click the `Next` button below to start ↘.
