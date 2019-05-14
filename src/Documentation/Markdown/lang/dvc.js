@@ -38,6 +38,11 @@ let _javascript = function(hljs) {
         className: 'skipped',
       },
       {
+        begin: /^\s\s\s\s(?!(\$|\s))/,
+        end: /([^\\]\n)|\Z|\n/,
+        className: 'meta',
+      },
+      {
         begin: /\s/,
         end: /([^\\]\n)|\Z|\n/,
         contains: [
@@ -62,19 +67,13 @@ let _javascript = function(hljs) {
                 'help dvc init add import checkout run pull push fetch status repro remove move gc config remote metrics install root lock unlock pipeline destroy unprotect commit cache pkg tag diff',
             }
           },
-
           QUOTE_STRING,
           APOS_STRING,
           VAR,
           hljs.HASH_COMMENT_MODE
         ]
       },
-      hljs.HASH_COMMENT_MODE,
-      {
-        begin: /^\s*[^\s#$]/,
-        end: /\n|\Z/,
-        className: 'meta',
-      }
+      hljs.HASH_COMMENT_MODE
     ],
 
   };
