@@ -9,16 +9,16 @@ If you don't have a directory for your project already, create it now with these
 commands:
 
 ```dvc
-    $ mkdir example-get-started && cd example-get-started
-    $ git init
+$ mkdir example-get-started && cd example-get-started
+$ git init
 ```
 
 Run DVC initialization in a repository directory to create DVC metafiles and
 directories:
 
 ```dvc
-    $ dvc init
-    $ git commit -m "initialize DVC"
+$ dvc init
+$ git commit -m "initialize DVC"
 ```
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`

@@ -3,7 +3,7 @@
 To retrieve data files to your local machine and your project's workspace run:
 
 ```dvc
-    $ dvc pull
+$ dvc pull
 ```
 
 This command retrieves data files that are referenced in _all_ `.dvc` files in
@@ -13,8 +13,8 @@ the current workspace. So, you usually run it after `git clone`, `git pull`, or
 As an easy way to test it:
 
 ```dvc
-    $ rm -f data/data.xml
-    $ dvc pull
+$ rm -f data/data.xml
+$ dvc pull
 ```
 > Note, make sure that the steps described in
 [initialization](/doc/get-started/initialize) and
@@ -25,7 +25,7 @@ repository.
 Alternatively, if you want to retrieve a single dataset or a file:
 
 ```dvc
-    $ dvc pull data.xml.dvc
+$ dvc pull data.xml.dvc
 ```
 
 DVC remotes, `dvc push`, and `dvc pull` provide a basic collaboration workflow,

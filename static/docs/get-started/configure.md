@@ -23,8 +23,8 @@ project/repository itself.
 </details>
 
 ```dvc
-    $ dvc remote add -d myremote /tmp/dvc-storage
-    $ git commit .dvc/config -m "initialize DVC local remote"
+$ dvc remote add -d myremote /tmp/dvc-storage
+$ git commit .dvc/config -m "initialize DVC local remote"
 ```
 > We only use a local remote in this guide for simplicity's sake in following
 > these basic steps as you are learning to use DVC. We realize that for most
@@ -53,7 +53,7 @@ for all remotes.
 For example, to setup an S3 remote we would use something like:
 
 ```dvc
-    $ dvc remote add -d s3remote s3://mybucket/myproject
+$ dvc remote add -d s3remote s3://mybucket/myproject
 ```
 > This command is only shown for informational purposes. No need to actually run
 > it in order to continue with this guide.
