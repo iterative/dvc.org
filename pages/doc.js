@@ -17,6 +17,7 @@ import compact from 'lodash.compact'
 import flatten from 'lodash.flatten'
 import { scroller, animateScroll } from 'react-scroll'
 import 'core-js/fn/array/find-index'
+import $ from 'jquery'
 // styles
 import styled from 'styled-components'
 import { media } from '../src/styles'
@@ -32,17 +33,37 @@ export default class Documentation extends Component {
       markdown: '',
       headings: [],
       pageNotFound: false,
-      isMenuOpen: false
-    }
+      isMenuOpen: false,
+      currentSubsection: null
+    };
+    this.subsectionsHighlight=this.subsectionsHighlight.bind(this);
+    this.scrollToLink=this.scrollToLink.bind(this);
   }
-
   componentDidMount() {
-    this.loadStateFromURL()
-    this.initDocsearch()
-    window.addEventListener('popstate', this.loadStateFromURL)
+    let self = this;
+    this.loadStateFromURL();
+    this.initDocsearch();
+    window.addEventListener('popstate', this.loadStateFromURL);
     this.ps = new PerfectScrollbar('#sidebar-menu', {
       // wheelPropagation: window.innerWidth <= 572
       wheelPropagation: true
+    });
+    $('#bodybag').scroll(function(){
+      let fromTop = $(this).scrollTop();
+      let scrollItems = self.state.headings.map((heading)=>{
+        return $(`#${heading.slug}`);
+      });
+      let cur = scrollItems.filter(function (item) {
+        return $(item).offset().top < fromTop;
+      }).map(function(item){
+        return item;
+      });
+      if(cur.length>0){
+        cur = cur[cur.length - 1];
+        self.setState({
+          currentSubsection: cur.attr('id')
+        })
+      }
     })
   }
 
@@ -159,14 +180,17 @@ export default class Documentation extends Component {
   }
 
   scrollToLink = href => {
+    /*this.setState({
+      currentSubsection: href.slice(1)
+    });*/
     scroller.scrollTo(href.slice(1), {
       duration: 600,
       offset: -85,
       delay: 0,
       smooth: 'ease',
       containerId: 'bodybag'
-    })
-  }
+    });
+  };
 
   scrollTop = () => {
     animateScroll.scrollTo(0, {
@@ -184,8 +208,12 @@ export default class Documentation extends Component {
     }))
   }
 
+  subsectionsHighlight(){
+
+  }
+
   render() {
-    const { currentSection, currentFile, headings, markdown, pageNotFound, isMenuOpen } = this.state
+    const { currentSection, currentFile, headings, markdown, pageNotFound, isMenuOpen, currentSubsection } = this.state
 
     const directory = sidebar[currentSection].folder
     const githubLink = `https://github.com/iterative/dvc.org/blob/master${directory}/${currentFile}`
@@ -234,6 +262,7 @@ export default class Documentation extends Component {
             headings={headings}
             scrollToLink={this.scrollToLink}
             githubLink={githubLink}
+            currentSubsection={currentSubsection}
           />
         </Container>
       </Page>
