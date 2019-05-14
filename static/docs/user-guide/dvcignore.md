@@ -75,8 +75,8 @@ Check status:
 		modified:           dir2/data2
 ```
 
-Note, that both data files are displayed as modified
-Create `.dvcignore` file and insert pattern matching one of the files:
+Note, that both data files are displayed as modified Create `.dvcignore` file
+and insert pattern matching one of the files:
 
 ```dvc
     $ echo dir1/* >> .dvcignore

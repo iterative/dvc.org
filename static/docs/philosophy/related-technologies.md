@@ -13,16 +13,17 @@ process.
      that should NOT be stored in a Git repository but still need to be tracked
      and versioned.
 
-2. **Workflow management tools** (pipelines and DAGs): Airflow, Luigi, etc.
-   The differences are:
+2. **Workflow management tools** (pipelines and DAGs): Airflow, Luigi, etc. The
+   differences are:
 
    - DVC is focused on data science and modeling. As a result, DVC pipelines are
-     lightweight, easy to create and modify. However, DVC lacks pipeline execution
-     features like execution monitoring, execution error handling, and recovering.
+     lightweight, easy to create and modify. However, DVC lacks pipeline
+     execution features like execution monitoring, execution error handling, and
+     recovering.
 
    - DVC is purely a command line tool that does not have a graphical user
-     interface and does not run any servers. Nevertheless, DVC can generate images
-     with pipeline and experiment workflow visualization.
+     interface and does not run any servers. Nevertheless, DVC can generate
+     images with pipeline and experiment workflow visualization.
 
 3. **Experiment management** software today is mostly designed for enterprise
    usage. An open-sourced experimentation tool example: http://studio.ml/. The
@@ -42,8 +43,8 @@ process.
    differences are:
 
    - DVC supports a new experimentation methodology that integrates easily with
-     a Git workflow. A separate branch should be created for each experiment, with
-     a subsequent merge of this branch if it was successful.
+     a Git workflow. A separate branch should be created for each experiment,
+     with a subsequent merge of this branch if it was successful.
 
    - DVC innovates by giving experimenters the ability to easily navigate
      through past experiments without recomputing them.
@@ -70,9 +71,9 @@ process.
        checkout a previous, trained version of a modeling code (Makefile will
        retrain the model).
 
-     - DVC uses file timestamps and inodes for optimization. This allows DVC
-       to avoid recomputing all dependency files checksum, which would be
-       highly problematic when working with large files (10 GB+).
+     - DVC uses file timestamps and inodes for optimization. This allows DVC to
+       avoid recomputing all dependency files checksum, which would be highly
+       problematic when working with large files (10 GB+).
 
 6. **Git-annex**. The differences are:
 
@@ -89,8 +90,8 @@ process.
      Git-annex repository is cloned via git clone, data files won't be copied to
      the local machine as file content is stored in separate data remotes.
      However, DVC metafiles (which provide the reproducible workflow) are always
-     included in the cloned Git repository and hence can be recreated locally with
-     minimal effort.
+     included in the cloned Git repository and hence can be recreated locally
+     with minimal effort.
 
    - DVC is not fundamentally bound to Git, having the option of changing the
      repository format.
@@ -106,13 +107,15 @@ process.
      repository format.
 
    - DVC does not add any hooks to Git by default. To checkout data files, the
-     `dvc checkout` command has to be run after each `git checkout` and `git clone` command. It gives more granularity on managing data and code
+     `dvc checkout` command has to be run after each `git checkout` and
+     `git clone` command. It gives more granularity on managing data and code
      separately. Hooks could be configured to make workflow simpler.
 
    - DVC creates hardlinks (or even reflinks if they are supported). The
      `dvc checkout` command does not actually copy data files from cache to the
-     working tree, as copying files is a heavy operation for large files (30 GB+).
+     working tree, as copying files is a heavy operation for large files (30
+     GB+).
 
    - `git-lfs` was not made with data science scenarios in mind, thus it does
-     not support certain features, e.g. pipelines and metrics, and thus Github has
-     a limit of 2 GB per repository.
+     not support certain features, e.g. pipelines and metrics, and thus Github
+     has a limit of 2 GB per repository.

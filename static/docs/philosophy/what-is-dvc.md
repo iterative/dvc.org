@@ -20,10 +20,10 @@ DVC uses a few core concepts:
 
 - **Experiment** is equivalent to a Git branch. Each experiment (extract new
   features, change model hyperparameters, data cleaning, add a new data source)
-  should be performed in a separate branch and then merged into the master branch
-  only if the experiment is successful. DVC allows experiments to be integrated
-  into a project's history and NEVER needs to recompute the results after a
-  successful merge.
+  should be performed in a separate branch and then merged into the master
+  branch only if the experiment is successful. DVC allows experiments to be
+  integrated into a project's history and NEVER needs to recompute the results
+  after a successful merge.
 
 - **Experiment state** or state is equivalent to a Git snapshot (all committed
   files). Git checksum, branch name, or tag can be used as a reference to a
@@ -34,15 +34,15 @@ DVC uses a few core concepts:
   action usually changes experiment state.
 
 - **Pipeline** - directed acyclic graph (DAG) of commands to reproduce an
-  experiment state. The commands are connected by input and output files. Pipeline
-  is defined by special **DVC files** (which act like Makefiles).
+  experiment state. The commands are connected by input and output files.
+  Pipeline is defined by special **DVC files** (which act like Makefiles).
 
 - **Workflow** - set of experiments and relationships among them. Workflow
   corresponds to the entire Git repository.
 
 - **Data files** - cached files (for large files). For data files the file
-  content is stored outside of the Git repository on a local hard drive, but data
-  file metadata is stored in Git for DVC needs (to maintain pipelines and
+  content is stored outside of the Git repository on a local hard drive, but
+  data file metadata is stored in Git for DVC needs (to maintain pipelines and
   reproducibility).
 
 - **Data cache** - directory with all data files on a local hard drive or in

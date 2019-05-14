@@ -2,8 +2,8 @@
 
 When you add a file or a stage to your pipeline, DVC creates a special `.dvc`
 file that contains all the needed information to track your data. The file
-itself is in a simple YAML format and could be easily written or altered
-(after being created by `dvc run` or `dvc add`) by hand.
+itself is in a simple YAML format and could be easily written or altered (after
+being created by `dvc run` or `dvc add`) by hand.
 
 Check the [Syntax Highlighting](/doc/user-guide/plugins) to enable the
 highlighting for your editor.
@@ -58,5 +58,5 @@ An output entry consists of such fields:
 A metric entry consists of such fields:
 
 - `type`: type of the metrics file(e.g. raw/json/tsv/htsv/csv/hcsv);
-- `xpath`: path within the metrics file to the metrics data(e.g. `AUC.value`
-  for `{"AUC": {"value": 0.624321}}`);
+- `xpath`: path within the metrics file to the metrics data(e.g. `AUC.value` for
+  `{"AUC": {"value": 0.624321}}`);

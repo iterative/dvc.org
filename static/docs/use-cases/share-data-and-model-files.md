@@ -1,12 +1,12 @@
 # Share Data and Model Files
 
 Same as Git, DVC allows for distributed environment and collaboration. It is
-dead easy to consistently get all your data files and code to any machine.
-All you need to do is to setup a remote DVC repository, that will store cache
-files for your project. Currently DVC supports AWS S3, Google Cloud Storage,
-Microsoft Azure Blob Storage, SSH and HDFS as remote location and the list is
-constantly growing. To get a full info about supported remote types and their
-configuration take a look at `dvc remote`.
+dead easy to consistently get all your data files and code to any machine. All
+you need to do is to setup a remote DVC repository, that will store cache files
+for your project. Currently DVC supports AWS S3, Google Cloud Storage, Microsoft
+Azure Blob Storage, SSH and HDFS as remote location and the list is constantly
+growing. To get a full info about supported remote types and their configuration
+take a look at `dvc remote`.
 
 ![](/static/img/model-sharing-digram.png)
 
@@ -15,8 +15,8 @@ and push/pull to/from it.
 
 ### Create a bucket at Amazon S3
 
-If you don't already have it, get Amazon S3 account and then follow
-instructions at
+If you don't already have it, get Amazon S3 account and then follow instructions
+at
 [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
 to create your bucket.
 
@@ -30,7 +30,8 @@ wish to store data:
     Setting "myremote" as a default remote.
 ```
 
-NOTE: `-d|--default` option sets myremote as a default repository for the project.
+NOTE: `-d|--default` option sets myremote as a default repository for the
+project.
 
 This will add `myremote` to your `.dvc/config`. Commit your changes and push
 your code:

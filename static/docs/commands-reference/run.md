@@ -31,49 +31,50 @@ data and caches data artifacts along the way. Check this
 pipeline.
 
 By default, unless `-f` options is specified, stage file name generated is
-`<file>.dvc` where `<file>` is the file name of the first output (`-o`, `-O`,
-or `-M` option). If neither `-f`, nor outputs (with `-o`, `-O`, `-M` options)
-are specified, the stage name defaults to `Dvcfile`.
+`<file>.dvc` where `<file>` is the file name of the first output (`-o`, `-O`, or
+`-M` option). If neither `-f`, nor outputs (with `-o`, `-O`, `-M` options) are
+specified, the stage name defaults to `Dvcfile`.
 
 Since `dvc run` provides a way to build a graph of computations, using
 dependencies and outputs to connect different stages it checks computational
 graph integrity properties before creating a new stage. For example, for every
-output there should be only one stage that explicitly specifies it. There
-should be no cycles, etc.
+output there should be only one stage that explicitly specifies it. There should
+be no cycles, etc.
 
 ## Options
 
 - `-d`, `--deps` - specify a file or a directory the stage depends on. Multiple
-  dependencies can be specified like this: `-d data.csv -d process.py`.
-  Usually, each dependency is a file or a directory with data, or a code file, or
-  a configuration file. DVC is building a computation graph and this list of
+  dependencies can be specified like this: `-d data.csv -d process.py`. Usually,
+  each dependency is a file or a directory with data, or a code file, or a
+  configuration file. DVC is building a computation graph and this list of
   dependencies is a way to connect different stages with each other. Also, when
   you run `dvc repro` to reproduce a stage (or when stage is reproduced due to
-  recursive dependency), list of dependencies helps DVC to analyze if one or more
-  of the dependencies listed have changed and running the stage again is
+  recursive dependency), list of dependencies helps DVC to analyze if one or
+  more of the dependencies listed have changed and running the stage again is
   required. Special case is when no dependencies are specified. Stage file
   without dependencies is considered always _changed_ and `dvc repro` always
   executes it.
 
-- `-o`, `--outs` - specify a file or a directory that are results of running
-  the command. Multiple outputs can be specified like this: `-o model.pkl -o output.log`. DVC is building a computation graph and this list of outputs
-  (along with dependencies described above) is a way to connect different stages
-  with each other. DVC takes all output files and directories under its control
-  and will put them into the cache (this is similar to what's happening when you
-  run `dvc add`).
+- `-o`, `--outs` - specify a file or a directory that are results of running the
+  command. Multiple outputs can be specified like this:
+  `-o model.pkl -o output.log`. DVC is building a computation graph and this
+  list of outputs (along with dependencies described above) is a way to connect
+  different stages with each other. DVC takes all output files and directories
+  under its control and will put them into the cache (this is similar to what's
+  happening when you run `dvc add`).
 
 - `-O`, `--outs-no-cache` - the same as `-o` except outputs are not put
   automatically under DVC control. It means that they are not cached, and it's
   up to a user to save and version control them. Usually, it's useful if outputs
-  are small enough to be put into Git or other underlying version control system,
-  or these files are not of any interest and there is no requirement to save and
-  share them.
+  are small enough to be put into Git or other underlying version control
+  system, or these files are not of any interest and there is no requirement to
+  save and share them.
 
-- `-m`, `--metrics` - another kind of output files. It is usually a
-  small human readable file (JSON, CSV, text, whatnot) with some numbers or other
+- `-m`, `--metrics` - another kind of output files. It is usually a small human
+  readable file (JSON, CSV, text, whatnot) with some numbers or other
   meta-information that describes a model or other outputs. Check `dvc metrics`
-  to learn more about tracking metrics and comparing them across different
-  model or experiment versions.
+  to learn more about tracking metrics and comparing them across different model
+  or experiment versions.
 
 - `-M`, `--metrics-no-cache` - the same as `-m` except files are not put
   automatically under DVC control. It means that they are not cached, and it's
@@ -83,11 +84,12 @@ should be no cycles, etc.
   `-O` options.
 
 - `-f`, `--file` - specify stage file name. By default stage file name generated
-  is `<file>.dvc` where `<file>` is file name of the first output (`-o`, `-O`, or
-  `-M` option). If neither `-f`, nor outputs (with `-o`, `-O`, `-M`) are specified,
-  the stage name defaults to `Dvcfile`. By default stage file is placed in the same
-  directory `dvc run` is executed. `-f` can be used to change this place, by
-  including path into provided value (e.g. `-f stages/stage.dvc`).
+  is `<file>.dvc` where `<file>` is file name of the first output (`-o`, `-O`,
+  or `-M` option). If neither `-f`, nor outputs (with `-o`, `-O`, `-M`) are
+  specified, the stage name defaults to `Dvcfile`. By default stage file is
+  placed in the same directory `dvc run` is executed. `-f` can be used to change
+  this place, by including path into provided value (e.g.
+  `-f stages/stage.dvc`).
 
 - `-c`, `--cwd` - deprecated, use `-f` and `-w` to change location and working
   directory of a stage file.
@@ -95,15 +97,15 @@ should be no cycles, etc.
 - `-w`, `--wdir` - specifies a working directory for the `command` to run it in.
   `dvc run` expects that dependencies, outputs, metric files are specified
   relative to this directory. This value (as a relative path to the location of
-  the DVC stage file) is saved in the generated DVC stage file in the `wdir` field
-  and is used by `dvc repro` to change the working directory before running the
-  command.
+  the DVC stage file) is saved in the generated DVC stage file in the `wdir`
+  field and is used by `dvc repro` to change the working directory before
+  running the command.
 
 - `--no-exec` - create a stage file, do not run the command specified do not
   take dependencies or outputs under DVC control. On the stage file level `md5`
   hash sums will be empty. They will be populated next time this stage is
-  actually executed. This command is useful, if for example, you need to build
-  a pipeline (computational graph) first, and then run it all at once.
+  actually executed. This command is useful, if for example, you need to build a
+  pipeline (computational graph) first, and then run it all at once.
 
 - `-y`, `--yes` - deprecated, use `--overwrite-dvcfile` instead.
 
@@ -124,8 +126,8 @@ should be no cycles, etc.
   default and deprecated. See `dvc remove` as well for more details.
 
 - `--no-commit` - doesn't save outputs to cache. Useful when running different
-  experiments and you don't want to fill up your cache with temporary files.
-  Use `dvc commit` when you are ready to save your results to cache.
+  experiments and you don't want to fill up your cache with temporary files. Use
+  `dvc commit` when you are ready to save your results to cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

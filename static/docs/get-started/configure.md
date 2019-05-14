@@ -47,9 +47,9 @@ currently supports seven types of remotes:
 > plan to use to keep and share your data you might need to specify one of the
 > optional dependencies: `s3`, `gs`, `azure`, `ssh`. Or `all_remotes` to include
 > them all. The command should look like this: `pip install dvc[s3]` - it will
-> install `boto3` library along with DVC to support AWS S3 storage. This is valid
-> for `pip install` option only. Other ways to install DVC already include support
-> for all remotes.
+> install `boto3` library along with DVC to support AWS S3 storage. This is
+> valid for `pip install` option only. Other ways to install DVC already include
+> support for all remotes.
 
 For example, to setup an S3 remote we would use something like:
 

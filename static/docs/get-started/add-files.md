@@ -10,7 +10,8 @@ Let's get a sample data set to play with:
 
 Windows does not ship `wget` utility by default, so you'll need to use a browser
 to download `data.xml` and save it into `data` subdirectory. To download,
-right-click [this link](https://dvc.org/s3/get-started/data.xml) and click `Save link as`(Chrome) or `Save object as`(Firefox).
+right-click [this link](https://dvc.org/s3/get-started/data.xml) and click
+`Save link as`(Chrome) or `Save object as`(Firefox).
 
 </details>
 
@@ -54,10 +55,12 @@ hash inside.
 
 </details>
 
-Refer to [Data and Model Files
-Versioning](/doc/use-cases/data-and-model-files-versioning), `dvc add`, and `dvc run` for more information on storing and versioning data files with DVC.
+Refer to
+[Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning),
+`dvc add`, and `dvc run` for more information on storing and versioning data
+files with DVC.
 
 Note that to modify or replace a data file that is under DVC control you may
-need to run `dvc unprotect` or `dvc remove` first (check the [Update Tracked
-File](/doc/user-guide/update-tracked-file) guide). Use `dvc move` to rename or
-move a data file that is under DVC control.
+need to run `dvc unprotect` or `dvc remove` first (check the
+[Update Tracked File](/doc/user-guide/update-tracked-file) guide). Use
+`dvc move` to rename or move a data file that is under DVC control.

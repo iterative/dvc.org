@@ -19,11 +19,11 @@ current one will be removed.
 
 Note, that unless `-c|--cloud` is specified, this action does NOT remove data
 files from the remote storage. **Make sure though that remote is configured and
-all the data you will need in the future is pushed there.** See `dvc remote`
-and `dvc config` for more information. This command is just a way to clean the
+all the data you will need in the future is pushed there.** See `dvc remote` and
+`dvc config` for more information. This command is just a way to clean the
 working cache which is usually located on the machine your are running
-experiments on and usually helps to save some space. You can `dvc fetch` all
-the needed files back anytime you want.
+experiments on and usually helps to save some space. You can `dvc fetch` all the
+needed files back anytime you want.
 
 ## Options
 
@@ -42,15 +42,15 @@ the needed files back anytime you want.
   project is a path) to keep data that is currently referenced from them.
 
 - `-c`, `--cloud` - also remove files in the remote storage. _This operation is
-  dangerous._ It removes data sets, models, other files that are not linked in the
-  current branch/commit (unless `-a` or `-T` is specified).
+  dangerous._ It removes data sets, models, other files that are not linked in
+  the current branch/commit (unless `-a` or `-T` is specified).
 
 - `-r`, `--remote` - name of the remote storage to collect unused objects from
   if `-c` option is specified.
 
 - `-j`, `--jobs` - garbage collector parallelism level. The default value is
-  `4 * cpu_count()`. For SSH remotes default is 4. For now only some phases of GC
-  are parallel.
+  `4 * cpu_count()`. For SSH remotes default is 4. For now only some phases of
+  GC are parallel.
 
 - `-f`, `--force` - force garbage collection. Skip confirmation prompt.
 

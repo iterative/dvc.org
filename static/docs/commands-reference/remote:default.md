@@ -1,14 +1,13 @@
 # remote default
 
-To set/unset default data remote. Depending on your storage type you may need
-to run `dvc remote modify` to provide credentials and/or configure other remote
+To set/unset default data remote. Depending on your storage type you may need to
+run `dvc remote modify` to provide credentials and/or configure other remote
 parameters.
 
 See also [add](/doc/commands-reference/remote-add),
 [list](/doc/commands-reference/remote-list),
-[modify](/doc/commands-reference/remote-modify),
-and [remove](/doc/commands-reference/remote-remove) commands to manage data
-remotes.
+[modify](/doc/commands-reference/remote-modify), and
+[remove](/doc/commands-reference/remote-remove) commands to manage data remotes.
 
 ## Synopsis
 
@@ -23,9 +22,9 @@ remotes.
 
 ## Description
 
-You can query/set/replace/unset default remote using options of this command.
-If the `name` of the remote is not provided and `--unset` is not specified,
-this command returns the name of the default remote.
+You can query/set/replace/unset default remote using options of this command. If
+the `name` of the remote is not provided and `--unset` is not specified, this
+command returns the name of the default remote.
 
 ```dvc
     $ dvc remote default myremote
@@ -59,10 +58,10 @@ set/unset/change the default remote configurations.
   `/etc/dvc.config`) instead of `.dvc/config`.
 
 - `--local` - save the remote configuration to the
-  [local](/doc/user-guide/dvc-files-and-directories) config (`.dvc/config.local`).
-  This is useful when you need to specify private options or local environment
-  specific settings in your config, that you don't want to track and share through
-  Git (credentials, private locations, etc).
+  [local](/doc/user-guide/dvc-files-and-directories) config
+  (`.dvc/config.local`). This is useful when you need to specify private options
+  or local environment specific settings in your config, that you don't want to
+  track and share through Git (credentials, private locations, etc).
 
 - `-h`, `--help` - prints the usage/help message and exit.
 

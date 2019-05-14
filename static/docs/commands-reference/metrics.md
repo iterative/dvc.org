@@ -25,14 +25,14 @@ metrics.
 DVC has the ability to tag a specified output file as a file that contains
 metrics to track. Metrics are usually any project specific numbers - `AUC`,
 `ROC`, etc. DVC itself does not imply any specific meaning for these numbers.
-Usually these numbers are produced by the model evaluation script and serve as
-a way to compare and pick the best performing experiment variant.
+Usually these numbers are produced by the model evaluation script and serve as a
+way to compare and pick the best performing experiment variant.
 
 [Add](/doc/commands-reference/metrics-add),
 [show](/doc/commands-reference/metrics-show),
-[modify](/doc/commands-reference/metrics-modify),
-and [remove](/doc/commands-reference/metrics-remove) commands are available to
-set up and manage DVC metrics.
+[modify](/doc/commands-reference/metrics-modify), and
+[remove](/doc/commands-reference/metrics-remove) commands are available to set
+up and manage DVC metrics.
 
 ## Options
 
@@ -54,8 +54,8 @@ First, let's create a simple DVC stage file:
 
 > `-M|--metrics-no-cache` is telling DVC to mark `data/eval.json` as a metric
 > file. Using this option is equivalent to using `-O|--outs-no-cache` and then
-> using `dvc metrics add data/eval.json` to explicitly mark `data/eval.json` as a
-> metric file.
+> using `dvc metrics add data/eval.json` to explicitly mark `data/eval.json` as
+> a metric file.
 
 Now let's print metric values that we are tracking in the current project:
 
@@ -66,9 +66,8 @@ Now let's print metric values that we are tracking in the current project:
           data/eval.json: {"AUC": "0.624652"}
 ```
 
-Then we can tell DVC an `xpath` for the metric file, so that it can output
-only the value of AUC.
-In the case of JSON, it uses
+Then we can tell DVC an `xpath` for the metric file, so that it can output only
+the value of AUC. In the case of JSON, it uses
 [JSONPath expressions](https://goessner.net/articles/JsonPath/index.html) to
 selectively extract data out of metric files:
 

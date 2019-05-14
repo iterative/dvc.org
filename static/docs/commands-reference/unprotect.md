@@ -23,11 +23,12 @@ running `dvc unprotect`:
 
 - Deleting files from a directory data set.
 
-- _Advanced_. If your underlying file system supports _reflinks_ (copy on
-  write) and DVC [protected mode](/doc/commands-reference/config#cache) is off.
+- _Advanced_. If your underlying file system supports _reflinks_ (copy on write)
+  and DVC [protected mode](/doc/commands-reference/config#cache) is off.
 
 - _Advanced_. If your [cache type](/doc/commands-reference/config#cache) is set
-  to `copy` and DVC [protected mode](/doc/commands-reference/config#cache) is off.
+  to `copy` and DVC [protected mode](/doc/commands-reference/config#cache) is
+  off.
 
 ## Options
 

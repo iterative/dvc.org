@@ -37,9 +37,9 @@ Under the hood a few actions are taken for each file in the target(s):
 The result is data file is added to the DVC cache, and DVC metafiles (`.dvc`)
 can be tracked via Git or other version control system. The stage file
 (metafile) lists the added file as an `out` (output) of the stage, and
-references the DVC cache entry using the checksum. See [DVC File
-Format](/doc/user-guide/dvc-file-format) for the detailed description of the DVC
-_metafile_ format.
+references the DVC cache entry using the checksum. See
+[DVC File Format](/doc/user-guide/dvc-file-format) for the detailed description
+of the DVC _metafile_ format.
 
 By default DVC tries a range of link types (`reflink`, `hardlink`, `symlink`, or
 `copy`) to try to avoid copying any file contents and to optimize DVC file
@@ -76,8 +76,9 @@ This way you bring data provenance and make your project reproducible.
 
 - `--no-commit` - do not put files/directories into cache. A stage file is
   created, and an entry is added to `.dvc/state`, while nothing is added to the
-  cache (`.dvc/cache`). The `dvc status` command will note that the file is `not in cache`. The `dvc commit` command will add the file to the DVC cache. This
-  is analogous to the `git add` and `git commit` commands.
+  cache (`.dvc/cache`). The `dvc status` command will note that the file is
+  `not in cache`. The `dvc commit` command will add the file to the DVC cache.
+  This is analogous to the `git add` and `git commit` commands.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -216,8 +217,8 @@ directory tree as input to a `dvc run` stage like so:
               python train.py
 ```
 
-To see this whole example go to [Example:
-Versioning](/doc/get-started/example-versioning).
+To see this whole example go to
+[Example: Versioning](/doc/get-started/example-versioning).
 
 Since no top-level DVC file is generated with the `--recursive` option we cannot
 use the directory structure as a whole.

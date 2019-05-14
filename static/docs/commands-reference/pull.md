@@ -1,8 +1,8 @@
 # pull
 
 Downloads missing files and directories from
-[remote storage](/doc/commands-reference/remote) to the local cache based on
-DVC files in the workspace. Then links the downloaded files into the workspace.
+[remote storage](/doc/commands-reference/remote) to the local cache based on DVC
+files in the workspace. Then links the downloaded files into the workspace.
 
 ## Synopsis
 
@@ -21,21 +21,21 @@ DVC files in the workspace. Then links the downloaded files into the workspace.
 ## Description
 
 The `dvc pull` and `dvc push` commands are the means for uploading and
-downloading data to and from remote storage. These commands are analogous to
-the `git pull` and `git push` commands.
+downloading data to and from remote storage. These commands are analogous to the
+`git pull` and `git push` commands.
 [Data sharing](/doc/use-cases/share-data-and-model-files) across environments
-and preserving data versions (input datasets, intermediate results,
-models, metrics, etc) remotely (S3, SSH, GCS, etc) are the most common use cases
-for these commands.
+and preserving data versions (input datasets, intermediate results, models,
+metrics, etc) remotely (S3, SSH, GCS, etc) are the most common use cases for
+these commands.
 
 The `dvc pull` command allows one to retrieve data from remote storage.
 `dvc pull` has the same effect as running `dvc fetch` and `dvc checkout`
 immediately after that.
 
-If the `--remote REMOTE` option is not specified, then the
-default remote, configured with the `core.config` config option, is used. See
-`dvc remote`, `dvc config` and this [example](/doc/get-started/configure) for
-more information on how to configure a remote.
+If the `--remote REMOTE` option is not specified, then the default remote,
+configured with the `core.config` config option, is used. See `dvc remote`,
+`dvc config` and this [example](/doc/get-started/configure) for more information
+on how to configure a remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote REMOTE`, it downloads
 only the files (or directories) missing from the local repository to the project
@@ -59,8 +59,8 @@ for more details.
 
 - `--show-checksums` - shows checksums instead of file names.
 
-- `-r REMOTE`, `--remote REMOTE` specifies which remote cache
-  (see `dvc remote list`) to pull from. The value for `REMOTE` is a cache name
+- `-r REMOTE`, `--remote REMOTE` specifies which remote cache (see
+  `dvc remote list`) to pull from. The value for `REMOTE` is a cache name
   defined using the `dvc remote` command. If no `REMOTE` is given, or if no
   remote's are defined in the workspace, an error message is printed. If the
   option is not specified, then the default remote, configured with the
@@ -106,9 +106,9 @@ for more details.
 ## Examples
 
 For using the `dvc pull` command, remote storage must be defined. For an
-existing project a remote is usually defined and you can use `dvc remote list` to check existing remotes. Just to remind how it is done and set a
-context for the example, let's define an SSH remote with the `dvc remote add`
-command:
+existing project a remote is usually defined and you can use `dvc remote list`
+to check existing remotes. Just to remind how it is done and set a context for
+the example, let's define an SSH remote with the `dvc remote add` command:
 
 ```dvc
     $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
@@ -140,13 +140,13 @@ We can download specific files that are outputs of a specific dvc file:
 ```
 
 In this case we left off the `--remote` option, so it will have pulled from the
-default remote. The only files considered in this case are what is listed in
-the `out` section of the named target DVC file.
+default remote. The only files considered in this case are what is listed in the
+`out` section of the named target DVC file.
 
 ## Examples: With dependencies
 
-Demonstrating the `--with-deps` flag requires a larger example. First, assume
-a pipeline has been setup with these stages:
+Demonstrating the `--with-deps` flag requires a larger example. First, assume a
+pipeline has been setup with these stages:
 
 ```dvc
     $ dvc pipeline show
@@ -199,8 +199,8 @@ backwards through the pipeline for data files to download. Because the stage
 named `model.p.dvc` occurs later in the pipeline its data was not updated.
 
 Later we ran `dvc pull` specifying the stage `model.p.dvc`, and its data was
-downloaded. And finally we ran `dvc pull` with no options to show that all
-data was updated.
+downloaded. And finally we ran `dvc pull` with no options to show that all data
+was updated.
 
 ## Examples: Show checksums
 

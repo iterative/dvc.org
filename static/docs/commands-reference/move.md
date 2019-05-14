@@ -42,8 +42,8 @@ outs:
     path: data.csv
 ```
 
-If we move this using the regular `mv data.csv other.csv` the DVC file would
-not know that we changed the `path` of `data.csv` to `other.csv`.
+If we move this using the regular `mv data.csv other.csv` the DVC file would not
+know that we changed the `path` of `data.csv` to `other.csv`.
 
 `dvc move` adjusts the content of the DVC file to update `path`. So that saves
 some manual and programming steps.
@@ -77,8 +77,8 @@ outs:
 
 ## Examples
 
-Here we use `dvc add`to put a file under DVC control. Then we change the name
-of it using `dvc move`.
+Here we use `dvc add`to put a file under DVC control. Then we change the name of
+it using `dvc move`.
 
 ```dvc
     $ dvc add data.csv
@@ -95,10 +95,10 @@ of it using `dvc move`.
     └── other.csv.dvc
 ```
 
-Here we use `dvc add` to put a file under DVC control. Then we use `dvc move`
-to change data directory. Note, that data stage file is also moved. If target
-path already exists and is a directory, data file is moved with unchanged name
-into this folder.
+Here we use `dvc add` to put a file under DVC control. Then we use `dvc move` to
+change data directory. Note, that data stage file is also moved. If target path
+already exists and is a directory, data file is moved with unchanged name into
+this folder.
 
 ```dvc
     $ tree
@@ -128,8 +128,8 @@ into this folder.
 ```
 
 In this example we use `dvc add` to put a directory under DVC control. Then we
-use `dvc move` to move the whole directory. As in other cases, DVC file is
-also moved.
+use `dvc move` to move the whole directory. As in other cases, DVC file is also
+moved.
 
 ```dvc
     $ tree

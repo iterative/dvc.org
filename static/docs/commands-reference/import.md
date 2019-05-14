@@ -44,15 +44,15 @@ DVC supports several types of remote locations:
 | `http`   | HTTP to file with _strong ETag_ (see explanation below) | `https://example.com/path/to/data.csv`     |
 | `remote` | Remote path (see explanation below)                     | `remote://myremote/path/to/file`           |
 
-> In case of HTTP, [strong
-> ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
-> necessary to track if the specified remote file (URL) changed to download it
-> again.
+> In case of HTTP,
+> [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
+> is necessary to track if the specified remote file (URL) changed to download
+> it again.
 
-> `remote://myremote/path/to/file` notation just means that there is a
-> DVC [remote](/doc/commands-reference/remote) `myremote` is defined and when DVC
-> is running it internally expands this URL into a regular S3, SSH, GS, etc URL
-> by appending `/path/to/file` to the `myremote`'s configured base path.
+> `remote://myremote/path/to/file` notation just means that there is a DVC
+> [remote](/doc/commands-reference/remote) `myremote` is defined and when DVC is
+> running it internally expands this URL into a regular S3, SSH, GS, etc URL by
+> appending `/path/to/file` to the `myremote`'s configured base path.
 
 Another way to understand the `dvc import` command is as a short-cut for more
 verbose `dvc run` commands. This is discussed in the
@@ -73,8 +73,8 @@ It is possible to instead use `dvc run`:
               wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a DVC file with an external dependency, and they perform
-a roughly equivalent result. The `dvc import` command saves the user from using
+Both methods generate a DVC file with an external dependency, and they perform a
+roughly equivalent result. The `dvc import` command saves the user from using
 the command to copy files from each of the remote storage schemes, and from
 having to install CLI tools for each service.
 
@@ -147,8 +147,8 @@ using `dvc import`:
 
 ### Click and expand to prepare the working space
 
-This is needed to actually run the command below in case you are reproducing this
-example:
+This is needed to actually run the command below in case you are reproducing
+this example:
 
 ```dvc
     $ git checkout 2-remote
@@ -192,8 +192,8 @@ wdir: .
 ```
 
 The `etag` field in the DVC file contains the ETag recorded from the HTTP
-request. If the remote file changes, the ETag changes, letting DVC know when
-the file has changed.
+request. If the remote file changes, the ETag changes, letting DVC know when the
+file has changed.
 
 ## Example: Detecting remote file changes
 
@@ -225,8 +225,8 @@ On your machine initialize the workspace again:
 
 ### Click and expand to prepare the working space
 
-This is needed to actually run the command below in case you are reproducing this
-example:
+This is needed to actually run the command below in case you are reproducing
+this example:
 
 ```dvc
     $ git checkout 2-remote
@@ -338,8 +338,8 @@ because any change will change the checksum. Once we do so, we'll see this:
             modified:     /path/to/data-store/data.xml
 ```
 
-DVC has noticed the external dependency has changed. It is telling us that it
-is necessary to now run `dvc repro`.
+DVC has noticed the external dependency has changed. It is telling us that it is
+necessary to now run `dvc repro`.
 
 ```dvc
     $ dvc repro prepare.dvc

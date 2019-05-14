@@ -22,8 +22,8 @@ sections below to learn how to submit your changes.
   in the browser.
 
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
-  (`/static/img`) - add new images, gifs, svgs, etc here. Reference them from the
-  Markdown files like this: `![](/static/img/reproducibility.png)`.
+  (`/static/img`) - add new images, gifs, svgs, etc here. Reference them from
+  the Markdown files like this: `![](/static/img/reproducibility.png)`.
 
 - [Sections](https://github.com/iterative/dvc.org/tree/master/src/Documentation/sidebar.json)
   (`.../sidebar.json`) - edit it to register a new section for the navigation
@@ -60,10 +60,11 @@ request (PR).
 
 Otherwise, please refer to the following procedure:
 
-- Find or open a new issue in the [issue
-  tracker](https://github.com/iterative/dvc.org/issues).
+- Find or open a new issue in the
+  [issue tracker](https://github.com/iterative/dvc.org/issues).
 - Setup the [development environment](#development-environment) explained above.
-- Format the code by following the [code style guidelines](#code-style-guidelines) below.
+- Format the code by following the
+  [code style guidelines](#code-style-guidelines) below.
 - Auto-format any JS code changes by running `npm run prettier-src`.
 - Commit and push the changes to your fork of
   [dvc.org](https://github.com/iterative/dvc.org.git).
@@ -82,11 +83,12 @@ We will review your PR as soon as possible. Thank you for contributing!
   automatically.
 - Syntax highlighting in fenced code blocks should have 4 spaces indentation and
   support the `usage` and `dvc` custom languages.
-  + `usage` is employed to show `dvc help` commands output in each command
+
+  - `usage` is employed to show `dvc help` commands output in each command
     reference doc.
-  + `dvc` can be used to show `.dvc` file contents, or examples of console
+  - `dvc` can be used to show `.dvc` file contents, or examples of console
     commands and their output.
-  
+
   > Check out any of the command reference `.md` source code to get a better
   > idea.
 

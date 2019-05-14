@@ -22,9 +22,10 @@ files corresponding to the checksums in the DVC files.
 
 Using an SCM like Git, the DVC files are kept under version control. At a given
 branch or tag of the SCM workspace, the DVC files will contain checksums for the
-corresponding data files kept in the DVC cache. After an SCM command like `git checkout` is run, the DVC files will change to the state at the specified branch
-or commit or tag. Afterward the `dvc checkout` command is required in order to
-synchronize the data files with the currently checked out DVC files.
+corresponding data files kept in the DVC cache. After an SCM command like
+`git checkout` is run, the DVC files will change to the state at the specified
+branch or commit or tag. Afterward the `dvc checkout` command is required in
+order to synchronize the data files with the currently checked out DVC files.
 
 During execution the `dvc checkout` command does:
 
@@ -62,9 +63,9 @@ command. In other cases the cache can be pulled from a remote cache using the
 ## Options
 
 - `-d`, `--with-deps` - determines the files to download by searching backwards
-  in the pipeline from the named stage(s). The only files which will be
-  updated are associated with the named stage, and the stages which execute
-  earlier in the pipeline.
+  in the pipeline from the named stage(s). The only files which will be updated
+  are associated with the named stage, and the stages which execute earlier in
+  the pipeline.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC files with SCM commands like `git checkout` can result in
@@ -141,10 +142,10 @@ solving the problem:
     bigram       <- use bigrams to improve the model
 ```
 
-This project comes with a predefined HTTP [remote
-storage](https://man.dvc.org/remote). We can now just run `dvc pull` that will
-fetch and checkout the most recent `model.pkl`, `data.xml`, and other files that
-are under DVC control. The model file checksum
+This project comes with a predefined HTTP
+[remote storage](https://man.dvc.org/remote). We can now just run `dvc pull`
+that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
+files that are under DVC control. The model file checksum
 `3863d0e317dee0a55c4e59d2ec0eef33` is specified in the `train.dvc` file:
 
 ```dvc

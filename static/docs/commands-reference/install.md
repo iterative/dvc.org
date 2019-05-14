@@ -32,8 +32,8 @@ requires rerunning the pipeline to reproduce the workspace results, which is a
 reminder to run `dvc repro`. Or there might be files not yet in the cache, which
 is a reminder to run `dvc commit`.
 
-The installed Git hook automates reminding the user to run either `dvc repro`
-or `dvc commit`.
+The installed Git hook automates reminding the user to run either `dvc repro` or
+`dvc commit`.
 
 ## Installed SCM hooks
 
@@ -99,8 +99,8 @@ Let's start our exploration with the impact of `dvc install` on the
 another changes the set of DVC files in the workspace, which then also changes
 the data files that should be in the workspace.
 
-With the Getting Started example workspace described above, let's first list
-the available tags:
+With the Getting Started example workspace described above, let's first list the
+available tags:
 
 ```dvc
     $ git tag
@@ -146,15 +146,15 @@ we check-out the workspace using the SCM (in this case Git):
 
 After running `git checkout` we are also shown a message saying _You are in
 'detached HEAD' state_, and the Git documentation explains what that means.
-Bottom line is returning the workspace to a normal state requires the
-command `git checkout master`.
+Bottom line is returning the workspace to a normal state requires the command
+`git checkout master`.
 
 We also see that `dvc status` tells us about differences between the workspace
-and the data files currently in the workspace. Git changed the DVC files in
-the workspace, which changed references to data files. What `dvc status` did is
-inform us the data files in the workspace no longer matched the checksums in
-the DVC files. Running `dvc checkout` then checks out the corresponding data
-files, and now `dvc status` tells us the data files match the DVC files.
+and the data files currently in the workspace. Git changed the DVC files in the
+workspace, which changed references to data files. What `dvc status` did is
+inform us the data files in the workspace no longer matched the checksums in the
+DVC files. Running `dvc checkout` then checks out the corresponding data files,
+and now `dvc status` tells us the data files match the DVC files.
 
 ```dvc
     $ git checkout master
@@ -207,9 +207,9 @@ matching what is referenced by the DVC files.
 
 ## Example: Showing DVC status on Git commit
 
-The other hook installed by `dvc install` runs before `git commit` operation.
-To see see what that does, start with the same workspace, making sure it is
-not in the detached HEAD state from the previous example.
+The other hook installed by `dvc install` runs before `git commit` operation. To
+see see what that does, start with the same workspace, making sure it is not in
+the detached HEAD state from the previous example.
 
 If we simply edit one of the code files:
 
@@ -227,8 +227,8 @@ If we simply edit one of the code files:
 
 We see that `dvc status` output has appeared in the `git commit` interaction.
 This new behavior corresponds to the Git hook which was installed, and it
-helpfully informs us the workspace is out of sync. We should therefore run
-the `dvc repro` command.
+helpfully informs us the workspace is out of sync. We should therefore run the
+`dvc repro` command.
 
 ```dvc
     $ dvc repro evaluate.dvc

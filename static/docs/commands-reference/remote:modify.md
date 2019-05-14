@@ -4,9 +4,8 @@ Modify remote settings.
 
 See also [add](/doc/commands-reference/remote-add),
 [default](/doc/commands-reference/remote-default),
-[list](/doc/commands-reference/remote-list),
-and [remove](/doc/commands-reference/remote-remove) commands to manage data
-remotes.
+[list](/doc/commands-reference/remote-list), and
+[remove](/doc/commands-reference/remote-remove) commands to manage data remotes.
 
 ## Synopsis
 
@@ -27,8 +26,9 @@ Remote `name` and `option` name are required. Option names are remote type
 specific. See below examples and a list of per remote type - AWS S3, Google
 cloud, Azure, SSH, and others.
 
-This command modifies a section in the DVC [config file](/doc/user-guide/dvc-files-and-directories).
-Alternatively, `dvc config` or manual editing could be used to change settings.
+This command modifies a section in the DVC
+[config file](/doc/user-guide/dvc-files-and-directories). Alternatively,
+`dvc config` or manual editing could be used to change settings.
 
 ## Options
 
@@ -41,9 +41,10 @@ Alternatively, `dvc config` or manual editing could be used to change settings.
   `/etc/dvc.config`) instead of `.dvc/config`.
 
 - `--local` - modify the [local](/doc/user-guide/dvc-files-and-directories)
-  configuration file (`.dvc/config.local`). This is useful when you are modifying
-  private options or local environment specific settings in your config, that you
-  don't want to track and share through Git (credentials, private locations, etc).
+  configuration file (`.dvc/config.local`). This is useful when you are
+  modifying private options or local environment specific settings in your
+  config, that you don't want to track and share through Git (credentials,
+  private locations, etc).
 
 <details>
 
@@ -91,8 +92,7 @@ these settings, you could use the following options:
   ```
 
 - `listobjects` - whether or not to use `list_objects`.  
-   By default, `list_objects_v2` is used.
-  Useful for ceph and other s3 emulators.
+   By default, `list_objects_v2` is used. Useful for ceph and other s3 emulators.
 
   ```dvc
     $ dvc remote modify myremote listobjects true
@@ -100,9 +100,9 @@ these settings, you could use the following options:
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://minio.io/), [Wasabi](https://wasabi.com/),
-[Eucalyptus](https://www.eucalyptus.cloud/index.html), [DigitalOcean
-Spaces](https://www.digitalocean.com/products/spaces/), etc.) you must
-explicitly set the `endpointurl` in the configuration:
+[Eucalyptus](https://www.eucalyptus.cloud/index.html),
+[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/), etc.) you
+must explicitly set the `endpointurl` in the configuration:
 
 For example:
 
@@ -170,8 +170,8 @@ For more information about the variables DVC supports, please visit
     $ dvc remote modify myremote url ssh://user@example.com:1234/path/to/remote
   ```
 
-- `user` - username to use to access a remote. The order in which dvc
-  searches for username:
+- `user` - username to use to access a remote. The order in which dvc searches
+  for username:
 
   1. `user` specified in one of the dvc configs;
   2. `user` specified in the url(e.g. `ssh://user@example.com/path`);
@@ -182,8 +182,8 @@ For more information about the variables DVC supports, please visit
     $ dvc remote modify myremote user myuser
   ```
 
-- `port` - port to use to access a remote. The order in which dvc searches
-  for port:
+- `port` - port to use to access a remote. The order in which dvc searches for
+  port:
 
   1. `port` specified in one of the dvc configs;
   2. `port` specified in the url(e.g. `ssh://example.com:1234/path`);
@@ -200,15 +200,15 @@ For more information about the variables DVC supports, please visit
     $ dvc remote modify myremote keyfile /path/to/keyfile
   ```
 
-- `password` - a private key passphrase or a password to use to
-  use when accessing a remote.
+- `password` - a private key passphrase or a password to use to use when
+  accessing a remote.
 
   ```dvc
     $ dvc remote modify myremote password mypassword
   ```
 
-- `ask_password` - ask for a private key passphrase or a password
-  to use when accessing a remote.
+- `ask_password` - ask for a private key passphrase or a password to use when
+  accessing a remote.
 
   ```dvc
     $ dvc remote modify myremote ask_password true

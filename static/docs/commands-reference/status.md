@@ -18,8 +18,9 @@ cache and local files, or between the local cache and remote cache.
 
 `dvc status` searches for changes in the pipeline, either showing which stages
 have changed in the local workspace and must be reproduced (`dvc repro`), or
-differences between the local cache and remote cache (meaning `dvc push` or `dvc pull` should be run to synchronize them). The two modes, _local_ and _cloud_ are
-triggered by using the `--cloud` or `--remote` options:
+differences between the local cache and remote cache (meaning `dvc push` or
+`dvc pull` should be run to synchronize them). The two modes, _local_ and
+_cloud_ are triggered by using the `--cloud` or `--remote` options:
 
 | Mode   | CLI Option | Description                                                                                                                   |
 | ------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -37,8 +38,8 @@ stages that affect the target stage.
 
 In the `local` mode, changes are detected through the checksum of every file
 listed in every stage file in the pipeline against the corresponding file in the
-filesystem. The output indicates the detected changes, if any. If no
-differences are detected, `dvc status` prints this message:
+filesystem. The output indicates the detected changes, if any. If no differences
+are detected, `dvc status` prints this message:
 
 ```dvc
     $ dvc status
@@ -48,10 +49,10 @@ differences are detected, `dvc status` prints this message:
 This says that no differences were detected, and therefore that no stages would
 be rerun if `dvc repro` were executed.
 
-If instead differences have been detected, `dvc status` lists those changes.
-For each stage with differences, the _dependencies_ and/or _outputs_ that differ
-are listed. For each item listed, either the file name or the checksum is shown,
-and additionally a status word is shown describing the change:
+If instead differences have been detected, `dvc status` lists those changes. For
+each stage with differences, the _dependencies_ and/or _outputs_ that differ are
+listed. For each item listed, either the file name or the checksum is shown, and
+additionally a status word is shown describing the change:
 
 - For the local workspace:
   - _changed_ means the named file has changed
@@ -63,10 +64,10 @@ and additionally a status word is shown describing the change:
 For the _changed_ case, the `dvc repro` command is indicated.
 
 For either the _new_ and _deleted_ cases, the local cache (subset of it, that is
-determined by the active workspace) is different from the remote cache.
-Bringing the two into sync requires `dvc pull` or `dvc push` to synchronize the
-DVC cache. For the typical process to update workspaces, see [Share Data And
-Model Files](/doc/use-cases/share-data-and-model-files).
+determined by the active workspace) is different from the remote cache. Bringing
+the two into sync requires `dvc pull` or `dvc push` to synchronize the DVC
+cache. For the typical process to update workspaces, see
+[Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
 
 ## Options
 
@@ -101,8 +102,8 @@ Model Files](/doc/use-cases/share-data-and-model-files).
   name. Applies only if `--cloud` is specified.
 
 - `-j JOBS`, `--jobs JOBS` - specifies the number of jobs DVC can use to
-  retrieve information from remote servers. This only applies when the
-  `--cloud` option is used or a remote is given.
+  retrieve information from remote servers. This only applies when the `--cloud`
+  option is used or a remote is given.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

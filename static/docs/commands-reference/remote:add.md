@@ -1,12 +1,13 @@
 # remote add
 
-Add a new data remote. Depending on your storage type you might need to run `dvc remote modify` to provide credentials and/or configure other remote parameters.
+Add a new data remote. Depending on your storage type you might need to run
+`dvc remote modify` to provide credentials and/or configure other remote
+parameters.
 
 See also [default](/doc/commands-reference/remote-default),
 [list](/doc/commands-reference/remote-list),
-[modify](/doc/commands-reference/remote-modify),
-and [remove](/doc/commands-reference/remote-remove) commands to manage data
-remotes.
+[modify](/doc/commands-reference/remote-modify), and
+[remove](/doc/commands-reference/remote-remove) commands to manage data remotes.
 
 ## Synopsis
 
@@ -31,14 +32,14 @@ directory if does not exists yet. It won't create an S3 bucket though and will
 rely on default access settings.
 
 > If you installed DVC via `pip`, and depending on the remote type you plan to
-> use you might need to install optional dependencies: `s3`, `gs`, `azure`, `ssh`.
-> Or `all_remotes` to include them all. The command should look like this:
-> `pip install -U dvc[s3]` - it installs `boto3` library along with DVC to support
-> AWS S3 storage.
+> use you might need to install optional dependencies: `s3`, `gs`, `azure`,
+> `ssh`. Or `all_remotes` to include them all. The command should look like
+> this: `pip install -U dvc[s3]` - it installs `boto3` library along with DVC to
+> support AWS S3 storage.
 
 This command creates a section in the DVC
-[config file](/doc/user-guide/dvc-files-and-directories) and optionally
-assigns a default remote in the core section if the `--default` option is used:
+[config file](/doc/user-guide/dvc-files-and-directories) and optionally assigns
+a default remote in the core section if the `--default` option is used:
 
 ```ini
    ['remote "myremote"']
@@ -47,10 +48,10 @@ assigns a default remote in the core section if the `--default` option is used:
    remote = myremote
 ```
 
-DVC supports the concept of a _default remote_. For the commands which take
-a `--remote` option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`),
-this option can be left off the command line and the default remote will be
-used instead.
+DVC supports the concept of a _default remote_. For the commands which take a
+`--remote` option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`),
+this option can be left off the command line and the default remote will be used
+instead.
 
 Use `dvc config` to unset/change the default remote as so:
 `dvc config -u core.remote`.
@@ -64,10 +65,10 @@ Use `dvc config` to unset/change the default remote as so:
   `/etc/dvc.config`) instead of `.dvc/config`.
 
 - `--local` - save the remote configuration to the
-  [local](/doc/user-guide/dvc-files-and-directories) config (`.dvc/config.local`).
-  This is useful when you need to specify private options or local environment
-  specific settings in your config, that you don't want to track and share through
-  Git (credentials, private locations, etc).
+  [local](/doc/user-guide/dvc-files-and-directories) config
+  (`.dvc/config.local`). This is useful when you need to specify private options
+  or local environment specific settings in your config, that you don't want to
+  track and share through Git (credentials, private locations, etc).
 
 - `-d`, `-default` - commands like `dvc pull`, `dvc push`, `dvc fetch` will be
   using this remote by default to save or retrieve data files unless `-r` option
@@ -79,10 +80,10 @@ Use `dvc config` to unset/change the default remote as so:
 
 ### Click for a local remote example
 
-> While the term may seem contradictory, it doesn't have to be.
-> The "local" part refers to the machine where the project is stored, so it can be
-> any directory accessible to the same system. The "remote" part refers
-> specifically to the project/repository itself.
+> While the term may seem contradictory, it doesn't have to be. The "local" part
+> refers to the machine where the project is stored, so it can be any directory
+> accessible to the same system. The "remote" part refers specifically to the
+> project/repository itself.
 
 Using an absolute path (recommended):
 
@@ -124,8 +125,8 @@ By default DVC expects your AWS CLI is already
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could the options described in `dvc remote modify`.
 
-We use `boto3` library to set up a client and communicate with AWS S3.
-The following API methods are performed:
+We use `boto3` library to set up a client and communicate with AWS S3. The
+following API methods are performed:
 
 - `list_objects_v2`, `list_objects`
 - `head_object`
@@ -149,9 +150,9 @@ So, make sure you have the following permissions enabled:
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://minio.io/), [Wasabi](https://wasabi.com/),
-[Eucalyptus](https://www.eucalyptus.cloud/index.html), [DigitalOcean
-Spaces](https://www.digitalocean.com/products/spaces/), etc.) you must
-explicitly set the `endpointurl` in the configuration:
+[Eucalyptus](https://www.eucalyptus.cloud/index.html),
+[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/), etc.) you
+must explicitly set the `endpointurl` in the configuration:
 
 For example:
 
@@ -193,7 +194,8 @@ variables:
 
 - `connection string` - this is the connection string to access your Azure
   Storage Account. If you don't already have a storage account, you can create
-  one following [these instructions](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account).
+  one following
+  [these instructions](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account).
   The connection string can be found in the "Access Keys" pane of your Storage
   Account resource in the Azure portal.
 

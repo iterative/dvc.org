@@ -30,9 +30,9 @@ returns current value of the option.
   `.dvc/config`.
 
 - `--local` - modify a local config file instead of a `.dvc/config`. It is
-  located in `.dvc/config.local` and is Git-ignored. This is useful when you need
-  to specify private options in your config, that you don't want to track and
-  share through Git.
+  located in `.dvc/config.local` and is Git-ignored. This is useful when you
+  need to specify private options in your config, that you don't want to track
+  and share through Git.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -66,8 +66,8 @@ Sections that describe particular remotes. See `dvc remote` for more info.
 ## cache
 
 DVC cache is a hidden (by default it's located in the `.dvc/cache` directory)
-storage. For files that are under DVC control it keeps them and their
-different versions.
+storage. For files that are under DVC control it keeps them and their different
+versions.
 
 - `dir` - directory to use for the cache. The value can be an absolute path or a
   path relative to the config file location that it is specified in (see helper
@@ -90,11 +90,12 @@ Or
 ```
 
 - `protected` - makes files in the workspace read-only. Run `dvc checkout` for
-  the change go into effect. It affects only files that are under DVC control and
-  adds an additional layer of security to your data. Due to the way DVC handles
-  linking between the data files in the cache and their counterparts in the
-  working directory it's easy to accidentally corrupt the cached version of a
-  file by editing or overwriting it. Turning this option on forces you to run`dvc unprotect` before updating a file.
+  the change go into effect. It affects only files that are under DVC control
+  and adds an additional layer of security to your data. Due to the way DVC
+  handles linking between the data files in the cache and their counterparts in
+  the working directory it's easy to accidentally corrupt the cached version of
+  a file by editing or overwriting it. Turning this option on forces you to
+  run`dvc unprotect` before updating a file.
 
 ```dvc
     $ dvc config cache.protected true
@@ -114,34 +115,32 @@ Or
   Check the `protected` mode option above and corresponding `dvc unprotect`
   command to modify files safely.
 
-  1. **`reflink`** - this is the best link type that could be. It is as
-     fast as hard/symlinks, but doesn't carry a risk of cache corruption,
-     since filesystem takes care of copying the file if you try to edit it in
-     place, thus keeping a linked cache file intact. Unfortunately reflinks
-     are currently supported on a limited number of filesystems (Linux: Btrfs,
-     XFS, OCFS2; MacOS: APFS), but they are coming to every new filesystem
-     and in the future will be supported by the majority of filesystems in
-     use.
+  1. **`reflink`** - this is the best link type that could be. It is as fast as
+     hard/symlinks, but doesn't carry a risk of cache corruption, since
+     filesystem takes care of copying the file if you try to edit it in place,
+     thus keeping a linked cache file intact. Unfortunately reflinks are
+     currently supported on a limited number of filesystems (Linux: Btrfs, XFS,
+     OCFS2; MacOS: APFS), but they are coming to every new filesystem and in the
+     future will be supported by the majority of filesystems in use.
 
-  2. **`hardlink`** - the most efficient way to link your data to cache if
-     both your repo and your cache directory are located on the same
+  2. **`hardlink`** - the most efficient way to link your data to cache if both
+     your repo and your cache directory are located on the same
      filesystem/drive. Please note that data file linked with hardlink should
-     never be edited in place, but instead deleted and then replaced with a
-     new file, otherwise it might cause cache corruption and automatic
+     never be edited in place, but instead deleted and then replaced with a new
+     file, otherwise it might cause cache corruption and automatic deletion of a
+     cache file by dvc.
+
+  3. **`symlink`** - The most efficient way to link your data to cache if your
+     repo and your cache directory are located on different filesystems/drives
+     (i.e. repo is located on ssd for performace, but cache dir is located on
+     hdd for bigger storage). Please note that data file linked with symlink
+     should never be edited in place, but instead deleted and then replaced with
+     a new file, otherwise it might cause cache corruption and automatic
      deletion of a cache file by dvc.
 
-  3. **`symlink`** - The most efficient way to link your data to cache if
-     your repo and your cache directory are located on different
-     filesystems/drives (i.e. repo is located on ssd for performace, but cache
-     dir is located on hdd for bigger storage). Please note that data file
-     linked with symlink should never be edited in place, but instead deleted
-     and then replaced with a new file, otherwise it might cause cache
-     corruption and automatic deletion of a cache file by dvc.
-
-  4. **`copy`** - The most inefficient link type, yet the most widely
-     supported for any repo/cache fs combinations. Suitable for scenarios with
-     relatively small data files, where copying them is not a
-     performance/storage concern.
+  4. **`copy`** - The most inefficient link type, yet the most widely supported
+     for any repo/cache fs combinations. Suitable for scenarios with relatively
+     small data files, where copying them is not a performance/storage concern.
 
 ## state
 

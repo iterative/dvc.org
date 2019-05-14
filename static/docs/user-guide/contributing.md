@@ -14,8 +14,8 @@ to learn how to submit your changes.
 
 ## Submitting changes
 
-- Open a new issue in the [issue
-  tracker](https://github.com/iterative/dvc/issues).
+- Open a new issue in the
+  [issue tracker](https://github.com/iterative/dvc/issues).
 - Setup the [development environment](#development-environment) if you need to
   run tests or [run](#running-development-version) the DVC with your changes.
 - Fork [DVC](https://github.com/iterative/dvc.git) and prepare necessary
@@ -36,7 +36,9 @@ contributing!
 - Make sure that you have python 3 installed. Version 3.6 or higher is required
   to run style checkers on pre-commit. On Mac OS, use `brew` to install the
   latest version of python.
-- Install the requirements with `pip install -r requirements.txt` and `pip install -r tests/requirements.txt`. We **strongly** recommend initializing a
+- Install the requirements with `pip install -r requirements.txt` and
+  `pip install -r tests/requirements.txt`. We **strongly** recommend
+  initializing a
   [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
   installing the required libraries. For example:
   ```dvc

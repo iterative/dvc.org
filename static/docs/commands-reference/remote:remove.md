@@ -5,9 +5,8 @@ does not physically remove your data files stored remotely.
 
 See also [add](/doc/commands-reference/remote-add),
 [default](/doc/commands-reference/remote-default),
-[list](/doc/commands-reference/remote-list),
-and [modify](/doc/commands-reference/remote-modify) commands to manage data
-remotes.
+[list](/doc/commands-reference/remote-list), and
+[modify](/doc/commands-reference/remote-modify) commands to manage data remotes.
 
 ## Synopsis
 
@@ -24,8 +23,9 @@ remotes.
 
 Remote `name` is required.
 
-This command removes a section in the DVC [config file](/doc/user-guide/dvc-files-and-directories).
-Alternatively, it is possible to edit config files manually.
+This command removes a section in the DVC
+[config file](/doc/user-guide/dvc-files-and-directories). Alternatively, it is
+possible to edit config files manually.
 
 ## Options
 

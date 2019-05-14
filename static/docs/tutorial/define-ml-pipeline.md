@@ -48,24 +48,26 @@ so Git ignores this data file from now on.
 > DVC will always exclude data files from the Git repository by listing them in
 > `.gitignore`.
 
-Refer to [Data and Model Files
-Versioning](/doc/use-cases/data-and-model-files-versioning), `dvc add`, and `dvc run` for more information on storing and versioning data files with DVC.
+Refer to
+[Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning),
+`dvc add`, and `dvc run` for more information on storing and versioning data
+files with DVC.
 
 Note that to modify or replace a data file that is under DVC control you may
-need to run `dvc unprotect` or `dvc remove` first (check the [Update Tracked
-File](/doc/user-guide/update-tracked-file) guide). Use `dvc move` to rename or
-move a data file that is under DVC control.
+need to run `dvc unprotect` or `dvc remove` first (check the
+[Update Tracked File](/doc/user-guide/update-tracked-file) guide). Use
+`dvc move` to rename or move a data file that is under DVC control.
 
 ## Data file internals
 
 If you take a look at the DVC-file, you will see that only outputs are defined
 in `outs`. In this file, only one output is defined. The output contains the
-data file path in the repository and md5 cache. This md5 cache determines
-a location of the actual content file in DVC cache directory `.dvc/cache`.
+data file path in the repository and md5 cache. This md5 cache determines a
+location of the actual content file in DVC cache directory `.dvc/cache`.
 
 > Output from DVC-files defines the relationship between the data file path in a
-> repository and the path in a cache directory. See also [DVC File
-> Format](/doc/user-guide/dvc-file-format)
+> repository and the path in a cache directory. See also
+> [DVC File Format](/doc/user-guide/dvc-file-format)
 
 ```dvc
     $ cat data/Posts.xml.zip.dvc
@@ -139,7 +141,8 @@ command, if any.
    file.
 
 2. `-o file.tsv` (lower case o) specifies output data file which means DVC will
-   transform this file into a data file (think — it will run `dvc add file.tsv`).
+   transform this file into a data file (think — it will run
+   `dvc add file.tsv`).
 
 3. `-O file.tsv` (upper case O) specifies a regular output file (not to be added
    to DVC).
@@ -186,11 +189,11 @@ and does some additional work if the command was successful:
    filenames will be added to `.gitignore`.
 
 2. For reproducibility purposes, DVC creates the DVC-file `Posts.xml.dvc` — the
-   file with meta-information about the pipeline stage, see [DVC File
-   Format](/doc/user-guide/dvc-file-format) — in the current working directory.
-   By default, DVC assigns a name to the DVC-file based on the first output file
-   name, by adding the `.dvc` file extension. This name can be changed by using
-   the `-f` option, for example by specifying `-f extract.dvc`.
+   file with meta-information about the pipeline stage, see
+   [DVC File Format](/doc/user-guide/dvc-file-format) — in the current working
+   directory. By default, DVC assigns a name to the DVC-file based on the first
+   output file name, by adding the `.dvc` file extension. This name can be
+   changed by using the `-f` option, for example by specifying `-f extract.dvc`.
 
 Let's take a look at the resulting DVC-file from the above example:
 
@@ -256,9 +259,9 @@ our ML pipeline.
 
 ## Running in bulk
 
-One single step of our ML pipeline was defined and committed into repository.
-It is not necessary to commit steps right after a step's definition. You can
-run a few steps and commit them later.
+One single step of our ML pipeline was defined and committed into repository. It
+is not necessary to commit steps right after a step's definition. You can run a
+few steps and commit them later.
 
 Let’s run the next step of converting an XML file to TSV and the following step
 of separating training and testing datasets one by one:
@@ -283,8 +286,8 @@ of separating training and testing datasets one by one:
 
 The result of the steps are two DVC-files corresponding to each of the commands
 `Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file was
-created. This type of file should not be tracked by Git. Let’s manually
-include this type of file into `.gitignore`.
+created. This type of file should not be tracked by Git. Let’s manually include
+this type of file into `.gitignore`.
 
 ```dvc
     $ git status -s
@@ -350,11 +353,11 @@ The model evaluation step is the last one. To make it a reproducibility goal by
 default we specify a DVC-file named `Dvcfile`. This will be discussed in the
 next chapter in more details.
 
-Note that the output file `data/eval.txt` was transformed by DVC into a
-metric file in accordance with the `-M` option.
+Note that the output file `data/eval.txt` was transformed by DVC into a metric
+file in accordance with the `-M` option.
 
-The result of the last three run commands execution is three DVC-files and
-a modified .gitignore file. All the changes should be committed into Git.
+The result of the last three run commands execution is three DVC-files and a
+modified .gitignore file. All the changes should be committed into Git.
 
 ```dvc
     $ git status -s

@@ -29,8 +29,8 @@ nothing to do with DVC so far, it's just a simple preparation:
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` utility by default, so you'll need to use
-just use your browser to download `code.zip`.
+Windows does not ship `wget` utility by default, so you'll need to use just use
+your browser to download `code.zip`.
 
 </details>
 
@@ -86,8 +86,8 @@ commands that are described in the [get started](/doc/get-started) chapters.
 `dvc init` created a new directory `example/.dvc/` with `config`, `.gitignore`
 files and `cache` directory. These files and directories are hidden from a user
 in general and a user does not interact with these files directly. Check
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
-to learn more.
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
+more.
 
 When we run `dvc add Posts.xml.zip` the following happens. DVC creates an
 _orphaned_ version of the [stage file](/doc/user-guide/dvc-file-format):
@@ -120,13 +120,13 @@ It's enough to run `dvc checkout` or `dvc pull` to restore data files.
 
 ## Define steps
 
-Each step is described by providing a command to run, input data it takes and
-a list of output files. DVC is not Python or any other language specific and
-can wrap any command runnable via CLI.
+Each step is described by providing a command to run, input data it takes and a
+list of output files. DVC is not Python or any other language specific and can
+wrap any command runnable via CLI.
 
 - The first actual step, extract XML from the archive. Note, we don't need to
-  run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache, takes the
-  file under DVC control) automatically:
+  run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache, takes
+  the file under DVC control) automatically:
 
 ```dvc
     $ dvc run -d data/Posts.xml.zip \
@@ -139,7 +139,8 @@ can wrap any command runnable via CLI.
 
 ### Expand to learn more about DVC internals
 
-Similar to `dvc add`, `dvc run` creates a [stage file](/doc/user-guide/dvc-file-format):
+Similar to `dvc add`, `dvc run` creates a
+[stage file](/doc/user-guide/dvc-file-format):
 
 ```yaml
 cmd: ' unzip data/Posts.xml.zip -d data'
@@ -155,8 +156,8 @@ outs:
 
 This file is using the same technique - pointers (md5 hashes) to the cache to
 describe and version control dependencies and outputs. Output `Posts.xml` file
-is automatically added to the `.gitignore` file and a link is created into a cache
-`.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
+is automatically added to the `.gitignore` file and a link is created into a
+cache `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
 that DVC files describe, we can restore the full chain (DAG) of commands we need
@@ -224,8 +225,8 @@ your actual workspace without copying every time object from/to the cache.
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and outputs DVC files describe we can restore the
-full chain (DAG) of commands we need to apply. This is important when you run
+By analyzing dependencies and outputs DVC files describe we can restore the full
+chain (DAG) of commands we need to apply. This is important when you run
 `dvc repro` to reproduce the final or intermediate result.
 
 `dvc pipeline show` helps to visualize the pipeline (run it with `-c` option to
@@ -327,9 +328,9 @@ Specify `ngram` parameter in `CountVectorizer` (lines 72–73):
     $ dvc repro evaluate.dvc
 ```
 
-> Since the data set for this example is extremely simplified to make it
-> simpler to run this pipeline, exact metric numbers may vary significantly
-> depending on the Python version you are using and other environment parameters.
+> Since the data set for this example is extremely simplified to make it simpler
+> to run this pipeline, exact metric numbers may vary significantly depending on
+> the Python version you are using and other environment parameters.
 
 - Take a look at the target metric improvement:
 

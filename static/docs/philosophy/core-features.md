@@ -9,8 +9,8 @@
 3. **Large data file versioning** works by creating pointers in your Git
    repository to the data cache on a local hard drive.
 
-4. **Programming language agnostic**: Python, R, Julia, shell scripts, etc.
-   ML library agnostic: Keras, Tensorflow, PyTorch, scipy, etc.
+4. **Programming language agnostic**: Python, R, Julia, shell scripts, etc. ML
+   library agnostic: Keras, Tensorflow, PyTorch, scipy, etc.
 
 5. **Open-sourced** and **Self-served**. DVC is free and does not require any
    additional services.

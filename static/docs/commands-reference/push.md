@@ -66,11 +66,12 @@ backward through the pipeline to find data files to push.
 
 - `--show-checksums` - shows checksums instead of file names.
 
-- `-r REMOTE`, `--remote REMOTE` specifies which remote cache (see `dvc remote list`) to push to. The value for `REMOTE` is a cache name defined using the
-  `dvc remote` command. If no `REMOTE` is given, or if no remote's are defined
-  in the workspace, an error message is printed. If the option is not specified,
-  then the default remote, configured with the `core.config` config option, is
-  used.
+- `-r REMOTE`, `--remote REMOTE` specifies which remote cache (see
+  `dvc remote list`) to push to. The value for `REMOTE` is a cache name defined
+  using the `dvc remote` command. If no `REMOTE` is given, or if no remote's are
+  defined in the workspace, an error message is printed. If the option is not
+  specified, then the default remote, configured with the `core.config` config
+  option, is used.
 
 - `-a`, `--all-branches` - determines the files to upload by examining files
   associated with all branches of the DVC files in the project directory. It's
@@ -107,9 +108,9 @@ backward through the pipeline to find data files to push.
 ## Examples
 
 For using the `dvc push` command, remote storage must be defined. For an
-existing project a remote is usually defined and you can use `dvc remote list` to check existing remotes. Just to remind how it is done and set a
-context for the example, let's define an SSH remote with the `dvc remote add`
-command:
+existing project a remote is usually defined and you can use `dvc remote list`
+to check existing remotes. Just to remind how it is done and set a context for
+the example, let's define an SSH remote with the `dvc remote add` command:
 
 ```dvc
     $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
@@ -142,8 +143,8 @@ Push outputs of a specific dvc file:
 
 ## Examples: With dependencies
 
-Demonstrating the `--with-deps` flag requires a larger example. First, assume
-a pipeline has been setup with these stages:
+Demonstrating the `--with-deps` flag requires a larger example. First, assume a
+pipeline has been setup with these stages:
 
 ```dvc
     $ dvc pipeline show
