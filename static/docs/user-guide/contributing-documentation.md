@@ -42,9 +42,11 @@ follow the steps below:
 - Get the latest development version by
   [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
   repo from GitHub:
+
   ```dvc
   $ git clone git@github.com:<username>/dvc.org.git
   ```
+
 - Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
   installed.
 - Install the dependencies by running the command `npm install`.
@@ -55,11 +57,13 @@ follow the steps below:
   environment](https://virtualenv.pypa.io/en/latest/userguide/) before
   installing the required libraries for style checkers. Follow the instructions
   to create one:
+
   ```dvc
   $ cd dvc.org
   $ virtualenv --python python3 .env
   $ source .env/bin/activate
   ```
+
 - Install the style checker's requirements using `pip install -r requirements.txt`.
 - Install coding style pre-commit hook with `pre-commit install`.
 - Start the development server using `npm run dev` which will start the server
