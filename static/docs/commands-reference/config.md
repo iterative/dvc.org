@@ -70,8 +70,10 @@ This is the main section with the general config options:
 
 ### remote
 
-These are sections in the config file that describe particular remotes. See `dvc
-remote` for more info.
+These are sections in the config file that describe particular remotes. These
+sections contain a `url` value, and can also specify `user`, `port`, `keyfile`,
+`timeout`, `ask_password`, and other cloud-specific key/value pairs for each
+remote. See `dvc remote` for more info.
 
 ### cache
 
