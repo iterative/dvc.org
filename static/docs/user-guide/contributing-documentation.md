@@ -5,21 +5,23 @@ We welcome any contributions to our documentation repository,
 
 ## How to suggest a change
 
-Excluding very trivial changes, all contributions should be connected to an
-existing issue.
+Excluding very trivial changes (that you can use the **Edit on Github** button
+to submit a PR for, see detail below), we encourage you to create an
+[issue](https://github.com/iterative/dvc.org/issues) first.
 
 Please search the [issue tracker](https://github.com/iterative/dvc.org/issues)
 before creating a new issue. Issue can be for example about typographical
 errors, required updates to the documentation, etc.
 
-We'd like to encourage you to try and fix the issue yourself! Please read the
-sections below to learn how to submit your changes.
+We'd like to encourage you to try and fix the issue or make an improvement
+yourself! Please, read the sections below to learn how to submit your changes.
 
 ## Structure of the project
 
 - [Content](https://github.com/iterative/dvc.org/tree/master/static/docs)
-  (`/static/docs`) - Markdown files of the different pages to render dynamically
-  in the browser.
+  (`/static/docs`) -
+  [Markdown](https://guides.github.com/features/mastering-markdown/) files of
+  the different pages to render dynamically in the browser.
 
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
   (`/static/img`) - add new images, gifs, svgs, etc here. Reference them from
@@ -101,8 +103,8 @@ We will review your PR as soon as possible. Thank you for contributing!
   plugin to format the content.
 - Using `dvc <command>` in the documentation will create a link to that command
   automatically.
-- Syntax highlighting in fenced code blocks should have 4 spaces indentation and
-  support the `usage` and `dvc` custom languages.
+- Syntax highlighting in fenced code blocks should use the `usage` and `dvc`
+  custom languages:
 
   - `usage` is employed to show `dvc help` commands output in each command
     reference doc.
@@ -111,23 +113,3 @@ We will review your PR as soon as possible. Thank you for contributing!
 
   > Check out any of the command reference `.md` source code to get a better
   > idea.
-
-## Commit style guidelines
-
-Format:
-
-```
-(short description)
-
-(long description)
-
-Fixes #(github issue id).
-```
-
-Example:
-
-```
-Add documentation for `dvc version` command
-
-Fixes #123
-```
