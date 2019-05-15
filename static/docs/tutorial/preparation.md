@@ -84,9 +84,14 @@ it works.
     A  .dvc/config
 
     $ cat .dvc/.gitignore
-    cache
-    state
-    lock
+    /state
+    /lock
+    /config.local
+    /updater
+    /updater.lock
+    /state-journal
+    /state-wal
+    /cache
 
     $ git commit -m "init DVC"
 ```
