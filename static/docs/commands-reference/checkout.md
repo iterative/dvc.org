@@ -48,6 +48,7 @@ option is `copy`). Instead, DVC uses links to perform data file restoration.
 This is crucial for large files where checking out a 50Gb file might take a few
 minutes. With DVC links, restoring a 50Gb data file will take less than a
 second.
+
 > Note that when linking files takes longer than expected and `cache.type` is
 > not set, a warning will be displayed reminding users about the faster link
 > types available. These warnings can be turned off setting the

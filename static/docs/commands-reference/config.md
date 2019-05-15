@@ -100,7 +100,7 @@ cache` for more details.)
   It's highly recommended to enable this mod when `cache.type` is set to
   `hardlink` or `symlink`. 
 
-- `cache.type` - link type that dvc should use to link data files from cache to
+- `cache.type` - link type that DVC should use to link data files from cache to
   your workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
   combination of those, separated by commas: `reflink,symlink`.  
   By default, DVC will try `reflink` and `copy` link type in order to choose the
