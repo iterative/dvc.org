@@ -3,8 +3,8 @@
 Get or set repository or global DVC config options.
 
 ```usage
-    usage: dvc config [-h] [-q | -v] [--global] [--system] [--local] [-u] name
-                      [value]
+    usage: dvc config [-h] [-q | -v] [--global] [--system] [--local]
+                      [-u] name [value]
 
     positional arguments:
         name                  Option name
@@ -13,8 +13,9 @@ Get or set repository or global DVC config options.
 
 ## Description
 
-You can query/set/replace/unset DVC configuration options with this command. It takes a
-config option `name` (a section and a key, separated by a dot) and its `value`.
+You can query/set/replace/unset DVC configuration options with this command. It
+takes a config option `name` (a section and a key, separated by a dot) and its
+`value`.
 
 This command reads and overwrites the DVC config file `.dvc/config`. If
 `--local` option is specified, `.dvc/config.local` is modified instead.
@@ -35,8 +36,8 @@ corresponding config file.
 
 - `--local` - modify a local config file instead of `.dvc/config`. It is located
   in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-  specify private config options in your config, that you don't want to track and
-  share through Git.
+  specify private config options in your config, that you don't want to track
+  and share through Git.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -59,8 +60,8 @@ remote` for more info.
 
 This is the main section with the general config options:
 
-- `core.loglevel` - log level that the `dvc` command should use. Possible values are:
-  `info`, `debug`, `warning`, `error`.
+- `core.loglevel` - log level that the `dvc` command should use. Possible values
+  are: `info`, `debug`, `warning`, `error`.
 
 - `core.remote` - name of the remote that should be used by default.
 
@@ -70,10 +71,10 @@ DVC cache is a hidden storage (by default located in the `.dvc/cache` directory)
 for files that are under DVC control, and their different versions. (See `dvc
 cache` for more details.)
 
-- `cache.dir` - set/unset cache directory location. A correct value must be either an
-  absolute path or a path **relative to the config file location**. The default
-  value is `cache`, which resolved relative to the default project config
-  location results in `.dvc/cache`.
+- `cache.dir` - set/unset cache directory location. A correct value must be
+  either an absolute path or a path **relative to the config file location**.
+  The default value is `cache`, which resolved relative to the default project
+  config location results in `.dvc/cache`.
   > See also helper command `dvc cache dir` that properly transform paths
   relative to the present working directory into relative to the project config
   file.
@@ -134,17 +135,17 @@ State config options. Check the [DVC Files and
 Directories](/doc/user-guide/dvc-files-and-directories) to learn more about the
 state file that is used for optimization.
 
-- `state.row_limit` - maximum number of entries in the state database which affects
-  the physical size of the state file itself as well as the performance of
-  certain DVC operations. The bigger the limit the more checksum history DVC can
-  keep in order to avoid sequential checksum recalculations for the files.
+- `state.row_limit` - maximum number of entries in the state database which
+  affects the physical size of the state file itself as well as the performance
+  of certain DVC operations. The bigger the limit the more checksum history DVC
+  can keep in order to avoid sequential checksum recalculations for the files.
   Default limit is set to 10 000 000 rows.
 
-- `state.row_cleanup_quota` - percentage of the state database that is going to be
-  deleted when it hits the `state.row_limit`. When an entry in the database is used
-  (e.g. during the `dvc status`) dvc updates the timestamp on that entry so that
-  when it needs to cleanup the database it could sort them by the timestamp and
-  remove the oldest ones. Default quota is set to 50(percent).
+- `state.row_cleanup_quota` - percentage of the state database that is going to
+  be deleted when it hits the `state.row_limit`. When an entry in the database
+  is used (e.g. during the `dvc status`) dvc updates the timestamp on that entry
+  so that when it needs to cleanup the database it could sort them by the
+  timestamp and remove the oldest ones. Default quota is set to 50(percent).
 
 ## Examples: Core config options
 
