@@ -42,12 +42,33 @@ follow the steps below:
 - Get the latest development version by
   [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
   repo from GitHub:
+
   ```dvc
-      $ git clone git@github.com:<username>/dvc.org.git
+  $ git clone git@github.com:<username>/dvc.org.git
   ```
+
 - Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
   installed.
 - Install the dependencies by running the command `npm install`.
+- Make sure you have python 3.6 or higher installed. It will be required to run
+  style checkers on pre-commit. On Mac OS, use `brew` to install the lastest
+  version of python.
+- We **strongly** recommend initializing a
+  [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
+  installing the required libraries for style checkers. Follow the instructions
+  to create one:
+
+  ```dvc
+  $ cd dvc.org
+  $ virtualenv --python python3 .env
+  $ source .env/bin/activate
+  ```
+
+- Install the style checker's requirements using
+  `pip install -r requirements.txt`.
+- Install coding style pre-commit hook with `pre-commit install`.
+- Once the `pre-commit` hook is installed, you may deactivate the virtual
+  environment by running `deactivate`.
 - Start the development server using `npm run dev` which will start the server
   on the default port `3000`.
 - Visit `http://localhost:3000/` and navigate to the docs in question.
@@ -65,7 +86,6 @@ Otherwise, please refer to the following procedure:
 - Setup the [development environment](#development-environment) explained above.
 - Format the code by following the
   [code style guidelines](#code-style-guidelines) below.
-- Auto-format any JS code changes by running `npm run prettier-src`.
 - Commit and push the changes to your fork of
   [dvc.org](https://github.com/iterative/dvc.org.git).
 - Please follow the [commit style guidelines](#commit-style-guidelines)
@@ -97,17 +117,17 @@ We will review your PR as soon as possible. Thank you for contributing!
 Format:
 
 ```
-    (short description)
+(short description)
 
-    (long description)
+(long description)
 
-    Fixes #(github issue id).
+Fixes #(github issue id).
 ```
 
 Example:
 
 ```
-    Add documentation for `dvc version` command
+Add documentation for `dvc version` command
 
-    Fixes #123
+Fixes #123
 ```
