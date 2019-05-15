@@ -53,8 +53,8 @@ follow the steps below:
 - Make sure you have python 3.6 or higher installed. It will be required to run
   style checkers on pre-commit. On Mac OS, use `brew` to install the lastest
   version of python.
-- We **strongly** recommend initializing a [virtual
-  environment](https://virtualenv.pypa.io/en/latest/userguide/) before
+- We **strongly** recommend initializing a
+  [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
   installing the required libraries for style checkers. Follow the instructions
   to create one:
 
@@ -64,8 +64,11 @@ follow the steps below:
   $ source .env/bin/activate
   ```
 
-- Install the style checker's requirements using `pip install -r requirements.txt`.
+- Install the style checker's requirements using
+  `pip install -r requirements.txt`.
 - Install coding style pre-commit hook with `pre-commit install`.
+- Once the `pre-commit` hook is installed, you may deactivate the virtual
+  environment by running `deactivate`.
 - Start the development server using `npm run dev` which will start the server
   on the default port `3000`.
 - Visit `http://localhost:3000/` and navigate to the docs in question.
@@ -83,7 +86,6 @@ Otherwise, please refer to the following procedure:
 - Setup the [development environment](#development-environment) explained above.
 - Format the code by following the
   [code style guidelines](#code-style-guidelines) below.
-- Auto-format any JS code changes by running `npm run prettier-src`.
 - Commit and push the changes to your fork of
   [dvc.org](https://github.com/iterative/dvc.org.git).
 - Please follow the [commit style guidelines](#commit-style-guidelines)
