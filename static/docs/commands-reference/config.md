@@ -137,6 +137,28 @@ cache` for more details.)
      for any repo/cache FS combination. Suitable for scenarios with relatively
      small data files, where copying them is not a performance/storage concern.
 
+- `cache.slow_link_warning` - used to turn the warning about having a slow cache
+  link type off/on. Accepts values `true` and `false`.
+
+- `cache.local` - name of a local remote to use as local cache. This will
+  overwrite the value provided to `dvc config cache.dir` or `dvc cache dir`.
+  Refer to `dvc remote` for more info on "local remotes". 
+
+- `cache.ssh` - name of an [SSH remote to use as external
+  cache](/doc/user-guide/external-outputs#ssh).
+
+- `cache.s3` - name of an [Amazon S3 remote to [use as external
+  cache](/doc/user-guide/external-outputs#amazon-s-3).
+
+- `cache.gs` - name of a [Google Cloud Storage remote to use as external
+  cache](/doc/user-guide/external-outputs#google-cloud-storage.
+
+- `cache.hdfs` - name of an [HDFS remote to use as external
+  cache](/doc/user-guide/external-outputs#hdfs).
+
+- `cache.azure` - name of an Azure remote to use as [external
+  cache](/doc/user-guide/external-outputs).
+
 ### state
 
 State config options. Check the [DVC Files and
