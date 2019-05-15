@@ -51,11 +51,6 @@ corresponding config file.
 These are the `name` parameters that can be used with `dvc config`, or the
 sections in the project config file (`.dvc/config`).
 
-### remote
-
-These are sections in the config file that describe particular remotes. See `dvc
-remote` for more info.
-
 ### core
 
 This is the main section with the general config options:
@@ -73,6 +68,11 @@ This is the main section with the general config options:
   statistics](/doc/user-guide/analytics) off/on. Accepts values `true` and
   `false`.
 
+### remote
+
+These are sections in the config file that describe particular remotes. See `dvc
+remote` for more info.
+
 ### cache
 
 DVC cache is a hidden storage (by default located in the `.dvc/cache` directory)
@@ -89,49 +89,53 @@ cache` for more details.)
 
 - `cache.protected` - makes files in the workspace read-only. Possible values
   are `true` or `false` (default). Run `dvc checkout` for the change go into
-  effect. It affects only files that are under DVC control, providing an
-  additional layer of security to your data. Due to the way DVC handles linking
-  between the data files in the cache and their counterparts in the working
-  directory it's easy to accidentally corrupt the cached version of a file by
-  editing or overwriting it. Turning this config option on forces you to run`dvc
-  unprotect` before updating a file.
+  effect. (It affects only files that are under DVC control.)  
+  Due to the way DVC handles linking between the data files in the cache and
+  their counterparts in the working directory, it's easy to accidentally corrupt
+  the cached version of a file by editing or overwriting it. Turning this config
+  option on forces you to run `dvc unprotect` before updating a file, providing
+  an additional layer of security to your data.  
+  It's highly recommended to enable this mod when `cache.type` is set to
+  `hardlink` or `symlink`. 
 
 - `cache.type` - link type that dvc should use to link data files from cache to
   your workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
-  combination of those separated with commas: `reflink,copy`. By default, DVC
-  will try `reflink` and `copy` link type in order to choose the most effective
-  link type of those two. By default DVC is not trying `symlink` and `hardlink`
-  to protect user from accidental cache and repository corruption. Here are pros
-  and cons of different link types. Ordered from the best and the most efficient
-  to the most inefficient. **Note!** Unless your workspace supports `reflinks`
-  (if you are on a recent Mac then chances are you are using `reflinks`) or
-  you've manually specified `cache.type copy`, you are **corrupting** the cache
-  if you are editing the data file in the workspace. Check the `cache.protected`
-  config option above and corresponding `dvc unprotect` command to modify files
-  safely.
+  combination of those separated with commas: `reflink,copy`.  
+  By default, DVC will try `reflink` and `copy` link type in order to choose the
+  most effective of those two. DVC avoids `symlink` and `hardlink` types by
+  default to protect user from accidental cache and repository corruption.  
+  > **Note!** Unless your workspace supports `reflinks` – if you are on a recent
+  Mac chances are you are using `reflinks` – or you've manually specified
+  `cache.type copy` **you are corrupting** the cache if you edit data files in
+  the workspace. See the `cache.protected` config option above and corresponding
+  `dvc unprotect` command to modify files safely.
+
+  There are pros and cons to different link types. Each type is explained below,
+  from the best and most efficient to the least efficient:
 
   1. **`reflink`** - this is the best link type that could be. It is as fast as
      hard/symlinks, but doesn't carry a risk of cache corruption, since
      filesystem takes care of copying the file if you try to edit it in place,
-     thus keeping a linked cache file intact. Unfortunately reflinks are
-     currently supported on a limited number of filesystems (Linux: Btrfs, XFS,
-     OCFS2; MacOS: APFS), but they are coming to every new filesystem and in the
-     future will be supported by the majority of filesystems in use.
+     thus keeping a linked cache file intact.  
+     Unfortunately reflinks are currently supported on a limited number of
+     filesystems (Linux: Btrfs, XFS, OCFS2; MacOS: APFS), but they are coming to
+     every new filesystem and in the future will be supported by the majority of
+     filesystems in use.
 
   2. **`hardlink`** - the most efficient way to link your data to cache if both
      your repo and your cache directory are located on the same
-     filesystem/drive. Please note that data file linked with hardlink should
-     never be edited in place, but instead deleted and then replaced with a new
-     file, otherwise it might cause cache corruption and automatic deletion of a
-     cache file by dvc.
+     filesystem/drive.  
+     Please note that hardlinked data files should never be edited in place, but
+     instead deleted and then replaced with a new file, otherwise it might cause
+     cache corruption and automatic deletion of a cache file by dvc.
 
   3. **`symlink`** - The most efficient way to link your data to cache if your
      repo and your cache directory are located on different filesystems/drives
      (i.e. repo is located on ssd for performance, but cache dir is located on
-     hdd for bigger storage). Please note that data file linked with symlink
-     should never be edited in place, but instead deleted and then replaced with
-     a new file, otherwise it might cause cache corruption and automatic
-     deletion of a cache file by dvc.
+     hdd for bigger storage).  
+     Please note that data file linked with symlink should never be edited in
+     place, but instead deleted and then replaced with a new file, otherwise it
+     might cause cache corruption and automatic deletion of a cache file by dvc.
 
   4. **`copy`** - The most inefficient link type, yet the most widely supported
      for any repo/cache FS combination. Suitable for scenarios with relatively
@@ -147,11 +151,11 @@ cache` for more details.)
 - `cache.ssh` - name of an [SSH remote to use as external
   cache](/doc/user-guide/external-outputs#ssh).
 
-- `cache.s3` - name of an [Amazon S3 remote to [use as external
+- `cache.s3` - name of an [Amazon S3 remote to use as external
   cache](/doc/user-guide/external-outputs#amazon-s-3).
 
 - `cache.gs` - name of a [Google Cloud Storage remote to use as external
-  cache](/doc/user-guide/external-outputs#google-cloud-storage.
+  cache](/doc/user-guide/external-outputs#google-cloud-storage).
 
 - `cache.hdfs` - name of an [HDFS remote to use as external
   cache](/doc/user-guide/external-outputs#hdfs).
