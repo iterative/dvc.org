@@ -3,12 +3,12 @@
 Get or set repository or global DVC config options.
 
 ```usage
-    usage: dvc config [-h] [-q | -v] [--global] [--system] [--local]
-                      [-u] name [value]
+usage: dvc config [-h] [-q | -v] [--global] [--system] [--local]
+                  [-u] name [value]
 
-    positional arguments:
-        name                  Option name
-        value                 Option value
+positional arguments:
+    name                  Option name
+    value                 Option value
 ```
 
 ## Description
@@ -185,59 +185,59 @@ state file that is used for optimization.
 
 Set the `dvc` log level to `debug`:
 ```dvc
-    $ dvc config core.loglevel debug
+$ dvc config core.loglevel debug
 ```
 
 Add an S3 remote and set it as the project default:
 ```dvc
-    $ dvc remote add myremote s3://bucket/path
-    $ dvc config core.remote myremote
+$ dvc remote add myremote s3://bucket/path
+$ dvc config core.remote myremote
 ```
 
 ## Examples: Default remotes
 
 Use remote `myremote` by default:
 ```dvc
-    $ dvc config core.remote myremote
+$ dvc config core.remote myremote
 ```
 
 Get the default remote:
 ```dvc
-    $ dvc config core.remote
-    myremote
+$ dvc config core.remote
+myremote
 ```
 
 Clear default remote value:
 ```dvc
-    $ dvc config --unset core.remote
+$ dvc config --unset core.remote
 ```
 which is equivalent to:
 ```dvc
-    $ dvc config core.remote -u
+$ dvc config core.remote -u
 ```
 
 ## Examples: Cache config options
 
 Set the cache directory to an absolute path:
 ```dvc
-    $ dvc config cache.dir /mnt/cache
-    $ dvc config cache.dir
-    /mnt/cache
+$ dvc config cache.dir /mnt/cache
+$ dvc config cache.dir
+/mnt/cache
 ```
 or to a relative path (resolved from `./.dvc/`):
 ```dvc
-    $ dvc config cache.dir ../../mycache
-    $ dvc pull -q
-    $ ls ../mycache
-    2f/
+$ dvc config cache.dir ../../mycache
+$ dvc pull -q
+$ ls ../mycache
+2f/
 ```
 
 Set cache type: if `reflink` is not available, use `copy`:
 ```dvc
-    $ dvc config cache.type reflink,copy
+$ dvc config cache.type reflink,copy
 ```
 
 Protect data files under DVC control by making them read-only:
 ```dvc
-    $ dvc config cache.protected true
+$ dvc config cache.protected true
 ```
