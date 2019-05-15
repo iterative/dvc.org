@@ -65,6 +65,14 @@ This is the main section with the general config options:
 
 - `core.remote` - name of the remote that should be used by default.
 
+- `core.interactive` - whether to always ask for confirmation before reproducing
+  each stage in `dvc repro`. By default this behavior requires the use of option
+  `-i` in that command. Accepts values `true` and `false`.
+
+- `core.analytics` - used to turn [anonymized usage
+  statistics](/doc/user-guide/analytics) off/on. Accepts values `true` and
+  `false`.
+
 ### cache
 
 DVC cache is a hidden storage (by default located in the `.dvc/cache` directory)
