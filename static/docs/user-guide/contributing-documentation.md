@@ -5,21 +5,23 @@ We welcome any contributions to our documentation repository,
 
 ## How to suggest a change
 
-Excluding very trivial changes, all contributions should be connected to an
-existing issue.
+Excluding very trivial changes (that you can use the **Edit on Github** button
+to submit a PR for, see detail below), we encourage you to create an
+[issue](https://github.com/iterative/dvc.org/issues) first.
 
 Please search the [issue tracker](https://github.com/iterative/dvc.org/issues)
 before creating a new issue. Issue can be for example about typographical
 errors, required updates to the documentation, etc.
 
-We'd like to encourage you to try and fix the issue yourself! Please read the
-sections below to learn how to submit your changes.
+We'd like to encourage you to try and fix the issue or make an improvement
+yourself! Please, read the sections below to learn how to submit your changes.
 
 ## Structure of the project
 
 - [Content](https://github.com/iterative/dvc.org/tree/master/static/docs)
-  (`/static/docs`) - Markdown files of the different pages to render dynamically
-  in the browser.
+  (`/static/docs`) -
+  [Markdown](https://guides.github.com/features/mastering-markdown/) files of
+  the different pages to render dynamically in the browser.
 
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
   (`/static/img`) - add new images, gifs, svgs, etc here. Reference them from
@@ -42,12 +44,33 @@ follow the steps below:
 - Get the latest development version by
   [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
   repo from GitHub:
+
   ```dvc
-      $ git clone git@github.com:<username>/dvc.org.git
+  $ git clone git@github.com:<username>/dvc.org.git
   ```
+
 - Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
   installed.
 - Install the dependencies by running the command `npm install`.
+- Make sure you have python 3.6 or higher installed. It will be required to run
+  style checkers on pre-commit. On Mac OS, use `brew` to install the lastest
+  version of python.
+- We **strongly** recommend initializing a
+  [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
+  installing the required libraries for style checkers. Follow the instructions
+  to create one:
+
+  ```dvc
+  $ cd dvc.org
+  $ virtualenv --python python3 .env
+  $ source .env/bin/activate
+  ```
+
+- Install the style checker's requirements using
+  `pip install -r requirements.txt`.
+- Install coding style pre-commit hook with `pre-commit install`.
+- Once the `pre-commit` hook is installed, you may deactivate the virtual
+  environment by running `deactivate`.
 - Start the development server using `npm run dev` which will start the server
   on the default port `3000`.
 - Visit `http://localhost:3000/` and navigate to the docs in question.
@@ -65,7 +88,6 @@ Otherwise, please refer to the following procedure:
 - Setup the [development environment](#development-environment) explained above.
 - Format the code by following the
   [code style guidelines](#code-style-guidelines) below.
-- Auto-format any JS code changes by running `npm run prettier-src`.
 - Commit and push the changes to your fork of
   [dvc.org](https://github.com/iterative/dvc.org.git).
 - Please follow the [commit style guidelines](#commit-style-guidelines)
@@ -81,8 +103,8 @@ We will review your PR as soon as possible. Thank you for contributing!
   plugin to format the content.
 - Using `dvc <command>` in the documentation will create a link to that command
   automatically.
-- Syntax highlighting in fenced code blocks should have 4 spaces indentation and
-  support the `usage` and `dvc` custom languages.
+- Syntax highlighting in fenced code blocks should use the `usage` and `dvc`
+  custom languages:
 
   - `usage` is employed to show `dvc help` commands output in each command
     reference doc.
@@ -91,23 +113,3 @@ We will review your PR as soon as possible. Thank you for contributing!
 
   > Check out any of the command reference `.md` source code to get a better
   > idea.
-
-## Commit style guidelines
-
-Format:
-
-```
-    (short description)
-
-    (long description)
-
-    Fixes #(github issue id).
-```
-
-Example:
-
-```
-    Add documentation for `dvc version` command
-
-    Fixes #123
-```
