@@ -54,14 +54,21 @@ export default class LandingHero extends Component {
           </Title>
           <Buttons>
             <OnlyMobile>
-              <GetStartedButton onClick={this.getStarted}>Get started</GetStartedButton>
+              <GetStartedButton onClick={this.getStarted}>
+                Get started
+              </GetStartedButton>
             </OnlyMobile>
             <OnlyDesktop>
               <DownloadButton />
             </OnlyDesktop>
             <WatchButton onClick={this.scrollToVideo}>
               <ActionIcon>
-                <img src="/static/img/play-icon.svg" alt="Watch video" width={20} height={20} />
+                <img
+                  src="/static/img/play-icon.svg"
+                  alt="Watch video"
+                  width={20}
+                  height={20}
+                />
               </ActionIcon>
               <ActionInner>
                 <Action>Watch video</Action>

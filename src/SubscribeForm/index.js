@@ -23,7 +23,12 @@ export default () => (
 
     {/*real people should not fill this in and expect good things - do not remove this or risk form bot signups*/}
     <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
-      <input type="text" name="b_a08bf93caae4063c4e6a351f6_24c0ecc49a" tabIndex="-1" value="" />
+      <input
+        type="text"
+        name="b_a08bf93caae4063c4e6a351f6_24c0ecc49a"
+        tabIndex="-1"
+        value=""
+      />
     </div>
 
     <Button type="submit" name="subscribe" id="mc-embedded-subscribe">
