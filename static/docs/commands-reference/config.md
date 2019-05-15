@@ -1,31 +1,31 @@
 # config
 
-Get or set repository or global DVC settings.
+Get or set repository or global DVC config options.
 
 ```usage
     usage: dvc config [-h] [-q | -v] [--global] [--system] [--local] [-u] name
                       [value]
 
     positional arguments:
-        name                  Setting name
-        value                 Setting value
+        name                  Option name
+        value                 Option value
 ```
 
 ## Description
 
-You can query/set/replace/unset DVC settings with this command. It takes a
-setting `name` (a section and a key, separated by a dot) and its `value`.
+You can query/set/replace/unset DVC configuration options with this command. It takes a
+config option `name` (a section and a key, separated by a dot) and its `value`.
 
 This command reads and overwrites the DVC config file `.dvc/config`. If
 `--local` option is specified, `.dvc/config.local` is modified instead.
 
-If the setting `value` is not provided and `--unset` option is not used, this
-command returns the current value of the setting, if found in the corresponding
-config file.
+If the config option `value` is not provided and `--unset` option is not used,
+this command returns the current value of the config option, if found in the
+corresponding config file.
 
 ## Options
 
-* `-u`, `--unset` - remove a specified setting from a config file.
+* `-u`, `--unset` - remove a specified config option from a config file.
 
 * `--global` - modify a global config file(e.g. `~/.config/dvc/config`) instead
   of the project's `.dvc/config`.
@@ -35,7 +35,7 @@ config file.
 
 * `--local` - modify a local config file instead of `.dvc/config`. It is located
   in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-  specify private settings in your config, that you don't want to track and
+  specify private config options in your config, that you don't want to track and
   share through Git.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
@@ -45,7 +45,7 @@ config file.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Available settings and sections
+## Configuration sections
 
 These are the `name` parameters that can be used with `dvc config`, or the
 sections in the project config file (`.dvc/config`).
@@ -57,7 +57,7 @@ remote` for more info.
 
 ### core
 
-This is the main section with the general settings, having 2 possible settings:
+This is the main section with the general config options:
 
 * `core.loglevel` - log level that the `dvc` command should use. Possible values are:
   `info`, `debug`, `warning`, `error`.
@@ -84,7 +84,7 @@ cache` for more details.)
   additional layer of security to your data. Due to the way DVC handles linking
   between the data files in the cache and their counterparts in the working
   directory it's easy to accidentally corrupt the cached version of a file by
-  editing or overwriting it. Turning this setting on forces you to run`dvc
+  editing or overwriting it. Turning this config option on forces you to run`dvc
   unprotect` before updating a file.
 
 * `cache.type` - link type that dvc should use to link data files from cache to
@@ -98,7 +98,7 @@ cache` for more details.)
   (if you are on a recent Mac then chances are you are using `reflinks`) or
   you've manually specified `cache.type copy`, you are **corrupting** the cache
   if you are editing the data file in the workspace. Check the `cache.protected`
-  mode setting above and corresponding `dvc unprotect` command to modify files
+  config option above and corresponding `dvc unprotect` command to modify files
   safely.
 
   1. **`reflink`** - this is the best link type that could be. It is as fast as
@@ -130,7 +130,7 @@ cache` for more details.)
 
 ### state
 
-State settings. Check the [DVC Files and
+State config options. Check the [DVC Files and
 Directories](/doc/user-guide/dvc-files-and-directories) to learn more about the
 state file that is used for optimization.
 
@@ -146,7 +146,7 @@ state file that is used for optimization.
   when it needs to cleanup the database it could sort them by the timestamp and
   remove the oldest ones. Default quota is set to 50(percent).
 
-## Examples: Core DVC settings
+## Examples: Core config options
 
 Set the `dvc` log level to `debug`:
 ```dvc
@@ -181,7 +181,7 @@ which is equivalent to:
     $ dvc config core.remote -u
 ```
 
-## Examples: Cache settings
+## Examples: Cache config options
 
 Set the cache directory to an absolute path:
 ```dvc
