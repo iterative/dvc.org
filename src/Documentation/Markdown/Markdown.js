@@ -72,10 +72,10 @@ const CodeBlock = ({ value, language }) => {
 
 export default class Markdown extends Component {
   constructor() {
-    super()
-    this.touchstartX = 0
-    this.touchendX = 0
-    this.isCodeBlock = false
+    super();
+    this.touchstartX = 0;
+    this.touchendX = 0;
+    this.isCodeBlock = false;
   }
 
   componentDidMount() {

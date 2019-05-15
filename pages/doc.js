@@ -41,14 +41,49 @@ export default class Documentation extends Component {
   }
   componentDidMount() {
     let self = this;
+    $.fn.scrollStopped = function() {
+      var that = this, $this = $(that);
+      let callback = function() {
+        let fromTop = $(this).scrollTop();
+        let scrollItems = self.state.headings.map((heading) => {
+          return $(`#${heading.slug}`);
+        });
+        let cur = scrollItems.filter(function (item) {
+          return $(item).offset().top < fromTop;
+        }).map(function (item) {
+          return item;
+        });
+        console.log(cur);
+        if(cur.length>0){
+          cur = cur[cur.length - 1];
+          self.setState({
+            currentSubsection: cur.attr('id')
+          })
+        }else{
+          self.setState({
+            currentSubsection: null
+          })
+        }
+      };
+      $this.scroll(function(ev) {
+        clearTimeout($this.data('scrollTimeout'));
+        $this.data('scrollTimeout', setTimeout(callback.bind(that), 50, ev));
+      });
+    };
+    $('#bodybag').scrollStopped();
     this.loadStateFromURL();
     this.initDocsearch();
+    $(document).on('scroll','*',function (e) {
+      e.preventDefault();
+      console.log(e.target);
+    })
     window.addEventListener('popstate', this.loadStateFromURL);
     this.ps = new PerfectScrollbar('#sidebar-menu', {
       // wheelPropagation: window.innerWidth <= 572
       wheelPropagation: true
     });
-    $('#bodybag').scroll(function(){
+    //variant 2
+   /* $('#bodybag').scroll(function(){
       let fromTop = $(this).scrollTop();
       let scrollItems = self.state.headings.map((heading)=>{
         return $(`#${heading.slug}`);
@@ -64,7 +99,7 @@ export default class Documentation extends Component {
           currentSubsection: cur.attr('id')
         })
       }
-    })
+    })*/
   }
 
   componentDidUpdate() {
@@ -180,11 +215,8 @@ export default class Documentation extends Component {
   }
 
   scrollToLink = href => {
-    /*this.setState({
-      currentSubsection: href.slice(1)
-    });*/
     scroller.scrollTo(href.slice(1), {
-      duration: 600,
+      duration: 200,
       offset: -85,
       delay: 0,
       smooth: 'ease',
@@ -193,13 +225,7 @@ export default class Documentation extends Component {
   };
 
   scrollTop = () => {
-    animateScroll.scrollTo(0, {
-      duration: 300,
-      offset: -85,
-      delay: 0,
-      smooth: 'ease',
-      containerId: 'bodybag'
-    })
+    $('#bodybag').scrollTop(0);
   }
 
   toggleMenu = () => {

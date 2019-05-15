@@ -17,7 +17,7 @@ export const RightPanel = ({ headings, scrollToLink, githubLink, currentSubsecti
         <HeadingLink
           level={3}
           key={`link-${headingIndex}`}
-          onClick={() => scrollToLink('#' + slug)}
+          onClick={(e) => scrollToLink('#' + slug)}
           href={`#${slug}`}
           isActive={slug===currentSubsection}
         >
