@@ -64,8 +64,8 @@ This is the main section with the general config options:
   each stage in `dvc repro`. By default this behavior requires the use of option
   `-i` in that command. Accepts values `true` and `false`.
 
-- `core.analytics` - used to turn [anonymized usage
-  statistics](/doc/user-guide/analytics) off/on. Accepts values `true` and
+- `core.analytics` - used to turn off [anonymized usage
+  statistics](/doc/user-guide/analytics). Accepts values `true` (default) and
   `false`.
 
 ### remote
@@ -100,7 +100,7 @@ cache` for more details.)
 
 - `cache.type` - link type that dvc should use to link data files from cache to
   your workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
-  combination of those separated with commas: `reflink,copy`.  
+  combination of those, separated by commas: `reflink,symlink`.  
   By default, DVC will try `reflink` and `copy` link type in order to choose the
   most effective of those two. DVC avoids `symlink` and `hardlink` types by
   default to protect user from accidental cache and repository corruption.  
@@ -141,8 +141,13 @@ cache` for more details.)
      for any repo/cache FS combination. Suitable for scenarios with relatively
      small data files, where copying them is not a performance/storage concern.
 
-- `cache.slow_link_warning` - used to turn the warning about having a slow cache
-  link type off/on. Accepts values `true` and `false`.
+- `cache.slow_link_warning` - used to turn off the warnings about having a slow
+  cache link type. These warnings are thrown by `dvc pull` and `dvc checkout`
+  when linking files takes longer than usual, to remind them that there are
+  faster cache link types available than the defaults (`reflink` or `copy` – see
+  `cache.type`). Accepts values `true` and `false`.
+  > These warnings are automatically turned off when `cache.type` is manually
+  > set.
 
 - `cache.local` - name of a local remote to use as local cache. This will
   overwrite the value provided to `dvc config cache.dir` or `dvc cache dir`.
