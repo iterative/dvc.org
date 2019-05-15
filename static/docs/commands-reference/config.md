@@ -25,15 +25,15 @@ corresponding config file.
 
 ## Options
 
-* `-u`, `--unset` - remove a specified config option from a config file.
+- `-u`, `--unset` - remove a specified config option from a config file.
 
-* `--global` - modify a global config file(e.g. `~/.config/dvc/config`) instead
+- `--global` - modify a global config file(e.g. `~/.config/dvc/config`) instead
   of the project's `.dvc/config`.
 
-* `--system` - modify a system config file(e.g. `/etc/dvc.config`) instead of
+- `--system` - modify a system config file(e.g. `/etc/dvc.config`) instead of
   `.dvc/config`.
 
-* `--local` - modify a local config file instead of `.dvc/config`. It is located
+- `--local` - modify a local config file instead of `.dvc/config`. It is located
   in `.dvc/config.local` and is Git-ignored. This is useful when you need to
   specify private config options in your config, that you don't want to track and
   share through Git.
@@ -59,10 +59,10 @@ remote` for more info.
 
 This is the main section with the general config options:
 
-* `core.loglevel` - log level that the `dvc` command should use. Possible values are:
+- `core.loglevel` - log level that the `dvc` command should use. Possible values are:
   `info`, `debug`, `warning`, `error`.
 
-* `core.remote` - name of the remote that should be used by default.
+- `core.remote` - name of the remote that should be used by default.
 
 ### cache
 
@@ -70,7 +70,7 @@ DVC cache is a hidden storage (by default located in the `.dvc/cache` directory)
 for files that are under DVC control, and their different versions. (See `dvc
 cache` for more details.)
 
-* `cache.dir` - set/unset cache directory location. A correct value must be either an
+- `cache.dir` - set/unset cache directory location. A correct value must be either an
   absolute path or a path **relative to the config file location**. The default
   value is `cache`, which resolved relative to the default project config
   location results in `.dvc/cache`.
@@ -78,7 +78,7 @@ cache` for more details.)
   relative to the present working directory into relative to the project config
   file.
 
-* `cache.protected` - makes files in the workspace read-only. Possible values
+- `cache.protected` - makes files in the workspace read-only. Possible values
   are `true` or `false` (default). Run `dvc checkout` for the change go into
   effect. It affects only files that are under DVC control, providing an
   additional layer of security to your data. Due to the way DVC handles linking
@@ -87,7 +87,7 @@ cache` for more details.)
   editing or overwriting it. Turning this config option on forces you to run`dvc
   unprotect` before updating a file.
 
-* `cache.type` - link type that dvc should use to link data files from cache to
+- `cache.type` - link type that dvc should use to link data files from cache to
   your workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
   combination of those separated with commas: `reflink,copy`. By default, DVC
   will try `reflink` and `copy` link type in order to choose the most effective
@@ -134,13 +134,13 @@ State config options. Check the [DVC Files and
 Directories](/doc/user-guide/dvc-files-and-directories) to learn more about the
 state file that is used for optimization.
 
-* `state.row_limit` - maximum number of entries in the state database which affects
+- `state.row_limit` - maximum number of entries in the state database which affects
   the physical size of the state file itself as well as the performance of
   certain DVC operations. The bigger the limit the more checksum history DVC can
   keep in order to avoid sequential checksum recalculations for the files.
   Default limit is set to 10 000 000 rows.
 
-* `state.row_cleanup_quota` - percentage of the state database that is going to be
+- `state.row_cleanup_quota` - percentage of the state database that is going to be
   deleted when it hits the `state.row_limit`. When an entry in the database is used
   (e.g. during the `dvc status`) dvc updates the timestamp on that entry so that
   when it needs to cleanup the database it could sort them by the timestamp and
