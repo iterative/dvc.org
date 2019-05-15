@@ -29,8 +29,8 @@ nothing to do with DVC so far, it's just a simple preparation:
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` utility by default, so you'll need to use
-just use your browser to download `code.zip`.
+Windows does not ship `wget` utility by default, so you'll need to use just use
+your browser to download `code.zip`.
 
 </details>
 
@@ -63,15 +63,15 @@ $ pip install -r code/requirements.txt
 Then, we are creating the pipeline step-by-step, utilizing the same set of
 commands that are described in the [get started](/doc/get-started) chapters.
 
-* Initialize DVC repository (run it inside your Git repository):
+- Initialize DVC repository (run it inside your Git repository):
 
 ```dvc
 $ dvc init
 $ git commit -m "initialize DVC"
 ```
 
-* Download an input data set to the `data` directory and take it under DVC
-control:
+- Download an input data set to the `data` directory and take it under DVC
+  control:
 
 ```dvc
 $ mkdir data
@@ -86,18 +86,18 @@ $ dvc add data/Posts.xml.zip
 `dvc init` created a new directory `example/.dvc/` with `config`, `.gitignore`
 files and `cache` directory. These files and directories are hidden from a user
 in general and a user does not interact with these files directly. Check
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
-to learn more.
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
+more.
 
 When we run `dvc add Posts.xml.zip` the following happens. DVC creates an
-*orphaned* version of the [stage file](/doc/user-guide/dvc-file-format):
+_orphaned_ version of the [stage file](/doc/user-guide/dvc-file-format):
 
 ```yaml
-   md5: 4dbe7a4e5a0d41b652f3d6286c4ae788
-   outs:
-   - cache: true
-     md5: ce68b98d82545628782c66192c96f2d2
-     path: Posts.xml.zip
+md5: 4dbe7a4e5a0d41b652f3d6286c4ae788
+outs:
+  - cache: true
+    md5: ce68b98d82545628782c66192c96f2d2
+    path: Posts.xml.zip
 ```
 
 This is the file that should be committed into a version control system instead
@@ -111,7 +111,7 @@ It's enough to run `dvc checkout` or `dvc pull` to restore data files.
 
 </details>
 
-* Commit the data file meta-information to Git repository:
+- Commit the data file meta-information to Git repository:
 
 ```dvc
 $ git add data/Posts.xml.zip.dvc data/.gitignore
@@ -120,13 +120,13 @@ $ git commit -m "add dataset"
 
 ## Define steps
 
-Each step is described by providing a command to run, input data it takes and
-a list of output files. DVC is not Python or any other language specific and
-can wrap any command runnable via CLI.
+Each step is described by providing a command to run, input data it takes and a
+list of output files. DVC is not Python or any other language specific and can
+wrap any command runnable via CLI.
 
-* The first actual step, extract XML from the archive. Note, we don't need to
-run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache, takes the
-file under DVC control) automatically:
+- The first actual step, extract XML from the archive. Note, we don't need to
+  run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache, takes
+  the file under DVC control) automatically:
 
 ```dvc
 $ dvc run -d data/Posts.xml.zip \
@@ -139,24 +139,25 @@ $ dvc run -d data/Posts.xml.zip \
 
 ### Expand to learn more about DVC internals
 
-Similar to `dvc add`, `dvc run` creates a [stage file](/doc/user-guide/dvc-file-format):
+Similar to `dvc add`, `dvc run` creates a
+[stage file](/doc/user-guide/dvc-file-format):
 
 ```yaml
-   cmd: ' unzip data/Posts.xml.zip -d data'
-   deps:
-   - md5: ce68b98d82545628782c66192c96f2d2
-     path: data/Posts.xml.zip
-   md5: abaf651846ec4fb7a4a8e1a685546ed9
-   outs:
-   - cache: true
-     md5: a304afb96060aad90176268345e10355
-     path: data/Posts.xml
+cmd: ' unzip data/Posts.xml.zip -d data'
+deps:
+  - md5: ce68b98d82545628782c66192c96f2d2
+    path: data/Posts.xml.zip
+md5: abaf651846ec4fb7a4a8e1a685546ed9
+outs:
+  - cache: true
+    md5: a304afb96060aad90176268345e10355
+    path: data/Posts.xml
 ```
 
 This file is using the same technique - pointers (md5 hashes) to the cache to
 describe and version control dependencies and outputs. Output `Posts.xml` file
-is automatically added to the `.gitignore` file and a link is created into a cache
-`.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
+is automatically added to the `.gitignore` file and a link is created into a
+cache `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
 that DVC files describe, we can restore the full chain (DAG) of commands we need
@@ -171,7 +172,7 @@ your actual workspace without copying every time object from/to the cache.
 
 </details>
 
-* Next step, let's convert XML into TSV to make feature extraction easier:
+- Next step, let's convert XML into TSV to make feature extraction easier:
 
 ```dvc
 $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml \
@@ -180,8 +181,8 @@ $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml \
           python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
 ```
 
-* Split training and test data sets. Here `0.2` is a test dataset split ratio,
-`20170426` is a seed for randomization. There are two output files:
+- Split training and test data sets. Here `0.2` is a test dataset split ratio,
+  `20170426` is a seed for randomization. There are two output files:
 
 ```dvc
 $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
@@ -191,8 +192,8 @@ $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
                                           data/Posts-train.tsv data/Posts-test.tsv
 ```
 
-* Extract features and labels from the data. Two TSV as inputs with two pickle
-matrices as outputs:
+- Extract features and labels from the data. Two TSV as inputs with two pickle
+  matrices as outputs:
 
 ```dvc
 $ dvc run -d code/featurization.py -d data/Posts-train.tsv -d data/Posts-test.tsv \
@@ -202,7 +203,7 @@ $ dvc run -d code/featurization.py -d data/Posts-train.tsv -d data/Posts-test.ts
                                            data/matrix-train.pkl data/matrix-test.pkl
 ```
 
-* Train ML model on the training data set. 20170426 is a seed value here:
+- Train ML model on the training data set. 20170426 is a seed value here:
 
 ```dvc
 $ dvc run -d code/train_model.py -d data/matrix-train.pkl \
@@ -211,7 +212,7 @@ $ dvc run -d code/train_model.py -d data/matrix-train.pkl \
           python code/train_model.py data/matrix-train.pkl 20170426 data/model.pkl
 ```
 
-* Finally, evaluate the model on the test data set and get the metrics file:
+- Finally, evaluate the model on the test data set and get the metrics file:
 
 ```dvc
 $ dvc run -d code/evaluate.py -d data/model.pkl -d data/matrix-test.pkl \
@@ -224,8 +225,8 @@ $ dvc run -d code/evaluate.py -d data/model.pkl -d data/matrix-test.pkl \
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and outputs DVC files describe we can restore the
-full chain (DAG) of commands we need to apply. This is important when you run
+By analyzing dependencies and outputs DVC files describe we can restore the full
+chain (DAG) of commands we need to apply. This is important when you run
 `dvc repro` to reproduce the final or intermediate result.
 
 `dvc pipeline show` helps to visualize the pipeline (run it with `-c` option to
@@ -280,10 +281,10 @@ see actual commands instead of DVC-files):
 ## Check results
 
 > Since the data set for this example is an extremely simplified to make it
-simpler to run this pipeline, exact metric number may vary sufficiently
-depending on Python version you are using and other environment parameters.
+> simpler to run this pipeline, exact metric number may vary sufficiently
+> depending on Python version you are using and other environment parameters.
 
-* An easy way to see metrics across different branches:
+- An easy way to see metrics across different branches:
 
 ```dvc
 $ dvc metrics show
@@ -306,8 +307,8 @@ $ git commit -am "create pipeline"
 All steps could be automatically and efficiently reproduced even if some source
 files have been modified. For example:
 
-* Let's improve the feature extraction algorithm by making some modification to
-the `code/featurization.py`:
+- Let's improve the feature extraction algorithm by making some modification to
+  the `code/featurization.py`:
 
 ```dvc
 $ vi code/featurization.py
@@ -321,17 +322,17 @@ Specify `ngram` parameter in `CountVectorizer` (lines 72–73):
                                    ngram_range=(1, 2))
 ```
 
-* Reproduce all required steps to get our target metrics file:
+- Reproduce all required steps to get our target metrics file:
 
 ```dvc
 $ dvc repro evaluate.dvc
 ```
 
-> Since the data set for this example is extremely simplified to make it
-simpler to run this pipeline, exact metric numbers may vary significantly
-depending on the Python version you are using and other environment parameters.
+> Since the data set for this example is extremely simplified to make it simpler
+> to run this pipeline, exact metric numbers may vary significantly depending on
+> the Python version you are using and other environment parameters.
 
-* Take a look at the target metric improvement:
+- Take a look at the target metric improvement:
 
 ```dvc
 $ dvc metrics show -a

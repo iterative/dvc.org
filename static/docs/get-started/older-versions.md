@@ -27,9 +27,9 @@ end results that are under DVC control. In this case, `train.dvc` among other
 things describes the `model.pkl` file this way:
 
 ```yaml
-    outs:
-        md5: a66489653d1b6a8ba989799367b32c43
-        path: model.pkl
+outs:
+  md5: a66489653d1b6a8ba989799367b32c43
+  path: model.pkl
 ```
 
 `a664...2c43` is the "address" of the file in the local or remote DVC storage.

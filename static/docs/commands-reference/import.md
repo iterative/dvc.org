@@ -34,25 +34,25 @@ The `dvc import` command helps the user create such an external data dependency.
 
 DVC supports several types of remote locations:
 
-Type | Discussion | URL format
------|------------|------------
-`local` | Local path | `/path/to/local/file`
-`s3` | Amazon S3 | `s3://mybucket/data.csv`
-`gs` | Google Storage | `gs://mybucket/data.csv`
-`ssh` | SSH server | `ssh://user@example.com:/path/to/data.csv`
-`hdfs` | HDFS | `hdfs://user@example.com/path/to/data.csv`
-`http` | HTTP to file with _strong ETag_ (see explanation below) | `https://example.com/path/to/data.csv`
-`remote` | Remote path (see explanation below) | `remote://myremote/path/to/file`
+| Type     | Discussion                                              | URL format                                 |
+| -------- | ------------------------------------------------------- | ------------------------------------------ |
+| `local`  | Local path                                              | `/path/to/local/file`                      |
+| `s3`     | Amazon S3                                               | `s3://mybucket/data.csv`                   |
+| `gs`     | Google Storage                                          | `gs://mybucket/data.csv`                   |
+| `ssh`    | SSH server                                              | `ssh://user@example.com:/path/to/data.csv` |
+| `hdfs`   | HDFS                                                    | `hdfs://user@example.com/path/to/data.csv` |
+| `http`   | HTTP to file with _strong ETag_ (see explanation below) | `https://example.com/path/to/data.csv`     |
+| `remote` | Remote path (see explanation below)                     | `remote://myremote/path/to/file`           |
 
-> In case of HTTP, [strong
-ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation) is
-necessary to track if the specified remote file (URL) changed to download it
-again.
+> In case of HTTP,
+> [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
+> is necessary to track if the specified remote file (URL) changed to download
+> it again.
 
-> `remote://myremote/path/to/file` notation just means that there is a
-DVC [remote](/doc/commands-reference/remote) `myremote` is defined and when DVC
-is running it internally expands this URL into a regular S3, SSH, GS, etc URL
-by appending `/path/to/file` to the `myremote`'s configured base path.
+> `remote://myremote/path/to/file` notation just means that there is a DVC
+> [remote](/doc/commands-reference/remote) `myremote` is defined and when DVC is
+> running it internally expands this URL into a regular S3, SSH, GS, etc URL by
+> appending `/path/to/file` to the `myremote`'s configured base path.
 
 Another way to understand the `dvc import` command is as a short-cut for more
 verbose `dvc run` commands. This is discussed in the
@@ -73,8 +73,8 @@ It is possible to instead use `dvc run`:
               wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a DVC file with an external dependency, and they perform
-a roughly equivalent result. The `dvc import` command saves the user from using
+Both methods generate a DVC file with an external dependency, and they perform a
+roughly equivalent result. The `dvc import` command saves the user from using
 the command to copy files from each of the remote storage schemes, and from
 having to install CLI tools for each service.
 
@@ -86,19 +86,19 @@ to test its current status.
 
 ## Options
 
-* `--resume` - resume previously started download. This is useful if the
+- `--resume` - resume previously started download. This is useful if the
   connection to the remote resource is unstable.
 
-* `-f`, `--file` - specify name of the DVC file it generates. It should be
+- `-f`, `--file` - specify name of the DVC file it generates. It should be
   either `Dvcfile` or have a `.dvc` file extension (e.g. `data.dvc`) in order
   for `dvc` to be able to find it later.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 
@@ -147,8 +147,8 @@ using `dvc import`:
 
 ### Click and expand to prepare the working space
 
-This is needed to actually run the command below in case you are reproducing this
-example:
+This is needed to actually run the command below in case you are reproducing
+this example:
 
 ```dvc
     $ git checkout 2-remote
@@ -178,22 +178,22 @@ example. Since we do not need those stages for this example, we'll skip that.
 Instead we can look at the resulting DVC file `data.xml.dvc`:
 
 ```yaml
-    deps:
-    - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-      path: https://dvc.org/s3/get-started/data.xml
-    md5: 61e80c38c1ce04ed2e11e331258e6d0d
-    outs:
-    - cache: true
-      md5: a304afb96060aad90176268345e10355
-      metric: false
-      path: data/data.xml
-      persist: false
-    wdir: .
+deps:
+  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
+    path: https://dvc.org/s3/get-started/data.xml
+md5: 61e80c38c1ce04ed2e11e331258e6d0d
+outs:
+  - cache: true
+    md5: a304afb96060aad90176268345e10355
+    metric: false
+    path: data/data.xml
+    persist: false
+wdir: .
 ```
 
 The `etag` field in the DVC file contains the ETag recorded from the HTTP
-request. If the remote file changes, the ETag changes, letting DVC know when
-the file has changed.
+request. If the remote file changes, the ETag changes, letting DVC know when the
+file has changed.
 
 ## Example: Detecting remote file changes
 
@@ -225,8 +225,8 @@ On your machine initialize the workspace again:
 
 ### Click and expand to prepare the working space
 
-This is needed to actually run the command below in case you are reproducing this
-example:
+This is needed to actually run the command below in case you are reproducing
+this example:
 
 ```dvc
     $ git checkout 2-remote
@@ -257,17 +257,17 @@ store directory we just set up. We did this to make it easy to edit the data
 file:
 
 ```yaml
-    deps:
-    - md5: a86ca87250ed8e54a9e2e8d6d34c252e
-      path: /path/to/data-store/data.xml
-    md5: 361728a3b037c9a4bcb897cdf856edfc
-    outs:
-    - cache: true
-      md5: a304afb96060aad90176268345e10355
-      metric: false
-      path: data/data.xml
-      persist: false
-    wdir: .
+deps:
+  - md5: a86ca87250ed8e54a9e2e8d6d34c252e
+    path: /path/to/data-store/data.xml
+md5: 361728a3b037c9a4bcb897cdf856edfc
+outs:
+  - cache: true
+    md5: a304afb96060aad90176268345e10355
+    metric: false
+    path: data/data.xml
+    persist: false
+wdir: .
 ```
 
 The DVC file is nearly the same as before. The `path` has the URL for the data
@@ -289,6 +289,7 @@ other systems run:
     $ unzip code.zip
     $ rm -f code.zip
 ```
+
 </details>
 
 ```dvc
@@ -337,8 +338,8 @@ because any change will change the checksum. Once we do so, we'll see this:
             modified:     /path/to/data-store/data.xml
 ```
 
-DVC has noticed the external dependency has changed. It is telling us that it
-is necessary to now run `dvc repro`.
+DVC has noticed the external dependency has changed. It is telling us that it is
+necessary to now run `dvc repro`.
 
 ```dvc
     $ dvc repro prepare.dvc

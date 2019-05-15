@@ -37,9 +37,9 @@ Under the hood a few actions are taken for each file in the target(s):
 The result is data file is added to the DVC cache, and DVC metafiles (`.dvc`)
 can be tracked via Git or other version control system. The stage file
 (metafile) lists the added file as an `out` (output) of the stage, and
-references the DVC cache entry using the checksum. See [DVC File
-Format](/doc/user-guide/dvc-file-format) for the detailed description of the DVC
-_metafile_ format.
+references the DVC cache entry using the checksum. See
+[DVC File Format](/doc/user-guide/dvc-file-format) for the detailed description
+of the DVC _metafile_ format.
 
 By default DVC tries a range of link types (`reflink`, `hardlink`, `symlink`, or
 `copy`) to try to avoid copying any file contents and to optimize DVC file
@@ -71,25 +71,25 @@ This way you bring data provenance and make your project reproducible.
 
 ## Options
 
-* `-R`, `--recursive` - recursively add each file under the named directory. For
+- `-R`, `--recursive` - recursively add each file under the named directory. For
   each file a new DVC file is created using the process described earlier.
 
-* `--no-commit` - do not put files/directories into cache. A stage file is
+- `--no-commit` - do not put files/directories into cache. A stage file is
   created, and an entry is added to `.dvc/state`, while nothing is added to the
-  cache (`.dvc/cache`). The `dvc status` command will note that the file is `not
-  in cache`. The `dvc commit` command will add the file to the DVC cache. This
-  is analogous to the `git add` and `git commit` commands.
+  cache (`.dvc/cache`). The `dvc status` command will note that the file is
+  `not in cache`. The `dvc commit` command will add the file to the DVC cache.
+  This is analogous to the `git add` and `git commit` commands.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
-* `-f`, `--file` - specify name of the DVC file it generates. It should be
+- `-f`, `--file` - specify name of the DVC file it generates. It should be
   either `Dvcfile` or have a `.dvc` file extension (e.g. `data.dvc`) in order
-  for `dvc` to be able to find it later. 
+  for `dvc` to be able to find it later.
 
 ## Examples: Single file
 
@@ -120,12 +120,12 @@ the result:
 Let's check the `data.xml.dvc` file inside:
 
 ```yaml
-    md5: aae37d74224b05178153acd94e15956b
-    outs:
-    - cache: true
-      md5: d8acabbfd4ee51c95da5d7628c7ef74b
-      metric: false
-      path: data.xml.jpg
+md5: aae37d74224b05178153acd94e15956b
+outs:
+  - cache: true
+    md5: d8acabbfd4ee51c95da5d7628c7ef74b
+    metric: false
+    path: data.xml.jpg
 ```
 
 This is a standard DVC stage file with only an `outs` entry. The checksum should
@@ -182,13 +182,13 @@ are all added to the DVC cache. DVC prints a message to that effect, saying that
 top-level directory, and it contains this:
 
 ```yaml
-    md5: df06d8d51e6483ed5a74d3979f8fe42e
-    outs:
-    - cache: true
-      md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
-      metric: false
-      path: pics
-    wdir: .
+md5: df06d8d51e6483ed5a74d3979f8fe42e
+outs:
+  - cache: true
+    md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
+    metric: false
+    path: pics
+wdir: .
 ```
 
 If instead you use the `--recursive` option, the output looks as so:
@@ -217,8 +217,8 @@ directory tree as input to a `dvc run` stage like so:
               python train.py
 ```
 
-To see this whole example go to [Example:
-Versioning](/doc/get-started/example-versioning).
+To see this whole example go to
+[Example: Versioning](/doc/get-started/example-versioning).
 
 Since no top-level DVC file is generated with the `--recursive` option we cannot
 use the directory structure as a whole.

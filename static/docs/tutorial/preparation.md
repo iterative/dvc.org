@@ -51,8 +51,8 @@ Install the code requirements:
 
 Now DVC software should be installed. The easiest way to install DVC is a system
 dependent package. DVC supports all common operating systems: Mac OS X, Linux
-and Windows. You can find the latest version of the package on the [home
-page](https://dvc.org).
+and Windows. You can find the latest version of the package on the
+[home page](https://dvc.org).
 
 Alternatively, you can install DVC by Python package manager — PIP if you use
 Python:
@@ -98,5 +98,5 @@ directory is that it is contained in the `.dvc/.gitignore` file, which means
 that the cache directory is not under Git control — this is your local directory
 and you cannot push it to any Git remote.
 
-For more information refer to [DVC Files and
-Directories](https://dvc.org/doc/user-guide/dvc-files-and-directories).
+For more information refer to
+[DVC Files and Directories](https://dvc.org/doc/user-guide/dvc-files-and-directories).

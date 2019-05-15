@@ -22,18 +22,18 @@ files corresponding to the checksums in the DVC files.
 
 Using an SCM like Git, the DVC files are kept under version control. At a given
 branch or tag of the SCM workspace, the DVC files will contain checksums for the
-corresponding data files kept in the DVC cache. After an SCM command like `git
-checkout` is run, the DVC files will change to the state at the specified branch
-or commit or tag. Afterward the `dvc checkout` command is required in order to
-synchronize the data files with the currently checked out DVC files.
+corresponding data files kept in the DVC cache. After an SCM command like
+`git checkout` is run, the DVC files will change to the state at the specified
+branch or commit or tag. Afterward the `dvc checkout` command is required in
+order to synchronize the data files with the currently checked out DVC files.
 
 During execution the `dvc checkout` command does:
 
-* Scan the `outs` entries in DVC files to compare with the currently checked out
+- Scan the `outs` entries in DVC files to compare with the currently checked out
   data files. The scanned DVC files is limited by the listed targets (if any) on
   the command line. And if the `--with-deps` option is specified, it scans
   backward in the pipeline from the named targets.
-* For any data files where the checksum does not match with the DVC file entry,
+- For any data files where the checksum does not match with the DVC file entry,
   the data file is restored from the cache. The link type (`reflink`,
   `hardlink`, `symlink`, or `copy`) appropriate to the operating system is used.
 
@@ -62,25 +62,25 @@ command. In other cases the cache can be pulled from a remote cache using the
 
 ## Options
 
-* `-d`, `--with-deps` - determines the files to download by searching backwards
-  in the pipeline from the named stage(s). The only files which will be
-  updated are associated with the named stage, and the stages which execute
-  earlier in the pipeline.
+- `-d`, `--with-deps` - determines the files to download by searching backwards
+  in the pipeline from the named stage(s). The only files which will be updated
+  are associated with the named stage, and the stages which execute earlier in
+  the pipeline.
 
-* `-f`, `--force` - does not prompt when removing workspace files. Changing the
+- `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC files with SCM commands like `git checkout` can result in
   the need for DVC to remove files which should not exist in the current state
   and are missing in the local cache (they are not committed in DVC terms). This
   option controls whether the user will be asked to confirm these files removal.
 
-* `-R`, `--recursive` - performs recursive checkout for target directory.
+- `-R`, `--recursive` - performs recursive checkout for target directory.
 
-* `-h`, `--help` - shows the help message and exit.
+- `-h`, `--help` - shows the help message and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information from executing the
+- `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc pull` command.
 
 ## Examples
@@ -142,10 +142,10 @@ solving the problem:
     bigram       <- use bigrams to improve the model
 ```
 
-This project comes with a predefined HTTP [remote
-storage](https://man.dvc.org/remote). We can now just run `dvc pull` that will
-fetch and checkout the most recent `model.pkl`, `data.xml`, and other files that
-are under DVC control. The model file checksum
+This project comes with a predefined HTTP
+[remote storage](https://man.dvc.org/remote). We can now just run `dvc pull`
+that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
+files that are under DVC control. The model file checksum
 `3863d0e317dee0a55c4e59d2ec0eef33` is specified in the `train.dvc` file:
 
 ```dvc
@@ -174,9 +174,9 @@ deleting files as necessary.
 Let's check the `model.pkl` and `train.dvc` files again:
 
 ```yaml
-    outs:
-        md5: a66489653d1b6a8ba989799367b32c43
-        path: model.pkl
+outs:
+  md5: a66489653d1b6a8ba989799367b32c43
+  path: model.pkl
 ```
 
 but if you check the `model.pkl` the file is still the same:
