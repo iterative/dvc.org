@@ -39,7 +39,7 @@ The same as for [`.gitignore`](https://git-scm.com/docs/gitignore).
 
 ## Example
 
-Lets analyse an example project:
+Lets analyze an example project:
 
 ```dvc
     $ mkdir dir1 dir2
