@@ -138,7 +138,7 @@ export default class Documentation extends Component {
         )
       })
     }).catch(()=>{
-      window.location.reload();
+      window.location.reload()
     })
   }
 
