@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { LightButton } from '../LightButton'
 
-export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
+export const RightPanel = ({ headings, scrollToLink, githubLink, currentSubsection }) => (
   <Wrapper>
     {!!headings.length ? (
       <>
@@ -19,6 +19,7 @@ export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
           key={`link-${headingIndex}`}
           onClick={() => scrollToLink('#' + slug)}
           href={`#${slug}`}
+          isActive={slug===currentSubsection}
         >
           {text}
         </HeadingLink>
@@ -76,14 +77,13 @@ const HeadingLink = styled.a`
   position: relative;
   font-size: 16px;
   font-weight: 500;
-  color: #a0a8a5;
+  color: ${({ isActive }) => (isActive ? '#3c3937' : '#a0a8a5')};
   text-decoration: none;
   font-weight: 400;
   line-height: 26px;
   min-height: 26px;
   margin-bottom: 3px;
   cursor: pointer;
-
   &:hover {
     color: #3c3937;
   }
