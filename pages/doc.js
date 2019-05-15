@@ -104,10 +104,6 @@ export default class Documentation extends Component {
     const file = indexFile || flatten(files)[0]
     e && this.setCurrentPath(section, indexFile ? undefined : file)
     this.loadFile({ file, section, parseHeadings: false })
-    this.setState({
-      currentSection: section,
-      pageNotFound: false
-    })
   }
 
   onFileSelect = (file, section, e) => {
@@ -134,6 +130,8 @@ export default class Documentation extends Component {
           }
         )
       })
+    }).catch(()=>{
+      window.location.reload()
     })
   }
 
