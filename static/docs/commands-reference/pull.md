@@ -1,8 +1,8 @@
 # pull
 
-Downloads missing files and directories from
-[remote storage](/doc/commands-reference/remote) to the local cache based on DVC
-files in the workspace. Then links the downloaded files into the workspace.
+Downloads missing files and directories from [remote
+storage](/doc/commands-reference/remote) to the local cache based on DVC files
+in the workspace, then links the downloaded files into the workspace.
 
 ## Synopsis
 
@@ -51,9 +51,9 @@ If one or more `targets` are specified, DVC only considers the files associated
 with those stages. Using the `--with-deps` option DVC tracks dependencies
 backward through the pipeline to find data files to pull.
 
-After data file is in cache DVC utilizes OS specific mechanisms like reflinks or
-hardlinks to put it into the working space without copying. See `dvc checkout`
-for more details.
+After data file is in cache DVC, `dvc pull` uses OS-specific mechanisms like
+reflinks or hardlinks to put it in the workspace without copying. See `dvc
+checkout` for more details.
 
 ## Options
 

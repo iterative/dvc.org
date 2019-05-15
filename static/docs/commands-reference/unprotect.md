@@ -2,8 +2,8 @@
 
 Unprotect a file or a directory.
 
-Running `dvc unprotect` guarantees that file or directory in the working space
-is physically "unlinked" from the cache and can be safely updated. Check the
+Running `dvc unprotect` guarantees that file or directory in the workspace is
+physically "unlinked" from the cache and can be safely updated. Check the
 [Update a Tracked File](/doc/user-guide/update-tracked-file) to learn more.
 
 ```usage

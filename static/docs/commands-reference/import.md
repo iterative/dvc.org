@@ -145,7 +145,7 @@ using `dvc import`:
 
 <details>
 
-### Click and expand to prepare the working space
+### Click and expand to prepare the workspace
 
 This is needed to actually run the command below in case you are reproducing
 this example:
@@ -155,7 +155,7 @@ this example:
     $ mkdir data
 ```
 
-After executing these commands you should have an almost empty working space.
+After executing these commands you should have an almost empty workspace.
 
 </details>
 
@@ -223,7 +223,7 @@ On your machine initialize the workspace again:
 
 <details>
 
-### Click and expand to prepare the working space
+### Click and expand to prepare the workspace
 
 This is needed to actually run the command below in case you are reproducing
 this example:
@@ -233,7 +233,7 @@ this example:
     $ mkdir data
 ```
 
-After executing these commands you should have an almost empty working space.
+After executing these commands you should have an almost empty workspace.
 
 </details>
 
