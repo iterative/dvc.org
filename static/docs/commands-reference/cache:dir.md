@@ -18,17 +18,22 @@ positional arguments:
 Sets the `cache.dir` configuration option. Unlike doing so with `dvc config
 cache`, this command transform paths (`value`) that are provided relative to the
 present working directory into relative to the specified config file, as they
-are meant to be stored.
+are expected in the config file.
 
 ## Options
 
-- `--global` - Use global config.
+- `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
+  of the project's `.dvc/config`.
 
-- `--system`- Use system config.
+- `--system` - modify a system config file (e.g. `/etc/dvc.config`) instead of
+  `.dvc/config`.
 
-- `--local` - Use local config.
+- `--local` - modify a local config file instead of `.dvc/config`. It is located
+  in `.dvc/config.local` and is Git-ignored. This is useful when you need to
+  specify private config options in your config, that you don't want to track
+  and share through Git.
 
-- `-u`, `--unset`- Unset option.
+- `-u`, `--unset` - remove a specified config option from a config file.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
