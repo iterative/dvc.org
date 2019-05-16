@@ -55,7 +55,11 @@ export default class HamburgerMenu extends Component {
             <Section>
               <Top>
                 <Logo href="/">
-                  <img src="/static/img/logo_white.png" alt="dvc.org" width={34} />
+                  <img
+                    src="/static/img/logo_white.png"
+                    alt="dvc.org"
+                    width={34}
+                  />
                 </Logo>
               </Top>
 
@@ -77,7 +81,10 @@ export default class HamburgerMenu extends Component {
                     <Link href="/support" onClick={this.itemClick('support')}>
                       Support
                     </Link>
-                    <Link href="/doc/get-started" onClick={this.itemClick('get-started')}>
+                    <Link
+                      href="/doc/get-started"
+                      onClick={this.itemClick('get-started')}
+                    >
                       Get started
                     </Link>
                     <SocialLink

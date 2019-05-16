@@ -1,6 +1,11 @@
 import styled, { css } from 'styled-components'
 
-export function fontFace(name, src, fontWeight = 'normal', fontStyle = 'normal') {
+export function fontFace(
+  name,
+  src,
+  fontWeight = 'normal',
+  fontStyle = 'normal'
+) {
   return `
         @font-face{
             font-family: "${name}";

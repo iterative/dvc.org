@@ -140,7 +140,7 @@ $ dvc add data
 This command should be used instead of `git add` on files or directories that
 are too large to be put into Git. Usually, input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
-the DVC cache (of course, it keeps a link to it in the working tree, so you can
+the DVC cache (of course, it keeps a link to it in the workspace, so you can
 continue working with it the same way as before). Instead, it creates a simple
 human-readable meta-file that can be considered as a pointer to the cache.
 
@@ -247,9 +247,9 @@ version if we need to.
 
 An operation that helps to get the specific committed version of data is
 designed to be similar to Git. In Git (or any other code version control system)
-when you need to get to a previous committed version of the code you run
-`git checkout`. All we need to do in our case is to run additionally
-`dvc checkout` to get the right data to the working space.
+when you need to get to a previous committed version of the code you run `git
+checkout`. All we need to do in our case is to run additionally `dvc checkout`
+to get the right data to the workspace.
 
 ![](/static/img/versioning.png)
 

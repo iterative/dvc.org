@@ -50,7 +50,12 @@ class TopMenu extends Component {
       <Wrapper>
         <Container scrolled={isDocPage || scrolled} wide={isDocPage}>
           <Logo href="/">
-            <img src="/static/img/logo.png" alt="dvc.org" width={36} height={23} />
+            <img
+              src="/static/img/logo.png"
+              alt="dvc.org"
+              width={36}
+              height={23}
+            />
           </Logo>
           <Nav mobile={false} />
         </Container>

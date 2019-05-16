@@ -45,7 +45,7 @@ let _javascript = function(hljs) {
         contains: [
           {
             begin: /^\s*\$/,
-            className: 'skipped',
+            className: 'skipped'
           },
           {
             begin: /\\\n/
