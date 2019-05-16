@@ -35,24 +35,26 @@ const Heading3 = () => (
 
 const Description1 = () => (
   <Description>
-    At any time, fetch the full context about any experiment you or your team has run. DVC
-    guarantees that all files and metrics will be consistent and in the right place to reproduce the
-    experiment or use it as a baseline for a new iteration.
+    At any time, fetch the full context about any experiment you or your team
+    has run. DVC guarantees that all files and metrics will be consistent and in
+    the right place to reproduce the experiment or use it as a baseline for a
+    new iteration.
   </Description>
 )
 
 const Description2 = () => (
   <Description>
-    DVC keeps metafiles in Git instead of Google Docs to describe and version control your data sets
-    and models. DVC supports a variety of external storage types as a remote cache for large files.
+    DVC keeps metafiles in Git instead of Google Docs to describe and version
+    control your data sets and models. DVC supports a variety of external
+    storage types as a remote cache for large files.
   </Description>
 )
 
 const Description3 = () => (
   <Description>
-    DVC defines rules and processes for working effectively and consistently as a team. It serves as
-    a protocol for collaboration, sharing results, and getting and running a finished model in a
-    production environment.
+    DVC defines rules and processes for working effectively and consistently as
+    a team. It serves as a protocol for collaboration, sharing results, and
+    getting and running a finished model in a production environment.
   </Description>
 )
 

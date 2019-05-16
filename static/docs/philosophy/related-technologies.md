@@ -113,7 +113,7 @@ process.
 
    - DVC creates hardlinks (or even reflinks if they are supported). The
      `dvc checkout` command does not actually copy data files from cache to the
-     working tree, as copying files is a heavy operation for large files (30
+     workspace, as copying files is a heavy operation for large files (30
      GB+).
 
    - `git-lfs` was not made with data science scenarios in mind, thus it does

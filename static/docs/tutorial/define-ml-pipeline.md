@@ -188,12 +188,12 @@ and does some additional work if the command was successful:
    files content goes to the cache directory `.dvc/cache` and each of the
    filenames will be added to `.gitignore`.
 
-2. For reproducibility purposes, DVC creates the DVC-file `Posts.xml.dvc` — the
-   file with meta-information about the pipeline stage, see
-   [DVC File Format](/doc/user-guide/dvc-file-format) — in the current working
-   directory. By default, DVC assigns a name to the DVC-file based on the first
-   output file name, by adding the `.dvc` file extension. This name can be
-   changed by using the `-f` option, for example by specifying `-f extract.dvc`.
+2. For reproducibility purposes, DVC creates the `Posts.xml.dvc` DVC-file in the
+   workspace — the file with meta-information about the pipeline stage, see [DVC
+   File Format](/doc/user-guide/dvc-file-format). By default, DVC assigns a name
+   to the DVC-file based on the first output file name, by adding the `.dvc`
+   file extension. This name can be changed by using the `-f` option, for
+   example by specifying `-f extract.dvc`.
 
 Let's take a look at the resulting DVC-file from the above example:
 

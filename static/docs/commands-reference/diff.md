@@ -37,7 +37,7 @@ SCM, for example when `dvc init` was used with the `--no-scm` option
 
 - `-t TARGET`, `--target TARGET` - Source path to a data file or directory. If
   not specified, compares all files and directories that are under DVC control
-  in the current working space.
+  in the current workspace.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

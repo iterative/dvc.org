@@ -11,8 +11,8 @@ export default class Page404 extends Component {
         <StatusCode>404</StatusCode>
         <Message>Oops! Page Not Found!</Message>
         <Text>
-          Sorry, but the page you are looking for is not found. Please, make sure you have typed the
-          current URL.
+          Sorry, but the page you are looking for is not found. Please, make
+          sure you have typed the current URL.
         </Text>
         <GoBackLink onClick={this.goBack}>Go Back</GoBackLink>
       </Wrapper>

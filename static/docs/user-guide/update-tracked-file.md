@@ -27,7 +27,7 @@ recommended ways to protect your data files.
 
 If you want to replace the file you should take the following steps.
 
-First, un-track the file. This will remove `train.tsv` from the working dir:
+First, un-track the file. This will remove `train.tsv` from the workspace:
 
 ```dvc
     $ dvc remove train.tsv.dvc

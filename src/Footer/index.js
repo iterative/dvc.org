@@ -13,7 +13,12 @@ export default props => (
     <Container wide={props.isDocPage}>
       <Top>
         <Logo href="/">
-          <img src="/static/img/logo_white.png" alt="site logo" width={36} height={23} />
+          <img
+            src="/static/img/logo_white.png"
+            alt="site logo"
+            width={36}
+            height={23}
+          />
         </Logo>
       </Top>
       <Columns>
@@ -39,7 +44,10 @@ export default props => (
           <Heading>Company</Heading>
           <Links>
             <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
-            <SocialLink src="/static/img/iterative.png" href="https://iterative.ai/">
+            <SocialLink
+              src="/static/img/iterative.png"
+              href="https://iterative.ai/"
+            >
               Iterative.ai
             </SocialLink>
           </Links>
@@ -47,10 +55,16 @@ export default props => (
         <Column>
           <Heading>Social</Heading>
           <Links>
-            <SocialLink src="/static/img/twitter.png" href="https://twitter.com/DVCorg">
+            <SocialLink
+              src="/static/img/twitter.png"
+              href="https://twitter.com/DVCorg"
+            >
               Twitter
             </SocialLink>
-            <SocialLink src="/static/img/github.png" href="https://github.com/iterative/dvc">
+            <SocialLink
+              src="/static/img/github.png"
+              href="https://github.com/iterative/dvc"
+            >
               Github
             </SocialLink>
             <SocialLink src="/static/img/discord.png" href="/chat">

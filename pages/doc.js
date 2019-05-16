@@ -61,13 +61,19 @@ export default class Documentation extends Component {
       section => (section.slug || kebabCase(section.name)) === sectionURL
     )
     if (sectionIndex === -1) {
-      sectionURL ? this.setState({ pageNotFound: true }) : this.onSectionSelect(0)
+      sectionURL
+        ? this.setState({ pageNotFound: true })
+        : this.onSectionSelect(0)
     } else {
       const fileURL = pathname.split('/')[3] // match file from URL
       const sectionFiles = flatten(sidebar[sectionIndex].files)
-      const fileIndex = sectionFiles.findIndex(file => kebabCase(file.slice(0, -3)) === fileURL)
+      const fileIndex = sectionFiles.findIndex(
+        file => kebabCase(file.slice(0, -3)) === fileURL
+      )
       if (fileIndex === -1) {
-        fileURL ? this.setState({ pageNotFound: true }) : this.onSectionSelect(sectionIndex)
+        fileURL
+          ? this.setState({ pageNotFound: true })
+          : this.onSectionSelect(sectionIndex)
       } else {
         this.loadFile({
           section: sectionIndex,
@@ -89,7 +95,8 @@ export default class Documentation extends Component {
   }
 
   getLinkHref = (section, file) => {
-    const sectionSlug = sidebar[section].slug || kebabCase(sidebar[section].name)
+    const sectionSlug =
+      sidebar[section].slug || kebabCase(sidebar[section].name)
     const fileSlug = file ? kebabCase(file.slice(0, -3)) : undefined
     return `/doc/${compact([sectionSlug, fileSlug]).join('/')}`
   }
@@ -104,10 +111,6 @@ export default class Documentation extends Component {
     const file = indexFile || flatten(files)[0]
     e && this.setCurrentPath(section, indexFile ? undefined : file)
     this.loadFile({ file, section, parseHeadings: false })
-    this.setState({
-      currentSection: section,
-      pageNotFound: false
-    })
   }
 
   onFileSelect = (file, section, e) => {
@@ -117,24 +120,28 @@ export default class Documentation extends Component {
   }
 
   loadFile = ({ file, section, parseHeadings }) => {
-    fetch(`${sidebar[section].folder}/${file}`).then(res => {
-      res.text().then(text => {
-        this.setState(
-          {
-            currentSection: section,
-            currentFile: file,
-            markdown: text,
-            headings: [],
-            pageNotFound: false,
-            isMenuOpen: false
-          },
-          () => {
-            this.scrollTop()
-            parseHeadings && this.parseHeadings(text)
-          }
-        )
+    fetch(`${sidebar[section].folder}/${file}`)
+      .then(res => {
+        res.text().then(text => {
+          this.setState(
+            {
+              currentSection: section,
+              currentFile: file,
+              markdown: text,
+              headings: [],
+              pageNotFound: false,
+              isMenuOpen: false
+            },
+            () => {
+              this.scrollTop()
+              parseHeadings && this.parseHeadings(text)
+            }
+          )
+        })
       })
-    })
+      .catch(() => {
+        window.location.reload()
+      })
   }
 
   parseHeadings = text => {
@@ -185,7 +192,14 @@ export default class Documentation extends Component {
   }
 
   render() {
-    const { currentSection, currentFile, headings, markdown, pageNotFound, isMenuOpen } = this.state
+    const {
+      currentSection,
+      currentFile,
+      headings,
+      markdown,
+      pageNotFound,
+      isMenuOpen
+    } = this.state
 
     const directory = sidebar[currentSection].folder
     const githubLink = `https://github.com/iterative/dvc.org/blob/master${directory}/${currentFile}`
