@@ -1,10 +1,10 @@
 # metrics
 
-A set of simple commands (see [add](/doc/commands-reference/metrics-add),
+A set of commands to collect and display project metrics:
+[add](/doc/commands-reference/metrics-add),
 [show](/doc/commands-reference/metrics-show),
 [modify](/doc/commands-reference/metrics-modify), and
-[remove](/doc/commands-reference/metrics-remove)) to collect and display project
-metrics.
+[remove](/doc/commands-reference/metrics-remove).
 
 ## Synopsis
 

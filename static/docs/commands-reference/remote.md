@@ -1,11 +1,11 @@
 # remote
 
-[Add](/doc/commands-reference/remote-add),
+A set of commands to set up and manage data remotes:
+[add](/doc/commands-reference/remote-add),
 [default](/doc/commands-reference/remote-default),
 [list](/doc/commands-reference/remote-list),
 [modify](/doc/commands-reference/remote-modify), and
-[remove](/doc/commands-reference/remote-remove) are available commands to set up
-and manage data remotes.
+[remove](/doc/commands-reference/remote-remove).
 
 ## Synopsis
 

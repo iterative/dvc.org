@@ -28,10 +28,10 @@ corresponding config file.
 
 - `-u`, `--unset` - remove a specified config option from a config file.
 
-- `--global` - modify a global config file(e.g. `~/.config/dvc/config`) instead
+- `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
   of the project's `.dvc/config`.
 
-- `--system` - modify a system config file(e.g. `/etc/dvc.config`) instead of
+- `--system` - modify a system config file (e.g. `/etc/dvc.config`) instead of
   `.dvc/config`.
 
 - `--local` - modify a local config file instead of `.dvc/config`. It is located
@@ -77,9 +77,10 @@ remote. See `dvc remote` for more info.
 
 ### cache
 
-DVC cache is a hidden storage (by default located in the `.dvc/cache` directory)
-for files that are under DVC control, and their different versions. (See `dvc
-cache` for more details.)
+The DVC cache is a hidden storage (by default located in the `.dvc/cache`
+directory) for files that are under DVC control, and their different versions.
+(See `dvc cache` and [DVC internal
+files](/doc/user-guide/dvc-files-and-directories) for more details.)
 
 - `cache.dir` - set/unset cache directory location. A correct value must be
   either an absolute path or a path **relative to the config file location**.
