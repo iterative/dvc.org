@@ -256,18 +256,21 @@ variables:
 
 ### Click for Aliyun OSS
 
-First you need to setup OSS storage on Aliyun Cloud and then use s3 style url for oss storage and make endpoint a configurable value, an example is shown below:
+First you need to setup OSS storage on Aliyun Cloud and then 
+use s3 style url for oss storage and make endpoint a configurable value, 
+an example is shown below:
 
 ```dvc
 $ dvc remote add myremote oss://my-bucket/path
 ```
 
-To set key id, key secret and endpoint you need to use modify command from dvc, a sample ussge is show below:
+To set key id, key secret and endpoint you need to use modify command from dvc, 
+a sample ussge is show below:
 
 ```dvc
-$ dvc remote modify myremote oss_key_id my-key-id
-$ dvc remote modify myremote oss_key_secret my-key-secret
-$ dvc remote modify myremote oss_endpoint endpoint
+$ dvc remote modify myremote oss_key_id my-key-id --local
+$ dvc remote modify myremote oss_key_secret my-key-secret --local
+$ dvc remote modify myremote oss_endpoint endpoint --local
 ```
 You can also set enviornment variables and use them later, to set enviornment variables use following enviormnent variables:
 
