@@ -4,7 +4,9 @@ import reset from 'styled-reset'
 import { global } from '../src/styles'
 import Router from 'next/router'
 
-const DESCRIPTION = `Open-source Version Control System for Data Science Projects. Data Version Control.`
+const DESCRIPTION = `Open-source version control system for Data Science and` +
+  ` Machine Learning projects. Track your data, models, and experiments with` +
+  ` a Git-like tool.`
 const KEYWORDS = `data version control machine learning models management`
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -119,7 +121,11 @@ export default class MyDocument extends Document {
           <NextScript />
           {inject(
             `
-            <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+            <script
+                type="text/javascript"
+                src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js"
+                data-dojo-config="usePlainJson: true, isDebug: false">
+            </script>
             <script type="text/javascript">
               function showPopup() {
                 document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";
