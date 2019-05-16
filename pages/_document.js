@@ -14,14 +14,17 @@ injectGlobal`
   ${global}
 `
 
-const inject = str => <div className="inject" dangerouslySetInnerHTML={{ __html: str }} />
+const inject = str => (
+  <div className="inject" dangerouslySetInnerHTML={{ __html: str }} />
+)
 
 export default class MyDocument extends Document {
   static getInitialProps({ req, res, renderPage }) {
     let redirect
 
     if (req.headers['host'].match(/^www/) !== null) {
-      redirect = 'https://' + req.headers['host'].replace(/^www\./, '') + req.url
+      redirect =
+        'https://' + req.headers['host'].replace(/^www\./, '') + req.url
     } else if (req.headers['x-forwarded-proto'] !== 'https' && !dev) {
       const host = req.headers['host'].replace(/^www\./, '')
       redirect = 'https://' + host + req.url
@@ -40,7 +43,9 @@ export default class MyDocument extends Document {
     }
 
     const sheet = new ServerStyleSheet()
-    const page = renderPage(App => props => sheet.collectStyles(<App {...props} />))
+    const page = renderPage(App => props =>
+      sheet.collectStyles(<App {...props} />)
+    )
     const styleTags = sheet.getStyleElement()
     return { ...page, styleTags }
   }
@@ -73,7 +78,10 @@ export default class MyDocument extends Document {
             content="Data Science Version Control System"
           />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:image" content="https://dvc.org/static/social-share.png" />
+          <meta
+            name="twitter:image"
+            content="https://dvc.org/static/social-share.png"
+          />
           <meta
             name="twitter:description"
             content="DVC is designed to handle large data files, models, and metrics as well as code. DVC is an open-source framework and distributed version control system for machine learning projects."
@@ -82,10 +90,28 @@ export default class MyDocument extends Document {
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           />
-          <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
-          <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/static/favicon.ico" />
-          <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32" />
-          <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16" />
+          <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="/static/favicon.ico"
+          />
+          <link
+            rel="shortcut icon"
+            type="image/vnd.microsoft.icon"
+            href="/static/favicon.ico"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            href="/static/favicon-32x32.png"
+            sizes="32x32"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            href="/static/favicon-16x16.png"
+            sizes="16x16"
+          />
           {this.props.styleTags}
         </Head>
         <body>

@@ -52,7 +52,9 @@ export default class TextRotate extends Component {
   }
 
   animate = () => {
-    if (this.state.pos === this.props.words[this.state.currentWordIndex].length) {
+    if (
+      this.state.pos === this.props.words[this.state.currentWordIndex].length
+    ) {
       this.setState(
         prevState => ({
           grow: !prevState.grow

@@ -146,7 +146,12 @@ export default class DownloadButton extends Component {
       <Handler onClick={this.toggle} innerRef={this.setRef}>
         <Button open={open}>
           <Icon>
-            <img src="/static/img/download-arrow.svg" alt="Download" width={14} height={20} />
+            <img
+              src="/static/img/download-arrow.svg"
+              alt="Download"
+              width={14}
+              height={20}
+            />
           </Icon>
           <Inner>
             <div>
