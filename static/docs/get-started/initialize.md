@@ -9,27 +9,26 @@ If you don't have a directory for your project already, create it now with these
 commands:
 
 ```dvc
-    $ mkdir example-get-started && cd example-get-started
-    $ git init
+$ mkdir example-get-started && cd example-get-started
+$ git init
 ```
 
 Run DVC initialization in a repository directory to create DVC metafiles and
 directories:
 
 ```dvc
-    $ dvc init
-    $ git commit -m 'initialize DVC'
+$ dvc init
+$ git commit -m "initialize DVC"
 ```
 
-After DVC initialization, a new directory `.dvc` will be created with `config`
+After DVC initialization, a new directory `.dvc/` will be created with `config`
 and `.gitignore` files and `cache` directory. These files and directories are
-hidden from the user in general and the user does not interact with these files
-directly.
+hidden from the user generally and are not meant to be manipulated directly.
 
-The last command, `git commit`, puts `.dvc/config` and `.dvc/.gitignore` files
-under Git control.
+> See `dvc init` if you want to get more details about the initialization
+> process, and
+> [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
+> learn about the DVC internal file and directories structure.
 
-Check `dvc init` if you want to get more details about the initialization
-process or [DVC Files and
-Directories](/doc/user-guide/dvc-files-and-directories) to learn about DVC files
-and directories structure.
+The last command, `git commit`, puts the `.dvc/config` and `.dvc/.gitignore`
+files (DVC internals) under Git control.

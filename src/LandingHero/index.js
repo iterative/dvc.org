@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import { media, OnlyDesktop, OnlyMobile } from '../styles'
 import DownloadButton from '../DownloadButton'
 import GithubLine from '../GithubLine'
-import { logEvent } from "../utils/ga";
+import { logEvent } from '../utils/ga'
 import { scroller } from 'react-scroll'
 
 export default class LandingHero extends Component {
@@ -14,19 +14,18 @@ export default class LandingHero extends Component {
 
   componentDidMount() {
     this.commandsFadeInterval = setInterval(() => {
-      this.setState((prevState) => ({
+      this.setState(prevState => ({
         activeCommand: (prevState.activeCommand + 1) % 4
       }))
     }, 3000)
   }
 
   componentWillUnmount() {
-    clearInterval(this.commandsFadeInterval);
+    clearInterval(this.commandsFadeInterval)
   }
 
   getStarted = () => {
-    window.location =
-      '/doc/get-started'
+    window.location = '/doc/get-started'
   }
 
   scrollToVideo = () => {
@@ -36,18 +35,22 @@ export default class LandingHero extends Component {
       offset: -75,
       delay: 0,
       smooth: 'easeInOut',
-      containerId: 'bodybag',
+      containerId: 'bodybag'
     })
   }
 
   render() {
-    const { activeCommand } = this.state;
+    const { activeCommand } = this.state
 
     return (
       <Wrapper>
         <About>
           <Title>
-            Open-source<br/>Version Control System<br/>for Machine Learning Projects
+            Open-source
+            <br />
+            Version Control System
+            <br />
+            for Machine Learning Projects
           </Title>
           <Buttons>
             <OnlyMobile>
@@ -73,12 +76,12 @@ export default class LandingHero extends Component {
               </ActionInner>
             </WatchButton>
           </Buttons>
-    
+
           <Github>
             <GithubLine />
           </Github>
         </About>
-    
+
         <OnlyDesktop>
           <Commands>
             <Command active={activeCommand === 0}>
@@ -93,8 +96,7 @@ export default class LandingHero extends Component {
             <Command active={activeCommand === 3}>
               <Line>$ dvc push</Line>
             </Command>
-          </Commands> 
-         
+          </Commands>
         </OnlyDesktop>
       </Wrapper>
     )
@@ -228,9 +230,9 @@ const GetStartedButton = styled.a`
   line-height: 0.9;
   border: solid 2px transparent;
   transition: 0.2s background-color ease-out;
-  
+
   &:hover {
-    background-color: #13A3BD
+    background-color: #13a3bd;
   }
 `
 
@@ -239,15 +241,15 @@ const Command = styled.div`
   height: 57px;
   border-radius: 8px;
   background-color: #ffffff;
-  border: solid 1px ${({ active }) => active ? '#945dd6' : 'transparent'};
+  border: solid 1px ${({ active }) => (active ? '#945dd6' : 'transparent')};
   margin-bottom: 13px;
-  color: ${({ active }) => active ? '#40364d' : '#b4b9c4'};
+  color: ${({ active }) => (active ? '#40364d' : '#b4b9c4')};
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
   transform: translateZ(0);
   display: flex;
   align-items: center;
-  opacity: ${({ active }) => active ? 1 : 0.30};
-  transition: opacity 3s, border .5s, color 1s;
+  opacity: ${({ active }) => (active ? 1 : 0.3)};
+  transition: opacity 3s, border 0.5s, color 1s;
 `
 
 const Commands = styled.div`

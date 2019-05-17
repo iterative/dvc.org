@@ -15,7 +15,7 @@ export default props => (
         <Logo href="/">
           <img
             src="/static/img/logo_white.png"
-            alt="DVC.org"
+            alt="site logo"
             width={36}
             height={23}
           />

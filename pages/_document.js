@@ -4,7 +4,9 @@ import reset from 'styled-reset'
 import { global } from '../src/styles'
 import Router from 'next/router'
 
-const DESCRIPTION = `Open-source Version Control System for Data Science Projects. Data Version Control.`
+const DESCRIPTION = `Open-source version control system for Data Science and` +
+  ` Machine Learning projects. Track your data, models, and experiments with` +
+  ` a Git-like tool.`
 const KEYWORDS = `data version control machine learning models management`
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -57,21 +59,61 @@ export default class MyDocument extends Document {
           <meta charSet="utf-8" />
           <meta name="description" content={DESCRIPTION} />
           <meta name="keywords" content={KEYWORDS} />
-          <meta prefix="og: http://ogp.me/ns#" property="og:image" content="http://dvc.org/static/social-share.png" />
-          <meta prefix="og: http://ogp.me/ns#" property="og:image:secure_url" content="https://dvc.org/static/social-share.png" />
-          <meta prefix="og: http://ogp.me/ns#" property="og:description" content="DVC is designed to handle large data files, models, and metrics as well as code. DVC is an open-source framework and distributed version control system for machine learning projects." />
-          <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Data Science Version Control System" />
+          <meta
+            prefix="og: http://ogp.me/ns#"
+            property="og:image"
+            content="http://dvc.org/static/social-share.png"
+          />
+          <meta
+            prefix="og: http://ogp.me/ns#"
+            property="og:image:secure_url"
+            content="https://dvc.org/static/social-share.png"
+          />
+          <meta
+            prefix="og: http://ogp.me/ns#"
+            property="og:description"
+            content="DVC is designed to handle large data files, models, and metrics as well as code. DVC is an open-source framework and distributed version control system for machine learning projects."
+          />
+          <meta
+            prefix="og: http://ogp.me/ns#"
+            property="og:title"
+            content="Data Science Version Control System"
+          />
           <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:image" content="https://dvc.org/static/social-share.png" />
-          <meta name="twitter:description" content="DVC is designed to handle large data files, models, and metrics as well as code. DVC is an open-source framework and distributed version control system for machine learning projects." />
+          <meta
+            name="twitter:image"
+            content="https://dvc.org/static/social-share.png"
+          />
+          <meta
+            name="twitter:description"
+            content="DVC is designed to handle large data files, models, and metrics as well as code. DVC is an open-source framework and distributed version control system for machine learning projects."
+          />
           <meta
             name="viewport"
             content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
           />
-          <link rel="shortcut icon" type="image/x-icon" href="/static/favicon.ico" />
-          <link rel="shortcut icon" type="image/vnd.microsoft.icon" href="/static/favicon.ico" />
-          <link rel="icon" type="image/png" href="/static/favicon-32x32.png" sizes="32x32" />
-          <link rel="icon" type="image/png" href="/static/favicon-16x16.png" sizes="16x16" />
+          <link
+            rel="shortcut icon"
+            type="image/x-icon"
+            href="/static/favicon.ico"
+          />
+          <link
+            rel="shortcut icon"
+            type="image/vnd.microsoft.icon"
+            href="/static/favicon.ico"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            href="/static/favicon-32x32.png"
+            sizes="32x32"
+          />
+          <link
+            rel="icon"
+            type="image/png"
+            href="/static/favicon-16x16.png"
+            sizes="16x16"
+          />
           {this.props.styleTags}
         </Head>
         <body>
@@ -79,7 +121,11 @@ export default class MyDocument extends Document {
           <NextScript />
           {inject(
             `
-            <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script>
+            <script
+                type="text/javascript"
+                src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js"
+                data-dojo-config="usePlainJson: true, isDebug: false">
+            </script>
             <script type="text/javascript">
               function showPopup() {
                 document.cookie = "MCPopupClosed=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/";

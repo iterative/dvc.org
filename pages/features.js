@@ -15,7 +15,7 @@ const HeadInjector = () => (
   <Head>
     <title>Features | Machine Learning Version Control System</title>
   </Head>
-);
+)
 
 export default () => (
   <Page stickHeader={true}>
@@ -51,8 +51,9 @@ export default () => (
           </Icon>
           <Name>Storage agnostic</Name>
           <Description>
-            Use S3, Azure, GCP, SSH, SFTP, rsync or any network-attached storage to
-            store data. The list of supported protocols is constantly expanding.
+            Use S3, Azure, GCP, SSH, SFTP, rsync or any network-attached storage
+            to store data. The list of supported protocols is constantly
+            expanding.
           </Description>
         </Feature>
         <Feature>
@@ -154,8 +155,8 @@ export default () => (
           <Name>Track failures</Name>
           <Description>
             Bad ideas can sometimes bring more information to colleagues than
-            the successful ones. Retaining knowledge of failed attempts can
-            save time in the future. DVC is built to track everything in a
+            the successful ones. Retaining knowledge of failed attempts can save
+            time in the future. DVC is built to track everything in a
             reproducible and easily accessible way.
           </Description>
         </Feature>
@@ -175,7 +176,7 @@ const Features = styled.div`
   flex-wrap: wrap;
   padding-top: 110px;
   padding-bottom: 90px;
-  
+
   ${media.phablet`
     padding-top: 70px;
     padding-bottom: 50px;

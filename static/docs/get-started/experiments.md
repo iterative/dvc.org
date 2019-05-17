@@ -20,13 +20,13 @@ and increase number of features:
                                    max_features=6000,
                                    ngram_range=(1, 2))
 ```
+
 </details>
 
-
 ```dvc
-    $ vi featurization.py        # edit to use bigrams (see above)
-    $ dvc repro train.dvc        # get and save the new model.pkl
-    $ git commit -a -m "bigram model"
+$ vi featurization.py        # edit to use bigrams (see above)
+$ dvc repro train.dvc        # get and save the new model.pkl
+$ git commit -a -m "bigram model"
 ```
 
 Now, we have a new `model.pkl` captured and saved. To get back to the initial

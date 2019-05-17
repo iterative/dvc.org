@@ -2,9 +2,9 @@
 
 Enjoy working with DVC faster and with fewer typos!
 
-Command completion is usually requested by pressing the `tab` key on your
-shell, it will then present the possible options that could follow that command
-call. For example:
+Command completion is usually requested by pressing the `tab` key on your shell,
+it will then present the possible options that could follow that command call.
+For example:
 
 ```dvc
    $ dvc r # Press [tab] key
@@ -28,6 +28,22 @@ Depending on what you typed on the command line so far, it completes:
 
 - Arguments for selected options. For example, `dvc repro` completes with stage
   files to reproduce.
+
+Depending upon your preference and the availability of both Bash and Zsh on your
+system, follow the steps given below to Configure Bash and/or Zsh.
+
+If you are new to working with shell or uncertain about your active shell, use
+`$0` to check your active shell.
+
+For example:
+
+```dvc
+    $ echo $0
+
+      /bin/bash
+```
+
+In this case, follow the steps to configure Bash as it is your active shell.
 
 ## Configure Bash
 
@@ -70,8 +86,8 @@ The DVC specific completion script is located in this path of our main
 repository:
 [dvc/scripts/completion/dvc.zsh](https://github.com/iterative/dvc/blob/master/scripts/completion/dvc.zsh)
 
-Place the completion script in a directory included in `$fpath`,
-the file should be named `_dvc`.
+Place the completion script in a directory included in `$fpath`, the file should
+be named `_dvc`.
 
 For example:
 

@@ -111,10 +111,6 @@ export default class Documentation extends Component {
     const file = indexFile || flatten(files)[0]
     e && this.setCurrentPath(section, indexFile ? undefined : file)
     this.loadFile({ file, section, parseHeadings: false })
-    this.setState({
-      currentSection: section,
-      pageNotFound: false
-    })
   }
 
   onFileSelect = (file, section, e) => {
@@ -124,24 +120,28 @@ export default class Documentation extends Component {
   }
 
   loadFile = ({ file, section, parseHeadings }) => {
-    fetch(`${sidebar[section].folder}/${file}`).then(res => {
-      res.text().then(text => {
-        this.setState(
-          {
-            currentSection: section,
-            currentFile: file,
-            markdown: text,
-            headings: [],
-            pageNotFound: false,
-            isMenuOpen: false
-          },
-          () => {
-            this.scrollTop()
-            parseHeadings && this.parseHeadings(text)
-          }
-        )
+    fetch(`${sidebar[section].folder}/${file}`)
+      .then(res => {
+        res.text().then(text => {
+          this.setState(
+            {
+              currentSection: section,
+              currentFile: file,
+              markdown: text,
+              headings: [],
+              pageNotFound: false,
+              isMenuOpen: false
+            },
+            () => {
+              this.scrollTop()
+              parseHeadings && this.parseHeadings(text)
+            }
+          )
+        })
       })
-    })
+      .catch(() => {
+        window.location.reload()
+      })
   }
 
   parseHeadings = text => {

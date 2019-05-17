@@ -4,7 +4,7 @@ import styled, { css } from 'styled-components'
 import isClient from '../utils/isClient'
 import { logEvent } from '../utils/ga'
 
-const VERSION = `0.35.7`
+const VERSION = `0.40.2`
 const OSX = `osx`
 const WINDOWS = `win`
 const LINUX = `linux`
@@ -94,7 +94,7 @@ export default class DownloadButton extends Component {
     }))
   }
 
-  download = (id) => {
+  download = id => {
     this.close()
     logEvent('download', id)
   }
@@ -164,11 +164,7 @@ export default class DownloadButton extends Component {
             </Triangle>
           </Inner>
         </Button>
-        {open && (
-          <Popup openTop={openTop}>
-            {this.renderLinks()}
-          </Popup>
-        )}
+        {open && <Popup openTop={openTop}>{this.renderLinks()}</Popup>}
       </Handler>
     )
   }
@@ -199,14 +195,13 @@ const Button = styled.button`
   flex-direction: row;
   align-items: center;
   transition: 0.2s background-color ease-out;
-  
+
   ${props =>
-    props.open && `
+    props.open &&
+    `
     background-color: #885CCB;
-  `}
-  
-  &:hover {
-    background-color: #885CCB;  
+  `} &:hover {
+    background-color: #885ccb;
   }
 `
 
@@ -304,7 +299,7 @@ const DownloadInput = styled.input`
 const DownloadLink = styled.a`
   ${item};
   color: #b0b8c5;
-  
+
   &:hover {
     color: #40364d;
   }

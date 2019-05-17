@@ -1,6 +1,13 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { media, container, columns, column, OnlyDesktop, OnlyMobile } from '../styles'
+import {
+  media,
+  container,
+  columns,
+  column,
+  OnlyDesktop,
+  OnlyMobile
+} from '../styles'
 import { Element } from 'react-scroll'
 import Slider from 'react-slick'
 
@@ -18,14 +25,14 @@ const ColumnOne = ({ fullWidth }) => (
     <Caption text={`#945dd6`}>ML project version control</Caption>
     <Description fullWidth>
       <p>
-        Version control machine learning models, data sets and
-        intermediate files. DVC connects them with code and uses
-        S3, Azure, GCP, SSH or to store file contents.
+        Version control machine learning models, data sets and intermediate
+        files. DVC connects them with code and uses S3, Azure, GCP, SSH or to
+        store file contents.
       </p>
       <p>
-        Full code and data provenance help track the complete evolution of
-        every ML model. This guarantees reproducibility and makes it
-        easy to switch back and forth between experiments.
+        Full code and data provenance help track the complete evolution of every
+        ML model. This guarantees reproducibility and makes it easy to switch
+        back and forth between experiments.
       </p>
     </Description>
     <LearnMore href={'/features'} />
@@ -37,16 +44,16 @@ const ColumnTwo = ({ fullWidth }) => (
     <Caption text={`#13adc7`}>ML experiment management</Caption>
     <Description fullWidth>
       <p>
-        Harness the full power of Git branches to try different ideas
-        instead of sloppy file suffixes and comments in code. Use
-        automatic metric-tracking to navigate instead of paper and pencil.
+        Harness the full power of Git branches to try different ideas instead of
+        sloppy file suffixes and comments in code. Use automatic metric-tracking
+        to navigate instead of paper and pencil.
       </p>
       <p>
-        DVC was designed to keep branching as simple and fast as in Git —
-        no matter the data file size. Along with first-class citizen
-        metrics and ML pipelines, it means that a project has cleaner
-        structure. It&#39;s easy to compare ideas and pick the best.
-        Iterations become faster with intermediate artifact caching.
+        DVC was designed to keep branching as simple and fast as in Git — no
+        matter the data file size. Along with first-class citizen metrics and ML
+        pipelines, it means that a project has cleaner structure. It&#39;s easy
+        to compare ideas and pick the best. Iterations become faster with
+        intermediate artifact caching.
       </p>
     </Description>
     <LearnMore href={'/features'} />
@@ -58,15 +65,15 @@ const ColumnThree = ({ fullWidth }) => (
     <Caption text={`#f46837`}>Deployment & Collaboration</Caption>
     <Description fullWidth>
       <p>
-        Instead of ad-hoc scripts, use push/pull commands to move
-        consistent bundles of ML models, data, and code into production,
-        remote machines, or a colleague&#39;s computer.
+        Instead of ad-hoc scripts, use push/pull commands to move consistent
+        bundles of ML models, data, and code into production, remote machines,
+        or a colleague&#39;s computer.
       </p>
       <p>
-        DVC introduces lightweight pipelines as a first-class citizen
-        mechanism in Git. They are language-agnostic and connect multiple
-        steps into a DAG. These pipelines are used to remove friction from
-        getting code into production.
+        DVC introduces lightweight pipelines as a first-class citizen mechanism
+        in Git. They are language-agnostic and connect multiple steps into a
+        DAG. These pipelines are used to remove friction from getting code into
+        production.
       </p>
     </Description>
     <LearnMore href={'/features'} />
@@ -74,7 +81,6 @@ const ColumnThree = ({ fullWidth }) => (
 )
 
 export class DiagramSection extends Component {
-
   render() {
     const imagesSliderProps = {
       slidesToShow: 1,
@@ -84,8 +90,8 @@ export class DiagramSection extends Component {
       speed: 600,
       buttons: true,
       dots: true,
-      appendDots: dots => <SliderDots>{dots}</SliderDots>,
-    };
+      appendDots: dots => <SliderDots>{dots}</SliderDots>
+    }
 
     return (
       <Diagram>
@@ -93,11 +99,11 @@ export class DiagramSection extends Component {
         <Container>
           <Title>DVC tracks ML models and data sets</Title>
           <Abstract>
-            DVC is built to make ML models shareable and reproducible.
-            It is designed to handle large files, data sets, machine
-            learning models, and metrics as well as code.
+            DVC is built to make ML models shareable and reproducible. It is
+            designed to handle large files, data sets, machine learning models,
+            and metrics as well as code.
           </Abstract>
-    
+
           <OnlyDesktop>
             <Graphic>
               <img src="/static/img/graphic.png" />
@@ -107,34 +113,42 @@ export class DiagramSection extends Component {
               <ColumnTwo />
               <ColumnThree />
             </Columns>
-          </OnlyDesktop>  
- 
+          </OnlyDesktop>
+
           <OnlyMobile>
             <SliderWrapper>
               <Slider {...imagesSliderProps}>
                 <Slide>
-                  <img src="/static/img/experiments.png" alt="ML project version control" />
+                  <img
+                    src="/static/img/experiments.png"
+                    alt="ML project version control"
+                  />
                   <ColumnOne fullWidth />
                 </Slide>
                 <Slide>
-                  <img src="/static/img/graph.png" alt="ML experiment management" />
+                  <img
+                    src="/static/img/graph.png"
+                    alt="ML experiment management"
+                  />
                   <ColumnTwo fullWidth />
                 </Slide>
                 <Slide>
-                  <img src="/static/img/result.png" alt="Deployment & Collaboration" />
+                  <img
+                    src="/static/img/result.png"
+                    alt="Deployment & Collaboration"
+                  />
                   <ColumnThree fullWidth />
                 </Slide>
               </Slider>
             </SliderWrapper>
           </OnlyMobile>
-
         </Container>
       </Diagram>
     )
   }
 }
 
-export default DiagramSection;
+export default DiagramSection
 
 const Diagram = styled.section`
   padding-top: 80px;
@@ -227,7 +241,7 @@ const Caption = styled.h3`
 `
 
 const Description = styled.div`
-  max-width: ${(props) => props.fullWidth ? '100%' : '311px'};
+  max-width: ${props => (props.fullWidth ? '100%' : '311px')};
   font-size: 16px;
   color: #5f6c72;
 
@@ -256,24 +270,24 @@ const LearnMoreArea = styled.div`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: #945dd6
+    color: #945dd6;
   }
-  
+
   a:hover {
-    color: #745CB7;
+    color: #745cb7;
   }
-  
+
   a:visited {
     color: #945dd6;
   }
-  
+
   a:visited:hover {
-    color: #745CB7;
+    color: #745cb7;
   }
 `
 
 const SliderWrapper = styled.div`
-  .slick-next, 
+  .slick-next,
   .slick-prev {
     height: 30px;
     width: 30px;
@@ -288,18 +302,18 @@ const SliderWrapper = styled.div`
     left: -25px;
   }
 
-  .slick-next:before, 
+  .slick-next:before,
   .slick-prev:before {
     font-size: 30px;
     line-height: 1;
-    opacity: .35;
+    opacity: 0.35;
     color: #40364d;
   }
 
   img {
     pointer-events: none;
   }
-`;
+`
 
 const Slide = styled.div`
   width: 100%;
@@ -310,7 +324,7 @@ const Slide = styled.div`
     max-width: 380px;
     margin: 0 auto;
   }
-`;
+`
 
 const SliderDots = styled.ul`
   margin-bottom: -20px;
@@ -318,4 +332,4 @@ const SliderDots = styled.ul`
   li button::before {
     font-size: 8px;
   }
-`;
+`

@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { logEvent } from "../utils/ga";
-
+import { logEvent } from '../utils/ga'
 
 const WatchButton = ({ onClick, disabled }) => (
   <Button onClick={onClick} disabled={disabled}>
@@ -158,7 +157,8 @@ const Button = styled.button`
   }
 
   ${props =>
-    props.disabled && `
+    props.disabled &&
+    `
     background-color: #b0b8c5;
     &:hover {
       background-color: #b0b8c5;

@@ -1,6 +1,6 @@
 import React from 'react'
 import styled, { keyframes } from 'styled-components'
-import { media } from "../styles";
+import { media } from '../styles'
 import { scroller } from 'react-scroll'
 import { logEvent } from '../utils/ga'
 
@@ -11,7 +11,7 @@ const scrollToDiagram = () => {
     offset: -75,
     delay: 0,
     smooth: 'easeInOut',
-    containerId: 'bodybag',
+    containerId: 'bodybag'
   })
 }
 
@@ -46,7 +46,6 @@ export const bounce = keyframes`
   }
 `
 
-
 export const bounce_mobile = keyframes`
   0%, 30%, 50%, 70%, 100% {
     transform: translateY(0);
@@ -61,17 +60,15 @@ export const bounce_mobile = keyframes`
   }
 `
 
-
 const Icon = styled.div`
   width: 11px;
   height: 19px;
   will-change: transform;
   animation: ${bounce} 3s infinite;
-  
+
   ${media.phone`animation: ${bounce_mobile} 3s infinite;`};
   ${media.phablet`animation: ${bounce_mobile} 3s infinite;`};
 `
-
 
 const Caption = styled.p`
   font-family: BrandonGrotesqueMed;

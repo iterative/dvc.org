@@ -19,47 +19,47 @@ current one will be removed.
 
 Note, that unless `-c|--cloud` is specified, this action does NOT remove data
 files from the remote storage. **Make sure though that remote is configured and
-all the data you will need in the future is pushed there.** See `dvc remote`
-and `dvc config` for more information. This command is just a way to clean the
+all the data you will need in the future is pushed there.** See `dvc remote` and
+`dvc config` for more information. This command is just a way to clean the
 working cache which is usually located on the machine your are running
-experiments on and usually helps to save some space. You can `dvc fetch` all
-the needed files back anytime you want.
+experiments on and usually helps to save some space. You can `dvc fetch` all the
+needed files back anytime you want.
 
 ## Options
 
-* `-a`, `--all-branches` - keep cached objects referenced from the latest commit
-across all branches. It should be used if you want to keep data for the latest
-experiment revisions. Especially, if you intend to use `dvc gc -c` this option
-is much safer.
+- `-a`, `--all-branches` - keep cached objects referenced from the latest commit
+  across all branches. It should be used if you want to keep data for the latest
+  experiment revisions. Especially, if you intend to use `dvc gc -c` this option
+  is much safer.
 
-* `-T`, `--all-tags` - the same as `-a` but keeps cache for existing tags. It's
-useful if tags are used to track "checkpoints" of an experiment or project.
+- `-T`, `--all-tags` - the same as `-a` but keeps cache for existing tags. It's
+  useful if tags are used to track "checkpoints" of an experiment or project.
 
-* `-p`, `--projects` - if a single remote or a single cache is shared (e.g. a
-configuration one describe
-[here](/doc/use-cases/multiple-data-scientists-on-a-single-machine)) among
-different projects, this option can be used to specify a list of them (each
-project is a path) to keep data that is currently referenced from them.
+- `-p`, `--projects` - if a single remote or a single cache is shared (e.g. a
+  configuration one describe
+  [here](/doc/use-cases/multiple-data-scientists-on-a-single-machine)) among
+  different projects, this option can be used to specify a list of them (each
+  project is a path) to keep data that is currently referenced from them.
 
-* `-c`, `--cloud` - also remove files in the remote storage. *This operation is
-dangerous.* It removes data sets, models, other files that are not linked in the
-current branch/commit (unless `-a` or `-T` is specified).
+- `-c`, `--cloud` - also remove files in the remote storage. _This operation is
+  dangerous._ It removes data sets, models, other files that are not linked in
+  the current branch/commit (unless `-a` or `-T` is specified).
 
-* `-r`, `--remote` - name of the remote storage to collect unused objects from
-if `-c` option is specified.
+- `-r`, `--remote` - name of the remote storage to collect unused objects from
+  if `-c` option is specified.
 
-* `-j`, `--jobs` - garbage collector parallelism level. The default value is
-`4 * cpu_count()`. For SSH remotes default is 4. For now only some phases of GC
-are parallel.
+- `-j`, `--jobs` - garbage collector parallelism level. The default value is
+  `4 * cpu_count()`. For SSH remotes default is 4. For now only some phases of
+  GC are parallel.
 
-* `-f`, `--force` - force garbage collection. Skip confirmation prompt.
+- `-f`, `--force` - force garbage collection. Skip confirmation prompt.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 

@@ -5,15 +5,15 @@ import { LightButton } from '../LightButton'
 // syntax highlighter
 import SyntaxHighlighter, {
   registerLanguage
-} from 'react-syntax-highlighter/light'
+} from 'react-syntax-highlighter/dist/light'
 import Collapsible from 'react-collapsible'
-import docco from 'react-syntax-highlighter/styles/hljs/docco'
-import python from 'react-syntax-highlighter/languages/hljs/python'
-import yaml from 'react-syntax-highlighter/languages/hljs/yaml'
-import ini from 'react-syntax-highlighter/languages/hljs/ini'
-import bash from 'react-syntax-highlighter/languages/hljs/bash'
-import diff from 'react-syntax-highlighter/languages/hljs/diff'
-import vim from 'react-syntax-highlighter/languages/hljs/vim'
+import docco from 'react-syntax-highlighter/dist/styles/hljs/docco'
+import python from 'react-syntax-highlighter/dist/languages/hljs/python'
+import yaml from 'react-syntax-highlighter/dist/languages/hljs/yaml'
+import ini from 'react-syntax-highlighter/dist/languages/hljs/ini'
+import bash from 'react-syntax-highlighter/dist/languages/hljs/bash'
+import diff from 'react-syntax-highlighter/dist/languages/hljs/diff'
+import vim from 'react-syntax-highlighter/dist/languages/hljs/vim'
 import usage from './lang/usage'
 import dvc from './lang/dvc'
 import linker from './utils/remark-linker'
@@ -64,6 +64,8 @@ const CodeBlock = ({ value, language }) => {
   const dvcStyle = Object.assign({}, docco)
   dvcStyle['hljs-comment'] = { color: '#999' }
   dvcStyle['hljs-meta'] = { color: '#333', fontSize: '14px' }
+  dvcStyle['hljs']['padding'] = '0.5em 0.5em 0.5em 2em'
+  dvcStyle['hljs-skipped'] = { userSelect: 'none' }
   return (
     <SyntaxHighlighter language={language} style={dvcStyle}>
       {value}

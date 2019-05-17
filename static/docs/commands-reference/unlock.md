@@ -11,16 +11,16 @@ Unlock DVC file (stage). See `dvc lock` for more information.
 
 ## Options
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Example
 
-* First, let's create a sample DVC file:
+- First, let's create a sample DVC file:
 
 ```dvc
     $ echo foo > foo
@@ -32,7 +32,7 @@ Unlock DVC file (stage). See `dvc lock` for more information.
               cp foo bar
 ```
 
-* Then, let's change the file `foo` the stage `bar.dvc` depends on:
+- Then, let's change the file `foo` the stage `bar.dvc` depends on:
 
 ```dvc
     $ rm foo
@@ -47,7 +47,7 @@ Unlock DVC file (stage). See `dvc lock` for more information.
                       changed:  foo
 ```
 
-* Now, let's lock the `bar` stage:
+- Now, let's lock the `bar` stage:
 
 ```dvc
     $ dvc lock bar.dvc
@@ -58,7 +58,7 @@ Unlock DVC file (stage). See `dvc lock` for more information.
                       changed:  foo
 ```
 
-* Run `dvc unlock` to unlock it back:
+- Run `dvc unlock` to unlock it back:
 
 ```dvc
     $ dvc unlock bar.dvc

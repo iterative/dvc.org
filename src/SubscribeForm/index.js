@@ -77,7 +77,7 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    background-color: #daf1f5
+    background-color: #daf1f5;
   }
 
   ${media.phablet`

@@ -19,6 +19,6 @@ export const HeadInjector = ({ sectionName = 'Documentation' }) => (
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.js"
     />
-    <title>{sectionName} | Machine Learning Version Control System</title>
+    <title>{sectionName} | Machine Learning Version Control System · DVC</title>
   </Head>
 )

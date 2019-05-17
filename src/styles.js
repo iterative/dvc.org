@@ -81,9 +81,7 @@ export const container = css`
   ${media.tablet`
     padding: 0px 61px 0px 67px;
     max-width: auto;
-  `}
- 
-  ${media.phablet`
+  `} ${media.phablet`
     padding: 0px 31px 0px 31px;
     max-width: auto;
   `};

@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default (props) => (
+export default props => (
   <SearchForm novalidate>
     <Input
       type="text"

@@ -12,9 +12,9 @@ to get the sample code:
 > On Windows just use your browser to download the archive instead.
 
 ```dvc
-    $ wget https://dvc.org/s3/get-started/code.zip
-    $ unzip code.zip
-    $ rm -f code.zip
+$ wget https://dvc.org/s3/get-started/code.zip
+$ unzip code.zip
+$ rm -f code.zip
 ```
 
 You'll also need to install its dependencies: Python packages like `pandas` and
@@ -27,34 +27,34 @@ You'll also need to install its dependencies: Python packages like `pandas` and
 After downloading the sample code, your project structure should look like this:
 
 ```dvc
-    $ tree
-    .
-    ├── data
-    │   ├── data.xml
-    │   └── data.xml.dvc
-    ├── requirements.txt
-    └── src
-        ├── evaluate.py
-        ├── featurization.py
-        ├── prepare.py
-        └── train.py
+$ tree
+.
+├── data
+│   ├── data.xml
+│   └── data.xml.dvc
+├── requirements.txt
+└── src
+    ├── evaluate.py
+    ├── featurization.py
+    ├── prepare.py
+    └── train.py
 ```
 
 We **strongly** recommend using `virtualenv` or a similar tool to isolate your
 environment:
 
 ```dvc
-    $ virtualenv .env
-    $ echo ".env/" >> .gitignore
-    $ source .env/bin/activate
+$ virtualenv .env
+$ echo ".env/" >> .gitignore
+$ source .env/bin/activate
 ```
 
 Now, we are ready to install dependencies to run the code:
 
 ```dvc
-    $ pip install -U -r requirements.txt
-    $ git add .
-    $ git commit -m 'add code'
+$ pip install -U -r requirements.txt
+$ git add .
+$ git commit -m "add code"
 ```
 
 </details>
@@ -64,10 +64,10 @@ command transforms it into a reproducible **stage** for the ML **pipeline**
 (describes in the next chapter).
 
 ```dvc
-    $ dvc run -f prepare.dvc \
-              -d src/prepare.py -d data/data.xml \
-              -o data/prepared \
-              python src/prepare.py data/data.xml
+$ dvc run -f prepare.dvc \
+          -d src/prepare.py -d data/data.xml \
+          -o data/prepared \
+          python src/prepare.py data/data.xml
 ```
 
 `dvc run` generates the `prepare.dvc` file. It has the same
@@ -86,18 +86,18 @@ This is how the result should look like now:
 ```diff
     .
     ├── data
-    │   ├── data.xml
-    │   ├── data.xml.dvc
-+   │   └── prepared
-+   │       ├── test.tsv
-+   │       └── train.tsv
+    │   ├── data.xml
+    │   ├── data.xml.dvc
++   │   └── prepared
++   │       ├── test.tsv
++   │       └── train.tsv
 +   ├── prepare.dvc
     ├── requirements.txt
     └── src
-        ├── evaluate.py
-        ├── featurization.py
-        ├── prepare.py
-        └── train.py
+        ├── evaluate.py
+        ├── featurization.py
+        ├── prepare.py
+        └── train.py
 ```
 
 This is how `prepare.dvc` looks like internally:
@@ -119,9 +119,9 @@ This is how `prepare.dvc` looks like internally:
 ```
 
 > `dvc run` is just the first of a set of DVC command required to generate a
-[pipeline](/doc/get-started/pipeline) computational graph, or in other words,
-instructions on how to build a ML model (data file) from previous data files (or
-directories).
+> [pipeline](/doc/get-started/pipeline) computational graph, or in other words,
+> instructions on how to build a ML model (data file) from previous data files
+> (or directories).
 
 We would recommend to try to read a few next chapters first, before switching to
 other documents. Hopefully, `dvc run` and `dvc repro` will make more sense after
@@ -143,8 +143,8 @@ into. The script creates two files in it – that will be used later to generate
 features, train and evaluate the model.
 
 And, the last line, `python src/prepare.py data/data.xml`, specifies a command
-to run. This command is saved to the generated DVC file and required by `dvc
-repro`.
+to run. This command is saved to the generated DVC file and required by
+`dvc repro`.
 
 </details>
 

@@ -61,6 +61,7 @@ workspace:
 ```
 
 ### HTTP
+
 ```dvc
     $ dvc run -d https://example.com/data.txt \
               -o data.txt \
@@ -69,20 +70,22 @@ workspace:
 
 ### Using import
 
-In the previous command examples downloading commands were in use:
- `cp`, `aws s3 cp`, `wget`, etc.
+In the previous command examples downloading commands were in use: `cp`,
+`aws s3 cp`, `wget`, etc.
 
-`dvc import` simplifies the downloading part for all the supported
-types of dependencies.
+`dvc import` simplifies the downloading part for all the supported types of
+dependencies.
 
 ```dvc
     $ dvc import https://dvc.org/s3/get-started/data.xml
 ```
+
 <details>
 
 ### Expand to learn more about DVC internals
 
 If you open the resulting DVC file, you will see something like this:
+
 ```yaml
 deps:
   - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
@@ -96,7 +99,7 @@ deps:
 
 DVC checks the headers returned by the server, looking for a strong
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
-[Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it
-to know if the file has changed and we need to download it again.
+[Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it to know
+if the file has changed and we need to download it again.
 
 </details>

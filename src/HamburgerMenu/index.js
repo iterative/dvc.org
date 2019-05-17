@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { media } from '../styles'
 
 import Hamburger from '../Hamburger'
-import { logEvent } from "../utils/ga";
+import { logEvent } from '../utils/ga'
 
 const SocialLink = ({ src, href, click, children }) => (
   <Link src={src} href={href} onClick={click}>
@@ -32,7 +32,7 @@ export default class HamburgerMenu extends Component {
       menu: false
     })
 
-  itemClick = (item) => () => {
+  itemClick = item => () => {
     this.close()
     logEvent('hamburger', item)
   }
@@ -45,11 +45,11 @@ export default class HamburgerMenu extends Component {
     const { menu } = this.state
 
     return (
-      <div>          
+      <div>
         <Button onClick={this.toggleMobileMenu}>
           <Hamburger open={menu} />
         </Button>
-        
+
         <Wrapper open={menu}>
           <Menu>
             <Section>
@@ -81,22 +81,33 @@ export default class HamburgerMenu extends Component {
                     <Link href="/support" onClick={this.itemClick('support')}>
                       Support
                     </Link>
-                    <Link href="/doc/get-started" onClick={this.itemClick('get-started')}>
+                    <Link
+                      href="/doc/get-started"
+                      onClick={this.itemClick('get-started')}
+                    >
                       Get started
                     </Link>
                     <SocialLink
                       src="/static/img/chat.png"
                       href="/chat"
-                      onClick={this.itemClick('chat')} >
+                      onClick={this.itemClick('chat')}
+                    >
                       Chat
                     </SocialLink>
-                    <Link href="/doc" onClick={this.itemClick('doc')}>Documentation</Link>
+                    <Link href="/doc" onClick={this.itemClick('doc')}>
+                      Documentation
+                    </Link>
                   </Links>
                 </Column>
                 <Column>
                   <Heading>Company</Heading>
                   <Links>
-                    <Link href="https://blog.dataversioncontrol.com/" onClick={this.itemClick('blog')}>Blog</Link>
+                    <Link
+                      href="https://blog.dataversioncontrol.com/"
+                      onClick={this.itemClick('blog')}
+                    >
+                      Blog
+                    </Link>
                     <SocialLink
                       src="/static/img/iterative.png"
                       href="https://iterative.ai/"
@@ -137,7 +148,6 @@ export default class HamburgerMenu extends Component {
           </Menu>
         </Wrapper>
       </div>
-      
     )
   }
 }
@@ -148,7 +158,7 @@ const Wrapper = styled.div`
   position: fixed;
   z-index: 10;
   transform: translateX(100%);
-  transition: transform .4s ease;
+  transition: transform 0.4s ease;
   will-change: transform;
   left: 0px;
   right: 0px;

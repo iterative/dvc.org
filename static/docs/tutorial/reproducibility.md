@@ -5,15 +5,15 @@
 The most exciting part of DVC is reproducibility.
 
 > Reproducibility is the time you are getting benefits out of DVC instead of
-spending time defining the ML pipelines.
+> spending time defining the ML pipelines.
 
 DVC tracks all the dependencies, which helps you iterate on ML models faster
 without thinking what was affected by your last change.
 
 > In order to track all the dependencies, DVC finds and reads ALL the DVC-files
-in a repository and builds a dependency graph
-([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) based on these
-files.
+> in a repository and builds a dependency graph
+> ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) based on these
+> files.
 
 This is one of the differences between DVC reproducibility and traditional
 Makefile-like build automation tools (Make, Maven, Ant, Rakefile etc). It was
@@ -43,8 +43,8 @@ signals not only from separate words but also from two-word combinations. This
 eventually increases the number of features for the model and hopefully improves
 the target metric.
 
-Before editing the `code/featurization.py` file, please create and checkout a new
-branch `bigrams`.
+Before editing the `code/featurization.py` file, please create and checkout a
+new branch `bigrams`.
 
 ```dvc
     $ git checkout -b bigram
@@ -52,8 +52,8 @@ branch `bigrams`.
     $ vi code/featurization.py
 ```
 
-Specify `ngram` parameter in `CountVectorizer` (lines 50–53) and increase the number
-of features to 6000:
+Specify `ngram` parameter in `CountVectorizer` (lines 50–53) and increase the
+number of features to 6000:
 
 ```python
     bag_of_words = CountVectorizer(stop_words='english',
@@ -83,26 +83,25 @@ Reproduce the pipeline:
         python code/evaluate.py
 ```
 
-The process started with the feature creation step because one of its
-parameters was changed — the edited source code `code/featurization.py`. All
-dependent steps were regenerated as well.
+The process started with the feature creation step because one of its parameters
+was changed — the edited source code `code/featurization.py`. All dependent
+steps were regenerated as well.
 
-Let’s take a look at the metric’s change. The improvement is close to
-zero (+0.0075% to be precise):
+Let’s take a look at the metric’s change. The improvement is close to zero
+(+0.0075% to be precise):
 
 ```dvc
     $ cat data/eval.txt
     AUC: 0.624727
 ```
 
-This is not a great result but it gives us some information about the
-model.
+This is not a great result but it gives us some information about the model.
 
 To compare it with the previous AUC, you can use the `metrics` command:
 
 ```dvc
     $ dvc metrics show -a
-    
+
     bigram:
     	data/eval.txt: AUC: 0.624727
 
@@ -111,7 +110,7 @@ To compare it with the previous AUC, you can use the `metrics` command:
 ```
 
 > It is convenient to keep track of information even for failed experiments.
-Sometimes a failed hypothesis gives more information than a successful one.
+> Sometimes a failed hypothesis gives more information than a successful one.
 
 Let’s keep the result in the repository. Later we can find out why bigram does
 not add value to the current model and change that.
@@ -136,13 +135,14 @@ Now we can commit the changes:
 ## Checkout code and data files
 
 The previous experiment was done in the feature extraction step and provided no
-improvements. This might be caused by not having perfect model
-hyperparameters. Let’s try to improve the model by changing the hyperparameters.
+improvements. This might be caused by not having perfect model hyperparameters.
+Let’s try to improve the model by changing the hyperparameters.
 
 There is no good reason to improve the last bigram based model. Let’s checkout
 the original model from the master branch.
+
 > Note, after checking out code and DVC-files from Git, data files have to be
-checked out as well using the `dvc checkout` command.
+> checked out as well using the `dvc checkout` command.
 
 ```dvc
     $ git checkout master
@@ -171,8 +171,9 @@ organize all the experiments in a repository and checkout them when needed.
     $ vi code/train_model.py
 ```
 
-Increase the number of trees in the forest to 700 by changing the `n_estimators` parameter and the number of jobs in the
-`RandomForestClassifier` class (line 27):
+Increase the number of trees in the forest to 700 by changing the `n_estimators`
+parameter and the number of jobs in the `RandomForestClassifier` class (line
+27):
 
 ```python
     clf = RandomForestClassifier(n_estimators=700,
@@ -200,7 +201,8 @@ Validate the metric and commit all the changes.
     AUC: 0.637561
 ```
 
-This seems like a good model improvement (+1.28%). Please commit all the changes:
+This seems like a good model improvement (+1.28%). Please commit all the
+changes:
 
 ```dvc
     $ git add .
@@ -212,7 +214,7 @@ This seems like a good model improvement (+1.28%). Please commit all the changes
 Now we can revisit the failing hypothesis with bigrams, which didn’t provide any
 model improvement even with one thousand more features. The current model with
 700 trees in the forest is stronger and we might be able to get more information
-using bigrams. So, let’s incorporate the bigram changes into the current model 
+using bigrams. So, let’s incorporate the bigram changes into the current model
 using a regular Git merge command.
 
 > Git merge logic works for data files and respectively for DVC models.

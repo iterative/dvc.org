@@ -19,8 +19,8 @@ dependencies to find only those that have to be rerun.
 
 ## Description
 
-DVC file (`target`) can have any name followed by the `.dvc` suffix. If file
-name is omitted, `Dvcfile` will be used by default.
+DVC file (`target`) can have any name followed by the `.dvc` file extension. If
+file name is omitted, `Dvcfile` will be used by default.
 
 `dvc repro` provides an interface to rerun the commands in the computational
 graph (a.k.a. pipeline) defined by the stage files in the current workspace. By
@@ -73,7 +73,7 @@ local cache and updates stage files with the new checksum information.
 - `-p`, `--pipeline` - reproduce the whole pipeline that the specified stage
   file belongs to. Use `dvc pipeline show target.dvc` to show the entire
   pipeline the named stage belongs to.
-  
+
 - `--ignore-build-cache` - in case like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B` even if `B` was previously executed with the
   same inputs from `A` (cached). It might be useful when we have a common
@@ -86,7 +86,7 @@ local cache and updates stage files with the new checksum information.
   stages to run if they would not otherwise be rerun (thus the name). This can
   be useful also for pipelines containing stages that produce nondeterministic
   (semi-random) outputs. For nondeterministic stages the outputs can vary on
-  each execution, meaning the cache cannot be trusted for such stages.  
+  each execution, meaning the cache cannot be trusted for such stages.
 
 * `-h`, `--help` - prints the usage/help message, and exit.
 

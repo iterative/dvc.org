@@ -2,9 +2,9 @@
 
 Remove DVC files from your repository.
 
-It removes `.dvc` and `Dvcfile` files, `.dvc` directory. It means cache will be
-removed as well by default, if it's not set to an external location (by
-default local cache is located in the `.dvc/cache` directory).
+It removes `.dvc` and `Dvcfile` files, `.dvc/` directory. It means cache will be
+removed as well by default, if it's not set to an external location (by default
+local cache is located in the `.dvc/cache` directory).
 
 ```usage
     usage: dvc destroy [-h] [-q] [-v] [-f]
@@ -15,12 +15,12 @@ default local cache is located in the `.dvc/cache` directory).
 
 ## Options
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Example
 
@@ -33,7 +33,7 @@ default local cache is located in the `.dvc/cache` directory).
     .dvc .git code.py foo foo.dvc
 
     $ dvc destroy
-    
+
     This will destroy all information about your pipelines as well as cache in .dvc/cache.
     Are you sure you want to continue?
     yes

@@ -10,29 +10,29 @@ The second stage (after the `prepare.dvc` that we created during the previous
 step), feature extraction:
 
 ```dvc
-    $ dvc run -f featurize.dvc \
-              -d src/featurization.py -d data/prepared \
-              -o data/features \
-              python src/featurization.py \
-                     data/prepared data/features
+$ dvc run -f featurize.dvc \
+          -d src/featurization.py -d data/prepared \
+          -o data/features \
+          python src/featurization.py \
+                 data/prepared data/features
 ```
 
 The third stage, training:
 
 ```dvc
-    $ dvc run -f train.dvc \
-              -d src/train.py -d data/features \
-              -o model.pkl \
-              python src/train.py data/features model.pkl
+$ dvc run -f train.dvc \
+          -d src/train.py -d data/features \
+          -o model.pkl \
+          python src/train.py data/features model.pkl
 ```
 
 Let's commit DVC files that describe our pipeline so far:
 
 ```dvc
-    $ git add data/.gitignore .gitignore featurize.dvc train.dvc
-    $ git commit -m "add featurization and train steps to the pipeline"
-    $ dvc push
-```
+$ git add data/.gitignore .gitignore featurize.dvc train.dvc
+$ git commit -m "add featurization and train steps to the pipeline"
+$ dvc push
+ ```
 
 This example is simplified just to show you an idea of the pipeline, check
 [example](/doc/get-started/example-pipeline) or complete

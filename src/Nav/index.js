@@ -11,11 +11,46 @@ const getStarted = () => {
 export default ({ mobile = false }) => (
   <Nav mobile={mobile}>
     <Links>
-      <Link href="/features" onClick={() => {logEvent('menu', 'features')}}>Features</Link>
-      <Link href="/doc" onClick={() => {logEvent('menu', 'doc')}}>Doc</Link>
-      <Link href="/chat" onClick={() => {logEvent('menu', 'chat')}}>Chat</Link>
-      <Link href="https://github.com/iterative/dvc" onClick={() => {logEvent('menu', 'github')}}>Github</Link>
-      <Link href="/support" onClick={() => {logEvent('menu', 'support')}}>Support</Link>
+      <Link
+        href="/features"
+        onClick={() => {
+          logEvent('menu', 'features')
+        }}
+      >
+        Features
+      </Link>
+      <Link
+        href="/doc"
+        onClick={() => {
+          logEvent('menu', 'doc')
+        }}
+      >
+        Doc
+      </Link>
+      <Link
+        href="/chat"
+        onClick={() => {
+          logEvent('menu', 'chat')
+        }}
+      >
+        Chat
+      </Link>
+      <Link
+        href="https://github.com/iterative/dvc"
+        onClick={() => {
+          logEvent('menu', 'github')
+        }}
+      >
+        Github
+      </Link>
+      <Link
+        href="/support"
+        onClick={() => {
+          logEvent('menu', 'support')
+        }}
+      >
+        Support
+      </Link>
     </Links>
     <GetStartedButton onClick={getStarted}>Get Started</GetStartedButton>
   </Nav>
@@ -40,8 +75,8 @@ const Link = styled.a`
 
   &:hover {
     color: #40364d;
-    border-bottom: 1.5px solid #40364d;  
-   }
+    border-bottom: 1.5px solid #40364d;
+  }
 `
 
 const Nav = styled.div`
@@ -76,8 +111,8 @@ const GetStartedButton = styled.button`
   border: none;
   cursor: pointer;
   transition: 0.2s background-color ease-out;
-  
+
   &:hover {
-    background-color: #13A3BD;  
+    background-color: #13a3bd;
   }
 `

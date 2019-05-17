@@ -38,7 +38,7 @@ Both of these files have to be committed to the repository.
     ?? data/Posts.xml.zip.dvc
 
     $ git add .
-    $ git commit -m 'add source dataset'
+    $ git commit -m "add source dataset"
 ```
 
 You have probably already noticed that the actual data file was not committed to
@@ -46,27 +46,28 @@ the repository. The reason is that DVC included the file into `data/.gitignore`,
 so Git ignores this data file from now on.
 
 > DVC will always exclude data files from the Git repository by listing them in
-`.gitignore`.
+> `.gitignore`.
 
-Refer to [Data and Model Files
-Versioning](/doc/use-cases/data-and-model-files-versioning), `dvc add`, and `dvc
-run` for more information on storing and versioning data files with DVC.
+Refer to
+[Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning),
+`dvc add`, and `dvc run` for more information on storing and versioning data
+files with DVC.
 
 Note that to modify or replace a data file that is under DVC control you may
-need to run `dvc unprotect` or `dvc remove` first (check the [Update Tracked
-File](/doc/user-guide/update-tracked-file) guide).  Use `dvc move` to rename or
-move a data file that is under DVC control.
+need to run `dvc unprotect` or `dvc remove` first (check the
+[Update Tracked File](/doc/user-guide/update-tracked-file) guide). Use
+`dvc move` to rename or move a data file that is under DVC control.
 
 ## Data file internals
 
 If you take a look at the DVC-file, you will see that only outputs are defined
 in `outs`. In this file, only one output is defined. The output contains the
-data file path in the repository and md5 cache. This md5 cache determines
-a location of the actual content file in DVC cache directory `.dvc/cache`.
+data file path in the repository and md5 cache. This md5 cache determines a
+location of the actual content file in DVC cache directory `.dvc/cache`.
 
 > Output from DVC-files defines the relationship between the data file path in a
-repository and the path in a cache directory. See also [DVC File
-Format](/doc/user-guide/dvc-file-format)
+> repository and the path in a cache directory. See also
+> [DVC File Format](/doc/user-guide/dvc-file-format)
 
 ```dvc
     $ cat data/Posts.xml.zip.dvc
@@ -84,7 +85,7 @@ Keeping actual file content in a cache directory and a copy of the caches in
 user workspace during `$ git checkout` is a regular trick that
 [Git-LFS](https://git-lfs.github.com/) (Git for Large File Storage) uses. This
 trick works fine for tracking small files with source code. For large data
-files, this might not be the best approach, because of *checkout* operation for
+files, this might not be the best approach, because of _checkout_ operation for
 a 10Gb data file might take several seconds and a 50GB file checkout (think
 copy) might take a few minutes.
 
@@ -102,6 +103,11 @@ meta-data record) in a file system. Use `ls -i` to see file system inodes. If
 you are using a modern file system with reflinks you might see different inodes,
 still only one copy if the actual file data is stored.
 
+> Note: In case of systems supporting reflink, use `df` utility to see that free
+> space on the drive didn't decline by the file size that we are adding and no
+> duplication takes place. As `du` is inaccurate in modern file systems using
+> reflinks.
+
 ```dvc
     $ ls -i data/Posts.xml.zip
     78483929 data/Posts.xml.zip
@@ -114,9 +120,8 @@ still only one copy if the actual file data is stored.
 ```
 
 > Note that DVC uses hardlinks in all the supported OSs, including Mac OS, Linux
-and Windows. Some implementation details (like inodes) might differ, but the
-overall DVC behavior is the same. See also [DVC Files and
-Directories](/doc/user-guide/dvc-files-and-directories)
+> and Windows. Some implementation details (like inodes) might differ, but the
+> overall DVC behavior is the same.
 
 ## Running commands
 
@@ -136,8 +141,8 @@ command, if any.
    file.
 
 2. `-o file.tsv` (lower case o) specifies output data file which means DVC will
-   transform this file into a data file (think — it will run `dvc add
-   file.tsv`).
+   transform this file into a data file (think — it will run
+   `dvc add file.tsv`).
 
 3. `-O file.tsv` (upper case O) specifies a regular output file (not to be added
    to DVC).
@@ -150,7 +155,7 @@ Let's see how an extract command `unzip` works under DVC:
 ```dvc
     $ dvc run -d data/Posts.xml.zip -o data/Posts.xml \
             unzip data/Posts.xml.zip -d data/
-    
+
     Running command:
 	    unzip data/Posts.xml.zip -d data/
     Archive:  data/Posts.xml.zip
@@ -161,10 +166,10 @@ Let's see how an extract command `unzip` works under DVC:
 
     To track the changes with git run:
 
-	    git add data/.gitignore Posts.xml.dvc      
+	    git add data/.gitignore Posts.xml.dvc
 
     $ du -sh data/*
-    
+
     145M data/Posts.xml
     41M data/Posts.xml.zip
     4.0K data/Posts.xml.zip.dvc
@@ -183,18 +188,18 @@ and does some additional work if the command was successful:
    files content goes to the cache directory `.dvc/cache` and each of the
    filenames will be added to `.gitignore`.
 
-2. For reproducibility purposes, DVC creates the DVC-file `Posts.xml.dvc` — the
-   file with meta-information about the pipeline stage, see [DVC File
-   Format](/doc/user-guide/dvc-file-format) — in the current working directory.
-   By default, DVC assigns a name to the DVC-file based on the first output file
-   name by adding the `.dvc` suffix at the end. This name can be changed by
-   using the `-f` option, for example by specifying `-f extract.dvc`.
+2. For reproducibility purposes, DVC creates the `Posts.xml.dvc` DVC-file in the
+   workspace — the file with meta-information about the pipeline stage, see [DVC
+   File Format](/doc/user-guide/dvc-file-format). By default, DVC assigns a name
+   to the DVC-file based on the first output file name, by adding the `.dvc`
+   file extension. This name can be changed by using the `-f` option, for
+   example by specifying `-f extract.dvc`.
 
 Let's take a look at the resulting DVC-file from the above example:
 
 ```dvc
     $ cat Posts.xml.dvc
-    
+
     cmd: ' unzip data/Posts.xml.zip -d data/'
     deps:
     - md5: ec1d2935f811b77cc49b031b999cbf17
@@ -208,11 +213,11 @@ Let's take a look at the resulting DVC-file from the above example:
 
 Sections of the file above include:
 
-* `cmd` — the command to run.
+- `cmd` — the command to run.
 
-* `deps` — dependencies with md5 checksums.
+- `deps` — dependencies with md5 checksums.
 
-* `outs` — outputs with md5 checksums.
+- `outs` — outputs with md5 checksums.
 
 And (as with the `dvc add` command) the `data/.gitignore` file was modified. Now
 it includes the unarchived command output file `Posts.xml`.
@@ -249,14 +254,14 @@ our ML pipeline.
 
 ```dvc
     $ git add .
-    $ git commit -m 'extract data'
+    $ git commit -m "extract data"
 ```
 
 ## Running in bulk
 
-One single step of our ML pipeline was defined and committed into repository.
-It is not necessary to commit steps right after a step's definition. You can
-run a few steps and commit them later.
+One single step of our ML pipeline was defined and committed into repository. It
+is not necessary to commit steps right after a step's definition. You can run a
+few steps and commit them later.
 
 Let’s run the next step of converting an XML file to TSV and the following step
 of separating training and testing datasets one by one:
@@ -281,8 +286,8 @@ of separating training and testing datasets one by one:
 
 The result of the steps are two DVC-files corresponding to each of the commands
 `Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file was
-created. This type of file should not be tracked by Git. Let’s manually
-include this type of file into `.gitignore`.
+created. This type of file should not be tracked by Git. Let’s manually include
+this type of file into `.gitignore`.
 
 ```dvc
     $ git status -s
@@ -298,7 +303,7 @@ Both of the steps can be committed to the repository together.
 
 ```dvc
     $ git add .
-    $ git commit -m 'Process to TSV and separate test and train'
+    $ git commit -m "Process to TSV and separate test and train"
 ```
 
 Let’s run and commit the following steps of the pipeline. Define the feature
@@ -345,14 +350,14 @@ And evaluate the result of the trained model using the test feature matrix:
 ```
 
 The model evaluation step is the last one. To make it a reproducibility goal by
-default we specify DVC-file as `Dvcfile`. This will be discussed in the next
-chapter in more details.
+default we specify a DVC-file named `Dvcfile`. This will be discussed in the
+next chapter in more details.
 
-Note that the output file `data/eval.txt` was transformed by DVC into a
-metric file in accordance with the `-M` option.
+Note that the output file `data/eval.txt` was transformed by DVC into a metric
+file in accordance with the `-M` option.
 
-The result of the last three run commands execution is three DVC-files and
-a modified .gitignore file. All the changes should be committed into Git.
+The result of the last three run commands execution is three DVC-files and a
+modified .gitignore file. All the changes should be committed into Git.
 
 ```dvc
     $ git status -s
@@ -374,6 +379,7 @@ form:
 ```
 
 You can also show the metrics using the `DVC metrics` command:
+
 ```dvc
     $ dvc metrics show
     data/eval.txt:AUC: 0.624652
