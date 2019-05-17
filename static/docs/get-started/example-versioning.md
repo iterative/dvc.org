@@ -227,9 +227,10 @@ $ python train.py
 $ dvc add model.h5
 ```
 
-Note! `dvc remove` or `dvc unprotect` is required, otherwise `python train.py`
-will overwrite the existing file and may corrupt the cached version. Check this
-[guide](/doc/user-guide/update-tracked-file) to learn more.
+> **Note!** `dvc remove` or `dvc unprotect` is required, otherwise `python
+train.py` will overwrite the existing file and may corrupt the cached version.
+Refer to the [Update a Tracked File](/doc/user-guide/update-tracked-file) guide
+to learn more.
 
 Let's commit the second version:
 

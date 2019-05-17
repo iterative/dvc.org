@@ -51,6 +51,7 @@
     "files": [
       "dvc-files-and-directories.md",
       "dvc-file-format.md",
+      "cache-file-linking.md",
       "external-dependencies.md",
       "external-outputs.md",
       "development.md",
@@ -65,6 +66,7 @@
     "labels": {
       "dvc-files-and-directories.md": "Files and Directories",
       "dvc-file-format.md": "File Format (.dvc)",
+      "cache-file-linking.md": "Cache File Linking",
       "development.md": "Development Version",
       "external-dependencies.md": "External Dependencies",
       "external-outputs.md": "External Outputs",

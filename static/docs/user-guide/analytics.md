@@ -26,7 +26,7 @@ User and event data have a 14 month retention period.
 DVC's analytics record the following information per event:
 
 - The DVC version, e.g. `0.22.0`
-- The operating system info, e.g. `linux`, `ubuntu`, `14.04`, etc
+- The operating system information, e.g. `linux`, `ubuntu`, `14.04`, etc
 - The underlying version control system, e.g. `git`
 - Command type, e.g. `CmdDataPull`
 - Command return code, e.g. `1`

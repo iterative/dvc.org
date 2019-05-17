@@ -43,10 +43,10 @@ of the DVC _metafile_ format.
 
 By default DVC tries using reflinks (See [Cache File
 Linking](/docs/user-guide/cache-file-linking)) to avoid copying any file
-contents and to optimize DVC file operations even for large files. DVC also
-supports other link types for use on file systems without `reflink` support, but
-they have to be specified manually. Refer to the `cache.type` config option in
-`dvc config cache` for more information.
+contents and to optimize DVC file operations for large files. DVC also supports
+other link types for use on file systems without `reflink` support, but they
+have to be specified manually. Refer to the `cache.type` config option in `dvc
+config cache` for more information.
 
 A `dvc add` target can be an individual file or a directory. There are two ways
 to work with directory hierarchies with `dvc add`.

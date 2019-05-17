@@ -5,8 +5,8 @@ dead easy to consistently get all your data files and code to any machine. All
 you need to do is to setup a remote DVC repository, that will store cache files
 for your project. Currently DVC supports AWS S3, Google Cloud Storage, Microsoft
 Azure Blob Storage, SSH and HDFS as remote location and the list is constantly
-growing. To get a full info about supported remote types and their configuration
-take a look at `dvc remote`.
+growing. For complete information about supported remote types and their
+configuration take a look at `dvc remote`.
 
 ![](/static/img/model-sharing-digram.png)
 
