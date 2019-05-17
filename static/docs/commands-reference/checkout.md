@@ -35,8 +35,8 @@ The execution of `dvc checkout` does:
   backward in the pipeline from the named targets.
 - For any data files where the checksum does not match with the DVC file entry,
   the data file is restored from the cache. The link type used (`reflink`,
-  `hardlink`, `symlink`, or `copy`) by default depends on the OS, or the
-  configured value is used. (See `cache.type` in `dvc config cache`)
+  `hardlink`, `symlink`, or `copy`) depends on the OS, or the configured value
+  is used. (See `cache.type` in `dvc config cache`.)
 
 This command must be executed after `git checkout` since Git does not handle
 files that are under DVC control. For convenience a Git hook is available,

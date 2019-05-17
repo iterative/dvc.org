@@ -81,7 +81,8 @@ process.
      want to see in your Git repository) in a local key-value store and use file
      symlinks instead of the actual files.
 
-   - DVC uses hardlinks instead of symlinks to make user experience better.
+   - DVC uses reflinks (or hardlinks) instead of symlinks to make user
+     experience better.
 
    - DVC optimizes checksum calculation.
 
@@ -111,10 +112,9 @@ process.
      `git clone` command. It gives more granularity on managing data and code
      separately. Hooks could be configured to make workflow simpler.
 
-   - DVC creates hardlinks (or even reflinks if they are supported). The
-     `dvc checkout` command does not actually copy data files from cache to the
-     workspace, as copying files is a heavy operation for large files (30
-     GB+).
+   - DVC creates reflinks. The `dvc checkout` command does not actually copy
+     data files from cache to the workspace, as copying files is a heavy
+     operation for large files (30 GB+).
 
    - `git-lfs` was not made with data science scenarios in mind, thus it does
      not support certain features, e.g. pipelines and metrics, and thus Github

@@ -91,17 +91,18 @@ copy) might take a few minutes.
 
 DVC was designed with large data files in mind. This means gigabytes or even
 hundreds of gigabytes in file size. Instead of copying files from cache to
-workspace, DVC creates [hardlinks](https://en.wikipedia.org/wiki/Hard_link).
-(This is similar to what [Git-annex](https://git-annex.branchable.com/) does.)
+workspace, DVC creates reflinks or other file link types. (See [Cache File
+Linking](/docs/user-guide/cache-file-linking).)
 
-Creating file hardlinks (or reflinks on the modern file systems) is a quick
-operation. So, with DVC you can easily checkout a few dozen files of any size. A
-hardlink does not require you to have twice as much space in the hard drive.
-Even if each of the files contains 41MB of data, the overall size of the
-repository is still 41MB. Both of the files correspond to the same `inode` (file
-meta-data record) in a file system. Use `ls -i` to see file system inodes. If
-you are using a modern file system with reflinks you might see different inodes,
-still only one copy if the actual file data is stored.
+Creating file links is a quick file system operation. So, with DVC you can
+easily checkout a few dozen files of any size. A file link does not require you
+to have twice as much space in the hard drive. Even if each of the files
+contains 41MB of data, the overall size of the repository is still 41MB. Both of
+the files correspond to the same `inode` (file metadata record) in a file
+system. Use `ls -i` to see file system inodes. If you are using a modern file
+system with reflinks you might see different inodes, still only one copy if the
+actual file data is stored. (Refer to [Cache File
+Linking](/docs/user-guide/cache-file-linking) for more details.)
 
 > Note: In case of systems supporting reflink, use `df` utility to see that free
 > space on the drive didn't decline by the file size that we are adding and no
@@ -119,9 +120,10 @@ $ du -sh .
  41M .
 ```
 
-> Note that DVC uses hardlinks in all the supported OSs, including Mac OS, Linux
-> and Windows. Some implementation details (like inodes) might differ, but the
-> overall DVC behavior is the same.
+> Note that DVC tries to use reflinks by default in the platforms that support
+> them (Mac OS or Linux, depending on the file system). Some implementation
+> details (like inodes) might differ, but the overall DVC behavior is the same
+> on those platforms.
 
 ## Running commands
 
