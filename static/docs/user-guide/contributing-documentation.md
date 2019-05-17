@@ -97,8 +97,8 @@ We will review your PR as soon as possible. Thank you for contributing!
 ## Code style guidelines
 
 - No trailing whitespaces are allowed. Both for JS and Mardown files.
-- Content must be properly formatted at 80 symbols width. We recommend using
-  Visual Studio Code and the
+- Content in the raw file (`file-name.md`) should be less than 80 symbols width.
+  We recommend using Visual Studio Code and the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
   plugin to format the content of Mardown files or install the pre-commit hook
   described above.
