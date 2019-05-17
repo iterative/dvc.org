@@ -31,7 +31,7 @@ contributing!
 
 - Get the latest development version. Fork and clone the repo:
   ```dvc
-      $ git clone git@github.com:<username>/dvc.git
+  $ git clone git@github.com:<username>/dvc.git
   ```
 - Make sure that you have python 3 installed. Version 3.6 or higher is required
   to run style checkers on pre-commit. On Mac OS, use `brew` to install the
@@ -268,7 +268,7 @@ To run DVC from its Git repository you need to setup your environment:
 - Modify and export `PATH` variable to include location of our wrapper script:
 
   ```dvc
-      $ export PATH=$PATH:$DVC_HOME/bin
+  $ export PATH=$PATH:$DVC_HOME/bin
   ```
 
 - Check that `dvc` points to your repository:
