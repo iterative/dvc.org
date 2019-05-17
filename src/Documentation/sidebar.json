@@ -83,7 +83,7 @@
     "files": [
       "add.md",
       [
-        "cache.md", 
+        "cache.md",
         "cache:dir.md"
       ],
       "checkout.md",
@@ -106,7 +106,7 @@
       ],
       "move.md",
       [
-        "pipeline.md", 
+        "pipeline.md",
         "pipeline:list.md",
         "pipeline:show.md"
       ],
