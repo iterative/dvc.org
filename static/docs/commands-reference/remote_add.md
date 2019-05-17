@@ -24,12 +24,12 @@ See also [default](/doc/commands-reference/remote-default),
 ## Description
 
 `name` and `url` are required. `url` specifies a location to store your data. It
-could be S3 path, SSH path, Azure, Google cloud, Aliyun OSS local directory, etc - see more
-examples below. If `url` is a local relative path, it will be resolved relative
-to the current directory and saved to config relative to the config file
-location (see LOCAL example below). Whenever possible DVC will create a remote
-directory if does not exists yet. It won't create an S3 bucket though and will
-rely on default access settings.
+could be S3 path, SSH path, Azure, Google cloud, Aliyun OSS local directory,
+etc - see more examples below. If `url` is a local relative path, it will be
+resolved relative to the current directory and saved to config relative to the
+config file location (see LOCAL example below). Whenever possible DVC will
+create a remote directory if does not exists yet. It won't create an S3 bucket
+though and will rely on default access settings.
 
 > If you installed DVC via `pip`, and depending on the remote type you plan to
 > use you might need to install optional dependencies: `s3`, `gs`, `azure`,
@@ -256,28 +256,30 @@ variables:
 
 ### Click for Aliyun OSS
 
-First you need to setup OSS storage on Aliyun Cloud and then 
-use s3 style url for oss storage and make endpoint a configurable value, 
-an example is shown below:
+First you need to setup OSS storage on Aliyun Cloud and then use s3 style url
+for oss storage and make endpoint a configurable value, an example is shown
+below:
 
 ```dvc
-$ dvc remote add myremote oss://my-bucket/path
+    $ dvc remote add myremote oss://my-bucket/path
 ```
 
-To set key id, key secret and endpoint you need to use modify command from dvc, 
+To set key id, key secret and endpoint you need to use modify command from DVC,
 a sample ussge is show below:
 
 ```dvc
-$ dvc remote modify myremote oss_key_id my-key-id --local
-$ dvc remote modify myremote oss_key_secret my-key-secret --local
-$ dvc remote modify myremote oss_endpoint endpoint --local
+    $ dvc remote modify myremote --local oss_key_id my-key-id
+    $ dvc remote modify myremote --local oss_key_secret my-key-secret
+    $ dvc remote modify myremote --local oss_endpoint endpoint
 ```
-You can also set enviornment variables and use them later, to set enviornment variables use following enviormnent variables:
+
+You can also set enviornment variables and use them later, to set enviornment
+variables use following enviormnent variables:
 
 ```dvc
-$ export OSS_ACCESS_KEY_ID="my-key-id"
-$ export OSS_ACCESS_KEY_SECRET="my-key-secret"
-$ export OSS_ENDPOINT="endpoint"
+    $ export OSS_ACCESS_KEY_ID="my-key-id"
+    $ export OSS_ACCESS_KEY_SECRET="my-key-secret"
+    $ export OSS_ENDPOINT="endpoint"
 ```
 
 #### Test your oss storage using docker
@@ -285,21 +287,22 @@ $ export OSS_ENDPOINT="endpoint"
 Start a container running an oss emulator.
 
 ```dvc
-$ git clone https://github.com/nanaya-tachibana/oss-emulator.git
-$ docker image build -t oss:1.0 oss-emulator
-$ docker run --detach -p 8880:8880 --name oss-emulator oss:1.0
+    $ git clone https://github.com/nanaya-tachibana/oss-emulator.git
+    $ docker image build -t oss:1.0 oss-emulator
+    $ docker run --detach -p 8880:8880 --name oss-emulator oss:1.0
 ```
 
 Setup environment variables.
 
 ```dvc
-$ export OSS_BUCKET='my-bucket'
-$ export OSS_ENDPOINT='localhost:8880'
-$ export OSS_ACCESS_KEY_ID='AccessKeyID'
-$ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
+    $ export OSS_BUCKET='my-bucket'
+    $ export OSS_ENDPOINT='localhost:8880'
+    $ export OSS_ACCESS_KEY_ID='AccessKeyID'
+    $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 ```
 
-> Use default key id and key secret when they are not given, which gives read access to public read bucket and public bucket.
+> Use default key id and key secret when they are not given, which gives read
+> access to public read bucket and public bucket.
 
 </details>
 

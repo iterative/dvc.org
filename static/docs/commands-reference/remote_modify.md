@@ -235,19 +235,19 @@ For more information about the variables DVC supports, please visit
 - `oss_key_id` - oss key id to use to access a remote.
 
   ```dvc
-    $ dvc remote modify myremote oss_key_id my-key-id --local
+  $ dvc remote modify myremote --local oss_key_id my-key-id
   ```
 
 - `oss_key_secret` - oss secret key for authorizing access into a remote.
 
   ```dvc
-    $ dvc remote modify myremote oss_key_secret my-key-secret --local
+  $ dvc remote modify myremote --local oss_key_secret my-key-secret
   ```
 
 - `oss_endpoint endpoint` - oss endpoint valuesfor accessing remote container.
 
   ```dvc
-      $ dvc remote modify myremote oss_endpoint endpoint --local
+  $ dvc remote modify myremote --local oss_endpoint endpoint
   ```
 
 </details>
