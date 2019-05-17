@@ -40,34 +40,44 @@ let _javascript = function(hljs) {
         keywords: {
           keyword:
             'ls cat vi mkdir cd wget du python cp export echo pip curl tar ' +
-            'exec autoload sudo unzip rm tree file md5 source virtualenv'
+            'exec autoload sudo unzip rm tree file md5 source virtualenv which'
         },
         contains: [
           {
-            begin: /^\s*\$/,
+            begin: /^\s*\$\s(dvc|git) [a-z\-]+/,
+            returnBegin: true,
+            contains: [
+              {
+                begin: /^\s*\$\s/,
+                className: 'skipped'
+              },
+              {
+                begin: /git [a-z\-]+/,
+                keywords: {
+                  keyword:
+                    'git commit status pull push fetch add init checkout ' +
+                    'merge clone'
+                }
+              },
+              {
+                begin: /dvc [a-z\-]+/,
+                keywords: {
+                  built_in:
+                    'help dvc init add import checkout run pull push fetch ' +
+                    'status repro remove move gc config remote metrics' +
+                    ' install root lock unlock pipeline destroy unprotect ' +
+                    ' commit cache pkg tag diff version'
+                },
+                className: 'strong'
+              }
+            ],
+          },
+          {
+            begin: /^\s*\$\s/,
             className: 'skipped'
           },
           {
             begin: /\\\n/
-          },
-          {
-            begin: / dvc [a-z\-]+/,
-            keywords: {
-              built_in:
-                'help dvc init add import checkout run pull push fetch ' +
-                'status repro remove move gc config remote metrics install ' +
-                'root lock unlock pipeline destroy unprotect commit cache pkg' +
-                'tag diff version'
-            },
-            className: 'strong'
-          },
-          {
-            begin: / git [a-z\-]+/,
-            keywords: {
-              keyword:
-                'git commit status pull push fetch add init checkout ' +
-                'merge clone'
-            }
           },
           QUOTE_STRING,
           APOS_STRING,

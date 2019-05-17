@@ -57,6 +57,6 @@ An output entry consists of such fields:
 
 A metric entry consists of such fields:
 
-- `type`: type of the metrics file(e.g. raw/json/tsv/htsv/csv/hcsv);
+- `type`: type of the metrics file (e.g. raw/json/tsv/htsv/csv/hcsv);
 - `xpath`: path within the metrics file to the metrics data(e.g. `AUC.value` for
   `{"AUC": {"value": 0.624321}}`);
