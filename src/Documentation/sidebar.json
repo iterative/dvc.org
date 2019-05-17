@@ -186,7 +186,7 @@
     }
   },
   {
-    "name": "DVC Philosophy",
+    "name": "Understanding DVC",
     "folder": "/static/docs/philosophy",
     "files": [
       "collaboration-issues.md",
@@ -194,7 +194,8 @@
       "what-is-dvc.md",
       "core-features.md",
       "how-it-works.md",
-      "related-technologies.md"
+      "related-technologies.md",
+      "video-resources.md"
     ],
     "labels": {
       "what-is-dvc.md": "What is DVC?"
