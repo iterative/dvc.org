@@ -88,13 +88,13 @@ If you open the resulting DVC file, you will see something like this:
 
 ```yaml
 deps:
-  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-    path: https://dvc.org/s3/get-started/data.xml
-  md5: bea9674331a4b1d165f2b0abaf2cb0ef
-  outs:
-  - cache: true
-    md5: a304afb96060aad90176268345e10355
-    path: data.xml
+- etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
+  path: https://dvc.org/s3/get-started/data.xml
+md5: bea9674331a4b1d165f2b0abaf2cb0ef
+outs:
+- cache: true
+  md5: a304afb96060aad90176268345e10355
+  path: data.xml
 ```
 
 DVC checks the headers returned by the server, looking for a strong

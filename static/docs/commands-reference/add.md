@@ -122,10 +122,10 @@ Let's check the `data.xml.dvc` file inside:
 ```yaml
 md5: aae37d74224b05178153acd94e15956b
 outs:
-  - cache: true
-    md5: d8acabbfd4ee51c95da5d7628c7ef74b
-    metric: false
-    path: data.xml.jpg
+- cache: true
+  md5: d8acabbfd4ee51c95da5d7628c7ef74b
+  metric: false
+  path: data.xml.jpg
 ```
 
 This is a standard DVC stage file with only an `outs` entry. The checksum should
@@ -184,10 +184,10 @@ top-level directory, and it contains this:
 ```yaml
 md5: df06d8d51e6483ed5a74d3979f8fe42e
 outs:
-  - cache: true
-    md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
-    metric: false
-    path: pics
+- cache: true
+  md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
+  metric: false
+  path: pics
 wdir: .
 ```
 

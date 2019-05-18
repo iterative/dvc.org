@@ -178,19 +178,19 @@ indeed _not in cache_ as claimed. Look at `train.dvc` first:
 
 ```yaml
 cmd: python src/train.py data/features model.pkl
-    deps:
-    - md5: d05e0201a3fb47c878defea65bd85e4d
-      path: src/train.py
-    - md5: b7a357ba7fa6b726e615dd62b34190b4.dir
-      path: data/features
-      md5: b91b22bfd8d9e5af13e8f48523e80250
-    outs:
-    - cache: true
-      md5: 70599f166c2098d7ffca91a369a78b0d
-      metric: false
-      path: model.pkl
-      persist: false
-    wdir: .
+deps:
+- md5: d05e0201a3fb47c878defea65bd85e4d
+  path: src/train.py
+- md5: b7a357ba7fa6b726e615dd62b34190b4.dir
+  path: data/features
+  md5: b91b22bfd8d9e5af13e8f48523e80250
+outs:
+- cache: true
+  md5: 70599f166c2098d7ffca91a369a78b0d
+  metric: false
+  path: model.pkl
+  persist: false
+wdir: .
 ```
 
 To verify this instance of `model.pkl` is not in the cache, we must know how the

@@ -103,19 +103,19 @@ This is how the result should look like now:
 This is how `prepare.dvc` looks like internally:
 
 ```yaml
-    cmd: python src/prepare.py data/data.xml
-    deps:
-    - md5: b4801c88a83f3bf5024c19a942993a48
-    path: src/prepare.py
-    - md5: a304afb96060aad90176268345e10355
-    path: data/data.xml
-    md5: c3a73109be6c186b9d72e714bcedaddb
-    outs:
-    - cache: true
-    md5: 6836f797f3924fb46fcfd6b9f6aa6416.dir
-    metric: false
-    path: data/prepared
-    wdir: .
+cmd: python src/prepare.py data/data.xml
+deps:
+- md5: b4801c88a83f3bf5024c19a942993a48
+path: src/prepare.py
+- md5: a304afb96060aad90176268345e10355
+path: data/data.xml
+md5: c3a73109be6c186b9d72e714bcedaddb
+outs:
+- cache: true
+md5: 6836f797f3924fb46fcfd6b9f6aa6416.dir
+metric: false
+path: data/prepared
+wdir: .
 ```
 
 > `dvc run` is just the first of a set of DVC command required to generate a

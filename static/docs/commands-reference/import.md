@@ -258,15 +258,15 @@ file:
 
 ```yaml
 deps:
-  - md5: a86ca87250ed8e54a9e2e8d6d34c252e
-    path: /path/to/data-store/data.xml
+- md5: a86ca87250ed8e54a9e2e8d6d34c252e
+  path: /path/to/data-store/data.xml
 md5: 361728a3b037c9a4bcb897cdf856edfc
 outs:
-  - cache: true
-    md5: a304afb96060aad90176268345e10355
-    metric: false
-    path: data/data.xml
-    persist: false
+- cache: true
+  md5: a304afb96060aad90176268345e10355
+  metric: false
+  path: data/data.xml
+  persist: false
 wdir: .
 ```
 

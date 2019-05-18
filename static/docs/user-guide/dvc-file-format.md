@@ -14,21 +14,21 @@ Here is an example of a DVC file:
 cmd: python cmd.py input.data output.data metrics.json
 deps:
 - md5: da2259ee7c12ace6db43644aef2b754c
-  path: cmd.py
+path: cmd.py
 - md5: e309de87b02312e746ec5a500844ce77
-  path: input.data
+path: input.data
 md5: 521ac615cfc7323604059d81d052ce00
 outs:
 - cache: true
-  md5: 70f3c9157e3b92a6d2c93eb51439f822
-  metric: false
-  path: output.data
+md5: 70f3c9157e3b92a6d2c93eb51439f822
+metric: false
+path: output.data
 - cache: false
-  md5: d7a82c3cdfd45c4ace13484a931fc526
-  metric:
-    type: json
-    xpath: AUC
-  path: metrics.json
+md5: d7a82c3cdfd45c4ace13484a931fc526
+metric:
+  type: json
+  xpath: AUC
+path: metrics.json
 locked: True
 ```
 
