@@ -11,7 +11,7 @@ usage: dvc commit [-h] [-q | -v]
                   [targets [targets ...]]
 
 positional arguments:
-  targets               DVC files.
+targets               DVC files.
 ```
 
 ## Description
@@ -165,12 +165,12 @@ First verification:
 $ dvc status
 
 evaluate.dvc:
-    changed deps:
-        modified:           data/features
-        modified:           model.pkl
+changed deps:
+modified:           data/features
+modified:           model.pkl
 train.dvc:
-    changed outs:
-        not in cache:       model.pkl
+changed outs:
+not in cache:       model.pkl
 ```
 
 And we can look in the DVC cache to see if the new version of `model.pkl` is
@@ -178,19 +178,19 @@ indeed _not in cache_ as claimed. Look at `train.dvc` first:
 
 ```yaml
 cmd: python src/train.py data/features model.pkl
-    deps:
-    - md5: d05e0201a3fb47c878defea65bd85e4d
-      path: src/train.py
-    - md5: b7a357ba7fa6b726e615dd62b34190b4.dir
-      path: data/features
-      md5: b91b22bfd8d9e5af13e8f48523e80250
-    outs:
-    - cache: true
-      md5: 70599f166c2098d7ffca91a369a78b0d
-      metric: false
-      path: model.pkl
-      persist: false
-    wdir: .
+deps:
+- md5: d05e0201a3fb47c878defea65bd85e4d
+path: src/train.py
+- md5: b7a357ba7fa6b726e615dd62b34190b4.dir
+path: data/features
+md5: b91b22bfd8d9e5af13e8f48523e80250
+outs:
+- cache: true
+md5: 70599f166c2098d7ffca91a369a78b0d
+metric: false
+path: model.pkl
+persist: false
+wdir: .
 ```
 
 To verify this instance of `model.pkl` is not in the cache, we must know how the
@@ -258,8 +258,8 @@ M src/train.py
 $ dvc status
 
 train.dvc:
-    changed deps:
-        modified:           src/train.py
+changed deps:
+modified:           src/train.py
 ```
 
 Let's edit one of the source files. It doesn't matter which one. You'll see that

@@ -11,7 +11,7 @@ usage: dvc metrics show [-h] [-q] [-v]
                         [path]
 
 positional arguments:
-  path                  Path to a metric file or directory.
+path                  Path to a metric file or directory.
 ```
 
 ## Description

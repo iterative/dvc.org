@@ -12,10 +12,10 @@ specific target files and directories under DVC control.
 usage: dvc diff [-h] [-q | -v] [-t TARGET] a_ref [b_ref]
 
 positional arguments:
-  a_ref                 Git reference from which diff calculates
-  b_ref                 Git reference until which diff calculates,
-                        if omitted diff shows the difference
-                        between current HEAD and a_ref
+a_ref                 Git reference from which diff calculates
+b_ref                 Git reference until which diff calculates,
+                      if omitted diff shows the difference
+                      between current HEAD and a_ref
 ```
 
 ## Description
@@ -141,7 +141,7 @@ dvc diff from bc1722d to 8c1169d
 diff for 'model.pkl'
 -model.pkl with md5 a664896
 +model.pkl with md5 3863d0e
-    ...
+...
 ```
 
 The output from this command confirms that there's a difference in the

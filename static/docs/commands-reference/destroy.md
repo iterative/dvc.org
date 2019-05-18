@@ -10,7 +10,7 @@ local cache is located in the `.dvc/cache` directory).
 usage: dvc destroy [-h] [-q] [-v] [-f]
 
 optional arguments:
-  -f, --force    Force destruction
+-f, --force    Force destruction
 ```
 
 ## Options

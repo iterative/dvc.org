@@ -9,9 +9,9 @@ existing pipelines.
 usage: dvc pipeline [-h] [-q | -v] {show,list} ...
 
 positional arguments:
-  {show,list}    Use dvc pipeline CMD --help for command-specific help.
-    show         Show pipeline.
-    list         List pipelines.
+{show,list}    Use dvc pipeline CMD --help for command-specific help.
+show         Show pipeline.
+list         List pipelines.
 ```
 
 ## Description

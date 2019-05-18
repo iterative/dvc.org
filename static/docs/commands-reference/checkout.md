@@ -10,7 +10,7 @@ usage: dvc checkout [-h] [-q | -v]
                     [targets [targets ...]]
 
 positional arguments:
-    targets          DVC files.
+targets          DVC files.
 ```
 
 ## Description

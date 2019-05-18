@@ -17,8 +17,8 @@ usage: dvc remote add [-h] [-q | -v] [-d] [-f]
                       name url
 
 positional arguments:
-    name           Name.
-    url            URL.
+name           Name.
+url            URL.
 ```
 
 ## Description
@@ -90,10 +90,10 @@ Using an absolute path (recommended):
 ```dvc
 $ dvc remote add myremote /tmp/my-dvc-storage
 $ cat .dvc/config
-  ...
-  ['remote "myremote"']
-        url = /tmp/my-dvc-storage
-  ...
+...
+['remote "myremote"']
+url = /tmp/my-dvc-storage
+...
 $ # NOTE: absolute path `/tmp/my-dvc-storage` saved as is.
 ```
 
@@ -102,9 +102,9 @@ Using a relative path:
 ```dvc
 $ dvc remote add myremote ../my-dvc-storage
 $ cat .dvc/config
-  ...
-  ['remote "myremote"']
-      url = ../../my-dvc-storage
+...
+['remote "myremote"']
+url = ../../my-dvc-storage
 ...
 $ # NOTE: `../my-dvc-storage` has been resolved relative to `.dvc/config` location,
 $ # resulting in `../../my-dvc-storage`.

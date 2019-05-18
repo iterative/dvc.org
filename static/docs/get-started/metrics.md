@@ -12,7 +12,7 @@ $ dvc run -f evaluate.dvc \
           -d src/evaluate.py -d model.pkl -d data/features \
           -M auc.metric \
           python src/evaluate.py model.pkl \
-                 data/features auc.metric
+          data/features auc.metric
 ```
 
 `evaluate.py` calculates AUC value using the test data set. It reads features

@@ -67,20 +67,20 @@ Reproduce the pipeline:
 $ dvc repro
 
 Reproducing 'matrix-train.p.dvc':
-    python code/featurization.py
+python code/featurization.py
 The input data frame data/Posts-train.tsv size is (66999, 3)
 The output matrix data/matrix-train.p size is (66999, 6002) and data type is float64
 The input data frame data/Posts-test.tsv size is (33001, 3)
 The output matrix data/matrix-test.p size is (33001, 6002) and data type is float64
 
 Reproducing 'model.p.dvc':
-    python code/train_model.py 20180319
+python code/train_model.py 20180319
 Input matrix size (66999, 6002)
 X matrix size (66999, 6000)
 Y matrix size (66999,)
 
 Reproducing 'Dvcfile':
-    python code/evaluate.py
+python code/evaluate.py
 ```
 
 The process started with the feature creation step because one of its parameters
@@ -103,10 +103,10 @@ To compare it with the previous AUC, you can use the `metrics` command:
 $ dvc metrics show -a
 
 bigram:
-	data/eval.txt: AUC: 0.624727
+data/eval.txt: AUC: 0.624727
 
 master:
-	data/eval.txt: AUC: 0.624652
+data/eval.txt: AUC: 0.624652
 ```
 
 > It is convenient to keep track of information even for failed experiments.
@@ -186,12 +186,12 @@ Only the modeling and the evaluation step need to be reproduced. Just run repro:
 $ dvc repro
 
 Reproducing 'model.p.dvc':
-    python code/train_model.py 20180319
+python code/train_model.py 20180319
 Input matrix size (66999, 5002)
 X matrix size (66999, 5000)
 Y matrix size (66999,)
 Reproducing 'Dvcfile':
-    python code/evaluate.py
+python code/evaluate.py
 ```
 
 Validate the metric and commit all the changes.
@@ -285,12 +285,12 @@ $ dvc checkout
 $ git merge train_bigram
 Updating f5ff48c..4bd09da
 Fast-forward
- Dvcfile               | 6 +++---
- code/featurization.py | 3 ++-
- code/train_model.py   | 2 +-
- matrix-train.p.dvc    | 6 +++---
- model.p.dvc           | 6 +++---
- 5 files changed, 12 insertions(+), 11 deletions(-)
+Dvcfile               | 6 +++---
+code/featurization.py | 3 ++-
+code/train_model.py   | 2 +-
+matrix-train.p.dvc    | 6 +++---
+model.p.dvc           | 6 +++---
+5 files changed, 12 insertions(+), 11 deletions(-)
 ```
 
 Fast-forward strategy was applied to this merge. It means that we have all the

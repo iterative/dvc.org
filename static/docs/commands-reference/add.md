@@ -10,7 +10,7 @@ usage: dvc add [-h] [-q | -v] [-f]
                targets [targets ...]
 
 positional arguments:
-  targets                  Input files/directories.
+targets                  Input files/directories.
 ```
 
 ## Description
@@ -104,7 +104,7 @@ Saving information to 'data.xml.dvc'.
 
 To track the changes with git run:
 
-	git add .gitignore data.xml.dvc
+git add .gitignore data.xml.dvc
 ```
 
 As the output says, stage file have been created for the file. Let us explore
@@ -122,10 +122,10 @@ Let's check the `data.xml.dvc` file inside:
 ```yaml
 md5: aae37d74224b05178153acd94e15956b
 outs:
-  - cache: true
-    md5: d8acabbfd4ee51c95da5d7628c7ef74b
-    metric: false
-    path: data.xml.jpg
+- cache: true
+md5: d8acabbfd4ee51c95da5d7628c7ef74b
+metric: false
+path: data.xml.jpg
 ```
 
 This is a standard DVC stage file with only an `outs` entry. The checksum should
@@ -173,7 +173,7 @@ Saving information to 'pics.dvc'.
 
 To track the changes with git run:
 
-  	git add pics.dvc
+git add pics.dvc
 ```
 
 There are no DVC files generated within this directory structure, but the images
@@ -184,10 +184,10 @@ top-level directory, and it contains this:
 ```yaml
 md5: df06d8d51e6483ed5a74d3979f8fe42e
 outs:
-  - cache: true
-    md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
-    metric: false
-    path: pics
+- cache: true
+md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
+metric: false
+path: pics
 wdir: .
 ```
 

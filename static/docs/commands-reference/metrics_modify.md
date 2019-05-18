@@ -11,7 +11,7 @@ usage: dvc metrics modify [-h] [-q] [-v]
                           path
 
 positional arguments:
-  path                  Path to a metric file.
+path                  Path to a metric file.
 ```
 
 ## Description
@@ -26,7 +26,7 @@ raised:
 
 ```text
 Error: failed to modify metrics - unable
-       to find file '<path>' in the pipeline
+to find file '<path>' in the pipeline
 ```
 
 ## Options
@@ -63,7 +63,7 @@ stage below is dummy and is made completely for the sake or this examples
 section:
 
 ```dvc
-    $ dvc run -M metrics.csv "echo auc, 0.9567 > metrics.csv"
+$ dvc run -M metrics.csv "echo auc, 0.9567 > metrics.csv"
 ```
 
 The stage `metrics.csv.dvc` file should look like this:
@@ -72,10 +72,10 @@ The stage `metrics.csv.dvc` file should look like this:
 cmd: echo auc, 0.9567 > metrics.csv
 md5: 6ed9b798bf460e1aa80b27388425a07d
 outs:
-  - cache: false
-    md5: 13ee80c6b3e238c5097427c2114ae6e4
-    metric: true
-    path: metrics.csv
+- cache: false
+md5: 13ee80c6b3e238c5097427c2114ae6e4
+metric: true
+path: metrics.csv
 ```
 
 And if we run `dvc metrics show metrics.csv` we will get the complete content of
@@ -84,7 +84,7 @@ the file:
 ```dvc
 $ dvc metrics show metrics.csv
 
-    metrics.csv: auc, 0.9567
+metrics.csv: auc, 0.9567
 ```
 
 Okay. Let's now, imagine we are interested only in numbers - second column of
@@ -101,5 +101,5 @@ and exclude names:
 ```dvc
 $ dvc metrics show metrics.csv
 
-    metrics.csv: [' 0.9567']
+metrics.csv: [' 0.9567']
 ```

@@ -40,7 +40,7 @@ For example:
 ```dvc
 $ echo $0
 
-  /bin/bash
+/bin/bash
 ```
 
 In this case, follow the steps to configure Bash as it is your active shell.
@@ -73,7 +73,7 @@ On a Mac, add the following to your `~/.bash_profile`:
 
 ```bash
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
-    . $(brew --prefix)/etc/bash_completion
+. $(brew --prefix)/etc/bash_completion
 fi
 ```
 

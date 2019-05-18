@@ -15,7 +15,7 @@ usage: dvc pull [-h] [-q | -v] [-j JOBS]
 Pull data files from the cloud.
 
 positional arguments:
-  targets               DVC files.
+targets               DVC files.
 ```
 
 ## Description
@@ -166,9 +166,9 @@ stages should be updated into the local cache.
 ```dvc
 $ dvc status --cloud
 
-  deleted:            data/model.p
-  deleted:            data/matrix-test.p
-  deleted:            data/matrix-train.p
+deleted:            data/model.p
+deleted:            data/matrix-test.p
+deleted:            data/matrix-train.p
 ```
 
 One could do a simple `dvc pull` to get all the data, but what if you only want

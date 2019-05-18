@@ -132,8 +132,8 @@ You are in 'detached HEAD' state.  ...
 $ dvc status
 
 featurize.dvc:
-    changed outs:
-        modified:           data/features
+changed outs:
+modified:           data/features
 
 $ dvc checkout
 
@@ -219,10 +219,10 @@ $ vi src/featurization.py
 $ git commit -a -m "modified featurization"
 
 featurize.dvc:
-    changed deps:
-        modified:           src/featurization.py
+changed deps:
+modified:           src/featurization.py
 [master 1116ddc] modified featurization
- 1 file changed, 1 insertion(+), 1 deletion(-)
+1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 
 We see that `dvc status` output has appeared in the `git commit` interaction.
@@ -236,21 +236,21 @@ $ dvc repro evaluate.dvc
 ... much output
 To track the changes with git run:
 
-    git add featurize.dvc train.dvc evaluate.dvc
+git add featurize.dvc train.dvc evaluate.dvc
 
 $ git status -s
- M auc.metric
- M evaluate.dvc
- M featurize.dvc
- M src/featurization.py
- M train.dvc
+M auc.metric
+M evaluate.dvc
+M featurize.dvc
+M src/featurization.py
+M train.dvc
 
 $ git commit -a -m "updated data after modified featurization"
 
 Pipeline is up to date. Nothing to reproduce.
 
 [master 78d0c44] modified featurization
- 5 files changed, 12 insertions(+), 12 deletions(-)
+5 files changed, 12 insertions(+), 12 deletions(-)
 ```
 
 After rerunning the DVC pipeline, of course the data files are in sync with the

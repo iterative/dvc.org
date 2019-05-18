@@ -58,9 +58,9 @@ for you automatically before you push them:
   [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
   repository from GitHub:
 
-  ```dvc
-  $ git clone git@github.com:<username>/dvc.org.git
-  ```
+```dvc
+$ git clone git@github.com:<username>/dvc.org.git
+```
 
 - Make sure you have Python 3.6 or higher installed. It will be required to run
   style checkers on pre-commit. On Mac OS, use `brew` to install the latest
@@ -71,11 +71,11 @@ for you automatically before you push them:
   installing the required libraries for style checkers. Follow the instructions
   to create one:
 
-  ```dvc
-  $ cd dvc.org
-  $ virtualenv --python python3 .env
-  $ source .env/bin/activate
-  ```
+```dvc
+$ cd dvc.org
+$ virtualenv --python python3 .env
+$ source .env/bin/activate
+```
 
 - Install the style checker's requirements using
   `pip install -r requirements.txt`.

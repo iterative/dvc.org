@@ -32,9 +32,9 @@ difference between the `baseline` and `bigrams` experiments:
 $ dvc metrics show -T
 
 baseline-experiment:
-    auc.metric: 0.588765
+auc.metric: 0.588765
 bigram-experiment:
-    auc.metric: 0.620421
+auc.metric: 0.620421
 ```
 
 DVC provides built-in support to track and navigate `JSON`, `TSV` or `CSV`

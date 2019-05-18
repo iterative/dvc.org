@@ -12,7 +12,7 @@ usage: dvc unprotect [-h] [-q | -v] targets [targets ...]
 Unprotect data file/directory.
 
 positional arguments:
-  targets        Data files/directory.
+targets        Data files/directory.
 ```
 
 `dvc unprotect` can be an expensive operation (involves copying data), check
@@ -44,7 +44,7 @@ running `dvc unprotect`:
 1. Make sure that protected mode is enabled:
 
 ```dvc
-    $ dvc config cache.protected true
+$ dvc config cache.protected true
 ```
 
 2. Put a data file under DVC control:
@@ -60,7 +60,7 @@ Saving information to 'Posts.xml.zip.dvc'.
 
 To track the changes with git run:
 
-	git add .gitignore Posts.xml.zip.dvc
+git add .gitignore Posts.xml.zip.dvc
 ```
 
 3. Check that file is a read-only link (@ sign means a link):
