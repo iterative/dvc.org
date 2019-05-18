@@ -198,7 +198,7 @@ other DVC files. But it did nothing with the `model.pkl` and `matrix.pkl` files.
 Git does not manage those files. Instead DVC manages those files, and we must
 therefore do this:
 
-```
+```dvc
 $ dvc fetch
 $ dvc checkout
 $ md5 model.pkl
@@ -219,14 +219,14 @@ won't always remember to do so. Wouldn't it be nice to automate this?
 
 Let's run this command:
 
-```
+```dvc
 $ dvc install
 ```
 
 This installs Git hooks to automate running `dvc checkout` (or `dvc status`)
 when needed. Then we can checkout the master branch again:
 
-```
+```dvc
 $ git checkout bigrams
 Previous HEAD position was d171a12 add evaluation stage
 HEAD is now at d092b42 try using bigrams
