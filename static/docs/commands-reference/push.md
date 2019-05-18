@@ -12,7 +12,7 @@ usage: dvc push [-h] [-q | -v] [-j JOBS] [--show-checksums]
             [targets [targets ...]]
 
 positional arguments:
-targets               DVC files.
+  targets               DVC files.
 ```
 
 ## Description
@@ -164,9 +164,9 @@ stages should be uploaded to the remote cache.
 ```dvc
 $ dvc status --cloud
 
-new:            data/model.p
-new:            data/matrix-test.p
-new:            data/matrix-train.p
+  new:            data/model.p
+  new:            data/matrix-test.p
+  new:            data/matrix-train.p
 ```
 
 One could do a simple `dvc push` to share all the data, but what if you only

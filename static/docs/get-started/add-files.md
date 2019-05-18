@@ -45,8 +45,8 @@ You can see that actual data file has been moved to the `.dvc/cache` directory
 
 ```dvc
 $ ls -R .dvc/cache
-.dvc/cache/a3:
-04afb96060aad90176268345e10355
+    .dvc/cache/a3:
+    04afb96060aad90176268345e10355
 ```
 
 where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file.

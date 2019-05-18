@@ -69,10 +69,10 @@ Check status:
 $ dvc status
 dir1/data1.dvc:
 changed outs:
-modified:           dir1/data1
-dir2/data2.dvc:
+	modified:           dir1/data1
+  dir2/data2.dvc:
 changed outs:
-modified:           dir2/data2
+	modified:           dir2/data2
 ```
 
 Note, that both data files are displayed as modified Create `.dvcignore` file
@@ -86,9 +86,9 @@ Check status again:
 
 ```dvc
 $ dvc status
-dir2/data2.dvc:
+  dir2/data2.dvc:
 changed outs:
-modified:           dir2/data2
+	modified:           dir2/data2
 ```
 
 Only second file is displayed because DVC ignores `data1.dvc` and `data1` when

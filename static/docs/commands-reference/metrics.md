@@ -14,10 +14,10 @@ usage: dvc metrics [-h] [-q] [-v]
                    ...
 
 positional arguments:
-show                  Output metric values.
-add                   Tag file as a metric file.
-modify                Modify metric file options.
-remove                Remove files's metric tag.
+    show                  Output metric values.
+    add                   Tag file as a metric file.
+    modify                Modify metric file options.
+    remove                Remove files's metric tag.
 ```
 
 ## Description
@@ -62,8 +62,8 @@ Now let's print metric values that we are tracking in the current project:
 ```dvc
 $ dvc metrics show -a
 
-master:
-data/eval.json: {"AUC": "0.624652"}
+  master:
+      data/eval.json: {"AUC": "0.624652"}
 ```
 
 Then we can tell DVC an `xpath` for the metric file, so that it can output only
@@ -75,8 +75,8 @@ selectively extract data out of metric files:
 $ dvc metrics modify data/eval.json --type json --xpath AUC
 $ dvc metrics show
 
-master:
-data/eval.json: 0.624652
+  master:
+      data/eval.json: 0.624652
 ```
 
 And finally let's remove `data/eval.json` from project's metrics:

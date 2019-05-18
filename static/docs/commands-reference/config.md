@@ -7,8 +7,8 @@ usage: dvc config [-h] [-q | -v] [--global] [--system] [--local]
                   [-u] name [value]
 
 positional arguments:
-name                  Option name
-value                 Option value
+    name                  Option name
+    value                 Option value
 ```
 
 ## Description

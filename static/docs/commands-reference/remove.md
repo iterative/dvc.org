@@ -14,7 +14,7 @@ want to use in the future or share.
 usage: dvc remove [-h] [-q] [-v] [-o | -p] [-f] targets [targets ...]
 
 positional arguments:
-targets               DVC files.
+    targets               DVC files.
 ```
 
 Check also [Update Tracked Files](/doc/user-guide/update-tracked-file) to see
@@ -44,8 +44,8 @@ Let's imagine we have a `data.csv` under DVC control:
 $ dvc add data.csv
 $ ls data.csv*
 
-data.csv
-data.csv.dvc
+    data.csv
+    data.csv.dvc
 ```
 
 Remove `data.csv` data file:
@@ -54,7 +54,7 @@ Remove `data.csv` data file:
 $ dvc remove data.csv.dvc
 $ ls data.csv*
 
-data.csv.dvc
+     data.csv.dvc
 ```
 
 Purge DVC files:

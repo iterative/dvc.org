@@ -48,8 +48,8 @@ $ git init
 $ dvc init
 $ git status
 
-new file:   .dvc/.gitignore
-new file:   .dvc/config
+        new file:   .dvc/.gitignore
+        new file:   .dvc/config
 
 $ git commit -m "Init DVC"
 ```

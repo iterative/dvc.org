@@ -13,7 +13,7 @@ usage: dvc fetch [-h] [-q | -v] [-j JOBS]
                  [targets [targets ...]]
 
 positional arguments:
-targets               DVC files (stages).
+  targets               DVC files (stages).
 ```
 
 ## Description
@@ -179,8 +179,8 @@ are under DVC control into our local cache:
 ```dvc
 $ dvc status --cloud
 ...
-deleted:            model.pkl
-deleted:            data/features/...
+    deleted:            model.pkl
+    deleted:            data/features/...
 
 $ dvc fetch
 ...
@@ -255,10 +255,10 @@ dependencies/outputs for the full pipeline are still missing from local cache:
 ```dvc
 $ dvc status -c
 ...
-deleted:            model.pkl
-deleted:            data/features/test.pkl
-deleted:            data/features/train.pkl
-deleted:            data/data.xml
+    deleted:            model.pkl
+    deleted:            data/features/test.pkl
+    deleted:            data/features/train.pkl
+    deleted:            data/data.xml
 ```
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want

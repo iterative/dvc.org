@@ -13,7 +13,7 @@ usage: dvc repro [-h] [-q | -v]
                  [targets [targets ...]]
 
 positional arguments:
-target                DVC file to reproduce.
+    target                DVC file to reproduce.
 ```
 
 ## Description
@@ -177,7 +177,7 @@ Stage 'filter.dvc' didn't change.
 Stage 'Dvcfile' changed.
 Reproducing 'Dvcfile'
 Running command:
-python process.py numbers.txt > count.txt
+  python process.py numbers.txt > count.txt
 
 Saving information to 'Dvcfile'.
 ```

@@ -13,7 +13,7 @@ usage: dvc pipeline show [-h] [-q | -v] [-c | -o]
                          [targets [targets ...]]
 
 positional arguments:
-targets         DVC files.
+  targets         DVC files.
 ```
 
 ## Options

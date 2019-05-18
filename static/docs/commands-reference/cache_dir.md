@@ -8,9 +8,9 @@ Sets the cache directory location.
 usage: dvc cache dir [-h] [--global] [--system] [--local] [-u] value
 
 positional arguments:
-value        Path to cache directory. Relative paths are resolved relative
-             to the current directory and saved to config relative to the
-             config file location.
+  value        Path to cache directory. Relative paths are resolved relative
+               to the current directory and saved to config relative to the
+               config file location.
 ```
 
 ## Description
@@ -44,7 +44,7 @@ $ dvc cache dir ../dir
 $ cat .dvc/config
 ...
 [cache]
-dir = ../../dir
+    dir = ../../dir
 ...
 ```
 `../dir` has been resolved relative to `.dvc/config` location, resulting in
@@ -57,7 +57,7 @@ $ dvc cache dir /path/to/dir
 $ cat .dvc/config
 ...
 [cache]
-dir = /path/to/dir
+    dir = /path/to/dir
 ...
 ```
 Absolute path `/path/to/dir` saved as is.

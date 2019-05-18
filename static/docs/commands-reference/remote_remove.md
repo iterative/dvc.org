@@ -16,7 +16,7 @@ usage: dvc remote remove [-h] [-q | -v]
                          name
 
 positional arguments:
-name           Name of the remote to remove
+  name           Name of the remote to remove
 ```
 
 ## Description

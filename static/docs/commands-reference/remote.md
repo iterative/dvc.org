@@ -14,11 +14,11 @@ usage: dvc remote [-h] [-q] [-v]
                   {add,default,remove,modify,list} ...
 
 positional arguments:
-add                   Add remote
-default               Default remote
-remove                Remove remote
-modify                Modify remote
-list                  List remotes
+    add                   Add remote
+    default               Default remote
+    remove                Remove remote
+    modify                Modify remote
+    list                  List remotes
 ```
 
 ## Description

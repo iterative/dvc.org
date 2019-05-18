@@ -25,7 +25,7 @@ done using the CLI:
 ```dvc
 $ dvc remote add -d upstream s3://dvc-share/classify
 $ git status -s
-M .dvc/config
+ M .dvc/config
 ```
 
 Then, a simple command pushes files from your local cache to the cloud:

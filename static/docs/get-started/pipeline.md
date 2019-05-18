@@ -14,7 +14,7 @@ $ dvc run -f featurize.dvc \
           -d src/featurization.py -d data/prepared \
           -o data/features \
           python src/featurization.py \
-          data/prepared data/features
+                 data/prepared data/features
 ```
 
 The third stage, training:

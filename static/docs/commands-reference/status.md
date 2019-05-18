@@ -11,7 +11,7 @@ usage: dvc status [-h] [-q | -v] [-j JOBS] [--show-checksums]
                   [targets [targets ...]]
 
 positional arguments:
-targets               Limit the scope to these stage files.
+  targets               Limit the scope to these stage files.
 ```
 
 ## Description
@@ -42,8 +42,8 @@ filesystem. The output indicates the detected changes, if any. If no differences
 are detected, `dvc status` prints this message:
 
 ```dvc
-$ dvc status
-Pipeline is up to date. Nothing to reproduce.
+    $ dvc status
+    Pipeline is up to date. Nothing to reproduce.
 ```
 
 This says that no differences were detected, and therefore that no stages would
@@ -117,14 +117,14 @@ cache. For the typical process to update workspaces, see
 ```dvc
 $ dvc status
 
-bar.dvc
-outs
-changed:  bar
-deps
-changed:  foo
-foo.dvc
-outs
-changed:  foo
+  bar.dvc
+          outs
+                  changed:  bar
+          deps
+                  changed:  foo
+  foo.dvc
+          outs
+                  changed:  foo
 ```
 
 This shows that for `bar.dvc` the dependency, `foo`, has changed, and the
@@ -168,10 +168,10 @@ $ dvc status --remote rcache
 
 Preparing to collect status from s3://dvc-remote
 [##############################] 100% Collecting information
-new:      data/model.p
-new:      data/eval.txt
-new:      data/matrix-train.p
-new:      data/matrix-test.p
+    new:      data/model.p
+    new:      data/eval.txt
+    new:      data/matrix-train.p
+    new:      data/matrix-test.p
 ```
 
 The output shows where the location of the remote cache as well as any
@@ -183,8 +183,8 @@ $ dvc status --remote rcache --show-checksums
 
 Preparing to collect status from s3://dvc-remote
 [##############################] 100% Collecting information
-new:      f0a6e3eed7c7c1a1c707da2c1673ca72
-new:      d6b228f7904bd200d4eb643fe0e8efd8
-new:      f506aa14271f793ffd7eca113f5920cd
-new:      9c0b1f5c3560b6a2838b3fbcd7d72665
+    new:      f0a6e3eed7c7c1a1c707da2c1673ca72
+    new:      d6b228f7904bd200d4eb643fe0e8efd8
+    new:      f506aa14271f793ffd7eca113f5920cd
+    new:      9c0b1f5c3560b6a2838b3fbcd7d72665
 ```

@@ -17,7 +17,7 @@ usage: dvc remote default [-h] [-q | -v] [-u]
                           [name]
 
 positional arguments:
-name           Name of the remote.
+    name           Name of the remote.
 ```
 
 ## Description

@@ -14,7 +14,7 @@ usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS]
                command
 
 positional arguments:
-command               Command to execute.
+  command               Command to execute.
 ```
 
 ## Description
@@ -150,14 +150,14 @@ $ mkdir data
 $ dvc run -d data -o metric -f metric.dvc "echo '1' >> metric"
 
 Running command:
-echo 'a' >> metric
+	echo 'a' >> metric
 Adding 'metric' to '.gitignore'.
 Saving 'metric' to cache '.dvc/cache'.
 Saving information to 'metric.dvc'.
 
 To track the changes with git run:
 
-git add .gitignore metric.dvc
+	git add .gitignore metric.dvc
 ```
 
 - Execute a Python script as a DVC pipeline step. Stage file name is not

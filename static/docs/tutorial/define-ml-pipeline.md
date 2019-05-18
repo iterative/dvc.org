@@ -19,7 +19,7 @@ to download `data.xml`and save it into the `data` subdirectory.
 $ mkdir data
 $ wget -P data https://dvc.org/s3/so/100K/Posts.xml.zip
 $ du -sh data/*
-41M data/Posts.xml.zip
+ 41M data/Posts.xml.zip
 ```
 
 At this time, `data/Posts.xml.zip` is an untracked regular file. We can place it
@@ -30,7 +30,7 @@ Both of these files have to be committed to the repository.
 ```dvc
 $ dvc add data/Posts.xml.zip
 $ du -sh data/*
-41M data/Posts.xml.zip
+ 41M data/Posts.xml.zip
 4.0K data/Posts.xml.zip.dvc
 
 $ git status -s data/
@@ -74,11 +74,11 @@ $ cat data/Posts.xml.zip.dvc
 md5: 7559eb45beb7e90f192e836be8032a64
 outs:
 - cache: true
-md5: ec1d2935f811b77cc49b031b999cbf17
-path: Posts.xml.zip
+  md5: ec1d2935f811b77cc49b031b999cbf17
+  path: Posts.xml.zip
 
 $ du -sh .dvc/cache/ec/*
-41M .dvc/cache/ec/1d2935f811b77cc49b031b999cbf17
+ 41M .dvc/cache/ec/1d2935f811b77cc49b031b999cbf17
 ```
 
 Keeping actual file content in a cache directory and a copy of the caches in
@@ -116,7 +116,7 @@ $ ls -i .dvc/cache/ec/
 78483929 88519f8465218abb23ce0e0e8b1384
 
 $ du -sh .
-41M .
+ 41M .
 ```
 
 > Note that DVC uses hardlinks in all the supported OSs, including Mac OS, Linux
@@ -137,15 +137,15 @@ and the actual source script to run. Outputs are files written to by the
 command, if any.
 
 1. Option `-d file.tsv` should be used to specify a dependency file or
- directory. The dependency can be a regular file from a repository or a data
- file.
+   directory. The dependency can be a regular file from a repository or a data
+   file.
 
 2. `-o file.tsv` (lower case o) specifies output data file which means DVC will
- transform this file into a data file (think — it will run
- `dvc add file.tsv`).
+   transform this file into a data file (think — it will run
+   `dvc add file.tsv`).
 
 3. `-O file.tsv` (upper case O) specifies a regular output file (not to be added
- to DVC).
+   to DVC).
 
 It is important to specify the dependencies and the outputs of the run command
 before the command to run itself.
@@ -154,19 +154,19 @@ Let's see how an extract command `unzip` works under DVC:
 
 ```dvc
 $ dvc run -d data/Posts.xml.zip -o data/Posts.xml \
-      unzip data/Posts.xml.zip -d data/
+        unzip data/Posts.xml.zip -d data/
 
 Running command:
-unzip data/Posts.xml.zip -d data/
+  unzip data/Posts.xml.zip -d data/
 Archive:  data/Posts.xml.zip
-inflating: data/Posts.xml
+    inflating: data/Posts.xml
 Adding 'data/Posts.xml' to 'data/.gitignore'.
 Saving 'data/Posts.xml' to cache '.dvc/cache'.
 Saving information to 'Posts.xml.dvc'.
 
 To track the changes with git run:
 
-git add data/.gitignore Posts.xml.dvc
+  git add data/.gitignore Posts.xml.dvc
 
 $ du -sh data/*
 
@@ -184,16 +184,16 @@ The `unzip` command extracts data file `data/Posts.xml.zip` to a regular file
 and does some additional work if the command was successful:
 
 1. DVC transforms all the outputs `-o` files into data files. It is like
- applying `dvc add` for each of the outputs. As a result, all the actual data
- files content goes to the cache directory `.dvc/cache` and each of the
- filenames will be added to `.gitignore`.
+   applying `dvc add` for each of the outputs. As a result, all the actual data
+   files content goes to the cache directory `.dvc/cache` and each of the
+   filenames will be added to `.gitignore`.
 
 2. For reproducibility purposes, DVC creates the `Posts.xml.dvc` DVC-file in the
- workspace — the file with meta-information about the pipeline stage, see [DVC
- File Format](/doc/user-guide/dvc-file-format). By default, DVC assigns a name
- to the DVC-file based on the first output file name, by adding the `.dvc`
- file extension. This name can be changed by using the `-f` option, for
- example by specifying `-f extract.dvc`.
+   workspace — the file with meta-information about the pipeline stage, see [DVC
+   File Format](/doc/user-guide/dvc-file-format). By default, DVC assigns a name
+   to the DVC-file based on the first output file name, by adding the `.dvc`
+   file extension. This name can be changed by using the `-f` option, for
+   example by specifying `-f extract.dvc`.
 
 Let's take a look at the resulting DVC-file from the above example:
 
@@ -203,12 +203,12 @@ $ cat Posts.xml.dvc
 cmd: ' unzip data/Posts.xml.zip -d data/'
 deps:
 - md5: ec1d2935f811b77cc49b031b999cbf17
-path: data/Posts.xml.zip
+  path: data/Posts.xml.zip
 md5: 16129387a89cb5a329eb6a2aa985415e
 outs:
 - cache: true
-md5: c1fa36d90caa8489a317eee917d8bf03
-path: data/Posts.xml
+  md5: c1fa36d90caa8489a317eee917d8bf03
+  path: data/Posts.xml
 ```
 
 Sections of the file above include:
@@ -224,7 +224,7 @@ it includes the unarchived command output file `Posts.xml`.
 
 ```dvc
 $ git status -s
-M data/.gitignore
+ M data/.gitignore
 ?? Posts.xml.dvc
 
 $ cat data/.gitignore
@@ -242,7 +242,7 @@ $ ls .dvc/cache/
 2f/ a8/
 
 $ du -sh .dvc/cache/c1/* .dvc/cache/ec/*
-41M .dvc/cache/ec/1d2935f811b77cc49b031b999cbf17
+ 41M .dvc/cache/ec/1d2935f811b77cc49b031b999cbf17
 145M .dvc/cache/c1/fa36d90caa8489a317eee917d8bf03
 
 $ du -sh .
@@ -268,19 +268,19 @@ of separating training and testing datasets one by one:
 
 ```dvc
 $ dvc run -d data/Posts.xml -d code/xml_to_tsv.py -d code/conf.py \
-      -o data/Posts.tsv \
-      python code/xml_to_tsv.py
+        -o data/Posts.tsv \
+        python code/xml_to_tsv.py
 Using 'Posts.tsv.dvc' as a stage file
 Reproducing 'Posts.tsv.dvc':
-      python code/xml_to_tsv.py
+        python code/xml_to_tsv.py
 
 $ dvc run -d data/Posts.tsv -d code/split_train_test.py \
-      -d code/conf.py \
-      -o data/Posts-test.tsv -o data/Posts-train.tsv \
-      python code/split_train_test.py 0.33 20180319
+        -d code/conf.py \
+        -o data/Posts-test.tsv -o data/Posts-train.tsv \
+        python code/split_train_test.py 0.33 20180319
 Using 'Posts-test.tsv.dvc' as a stage file
 Reproducing 'Posts-test.tsv.dvc':
-      python code/split_train_test.py 0.33 20180319
+        python code/split_train_test.py 0.33 20180319
 Positive size 2049, negative size 97951
 ```
 
@@ -291,7 +291,7 @@ this type of file into `.gitignore`.
 
 ```dvc
 $ git status -s
-M data/.gitignore
+ M data/.gitignore
 ?? Posts-test.tsv.dvc
 ?? Posts.tsv.dvc
 ?? code/conf.pyc
@@ -312,12 +312,12 @@ matrix files:
 
 ```dvc
 $ dvc run -d code/featurization.py -d code/conf.py \
-      -d data/Posts-train.tsv -d data/Posts-test.tsv \
-      -o data/matrix-train.p -o data/matrix-test.p \
-      python code/featurization.py
+        -d data/Posts-train.tsv -d data/Posts-test.tsv \
+        -o data/matrix-train.p -o data/matrix-test.p \
+        python code/featurization.py
 Using 'matrix-train.p.dvc' as a stage file
 Reproducing 'matrix-train.p.dvc':
-  python code/featurization.py
+    python code/featurization.py
 The input data frame data/Posts-train.tsv size is (66999, 3)
 The output matrix data/matrix-train.p size is (66999, 5002) and data type is float64
 The input data frame data/Posts-test.tsv size is (33001, 3)
@@ -332,7 +332,7 @@ $ dvc run -d data/matrix-train.p -d code/train_model.py \
         python code/train_model.py 20180319
 Using 'model.p.dvc' as a stage file
 Reproducing 'model.p.dvc':
-python code/train_model.py 20180319
+    python code/train_model.py 20180319
 Input matrix size (66999, 5002)
 X matrix size (66999, 5000)
 Y matrix size (66999,)
@@ -342,11 +342,11 @@ And evaluate the result of the trained model using the test feature matrix:
 
 ```dvc
 $ dvc run -d data/model.p -d data/matrix-test.p \
-          -d code/evaluate.py -d code/conf.py -M data/eval.txt \
-          -f Dvcfile \
-          python code/evaluate.py
+        -d code/evaluate.py -d code/conf.py -M data/eval.txt \
+        -f Dvcfile \
+        python code/evaluate.py
 Reproducing 'Dvcfile':
-python code/evaluate.py
+    python code/evaluate.py
 ```
 
 The model evaluation step is the last one. To make it a reproducibility goal by
@@ -361,7 +361,7 @@ modified .gitignore file. All the changes should be committed into Git.
 
 ```dvc
 $ git status -s
-M data/.gitignore
+ M data/.gitignore
 ?? Dvcfile
 ?? matrix-train.p.dvc
 ?? model.p.dvc

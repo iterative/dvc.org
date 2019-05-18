@@ -10,8 +10,8 @@ workspace and track changes in remote file or directory.
 usage: dvc import [-h] [-q] [-v] [-f] [--resume] url out
 
 positional arguments:
-url            URL (see supported URLs in the description)
-out            Output
+  url            URL (see supported URLs in the description)
+  out            Output
 ```
 
 ## Description
@@ -114,7 +114,7 @@ This step is optional, and you can run it only if you want to run this examples
 in your environment. First, you need to download the project:
 
 ```dvc
-$ git clone https://github.com/iterative/example-get-started
+    $ git clone https://github.com/iterative/example-get-started
 ```
 
 Second, let's install the requirements. But before we do that, we **strongly**
@@ -170,7 +170,7 @@ Saving information to 'data.xml.dvc'.
 
 To track the changes with git run:
 
-git add data/.gitignore data.xml.dvc
+    git add data/.gitignore data.xml.dvc
 ```
 
 If you wish, it's possible to set up the other stages from the _Getting Started_
@@ -180,14 +180,14 @@ Instead we can look at the resulting DVC file `data.xml.dvc`:
 ```yaml
 deps:
 - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-path: https://dvc.org/s3/get-started/data.xml
+  path: https://dvc.org/s3/get-started/data.xml
 md5: 61e80c38c1ce04ed2e11e331258e6d0d
 outs:
 - cache: true
-md5: a304afb96060aad90176268345e10355
-metric: false
-path: data/data.xml
-persist: false
+  md5: a304afb96060aad90176268345e10355
+  metric: false
+  path: data/data.xml
+  persist: false
 wdir: .
 ```
 
@@ -248,7 +248,7 @@ Saving information to 'data.xml.dvc'.
 
 To track the changes with git run:
 
-git add data/.gitignore data.xml.dvc
+    git add data/.gitignore data.xml.dvc
 ```
 
 At this point we have the workspace set up in a similar fashion. The difference
@@ -258,15 +258,15 @@ file:
 
 ```yaml
 deps:
-- md5: a86ca87250ed8e54a9e2e8d6d34c252e
-path: /path/to/data-store/data.xml
+  - md5: a86ca87250ed8e54a9e2e8d6d34c252e
+    path: /path/to/data-store/data.xml
 md5: 361728a3b037c9a4bcb897cdf856edfc
 outs:
-- cache: true
-md5: a304afb96060aad90176268345e10355
-metric: false
-path: data/data.xml
-persist: false
+  - cache: true
+    md5: a304afb96060aad90176268345e10355
+    metric: false
+    path: data/data.xml
+    persist: false
 wdir: .
 ```
 
@@ -334,8 +334,8 @@ because any change will change the checksum. Once we do so, we'll see this:
 ```dvc
 $ dvc status
 data.xml.dvc:
-changed deps:
-modified:     /path/to/data-store/data.xml
+    changed deps:
+        modified:     /path/to/data-store/data.xml
 ```
 
 DVC has noticed the external dependency has changed. It is telling us that it is
@@ -356,20 +356,20 @@ WARNING: Dependency 'data/data.xml' of 'prepare.dvc' changed because it is 'modi
 WARNING: Stage 'prepare.dvc' changed.
 Reproducing 'prepare.dvc'
 Running command:
-python src/prepare.py data/data.xml
+    python src/prepare.py data/data.xml
 Saving 'data/prepared' to cache '.dvc/cache'.
 Linking directory 'data/prepared'.
 Saving information to 'prepare.dvc'.
 
 To track the changes with git run:
 
-git add data.xml.dvc prepare.dvc
+    git add data.xml.dvc prepare.dvc
 
 $ git add .
 $ git commit -a -m "updated data"
 
 [master a8d4ce8] updated data
-2 files changed, 6 insertions(+), 6 deletions(-)
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
 $ dvc status
 Pipeline is up to date. Nothing to reproduce.
