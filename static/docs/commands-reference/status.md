@@ -6,12 +6,12 @@ cache and local files, or between the local cache and remote cache.
 ## Synopsis
 
 ```usage
-    usage: dvc status [-h] [-q | -v] [-j JOBS] [--show-checksums]
-                      [-c] [-r REMOTE] [-a] [-T] [-d]
-                      [targets [targets ...]]
+usage: dvc status [-h] [-q | -v] [-j JOBS] [--show-checksums]
+                  [-c] [-r REMOTE] [-a] [-T] [-d]
+                  [targets [targets ...]]
 
-    positional arguments:
-      targets               Limit the scope to these stage files.
+positional arguments:
+  targets               Limit the scope to these stage files.
 ```
 
 ## Description
@@ -115,16 +115,16 @@ cache. For the typical process to update workspaces, see
 ## Example: Simple usage
 
 ```dvc
-    $ dvc status
+$ dvc status
 
-      bar.dvc
-              outs
-                      changed:  bar
-              deps
-                      changed:  foo
-      foo.dvc
-              outs
-                      changed:  foo
+  bar.dvc
+          outs
+                  changed:  bar
+          deps
+                  changed:  foo
+  foo.dvc
+          outs
+                  changed:  foo
 ```
 
 This shows that for `bar.dvc` the dependency, `foo`, has changed, and the
@@ -134,16 +134,16 @@ changed, but no output has changed.
 ## Example: Dependencies
 
 ```dvc
-    $ vi code/featurization.py
-    ... edit the code
+$ vi code/featurization.py
+... edit the code
 
-    $ dvc status model.p.dvc
-    Pipeline is up to date. Nothing to reproduce.
+$ dvc status model.p.dvc
+Pipeline is up to date. Nothing to reproduce.
 
-    $ dvc status model.p.dvc --with-deps
-    matrix-train.p.dvc
-        deps
-            changed:  code/featurization.py
+$ dvc status model.p.dvc --with-deps
+matrix-train.p.dvc
+    deps
+        changed:  code/featurization.py
 ```
 
 If the `dvc status` command is limited to a target that had no changes, result
@@ -156,22 +156,22 @@ Let's now assume that we have a shared remote on S3: and would like to check
 what files we have generated but haven't pushed to the remote yet:
 
 ```dvc
-    $ dvc remote list
-    rcache	s3://dvc-remote
+$ dvc remote list
+rcache	s3://dvc-remote
 ```
 
 And would like to check what files we have generated but haven't pushed to the
 remote yet:
 
 ```dvc
-    $ dvc status --remote rcache
+$ dvc status --remote rcache
 
-    Preparing to collect status from s3://dvc-remote
-    [##############################] 100% Collecting information
-        new:      data/model.p
-        new:      data/eval.txt
-        new:      data/matrix-train.p
-        new:      data/matrix-test.p
+Preparing to collect status from s3://dvc-remote
+[##############################] 100% Collecting information
+    new:      data/model.p
+    new:      data/eval.txt
+    new:      data/matrix-train.p
+    new:      data/matrix-test.p
 ```
 
 The output shows where the location of the remote cache as well as any
@@ -179,12 +179,12 @@ differences between the local cache and remote cache. Alternatively, we can
 output a checksum instead of a file name:
 
 ```dvc
-    $ dvc status --remote rcache --show-checksums
+$ dvc status --remote rcache --show-checksums
 
-    Preparing to collect status from s3://dvc-remote
-    [##############################] 100% Collecting information
-        new:      f0a6e3eed7c7c1a1c707da2c1673ca72
-        new:      d6b228f7904bd200d4eb643fe0e8efd8
-        new:      f506aa14271f793ffd7eca113f5920cd
-        new:      9c0b1f5c3560b6a2838b3fbcd7d72665
+Preparing to collect status from s3://dvc-remote
+[##############################] 100% Collecting information
+    new:      f0a6e3eed7c7c1a1c707da2c1673ca72
+    new:      d6b228f7904bd200d4eb643fe0e8efd8
+    new:      f506aa14271f793ffd7eca113f5920cd
+    new:      9c0b1f5c3560b6a2838b3fbcd7d72665
 ```

@@ -6,9 +6,9 @@ each other.
 ## Synopsis
 
 ```usage
-    usage: dvc pipeline list [-h] [-q | -v]
+usage: dvc pipeline list [-h] [-q | -v]
 
-    List pipelines.
+List pipelines.
 ```
 
 ## Examples
@@ -16,13 +16,13 @@ each other.
 - List available pipelines:
 
 ```dvc
-    $ dvc pipeline list
+$ dvc pipeline list
 
-    Dvcfile
-    ===============
-    raw.dvc
-    data.dvc
-    output.dvc
+Dvcfile
+===============
+raw.dvc
+data.dvc
+output.dvc
 
-    2 pipeline(s) total
+2 pipeline(s) total
 ```

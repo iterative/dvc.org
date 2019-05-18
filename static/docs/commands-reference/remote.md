@@ -10,15 +10,15 @@ A set of commands to set up and manage data remotes:
 ## Synopsis
 
 ```usage
-    usage: dvc remote [-h] [-q] [-v]
-                      {add,default,remove,modify,list} ...
+usage: dvc remote [-h] [-q] [-v]
+                  {add,default,remove,modify,list} ...
 
-    positional arguments:
-        add                   Add remote
-        default               Default remote
-        remove                Remove remote
-        modify                Modify remote
-        list                  List remotes
+positional arguments:
+    add                   Add remote
+    default               Default remote
+    remove                Remove remote
+    modify                Modify remote
+    list                  List remotes
 ```
 
 ## Description
@@ -79,30 +79,30 @@ project/repository itself.
 </details>
 
 ```dvc
-    $ dvc remote add -d myremote /path/to/remote
-    $ dvc remote list
+$ dvc remote add -d myremote /path/to/remote
+$ dvc remote list
 
-    myremote        /path/to/remote
+myremote        /path/to/remote
 ```
 
 DVC config file would look like:
 
 ```ini
-   ['remote "myremote"']
-   url = /path/to/remote
-   [core]
-   remote = myremote
+['remote "myremote"']
+url = /path/to/remote
+[core]
+remote = myremote
 ```
 
 2. Add AWS S3 remote and modify its region:
 
 ```dvc
-    $ dvc remote add mynewremote s3://mybucket/myproject
-    $ dvc remote modify mynewremote region us-east-2
+$ dvc remote add mynewremote s3://mybucket/myproject
+$ dvc remote modify mynewremote region us-east-2
 ```
 
 3. Remove remote:
 
 ```dvc
-    $ dvc remote remove mynewremote
+$ dvc remote remove mynewremote
 ```

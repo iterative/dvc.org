@@ -7,15 +7,15 @@ in the workspace, then links the downloaded files into the workspace.
 ## Synopsis
 
 ```usage
-    usage: dvc pull [-h] [-q | -v] [-j JOBS]
-                    [--show-checksums] [-r REMOTE]
-                    [-a] [-T] [-d] [-f] [-R]
-                    [targets [targets ...]]
+usage: dvc pull [-h] [-q | -v] [-j JOBS]
+                [--show-checksums] [-r REMOTE]
+                [-a] [-T] [-d] [-f] [-R]
+                [targets [targets ...]]
 
-    Pull data files from the cloud.
+Pull data files from the cloud.
 
-    positional arguments:
-      targets               DVC files.
+positional arguments:
+  targets               DVC files.
 ```
 
 ## Description
@@ -111,9 +111,9 @@ to check existing remotes. Just to remind how it is done and set a context for
 the example, let's define an SSH remote with the `dvc remote add` command:
 
 ```dvc
-    $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
-    $ dvc remote list
-    r1	ssh://_username_@_host_/path/to/dvc/cache/directory
+$ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
+$ dvc remote list
+r1	ssh://_username_@_host_/path/to/dvc/cache/directory
 ```
 
 > DVC supports several protocols for remote storage. For details, see the
@@ -123,20 +123,20 @@ With a remote cache containing some images and other files, we can pull all
 changed files from the current Git branch:
 
 ```dvc
-    $ dvc pull --remote r1
+$ dvc pull --remote r1
 
-    (1/8): [####################] 100% images/0001.jpg
-    (2/8): [####################] 100% images/0002.jpg
-    ...
-    (7/8): [####################] 100% images/0007.jpg
-    (8/8): [####################] 100% model.pkl
+(1/8): [####################] 100% images/0001.jpg
+(2/8): [####################] 100% images/0002.jpg
+...
+(7/8): [####################] 100% images/0007.jpg
+(8/8): [####################] 100% model.pkl
 ```
 
 We can download specific files that are outputs of a specific dvc file:
 
 ```dvc
-    $ dvc pull data.zip.dvc
-    [####################] 100% data.zip
+$ dvc pull data.zip.dvc
+[####################] 100% data.zip
 ```
 
 In this case we left off the `--remote` option, so it will have pulled from the
@@ -149,48 +149,48 @@ Demonstrating the `--with-deps` flag requires a larger example. First, assume a
 pipeline has been setup with these stages:
 
 ```dvc
-    $ dvc pipeline show
+$ dvc pipeline show
 
-    data/Posts.xml.zip.dvc
-    Posts.xml.dvc
-    Posts.tsv.dvc
-    Posts-test.tsv.dvc
-    matrix-train.p.dvc
-    model.p.dvc
-    Dvcfile
+data/Posts.xml.zip.dvc
+Posts.xml.dvc
+Posts.tsv.dvc
+Posts-test.tsv.dvc
+matrix-train.p.dvc
+model.p.dvc
+Dvcfile
 ```
 
 The remote storage has been modified such that the data files in some of these
 stages should be updated into the local cache.
 
 ```dvc
-   $ dvc status --cloud
+$ dvc status --cloud
 
-    	deleted:            data/model.p
-	    deleted:            data/matrix-test.p
-	    deleted:            data/matrix-train.p
+  deleted:            data/model.p
+  deleted:            data/matrix-test.p
+  deleted:            data/matrix-train.p
 ```
 
 One could do a simple `dvc pull` to get all the data, but what if you only want
 to retrieve part of the data?
 
 ```dvc
-    $ dvc pull --remote r1 --with-deps matrix-train.p.dvc
+$ dvc pull --remote r1 --with-deps matrix-train.p.dvc
 
-    (1/2): [####################] 100% data/matrix-test.p data/matrix-test.p
-    (2/2): [####################] 100% data/matrix-train.p data/matrix-train.p
+(1/2): [####################] 100% data/matrix-test.p data/matrix-test.p
+(2/2): [####################] 100% data/matrix-train.p data/matrix-train.p
 
-    ... Do some work based on the partial update
+... Do some work based on the partial update
 
-    $ dvc pull --remote r1 --with-deps model.p.dvc
+$ dvc pull --remote r1 --with-deps model.p.dvc
 
-    (1/1): [####################] 100% data/model.p data/model.p
+(1/1): [####################] 100% data/model.p data/model.p
 
-    ... Pull the rest of the data
+... Pull the rest of the data
 
-    $ dvc pull --remote r1
+$ dvc pull --remote r1
 
-    Everything is up to date.
+Everything is up to date.
 ```
 
 With the first `dvc pull` we specified a stage in the middle of the pipeline
@@ -207,9 +207,9 @@ was updated.
 Normally the file names are shown, but DVC can display the checksums instead.
 
 ```dvc
-    $ dvc pull --remote r1 --show-checksums
+$ dvc pull --remote r1 --show-checksums
 
-    (1/3): [####################] 100% 844ef0cd13ff786c686d76bb1627081c
-    (2/3): [####################] 100% c5409fafe56c3b0d4d4d8d72dcc009c0
-    (3/3): [####################] 100% a8c5ae04775fcde33bf03b7e59960e18
+(1/3): [####################] 100% 844ef0cd13ff786c686d76bb1627081c
+(2/3): [####################] 100% c5409fafe56c3b0d4d4d8d72dcc009c0
+(3/3): [####################] 100% a8c5ae04775fcde33bf03b7e59960e18
 ```

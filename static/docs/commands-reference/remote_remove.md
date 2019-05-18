@@ -11,12 +11,12 @@ See also [add](/doc/commands-reference/remote-add),
 ## Synopsis
 
 ```usage
-    usage: dvc remote remove [-h] [-q | -v]
-                             [--global] [--system] [--local]
-                             name
+usage: dvc remote remove [-h] [-q | -v]
+                         [--global] [--system] [--local]
+                         name
 
-    positional arguments:
-      name           Name of the remote to remove
+positional arguments:
+  name           Name of the remote to remove
 ```
 
 ## Description
@@ -45,12 +45,12 @@ possible to edit config files manually.
 Add AWS S3 remote and modify its region:
 
 ```dvc
-    $ dvc remote add myremote s3://mybucket/myproject
-    $ dvc remote modify myremote region us-east-2
+$ dvc remote add myremote s3://mybucket/myproject
+$ dvc remote modify myremote region us-east-2
 ```
 
 Remove remote:
 
 ```dvc
-    $ dvc remote remove myremote
+$ dvc remote remove myremote
 ```

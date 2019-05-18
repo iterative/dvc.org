@@ -6,7 +6,7 @@ version.
 ## Synopsis
 
 ```usage
-    usage: dvc version [-h] [-q | -v]
+usage: dvc version [-h] [-q | -v]
 ```
 
 ## Description
@@ -34,9 +34,9 @@ system/environment:
 Getting the DVC version and environment information:
 
 ```dvc
-    $ dvc version
+$ dvc version
 
-    DVC version: 0.40.0+45f94e
-    Python version: 3.6.7
-    Platform: Linux-4.15.0-47-generic-x86_64-with-Ubuntu-18.04-bionic
+DVC version: 0.40.0+45f94e
+Python version: 3.6.7
+Platform: Linux-4.15.0-47-generic-x86_64-with-Ubuntu-18.04-bionic
 ```

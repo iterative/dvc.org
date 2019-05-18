@@ -7,13 +7,13 @@ visualize a pipeline commands or data files flow instead.
 ## Synopsis
 
 ```usage
-    usage: dvc pipeline show [-h] [-q | -v] [-c | -o]
-                             [--dot DOT] [--ascii]
-                             [--tree] [-l]
-                             [targets [targets ...]]
+usage: dvc pipeline show [-h] [-q | -v] [-c | -o]
+                         [--dot DOT] [--ascii]
+                         [--tree] [-l]
+                         [targets [targets ...]]
 
-    positional arguments:
-      targets         DVC files.
+positional arguments:
+  targets         DVC files.
 ```
 
 ## Options
@@ -39,75 +39,75 @@ visualize a pipeline commands or data files flow instead.
 - Default mode, show stages `output.dvc` recursively depends on:
 
 ```dvc
-    $ dvc pipeline show output.dvc
+$ dvc pipeline show output.dvc
 
-    raw.dvc
-    data.dvc
-    output.dvc
+raw.dvc
+data.dvc
+output.dvc
 ```
 
 - The same as previous, but show commands instead of DVC files:
 
 ```dvc
-    $ dvc pipeline show output.dvc --commands
+$ dvc pipeline show output.dvc --commands
 
-    download.py s3://mybucket/myrawdata raw
-    cleanup.py raw data
-    process.py data output
+download.py s3://mybucket/myrawdata raw
+cleanup.py raw data
+process.py data output
 ```
 
 - Visualize DVC pipeline:
 
 ```dvc
-    $ dvc pipeline show eval.txt.dvc --ascii
-              .------------------------.
-              | data/Posts.xml.zip.dvc |
-              `------------------------'
-                           *
-                           *
-                           *
-                   .---------------.
-                   | Posts.xml.dvc |
-                   `---------------'
-                           *
-                           *
-                           *
-                   .---------------.
-                   | Posts.tsv.dvc |
-                   `---------------'
-                           *
-                           *
-                           *
-                .---------------------.
-                | Posts-train.tsv.dvc |
-                `---------------------'
-                           *
-                           *
-                           *
-                .--------------------.
-                | matrix-train.p.dvc |
-                `--------------------'
-                  ***             ***
-                **                   ***
-              **                        **
-    .-------------.                       **
-    | model.p.dvc |                     **
-    `-------------'                  ***
-                  ***             ***
-                     **         **
-                       **     **
-                   .--------------.
-                   | eval.txt.dvc |
-                   `--------------'
+$ dvc pipeline show eval.txt.dvc --ascii
+          .------------------------.
+          | data/Posts.xml.zip.dvc |
+          `------------------------'
+                       *
+                       *
+                       *
+               .---------------.
+               | Posts.xml.dvc |
+               `---------------'
+                       *
+                       *
+                       *
+               .---------------.
+               | Posts.tsv.dvc |
+               `---------------'
+                       *
+                       *
+                       *
+            .---------------------.
+            | Posts-train.tsv.dvc |
+            `---------------------'
+                       *
+                       *
+                       *
+            .--------------------.
+            | matrix-train.p.dvc |
+            `--------------------'
+              ***             ***
+            **                   ***
+          **                        **
+.-------------.                       **
+| model.p.dvc |                     **
+`-------------'                  ***
+              ***             ***
+                 **         **
+                   **     **
+               .--------------.
+               | eval.txt.dvc |
+               `--------------'
 ```
 
 - List dependencies recursively if graph have tree structure
 
 ```dvc
-    dvc pipeline show e.file.dvc --tree
-    e.file.dvc
-    ├── c.file.dvc
-    │   └── b.file.dvc
-    │       └── a.file.dvc
-    └── d.file.dvc
+dvc pipeline show e.file.dvc --tree
+e.file.dvc
+├── c.file.dvc
+│   └── b.file.dvc
+│       └── a.file.dvc
+└── d.file.dvc
 ```

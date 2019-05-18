@@ -5,7 +5,7 @@ Returns relative path to project's directory.
 Can be used to build a path to a dependency, command, or output.
 
 ```usage
-    usage: dvc root [-h] [-q] [-v]
+usage: dvc root [-h] [-q] [-v]
 ```
 
 ## Options
@@ -22,23 +22,23 @@ Can be used to build a path to a dependency, command, or output.
 1. Basic output:
 
 ```dvc
-  $ dvc root
+$ dvc root
 
-    .
+.
 
-  $ cd subdir
-  $ dvc root
+$ cd subdir
+$ dvc root
 
-    ..
+..
 ```
 
 2. Referencing files:
 
 ```dvc
-  $ dvc root
+$ dvc root
 
-  ../../../
+../../../
 
-  $ dvc run -d $(dvc root)/data/file.cvs ... \
-      python $(dvc root)/scripts/something.py
+$ dvc run -d $(dvc root)/data/file.cvs ... \
+    python $(dvc root)/scripts/something.py
 ```

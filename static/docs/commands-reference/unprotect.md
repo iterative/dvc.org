@@ -7,12 +7,12 @@ physically "unlinked" from the cache and can be safely updated. Check the
 [Update a Tracked File](/doc/user-guide/update-tracked-file) to learn more.
 
 ```usage
-    usage: dvc unprotect [-h] [-q | -v] targets [targets ...]
+usage: dvc unprotect [-h] [-q | -v] targets [targets ...]
 
-    Unprotect data file/directory.
+Unprotect data file/directory.
 
-    positional arguments:
-      targets        Data files/directory.
+positional arguments:
+  targets        Data files/directory.
 ```
 
 `dvc unprotect` can be an expensive operation (involves copying data), check
@@ -50,42 +50,42 @@ running `dvc unprotect`:
 2. Put a data file under DVC control:
 
 ```dvc
-    $ ls -lh
-    -rw-r--r--  1 10576022 Nov 27 13:30 Posts.xml.zip
+$ ls -lh
+-rw-r--r--  1 10576022 Nov 27 13:30 Posts.xml.zip
 
-    $ dvc add Posts.xml.zip
-    Adding 'Posts.xml.zip' to '.gitignore'.
-    Saving 'Posts.xml.zip' to cache '.dvc/cache'.
-    Saving information to 'Posts.xml.zip.dvc'.
+$ dvc add Posts.xml.zip
+Adding 'Posts.xml.zip' to '.gitignore'.
+Saving 'Posts.xml.zip' to cache '.dvc/cache'.
+Saving information to 'Posts.xml.zip.dvc'.
 
-    To track the changes with git run:
+To track the changes with git run:
 
-    	git add .gitignore Posts.xml.zip.dvc
+	git add .gitignore Posts.xml.zip.dvc
 ```
 
 3. Check that file is a read-only link (@ sign means a link):
 
 ```dvc
-    $ ls -lh
-    -r--r--r--@ 1 10576022 Apr 25  2017 Posts.xml.zip
-    -rw-r--r--  1      120 Nov 27 13:29 Posts.xml.zip.dvc
+$ ls -lh
+-r--r--r--@ 1 10576022 Apr 25  2017 Posts.xml.zip
+-rw-r--r--  1      120 Nov 27 13:29 Posts.xml.zip.dvc
 ```
 
 4. Unprotect the file:
 
 ```dvc
-    $ dvc unprotect Posts.xml.zip
-    [##############################] 100% Posts.xml.zip
+$ dvc unprotect Posts.xml.zip
+[##############################] 100% Posts.xml.zip
 ```
 
 4. Check that the file is writable now, the cached version is intact, and they
    are not linked (the file in the workspace is a copy of the file):
 
 ```dvc
-   $ ls -lh
-   -rw-r--r--  1  120B Nov 27 13:29 Posts.xml.zip.dvc
-   -rw-r--r--  1   10M Nov 27 13:30 Posts.xml.zip
+$ ls -lh
+-rw-r--r--  1  120B Nov 27 13:29 Posts.xml.zip.dvc
+-rw-r--r--  1   10M Nov 27 13:30 Posts.xml.zip
 
-   $ ls -lh ls -lh .dvc/cache/ce/
-   -rw-r--r--@ 1 10M Apr 25  2017 68b98d82545628782c66192c96f2d2
+$ ls -lh ls -lh .dvc/cache/ce/
+-rw-r--r--@ 1 10M Apr 25  2017 68b98d82545628782c66192c96f2d2
 ```

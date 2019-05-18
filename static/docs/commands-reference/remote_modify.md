@@ -91,7 +91,7 @@ these settings, you could use the following options:
   $ dvc remote modify myremote use_ssl false
   ```
 
-- `listobjects` - whether or not to use `list_objects`.  
+- `listobjects` - whether or not to use `list_objects`.
    By default, `list_objects_v2` is used. Useful for ceph and other s3 emulators.
 
   ```dvc
@@ -179,7 +179,7 @@ For more information about the variables DVC supports, please visit
   4. current user;
 
   ```dvc
-  $ dvc remote modify myremote user myuser
+$ dvc remote modify myremote user myuser
   ```
 
 - `port` - port to use to access a remote. The order in which dvc searches for
@@ -246,9 +246,9 @@ For more information about the variables DVC supports, please visit
 
 - `oss_endpoint endpoint` - OSS endpoint valuesfor accessing remote container.
 
-  ```dvc
-  $ dvc remote modify myremote oss_endpoint endpoint
-  ```
+```dvc
+$ dvc remote modify myremote oss_endpoint endpoint
+```
 
 </details>
 
