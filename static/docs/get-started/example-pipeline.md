@@ -95,9 +95,9 @@ _orphaned_ version of the [stage file](/doc/user-guide/dvc-file-format):
 ```yaml
 md5: 4dbe7a4e5a0d41b652f3d6286c4ae788
 outs:
-  - cache: true
-    md5: ce68b98d82545628782c66192c96f2d2
-    path: Posts.xml.zip
+- cache: true
+  md5: ce68b98d82545628782c66192c96f2d2
+  path: Posts.xml.zip
 ```
 
 This is the file that should be committed into a version control system instead
@@ -145,13 +145,13 @@ Similar to `dvc add`, `dvc run` creates a
 ```yaml
 cmd: ' unzip data/Posts.xml.zip -d data'
 deps:
-  - md5: ce68b98d82545628782c66192c96f2d2
-    path: data/Posts.xml.zip
+- md5: ce68b98d82545628782c66192c96f2d2
+  path: data/Posts.xml.zip
 md5: abaf651846ec4fb7a4a8e1a685546ed9
 outs:
-  - cache: true
-    md5: a304afb96060aad90176268345e10355
-    path: data/Posts.xml
+- cache: true
+  md5: a304afb96060aad90176268345e10355
+  path: data/Posts.xml
 ```
 
 This file is using the same technique - pointers (md5 hashes) to the cache to
@@ -233,47 +233,47 @@ chain (DAG) of commands we need to apply. This is important when you run
 see actual commands instead of DVC-files):
 
 ```dvc
-    $ dvc pipeline show --ascii evaluate.dvc
+$ dvc pipeline show --ascii evaluate.dvc
 
-           .------------------------.
-           | data/Posts.xml.zip.dvc |
-           `------------------------'
-                        *
-                        *
-                        *
-                .-------------.
-                | extract.dvc |
-                `-------------'
-                        *
-                        *
-                        *
-                .-------------.
-                | prepare.dvc |
-                `-------------'
-                        *
-                        *
-                        *
-                  .-----------.
-                  | split.dvc |
-                  `-----------'
-                        *
-                        *
-                        *
-                .---------------.
-                | featurize.dvc |
-                `---------------'
-                 **           ***
-               **                **
-             **                    **
-    .-----------.                    **
-    | train.dvc |                  **
-    `-----------'                **
-                 **           ***
-                   **       **
-                     **   **
-                .--------------.
-                | evaluate.dvc |
-                `--------------'
+       .------------------------.
+       | data/Posts.xml.zip.dvc |
+       `------------------------'
+                    *
+                    *
+                    *
+            .-------------.
+            | extract.dvc |
+            `-------------'
+                    *
+                    *
+                    *
+            .-------------.
+            | prepare.dvc |
+            `-------------'
+                    *
+                    *
+                    *
+              .-----------.
+              | split.dvc |
+              `-----------'
+                    *
+                    *
+                    *
+            .---------------.
+            | featurize.dvc |
+            `---------------'
+             **           ***
+           **                **
+         **                    **
+.-----------.                    **
+| train.dvc |                  **
+`-----------'                **
+             **           ***
+               **       **
+                 **   **
+            .--------------.
+            | evaluate.dvc |
+            `--------------'
 ```
 
 </details>
@@ -288,7 +288,6 @@ see actual commands instead of DVC-files):
 
 ```dvc
 $ dvc metrics show
-
   auc.metric: 0.620091
 ```
 
@@ -317,9 +316,9 @@ $ vi code/featurization.py
 Specify `ngram` parameter in `CountVectorizer` (lines 72–73):
 
 ```python
-    bag_of_words = CountVectorizer(stop_words='english',
-                                   max_features=5000,
-                                   ngram_range=(1, 2))
+bag_of_words = CountVectorizer(stop_words='english',
+                               max_features=5000,
+                               ngram_range=(1, 2))
 ```
 
 - Reproduce all required steps to get our target metrics file:

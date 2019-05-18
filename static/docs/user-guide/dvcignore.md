@@ -42,35 +42,35 @@ The same as for [`.gitignore`](https://git-scm.com/docs/gitignore).
 Lets analyze an example project:
 
 ```dvc
-    $ mkdir dir1 dir2
-    $ echo data1 >> dir1/data1
-    $ echo data2 >> dir2/data2
-    $ dvc add dir1/data1 dir2/data2
-    $ tree .
-    .
-    ├── dir1
-    │   ├── data1
-    │   └── data1.dvc
-    └── dir2
-        ├── data2
-        └── data2.dvc
+$ mkdir dir1 dir2
+$ echo data1 >> dir1/data1
+$ echo data2 >> dir2/data2
+$ dvc add dir1/data1 dir2/data2
+$ tree .
+.
+├── dir1
+│   ├── data1
+│   └── data1.dvc
+└── dir2
+    ├── data2
+    └── data2.dvc
 ```
 
 Modify data files:
 
 ```dvc
-    $ echo mod > dir1/data1
-    $ echo mod > dir2/data2
+$ echo mod > dir1/data1
+$ echo mod > dir2/data2
 ```
 
 Check status:
 
 ```dvc
-    $ dvc status
-    dir1/data1.dvc:
+$ dvc status
+dir1/data1.dvc:
 	changed outs:
 		modified:           dir1/data1
-    dir2/data2.dvc:
+dir2/data2.dvc:
 	changed outs:
 		modified:           dir2/data2
 ```
@@ -79,14 +79,14 @@ Note, that both data files are displayed as modified Create `.dvcignore` file
 and insert pattern matching one of the files:
 
 ```dvc
-    $ echo dir1/* >> .dvcignore
+$ echo dir1/* >> .dvcignore
 ```
 
 Check status again:
 
 ```dvc
-    $ dvc status
-    dir2/data2.dvc:
+$ dvc status
+dir2/data2.dvc:
 	changed outs:
 		modified:           dir2/data2
 ```

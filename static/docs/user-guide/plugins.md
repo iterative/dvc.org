@@ -11,8 +11,8 @@ The file itself is in a simple YAML format.
 In order to recognize DVC stage files as YAML in Vim, you should add:
 
 ```vim
-    " DVC
-    autocmd! BufNewFile,BufRead Dvcfile,*.dvc setfiletype yaml
+" DVC
+autocmd! BufNewFile,BufRead Dvcfile,*.dvc setfiletype yaml
 ```
 
 to your `~/.vimrc`(to be created if it doesn't exist).

@@ -18,7 +18,7 @@ location for your projects, so that every team member is using the same cache
 storage:
 
 ```dvc
-    $ mkdir -p /dvc-cache
+$ mkdir -p /dvc-cache
 ```
 
 You will have to make sure that the directory has proper permissions setup, so
@@ -37,7 +37,7 @@ the external cache directory, you will need to simply move it from an old cache
 location to the new one:
 
 ```dvc
-    $ mv .dvc/cache/* /dvc-cache
+$ mv .dvc/cache/* /dvc-cache
 ```
 
 ### Configure External Cache
@@ -46,14 +46,14 @@ Tell DVC to use the directory we've set up as an external cache location by
 running:
 
 ```dvc
-    $ dvc config cache.dir /dvc-cache
+$ dvc config cache.dir /dvc-cache
 ```
 
 Commit changes to `.dvc/config` and push them to your git remote:
 
 ```dvc
-    $ git add .dvc/config
-    $ git commit -m "dvc: setup external cache dir"
+$ git add .dvc/config
+$ git commit -m "dvc: setup external cache dir"
 ```
 
 ### Example
@@ -63,11 +63,11 @@ handle all your data in the most effective way possible. Let's say you are
 cleaning up the data:
 
 ```dvc
-    $ dvc add raw
-    $ dvc run -d raw -o clean ./cleanup.py raw clean
-    $ git add raw.dvc clean.dvc
-    $ git commit -m "cleanup raw data"
-    $ git push
+$ dvc add raw
+$ dvc run -d raw -o clean ./cleanup.py raw clean
+$ git add raw.dvc clean.dvc
+$ git commit -m "cleanup raw data"
+$ git push
 ```
 
 Your colleague can pull the code and have both `raw` and `clean` instantly
@@ -75,17 +75,17 @@ appear in his workspace without copying. After this he decides to continue
 building the pipeline and process the cleaned up data:
 
 ```dvc
-    $ git pull
-    $ dvc checkout
-    $ dvc run -d clean -o processed ./process.py clean process
-    $ git add processed.dvc
-    $ git commit -m "process clean data"
-    $ git push
+$ git pull
+$ dvc checkout
+$ dvc run -d clean -o processed ./process.py clean process
+$ git add processed.dvc
+$ git commit -m "process clean data"
+$ git push
 ```
 
 And now you can just as easily get his work appear in your workspace by:
 
 ```dvc
-    $ git pull
-    $ dvc checkout
+$ git pull
+$ dvc checkout
 ```

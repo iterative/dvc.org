@@ -28,53 +28,53 @@ in `images` directory and has a `model.pkl` file - your model file that is
 deployed to production.
 
 ```dvc
-    $ ls images
-    0001.jpg 0002.jpg 0003.jpg 0004.jpg ...
+$ ls images
+0001.jpg 0002.jpg 0003.jpg 0004.jpg ...
 
-    $ ls
-    model.pkl ...
+$ ls
+model.pkl ...
 ```
 
 To start using dvc and keeping track of a model and images we need first to
 initialize it in your repository:
 
 ```dvc
-    $ dvc init
+$ dvc init
 ```
 
 DVC creates a `.dvc` directory that stores special files and also a `.dvc/cache`
 directory that will be used to store cache for your data.
 
 ```dvc
-    $ git status
+$ git status
 
-    ...
-        new file:   .dvc/.gitignore
-        new file:   .dvc/config
+...
+    new file:   .dvc/.gitignore
+    new file:   .dvc/config
 
-    $ git commit -m "Initialize dvc"
+$ git commit -m "Initialize dvc"
 ```
 
 Start tracking images and models with DVC:
 
 ```dvc
-    $ dvc add images
-    $ dvc add model.pkl
+$ dvc add images
+$ dvc add model.pkl
 ```
 
 Commit your changes:
 
 ```dvc
-    $ git status
+$ git status
 
-    ...
-    Untracked files:
-        .gitignore
-        images.dvc
-        model.pkl.dvc
+...
+Untracked files:
+    .gitignore
+    images.dvc
+    model.pkl.dvc
 
-    $ git add .gitignore images.dvc model.pkl.dvc
-    $ git commit -m "track images and models with dvc"
+$ git add .gitignore images.dvc model.pkl.dvc
+$ git commit -m "track images and models with dvc"
 ```
 
 There are two ways to get to the previous version of the dataset or model - a
@@ -85,8 +85,8 @@ consider the full checkout first. It's quite straightforward:
 > version you are interested in, it can be just a Git commit hash instead.
 
 ```dvc
-    $ git checkout v1.0
-    $ dvc checkout
+$ git checkout v1.0
+$ dvc checkout
 ```
 
 These commands will restore the working tree to the first snapshot we made -
@@ -99,8 +99,8 @@ the previous dataset only, we can do something like this (make sure that you
 don't have some uncommitted changes in the `data.dvc`):
 
 ```dvc
-    $ git checkout v1.0 data.dvc
-    $ dvc checkout data.dvc
+$ git checkout v1.0 data.dvc
+$ dvc checkout data.dvc
 ```
 
 If you run `git status` you will see that `data.dvc` is modified and currently

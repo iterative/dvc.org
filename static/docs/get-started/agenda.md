@@ -7,7 +7,7 @@ reproducible
 [Github DVC project](https://github.com/iterative/example-get-started) here:
 
 ```dvc
-    $ git clone https://github.com/iterative/example-get-started
+$ git clone https://github.com/iterative/example-get-started
 ```
 
 Otherwise, bear with us and we will introduce the basic DVC concepts and get to

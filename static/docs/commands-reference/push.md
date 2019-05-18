@@ -6,13 +6,13 @@ Uploads files and directories under DVC control to the
 ## Synopsis
 
 ```usage
-    usage: dvc push [-h] [-q | -v] [-j JOBS] [--show-checksums]
-                [-r REMOTE] [-a]
-                [-T] [-d] [-R]
-                [targets [targets ...]]
+usage: dvc push [-h] [-q | -v] [-j JOBS] [--show-checksums]
+            [-r REMOTE] [-a]
+            [-T] [-d] [-R]
+            [targets [targets ...]]
 
-    positional arguments:
-      targets               DVC files.
+positional arguments:
+  targets               DVC files.
 ```
 
 ## Description
@@ -124,21 +124,21 @@ the example, let's define an SSH remote with the `dvc remote add` command:
 Push all data file caches from the current Git branch to the default remote:
 
 ```dvc
-    $ dvc push
+$ dvc push
 
-    (1/8): [######################] 100% images/0001.jpg
-    (2/8): [######################] 100% images/0002.jpg
-    ...
-    (7/8): [######################] 100% images/0007.jpg
-    (8/8): [###########           ] 57% model.pkl
+(1/8): [######################] 100% images/0001.jpg
+(2/8): [######################] 100% images/0002.jpg
+...
+(7/8): [######################] 100% images/0007.jpg
+(8/8): [###########           ] 57% model.pkl
 ```
 
 Push outputs of a specific dvc file:
 
 ```dvc
-    $ dvc push data.zip.dvc
+$ dvc push data.zip.dvc
 
-    [######################] 100% data.zip
+[######################] 100% data.zip
 ```
 
 ## Examples: With dependencies
@@ -147,52 +147,52 @@ Demonstrating the `--with-deps` flag requires a larger example. First, assume a
 pipeline has been setup with these stages:
 
 ```dvc
-    $ dvc pipeline show
+$ dvc pipeline show
 
-    data/Posts.xml.zip.dvc
-    Posts.xml.dvc
-    Posts.tsv.dvc
-    Posts-test.tsv.dvc
-    matrix-train.p.dvc
-    model.p.dvc
-    Dvcfile
+data/Posts.xml.zip.dvc
+Posts.xml.dvc
+Posts.tsv.dvc
+Posts-test.tsv.dvc
+matrix-train.p.dvc
+model.p.dvc
+Dvcfile
 ```
 
 The local cache has been modified such that the data files in some of these
 stages should be uploaded to the remote cache.
 
 ```dvc
-   $ dvc status --cloud
+$ dvc status --cloud
 
-    	new:            data/model.p
-	    new:            data/matrix-test.p
-	    new:            data/matrix-train.p
+  new:            data/model.p
+  new:            data/matrix-test.p
+  new:            data/matrix-train.p
 ```
 
 One could do a simple `dvc push` to share all the data, but what if you only
 want to upload part of the data?
 
 ```dvc
-    $ dvc push --remote r1 --with-deps matrix-train.p.dvc
+$ dvc push --remote r1 --with-deps matrix-train.p.dvc
 
-    (1/2): [####################] 100% data/matrix-test.p data/matrix-test.p
-    (2/2): [####################] 100% data/matrix-train.p data/matrix-train.p
+(1/2): [####################] 100% data/matrix-test.p data/matrix-test.p
+(2/2): [####################] 100% data/matrix-train.p data/matrix-train.p
 
-    ... Do some work based on the partial update
+... Do some work based on the partial update
 
-    $ dvc push --remote r1 --with-deps model.p.dvc
+$ dvc push --remote r1 --with-deps model.p.dvc
 
-    (1/1): [####################] 100% data/model.p data/model.p
+(1/1): [####################] 100% data/model.p data/model.p
 
-    ... Push the rest of the data
+... Push the rest of the data
 
-    $ dvc push --remote r1
+$ dvc push --remote r1
 
-    Everything is up to date.
+Everything is up to date.
 
-    $ dvc status --cloud
+$ dvc status --cloud
 
-    Pipeline is up to date. Nothing to reproduce.
+Pipeline is up to date. Nothing to reproduce.
 ```
 
 With the first `dvc push` we specified a stage in the middle of the pipeline
@@ -219,43 +219,43 @@ will list several files in `new` state. By looking in the cache directories we
 can see exactly what that means.
 
 ```dvc
-    $ tree .dvc/cache
-    .dvc/cache
-    ├── 02
-    │   └── 423d88d184649a7157a64f28af5a73
-    ├── 0b
-    │   └── d48000c6a4e359f4b81285abf059b5
-    ├── 38
-    │   └── 64e70211d3bdb367ad1432bfc14c1f.dir
-    ├── 3f
-    │   └── 957fa0f1bb46534d07f4fc2116d73d
-    ├── 4a
-    │   └── 8c47036c79c01522e79ac0f518d0f7
-    ├── 5e
-    │   └── 4a7d0cbe26eda55624439661db925d
-    ├── 6c
-    │   └── 3074754e3a9b563b62c8f1a38670dc
-    ├── 77
-    │   └── bea77463abe2b7c6b4d13f00d2c7b4
-    ├── 88
-    │   └── c3db1c257136090dbb4a7ddf31e678.dir
-    └── f4
+$ tree .dvc/cache
+.dvc/cache
+├── 02
+│   └── 423d88d184649a7157a64f28af5a73
+├── 0b
+│   └── d48000c6a4e359f4b81285abf059b5
+├── 38
+│   └── 64e70211d3bdb367ad1432bfc14c1f.dir
+├── 3f
+│   └── 957fa0f1bb46534d07f4fc2116d73d
+├── 4a
+│   └── 8c47036c79c01522e79ac0f518d0f7
+├── 5e
+│   └── 4a7d0cbe26eda55624439661db925d
+├── 6c
+│   └── 3074754e3a9b563b62c8f1a38670dc
+├── 77
+│   └── bea77463abe2b7c6b4d13f00d2c7b4
+├── 88
+│   └── c3db1c257136090dbb4a7ddf31e678.dir
+└── f4
 
-    10 directories, 9 files
-    $ tree ../vault/recursive
-    ../vault/recursive
-    ├── 0b
-    │   └── d48000c6a4e359f4b81285abf059b5
-    ├── 4a
-    │   └── 8c47036c79c01522e79ac0f518d0f7
-    ├── 6c
-    │   └── 3074754e3a9b563b62c8f1a38670dc
-    ├── 88
-    │   └── c3db1c257136090dbb4a7ddf31e678.dir
-    └── f4
-        └── 7482b18ecca728ba4ae931e5d568fb
+10 directories, 9 files
+$ tree ../vault/recursive
+../vault/recursive
+├── 0b
+│   └── d48000c6a4e359f4b81285abf059b5
+├── 4a
+│   └── 8c47036c79c01522e79ac0f518d0f7
+├── 6c
+│   └── 3074754e3a9b563b62c8f1a38670dc
+├── 88
+│   └── c3db1c257136090dbb4a7ddf31e678.dir
+└── f4
+    └── 7482b18ecca728ba4ae931e5d568fb
 
-    5 directories, 5 files
+5 directories, 5 files
 ```
 
 The directory `.dvc/cache` is the local cache, while `../vault/recursive` is the
@@ -271,26 +271,26 @@ upload files in subsequent stages.
 After doing that we can inspect the remote cache again:
 
 ```dvc
-    $ tree ../vault/recursive
-    ../vault/recursive
-    ├── 0b
-    │   └── d48000c6a4e359f4b81285abf059b5
-    ├── 38
-    │   └── 64e70211d3bdb367ad1432bfc14c1f.dir
-    ├── 4a
-    │   └── 8c47036c79c01522e79ac0f518d0f7
-    ├── 5e
-    │   └── 4a7d0cbe26eda55624439661db925d
-    ├── 6c
-    │   └── 3074754e3a9b563b62c8f1a38670dc
-    ├── 77
-    │   └── bea77463abe2b7c6b4d13f00d2c7b4
-    ├── 88
-    │   └── c3db1c257136090dbb4a7ddf31e678.dir
-    └── f4
-        └── 7482b18ecca728ba4ae931e5d568fb
+$ tree ../vault/recursive
+../vault/recursive
+├── 0b
+│   └── d48000c6a4e359f4b81285abf059b5
+├── 38
+│   └── 64e70211d3bdb367ad1432bfc14c1f.dir
+├── 4a
+│   └── 8c47036c79c01522e79ac0f518d0f7
+├── 5e
+│   └── 4a7d0cbe26eda55624439661db925d
+├── 6c
+│   └── 3074754e3a9b563b62c8f1a38670dc
+├── 77
+│   └── bea77463abe2b7c6b4d13f00d2c7b4
+├── 88
+│   └── c3db1c257136090dbb4a7ddf31e678.dir
+└── f4
+    └── 7482b18ecca728ba4ae931e5d568fb
 
-    8 directories, 8 files
+8 directories, 8 files
 ```
 
 The remote cache now has some of the files which had been missing, but not all
@@ -302,34 +302,34 @@ After running `dvc push` to cause all files to be uploaded the remote cache now
 has all the files:
 
 ```dvc
-    $ tree ../vault/recursive
-    ../vault/recursive
-    ├── 02
-    │   └── 423d88d184649a7157a64f28af5a73
-    ├── 0b
-    │   └── d48000c6a4e359f4b81285abf059b5
-    ├── 38
-    │   └── 64e70211d3bdb367ad1432bfc14c1f.dir
-    ├── 3f
-    │   └── 957fa0f1bb46534d07f4fc2116d73d
-    ├── 4a
-    │   └── 8c47036c79c01522e79ac0f518d0f7
-    ├── 5e
-    │   └── 4a7d0cbe26eda55624439661db925d
-    ├── 6c
-    │   └── 3074754e3a9b563b62c8f1a38670dc
-    ├── 77
-    │   └── bea77463abe2b7c6b4d13f00d2c7b4
-    ├── 88
-    │   └── c3db1c257136090dbb4a7ddf31e678.dir
-    └── f4
-        └── 7482b18ecca728ba4ae931e5d568fb
+$ tree ../vault/recursive
+../vault/recursive
+├── 02
+│   └── 423d88d184649a7157a64f28af5a73
+├── 0b
+│   └── d48000c6a4e359f4b81285abf059b5
+├── 38
+│   └── 64e70211d3bdb367ad1432bfc14c1f.dir
+├── 3f
+│   └── 957fa0f1bb46534d07f4fc2116d73d
+├── 4a
+│   └── 8c47036c79c01522e79ac0f518d0f7
+├── 5e
+│   └── 4a7d0cbe26eda55624439661db925d
+├── 6c
+│   └── 3074754e3a9b563b62c8f1a38670dc
+├── 77
+│   └── bea77463abe2b7c6b4d13f00d2c7b4
+├── 88
+│   └── c3db1c257136090dbb4a7ddf31e678.dir
+└── f4
+    └── 7482b18ecca728ba4ae931e5d568fb
 
-    10 directories, 10 files
+10 directories, 10 files
 
-    $ dvc status --cloud
+$ dvc status --cloud
 
-    Pipeline is up to date. Nothing to reproduce.
+Pipeline is up to date. Nothing to reproduce.
 
 ```
 
@@ -341,9 +341,9 @@ upload to the remote cache.
 Normally the file names are shown, but DVC can display the checksums instead.
 
 ```dvc
-    $ dvc push --remote r1 --show-checksums
+$ dvc push --remote r1 --show-checksums
 
-    (1/3): [####################] 100% 844ef0cd13ff786c686d76bb1627081c
-    (2/3): [####################] 100% c5409fafe56c3b0d4d4d8d72dcc009c0
-    (3/3): [####################] 100% a8c5ae04775fcde33bf03b7e59960e18
+(1/3): [####################] 100% 844ef0cd13ff786c686d76bb1627081c
+(2/3): [####################] 100% c5409fafe56c3b0d4d4d8d72dcc009c0
+(3/3): [####################] 100% a8c5ae04775fcde33bf03b7e59960e18
 ```

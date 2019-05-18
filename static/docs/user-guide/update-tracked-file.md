@@ -30,21 +30,21 @@ If you want to replace the file you should take the following steps.
 First, un-track the file. This will remove `train.tsv` from the workspace:
 
 ```dvc
-    $ dvc remove train.tsv.dvc
+$ dvc remove train.tsv.dvc
 ```
 
 Next, replace the file with new content:
 
 ```dvc
-    $ echo new > train.tsv
+$ echo new > train.tsv
 ```
 
 And start tracking it again:
 
 ```dvc
-    $ dvc add train.tsv
-    $ git add train.tsv.dvc
-    $ git commit -m "new train data"
+$ dvc add train.tsv
+$ git add train.tsv.dvc
+$ git commit -m "new train data"
 ```
 
 ## Modifying content
@@ -52,19 +52,19 @@ And start tracking it again:
 "Unlink" the file with `dvc unprotect`. This will make `train.tsv` safe to edit:
 
 ```dvc
-    $ dvc unprotect train.tsv
+$ dvc unprotect train.tsv
 ```
 
 Edit the content of the file:
 
 ```dvc
-    $ echo "new data item" >> train.tsv
+$ echo "new data item" >> train.tsv
 ```
 
 Add a new version of the file back to DVC:
 
 ```dvc
-    $ dvc add train.tsv
-    $ git add train.tsv.dvc
-    $ git commit -m "modify train data"
+$ dvc add train.tsv
+$ git add train.tsv.dvc
+$ git commit -m "modify train data"
 ```
