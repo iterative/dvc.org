@@ -7,14 +7,14 @@ it will then present the possible options that could follow that command call.
 For example:
 
 ```dvc
-   $ dvc r # Press [tab] key
+$ dvc r # Press [tab] key
 
-    #  -- dvc commands --
-    # remote  -- Manage set of tracked repositories.
-    # remove  -- Remove outputs of DVC file.
-    # repro   -- Reproduce DVC file. Default file name - 'Dvcfile'.
-    # root    -- Relative path to project's directory.
-    # run     -- Generate a stage file from a given command and execute
+#  -- dvc commands --
+# remote  -- Manage set of tracked repositories.
+# remove  -- Remove outputs of DVC file.
+# repro   -- Reproduce DVC file. Default file name - 'Dvcfile'.
+# root    -- Relative path to project's directory.
+# run     -- Generate a stage file from a given command and execute
 ```
 
 Depending on what you typed on the command line so far, it completes:
@@ -38,9 +38,9 @@ If you are new to working with shell or uncertain about your active shell, use
 For example:
 
 ```dvc
-    $ echo $0
+$ echo $0
 
-      /bin/bash
+  /bin/bash
 ```
 
 In this case, follow the steps to configure Bash as it is your active shell.
@@ -64,9 +64,9 @@ You will need to place this script script into `/etc/bash_completion.d/` (or
 For example:
 
 ```dvc
-    $ sudo wget \
-        -O /etc/bash_completion.d/dvc \
-        https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.bash
+$ sudo wget \
+    -O /etc/bash_completion.d/dvc \
+    https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.bash
 ```
 
 On a Mac, add the following to your `~/.bash_profile`:
@@ -92,21 +92,21 @@ be named `_dvc`.
 For example:
 
 ```dvc
-    $ sudo wget \
-        -O /usr/share/zsh/site-functions/_dvc \
-        https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.zsh
+$ sudo wget \
+    -O /usr/share/zsh/site-functions/_dvc \
+    https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.zsh
 ```
 
 Make sure `compinit` is loaded or do it by adding in `~/.zshrc`:
 
 ```dvc
-    $ autoload -Uz compinit && compinit -i
+$ autoload -Uz compinit && compinit -i
 ```
 
 Then reload your shell:
 
 ```dvc
-    $ exec $SHELL -l
+$ exec $SHELL -l
 ```
 
 This step is optional but will make look much nicer by adding more colors to it.
