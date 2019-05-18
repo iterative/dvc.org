@@ -99,9 +99,9 @@ follow the steps below:
 
 ## Code style guidelines
 
-- **Markdown and JS** files: no trailing whitespaces are allowed.
+- **Markdown and JS files:** no trailing whitespaces are allowed.
 
-- **JS and Markdown files:** content must be properly formatted at 80 symbols
+- **Markdown and JS files:** content must be properly formatted at 80 symbols
   width. We recommend using Visual Studio Code and the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
   plugin to format the content of Markdown files or install the pre-commit hook
