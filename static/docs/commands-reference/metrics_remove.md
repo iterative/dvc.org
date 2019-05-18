@@ -5,11 +5,11 @@ Keep file as an output, remove metric flag and stop tracking as a metric file.
 ## Synopsis
 
 ```usage
-    usage: dvc metrics remove [-h] [-q] [-v]
-                              path
+usage: dvc metrics remove [-h] [-q] [-v]
+                          path
 
-    positional arguments:
-      path           Path to a metric file.
+positional arguments:
+  path           Path to a metric file.
 
 ```
 
@@ -36,10 +36,10 @@ Let's first create an output that is not a metric file:
 This command produces the following metrics file:
 
 ```dvc
-    $ cat metrics.tsv
+$ cat metrics.tsv
 
-    time	auc
-    2019-02-13	0.9643
+time	auc
+2019-02-13	0.9643
 
 ```
 
@@ -48,9 +48,9 @@ To extract the AUC value out of it, we can use the `-t` and `-x` options that
 command to learn how to apply `-t` and `-x` permanently):
 
 ```dvc
-    $ dvc metrics show -t htsv -x 0,auc metrics.tsv
+$ dvc metrics show -t htsv -x 0,auc metrics.tsv
 
-    metrics.tsv: ['0.9643']
+metrics.tsv: ['0.9643']
 ```
 
 If you check the `metrics.tsv.dvc` file, you should see that `metric: true` is
@@ -69,9 +69,9 @@ outs:
 Now, let's reset the flag with the `dvc metrics remove` command:
 
 ```dvc
-    $ dvc metrics remove metrics.tsv
+$ dvc metrics remove metrics.tsv
 
-    Saving information to 'metrics.tsv.dvc'.
+Saving information to 'metrics.tsv.dvc'.
 ```
 
 Let's check the stage file now:
@@ -90,11 +90,11 @@ As you can see, nothing has changed at all, except the flag `metric: true`. And
 both files are still here:
 
 ```dvc
-    $ tree .
+$ tree .
 
-    .
-    ├── metrics.tsv
-    └── metrics.tsv.dvc
+.
+├── metrics.tsv
+└── metrics.tsv.dvc
 
-    0 directories, 2 files
+0 directories, 2 files
 ```

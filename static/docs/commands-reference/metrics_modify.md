@@ -6,12 +6,12 @@ etc).
 ## Synopsis
 
 ```usage
-    usage: dvc metrics modify [-h] [-q] [-v]
-                              [-t TYPE] [-x XPATH]
-                              path
+usage: dvc metrics modify [-h] [-q] [-v]
+                          [-t TYPE] [-x XPATH]
+                          path
 
-    positional arguments:
-      path                  Path to a metric file.
+positional arguments:
+  path                  Path to a metric file.
 ```
 
 ## Description
@@ -25,8 +25,8 @@ It the path provided is not part of the pipeline, the following error will be
 raised:
 
 ```text
-    Error: failed to modify metrics - unable
-           to find file '<path>' in the pipeline
+Error: failed to modify metrics - unable
+       to find file '<path>' in the pipeline
 ```
 
 ## Options
@@ -82,9 +82,9 @@ And if we run `dvc metrics show metrics.csv` we will get the complete content of
 the file:
 
 ```dvc
-    $ dvc metrics show metrics.csv
+$ dvc metrics show metrics.csv
 
-        metrics.csv: auc, 0.9567
+    metrics.csv: auc, 0.9567
 ```
 
 Okay. Let's now, imagine we are interested only in numbers - second column of
@@ -92,14 +92,14 @@ the CSV file. We can specify the type `CSV` and a path to extract the second
 column:
 
 ```dvc
-    $ dvc metrics modify -t csv -x '0,1' metrics.csv
+$ dvc metrics modify -t csv -x '0,1' metrics.csv
 ```
 
 After this change `dvc metrics show` should always select only the value itself,
 and exclude names:
 
 ```dvc
-    $ dvc metrics show metrics.csv
+$ dvc metrics show metrics.csv
 
-        metrics.csv: [' 0.9567']
+    metrics.csv: [' 0.9567']
 ```

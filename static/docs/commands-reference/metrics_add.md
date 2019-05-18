@@ -5,12 +5,12 @@ Tag the file located at `path` as a metric file.
 ## Synopsis
 
 ```usage
-    usage: dvc metrics add [-h] [-q] [-v]
-                           [-t TYPE] [-x XPATH]
-                           path
+usage: dvc metrics add [-h] [-q] [-v]
+                       [-t TYPE] [-x XPATH]
+                       path
 
-    positional arguments:
-      path           Path to a metric file.
+positional arguments:
+  path           Path to a metric file.
 ```
 
 ## Description
@@ -57,7 +57,7 @@ contains multiple metrics.
 Let's first create an output that is not a metric file:
 
 ```dvc
-    $ dvc run -o metrics.txt "echo 0.9643 > metrics.txt"
+$ dvc run -o metrics.txt "echo 0.9643 > metrics.txt"
 ```
 
 The content of `metrics.txt.dvc` should look like (note the `mertic: false`
@@ -76,17 +76,17 @@ outs:
 If you run `dvc metrics show` you should get an error message like this:
 
 ```text
-    Error: failed to show metrics - no metric files in
-           this repository. use 'dvc metrics add' to add
-           a metric file to track.
+Error: failed to show metrics - no metric files in
+       this repository. use 'dvc metrics add' to add
+       a metric file to track.
 ```
 
 Now, let's make a metric file out it:
 
 ```dvc
-    $ dvc metrics add metrics.txt
+$ dvc metrics add metrics.txt
 
-    Saving information to 'metrics.txt.dvc'.
+Saving information to 'metrics.txt.dvc'.
 ```
 
 This command updates the `metrics.txt.dvc` to specify that the `metrics.txt`
@@ -106,5 +106,5 @@ outs:
 And if you run `dvc metrics show` you should see something like this:
 
 ```text
-    metrics.txt: 0.9643
+metrics.txt: 0.9643
 ```
