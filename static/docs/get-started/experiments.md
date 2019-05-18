@@ -16,9 +16,9 @@ features. Find and change the `CountVectorizer` arguments, specify `ngram_range`
 and increase number of features:
 
 ```python
-    bag_of_words = CountVectorizer(stop_words='english',
-                                   max_features=6000,
-                                   ngram_range=(1, 2))
+bag_of_words = CountVectorizer(stop_words='english',
+                               max_features=6000,
+                               ngram_range=(1, 2))
 ```
 
 </details>
@@ -33,8 +33,8 @@ Now, we have a new `model.pkl` captured and saved. To get back to the initial
 version we run `git checkout` along with `dvc checkout` command:
 
 ```
-    $ git checkout baseline-experiment
-    $ dvc checkout
+$ git checkout baseline-experiment
+$ dvc checkout
 ```
 
 DVC is designed to checkout large data files (no matter how large they are) into

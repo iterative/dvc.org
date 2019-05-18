@@ -156,7 +156,7 @@ remote when you are done.
 Let's commit meta-files to save the stage we built:
 
 ```dvc
-    $ git add data/.gitignore prepare.dvc
-    $ git commit -m "add data preparation stage"
-    $ dvc push
+$ git add data/.gitignore prepare.dvc
+$ git commit -m "add data preparation stage"
+$ dvc push
 ```

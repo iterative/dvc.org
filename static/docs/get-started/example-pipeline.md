@@ -233,47 +233,47 @@ chain (DAG) of commands we need to apply. This is important when you run
 see actual commands instead of DVC-files):
 
 ```dvc
-    $ dvc pipeline show --ascii evaluate.dvc
+$ dvc pipeline show --ascii evaluate.dvc
 
-           .------------------------.
-           | data/Posts.xml.zip.dvc |
-           `------------------------'
-                        *
-                        *
-                        *
-                .-------------.
-                | extract.dvc |
-                `-------------'
-                        *
-                        *
-                        *
-                .-------------.
-                | prepare.dvc |
-                `-------------'
-                        *
-                        *
-                        *
-                  .-----------.
-                  | split.dvc |
-                  `-----------'
-                        *
-                        *
-                        *
-                .---------------.
-                | featurize.dvc |
-                `---------------'
-                 **           ***
-               **                **
-             **                    **
-    .-----------.                    **
-    | train.dvc |                  **
-    `-----------'                **
-                 **           ***
-                   **       **
-                     **   **
-                .--------------.
-                | evaluate.dvc |
-                `--------------'
+       .------------------------.
+       | data/Posts.xml.zip.dvc |
+       `------------------------'
+                    *
+                    *
+                    *
+            .-------------.
+            | extract.dvc |
+            `-------------'
+                    *
+                    *
+                    *
+            .-------------.
+            | prepare.dvc |
+            `-------------'
+                    *
+                    *
+                    *
+              .-----------.
+              | split.dvc |
+              `-----------'
+                    *
+                    *
+                    *
+            .---------------.
+            | featurize.dvc |
+            `---------------'
+             **           ***
+           **                **
+         **                    **
+.-----------.                    **
+| train.dvc |                  **
+`-----------'                **
+             **           ***
+               **       **
+                 **   **
+            .--------------.
+            | evaluate.dvc |
+            `--------------'
 ```
 
 </details>
@@ -288,7 +288,6 @@ see actual commands instead of DVC-files):
 
 ```dvc
 $ dvc metrics show
-
   auc.metric: 0.620091
 ```
 
@@ -317,9 +316,9 @@ $ vi code/featurization.py
 Specify `ngram` parameter in `CountVectorizer` (lines 72–73):
 
 ```python
-    bag_of_words = CountVectorizer(stop_words='english',
-                                   max_features=5000,
-                                   ngram_range=(1, 2))
+bag_of_words = CountVectorizer(stop_words='english',
+                               max_features=5000,
+                               ngram_range=(1, 2))
 ```
 
 - Reproduce all required steps to get our target metrics file:
