@@ -8,6 +8,12 @@ To install DVC from terminal, run:
 ```dvc
 $ pip install dvc
 ```
+### Expand to install from Anaconda repository
+To install DVC from Anaconda prompt, run:
+
+```dvc
+$ conda install -c derickl dvc
+```
 
 > Depending on the [remote storage](/doc/commands-reference/remote) type you
 > plan to use to keep and share your data, you might need to specify one of the
