@@ -40,10 +40,11 @@ $ git commit -m "add source data to DVC"
 
 ### Expand to learn about DVC internals
 
-You can see that actual data file has been moved to the `.dvc/cache` directory
-(ideally with reflinks if available on the system, otherwise by file copy – see
-[Cache File Linking](/docs/user-guide/cache-file-linking) to learn about all the
-supported file linking options, their tradeoffs, and how to enable them).
+You can see that actual data file has been moved to the `.dvc/cache` directory,
+while the entries in the working directory may be links to the actual files in
+the DVC cache. (See [Cache File Linking](/docs/user-guide/cache-file-linking) to
+learn about the supported file linking options, their tradeoffs, and how to
+enable them).
 
 ```dvc
 $ ls -R .dvc/cache
@@ -57,12 +58,32 @@ hash inside.
 
 </details>
 
+<details>
+
+### Expand for an important note on cache performance
+
+DVC tries to use reflinks\* by default to link your data files from the DVC
+cache to the workspace, optimizing speed and storage space. However, reflinks
+are not widely supported yet and DVC falls back to actually copying data files
+to/from the cache **which can be very slow with large files**, and duplicates
+storage requirements.
+
+Hardlinks and symlinks are also available for optimized cache linking but,
+(unlike reflinks) they carry the risk of accidentally corrupting the cache if
+tacked data files are modified in the workspace.
+
+See [Cache File Linking](/docs/user-guide/cache-file-linking) and
+`dvc config cache` for more information.
+
+> \***copy-on-write links or "reflinks"** are a relatively new way to link files
+> in UNIX-style file systems. Unlike hardlinks or symlinks, they support
+> transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
+> means that editing a reflinked file is always safe as all the other links to
+> the file will reflect the changes.
+
+</details>
+
 Refer to
 [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning),
 `dvc add`, and `dvc run` for more information on storing and versioning data
 files with DVC.
-
-Note that to modify or replace a data file that is under DVC control you may
-need to run `dvc unprotect` or `dvc remove` first (check the
-[Update Tracked File](/doc/user-guide/update-tracked-file) guide). Use
-`dvc move` to rename or move a data file that is under DVC control.

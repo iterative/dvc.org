@@ -42,18 +42,18 @@ inefficient for large files (not recommended for GBs of data).
 
 Each file linking option is further detailed below, in order of efficiency:
 
-1. **`reflink`** - copy-on-write links or "reflinks" are the best possible link
-   type, when available. They're is as fast as hard/symlinks, but don't carry a
-   risk of cache corruption since file system takes care of copying the file if
-   you try to edit it in place, thus keeping a linked cache file intact.  
+1. **`reflink`** - copy-on-write\* links or "reflinks" are the best possible
+   link type, when available. They're is as fast as hard/symlinks, but don't
+   carry a risk of cache corruption since the file system takes care of copying
+   the file if you try to edit it in place, thus keeping a linked cache file
+   intact.  
    Unfortunately reflinks are currently supported on a limited number of file
    systems only (Linux: Btrfs, XFS, OCFS2; MacOS: APFS), but in the future they
    will be supported by the majority of file systems in use.
 
 2. **`hardlink`** - hard links are the most efficient way to link your data to
    cache if both your repo and your cache directory are located on the same file
-   system/drive.
-
+   system/drive.  
    > Please note that hardlinked data files should never be edited in place, but
    > instead deleted and then replaced with a new file, otherwise it might cause
    > cache corruption and automatic deletion of cached files by DVC.
@@ -61,8 +61,7 @@ Each file linking option is further detailed below, in order of efficiency:
 3. **`symlink`** - symbolic (aka "soft") links are the most efficient way to
    link your data to cache if your repo and your cache directory are located on
    different file systems/drives (i.e. repo is located on SSD for performance,
-   but cache dir is located on HDD for bigger storage).
-
+   but cache dir is located on HDD for bigger storage).  
    > Please note that symlinked data files should never be edited in place, but
    > instead deleted and then replaced with a new file, otherwise it might cause
    > cache corruption and automatic deletion of cached files by DVC.
@@ -97,3 +96,9 @@ Setting `cache.protected` is important with `hardlink` and/or `symlink` cache
 file link types. Please refer to the
 [Update a Tracked File](/docs/user-guide/update-tracked-file) to how to manage
 tracked files under such a cache configuration.
+
+> \***copy-on-write links or "reflinks"** are a relatively new way to link files
+> in UNIX-style file systems. Unlike hardlinks or symlinks, they support
+> transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
+> means that editing a reflinked file is always safe as all the other links to
+> the file will reflect the changes.

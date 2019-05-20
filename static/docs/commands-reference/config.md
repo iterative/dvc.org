@@ -87,8 +87,8 @@ files](/doc/user-guide/dvc-files-and-directories) for more details.)
   The default value is `cache`, which resolved relative to the default project
   config location results in `.dvc/cache`.
   > See also helper command `dvc cache dir` that properly transform paths
-  relative to the present working directory into relative to the project config
-  file.
+  > relative to the present working directory into relative to the project
+  > config file.
 
 - `cache.protected` - makes files in the workspace read-only. Possible values
   are `true` or `false` (default). Run `dvc checkout` for the change go into
@@ -103,15 +103,14 @@ files](/doc/user-guide/dvc-files-and-directories) for more details.)
 
 - `cache.type` - link type that DVC should use to link data files from cache to
   your workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
-
   combination of those, separated by commas e.g: `reflink,hardlink,copy`.  
   By default, DVC will try `reflink,copy` link types in order to choose the most
   effective of those two. DVC avoids `symlink` and `hardlink` types by default
   to protect user from accidental cache and repository corruption.  
   > **Note!** If you manually set `cache.type` to `hardlink` or `symlink`, **you
-  will corrupt the cache** if you edit data files in the workspace. See the
-  `cache.protected` config option above and corresponding `dvc unprotect`
-  command to modify files safely.  
+  > will corrupt the cache** if you modify tracked data files in the workspace.
+  > See the `cache.protected` config option above and corresponding
+  > `dvc unprotect` command to modify files safely.  
   There are pros and cons to different link types. Refer to [Cache File
   Linking](/docs/user-guide/cache-file-linking) for a full explanation of each
   one.
