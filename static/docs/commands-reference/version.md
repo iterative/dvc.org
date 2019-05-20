@@ -20,6 +20,24 @@ system/environment:
 | `Python version` | Version of the Python being used for the project in which DVC is initialized   |
 | `Platform`       | Information about the operating system of the machine                          |
 
+#### Components of DVC version
+
+The detail of DVC version depends upon the way of installing the project.
+
+- **`pip install git+git://github.com/iterative/dvc`**
+  - This will install dvc using the `master` branch of DVC's repository. The
+    master branch is continuously being updated with changes which might not be
+    ready to publish yet. Therefore installing using the above command might
+    have issues regarding its usage. So to trace any error reported with this
+    setup, we need to know exactly which version is being used. For this, we
+    rely on git commit hash which is displayed in output as
+    `BASE_VERSION+COMMIT_HASH`.
+- **`pip install dvc`**
+  - This installs dvc using the official release stored in Python Packaging
+    Authority. We mark these official releases with tags on DVC's repository.
+    Any issues reported with the official build can be traced using the
+    `BASE_VERSION` itself.
+
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.
