@@ -81,7 +81,7 @@ process.
      want to see in your Git repository) in a local key-value store and use file
      symlinks instead of the actual files.
 
-   - DVC can use reflinks* or hardlinks (depending on the system) instead of
+   - DVC can use reflinks\* or hardlinks (depending on the system) instead of
      symlinks to improve performance and make the user experience better.
 
    - DVC optimizes checksum calculation.
@@ -112,10 +112,10 @@ process.
      `git clone` command. It gives more granularity on managing data and code
      separately. Hooks could be configured to make workflow simpler.
 
-   - DVC attempts to use reflinks* and has other [file linking
-     options](/docs/user-guide/cache-file-linking). The `dvc checkout`
-     command does not actually copy data files from cache to the workspace, as
-     copying files is a heavy operation for large files (30 GB+).
+   - DVC attempts to use reflinks\* and has other
+     [file linking options](/docs/user-guide/cache-file-linking). The
+     `dvc checkout` command does not actually copy data files from cache to the
+     workspace, as copying files is a heavy operation for large files (30 GB+).
 
    - `git-lfs` was not made with data science scenarios in mind, thus it does
      not support certain features, e.g. pipelines and metrics, and thus Github
@@ -124,6 +124,7 @@ process.
 ---
 
 > \***copy-on-write links or "reflinks"** are a relatively new way to link files
-in UNIX-style file systems. Unlike hardlinks or symlinks, they support
-transparent copy on write. This means that editing a reflinked file is always
-safe as all the other links to the file will reflect the changes.
+> in UNIX-style file systems. Unlike hardlinks or symlinks, they support
+> transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
+> means that editing a reflinked file is always safe as all the other links to
+> the file will reflect the changes.
