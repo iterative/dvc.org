@@ -37,3 +37,15 @@ Once initialized in a project, DVC populates its installation directory
 - `.dvc/updater.lock` - a lock file for `.dvc/updater`.
 
 - `.dvc/lock` - a lock file for the whole dvc project.
+
+### Structure of directory
+
+The data file is converted to a MD5 checksum which is a 32 characters long
+string. The first two characters are assigned to name the directory inside
+`.dvc/cache` and rest are given to name the cache file. For example, if a data
+file, say `Posts.xml.zip`, is converted to a MD5 checksum, it will evaluate to
+`ec1d2935f811b77cc49b031b999cbf17`. The cache file for this data file will be
+stored as `.dvc/ec/1d2935f811b77cc49b031b999cbf17` on the local storage and if
+it is pushed to a remote storage, its location will be
+`<prefix>/ec/1d2935f811b77cc49b031b999cbf17` where prefix is the name of the
+remote storage. `/tmp/dvc-storage` can be one example of a prefix.
