@@ -24,17 +24,23 @@ system/environment:
 
 The detail of DVC version depends upon the way of installing the project.
 
-- **`pip install git+git://github.com/iterative/dvc` **&rarr; This will install
-  DVC using the `master` branch of DVC's repository. The master branch is
-  continuously being updated with changes which might not be ready to publish
-  yet. Therefore installing using the above command might have issues regarding
-  its usage. So to trace any error reported with this setup, we need to know
-  exactly which version is being used. For this, we rely on git commit hash
-  which is displayed in output as `BASE_VERSION+COMMIT_HASH`.
-- **`pip install dvc`** &rarr; This installs DVC using the official release
-  stored in Python Packaging Authority. We mark these official releases with
-  tags on DVC's repository. Any issues reported with the official build can be
-  traced using the `BASE_VERSION` itself.
+- **Development version**: `pip install git+git://github.com/iterative/dvc` will
+  install DVC using the `master` branch of DVC's repository. Another way of
+  setting up the development version is to clone the repository and run
+  `pip install .`. The master branch is continuously being updated with changes
+  which might not be ready to publish yet. Therefore installing using the above
+  command might have issues regarding its usage. So to trace any error reported
+  with this setup, we need to know exactly which version is being used. For
+  this, we rely on git commit hash which is displayed in output as
+  `0.40.2+292cab.mod`. The part before `+` is the `BASE_VERSION` and the latter
+  part is the git commit hash which is one of the commits in the `master`
+  branch.
+
+- **Official release**: This [install guide](/doc/get-started/install) mentions
+  ways to install DVC using the official package stored in Python Packaging
+  Authority. We mark these official releases with tags on DVC's repository. Any
+  issues reported with the official build can be traced using the `BASE_VERSION`
+  itself. So the output is simply `0.40.2`.
 
 ## Options
 
