@@ -24,6 +24,12 @@ system/environment:
 
 The detail of DVC version depends upon the way of installing the project.
 
+- **Official release**: This [install guide](/doc/get-started/install) mentions
+  ways to install DVC using the official package stored in Python Packaging
+  Authority. We mark these official releases with tags on DVC's repository. Any
+  issues reported with the official build can be traced using the `BASE_VERSION`
+  itself. So the output is simply `0.40.2`.
+
 - **Development version**: `pip install git+git://github.com/iterative/dvc` will
   install DVC using the `master` branch of DVC's repository. Another way of
   setting up the development version is to clone the repository and run
@@ -34,13 +40,8 @@ The detail of DVC version depends upon the way of installing the project.
   this, we rely on git commit hash which is displayed in output as
   `0.40.2+292cab.mod`. The part before `+` is the `BASE_VERSION` and the latter
   part is the git commit hash which is one of the commits in the `master`
-  branch.
+  branch (also, optional suffix `.mod` means that code is modified).
 
-- **Official release**: This [install guide](/doc/get-started/install) mentions
-  ways to install DVC using the official package stored in Python Packaging
-  Authority. We mark these official releases with tags on DVC's repository. Any
-  issues reported with the official build can be traced using the `BASE_VERSION`
-  itself. So the output is simply `0.40.2`.
 
 ## Options
 
