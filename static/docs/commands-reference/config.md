@@ -92,25 +92,30 @@ files](/doc/user-guide/dvc-files-and-directories) for more details.)
 
 - `cache.protected` - makes files in the workspace read-only. Possible values
   are `true` or `false` (default). Run `dvc checkout` for the change go into
-  effect. (It affects only files that are under DVC control.)  
+  effect. (It affects only files that are under DVC control.)
+
   Due to the way DVC handles linking between the data files in the cache and
   their counterparts in the working directory, it's easy to accidentally corrupt
   the cached version of a file by editing or overwriting it. Turning this config
   option on forces you to run `dvc unprotect` before updating a file, providing
-  an additional layer of security to your data.  
+  an additional layer of security to your data.
+
   It's highly recommended to enable this mod when `cache.type` is set to
   `hardlink` or `symlink`.
 
 - `cache.type` - link type that DVC should use to link data files from cache to
   your workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
-  combination of those, separated by commas e.g: `reflink,hardlink,copy`.  
+  combination of those, separated by commas e.g: `reflink,hardlink,copy`.
+
   By default, DVC will try `reflink,copy` link types in order to choose the most
   effective of those two. DVC avoids `symlink` and `hardlink` types by default
-  to protect user from accidental cache and repository corruption.  
+  to protect user from accidental cache and repository corruption.
+
   > **Note!** If you manually set `cache.type` to `hardlink` or `symlink`, **you
   > will corrupt the cache** if you modify tracked data files in the workspace.
   > See the `cache.protected` config option above and corresponding
-  > `dvc unprotect` command to modify files safely.  
+  > `dvc unprotect` command to modify files safely.
+
   There are pros and cons to different link types. Refer to [Cache File
   Linking](/docs/user-guide/cache-file-linking) for a full explanation of each
   one.
@@ -125,7 +130,7 @@ files](/doc/user-guide/dvc-files-and-directories) for more details.)
 
 - `cache.local` - name of a local remote to use as local cache. This will
   overwrite the value provided to `dvc config cache.dir` or `dvc cache dir`.
-  Refer to `dvc remote` for more information on "local remotes". 
+  Refer to `dvc remote` for more information on "local remotes".
 
 - `cache.ssh` - name of an [SSH remote to use as external
   cache](/doc/user-guide/external-outputs#ssh).

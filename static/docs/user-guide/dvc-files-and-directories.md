@@ -14,8 +14,8 @@ Once initialized in a project, DVC populates its installation directory
 
 - `.dvc/cache` - the cache directory will contain your data files. (The data
   directories of DVC repositories will only contain links to the data files in
-  the cache, refer to [Cache File
-  Linking](/docs/user-guide/cache-file-linking).)
+  the cache, refer to
+  [Cache File Linking](/docs/user-guide/cache-file-linking).)
 
   > **Note:** DVC includes the cache directory in `.gitignore` during the
   initialization. No data files (with actual content) will ever be pushed to the
@@ -33,7 +33,7 @@ Once initialized in a project, DVC populates its installation directory
 
 - `.dvc/updater` - this file is used store latest available version of dvc,
   which is used to remind user to upgrade.
-  
+
 - `.dvc/updater.lock` - a lock file for `.dvc/updater`.
 
 - `.dvc/lock` - a lock file for the whole dvc project.

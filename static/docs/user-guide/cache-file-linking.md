@@ -28,11 +28,10 @@ different kinds, that differ in how they connect filenames to inodes in the
 system.
 
 > **Inodes** are metadata file records to locate and store permissions to the
-> actual file contents. See **Linking files** in
-> [this doc](http://www.tldp.org/LDP/intro-linux/html/sect_03_03.html) for
-> technical details on Linux.  
-> Some versions of Windows (e.g. Windows Server 2012+ and Windows 10 Enterprise)
-> also support hard or soft links on the
+> actual file contents. See **Linking files** in [this
+> doc](http://www.tldp.org/LDP/intro-linux/html/sect_03_03.html) for technical
+> details on Linux. Some versions of Windows (e.g. Windows Server 2012+ and
+> Windows 10 Enterprise) also support hard or soft links on the
 > [NTFS](https://support.microsoft.com/en-us/help/100108/overview-of-fat-hpfs-and-ntfs-file-systems)
 > and
 > [ReFS](https://docs.microsoft.com/en-us/windows-server/storage/refs/refs-overview)
@@ -55,14 +54,16 @@ Each file linking option is further detailed below, in order of efficiency:
    link type, when available. They're is as fast as hard/symlinks, but don't
    carry a risk of cache corruption since the file system takes care of copying
    the file if you try to edit it in place, thus keeping a linked cache file
-   intact.  
+   intact.
+
    Unfortunately reflinks are currently supported on a limited number of file
    systems only (Linux: Btrfs, XFS, OCFS2; MacOS: APFS), but in the future they
    will be supported by the majority of file systems in use.
 
 2. **`hardlink`** - hard links are the most efficient way to link your data to
    cache if both your repo and your cache directory are located on the same file
-   system/drive.  
+   system/drive.
+
    > Please note that hardlinked data files should never be edited in place, but
    > instead deleted and then replaced with a new file, otherwise it might cause
    > cache corruption and automatic deletion of cached files by DVC.
@@ -70,7 +71,8 @@ Each file linking option is further detailed below, in order of efficiency:
 3. **`symlink`** - symbolic (aka "soft") links are the most efficient way to
    link your data to cache if your repo and your cache directory are located on
    different file systems/drives (i.e. repo is located on SSD for performance,
-   but cache dir is located on HDD for bigger storage).  
+   but cache dir is located on HDD for bigger storage).
+
    > Please note that symlinked data files should never be edited in place, but
    > instead deleted and then replaced with a new file, otherwise it might cause
    > cache corruption and automatic deletion of cached files by DVC.
