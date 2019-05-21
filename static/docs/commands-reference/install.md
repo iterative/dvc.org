@@ -5,7 +5,7 @@ Install DVC hooks into the Git repository to automate certain common actions.
 ## Synopsis
 
 ```usage
-    usage: dvc install [-h] [-q] [-v]
+usage: dvc install [-h] [-q] [-v]
 ```
 
 ## Description
@@ -64,28 +64,28 @@ This step is optional, and you can run it only if you want to run this examples
 in your environment. First, you need to download the project:
 
 ```dvc
-    $ git clone https://github.com/iterative/example-get-started
+$ git clone https://github.com/iterative/example-get-started
 ```
 
 Second, let's install the requirements. But before we do that, we **strongly**
 recommend creating a virtual environment with `virtualenv` or a similar tool:
 
 ```dvc
-    $ cd example-get-started
-    $ virtualenv -p python3 .env
-    $ source .env/bin/activate
+$ cd example-get-started
+$ virtualenv -p python3 .env
+$ source .env/bin/activate
 ```
 
 Now, we can install requirements for the project:
 
 ```dvc
-    $ pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 Then download the precomputed data using:
 
 ```dvc
-    $ dvc pull --all-branches --all-tags
+$ dvc pull --all-branches --all-tags
 ```
 
 This data will be retrieved from a preconfigured remote cache.
@@ -103,20 +103,20 @@ With the Getting Started example workspace described above, let's first list the
 available tags:
 
 ```dvc
-    $ git tag
+$ git tag
 
-    0-empty
-    1-initialize
-    2-remote
-    3-add-file
-    4-sources
-    5-preparation
-    6-featurization
-    7-train
-    8-evaluation
-    9-bigrams
-    baseline-experiment
-    bigrams-experiment
+0-empty
+1-initialize
+2-remote
+3-add-file
+4-sources
+5-preparation
+6-featurization
+7-train
+8-evaluation
+9-bigrams
+baseline-experiment
+bigrams-experiment
 ```
 
 These tags are used to mark points in the development of this workspace, and to
@@ -124,24 +124,24 @@ document specific experiments conducted in the workspace. To take a look at one
 we check-out the workspace using the SCM (in this case Git):
 
 ```dvc
-    $ git checkout 6-featurization
-    Note: checking out '6-featurization'.
+$ git checkout 6-featurization
+Note: checking out '6-featurization'.
 
-    You are in 'detached HEAD' state.  ...
+You are in 'detached HEAD' state.  ...
 
-    $ dvc status
+$ dvc status
 
-    featurize.dvc:
-        changed outs:
-            modified:           data/features
+featurize.dvc:
+    changed outs:
+        modified:           data/features
 
-    $ dvc checkout
+$ dvc checkout
 
-    [##############################] 100% Checkout finished!
+[##############################] 100% Checkout finished!
 
-    $ dvc status
+$ dvc status
 
-    Pipeline is up to date. Nothing to reproduce.
+Pipeline is up to date. Nothing to reproduce.
 ```
 
 After running `git checkout` we are also shown a message saying _You are in
@@ -157,13 +157,13 @@ DVC files. Running `dvc checkout` then checks out the corresponding data files,
 and now `dvc status` tells us the data files match the DVC files.
 
 ```dvc
-    $ git checkout master
-    Previous HEAD position was d13ba9a add featurization stage
-    Switched to branch 'master'
-    Your branch is up to date with 'origin/master'.
+$ git checkout master
+Previous HEAD position was d13ba9a add featurization stage
+Switched to branch 'master'
+Your branch is up to date with 'origin/master'.
 
-    $ dvc checkout
-    [##############################] 100% Checkout finished!
+$ dvc checkout
+[##############################] 100% Checkout finished!
 ```
 
 We've seen the default behavior with there being no Git hooks installed. We want
@@ -171,15 +171,15 @@ to see how the behavior changes after installing the Git hooks. We must first
 reset the workspace to he at the head commit before installing the hooks.
 
 ```dvc
-    $ dvc install
+$ dvc install
 
-    $ cat .git/hooks/pre-commit
-    #!/bin/sh
-    exec dvc status
+$ cat .git/hooks/pre-commit
+#!/bin/sh
+exec dvc status
 
-    $ cat .git/hooks/post-checkout
-    #!/bin/sh
-    exec dvc checkout
+$ cat .git/hooks/post-checkout
+#!/bin/sh
+exec dvc checkout
 ```
 
 The two Git hooks have been installed, and the one of interest for this exercise
@@ -188,17 +188,17 @@ is the `post-checkout` script which runs after `git checkout`.
 We can now repeat the command run earlier, to see the difference.
 
 ```dvc
-    $ git checkout 6-featurization
-    Note: checking out '6-featurization'.
+$ git checkout 6-featurization
+Note: checking out '6-featurization'.
 
-    You are in 'detached HEAD' state. ...
+You are in 'detached HEAD' state. ...
 
-    HEAD is now at d13ba9a add featurization stage
-    [##############################] 100% Checkout finished!
+HEAD is now at d13ba9a add featurization stage
+[##############################] 100% Checkout finished!
 
-    $ dvc status
+$ dvc status
 
-    Pipeline is up to date. Nothing to reproduce.
+Pipeline is up to date. Nothing to reproduce.
 ```
 
 Look carefully at this output and it is clear that the `dvc checkout` command
@@ -214,15 +214,15 @@ the detached HEAD state from the previous example.
 If we simply edit one of the code files:
 
 ```dvc
-    $ vi src/featurization.py
+$ vi src/featurization.py
 
-    $ git commit -a -m "modified featurization"
+$ git commit -a -m "modified featurization"
 
-    featurize.dvc:
-        changed deps:
-            modified:           src/featurization.py
-    [master 1116ddc] modified featurization
-     1 file changed, 1 insertion(+), 1 deletion(-)
+featurize.dvc:
+    changed deps:
+        modified:           src/featurization.py
+[master 1116ddc] modified featurization
+ 1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 
 We see that `dvc status` output has appeared in the `git commit` interaction.
@@ -231,26 +231,26 @@ helpfully informs us the workspace is out of sync. We should therefore run the
 `dvc repro` command.
 
 ```dvc
-    $ dvc repro evaluate.dvc
+$ dvc repro evaluate.dvc
 
-    ... much output
-    To track the changes with git run:
+... much output
+To track the changes with git run:
 
-        git add featurize.dvc train.dvc evaluate.dvc
+    git add featurize.dvc train.dvc evaluate.dvc
 
-    $ git status -s
-     M auc.metric
-     M evaluate.dvc
-     M featurize.dvc
-     M src/featurization.py
-     M train.dvc
+$ git status -s
+ M auc.metric
+ M evaluate.dvc
+ M featurize.dvc
+ M src/featurization.py
+ M train.dvc
 
-    $ git commit -a -m "updated data after modified featurization"
+$ git commit -a -m "updated data after modified featurization"
 
-    Pipeline is up to date. Nothing to reproduce.
+Pipeline is up to date. Nothing to reproduce.
 
-    [master 78d0c44] modified featurization
-     5 files changed, 12 insertions(+), 12 deletions(-)
+[master 78d0c44] modified featurization
+ 5 files changed, 12 insertions(+), 12 deletions(-)
 ```
 
 After rerunning the DVC pipeline, of course the data files are in sync with the

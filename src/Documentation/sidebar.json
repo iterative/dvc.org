@@ -51,6 +51,7 @@
     "files": [
       "dvc-files-and-directories.md",
       "dvc-file-format.md",
+      "cache-file-linking.md",
       "external-dependencies.md",
       "external-outputs.md",
       "development.md",
@@ -65,6 +66,7 @@
     "labels": {
       "dvc-files-and-directories.md": "Files and Directories",
       "dvc-file-format.md": "File Format (.dvc)",
+      "cache-file-linking.md": "Large File Optimization",
       "development.md": "Development Version",
       "external-dependencies.md": "External Dependencies",
       "external-outputs.md": "External Outputs",
@@ -99,26 +101,26 @@
       "lock.md",
       [
         "metrics.md",
-        "metrics:add.md",
-        "metrics:modify.md",
-        "metrics:remove.md",
-        "metrics:show.md"
+        "metrics_add.md",
+        "metrics_modify.md",
+        "metrics_remove.md",
+        "metrics_show.md"
       ],
       "move.md",
       [
         "pipeline.md",
-        "pipeline:list.md",
-        "pipeline:show.md"
+        "pipeline_list.md",
+        "pipeline_show.md"
       ],
       "push.md",
       "pull.md",
       [
         "remote.md",
-        "remote:add.md",
-        "remote:default.md",
-        "remote:list.md",
-        "remote:modify.md",
-        "remote:remove.md"
+        "remote_add.md",
+        "remote_default.md",
+        "remote_list.md",
+        "remote_modify.md",
+        "remote_remove.md"
       ],
       "remove.md",
       "repro.md",
@@ -144,16 +146,16 @@
       "gc.md": "gc",
       "config.md": "config",
       "remote.md": "remote",
-      "remote:add.md": "remote add",
-      "remote:default.md": "remote default",
-      "remote:list.md": "remote list",
-      "remote:modify.md": "remote modify",
-      "remote:remove.md": "remote remove",
+      "remote_add.md": "remote add",
+      "remote_default.md": "remote default",
+      "remote_list.md": "remote list",
+      "remote_modify.md": "remote modify",
+      "remote_remove.md": "remote remove",
       "metrics.md": "metrics",
-      "metrics:add.md": "metrics add",
-      "metrics:show.md": "metrics show",
-      "metrics:modify.md": "metrics modify",
-      "metrics:remove.md": "metrics remove",
+      "metrics_add.md": "metrics add",
+      "metrics_show.md": "metrics show",
+      "metrics_modify.md": "metrics modify",
+      "metrics_remove.md": "metrics remove",
       "install.md": "install",
       "root.md": "root",
       "lock.md": "lock",
@@ -161,12 +163,12 @@
       "import.md": "import",
       "move.md": "move",
       "pipeline.md": "pipeline",
-      "pipeline:list.md": "pipeline list",
-      "pipeline:show.md": "pipeline show",
+      "pipeline_list.md": "pipeline list",
+      "pipeline_show.md": "pipeline show",
       "destroy.md": "destroy",
       "unprotect.md": "unprotect",
       "cache.md": "cache",
-      "cache:dir.md": "cache dir",
+      "cache_dir.md": "cache dir",
       "commit.md": "commit",
       "version.md": "version"
     }
@@ -186,15 +188,16 @@
     }
   },
   {
-    "name": "DVC Philosophy",
-    "folder": "/static/docs/philosophy",
+    "name": "Understanding DVC",
+    "folder": "/static/docs/understanding-dvc",
     "files": [
       "collaboration-issues.md",
       "existing-tools.md",
       "what-is-dvc.md",
       "core-features.md",
       "how-it-works.md",
-      "related-technologies.md"
+      "related-technologies.md",
+      "resources.md"
     ],
     "labels": {
       "what-is-dvc.md": "What is DVC?"
@@ -203,10 +206,7 @@
   {
     "name": "Changelog",
     "folder": "/static/docs/changelog",
-    "files": [
-      "0.35.md",
-      "0.18.md"
-    ],
+    "files": ["0.35.md", "0.18.md"],
     "labels": {
       "0.18.md": "v0.12 - v0.18",
       "0.35.md": "v0.19 - v0.35"

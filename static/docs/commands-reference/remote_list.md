@@ -10,10 +10,10 @@ See also [add](/doc/commands-reference/remote-add),
 ## Synopsis
 
 ```usage
-    usage: dvc remote list [-h] [-q | -v]
-                           [--global] [--system] [--local]
+usage: dvc remote list [-h] [-q | -v]
+                       [--global] [--system] [--local]
 
-    List remotes.
+List remotes.
 ```
 
 ## Description
@@ -50,14 +50,14 @@ project/repository itself.
 </details>
 
 ```dvc
-    $ dvc remote add -d myremote /path/to/remote
-    Setting 'myremote' as a default remote.
+$ dvc remote add -d myremote /path/to/remote
+Setting 'myremote' as a default remote.
 ```
 
 And now the list of remotes should look like:
 
 ```dvc
-    $ dvc remote list
+$ dvc remote list
 
-    myremote        /path/to/remote
+myremote        /path/to/remote
 ```

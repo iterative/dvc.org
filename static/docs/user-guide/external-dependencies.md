@@ -21,51 +21,51 @@ workspace:
 ### Local
 
 ```dvc
-    $ dvc run -d /home/shared/data.txt \
-              -o data.txt \
-              cp /home/shared/data.txt data.txt
+$ dvc run -d /home/shared/data.txt \
+          -o data.txt \
+          cp /home/shared/data.txt data.txt
 ```
 
 ### Amazon S3
 
 ```dvc
-    $ dvc run -d s3://mybucket/data.txt \
-              -o data.txt \
-              aws s3 cp s3://mybucket/data.txt data.txt
+$ dvc run -d s3://mybucket/data.txt \
+          -o data.txt \
+          aws s3 cp s3://mybucket/data.txt data.txt
 ```
 
 ### Google Cloud Storage
 
 ```dvc
-    $ dvc run -d gs://mybucket/data.txt \
-              -o data.txt \
-              gsutil cp gs://mybucket/data.txt data.txt
+$ dvc run -d gs://mybucket/data.txt \
+          -o data.txt \
+          gsutil cp gs://mybucket/data.txt data.txt
 ```
 
 ### SSH
 
 ```dvc
-    $ dvc run -d ssh://user@example.com:/home/shared/data.txt \
-              -o data.txt \
-              scp user@example.com:/home/shared/data.txt data.txt
+$ dvc run -d ssh://user@example.com:/home/shared/data.txt \
+          -o data.txt \
+          scp user@example.com:/home/shared/data.txt data.txt
 ```
 
 ### HDFS
 
 ```dvc
-    $ dvc run -d hdfs://user@example.com/home/shared/data.txt \
-              -o data.txt \
-               hdfs fs -copyToLocal \
-                                hdfs://user@example.com/home/shared/data.txt \
-                                data.txt
+$ dvc run -d hdfs://user@example.com/home/shared/data.txt \
+          -o data.txt \
+           hdfs fs -copyToLocal \
+                            hdfs://user@example.com/home/shared/data.txt \
+                            data.txt
 ```
 
 ### HTTP
 
 ```dvc
-    $ dvc run -d https://example.com/data.txt \
-              -o data.txt \
-              wget https://example.com/data.txt -O data.txt
+$ dvc run -d https://example.com/data.txt \
+          -o data.txt \
+          wget https://example.com/data.txt -O data.txt
 ```
 
 ### Using import
@@ -77,7 +77,7 @@ In the previous command examples downloading commands were in use: `cp`,
 dependencies.
 
 ```dvc
-    $ dvc import https://dvc.org/s3/get-started/data.xml
+$ dvc import https://dvc.org/s3/get-started/data.xml
 ```
 
 <details>
@@ -88,13 +88,13 @@ If you open the resulting DVC file, you will see something like this:
 
 ```yaml
 deps:
-  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-    path: https://dvc.org/s3/get-started/data.xml
-  md5: bea9674331a4b1d165f2b0abaf2cb0ef
-  outs:
-  - cache: true
-    md5: a304afb96060aad90176268345e10355
-    path: data.xml
+- etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
+  path: https://dvc.org/s3/get-started/data.xml
+md5: bea9674331a4b1d165f2b0abaf2cb0ef
+outs:
+- cache: true
+  md5: a304afb96060aad90176268345e10355
+  path: data.xml
 ```
 
 DVC checks the headers returned by the server, looking for a strong

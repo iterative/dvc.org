@@ -5,12 +5,12 @@ Update data files and directories in workspace based on current DVC-files.
 ## Synopsis
 
 ```usage
-    usage: dvc checkout [-h] [-q | -v]
-                        [-d] [-f]
-                        [targets [targets ...]]
+usage: dvc checkout [-h] [-q | -v]
+                    [-d] [-f]
+                    [targets [targets ...]]
 
-    positional arguments:
-        targets          DVC files.
+positional arguments:
+    targets          DVC files.
 ```
 
 ## Description
@@ -35,8 +35,8 @@ The execution of `dvc checkout` does:
   backward in the pipeline from the named targets.
 - For any data files where the checksum does not match with the DVC file entry,
   the data file is restored from the cache. The link type used (`reflink`,
-  `hardlink`, `symlink`, or `copy`) by default depends on the OS, or the
-  configured value is used. (See `cache.type` in `dvc config cache`)
+  `hardlink`, `symlink`, or `copy`) depends on the OS, or the configured value
+  is used. (See `cache.type` in `dvc config cache`.)
 
 This command must be executed after `git checkout` since Git does not handle
 files that are under DVC control. For convenience a Git hook is available,
@@ -104,22 +104,22 @@ This step is optional, and you can run it only if you want to run this examples
 in your environment. First, you need to download the project:
 
 ```dvc
-    $ git clone https://github.com/iterative/example-get-started
+$ git clone https://github.com/iterative/example-get-started
 ```
 
 Second, let's install the requirements. But before we do that, we **strongly**
 recommend creating a virtual environment with `virtualenv` or a similar tool:
 
 ```dvc
-    $ cd example-get-started
-    $ virtualenv -p python3 .env
-    $ source .env/bin/activate
+$ cd example-get-started
+$ virtualenv -p python3 .env
+$ source .env/bin/activate
 ```
 
 Now, we can install requirements for the project:
 
 ```dvc
-    $ pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 </details>
@@ -128,25 +128,25 @@ The existing pipeline looks almost like in this
 [example](/doc/get-started/example-pipeline):
 
 ```dvc
-    .
-    ├── data
-    │   └── data.xml.dvc
-    ├── evaluate.dvc
-    ├── featurize.dvc
-    ├── prepare.dvc
-    ├── train.dvc
-    └── src
-        └── <code files here>
+.
+├── data
+│   └── data.xml.dvc
+├── evaluate.dvc
+├── featurize.dvc
+├── prepare.dvc
+├── train.dvc
+└── src
+    └── <code files here>
 ```
 
 We have these tags in the repository that represent different iterations of
 solving the problem:
 
 ```dvc
-    $ git tag
+$ git tag
 
-    baseline     <- first simple version of the model
-    bigram       <- use bigrams to improve the model
+baseline     <- first simple version of the model
+bigram       <- use bigrams to improve the model
 ```
 
 This project comes with a predefined HTTP
@@ -156,14 +156,14 @@ files that are under DVC control. The model file checksum
 `3863d0e317dee0a55c4e59d2ec0eef33` is specified in the `train.dvc` file:
 
 ```dvc
-    $ dvc pull
-    ...
-    (1/6): [#######################] 100% model.pkl
-    Checking out model.pkl with cache '3863d0e317dee0a55c4e59d2ec0eef33'
-    ...
+$ dvc pull
+...
+(1/6): [#######################] 100% model.pkl
+Checking out model.pkl with cache '3863d0e317dee0a55c4e59d2ec0eef33'
+...
 
-    $ md5 model.pkl
-    MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
+$ md5 model.pkl
+MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
 What if we want to rewind history, so to speak? The `git checkout` command lets
@@ -172,10 +172,10 @@ automatically adjusts the files, by replacing file content and adding or
 deleting files as necessary.
 
 ```dvc
-    $ git checkout baseline
-    Note: checking out 'baseline'.
-    ...
-    HEAD is now at 40cc182...
+$ git checkout baseline
+Note: checking out 'baseline'.
+...
+HEAD is now at 40cc182...
 ```
 
 Let's check the `model.pkl` and `train.dvc` files again:
@@ -189,8 +189,8 @@ outs:
 but if you check the `model.pkl` the file is still the same:
 
 ```dvc
-    $ md5 model.pkl
-    MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
+$ md5 model.pkl
+MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
 What's happened is that `git checkout` changed `featurize.dvc`, `train.dvc`, and
@@ -198,11 +198,11 @@ other DVC files. But it did nothing with the `model.pkl` and `matrix.pkl` files.
 Git does not manage those files. Instead DVC manages those files, and we must
 therefore do this:
 
-```
-    $ dvc fetch
-    $ dvc checkout
-    $ md5 model.pkl
-    MD5 (model.pkl) = a66489653d1b6a8ba989799367b32c43
+```dvc
+$ dvc fetch
+$ dvc checkout
+$ md5 model.pkl
+MD5 (model.pkl) = a66489653d1b6a8ba989799367b32c43
 ```
 
 What's happened is that DVC went through the sole existing DVC stage file and
@@ -219,21 +219,21 @@ won't always remember to do so. Wouldn't it be nice to automate this?
 
 Let's run this command:
 
-```
-    $ dvc install
+```dvc
+$ dvc install
 ```
 
 This installs Git hooks to automate running `dvc checkout` (or `dvc status`)
 when needed. Then we can checkout the master branch again:
 
-```
-    $ git checkout bigrams
-    Previous HEAD position was d171a12 add evaluation stage
-    HEAD is now at d092b42 try using bigrams
-    Checking out model.pkl with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
+```dvc
+$ git checkout bigrams
+Previous HEAD position was d171a12 add evaluation stage
+HEAD is now at d092b42 try using bigrams
+Checking out model.pkl with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
 
-    $ md5 model.pkl
-    MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
+$ md5 model.pkl
+MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
 Previously this took two steps, `git checkout` followed by `dvc checkout`, but

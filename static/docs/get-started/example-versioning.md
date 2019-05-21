@@ -94,7 +94,7 @@ chocolatey using [official guide](https://chocolatey.org/install). Then install
 `wget` and `tar` with the following command in the `Command Prompt`:
 
 ```dvc
-    C:\> choco install wget
+C:\> choco install wget
 ```
 
 </details>
@@ -110,25 +110,25 @@ images** for training and 800 labeled images for validatation. In summary, it's
 a 43 MB dataset, with a directory structure like this:
 
 ```sh
-   data
-   ├── train
-   │   ├── dogs
-   │   │   ├── dog.1.jpg
-   │   │   ├── ...
-   │   │   └── dog.500.jpg
-   │   └── cats
-   │       ├── cat.1.jpg
-   │       ├── ...
-   │       └── cat.500.jpg
-   └── validation
-       ├── dogs
-       │   ├── dog.1001.jpg
-       │   ├── ...
-       │   └── dog.1400.jpg
-       └── cats
-           ├── cat.1001.jpg
-           ├── ...
-           └── cat.1400.jpg
+data
+├── train
+│   ├── dogs
+│   │   ├── dog.1.jpg
+│   │   ├── ...
+│   │   └── dog.500.jpg
+│   └── cats
+│       ├── cat.1.jpg
+│       ├── ...
+│       └── cat.500.jpg
+└── validation
+   ├── dogs
+   │   ├── dog.1001.jpg
+   │   ├── ...
+   │   └── dog.1400.jpg
+   └── cats
+       ├── cat.1001.jpg
+       ├── ...
+       └── cat.1400.jpg
 ```
 
 Let's capture the current state of this dataset with `dvc add`:
@@ -197,25 +197,25 @@ For simplicity we keep the validation dataset the same. Now our dataset has
 67 MB:
 
 ```sh
-   data
-   ├── train
-   │   ├── dogs
-   │   │   ├── dog.1.jpg
-   │   │   ├── ...
-   │   │   └── dog.1000.jpg
-   │   └── cats
-   │       ├── cat.1.jpg
-   │       ├── ...
-   │       └── cat.1000.jpg
-   └── validation
-       ├── dogs
-       │   ├── dog.1001.jpg
-       │   ├── ...
-       │   └── dog.1400.jpg
-       └── cats
-           ├── cat.1001.jpg
-           ├── ...
-           └── cat.1400.jpg
+data
+├── train
+│   ├── dogs
+│   │   ├── dog.1.jpg
+│   │   ├── ...
+│   │   └── dog.1000.jpg
+│   └── cats
+│       ├── cat.1.jpg
+│       ├── ...
+│       └── cat.1000.jpg
+└── validation
+   ├── dogs
+   │   ├── dog.1001.jpg
+   │   ├── ...
+   │   └── dog.1400.jpg
+   └── cats
+       ├── cat.1001.jpg
+       ├── ...
+       └── cat.1400.jpg
 ```
 
 Of course, we want to leverage these new labels and train the model again.
@@ -226,10 +226,6 @@ $ dvc remove model.h5.dvc
 $ python train.py
 $ dvc add model.h5
 ```
-
-Note! `dvc remove` or `dvc unprotect` is required, otherwise `python train.py`
-will overwrite the existing file and may corrupt the cached version. Check this
-[guide](/doc/user-guide/update-tracked-file) to learn more.
 
 Let's commit the second version:
 

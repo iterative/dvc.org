@@ -23,28 +23,28 @@ to download `code.zip`.
 </details>
 
 ```dvc
-    $ mkdir classify
-    $ cd classify
-    $ git init
-    $ wget https://dvc.org/s3/so/code.zip
-    $ unzip code.zip -d code && rm -f code.zip
-    $ git add code/
-    $ git commit -m "download code"
+$ mkdir classify
+$ cd classify
+$ git init
+$ wget https://dvc.org/s3/so/code.zip
+$ unzip code.zip -d code && rm -f code.zip
+$ git add code/
+$ git commit -m "download code"
 ```
 
 (Optional) It's highly recommended to initialize a virtual environment to keep
 your global packages clean and untouched:
 
 ```dvc
-    $ virtualenv .env
-    $ source .env/bin/activate
-    $ echo ".env/" >> .git/info/exclude
+$ virtualenv .env
+$ source .env/bin/activate
+$ echo ".env/" >> .git/info/exclude
 ```
 
 Install the code requirements:
 
 ```dvc
-    $ pip install -r code/requirements.txt
+$ pip install -r code/requirements.txt
 ```
 
 ## Install DVC
@@ -58,7 +58,7 @@ Alternatively, you can install DVC by Python package manager — PIP if you use
 Python:
 
 ```dvc
-    $ pip install dvc
+$ pip install dvc
 ```
 
 ## Initialize
@@ -73,27 +73,27 @@ However, we describe some DVC internals below for a better understanding of how
 it works.
 
 ```dvc
-    $ dvc init
-    ...
+$ dvc init
+...
 
-    $ ls -a .dvc
-    ./      ../     .gitignore  cache/  config
+$ ls -a .dvc
+./      ../     .gitignore  cache/  config
 
-    $ git status -s
-    A  .dvc/.gitignore
-    A  .dvc/config
+$ git status -s
+A  .dvc/.gitignore
+A  .dvc/config
 
-    $ cat .dvc/.gitignore
-    /state
-    /lock
-    /config.local
-    /updater
-    /updater.lock
-    /state-journal
-    /state-wal
-    /cache
+$ cat .dvc/.gitignore
+/state
+/lock
+/config.local
+/updater
+/updater.lock
+/state-journal
+/state-wal
+/cache
 
-    $ git commit -m "init DVC"
+$ git commit -m "init DVC"
 ```
 
 The `.dvc/cache` directory is one of the most important parts of any DVC

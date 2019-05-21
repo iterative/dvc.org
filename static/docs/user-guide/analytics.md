@@ -26,7 +26,7 @@ User and event data have a 14 month retention period.
 DVC's analytics record the following information per event:
 
 - The DVC version, e.g. `0.22.0`
-- The operating system info, e.g. `linux`, `ubuntu`, `14.04`, etc
+- The operating system information, e.g. `linux`, `ubuntu`, `14.04`, etc
 - The underlying version control system, e.g. `git`
 - Command type, e.g. `CmdDataPull`
 - Command return code, e.g. `1`
@@ -54,7 +54,7 @@ However, if you want to opt out of DVC's analytics, you can disable it via
 `dvc config` command:
 
 ```dvc
-    $ dvc config core.analytics false
+$ dvc config core.analytics false
 ```
 
 This will disable it for the project. Alternatively, you can specify `--global`

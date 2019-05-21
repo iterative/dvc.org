@@ -7,14 +7,13 @@ dependencies to find only those that have to be rerun.
 ## Synopsis
 
 ```usage
-    usage: dvc repro [-h] [-q | -v]
-                     [-f] [-s] [-c CWD] [-m] [--dry] [-i]
-                     [-p] [-P] [--ignore-build-cache] [--no-commit]
-                     [targets [targets ...]]
+usage: dvc repro [-h] [-q | -v]
+                 [-f] [-s] [-c CWD] [-m] [--dry] [-i]
+                 [-p] [-P] [--ignore-build-cache] [--no-commit]
+                 [targets [targets ...]]
 
-    positional arguments:
-        target                DVC file to reproduce.
-
+positional arguments:
+    target                DVC file to reproduce.
 ```
 
 ## Description
@@ -97,6 +96,9 @@ local cache and updates stage files with the new checksum information.
 
 * `-v`, `--verbose` - displays detailed tracing information.
 
+- `--downstream` - rerun the commands present in the downstream of the
+  pipeline.
+
 ## Examples
 
 For simplicity, let's build a pipeline defined below (if you want get your hands
@@ -116,11 +118,11 @@ best
 And runs a few simple transformations to filter and count numbers:
 
 ```dvc
-    $ dvc run -f filter.dvc -d text.txt -o numbers.txt \
-               "cat text.txt | egrep '[0-9]+' > numbers.txt"
+$ dvc run -f filter.dvc -d text.txt -o numbers.txt \
+           "cat text.txt | egrep '[0-9]+' > numbers.txt"
 
-    $ dvc run -f Dvcfile -d numbers.txt -d process.py -M count.txt \
-               "python process.py numbers.txt > count.txt"
+$ dvc run -f Dvcfile -d numbers.txt -d process.py -M count.txt \
+           "python process.py numbers.txt > count.txt"
 ```
 
 Where `process.py` is a script which for simplicity just prints the number of
@@ -138,25 +140,25 @@ print(num_lines)
 The result of executing these `dvc run` commands should look like this:
 
 ```dvc
-    $ tree
-    .
-    ├── Dvcfile        <---- second stage with a default DVC name
-    ├── count.txt      <---- result: "2"
-    ├── filter.dvc     <---- first stage
-    ├── numbers.txt    <---- intermediate result of the first stage
-    ├── process.py     <---- code that runs some transformation
-    └── text.txt       <---- text file to process
+$ tree
+.
+├── Dvcfile        <---- second stage with a default DVC name
+├── count.txt      <---- result: "2"
+├── filter.dvc     <---- first stage
+├── numbers.txt    <---- intermediate result of the first stage
+├── process.py     <---- code that runs some transformation
+└── text.txt       <---- text file to process
 ```
 
 Ok, now, let's run the `dvc repro` command (remember, by default it reproduces
 outputs defined in `Dvcfile`, `count.txt` in this case):
 
 ```dvc
-    $ dvc repro
+$ dvc repro
 
-    Stage 'filter.dvc' didn't change.
-    Stage 'Dvcfile' didn't change.
-    Pipeline is up to date. Nothing to reproduce.
+Stage 'filter.dvc' didn't change.
+Stage 'Dvcfile' didn't change.
+Pipeline is up to date. Nothing to reproduce.
 ```
 
 It makes sense, since we haven't changed neither of the dependencies this
@@ -172,15 +174,15 @@ print(num_lines)
 If we now run `dvc repro`, that's what we should see:
 
 ```dvc
-    $ dvc repro
+$ dvc repro
 
-    Stage 'filter.dvc' didn't change.
-    Stage 'Dvcfile' changed.
-    Reproducing 'Dvcfile'
-    Running command:
-	    python process.py numbers.txt > count.txt
+Stage 'filter.dvc' didn't change.
+Stage 'Dvcfile' changed.
+Reproducing 'Dvcfile'
+Running command:
+  python process.py numbers.txt > count.txt
 
-    Saving information to 'Dvcfile'.
+Saving information to 'Dvcfile'.
 ```
 
 You can check now that `Dvcfile` and `count.txt` have been updated with the new

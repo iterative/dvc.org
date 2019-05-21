@@ -23,16 +23,16 @@ If you run `repro` on any created DVC-file from our repository, nothing happens
 because nothing was changed in the defined pipeline.
 
 ```dvc
-    # Nothing to reproduce
-    $ dvc repro model.p.dvc
+# Nothing to reproduce
+$ dvc repro model.p.dvc
 ```
 
 By default, `dvc repro` reads DVC-files named `Dvcfile`:
 
 ```dvc
-    # Reproduce Dvcfile.
-    # But there is still nothing to reproduce:
-    $ dvc repro
+# Reproduce Dvcfile.
+# But there is still nothing to reproduce:
+$ dvc repro
 ```
 
 ## Adding bigrams
@@ -47,40 +47,40 @@ Before editing the `code/featurization.py` file, please create and checkout a
 new branch `bigrams`.
 
 ```dvc
-    $ git checkout -b bigram
-    # Please use your favorite text editor:
-    $ vi code/featurization.py
+$ git checkout -b bigram
+# Please use your favorite text editor:
+$ vi code/featurization.py
 ```
 
 Specify `ngram` parameter in `CountVectorizer` (lines 50–53) and increase the
 number of features to 6000:
 
 ```python
-    bag_of_words = CountVectorizer(stop_words='english',
-                                   max_features=6000,
-                                   ngram_range=(1, 2))
+bag_of_words = CountVectorizer(stop_words='english',
+                               max_features=6000,
+                               ngram_range=(1, 2))
 ```
 
 Reproduce the pipeline:
 
 ```dvc
-    $ dvc repro
+$ dvc repro
 
-    Reproducing 'matrix-train.p.dvc':
-        python code/featurization.py
-    The input data frame data/Posts-train.tsv size is (66999, 3)
-    The output matrix data/matrix-train.p size is (66999, 6002) and data type is float64
-    The input data frame data/Posts-test.tsv size is (33001, 3)
-    The output matrix data/matrix-test.p size is (33001, 6002) and data type is float64
+Reproducing 'matrix-train.p.dvc':
+    python code/featurization.py
+The input data frame data/Posts-train.tsv size is (66999, 3)
+The output matrix data/matrix-train.p size is (66999, 6002) and data type is float64
+The input data frame data/Posts-test.tsv size is (33001, 3)
+The output matrix data/matrix-test.p size is (33001, 6002) and data type is float64
 
-    Reproducing 'model.p.dvc':
-        python code/train_model.py 20180319
-    Input matrix size (66999, 6002)
-    X matrix size (66999, 6000)
-    Y matrix size (66999,)
+Reproducing 'model.p.dvc':
+    python code/train_model.py 20180319
+Input matrix size (66999, 6002)
+X matrix size (66999, 6000)
+Y matrix size (66999,)
 
-    Reproducing 'Dvcfile':
-        python code/evaluate.py
+Reproducing 'Dvcfile':
+    python code/evaluate.py
 ```
 
 The process started with the feature creation step because one of its parameters
@@ -91,8 +91,8 @@ Let’s take a look at the metric’s change. The improvement is close to zero
 (+0.0075% to be precise):
 
 ```dvc
-    $ cat data/eval.txt
-    AUC: 0.624727
+$ cat data/eval.txt
+AUC: 0.624727
 ```
 
 This is not a great result but it gives us some information about the model.
@@ -100,13 +100,13 @@ This is not a great result but it gives us some information about the model.
 To compare it with the previous AUC, you can use the `metrics` command:
 
 ```dvc
-    $ dvc metrics show -a
+$ dvc metrics show -a
 
-    bigram:
-    	data/eval.txt: AUC: 0.624727
+bigram:
+	data/eval.txt: AUC: 0.624727
 
-    master:
-    	data/eval.txt: AUC: 0.624652
+master:
+	data/eval.txt: AUC: 0.624652
 ```
 
 > It is convenient to keep track of information even for failed experiments.
@@ -118,18 +118,18 @@ not add value to the current model and change that.
 Many DVC-files were changed. This happened due to md5 checksum changes.
 
 ```dvc
-    $ git status -s
-    M Dvcfile
-    M code/featurization.py
-    M matrix-train.p.dvc
-    M model.p.dvc
+$ git status -s
+M Dvcfile
+M code/featurization.py
+M matrix-train.p.dvc
+M model.p.dvc
 ```
 
 Now we can commit the changes:
 
 ```dvc
-    $ git add .
-    $ git commit -m Bigrams
+$ git add .
+$ git commit -m Bigrams
 ```
 
 ## Checkout code and data files
@@ -145,11 +145,11 @@ the original model from the master branch.
 > checked out as well using the `dvc checkout` command.
 
 ```dvc
-    $ git checkout master
-    $ dvc checkout
-    # Nothing to reproduce since code was checked out by `git checkout`
-    # and data files were checked out by `dvc checkout`
-    $ dvc repro
+$ git checkout master
+$ dvc checkout
+# Nothing to reproduce since code was checked out by `git checkout`
+# and data files were checked out by `dvc checkout`
+$ dvc repro
 ```
 
 After proper checkout, there is nothing to reproduce because all the correct
@@ -166,9 +166,9 @@ You should create a new branch for this new experiment. It will help you to
 organize all the experiments in a repository and checkout them when needed.
 
 ```dvc
-    $ git checkout -b tuning
-    # Please use your favorite text editor:
-    $ vi code/train_model.py
+$ git checkout -b tuning
+# Please use your favorite text editor:
+$ vi code/train_model.py
 ```
 
 Increase the number of trees in the forest to 700 by changing the `n_estimators`
@@ -176,37 +176,37 @@ parameter and the number of jobs in the `RandomForestClassifier` class (line
 27):
 
 ```python
-    clf = RandomForestClassifier(n_estimators=700,
-                                 n_jobs=6, random_state=seed)
+clf = RandomForestClassifier(n_estimators=700,
+                             n_jobs=6, random_state=seed)
 ```
 
 Only the modeling and the evaluation step need to be reproduced. Just run repro:
 
 ```dvc
-    $ dvc repro
+$ dvc repro
 
-    Reproducing 'model.p.dvc':
-        python code/train_model.py 20180319
-    Input matrix size (66999, 5002)
-    X matrix size (66999, 5000)
-    Y matrix size (66999,)
-    Reproducing 'Dvcfile':
-        python code/evaluate.py
+Reproducing 'model.p.dvc':
+    python code/train_model.py 20180319
+Input matrix size (66999, 5002)
+X matrix size (66999, 5000)
+Y matrix size (66999,)
+Reproducing 'Dvcfile':
+    python code/evaluate.py
 ```
 
 Validate the metric and commit all the changes.
 
 ```dvc
-    $ cat data/eval.txt
-    AUC: 0.637561
+$ cat data/eval.txt
+AUC: 0.637561
 ```
 
 This seems like a good model improvement (+1.28%). Please commit all the
 changes:
 
 ```dvc
-    $ git add .
-    $ git commit -m '700 trees in the forest'
+$ git add .
+$ git commit -m '700 trees in the forest'
 ```
 
 ## Merge the model to master
@@ -222,13 +222,13 @@ using a regular Git merge command.
 But first, let’s create a branch as usual.
 
 ```dvc
-    $ git checkout -b train_bigram
-    $ git merge bigram
-    Auto-merging model.p.dvc
-    CONFLICT (content): Merge conflict in model.p.dvc
-    Auto-merging Dvcfile
-    CONFLICT (content): Merge conflict in Dvcfile
-    Automatic merge failed; fix conflicts and then commit the result.
+$ git checkout -b train_bigram
+$ git merge bigram
+Auto-merging model.p.dvc
+CONFLICT (content): Merge conflict in model.p.dvc
+Auto-merging Dvcfile
+CONFLICT (content): Merge conflict in Dvcfile
+Automatic merge failed; fix conflicts and then commit the result.
 ```
 
 The merge has a few conflicts. All of the conflicts are related to md5 checksum
@@ -242,62 +242,62 @@ outputs checksums. After resolving the conflicts you need to checkout a proper
 version of the data files:
 
 ```dvc
-    # Replace conflicting checksums to empty string ''
-    $ vi model.p.dvc
-    $ vi Dvcfile
-    $ dvc checkout
+# Replace conflicting checksums to empty string ''
+$ vi model.p.dvc
+$ vi Dvcfile
+$ dvc checkout
 ```
 
 And reproduce the result:
 
 ```dvc
-    $ dvc repro
+$ dvc repro
 
-    Reproducing 'model.p.dvc':
-        python code/train_model.py 20180319
-    Input matrix size (66999, 6002)
-    X matrix size (66999, 6000)
-    Y matrix size (66999,)
-    Reproducing 'Dvcfile':
-        python code/evaluate.py
+Reproducing 'model.p.dvc':
+    python code/train_model.py 20180319
+Input matrix size (66999, 6002)
+X matrix size (66999, 6000)
+Y matrix size (66999,)
+Reproducing 'Dvcfile':
+    python code/evaluate.py
 ```
 
 The target metric:
 
 ```dvc
-    $ cat data/eval.txt
-    AUC: 0.640389
+$ cat data/eval.txt
+AUC: 0.640389
 ```
 
 The bigrams increased the target metric by 0.28% and the last change looks like
 a reasonable improvement to the ML model. So, the result should be committed:
 
 ```dvc
-    $ git add .
-    $ git commit -m 'Merge bigrams into the tuned model'
+$ git add .
+$ git commit -m 'Merge bigrams into the tuned model'
 ```
 
 Now our current branch contains the best model and it can be merged into master.
 
 ```dvc
-    $ git checkout master
-    $ dvc checkout
-    $ git merge train_bigram
-    Updating f5ff48c..4bd09da
-    Fast-forward
-     Dvcfile               | 6 +++---
-     code/featurization.py | 3 ++-
-     code/train_model.py   | 2 +-
-     matrix-train.p.dvc    | 6 +++---
-     model.p.dvc           | 6 +++---
-     5 files changed, 12 insertions(+), 11 deletions(-)
+$ git checkout master
+$ dvc checkout
+$ git merge train_bigram
+Updating f5ff48c..4bd09da
+Fast-forward
+ Dvcfile               | 6 +++---
+ code/featurization.py | 3 ++-
+ code/train_model.py   | 2 +-
+ matrix-train.p.dvc    | 6 +++---
+ model.p.dvc           | 6 +++---
+ 5 files changed, 12 insertions(+), 11 deletions(-)
 ```
 
 Fast-forward strategy was applied to this merge. It means that we have all the
 changes in the right place and reproduction is not needed.
 
 ```dvc
-    $ dvc checkout
-    # Nothing to reproduce:
-    $ dvc repro
+$ dvc checkout
+# Nothing to reproduce:
+$ dvc repro
 ```

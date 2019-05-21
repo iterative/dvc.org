@@ -9,15 +9,15 @@ A set of commands to collect and display project metrics:
 ## Synopsis
 
 ```usage
-    usage: dvc metrics [-h] [-q] [-v]
-                       {show, add, modify, remove}
-                       ...
+usage: dvc metrics [-h] [-q] [-v]
+                   {show, add, modify, remove}
+                   ...
 
-    positional arguments:
-        show                  Output metric values.
-        add                   Tag file as a metric file.
-        modify                Modify metric file options.
-        remove                Remove files's metric tag.
+positional arguments:
+    show                  Output metric values.
+    add                   Tag file as a metric file.
+    modify                Modify metric file options.
+    remove                Remove files's metric tag.
 ```
 
 ## Description
@@ -48,8 +48,8 @@ up and manage DVC metrics.
 First, let's create a simple DVC stage file:
 
 ```dvc
-    $ dvc run -d code/evaluate.py -M data/eval.json -f Dvcfile \
-          python code/evaluate.py
+$ dvc run -d code/evaluate.py -M data/eval.json -f Dvcfile \
+      python code/evaluate.py
 ```
 
 > `-M|--metrics-no-cache` is telling DVC to mark `data/eval.json` as a metric
@@ -60,10 +60,10 @@ First, let's create a simple DVC stage file:
 Now let's print metric values that we are tracking in the current project:
 
 ```dvc
-    $ dvc metrics show -a
+$ dvc metrics show -a
 
-      master:
-          data/eval.json: {"AUC": "0.624652"}
+  master:
+      data/eval.json: {"AUC": "0.624652"}
 ```
 
 Then we can tell DVC an `xpath` for the metric file, so that it can output only
@@ -72,19 +72,19 @@ the value of AUC. In the case of JSON, it uses
 selectively extract data out of metric files:
 
 ```dvc
-    $ dvc metrics modify data/eval.json --type json --xpath AUC
-    $ dvc metrics show
+$ dvc metrics modify data/eval.json --type json --xpath AUC
+$ dvc metrics show
 
-      master:
-          data/eval.json: 0.624652
+  master:
+      data/eval.json: 0.624652
 ```
 
 And finally let's remove `data/eval.json` from project's metrics:
 
 ```dvc
-    $ dvc metrics remove data/eval.json
-    $ dvc metrics show
+$ dvc metrics remove data/eval.json
+$ dvc metrics show
 
-    Failed to show metrics: No metric files in this repository.
-    Use 'dvc metrics add' to add a metric file to track.
+Failed to show metrics: No metric files in this repository.
+Use 'dvc metrics add' to add a metric file to track.
 ```
