@@ -41,12 +41,12 @@ references the DVC cache entry using the checksum. See
 [DVC File Format](/doc/user-guide/dvc-file-format) for the detailed description
 of the DVC _metafile_ format.
 
-By default DVC tries a range of link types (`reflink`, `hardlink`, `symlink`, or
-`copy`) to try to avoid copying any file contents and to optimize DVC file
-operations even for large files. The `reflink` is the best link type available,
-but even though it is frequently supported by modern filesystems, many others
-still don't support it. DVC has the other link types for use on filesystems
-without `reflink` support. See `dvc config` for more information.
+By default DVC tries using reflinks (See [Cache File
+Linking](/docs/user-guide/cache-file-linking)) to avoid copying any file
+contents and to optimize DVC file operations for large files. DVC also supports
+other link types for use on file systems without `reflink` support, but they
+have to be specified manually. Refer to the `cache.type` config option in `dvc
+config cache` for more information.
 
 A `dvc add` target can be an individual file or a directory. There are two ways
 to work with directory hierarchies with `dvc add`.

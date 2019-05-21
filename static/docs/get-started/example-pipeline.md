@@ -167,8 +167,12 @@ intermediate result.
 Second, you should see by now that the actual data is stored in the `.dvc/cache`
 directory, each file having a name in a form of an md5 hash. This cache is
 similar to Git's internal objects store but made specifically to handle large
-data files. DVC is using reflinks, hardlinks and other optimizations to manage
-your actual workspace without copying every time object from/to the cache.
+data files.
+
+> **Note!** For performance with large data files, DVC can use file links from
+the cache to the workspace to avoid copying actual file contents. Refer to
+[Cache File Linking](/docs/user-guide/cache-file-linking) to learn which options
+exist and how to enable them.
 
 </details>
 
