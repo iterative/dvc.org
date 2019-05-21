@@ -87,7 +87,7 @@ Each file linking option is further detailed below, in order of efficiency:
 > [Update a Tracked File](/doc/user-guide/update-tracked-file) guide to learn
 > more.
 
-### Configuring DVC cache file link type
+## Configuring DVC cache file link type
 
 By default DVC tries to use reflinks if available on your system, however this
 is not the most common case at this time, so it falls back to the copying
