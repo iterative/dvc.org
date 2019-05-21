@@ -1,24 +1,34 @@
-# File Link Types for the DVC Cache
+# Performance Optimization for Large Files
 
-File links are entries in the file system that don't necessarily hold the file
-contents, but which point to where the file is actually stored. DVC can use file
-links in your project's workspace instead of copies to avoid duplicating
-contents that will exist in the DVC cache.
-
-The DVC cache is a hidden storage (by default located in the `.dvc/cache`
-directory) for files that are under DVC control, and their different versions.
-(See `dvc cache` and
+In order to track the data files added with `dvc add` or `dvc run`, DVC moves
+all these files to a special cache directory. The DVC cache is a hidden storage
+(by default located in `.dvc/cache`) for files that are under DVC control, and
+their different versions. (See `dvc cache` and
 [DVC internal files](/doc/user-guide/dvc-files-and-directories) for more
 details.)
 
-File links are more common in file systems used with UNIX-like operating systems
-and come in different flavors that have to do with how they connect filenames to
-inodes in the system. Inodes are metadata file records to locate and manage
-permissions to the actual file contents. Hard links, Soft or Symbolic links, and
-Reflinks (in more recent systems) are the types of file links that DVC leverages
-for performance.
+However, the versions of the tracked files
+[corresponding to the current code](/doc/get-started/connect-code-and-data)
+branch are also needed in the workspace, so a subset of the cache files must be
+kept in the working directory at all times (see `dvc checkout`). Does this mean
+that some files will be duplicated between the workspace and the cache?
+**That would not be efficient!** Especially with large files (several Gigabytes
+or larger).
 
-> See **Linking files** in
+In order to have the files present in both directories without duplication, DVC
+can automatically create **file links** in the workspace that "point" to the
+data in cache.
+
+## File link types for the DVC cache
+
+File links are entries in the file system that don't necessarily hold the file
+contents, but which point to where the file is actually stored. File links are
+more common in file systems used with UNIX-like operating systems and come in
+different kinds, that differ in how they connect filenames to inodes in the
+system.
+
+> **Inodes** are metadata file records to locate and store permissions to the
+> actual file contents. See **Linking files** in
 > [this doc](http://www.tldp.org/LDP/intro-linux/html/sect_03_03.html) for
 > technical details on Linux.  
 > Some versions of Windows (e.g. Windows Server 2012+ and Windows 10 Enterprise)
@@ -28,17 +38,16 @@ for performance.
 > [ReFS](https://docs.microsoft.com/en-us/windows-server/storage/refs/refs-overview)
 > file systems.
 
-## Supported file links types and their tradeoffs
-
-There are pros and cons to the 3 supported link types (`reflink`, `hardlink`,
-`symlink` or soft link). While reflinks have all the benefits and none of the
-worries, they're not commonly supported in most platforms yet. Hard/soft links
-also optimize speed and space in the file system, but carry the risk of breaking
-your workflow, since updating tracked files in the workspace causes data
-corruption. These 2 link types thus require using cache protected mode (see the
-`cache.protected` config option in `dvc config cache`). Finally, a 4th "linking"
-option is to actually `copy` files from/to the cache, which is safe but quite
-inefficient for large files (not recommended for GBs of data).
+There are pros and cons to the 3 supported link types: Hard links, Soft or
+Symbolic links, and Reflinks\* in more recent systems. While reflinks bring all
+the benefits and none of the worries, they're not commonly supported in most
+platforms yet. Hard/soft links also optimize speed and space in the file system,
+but carry the risk of breaking your workflow, since updating tracked files in
+the workspace causes data corruption. These 2 link types thus require using
+cache protected mode (see the `cache.protected` config option in
+`dvc config cache`). Finally, a 4th "linking" option is to actually `copy` files
+from/to the cache, which is safe but quite inefficient for large files (not
+recommended for GBs of data).
 
 Each file linking option is further detailed below, in order of efficiency:
 
@@ -78,7 +87,7 @@ Each file linking option is further detailed below, in order of efficiency:
 > [Update a Tracked File](/doc/user-guide/update-tracked-file) guide to learn
 > more.
 
-## Configuring DVC cache file link type
+### Configuring DVC cache file link type
 
 By default DVC tries to use reflinks if available on your system, however this
 is not the most common case at this time, so it falls back to the copying
@@ -94,8 +103,10 @@ $ dvc config cache.protected true
 
 Setting `cache.protected` is important with `hardlink` and/or `symlink` cache
 file link types. Please refer to the
-[Update a Tracked File](/docs/user-guide/update-tracked-file) to how to manage
-tracked files under such a cache configuration.
+[Update a Tracked File](/docs/user-guide/update-tracked-file) on how to manage
+tracked files under these cache configurations.
+
+---
 
 > \***copy-on-write links or "reflinks"** are a relatively new way to link files
 > in UNIX-style file systems. Unlike hardlinks or symlinks, they support
