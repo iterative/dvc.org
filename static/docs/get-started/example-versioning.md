@@ -88,14 +88,11 @@ including input dataset and metrics.
 ### Expand to learn how to download on Windows
 
 Windows does not ship `wget` utility by default, so you'll need to use a browser
-to download `data.zip` or install it from a third party. We recommend using
-[chocolatey](https://chocolatey.org/). First, if you haven't already, install
-chocolatey using [official guide](https://chocolatey.org/install). Then install
-`wget` and `tar` with the following command in the `Command Prompt`:
+to download `data.xml` and save it into `data` subdirectory. To download,
+right-click [this link](https://dvc.org/s3/examples/versioning/data.zip) and
+click `Save link as`(Chrome) or `Save object as`(Firefox).
 
-```dvc
-C:\> choco install wget
-```
+</details>
 
 </details>
 
