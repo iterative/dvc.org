@@ -9,8 +9,8 @@ Once initialized in a project, DVC populates its installation directory
 - `.dvc/config.local` - this is a local configuration file, that will overwrite
   options in `.dvc/config`. This is useful when you need to specify private
   options in your config, that you don't want to track and share through git.
-  The local config file can be edited by hand or with a special command: `dvc
-  config --local`.
+  The local config file can be edited by hand or with a special command:
+  `dvc config --local`.
 
 - `.dvc/cache` - the cache directory will contain your data files. (The data
   directories of DVC repositories will only contain links to the data files in
@@ -18,8 +18,8 @@ Once initialized in a project, DVC populates its installation directory
   [Cache File Linking](/docs/user-guide/cache-file-linking).)
 
   > **Note:** DVC includes the cache directory in `.gitignore` during the
-  initialization. No data files (with actual content) will ever be pushed to the
-  Git repository, only DVC-files that are needed to reproduce them.
+  > initialization. No data files (with actual content) will ever be pushed to
+  > the Git repository, only DVC-files that are needed to reproduce them.
 
 - `.dvc/state` - this file is used for optimization. It is a SQLite db, that
   contains checksums for files in a project with respective timestamps and

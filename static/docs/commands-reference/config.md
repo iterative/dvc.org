@@ -64,9 +64,9 @@ This is the main section with the general config options:
   each stage in `dvc repro`. By default this behavior requires the use of option
   `-i` in that command. Accepts values `true` and `false`.
 
-- `core.analytics` - used to turn off [anonymized usage
-  statistics](/doc/user-guide/analytics). Accepts values `true` (default) and
-  `false`.
+- `core.analytics` - used to turn off
+  [anonymized usage statistics](/doc/user-guide/analytics). Accepts values
+  `true` (default) and `false`.
 
 ### remote
 
@@ -79,13 +79,15 @@ remote. See `dvc remote` for more information.
 
 The DVC cache is a hidden storage (by default located in the `.dvc/cache`
 directory) for files that are under DVC control, and their different versions.
-(See `dvc cache` and [DVC internal
-files](/doc/user-guide/dvc-files-and-directories) for more details.)
+(See `dvc cache` and
+[DVC internal files](/doc/user-guide/dvc-files-and-directories) for more
+details.)
 
 - `cache.dir` - set/unset cache directory location. A correct value must be
   either an absolute path or a path **relative to the config file location**.
   The default value is `cache`, which resolved relative to the default project
   config location results in `.dvc/cache`.
+
   > See also helper command `dvc cache dir` that properly transform paths
   > relative to the present working directory into relative to the project
   > config file.
@@ -116,15 +118,16 @@ files](/doc/user-guide/dvc-files-and-directories) for more details.)
   > See the `cache.protected` config option above and corresponding
   > `dvc unprotect` command to modify files safely.
 
-  There are pros and cons to different link types. Refer to [Cache File
-  Linking](/docs/user-guide/cache-file-linking) for a full explanation of each
-  one.
+  There are pros and cons to different link types. Refer to
+  [Cache File Linking](/docs/user-guide/cache-file-linking) for a full
+  explanation of each one.
 
 - `cache.slow_link_warning` - used to turn off the warnings about having a slow
   cache link type. These warnings are thrown by `dvc pull` and `dvc checkout`
   when linking files takes longer than usual, to remind them that there are
   faster cache link types available than the defaults (`reflink,copy` – see
   `cache.type`). Accepts values `true` and `false`.
+
   > These warnings are automatically turned off when `cache.type` is manually
   > set.
 
@@ -132,26 +135,26 @@ files](/doc/user-guide/dvc-files-and-directories) for more details.)
   overwrite the value provided to `dvc config cache.dir` or `dvc cache dir`.
   Refer to `dvc remote` for more information on "local remotes".
 
-- `cache.ssh` - name of an [SSH remote to use as external
-  cache](/doc/user-guide/external-outputs#ssh).
+- `cache.ssh` - name of an
+  [SSH remote to use as external cache](/doc/user-guide/external-outputs#ssh).
 
-- `cache.s3` - name of an [Amazon S3 remote to use as external
-  cache](/doc/user-guide/external-outputs#amazon-s-3).
+- `cache.s3` - name of an
+  [Amazon S3 remote to use as external cache](/doc/user-guide/external-outputs#amazon-s-3).
 
-- `cache.gs` - name of a [Google Cloud Storage remote to use as external
-  cache](/doc/user-guide/external-outputs#google-cloud-storage).
+- `cache.gs` - name of a
+  [Google Cloud Storage remote to use as external cache](/doc/user-guide/external-outputs#google-cloud-storage).
 
-- `cache.hdfs` - name of an [HDFS remote to use as external
-  cache](/doc/user-guide/external-outputs#hdfs).
+- `cache.hdfs` - name of an
+  [HDFS remote to use as external cache](/doc/user-guide/external-outputs#hdfs).
 
-- `cache.azure` - name of an Azure remote to use as [external
-  cache](/doc/user-guide/external-outputs).
+- `cache.azure` - name of an Azure remote to use as
+  [external cache](/doc/user-guide/external-outputs).
 
 ### state
 
-State config options. Check the [DVC Files and
-Directories](/doc/user-guide/dvc-files-and-directories) to learn more about the
-state file that is used for optimization.
+State config options. Check the
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
+more about the state file that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database which
   affects the physical size of the state file itself as well as the performance
@@ -168,11 +171,13 @@ state file that is used for optimization.
 ## Examples: Core config options
 
 Set the `dvc` log level to `debug`:
+
 ```dvc
 $ dvc config core.loglevel debug
 ```
 
 Add an S3 remote and set it as the project default:
+
 ```dvc
 $ dvc remote add myremote s3://bucket/path
 $ dvc config core.remote myremote
@@ -181,21 +186,26 @@ $ dvc config core.remote myremote
 ## Examples: Default remotes
 
 Use remote `myremote` by default:
+
 ```dvc
 $ dvc config core.remote myremote
 ```
 
 Get the default remote:
+
 ```dvc
 $ dvc config core.remote
 myremote
 ```
 
 Clear default remote value:
+
 ```dvc
 $ dvc config --unset core.remote
 ```
+
 which is equivalent to:
+
 ```dvc
 $ dvc config core.remote -u
 ```
@@ -203,12 +213,15 @@ $ dvc config core.remote -u
 ## Examples: Cache config options
 
 Set the cache directory to an absolute path:
+
 ```dvc
 $ dvc config cache.dir /mnt/cache
 $ dvc config cache.dir
 /mnt/cache
 ```
+
 or to a relative path (resolved from `./.dvc/`):
+
 ```dvc
 $ dvc config cache.dir ../../mycache
 $ dvc pull -q
@@ -217,11 +230,13 @@ $ ls ../mycache
 ```
 
 Set cache type: if `reflink` is not available, use `copy`:
+
 ```dvc
 $ dvc config cache.type reflink,copy
 ```
 
 Protect data files under DVC control by making them read-only:
+
 ```dvc
 $ dvc config cache.protected true
 ```

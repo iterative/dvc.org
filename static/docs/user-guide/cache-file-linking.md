@@ -11,9 +11,9 @@ However, the versions of the tracked files
 [corresponding to the current code](/doc/get-started/connect-code-and-data)
 branch are also needed in the workspace, so a subset of the cache files must be
 kept in the working directory at all times (see `dvc checkout`). Does this mean
-that some files will be duplicated between the workspace and the cache?
-**That would not be efficient!** Especially with large files (several Gigabytes
-or larger).
+that some files will be duplicated between the workspace and the cache? **That
+would not be efficient!** Especially with large files (several Gigabytes or
+larger).
 
 In order to have the files present in both directories without duplication, DVC
 can automatically create **file links** in the workspace that "point" to the
@@ -28,10 +28,10 @@ different kinds, that differ in how they connect filenames to inodes in the
 system.
 
 > **Inodes** are metadata file records to locate and store permissions to the
-> actual file contents. See **Linking files** in [this
-> doc](http://www.tldp.org/LDP/intro-linux/html/sect_03_03.html) for technical
-> details on Linux. Some versions of Windows (e.g. Windows Server 2012+ and
-> Windows 10 Enterprise) also support hard or soft links on the
+> actual file contents. See **Linking files** in
+> [this doc](http://www.tldp.org/LDP/intro-linux/html/sect_03_03.html) for
+> technical details on Linux. Some versions of Windows (e.g. Windows Server
+> 2012+ and Windows 10 Enterprise) also support hard or soft links on the
 > [NTFS](https://support.microsoft.com/en-us/help/100108/overview-of-fat-hpfs-and-ntfs-file-systems)
 > and
 > [ReFS](https://docs.microsoft.com/en-us/windows-server/storage/refs/refs-overview)
