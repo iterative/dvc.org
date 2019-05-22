@@ -41,8 +41,7 @@
     "labels": {
       "data-and-model-files-versioning.md": "Data & Model Files Versioning",
       "share-data-and-model-files.md": "Share Data & Model Files",
-      "multiple-data-scientists-on-a-single-machine.md":
-        "Shared Development Machine"
+      "multiple-data-scientists-on-a-single-machine.md": "Shared Development Machine"
     }
   },
   {
@@ -84,10 +83,7 @@
     "indexFile": "index.md",
     "files": [
       "add.md",
-      [
-        "cache.md",
-        "cache:dir.md"
-      ],
+      ["cache.md", "cache_dir.md"],
       "checkout.md",
       "commit.md",
       "config.md",
@@ -107,11 +103,7 @@
         "metrics_show.md"
       ],
       "move.md",
-      [
-        "pipeline.md",
-        "pipeline_list.md",
-        "pipeline_show.md"
-      ],
+      ["pipeline.md", "pipeline_list.md", "pipeline_show.md"],
       "push.md",
       "pull.md",
       [
