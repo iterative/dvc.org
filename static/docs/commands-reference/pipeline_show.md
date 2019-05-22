@@ -27,8 +27,8 @@ positional arguments:
 - `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
   list of path to DVC files.
 
-- `--dot` - produce a `.dot` files with a DVC pipeline graph. It can be passed
-  to third party visualization utilities.
+- `--dot` - show contents of `.dot` files with a DVC pipeline graph. It can be
+  passed to third party visualization utilities.
 
 - `--tree` - list dependencies tree like recursive directory listing.
 
