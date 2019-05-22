@@ -94,8 +94,6 @@ click `Save link as`(Chrome) or `Save object as`(Firefox).
 
 </details>
 
-</details>
-
 ```dvc
 $ wget https://dvc.org/s3/examples/versioning/data.zip
 $ unzip data.zip
