@@ -4,212 +4,556 @@
     "folder": "/static/docs/get-started",
     "indexFile": "index.md",
     "files": [
-      "agenda.md",
-      "install.md",
-      "initialize.md",
-      "configure.md",
-      "add-files.md",
-      "share-data.md",
-      "retrieve-data.md",
-      "connect-code-and-data.md",
-      "pipeline.md",
-      "visualize.md",
-      "reproduce.md",
-      "metrics.md",
-      "experiments.md",
-      "compare-experiments.md",
-      "older-versions.md",
-      "example-versioning.md",
-      "example-pipeline.md"
-    ],
-    "labels": {
-      "connect-code-and-data.md": "Connect with Code",
-      "example-pipeline.md": "Example: Pipelines",
-      "example-versioning.md": "Example: Versioning",
-      "older-versions.md": "Get Older Files"
-    }
+      {
+        "name": "Agenda",
+        "folder": "/static/docs/get-started",
+        "indexFile": "agenda.md",
+        "files": []
+      },
+      {
+        "name": "Install",
+        "folder": "/static/docs/get-started",
+        "indexFile": "install.md",
+        "files": []
+      },
+      {
+        "name": "Initialize",
+        "folder": "/static/docs/get-started",
+        "indexFile": "initialize.md",
+        "files": []
+      },
+      {
+        "name": "Configure",
+        "folder": "/static/docs/get-started",
+        "indexFile": "configure.md",
+        "files": []
+      },
+      {
+        "name": "Add Files",
+        "folder": "/static/docs/get-started",
+        "indexFile": "add-files.md",
+        "files": []
+      },
+      {
+        "name": "Share Data",
+        "folder": "/static/docs/get-started",
+        "indexFile": "share-data.md",
+        "files": []
+      },
+      {
+        "name": "Retrieve Data",
+        "folder": "/static/docs/get-started",
+        "indexFile": "retrieve-data.md",
+        "files": []
+      },
+      {
+        "name": "Connect Code And Data",
+        "folder": "/static/docs/get-started",
+        "indexFile": "connect-code-and-data.md",
+        "files": []
+      },
+      {
+        "name": "Pipeline",
+        "folder": "/static/docs/get-started",
+        "indexFile": "pipeline.md",
+        "files": []
+      },
+      {
+        "name": "Visualize",
+        "folder": "/static/docs/get-started",
+        "indexFile": "visualize.md",
+        "files": []
+      },
+      {
+        "name": "Reproduce",
+        "folder": "/static/docs/get-started",
+        "indexFile": "reproduce.md",
+        "files": []
+      },
+      {
+        "name": "Metrics",
+        "folder": "/static/docs/get-started",
+        "indexFile": "metrics.md",
+        "files": []
+      },
+      {
+        "name": "Experiments",
+        "folder": "/static/docs/get-started",
+        "indexFile": "experiments.md",
+        "files": []
+      },
+      {
+        "name": "Compare Experiments",
+        "folder": "/static/docs/get-started",
+        "indexFile": "compare-experiments.md",
+        "files": []
+      },
+      {
+        "name": "Older Versions",
+        "folder": "/static/docs/get-started",
+        "indexFile": "older-versions.md",
+        "files": []
+      },
+      {
+        "name": "Example Versioning",
+        "folder": "/static/docs/get-started",
+        "indexFile": "example-versioning.md",
+        "files": []
+      },
+      {
+        "name": "Example Pipeline",
+        "folder": "/static/docs/get-started",
+        "indexFile": "example-pipeline.md",
+        "files": []
+      }
+    ]
   },
   {
     "name": "Use Cases",
     "folder": "/static/docs/use-cases",
     "indexFile": "index.md",
     "files": [
-      "data-and-model-files-versioning.md",
-      "share-data-and-model-files.md",
-      "multiple-data-scientists-on-a-single-machine.md"
-    ],
-    "labels": {
-      "data-and-model-files-versioning.md": "Data & Model Files Versioning",
-      "share-data-and-model-files.md": "Share Data & Model Files",
-      "multiple-data-scientists-on-a-single-machine.md":
-        "Shared Development Machine"
-    }
+      {
+        "name": "Data And Model Files Versioning",
+        "folder": "/static/docs/use-cases",
+        "indexFile": "data-and-model-files-versioning.md",
+        "files": []
+      },
+      {
+        "name": "Share Data And Model Files",
+        "folder": "/static/docs/use-cases",
+        "indexFile": "share-data-and-model-files.md",
+        "files": []
+      },
+      {
+        "name": "Multiple Data Scientists On A Single Machine",
+        "folder": "/static/docs/use-cases",
+        "indexFile": "multiple-data-scientists-on-a-single-machine.md",
+        "files": []
+      }
+    ]
   },
   {
     "name": "User Guide",
     "folder": "/static/docs/user-guide",
     "files": [
-      "dvc-files-and-directories.md",
-      "dvc-file-format.md",
-      "external-dependencies.md",
-      "external-outputs.md",
-      "development.md",
-      "contributing.md",
-      "contributing-documentation.md",
-      "update-tracked-file.md",
-      "autocomplete.md",
-      "plugins.md",
-      "analytics.md",
-      "dvcignore.md"
-    ],
-    "labels": {
-      "dvc-files-and-directories.md": "Files and Directories",
-      "dvc-file-format.md": "File Format (.dvc)",
-      "development.md": "Development Version",
-      "external-dependencies.md": "External Dependencies",
-      "external-outputs.md": "External Outputs",
-      "contributing.md": "Contributing",
-      "contributing-documentation.md": "Contributing Documentation",
-      "update-tracked-file.md": "Update a Tracked File",
-      "autocomplete.md": "Shell Autocomplete",
-      "plugins.md": "Plugins & Integrations",
-      "analytics.md": "Anonymized Usage Analytics"
-    }
+      {
+        "name" : "Dvc Files And Directries",
+        "indexFile" : "dvc-files-and-directries.md",
+        "folder": "/static/docs/user-guide",
+        "files":[]
+      },
+      {
+        "name" : "Dvc File Format",
+        "indexFile" : "dvc-file-format.md",
+        "folder": "/static/docs/user-guide",
+        "files": []
+      },
+      {
+        "name" : "External Dependences",
+        "indexFile" : "external-dependences.md",
+        "folder": "/static/docs/user-guide",
+        "files":[]
+      },
+      {
+        "name" : "External Output",
+        "indexFile" : "external-outputs.m",
+        "folder": "/static/docs/user-guide",
+        "files":[]
+      },
+      {
+        "name" : "Development",
+        "indexFile" : "development.md",
+        "folder": "/static/docs/user-guide",
+        "files":[]
+      },
+
+      {
+        "name" : "Contributing",
+        "indexFile" : "contributing.md",
+        "folder" : "/static/docs/user-guide",
+        "files" : []
+      },
+      {
+        "name": "Contributing Documntation",
+        "indexFile": "contributing-documntation.md",
+        "folder": "/static/docs/user-guide",
+        "files": []
+      },
+
+      {
+        "name" : "Update Tracked Fil",
+        "indexFile" : "update-tracked-fil.md",
+        "folder": "/static/docs/user-guide",
+        "files":[]
+      },
+      {
+        "name": "Autocomplete",
+        "indexFile": "autocomplete.md",
+        "folder": "/static/docs/user-guide",
+        "files": []
+      },
+      {
+        "name": "Plugins",
+        "indexFile": "plugins.md",
+        "folder": "/static/docs/user-guide",
+        "files": []
+      },
+      {
+        "name": "Analytics",
+        "indexFile": "analytics.md",
+        "folder": "/static/docs/user-guide",
+        "files": []
+      },
+      {
+        "name": "Dvcignore",
+        "indexFile": "dvcignore.md",
+        "folder": "/static/docs/user-guide",
+        "files": []
+      },
+      {
+        "name": "Data And Model Files Versioning",
+        "folder": "/static/docs/user-guide",
+        "indexFile": "data-and-model-files-versioning.md",
+        "files": []
+      }
+    ]
   },
   {
     "name": "Commands Reference",
     "folder": "/static/docs/commands-reference",
     "indexFile": "index.md",
     "files": [
-      "add.md",
-      [
-        "cache.md",
-        "cache:dir.md"
-      ],
-      "checkout.md",
-      "commit.md",
-      "config.md",
-      "diff.md",
-      "destroy.md",
-      "fetch.md",
-      "gc.md",
-      "init.md",
-      "install.md",
-      "import.md",
-      "lock.md",
-      [
-        "metrics.md",
-        "metrics:add.md",
-        "metrics:modify.md",
-        "metrics:remove.md",
-        "metrics:show.md"
-      ],
-      "move.md",
-      [
-        "pipeline.md",
-        "pipeline:list.md",
-        "pipeline:show.md"
-      ],
-      "push.md",
-      "pull.md",
-      [
-        "remote.md",
-        "remote:add.md",
-        "remote:default.md",
-        "remote:list.md",
-        "remote:modify.md",
-        "remote:remove.md"
-      ],
-      "remove.md",
-      "repro.md",
-      "root.md",
-      "run.md",
-      "status.md",
-      "unlock.md",
-      "unprotect.md",
-      "version.md"
-    ],
-    "labels": {
-      "run.md": "run",
-      "push.md": "push",
-      "init.md": "init",
-      "add.md": "add",
-      "checkout.md": "checkout",
-      "diff.md": "diff",
-      "pull.md": "pull",
-      "status.md": "status",
-      "repro.md": "repro",
-      "fetch.md": "fetch",
-      "remove.md": "remove",
-      "gc.md": "gc",
-      "config.md": "config",
-      "remote.md": "remote",
-      "remote:add.md": "remote add",
-      "remote:default.md": "remote default",
-      "remote:list.md": "remote list",
-      "remote:modify.md": "remote modify",
-      "remote:remove.md": "remote remove",
-      "metrics.md": "metrics",
-      "metrics:add.md": "metrics add",
-      "metrics:show.md": "metrics show",
-      "metrics:modify.md": "metrics modify",
-      "metrics:remove.md": "metrics remove",
-      "install.md": "install",
-      "root.md": "root",
-      "lock.md": "lock",
-      "unlock.md": "unlock",
-      "import.md": "import",
-      "move.md": "move",
-      "pipeline.md": "pipeline",
-      "pipeline:list.md": "pipeline list",
-      "pipeline:show.md": "pipeline show",
-      "destroy.md": "destroy",
-      "unprotect.md": "unprotect",
-      "cache.md": "cache",
-      "cache:dir.md": "cache dir",
-      "commit.md": "commit",
-      "version.md": "version"
-    }
+      {
+        "name": "Add",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "add.md",
+        "files": []
+      },
+      {
+        "name": "Cache",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "cache.md",
+        "files": [
+          {
+            "name": "Dir",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "dir.md",
+            "files": []
+          }
+        ]
+      },
+      {
+        "name": "Checkout",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "checkout.md",
+        "files": []
+      },
+      {
+        "name": "Commit",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "commit.md",
+        "files": []
+      },
+      {
+        "name": "Config",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "config.md",
+        "files": []
+      },
+      {
+        "name": "Diff",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "diff.md",
+        "files": []
+      },
+      {
+        "name": "Destroy",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "destroy.md",
+        "files": []
+      },
+      {
+        "name": "Fetch",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "fetch.md",
+        "files": []
+      },
+      {
+        "name": "Gc",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "gc.md",
+        "files": []
+      },
+      {
+        "name": "Init",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "init.md",
+        "files": []
+      },
+      {
+        "name": "Install",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "install.md",
+        "files": []
+      },
+      {
+        "name": "Import",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "import.md",
+        "files": []
+      },
+      {
+        "name": "Lock",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "lock.md",
+        "files": []
+      },
+      {
+        "name": "Metrics",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "metrics.md",
+        "files": [
+          {
+            "name": "Add",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "add.md",
+            "files": []
+          },
+          {
+            "name": "Modify",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "modify.md",
+            "files": []
+          },
+          {
+            "name": "Remove",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "remove.md",
+            "files": []
+          },
+          {
+            "name": "Show",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "show.md",
+            "files": []
+          }
+        ]
+      },
+      {
+        "name": "Move",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "move.md",
+        "files": []
+      },
+      {
+        "name": "Pipeline",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "pipeline.md",
+        "files": [
+          {
+            "name": "List",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "list.md",
+            "files": []
+          },
+          {
+            "name": "Show",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "show.md",
+            "files": []
+          }
+        ]
+      },
+      {
+        "name": "Push",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "push.md",
+        "files": []
+      },
+      {
+        "name": "Pull",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "Pull.md",
+        "files": []
+      },
+      {
+        "name": "Remote",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "remote.md",
+        "files": [
+          {
+            "name": "Add",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "add.md",
+            "files": []
+          },
+          {
+            "name": "Default",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "default.md",
+            "files": []
+          },
+          {
+            "name": "List",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "list.md",
+            "files": []
+          },
+          {
+            "name": "Modify",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "modify.md",
+            "files": []
+          },
+          {
+            "name": "Remove",
+            "folder": "/static/docs/commands-reference",
+            "indexFile": "remove.md",
+            "files": []
+          }
+        ]
+      },
+      {
+        "name": "Remove",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "remove.md",
+        "files": []
+      },
+      {
+        "name": "Repro",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "repro.md",
+        "files": []
+      },
+      {
+        "name": "Root",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "root.md",
+        "files": []
+      },
+      {
+        "name": "Run",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "run.md",
+        "files": []
+      },
+      {
+        "name": "Status",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "status.md",
+        "files": []
+      },
+      {
+        "name": "Unlock",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "unlock.md",
+        "files": []
+      },
+      {
+        "name": "Unprotect",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "unprotect.md",
+        "files": []
+      },
+      {
+        "name": "Version",
+        "folder": "/static/docs/commands-reference",
+        "indexFile": "version.md",
+        "files": []
+      }
+    ]
   },
   {
     "name": "Tutorial",
     "folder": "/static/docs/tutorial",
     "indexFile": "index.md",
     "files": [
-      "preparation.md",
-      "define-ml-pipeline.md",
-      "reproducibility.md",
-      "sharing-data.md"
-    ],
-    "labels": {
-      "define-ml-pipeline.md": "Define ML Pipeline"
-    }
+      {
+        "name": "Preparation",
+        "folder": "/static/docs/tutorial",
+        "indexFile": "preparation.md",
+        "files": []
+      },
+      {
+        "name": "Define Ml Pipeline",
+        "folder": "/static/docs/tutorial",
+        "indexFile": "define-ml-pipeline.md",
+        "files": []
+      },
+      {
+        "name": "Reproducibility",
+        "folder": "/static/docs/tutorial",
+        "indexFile": "reproducibility.md",
+        "files": []
+      },
+      {
+        "name": "Sharing Data",
+        "folder": "/static/docs/tutorial",
+        "indexFile": "sharing-data.md",
+        "files": []
+      }
+
+    ]
   },
   {
     "name": "DVC Philosophy",
     "folder": "/static/docs/philosophy",
     "files": [
-      "collaboration-issues.md",
-      "existing-tools.md",
-      "what-is-dvc.md",
-      "core-features.md",
-      "how-it-works.md",
-      "related-technologies.md"
-    ],
-    "labels": {
-      "what-is-dvc.md": "What is DVC?"
-    }
+      {
+        "name": "Collaboration Issues",
+        "folder": "/static/docs/philosophy",
+        "indexFile": "collaboration-issues.md",
+        "files": []
+      },
+      {
+        "name": "Existing Tools",
+        "folder": "/static/docs/philosophy",
+        "indexFile": "existing-tools.md",
+        "files": []
+      },
+      {
+        "name": "What Is Dvc",
+        "folder": "/static/docs/philosophy",
+        "indexFile": "what-is-dvc.md",
+        "files": []
+      },
+      {
+        "name": "Core Features",
+        "folder": "/static/docs/philosophy",
+        "indexFile": "core-features.md",
+        "files": []
+      },
+      {
+        "name": "How It Works",
+        "folder": "/static/docs/philosophy",
+        "indexFile": "how-it-works.md",
+        "files": []
+      },
+      {
+        "name": "Related Technologies",
+        "folder": "/static/docs/philosophy",
+        "indexFile": "related-technologies.md",
+        "files": []
+      }
+    ]
   },
   {
     "name": "Changelog",
     "folder": "/static/docs/changelog",
     "files": [
-      "0.35.md",
-      "0.18.md"
-    ],
-    "labels": {
-      "0.18.md": "v0.12 - v0.18",
-      "0.35.md": "v0.19 - v0.35"
-    }
+      {
+        "name": "0.35",
+        "folder": "/static/docs/changelog",
+        "indexFile": "0.35.md",
+        "files": []
+      },
+      {
+        "name": "0.18",
+        "folder": "/static/docs/changelog",
+        "indexFile": "0.18.md",
+        "files": []
+      }
+    ]
   }
 ]
