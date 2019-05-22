@@ -222,17 +222,7 @@ that the new instance of `model.pkl` is in the cache.
 
 It is also possible to execute the commands that are executed by `dvc repro` by
 hand. You won't have DVC helping you, but you have the freedom to run any script
-you like, even ones not recorded in a DVC file.
-
-In this case if your command is going to modify a file under DVC control, you
-must first unprotect it using the `dvc unprotect`. Therefore if we're going to
-execute `featurize.py` by hand, we do this:
-
-```dvc
-$ dvc unprotect data/features model.pkl
-```
-
-Then to run the script:
+you like, even ones not recorded in a DVC file. For example:
 
 ```dvc
 $ python src/featurization.py data/prepared data/features
@@ -240,7 +230,7 @@ $ python src/train.py data/features model.pkl
 $ python src/evaluate.py model.pkl data/features auc.metric
 ```
 
-As before `dvc status` will show which the files have changed, and when your
+As before, `dvc status` will show which the files have changed, and when your
 work is finalized `dvc commit` will commit everything to the cache.
 
 ## Example: Updating dependencies

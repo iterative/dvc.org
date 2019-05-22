@@ -11,9 +11,9 @@ current work. Anonymous aggregate user analytics allow us to prioritize fixes
 and features based on how, where and when people use DVC. For example:
 
 - If reflinks (depends on a file system type) are supported for most users, we
-  can keep protected mode off by default (see `dvc unprotect`).
+  can keep cache protected mode off by default (see `dvc unprotect`).
 - Collecting the OS version and the way DVC was installed allows us to decide
-  what versions of OS to prioritise and support.
+  what versions of OS to prioritize and support.
 - If usage of some command is negligible small it makes us think about issues
   with a command or documentation.
 
