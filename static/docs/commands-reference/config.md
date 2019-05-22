@@ -119,8 +119,8 @@ details.)
   > `dvc unprotect` command to modify files safely.
 
   There are pros and cons to different link types. Refer to
-  [Cache File Linking](/docs/user-guide/cache-file-linking) for a full
-  explanation of each one.
+  [File link types](/docs/user-guide/cache-file-linking) for a full explanation
+  of each one.
 
 - `cache.slow_link_warning` - used to turn off the warnings about having a slow
   cache link type. These warnings are thrown by `dvc pull` and `dvc checkout`
