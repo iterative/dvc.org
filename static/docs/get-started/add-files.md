@@ -42,8 +42,9 @@ $ git commit -m "add source data to DVC"
 
 You can see that actual data file has been moved to the `.dvc/cache` directory,
 while the entries in the working directory may be links to the actual files in
-the DVC cache. (See [File link types](/docs/user-guide/cache-file-linking) to
-learn about the supported file linking options, their tradeoffs, and how to
+the DVC cache. (See
+[File link types](/docs/user-guide/cache-file-linkingfile-link-types-for-the-dvc-cache)
+to learn about the supported file linking options, their tradeoffs, and how to
 enable them).
 
 ```dvc

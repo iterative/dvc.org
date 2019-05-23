@@ -171,8 +171,8 @@ data files.
 
 > **Note!** For performance with large data files, DVC can use file links from
 > the cache to the workspace to avoid copying actual file contents. Refer to
-> [File link types](/docs/user-guide/cache-file-linking) to learn which options
-> exist and how to enable them.
+> [File link types](/docs/user-guide/cache-file-linkingfile-link-types-for-the-dvc-cache)
+> to learn which options exist and how to enable them.
 
 </details>
 
