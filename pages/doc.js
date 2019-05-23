@@ -55,35 +55,69 @@ export default class Documentation extends Component {
   }
 
   loadStateFromURL = () => {
-    const { pathname } = window.location
-    const sectionURL = pathname.split('/')[2] // match section from URL
+    const { pathname } = window.location;
+    const sectionURL = pathname.split('/')[2];
     const sectionIndex = sidebar.findIndex(
-      section => (section.slug || kebabCase(section.name)) === sectionURL
-    )
+      section => kebabCase(section.name) === sectionURL
+    );
     if (sectionIndex === -1) {
-      sectionURL
-        ? this.setState({ pageNotFound: true })
-        : this.onSectionSelect(0)
+      this.setState({ pageNotFound: true })
     } else {
-      const fileURL = pathname.split('/')[3] // match file from URL
-      const sectionFiles = flatten(sidebar[sectionIndex].files)
-      const fileIndex = sectionFiles.findIndex(
-        file => kebabCase(file.slice(0, -3)) === fileURL
-      )
-      if (fileIndex === -1) {
-        fileURL
-          ? this.setState({ pageNotFound: true })
-          : this.onSectionSelect(sectionIndex)
-      } else {
-        this.loadFile({
-          section: sectionIndex,
-          file: sectionFiles[fileIndex],
-          parseHeadings: true,
-          pageNotFound: false
-        })
+      const fileURL = pathname.split('/')[3]; // match file from URL
+      const section = sidebar[sectionIndex];
+      if(fileURL){
+        if(pathname.split('/')[4]){
+          let subsectionIndex = section.files.findIndex(
+            file => kebabCase(file.indexFile.slice(0, -3)) === fileURL
+          );
+          let fileIndex = section.files[subsectionIndex].files.findIndex(
+            file => kebabCase(file.indexFile.slice(0, -3)) === pathname.split('/')[4]
+          );
+          this.loadFile({
+            file: section.files[subsectionIndex].files[fileIndex],
+            section: sectionIndex,
+            parseHeadings: true,
+          })
+        }else{
+          let fileIndex = section.files.findIndex(
+            file => kebabCase(file.indexFile.slice(0, -3)) === fileURL
+          );
+          if (fileIndex === -1) {
+            let fileIndex2=-1, subsectionIndex=0;
+            section.files.map((subsection,index2)=>{
+              if (subsection.files.length>0){
+                fileIndex2 = subsection.files.findIndex(
+                  file2 => {
+                    if(kebabCase(file2.indexFile.slice(0, -3)) === fileURL){
+                      subsectionIndex = index2;
+                    }
+                    return kebabCase(file2.indexFile.slice(0, -3)) === fileURL
+                  }
+                );
+              }
+            });
+            if (fileIndex2 === -1){
+              fileURL ? this.setState({ pageNotFound: true }) : this.onSectionSelect(sectionIndex)
+            }else{
+              this.loadFile({
+                file: section.files[subsectionIndex].files[fileIndex2],
+                section: sectionIndex,
+                parseHeadings: true,
+              })
+            }
+          }else{
+            this.loadFile({
+              file: section.files[fileIndex],
+              section: sectionIndex,
+              parseHeadings: true,
+            })
+          }
+        }
+      }else{
+        this.loadFile({ file:section.hasOwnProperty('indexFile') ? section : section.files[0], section: sectionIndex, parseHeadings: false });
       }
     }
-  }
+  };
 
   initDocsearch = () => {
     docsearch({
@@ -92,41 +126,40 @@ export default class Documentation extends Component {
       inputSelector: '#doc-search',
       debug: false // Set debug to true if you want to inspect the dropdown
     })
-  }
+  };
 
-  getLinkHref = (section, file) => {
-    const sectionSlug =
-      sidebar[section].slug || kebabCase(sidebar[section].name)
-    const fileSlug = file ? kebabCase(file.slice(0, -3)) : undefined
-    return `/doc/${compact([sectionSlug, fileSlug]).join('/')}`
-  }
+  getLinkHref = (section, file, subsection=null) => {
+    const sectionSlug = kebabCase(sidebar[section].name);
+    const fileSlug = file ? file.slice(0, -3) : undefined;
+    let subsectionSlug = subsection ? sidebar[section].files[subsection].indexFile.slice(0,-3) : '';
+    return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`;
+  };
 
-  setCurrentPath = (section, file) => {
-    window.history.pushState(null, null, this.getLinkHref(section, file))
-  }
+  setCurrentPath = (section, file, subsection) => {
+    window.history.pushState(null, null, this.getLinkHref(section, file, subsection))
+  };
 
   onSectionSelect = (section, e) => {
-    e && e.preventDefault()
-    const { indexFile, files } = sidebar[section]
-    const file = indexFile || flatten(files)[0]
-    e && this.setCurrentPath(section, indexFile ? undefined : file)
-    this.loadFile({ file, section, parseHeadings: false })
-  }
+    e && e.preventDefault();
+    const file = sidebar[section].hasOwnProperty('indexFile') ? sidebar[section]  : sidebar[section].files[0];
+    e && this.setCurrentPath(section);
+    this.loadFile({ file, section, parseHeadings: false });
+  };
 
-  onFileSelect = (file, section, e) => {
-    e && e.preventDefault()
-    this.setCurrentPath(section, file)
-    this.loadFile({ file, section, parseHeadings: true })
-  }
+  onFileSelect = (file, section, e, subsection) => {
+    e && e.preventDefault();
+    this.setCurrentPath(section, file.indexFile, subsection);
+    this.loadFile({ file, section, parseHeadings: true });
+  };
 
   loadFile = ({ file, section, parseHeadings }) => {
-    fetch(`${sidebar[section].folder}/${file}`)
+    fetch(`${file.folder}/${file.indexFile}`)
       .then(res => {
         res.text().then(text => {
           this.setState(
             {
               currentSection: section,
-              currentFile: file,
+              currentFile: file.indexFile,
               markdown: text,
               headings: [],
               pageNotFound: false,
@@ -286,8 +319,8 @@ const Backdrop = styled.div`
     transition: opacity .3s linear;
 
     ${props =>
-      props.visible &&
-      `
+  props.visible &&
+  `
       content: '';
       position: fixed;
       top: 0;
@@ -323,8 +356,8 @@ const Side = styled.div`
     transition: transform .35s ease;
 
     ${props =>
-      props.isOpen &&
-      `
+  props.isOpen &&
+  `
       transform: translateX(0);
     `} 
   `};
@@ -373,8 +406,8 @@ const SideToggle = styled.div`
   `};
 
   ${({ isMenuOpen }) =>
-    isMenuOpen &&
-    `
+  isMenuOpen &&
+  `
     transform: translateX(calc(100vw - 60px));
   `};
 `
