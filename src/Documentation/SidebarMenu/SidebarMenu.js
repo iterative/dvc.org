@@ -87,7 +87,7 @@ export default class SidebarMenu extends React.Component {
 
                               {/* Subgroup files */}
                               {subgroup && (
-                                <Collapse data-flag={'first'} data-open={(includes(files, currentFile) || includes(subgroup, currentFile))? 'true' : 'false'}>
+                                <Collapse data-flag={'first'} data-open={(isFileActive || includes(subgroup, currentFile))? 'true' : 'false'}>
                                   {subgroup.map((file, subIndex) => {
                                     return (
                                       <div key={`file-${fileIndex}-${subIndex}`}>
