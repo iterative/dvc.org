@@ -1,10 +1,9 @@
 # unprotect
 
-Unprotect a file or a directory.
+Unprotect tracked files or directories (when the cache protected mode has been
+enabled with `dvc config cache`).
 
-Running `dvc unprotect` guarantees that file or directory in the workspace is
-physically "unlinked" from the cache and can be safely updated. Check the
-[Update a Tracked File](/doc/user-guide/update-tracked-file) to learn more.
+## Synopsis
 
 ```usage
 usage: dvc unprotect [-h] [-q | -v] targets [targets ...]
@@ -15,20 +14,28 @@ positional arguments:
   targets        Data files/directory.
 ```
 
+## Description
+
+By default this command is not necessary, as DVC avoids hardlinks and symlinks
+to link tracked data files in the workspace to the cache. However, these types
+of file links can be enabled with `dvc config cache` (`cache.type` config
+option). These link types also require the `cache.protected` mode to be turned
+on, which makes the tracked data files in the workspace read-only to prevent
+users from accidentally corrupting the cache by modifying them.
+
+Running `dvc unprotect` guarantees that the target files or directories
+(`targets`) in the workspace are physically "unlinked" from the cache and can be
+safely updated. Read the
+[Update a Tracked File](/doc/user-guide/update-tracked-file) guide to learn more
+on this process.
+
 `dvc unprotect` can be an expensive operation (involves copying data), check
-first if your task matches one of the cases that are considered safe without
-running `dvc unprotect`:
+first whether your task matches one of the cases that are considered safe, even
+when cache protected mode is enabled:
 
 - Adding more files to a directory input data set (say, images or videos).
 
 - Deleting files from a directory data set.
-
-- _Advanced_. If your underlying file system supports _reflinks_ (copy on write)
-  and DVC [protected mode](/doc/commands-reference/config#cache) is off.
-
-- _Advanced_. If your [cache type](/doc/commands-reference/config#cache) is set
-  to `copy` and DVC [protected mode](/doc/commands-reference/config#cache) is
-  off.
 
 ## Options
 
@@ -41,13 +48,13 @@ running `dvc unprotect`:
 
 ## Example
 
-1. Make sure that protected mode is enabled:
+Enable cache protected mode is enabled:
 
 ```dvc
     $ dvc config cache.protected true
 ```
 
-2. Put a data file under DVC control:
+Put a data file under DVC control:
 
 ```dvc
 $ ls -lh
@@ -63,7 +70,7 @@ To track the changes with git run:
 	git add .gitignore Posts.xml.zip.dvc
 ```
 
-3. Check that file is a read-only link (@ sign means a link):
+Check that file is a read-only link (@ sign means a link):
 
 ```dvc
 $ ls -lh
@@ -71,15 +78,15 @@ $ ls -lh
 -rw-r--r--  1      120 Nov 27 13:29 Posts.xml.zip.dvc
 ```
 
-4. Unprotect the file:
+Unprotect the file:
 
 ```dvc
 $ dvc unprotect Posts.xml.zip
 [##############################] 100% Posts.xml.zip
 ```
 
-4. Check that the file is writable now, the cached version is intact, and they
-   are not linked (the file in the workspace is a copy of the file):
+Check that the file is writable now, the cached version is intact, and they are
+not linked (the file in the workspace is a copy of the file):
 
 ```dvc
 $ ls -lh

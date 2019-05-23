@@ -238,9 +238,9 @@ version if we need to.
 
 An operation that helps to get the specific committed version of data is
 designed to be similar to Git. In Git (or any other code version control system)
-when you need to get to a previous committed version of the code you run `git
-checkout`. All we need to do in our case is to run additionally `dvc checkout`
-to get the right data to the workspace.
+when you need to get to a previous committed version of the code you run
+`git checkout`. All we need to do in our case is to run additionally
+`dvc checkout` to get the right data to the workspace.
 
 ![](/static/img/versioning.png)
 
@@ -291,10 +291,8 @@ place.
 
 `dvc add` is a perfectly reasonable choice when you need to keep track of
 different versions of datasets or model files that come and are updated from
-external sources. `data` directory above with cats and dogs images is a good
-example (just don't forget to run `dvc remove` or `dvc unprotect` when you need
-to [modify or replace](/doc/user-guide/update-tracked-file) a file that is under
-DVC control).
+external sources. The `data` directory above with cats and dogs images is a good
+example.
 
 On the other hand, there are files that are a result of running some code. In
 our example, you should have noticed, that `train.py` produces binary files

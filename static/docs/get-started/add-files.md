@@ -42,8 +42,9 @@ $ git commit -m "add source data to DVC"
 
 You can see that actual data file has been moved to the `.dvc/cache` directory,
 while the entries in the working directory may be links to the actual files in
-the DVC cache. (See [Cache File Linking](/docs/user-guide/cache-file-linking) to
-learn about the supported file linking options, their tradeoffs, and how to
+the DVC cache. (See
+[File link types](/docs/user-guide/cache-file-linkingfile-link-types-for-the-dvc-cache)
+to learn about the supported file linking options, their tradeoffs, and how to
 enable them).
 
 ```dvc
@@ -72,8 +73,9 @@ Hardlinks and symlinks are also available for optimized cache linking but,
 (unlike reflinks) they carry the risk of accidentally corrupting the cache if
 tacked data files are modified in the workspace.
 
-See [Cache File Linking](/docs/user-guide/cache-file-linking) and
-`dvc config cache` for more information.
+See
+[Performance Optimization for Large Files](/docs/user-guide/cache-file-linking)
+and `dvc config cache` for more information.
 
 > \***copy-on-write links or "reflinks"** are a relatively new way to link files
 > in UNIX-style file systems. Unlike hardlinks or symlinks, they support
