@@ -47,7 +47,7 @@
         "files": []
       },
       {
-        "name": "Connect Code And Data",
+        "name": "Connect with Code",
         "folder": "/static/docs/get-started",
         "indexFile": "connect-code-and-data.md",
         "files": []
@@ -89,19 +89,19 @@
         "files": []
       },
       {
-        "name": "Older Versions",
+        "name": "Get Older Files",
         "folder": "/static/docs/get-started",
         "indexFile": "older-versions.md",
         "files": []
       },
       {
-        "name": "Example Versioning",
+        "name": "Example: Versioning",
         "folder": "/static/docs/get-started",
         "indexFile": "example-versioning.md",
         "files": []
       },
       {
-        "name": "Example Pipeline",
+        "name": "Example: Pipelines",
         "folder": "/static/docs/get-started",
         "indexFile": "example-pipeline.md",
         "files": []
@@ -114,19 +114,19 @@
     "indexFile": "index.md",
     "files": [
       {
-        "name": "Data And Model Files Versioning",
+        "name": "Data & Model Files Versioning",
         "folder": "/static/docs/use-cases",
         "indexFile": "data-and-model-files-versioning.md",
         "files": []
       },
       {
-        "name": "Share Data And Model Files",
+        "name": "Share Data & Model Files",
         "folder": "/static/docs/use-cases",
         "indexFile": "share-data-and-model-files.md",
         "files": []
       },
       {
-        "name": "Multiple Data Scientists On A Single Machine",
+        "name": "Shared Development Machine",
         "folder": "/static/docs/use-cases",
         "indexFile": "multiple-data-scientists-on-a-single-machine.md",
         "files": []
@@ -138,19 +138,19 @@
     "folder": "/static/docs/user-guide",
     "files": [
       {
-        "name" : "Dvc Files And Directories",
+        "name" : "Files and Directories",
         "indexFile" : "dvc-files-and-directories.md",
         "folder": "/static/docs/user-guide",
         "files":[]
       },
       {
-        "name" : "Dvc File Format",
+        "name" : "File Format (.dvc)",
         "indexFile" : "dvc-file-format.md",
         "folder": "/static/docs/user-guide",
         "files": []
       },
       {
-        "name" : "Cache File Linking",
+        "name" : "Large File Optimization",
         "indexFile" : "cache-file-linking.md",
         "folder": "/static/docs/user-guide",
         "files":[]
@@ -168,7 +168,7 @@
         "files":[]
       },
       {
-        "name" : "Development",
+        "name" : "Development Version",
         "indexFile" : "development.md",
         "folder": "/static/docs/user-guide",
         "files":[]
@@ -193,19 +193,19 @@
         "files": []
       },
       {
-        "name": "Autocomplete",
+        "name": "Shell Autocomplete",
         "indexFile": "autocomplete.md",
         "folder": "/static/docs/user-guide",
         "files": []
       },
       {
-        "name": "Plugins",
+        "name": "Plugins & Integrations",
         "indexFile": "plugins.md",
         "folder": "/static/docs/user-guide",
         "files": []
       },
       {
-        "name": "Analytics",
+        "name": "Anonymized Usage Analytics",
         "indexFile": "analytics.md",
         "folder": "/static/docs/user-guide",
         "files": []
@@ -224,18 +224,18 @@
     "indexFile": "index.md",
     "files": [
       {
-        "name": "Add",
+        "name": "add",
         "folder": "/static/docs/commands-reference",
         "indexFile": "add.md",
         "files": []
       },
       {
-        "name": "Cache",
+        "name": "cache",
         "folder": "/static/docs/commands-reference",
         "indexFile": "cache.md",
         "files": [
           {
-            "name": "Cache Dir",
+            "name": "cache dir",
             "folder": "/static/docs/commands-reference",
             "indexFile": "cache-dir.md",
             "files": []
@@ -243,96 +243,96 @@
         ]
       },
       {
-        "name": "Checkout",
+        "name": "checkout",
         "folder": "/static/docs/commands-reference",
         "indexFile": "checkout.md",
         "files": []
       },
       {
-        "name": "Commit",
+        "name": "commit",
         "folder": "/static/docs/commands-reference",
         "indexFile": "commit.md",
         "files": []
       },
       {
-        "name": "Config",
+        "name": "config",
         "folder": "/static/docs/commands-reference",
         "indexFile": "config.md",
         "files": []
       },
       {
-        "name": "Diff",
+        "name": "diff",
         "folder": "/static/docs/commands-reference",
         "indexFile": "diff.md",
         "files": []
       },
       {
-        "name": "Destroy",
+        "name": "destroy",
         "folder": "/static/docs/commands-reference",
         "indexFile": "destroy.md",
         "files": []
       },
       {
-        "name": "Fetch",
+        "name": "fetch",
         "folder": "/static/docs/commands-reference",
         "indexFile": "fetch.md",
         "files": []
       },
       {
-        "name": "Gc",
+        "name": "gc",
         "folder": "/static/docs/commands-reference",
         "indexFile": "gc.md",
         "files": []
       },
       {
-        "name": "Init",
+        "name": "init",
         "folder": "/static/docs/commands-reference",
         "indexFile": "init.md",
         "files": []
       },
       {
-        "name": "Install",
+        "name": "install",
         "folder": "/static/docs/commands-reference",
         "indexFile": "install.md",
         "files": []
       },
       {
-        "name": "Import",
+        "name": "import",
         "folder": "/static/docs/commands-reference",
         "indexFile": "import.md",
         "files": []
       },
       {
-        "name": "Lock",
+        "name": "lock",
         "folder": "/static/docs/commands-reference",
         "indexFile": "lock.md",
         "files": []
       },
       {
-        "name": "Metrics",
+        "name": "metrics",
         "folder": "/static/docs/commands-reference",
         "indexFile": "metrics.md",
         "files": [
           {
-            "name": "Metrics Add",
+            "name": "metrics add",
             "folder": "/static/docs/commands-reference",
             "indexFile": "metrics-add.md",
             "files": []
           },
           {
-            "name": "Metrics Modify",
+            "name": "metrics modify",
             "folder": "/static/docs/commands-reference",
             "indexFile": "metrics-modify.md",
             "files": []
           },
           {
-            "name": "Metrics Remove",
+            "name": "metrics remove",
             "folder": "/static/docs/commands-reference",
             "indexFile": "metrics-remove.md",
             "files": []
           },
           {
-            "name": "Metrics Show",
+            "name": "metrics show",
             "folder": "/static/docs/commands-reference",
             "indexFile": "metrics-show.md",
             "files": []
@@ -340,24 +340,24 @@
         ]
       },
       {
-        "name": "Move",
+        "name": "move",
         "folder": "/static/docs/commands-reference",
         "indexFile": "move.md",
         "files": []
       },
       {
-        "name": "Pipeline",
+        "name": "pipeline",
         "folder": "/static/docs/commands-reference",
         "indexFile": "pipeline.md",
         "files": [
           {
-            "name": "Pipeline List",
+            "name": "pipeline list",
             "folder": "/static/docs/commands-reference",
             "indexFile": "pipeline-list.md",
             "files": []
           },
           {
-            "name": "Pipeline Show",
+            "name": "pipeline show",
             "folder": "/static/docs/commands-reference",
             "indexFile": "pipeline-show.md",
             "files": []
@@ -365,48 +365,48 @@
         ]
       },
       {
-        "name": "Push",
+        "name": "push",
         "folder": "/static/docs/commands-reference",
         "indexFile": "push.md",
         "files": []
       },
       {
-        "name": "Pull",
+        "name": "pull",
         "folder": "/static/docs/commands-reference",
         "indexFile": "Pull.md",
         "files": []
       },
       {
-        "name": "Remote",
+        "name": "remote",
         "folder": "/static/docs/commands-reference",
         "indexFile": "remote.md",
         "files": [
           {
-            "name": "Remote Add",
+            "name": "remote add",
             "folder": "/static/docs/commands-reference",
             "indexFile": "remote-add.md",
             "files": []
           },
           {
-            "name": "Remote Default",
+            "name": "remote default",
             "folder": "/static/docs/commands-reference",
             "indexFile": "remote-default.md",
             "files": []
           },
           {
-            "name": "Remote List",
+            "name": "remote list",
             "folder": "/static/docs/commands-reference",
             "indexFile": "remote-list.md",
             "files": []
           },
           {
-            "name": "Remote Modify",
+            "name": "remote modify",
             "folder": "/static/docs/commands-reference",
             "indexFile": "remote-modify.md",
             "files": []
           },
           {
-            "name": "Remote Remove",
+            "name": "remote remove",
             "folder": "/static/docs/commands-reference",
             "indexFile": "remote-remove.md",
             "files": []
@@ -414,49 +414,49 @@
         ]
       },
       {
-        "name": "Remove",
+        "name": "remove",
         "folder": "/static/docs/commands-reference",
         "indexFile": "remove.md",
         "files": []
       },
       {
-        "name": "Repro",
+        "name": "repro",
         "folder": "/static/docs/commands-reference",
         "indexFile": "repro.md",
         "files": []
       },
       {
-        "name": "Root",
+        "name": "root",
         "folder": "/static/docs/commands-reference",
         "indexFile": "root.md",
         "files": []
       },
       {
-        "name": "Run",
+        "name": "run",
         "folder": "/static/docs/commands-reference",
         "indexFile": "run.md",
         "files": []
       },
       {
-        "name": "Status",
+        "name": "status",
         "folder": "/static/docs/commands-reference",
         "indexFile": "status.md",
         "files": []
       },
       {
-        "name": "Unlock",
+        "name": "unlock",
         "folder": "/static/docs/commands-reference",
         "indexFile": "unlock.md",
         "files": []
       },
       {
-        "name": "Unprotect",
+        "name": "unprotect",
         "folder": "/static/docs/commands-reference",
         "indexFile": "unprotect.md",
         "files": []
       },
       {
-        "name": "Version",
+        "name": "version",
         "folder": "/static/docs/commands-reference",
         "indexFile": "version.md",
         "files": []
@@ -475,7 +475,7 @@
         "files": []
       },
       {
-        "name": "Define Ml Pipeline",
+        "name": "Define ML Pipeline",
         "folder": "/static/docs/tutorial",
         "indexFile": "define-ml-pipeline.md",
         "files": []
@@ -501,38 +501,44 @@
     "files": [
       {
         "name": "Collaboration Issues",
-        "folder": "/static/docs/philosophy",
+        "folder": "/static/docs/understanding-dvc",
         "indexFile": "collaboration-issues.md",
         "files": []
       },
       {
         "name": "Existing Tools",
-        "folder": "/static/docs/philosophy",
+        "folder": "/static/docs/understanding-dvc",
         "indexFile": "existing-tools.md",
         "files": []
       },
       {
-        "name": "What Is Dvc",
-        "folder": "/static/docs/philosophy",
+        "name": "What Is DVC?",
+        "folder": "/static/docs/understanding-dvc",
         "indexFile": "what-is-dvc.md",
         "files": []
       },
       {
         "name": "Core Features",
-        "folder": "/static/docs/philosophy",
+        "folder": "/static/docs/understanding-dvc",
         "indexFile": "core-features.md",
         "files": []
       },
       {
         "name": "How It Works",
-        "folder": "/static/docs/philosophy",
+        "folder": "/static/docs/understanding-dvc",
         "indexFile": "how-it-works.md",
         "files": []
       },
       {
         "name": "Related Technologies",
-        "folder": "/static/docs/philosophy",
+        "folder": "/static/docs/understanding-dvc",
         "indexFile": "related-technologies.md",
+        "files": []
+      },
+      {
+        "name": "Resources",
+        "folder": "/static/docs/understanding-dvc",
+        "indexFile": "resources.md",
         "files": []
       }
     ]
@@ -542,13 +548,13 @@
     "folder": "/static/docs/changelog",
     "files": [
       {
-        "name": "0.35",
+        "name": "v0.19 - v0.35",
         "folder": "/static/docs/changelog",
         "indexFile": "0.35.md",
         "files": []
       },
       {
-        "name": "0.18",
+        "name": "v0.12 - v0.18",
         "folder": "/static/docs/changelog",
         "indexFile": "0.18.md",
         "files": []
