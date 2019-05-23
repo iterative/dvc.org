@@ -7,13 +7,13 @@ cache.
 ## Synopsis
 
 ```usage
-    usage: dvc fetch [-h] [-q | -v] [-j JOBS]
-                     [--show-checksums] [-r REMOTE]
-                     [-a] [-T] [-d] [-R]
-                     [targets [targets ...]]
+usage: dvc fetch [-h] [-q | -v] [-j JOBS]
+                 [--show-checksums] [-r REMOTE]
+                 [-a] [-T] [-d] [-R]
+                 [targets [targets ...]]
 
-    positional arguments:
-      targets               DVC files (stages).
+positional arguments:
+  targets               DVC files (stages).
 ```
 
 ## Description
@@ -29,17 +29,17 @@ files are not already in the local cache:
 Controlled files             Commands
 ---------------- ---------------------------------
 
- remote storage
-       +
-       |         +------------+
-       | - - - - | dvc fetch  | ++
-       v         +------------+   +   +----------+
-  local cache                      ++ | dvc pull |
-       +         +------------+   +   +----------+
-       | - - - - |dvc checkout| ++
-       |         +------------+
-       v
-   workspace
+remote storage
+     +
+     |         +------------+
+     | - - - - | dvc fetch  | ++
+     v         +------------+   +   +----------+
+local cache                      ++ | dvc pull |
+     +         +------------+   +   +----------+
+     | - - - - |dvc checkout| ++
+     |         +------------+
+     v
+ workspace
 ```
 
 Fetching could be useful when first checking out an existing DVC project, since
@@ -124,22 +124,22 @@ This step is optional, and you can run it only if you want to run this examples
 in your environment. First, you need to download the project:
 
 ```dvc
-    $ git clone https://github.com/iterative/example-get-started
+$ git clone https://github.com/iterative/example-get-started
 ```
 
 Second, let's install the requirements. But before we do that, we **strongly**
 recommend creating a virtual environment with `virtualenv` or a similar tool:
 
 ```dvc
-    $ cd example-get-started
-    $ virtualenv -p python3 .env
-    $ source .env/bin/activate
+$ cd example-get-started
+$ virtualenv -p python3 .env
+$ source .env/bin/activate
 ```
 
 Now, we can install requirements for the project:
 
 ```dvc
-    $ pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 </details>
@@ -148,25 +148,25 @@ The existing pipeline looks almost like in this
 [example](/doc/get-started/example-pipeline):
 
 ```dvc
-    .
-    ├── data
-    │   └── data.xml.dvc
-    ├── evaluate.dvc
-    ├── featurize.dvc
-    ├── prepare.dvc
-    ├── train.dvc
-    └── src
-        └── <code files here>
+.
+├── data
+│   └── data.xml.dvc
+├── evaluate.dvc
+├── featurize.dvc
+├── prepare.dvc
+├── train.dvc
+└── src
+    └── <code files here>
 ```
 
 We have these tags in the repository that represent different iterations of
 solving the problem:
 
 ```dvc
-    $ git tag
+$ git tag
 
-    baseline     <- first simple version of the model
-    bigram       <- use bigrams to improve the model
+baseline     <- first simple version of the model
+bigram       <- use bigrams to improve the model
 ```
 
 ## Examples: Default behavior
@@ -177,28 +177,28 @@ that will download the most recent `model.pkl`, `data.xml`, and other files that
 are under DVC control into our local cache:
 
 ```dvc
-    $ dvc status --cloud
-    ...
-        deleted:            model.pkl
-        deleted:            data/features/...
+$ dvc status --cloud
+...
+    deleted:            model.pkl
+    deleted:            data/features/...
 
-    $ dvc fetch
-    ...
-    (2/6): [##############################] 100% data/features/test.pkl
-    (3/6): [##############################] 100% model.pkl
-    (4/6): [##############################] 100% data/features/train.pkl
-    ...
+$ dvc fetch
+...
+(2/6): [##############################] 100% data/features/test.pkl
+(3/6): [##############################] 100% model.pkl
+(4/6): [##############################] 100% data/features/train.pkl
+...
 
-    $ tree .dvc
-    .dvc
-    ├── cache           <- dir .dvc/cache was created and populated
-    │   ├── 38
-    │   │   └── 63d0e317dee0a55c4e59d2ec0eef33
-    │   ├── 42
-    │   │   └── c7025fc0edeb174069280d17add2d4.dir
-    │   ├── ...
-    ├── config
-    ├── ...
+$ tree .dvc
+.dvc
+├── cache           <- dir .dvc/cache was created and populated
+│   ├── 38
+│   │   └── 63d0e317dee0a55c4e59d2ec0eef33
+│   ├── 42
+│   │   └── c7025fc0edeb174069280d17add2d4.dir
+│   ├── ...
+├── config
+├── ...
 ```
 
 > `dvc status --cloud` (or `-c`) compares local cache vs default remote.
@@ -209,10 +209,9 @@ by all DVC files in the current branch, including for directories. The checksums
 correspond to the `model.pkl` file and `data/features/` directory, respectively.
 
 ```dvc
-    $ dvc checkout      <- links files from local cache to workspace
-    Checking out '{'scheme': 'local', 'path': '.../example-get-started/model.pkl'}' with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
-    Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/features'}' with cache '42c7025fc0edeb174069280d17add2d4.dir'.
-    ...
+$ dvc checkout      <- links files from local cache to workspace
+Checking out '{'scheme': 'local', 'path': '.../example-get-started/model.pkl'}' with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
+Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/...
 ```
 
 ## Examples: Specific stages
@@ -224,21 +223,21 @@ fetch only downloads the data files of a specific stage by specifying the
 corresponding DVC file (target stage):
 
 ```dvc
-    $ dvc fetch prepare.dvc
-    ...
-    (1/2): [##############################] 100% data/prepared/test.tsv
-    (2/2): [##############################] 100% data/prepared/train.tsv
+$ dvc fetch prepare.dvc
+...
+(1/2): [##############################] 100% data/prepared/test.tsv
+(2/2): [##############################] 100% data/prepared/train.tsv
 
-    $ tree .dvc/cache
-    .dvc/cache
-    ├── 42
-    │   └── c7025fc0edeb174069280d17add2d4.dir
-    ├── 58
-    │   └── 245acfdc65b519c44e37f7cce12931
-    ├── 68
-    │   └── 36f797f3924fb46fcfd6b9f6aa6416.dir
-    └── 9d
-        └── 603888ec04a6e75a560df8678317fb
+$ tree .dvc/cache
+.dvc/cache
+├── 42
+│   └── c7025fc0edeb174069280d17add2d4.dir
+├── 58
+│   └── 245acfdc65b519c44e37f7cce12931
+├── 68
+│   └── 36f797f3924fb46fcfd6b9f6aa6416.dir
+└── 9d
+    └── 603888ec04a6e75a560df8678317fb
 ```
 
 > Note that `prepare.dvc` is the first stage in our example's implicit pipeline.
@@ -254,12 +253,12 @@ associated with the `prepare.dvc` stage have been fetched. Several
 dependencies/outputs for the full pipeline are still missing from local cache:
 
 ```dvc
-   $ dvc status -c
-    ...
-        deleted:            model.pkl
-        deleted:            data/features/test.pkl
-        deleted:            data/features/train.pkl
-        deleted:            data/data.xml
+$ dvc status -c
+...
+    deleted:            model.pkl
+    deleted:            data/features/test.pkl
+    deleted:            data/features/train.pkl
+    deleted:            data/data.xml
 ```
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
@@ -267,32 +266,32 @@ to retrieve the data up to our third stage, `train.dvc`? We can use the
 `--with-deps` (or `-d`) flag:
 
 ```dvc
-    $ dvc fetch --with-deps train.dvc
-    ...
-    (1/4): [##############################] 100% model.pkl
-    (2/4): [######                        ] 21% data/data.xml
-    (2/4): [##############################] 100% data/features/train.pkl
-    (3/4): [##############################] 100% data/features/test.pkl
-    (4/4): [##############################] 100% data/data.xml
+$ dvc fetch --with-deps train.dvc
+...
+(1/4): [##############################] 100% model.pkl
+(2/4): [######                        ] 21% data/data.xml
+(2/4): [##############################] 100% data/features/train.pkl
+(3/4): [##############################] 100% data/features/test.pkl
+(4/4): [##############################] 100% data/data.xml
 
-    $ tree .dvc/cache
-    .dvc/cache
-    ├── 38
-    │   └── 63d0e317dee0a55c4e59d2ec0eef33
-    ├── 42
-    │   └── c7025fc0edeb174069280d17add2d4.dir
-    ├── 58
-    │   └── 245acfdc65b519c44e37f7cce12931
-    ├── 68
-    │   └── 36f797f3924fb46fcfd6b9f6aa6416.dir
-    ├── 9d
-    │   └── 603888ec04a6e75a560df8678317fb
-    ├── a3
-    │   └── 04afb96060aad90176268345e10355
-    ├── aa
-    │   └── 35101ce881d04b41d5b4ff3593b423
-    └── dc
-        └── a9c512fda11293cfee7617b66648dc
+$ tree .dvc/cache
+.dvc/cache
+├── 38
+│   └── 63d0e317dee0a55c4e59d2ec0eef33
+├── 42
+│   └── c7025fc0edeb174069280d17add2d4.dir
+├── 58
+│   └── 245acfdc65b519c44e37f7cce12931
+├── 68
+│   └── 36f797f3924fb46fcfd6b9f6aa6416.dir
+├── 9d
+│   └── 603888ec04a6e75a560df8678317fb
+├── a3
+│   └── 04afb96060aad90176268345e10355
+├── aa
+│   └── 35101ce881d04b41d5b4ff3593b423
+└── dc
+    └── a9c512fda11293cfee7617b66648dc
 ```
 
 Fetching using `--with-deps` starts with the named stage and searches backwards

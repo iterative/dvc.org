@@ -16,10 +16,10 @@ to download `data.xml`and save it into the `data` subdirectory.
 </details>
 
 ```dvc
-    $ mkdir data
-    $ wget -P data https://dvc.org/s3/so/100K/Posts.xml.zip
-    $ du -sh data/*
-     41M data/Posts.xml.zip
+$ mkdir data
+$ wget -P data https://dvc.org/s3/so/100K/Posts.xml.zip
+$ du -sh data/*
+ 41M data/Posts.xml.zip
 ```
 
 At this time, `data/Posts.xml.zip` is an untracked regular file. We can place it
@@ -28,17 +28,17 @@ will see a new file `data/Posts.xml.zip.dvc` and a change in `data/.gitignore`.
 Both of these files have to be committed to the repository.
 
 ```dvc
-    $ dvc add data/Posts.xml.zip
-    $ du -sh data/*
-     41M data/Posts.xml.zip
-    4.0K data/Posts.xml.zip.dvc
+$ dvc add data/Posts.xml.zip
+$ du -sh data/*
+ 41M data/Posts.xml.zip
+4.0K data/Posts.xml.zip.dvc
 
-    $ git status -s data/
-    ?? data/.gitignore
-    ?? data/Posts.xml.zip.dvc
+$ git status -s data/
+?? data/.gitignore
+?? data/Posts.xml.zip.dvc
 
-    $ git add .
-    $ git commit -m "add source dataset"
+$ git add .
+$ git commit -m "add source dataset"
 ```
 
 You have probably already noticed that the actual data file was not committed to
@@ -70,15 +70,15 @@ location of the actual content file in DVC cache directory `.dvc/cache`.
 > [DVC File Format](/doc/user-guide/dvc-file-format)
 
 ```dvc
-    $ cat data/Posts.xml.zip.dvc
-    md5: 7559eb45beb7e90f192e836be8032a64
-    outs:
-    - cache: true
-      md5: ec1d2935f811b77cc49b031b999cbf17
-      path: Posts.xml.zip
+$ cat data/Posts.xml.zip.dvc
+md5: 7559eb45beb7e90f192e836be8032a64
+outs:
+- cache: true
+  md5: ec1d2935f811b77cc49b031b999cbf17
+  path: Posts.xml.zip
 
-    $ du -sh .dvc/cache/ec/*
-     41M .dvc/cache/ec/1d2935f811b77cc49b031b999cbf17
+$ du -sh .dvc/cache/ec/*
+ 41M .dvc/cache/ec/1d2935f811b77cc49b031b999cbf17
 ```
 
 Keeping actual file content in a cache directory and a copy of the caches in
@@ -91,17 +91,18 @@ copy) might take a few minutes.
 
 DVC was designed with large data files in mind. This means gigabytes or even
 hundreds of gigabytes in file size. Instead of copying files from cache to
-workspace, DVC creates [hardlinks](https://en.wikipedia.org/wiki/Hard_link).
-(This is similar to what [Git-annex](https://git-annex.branchable.com/) does.)
+workspace, DVC creates reflinks or other file link types. (See [Cache File
+Linking](/docs/user-guide/cache-file-linking).)
 
-Creating file hardlinks (or reflinks on the modern file systems) is a quick
-operation. So, with DVC you can easily checkout a few dozen files of any size. A
-hardlink does not require you to have twice as much space in the hard drive.
-Even if each of the files contains 41MB of data, the overall size of the
-repository is still 41MB. Both of the files correspond to the same `inode` (file
-meta-data record) in a file system. Use `ls -i` to see file system inodes. If
-you are using a modern file system with reflinks you might see different inodes,
-still only one copy if the actual file data is stored.
+Creating file links is a quick file system operation. So, with DVC you can
+easily checkout a few dozen files of any size. A file link does not require you
+to have twice as much space in the hard drive. Even if each of the files
+contains 41MB of data, the overall size of the repository is still 41MB. Both of
+the files correspond to the same `inode` (file metadata record) in a file
+system. Use `ls -i` to see file system inodes. If you are using a modern file
+system with reflinks you might see different inodes, still only one copy if the
+actual file data is stored. (Refer to [Cache File
+Linking](/docs/user-guide/cache-file-linking) for more details.)
 
 > Note: In case of systems supporting reflink, use `df` utility to see that free
 > space on the drive didn't decline by the file size that we are adding and no
@@ -109,19 +110,20 @@ still only one copy if the actual file data is stored.
 > reflinks.
 
 ```dvc
-    $ ls -i data/Posts.xml.zip
-    78483929 data/Posts.xml.zip
+$ ls -i data/Posts.xml.zip
+78483929 data/Posts.xml.zip
 
-    $ ls -i .dvc/cache/ec/
-    78483929 88519f8465218abb23ce0e0e8b1384
+$ ls -i .dvc/cache/ec/
+78483929 88519f8465218abb23ce0e0e8b1384
 
-    $ du -sh .
-     41M .
+$ du -sh .
+ 41M .
 ```
 
-> Note that DVC uses hardlinks in all the supported OSs, including Mac OS, Linux
-> and Windows. Some implementation details (like inodes) might differ, but the
-> overall DVC behavior is the same.
+> Note that DVC tries to use reflinks by default in the platforms that support
+> them (Mac OS or Linux, depending on the file system). Some implementation
+> details (like inodes) might differ, but the overall DVC behavior is the same
+> on those platforms.
 
 ## Running commands
 
@@ -153,26 +155,26 @@ before the command to run itself.
 Let's see how an extract command `unzip` works under DVC:
 
 ```dvc
-    $ dvc run -d data/Posts.xml.zip -o data/Posts.xml \
-            unzip data/Posts.xml.zip -d data/
+$ dvc run -d data/Posts.xml.zip -o data/Posts.xml \
+        unzip data/Posts.xml.zip -d data/
 
-    Running command:
-	    unzip data/Posts.xml.zip -d data/
-    Archive:  data/Posts.xml.zip
-        inflating: data/Posts.xml
-    Adding 'data/Posts.xml' to 'data/.gitignore'.
-    Saving 'data/Posts.xml' to cache '.dvc/cache'.
-    Saving information to 'Posts.xml.dvc'.
+Running command:
+  unzip data/Posts.xml.zip -d data/
+Archive:  data/Posts.xml.zip
+    inflating: data/Posts.xml
+Adding 'data/Posts.xml' to 'data/.gitignore'.
+Saving 'data/Posts.xml' to cache '.dvc/cache'.
+Saving information to 'Posts.xml.dvc'.
 
-    To track the changes with git run:
+To track the changes with git run:
 
-	    git add data/.gitignore Posts.xml.dvc
+  git add data/.gitignore Posts.xml.dvc
 
-    $ du -sh data/*
+$ du -sh data/*
 
-    145M data/Posts.xml
-    41M data/Posts.xml.zip
-    4.0K data/Posts.xml.zip.dvc
+145M data/Posts.xml
+41M data/Posts.xml.zip
+4.0K data/Posts.xml.zip.dvc
 ```
 
 In these commands, option `-d` specifies an output directory for the tar
@@ -198,17 +200,17 @@ and does some additional work if the command was successful:
 Let's take a look at the resulting DVC-file from the above example:
 
 ```dvc
-    $ cat Posts.xml.dvc
+$ cat Posts.xml.dvc
 
-    cmd: ' unzip data/Posts.xml.zip -d data/'
-    deps:
-    - md5: ec1d2935f811b77cc49b031b999cbf17
-      path: data/Posts.xml.zip
-    md5: 16129387a89cb5a329eb6a2aa985415e
-    outs:
-    - cache: true
-      md5: c1fa36d90caa8489a317eee917d8bf03
-      path: data/Posts.xml
+cmd: ' unzip data/Posts.xml.zip -d data/'
+deps:
+- md5: ec1d2935f811b77cc49b031b999cbf17
+  path: data/Posts.xml.zip
+md5: 16129387a89cb5a329eb6a2aa985415e
+outs:
+- cache: true
+  md5: c1fa36d90caa8489a317eee917d8bf03
+  path: data/Posts.xml
 ```
 
 Sections of the file above include:
@@ -223,13 +225,13 @@ And (as with the `dvc add` command) the `data/.gitignore` file was modified. Now
 it includes the unarchived command output file `Posts.xml`.
 
 ```dvc
-    $ git status -s
-     M data/.gitignore
-    ?? Posts.xml.dvc
+$ git status -s
+ M data/.gitignore
+?? Posts.xml.dvc
 
-    $ cat data/.gitignore
-    Posts.xml.zip
-    Posts.xml
+$ cat data/.gitignore
+Posts.xml.zip
+Posts.xml
 ```
 
 The output file `Posts.xml` was transformed by DVC into a data file in
@@ -238,23 +240,23 @@ the checksum, which starts with `c1fa36d` as we can see in the DVC-file
 `Posts.xml.dvc`:
 
 ```dvc
-    $ ls .dvc/cache/
-    2f/ a8/
+$ ls .dvc/cache/
+2f/ a8/
 
-    $ du -sh .dvc/cache/c1/* .dvc/cache/ec/*
-     41M .dvc/cache/ec/1d2935f811b77cc49b031b999cbf17
-    145M .dvc/cache/c1/fa36d90caa8489a317eee917d8bf03
+$ du -sh .dvc/cache/c1/* .dvc/cache/ec/*
+ 41M .dvc/cache/ec/1d2935f811b77cc49b031b999cbf17
+145M .dvc/cache/c1/fa36d90caa8489a317eee917d8bf03
 
-    $ du -sh .
-    186M .
+$ du -sh .
+186M .
 ```
 
 Let’s commit the result of the `unzip` command. This will be the first stage of
 our ML pipeline.
 
 ```dvc
-    $ git add .
-    $ git commit -m "extract data"
+$ git add .
+$ git commit -m "extract data"
 ```
 
 ## Running in bulk
@@ -267,21 +269,21 @@ Let’s run the next step of converting an XML file to TSV and the following ste
 of separating training and testing datasets one by one:
 
 ```dvc
-    $ dvc run -d data/Posts.xml -d code/xml_to_tsv.py -d code/conf.py \
-            -o data/Posts.tsv \
-            python code/xml_to_tsv.py
-    Using 'Posts.tsv.dvc' as a stage file
-    Reproducing 'Posts.tsv.dvc':
-            python code/xml_to_tsv.py
+$ dvc run -d data/Posts.xml -d code/xml_to_tsv.py -d code/conf.py \
+        -o data/Posts.tsv \
+        python code/xml_to_tsv.py
+Using 'Posts.tsv.dvc' as a stage file
+Reproducing 'Posts.tsv.dvc':
+        python code/xml_to_tsv.py
 
-    $ dvc run -d data/Posts.tsv -d code/split_train_test.py \
-            -d code/conf.py \
-            -o data/Posts-test.tsv -o data/Posts-train.tsv \
-            python code/split_train_test.py 0.33 20180319
-    Using 'Posts-test.tsv.dvc' as a stage file
-    Reproducing 'Posts-test.tsv.dvc':
-            python code/split_train_test.py 0.33 20180319
-    Positive size 2049, negative size 97951
+$ dvc run -d data/Posts.tsv -d code/split_train_test.py \
+        -d code/conf.py \
+        -o data/Posts-test.tsv -o data/Posts-train.tsv \
+        python code/split_train_test.py 0.33 20180319
+Using 'Posts-test.tsv.dvc' as a stage file
+Reproducing 'Posts-test.tsv.dvc':
+        python code/split_train_test.py 0.33 20180319
+Positive size 2049, negative size 97951
 ```
 
 The result of the steps are two DVC-files corresponding to each of the commands
@@ -290,20 +292,20 @@ created. This type of file should not be tracked by Git. Let’s manually includ
 this type of file into `.gitignore`.
 
 ```dvc
-    $ git status -s
-     M data/.gitignore
-    ?? Posts-test.tsv.dvc
-    ?? Posts.tsv.dvc
-    ?? code/conf.pyc
+$ git status -s
+ M data/.gitignore
+?? Posts-test.tsv.dvc
+?? Posts.tsv.dvc
+?? code/conf.pyc
 
-    $ echo "*.pyc" >> .gitignore
+$ echo "*.pyc" >> .gitignore
 ```
 
 Both of the steps can be committed to the repository together.
 
 ```dvc
-    $ git add .
-    $ git commit -m "Process to TSV and separate test and train"
+$ git add .
+$ git commit -m "Process to TSV and separate test and train"
 ```
 
 Let’s run and commit the following steps of the pipeline. Define the feature
@@ -311,42 +313,42 @@ extraction step which takes train and test TSVs and generates corresponding
 matrix files:
 
 ```dvc
-    $ dvc run -d code/featurization.py -d code/conf.py \
-            -d data/Posts-train.tsv -d data/Posts-test.tsv \
-            -o data/matrix-train.p -o data/matrix-test.p \
-            python code/featurization.py
-    Using 'matrix-train.p.dvc' as a stage file
-    Reproducing 'matrix-train.p.dvc':
+$ dvc run -d code/featurization.py -d code/conf.py \
+        -d data/Posts-train.tsv -d data/Posts-test.tsv \
+        -o data/matrix-train.p -o data/matrix-test.p \
         python code/featurization.py
-    The input data frame data/Posts-train.tsv size is (66999, 3)
-    The output matrix data/matrix-train.p size is (66999, 5002) and data type is float64
-    The input data frame data/Posts-test.tsv size is (33001, 3)
-    The output matrix data/matrix-test.p size is (33001, 5002) and data type is float64
+Using 'matrix-train.p.dvc' as a stage file
+Reproducing 'matrix-train.p.dvc':
+    python code/featurization.py
+The input data frame data/Posts-train.tsv size is (66999, 3)
+The output matrix data/matrix-train.p size is (66999, 5002) and data type is float64
+The input data frame data/Posts-test.tsv size is (33001, 3)
+The output matrix data/matrix-test.p size is (33001, 5002) and data type is float64
 ```
 
 Train a model using the train matrix file:
 
 ```dvc
-    $ dvc run -d data/matrix-train.p -d code/train_model.py \
-            -d code/conf.py -o data/model.p \
-            python code/train_model.py 20180319
-    Using 'model.p.dvc' as a stage file
-    Reproducing 'model.p.dvc':
+$ dvc run -d data/matrix-train.p -d code/train_model.py \
+        -d code/conf.py -o data/model.p \
         python code/train_model.py 20180319
-    Input matrix size (66999, 5002)
-    X matrix size (66999, 5000)
-    Y matrix size (66999,)
+Using 'model.p.dvc' as a stage file
+Reproducing 'model.p.dvc':
+    python code/train_model.py 20180319
+Input matrix size (66999, 5002)
+X matrix size (66999, 5000)
+Y matrix size (66999,)
 ```
 
 And evaluate the result of the trained model using the test feature matrix:
 
 ```dvc
-    $ dvc run -d data/model.p -d data/matrix-test.p \
-            -d code/evaluate.py -d code/conf.py -M data/eval.txt \
-            -f Dvcfile \
-            python code/evaluate.py
-    Reproducing 'Dvcfile':
+$ dvc run -d data/model.p -d data/matrix-test.p \
+        -d code/evaluate.py -d code/conf.py -M data/eval.txt \
+        -f Dvcfile \
         python code/evaluate.py
+Reproducing 'Dvcfile':
+    python code/evaluate.py
 ```
 
 The model evaluation step is the last one. To make it a reproducibility goal by
@@ -360,29 +362,29 @@ The result of the last three run commands execution is three DVC-files and a
 modified .gitignore file. All the changes should be committed into Git.
 
 ```dvc
-    $ git status -s
-     M data/.gitignore
-    ?? Dvcfile
-    ?? matrix-train.p.dvc
-    ?? model.p.dvc
+$ git status -s
+ M data/.gitignore
+?? Dvcfile
+?? matrix-train.p.dvc
+?? model.p.dvc
 
-    $ git add .
-    $ git commit -m Evaluate
+$ git add .
+$ git commit -m Evaluate
 ```
 
 The evaluation step output contains the target metrics value in a simple text
 form:
 
 ```dvc
-    $ cat data/eval.txt
-    AUC: 0.624652
+$ cat data/eval.txt
+AUC: 0.624652
 ```
 
 You can also show the metrics using the `DVC metrics` command:
 
 ```dvc
-    $ dvc metrics show
-    data/eval.txt:AUC: 0.624652
+$ dvc metrics show
+data/eval.txt:AUC: 0.624652
 ```
 
 This is probably not the best AUC that you have seen. In this document, our

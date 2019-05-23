@@ -1,17 +1,17 @@
 # pipeline
 
-Utilities to manage pipelines. [Show](#show) - visualize or [list](#list) - list
+A set of commands to manage pipelines: [show](#show) - visualize or [list](#list) - list
 existing pipelines.
 
 ## Synopsis
 
 ```usage
-    usage: dvc pipeline [-h] [-q | -v] {show,list} ...
+usage: dvc pipeline [-h] [-q | -v] {show,list} ...
 
-    positional arguments:
-      {show,list}    Use dvc pipeline CMD --help for command-specific help.
-        show         Show pipeline.
-        list         List pipelines.
+positional arguments:
+  {show,list}    Use dvc pipeline CMD --help for command-specific help.
+    show         Show pipeline.
+    list         List pipelines.
 ```
 
 ## Description

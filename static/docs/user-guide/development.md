@@ -9,8 +9,8 @@ to distinguish official dvc release (e.g. `0.24.3`) from a development version
 (e.g. `0.24.3-9c7381`).
 
 ```dvc
-    $ pip install gitpython
-    $ pip install git+git://github.com/iterative/dvc
+$ pip install gitpython
+$ pip install git+git://github.com/iterative/dvc
 ```
 
 **Note**: this will automatically upgrade your DVC version to the latest

@@ -5,8 +5,8 @@ dead easy to consistently get all your data files and code to any machine. All
 you need to do is to setup a remote DVC repository, that will store cache files
 for your project. Currently DVC supports AWS S3, Google Cloud Storage, Microsoft
 Azure Blob Storage, SSH and HDFS as remote location and the list is constantly
-growing. To get a full info about supported remote types and their configuration
-take a look at `dvc remote`.
+growing. For complete information about supported remote types and their
+configuration take a look at `dvc remote`.
 
 ![](/static/img/model-sharing-digram.png)
 
@@ -26,8 +26,8 @@ To setup DVC remote on s3, you need to supply an URL to the location where you
 wish to store data:
 
 ```dvc
-    $ dvc remote add -d myremote s3://mybucket/myproject
-    Setting "myremote" as a default remote.
+$ dvc remote add -d myremote s3://mybucket/myproject
+Setting "myremote" as a default remote.
 ```
 
 NOTE: `-d|--default` option sets myremote as a default repository for the
@@ -37,8 +37,8 @@ This will add `myremote` to your `.dvc/config`. Commit your changes and push
 your code:
 
 ```dvc
-    $ git add .dvc/config
-    $ git push
+$ git add .dvc/config
+$ git push
 ```
 
 ### Upload data
@@ -46,13 +46,13 @@ your code:
 To upload data from your project run:
 
 ```dvc
-    $ dvc push
+$ dvc push
 
-    (1/5): [##############################] 100% images/0001.jpg
-    (2/5): [##############################] 100% images/0002.jpg
-    (3/5): [##############################] 100% images/0001.jpg
-    (4/5): [##############################] 100% images
-    (5/5): [##############################] 100% model.pkl
+(1/5): [##############################] 100% images/0001.jpg
+(2/5): [##############################] 100% images/0002.jpg
+(3/5): [##############################] 100% images/0001.jpg
+(4/5): [##############################] 100% images
+(5/5): [##############################] 100% model.pkl
 ```
 
 ### Upload code
@@ -60,7 +60,7 @@ To upload data from your project run:
 Code with DVC metafiles should be uploaded through Git:
 
 ```dvc
-    $ git push
+$ git push
 ```
 
 ### Download code
@@ -69,14 +69,14 @@ Please use regular Git commands to download code and DVC metafiles from your Git
 servers.
 
 ```dvc
-    $ git clone https://github.com/myaccount/myproject.git
-    $ cd myproject
+$ git clone https://github.com/myaccount/myproject.git
+$ cd myproject
 ```
 
 or
 
 ```dvc
-    $ git pull
+$ git pull
 ```
 
 ### Download data
@@ -84,11 +84,11 @@ or
 To download data files for your project run:
 
 ```dvc
-    $ dvc pull
+$ dvc pull
 
-    (1/5): [##############################] 100% images/0001.jpg
-    (2/5): [##############################] 100% images/0002.jpg
-    (3/5): [##############################] 100% images/0003.jpg
-    (4/5): [##############################] 100% images
-    (5/5): [##############################] 100% model.pkl
+(1/5): [##############################] 100% images/0001.jpg
+(2/5): [##############################] 100% images/0002.jpg
+(3/5): [##############################] 100% images/0003.jpg
+(4/5): [##############################] 100% images
+(5/5): [##############################] 100% model.pkl
 ```

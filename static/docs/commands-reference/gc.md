@@ -5,9 +5,9 @@ Remove unused objects from cache or remote storage.
 ## Synopsis
 
 ```usage
-    usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c]
-                  [-r REMOTE] [-f] [-j JOBS]
-                  [-p [PROJECTS [PROJECTS ...]]]
+usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c]
+              [-r REMOTE] [-f] [-j JOBS]
+              [-p [PROJECTS [PROJECTS ...]]]
 ```
 
 ## Description
@@ -66,30 +66,30 @@ needed files back anytime you want.
 Basic example of cleaning up the cache:
 
 ```dvc
-    $ du -sh .dvc/cache/
-    7.4G    .dvc/cache/
+$ du -sh .dvc/cache/
+7.4G    .dvc/cache/
 ```
 
 When you run `dvc gc` it removes all objects from cache that are not referenced
 in the current workspace (by collecting hash sums from the stage DVC files):
 
 ```dvc
-    $ dvc gc
+$ dvc gc
 
-    '.dvc/cache/27e30965256ed4d3e71c2bf0c4caad2e' was removed
-    '.dvc/cache/2e006be822767e8ba5d73ebad49ef082' was removed
-    '.dvc/cache/2f412200dc53fb97dcac0353b609d199' was removed
-    '.dvc/cache/541025db4da02fcab715ca2c2c8f4c19' was removed
-    '.dvc/cache/62f8c2ba93cfe5a6501136078f0336f9' was removed
-    '.dvc/cache/7c4521365288d69a03fa22ad3d399f32' was removed
-    '.dvc/cache/9ff7365a8256766be8c363fac47fc0d4' was removed
-    '.dvc/cache/a86ca87250ed8e54a9e2e8d6d34c252e' was removed
-    '.dvc/cache/f64d65d4ccef9ff9d37ea4cf70b18700' was removed
+'.dvc/cache/27e30965256ed4d3e71c2bf0c4caad2e' was removed
+'.dvc/cache/2e006be822767e8ba5d73ebad49ef082' was removed
+'.dvc/cache/2f412200dc53fb97dcac0353b609d199' was removed
+'.dvc/cache/541025db4da02fcab715ca2c2c8f4c19' was removed
+'.dvc/cache/62f8c2ba93cfe5a6501136078f0336f9' was removed
+'.dvc/cache/7c4521365288d69a03fa22ad3d399f32' was removed
+'.dvc/cache/9ff7365a8256766be8c363fac47fc0d4' was removed
+'.dvc/cache/a86ca87250ed8e54a9e2e8d6d34c252e' was removed
+'.dvc/cache/f64d65d4ccef9ff9d37ea4cf70b18700' was removed
 ```
 
 Let's check the size now:
 
 ```dvc
-    $ du -sh .dvc/cache/
-    3.1G    .dvc/cache/
+$ du -sh .dvc/cache/
+3.1G    .dvc/cache/
 ```

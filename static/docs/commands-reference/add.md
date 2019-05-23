@@ -5,12 +5,12 @@ Take a data file or a directory under DVC control.
 ## Synopsis
 
 ```usage
-    usage: dvc add [-h] [-q | -v] [-f]
-                   [-R] [--no-commit]
-                   targets [targets ...]
+usage: dvc add [-h] [-q | -v] [-f]
+               [-R] [--no-commit]
+               targets [targets ...]
 
-    positional arguments:
-      targets                  Input files/directories.
+positional arguments:
+  targets                  Input files/directories.
 ```
 
 ## Description
@@ -41,12 +41,12 @@ references the DVC cache entry using the checksum. See
 [DVC File Format](/doc/user-guide/dvc-file-format) for the detailed description
 of the DVC _metafile_ format.
 
-By default DVC tries a range of link types (`reflink`, `hardlink`, `symlink`, or
-`copy`) to try to avoid copying any file contents and to optimize DVC file
-operations even for large files. The `reflink` is the best link type available,
-but even though it is frequently supported by modern filesystems, many others
-still don't support it. DVC has the other link types for use on filesystems
-without `reflink` support. See `dvc config` for more information.
+By default DVC tries using reflinks (See [Cache File
+Linking](/docs/user-guide/cache-file-linking)) to avoid copying any file
+contents and to optimize DVC file operations for large files. DVC also supports
+other link types for use on file systems without `reflink` support, but they
+have to be specified manually. Refer to the `cache.type` config option in `dvc
+config cache` for more information.
 
 A `dvc add` target can be an individual file or a directory. There are two ways
 to work with directory hierarchies with `dvc add`.
@@ -96,25 +96,25 @@ This way you bring data provenance and make your project reproducible.
 Take a file under DVC control:
 
 ```dvc
-    $ dvc add data.xml
+$ dvc add data.xml
 
-    Adding 'data.xml' to '.gitignore'.
-    Saving 'data.xml' to cache '.dvc/cache'.
-    Saving information to 'data.xml.dvc'.
+Adding 'data.xml' to '.gitignore'.
+Saving 'data.xml' to cache '.dvc/cache'.
+Saving information to 'data.xml.dvc'.
 
-    To track the changes with git run:
+To track the changes with git run:
 
-    	git add .gitignore data.xml.dvc
+	git add .gitignore data.xml.dvc
 ```
 
 As the output says, stage file have been created for the file. Let us explore
 the result:
 
 ```dvc
-    $ tree
-    .
-    ├── data.xml
-    └── data.xml.dvc
+$ tree
+.
+├── data.xml
+└── data.xml.dvc
 ```
 
 Let's check the `data.xml.dvc` file inside:
@@ -122,19 +122,19 @@ Let's check the `data.xml.dvc` file inside:
 ```yaml
 md5: aae37d74224b05178153acd94e15956b
 outs:
-  - cache: true
-    md5: d8acabbfd4ee51c95da5d7628c7ef74b
-    metric: false
-    path: data.xml.jpg
+- cache: true
+  md5: d8acabbfd4ee51c95da5d7628c7ef74b
+  metric: false
+  path: data.xml.jpg
 ```
 
 This is a standard DVC stage file with only an `outs` entry. The checksum should
 correspond to an entry in the cache.
 
 ```dvc
-    $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
+$ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
 
-    .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b: ASCII text
+.dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b: ASCII text
 ```
 
 ## Examples: Directory
@@ -144,36 +144,36 @@ Your goal might be to build an algorithm to identify dogs and cats in pictures,
 and this is your training data set:
 
 ```dvc
-    $ tree pics
-    pics
-    ├── train
-    │   ├── cats        <-- a lot of images of cats
-    │   └── dogs        <-- a lot of images of dogs
-    └── validation
-        ├── cats        <-- images of cats
-        └── dogs        <-- images of dogs
+$ tree pics
+pics
+├── train
+│   ├── cats        <-- a lot of images of cats
+│   └── dogs        <-- a lot of images of dogs
+└── validation
+    ├── cats        <-- images of cats
+    └── dogs        <-- images of dogs
 ```
 
 Taking a directory under DVC control as simple as taking a single file:
 
 ```dvc
-    $ dvc add pics
+$ dvc add pics
 
-    Computing md5 for a large directory pics/train/cats. This is only done once.
-    [##############################] 100% pics/train/cats
+Computing md5 for a large directory pics/train/cats. This is only done once.
+[##############################] 100% pics/train/cats
 
-    ...
+...
 
-    Saving 'pics' to cache '.dvc/cache'.
+Saving 'pics' to cache '.dvc/cache'.
 
-    Linking directory 'pics'.
-    [##############################] 100% pics
+Linking directory 'pics'.
+[##############################] 100% pics
 
-    Saving information to 'pics.dvc'.
+Saving information to 'pics.dvc'.
 
-    To track the changes with git run:
+To track the changes with git run:
 
-      	git add pics.dvc
+  	git add pics.dvc
 ```
 
 There are no DVC files generated within this directory structure, but the images
@@ -184,23 +184,23 @@ top-level directory, and it contains this:
 ```yaml
 md5: df06d8d51e6483ed5a74d3979f8fe42e
 outs:
-  - cache: true
-    md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
-    metric: false
-    path: pics
+- cache: true
+  md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
+  metric: false
+  path: pics
 wdir: .
 ```
 
 If instead you use the `--recursive` option, the output looks as so:
 
 ```dvc
-    $ dvc add --recursive pix
+$ dvc add --recursive pix
 
-    Saving 'pix/train/cats/cat.150.jpg' to cache '.dvc/cache'.
-    Saving 'pix/train/cats/cat.130.jpg' to cache '.dvc/cache'.
-    Saving 'pix/train/cats/cat.111.jpg' to cache '.dvc/cache'.
-    Saving 'pix/train/cats/cat.438.jpg' to cache '.dvc/cache'.
-    ...
+Saving 'pix/train/cats/cat.150.jpg' to cache '.dvc/cache'.
+Saving 'pix/train/cats/cat.130.jpg' to cache '.dvc/cache'.
+Saving 'pix/train/cats/cat.111.jpg' to cache '.dvc/cache'.
+Saving 'pix/train/cats/cat.438.jpg' to cache '.dvc/cache'.
+...
 ```
 
 In this case a DVC file corresponding to each file is generated, and no
@@ -211,10 +211,10 @@ us treat the entire directory structure in one unit. It lets you pass the whole
 directory tree as input to a `dvc run` stage like so:
 
 ```dvc
-    $ dvc run -f train.dvc \
-              -d train.py -d data \
-              -M metrics.json -o model.h5 \
-              python train.py
+$ dvc run -f train.dvc \
+          -d train.py -d data \
+          -M metrics.json -o model.h5 \
+          python train.py
 ```
 
 To see this whole example go to

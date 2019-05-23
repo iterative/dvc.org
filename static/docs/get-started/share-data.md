@@ -28,9 +28,9 @@ You can check now that actual data file has been copied to the remote we created
 in the [configuration](/doc/get-started/configure) chapter:
 
 ```dvc
-    $ ls -R /tmp/dvc-storage
-        /tmp/dvc-storage/a3:
-        04afb96060aad90176268345e10355
+$ ls -R /tmp/dvc-storage
+/tmp/dvc-storage/a3:
+04afb96060aad90176268345e10355
 ```
 
 where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file,

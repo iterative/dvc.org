@@ -12,12 +12,12 @@ See also [add](/doc/commands-reference/remote-add),
 ## Synopsis
 
 ```usage
-    usage: dvc remote default [-h] [-q | -v] [-u]
-                              [--global] [--system] [--local]
-                              [name]
+usage: dvc remote default [-h] [-q | -v] [-u]
+                          [--global] [--system] [--local]
+                          [name]
 
-    positional arguments:
-        name           Name of the remote.
+positional arguments:
+    name           Name of the remote.
 ```
 
 ## Description
@@ -27,15 +27,15 @@ the `name` of the remote is not provided and `--unset` is not specified, this
 command returns the name of the default remote.
 
 ```dvc
-    $ dvc remote default myremote
+$ dvc remote default myremote
 ```
 
 This command assigns the default remote in the core section of the DVC
 [config file](/doc/user-guide/dvc-files-and-directories).
 
 ```ini
-   [core]
-   remote = myremote
+[core]
+remote = myremote
 ```
 
 For the commands which take a `--remote` option (`dvc pull`, `dvc push`,
@@ -75,33 +75,33 @@ set/unset/change the default remote configurations.
 Set `myremote` as default remote:
 
 ```dvc
-    $ dvc remote default myremote
+$ dvc remote default myremote
 ```
 
 Get default remote:
 
 ```dvc
-    $ dvc remote default
+$ dvc remote default
 
-    myremote
+myremote
 ```
 
 Change default remote value:
 
 ```dvc
-    $ dvc remote default mynewremote
+$ dvc remote default mynewremote
 ```
 
 In the DVC config file, the updated value of default remote can be found in the
 core section (run `cat .dvc/config`):
 
 ```ini
-    [core]
-    remote = mynewremote
+[core]
+remote = mynewremote
 ```
 
 Clear/unset default remote value:
 
 ```dvc
-    $ dvc remote default -u
+$ dvc remote default -u
 ```

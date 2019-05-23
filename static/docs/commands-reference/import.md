@@ -7,11 +7,11 @@ workspace and track changes in remote file or directory.
 ## Synopsis
 
 ```usage
-    usage: dvc import [-h] [-q] [-v] [-f] [--resume] url out
+usage: dvc import [-h] [-q] [-v] [-f] [--resume] url out
 
-    positional arguments:
-      url            URL (see supported URLs in the description)
-      out            Output
+positional arguments:
+  url            URL (see supported URLs in the description)
+  out            Output
 ```
 
 ## Description
@@ -62,15 +62,15 @@ where an alternative is demonstrated for each of these schemes.
 Instead of `dvc import`:
 
 ```dvc
-    $ dvc import https://example.com/path/to/data.csv data.csv
+$ dvc import https://example.com/path/to/data.csv data.csv
 ```
 
 It is possible to instead use `dvc run`:
 
 ```dvc
-    $ dvc run -d https://example.com/path/to/data.csv \
-              -o data.csv \
-              wget https://example.com/path/to/data.csv -O data.csv
+$ dvc run -d https://example.com/path/to/data.csv \
+          -o data.csv \
+          wget https://example.com/path/to/data.csv -O data.csv
 ```
 
 Both methods generate a DVC file with an external dependency, and they perform a
@@ -121,15 +121,15 @@ Second, let's install the requirements. But before we do that, we **strongly**
 recommend creating a virtual environment with `virtualenv` or a similar tool:
 
 ```dvc
-    $ cd example-get-started
-    $ virtualenv -p python3 .env
-    $ source .env/bin/activate
+$ cd example-get-started
+$ virtualenv -p python3 .env
+$ source .env/bin/activate
 ```
 
 Now, we can install requirements for the project:
 
 ```dvc
-    $ pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 </details>
@@ -151,8 +151,8 @@ This is needed to actually run the command below in case you are reproducing
 this example:
 
 ```dvc
-    $ git checkout 2-remote
-    $ mkdir data
+$ git checkout 2-remote
+$ mkdir data
 ```
 
 After executing these commands you should have an almost empty workspace.
@@ -160,17 +160,17 @@ After executing these commands you should have an almost empty workspace.
 </details>
 
 ```dvc
-    $ dvc import https://dvc.org/s3/get-started/data.xml data/data.xml
+$ dvc import https://dvc.org/s3/get-started/data.xml data/data.xml
 
-    Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data/data.xml'
-    [##############################] 100% data.xml
-    Adding 'data/data.xml' to 'data/.gitignore'.
-    Saving 'data/data.xml' to cache '.dvc/cache'.
-    Saving information to 'data.xml.dvc'.
+Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data/data.xml'
+[##############################] 100% data.xml
+Adding 'data/data.xml' to 'data/.gitignore'.
+Saving 'data/data.xml' to cache '.dvc/cache'.
+Saving information to 'data.xml.dvc'.
 
-    To track the changes with git run:
+To track the changes with git run:
 
-        git add data/.gitignore data.xml.dvc
+    git add data/.gitignore data.xml.dvc
 ```
 
 If you wish, it's possible to set up the other stages from the _Getting Started_
@@ -179,15 +179,15 @@ Instead we can look at the resulting DVC file `data.xml.dvc`:
 
 ```yaml
 deps:
-  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-    path: https://dvc.org/s3/get-started/data.xml
+- etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
+  path: https://dvc.org/s3/get-started/data.xml
 md5: 61e80c38c1ce04ed2e11e331258e6d0d
 outs:
-  - cache: true
-    md5: a304afb96060aad90176268345e10355
-    metric: false
-    path: data/data.xml
-    persist: false
+- cache: true
+  md5: a304afb96060aad90176268345e10355
+  metric: false
+  path: data/data.xml
+  persist: false
 wdir: .
 ```
 
@@ -210,9 +210,9 @@ remote data location. In real life the data file will probably be on a remote
 server, of course. Run these commands:
 
 ```dvc
-    $ mkdir /path/to/data-store
-    $ cd /path/to/data-store
-    $ wget https://dvc.org/s3/get-started/data.xml
+$ mkdir /path/to/data-store
+$ cd /path/to/data-store
+$ wget https://dvc.org/s3/get-started/data.xml
 ```
 
 In a production system you might have a process to update data files you need.
@@ -229,8 +229,8 @@ This is needed to actually run the command below in case you are reproducing
 this example:
 
 ```dvc
-    $ git checkout 2-remote
-    $ mkdir data
+$ git checkout 2-remote
+$ mkdir data
 ```
 
 After executing these commands you should have an almost empty workspace.
@@ -238,17 +238,17 @@ After executing these commands you should have an almost empty workspace.
 </details>
 
 ```dvc
-    $ dvc import /path/to/data-store/data.xml data/data.xml
+$ dvc import /path/to/data-store/data.xml data/data.xml
 
-    Importing '/path/to/data-store/data.xml' -> 'data/data.xml'
-    [##############################] 100% data.xml
-    Adding 'data/data.xml' to 'data/.gitignore'.
-    Saving 'data/data.xml' to cache '.dvc/cache'.
-    Saving information to 'data.xml.dvc'.
+Importing '/path/to/data-store/data.xml' -> 'data/data.xml'
+[##############################] 100% data.xml
+Adding 'data/data.xml' to 'data/.gitignore'.
+Saving 'data/data.xml' to cache '.dvc/cache'.
+Saving information to 'data.xml.dvc'.
 
-    To track the changes with git run:
+To track the changes with git run:
 
-        git add data/.gitignore data.xml.dvc
+    git add data/.gitignore data.xml.dvc
 ```
 
 At this point we have the workspace set up in a similar fashion. The difference
@@ -258,15 +258,15 @@ file:
 
 ```yaml
 deps:
-  - md5: a86ca87250ed8e54a9e2e8d6d34c252e
-    path: /path/to/data-store/data.xml
+- md5: a86ca87250ed8e54a9e2e8d6d34c252e
+  path: /path/to/data-store/data.xml
 md5: 361728a3b037c9a4bcb897cdf856edfc
 outs:
-  - cache: true
-    md5: a304afb96060aad90176268345e10355
-    metric: false
-    path: data/data.xml
-    persist: false
+- cache: true
+  md5: a304afb96060aad90176268345e10355
+  metric: false
+  path: data/data.xml
+  persist: false
 wdir: .
 ```
 
@@ -285,18 +285,18 @@ wish to execute the data preparation step below. On Windows use browser, on all
 other systems run:
 
 ```dvc
-    $ wget https://dvc.org/s3/get-started/code.zip
-    $ unzip code.zip
-    $ rm -f code.zip
+$ wget https://dvc.org/s3/get-started/code.zip
+$ unzip code.zip
+$ rm -f code.zip
 ```
 
 </details>
 
 ```dvc
-    $ dvc run -f prepare.dvc \
-              -d src/prepare.py -d data/data.xml \
-              -o data/prepared \
-              python src/prepare.py data/data.xml
+$ dvc run -f prepare.dvc \
+          -d src/prepare.py -d data/data.xml \
+          -o data/prepared \
+          python src/prepare.py data/data.xml
 ```
 
 Having this stage means that later when we run `dvc repro` a pipeline will be
@@ -305,26 +305,26 @@ executed.
 The workspace says it is fine:
 
 ```dvc
-    $ tree
-    .
-    ├── data
-    │   ├── data.xml
-    │   └── prepared
-    │       ├── test.tsv
-    │       └── train.tsv
-    ├── data.xml.dvc
-    ├── prepare.dvc
-    ├── requirements.txt
-    └── src
-        ├── evaluate.py
-        ├── featurization.py
-        ├── prepare.py
-        └── train.py
+$ tree
+.
+├── data
+│   ├── data.xml
+│   └── prepared
+│       ├── test.tsv
+│       └── train.tsv
+├── data.xml.dvc
+├── prepare.dvc
+├── requirements.txt
+└── src
+    ├── evaluate.py
+    ├── featurization.py
+    ├── prepare.py
+    └── train.py
 
-    3 directories, 10 files
+3 directories, 10 files
 
-    $ dvc status
-    Pipeline is up to date. Nothing to reproduce.
+$ dvc status
+Pipeline is up to date. Nothing to reproduce.
 ```
 
 Then in the data store directory, edit `data.xml`. It doesn't matter what you
@@ -332,47 +332,47 @@ change, other than it still being a valid XML file, just that a change is made
 because any change will change the checksum. Once we do so, we'll see this:
 
 ```dvc
-    $ dvc status
-    data.xml.dvc:
-        changed deps:
-            modified:     /path/to/data-store/data.xml
+$ dvc status
+data.xml.dvc:
+    changed deps:
+        modified:     /path/to/data-store/data.xml
 ```
 
 DVC has noticed the external dependency has changed. It is telling us that it is
 necessary to now run `dvc repro`.
 
 ```dvc
-    $ dvc repro prepare.dvc
+$ dvc repro prepare.dvc
 
-    WARNING: Dependency '/path/to/data-store/data.xml' of 'data.xml.dvc' changed because it is 'modified'.
-    WARNING: Stage 'data.xml.dvc' changed.
-    Reproducing 'data.xml.dvc'
-    Importing '/path/to/data-store/data.xml' -> 'data/data.xml'
-    [##############################] 100% data.xml
-    Saving 'data/data.xml' to cache '.dvc/cache'.
-    Saving information to 'data.xml.dvc'.
+WARNING: Dependency '/path/to/data-store/data.xml' of 'data.xml.dvc' changed because it is 'modified'.
+WARNING: Stage 'data.xml.dvc' changed.
+Reproducing 'data.xml.dvc'
+Importing '/path/to/data-store/data.xml' -> 'data/data.xml'
+[##############################] 100% data.xml
+Saving 'data/data.xml' to cache '.dvc/cache'.
+Saving information to 'data.xml.dvc'.
 
-    WARNING: Dependency 'data/data.xml' of 'prepare.dvc' changed because it is 'modified'.
-    WARNING: Stage 'prepare.dvc' changed.
-    Reproducing 'prepare.dvc'
-    Running command:
-        python src/prepare.py data/data.xml
-    Saving 'data/prepared' to cache '.dvc/cache'.
-    Linking directory 'data/prepared'.
-    Saving information to 'prepare.dvc'.
+WARNING: Dependency 'data/data.xml' of 'prepare.dvc' changed because it is 'modified'.
+WARNING: Stage 'prepare.dvc' changed.
+Reproducing 'prepare.dvc'
+Running command:
+    python src/prepare.py data/data.xml
+Saving 'data/prepared' to cache '.dvc/cache'.
+Linking directory 'data/prepared'.
+Saving information to 'prepare.dvc'.
 
-    To track the changes with git run:
+To track the changes with git run:
 
-        git add data.xml.dvc prepare.dvc
+    git add data.xml.dvc prepare.dvc
 
-    $ git add .
-    $ git commit -a -m "updated data"
+$ git add .
+$ git commit -a -m "updated data"
 
-    [master a8d4ce8] updated data
-     2 files changed, 6 insertions(+), 6 deletions(-)
+[master a8d4ce8] updated data
+ 2 files changed, 6 insertions(+), 6 deletions(-)
 
-    $ dvc status
-    Pipeline is up to date. Nothing to reproduce.
+$ dvc status
+Pipeline is up to date. Nothing to reproduce.
 ```
 
 Because the external source for the data file changed, the change was noticed by

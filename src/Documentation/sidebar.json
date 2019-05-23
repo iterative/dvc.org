@@ -497,8 +497,8 @@
     ]
   },
   {
-    "name": "DVC Philosophy",
-    "folder": "/static/docs/philosophy",
+    "name": "Understanding DVC",
+    "folder": "/static/docs/understanding-dvc",
     "files": [
       {
         "name": "Collaboration Issues",

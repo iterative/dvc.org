@@ -88,14 +88,9 @@ including input dataset and metrics.
 ### Expand to learn how to download on Windows
 
 Windows does not ship `wget` utility by default, so you'll need to use a browser
-to download `data.zip` or install it from a third party. We recommend using
-[chocolatey](https://chocolatey.org/). First, if you haven't already, install
-chocolatey using [official guide](https://chocolatey.org/install). Then install
-`wget` and `tar` with the following command in the `Command Prompt`:
-
-```dvc
-    C:\> choco install wget
-```
+to download `data.xml` and save it into `data` subdirectory. To download,
+right-click [this link](https://dvc.org/s3/examples/versioning/data.zip) and
+click `Save link as`(Chrome) or `Save object as`(Firefox).
 
 </details>
 
@@ -110,25 +105,25 @@ images** for training and 800 labeled images for validatation. In summary, it's
 a 43 MB dataset, with a directory structure like this:
 
 ```sh
-   data
-   ├── train
-   │   ├── dogs
-   │   │   ├── dog.1.jpg
-   │   │   ├── ...
-   │   │   └── dog.500.jpg
-   │   └── cats
-   │       ├── cat.1.jpg
-   │       ├── ...
-   │       └── cat.500.jpg
-   └── validation
-       ├── dogs
-       │   ├── dog.1001.jpg
-       │   ├── ...
-       │   └── dog.1400.jpg
-       └── cats
-           ├── cat.1001.jpg
-           ├── ...
-           └── cat.1400.jpg
+data
+├── train
+│   ├── dogs
+│   │   ├── dog.1.jpg
+│   │   ├── ...
+│   │   └── dog.500.jpg
+│   └── cats
+│       ├── cat.1.jpg
+│       ├── ...
+│       └── cat.500.jpg
+└── validation
+   ├── dogs
+   │   ├── dog.1001.jpg
+   │   ├── ...
+   │   └── dog.1400.jpg
+   └── cats
+       ├── cat.1001.jpg
+       ├── ...
+       └── cat.1400.jpg
 ```
 
 Let's capture the current state of this dataset with `dvc add`:
@@ -197,25 +192,25 @@ For simplicity we keep the validation dataset the same. Now our dataset has
 67 MB:
 
 ```sh
-   data
-   ├── train
-   │   ├── dogs
-   │   │   ├── dog.1.jpg
-   │   │   ├── ...
-   │   │   └── dog.1000.jpg
-   │   └── cats
-   │       ├── cat.1.jpg
-   │       ├── ...
-   │       └── cat.1000.jpg
-   └── validation
-       ├── dogs
-       │   ├── dog.1001.jpg
-       │   ├── ...
-       │   └── dog.1400.jpg
-       └── cats
-           ├── cat.1001.jpg
-           ├── ...
-           └── cat.1400.jpg
+data
+├── train
+│   ├── dogs
+│   │   ├── dog.1.jpg
+│   │   ├── ...
+│   │   └── dog.1000.jpg
+│   └── cats
+│       ├── cat.1.jpg
+│       ├── ...
+│       └── cat.1000.jpg
+└── validation
+   ├── dogs
+   │   ├── dog.1001.jpg
+   │   ├── ...
+   │   └── dog.1400.jpg
+   └── cats
+       ├── cat.1001.jpg
+       ├── ...
+       └── cat.1400.jpg
 ```
 
 Of course, we want to leverage these new labels and train the model again.
@@ -226,10 +221,6 @@ $ dvc remove model.h5.dvc
 $ python train.py
 $ dvc add model.h5
 ```
-
-Note! `dvc remove` or `dvc unprotect` is required, otherwise `python train.py`
-will overwrite the existing file and may corrupt the cached version. Check this
-[guide](/doc/user-guide/update-tracked-file) to learn more.
 
 Let's commit the second version:
 
@@ -247,9 +238,9 @@ version if we need to.
 
 An operation that helps to get the specific committed version of data is
 designed to be similar to Git. In Git (or any other code version control system)
-when you need to get to a previous committed version of the code you run `git
-checkout`. All we need to do in our case is to run additionally `dvc checkout`
-to get the right data to the workspace.
+when you need to get to a previous committed version of the code you run
+`git checkout`. All we need to do in our case is to run additionally
+`dvc checkout` to get the right data to the workspace.
 
 ![](/static/img/versioning.png)
 
@@ -300,10 +291,8 @@ place.
 
 `dvc add` is a perfectly reasonable choice when you need to keep track of
 different versions of datasets or model files that come and are updated from
-external sources. `data` directory above with cats and dogs images is a good
-example (just don't forget to run `dvc remove` or `dvc unprotect` when you need
-to [modify or replace](/doc/user-guide/update-tracked-file) a file that is under
-DVC control).
+external sources. The `data` directory above with cats and dogs images is a good
+example.
 
 On the other hand, there are files that are a result of running some code. In
 our example, you should have noticed, that `train.py` produces binary files
