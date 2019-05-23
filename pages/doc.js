@@ -58,9 +58,9 @@ export default class Documentation extends Component {
   loadStateFromURL = () => {
     const { pathname } = window.location;
     const sectionURL = pathname.split('/')[2];
-    const sectionIndex = sidebar.findIndex(
+    const sectionIndex = sectionURL ? sidebar.findIndex(
       section => kebabCase(section.name) === sectionURL
-    );
+    ) : 0;
     if (sectionIndex === -1) {
       this.setState({ pageNotFound: true })
     } else {
