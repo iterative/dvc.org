@@ -54,7 +54,7 @@ export default class Documentation extends Component {
     window.removeEventListener('popstate', this.loadStateFromURL)
   }
 
-  /*сделать!*/
+  /*готово*/
   loadStateFromURL = () => {
     const { pathname } = window.location;
     const sectionURL = pathname.split('/')[2];
@@ -67,42 +67,55 @@ export default class Documentation extends Component {
       const fileURL = pathname.split('/')[3]; // match file from URL
       const section = sidebar[sectionIndex];
       if(fileURL){
-        let fileIndex = section.files.findIndex(
-          file => kebabCase(file.indexFile.slice(0, -3)) === fileURL
-        );
-        if (fileIndex === -1) {
-          let fileIndex2=-1, subsectionIndex=0;
-          section.files.map((subsection,index2)=>{
-            if (subsection.files.length>0){
-              fileIndex2 = subsection.files.findIndex(
-                file2 => {
-                  if(kebabCase(file2.indexFile.slice(0, -3)) === fileURL){
-                    subsectionIndex = index2;
+        if(pathname.split('/')[4]){
+          let subsectionIndex = section.files.findIndex(
+            file => kebabCase(file.indexFile.slice(0, -3)) === fileURL
+          );
+          let fileIndex = section.files[subsectionIndex].files.findIndex(
+            file => kebabCase(file.indexFile.slice(0, -3)) === pathname.split('/')[4]
+          );
+          this.loadFile({
+            file: section.files[subsectionIndex].files[fileIndex],
+            section: sectionIndex,
+            parseHeadings: true,
+          })
+        }else{
+          let fileIndex = section.files.findIndex(
+            file => kebabCase(file.indexFile.slice(0, -3)) === fileURL
+          );
+          if (fileIndex === -1) {
+            let fileIndex2=-1, subsectionIndex=0;
+            section.files.map((subsection,index2)=>{
+              if (subsection.files.length>0){
+                fileIndex2 = subsection.files.findIndex(
+                  file2 => {
+                    if(kebabCase(file2.indexFile.slice(0, -3)) === fileURL){
+                      subsectionIndex = index2;
+                    }
+                    return kebabCase(file2.indexFile.slice(0, -3)) === fileURL
                   }
-                  return kebabCase(file2.indexFile.slice(0, -3)) === fileURL
-                }
-              );
+                );
+              }
+            });
+            if (fileIndex2 === -1){
+              fileURL ? this.setState({ pageNotFound: true }) : this.onSectionSelect(sectionIndex)
+            }else{
+              this.loadFile({
+                file: section.files[subsectionIndex].files[fileIndex2],
+                section: sectionIndex,
+                parseHeadings: true,
+              })
             }
-          });
-          if (fileIndex2 === -1){
-            fileURL ? this.setState({ pageNotFound: true }) : this.onSectionSelect(sectionIndex)
           }else{
             this.loadFile({
-              file: section.files[subsectionIndex].files[fileIndex2],
+              file: section.files[fileIndex],
               section: sectionIndex,
               parseHeadings: true,
             })
           }
-        }else{
-          this.loadFile({
-            file: section.files[fileIndex],
-            section: sectionIndex,
-            parseHeadings: true,
-          })
         }
       }else{
-        console.log(section);
-        this.loadFile({ file:section, section: sectionIndex, parseHeadings: false });
+        this.loadFile({ file:section.hasOwnProperty('indexFile') ? section : section.files[0], section: sectionIndex, parseHeadings: false });
       }
     }
   };
@@ -117,29 +130,30 @@ export default class Documentation extends Component {
   };
 
   /*готово*/
-  getLinkHref = (section, file) => {
+  getLinkHref = (section, file, subsection=null) => {
     const sectionSlug = kebabCase(sidebar[section].name);
     const fileSlug = file ? file.slice(0, -3) : undefined;
-    return `/doc/${compact([sectionSlug, fileSlug]).join('/')}`;
+    let subsectionSlug = subsection ? sidebar[section].files[subsection].indexFile.slice(0,-3) : '';
+    return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`;
   };
 
   /*готово*/
-  setCurrentPath = (section, file) => {
-    window.history.pushState(null, null, this.getLinkHref(section, file))
+  setCurrentPath = (section, file, subsection) => {
+    window.history.pushState(null, null, this.getLinkHref(section, file, subsection))
   };
 
   /*готово*/
   onSectionSelect = (section, e) => {
     e && e.preventDefault();
-    const file = sidebar[section];
+    const file = sidebar[section].hasOwnProperty('indexFile') ? sidebar[section]  : sidebar[section].files[0];
     e && this.setCurrentPath(section);
     this.loadFile({ file, section, parseHeadings: false });
   };
 
   /*готово*/
-  onFileSelect = (file, section, e) => {
+  onFileSelect = (file, section, e, subsection) => {
     e && e.preventDefault();
-    this.setCurrentPath(section, file.indexFile);
+    this.setCurrentPath(section, file.indexFile, subsection);
     this.loadFile({ file, section, parseHeadings: true });
   };
 

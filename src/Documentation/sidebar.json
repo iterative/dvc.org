@@ -138,8 +138,8 @@
     "folder": "/static/docs/user-guide",
     "files": [
       {
-        "name" : "Dvc Files And Directries",
-        "indexFile" : "dvc-files-and-directries.md",
+        "name" : "Dvc Files And Directories",
+        "indexFile" : "dvc-files-and-directories.md",
         "folder": "/static/docs/user-guide",
         "files":[]
       },

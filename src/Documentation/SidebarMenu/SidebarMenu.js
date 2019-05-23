@@ -94,7 +94,7 @@ export default class SidebarMenu extends React.Component {
                                         <SectionLink
                                           level={3}
                                           href={getLinkHref(index, file.indexFile)}
-                                          onClick={e => onFileSelect(file, index, e)}
+                                          onClick={e => onFileSelect(file, index, e, fileIndex)}
                                           isActive={currentFile === file.indexFile}
                                         >
                                           {file.name}
