@@ -153,6 +153,7 @@ export default class Documentation extends Component {
   };
 
   loadFile = ({ file, section, parseHeadings }) => {
+    this.setState({currentFile:'load'});
     fetch(`${file.folder}/${file.indexFile}`)
       .then(res => {
         res.text().then(text => {

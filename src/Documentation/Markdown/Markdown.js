@@ -133,41 +133,49 @@ export default class Markdown extends Component {
     const showPrev = fileIndex > 0
     const showNext = fileIndex + 1 < sidebar[section].files.length
 
-    return (
-      <Content>
-        <GithubLink href={githubLink} target="_blank">
-          <i /> Edit on Github
-        </GithubLink>
-        <ReactMarkdown
-          key={`${section}-${fileIndex}`}
-          className="markdown-body"
-          escapeHtml={false}
-          source={markdown}
-          renderers={{
-            code: CodeBlock,
-            heading: HeadingRenderer,
-            virtualHtml: HtmlRenderer
-          }}
-          astPlugins={[linker()]}
-        />
-        <NavigationButtons>
-          <Button
-            onClick={() => onFileSelect(files[fileIndex - 1], section)}
-            disabled={!showPrev}
-          >
-            <i className="prev" />
-            <span>Prev</span>
-          </Button>
-          <Button
-            onClick={() => onFileSelect(files[fileIndex + 1], section)}
-            disabled={!showNext}
-          >
-            <span>Next</span>
-            <i className="next" />
-          </Button>
-        </NavigationButtons>
-      </Content>
-    )
+    if(file==='load'){
+      return(
+        <Content>
+          <p>Loading...</p>
+        </Content>
+      )
+    }else{
+      return (
+        <Content>
+          <GithubLink href={githubLink} target="_blank">
+            <i /> Edit on Github
+          </GithubLink>
+          <ReactMarkdown
+            key={`${section}-${fileIndex}`}
+            className="markdown-body"
+            escapeHtml={false}
+            source={markdown}
+            renderers={{
+              code: CodeBlock,
+              heading: HeadingRenderer,
+              virtualHtml: HtmlRenderer
+            }}
+            astPlugins={[linker()]}
+          />
+          <NavigationButtons>
+            <Button
+              onClick={() => onFileSelect(files[fileIndex - 1], section)}
+              disabled={!showPrev}
+            >
+              <i className="prev" />
+              <span>Prev</span>
+            </Button>
+            <Button
+              onClick={() => onFileSelect(files[fileIndex + 1], section)}
+              disabled={!showNext}
+            >
+              <span>Next</span>
+              <i className="next" />
+            </Button>
+          </NavigationButtons>
+        </Content>
+      )
+    }
   }
 }
 
