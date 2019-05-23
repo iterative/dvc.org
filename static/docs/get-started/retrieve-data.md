@@ -25,7 +25,7 @@ $ dvc pull
 Alternatively, if you want to retrieve a single dataset or a file:
 
 ```dvc
-$ dvc pull data.xml.dvc
+$ dvc pull data/data.xml.dvc
 ```
 
 DVC remotes, `dvc push`, and `dvc pull` provide a basic collaboration workflow,
