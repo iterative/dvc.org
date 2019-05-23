@@ -127,13 +127,13 @@ export default class Markdown extends Component {
   }
 
   render() {
-    const { markdown, githubLink, section, file, onFileSelect } = this.props
+    const { markdown, githubLink, section, file, onFileSelect, load } = this.props
     const files = sidebar[section].files
     const fileIndex = files.findIndex(f => f === file)
     const showPrev = fileIndex > 0
     const showNext = fileIndex + 1 < sidebar[section].files.length
 
-    if(file==='load'){
+    if(load){
       return(
         <Content>
           <p>Loading...</p>

@@ -32,7 +32,8 @@ export default class Documentation extends Component {
       markdown: '',
       headings: [],
       pageNotFound: false,
-      isMenuOpen: false
+      isMenuOpen: false,
+      load: false
     }
   }
 
@@ -153,7 +154,7 @@ export default class Documentation extends Component {
   };
 
   loadFile = ({ file, section, parseHeadings }) => {
-    this.setState({currentFile:'load'});
+    this.setState({load:true});
     fetch(`${file.folder}/${file.indexFile}`)
       .then(res => {
         res.text().then(text => {
@@ -164,7 +165,8 @@ export default class Documentation extends Component {
               markdown: text,
               headings: [],
               pageNotFound: false,
-              isMenuOpen: false
+              isMenuOpen: false,
+              load: false
             },
             () => {
               this.scrollTop()
@@ -232,7 +234,8 @@ export default class Documentation extends Component {
       headings,
       markdown,
       pageNotFound,
-      isMenuOpen
+      isMenuOpen,
+      load
     } = this.state
 
     const directory = sidebar[currentSection].folder
@@ -274,6 +277,7 @@ export default class Documentation extends Component {
               githubLink={githubLink}
               section={currentSection}
               file={currentFile}
+              load={load}
               onFileSelect={this.onFileSelect}
             />
           )}
