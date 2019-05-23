@@ -40,22 +40,22 @@ system.
 There are pros and cons to the 3 supported link types: Hard links, Soft or
 Symbolic links, and Reflinks\* in more recent systems. While reflinks bring all
 the benefits and none of the worries, they're not commonly supported in most
-platforms yet. Hard/soft links optimize speed and space in the file system, but
-carry the risk of breaking your workflow since updating hard/sym-linked files in
-the workspace causes cache corruption. These 2 link types thus require using
-cache protected mode (see the `cache.protected` config option in
+platforms yet. Hard/soft links optimize **speed** and **space** in the file
+system, but are not **editable** since updating hard/sym-linked files tracked by
+DVC in the workspace causes cache corruption. These 2 link types thus require
+using cache protected mode (see the `cache.protected` config option in
 `dvc config cache`). Finally, a 4th "linking" option is to actually copy files
 from/to the cache, which is safe but inefficient, especially for large files
 (several GBs or more data).
 
 File link type benefits summary:
 
-| `cache.type` | speed | space | safe |
-|---|---|---|---|---|
-| `reflink` | x | x | x |
-| `hardlink` | x | x | |
-| `symlink` | x | x | |
-| `copy` | | | x |
+| `cache.type` | speed | space | editable |
+| ------------ | ----- | ----- | -------- |
+| `reflink`    | x     | x     | x        |
+| `hardlink`   | x     | x     |          |
+| `symlink`    | x     | x     |          |
+| `copy`       |       |       | x        |
 
 Each file linking option is further detailed below, in function of their
 efficiency:
@@ -71,8 +71,8 @@ efficiency:
    > they will be supported by the majority of file systems in use.
 
 2. **`hardlink`** - hard links are the most efficient way to link your data to
-   cache if both your repo and your cache directory are located on the same file
-   system/ drive.
+   cache if both your repo and your cache directory are located on the same
+   partition or storage device.
 
    > Please note that hardlinked data files should never be edited in place, but
    > instead deleted and then replaced with a new file, otherwise it might cause
