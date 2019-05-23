@@ -24,7 +24,7 @@ bag_of_words = CountVectorizer(stop_words='english',
 </details>
 
 ```dvc
-$ vi featurization.py        # edit to use bigrams (see above)
+$ vi src/featurization.py    # edit to use bigrams (see above)
 $ dvc repro train.dvc        # get and save the new model.pkl
 $ git commit -a -m "bigram model"
 ```
