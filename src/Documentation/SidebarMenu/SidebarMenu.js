@@ -41,7 +41,7 @@ export default class SidebarMenu extends React.Component {
     }
     const {
       sidebar,
-      currentSection,/*индекс дефолтной корневой секции*/
+      currentSection,
       currentFile,
       onSectionSelect,
       onFileSelect,

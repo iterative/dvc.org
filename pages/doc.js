@@ -54,7 +54,6 @@ export default class Documentation extends Component {
     window.removeEventListener('popstate', this.loadStateFromURL)
   }
 
-  /*готово*/
   loadStateFromURL = () => {
     const { pathname } = window.location;
     const sectionURL = pathname.split('/')[2];
@@ -129,7 +128,6 @@ export default class Documentation extends Component {
     })
   };
 
-  /*готово*/
   getLinkHref = (section, file, subsection=null) => {
     const sectionSlug = kebabCase(sidebar[section].name);
     const fileSlug = file ? file.slice(0, -3) : undefined;
@@ -137,12 +135,10 @@ export default class Documentation extends Component {
     return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`;
   };
 
-  /*готово*/
   setCurrentPath = (section, file, subsection) => {
     window.history.pushState(null, null, this.getLinkHref(section, file, subsection))
   };
 
-  /*готово*/
   onSectionSelect = (section, e) => {
     e && e.preventDefault();
     const file = sidebar[section].hasOwnProperty('indexFile') ? sidebar[section]  : sidebar[section].files[0];
@@ -150,7 +146,6 @@ export default class Documentation extends Component {
     this.loadFile({ file, section, parseHeadings: false });
   };
 
-  /*готово*/
   onFileSelect = (file, section, e, subsection) => {
     e && e.preventDefault();
     this.setCurrentPath(section, file.indexFile, subsection);
