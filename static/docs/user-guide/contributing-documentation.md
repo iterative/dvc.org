@@ -108,9 +108,9 @@ follow the steps below:
   plugin to format the content of Markdown files or install the pre-commit hook
   described above.
 
-- **Markdown:** we use `prettier` default conventions to format our files. It's
-  highly recommended to install the hook or run `prettier` manually before
-  submitting the pull request.
+- **Markdown and JS files:** we use `prettier` default conventions to format our
+  files. It's highly recommended to install the hook or run `prettier` manually
+  before submitting the pull request.
 
 - Using `dvc <command>` in the documentation will create a link to that command
   automatically. No need to use `[]()` explicitly to create them.
