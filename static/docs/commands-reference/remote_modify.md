@@ -35,16 +35,16 @@ This command modifies a section in the DVC
 - `-u`, `--unset` - delete configuration value
 
 - `--global` - save remote configuration to the global config (e.g.
-`~/.config/dvc/config`) instead of `.dvc/config`.
+  `~/.config/dvc/config`) instead of `.dvc/config`.
 
 - `--system` - save remote configuration to the system config (e.g.
-`/etc/dvc.config`) instead of `.dvc/config`.
+  `/etc/dvc.config`) instead of `.dvc/config`.
 
 - `--local` - modify the [local](/doc/user-guide/dvc-files-and-directories)
-configuration file (`.dvc/config.local`). This is useful when you are
-modifying private options or local environment specific settings in your
-config, that you don't want to track and share through Git (credentials,
-private locations, etc).
+  configuration file (`.dvc/config.local`). This is useful when you are
+  modifying private options or local environment specific settings in your
+  config, that you don't want to track and share through Git (credentials,
+  private locations, etc).
 
 <details>
 
@@ -91,8 +91,8 @@ $ dvc remote modify myremote url s3://bucket/remote
 $ dvc remote modify myremote use_ssl false
 ```
 
-- `listobjects` - whether or not to use `list_objects`.
- By default, `list_objects_v2` is used. Useful for ceph and other s3 emulators.
+- `listobjects` - whether or not to use `list_objects`. By default,
+  `list_objects_v2` is used. Useful for ceph and other s3 emulators.
 
 ```dvc
 $ dvc remote modify myremote listobjects true
@@ -171,7 +171,7 @@ $ dvc remote modify myremote url ssh://user@example.com:1234/path/to/remote
 ```
 
 - `user` - username to use to access a remote. The order in which dvc searches
-for username:
+  for username:
 
 1. `user` specified in one of the dvc configs;
 2. `user` specified in the url(e.g. `ssh://user@example.com/path`);
@@ -183,7 +183,7 @@ $ dvc remote modify myremote user myuser
 ```
 
 - `port` - port to use to access a remote. The order in which dvc searches for
-port:
+  port:
 
 1. `port` specified in one of the dvc configs;
 2. `port` specified in the url(e.g. `ssh://example.com:1234/path`);
@@ -201,14 +201,14 @@ $ dvc remote modify myremote keyfile /path/to/keyfile
 ```
 
 - `password` - a private key passphrase or a password to use to use when
-accessing a remote.
+  accessing a remote.
 
 ```dvc
 $ dvc remote modify myremote password mypassword
 ```
 
 - `ask_password` - ask for a private key passphrase or a password to use when
-accessing a remote.
+  accessing a remote.
 
 ```dvc
 $ dvc remote modify myremote ask_password true

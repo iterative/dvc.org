@@ -39,9 +39,8 @@ The detail of DVC version depends upon the way of installing the project.
   with this setup, we need to know exactly which version is being used. For
   this, we rely on git commit hash which is displayed in output as
   `0.40.2+292cab.mod`. The part before `+` is the `BASE_VERSION` and the latter
-  part is the git commit hash which is one of the commits in the `master`
-  branch (also, optional suffix `.mod` means that code is modified).
-
+  part is the git commit hash which is one of the commits in the `master` branch
+  (also, optional suffix `.mod` means that code is modified).
 
 ## Options
 
