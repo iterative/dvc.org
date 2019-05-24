@@ -60,7 +60,7 @@ Let's first create an output that is not a metric file:
 $ dvc run -o metrics.txt "echo 0.9643 > metrics.txt"
 ```
 
-The content of `metrics.txt.dvc` should look like (note the `mertic: false`
+The content of `metrics.txt.dvc` should look like (notice the `mertic: false`
 field):
 
 ```yaml

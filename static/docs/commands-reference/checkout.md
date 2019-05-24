@@ -43,15 +43,15 @@ files that are under DVC control. For convenience a Git hook is available,
 simply by running `dvc install`, that will automate running `dvc checkout` after
 `git checkout`. See `dvc install` for more information.
 
-Note, this command does NOT copy any files (except when the `cache.type` config
-option is `copy`). Instead, DVC uses links to perform data file restoration.
-This is crucial for large files where checking out a 50Gb file might take a few
-minutes. With DVC links, restoring a 50Gb data file will take less than a
-second.
+Note that this command does NOT copy any files (except when the `cache.type`
+config option is `copy`). Instead, DVC uses links to perform data file
+restoration. This is crucial for large files where checking out a 50Gb file
+might take a few minutes. With DVC links, restoring a 50Gb data file will take
+less than a second.
 
-> Note that when linking files takes longer than expected and `cache.type` is
-> not set, a warning will be displayed reminding users about the faster link
-> types available. These warnings can be turned off setting the
+> When linking files takes longer than expected and `cache.type` is not set, a
+> warning will be displayed reminding users about the faster link types
+> available. These warnings can be turned off setting the
 > `cache.slow_link_warning` config option to `false` with `dvc config cache`.
 
 The output of `dvc checkout` does not list which data files were restored. It

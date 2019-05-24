@@ -104,7 +104,7 @@ system. Refer to
 [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization) for
 more details.
 
-> Note, in systems supporting reflinks, use the `df` command to confirm that
+> Note that in systems supporting reflinks, use the `df` command to confirm that
 > free space on the drive didn't decline by the file size that we are adding, so
 > no duplication takes place. `du` may be inaccurate with reflinks.
 

@@ -75,7 +75,7 @@ dir2/data2.dvc:
 		modified:           dir2/data2
 ```
 
-Note, that both data files are displayed as modified Create `.dvcignore` file
+Note that both data files are displayed as modified. Create a `.dvcignore` file
 and insert pattern matching one of the files:
 
 ```dvc

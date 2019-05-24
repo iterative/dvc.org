@@ -62,8 +62,8 @@ Install required dependencies:
 $ pip install -r requirements.txt
 ```
 
-**Note!** As of October 2018, Tensorflow does not support Python 3.7. Model
-training was tested on Python 2.7 and 3.6.
+> **Note!** As of October 2018, Tensorflow does not support Python 3.7. Model
+> training was tested on Python 2.7 and 3.6.
 
 <details>
 

@@ -94,8 +94,9 @@ $ cat .dvc/config
   ['remote "myremote"']
         url = /tmp/my-dvc-storage
   ...
-$ # NOTE: absolute path `/tmp/my-dvc-storage` saved as is.
 ```
+
+> Note that the absolute path `/tmp/my-dvc-storage` is saved as is.
 
 Using a relative path:
 
@@ -105,10 +106,11 @@ $ cat .dvc/config
   ...
   ['remote "myremote"']
       url = ../../my-dvc-storage
-...
-$ # NOTE: `../my-dvc-storage` has been resolved relative to `.dvc/config` location,
-$ # resulting in `../../my-dvc-storage`.
+  ...
 ```
+
+> Note that `../my-dvc-storage` has been resolved relative to the location of
+> `.dvc/config`, resulting in `../../my-dvc-storage`.
 
 </details>
 
@@ -239,7 +241,7 @@ $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 
 ### Click for HTTP example
 
-**NOTE**: Currently HTTP remote only supports downloads:
+> **Note!** Currently HTTP remotes only support downloads:
 
 - `pull`
 - `fetch`

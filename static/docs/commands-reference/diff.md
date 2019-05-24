@@ -155,8 +155,8 @@ can also put whole directories under DVC control (when these are specified as
 command dependencies or outputs).
 
 We can use `dvc diff` to check for changes in a directory by specifying the
-directory as the target (`-t`). (Note that we skip the `b_ref` argument this
-time, which defaults to `HEAD`.)
+directory as the target (with option `-t`). Note that we skip the `b_ref`
+argument this time, which defaults to `HEAD`.
 
 ```dvc
 $ dvc diff -t data/features baseline-experiment

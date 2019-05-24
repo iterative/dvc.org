@@ -141,8 +141,8 @@ Let’s try to improve the model by changing the hyperparameters.
 There is no good reason to improve the last bigram based model. Let’s checkout
 the original model from the master branch.
 
-> Note, after checking out code and DVC-files from Git, data files have to be
-> checked out as well using the `dvc checkout` command.
+> Note that after checking out code and DVC-files from Git, data files have to
+> be checked out as well using the `dvc checkout` command.
 
 ```dvc
 $ git checkout master

@@ -124,9 +124,9 @@ Each step is described by providing a command to run, input data it takes and a
 list of output files. DVC is not Python or any other language specific and can
 wrap any command runnable via CLI.
 
-- The first actual step, extract XML from the archive. Note, we don't need to
-  run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache, takes
-  the file under DVC control) automatically:
+- The first actual step, extract XML from the archive. Note that we don't need
+  to run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache,
+  takes the file under DVC control) automatically:
 
 ```dvc
 $ dvc run -d data/Posts.xml.zip \
@@ -349,8 +349,9 @@ By wrapping your commands with `dvc run` it's easy to integrate DVC into your
 existing ML development pipeline/processes without any significant effort to
 re-implement your code/application.
 
-The key step to note is that DVC automatically derives the dependencies between
-the experiment steps and builds the dependency graph (DAG) transparently.
+The key step to notice is that DVC automatically derives the dependencies
+between the experiment steps and builds the dependency graph (DAG)
+transparently.
 
 Not only can DVC streamline your work into a single, reproducible environment,
 it also makes it easy to share this environment by Git including the

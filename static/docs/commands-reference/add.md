@@ -76,7 +76,7 @@ This way you bring data provenance and make your project reproducible.
 
 - `--no-commit` - do not put files/directories into cache. A stage file is
   created, and an entry is added to `.dvc/state`, while nothing is added to the
-  cache (`.dvc/cache`). The `dvc status` command will note that the file is
+  cache (`.dvc/cache`). The `dvc status` command will mention that the file is
   `not in cache`. The `dvc commit` command will add the file to the DVC cache.
   This is analogous to the `git add` and `git commit` commands.
 

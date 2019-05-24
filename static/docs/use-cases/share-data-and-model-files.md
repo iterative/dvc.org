@@ -30,8 +30,8 @@ $ dvc remote add -d myremote s3://mybucket/myproject
 Setting "myremote" as a default remote.
 ```
 
-NOTE: `-d|--default` option sets myremote as a default repository for the
-project.
+> The `-d` (`--default`) option sets `myremote` as a default repository for the
+> project.
 
 This will add `myremote` to your `.dvc/config`. Commit your changes and push
 your code:
