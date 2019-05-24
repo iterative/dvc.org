@@ -58,65 +58,50 @@ export default class Documentation extends Component {
   loadStateFromURL = () => {
     const { pathname } = window.location;
     const sectionURL = pathname.split('/')[2];
+    const subSectionURL = pathname.split('/')[3];
+    const fileURL = pathname.split('/')[4];
     const sectionIndex = sectionURL ? sidebar.findIndex(
       section => kebabCase(section.name) === sectionURL
     ) : 0;
-    if (sectionIndex === -1) {
-      this.setState({ pageNotFound: true })
-    } else {
-      const fileURL = pathname.split('/')[3]; // match file from URL
-      const section = sidebar[sectionIndex];
-      if(fileURL){
-        if(pathname.split('/')[4]){
-          let subsectionIndex = section.files.findIndex(
-            file => kebabCase(file.indexFile.slice(0, -3)) === fileURL
-          );
-          let fileIndex = section.files[subsectionIndex].files.findIndex(
-            file => kebabCase(file.indexFile.slice(0, -3)) === pathname.split('/')[4]
-          );
-          this.loadFile({
-            file: section.files[subsectionIndex].files[fileIndex],
-            section: sectionIndex,
-            parseHeadings: true,
-          })
-        }else{
-          let fileIndex = section.files.findIndex(
-            file => kebabCase(file.indexFile.slice(0, -3)) === fileURL
-          );
-          if (fileIndex === -1) {
-            let fileIndex2=-1, subsectionIndex=0;
-            section.files.map((subsection,index2)=>{
-              if (subsection.files.length>0){
-                fileIndex2 = subsection.files.findIndex(
-                  file2 => {
-                    if(kebabCase(file2.indexFile.slice(0, -3)) === fileURL){
-                      subsectionIndex = index2;
-                    }
-                    return kebabCase(file2.indexFile.slice(0, -3)) === fileURL
-                  }
-                );
-              }
-            });
-            if (fileIndex2 === -1){
-              fileURL ? this.setState({ pageNotFound: true }) : this.onSectionSelect(sectionIndex)
-            }else{
-              this.loadFile({
-                file: section.files[subsectionIndex].files[fileIndex2],
-                section: sectionIndex,
-                parseHeadings: true,
-              })
-            }
-          }else{
-            this.loadFile({
-              file: section.files[fileIndex],
-              section: sectionIndex,
-              parseHeadings: true,
-            })
-          }
-        }
+    const subSectionIndex = fileURL ? sidebar[sectionIndex].files.findIndex(
+      subsection => kebabCase(subsection.name) === subSectionURL
+    ) : null;
+    let fileIndex = subSectionIndex ? sidebar[sectionIndex].files[subSectionIndex].files.findIndex(
+      file => kebabCase(file.indexFile.slice(0, -3)) === fileURL
+    ) : null;
+    if((sectionIndex && !sidebar[sectionIndex])){
+      this.setState({pageNotFound: true})
+    }else if(subSectionIndex){
+      this.loadFile({
+        file: sidebar[sectionIndex].files[subSectionIndex].files[fileIndex],
+        section: sectionIndex,
+        subsection: subSectionIndex,
+        parseHeadings: true,
+      })
+    }else if(sectionIndex){
+      console.log(sectionIndex);
+      fileIndex = subSectionURL ? sidebar[sectionIndex].files.findIndex(
+        file => kebabCase(file.indexFile.slice(0, -3)) === subSectionURL
+      ) : '0';
+      if(subSectionURL){
+        this.loadFile({
+          file: sidebar[sectionIndex].files[fileIndex],
+          section: sectionIndex,
+          parseHeadings: true,
+        })
       }else{
-        this.loadFile({ file:section.hasOwnProperty('indexFile') ? section : section.files[0], section: sectionIndex, parseHeadings: false });
+        this.loadFile({
+          file: sidebar[sectionIndex].indexFile ? sidebar[sectionIndex] : sidebar[sectionIndex].files[0],
+          section: sectionIndex,
+          parseHeadings: true,
+        })
       }
+    }else{
+      this.loadFile({
+        file: sidebar[0],
+        section: 0,
+        parseHeadings: true,
+      })
     }
   };
 
@@ -129,10 +114,10 @@ export default class Documentation extends Component {
     })
   };
 
-  getLinkHref = (section, file, subsection=null) => {
+  getLinkHref = (section, file, subsection) => {
     const sectionSlug = kebabCase(sidebar[section].name);
+    const subsectionSlug = subsection ? sidebar[section].files[subsection].indexFile.slice(0,-3) : undefined;
     const fileSlug = file ? file.slice(0, -3) : undefined;
-    let subsectionSlug = subsection ? sidebar[section].files[subsection].indexFile.slice(0,-3) : '';
     return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`;
   };
 
@@ -150,18 +135,19 @@ export default class Documentation extends Component {
   onFileSelect = (file, section, e, subsection) => {
     e && e.preventDefault();
     this.setCurrentPath(section, file.indexFile, subsection);
-    this.loadFile({ file, section, parseHeadings: true });
+    this.loadFile({ file, section, subsection, parseHeadings: true });
   };
 
-  loadFile = ({ file, section, parseHeadings }) => {
+  loadFile = ({ file, section, subsection, parseHeadings }) => {
     this.setState({load:true});
-    fetch(`${file.folder}/${file.indexFile}`)
+    let folder = file.folder ? file.folder  : (subsection ? sidebar[section].files[subsection].folder : sidebar[section].folder);
+    fetch(`${folder}/${file.indexFile}`)
       .then(res => {
         res.text().then(text => {
           this.setState(
             {
               currentSection: section,
-              currentFile: file.indexFile,
+              currentFile: file.folder ? `${file.folder}/${file.indexFile}` : (subsection ? `${sidebar[section].files[subsection].folder}/${file.indexFile}` : `${sidebar[section].folder}/${file.indexFile}`),
               markdown: text,
               headings: [],
               pageNotFound: false,

@@ -66,7 +66,7 @@ let _javascript = function(hljs) {
                     'help dvc init add import checkout run pull push fetch ' +
                     'status repro remove move gc config remote metrics' +
                     ' install root lock unlock pipeline destroy unprotect ' +
-                    ' commit cache pkg tag diff version'
+                    ' commit cache2 pkg tag diff version'
                 },
                 className: 'strong'
               }

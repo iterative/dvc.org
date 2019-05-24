@@ -2,134 +2,94 @@
   {
     "name": "Get Started",
     "folder": "/static/docs/get-started",
-    "indexFile": "index.md",
+    "indexFile": "get-started.md",
     "files": [
       {
         "name": "Agenda",
-        "folder": "/static/docs/get-started",
-        "indexFile": "agenda.md",
-        "files": []
+        "indexFile": "agenda.md"
       },
       {
         "name": "Install",
-        "folder": "/static/docs/get-started",
-        "indexFile": "install.md",
-        "files": []
+        "indexFile": "install.md"
       },
       {
         "name": "Initialize",
-        "folder": "/static/docs/get-started",
-        "indexFile": "initialize.md",
-        "files": []
+        "indexFile": "initialize.md"
       },
       {
         "name": "Configure",
-        "folder": "/static/docs/get-started",
-        "indexFile": "configure.md",
-        "files": []
+        "indexFile": "configure.md"
       },
       {
         "name": "Add Files",
-        "folder": "/static/docs/get-started",
-        "indexFile": "add-files.md",
-        "files": []
+        "indexFile": "add-files.md"
       },
       {
         "name": "Share Data",
-        "folder": "/static/docs/get-started",
-        "indexFile": "share-data.md",
-        "files": []
+        "indexFile": "share-data.md"
       },
       {
         "name": "Retrieve Data",
-        "folder": "/static/docs/get-started",
-        "indexFile": "retrieve-data.md",
-        "files": []
+        "indexFile": "retrieve-data.md"
       },
       {
         "name": "Connect with Code",
-        "folder": "/static/docs/get-started",
-        "indexFile": "connect-code-and-data.md",
-        "files": []
+        "indexFile": "connect-code-and-data.md"
       },
       {
         "name": "Pipeline",
-        "folder": "/static/docs/get-started",
-        "indexFile": "pipeline.md",
-        "files": []
+        "indexFile": "pipeline.md"
       },
       {
         "name": "Visualize",
-        "folder": "/static/docs/get-started",
-        "indexFile": "visualize.md",
-        "files": []
+        "indexFile": "visualize.md"
       },
       {
         "name": "Reproduce",
-        "folder": "/static/docs/get-started",
-        "indexFile": "reproduce.md",
-        "files": []
+        "indexFile": "reproduce.md"
       },
       {
         "name": "Metrics",
-        "folder": "/static/docs/get-started",
-        "indexFile": "metrics.md",
-        "files": []
+        "indexFile": "metrics.md"
       },
       {
         "name": "Experiments",
-        "folder": "/static/docs/get-started",
-        "indexFile": "experiments.md",
-        "files": []
+        "indexFile": "experiments.md"
       },
       {
         "name": "Compare Experiments",
-        "folder": "/static/docs/get-started",
-        "indexFile": "compare-experiments.md",
-        "files": []
+        "indexFile": "compare-experiments.md"
       },
       {
         "name": "Get Older Files",
-        "folder": "/static/docs/get-started",
-        "indexFile": "older-versions.md",
-        "files": []
+        "indexFile": "older-versions.md"
       },
       {
         "name": "Example: Versioning",
-        "folder": "/static/docs/get-started",
-        "indexFile": "example-versioning.md",
-        "files": []
+        "indexFile": "example-versioning.md"
       },
       {
         "name": "Example: Pipelines",
-        "folder": "/static/docs/get-started",
-        "indexFile": "example-pipeline.md",
-        "files": []
+        "indexFile": "example-pipeline.md"
       }
     ]
   },
   {
     "name": "Use Cases",
     "folder": "/static/docs/use-cases",
-    "indexFile": "index.md",
+    "indexFile": "use-cases.md",
     "files": [
       {
         "name": "Data & Model Files Versioning",
-        "folder": "/static/docs/use-cases",
-        "indexFile": "data-and-model-files-versioning.md",
-        "files": []
+        "indexFile": "data-and-model-files-versioning.md"
       },
       {
         "name": "Share Data & Model Files",
-        "folder": "/static/docs/use-cases",
-        "indexFile": "share-data-and-model-files.md",
-        "files": []
+        "indexFile": "share-data-and-model-files.md"
       },
       {
         "name": "Shared Development Machine",
-        "folder": "/static/docs/use-cases",
-        "indexFile": "multiple-data-scientists-on-a-single-machine.md",
-        "files": []
+        "indexFile": "multiple-data-scientists-on-a-single-machine.md"
       }
     ]
   },
@@ -139,358 +99,253 @@
     "files": [
       {
         "name" : "Files and Directories",
-        "indexFile" : "dvc-files-and-directories.md",
-        "folder": "/static/docs/user-guide",
-        "files":[]
+        "indexFile" : "dvc-files-and-directories.md"
       },
       {
         "name" : "File Format (.dvc)",
-        "indexFile" : "dvc-file-format.md",
-        "folder": "/static/docs/user-guide",
-        "files": []
+        "indexFile" : "dvc-file-format.md"
       },
       {
         "name" : "Large File Optimization",
-        "indexFile" : "cache-file-linking.md",
-        "folder": "/static/docs/user-guide",
-        "files":[]
+        "indexFile" : "cache-file-linking.md"
       },
       {
         "name" : "External Dependencies",
-        "indexFile" : "external-dependencies.md",
-        "folder": "/static/docs/user-guide",
-        "files":[]
+        "indexFile" : "external-dependencies.md"
       },
       {
         "name" : "External Outputs",
-        "indexFile" : "external-outputs.md",
-        "folder": "/static/docs/user-guide",
-        "files":[]
+        "indexFile" : "external-outputs.md"
       },
       {
         "name" : "Development Version",
-        "indexFile" : "development.md",
-        "folder": "/static/docs/user-guide",
-        "files":[]
+        "indexFile" : "development.md"
       },
-
       {
         "name" : "Contributing",
-        "indexFile" : "contributing.md",
-        "folder" : "/static/docs/user-guide",
-        "files" : []
+        "indexFile" : "contributing.md"
       },
       {
         "name": "Contributing Documentation",
-        "indexFile": "contributing-documentation.md",
-        "folder": "/static/docs/user-guide",
-        "files": []
+        "indexFile": "contributing-documentation.md"
       },
       {
         "name": "Update a Tracked File",
-        "indexFile": "update-tracked-file.md",
-        "folder": "/static/docs/user-guide",
-        "files": []
+        "indexFile": "update-tracked-file.md"
       },
       {
         "name": "Shell Autocomplete",
-        "indexFile": "autocomplete.md",
-        "folder": "/static/docs/user-guide",
-        "files": []
+        "indexFile": "autocomplete.md"
       },
       {
         "name": "Plugins & Integrations",
-        "indexFile": "plugins.md",
-        "folder": "/static/docs/user-guide",
-        "files": []
+        "indexFile": "plugins.md"
       },
       {
         "name": "Anonymized Usage Analytics",
-        "indexFile": "analytics.md",
-        "folder": "/static/docs/user-guide",
-        "files": []
+        "indexFile": "analytics.md"
       },
       {
         "name": "Dvcignore",
-        "indexFile": "dvcignore.md",
-        "folder": "/static/docs/user-guide",
-        "files": []
+        "indexFile": "dvcignore.md"
       }
     ]
   },
   {
     "name": "Commands Reference",
     "folder": "/static/docs/commands-reference",
-    "indexFile": "index.md",
+    "indexFile": "commands-reference.md",
     "files": [
       {
         "name": "add",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "add.md",
-        "files": []
+        "indexFile": "add.md"
       },
       {
         "name": "cache",
-        "folder": "/static/docs/commands-reference",
+        "folder": "/static/docs/commands-reference/cache",
         "indexFile": "cache.md",
         "files": [
           {
             "name": "cache dir",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "cache-dir.md",
-            "files": []
+            "indexFile": "dir.md"
           }
         ]
       },
       {
         "name": "checkout",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "checkout.md",
-        "files": []
+        "indexFile": "checkout.md"
       },
       {
         "name": "commit",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "commit.md",
-        "files": []
+        "indexFile": "commit.md"
       },
       {
         "name": "config",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "config.md",
-        "files": []
+        "indexFile": "config.md"
       },
       {
         "name": "diff",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "diff.md",
-        "files": []
+        "indexFile": "diff.md"
       },
       {
         "name": "destroy",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "destroy.md",
-        "files": []
+        "indexFile": "destroy.md"
       },
       {
         "name": "fetch",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "fetch.md",
-        "files": []
+        "indexFile": "fetch.md"
       },
       {
         "name": "gc",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "gc.md",
-        "files": []
+        "indexFile": "gc.md"
       },
       {
         "name": "init",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "init.md",
-        "files": []
+        "indexFile": "init.md"
       },
       {
         "name": "install",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "install.md",
-        "files": []
+        "indexFile": "install.md"
       },
       {
         "name": "import",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "import.md",
-        "files": []
+        "indexFile": "import.md"
       },
       {
         "name": "lock",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "lock.md",
-        "files": []
+        "indexFile": "lock.md"
       },
       {
         "name": "metrics",
-        "folder": "/static/docs/commands-reference",
+        "folder": "/static/docs/commands-reference/metrics",
         "indexFile": "metrics.md",
         "files": [
           {
             "name": "metrics add",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "metrics-add.md",
-            "files": []
+            "indexFile": "add.md"
           },
           {
             "name": "metrics modify",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "metrics-modify.md",
-            "files": []
+            "indexFile": "modify.md"
           },
           {
             "name": "metrics remove",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "metrics-remove.md",
-            "files": []
+            "indexFile": "remove.md"
           },
           {
             "name": "metrics show",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "metrics-show.md",
-            "files": []
+            "indexFile": "show.md"
           }
         ]
       },
       {
         "name": "move",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "move.md",
-        "files": []
+        "indexFile": "move.md"
       },
       {
         "name": "pipeline",
-        "folder": "/static/docs/commands-reference",
+        "folder": "/static/docs/commands-reference/pipeline",
         "indexFile": "pipeline.md",
         "files": [
           {
             "name": "pipeline list",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "pipeline-list.md",
-            "files": []
+            "indexFile": "list.md"
           },
           {
             "name": "pipeline show",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "pipeline-show.md",
-            "files": []
+            "indexFile": "show.md"
           }
         ]
       },
       {
         "name": "push",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "push.md",
-        "files": []
+        "indexFile": "push.md"
       },
       {
         "name": "pull",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "Pull.md",
-        "files": []
+        "indexFile": "pull.md"
       },
       {
         "name": "remote",
-        "folder": "/static/docs/commands-reference",
         "indexFile": "remote.md",
-        "files": [
+        "folder": "/static/docs/commands-reference/remote",
+        "files":[
           {
             "name": "remote add",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "remote-add.md",
-            "files": []
+            "indexFile": "add.md"
           },
           {
             "name": "remote default",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "remote-default.md",
-            "files": []
+            "indexFile": "default.md"
           },
           {
             "name": "remote list",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "remote-list.md",
-            "files": []
+            "indexFile": "list.md"
           },
           {
             "name": "remote modify",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "remote-modify.md",
-            "files": []
+            "indexFile": "modify.md"
           },
           {
             "name": "remote remove",
-            "folder": "/static/docs/commands-reference",
-            "indexFile": "remote-remove.md",
-            "files": []
+            "indexFile": "remove.md"
           }
         ]
       },
       {
         "name": "remove",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "remove.md",
-        "files": []
+        "indexFile": "remove.md"
       },
       {
         "name": "repro",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "repro.md",
-        "files": []
+        "indexFile": "repro.md"
       },
       {
         "name": "root",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "root.md",
-        "files": []
+        "indexFile": "root.md"
       },
       {
         "name": "run",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "run.md",
-        "files": []
+        "indexFile": "run.md"
       },
       {
         "name": "status",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "status.md",
-        "files": []
+        "indexFile": "status.md"
       },
       {
         "name": "unlock",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "unlock.md",
-        "files": []
+        "indexFile": "unlock.md"
       },
       {
         "name": "unprotect",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "unprotect.md",
-        "files": []
+        "indexFile": "unprotect.md"
       },
       {
         "name": "version",
-        "folder": "/static/docs/commands-reference",
-        "indexFile": "version.md",
-        "files": []
+        "indexFile": "version.md"
       }
     ]
   },
   {
     "name": "Tutorial",
     "folder": "/static/docs/tutorial",
-    "indexFile": "index.md",
+    "indexFile": "tutorial.md",
     "files": [
       {
         "name": "Preparation",
-        "folder": "/static/docs/tutorial",
-        "indexFile": "preparation.md",
-        "files": []
+        "indexFile": "preparation.md"
       },
       {
         "name": "Define ML Pipeline",
-        "folder": "/static/docs/tutorial",
-        "indexFile": "define-ml-pipeline.md",
-        "files": []
+        "indexFile": "define-ml-pipeline.md"
       },
       {
         "name": "Reproducibility",
-        "folder": "/static/docs/tutorial",
-        "indexFile": "reproducibility.md",
-        "files": []
+        "indexFile": "reproducibility.md"
       },
       {
         "name": "Sharing Data",
-        "folder": "/static/docs/tutorial",
-        "indexFile": "sharing-data.md",
-        "files": []
+        "indexFile": "sharing-data.md"
       }
 
     ]
@@ -501,45 +356,31 @@
     "files": [
       {
         "name": "Collaboration Issues",
-        "folder": "/static/docs/understanding-dvc",
-        "indexFile": "collaboration-issues.md",
-        "files": []
+        "indexFile": "collaboration-issues.md"
       },
       {
         "name": "Existing Tools",
-        "folder": "/static/docs/understanding-dvc",
-        "indexFile": "existing-tools.md",
-        "files": []
+        "indexFile": "existing-tools.md"
       },
       {
         "name": "What Is DVC?",
-        "folder": "/static/docs/understanding-dvc",
-        "indexFile": "what-is-dvc.md",
-        "files": []
+        "indexFile": "what-is-dvc.md"
       },
       {
         "name": "Core Features",
-        "folder": "/static/docs/understanding-dvc",
-        "indexFile": "core-features.md",
-        "files": []
+        "indexFile": "core-features.md"
       },
       {
         "name": "How It Works",
-        "folder": "/static/docs/understanding-dvc",
-        "indexFile": "how-it-works.md",
-        "files": []
+        "indexFile": "how-it-works.md"
       },
       {
         "name": "Related Technologies",
-        "folder": "/static/docs/understanding-dvc",
-        "indexFile": "related-technologies.md",
-        "files": []
+        "indexFile": "related-technologies.md"
       },
       {
         "name": "Resources",
-        "folder": "/static/docs/understanding-dvc",
-        "indexFile": "resources.md",
-        "files": []
+        "indexFile": "resources.md"
       }
     ]
   },
@@ -549,15 +390,11 @@
     "files": [
       {
         "name": "v0.19 - v0.35",
-        "folder": "/static/docs/changelog",
-        "indexFile": "0.35.md",
-        "files": []
+        "indexFile": "0.35.md"
       },
       {
         "name": "v0.12 - v0.18",
-        "folder": "/static/docs/changelog",
-        "indexFile": "0.18.md",
-        "files": []
+        "indexFile": "0.18.md"
       }
     ]
   }

@@ -29,11 +29,10 @@ export default class SidebarMenu extends React.Component {
     }
   }
   render() {
-    let self = this;
-    function includes(array, value) {
+    function includes(array, value, folder) {
       let flag = false;
       array.map(elem=>{
-        if(elem.indexFile===value){
+        if(folder+'/'+elem.indexFile===value){
           flag = true;
         }
       });
@@ -53,13 +52,13 @@ export default class SidebarMenu extends React.Component {
         <Sections>
           <SectionLinks>
             {sidebar.map(
-              ({ name, files = [], labels = {}, indexFile }, index) => {
+              ({ name, files = [], indexFile, folder }, index) => {
                 const isSectionActive = currentSection === index;
                 return (
                   <div key={index}>
                     <SectionLink
                       level={1}
-                      href={getLinkHref(index, files[0].indexFile)}
+                      href={getLinkHref(index)}
                       onClick={e => onSectionSelect(index, e)}
                       className={isSectionActive ? 'docSearch-lvl0' : ''}
                       isActive={isSectionActive}
@@ -70,8 +69,9 @@ export default class SidebarMenu extends React.Component {
                     {/* Section Files */}
                     <Collapse data-open={isSectionActive ? 'true' : 'false'}>
                       {files && files.map((file, fileIndex) => {
-                        const subgroup = file.files.length>0 ? file.files : null;
-                        const isFileActive = currentFile === file.indexFile;
+                        const subgroup = file.files ? file.files : null;
+                        let compare = file.folder ? file.folder+'/'+file.indexFile : folder+'/'+file.indexFile;
+                        const isFileActive = currentFile === compare;
                         return (
                           <Fragment key={`file-${fileIndex}`}>
                             <div>
@@ -87,17 +87,18 @@ export default class SidebarMenu extends React.Component {
 
                             {/* Subgroup files */}
                             {subgroup && (
-                              <Collapse data-flag={'first'} data-open={(isFileActive || includes(subgroup, currentFile))? 'true' : 'false'}>
-                                {subgroup.map((file, subIndex) => {
+                              <Collapse data-flag={'first'} data-open={(isFileActive || includes(subgroup, currentFile, file.folder))? 'true' : 'false'}>
+                                {subgroup.map((file2, subIndex) => {
+                                  let compare = file.folder+'/'+file2.indexFile;
                                   return (
                                     <div key={`file-${fileIndex}-${subIndex}`}>
                                       <SectionLink
                                         level={3}
-                                        href={getLinkHref(index, file.indexFile)}
-                                        onClick={e => onFileSelect(file, index, e, fileIndex)}
-                                        isActive={currentFile === file.indexFile}
+                                        href={getLinkHref(index, file2.indexFile, fileIndex)}
+                                        onClick={e => onFileSelect(file2, index, e, fileIndex)}
+                                        isActive={currentFile === compare}
                                       >
-                                        {file.name}
+                                        {file2.name}
                                       </SectionLink>
                                     </div>
                                   )
