@@ -169,9 +169,9 @@ directory, each file having a name in a form of an md5 hash. This cache is
 similar to Git's internal objects store but made specifically to handle large
 data files.
 
-> **Note!** For performance with large data files, DVC can use file links from
-> the cache to the workspace to avoid copying actual file contents. Refer to
-> [File link types](/docs/user-guide/cache-file-linkingfile-link-types-for-the-dvc-cache)
+> **Note!** For performance with large datasets, DVC can use file links from the
+> cache to the workspace to avoid copying actual file contents. Refer to
+> [File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > to learn which options exist and how to enable them.
 
 </details>

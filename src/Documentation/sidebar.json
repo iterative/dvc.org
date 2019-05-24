@@ -50,7 +50,7 @@
     "files": [
       "dvc-files-and-directories.md",
       "dvc-file-format.md",
-      "cache-file-linking.md",
+      "large-dataset-optimization.md",
       "external-dependencies.md",
       "external-outputs.md",
       "development.md",
@@ -65,7 +65,7 @@
     "labels": {
       "dvc-files-and-directories.md": "Files and Directories",
       "dvc-file-format.md": "File Format (.dvc)",
-      "cache-file-linking.md": "Large File Optimization",
+      "large-dataset-optimization.md": "Large Dataset Optimization",
       "development.md": "Development Version",
       "external-dependencies.md": "External Dependencies",
       "external-outputs.md": "External Outputs",
