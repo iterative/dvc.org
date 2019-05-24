@@ -32,7 +32,7 @@ Let's commit DVC files that describe our pipeline so far:
 $ git add data/.gitignore .gitignore featurize.dvc train.dvc
 $ git commit -m "add featurization and train steps to the pipeline"
 $ dvc push
- ```
+```
 
 This example is simplified just to show you an idea of the pipeline, check
 [example](/doc/get-started/example-pipeline) or complete

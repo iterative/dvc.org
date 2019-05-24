@@ -41,12 +41,12 @@ references the DVC cache entry using the checksum. See
 [DVC File Format](/doc/user-guide/dvc-file-format) for the detailed description
 of the DVC _metafile_ format.
 
-By default DVC tries using reflinks (See [Cache File
-Linking](/docs/user-guide/cache-file-linking)) to avoid copying any file
-contents and to optimize DVC file operations for large files. DVC also supports
-other link types for use on file systems without `reflink` support, but they
-have to be specified manually. Refer to the `cache.type` config option in `dvc
-config cache` for more information.
+By default DVC tries using reflinks (See
+[Cache File Linking](/docs/user-guide/cache-file-linking)) to avoid copying any
+file contents and to optimize DVC file operations for large files. DVC also
+supports other link types for use on file systems without `reflink` support, but
+they have to be specified manually. Refer to the `cache.type` config option in
+`dvc config cache` for more information.
 
 A `dvc add` target can be an individual file or a directory. There are two ways
 to work with directory hierarchies with `dvc add`.
@@ -122,10 +122,10 @@ Let's check the `data.xml.dvc` file inside:
 ```yaml
 md5: aae37d74224b05178153acd94e15956b
 outs:
-- cache: true
-  md5: d8acabbfd4ee51c95da5d7628c7ef74b
-  metric: false
-  path: data.xml.jpg
+  - cache: true
+    md5: d8acabbfd4ee51c95da5d7628c7ef74b
+    metric: false
+    path: data.xml.jpg
 ```
 
 This is a standard DVC stage file with only an `outs` entry. The checksum should
@@ -184,10 +184,10 @@ top-level directory, and it contains this:
 ```yaml
 md5: df06d8d51e6483ed5a74d3979f8fe42e
 outs:
-- cache: true
-  md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
-  metric: false
-  path: pics
+  - cache: true
+    md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
+    metric: false
+    path: pics
 wdir: .
 ```
 

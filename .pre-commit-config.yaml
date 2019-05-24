@@ -3,4 +3,4 @@ repos:
     rev: 1.17.0
     hooks:
       - id: prettier
-        args: ['--prose-wrap=always']
+        args: ['trailing-comma=true', 'tab-width=2', '--prose-wrap=always']

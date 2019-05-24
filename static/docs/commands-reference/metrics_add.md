@@ -67,10 +67,10 @@ field):
 cmd: echo 0.9643 > metrics.txt
 md5: f75f291b02ab38530ba659c1e10e577f
 outs:
-- cache: true
-  md5: 235d585fcea283135682457b15c76101
-  metric: false
-  path: metrics.txt
+  - cache: true
+    md5: 235d585fcea283135682457b15c76101
+    metric: false
+    path: metrics.txt
 ```
 
 If you run `dvc metrics show` you should get an error message like this:
@@ -96,11 +96,11 @@ output is a metric file now:
 cmd: echo 0.9643 > metrics.txt
 md5: f75f291b02ab38530ba659c1e10e577f
 outs:
-- cache: true
-  md5: 235d585fcea283135682457b15c76101
-  metric:
-    type: raw
-  path: metrics.txt
+  - cache: true
+    md5: 235d585fcea283135682457b15c76101
+    metric:
+      type: raw
+    path: metrics.txt
 ```
 
 And if you run `dvc metrics show` you should see something like this:

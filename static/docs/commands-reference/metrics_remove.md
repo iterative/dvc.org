@@ -60,10 +60,10 @@ set:
 cmd: echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv
 md5: 6f910c9000bb03492d1e66035ba8faf6
 outs:
-- cache: false
-  md5: 7ce0bc12da7f88c1493763cdd4c3f684
-  metric: true
-  path: metrics.tsv
+  - cache: false
+    md5: 7ce0bc12da7f88c1493763cdd4c3f684
+    metric: true
+    path: metrics.tsv
 ```
 
 Now, let's reset the flag with the `dvc metrics remove` command:
@@ -80,10 +80,10 @@ Let's check the stage file now:
 cmd: echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv
 md5: 6f910c9000bb03492d1e66035ba8faf6
 outs:
-- cache: false
-  md5: 7ce0bc12da7f88c1493763cdd4c3f684
-  metric: null
-  path: metrics.tsv
+  - cache: false
+    md5: 7ce0bc12da7f88c1493763cdd4c3f684
+    metric: null
+    path: metrics.tsv
 ```
 
 As you can see, nothing has changed at all, except the flag `metric: true`. And
