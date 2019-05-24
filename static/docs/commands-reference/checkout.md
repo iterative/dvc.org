@@ -180,6 +180,7 @@ HEAD is now at 40cc182...
 
 Let's check the `model.pkl` and `train.dvc` files again:
 
+<!-- prettier-ignore -->
 ```yaml
 outs:
   md5: a66489653d1b6a8ba989799367b32c43

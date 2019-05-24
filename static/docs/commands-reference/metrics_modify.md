@@ -68,6 +68,7 @@ section:
 
 The stage `metrics.csv.dvc` file should look like this:
 
+<!-- prettier-ignore -->
 ```yaml
 cmd: echo auc, 0.9567 > metrics.csv
 md5: 6ed9b798bf460e1aa80b27388425a07d

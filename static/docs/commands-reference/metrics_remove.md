@@ -56,6 +56,7 @@ metrics.tsv: ['0.9643']
 If you check the `metrics.tsv.dvc` file, you should see that `metric: true` is
 set:
 
+<!-- prettier-ignore -->
 ```yaml
 cmd: echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv
 md5: 6f910c9000bb03492d1e66035ba8faf6
@@ -76,6 +77,7 @@ Saving information to 'metrics.tsv.dvc'.
 
 Let's check the stage file now:
 
+<!-- prettier-ignore -->
 ```yaml
 cmd: echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv
 md5: 6f910c9000bb03492d1e66035ba8faf6

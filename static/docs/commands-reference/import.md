@@ -177,6 +177,7 @@ If you wish, it's possible to set up the other stages from the _Getting Started_
 example. Since we do not need those stages for this example, we'll skip that.
 Instead we can look at the resulting DVC file `data.xml.dvc`:
 
+<!-- prettier-ignore -->
 ```yaml
 deps:
 - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
@@ -256,6 +257,7 @@ is that DVC file references now references the editable data file in the data
 store directory we just set up. We did this to make it easy to edit the data
 file:
 
+<!-- prettier-ignore -->
 ```yaml
 deps:
 - md5: a86ca87250ed8e54a9e2e8d6d34c252e

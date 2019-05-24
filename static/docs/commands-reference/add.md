@@ -119,6 +119,7 @@ $ tree
 
 Let's check the `data.xml.dvc` file inside:
 
+<!-- prettier-ignore -->
 ```yaml
 md5: aae37d74224b05178153acd94e15956b
 outs:
@@ -181,6 +182,7 @@ are all added to the DVC cache. DVC prints a message to that effect, saying that
 `md5` values are computed for each directory. A DVC file is generated for the
 top-level directory, and it contains this:
 
+<!-- prettier-ignore -->
 ```yaml
 md5: df06d8d51e6483ed5a74d3979f8fe42e
 outs:

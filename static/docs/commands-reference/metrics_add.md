@@ -63,6 +63,7 @@ $ dvc run -o metrics.txt "echo 0.9643 > metrics.txt"
 The content of `metrics.txt.dvc` should look like (note the `mertic: false`
 field):
 
+<!-- prettier-ignore -->
 ```yaml
 cmd: echo 0.9643 > metrics.txt
 md5: f75f291b02ab38530ba659c1e10e577f
@@ -92,6 +93,7 @@ Saving information to 'metrics.txt.dvc'.
 This command updates the `metrics.txt.dvc` to specify that the `metrics.txt`
 output is a metric file now:
 
+<!-- prettier-ignore -->
 ```yaml
 cmd: echo 0.9643 > metrics.txt
 md5: f75f291b02ab38530ba659c1e10e577f

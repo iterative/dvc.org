@@ -86,6 +86,7 @@ $ dvc import https://dvc.org/s3/get-started/data.xml
 
 If you open the resulting DVC file, you will see something like this:
 
+<!-- prettier-ignore -->
 ```yaml
 deps:
 - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'

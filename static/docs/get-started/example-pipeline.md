@@ -92,6 +92,7 @@ more.
 When we run `dvc add Posts.xml.zip` the following happens. DVC creates an
 _orphaned_ version of the [stage file](/doc/user-guide/dvc-file-format):
 
+<!-- prettier-ignore -->
 ```yaml
 md5: 4dbe7a4e5a0d41b652f3d6286c4ae788
 outs:
@@ -142,6 +143,7 @@ $ dvc run -d data/Posts.xml.zip \
 Similar to `dvc add`, `dvc run` creates a
 [stage file](/doc/user-guide/dvc-file-format):
 
+<!-- prettier-ignore -->
 ```yaml
 cmd: ' unzip data/Posts.xml.zip -d data'
 deps:

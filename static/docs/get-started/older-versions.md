@@ -26,6 +26,7 @@ DVC is using special meta-files (`.dvc` files) to track data files, directories,
 end results that are under DVC control. In this case, `train.dvc` among other
 things describes the `model.pkl` file this way:
 
+<!-- prettier-ignore -->
 ```yaml
 outs:
 md5: a66489653d1b6a8ba989799367b32c43

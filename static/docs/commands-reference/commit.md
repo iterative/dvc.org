@@ -176,6 +176,7 @@ train.dvc:
 And we can look in the DVC cache to see if the new version of `model.pkl` is
 indeed _not in cache_ as claimed. Look at `train.dvc` first:
 
+<!-- prettier-ignore -->
 ```yaml
 cmd: python src/train.py data/features model.pkl
 deps:
