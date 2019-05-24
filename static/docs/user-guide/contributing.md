@@ -281,8 +281,12 @@ To run DVC from its Git repository you need to setup your environment:
 
 ## Code style guidelines
 
-We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and are checking
+We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and checking
 that our code is formatted with [black](https://github.com/ambv/black).
+
+For [docstrings](https://www.python.org/dev/peps/pep-0257/#what-is-a-docstring),
+we try to adhere by the
+[Google Python Style Guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings).
 
 ## Commit style guidelines
 
@@ -293,7 +297,7 @@ Format:
 
 (long description)
 
-Fixes #(github issue id).
+Fixes #(Github issue id).
 ```
 
 Message types:
@@ -303,7 +307,7 @@ Message types:
 - _short description_ - short description of the patch;
 - _long description_ - If needed, longer message describing the patch in more
   details;
-- _github issue id_ - An id of the github issue that this patch is addressing;
+- _github issue id_ - An id of the Github issue that this patch is addressing;
 
 Example:
 
