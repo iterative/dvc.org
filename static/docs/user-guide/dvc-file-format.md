@@ -10,7 +10,6 @@ highlighting for your editor.
 
 Here is an example of a DVC file:
 
-<!-- prettier-ignore -->
 ```yaml
 cmd: python cmd.py input.data output.data metrics.json
 deps:

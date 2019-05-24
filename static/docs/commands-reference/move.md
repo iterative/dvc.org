@@ -34,13 +34,12 @@ $ dvc add data.csv
 The `dvc add` command would create a `data.csv.dvc` DVC file with the following
 content:
 
-<!-- prettier-ignore -->
 ```yaml
 md5: 3d1a3e5a5b662490e198d6a6ae84984b
 outs:
-- cache: true
-  md5: c8263e8422925b0872ee1fb7c953742a
-  path: data.csv
+  - cache: true
+    md5: c8263e8422925b0872ee1fb7c953742a
+    path: data.csv
 ```
 
 If we move this using the regular `mv data.csv other.csv` the DVC file would not
@@ -59,13 +58,12 @@ $ cat data.csv.dvc
 
 And here is the updated content of the `data.csv.dvc`:
 
-<!-- prettier-ignore -->
 ```yaml
 md5: 3d1a3e5a5b662490e198d6a6ae84984b
 outs:
-- cache: true
-  md5: c8263e8422925b0872ee1fb7c953742a
-  path: other.csv
+  - cache: true
+    md5: c8263e8422925b0872ee1fb7c953742a
+    path: other.csv
 ```
 
 ## Options

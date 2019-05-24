@@ -177,18 +177,17 @@ If you wish, it's possible to set up the other stages from the _Getting Started_
 example. Since we do not need those stages for this example, we'll skip that.
 Instead we can look at the resulting DVC file `data.xml.dvc`:
 
-<!-- prettier-ignore -->
 ```yaml
 deps:
-- etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-  path: https://dvc.org/s3/get-started/data.xml
+  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
+    path: https://dvc.org/s3/get-started/data.xml
 md5: 61e80c38c1ce04ed2e11e331258e6d0d
 outs:
-- cache: true
-  md5: a304afb96060aad90176268345e10355
-  metric: false
-  path: data/data.xml
-  persist: false
+  - cache: true
+    md5: a304afb96060aad90176268345e10355
+    metric: false
+    path: data/data.xml
+    persist: false
 wdir: .
 ```
 
@@ -257,18 +256,17 @@ is that DVC file references now references the editable data file in the data
 store directory we just set up. We did this to make it easy to edit the data
 file:
 
-<!-- prettier-ignore -->
 ```yaml
 deps:
-- md5: a86ca87250ed8e54a9e2e8d6d34c252e
-  path: /path/to/data-store/data.xml
+  - md5: a86ca87250ed8e54a9e2e8d6d34c252e
+    path: /path/to/data-store/data.xml
 md5: 361728a3b037c9a4bcb897cdf856edfc
 outs:
-- cache: true
-  md5: a304afb96060aad90176268345e10355
-  metric: false
-  path: data/data.xml
-  persist: false
+  - cache: true
+    md5: a304afb96060aad90176268345e10355
+    metric: false
+    path: data/data.xml
+    persist: false
 wdir: .
 ```
 
