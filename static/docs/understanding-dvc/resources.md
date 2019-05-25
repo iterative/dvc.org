@@ -36,6 +36,7 @@ picture-in-picture" allowfullscreen></iframe>
 - [Data Science Workflow](http://fouryears.eu/2018/11/29/the-data-science-workflow/)
 - [The Data Science Workflow](https://towardsdatascience.com/the-data-science-workflow-43859db0415)
 - [Data versioning notebook](https://www.kaggle.com/rtatman/kerneld4769833fe)
+- [First Impressions of Data Science Version Control](https://medium.com/@christopher.samiullah/first-impressions-of-data-science-version-control-dvc-fe96ab29cdda?sk=05e1f1d1ba16c9037046f3568956f16c)
 
 ## Slides
 
