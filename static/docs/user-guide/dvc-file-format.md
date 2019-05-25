@@ -30,6 +30,10 @@ outs:
       xpath: AUC
     path: metrics.json
 locked: True
+# Comments are also persisted between dvc repro command.
+meta: # key to contain arbitary user data
+  name: John
+  email: john@xyz.com
 ```
 
 ## Structure
@@ -60,3 +64,10 @@ A metric entry consists of such fields:
 - `type`: type of the metrics file (e.g. raw/json/tsv/htsv/csv/hcsv);
 - `xpath`: path within the metrics file to the metrics data(e.g. `AUC.value` for
   `{"AUC": {"value": 0.624321}}`);
+
+A meta entry consists of `key:value` pairs such as `name: john`. A meta entry
+can have any structure and contain any number of attributes. `"meta: string"` is
+also possible, it doesn't necessarily need to contain dictionary always.
+
+Comments can be added to the .dvc file using `# comment` syntax. Comments are
+preserved between multiple execution of  `dvc repro <filename.dvc>` command.
