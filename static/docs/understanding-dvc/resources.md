@@ -24,17 +24,18 @@ picture-in-picture" allowfullscreen></iframe>
 
 - Podcast featured by `Podcast.__init__`:
   [Version control For your Machine Learning Projects](https://www.pythonpodcast.com/data-version-control-episode-206/) -
-  
-## Articles
 
-- [Data version control with DVC. What do the authors have to say?](https://towardsdatascience.com/data-version-control-with-dvc-what-do-the-authors-have-to-say-3c3b10f27ee)
-- [Why Git and Git-LFS is not enough to solve the Machine Learning Reproducibility crisis](https://towardsdatascience.com/why-git-and-git-lfs-is-not-enough-to-solve-the-machine-learning-reproducibility-crisis-f733b49e96e8)
-- [My First Try at DVC](https://stdiff.net/MB2019051301.html)
-- [Machine Learning Reproducibility crisis](https://petewarden.com/2018/03/19/the-machine-learning-reproducibility-crisis/)
-- [Data Science Workflow](http://fouryears.eu/2018/11/29/the-data-science-workflow/)
-- [The Data Science Workflow](https://towardsdatascience.com/the-data-science-workflow-43859db0415)
-- [Data Versioning Notebook](https://www.kaggle.com/rtatman/kerneld4769833fe)
-- [First Impressions of Data Science Version Control](https://medium.com/@christopher.samiullah/first-impressions-of-data-science-version-control-dvc-fe96ab29cdda?sk=05e1f1d1ba16c9037046f3568956f16c)
+## Articles
+<ul style="list-style-type:disc;">
+  <li><a href="https://towardsdatascience.com/data-version-control-with-dvc-what-do-the-authors-have-to-say-3c3b10f27ee" target="_blank">Data version control with DVC. What do the authors have to say?</a></li>
+  <li><a href="https://towardsdatascience.com/why-git-and-git-lfs-is-not-enough-to-solve-the-machine-learning-reproducibility-crisis-f733b49e96e8" target="_blank">Why Git and Git-LFS is not enough to solve the Machine Learning Reproducibility crisis</li>
+  <li><a href="https://stdiff.net/MB2019051301.html">My First Try at DVC</li>
+  <li><a href="https://petewarden.com/2018/03/19/the-machine-learning-reproducibility-crisis/">Machine Learning Reproducibility crisis</a></li>
+  <li><a href="http://fouryears.eu/2018/11/29/the-data-science-workflow/">Data Science Workflow</a></li>
+  <li><a href="https://towardsdatascience.com/the-data-science-workflow-43859db0415">The Data Science Workflow</a></li>
+  <li><a href="https://www.kaggle.com/rtatman/kerneld4769833fe">Data Versioning Notebook</a></li>
+  <li><a href="https://medium.com/@christopher.samiullah/first-impressions-of-data-science-version-control-dvc-fe96ab29cdda?sk=05e1f1d1ba16c9037046f3568956f16c">First Impressions of Data Science Version Control</a></li>
+</ul>
 
 ## Slides
 
