@@ -69,5 +69,6 @@ A meta entry consists of `key:value` pairs such as `name: john`. A meta entry
 can have any structure and contain any number of attributes. `"meta: string"` is
 also possible, it doesn't necessarily need to contain dictionary always.
 
-Comments can be added to the .dvc file using `# comment` syntax. Comments are
-preserved between multiple execution of  `dvc repro <filename.dvc>` command.
+Comments can be added to the .dvc file using `# comment` syntax. Comments
+and meta values are preserved between multiple executions of `dvc repro` and
+`dvc commit` commands.
