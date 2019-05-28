@@ -195,6 +195,8 @@ The `etag` field in the DVC file contains the ETag recorded from the HTTP
 request. If the remote file changes, the ETag changes, letting DVC know when the
 file has changed.
 
+While executing `dvc import` command, if user overwrites the `.dvc` file,
+comments  and meta values are not preserved between multiple executions.
 ## Example: Detecting remote file changes
 
 What if that remote file is one which will be updated regularly? The project
