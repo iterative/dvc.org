@@ -38,10 +38,13 @@ Once initialized in a project, DVC populates its installation directory
 
 - `.dvc/lock` - a lock file for the whole dvc project.
 
-### Structure of directory
+## Structure of cache directory
 
-The data file is converted to a MD5 checksum which is a 32 characters long
-string. The first two characters are assigned to name the directory inside
+The structure of directory depends if the data is stored in a file or is in a
+directory.
+
+In case of a file, it is converted to a MD5 checksum which is a 32 characters
+long string. The first two characters are assigned to name the directory inside
 `.dvc/cache` and rest are given to name the cache file. For example, if a data
 file, say `Posts.xml.zip`, is converted to a MD5 checksum, it will evaluate to
 `ec1d2935f811b77cc49b031b999cbf17`. The cache file for this data file will be
@@ -49,3 +52,53 @@ stored as `.dvc/ec/1d2935f811b77cc49b031b999cbf17` on the local storage and if
 it is pushed to a remote storage, its location will be
 `<prefix>/ec/1d2935f811b77cc49b031b999cbf17` where prefix is the name of the
 remote storage. `/tmp/dvc-storage` can be one example of a prefix.
+
+For the second case, let us consider a directory of 2 images.
+
+```dvc
+$ tree
+.
+├── cat.jpeg
+└── index.jpeg
+```
+
+On running `dvc add` on this directory of images, a `Dvcfile` is created with
+information about the checksum of directory which is cached as a file in
+`.dvc/cache`.
+
+```yaml
+- md5: 196a322c107c2572335158503c64bfba.dir
+  path: data/images
+  ...
+```
+
+The cache directory gets structured like this:
+
+```dvc
+$ tree
+.dvc/cache/
+├── 19
+│   └── 6a322c107c2572335158503c64bfba.dir
+├── 29
+│   └── a6c8271c0c8fbf75d3b97aecee589f
+└── df
+    └── f70c0392d7d386c39a23c64fcc0376
+```
+
+Like the previous case, the first two digits of the checksum is used to name the
+directory and rest 30 characters are used in naming the cache file. The cache
+file with `.dir` extension stores the mapping of files in the data directory and
+their checksum as an array. The other two cache files are checksums of the files
+stored inside data directory. On the remote storage(`/tmp/dvc-storage/` is taken
+as an example here), the cache files are stored as the following tree structure:
+
+```dvc
+$ tree
+/tmp/dvc-storage/
+├── 19
+│   └── 6a322c107c2572335158503c64bfba.dir
+├── 29
+│   └── a6c8271c0c8fbf75d3b97aecee589f
+└── df
+    └── f70c0392d7d386c39a23c64fcc0376
+```
