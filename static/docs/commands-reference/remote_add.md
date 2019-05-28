@@ -241,12 +241,12 @@ $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 
 ### Click for HTTP example
 
-> **Note!** Currently HTTP remotes only support downloads:
-
-- `pull`
-- `fetch`
-- `import`
-- As a dependency on remote
+> **Note!** Currently HTTP remotes only support downloads operations:
+>
+> - `pull`
+> - `fetch`
+> - `import`
+> - As an [external dependency](/doc/user-guide/external-dependencies)
 
 ```dvc
 $ dvc remote add myremote https://example.com/path/to/dir
@@ -267,7 +267,7 @@ $ dvc remote add myremote oss://my-bucket/path
 ```
 
 To set key id, key secret and endpoint you need to use modify command from DVC,
-a sample ussge is show below. Make sure to use the `--local` option to avoid
+a sample usage is show below. Make sure to use the `--local` option to avoid
 committing your secrets into Git:
 
 ```dvc
@@ -276,8 +276,8 @@ $ dvc remote modify myremote --local oss_key_secret my-key-secret
 $ dvc remote modify myremote oss_endpoint endpoint
 ```
 
-You can also set enviornment variables and use them later, to set enviornment
-variables use following enviormnent variables:
+You can also set environment variables and use them later, to set environment
+variables use following environment variables:
 
 ```dvc
 $ export OSS_ACCESS_KEY_ID="my-key-id"
@@ -285,9 +285,9 @@ $ export OSS_ACCESS_KEY_SECRET="my-key-secret"
 $ export OSS_ENDPOINT="endpoint"
 ```
 
-#### Test your oss storage using docker
+#### Test your OSS storage using docker
 
-Start a container running an oss emulator.
+Start a container running an OSS emulator.
 
 ```dvc
 $ git clone https://github.com/nanaya-tachibana/oss-emulator.git
