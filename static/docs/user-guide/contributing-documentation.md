@@ -51,9 +51,6 @@ We will review your PR as soon as possible. Thank you for contributing!
 
 ## Development environment
 
-It's highly recommended to install the pre-commit hook that prettifies the files
-for you automatically before you push them:
-
 - Get the latest development version by
   [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
   repository from GitHub:
@@ -61,28 +58,6 @@ for you automatically before you push them:
 ```dvc
 $ git clone git@github.com:<username>/dvc.org.git
 ```
-
-- Make sure you have Python 3.6 or higher installed. It will be required to run
-  style checkers on pre-commit. On Mac OS, use `brew` to install the latest
-  version of Python.
-
-- We **strongly** recommend initializing a
-  [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
-  installing the required libraries for style checkers. Follow the instructions
-  to create one:
-
-```dvc
-$ cd dvc.org
-$ virtualenv --python python3 .env
-$ source .env/bin/activate
-```
-
-- Install the style checker's requirements using
-  `pip install -r requirements.txt`.
-
-- Install coding style pre-commit hook with `pre-commit install`.
-- Once the `pre-commit` hook is installed, you may deactivate the virtual
-  environment by running `deactivate`.
 
 It's highly recommended to run the Node.js docs app locally to test significant
 changes to the docs before submitting them, and its very much needed in order to
@@ -105,12 +80,13 @@ follow the steps below:
 - **Markdown and JS files:** content must be properly formatted at 80 symbols
   width. We recommend using Visual Studio Code and the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
-  plugin to format the content of Markdown files or install the pre-commit hook
-  described above.
+  plugin to format the content of Markdown files or it will be done by a
+  pre-commit hook integrated.
 
 - **Markdown and JS files:** we use `prettier` default conventions to format our
-  files. It's highly recommended to install the hook or run `prettier` manually
-  before submitting the pull request.
+  files. The formatting of staged files will be automatically done by the
+  pre-commit we have configured or run `prettier` manually before submitting the
+  pull request.
 
 - Using `dvc <command>` in the documentation will create a link to that command
   automatically. No need to use `[]()` explicitly to create them.
