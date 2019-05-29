@@ -161,6 +161,8 @@ To track the changes with git run:
 
 	git add .gitignore metric.dvc
 ```
+While executing `dvc run` command, if user overwrites the `.dvc` file, comments 
+and meta values are not preserved between multiple executions.
 
 - Execute a Python script as a DVC pipeline step. Stage file name is not
   specified, so a `model.p.dvc` stage file is created:

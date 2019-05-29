@@ -126,10 +126,17 @@ outs:
     md5: d8acabbfd4ee51c95da5d7628c7ef74b
     metric: false
     path: data.xml.jpg
+meta: #key to contain arbitary user data
+  name: John
+  email: john@xyz.com
 ```
 
 This is a standard DVC stage file with only an `outs` entry. The checksum should
 correspond to an entry in the cache.
+
+If user overwrites the `.dvc` file, comments and meta values are not preserved
+between multiple executions of `dvc add` command.
+
 
 ```dvc
 $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
