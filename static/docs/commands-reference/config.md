@@ -119,7 +119,7 @@ details.)
   > `dvc unprotect` command to modify files safely.
 
   There are pros and cons to different link types. Refer to
-  [File link types](/docs/user-guide/cache-file-linking#file-link-types-for-the-dvc-cache)
+  [File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
   for a full explanation of each one.
 
 - `cache.slow_link_warning` - used to turn off the warnings about having a slow

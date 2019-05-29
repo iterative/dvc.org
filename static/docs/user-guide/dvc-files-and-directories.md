@@ -15,9 +15,9 @@ Once initialized in a project, DVC populates its installation directory
 - `.dvc/cache` - the cache directory will contain your data files. (The data
   directories of DVC repositories will only contain links to the data files in
   the cache, refer to
-  [Performance Optimization for Large Files](/docs/user-guide/cache-file-linking).)
+  [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization).)
 
-  > **Note:** DVC includes the cache directory in `.gitignore` during the
+  > Note that DVC includes the cache directory in `.gitignore` during the
   > initialization. No data files (with actual content) will ever be pushed to
   > the Git repository, only DVC-files that are needed to reproduce them.
 

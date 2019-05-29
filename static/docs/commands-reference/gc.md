@@ -17,7 +17,7 @@ will be removed by `dvc gc`, unless `--all-branches` or `--all-tags` option is
 specified. If a data file has a few cached versions all of them except the
 current one will be removed.
 
-Note, that unless `-c|--cloud` is specified, this action does NOT remove data
+Note that unless `-c|--cloud` is specified, this action does NOT remove data
 files from the remote storage. **Make sure though that remote is configured and
 all the data you will need in the future is pushed there.** See `dvc remote` and
 `dvc config` for more information. This command is just a way to clean the

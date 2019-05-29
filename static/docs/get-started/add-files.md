@@ -43,7 +43,7 @@ $ git commit -m "add source data to DVC"
 You can see that actual data file has been moved to the `.dvc/cache` directory,
 while the entries in the working directory may be links to the actual files in
 the DVC cache. (See
-[File link types](/docs/user-guide/cache-file-linkingfile-link-types-for-the-dvc-cache)
+[File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to learn about the supported file linking options, their tradeoffs, and how to
 enable them).
 
@@ -73,8 +73,7 @@ Hardlinks and symlinks are also available for optimized cache linking but,
 (unlike reflinks) they carry the risk of accidentally corrupting the cache if
 tacked data files are modified in the workspace.
 
-See
-[Performance Optimization for Large Files](/docs/user-guide/cache-file-linking)
+See [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization)
 and `dvc config cache` for more information.
 
 > \***copy-on-write links or "reflinks"** are a relatively new way to link files
