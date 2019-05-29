@@ -94,5 +94,8 @@ looks like this:
 
 ```dvc
 $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
-[{"md5": "dff70c0392d7d386c39a23c64fcc0376", "relpath": "cat.jpeg"}, {"md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg"}]
+[
+  {"md5": "dff70c0392d7d386c39a23c64fcc0376", "relpath": "cat.jpeg"},
+  {"md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg"}
+]
 ```
