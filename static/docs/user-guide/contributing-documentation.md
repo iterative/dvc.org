@@ -61,8 +61,9 @@ $ git clone git@github.com:<username>/dvc.org.git
 
 It's highly recommended to run the Node.js docs app locally to test significant
 changes to the docs before submitting them, and its very much needed in order to
-make changes to the docs JavaScript engine itself (rare). To do so, please
-follow the steps below:
+make changes to the docs JavaScript engine itself (rare). These changes need to
+be properly formatted as well. This is also ensured in the following steps for
+setting up.
 
 - Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
   installed. Install and keep the dependencies up to date by running
@@ -81,12 +82,12 @@ follow the steps below:
   width. We recommend using Visual Studio Code and the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
   plugin to format the content of Markdown files or it will be done by a
-  pre-commit hook integrated.
+  pre-commit hook which was automatically integrated when we ran `npm install`.
 
 - **Markdown and JS files:** we use `prettier` default conventions to format our
   files. The formatting of staged files will be automatically done by the
-  pre-commit we have configured or run `prettier` manually before submitting the
-  pull request.
+  pre-commit hook we have configured or run `prettier` manually before
+  submitting the pull request.
 
 - Using `dvc <command>` in the documentation will create a link to that command
   automatically. No need to use `[]()` explicitly to create them.
