@@ -15,9 +15,11 @@ positional arguments:
 
 ## Description
 
-Manage DVC packages. See [dvc pkg install](/doc/commands-reference/pkg-install).
+Manage DVC packages. See `dvc pkg install`.
 
 ## Options
+
+- `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   no problems arise, otherwise 1.
