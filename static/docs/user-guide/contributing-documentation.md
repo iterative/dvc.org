@@ -81,13 +81,13 @@ setting up.
 - **Markdown and JS files:** content must be properly formatted at 80 symbols
   width. We recommend using Visual Studio Code and the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
-  plugin to format the content of Markdown files or it will be done by a
-  pre-commit hook which was automatically integrated when we ran `npm install`.
+  plugin. Correct formatting will be done automatically by a Git pre-commit hook
+  which is integrated when `npm install` runs in the instructions above.
 
 - **Markdown and JS files:** we use `prettier` default conventions to format our
-  files. The formatting of staged files will be automatically done by the
-  pre-commit hook we have configured or run `prettier` manually before
-  submitting the pull request.
+  files. The formatting of staged files will automatically be done by the Git
+  pre-commit hook we have configured. You may also run
+  `npx prettier --write <file path(s)>` manually before committing changes.
 
 - Using `dvc <command>` in the documentation will create a link to that command
   automatically. No need to use `[]()` explicitly to create them.
