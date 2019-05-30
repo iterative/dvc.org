@@ -40,7 +40,7 @@ $ tree
     └── train.py
 ```
 
-We **strongly** recommend using `virtualenv` or a similar tool to isolate your
+We **strongly** recommend using [`virtualenv`](https://virtualenv.pypa.io/en/stable/) or a similar tool to isolate your
 environment:
 
 ```dvc
