@@ -51,23 +51,31 @@ We will review your PR as soon as possible. Thank you for contributing!
 
 ## Development environment
 
+Installing development environment is _highly_ recommended to format your code
+and documents in accordance with the style guide automatically, and to run the
+server locally in case you are making some JS engine changes.
+
 - Get the latest development version by
   [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
   repository from GitHub:
 
-```dvc
-$ git clone git@github.com:<username>/dvc.org.git
-```
+  ```dvc
+  $ git clone git@github.com:<username>/dvc.org.git
+  ```
+
+Next step, along with installing dependencies that are necessary to run the
+website locally, will enable the pre-commit hook that will be formatting your
+code and documentation files automatically automatically:
+
+- Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
+  installed. Install and keep the dependencies up to date by running
+  `npm install` often.
 
 It's highly recommended to run the Node.js docs app locally to test significant
 changes to the docs before submitting them, and its very much needed in order to
 make changes to the docs JavaScript engine itself (rare). These changes need to
 be properly formatted as well. This is also ensured in the following steps for
 setting up.
-
-- Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
-  installed. Install and keep the dependencies up to date by running
-  `npm install` often.
 
 - Start the development server using `npm run dev` which will start the server
   on the default port `3000`.
@@ -76,28 +84,29 @@ setting up.
 
 ## Code style guidelines
 
-- **Markdown and JS files:** no trailing whitespaces are allowed.
+- No trailing whitespaces are allowed.
 
-- **Markdown and JS files:** content must be properly formatted at 80 symbols
-  width. We recommend using Visual Studio Code and the
+- Content must be properly formatted at 80 symbols width. We recommend using
+  Visual Studio Code and the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
   plugin. Correct formatting will be done automatically by a Git pre-commit hook
   which is integrated when `npm install` runs in the instructions above.
 
-- **Markdown and JS files:** we use `prettier` default conventions to format our
-  files. The formatting of staged files will automatically be done by the Git
-  pre-commit hook we have configured. You may also run
-  `npx prettier --write <file path(s)>` manually before committing changes.
+- We use `prettier` default conventions to format our files. The formatting of
+  staged files will automatically be done by the Git pre-commit hook we have
+  configured. You may also run `npx prettier --write <file path(s)>` manually
+  before committing changes.
 
-- Using `dvc <command>` in the documentation will create a link to that command
-  automatically. No need to use `[]()` explicitly to create them.
+- **Markdown:** Using `dvc <command>` in the documentation will create a link to
+  that command automatically. No need to use `[]()` explicitly to create them.
 
-- Syntax highlighting in fenced code blocks should use the `usage` and `dvc`
-  custom languages:
+- **Markdown:** Syntax highlighting in fenced code blocks should use the `usage`
+  and `dvc` custom languages:
 
-- `usage` is employed to show `dvc help` commands output in each command
-  reference doc.
-- `dvc` can be used to show `.dvc` file contents, or examples of console
-  commands and their output.
+- **Markdown:** `usage` is employed to show `dvc help` commands output in each
+  command reference doc.
+
+- **Markdown:** `dvc` can be used to show `.dvc` file contents, or examples of
+  console commands and their output.
 
 > Check out any of the command reference `.md` source code to get a better idea.
