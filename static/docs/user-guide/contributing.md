@@ -38,18 +38,15 @@ contributing!
 - Make sure that you have python 3 installed. Version 3.6 or higher is required
   to run style checkers on pre-commit. On Mac OS, use `brew` to install the
   latest version of python.
-- Install the requirements with `pip install -r requirements.txt` and
-  `pip install -r tests/requirements.txt`. We **strongly** recommend
-  initializing a
+- Install dvc in editable mode with `pip install -e .[all,tests]`.
+  We **strongly** recommend initializing a
   [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
   installing the required libraries. For example:
   ```dvc
   $ cd dvc
   $ virtualenv --python python3 .env
   $ source .env/bin/activate
-  $ pip install -r requirements.txt
-  $ pip install -r tests/requirements.txt
-  $ pip install -e .
+  $ pip install -e .[all,tests]
   ```
 - Install coding style pre-commit hooks with
   ```dvc
