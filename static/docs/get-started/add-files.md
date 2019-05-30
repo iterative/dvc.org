@@ -6,13 +6,13 @@ Let's get a sample data set to play with:
 
 <details>
 
-### Expand if you're having problems downloading from command line
+### Expand if you're on Windows or having problems downloading from command line
 
-If you experienced problems using `wget` or you're on Windows
-and you don't want to install it, you'll need to use a browser to download
-`data.xml` and save it into `data` subdirectory. To download, right-click
-[this link](https://dvc.org/s3/get-started/data.xml) and click
-`Save link as`(Chrome) or `Save object as`(Firefox).
+If you experienced problems using `wget` or you're on Windows and you don't want
+to install it, you'll need to use a browser to download `data.xml` and save it
+into `data` subdirectory. To download, right-click
+[this link](https://dvc.org/s3/get-started/data.xml) and click `Save link as`
+(Chrome) or `Save object as` (Firefox).
 
 </details>
 
