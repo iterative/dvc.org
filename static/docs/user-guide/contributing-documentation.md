@@ -65,7 +65,7 @@ server locally in case you are making some JS engine changes.
 
 Next step, along with installing dependencies that are necessary to run the
 website locally, will enable the pre-commit hook that will be formatting your
-code and documentation files automatically automatically:
+code and documentation files automatically:
 
 - Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
   installed. Install and keep the dependencies up to date by running
