@@ -38,7 +38,7 @@ contributing!
 - Make sure that you have python 3 installed. Version 3.6 or higher is required
   to run style checkers on pre-commit. On Mac OS, use `brew` to install the
   latest version of python.
-- Install dvc in editable mode with `pip install -e .[all,tests]`.
+- Install DVC in editable mode with `pip install -e .[all,tests]`.
   We **strongly** recommend initializing a
   [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
   installing the required libraries. For example:
