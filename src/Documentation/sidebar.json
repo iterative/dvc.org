@@ -89,7 +89,10 @@
           "modify.md",
           "remove.md",
           "show.md"
-        ]
+        ],
+        "labels": {
+          "remove.md" : "remove"
+        }
       },
       "move.md",
       {
