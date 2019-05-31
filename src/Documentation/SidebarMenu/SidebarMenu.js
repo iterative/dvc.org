@@ -1,6 +1,5 @@
 import React, { Fragment } from 'react'
 import $ from 'jquery'
-import Async from 'react-promise'
 
 // components
 import DownloadButton from '../../DownloadButton'
