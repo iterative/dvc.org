@@ -1,24 +1,81 @@
 import React, { Fragment } from 'react'
 import $ from 'jquery'
+import Async from 'react-promise'
+
 // components
 import DownloadButton from '../../DownloadButton'
 // styles
 import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
+import sidebar from "../sidebar";
 
 export default class SidebarMenu extends React.Component {
   constructor(props) {
-    super(props)
-    this.collapse = this.collapse.bind(this)
+    super(props);
+    this.state={
+      names:[],
+      loading: true
+    };
+    this.collapse = this.collapse.bind(this);
+    this.getName = this.getName.bind(this);
   }
   collapse() {
     setTimeout(function() {
-      $('[data-open=true]').slideDown()
+      $('[data-open=true]').slideDown();
       $('[data-open=false]').slideUp()
     })
   }
   componentDidMount() {
-    this.collapse()
+    this.collapse();
+    let arr = {},promises=[];
+    sidebar.map(section=>{
+      section.files.map(file=>{
+        promises.push(new Promise((resolve) => {
+          let result = {
+            folder: file.folder ? file.folder : section.folder,
+            filename: typeof file==='string'? file : file.indexFile,
+            res: null
+          };
+          fetch(`${result.folder}/${result.filename}`).then(function(response) {
+            response.text().then(text => {
+              result.res = text.substring(2,text.search(/\n/));
+              resolve(result);
+            })
+          }).catch(function(error) {
+          });
+        }));
+        if (file.files && file.files.length>0){
+          file.files.map(file2=>{
+            promises.push(new Promise((resolve) => {
+              let result = {
+                folder: file.folder ? file.folder : section.folder,
+                filename: file2,
+                res: null
+              };
+              fetch(`${result.folder}/${result.filename}`).then(function(response) {
+                response.text().then(text => {
+                  result.res = text.substring(2,text.search(/\n/));
+                  resolve(result);
+                })
+              }).catch(function(error) {
+              });
+            }));
+          });
+        }
+      })
+    });
+    Promise.all(promises).then(result=>{
+        result.map(res=>{
+          arr[res.folder+'/'+res.filename]=res.res;
+        })
+    });
+    this.setState({
+      names:arr,
+      loading: false
+    });
+  }
+  getName(labels=null,files=null,folder=null,indexFile=null, name=null){
+    return labels && labels[indexFile] ? labels[indexFile] : this.state.names[folder+'/'+indexFile];
   }
   componentWillReceiveProps(nextProps) {
     if (
@@ -32,7 +89,7 @@ export default class SidebarMenu extends React.Component {
     function includes(array, value, folder) {
       let flag = false;
       array.map(elem=>{
-        if(folder+'/'+elem.indexFile===value){
+        if(folder+'/'+elem===value){
           flag = true;
         }
       });
@@ -47,13 +104,14 @@ export default class SidebarMenu extends React.Component {
       getLinkHref
     } = this.props
 
-    return (
+    return !this.state.loading ? (
       <Menu id="sidebar-menu">
         <Sections>
           <SectionLinks>
-            {sidebar.map(
-              ({ name, files = [], indexFile, folder }, index) => {
+            {sidebar.map((section, index) =>
+              {
                 const isSectionActive = currentSection === index;
+                let sectionTitle = section.name ? section.name : this.getName(section.labels,section.files,section.folder,section.indexFilefile)
                 return (
                   <div key={index}>
                     <SectionLink
@@ -63,15 +121,15 @@ export default class SidebarMenu extends React.Component {
                       className={isSectionActive ? 'docSearch-lvl0' : ''}
                       isActive={isSectionActive}
                     >
-                      {name}
+                      {sectionTitle}
                     </SectionLink>
-
                     {/* Section Files */}
                     <Collapse data-open={isSectionActive ? 'true' : 'false'}>
-                      {files && files.map((file, fileIndex) => {
+                      {section.files && section.files.map((file, fileIndex) => {
                         const subgroup = file.files ? file.files : null;
-                        let compare = file.folder ? file.folder+'/'+file.indexFile : folder+'/'+file.indexFile;
+                        let compare = (file.folder && file.indexFile) ? file.folder+'/'+file.indexFile : section.folder+'/'+file;
                         const isFileActive = currentFile === compare;
+                        let FileOrSubsectionTitle = file.name ? file.name : this.getName(section.labels,section.files,file.folder ? file.folder : section.folder,file.indexFile ? file.indexFile : file);
                         return (
                           <Fragment key={`file-${fileIndex}`}>
                             <div>
@@ -81,24 +139,24 @@ export default class SidebarMenu extends React.Component {
                                 onClick={e => onFileSelect(file, index, e)}
                                 isActive={isFileActive}
                               >
-                                {file.name}
+                                {FileOrSubsectionTitle}
                               </SectionLink>
                             </div>
-
-                            {/* Subgroup files */}
+                            {/*Subgroup files*/}
                             {subgroup && (
-                              <Collapse data-flag={'first'} data-open={(isFileActive || includes(subgroup, currentFile, file.folder))? 'true' : 'false'}>
+                              <Collapse data-flag={'first'} data-open={(isFileActive || includes(subgroup, currentFile, file.folder ? file.folder : section.folder))? 'true' : 'false'}>
                                 {subgroup.map((file2, subIndex) => {
-                                  let compare = file.folder+'/'+file2.indexFile;
+                                  let compare = (file.folder ? file.folder : section.folder)+'/'+file2;
+                                  console.log(compare);
                                   return (
                                     <div key={`file-${fileIndex}-${subIndex}`}>
                                       <SectionLink
                                         level={3}
-                                        href={getLinkHref(index, file2.indexFile, fileIndex)}
+                                        href={getLinkHref(index, file2, fileIndex)}
                                         onClick={e => onFileSelect(file2, index, e, fileIndex)}
                                         isActive={currentFile === compare}
                                       >
-                                        {file2.name}
+                                        {this.getName(file.labels,file.files,file.folder ? file.folder : section.folder,file2)}
                                       </SectionLink>
                                     </div>
                                   )
@@ -120,6 +178,10 @@ export default class SidebarMenu extends React.Component {
             <DownloadButton openTop />
           </SideFooter>
         </OnlyDesktop>
+      </Menu>
+    ):(
+      <Menu id="sidebar-menu">
+        <p>loading</p>
       </Menu>
     )
   }

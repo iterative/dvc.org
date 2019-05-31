@@ -41,67 +41,57 @@ export default class Documentation extends Component {
     this.loadStateFromURL()
     this.initDocsearch()
     window.addEventListener('popstate', this.loadStateFromURL)
-    this.ps = new PerfectScrollbar('#sidebar-menu', {
-      // wheelPropagation: window.innerWidth <= 572
-      wheelPropagation: true
-    })
-  }
-
-  componentDidUpdate() {
-    this.ps.update()
   }
 
   componentWillUnmount() {
     window.removeEventListener('popstate', this.loadStateFromURL)
   }
-
+  toString(method,str){
+    switch (method) {
+      case 'filetourl':
+        return str.slice(0,-3);
+        break;
+      default:
+        break;
+    }
+  }
+  /*готово*/
   loadStateFromURL = () => {
     const { pathname } = window.location;
     const sectionURL = pathname.split('/')[2];
     const subSectionURL = pathname.split('/')[3];
     const fileURL = pathname.split('/')[4];
     const sectionIndex = sectionURL ? sidebar.findIndex(
-      section => kebabCase(section.name) === sectionURL
+      section => section.indexFile ? this.toString('filetourl',section.indexFile) === sectionURL : this.toString('filetourl',section.files[0]) === sectionURL
     ) : 0;
-    const subSectionIndex = fileURL ? sidebar[sectionIndex].files.findIndex(
-      subsection => kebabCase(subsection.name) === subSectionURL
-    ) : null;
-    let fileIndex = subSectionIndex ? sidebar[sectionIndex].files[subSectionIndex].files.findIndex(
-      file => kebabCase(file.indexFile.slice(0, -3)) === fileURL
-    ) : null;
-    if((sectionIndex && !sidebar[sectionIndex])){
-      this.setState({pageNotFound: true})
-    }else if(subSectionIndex){
+    const subSectionIndex = subSectionURL ? sidebar[sectionIndex].files.findIndex(subsection =>{
+        return this.toString('filetourl',subsection.indexFile ? subsection.indexFile : subsection) === subSectionURL;
+        }
+    ) : -1;
+    let fileIndex = fileURL ? sidebar[sectionIndex].files[subSectionIndex].files.findIndex(
+      file => this.toString('filetourl',file) === fileURL
+    ) : -1;
+    if(fileIndex>=0){
       this.loadFile({
         file: sidebar[sectionIndex].files[subSectionIndex].files[fileIndex],
         section: sectionIndex,
         subsection: subSectionIndex,
         parseHeadings: true,
       })
-    }else if(sectionIndex){
-      console.log(sectionIndex);
-      fileIndex = subSectionURL ? sidebar[sectionIndex].files.findIndex(
-        file => kebabCase(file.indexFile.slice(0, -3)) === subSectionURL
-      ) : '0';
-      if(subSectionURL){
-        this.loadFile({
-          file: sidebar[sectionIndex].files[fileIndex],
-          section: sectionIndex,
-          parseHeadings: true,
-        })
-      }else{
-        this.loadFile({
-          file: sidebar[sectionIndex].indexFile ? sidebar[sectionIndex] : sidebar[sectionIndex].files[0],
-          section: sectionIndex,
-          parseHeadings: true,
-        })
-      }
-    }else{
+    }else if(subSectionIndex>=0){
       this.loadFile({
-        file: sidebar[0],
-        section: 0,
+        file: sidebar[sectionIndex].files[subSectionIndex],
+        section: sectionIndex,
         parseHeadings: true,
       })
+    }else if(sectionIndex>=0){
+      this.loadFile({
+        file: sidebar[sectionIndex].indexFile,
+        section: sectionIndex,
+        parseHeadings: true,
+      })
+    }else{
+      this.setState({pageNotFound: true})
     }
   };
 
@@ -113,41 +103,42 @@ export default class Documentation extends Component {
       debug: false // Set debug to true if you want to inspect the dropdown
     })
   };
-
-  getLinkHref = (section, file, subsection) => {
-    const sectionSlug = kebabCase(sidebar[section].name);
-    const subsectionSlug = subsection ? sidebar[section].files[subsection].indexFile.slice(0,-3) : undefined;
-    const fileSlug = file ? file.slice(0, -3) : undefined;
+  /*готово*/
+  getLinkHref = (section, file=null, subsection) => {
+    const sectionSlug = sidebar[section].indexFile ? this.toString('filetourl',sidebar[section].indexFile) : '123';
+    const subsectionSlug = subsection ? (sidebar[section].files[subsection].indexFile ? sidebar[section].files[subsection].indexFile.slice(0,-3) : sidebar[section].files[subsection]) : undefined;
+    const fileSlug = file ? (typeof file==='string' ? file.slice(0, -3) : file.files[0]) : undefined;
     return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`;
   };
-
+  /*готово*/
   setCurrentPath = (section, file, subsection) => {
     window.history.pushState(null, null, this.getLinkHref(section, file, subsection))
   };
-
+  /*готово*/
   onSectionSelect = (section, e) => {
     e && e.preventDefault();
-    const file = sidebar[section].hasOwnProperty('indexFile') ? sidebar[section]  : sidebar[section].files[0];
+    const file = sidebar[section].indexFile ? sidebar[section].indexFile  : sidebar[section].files[0];
     e && this.setCurrentPath(section);
     this.loadFile({ file, section, parseHeadings: false });
   };
-
+  /*готово*/
   onFileSelect = (file, section, e, subsection) => {
     e && e.preventDefault();
-    this.setCurrentPath(section, file.indexFile, subsection);
+    this.setCurrentPath(section, file.indexFile ? file.indexFile : file, subsection);
     this.loadFile({ file, section, subsection, parseHeadings: true });
   };
-
+  /*готово*/
   loadFile = ({ file, section, subsection, parseHeadings }) => {
     this.setState({load:true});
-    let folder = file.folder ? file.folder  : (subsection ? sidebar[section].files[subsection].folder : sidebar[section].folder);
-    fetch(`${folder}/${file.indexFile}`)
+    let folderpath = file.folder ? file.folder  : (subsection ? sidebar[section].files[subsection].folder : sidebar[section].folder);
+    let filepath = file.indexFile ? file.indexFile : (file.files ? file.files : file);
+    fetch(`${folderpath}/${filepath}`)
       .then(res => {
         res.text().then(text => {
           this.setState(
             {
               currentSection: section,
-              currentFile: file.folder ? `${file.folder}/${file.indexFile}` : (subsection ? `${sidebar[section].files[subsection].folder}/${file.indexFile}` : `${sidebar[section].folder}/${file.indexFile}`),
+              currentFile: folderpath ? `${folderpath}/${file.indexFile ? file.indexFile : file}` : (subsection ? `${sidebar[section].files[subsection].folder}/${file.indexFile}` : `${sidebar[section].folder}/${file}`),
               markdown: text,
               headings: [],
               pageNotFound: false,
@@ -226,7 +217,7 @@ export default class Documentation extends Component {
 
     const directory = sidebar[currentSection].folder
     const githubLink = `https://github.com/iterative/dvc.org/blob/master${directory}/${currentFile}`
-    const sectionName = sidebar[currentSection].name
+    const sectionName = sidebar[currentSection].indexFile
 
     return (
       <Page stickHeader={true}>
