@@ -213,6 +213,7 @@ const Content = styled.article`
     display: block;
     position: relative;
     opacity: 0.9;
+    cursor: pointer;
 
     &:after {
       position: absolute;
