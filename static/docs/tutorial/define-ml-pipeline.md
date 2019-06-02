@@ -118,6 +118,8 @@ $ ls -i .dvc/cache/ec/
 $ du -sh .
  41M .
 ```
+Do not that `ls -i` prints prints the index number of each file and index 
+number for `data/Posts.xml.zip` and `.dvc/cache/ec` remains same always.
 
 ## Running commands
 
