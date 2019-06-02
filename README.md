@@ -1,5 +1,7 @@
 ![owl logo](https://dvc.org/static/img/logo-github-readme.png)
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/5872e0a572ec8b74bd8d/maintainability)](https://codeclimate.com/github/iterative/dvc.org/maintainability)
+
 [DVC](https://github.com/iterative/dvc) project documenation and website source
 code.
 
