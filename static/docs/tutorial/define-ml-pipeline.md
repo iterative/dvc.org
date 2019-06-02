@@ -118,8 +118,9 @@ $ ls -i .dvc/cache/ec/
 $ du -sh .
  41M .
 ```
-Do not that `ls -i` prints prints the index number of each file and index 
-number for `data/Posts.xml.zip` and `.dvc/cache/ec` remains same always.
+Note that `ls -i` prints the index number(78483929) of each file and inode
+for `data/Posts.xml.zip` and `.dvc/cache/ec/88519f8465218abb23ce0e0e8b1384`
+remained same.
 
 ## Running commands
 
