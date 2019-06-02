@@ -8,7 +8,7 @@ dependencies to find only those that have to be rerun.
 
 ```usage
 usage: dvc repro [-h] [-q | -v]
-                 [-f] [-s] [-c CWD] [-m] [--dry] [-i]
+                 [-f] [-s] [-c CWD] [-m] [--dry] [-i] [-R]
                  [-p] [-P] [--ignore-build-cache] [--no-commit]
                  [targets [targets ...]]
 
@@ -97,6 +97,13 @@ local cache and updates stage files with the new checksum information.
 * `-v`, `--verbose` - displays detailed tracing information.
 
 - `--downstream` - rerun the commands present in the downstream of the pipeline.
+
+- `R, --recursive` - the `targets` value is expected to be a directory path.
+  With this option, you can reproduce all stages in a specified directory. 
+  Determines the files to download by searching the named directory and its
+  subdirectories for DVC files to download data for. Along with providing a 
+  `target`, or `target` along with `--with-deps`, it is yet another way to
+  limit the scope of DVC files to upload.
 
 ## Examples
 
