@@ -1,16 +1,30 @@
 # pkg
 
-Contains a helper command to install a DVC package:
-[install](/doc/commands-reference/pkg-install).
+A set of commands to to manage DVC packages:
+[install](/doc/commands-reference/pkg-install),
+[uninstall](/doc/commands-reference/pkg-uninstall),
+[add](/doc/commands-reference/pkg-add),
+[remove](/doc/commands-reference/pkg-remove),
+[modify](/doc/commands-reference/pkg-modify),
+[list](/doc/commands-reference/pkg-list),
+[import](/doc/commands-reference/pkg-import)
 
 ## Synopsis
 
 ```usage
-usage: dvc pkg [-q | -v] {install} ...
+usage: dvc pkg [-h | -q | -v]
+               {install,uninstall,add,remove,modify,list,import} ...
 
 positional arguments:
-  {install}      Use dvc pkg CMD --help for command-specific help.
-    install      Install package.
+  {install,uninstall,add,remove,modify,list,import}
+                        Use dvc pkg CMD --help for command-specific help.
+    install             Install package(s).
+    uninstall           Uninstall package(s).
+    add                 Add package.
+    remove              Remove package.
+    modify              Modify package.
+    list                List packages.
+    import              Import data from package.
 ```
 
 ## Description

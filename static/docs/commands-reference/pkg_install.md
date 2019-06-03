@@ -1,26 +1,22 @@
 # pkg install
 
-Install a DVC package. The command can be run only from a DVC project root.
+Install DVC package(s).
 
 ## Synopsis
 
 ```usage
 usage: dvc pkg install [-h] [--global] [--system] [--local] [-q | -v]
-                       [-s OUT] [-f FILE]
-                       [address] [target]
+                       [targets [targets ...]]
 
 positional arguments:
-  address       Package address: git://<url> or https://github.com/...
-  target        Target directory to deploy package outputs. Default
-                value is the current dir.
+  targets        Package name.
 ```
 
 ## Description
 
-Any external DVC project stored in a Git repository at `address` can be
-installed as a package in the current workspace. If no `target` directory is
-specified, the repo name will be extracted from the `address` path and created
-as a sub-directory of `dvc_mod/`.
+Any external DVC project stored in a Git repository can be installed as a
+package in the current workspace. The package name (`target`) will be created as
+a sub-directory of `dvc_mod/`.
 
 All the outputs of the package will be fetched into the local cache as well as
 added to the workspace for further use. The `.gitignore` file will be updated to
@@ -33,13 +29,16 @@ recommended at this point.
 
 ## Options
 
-- `-s OUT`, `--select OUT` - Select and persist only specified outputs from a
-  package. The parameter can be used multiple times. All outputs will be
-  selected by default.
+- `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
+  of the project's `.dvc/config`.
 
-- `-f FILE`, `--file FILE` - Specify name of the stage file. It should be either
-  'Dvcfile' or have a '.dvc' suffix (e.g. 'prepare.dvc', 'clean.dvc', etc). By
-  default the file has 'mod\_' prefix and imported package name followed by .dvc
+- `--system` - modify a system config file (e.g. `/etc/dvc.config`) instead of
+  `.dvc/config`.
+
+- `--local` - modify a local config file instead of `.dvc/config`. It is located
+  in `.dvc/config.local` and is Git-ignored. This is useful when you need to
+  specify private config options in your config, that you don't want to track
+  and share through Git.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -48,7 +47,7 @@ recommended at this point.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples: ...
+## Example
 
 Having: DVC package in https://github.com/dmpetrov/tag_classifier
 
