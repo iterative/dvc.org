@@ -17,6 +17,9 @@ positional arguments:
 
 Manage DVC packages. See `dvc pkg install`.
 
+Any DVC project can be used as a DVC package in order to reuse its data
+artifacts in the current project workspace.
+
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.

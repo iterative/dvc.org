@@ -1,6 +1,6 @@
 # pkg install
 
-Install a DVC package.
+Install a DVC package. The command can be run only from a DVC project root.
 
 ## Synopsis
 
@@ -17,8 +17,19 @@ positional arguments:
 
 ## Description
 
-Install DVC package at `address`, deploying its outputs to the `target`
-directory.
+Any external DVC project stored in a Git repository at `address` can be
+installed as a package in the current workspace. If no `target` directory is
+specified, the repo name will be extracted from the `address` path and created
+as a sub-directory of `dvc_mod/`.
+
+All the outputs of the package will be fetched into the local cache as well as
+added to the workspace for further use. The `.gitignore` file will be updated to
+include the `dvc_mod/` directory as well as all the aforementioned package
+outputs.
+
+A DVC-file specifying all the outputs of the package will also be added to the
+pipeline. Adding the `.gitignore` changes as well as the DVC-file to Git is
+recommended at this point.
 
 ## Options
 
@@ -30,17 +41,6 @@ directory.
   'Dvcfile' or have a '.dvc' suffix (e.g. 'prepare.dvc', 'clean.dvc', etc). By
   default the file has 'mod\_' prefix and imported package name followed by .dvc
 
-- `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
-  of the project's `.dvc/config`.
-
-- `--system` - modify a system config file (e.g. `/etc/dvc.config`) instead of
-  `.dvc/config`.
-
-- `--local` - modify a local config file instead of `.dvc/config`. It is located
-  in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-  specify private config options in your config, that you don't want to track
-  and share through Git.
-
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
@@ -49,3 +49,11 @@ directory.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples: ...
+
+Having: DVC package in https://github.com/dmpetrov/tag_classifier
+
+```dvc
+$ dvc pkg install https://github.com/dmpetrov/tag_classifier
+```
+
+Result: `tag_classifier` package in `dvc_mod/` directory
