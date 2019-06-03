@@ -49,7 +49,7 @@ export default class Documentation extends Component {
   toString(method,str){
     switch (method) {
       case 'filetourl':
-        return str.slice(0,-3);
+        return str.slice(0,-3)
         break;
       default:
         break;
