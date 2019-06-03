@@ -36,13 +36,11 @@ export default class Documentation extends Component {
       load: false
     }
   }
-
   componentDidMount() {
     this.loadStateFromURL()
     this.initDocsearch()
     window.addEventListener('popstate', this.loadStateFromURL)
   }
-
   componentWillUnmount() {
     window.removeEventListener('popstate', this.loadStateFromURL)
   }
@@ -55,7 +53,6 @@ export default class Documentation extends Component {
         break;
     }
   }
-  /*готово*/
   loadStateFromURL = () => {
     const { pathname } = window.location;
     const sectionURL = pathname.split('/')[2];
@@ -94,7 +91,6 @@ export default class Documentation extends Component {
       this.setState({pageNotFound: true})
     }
   };
-
   initDocsearch = () => {
     docsearch({
       apiKey: '755929839e113a981f481601c4f52082',
@@ -103,31 +99,26 @@ export default class Documentation extends Component {
       debug: false // Set debug to true if you want to inspect the dropdown
     })
   };
-  /*готово*/
   getLinkHref = (section, file=null, subsection) => {
     const sectionSlug = sidebar[section].indexFile ? this.toString('filetourl',sidebar[section].indexFile) : '123';
     const subsectionSlug = subsection ? (sidebar[section].files[subsection].indexFile ? sidebar[section].files[subsection].indexFile.slice(0,-3) : sidebar[section].files[subsection]) : undefined;
     const fileSlug = file ? (typeof file==='string' ? file.slice(0, -3) : file.files[0]) : undefined;
     return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`;
   };
-  /*готово*/
   setCurrentPath = (section, file, subsection) => {
     window.history.pushState(null, null, this.getLinkHref(section, file, subsection))
   };
-  /*готово*/
   onSectionSelect = (section, e) => {
     e && e.preventDefault();
     const file = sidebar[section].indexFile ? sidebar[section].indexFile  : sidebar[section].files[0];
     e && this.setCurrentPath(section);
     this.loadFile({ file, section, parseHeadings: false });
   };
-  /*готово*/
   onFileSelect = (file, section, e, subsection) => {
     e && e.preventDefault();
     this.setCurrentPath(section, file.indexFile ? file.indexFile : file, subsection);
     this.loadFile({ file, section, subsection, parseHeadings: true });
   };
-  /*готово*/
   loadFile = ({ file, section, subsection, parseHeadings }) => {
     this.setState({load:true});
     let folderpath = file.folder ? file.folder  : (subsection ? sidebar[section].files[subsection].folder : sidebar[section].folder);
@@ -156,7 +147,6 @@ export default class Documentation extends Component {
         window.location.reload()
       })
   }
-
   parseHeadings = text => {
     const headingRegex = /\n(## \s*)(.*)/g
     const matches = []
@@ -172,12 +162,10 @@ export default class Documentation extends Component {
 
     this.setState({ headings: matches }, this.autoScroll)
   }
-
   autoScroll = () => {
     const { hash } = window.location
     if (hash) this.scrollToLink(hash)
   }
-
   scrollToLink = href => {
     scroller.scrollTo(href.slice(1), {
       duration: 600,
@@ -187,7 +175,6 @@ export default class Documentation extends Component {
       containerId: 'bodybag'
     })
   }
-
   scrollTop = () => {
     animateScroll.scrollTo(0, {
       duration: 300,
@@ -197,13 +184,11 @@ export default class Documentation extends Component {
       containerId: 'bodybag'
     })
   }
-
   toggleMenu = () => {
     this.setState(prevState => ({
       isMenuOpen: !prevState.isMenuOpen
     }))
   }
-
   render() {
     const {
       currentSection,
