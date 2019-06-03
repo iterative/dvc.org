@@ -48,6 +48,9 @@ contributing!
   $ source .env/bin/activate
   $ pip install -e .[all,tests]
   ```
+**NOTE** When using zsh shell, remember to escape square brackets. 
+(`pip install -e .\[all,tests\]`)
+
 - Install coding style pre-commit hooks with
   ```dvc
   $ pip install pre-commit
