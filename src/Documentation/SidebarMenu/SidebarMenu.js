@@ -16,6 +16,7 @@ export default class SidebarMenu extends React.Component {
     this.getName = this.getName.bind(this);
     this.getFileTitle = this.getFileTitle.bind(this);
     this.getNamesArr = this.getNamesArr.bind(this);
+    this.promiseAdd = this.promiseAdd.bind(this);
   }
   collapse() {
     setTimeout(function() {
@@ -30,32 +31,28 @@ export default class SidebarMenu extends React.Component {
       })
     }).catch(error=>console.log(error));
   }
+  promiseAdd(promisesArray,file,section){
+    let self = this;
+    let result = {
+      folder: file.folder ? file.folder : section.folder,
+      filename: typeof file==='string'? file : file.indexFile,
+      res: null
+    };
+    promisesArray.push(new Promise((resolve) => {
+      self.getFileTitle(result.folder,result.filename,text=>{
+        result.res = text;
+        resolve(result);
+      });
+    }));
+  }
   getNamesArr(){
     let arr = {},promises=[], self = this;
     sidebar.map(section=>{
       section.files.map(file=>{
-        let result = {
-          folder: file.folder ? file.folder : section.folder,
-          filename: typeof file==='string'? file : file.indexFile,
-          res: null
-        };
-        promises.push(new Promise((resolve) => {
-          let callback = (text)=>{
-            result.res = text;
-            resolve(result);
-          };
-          self.getFileTitle(result.folder,result.filename,callback);
-        }));
+        self.promiseAdd(promises,file,section);
         if (file.files && file.files.length>0){
           file.files.map(file2=>{
-            promises.push(new Promise((resolve) => {
-              result.filename=file2;
-              let callback = (text)=>{
-                result.res = text;
-                resolve(result);
-              };
-              self.getFileTitle(result.folder,result.filename,callback);
-            }));
+            self.promiseAdd(promises,file2,file);
           });
         }
       })
@@ -150,9 +147,9 @@ export default class SidebarMenu extends React.Component {
       </Menu>
     ):(
       <Menu id="sidebar-menu">
-          <div style={{display:'flex',alignItems:'center',justifyContent:'flex-start',flexDirection:'column',margin:'44px 34px 0 0'}}>
-            <Preloader size={24}/>
-          </div>
+        <div style={{display:'flex',alignItems:'center',justifyContent:'flex-start',flexDirection:'column',margin:'44px 34px 0 0'}}>
+          <Preloader size={24}/>
+        </div>
       </Menu>
     )
   }
