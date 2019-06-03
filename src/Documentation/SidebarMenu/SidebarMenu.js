@@ -33,12 +33,12 @@ export default class SidebarMenu extends React.Component {
     let arr = {},promises=[], self = this;
     sidebar.map(section=>{
       section.files.map(file=>{
+        let result = {
+          folder: file.folder ? file.folder : section.folder,
+          filename: typeof file==='string'? file : file.indexFile,
+          res: null
+        };
         promises.push(new Promise((resolve) => {
-          let result = {
-            folder: file.folder ? file.folder : section.folder,
-            filename: typeof file==='string'? file : file.indexFile,
-            res: null
-          };
           self.getFileTitle(result.folder,result.filename,function (text) {
             result.res = text;
             resolve(result);
@@ -47,11 +47,7 @@ export default class SidebarMenu extends React.Component {
         if (file.files && file.files.length>0){
           file.files.map(file2=>{
             promises.push(new Promise((resolve) => {
-              let result = {
-                folder: file.folder ? file.folder : section.folder,
-                filename: file2,
-                res: null
-              };
+              result.filename=file2;
               self.getFileTitle(result.folder,result.filename,function (text) {
                 result.res = text;
                 resolve(result);
