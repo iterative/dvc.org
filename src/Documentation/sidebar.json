@@ -23,11 +23,11 @@
       "example-pipeline.md"
     ],
     "labels": {
-      "agenda.md" : "Agenda"
+      "agenda.md": "Agenda"
     }
   },
   {
-    "name":"Use Cases",
+    "name": "Use Cases",
     "folder": "/static/docs/use-cases",
     "indexFile": "use-cases.md",
     "files": [
@@ -65,9 +65,7 @@
         "name": "cache",
         "folder": "/static/docs/commands-reference/cache",
         "indexFile": "cache.md",
-        "files": [
-          "dir.md"
-        ]
+        "files": ["dir.md"]
       },
       "checkout.md",
       "commit.md",
@@ -84,14 +82,9 @@
         "name": "metrics",
         "folder": "/static/docs/commands-reference/metrics",
         "indexFile": "metrics.md",
-        "files": [
-          "add.md",
-          "modify.md",
-          "remove.md",
-          "show.md"
-        ],
+        "files": ["add.md", "modify.md", "remove.md", "show.md"],
         "labels": {
-          "remove.md" : "remove"
+          "remove.md": "remove"
         }
       },
       "move.md",
@@ -99,10 +92,7 @@
         "name": "pipeline",
         "folder": "/static/docs/commands-reference/pipeline",
         "indexFile": "pipeline.md",
-        "files": [
-          "list.md",
-          "show.md"
-        ]
+        "files": ["list.md", "show.md"]
       },
       "push.md",
       "pull.md",
@@ -110,13 +100,7 @@
         "name": "remote",
         "indexFile": "remote.md",
         "folder": "/static/docs/commands-reference/remote",
-        "files":[
-          "add.md",
-          "default.md",
-          "list.md",
-          "modify.md",
-          "remove.md"
-        ]
+        "files": ["add.md", "default.md", "list.md", "modify.md", "remove.md"]
       },
       "remove.md",
       "repro.md",
@@ -155,9 +139,6 @@
   {
     "name": "Changelog",
     "folder": "/static/docs/changelog",
-    "files": [
-      "0.35.md",
-      "0.18.md"
-    ]
+    "files": ["0.35.md", "0.18.md"]
   }
 ]

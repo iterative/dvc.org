@@ -24,16 +24,16 @@ import styled from 'styled-components'
 import { media } from '../../../src/styles'
 // json
 import sidebar from '../../../src/Documentation/sidebar'
-import Preloader from "../../Preloader/Preloader";
+import Preloader from '../../Preloader/Preloader'
 
-registerLanguage('dvc', dvc);
-registerLanguage('python', python);
-registerLanguage('usage', usage);
-registerLanguage('yaml', yaml);
-registerLanguage('ini', ini);
-registerLanguage('bash', bash);
-registerLanguage('vim', vim);
-registerLanguage('diff', diff);
+registerLanguage('dvc', dvc)
+registerLanguage('python', python)
+registerLanguage('usage', usage)
+registerLanguage('yaml', yaml)
+registerLanguage('ini', ini)
+registerLanguage('bash', bash)
+registerLanguage('vim', vim)
+registerLanguage('diff', diff)
 
 function flatten(text, child) {
   return typeof child === 'string'
@@ -42,81 +42,81 @@ function flatten(text, child) {
 }
 
 const HeadingRenderer = ({ level, children }) => {
-  const content = React.Children.toArray(children);
-  const text = children.reduce(flatten, '');
-  const slug = kebabCase(text);
+  const content = React.Children.toArray(children)
+  const text = children.reduce(flatten, '')
+  const slug = kebabCase(text)
   return React.createElement('h' + level, { id: slug }, content)
-};
+}
 
 const HtmlRenderer = props => {
   if (props.tag !== 'details') {
     return React.createElement(props.tag, {}, props.children)
   } else {
-    const text = props.children[0].props.children[0];
+    const text = props.children[0].props.children[0]
     return (
       <Collapsible trigger={text} transitionTime={200}>
         {props.children.slice(1)}
       </Collapsible>
     )
   }
-};
+}
 
 const CodeBlock = ({ value, language }) => {
-  const dvcStyle = Object.assign({}, docco);
-  dvcStyle['hljs-comment'] = { color: '#999' };
-  dvcStyle['hljs-meta'] = { color: '#333', fontSize: '14px' };
-  dvcStyle['hljs']['padding'] = '0.5em 0.5em 0.5em 2em';
-  dvcStyle['hljs-skipped'] = { userSelect: 'none' };
+  const dvcStyle = Object.assign({}, docco)
+  dvcStyle['hljs-comment'] = { color: '#999' }
+  dvcStyle['hljs-meta'] = { color: '#333', fontSize: '14px' }
+  dvcStyle['hljs']['padding'] = '0.5em 0.5em 0.5em 2em'
+  dvcStyle['hljs-skipped'] = { userSelect: 'none' }
   return (
     <SyntaxHighlighter language={language} style={dvcStyle}>
       {value}
     </SyntaxHighlighter>
   )
-};
+}
 
 export default class Markdown extends Component {
   constructor() {
-    super();
-    this.touchstartX = 0;
-    this.touchendX = 0;
-    this.isCodeBlock = false;
+    super()
+    this.touchstartX = 0
+    this.touchendX = 0
+    this.isCodeBlock = false
   }
 
   componentDidMount() {
-    document.addEventListener('touchstart', this.onTouchStart, false);
-    document.addEventListener('touchend', this.onTouchEnd, false);
+    document.addEventListener('touchstart', this.onTouchStart, false)
+    document.addEventListener('touchend', this.onTouchEnd, false)
   }
 
   componentWillUnmount() {
-    document.removeEventListener('touchstart', this.onTouchStart);
-    document.removeEventListener('touchend', this.onTouchEnd);
+    document.removeEventListener('touchstart', this.onTouchStart)
+    document.removeEventListener('touchend', this.onTouchEnd)
   }
 
   isInsideCodeBlock = elem => {
     for (; elem && elem !== document; elem = elem.parentNode) {
-      if (elem.tagName === 'PRE') return true;
-      if (elem.tagName === 'ARTICLE') return false;
+      if (elem.tagName === 'PRE') return true
+      if (elem.tagName === 'ARTICLE') return false
     }
     return false
-  };
+  }
 
   onTouchStart = e => {
-    this.isCodeBlock = this.isInsideCodeBlock(e.target);
+    this.isCodeBlock = this.isInsideCodeBlock(e.target)
     this.touchstartX = event.changedTouches[0].screenX
-  };
+  }
 
   onTouchEnd = () => {
-    this.touchendX = event.changedTouches[0].screenX;
+    this.touchendX = event.changedTouches[0].screenX
     this.handleSwipeGesture()
-  };
+  }
 
   handleSwipeGesture = () => {
-    if (this.isCodeBlock) return;
-    const { section, file, onFileSelect } = this.props;
-    const files = sidebar[section].files;
-    const fileIndex = files.findIndex(f => f === file);
-    const showPrev = fileIndex > 0;
-    const showNext = fileIndex + 1 < sidebar[section].files.length;
+    if (this.isCodeBlock) return
+    const { section, file, onFileSelect } = this.props
+    const files = sidebar[section].files
+    const fileIndex = files.findIndex(f => f === file)
+    const showPrev = fileIndex > 0
+    const showNext = fileIndex + 1 < sidebar[section].files.length
 
     if (this.touchstartX - this.touchendX > 100) {
       showNext && onFileSelect(files[fileIndex + 1], section)
@@ -125,25 +125,49 @@ export default class Markdown extends Component {
     if (this.touchendX - this.touchstartX > 100) {
       showPrev && onFileSelect(files[fileIndex - 1], section)
     }
-  };
+  }
 
   render() {
-    const { markdown, githubLink, section, file, onFileSelect, load } = this.props;
-    const files = sidebar[section].files;
-    const fileIndex = files.findIndex(f => f === file);
-    const showPrev = fileIndex > 0;
-    const showNext = fileIndex + 1 < sidebar[section].files.length;
+    const {
+      markdown,
+      githubLink,
+      section,
+      file,
+      onFileSelect,
+      load
+    } = this.props
+    const files = sidebar[section].files
+    const fileIndex = files.findIndex(f => f === file)
+    const showPrev = fileIndex > 0
+    const showNext = fileIndex + 1 < sidebar[section].files.length
 
-    if(load){
-      return(
+    if (load) {
+      return (
         <Content>
-          <div style={{width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-            <Preloader size={30}/>
-            <p style={{fontWeight:'bold',fontSize:'18px',marginTop:'24px'}}>. . . &nbsp;Loading&nbsp; . . .</p>
+          <div
+            style={{
+              width: '100%',
+              height: '100%',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              flexDirection: 'column'
+            }}
+          >
+            <Preloader size={30} />
+            <p
+              style={{
+                fontWeight: 'bold',
+                fontSize: '18px',
+                marginTop: '24px'
+              }}
+            >
+              . . . &nbsp;Loading&nbsp; . . .
+            </p>
           </div>
         </Content>
       )
-    }else{
+    } else {
       return (
         <Content>
           <GithubLink href={githubLink} target="_blank">
@@ -263,7 +287,7 @@ const Content = styled.article`
     margin-left: 20px;
     margin-right: 10px;
   }
-`;
+`
 const NavigationButtons = styled.div`
   display: flex;
   justify-content: space-between;
@@ -271,7 +295,7 @@ const NavigationButtons = styled.div`
   margin-top: 40px;
   font-weight: 600;
   font-size: 14px;
-`;
+`
 const Button = styled.div`
   border: none;
   background: white;
@@ -311,7 +335,7 @@ const Button = styled.div`
     pointer-events: none;
     opacity: 0.5;
   }
-`;
+`
 
 export const GithubLink = styled(LightButton)`
   display: none;
@@ -329,4 +353,4 @@ export const GithubLink = styled(LightButton)`
   i {
     background-image: url(/static/img/github_icon.svg);
   }
-`;
+`

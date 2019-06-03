@@ -70,7 +70,7 @@ let _javascript = function(hljs) {
                 },
                 className: 'strong'
               }
-            ],
+            ]
           },
           {
             begin: /^\s*\$\s/,
