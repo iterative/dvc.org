@@ -1,13 +1,9 @@
 import React, { Fragment } from 'react'
 import $ from 'jquery'
-
-// components
 import DownloadButton from '../../DownloadButton'
-// styles
 import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
 import sidebar from "../sidebar";
-
 export default class SidebarMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -17,6 +13,8 @@ export default class SidebarMenu extends React.Component {
     };
     this.collapse = this.collapse.bind(this);
     this.getName = this.getName.bind(this);
+    this.getFileTitle = this.getFileTitle.bind(this);
+    this.getNamesArr = this.getNamesArr.bind(this);
   }
   collapse() {
     setTimeout(function() {
@@ -24,8 +22,14 @@ export default class SidebarMenu extends React.Component {
       $('[data-open=false]').slideUp()
     })
   }
-  componentDidMount() {
-    this.collapse();
+  getFileTitle(folder,file,callback){
+    fetch(`${folder}/${file}`).then(function(response) {
+      response.text().then(text => {
+        callback(text.substring(2,text.search(/\n/)))
+      })
+    }).catch(error=>console.log(error));
+  }
+  getNamesArr(){
     let arr = {},promises=[], self = this;
     sidebar.map(section=>{
       section.files.map(file=>{
@@ -35,12 +39,9 @@ export default class SidebarMenu extends React.Component {
             filename: typeof file==='string'? file : file.indexFile,
             res: null
           };
-          fetch(`${result.folder}/${result.filename}`).then(function(response) {
-            response.text().then(text => {
-              result.res = text.substring(2,text.search(/\n/));
-              resolve(result);
-            })
-          }).catch(function(error) {
+          self.getFileTitle(result.folder,result.filename,function (text) {
+            result.res = text;
+            resolve(result);
           });
         }));
         if (file.files && file.files.length>0){
@@ -51,12 +52,9 @@ export default class SidebarMenu extends React.Component {
                 filename: file2,
                 res: null
               };
-              fetch(`${result.folder}/${result.filename}`).then(function(response) {
-                response.text().then(text => {
-                  result.res = text.substring(2,text.search(/\n/));
-                  resolve(result);
-                })
-              }).catch(function(error) {
+              self.getFileTitle(result.folder,result.filename,function (text) {
+                result.res = text;
+                resolve(result);
               });
             }));
           });
@@ -64,23 +62,24 @@ export default class SidebarMenu extends React.Component {
       })
     });
     Promise.all(promises).then(result=>{
-        result.map(res=>{
-          arr[res.folder+'/'+res.filename]=res.res;
-        });
-        self.setState({
-          names:arr,
-          loading: false
-        });
+      result.map(res=>{
+        arr[res.folder+'/'+res.filename]=res.res;
+      });
+      self.setState({
+        names:arr,
+        loading: false
+      });
     });
   }
-  getName(labels=null,files=null,folder=null,indexFile=null, name=null){
+  componentDidMount() {
+    this.collapse();
+    this.getNamesArr();
+  }
+  getName(labels=null,files=null,folder=null,indexFile=null){
     return labels && labels[indexFile] ? labels[indexFile] : this.state.names[folder+'/'+indexFile];
   }
   componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.currentSection !== this.props.currentSection ||
-      nextProps.currentFile !== this.props.currentFile
-    ) {
+    if (nextProps.currentSection !== this.props.currentSection || nextProps.currentFile !== this.props.currentFile) {
       this.collapse()
     }
   }
@@ -101,7 +100,7 @@ export default class SidebarMenu extends React.Component {
       onSectionSelect,
       onFileSelect,
       getLinkHref
-    } = this.props
+    } = this.props;
 
     return !this.state.loading ? (
       <Menu id="sidebar-menu">
@@ -110,19 +109,12 @@ export default class SidebarMenu extends React.Component {
             {sidebar.map((section, index) =>
               {
                 const isSectionActive = currentSection === index;
-                let sectionTitle = section.name ? section.name : this.getName(section.labels,section.files,section.folder,section.indexFilefile)
+                let sectionTitle = section.name ? section.name : this.getName(section.labels,section.files,section.folder,section.indexFile);
                 return (
                   <div key={index}>
-                    <SectionLink
-                      level={1}
-                      href={getLinkHref(index)}
-                      onClick={e => onSectionSelect(index, e)}
-                      className={isSectionActive ? 'docSearch-lvl0' : ''}
-                      isActive={isSectionActive}
-                    >
+                    <SectionLink level={1} href={getLinkHref(index)} onClick={e => onSectionSelect(index, e)} className={isSectionActive ? 'docSearch-lvl0' : ''} isActive={isSectionActive}>
                       {sectionTitle}
                     </SectionLink>
-                    {/* Section Files */}
                     <Collapse data-open={isSectionActive ? 'true' : 'false'}>
                       {section.files && section.files.map((file, fileIndex) => {
                         const subgroup = file.files ? file.files : null;
@@ -132,29 +124,17 @@ export default class SidebarMenu extends React.Component {
                         return (
                           <Fragment key={`file-${fileIndex}`}>
                             <div>
-                              <SectionLink
-                                level={2}
-                                href={getLinkHref(index, file.indexFile)}
-                                onClick={e => onFileSelect(file, index, e)}
-                                isActive={isFileActive}
-                              >
+                              <SectionLink level={2} href={getLinkHref(index, file.indexFile)} onClick={e => onFileSelect(file, index, e)} isActive={isFileActive}>
                                 {FileOrSubsectionTitle}
                               </SectionLink>
                             </div>
-                            {/*Subgroup files*/}
                             {subgroup && (
                               <Collapse data-flag={'first'} data-open={(isFileActive || includes(subgroup, currentFile, file.folder ? file.folder : section.folder))? 'true' : 'false'}>
                                 {subgroup.map((file2, subIndex) => {
                                   let compare = (file.folder ? file.folder : section.folder)+'/'+file2;
-                                  console.log(compare);
                                   return (
                                     <div key={`file-${fileIndex}-${subIndex}`}>
-                                      <SectionLink
-                                        level={3}
-                                        href={getLinkHref(index, file2, fileIndex)}
-                                        onClick={e => onFileSelect(file2, index, e, fileIndex)}
-                                        isActive={currentFile === compare}
-                                      >
+                                      <SectionLink level={3} href={getLinkHref(index, file2, fileIndex)} onClick={e => onFileSelect(file2, index, e, fileIndex)} isActive={currentFile === compare}>
                                         {this.getName(file.labels,file.files,file.folder ? file.folder : section.folder,file2)}
                                       </SectionLink>
                                     </div>
@@ -187,7 +167,6 @@ export default class SidebarMenu extends React.Component {
     )
   }
 }
-
 const Menu = styled.div`
   position: sticky;
   top: 60px;
@@ -195,7 +174,6 @@ const Menu = styled.div`
   height: calc(100vh - 138px);
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
-
   ${media.phablet`
     width: auto;
     position: relative;
@@ -204,20 +182,17 @@ const Menu = styled.div`
     overflow-y: auto;
     margin-left: 20px;
   `};
-`
-
+`;
 const Sections = styled.div`
   margin-bottom: 25px;
   margin-top: 10px;
   min-width: 280px;
-`
-
+`;
 const SectionLinks = styled.div`
   @media (max-width: 768px) {
     position: relative;
   }
-`
-
+`;
 const SectionLink = styled.a`
   display: block;
   position: relative;
@@ -232,11 +207,9 @@ const SectionLink = styled.a`
   padding-left: 15px;
   cursor: pointer;
   margin: 0;
-
   &:hover {
     color: #3c3937;
   }
-
   &::before {
     content: '';
     display: block;
@@ -246,46 +219,29 @@ const SectionLink = styled.a`
     background: url('/static/img/triangle_dark.svg') no-repeat center center;
     left: 0px;
     top: 10px;
-
-    ${props =>
-  props.isActive &&
-  `
+    ${props => props.isActive && `
       transform: rotate(-90deg);
     `};
   }
-
-  ${props =>
-  props.level === 1 &&
-  `
+  ${props => props.level === 1 && `
     margin-left: 5px;
-  `} ${props =>
-  props.level === 2 &&
-  `
-      margin-left: 30px;
+  `} ${props => props.level === 2 && `
+    margin-left: 30px;
   `};
-
-  ${props =>
-  props.level === 3 &&
-  `
-      margin-left: 45px;
-
-      &::before {
-        display: none;
-      }
+  ${props => props.level === 3 && `
+    margin-left: 45px;
+    &::before {
+      display: none;
+    }
   `};
-
-  ${props =>
-  props.isActive &&
-  `
+  ${props => props.isActive && `
     color: #40364d;
 	`};
-`
-
+`;
 const Collapse = styled.div`
   display: none;
-`
-
+`;
 const SideFooter = styled.div`
   margin-top: 30px;
   padding-bottom: 30px;
-`
+`;
