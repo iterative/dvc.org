@@ -39,19 +39,21 @@ export default class SidebarMenu extends React.Component {
           res: null
         };
         promises.push(new Promise((resolve) => {
-          self.getFileTitle(result.folder,result.filename,function (text) {
+          let callback = (text)=>{
             result.res = text;
             resolve(result);
-          });
+          };
+          self.getFileTitle(result.folder,result.filename,callback);
         }));
         if (file.files && file.files.length>0){
           file.files.map(file2=>{
             promises.push(new Promise((resolve) => {
               result.filename=file2;
-              self.getFileTitle(result.folder,result.filename,function (text) {
+              let callback = (text)=>{
                 result.res = text;
                 resolve(result);
-              });
+              };
+              self.getFileTitle(result.folder,result.filename,callback);
             }));
           });
         }
