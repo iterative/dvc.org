@@ -24,6 +24,7 @@ import styled from 'styled-components'
 import { media } from '../../../src/styles'
 // json
 import sidebar from '../../../src/Documentation/sidebar'
+import Preloader from "../../Preloader/Preloader";
 
 registerLanguage('dvc', dvc)
 registerLanguage('python', python)
@@ -137,7 +138,7 @@ export default class Markdown extends Component {
       return(
         <Content>
           <div style={{width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-            <img style={{width:'30px',height:'30px',display:'block',opacity:'.5'}} src={'/static/img/preloader.gif'} alt=""/>
+            <Preloader size={30}/>
             <p style={{fontWeight:'bold',fontSize:'18px',marginTop:'24px'}}>. . . &nbsp;Loading&nbsp; . . .</p>
           </div>
         </Content>

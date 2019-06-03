@@ -4,6 +4,7 @@ import DownloadButton from '../../DownloadButton'
 import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
 import sidebar from "../sidebar";
+import Preloader from "../../Preloader/Preloader";
 export default class SidebarMenu extends React.Component {
   constructor(props) {
     super(props);
@@ -159,7 +160,7 @@ export default class SidebarMenu extends React.Component {
     ):(
       <Menu id="sidebar-menu">
           <div style={{display:'flex',alignItems:'center',justifyContent:'flex-start',flexDirection:'column',margin:'44px 34px 0 0'}}>
-            <img style={{width:'24px',height:'24px',display:'block',opacity:'.5'}} src={'/static/img/preloader.gif'} alt=""/>
+            <Preloader size={24}/>
           </div>
       </Menu>
     )
