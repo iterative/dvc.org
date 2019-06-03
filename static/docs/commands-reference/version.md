@@ -14,11 +14,16 @@ usage: dvc version [-h] [-q | -v]
 Running the command `dvc version` outputs the following information about the
 system/environment:
 
-| Type             | Detail                                                                         |
-| ---------------- | ------------------------------------------------------------------------------ |
-| `DVC version`    | Version of DVC (along with a Git commit hash in case of a development version) |
-| `Python version` | Version of the Python being used for the project in which DVC is initialized   |
-| `Platform`       | Information about the operating system of the machine                          |
+| Type              | Detail                                                                                                                                                    |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DVC version`     | Version of DVC (along with a Git commit hash in case of a development version)                                                                            |
+| `Python version`  | Version of the Python being used for the project in which DVC is initialized                                                                              |
+| `Platform`        | Information about the operating system of the machine                                                                                                     |
+| `Cache`           | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the DVC workspace and the cache directory |
+| `Filesystem type` | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of workspace and the cache directory                                                      |
+
+> If `dvc version` is executed outside a DVC workspace, the command outputs the
+> filesystem type of the current working directory.
 
 #### Components of DVC version
 
@@ -55,10 +60,26 @@ The detail of DVC version depends upon the way of installing the project.
 
 Getting the DVC version and environment information:
 
+Inside a DVC workspace:
+
 ```dvc
 $ dvc version
 
-DVC version: 0.40.0+45f94e
-Python version: 3.6.7
-Platform: Linux-4.15.0-47-generic-x86_64-with-Ubuntu-18.04-bionic
+DVC version: 0.41.3+bb3ee8
+Python version: 3.7.1
+Platform: Linux-4.18.0-20-generic-x86_64-with-Ubuntu-18.04-bionic
+Cache: reflink - False, hardlink - True, symlink - True
+Filesystem type (cache directory): ('ext4', '/dev/sda7')
+Filesystem type (workspace): ('ext4', '/dev/sda7'
+```
+
+Outside a DVC workspace:
+
+```dvc
+$ dvc version
+
+DVC version: 0.41.3+bb3ee8
+Python version: 3.7.1
+Platform: Linux-4.18.0-20-generic-x86_64-with-Ubuntu-18.04-bionic
+Filesystem type (workspace): ('ext4', '/dev/sda7')
 ```
