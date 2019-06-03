@@ -26,7 +26,7 @@ export default class SidebarMenu extends React.Component {
   }
   componentDidMount() {
     this.collapse();
-    let arr = {},promises=[];
+    let arr = {},promises=[], self = this;
     sidebar.map(section=>{
       section.files.map(file=>{
         promises.push(new Promise((resolve) => {
@@ -66,11 +66,11 @@ export default class SidebarMenu extends React.Component {
     Promise.all(promises).then(result=>{
         result.map(res=>{
           arr[res.folder+'/'+res.filename]=res.res;
-        })
-    });
-    this.setState({
-      names:arr,
-      loading: false
+        });
+        self.setState({
+          names:arr,
+          loading: false
+        });
     });
   }
   getName(labels=null,files=null,folder=null,indexFile=null, name=null){
@@ -180,7 +180,9 @@ export default class SidebarMenu extends React.Component {
       </Menu>
     ):(
       <Menu id="sidebar-menu">
-        <p>loading</p>
+          <div style={{display:'flex',alignItems:'center',justifyContent:'flex-start',flexDirection:'column',margin:'44px 34px 0 0'}}>
+            <img style={{width:'24px',height:'24px',display:'block',opacity:'.5'}} src={'/static/img/preloader.gif'} alt=""/>
+          </div>
       </Menu>
     )
   }

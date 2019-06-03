@@ -137,8 +137,8 @@ export default class Markdown extends Component {
       return(
         <Content>
           <div style={{width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column'}}>
-            <img style={{width:'80px',height:'80px',display:'block',opacity:'.5'}} src={'/static/img/preloader.gif'} alt=""/>
-            <p style={{fontWeight:'bold',fontSize:'42px'}}>... Loading ...</p>
+            <img style={{width:'30px',height:'30px',display:'block',opacity:'.5'}} src={'/static/img/preloader.gif'} alt=""/>
+            <p style={{fontWeight:'bold',fontSize:'18px',marginTop:'24px'}}>. . . &nbsp;Loading&nbsp; . . .</p>
           </div>
         </Content>
       )
