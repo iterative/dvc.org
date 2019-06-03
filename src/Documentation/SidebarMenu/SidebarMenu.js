@@ -92,21 +92,12 @@ export default class SidebarMenu extends React.Component {
       });
       return flag;
     }
-    const {
-      sidebar,
-      currentSection,
-      currentFile,
-      onSectionSelect,
-      onFileSelect,
-      getLinkHref
-    } = this.props;
-
+    const {sidebar, currentSection, currentFile, onSectionSelect, onFileSelect, getLinkHref} = this.props;
     return !this.state.loading ? (
       <Menu id="sidebar-menu">
         <Sections>
           <SectionLinks>
-            {sidebar.map((section, index) =>
-              {
+            {sidebar.map((section, index) => {
                 const isSectionActive = currentSection === index;
                 let sectionTitle = section.name ? section.name : this.getName(section.labels,section.files,section.folder,section.indexFile);
                 return (
