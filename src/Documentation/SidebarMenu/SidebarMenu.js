@@ -14,7 +14,6 @@ export default class SidebarMenu extends React.Component {
     };
     this.collapse = this.collapse.bind(this);
     this.getName = this.getName.bind(this);
-    this.getFileTitle = this.getFileTitle.bind(this);
     this.getNamesArr = this.getNamesArr.bind(this);
     this.promiseAdd = this.promiseAdd.bind(this);
   }
@@ -24,25 +23,19 @@ export default class SidebarMenu extends React.Component {
       $('[data-open=false]').slideUp()
     })
   }
-  getFileTitle(folder,file,callback){
-    fetch(`${folder}/${file}`).then(function(response) {
-      response.text().then(text => {
-        callback(text.substring(2,text.search(/\n/)))
-      })
-    }).catch(error=>console.log(error));
-  }
   promiseAdd(promisesArray,file,section){
-    let self = this;
     let result = {
       folder: file.folder ? file.folder : section.folder,
       filename: typeof file==='string'? file : file.indexFile,
       res: null
     };
     promisesArray.push(new Promise((resolve) => {
-      self.getFileTitle(result.folder,result.filename,text=>{
-        result.res = text;
-        resolve(result);
-      });
+      fetch(`${result.folder}/${result.filename}`).then(function(response) {
+        response.text().then(text => {
+          result.res = text.substring(2,text.search(/\n/));
+          resolve(result);
+        })
+      }).catch(error=>console.log(error));
     }));
   }
   getNamesArr(){
