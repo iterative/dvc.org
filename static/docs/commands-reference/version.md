@@ -14,13 +14,13 @@ usage: dvc version [-h] [-q | -v]
 Running the command `dvc version` outputs the following information about the
 system/environment:
 
-| Type              | Detail                                                                                               |
-| ----------------- | ---------------------------------------------------------------------------------------------------- |
-| `DVC version`     | Version of DVC (along with a Git commit hash in case of a development version)                       |
-| `Python version`  | Version of the Python being used for the project in which DVC is initialized                         |
-| `Platform`        | Information about the operating system of the machine                                                |
-| `Cache`           | Type of links supported between the DVC workspace and the cache directory                            |
-| `Filesystem type` | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of workspace and the cache directory |
+| Type              | Detail                                                                                                                                                    |
+| ----------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `DVC version`     | Version of DVC (along with a Git commit hash in case of a development version)                                                                            |
+| `Python version`  | Version of the Python being used for the project in which DVC is initialized                                                                              |
+| `Platform`        | Information about the operating system of the machine                                                                                                     |
+| `Cache`           | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the DVC workspace and the cache directory |
+| `Filesystem type` | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of workspace and the cache directory                                                      |
 
 > If `dvc version` is executed outside a DVC workspace, the command outputs the
 > filesystem type of the current working directory.
