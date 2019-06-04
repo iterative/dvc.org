@@ -1,7 +1,8 @@
 # pipeline
 
-A set of commands to manage pipelines: [show](#show) - visualize or
-[list](#list) - list existing pipelines.
+A set of commands to manage pipelines:
+[show](/doc/commands-reference/pipeline-show) - visualize or
+[list](/doc/commands-reference/pipeline-list) - list existing pipelines.
 
 ## Synopsis
 
