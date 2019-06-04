@@ -5,8 +5,7 @@ Install DVC package(s).
 ## Synopsis
 
 ```usage
-usage: dvc pkg install [-h] [--global] [--system] [--local] [-q | -v]
-                       [targets [targets ...]]
+usage: dvc pkg install [-h] [-q | -v] [targets [targets ...]]
 
 positional arguments:
   targets        Package name.
@@ -24,10 +23,10 @@ will be placed. (`.dvc/pkg/` will be added to the `.dvc/.gitignore` file if
 needed.) All the outputs in the package pipelines will be also downloaded from
 the default remotes into the locally installed package directory.
 
-The provided `targets` may also be URLs to the HTTP location of the DVC
-packages, in that case, the implicit package name will be extracted from the
-given HTTP address and used for the subdirectory of `.dvc/pkg/` as explained in
-the previous paragraph.
+The provided `targets` may also be URLs to the location of the DVC packages
+(same as `url` in `dvc pkg add`), in that case, the implicit package name will
+be extracted from the given address and used for the subdirectory of `.dvc/pkg/`
+as explained in the previous paragraph.
 
 > Note that installing packages with implicit names does NOT add them to the
 > config file.

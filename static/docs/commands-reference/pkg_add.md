@@ -5,8 +5,8 @@ Add a DVC package. The package is registered in the DVC project configuration.
 ## Synopsis
 
 ```usage
-usage: dvc pkg add [-h] [--global] [--system] [--local] [-q | -v]
-                   name url
+usage: dvc pkg add [-h] [--global] [--system] [--local] [-q | -v] [-f]
+                   [name] url
 
 positional arguments:
   name           Package name.
@@ -18,23 +18,28 @@ positional arguments:
 Any DVC project can be used as a DVC package in order to reuse its code, stages,
 and related data artifacts in the current project workspace.
 
-Add expects a `name` to identify the package configuration in this DVC project.
-Such name can be any valid continuous alphanumeric string like `my-pkg_name.0`.
-If the name is already registered (check with `dvc pkg list`), the package `url`
-is overwritten.
-
 A valid `url` should be either an HTTP or SSH Git repository address such as
 `https://github.com/iterative/example-get-started` or
 `git@github.com:iterative/example-get-started.git` respectively – corresponding
 to our sample [get started](/doc/get-started) DVC project. Note that
-`dvc pkg add` does NOT validate the URL at this stage, however inexistent or
-unreachable addresses will result in a failure of `dvc pkg install`.
+`dvc pkg add` does NOT validate the URL at this point, however inexistent or
+unreachable addresses will result in a failure of the package
+[install](/doc/commands-reference/pkg-install) and
+[import](/doc/commands-reference/pkg-import) commands.
+
+A `name` is required to identify the package configuration in the DVC project.
+Such name can be any valid continuous alpha-numeric string like `my-pkg_name`.
+However, the `name` argument is optional as it can be extracted from the `url`
+path. If the name is already registered (check with `dvc pkg list`), the package
+`url` is overwritten.
 
 Adding a package registers it in the DVC config file (typically in `.dvc/config`
 – see `dvc config`). Note that nothing is downloaded from the package URL. (Use
 `dvc pkg install` or `dvc pkg import` to actually get files from the package).
 
 ## Options
+
+- `-f`, `--force` - to overwrite existing package with new `url` value.
 
 - `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
   of the project's `.dvc/config`.

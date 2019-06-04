@@ -5,8 +5,7 @@ Uninstall DVC package(s).
 ## Synopsis
 
 ```usage
-usage: dvc pkg uninstall [-h] [--global] [--system] [--local] [-q | -v]
-                         [targets [targets ...]]
+usage: dvc pkg uninstall [-h] [-q | -v] [targets [targets ...]]
 
 positional arguments:
   targets        Package name.
