@@ -4,6 +4,7 @@ import DownloadButton from '../../DownloadButton'
 import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
 import sidebar from '../sidebar'
+import startCase from 'lodash.startcase'
 import Preloader from '../../Preloader/Preloader'
 export default class SidebarMenu extends React.Component {
   constructor(props) {
@@ -48,15 +49,28 @@ export default class SidebarMenu extends React.Component {
       self = this
     sidebar.map(section => {
       section.files.map(file => {
-        self.promiseAdd(promises, file, section)
+        let folder = file.folder ? file.folder : section.folder;
+        let filename = typeof file === 'string' ? file : file.indexFile;
+        arr[folder + '/' + filename] = startCase(filename.slice(0,-3));
+        //stop file title request
+        /*self.promiseAdd(promises, file, section)*/
         if (file.files && file.files.length > 0) {
           file.files.map(file2 => {
-            self.promiseAdd(promises, file2, file)
+            let folder = file.folder ? file.folder : section.folder;
+            let filename = file2;
+            arr[folder + '/' + filename] = startCase(filename.slice(0,-3));
+            //stop file title request
+            /*self.promiseAdd(promises, file2, file)*/
           })
         }
       })
     })
-    Promise.all(promises).then(result => {
+    self.setState({
+      names: arr,
+      loading: false
+    })
+    //stop file title request
+    /*Promise.all(promises).then(result => {
       result.map(res => {
         arr[res.folder + '/' + res.filename] = res.res
       })
@@ -64,7 +78,7 @@ export default class SidebarMenu extends React.Component {
         names: arr,
         loading: false
       })
-    })
+    })*/
   }
   componentDidMount() {
     this.collapse()
