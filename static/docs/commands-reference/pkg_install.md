@@ -14,31 +14,25 @@ positional arguments:
 
 ## Description
 
-Any external DVC project stored in a Git repository can be installed as a
-package in the current workspace. The package name (`target`) will be created as
-a sub-directory of `dvc_mod/`.
+Any DVC project can be used as a DVC package in order to reuse its code, stages,
+and related data artifacts in the current project workspace.
 
-All the outputs of the package will be fetched into the local cache as well as
-added to the workspace for further use. The `.gitignore` file will be updated to
-include the `dvc_mod/` directory as well as all the aforementioned package
-outputs.
+When installing a package, the provided name(s) (`targets`) can be previously
+registered with `dvc pkg add`. Each name will be created as a subdirectory of
+`.dvc/pkg/`, where the corresponding package source files (code and stage files)
+will be placed. (`.dvc/pkg/` will be added to the `.dvc/.gitignore` file if
+needed.) All the outputs in the package pipelines will be also downloaded from
+the default remotes into the locally installed package directory.
 
-A DVC-file specifying all the outputs of the package will also be added to the
-pipeline. Adding the `.gitignore` changes as well as the DVC-file to Git is
-recommended at this point.
+The provided `targets` may also be URLs to the HTTP location of the DVC
+packages, in that case, the implicit package name will be extracted from the
+given HTTP address and used for the subdirectory of `.dvc/pkg/` as explained in
+the previous paragraph.
+
+> Note that installing packages with implicit names does NOT add them to the
+> config file.
 
 ## Options
-
-- `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
-  of the project's `.dvc/config`.
-
-- `--system` - modify a system config file (e.g. `/etc/dvc.config`) instead of
-  `.dvc/config`.
-
-- `--local` - modify a local config file instead of `.dvc/config`. It is located
-  in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-  specify private config options in your config, that you don't want to track
-  and share through Git.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -47,12 +41,49 @@ recommended at this point.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Examples: With an implicit package name
 
-Having: DVC package in https://github.com/dmpetrov/tag_classifier
+Having a DVC project in https://github.com/iterative/example-get-started
 
 ```dvc
-$ dvc pkg install https://github.com/dmpetrov/tag_classifier
+$ dvc pkg install https://github.com/iterative/example-get-started
+...
 ```
 
-Result: `tag_classifier` package in `dvc_mod/` directory
+The result is the `example-get-started` package fully installed in the
+`.dvc/pkg/` directory.
+
+```dvc
+$ tree .dvc/pkg
+.dvc/pkg
+└── example-get-started
+    ├── README.md
+    ├── auc.metric
+    ├── data
+    │   └── data.xml.dvc
+    ├── evaluate.dvc
+    ├── featurize.dvc
+    ├── prepare.dvc
+    ├── requirements.txt
+    ├── src
+    │   ├── evaluate.py
+    │   ├── featurization.py
+    │   ├── prepare.py
+    │   └── train.py
+    └── train.dvc
+```
+
+## Examples: Having added the package first
+
+Having the same DVC project in https://github.com/iterative/example-get-started
+as in the previous example:
+
+```dvc
+$ dvc pkg add https://github.com/iterative/example-get-started
+$ dvc pkg install example-get-started
+...
+```
+
+Same result as the previous example, except that additionally, the DVC config
+file (typically `.dvc/config` will contain a `['pkg "example-get-started"']`
+section due to the `dvc pkg add` command above.

@@ -14,20 +14,13 @@ positional arguments:
 
 ## Description
 
-...
+Provided package directory name(s) (`targets`) will be searched for in the
+`.dvc/pkg/` directory and completely removed if found.
+
+> Note that this command does NOT remove the package records from the DVC config
+> file. See `dvc pkg remove` for that purpose.
 
 ## Options
-
-- `--global` - modify a global config file (e.g. `~/.config/dvc/config`) instead
-  of the project's `.dvc/config`.
-
-- `--system` - modify a system config file (e.g. `/etc/dvc.config`) instead of
-  `.dvc/config`.
-
-- `--local` - modify a local config file instead of `.dvc/config`. It is located
-  in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-  specify private config options in your config, that you don't want to track
-  and share through Git.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -35,3 +28,17 @@ positional arguments:
   no problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Example
+
+Having installed the `example-get-started` package from the example in
+`dvc pkg install`:
+
+```dvc
+$ ls -l .dvc/pkg/
+example-get-started
+$ dvc pkg uninstall example-get-started
+```
+
+Results in the `.dvc/pkg/example-get-started/` directory being completely
+removed.

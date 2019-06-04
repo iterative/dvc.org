@@ -1,6 +1,6 @@
 # pkg add
 
-Add package. The package is registered in the DVC project configuration.
+Add a DVC package. The package is registered in the DVC project configuration.
 
 ## Synopsis
 
@@ -15,7 +15,24 @@ positional arguments:
 
 ## Description
 
-...
+Any DVC project can be used as a DVC package in order to reuse its code, stages,
+and related data artifacts in the current project workspace.
+
+Add expects a `name` to identify the package configuration in this DVC project.
+Such name can be any valid continuous alphanumeric string like `my-pkg_name.0`.
+If the name is already registered (check with `dvc pkg list`), the package `url`
+is overwritten.
+
+A valid `url` should be either an HTTP or SSH Git repository address such as
+`https://github.com/iterative/example-get-started` or
+`git@github.com:iterative/example-get-started.git` respectively – corresponding
+to our sample [get started](/doc/get-started) DVC project. Note that
+`dvc pkg add` does NOT validate the URL at this stage, however inexistent or
+unreachable addresses will result in a failure of `dvc pkg install`.
+
+Adding a package registers it in the DVC config file (typically in `.dvc/config`
+– see `dvc config`). Note that nothing is downloaded from the package URL. (Use
+`dvc pkg install` or `dvc pkg import` to actually get files from the package).
 
 ## Options
 
@@ -36,3 +53,18 @@ positional arguments:
   no problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Example
+
+```dvc
+$ dvc pkg add get-started https://github.com/iterative/example-get-started
+```
+
+Results in the DVC config file (typically `.dvc/config`) being appended a `pkg`
+section like:
+
+```ini
+['pkg "get-started"']
+url = https://github.com/iterative/example-get-started
+_cwd = /Users/username/dvcproject/.dvc
+```

@@ -168,6 +168,12 @@ more about the state file that is used for optimization.
   so that when it needs to cleanup the database it could sort them by the
   timestamp and remove the oldest ones. Default quota is set to 50(percent).
 
+### pkg
+
+These are sections in the config file that describe specific
+[DVC packages](/doc/commands-reference/pkg). These sections contain the `url`
+and `_cwd` keys, which values are used internally by the `dvc pkg` commands.
+
 ## Examples: Core config options
 
 Set the `dvc` log level to `debug`:
