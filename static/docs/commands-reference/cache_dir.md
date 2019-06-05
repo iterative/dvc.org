@@ -33,7 +33,8 @@ file, as they are expected in the config file.
   specify private config options in your config, that you don't want to track
   and share through Git.
 
-- `-u`, `--unset` - remove a specified config option from a config file.
+- `-u`, `--unset` - remove the `cache.dir` config option from the config file.
+  Don't provide a `value` when using this flag.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

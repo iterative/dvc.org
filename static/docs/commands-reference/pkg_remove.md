@@ -3,6 +3,13 @@
 Remove a DVC package. Undoes the [adding](/doc/commands-reference/pkg-add) of a
 package.
 
+See also [install](/doc/commands-reference/pkg-install),
+[uninstall](/doc/commands-reference/pkg-uninstall),
+[add](/doc/commands-reference/pkg-add),
+[modify](/doc/commands-reference/pkg-modify),
+[list](/doc/commands-reference/pkg-list), and
+[import](/doc/commands-reference/pkg-import).
+
 ## Synopsis
 
 ```usage

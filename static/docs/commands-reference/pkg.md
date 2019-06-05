@@ -6,8 +6,8 @@ A set of commands to to manage DVC packages:
 [add](/doc/commands-reference/pkg-add),
 [remove](/doc/commands-reference/pkg-remove),
 [modify](/doc/commands-reference/pkg-modify),
-[list](/doc/commands-reference/pkg-list),
-[import](/doc/commands-reference/pkg-import)
+[list](/doc/commands-reference/pkg-list), and
+[import](/doc/commands-reference/pkg-import).
 
 ## Synopsis
 

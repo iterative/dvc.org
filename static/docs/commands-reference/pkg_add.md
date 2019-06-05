@@ -2,6 +2,13 @@
 
 Add a DVC package. The package is registered in the DVC project configuration.
 
+See also [install](/doc/commands-reference/pkg-install),
+[uninstall](/doc/commands-reference/pkg-uninstall),
+[remove](/doc/commands-reference/pkg-remove),
+[modify](/doc/commands-reference/pkg-modify),
+[list](/doc/commands-reference/pkg-list), and
+[import](/doc/commands-reference/pkg-import).
+
 ## Synopsis
 
 ```usage

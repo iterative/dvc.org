@@ -2,6 +2,13 @@
 
 Uninstall DVC package(s).
 
+See also [install](/doc/commands-reference/pkg-install),
+[add](/doc/commands-reference/pkg-add),
+[remove](/doc/commands-reference/pkg-remove),
+[modify](/doc/commands-reference/pkg-modify),
+[list](/doc/commands-reference/pkg-list), and
+[import](/doc/commands-reference/pkg-import).
+
 ## Synopsis
 
 ```usage

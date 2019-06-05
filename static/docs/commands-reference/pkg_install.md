@@ -2,6 +2,13 @@
 
 Install DVC package(s).
 
+See also [uninstall](/doc/commands-reference/pkg-uninstall),
+[add](/doc/commands-reference/pkg-add),
+[remove](/doc/commands-reference/pkg-remove),
+[modify](/doc/commands-reference/pkg-modify),
+[list](/doc/commands-reference/pkg-list), and
+[import](/doc/commands-reference/pkg-import).
+
 ## Synopsis
 
 ```usage
@@ -18,10 +25,9 @@ and related data artifacts in the current project workspace.
 
 When installing a package, the provided name(s) (`targets`) can be previously
 registered with `dvc pkg add`. Each name will be created as a subdirectory of
-`.dvc/pkg/`, where the corresponding package source files (code and stage files)
+`.dvc/pkg/`, where the corresponding package source files (code and DVC-files)
 will be placed. (`.dvc/pkg/` will be added to the `.dvc/.gitignore` file if
-needed.) All the outputs in the package pipelines will be also downloaded from
-the default remotes into the locally installed package directory.
+needed.)
 
 The provided `targets` may also be URLs to the location of the DVC packages
 (same as `url` in `dvc pkg add`), in that case, the implicit package name will
