@@ -119,6 +119,14 @@ $ du -sh .
  41M .
 ```
 
+> Note that `ls -i` prints the index number of each file and content in
+> directory. Index number for `data/Posts.xml.zip` and `.dvc/cache/ec` remained
+> same i.e. `78483929`.
+>
+> Index number is same for both because `.dvc/cache/ec` is a directory and it
+> contains a file `88519f8465218abb23ce0e0e8b1384` which has same inode as
+> `data/Posts.xml.zip` .
+
 ## Running commands
 
 Once data source files are in the workspace you can start processing the data
