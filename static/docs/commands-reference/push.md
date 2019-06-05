@@ -89,10 +89,11 @@ backward through the pipeline to find data files to push.
   not push files referenced later in the pipeline than the named target(s).
 
 - `-R`, `--recursive` - the `targets` value is expected to be a directory path
-  or a path corresponding to a specific file. With this option, `dvc pull` determines the files to upload by searching the
-  named directory, and its subdirectories, for DVC-files for which to upload
-  data. Along with providing a `target`, or `target` along with `--with-deps`,
-  it is yet another way to limit the scope of DVC-files to upload.
+  and also files as well. With this option, `dvc pull` determines the files to
+  upload by searching the named directory, and its subdirectories, for 
+  DVC-files for which to upload data. Along with providing a `target`, or 
+  `target` along with `--with-deps`, it is yet another way to limit the scope 
+  of DVC-files to upload.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while uploading files to the remote cache. The effect is to control the number

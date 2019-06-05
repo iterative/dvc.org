@@ -101,12 +101,11 @@ option is specified) and updates DVC-files with the new checksum information.
   including the one in it.
 
 - `R`, `--recursive` - the `targets` value is expected to be a directory path 
-  or a path corresponding to a specific file. With this option, you can 
-  reproduce all stages in a specified directory. It determines the files to 
-  download by searching the named directory and its subdirectories for 
-  DVC-files to download data for. Along with providing a  `target`, or `target`
-  along with `--with-deps`, it is yet another way to limit the scope of 
-  DVC-files toreproduce.
+  and also files as well. With this option, you can reproduce all stages in a
+  specified directory. It determines the files to download by searching the 
+  named directory and its subdirectories for DVC-files to download data for.
+  Along with providing a  `target`, or `target` along with `--with-deps`, it
+  is yet another way to limit the scope of DVC-files toreproduce.
 
 ## Examples
 

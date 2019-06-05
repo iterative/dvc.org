@@ -86,10 +86,10 @@ reflinks or hardlinks to put it in the workspace without copying. See
   performs a _checkout_ after downloading files.
 
 - `-R`, `--recursive` - `targets` values is expected to be a directory path
-  or a path corresponding to a specific file. Determines the files to download by searching the named directory and its
-  subdirectories for DVC-files to download data for. Along with providing a
-  `target`, or `target` along with `--with-deps` it is yet another way to cut
-  the scope of DVC-files to download.
+  and also files as well. Determines the files to download by searching the
+  named directory and its subdirectories for DVC-files to download data for. 
+  Along with providing a `target`, or `target` along with `--with-deps` it is
+  yet another way to cut the scope of DVC-files to download.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while downloading files from the remote cache. The effect is to control the
