@@ -15,10 +15,10 @@ positional arguments:
 
 ## Description
 
-Sets the `cache.dir` configuration option. Unlike doing so with `dvc config
-cache`, this command transform paths (`value`) that are provided relative to the
-present working directory into relative to the specified config file, as they
-are expected in the config file.
+Sets the `cache.dir` configuration option. Unlike doing so with
+`dvc config cache`, this command transform paths (`value`) that are provided
+relative to the present working directory into relative to the specified config
+file, as they are expected in the config file.
 
 ## Options
 
@@ -47,6 +47,7 @@ $ cat .dvc/config
     dir = ../../dir
 ...
 ```
+
 `../dir` has been resolved relative to `.dvc/config` location, resulting in
 `../../dir`.
 
@@ -60,4 +61,5 @@ $ cat .dvc/config
     dir = /path/to/dir
 ...
 ```
+
 Absolute path `/path/to/dir` saved as is.

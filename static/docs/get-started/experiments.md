@@ -24,7 +24,7 @@ bag_of_words = CountVectorizer(stop_words='english',
 </details>
 
 ```dvc
-$ vi featurization.py        # edit to use bigrams (see above)
+$ vi src/featurization.py    # edit to use bigrams (see above)
 $ dvc repro train.dvc        # get and save the new model.pkl
 $ git commit -a -m "bigram model"
 ```
@@ -38,4 +38,6 @@ $ dvc checkout
 ```
 
 DVC is designed to checkout large data files (no matter how large they are) into
-your workspace instantly on almost all modern operating systems.
+your workspace instantly on almost all modern operating systems with file links.
+See [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization)
+for more information.

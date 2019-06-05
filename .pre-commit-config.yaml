@@ -1,6 +1,0 @@
-repos:
-  - repo: https://github.com/prettier/prettier
-    rev: 1.17.0
-    hooks:
-      - id: prettier
-        args: ['--prose-wrap=always']

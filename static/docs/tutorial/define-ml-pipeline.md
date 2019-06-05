@@ -91,23 +91,22 @@ copy) might take a few minutes.
 
 DVC was designed with large data files in mind. This means gigabytes or even
 hundreds of gigabytes in file size. Instead of copying files from cache to
-workspace, DVC creates reflinks or other file link types. (See [Cache File
-Linking](/docs/user-guide/cache-file-linking).)
+workspace, DVC can create reflinks or other file link types. (See
+[File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+.)
 
 Creating file links is a quick file system operation. So, with DVC you can
 easily checkout a few dozen files of any size. A file link does not require you
 to have twice as much space in the hard drive. Even if each of the files
 contains 41MB of data, the overall size of the repository is still 41MB. Both of
-the files correspond to the same `inode` (file metadata record) in a file
-system. Use `ls -i` to see file system inodes. If you are using a modern file
-system with reflinks you might see different inodes, still only one copy if the
-actual file data is stored. (Refer to [Cache File
-Linking](/docs/user-guide/cache-file-linking) for more details.)
+the files correspond to the same `inode` (a file metadata record) in the file
+system. Refer to
+[Large Dataset Optimization](/docs/user-guide/large-dataset-optimization) for
+more details.
 
-> Note: In case of systems supporting reflink, use `df` utility to see that free
-> space on the drive didn't decline by the file size that we are adding and no
-> duplication takes place. As `du` is inaccurate in modern file systems using
-> reflinks.
+> Note that in systems supporting reflinks, use the `df` command to confirm that
+> free space on the drive didn't decline by the file size that we are adding, so
+> no duplication takes place. `du` may be inaccurate with reflinks.
 
 ```dvc
 $ ls -i data/Posts.xml.zip
@@ -119,11 +118,6 @@ $ ls -i .dvc/cache/ec/
 $ du -sh .
  41M .
 ```
-
-> Note that DVC tries to use reflinks by default in the platforms that support
-> them (Mac OS or Linux, depending on the file system). Some implementation
-> details (like inodes) might differ, but the overall DVC behavior is the same
-> on those platforms.
 
 ## Running commands
 
@@ -191,10 +185,10 @@ and does some additional work if the command was successful:
    filenames will be added to `.gitignore`.
 
 2. For reproducibility purposes, DVC creates the `Posts.xml.dvc` DVC-file in the
-   workspace — the file with meta-information about the pipeline stage, see [DVC
-   File Format](/doc/user-guide/dvc-file-format). By default, DVC assigns a name
-   to the DVC-file based on the first output file name, by adding the `.dvc`
-   file extension. This name can be changed by using the `-f` option, for
+   workspace — the file with meta-information about the pipeline stage, see
+   [DVC File Format](/doc/user-guide/dvc-file-format). By default, DVC assigns a
+   name to the DVC-file based on the first output file name, by adding the
+   `.dvc` file extension. This name can be changed by using the `-f` option, for
    example by specifying `-f extract.dvc`.
 
 Let's take a look at the resulting DVC-file from the above example:

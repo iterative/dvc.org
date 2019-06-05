@@ -37,9 +37,9 @@ content:
 ```yaml
 md5: 3d1a3e5a5b662490e198d6a6ae84984b
 outs:
-- cache: true
-  md5: c8263e8422925b0872ee1fb7c953742a
-  path: data.csv
+  - cache: true
+    md5: c8263e8422925b0872ee1fb7c953742a
+    path: data.csv
 ```
 
 If we move this using the regular `mv data.csv other.csv` the DVC file would not
@@ -61,9 +61,9 @@ And here is the updated content of the `data.csv.dvc`:
 ```yaml
 md5: 3d1a3e5a5b662490e198d6a6ae84984b
 outs:
-- cache: true
-  md5: c8263e8422925b0872ee1fb7c953742a
-  path: other.csv
+  - cache: true
+    md5: c8263e8422925b0872ee1fb7c953742a
+    path: other.csv
 ```
 
 ## Options
@@ -96,7 +96,7 @@ $ tree
 ```
 
 Here we use `dvc add` to put a file under DVC control. Then we use `dvc move` to
-change data directory. Note, that data stage file is also moved. If target path
+change its location. Note that the data stage file is also moved. If target path
 already exists and is a directory, data file is moved with unchanged name into
 this folder.
 

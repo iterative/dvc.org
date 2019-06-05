@@ -38,18 +38,15 @@ contributing!
 - Make sure that you have python 3 installed. Version 3.6 or higher is required
   to run style checkers on pre-commit. On Mac OS, use `brew` to install the
   latest version of python.
-- Install the requirements with `pip install -r requirements.txt` and
-  `pip install -r tests/requirements.txt`. We **strongly** recommend
-  initializing a
+- Install DVC in editable mode with `pip install -e .[all,tests]`.
+  We **strongly** recommend initializing a
   [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
   installing the required libraries. For example:
   ```dvc
   $ cd dvc
   $ virtualenv --python python3 .env
   $ source .env/bin/activate
-  $ pip install -r requirements.txt
-  $ pip install -r tests/requirements.txt
-  $ pip install -e .
+  $ pip install -e .[all,tests]
   ```
 - Install coding style pre-commit hooks with
   ```dvc
@@ -281,8 +278,12 @@ To run DVC from its Git repository you need to setup your environment:
 
 ## Code style guidelines
 
-We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and are checking
+We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and checking
 that our code is formatted with [black](https://github.com/ambv/black).
+
+For [docstrings](https://www.python.org/dev/peps/pep-0257/#what-is-a-docstring),
+we try to adhere by the
+[Google Python Style Guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings).
 
 ## Commit style guidelines
 
@@ -293,7 +294,7 @@ Format:
 
 (long description)
 
-Fixes #(github issue id).
+Fixes #(Github issue id).
 ```
 
 Message types:
@@ -303,7 +304,7 @@ Message types:
 - _short description_ - short description of the patch;
 - _long description_ - If needed, longer message describing the patch in more
   details;
-- _github issue id_ - An id of the github issue that this patch is addressing;
+- _github issue id_ - An id of the Github issue that this patch is addressing;
 
 Example:
 

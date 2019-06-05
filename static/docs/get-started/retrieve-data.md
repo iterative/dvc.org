@@ -1,5 +1,10 @@
 # Retrieve Data
 
+> Make sure that the steps described in
+> [initialization](/doc/get-started/initialize) and
+> [configuration](/doc/get-started/configure) are completed before you run the
+> `dvc pull` command in a newly cloned or initialized Git repository.
+
 To retrieve data files to your local machine and your project's workspace run:
 
 ```dvc
@@ -17,15 +22,10 @@ $ rm -f data/data.xml
 $ dvc pull
 ```
 
-> Note, make sure that the steps described in
-> [initialization](/doc/get-started/initialize) and
-> [configuration](/doc/get-started/configure) are completed before you run the
-> `dvc pull` command in a newly cloned or just initialized Git repository.
-
 Alternatively, if you want to retrieve a single dataset or a file:
 
 ```dvc
-$ dvc pull data.xml.dvc
+$ dvc pull data/data.xml.dvc
 ```
 
 DVC remotes, `dvc push`, and `dvc pull` provide a basic collaboration workflow,

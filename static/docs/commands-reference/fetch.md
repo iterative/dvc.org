@@ -219,8 +219,8 @@ Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/...
 > Please delete the `.dvc/cache/` directory first (with `rm -Rf .dvc/cache`) to
 > follow this example if you tried the previous one (**Default behavior**).
 
-fetch only downloads the data files of a specific stage by specifying the
-corresponding DVC file (target stage):
+`dvc fetch` only downloads the data files of a specific stage when the
+corresponding DVC file (target stage) is specified:
 
 ```dvc
 $ dvc fetch prepare.dvc

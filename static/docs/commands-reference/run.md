@@ -46,14 +46,16 @@ be no cycles, etc.
 - `-d`, `--deps` - specify a file or a directory the stage depends on. Multiple
   dependencies can be specified like this: `-d data.csv -d process.py`. Usually,
   each dependency is a file or a directory with data, or a code file, or a
-  configuration file. DVC is building a computation graph and this list of
-  dependencies is a way to connect different stages with each other. Also, when
-  you run `dvc repro` to reproduce a stage (or when stage is reproduced due to
-  recursive dependency), list of dependencies helps DVC to analyze if one or
-  more of the dependencies listed have changed and running the stage again is
-  required. Special case is when no dependencies are specified. Stage file
-  without dependencies is considered always _changed_ and `dvc repro` always
-  executes it.
+  configuration file. DVC also supports certain
+  [external dependencies](/doc/user-guide/external-dependencies)
+
+  DVC builds a computation graph and this list of dependencies is a way to
+  connect different stages with each other. When you run `dvc repro` to
+  reproduce a stage (or when a stage is reproduced due to recursive dependency),
+  the list of dependencies helps DVC analyze whether any dependencies have
+  changed and thus running the stage again is required. A special case is when
+  no dependencies are specified. A stage file without dependencies is considered
+  always _changed_, so `dvc repro` always executes it.
 
 - `-o`, `--outs` - specify a file or a directory that are results of running the
   command. Multiple outputs can be specified like this:
@@ -159,6 +161,8 @@ To track the changes with git run:
 
 	git add .gitignore metric.dvc
 ```
+While executing `dvc run` command, if user overwrites the `.dvc` file, comments 
+and meta values are not preserved between multiple executions.
 
 - Execute a Python script as a DVC pipeline step. Stage file name is not
   specified, so a `model.p.dvc` stage file is created:

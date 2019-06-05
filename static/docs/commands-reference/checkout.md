@@ -16,16 +16,21 @@ positional arguments:
 ## Description
 
 DVC-files (`.dvc`) in the workspace specify which instance of each data file or
-directory is to be used, using the checksum saved in the `outs` fields. The `dvc
-checkout` command updates the workspace data to match with the cache files
+directory is to be used, using the checksum saved in the `outs` fields. The
+`dvc checkout` command updates the workspace data to match with the cache files
 corresponding to those checksums.
 
 Using an SCM like Git, the DVC files are kept under version control. At a given
 branch or tag of the SCM workspace, the DVC files will contain checksums for the
-corresponding data files kept in the DVC cache. After an SCM command like `git
-checkout` is run, the DVC files will change to the state at the specified branch
-or commit or tag. Afterwards, the `dvc checkout` command is required in order to
-synchronize the data files with the currently checked out DVC files.
+corresponding data files kept in the DVC cache. After an SCM command like
+`git checkout` is run, the DVC files will change to the state at the specified
+branch or commit or tag. Afterwards, the `dvc checkout` command is required in
+order to synchronize the data files with the currently checked out DVC files.
+
+This command must be executed after `git checkout` since Git does not handle
+files that are under DVC control. For convenience a Git hook is available,
+simply by running `dvc install`, that will automate running `dvc checkout` after
+`git checkout`. See `dvc install` for more information.
 
 The execution of `dvc checkout` does:
 
@@ -34,24 +39,24 @@ The execution of `dvc checkout` does:
   the command line. And if the `--with-deps` option is specified, it scans
   backward in the pipeline from the named targets.
 - For any data files where the checksum does not match with the DVC file entry,
-  the data file is restored from the cache. The link type used (`reflink`,
-  `hardlink`, `symlink`, or `copy`) depends on the OS, or the configured value
-  is used. (See `cache.type` in `dvc config cache`.)
+  the data file is restored from the cache. The link strategy used (`reflink`,
+  `hardlink`, `symlink`, or `copy`) depends on the OS and the configured value
+  for `cache.type` – See `dvc config cache`.
 
-This command must be executed after `git checkout` since Git does not handle
-files that are under DVC control. For convenience a Git hook is available,
-simply by running `dvc install`, that will automate running `dvc checkout` after
-`git checkout`. See `dvc install` for more information.
+Note that this DVC by default tries NOT to copy files between the cache and the
+workspace by using reflinks when supported by the file system. (Refer to
+[File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).)
+The next linking strategy default value is `copy` though, so unless other file
+link types are manually configured in `cache.type` (using `dvc config`), files
+will be copied. Keep in mind that having file copies doesn't present much of a
+negative impact unless the project uses very large data (several GBs or more).
+But leveraging file links is crucial for large files where checking out a 50Gb
+by copying file might take a few minutes for example, whereas with links,
+restoring any file size will be almost instantaneous.
 
-Note, this command does NOT copy any files (except when the `cache.type` config
-option is `copy`). Instead, DVC uses links to perform data file restoration.
-This is crucial for large files where checking out a 50Gb file might take a few
-minutes. With DVC links, restoring a 50Gb data file will take less than a
-second.
-
-> Note that when linking files takes longer than expected and `cache.type` is
-> not set, a warning will be displayed reminding users about the faster link
-> types available. These warnings can be turned off setting the
+> When linking files takes longer than expected (10 seconds for any one file)
+> and `cache.type` is not set, a warning will be displayed reminding users about
+> the faster link types available. These warnings can be turned off setting the
 > `cache.slow_link_warning` config option to `false` with `dvc config cache`.
 
 The output of `dvc checkout` does not list which data files were restored. It

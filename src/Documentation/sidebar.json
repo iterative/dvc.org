@@ -2,7 +2,7 @@
   {
     "name": "Get Started",
     "folder": "/static/docs/get-started",
-    "indexFile": "get-started.md",
+    "indexFile": "index.md",
     "files": [
       "agenda.md",
       "install.md",
@@ -23,18 +23,26 @@
       "example-pipeline.md"
     ],
     "labels": {
-      "agenda.md": "Agenda"
+      "connect-code-and-data.md": "Connect with Code",
+      "example-pipeline.md": "Example: Pipelines",
+      "example-versioning.md": "Example: Versioning",
+      "older-versions.md": "Get Older Files"
     }
   },
   {
     "name": "Use Cases",
     "folder": "/static/docs/use-cases",
-    "indexFile": "use-cases.md",
+    "indexFile": "index.md",
     "files": [
       "data-and-model-files-versioning.md",
       "share-data-and-model-files.md",
       "multiple-data-scientists-on-a-single-machine.md"
-    ]
+    ],
+    "labels": {
+      "data-and-model-files-versioning.md": "Data & Model Files Versioning",
+      "share-data-and-model-files.md": "Share Data & Model Files",
+      "multiple-data-scientists-on-a-single-machine.md": "Shared Development Machine"
+    }
   },
   {
     "name": "User Guide",
@@ -42,7 +50,7 @@
     "files": [
       "dvc-files-and-directories.md",
       "dvc-file-format.md",
-      "cache-file-linking.md",
+      "large-dataset-optimization.md",
       "external-dependencies.md",
       "external-outputs.md",
       "development.md",
@@ -53,20 +61,29 @@
       "plugins.md",
       "analytics.md",
       "dvcignore.md"
-    ]
+    ],
+    "labels": {
+      "dvc-files-and-directories.md": "Files and Directories",
+      "dvc-file-format.md": "File Format (.dvc)",
+      "large-dataset-optimization.md": "Large Dataset Optimization",
+      "development.md": "Development Version",
+      "external-dependencies.md": "External Dependencies",
+      "external-outputs.md": "External Outputs",
+      "contributing.md": "Contributing",
+      "contributing-documentation.md": "Contributing Documentation",
+      "update-tracked-file.md": "Update a Tracked File",
+      "autocomplete.md": "Shell Autocomplete",
+      "plugins.md": "Plugins & Integrations",
+      "analytics.md": "Anonymized Usage Analytics"
+    }
   },
   {
     "name": "Commands Reference",
     "folder": "/static/docs/commands-reference",
-    "indexFile": "commands-reference.md",
+    "indexFile": "index.md",
     "files": [
       "add.md",
-      {
-        "name": "cache",
-        "folder": "/static/docs/commands-reference/cache",
-        "indexFile": "cache.md",
-        "files": ["dir.md"]
-      },
+      ["cache.md", "cache_dir.md"],
       "checkout.md",
       "commit.md",
       "config.md",
@@ -78,30 +95,25 @@
       "install.md",
       "import.md",
       "lock.md",
-      {
-        "name": "metrics",
-        "folder": "/static/docs/commands-reference/metrics",
-        "indexFile": "metrics.md",
-        "files": ["add.md", "modify.md", "remove.md", "show.md"],
-        "labels": {
-          "remove.md": "remove"
-        }
-      },
+      [
+        "metrics.md",
+        "metrics_add.md",
+        "metrics_modify.md",
+        "metrics_remove.md",
+        "metrics_show.md"
+      ],
       "move.md",
-      {
-        "name": "pipeline",
-        "folder": "/static/docs/commands-reference/pipeline",
-        "indexFile": "pipeline.md",
-        "files": ["list.md", "show.md"]
-      },
+      ["pipeline.md", "pipeline_list.md", "pipeline_show.md"],
       "push.md",
       "pull.md",
-      {
-        "name": "remote",
-        "indexFile": "remote.md",
-        "folder": "/static/docs/commands-reference/remote",
-        "files": ["add.md", "default.md", "list.md", "modify.md", "remove.md"]
-      },
+      [
+        "remote.md",
+        "remote_add.md",
+        "remote_default.md",
+        "remote_list.md",
+        "remote_modify.md",
+        "remote_remove.md"
+      ],
       "remove.md",
       "repro.md",
       "root.md",
@@ -110,21 +122,65 @@
       "unlock.md",
       "unprotect.md",
       "version.md"
-    ]
+    ],
+    "labels": {
+      "run.md": "run",
+      "push.md": "push",
+      "init.md": "init",
+      "add.md": "add",
+      "checkout.md": "checkout",
+      "diff.md": "diff",
+      "pull.md": "pull",
+      "status.md": "status",
+      "repro.md": "repro",
+      "fetch.md": "fetch",
+      "remove.md": "remove",
+      "gc.md": "gc",
+      "config.md": "config",
+      "remote.md": "remote",
+      "remote_add.md": "remote add",
+      "remote_default.md": "remote default",
+      "remote_list.md": "remote list",
+      "remote_modify.md": "remote modify",
+      "remote_remove.md": "remote remove",
+      "metrics.md": "metrics",
+      "metrics_add.md": "metrics add",
+      "metrics_show.md": "metrics show",
+      "metrics_modify.md": "metrics modify",
+      "metrics_remove.md": "metrics remove",
+      "install.md": "install",
+      "root.md": "root",
+      "lock.md": "lock",
+      "unlock.md": "unlock",
+      "import.md": "import",
+      "move.md": "move",
+      "pipeline.md": "pipeline",
+      "pipeline_list.md": "pipeline list",
+      "pipeline_show.md": "pipeline show",
+      "destroy.md": "destroy",
+      "unprotect.md": "unprotect",
+      "cache.md": "cache",
+      "cache_dir.md": "cache dir",
+      "commit.md": "commit",
+      "version.md": "version"
+    }
   },
   {
     "name": "Tutorial",
     "folder": "/static/docs/tutorial",
-    "indexFile": "tutorial.md",
+    "indexFile": "index.md",
     "files": [
       "preparation.md",
       "define-ml-pipeline.md",
       "reproducibility.md",
       "sharing-data.md"
-    ]
+    ],
+    "labels": {
+      "define-ml-pipeline.md": "Define ML Pipeline"
+    }
   },
   {
-    "name": "Understanding Dvc",
+    "name": "Understanding DVC",
     "folder": "/static/docs/understanding-dvc",
     "files": [
       "collaboration-issues.md",
@@ -134,11 +190,18 @@
       "how-it-works.md",
       "related-technologies.md",
       "resources.md"
-    ]
+    ],
+    "labels": {
+      "what-is-dvc.md": "What is DVC?"
+    }
   },
   {
     "name": "Changelog",
     "folder": "/static/docs/changelog",
-    "files": ["0.35.md", "0.18.md"]
+    "files": ["0.35.md", "0.18.md"],
+    "labels": {
+      "0.18.md": "v0.12 - v0.18",
+      "0.35.md": "v0.19 - v0.35"
+    }
   }
 ]

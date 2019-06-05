@@ -58,7 +58,7 @@ The DVC specific completion script is located in this path of our main
 repository:
 [dvc/scripts/completion/dvc.bash](https://github.com/iterative/dvc/blob/master/scripts/completion/dvc.bash)
 
-You will need to place this script script into `/etc/bash_completion.d/` (or
+You will need to place this script into `/etc/bash_completion.d/` (or
 `/usr/local/etc/bash_completion.d/` on a Mac):
 
 For example:

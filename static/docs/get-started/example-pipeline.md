@@ -95,9 +95,9 @@ _orphaned_ version of the [stage file](/doc/user-guide/dvc-file-format):
 ```yaml
 md5: 4dbe7a4e5a0d41b652f3d6286c4ae788
 outs:
-- cache: true
-  md5: ce68b98d82545628782c66192c96f2d2
-  path: Posts.xml.zip
+  - cache: true
+    md5: ce68b98d82545628782c66192c96f2d2
+    path: Posts.xml.zip
 ```
 
 This is the file that should be committed into a version control system instead
@@ -124,9 +124,9 @@ Each step is described by providing a command to run, input data it takes and a
 list of output files. DVC is not Python or any other language specific and can
 wrap any command runnable via CLI.
 
-- The first actual step, extract XML from the archive. Note, we don't need to
-  run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache, takes
-  the file under DVC control) automatically:
+- The first actual step, extract XML from the archive. Note that we don't need
+  to run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache,
+  takes the file under DVC control) automatically:
 
 ```dvc
 $ dvc run -d data/Posts.xml.zip \
@@ -145,13 +145,13 @@ Similar to `dvc add`, `dvc run` creates a
 ```yaml
 cmd: ' unzip data/Posts.xml.zip -d data'
 deps:
-- md5: ce68b98d82545628782c66192c96f2d2
-  path: data/Posts.xml.zip
+  - md5: ce68b98d82545628782c66192c96f2d2
+    path: data/Posts.xml.zip
 md5: abaf651846ec4fb7a4a8e1a685546ed9
 outs:
-- cache: true
-  md5: a304afb96060aad90176268345e10355
-  path: data/Posts.xml
+  - cache: true
+    md5: a304afb96060aad90176268345e10355
+    path: data/Posts.xml
 ```
 
 This file is using the same technique - pointers (md5 hashes) to the cache to
@@ -169,9 +169,9 @@ directory, each file having a name in a form of an md5 hash. This cache is
 similar to Git's internal objects store but made specifically to handle large
 data files.
 
-> **Note!** For performance with large data files, DVC can use file links from
-> the cache to the workspace to avoid copying actual file contents. Refer to
-> [File link types](/docs/user-guide/cache-file-linkingfile-link-types-for-the-dvc-cache)
+> **Note!** For performance with large datasets, DVC can use file links from the
+> cache to the workspace to avoid copying actual file contents. Refer to
+> [File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > to learn which options exist and how to enable them.
 
 </details>
@@ -349,8 +349,9 @@ By wrapping your commands with `dvc run` it's easy to integrate DVC into your
 existing ML development pipeline/processes without any significant effort to
 re-implement your code/application.
 
-The key step to note is that DVC automatically derives the dependencies between
-the experiment steps and builds the dependency graph (DAG) transparently.
+The key step to notice is that DVC automatically derives the dependencies
+between the experiment steps and builds the dependency graph (DAG)
+transparently.
 
 Not only can DVC streamline your work into a single, reproducible environment,
 it also makes it easy to share this environment by Git including the
