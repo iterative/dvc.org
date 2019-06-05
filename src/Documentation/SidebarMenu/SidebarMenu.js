@@ -52,15 +52,11 @@ export default class SidebarMenu extends React.Component {
         let folder = file.folder ? file.folder : section.folder
         let filename = typeof file === 'string' ? file : file.indexFile
         arr[folder + '/' + filename] = startCase(filename.slice(0, -3))
-        //stop file title request
-        /*self.promiseAdd(promises, file, section)*/
         if (file.files && file.files.length > 0) {
           file.files.map(file2 => {
             let folder = file.folder ? file.folder : section.folder
             let filename = file2
             arr[folder + '/' + filename] = startCase(filename.slice(0, -3))
-            //stop file title request
-            /*self.promiseAdd(promises, file2, file)*/
           })
         }
       })
@@ -69,16 +65,6 @@ export default class SidebarMenu extends React.Component {
       names: arr,
       loading: false
     })
-    //stop file title request
-    /*Promise.all(promises).then(result => {
-      result.map(res => {
-        arr[res.folder + '/' + res.filename] = res.res
-      })
-      self.setState({
-        names: arr,
-        loading: false
-      })
-    })*/
   }
   componentDidMount() {
     this.collapse()
