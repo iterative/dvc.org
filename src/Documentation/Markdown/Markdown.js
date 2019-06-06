@@ -36,9 +36,13 @@ registerLanguage('vim', vim)
 registerLanguage('diff', diff)
 
 function flatten(text, child) {
-  return typeof child === 'string'
-    ? text + child
-    : React.Children.toArray(child.props.children).reduce(flatten, text)
+  let flat
+  if (typeof child === 'string') {
+    flat = text + child
+  } else {
+    flat = React.Children.toArray(child.props.children).reduce(flatten, text)
+  }
+  return flat
 }
 
 const HeadingRenderer = ({ level, children }) => {
@@ -144,27 +148,10 @@ export default class Markdown extends Component {
     if (load) {
       return (
         <Content>
-          <div
-            style={{
-              width: '100%',
-              height: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              flexDirection: 'column'
-            }}
-          >
+          <PreloaderWrapper>
             <Preloader size={30} />
-            <p
-              style={{
-                fontWeight: 'bold',
-                fontSize: '18px',
-                marginTop: '24px'
-              }}
-            >
-              . . . &nbsp;Loading&nbsp; . . .
-            </p>
-          </div>
+            <PreloaderText>. . . &nbsp;Loading&nbsp; . . .</PreloaderText>
+          </PreloaderWrapper>
         </Content>
       )
     } else {
@@ -288,6 +275,7 @@ const Content = styled.article`
     margin-right: 10px;
   }
 `
+
 const NavigationButtons = styled.div`
   display: flex;
   justify-content: space-between;
@@ -296,6 +284,22 @@ const NavigationButtons = styled.div`
   font-weight: 600;
   font-size: 14px;
 `
+
+const PreloaderWrapper = styled.div`
+  width: 100%;
+  height: 100%
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+`
+
+const PreloaderText = styled.div`
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 24px';
+`
+
 const Button = styled.div`
   border: none;
   background: white;

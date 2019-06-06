@@ -16,32 +16,12 @@ export default class SidebarMenu extends React.Component {
     this.collapse = this.collapse.bind(this)
     this.getName = this.getName.bind(this)
     this.getNamesArr = this.getNamesArr.bind(this)
-    this.promiseAdd = this.promiseAdd.bind(this)
   }
   collapse() {
     setTimeout(function() {
       $('[data-open=true]').slideDown()
       $('[data-open=false]').slideUp()
     })
-  }
-  promiseAdd(promisesArray, file, section) {
-    let result = {
-      folder: file.folder ? file.folder : section.folder,
-      filename: typeof file === 'string' ? file : file.indexFile,
-      res: null
-    }
-    promisesArray.push(
-      new Promise(resolve => {
-        fetch(`${result.folder}/${result.filename}`)
-          .then(function(response) {
-            response.text().then(text => {
-              result.res = text.substring(2, text.search(/\n/))
-              resolve(result)
-            })
-          })
-          .catch(error => console.log(error))
-      })
-    )
   }
   getNamesArr() {
     let arr = {},
@@ -71,15 +51,18 @@ export default class SidebarMenu extends React.Component {
     this.getNamesArr()
   }
   getName(labels = null, files = null, folder = null, indexFile = null) {
-    return labels && labels[indexFile]
-      ? labels[indexFile]
-      : this.state.names[folder + '/' + indexFile]
+    let name
+    if (labels && labels[indexFile]) {
+      name = labels[indexFile]
+    } else {
+      name = this.state.names[folder + '/' + indexFile]
+    }
+    return name
   }
   componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.currentSection !== this.props.currentSection ||
-      nextProps.currentFile !== this.props.currentFile
-    ) {
+    let con1 = nextProps.currentFile !== this.props.currentFile
+    let con2 = nextProps.currentSection !== this.props.currentSection
+    if (con1 || con2) {
       this.collapse()
     }
   }
