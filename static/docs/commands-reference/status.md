@@ -6,12 +6,15 @@ cache and local files, or between the local cache and remote cache.
 ## Synopsis
 
 ```usage
-usage: dvc status [-h] [-q | -v] [-j JOBS] [--show-checksums]
-                  [-c] [-r REMOTE] [-a] [-T] [-d]
+usage: dvc status [-h] [-v] [-j JOBS] [--show-checksums] [-q] [-c] [-r REMOTE]
+                  [-a] [-T] [-d]
                   [targets [targets ...]]
 
+Show changed states, compare local cache and remote storage.
+documentation: https://man.dvc.org/status
+
 positional arguments:
-  targets               Limit the scope to these stage files.
+  targets               DVC files.
 ```
 
 ## Description
