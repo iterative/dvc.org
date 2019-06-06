@@ -6,7 +6,7 @@ Remove unused objects from cache or remote storage.
 
 ```usage
 usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c]
-              [-r REMOTE] [-f] [-j JOBS]
+              [-r REMOTE] [-f] [-j JOBS] [- R]
               [-p [PROJECTS [PROJECTS ...]]]
 ```
 
@@ -47,6 +47,13 @@ usually helps to save some space.
 - `-r`, `--remote` - name of the remote storage to collect unused objects from
   if `-c` option is specified.
 
+- `-R`, `--recursive` - `targets` values is expected to be a directory path
+  and also files as well. It removes the unused objects from cache or remote
+  storageDetermines the files to download by searching the
+  named directory and its subdirectories for DVC-files to download data for. 
+  Along with providing a `target`, or `target` along with `--with-deps` it is
+  yet another way to cut the scope of DVC-files to download.
+  
 - `-j`, `--jobs` - garbage collector parallelism level. The default value is
   `4 * cpu_count()`. For SSH remotes default is 4. For now only some phases of
   GC are parallel.
