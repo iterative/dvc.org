@@ -85,10 +85,10 @@ reflinks or hardlinks to put it in the workspace without copying. See
   surfaces behavior from the `dvc checkout` command because `dvc pull` in effect
   performs a _checkout_ after downloading files.
 
-- `-R`, `--recursive` - `targets` values is expected to be a directory path
-  and also files as well. Determines the files to download by searching the
-  named directory and its subdirectories for DVC-files to download data for. 
-  Along with providing a `target`, or `target` along with `--with-deps` it is
+- `-R`, `--recursive` - `targets` value is expected to be a file along with its
+  directory path or a directory. Determines the files to download by searching
+  the named directory and its subdirectories for DVC-files to download data for
+  .Along with providing a `target`, or `target` along with `--with-deps` it is
   yet another way to cut the scope of DVC-files to download.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
