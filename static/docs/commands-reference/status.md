@@ -120,14 +120,14 @@ cache. For the typical process to update workspaces, see
 ```dvc
 $ dvc status
 
-  bar.dvc
-          outs
-                  changed:  bar
-          deps
-                  changed:  foo
-  foo.dvc
-          outs
-                  changed:  foo
+bar.dvc:
+        changed deps:
+                changed:      bar
+        changed outs:
+                changed:      foo
+foo.dvc
+        changed outs:
+                changed:      foo
 ```
 
 This shows that for `bar.dvc` the dependency, `foo`, has changed, and the
@@ -145,8 +145,8 @@ Pipeline is up to date. Nothing to reproduce.
 
 $ dvc status model.p.dvc --with-deps
 matrix-train.p.dvc
-    deps
-        changed:  code/featurization.py
+    changed deps:
+            changed:  code/featurization.py
 ```
 
 If the `dvc status` command is limited to a target that had no changes, result
