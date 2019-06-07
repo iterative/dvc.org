@@ -38,7 +38,7 @@ different platforms.)
 ## Example
 
 The main use of this command is to apply the `-v` and `-q` options to
-[dvc cache dir](/doc/commands-reference/cache-dir) which doesn't have them:
+`dvc cache dir` which doesn't have them:
 
 ```dvc
 $ dvc cache --verbose dir mycache
