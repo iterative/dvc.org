@@ -104,6 +104,13 @@ $ dvc remote modify myremote use_ssl false
 $ dvc remote modify myremote listobjects true
 ```
 
+- `sse` - server-side encryption algorithm to use (e.g., AES256, aws:kms). By
+  default, no encryption is used.
+
+```dvc
+$ dvc remote modify myremote sse AES256
+```
+
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://minio.io/), [Wasabi](https://wasabi.com/),
 [Eucalyptus](https://www.eucalyptus.cloud/index.html),
