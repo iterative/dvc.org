@@ -65,8 +65,8 @@ perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
 the checksums of the files in question, when these are
 [added](/doc/get-started/add-files) to DVC. File checksums are then stored in
-the corresponding DVC files (usually saved in a Git branch). Only the checksums
-specified in DVC files currently in the workspace are considered by `dvc fetch`
+the corresponding DVC-files (usually saved in a Git branch). Only the checksums
+specified in DVC-files currently in the workspace are considered by `dvc fetch`
 (unless the `-a` or `-T` options are used).
 
 ## Options
@@ -84,7 +84,7 @@ specified in DVC files currently in the workspace are considered by `dvc fetch`
   in the pipeline than the named target(s).
 
 - `-R`, `--recursive` - this option tells DVC that `targets` are directories
-  (not DVC files), and to traverse them recursively. All DVC files found will be
+  (not DVC-files), and to traverse them recursively. All DVC-files found will be
   read in order to determine the set of data files to fetch.
 
 - `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
@@ -204,7 +204,7 @@ $ tree .dvc
 > `dvc status --cloud` (or `-c`) compares local cache vs default remote.
 
 As seen above, used without arguments, `dvc fetch` downloads all assets needed
-by all DVC files in the current branch, including for directories. The checksums
+by all DVC-files in the current branch, including for directories. The checksums
 `3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
 correspond to the `model.pkl` file and `data/features/` directory, respectively.
 

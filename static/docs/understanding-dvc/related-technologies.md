@@ -53,11 +53,11 @@ process.
 
    - DVC utilizes a DAG:
 
-     - The DAG is defined by DVC files with filenames `Dvcfile` or
+     - The DAG is defined by DVC-files with filenames `Dvcfile` or
        `<filename>.dvc`.
 
-     - One DVC-file defines one node in the DAG. All DVC files in a repository
-       make up a single pipeline (think a single Makefile). All DVC files (and
+     - One DVC-file defines one node in the DAG. All DVC-files in a repository
+       make up a single pipeline (think a single Makefile). All DVC-files (and
        corresponding pipeline commands) are implicitly combined through their
        inputs and outputs, to simplify conflict resolving during merges.
 

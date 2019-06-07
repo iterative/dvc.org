@@ -35,7 +35,7 @@ DVC uses a few core concepts:
 
 - **Pipeline** - directed acyclic graph (DAG) of commands to reproduce an
   experiment state. The commands are connected by input and output files.
-  Pipeline is defined by special **DVC files** (which act like Makefiles).
+  Pipeline is defined by special **DVC-files** (which act like Makefiles).
 
 - **Workflow** - set of experiments and relationships among them. Workflow
   corresponds to the entire Git repository.

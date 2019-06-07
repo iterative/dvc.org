@@ -160,7 +160,7 @@ is automatically added to the `.gitignore` file and a link is created into a
 cache `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
-that DVC files describe, we can restore the full chain (DAG) of commands we need
+that DVC-files describe, we can restore the full chain (DAG) of commands we need
 to apply. This is important when you run `dvc repro` to reproduce the final or
 intermediate result.
 
@@ -229,7 +229,7 @@ $ dvc run -d code/evaluate.py -d data/model.pkl -d data/matrix-test.pkl \
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and outputs DVC files describe we can restore the full
+By analyzing dependencies and outputs DVC-files describe we can restore the full
 chain (DAG) of commands we need to apply. This is important when you run
 `dvc repro` to reproduce the final or intermediate result.
 
@@ -297,7 +297,7 @@ $ dvc metrics show
 
 It's time to save the pipeline. You can check using `git status` command that we
 do not save pickle model files or initial data sets into Git. We are just saving
-a snapshot of the DVC files that describe data and code versions and
+a snapshot of the DVC-files that describe data and code versions and
 relationships between them.
 
 ```dvc

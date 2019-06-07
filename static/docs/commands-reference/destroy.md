@@ -1,6 +1,6 @@
 # destroy
 
-Remove DVC files from your repository.
+Remove DVC-files from your repository.
 
 It removes `.dvc` and `Dvcfile` files, `.dvc/` directory. It means cache will be
 removed as well by default, if it's not set to an external location (by default

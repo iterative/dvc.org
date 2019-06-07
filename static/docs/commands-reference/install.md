@@ -17,13 +17,13 @@ automatically.
 
 Namely:
 
-**Checkout** For any given SCM branch or tag, the SCM checks-out the DVC files
-corresponding to that branch or tag. The DVC files in turn refer to data files
+**Checkout** For any given SCM branch or tag, the SCM checks-out the DVC-files
+corresponding to that branch or tag. The DVC-files in turn refer to data files
 in the DVC cache by checksum. When switching from one SCM branch or tag to
-another the SCM retrieves the corresponding DVC files. By default that leaves
-the workspace in a state where the DVC files refer to data files other than what
+another the SCM retrieves the corresponding DVC-files. By default that leaves
+the workspace in a state where the DVC-files refer to data files other than what
 is currently in the workspace. The user at this point should run `dvc checkout`
-so that the data files will match the current DVC files.
+so that the data files will match the current DVC-files.
 
 The installed Git hook automates running `dvc checkout`.
 
@@ -96,7 +96,7 @@ This data will be retrieved from a preconfigured remote cache.
 
 Let's start our exploration with the impact of `dvc install` on the
 `dvc checkout` command. Remember that switching from one SCM tag or branch to
-another changes the set of DVC files in the workspace, which then also changes
+another changes the set of DVC-files in the workspace, which then also changes
 the data files that should be in the workspace.
 
 With the Getting Started example workspace described above, let's first list the
@@ -150,11 +150,11 @@ Bottom line is returning the workspace to a normal state requires the command
 `git checkout master`.
 
 We also see that `dvc status` tells us about differences between the workspace
-and the data files currently in the workspace. Git changed the DVC files in the
+and the data files currently in the workspace. Git changed the DVC-files in the
 workspace, which changed references to data files. What `dvc status` did is
 inform us the data files in the workspace no longer matched the checksums in the
-DVC files. Running `dvc checkout` then checks out the corresponding data files,
-and now `dvc status` tells us the data files match the DVC files.
+DVC-files. Running `dvc checkout` then checks out the corresponding data files,
+and now `dvc status` tells us the data files match the DVC-files.
 
 ```dvc
 $ git checkout master
@@ -203,7 +203,7 @@ Pipeline is up to date. Nothing to reproduce.
 
 Look carefully at this output and it is clear that the `dvc checkout` command
 has indeed been run. As a result the workspace is up-to-date with the data files
-matching what is referenced by the DVC files.
+matching what is referenced by the DVC-files.
 
 ## Example: Showing DVC status on Git commit
 

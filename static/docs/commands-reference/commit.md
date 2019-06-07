@@ -1,6 +1,6 @@
 # commit
 
-Record changes to the repository by updating DVC files and saving outputs to
+Record changes to the repository by updating DVC-files and saving outputs to
 cache.
 
 ## Synopsis
@@ -18,7 +18,7 @@ positional arguments:
 
 The `dvc commit` command is useful for several scenarios where a dataset is
 being changed, a stage or pipeline is in development or one wishes to run
-commands outside the control of DVC, or force DVC files update to save some time
+commands outside the control of DVC, or force DVC-files update to save some time
 rerunning the pipeline or a stage:
 
 - Code or data for a stage is under active development, with rapid iteration of
@@ -36,10 +36,10 @@ rerunning the pipeline or a stage:
   (we do document our code don't we?), or change indentation, or comment-out
   some debugging printouts, or any other change which does not introduce a
   change in the pipeline result. `dvc commit` can help to avoid rerunning the
-  pipeline in these cases by forcing the update of the DVC files.
+  pipeline in these cases by forcing the update of the DVC-files.
 
 The last two use cases are **not recommended**, and essentially force update the
-DVC files and save data to cache. They are still useful, but keep in mind that
+DVC-files and save data to cache. They are still useful, but keep in mind that
 DVC can't guarantee reproducibility in those cases - you commit any data your
 want. Let's take a look at what is happening in the fist scenario closely:
 
@@ -70,9 +70,9 @@ It handles that last step of adding the file to the DVC cache.
 
 - `-R`, `--recursive` - the `targets` value is expected to be a directory path.
   With this option, `dvc commit` determines the files to commit by searching the
-  named directory, and its subdirectories, for DVC files for which to commit
+  named directory, and its subdirectories, for DVC-files for which to commit
   data. Along with providing a `target`, or `target` along with `--with-deps`,
-  it is yet another way to limit the scope of DVC files to upload.
+  it is yet another way to limit the scope of DVC-files to upload.
 
 - `-f`, `--force` - commit data even if checksums for dependencies or outputs
   did not change.

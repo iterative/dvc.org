@@ -20,12 +20,12 @@ directory is to be used, using the checksum saved in the `outs` fields. The
 `dvc checkout` command updates the workspace data to match with the cache files
 corresponding to those checksums.
 
-Using an SCM like Git, the DVC files are kept under version control. At a given
-branch or tag of the SCM workspace, the DVC files will contain checksums for the
+Using an SCM like Git, the DVC-files are kept under version control. At a given
+branch or tag of the SCM workspace, the DVC-files will contain checksums for the
 corresponding data files kept in the DVC cache. After an SCM command like
-`git checkout` is run, the DVC files will change to the state at the specified
+`git checkout` is run, the DVC-files will change to the state at the specified
 branch or commit or tag. Afterwards, the `dvc checkout` command is required in
-order to synchronize the data files with the currently checked out DVC files.
+order to synchronize the data files with the currently checked out DVC-files.
 
 This command must be executed after `git checkout` since Git does not handle
 files that are under DVC control. For convenience a Git hook is available,
@@ -34,8 +34,8 @@ simply by running `dvc install`, that will automate running `dvc checkout` after
 
 The execution of `dvc checkout` does:
 
-- Scan the `outs` entries in DVC files to compare with the currently checked out
-  data files. The scanned DVC files is limited by the listed targets (if any) on
+- Scan the `outs` entries in DVC-files to compare with the currently checked out
+  data files. The scanned DVC-files is limited by the listed targets (if any) on
   the command line. And if the `--with-deps` option is specified, it scans
   backward in the pipeline from the named targets.
 - For any data files where the checksum does not match with the DVC-file entry,
@@ -80,7 +80,7 @@ command. In other cases the cache can be pulled from a remote cache using the
   the pipeline.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
-  current set of DVC files with SCM commands like `git checkout` can result in
+  current set of DVC-files with SCM commands like `git checkout` can result in
   the need for DVC to remove files which should not exist in the current state
   and are missing in the local cache (they are not committed in DVC terms). This
   option controls whether the user will be asked to confirm these files removal.
@@ -199,7 +199,7 @@ MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
 What's happened is that `git checkout` changed `featurize.dvc`, `train.dvc`, and
-other DVC files. But it did nothing with the `model.pkl` and `matrix.pkl` files.
+other DVC-files. But it did nothing with the `model.pkl` and `matrix.pkl` files.
 Git does not manage those files. Instead DVC manages those files, and we must
 therefore do this:
 

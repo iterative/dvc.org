@@ -19,13 +19,13 @@ positional arguments:
 ## Options
 
 - `-c`, `--commands` - show pipeline as a list (graph, if `--ascii` or `--dot`
-  option is specified) of commands instead of paths to DVC files.
+  option is specified) of commands instead of paths to DVC-files.
 
 - `-o`, `--outs` - show pipeline as a list (graph, if `--ascii` or `--dot`
-  option is specified) of stage output files instead of paths to DVC files.
+  option is specified) of stage output files instead of paths to DVC-files.
 
 - `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
-  list of path to DVC files.
+  list of path to DVC-files.
 
 - `--dot` - show contents of `.dot` files with a DVC pipeline graph. It can be
   passed to third party visualization utilities.
@@ -46,7 +46,7 @@ data.dvc
 output.dvc
 ```
 
-- The same as previous, but show commands instead of DVC files:
+- The same as previous, but show commands instead of DVC-files:
 
 ```dvc
 $ dvc pipeline show output.dvc --commands

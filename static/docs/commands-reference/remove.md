@@ -23,9 +23,9 @@ how it can be used to replace or modify files that are under DVC control.
 ## Options
 
 - `-o`, `--outs` (default) - remove outputs described in the provided DVC
-  file(s), keep the DVC files.
+  file(s), keep the DVC-files.
 
-- `-p`, `--purge` - remove outputs and DVC files.
+- `-p`, `--purge` - remove outputs and DVC-files.
 
 - `-f`, `--force` - force purge. Skip confirmation prompt.
 
@@ -57,7 +57,7 @@ $ ls data.csv*
      data.csv.dvc
 ```
 
-Purge DVC files:
+Purge DVC-files:
 
 ```dvc
 $ dvc remove data.csv.dvc -p

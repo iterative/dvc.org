@@ -58,7 +58,7 @@ to work with directory hierarchies with `dvc add`.
 2. When not using `--recursive` a DVC stage file is created for the top of the
    directory (`dirname.dvc`), and every file in the hierarchy is added to the
    DVC cache (unless `--no-commit` flag is added), but these files do not have
-   individual DVC files. Instead the DVC-file for the directory has a
+   individual DVC-files. Instead the DVC-file for the directory has a
    corresponding file in the DVC cache containing references to the files in the
    directory hierarchy.
 
@@ -182,7 +182,7 @@ To track the changes with git run:
   	git add pics.dvc
 ```
 
-There are no DVC files generated within this directory structure, but the images
+There are no DVC-files generated within this directory structure, but the images
 are all added to the DVC cache. DVC prints a message to that effect, saying that
 `md5` values are computed for each directory. A DVC-file is generated for the
 top-level directory, and it contains this:

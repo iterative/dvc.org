@@ -67,7 +67,7 @@ reflinks or hardlinks to put it in the workspace without copying. See
   `core.config` config option, is used.
 
 - `-a`, `--all-branches` - determines the files to download by examining files
-  associated with all branches of the DVC files in the project directory. It's
+  associated with all branches of the DVC-files in the project directory. It's
   useful if branches are used to track "checkpoints" of an experiment or
   project.
 
@@ -86,9 +86,9 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 - `-R`, `--recursive` - `targets` values is expected to be a directory path.
   Determines the files to download by searching the named directory and its
-  subdirectories for DVC files to download data for. Along with providing a
+  subdirectories for DVC-files to download data for. Along with providing a
   `target`, or `target` along with `--with-deps` it is yet another way to cut
-  the scope of DVC files to download.
+  the scope of DVC-files to download.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while downloading files from the remote cache. The effect is to control the

@@ -74,7 +74,7 @@ backward through the pipeline to find data files to push.
   option, is used.
 
 - `-a`, `--all-branches` - determines the files to upload by examining files
-  associated with all branches of the DVC files in the project directory. It's
+  associated with all branches of the DVC-files in the project directory. It's
   useful if branches are used to track "checkpoints" of an experiment or
   project.
 
@@ -88,9 +88,9 @@ backward through the pipeline to find data files to push.
 
 - `-R`, `--recursive` - the `targets` value is expected to be a directory path.
   With this option, `dvc pull` determines the files to upload by searching the
-  named directory, and its subdirectories, for DVC files for which to upload
+  named directory, and its subdirectories, for DVC-files for which to upload
   data. Along with providing a `target`, or `target` along with `--with-deps`,
-  it is yet another way to limit the scope of DVC files to upload.
+  it is yet another way to limit the scope of DVC-files to upload.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while uploading files to the remote cache. The effect is to control the number
