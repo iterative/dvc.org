@@ -13,7 +13,7 @@ usage: dvc repro [-h] [-q | -v]
                  [targets [targets ...]]
 
 positional arguments:
-    target                DVC file to reproduce.
+    target                DVC-file to reproduce.
 ```
 
 ## Description

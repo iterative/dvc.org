@@ -6,7 +6,7 @@ Unlock DVC-file (stage). See `dvc lock` for more information.
 usage: dvc unlock [-h] [-q] [-v] targets [targets ...]
 
 positional arguments:
-    targets               DVC files.
+    targets               DVC-files.
 ```
 
 ## Options

@@ -13,7 +13,7 @@ usage: dvc fetch [-h] [-q | -v] [-j JOBS]
                  [targets [targets ...]]
 
 positional arguments:
-  targets               DVC files (stages).
+  targets               DVC-files (stages).
 ```
 
 ## Description

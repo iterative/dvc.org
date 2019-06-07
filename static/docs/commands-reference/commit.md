@@ -11,7 +11,7 @@ usage: dvc commit [-h] [-q | -v]
                   [targets [targets ...]]
 
 positional arguments:
-  targets               DVC files.
+  targets               DVC-files.
 ```
 
 ## Description

@@ -15,7 +15,7 @@ usage: dvc pull [-h] [-q | -v] [-j JOBS]
 Pull data files from the cloud.
 
 positional arguments:
-  targets               DVC files.
+  targets               DVC-files.
 ```
 
 ## Description

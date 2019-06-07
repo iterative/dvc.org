@@ -14,7 +14,7 @@ want to use or share in the future.
 usage: dvc remove [-h] [-q] [-v] [-o | -p] [-f] targets [targets ...]
 
 positional arguments:
-    targets               DVC files.
+    targets               DVC-files.
 ```
 
 Check also [Update Tracked Files](/doc/user-guide/update-tracked-file) to see

@@ -10,7 +10,7 @@ if `--force` is provided.
 usage: dvc lock [-h] [-q] [-v] targets [targets ...]
 
 positional arguments:
-    targets               DVC files
+    targets               DVC-files
 ```
 
 ## Description
