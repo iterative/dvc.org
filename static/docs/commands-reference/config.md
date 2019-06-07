@@ -15,7 +15,7 @@ positional arguments:
 
 You can query/set/replace/unset DVC configuration options with this command. It
 takes a config option `name` (a section and a key, separated by a dot) and its
-`value`.
+`value` (any valid alpha-numeric string generally).
 
 This command reads and overwrites the DVC config file `.dvc/config`. If
 `--local` option is specified, `.dvc/config.local` is modified instead.
