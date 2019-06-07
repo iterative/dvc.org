@@ -44,53 +44,57 @@ export default class Documentation extends Component {
   componentWillUnmount() {
     window.removeEventListener('popstate', this.loadStateFromURL)
   }
-  toString(method,str){
+  toString(method, str) {
     switch (method) {
       case 'filetourl':
-        return str.slice(0,-3)
-        break;
+        return str.slice(0, -3)
+        break
       default:
-        break;
+        break
+    }
+  }
+  getZeroFile(arr) {
+    if (typeof arr[0] !== 'string' && arr[0].indexFile) {
+      return arr[0].indexFile
+    } else if (typeof arr[0] !== 'string') {
+      return arr[0]
+    } else {
+      this.getZeroFile(arr[0].files)
     }
   }
   loadStateFromURL = () => {
-    const { pathname } = window.location;
-    const sectionURL = pathname.split('/')[2];
-    const subSectionURL = pathname.split('/')[3];
-    const fileURL = pathname.split('/')[4];
-    const sectionIndex = sectionURL ? sidebar.findIndex(
-      section => section.indexFile ? this.toString('filetourl',section.indexFile) === sectionURL : this.toString('filetourl',section.files[0]) === sectionURL
-    ) : 0;
-    const subSectionIndex = subSectionURL ? sidebar[sectionIndex].files.findIndex(subsection =>{
-        return this.toString('filetourl',subsection.indexFile ? subsection.indexFile : subsection) === subSectionURL;
+    let file = this.getZeroFile(sidebar) //установили начальный файл
+    let indexes = []
+    let path = window.location.pathname.split('/')
+    let length = path.length
+    function getFile(arr, find, x) {
+      for (let i = 0; i < arr.length; i++) {
+        if (
+          (typeof arr[i] === 'string' && arr[i].slice(0, -3) === find) ||
+          (arr[i].indexFile && arr[i].indexFile.slice(0, -3) === find)
+        ) {
+          file = arr[i]
+          indexes.push(i)
+          return false
+        } else if (arr[i].name && kebabCase(arr[i].name) === find) {
+          indexes.push(i)
+          file = arr[i].files[0]
+          return false
+        } else if (arr[i].files) {
+          getFile(arr[i].files, find, x)
         }
-    ) : -1;
-    let fileIndex = fileURL ? sidebar[sectionIndex].files[subSectionIndex].files.findIndex(
-      file => this.toString('filetourl',file) === fileURL
-    ) : -1;
-    if(fileIndex>=0){
-      this.loadFile({
-        file: sidebar[sectionIndex].files[subSectionIndex].files[fileIndex],
-        section: sectionIndex,
-        subsection: subSectionIndex,
-        parseHeadings: true,
-      })
-    }else if(subSectionIndex>=0){
-      this.loadFile({
-        file: sidebar[sectionIndex].files[subSectionIndex],
-        section: sectionIndex,
-        parseHeadings: true,
-      })
-    }else if(sectionIndex>=0){
-      this.loadFile({
-        file: sidebar[sectionIndex].indexFile,
-        section: sectionIndex,
-        parseHeadings: true,
-      })
-    }else{
-      this.setState({pageNotFound: true})
+      }
     }
-  };
+    for (let x = 2; x < length; x++) {
+      getFile(sidebar, path[x], x)
+    }
+    this.loadFile({
+      file: file,
+      section: length > 2 ? indexes[0] : 0,
+      subsection: indexes.length > 2 ? indexes[1] : null,
+      parseHeadings: true
+    })
+  }
   initDocsearch = () => {
     docsearch({
       apiKey: '755929839e113a981f481601c4f52082',
@@ -98,38 +102,72 @@ export default class Documentation extends Component {
       inputSelector: '#doc-search',
       debug: false // Set debug to true if you want to inspect the dropdown
     })
-  };
-  getLinkHref = (section, file=null, subsection) => {
-    const sectionSlug = sidebar[section].indexFile ? this.toString('filetourl',sidebar[section].indexFile) : '123';
-    const subsectionSlug = subsection ? (sidebar[section].files[subsection].indexFile ? sidebar[section].files[subsection].indexFile.slice(0,-3) : sidebar[section].files[subsection]) : undefined;
-    const fileSlug = file ? (typeof file==='string' ? file.slice(0, -3) : file.files[0]) : undefined;
-    return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`;
-  };
+  }
+  getLinkHref = (section, file = null, subsection) => {
+    const sectionSlug = sidebar[section].indexFile
+      ? this.toString('filetourl', sidebar[section].indexFile)
+      : kebabCase(sidebar[section].name)
+    const subsectionSlug = subsection
+      ? sidebar[section].files[subsection].indexFile
+        ? sidebar[section].files[subsection].indexFile.slice(0, -3)
+        : sidebar[section].files[subsection]
+      : undefined
+    const fileSlug = file
+      ? typeof file === 'string'
+        ? file.slice(0, -3)
+        : file.files[0]
+      : undefined
+    return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`
+  }
   setCurrentPath = (section, file, subsection) => {
-    window.history.pushState(null, null, this.getLinkHref(section, file, subsection))
-  };
+    window.history.pushState(
+      null,
+      null,
+      this.getLinkHref(section, file, subsection)
+    )
+  }
   onSectionSelect = (section, e) => {
-    e && e.preventDefault();
-    const file = sidebar[section].indexFile ? sidebar[section].indexFile  : sidebar[section].files[0];
-    e && this.setCurrentPath(section);
-    this.loadFile({ file, section, parseHeadings: false });
-  };
+    e && e.preventDefault()
+    const file = sidebar[section].indexFile
+      ? sidebar[section].indexFile
+      : sidebar[section].files[0]
+    e && this.setCurrentPath(section)
+    this.loadFile({ file, section, parseHeadings: false })
+  }
   onFileSelect = (file, section, e, subsection) => {
-    e && e.preventDefault();
-    this.setCurrentPath(section, file.indexFile ? file.indexFile : file, subsection);
-    this.loadFile({ file, section, subsection, parseHeadings: true });
-  };
+    e && e.preventDefault()
+    this.setCurrentPath(
+      section,
+      file.indexFile ? file.indexFile : file,
+      subsection
+    )
+    this.loadFile({ file, section, subsection, parseHeadings: true })
+  }
   loadFile = ({ file, section, subsection, parseHeadings }) => {
-    this.setState({load:true});
-    let folderpath = file.folder ? file.folder  : (subsection ? sidebar[section].files[subsection].folder : sidebar[section].folder);
-    let filepath = file.indexFile ? file.indexFile : (file.files ? file.files : file);
+    this.setState({ load: true })
+    let folderpath = file.folder
+      ? file.folder
+      : subsection
+      ? sidebar[section].files[subsection].folder
+      : sidebar[section].folder
+    let filepath = file.indexFile
+      ? file.indexFile
+      : file.files
+      ? file.files
+      : file
     fetch(`${folderpath}/${filepath}`)
       .then(res => {
         res.text().then(text => {
           this.setState(
             {
               currentSection: section,
-              currentFile: folderpath ? `${folderpath}/${file.indexFile ? file.indexFile : file}` : (subsection ? `${sidebar[section].files[subsection].folder}/${file.indexFile}` : `${sidebar[section].folder}/${file}`),
+              currentFile: folderpath
+                ? `${folderpath}/${file.indexFile ? file.indexFile : file}`
+                : subsection
+                ? `${sidebar[section].files[subsection].folder}/${
+                    file.indexFile
+                  }`
+                : `${sidebar[section].folder}/${file}`,
               markdown: text,
               headings: [],
               pageNotFound: false,
@@ -286,8 +324,8 @@ const Backdrop = styled.div`
     transition: opacity .3s linear;
 
     ${props =>
-  props.visible &&
-  `
+      props.visible &&
+      `
       content: '';
       position: fixed;
       top: 0;
@@ -323,8 +361,8 @@ const Side = styled.div`
     transition: transform .35s ease;
 
     ${props =>
-  props.isOpen &&
-  `
+      props.isOpen &&
+      `
       transform: translateX(0);
     `} 
   `};
@@ -373,8 +411,8 @@ const SideToggle = styled.div`
   `};
 
   ${({ isMenuOpen }) =>
-  isMenuOpen &&
-  `
+    isMenuOpen &&
+    `
     transform: translateX(calc(100vw - 60px));
   `};
 `
