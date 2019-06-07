@@ -1,6 +1,6 @@
 # unlock
 
-Unlock DVC file (stage). See `dvc lock` for more information.
+Unlock DVC-file (stage). See `dvc lock` for more information.
 
 ```usage
 usage: dvc unlock [-h] [-q] [-v] targets [targets ...]
@@ -20,7 +20,7 @@ positional arguments:
 
 ## Example
 
-- First, let's create a sample DVC file:
+- First, let's create a sample DVC-file:
 
 ```dvc
 $ echo foo > foo

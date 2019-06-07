@@ -57,7 +57,7 @@ There are many cases where the last step is not desirable (usually, rapid
 iteration on some experiment). For the DVC commands where it is appropriate the
 `--no-commit` option prevents the last step from occurring - thus, we are saving
 some time and space, by not storing all the data artifacts for all the attempts
-we do. The checksum is still computed and added to the DVC file, but the file is
+we do. The checksum is still computed and added to the DVC-file, but the file is
 not added to the cache. That's where the `dvc commit` command comes into play.
 It handles that last step of adding the file to the DVC cache.
 
@@ -222,7 +222,7 @@ that the new instance of `model.pkl` is in the cache.
 
 It is also possible to execute the commands that are executed by `dvc repro` by
 hand. You won't have DVC helping you, but you have the freedom to run any script
-you like, even ones not recorded in a DVC file. For example:
+you like, even ones not recorded in a DVC-file. For example:
 
 ```dvc
 $ python src/featurization.py data/prepared data/features

@@ -25,7 +25,7 @@ Under the hood a few actions are taken for each file in the target(s):
 1. Calculate the file checksum.
 2. Move the file content to the DVC cache (default location is `.dvc/cache`).
 3. Replace the file by a link to the file in the cache (see details below).
-4. Create a corresponding DVC file (metafile `.dvc`) and store the checksum to
+4. Create a corresponding DVC-file (`.dvc` extension) and store the checksum to
    identify the cache entry.
 5. Add the _target_ filename to `.gitignore` (if Git is used in this workspace)
    to prevent it from being committed to the Git repository.
@@ -38,12 +38,12 @@ The result is data file is added to the DVC cache, and DVC metafiles (`.dvc`)
 can be tracked via Git or other version control system. The stage file
 (metafile) lists the added file as an `out` (output) of the stage, and
 references the DVC cache entry using the checksum. See
-[DVC File Format](/doc/user-guide/dvc-file-format) for the detailed description
+[DVC-File Format](/doc/user-guide/dvc-file-format) for the detailed description
 of the DVC _metafile_ format.
 
 By default DVC tries to use reflinks (see
 [File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to avoid copying any file contents and to optimize DVC file operations for large
+to avoid copying any file contents and to optimize DVC-file operations for large
 files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
 `cache.type` config option in `dvc config cache` for more information.
@@ -58,7 +58,7 @@ to work with directory hierarchies with `dvc add`.
 2. When not using `--recursive` a DVC stage file is created for the top of the
    directory (`dirname.dvc`), and every file in the hierarchy is added to the
    DVC cache (unless `--no-commit` flag is added), but these files do not have
-   individual DVC files. Instead the DVC file for the directory has a
+   individual DVC files. Instead the DVC-file for the directory has a
    corresponding file in the DVC cache containing references to the files in the
    directory hierarchy.
 
@@ -72,7 +72,7 @@ This way you bring data provenance and make your project reproducible.
 ## Options
 
 - `-R`, `--recursive` - recursively add each file under the named directory. For
-  each file a new DVC file is created using the process described earlier.
+  each file a new DVC-file is created using the process described earlier.
 
 - `--no-commit` - do not put files/directories into cache. A stage file is
   created, and an entry is added to `.dvc/state`, while nothing is added to the
@@ -87,7 +87,7 @@ This way you bring data provenance and make your project reproducible.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `-f`, `--file` - specify name of the DVC file it generates. It should be
+- `-f`, `--file` - specify name of the DVC-file it generates. It should be
   either `Dvcfile` or have a `.dvc` file extension (e.g. `data.dvc`) in order
   for `dvc` to be able to find it later.
 
@@ -137,7 +137,6 @@ correspond to an entry in the cache.
 If user overwrites the `.dvc` file, comments and meta values are not preserved
 between multiple executions of `dvc add` command.
 
-
 ```dvc
 $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
 
@@ -185,7 +184,7 @@ To track the changes with git run:
 
 There are no DVC files generated within this directory structure, but the images
 are all added to the DVC cache. DVC prints a message to that effect, saying that
-`md5` values are computed for each directory. A DVC file is generated for the
+`md5` values are computed for each directory. A DVC-file is generated for the
 top-level directory, and it contains this:
 
 ```yaml
@@ -210,10 +209,10 @@ Saving 'pix/train/cats/cat.438.jpg' to cache '.dvc/cache'.
 ...
 ```
 
-In this case a DVC file corresponding to each file is generated, and no
-top-level DVC file is generated. But this is less convenient.
+In this case a DVC-file corresponding to each file is generated, and no
+top-level DVC-file is generated. But this is less convenient.
 
-With the `dvc add pics` a single DVC file is generated, `pics.dvc`, which lets
+With the `dvc add pics` a single DVC-file is generated, `pics.dvc`, which lets
 us treat the entire directory structure in one unit. It lets you pass the whole
 directory tree as input to a `dvc run` stage like so:
 
@@ -227,5 +226,5 @@ $ dvc run -f train.dvc \
 To see this whole example go to
 [Example: Versioning](/doc/get-started/example-versioning).
 
-Since no top-level DVC file is generated with the `--recursive` option we cannot
+Since no top-level DVC-file is generated with the `--recursive` option we cannot
 use the directory structure as a whole.

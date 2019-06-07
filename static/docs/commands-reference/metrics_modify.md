@@ -16,7 +16,7 @@ positional arguments:
 
 ## Description
 
-This command finds a corresponding DVC file for the metric file path provided
+This command finds a corresponding DVC-file for the metric file path provided
 (i.e. a DVC stage file that specifies one of its a metric with the path
 provided) and updates the meta-information that is used to manage and show the
 metric.

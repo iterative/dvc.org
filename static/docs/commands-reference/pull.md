@@ -132,7 +132,7 @@ $ dvc pull --remote r1
 (8/8): [####################] 100% model.pkl
 ```
 
-We can download specific files that are outputs of a specific dvc file:
+We can download specific files that are outputs of a specific DVC-file:
 
 ```dvc
 $ dvc pull data.zip.dvc
@@ -141,7 +141,7 @@ $ dvc pull data.zip.dvc
 
 In this case we left off the `--remote` option, so it will have pulled from the
 default remote. The only files considered in this case are what is listed in the
-`out` section of the named target DVC file.
+`out` section of the named target DVC-file.
 
 ## Examples: With dependencies
 

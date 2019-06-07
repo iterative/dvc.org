@@ -1,8 +1,8 @@
 # lock
 
-Lock a DVC file (stage). Use `dvc unlock` to unlock the file.
+Lock a DVC-file (stage). Use `dvc unlock` to unlock the file.
 
-If DVC file is locked the stage is considered _done_ and `dvc repro` will not
+If DVC-file is locked the stage is considered _done_ and `dvc repro` will not
 run commands to rebuild outputs even if some dependencies have changed and even
 if `--force` is provided.
 
@@ -30,7 +30,7 @@ behave as a `.dvc` file that would be created by `dvc add` ran on outputs.
 
 ## Example
 
-- First, let's create a sample DVC file:
+- First, let's create a sample DVC-file:
 
 ```dvc
 $ echo foo > foo

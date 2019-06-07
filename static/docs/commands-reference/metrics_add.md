@@ -15,7 +15,7 @@ positional arguments:
 
 ## Description
 
-Sets a special flag (see [DVC File Format](/doc/user-guide/dvc-file-format)) in
+Sets a special flag (see [DVC-File Format](/doc/user-guide/dvc-file-format)) in
 the relevant `.dvc` file to identify a specified output as a metric file.
 Alternatively, an output file could be made a metric via `-M` or `-m` parameter
 of the `dvc run` command.

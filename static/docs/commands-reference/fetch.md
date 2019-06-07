@@ -46,12 +46,12 @@ Fetching could be useful when first checking out an existing DVC project, since
 files under DVC control could already exist in remote storage, but won't be in
 your local cache. (Refer to `dvc remote` for more information on DVC remotes.)
 These necessary data or model files are listed as dependencies or outputs in a
-DVC file (target stage) so they are required to
+DVC-file (target stage) so they are required to
 [reproduce](/doc/get-started/reproduce) the pipeline. (See
-[DVC File Format](/doc/user-guide/dvc-file-format) for more information on
+[DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
 
-`dvc fetch` ensures that the files needed for a DVC file to be
+`dvc fetch` ensures that the files needed for a DVC-file to be
 [reproduced](/doc/get-started/reproduce) exist in the local cache. If no
 `targets` are specified, the set of data files to fetch is determined by
 analyzing all `.dvc` files in the current branch, unless `--all-branches` or
@@ -94,8 +94,8 @@ specified in DVC files currently in the workspace are considered by `dvc fetch`
   just 4.
 
 - `-a`, `--all-branches` - fetch cache for all branches, not just the active
-  one. This means that you'll the files needed to reproduce different versions
-  of a DVC file ([experiments](/doc/get-started/experiments)), not just the
+  one. This means DVC may download files needed to reproduce different versions
+  of a DVC-file ([experiments](/doc/get-started/experiments)), not just the
   current one.
 
 - `-T`, `--all-tags` - fetch cache for all tags. Similar to `-a` above
@@ -220,7 +220,7 @@ Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/...
 > follow this example if you tried the previous one (**Default behavior**).
 
 `dvc fetch` only downloads the data files of a specific stage when the
-corresponding DVC file (target stage) is specified:
+corresponding DVC-file (target stage) is specified:
 
 ```dvc
 $ dvc fetch prepare.dvc

@@ -133,7 +133,7 @@ $ dvc push
 (8/8): [###########           ] 57% model.pkl
 ```
 
-Push outputs of a specific dvc file:
+Push outputs of a specific DVC-file:
 
 ```dvc
 $ dvc push data.zip.dvc

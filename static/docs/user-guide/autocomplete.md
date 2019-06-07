@@ -8,13 +8,12 @@ For example:
 
 ```dvc
 $ dvc r # Press [tab] key
-
-#  -- dvc commands --
-# remote  -- Manage set of tracked repositories.
-# remove  -- Remove outputs of DVC file.
-# repro   -- Reproduce DVC file. Default file name - 'Dvcfile'.
-# root    -- Relative path to project's directory.
-# run     -- Generate a stage file from a given command and execute
+ -- dvc commands --
+remote  -- Manage remote storage configuration.
+remove  -- Remove outputs of DVC file.
+repro   -- Check for changes and reproduce DVC file and dependencies.
+root    -- Relative path to project's directory.
+run     -- Generate a stage file from a command and execute the command.
 ```
 
 Depending on what you typed on the command line so far, it completes:

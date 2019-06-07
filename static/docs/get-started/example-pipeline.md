@@ -106,7 +106,7 @@ of the data file itself.
 Actual data file `Posts.xml.zip` is linked into the `.dvc/cache` directory,
 under the `.dvc/cache/ce/68b98d82545628782c66192c96f2d2` name and is added to
 `.gitignore`. Even if you remove it in the workspace, or checkout a different
-branch/commit the data is not lost if a corresponding DVC file is committed.
+branch/commit the data is not lost if a corresponding DVC-file is committed.
 It's enough to run `dvc checkout` or `dvc pull` to restore data files.
 
 </details>

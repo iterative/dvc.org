@@ -144,7 +144,7 @@ into. The script creates two files in it – that will be used later to generate
 features, train and evaluate the model.
 
 And, the last line, `python src/prepare.py data/data.xml`, specifies a command
-to run. This command is saved to the generated DVC file and required by
+to run. This command is saved to the generated DVC-file and required by
 `dvc repro`.
 
 </details>

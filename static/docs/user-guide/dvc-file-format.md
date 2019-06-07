@@ -1,4 +1,4 @@
-# DVC File Format
+# DVC-File Format
 
 When you add a file or a stage to your pipeline, DVC creates a special `.dvc`
 file that contains all the needed information to track your data. The file
@@ -8,7 +8,7 @@ being created by `dvc run` or `dvc add`) by hand.
 Check the [Syntax Highlighting](/doc/user-guide/plugins) to enable the
 highlighting for your editor.
 
-Here is an example of a DVC file:
+Here is an example of a DVC-file:
 
 ```yaml
 cmd: python cmd.py input.data output.data metrics.json
@@ -45,7 +45,7 @@ On the top level, `.dvc` file consists of such fields:
 - `cmd`: a command that is being run in this stage of the pipeline;
 - `deps`: a list of dependencies for this stage;
 - `outs`: a list of outputs for this stage;
-- `md5`: md5 checksum for this dvc file;
+- `md5`: md5 checksum for this DVC-file;
 - `locked`: whether or not this stage is locked from reproduction;
 - `wdir`: a directory to run command in (default `.`);
 
@@ -71,7 +71,7 @@ A meta entry consists of `key:value` pairs such as `name: john`. A meta entry
 can have any structure and contain any number of attributes. `"meta: string"` is
 also possible, it doesn't necessarily need to contain dictionary always.
 
-Comments can be added to the .dvc file using `# comment` syntax. Comments and
+Comments can be added to the DVC-file using `# comment` syntax. Comments and
 meta values are preserved between multiple executions of `dvc repro` and
 `dvc commit` commands.
 

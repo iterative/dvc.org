@@ -15,7 +15,7 @@ positional arguments:
 
 ## Description
 
-This command searches for the corresponding DVC file for the metric file path
+This command searches for the corresponding DVC-file for the metric file path
 provided (i.e. a DVC stage file that specifies one of its outputs a metric with
 the path provided, see `dvc metrics add` or `dvc run` `-m` and `-M` options) and
 resets the metric flag for the provided output.

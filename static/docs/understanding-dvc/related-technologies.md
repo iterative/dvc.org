@@ -35,7 +35,7 @@ process.
    - DVC does not need to run any services. No graphical user interface as a
      result, but we expect some GUI services will be created on top of DVC.
 
-   - DVC has transparent design: metadata files (DVC file), configuration files,
+   - DVC has transparent design: metadata files (DVC-file), configuration files,
      cache directories have a simple format and can be easily reused by external
      tools.
 
@@ -56,12 +56,12 @@ process.
      - The DAG is defined by DVC files with filenames `Dvcfile` or
        `<filename>.dvc`.
 
-     - One DVC file defines one node in the DAG. All DVC files in a repository
+     - One DVC-file defines one node in the DAG. All DVC files in a repository
        make up a single pipeline (think a single Makefile). All DVC files (and
        corresponding pipeline commands) are implicitly combined through their
        inputs and outputs, to simplify conflict resolving during merges.
 
-     - DVC provides a simple command `dvc run CMD` to generate a DVC file
+     - DVC provides a simple command `dvc run CMD` to generate a DVC-file
        automatically based on the provided command, dependencies, and outputs.
 
    - File tracking:

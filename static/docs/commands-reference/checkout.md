@@ -38,7 +38,7 @@ The execution of `dvc checkout` does:
   data files. The scanned DVC files is limited by the listed targets (if any) on
   the command line. And if the `--with-deps` option is specified, it scans
   backward in the pipeline from the named targets.
-- For any data files where the checksum does not match with the DVC file entry,
+- For any data files where the checksum does not match with the DVC-file entry,
   the data file is restored from the cache. The link strategy used (`reflink`,
   `hardlink`, `symlink`, or `copy`) depends on the OS and the configured value
   for `cache.type` – See `dvc config cache`.

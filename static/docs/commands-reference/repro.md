@@ -18,7 +18,7 @@ positional arguments:
 
 ## Description
 
-DVC file (`target`) can have any name followed by the `.dvc` file extension. If
+DVC-file (`target`) can have any name followed by the `.dvc` file extension. If
 file name is omitted, `Dvcfile` will be used by default.
 
 `dvc repro` provides an interface to rerun the commands in the computational
