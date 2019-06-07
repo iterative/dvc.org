@@ -14,9 +14,8 @@ See also [add](/doc/commands-reference/remote-add),
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [-q | -v] [-u]
-                       [--global] [--system] [--local]
-                       name option [value]
+usage: dvc remote modify [-h] [--global] [--system] [--local] [-q | -v]
+                         [-u] name option [value]
 
 positional arguments:
  name           Name of the remote
@@ -30,13 +29,14 @@ Remote `name` and `option` name are required. Option names are remote type
 specific. See below examples and a list of per remote type - AWS S3, Google
 cloud, Azure, SSH, ALiyun OSS, and others.
 
-This command modifies a section in the DVC
+This command modifies a `remote` section in the DVC
 [config file](/doc/user-guide/dvc-files-and-directories). Alternatively,
 `dvc config` or manual editing could be used to change settings.
 
 ## Options
 
-- `-u`, `--unset` - delete configuration value
+- `-u`, `--unset` - delete configuration value for given `option`. Don't provide
+  a `value` when using this flag.
 
 - `--global` - save remote configuration to the global config (e.g.
   `~/.config/dvc/config`) instead of `.dvc/config`.
