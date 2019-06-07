@@ -1,8 +1,9 @@
 # remote add
 
-Add a new data remote. Depending on your storage type you might need to run
-`dvc remote modify` to provide credentials and/or configure other remote
-parameters.
+Add a new data remote.
+
+> Depending on your storage type, you may also need `dvc remote modify` to
+> provide credentials and/or configure other remote parameters.
 
 See also [default](/doc/commands-reference/remote-default),
 [list](/doc/commands-reference/remote-list),
@@ -75,6 +76,8 @@ Use `dvc config` to unset/change the default remote as so:
   is specified for them.
 
 - `-f`, `--force` - to overwrite existing remote with new `url` value.
+
+## Examples
 
 <details>
 
@@ -309,9 +312,9 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 
 </details>
 
-## Examples
+## Examples: Custom configuration of an S3 remote
 
-Add AWS S3 _default_ (via `-d` option) remote and modify its region:
+Add a AWS S3 remote as the _default_ (via `-d` option), and modify its region:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/myproject
@@ -320,7 +323,7 @@ Setting 'myremote' as a default remote.
 $ dvc remote modify myremote region us-east-2
 ```
 
-DVC config file would look like (run `cat .dvc/config`):
+DVC config file (`.dvc/config`) now looks like this:
 
 ```ini
 ['remote "myremote"']
@@ -330,7 +333,7 @@ region = us-east-2
 remote = myremote
 ```
 
-And list of remotes like this:
+The list of remotes should now be:
 
 ```dvc
 $ dvc remote list
@@ -338,13 +341,13 @@ $ dvc remote list
 myremote	s3://mybucket/myproject
 ```
 
-You can overwrite existing remote using `-f` with `dvc remote add` as under:
+You can overwrite existing remotes using `-f` with `dvc remote add`:
 
 ```dvc
 $ dvc remote add -f myremote s3://mybucket/mynewproject
 ```
 
-List remotes to view the updated remote:
+List remotes again to view the updated remote:
 
 ```dvc
 $ dvc remote list
