@@ -254,28 +254,6 @@ $ ./scripts/ci/remove_hadoop.sh
 
 </details>
 
-## Running development version
-
-To run DVC from its Git repository you need to setup your environment:
-
-- Export `DVC_HOME` variable that is pointing to the root of your repository:
-
-  ```dvc
-  $ export DVC_HOME=/home/user/git/dvc
-  ```
-
-- Modify and export `PATH` variable to include location of our wrapper script:
-
-  ```dvc
-  $ export PATH=$PATH:$DVC_HOME/bin
-  ```
-
-- Check that `dvc` points to your repository:
-  ```dvc
-  $ which dvc
-  /home/user/git/dvc/bin/dvc
-  ```
-
 ## Code style guidelines
 
 We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and checking
