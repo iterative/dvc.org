@@ -2,6 +2,10 @@
 
 Modify remote settings.
 
+> This command is commonly needed after `dvc remote add` or
+> [default](/doc/commands-reference/remote-default) to setup credentials or
+> other customizations to each remote type.
+
 See also [add](/doc/commands-reference/remote-add),
 [default](/doc/commands-reference/remote-default),
 [list](/doc/commands-reference/remote-list), and
@@ -45,6 +49,8 @@ This command modifies a section in the DVC
   modifying private options or local environment specific settings in your
   config, that you don't want to track and share through Git (credentials,
   private locations, etc).
+
+## Examples
 
 <details>
 
@@ -252,7 +258,7 @@ $ dvc remote modify myremote oss_endpoint endpoint
 
 </details>
 
-## Examples
+## Examples: Customize an S3 remote
 
 Let's first set up a _default_ S3 remote:
 
