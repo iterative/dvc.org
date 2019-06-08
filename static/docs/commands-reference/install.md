@@ -35,12 +35,23 @@ is a reminder to run `dvc commit`.
 The installed Git hook automates reminding the user to run either `dvc repro` or
 `dvc commit`.
 
+**Push** Sharing data across environments and making changes to remote storage
+is done by this command. This command searches for changed .dvc files and stages
+them for consultation. Using checksums it finds for existing entries in the
+remote cache. After that it uploads the cache files to the remote.
+
+The installed Git hook automates reminding `dvc push` and corresponds to the 
+remote and uploads files from local repository to remote cache not from other
+versions or branches.
+ 
 ## Installed SCM hooks
 
 - Git `pre-commit` hook executes `dvc status` before `git commit` to inform the
   user about the workspace status.
 - Git `post-checkout` hook executes `dvc checkout` after `git checkout` to
   automatically synchronize the data files with the new workspace state.
+- Git `pre-push` hook executes `dvc push` before `git push` to upload files
+and directories under DVC control to remote.
 
 ## Options
 
