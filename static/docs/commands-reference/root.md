@@ -10,9 +10,10 @@ usage: dvc root [-h] [-q] [-v]
 
 ## Description
 
-While modifying code in different sub-directories, there can be cases when
-developers require relative path to the DVC's root directory. So, this command
-can be used to build a path to a dependency, command, or output.  
+While in project's sub-directory, sometimes developers may want to refer some
+file belonging to another directory. This command returns relative path to the
+DVC project's root directory from the current working directory. So, this
+command can be used to build a path to a dependency file, command, or output.  
 
 ## Options
 
