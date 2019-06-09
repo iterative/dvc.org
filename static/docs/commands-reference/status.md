@@ -10,11 +10,8 @@ usage: dvc status [-h] [-v] [-j JOBS] [--show-checksums] [-q] [-c] [-r REMOTE]
                   [-a] [-T] [-d]
                   [targets [targets ...]]
 
-Show changed states, compare local cache and remote storage.
-documentation: https://man.dvc.org/status
-
 positional arguments:
-  targets               DVC files.
+  targets               Limit the scope to these stage files.
 ```
 
 ## Description
