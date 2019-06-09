@@ -87,16 +87,17 @@ local cache and updates stage files with the new checksum information.
   (semi-random) outputs. For nondeterministic stages the outputs can vary on
   each execution, meaning the cache cannot be trusted for such stages.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
   all stages are up to date or if all stages are successfully rerun, otherwise
   exit with 1. The command run by the stage is free to make output irregardless
   of this flag.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
-- `--downstream` - rerun the commands present in the downstream of the pipeline.
+- `--downstream` - rerun the commands down the pipeline of the target file
+  including the one in it.
 
 ## Examples
 
@@ -186,3 +187,44 @@ Saving information to 'Dvcfile'.
 
 You can check now that `Dvcfile` and `count.txt` have been updated with the new
 information, new `md5` checksums and a new result respectively.
+
+## Examples: Downstream
+
+There is also an option which allows one to reproduce results from a specific
+command in the pipeline. Enabling this option requires adding flag
+`--downstream` to command `dvc repro`.
+
+To demonstrate working of this let us make a change in `text.txt`:
+
+```
+...
+The answer to universe is 42
+- The Hitchhiker's Guide to the  Galaxy
+```
+
+Now running the command `dvc repro --downstream` results in the following
+output:
+
+```dvc
+WARNING: assuming default target 'Dvcfile'.
+Stage 'Dvcfile' didn't change.
+Pipeline is up to date. Nothing to reproduce.
+```
+
+The reason being that the `text.txt` is a file which is not directly dependent
+on `Dvcfile`. Instead it is dependent on `filter.dvc` which is above our target
+file in the pipeline.
+
+```dvc
+$ dvc pipeline show --ascii
+
+    .------------.
+    | filter.dvc |
+    `------------'
+           *
+           *
+           *
+      .---------.
+      | Dvcfile |
+      `---------'
+```
