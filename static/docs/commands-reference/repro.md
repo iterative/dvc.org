@@ -188,6 +188,8 @@ Saving information to 'Dvcfile'.
 You can check now that `Dvcfile` and `count.txt` have been updated with the new
 information, new `md5` checksums and a new result respectively.
 
+## Examples: Downstream
+
 There is also an option which allows one to reproduce results from a specific
 command in the pipeline. Enabling this option requires adding flag
 `--downstream` to command `dvc repro`.
