@@ -36,11 +36,12 @@ The installed Git hook automates reminding the user to run either `dvc repro` or
 `dvc commit`.
 
 **Push** Sharing data across environments and making changes to remote storage
-is done by this command. This command searches for changed .dvc files and stages
-them for consultation. Using checksums it finds for existing entries in the
-remote cache. After that it uploads the cache files to the remote.
+is done by `dvc push`. This command searches for all DVC-files from current
+workspace and stages them for consultation. Using checksums it finds for
+existing entries in the remote cache. After that `dvc push` uploads files from
+cache that are missing on the remote.
 
-The installed Git hook automates reminding `dvc push` and corresponds to the 
+The installed Git hook automates executing `dvc push` and corresponds to the 
 remote and uploads files from local repository to remote cache not from other
 versions or branches.
  
@@ -51,7 +52,7 @@ versions or branches.
 - Git `post-checkout` hook executes `dvc checkout` after `git checkout` to
   automatically synchronize the data files with the new workspace state.
 - Git `pre-push` hook executes `dvc push` before `git push` to upload files
-and directories under DVC control to remote.
+  and directories under DVC control to remote.
 
 ## Options
 
@@ -269,3 +270,7 @@ other files but we must now commit some files to the Git repository. Looking
 closely we see that `dvc status` is again run, informing us that the data files
 are synchronized with the statement: _Pipeline is up to date. Nothing to
 reproduce_.
+
+## Example: Push for DVC
+
+
