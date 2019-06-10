@@ -26,11 +26,12 @@ positional arguments:
 ```dvc
 $ echo foo > foo
 $ dvc add foo
-$ dvc run -d foo -o bar cp foo bar
+Adding 'foo'...
 
-  Using 'bar.dvc' as a stage file
-  Running command:
-          cp foo bar
+$ dvc run -d foo -o bar cp foo bar
+Running command:
+	cp foo bar
+...
 ```
 
 - Then, let's change the file `foo` that the stage described in `bar.dvc`
@@ -41,12 +42,12 @@ $ rm foo
 $ echo foo1 > foo
 $ dvc status
 
-  bar.dvc
-          deps
-                  changed:  foo
-  foo.dvc
-          outs
-                  changed:  foo
+bar.dvc
+        deps
+                changed:  foo
+foo.dvc
+        outs
+                changed:  foo
 ```
 
 - Now, let's lock the `bar` stage:
