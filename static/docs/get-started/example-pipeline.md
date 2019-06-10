@@ -90,7 +90,7 @@ in general and a user does not interact with these files directly. Check
 more.
 
 When we run `dvc add Posts.xml.zip` the following happens. DVC creates an
-_orphaned_ version of the [stage file](/doc/user-guide/dvc-file-format):
+_orphaned_ version of the [DVC-file](/doc/user-guide/dvc-file-format):
 
 ```yaml
 md5: 4dbe7a4e5a0d41b652f3d6286c4ae788
@@ -118,13 +118,13 @@ $ git add data/Posts.xml.zip.dvc data/.gitignore
 $ git commit -m "add dataset"
 ```
 
-## Define steps
+## Define staged
 
-Each step is described by providing a command to run, input data it takes and a
+Each stage is described by providing a command to run, input data it takes and a
 list of output files. DVC is not Python or any other language specific and can
 wrap any command runnable via CLI.
 
-- The first actual step, extract XML from the archive. Note that we don't need
+- The first actual stage, extract XML from the archive. Note that we don't need
   to run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache,
   takes the file under DVC control) automatically:
 
@@ -140,7 +140,7 @@ $ dvc run -d data/Posts.xml.zip \
 ### Expand to learn more about DVC internals
 
 Similar to `dvc add`, `dvc run` creates a
-[stage file](/doc/user-guide/dvc-file-format):
+[DVC-file](/doc/user-guide/dvc-file-format) (or "stage file"):
 
 ```yaml
 cmd: ' unzip data/Posts.xml.zip -d data'
@@ -176,7 +176,7 @@ data files.
 
 </details>
 
-- Next step, let's convert XML into TSV to make feature extraction easier:
+- Next stage: let's convert XML into TSV to make feature extraction easier:
 
 ```dvc
 $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml \
@@ -307,7 +307,7 @@ $ git commit -am "create pipeline"
 
 ## Reproduce
 
-All steps could be automatically and efficiently reproduced even if some source
+All stages could be automatically and efficiently reproduced even if some source
 files have been modified. For example:
 
 - Let's improve the feature extraction algorithm by making some modification to
@@ -325,7 +325,7 @@ bag_of_words = CountVectorizer(stop_words='english',
                                ngram_range=(1, 2))
 ```
 
-- Reproduce all required steps to get our target metrics file:
+- Reproduce all required stages to get our target metrics file:
 
 ```dvc
 $ dvc repro evaluate.dvc
@@ -350,7 +350,7 @@ existing ML development pipeline/processes without any significant effort to
 re-implement your code/application.
 
 The key step to notice is that DVC automatically derives the dependencies
-between the experiment steps and builds the dependency graph (DAG)
+between the experiment stages and builds the dependency graph (DAG)
 transparently.
 
 Not only can DVC streamline your work into a single, reproducible environment,

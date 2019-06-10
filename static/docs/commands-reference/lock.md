@@ -1,6 +1,7 @@
 # lock
 
-Lock a DVC-file (stage). Use `dvc unlock` to unlock the file.
+Lock a [DVC-file](https://dvc.org/doc/user-guide/dvc-file-format)
+([stage](/doc/commands-reference/run)). Use `dvc unlock` to unlock the file.
 
 If DVC-file is locked the stage is considered _done_ and `dvc repro` will not
 run commands to rebuild outputs even if some dependencies have changed and even
@@ -16,7 +17,7 @@ positional arguments:
 ## Description
 
 Lock is useful to avoid syncing data from the top of a pipeline and keep
-iterating on the last stages only. In this sense `lock` makes a stage file to
+iterating on the last stages only. In this sense `lock` causes any DVC-file to
 behave as a `.dvc` file that would be created by `dvc add` ran on outputs.
 
 ## Options
@@ -42,7 +43,8 @@ $ dvc run -d foo -o bar cp foo bar
           cp foo bar
 ```
 
-- Then, let's change the file `foo` the stage `bar.dvc` depends on:
+- Then, let's change the file `foo` that the stage described in `bar.dvc`
+  depends on:
 
 ```dvc
 $ rm foo

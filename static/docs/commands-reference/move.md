@@ -96,9 +96,9 @@ $ tree
 ```
 
 Here we use `dvc add` to put a file under DVC control. Then we use `dvc move` to
-change its location. Note that the data stage file is also moved. If target path
-already exists and is a directory, data file is moved with unchanged name into
-this folder.
+change its location. Note that the `data.csv.dvc` DVC-file is also moved. If
+target path already exists and is a directory, data file is moved with unchanged
+name into this folder.
 
 ```dvc
 $ tree

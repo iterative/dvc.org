@@ -82,9 +82,9 @@ backward through the pipeline to find data files to push.
   save different experiments or project checkpoints.
 
 - `-d`, `--with-deps` - determines the files to upload by searching backwards in
-  the pipeline from the named stage(s). The only files which will be considered
-  are associated with the named stage, and the stages which execute earlier in
-  the pipeline.
+  the pipeline from the named `targets` (required along with this option). The
+  only files which will be pushed are associated with the named DVC-files, and
+  the earlier stages in the pipeline.
 
 - `-R`, `--recursive` - the `targets` value is expected to be a directory path.
   With this option, `dvc pull` determines the files to upload by searching the

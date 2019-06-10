@@ -8,7 +8,7 @@ The file itself is in a simple YAML format.
 
 ## Vim
 
-In order to recognize DVC stage files as YAML in Vim, you should add:
+In order to recognize DVC-files as YAML in Vim, you should add:
 
 ```vim
 " DVC

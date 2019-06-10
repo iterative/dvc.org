@@ -1,6 +1,7 @@
 # unlock
 
-Unlock DVC-file (stage). See `dvc lock` for more information.
+Unlock [DVC-file](https://dvc.org/doc/user-guide/dvc-file-format)
+([stage](/doc/commands-reference/run)). See `dvc lock` for more information.
 
 ```usage
 usage: dvc unlock [-h] [-q] [-v] targets [targets ...]
@@ -32,7 +33,8 @@ $ dvc run -d foo -o bar cp foo bar
           cp foo bar
 ```
 
-- Then, let's change the file `foo` the stage `bar.dvc` depends on:
+- Then, let's change the file `foo` that the stage described in `bar.dvc`
+  depends on:
 
 ```dvc
 $ rm foo

@@ -1,8 +1,8 @@
 # show
 
 Show stages in a pipeline that lead to the specified stage. By default it lists
-stage files (usually `.dvc` files). There are `-c` or `-o` options to list or
-visualize a pipeline commands or data files flow instead.
+DVC-files (`.dvc` files). There are `-c` or `-o` options to list or visualize a
+pipeline commands or data files flow instead.
 
 ## Synopsis
 

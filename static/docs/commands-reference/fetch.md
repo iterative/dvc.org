@@ -7,13 +7,12 @@ cache.
 ## Synopsis
 
 ```usage
-usage: dvc fetch [-h] [-q | -v] [-j JOBS]
-                 [--show-checksums] [-r REMOTE]
-                 [-a] [-T] [-d] [-R]
+usage: dvc fetch [-h] [-q | -v] [-j JOBS] [--show-checksums]
+                 [-r REMOTE] [-a] [-T] [-d] [-R]
                  [targets [targets ...]]
 
 positional arguments:
-  targets               DVC-files (stages).
+  targets               DVC-files.
 ```
 
 ## Description
@@ -22,8 +21,8 @@ The `dvc fetch` command is a means to download files from remote storage into
 the local cache, but not directly into the workspace. This makes the data files
 available for linking (or copying) into the workspace. (Refer to
 [dvc config cache.type](/doc/commands-reference/config#cache).) Along with
-`dvc checkout`, it's performed automatically by `dvc pull` when the target stage
-files are not already in the local cache:
+`dvc checkout`, it's performed automatically by `dvc pull` when the target
+DVC-files are not already in the local cache:
 
 ```
 Controlled files             Commands
@@ -46,7 +45,7 @@ Fetching could be useful when first checking out an existing DVC project, since
 files under DVC control could already exist in remote storage, but won't be in
 your local cache. (Refer to `dvc remote` for more information on DVC remotes.)
 These necessary data or model files are listed as dependencies or outputs in a
-DVC-file (target stage) so they are required to
+DVC-file (target [stage](/doc/commands-reference/run)) so they are required to
 [reproduce](/doc/get-started/reproduce) the pipeline. (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
@@ -78,10 +77,10 @@ specified in DVC-files currently in the workspace are considered by `dvc fetch`
   using the `dvc remote` command.
 
 - `-d`, `--with-deps` - fetch cache by tracking dependencies to the named target
-  stages. This option only has effect when one or more `targets` are specified.
-  By traversing the dependencies, DVC searches backward through the pipeline
-  from the named target(s). This means DVC will not fetch files referenced later
-  in the pipeline than the named target(s).
+  DVC-file(s). This option only has effect when one or more `targets` are
+  specified. By traversing each stage dependencies, DVC searches backward
+  through the pipeline from the named target(s). This means DVC will not fetch
+  files referenced later in the pipeline than the named target(s).
 
 - `-R`, `--recursive` - this option tells DVC that `targets` are directories
   (not DVC-files), and to traverse them recursively. All DVC-files found will be

@@ -16,10 +16,10 @@ positional arguments:
 
 ## Description
 
-This command finds a corresponding DVC-file for the metric file path provided
-(i.e. a DVC stage file that specifies one of its a metric with the path
-provided) and updates the meta-information that is used to manage and show the
-metric.
+This command finds a corresponding DVC-file for the metric file `path` provided
+(i.e. a DVC-file that specifies one of its outputs is the file path in question
+– see `dvc metrics add` or `dvc run` with `-m` and `-M` options) and updates the
+meta-information that is used to manage and show the metric.
 
 It the path provided is not part of the pipeline, the following error will be
 raised:

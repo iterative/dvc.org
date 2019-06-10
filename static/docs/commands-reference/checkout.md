@@ -37,7 +37,8 @@ The execution of `dvc checkout` does:
 - Scan the `outs` entries in DVC-files to compare with the currently checked out
   data files. The scanned DVC-files is limited by the listed targets (if any) on
   the command line. And if the `--with-deps` option is specified, it scans
-  backward in the pipeline from the named targets.
+  backward in the [pipeline](https://dvc.org/doc/get-started/pipeline) from the
+  named targets.
 - For any data files where the checksum does not match with the DVC-file entry,
   the data file is restored from the cache. The link strategy used (`reflink`,
   `hardlink`, `symlink`, or `copy`) depends on the OS and the configured value
@@ -70,14 +71,14 @@ checked out without error will be restored.
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases the pipeline must be rerun using the `dvc repro`
 command. In other cases the cache can be pulled from a remote cache using the
-`dvc pull` command.
+`dvc pull` command. See also `dvc pipeline`
 
 ## Options
 
-- `-d`, `--with-deps` - determines the files to download by searching backwards
-  in the pipeline from the named stage(s). The only files which will be updated
-  are associated with the named stage, and the stages which execute earlier in
-  the pipeline.
+- `-d`, `--with-deps` - determines the files to update by searching backwards in
+  the pipeline from the named `targets` (required along with this option). The
+  only files which will be checked out are associated with the target DVC-files,
+  and the earlier stages in the pipeline.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC-files with SCM commands like `git checkout` can result in
@@ -198,7 +199,7 @@ $ md5 model.pkl
 MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
-What's happened is that `git checkout` changed `featurize.dvc`, `train.dvc`, and
+What happened is that `git checkout` changed `featurize.dvc`, `train.dvc`, and
 other DVC-files. But it did nothing with the `model.pkl` and `matrix.pkl` files.
 Git does not manage those files. Instead DVC manages those files, and we must
 therefore do this:
@@ -210,11 +211,11 @@ $ md5 model.pkl
 MD5 (model.pkl) = a66489653d1b6a8ba989799367b32c43
 ```
 
-What's happened is that DVC went through the sole existing DVC stage file and
-adjusted the current set of files to match the `outs` of that stage. `dvc fetch`
-command runs once to download missing data from the remote storage to the local
-cache. Alternatively, we could have just run `dvc pull` in this case to
-automatically do `dvc fetch` + `dvc checkout`.
+What happened is that DVC went through the sole existing DVC-file and adjusted
+the current set of files to match the `outs` of that stage. `dvc fetch` command
+runs once to download missing data from the remote storage to the local cache.
+Alternatively, we could have just run `dvc pull` in this case to automatically
+do `dvc fetch` + `dvc checkout`.
 
 ## Automating `dvc checkout`
 

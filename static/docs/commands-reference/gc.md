@@ -71,7 +71,7 @@ $ du -sh .dvc/cache/
 ```
 
 When you run `dvc gc` it removes all objects from cache that are not referenced
-in the current workspace (by collecting hash sums from the stage DVC-files):
+in the current workspace (by collecting hash sums from the DVC-files):
 
 ```dvc
 $ dvc gc

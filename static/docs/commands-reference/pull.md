@@ -75,9 +75,9 @@ reflinks or hardlinks to put it in the workspace without copying. See
   save different experiments or project checkpoints.
 
 - `-d`, `--with-deps` - determines the files to download by searching backwards
-  in the pipeline from the named stage(s). The only files which will be
-  considered are associated with the named stage, and the stages which execute
-  earlier in the pipeline.
+  in the pipeline from the named named `targets` (required along with this
+  option). The only files which will be pulled are associated with the target
+  DVC-files, and the earlier stages in the pipeline.
 
 - `-f`, `--force` - does not prompt when removing working directory files, which
   occurs during the process of updating the workspace. This option surfaces
