@@ -75,10 +75,12 @@ command. In other cases the cache can be pulled from a remote cache using the
 
 ## Options
 
-- `-d`, `--with-deps` - determines the files to update by searching backwards in
-  the pipeline from the named `targets` (required along with this option). The
-  only files which will be checked out are associated with the target DVC-files,
-  and the earlier stages in the pipeline.
+- `-d`, `--with-deps` - determine workspace files to update by tracking
+  dependencies to the named target DVC-file(s). This option only has effect when
+  one or more `targets` are specified. By traversing each stage dependencies,
+  DVC searches backward through the pipeline from the named target(s). This
+  means DVC will not checkout files referenced later in the pipeline than the
+  named target(s).
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC-files with SCM commands like `git checkout` can result in

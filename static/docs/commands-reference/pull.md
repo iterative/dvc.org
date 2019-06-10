@@ -74,10 +74,11 @@ reflinks or hardlinks to put it in the workspace without copying. See
 - `-T`, `--all-tags` - the same as `-a`, `--all-branches` but tags are used to
   save different experiments or project checkpoints.
 
-- `-d`, `--with-deps` - determines the files to download by searching backwards
-  in the pipeline from the named named `targets` (required along with this
-  option). The only files which will be pulled are associated with the target
-  DVC-files, and the earlier stages in the pipeline.
+- `-d`, `--with-deps` - determines files to download by tracking dependencies to
+  the named target DVC-file(s). This option only has effect when one or more
+  `targets` are specified. By traversing each stage dependencies, DVC searches
+  backward through the pipeline from the named target(s). This means DVC will
+  not pull files referenced later in the pipeline than the named target(s).
 
 - `-f`, `--force` - does not prompt when removing working directory files, which
   occurs during the process of updating the workspace. This option surfaces
