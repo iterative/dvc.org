@@ -6,8 +6,8 @@ cache and local files, or between the local cache and remote cache.
 ## Synopsis
 
 ```usage
-usage: dvc status [-h] [-v] [-j JOBS] [--show-checksums] [-q] [-c] [-r REMOTE]
-                  [-a] [-T] [-d]
+usage: dvc status [-h] [-v] [-j JOBS] [--show-checksums]
+                  [-q] [-c] [-r REMOTE] [-a] [-T] [-d]
                   [targets [targets ...]]
 
 positional arguments:
@@ -38,8 +38,8 @@ stages that affect the target stage.
 
 In the `local` mode, changes are detected through the checksum of every file
 listed in every stage file in the pipeline against the corresponding file in the
-file system. The output indicates the detected changes, if any. If no
-differences are detected, `dvc status` prints this message:
+file system, there are two modes . The output indicates the detected changes, if
+any. If no differences are detected, `dvc status` prints this message:
 
 ```dvc
     $ dvc status
