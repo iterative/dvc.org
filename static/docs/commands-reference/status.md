@@ -38,8 +38,11 @@ stages that affect the target stage.
 
 In the `local` mode, changes are detected through the checksum of every file
 listed in every stage file in the pipeline against the corresponding file in the
-file system, there are two modes . The output indicates the detected changes, if
-any. If no differences are detected, `dvc status` prints this message:
+file system, using two modes `changed checksum` when actual checksum of data
+dosen't match specified in dvc files and `always changed` a special dvc file
+with no dependencies, always considered changed and will be reproduced with
+`dvc repro`. The output indicates the detected changes, if any. If no
+differences are detected, `dvc status` prints this message:
 
 ```dvc
     $ dvc status
