@@ -2,11 +2,18 @@
 
 Returns relative path to project's directory.
 
-Can be used to build a path to a dependency, command, or output.
+## Synopsis
 
 ```usage
 usage: dvc root [-h] [-q] [-v]
 ```
+
+## Description
+
+While in project's sub-directory, sometimes developers may want to refer some
+file belonging to another directory. This command returns relative path to the
+DVC project's root directory from the current working directory. So, this
+command can be used to build a path to a dependency file, command, or output.  
 
 ## Options
 
