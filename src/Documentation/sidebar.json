@@ -48,6 +48,7 @@
     "name": "User Guide",
     "folder": "/static/docs/user-guide",
     "files": [
+      "glossary.md",
       "dvc-files-and-directories.md",
       "dvc-file-format.md",
       "large-dataset-optimization.md",
@@ -64,6 +65,7 @@
       "running-dvc-on-windows.md"
     ],
     "labels": {
+      "glossary.md": "Glossary",
       "dvc-files-and-directories.md": "Files and Directories",
       "dvc-file-format.md": "File Format (.dvc)",
       "large-dataset-optimization.md": "Large Dataset Optimization",
