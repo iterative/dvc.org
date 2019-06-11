@@ -1,8 +1,8 @@
 # pull
 
 Downloads missing files and directories from
-[remote storage](/doc/commands-reference/remote) to the local cache based on DVC
-files in the workspace, then links the downloaded files into the workspace.
+[remote storage](/doc/commands-reference/remote) to the local cache based on
+DVC-files in the workspace, then links the downloaded files into the workspace.
 
 ## Synopsis
 
@@ -39,17 +39,18 @@ on how to configure a remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote REMOTE`, it downloads
 only the files (or directories) missing from the local repository to the project
-directory. It will not download files associated with earlier versions or
-branches of the project directory, nor will it download files which have not
-changed.
+by searching all [DVC-files](/doc/user-guide/dvc-file-format) in the current
+version. It will not download files associated with earlier versions or branches
+of the project directory, nor will it download files which have not changed.
 
 The command `dvc status -c` can list files that are missing in the local cache
 and are referenced in the current workspace. It can be used to see what files
 `dvc pull` would download.
 
 If one or more `targets` are specified, DVC only considers the files associated
-with those stages. Using the `--with-deps` option DVC tracks dependencies
-backward through the pipeline to find data files to pull.
+with those DVC-files. Using the `--with-deps` option DVC tracks dependencies
+backward through the [pipeline](https://dvc.org/doc/get-started/pipeline) to
+find data files to pull.
 
 After data file is in cache DVC, `dvc pull` uses OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace without copying. See
@@ -76,7 +77,7 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
   the named target DVC-file(s). This option only has effect when one or more
-  `targets` are specified. By traversing each stage dependencies, DVC searches
+  `targets` are specified. By traversing all stage dependencies, DVC searches
   backward through the pipeline from the named target(s). This means DVC will
   not pull files referenced later in the pipeline than the named target(s).
 
@@ -147,7 +148,8 @@ default remote. The only files considered in this case are what is listed in the
 ## Examples: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-pipeline has been setup with these stages:
+[pipeline](https://dvc.org/doc/get-started/pipeline) has been setup with these
+[stages](/doc/commands-reference/run):
 
 ```dvc
 $ dvc pipeline show
@@ -161,8 +163,8 @@ model.p.dvc
 Dvcfile
 ```
 
-The remote storage has been modified such that the data files in some of these
-stages should be updated into the local cache.
+Imagine the remote storage has been modified such that the data files in some of
+these stages should be updated into the local cache.
 
 ```dvc
 $ dvc status --cloud
@@ -195,13 +197,13 @@ Everything is up to date.
 ```
 
 With the first `dvc pull` we specified a stage in the middle of the pipeline
-while using `--with-deps`. This started with the named stage and searched
-backwards through the pipeline for data files to download. Because the stage
-named `model.p.dvc` occurs later in the pipeline its data was not updated.
+(`matrix-train.p.dvc`) while using `--with-deps`. DVC started with that DVC-file
+and searched backwards through the pipeline for data files to download. Because
+the `model.p.dvc` stage occurs later in the pipeline, its data was not pulled.
 
-Later we ran `dvc pull` specifying the stage `model.p.dvc`, and its data was
-downloaded. And finally we ran `dvc pull` with no options to show that all data
-was updated.
+Then we ran `dvc pull` specifying the last stage, `model.p.dvc`, and its data
+was downloaded. Finally, we ran `dvc pull` with no options to make sure that all
+data was already pulled with the previous commands.
 
 ## Examples: Show checksums
 

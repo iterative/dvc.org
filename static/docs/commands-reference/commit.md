@@ -17,13 +17,13 @@ positional arguments:
 ## Description
 
 The `dvc commit` command is useful for several scenarios where a dataset is
-being changed, a [stage](/doc/commands-reference/run) or
+being changed: a [stage](/doc/commands-reference/run) or
 [pipeline](https://dvc.org/doc/get-started/pipeline) is in development, when one
 wishes to run commands outside the control of DVC, or to force DVC-files updates
-to save some time rerunning the pipeline or a stage:
+to save time rerunning the stage or pipeline.
 
 - Code or data for a stage is under active development, with rapid iteration of
-  code or configuration or data. Run DVC commands (`dvc run`, `dvc repro`, and
+  code, configuration, or data. Run DVC commands (`dvc run`, `dvc repro`, and
   even `dvc add`) using the `--no-commit` option to avoid caching unnecessary
   data over and over again. Use `dvc commit` when the files are finalized.
 - One can always execute the code used in a stage without using DVC (keep in
@@ -66,7 +66,7 @@ It handles that last step of adding the file to the DVC cache.
 
 - `-d`, `--with-deps` - determine files to commit by tracking dependencies to
   the named target DVC-file(s). This option only has effect when one or more
-  `targets` are specified. By traversing each stage dependencies, DVC searches
+  `targets` are specified. By traversing all stage dependencies, DVC searches
   backward through the pipeline from the named target(s). This means DVC will
   not commit files referenced later in the pipeline than the named target(s).
 
@@ -81,16 +81,15 @@ It handles that last step of adding the file to the DVC cache.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
-  stages are up to date or if all stages are successfully rerun, otherwise exit
-  with 1.
+- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
+  no problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information from executing the
   `dvc add` command.
 
 ## Examples
 
-To explore `dvc commit` let's consider a simple workspace with several stages,
+To explore `dvc commit` let's consider a simple pipeline with several stages:
 the example workspace used in the [Getting Started](/doc/get-started) tutorial.
 
 <details>
@@ -134,10 +133,10 @@ This data will be retrieved from a preconfigured remote cache.
 Sometimes we want to iterate through multiple changes to configuration, or to
 code, sometimes to data, trying multiple options, and improving the output of a
 stage. To avoid filling the DVC cache with undesired intermediate results, we
-can rerun the pipeline using the `dvc repro --no-commit` or a stage using the
-`dvc run --no-commit` option to prevent data from being pushed to cache. When
-development of the stage is finished `dvc commit` is used to store data files in
-the DVC cache.
+can rerun the whole pipeline using `dvc repro --no-commit`, or a single stage
+with `dvc run --no-commit`. This prevents data from being pushed to cache. When
+development of the stage is finished, `dvc commit` can be used to store data
+files in the DVC cache.
 
 In the `featurize.dvc` stage, `src/featurize.py` is executed. A useful change to
 make is adjusting a parameter to `CountVectorizer` in that script. Namely,

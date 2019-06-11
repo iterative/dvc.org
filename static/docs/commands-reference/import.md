@@ -167,15 +167,19 @@ Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data/data.xml'
 Adding 'data/data.xml' to 'data/.gitignore'.
 Saving 'data/data.xml' to cache '.dvc/cache'.
 Saving information to 'data.xml.dvc'.
+```
 
 To track the changes with git run:
 
-    git add data/.gitignore data.xml.dvc
+```dvc
+$ git add data/.gitignore data.xml.dvc
 ```
 
-If you wish, it's possible to set up the other stages from the _Getting Started_
-example. Since we do not need those stages for this example, we'll skip that.
-Instead we can look at the resulting DVC-file `data.xml.dvc`:
+> Note that it's possible to set up the other
+> [stages](/doc/commands-reference/run) from the _Getting Started_ example, but
+> since we don't need them for this example, we'll skip it.
+
+Let's take a look at the resulting DVC-file `data.xml.dvc`:
 
 ```yaml
 deps:
@@ -281,7 +285,7 @@ example:
 
 <details>
 
-### Click and expand to prepate the code to run
+### Click and expand to prepare the code to run
 
 Download `https://dvc.org/s3/get-started/code.zip` and unzip the code if you
 wish to execute the data preparation step below. On Windows use browser, on all
@@ -302,8 +306,8 @@ $ dvc run -f prepare.dvc \
           python src/prepare.py data/data.xml
 ```
 
-Having this stage means that later when we run `dvc repro` a pipeline will be
-executed.
+Having setup this "prepare" stage means that later when we run `dvc repro` a
+pipeline will be executed.
 
 The workspace says it is fine:
 

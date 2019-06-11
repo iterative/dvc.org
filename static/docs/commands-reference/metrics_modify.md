@@ -58,15 +58,15 @@ Error: failed to modify metrics - unable
 
 ## Examples
 
-Let's first imagine we have stage with a generic raw metric file initially. The
-stage below is dummy and is made completely for the sake or this examples
-section:
+Let's first imagine we have a [stage](/doc/commands-reference/run) with a
+generic raw metric file initially. The stage file below is a dummy written for
+the sake or this examples section:
 
 ```dvc
-    $ dvc run -M metrics.csv "echo auc, 0.9567 > metrics.csv"
+$ dvc run -M metrics.csv "echo auc, 0.9567 > metrics.csv"
 ```
 
-The stage `metrics.csv.dvc` file should look like this:
+Stage file `metrics.csv.dvc` file should look like this:
 
 ```yaml
 cmd: echo auc, 0.9567 > metrics.csv

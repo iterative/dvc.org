@@ -21,8 +21,8 @@ question – see `dvc metrics add` or `dvc run` with `-m` and `-M` options) and
 resets the metric flag for the provided output.
 
 It does not remove or delete the file provided. It only changes a flag in the
-corresponding `.dvc` file. It also keeps the file as an output of the
-corresponding stage.
+corresponding [DVC-file](/doc/user-guide/dvc-file-format). It also keeps the
+file as an output of the [stage](/doc/commands-reference/run) in question.
 
 ## Examples
 

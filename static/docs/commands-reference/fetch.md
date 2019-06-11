@@ -46,7 +46,8 @@ files under DVC control could already exist in remote storage, but won't be in
 your local cache. (Refer to `dvc remote` for more information on DVC remotes.)
 These necessary data or model files are listed as dependencies or outputs in a
 DVC-file (target [stage](/doc/commands-reference/run)) so they are required to
-[reproduce](/doc/get-started/reproduce) the pipeline. (See
+[reproduce](/doc/get-started/reproduce) the
+[pipeline](https://dvc.org/doc/get-started/pipeline). (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
 
@@ -78,7 +79,7 @@ specified in DVC-files currently in the workspace are considered by `dvc fetch`
 
 - `-d`, `--with-deps` - determine files to download by tracking dependencies to
   the named target DVC-file(s). This option only has effect when one or more
-  `targets` are specified. By traversing each stage dependencies, DVC searches
+  `targets` are specified. By traversing all stage dependencies, DVC searches
   backward through the pipeline from the named target(s). This means DVC will
   not fetch files referenced later in the pipeline than the named target(s).
 
@@ -111,9 +112,9 @@ specified in DVC-files currently in the workspace are considered by `dvc fetch`
 
 ## Examples
 
-To explore `dvc fetch` let's consider a simple workspace with several stages and
-a few Git tags. Then we can see what happens with `git` and `dvc fetch` as we
-shift from tag to tag.
+To explore `dvc fetch` let's consider a simple pipeline with several stages and
+a few Git tags. Then we can see what happens with `fetch` as we shift from tag
+to tag with `git`.
 
 <details>
 
@@ -219,7 +220,7 @@ Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/...
 > follow this example if you tried the previous one (**Default behavior**).
 
 `dvc fetch` only downloads the data files of a specific stage when the
-corresponding DVC-file (target stage) is specified:
+corresponding DVC-file (command target) is specified:
 
 ```dvc
 $ dvc fetch prepare.dvc
@@ -248,7 +249,7 @@ checksums shown above.
 ## Examples: With dependencies
 
 After following the previous example (**Specific stages**), only the files
-associated with the `prepare.dvc` stage have been fetched. Several
+associated with the `prepare.dvc` stage file have been fetched. Several
 dependencies/outputs for the full pipeline are still missing from local cache:
 
 ```dvc
@@ -293,14 +294,14 @@ $ tree .dvc/cache
     └── a9c512fda11293cfee7617b66648dc
 ```
 
-Fetching using `--with-deps` starts with the named stage and searches backwards
-through the pipeline for data files to download into our local cache. All the
-data for the second and third stages ("featurize" and "train") has now been
-downloaded to cache. We could now use `dvc checkout` to get the data files
-needed to reproduce the pipeline up to the third stage (with
-`dvc repro train.dvc`) workspace.
+Fetching using `--with-deps` starts with the target DVC-file (stage) and
+searches backwards through the pipeline for data files to download into the
+local cache. All the data for the second and third stages ("featurize" and
+"train") has now been downloaded to cache. We could now use `dvc checkout` to
+get the data files needed to reproduce the pipeline up to the third stage into
+the workspace (with `dvc repro train.dvc`).
 
-> Note that in this sample project the last stage `evaluate.dvc` doesn't add any
-> more data files than those form previous stages so at this point all the
-> pipeline's files are in local cache and `dvc status -c` would output "Pipeline
-> is up to date. Nothing to reproduce."
+> Note that in this sample project, the last stage file `evaluate.dvc` doesn't
+> add any more data files than those form previous stages so at this point all
+> the pipeline's files are in local cache and `dvc status -c` would output
+> "Pipeline is up to date. Nothing to reproduce."

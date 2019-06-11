@@ -1,10 +1,10 @@
 # DVC-File Format
 
-When you add a file (with `dvc add`) or a stage (with `dvc run`) to the
-[pipeline](https://dvc.org/doc/get-started/pipeline), DVC creates a special
-`.dvc` file that contains all the needed information to track your data. The
-file itself is in a simple YAML format and could be easily written or altered
-manually.
+When you add a file (with `dvc add`) or a command (with `dvc run`) to the
+[pipeline](https://dvc.org/doc/get-started/pipeline), DVC creates a special text
+file with the `.dvc` extension (e.g. `process.dvc`), a.k.a. a **stage file**
+that contains all the needed information to track your data. The file itself
+contains a simple YAML format that could be easily written or altered manually.
 
 Check the [Syntax Highlighting](/doc/user-guide/plugins) to enable the
 highlighting for your editor.

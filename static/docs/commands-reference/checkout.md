@@ -35,8 +35,8 @@ simply by running `dvc install`, that will automate running `dvc checkout` after
 The execution of `dvc checkout` does:
 
 - Scan the `outs` entries in DVC-files to compare with the currently checked out
-  data files. The scanned DVC-files is limited by the listed targets (if any) on
-  the command line. And if the `--with-deps` option is specified, it scans
+  data files. The scanned DVC-files is limited by the listed `targets` (if any)
+  on the command line. And if the `--with-deps` option is specified, it scans
   backward in the [pipeline](https://dvc.org/doc/get-started/pipeline) from the
   named targets.
 - For any data files where the checksum does not match with the DVC-file entry,
@@ -77,10 +77,10 @@ command. In other cases the cache can be pulled from a remote cache using the
 
 - `-d`, `--with-deps` - determine workspace files to update by tracking
   dependencies to the named target DVC-file(s). This option only has effect when
-  one or more `targets` are specified. By traversing each stage dependencies,
-  DVC searches backward through the pipeline from the named target(s). This
-  means DVC will not checkout files referenced later in the pipeline than the
-  named target(s).
+  one or more `targets` are specified. By traversing all stage dependencies, DVC
+  searches backward through the pipeline from the named target(s). This means
+  DVC will not checkout files referenced later in the pipeline than the named
+  target(s).
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC-files with SCM commands like `git checkout` can result in
@@ -100,9 +100,10 @@ command. In other cases the cache can be pulled from a remote cache using the
 
 ## Examples
 
-To explore `dvc checkout` let's consider a simple workspace with several stages,
-and a few Git tags. Then with `git checkout` and `dvc checkout` we can see what
-happens as we shift from tag to tag.
+To explore `dvc checkout` let's consider a simple workspace with several
+[stages](/doc/commands-reference/run), and a few Git tags. Then with
+`git checkout` and `dvc checkout` we can see what happens as we shift from tag
+to tag.
 
 <details>
 
@@ -186,7 +187,7 @@ Note: checking out 'baseline'.
 HEAD is now at 40cc182...
 ```
 
-Let's check the `model.pkl` and `train.dvc` files again:
+Let's check the `model.pkl` entry in `train.dvc` again:
 
 ```yaml
 outs:
@@ -194,17 +195,16 @@ outs:
   path: model.pkl
 ```
 
-but if you check the `model.pkl` the file is still the same:
+But if you check `model.pkl`, the file hash is still the same:
 
 ```dvc
 $ md5 model.pkl
 MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
-What happened is that `git checkout` changed `featurize.dvc`, `train.dvc`, and
-other DVC-files. But it did nothing with the `model.pkl` and `matrix.pkl` files.
-Git does not manage those files. Instead DVC manages those files, and we must
-therefore do this:
+This is because `git checkout` changed `featurize.dvc`, `train.dvc`, and other
+DVC-files. But it did nothing with the `model.pkl` and `matrix.pkl` files. Git
+does not manage those files, DVC does, and we must therefore do this:
 
 ```dvc
 $ dvc fetch

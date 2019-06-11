@@ -28,9 +28,10 @@ so that the data files will match the current DVC-files.
 The installed Git hook automates running `dvc checkout`.
 
 **Commit** When committing a change to the SCM repository, that change possibly
-requires rerunning the pipeline to reproduce the workspace results, which is a
-reminder to run `dvc repro`. Or there might be files not yet in the cache, which
-is a reminder to run `dvc commit`.
+requires rerunning the [pipeline](https://dvc.org/doc/get-started/pipeline) to
+reproduce the workspace results, which is a reminder to run `dvc repro`. Or
+there might be files not yet in the cache, which is a reminder to run
+`dvc commit`.
 
 The installed Git hook automates reminding the user to run either `dvc repro` or
 `dvc commit`.
@@ -53,7 +54,7 @@ The installed Git hook automates reminding the user to run either `dvc repro` or
 
 ## Examples
 
-To explore `dvc install` let's consider a simple workspace with several stages,
+To explore `dvc install` let's consider a simple pipeline with several stages:
 the example workspace used in the [Getting Started](/doc/get-started) tutorial.
 
 <details>
