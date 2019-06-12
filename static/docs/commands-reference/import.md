@@ -73,12 +73,12 @@ $ dvc run -d https://example.com/path/to/data.csv \
           wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a DVC file with an external dependency, and they perform a
+Both methods generate a DVC-file with an external dependency, and they perform a
 roughly equivalent result. The `dvc import` command saves the user from using
 the command to copy files from each of the remote storage schemes, and from
 having to install CLI tools for each service.
 
-When DVC inspects a DVC file, one step is inspecting the dependencies to see if
+When DVC inspects a DVC-file, one step is inspecting the dependencies to see if
 any have changed. A changed dependency will appear in the `dvc status` report,
 indicating the need to re-run the corresponding part of the pipeline. When DVC
 inspects an external dependency, it uses a method appropriate to that dependency
@@ -89,7 +89,7 @@ to test its current status.
 - `--resume` - resume previously started download. This is useful if the
   connection to the remote resource is unstable.
 
-- `-f`, `--file` - specify name of the DVC file it generates. It should be
+- `-f`, `--file` - specify name of the DVC-file it generates. It should be
   either `Dvcfile` or have a `.dvc` file extension (e.g. `data.dvc`) in order
   for `dvc` to be able to find it later.
 
@@ -167,15 +167,19 @@ Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data/data.xml'
 Adding 'data/data.xml' to 'data/.gitignore'.
 Saving 'data/data.xml' to cache '.dvc/cache'.
 Saving information to 'data.xml.dvc'.
+```
 
 To track the changes with git run:
 
-    git add data/.gitignore data.xml.dvc
+```dvc
+$ git add data/.gitignore data.xml.dvc
 ```
 
-If you wish, it's possible to set up the other stages from the _Getting Started_
-example. Since we do not need those stages for this example, we'll skip that.
-Instead we can look at the resulting DVC file `data.xml.dvc`:
+> Note that it's possible to set up the other
+> [stages](/doc/commands-reference/run) from the _Getting Started_ example, but
+> since we don't need them for this example, we'll skip it.
+
+Let's take a look at the resulting DVC-file `data.xml.dvc`:
 
 ```yaml
 deps:
@@ -191,7 +195,7 @@ outs:
 wdir: .
 ```
 
-The `etag` field in the DVC file contains the ETag recorded from the HTTP
+The `etag` field in the DVC-file contains the ETag recorded from the HTTP
 request. If the remote file changes, the ETag changes, letting DVC know when the
 file has changed.
 
@@ -255,7 +259,7 @@ To track the changes with git run:
 ```
 
 At this point we have the workspace set up in a similar fashion. The difference
-is that DVC file references now references the editable data file in the data
+is that DVC-file references now references the editable data file in the data
 store directory we just set up. We did this to make it easy to edit the data
 file:
 
@@ -273,7 +277,7 @@ outs:
 wdir: .
 ```
 
-The DVC file is nearly the same as before. The `path` has the URL for the data
+The DVC-file is nearly the same as before. The `path` has the URL for the data
 store, and instead of an `etag` we have an `md5` checksum.
 
 Let's also set up one of the processing stages from the _Getting Started_
@@ -281,7 +285,7 @@ example:
 
 <details>
 
-### Click and expand to prepate the code to run
+### Click and expand to prepare the code to run
 
 Download `https://dvc.org/s3/get-started/code.zip` and unzip the code if you
 wish to execute the data preparation step below. On Windows use browser, on all
@@ -302,8 +306,8 @@ $ dvc run -f prepare.dvc \
           python src/prepare.py data/data.xml
 ```
 
-Having this stage means that later when we run `dvc repro` a pipeline will be
-executed.
+Having setup this "prepare" stage means that later when we run `dvc repro` a
+pipeline will be executed.
 
 The workspace says it is fine:
 

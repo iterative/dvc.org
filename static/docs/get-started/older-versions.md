@@ -35,7 +35,7 @@ path: model.pkl
 `a664...2c43` is the "address" of the file in the local or remote DVC storage.
 
 It means that if we want to get to the previous version, we need to restore the
-DVC file first to with the `git checkout` command. Only after that DVC can
+DVC-file first to with the `git checkout` command. Only after that DVC can
 restore the model file using the new "address" from the `.dvc` file.
 
 </details>

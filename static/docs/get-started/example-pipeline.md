@@ -90,7 +90,7 @@ in general and a user does not interact with these files directly. Check
 more.
 
 When we run `dvc add Posts.xml.zip` the following happens. DVC creates an
-_orphaned_ version of the [stage file](/doc/user-guide/dvc-file-format):
+_orphaned_ version of the [DVC-file](/doc/user-guide/dvc-file-format):
 
 ```yaml
 md5: 4dbe7a4e5a0d41b652f3d6286c4ae788
@@ -106,7 +106,7 @@ of the data file itself.
 Actual data file `Posts.xml.zip` is linked into the `.dvc/cache` directory,
 under the `.dvc/cache/ce/68b98d82545628782c66192c96f2d2` name and is added to
 `.gitignore`. Even if you remove it in the workspace, or checkout a different
-branch/commit the data is not lost if a corresponding DVC file is committed.
+branch/commit the data is not lost if a corresponding DVC-file is committed.
 It's enough to run `dvc checkout` or `dvc pull` to restore data files.
 
 </details>
@@ -118,13 +118,13 @@ $ git add data/Posts.xml.zip.dvc data/.gitignore
 $ git commit -m "add dataset"
 ```
 
-## Define steps
+## Define staged
 
-Each step is described by providing a command to run, input data it takes and a
+Each stage is described by providing a command to run, input data it takes and a
 list of output files. DVC is not Python or any other language specific and can
 wrap any command runnable via CLI.
 
-- The first actual step, extract XML from the archive. Note that we don't need
+- The first actual stage, extract XML from the archive. Note that we don't need
   to run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache,
   takes the file under DVC control) automatically:
 
@@ -140,7 +140,7 @@ $ dvc run -d data/Posts.xml.zip \
 ### Expand to learn more about DVC internals
 
 Similar to `dvc add`, `dvc run` creates a
-[stage file](/doc/user-guide/dvc-file-format):
+[DVC-file](/doc/user-guide/dvc-file-format) (or "stage file"):
 
 ```yaml
 cmd: ' unzip data/Posts.xml.zip -d data'
@@ -160,7 +160,7 @@ is automatically added to the `.gitignore` file and a link is created into a
 cache `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
-that DVC files describe, we can restore the full chain (DAG) of commands we need
+that DVC-files describe, we can restore the full chain (DAG) of commands we need
 to apply. This is important when you run `dvc repro` to reproduce the final or
 intermediate result.
 
@@ -176,7 +176,7 @@ data files.
 
 </details>
 
-- Next step, let's convert XML into TSV to make feature extraction easier:
+- Next stage: let's convert XML into TSV to make feature extraction easier:
 
 ```dvc
 $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml \
@@ -229,7 +229,7 @@ $ dvc run -d code/evaluate.py -d data/model.pkl -d data/matrix-test.pkl \
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and outputs DVC files describe we can restore the full
+By analyzing dependencies and outputs DVC-files describe we can restore the full
 chain (DAG) of commands we need to apply. This is important when you run
 `dvc repro` to reproduce the final or intermediate result.
 
@@ -297,7 +297,7 @@ $ dvc metrics show
 
 It's time to save the pipeline. You can check using `git status` command that we
 do not save pickle model files or initial data sets into Git. We are just saving
-a snapshot of the DVC files that describe data and code versions and
+a snapshot of the DVC-files that describe data and code versions and
 relationships between them.
 
 ```dvc
@@ -307,7 +307,7 @@ $ git commit -am "create pipeline"
 
 ## Reproduce
 
-All steps could be automatically and efficiently reproduced even if some source
+All stages could be automatically and efficiently reproduced even if some source
 files have been modified. For example:
 
 - Let's improve the feature extraction algorithm by making some modification to
@@ -325,7 +325,7 @@ bag_of_words = CountVectorizer(stop_words='english',
                                ngram_range=(1, 2))
 ```
 
-- Reproduce all required steps to get our target metrics file:
+- Reproduce all required stages to get our target metrics file:
 
 ```dvc
 $ dvc repro evaluate.dvc
@@ -350,7 +350,7 @@ existing ML development pipeline/processes without any significant effort to
 re-implement your code/application.
 
 The key step to notice is that DVC automatically derives the dependencies
-between the experiment steps and builds the dependency graph (DAG)
+between the experiment stages and builds the dependency graph (DAG)
 transparently.
 
 Not only can DVC streamline your work into a single, reproducible environment,

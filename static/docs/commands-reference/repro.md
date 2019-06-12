@@ -1,7 +1,9 @@
 # repro
 
-Rerun commands recorded in the pipeline stages in the same order. Commands to
-rerun are determined by recursively analyzing which stages and changes in their
+Rerun commands recorded in the
+[pipeline](https://dvc.org/doc/get-started/pipeline)
+[stages](/doc/commands-reference/run) in the same order. Commands to rerun are
+determined by recursively analyzing which stages and changes in their
 dependencies to find only those that have to be rerun.
 
 ## Synopsis
@@ -13,28 +15,28 @@ usage: dvc repro [-h] [-q | -v]
                  [targets [targets ...]]
 
 positional arguments:
-    target                DVC file to reproduce.
+    target                DVC-file to reproduce.
 ```
 
 ## Description
 
-DVC file (`target`) can have any name followed by the `.dvc` file extension. If
+DVC-file (`target`) can have any name followed by the `.dvc` file extension. If
 file name is omitted, `Dvcfile` will be used by default.
 
 `dvc repro` provides an interface to rerun the commands in the computational
-graph (a.k.a. pipeline) defined by the stage files in the current workspace. By
-default, this command recursively searches, starting from the `Dvcfile`, the
-pipeline stages to find any which have changed. It then reruns the corresponding
-commands. The pipeline is mostly defined using the `dvc run` command, while data
-input nodes are defined by the `dvc add` command.
+graph (a.k.a. pipeline) defined by the connected stages (DVC-files) in the
+current workspace. By default, this command recursively searches, starting from
+the `Dvcfile`, the pipeline stages to find any which have changed. It then
+reruns the corresponding commands. The pipeline is mostly defined using the
+`dvc run` command, while data input nodes are defined by the `dvc add` command.
 
-There are several ways to restrict the stages to rerun, by listing stage file(s)
-as targets, or using the `--single-item`, `--pipeline`, or `--cwd` options.
+There are several ways to restrict the stages to rerun, by listing DVC-files as
+targets, or using the `--single-item`, `--pipeline`, or `--cwd` options.
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
-data files, intermediate or final results. It saves (unless `--no-commit` option
-is specified) all the data files, intermediate or final results into the DVC
-local cache and updates stage files with the new checksum information.
+data files, intermediate or final results. It saves all the data files,
+intermediate or final results into the DVC local cache (unless `--no-commit`
+option is specified) and updates DVC-files with the new checksum information.
 
 ## Options
 

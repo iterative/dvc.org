@@ -1,8 +1,8 @@
 # move
 
-Renames a file or a directory and modifies the corresponding DVC file (see
+Renames a file or a directory and modifies the corresponding DVC-file (see
 `dvc add`) to reflect the change. If the file or directory has the same name as
-the corresponding DVC file, it would also rename the DVC file.
+the corresponding DVC-file, it would also rename the DVC-file.
 
 ## Synopsis
 
@@ -20,10 +20,10 @@ positional arguments:
 `dvc move` moves the file named by the `src` operand to the destination path
 named by the `dst` operand. It also renames and updates the corresponding DVC
 file. In general it behaves the same way as `mv src dst`, but takes care of a
-DVC file.
+DVC-file.
 
 If destination path already exists and is a directory, source file or directory
-is moved unchanged into this folder along with the corresponding DVC file.
+is moved unchanged into this folder along with the corresponding DVC-file.
 
 Let's imagine the following scenario:
 
@@ -31,7 +31,7 @@ Let's imagine the following scenario:
 $ dvc add data.csv
 ```
 
-The `dvc add` command would create a `data.csv.dvc` DVC file with the following
+The `dvc add` command would create a `data.csv.dvc` DVC-file with the following
 content:
 
 ```yaml
@@ -42,13 +42,13 @@ outs:
     path: data.csv
 ```
 
-If we move this using the regular `mv data.csv other.csv` the DVC file would not
+If we move this using the regular `mv data.csv other.csv` the DVC-file would not
 know that we changed the `path` of `data.csv` to `other.csv`.
 
-`dvc move` adjusts the content of the DVC file to update `path`. So that saves
+`dvc move` adjusts the content of the DVC-file to update `path`. So that saves
 some manual and programming steps.
 
-To illustrate, notice that `path` value has changed, as well as the DVC file
+To illustrate, notice that `path` value has changed, as well as the DVC-file
 name:
 
 ```dvc
@@ -96,9 +96,9 @@ $ tree
 ```
 
 Here we use `dvc add` to put a file under DVC control. Then we use `dvc move` to
-change its location. Note that the data stage file is also moved. If target path
-already exists and is a directory, data file is moved with unchanged name into
-this folder.
+change its location. Note that the `data.csv.dvc` DVC-file is also moved. If
+target path already exists and is a directory, data file is moved with unchanged
+name into this folder.
 
 ```dvc
 $ tree
@@ -128,7 +128,7 @@ $ tree
 ```
 
 In this example we use `dvc add` to put a directory under DVC control. Then we
-use `dvc move` to move the whole directory. As in other cases, DVC file is also
+use `dvc move` to move the whole directory. As in other cases, DVC-file is also
 moved.
 
 ```dvc
