@@ -12,7 +12,7 @@ usage: dvc status [-h] [-v] [-j JOBS] [--show-checksums]
                   [targets [targets ...]]
 
 positional arguments:
-  targets               DVC files.
+  targets               Limit the scope to these stage files.
 ```
 
 ## Description
@@ -58,8 +58,8 @@ shown, and additionally a status word is shown describing the change:
 - For the local workspace:
   - _changed deps_ means the named file has changed dependencies
   - _changed outs_ means the named file has changed outputs
-  - _changed checksum_ means actual check sum of data dosen't match specified in
-    dvc files
+  - _changed checksum_ means actual checksum of the file doesn't match specified
+    in DVC-files
   - _always checksum_ means special dvc file with no dependencies, considered
     always changed
 - For comparison against a remote cache:
