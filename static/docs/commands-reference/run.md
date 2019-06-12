@@ -32,8 +32,8 @@ data and caches data artifacts along the way. Check this
 [example](/doc/get-started/example-pipeline) to learn more and try to build a
 pipeline.
 
-By default, unless `-f` options is specified, the DVC-file name generated is
-`<file>.dvc` where `<file>` is the file name of the first output (`-o`, `-O`, or
+Unless the `-f` options is used, by default the DVC-file name generated is
+`<file>.dvc`, where `<file>` is file name of the first output (`-o`, `-O`, or
 `-M` option). If neither `-f`, nor outputs are specified, the stage name
 defaults to `Dvcfile`.
 
@@ -91,10 +91,10 @@ be no cycles, etc.
 
 - `-f`, `--file` - specify stage file name. By default the DVC-file name
   generated is `<file>.dvc`, where `<file>` is file name of the first output
-  (`-o`, `-O`, or `-M` option). If neither `-f`, nor outputs are specified, the
-  stage name defaults to `Dvcfile`. By default the stage file is placed in the
-  same directory `dvc run` is executed. `-f` can be used to change this place,
-  by including path into provided value (e.g. `-f stages/stage.dvc`).
+  (`-o`, `-O`, or `-M` option). The stage file is placed in the same directory
+  where `dvc run` is run by default, but `-f` can be used to change this
+  location, by including a path in the provided value (e.g.
+  `-f stages/stage.dvc`).
 
 - `-c`, `--cwd` - deprecated, use `-f` and `-w` to change location and working
   directory of a stage file.

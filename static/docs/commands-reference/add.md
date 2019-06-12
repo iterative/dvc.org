@@ -21,7 +21,7 @@ file is committed to the DVC cache. Using the `--no-commit` option, the file
 will not be added to the cache and instead the `dvc commit` command is used when
 (or if) the file is to be committed to the DVC cache.
 
-Under the hood a few actions are taken for each file in the target(s):
+Under the hood, a few actions are taken for each file in the target(s):
 
 1. Calculate the file checksum.
 2. Move the file content to the DVC cache (default location is `.dvc/cache`).
@@ -34,6 +34,11 @@ Under the hood a few actions are taken for each file in the target(s):
    repository. If a different SCM system is being used, use the equivalent
    command for that system or nothing is printed if `--no-scm` was specified for
    the repository.
+
+Unless the `-f` options is used, by default the DVC-file name generated is
+`<file>.dvc`, where `<file>` is file name of the first output (from `targets`).
+If neither `-f`, nor outputs are specified, the stage name defaults to
+`Dvcfile`.
 
 The result is data file is added to the DVC cache, and DVC-files can be tracked
 via Git or other version control system. The DVC-file lists the added file as an
@@ -90,7 +95,12 @@ This way you bring data provenance and make your project reproducible.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `-f`, `--file` - specify name of the DVC-file it generates.
+- `-f`, `--file` - specify name of the DVC-file it generates. By default the
+  DVC-file name generated is `<file>.dvc`, where `<file>` is file name of the
+  first output (from `targets`). The stage file is placed in the same directory
+  where `dvc run` is run by default, but `-f` can be used to change this
+  location, by including a path in the provided value (e.g.
+  `-f stages/stage.dvc`).
 
 ## Examples: Single file
 
