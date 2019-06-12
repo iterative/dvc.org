@@ -69,7 +69,7 @@ $ pip install -r requirements.txt
 
 ### Expand to learn more about DVC internals
 
-The repository you cloned is already DVC-initialized. There should be `.dvc`
+The repository you cloned is already DVC-initialized. There should be a `.dvc/`
 directory with `config`, `.gitignore` files. These files and directories are
 hidden from a user in general and a user does not interact with these files
 directly. Check

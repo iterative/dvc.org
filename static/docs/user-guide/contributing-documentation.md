@@ -102,7 +102,8 @@ setting up.
 
 - **Markdown:** Syntax highlighting in fenced code blocks should use the `usage`
   and `dvc` custom languages. `usage` is employed to show `dvc help` commands
-  output in each command reference doc. `dvc` can be used to show `.dvc` file
-  contents, or examples of console commands and their output.
+  output in each command reference doc. `dvc` can be used to show
+  [DVC-file](/doc/user-guide/dvc-file-format) contents, or examples of console
+  commands and their output.
 
 > Check out any of the command reference `.md` source code to get a better idea.

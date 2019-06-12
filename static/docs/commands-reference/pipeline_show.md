@@ -1,7 +1,8 @@
 # show
 
 Show [stages](/doc/commands-reference/run) in a pipeline that lead to the
-specified stage. By default it lists DVC-files (`.dvc` file extension).
+specified stage. By default it lists
+[DVC-files](/doc/user-guide/dvc-file-format).
 
 The `-c` and `-o` options allow to list or visualize a pipeline commands or data
 files flow instead.

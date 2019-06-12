@@ -57,15 +57,19 @@ remote storage. `/tmp/dvc-storage` can be one example of a prefix.
 For the second case, let us consider a directory of 2 images.
 
 ```dvc
-$ tree
-.
+$ tree data/images/
+data/images/
 ├── cat.jpeg
 └── index.jpeg
+
+$ dvc add data/images
+...
 ```
 
-On running `dvc add` on this directory of images, a `.dvc` file is created, by
-default, with information about the checksum of directory which is cached as a
-file in `.dvc/cache`.
+On running `dvc add` on this directory of images, a
+[DVC-file](/doc/user-guide/dvc-file-format) is created by default, with
+information including the checksum of the directory, which is cached as a file
+in `.dvc/cache`.
 
 ```yaml
 - md5: 196a322c107c2572335158503c64bfba.dir

@@ -15,10 +15,10 @@ positional arguments:
 
 ## Description
 
-DVC-files (`.dvc`) in the workspace specify which instance of each data file or
-directory is to be used, using the checksum saved in the `outs` fields. The
-`dvc checkout` command updates the workspace data to match with the cache files
-corresponding to those checksums.
+[DVC-files](/doc/user-guide/dvc-file-format) in the workspace specify which
+instance of each data file or directory is to be used, using the checksum saved
+in the `outs` fields. The `dvc checkout` command updates the workspace data to
+match with the cache files corresponding to those checksums.
 
 Using an SCM like Git, the DVC-files are kept under version control. At a given
 branch or tag of the SCM workspace, the DVC-files will contain checksums for the

@@ -26,8 +26,8 @@ Under the hood a few actions are taken for each file in the target(s):
 1. Calculate the file checksum.
 2. Move the file content to the DVC cache (default location is `.dvc/cache`).
 3. Replace the file by a link to the file in the cache (see details below).
-4. Create a corresponding DVC-file (`.dvc` extension) and store the checksum to
-   identify the cache entry.
+4. Create a corresponding [DVC-file](/doc/user-guide/dvc-file-format) and store
+   the checksum to identify the cache entry.
 5. Add the _target_ filename to `.gitignore` (if Git is used in this workspace)
    to prevent it from being committed to the Git repository.
 6. Instructions are printed showing `git` commands for adding the files to a Git
@@ -56,8 +56,8 @@ to work with directory hierarchies with `dvc add`.
 
 1. With `dvc add --recursive`, the hierarchy is traversed and every file is
    added individually as described above. This means every file has its own
-   `.dvc` file, and a corresponding DVC cache entry is made (unless
-   `--no-commit` flag is added).
+   DVC-file, and a corresponding DVC cache entry is made (unless `--no-commit`
+   flag is added).
 2. When not using `--recursive` a DVC-file is created for the top of the
    directory (`dirname.dvc`), and every file in the hierarchy is added to the
    DVC cache (unless `--no-commit` flag is added), but these files do not have
@@ -90,9 +90,7 @@ This way you bring data provenance and make your project reproducible.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `-f`, `--file` - specify name of the DVC-file it generates. It should be
-  either `Dvcfile` or have a `.dvc` file extension (e.g. `data.dvc`) in order
-  for `dvc` to be able to find it later.
+- `-f`, `--file` - specify name of the DVC-file it generates.
 
 ## Examples: Single file
 

@@ -22,7 +22,8 @@ project might produce occasional data files that are used in other projects, for
 example. ETL pipeline running regularly updates some data file. A shared dataset
 on a remote storage that is managed and updated outside DVC.
 
-DVC supports `.dvc` files which refer to an external data location, see
+DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to an
+external data location, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such a DVC
 file, the `deps` section lists a remote URL specification, and the `outs`
 section lists the corresponding local path name in the workspace. It records
@@ -73,11 +74,10 @@ $ dvc run -d https://example.com/path/to/data.csv \
           wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a [DVC-file](/doc/user-guide/dvc-file-format) with an
-external dependency, and they perform a roughly equivalent result. The
-`dvc import` command saves the user from using the command to copy files from
-each of the remote storage schemes, and from having to install CLI tools for
-each service.
+Both methods generate a DVC-file with an external dependency, and they perform a
+roughly equivalent result. The `dvc import` command saves the user from using
+the command to copy files from each of the remote storage schemes, and from
+having to install CLI tools for each service.
 
 When DVC inspects a DVC-file, one step is inspecting the dependencies to see if
 any have changed. A changed dependency will appear in the `dvc status` report,
@@ -90,9 +90,7 @@ to test its current status.
 - `--resume` - resume previously started download. This is useful if the
   connection to the remote resource is unstable.
 
-- `-f`, `--file` - specify name of the DVC-file it generates. It should be
-  either `Dvcfile` or have a `.dvc` file extension (e.g. `data.dvc`) in order
-  for `dvc` to be able to find it later.
+- `-f`, `--file` - specify name of the DVC-file it generates.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
