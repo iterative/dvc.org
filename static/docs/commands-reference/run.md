@@ -34,8 +34,8 @@ pipeline.
 
 By default, unless `-f` options is specified, the DVC-file name generated is
 `<file>.dvc` where `<file>` is the file name of the first output (`-o`, `-O`, or
-`-M` option). If neither `-f`, nor outputs (with `-o`, `-O`, `-M` options) are
-specified, the stage name defaults to `Dvcfile`.
+`-M` option). If neither `-f`, nor outputs are specified, the stage name
+defaults to `Dvcfile`.
 
 Since `dvc run` provides a way to build a graph of computations, using
 dependencies and outputs to connect different stages it checks computational
@@ -91,11 +91,10 @@ be no cycles, etc.
 
 - `-f`, `--file` - specify stage file name. By default the DVC-file name
   generated is `<file>.dvc`, where `<file>` is file name of the first output
-  (`-o`, `-O`, or `-M` option). If neither `-f`, nor outputs (with `-o`, `-O`,
-  `-M`) are specified, the stage name defaults to `Dvcfile`. By default stage
-  file is placed in the same directory `dvc run` is executed. `-f` can be used
-  to change this place, by including path into provided value (e.g.
-  `-f stages/stage.dvc`).
+  (`-o`, `-O`, or `-M` option). If neither `-f`, nor outputs are specified, the
+  stage name defaults to `Dvcfile`. By default the stage file is placed in the
+  same directory `dvc run` is executed. `-f` can be used to change this place,
+  by including path into provided value (e.g. `-f stages/stage.dvc`).
 
 - `-c`, `--cwd` - deprecated, use `-f` and `-w` to change location and working
   directory of a stage file.
