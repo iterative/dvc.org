@@ -67,7 +67,7 @@ location of the actual content file in DVC cache directory `.dvc/cache`.
 
 > Output from DVC-files defines the relationship between the data file path in a
 > repository and the path in a cache directory. See also
-> [DVC File Format](/doc/user-guide/dvc-file-format)
+> [DVC-File Format](/doc/user-guide/dvc-file-format)
 
 ```dvc
 $ cat data/Posts.xml.zip.dvc
@@ -118,9 +118,10 @@ $ ls -i .dvc/cache/ec/
 $ du -sh .
  41M .
 ```
-Note that `ls -i` prints the index number(78483929) of each file and inode
-for `data/Posts.xml.zip` and `.dvc/cache/ec/88519f8465218abb23ce0e0e8b1384`
-remained same.
+
+Note that `ls -i` prints the index number(78483929) of each file and inode for
+`data/Posts.xml.zip` and `.dvc/cache/ec/88519f8465218abb23ce0e0e8b1384` remained
+same.
 
 ## Running commands
 
@@ -189,7 +190,7 @@ and does some additional work if the command was successful:
 
 2. For reproducibility purposes, DVC creates the `Posts.xml.dvc` DVC-file in the
    workspace — the file with meta-information about the pipeline stage, see
-   [DVC File Format](/doc/user-guide/dvc-file-format). By default, DVC assigns a
+   [DVC-File Format](/doc/user-guide/dvc-file-format). By default, DVC assigns a
    name to the DVC-file based on the first output file name, by adding the
    `.dvc` file extension. This name can be changed by using the `-f` option, for
    example by specifying `-f extract.dvc`.

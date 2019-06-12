@@ -171,7 +171,7 @@ cache (usually, a `.dvc/cache` directory inside the repository) where actual
 data resides.
 
 In this case we created `data.dvc` and `model.h5.dvc` files. Check the
-[DVC file format](/doc/user-guide/dvc-file-format) to learn more about how these
+[DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
 files are organized.
 
 </details>
@@ -310,7 +310,7 @@ $ dvc run -f Dvcfile \
           python train.py
 ```
 
-Similar to `dvc add`, `dvc run` creates a single DVC file (`Dvcfile` in this
+Similar to `dvc add`, `dvc run` creates a single DVC-file (`Dvcfile` in this
 case, specified by the `-f` option). It puts all outputs (`-o`) under DVC
 control the same way as `dvc add` does. Unlike, `dvc add`, `dvc run` also tracks
 dependencies (`-d`) and the command (`python train.py`) that was run to produce

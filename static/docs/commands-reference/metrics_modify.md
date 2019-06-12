@@ -16,10 +16,10 @@ positional arguments:
 
 ## Description
 
-This command finds a corresponding DVC file for the metric file path provided
-(i.e. a DVC stage file that specifies one of its a metric with the path
-provided) and updates the meta-information that is used to manage and show the
-metric.
+This command finds a corresponding DVC-file for the metric file `path` provided
+(i.e. a DVC-file that specifies one of its outputs is the file path in question
+– see `dvc metrics add` or `dvc run` with `-m` and `-M` options) and updates the
+meta-information that is used to manage and show the metric.
 
 It the path provided is not part of the pipeline, the following error will be
 raised:
@@ -58,15 +58,15 @@ Error: failed to modify metrics - unable
 
 ## Examples
 
-Let's first imagine we have stage with a generic raw metric file initially. The
-stage below is dummy and is made completely for the sake or this examples
-section:
+Let's first imagine we have a [stage](/doc/commands-reference/run) with a
+generic raw metric file initially. The stage file below is a dummy written for
+the sake or this examples section:
 
 ```dvc
-    $ dvc run -M metrics.csv "echo auc, 0.9567 > metrics.csv"
+$ dvc run -M metrics.csv "echo auc, 0.9567 > metrics.csv"
 ```
 
-The stage `metrics.csv.dvc` file should look like this:
+Stage file `metrics.csv.dvc` file should look like this:
 
 ```yaml
 cmd: echo auc, 0.9567 > metrics.csv

@@ -45,7 +45,7 @@ up and manage DVC metrics.
 
 ## Examples
 
-First, let's create a simple DVC stage file:
+First, let's create a simple DVC-file:
 
 ```dvc
 $ dvc run -d code/evaluate.py -M data/eval.json -f Dvcfile \

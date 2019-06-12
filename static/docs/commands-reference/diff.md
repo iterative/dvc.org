@@ -177,8 +177,8 @@ Let's use our sample repo once again, which has several
 conveniency. The `5-preparation` tag corresponds to the
 [Connect Code and Data](https://dvc.org/doc/get-started/connect-code-and-data)
 section of our Get Started guide, in which the `dvc run` command is used to
-create the `prepare.dvc` stage. The output of this stage is the `data/prepared`
-directory.
+create the `prepare.dvc` stage file. The output defined in this DVC-file is the
+`data/prepared` directory.
 
 ```dvc
 $ dvc diff -t data/prepared 5-preparation
