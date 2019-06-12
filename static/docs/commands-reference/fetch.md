@@ -54,7 +54,7 @@ dependencies and outputs.)
 `dvc fetch` ensures that the files needed for a DVC-file to be
 [reproduced](/doc/get-started/reproduce) exist in the local cache. If no
 `targets` are specified, the set of data files to fetch is determined by
-analyzing all `.dvc` files in the current branch, unless `--all-branches` or
+analyzing all DVC-files in the current branch, unless `--all-branches` or
 `--all-tags` is specified.
 
 The default remote is used unless `--remote` is specified. See `dvc remote add`
@@ -216,7 +216,7 @@ Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/...
 
 ## Examples: Specific stages
 
-> Please delete the `.dvc/cache/` directory first (with `rm -Rf .dvc/cache`) to
+> Please delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
 > follow this example if you tried the previous one (**Default behavior**).
 
 `dvc fetch` only downloads the data files of a specific stage when the

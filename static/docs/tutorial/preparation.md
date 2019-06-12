@@ -64,7 +64,7 @@ $ pip install dvc
 ## Initialize
 
 DVC works on top of Git repositories. You run DVC initialization in a repository
-directory to create DVC metafiles and directories.
+directory to create DVC meta files and directories.
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`
 and `.gitignore` files and `cache` directory. These files and directories are

@@ -12,8 +12,8 @@ The same way as with Git remote, it ensures that your data files and your models
 are safely stored remotely and are shareable. It means that this data could be
 pulled by your team or you when you need it.
 
-Usually, you run it along with `git commit` and `git push` to save changes to
-`.dvc` files to Git.
+Usually, you run it along with `git commit` and `git push` to save changes
+[DVC-files](/doc/user-guide/dvc-file-format) to Git.
 
 See `dvc push` for more details and options for this command.
 
@@ -34,7 +34,7 @@ $ ls -R /tmp/dvc-storage
 ```
 
 where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file,
-and if you check the `data.xml.dvc` meta-file you will see that it has this hash
-inside.
+and if you check the `data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format)
+you will see that it has this hash inside.
 
 </details>

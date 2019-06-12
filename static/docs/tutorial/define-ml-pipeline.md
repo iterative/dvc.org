@@ -127,14 +127,15 @@ same.
 
 Once data source files are in the workspace you can start processing the data
 and train ML models out of the data files. DVC helps you to define steps of your
-ML process and pipe them together into an ML **pipeline**.
+ML process and pipe them together into a ML
+[pipeline](https://dvc.org/doc/get-started/pipeline).
 
 `dvc run` executes any command that you pass into it as a list of parameters.
 However, the command to run alone is not as interesting as its role within a
 pipeline, so we'll need to specify its dependencies and output files. We call
-this a pipeline **stage**. Dependencies may include input files and directories,
-and the actual source script to run. Outputs are files written to by the
-command, if any.
+this a pipeline [stage](/doc/commands-reference/run). Dependencies may include
+input files and directories, and the actual source script to run. Outputs are
+files written to by the command, if any.
 
 1. Option `-d file.tsv` should be used to specify a dependency file or
    directory. The dependency can be a regular file from a repository or a data
@@ -188,12 +189,11 @@ and does some additional work if the command was successful:
    files content goes to the cache directory `.dvc/cache` and each of the
    filenames will be added to `.gitignore`.
 
-2. For reproducibility purposes, DVC creates the `Posts.xml.dvc` DVC-file in the
-   workspace — the file with meta-information about the pipeline stage, see
-   [DVC-File Format](/doc/user-guide/dvc-file-format). By default, DVC assigns a
-   name to the DVC-file based on the first output file name, by adding the
-   `.dvc` file extension. This name can be changed by using the `-f` option, for
-   example by specifying `-f extract.dvc`.
+2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` DVC-file
+   in the workspace with information about this stage in the pipeline, see
+   [DVC-File Format](/doc/user-guide/dvc-file-format). Note that the name of
+   this file could be specified by using the `-f` option, for example
+   `-f extract.dvc`.
 
 Let's take a look at the resulting DVC-file from the above example:
 

@@ -43,7 +43,8 @@ $ git push
 
 ### Upload data
 
-To upload data from your project run:
+After adding data to DVC locally with `dvc run` or other commands, to upload
+data from your project run:
 
 ```dvc
 $ dvc push
@@ -57,7 +58,8 @@ $ dvc push
 
 ### Upload code
 
-Code with DVC metafiles should be uploaded through Git:
+Code with [DVC-files](/doc/user-guide/dvc-file-format) should be uploaded
+through Git:
 
 ```dvc
 $ git push
@@ -65,7 +67,7 @@ $ git push
 
 ### Download code
 
-Please use regular Git commands to download code and DVC metafiles from your Git
+Please use regular Git commands to download code and DVC-files from your Git
 servers.
 
 ```dvc

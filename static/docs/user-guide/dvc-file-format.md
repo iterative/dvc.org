@@ -2,9 +2,11 @@
 
 When you add a file (with `dvc add`) or a command (with `dvc run`) to the
 [pipeline](https://dvc.org/doc/get-started/pipeline), DVC creates a special text
-file with the `.dvc` extension (e.g. `process.dvc`), a.k.a. a **stage file**
-that contains all the needed information to track your data. The file itself
-contains a simple YAML format that could be easily written or altered manually.
+metafile with the `.dvc` file extension (e.g. `process.dvc`), or with the
+default name `Dvcfile`. DVC-files are a.k.a. **stage files** and contain all the
+needed information to track your data and reproduce pipeline stages. The file
+itself contains a simple YAML format that could be easily written or altered
+manually.
 
 Check the [Syntax Highlighting](/doc/user-guide/plugins) to enable the
 highlighting for your editor.
@@ -32,9 +34,10 @@ outs:
     path: metrics.json
 locked: True
 
-# Comments are persisted between multiple executions of dvc repro/commit.
-# Comments are not persisted between multiple executions of dvc run/add/import.
- meta: # key to contain arbitary user data
+# Comments like this line persist through multiple executions of
+# dvc repro/commit but not through dvc run/add/import commands.
+
+ meta: # Special key to contain arbitary user data
   name: John
   email: john@xyz.com
 ```
@@ -68,13 +71,14 @@ A metric entry consists of such fields:
 - `xpath`: path within the metrics file to the metrics data(e.g. `AUC.value` for
   `{"AUC": {"value": 0.624321}}`);
 
-A meta entry consists of `key:value` pairs such as `name: john`. A meta entry
-can have any structure and contain any number of attributes. `"meta: string"` is
-also possible, it doesn't necessarily need to contain dictionary always.
+A `meta` entry consists of `key: value` pairs such as `name: John`. A meta entry
+can have any valid YAML structure containing any number of attributes.
+`"meta: string"` is also possible, it doesn't need to contain a hash (a.k.a.
+dictionary) structure always.
 
 Comments can be added to the DVC-file using `# comment` syntax. Comments and
 meta values are preserved between multiple executions of `dvc repro` and
 `dvc commit` commands.
 
-If user overwrites the file, comments and meta values are not preserved between
-multiple executions of `dvc run`,`dvc add`,`dvc import` commands.
+> Note that comments and meta values are not preserved when a DVC-file is
+> overwritten with the `dvc run`,`dvc add`,`dvc import` commands.
