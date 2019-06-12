@@ -137,7 +137,8 @@ are too large to be put into Git. Usually, input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
 the DVC cache (of course, it keeps a link to it in the workspace, so you can
 continue working with it the same way as before). Instead, it creates a simple
-human-readable meta-file that can be considered as a pointer to the cache.
+human-readable [DVC-file](/doc/user-guide/dvc-file-format) that can be
+considered as a pointer to the cache.
 
 Next, we run the training with `python train.py`. We picked this example and
 datasets to be small enough to be run on your machine in a reasonable amount of
@@ -166,13 +167,13 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 
 As we mentioned briefly, DVC does not commit `data` directory and `model.h5`
 file into git, `dvc add` pushed them into the DVC cache and added to the
-`.gitignore`. Instead, we commit `.dvc` meta-files that serve as pointers to the
-cache (usually, a `.dvc/cache` directory inside the repository) where actual
-data resides.
+`.gitignore`. Instead, we commit DVC-files that serve as pointers to the cache
+(usually in the `.dvc/cache` directory inside the repository) where actual data
+resides.
 
-In this case we created `data.dvc` and `model.h5.dvc` files. Check the
+In this case we created `data.dvc` and `model.h5.dvc` files. Refer to the
 [DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
-files are organized.
+files work.
 
 </details>
 
@@ -277,12 +278,12 @@ points to the `v1.0` of the dataset. While code and model files are from the
 
 As we have learned already, DVC keeps data files out of Git (by adjusting
 `.gitignore`) and puts them into the cache (usually it's a `.dvc/cache`
-directory inside the repository). Instead, DVC creates simple meta-files that
-have `.dvc` extension. These meta-files serve as pointers (`md5` hash) to the
-cache and are version controlled by Git.
+directory inside the repository). Instead, DVC creates
+[DVC-files](/doc/user-guide/dvc-file-format). These text files serve as pointers
+(`md5` hash) to the cache and are version controlled by Git.
 
-When we run `git checkout` we restore pointers (or meta-files) first, then when
-we run `dvc checkout` we use these pointers to put the right data into the right
+When we run `git checkout` we restore pointers (DVC-files) first, then when we
+run `dvc checkout` we use these pointers to put the right data in the right
 place.
 
 </details>

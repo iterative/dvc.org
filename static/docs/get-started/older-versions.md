@@ -22,9 +22,9 @@ working tree.
 
 ### Expand to learn more about DVC internals
 
-DVC is using special meta-files (`.dvc` files) to track data files, directories,
-end results that are under DVC control. In this case, `train.dvc` among other
-things describes the `model.pkl` file this way:
+DVC uses special [DVC-file](/doc/user-guide/dvc-file-format) to track data
+files, directories, end results that are under DVC control. In this case,
+`train.dvc` among other things describes the `model.pkl` file this way:
 
 ```yaml
 outs:

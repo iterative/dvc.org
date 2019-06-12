@@ -6,9 +6,7 @@ etc).
 ## Synopsis
 
 ```usage
-usage: dvc metrics modify [-h] [-q] [-v]
-                          [-t TYPE] [-x XPATH]
-                          path
+usage: dvc metrics modify [-h] [-q | -v] [-t TYPE] [-x XPATH] path
 
 positional arguments:
   path                  Path to a metric file.
@@ -17,11 +15,11 @@ positional arguments:
 ## Description
 
 This command finds a corresponding DVC-file for the metric file `path` provided
-(i.e. a DVC-file that specifies one of its outputs is the file path in question
-– see `dvc metrics add` or `dvc run` with `-m` and `-M` options) and updates the
-meta-information that is used to manage and show the metric.
+(i.e. a [DVC-file](/doc/user-guide/dvc-file-format) that specifies one of its
+outputs is the file path in question (see `dvc metrics add` or `dvc run` with
+`-m` and `-M` options) and updates the information that represents the metric.
 
-It the path provided is not part of the pipeline, the following error will be
+If the path provided is not part of the pipeline, the following error will be
 raised:
 
 ```text

@@ -34,7 +34,7 @@ $ ls -R /tmp/dvc-storage
 ```
 
 where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file,
-and if you check the `data.xml.dvc` meta-file you will see that it has this hash
-inside.
+and if you check the `data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format)
+you will see that it has this hash inside.
 
 </details>

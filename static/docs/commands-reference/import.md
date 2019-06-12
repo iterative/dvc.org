@@ -73,10 +73,11 @@ $ dvc run -d https://example.com/path/to/data.csv \
           wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a DVC-file with an external dependency, and they perform a
-roughly equivalent result. The `dvc import` command saves the user from using
-the command to copy files from each of the remote storage schemes, and from
-having to install CLI tools for each service.
+Both methods generate a [DVC-file](/doc/user-guide/dvc-file-format) with an
+external dependency, and they perform a roughly equivalent result. The
+`dvc import` command saves the user from using the command to copy files from
+each of the remote storage schemes, and from having to install CLI tools for
+each service.
 
 When DVC inspects a DVC-file, one step is inspecting the dependencies to see if
 any have changed. A changed dependency will appear in the `dvc status` report,
@@ -199,8 +200,8 @@ The `etag` field in the DVC-file contains the ETag recorded from the HTTP
 request. If the remote file changes, the ETag changes, letting DVC know when the
 file has changed.
 
-While executing `dvc import` command, if user overwrites the `.dvc` file,
-comments and meta values are not preserved between multiple executions.
+> See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
+> text format above.
 
 ## Example: Detecting remote file changes
 

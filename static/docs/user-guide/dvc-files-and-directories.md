@@ -19,7 +19,8 @@ Once initialized in a project, DVC populates its installation directory
 
   > Note that DVC includes the cache directory in `.gitignore` during the
   > initialization. No data files (with actual content) will ever be pushed to
-  > the Git repository, only DVC-files that are needed to reproduce them.
+  > the Git repository, only [DVC-files](/doc/user-guide/dvc-file-format) that
+  > are needed to reproduce them.
 
 - `.dvc/state` - this file is used for optimization. It is a SQLite db, that
   contains checksums for files in a project with respective timestamps and

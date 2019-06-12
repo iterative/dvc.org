@@ -35,12 +35,10 @@ Under the hood a few actions are taken for each file in the target(s):
    command for that system or nothing is printed if `--no-scm` was specified for
    the repository.
 
-The result is data file is added to the DVC cache, and DVC metafiles (`.dvc`)
-can be tracked via Git or other version control system. The DVC-file (metafile)
-lists the added file as an `out` (output) of the DVC-file, and references the
-DVC cache entry using the checksum. See
-[DVC-File Format](/doc/user-guide/dvc-file-format) for the detailed description
-of the DVC _metafile_ format.
+The result is data file is added to the DVC cache, and DVC-files can be tracked
+via Git or other version control system. The DVC-file lists the added file as an
+output (`out`), and references the DVC cache entry using the checksum. See
+[DVC-File Format](/doc/user-guide/dvc-file-format) for more details.
 
 > Note that DVC-files created by this command are _orphans_: they have no
 > dependencies. _Orphan_ "stage files" are always considered _changed_ by
@@ -131,7 +129,7 @@ outs:
     md5: d8acabbfd4ee51c95da5d7628c7ef74b
     metric: false
     path: data.xml.jpg
-meta: #key to contain arbitary user data
+meta: # Special key to contain arbitary user data
   name: John
   email: john@xyz.com
 ```
@@ -139,8 +137,9 @@ meta: #key to contain arbitary user data
 This is a standard DVC-file with only an `outs` entry. The checksum should
 correspond to an entry in the cache.
 
-If user overwrites the `.dvc` file, comments and meta values are not preserved
-between multiple executions of `dvc add` command.
+> Note that the `meta` values above were entered manually for this example. Meta
+> values and `#` comments are not preserved when a DVC-file is overwritten with
+> the `dvc add` command.
 
 ```dvc
 $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b

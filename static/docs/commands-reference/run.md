@@ -78,9 +78,9 @@ be no cycles, etc.
 
 - `-m`, `--metrics` - another kind of output files. It is usually a small human
   readable file (JSON, CSV, text, whatnot) with some numbers or other
-  meta-information that describes a model or other outputs. Check `dvc metrics`
-  to learn more about tracking metrics and comparing them across different model
-  or experiment versions.
+  information that describes a model or other outputs. Check `dvc metrics` to
+  learn more about tracking metrics and comparing them across different model or
+  experiment versions.
 
 - `-M`, `--metrics-no-cache` - the same as `-m` except files are not put
   automatically under DVC control. It means that they are not cached, and it's
@@ -166,8 +166,8 @@ be no cycles, etc.
     git add .gitignore metric.dvc
   ```
 
-  While executing `dvc run`, if the user overwrites the `.dvc` file, comments
-  and meta values are not preserved between multiple executions.
+> See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
+> text format above.
 
 - Execute a Python script as a DVC pipeline stage. The stage file name is not
   specified, so a `model.p.dvc` DVC-file is created:
