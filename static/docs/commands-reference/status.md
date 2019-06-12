@@ -38,10 +38,7 @@ stages that affect the target stage.
 
 In the `local` mode, changes are detected through the checksum of every file
 listed in every stage file in the pipeline against the corresponding file in the
-file system, using two modes `changed checksum` when actual checksum of data
-dosen't match specified in dvc files and `always changed` a special dvc file
-with no dependencies, always considered changed and will be reproduced with
-`dvc repro`. The output indicates the detected changes, if any. If no
+file system. The output indicates the detected changes, if any. If no
 differences are detected, `dvc status` prints this message:
 
 ```dvc
@@ -58,7 +55,12 @@ listed. For each item listed, either the file name or the checksum is shown, and
 additionally a status word is shown describing the change:
 
 - For the local workspace:
-  - _changed_ means the named file has changed
+  - _changed deps_ means the named file has changed dependencies
+  - _changed outs_ means the named file has changed outputs
+  - _changed checksum_ means actual check sum of data dosen't match specified in
+    dvc files
+  - _always checksum_ means special dvc file with no dependencies, considered
+    always changed
 - For comparison against a remote cache:
   - _new_ means the file exists in the local cache but not the remote cache
   - _deleted_ means the file does not exist in the local cache, and exists in
