@@ -43,7 +43,7 @@ DVC cache entry using the checksum. See
 of the DVC _metafile_ format.
 
 > Note that DVC-files created by this command are _orphans_: they have no
-> dependencies. _Orphaned_ "stage files" are always considered _changed_ by
+> dependencies. _Orphan_ "stage files" are always considered _changed_ by
 > `dvc repro`, which always executes them.
 
 By default DVC tries to use reflinks (see

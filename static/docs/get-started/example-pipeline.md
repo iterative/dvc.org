@@ -89,8 +89,9 @@ in general and a user does not interact with these files directly. Check
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
-When we run `dvc add Posts.xml.zip` the following happens. DVC creates an
-_orphaned_ version of the [DVC-file](/doc/user-guide/dvc-file-format):
+When we run `dvc add` `Posts.xml.zip`, DVC creates a
+[DVC-file](/doc/user-guide/dvc-file-format) with no dependencies, a.k.a. and
+"_orphan_ stage file":
 
 ```yaml
 md5: 4dbe7a4e5a0d41b652f3d6286c4ae788
