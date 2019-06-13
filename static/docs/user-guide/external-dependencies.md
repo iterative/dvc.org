@@ -104,7 +104,7 @@ $ dvc import https://dvc.org/s3/get-started/data.xml
 
 ### Expand to learn more about DVC internals
 
-If you open the resulting DVC file, you will see something like this:
+If you open the resulting DVC-file, you will see something like this:
 
 ```yaml
 deps:

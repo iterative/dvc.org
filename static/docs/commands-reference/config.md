@@ -15,7 +15,7 @@ positional arguments:
 
 You can query/set/replace/unset DVC configuration options with this command. It
 takes a config option `name` (a section and a key, separated by a dot) and its
-`value`.
+`value` (any valid alpha-numeric string generally).
 
 This command reads and overwrites the DVC config file `.dvc/config`. If
 `--local` option is specified, `.dvc/config.local` is modified instead.
@@ -61,8 +61,9 @@ This is the main section with the general config options:
 - `core.remote` - name of the remote that should be used by default.
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
-  each stage in `dvc repro`. By default this behavior requires the use of option
-  `-i` in that command. Accepts values `true` and `false`.
+  each [stage](/doc/commands-reference/run) in `dvc repro`. By default this
+  behavior requires the use of option `-i` in that command. Accepts values
+  `true` and `false`.
 
 - `core.analytics` - used to turn off
   [anonymized usage statistics](/doc/user-guide/analytics). Accepts values

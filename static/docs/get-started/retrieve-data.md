@@ -11,9 +11,9 @@ To retrieve data files to your local machine and your project's workspace run:
 $ dvc pull
 ```
 
-This command retrieves data files that are referenced in _all_ `.dvc` files in
-the current workspace. So, you usually run it after `git clone`, `git pull`, or
-`git checkout`.
+This command retrieves data files that are referenced in _all_
+[DVC-files](/doc/user-guide/dvc-file-format) in the current workspace. So, you
+usually run it after `git clone`, `git pull`, or `git checkout`.
 
 As an easy way to test it:
 

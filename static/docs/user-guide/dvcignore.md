@@ -1,6 +1,6 @@
-# dvcignore
+# dvcignore File
 
-Mark which files and/or directories should be ignored when traversing
+Marks which files and/or directories should be ignored when traversing
 repository.
 
 Sometimes you might want DVC to ignore files while traversing the project
@@ -29,9 +29,9 @@ containing `.dvcignore` file). Therefore, we decided to enable this feature
 gradually in different parts of the project.
 
 Currently `.dvcignore` files will be read and applied in any operation that
-collects stage files (e.g. `checkout`, `metrics`, `status`, `run`, `repro`), so
-it is advised to use it in cases described in the first paragraph, when amount
-of files in tree of repository directory causes performance issues.
+collects DVC-files (e.g. `checkout`, `metrics`, `status`, `run`, `repro`), so it
+is advised to use it in cases described in the first paragraph, when amount of
+files in tree of repository directory causes performance issues.
 
 ## Syntax
 
@@ -91,5 +91,5 @@ dir2/data2.dvc:
 		modified:           dir2/data2
 ```
 
-Only second file is displayed because DVC ignores `data1.dvc` and `data1` when
-collecting stage files.
+Only the second file is displayed because DVC ignores `data1.dvc` and `data1`
+when collecting DVC-files.

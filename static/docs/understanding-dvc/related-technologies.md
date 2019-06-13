@@ -35,9 +35,10 @@ process.
    - DVC does not need to run any services. No graphical user interface as a
      result, but we expect some GUI services will be created on top of DVC.
 
-   - DVC has transparent design: metadata files (DVC file), configuration files,
-     cache directories have a simple format and can be easily reused by external
-     tools.
+   - DVC has transparent design:
+     [meta files and directories](/doc/user-guide/dvc-files-and-directories)
+     (including the data cache) have a human-readable format and can be easily
+     reused by external tools.
 
 4. **Git workflows** and Git usage methodologies such as Gitflow. The
    differences are:
@@ -53,15 +54,15 @@ process.
 
    - DVC utilizes a DAG:
 
-     - The DAG is defined by DVC files with filenames `Dvcfile` or
-       `<filename>.dvc`.
+     - The DAG is defined by DVC-files with filenames `<filename>.dvc` or
+       `Dvcfile`.
 
-     - One DVC file defines one node in the DAG. All DVC files in a repository
-       make up a single pipeline (think a single Makefile). All DVC files (and
+     - One DVC-file defines one node in the DAG. All DVC-files in a repository
+       make up a single pipeline (think a single Makefile). All DVC-files (and
        corresponding pipeline commands) are implicitly combined through their
        inputs and outputs, to simplify conflict resolving during merges.
 
-     - DVC provides a simple command `dvc run CMD` to generate a DVC file
+     - DVC provides a simple command `dvc run CMD` to generate a DVC-file
        automatically based on the provided command, dependencies, and outputs.
 
    - File tracking:
@@ -90,9 +91,9 @@ process.
      a workflow for machine learning and reproducible experiments. When a DVC or
      Git-annex repository is cloned via git clone, data files won't be copied to
      the local machine as file content is stored in separate data remotes.
-     However, DVC metafiles (which provide the reproducible workflow) are always
-     included in the cloned Git repository and hence can be recreated locally
-     with minimal effort.
+     However, [DVC-files](/doc/user-guide/dvc-file-format) (which provide the
+     reproducible workflow) are always included in the cloned Git repository and
+     hence can be recreated locally with minimal effort.
 
    - DVC is not fundamentally bound to Git, having the option of changing the
      repository format.

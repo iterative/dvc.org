@@ -1,8 +1,10 @@
 # External Outputs
 
-With DVC you can specify external files as outputs for your pipeline stages. DVC
-will track changes in those files and will reflect that in your pipeline state.
-Currently DVC supports such types of external outputs:
+You can specify external files as outputs for
+[DVC-files](/doc/user-guide/dvc-file-format) created by `dvc run` (stage files).
+DVC will track changes in those files and will reflect so in your
+[pipeline status](/doc/commands-reference/status). Currently DVC supports these
+types of external outputs:
 
 1. Local files and directories outside of your dvc repository;
 2. Amazon S3;
@@ -10,16 +12,17 @@ Currently DVC supports such types of external outputs:
 4. SSH;
 5. HDFS;
 
-In order to specify an external output for your stage use usual `-o` and `-O`
-keys with URLs pointing to your desired files. For cached external outputs
-(specified using `-o`) you will need to setup an external cache location, that
-will be used by dvc to store versions of your external file. Non-cached external
+In order to specify an external output for a stage file use the usual `-o` and
+`-O` options with the `dvc run` command, but with URLs pointing to your desired
+files. For cached external outputs (specified using `-o`) you will need to setup
+an [external cache](/doc/commands-reference/config#cache) location that will be
+used by dvc to store versions of your external file. Non-cached external
 outputs(specified using `-O`) do not require external cache to be setup.
 
 ## Examples
 
-As an example, let's take a look at DVC stages that simply moves local file
-to/from external location:
+As an example, let's take a look at a [stage](/doc/commands-reference/run) that
+simply moves local file to/from external location:
 
 ### Local
 

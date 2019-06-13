@@ -38,21 +38,27 @@ contributing!
 - Make sure that you have python 3 installed. Version 3.6 or higher is required
   to run style checkers on pre-commit. On Mac OS, use `brew` to install the
   latest version of python.
-- Install DVC in editable mode with `pip install -e .[all,tests]`.
-  We **strongly** recommend initializing a
+- Install DVC in editable mode with `pip install -e '.[all,tests]'`. We
+  **strongly** recommend initializing a
   [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
   installing the required libraries. For example:
   ```dvc
   $ cd dvc
   $ virtualenv --python python3 .env
   $ source .env/bin/activate
-  $ pip install -e .[all,tests]
+  $ pip install -e '.[all,tests]'
   ```
 - Install coding style pre-commit hooks with
+
   ```dvc
   $ pip install pre-commit
   $ pre-commit install
   ```
+
+  > Note: the single quotes (`''`) used to wrap the dependencies, which are to
+  > be installed, are only compulsory when using `zsh`. In `bash`, installation
+  > commands can work even without them. For example,
+  > `pip install -e .[all,tests]`.
 
 That should be it. You should be ready to make changes, run tests do commits! If
 you experience any problems, please don't hesitate to ping us in our
@@ -120,12 +126,12 @@ related code you might need to go through steps below.
 Install requirements for whatever remote(s) you are going to test:
 
 ```dvc
-$ pip install -e .[s3]
-$ pip install -e .[gs]
-$ pip install -e .[azure]
-$ pip install -e .[ssh]
+$ pip install -e '.[s3]'
+$ pip install -e '.[gs]'
+$ pip install -e '.[azure]'
+$ pip install -e '.[ssh]'
 # or
-$ pip install -e .[all]
+$ pip install -e '.[all]'
 ```
 
 You will need to update your `ENV` throughout subsequent steps, so we created a
@@ -253,28 +259,6 @@ $ ./scripts/ci/remove_hadoop.sh
 ```
 
 </details>
-
-## Running development version
-
-To run DVC from its Git repository you need to setup your environment:
-
-- Export `DVC_HOME` variable that is pointing to the root of your repository:
-
-  ```dvc
-  $ export DVC_HOME=/home/user/git/dvc
-  ```
-
-- Modify and export `PATH` variable to include location of our wrapper script:
-
-  ```dvc
-  $ export PATH=$PATH:$DVC_HOME/bin
-  ```
-
-- Check that `dvc` points to your repository:
-  ```dvc
-  $ which dvc
-  /home/user/git/dvc/bin/dvc
-  ```
 
 ## Code style guidelines
 
