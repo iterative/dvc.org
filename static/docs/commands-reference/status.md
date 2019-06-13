@@ -58,10 +58,10 @@ shown, and additionally a status word is shown describing the change:
 - For the local workspace:
   - _changed deps_ means the DVC-file has changed dependencies
   - _changed outs_ means the DVC-file has changed outputs
-  - _changed checksum_ means actual checksum of the DVC-file doesn't match the one specified in it
-    in DVC-files
-  - _always changed_ means that this is a special DVC-file with no dependencies, which is considered
-    always changed
+  - _changed checksum_ means actual checksum of the DVC-file doesn't match the
+    one specified in it in DVC-files
+  - _always changed_ means that this is a special DVC-file with no dependencies,
+    which is considered always changed
 - For comparison against a remote cache:
   - _new_ means the file exists in the local cache but not the remote cache
   - _deleted_ means the file does not exist in the local cache, and exists in
@@ -125,12 +125,15 @@ $ dvc status
 
 bar.dvc:
         changed deps:
-                changed:      bar
+                modified:      bar
         changed outs:
-                changed:      foo
+                not in cache:      foo
 foo.dvc
         changed outs:
-                changed:      foo
+                deleted:      foo
+prepare.dvc
+        changed outs:
+                new:      bar
 ```
 
 This shows that for `bar.dvc` the dependency, `foo`, has changed, and the
@@ -149,7 +152,7 @@ Pipeline is up to date. Nothing to reproduce.
 $ dvc status model.p.dvc --with-deps
 matrix-train.p.dvc
     changed deps:
-            changed:  code/featurization.py
+            modified:  code/featurization.py
 ```
 
 If the `dvc status` command is limited to a target that had no changes, result
