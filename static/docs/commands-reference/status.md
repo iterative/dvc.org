@@ -62,6 +62,10 @@ shown, and additionally a status word is shown describing the change:
     one specified in it in DVC-files
   - _always changed_ means that this is a special DVC-file with no dependencies,
     which is considered always changed
+  - _new_ means the DVC-file has been created but not added into local cache
+  - _modified_ means the dependecies and output is changed in the DVC-file
+  - _deleted_ means the DVC-file has been deleted from local cache
+  - _not in cache_ means the DVC-file no longer exist in local cache
 - For comparison against a remote cache:
   - _new_ means the file exists in the local cache but not the remote cache
   - _deleted_ means the file does not exist in the local cache, and exists in
