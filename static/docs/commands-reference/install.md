@@ -17,7 +17,7 @@ automatically.
 
 Namely:
 
-**Checkout** For any given SCM branch or tag, the SCM checks-out the DVC files
+**Checkout** For any given Git branch or tag, the Git checks-out the DVC files
 corresponding to that branch or tag. The DVC files in turn refer to data files
 in the DVC cache by checksum. When switching from one SCM branch or tag to
 another the SCM retrieves the corresponding DVC files. By default that leaves
@@ -27,7 +27,7 @@ so that the data files will match the current DVC files.
 
 The installed Git hook automates running `dvc checkout`.
 
-**Commit** When committing a change to the SCM repository, that change possibly
+**Commit** When committing a change to the Git repository, that change possibly
 requires rerunning the pipeline to reproduce the workspace results, which is a
 reminder to run `dvc repro`. Or there might be files not yet in the cache, which
 is a reminder to run `dvc commit`.
@@ -35,17 +35,15 @@ is a reminder to run `dvc commit`.
 The installed Git hook automates reminding the user to run either `dvc repro` or
 `dvc commit`.
 
-**Push** Sharing data across environments and making changes to remote storage
-is done by `dvc push`. This command searches and saves(if not saved yet) for all
-DVC-files from current workspace. Using checksums it finds for existing entries
-in the remote cache. After that `dvc push` uploads files from cache that are
-missing onto the remote storage.
+**Push** While publishing changes to the Git remote repository with `git push`,
+it easy to forget that `dvc push` command usually needs to be run to save
+corresponding changes in data files and directories that are under DVC control
+to the DVC remote storage.
 
-The installed Git hook automates executing `dvc push` and corresponds to the 
-remote and uploads files from local repository to remote cache not from other
-versions or branches.
+The installed Git hook automates executing `dvc push`.
+
  
-## Installed SCM hooks
+## Installed Git hooks
 
 - Git `pre-commit` hook executes `dvc status` before `git commit` to inform the
   user about the workspace status.
@@ -104,7 +102,7 @@ This data will be retrieved from a preconfigured remote cache.
 
 </details>
 
-## Example: Checkout both DVC and SCM
+## Example: Checkout both DVC and Git
 
 Let's start our exploration with the impact of `dvc install` on the
 `dvc checkout` command. Remember that switching from one SCM tag or branch to
