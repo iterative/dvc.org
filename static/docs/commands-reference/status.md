@@ -60,7 +60,7 @@ shown, and additionally a status word is shown describing the change:
   - _changed outs_ means the DVC-file has changed outputs
   - _changed checksum_ means actual checksum of the DVC-file doesn't match the one specified in it
     in DVC-files
-  - _always checksum_ means special dvc file with no dependencies, considered
+  - _always changed_ means that this is a special DVC-file with no dependencies, which is considered
     always changed
 - For comparison against a remote cache:
   - _new_ means the file exists in the local cache but not the remote cache
