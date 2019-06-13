@@ -38,8 +38,8 @@ principled way:
 
 5. Managing and sharing large data files.
 
-   - How do you share models trained in a GPU environment with colleagues who do
-     not have access to a GPU?
+   - How do you share models trained in a GPU environment with colleagues who
+     don't have access to a GPU?
 
    - How do you share the entire 147 GB of your project, with all of its data
      sources, intermediate data files, and models?

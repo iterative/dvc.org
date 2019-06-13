@@ -96,7 +96,7 @@ have large dataset or model files.
 
 On the other hand, if we want to keep the current version of code and go back to
 the previous dataset only, we can do something like this (make sure that you
-don't have some uncommitted changes in the `data.dvc`):
+don't have uncommitted changes in the `data.dvc`):
 
 ```dvc
 $ git checkout v1.0 data.dvc

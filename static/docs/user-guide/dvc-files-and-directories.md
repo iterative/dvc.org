@@ -8,9 +8,9 @@ Once initialized in a project, DVC populates its installation directory
 
 - `.dvc/config.local` - this is a local configuration file, that will overwrite
   options in `.dvc/config`. This is useful when you need to specify private
-  options in your config, that you don't want to track and share through git.
-  The local config file can be edited by hand or with a special command:
-  `dvc config --local`.
+  options in your config that you don't want to track and share through Git
+  (credentials, private locations, etc). The local config file can be edited by
+  hand or with a special command: `dvc config --local`.
 
 - `.dvc/cache` - the [cache directory](#structure-of-cache-directory) will
   contain your data files. (The data directories of DVC repositories will only

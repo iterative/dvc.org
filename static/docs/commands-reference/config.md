@@ -36,8 +36,8 @@ corresponding config file.
 
 - `--local` - modify a local config file instead of `.dvc/config`. It is located
   in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-  specify private config options in your config, that you don't want to track
-  and share through Git.
+  specify private config options in your config that you don't want to track and
+  share through Git (credentials, private locations, etc).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

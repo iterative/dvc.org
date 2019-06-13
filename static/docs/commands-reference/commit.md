@@ -33,11 +33,11 @@ to save time rerunning the stage or pipeline.
   is finished, use `dvc add`, `dvc commit`, or `dvc run` when appropriate to
   update DVC-files and to store data to the cache.
 - Sometimes we want to clean up a code or configuration file in a way that does
-  not cause a result change. We might write in-line documentation with comments
-  (we do document our code don't we?), or change indentation, or comment-out
-  some debugging printouts, or any other change which does not introduce a
-  change in the pipeline result. `dvc commit` can help to avoid rerunning the
-  pipeline in these cases by forcing the update of the DVC-files.
+  not cause a result change. We might write in-line documentation with comments,
+  change indentation, remove some debugging printouts, or any other change which
+  doesn't introduce a change in the output of pipeline stages. `dvc commit` can
+  help avoid rerunning the pipeline in these cases by forcing the update of the
+  DVC-files.
 
 The last two use cases are **not recommended**, and essentially force update the
 DVC-files and save data to cache. They are still useful, but keep in mind that

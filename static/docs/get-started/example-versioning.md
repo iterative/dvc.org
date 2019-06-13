@@ -261,7 +261,7 @@ have large datasets, data files, or model.
 
 On the other hand, if we want to keep the current version of the code and go
 back to the previous dataset only, we can do something like this (make sure that
-you don't have some uncommitted changes in the `data.dvc`):
+you don't have uncommitted changes in the `data.dvc`):
 
 ```dvc
 $ git checkout v1.0 data.dvc

@@ -28,10 +28,12 @@ file, as they are expected in the config file.
 - `--system` - modify a system config file (e.g. `/etc/dvc.config`) instead of
   `.dvc/config`.
 
-- `--local` - modify a local config file instead of `.dvc/config`. It is located
-  in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-  specify private config options in your config, that you don't want to track
-  and share through Git.
+- `--local` - modify a local
+  [config file](/doc/user-guide/dvc-files-and-directories) instead of
+  `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored. This
+  is useful when you need to specify private config options in your config that
+  you don't want to track and share through Git (credentials, private locations,
+  etc).
 
 - `-u`, `--unset` - remove the `cache.dir` config option from the config file.
   Don't provide a `value` when using this flag.

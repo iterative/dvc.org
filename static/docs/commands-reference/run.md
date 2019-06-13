@@ -106,11 +106,11 @@ be no cycles, etc.
   is used by `dvc repro` to change the working directory before running the
   command.
 
-- `--no-exec` - create a stage file, but do not run the command specified and do
-  not take dependencies or outputs under DVC control. In the DVC-file contents,
-  the `md5` hash sums will be empty; They will be populated the next time this
-  stage is actually executed. This command is useful, if for example, you need
-  to build a pipeline (computational graph) first, and then run it all at once.
+- `--no-exec` - create a stage file, but do not run the command specified nor
+  take dependencies or outputs under DVC control. In the DVC-file contents, the
+  `md5` hash sums will be empty; They will be populated the next time this stage
+  is actually executed. This command is useful, if for example, you need to
+  build a pipeline (computational graph) first, and then run it all at once.
 
 - `-y`, `--yes` - deprecated, use `--overwrite-dvcfile` instead.
 
