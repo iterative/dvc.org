@@ -64,11 +64,11 @@ to work with directory hierarchies with `dvc add`.
    DVC-file, and a corresponding DVC cache entry is made (unless `--no-commit`
    flag is added).
 2. When not using `--recursive` a DVC-file is created for the top of the
-   directory (`dirname.dvc`), and every file in the hierarchy is added to the
-   DVC cache (unless `--no-commit` flag is added), but these files do not have
-   individual DVC-files. Instead the DVC-file for the directory has a
-   corresponding file in the DVC cache containing references to the files in the
-   directory hierarchy.
+   directory (with default name `dirname.dvc`). Every file in the hierarchy is
+   added to the DVC cache (unless `--no-commit` flag is added), but DVC does not
+   produce individual DVC-files for each file in the directory tree. Instead,
+   the single DVC-file points to a file in the DVC cache that contains
+   references to the files in the added hierarchy.
 
 In a DVC project `dvc add` can be used to version control any data artifacts -
 input, intermediate, output files and directories, as well as model files. It is

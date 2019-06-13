@@ -296,9 +296,9 @@ $ dvc metrics show
   auc.metric: 0.620091
 ```
 
-It's time to save the pipeline. You can check using `git status` command that we
-do not save pickle model files or initial data sets into Git. We are just saving
-a snapshot of the DVC-files that describe data and code versions and
+It's time to save the pipeline. You can confirm that we do not save pickle model
+files or initial data sets into Git using the `git status` command. We are just
+saving a snapshot of the DVC-files that describe data and code versions and
 relationships between them.
 
 ```dvc
