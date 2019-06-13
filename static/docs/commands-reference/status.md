@@ -56,7 +56,7 @@ differ are listed. For each item listed, either the file name or the checksum is
 shown, and additionally a status word is shown describing the change:
 
 - For the local workspace:
-  - _changed deps_ means the named file has changed dependencies
+  - _changed deps_ means the DVC-file has changed dependencies
   - _changed outs_ means the named file has changed outputs
   - _changed checksum_ means actual checksum of the DVC-file doesn't match the one specified in it
     in DVC-files
