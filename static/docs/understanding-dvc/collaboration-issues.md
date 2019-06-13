@@ -19,9 +19,10 @@ principled way:
 
 2. Experiment time log.
 
-   - How do you track which of the hyperparameter changes contributed the most
-     to producing your target metric? How do you monitor the extent of each
-     change?
+   - How do you track which of the
+     [hyperparameter](<https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)>)
+     changes contributed the most to producing your target metric? How do you
+     monitor the extent of each change?
 
 3. Navigating through experiments.
 
