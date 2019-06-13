@@ -28,7 +28,7 @@ so that the data files will match the current DVC-files.
 The installed Git hook automates running `dvc checkout`.
 
 **Commit** When committing a change to the Git repository, that change possibly
-requires rerunning the [pipeline](https://dvc.org/doc/get-started/pipeline) to
+requires rerunning the [pipeline](/doc/get-started/pipeline) to
 reproduce the workspace results, which is a reminder to run `dvc repro`. Or
 there might be files not yet in the cache, which is a reminder to run
 `dvc commit`.
@@ -43,7 +43,7 @@ to the DVC remote storage.
 
 The installed Git hook automates executing `dvc push`.
 
- 
+
 ## Installed Git hooks
 
 - Git `pre-commit` hook executes `dvc status` before `git commit` to inform the

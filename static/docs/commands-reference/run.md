@@ -1,7 +1,6 @@
 # run
 
-Generate a stage file
-([DVC-file](https://dvc.org/doc/user-guide/dvc-file-format)) from a given
+Generate a stage file ([DVC-file](/doc/user-guide/dvc-file-format)) from a given
 command and execute the command.
 
 ## Synopsis

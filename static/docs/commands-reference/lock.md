@@ -1,6 +1,6 @@
 # lock
 
-Lock a [DVC-file](https://dvc.org/doc/user-guide/dvc-file-format)
+Lock a [DVC-file](/doc/user-guide/dvc-file-format)
 ([stage](/doc/commands-reference/run)). Use `dvc unlock` to unlock the file.
 
 If DVC-file is locked the stage is considered _done_ and `dvc repro` will not

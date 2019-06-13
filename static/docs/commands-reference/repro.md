@@ -1,7 +1,6 @@
 # repro
 
-Rerun commands recorded in the
-[pipeline](https://dvc.org/doc/get-started/pipeline)
+Rerun commands recorded in the [pipeline](/doc/get-started/pipeline)
 [stages](/doc/commands-reference/run) in the same order. Commands to rerun are
 determined by recursively analyzing which stages and changes in their
 dependencies to find only those that have to be rerun.

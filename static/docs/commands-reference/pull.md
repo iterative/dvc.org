@@ -49,8 +49,8 @@ and are referenced in the current workspace. It can be used to see what files
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those DVC-files. Using the `--with-deps` option DVC tracks dependencies
-backward through the [pipeline](https://dvc.org/doc/get-started/pipeline) to
-find data files to pull.
+backward through the [pipeline](/doc/get-started/pipeline) to find data files to
+pull.
 
 After data file is in cache DVC, `dvc pull` uses OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace without copying. See
@@ -148,7 +148,7 @@ default remote. The only files considered in this case are what is listed in the
 ## Examples: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-[pipeline](https://dvc.org/doc/get-started/pipeline) has been setup with these
+[pipeline](/doc/get-started/pipeline) has been setup with these
 [stages](/doc/commands-reference/run):
 
 ```dvc

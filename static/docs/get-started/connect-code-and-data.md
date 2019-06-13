@@ -41,8 +41,8 @@ $ tree
 ```
 
 We **strongly** recommend using
-[`virtualenv`](https://virtualenv.pypa.io/en/stable/) or a similar tool to
-isolate your environment:
+[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool to isolate
+your environment:
 
 ```dvc
 $ virtualenv .env

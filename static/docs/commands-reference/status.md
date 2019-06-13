@@ -1,8 +1,8 @@
 # status
 
-Show changes in the [pipeline](https://dvc.org/doc/get-started/pipeline) and
-mismatches either between the local cache and local files, or between the local
-cache and remote cache.
+Show changes in the [pipeline](/doc/get-started/pipeline) and mismatches either
+between the local cache and local files, or between the local cache and remote
+cache.
 
 ## Synopsis
 

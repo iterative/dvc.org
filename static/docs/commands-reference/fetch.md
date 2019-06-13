@@ -47,7 +47,7 @@ your local cache. (Refer to `dvc remote` for more information on DVC remotes.)
 These necessary data or model files are listed as dependencies or outputs in a
 DVC-file (target [stage](/doc/commands-reference/run)) so they are required to
 [reproduce](/doc/get-started/reproduce) the
-[pipeline](https://dvc.org/doc/get-started/pipeline). (See
+[pipeline](/doc/get-started/pipeline). (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
 
@@ -172,9 +172,9 @@ bigram       <- use bigrams to improve the model
 ## Examples: Default behavior
 
 This project comes with a predefined HTTP
-[remote storage](https://man.dvc.org/remote). We can now just run `dvc fetch`
-that will download the most recent `model.pkl`, `data.xml`, and other files that
-are under DVC control into our local cache:
+[remote storage](/doc/commands-reference/remote). We can now just run
+`dvc fetch` that will download the most recent `model.pkl`, `data.xml`, and
+other files that are under DVC control into our local cache:
 
 ```dvc
 $ dvc status --cloud

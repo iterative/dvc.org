@@ -146,7 +146,7 @@ $ dvc push data.zip.dvc
 ## Examples: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-[pipeline](https://dvc.org/doc/get-started/pipeline) has been setup with these
+[pipeline](/doc/get-started/pipeline) has been setup with these
 [stages](/doc/commands-reference/run):
 
 ```dvc

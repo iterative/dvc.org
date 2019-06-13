@@ -86,8 +86,8 @@ including input dataset and metrics.
 
 Windows doesn't ship `wget` utility by default, so you'll need to use a browser
 to download `data.xml` and save it into `data` subdirectory. To download,
-right-click [this link](https://dvc.org/s3/examples/versioning/data.zip) and
-click `Save link as`(Chrome) or `Save object as`(Firefox).
+right-click [this link](/s3/examples/versioning/data.zip) and click
+`Save link as`(Chrome) or `Save object as`(Firefox).
 
 </details>
 

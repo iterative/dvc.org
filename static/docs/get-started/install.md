@@ -18,7 +18,7 @@ $ pip install dvc
 > include support for all remotes.
 
 As an easier option, self-contained binary packages are also available. Use the
-Download button in the [home page](https://dvc.org/) to the left or get them
+Download button in the [home page](/) to the left or get them
 [here](https://github.com/iterative/dvc/releases/). We also provide `deb`, `rpm`
 and `homebrew` repositories:
 

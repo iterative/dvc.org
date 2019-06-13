@@ -37,8 +37,7 @@ The execution of `dvc checkout` does:
 - Scan the `outs` entries in DVC-files to compare with the currently checked out
   data files. The scanned DVC-files is limited by the listed `targets` (if any)
   on the command line. And if the `--with-deps` option is specified, it scans
-  backward in the [pipeline](https://dvc.org/doc/get-started/pipeline) from the
-  named targets.
+  backward in the [pipeline](/doc/get-started/pipeline) from the named targets.
 - For any data files where the checksum doesn't match their DVC-file entry, the
   data file is restored from the cache. The link strategy used (`reflink`,
   `hardlink`, `symlink`, or `copy`) depends on the OS and the configured value
@@ -159,7 +158,7 @@ bigram       <- use bigrams to improve the model
 ```
 
 This project comes with a predefined HTTP
-[remote storage](https://man.dvc.org/remote). We can now just run `dvc pull`
+[remote storage](/doc/commands-reference/remote). We can now just run `dvc pull`
 that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
 files that are under DVC control. The model file checksum
 `3863d0e317dee0a55c4e59d2ec0eef33` is specified in the `train.dvc` file:
