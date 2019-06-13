@@ -21,13 +21,13 @@ file is committed to the DVC cache. Using the `--no-commit` option, the file
 will not be added to the cache and instead the `dvc commit` command is used when
 (or if) the file is to be committed to the DVC cache.
 
-Under the hood a few actions are taken for each file in the target(s):
+Under the hood, a few actions are taken for each file in the target(s):
 
 1. Calculate the file checksum.
 2. Move the file content to the DVC cache (default location is `.dvc/cache`).
 3. Replace the file by a link to the file in the cache (see details below).
-4. Create a corresponding DVC-file (`.dvc` extension) and store the checksum to
-   identify the cache entry.
+4. Create a corresponding [DVC-file](/doc/user-guide/dvc-file-format) and store
+   the checksum to identify the cache entry.
 5. Add the _target_ filename to `.gitignore` (if Git is used in this workspace)
    to prevent it from being committed to the Git repository.
 6. Instructions are printed showing `git` commands for adding the files to a Git
@@ -35,15 +35,18 @@ Under the hood a few actions are taken for each file in the target(s):
    command for that system or nothing is printed if `--no-scm` was specified for
    the repository.
 
-The result is data file is added to the DVC cache, and DVC metafiles (`.dvc`)
-can be tracked via Git or other version control system. The DVC-file (metafile)
-lists the added file as an `out` (output) of the DVC-file, and references the
-DVC cache entry using the checksum. See
-[DVC-File Format](/doc/user-guide/dvc-file-format) for the detailed description
-of the DVC _metafile_ format.
+Unless the `-f` options is used, by default the DVC-file name generated is
+`<file>.dvc`, where `<file>` is file name of the first output (from `targets`).
+If neither `-f`, nor outputs are specified, the stage name defaults to
+`Dvcfile`.
+
+The result is data file is added to the DVC cache, and DVC-files can be tracked
+via Git or other version control system. The DVC-file lists the added file as an
+output (`out`), and references the DVC cache entry using the checksum. See
+[DVC-File Format](/doc/user-guide/dvc-file-format) for more details.
 
 > Note that DVC-files created by this command are _orphans_: they have no
-> dependencies. _Orphaned_ "stage files" are always considered _changed_ by
+> dependencies. _Orphan_ "stage files" are always considered _changed_ by
 > `dvc repro`, which always executes them.
 
 By default DVC tries to use reflinks (see
@@ -58,8 +61,8 @@ to work with directory hierarchies with `dvc add`.
 
 1. With `dvc add --recursive`, the hierarchy is traversed and every file is
    added individually as described above. This means every file has its own
-   `.dvc` file, and a corresponding DVC cache entry is made (unless
-   `--no-commit` flag is added).
+   DVC-file, and a corresponding DVC cache entry is made (unless `--no-commit`
+   flag is added).
 2. When not using `--recursive` a DVC-file is created for the top of the
    directory (`dirname.dvc`), and every file in the hierarchy is added to the
    DVC cache (unless `--no-commit` flag is added), but these files do not have
@@ -92,9 +95,12 @@ This way you bring data provenance and make your project reproducible.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `-f`, `--file` - specify name of the DVC-file it generates. It should be
-  either `Dvcfile` or have a `.dvc` file extension (e.g. `data.dvc`) in order
-  for `dvc` to be able to find it later.
+- `-f`, `--file` - specify name of the DVC-file it generates. By default the
+  DVC-file name generated is `<file>.dvc`, where `<file>` is file name of the
+  first output (from `targets`). The stage file is placed in the same directory
+  where `dvc run` is run by default, but `-f` can be used to change this
+  location, by including a path in the provided value (e.g.
+  `-f stages/stage.dvc`).
 
 ## Examples: Single file
 
@@ -131,7 +137,7 @@ outs:
     md5: d8acabbfd4ee51c95da5d7628c7ef74b
     metric: false
     path: data.xml.jpg
-meta: #key to contain arbitary user data
+meta: # Special key to contain arbitary user data
   name: John
   email: john@xyz.com
 ```
@@ -139,8 +145,9 @@ meta: #key to contain arbitary user data
 This is a standard DVC-file with only an `outs` entry. The checksum should
 correspond to an entry in the cache.
 
-If user overwrites the `.dvc` file, comments and meta values are not preserved
-between multiple executions of `dvc add` command.
+> Note that the `meta` values above were entered manually for this example. Meta
+> values and `#` comments are not preserved when a DVC-file is overwritten with
+> the `dvc add` command.
 
 ```dvc
 $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b

@@ -40,10 +40,10 @@ DVC uses a few core concepts:
 - **Workflow** - set of experiments and relationships among them. Workflow
   corresponds to the entire Git repository.
 
-- **Data files** - cached files (for large files). For data files the file
-  content is stored outside of the Git repository on a local hard drive, but
-  data file metadata is stored in Git for DVC needs (to maintain pipelines and
-  reproducibility).
+- **Data files** - cached files (for large files). Data files are stored outside
+  of the Git repository on a local/shared hard drive or remote storage, but
+  [DVC-files](/doc/user-guide/dvc-file-format) describing that data are stored
+  in Git for DVC needs (to maintain pipelines and reproducibility).
 
 - **Data cache** - directory with all data files on a local hard drive or in
   cloud storage, but not in the Git repository.

@@ -20,8 +20,8 @@ positional arguments:
 
 ## Description
 
-DVC-file (`target`) can have any name followed by the `.dvc` file extension. If
-file name is omitted, `Dvcfile` will be used by default.
+If the [DVC-file](/doc/user-guide/dvc-file-format) (`target`) is omitted,
+`Dvcfile` will be assumed.
 
 `dvc repro` provides an interface to rerun the commands in the computational
 graph (a.k.a. pipeline) defined by the connected stages (DVC-files) in the

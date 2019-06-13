@@ -17,7 +17,7 @@ automatically.
 
 Namely:
 
-**Checkout** For any given SCM branch or tag, the SCM checks-out the DVC-files
+**Checkout** For any given SCM branch or tag, the Git checks-out the DVC-files
 corresponding to that branch or tag. The DVC-files in turn refer to data files
 in the DVC cache by checksum. When switching from one SCM branch or tag to
 another the SCM retrieves the corresponding DVC-files. By default that leaves
@@ -27,7 +27,7 @@ so that the data files will match the current DVC-files.
 
 The installed Git hook automates running `dvc checkout`.
 
-**Commit** When committing a change to the SCM repository, that change possibly
+**Commit** When committing a change to the Git repository, that change possibly
 requires rerunning the [pipeline](https://dvc.org/doc/get-started/pipeline) to
 reproduce the workspace results, which is a reminder to run `dvc repro`. Or
 there might be files not yet in the cache, which is a reminder to run
@@ -36,12 +36,22 @@ there might be files not yet in the cache, which is a reminder to run
 The installed Git hook automates reminding the user to run either `dvc repro` or
 `dvc commit`.
 
-## Installed SCM hooks
+**Push** While publishing changes to the Git remote repository with `git push`,
+it easy to forget that `dvc push` command usually needs to be run to save
+corresponding changes in data files and directories that are under DVC control
+to the DVC remote storage.
+
+The installed Git hook automates executing `dvc push`.
+
+ 
+## Installed Git hooks
 
 - Git `pre-commit` hook executes `dvc status` before `git commit` to inform the
   user about the workspace status.
 - Git `post-checkout` hook executes `dvc checkout` after `git checkout` to
   automatically synchronize the data files with the new workspace state.
+- Git `pre-push` hook executes `dvc push` before `git push` to upload files
+  and directories under DVC control to remote.
 
 ## Options
 
@@ -93,7 +103,7 @@ This data will be retrieved from a preconfigured remote cache.
 
 </details>
 
-## Example: Checkout both DVC and SCM
+## Example: Checkout both DVC and Git
 
 Let's start our exploration with the impact of `dvc install` on the
 `dvc checkout` command. Remember that switching from one SCM tag or branch to
@@ -259,3 +269,5 @@ other files but we must now commit some files to the Git repository. Looking
 closely we see that `dvc status` is again run, informing us that the data files
 are synchronized with the statement: _Pipeline is up to date. Nothing to
 reproduce_.
+
+
