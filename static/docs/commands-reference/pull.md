@@ -81,7 +81,7 @@ reflinks or hardlinks to put it in the workspace without copying. See
   backward through the pipeline from the named target(s). This means DVC will
   not pull files referenced later in the pipeline than the named target(s).
 
-- `-f`, `--force` - does not prompt when removing working directory files, which
+- `-f`, `--force` - do not prompt when removing working directory files, which
   occurs during the process of updating the workspace. This option surfaces
   behavior from the `dvc checkout` command because `dvc pull` in effect performs
   a _checkout_ after downloading files.
