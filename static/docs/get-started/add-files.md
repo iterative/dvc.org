@@ -28,9 +28,9 @@ any **file** or a **directory**:
 $ dvc add data/data.xml
 ```
 
-DVC stores information about your data file in a special `.dvc` file, that has a
-human-readable [description](/doc/user-guide/dvc-file-format) and can be
-committed to Git to track versions of your file:
+DVC stores information about your data file in a special DVC-file, that has a
+human-readable [format](/doc/user-guide/dvc-file-format) and can be committed to
+Git to track versions of your file:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
@@ -55,7 +55,7 @@ $ ls -R .dvc/cache
 ```
 
 where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file.
-And if you check the `data/data.xml.dvc` meta-file you will see that it has this
+And if you check the `data/data.xml.dvc` DVC-file you will see that it has this
 hash inside.
 
 </details>

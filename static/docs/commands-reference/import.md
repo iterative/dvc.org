@@ -22,7 +22,8 @@ project might produce occasional data files that are used in other projects, for
 example. ETL pipeline running regularly updates some data file. A shared dataset
 on a remote storage that is managed and updated outside DVC.
 
-DVC supports `.dvc` files which refer to an external data location, see
+DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to an
+external data location, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such a DVC
 file, the `deps` section lists a remote URL specification, and the `outs`
 section lists the corresponding local path name in the workspace. It records
@@ -89,9 +90,11 @@ to test its current status.
 - `--resume` - resume previously started download. This is useful if the
   connection to the remote resource is unstable.
 
-- `-f`, `--file` - specify name of the DVC-file it generates. It should be
-  either `Dvcfile` or have a `.dvc` file extension (e.g. `data.dvc`) in order
-  for `dvc` to be able to find it later.
+- `-f`, `--file` - specify name of the DVC-file it generates. By default the
+  DVC-file name generated is `<file>.dvc`, where `<file>` is file name of the
+  output (`out`). The stage file is placed in the same directory where `dvc run`
+  is run by default, but `-f` can be used to change this location, by including
+  a path in the provided value (e.g. `-f stages/stage.dvc`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -199,8 +202,8 @@ The `etag` field in the DVC-file contains the ETag recorded from the HTTP
 request. If the remote file changes, the ETag changes, letting DVC know when the
 file has changed.
 
-While executing `dvc import` command, if user overwrites the `.dvc` file,
-comments and meta values are not preserved between multiple executions.
+> See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
+> text format above.
 
 ## Example: Detecting remote file changes
 

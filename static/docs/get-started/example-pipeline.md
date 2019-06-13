@@ -89,8 +89,9 @@ in general and a user does not interact with these files directly. Check
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
-When we run `dvc add Posts.xml.zip` the following happens. DVC creates an
-_orphaned_ version of the [DVC-file](/doc/user-guide/dvc-file-format):
+When we run `dvc add` `Posts.xml.zip`, DVC creates a
+[DVC-file](/doc/user-guide/dvc-file-format) with no dependencies, a.k.a. and
+"_orphan_ stage file":
 
 ```yaml
 md5: 4dbe7a4e5a0d41b652f3d6286c4ae788
@@ -111,7 +112,7 @@ It's enough to run `dvc checkout` or `dvc pull` to restore data files.
 
 </details>
 
-- Commit the data file meta-information to Git repository:
+- Commit the changes to Git repository:
 
 ```dvc
 $ git add data/Posts.xml.zip.dvc data/.gitignore
@@ -229,8 +230,8 @@ $ dvc run -d code/evaluate.py -d data/model.pkl -d data/matrix-test.pkl \
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and outputs DVC-files describe we can restore the full
-chain (DAG) of commands we need to apply. This is important when you run
+By analyzing dependencies and outputs in DVC-files, we can restore the full
+chain of commands (DAG) we need to apply. This is important when you run
 `dvc repro` to reproduce the final or intermediate result.
 
 `dvc pipeline show` helps to visualize the pipeline (run it with `-c` option to

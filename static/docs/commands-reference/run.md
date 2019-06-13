@@ -32,10 +32,10 @@ data and caches data artifacts along the way. Check this
 [example](/doc/get-started/example-pipeline) to learn more and try to build a
 pipeline.
 
-By default, unless `-f` options is specified, the DVC-file name generated is
-`<file>.dvc` where `<file>` is the file name of the first output (`-o`, `-O`, or
-`-M` option). If neither `-f`, nor outputs (with `-o`, `-O`, `-M` options) are
-specified, the stage name defaults to `Dvcfile`.
+Unless the `-f` options is used, by default the DVC-file name generated is
+`<file>.dvc`, where `<file>` is file name of the first output (`-o`, `-O`, or
+`-M` option). If neither `-f`, nor outputs are specified, the stage name
+defaults to `Dvcfile`.
 
 Since `dvc run` provides a way to build a graph of computations, using
 dependencies and outputs to connect different stages it checks computational
@@ -78,9 +78,9 @@ be no cycles, etc.
 
 - `-m`, `--metrics` - another kind of output files. It is usually a small human
   readable file (JSON, CSV, text, whatnot) with some numbers or other
-  meta-information that describes a model or other outputs. Check `dvc metrics`
-  to learn more about tracking metrics and comparing them across different model
-  or experiment versions.
+  information that describes a model or other outputs. Check `dvc metrics` to
+  learn more about tracking metrics and comparing them across different model or
+  experiment versions.
 
 - `-M`, `--metrics-no-cache` - the same as `-m` except files are not put
   automatically under DVC control. It means that they are not cached, and it's
@@ -91,10 +91,9 @@ be no cycles, etc.
 
 - `-f`, `--file` - specify stage file name. By default the DVC-file name
   generated is `<file>.dvc`, where `<file>` is file name of the first output
-  (`-o`, `-O`, or `-M` option). If neither `-f`, nor outputs (with `-o`, `-O`,
-  `-M`) are specified, the stage name defaults to `Dvcfile`. By default stage
-  file is placed in the same directory `dvc run` is executed. `-f` can be used
-  to change this place, by including path into provided value (e.g.
+  (`-o`, `-O`, or `-M` option). The stage file is placed in the same directory
+  where `dvc run` is run by default, but `-f` can be used to change this
+  location, by including a path in the provided value (e.g.
   `-f stages/stage.dvc`).
 
 - `-c`, `--cwd` - deprecated, use `-f` and `-w` to change location and working
@@ -166,8 +165,8 @@ be no cycles, etc.
     git add .gitignore metric.dvc
   ```
 
-  While executing `dvc run`, if the user overwrites the `.dvc` file, comments
-  and meta values are not preserved between multiple executions.
+> See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
+> text format above.
 
 - Execute a Python script as a DVC pipeline stage. The stage file name is not
   specified, so a `model.p.dvc` DVC-file is created:
