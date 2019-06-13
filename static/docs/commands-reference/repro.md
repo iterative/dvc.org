@@ -91,10 +91,10 @@ option is specified) and updates DVC-files with the new checksum information.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  all stages are up to date or if all stages are successfully rerun, otherwise
-  exit with 1. The command run by the stage is free to make output irregardless
-  of this flag.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
+  stages are up to date or if all stages are successfully rerun, otherwise exit
+  with 1. The command run by the stage is free to make output irregardless of
+  this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
