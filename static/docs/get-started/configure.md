@@ -60,7 +60,7 @@ $ dvc remote add -d s3remote s3://mybucket/myproject
 > This command is only shown for informational purposes. No need to actually run
 > it in order to continue with this guide.
 
-You can see, that DVC does not require installing any databases, servers, or
+You can see that DVC doesn't require installing any databases, servers, or
 warehouses. It can use bare S3 or SSH to store data, intermediate results, and
 your models.
 

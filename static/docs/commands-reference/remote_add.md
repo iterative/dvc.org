@@ -26,10 +26,10 @@ positional arguments:
 
 `name` and `url` are required. `url` specifies a location to store your data. It
 could be S3 path, SSH path, Azure, Google cloud, Aliyun OSS local directory,
-etc - see more examples below. If `url` is a local relative path, it will be
+etc. (See more examples below.) If `url` is a local relative path, it will be
 resolved relative to the current directory and saved to config relative to the
 config file location (see LOCAL example below). Whenever possible DVC will
-create a remote directory if does not exists yet. It won't create an S3 bucket
+create a remote directory if it doesn't exists yet. It won't create an S3 bucket
 though and will rely on default access settings.
 
 > If you installed DVC via `pip`, and depending on the remote type you plan to

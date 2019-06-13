@@ -213,7 +213,7 @@ Let's take a detailed look at what happens to the DVC cache as you run an
 experiment in a local workspace and push data to a remote cache. To set the
 example consider having created a workspace that contains some code and data,
 and having created a remote cache. In this section we'll show the cache of a
-very simple project, but the details of this project does not matter so much as
+very simple project, but the details of this project doesn't matter so much as
 what happens in the caches as data is pushed.
 
 Some work has been performed in the local workspace, and it contains new data to

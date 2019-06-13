@@ -32,12 +32,12 @@ to save time rerunning the stage or pipeline.
   or data, repeatedly manually executing the code until it is working. Once it
   is finished, use `dvc add`, `dvc commit`, or `dvc run` when appropriate to
   update DVC-files and to store data to the cache.
-- Sometimes we want to clean up a code or configuration file in a way that does
-  not cause a result change. We might write in-line documentation with comments,
-  change indentation, remove some debugging printouts, or any other change which
-  doesn't introduce a change in the output of pipeline stages. `dvc commit` can
-  help avoid rerunning the pipeline in these cases by forcing the update of the
-  DVC-files.
+- Sometimes we want to clean up a code or configuration file in a way that
+  doesn't cause a change in its results. We might write in-line documentation
+  with comments, change indentation, remove some debugging printouts, or any
+  other change which doesn't introduce a change in the output of pipeline
+  stages. `dvc commit` can help avoid rerunning the pipeline in these cases by
+  forcing the update of the DVC-files.
 
 The last two use cases are **not recommended**, and essentially force update the
 DVC-files and save data to cache. They are still useful, but keep in mind that
@@ -50,8 +50,8 @@ to the DVC cache as the last step. What _commit_ means is that DVC:
 - Computes a checksum for the file/directory.
 - Enters the checksum and file name into the DVC-file.
 - Tells the SCM to ignore the file/directory (e.g. add entry to `.gitignore`).
-  If the workspace was initialized with no SCM support (`dvc init --no-scm`)
-  this does not happen.
+  Note that if the workspace was initialized with no SCM support
+  (`dvc init --no-scm`), this does not happen.
 - Adds the file/directory or to the DVC cache.
 
 There are many cases where the last step is not desirable (usually, rapid
@@ -157,8 +157,8 @@ $ dvc repro --no-commit evaluate.dvc
 ```
 
 We can run this command as many times as we like, editing `featurize.py` any way
-we like, and so long as we use `--no-commit` the data does not get saved to the
-DVC cache. But it is instructive to verify that's the case.
+we like, and so long as we use `--no-commit`, the data does not get saved to the
+DVC cache. But it is instructive to verify that's the case:
 
 First verification:
 
@@ -236,11 +236,10 @@ work is finalized `dvc commit` will commit everything to the cache.
 
 ## Example: Updating dependencies
 
-Sometimes we want to clean up a code or configuration file in a way that does
-not cause an execution change. We might write in-line documentation with
-comments (we do document our code don't we?), or change indentation, or
-comment-out some debugging printouts, or any other change which does not
-introduce a change in the pipeline result.
+Sometimes we want to clean up a code or configuration file in a way that doesn't
+cause a change in its results. We might write in-line documentation with
+comments, change indentation, remove some debugging printouts, or any other
+change which doesn't introduce a change in the output of pipeline stages.
 
 ```dvc
 $ git status -s

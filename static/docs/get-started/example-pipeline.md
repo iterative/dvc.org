@@ -29,7 +29,7 @@ nothing to do with DVC so far, it's just a simple preparation:
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` utility by default, so you'll need to use just use
+Windows doesn't ship `wget` utility by default, so you'll need to use just use
 your browser to download `code.zip`.
 
 </details>
@@ -85,7 +85,7 @@ $ dvc add data/Posts.xml.zip
 
 `dvc init` created a new directory `example/.dvc/` with `config`, `.gitignore`
 files and `cache` directory. These files and directories are hidden from a user
-in general and a user does not interact with these files directly. Check
+in general and a user doesn't interact with these files directly. Check
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 

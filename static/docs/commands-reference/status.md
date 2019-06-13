@@ -59,8 +59,8 @@ shown, and additionally a status word is shown describing the change:
   - _changed_ means the named file has changed
 - For comparison against a remote cache:
   - _new_ means the file exists in the local cache but not the remote cache
-  - _deleted_ means the file does not exist in the local cache, and exists in
-    the remote cache
+  - _deleted_ means the file doesn't exist in the local cache, but exists in the
+    remote cache
 
 For the _changed_ case, the `dvc repro` command is indicated.
 

@@ -62,7 +62,7 @@ Install required dependencies:
 $ pip install -r requirements.txt
 ```
 
-> **Note!** As of October 2018, Tensorflow does not support Python 3.7. Model
+> **Note!** As of October 2018, Tensorflow doesn't yet support Python 3.7. Model
 > training was tested on Python 2.7 and 3.6.
 
 <details>
@@ -71,7 +71,7 @@ $ pip install -r requirements.txt
 
 The repository you cloned is already DVC-initialized. There should be a `.dvc/`
 directory with `config`, `.gitignore` files. These files and directories are
-hidden from a user in general and a user does not interact with these files
+hidden from a user in general and a user doesn't interact with these files
 directly. Check
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
@@ -87,7 +87,7 @@ including input dataset and metrics.
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` utility by default, so you'll need to use a browser
+Windows doesn't ship `wget` utility by default, so you'll need to use a browser
 to download `data.xml` and save it into `data` subdirectory. To download,
 right-click [this link](https://dvc.org/s3/examples/versioning/data.zip) and
 click `Save link as`(Chrome) or `Save object as`(Firefox).
@@ -165,7 +165,7 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 
 ### Expand to learn more about DVC internals
 
-As we mentioned briefly, DVC does not commit `data` directory and `model.h5`
+As we mentioned briefly, DVC does not commit the `data` directory and `model.h5`
 file into git, `dvc add` pushed them into the DVC cache and added to the
 `.gitignore`. Instead, we commit DVC-files that serve as pointers to the cache
 (usually in the `.dvc/cache` directory inside the repository) where actual data

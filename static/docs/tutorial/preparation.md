@@ -17,8 +17,8 @@ code into it:
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` utility by default, so you'll need to use browser
-to download `code.zip`.
+Windows doesn't ship `wget` utility by default, so you'll need to use browser to
+download `code.zip`.
 
 </details>
 

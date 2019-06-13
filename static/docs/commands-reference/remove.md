@@ -7,7 +7,7 @@ from your _workspace_. It takes a [DVC-File](/doc/user-guide/dvc-file-format) as
 input, removes all of its outputs (`outs`), and optionally removes the file
 itself.
 
-Note that it _does not_ remove files from the DVC cache or remote storage (see
+Note that it does not remove files from the DVC cache or remote storage (see
 `dvc gc`). However, remember to run `dvc push` to save the files you actually
 want to use or share in the future.
 

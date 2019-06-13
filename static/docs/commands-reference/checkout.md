@@ -27,9 +27,9 @@ corresponding data files kept in the DVC cache. After an SCM command like
 branch or commit or tag. Afterwards, the `dvc checkout` command is required in
 order to synchronize the data files with the currently checked out DVC-files.
 
-This command must be executed after `git checkout` since Git does not handle
-files that are under DVC control. For convenience a Git hook is available,
-simply by running `dvc install`, that will automate running `dvc checkout` after
+This command must be executed after `git checkout` since Git doesn't track files
+that are under DVC control. For convenience a Git hook is available, simply by
+running `dvc install`, that will automate running `dvc checkout` after
 `git checkout`. See `dvc install` for more information.
 
 The execution of `dvc checkout` does:
@@ -39,8 +39,8 @@ The execution of `dvc checkout` does:
   on the command line. And if the `--with-deps` option is specified, it scans
   backward in the [pipeline](https://dvc.org/doc/get-started/pipeline) from the
   named targets.
-- For any data files where the checksum does not match with the DVC-file entry,
-  the data file is restored from the cache. The link strategy used (`reflink`,
+- For any data files where the checksum doesn't match their DVC-file entry, the
+  data file is restored from the cache. The link strategy used (`reflink`,
   `hardlink`, `symlink`, or `copy`) depends on the OS and the configured value
   for `cache.type` – See `dvc config cache`.
 
@@ -204,7 +204,7 @@ MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 
 This is because `git checkout` changed `featurize.dvc`, `train.dvc`, and other
 DVC-files. But it did nothing with the `model.pkl` and `matrix.pkl` files. Git
-does not manage those files, DVC does, and we must therefore do this:
+doesn't track those files, DVC does, so we must do this:
 
 ```dvc
 $ dvc fetch
