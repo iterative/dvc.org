@@ -19,6 +19,7 @@ system/environment:
 | `DVC version`     | Version of DVC (along with a Git commit hash in case of a development version)                                                                            |
 | `Python version`  | Version of the Python being used for the project in which DVC is initialized                                                                              |
 | `Platform`        | Information about the operating system of the machine                                                                                                     |
+| `Binary`          | Shows whether the package is installed from a binary release or source                                                                                    |
 | `Cache`           | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the DVC workspace and the cache directory |
 | `Filesystem type` | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of workspace and the cache directory                                                      |
 
@@ -65,12 +66,13 @@ Inside a DVC workspace:
 ```dvc
 $ dvc version
 
-DVC version: 0.41.3+bb3ee8
+DVC version: 0.41.3+f36162
 Python version: 3.7.1
-Platform: Linux-4.18.0-20-generic-x86_64-with-Ubuntu-18.04-bionic
+Platform: Linux-4.15.0-50-generic-x86_64-with-debian-buster-sid
+Binary: False
 Cache: reflink - False, hardlink - True, symlink - True
-Filesystem type (cache directory): ('ext4', '/dev/sda7')
-Filesystem type (workspace): ('ext4', '/dev/sda7'
+Filesystem type (cache directory): ('ext4', '/dev/sdb3')
+Filesystem type (workspace): ('ext4', '/dev/sdb3')
 ```
 
 Outside a DVC workspace:
@@ -78,8 +80,9 @@ Outside a DVC workspace:
 ```dvc
 $ dvc version
 
-DVC version: 0.41.3+bb3ee8
+DVC version: 0.41.3+f36162
 Python version: 3.7.1
-Platform: Linux-4.18.0-20-generic-x86_64-with-Ubuntu-18.04-bionic
-Filesystem type (workspace): ('ext4', '/dev/sda7')
+Platform: Linux-4.15.0-50-generic-x86_64-with-debian-buster-sid
+Binary: False
+Filesystem type (workspace): ('ext4', '/dev/sdb3')
 ```
