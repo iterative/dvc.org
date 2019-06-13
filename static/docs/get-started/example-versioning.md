@@ -62,9 +62,6 @@ Install required dependencies:
 $ pip install -r requirements.txt
 ```
 
-> **Note!** As of October 2018, Tensorflow doesn't yet support Python 3.7. Model
-> training was tested on Python 2.7 and 3.6.
-
 <details>
 
 ### Expand to learn more about DVC internals
