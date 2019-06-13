@@ -42,12 +42,14 @@ contributing!
   **strongly** recommend initializing a
   [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
   installing the required libraries. For example:
+
   ```dvc
   $ cd dvc
   $ virtualenv --python python3 .env
   $ source .env/bin/activate
   $ pip install -e '.[all,tests]'
   ```
+
 - Install coding style pre-commit hooks with
 
   ```dvc

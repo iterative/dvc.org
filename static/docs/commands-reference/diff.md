@@ -74,7 +74,8 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 ...
 ```
 
-Now let's create a virtual environment with `virtualenv` and install the
+Now let's create a virtual environment with
+[virtualenv](https://virtualenv.pypa.io/en/stable/) and install the
 requirements.
 
 ```dvc

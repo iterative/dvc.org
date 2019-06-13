@@ -47,7 +47,8 @@ $ cd example-versioning
 This command pulls a repository with a single script `train.py` that runs the
 training.
 
-(Optional) It's highly recommended to initialize a virtual environment to keep
+(Optional) It's highly recommended to initialize a virtual environment with
+[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool to keep
 your global packages clean and untouched:
 
 ```dvc
