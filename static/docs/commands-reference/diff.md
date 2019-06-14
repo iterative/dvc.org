@@ -30,8 +30,8 @@ files in each revision, like `git diff` does.
 If the `-t` option is used, the diff is limited to the `TARGET` file or
 directory specified.
 
-`dvc diff` doesn't have an effect when the repository is not tracked by the Git
-SCM, for example when `dvc init` was used with the `--no-scm` option
+Note that `dvc diff` does not have an effect when the repository is not tracked
+by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
 
 ## Options
 

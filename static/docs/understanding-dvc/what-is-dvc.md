@@ -50,4 +50,4 @@ DVC uses a few core concepts:
 
 - **Cloud storage** support is a complement to the core DVC features. This is
   how a data scientist transfers large data files or shares a GPU-trained model
-  to whom doesn't have GPUs available for this.
+  with those without GPUs available.

@@ -129,7 +129,7 @@ be no cycles, etc.
   `--no-exec` specified outputs are removed anyway. This option is enabled by
   default and deprecated. See `dvc remove` as well for more details.
 
-- `--no-commit` - doesn't save outputs to cache. Useful when running different
+- `--no-commit` - do not save outputs to cache. Useful when running different
   experiments and you don't want to fill up your cache with temporary files. Use
   `dvc commit` when you are ready to save your results to cache.
 
