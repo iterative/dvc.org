@@ -14,19 +14,19 @@ usage: dvc version [-h] [-q | -v]
 Running the command `dvc version` outputs the following information about the
 system/environment:
 
-| Type                 | Detail                                                                                                                                                    |
-| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`DVC version`](#vc) | Version of DVC (along with a Git commit hash in case of a development version)                                                                            |
-| `Python version`     | Version of the Python being used for the project in which DVC is initialized                                                                              |
-| `Platform`           | Information about the operating system of the machine                                                                                                     |
-| [`Binary`](#bin)     | Shows whether the package is installed from a binary release or source                                                                                    |
-| `Cache`              | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the DVC workspace and the cache directory |
-| `Filesystem type`    | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of workspace and the cache directory                                                      |
+| Type                                        | Detail                                                                                                                                                    |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash in case of a development version)                                                                            |
+| `Python version`                            | Version of the Python being used for the project in which DVC is initialized                                                                              |
+| `Platform`                                  | Information about the operating system of the machine                                                                                                     |
+| [`Binary`](#output-of-binary)               | Shows whether the package is installed from a binary release or source                                                                                    |
+| `Cache`                                     | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the DVC workspace and the cache directory |
+| `Filesystem type`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of workspace and the cache directory                                                      |
 
 > If `dvc version` is executed outside a DVC workspace, the command outputs the
 > filesystem type of the current working directory.
 
-#### <a name="vc">Components of DVC version</a>
+#### Components of DVC version
 
 The detail of DVC version depends upon the way of installing the project.
 
@@ -48,7 +48,7 @@ The detail of DVC version depends upon the way of installing the project.
   part is the git commit hash which is one of the commits in the `master` branch
   (also, optional suffix `.mod` means that code is modified).
 
-#### <a name="bin">Output of Binary</a>
+#### Output of Binary
 
 The detail of Binary depends upon the way of downloading a package.
 
@@ -71,10 +71,12 @@ The detail of Binary depends upon the way of downloading a package.
 * **`Binary: False`** - This output is displayed when DVC package is downloaded
   from:
 
-  - DVC's GitHub repository - raw source code is hosted.
-  - The Python Package Index (PyPI) - source code is stored as a python package.
-  - Homebrew package manager (for macOS systems) - source code is stored as
-    Python package.
+  - [DVC's GitHub repository](https://github.com/iterative/dvc) - raw source
+    code is hosted.
+  - [The Python Package Index (PyPI)](https://pypi.org/project/dvc/) - source
+    code is stored as a python package.
+  - [Homebrew package manager](https://github.com/iterative/homebrew-dvc) (for
+    macOS systems) - source code is stored as Python package.
 
   This method of setting up downloads the project's source code which is simply
   human understandable code and not compiled. A user has to follow certain setup
