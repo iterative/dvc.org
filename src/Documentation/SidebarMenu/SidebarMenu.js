@@ -17,12 +17,14 @@ export default class SidebarMenu extends React.Component {
     this.getName = this.getName.bind(this)
     this.getNamesArr = this.getNamesArr.bind(this)
   }
+
   collapse() {
     setTimeout(function() {
       $('[data-open=true]').slideDown()
       $('[data-open=false]').slideUp()
     })
   }
+
   getNamesArr() {
     let arr = {},
       promises = [],
@@ -46,10 +48,12 @@ export default class SidebarMenu extends React.Component {
       loading: false
     })
   }
+
   componentDidMount() {
     this.collapse()
     this.getNamesArr()
   }
+
   getName(labels = null, files = null, folder = null, indexFile = null) {
     let name
     if (labels && labels[indexFile]) {
@@ -59,6 +63,7 @@ export default class SidebarMenu extends React.Component {
     }
     return name
   }
+
   componentWillReceiveProps(nextProps) {
     let con1 = nextProps.currentFile !== this.props.currentFile
     let con2 = nextProps.currentSection !== this.props.currentSection
@@ -66,6 +71,7 @@ export default class SidebarMenu extends React.Component {
       this.collapse()
     }
   }
+
   render() {
     let self = this
     function includes(array, folder) {
@@ -104,7 +110,7 @@ export default class SidebarMenu extends React.Component {
                   <SectionLink
                     level={1}
                     href={getLinkHref(index)}
-                    onClick={e => onSectionSelect(index, e)}
+                    onClick={e => onSectionSelect(e, index)}
                     className={isSectionActive ? 'docSearch-lvl0' : ''}
                     isActive={isSectionActive}
                   >
@@ -132,8 +138,10 @@ export default class SidebarMenu extends React.Component {
                             <div>
                               <SectionLink
                                 level={2}
-                                href={getLinkHref(index, file.indexFile)}
-                                onClick={e => onFileSelect(file, index, e)}
+                                href={getLinkHref(index, null, file.indexFile)}
+                                onClick={e =>
+                                  onFileSelect(e, index, null, fileIndex)
+                                }
                                 isActive={isFileActive}
                               >
                                 {FileOrSubsectionTitle}
@@ -170,9 +178,9 @@ export default class SidebarMenu extends React.Component {
                                         )}
                                         onClick={e =>
                                           onFileSelect(
-                                            file2,
-                                            index,
                                             e,
+                                            index,
+                                            file2,
                                             fileIndex
                                           )
                                         }
