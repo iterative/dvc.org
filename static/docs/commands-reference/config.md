@@ -89,9 +89,9 @@ details.)
   The default value is `cache`, which resolved relative to the default project
   config location results in `.dvc/cache`.
 
-  > See also helper command `dvc cache dir` that properly transform paths
-  > relative to the present working directory into relative to the project
-  > config file.
+  > See also helper command `dvc cache dir` to intuitively set this config
+  > option, properly transforming paths relative to the present working
+  > directory into paths relative to the config file location.
 
 - `cache.protected` - makes files in the workspace read-only. Possible values
   are `true` or `false` (default). Run `dvc checkout` for the change go into

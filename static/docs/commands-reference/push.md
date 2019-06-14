@@ -264,7 +264,7 @@ $ tree ../vault/recursive
 The directory `.dvc/cache` is the local cache, while `../vault/recursive` is the
 remote cache. This listing clearly shows the local cache has more files in it
 than the remote cache. Therefore `new` literally means that new files exist in
-the local cache relative to this remote cache.
+the local cache compared to the remote.
 
 Next we can upload part of the data from the local cache to a remote using the
 command `dvc push --with-deps STAGE.dvc`. Remember that `--with-deps` searches

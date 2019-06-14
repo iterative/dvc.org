@@ -1,6 +1,7 @@
 # dir
 
-Sets the cache directory location.
+Set/unset the cache directory location intuitively (compared to using
+`dvc config cache`).
 
 ## Synopsis
 
@@ -15,10 +16,10 @@ positional arguments:
 
 ## Description
 
-Sets the `cache.dir` configuration option. Unlike doing so with
+Helper to set the `cache.dir` configuration option. Unlike doing so with
 `dvc config cache`, this command transform paths (`value`) that are provided
-relative to the present working directory into relative to the specified config
-file, as they are expected in the config file.
+relative to the present working directory into paths **relative to the config
+file location**. They are required in the latter form for the config file.
 
 ## Options
 
@@ -51,7 +52,7 @@ $ cat .dvc/config
 ...
 ```
 
-`../dir` has been resolved relative to `.dvc/config` location, resulting in
+`../dir` has been resolved relative to the `.dvc/` dir, resulting in
 `../../dir`.
 
 ## Examples: Using absolute path

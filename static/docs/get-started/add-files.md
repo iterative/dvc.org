@@ -22,7 +22,7 @@ $ wget https://dvc.org/s3/get-started/data.xml -O data/data.xml
 ```
 
 To take a file (or a directory) under DVC control just run `dvc add`, it accepts
-any **file** or a **directory**:
+any file or directory:
 
 ```dvc
 $ dvc add data/data.xml

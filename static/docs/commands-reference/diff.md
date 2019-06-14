@@ -117,7 +117,7 @@ reference these experiments.
 ### Click and expand to setup example
 
 Having followed the previous example's setup, move into the
-**example-get-started** directory. Then make sure that you have the latest code
+`example-get-started` directory. Then make sure that you have the latest code
 and data with the following commands.
 
 ```dvc

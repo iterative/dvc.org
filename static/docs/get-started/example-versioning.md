@@ -98,9 +98,9 @@ $ unzip data.zip
 $ rm -f data.zip
 ```
 
-This command downloads and extracts our initial dataset - **1000 labeled
-images** for training and 800 labeled images for validatation. In summary, it's
-a 43 MB dataset, with a directory structure like this:
+This command downloads and extracts our initial dataset - 1000 labeled images
+for training and 800 labeled images for validation. In summary, it's a 43 MB
+dataset, with a directory structure like this:
 
 ```sh
 data
@@ -186,9 +186,8 @@ $ unzip new-labels.zip
 $ rm -f new-labels.zip
 ```
 
-For simplicity we keep the validation dataset the same. Now our dataset has
-**2000 images** for training and 800 images for validation, with a total size of
-67 MB:
+For simplicity we keep the validation dataset the same. Now our dataset has 2000
+images for training and 800 images for validation, with a total size of 67 MB:
 
 ```sh
 data
@@ -288,17 +287,17 @@ place.
 
 ## Automating capturing
 
-`dvc add` is a perfectly reasonable choice when you need to keep track of
-different versions of datasets or model files that come and are updated from
-external sources. The `data` directory above with cats and dogs images is a good
-example.
+`dvc add` is appropriate when you need to keep track of different versions of
+datasets or model files that come and are updated from external sources. The
+`data` directory above (with cats and dogs images) is a good example.
 
 On the other hand, there are files that are a result of running some code. In
-our example, you should have noticed, that `train.py` produces binary files
-(e.g. `bottlneck_features_train.npy`), the model file `model.h5`, and the metric
-file `metrics.json`. **When you have a script that takes some data as an input
-and produces other data files, a better way to capture them is to use
-`dvc run`:**
+our example, please notice that `train.py` produces binary files (e.g.
+`bottlneck_features_train.npy`), the model file `model.h5`, and the metric file
+`metrics.json`.
+
+When you have a script that takes some data as an input and produces other data
+outputs, a better way to capture them is to use `dvc run`:
 
 ```dvc
 $ dvc remove -p model.h5.dvc
