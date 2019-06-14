@@ -129,9 +129,13 @@ be no cycles, etc.
   `--no-exec` specified outputs are removed anyway. This option is enabled by
   default and deprecated. See `dvc remove` as well for more details.
 
-- `--no-commit` - do not save outputs to cache. Useful when running different
-  experiments and you don't want to fill up your cache with temporary files. Use
-  `dvc commit` when you are ready to save your results to cache.
+- `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
+  entry is added to `.dvc/state`, while nothing is added to the cache. Use
+  `dvc commit` when you are ready to save your results to cache. Useful when
+  running different experiments and you don't want to fill up your cache with
+  temporary files.
+
+  > The `dvc status` command will mention that the file is `not in cache`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
