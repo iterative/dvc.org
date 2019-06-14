@@ -48,6 +48,41 @@ The detail of DVC version depends upon the way of installing the project.
   part is the git commit hash which is one of the commits in the `master` branch
   (also, optional suffix `.mod` means that code is modified).
 
+#### Output of Binary
+
+The detail of Binary depends upon the way of downloading a package.
+
+- **`Binary: True`** - This output is displayed when DVC package is downloaded as
+  a:
+
+  - Debian package (`.deb`) - file used to install a software in Linux
+    distributions like Ubuntu.
+  - Red Hat package (`.rpm`) - file used to install a software in Linux based
+    distributions such as Fedora, CentOS, etc.
+  - Windows executable (`.exe`) - file used to install packages for Windows.
+  - PKG file (`.pkg`) - file used to install packages for macOS.
+
+  All these files are bundled as a binary file which is the compiled version of
+  a software which means it has already been built as machine code and can be
+  understood by computer systems. In our case, we use
+  [PyInstaller](https://pythonhosted.org/PyInstaller/) to bundle our source code
+  into a binary package.
+
+* **`Binary: False`** - This output is displayed when DVC package is downloaded
+  from:
+
+  - DVC's GitHub repository - raw source code is hosted.
+  - The Python Package Index (PyPI) - source code is stored as a python package.
+  - Homebrew package manager (for macOS systems) - source code is stored as
+    python package.
+
+  This method of setting up downloads the project's source code which is simply
+  human understandable code and not compiled. A user has to follow certain setup
+  instructions to build the project and then use it. Some projects use a
+  `Makefile` to build their project from the source code. We include setup
+  instructions, written in `setup.py`, in our code which handles its compilation
+  and henceforth, setting it up for usage.
+
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.
