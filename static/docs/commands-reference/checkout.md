@@ -83,9 +83,10 @@ command. In other cases the cache can be pulled from a remote cache using the
 
 - `-f`, `--force` - do not prompt when removing workspace files. Changing the
   current set of DVC-files with SCM commands like `git checkout` can result in
-  the need for DVC to remove files which should not exist in the current state
-  and are missing in the local cache (they are not committed in DVC terms). This
-  option controls whether the user will be asked to confirm these files removal.
+  the need for DVC to remove data files which should not exist in the current
+  project version, and which are missing from the local cache (when they haven't
+  been committed to DVC). This option controls whether the user will be asked to
+  confirm the removal of these files.
 
 - `-R`, `--recursive` - performs recursive checkout for target directory.
 
