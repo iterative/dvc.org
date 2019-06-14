@@ -2,14 +2,14 @@
 
 We welcome contributions to [DVC](https://github.com/iterative/dvc) by the
 community. Check the
-[Contributing to the Documentation](https://dvc.org/doc/user-guide/contributing-documentation)
+[Contributing to the Documentation](/doc/user-guide/contributing-documentation)
 guide if you want to fix or update the documentation or this website.
 
 ## How to report a problem
 
 Please search [issue tracker](https://github.com/iterative/dvc/issues) before
 creating a new issue (problem or an improvement request). Feel free to add
-issues related to the project and [dvc.org](https://dvc.org) site.
+issues related to the project and [dvc.org](https://dvc.org/) site.
 
 If you feel that you can fix or implement it, please read a few paragraphs below
 to learn how to submit your changes.
@@ -42,12 +42,14 @@ contributing!
   **strongly** recommend initializing a
   [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
   installing the required libraries. For example:
+
   ```dvc
   $ cd dvc
   $ virtualenv --python python3 .env
   $ source .env/bin/activate
   $ pip install -e ".[all,tests]"
   ```
+
 - Install coding style pre-commit hooks with
 
   ```dvc
@@ -175,8 +177,8 @@ $ export DVC_TEST_AWS_REPO_BUCKET="...TEST-S3-BUCKET..."
 
 ### Click for Google Cloud storage testing instructions
 
-Go through [quickstart](https://cloud.google.com/sdk/docs/quickstarts) for your
-OS. After that you should have `gcloud` command line tool available and
+Go through the [quick start](https://cloud.google.com/sdk/docs/quickstarts) for
+your OS. After that you should have `gcloud` command line tool available and
 authenticated with your google account.
 
 You then need to create a bucket, a service account and get its credentials. You

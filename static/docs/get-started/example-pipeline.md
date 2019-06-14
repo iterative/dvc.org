@@ -29,7 +29,7 @@ nothing to do with DVC so far, it's just a simple preparation:
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` utility by default, so you'll need to use just use
+Windows doesn't ship `wget` utility by default, so you'll need to use just use
 your browser to download `code.zip`.
 
 </details>
@@ -45,7 +45,8 @@ $ git add code/
 $ git commit -m "download and initialize code"
 ```
 
-(Optional) It's highly recommended to initialize a virtual environment to keep
+(Optional) It's highly recommended to initialize a virtual environment with
+[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool to keep
 your global packages clean and untouched:
 
 ```dvc
@@ -84,8 +85,8 @@ $ dvc add data/Posts.xml.zip
 ### Expand to learn more about DVC internals
 
 `dvc init` created a new directory `example/.dvc/` with `config`, `.gitignore`
-files and `cache` directory. These files and directories are hidden from a user
-in general and a user does not interact with these files directly. Check
+files and the `cache` directory. These files and directories are hidden from
+users in general. Users don't interact with these files directly. Check
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -296,9 +297,9 @@ $ dvc metrics show
   auc.metric: 0.620091
 ```
 
-It's time to save the pipeline. You can check using `git status` command that we
-do not save pickle model files or initial data sets into Git. We are just saving
-a snapshot of the DVC-files that describe data and code versions and
+It's time to save the pipeline. You can confirm that we do not save pickle model
+files or initial data sets into Git using the `git status` command. We are just
+saving a snapshot of the DVC-files that describe data and code versions and
 relationships between them.
 
 ```dvc

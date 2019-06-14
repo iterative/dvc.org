@@ -1,6 +1,6 @@
 # lock
 
-Lock a [DVC-file](https://dvc.org/doc/user-guide/dvc-file-format)
+Lock a [DVC-file](/doc/user-guide/dvc-file-format)
 ([stage](/doc/commands-reference/run)). Use `dvc unlock` to unlock the file.
 
 If DVC-file is locked the stage is considered _done_ and `dvc repro` will not
@@ -24,8 +24,8 @@ behave as an _orphan_ stage file as if created with `dvc add`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

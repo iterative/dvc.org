@@ -102,8 +102,8 @@ backward through the pipeline to find data files to push.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
@@ -146,7 +146,7 @@ $ dvc push data.zip.dvc
 ## Examples: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-[pipeline](https://dvc.org/doc/get-started/pipeline) has been setup with these
+[pipeline](/doc/get-started/pipeline) has been setup with these
 [stages](/doc/commands-reference/run):
 
 ```dvc
@@ -213,7 +213,7 @@ Let's take a detailed look at what happens to the DVC cache as you run an
 experiment in a local workspace and push data to a remote cache. To set the
 example consider having created a workspace that contains some code and data,
 and having created a remote cache. In this section we'll show the cache of a
-very simple project, but the details of this project does not matter so much as
+very simple project, but the details of this project doesn't matter so much as
 what happens in the caches as data is pushed.
 
 Some work has been performed in the local workspace, and it contains new data to
@@ -264,7 +264,7 @@ $ tree ../vault/recursive
 The directory `.dvc/cache` is the local cache, while `../vault/recursive` is the
 remote cache. This listing clearly shows the local cache has more files in it
 than the remote cache. Therefore `new` literally means that new files exist in
-the local cache relative to this remote cache.
+the local cache compared to the remote.
 
 Next we can upload part of the data from the local cache to a remote using the
 command `dvc push --with-deps STAGE.dvc`. Remember that `--with-deps` searches

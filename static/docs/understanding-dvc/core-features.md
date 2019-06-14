@@ -12,7 +12,7 @@
 4. **Programming language agnostic**: Python, R, Julia, shell scripts, etc. ML
    library agnostic: Keras, Tensorflow, PyTorch, scipy, etc.
 
-5. **Open-sourced** and **Self-served**. DVC is free and does not require any
+5. **Open-sourced** and **Self-served**. DVC is free and doesn't require any
    additional services.
 
 6. DVC supports cloud storage (AWS S3, Azure Blob Storage and GCP storage) for

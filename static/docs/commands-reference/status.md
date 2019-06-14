@@ -1,8 +1,8 @@
 # status
 
-Show changes in the [pipeline](https://dvc.org/doc/get-started/pipeline) and
-mismatches either between the local cache and local files, or between the local
-cache and remote cache.
+Show changes in the [pipeline](/doc/get-started/pipeline) and mismatches either
+between the local cache and local files, or between the local cache and remote
+cache.
 
 ## Synopsis
 
@@ -59,8 +59,8 @@ shown, and additionally a status word is shown describing the change:
   - _changed_ means the named file has changed
 - For comparison against a remote cache:
   - _new_ means the file exists in the local cache but not the remote cache
-  - _deleted_ means the file does not exist in the local cache, and exists in
-    the remote cache
+  - _deleted_ means the file doesn't exist in the local cache, but exists in the
+    remote cache
 
 For the _changed_ case, the `dvc repro` command is indicated.
 
@@ -108,8 +108,8 @@ cache. For the typical process to update workspaces, see
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  pipeline is up to date, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

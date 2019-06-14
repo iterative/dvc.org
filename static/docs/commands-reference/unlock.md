@@ -1,6 +1,6 @@
 # unlock
 
-Unlock [DVC-file](https://dvc.org/doc/user-guide/dvc-file-format)
+Unlock [DVC-file](/doc/user-guide/dvc-file-format)
 ([stage](/doc/commands-reference/run)). See `dvc lock` for more information.
 
 ```usage
@@ -14,8 +14,8 @@ positional arguments:
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

@@ -1,7 +1,6 @@
 # repro
 
-Rerun commands recorded in the
-[pipeline](https://dvc.org/doc/get-started/pipeline)
+Rerun commands recorded in the [pipeline](/doc/get-started/pipeline)
 [stages](/doc/commands-reference/run) in the same order. Commands to rerun are
 determined by recursively analyzing which stages and changes in their
 dependencies to find only those that have to be rerun.
@@ -57,7 +56,7 @@ option is specified) and updates DVC-files with the new checksum information.
   either be rerun as part of the pipeline in the parent directory, or as an
   independent unit.
 
-- `--no-commit` - does not save outputs to cache. Useful when running different
+- `--no-commit` - do not save outputs to cache. Useful when running different
   experiments and you don't want to fill up your cache with temporary files. Use
   `dvc commit` when you are ready to save your results to cache.
 
@@ -91,10 +90,10 @@ option is specified) and updates DVC-files with the new checksum information.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  all stages are up to date or if all stages are successfully rerun, otherwise
-  exit with 1. The command run by the stage is free to make output irregardless
-  of this flag.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
+  stages are up to date or if all stages are successfully rerun, otherwise exit
+  with 1. The command run by the stage is free to make output irregardless of
+  this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

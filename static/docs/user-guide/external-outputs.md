@@ -16,8 +16,8 @@ In order to specify an external output for a stage file use the usual `-o` and
 `-O` options with the `dvc run` command, but with URLs pointing to your desired
 files. For cached external outputs (specified using `-o`) you will need to setup
 an [external cache](/doc/commands-reference/config#cache) location that will be
-used by dvc to store versions of your external file. Non-cached external
-outputs(specified using `-O`) do not require external cache to be setup.
+used by dvc to store versions of your external file. Non-cached external outputs
+(specified using `-O`) do not require external cache to be setup.
 
 ## Examples
 

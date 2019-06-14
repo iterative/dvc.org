@@ -13,14 +13,14 @@ usage: dvc root [-h] [-q] [-v]
 While in project's sub-directory, sometimes developers may want to refer some
 file belonging to another directory. This command returns relative path to the
 DVC project's root directory from the current working directory. So, this
-command can be used to build a path to a dependency file, command, or output.  
+command can be used to build a path to a dependency file, command, or output.
 
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
