@@ -10,7 +10,7 @@ files and download a 40MB data archive into this directory.
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` utility by default, so you'll need to use a browser
+Windows doesn't ship `wget` utility by default, so you'll need to use a browser
 to download `data.xml`and save it into the `data` subdirectory.
 
 </details>
@@ -96,10 +96,10 @@ workspace, DVC can create reflinks or other file link types. (See
 .)
 
 Creating file links is a quick file system operation. So, with DVC you can
-easily checkout a few dozen files of any size. A file link does not require you
-to have twice as much space in the hard drive. Even if each of the files
-contains 41MB of data, the overall size of the repository is still 41MB. Both of
-the files correspond to the same `inode` (a file metadata record) in the file
+easily checkout a few dozen files of any size. A file link prevents you from
+using twice as much space in the hard drive. Even if each of the files contains
+41MB of data, the overall size of the repository is still 41MB. Both of the
+files correspond to the same `inode` (a file metadata record) in the file
 system. Refer to
 [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization) for
 more details.
@@ -128,7 +128,7 @@ same.
 Once data source files are in the workspace you can start processing the data
 and train ML models out of the data files. DVC helps you to define steps of your
 ML process and pipe them together into a ML
-[pipeline](https://dvc.org/doc/get-started/pipeline).
+[pipeline](/doc/get-started/pipeline).
 
 `dvc run` executes any command that you pass into it as a list of parameters.
 However, the command to run alone is not as interesting as its role within a

@@ -64,11 +64,11 @@ to work with directory hierarchies with `dvc add`.
    DVC-file, and a corresponding DVC cache entry is made (unless `--no-commit`
    flag is added).
 2. When not using `--recursive` a DVC-file is created for the top of the
-   directory (`dirname.dvc`), and every file in the hierarchy is added to the
-   DVC cache (unless `--no-commit` flag is added), but these files do not have
-   individual DVC-files. Instead the DVC-file for the directory has a
-   corresponding file in the DVC cache containing references to the files in the
-   directory hierarchy.
+   directory (with default name `dirname.dvc`). Every file in the hierarchy is
+   added to the DVC cache (unless `--no-commit` flag is added), but DVC does not
+   produce individual DVC-files for each file in the directory tree. Instead,
+   the single DVC-file points to a file in the DVC cache that contains
+   references to the files in the added hierarchy.
 
 In a DVC project `dvc add` can be used to version control any data artifacts -
 input, intermediate, output files and directories, as well as model files. It is
@@ -84,14 +84,15 @@ This way you bring data provenance and make your project reproducible.
 
 - `--no-commit` - do not put files/directories into cache. A DVC-file is
   created, and an entry is added to `.dvc/state`, while nothing is added to the
-  cache (`.dvc/cache`). The `dvc status` command will mention that the file is
-  `not in cache`. The `dvc commit` command will add the file to the DVC cache.
-  This is analogous to the `git add` and `git commit` commands.
+  cache. Use `dvc commit` when you are ready to save your results to cache. This
+  is analogous to using `git add` before `git commit`.
+
+  > The `dvc status` command will mention that the file is `not in cache`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

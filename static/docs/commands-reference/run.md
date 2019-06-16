@@ -1,7 +1,6 @@
 # run
 
-Generate a stage file
-([DVC-file](https://dvc.org/doc/user-guide/dvc-file-format)) from a given
+Generate a stage file ([DVC-file](/doc/user-guide/dvc-file-format)) from a given
 command and execute the command.
 
 ## Synopsis
@@ -106,11 +105,11 @@ be no cycles, etc.
   is used by `dvc repro` to change the working directory before running the
   command.
 
-- `--no-exec` - create a stage file, but do not run the command specified and do
-  not take dependencies or outputs under DVC control. In the DVC-file contents,
-  the `md5` hash sums will be empty; They will be populated the next time this
-  stage is actually executed. This command is useful, if for example, you need
-  to build a pipeline (computational graph) first, and then run it all at once.
+- `--no-exec` - create a stage file, but do not run the command specified nor
+  take dependencies or outputs under DVC control. In the DVC-file contents, the
+  `md5` hash sums will be empty; They will be populated the next time this stage
+  is actually executed. This command is useful, if for example, you need to
+  build a pipeline (computational graph) first, and then run it all at once.
 
 - `-y`, `--yes` - deprecated, use `--overwrite-dvcfile` instead.
 
@@ -130,14 +129,18 @@ be no cycles, etc.
   `--no-exec` specified outputs are removed anyway. This option is enabled by
   default and deprecated. See `dvc remove` as well for more details.
 
-- `--no-commit` - doesn't save outputs to cache. Useful when running different
-  experiments and you don't want to fill up your cache with temporary files. Use
-  `dvc commit` when you are ready to save your results to cache.
+- `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
+  entry is added to `.dvc/state`, while nothing is added to the cache. Use
+  `dvc commit` when you are ready to save your results to cache. Useful when
+  running different experiments and you don't want to fill up your cache with
+  temporary files.
+
+  > The `dvc status` command will mention that the file is `not in cache`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

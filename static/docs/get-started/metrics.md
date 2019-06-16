@@ -3,7 +3,7 @@
 The last stage we would like to add to the pipeline is the evaluation stage.
 Data science is a metric-driven R&D-like process and `dvc metrics` along with
 DVC metric files provide a framework to capture and compare experiments
-performance. It does not require installing any databases or instrumenting your
+performance. It doesn't require installing any databases or instrumenting your
 code to use some API, all is tracked by Git and is stored in Git or DVC remote
 storage:
 

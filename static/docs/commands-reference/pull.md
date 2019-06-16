@@ -49,8 +49,8 @@ and are referenced in the current workspace. It can be used to see what files
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those DVC-files. Using the `--with-deps` option DVC tracks dependencies
-backward through the [pipeline](https://dvc.org/doc/get-started/pipeline) to
-find data files to pull.
+backward through the [pipeline](/doc/get-started/pipeline) to find data files to
+pull.
 
 After data file is in cache DVC, `dvc pull` uses OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace without copying. See
@@ -81,10 +81,9 @@ reflinks or hardlinks to put it in the workspace without copying. See
   backward through the pipeline from the named target(s). This means DVC will
   not pull files referenced later in the pipeline than the named target(s).
 
-- `-f`, `--force` - does not prompt when removing working directory files, which
-  occurs during the process of updating the workspace. This option surfaces
-  behavior from the `dvc checkout` command because `dvc pull` in effect performs
-  a _checkout_ after downloading files.
+- `-f`, `--force` - do not prompt when removing workspace files. This option
+  surfaces behavior from the `dvc checkout` command because `dvc pull` in effect
+  performs a _checkout_ after downloading files.
 
 - `-R`, `--recursive` - `targets` values is expected to be a directory path.
   Determines the files to download by searching the named directory and its
@@ -100,8 +99,8 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
@@ -148,7 +147,7 @@ default remote. The only files considered in this case are what is listed in the
 ## Examples: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-[pipeline](https://dvc.org/doc/get-started/pipeline) has been setup with these
+[pipeline](/doc/get-started/pipeline) has been setup with these
 [stages](/doc/commands-reference/run):
 
 ```dvc

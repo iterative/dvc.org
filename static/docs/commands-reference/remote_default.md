@@ -58,16 +58,17 @@ set/unset/change the default remote configurations.
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/dvc.config`) instead of `.dvc/config`.
 
-- `--local` - save the remote configuration to the
-  [local](/doc/user-guide/dvc-files-and-directories) config
-  (`.dvc/config.local`). This is useful when you need to specify private options
-  or local environment specific settings in your config, that you don't want to
-  track and share through Git (credentials, private locations, etc).
+- `--local` - modify a local
+  [config file](/doc/user-guide/dvc-files-and-directories) instead of
+  `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored. This
+  is useful when you need to specify private config options in your config that
+  you don't want to track and share through Git (credentials, private locations,
+  etc).
 
 - `-h`, `--help` - prints the usage/help message and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

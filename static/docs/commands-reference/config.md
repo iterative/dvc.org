@@ -36,13 +36,13 @@ corresponding config file.
 
 - `--local` - modify a local config file instead of `.dvc/config`. It is located
   in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-  specify private config options in your config, that you don't want to track
-  and share through Git.
+  specify private config options in your config that you don't want to track and
+  share through Git (credentials, private locations, etc).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
@@ -89,9 +89,9 @@ details.)
   The default value is `cache`, which resolved relative to the default project
   config location results in `.dvc/cache`.
 
-  > See also helper command `dvc cache dir` that properly transform paths
-  > relative to the present working directory into relative to the project
-  > config file.
+  > See also helper command `dvc cache dir` to intuitively set this config
+  > option, properly transforming paths relative to the present working
+  > directory into paths relative to the config file location.
 
 - `cache.protected` - makes files in the workspace read-only. Possible values
   are `true` or `false` (default). Run `dvc checkout` for the change go into
