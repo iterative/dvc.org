@@ -77,6 +77,7 @@ shown, and additionally a status word is shown describing the change:
     in DVC-file no longer exsist in local cache
 
 - For comparison against a remote cache:
+
   - _new_ means the file exists in the local cache but not the remote cache
   - _deleted_ means the file doesn't exist in the local cache, but exists in the
     remote cache
