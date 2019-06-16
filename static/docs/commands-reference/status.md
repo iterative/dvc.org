@@ -54,10 +54,9 @@ be rerun if `dvc repro` were executed.
 If instead, differences are detected, `dvc status` lists those changes. For each
 DVC-file (stage) with differences, the _dependencies_ and/or _outputs_ that
 differ are listed. For each item listed, either the file name or the checksum is
-shown, and additionally a status word is shown describing the changes and and
-output displayed:
+shown, and additionally a status word is shown describing the change:
 
-- For the local workspace:
+- For the changes detected in local workspace:
 
   - _changed deps_ means the DVC-file has changed dependencies
   - _changed outs_ means the DVC-file has changed outputs
@@ -65,6 +64,9 @@ output displayed:
     one specified in it in DVC-files
   - _always changed_ means that this is a special DVC-file with no dependencies,
     which is considered always changed
+
+- For the output displayed in local workspace:
+
   - _new_ output is displayed when a new dependeny or output state is added to
     DVC-file
   - _modified_ outputs is displayed when any dependencies or output states is
