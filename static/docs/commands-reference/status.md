@@ -54,25 +54,30 @@ be rerun if `dvc repro` were executed.
 If instead, differences are detected, `dvc status` lists those changes. For each
 DVC-file (stage) with differences, the _dependencies_ and/or _outputs_ that
 differ are listed. For each item listed, either the file name or the checksum is
-shown, and additionally a status word is shown describing the change:
+shown, and additionally a status word is shown describing the changes and and
+output displayed:
 
 - For the local workspace:
+
   - _changed deps_ means the DVC-file has changed dependencies
   - _changed outs_ means the DVC-file has changed outputs
   - _changed checksum_ means actual checksum of the DVC-file doesn't match the
     one specified in it in DVC-files
   - _always changed_ means that this is a special DVC-file with no dependencies,
     which is considered always changed
-  - _new_ means the DVC-file has been created but not added into local cache
-  - _modified_ means the dependecies and output is changed in the DVC-file
-  - _deleted_ means the DVC-file has been deleted from local cache
-  - _not in cache_ means the DVC-file no longer exist in local cache
+  - _new_ output is displayed when a new dependeny or output state is added to
+    DVC-file
+  - _modified_ outputs is displayed when any dependencies or output states is
+    modified in DVC-file
+  - _deleted_ output is displayed when any exsisting dependencies or output
+    states are deleted from DVC-file
+  - _not in cache_ output is displayed when dependencies or output are mentioned
+    in DVC-file no longer exsist in local cache
+
 - For comparison against a remote cache:
   - _new_ means the file exists in the local cache but not the remote cache
   - _deleted_ means the file does not exist in the local cache, and exists in
     the remote cache
-
-For the _changed_ case, the `dvc repro` command is indicated.
 
 For either the _new_ and _deleted_ cases, the local cache (subset of it, that is
 determined by the active workspace) is different from the remote cache. Bringing
