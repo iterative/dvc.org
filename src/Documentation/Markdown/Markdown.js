@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 // components
 import ReactMarkdown from 'react-markdown'
 import { LightButton } from '../LightButton'
+import Tooltip from '../../Tooltip'
 // syntax highlighter
 import SyntaxHighlighter, {
   registerLanguage
@@ -48,15 +49,18 @@ const HeadingRenderer = ({ level, children }) => {
 }
 
 const HtmlRenderer = props => {
-  if (props.tag !== 'details') {
+  if (props.tag !== 'details' && props.tag !== 'abbr') {
     return React.createElement(props.tag, {}, props.children)
-  } else {
+  } else if (props.tag === 'details') {
     const text = props.children[0].props.children[0]
     return (
       <Collapsible trigger={text} transitionTime={200}>
         {props.children.slice(1)}
       </Collapsible>
     )
+  } else if (props.tag === 'abbr') {
+    const text = props.children[0]
+    return <Tooltip text={text} />
   }
 }
 
