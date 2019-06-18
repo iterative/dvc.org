@@ -349,9 +349,12 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-The model evaluation step is the last one. To make it a reproducibility goal by
-default we specify a DVC-file named `Dvcfile`. This will be discussed in the
-next chapter in more details.
+The model evaluation step is the last one. To help in the pipeline's
+reproducibility, we specify a DVC-file named `Dvcfile`. This will be discussed
+in the next chapter in more details.
+
+> Note that using `-f Dvcfile` with `dvc run` above isn't necessary as the
+> default stage file name is `Dvcfile` when there are no outputs (option `-o`).
 
 Note that the output file `data/eval.txt` was transformed by DVC into a metric
 file in accordance with the `-M` option.

@@ -25,9 +25,9 @@ If the [DVC-file](/doc/user-guide/dvc-file-format) (`target`) is omitted,
 `dvc repro` provides an interface to rerun the commands in the computational
 graph (a.k.a. pipeline) defined by the connected stages (DVC-files) in the
 current workspace. By default, this command recursively searches, starting from
-the `Dvcfile`, the pipeline stages to find any which have changed. It then
-reruns the corresponding commands. The pipeline is mostly defined using the
-`dvc run` command, while data input nodes are defined by the `dvc add` command.
+the `target`, the pipeline stages to find any which have changed. It then reruns
+the corresponding commands. The pipeline is mostly defined using the `dvc run`
+command, while data input nodes are defined by the `dvc add` command.
 
 There are several ways to restrict the stages to rerun, by listing DVC-files as
 targets, or using the `--single-item`, `--pipeline`, or `--cwd` options.
@@ -126,6 +126,9 @@ $ dvc run -f Dvcfile -d numbers.txt -d process.py -M count.txt \
            "python process.py numbers.txt > count.txt"
 ```
 
+> Note that using `-f Dvcfile` with `dvc run` above isn't necessary as the
+> default stage file name is `Dvcfile` when there are no outputs (option `-o`).
+
 Where `process.py` is a script which for simplicity just prints the number of
 lines:
 
@@ -203,10 +206,10 @@ The answer to universe is 42
 - The Hitchhiker's Guide to the  Galaxy
 ```
 
-Now running the command `dvc repro --downstream` results in the following
-output:
+Now using the `--downstream` option results in the following output:
 
 ```dvc
+$ dvc repro --downstream
 WARNING: assuming default target 'Dvcfile'.
 Stage 'Dvcfile' didn't change.
 Pipeline is up to date. Nothing to reproduce.

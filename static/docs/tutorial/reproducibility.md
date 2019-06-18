@@ -19,21 +19,22 @@ This is one of the differences between DVC reproducibility and traditional
 Makefile-like build automation tools (Make, Maven, Ant, Rakefile etc). It was
 designed in such a way to localize specification of DAG nodes.
 
-If you run `repro` on any created DVC-file from our repository, nothing happens
-because nothing was changed in the defined pipeline.
+If you run `repro` on any [DVC-file](/doc/user-guide/dvc-file-format) from our
+repository, nothing happens because nothing was changed in the defined pipeline.
+There's nothing to reproduce.
 
 ```dvc
-# Nothing to reproduce
 $ dvc repro model.p.dvc
 ```
 
-By default, `dvc repro` reads DVC-files named `Dvcfile`:
+> By default, `dvc repro` tries to read the DVC-file named `Dvcfile` like the
+> one we define in the previous chapter.
 
 ```dvc
-# Reproduce Dvcfile.
-# But there is still nothing to reproduce:
 $ dvc repro
 ```
+
+Tries to reproduce the pipeline... But there is still nothing to reproduce.
 
 ## Adding bigrams
 

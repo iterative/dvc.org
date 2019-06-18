@@ -308,15 +308,15 @@ $ dvc run -f Dvcfile \
           python train.py
 ```
 
-Similar to `dvc add`, `dvc run` creates a single DVC-file (`Dvcfile` in this
-case, specified by the `-f` option). It puts all outputs (`-o`) under DVC
+Similar to `dvc add`, `dvc run` creates a single DVC-file (forced to have file
+name `Dvcfile` with the `-f` option). It puts all outputs (`-o`) under DVC
 control the same way as `dvc add` does. Unlike, `dvc add`, `dvc run` also tracks
 dependencies (`-d`) and the command (`python train.py`) that was run to produce
 the result.
 
-`dvc repro` runs `Dvcfile` when some dependencies changed (for example, we added
-new images like we did when we built the second model version). It also updates
-outputs and puts them into the cache.
+`dvc repro` will run `Dvcfile` if any of its dependencies (`-d`) changed, for
+example after we added new images like we did when we built the second model
+version. It also updates outputs and puts them into the cache.
 
 If `dvc add` and `dvc checkout` provide a basic mechanism to version control
 large data files or models, `dvc run` and `dvc repro` provide a build system for
