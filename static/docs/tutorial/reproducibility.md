@@ -86,7 +86,7 @@ Reproducing 'Dvcfile':
 
 The process started with the feature creation step because one of its parameters
 was changed — the edited source code `code/featurization.py`. All dependent
-steps were regenerated as well.
+stages were ran again as well.
 
 Let’s take a look at the metric’s change. The improvement is close to zero
 (+0.0075% to be precise):

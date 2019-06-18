@@ -17,10 +17,10 @@ positional arguments:
 ## Description
 
 The `dvc commit` command is useful for several scenarios where a dataset is
-being changed: a [stage](/doc/commands-reference/run) or
+being changed: when a [stage](/doc/commands-reference/run) or
 [pipeline](/doc/get-started/pipeline) is in development, when one wishes to run
-commands outside the control of DVC, or to force DVC-files updates to save time
-rerunning the stage or pipeline.
+commands outside the control of DVC, or to force DVC-file updates to save time
+tying stages or a pipeline.
 
 - Code or data for a stage is under active development, with rapid iteration of
   code, configuration, or data. Run DVC commands (`dvc run`, `dvc repro`, and
@@ -36,8 +36,8 @@ rerunning the stage or pipeline.
   doesn't cause a change in its results. We might write in-line documentation
   with comments, change indentation, remove some debugging printouts, or any
   other change which doesn't introduce a change in the output of pipeline
-  stages. `dvc commit` can help avoid rerunning the pipeline in these cases by
-  forcing the update of the DVC-files.
+  stages. `dvc commit` can help avoid having to reproduce the pipeline in these
+  cases by forcing the update of the DVC-files.
 
 The last two use cases are **not recommended**, and essentially force update the
 DVC-files and save data to cache. They are still useful, but keep in mind that
@@ -131,11 +131,11 @@ This data will be retrieved from a preconfigured remote cache.
 
 ## Example: Rapid iterations
 
-Sometimes we want to iterate through multiple changes to configuration, or to
-code, sometimes to data, trying multiple options, and improving the output of a
-stage. To avoid filling the DVC cache with undesired intermediate results, we
-can rerun the whole pipeline using `dvc repro --no-commit`, or a single stage
-with `dvc run --no-commit`. This prevents data from being pushed to cache. When
+Sometimes we want to iterate through multiple changes to configuration, code, or
+data, trying multiple options to improve the output of a stage. To avoid filling
+the DVC cache with undesired intermediate results, we can run a single stage
+with `dvc run --no-commit`, or reproduce an entire pipeline using
+`dvc repro --no-commit`. This prevents data from being pushed to cache. When
 development of the stage is finished, `dvc commit` can be used to store data
 files in the DVC cache.
 
@@ -256,8 +256,8 @@ train.dvc:
 Let's edit one of the source files. It doesn't matter which one. You'll see that
 both Git and DVC recognize a change was made.
 
-If we ran `dvc repro` at this point the pipeline would be rerun. But since the
-change was inconsequential, that would be a waste of time and CPU resources.
+If we ran `dvc repro` at this point the pipeline would be reproduced. But since
+the change was inconsequential, that would be a waste of time and CPU resources.
 That's especially critical if the pipeline takes a long time to execute.
 
 ```dvc

@@ -87,9 +87,9 @@ having to install CLI tools for each service.
 
 When DVC inspects a DVC-file, one step is inspecting the dependencies to see if
 any have changed. A changed dependency will appear in the `dvc status` report,
-indicating the need to re-run the corresponding part of the pipeline. When DVC
-inspects an external dependency, it uses a method appropriate to that dependency
-to test its current status.
+indicating the need to reproduce the corresponding part of the pipeline. When
+DVC inspects an external dependency, it uses a method appropriate to that
+dependency to test its current status.
 
 ## Options
 
@@ -242,8 +242,8 @@ On your machine initialize the workspace again:
 
 ### Click and expand to prepare the workspace
 
-This is needed to actually run the command below in case you are reproducing
-this example:
+This is needed to actually run the command below in case you are trying this
+example:
 
 ```dvc
 $ git checkout 2-remote
@@ -316,8 +316,8 @@ $ dvc run -f prepare.dvc \
           python src/prepare.py data/data.xml
 ```
 
-Having setup this "prepare" stage means that later when we run `dvc repro` a
-pipeline will be executed.
+> Having setup this "prepare" stage means that later when we run `dvc repro`, a
+> pipeline will be executed.
 
 The workspace says it is fine:
 

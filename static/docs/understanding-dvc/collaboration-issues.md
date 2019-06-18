@@ -34,7 +34,7 @@ principled way:
 
 4. Reproducibility.
 
-   - How do you rerun a model's evaluation without re-training the model and
+   - How do you run a model's evaluation again without re-training the model and
      preprocessing a raw dataset?
 
 5. Managing and sharing large data files.

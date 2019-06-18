@@ -29,9 +29,9 @@ match the current DVC-files.
 The installed Git hook automates running `dvc checkout`.
 
 **Commit**: When committing a change to the Git repository, that change possibly
-requires rerunning the [pipeline](/doc/get-started/pipeline) to reproduce the
-workspace results, which is a reminder to run `dvc repro`. Or there might be
-files not yet in the cache, which is a reminder to run `dvc commit`.
+requires reproducing the corresponding [pipeline](/doc/get-started/pipeline)
+(with `dvc repro`) to regenerate the workspace results. Or there might be files
+not yet in the cache, which is a reminder to run `dvc commit`.
 
 The installed Git hook automates reminding the user to run either `dvc repro` or
 `dvc commit`.
@@ -264,8 +264,8 @@ Pipeline is up to date. Nothing to reproduce.
  5 files changed, 12 insertions(+), 12 deletions(-)
 ```
 
-After rerunning the DVC pipeline, of course the data files are in sync with the
-other files but we must now commit some files to the Git repository. Looking
-closely we see that `dvc status` is again run, informing us that the data files
-are synchronized with the statement: _Pipeline is up to date. Nothing to
-reproduce_.
+After reproducing the "evaluate" pipeline, the data files are in sync with the
+code/config files, but we must now commit the changes to the Git repository.
+Looking closely we see that `dvc status` is run again, informing us that the
+data files are synchronized with the statement:
+`Pipeline is up to date. Nothing to reproduce.`

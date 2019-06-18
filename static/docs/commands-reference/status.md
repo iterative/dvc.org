@@ -48,7 +48,7 @@ differences are detected, `dvc status` prints this message:
 ```
 
 This says that no differences were detected, and therefore that no stages would
-be rerun if `dvc repro` were executed.
+be run again if `dvc repro` were executed.
 
 If instead, differences are detected, `dvc status` lists those changes. For each
 DVC-file (stage) with differences, the _dependencies_ and/or _outputs_ that
