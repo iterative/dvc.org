@@ -186,8 +186,8 @@ and does some additional work if the command was successful:
 
 1. DVC transforms all the outputs `-o` files into data files. It is like
    applying `dvc add` for each of the outputs. As a result, all the actual data
-   files content goes to the cache directory `.dvc/cache` and each of the
-   filenames will be added to `.gitignore`.
+   files content goes to the cache directory `.dvc/cache` and each of the file
+   names will be added to `.gitignore`.
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` DVC-file
    in the workspace with information about this stage in the pipeline, see

@@ -54,8 +54,8 @@ process.
 
    - DVC utilizes a DAG:
 
-     - The DAG is defined by [DVC-files](/doc/user-guide/dvc-file-format) with
-       filenames `<filename>.dvc` or `Dvcfile`.
+     - The DAG is defined by [DVC-files](/doc/user-guide/dvc-file-format) (with
+       file names `<file>.dvc` or `Dvcfile`).
 
      - One DVC-file defines one node in the DAG. All DVC-files in a repository
        make up a single pipeline (think a single Makefile). All DVC-files (and

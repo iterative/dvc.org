@@ -21,14 +21,14 @@ file is committed to the DVC cache. Using the `--no-commit` option, the file
 will not be added to the cache and instead the `dvc commit` command is used when
 (or if) the file is to be committed to the DVC cache.
 
-Under the hood, a few actions are taken for each file in the target(s):
+Under the hood, a few actions are taken for each file in the `targets`:
 
 1. Calculate the file checksum.
 2. Move the file content to the DVC cache (default location is `.dvc/cache`).
 3. Replace the file by a link to the file in the cache (see details below).
 4. Create a corresponding [DVC-file](/doc/user-guide/dvc-file-format) and store
    the checksum to identify the cache entry.
-5. Add the _target_ filename to `.gitignore` (if Git is used in this workspace)
+5. Add the target file name to `.gitignore` (if Git is used in this workspace)
    to prevent it from being committed to the Git repository.
 6. Instructions are printed showing `git` commands for adding the files to a Git
    repository. If a different SCM system is being used, use the equivalent
