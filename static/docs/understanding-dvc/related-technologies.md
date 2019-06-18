@@ -25,7 +25,7 @@ process.
      and doesn't run any daemons or servers. Nevertheless, DVC can generate
      images with pipeline and experiment workflow visualization.
 
-3. **Experiment management** software today is mostly designed for enterprise
+3. **Experiment management software** today is mostly designed for enterprise
    usage. An open-sourced experimentation tool example: http://studio.ml/. The
    differences are:
 

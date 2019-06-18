@@ -8,7 +8,7 @@ the community and the industry now, when ML algorithms and methods are no longer
 simply "tribal knowledge" but are still difficult to implement, reuse, and
 manage.
 
-To make progress in this challenge, many areas of the ML experimentation process
+To make progress on this challenge, many areas of the ML experimentation process
 need to be formalized. Many common questions need to be answered in an unified,
 principled way:
 

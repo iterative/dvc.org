@@ -15,12 +15,12 @@ left wanting for more.
 
 ## Experiment management software
 
-To solve data scientists collaboration issues a new type of software was created
-called "experiment management software". This software aims to cover the gap
-between data scientist needs and the existing toolset.
+This new type of software was created to solve data scientists collaboration
+issues. This software aims to cover the gap between data scientist needs and the
+existing toolset.
 
-The experimentation software is usually **graphical user interface** (GUI)
-based, in contrast to the existing command line engineering tools. The GUI is a
+Experiment management software is usually **graphical user interface** (GUI)
+based, in contrast to existing command line engineering tools. The GUI is a
 bridge to a separate **cloud based environment**. The cloud environment is
 usually not so flexible as local data scientists environment. And the cloud
 environment is not fully integrated with the local environment.
