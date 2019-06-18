@@ -88,12 +88,10 @@ backward through the pipeline to find data files to push.
   backward through the pipeline from the named target(s). This means DVC will
   not push files referenced later in the pipeline than the named target(s).
 
-- `-R`, `--recursive` - the `targets` value is expected to be a path to a file
-  or directory, relative to the current location(eg.`data/models/predict.pkl`).
-  and also files as well. With this option, `dvc push` determines the files to
-  upload by searching the target directory and its subdirectories for DVC-files
-  to upload data.  Along with providing a `target`, and/or  
-`--with-deps` it is yet another way to cut the scope of DVC-files to download.
+- `-R`, `--recursive` - It push data from the cache to the workspace for data
+  files and directories that are referenced in those DVC-files/targets. The
+  `targets` value is expected to be a path to a file or directory, relative to
+  the current location(eg.`data/models/predict.pkl`).
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while uploading files to the remote cache. The effect is to control the number

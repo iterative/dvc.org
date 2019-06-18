@@ -70,11 +70,9 @@ It handles that last step of adding the file to the DVC cache.
   backward through the pipeline from the named target(s). This means DVC will
   not commit files referenced later in the pipeline than the named target(s).
 
-- `-R`, `--recursive` - the `targets` value is expected to be a directory path.
-  With this option, `dvc commit` determines the files to commit by searching the
-  named directory, and its subdirectories, for DVC-files for which to commit
-  data. Along with providing a `target`, or `target` along with `--with-deps`,
-  it is yet another way to limit the scope of DVC-files to upload.
+- `-R`, `--recursive` - determines the files to commit cache- by searching the
+  named directory/targets, and its subdirectories, for DVC-files for which to
+  commit data. The `targets` value is expected to be a directory path or a file
 
 - `-f`, `--force` - commit data even if checksums for dependencies or outputs
   did not change.
