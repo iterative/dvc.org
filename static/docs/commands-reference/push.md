@@ -83,9 +83,9 @@ backward through the pipeline to find data files to push.
   save different experiments or project checkpoints.
 
 - `-d`, `--with-deps` - determines files to upload by tracking dependencies to
-  the named target DVC-file(s). This option only has effect when one or more
-  `targets` are specified. By traversing each stage dependencies, DVC searches
-  backward through the pipeline from the named target(s). This means DVC will
+  the target DVC-file(s). This option only has effect when one or more `targets`
+  are specified. By traversing all stage dependencies, DVC searches backward
+  from the given target(s) in the corresponding pipeline. This means DVC will
   not push files referenced later in the pipeline than the named target(s).
 
 - `-R`, `--recursive` - the `targets` value is expected to be a directory path.

@@ -68,18 +68,17 @@ such a case, `dvc checkout` prints a warning message. Any files that can be
 checked out without error will be restored.
 
 There are two methods to restore a file missing from the cache, depending on the
-situation. In some cases the pipeline must be rerun using the `dvc repro`
-command. In other cases the cache can be pulled from a remote cache using the
-`dvc pull` command. See also `dvc pipeline`
+situation. In some cases a pipeline must be rerun using the `dvc repro` command
+to regenerate its outputs. (See also `dvc pipeline`.) In other cases the cache
+can be pulled from a remote cache using `dvc pull`.
 
 ## Options
 
-- `-d`, `--with-deps` - determine workspace files to update by tracking
-  dependencies to the named target DVC-file(s). This option only has effect when
-  one or more `targets` are specified. By traversing all stage dependencies, DVC
-  searches backward through the pipeline from the named target(s). This means
-  DVC will not checkout files referenced later in the pipeline than the named
-  target(s).
+- `-d`, `--with-deps` - determine files to update by tracking dependencies to
+  the target DVC-file(s). This option only has effect when one or more `targets`
+  are specified. By traversing all stage dependencies, DVC searches backward
+  from the given target(s) in the corresponding pipeline. This means DVC will
+  not checkout files referenced later in the pipeline than the named target(s).
 
 - `-f`, `--force` - do not prompt when removing workspace files. Changing the
   current set of DVC-files with SCM commands like `git checkout` can result in

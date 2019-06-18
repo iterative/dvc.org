@@ -72,12 +72,12 @@ cache. For the typical process to update workspaces, see
 
 ## Options
 
-- `-d`, `--with-deps` - finds changes by tracking dependencies to the named
-  target DVC-file(s). This option only has effect when one or more `targets` are
-  specified. By traversing each stage dependencies, DVC searches backward
-  through the pipeline from the named target(s). This means DVC will not show
-  changes occurring later in the pipeline than the named target(s). Applies
-  whether or not `--cloud` is specified.
+- `-d`, `--with-deps` - determines files to check by tracking dependencies to
+  the target DVC-file(s). This option only has effect when one or more `targets`
+  are specified. By traversing all stage dependencies, DVC searches backward
+  from the given target(s) in the corresponding pipeline. This means DVC will
+  not show changes occurring later in the pipeline than the named target(s).
+  Applies whether or not `--cloud` is specified.
 
 - `-c`, `--cloud` - enables comparison against a remote cache. If no `--remote`
   option has been given, DVC will compare against the default remote cache,

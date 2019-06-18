@@ -49,8 +49,8 @@ and are referenced in the current workspace. It can be used to see what files
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those DVC-files. Using the `--with-deps` option DVC tracks dependencies
-backward through the [pipeline](/doc/get-started/pipeline) to find data files to
-pull.
+backward through the target [pipeline](/doc/get-started/pipeline) to find data
+files to pull.
 
 After data file is in cache DVC, `dvc pull` uses OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace without copying. See
@@ -76,9 +76,9 @@ reflinks or hardlinks to put it in the workspace without copying. See
   save different experiments or project checkpoints.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
-  the named target DVC-file(s). This option only has effect when one or more
-  `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward through the pipeline from the named target(s). This means DVC will
+  the target DVC-file(s). This option only has effect when one or more `targets`
+  are specified. By traversing all stage dependencies, DVC searches backward
+  from the given target(s) in the corresponding pipeline. This means DVC will
   not pull files referenced later in the pipeline than the named target(s).
 
 - `-f`, `--force` - do not prompt when removing workspace files. This option
