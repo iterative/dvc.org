@@ -6,7 +6,7 @@ for a given StackOverflow question. For example, we want one classifier which
 can predict a post that is about the Python language by tagging it `python`.
 This is a short version of the [Tutorial](/doc/tutorial).
 
-In this example, we will focus on building a simple pipeline that takes an
+In this example, we will focus on building a simple ML pipeline that takes an
 archive with StackOverflow posts and trains the prediction model and saves it as
 an output. Check [get started](/doc/get-started) to see links to other examples,
 tutorials, use cases if you want to cover other aspects of the DVC. The pipeline
@@ -61,8 +61,12 @@ Install the required dependencies:
 $ pip install -r code/requirements.txt
 ```
 
-Then, we are creating the pipeline step-by-step, utilizing the same set of
-commands that are described in the [get started](/doc/get-started) chapters.
+Next, we will create a pipeline step-by-step, utilizing the same set of commands
+that are described in earlier [get started](/doc/get-started) chapters.
+
+> Note that its possible to define more than one pipeline in each project. This
+> will be determined by the interdependencies between DVC-files, mentioned
+> below.
 
 - Initialize DVC repository (run it inside your Git repository):
 
@@ -82,6 +86,9 @@ $ dvc add data/Posts.xml.zip
 
 <details>
 
+When we run `dvc add` `Posts.xml.zip`, DVC creates a
+[DVC-file](/doc/user-guide/dvc-file-format).
+
 ### Expand to learn more about DVC internals
 
 `dvc init` created a new directory `example/.dvc/` with `config`, `.gitignore`
@@ -90,8 +97,7 @@ users in general. Users don't interact with these files directly. Check
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
-When we run `dvc add` `Posts.xml.zip`, DVC creates a
-[DVC-file](/doc/user-guide/dvc-file-format) with no dependencies, a.k.a. and
+Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
 "_orphan_ stage file":
 
 ```yaml
@@ -120,15 +126,16 @@ $ git add data/Posts.xml.zip.dvc data/.gitignore
 $ git commit -m "add dataset"
 ```
 
-## Define staged
+## Define stages
 
-Each stage is described by providing a command to run, input data it takes and a
+Each [stage](/doc/user-guide/dvc-files-and-directories) – the parts of a
+pipeline – is described by providing a command to run, input data it takes and a
 list of output files. DVC is not Python or any other language specific and can
 wrap any command runnable via CLI.
 
-- The first actual stage, extract XML from the archive. Note that we don't need
-  to run `dvc add` on `Posts.xml`, `dvc run` saves (commits into the cache,
-  takes the file under DVC control) automatically:
+- The first stage is to extract XML from the archive. Note that we don't need to
+  run `dvc add` on `Posts.xml` below, `dvc run` saves the data automatically
+  (commits into the cache, takes the file under DVC control):
 
 ```dvc
 $ dvc run -d data/Posts.xml.zip \
@@ -139,10 +146,12 @@ $ dvc run -d data/Posts.xml.zip \
 
 <details>
 
+Similar to `dvc add`, `dvc run` creates a
+[DVC-file](/doc/user-guide/dvc-file-format) (or "stage file").
+
 ### Expand to learn more about DVC internals
 
-Similar to `dvc add`, `dvc run` creates a
-[DVC-file](/doc/user-guide/dvc-file-format) (or "stage file"):
+Here's what the DVC-file (stage file, with outputs `outs`) looks like:
 
 ```yaml
 cmd: ' unzip data/Posts.xml.zip -d data'
