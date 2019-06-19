@@ -13,87 +13,79 @@ as`git checkout` for your code.
 
 ### Preparation
 
-In order to make it work on a shared server, we need to setup a shared cache
+In order to make it work on a shared server, you need to setup a shared cache
 location for your projects, so that every team member is using the same cache
-location.
-
-> It will be beneficial to have a shared cache location on the server. It avoid
-> copying large files from shared server to the local machine.
-
-Let's setup Network File System(NFS), which is used for sharing of files and
-folders. NFS allows us to mount your local file system over a network and remote
-hosts to interact with them as they are mounted locally on the same system. For
-configuring NFS on client and server side, follow this
-[link](https://vitux.com/install-nfs-server-and-client-on-ubuntu/).
-
-On server side, create an export directory where all data will be stored.
+storage:
 
 ```dvc
-mkdir -p /project1_data
+$ mkdir -p /dvc-cache
 ```
 
-You will have to make sure that the directory has proper permissions setup,so
+You will have to make sure that the directory has proper permissions setup, so
 that every one on your team can read and write to it and can access cache files
 written by others. The most straightforward way to do that is to make sure that
 you and your colleagues are members of the same group (e.g. 'users') and that
-your shared directory is owned by that group and has respective permissions.
+your shared cache directory is owned by that group and has respective
+permissions.
 
-Let's create a mount point of client side.
+### Transfer Existing Cache (Optional)
 
-```dvc
-mkdir -p /mnt/dataset/project1_data
-```
-
-### Configure Cache
-
-After mounting the shared directory on client side. Assuming project code is in
-`/home/user/project1`. Let's initialize a `dvc repo` .
+This step is optional. You can skip it if you are setting up a new DVC
+repository and don't have your local cache stored in `.dvc/cache`. If you did
+work on your project with DVC previously and you wish to transfer your cache to
+the external cache directory, you will need to simply move it from an old cache
+location to the new one:
 
 ```dvc
-cd /home/user/project1/
-dvc init
-git add .dvc .gitignore
-git commit . -m "initialize DVC"
+$ mv .dvc/cache/* /dvc-cache
 ```
+
+### Configure External Cache
 
 Tell DVC to use the directory we've set up as an external cache location by
 running:
 
 ```dvc
-dvc cache dir /mnt/data  #changing dvc cache directory
-dvc config cache.type "reflink,symlink,hardlink,copy" # to enable symlinks to avoid copying
-dvc config cache.protected true # to make links RO so that we you don't corrupt them accidentally
-git add .dvc .gitignore
-git commit . -m "DVC cache location updated"
-```
-
-### Add data to DVC cache
-
-Now, add first version of the dataset into the DVC cache (this is done once for
-a dataset).
-
-```dvc
-cd /mnt/dataset/
-cp -r . /home/user/project1/
-cd /home/user/project1
-mv /mnt/dataset/project1_data/ data/
-dvc add data
+$ dvc config cache.dir /dvc-cache
 ```
 
 Commit changes to `.dvc/config` and push them to your git remote:
 
 ```dvc
-git add data.dvc .gitignore
-git commit . -m "add first version of the dataset"
-git tag -a "v1.0" -m "dataset v1.0"
-git push origin HEAD
-git push origin v1.0
+$ git add .dvc/config
+$ git commit -m "dvc: setup external cache dir"
 ```
 
-Next, you can easily get this appear in your workspace by:
+### Example
+
+You and your colleagues can work in your own workspaces as usual and DVC will
+handle all your data in the most effective way possible. Let's say you are
+cleaning up the data:
 
 ```dvc
-cd /home/user/project1/
-git pull
-dvc checkout
+$ dvc add raw
+$ dvc run -d raw -o clean ./cleanup.py raw clean
+$ git add raw.dvc clean.dvc
+$ git commit -m "cleanup raw data"
+$ git push
+```
+
+Your colleague can pull the code and have both `raw` and `clean` instantly
+appear in his workspace without copying. After this he decides to continue
+building the pipeline and process the cleaned up data:
+
+```dvc
+$ git pull
+$ dvc checkout
+$ dvc run -d clean -o processed ./process.py clean process
+$ git add processed.dvc
+$ git commit -m "process clean data"
+$ git push
+```
+
+And now you can just as easily get his work appear in your workspace by:
+
+```dvc
+$ git pull
+$ dvc checkout
 ```
