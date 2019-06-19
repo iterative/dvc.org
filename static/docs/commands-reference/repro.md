@@ -19,25 +19,26 @@ positional arguments:
 
 ## Description
 
-If the [DVC-file](/doc/user-guide/dvc-file-format) (`target`) is omitted,
-`Dvcfile` will be assumed.
+`dvc repro` provides an interface to run the commands in a computational graph
+(a.k.a. pipeline) again, as defined in the stage files (DVC-files) found in the
+current workspace. (A pipeline is typically defined using the `dvc run` command,
+while data input nodes are defined by the `dvc add` command.)
 
-`dvc repro` provides an interface to run the commands in the computational graph
-(a.k.a. pipeline) again, as defined in the corresponding stage files (DVC-files)
-found in the current workspace. By default, this command recursively searches
-the pipeline stages, starting from the `targets`, to determine which ones have
-changed. Then it runs again the corresponding commands. The pipeline is mostly
-defined using the `dvc run` command, while data input nodes are defined by the
-`dvc add` command.
+There's a few ways to restrict the stages that will be run again by this
+command: by specifying stage file(s) as `targets`, or by using the
+`--single-item`, `--pipeline`, or `--cwd` options.
 
-There's a few ways to restrict the stages to run again: by specifying stage
-file(s) as `targets`, or by using the `--single-item`, `--pipeline`, or `--cwd`
-options.
+If specific [DVC-files](/doc/user-guide/dvc-file-format) (`targets`) are
+omitted, `Dvcfile` will be assumed.
+
+By default, this command recursively searches in pipeline stages, starting from
+the `targets`, to determine which ones have changed. Then it executes the
+corresponding commands again.
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
 data files, intermediate or final results. It saves all the data files,
-intermediate or final results into the DVC local cache (unless `--no-commit`
-option is specified) and updates DVC-files with the new checksum information.
+intermediate or final results into the DVC cache (unless `--no-commit` option is
+specified), and updates stage files with the new checksum information.
 
 ## Options
 
