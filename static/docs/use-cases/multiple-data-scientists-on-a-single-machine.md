@@ -1,5 +1,3 @@
-# Shared Development Server
-
 It's pretty common to see that teams prefer using one single shared machine to
 run their experiments. This allows you to have a better resource utilization
 such as ability to use multiple GPUs, store all your data in one place, etc.
