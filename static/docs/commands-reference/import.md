@@ -61,8 +61,8 @@ DVC supports several types of (local or) remote locations:
 > running it internally expands this URL into a regular S3, SSH, GS, etc URL by
 > appending `/path/to/file` to the `myremote`'s configured base path.
 
-Another way to understand the `dvc import` command is as a short-cut for more
-verbose `dvc run` commands. This is discussed in the
+Another way to understand the `dvc import` command is as a short-cut for a more
+verbose `dvc run` command. This is discussed in the
 [External Dependencies](/doc/user-guide/external-dependencies) documentation,
 where an alternative is demonstrated for each of these schemes.
 
@@ -80,16 +80,16 @@ $ dvc run -d https://example.com/path/to/data.csv \
           wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a DVC-file with an external dependency, and they perform a
-roughly equivalent result. The `dvc import` command saves the user from using
-the command to copy files from each of the remote storage schemes, and from
+Both methods generate a stage file (DVC-file) with an external dependency, and
+they produce equivalent results. The `dvc import` command saves the user from
+having to manually copy files from each of the remote storage schemes, and from
 having to install CLI tools for each service.
 
-When DVC inspects a DVC-file, one step is inspecting the dependencies to see if
-any have changed. A changed dependency will appear in the `dvc status` report,
-indicating the need to reproduce the corresponding part of the pipeline. When
-DVC inspects an external dependency, it uses a method appropriate to that
-dependency to test its current status.
+When DVC inspects a DVC-file, its dependencies will be checked to see if any
+have changed. A changed dependency will appear in the `dvc status` report,
+indicating the need to reproduce this import stage. When DVC inspects an
+external dependency, it uses a method appropriate to that dependency to test its
+current status.
 
 ## Options
 
@@ -189,7 +189,7 @@ $ git add data/.gitignore data.xml.dvc
 > [stages](/doc/commands-reference/run) from the _Getting Started_ example, but
 > since we don't need them for this example, we'll skip it.
 
-Let's take a look at the resulting DVC-file `data.xml.dvc`:
+Let's take a look at the resulting stage file (DVC-file) `data.xml.dvc`:
 
 ```yaml
 deps:
@@ -269,9 +269,9 @@ To track the changes with git run:
 ```
 
 At this point we have the workspace set up in a similar fashion. The difference
-is that DVC-file references now references the editable data file in the data
-store directory we just set up. We did this to make it easy to edit the data
-file:
+is that stage file (DVC-file) outputs (`outs`) now references the editable file
+in the data store directory we just set up. We did this to make it easy to edit
+the data file:
 
 ```yaml
 deps:
