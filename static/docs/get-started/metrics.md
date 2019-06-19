@@ -1,6 +1,6 @@
 # Experiment Metrics
 
-The last stage we would like to add to the pipeline is the evaluation stage.
+The last stage we would like to add to our pipeline is its accuracy evaluation.
 Data science is a metric-driven R&D-like process and `dvc metrics` along with
 DVC metric files provide a framework to capture and compare experiments
 performance. It doesn't require installing any databases or instrumenting your
@@ -27,7 +27,7 @@ Let's again commit and save results:
 
 ```dvc
 $ git add evaluate.dvc auc.metric
-$ git commit -m "add evaluation step to the pipeline"
+$ git commit -m "add evaluation step to pipeline"
 $ dvc push
 ```
 

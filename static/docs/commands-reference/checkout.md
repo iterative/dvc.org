@@ -37,7 +37,8 @@ The execution of `dvc checkout` does:
 - Scan the `outs` entries in DVC-files to compare with the currently checked out
   data files. The scanned DVC-files is limited by the listed `targets` (if any)
   on the command line. And if the `--with-deps` option is specified, it scans
-  backward in the [pipeline](/doc/get-started/pipeline) from the named targets.
+  backward from the given `targets` in the corresponding
+  [pipeline](/doc/get-started/pipeline).
 - For any data files where the checksum doesn't match their DVC-file entry, the
   data file is restored from the cache. The link strategy used (`reflink`,
   `hardlink`, `symlink`, or `copy`) depends on the OS and the configured value
@@ -68,9 +69,9 @@ such a case, `dvc checkout` prints a warning message. Any files that can be
 checked out without error will be restored.
 
 There are two methods to restore a file missing from the cache, depending on the
-situation. In some cases a pipeline must be rerun using the `dvc repro` command
-to regenerate its outputs. (See also `dvc pipeline`.) In other cases the cache
-can be pulled from a remote cache using `dvc pull`.
+situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
+regenerate its outputs. (See also `dvc pipeline`.) In other cases the cache can
+be pulled from a remote cache using `dvc pull`.
 
 ## Options
 
@@ -78,7 +79,7 @@ can be pulled from a remote cache using `dvc pull`.
   the target DVC-file(s). This option only has effect when one or more `targets`
   are specified. By traversing all stage dependencies, DVC searches backward
   from the given target(s) in the corresponding pipeline. This means DVC will
-  not checkout files referenced later in the pipeline than the named target(s).
+  not checkout files referenced later in a pipeline than the given target(s).
 
 - `-f`, `--force` - do not prompt when removing workspace files. Changing the
   current set of DVC-files with SCM commands like `git checkout` can result in
@@ -133,8 +134,8 @@ $ pip install -r requirements.txt
 
 </details>
 
-The existing pipeline looks almost like in this
-[example](/doc/get-started/example-pipeline):
+The workspace looks almost like in this
+[pipeline setup](/doc/get-started/example-pipeline):
 
 ```dvc
 .

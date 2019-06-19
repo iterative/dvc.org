@@ -190,7 +190,7 @@ and does some additional work if the command was successful:
    names will be added to `.gitignore`.
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
-   file in the workspace with information about this stage in the pipeline. (See
+   file in the workspace with information about this pipeline stage. (See
    [DVC-File Format](/doc/user-guide/dvc-file-format)). Note that the name of
    this file could be specified by using the `-f` option, for example
    `-f extract.dvc`.
@@ -306,9 +306,9 @@ $ git add .
 $ git commit -m "Process to TSV and separate test and train"
 ```
 
-Let’s run and commit the following steps of the pipeline. Define the feature
-extraction step which takes train and test TSVs and generates corresponding
-matrix files:
+Let’s run and save the following commands for our pipeline. First, define the
+feature extraction stage, that takes `train` and `test` TSVs and generates
+corresponding matrix files:
 
 ```dvc
 $ dvc run -d code/featurization.py -d code/conf.py \
@@ -353,14 +353,14 @@ Reproducing 'Dvcfile':
 > default stage file name is `Dvcfile` when there are no outputs (option `-o`).
 
 The model evaluation step is the last one. To help in the pipeline's
-reproducibility, we specify a stage file named `Dvcfile`. This will be discussed
-in more detail in the next chapter.
+reproducibility, we specify a stage file named `Dvcfile`. (This will be
+discussed in more detail in the next chapter.)
 
 Note that the output file `data/eval.txt` was transformed by DVC into a metric
 file in accordance with the `-M` option.
 
 The result of the last three `dvc run` commands execution is three stage files
-and a modified .gitignore file. All the changes should be committed into Git.
+and a modified .gitignore file. All the changes should be committed into Git:
 
 ```dvc
 $ git status -s
@@ -393,4 +393,4 @@ focus is DVC, not ML modeling and we use a relatively small dataset without any
 advanced ML techniques.
 
 In the next chapter we will try to improve the metrics by changing our modeling
-code and using reproducibility in the pipeline regeneration.
+code and using reproducibility in our pipeline regeneration.

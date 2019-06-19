@@ -62,9 +62,9 @@ specified), and updates stage files with the new checksum information.
   experiments and you don't want to fill up your cache with temporary files. Use
   `dvc commit` when you are ready to save your results to cache.
 
-- `-m`, `--metrics` - show metrics after reproduction. The pipeline must have at
-  least one metrics file defined either with the `dvc metrics` command, or by
-  the `-M` or `-m` options on the `dvc run` command.
+- `-m`, `--metrics` - show metrics after reproduction. The target pipeline(s)
+  must have at least one metrics file defined either with the `dvc metrics`
+  command, or by the `-M` or `-m` options on the `dvc run` command.
 
 - `--dry` - only print the commands that would be executed without actually
   executing the commands.
@@ -72,9 +72,9 @@ specified), and updates stage files with the new checksum information.
 - `-i`, `--interactive` - ask for confirmation before reproducing each stage.
   The stage is only run if the user types "y".
 
-- `-p`, `--pipeline` - reproduce the whole pipeline that the specified stage
-  file belongs to. Use `dvc pipeline show target.dvc` to show the entire
-  pipeline the named stage belongs to.
+- `-p`, `--pipeline` - reproduce the entire pipeline(s) that the target stage
+  file(s) belong(s) to. Use `dvc pipeline show <target>.dvc` to show the parent
+  pipeline of a target stage.
 
 - `--ignore-build-cache` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B` even if `B` was previously executed with the
@@ -99,8 +99,8 @@ specified), and updates stage files with the new checksum information.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `--downstream` - run again the commands down the pipeline(s) of the `targets`
-  including the one in them.
+- `--downstream` - run again the commands down the pipeline(s) of the target
+  stages, including the one in said `targets`.
 
 ## Examples
 
@@ -196,11 +196,10 @@ information, new `md5` checksums and a new result respectively.
 
 ## Examples: Downstream
 
-There is also an option which allows one to reproduce results from a specific
-command in the pipeline. Enabling this option requires adding flag
-`--downstream` to command `dvc repro`.
+There is also an option which allows one to reproduce results from specific
+commands in a pipeline: `--downstream`.
 
-To demonstrate working of this let us make a change in `text.txt`:
+To demonstrate working of this, lets make a change in `text.txt`:
 
 ```
 ...
@@ -218,8 +217,8 @@ Pipeline is up to date. Nothing to reproduce.
 ```
 
 The reason being that the `text.txt` is a file which is not directly dependent
-on `Dvcfile`. Instead it is dependent on `filter.dvc` which is above our target
-file in the pipeline.
+on `Dvcfile`. Instead, it's dependent on `filter.dvc`, which is above our target
+file in this pipeline.
 
 ```dvc
 $ dvc pipeline show --ascii

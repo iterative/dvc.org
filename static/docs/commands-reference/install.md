@@ -264,8 +264,8 @@ Pipeline is up to date. Nothing to reproduce.
  5 files changed, 12 insertions(+), 12 deletions(-)
 ```
 
-After reproducing the "evaluate" pipeline, the data files are in sync with the
-code/config files, but we must now commit the changes to the Git repository.
-Looking closely we see that `dvc status` is run again, informing us that the
-data files are synchronized with the statement:
-`Pipeline is up to date. Nothing to reproduce.`
+After reproducing this pipeline up to the "evaluate" stage, the data files are
+in sync with the code/config files, but we must now commit the changes to the
+Git repository. Looking closely we see that `dvc status` is run again, informing
+us that the data files are synchronized with the `Pipeline is up to date.`
+message.

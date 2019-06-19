@@ -340,8 +340,8 @@ changed.
 
 Here where DVC pipelines feature comes very handy and was designed for. We
 touched it briefly when we described `dvc run` and `dvc repro` at the very end.
-Next step here would be splitting the script into two steps and utilize DVC
-pipelines. Check this [example](/doc/get-started/example-pipeline) to get a
+The next step here would be splitting the script into two steps and utilizing
+DVC pipelines. Check this [example](/doc/get-started/example-pipeline) to get a
 hands-on experience with them and try to apply it here. Don't hesitate to join
 our [community](/chat) to ask any questions!
 

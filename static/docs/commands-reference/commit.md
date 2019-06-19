@@ -36,7 +36,7 @@ tying stages or a pipeline.
   doesn't cause a change in its results. We might write in-line documentation
   with comments, change indentation, remove some debugging printouts, or any
   other change which doesn't introduce a change in the output of pipeline
-  stages. `dvc commit` can help avoid having to reproduce the pipeline in these
+  stages. `dvc commit` can help avoid having to reproduce a pipeline in these
   cases by forcing the update of the DVC-files.
 
 The last two use cases are **not recommended**, and essentially force update the
@@ -68,7 +68,7 @@ It handles that last step of adding the file to the DVC cache.
   the target DVC-file(s). This option only has effect when one or more `targets`
   are specified. By traversing all stage dependencies, DVC searches backward
   from the given target(s) in the corresponding pipeline. This means DVC will
-  not commit files referenced later in the pipeline than the named target(s).
+  not commit files referenced later in a pipeline than the given target(s).
 
 - `-R`, `--recursive` - the `targets` value is expected to be a directory path.
   With this option, `dvc commit` determines the files to commit by searching the
@@ -256,9 +256,10 @@ train.dvc:
 Let's edit one of the source files. It doesn't matter which one. You'll see that
 both Git and DVC recognize a change was made.
 
-If we ran `dvc repro` at this point the pipeline would be reproduced. But since
-the change was inconsequential, that would be a waste of time and CPU resources.
-That's especially critical if the pipeline takes a long time to execute.
+If we ran `dvc repro` at this point, this pipeline would be reproduced. But
+since the change was inconsequential, that would be a waste of time and CPU.
+That's especially critical if the corresponding stages lots of resources to
+execute.
 
 ```dvc
 $ git add src/train.py
@@ -277,4 +278,4 @@ Pipeline is up to date. Nothing to reproduce.
 ```
 
 Nothing special is required, we simply `commit` to both the SCM and DVC. Since
-the pipeline is up to date, `dvc repro` will not do anything.
+this pipeline is up to date, `dvc repro` will not do anything.

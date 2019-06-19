@@ -146,7 +146,7 @@ $ pip install -r requirements.txt
 
 ## Example: Tracking a remote file
 
-The [DVC getting started tutorial](/doc/get-started) demonstrates a simple DVC
+The [DVC getting started tutorial](/doc/get-started) demonstrates a simple
 pipeline. In the [Add Files step](/doc/get-started/add-files) we are told to
 download a file, then use `dvc add` to integrate it with the workspace.
 
@@ -215,9 +215,8 @@ file has changed.
 ## Example: Detecting remote file changes
 
 What if that remote file is one which will be updated regularly? The project
-goal might include regenerating some artifact based on the updated data. With a
-DVC external dependency, the pipeline can be triggered to re-execute based on a
-changed external dependency.
+goal might include regenerating some artifact based on the updated data. A
+pipeline can be triggered to re-execute based on a changed external dependency.
 
 Let us again use the [Getting Started](/doc/get-started) example, in a way which
 will mimic an updated external data source.
@@ -393,7 +392,7 @@ Pipeline is up to date. Nothing to reproduce.
 ```
 
 Because the external source for the data file changed, the change was noticed by
-the `dvc status` command. Running `dvc repro` then ran both stages of the
+the `dvc status` command. Running `dvc repro` then ran both stages of this
 pipeline, and if we had set up the other stages they also would have been run.
 It first downloaded the updated data file. And then noticing that
 `data/data.xml` had changed, that triggered the `prepare.dvc` stage to execute.

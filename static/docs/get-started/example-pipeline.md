@@ -1,10 +1,11 @@
 # Example: Pipelines
 
 To show DVC in action, let's play with an actual machine learning scenario.
-Let's explore the natural language processing (NLP) problem of predicting tags
-for a given StackOverflow question. For example, we want one classifier which
-can predict a post that is about the Python language by tagging it `python`.
-This is a short version of the [Tutorial](/doc/tutorial).
+Let's explore the natural language processing
+([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)) problem of
+predicting tags for a given StackOverflow question. For example, we want one
+classifier which can predict a post that is about the Python language by tagging
+it `python`. This is a short version of the [Tutorial](/doc/tutorial).
 
 In this example, we will focus on building a simple ML pipeline that takes an
 archive with StackOverflow posts and trains the prediction model and saves it as
@@ -244,8 +245,8 @@ By analyzing dependencies and outputs in DVC-files, we can restore the full
 chain of commands (DAG) we need to apply. This is important when you run
 `dvc repro` to reproduce the final or intermediate result.
 
-`dvc pipeline show` helps to visualize the pipeline (run it with `-c` option to
-see actual commands instead of DVC-files):
+`dvc pipeline show` helps to visualize pipelines (run it with `-c` option to see
+actual commands instead of DVC-files):
 
 ```dvc
 $ dvc pipeline show --ascii evaluate.dvc
@@ -306,7 +307,7 @@ $ dvc metrics show
   auc.metric: 0.620091
 ```
 
-It's time to save the pipeline. You can confirm that we do not save pickle model
+It's time to save our pipeline. You can confirm that we do not save pickle model
 files or initial data sets into Git using the `git status` command. We are just
 saving a snapshot of the DVC-files that describe data and code versions and
 relationships between them.

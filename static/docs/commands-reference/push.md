@@ -60,8 +60,10 @@ not exist in the local cache. Running `dvc push` from the local cache does not
 remove nor modify those files in the remote cache.
 
 If one or more `targets` are specified, DVC only considers the files associated
-with those DVC-files. Using the `--with-deps` option DVC tracks dependencies
-backward through the pipeline to find data files to push.
+with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
+backward from the target [stage](/doc/commands-reference/run) file(s), through
+the corresponding [pipeline(s)](/doc/get-started/pipeline), to find data files
+to push.
 
 ## Options
 
@@ -86,7 +88,7 @@ backward through the pipeline to find data files to push.
   the target DVC-file(s). This option only has effect when one or more `targets`
   are specified. By traversing all stage dependencies, DVC searches backward
   from the given target(s) in the corresponding pipeline. This means DVC will
-  not push files referenced later in the pipeline than the named target(s).
+  not push files referenced later in a pipeline than the given target(s).
 
 - `-R`, `--recursive` - the `targets` value is expected to be a directory path.
   With this option, `dvc pull` determines the files to upload by searching the
@@ -198,10 +200,10 @@ $ dvc status --cloud
 Pipeline is up to date. Nothing to reproduce.
 ```
 
-With the first `dvc push` we specified a stage in the middle of the pipeline
+With the first `dvc push` we specified a stage in the middle of this pipeline
 (`matrix-train.p.dvc`) while using `--with-deps`. DVC started with that DVC-file
 and searched backwards through the pipeline for data files to upload. Because
-the `model.p.dvc` stage occurs later in the pipeline, its data was not pushed.
+the `model.p.dvc` stage occurs later, its data was not pushed.
 
 Then we ran `dvc push` specifying the last stage, `model.p.dvc`, and its data
 was uploaded. Finally, we ran `dvc push` and `dvc status` with no options to
