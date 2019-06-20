@@ -4,8 +4,9 @@ import DownloadButton from '../../DownloadButton'
 import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
 import sidebar from '../sidebar'
-import startCase from 'lodash.startcase'
 import Preloader from '../../Preloader/Preloader'
+import SidebarMenuHelper from './SidebarMenuHelper'
+const MENU_ID = 'sidebar-menu'
 export default class SidebarMenu extends React.Component {
   constructor(props) {
     super(props)
@@ -13,51 +14,20 @@ export default class SidebarMenu extends React.Component {
       names: [],
       loading: true
     }
-    this.collapse = this.collapse.bind(this)
-    this.getName = this.getName.bind(this)
-    this.getNamesArr = this.getNamesArr.bind(this)
   }
-  collapse() {
+  collapse = () => {
     setTimeout(function() {
       $('[data-open=true]').slideDown()
       $('[data-open=false]').slideUp()
     })
   }
-  getNamesArr() {
-    let arr = {},
-      promises = [],
-      self = this
-    sidebar.map(section => {
-      section.files.map(file => {
-        let folder = file.folder ? file.folder : section.folder
-        let filename = typeof file === 'string' ? file : file.indexFile
-        arr[folder + '/' + filename] = startCase(filename.slice(0, -3))
-        if (file.files && file.files.length > 0) {
-          file.files.map(file2 => {
-            let folder = file.folder ? file.folder : section.folder
-            let filename = file2
-            arr[folder + '/' + filename] = startCase(filename.slice(0, -3))
-          })
-        }
-      })
-    })
-    self.setState({
-      names: arr,
-      loading: false
-    })
-  }
   componentDidMount() {
     this.collapse()
-    this.getNamesArr()
-  }
-  getName(labels = null, files = null, folder = null, indexFile = null) {
-    let name
-    if (labels && labels[indexFile]) {
-      name = labels[indexFile]
-    } else {
-      name = this.state.names[folder + '/' + indexFile]
-    }
-    return name
+    const names = SidebarMenuHelper.getNamesArr(sidebar)
+    this.setState({
+      names: names,
+      loading: false
+    })
   }
   componentWillReceiveProps(nextProps) {
     let con1 = nextProps.currentFile !== this.props.currentFile
@@ -66,138 +36,137 @@ export default class SidebarMenu extends React.Component {
       this.collapse()
     }
   }
-  render() {
+  renderPreloader = () => {
+    return (
+      <Menu id={MENU_ID}>
+        <PreloaderWrapper>
+          <Preloader size={24} />
+        </PreloaderWrapper>
+      </Menu>
+    )
+  }
+  renderSection = (section, file, index, fileIndex) => {
+    const { getLinkHref, onFileSelect, currentFile } = this.props
     let self = this
-    function includes(array, folder) {
-      let flag = false
-      array.map(elem => {
-        if (folder + '/' + elem === self.props.currentFile) {
-          flag = true
-        }
-      })
-      return flag
-    }
-    const {
-      sidebar,
-      currentSection,
-      currentFile,
-      onSectionSelect,
-      onFileSelect,
-      getLinkHref
-    } = this.props
-    return !this.state.loading ? (
-      <Menu id="sidebar-menu">
+    const subgroup = file.files || null
+    const folderPath = SidebarMenuHelper.getFullPath(
+      file.folder,
+      file.indexFile
+    )
+    const sectionPath = SidebarMenuHelper.getFullPath(section.folder, file)
+    let compare = file.folder && file.indexFile ? folderPath : sectionPath
+    const isFileActive = currentFile === compare
+    let FileOrSubsectionTitle =
+      file.name ||
+      SidebarMenuHelper.getName(
+        section.labels,
+        SidebarMenuHelper.getParentFolder(file, section),
+        file.indexFile || file,
+        this.state.names
+      )
+    return (
+      <Fragment key={`file-${fileIndex}`}>
+        <div>
+          <SectionLink
+            level={2}
+            href={getLinkHref(index, null, file.indexFile)}
+            onClick={e => onFileSelect(index, null, file, e)}
+            isActive={isFileActive}
+          >
+            {FileOrSubsectionTitle}
+          </SectionLink>
+        </div>
+        {subgroup && (
+          <Collapse
+            data-flag={'first'}
+            data-open={SidebarMenuHelper.convertToBooleanString(
+              isFileActive ||
+                SidebarMenuHelper.filesContains(
+                  subgroup,
+                  SidebarMenuHelper.getParentFolder(file, section),
+                  currentFile
+                )
+            )}
+          >
+            {subgroup.map((subFile, subIndex) => {
+              return self.renderSubgroup(
+                section,
+                file,
+                index,
+                subFile,
+                fileIndex,
+                subIndex
+              )
+            })}
+          </Collapse>
+        )}
+      </Fragment>
+    )
+  }
+  renderSubgroup = (section, file, index, subFile, fileIndex, subIndex) => {
+    const { getLinkHref, onFileSelect, currentFile } = this.props
+    const fileFolder = file.folder || section.folder
+    const subFilePath = SidebarMenuHelper.getFullPath(fileFolder, subFile)
+    return (
+      <div key={`file-${fileIndex}-${subIndex}`}>
+        <SectionLink
+          level={3}
+          href={getLinkHref(index, fileIndex, subFile)}
+          onClick={e => onFileSelect(index, fileIndex, subFile, e)}
+          isActive={currentFile === subFilePath}
+        >
+          {SidebarMenuHelper.getName(
+            file.labels,
+            file.folder || section.folder,
+            subFile,
+            this.state.names
+          )}
+        </SectionLink>
+      </div>
+    )
+  }
+  renderMenu = (section, index) => {
+    let self = this
+    const { currentSection, onSectionSelect, getLinkHref } = this.props
+    const isSectionActive = currentSection === index
+    let sectionTitle =
+      section.name ||
+      SidebarMenuHelper.getName(
+        section.labels,
+        section.folder,
+        section.indexFile,
+        this.state.names
+      )
+    return (
+      <div key={index}>
+        <SectionLink
+          level={1}
+          href={getLinkHref(index)}
+          onClick={e => onSectionSelect(index, e)}
+          className={isSectionActive ? 'docSearch-lvl0' : ''}
+          isActive={isSectionActive}
+        >
+          {sectionTitle}
+        </SectionLink>
+        <Collapse
+          data-open={SidebarMenuHelper.convertToBooleanString(isSectionActive)}
+        >
+          {section.files &&
+            section.files.map((file, fileIndex) => {
+              return self.renderSection(section, file, index, fileIndex)
+            })}
+        </Collapse>
+      </div>
+    )
+  }
+  renderContent = () => {
+    const { sidebar } = this.props
+    return (
+      <Menu id={MENU_ID}>
         <Sections>
           <SectionLinks>
             {sidebar.map((section, index) => {
-              const isSectionActive = currentSection === index
-              let sectionTitle = section.name
-                ? section.name
-                : this.getName(
-                    section.labels,
-                    section.files,
-                    section.folder,
-                    section.indexFile
-                  )
-              return (
-                <div key={index}>
-                  <SectionLink
-                    level={1}
-                    href={getLinkHref(index)}
-                    onClick={e => onSectionSelect(index, e)}
-                    className={isSectionActive ? 'docSearch-lvl0' : ''}
-                    isActive={isSectionActive}
-                  >
-                    {sectionTitle}
-                  </SectionLink>
-                  <Collapse data-open={isSectionActive ? 'true' : 'false'}>
-                    {section.files &&
-                      section.files.map((file, fileIndex) => {
-                        const subgroup = file.files ? file.files : null
-                        let compare =
-                          file.folder && file.indexFile
-                            ? file.folder + '/' + file.indexFile
-                            : section.folder + '/' + file
-                        const isFileActive = currentFile === compare
-                        let FileOrSubsectionTitle = file.name
-                          ? file.name
-                          : this.getName(
-                              section.labels,
-                              section.files,
-                              file.folder ? file.folder : section.folder,
-                              file.indexFile ? file.indexFile : file
-                            )
-                        return (
-                          <Fragment key={`file-${fileIndex}`}>
-                            <div>
-                              <SectionLink
-                                level={2}
-                                href={getLinkHref(index, file.indexFile)}
-                                onClick={e => onFileSelect(file, index, e)}
-                                isActive={isFileActive}
-                              >
-                                {FileOrSubsectionTitle}
-                              </SectionLink>
-                            </div>
-                            {subgroup && (
-                              <Collapse
-                                data-flag={'first'}
-                                data-open={
-                                  isFileActive ||
-                                  includes(
-                                    subgroup,
-                                    file.folder ? file.folder : section.folder
-                                  )
-                                    ? 'true'
-                                    : 'false'
-                                }
-                              >
-                                {subgroup.map((file2, subIndex) => {
-                                  let compare =
-                                    (file.folder
-                                      ? file.folder
-                                      : section.folder) +
-                                    '/' +
-                                    file2
-                                  return (
-                                    <div key={`file-${fileIndex}-${subIndex}`}>
-                                      <SectionLink
-                                        level={3}
-                                        href={getLinkHref(
-                                          index,
-                                          file2,
-                                          fileIndex
-                                        )}
-                                        onClick={e =>
-                                          onFileSelect(
-                                            file2,
-                                            index,
-                                            e,
-                                            fileIndex
-                                          )
-                                        }
-                                        isActive={currentFile === compare}
-                                      >
-                                        {this.getName(
-                                          file.labels,
-                                          file.files,
-                                          file.folder
-                                            ? file.folder
-                                            : section.folder,
-                                          file2
-                                        )}
-                                      </SectionLink>
-                                    </div>
-                                  )
-                                })}
-                              </Collapse>
-                            )}
-                          </Fragment>
-                        )
-                      })}
-                  </Collapse>
-                </div>
-              )
+              return this.renderMenu(section, index)
             })}
           </SectionLinks>
         </Sections>
@@ -207,21 +176,11 @@ export default class SidebarMenu extends React.Component {
           </SideFooter>
         </OnlyDesktop>
       </Menu>
-    ) : (
-      <Menu id="sidebar-menu">
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'flex-start',
-            flexDirection: 'column',
-            margin: '44px 34px 0 0'
-          }}
-        >
-          <Preloader size={24} />
-        </div>
-      </Menu>
     )
+  }
+  render = () => {
+    const { loading } = this.state
+    return loading ? this.renderPreloader() : this.renderContent()
   }
 }
 const Menu = styled.div`
@@ -311,4 +270,11 @@ const Collapse = styled.div`
 const SideFooter = styled.div`
   margin-top: 30px;
   padding-bottom: 30px;
+`
+const PreloaderWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  margin: 44px 34px 0px 0px;
 `

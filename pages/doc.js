@@ -63,7 +63,7 @@ export default class Documentation extends Component {
     }
   }
   loadStateFromURL = () => {
-    let file = this.getZeroFile(sidebar) //установили начальный файл
+    let file = this.getZeroFile(sidebar)
     let indexes = []
     let path = window.location.pathname.split('/')
     let length = path.length
@@ -89,9 +89,9 @@ export default class Documentation extends Component {
       getFile(sidebar, path[x], x)
     }
     this.loadFile({
-      file: file,
       section: length > 2 ? indexes[0] : 0,
       subsection: indexes.length > 2 ? indexes[1] : null,
+      file: file,
       parseHeadings: true
     })
   }
@@ -103,7 +103,7 @@ export default class Documentation extends Component {
       debug: false // Set debug to true if you want to inspect the dropdown
     })
   }
-  getLinkHref = (section, file = null, subsection) => {
+  getLinkHref = (section, subsection = null, file = null) => {
     const sectionSlug = sidebar[section].indexFile
       ? this.toString('filetourl', sidebar[section].indexFile)
       : kebabCase(sidebar[section].name)
@@ -119,11 +119,11 @@ export default class Documentation extends Component {
       : undefined
     return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`
   }
-  setCurrentPath = (section, file, subsection) => {
+  setCurrentPath = (section, subsection, file) => {
     window.history.pushState(
       null,
       null,
-      this.getLinkHref(section, file, subsection)
+      this.getLinkHref(section, subsection, file)
     )
   }
   onSectionSelect = (section, e) => {
@@ -132,18 +132,18 @@ export default class Documentation extends Component {
       ? sidebar[section].indexFile
       : sidebar[section].files[0]
     e && this.setCurrentPath(section)
-    this.loadFile({ file, section, parseHeadings: false })
+    this.loadFile({ section, file, parseHeadings: false })
   }
-  onFileSelect = (file, section, e, subsection) => {
+  onFileSelect = (section, subsection, file, e) => {
     e && e.preventDefault()
     this.setCurrentPath(
       section,
-      file.indexFile ? file.indexFile : file,
-      subsection
+      subsection,
+      file.indexFile ? file.indexFile : file
     )
-    this.loadFile({ file, section, subsection, parseHeadings: true })
+    this.loadFile({ section, subsection, file, parseHeadings: true })
   }
-  loadFile = ({ file, section, subsection, parseHeadings }) => {
+  loadFile = ({ section, subsection, file, parseHeadings }) => {
     this.setState({ load: true })
     let folderpath = file.folder
       ? file.folder
