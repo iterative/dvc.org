@@ -8,10 +8,10 @@
 DVC allows storing and versioning source data files, ML models, intermediate
 results with Git, without checking the file contents into Git. It is useful when
 dealing with files that are too large for Git to handle. DVC stores information
-about your data file in a special `.dvc` file, that has a description of a file
-that can be used for versioning. DVC supports various types of remote locations
-for your data files and allows you to easily store and share your data alongside
-your code.
+about your data file in a special [DVC-file](/doc/user-guide/dvc-file-format),
+that has a description of a file that can be used for versioning. DVC supports
+various types of remote locations for your data files and allows you to easily
+store and share your data alongside your code.
 
 ![](/static/img/model-versioning-diagram.png)
 
@@ -19,7 +19,7 @@ In this very basic scenario, DVC is a better replacement for `git-lfs` (check
 the [Related Technologies](/doc/understanding-dvc/related-technologies) to get a
 better sense why) and ad-hoc scripts on top of Amazon S3 (or name-it cloud) that
 are usually used to manage ML artifacts like model files, data files, etc.
-Unlike `git-lfs`, DVC does not require installing a server; it can be used
+Unlike `git-lfs`, DVC doesn't require installing a server; it can be used
 on-premises (NAS, SSH, for example) or with any major cloud provider (S3, Google
 Cloud, Azure).
 
@@ -42,8 +42,8 @@ initialize it in your repository:
 $ dvc init
 ```
 
-DVC creates a `.dvc` directory that stores special files and also a `.dvc/cache`
-directory that will be used to store cache for your data.
+DVC creates a `.dvc/` directory that stores special files and also a
+`.dvc/cache` directory that will be used to store cache for your data.
 
 ```dvc
 $ git status
@@ -96,7 +96,7 @@ have large dataset or model files.
 
 On the other hand, if we want to keep the current version of code and go back to
 the previous dataset only, we can do something like this (make sure that you
-don't have some uncommitted changes in the `data.dvc`):
+don't have uncommitted changes in the `data.dvc`):
 
 ```dvc
 $ git checkout v1.0 data.dvc

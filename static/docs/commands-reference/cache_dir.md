@@ -1,6 +1,7 @@
 # dir
 
-Sets the cache directory location.
+Set/unset the cache directory location intuitively (compared to using
+`dvc config cache`).
 
 ## Synopsis
 
@@ -15,10 +16,10 @@ positional arguments:
 
 ## Description
 
-Sets the `cache.dir` configuration option. Unlike doing so with
+Helper to set the `cache.dir` configuration option. Unlike doing so with
 `dvc config cache`, this command transform paths (`value`) that are provided
-relative to the present working directory into relative to the specified config
-file, as they are expected in the config file.
+relative to the present working directory into paths **relative to the config
+file location**. They are required in the latter form for the config file.
 
 ## Options
 
@@ -28,12 +29,15 @@ file, as they are expected in the config file.
 - `--system` - modify a system config file (e.g. `/etc/dvc.config`) instead of
   `.dvc/config`.
 
-- `--local` - modify a local config file instead of `.dvc/config`. It is located
-  in `.dvc/config.local` and is Git-ignored. This is useful when you need to
-  specify private config options in your config, that you don't want to track
-  and share through Git.
+- `--local` - modify a local
+  [config file](/doc/user-guide/dvc-files-and-directories) instead of
+  `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored. This
+  is useful when you need to specify private config options in your config that
+  you don't want to track and share through Git (credentials, private locations,
+  etc).
 
-- `-u`, `--unset` - remove a specified config option from a config file.
+- `-u`, `--unset` - remove the `cache.dir` config option from the config file.
+  Don't provide a `value` when using this flag.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -48,7 +52,7 @@ $ cat .dvc/config
 ...
 ```
 
-`../dir` has been resolved relative to `.dvc/config` location, resulting in
+`../dir` has been resolved relative to the `.dvc/` dir, resulting in
 `../../dir`.
 
 ## Examples: Using absolute path

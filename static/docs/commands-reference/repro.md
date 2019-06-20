@@ -1,7 +1,8 @@
 # repro
 
-Rerun commands recorded in the pipeline stages in the same order. Commands to
-rerun are determined by recursively analyzing which stages and changes in their
+Rerun commands recorded in the [pipeline](/doc/get-started/pipeline)
+[stages](/doc/commands-reference/run) in the same order. Commands to rerun are
+determined by recursively analyzing which stages and changes in their
 dependencies to find only those that have to be rerun.
 
 ## Synopsis
@@ -13,28 +14,28 @@ usage: dvc repro [-h] [-q | -v]
                  [targets [targets ...]]
 
 positional arguments:
-    target                DVC file to reproduce.
+    target                DVC-file to reproduce.
 ```
 
 ## Description
 
-DVC file (`target`) can have any name followed by the `.dvc` file extension. If
-file name is omitted, `Dvcfile` will be used by default.
+If the [DVC-file](/doc/user-guide/dvc-file-format) (`target`) is omitted,
+`Dvcfile` will be assumed.
 
 `dvc repro` provides an interface to rerun the commands in the computational
-graph (a.k.a. pipeline) defined by the stage files in the current workspace. By
-default, this command recursively searches, starting from the `Dvcfile`, the
-pipeline stages to find any which have changed. It then reruns the corresponding
-commands. The pipeline is mostly defined using the `dvc run` command, while data
-input nodes are defined by the `dvc add` command.
+graph (a.k.a. pipeline) defined by the connected stages (DVC-files) in the
+current workspace. By default, this command recursively searches, starting from
+the `Dvcfile`, the pipeline stages to find any which have changed. It then
+reruns the corresponding commands. The pipeline is mostly defined using the
+`dvc run` command, while data input nodes are defined by the `dvc add` command.
 
-There are several ways to restrict the stages to rerun, by listing stage file(s)
-as targets, or using the `--single-item`, `--pipeline`, or `--cwd` options.
+There are several ways to restrict the stages to rerun, by listing DVC-files as
+targets, or using the `--single-item`, `--pipeline`, or `--cwd` options.
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
-data files, intermediate or final results. It saves (unless `--no-commit` option
-is specified) all the data files, intermediate or final results into the DVC
-local cache and updates stage files with the new checksum information.
+data files, intermediate or final results. It saves all the data files,
+intermediate or final results into the DVC local cache (unless `--no-commit`
+option is specified) and updates DVC-files with the new checksum information.
 
 ## Options
 
@@ -55,7 +56,7 @@ local cache and updates stage files with the new checksum information.
   either be rerun as part of the pipeline in the parent directory, or as an
   independent unit.
 
-- `--no-commit` - does not save outputs to cache. Useful when running different
+- `--no-commit` - do not save outputs to cache. Useful when running different
   experiments and you don't want to fill up your cache with temporary files. Use
   `dvc commit` when you are ready to save your results to cache.
 
@@ -87,16 +88,17 @@ local cache and updates stage files with the new checksum information.
   (semi-random) outputs. For nondeterministic stages the outputs can vary on
   each execution, meaning the cache cannot be trusted for such stages.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  all stages are up to date or if all stages are successfully rerun, otherwise
-  exit with 1. The command run by the stage is free to make output irregardless
-  of this flag.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
+  stages are up to date or if all stages are successfully rerun, otherwise exit
+  with 1. The command run by the stage is free to make output irregardless of
+  this flag.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
-- `--downstream` - rerun the commands present in the downstream of the pipeline.
+- `--downstream` - rerun the commands down the pipeline of the target file
+  including the one in it.
 
 ## Examples
 
@@ -186,3 +188,44 @@ Saving information to 'Dvcfile'.
 
 You can check now that `Dvcfile` and `count.txt` have been updated with the new
 information, new `md5` checksums and a new result respectively.
+
+## Examples: Downstream
+
+There is also an option which allows one to reproduce results from a specific
+command in the pipeline. Enabling this option requires adding flag
+`--downstream` to command `dvc repro`.
+
+To demonstrate working of this let us make a change in `text.txt`:
+
+```
+...
+The answer to universe is 42
+- The Hitchhiker's Guide to the  Galaxy
+```
+
+Now running the command `dvc repro --downstream` results in the following
+output:
+
+```dvc
+WARNING: assuming default target 'Dvcfile'.
+Stage 'Dvcfile' didn't change.
+Pipeline is up to date. Nothing to reproduce.
+```
+
+The reason being that the `text.txt` is a file which is not directly dependent
+on `Dvcfile`. Instead it is dependent on `filter.dvc` which is above our target
+file in the pipeline.
+
+```dvc
+$ dvc pipeline show --ascii
+
+    .------------.
+    | filter.dvc |
+    `------------'
+           *
+           *
+           *
+      .---------.
+      | Dvcfile |
+      `---------'
+```

@@ -10,7 +10,7 @@ files and download a 40MB data archive into this directory.
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` utility by default, so you'll need to use a browser
+Windows doesn't ship `wget` utility by default, so you'll need to use a browser
 to download `data.xml`and save it into the `data` subdirectory.
 
 </details>
@@ -67,7 +67,7 @@ location of the actual content file in DVC cache directory `.dvc/cache`.
 
 > Output from DVC-files defines the relationship between the data file path in a
 > repository and the path in a cache directory. See also
-> [DVC File Format](/doc/user-guide/dvc-file-format)
+> [DVC-File Format](/doc/user-guide/dvc-file-format)
 
 ```dvc
 $ cat data/Posts.xml.zip.dvc
@@ -96,10 +96,10 @@ workspace, DVC can create reflinks or other file link types. (See
 .)
 
 Creating file links is a quick file system operation. So, with DVC you can
-easily checkout a few dozen files of any size. A file link does not require you
-to have twice as much space in the hard drive. Even if each of the files
-contains 41MB of data, the overall size of the repository is still 41MB. Both of
-the files correspond to the same `inode` (a file metadata record) in the file
+easily checkout a few dozen files of any size. A file link prevents you from
+using twice as much space in the hard drive. Even if each of the files contains
+41MB of data, the overall size of the repository is still 41MB. Both of the
+files correspond to the same `inode` (a file metadata record) in the file
 system. Refer to
 [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization) for
 more details.
@@ -119,18 +119,23 @@ $ du -sh .
  41M .
 ```
 
+Note that `ls -i` prints the index number(78483929) of each file and inode for
+`data/Posts.xml.zip` and `.dvc/cache/ec/88519f8465218abb23ce0e0e8b1384` remained
+same.
+
 ## Running commands
 
 Once data source files are in the workspace you can start processing the data
 and train ML models out of the data files. DVC helps you to define steps of your
-ML process and pipe them together into an ML **pipeline**.
+ML process and pipe them together into a ML
+[pipeline](/doc/get-started/pipeline).
 
 `dvc run` executes any command that you pass into it as a list of parameters.
 However, the command to run alone is not as interesting as its role within a
 pipeline, so we'll need to specify its dependencies and output files. We call
-this a pipeline **stage**. Dependencies may include input files and directories,
-and the actual source script to run. Outputs are files written to by the
-command, if any.
+this a pipeline [stage](/doc/commands-reference/run). Dependencies may include
+input files and directories, and the actual source script to run. Outputs are
+files written to by the command, if any.
 
 1. Option `-d file.tsv` should be used to specify a dependency file or
    directory. The dependency can be a regular file from a repository or a data
@@ -184,12 +189,11 @@ and does some additional work if the command was successful:
    files content goes to the cache directory `.dvc/cache` and each of the
    filenames will be added to `.gitignore`.
 
-2. For reproducibility purposes, DVC creates the `Posts.xml.dvc` DVC-file in the
-   workspace — the file with meta-information about the pipeline stage, see
-   [DVC File Format](/doc/user-guide/dvc-file-format). By default, DVC assigns a
-   name to the DVC-file based on the first output file name, by adding the
-   `.dvc` file extension. This name can be changed by using the `-f` option, for
-   example by specifying `-f extract.dvc`.
+2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` DVC-file
+   in the workspace with information about this stage in the pipeline, see
+   [DVC-File Format](/doc/user-guide/dvc-file-format). Note that the name of
+   this file could be specified by using the `-f` option, for example
+   `-f extract.dvc`.
 
 Let's take a look at the resulting DVC-file from the above example:
 

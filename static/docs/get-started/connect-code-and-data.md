@@ -41,8 +41,8 @@ $ tree
 ```
 
 We **strongly** recommend using
-[`virtualenv`](https://virtualenv.pypa.io/en/stable/) or a similar tool to
-isolate your environment:
+[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool to isolate
+your environment:
 
 ```dvc
 $ virtualenv .env
@@ -71,7 +71,7 @@ $ dvc run -f prepare.dvc \
           python src/prepare.py data/data.xml
 ```
 
-`dvc run` generates the `prepare.dvc` file. It has the same
+`dvc run` generates the `prepare.dvc` DVC-file. It has the same
 [format](/doc/user-guide/dvc-file-format) as the file we created in the
 [previous section](/doc/get-started/add-files) to track `data.xml`, except in
 this case it has additional information about the `data/prepared` output (a
@@ -131,20 +131,21 @@ documentation to learn the specific details about how they behave and all of
 their options. Let's briefly mention what the options used above mean for this
 particular example:
 
-`-f prepare.dvc` specifies a name for the pipeline stage file. It's optional but
-we highly recommend using it to make your project structure more readable.
+`-f prepare.dvc` specifies a name for the pipeline DVC-file (stage). It's
+optional but we highly recommend using it to make your project structure more
+readable.
 
 `-d src/prepare.py` and `-d data/data.xml` mean that the `prepare.dvc` stage
-depends on them to produce the result. When you run `dvc repro` next time (see
-next chapter) DVC will automatically check these dependencies and decide whether
-this stage is up to date or or whether it requires rebuilding.
+file depends on them to produce the result. When you run `dvc repro` next time
+(see next chapter) DVC will automatically check these dependencies and decide
+whether this stage is up to date or or whether it requires rebuilding.
 
 `-o data/prepared` specifies the output directory processed data will be put
 into. The script creates two files in it – that will be used later to generate
 features, train and evaluate the model.
 
 And, the last line, `python src/prepare.py data/data.xml`, specifies a command
-to run. This command is saved to the generated DVC file and required by
+to run. This command is saved to the generated DVC-file and required by
 `dvc repro`.
 
 </details>
@@ -154,7 +155,7 @@ You don't need to run `dvc add` to place output files (`prepared/train.tsv` and
 need to run `dvc push` (usually along with `git commit`) to save them to the
 remote when you are done.
 
-Let's commit meta-files to save the stage we built:
+Let's commit the changes to save the stage we built:
 
 ```dvc
 $ git add data/.gitignore prepare.dvc

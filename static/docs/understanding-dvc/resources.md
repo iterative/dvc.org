@@ -4,27 +4,27 @@
 
 - A fun video about reproducibility and DVC:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4h6I9_xeYA4"
-frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
-picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/4h6I9_xeYA4"
+    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
+    picture-in-picture" allowfullscreen></iframe>
 
 - DVC Co-founder Dmitry Petrov talking about Model and Dataset versioning
-practises using DVC in Pycon, 2019:
+  practices using DVC in PyCon, 2019:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/jkfh2PM5Sz8"
-frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
-picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/jkfh2PM5Sz8"
+    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
+    picture-in-picture" allowfullscreen></iframe>
 
 - DVC Co-founder Dmitry Petrov talking about Model and Dataset versioning
-practises using DVC in PyData Berlin, 2018:
+  practices using DVC in PyData Berlin, 2018:
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BneW7jgB298"
-frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
-picture-in-picture" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/BneW7jgB298"
+    frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
+    picture-in-picture" allowfullscreen></iframe>
 
 - Podcast featured by `Podcast.__init__`:
   [Version control For your Machine Learning Projects](https://www.pythonpodcast.com/data-version-control-episode-206/) -
-  
+
 ## Articles
 
 - [Data version control with DVC. What do the authors have to say?](https://towardsdatascience.com/data-version-control-with-dvc-what-do-the-authors-have-to-say-3c3b10f27ee)

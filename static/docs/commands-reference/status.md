@@ -1,26 +1,28 @@
 # status
 
-Show changed stages in the pipeline and mismatches either between the local
-cache and local files, or between the local cache and remote cache.
+Show changes in the [pipeline](/doc/get-started/pipeline) and mismatches either
+between the local cache and local files, or between the local cache and remote
+cache.
 
 ## Synopsis
 
 ```usage
-usage: dvc status [-h] [-q | -v] [-j JOBS] [--show-checksums]
-                  [-c] [-r REMOTE] [-a] [-T] [-d]
+usage: dvc status [-h] [-v] [-j JOBS] [--show-checksums] [-q] [-c]
+                  [-r REMOTE] [-a] [-T] [-d]
                   [targets [targets ...]]
 
 positional arguments:
-  targets               Limit the scope to these stage files.
+  targets               DVC files.
 ```
 
 ## Description
 
-`dvc status` searches for changes in the pipeline, either showing which stages
-have changed in the local workspace and must be reproduced (`dvc repro`), or
-differences between the local cache and remote cache (meaning `dvc push` or
-`dvc pull` should be run to synchronize them). The two modes, _local_ and
-_cloud_ are triggered by using the `--cloud` or `--remote` options:
+`dvc status` searches for changes in the pipeline, either showing which
+[stages](/doc/commands-reference/run) have changed in the local workspace and
+must be reproduced (with `dvc repro`), or differences between the local cache
+and remote cache (meaning `dvc push` or `dvc pull` should be run to synchronize
+them). The two modes, _local_ and _cloud_ are triggered by using the `--cloud`
+or `--remote` options:
 
 | Mode   | CLI Option | Description                                                                                                                   |
 | ------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -28,16 +30,15 @@ _cloud_ are triggered by using the `--cloud` or `--remote` options:
 | remote | `--remote` | Comparisons are made between the local cache, and the given remote. Remote caches are defined using the `dvc remote` command. |
 | remote | `--cloud`  | Comparisons are made between the local cache, and the default remote, defined with `dvc remote --default` command.            |
 
-DVC determines data and code files to compare by analyzing all stage files in
-the current workspace (`--all-branches` and `--all-tags` in the `cloud` mode
-compare multiple workspaces - across all branches or tags). The comparison can
-be limited to one or more stages by listing the stage file(s) as `targets`.
-Changes are reported only against the named target stage or stages. When
-combined with the `--with-deps` option, a search is made for changes in other
-stages that affect the target stage.
+DVC determines data and code files to compare by analyzing all DVC-files in the
+current workspace (`--all-branches` and `--all-tags` in the `cloud` mode compare
+multiple workspaces - across all branches or tags). The comparison can be
+limited to specific DVC-files (stages) by listing them as `targets`. Changes are
+reported only against the named `targets`. When combined with the `--with-deps`
+option, a search is made for changes in other stages that affect the target.
 
 In the `local` mode, changes are detected through the checksum of every file
-listed in every stage file in the pipeline against the corresponding file in the
+listed in every DVC-file in the pipeline against the corresponding file in the
 file system. The output indicates the detected changes, if any. If no
 differences are detected, `dvc status` prints this message:
 
@@ -49,17 +50,17 @@ differences are detected, `dvc status` prints this message:
 This says that no differences were detected, and therefore that no stages would
 be rerun if `dvc repro` were executed.
 
-If instead differences have been detected, `dvc status` lists those changes. For
-each stage with differences, the _dependencies_ and/or _outputs_ that differ are
-listed. For each item listed, either the file name or the checksum is shown, and
-additionally a status word is shown describing the change:
+If instead, differences are detected, `dvc status` lists those changes. For each
+DVC-file (stage) with differences, the _dependencies_ and/or _outputs_ that
+differ are listed. For each item listed, either the file name or the checksum is
+shown, and additionally a status word is shown describing the change:
 
 - For the local workspace:
   - _changed_ means the named file has changed
 - For comparison against a remote cache:
   - _new_ means the file exists in the local cache but not the remote cache
-  - _deleted_ means the file does not exist in the local cache, and exists in
-    the remote cache
+  - _deleted_ means the file doesn't exist in the local cache, but exists in the
+    remote cache
 
 For the _changed_ case, the `dvc repro` command is indicated.
 
@@ -72,11 +73,11 @@ cache. For the typical process to update workspaces, see
 ## Options
 
 - `-d`, `--with-deps` - finds changes by tracking dependencies to the named
-  target stage. This option only has effect when one or more target stages are
-  named. By traversing the dependencies, DVC searches backward through the
-  pipeline from the named target(s). This means DVC will not show changes
-  occurring later in the pipeline than the named target(s). Applies whether or
-  not `--cloud` is specified.
+  target DVC-file(s). This option only has effect when one or more `targets` are
+  specified. By traversing each stage dependencies, DVC searches backward
+  through the pipeline from the named target(s). This means DVC will not show
+  changes occurring later in the pipeline than the named target(s). Applies
+  whether or not `--cloud` is specified.
 
 - `-c`, `--cloud` - enables comparison against a remote cache. If no `--remote`
   option has been given, DVC will compare against the default remote cache,
@@ -107,8 +108,8 @@ cache. For the typical process to update workspaces, see
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  pipeline is up to date, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

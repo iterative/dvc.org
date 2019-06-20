@@ -2,11 +2,12 @@
 
 Remove data file or data directory.
 
-This command safely removes data files or stage outputs that are tracked by DVC
-from your _workspace_. It takes a `.dvc` file and removes all outputs and
-optionally removes the file itself.
+This command safely removes data files or directories that are tracked by DVC
+from your _workspace_. It takes a [DVC-File](/doc/user-guide/dvc-file-format) as
+input, removes all of its outputs (`outs`), and optionally removes the file
+itself.
 
-Note that it _does not_ remove files from the DVC cache or remote storage (see
+Note that it does not remove files from the DVC cache or remote storage (see
 `dvc gc`). However, remember to run `dvc push` to save the files you actually
 want to use or share in the future.
 
@@ -14,7 +15,7 @@ want to use or share in the future.
 usage: dvc remove [-h] [-q] [-v] [-o | -p] [-f] targets [targets ...]
 
 positional arguments:
-    targets               DVC files.
+    targets               DVC-files.
 ```
 
 Check also [Update Tracked Files](/doc/user-guide/update-tracked-file) to see
@@ -23,16 +24,16 @@ how it can be used to replace or modify files that are under DVC control.
 ## Options
 
 - `-o`, `--outs` (default) - remove outputs described in the provided DVC
-  file(s), keep the DVC files.
+  file(s), keep the DVC-files.
 
-- `-p`, `--purge` - remove outputs and DVC files.
+- `-p`, `--purge` - remove outputs and DVC-files.
 
 - `-f`, `--force` - force purge. Skip confirmation prompt.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
@@ -57,7 +58,7 @@ $ ls data.csv*
      data.csv.dvc
 ```
 
-Purge DVC files:
+Purge DVC-files:
 
 ```dvc
 $ dvc remove data.csv.dvc -p

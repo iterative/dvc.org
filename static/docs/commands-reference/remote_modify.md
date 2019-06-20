@@ -2,6 +2,10 @@
 
 Modify remote settings.
 
+> This command is commonly needed after `dvc remote add` or
+> [default](/doc/commands-reference/remote-default) to setup credentials or
+> other customizations to each remote type.
+
 See also [add](/doc/commands-reference/remote-add),
 [default](/doc/commands-reference/remote-default),
 [list](/doc/commands-reference/remote-list), and
@@ -10,9 +14,8 @@ See also [add](/doc/commands-reference/remote-add),
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [-q | -v] [-u]
-                       [--global] [--system] [--local]
-                       name option [value]
+usage: dvc remote modify [-h] [--global] [--system] [--local] [-q | -v]
+                         [-u] name option [value]
 
 positional arguments:
  name           Name of the remote
@@ -26,13 +29,14 @@ Remote `name` and `option` name are required. Option names are remote type
 specific. See below examples and a list of per remote type - AWS S3, Google
 cloud, Azure, SSH, ALiyun OSS, and others.
 
-This command modifies a section in the DVC
+This command modifies a `remote` section in the DVC
 [config file](/doc/user-guide/dvc-files-and-directories). Alternatively,
 `dvc config` or manual editing could be used to change settings.
 
 ## Options
 
-- `-u`, `--unset` - delete configuration value
+- `-u`, `--unset` - delete configuration value for given `option`. Don't provide
+  a `value` when using this flag.
 
 - `--global` - save remote configuration to the global config (e.g.
   `~/.config/dvc/config`) instead of `.dvc/config`.
@@ -40,11 +44,14 @@ This command modifies a section in the DVC
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/dvc.config`) instead of `.dvc/config`.
 
-- `--local` - modify the [local](/doc/user-guide/dvc-files-and-directories)
-  configuration file (`.dvc/config.local`). This is useful when you are
-  modifying private options or local environment specific settings in your
-  config, that you don't want to track and share through Git (credentials,
-  private locations, etc).
+- `--local` - modify a local
+  [config file](/doc/user-guide/dvc-files-and-directories) instead of
+  `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored. This
+  is useful when you need to specify private config options in your config that
+  you don't want to track and share through Git (credentials, private locations,
+  etc).
+
+## Examples
 
 <details>
 
@@ -96,6 +103,13 @@ $ dvc remote modify myremote use_ssl false
 
 ```dvc
 $ dvc remote modify myremote listobjects true
+```
+
+- `sse` - server-side encryption algorithm to use (e.g., AES256, aws:kms). By
+  default, no encryption is used.
+
+```dvc
+$ dvc remote modify myremote sse AES256
 ```
 
 To communicate with a remote object storage that supports an S3 compatible API
@@ -252,7 +266,7 @@ $ dvc remote modify myremote oss_endpoint endpoint
 
 </details>
 
-## Examples
+## Examples: Customize an S3 remote
 
 Let's first set up a _default_ S3 remote:
 

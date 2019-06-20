@@ -8,9 +8,9 @@ Once initialized in a project, DVC populates its installation directory
 
 - `.dvc/config.local` - this is a local configuration file, that will overwrite
   options in `.dvc/config`. This is useful when you need to specify private
-  options in your config, that you don't want to track and share through git.
-  The local config file can be edited by hand or with a special command:
-  `dvc config --local`.
+  options in your config that you don't want to track and share through Git
+  (credentials, private locations, etc). The local config file can be edited by
+  hand or with a special command: `dvc config --local`.
 
 - `.dvc/cache` - the [cache directory](#structure-of-cache-directory) will
   contain your data files. (The data directories of DVC repositories will only
@@ -19,7 +19,8 @@ Once initialized in a project, DVC populates its installation directory
 
   > Note that DVC includes the cache directory in `.gitignore` during the
   > initialization. No data files (with actual content) will ever be pushed to
-  > the Git repository, only DVC-files that are needed to reproduce them.
+  > the Git repository, only [DVC-files](/doc/user-guide/dvc-file-format) that
+  > are needed to reproduce them.
 
 - `.dvc/state` - this file is used for optimization. It is a SQLite db, that
   contains checksums for files in a project with respective timestamps and
@@ -56,15 +57,19 @@ remote storage. `/tmp/dvc-storage` can be one example of a prefix.
 For the second case, let us consider a directory of 2 images.
 
 ```dvc
-$ tree
-.
+$ tree data/images/
+data/images/
 ├── cat.jpeg
 └── index.jpeg
+
+$ dvc add data/images
+...
 ```
 
-On running `dvc add` on this directory of images, a `.dvc` file is created, by
-default, with information about the checksum of directory which is cached as a
-file in `.dvc/cache`.
+On running `dvc add` on this directory of images, a
+[DVC-file](/doc/user-guide/dvc-file-format) is created by default, with
+information including the checksum of the directory, which is cached as a file
+in `.dvc/cache`.
 
 ```yaml
 - md5: 196a322c107c2572335158503c64bfba.dir
