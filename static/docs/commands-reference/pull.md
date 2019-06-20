@@ -86,11 +86,11 @@ reflinks or hardlinks to put it in the workspace without copying. See
   surfaces behavior from the `dvc checkout` command because `dvc pull` in effect
   performs a _checkout_ after downloading files.
 
-- `-R`, `--recursive` - `targets` values is expected to be a directory path.
-  Determines the files to download by searching the named directory and its
-  subdirectories for DVC-files to download data for. Along with providing a
-  `target`, or `target` along with `--with-deps` it is yet another way to cut
-  the scope of DVC-files to download.
+- `-R`, `--recursive` - `targets` is expected to contain directory path(s).
+  Determines the files to download by searching each target directory and its
+  subdirectories for DVC-files to inspect. Along with providing a `target`, or
+  `target` and `--with-deps`, this is another way to limit the scope of
+  DVC-files to download.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while downloading files from the remote cache. The effect is to control the
@@ -143,7 +143,7 @@ $ dvc pull data.zip.dvc
 
 In this case we left off the `--remote` option, so it will have pulled from the
 default remote. The only files considered in this case are what is listed in the
-`out` section of the named target DVC-file.
+`out` section of the target DVC-file(s).
 
 ## Examples: With dependencies
 

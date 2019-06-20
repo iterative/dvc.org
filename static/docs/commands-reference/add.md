@@ -21,15 +21,15 @@ file is committed to the DVC cache. Using the `--no-commit` option, the file
 will not be added to the cache and instead the `dvc commit` command is used when
 (or if) the file is to be committed to the DVC cache.
 
-Under the hood, a few actions are taken for each file in the `targets`:
+Under the hood, a few actions are taken for each file in `targets`:
 
 1. Calculate the file checksum.
 2. Move the file content to the DVC cache (default location is `.dvc/cache`).
 3. Replace the file by a link to the file in the cache (see details below).
 4. Create a corresponding [DVC-file](/doc/user-guide/dvc-file-format) and store
    the checksum to identify the cache entry.
-5. Add the target file name to `.gitignore` (if Git is used in this workspace)
-   to prevent it from being committed to the Git repository.
+5. Add the target(s) to `.gitignore` (if Git is used in this workspace) to
+   prevent it from being committed to the Git repository.
 6. Instructions are printed showing `git` commands for adding the files to a Git
    repository. If a different SCM system is being used, use the equivalent
    command for that system or nothing is printed if `--no-scm` was specified for
@@ -79,8 +79,10 @@ This way you bring data provenance and make your project reproducible.
 
 ## Options
 
-- `-R`, `--recursive` - recursively add each file under the named directory. For
-  each file a new DVC-file is created using the process described earlier.
+- `-R`, `--recursive` - `targets` is expected to contain directory path(s).
+  Determines the files to add by searching each target directory and its
+  subdirectories for data files. For each file found, a new DVC-file is created
+  using the process described in this command's description.
 
 - `--no-commit` - do not put files/directories into cache. A DVC-file is
   created, and an entry is added to `.dvc/state`, while nothing is added to the

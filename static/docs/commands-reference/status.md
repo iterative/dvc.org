@@ -34,7 +34,7 @@ DVC determines data and code files to compare by analyzing all DVC-files in the
 current workspace (`--all-branches` and `--all-tags` in the `cloud` mode compare
 multiple workspaces - across all branches or tags). The comparison can be
 limited to specific DVC-files by listing them as `targets`. Changes are reported
-only against the named `targets`. When combined with the `--with-deps` option, a
+only against the given `targets`. When combined with the `--with-deps` option, a
 search is made for changes in other stages that affect the target.
 
 In the `local` mode, changes are detected through the checksum of every file
@@ -56,7 +56,7 @@ differ are listed. For each item listed, either the file name or the checksum is
 shown, and additionally a status word is shown describing the change:
 
 - For the local workspace:
-  - _changed_ means the named file has changed
+  - _changed_ means the file has changed
 - For comparison against a remote cache:
   - _new_ means the file exists in the local cache but not the remote cache
   - _deleted_ means the file doesn't exist in the local cache, but exists in the

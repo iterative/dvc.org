@@ -90,11 +90,11 @@ to push.
   backward from the target stage(s) in the corresponding pipeline(s). This means
   DVC will not push files referenced in later stage(s) than `targets`.
 
-- `-R`, `--recursive` - the `targets` value is expected to be a directory path.
-  With this option, `dvc pull` determines the files to upload by searching the
-  named directory, and its subdirectories, for DVC-files for which to upload
-  data. Along with providing a `target`, or `target` along with `--with-deps`,
-  it is yet another way to limit the scope of DVC-files to upload.
+- `-R`, `--recursive` - `targets` is expected to contain directory path(s).
+  Determines the files to upload by searching each target directory and its
+  subdirectories for DVC-files to inspect. Along with providing a `target`, or
+  `target` and `--with-deps`, this is another way to limit the scope of
+  DVC-files to upload.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while uploading files to the remote cache. The effect is to control the number
@@ -270,8 +270,8 @@ the local cache compared to the remote.
 
 Next we can upload part of the data from the local cache to a remote using the
 command `dvc push --with-deps STAGE.dvc`. Remember that `--with-deps` searches
-backwards from the named DVC-file to locate files to upload, and does not upload
-files in subsequent stages.
+backwards from the target DVC-file(s) to locate files to upload, and does not
+upload files in subsequent stages.
 
 After doing that we can inspect the remote cache again:
 

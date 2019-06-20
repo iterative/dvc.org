@@ -353,8 +353,8 @@ Reproducing 'Dvcfile':
 > default stage file name is `Dvcfile` when there are no outputs (option `-o`).
 
 The model evaluation step is the last one. To help in the pipeline's
-reproducibility, we specify a stage file named `Dvcfile`. (This will be
-discussed in more detail in the next chapter.)
+reproducibility, we specify stage file name `Dvcfile`. (This will be discussed
+in more detail in the next chapter.)
 
 Note that the output file `data/eval.txt` was transformed by DVC into a metric
 file in accordance with the `-M` option.

@@ -70,11 +70,11 @@ It handles that last step of adding the file to the DVC cache.
   backward from the target stage(s) in the corresponding pipeline(s). This means
   DVC will not commit files referenced in later stage(s) than `targets`.
 
-- `-R`, `--recursive` - the `targets` value is expected to be a directory path.
-  With this option, `dvc commit` determines the files to commit by searching the
-  named directory, and its subdirectories, for DVC-files for which to commit
-  data. Along with providing a `target`, or `target` along with `--with-deps`,
-  it is yet another way to limit the scope of DVC-files to upload.
+- `-R`, `--recursive` - `targets` is expected to contain directory path(s).
+  Determines the files to commit by searching each target directory and its
+  subdirectories for DVC-files to inspect. Along with providing `targets`, or
+  `targets` and `--with-deps`, this is another way to limit the scope of
+  DVC-files to commit.
 
 - `-f`, `--force` - commit data even if checksums for dependencies or outputs
   did not change.
@@ -195,11 +195,11 @@ outs:
 wdir: .
 ```
 
-To verify this instance of `model.pkl` is not in the cache, we must know how the
-cache files are named. In the DVC cache the first two characters of the checksum
-are used as a directory name, and the file name is the remaining characters.
-Therefore, if the file had been committed to the cache it would appear in the
-directory `.dvc/cache/70`. But:
+To verify this instance of `model.pkl` is not in the cache, we must know the
+names of the cache files. In the DVC cache the first two characters of the
+checksum are used as a directory name, and the file name is the remaining
+characters. Therefore, if the file had been committed to the cache it would
+appear in the directory `.dvc/cache/70`. But:
 
 ```dvc
 $ ls .dvc/cache/70
