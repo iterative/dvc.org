@@ -100,10 +100,8 @@ option is specified) and updates DVC-files with the new checksum information.
 - `--downstream` - rerun the commands down the pipeline of the target file
   including the one in it.
 
-- `R`, `--recursive` -  you can reproduce all stages in a specified target. It
-  determines the files to download by searching the named directory and its
-  subdirectories for DVC-files to download data for. the `targets` value is
-  expected to be a directory path and also files as well. 
+- `R`, `--recursive` - it reproduce all stages for specified directory/targets.
+  The `targets` value is expected to be a directory path and also files as well. 
 
 ## Examples
 

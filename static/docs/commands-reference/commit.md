@@ -17,8 +17,7 @@ positional arguments:
 ## Description
 
 The `dvc commit` command is useful for several scenarios where a dataset is
-being changed: a [stage](/doc/commands-reference/run) or
-[pipeline](/doc/get-started/pipeline) is in development, when one wishes to run
+being changed: a [stage](/doc/commands-reference/run) or [pipeline](/doc/get-started/pipeline) is in development, when one wishes to run
 commands outside the control of DVC, or to force DVC-files updates to save time
 rerunning the stage or pipeline.
 
@@ -70,9 +69,9 @@ It handles that last step of adding the file to the DVC cache.
   backward through the pipeline from the named target(s). This means DVC will
   not commit files referenced later in the pipeline than the named target(s).
 
-- `-R`, `--recursive` - determines the files to commit cache- by searching the
-  named directory/targets, and its subdirectories, for DVC-files for which to
-  commit data. The `targets` value is expected to be a directory path or a file
+- `-R`, `--recursive` - determines the files to commit by searching the named
+  directory/targets, and its subdirectories, for DVC-files for which to commit
+  data. The `targets` value is expected to be a directory path or a file.
 
 - `-f`, `--force` - commit data even if checksums for dependencies or outputs
   did not change.

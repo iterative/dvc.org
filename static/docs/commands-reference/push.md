@@ -88,7 +88,7 @@ backward through the pipeline to find data files to push.
   backward through the pipeline from the named target(s). This means DVC will
   not push files referenced later in the pipeline than the named target(s).
 
-- `-R`, `--recursive` - It push data from the cache to the workspace for data
+- `-R`, `--recursive` - it push data from the cache to the workspace for data
   files and directories that are referenced in those DVC-files/targets. The
   `targets` value is expected to be a path to a file or directory, relative to
   the current location(eg.`data/models/predict.pkl`).
