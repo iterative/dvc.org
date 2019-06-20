@@ -163,8 +163,8 @@ must explicitly set the `endpointurl` in the configuration:
 For example:
 
 ```dvc
-$ dvc remote add -d mybucket s3://path/to/dir
-$ dvc remote modify mybucket endpointurl object-storage.example.com
+$ dvc remote add -d myremote s3://mybucket/path/to/dir
+$ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
 
 AWS S3 remote can also be configured entirely via environment variables:
