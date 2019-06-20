@@ -79,13 +79,13 @@ command. In other cases the cache can be pulled from a remote cache using the
   are associated with the named stage, and the stages which execute earlier in
   the pipeline.
 
+- `-R`, `--recursive` - performs recursive checkout for target directory.
+
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC files with SCM commands like `git checkout` can result in
   the need for DVC to remove files which should not exist in the current state
   and are missing in the local cache (they are not committed in DVC terms). This
   option controls whether the user will be asked to confirm these files removal.
-
-- `-R`, `--recursive` - performs recursive checkout for target directory.
 
 - `-h`, `--help` - shows the help message and exit.
 
