@@ -26,7 +26,7 @@ while data input nodes are defined by the `dvc add` command.)
 
 There's a few ways to restrict the stages that will be run again by this
 command: by specifying stage file(s) as `targets`, or by using the
-`--single-item`, `--pipeline`, or `--cwd` options.
+`--single-item`, `--cwd`, `--pipeline`, or `--downstream` options.
 
 If specific [DVC-files](/doc/user-guide/dvc-file-format) (`targets`) are
 omitted, `Dvcfile` will be assumed.
@@ -99,8 +99,8 @@ specified), and updates stage files with the new checksum information.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `--downstream` - run again the commands down the pipeline(s) of the target
-  stages, including the one in said `targets`.
+- `--downstream` - only run again the stages after the given `targets` in their
+  corresponding pipeline(s), including the target stages themselves.
 
 ## Examples
 
@@ -128,8 +128,10 @@ $ dvc run -f Dvcfile -d numbers.txt -d process.py -M count.txt \
            "python process.py numbers.txt > count.txt"
 ```
 
-> Note that using `-f Dvcfile` with `dvc run` above isn't necessary as the
-> default stage file name is `Dvcfile` when there are no outputs (option `-o`).
+> Note that using `-f Dvcfile` with `dvc run` above is optional, the stage file
+> name would otherwise default to `count.txt.dvc`. We use `Dvcfile` in this
+> example because that's the default stage file name `dvc repro` will read
+> without having to provide any `targets`.
 
 Where `process.py` is a script which for simplicity just prints the number of
 lines:
@@ -156,12 +158,15 @@ $ tree
 └── text.txt       <---- text file to process
 ```
 
+You may want to check the contents of `Dvcfile` and `count.txt` for later
+reference.
+
 Ok, now, let's run the `dvc repro` command (remember, by default it reproduces
 outputs defined in `Dvcfile`, `count.txt` in this case):
 
 ```dvc
 $ dvc repro
-
+WARNING: assuming default target 'Dvcfile'.
 Stage 'filter.dvc' didn't change.
 Stage 'Dvcfile' didn't change.
 Pipeline is up to date. Nothing to reproduce.
@@ -181,25 +186,25 @@ If we now run `dvc repro`, that's what we should see:
 
 ```dvc
 $ dvc repro
-
+WARNING: assuming default target 'Dvcfile'.
 Stage 'filter.dvc' didn't change.
 Stage 'Dvcfile' changed.
 Reproducing 'Dvcfile'
 Running command:
   python process.py numbers.txt > count.txt
-
+Output 'count.txt' doesn't use cache. Skipping saving.
 Saving information to 'Dvcfile'.
 ```
 
-You can check now that `Dvcfile` and `count.txt` have been updated with the new
+You can now check that `Dvcfile` and `count.txt` have been updated with the new
 information, new `md5` checksums and a new result respectively.
 
 ## Examples: Downstream
 
-There is also an option which allows one to reproduce results from specific
-commands in a pipeline: `--downstream`.
-
-To demonstrate working of this, lets make a change in `text.txt`:
+The `--downstream` option allows us to only reproduce results from commands
+after a specific stage in a pipeline. To demonstrate how it works, lets make a
+change in `text.txt` (the input of our first stage, defined in the previous
+example):
 
 ```
 ...
@@ -207,7 +212,7 @@ The answer to universe is 42
 - The Hitchhiker's Guide to the  Galaxy
 ```
 
-Now using the `--downstream` option results in the following output:
+Now, using the `--downstream` option results in the following output:
 
 ```dvc
 $ dvc repro --downstream
@@ -216,9 +221,10 @@ Stage 'Dvcfile' didn't change.
 Pipeline is up to date. Nothing to reproduce.
 ```
 
-The reason being that the `text.txt` is a file which is not directly dependent
-on `Dvcfile`. Instead, it's dependent on `filter.dvc`, which is above our target
-file in this pipeline.
+The reason being that the `text.txt` is a file which is a dependency in the
+target DVC-file (`Dvcfile` by default). Instead, it's dependent on `filter.dvc`,
+which happens before the target stage in this pipeline (shown above in the
+following figure).
 
 ```dvc
 $ dvc pipeline show --ascii
