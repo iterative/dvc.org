@@ -78,10 +78,10 @@ specified in DVC-files currently in the workspace are considered by `dvc fetch`
   using the `dvc remote` command.
 
 - `-d`, `--with-deps` - determine files to download by tracking dependencies to
-  the target DVC-file(s). This option only has effect when one or more `targets`
-  are specified. By traversing all stage dependencies, DVC searches backward
-  from the given target(s) in the corresponding pipeline. This means DVC will
-  not fetch files referenced later in a pipeline than the given target(s).
+  the target DVC-file(s) (stages). This option only has effect when one or more
+  `targets` are specified. By traversing all stage dependencies, DVC searches
+  backward from the target stage(s) in the corresponding pipeline(s). This means
+  DVC will not fetch files referenced in later stage(s) than `targets`.
 
 - `-R`, `--recursive` - this option tells DVC that `targets` are directories
   (not DVC-files), and to traverse them recursively. All DVC-files found will be

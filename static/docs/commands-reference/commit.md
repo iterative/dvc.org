@@ -65,10 +65,10 @@ It handles that last step of adding the file to the DVC cache.
 ## Options
 
 - `-d`, `--with-deps` - determine files to commit by tracking dependencies to
-  the target DVC-file(s). This option only has effect when one or more `targets`
-  are specified. By traversing all stage dependencies, DVC searches backward
-  from the given target(s) in the corresponding pipeline. This means DVC will
-  not commit files referenced later in a pipeline than the given target(s).
+  the target DVC-file(s) (stages). This option only has effect when one or more
+  `targets` are specified. By traversing all stage dependencies, DVC searches
+  backward from the target stage(s) in the corresponding pipeline(s). This means
+  DVC will not commit files referenced in later stage(s) than `targets`.
 
 - `-R`, `--recursive` - the `targets` value is expected to be a directory path.
   With this option, `dvc commit` determines the files to commit by searching the
