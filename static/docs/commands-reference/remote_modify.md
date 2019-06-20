@@ -83,7 +83,7 @@ $ dvc remote modify myremote credentialpath /path/to/my/creds
 - `endpointurl` - endpoint URL to use to access AWS S3:
 
 ```dvc
-$ dvc remote modify myremote endpointurl myendpoint.com
+$ dvc remote modify myremote endpointurl https://myendpoint.com
 ```
 
 - `url` - remote location URL
@@ -122,7 +122,7 @@ For example:
 
 ```dvc
 $ dvc remote add -d mybucket s3://path/to/dir
-$ dvc remote modify mybucket endpointurl object-storage.example.com
+$ dvc remote modify mybucket endpointurl https://object-storage.example.com
 ```
 
 AWS S3 remote can also be configured entirely via environment variables:
@@ -279,7 +279,7 @@ Setting 'myremote' as a default remote.
 Modify its endpoint URL:
 
 ```dvc
-$ dvc remote modify myremote endpointurl object-storage.example.com
+$ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
 
 Now the config file should look like (run `cat .dvc/config`):
@@ -287,7 +287,7 @@ Now the config file should look like (run `cat .dvc/config`):
 ```ini
 ['remote "myremote"']
 url = s3://mybucket/storage
-endpointurl = object-storage.example.com
+endpointurl = https://object-storage.example.com
 [core]
 remote = myremote
 ```
