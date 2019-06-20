@@ -20,8 +20,8 @@ Makefile-like build automation tools (Make, Maven, Ant, Rakefile etc). It was
 designed in such a way to localize specification of DAG nodes.
 
 If you run `repro` on any [DVC-file](/doc/user-guide/dvc-file-format) from our
-repository, nothing happens because nothing was changed in the one pipeline
-defined in it. There's nothing to reproduce.
+repository, nothing happens because nothing was changed in the pipeline defined
+in the project. There's nothing to reproduce.
 
 ```dvc
 $ dvc repro model.p.dvc

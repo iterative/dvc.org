@@ -34,8 +34,8 @@ $ git commit -m "add featurization and train steps to pipeline"
 $ dvc push
 ```
 
-This example is simplified just to show you a basic but clear pipeline, see a
-more advanced [example](/doc/get-started/example-pipeline) or complete
+This example is simplified just to show you a basic pipeline, see a more
+advanced [example](/doc/get-started/example-pipeline) or complete
 [tutorial](/doc/tutorial) to create a
 [NLP](https://en.wikipedia.org/wiki/Natural_language_processing) pipeline
 end-to-end.

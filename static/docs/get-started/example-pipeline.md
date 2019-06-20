@@ -152,7 +152,7 @@ Similar to `dvc add`, `dvc run` creates a
 
 ### Expand to learn more about DVC internals
 
-Here's what the DVC-file (stage file, with outputs `outs`) looks like:
+Here's what the DVC-file (stage file, with dependencies `deps`) looks like:
 
 ```yaml
 cmd: ' unzip data/Posts.xml.zip -d data'

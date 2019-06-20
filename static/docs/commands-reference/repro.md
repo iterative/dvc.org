@@ -26,7 +26,7 @@ while data input nodes are defined by the `dvc add` command.)
 
 There's a few ways to restrict the stages that will be run again by this
 command: by specifying stage file(s) as `targets`, or by using the
-`--single-item`, `--cwd`, `--pipeline`, or `--downstream` options.
+`--single-item`, `--cwd`, or other options.
 
 If specific [DVC-files](/doc/user-guide/dvc-file-format) (`targets`) are
 omitted, `Dvcfile` will be assumed.
