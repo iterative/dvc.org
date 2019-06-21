@@ -124,6 +124,7 @@ git pull
 dvc checkout
 ```
 
-After `git pull`, you will be able to see a `data.dvc` file.
+After `git pull`, you will be able to see a `data.dvc` file. To see more
+information on `.dvc` file, visit [here](/doc/user-guide/dvc-file-format).
 
 `data` directory will now be a symbolic link to the NFS storage.
