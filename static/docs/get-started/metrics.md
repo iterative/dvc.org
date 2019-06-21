@@ -26,7 +26,7 @@ Let's again commit and save results:
 
 ```dvc
 $ git add evaluate.dvc auc.metric
-$ git commit -m "add evaluation step to pipeline"
+$ git commit -m "add evaluation step to the pipeline"
 $ dvc push
 ```
 
