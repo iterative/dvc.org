@@ -6,12 +6,11 @@ DVC-file).
 ## Synopsis
 
 ```usage
-usage: dvc add [-h] [-q | -v] [-f]
-               [-R] [--no-commit]
+usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [-f FILE]
                targets [targets ...]
 
 positional arguments:
-  targets                  Input files/directories.
+  targets               Input files/directories.
 ```
 
 ## Description

@@ -9,15 +9,14 @@ A set of commands to collect and display project metrics:
 ## Synopsis
 
 ```usage
-usage: dvc metrics [-h] [-q] [-v]
-                   {show, add, modify, remove}
-                   ...
+usage: dvc metrics [-h] [-q | -v] {show,add,modify,remove} ...
 
 positional arguments:
-    show                  Output metric values.
-    add                   Tag file as a metric file.
-    modify                Modify metric file options.
-    remove                Remove files's metric tag.
+  COMMAND
+    show                Output metric values.
+    add                 Tag file as a metric file.
+    modify              Modify metric file options.
+    remove              Remove files's metric tag.
 ```
 
 ## Description

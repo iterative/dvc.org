@@ -7,15 +7,12 @@ DVC-files in the workspace, then links the downloaded files into the workspace.
 ## Synopsis
 
 ```usage
-usage: dvc pull [-h] [-q | -v] [-j JOBS]
-                [--show-checksums] [-r REMOTE]
-                [-a] [-T] [-d] [-R] [-f]
+usage: dvc pull [-h] [-q | -v] [-j JOBS] [--show-checksums]
+                [-r REMOTE] [-a] [-T] [-d] [-f] [-R]
                 [targets [targets ...]]
 
-Pull data files from the cloud.
-
 positional arguments:
-  targets               DVC-files.
+  targets               DVC files.
 ```
 
 ## Description

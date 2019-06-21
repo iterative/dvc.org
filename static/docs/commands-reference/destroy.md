@@ -4,9 +4,13 @@ Remove all
 [DVC files and directories](/doc/user-guide/dvc-files-and-directories) from the
 project.
 
+## Synopsis
+
 ```usage
 usage: dvc destroy [-h] [-q | -v] [-f]
 ```
+
+## Description
 
 It removes DVC-files, and the entire `.dvc/` meta directory from the workspace.
 Note that the DVC cache will normally be removed as well, unless it's set to an

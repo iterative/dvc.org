@@ -2,13 +2,15 @@
 
 Get or set repository or global DVC config options.
 
+## Synopsis
+
 ```usage
-usage: dvc config [-h] [-q | -v] [--global] [--system] [--local]
-                  [-u] name [value]
+usage: dvc config [-h] [--global] [--system] [--local] [-q | -v] [-u]
+                  name [value]
 
 positional arguments:
-    name                  Option name
-    value                 Option value
+  name           Option name.
+  value          Option value.
 ```
 
 ## Description

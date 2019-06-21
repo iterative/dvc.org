@@ -8,12 +8,11 @@ DVC-file, it would also rename the DVC-file.
 ## Synopsis
 
 ```usage
-usage: dvc move [-h] [-q] [-v] src dst
+usage: dvc move [-h] [-q | -v] src dst
 
 positional arguments:
-    src                   Source path to a data file or directory.
-    dst                   Destination path.
-
+  src            Source path to a data file or directory.
+  dst            Destination path.
 ```
 
 ## Description

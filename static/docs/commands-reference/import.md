@@ -7,11 +7,11 @@ workspace and track changes in remote file or directory.
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q] [-v] [-f] [--resume] url out
+usage: dvc import [-h] [-q | -v] [--resume] [-f FILE] url [out]
 
 positional arguments:
-  url            URL (see supported URLs in the description)
-  out            Output
+  url                   (See supported URLs in the description.)
+  out                   Destination path to put files to.
 ```
 
 ## Description

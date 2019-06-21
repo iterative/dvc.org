@@ -13,13 +13,12 @@ See also [default](/doc/commands-reference/remote-default),
 ## Synopsis
 
 ```usage
-usage: dvc remote add [-h] [-q | -v] [-d] [-f]
-                      [--global] [--system] [--local]
-                      name url
+usage: dvc remote add [-h] [--global] [--system] [--local] [-q | -v]
+                      [-d] [-f] name url
 
 positional arguments:
-    name           Name.
-    url            URL.
+  name           Name.
+  url            URL. (See supported URLs below.)
 ```
 
 ## Description

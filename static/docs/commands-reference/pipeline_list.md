@@ -7,8 +7,6 @@ are independent of each other.
 
 ```usage
 usage: dvc pipeline list [-h] [-q | -v]
-
-List pipelines.
 ```
 
 ## Examples

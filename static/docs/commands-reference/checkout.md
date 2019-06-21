@@ -5,12 +5,11 @@ Update data files and directories in workspace based on current DVC-files.
 ## Synopsis
 
 ```usage
-usage: dvc checkout [-h] [-q | -v]
-                    [-d] [-R] [-f]
+usage: dvc checkout [-h] [-q | -v] [-d] [-f] [-R]
                     [targets [targets ...]]
 
 positional arguments:
-    targets          DVC-files.
+  targets          DVC files.
 ```
 
 ## Description

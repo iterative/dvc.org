@@ -5,7 +5,7 @@ Returns relative path to project's directory.
 ## Synopsis
 
 ```usage
-usage: dvc root [-h] [-q] [-v]
+usage: dvc root [-h] [-q | -v]
 ```
 
 ## Description

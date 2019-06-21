@@ -6,12 +6,11 @@ cache.
 ## Synopsis
 
 ```usage
-usage: dvc commit [-h] [-q | -v]
-                  [-f] [-d] [-R]
+usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R]
                   [targets [targets ...]]
 
 positional arguments:
-  targets               DVC-files.
+  targets          DVC files.
 ```
 
 ## Description

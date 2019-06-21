@@ -8,13 +8,12 @@ changes in their dependencies.
 ## Synopsis
 
 ```usage
-usage: dvc repro [-h] [-q | -v]
-                 [-f] [-s] [-c CWD] [-m] [--dry] [-i] [-p] [-P] [-R]
-                 [--ignore-build-cache] [--no-commit] [--downstream]
-                 [targets [targets ...]]
+usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c CWD] [-m] [--dry] [-i]
+                 [-p] [-P] [-R] [--ignore-build-cache] [--no-commit]
+                 [--downstream] [targets [targets ...]]
 
 positional arguments:
-  targets               DVC-file to reproduce (default - 'Dvcfile').
+  targets               DVC file to reproduce (default - 'Dvcfile').
 ```
 
 ## Description

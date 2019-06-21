@@ -13,9 +13,9 @@ usage: dvc diff [-h] [-q | -v] [-t TARGET] a_ref [b_ref]
 
 positional arguments:
   a_ref                 Git reference from which diff calculates
-  b_ref                 Git reference until which diff calculates,
-                        if omitted diff shows the difference
-                        between current HEAD and a_ref
+  b_ref                 Git reference untill which diff calculates, if
+                        omitted diff shows the difference between
+                        current HEAD and a_ref
 ```
 
 ## Description

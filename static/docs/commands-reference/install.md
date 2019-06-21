@@ -5,7 +5,7 @@ Install DVC hooks into the Git repository to automate certain common actions.
 ## Synopsis
 
 ```usage
-usage: dvc install [-h] [-q] [-v]
+usage: dvc install [-h] [-q | -v]
 ```
 
 ## Description
