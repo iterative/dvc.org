@@ -152,19 +152,19 @@ So, make sure you have the following permissions enabled:
 
 <details>
 
-### Click for an S3 API compatible storage example
+### Click for S3 API compatible storage example
 
 To communicate with a remote object storage that supports an S3 compatible API
-(e.g. [Minio](https://minio.io/), [Wasabi](https://wasabi.com/),
-[Eucalyptus](https://www.eucalyptus.cloud/index.html),
-[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/), etc.) you
+(e.g. [Minio](https://minio.io/),
+[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
+[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.) you
 must explicitly set the `endpointurl` in the configuration:
 
 For example:
 
 ```dvc
-$ dvc remote add -d mybucket s3://path/to/dir
-$ dvc remote modify mybucket endpointurl object-storage.example.com
+$ dvc remote add -d myremote s3://mybucket/path/to/dir
+$ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
 
 AWS S3 remote can also be configured entirely via environment variables:

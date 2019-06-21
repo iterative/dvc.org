@@ -4,7 +4,7 @@ Now that we have built our pipeline, we need a good way to visualize it to be
 able to wrap our heads around it. Luckily, DVC allows us to do that without
 leaving the terminal, making the experience distraction-less.
 
-We are using `--ascii` option below to better illustrate the pipeline. Please,
+We are using `--ascii` option below to better illustrate this pipeline. Please,
 refer to the `dvc pipeline show` documentation to explore other options this
 command supports (e.g. `.dot` files that can be used then in other tools).
 

@@ -48,14 +48,14 @@ up and manage DVC metrics.
 First, let's create a simple DVC-file:
 
 ```dvc
-$ dvc run -d code/evaluate.py -M data/eval.json -f Dvcfile \
+$ dvc run -d code/evaluate.py -M data/eval.json \
       python code/evaluate.py
 ```
 
 > `-M|--metrics-no-cache` is telling DVC to mark `data/eval.json` as a metric
 > file. Using this option is equivalent to using `-O|--outs-no-cache` and then
-> using `dvc metrics add data/eval.json` to explicitly mark `data/eval.json` as
-> a metric file.
+> running `dvc metrics add data/eval.json` to explicitly mark `data/eval.json`
+> as a metric file.
 
 Now let's print metric values that we are tracking in the current project:
 

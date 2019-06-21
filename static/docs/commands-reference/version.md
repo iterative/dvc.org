@@ -19,7 +19,7 @@ system/environment:
 | [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash in case of a development version)                                                                            |
 | `Python version`                            | Version of the Python being used for the project in which DVC is initialized                                                                              |
 | `Platform`                                  | Information about the operating system of the machine                                                                                                     |
-| [`Binary`](#output-of-binary)               | Shows whether the package is installed from a binary release or source                                                                                    |
+| [`Binary`](#what-we-mean-by-binary)         | Shows whether the package is installed from a binary release or source                                                                                    |
 | `Cache`                                     | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the DVC workspace and the cache directory |
 | `Filesystem type`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of workspace and the cache directory                                                      |
 
@@ -48,42 +48,39 @@ The detail of DVC version depends upon the way of installing the project.
   part is the git commit hash which is one of the commits in the `master` branch
   (also, optional suffix `.mod` means that code is modified).
 
-#### Output of Binary
+#### What we mean by "Binary"
 
-The detail of Binary depends upon the way of downloading a package.
+The detail of `Binary` depends on the way DVC was downloading and
+[installed](/doc/get-started/install).
 
-- **`Binary: True`** - This output is displayed when DVC package is installed as
-  a:
+- **`Binary: True`** - displayed when DVC is downloaded/installed as one of:
 
-  - Debian package (`.deb`) - file used to install a software in Linux
-    distributions like Ubuntu.
-  - Red Hat package (`.rpm`) - file used to install a software in Linux based
-    distributions such as Fedora, CentOS, etc.
-  - Windows executable (`.exe`) - file used to install packages for Windows.
-  - PKG file (`.pkg`) - file used to install packages for macOS.
+  - Debian package (`.deb`) - file used to install packages in several Linux
+    distributions, like Ubuntu.
+  - Red Hat package (`.rpm`) - file used to install packages in some Linux based
+    distributions, such as Fedora, CentOS, etc.
+  - PKG file (`.pkg`) - file used to install apps on macOS.
+  - Windows executable (`.exe`) - file used to install applications on Windows.
 
-  All these files are bundled as a binary file which is the compiled version of
-  a software which means it has already been built as machine code and can be
-  understood by computer systems. In our case, we use
-  [PyInstaller](https://pythonhosted.org/PyInstaller/) to bundle our source code
-  into a binary package.
+  These downloads are available from our [home page](/). They ultimately contain
+  a binary bundle, which is the executable version of a software program,
+  meaning that it will run natively on a specific platform (Linux, Windows,
+  Mac). In our case, we use [PyInstaller](https://pythonhosted.org/PyInstaller/)
+  to bundle our source code into the binary package app.
 
-* **`Binary: False`** - This output is displayed when DVC package is downloaded
-  from:
+* **`Binary: False`** - shown when DVC is downloaded and installed from:
 
-  - [DVC's GitHub repository](https://github.com/iterative/dvc) - raw source
-    code is hosted.
+  - [DVC's GitHub repository](https://github.com/iterative/dvc) - where core
+    source code is hosted.
   - [The Python Package Index (PyPI)](https://pypi.org/project/dvc/) - source
-    code is stored as a python package.
+    code is stored as a Python package.
   - [Homebrew package manager](https://github.com/iterative/homebrew-dvc) (for
     macOS systems) - source code is stored as Python package.
 
-  This method of setting up downloads the project's source code which is simply
-  human understandable code and not compiled. A user has to follow certain setup
-  instructions to build the project and then use it. Some projects use a
-  `Makefile` to build their project from the source code. We include setup
-  instructions, written in `setup.py`, in our code which handles its compilation
-  and henceforth, setting it up for usage.
+  This method of installation involves downloading DVC source code, and
+  following certain setup instructions (See the
+  [development](/doc/user-guide/development) guide) to build the application
+  before being able to it.
 
 ## Options
 

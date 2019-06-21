@@ -74,8 +74,8 @@ outs:
 
 If you run `dvc metrics show` you should get an error message like this:
 
-```text
-Error: failed to show metrics - no metric files in
+```dvc
+ERROR: failed to show metrics - no metric files in
        this repository. use 'dvc metrics add' to add
        a metric file to track.
 ```
@@ -104,6 +104,6 @@ outs:
 
 And if you run `dvc metrics show` you should see something like this:
 
-```text
+```dvc
 metrics.txt: 0.9643
 ```
