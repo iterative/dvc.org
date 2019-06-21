@@ -9,7 +9,7 @@ DVC-files in the workspace, then links the downloaded files into the workspace.
 ```usage
 usage: dvc pull [-h] [-q | -v] [-j JOBS]
                 [--show-checksums] [-r REMOTE]
-                [-a] [-T] [-d] [-f] [-R]
+                [-a] [-T] [-d] [-R] [-f]
                 [targets [targets ...]]
 
 Pull data files from the cloud.
@@ -82,15 +82,16 @@ reflinks or hardlinks to put it in the workspace without copying. See
   backward from the target stage(s) in the corresponding pipeline(s). This means
   DVC will not pull files referenced in later stage(s) than `targets`.
 
-- `-f`, `--force` - do not prompt when removing workspace files. This option
-  surfaces behavior from the `dvc checkout` command because `dvc pull` in effect
-  performs a _checkout_ after downloading files.
+- `-R`, `--recursive` - `targets` values is expected to be a directory path.
+  Determines the files to download by searching the named directory and its
+  subdirectories for DVC-files to download data for. Along with providing a
+  `target`, or `target` along with `--with-deps` it is yet another way to cut
+  the scope of DVC-files to download.
 
-- `-R`, `--recursive` - `targets` is expected to contain directory path(s).
-  Determines the files to download by searching each target directory and its
-  subdirectories for DVC-files to inspect. Along with providing a `target`, or
-  `target` and `--with-deps`, this is another way to limit the scope of
-  DVC-files to download.
+- `-f`, `--force` - does not prompt when removing working directory files, which
+  occurs during the process of updating the workspace. This option surfaces
+  behavior from the `dvc checkout` command because `dvc pull` in effect performs
+  a _checkout_ after downloading files.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while downloading files from the remote cache. The effect is to control the
