@@ -40,7 +40,16 @@ export default class Documentation extends Component {
     this.loadStateFromURL()
     this.initDocsearch()
     window.addEventListener('popstate', this.loadStateFromURL)
+    this.ps = new PerfectScrollbar('#sidebar-menu', {
+      // wheelPropagation: window.innerWidth <= 572
+      wheelPropagation: true
+    })
   }
+
+  componentDidUpdate() {
+    this.ps.update()
+  }
+
   componentWillUnmount() {
     window.removeEventListener('popstate', this.loadStateFromURL)
   }
