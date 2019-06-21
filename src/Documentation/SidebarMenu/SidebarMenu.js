@@ -47,7 +47,6 @@ export default class SidebarMenu extends React.Component {
   }
   renderSection = (section, file, index, fileIndex) => {
     const { getLinkHref, onFileSelect, currentFile } = this.props
-    let self = this
     const subgroup = file.files || null
     const folderPath = SidebarMenuHelper.getFullPath(
       file.folder,
@@ -89,7 +88,7 @@ export default class SidebarMenu extends React.Component {
             )}
           >
             {subgroup.map((subFile, subIndex) => {
-              return self.renderSubgroup(
+              return this.renderSubgroup(
                 section,
                 file,
                 index,
@@ -126,7 +125,6 @@ export default class SidebarMenu extends React.Component {
     )
   }
   renderMenu = (section, index) => {
-    let self = this
     const { currentSection, onSectionSelect, getLinkHref } = this.props
     const isSectionActive = currentSection === index
     let sectionTitle =
@@ -153,7 +151,7 @@ export default class SidebarMenu extends React.Component {
         >
           {section.files &&
             section.files.map((file, fileIndex) => {
-              return self.renderSection(section, file, index, fileIndex)
+              return this.renderSection(section, file, index, fileIndex)
             })}
         </Collapse>
       </div>
