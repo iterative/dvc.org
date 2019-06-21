@@ -85,8 +85,8 @@ The DVC specific completion script is located in this path of our main
 repository:
 [dvc/scripts/completion/dvc.zsh](https://github.com/iterative/dvc/blob/master/scripts/completion/dvc.zsh)
 
-Place the completion script in a directory included in `$fpath`, the file should
-be named `_dvc`.
+Place the completion script in a directory included in `$fpath`, the file name
+should be `_dvc`.
 
 For example:
 

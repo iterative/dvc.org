@@ -8,7 +8,7 @@ the community and the industry now, when ML algorithms and methods are no longer
 simply "tribal knowledge" but are still difficult to implement, reuse, and
 manage.
 
-To make progress in this challenge, many areas of the ML experimentation process
+To make progress on this challenge, many areas of the ML experimentation process
 need to be formalized. Many common questions need to be answered in an unified,
 principled way:
 
@@ -34,7 +34,7 @@ principled way:
 
 4. Reproducibility.
 
-   - How do you rerun a model's evaluation without re-training the model and
+   - How do you run a model's evaluation again without re-training the model and
      preprocessing a raw dataset?
 
 5. Managing and sharing large data files.

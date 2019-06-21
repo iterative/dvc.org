@@ -25,7 +25,7 @@ process.
      and doesn't run any daemons or servers. Nevertheless, DVC can generate
      images with pipeline and experiment workflow visualization.
 
-3. **Experiment management** software today is mostly designed for enterprise
+3. **Experiment management software** today is mostly designed for enterprise
    usage. An open-sourced experimentation tool example: http://studio.ml/. The
    differences are:
 
@@ -54,8 +54,8 @@ process.
 
    - DVC utilizes a DAG:
 
-     - The DAG is defined by DVC-files with filenames `<filename>.dvc` or
-       `Dvcfile`.
+     - The DAG is defined by [DVC-files](/doc/user-guide/dvc-file-format) (with
+       file names `<file>.dvc` or `Dvcfile`).
 
      - One DVC-file defines one node in the DAG. All DVC-files in a repository
        make up a single pipeline (think a single Makefile). All DVC-files (and

@@ -60,9 +60,10 @@ $ git commit -m "add code"
 
 </details>
 
-Having installed the `src/prepare.py` script in your repo, the following DVC
-command transforms it into a reproducible **stage** for the ML **pipeline**
-(describes in the next chapter).
+Having installed the `src/prepare.py` script in your repo, the following command
+transforms it into a reproducible
+[stage](/doc/user-guide/dvc-files-and-directories) for the ML pipeline we're
+building (described in the [next chapter](/doc/get-started/example-pipeline)).
 
 ```dvc
 $ dvc run -f prepare.dvc \
@@ -124,14 +125,14 @@ wdir: .
 > instructions on how to build a ML model (data file) from previous data files
 > (or directories).
 
-We would recommend to try to read a few next chapters first, before switching to
-other documents. Hopefully, `dvc run` and `dvc repro` will make more sense after
+We would recommend to read a few next chapters first, before switching to other
+documents. Hopefully, `dvc run` and `dvc repro` will make more sense after
 finishing up this guide. You can always refer to the `dvc run` and `dvc repro`
 documentation to learn the specific details about how they behave and all of
 their options. Let's briefly mention what the options used above mean for this
 particular example:
 
-`-f prepare.dvc` specifies a name for the pipeline DVC-file (stage). It's
+`-f prepare.dvc` specifies a name for the DVC-file (pipeline stage). It's
 optional but we highly recommend using it to make your project structure more
 readable.
 

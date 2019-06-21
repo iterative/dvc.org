@@ -72,7 +72,7 @@ $ git push
 
 Your colleague can pull the code and have both `raw` and `clean` instantly
 appear in his workspace without copying. After this he decides to continue
-building the pipeline and process the cleaned up data:
+building this pipeline and process the cleaned up data:
 
 ```dvc
 $ git pull
