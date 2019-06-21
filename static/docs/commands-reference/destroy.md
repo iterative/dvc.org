@@ -6,7 +6,7 @@ It removes DVC-files, and the entire `.dvc/` meta directory from the workspace.
 Note that the DVC cache will normally be removed as well, unless it's set to an
 external location with `dvc cache dir`. (By default a local cache is located in
 the `.dvc/cache` directory.) If you were using symlinks for linking data from
-the cache, dvc will replace them with copies, so that your data is intact after
+the cache, DVC will replace them with copies, so that your data is intact after
 the dvc repository distruction.
 
 ```usage
