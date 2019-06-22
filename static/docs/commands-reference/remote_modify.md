@@ -19,9 +19,9 @@ usage: dvc remote modify [-h] [--global] [--system] [--local]
                          name option [value]
 
 positional arguments:
-  name           Name.
-  option         Option.
-  value          Value.
+  name           Name of the remote
+  option         Name of the option to modify
+  value          (optional) Value of the option
 ```
 
 ## Description

@@ -9,7 +9,7 @@ enabled with `dvc config cache`).
 usage: dvc unlock [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-  targets        DVC files.
+  targets        DVC-files.
 ```
 
 ## Description

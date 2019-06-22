@@ -15,7 +15,7 @@ usage: dvc pipeline show [-h] [-q | -v] [-c | -o] [-l] [--ascii]
                          [targets [targets ...]]
 
 positional arguments:
-  targets         DVC files. 'Dvcfile' by default.
+  targets         DVC-files. 'Dvcfile' by default.
 ```
 
 ## Options

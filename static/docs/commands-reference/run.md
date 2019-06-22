@@ -12,7 +12,7 @@ usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
                [--ignore-build-cache] [--remove-outs] [--no-commit]
                [--outs-persist OUTS_PERSIST]
                [--outs-persist-no-cache OUTS_PERSIST_NO_CACHE]
-               ...
+               command
 
 positional arguments:
   command               Command to execute.
