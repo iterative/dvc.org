@@ -6,12 +6,11 @@ DVC-file).
 ## Synopsis
 
 ```usage
-usage: dvc add [-h] [-q | -v] [-f]
-               [-R] [--no-commit]
+usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [-f FILE]
                targets [targets ...]
 
 positional arguments:
-  targets                  Input files/directories.
+  targets               Input files/directories.
 ```
 
 ## Description
@@ -21,15 +20,15 @@ file is committed to the DVC cache. Using the `--no-commit` option, the file
 will not be added to the cache and instead the `dvc commit` command is used when
 (or if) the file is to be committed to the DVC cache.
 
-Under the hood, a few actions are taken for each file in the target(s):
+Under the hood, a few actions are taken for each file in `targets`:
 
 1. Calculate the file checksum.
 2. Move the file content to the DVC cache (default location is `.dvc/cache`).
 3. Replace the file by a link to the file in the cache (see details below).
 4. Create a corresponding [DVC-file](/doc/user-guide/dvc-file-format) and store
    the checksum to identify the cache entry.
-5. Add the _target_ filename to `.gitignore` (if Git is used in this workspace)
-   to prevent it from being committed to the Git repository.
+5. Add the target(s) to `.gitignore` (if Git is used in this workspace) to
+   prevent it from being committed to the Git repository.
 6. Instructions are printed showing `git` commands for adding the files to a Git
    repository. If a different SCM system is being used, use the equivalent
    command for that system or nothing is printed if `--no-scm` was specified for
@@ -64,11 +63,11 @@ to work with directory hierarchies with `dvc add`.
    DVC-file, and a corresponding DVC cache entry is made (unless `--no-commit`
    flag is added).
 2. When not using `--recursive` a DVC-file is created for the top of the
-   directory (`dirname.dvc`), and every file in the hierarchy is added to the
-   DVC cache (unless `--no-commit` flag is added), but these files do not have
-   individual DVC-files. Instead the DVC-file for the directory has a
-   corresponding file in the DVC cache containing references to the files in the
-   directory hierarchy.
+   directory (with default name `dirname.dvc`). Every file in the hierarchy is
+   added to the DVC cache (unless `--no-commit` flag is added), but DVC does not
+   produce individual DVC-files for each file in the directory tree. Instead,
+   the single DVC-file points to a file in the DVC cache that contains
+   references to the files in the added hierarchy.
 
 In a DVC project `dvc add` can be used to version control any data artifacts -
 input, intermediate, output files and directories, as well as model files. It is
@@ -79,19 +78,22 @@ This way you bring data provenance and make your project reproducible.
 
 ## Options
 
-- `-R`, `--recursive` - recursively add each file under the named directory. For
-  each file a new DVC-file is created using the process described earlier.
+- `-R`, `--recursive` - `targets` is expected to contain directory path(s).
+  Determines the files to add by searching each target directory and its
+  subdirectories for data files. For each file found, a new DVC-file is created
+  using the process described in this command's description.
 
 - `--no-commit` - do not put files/directories into cache. A DVC-file is
   created, and an entry is added to `.dvc/state`, while nothing is added to the
-  cache (`.dvc/cache`). The `dvc status` command will mention that the file is
-  `not in cache`. The `dvc commit` command will add the file to the DVC cache.
-  This is analogous to the `git add` and `git commit` commands.
+  cache. Use `dvc commit` when you are ready to save your results to cache. This
+  is analogous to using `git add` before `git commit`.
+
+  > The `dvc status` command will mention that the file is `not in cache`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

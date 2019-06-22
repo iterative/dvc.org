@@ -19,7 +19,7 @@ In this very basic scenario, DVC is a better replacement for `git-lfs` (check
 the [Related Technologies](/doc/understanding-dvc/related-technologies) to get a
 better sense why) and ad-hoc scripts on top of Amazon S3 (or name-it cloud) that
 are usually used to manage ML artifacts like model files, data files, etc.
-Unlike `git-lfs`, DVC does not require installing a server; it can be used
+Unlike `git-lfs`, DVC doesn't require installing a server; it can be used
 on-premises (NAS, SSH, for example) or with any major cloud provider (S3, Google
 Cloud, Azure).
 
@@ -96,7 +96,7 @@ have large dataset or model files.
 
 On the other hand, if we want to keep the current version of code and go back to
 the previous dataset only, we can do something like this (make sure that you
-don't have some uncommitted changes in the `data.dvc`):
+don't have uncommitted changes in the `data.dvc`):
 
 ```dvc
 $ git checkout v1.0 data.dvc

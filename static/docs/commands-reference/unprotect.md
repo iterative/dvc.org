@@ -6,12 +6,10 @@ enabled with `dvc config cache`).
 ## Synopsis
 
 ```usage
-usage: dvc unprotect [-h] [-q | -v] targets [targets ...]
-
-Unprotect data file/directory.
+usage: dvc unlock [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-  targets        Data files/directory.
+  targets        DVC-files.
 ```
 
 ## Description
@@ -41,8 +39,8 @@ when cache protected mode is enabled:
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

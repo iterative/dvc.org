@@ -21,18 +21,18 @@ process.
      execution features like execution monitoring, execution error handling, and
      recovering.
 
-   - DVC is purely a command line tool that does not have a graphical user
-     interface and does not run any servers. Nevertheless, DVC can generate
+   - DVC is purely a command line tool without a graphical user interface (GUI)
+     and doesn't run any daemons or servers. Nevertheless, DVC can generate
      images with pipeline and experiment workflow visualization.
 
-3. **Experiment management** software today is mostly designed for enterprise
+3. **Experiment management software** today is mostly designed for enterprise
    usage. An open-sourced experimentation tool example: http://studio.ml/. The
    differences are:
 
    - DVC uses Git as the underlying platform for experiment tracking instead of
      a web application.
 
-   - DVC does not need to run any services. No graphical user interface as a
+   - DVC doesn't need to run any services. No graphical user interface as a
      result, but we expect some GUI services will be created on top of DVC.
 
    - DVC has transparent design:
@@ -54,8 +54,8 @@ process.
 
    - DVC utilizes a DAG:
 
-     - The DAG is defined by DVC-files with filenames `<filename>.dvc` or
-       `Dvcfile`.
+     - The DAG is defined by [DVC-files](/doc/user-guide/dvc-file-format) (with
+       file names `<file>.dvc` or `Dvcfile`).
 
      - One DVC-file defines one node in the DAG. All DVC-files in a repository
        make up a single pipeline (think a single Makefile). All DVC-files (and
@@ -100,7 +100,7 @@ process.
 
 7) **Git-LFS** (Large File Storage). The differences are:
 
-   - It does not require special Git servers like Git-LFS demands. Any cloud
+   - DVC does not require special Git servers like Git-LFS demands. Any cloud
      storage like S3, GCS, or on-premises SSH server can be used as a backend
      for datasets and models, no additional databases, servers or infrastructure
      are required.
@@ -115,13 +115,13 @@ process.
 
    - DVC attempts to use reflinks\* and has other
      [file linking options](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).
-     The `dvc checkout` command does not actually copy data files from cache to
-     the workspace, as copying files is a heavy operation for large files (30
-     GB+).
+     This way the `dvc checkout` command does not actually copy data files from
+     cache to the workspace, as copying files is a heavy operation for large
+     files (30 GB+).
 
-   - `git-lfs` was not made with data science scenarios in mind, thus it does
-     not support certain features, e.g. pipelines and metrics, and thus Github
-     has a limit of 2 GB per repository.
+   - `git-lfs` was not made with data science scenarios in mind, so it does not
+     provide related features (e.g. pipelines, metrics), and thus Github has a
+     limit of 2 GB per repository.
 
 ---
 

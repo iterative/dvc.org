@@ -19,12 +19,12 @@ for the metric file `path` provided (the one that specifies the file path in
 question among its outputs – see `dvc metrics add` or `dvc run` with `-m` and
 `-M` options), and updates the information that represents the metric.
 
-If the path provided is not part of the pipeline, the following error will be
-raised:
+If the path provided is not defined in a workspace DVC-file, the following error
+will be raised:
 
-```text
-Error: failed to modify metrics - unable
-       to find file '<path>' in the pipeline
+```dvc
+ERROR: failed to modify metric file settings -
+       unable to find stage file with output '<path>'
 ```
 
 ## Options

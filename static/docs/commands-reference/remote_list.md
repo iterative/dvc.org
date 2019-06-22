@@ -10,10 +10,7 @@ See also [add](/doc/commands-reference/remote-add),
 ## Synopsis
 
 ```usage
-usage: dvc remote list [-h] [-q | -v]
-                       [--global] [--system] [--local]
-
-List remotes.
+usage: dvc remote list [-h] [--global] [--system] [--local] [-q | -v]
 ```
 
 ## Description

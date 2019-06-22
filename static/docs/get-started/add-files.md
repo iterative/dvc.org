@@ -11,8 +11,8 @@ Let's get a sample data set to play with:
 If you experienced problems using `wget` or you're on Windows and you don't want
 to install it, you'll need to use a browser to download `data.xml` and save it
 into `data` subdirectory. To download, right-click
-[this link](https://dvc.org/s3/get-started/data.xml) and click `Save link as`
-(Chrome) or `Save object as` (Firefox).
+[this link](/s3/get-started/data.xml) and click `Save link as` (Chrome) or
+`Save object as` (Firefox).
 
 </details>
 
@@ -22,7 +22,7 @@ $ wget https://dvc.org/s3/get-started/data.xml -O data/data.xml
 ```
 
 To take a file (or a directory) under DVC control just run `dvc add`, it accepts
-any **file** or a **directory**:
+any file or directory:
 
 ```dvc
 $ dvc add data/data.xml

@@ -29,7 +29,7 @@
    $ git commit -m "CNN plots"
    ```
 
-4. DVC can reproduce a pipeline with respect to the pipeline's dependencies:
+4. DVC can reproduce a pipeline with respect to its dependencies:
 
    ```dvc
    # The input dataset was changed

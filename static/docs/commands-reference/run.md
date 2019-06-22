@@ -1,18 +1,17 @@
 # run
 
-Generate a stage file
-([DVC-file](https://dvc.org/doc/user-guide/dvc-file-format)) from a given
+Generate a stage file ([DVC-file](/doc/user-guide/dvc-file-format)) from a given
 command and execute the command.
 
 ## Synopsis
 
 ```usage
-usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS]
-               [-O OUTS_NO_CACHE] [-M METRICS_NO_CACHE]
-               [-m METRICS] [-f FILE] [-w WDIR]
-               [--no-exec] [-y] [--overwrite-dvcfile]
-               [--ignore-build-cache] [--remove-outs]
-               [--no-commit]
+usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
+               [-m METRICS] [-M METRICS_NO_CACHE] [-f FILE] [-c CWD]
+               [-w WDIR] [--no-exec] [-y] [--overwrite-dvcfile]
+               [--ignore-build-cache] [--remove-outs] [--no-commit]
+               [--outs-persist OUTS_PERSIST]
+               [--outs-persist-no-cache OUTS_PERSIST_NO_CACHE]
                command
 
 positional arguments:
@@ -24,17 +23,17 @@ positional arguments:
 `dvc run` provides an interface to build a computational graph (aka pipeline).
 It's a way to describe commands, data inputs and intermediate results that went
 into a model (or other data results). By explicitly specifying a list of
-dependencies (with `-d` option) and outputs (with `-o`, `-O`, or `-M` options)
-DVC can connect individual stages (commands) into a directed acyclic graph
-(DAG). `dvc repro` provides an interface to check state and reproduce this graph
-later. This concept is similar to the one of the `Makefile` but DVC captures
-data and caches data artifacts along the way. Check this
+dependencies (with `-d` option) and outputs (with `-o`, `-O`, `-m`, or `-M`
+options) DVC can connect individual stages (commands) into a directed acyclic
+graph (DAG). `dvc repro` provides an interface to check state and reproduce this
+graph later. This concept is similar to the one of the `Makefile` but DVC
+captures data and caches data artifacts along the way. Check this
 [example](/doc/get-started/example-pipeline) to learn more and try to build a
 pipeline.
 
 Unless the `-f` options is used, by default the DVC-file name generated is
-`<file>.dvc`, where `<file>` is file name of the first output (`-o`, `-O`, or
-`-M` option). If neither `-f`, nor outputs are specified, the stage name
+`<file>.dvc`, where `<file>` is file name of the first output (`-o`, `-O`, `-m`,
+or `-M` option). If neither `-f`, nor outputs are specified, the stage name
 defaults to `Dvcfile`.
 
 Since `dvc run` provides a way to build a graph of computations, using
@@ -91,9 +90,9 @@ be no cycles, etc.
 
 - `-f`, `--file` - specify stage file name. By default the DVC-file name
   generated is `<file>.dvc`, where `<file>` is file name of the first output
-  (`-o`, `-O`, or `-M` option). The stage file is placed in the same directory
-  where `dvc run` is run by default, but `-f` can be used to change this
-  location, by including a path in the provided value (e.g.
+  (`-o`, `-O`, `-m`, or `-M` option). The stage file is placed in the same
+  directory where `dvc run` is run by default, but `-f` can be used to change
+  this location, by including a path in the provided value (e.g.
   `-f stages/stage.dvc`).
 
 - `-c`, `--cwd` - deprecated, use `-f` and `-w` to change location and working
@@ -106,11 +105,11 @@ be no cycles, etc.
   is used by `dvc repro` to change the working directory before running the
   command.
 
-- `--no-exec` - create a stage file, but do not run the command specified and do
-  not take dependencies or outputs under DVC control. In the DVC-file contents,
-  the `md5` hash sums will be empty; They will be populated the next time this
-  stage is actually executed. This command is useful, if for example, you need
-  to build a pipeline (computational graph) first, and then run it all at once.
+- `--no-exec` - create a stage file, but do not run the command specified nor
+  take dependencies or outputs under DVC control. In the DVC-file contents, the
+  `md5` hash sums will be empty; They will be populated the next time this stage
+  is actually executed. This command is useful, if for example, you need to
+  build a pipeline (computational graph) first, and then run it all at once.
 
 - `-y`, `--yes` - deprecated, use `--overwrite-dvcfile` instead.
 
@@ -130,14 +129,18 @@ be no cycles, etc.
   `--no-exec` specified outputs are removed anyway. This option is enabled by
   default and deprecated. See `dvc remove` as well for more details.
 
-- `--no-commit` - doesn't save outputs to cache. Useful when running different
-  experiments and you don't want to fill up your cache with temporary files. Use
-  `dvc commit` when you are ready to save your results to cache.
+- `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
+  entry is added to `.dvc/state`, while nothing is added to the cache. Use
+  `dvc commit` when you are ready to save your results to cache. Useful when
+  running different experiments and you don't want to fill up your cache with
+  temporary files.
+
+  > The `dvc status` command will mention that the file is `not in cache`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

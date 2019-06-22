@@ -12,7 +12,7 @@ usage: dvc fetch [-h] [-q | -v] [-j JOBS] [--show-checksums]
                  [targets [targets ...]]
 
 positional arguments:
-  targets               DVC-files.
+  targets               DVC files.
 ```
 
 ## Description
@@ -46,8 +46,8 @@ files under DVC control could already exist in remote storage, but won't be in
 your local cache. (Refer to `dvc remote` for more information on DVC remotes.)
 These necessary data or model files are listed as dependencies or outputs in a
 DVC-file (target [stage](/doc/commands-reference/run)) so they are required to
-[reproduce](/doc/get-started/reproduce) the
-[pipeline](https://dvc.org/doc/get-started/pipeline). (See
+[reproduce](/doc/get-started/reproduce) the corresponding
+[pipeline](/doc/get-started/pipeline). (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
 
@@ -78,10 +78,10 @@ specified in DVC-files currently in the workspace are considered by `dvc fetch`
   using the `dvc remote` command.
 
 - `-d`, `--with-deps` - determine files to download by tracking dependencies to
-  the named target DVC-file(s). This option only has effect when one or more
+  the target DVC-file(s) (stages). This option only has effect when one or more
   `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward through the pipeline from the named target(s). This means DVC will
-  not fetch files referenced later in the pipeline than the named target(s).
+  backward from the target stage(s) in the corresponding pipeline(s). This means
+  DVC will not fetch files referenced in later stage(s) than `targets`.
 
 - `-R`, `--recursive` - this option tells DVC that `targets` are directories
   (not DVC-files), and to traverse them recursively. All DVC-files found will be
@@ -105,16 +105,17 @@ specified in DVC-files currently in the workspace are considered by `dvc fetch`
 
 * `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+* `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 * `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 
-To explore `dvc fetch` let's consider a simple pipeline with several stages and
-a few Git tags. Then we can see what happens with `fetch` as we shift from tag
-to tag with `git`.
+To explore `dvc fetch` let's consider a simple
+[pipeline](/doc/get-started/pipeline) with several stages and a few Git tags.
+Then we can see what happens with `fetch` as we shift from tag to tag with
+`git`.
 
 <details>
 
@@ -128,7 +129,8 @@ $ git clone https://github.com/iterative/example-get-started
 ```
 
 Second, let's install the requirements. But before we do that, we **strongly**
-recommend creating a virtual environment with `virtualenv` or a similar tool:
+recommend creating a virtual environment with
+[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool:
 
 ```dvc
 $ cd example-get-started
@@ -144,8 +146,8 @@ $ pip install -r requirements.txt
 
 </details>
 
-The existing pipeline looks almost like in this
-[example](/doc/get-started/example-pipeline):
+The workspace looks almost like in this
+[pipeline setup](/doc/get-started/example-pipeline):
 
 ```dvc
 .
@@ -172,9 +174,9 @@ bigram       <- use bigrams to improve the model
 ## Examples: Default behavior
 
 This project comes with a predefined HTTP
-[remote storage](https://man.dvc.org/remote). We can now just run `dvc fetch`
-that will download the most recent `model.pkl`, `data.xml`, and other files that
-are under DVC control into our local cache:
+[remote storage](/doc/commands-reference/remote). We can now just run
+`dvc fetch` that will download the most recent `model.pkl`, `data.xml`, and
+other files that are under DVC control into our local cache:
 
 ```dvc
 $ dvc status --cloud
@@ -240,7 +242,7 @@ $ tree .dvc/cache
     └── 603888ec04a6e75a560df8678317fb
 ```
 
-> Note that `prepare.dvc` is the first stage in our example's implicit pipeline.
+> Note that `prepare.dvc` is the first stage in our example's pipeline.
 
 Cache entries for the necessary directories, as well as the actual
 `data/prepared/test.tsv` and `data/prepared/train.tsv` files were download,
@@ -250,7 +252,8 @@ checksums shown above.
 
 After following the previous example (**Specific stages**), only the files
 associated with the `prepare.dvc` stage file have been fetched. Several
-dependencies/outputs for the full pipeline are still missing from local cache:
+dependencies/outputs of other pipeline stages are still missing from local
+cache:
 
 ```dvc
 $ dvc status -c
@@ -295,13 +298,13 @@ $ tree .dvc/cache
 ```
 
 Fetching using `--with-deps` starts with the target DVC-file (stage) and
-searches backwards through the pipeline for data files to download into the
+searches backwards through its pipeline for data files to download into the
 local cache. All the data for the second and third stages ("featurize" and
 "train") has now been downloaded to cache. We could now use `dvc checkout` to
-get the data files needed to reproduce the pipeline up to the third stage into
+get the data files needed to reproduce this pipeline up to the third stage into
 the workspace (with `dvc repro train.dvc`).
 
 > Note that in this sample project, the last stage file `evaluate.dvc` doesn't
 > add any more data files than those form previous stages so at this point all
-> the pipeline's files are in local cache and `dvc status -c` would output
-> "Pipeline is up to date. Nothing to reproduce."
+> of the files for this pipeline are in local cache and `dvc status -c` would
+> output "Pipeline is up to date. Nothing to reproduce."

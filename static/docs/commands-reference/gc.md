@@ -5,25 +5,23 @@ Remove unused objects from cache or remote storage.
 ## Synopsis
 
 ```usage
-usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c]
-              [-r REMOTE] [-f] [-j JOBS]
-              [-p [PROJECTS [PROJECTS ...]]]
+usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c] [-r REMOTE] [-f] [-j JOBS]
+              [-p [REPOS [REPOS ...]]]
 ```
 
 ## Description
 
 If a data file was created in a different branch or commit than current, then it
 will be removed by `dvc gc`, unless `--all-branches` or `--all-tags` option is
-specified. If a data file has a few cached versions all of them except the
-current one will be removed.
+specified. If the cache holds a few cached versions of a data file, all except
+the current one will be removed. You can `dvc fetch` all the needed files back
+anytime you want **as long as you have previously pushed them to a remote**.
+(See `dvc remote` and `dvc push` for more information.)
 
-Note that unless `-c|--cloud` is specified, this action does NOT remove data
-files from the remote storage. **Make sure though that remote is configured and
-all the data you will need in the future is pushed there.** See `dvc remote` and
-`dvc config` for more information. This command is just a way to clean the
-working cache which is usually located on the machine your are running
-experiments on and usually helps to save some space. You can `dvc fetch` all the
-needed files back anytime you want.
+Note that unless `--cloud` is specified, this action does not remove data files
+from remote storage. This command is just a way to clean the working cache which
+is usually located on the machine your are running experiments on, so this
+usually helps to save some space.
 
 ## Options
 
@@ -56,8 +54,8 @@ needed files back anytime you want.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

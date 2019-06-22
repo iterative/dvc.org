@@ -2,14 +2,14 @@
 
 We welcome contributions to [DVC](https://github.com/iterative/dvc) by the
 community. Check the
-[Contributing to the Documentation](https://dvc.org/doc/user-guide/contributing-documentation)
+[Contributing to the Documentation](/doc/user-guide/contributing-documentation)
 guide if you want to fix or update the documentation or this website.
 
 ## How to report a problem
 
 Please search [issue tracker](https://github.com/iterative/dvc/issues) before
 creating a new issue (problem or an improvement request). Feel free to add
-issues related to the project and [dvc.org](https://dvc.org) site.
+issues related to the project and [dvc.org](https://dvc.org/) site.
 
 If you feel that you can fix or implement it, please read a few paragraphs below
 to learn how to submit your changes.
@@ -38,16 +38,18 @@ contributing!
 - Make sure that you have python 3 installed. Version 3.6 or higher is required
   to run style checkers on pre-commit. On Mac OS, use `brew` to install the
   latest version of python.
-- Install DVC in editable mode with `pip install -e '.[all,tests]'`. We
+- Install DVC in editable mode with `pip install -e ".[all,tests]"`. We
   **strongly** recommend initializing a
   [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
   installing the required libraries. For example:
+
   ```dvc
   $ cd dvc
   $ virtualenv --python python3 .env
   $ source .env/bin/activate
-  $ pip install -e '.[all,tests]'
+  $ pip install -e ".[all,tests]"
   ```
+
 - Install coding style pre-commit hooks with
 
   ```dvc
@@ -55,7 +57,7 @@ contributing!
   $ pre-commit install
   ```
 
-  > Note: the single quotes (`''`) used to wrap the dependencies, which are to
+  > Note: the double quotes (`""`) used to wrap the dependencies, which are to
   > be installed, are only compulsory when using `zsh`. In `bash`, installation
   > commands can work even without them. For example,
   > `pip install -e .[all,tests]`.
@@ -126,12 +128,12 @@ related code you might need to go through steps below.
 Install requirements for whatever remote(s) you are going to test:
 
 ```dvc
-$ pip install -e '.[s3]'
-$ pip install -e '.[gs]'
-$ pip install -e '.[azure]'
-$ pip install -e '.[ssh]'
+$ pip install -e ".[s3]"
+$ pip install -e ".[gs]"
+$ pip install -e ".[azure]"
+$ pip install -e ".[ssh]"
 # or
-$ pip install -e '.[all]'
+$ pip install -e ".[all]"
 ```
 
 You will need to update your `ENV` throughout subsequent steps, so we created a
@@ -175,8 +177,8 @@ $ export DVC_TEST_AWS_REPO_BUCKET="...TEST-S3-BUCKET..."
 
 ### Click for Google Cloud storage testing instructions
 
-Go through [quickstart](https://cloud.google.com/sdk/docs/quickstarts) for your
-OS. After that you should have `gcloud` command line tool available and
+Go through the [quick start](https://cloud.google.com/sdk/docs/quickstarts) for
+your OS. After that you should have `gcloud` command line tool available and
 authenticated with your google account.
 
 You then need to create a bucket, a service account and get its credentials. You

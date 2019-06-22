@@ -11,9 +11,8 @@ See also [add](/doc/commands-reference/remote-add),
 ## Synopsis
 
 ```usage
-usage: dvc remote remove [-h] [-q | -v]
-                         [--global] [--system] [--local]
-                         name
+usage: dvc remote remove [-h] [--global] [--system] [--local]
+                         [-q | -v] name
 
 positional arguments:
   name           Name of the remote to remove
