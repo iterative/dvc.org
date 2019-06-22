@@ -7,12 +7,11 @@ Uploads files and directories under DVC control to the
 
 ```usage
 usage: dvc push [-h] [-q | -v] [-j JOBS] [--show-checksums]
-            [-r REMOTE] [-a]
-            [-T] [-d] [-R]
-            [targets [targets ...]]
+                [-r REMOTE] [-a] [-T] [-d] [-R]
+                [targets [targets ...]]
 
 positional arguments:
-  targets               DVC-files.
+  targets               DVC files.
 ```
 
 ## Description

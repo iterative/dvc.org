@@ -10,13 +10,12 @@ files flow instead.
 ## Synopsis
 
 ```usage
-usage: dvc pipeline show [-h] [-q | -v] [-c | -o]
-                         [--dot DOT] [--ascii]
-                         [--tree] [-l]
+usage: dvc pipeline show [-h] [-q | -v] [-c | -o] [-l] [--ascii]
+                         [--dot] [--tree]
                          [targets [targets ...]]
 
 positional arguments:
-  targets         DVC-files.
+  targets         DVC-files. 'Dvcfile' by default.
 ```
 
 ## Options

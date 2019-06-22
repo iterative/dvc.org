@@ -6,12 +6,10 @@ enabled with `dvc config cache`).
 ## Synopsis
 
 ```usage
-usage: dvc unprotect [-h] [-q | -v] targets [targets ...]
-
-Unprotect data file/directory.
+usage: dvc unlock [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-  targets        Data files/directory.
+  targets        DVC-files.
 ```
 
 ## Description

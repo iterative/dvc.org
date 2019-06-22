@@ -7,11 +7,13 @@ If DVC-file is locked the stage is considered _done_ and `dvc repro` will not
 run commands to rebuild outputs even if some dependencies have changed and even
 if `--force` is provided.
 
+## Synopsis
+
 ```usage
-usage: dvc lock [-h] [-q] [-v] targets [targets ...]
+usage: dvc lock [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-    targets               DVC-files
+  targets        DVC-files.
 ```
 
 ## Description

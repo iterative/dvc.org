@@ -5,12 +5,10 @@ Tag the file located at `path` as a metric file.
 ## Synopsis
 
 ```usage
-usage: dvc metrics add [-h] [-q] [-v]
-                       [-t TYPE] [-x XPATH]
-                       path
+usage: dvc metrics add [-h] [-q | -v] [-t TYPE] [-x XPATH] path
 
 positional arguments:
-  path           Path to a metric file.
+  path                  Path to a metric file.
 ```
 
 ## Description

@@ -14,13 +14,14 @@ See also [add](/doc/commands-reference/remote-add),
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [--global] [--system] [--local] [-q | -v]
-                         [-u] name option [value]
+usage: dvc remote modify [-h] [--global] [--system] [--local]
+                         [-q | -v] [-u]
+                         name option [value]
 
 positional arguments:
- name           Name of the remote
- option         Name of the option to modify
- value          (optional) Value of the option
+  name           Name of the remote
+  option         Name of the option to modify
+  value          (optional) Value of the option
 ```
 
 ## Description

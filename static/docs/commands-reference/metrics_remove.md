@@ -5,8 +5,7 @@ Keep file as an output, remove metric flag and stop tracking as a metric file.
 ## Synopsis
 
 ```usage
-usage: dvc metrics remove [-h] [-q] [-v]
-                          path
+usage: dvc metrics remove [-h] [-q | -v] path
 
 positional arguments:
   path           Path to a metric file.

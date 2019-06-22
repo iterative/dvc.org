@@ -3,11 +3,13 @@
 Unlock [DVC-file](/doc/user-guide/dvc-file-format)
 ([stage](/doc/commands-reference/run)). See `dvc lock` for more information.
 
+## Synopsis
+
 ```usage
-usage: dvc unlock [-h] [-q] [-v] targets [targets ...]
+usage: dvc unlock [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-    targets               DVC-files.
+  targets        DVC-files.
 ```
 
 ## Options

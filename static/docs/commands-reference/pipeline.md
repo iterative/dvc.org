@@ -10,7 +10,7 @@ A set of commands to manage pipelines:
 usage: dvc pipeline [-h] [-q | -v] {show,list} ...
 
 positional arguments:
-  {show,list}    Use dvc pipeline CMD --help for command-specific help.
+  COMMAND
     show         Show pipeline.
     list         List pipelines.
 ```
