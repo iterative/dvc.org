@@ -1,13 +1,13 @@
 # Pipeline
 
 This is the biggest difference between DVC and other version control tools that
-can handle large data files, e.g. `git lfs`. By running `dvc run` multiple times
-and specifying outputs of a command (stage) as dependencies in another command
-(stage) we can, essentially, describe a sequence of commands that is required to
-get to the final result:
+can handle large data files, e.g. `git lfs`. By running `dvc run` multiple
+times, and specifying outputs of a command (stage) as dependencies in another
+one, we can describe a sequence of commands that gets to a desired result. (This
+is what we call a data pipeline.)
 
-The second stage (after the `prepare.dvc` that we created during the previous
-step), feature extraction:
+Lets create a second stage (after `prepare.dvc`, created in the previous
+chapter) to perform feature extraction:
 
 ```dvc
 $ dvc run -f featurize.dvc \
@@ -17,7 +17,7 @@ $ dvc run -f featurize.dvc \
                  data/prepared data/features
 ```
 
-The third stage, training:
+And a third stage for training:
 
 ```dvc
 $ dvc run -f train.dvc \
