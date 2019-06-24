@@ -1,9 +1,9 @@
 # Initialize
 
 In order to start using DVC, you need first to initialize it in your project's
-directory. **DVC doesn't require Git and can work without any source control
+directory. DVC doesn't require Git and can work without any source control
 management system, but for the best experience we recommend using DVC on top of
-Git repositories.**
+Git repositories.
 
 If you don't have a directory for your project already, create it now with these
 commands:
