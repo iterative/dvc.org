@@ -43,8 +43,7 @@ $ ls -a
 
 $ dvc destroy
 
-This will destroy all information about your pipelines, all data files, as well
-as cache in .dvc/cache.
+This will destroy all information about your pipelines, all data files, as well as cache in .dvc/cache.
 Are you sure you want to continue? [y/n]
 yes
 
@@ -76,8 +75,7 @@ $ ls - aR /mnt/cache
 
 $ dvc destroy
 
-This will destroy all information about your pipelines, all data files,
-as well as cache in .dvc/cache.
+This will destroy all information about your pipelines, all data files, as well as cache in .dvc/cache.
 Are you sure you want to continue? [y/n]
 yes
 
