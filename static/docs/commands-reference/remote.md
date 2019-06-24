@@ -96,7 +96,7 @@ remote = myremote
 
 2. Add AWS S3 remote and modify its region:
 
-> **Note!** Before,adding a new remote be sure to login into AWS services and
+> **Note!** Before adding a new remote be sure to login into AWS services and
 > follow instructions at
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
 > to create your bucket.
