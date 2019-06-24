@@ -12,10 +12,10 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 
 ## Description
 
-It removes all the files present in the current DVC workspace. Note that the DVC
-cache will normally be removed as well, unless it's set to an external location
-with `dvc cache dir`. (By default a local cache is located in the `.dvc/cache`
-directory.) If you were using
+It removes DVC-files, and the entire `.dvc/` meta directory from the current
+workspace. Note that the DVC cache will normally be removed as well, unless it's
+set to an external location with `dvc cache dir`. (By default a local cache is
+located in the `.dvc/cache` directory.) If you were using
 [symlinks for linking data](/doc/user-guide/large-dataset-optimization) from the
 cache, DVC will replace them with copies, so that your data is intact after the
 DVC repository destruction.
@@ -49,7 +49,7 @@ yes
 
 $ ls -a
 
-.git .gitignore
+.git .gitignore foo
 ```
 
 Let's have a look what happens when the `cache` directory is set to another
@@ -80,7 +80,7 @@ Are you sure you want to continue? [y/n]
 yes
 
  $ ls -a
-.git .gitignore
+.git .gitignore foo
 
  $ ls - aR /mnt/cache
  /mnt/cache/:
