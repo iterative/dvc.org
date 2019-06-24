@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 
 import glossary from '../Documentation/glossary'
@@ -6,20 +7,47 @@ import glossary from '../Documentation/glossary'
 class Tooltip extends Component {
   state = {
     hover: false,
-    timeout: null
+    timeout: null,
+    width: 400,
+    margin: -70,
+    pointMargin: -15
+  }
+
+  tooltipWidthEval = () => {
+    const markdownBody = document.getElementsByClassName('markdown-body')[0]
+    const maxWidth = markdownBody.offsetLeft + markdownBody.clientWidth
+    const container = document.getElementsByClassName('tooltip-container')[0]
+    const tooltipWidth = container.offsetLeft + this.state.width
+    if (tooltipWidth > maxWidth) {
+      this.setState({
+        margin: -340,
+        pointMargin: 260
+      })
+    } else {
+      this.setState({
+        margin: -70,
+        pointMargin: -15
+      })
+    }
   }
 
   hoverIn = () => {
     if (this.state.interval) {
       clearTimeout(this.state.interval)
-      this.setState({
-        interval: null,
-        hover: true
-      })
+      this.setState(
+        {
+          interval: null,
+          hover: true
+        },
+        this.tooltipWidthEval
+      )
     } else {
-      this.setState({
-        hover: true
-      })
+      this.setState(
+        {
+          hover: true
+        },
+        this.tooltipWidthEval
+      )
     }
   }
 
@@ -36,12 +64,10 @@ class Tooltip extends Component {
   render() {
     const { text } = this.props
     let header = ''
-    let pronounce = ''
     let description = ''
     glossary.contents.forEach(glossaryItem => {
       if (glossaryItem.match.includes(text)) {
         header = glossaryItem.name
-        pronounce = glossaryItem.enun
         description = glossaryItem.desc
       }
     })
@@ -53,13 +79,17 @@ class Tooltip extends Component {
         </span>
         {this.state.hover && (
           <TooltipContainer
+            className="tooltip-container"
             onMouseOver={this.hoverIn}
             onMouseLeave={this.hoverOut}
           >
-            <TooltipText>
+            <TooltipText
+              margin={this.state.margin}
+              width={this.state.width}
+              pointMargin={this.state.pointMargin}
+            >
               <div className="header">{header}</div>
-              <div className="pronounce">{pronounce}</div>
-              <div>{description}</div>
+              <ReactMarkdown source={description} />
             </TooltipText>
           </TooltipContainer>
         )}
@@ -83,8 +113,8 @@ const TooltipText = styled.div`
   position: absolute;
   z-index: 1;
   bottom: 90%;
-  margin-left: -70px;
-  width: 400px;
+  margin-left: ${props => props.margin || -70}px;
+  width: ${props => props.width || 400}px;
 
   &:after,
   &:before {
@@ -92,7 +122,7 @@ const TooltipText = styled.div`
     position: absolute;
     top: 100%;
     border-style: solid;
-    margin-left: -5px;
+    margin-left: ${props => props.pointMargin || -15}px;
   }
 
   &:after {
@@ -109,11 +139,6 @@ const TooltipText = styled.div`
   .header {
     font-size: 1.3em;
     font-weight: bold;
-  }
-  .pronounce {
-    font-size: 0.9em;
-    color: #6a737d;
-    margin: -5px 0 5px 0;
   }
 `
 

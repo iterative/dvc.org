@@ -5,13 +5,11 @@
     {
       "name": "Workspace directory",
       "match": ["workspace"],
-      "enun": "/ˈwəːkspeɪs dɪˈrɛkt(ə)ri/",
       "desc": "Also abbreviated as workspace, it is the root directory of a project where DVC is initialized by running `dvc init` command. Therefore, this directory will contain a `.dvc` directory as well."
     },
     {
       "name": "Cache directory",
       "match": ["cache"],
-      "enun": "/kaʃ dɪˈrɛkt(ə)ri/",
       "desc": "DVC cache is a hidden storage which is found at `.dvc/cache`. This storage is used to manage different versions of files which are under DVC control. For more information on cache, please refer to the this [guide](/doc/commands-reference/config#cache)."
     }
   ]
