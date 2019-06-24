@@ -39,31 +39,33 @@ $ echo foo > foo
 $ dvc add foo
 $ ls -a
 
-.dvc .git foo foo.dvc
+.dvc .git code.py foo foo.dvc
 
 $ dvc destroy
 
 This will destroy all information about your pipelines, all data files, as well as cache in .dvc/cache.
-Are you sure you want to continue? [y/n]
+Are you sure you want to continue?
 yes
 
 $ ls -a
 
-.git .gitignore foo
+.git code.py foo
 ```
 
-Let's have a look what happens when the `cache` directory is set to another
-location.
+#### Let's have a look what happens when the `cache` directory is set to another location.
+
+By default, the cache location is `.dvc/cache`. Let's change the cache location
+to `/mnt/cache` and then execute `dvc destroy` command.
 
 ```dvc
 $ dvc init
 $ echo foo > foo
-$ dvc config cache.dir /mnt/cache
+$ dvc cache dir /mnt/cache
 $ dvc add foo
 
 $ ls -a
 
-.dvc foo foo.dvc .git .gitignore
+.dvc .git code.py foo foo.dvc
 
 # Content of /mnt/cache
 $ ls - aR /mnt/cache
@@ -80,7 +82,7 @@ Are you sure you want to continue? [y/n]
 yes
 
  $ ls -a
-.git .gitignore foo
+.git code.py foo
 
  $ ls - aR /mnt/cache
  /mnt/cache/:
@@ -90,4 +92,9 @@ yes
  . .. b07384d113edec49eaa6238ad5ff00
 ```
 
-Files present in `/mnt/cache` directory still persists.
+After changing the default cache location with `dvc cache dir` to `/mnt/cache`.
+
+`dvc destroy` command removed DVC-files, and the entire `.dvc/` meta directory
+from the current DVC workspace. But the cache files that are present in the
+`/mnt/cache` directory still persists. There are no changes or deletion done
+with the cache file.
