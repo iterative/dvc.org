@@ -57,6 +57,11 @@ specified), and updates stage files with the new checksum information.
   reproduced as part of the pipeline in the parent directory, or as an
   independent unit.
 
+- `-R`, `--recursive` - `targets` is expected to contain directory path(s).
+  Determines the stages to reproduce by searching each target directory and its
+  subdirectories for DVC-files to inspect. Along with providing `targets`, this
+  is another way to limit the scope of DVC-files to reproduce.
+
 - `--no-commit` - do not save outputs to cache. Useful when running different
   experiments and you don't want to fill up your cache with temporary files. Use
   `dvc commit` when you are ready to save your results to cache.
