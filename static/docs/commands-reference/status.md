@@ -55,7 +55,8 @@ If instead, differences are detected, `dvc status` lists those changes. For each
 DVC-file (stage) with differences, the _dependencies_ and/or _outputs_ that
 differ are listed. For each item listed, either the file name or the checksum is
 shown, and additionally a status word is shown describing the changes in
-checksum or status for both local and cloud workspace:
+checksum or status for both local and cloud workspace. Given list describes
+both, status of the DVC-file and differences in the DVC-files:
 
 - For the local workspace:
 
@@ -63,14 +64,13 @@ checksum or status for both local and cloud workspace:
     one specified in it in DVC-files
   - _always changed_ means that this is a special DVC-file with no dependencies,
     which is considered always changed
-  - _new_ output is displayed when a new dependeny or output state is added to
-    DVC-file
-  - _modified_ output is displayed when any dependencies or output states is
-    modified in DVC-file
-  - _deleted_ output is displayed when any exsisting dependencies or output
-    states are deleted from DVC-file
-  - _not in cache_ output is displayed when dependencies or output are mentioned
-    in DVC-file no longer exsist in local cache
+  - _new_ is displayed when a new dependeny or output state is added to DVC-file
+  - _modified_ is displayed when any dependencies or output states is modified
+    in DVC-file
+  - _deleted_ is displayed when any exsisting dependencies or output states are
+    deleted from DVC-file
+  - _not in cache_ is displayed when dependencies or output are mentioned in
+    DVC-file no longer exsist in local cache
 
 - For comparison against a remote cache:
 
