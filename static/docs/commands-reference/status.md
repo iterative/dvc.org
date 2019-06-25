@@ -54,9 +54,9 @@ be rerun if `dvc repro` were executed.
 If instead, differences are detected, `dvc status` lists those changes. For each
 DVC-file (stage) with differences, the _dependencies_ and/or _outputs_ that
 differ are listed. For each item listed, either the file name or the checksum is
-shown, and additionally a status word is shown describing the changes in
+shown, and additionally, a status word is shown describing the changes in
 checksum or status for both local and cloud workspace. Given list describes
-both, status of the DVC-file and differences in the DVC-files:
+both, the status of the DVC-file and differences in the DVC-files:
 
 - For the local workspace:
 
