@@ -52,7 +52,7 @@ $ ls -a
 .git code.py foo
 ```
 
-#### External Cache directory
+#### Cache directory is changed from default
 
 By default, the cache location is `.dvc/cache`. Let's change the cache location
 to `/mnt/cache` and then execute `dvc destroy` command.
