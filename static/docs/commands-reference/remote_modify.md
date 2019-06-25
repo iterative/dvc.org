@@ -179,6 +179,13 @@ $ dvc remote modify myremote projectname myproject
 $ dvc remote modify myremote url gs://bucket/remote
 ```
 
+- `credentailpath` -
+  [service account credentials](https://cloud.google.com/docs/authentication/production#obtaining_and_providing_service_account_credentials_manually).
+
+```dvc
+$ dvc remote modify myremote credentialpath /path/to/my/creds/[FILE_NAME].json
+```
+
 </details>
 
 <details>
