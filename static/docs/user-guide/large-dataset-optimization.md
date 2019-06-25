@@ -80,7 +80,7 @@ efficiency:
    > instead deleted and then replaced with a new file, otherwise it might cause
    > cache corruption – and automatic deletion of cached files by DVC.
 
-3. **`symlink`** - symbolic (aka "soft") links are the most efficient way to
+3. **`symlink`** - symbolic (a.k.a. "soft") links are the most efficient way to
    link your data to cache if your repo and your cache directory are located on
    different file systems/drives (i.e. repo is located on SSD for performance,
    but cache dir is located on HDD for bigger storage).
