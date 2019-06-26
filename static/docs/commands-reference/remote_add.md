@@ -121,6 +121,11 @@ $ cat .dvc/config
 
 ### Click for AWS S3 example
 
+> **Note!** Before adding a new remote be sure to login into AWS services and
+> follow instructions at
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
+> to create your bucket.
+
 ```dvc
 $ dvc remote add myremote s3://bucket/path
 ```
