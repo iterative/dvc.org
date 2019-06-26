@@ -140,9 +140,11 @@ bar.dvc:
 foo.dvc
         changed outs:
                 deleted:      foo
+        changed checksum
 prepare.dvc
         changed outs:
                 new:      bar
+        always changed
 ```
 
 This shows that for `bar.dvc` the dependency, `foo`, has changed, and the
