@@ -2,13 +2,15 @@
 
 Get or set repository or global DVC config options.
 
+## Synopsis
+
 ```usage
-usage: dvc config [-h] [-q | -v] [--global] [--system] [--local]
-                  [-u] name [value]
+usage: dvc config [-h] [--global] [--system] [--local] [-q | -v] [-u]
+                  name [value]
 
 positional arguments:
-    name                  Option name
-    value                 Option value
+  name           Option name.
+  value          Option value.
 ```
 
 ## Description
@@ -178,6 +180,11 @@ $ dvc config core.loglevel debug
 ```
 
 Add an S3 remote and set it as the project default:
+
+> **Note!** Before adding a new remote be sure to login into AWS services and
+> follow instructions at
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
+> to create your bucket.
 
 ```dvc
 $ dvc remote add myremote s3://bucket/path

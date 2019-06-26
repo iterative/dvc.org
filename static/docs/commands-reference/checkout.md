@@ -5,12 +5,11 @@ Update data files and directories in workspace based on current DVC-files.
 ## Synopsis
 
 ```usage
-usage: dvc checkout [-h] [-q | -v]
-                    [-d] [-f]
+usage: dvc checkout [-h] [-q | -v] [-d] [-f] [-R]
                     [targets [targets ...]]
 
 positional arguments:
-    targets          DVC-files.
+  targets          DVC files.
 ```
 
 ## Description
@@ -37,7 +36,8 @@ The execution of `dvc checkout` does:
 - Scan the `outs` entries in DVC-files to compare with the currently checked out
   data files. The scanned DVC-files is limited by the listed `targets` (if any)
   on the command line. And if the `--with-deps` option is specified, it scans
-  backward in the [pipeline](/doc/get-started/pipeline) from the named targets.
+  backward from the given `targets` in the corresponding
+  [pipeline](/doc/get-started/pipeline).
 - For any data files where the checksum doesn't match their DVC-file entry, the
   data file is restored from the cache. The link strategy used (`reflink`,
   `hardlink`, `symlink`, or `copy`) depends on the OS and the configured value
@@ -68,27 +68,25 @@ such a case, `dvc checkout` prints a warning message. Any files that can be
 checked out without error will be restored.
 
 There are two methods to restore a file missing from the cache, depending on the
-situation. In some cases the pipeline must be rerun using the `dvc repro`
-command. In other cases the cache can be pulled from a remote cache using the
-`dvc pull` command. See also `dvc pipeline`
+situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
+regenerate its outputs. (See also `dvc pipeline`.) In other cases the cache can
+be pulled from a remote cache using `dvc pull`.
 
 ## Options
 
-- `-d`, `--with-deps` - determine workspace files to update by tracking
-  dependencies to the named target DVC-file(s). This option only has effect when
-  one or more `targets` are specified. By traversing all stage dependencies, DVC
-  searches backward through the pipeline from the named target(s). This means
-  DVC will not checkout files referenced later in the pipeline than the named
-  target(s).
-
-- `-f`, `--force` - do not prompt when removing workspace files. Changing the
-  current set of DVC-files with SCM commands like `git checkout` can result in
-  the need for DVC to remove data files which should not exist in the current
-  project version, and which are missing from the local cache (when they haven't
-  been committed to DVC). This option controls whether the user will be asked to
-  confirm the removal of these files.
+- `-d`, `--with-deps` - determine files to update by tracking dependencies to
+  the target DVC-file(s) (stages). This option only has effect when one or more
+  `targets` are specified. By traversing all stage dependencies, DVC searches
+  backward from the target stage(s) in the corresponding pipeline(s). This means
+  DVC will not checkout files referenced in later stage(s) than `targets`.
 
 - `-R`, `--recursive` - performs recursive checkout for target directory.
+
+- `-f`, `--force` - does not prompt when removing workspace files. Changing the
+  current set of DVC files with SCM commands like `git checkout` can result in
+  the need for DVC to remove files which should not exist in the current state
+  and are missing in the local cache (they are not committed in DVC terms). This
+  option controls whether the user will be asked to confirm these files removal.
 
 - `-h`, `--help` - shows the help message and exit.
 
@@ -134,8 +132,8 @@ $ pip install -r requirements.txt
 
 </details>
 
-The existing pipeline looks almost like in this
-[example](/doc/get-started/example-pipeline):
+The workspace looks almost like in this
+[pipeline setup](/doc/get-started/example-pipeline):
 
 ```dvc
 .

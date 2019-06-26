@@ -10,15 +10,15 @@ A set of commands to set up and manage data remotes:
 ## Synopsis
 
 ```usage
-usage: dvc remote [-h] [-q] [-v]
-                  {add,default,remove,modify,list} ...
+usage: dvc remote [-h] [-q | -v] {add,default,remove,modify,list} ...
 
 positional arguments:
-    add                   Add remote
-    default               Default remote
-    remove                Remove remote
-    modify                Modify remote
-    list                  List remotes
+  COMMAND
+    add                 Add remote.
+    default             Set/unset default remote.
+    remove              Remove remote.
+    modify              Modify remote.
+    list                List available remotes.
 ```
 
 ## Description
@@ -95,6 +95,11 @@ remote = myremote
 ```
 
 2. Add AWS S3 remote and modify its region:
+
+> **Note!** Before adding a new remote be sure to login into AWS services and
+> follow instructions at
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
+> to create your bucket.
 
 ```dvc
 $ dvc remote add mynewremote s3://mybucket/myproject

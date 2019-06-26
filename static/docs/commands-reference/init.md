@@ -5,7 +5,7 @@ This command initializes a DVC environment in a current Git repository.
 ## Synopsis
 
 ```usage
-usage: dvc init [-h] [-q] [-v] [--no-scm]
+usage: dvc init [-h] [-q | -v] [--no-scm] [-f]
 ```
 
 ## Options

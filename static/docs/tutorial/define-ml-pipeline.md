@@ -60,14 +60,11 @@ need to run `dvc unprotect` or `dvc remove` first (check the
 
 ## Data file internals
 
-If you take a look at the DVC-file, you will see that only outputs are defined
-in `outs`. In this file, only one output is defined. The output contains the
-data file path in the repository and md5 cache. This md5 cache determines a
-location of the actual content file in DVC cache directory `.dvc/cache`.
-
-> Output from DVC-files defines the relationship between the data file path in a
-> repository and the path in a cache directory. See also
-> [DVC-File Format](/doc/user-guide/dvc-file-format)
+If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
+`dvc add`, you will see that only outputs are defined in `outs`. In this file,
+only one output is defined. The output contains the data file path in the
+repository and md5 cache. This md5 cache determines a location of the actual
+content file in DVC cache directory `.dvc/cache`.
 
 ```dvc
 $ cat data/Posts.xml.zip.dvc
@@ -80,6 +77,9 @@ outs:
 $ du -sh .dvc/cache/ec/*
  41M .dvc/cache/ec/1d2935f811b77cc49b031b999cbf17
 ```
+
+> Outputs from DVC-files define the relationship between the data file path in a
+> repository and the path in a cache directory.
 
 Keeping actual file content in a cache directory and a copy of the caches in
 user workspace during `$ git checkout` is a regular trick that
@@ -186,16 +186,16 @@ and does some additional work if the command was successful:
 
 1. DVC transforms all the outputs `-o` files into data files. It is like
    applying `dvc add` for each of the outputs. As a result, all the actual data
-   files content goes to the cache directory `.dvc/cache` and each of the
-   filenames will be added to `.gitignore`.
+   files content goes to the cache directory `.dvc/cache` and each of the file
+   names will be added to `.gitignore`.
 
-2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` DVC-file
-   in the workspace with information about this stage in the pipeline, see
-   [DVC-File Format](/doc/user-guide/dvc-file-format). Note that the name of
+2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
+   file in the workspace with information about this pipeline stage. (See
+   [DVC-File Format](/doc/user-guide/dvc-file-format)). Note that the name of
    this file could be specified by using the `-f` option, for example
    `-f extract.dvc`.
 
-Let's take a look at the resulting DVC-file from the above example:
+Let's take a look at the resulting stage file created by `dvc run` above:
 
 ```dvc
 $ cat Posts.xml.dvc
@@ -234,8 +234,8 @@ Posts.xml
 
 The output file `Posts.xml` was transformed by DVC into a data file in
 accordance with the `-o` option. You can find the corresponding cache file with
-the checksum, which starts with `c1fa36d` as we can see in the DVC-file
-`Posts.xml.dvc`:
+the checksum, which starts with `c1fa36d` as we can see in the `Posts.xml.dvc`
+stage file:
 
 ```dvc
 $ ls .dvc/cache/
@@ -284,10 +284,10 @@ Reproducing 'Posts-test.tsv.dvc':
 Positive size 2049, negative size 97951
 ```
 
-The result of the steps are two DVC-files corresponding to each of the commands
-`Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file was
-created. This type of file should not be tracked by Git. Let’s manually include
-this type of file into `.gitignore`.
+The result of the steps are two stage files corresponding to each of the
+commands: `Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file
+was created. This type of file should not be tracked by Git. Let’s manually
+include this type of file into `.gitignore`.
 
 ```dvc
 $ git status -s
@@ -306,9 +306,9 @@ $ git add .
 $ git commit -m "Process to TSV and separate test and train"
 ```
 
-Let’s run and commit the following steps of the pipeline. Define the feature
-extraction step which takes train and test TSVs and generates corresponding
-matrix files:
+Let’s run and save the following commands for our pipeline. First, define the
+feature extraction stage, that takes `train` and `test` TSVs and generates
+corresponding matrix files:
 
 ```dvc
 $ dvc run -d code/featurization.py -d code/conf.py \
@@ -349,15 +349,18 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-The model evaluation step is the last one. To make it a reproducibility goal by
-default we specify a DVC-file named `Dvcfile`. This will be discussed in the
-next chapter in more details.
+> Note that using `-f Dvcfile` with `dvc run` above isn't necessary as the
+> default stage file name is `Dvcfile` when there are no outputs (option `-o`).
+
+The model evaluation step is the last one. To help in the pipeline's
+reproducibility, we specify stage file name `Dvcfile`. (This will be discussed
+in more detail in the next chapter.)
 
 Note that the output file `data/eval.txt` was transformed by DVC into a metric
 file in accordance with the `-M` option.
 
-The result of the last three run commands execution is three DVC-files and a
-modified .gitignore file. All the changes should be committed into Git.
+The result of the last three `dvc run` commands execution is three stage files
+and a modified .gitignore file. All the changes should be committed into Git:
 
 ```dvc
 $ git status -s
@@ -390,4 +393,4 @@ focus is DVC, not ML modeling and we use a relatively small dataset without any
 advanced ML techniques.
 
 In the next chapter we will try to improve the metrics by changing our modeling
-code and using reproducibility in the pipeline regeneration.
+code and using reproducibility in our pipeline regeneration.

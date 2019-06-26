@@ -5,9 +5,8 @@ Remove unused objects from cache or remote storage.
 ## Synopsis
 
 ```usage
-usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c]
-              [-r REMOTE] [-f] [-j JOBS]
-              [-p [PROJECTS [PROJECTS ...]]]
+usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c] [-r REMOTE] [-f] [-j JOBS]
+              [-p [REPOS [REPOS ...]]]
 ```
 
 ## Description

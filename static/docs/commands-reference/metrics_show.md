@@ -5,13 +5,11 @@ Find and print project metrics.
 ## Synopsis
 
 ```usage
-usage: dvc metrics show [-h] [-q] [-v]
-                        [-t TYPE] [-x XPATH]
-                        [-a, --all-branches], [-T, --all-tags]
-                        [path]
+usage: dvc metrics show [-h] [-q | -v] [-t TYPE] [-x XPATH] [-a] [-T]
+                        [-R] [path]
 
 positional arguments:
-  path                  Path to a metric file or directory.
+  path                  Path to a metric file or a directory.
 ```
 
 ## Description

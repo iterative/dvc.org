@@ -9,15 +9,14 @@ A set of commands to collect and display project metrics:
 ## Synopsis
 
 ```usage
-usage: dvc metrics [-h] [-q] [-v]
-                   {show, add, modify, remove}
-                   ...
+usage: dvc metrics [-h] [-q | -v] {show,add,modify,remove} ...
 
 positional arguments:
-    show                  Output metric values.
-    add                   Tag file as a metric file.
-    modify                Modify metric file options.
-    remove                Remove files's metric tag.
+  COMMAND
+    show                Output metric values.
+    add                 Tag file as a metric file.
+    modify              Modify metric file options.
+    remove              Remove files's metric tag.
 ```
 
 ## Description
@@ -48,14 +47,14 @@ up and manage DVC metrics.
 First, let's create a simple DVC-file:
 
 ```dvc
-$ dvc run -d code/evaluate.py -M data/eval.json -f Dvcfile \
+$ dvc run -d code/evaluate.py -M data/eval.json \
       python code/evaluate.py
 ```
 
 > `-M|--metrics-no-cache` is telling DVC to mark `data/eval.json` as a metric
 > file. Using this option is equivalent to using `-O|--outs-no-cache` and then
-> using `dvc metrics add data/eval.json` to explicitly mark `data/eval.json` as
-> a metric file.
+> running `dvc metrics add data/eval.json` to explicitly mark `data/eval.json`
+> as a metric file.
 
 Now let's print metric values that we are tracking in the current project:
 

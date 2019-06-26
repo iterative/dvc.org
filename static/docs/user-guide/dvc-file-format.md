@@ -1,6 +1,6 @@
 # DVC-File Format
 
-When you add a file (with `dvc add`) or a command (with `dvc run`) to the
+When you add a file (with `dvc add`) or a command (with `dvc run`) to a
 [pipeline](/doc/get-started/pipeline), DVC creates a special text metafile with
 the `.dvc` file extension (e.g. `process.dvc`), or with the default name
 `Dvcfile`. DVC-files a.k.a. **stage files** contain all the needed information
@@ -45,7 +45,7 @@ locked: True
 
 On the top level, `.dvc` file consists of such fields:
 
-- `cmd`: a command that is being run in this stage of the pipeline;
+- `cmd`: a command that is being run in this stage;
 - `deps`: a list of dependencies for this stage;
 - `outs`: a list of outputs for this stage;
 - `md5`: md5 checksum for this DVC-file;
@@ -80,4 +80,4 @@ meta values are preserved between multiple executions of `dvc repro` and
 `dvc commit` commands.
 
 > Note that comments and meta values are not preserved when a DVC-file is
-> overwritten with the `dvc run`,`dvc add`,`dvc import` commands.
+> overwritten with the `dvc run`,`dvc add`,`dvc import-url` commands.

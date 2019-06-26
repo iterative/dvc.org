@@ -1,29 +1,35 @@
 # move
 
-Renames a file or a directory and modifies the corresponding DVC-file (see
-`dvc add`) to reflect the change. If the file or directory has the same name as
-the corresponding DVC-file, it would also rename the DVC-file.
+Renames a file or a directory and modifies the corresponding
+[DVC-file](/doc/user-guide/dvc-file-format) (see `dvc add`) to reflect the
+change. If the file or directory has the same name as the corresponding
+DVC-file, it would also rename the DVC-file.
 
 ## Synopsis
 
 ```usage
-usage: dvc move [-h] [-q] [-v] src dst
+usage: dvc move [-h] [-q | -v] src dst
 
 positional arguments:
-    src                   Source path to a data file or directory.
-    dst                   Destination path.
-
+  src            Source path to a data file or directory.
+  dst            Destination path.
 ```
 
 ## Description
 
-`dvc move` moves the file named by the `src` operand to the destination path
-named by the `dst` operand. It also renames and updates the corresponding DVC
-file. In general it behaves the same way as `mv src dst`, but takes care of a
-DVC-file.
+`dvc move` is useful when a `src` file or directory has previously been added to
+DVC with `dvc add`, creating a [DVC-file](/doc/user-guide/dvc-file-format) (with
+`src` as a dependency). `dvc move` behaves like `mv src dst`, moving `src` to
+the given `dst` path, but it also renames and updates the corresponding DVC-file
+appropriately.
 
-If destination path already exists and is a directory, source file or directory
-is moved unchanged into this folder along with the corresponding DVC-file.
+> Note that `src` may be a copy or a
+> [link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> to a file in cache. The cached file is not changed by this command.
+
+If the destination path (`dst`) already exists and is a directory, the source
+file or directory (`src`) is moved unchanged into this folder along with the
+corresponding DVC-file.
 
 Let's imagine the following scenario:
 

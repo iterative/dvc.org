@@ -14,13 +14,14 @@ See also [add](/doc/commands-reference/remote-add),
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [--global] [--system] [--local] [-q | -v]
-                         [-u] name option [value]
+usage: dvc remote modify [-h] [--global] [--system] [--local]
+                         [-q | -v] [-u]
+                         name option [value]
 
 positional arguments:
- name           Name of the remote
- option         Name of the option to modify
- value          (optional) Value of the option
+  name           Name of the remote
+  option         Name of the option to modify
+  value          (optional) Value of the option
 ```
 
 ## Description
@@ -83,7 +84,7 @@ $ dvc remote modify myremote credentialpath /path/to/my/creds
 - `endpointurl` - endpoint URL to use to access AWS S3:
 
 ```dvc
-$ dvc remote modify myremote endpointurl myendpoint.com
+$ dvc remote modify myremote endpointurl https://myendpoint.com
 ```
 
 - `url` - remote location URL
@@ -112,17 +113,23 @@ $ dvc remote modify myremote listobjects true
 $ dvc remote modify myremote sse AES256
 ```
 
+</details>
+
+<details>
+
+### Click for S3 API compatible storage available options
+
 To communicate with a remote object storage that supports an S3 compatible API
-(e.g. [Minio](https://minio.io/), [Wasabi](https://wasabi.com/),
-[Eucalyptus](https://www.eucalyptus.cloud/index.html),
-[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/), etc.) you
+(e.g. [Minio](https://minio.io/),
+[DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
+[IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.) you
 must explicitly set the `endpointurl` in the configuration:
 
 For example:
 
 ```dvc
-$ dvc remote add -d mybucket s3://path/to/dir
-$ dvc remote modify mybucket endpointurl object-storage.example.com
+$ dvc remote add -d myremote s3://path/to/dir
+$ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
 
 AWS S3 remote can also be configured entirely via environment variables:
@@ -170,6 +177,13 @@ $ dvc remote modify myremote projectname myproject
 
 ```dvc
 $ dvc remote modify myremote url gs://bucket/remote
+```
+
+- `credentailpath` -
+  [service account credentials](https://cloud.google.com/docs/authentication/production#obtaining_and_providing_service_account_credentials_manually).
+
+```dvc
+$ dvc remote modify myremote credentialpath /path/to/my/creds/[FILE_NAME].json
 ```
 
 </details>
@@ -279,7 +293,7 @@ Setting 'myremote' as a default remote.
 Modify its endpoint URL:
 
 ```dvc
-$ dvc remote modify myremote endpointurl object-storage.example.com
+$ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
 
 Now the config file should look like (run `cat .dvc/config`):
@@ -287,7 +301,7 @@ Now the config file should look like (run `cat .dvc/config`):
 ```ini
 ['remote "myremote"']
 url = s3://mybucket/storage
-endpointurl = object-storage.example.com
+endpointurl = https://object-storage.example.com
 [core]
 remote = myremote
 ```
