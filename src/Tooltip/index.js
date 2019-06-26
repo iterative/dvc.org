@@ -73,10 +73,12 @@ class Tooltip extends Component {
     })
     return (
       <>
-        <span onMouseOver={this.hoverIn} onMouseLeave={this.hoverOut}>
+        <HighlightedText
+          onMouseOver={this.hoverIn}
+          onMouseLeave={this.hoverOut}
+        >
           {text}
-          <sup>✝</sup>
-        </span>
+        </HighlightedText>
         {this.state.hover && (
           <TooltipContainer
             className="tooltip-container"
@@ -97,6 +99,10 @@ class Tooltip extends Component {
     )
   }
 }
+
+const HighlightedText = styled.span`
+  border-bottom: 1px black dotted;
+`
 
 const TooltipContainer = styled.div`
   position: absolute;
