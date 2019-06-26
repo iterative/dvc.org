@@ -1,4 +1,4 @@
-# import
+# import-url
 
 Import file from any supported URL (it could be `http://`, as well as `s3://`,
 `ssh://`, and other supported external storage URLs) or local directory to local
@@ -7,7 +7,7 @@ workspace and track changes in remote file or directory.
 ## Synopsis
 
 ```usage
-usage: dvc import [-h] [-q | -v] [--resume] [-f FILE] url [out]
+usage: dvc import-url [-h] [-q | -v] [--resume] [-f FILE] url [out]
 
 positional arguments:
   url                   (See supported URLs in the description.)
@@ -34,10 +34,10 @@ remote file or directory to enable DVC to efficiently check it to determine if
 the local copy is out of date. DVC uses this remote URL to download the data to
 the workspace initially, and to re-download it upon changes.
 
-The `dvc import` command helps the user create such an external data dependency.
-The `url` argument should provide the location of the data to be imported, while
-`out` is used to specify the (path and) name of the imported data file or
-directory in the workspace.
+The `dvc import-url` command helps the user create such an external data
+dependency. The `url` argument should provide the location of the data to be
+imported, while `out` is used to specify the (path and) name of the imported
+data file or directory in the workspace.
 
 DVC supports several types of (local or) remote locations:
 
@@ -61,15 +61,15 @@ DVC supports several types of (local or) remote locations:
 > running it internally expands this URL into a regular S3, SSH, GS, etc URL by
 > appending `/path/to/file` to the `myremote`'s configured base path.
 
-Another way to understand the `dvc import` command is as a short-cut for a more
-verbose `dvc run` command. This is discussed in the
+Another way to understand the `dvc import-url` command is as a short-cut for a
+more verbose `dvc run` command. This is discussed in the
 [External Dependencies](/doc/user-guide/external-dependencies) documentation,
 where an alternative is demonstrated for each of these schemes.
 
-Instead of `dvc import`:
+Instead of `dvc import-url`:
 
 ```dvc
-$ dvc import https://example.com/path/to/data.csv data.csv
+$ dvc import-url https://example.com/path/to/data.csv data.csv
 ```
 
 It is possible to instead use `dvc run`:
@@ -81,9 +81,9 @@ $ dvc run -d https://example.com/path/to/data.csv \
 ```
 
 Both methods generate a stage file (DVC-file) with an external dependency, and
-they produce equivalent results. The `dvc import` command saves the user from
-having to manually copy files from each of the remote storage schemes, and from
-having to install CLI tools for each service.
+they produce equivalent results. The `dvc import-url` command saves the user
+from having to manually copy files from each of the remote storage schemes, and
+from having to install CLI tools for each service.
 
 When DVC inspects a DVC-file, its dependencies will be checked to see if any
 have changed. A changed dependency will appear in the `dvc status` report,
@@ -151,7 +151,7 @@ pipeline. In the [Add Files step](/doc/get-started/add-files) we are told to
 download a file, then use `dvc add` to integrate it with the workspace.
 
 An advanced alternate way to initialize the _Getting Started_ workspace, is
-using `dvc import`:
+using `dvc import-url`:
 
 <details>
 
@@ -170,7 +170,7 @@ After executing these commands you should have an almost empty workspace.
 </details>
 
 ```dvc
-$ dvc import https://dvc.org/s3/get-started/data.xml data/data.xml
+$ dvc import-url https://dvc.org/s3/get-started/data.xml data/data.xml
 
 Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data/data.xml'
 [##############################] 100% data.xml
@@ -254,7 +254,7 @@ After executing these commands you should have an almost empty workspace.
 </details>
 
 ```dvc
-$ dvc import /path/to/data-store/data.xml data/data.xml
+$ dvc import-url /path/to/data-store/data.xml data/data.xml
 
 Importing '/path/to/data-store/data.xml' -> 'data/data.xml'
 [##############################] 100% data.xml
