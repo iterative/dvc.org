@@ -25,9 +25,10 @@ pipeline). It's a way to describe commands, data inputs and intermediate results
 that go into creating a ML model (or other data results). By explicitly
 specifying a list of dependencies (with `-d` option) and outputs (with `-o`,
 `-O`, `-m`, or `-M` options) DVC can connect each individual stage (command)
-into a directed acyclic graph (DAG). All the command-line input provided to
-`dvc run` after the optional arguments (`-` or `--` dashed options) will become
-the required `command` argument.
+into a directed acyclic graph (DAG). All the remainder of command-line input
+provided to `dvc run` after the optional arguments (`-` or `--` dashed options)
+will become the required `command` argument (thus the `...` symbol in the
+command usage).
 
 > Remember to wrap the `command` with `"` quotes if there are special characters
 > in it like `|` (pipe) or `<`, `>` (redirection) that would otherwise apply to
