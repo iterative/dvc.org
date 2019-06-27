@@ -12,7 +12,7 @@ usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
                [--ignore-build-cache] [--remove-outs] [--no-commit]
                [--outs-persist OUTS_PERSIST]
                [--outs-persist-no-cache OUTS_PERSIST_NO_CACHE]
-               ...
+               command
 
 positional arguments:
   command               Command to execute.
@@ -27,8 +27,7 @@ specifying a list of dependencies (with `-d` option) and outputs (with `-o`,
 `-O`, `-m`, or `-M` options) DVC can connect each individual stage (command)
 into a directed acyclic graph (DAG). All the remainder of command-line input
 provided to `dvc run` after the optional arguments (`-` or `--` dashed options)
-will become the required `command` argument (thus the `...` symbol in the
-command usage).
+will become the required `command` argument.
 
 > Remember to wrap the `command` with `"` quotes if there are special characters
 > in it like `|` (pipe) or `<`, `>` (redirection) that would otherwise apply to
