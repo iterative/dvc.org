@@ -12,7 +12,8 @@ usage: dvc status [-h] [-v] [-j JOBS] [--show-checksums] [-q] [-c]
                   [targets [targets ...]]
 
 positional arguments:
-  targets               DVC-files.
+  targets        Limit command scope to these DVC-files. Using -R,
+                 directories to search DVC-files in can also be given.
 ```
 
 ## Description

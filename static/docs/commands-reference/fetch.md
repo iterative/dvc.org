@@ -12,7 +12,8 @@ usage: dvc fetch [-h] [-q | -v] [-j JOBS] [--show-checksums]
                  [targets [targets ...]]
 
 positional arguments:
-  targets               DVC-files.
+  targets        Limit command scope to these DVC-files. Using -R,
+                 directories to search DVC-files in can also be given.
 ```
 
 ## Description
