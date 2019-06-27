@@ -14,7 +14,6 @@ import Hamburger from '../src/Hamburger'
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
 import compact from 'lodash.compact'
-import flatten from 'lodash.flatten'
 import { scroller, animateScroll } from 'react-scroll'
 import 'core-js/fn/array/find-index'
 // styles
@@ -22,6 +21,8 @@ import styled from 'styled-components'
 import { media } from '../src/styles'
 // json
 import sidebar from '../src/Documentation/sidebar'
+import SidebarMenuHelper from '../src/Documentation/SidebarMenu/SidebarMenuHelper'
+import { PATH_SEPARATOR } from '../src/Documentation/SidebarMenu/SidebarMenuHelper'
 
 export default class Documentation extends Component {
   constructor() {
@@ -36,6 +37,7 @@ export default class Documentation extends Component {
       load: false
     }
   }
+
   componentDidMount() {
     this.loadStateFromURL()
     this.initDocsearch()
@@ -53,50 +55,11 @@ export default class Documentation extends Component {
   componentWillUnmount() {
     window.removeEventListener('popstate', this.loadStateFromURL)
   }
-  toString(method, str) {
-    switch (method) {
-      case 'filetourl':
-        return str.slice(0, -3)
-        break
-      default:
-        break
-    }
-  }
-  getZeroFile(arr) {
-    if (typeof arr[0] !== 'string' && arr[0].indexFile) {
-      return arr[0].indexFile
-    } else if (typeof arr[0] !== 'string') {
-      return arr[0]
-    } else {
-      this.getZeroFile(arr[0].files)
-    }
-  }
+
   loadStateFromURL = () => {
-    let file = this.getZeroFile(sidebar)
-    let indexes = []
-    let path = window.location.pathname.split('/')
+    let path = window.location.pathname.split(PATH_SEPARATOR)
     let length = path.length
-    function getFile(arr, find, x) {
-      for (let i = 0; i < arr.length; i++) {
-        if (
-          (typeof arr[i] === 'string' && arr[i].slice(0, -3) === find) ||
-          (arr[i].indexFile && arr[i].indexFile.slice(0, -3) === find)
-        ) {
-          file = arr[i]
-          indexes.push(i)
-          return false
-        } else if (arr[i].name && kebabCase(arr[i].name) === find) {
-          indexes.push(i)
-          file = arr[i].files[0]
-          return false
-        } else if (arr[i].files) {
-          getFile(arr[i].files, find, x)
-        }
-      }
-    }
-    for (let x = 2; x < length; x++) {
-      getFile(sidebar, path[x], x)
-    }
+    let { file, indexes } = SidebarMenuHelper.getFileFromUrl(path)
     this.loadFile({
       section: length > 2 ? indexes[0] : 0,
       subsection: indexes.length > 2 ? indexes[1] : null,
@@ -104,6 +67,7 @@ export default class Documentation extends Component {
       parseHeadings: true
     })
   }
+
   initDocsearch = () => {
     docsearch({
       apiKey: '755929839e113a981f481601c4f52082',
@@ -112,22 +76,23 @@ export default class Documentation extends Component {
       debug: false // Set debug to true if you want to inspect the dropdown
     })
   }
+
   getLinkHref = (section, subsection = null, file = null) => {
-    const sectionSlug = sidebar[section].indexFile
-      ? this.toString('filetourl', sidebar[section].indexFile)
-      : kebabCase(sidebar[section].name)
-    const subsectionSlug = subsection
-      ? sidebar[section].files[subsection].indexFile
-        ? sidebar[section].files[subsection].indexFile.slice(0, -3)
-        : sidebar[section].files[subsection]
-      : undefined
-    const fileSlug = file
-      ? typeof file === 'string'
-        ? file.slice(0, -3)
-        : file.files[0]
-      : undefined
-    return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`
+    let sect = sidebar[section]
+    let removeExtFunc = filename =>
+      SidebarMenuHelper.removeExtensionFromFileName(filename)
+    const sectionSlug = removeExtFunc(sect.indexFile) || kebabCase(sect.name)
+    const subsectionSlug =
+      (subsection && removeExtFunc(sect.files[subsection].indexFile)) ||
+      sect.files[subsection]
+    const fileSlug = removeExtFunc(file) || (file && file.files[0])
+    return `${PATH_SEPARATOR}doc${PATH_SEPARATOR}${compact([
+      sectionSlug,
+      subsectionSlug,
+      fileSlug
+    ]).join(PATH_SEPARATOR)}`
   }
+
   setCurrentPath = (section, subsection, file) => {
     window.history.pushState(
       null,
@@ -135,14 +100,14 @@ export default class Documentation extends Component {
       this.getLinkHref(section, subsection, file)
     )
   }
+
   onSectionSelect = (section, e) => {
     e && e.preventDefault()
-    const file = sidebar[section].indexFile
-      ? sidebar[section].indexFile
-      : sidebar[section].files[0]
+    const file = sidebar[section].indexFile || sidebar[section].files[0]
     e && this.setCurrentPath(section)
     this.loadFile({ section, file, parseHeadings: false })
   }
+
   onFileSelect = (section, subsection, file, e) => {
     e && e.preventDefault()
     this.setCurrentPath(
@@ -152,41 +117,50 @@ export default class Documentation extends Component {
     )
     this.loadFile({ section, subsection, file, parseHeadings: true })
   }
-  loadFile = ({ section, subsection, file, parseHeadings }) => {
-    this.setState({ load: true })
-    let folderpath = file.folder
-      ? file.folder
-      : subsection
-      ? sidebar[section].files[subsection].folder
-      : sidebar[section].folder
-    let filepath = file.indexFile
-      ? file.indexFile
-      : file.files
-      ? file.files
-      : file
-    fetch(`${folderpath}/${filepath}`)
+
+  updateStateWithCurrentFile = (
+    markdown,
+    currentSection,
+    currentFile,
+    parseHeadings
+  ) => {
+    this.setState(
+      {
+        currentSection,
+        currentFile,
+        markdown,
+        headings: [],
+        pageNotFound: false,
+        isMenuOpen: false,
+        load: false
+      },
+      () => {
+        this.scrollTop()
+        parseHeadings && this.parseHeadings(markdown)
+      }
+    )
+  }
+
+  setCurrentFile = (
+    section,
+    subsection,
+    file,
+    folderpath,
+    filepath,
+    parseHeadings
+  ) => {
+    const helper = SidebarMenuHelper
+    fetch(helper.combineToPath([folderpath, filepath]))
       .then(res => {
-        res.text().then(text => {
-          this.setState(
-            {
-              currentSection: section,
-              currentFile: folderpath
-                ? `${folderpath}/${file.indexFile ? file.indexFile : file}`
-                : subsection
-                ? `${sidebar[section].files[subsection].folder}/${
-                    file.indexFile
-                  }`
-                : `${sidebar[section].folder}/${file}`,
-              markdown: text,
-              headings: [],
-              pageNotFound: false,
-              isMenuOpen: false,
-              load: false
-            },
-            () => {
-              this.scrollTop()
-              parseHeadings && this.parseHeadings(text)
-            }
+        res.text().then(markdown => {
+          const currentFile =
+            helper.getFullPath(folderpath, file) ||
+            helper.getPath(section, subsection, file)
+          this.updateStateWithCurrentFile(
+            markdown,
+            section,
+            currentFile,
+            parseHeadings
           )
         })
       })
@@ -194,6 +168,24 @@ export default class Documentation extends Component {
         window.location.reload()
       })
   }
+
+  loadFile = ({ section, subsection, file, parseHeadings }) => {
+    this.setState({ load: true })
+    let sect = sidebar[section]
+    let subsect = sect.files[subsection]
+    let subfolder = subsect && subsect.folder
+    let folderpath = file.folder || subfolder || sect.folder
+    let filepath = file.indexFile || file.files || file
+    this.setCurrentFile(
+      section,
+      subsection,
+      file,
+      folderpath,
+      filepath,
+      parseHeadings
+    )
+  }
+
   parseHeadings = text => {
     const headingRegex = /\n(## \s*)(.*)/g
     const matches = []
@@ -209,10 +201,12 @@ export default class Documentation extends Component {
 
     this.setState({ headings: matches }, this.autoScroll)
   }
+
   autoScroll = () => {
     const { hash } = window.location
     if (hash) this.scrollToLink(hash)
   }
+
   scrollToLink = href => {
     scroller.scrollTo(href.slice(1), {
       duration: 600,
@@ -222,6 +216,7 @@ export default class Documentation extends Component {
       containerId: 'bodybag'
     })
   }
+
   scrollTop = () => {
     animateScroll.scrollTo(0, {
       duration: 300,
@@ -231,11 +226,13 @@ export default class Documentation extends Component {
       containerId: 'bodybag'
     })
   }
+
   toggleMenu = () => {
     this.setState(prevState => ({
       isMenuOpen: !prevState.isMenuOpen
     }))
   }
+
   render() {
     const {
       currentSection,
