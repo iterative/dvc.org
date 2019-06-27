@@ -10,7 +10,8 @@ usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R]
                   [targets [targets ...]]
 
 positional arguments:
-  targets          DVC-files.
+  targets          DVC-files to commit. Optional. (Finds all
+                   DVC-files in the workspace by default.)
 ```
 
 ## Description

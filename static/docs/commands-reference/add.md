@@ -10,7 +10,7 @@ usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [-f FILE]
                targets [targets ...]
 
 positional arguments:
-  targets               Input files/directories.
+  targets               Input files/directories to add.
 ```
 
 ## Description

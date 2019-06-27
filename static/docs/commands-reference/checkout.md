@@ -9,7 +9,8 @@ usage: dvc checkout [-h] [-q | -v] [-d] [-f] [-R]
                     [targets [targets ...]]
 
 positional arguments:
-  targets          DVC-files.
+  targets          DVC-files to checkout. Optional. (Finds all
+                   DVC-files in the workspace by default.)
 ```
 
 ## Description

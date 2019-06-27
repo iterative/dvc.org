@@ -12,7 +12,8 @@ usage: dvc pipeline show [-h] [-q | -v] [-c | -o] [-l] [--ascii]
                          [targets [targets ...]]
 
 positional arguments:
-  targets         DVC-files. 'Dvcfile' by default.
+  targets         DVC-files to show pipeline for. Optional.
+                  (Finds all DVC-files in the workspace by default.)
 ```
 
 ## Description
