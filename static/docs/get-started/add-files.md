@@ -11,8 +11,8 @@ Let's get a sample data set to play with:
 If you experienced problems using `wget` or you're on Windows and you don't want
 to install it, you'll need to use a browser to download `data.xml` and save it
 into `data` subdirectory. To download, right-click
-[this link](https://dvc.org/s3/get-started/data.xml) and click `Save link as`
-(Chrome) or `Save object as` (Firefox).
+[this link](/s3/get-started/data.xml) and click `Save link as` (Chrome) or
+`Save object as` (Firefox).
 
 </details>
 
@@ -22,15 +22,15 @@ $ wget https://dvc.org/s3/get-started/data.xml -O data/data.xml
 ```
 
 To take a file (or a directory) under DVC control just run `dvc add`, it accepts
-any **file** or a **directory**:
+any file or directory:
 
 ```dvc
 $ dvc add data/data.xml
 ```
 
-DVC stores information about your data file in a special `.dvc` file, that has a
-human-readable [description](/doc/user-guide/dvc-file-format) and can be
-committed to Git to track versions of your file:
+DVC stores information about your data file in a special DVC-file, that has a
+human-readable [format](/doc/user-guide/dvc-file-format) and can be committed to
+Git to track versions of your file:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
@@ -55,7 +55,7 @@ $ ls -R .dvc/cache
 ```
 
 where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file.
-And if you check the `data/data.xml.dvc` meta-file you will see that it has this
+And if you check the `data/data.xml.dvc` DVC-file you will see that it has this
 hash inside.
 
 </details>

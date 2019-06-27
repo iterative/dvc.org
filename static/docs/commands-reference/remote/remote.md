@@ -10,15 +10,15 @@ A set of commands to set up and manage data remotes:
 ## Synopsis
 
 ```usage
-usage: dvc remote [-h] [-q] [-v]
-                  {add,default,remove,modify,list} ...
+usage: dvc remote [-h] [-q | -v] {add,default,remove,modify,list} ...
 
 positional arguments:
-    add                   Add remote
-    default               Default remote
-    remove                Remove remote
-    modify                Modify remote
-    list                  List remotes
+  COMMAND
+    add                 Add remote.
+    default             Set/unset default remote.
+    remove              Remove remote.
+    modify              Modify remote.
+    list                List available remotes.
 ```
 
 ## Description
@@ -36,8 +36,8 @@ cache only the data you need for a specific branch/commit.
 > If you installed DVC via `pip`, and depending on the remote type you plan to
 > use you might need to install optional dependencies: `s3`, `gs`, `azure`,
 > `ssh`. Or `all_remotes` to include them all. The command should look like
-> this: `pip install -U dvc[s3]` - it installs `boto3` library along with DVC to
-> support AWS S3 storage.
+> this: `pip install -U "dvc[s3]"` - it installs `boto3` library along with DVC
+> to support AWS S3 storage.
 
 Using DVC with a remote data storage is optional. By default, DVC is configured
 to use a local data storage only (usually `.dvc/cache` directory inside your
@@ -58,8 +58,8 @@ For the typical process to share the project via remote, see
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
@@ -95,6 +95,11 @@ remote = myremote
 ```
 
 2. Add AWS S3 remote and modify its region:
+
+> **Note!** Before adding a new remote be sure to login into AWS services and
+> follow instructions at
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
+> to create your bucket.
 
 ```dvc
 $ dvc remote add mynewremote s3://mybucket/myproject

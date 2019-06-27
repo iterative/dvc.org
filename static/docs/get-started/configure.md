@@ -46,12 +46,13 @@ currently supports seven types of remotes:
 > Depending on the [remote storage](/doc/commands-reference/remote) type you
 > plan to use to keep and share your data you might need to specify one of the
 > optional dependencies: `s3`, `gs`, `azure`, `ssh`. Or `all_remotes` to include
-> them all. The command should look like this: `pip install dvc[s3]` - it will
+> them all. The command should look like this: `pip install "dvc[s3]"` - it will
 > install `boto3` library along with DVC to support AWS S3 storage. This is
 > valid for `pip install` option only. Other ways to install DVC already include
 > support for all remotes.
 
-For example, to setup an S3 remote we would use something like:
+For example, to setup an S3 remote we would use something like (make sure that
+`mybucket` exists):
 
 ```dvc
 $ dvc remote add -d s3remote s3://mybucket/myproject
@@ -60,7 +61,7 @@ $ dvc remote add -d s3remote s3://mybucket/myproject
 > This command is only shown for informational purposes. No need to actually run
 > it in order to continue with this guide.
 
-You can see, that DVC does not require installing any databases, servers, or
+You can see that DVC doesn't require installing any databases, servers, or
 warehouses. It can use bare S3 or SSH to store data, intermediate results, and
 your models.
 

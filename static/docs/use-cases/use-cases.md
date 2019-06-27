@@ -11,5 +11,5 @@ suggestions!
 If you want to get some hands-on experience we recommend to follow along
 [Get Started](/doc/get-started) and try examples at the very end of it. They
 include prepared data sets and code to run. Use cases are not written to be run
-end to end, specifically we do not provide prepared data sets and code to train
+end to end, specifically we don't provide prepared data sets and code to train
 models.

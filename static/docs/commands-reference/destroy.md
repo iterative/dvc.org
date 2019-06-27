@@ -1,24 +1,33 @@
 # destroy
 
-Remove DVC files from your repository.
+Remove all
+[DVC files and directories](/doc/user-guide/dvc-files-and-directories) from the
+project.
 
-It removes `.dvc` and `Dvcfile` files, `.dvc/` directory. It means cache will be
-removed as well by default, if it's not set to an external location (by default
-local cache is located in the `.dvc/cache` directory).
+## Synopsis
 
 ```usage
-usage: dvc destroy [-h] [-q] [-v] [-f]
-
-optional arguments:
-  -f, --force    Force destruction
+usage: dvc destroy [-h] [-q | -v] [-f]
 ```
+
+## Description
+
+It removes DVC-files, and the entire `.dvc/` meta directory from the workspace.
+Note that the DVC cache will normally be removed as well, unless it's set to an
+external location with `dvc cache dir`. (By default a local cache is located in
+the `.dvc/cache` directory.) If you were using
+[symlinks for linking data](/doc/user-guide/large-dataset-optimization) from the
+cache, DVC will replace them with copies, so that your data is intact after the
+DVC repository destruction.
 
 ## Options
 
+- `-f`, `--force` - do not prompt when destroying DVC project.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
@@ -40,5 +49,5 @@ yes
 
 $ ls -a
 
-.git code.py
+.git code.py foo
 ```

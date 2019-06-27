@@ -5,7 +5,7 @@
 The most exciting part of DVC is reproducibility.
 
 > Reproducibility is the time you are getting benefits out of DVC instead of
-> spending time defining the ML pipelines.
+> spending time managing ML pipelines.
 
 DVC tracks all the dependencies, which helps you iterate on ML models faster
 without thinking what was affected by your last change.
@@ -19,21 +19,22 @@ This is one of the differences between DVC reproducibility and traditional
 Makefile-like build automation tools (Make, Maven, Ant, Rakefile etc). It was
 designed in such a way to localize specification of DAG nodes.
 
-If you run `repro` on any created DVC-file from our repository, nothing happens
-because nothing was changed in the defined pipeline.
+If you run `repro` on any [DVC-file](/doc/user-guide/dvc-file-format) from our
+repository, nothing happens because nothing was changed in the pipeline defined
+in the project. There's nothing to reproduce.
 
 ```dvc
-# Nothing to reproduce
 $ dvc repro model.p.dvc
 ```
 
-By default, `dvc repro` reads DVC-files named `Dvcfile`:
+> By default, `dvc repro` tries to read the DVC-file with name `Dvcfile`, like
+> the one we define in the previous chapter.
 
 ```dvc
-# Reproduce Dvcfile.
-# But there is still nothing to reproduce:
 $ dvc repro
 ```
+
+Tries to reproduce the same pipeline... But there is still nothing to reproduce.
 
 ## Adding bigrams
 
@@ -61,7 +62,7 @@ bag_of_words = CountVectorizer(stop_words='english',
                                ngram_range=(1, 2))
 ```
 
-Reproduce the pipeline:
+Reproduce our changed pipeline:
 
 ```dvc
 $ dvc repro
@@ -85,7 +86,7 @@ Reproducing 'Dvcfile':
 
 The process started with the feature creation step because one of its parameters
 was changed — the edited source code `code/featurization.py`. All dependent
-steps were regenerated as well.
+stages were ran again as well.
 
 Let’s take a look at the metric’s change. The improvement is close to zero
 (+0.0075% to be precise):

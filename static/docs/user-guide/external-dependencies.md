@@ -93,18 +93,18 @@ credentials for certain remotes.
 ## Using import
 
 In the previous command examples, downloading commands were used: `aws s3 cp`,
-`scp`, `wget`, etc. `dvc import` simplifies the downloading part for all the
+`scp`, `wget`, etc. `dvc import-url` simplifies the downloading part for all the
 supported types of dependencies.
 
 ```dvc
-$ dvc import https://dvc.org/s3/get-started/data.xml
+$ dvc import-url https://dvc.org/s3/get-started/data.xml
 ```
 
 <details>
 
 ### Expand to learn more about DVC internals
 
-If you open the resulting DVC file, you will see something like this:
+If you open the resulting DVC-file, you will see something like this:
 
 ```yaml
 deps:

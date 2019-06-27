@@ -5,20 +5,17 @@ Tag the file located at `path` as a metric file.
 ## Synopsis
 
 ```usage
-usage: dvc metrics add [-h] [-q] [-v]
-                       [-t TYPE] [-x XPATH]
-                       path
+usage: dvc metrics add [-h] [-q | -v] [-t TYPE] [-x XPATH] path
 
 positional arguments:
-  path           Path to a metric file.
+  path                  Path to a metric file.
 ```
 
 ## Description
 
-Sets a special flag (see [DVC File Format](/doc/user-guide/dvc-file-format)) in
-the relevant `.dvc` file to identify a specified output as a metric file.
-Alternatively, an output file could be made a metric via `-M` or `-m` parameter
-of the `dvc run` command.
+Sets a special flag in the relevant [DVC-file](/doc/user-guide/dvc-file-format)
+to identify a specified output as a metric file. Alternatively, an output file
+can be marked as a metric via `-M` or `-m` parameter of the `dvc run` command.
 
 While any text file could be used as a metric file to track, it's recommended to
 use `TSV`, `CSV`, or `JSON` formats. DVC provides a way (see
@@ -30,7 +27,7 @@ contains multiple metrics.
 - `-t`, `--type` - specify a type of the metric file. Accepted values are:
   `raw`, `json`, `tsv`, `htsv`, `csv`, `hcsv`. Type will be used to determine
   how `dvc metrics show` handles displaying it. This type will be saved into the
-  corresponding `.dvc` file and will be used automatically in the
+  corresponding DVC-file and will be used automatically in the
   `dvc metrics show`. `htsv`/`hcsv` are the same `tsv`/`csv` but the values in
   the first row of the file will be used as the field names and should be used
   to address columns in the `--xpath` option. `raw` means that no additional
@@ -40,7 +37,7 @@ contains multiple metrics.
 - `-x`, `--xpath` - specify a path within a metric file to get a specific metric
   value. Should be used if metric file contains multiple numbers and you need to
   get a only one of them. Only single path is allowed. This path will be saved
-  into the corresponding `.dvc` file and will be used automatically in
+  into the corresponding DVC-file and will be used automatically in
   `dvc metrics show`. Accepted value depends on the metric file type (`-t`
   option):
 
@@ -75,8 +72,8 @@ outs:
 
 If you run `dvc metrics show` you should get an error message like this:
 
-```text
-Error: failed to show metrics - no metric files in
+```dvc
+ERROR: failed to show metrics - no metric files in
        this repository. use 'dvc metrics add' to add
        a metric file to track.
 ```
@@ -105,6 +102,6 @@ outs:
 
 And if you run `dvc metrics show` you should see something like this:
 
-```text
+```dvc
 metrics.txt: 0.9643
 ```

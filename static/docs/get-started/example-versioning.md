@@ -47,7 +47,8 @@ $ cd example-versioning
 This command pulls a repository with a single script `train.py` that runs the
 training.
 
-(Optional) It's highly recommended to initialize a virtual environment to keep
+(Optional) It's highly recommended to initialize a virtual environment with
+[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool to keep
 your global packages clean and untouched:
 
 ```dvc
@@ -62,17 +63,14 @@ Install required dependencies:
 $ pip install -r requirements.txt
 ```
 
-> **Note!** As of October 2018, Tensorflow does not support Python 3.7. Model
-> training was tested on Python 2.7 and 3.6.
-
 <details>
 
 ### Expand to learn more about DVC internals
 
-The repository you cloned is already DVC-initialized. There should be `.dvc`
-directory with `config`, `.gitignore` files. These files and directories are
-hidden from a user in general and a user does not interact with these files
-directly. Check
+The repository you cloned is already DVC-initialized. There should be a `.dvc/`
+directory with `config`, `.gitignore` files and the `cache` directory. These
+files and directories are hidden from users in general. Users don't interact
+with these files directly. Check
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -87,10 +85,10 @@ including input dataset and metrics.
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` utility by default, so you'll need to use a browser
+Windows doesn't ship `wget` utility by default, so you'll need to use a browser
 to download `data.xml` and save it into `data` subdirectory. To download,
-right-click [this link](https://dvc.org/s3/examples/versioning/data.zip) and
-click `Save link as`(Chrome) or `Save object as`(Firefox).
+right-click [this link](/s3/examples/versioning/data.zip) and click
+`Save link as`(Chrome) or `Save object as`(Firefox).
 
 </details>
 
@@ -100,9 +98,9 @@ $ unzip data.zip
 $ rm -f data.zip
 ```
 
-This command downloads and extracts our initial dataset - **1000 labeled
-images** for training and 800 labeled images for validatation. In summary, it's
-a 43 MB dataset, with a directory structure like this:
+This command downloads and extracts our initial dataset - 1000 labeled images
+for training and 800 labeled images for validation. In summary, it's a 43 MB
+dataset, with a directory structure like this:
 
 ```sh
 data
@@ -137,7 +135,8 @@ are too large to be put into Git. Usually, input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
 the DVC cache (of course, it keeps a link to it in the workspace, so you can
 continue working with it the same way as before). Instead, it creates a simple
-human-readable meta-file that can be considered as a pointer to the cache.
+human-readable [DVC-file](/doc/user-guide/dvc-file-format) that can be
+considered as a pointer to the cache.
 
 Next, we run the training with `python train.py`. We picked this example and
 datasets to be small enough to be run on your machine in a reasonable amount of
@@ -164,15 +163,15 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 
 ### Expand to learn more about DVC internals
 
-As we mentioned briefly, DVC does not commit `data` directory and `model.h5`
+As we mentioned briefly, DVC does not commit the `data` directory and `model.h5`
 file into git, `dvc add` pushed them into the DVC cache and added to the
-`.gitignore`. Instead, we commit `.dvc` meta-files that serve as pointers to the
-cache (usually, a `.dvc/cache` directory inside the repository) where actual
-data resides.
+`.gitignore`. Instead, we commit DVC-files that serve as pointers to the cache
+(usually in the `.dvc/cache` directory inside the repository) where actual data
+resides.
 
-In this case we created `data.dvc` and `model.h5.dvc` files. Check the
-[DVC file format](/doc/user-guide/dvc-file-format) to learn more about how these
-files are organized.
+In this case we created `data.dvc` and `model.h5.dvc` files. Refer to the
+[DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
+files work.
 
 </details>
 
@@ -187,9 +186,8 @@ $ unzip new-labels.zip
 $ rm -f new-labels.zip
 ```
 
-For simplicity we keep the validation dataset the same. Now our dataset has
-**2000 images** for training and 800 images for validation, with a total size of
-67 MB:
+For simplicity we keep the validation dataset the same. Now our dataset has 2000
+images for training and 800 images for validation, with a total size of 67 MB:
 
 ```sh
 data
@@ -260,7 +258,7 @@ have large datasets, data files, or model.
 
 On the other hand, if we want to keep the current version of the code and go
 back to the previous dataset only, we can do something like this (make sure that
-you don't have some uncommitted changes in the `data.dvc`):
+you don't have uncommitted changes in the `data.dvc`):
 
 ```dvc
 $ git checkout v1.0 data.dvc
@@ -277,29 +275,29 @@ points to the `v1.0` of the dataset. While code and model files are from the
 
 As we have learned already, DVC keeps data files out of Git (by adjusting
 `.gitignore`) and puts them into the cache (usually it's a `.dvc/cache`
-directory inside the repository). Instead, DVC creates simple meta-files that
-have `.dvc` extension. These meta-files serve as pointers (`md5` hash) to the
-cache and are version controlled by Git.
+directory inside the repository). Instead, DVC creates
+[DVC-files](/doc/user-guide/dvc-file-format). These text files serve as pointers
+(`md5` hash) to the cache and are version controlled by Git.
 
-When we run `git checkout` we restore pointers (or meta-files) first, then when
-we run `dvc checkout` we use these pointers to put the right data into the right
+When we run `git checkout` we restore pointers (DVC-files) first, then when we
+run `dvc checkout` we use these pointers to put the right data in the right
 place.
 
 </details>
 
 ## Automating capturing
 
-`dvc add` is a perfectly reasonable choice when you need to keep track of
-different versions of datasets or model files that come and are updated from
-external sources. The `data` directory above with cats and dogs images is a good
-example.
+`dvc add` is appropriate when you need to keep track of different versions of
+datasets or model files that come and are updated from external sources. The
+`data` directory above (with cats and dogs images) is a good example.
 
 On the other hand, there are files that are a result of running some code. In
-our example, you should have noticed, that `train.py` produces binary files
-(e.g. `bottlneck_features_train.npy`), the model file `model.h5`, and the metric
-file `metrics.json`. **When you have a script that takes some data as an input
-and produces other data files, a better way to capture them is to use
-`dvc run`:**
+our example, please notice that `train.py` produces binary files (e.g.
+`bottlneck_features_train.npy`), the model file `model.h5`, and the metric file
+`metrics.json`.
+
+When you have a script that takes some data as an input and produces other data
+outputs, a better way to capture them is to use `dvc run`:
 
 ```dvc
 $ dvc remove -p model.h5.dvc
@@ -310,15 +308,15 @@ $ dvc run -f Dvcfile \
           python train.py
 ```
 
-Similar to `dvc add`, `dvc run` creates a single DVC file (`Dvcfile` in this
-case, specified by the `-f` option). It puts all outputs (`-o`) under DVC
+Similar to `dvc add`, `dvc run` creates a single DVC-file (forced to have file
+name `Dvcfile` with the `-f` option). It puts all outputs (`-o`) under DVC
 control the same way as `dvc add` does. Unlike, `dvc add`, `dvc run` also tracks
 dependencies (`-d`) and the command (`python train.py`) that was run to produce
 the result.
 
-`dvc repro` runs `Dvcfile` when some dependencies changed (for example, we added
-new images like we did when we built the second model version). It also updates
-outputs and puts them into the cache.
+`dvc repro` will run `Dvcfile` if any of its dependencies (`-d`) changed, for
+example after we added new images like we did when we built the second model
+version. It also updates outputs and puts them into the cache.
 
 If `dvc add` and `dvc checkout` provide a basic mechanism to version control
 large data files or models, `dvc run` and `dvc repro` provide a build system for
@@ -342,8 +340,8 @@ changed.
 
 Here where DVC pipelines feature comes very handy and was designed for. We
 touched it briefly when we described `dvc run` and `dvc repro` at the very end.
-Next step here would be splitting the script into two steps and utilize DVC
-pipelines. Check this [example](/doc/get-started/example-pipeline) to get a
+The next step here would be splitting the script into two steps and utilizing
+DVC pipelines. Check this [example](/doc/get-started/example-pipeline) to get a
 hands-on experience with them and try to apply it here. Don't hesitate to join
 our [community](/chat) to ask any questions!
 

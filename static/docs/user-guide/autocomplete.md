@@ -8,13 +8,12 @@ For example:
 
 ```dvc
 $ dvc r # Press [tab] key
-
-#  -- dvc commands --
-# remote  -- Manage set of tracked repositories.
-# remove  -- Remove outputs of DVC file.
-# repro   -- Reproduce DVC file. Default file name - 'Dvcfile'.
-# root    -- Relative path to project's directory.
-# run     -- Generate a stage file from a given command and execute
+ -- dvc commands --
+remote  -- Manage remote storage configuration.
+remove  -- Remove outputs of DVC-file.
+repro   -- Check for changes and reproduce DVC-file and dependencies.
+root    -- Relative path to project's directory.
+run     -- Generate a stage file from a command and execute the command.
 ```
 
 Depending on what you typed on the command line so far, it completes:
@@ -86,8 +85,8 @@ The DVC specific completion script is located in this path of our main
 repository:
 [dvc/scripts/completion/dvc.zsh](https://github.com/iterative/dvc/blob/master/scripts/completion/dvc.zsh)
 
-Place the completion script in a directory included in `$fpath`, the file should
-be named `_dvc`.
+Place the completion script in a directory included in `$fpath`, the file name
+should be `_dvc`.
 
 For example:
 

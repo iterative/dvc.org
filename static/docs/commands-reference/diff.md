@@ -13,9 +13,9 @@ usage: dvc diff [-h] [-q | -v] [-t TARGET] a_ref [b_ref]
 
 positional arguments:
   a_ref                 Git reference from which diff calculates
-  b_ref                 Git reference until which diff calculates,
-                        if omitted diff shows the difference
-                        between current HEAD and a_ref
+  b_ref                 Git reference until which diff calculates, if
+                        omitted diff shows the difference between
+                        current HEAD and a_ref
 ```
 
 ## Description
@@ -30,8 +30,8 @@ files in each revision, like `git diff` does.
 If the `-t` option is used, the diff is limited to the `TARGET` file or
 directory specified.
 
-`dvc diff` doesn't have an effect when the repository is not tracked by the Git
-SCM, for example when `dvc init` was used with the `--no-scm` option
+Note that `dvc diff` does not have an effect when the repository is not tracked
+by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
 
 ## Options
 
@@ -41,8 +41,8 @@ SCM, for example when `dvc init` was used with the `--no-scm` option
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
@@ -74,7 +74,8 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 ...
 ```
 
-Now let's create a virtual environment with `virtualenv` and install the
+Now let's create a virtual environment with
+[virtualenv](https://virtualenv.pypa.io/en/stable/) and install the
 requirements.
 
 ```dvc
@@ -116,7 +117,7 @@ reference these experiments.
 ### Click and expand to setup example
 
 Having followed the previous example's setup, move into the
-**example-get-started** directory. Then make sure that you have the latest code
+`example-get-started` directory. Then make sure that you have the latest code
 and data with the following commands.
 
 ```dvc
@@ -175,10 +176,10 @@ diff for 'data/features'
 Let's use our sample repo once again, which has several
 [available tags](https://github.com/iterative/example-get-started/tags) for
 conveniency. The `5-preparation` tag corresponds to the
-[Connect Code and Data](https://dvc.org/doc/get-started/connect-code-and-data)
-section of our Get Started guide, in which the `dvc run` command is used to
-create the `prepare.dvc` stage. The output of this stage is the `data/prepared`
-directory.
+[Connect Code and Data](/doc/get-started/connect-code-and-data) section of our
+Get Started guide, in which the `dvc run` command is used to create the
+`prepare.dvc` stage file. The output defined in this DVC-file is the
+`data/prepared` directory.
 
 ```dvc
 $ dvc diff -t data/prepared 5-preparation

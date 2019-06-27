@@ -10,7 +10,7 @@ files and download a 40MB data archive into this directory.
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` utility by default, so you'll need to use a browser
+Windows doesn't ship `wget` utility by default, so you'll need to use a browser
 to download `data.xml`and save it into the `data` subdirectory.
 
 </details>
@@ -60,14 +60,11 @@ need to run `dvc unprotect` or `dvc remove` first (check the
 
 ## Data file internals
 
-If you take a look at the DVC-file, you will see that only outputs are defined
-in `outs`. In this file, only one output is defined. The output contains the
-data file path in the repository and md5 cache. This md5 cache determines a
-location of the actual content file in DVC cache directory `.dvc/cache`.
-
-> Output from DVC-files defines the relationship between the data file path in a
-> repository and the path in a cache directory. See also
-> [DVC File Format](/doc/user-guide/dvc-file-format)
+If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
+`dvc add`, you will see that only outputs are defined in `outs`. In this file,
+only one output is defined. The output contains the data file path in the
+repository and md5 cache. This md5 cache determines a location of the actual
+content file in DVC cache directory `.dvc/cache`.
 
 ```dvc
 $ cat data/Posts.xml.zip.dvc
@@ -80,6 +77,9 @@ outs:
 $ du -sh .dvc/cache/ec/*
  41M .dvc/cache/ec/1d2935f811b77cc49b031b999cbf17
 ```
+
+> Outputs from DVC-files define the relationship between the data file path in a
+> repository and the path in a cache directory.
 
 Keeping actual file content in a cache directory and a copy of the caches in
 user workspace during `$ git checkout` is a regular trick that
@@ -96,10 +96,10 @@ workspace, DVC can create reflinks or other file link types. (See
 .)
 
 Creating file links is a quick file system operation. So, with DVC you can
-easily checkout a few dozen files of any size. A file link does not require you
-to have twice as much space in the hard drive. Even if each of the files
-contains 41MB of data, the overall size of the repository is still 41MB. Both of
-the files correspond to the same `inode` (a file metadata record) in the file
+easily checkout a few dozen files of any size. A file link prevents you from
+using twice as much space in the hard drive. Even if each of the files contains
+41MB of data, the overall size of the repository is still 41MB. Both of the
+files correspond to the same `inode` (a file metadata record) in the file
 system. Refer to
 [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization) for
 more details.
@@ -119,18 +119,23 @@ $ du -sh .
  41M .
 ```
 
+Note that `ls -i` prints the index number(78483929) of each file and inode for
+`data/Posts.xml.zip` and `.dvc/cache/ec/88519f8465218abb23ce0e0e8b1384` remained
+same.
+
 ## Running commands
 
 Once data source files are in the workspace you can start processing the data
 and train ML models out of the data files. DVC helps you to define steps of your
-ML process and pipe them together into an ML **pipeline**.
+ML process and pipe them together into a ML
+[pipeline](/doc/get-started/pipeline).
 
 `dvc run` executes any command that you pass into it as a list of parameters.
 However, the command to run alone is not as interesting as its role within a
 pipeline, so we'll need to specify its dependencies and output files. We call
-this a pipeline **stage**. Dependencies may include input files and directories,
-and the actual source script to run. Outputs are files written to by the
-command, if any.
+this a pipeline [stage](/doc/commands-reference/run). Dependencies may include
+input files and directories, and the actual source script to run. Outputs are
+files written to by the command, if any.
 
 1. Option `-d file.tsv` should be used to specify a dependency file or
    directory. The dependency can be a regular file from a repository or a data
@@ -181,17 +186,16 @@ and does some additional work if the command was successful:
 
 1. DVC transforms all the outputs `-o` files into data files. It is like
    applying `dvc add` for each of the outputs. As a result, all the actual data
-   files content goes to the cache directory `.dvc/cache` and each of the
-   filenames will be added to `.gitignore`.
+   files content goes to the cache directory `.dvc/cache` and each of the file
+   names will be added to `.gitignore`.
 
-2. For reproducibility purposes, DVC creates the `Posts.xml.dvc` DVC-file in the
-   workspace — the file with meta-information about the pipeline stage, see
-   [DVC File Format](/doc/user-guide/dvc-file-format). By default, DVC assigns a
-   name to the DVC-file based on the first output file name, by adding the
-   `.dvc` file extension. This name can be changed by using the `-f` option, for
-   example by specifying `-f extract.dvc`.
+2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
+   file in the workspace with information about this pipeline stage. (See
+   [DVC-File Format](/doc/user-guide/dvc-file-format)). Note that the name of
+   this file could be specified by using the `-f` option, for example
+   `-f extract.dvc`.
 
-Let's take a look at the resulting DVC-file from the above example:
+Let's take a look at the resulting stage file created by `dvc run` above:
 
 ```dvc
 $ cat Posts.xml.dvc
@@ -230,8 +234,8 @@ Posts.xml
 
 The output file `Posts.xml` was transformed by DVC into a data file in
 accordance with the `-o` option. You can find the corresponding cache file with
-the checksum, which starts with `c1fa36d` as we can see in the DVC-file
-`Posts.xml.dvc`:
+the checksum, which starts with `c1fa36d` as we can see in the `Posts.xml.dvc`
+stage file:
 
 ```dvc
 $ ls .dvc/cache/
@@ -280,10 +284,10 @@ Reproducing 'Posts-test.tsv.dvc':
 Positive size 2049, negative size 97951
 ```
 
-The result of the steps are two DVC-files corresponding to each of the commands
-`Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file was
-created. This type of file should not be tracked by Git. Let’s manually include
-this type of file into `.gitignore`.
+The result of the steps are two stage files corresponding to each of the
+commands: `Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file
+was created. This type of file should not be tracked by Git. Let’s manually
+include this type of file into `.gitignore`.
 
 ```dvc
 $ git status -s
@@ -302,9 +306,9 @@ $ git add .
 $ git commit -m "Process to TSV and separate test and train"
 ```
 
-Let’s run and commit the following steps of the pipeline. Define the feature
-extraction step which takes train and test TSVs and generates corresponding
-matrix files:
+Let’s run and save the following commands for our pipeline. First, define the
+feature extraction stage, that takes `train` and `test` TSVs and generates
+corresponding matrix files:
 
 ```dvc
 $ dvc run -d code/featurization.py -d code/conf.py \
@@ -345,15 +349,18 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-The model evaluation step is the last one. To make it a reproducibility goal by
-default we specify a DVC-file named `Dvcfile`. This will be discussed in the
-next chapter in more details.
+> Note that using `-f Dvcfile` with `dvc run` above isn't necessary as the
+> default stage file name is `Dvcfile` when there are no outputs (option `-o`).
+
+The model evaluation step is the last one. To help in the pipeline's
+reproducibility, we specify stage file name `Dvcfile`. (This will be discussed
+in more detail in the next chapter.)
 
 Note that the output file `data/eval.txt` was transformed by DVC into a metric
 file in accordance with the `-M` option.
 
-The result of the last three run commands execution is three DVC-files and a
-modified .gitignore file. All the changes should be committed into Git.
+The result of the last three `dvc run` commands execution is three stage files
+and a modified .gitignore file. All the changes should be committed into Git:
 
 ```dvc
 $ git status -s
@@ -386,4 +393,4 @@ focus is DVC, not ML modeling and we use a relatively small dataset without any
 advanced ML techniques.
 
 In the next chapter we will try to improve the metrics by changing our modeling
-code and using reproducibility in the pipeline regeneration.
+code and using reproducibility in our pipeline regeneration.

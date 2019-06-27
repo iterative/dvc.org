@@ -32,12 +32,14 @@ var _javascript = function(hljs) {
         },
         contains: [
           {
-            begin: / dvc [a-z]+/,
+            begin: / dvc [a-z\-]+/,
+            lexemes: '[a-z-]+',
             keywords: {
               built_in:
-                'help dvc init add import checkout run pull push fetch status repro ' +
-                'remove move gc config remote metrics install root lock unlock ' +
-                'pipeline destroy unprotect commit cache2 diff tag pkg version'
+                'help dvc init add checkout run pull push fetch status repro ' +
+                'remove move gc config remote metrics install root lock ' +
+                'unlock pipeline destroy unprotect commit cache diff tag pkg ' +
+                'version import-url get-url import get'
             },
             className: 'strong'
           }

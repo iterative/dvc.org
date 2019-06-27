@@ -5,13 +5,11 @@ Find and print project metrics.
 ## Synopsis
 
 ```usage
-usage: dvc metrics show [-h] [-q] [-v]
-                        [-t TYPE] [-x XPATH]
-                        [-a, --all-branches], [-T, --all-tags]
-                        [path]
+usage: dvc metrics show [-h] [-q | -v] [-t TYPE] [-x XPATH] [-a] [-T]
+                        [-R] [path]
 
 positional arguments:
-  path                  Path to a metric file or directory.
+  path                  Path to a metric file or a directory.
 ```
 
 ## Description
@@ -25,7 +23,7 @@ regular metric file. If `path` is a directory, recursively search and process
 all metric files in path.
 
 If metric type is specified (via `-t`) it overrides the type and xpath defined
-(if any) in the corresponding DVC file (usually, using `dvc metrics modify`
+(if any) in the corresponding DVC-file (usually, using `dvc metrics modify`
 command). If `-t` is not specified `-x` is ignored. The type can be detected by
 the file extension automatically if the type is supported.
 

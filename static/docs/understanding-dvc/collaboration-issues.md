@@ -8,7 +8,7 @@ the community and the industry now, when ML algorithms and methods are no longer
 simply "tribal knowledge" but are still difficult to implement, reuse, and
 manage.
 
-To make progress in this challenge, many areas of the ML experimentation process
+To make progress on this challenge, many areas of the ML experimentation process
 need to be formalized. Many common questions need to be answered in an unified,
 principled way:
 
@@ -19,9 +19,10 @@ principled way:
 
 2. Experiment time log.
 
-   - How do you track which of the hyperparameter changes contributed the most
-     to producing your target metric? How do you monitor the extent of each
-     change?
+   - How do you track which of the
+     [hyperparameter](<https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)>)
+     changes contributed the most to producing your target metric? How do you
+     monitor the extent of each change?
 
 3. Navigating through experiments.
 
@@ -33,13 +34,13 @@ principled way:
 
 4. Reproducibility.
 
-   - How do you rerun a model's evaluation without re-training the model and
+   - How do you run a model's evaluation again without re-training the model and
      preprocessing a raw dataset?
 
 5. Managing and sharing large data files.
 
-   - How do you share models trained in a GPU environment with colleagues who do
-     not have access to a GPU?
+   - How do you share models trained in a GPU environment with colleagues who
+     don't have access to a GPU?
 
    - How do you share the entire 147 GB of your project, with all of its data
      sources, intermediate data files, and models?

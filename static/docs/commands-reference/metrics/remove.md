@@ -5,8 +5,7 @@ Keep file as an output, remove metric flag and stop tracking as a metric file.
 ## Synopsis
 
 ```usage
-usage: dvc metrics remove [-h] [-q] [-v]
-                          path
+usage: dvc metrics remove [-h] [-q | -v] path
 
 positional arguments:
   path           Path to a metric file.
@@ -15,14 +14,14 @@ positional arguments:
 
 ## Description
 
-This command searches for the corresponding DVC file for the metric file path
-provided (i.e. a DVC stage file that specifies one of its outputs a metric with
-the path provided, see `dvc metrics add` or `dvc run` `-m` and `-M` options) and
+This command searches for the corresponding DVC-file for the metric file `path`
+provided (i.e. a DVC-file that specifies one of its outputs is the file path in
+question – see `dvc metrics add` or `dvc run` with `-m` and `-M` options) and
 resets the metric flag for the provided output.
 
 It does not remove or delete the file provided. It only changes a flag in the
-corresponding `.dvc` file. It also keeps the file as an output of the
-corresponding stage.
+corresponding [DVC-file](/doc/user-guide/dvc-file-format). It also keeps the
+file as an output of the [stage](/doc/commands-reference/run) in question.
 
 ## Examples
 
@@ -74,7 +73,7 @@ $ dvc metrics remove metrics.tsv
 Saving information to 'metrics.tsv.dvc'.
 ```
 
-Let's check the stage file now:
+Let's check the same DVC-file now:
 
 ```yaml
 cmd: echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv

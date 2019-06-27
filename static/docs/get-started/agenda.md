@@ -18,7 +18,7 @@ The idea of the project is a simplified version of the
 given StackOverflow question. For example, we want one classifier which can
 predict a post that is about the Python language by tagging it `python`.
 
-![](https://dvc.org/static/img/example-flow-2x.png)
+![](/static/img/example-flow-2x.png)
 
 Let the NLP nature of the example not to discourage you from using DVC in other
 Data Science areas. There was no strong reason behind picking the NLP area. On

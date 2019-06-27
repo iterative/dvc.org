@@ -5,55 +5,65 @@ Install DVC hooks into the Git repository to automate certain common actions.
 ## Synopsis
 
 ```usage
-usage: dvc install [-h] [-q] [-v]
+usage: dvc install [-h] [-q | -v]
 ```
 
 ## Description
 
-As designed DVC combines an intelligent data repository with using a regular SCM
-like Git to store code and configuration files. With `dvc install` the two are
-more tightly integrated, to conveniently cause certain useful actions to happen
+DVC provides an intelligent data repository on top of a regular SCM repository
+like Git to store code and configuration files. With `dvc install`, the two are
+more tightly integrated in order to cause certain convenient actions to happen
 automatically.
 
 Namely:
 
-**Checkout** For any given SCM branch or tag, the SCM checks-out the DVC files
-corresponding to that branch or tag. The DVC files in turn refer to data files
-in the DVC cache by checksum. When switching from one SCM branch or tag to
-another the SCM retrieves the corresponding DVC files. By default that leaves
-the workspace in a state where the DVC files refer to data files other than what
-is currently in the workspace. The user at this point should run `dvc checkout`
-so that the data files will match the current DVC files.
+**Checkout**: For any given SCM branch or tag, Git checks out the
+[DVC-files](/doc/user-guide/dvc-file-format) corresponding to that version. The
+DVC-files in turn refer to data files in the DVC cache by checksum. When
+switching from one SCM branch or tag to another, the SCM retrieves the
+corresponding DVC-files. By default that leaves the workspace in a state where
+the DVC-files refer to data files other than what is currently in the workspace.
+The user at this point should run `dvc checkout` so that the data files will
+match the current DVC-files.
 
 The installed Git hook automates running `dvc checkout`.
 
-**Commit** When committing a change to the SCM repository, that change possibly
-requires rerunning the pipeline to reproduce the workspace results, which is a
-reminder to run `dvc repro`. Or there might be files not yet in the cache, which
-is a reminder to run `dvc commit`.
+**Commit**: When committing a change to the Git repository, that change possibly
+requires reproducing the corresponding [pipeline](/doc/get-started/pipeline)
+(with `dvc repro`) to regenerate the workspace results. Or there might be files
+not yet in the cache, which is a reminder to run `dvc commit`.
 
 The installed Git hook automates reminding the user to run either `dvc repro` or
 `dvc commit`.
 
-## Installed SCM hooks
+**Push**: While publishing changes to the Git remote repository with `git push`,
+it easy to forget that `dvc push` command usually needs to be run to save
+corresponding changes in data files and directories that are under DVC control
+to the DVC remote storage.
+
+The installed Git hook automates executing `dvc push`.
+
+## Installed Git hooks
 
 - Git `pre-commit` hook executes `dvc status` before `git commit` to inform the
   user about the workspace status.
 - Git `post-checkout` hook executes `dvc checkout` after `git checkout` to
   automatically synchronize the data files with the new workspace state.
+- Git `pre-push` hook executes `dvc push` before `git push` to upload files and
+  directories under DVC control to remote.
 
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - does not write anything to standard output. Exit with 0 if
-  no problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 
-To explore `dvc install` let's consider a simple workspace with several stages,
+To explore `dvc install` let's consider a simple pipeline with several stages:
 the example workspace used in the [Getting Started](/doc/get-started) tutorial.
 
 <details>
@@ -68,7 +78,8 @@ $ git clone https://github.com/iterative/example-get-started
 ```
 
 Second, let's install the requirements. But before we do that, we **strongly**
-recommend creating a virtual environment with `virtualenv` or a similar tool:
+recommend creating a virtual environment with
+[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool:
 
 ```dvc
 $ cd example-get-started
@@ -92,11 +103,11 @@ This data will be retrieved from a preconfigured remote cache.
 
 </details>
 
-## Example: Checkout both DVC and SCM
+## Example: Checkout both DVC and Git
 
 Let's start our exploration with the impact of `dvc install` on the
 `dvc checkout` command. Remember that switching from one SCM tag or branch to
-another changes the set of DVC files in the workspace, which then also changes
+another changes the set of DVC-files in the workspace, which then also changes
 the data files that should be in the workspace.
 
 With the Getting Started example workspace described above, let's first list the
@@ -150,11 +161,11 @@ Bottom line is returning the workspace to a normal state requires the command
 `git checkout master`.
 
 We also see that `dvc status` tells us about differences between the workspace
-and the data files currently in the workspace. Git changed the DVC files in the
+and the data files currently in the workspace. Git changed the DVC-files in the
 workspace, which changed references to data files. What `dvc status` did is
 inform us the data files in the workspace no longer matched the checksums in the
-DVC files. Running `dvc checkout` then checks out the corresponding data files,
-and now `dvc status` tells us the data files match the DVC files.
+DVC-files. Running `dvc checkout` then checks out the corresponding data files,
+and now `dvc status` tells us the data files match the DVC-files.
 
 ```dvc
 $ git checkout master
@@ -203,7 +214,7 @@ Pipeline is up to date. Nothing to reproduce.
 
 Look carefully at this output and it is clear that the `dvc checkout` command
 has indeed been run. As a result the workspace is up-to-date with the data files
-matching what is referenced by the DVC files.
+matching what is referenced by the DVC-files.
 
 ## Example: Showing DVC status on Git commit
 
@@ -253,8 +264,8 @@ Pipeline is up to date. Nothing to reproduce.
  5 files changed, 12 insertions(+), 12 deletions(-)
 ```
 
-After rerunning the DVC pipeline, of course the data files are in sync with the
-other files but we must now commit some files to the Git repository. Looking
-closely we see that `dvc status` is again run, informing us that the data files
-are synchronized with the statement: _Pipeline is up to date. Nothing to
-reproduce_.
+After reproducing this pipeline up to the "evaluate" stage, the data files are
+in sync with the code/config files, but we must now commit the changes to the
+Git repository. Looking closely we see that `dvc status` is run again, informing
+us that the data files are synchronized with the `Pipeline is up to date.`
+message.

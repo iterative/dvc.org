@@ -17,8 +17,8 @@ code into it:
 
 ### Expand to learn how to download on Windows
 
-Windows does not ship `wget` utility by default, so you'll need to use browser
-to download `code.zip`.
+Windows doesn't ship `wget` utility by default, so you'll need to use browser to
+download `code.zip`.
 
 </details>
 
@@ -32,7 +32,8 @@ $ git add code/
 $ git commit -m "download code"
 ```
 
-(Optional) It's highly recommended to initialize a virtual environment to keep
+(Optional) It's highly recommended to initialize a virtual environment with
+[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool to keep
 your global packages clean and untouched:
 
 ```dvc
@@ -52,7 +53,7 @@ $ pip install -r code/requirements.txt
 Now DVC software should be installed. The easiest way to install DVC is a system
 dependent package. DVC supports all common operating systems: Mac OS X, Linux
 and Windows. You can find the latest version of the package on the
-[home page](https://dvc.org).
+[home page](/).
 
 Alternatively, you can install DVC by Python package manager — PIP if you use
 Python:
@@ -64,7 +65,7 @@ $ pip install dvc
 ## Initialize
 
 DVC works on top of Git repositories. You run DVC initialization in a repository
-directory to create DVC metafiles and directories.
+directory to create DVC meta files and directories.
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`
 and `.gitignore` files and `cache` directory. These files and directories are
@@ -104,4 +105,4 @@ that the cache directory is not under Git control — this is your local directo
 and you cannot push it to any Git remote.
 
 For more information refer to
-[DVC Files and Directories](https://dvc.org/doc/user-guide/dvc-files-and-directories).
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories).

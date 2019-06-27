@@ -13,8 +13,8 @@ $ mkdir example-get-started && cd example-get-started
 $ git init
 ```
 
-Run DVC initialization in a repository directory to create DVC metafiles and
-directories:
+Run DVC initialization in a repository directory to create the DVC meta files
+and directories:
 
 ```dvc
 $ dvc init
