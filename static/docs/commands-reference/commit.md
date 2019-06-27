@@ -1,7 +1,7 @@
 # commit
 
-Record changes to the repository by updating DVC-files and saving outputs to
-cache.
+Record changes to the repository by updating
+[DVC-files](/doc/user-guide/dvc-file-format) and saving outputs to cache.
 
 ## Synopsis
 
@@ -10,7 +10,8 @@ usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R]
                   [targets [targets ...]]
 
 positional arguments:
-  targets          DVC files.
+  targets          DVC-files to commit. Optional. (Finds all
+                   DVC-files in the workspace by default.)
 ```
 
 ## Description
@@ -69,11 +70,10 @@ It handles that last step of adding the file to the DVC cache.
   backward from the target stage(s) in the corresponding pipeline(s). This means
   DVC will not commit files referenced in later stage(s) than `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain directory path(s).
-  Determines the files to commit by searching each target directory and its
-  subdirectories for DVC-files to inspect. Along with providing `targets`, or
-  `targets` and `--with-deps`, this is another way to limit the scope of
-  DVC-files to commit.
+- `-R`, `--recursive` - `targets` is expected to contain at least one directory
+  path for this option to have effect. Determines the files to commit by
+  searching each target directory and its subdirectories for DVC-files to
+  inspect.
 
 - `-f`, `--force` - commit data even if checksums for dependencies or outputs
   did not change.

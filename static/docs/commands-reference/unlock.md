@@ -9,7 +9,7 @@ Unlock [DVC-file](/doc/user-guide/dvc-file-format)
 usage: dvc unlock [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-  targets        DVC-files.
+  targets        DVC-files to unlock.
 ```
 
 ## Options
