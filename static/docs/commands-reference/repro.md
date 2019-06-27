@@ -13,7 +13,7 @@ usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c CWD] [-m] [--dry] [-i]
                  [--downstream] [targets [targets ...]]
 
 positional arguments:
-  targets               DVC file to reproduce (default - 'Dvcfile').
+  targets               DVC-file to reproduce (default - 'Dvcfile').
 ```
 
 ## Description

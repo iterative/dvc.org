@@ -1,7 +1,7 @@
 # commit
 
-Record changes to the repository by updating DVC-files and saving outputs to
-cache.
+Record changes to the repository by updating
+[DVC-files](/doc/user-guide/dvc-file-format) and saving outputs to cache.
 
 ## Synopsis
 
@@ -10,7 +10,7 @@ usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R]
                   [targets [targets ...]]
 
 positional arguments:
-  targets          DVC files.
+  targets          DVC-files.
 ```
 
 ## Description

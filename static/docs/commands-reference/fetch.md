@@ -12,7 +12,7 @@ usage: dvc fetch [-h] [-q | -v] [-j JOBS] [--show-checksums]
                  [targets [targets ...]]
 
 positional arguments:
-  targets               DVC files.
+  targets               DVC-files.
 ```
 
 ## Description
@@ -22,7 +22,7 @@ the local cache, but not directly into the workspace. This makes the data files
 available for linking (or copying) into the workspace. (Refer to
 [dvc config cache.type](/doc/commands-reference/config#cache).) Along with
 `dvc checkout`, it's performed automatically by `dvc pull` when the target
-DVC-files are not already in the local cache:
+[DVC-files](/doc/user-guide/dvc-file-format) are not already in the local cache:
 
 ```
 Controlled files             Commands

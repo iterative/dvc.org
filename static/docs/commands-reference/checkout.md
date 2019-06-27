@@ -9,7 +9,7 @@ usage: dvc checkout [-h] [-q | -v] [-d] [-f] [-R]
                     [targets [targets ...]]
 
 positional arguments:
-  targets          DVC files.
+  targets          DVC-files.
 ```
 
 ## Description
@@ -86,7 +86,7 @@ be pulled from a remote cache using `dvc pull`.
   inspect.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
-  current set of DVC files with SCM commands like `git checkout` can result in
+  current set of DVC-files with SCM commands like `git checkout` can result in
   the need for DVC to remove files which should not exist in the current state
   and are missing in the local cache (they are not committed in DVC terms). This
   option controls whether the user will be asked to confirm these files removal.

@@ -11,7 +11,7 @@ usage: dvc push [-h] [-q | -v] [-j JOBS] [--show-checksums]
                 [targets [targets ...]]
 
 positional arguments:
-  targets               DVC files.
+  targets               DVC-files.
 ```
 
 ## Description

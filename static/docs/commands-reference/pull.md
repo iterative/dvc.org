@@ -2,7 +2,8 @@
 
 Downloads missing files and directories from
 [remote storage](/doc/commands-reference/remote) to the local cache based on
-DVC-files in the workspace, then links the downloaded files into the workspace.
+[DVC-files](/doc/user-guide/dvc-file-format) in the workspace, then links the
+downloaded files into the workspace.
 
 ## Synopsis
 
@@ -12,7 +13,7 @@ usage: dvc pull [-h] [-q | -v] [-j JOBS] [--show-checksums]
                 [targets [targets ...]]
 
 positional arguments:
-  targets               DVC files.
+  targets               DVC-files.
 ```
 
 ## Description
