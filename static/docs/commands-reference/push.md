@@ -89,11 +89,9 @@ to push.
   backward from the target stage(s) in the corresponding pipeline(s). This means
   DVC will not push files referenced in later stage(s) than `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain directory path(s).
-  Determines the files to upload by searching each target directory and its
-  subdirectories for DVC-files to inspect. Along with providing a `target`, or
-  `target` and `--with-deps`, this is another way to limit the scope of
-  DVC-files to upload.
+- `-R`, `--recursive` - `targets` is expected to contain at least one directory
+  path for this option to have effect. Determines the files to push by searching
+  each target directory and its subdirectories for DVC-files to inspect.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while uploading files to the remote cache. The effect is to control the number

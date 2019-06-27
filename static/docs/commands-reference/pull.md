@@ -79,11 +79,9 @@ reflinks or hardlinks to put it in the workspace without copying. See
   backward from the target stage(s) in the corresponding pipeline(s). This means
   DVC will not pull files referenced in later stage(s) than `targets`.
 
-- `-R`, `--recursive` - `targets` values is expected to be a directory path.
-  Determines the files to download by searching the named directory and its
-  subdirectories for DVC-files to download data for. Along with providing a
-  `target`, or `target` along with `--with-deps` it is yet another way to cut
-  the scope of DVC-files to download.
+- `-R`, `--recursive` - `targets` is expected to contain at least one directory
+  path for this option to have effect. Determines the files to pull by searching
+  each target directory and its subdirectories for DVC-files to inspect.
 
 - `-f`, `--force` - does not prompt when removing working directory files, which
   occurs during the process of updating the workspace. This option surfaces

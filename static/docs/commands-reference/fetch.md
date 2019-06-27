@@ -83,9 +83,10 @@ specified in DVC-files currently in the workspace are considered by `dvc fetch`
   backward from the target stage(s) in the corresponding pipeline(s). This means
   DVC will not fetch files referenced in later stage(s) than `targets`.
 
-- `-R`, `--recursive` - this option tells DVC that `targets` are directories
-  (not DVC-files), and to traverse them recursively. All DVC-files found will be
-  read in order to determine the set of data files to fetch.
+- `-R`, `--recursive` - `targets` is expected to contain at least one directory
+  path for this option to have effect. Determines the files to fetch by
+  searching each target directory and its subdirectories for DVC-files to
+  inspect.
 
 - `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
   the downloading of files from the remote. Using more jobs may improve the
