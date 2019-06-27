@@ -18,9 +18,10 @@ positional arguments:
 ## Description
 
 A data pipeline, in general, is a chain of commands that process data files. It
-produces intermediate data and a final result. Machine Learning (ML) pipelines
-typically start a with large raw datasets, include featurization and training
-intermediate stages, and produce a final model, as well as certain metrics.
+produces intermediate data and a final result. For example, Machine Learning
+(ML) pipelines typically start a with large raw datasets, include featurization
+and training intermediate stages, and produce a final model, as well as certain
+metrics.
 
 In DVC, pipeline stage files and commands, their data I/O, interdependencies,
 and results (intermediate or final) are defined with `dvc add` and `dvc run`,

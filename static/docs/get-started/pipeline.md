@@ -1,10 +1,11 @@
 # Pipeline
 
-This is the biggest difference between DVC and other version control tools that
-can handle large data files, e.g. `git lfs`. By running `dvc run` multiple
-times, and specifying outputs of a command (stage) as dependencies in another
-one, we can describe a sequence of commands that gets to a desired result. (This
-is what we call a data pipeline.)
+Support for [pipelines](/doc/commands-reference/pipeline) is the biggest
+difference between DVC and other version control tools that can handle large
+data files (e.g. `git lfs`). By using `dvc run` multiple times, and specifying
+outputs of a command (stage) as dependencies in another one, we can describe a
+sequence of commands that gets to a desired result. This is what we call a
+**data pipeline** or computational graph.
 
 Lets create a second stage (after `prepare.dvc`, created in the previous
 chapter) to perform feature extraction:
