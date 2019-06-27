@@ -23,7 +23,7 @@ avoid copying large files from NFS server to the machine and DVC will manage the
 links from the workspace to cache. For more information, visit
 [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning).
 
-### Preparation
+## Preparation
 
 First configure NFS server and client machine, following this
 [link](https://vitux.com/install-nfs-server-and-client-on-ubuntu/).
@@ -54,7 +54,7 @@ $ mkdir -p /mnt/dataset/
 From `/mnt/dataset/` you will be able to access `/storage` directory present in
 host server from your local machine.
 
-### Configuring Cache location
+## Configuring Cache location
 
 After mounting the shared directory on client side. Assuming project code is
 present in `/home/user/project1`. Let's initialize a `dvc repo`.
@@ -99,7 +99,7 @@ For more information on `config` options, visit
 
 Also, let git know about the changes we have done.
 
-#### Add data to DVC cache
+## Add data to DVC cache
 
 Now, add first version of the dataset into the DVC cache (this is done once for
 a dataset).
