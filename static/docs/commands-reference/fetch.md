@@ -12,7 +12,8 @@ usage: dvc fetch [-h] [-q | -v] [-j JOBS] [--show-checksums]
                  [targets [targets ...]]
 
 positional arguments:
-  targets               DVC files.
+  targets        Limit command scope to these DVC-files. Using -R,
+                 directories to search DVC-files in can also be given.
 ```
 
 ## Description
@@ -22,7 +23,7 @@ the local cache, but not directly into the workspace. This makes the data files
 available for linking (or copying) into the workspace. (Refer to
 [dvc config cache.type](/doc/commands-reference/config#cache).) Along with
 `dvc checkout`, it's performed automatically by `dvc pull` when the target
-DVC-files are not already in the local cache:
+[DVC-files](/doc/user-guide/dvc-file-format) are not already in the local cache:
 
 ```
 Controlled files             Commands
@@ -83,9 +84,10 @@ specified in DVC-files currently in the workspace are considered by `dvc fetch`
   backward from the target stage(s) in the corresponding pipeline(s). This means
   DVC will not fetch files referenced in later stage(s) than `targets`.
 
-- `-R`, `--recursive` - this option tells DVC that `targets` are directories
-  (not DVC-files), and to traverse them recursively. All DVC-files found will be
-  read in order to determine the set of data files to fetch.
+- `-R`, `--recursive` - `targets` is expected to contain at least one directory
+  path for this option to have effect. Determines the files to fetch by
+  searching each target directory and its subdirectories for DVC-files to
+  inspect.
 
 - `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
   the downloading of files from the remote. Using more jobs may improve the

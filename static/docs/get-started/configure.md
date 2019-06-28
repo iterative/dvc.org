@@ -51,7 +51,8 @@ currently supports seven types of remotes:
 > valid for `pip install` option only. Other ways to install DVC already include
 > support for all remotes.
 
-For example, to setup an S3 remote we would use something like:
+For example, to setup an S3 remote we would use something like (make sure that
+`mybucket` exists):
 
 ```dvc
 $ dvc remote add -d s3remote s3://mybucket/myproject

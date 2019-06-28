@@ -20,16 +20,19 @@ positional arguments:
 
 ## Description
 
-`dvc run` provides an interface to build a computational graph (aka pipeline).
-It's a way to describe commands, data inputs and intermediate results that went
-into a model (or other data results). By explicitly specifying a list of
-dependencies (with `-d` option) and outputs (with `-o`, `-O`, `-m`, or `-M`
-options) DVC can connect individual stages (commands) into a directed acyclic
-graph (DAG). `dvc repro` provides an interface to check state and reproduce this
-graph later. This concept is similar to the one of the `Makefile` but DVC
-captures data and caches data artifacts along the way. Check this
-[example](/doc/get-started/example-pipeline) to learn more and try to build a
-pipeline.
+`dvc run` provides an interface to build a computational graph (a.k.a.
+pipeline). It's a way to describe commands, data inputs and intermediate results
+that go into creating a ML model (or other data results). By explicitly
+specifying a list of dependencies (with `-d` option) and outputs (with `-o`,
+`-O`, `-m`, or `-M` options) DVC can connect each individual stage (command)
+into a directed acyclic graph (DAG). All the remainder of command-line input
+provided to `dvc run` after the optional arguments (`-` or `--` dashed options)
+will become the required `command` argument.
+
+> Remember to wrap the `command` with `"` quotes if there are special characters
+> in it like `|` (pipe) or `<`, `>` (redirection) that would otherwise apply to
+> the entire `dvc run` command. E.g.
+> `dvc run -d script.sh "script.sh > /dev/null 2>&1"`
 
 Unless the `-f` options is used, by default the DVC-file name generated is
 `<file>.dvc`, where `<file>` is file name of the first output (`-o`, `-O`, `-m`,
@@ -41,6 +44,12 @@ dependencies and outputs to connect different stages it checks computational
 graph integrity properties before creating a new stage. For example, for every
 output there should be only one stage that explicitly specifies it. There should
 be no cycles, etc.
+
+Note that `dvc repro` provides an interface to check state and reproduce this
+graph later. This concept is similar to the one of the `Makefile` but DVC
+captures data and caches data artifacts along the way. Check this
+[example](/doc/get-started/example-pipeline) to learn more and try to build a
+pipeline.
 
 ## Options
 

@@ -18,14 +18,15 @@ It will find and print all metric files (default) or a specified metric file in
 the current branch (if `path` is provided) or across all branches/tags (if `-a`
 or`-T` specified respectively).
 
-Optional `path` should be path to a directory (if `-R` options specified) or a
-regular metric file. If `path` is a directory, recursively search and process
-all metric files in path.
+The optional `path` argument can represent a DVC metric file or a directory. If
+`path` is a directory, recursively search and process all metric files in it
+with the `-R` option.
 
-If metric type is specified (via `-t`) it overrides the type and xpath defined
-(if any) in the corresponding DVC-file (usually, using `dvc metrics modify`
-command). If `-t` is not specified `-x` is ignored. The type can be detected by
-the file extension automatically if the type is supported.
+If metric type is specified (via `-t`) it overrides the type and `--xpath`
+defined (if any) in the corresponding DVC-file (usually, using
+`dvc metrics modify` command). If `-t` is not specified `-x` is ignored. The
+type can be detected by the file extension automatically if the type is
+supported.
 
 ## Options
 
@@ -71,11 +72,9 @@ the file extension automatically if the type is supported.
   can be used to compare different variants of an experiment if tags are used
   for checkpoints.
 
-- `-R`, `--recursive` - if `path` is a directory, recursively search and process
-  all metric files in path. If `path` is a file it is processed as a regular
-  metric file. This is done to tolerate the difference across branches or tags
-  when `-a` or `-T` options are used. For example, if `path` is a directory in
-  one branch and a regular file in another.
+- `-R`, `--recursive` - `path` is expected to be a directory for this option to
+  have effect. Determines the metric files to show by searching each target
+  directory and its subdirectories for DVC-files to inspect.
 
 ## Examples
 

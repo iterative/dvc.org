@@ -9,7 +9,8 @@ usage: dvc checkout [-h] [-q | -v] [-d] [-f] [-R]
                     [targets [targets ...]]
 
 positional arguments:
-  targets          DVC files.
+  targets          DVC-files to checkout. Optional. (Finds all
+                   DVC-files in the workspace by default.)
 ```
 
 ## Description
@@ -80,10 +81,13 @@ be pulled from a remote cache using `dvc pull`.
   backward from the target stage(s) in the corresponding pipeline(s). This means
   DVC will not checkout files referenced in later stage(s) than `targets`.
 
-- `-R`, `--recursive` - performs recursive checkout for target directory.
+- `-R`, `--recursive` - `targets` is expected to contain at least one directory
+  path for this option to have effect. Determines the files to checout by
+  searching each target directory and its subdirectories for DVC-files to
+  inspect.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
-  current set of DVC files with SCM commands like `git checkout` can result in
+  current set of DVC-files with SCM commands like `git checkout` can result in
   the need for DVC to remove files which should not exist in the current state
   and are missing in the local cache (they are not committed in DVC terms). This
   option controls whether the user will be asked to confirm these files removal.

@@ -4,9 +4,6 @@ Show [stages](/doc/commands-reference/run) in a pipeline that lead to the
 specified stage. By default it lists
 [DVC-files](/doc/user-guide/dvc-file-format).
 
-The `-c` and `-o` options allow to list or visualize a pipeline commands or data
-files flow instead.
-
 ## Synopsis
 
 ```usage
@@ -15,8 +12,19 @@ usage: dvc pipeline show [-h] [-q | -v] [-c | -o] [-l] [--ascii]
                          [targets [targets ...]]
 
 positional arguments:
-  targets         DVC-files. 'Dvcfile' by default.
+  targets         DVC-files to show pipeline for. Optional.
+                  (Finds all DVC-files in the workspace by default.)
 ```
+
+## Description
+
+`dvc show` displays the stages of a pipeline up to one or more target DVC-files
+(stage files). If specific `targets` are omitted, `Dvcfile` will be assumed. The
+`-c` and `-o` options allow to list the corresponding commands or data file flow
+instead of stages.
+
+> Note that the stages in these lists are in descending order, that is, from
+> first to last.
 
 ## Options
 
@@ -36,13 +44,19 @@ positional arguments:
 
 - `-l`, `--locked` - print locked stages only. See `dvc lock`.
 
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
+
+- `-v`, `--verbose` - displays detailed tracing information.
+
 ## Examples
 
 - Default mode: show stage files that `output.dvc` recursively depends on:
 
   ```dvc
   $ dvc pipeline show output.dvc
-
   raw.dvc
   data.dvc
   output.dvc
@@ -52,7 +66,6 @@ positional arguments:
 
   ```dvc
   $ dvc pipeline show output.dvc --commands
-
   download.py s3://mybucket/myrawdata raw
   cleanup.py raw data
   process.py data output
