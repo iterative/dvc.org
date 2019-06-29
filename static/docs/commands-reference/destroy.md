@@ -31,7 +31,7 @@ DVC repository destruction.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Example: Default Cache directory
 
 ```dvc
 $ dvc init
@@ -52,7 +52,7 @@ $ ls -a
 .git code.py foo
 ```
 
-#### Cache directory is changed from default
+## Example: External Cache directory
 
 By default, the cache location is `.dvc/cache`. Let's change the cache location
 to `/mnt/cache` and then execute `dvc destroy` command.
