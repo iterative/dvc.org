@@ -54,6 +54,8 @@ This command modifies a `remote` section in the DVC
 
 ## Examples
 
+The following are the types and of remotes (protocols) supported:
+
 <details>
 
 ### Click for AWS S3 available options

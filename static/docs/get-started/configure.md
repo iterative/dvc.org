@@ -32,8 +32,8 @@ $ git commit .dvc/config -m "initialize DVC local remote"
 > [use cases](/doc/use-cases), other "more remote" types of remotes will be
 > required.
 
-Adding a remote should be specified by both its type prefix and its path. DVC
-currently supports seven types of remotes:
+Adding a remote should be specified by both its type prefix (protocol) and its
+path. DVC currently supports seven types of remotes:
 
 - `local` - Local directory
 - `s3` - Amazon Simple Storage Service
@@ -41,7 +41,7 @@ currently supports seven types of remotes:
 - `azure` - Azure Blob Storage
 - `ssh` - Secure Shell
 - `hdfs` - The Hadoop Distributed File System
-- `http` - Support for HTTP and HTTPS protocol
+- `http` - HTTP and HTTPS protocols
 
 > Depending on the [remote storage](/doc/commands-reference/remote) type you
 > plan to use to keep and share your data you might need to specify one of the

@@ -1,8 +1,8 @@
 # import-url
 
-Import file from any supported URL (it could be `http://`, as well as `s3://`,
-`ssh://`, and other supported external storage URLs) or local directory to local
-workspace and track changes in remote file or directory.
+Import file from any supported URL (for example `http://`, `s3://`, `ssh://`, or
+other supported protocols) or local directory to local workspace and track
+changes in remote file or directory.
 
 ## Synopsis
 
@@ -39,7 +39,7 @@ dependency. The `url` argument should provide the location of the data to be
 imported, while `out` is used to specify the (path and) name of the imported
 data file or directory in the workspace.
 
-DVC supports several types of (local or) remote locations:
+DVC supports several types of (local or) remote locations (protocols):
 
 | Type     | Discussion                                              | URL format                                 |
 | -------- | ------------------------------------------------------- | ------------------------------------------ |

@@ -18,7 +18,7 @@ usage: dvc remote add [-h] [--global] [--system] [--local] [-q | -v]
 
 positional arguments:
   name           Name of the remote.
-  url            URL. (See supported URLs below.)
+  url            URL. (See supported URLs in the examples below.)
 ```
 
 ## Description
@@ -78,6 +78,8 @@ Use `dvc config` to unset/change the default remote as so:
 - `-f`, `--force` - to overwrite existing remote with new `url` value.
 
 ## Examples
+
+The following are the types and of remotes (protocols) supported:
 
 <details>
 
