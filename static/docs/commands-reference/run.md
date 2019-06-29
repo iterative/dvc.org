@@ -149,7 +149,7 @@ pipeline.
 - `--outs-persist` - the same as `-o` except that outputs will
   persist after multiple execution of `dvc repro` command.
 
-- `-outs-persist-no-cache`, `--OUTS_PERSIST_NO_CACHE` - the same as `-O` except
+- `--outs-persist-no-cache` - the same as `-O` except
   that outputs will persist after multiple execution of `dvc repro` command.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
