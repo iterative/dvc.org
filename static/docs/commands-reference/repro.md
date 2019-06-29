@@ -80,6 +80,9 @@ specified), and updates stage files with the new checksum information.
   file(s) belong(s) to. Use `dvc pipeline show <target>.dvc` to show the parent
   pipeline of a target stage.
 
+  - `-P`, `--all-pipelines` - reproduce the entire pipeline(s) for all the stage
+    file(s) present in `DVC` repository.
+
 - `--ignore-build-cache` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B` even if `B` was previously executed with the
   same inputs from `A` (cached). It might be useful when we have a common
