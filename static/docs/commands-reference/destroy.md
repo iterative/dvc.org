@@ -57,12 +57,21 @@ $ ls -a
 By default, the cache location is `.dvc/cache`. Let's change the cache location
 to `/mnt/cache` and then execute `dvc destroy` command.
 
+Change the cache directory to `/mnt/cache`.`dvc cache dir` changed the location
+of cache storage to exernal location. For more information on `dvc cache` visit
+[here](/doc/command-reference/cache-dir).
+
 ```dvc
 $ dvc init
 $ echo foo > foo
 $ dvc cache dir /mnt/cache
 $ dvc add foo
 
+```
+
+Content of `DVC repo` and `/mnt/cache` is:
+
+```dvc
 $ ls -a
 
 .dvc .git code.py foo foo.dvc
@@ -74,7 +83,13 @@ $ ls - aR /mnt/cache
 
 /mnt/cache/d3/:
 . .. b07384d113edec49eaa6238ad5ff00
+```
 
+`dvc destroy` command removed DVC-files, and the entire `.dvc/` meta directory
+from the current DVC workspace. But the cache files that are present in the
+`/mnt/cache` directory still persists.
+
+```dvc
 $ dvc destroy
 
 This will destroy all information about your pipelines, all data files, as well as cache in .dvc/cache.
@@ -92,9 +107,4 @@ yes
  . .. b07384d113edec49eaa6238ad5ff00
 ```
 
-After changing the default cache location with `dvc cache dir` to `/mnt/cache`.
-
-`dvc destroy` command removed DVC-files, and the entire `.dvc/` meta directory
-from the current DVC workspace. But the cache files that are present in the
-`/mnt/cache` directory still persists. There are no changes or deletion done
-with the cache file.
+There are no changes or deletion done with the cache file.
