@@ -146,7 +146,7 @@ pipeline.
 
   > The `dvc status` command will mention that the file is `not in cache`.
 
-- `-outs-persist`, `--OUTS_PERSIST` - the same as `-o` except that outputs will
+- `--outs-persist` - the same as `-o` except that outputs will
   persist after multiple execution of `dvc repro` command.
 
 - `-outs-persist-no-cache`, `--OUTS_PERSIST_NO_CACHE` - the same as `-O` except
