@@ -1,4 +1,4 @@
-# modify
+# metrics modify
 
 Modify metric settings (like type, path expression that is used to parse it,
 etc).

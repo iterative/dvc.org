@@ -1,4 +1,4 @@
-# show
+# metrics show
 
 Find and print project metrics.
 

@@ -1,4 +1,4 @@
-# add
+# metrics add
 
 Tag the file located at `path` as a metric file.
 

@@ -1,4 +1,4 @@
-# dir
+# cache dir
 
 Set/unset the cache directory location intuitively (compared to using
 `dvc config cache`).
