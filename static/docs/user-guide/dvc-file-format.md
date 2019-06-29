@@ -34,7 +34,7 @@ outs:
 locked: True
 
 # Comments like this line persist through multiple executions of
-# dvc repro/commit but not through dvc run/add/import commands.
+# dvc repro/commit but not through dvc run/add/import-url commands.
 
  meta: # Special key to contain arbitary user data
   name: John

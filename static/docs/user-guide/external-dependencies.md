@@ -28,6 +28,10 @@ $ dvc run -d /home/shared/data.txt \
           cp /home/shared/data.txt data.txt
 ```
 
+> ```yml
+> TODO: What does the DVC-file looks like?
+> ```
+
 ### Amazon S3
 
 ```dvc
@@ -90,7 +94,7 @@ $ dvc run -d remote://example/data.txt \
 Please refer to `dvc remote add` for more details like setting up access
 credentials for certain remotes.
 
-## Using import
+## Using import-url
 
 In the previous command examples, downloading commands were used: `aws s3 cp`,
 `scp`, `wget`, etc. `dvc import-url` simplifies the downloading part for all the

@@ -27,12 +27,12 @@ Examples:
 
 DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to an
 external data location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such a DVC
-file, the `deps` section specifies a remote URL, and the `outs` section lists
-the corresponding local path in the workspace. It records enough data from the
-remote file or directory to enable DVC to efficiently check it to determine if
-the local copy is out of date. DVC uses this remote URL to download the data to
-the workspace initially, and to re-download it upon changes.
+[External Dependencies](/doc/user-guide/external-dependencies). In such a
+DVC-file, the `deps` section specifies a remote URL, and the `outs` section
+lists the corresponding local path in the workspace. It records enough data from
+the remote file or directory to enable DVC to efficiently check it to determine
+if the local copy is out of date. DVC uses this remote URL to download the data
+to the workspace initially, and to re-download it upon changes.
 
 The `dvc import-url` command helps the user create such an external data
 dependency. The `url` argument should provide the location of the data to be
@@ -87,7 +87,7 @@ from having to install CLI tools for each service.
 
 When DVC inspects a DVC-file, its dependencies will be checked to see if any
 have changed. A changed dependency will appear in the `dvc status` report,
-indicating the need to reproduce this import stage. When DVC inspects an
+indicating the need to reproduce this imported stage. When DVC inspects an
 external dependency, it uses a method appropriate to that dependency to test its
 current status.
 
