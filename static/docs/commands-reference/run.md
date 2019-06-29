@@ -144,13 +144,13 @@ pipeline.
   running different experiments and you don't want to fill up your cache with
   temporary files.
 
+  > The `dvc status` command will mention that the file is `not in cache`.
+
 - `-outs-persist`, `--OUTS_PERSIST` - the same as `-o` except that outputs will
   persist after multiple execution of `dvc repro` command.
 
 - `-outs-persist-no-cache`, `--OUTS_PERSIST_NO_CACHE` - the same as `-O` except
   that outputs will persist after multiple execution of `dvc repro` command.
-
-  > The `dvc status` command will mention that the file is `not in cache`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
