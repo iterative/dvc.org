@@ -52,6 +52,28 @@ The installed Git hook automates executing `dvc push`.
 - Git `pre-push` hook executes `dvc push` before `git push` to upload files and
   directories under DVC control to remote.
 
+For more information about git hooks, refer to the
+[git-scm documentation](https://git-scm.com/docs/githooks).
+
+## Disable Git hooks
+
+When you run `dvc install`, it creates three files under the `.git/hooks`
+directory:
+
+```
+.git/hooks
+├── post-checkout
+├── pre-commit
+└── pre-push
+```
+
+To disable them, you need to **remove** or **edit** those files (i.e.
+`rm .git/hooks/post-checkout`, `vim .git/hooks/pre-commit`).
+
+_If a hook already exists, DVC will try to append the corresponding content, so
+if you want to disable the DVC-specific behavior, you'll need to open the script
+and edit it._
+
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.
