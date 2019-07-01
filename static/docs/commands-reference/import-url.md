@@ -1,8 +1,12 @@
 # import-url
 
-Import file from any supported URL (for example `http://`, `s3://`, `ssh://`, or
-other supported protocols) or local directory to local workspace and track
-changes in remote file or directory.
+Download or copy file or directory from any supported URL (for example
+`http://`, `s3://`, `ssh://`, and other protocols) or local directory to the
+<abbr>workspace</abbr>, and track changes in the remote source with DVC. Creates
+a DVC-file.
+
+> See also `dvc get-url` which corresponds to the first step this command
+> performs (just download the ).
 
 ## Synopsis
 
@@ -16,7 +20,7 @@ positional arguments:
 
 ## Description
 
-In some cases it is convenient to add a data file or a directory to a workspace
+In some cases it is convenient to add a data file or directory to the workspace
 such that it will be automatically updated when the data source is updated.
 Examples:
 
@@ -56,9 +60,9 @@ DVC supports several types of (local or) remote locations (protocols):
 > is necessary to track if the specified remote file (URL) changed to download
 > it again.
 
-> `remote://myremote/path/to/file` notation just means that there is a DVC
+> `remote://myremote/path/to/file` notation just means that a DVC
 > [remote](/doc/commands-reference/remote) `myremote` is defined and when DVC is
-> running it internally expands this URL into a regular S3, SSH, GS, etc URL by
+> running, it internally expands this URL into a regular S3, SSH, GS, etc URL by
 > appending `/path/to/file` to the `myremote`'s configured base path.
 
 Another way to understand the `dvc import-url` command is as a short-cut for a
