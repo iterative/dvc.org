@@ -129,10 +129,10 @@ $ git commit -m "add dataset"
 
 ## Define stages
 
-Each [stage](/doc/user-guide/dvc-files-and-directories) – the parts of a
-pipeline – is described by providing a command to run, input data it takes and a
-list of output files. DVC is not Python or any other language specific and can
-wrap any command runnable via CLI.
+Each [stage](/doc/commands-reference/run) – the parts of a pipeline – is
+described by providing a command to run, input data it takes and a list of
+output files. DVC is not Python or any other language specific and can wrap any
+command runnable via CLI.
 
 - The first stage is to extract XML from the archive. Note that we don't need to
   run `dvc add` on `Posts.xml` below, `dvc run` saves the data automatically
