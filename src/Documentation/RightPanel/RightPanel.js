@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 import { LightButton } from '../LightButton'
+import SidebarMenuHelper from '../SidebarMenu/SidebarMenuHelper'
 
-export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
+export const RightPanel = ({ headings, githubLink }) => (
   <Wrapper>
     {!!headings.length ? (
       <>
@@ -17,7 +18,7 @@ export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
         <HeadingLink
           level={3}
           key={`link-${headingIndex}`}
-          onClick={() => scrollToLink('#' + slug)}
+          onClick={() => SidebarMenuHelper.scrollToLink('#' + slug)}
           href={`#${slug}`}
         >
           {text}

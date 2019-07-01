@@ -1,6 +1,7 @@
 import startCase from 'lodash.startcase'
 import kebabCase from 'lodash.kebabcase'
 import sidebar from '../sidebar'
+import { animateScroll, scroller } from 'react-scroll/modules/index'
 
 export const PATH_SEPARATOR = '/'
 export const PATH_TO_DOC = '/doc'
@@ -13,6 +14,55 @@ export default class SidebarMenuHelper {
     arr[path] = startCase(
       SidebarMenuHelper.removeExtensionFromFileName(filename)
     )
+  }
+
+  static initDocsearch = () => {
+    docsearch({
+      apiKey: '755929839e113a981f481601c4f52082',
+      indexName: 'dvc',
+      inputSelector: '#doc-search',
+      debug: false // Set debug to true if you want to inspect the dropdown
+    })
+  }
+
+  static autoScroll = () => {
+    const { hash } = window.location
+    if (hash) SidebarMenuHelper.scrollToLink(hash)
+  }
+
+  static scrollToLink = href => {
+    scroller.scrollTo(href.slice(1), {
+      duration: 600,
+      offset: -85,
+      delay: 0,
+      smooth: 'ease',
+      containerId: 'bodybag'
+    })
+  }
+
+  static scrollTop = () => {
+    animateScroll.scrollTo(0, {
+      duration: 300,
+      offset: -85,
+      delay: 0,
+      smooth: 'ease',
+      containerId: 'bodybag'
+    })
+  }
+
+  static parseHeadings = text => {
+    const headingRegex = /\n(## \s*)(.*)/g
+    const matches = []
+    let match
+    do {
+      match = headingRegex.exec(text)
+      if (match)
+        matches.push({
+          text: match[2],
+          slug: kebabCase(match[2])
+        })
+    } while (match)
+    return matches
   }
 
   static isString = obj => typeof obj === 'string'

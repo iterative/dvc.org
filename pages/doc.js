@@ -40,7 +40,7 @@ export default class Documentation extends Component {
 
   componentDidMount() {
     this.loadStateFromURL()
-    this.initDocsearch()
+    SidebarMenuHelper.initDocsearch()
     window.addEventListener('popstate', this.loadStateFromURL)
     this.ps = new PerfectScrollbar('#sidebar-menu', {
       // wheelPropagation: window.innerWidth <= 572
@@ -64,16 +64,7 @@ export default class Documentation extends Component {
       section: length > 2 ? indexes[0] : 0,
       subsection: indexes.length > 2 ? indexes[1] : null,
       file: file,
-      parseHeadings: true
-    })
-  }
-
-  initDocsearch = () => {
-    docsearch({
-      apiKey: '755929839e113a981f481601c4f52082',
-      indexName: 'dvc',
-      inputSelector: '#doc-search',
-      debug: false // Set debug to true if you want to inspect the dropdown
+      setHeadings: true
     })
   }
 
@@ -105,7 +96,7 @@ export default class Documentation extends Component {
     e && e.preventDefault()
     const file = sidebar[section].indexFile || sidebar[section].files[0]
     e && this.setCurrentPath(section)
-    this.loadFile({ section, file, parseHeadings: false })
+    this.loadFile({ section, file, setHeadings: false })
   }
 
   onFileSelect = (section, subsection, file, e) => {
@@ -115,14 +106,14 @@ export default class Documentation extends Component {
       subsection,
       file.indexFile ? file.indexFile : file
     )
-    this.loadFile({ section, subsection, file, parseHeadings: true })
+    this.loadFile({ section, subsection, file, setHeadings: true })
   }
 
   updateStateWithCurrentFile = (
     markdown,
     currentSection,
     currentFile,
-    parseHeadings
+    setHeadings
   ) => {
     this.setState(
       {
@@ -135,8 +126,8 @@ export default class Documentation extends Component {
         load: false
       },
       () => {
-        this.scrollTop()
-        parseHeadings && this.parseHeadings(markdown)
+        SidebarMenuHelper.scrollTop()
+        setHeadings && this.setHeadings(markdown)
       }
     )
   }
@@ -147,7 +138,7 @@ export default class Documentation extends Component {
     file,
     folderpath,
     filepath,
-    parseHeadings
+    setHeadings
   ) => {
     const helper = SidebarMenuHelper
     fetch(helper.combineToPath([folderpath, filepath]))
@@ -160,7 +151,7 @@ export default class Documentation extends Component {
             markdown,
             section,
             currentFile,
-            parseHeadings
+            setHeadings
           )
         })
       })
@@ -169,7 +160,7 @@ export default class Documentation extends Component {
       })
   }
 
-  loadFile = ({ section, subsection, file, parseHeadings }) => {
+  loadFile = ({ section, subsection, file, setHeadings }) => {
     this.setState({ load: true })
     let sect = sidebar[section]
     let subsect = sect.files[subsection]
@@ -182,49 +173,13 @@ export default class Documentation extends Component {
       file,
       folderpath,
       filepath,
-      parseHeadings
+      setHeadings
     )
   }
 
-  parseHeadings = text => {
-    const headingRegex = /\n(## \s*)(.*)/g
-    const matches = []
-    let match
-    do {
-      match = headingRegex.exec(text)
-      if (match)
-        matches.push({
-          text: match[2],
-          slug: kebabCase(match[2])
-        })
-    } while (match)
-
-    this.setState({ headings: matches }, this.autoScroll)
-  }
-
-  autoScroll = () => {
-    const { hash } = window.location
-    if (hash) this.scrollToLink(hash)
-  }
-
-  scrollToLink = href => {
-    scroller.scrollTo(href.slice(1), {
-      duration: 600,
-      offset: -85,
-      delay: 0,
-      smooth: 'ease',
-      containerId: 'bodybag'
-    })
-  }
-
-  scrollTop = () => {
-    animateScroll.scrollTo(0, {
-      duration: 300,
-      offset: -85,
-      delay: 0,
-      smooth: 'ease',
-      containerId: 'bodybag'
-    })
+  setHeadings = text => {
+    let matches = SidebarMenuHelper.parseHeadings(text)
+    this.setState({ headings: matches }, SidebarMenuHelper.autoScroll)
   }
 
   toggleMenu = () => {
@@ -269,7 +224,6 @@ export default class Documentation extends Component {
               currentFile={currentFile}
               headings={headings}
               getLinkHref={this.getLinkHref}
-              scrollToLink={this.scrollToLink}
               onSectionSelect={this.onSectionSelect}
               onFileSelect={this.onFileSelect}
             />
@@ -288,11 +242,7 @@ export default class Documentation extends Component {
             />
           )}
 
-          <RightPanel
-            headings={headings}
-            scrollToLink={this.scrollToLink}
-            githubLink={githubLink}
-          />
+          <RightPanel headings={headings} githubLink={githubLink} />
         </Container>
       </Page>
     )
