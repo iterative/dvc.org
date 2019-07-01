@@ -60,7 +60,8 @@
       "autocomplete.md",
       "plugins.md",
       "analytics.md",
-      "dvcignore.md"
+      "dvcignore.md",
+      "running-dvc-on-windows.md"
     ],
     "labels": {
       "dvc-files-and-directories.md": "Files and Directories",
@@ -74,7 +75,8 @@
       "update-tracked-file.md": "Update a Tracked File",
       "autocomplete.md": "Shell Autocomplete",
       "plugins.md": "Plugins & Integrations",
-      "analytics.md": "Anonymized Usage Analytics"
+      "analytics.md": "Anonymized Usage Analytics",
+      "running-dvc-on-windows.md": "Caveats Running DVC on Windows"
     }
   },
   {
