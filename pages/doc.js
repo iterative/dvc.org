@@ -21,8 +21,7 @@ import styled from 'styled-components'
 import { media } from '../src/styles'
 // json
 import sidebar from '../src/Documentation/sidebar'
-import SidebarMenuHelper from '../src/Documentation/SidebarMenu/SidebarMenuHelper'
-import { PATH_SEPARATOR } from '../src/Documentation/SidebarMenu/SidebarMenuHelper'
+import SidebarHelper from '../src/Documentation/SidebarMenu/SidebarHelper'
 
 export default class Documentation extends Component {
   constructor() {
@@ -40,7 +39,7 @@ export default class Documentation extends Component {
 
   componentDidMount() {
     this.loadStateFromURL()
-    SidebarMenuHelper.initDocsearch()
+    SidebarHelper.initDocsearch()
     window.addEventListener('popstate', this.loadStateFromURL)
     this.ps = new PerfectScrollbar('#sidebar-menu', {
       // wheelPropagation: window.innerWidth <= 572
@@ -57,9 +56,9 @@ export default class Documentation extends Component {
   }
 
   loadStateFromURL = () => {
-    let path = window.location.pathname.split(PATH_SEPARATOR)
+    let path = window.location.pathname.split('/')
     let length = path.length
-    let { file, indexes } = SidebarMenuHelper.getFileFromUrl(path)
+    let { file, indexes } = SidebarHelper.getFileFromUrl(path)
     this.loadFile({
       section: length > 2 ? indexes[0] : 0,
       subsection: indexes.length > 2 ? indexes[1] : null,
@@ -71,17 +70,13 @@ export default class Documentation extends Component {
   getLinkHref = (section, subsection = null, file = null) => {
     let sect = sidebar[section]
     let removeExtFunc = filename =>
-      SidebarMenuHelper.removeExtensionFromFileName(filename)
+      SidebarHelper.removeExtensionFromFileName(filename)
     const sectionSlug = removeExtFunc(sect.indexFile) || kebabCase(sect.name)
     const subsectionSlug =
       (subsection && removeExtFunc(sect.files[subsection].indexFile)) ||
       sect.files[subsection]
     const fileSlug = removeExtFunc(file) || (file && file.files[0])
-    return `${PATH_SEPARATOR}doc${PATH_SEPARATOR}${compact([
-      sectionSlug,
-      subsectionSlug,
-      fileSlug
-    ]).join(PATH_SEPARATOR)}`
+    return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`
   }
 
   setCurrentPath = (section, subsection, file) => {
@@ -101,11 +96,7 @@ export default class Documentation extends Component {
 
   onFileSelect = (section, subsection, file, e) => {
     e && e.preventDefault()
-    this.setCurrentPath(
-      section,
-      subsection,
-      file.indexFile ? file.indexFile : file
-    )
+    this.setCurrentPath(section, subsection, file.indexFile || file)
     this.loadFile({ section, subsection, file, setHeadings: true })
   }
 
@@ -126,7 +117,7 @@ export default class Documentation extends Component {
         load: false
       },
       () => {
-        SidebarMenuHelper.scrollTop()
+        SidebarHelper.scrollTop()
         setHeadings && this.setHeadings(markdown)
       }
     )
@@ -140,7 +131,7 @@ export default class Documentation extends Component {
     filepath,
     setHeadings
   ) => {
-    const helper = SidebarMenuHelper
+    const helper = SidebarHelper
     fetch(helper.combineToPath([folderpath, filepath]))
       .then(res => {
         res.text().then(markdown => {
@@ -178,8 +169,8 @@ export default class Documentation extends Component {
   }
 
   setHeadings = text => {
-    let matches = SidebarMenuHelper.parseHeadings(text)
-    this.setState({ headings: matches }, SidebarMenuHelper.autoScroll)
+    let matches = SidebarHelper.parseHeadings(text)
+    this.setState({ headings: matches }, SidebarHelper.autoScroll)
   }
 
   toggleMenu = () => {

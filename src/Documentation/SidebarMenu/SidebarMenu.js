@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
 import sidebar from '../sidebar'
 import Preloader from '../../Preloader/Preloader'
-import SidebarMenuHelper from './SidebarMenuHelper'
+import SidebarHelper from './SidebarHelper'
 const MENU_ID = 'sidebar-menu'
 export default class SidebarMenu extends React.Component {
   constructor(props) {
@@ -15,20 +15,23 @@ export default class SidebarMenu extends React.Component {
       loading: true
     }
   }
+
   collapse = () => {
     setTimeout(function() {
       $('[data-open=true]').slideDown()
       $('[data-open=false]').slideUp()
     })
   }
+
   componentDidMount() {
     this.collapse()
-    const names = SidebarMenuHelper.getNamesArr(sidebar)
+    const names = SidebarHelper.getNamesArr(sidebar)
     this.setState({
       names: names,
       loading: false
     })
   }
+
   componentWillReceiveProps(nextProps) {
     let con1 = nextProps.currentFile !== this.props.currentFile
     let con2 = nextProps.currentSection !== this.props.currentSection
@@ -36,6 +39,7 @@ export default class SidebarMenu extends React.Component {
       this.collapse()
     }
   }
+
   renderPreloader = () => {
     return (
       <Menu id={MENU_ID}>
@@ -45,21 +49,19 @@ export default class SidebarMenu extends React.Component {
       </Menu>
     )
   }
+
   renderSection = (section, file, index, fileIndex) => {
     const { getLinkHref, onFileSelect, currentFile } = this.props
     const subgroup = file.files || null
-    const folderPath = SidebarMenuHelper.getFullPath(
-      file.folder,
-      file.indexFile
-    )
-    const sectionPath = SidebarMenuHelper.getFullPath(section.folder, file)
+    const folderPath = SidebarHelper.getFullPath(file.folder, file.indexFile)
+    const sectionPath = SidebarHelper.getFullPath(section.folder, file)
     let compare = file.folder && file.indexFile ? folderPath : sectionPath
     const isFileActive = currentFile === compare
     let FileOrSubsectionTitle =
       file.name ||
-      SidebarMenuHelper.getName(
+      SidebarHelper.getName(
         section.labels,
-        SidebarMenuHelper.getParentFolder(file, section),
+        SidebarHelper.getParentFolder(file, section),
         file.indexFile || file,
         this.state.names
       )
@@ -78,11 +80,11 @@ export default class SidebarMenu extends React.Component {
         {subgroup && (
           <Collapse
             data-flag={'first'}
-            data-open={SidebarMenuHelper.convertToBooleanString(
+            data-open={SidebarHelper.convertToBooleanString(
               isFileActive ||
-                SidebarMenuHelper.filesContains(
+                SidebarHelper.filesContains(
                   subgroup,
-                  SidebarMenuHelper.getParentFolder(file, section),
+                  SidebarHelper.getParentFolder(file, section),
                   currentFile
                 )
             )}
@@ -102,10 +104,11 @@ export default class SidebarMenu extends React.Component {
       </Fragment>
     )
   }
+
   renderSubgroup = (section, file, index, subFile, fileIndex, subIndex) => {
     const { getLinkHref, onFileSelect, currentFile } = this.props
     const fileFolder = file.folder || section.folder
-    const subFilePath = SidebarMenuHelper.getFullPath(fileFolder, subFile)
+    const subFilePath = SidebarHelper.getFullPath(fileFolder, subFile)
     return (
       <div key={`file-${fileIndex}-${subIndex}`}>
         <SectionLink
@@ -114,7 +117,7 @@ export default class SidebarMenu extends React.Component {
           onClick={e => onFileSelect(index, fileIndex, subFile, e)}
           isActive={currentFile === subFilePath}
         >
-          {SidebarMenuHelper.getName(
+          {SidebarHelper.getName(
             file.labels,
             file.folder || section.folder,
             subFile,
@@ -124,12 +127,13 @@ export default class SidebarMenu extends React.Component {
       </div>
     )
   }
+
   renderMenu = (section, index) => {
     const { currentSection, onSectionSelect, getLinkHref } = this.props
     const isSectionActive = currentSection === index
     let sectionTitle =
       section.name ||
-      SidebarMenuHelper.getName(
+      SidebarHelper.getName(
         section.labels,
         section.folder,
         section.indexFile,
@@ -147,7 +151,7 @@ export default class SidebarMenu extends React.Component {
           {sectionTitle}
         </SectionLink>
         <Collapse
-          data-open={SidebarMenuHelper.convertToBooleanString(isSectionActive)}
+          data-open={SidebarHelper.convertToBooleanString(isSectionActive)}
         >
           {section.files &&
             section.files.map((file, fileIndex) => {
@@ -157,6 +161,7 @@ export default class SidebarMenu extends React.Component {
       </div>
     )
   }
+
   renderContent = () => {
     const { sidebar } = this.props
     return (
@@ -176,6 +181,7 @@ export default class SidebarMenu extends React.Component {
       </Menu>
     )
   }
+
   render = () => {
     const { loading } = this.state
     return loading ? this.renderPreloader() : this.renderContent()
