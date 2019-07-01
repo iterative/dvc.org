@@ -103,8 +103,8 @@ details.)
   effect. (It affects only files that are under DVC control.)
 
   Due to the way DVC handles linking between the data files in the cache and
-  their counterparts in the working directory, it's easy to accidentally corrupt
-  the cached version of a file by editing or overwriting it. Turning this config
+  their counterparts in the workspace, it's easy to accidentally corrupt the
+  cached version of a file by editing or overwriting it. Turning this config
   option on forces you to run `dvc unprotect` before updating a file, providing
   an additional layer of security to your data.
 

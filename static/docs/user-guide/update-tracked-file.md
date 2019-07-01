@@ -1,7 +1,7 @@
 # Update a Tracked File
 
 Due to the way DVC handles linking between the data files in the cache and their
-counterparts in the working directory (refer to
+counterparts in the workspace (refer to
 [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization)),
 updating tracked files has to be carried out with caution to avoid data
 corruption when the DVC config option `cache.type` is set to `hardlink` or/and
