@@ -1,6 +1,6 @@
 # remote modify
 
-Modify remote settings.
+Modify configuration of remotes.
 
 > This command is commonly needed after `dvc remote add` or
 > [default](/doc/commands-reference/remote-default) to setup credentials or
@@ -30,9 +30,9 @@ Remote `name` and `option` name are required. Option names are remote type
 specific. See below examples and a list of per remote type - AWS S3, Google
 cloud, Azure, SSH, ALiyun OSS, and others.
 
-This command modifies a `remote` section in the DVC
+This command modifies a `remote` section in the DVC project's
 [config file](/doc/user-guide/dvc-files-and-directories). Alternatively,
-`dvc config` or manual editing could be used to change settings.
+`dvc config` or manual editing could be used to change the configuration.
 
 ## Options
 

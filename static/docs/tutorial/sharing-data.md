@@ -12,8 +12,8 @@ DVC is able to push the cache to a cloud.
 > Using your shared cache a colleague can reuse ML models that were trained on
 > your machine.
 
-First, you need to modify the cloud settings in the DVC config file. This can be
-done using the CLI as shown below.
+First, you need to set a data remote which will be stored in the project's
+config file. This can be done using the CLI as shown below.
 
 > Note that we are using `dvc-share` s3 bucket as an example and you don't have
 > write access to it, so in order to follow the tutorial you will need to either
