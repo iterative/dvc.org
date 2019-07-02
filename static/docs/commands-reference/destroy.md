@@ -68,20 +68,21 @@ $ dvc cache dir /mnt/cache
 $ dvc add foo
 ```
 
-Content of `DVC repo` and `/mnt/cache` is:
+Content of `DVC repo`:
 
 ```dvc
 $ ls -a
 
 .dvc .git code.py foo foo.dvc
+```
 
-# Content of /mnt/cache
-$ ls - aR /mnt/cache
-/mnt/cache/:
-. .. d3
+Content of `/mnt/cache` directory:
 
-/mnt/cache/d3/:
-. .. b07384d113edec49eaa6238ad5ff00
+```dvc
+$ tree /mnt/cache
+/mnt/cache/
+└── b1
+    └── 946ac92492d2347c6235b4d2611184
 ```
 
 `dvc destroy` command removed DVC-files, and the entire `.dvc/` meta directory
