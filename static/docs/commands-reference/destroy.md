@@ -96,15 +96,19 @@ yes
 
  $ ls -a
 .git code.py foo
-
- $ ls - aR /mnt/cache
- /mnt/cache/:
- . .. d3
-
- /mnt/cache/d3/:
- . .. b07384d113edec49eaa6238ad5ff00
 ```
 
 `dvc destroy` command removed DVC-files, and the entire `.dvc/` meta directory
 from the current DVC workspace. But the cache files that are present in the
 `/mnt/cache` directory still persists.
+
+Contents of `/mnt/cache`:
+
+```dvc
+ $ tree /mnt/cache
+ /mnt/cache/
+ └── b1
+     └── 946ac92492d2347c6235b4d2611184
+```
+
+There are no changes or deletion done with the cache file.
