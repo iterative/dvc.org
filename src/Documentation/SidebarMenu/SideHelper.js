@@ -5,12 +5,12 @@ import { animateScroll, scroller } from 'react-scroll/modules/index'
 
 export const PATH_TO_DOC = '/doc'
 
-export default class SidebarHelper {
+export default class SideHelper {
   static fillFilesArray(section, file, arr) {
-    let folder = SidebarHelper.getParentFolder(file, section)
-    let filename = SidebarHelper.extractFilename(file)
-    let path = SidebarHelper.getFullPath(folder, filename)
-    arr[path] = startCase(SidebarHelper.removeExtensionFromFileName(filename))
+    let folder = SideHelper.getParentFolder(file, section)
+    let filename = SideHelper.extractFilename(file)
+    let path = SideHelper.getFullPath(folder, filename)
+    arr[path] = startCase(SideHelper.removeExtensionFromFileName(filename))
   }
 
   static initDocsearch = () => {
@@ -24,7 +24,7 @@ export default class SidebarHelper {
 
   static autoScroll = () => {
     const { hash } = window.location
-    if (hash) SidebarHelper.scrollToLink(hash)
+    if (hash) SideHelper.scrollToLink(hash)
   }
 
   static scrollToLink = href => {
@@ -76,7 +76,7 @@ export default class SidebarHelper {
   static getZeroFile = arr => {
     const firstItem = arr[0]
     const { files, indexFile } = firstItem
-    return (files && SidebarHelper.getZeroFile(files)) || indexFile || firstItem
+    return (files && SideHelper.getZeroFile(files)) || indexFile || firstItem
   }
 
   static findFileByName = (item, find) => {

@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 import { LightButton } from '../LightButton'
-import SidebarHelper from '../SidebarMenu/SidebarHelper'
+import SidebarHelper from '../SidebarMenu/SideHelper'
 
 export const RightPanel = ({ headings, githubLink }) => (
   <Wrapper>

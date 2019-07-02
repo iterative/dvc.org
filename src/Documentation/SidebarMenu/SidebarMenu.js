@@ -5,7 +5,7 @@ import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
 import sidebar from '../sidebar'
 import Preloader from '../../Preloader/Preloader'
-import SidebarHelper from './SidebarHelper'
+import SidebarHelper from './SideHelper'
 const MENU_ID = 'sidebar-menu'
 export default class SidebarMenu extends React.Component {
   constructor(props) {

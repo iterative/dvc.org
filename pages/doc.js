@@ -21,7 +21,7 @@ import styled from 'styled-components'
 import { media } from '../src/styles'
 // json
 import sidebar from '../src/Documentation/sidebar'
-import SidebarHelper from '../src/Documentation/SidebarMenu/SidebarHelper'
+import SidebarHelper from '../src/Documentation/SidebarMenu/SideHelper'
 
 export default class Documentation extends Component {
   constructor() {
