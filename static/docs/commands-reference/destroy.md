@@ -31,7 +31,7 @@ DVC repository destruction.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: Default Cache directory
+## Example
 
 ```dvc
 $ dvc init
