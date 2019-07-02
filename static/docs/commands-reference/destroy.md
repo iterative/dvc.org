@@ -85,9 +85,7 @@ $ tree /mnt/cache
     └── 946ac92492d2347c6235b4d2611184
 ```
 
-`dvc destroy` command removed DVC-files, and the entire `.dvc/` meta directory
-from the current DVC workspace. But the cache files that are present in the
-`/mnt/cache` directory still persists.
+Let's execute `dvc destroy`:
 
 ```dvc
 $ dvc destroy
@@ -107,4 +105,6 @@ yes
  . .. b07384d113edec49eaa6238ad5ff00
 ```
 
-There are no changes or deletion done with the cache file.
+`dvc destroy` command removed DVC-files, and the entire `.dvc/` meta directory
+from the current DVC workspace. But the cache files that are present in the
+`/mnt/cache` directory still persists.
