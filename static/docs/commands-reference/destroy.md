@@ -66,7 +66,6 @@ $ dvc init
 $ echo foo > foo
 $ dvc cache dir /mnt/cache
 $ dvc add foo
-
 ```
 
 Content of `DVC repo` and `/mnt/cache` is:
