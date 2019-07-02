@@ -71,6 +71,9 @@ This is the main section with the general config options:
   [anonymized usage statistics](/doc/user-guide/analytics). Accepts values
   `true` (default) and `false`.
 
+- `core.checksum_jobs` - number of threads for computing checksums. Accepts
+  positive integers. The default value is `max(1, min(4, cpu_count() // 2))`.
+
 ### remote
 
 These are sections in the config file that describe particular remotes. These
