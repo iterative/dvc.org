@@ -158,8 +158,11 @@ $ dvc remote modify myremote url "azure://ContainerName=remote;"
 - `connection_string` - connection string.
 
 ```dvc
-$ dvc remote modify myremote connection_string my-connection-string
+$ dvc remote modify myremote connection_string my-connection-string --local
 ```
+> The connection string contains access to data and is inserted into the
+> `.dvc/config file.` Therefore, it is safer to add the connection string with
+> the `--local` option, enforcing it to be written to a Git-ignored config file.
 
 </details>
 
