@@ -1,6 +1,6 @@
 # init
 
-This command initializes a DVC environment in a current Git repository.
+This command initializes a DVC environment in a present working directory.
 
 ## Synopsis
 
@@ -24,7 +24,7 @@ usage: dvc init [-h] [-q | -v] [--no-scm] [-f]
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Details
+## Description
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`
 and `.gitignore` files and `cache` directory. These files and directories are
@@ -38,7 +38,7 @@ this is your local directory and you cannot push it to any Git remote.
 
 ## Examples
 
-- Creating a new DVC repository:
+- Creating a new DVC repository on top of a Git repository:
 
 ```dvc
 $ mkdir tag_classifier

@@ -1,12 +1,14 @@
 # import-url
 
-Download or copy file or directory from any supported URL (for example
-`http://`, `s3://`, `ssh://`, and other protocols) or local directory to the
-<abbr>workspace</abbr>, and track changes in the remote source with DVC. Creates
-a DVC-file.
+Download or copy file or directory from any supported URL (for example `s3://`,
+`ssh://`, and other protocols) or local directory to the <abbr>workspace</abbr>,
+and track changes in the remote source with DVC. Creates a DVC-file.
+
+> See `dvc import` to download and tack data from other DVC repositories (e.g.
+> GitHub URLs).
 
 > See also `dvc get-url` which corresponds to the first step this command
-> performs (just download the ).
+> performs (just download the data).
 
 ## Synopsis
 
@@ -20,7 +22,7 @@ positional arguments:
 
 ## Description
 
-In some cases it is convenient to add a data file or directory to the workspace
+In some cases it's convenient to add a data file or directory to the workspace
 such that it will be automatically updated when the data source is updated.
 Examples:
 
@@ -40,8 +42,8 @@ to the workspace initially, and to re-download it upon changes.
 
 The `dvc import-url` command helps the user create such an external data
 dependency. The `url` argument should provide the location of the data to be
-imported, while `out` is used to specify the (path and) name of the imported
-data file or directory in the workspace.
+imported, while `out` can be used to specify the (path and) file name desired
+for the imported data file or directory in the workspace.
 
 DVC supports several types of (local or) remote locations (protocols):
 
@@ -219,7 +221,7 @@ file has changed.
 ## Example: Detecting remote file changes
 
 What if that remote file is one which will be updated regularly? The project
-goal might include regenerating some artifact based on the updated data. A
+goal might include regenerating a data artifact based on the updated data. A
 pipeline can be triggered to re-execute based on a changed external dependency.
 
 Let us again use the [Getting Started](/doc/get-started) example, in a way which

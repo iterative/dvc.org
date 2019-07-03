@@ -110,7 +110,7 @@ master:
 	data/eval.txt: AUC: 0.624652
 ```
 
-> It is convenient to keep track of information even for failed experiments.
+> It's convenient to keep track of information even for failed experiments.
 > Sometimes a failed hypothesis gives more information than a successful one.
 
 Let’s keep the result in the repository. Later we can find out why bigram does

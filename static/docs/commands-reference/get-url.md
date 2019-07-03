@@ -1,11 +1,15 @@
 # get-url
 
-Download or copy file or directory from any supported URL (for example
-`http://`, `s3://`, `ssh://`, and other protocols) or local directory to the
-<abbr>workspace</abbr>.
+Download or copy file or directory from any supported URL (for example `s3://`,
+`ssh://`, and other protocols) or local directory to the local file system.
 
-> Unlike `dvc import-url`, this command does not track the downloaded file nor
-> does it creates a DVC-file.
+> Like `dvc init`, this is one of the few commands that doesn't require an
+> existing DVC project to run.
+
+> See `dvc get` to download data from other DVC repositories (e.g. GitHub URLs).
+
+> Unlike `dvc import-url`, this command does not track the downloaded data
+> file(s) (does not create a DVC-file).
 
 ## Synopsis
 
@@ -19,23 +23,26 @@ positional arguments:
 
 ## Description
 
-In some cases it is convenient to get a data file or directory from a remote
-location and into the workspace. The `dvc get-url` command helps the user do so.
-The `url` argument should provide the location of the data to be imported, while
-`out` is used to specify the (path and) name of the file or directory in the
-workspace.
+In some cases it's convenient to get a data file or directory from a remote
+location. The `dvc get-url` command helps the user do so. The `url` argument
+should provide the location of the data to be imported, while `out` can be used
+to specify the (path and) file name desired for the imported data file or
+directory.
+
+It's important to note that this command does not require an initialized
+repository to work in. It's a single-purpose command that can be used out of the
+box after installing DVC.
 
 DVC supports several types of (local or) remote locations (protocols):
 
-| Type     | Discussion                                              | URL format                                 |
-| -------- | ------------------------------------------------------- | ------------------------------------------ |
-| `local`  | Local path                                              | `/path/to/local/file`                      |
-| `s3`     | Amazon S3                                               | `s3://mybucket/data.csv`                   |
-| `gs`     | Google Storage                                          | `gs://mybucket/data.csv`                   |
-| `ssh`    | SSH server                                              | `ssh://user@example.com:/path/to/data.csv` |
-| `hdfs`   | HDFS                                                    | `hdfs://user@example.com/path/to/data.csv` |
-| `http`   | HTTP to file with _strong ETag_ (see explanation below) | `https://example.com/path/to/data.csv`     |
-| `remote` | Remote path (see explanation below)                     | `remote://myremote/path/to/file`           |
+| Type    | Discussion                                              | URL format                                 |
+| ------- | ------------------------------------------------------- | ------------------------------------------ |
+| `local` | Local path                                              | `/path/to/local/file`                      |
+| `s3`    | Amazon S3                                               | `s3://mybucket/data.csv`                   |
+| `gs`    | Google Storage                                          | `gs://mybucket/data.csv`                   |
+| `ssh`   | SSH server                                              | `ssh://user@example.com:/path/to/data.csv` |
+| `hdfs`  | HDFS                                                    | `hdfs://user@example.com/path/to/data.csv` |
+| `http`  | HTTP to file with _strong ETag_ (see explanation below) | `https://example.com/path/to/data.csv`     |
 
 > `remote://myremote/path/to/file` notation just means that a DVC
 > [remote](/doc/commands-reference/remote) `myremote` is defined, and when DVC
@@ -78,8 +85,8 @@ The above command will copy the `/local/path/to/data` file or directory into
 
 ### Click for AWS S3 example
 
-This command will copy an S3 bucket key into the local workspace with the same
-file name:
+This command will copy an S3 object into the present working directory with the
+same file name:
 
 ```dvc
 $ dvc get-url s3://bucket/path
@@ -157,20 +164,3 @@ $ dvc get-url https://example.com/path/to/data
 </details>
 
 <details>
-
-### Click for DVC remote example
-
-First, register a new remote, in this case with the S3 protocol:
-
-```dvc
-$ dvc remote add myremote ssh://user@example.com/path/to/dir
-```
-
-Then use the `remote://` prefix to refer to the remote in order to download
-`data` from that location:
-
-```dvc
-$ dvc get-url remote://myremote/data
-```
-
-</details>
