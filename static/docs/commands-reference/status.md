@@ -91,9 +91,9 @@ cache. For the typical process to update workspaces, see
   name defined using the `dvc remote` command. Implies `--cloud`.
 
 - `-a`, `--all-branches` - compares cache content against all Git branches.
-  Instead of checking just the workspace, it checks against all other branches
-  of this workspace. The corresponding branches are shown in the status output.
-  Applies only if `--cloud` or a remote is specified.
+  Instead of checking just the workspace, it runs the same status command in all
+  the branches of this repo. The corresponding branches are shown in the status
+  output. Applies only if `--cloud` or a remote is specified.
 
 - `-T`, `--all-tags` - compares cache content against all Git tags. Both the
   `--all-branches` and `--all-tags` options cause DVC to check more than just
