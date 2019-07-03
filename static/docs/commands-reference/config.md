@@ -190,7 +190,7 @@ Add an S3 remote and set it as the project default:
 > to create your bucket.
 
 ```dvc
-$ dvc remote add myremote s3://bucket/key
+$ dvc remote add myremote s3://bucket/path
 $ dvc config core.remote myremote
 ```
 

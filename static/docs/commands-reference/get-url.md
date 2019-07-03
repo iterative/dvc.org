@@ -82,7 +82,7 @@ This command will copy an S3 bucket key into the local workspace with the same
 file name:
 
 ```dvc
-$ dvc get-url s3://bucket/key
+$ dvc get-url s3://bucket/path
 ```
 
 By default DVC expects your AWS CLI is already

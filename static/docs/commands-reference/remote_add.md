@@ -129,7 +129,7 @@ $ cat .dvc/config
 > to create your bucket.
 
 ```dvc
-$ dvc remote add myremote s3://bucket/key
+$ dvc remote add myremote s3://bucket/path
 ```
 
 By default DVC expects your AWS CLI is already
