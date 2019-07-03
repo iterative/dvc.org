@@ -17,7 +17,7 @@ usage: dvc remote add [-h] [--global] [--system] [--local] [-q | -v]
                       [-d] [-f] name url
 
 positional arguments:
-  name           Name.
+  name           Name of the remote.
   url            URL. (See supported URLs below.)
 ```
 
@@ -121,6 +121,11 @@ $ cat .dvc/config
 
 ### Click for AWS S3 example
 
+> **Note!** Before adding a new remote be sure to login into AWS services and
+> follow instructions at
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
+> to create your bucket.
+
 ```dvc
 $ dvc remote add myremote s3://bucket/path
 ```
@@ -185,8 +190,12 @@ For more information about the variables DVC supports, please visit
 
 ```dvc
 $ dvc remote add myremote azure://my-container-name/path
-$ dvc remote modify myremote connection_string my-connection-string
+$ dvc remote modify myremote connection_string my-connection-string --local
 ```
+
+> The connection string contains access to data and is inserted into the
+> `.dvc/config file.` Therefore, it is safer to add the connection string with
+> the `--local` option, enforcing it to be written to a Git-ignored config file.
 
 The Azure Blob Storage remote can also be configured entirely via environment
 variables:

@@ -12,8 +12,8 @@ usage: dvc status [-h] [-v] [-j JOBS] [--show-checksums]
                   [targets [targets ...]]
 
 positional arguments:
-  targets       Limit the scope to these stage files.
-                With -R a directory to search DVC-files in can be specified.
+  targets        Limit command scope to these DVC-files. Using -R,
+                 directories to search DVC-files in can also be given.
 ```
 
 ## Description
@@ -31,11 +31,12 @@ synchronize them). The two modes, _local_ and _cloud_ are triggered by using the
 | remote | `--remote` | Comparisons are made between the local cache, and the given remote. Remote caches are defined using the `dvc remote` command. |
 | remote | `--cloud`  | Comparisons are made between the local cache, and the default remote, defined with `dvc remote --default` command.            |
 
-DVC determines data and code files to compare by analyzing all DVC-files in the
-current workspace (`--all-branches` and `--all-tags` in the `cloud` mode compare
-multiple workspaces - across all branches or tags). The comparison can be
-limited to specific DVC-files by listing them as `targets`. Changes are reported
-only against the given `targets`. When combined with the `--with-deps` option, a
+DVC determines data and code files to compare by analyzing all
+[DVC-files](/doc/user-guide/dvc-file-format) in the current workspace
+(`--all-branches` and `--all-tags` in the `cloud` mode compare multiple
+workspaces - across all branches or tags). The comparison can be limited to
+specific DVC-files by listing them as `targets`. Changes are reported only
+against the given `targets`. When combined with the `--with-deps` option, a
 search is made for changes in other stages that affect the target.
 
 In the `local` mode, changes are detected through the checksum of every file

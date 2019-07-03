@@ -1,4 +1,4 @@
-# Share Data
+# Save and Share Data
 
 Now, that your data files are managed by DVC (see
 [Add Files](/doc/get-started/add-files)), you can push them from your repository
@@ -12,7 +12,7 @@ The same way as with Git remote, it ensures that your data files and your models
 are safely stored remotely and are shareable. It means that this data could be
 pulled by your team or you when you need it.
 
-Usually, you run it along with `git commit` and `git push` to save changes
+Usually, you run it along with `git commit` and `git push` to save changed
 [DVC-files](/doc/user-guide/dvc-file-format) to Git.
 
 See `dvc push` for more details and options for this command.

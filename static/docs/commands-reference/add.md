@@ -10,7 +10,7 @@ usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [-f FILE]
                targets [targets ...]
 
 positional arguments:
-  targets               Input files/directories.
+  targets               Input files/directories to add.
 ```
 
 ## Description
@@ -78,10 +78,11 @@ This way you bring data provenance and make your project reproducible.
 
 ## Options
 
-- `-R`, `--recursive` - `targets` is expected to contain directory path(s).
-  Determines the files to add by searching each target directory and its
-  subdirectories for data files. For each file found, a new DVC-file is created
-  using the process described in this command's description.
+- `-R`, `--recursive` - `targets` is expected to contain at least one directory
+  path for this option to have effect. Determines the files to add by searching
+  each target directory and its subdirectories for data files. For each file
+  found, a new DVC-file is created using the process described in this command's
+  description.
 
 - `--no-commit` - do not put files/directories into cache. A DVC-file is
   created, and an entry is added to `.dvc/state`, while nothing is added to the

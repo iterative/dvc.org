@@ -33,6 +33,7 @@ var _javascript = function(hljs) {
         contains: [
           {
             begin: / dvc [a-z\-]+/,
+            lexemes: '[a-z-]+',
             keywords: {
               built_in:
                 'help dvc init add checkout run pull push fetch status repro ' +

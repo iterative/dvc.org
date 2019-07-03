@@ -61,6 +61,7 @@ let _javascript = function(hljs) {
               },
               {
                 begin: /dvc [a-z\-]+/,
+                lexemes: '[a-z-]+',
                 keywords: {
                   built_in:
                     'help dvc init add import-url checkout run pull push ' +

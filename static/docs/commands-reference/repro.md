@@ -13,7 +13,7 @@ usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c CWD] [-m] [--dry] [-i]
                  [--downstream] [targets [targets ...]]
 
 positional arguments:
-  targets               DVC file to reproduce (default - 'Dvcfile').
+  targets               DVC-file to reproduce. 'Dvcfile' by default.
 ```
 
 ## Description
@@ -57,6 +57,11 @@ specified), and updates stage files with the new checksum information.
   reproduced as part of the pipeline in the parent directory, or as an
   independent unit.
 
+- `-R`, `--recursive` - `targets` is expected to contain at least one directory
+  path for this option to have effect. Determines the stages to reproduce by
+  searching each target directory and its subdirectories for DVC-files to
+  inspect.
+
 - `--no-commit` - do not save outputs to cache. Useful when running different
   experiments and you don't want to fill up your cache with temporary files. Use
   `dvc commit` when you are ready to save your results to cache.
@@ -74,6 +79,9 @@ specified), and updates stage files with the new checksum information.
 - `-p`, `--pipeline` - reproduce the entire pipeline(s) that the target stage
   file(s) belong(s) to. Use `dvc pipeline show <target>.dvc` to show the parent
   pipeline of a target stage.
+
+- `-P`, `--all-pipelines` - reproduce all pipelines, for all the stage files
+  present in `DVC` repository.
 
 - `--ignore-build-cache` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B` even if `B` was previously executed with the
