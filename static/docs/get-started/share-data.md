@@ -12,10 +12,10 @@ The same way as with Git remote, it ensures that your data files and your models
 are safely stored remotely and are shareable. It means that this data could be
 pulled by your team or you when you need it.
 
-Usually, you run it along with `git commit` and
-[git push](https://git-scm.com/docs/git-push/1.5.5.2)
-to save changed
-[DVC-files](/doc/user-guide/dvc-file-format) to Git.
+Usually, you run it along with `git commit` and `git push` to save changed
+[DVC-files](/doc/user-guide/dvc-file-format) to Git. `dvc push` and`git push`
+are both different statements. `git push` updates remote references using     
+local references, sending objects to complete the given references.
 
 See `dvc push` for more details and options for this command.
 
