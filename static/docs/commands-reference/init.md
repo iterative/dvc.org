@@ -1,6 +1,6 @@
 # init
 
-This command initializes a DVC environment in a present working directory.
+This command initializes a DVC environment in a current working directory.
 
 ## Synopsis
 

@@ -85,7 +85,7 @@ The above command will copy the `/local/path/to/data` file or directory into
 
 ### Click for AWS S3 example
 
-This command will copy an S3 object into the present working directory with the
+This command will copy an S3 object into the current working directory with the
 same file name:
 
 ```dvc

@@ -27,7 +27,7 @@ system/environment:
 | `Filesystem type`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of workspace and the cache directory                                                      |
 
 > If `dvc version` is executed outside a DVC workspace, the command outputs the
-> filesystem type of the present working directory.
+> filesystem type of the current working directory.
 
 #### Components of DVC version
 

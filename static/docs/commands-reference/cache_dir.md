@@ -18,7 +18,7 @@ positional arguments:
 
 Helper to set the `cache.dir` configuration option. Unlike doing so with
 `dvc config cache`, this command transform paths (`value`) that are provided
-relative to the present working directory into paths **relative to the config
+relative to the current working directory into paths **relative to the config
 file location**. They are required in the latter form for the config file.
 
 ## Options

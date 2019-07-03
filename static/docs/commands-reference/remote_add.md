@@ -26,7 +26,7 @@ positional arguments:
 `name` and `url` are required. `url` specifies a location to store your data. It
 could be S3 path, SSH path, Azure, Google cloud, Aliyun OSS local directory,
 etc. (See more examples below.) If `url` is a local relative path, it will be
-resolved relative to the present working directory but saved **relative to the
+resolved relative to the current working directory but saved **relative to the
 config file location** (see LOCAL example below). Whenever possible DVC will
 create a remote directory if it doesn't exists yet. It won't create an S3 bucket
 though and will rely on default access settings.
@@ -260,9 +260,8 @@ $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 
 > **Note!** Currently HTTP remotes only support downloads operations:
 >
-> - `pull`
-> - `fetch`
-> - `import-url`
+> - `pull` and `fetch`
+> - `import-url` and `get-url`
 > - As an [external dependency](/doc/user-guide/external-dependencies)
 
 ```dvc
