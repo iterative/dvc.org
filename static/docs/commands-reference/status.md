@@ -52,11 +52,12 @@ This says that no differences were detected, and therefore that no stages would
 be run again if `dvc repro` were executed.
 
 If instead, differences are detected, `dvc status` lists those changes. For each
-DVC-file (stage) with differences, the _dependencies_ and/or _outputs_ that
-differ are listed. For each item listed, either the file name or the checksum is
-shown, and additionally, a status word is shown describing the changes in
-checksum or status for both local and cloud workspace. Given list describes
-both, the status of the DVC-file and differences in the DVC-files:
+DVC-file (stage) with differences, the changes in both _dependencies_ and/or
+_outputs_ that differ are listed. For each item listed, either the file name or
+the checksum is shown, and additionally, a status word is shown describing the
+changes in checksum or status for both local and cloud workspace. Given list
+provides a reference to both, the status of the DVC-file and differences in the
+DVC-files:
 
 - For the local workspace:
 
@@ -64,13 +65,20 @@ both, the status of the DVC-file and differences in the DVC-files:
     one specified in it in DVC-files
   - _always changed_ means that this is a special DVC-file with no dependencies,
     which is considered always changed
-  - _new_ is displayed when a new dependeny or output state is added to DVC-file
-  - _modified_ is displayed when any dependencies or output states is modified
-    in DVC-file
-  - _deleted_ is displayed when any exsisting dependencies or output states are
-    deleted from DVC-file
-  - _not in cache_ is displayed when dependencies or output are mentioned in
-    DVC-file no longer exsist in local cache
+  - _changed deps_ means that there are some changes in dependencies that are
+    incorporated in the DVC-file, some of the prominent states are:
+    - _new_ : when new dependencies are added into DVC-file
+    - _modified_ : when an exsisting dependencies are modified in DVC-file
+    - _deleted_ : when an exsisting dependencies are removed from DVC-file
+    - _not in cache_ : when dependencies mentioned in DVC-file no longer exsists
+      in local cache
+  - _changed outs_ means that there are some changes in output states that are
+    incorporated in the DVC-file, some of the prominent states are:
+    - _new_ : when new outputs are added into DVC-file
+    - _modified_ : when an exsisting outputs are modified in DVC-file
+    - _deleted_ : when an exsisting outputs are removed from DVC-file
+    - _not in cache_ : when outputs mentioned in DVC-file no longer exsists in
+      local cache
 
 - For comparison against a remote cache:
 
