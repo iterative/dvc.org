@@ -161,8 +161,8 @@ $ dvc remote modify myremote url "azure://ContainerName=remote;"
 $ dvc remote modify myremote connection_string my-connection-string --local
 ```
 
-> For more information on configuring Azure Storage connection strings, visit
-> [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
+For more information on configuring Azure Storage connection strings, visit
+[here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
 
 > The connection string contains access to data and is inserted into the
 > `.dvc/config file.` Therefore, it is safer to add the connection string with
