@@ -10,8 +10,6 @@ usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
                [-m METRICS] [-M METRICS_NO_CACHE] [-f FILE] [-c CWD]
                [-w WDIR] [--no-exec] [-y] [--overwrite-dvcfile]
                [--ignore-build-cache] [--remove-outs] [--no-commit]
-               [--outs-persist OUTS_PERSIST]
-               [--outs-persist-no-cache OUTS_PERSIST_NO_CACHE]
                command
 
 positional arguments:
