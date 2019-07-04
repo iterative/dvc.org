@@ -141,7 +141,7 @@ $ dvc remote add myremote "s3://bucket/myremote"
 ```
 
 For more information about the variables DVC supports, please visit
-[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuratio)
+[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
 
 </details>
 
