@@ -13,9 +13,12 @@ are safely stored remotely and are shareable. It means that this data could be
 pulled by your team or you when you need it.
 
 Usually, you run it along with `git commit` and `git push` to save changed
-[DVC-files](/doc/user-guide/dvc-file-format) to Git. `dvc push` and`git push`
-are both different statements. `git push` updates remote references using     
-local references, sending objects to complete the given references.
+[DVC-files](/doc/user-guide/dvc-file-format) to Git.
+
+The `dvc push` command allows one to upload data to remote storage. It doesn't
+update any modified changes in the code or DVC-files. The changes made in the 
+the files or addition of any new file still needs to be saved by using        
+`git commit` and `git push`.
 
 See `dvc push` for more details and options for this command.
 
