@@ -141,7 +141,7 @@ $ dvc remote add myremote "s3://bucket/myremote"
 ```
 
 For more information about the variables DVC supports, please visit
-[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuration)
+[boto3 documentation](https://boto3.amazonaws.com/v1/documentation/api/latest/guide/configuration.html#environment-variable-configuratio)
 
 </details>
 
@@ -160,6 +160,10 @@ $ dvc remote modify myremote url "azure://ContainerName=remote;"
 ```dvc
 $ dvc remote modify myremote connection_string my-connection-string --local
 ```
+
+> For more information on configuring Azure Storage connection strings, visit
+> [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
+
 > The connection string contains access to data and is inserted into the
 > `.dvc/config file.` Therefore, it is safer to add the connection string with
 > the `--local` option, enforcing it to be written to a Git-ignored config file.

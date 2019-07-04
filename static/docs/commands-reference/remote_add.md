@@ -206,8 +206,8 @@ $ export AZURE_STORAGE_CONTAINER_NAME="my-container-name"
 $ dvc remote add myremote "azure://"
 ```
 
-> For configuring Azure Storage connection strings, visit this
-> [page](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
+> For more information on configuring Azure Storage connection strings, visit
+> [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
 
 - `connection string` - this is the connection string to access your Azure
   Storage Account. If you don't already have a storage account, you can create
