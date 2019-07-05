@@ -45,7 +45,7 @@ be no cycles, etc.
 
 Note that `dvc repro` provides an interface to check state and reproduce this
 graph later. This concept is similar to the one of the `Makefile` but DVC
-captures data and caches data artifacts along the way. Check this
+captures data and caches <abbr>data artifacts</abbr> along the way. Check this
 [example](/doc/get-started/example-pipeline) to learn more and try to build a
 pipeline.
 

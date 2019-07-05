@@ -221,8 +221,9 @@ file has changed.
 ## Example: Detecting remote file changes
 
 What if that remote file is one which will be updated regularly? The project
-goal might include regenerating a data artifact based on the updated data. A
-pipeline can be triggered to re-execute based on a changed external dependency.
+goal might include regenerating a <abbr>data artifact</abbr> based on the
+updated source. A pipeline can be triggered to re-execute based on a changed
+external dependency.
 
 Let us again use the [Getting Started](/doc/get-started) example, in a way which
 will mimic an updated external data source.

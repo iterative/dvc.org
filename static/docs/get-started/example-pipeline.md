@@ -16,7 +16,7 @@ itself is a sequence of transformation we apply to the data file:
 ![](/static/img/example-flow-2x.png)
 
 DVC helps to describe these transformations and capture actual data involved -
-input data set we are processing, intermediate artifacts (useful if some
+input data set we are processing, intermediate results (useful if some
 transformations take a lot of time to run), output models. This way we can
 capture what data and code were used to produce a specific model in a sharable
 and reproducible way.

@@ -18,10 +18,10 @@ store and share your data alongside your code.
 In this very basic scenario, DVC is a better replacement for `git-lfs` (check
 the [Related Technologies](/doc/understanding-dvc/related-technologies) to get a
 better sense why) and ad-hoc scripts on top of Amazon S3 (or name-it cloud) that
-are usually used to manage ML artifacts like model files, data files, etc.
-Unlike `git-lfs`, DVC doesn't require installing a server; it can be used
-on-premises (NAS, SSH, for example) or with any major cloud provider (S3, Google
-Cloud, Azure).
+are usually used to manage ML <abbr>data artifacts</abbr> like data files,
+models, etc. Unlike `git-lfs`, DVC doesn't require installing a server; it can
+be used on-premises (NAS, SSH, for example) or with any major cloud provider
+(S3, Google Cloud, Azure).
 
 Let's say you already have a project that uses a bunch of images that are stored
 in `images` directory and has a `model.pkl` file - your model file that is

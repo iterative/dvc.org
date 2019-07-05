@@ -69,12 +69,12 @@ to work with directory hierarchies with `dvc add`.
    the single DVC-file points to a file in the DVC cache that contains
    references to the files in the added hierarchy.
 
-In a DVC project `dvc add` can be used to version control any data artifacts -
-input, intermediate, output files and directories, as well as model files. It is
-useful by itself to go back and forth between different versions of datasets or
-models. Usually though, it is recommended to use `dvc run` and `dvc repro`
-mechanism to version control intermediate and output artifacts (like models).
-This way you bring data provenance and make your project reproducible.
+In a DVC project `dvc add` can be used to version control any <abbr>data
+artifact</abbr> (input, intermediate, or output files and directories, and model
+files). It is useful by itself to go back and forth between different versions
+of datasets or models. Usually though, it is recommended to use `dvc run` and
+`dvc repro` mechanism to version control intermediate and final results (like
+models). This way you bring data provenance and make your project reproducible.
 
 ## Options
 
