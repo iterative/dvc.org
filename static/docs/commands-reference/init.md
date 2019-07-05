@@ -1,6 +1,6 @@
 # init
 
-This command initializes a DVC environment in a current working directory.
+This command initializes a DVC environment in a local Git repository.
 
 ## Synopsis
 
@@ -38,7 +38,7 @@ this is your local directory and you cannot push it to any Git remote.
 
 ## Examples
 
-- Creating a new DVC repository on top of a Git repository:
+- Creating a new DVC repository (requires a Git repository):
 
 ```dvc
 $ mkdir tag_classifier

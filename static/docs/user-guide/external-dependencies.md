@@ -28,10 +28,6 @@ $ dvc run -d /home/shared/data.txt \
           cp /home/shared/data.txt data.txt
 ```
 
-> ```yml
-> TODO: What does the DVC-file looks like?
-> ```
-
 ### Amazon S3
 
 ```dvc
