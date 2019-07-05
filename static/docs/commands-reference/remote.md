@@ -43,7 +43,11 @@ Using DVC with a remote data storage is optional. By default, DVC is configured
 to use a local data storage only (usually `.dvc/cache` directory inside your
 repository), which enables basic DVC usage scenarios out of the box.
 
-`dvc remote` commands read or modify DVC
+[Add](/doc/commands-reference/remote-add),
+[default](/doc/commands-reference/remote-default),
+[list](/doc/commands-reference/remote-list),
+[modify](/doc/commands-reference/remote-modify), and
+[remove](/doc/commands-reference/remote-remove) commands read or modify DVC
 [config files](/doc/user-guide/dvc-files-and-directories). Alternatively,
 `dvc config` can be used or these files could be edited manually.
 
