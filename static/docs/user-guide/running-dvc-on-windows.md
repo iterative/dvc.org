@@ -11,16 +11,18 @@ turns out that most of the delays are coming from [NTFS](https://en.wikipedia.or
 (New Technology File System) not being very good at handling directories with
 large number of files. NTFS is a file system that the Windows NT operating
 system uses for storing and retrieving files on a hard disk. [Here](https://superuser.com/questions/15192/bad-ntfs-performance)
-is the resource for reference. We can significantly improve NTFS performance by
-following workarounds:
+is the resource for reference.
+
+We can significantly improve performance of DVC on Windows by following
+workarounds:
 
 ## Disable 8dot3 to improve the way NTFS manages the files
 
 With NTFS, user may want to disable 8dot3 as per
 [this](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc778996(v=ws.10))
 reference if he finds himself using over 300K files in a single directory. It
-enables NTFS to generate shorter file names and changes the way NTFS handles
-large files.
+enables NTFS to generate shorter file names and changes the way NTFS manages the
+files.
 
 ## Whitelist in Microsoft Windows Defender
 
