@@ -12,19 +12,16 @@ that most of the delays are coming from
 being very good at handling directories with large number of files. NTFS is a
 file system that the Windows NT operating system uses for storing and retrieving
 files on a hard disk.
-[Here](https://superuser.com/questions/15192/bad-ntfs-performance) is the
-resource for reference.
 
 We can significantly improve performance of DVC on Windows by following
 workarounds:
 
-## Disable 8dot3 to improve the way NTFS manages the files
+## Disable 8dot3 to disallow short-file name generation
 
 With NTFS, user may want to disable 8dot3 as per
 [this](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc778996(v=ws.10)>)
-reference if he finds himself using over 300K files in a single directory. It
-enables NTFS to generate shorter file names and changes the way NTFS manages the
-files.
+reference to disable the short-file name generation. It is important when the
+user has over 300K files in a single directory for better performance.
 
 ## Whitelist in Microsoft Windows Security
 
@@ -32,8 +29,8 @@ Microsoft includes the Windows Security antivirus program. If the user wants to
 avoid antivirus scans on specific folders or files to improve the performance,
 then whitelist them in Windows Security as per
 [this](https://support.microsoft.com/en-in/help/4028485/windows-10-add-an-exclusion-to-windows-security)
-guide. For example, we can whitelist DVC binaries and executable file on Windows
-to speed up the processes.
+guide. For example, we can whitelist DVC binary files on Windows to speed up the
+processes.
 
 ## Enable long folder/file paths
 
@@ -46,6 +43,6 @@ guide.
 ## Avoid directories with large number of files
 
 The performance of NTFS degrades while handling large volumes of files in a
-directory generally over 300k files.
+directory.
 [Here](https://stackoverflow.com/questions/197162/ntfs-performance-and-large-volumes-of-files-and-directories)
 is the resource for reference.
