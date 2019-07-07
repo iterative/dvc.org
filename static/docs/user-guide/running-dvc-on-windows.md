@@ -1,31 +1,20 @@
-# Caveats running DVC on Windows
+# Running DVC on Windows
 
-There can be few performance issues while running DVC on Windows by default. For
-some of these issues there are workarounds or configuration options available.
-Below are some of these issues detected so far and their workarounds. If you
-find any, please let us know!
+There can be few performance issues while running DVC on Windows by default.
+They are mostly related to NTFS (a file system that the Windows uses)
+characteristics and Windows built-in security mechanisms. Below are some
+workarounds that can help avoid these performance penalties:
 
-DVC in general is slower on Windows as compared to other platforms (like Linux,
-MacOS, etc.) that show pretty good performance. Upon investigation, it turns out
-that most of the delays are coming from
-[NTFS](https://en.wikipedia.org/wiki/NTFS) (New Technology File System) not
-being very good at handling directories with large number of files. NTFS is a
-file system that the Windows NT operating system uses for storing and retrieving
-files on a hard disk.
+## Disable short-file name generation
 
-We can significantly improve performance of DVC on Windows by following
-workarounds:
-
-## Disable 8dot3 to disallow short-file name generation
-
-With NTFS, user may want to disable 8dot3 as per
+With NTFS, user may want to disable `8dot3` as per
 [this](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc778996(v=ws.10)>)
 reference to disable the short-file name generation. It is important when the
 user has over 300K files in a single directory for better performance.
 
-## Whitelist in Microsoft Windows Security
+## Whitelist in Windows Security
 
-Microsoft includes the Windows Security antivirus program. If the user wants to
+Microsoft includes the Windows Security antivirus program. If user wants to
 avoid antivirus scans on specific folders or files to improve the performance,
 then whitelist them in Windows Security as per
 [this](https://support.microsoft.com/en-in/help/4028485/windows-10-add-an-exclusion-to-windows-security)
