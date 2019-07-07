@@ -76,7 +76,7 @@
       "autocomplete.md": "Shell Autocomplete",
       "plugins.md": "Plugins & Integrations",
       "analytics.md": "Anonymized Usage Analytics",
-      "running-dvc-on-windows.md": "Caveats Running DVC on Windows"
+      "running-dvc-on-windows.md": "Running DVC on Windows"
     }
   },
   {
