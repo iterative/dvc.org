@@ -12,10 +12,10 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 
 ## Description
 
-It removes DVC-files, and the entire `.dvc/` meta directory from the workspace.
-Note that the DVC cache will normally be removed as well, unless it's set to an
-external location with `dvc cache dir`. (By default a local cache is located in
-the `.dvc/cache` directory.) If you were using
+It removes DVC-files, and the entire `.dvc/` meta directory from the current
+workspace. Note that the DVC cache will normally be removed as well, unless it's
+set to an external location with `dvc cache dir`. (By default a local cache is
+located in the `.dvc/cache` directory.) If you were using
 [symlinks for linking data](/doc/user-guide/large-dataset-optimization) from the
 cache, DVC will replace them with copies, so that your data is intact after the
 DVC repository destruction.
@@ -43,11 +43,66 @@ $ ls -a
 
 $ dvc destroy
 
-This will destroy all information about your pipelines as well as cache in .dvc/cache.
+This will destroy all information about your pipelines, all data files, as well as cache in .dvc/cache.
 Are you sure you want to continue?
 yes
 
 $ ls -a
 
 .git code.py foo
+```
+
+## Example: External Cache Directory
+
+By default, the cache location is `.dvc/cache`. Let's change the cache location
+to `/mnt/cache` and then execute `dvc destroy` command:
+
+```dvc
+$ dvc init
+$ echo foo > foo
+$ dvc cache dir /mnt/cache
+$ dvc add foo
+```
+
+`dvc cache dir` changed the location of cache storage to exernal
+location. Content of DVC repository:
+
+
+```dvc
+$ ls -a
+
+.dvc .git code.py foo foo.dvc
+```
+
+Content of `/mnt/cache` directory:
+
+```dvc
+$ tree /mnt/cache
+/mnt/cache/
+└── b1
+    └── 946ac92492d2347c6235b4d2611184
+```
+
+Let's execute `dvc destroy`:
+
+```dvc
+$ dvc destroy
+
+This will destroy all information about your pipelines, all data files, as well as cache in .dvc/cache.
+Are you sure you want to continue? [y/n]
+yes
+
+ $ ls -a
+.git code.py foo
+```
+
+`dvc destroy` command removed DVC-files, and the entire `.dvc/` meta directory
+from the workspace. But the cache files that are present in the `/mnt/cache`
+directory still persist:
+
+```dvc
+ $ tree /mnt/cache
+ /mnt/cache/
+ └── b1
+     └── 946ac92492d2347c6235b4d2611184
 ```
