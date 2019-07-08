@@ -52,14 +52,10 @@ $ ls -a
 .git code.py foo
 ```
 
-## Example: External Cache directory
+## Example: External Cache Directory
 
 By default, the cache location is `.dvc/cache`. Let's change the cache location
-to `/mnt/cache` and then execute `dvc destroy` command.
-
-Change the cache directory to `/mnt/cache`.`dvc cache dir` changed the location
-of cache storage to exernal location. For more information on `dvc cache` visit
-[here](/doc/command-reference/cache-dir).
+to `/mnt/cache` and then execute `dvc destroy` command:
 
 ```dvc
 $ dvc init
@@ -68,7 +64,9 @@ $ dvc cache dir /mnt/cache
 $ dvc add foo
 ```
 
-Content of `DVC repo`:
+`dvc cache dir` changed the location of cache storage to exernal
+location. Content of DVC repository:
+
 
 ```dvc
 $ ls -a
@@ -99,10 +97,8 @@ yes
 ```
 
 `dvc destroy` command removed DVC-files, and the entire `.dvc/` meta directory
-from the current DVC workspace. But the cache files that are present in the
-`/mnt/cache` directory still persists.
-
-Contents of `/mnt/cache`:
+from the workspace. But the cache files that are present in the `/mnt/cache`
+directory still persist:
 
 ```dvc
  $ tree /mnt/cache
@@ -110,5 +106,3 @@ Contents of `/mnt/cache`:
  └── b1
      └── 946ac92492d2347c6235b4d2611184
 ```
-
-There are no changes or deletion done with the cache file.
