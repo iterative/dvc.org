@@ -7,8 +7,8 @@ the `.dvc` file extension (e.g. `process.dvc`), or with the default name
 to track your data and reproduce pipeline stages. The file itself contains a
 simple YAML format that could be easily written or altered manually.
 
-Check the [Syntax Highlighting](/doc/user-guide/plugins) to enable the
-highlighting for your editor.
+See the [Syntax Highlighting](/doc/user-guide/plugins) to learn how to enable
+the highlighting for your editor.
 
 Here is an example of a DVC-file:
 

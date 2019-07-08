@@ -158,7 +158,7 @@ details.)
 
 ### state
 
-State config options. Check the
+State config options. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more about the state file that is used for optimization.
 

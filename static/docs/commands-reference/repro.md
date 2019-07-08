@@ -112,7 +112,7 @@ specified), and updates stage files with the new checksum information.
 ## Examples
 
 For simplicity, let's build a pipeline defined below (if you want get your hands
-on something more real, check this
+on something more real, see this
 [mini-tutorial](/doc/get-started/example-pipeline)). It takes this `text.txt`
 file:
 

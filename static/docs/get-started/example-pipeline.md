@@ -9,7 +9,7 @@ it `python`. This is a short version of the [Tutorial](/doc/tutorial).
 
 In this example, we will focus on building a simple ML pipeline that takes an
 archive with StackOverflow posts and trains the prediction model and saves it as
-an output. Check [get started](/doc/get-started) to see links to other examples,
+an output. See [get started](/doc/get-started) to see links to other examples,
 tutorials, use cases if you want to cover other aspects of the DVC. The pipeline
 itself is a sequence of transformation we apply to the data file:
 
@@ -94,7 +94,7 @@ When we run `dvc add` `Posts.xml.zip`, DVC creates a
 
 `dvc init` created a new directory `example/.dvc/` with `config`, `.gitignore`
 files and the `cache` directory. These files and directories are hidden from
-users in general. Users don't interact with these files directly. Check
+users in general. Users don't interact with these files directly. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 

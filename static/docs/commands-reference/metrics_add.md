@@ -41,8 +41,8 @@ contains multiple metrics.
   `dvc metrics show`. Accepted value depends on the metric file type (`-t`
   option):
 
-  - `json` - check [JSONPath spec](https://goessner.net/articles/JsonPath/) to
-    see available options. For example, `"AUC"` extracts the value from the
+  - `json` - see [JSONPath spec](https://goessner.net/articles/JsonPath/) for
+    available options. For example, `"AUC"` extracts the value from the
     following json-formatted metric file: `{"AUC": "0.624652"}`.
   - `tsv`/`csv` - `row,column`, e.g. `1,2`. Indices are 0-based.
   - `htsv`/`hcsv` - `row,column name`. Row index is 0-based. First row is used

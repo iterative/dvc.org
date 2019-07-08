@@ -15,13 +15,12 @@ store and share your data alongside your code.
 
 ![](/static/img/model-versioning-diagram.png)
 
-In this very basic scenario, DVC is a better replacement for `git-lfs` (check
-the [Related Technologies](/doc/understanding-dvc/related-technologies) to get a
-better sense why) and ad-hoc scripts on top of Amazon S3 (or name-it cloud) that
-are usually used to manage ML <abbr>data artifacts</abbr> like data files,
-models, etc. Unlike `git-lfs`, DVC doesn't require installing a server; it can
-be used on-premises (NAS, SSH, for example) or with any major cloud provider
-(S3, Google Cloud, Azure).
+In this very basic scenario, DVC is a better replacement for `git-lfs` (see
+[Related Technologies](/doc/understanding-dvc/related-technologies)) and ad-hoc
+scripts on top of Amazon S3 (or any other cloud) that are usually used to manage
+ML <abbr>data artifacts</abbr> like data files, models, etc. Unlike `git-lfs`,
+DVC doesn't require installing a server; it can be used on-premises (NAS, SSH,
+for example) or with any major cloud provider (S3, Google Cloud, Azure).
 
 Let's say you already have a project that uses a bunch of images that are stored
 in `images` directory and has a `model.pkl` file - your model file that is
@@ -109,9 +108,9 @@ points to the `v1.0` of the data set. While code and model files are from the
 
 ![](/static/img/versioning.png)
 
-To share your data with others you need to setup a remote repository. Check the
-[Share Data And Model Files] use case to get a high level overview on how to
-setup it and use `dvc pull` and `dvc push` commands to collaborate. Please,
-don't forget to check the [versioning](/doc/get-started/example-versioning) get
-started example to get a hands-on experience with datasets and models
-versioning.
+To share your data with others you need to setup a remote repository. See the
+[Share Data And Model Files](/doc/use-cases/share-data-and-model-files) use case
+to get a high level overview on how to setup it and use `dvc pull` and
+`dvc push` commands to collaborate. Please, don't forget to see the
+[versioning](/doc/get-started/example-versioning) example to get a hands-on
+experience with datasets and models versioning.

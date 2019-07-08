@@ -54,7 +54,7 @@ $ dvc pull
 ```
 
 After executing this command, all the data files will be in the right place. You
-can check that by trying to reproduce the default goal:
+can confirm this by trying to reproduce the default goal:
 
 ```dvc
 # Nothing to reproduce:
