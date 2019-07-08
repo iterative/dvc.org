@@ -18,8 +18,7 @@ we have a dataset with 1 million images. With DVC, we can have multiple versions
 of a dataset without affecting each other work and without creating duplicates
 of a complete dataset. With `cache directory` set to `NFS server` you would
 avoid copying large files from NFS server to the machine and DVC will manage the
-links from the workspace to cache. For more information, visit
-[Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning).
+links from the workspace to cache.
 
 ## Preparation
 
