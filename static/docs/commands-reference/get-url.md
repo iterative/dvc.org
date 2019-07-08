@@ -103,16 +103,11 @@ following API methods are performed:
 - `list_objects_v2`, `list_objects`
 - `head_object`
 - `download_file`
-- `upload_file`
-- `delete_object`
-- `copy`
 
 So, make sure you have the following permissions enabled:
 
-- s3:ListBucket
-- s3:GetObject
-- s3:PutObject
-- s3:DeleteObject
+- `s3:ListBucket`
+- `s3:GetObject`
 
 </details>
 
