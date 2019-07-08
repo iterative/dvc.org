@@ -78,7 +78,7 @@ Instead of `dvc import-url`:
 $ dvc import-url https://example.com/path/to/data.csv data.csv
 ```
 
-It is possible to instead use `dvc run`:
+It is possible to instead use `dvc run`, for example (HTTP URL):
 
 ```dvc
 $ dvc run -d https://example.com/path/to/data.csv \
@@ -86,14 +86,14 @@ $ dvc run -d https://example.com/path/to/data.csv \
           wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a stage file (DVC-file) with an external dependency, and
-they produce equivalent results. The `dvc import-url` command saves the user
-from having to manually copy files from each of the remote storage schemes, and
-from having to install CLI tools for each service.
+Both methods generate an equivalent stage file (DVC-file) with an external
+dependency. The `dvc import-url` command saves the user from having to manually
+copy files from each of the remote storage schemes, and from having to install
+CLI tools for each service.
 
 When DVC inspects a DVC-file, its dependencies will be checked to see if any
 have changed. A changed dependency will appear in the `dvc status` report,
-indicating the need to reproduce this imported stage. When DVC inspects an
+indicating the need to reproduce this import stage. When DVC inspects an
 external dependency, it uses a method appropriate to that dependency to test its
 current status.
 
