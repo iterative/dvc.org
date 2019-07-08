@@ -3,9 +3,6 @@
 This command shows the system/environment information along with the DVC
 version.
 
-> Like `dvc init`, this is one of the few commands that doesn't require an
-> existing DVC project to run.
-
 ## Synopsis
 
 ```usage
@@ -13,6 +10,9 @@ usage: dvc version [-h] [-q | -v]
 ```
 
 ## Description
+
+> Like `dvc init`, this is one of the few commands that doesn't require an
+> existing DVC project to run.
 
 Running the command `dvc version` outputs the following information about the
 system/environment:

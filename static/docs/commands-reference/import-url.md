@@ -4,9 +4,6 @@ Download or copy file or directory from any supported URL (for example `s3://`,
 `ssh://`, and other protocols) or local directory to the <abbr>workspace</abbr>,
 and track changes in the remote source with DVC. Creates a DVC-file.
 
-> See `dvc import` to download and tack data from other DVC repositories (e.g.
-> GitHub URLs).
-
 > See also `dvc get-url` which corresponds to the first step this command
 > performs (just download the data).
 
@@ -39,6 +36,9 @@ lists the corresponding local path in the workspace. It records enough data from
 the remote file or directory to enable DVC to efficiently check it to determine
 if the local copy is out of date. DVC uses this remote URL to download the data
 to the workspace initially, and to re-download it upon changes.
+
+> See `dvc import` to download and tack data from other DVC repositories (e.g.
+> GitHub URLs).
 
 The `dvc import-url` command helps the user create such an external data
 dependency. The `url` argument should provide the location of the data to be
