@@ -34,7 +34,7 @@ outs:
 locked: True
 
 # Comments like this line persist through multiple executions of
-# dvc repro/commit but not through dvc run/add/import-url commands.
+# dvc repro/commit but not through dvc run/add/import-url/get-url commands.
 
  meta: # Special key to contain arbitary user data
   name: John
@@ -80,4 +80,5 @@ meta values are preserved between multiple executions of `dvc repro` and
 `dvc commit` commands.
 
 > Note that comments and meta values are not preserved when a DVC-file is
-> overwritten with the `dvc run`,`dvc add`,`dvc import-url` commands.
+> overwritten with the `dvc run`,`dvc add`,`dvc import-url`, and `dvc get-url`
+> commands.
