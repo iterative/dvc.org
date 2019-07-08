@@ -2,10 +2,10 @@
 
 In the modern software development environment, teams are working together on
 same dataset to get the results. It became necessary that data is accessible and
-every team member has a same updated dataset. For this example, we will be using
-NFS (Network File System) for storing and sharing files on the network. This
-allows you to have better resource utilization such as ability to store large
-datasets on a single host machine.
+every team member has a same updated dataset. NFS (Network File System) storage
+is widely used for storing and sharing files on the network. This allows you to
+have better resource utilization such as ability to store large datasets on a
+single host machine.
 
 With DVC, you can easily setup a shared cache storage on the NFS server that
 will allow your team to share and store data for your projects effectively as
@@ -72,11 +72,10 @@ Tell DVC to use the directory we've set up as an external cache location by
 running:
 
 ```dvc
-$ dvc config cache.dir /mnt/dataset/storage
+$ dvc cache dir /mnt/dataset/storage
 ```
 
-`config cache.dir /path/to/cache/directory` - sets cache directory location.
-Alternatively, we can also use `dvc cache dir /path/to/cache/directory`.
+`dvc cache dir /path/to/cache/directory` - sets cache directory location.
 
 ```dvc
 $ dvc config cache.type "reflink,symlink,hardlink,copy"
@@ -93,15 +92,15 @@ $ dvc config cache.protected true
 `cache.protected true` - to make links `read only` so that we you don't corrupt
 data accidentally present in the workspace.
 
+For more information on `config` options, visit
+[here](https://dvc.org/doc/commands-reference/config#configuration-sections).
+
 Also, let Git know about the changes we have done.
 
 ```dvc
 $ git add .dvc .gitignore
 $ git commit . -m "DVC cache location updated"
 ```
-
-For more information on `config` options, visit
-[here](https://dvc.org/doc/commands-reference/config#configuration-sections)
 
 ## Add data to DVC cache
 
