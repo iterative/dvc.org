@@ -82,7 +82,8 @@ $ dvc config cache.type "reflink,symlink,hardlink,copy"
 
 `cache.type "reflink,symlink,hardlink,copy"` - link type that DVC should use to
 link data files from cache to your workspace. It enables symlinks to avoid
-copying large files.
+copying large files. For more information, vist
+[here](/doc/user-guide/large-dataset-optimization).
 
 ```dvc
 $ dvc config cache.protected true
@@ -90,9 +91,6 @@ $ dvc config cache.protected true
 
 `cache.protected true` - to make links `read only` so that we you don't corrupt
 data accidentally present in the workspace.
-
-For more information on `config` options, visit
-[here](https://dvc.org/doc/commands-reference/config#configuration-sections).
 
 Also, let Git know about the changes we have done.
 
