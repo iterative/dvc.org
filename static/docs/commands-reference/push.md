@@ -24,7 +24,9 @@ environments and preserving data versions (input datasets, intermediate results,
 models, metrics, etc) remotely (S3, SSH, GCS, etc) are the most common use cases
 for these commands.
 
-The `dvc push` command allows one to upload data to remote storage.
+The `dvc push` command allows one to upload data to remote storage. It doesn't
+save any changes in the code or DVC-files. Those should be saved by using
+`git commit` and `git push`. 
 
 Under the hood a few actions are taken:
 
