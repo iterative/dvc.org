@@ -93,7 +93,7 @@ $ dvc config cache.protected true
 `cache.protected true` - to make links `read only` so that we you don't corrupt
 data accidentally present in the workspace.
 
-Also, let git know about the changes we have done.
+Also, let Git know about the changes we have done.
 
 ```dvc
 $ git add .dvc .gitignore
