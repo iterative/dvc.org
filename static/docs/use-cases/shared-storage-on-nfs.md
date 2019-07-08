@@ -5,14 +5,12 @@ same dataset to get the results. It became necessary that data is accessible and
 every team member has a same updated dataset. For this example, we will be using
 NFS (Network File System) for storing and sharing files on the network. This
 allows you to have better resource utilization such as ability to store large
-disk consuming dataset on a single host machine.
+datasets on a single host machine.
 
-For optimizing the performance, we can set the `cache directory` on NFS server
-by configuring the DVC repository from making changes in the DVC config file
-which is present in `.dvc/config` location. With DVC, you can easily setup a
-shared cache storage on the NFS server that will allow your team to share and
-store data for your projects effectively as possible and have a workspace
-restoration/switching speed as instant as `git checkout` for your code.
+With DVC, you can easily setup a shared cache storage on the NFS server that
+will allow your team to share and store data for your projects effectively as
+possible and have a workspace restoration/switching speed as instant as
+`git checkout` for your code.
 
 With large data files it is better to set the cache directory to external NFS.
 Not only just it will cache the data faster but also version the data. Suppose,
@@ -39,7 +37,7 @@ directory on server side where all data will be stored.
 $ mkdir -p /storage
 ```
 
-You will have to make sure that the directory has proper permissions setup,so
+You will have to make sure that the directory has proper permissions setup, so
 that every one on your team can read and write to it and can access cache files
 written by others. The most straightforward way to do that is to make sure that
 you and your colleagues are members of the same group (e.g. 'users') and that
@@ -57,47 +55,53 @@ host server from your local machine.
 ## Configuring Cache location
 
 After mounting the shared directory on client side. Assuming project code is
-present in `/home/user/project1`. Let's initialize a `dvc repo`.
+present in `/project1`. Let's initialize a `dvc repo`.
 
 ```dvc
-$ cd /home/user/project1/
+$ cd /project1/
 $ git init
 $ dvc init
 $ git add .dvc .gitignore
 $ git commit . -m "initialize DVC"
 ```
 
-With `dvc init`, we initialized a DVC repository. DVC will start tracking all
-the changes.
+With `dvc init`, we initialized a DVC repository. For more information, visit
+[here](/doc/get-started/initialize).
 
 Tell DVC to use the directory we've set up as an external cache location by
 running:
 
 ```dvc
 $ dvc config cache.dir /mnt/dataset/storage
-$ dvc config cache.type "reflink,symlink,hardlink,copy"
-$ dvc config cache.protected true
-$ git add .dvc .gitignore
-$ git commit . -m "DVC cache location updated"
 ```
-
-By default cache is present in the `.dvc/cache` location. `dvc cache dir`
-changes the location of cache directory to `/mnt/dataset/storage`
 
 `config cache.dir /path/to/cache/directory` - sets cache directory location.
 Alternatively, we can also use `dvc cache dir /path/to/cache/directory`.
+
+```dvc
+$ dvc config cache.type "reflink,symlink,hardlink,copy"
+```
 
 `cache.type "reflink,symlink,hardlink,copy"` - link type that DVC should use to
 link data files from cache to your workspace. It enables symlinks to avoid
 copying large files.
 
+```dvc
+$ dvc config cache.protected true
+```
+
 `cache.protected true` - to make links `read only` so that we you don't corrupt
 data accidentally present in the workspace.
 
+Also, let git know about the changes we have done.
+
+```dvc
+$ git add .dvc .gitignore
+$ git commit . -m "DVC cache location updated"
+```
+
 For more information on `config` options, visit
 [here](https://dvc.org/doc/commands-reference/config#configuration-sections)
-
-Also, let git know about the changes we have done.
 
 ## Add data to DVC cache
 
@@ -106,14 +110,14 @@ a dataset).
 
 ```dvc
 $ cd /mnt/dataset/
-$ cp -r . /home/user/project1/
-$ cd /home/user/project1
+$ cp -r . /project1/
+$ cd /project1
 $ mv /mnt/dataset/project1_data/ data/
 $ dvc add data
 ```
 
 After copying the data, we have moved the data that is present in the
-`/mnt/dataset/project1_data/`vto `./data` directory. This is only done once for
+`/mnt/dataset/project1_data/` to `./data` directory. This is only done once for
 a dataset.
 
 `dvc add data` will take files in `data` directory under DVC control. By default
