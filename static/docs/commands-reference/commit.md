@@ -47,8 +47,8 @@ want. Let's take a look at what is happening in the fist scenario closely:
 Normally DVC commands like `dvc add`, `dvc repro` or `dvc run`, commit the data
 to the DVC cache as the last step. What _commit_ means is that DVC:
 
-- Computes a checksum for the file/directory.
-- Enters the checksum and file name into the DVC-file.
+- Computes a checksum for the file/directory and DVC-file.
+- Enters the checksums of the outputs, DVC-file and file name into the DVC-file.
 - Tells the SCM to ignore the file/directory (e.g. add entry to `.gitignore`).
   Note that if the workspace was initialized with no SCM support
   (`dvc init --no-scm`), this does not happen.
