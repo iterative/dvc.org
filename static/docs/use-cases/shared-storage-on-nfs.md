@@ -54,10 +54,10 @@ host server from your local machine.
 ## Configuring Cache location
 
 After mounting the shared directory on client side. Assuming project code is
-present in `/project1`. Let's initialize a `dvc repo`.
+present in `/project`. Let's initialize a `dvc repo`.
 
 ```dvc
-$ cd /project1/
+$ cd /project/
 $ git init
 $ dvc init
 $ git add .dvc .gitignore
@@ -108,15 +108,15 @@ a dataset).
 
 ```dvc
 $ cd /mnt/dataset/
-$ cp -r . /project1/
+$ cp -r . /project/
 $ cd /project1
-$ mv /mnt/dataset/project1_data/ data/
+$ mv /mnt/dataset/project_data/ data/
 $ dvc add data
 ```
 
 After copying the data, we have moved the data that is present in the
-`/mnt/dataset/project1_data/` to `./data` directory. This is only done once for
-a dataset.
+`/mnt/dataset/project_data/` to `./data` directory. This is only done once for a
+dataset.
 
 `dvc add data` will take files in `data` directory under DVC control. By default
 an added file is committed to the DVC cache.
