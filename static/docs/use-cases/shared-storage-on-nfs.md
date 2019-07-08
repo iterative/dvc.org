@@ -67,8 +67,8 @@ $ git commit . -m "initialize DVC"
 With `dvc init`, we initialized a DVC repository. For more information, visit
 [here](/doc/get-started/initialize).
 
-Tell DVC to use the directory we've set up as an external cache location by
-running:
+**Tell DVC to use the directory we've set up as an external cache location by
+running:**
 
 ```dvc
 $ dvc cache dir /mnt/dataset/storage
