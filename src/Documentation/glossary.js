@@ -8,12 +8,12 @@ export default {
       name: 'Workspace directory',
       match: ['workspace'],
       desc:
-        'Also abbreviated as workspace, it is the root directory of a ' +
-        'project where DVC is initialized by running `dvc init` command. ' +
-        'Therefore, this directory will contain a `.dvc` directory as well.'
+        'The **workspace** contains all of your DVC **project** files and ' +
+        "directories. It's typically also a Git **repository**. See also " +
+        '[`dvc init`](/doc/commands-reference/init).'
     },
     {
-      name: 'Cache directory',
+      name: 'DVC cache',
       match: ['cache'],
       desc:
         'DVC cache is a hidden storage which is found at `.dvc/cache`. This ' +
