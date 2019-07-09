@@ -33,15 +33,18 @@ export default class Documentation extends Component {
       headings: [],
       pageNotFound: false,
       isMenuOpen: false,
-      load: false
+      load: false,
+      sidebar: SidebarHelper.sidebarTransform(sidebar)
     }
   }
 
   componentDidMount() {
+    console.log(SidebarHelper.sidebarTransform(sidebar))
     this.loadStateFromURL()
     SidebarHelper.initDocsearch()
     window.addEventListener('popstate', this.loadStateFromURL)
     this.ps = new PerfectScrollbar('#sidebar-menu', {
+      // wheelPropagation: window.innerWidth <= 572
       // wheelPropagation: window.innerWidth <= 572
       wheelPropagation: true
     })
@@ -55,14 +58,15 @@ export default class Documentation extends Component {
     window.removeEventListener('popstate', this.loadStateFromURL)
   }
 
+  //done
   loadStateFromURL = () => {
     let path = window.location.pathname.split('/')
     let length = path.length
-    let { file, indexes } = SidebarHelper.getFileFromUrl(path)
+    let { file, folder, indexes } = SidebarHelper.getFileFromUrl(path)
     this.loadFile({
       section: length > 2 ? indexes[0] : 0,
-      subsection: indexes.length > 2 ? indexes[1] : null,
-      file: file,
+      indexFile: file,
+      folder: folder,
       setHeadings: true
     })
   }
@@ -79,11 +83,11 @@ export default class Documentation extends Component {
     return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`
   }
 
-  setCurrentPath = (section, subsection, file) => {
+  setCurrentPath = (sectionIndex, indexFile) => {
     window.history.pushState(
       null,
       null,
-      this.getLinkHref(section, subsection, file)
+      this.getLinkHref(sectionIndex, indexFile)
     )
   }
 
@@ -94,12 +98,12 @@ export default class Documentation extends Component {
     this.loadFile({ section, file, setHeadings: false })
   }
 
-  onFileSelect = (section, subsection, file, e) => {
-    e && e.preventDefault()
-    this.setCurrentPath(section, subsection, file.indexFile || file)
-    this.loadFile({ section, subsection, file, setHeadings: true })
+  onFileSelect = (sectionIndex, subsection, indexFile, e) => {
+    e && preventIndexDefault()
+    this.setCurrentPath(sectionIndex, indexFile)
+    this.loadFile(sectionIndex, Indexfile, true)
   }
-
+  //done
   updateStateWithCurrentFile = (
     markdown,
     currentSection,
@@ -122,25 +126,16 @@ export default class Documentation extends Component {
       }
     )
   }
-
-  setCurrentFile = (
-    section,
-    subsection,
-    file,
-    folderpath,
-    filepath,
-    setHeadings
-  ) => {
+  //done
+  setCurrentFile = (sectionIndex, indexFile, folder, setHeadings) => {
     const helper = SidebarHelper
-    fetch(helper.combineToPath([folderpath, filepath]))
+    fetch(helper.combineToPath([folder, indexFile]))
       .then(res => {
         res.text().then(markdown => {
-          const currentFile =
-            helper.getFullPath(folderpath, file) ||
-            helper.getPath(section, subsection, file)
+          const currentFile = helper.combineToPath([folder, indexFile])
           this.updateStateWithCurrentFile(
             markdown,
-            section,
+            sectionIndex,
             currentFile,
             setHeadings
           )
@@ -150,29 +145,17 @@ export default class Documentation extends Component {
         window.location.reload()
       })
   }
-
-  loadFile = ({ section, subsection, file, setHeadings }) => {
+  //done
+  loadFile = (sectionIndex, indexFile, folder, setHeadings) => {
     this.setState({ load: true })
-    let sect = sidebar[section]
-    let subsect = sect.files[subsection]
-    let subfolder = subsect && subsect.folder
-    let folderpath = file.folder || subfolder || sect.folder
-    let filepath = file.indexFile || file.files || file
-    this.setCurrentFile(
-      section,
-      subsection,
-      file,
-      folderpath,
-      filepath,
-      setHeadings
-    )
+    this.setCurrentFile(sectionIndex, indexFile, folder, setHeadings)
   }
-
+  //done
   setHeadings = text => {
     let matches = SidebarHelper.parseHeadings(text)
     this.setState({ headings: matches }, SidebarHelper.autoScroll)
   }
-
+  //done
   toggleMenu = () => {
     this.setState(prevState => ({
       isMenuOpen: !prevState.isMenuOpen
