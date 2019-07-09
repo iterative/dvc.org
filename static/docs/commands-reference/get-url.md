@@ -18,18 +18,15 @@ positional arguments:
 
 ## Description
 
-> Like `dvc init`, this is one of the few commands that doesn't require an
-> existing DVC project to run.
-
 In some cases it's convenient to get a data file or directory from a remote
 location. The `dvc get-url` command helps the user do so. The `url` argument
 should provide the location of the data to be downloaded, while `out` can be
 used to specify the (path and) file name desired for the downloaded data file or
 directory.
 
-It's important to note that this command does not require an initialized
-repository to work in. It's a single-purpose command that can be used out of the
-box after installing DVC.
+> Like `dvc init`, this is one of the few commands that doesn't require an
+> existing DVC project to run. It's a single-purpose command that can be used
+> out of the box after installing DVC.
 
 DVC supports several types of (local or) remote locations (protocols):
 
@@ -50,7 +47,7 @@ DVC supports several types of (local or) remote locations (protocols):
 Another way to understand the `dvc get-url` command is as a tool for downloading
 data files.
 
-> See `dvc get` to download data from other DVC repositories (e.g. GitHub URLs).
+> See `dvc get` to download data from other DVC repositories (e.g. Github URLs).
 
 On GNU/Linux systems for example, instead of `dvc get-url` with HTTP(S) it's
 possible to instead use:
@@ -98,16 +95,22 @@ DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could the options described in `dvc remote modify`.
 
 We use `boto3` library to set up a client and communicate with AWS S3. The
-following API methods are performed:
+following API methods may be performed:
 
 - `list_objects_v2`, `list_objects`
 - `head_object`
 - `download_file`
+- `upload_file`
+- `delete_object`
+- `copy`
 
-So, make sure you have the following permissions enabled:
+So make sure you have the following permissions enabled to enable all the above
+operations:
 
 - `s3:ListBucket`
 - `s3:GetObject`
+- `s3:PutObject`
+- `s3:DeleteObject`
 
 </details>
 
