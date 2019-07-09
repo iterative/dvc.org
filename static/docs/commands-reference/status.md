@@ -8,8 +8,7 @@ cache and remote cache.
 
 ```usage
 usage: dvc status [-h] [-v] [-j JOBS] [--show-checksums] [-q] [-c]
-                  [-r REMOTE] [-a] [-T] [-d]
-                  [targets [targets ...]]
+                  [-r REMOTE] [-a] [-T] [-d] [targets [targets ...]]
 
 positional arguments:
   targets        Limit command scope to these DVC-files. Using -R,
