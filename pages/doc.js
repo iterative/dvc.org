@@ -60,7 +60,6 @@ export default class Documentation extends Component {
     let path = window.location.pathname.split('/')
     let length = path.length
     let { file, folder, indexes } = SidebarHelper.getFileFromUrl(path)
-    console.log(indexes[0])
     let sectioIndex = length > 2 ? indexes[0] : 0
     this.loadFile(sectioIndex, file, folder, true)
   }
@@ -94,7 +93,7 @@ export default class Documentation extends Component {
     this.loadFile(sectionIndex, file, folder, false)
   }
   //done
-  onFileSelect = (sectionIndex, subsection, folder, indexFile, e) => {
+  onFileSelect = (sectionIndex, indexFile, folder, e) => {
     e && preventIndexDefault()
     this.setCurrentPath(sectionIndex, indexFile)
     this.loadFile(sectionIndex, indexFile, folder, true)
@@ -143,7 +142,6 @@ export default class Documentation extends Component {
   }
   //done
   loadFile = (sectionIndex, indexFile, folder, setHeadings) => {
-    console.log(sectionIndex)
     this.setState({ load: true })
     this.setCurrentFile(sectionIndex, indexFile, folder, setHeadings)
   }
@@ -170,8 +168,6 @@ export default class Documentation extends Component {
       load,
       sidebar
     } = this.state
-    console.log(sidebar)
-    console.log(currentSection)
     const directory = sidebar[currentSection].folder
     const githubLink = `https://github.com/iterative/dvc.org/blob/master${directory}/${currentFile}`
     const sectionName = sidebar[currentSection].indexFile
@@ -192,7 +188,7 @@ export default class Documentation extends Component {
             </SearchArea>
 
             <SidebarMenu
-              sidebar={sidebar}
+              sidebar={this.state.sidebar}
               currentSection={currentSection}
               currentFile={currentFile}
               headings={headings}

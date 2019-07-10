@@ -3,7 +3,6 @@ import $ from 'jquery'
 import DownloadButton from '../../DownloadButton'
 import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
-import sidebar from '../sidebar'
 import Preloader from '../../Preloader/Preloader'
 import SidebarHelper from './SideHelper'
 const MENU_ID = 'sidebar-menu'
@@ -25,7 +24,7 @@ export default class SidebarMenu extends React.Component {
 
   componentDidMount() {
     this.collapse()
-    const names = SidebarHelper.getNamesArr(sidebar)
+    const names = SidebarHelper.getNamesArr(this.props.sidebar)
     this.setState({
       names: names,
       loading: false
@@ -50,7 +49,7 @@ export default class SidebarMenu extends React.Component {
     )
   }
 
-  renderSection = (section, file, index, fileIndex) => {
+  renderSection = (section, file, sectionIndex, fileIndex) => {
     const { getLinkHref, onFileSelect, currentFile } = this.props
     const subgroup = file.files || null
     const folderPath = SidebarHelper.getFullPath(file.folder, file.indexFile)
@@ -70,8 +69,8 @@ export default class SidebarMenu extends React.Component {
         <div>
           <SectionLink
             level={2}
-            href={getLinkHref(index, null, file.indexFile)}
-            onClick={e => onFileSelect(index, null, file, e)}
+            href={getLinkHref(sectionIndex, null, file.indexFile)}
+            onClick={e => onFileSelect(sectionIndex, null, file, e)}
             isActive={isFileActive}
           >
             {FileOrSubsectionTitle}

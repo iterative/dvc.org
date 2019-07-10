@@ -109,36 +109,50 @@ export default class SideHelper {
 
   static combineToPath = subPaths => [].concat(subPaths).join('/')
 
-  //возвращает indexFile
+  //done
   static getZeroFile = arr => {
-    console.log(arr)
     const firstItem = arr[0]
     const { files, indexFile } = firstItem
     return (
-      (files && files.length > 0 && SideHelper.getZeroFile(files)) || indexFile
+      (!indexFile &&
+        files &&
+        files.length > 0 &&
+        SideHelper.getZeroFile(files)) ||
+      indexFile
     )
   }
-
+  //done
+  static getZeroFolder = arr => {
+    const firstItem = arr[0]
+    const { files, folder, indexFile } = firstItem
+    return (
+      (!indexFile &&
+        files &&
+        files.length > 0 &&
+        SideHelper.getZeroFile(files)) ||
+      folder
+    )
+  }
+  //done
   static findFileByName = (item, find) => {
     let file = null
-    if (
-      SideHelper.removeExtensionFromFileName(item.indexFile || item) === find
-    ) {
-      file = item
+    if (SideHelper.removeExtensionFromFileName(item.indexFile) === find) {
+      file = item.indexFile
     } else if (kebabCase(item.name || '') === find) {
-      file = item.files[0]
+      file = item.files[0].indexFile
     }
     return file
   }
-
-  static getFile = (arr, find, indexPush, setFile) => {
+  //done
+  static getFile = (arr, find, indexPush, setFile, setFolder) => {
     arr.forEach((item, index) => {
       let newfile = SideHelper.findFileByName(item, find)
       if (newfile) {
         indexPush(index)
         setFile(newfile)
+        setFolder(item.folder)
       } else if (item.files) {
-        SideHelper.getFile(item.files, find, indexPush, setFile)
+        SideHelper.getFile(item.files, find, indexPush, setFile, setFolder)
       }
     })
   }
@@ -147,7 +161,9 @@ export default class SideHelper {
     let newsidebar = SideHelper.sidebarTransform(sidebar)
     let indexes = [],
       file = SideHelper.getZeroFile(newsidebar),
-      newpath = SideHelper.transformAbsoluteToDocRelatedPath(path)
+      newpath = SideHelper.transformAbsoluteToDocRelatedPath(path),
+      folder = SideHelper.getZeroFolder(newsidebar)
+    console.log(file)
     newpath.forEach(part => {
       SideHelper.getFile(
         newsidebar,
@@ -157,12 +173,17 @@ export default class SideHelper {
         },
         f => {
           file = f
+        },
+        fl => {
+          folder = fl
         }
       )
     })
+    console.log(file)
     return {
       file: file,
-      indexes: indexes
+      indexes: indexes,
+      folder: folder
     }
   }
 
