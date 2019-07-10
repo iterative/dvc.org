@@ -39,13 +39,10 @@ export default class Documentation extends Component {
   }
 
   componentDidMount() {
-    console.log(SidebarHelper.sidebarTransform(sidebar))
     this.loadStateFromURL()
     SidebarHelper.initDocsearch()
     window.addEventListener('popstate', this.loadStateFromURL)
     this.ps = new PerfectScrollbar('#sidebar-menu', {
-      // wheelPropagation: window.innerWidth <= 572
-      // wheelPropagation: window.innerWidth <= 572
       wheelPropagation: true
     })
   }
@@ -63,16 +60,13 @@ export default class Documentation extends Component {
     let path = window.location.pathname.split('/')
     let length = path.length
     let { file, folder, indexes } = SidebarHelper.getFileFromUrl(path)
-    this.loadFile({
-      section: length > 2 ? indexes[0] : 0,
-      indexFile: file,
-      folder: folder,
-      setHeadings: true
-    })
+    console.log(indexes[0])
+    let sectioIndex = length > 2 ? indexes[0] : 0
+    this.loadFile(sectioIndex, file, folder, true)
   }
 
-  getLinkHref = (section, subsection = null, file = null) => {
-    let sect = sidebar[section]
+  getLinkHref = (sectionIndex, subsection = null, file = null) => {
+    let sect = this.state.sidebar[sectionIndex]
     let removeExtFunc = filename =>
       SidebarHelper.removeExtensionFromFileName(filename)
     const sectionSlug = removeExtFunc(sect.indexFile) || kebabCase(sect.name)
@@ -90,18 +84,20 @@ export default class Documentation extends Component {
       this.getLinkHref(sectionIndex, indexFile)
     )
   }
-
-  onSectionSelect = (section, e) => {
+  //done
+  onSectionSelect = (sectionIndex, folder, e) => {
     e && e.preventDefault()
-    const file = sidebar[section].indexFile || sidebar[section].files[0]
-    e && this.setCurrentPath(section)
-    this.loadFile({ section, file, setHeadings: false })
+    let sidebar = this.state.sidebar
+    const file =
+      sidebar[sectionIndex].indexFile || sidebar[sectionIndex].files[0]
+    e && this.setCurrentPath(sectionIndex)
+    this.loadFile(sectionIndex, file, folder, false)
   }
-
-  onFileSelect = (sectionIndex, subsection, indexFile, e) => {
+  //done
+  onFileSelect = (sectionIndex, subsection, folder, indexFile, e) => {
     e && preventIndexDefault()
     this.setCurrentPath(sectionIndex, indexFile)
-    this.loadFile(sectionIndex, Indexfile, true)
+    this.loadFile(sectionIndex, indexFile, folder, true)
   }
   //done
   updateStateWithCurrentFile = (
@@ -147,6 +143,7 @@ export default class Documentation extends Component {
   }
   //done
   loadFile = (sectionIndex, indexFile, folder, setHeadings) => {
+    console.log(sectionIndex)
     this.setState({ load: true })
     this.setCurrentFile(sectionIndex, indexFile, folder, setHeadings)
   }
@@ -170,9 +167,11 @@ export default class Documentation extends Component {
       markdown,
       pageNotFound,
       isMenuOpen,
-      load
+      load,
+      sidebar
     } = this.state
-
+    console.log(sidebar)
+    console.log(currentSection)
     const directory = sidebar[currentSection].folder
     const githubLink = `https://github.com/iterative/dvc.org/blob/master${directory}/${currentFile}`
     const sectionName = sidebar[currentSection].indexFile
