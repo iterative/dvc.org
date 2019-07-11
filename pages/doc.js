@@ -32,13 +32,28 @@ export default class Documentation extends Component {
       markdown: '',
       headings: [],
       pageNotFound: false,
-      isMenuOpen: false
+      isMenuOpen: false,
+      search: true
     }
   }
 
   componentDidMount() {
     this.loadStateFromURL()
-    this.initDocsearch()
+    try {
+      docsearch
+      this.setState(
+        {
+          search: true
+        },
+        () => {
+          this.initDocsearch()
+        }
+      )
+    } catch (ReferenceError) {
+      this.setState({
+        search: false
+      })
+    }
     window.addEventListener('popstate', this.loadStateFromURL)
     this.ps = new PerfectScrollbar('#sidebar-menu', {
       // wheelPropagation: window.innerWidth <= 572
@@ -216,9 +231,11 @@ export default class Documentation extends Component {
           </SideToggle>
 
           <Side isOpen={isMenuOpen}>
-            <SearchArea>
-              <SearchForm />
-            </SearchArea>
+            {this.state.search && (
+              <SearchArea>
+                <SearchForm />
+              </SearchArea>
+            )}
 
             <SidebarMenu
               sidebar={sidebar}
