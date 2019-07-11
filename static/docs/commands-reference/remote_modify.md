@@ -31,8 +31,8 @@ specific. See below examples and a list of per remote type - AWS S3, Google
 cloud, Azure, SSH, ALiyun OSS, and others.
 
 This command modifies a `remote` section in the DVC project's
-[config file](/doc/user-guide/dvc-files-and-directories). Alternatively,
-`dvc config` or manual editing could be used to change the configuration.
+[config file](/doc/commands-reference/config). Alternatively, `dvc config` or
+manual editing could be used to change the configuration.
 
 ## Options
 
@@ -45,12 +45,11 @@ This command modifies a `remote` section in the DVC project's
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/dvc.config`) instead of `.dvc/config`.
 
-- `--local` - modify a local
-  [config file](/doc/user-guide/dvc-files-and-directories) instead of
-  `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored. This
-  is useful when you need to specify private config options in your config that
-  you don't want to track and share through Git (credentials, private locations,
-  etc).
+- `--local` - modify a local [config file](/doc/commands-reference/config)
+  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
+  Git-ignored. This is useful when you need to specify private config options in
+  your config that you don't want to track and share through Git (credentials,
+  private locations, etc).
 
 ## Examples
 

@@ -26,10 +26,10 @@ Including names and URLs.
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/dvc.config`) instead of `.dvc/config`.
 
-- `--local` - list remotes specified in the
-  [local](/doc/user-guide/dvc-files-and-directories) configuration file
-  (`.dvc/config.local`). Local config files store private configuration that
-  should not be tracked by SCM (Git).
+- `--local` - list remotes specified in the local
+  [config file](/doc/commands-reference/config) (`.dvc/config.local`). Local
+  config files store private configuration that should not be tracked by SCM
+  (Git).
 
 ## Examples
 

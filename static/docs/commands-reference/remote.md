@@ -48,8 +48,8 @@ repository), which enables basic DVC usage scenarios out of the box.
 [list](/doc/commands-reference/remote-list),
 [modify](/doc/commands-reference/remote-modify), and
 [remove](/doc/commands-reference/remote-remove) commands read or modify DVC
-[config files](/doc/user-guide/dvc-files-and-directories). Alternatively,
-`dvc config` can be used or these files could be edited manually.
+[config files](/doc/commands-reference/config). Alternatively, `dvc config` can
+be used or these files could be edited manually.
 
 For the typical process to share the project via remote, see
 [Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
