@@ -25,9 +25,8 @@ used to specify the path to the data to be downloaded within the repo.
 
 <!-- A file of the same name is then created in the working directory? -->
 
-> Like `dvc init`, this is one of the few commands that doesn't require an
-> existing DVC project to run. It's a single-purpose command that can be used
-> out of the box after installing DVC.
+> This command doesn't require an existing DVC project to run in. It's a
+> single-purpose command that can be used out of the box after installing DVC.
 
 <!-- SSH Git URL supported or only HTTPS? -->
 

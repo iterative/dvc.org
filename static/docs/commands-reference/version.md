@@ -11,8 +11,7 @@ usage: dvc version [-h] [-q | -v]
 
 ## Description
 
-> Like `dvc init`, this is one of the few commands that doesn't require an
-> existing DVC project to run.
+> This command doesn't require an existing DVC project to run in.
 
 Running the command `dvc version` outputs the following information about the
 system/environment:
