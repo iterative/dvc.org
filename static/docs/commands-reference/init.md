@@ -1,6 +1,7 @@
 # init
 
-This command initializes a DVC environment in a local Git repository.
+This command initializes a DVC project on a Git repository where you're working
+from.
 
 ## Synopsis
 
