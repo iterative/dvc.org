@@ -35,13 +35,12 @@ changed.
 > See `dvc import-url` to download and tack data from other supported URLs.
 
 The `dvc import` command helps the user create such an external data dependency.
-The `url` argument should provide the external DVC project's Git repository URL,
-while `path` is used to specify the path to the data to be imported within the
-repo. An import stage (DVC-file) is then created with the name of the data
-artifact, similar to having used `dvc run` to generate the same output as done
-in the external DVC project.
-
-<!-- git@github.com:... (SSH?) URL also supported! -->
+The `url` argument should provide the external DVC project's Git repository URL
+(both HTTP and SSH protocols supported, e.g. `[user@]server:project.git`), while
+`path` is used to specify the path to the data to be imported within the repo.
+An import stage (DVC-file) is then created with the name of the data artifact,
+similar to having used `dvc run` to generate the same output as done in the
+external DVC project.
 
 <!-- External path to another DVC repo supported? No -->
 

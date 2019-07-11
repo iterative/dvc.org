@@ -20,15 +20,14 @@ positional arguments:
 
 In some cases it's convenient to get a <abbr>data artifact</abbr> from another
 DVC repository. The `dvc get` command helps the user do so. The `url` argument
-should provide the external DVC project's Git repository URL, while `path` is
-used to specify the path to the data to be downloaded within the repo.
+should provide the external DVC project's Git repository URL (both HTTP and SSH
+protocols supported, e.g. `[user@]server:project.git`), while `path` is used to
+specify the path to the data to be downloaded within the repo.
 
 <!-- A file of the same name is then created in the working directory? -->
 
 > This command doesn't require an existing DVC project to run in. It's a
 > single-purpose command that can be used out of the box after installing DVC.
-
-<!-- git@github.com:... (SSH?) URL also supported! -->
 
 <!-- External path to another DVC repo supported? No -->
 
