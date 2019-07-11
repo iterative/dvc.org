@@ -13,8 +13,8 @@ source with DVC. Creates a DVC-file.
 usage: dvc import [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url                   DVC repository URL (Git server link).
-  path                  Path to data within DVC repository.
+  url         URL of Git repository with DVC project to download from.
+  path        Path to data within DVC repository.
 ```
 
 ## Description
