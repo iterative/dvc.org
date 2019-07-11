@@ -11,8 +11,6 @@ usage: dvc version [-h] [-q | -v]
 
 ## Description
 
-Note that this command doesn't require an existing DVC project to run in.
-
 Running the command `dvc version` outputs the following information about the
 system/environment:
 
