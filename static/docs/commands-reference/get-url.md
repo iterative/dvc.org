@@ -24,8 +24,8 @@ should provide the location of the data to be downloaded, while `out` can be
 used to specify the (path and) file name desired for the downloaded data file or
 directory.
 
-> This command doesn't require an existing DVC project to run in. It's a
-> single-purpose command that can be used out of the box after installing DVC.
+Note that this command doesn't require an existing DVC project to run in. It's a
+single-purpose command that can be used out of the box after installing DVC.
 
 DVC supports several types of (local or) remote locations (protocols):
 

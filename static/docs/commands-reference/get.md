@@ -26,8 +26,8 @@ specify the path to the data to be downloaded within the repo.
 
 <!-- A file of the same name is then created in the working directory? -->
 
-> This command doesn't require an existing DVC project to run in. It's a
-> single-purpose command that can be used out of the box after installing DVC.
+Note that this command doesn't require an existing DVC project to run in. It's a
+single-purpose command that can be used out of the box after installing DVC.
 
 > See `dvc get-url` to download data from other supported URLs.
 
