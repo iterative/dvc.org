@@ -20,6 +20,15 @@ export default {
         'storage is used to manage different versions of files which are ' +
         'under DVC control. For more information on cache, please refer to ' +
         'the this [guide](/doc/commands-reference/config#cache).'
+    },
+    {
+      name: 'Data artifact',
+      match: ['data artifact', 'data artifacts'],
+      desc:
+        'Any **data** file or directory, as well as intermediate or final ' +
+        'result (such as extracted features or a ML model file) that is ' +
+        'under DVC control. Refer to [Data and Model Files Versioning]' +
+        '(/doc/use-cases/data-and-model-files-versioning) for more details.'
     }
   ]
 }
