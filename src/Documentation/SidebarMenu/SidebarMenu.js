@@ -48,51 +48,37 @@ export default class SidebarMenu extends React.Component {
       </Menu>
     )
   }
-
-  renderSection = (section, file, sectionIndex, fileIndex) => {
+  //done
+  renderSection = (file, sectionIndex, fileIndex) => {
     const { getLinkHref, onFileSelect, currentFile } = this.props
-    const subgroup = file.files || null
-    const folderPath = SidebarHelper.getFullPath(file.folder, file.indexFile)
-    const sectionPath = SidebarHelper.getFullPath(section.folder, file)
-    let compare = file.folder && file.indexFile ? folderPath : sectionPath
-    const isFileActive = currentFile === compare
-    let FileOrSubsectionTitle =
-      file.name ||
-      SidebarHelper.getName(
-        section.labels,
-        SidebarHelper.getParentFolder(file, section),
-        file.indexFile || file,
-        this.state.names
-      )
+    const subgroup = file.files
+    const isFileActive = currentFile === file.folder + '/' + file.indexFile
+    let FileOrSubsectionTitle = file.name
     return (
       <Fragment key={`file-${fileIndex}`}>
         <div>
           <SectionLink
-            level={2}
-            href={getLinkHref(sectionIndex, null, file.indexFile)}
-            onClick={e => onFileSelect(sectionIndex, null, file, e)}
+            level={file.level}
+            href={getLinkHref(sectionIndex, file.indexFile)}
+            onClick={e =>
+              onFileSelect(sectionIndex, file.indexFile, file.folder, e)
+            }
             isActive={isFileActive}
           >
             {FileOrSubsectionTitle}
           </SectionLink>
         </div>
-        {subgroup && (
+        {subgroup && subgroup.length > 0 && (
           <Collapse
             data-flag={'first'}
             data-open={SidebarHelper.convertToBooleanString(
               isFileActive ||
-                SidebarHelper.filesContains(
-                  subgroup,
-                  SidebarHelper.getParentFolder(file, section),
-                  currentFile
-                )
+                SidebarHelper.filesContains(subgroup, file.folder, currentFile)
             )}
           >
             {subgroup.map((subFile, subIndex) => {
               return this.renderSubgroup(
-                section,
-                file,
-                index,
+                sectionIndex,
                 subFile,
                 fileIndex,
                 subIndex
@@ -104,46 +90,38 @@ export default class SidebarMenu extends React.Component {
     )
   }
 
-  renderSubgroup = (section, file, index, subFile, fileIndex, subIndex) => {
+  renderSubgroup = (sectionIndex, subFile, fileIndex, subIndex) => {
     const { getLinkHref, onFileSelect, currentFile } = this.props
-    const fileFolder = file.folder || section.folder
-    const subFilePath = SidebarHelper.getFullPath(fileFolder, subFile)
+    const subFilePath = SidebarHelper.getFullPath(
+      subFile.folder,
+      subFile.indexFile
+    )
     return (
       <div key={`file-${fileIndex}-${subIndex}`}>
         <SectionLink
           level={3}
-          href={getLinkHref(index, fileIndex, subFile)}
-          onClick={e => onFileSelect(index, fileIndex, subFile, e)}
+          href={getLinkHref(sectionIndex, subFile.indexFile)}
+          onClick={e =>
+            onFileSelect(sectionIndex, subFile.indexFile, subFile.folder, e)
+          }
           isActive={currentFile === subFilePath}
         >
-          {SidebarHelper.getName(
-            file.labels,
-            file.folder || section.folder,
-            subFile,
-            this.state.names
-          )}
+          {subFile.name}
         </SectionLink>
       </div>
     )
   }
-
-  renderMenu = (section, index) => {
+  //done
+  renderMenu = (section, sectionIndex) => {
     const { currentSection, onSectionSelect, getLinkHref } = this.props
-    const isSectionActive = currentSection === index
-    let sectionTitle =
-      section.name ||
-      SidebarHelper.getName(
-        section.labels,
-        section.folder,
-        section.indexFile,
-        this.state.names
-      )
+    const isSectionActive = currentSection === sectionIndex
+    let sectionTitle = section.name
     return (
-      <div key={index}>
+      <div key={sectionIndex}>
         <SectionLink
-          level={1}
-          href={getLinkHref(index)}
-          onClick={e => onSectionSelect(index, e)}
+          level={section.level}
+          href={getLinkHref(sectionIndex, section.indexFile)}
+          onClick={e => onSectionSelect(index, section.folder, e)}
           className={isSectionActive ? 'docSearch-lvl0' : ''}
           isActive={isSectionActive}
         >
@@ -154,7 +132,7 @@ export default class SidebarMenu extends React.Component {
         >
           {section.files &&
             section.files.map((file, fileIndex) => {
-              return this.renderSection(section, file, index, fileIndex)
+              return this.renderSection(file, sectionIndex, fileIndex)
             })}
         </Collapse>
       </div>
@@ -167,8 +145,8 @@ export default class SidebarMenu extends React.Component {
       <Menu id={MENU_ID}>
         <Sections>
           <SectionLinks>
-            {sidebar.map((section, index) => {
-              return this.renderMenu(section, index)
+            {sidebar.map((section, sectionIndex) => {
+              return this.renderMenu(section, sectionIndex)
             })}
           </SectionLinks>
         </Sections>

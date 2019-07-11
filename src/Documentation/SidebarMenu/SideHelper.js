@@ -43,7 +43,7 @@ export default class SideHelper {
   }
 
   static fillFilesArray = (section, file, arr) => {
-    let folder = SideHelper.getParentFolder(file, section)
+    let folder = file.folder
     let filename = SideHelper.extractFilename(file)
     let path = SideHelper.getFullPath(folder, filename)
     arr[path] = startCase(SideHelper.removeExtensionFromFileName(filename))
@@ -157,13 +157,29 @@ export default class SideHelper {
     })
   }
   //done
+  static getSubsectionSlug(sectionIndex, indexFile, sidebar) {
+    let section = sidebar[sectionIndex]
+    let subsectionSlug
+    if (section.indexFile !== indexFile) {
+      section.files.map(subsection => {
+        subsection.files.map(file => {
+          if (file.indexFile === indexFile) {
+            subsectionSlug = SideHelper.removeExtensionFromFileName(
+              subsection.indexFile
+            )
+          }
+        })
+      })
+    }
+    return subsectionSlug
+  }
+  //done
   static getFileFromUrl = path => {
     let newsidebar = SideHelper.sidebarTransform(sidebar)
     let indexes = [],
       file = SideHelper.getZeroFile(newsidebar),
       newpath = SideHelper.transformAbsoluteToDocRelatedPath(path),
       folder = SideHelper.getZeroFolder(newsidebar)
-    console.log(file)
     newpath.forEach(part => {
       SideHelper.getFile(
         newsidebar,
@@ -179,7 +195,6 @@ export default class SideHelper {
         }
       )
     })
-    console.log(file)
     return {
       file: file,
       indexes: indexes,
@@ -219,8 +234,8 @@ export default class SideHelper {
 
   static filesContains(array, folder, currentFile) {
     let flag = false
-    array.forEach(elem => {
-      let path = SideHelper.getFullPath(folder, elem)
+    array.forEach(file => {
+      let path = SideHelper.getFullPath(folder, file.indexFile)
       if (path === currentFile) {
         flag = true
       }
@@ -249,16 +264,12 @@ export default class SideHelper {
       subfolder && SideHelper.combineToPath([subfolder, file.indexFile])
     return path || SideHelper.combineToPath([sect.folder, file])
   }
-
+  //done
   static getFullPath(folder, file) {
-    return folder && SideHelper.combineToPath([folder, file.indexFile || file])
+    SideHelper.combineToPath([folder, file.indexFile])
   }
 
   static extractFilename(file) {
     return SideHelper.isString(file) ? file : file.indexFile
-  }
-
-  static getParentFolder(file, section) {
-    return file.folder || section.folder
   }
 }

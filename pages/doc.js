@@ -64,15 +64,17 @@ export default class Documentation extends Component {
     this.loadFile(sectioIndex, file, folder, true)
   }
 
-  getLinkHref = (sectionIndex, subsection = null, file = null) => {
+  getLinkHref = (sectionIndex, indexFile) => {
     let sect = this.state.sidebar[sectionIndex]
     let removeExtFunc = filename =>
       SidebarHelper.removeExtensionFromFileName(filename)
-    const sectionSlug = removeExtFunc(sect.indexFile) || kebabCase(sect.name)
-    const subsectionSlug =
-      (subsection && removeExtFunc(sect.files[subsection].indexFile)) ||
-      sect.files[subsection]
-    const fileSlug = removeExtFunc(file) || (file && file.files[0])
+    const sectionSlug = removeExtFunc(sect.indexFile)
+    const subsectionSlug = SidebarHelper.getSubsectionSlug(
+      sectionIndex,
+      indexFile,
+      this.state.sidebar
+    )
+    const fileSlug = removeExtFunc(indexFile)
     return `/doc/${compact([sectionSlug, subsectionSlug, fileSlug]).join('/')}`
   }
 
