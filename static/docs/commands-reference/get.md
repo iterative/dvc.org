@@ -1,7 +1,7 @@
 # get
 
-Download or copy file or directory from another DVC repository into the local
-file system.
+Download or copy file or directory from another DVC repository (on a git server
+such as Github) into the local file system.
 
 > Unlike `dvc import`, this command does not track the downloaded data file(s)
 > (does not create a DVC-file).
@@ -42,3 +42,5 @@ used to specify the path to the data to be downloaded within the repo.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+<!--  ## Example -->

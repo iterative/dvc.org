@@ -1,8 +1,8 @@
 # import
 
-Download or copy file or directory from another DVC repository into the
-<abbr>workspace</abbr>, and track changes in the remote source with DVC. Creates
-a DVC-file.
+Download or copy file or directory from another DVC repository (on a git server
+such as Github) into the <abbr>workspace</abbr>, and track changes in the remote
+source with DVC. Creates a DVC-file.
 
 > See also `dvc get` which corresponds to the first step this command performs
 > (just download the data).
@@ -60,3 +60,5 @@ in the external DVC project.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+<!--  ## Example -->
