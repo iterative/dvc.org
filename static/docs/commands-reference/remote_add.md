@@ -206,6 +206,15 @@ $ export AZURE_STORAGE_CONTAINER_NAME="my-container-name"
 $ dvc remote add myremote "azure://"
 ```
 
+Alternatively you can use a custom environment variable as a placeholder for your connection string. Now you can share `.dvc/config` via Git safely.
+Contributors will be able to participate after setting the variable in their local environment.
+
+```dvc
+$ export MY_AZURE_SECRET="<my-connection-string>"
+$ dvc remote add myremote azure://my-container-name/path
+$ dvc remote modify myremote connection_string '$MY_AZURE_SECRET'
+```
+
 > For more information on configuring Azure Storage connection strings, visit
 > [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
 
