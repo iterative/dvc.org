@@ -42,8 +42,6 @@ An import stage (DVC-file) is then created with the name of the data artifact,
 similar to having used `dvc run` to generate the same output as done in the
 external DVC project.
 
-<!-- External path to another DVC repo supported? No -->
-
 ## Options
 
 - `-o`, `--out` - specify a location in the workspace to place the imported data
