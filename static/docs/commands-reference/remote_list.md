@@ -28,7 +28,7 @@ Including names and URLs.
 
 - `--local` - list remotes specified in the
   [local](/doc/user-guide/dvc-files-and-directories) configuration file
-  (`.dvc/config.local`). Local config files stores private configuration that
+  (`.dvc/config.local`). Local config files store private configuration that
   should not be tracked by SCM (Git).
 
 ## Examples
