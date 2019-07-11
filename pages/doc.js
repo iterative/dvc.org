@@ -33,7 +33,7 @@ export default class Documentation extends Component {
       headings: [],
       pageNotFound: false,
       isMenuOpen: false,
-      search: true
+      search: false
     }
   }
 
