@@ -12,7 +12,7 @@ such as Github) into the local file system.
 usage: dvc get [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url                   DVC repository URL to download data from.
+  url                   DVC repository URL (Git server link).
   path                  Path to data within DVC repository.
 ```
 
@@ -28,9 +28,9 @@ used to specify the path to the data to be downloaded within the repo.
 > This command doesn't require an existing DVC project to run in. It's a
 > single-purpose command that can be used out of the box after installing DVC.
 
-<!-- SSH Git URL supported or only HTTPS? -->
+<!-- git@github.com:... (SSH?) URL also supported! -->
 
-<!-- External path to another DVC repo supported? -->
+<!-- External path to another DVC repo supported? No -->
 
 > See `dvc get-url` to download data from other supported URLs.
 

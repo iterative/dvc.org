@@ -13,7 +13,7 @@ source with DVC. Creates a DVC-file.
 usage: dvc import [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url                   DVC repository URL.
+  url                   DVC repository URL (Git server link).
   path                  Path to data within DVC repository.
 ```
 
@@ -41,9 +41,9 @@ repo. An import stage (DVC-file) is then created with the name of the data
 artifact, similar to having used `dvc run` to generate the same output as done
 in the external DVC project.
 
-<!-- SSH Git URL supported or only HTTPS? -->
+<!-- git@github.com:... (SSH?) URL also supported! -->
 
-<!-- External path to another DVC repo supported? -->
+<!-- External path to another DVC repo supported? No -->
 
 ## Options
 
