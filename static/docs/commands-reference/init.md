@@ -1,7 +1,9 @@
 # init
 
-This command initializes a DVC project on a Git repository where you're working
-from.
+This command initializes a DVC project on a directory.
+
+Note that by default the current working directory is expected to contain a Git
+repository, unless the `--no-scm` option is used.
 
 ## Synopsis
 
@@ -9,10 +11,22 @@ from.
 usage: dvc init [-h] [-q | -v] [--no-scm] [-f]
 ```
 
+## Description
+
+After DVC initialization, a new directory `.dvc/` will be created with `config`
+and `.gitignore` files and `cache` directory. These files and directories are
+hidden from the user generally and are not meant to be manipulated directly.
+
+`.dvc/cache` is one of the most important
+[DVC directories](/doc/user-guide/dvc-files-and-directories). It will hold all
+the contents of tracked data files. Note that `.dvc/.gitignore` lists this
+directory, which means that the cache directory is not under Git control. This
+is your local cache and you cannot push it to any Git remote.
+
 ## Options
 
-- `--no-scm` - skip Git specific initializations, `.dvc/.gitignore` will not be
-  populated and added to Git.
+- `--no-scm` - skip Git specific initialization, `.dvc/.gitignore` will not be
+  written.
 
 - `-f`, `--force` - remove `.dvc/` if it exists before initialization. Will
   remove all local cache. Useful when first `dvc init` got corrupted for some
@@ -24,18 +38,6 @@ usage: dvc init [-h] [-q | -v] [--no-scm] [-f]
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-## Description
-
-After DVC initialization, a new directory `.dvc/` will be created with `config`
-and `.gitignore` files and `cache` directory. These files and directories are
-hidden from the user generally and are not meant to be manipulated directly.
-
-`.dvc/cache directory` is one of the most important parts of any DVC
-repositories. The directory contains all content of data files. The most
-important part about this directory is that `.dvc/.gitignore` file is containing
-this directory which means that the cache directory is not under Git control —
-this is your local directory and you cannot push it to any Git remote.
 
 ## Examples
 
