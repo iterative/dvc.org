@@ -59,9 +59,8 @@ export default class Documentation extends Component {
   loadStateFromURL = () => {
     let path = window.location.pathname.split('/')
     let length = path.length
-    let { file, folder, indexes } = SidebarHelper.getFileFromUrl(path)
-    let sectioIndex = length > 2 ? indexes[0] : 0
-    this.loadFile(sectioIndex, file, folder, true)
+    let { file, folder, sectionIndex } = SidebarHelper.getFileFromUrl(path)
+    this.loadFile(sectionIndex, file, folder, true)
   }
 
   getLinkHref = (sectionIndex, indexFile) => {

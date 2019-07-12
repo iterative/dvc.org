@@ -135,24 +135,27 @@ export default class SideHelper {
   }
   //done
   static findFileByName = (item, find) => {
-    let file = null
+    let newfile = null,
+      folder = null
     if (SideHelper.removeExtensionFromFileName(item.indexFile) === find) {
-      file = item.indexFile
-    } else if (kebabCase(item.name || '') === find) {
-      file = item.files[0].indexFile
+      newfile = item.indexFile
+      folder = item.folder
+    } else if (kebabCase(item.name) === find) {
+      newfile = item.files[0].indexFile
+      folder = item.files[0].folder
     }
-    return file
+    return { newfile: newfile, folder: folder }
   }
   //done
-  static getFile = (arr, find, indexPush, setFile, setFolder) => {
-    arr.forEach((item, index) => {
-      let newfile = SideHelper.findFileByName(item, find)
+  static getFile = (arr, find, setFile, setFolder) => {
+    arr.forEach(item => {
+      let { newfile, folder } = SideHelper.findFileByName(item, find)
       if (newfile) {
-        indexPush(index)
+        alert('нашёлся - ' + newfile + ' в ' + folder)
         setFile(newfile)
-        setFolder(item.folder)
+        setFolder(folder)
       } else if (item.files) {
-        SideHelper.getFile(item.files, find, indexPush, setFile, setFolder)
+        SideHelper.getFile(item.files, find, setFile, setFolder)
       }
     })
   }
@@ -176,29 +179,29 @@ export default class SideHelper {
   //done
   static getFileFromUrl = path => {
     let newsidebar = SideHelper.sidebarTransform(sidebar)
-    let indexes = [],
-      file = SideHelper.getZeroFile(newsidebar),
-      newpath = SideHelper.transformAbsoluteToDocRelatedPath(path),
-      folder = SideHelper.getZeroFolder(newsidebar)
-    newpath.forEach(part => {
-      SideHelper.getFile(
+    let file = SideHelper.getZeroFile(newsidebar),
+      pathes = SideHelper.transformAbsoluteToDocRelatedPath(path),
+      folder = SideHelper.getZeroFolder(newsidebar),
+      lngth = pathes.length - 1,
+      newpath = SideHelper.getFile(
         newsidebar,
-        part,
-        i => {
-          indexes.push(i)
-        },
-        f => {
-          file = f
-        },
-        fl => {
-          folder = fl
-        }
-      )
+        pathes[lngth],
+        f => (file = f),
+        f => (folder = f)
+      ),
+      sectionIndex
+    newsidebar.filter((item, index) => {
+      if (SideHelper.findFileByName(item, pathes[lngth]).newfile)
+        sectionIndex = index
     })
+    if (pathes.length > 0) {
+      folder = newpath.folder
+      file = newpath.file
+    }
     return {
       file: file,
-      indexes: indexes,
-      folder: folder
+      folder: folder,
+      sectionIndex: sectionIndex
     }
   }
 
