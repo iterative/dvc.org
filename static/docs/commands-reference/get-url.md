@@ -38,10 +38,15 @@ DVC supports several types of (local or) remote locations (protocols):
 | `hdfs`  | HDFS                                                    | `hdfs://user@example.com/path/to/data.csv` |
 | `http`  | HTTP to file with _strong ETag_ (see explanation below) | `https://example.com/path/to/data.csv`     |
 
+> Depending on the remote locations type you plan to download data from you
+> might need to specify one of the optional dependencies: `s3`, `gs`, `ssh` (or
+> `all_remotes` to include them all) when
+> [installing DVC](/doc/get-started/install) with `pip`.
+
 > `remote://myremote/path/to/file` notation just means that a DVC
-> [remote](/doc/commands-reference/remote) `myremote` is defined, and when DVC
-> is running it internally expands this URL into a regular S3, SSH, GS, etc URL
-> by appending `/path/to/file` to the `myremote`'s configured base path.
+> [remote](/doc/commands-reference/remote) `myremote` is defined and when DVC is
+> running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
+> URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
 Another way to understand the `dvc get-url` command is as a tool for downloading
 data files.
@@ -79,6 +84,8 @@ The above command will copy the `/local/path/to/data` file or directory into
 
 </details>
 
+<details>
+
 ### Click for AWS S3 example
 
 This command will copy an S3 object into the current working directory with the
@@ -93,23 +100,13 @@ By default DVC expects your AWS CLI is already
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could the options described in `dvc remote modify`.
 
-We use `boto3` library to set up a client and communicate with AWS S3. The
-following API methods may be performed:
-
-- `list_objects_v2`, `list_objects`
-- `head_object`
-- `download_file`
-- `upload_file`
-- `delete_object`
-- `copy`
-
-So make sure you have the following permissions enabled to enable all the above
-operations:
-
-- `s3:ListBucket`
-- `s3:GetObject`
-- `s3:PutObject`
-- `s3:DeleteObject`
+> We use the `boto3` library to and communicate with AWS S3. The following API
+> methods may be performed:
+>
+> - `head_object`
+> - `download_file`
+>
+> So make sure you have the `s3:GetObject` permission enabled.
 
 </details>
 

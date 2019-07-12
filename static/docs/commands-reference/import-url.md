@@ -58,6 +58,11 @@ DVC supports several types of (local or) remote locations (protocols):
 | `http`   | HTTP to file with _strong ETag_ (see explanation below) | `https://example.com/path/to/data.csv`     |
 | `remote` | Remote path (see explanation below)                     | `remote://myremote/path/to/file`           |
 
+> Depending on the remote locations type you plan to download data from you
+> might need to specify one of the optional dependencies: `s3`, `gs`, `ssh` (or
+> `all_remotes` to include them all) when
+> [installing DVC](/doc/get-started/install) with `pip`.
+
 > In case of HTTP,
 > [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
 > is necessary to track if the specified remote file (URL) changed to download
@@ -65,8 +70,8 @@ DVC supports several types of (local or) remote locations (protocols):
 
 > `remote://myremote/path/to/file` notation just means that a DVC
 > [remote](/doc/commands-reference/remote) `myremote` is defined and when DVC is
-> running, it internally expands this URL into a regular S3, SSH, GS, etc URL by
-> appending `/path/to/file` to the `myremote`'s configured base path.
+> running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
+> URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
 Another way to understand the `dvc import-url` command is as a short-cut for a
 more verbose `dvc run` command. This is discussed in the
@@ -148,6 +153,29 @@ Now, we can install requirements for the project:
 ```dvc
 $ pip install -r requirements.txt
 ```
+
+<details>
+
+### Click for AWS S3 example
+
+This command will copy an S3 object into the current working directory with the
+same file name:
+
+```dvc
+$ dvc get-url s3://bucket/path
+```
+
+Note that the examples use
+
+> We use the `boto3` library to and communicate with AWS S3. The following API
+> methods may be performed:
+>
+> - `head_object`
+> - `download_file`
+>
+> So make sure you have the `s3:GetObject` permission enabled.
+
+</details>
 
 </details>
 

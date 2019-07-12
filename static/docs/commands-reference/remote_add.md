@@ -136,8 +136,8 @@ By default DVC expects your AWS CLI is already
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could the options described in `dvc remote modify`.
 
-We use `boto3` library to set up a client and communicate with AWS S3. The
-following API methods are performed:
+We use the `boto3` library to communicate with AWS S3. The following API methods
+are performed:
 
 - `list_objects_v2`, `list_objects`
 - `head_object`
@@ -148,10 +148,10 @@ following API methods are performed:
 
 So, make sure you have the following permissions enabled:
 
-- s3:ListBucket
-- s3:GetObject
-- s3:PutObject
-- s3:DeleteObject
+- `s3:ListBucket`
+- `s3:GetObject`
+- `s3:PutObject`
+- `s3:DeleteObject`
 
 </details>
 
