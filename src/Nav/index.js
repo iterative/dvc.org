@@ -28,6 +28,14 @@ export default ({ mobile = false }) => (
         Doc
       </Link>
       <Link
+        href="https://blog.dataversioncontrol.com"
+        onClick={() => {
+          logEvent('menu', 'blog')
+        }}
+      >
+        Blog
+      </Link>
+      <Link
         href="/chat"
         onClick={() => {
           logEvent('menu', 'chat')

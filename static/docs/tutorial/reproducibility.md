@@ -233,14 +233,20 @@ Automatic merge failed; fix conflicts and then commit the result.
 ```
 
 The merge has a few conflicts. All of the conflicts are related to md5 checksum
-miss-matches in the branches. You can properly merge conflicts by prioritizing
-the checksums from the bigram branch.
+mismatches in the branches. You can properly merge conflicts by prioritizing the
+checksums from the bigram branch: that is, by removing all checksums of the
+other branch.
+[Here](https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line)
+you can find a tutorial which clarifies how to do that. It is also important to
+remove all automatically generated conflict markers (<<<<<<<, =======, >>>>>>>)
+from `model.p.dvc` and `Dvcfile`.
 
-> Or you can simply replace all the checksum by empty string ‘’.
+Another way to solve git merge conflicts is to simply replace all checksums with
+empty strings ''. The only disadvantage of this trick is that DVC will need to
+recompute the outputs checksums.
 
-The only disadvantage of the last, empty string tricks — DVC will recompute the
-outputs checksums. After resolving the conflicts you need to checkout a proper
-version of the data files:
+After resolving the conflicts you need to checkout a proper version of the data
+files:
 
 ```dvc
 # Replace conflicting checksums to empty string ''
