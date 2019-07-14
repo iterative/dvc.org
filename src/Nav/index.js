@@ -33,7 +33,7 @@ export default ({ mobile = false }) => (
           logEvent('menu', 'blog')
         }}
       >
-        Doc
+        Blog
       </Link>
       <Link
         href="/chat"
