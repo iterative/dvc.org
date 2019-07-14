@@ -57,8 +57,8 @@ DVC supports several types of (local or) remote locations (protocols):
 | `remote` | Remote path (see explanation below)                     | `remote://myremote/path/to/file`           |
 
 > Depending on the remote locations type you plan to download data from you
-> might need to specify one of the optional dependencies: `s3`, `gs`, `ssh` (or
-> `all_remotes` to include them all) when
+> might need to specify one of the optional dependencies: `[s3]`, `[gs]`,
+> `[ssh]` (or `[all]` to include them all) when
 > [installing DVC](/doc/get-started/install) with `pip`.
 
 > In case of HTTP,

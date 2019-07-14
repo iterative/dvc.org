@@ -43,13 +43,11 @@ path. DVC currently supports seven types of remotes:
 - `hdfs` - The Hadoop Distributed File System
 - `http` - HTTP and HTTPS protocols
 
-> Depending on the [remote storage](/doc/commands-reference/remote) type you
-> plan to use to keep and share your data you might need to specify one of the
-> optional dependencies: `s3`, `gs`, `azure`, `ssh` (or `all_remotes` to include
-> them all) when installing DVC with `pip`. The command should look like this:
-> `pip install "dvc[s3]"`. That particular example will include the `boto3`
-> library along with the DVC installation in order to support AWS S3 storage.
-> Other methods to install DVC already include support for all remotes.
+> If you installed DVC via `pip`, depending on the remote type you plan to use
+> you might need to install optional dependencies: `[s3]`, `[gs]`, `[azure]`,
+> `[ssh]`; or `[all]` to include them all. The command should look like this:
+> `pip install "dvc[s3]"` - it installs `boto3` library along with DVC to
+> support AWS S3 storage.
 
 For example, to setup an S3 remote we would use something like (make sure that
 `mybucket` exists):
