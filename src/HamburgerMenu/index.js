@@ -122,14 +122,14 @@ export default class HamburgerMenu extends Component {
                   <Links>
                     <SocialLink
                       src="/static/img/twitter.png"
-                      href="https://twitter.com/Iterativeai "
+                      href="https://twitter.com/DVCorg "
                       click={this.itemClick('twitter')}
                     >
                       Twitter
                     </SocialLink>
                     <SocialLink
                       src="/static/img/github.png"
-                      href="https://github.com/iterative"
+                      href="https://github.com/iterative/dvc"
                       click={this.itemClick('github')}
                     >
                       Github
