@@ -21,30 +21,28 @@ positional arguments:
 
 In some cases it's convenient to add a data file or directory from a remote
 location into the workspace, such that it will be automatically updated when the
-data source is updated. Examples:
+external data source changes. Examples:
 
 - A remote system may produce occasional data files that are used in other
   projects.
 - A batch process running regularly updates a data file to import.
 - A shared dataset on a remote storage that is managed and updated outside DVC.
 
-DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to data in
-an external location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such a
-DVC-file, the `deps` section specifies a remote URL, and the `outs` section
-contains the corresponding local path in the workspace. It records enough data
-from the external file or directory to enable DVC to efficiently check it to
-determine whether the local copy is out of date. DVC uses the remote URL to
-download the data to the workspace initially, and to re-download it when
-changed.
+The `dvc import-url` command helps the user create such an external data
+dependency. The `url` argument specifies the external location of the data to be
+imported, while `out` can be used to specify the (path and) file name desired
+for the imported data file or directory in the workspace.
 
 > See `dvc import` to download and tack data from other DVC repositories (e.g.
 > Github URLs).
 
-The `dvc import-url` command helps the user create such an external data
-dependency. The `url` argument should provide the location of the data to be
-imported, while `out` can be used to specify the (path and) file name desired
-for the imported data file or directory in the workspace.
+DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to data in
+an external location, see
+[External Dependencies](/doc/user-guide/external-dependencies). In such a
+DVC-file, the `deps` section stores the remote URL, and the `outs` section
+contains the corresponding local path in the workspace. It records enough data
+from the external file or directory to enable DVC to efficiently check it to
+determine whether the local copy is out of date.
 
 DVC supports several types of (local or) remote locations (protocols):
 

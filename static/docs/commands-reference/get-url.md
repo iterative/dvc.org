@@ -27,6 +27,8 @@ directory.
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
 
+> See `dvc get` to download data from other DVC repositories (e.g. Github URLs).
+
 DVC supports several types of (local or) remote locations (protocols):
 
 | Type    | Discussion                                              | URL format                                 |
@@ -43,15 +45,8 @@ DVC supports several types of (local or) remote locations (protocols):
 > `all_remotes` to include them all) when
 > [installing DVC](/doc/get-started/install) with `pip`.
 
-> `remote://myremote/path/to/file` notation just means that a DVC
-> [remote](/doc/commands-reference/remote) `myremote` is defined and when DVC is
-> running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
-> URL by appending `/path/to/file` to the `myremote`'s configured base path.
-
 Another way to understand the `dvc get-url` command is as a tool for downloading
 data files.
-
-> See `dvc get` to download data from other DVC repositories (e.g. Github URLs).
 
 On GNU/Linux systems for example, instead of `dvc get-url` with HTTP(S) it's
 possible to instead use:

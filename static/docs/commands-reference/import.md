@@ -19,28 +19,33 @@ positional arguments:
 
 ## Description
 
-In some cases it's convenient to add a <abbr>data artifact</abbr> from another
-DVC repository into the workspace, such that it will be automatically updated
-when the data source is updated.
+DVC provides an easy way to reuse datasets, intermediate results, ML models, or
+other files and directories tracked in another DVC repository into the present
+<abbr>workspace</abbr>. The `dvc import` command downloads such a <abbr>data
+artifact</abbr> in a way that it can be tracked with DVC, resulting in automatic
+updates when the external data source changes.
 
-DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to data in
-an external DVC repository (hosted on a Git server). In such a DVC-file, the
-`deps` section specifies the DVC repo and data path, and the `outs` section
-contains the corresponding local path in the workspace. It records enough data
-from the external file or directory to enable DVC to efficiently check it to
-determine whether the local copy is out of date. DVC uses the DVC repo and data
-path to download the data to the workspace initially, and to re-download it when
-changed.
+The `url` argument specifies the external DVC project's Git repository URL (both
+HTTP and SSH protocols supported, e.g. `[user@]server:project.git`), while
+`path` is used to specify the path to the data to be downloaded within the repo.
 
 > See `dvc import-url` to download and tack data from other supported URLs.
 
-The `dvc import` command helps the user create such an external data dependency.
-The `url` argument should provide the external DVC project's Git repository URL
-(both HTTP and SSH protocols supported, e.g. `[user@]server:project.git`), while
-`path` is used to specify the path to the data to be imported within the repo.
-An import stage (DVC-file) is then created with the name of the data artifact,
-similar to having used `dvc run` to generate the same output as done in the
-external DVC project.
+After running this command successfully, the data found in the `url` `path` is
+created in the current working directory with its original file name e.g.
+`data.txt`. An import stage (DVC-file) is then created (similar to having used
+`dvc run` to generate the same output) extending the full file or directory name
+of the imported data e.g. `data.txt.dvc`.
+
+DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to data in
+an external DVC repository (hosted on a Git server). In such a DVC-file, the
+`deps` section specifies the `repo` URL and data `path`, and the `outs` section
+contains the corresponding local path in the workspace. It records enough data
+from the external file or directory to enable DVC to efficiently check it to
+determine whether the local copy is out of date.
+
+To actually [track the data](https://dvc.org/doc/get-started/add-files),
+`git add` (and `git commit`) the import stage (DVC-file).
 
 ## Options
 
@@ -58,4 +63,4 @@ external DVC project.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-<!--  ## Example -->
+<!-- ## Example -->

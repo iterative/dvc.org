@@ -95,7 +95,7 @@ details.)
   config location results in `.dvc/cache`.
 
   > See also helper command `dvc cache dir` to intuitively set this config
-  > option, properly transforming paths relative to the present working
+  > option, properly transforming paths relative to the current working
   > directory into paths relative to the config file location.
 
 - `cache.protected` - makes files in the workspace read-only. Possible values
