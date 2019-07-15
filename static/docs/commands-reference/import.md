@@ -1,5 +1,8 @@
 # import
 
+> **Note!** This command has been repurposed after its original release. The
+> previous version is still available as the `dvc import-url` command.
+
 Download or copy file or directory from another DVC repository (on a git server
 such as Github) into the <abbr>workspace</abbr>, and track changes in the remote
 source with DVC. Creates a DVC-file.
