@@ -92,10 +92,10 @@ export default class SidebarMenu extends React.Component {
 
   renderSubgroup = (sectionIndex, subFile, fileIndex, subIndex) => {
     const { getLinkHref, onFileSelect, currentFile } = this.props
-    const subFilePath = SidebarHelper.getFullPath(
+    const subFilePath = SidebarHelper.combineToPath([
       subFile.folder,
       subFile.indexFile
-    )
+    ])
     return (
       <div key={`file-${fileIndex}-${subIndex}`}>
         <SectionLink
@@ -121,7 +121,7 @@ export default class SidebarMenu extends React.Component {
         <SectionLink
           level={section.level}
           href={getLinkHref(sectionIndex, section.indexFile)}
-          onClick={e => onSectionSelect(index, section.folder, e)}
+          onClick={e => onSectionSelect(sectionIndex, section.folder, e)}
           className={isSectionActive ? 'docSearch-lvl0' : ''}
           isActive={isSectionActive}
         >

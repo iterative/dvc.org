@@ -58,7 +58,6 @@ export default class Documentation extends Component {
   //done
   loadStateFromURL = () => {
     let path = window.location.pathname.split('/')
-    let length = path.length
     let { file, folder, sectionIndex } = SidebarHelper.getFileFromUrl(path)
     this.loadFile(sectionIndex, file, folder, true)
   }
@@ -67,7 +66,9 @@ export default class Documentation extends Component {
     let sect = this.state.sidebar[sectionIndex]
     let removeExtFunc = filename =>
       SidebarHelper.removeExtensionFromFileName(filename)
-    const sectionSlug = removeExtFunc(sect.indexFile)
+    const sectionSlug = sect.indexFile
+      ? removeExtFunc(sect.indexFile)
+      : kebabCase(sect.name)
     const subsectionSlug = SidebarHelper.getSubsectionSlug(
       sectionIndex,
       indexFile,
@@ -95,20 +96,20 @@ export default class Documentation extends Component {
   }
   //done
   onFileSelect = (sectionIndex, indexFile, folder, e) => {
-    e && preventIndexDefault()
+    e && preventDefault()
     this.setCurrentPath(sectionIndex, indexFile)
     this.loadFile(sectionIndex, indexFile, folder, true)
   }
   //done
   updateStateWithCurrentFile = (
     markdown,
-    currentSection,
+    sectionIndex,
     currentFile,
     setHeadings
   ) => {
     this.setState(
       {
-        currentSection,
+        currentSection: sectionIndex,
         currentFile,
         markdown,
         headings: [],
