@@ -19,10 +19,12 @@ positional arguments:
 ## Description
 
 In some cases it's convenient to get a data file or directory from a remote
-location. The `dvc get-url` command helps the user do so. The `url` argument
-should provide the location of the data to be downloaded, while `out` can be
-used to specify the (path and) file name desired for the downloaded data file or
-directory.
+location into the current working directory, regardless of whether it's a DVC
+project. The `dvc get-url` command helps the user do just that.
+
+The `url` argument should provide the location of the data to be downloaded,
+while `out` can be used to specify the (path and) file name desired for the
+downloaded data file or directory.
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.

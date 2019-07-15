@@ -19,9 +19,9 @@ positional arguments:
 ## Description
 
 DVC provides an easy way to reuse datasets, intermediate results, ML models, or
-other files and directories tracked in another DVC repository into the present
-<abbr>workspace</abbr>. The `dvc get` command downloads such a <abbr>data
-artifact</abbr>.
+other files and directories tracked in another DVC repository into the current
+working directory, regardless of whether it's a DVC project. The `dvc get`
+command downloads such a <abbr>data artifact</abbr>.
 
 The `url` argument specifies the external DVC project's Git repository URL (both
 HTTP and SSH protocols supported, e.g. `[user@]server:project.git`), while
