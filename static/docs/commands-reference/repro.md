@@ -34,10 +34,10 @@ By default, this command recursively searches in pipeline stages, starting from
 the `targets`, to determine which ones have changed. Then it executes the
 corresponding commands again.
 
-`dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
-data files, intermediate or final results. It saves all the data files,
-intermediate or final results into the DVC cache (unless `--no-commit` option is
-specified), and updates stage files with the new checksum information.
+`dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
+files, intermediate or final results. It saves all the data files, intermediate
+or final results into the DVC cache (unless `--no-commit` option is specified),
+and updates stage files with the new checksum information.
 
 ## Options
 

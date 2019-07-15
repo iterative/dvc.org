@@ -19,7 +19,7 @@ system/environment:
 | [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash in case of a development version)                                                                                         |
 | `Python version`                            | Version of the Python being used for the project in which DVC is initialized                                                                                           |
 | `Platform`                                  | Information about the operating system of the machine                                                                                                                  |
-| [`Binary`](#what-we-mean-by-binary)         | Shows whether the package is installed from a binary release or source                                                                                                 |
+| [`Binary`](#what-we-mean-by-binary)         | Shows whether DVC was installed from a package or from a binary release                                                                                                |
 | `Cache`                                     | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the DVC workspace and the <abbr>cache</abbr> directory |
 | `Filesystem type`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of <abbr>workspace</abbr> and the cache directory                                                      |
 

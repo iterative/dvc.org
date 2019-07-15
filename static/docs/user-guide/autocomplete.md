@@ -70,7 +70,7 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 ```
 
-You can source your `~/.bash_profile` or launch a new terminal to utilize
+You can `source` your `~/.bash_profile` or launch a new terminal to utilize
 completion.
 
 ## Configure Zsh

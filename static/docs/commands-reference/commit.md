@@ -254,8 +254,8 @@ train.dvc:
         modified:           src/train.py
 ```
 
-Let's edit one of the source files. It doesn't matter which one. You'll see that
-both Git and DVC recognize a change was made.
+Let's edit one of the source code files. It doesn't matter which one. You'll see
+that both Git and DVC recognize a change was made.
 
 If we ran `dvc repro` at this point, this pipeline would be reproduced. But
 since the change was inconsequential, that would be a waste of time and CPU.

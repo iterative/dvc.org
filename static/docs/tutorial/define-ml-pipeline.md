@@ -38,7 +38,7 @@ $ git status -s data/
 ?? data/Posts.xml.zip.dvc
 
 $ git add .
-$ git commit -m "add source dataset"
+$ git commit -m "add initial dataset"
 ```
 
 You have probably already noticed that the actual data file was not committed to
@@ -134,8 +134,8 @@ ML process and pipe them together into a ML
 However, the command to run alone is not as interesting as its role within a
 pipeline, so we'll need to specify its dependencies and output files. We call
 this a pipeline [stage](/doc/commands-reference/run). Dependencies may include
-input files and directories, and the actual source script to run. Outputs are
-files written to by the command, if any.
+input files and directories, and the actual command to run. Outputs are files
+written to by the command, if any.
 
 1. Option `-d file.tsv` should be used to specify a dependency file or
    directory. The dependency can be a regular file from a repository or a data

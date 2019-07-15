@@ -319,8 +319,8 @@ $ git commit -am "create pipeline"
 
 ## Reproduce
 
-All stages could be automatically and efficiently reproduced even if some source
-files have been modified. For example:
+All stages could be automatically and efficiently reproduced even if any source
+code files have been modified. For example:
 
 - Let's improve the feature extraction algorithm by making some modification to
   the `code/featurization.py`:

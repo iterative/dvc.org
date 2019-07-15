@@ -2,7 +2,7 @@
 
 Download or copy file or directory from any supported URL (for example `s3://`,
 `ssh://`, and other protocols) or local directory to the <abbr>workspace</abbr>,
-and track changes in the remote source with DVC. Creates a DVC-file.
+and track changes in the remote data source with DVC. Creates a DVC-file.
 
 > See also `dvc get-url` which corresponds to the first step this command
 > performs (just download the data).
@@ -223,8 +223,8 @@ file has changed.
 
 What if that remote file is one which will be updated regularly? The project
 goal might include regenerating a <abbr>data artifact</abbr> based on the
-updated source. A pipeline can be triggered to re-execute based on a changed
-external dependency.
+updated data source. A pipeline can be triggered to re-execute based on a
+changed external dependency.
 
 Let us again use the [Getting Started](/doc/get-started) example, in a way which
 will mimic an updated external data source.
@@ -399,8 +399,8 @@ $ dvc status
 Pipeline is up to date. Nothing to reproduce.
 ```
 
-Because the external source for the data file changed, the change was noticed by
-the `dvc status` command. Running `dvc repro` then ran both stages of this
-pipeline, and if we had set up the other stages they also would have been run.
-It first downloaded the updated data file. And then noticing that
+Because the external data source for the data file changed, the change was
+noticed by the `dvc status` command. Running `dvc repro` then ran both stages of
+this pipeline, and if we had set up the other stages they also would have been
+run. It first downloaded the updated data file. And then noticing that
 `data/data.xml` had changed, that triggered the `prepare.dvc` stage to execute.
