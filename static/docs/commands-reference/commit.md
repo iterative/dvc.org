@@ -26,12 +26,14 @@ tying stages or a pipeline.
   code, configuration, or data. Run DVC commands (`dvc run`, `dvc repro`, and
   even `dvc add`) using the `--no-commit` option to avoid caching unnecessary
   data over and over again. Use `dvc commit` when the files are finalized.
+
 - One can always execute the code used in a stage without using DVC (keep in
   mind that output files or directories in certain cases must first be
   unprotected or removed, see `dvc unprotect`). Or one could be developing code
   or data, repeatedly manually executing the code until it is working. Once it
   is finished, use `dvc add`, `dvc commit`, or `dvc run` when appropriate to
   update DVC-files and to store data to the cache.
+
 - Sometimes we want to clean up a code or configuration file in a way that
   doesn't cause a change in its results. We might write in-line documentation
   with comments, change indentation, remove some debugging printouts, or any
@@ -47,11 +49,11 @@ want. Let's take a look at what is happening in the fist scenario closely:
 Normally DVC commands like `dvc add`, `dvc repro` or `dvc run`, commit the data
 to the DVC cache as the last step. What _commit_ means is that DVC:
 
-- Computes a checksum for the file/directory.
-- Enters the checksum and file name into the DVC-file.
-- Tells the SCM to ignore the file/directory (e.g. add entry to `.gitignore`).
-  Note that if the workspace was initialized with no SCM support
-  (`dvc init --no-scm`), this does not happen.
+- Computes a checksum for the file/directory;
+- Enters the checksum and file name into the DVC-file;
+- Tells the SCM to ignore the file/directory (e.g. add entry to `.gitignore`);
+  (Note that if the workspace was initialized with no SCM support
+  (`dvc init --no-scm`), this does not happen.)
 - Adds the file/directory or to the DVC cache.
 
 There are many cases where the last step is not desirable (usually, rapid

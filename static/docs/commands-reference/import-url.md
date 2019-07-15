@@ -24,8 +24,8 @@ location into the workspace, such that it will be automatically updated when the
 external data source changes. Examples:
 
 - A remote system may produce occasional data files that are used in other
-  projects.
-- A batch process running regularly updates a data file to import.
+  projects;
+- A batch process running regularly updates a data file to import;
 - A shared dataset on a remote storage that is managed and updated outside DVC.
 
 The `dvc import-url` command helps the user create such an external data

@@ -12,12 +12,10 @@ To contribute documentation you need to know these locations:
 - [Content](https://github.com/iterative/dvc.org/tree/master/static/docs)
   (`/static/docs`) -
   [Markdown](https://guides.github.com/features/mastering-markdown/) files of
-  the different pages to render dynamically in the browser.
-
+  the different pages to render dynamically in the browser;
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
   (`/static/img`) - add new images, gif, svg, etc here. Reference them from the
-  Markdown files like this: `![](/static/img/reproducibility.png)`.
-
+  Markdown files like this: `![](/static/img/reproducibility.png)`;
 - [Sections](https://github.com/iterative/dvc.org/tree/master/src/Documentation/sidebar.json)
   (`.../sidebar.json`) - edit it to register a new section for the navigation
   menu.
@@ -36,6 +34,7 @@ Otherwise, please refer to the following procedure:
 - Find or open a new issue in the
   [issue tracker](https://github.com/iterative/dvc.org/issues) to let us know
   that you are working on this.
+
 - Format the code by following the
   [code style guidelines](#code-style-guidelines) below. It's highly recommended
   setup the [development environment](#development-environment) explained above.
@@ -43,6 +42,7 @@ Otherwise, please refer to the following procedure:
   automatically. Otherwise, we recommend using the Visual Studio Code and the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
   plugin to format the content of Markdown files.
+
 - Push the changes to your fork of
   [dvc.org](https://github.com/iterative/dvc.org.git) and create a PR to the
   original repository.

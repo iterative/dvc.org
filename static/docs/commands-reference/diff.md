@@ -35,7 +35,7 @@ by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
 
 ## Options
 
-- `-t TARGET`, `--target TARGET` - Source path to a data file or directory. If
+- `-t TARGET`, `--target TARGET` - source path to a data file or directory. If
   not specified, compares all files and directories that are under DVC control
   in the workspace.
 

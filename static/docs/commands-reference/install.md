@@ -46,9 +46,9 @@ The installed Git hook automates executing `dvc push`.
 ## Installed Git hooks
 
 - Git `pre-commit` hook executes `dvc status` before `git commit` to inform the
-  user about the workspace status.
+  user about the workspace status;
 - Git `post-checkout` hook executes `dvc checkout` after `git checkout` to
-  automatically synchronize the data files with the new workspace state.
+  automatically synchronize the data files with the new workspace state;
 - Git `pre-push` hook executes `dvc push` before `git push` to upload files and
   directories under DVC control to remote.
 

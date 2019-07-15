@@ -43,26 +43,26 @@ is your local cache and you cannot push it to any Git remote.
 
 - Creating a new DVC repository (requires a Git repository):
 
-```dvc
-$ mkdir tag_classifier
-$ cd tag_classifier
+  ```dvc
+  $ mkdir tag_classifier
+  $ cd tag_classifier
 
-$ git init
-$ dvc init
-$ git status
+  $ git init
+  $ dvc init
+  $ git status
 
-        new file:   .dvc/.gitignore
-        new file:   .dvc/config
+          new file:   .dvc/.gitignore
+          new file:   .dvc/config
 
-$ git commit -m "Init DVC"
-```
+  $ git commit -m "Init DVC"
+  ```
 
 - Cache directory is not under git control, it contains data and model files and
   is managed by DVC:
 
-```dvc
-$ cat .dvc/.gitignore
-cache
-state
-lock
-```
+  ```dvc
+  $ cat .dvc/.gitignore
+  cache
+  state
+  lock
+  ```

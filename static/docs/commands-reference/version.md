@@ -73,7 +73,7 @@ The detail of `Binary` depends on the way DVC was downloading and
   Mac). In our case, we use [PyInstaller](https://pythonhosted.org/PyInstaller/)
   to bundle our source code into the binary package app.
 
-* **`Binary: False`** - shown when DVC is downloaded and installed from:
+- **`Binary: False`** - shown when DVC is downloaded and installed from:
 
   - [DVC's GitHub repository](https://github.com/iterative/dvc) - where core
     source code is hosted.

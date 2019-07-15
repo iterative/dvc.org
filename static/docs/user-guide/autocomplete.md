@@ -18,13 +18,10 @@ run     -- Generate a stage file from a command and execute the command.
 
 Depending on what you typed on the command line so far, it completes:
 
-- Available DVC commands.
-
-- Options that are available for a particular command.
-
+- Available DVC commands;
+- Options that are available for a particular command;
 - File names that make sense in a given context, such as using them as a target
-  for some commands.
-
+  for some commands;
 - Arguments for selected options. For example, `dvc repro` completes with stage
   files to reproduce.
 
@@ -47,8 +44,7 @@ In this case, follow the steps to configure Bash as it is your active shell.
 First, make sure Bash completion support is installed:
 
 - On a current Linux OS (in a non-minimal installation), bash completion should
-  be available.
-
+  be available;
 - On a Mac, install with `brew install bash-completion`.
 
 The DVC specific completion script is located in this path of our main

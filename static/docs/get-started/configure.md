@@ -35,12 +35,12 @@ $ git commit .dvc/config -m "initialize DVC local remote"
 Adding a remote should be specified by both its type prefix (protocol) and its
 path. DVC currently supports seven types of remotes:
 
-- `local` - Local directory
-- `s3` - Amazon Simple Storage Service
-- `gs` - Google Cloud Storage
-- `azure` - Azure Blob Storage
-- `ssh` - Secure Shell
-- `hdfs` - The Hadoop Distributed File System
+- `local` - Local directory;
+- `s3` - Amazon Simple Storage Service;
+- `gs` - Google Cloud Storage;
+- `azure` - Azure Blob Storage;
+- `ssh` - Secure Shell;
+- `hdfs` - The Hadoop Distributed File System;
 - `http` - HTTP and HTTPS protocols
 
 > If you installed DVC via `pip`, depending on the remote type you plan to use
