@@ -44,10 +44,10 @@ path. DVC currently supports seven types of remotes:
 - `http` - HTTP and HTTPS protocols
 
 > If you installed DVC via `pip`, depending on the remote type you plan to use
-> you might need to install optional dependencies: `[s3]`, `[gs]`, `[azure]`,
-> `[ssh]`; or `[all]` to include them all. The command should look like this:
-> `pip install "dvc[s3]"` - it installs `boto3` library along with DVC to
-> support AWS S3 storage.
+> you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,
+> `[azure]`, and `[oss]`; or `[all]` to include them all. The command should
+> look like this: `pip install "dvc[s3]"` - it installs `boto3` library along
+> with DVC to support AWS S3 storage.
 
 For example, to setup an S3 remote we would use something like (make sure that
 `mybucket` exists):

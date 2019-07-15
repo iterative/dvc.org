@@ -41,8 +41,8 @@ DVC supports several types of (local or) remote locations (protocols):
 | `http`  | HTTP to file with _strong ETag_ (see explanation below) | `https://example.com/path/to/data.csv`     |
 
 > Depending on the remote locations type you plan to download data from you
-> might need to specify one of the optional dependencies: `[s3]`, `[gs]`,
-> `[ssh]` (or `[all]` to include them all) when
+> might need to specify one of the optional dependencies: `[s3]`, `[ssh]`,
+> `[gs]`, `[azure]`, and `[oss]` (or `[all]` to include them all) when
 > [installing DVC](/doc/get-started/install) with `pip`.
 
 Another way to understand the `dvc get-url` command is as a tool for downloading

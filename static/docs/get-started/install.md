@@ -11,8 +11,8 @@ $ pip install dvc
 
 > If you installed DVC via `pip`, depending on the
 > [remote](/doc/commands-reference/remote) type you plan to use you might need
-> to install optional dependencies: `[s3]`, `[gs]`, `[azure]`, `[ssh]`; or
-> `[all]` to include them all. The command should look like this:
+> to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`, `[azure]`, and
+> `[oss]`; or `[all]` to include them all. The command should look like this:
 > `pip install "dvc[s3]"` - it installs `boto3` library along with DVC to
 > support AWS S3 storage.
 

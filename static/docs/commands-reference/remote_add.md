@@ -32,10 +32,10 @@ create a remote directory if it doesn't exists yet. It won't create an S3 bucket
 though and will rely on default access settings.
 
 > If you installed DVC via `pip`, depending on the remote type you plan to use
-> you might need to install optional dependencies: `[s3]`, `[gs]`, `[azure]`,
-> `[ssh]`; or `[all]` to include them all. The command should look like this:
-> `pip install "dvc[s3]"` - it installs `boto3` library along with DVC to
-> support AWS S3 storage.
+> you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,
+> `[azure]`, and `[oss]`; or `[all]` to include them all. The command should
+> look like this: `pip install "dvc[s3]"` - it installs `boto3` library along
+> with DVC to support AWS S3 storage.
 
 This command creates a section in the DVC
 [config file](/doc/commands-reference/config) and optionally assigns a default
