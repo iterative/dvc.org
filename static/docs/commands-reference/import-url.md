@@ -33,8 +33,8 @@ dependency. The `url` argument specifies the external location of the data to be
 imported, while `out` can be used to specify the (path and) file name desired
 for the imported data file or directory in the workspace.
 
-> See `dvc import` to download and tack data from other DVC repositories (e.g.
-> Github URLs).
+> See `dvc import` to download and tack data or model files or directories from
+> other DVC repositories (e.g. Github URLs).
 
 DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to data in
 an external location, see
