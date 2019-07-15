@@ -56,7 +56,7 @@ $ dvc run -d code/evaluate.py -M data/eval.json \
 > running `dvc metrics add data/eval.json` to explicitly mark `data/eval.json`
 > as a metric file.
 
-Now let's print metric values that we are tracking in the current project:
+Now let's print metric values that we are tracking in this DVC project:
 
 ```dvc
 $ dvc metrics show -a

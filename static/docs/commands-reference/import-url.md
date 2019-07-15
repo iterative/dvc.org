@@ -1,8 +1,11 @@
 # import-url
 
-Import file from any supported URL (it could be `http://`, as well as `s3://`,
-`ssh://`, and other supported external storage URLs) or local directory to local
-workspace and track changes in remote file or directory.
+Download or copy file or directory from any supported URL (for example `s3://`,
+`ssh://`, and other protocols) or local directory to the <abbr>workspace</abbr>,
+and track changes in the remote source with DVC. Creates a DVC-file.
+
+> See also `dvc get-url` which corresponds to the first step this command
+> performs (just download the data).
 
 ## Synopsis
 
@@ -16,30 +19,32 @@ positional arguments:
 
 ## Description
 
-In some cases it is convenient to add a data file or a directory to a workspace
-such that it will be automatically updated when the data source is updated.
-Examples:
+In some cases it's convenient to add a data file or directory from a remote
+location into the workspace, such that it will be automatically updated when the
+external data source changes. Examples:
 
 - A remote system may produce occasional data files that are used in other
   projects.
 - A batch process running regularly updates a data file to import.
 - A shared dataset on a remote storage that is managed and updated outside DVC.
 
-DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to an
-external data location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such a DVC
-file, the `deps` section specifies a remote URL, and the `outs` section lists
-the corresponding local path in the workspace. It records enough data from the
-remote file or directory to enable DVC to efficiently check it to determine if
-the local copy is out of date. DVC uses this remote URL to download the data to
-the workspace initially, and to re-download it upon changes.
-
 The `dvc import-url` command helps the user create such an external data
-dependency. The `url` argument should provide the location of the data to be
-imported, while `out` is used to specify the (path and) name of the imported
-data file or directory in the workspace.
+dependency. The `url` argument specifies the external location of the data to be
+imported, while `out` can be used to specify the (path and) file name desired
+for the imported data file or directory in the workspace.
 
-DVC supports several types of (local or) remote locations:
+> See `dvc import` to download and tack data or model files or directories from
+> other DVC repositories (e.g. Github URLs).
+
+DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to data in
+an external location, see
+[External Dependencies](/doc/user-guide/external-dependencies). In such a
+DVC-file, the `deps` section stores the remote URL, and the `outs` section
+contains the corresponding local path in the workspace. It records enough data
+from the external file or directory to enable DVC to efficiently check it to
+determine whether the local copy is out of date.
+
+DVC supports several types of (local or) remote locations (protocols):
 
 | Type     | Discussion                                              | URL format                                 |
 | -------- | ------------------------------------------------------- | ------------------------------------------ |
@@ -51,15 +56,20 @@ DVC supports several types of (local or) remote locations:
 | `http`   | HTTP to file with _strong ETag_ (see explanation below) | `https://example.com/path/to/data.csv`     |
 | `remote` | Remote path (see explanation below)                     | `remote://myremote/path/to/file`           |
 
+> Depending on the remote locations type you plan to download data from you
+> might need to specify one of the optional dependencies: `[s3]`, `[ssh]`,
+> `[gs]`, `[azure]`, and `[oss]` (or `[all]` to include them all) when
+> [installing DVC](/doc/get-started/install) with `pip`.
+
 > In case of HTTP,
 > [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
 > is necessary to track if the specified remote file (URL) changed to download
 > it again.
 
-> `remote://myremote/path/to/file` notation just means that there is a DVC
+> `remote://myremote/path/to/file` notation just means that a DVC
 > [remote](/doc/commands-reference/remote) `myremote` is defined and when DVC is
-> running it internally expands this URL into a regular S3, SSH, GS, etc URL by
-> appending `/path/to/file` to the `myremote`'s configured base path.
+> running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
+> URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
 Another way to understand the `dvc import-url` command is as a short-cut for a
 more verbose `dvc run` command. This is discussed in the
@@ -72,7 +82,7 @@ Instead of `dvc import-url`:
 $ dvc import-url https://example.com/path/to/data.csv data.csv
 ```
 
-It is possible to instead use `dvc run`:
+It is possible to instead use `dvc run`, for example (HTTP URL):
 
 ```dvc
 $ dvc run -d https://example.com/path/to/data.csv \
@@ -80,10 +90,10 @@ $ dvc run -d https://example.com/path/to/data.csv \
           wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a stage file (DVC-file) with an external dependency, and
-they produce equivalent results. The `dvc import-url` command saves the user
-from having to manually copy files from each of the remote storage schemes, and
-from having to install CLI tools for each service.
+Both methods generate an equivalent stage file (DVC-file) with an external
+dependency. The `dvc import-url` command saves the user from having to manually
+copy files from each of the remote storage schemes, and from having to install
+CLI tools for each service.
 
 When DVC inspects a DVC-file, its dependencies will be checked to see if any
 have changed. A changed dependency will appear in the `dvc status` report,
@@ -141,6 +151,29 @@ Now, we can install requirements for the project:
 ```dvc
 $ pip install -r requirements.txt
 ```
+
+<details>
+
+### Click for AWS S3 example
+
+This command will copy an S3 object into the current working directory with the
+same file name:
+
+```dvc
+$ dvc get-url s3://bucket/path
+```
+
+Note that the examples use
+
+> We use the `boto3` library to and communicate with AWS S3. The following API
+> methods may be performed:
+>
+> - `head_object`
+> - `download_file`
+>
+> So make sure you have the `s3:GetObject` permission enabled.
+
+</details>
 
 </details>
 
@@ -215,8 +248,9 @@ file has changed.
 ## Example: Detecting remote file changes
 
 What if that remote file is one which will be updated regularly? The project
-goal might include regenerating some artifact based on the updated data. A
-pipeline can be triggered to re-execute based on a changed external dependency.
+goal might include regenerating a <abbr>data artifact</abbr> based on the
+updated source. A pipeline can be triggered to re-execute based on a changed
+external dependency.
 
 Let us again use the [Getting Started](/doc/get-started) example, in a way which
 will mimic an updated external data source.

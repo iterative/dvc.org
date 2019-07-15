@@ -85,10 +85,10 @@ reflinks or hardlinks to put it in the workspace without copying. See
   path for this option to have effect. Determines the files to pull by searching
   each target directory and its subdirectories for DVC-files to inspect.
 
-- `-f`, `--force` - does not prompt when removing working directory files, which
-  occurs during the process of updating the workspace. This option surfaces
-  behavior from the `dvc checkout` command because `dvc pull` in effect performs
-  a _checkout_ after downloading files.
+- `-f`, `--force` - does not prompt when removing workspace files, which occurs
+  during the process of updating the workspace. This option surfaces behavior
+  from the `dvc checkout` command because `dvc pull` in effect performs a
+  _checkout_ after downloading files.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while downloading files from the remote cache. The effect is to control the
@@ -116,7 +116,7 @@ $ dvc remote list
 r1	ssh://_username_@_host_/path/to/dvc/cache/directory
 ```
 
-> DVC supports several protocols for remote storage. For details, see the
+> DVC supports several remote types. For details, see the
 > [`remote add`](/doc/commands-reference/remote-add) documentation.
 
 With a remote cache containing some images and other files, we can pull all

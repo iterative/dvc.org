@@ -16,10 +16,8 @@ Usually, you run it along with `git commit` and `git push` to save changed
 [DVC-files](/doc/user-guide/dvc-file-format) to Git.
 
 The `dvc push` command allows one to upload data to remote storage. It doesn't
-save any changes in the code or DVC-files. Those should be saved by using      
+save any changes in the code or DVC-files. Those should be saved by using
 `git commit` and `git push`.
-
-See `dvc push` for more details and options for this command.
 
 > \*As noted in the DVC [configuration](/doc/get-started/configure) chapter, we
 > are using a **local remote** in this guide for educational purposes.

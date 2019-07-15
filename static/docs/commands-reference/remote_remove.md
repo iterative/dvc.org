@@ -23,8 +23,8 @@ positional arguments:
 Remote `name` is required.
 
 This command removes a section in the DVC
-[config file](/doc/user-guide/dvc-files-and-directories). Alternatively, it is
-possible to edit config files manually.
+[config file](/doc/commands-reference/config). Alternatively, it is possible to
+edit config files manually.
 
 ## Options
 
@@ -34,10 +34,9 @@ possible to edit config files manually.
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/dvc.config`) instead of `.dvc/config`.
 
-- `--local` - remove remote specified in the
-  [local](/doc/user-guide/dvc-files-and-directories) configuration file
-  (`.dvc/config.local`). Local configuration files stores private settings or
-  local environment specific settings that should not be tracked by Git.
+- `--local` - modify a local [config file](/doc/commands-reference/config)
+  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
+  Git-ignored.
 
 ## Examples
 

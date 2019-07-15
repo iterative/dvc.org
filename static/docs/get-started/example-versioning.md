@@ -70,7 +70,7 @@ $ pip install -r requirements.txt
 The repository you cloned is already DVC-initialized. There should be a `.dvc/`
 directory with `config`, `.gitignore` files and the `cache` directory. These
 files and directories are hidden from users in general. Users don't interact
-with these files directly. Check
+with these files directly. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -341,14 +341,14 @@ changed.
 Here where DVC pipelines feature comes very handy and was designed for. We
 touched it briefly when we described `dvc run` and `dvc repro` at the very end.
 The next step here would be splitting the script into two steps and utilizing
-DVC pipelines. Check this [example](/doc/get-started/example-pipeline) to get a
+DVC pipelines. See this [example](/doc/get-started/example-pipeline) to get a
 hands-on experience with them and try to apply it here. Don't hesitate to join
 our [community](/chat) to ask any questions!
 
 Another thing, you should have noticed, is the metrics file - `metrics.json` and
 the way we captured it with `-M metrics.json` option. Metric file is a special
 type of output DVC provides an interface on top to compare across tags or
-branches. Check `dvc metrics` command and
+branches. See `dvc metrics` command and
 [Compare Experiments](/doc/get-started/compare-experiments) to learn more about
 managing metrics. Next step you should try on your own is converting both
 iterations we had into `dvc run` and then utilize `dvc metrics show` to compare
