@@ -154,5 +154,3 @@ $ dvc get-url https://example.com/path/to/data
 ```
 
 </details>
-
-<details>

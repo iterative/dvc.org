@@ -152,29 +152,6 @@ Now, we can install requirements for the project:
 $ pip install -r requirements.txt
 ```
 
-<details>
-
-### Click for AWS S3 example
-
-This command will copy an S3 object into the current working directory with the
-same file name:
-
-```dvc
-$ dvc get-url s3://bucket/path
-```
-
-Note that the examples use
-
-> We use the `boto3` library to and communicate with AWS S3. The following API
-> methods may be performed:
->
-> - `head_object`
-> - `download_file`
->
-> So make sure you have the `s3:GetObject` permission enabled.
-
-</details>
-
 </details>
 
 ## Example: Tracking a remote file
