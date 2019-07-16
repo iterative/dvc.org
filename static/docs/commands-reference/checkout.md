@@ -194,8 +194,11 @@ Let's check the `model.pkl` entry in `train.dvc` again:
 
 ```yaml
 outs:
-  md5: a66489653d1b6a8ba989799367b32c43
-  path: model.pkl
+  - cache: true
+    md5: a66489653d1b6a8ba989799367b32c43
+    metric: false
+    path: model.pkl
+    persist: false
 ```
 
 But if you check `model.pkl`, the file hash is still the same:
