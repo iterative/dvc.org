@@ -207,11 +207,8 @@ deps:
     path: https://dvc.org/s3/get-started/data.xml
 md5: 61e80c38c1ce04ed2e11e331258e6d0d
 outs:
-  - cache: true
-    md5: a304afb96060aad90176268345e10355
-    metric: false
-    path: data/data.xml
-    persist: false
+  md5: a304afb96060aad90176268345e10355
+  path: data/data.xml
 wdir: .
 ```
 
@@ -289,11 +286,8 @@ deps:
     path: /path/to/data-store/data.xml
 md5: 361728a3b037c9a4bcb897cdf856edfc
 outs:
-  - cache: true
-    md5: a304afb96060aad90176268345e10355
-    metric: false
-    path: data/data.xml
-    persist: false
+  md5: a304afb96060aad90176268345e10355
+  path: data/data.xml
 wdir: .
 ```
 

@@ -58,13 +58,11 @@ set:
 ```yaml
 md5: 7eca44a876f57f7a1614bea457876db2
 cmd: echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv
-wdir: .
 outs:
   - md5: 9c012f709cfca85103d2680acfa5f628
     path: metrics.tsv
     cache: false
     metric: true
-    persist: false
 ```
 
 Now, let's reset the flag with the `dvc metrics remove` command:
@@ -80,13 +78,10 @@ Let's check the same DVC-file now:
 ```yaml
 md5: 7eca44a876f57f7a1614bea457876db2
 cmd: echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv
-wdir: .
 outs:
   - md5: 9c012f709cfca85103d2680acfa5f628
     path: metrics.tsv
-    cache: false
     metric:
-    persist: false
 ```
 
 As you can see, nothing has changed at all, except the flag `metric: true`. And

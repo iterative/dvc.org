@@ -46,9 +46,6 @@ wdir: .
 outs:
   - md5: 2114961a6518cc6f91275897e6ff3f80
     path: data.csv
-    cache: true
-    metric: false
-    persist: false
 ```
 
 If we move this using the regular `mv data.csv other.csv` the DVC-file would not
@@ -73,9 +70,6 @@ wdir: .
 outs:
   - md5: 2114961a6518cc6f91275897e6ff3f80
     path: other.csv
-    cache: true
-    metric: false
-    persist: false
 ```
 
 ## Options

@@ -135,13 +135,9 @@ Let's check the `data.xml.dvc` file inside:
 
 ```yaml
 md5: 972537cc409b58e29ffc5c0a779f8dcf
-wdir: .
 outs:
   - md5: 5702a7e9a6b6af5345a691ec8937f09e
     path: data.xml
-    cache: true
-    metric: false
-    persist: false
 meta: # Special key to contain arbitary user data
   name: John
   email: john@xyz.com
@@ -206,13 +202,9 @@ top-level directory, and it contains this:
 
 ```yaml
 md5: 584c0e859248ec824cd0c195e345b6b7
-wdir: .
 outs:
   - md5: b08ee35acc38f5d3b893889e2acab0ef.dir
     path: pics
-    cache: true
-    metric: false
-    persist: false
 ```
 
 If instead you use the `--recursive` option, the output looks as so:

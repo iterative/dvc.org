@@ -186,11 +186,9 @@ deps:
   path: data/features
   md5: b91b22bfd8d9e5af13e8f48523e80250
 outs:
-- cache: true
   md5: 70599f166c2098d7ffca91a369a78b0d
   metric: false
   path: model.pkl
-  persist: false
 wdir: .
 ```
 

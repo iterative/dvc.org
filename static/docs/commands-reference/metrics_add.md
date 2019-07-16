@@ -63,13 +63,10 @@ field):
 ```yaml
 md5: f03b00f4f189654651edfb6653d919c4
 cmd: echo 0.9643 > metrics.txt
-wdir: .
 outs:
   - md5: bd9773eee452f2ae54f42dcb78a5800c
     path: metrics.txt
-    cache: true
     metric: false
-    persist: false
 ```
 
 If you run `dvc metrics show` you should get an error message like this:
@@ -94,14 +91,11 @@ output is a metric file now:
 ```yaml
 md5: f03b00f4f189654651edfb6653d919c4
 cmd: echo 0.9643 > metrics.txt
-wdir: .
 outs:
   - md5: bd9773eee452f2ae54f42dcb78a5800c
     path: metrics.txt
-    cache: true
     metric:
       type: raw
-    persist: false
 ```
 
 And if you run `dvc metrics show` you should see something like this:
