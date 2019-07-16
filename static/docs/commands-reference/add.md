@@ -134,12 +134,14 @@ $ tree
 Let's check the `data.xml.dvc` file inside:
 
 ```yaml
-md5: aae37d74224b05178153acd94e15956b
+md5: 972537cc409b58e29ffc5c0a779f8dcf
+wdir: .
 outs:
-  - cache: true
-    md5: d8acabbfd4ee51c95da5d7628c7ef74b
+  - md5: 5702a7e9a6b6af5345a691ec8937f09e
+    path: data.xml
+    cache: true
     metric: false
-    path: data.xml.jpg
+    persist: false
 meta: # Special key to contain arbitary user data
   name: John
   email: john@xyz.com
