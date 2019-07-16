@@ -1,4 +1,4 @@
-# list
+# pipeline list
 
 Show connected groups (pipelines) of [stage](/doc/commands-reference/run) that
 are independent of each other.

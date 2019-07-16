@@ -45,7 +45,7 @@ be no cycles, etc.
 
 Note that `dvc repro` provides an interface to check state and reproduce this
 graph later. This concept is similar to the one of the `Makefile` but DVC
-captures data and caches data artifacts along the way. Check this
+captures data and caches <abbr>data artifacts</abbr> along the way. See this
 [example](/doc/get-started/example-pipeline) to learn more and try to build a
 pipeline.
 
@@ -84,7 +84,7 @@ pipeline.
 
 - `-m`, `--metrics` - another kind of output files. It is usually a small human
   readable file (JSON, CSV, text, whatnot) with some numbers or other
-  information that describes a model or other outputs. Check `dvc metrics` to
+  information that describes a model or other outputs. See `dvc metrics` to
   learn more about tracking metrics and comparing them across different model or
   experiment versions.
 

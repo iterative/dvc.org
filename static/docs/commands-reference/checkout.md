@@ -179,7 +179,7 @@ MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
 What if we want to rewind history, so to speak? The `git checkout` command lets
-us checkout at any point in the commit history, or even check out other tags. It
+us checkout at any point in the commit history, or even checkout other tags. It
 automatically adjusts the files, by replacing file content and adding or
 deleting files as necessary.
 

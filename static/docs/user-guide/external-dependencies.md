@@ -2,8 +2,8 @@
 
 With DVC you can specify external files as dependencies for your pipeline
 stages. DVC will track changes in those files and will reflect that in your
-pipeline state. Currently DVC supports the following types of external
-dependencies:
+pipeline state. Currently, the following types of external dependencies
+(protocols) are supported:
 
 1. Local files and directories outside of your dvc repository;
 2. Amazon S3;
@@ -90,7 +90,7 @@ $ dvc run -d remote://example/data.txt \
 Please refer to `dvc remote add` for more details like setting up access
 credentials for certain remotes.
 
-## Using import
+## Using import-url
 
 In the previous command examples, downloading commands were used: `aws s3 cp`,
 `scp`, `wget`, etc. `dvc import-url` simplifies the downloading part for all the

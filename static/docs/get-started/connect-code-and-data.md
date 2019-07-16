@@ -61,9 +61,9 @@ $ git commit -m "add code"
 </details>
 
 Having installed the `src/prepare.py` script in your repo, the following command
-transforms it into a reproducible
-[stage](/doc/user-guide/dvc-files-and-directories) for the ML pipeline we're
-building (described in the [next chapter](/doc/get-started/example-pipeline)).
+transforms it into a reproducible [stage](/doc/commands-reference/run) for the
+ML pipeline we're building (described in the
+[next chapter](/doc/get-started/example-pipeline)).
 
 ```dvc
 $ dvc run -f prepare.dvc \

@@ -1,4 +1,4 @@
-# show
+# pipeline show
 
 Show [stages](/doc/commands-reference/run) in a pipeline that lead to the
 specified stage. By default it lists

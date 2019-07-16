@@ -122,7 +122,7 @@ the example, let's define an SSH remote with the `dvc remote add` command:
     r1	ssh://_username_@_host_/path/to/dvc/cache/directory
 ```
 
-> DVC supports several protocols for remote storage. For details, see the
+> DVC supports several remote types. For details, see the
 > [`remote add`](/doc/commands-reference/remote-add) documentation.
 
 Push all data file caches from the current Git branch to the default remote:

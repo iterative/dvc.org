@@ -12,8 +12,8 @@ $ dvc pull
 ```
 
 This command retrieves data files that are referenced in _all_
-[DVC-files](/doc/user-guide/dvc-file-format) in the current workspace. So, you
-usually run it after `git clone`, `git pull`, or `git checkout`.
+[DVC-files](/doc/user-guide/dvc-file-format) in the workspace. So, you usually
+run it after `git clone`, `git pull`, or `git checkout`.
 
 As an easy way to test it:
 

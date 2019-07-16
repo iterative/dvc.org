@@ -38,5 +38,5 @@ bigram-experiment:
 ```
 
 DVC provides built-in support to track and navigate `JSON`, `TSV` or `CSV`
-metric files if you want to track additional information. Check `dvc metrics` to
+metric files if you want to track additional information. See `dvc metrics` to
 learn more.

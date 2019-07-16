@@ -19,7 +19,7 @@ You can query/set/replace/unset DVC configuration options with this command. It
 takes a config option `name` (a section and a key, separated by a dot) and its
 `value` (any valid alpha-numeric string generally).
 
-This command reads and overwrites the DVC config file `.dvc/config`. If
+This command reads and overwrites the DVC configuration file `.dvc/config`. If
 `--local` option is specified, `.dvc/config.local` is modified instead.
 
 If the config option `value` is not provided and `--unset` option is not used,
@@ -95,7 +95,7 @@ details.)
   config location results in `.dvc/cache`.
 
   > See also helper command `dvc cache dir` to intuitively set this config
-  > option, properly transforming paths relative to the present working
+  > option, properly transforming paths relative to the current working
   > directory into paths relative to the config file location.
 
 - `cache.protected` - makes files in the workspace read-only. Possible values
@@ -103,8 +103,8 @@ details.)
   effect. (It affects only files that are under DVC control.)
 
   Due to the way DVC handles linking between the data files in the cache and
-  their counterparts in the working directory, it's easy to accidentally corrupt
-  the cached version of a file by editing or overwriting it. Turning this config
+  their counterparts in the workspace, it's easy to accidentally corrupt the
+  cached version of a file by editing or overwriting it. Turning this config
   option on forces you to run `dvc unprotect` before updating a file, providing
   an additional layer of security to your data.
 
@@ -158,7 +158,7 @@ details.)
 
 ### state
 
-State config options. Check the
+State config options. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more about the state file that is used for optimization.
 

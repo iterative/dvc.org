@@ -31,7 +31,7 @@ $ dvc remote default myremote
 ```
 
 This command assigns the default remote in the core section of the DVC
-[config file](/doc/user-guide/dvc-files-and-directories).
+[config file](/doc/commands-reference/config).
 
 ```ini
 [core]
@@ -42,10 +42,8 @@ For the commands which take a `--remote` option (`dvc pull`, `dvc push`,
 `dvc status`, `dvc gc`, `dvc fetch`), default remote is used if that option is
 not specified.
 
-You can also use [`dvc config`](/doc/user-guide/dvc-files-and-directories),
-[`dvc remote add`](/doc/commands-reference/remote-add) and
-[`dvc remote modify`](/doc/commands-reference/remote-modify) commands to
-set/unset/change the default remote configurations.
+You can also use `dvc config`, `dvc remote add` and `dvc remote modify` commands
+to set/unset/change the default remote configurations.
 
 ## Options
 
@@ -57,12 +55,11 @@ set/unset/change the default remote configurations.
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/dvc.config`) instead of `.dvc/config`.
 
-- `--local` - modify a local
-  [config file](/doc/user-guide/dvc-files-and-directories) instead of
-  `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored. This
-  is useful when you need to specify private config options in your config that
-  you don't want to track and share through Git (credentials, private locations,
-  etc).
+- `--local` - modify a local [config file](/doc/commands-reference/config)
+  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
+  Git-ignored. This is useful when you need to specify private config options in
+  your config that you don't want to track and share through Git (credentials,
+  private locations, etc).
 
 - `-h`, `--help` - prints the usage/help message and exit.
 
