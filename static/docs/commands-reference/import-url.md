@@ -10,7 +10,7 @@ and track changes in the remote source with DVC. Creates a DVC-file.
 ## Synopsis
 
 ```usage
-usage: dvc import-url [-h] [-q | -v] [--resume] [-f FILE] url [out]
+usage: dvc import-url [-h] [-q | -v] [-f FILE] url [out]
 
 positional arguments:
   url                   (See supported URLs in the description.)
@@ -102,9 +102,6 @@ external dependency, it uses a method appropriate to that dependency to test its
 current status.
 
 ## Options
-
-- `--resume` - resume previously started download. This is useful if the
-  connection to the remote resource is unstable.
 
 - `-f`, `--file` - specify name of the DVC-file it generates. By default the
   DVC-file name generated is `<file>.dvc`, where `<file>` is file name of the
