@@ -28,8 +28,8 @@ file as an output of the [stage](/doc/commands-reference/run) in question.
 Let's first create an output that is not a metric file:
 
 ```dvc
-    $ dvc run -M metrics.tsv \
-              "echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv"
+$ dvc run -M metrics.tsv \
+          "echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv"
 ```
 
 This command produces the following metrics file:
@@ -56,13 +56,15 @@ If you check the `metrics.tsv.dvc` file, you should see that `metric: true` is
 set:
 
 ```yaml
+md5: 7eca44a876f57f7a1614bea457876db2
 cmd: echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv
-md5: 6f910c9000bb03492d1e66035ba8faf6
+wdir: .
 outs:
-  - cache: false
-    md5: 7ce0bc12da7f88c1493763cdd4c3f684
-    metric: true
+  - md5: 9c012f709cfca85103d2680acfa5f628
     path: metrics.tsv
+    cache: false
+    metric: true
+    persist: false
 ```
 
 Now, let's reset the flag with the `dvc metrics remove` command:
@@ -76,13 +78,15 @@ Saving information to 'metrics.tsv.dvc'.
 Let's check the same DVC-file now:
 
 ```yaml
+md5: 7eca44a876f57f7a1614bea457876db2
 cmd: echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv
-md5: 6f910c9000bb03492d1e66035ba8faf6
+wdir: .
 outs:
-  - cache: false
-    md5: 7ce0bc12da7f88c1493763cdd4c3f684
-    metric: null
+  - md5: 9c012f709cfca85103d2680acfa5f628
     path: metrics.tsv
+    cache: false
+    metric:
+    persist: false
 ```
 
 As you can see, nothing has changed at all, except the flag `metric: true`. And
