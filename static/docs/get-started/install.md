@@ -20,6 +20,12 @@ The easiest option, self-contained binary packages (or Windows installer), are
 available by using the big "Download" button in the [home page](/). You may also
 get them [here](https://github.com/iterative/dvc/releases/).
 
+> For a POSIX-like command line terminal in Windows users, we recommend
+> [Git Bash](https://gitforwindows.org/#bash) or
+> [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win).
+> Its even possible to enjoy a full Linux experience with the
+> [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
+
 We also provide `deb`, `rpm` and `homebrew` repositories:
 
 <details>

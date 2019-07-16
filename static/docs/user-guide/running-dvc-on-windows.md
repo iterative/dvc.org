@@ -5,6 +5,13 @@ They are mostly related to NTFS (a file system that the Windows uses)
 characteristics and Windows built-in security mechanisms. Below are some
 workarounds that can help avoid these performance penalties:
 
+## POSIX-like command line terminal
+
+We recommend [Git Bash](https://gitforwindows.org/#bash) or
+[Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win).
+Its even possible to enjoy a full Linux experience with the
+[WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
+
 ## Disable short-file name generation
 
 With NTFS, user may want to disable `8dot3` as per
