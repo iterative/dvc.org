@@ -348,7 +348,7 @@ $ tree
 3 directories, 10 files
 
 $ dvc status
-Pipeline is up to date. Nothing to reproduce.
+Pipeline(s) is (are) up to date. Nothing to reproduce.
 ```
 
 Then in the data store directory, edit `data.xml`. It doesn't matter what you
@@ -396,7 +396,7 @@ $ git commit -a -m "updated data"
  2 files changed, 6 insertions(+), 6 deletions(-)
 
 $ dvc status
-Pipeline is up to date. Nothing to reproduce.
+Pipeline(s) is (are) up to date. Nothing to reproduce.
 ```
 
 Because the external data source for the data file changed, the change was

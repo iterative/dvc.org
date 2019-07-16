@@ -213,7 +213,7 @@ execute this set of commands:
 ```dvc
 $ dvc commit
 $ dvc status
-Pipeline is up to date. Nothing to reproduce.
+Pipeline(s) is (are) up to date. Nothing to reproduce.
 $ ls .dvc/cache/70
 599f166c2098d7ffca91a369a78b0d
 ```
@@ -275,7 +275,7 @@ Are you sure you commit it? [y/n] y
 
 $ dvc status
 
-Pipeline is up to date. Nothing to reproduce.
+Pipeline(s) is (are) up to date. Nothing to reproduce.
 ```
 
 Nothing special is required, we simply `commit` to both the SCM and DVC. Since

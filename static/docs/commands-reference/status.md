@@ -44,8 +44,8 @@ system. The output indicates the detected changes, if any. If no differences are
 detected, `dvc status` prints this message:
 
 ```dvc
-    $ dvc status
-    Pipelines are up to date. Nothing to reproduce.
+$ dvc status
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 This indicates that no differences were detected, and therefore no stages would
@@ -133,8 +133,8 @@ cache. For the typical process to update workspaces, see
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
-  problems arise, otherwise 1.
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if
+  pipeline(s) is (are) up to date, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
@@ -169,7 +169,7 @@ $ vi code/featurization.py
 ... edit the code
 
 $ dvc status model.p.dvc
-Pipeline is up to date. Nothing to reproduce.
+Pipeline(s) is (are) up to date. Nothing to reproduce.
 
 $ dvc status model.p.dvc --with-deps
 matrix-train.p.dvc

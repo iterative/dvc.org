@@ -309,4 +309,4 @@ the workspace (with `dvc repro train.dvc`).
 > Note that in this sample project, the last stage file `evaluate.dvc` doesn't
 > add any more data files than those form previous stages so at this point all
 > of the files for this pipeline are in local cache and `dvc status -c` would
-> output "Pipeline is up to date. Nothing to reproduce."
+> output `Pipeline(s) is (are) up to date.`
