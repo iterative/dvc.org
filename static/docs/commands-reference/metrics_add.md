@@ -61,13 +61,15 @@ The content of `metrics.txt.dvc` should look like (notice the `mertic: false`
 field):
 
 ```yaml
+md5: f03b00f4f189654651edfb6653d919c4
 cmd: echo 0.9643 > metrics.txt
-md5: f75f291b02ab38530ba659c1e10e577f
+wdir: .
 outs:
-  - cache: true
-    md5: 235d585fcea283135682457b15c76101
-    metric: false
+  - md5: bd9773eee452f2ae54f42dcb78a5800c
     path: metrics.txt
+    cache: true
+    metric: false
+    persist: false
 ```
 
 If you run `dvc metrics show` you should get an error message like this:
@@ -90,14 +92,16 @@ This command updates the `metrics.txt.dvc` to specify that the `metrics.txt`
 output is a metric file now:
 
 ```yaml
+md5: f03b00f4f189654651edfb6653d919c4
 cmd: echo 0.9643 > metrics.txt
-md5: f75f291b02ab38530ba659c1e10e577f
+wdir: .
 outs:
-  - cache: true
-    md5: 235d585fcea283135682457b15c76101
+  - md5: bd9773eee452f2ae54f42dcb78a5800c
+    path: metrics.txt
+    cache: true
     metric:
       type: raw
-    path: metrics.txt
+    persist: false
 ```
 
 And if you run `dvc metrics show` you should see something like this:
