@@ -43,9 +43,9 @@ export default class SideHelper {
   }
 
   static fillFilesArray = (section, file, arr) => {
-    let folder = file.folder
+    let folder = SideHelper.getParentFolder(file, section)
     let filename = SideHelper.extractFilename(file)
-    let path = SideHelper.combineToPath([folder, filename])
+    let path = SideHelper.getFullPath(folder, filename)
     arr[path] = startCase(SideHelper.removeExtensionFromFileName(filename))
   }
 
@@ -135,94 +135,56 @@ export default class SideHelper {
   }
   //done
   static findFileByName = (item, find) => {
-    let indexFile = null,
-      folder = null
+    let file = null
     if (SideHelper.removeExtensionFromFileName(item.indexFile) === find) {
-      indexFile = item.indexFile
-      folder = item.folder
-    } else if (kebabCase(item.name) === find) {
-      indexFile = item.files[0].indexFile
-      folder = item.files[0].folder
+      file = item.indexFile
+    } else if (kebabCase(item.name || '') === find) {
+      file = item.files[0].indexFile
     }
-    return {
-      indexFile: indexFile,
-      folder: folder
-    }
+    return file
   }
-
   //done
-  static getSubsectionSlug(sectionIndex, indexFile, sidebar) {
-    let section = sidebar[sectionIndex]
-    let subsectionSlug
-    if (section.indexFile !== indexFile) {
-      section.files.map(subsection => {
-        subsection.files.map(file => {
-          if (file.indexFile === indexFile) {
-            subsectionSlug = SideHelper.removeExtensionFromFileName(
-              subsection.indexFile
-            )
-          }
-        })
-      })
-    }
-    return subsectionSlug
+  static getFile = (arr, find, indexPush, setFile, setFolder) => {
+    arr.forEach((item, index) => {
+      let newfile = SideHelper.findFileByName(item, find)
+      if (newfile) {
+        indexPush(index)
+        setFile(newfile)
+        setFolder(item.folder)
+      } else if (item.files) {
+        SideHelper.getFile(item.files, find, indexPush, setFile, setFolder)
+      }
+    })
   }
   //done
   static getFileFromUrl = path => {
-    let newsidebar = SideHelper.sidebarTransform(sidebar),
-      pathes = SideHelper.transformAbsoluteToDocRelatedPath(path),
+    let newsidebar = SideHelper.sidebarTransform(sidebar)
+    let indexes = [],
       file = SideHelper.getZeroFile(newsidebar),
-      folder = SideHelper.getZeroFolder(newsidebar),
-      lngth = pathes.length - 1,
-      sectionIndex = 0,
-      find = pathes[lngth]
-    SideHelper.getFile(
-      newsidebar,
-      find,
-      f => {
-        file = f
-      },
-      f => {
-        folder = f
-      },
-      i => {
-        sectionIndex = i
-      }
-    )
+      newpath = SideHelper.transformAbsoluteToDocRelatedPath(path),
+      folder = SideHelper.getZeroFolder(newsidebar)
+    console.log(file)
+    newpath.forEach(part => {
+      SideHelper.getFile(
+        newsidebar,
+        part,
+        i => {
+          indexes.push(i)
+        },
+        f => {
+          file = f
+        },
+        fl => {
+          folder = fl
+        }
+      )
+    })
+    console.log(file)
     return {
       file: file,
-      folder: folder,
-      sectionIndex: sectionIndex
+      indexes: indexes,
+      folder: folder
     }
-  }
-
-  //problem
-  static getFile = (
-    arr,
-    find,
-    setFile,
-    setFolder,
-    setSectionIndex,
-    sectionIndex = null
-  ) => {
-    arr.forEach((item, index) => {
-      console.log(sectionIndex || index)
-      setSectionIndex(sectionIndex || index)
-      let { indexFile, folder } = SideHelper.findFileByName(item, find)
-      if (indexFile) {
-        setFile(indexFile)
-        setFolder(folder)
-      } else if (item.files) {
-        SideHelper.getFile(
-          item.files,
-          find,
-          setFile,
-          setFolder,
-          setSectionIndex,
-          index
-        )
-      }
-    })
   }
 
   static getName = (labels = null, folder = null, indexFile = null, names) => {
@@ -230,7 +192,7 @@ export default class SideHelper {
     if (labels && labels[indexFile]) {
       name = labels[indexFile]
     } else {
-      let path = SideHelper.combineToPath([folder, indexFile])
+      let path = SideHelper.getFullPath(folder, indexFile)
       name = names[path]
     }
     return name
@@ -257,8 +219,8 @@ export default class SideHelper {
 
   static filesContains(array, folder, currentFile) {
     let flag = false
-    array.forEach(file => {
-      let path = SideHelper.combineToPath([folder, file.indexFile])
+    array.forEach(elem => {
+      let path = SideHelper.getFullPath(folder, elem)
       if (path === currentFile) {
         flag = true
       }
@@ -285,10 +247,18 @@ export default class SideHelper {
     let subfolder = subsect && subsect.folder
     let path =
       subfolder && SideHelper.combineToPath([subfolder, file.indexFile])
-    return path || SideHelper.combineToPath([sect.folder, file.indexFile])
+    return path || SideHelper.combineToPath([sect.folder, file])
+  }
+
+  static getFullPath(folder, file) {
+    return folder && SideHelper.combineToPath([folder, file.indexFile || file])
   }
 
   static extractFilename(file) {
     return SideHelper.isString(file) ? file : file.indexFile
+  }
+
+  static getParentFolder(file, section) {
+    return file.folder || section.folder
   }
 }
