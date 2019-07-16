@@ -41,11 +41,14 @@ The `dvc add` command would create a `data.csv.dvc` DVC-file with the following
 content:
 
 ```yaml
-md5: 3d1a3e5a5b662490e198d6a6ae84984b
+md5: df33f383592e7a399e106ba1cb487a8c
+wdir: .
 outs:
-  - cache: true
-    md5: c8263e8422925b0872ee1fb7c953742a
+  - md5: 2114961a6518cc6f91275897e6ff3f80
     path: data.csv
+    cache: true
+    metric: false
+    persist: false
 ```
 
 If we move this using the regular `mv data.csv other.csv` the DVC-file would not
@@ -59,17 +62,20 @@ name:
 
 ```dvc
 $ dvc move data.csv other.csv
-$ cat data.csv.dvc
+$ cat other.csv.dvc
 ```
 
-And here is the updated content of the `data.csv.dvc`:
+And here is the updated content of the `other.csv.dvc`:
 
 ```yaml
-md5: 3d1a3e5a5b662490e198d6a6ae84984b
+md5: df33f383592e7a399e106ba1cb487a8c
+wdir: .
 outs:
-  - cache: true
-    md5: c8263e8422925b0872ee1fb7c953742a
+  - md5: 2114961a6518cc6f91275897e6ff3f80
     path: other.csv
+    cache: true
+    metric: false
+    persist: false
 ```
 
 ## Options
