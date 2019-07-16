@@ -67,13 +67,15 @@ $ dvc run -M metrics.csv "echo auc, 0.9567 > metrics.csv"
 Stage file `metrics.csv.dvc` file should look like this:
 
 ```yaml
+md5: dc286868b849dda8d2c2dfbd1f732518
 cmd: echo auc, 0.9567 > metrics.csv
-md5: 6ed9b798bf460e1aa80b27388425a07d
+wdir: .
 outs:
-  - cache: false
-    md5: 13ee80c6b3e238c5097427c2114ae6e4
-    metric: true
+  - md5: 6bb7d363a4a0d0e5cc23ef7b7465ee87
     path: metrics.csv
+    cache: false
+    metric: true
+    persist: false
 ```
 
 And if we run `dvc metrics show metrics.csv` we will get the complete content of
