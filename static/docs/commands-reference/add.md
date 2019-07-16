@@ -205,13 +205,14 @@ are all added to the DVC cache. DVC prints a message to that effect, saying that
 top-level directory, and it contains this:
 
 ```yaml
-md5: df06d8d51e6483ed5a74d3979f8fe42e
-outs:
-  - cache: true
-    md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
-    metric: false
-    path: pics
+md5: 584c0e859248ec824cd0c195e345b6b7
 wdir: .
+outs:
+  - md5: b08ee35acc38f5d3b893889e2acab0ef.dir
+    path: pics
+    cache: true
+    metric: false
+    persist: false
 ```
 
 If instead you use the `--recursive` option, the output looks as so:
