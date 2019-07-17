@@ -165,7 +165,7 @@ This project comes with a predefined HTTP
 [remote storage](/doc/commands-reference/remote). We can now just run `dvc pull`
 that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
 files that are under DVC control. The model file checksum
-`a66489653d1b6a8ba989799367b32c43` is specified in the `train.dvc` file:
+`3863d0e317dee0a55c4e59d2ec0eef33` is specified in the `train.dvc` file:
 
 ```dvc
 $ dvc pull
@@ -175,7 +175,7 @@ Checking out model.pkl with cache '3863d0e317dee0a55c4e59d2ec0eef33'
 ...
 
 $ md5 model.pkl
-MD5 (model.pkl) = a66489653d1b6a8ba989799367b32c43
+MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
 What if we want to rewind history, so to speak? The `git checkout` command lets
@@ -194,7 +194,7 @@ Let's check the `model.pkl` entry in `train.dvc` again:
 
 ```yaml
 outs:
-  md5: a66489653d1b6a8ba989799367b32c43
+  md5: 3863d0e317dee0a55c4e59d2ec0eef33
   path: model.pkl
 ```
 
@@ -202,7 +202,7 @@ But if you check `model.pkl`, the file hash is still the same:
 
 ```dvc
 $ md5 model.pkl
-MD5 (model.pkl) = a66489653d1b6a8ba989799367b32c43
+MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
 This is because `git checkout` changed `featurize.dvc`, `train.dvc`, and other
@@ -241,10 +241,10 @@ when needed. Then we can checkout the master branch again:
 $ git checkout bigrams
 Previous HEAD position was d171a12 add evaluation stage
 HEAD is now at d092b42 try using bigrams
-Checking out model.pkl with cache 'a66489653d1b6a8ba989799367b32c43'.
+Checking out model.pkl with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
 
 $ md5 model.pkl
-MD5 (model.pkl) = a66489653d1b6a8ba989799367b32c43
+MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
 Previously this took two steps, `git checkout` followed by `dvc checkout`, but
