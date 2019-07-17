@@ -42,9 +42,9 @@ content:
 
 ```yaml
 md5: df33f383592e7a399e106ba1cb487a8c
-wdir: .
 outs:
-  - md5: 2114961a6518cc6f91275897e6ff3f80
+  - cache: true
+    md5: 2114961a6518cc6f91275897e6ff3f80
     path: data.csv
 ```
 
@@ -66,9 +66,9 @@ And here is the updated content of the `other.csv.dvc`:
 
 ```yaml
 md5: df33f383592e7a399e106ba1cb487a8c
-wdir: .
 outs:
-  - md5: 2114961a6518cc6f91275897e6ff3f80
+  - cache: true
+    md5: 2114961a6518cc6f91275897e6ff3f80
     path: other.csv
 ```
 
