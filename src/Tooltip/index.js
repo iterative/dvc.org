@@ -6,28 +6,98 @@ import glossary from '../Documentation/glossary'
 
 class Tooltip extends Component {
   state = {
+    description: '',
+    header: '',
     hover: false,
-    timeout: null,
-    width: 400,
+    id: null,
     margin: -70,
-    pointMargin: -15
+    pointBorderAfter: 'white transparent transparent transparent',
+    pointBorderBefore: '#d1d5da transparent transparent transparent',
+    pointMargin: -15,
+    pointTop: 100,
+    pointTopAfter: -14,
+    pointTopBefore: 16,
+    timeout: null,
+    top: 'unset',
+    width: 400
   }
 
-  tooltipWidthEval = () => {
+  componentDidMount() {
+    glossary.contents.forEach((glossaryItem, index) => {
+      if (glossaryItem.match.includes(this.props.text)) {
+        this.setState({
+          description: glossaryItem.desc,
+          header: glossaryItem.name,
+          key: index
+        })
+      }
+    })
+  }
+
+  tooltipPositionEval = () => {
     const markdownBody = document.getElementsByClassName('markdown-body')[0]
+    const tooltipBoundary = document
+      .getElementById(`tooltip-text-${this.state.key}`)
+      .getBoundingClientRect()
+    const tooltipBoxHeight = document.getElementById(
+      `tooltip-box-${this.state.key}`
+    ).offsetHeight
+    const tooltipHeight = tooltipBoundary.top - tooltipBoxHeight
     const maxWidth = markdownBody.offsetLeft + markdownBody.clientWidth
     const container = document.getElementsByClassName('tooltip-container')[0]
     const tooltipWidth = container.offsetLeft + this.state.width
-    if (tooltipWidth > maxWidth) {
-      this.setState({
-        margin: -340,
-        pointMargin: 260
-      })
-    } else {
-      this.setState({
-        margin: -70,
-        pointMargin: -15
-      })
+    const vertical = tooltipHeight > 80 ? 'top' : 'bottom'
+    const horizontal = tooltipWidth > maxWidth ? 'right' : 'left'
+
+    switch (`${horizontal} ${vertical}`) {
+      case 'left top':
+        this.setState({
+          margin: -70,
+          pointBorderAfter: 'white transparent transparent transparent',
+          pointBorderBefore: '#d1d5da transparent transparent transparent',
+          pointMargin: -15,
+          pointTop: 100,
+          pointTopAfter: 'unset',
+          pointTopBefore: 'unset',
+          top: -tooltipBoxHeight
+        })
+        break
+      case 'right top':
+        this.setState({
+          margin: -340,
+          pointBorderAfter: 'white transparent transparent transparent',
+          pointBorderBefore: '#d1d5da transparent transparent transparent',
+          pointMargin: 260,
+          pointTop: 100,
+          pointTopAfter: 'unset',
+          pointTopBefore: 'unset',
+          top: -tooltipBoxHeight
+        })
+        break
+      case 'left bottom':
+        this.setState({
+          margin: -70,
+          pointBorderAfter: 'transparent transparent white transparent',
+          pointBorderBefore: 'transparent transparent #d1d5da transparent',
+          pointMargin: -15,
+          pointTop: -15,
+          pointTopAfter: -20,
+          pointTopBefore: -23,
+          top: 40
+        })
+        break
+      case 'right bottom':
+        this.setState({
+          margin: -340,
+          pointBorderAfter: 'transparent transparent white transparent',
+          pointBorderBefore: 'transparent transparent #d1d5da transparent',
+          pointMargin: 260,
+          pointTop: -15,
+          pointTopAfter: -20,
+          pointTopBefore: -23,
+          top: 40
+        })
+        break
     }
   }
 
@@ -39,14 +109,14 @@ class Tooltip extends Component {
           interval: null,
           hover: true
         },
-        this.tooltipWidthEval
+        this.tooltipPositionEval
       )
     } else {
       this.setState(
         {
           hover: true
         },
-        this.tooltipWidthEval
+        this.tooltipPositionEval
       )
     }
   }
@@ -62,22 +132,13 @@ class Tooltip extends Component {
   }
 
   render() {
-    const { text } = this.props
-    let header = ''
-    let description = ''
-    glossary.contents.forEach(glossaryItem => {
-      if (glossaryItem.match.includes(text)) {
-        header = glossaryItem.name
-        description = glossaryItem.desc
-      }
-    })
     return (
       <>
         <HighlightedText
           onMouseOver={this.hoverIn}
           onMouseLeave={this.hoverOut}
         >
-          {text}
+          <span id={`tooltip-text-${this.state.key}`}>{this.props.text}</span>
         </HighlightedText>
         {this.state.hover && (
           <TooltipContainer
@@ -86,12 +147,20 @@ class Tooltip extends Component {
             onMouseLeave={this.hoverOut}
           >
             <TooltipText
+              id={`tooltip-box-${this.state.key}`}
               margin={this.state.margin}
               width={this.state.width}
+              pointBorderAfter={this.state.pointBorderAfter}
+              pointBorderBefore={this.state.pointBorderBefore}
               pointMargin={this.state.pointMargin}
+              pointTop={this.state.pointTop}
+              pointTopBefore={this.state.pointTopBefore}
+              pointTopAfter={this.state.pointTopAfter}
+              top={this.state.top}
+              bottom={this.state.bottom}
             >
-              <div className="header">{header}</div>
-              <ReactMarkdown source={description} />
+              <div className="header">{this.state.header}</div>
+              <ReactMarkdown source={this.state.description} />
             </TooltipText>
           </TooltipContainer>
         )}
@@ -118,7 +187,13 @@ const TooltipText = styled.div`
   background-color: white;
   position: absolute;
   z-index: 1;
-  bottom: 90%;
+  top: ${props => {
+    if (props.top === 'unset') {
+      return 'unset'
+    } else {
+      return `${props.top}px`
+    }
+  }};
   margin-left: ${props => props.margin || -70}px;
   width: ${props => props.width || 400}px;
 
@@ -126,20 +201,22 @@ const TooltipText = styled.div`
   &:before {
     content: '';
     position: absolute;
-    top: 100%;
+    top: ${props => props.pointTop}%;
     border-style: solid;
     margin-left: ${props => props.pointMargin || -15}px;
   }
 
   &:after {
+    top: ${props => props.pointTopAfter}px;
     left: 10%;
     border-width: 10px;
-    border-color: white transparent transparent transparent;
+    border-color: ${props => props.pointBorderAfter};
   }
   &:before {
+    top: ${props => props.pointTopBefore}px;
     left: 10%;
     border-width: 11px;
-    border-color: #d1d5da transparent transparent transparent;
+    border-color: ${props => props.pointBorderBefore};
   }
 
   .header {
