@@ -34,7 +34,7 @@ Git to track versions of your file:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
-$ git commit -m "add initial data to DVC"
+$ git commit -m "add raw data to DVC"
 ```
 
 <details>

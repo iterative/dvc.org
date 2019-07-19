@@ -3,8 +3,8 @@
 In the previous section, we described our first pipeline. Basically, we created
 a number of [DVC-file](/doc/user-guide/dvc-file-format). Each file describes a
 single stage we need to run (a pipeline) towards a final result. Each depends on
-some data (either initial data files or intermediate results from another
-DVC-file file) and code files.
+some data (either raw data files or intermediate results from another DVC-file)
+and code files.
 
 If you freshly checked out the project, make sure you first fetch the input data
 from DVC by calling `dvc pull`.

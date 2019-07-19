@@ -308,7 +308,7 @@ $ dvc metrics show
 ```
 
 It's time to save our pipeline. You can confirm that we do not save pickle model
-files or initial data sets into Git using the `git status` command. We are just
+files or raw data sets into Git using the `git status` command. We are just
 saving a snapshot of the DVC-files that describe data and code versions and
 relationships between them.
 

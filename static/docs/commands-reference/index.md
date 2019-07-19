@@ -5,8 +5,8 @@ DVC is a command-line tool. The typical use case for DVC goes as follows
 - In an existing Git repository, initialize a DVC repository with `dvc init`,
 - Copy source code files for modeling into the repository and convert the files
   into DVC data files with `dvc add` command;
-- Process initial data files through your data processing and modeling code
-  using the `dvc run` command;
+- Process raw data files through your data processing and modeling code using
+  the `dvc run` command;
 - Use `--outs` option to specify `dvc run` command outputs which will be
   converted to DVC data files after the code runs;
 - Clone a git repo with the code of your ML application pipeline. However, this

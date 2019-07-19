@@ -38,7 +38,7 @@ $ git status -s data/
 ?? data/Posts.xml.zip.dvc
 
 $ git add .
-$ git commit -m "add initial dataset"
+$ git commit -m "add raw dataset"
 ```
 
 You have probably already noticed that the actual data file was not committed to
