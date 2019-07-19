@@ -134,7 +134,7 @@ cache. For the typical process to update workspaces, see
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if
-  pipeline(s) is (are) up to date, otherwise 1.
+  Pipelines are up to date, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
@@ -169,7 +169,7 @@ $ vi code/featurization.py
 ... edit the code
 
 $ dvc status model.p.dvc
-Pipeline(s) is (are) up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 
 $ dvc status model.p.dvc --with-deps
 matrix-train.p.dvc

@@ -38,5 +38,5 @@ raw.dvc
 data.dvc
 output.dvc
 ======================================================================
-2 pipeline(s) total
+2 pipelines total
 ```

@@ -176,7 +176,7 @@ $ dvc repro
 WARNING: assuming default target 'Dvcfile'.
 Stage 'filter.dvc' didn't change.
 Stage 'Dvcfile' didn't change.
-Pipeline(s) is (are) up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 It makes sense, since we haven't changed neither of the dependencies this
@@ -225,7 +225,7 @@ Now, using the `--downstream` option results in the following output:
 $ dvc repro --downstream
 WARNING: assuming default target 'Dvcfile'.
 Stage 'Dvcfile' didn't change.
-Pipeline(s) is (are) up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 The reason being that the `text.txt` is a file which is a dependency in the

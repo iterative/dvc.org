@@ -174,7 +174,7 @@ $ dvc checkout
 
 $ dvc status
 
-Pipeline(s) is (are) up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 After running `git checkout` we are also shown a message saying _You are in
@@ -231,7 +231,7 @@ HEAD is now at d13ba9a add featurization stage
 
 $ dvc status
 
-Pipeline(s) is (are) up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 Look carefully at this output and it is clear that the `dvc checkout` command
@@ -280,7 +280,7 @@ $ git status -s
 
 $ git commit -a -m "updated data after modified featurization"
 
-Pipeline(s) is (are) up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 
 [master 78d0c44] modified featurization
  5 files changed, 12 insertions(+), 12 deletions(-)
@@ -289,5 +289,5 @@ Pipeline(s) is (are) up to date. Nothing to reproduce.
 After reproducing this pipeline up to the "evaluate" stage, the data files are
 in sync with the code/config files, but we must now commit the changes to the
 Git repository. Looking closely we see that `dvc status` is run again, informing
-us that the data files are synchronized with the
-`Pipeline(s) is (are) up to date.` message.
+us that the data files are synchronized with the `Pipelines are up to date.`
+message.
