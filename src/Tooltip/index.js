@@ -37,6 +37,8 @@ class Tooltip extends Component {
   }
 
   tooltipPositionEval = () => {
+    const headerHeight = document.getElementsByClassName('header')[0]
+      .offsetHeight
     const markdownBody = document.getElementsByClassName('markdown-body')[0]
     const tooltipBoundary = document
       .getElementById(`tooltip-text-${this.state.key}`)
@@ -48,7 +50,7 @@ class Tooltip extends Component {
     const maxWidth = markdownBody.offsetLeft + markdownBody.clientWidth
     const container = document.getElementsByClassName('tooltip-container')[0]
     const tooltipWidth = container.offsetLeft + this.state.width
-    const vertical = tooltipHeight > 80 ? 'top' : 'bottom'
+    const vertical = tooltipHeight > headerHeight ? 'top' : 'bottom'
     const horizontal = tooltipWidth > maxWidth ? 'right' : 'left'
 
     switch (`${horizontal} ${vertical}`) {
