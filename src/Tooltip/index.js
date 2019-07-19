@@ -11,6 +11,7 @@ class Tooltip extends Component {
     hover: false,
     id: null,
     margin: -70,
+    match: false,
     pointBorderAfter: 'white transparent transparent transparent',
     pointBorderBefore: '#d1d5da transparent transparent transparent',
     pointMargin: -15,
@@ -28,7 +29,8 @@ class Tooltip extends Component {
         this.setState({
           description: glossaryItem.desc,
           header: glossaryItem.name,
-          key: index
+          key: index,
+          match: true
         })
       }
     })
@@ -132,40 +134,44 @@ class Tooltip extends Component {
   }
 
   render() {
-    return (
-      <>
-        <HighlightedText
-          onMouseOver={this.hoverIn}
-          onMouseLeave={this.hoverOut}
-        >
-          <span id={`tooltip-text-${this.state.key}`}>{this.props.text}</span>
-        </HighlightedText>
-        {this.state.hover && (
-          <TooltipContainer
-            className="tooltip-container"
+    if (this.state.match) {
+      return (
+        <>
+          <HighlightedText
             onMouseOver={this.hoverIn}
             onMouseLeave={this.hoverOut}
           >
-            <TooltipText
-              id={`tooltip-box-${this.state.key}`}
-              margin={this.state.margin}
-              width={this.state.width}
-              pointBorderAfter={this.state.pointBorderAfter}
-              pointBorderBefore={this.state.pointBorderBefore}
-              pointMargin={this.state.pointMargin}
-              pointTop={this.state.pointTop}
-              pointTopBefore={this.state.pointTopBefore}
-              pointTopAfter={this.state.pointTopAfter}
-              top={this.state.top}
-              bottom={this.state.bottom}
+            <span id={`tooltip-text-${this.state.key}`}>{this.props.text}</span>
+          </HighlightedText>
+          {this.state.hover && (
+            <TooltipContainer
+              className="tooltip-container"
+              onMouseOver={this.hoverIn}
+              onMouseLeave={this.hoverOut}
             >
-              <div className="header">{this.state.header}</div>
-              <ReactMarkdown source={this.state.description} />
-            </TooltipText>
-          </TooltipContainer>
-        )}
-      </>
-    )
+              <TooltipText
+                id={`tooltip-box-${this.state.key}`}
+                margin={this.state.margin}
+                width={this.state.width}
+                pointBorderAfter={this.state.pointBorderAfter}
+                pointBorderBefore={this.state.pointBorderBefore}
+                pointMargin={this.state.pointMargin}
+                pointTop={this.state.pointTop}
+                pointTopBefore={this.state.pointTopBefore}
+                pointTopAfter={this.state.pointTopAfter}
+                top={this.state.top}
+                bottom={this.state.bottom}
+              >
+                <div className="header">{this.state.header}</div>
+                <ReactMarkdown source={this.state.description} />
+              </TooltipText>
+            </TooltipContainer>
+          )}
+        </>
+      )
+    } else {
+      return <span>{this.props.text}</span>
+    }
   }
 }
 
