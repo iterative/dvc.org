@@ -20,8 +20,8 @@ positional arguments:
 ## Description
 
 In some cases it's convenient to add a data file or directory from a remote
-location into the workspace, such that it will be automatically updated when the
-external data source changes. Examples:
+location into the workspace, such that it will be automatically updated (by
+`dvc repro`) when the external data source changes. Examples:
 
 - A remote system may produce occasional data files that are used in other
   projects;
@@ -164,8 +164,8 @@ using `dvc import-url`:
 
 ### Click and expand to prepare the workspace
 
-This is needed to actually run the command below in case you are reproducing
-this example:
+This is needed to actually run the command below in case you are trying this
+example:
 
 ```dvc
 $ git checkout 2-remote
@@ -362,8 +362,8 @@ data.xml.dvc:
         modified:     /path/to/data-store/data.xml
 ```
 
-DVC has noticed the external dependency has changed. It is telling us that it is
-necessary to now run `dvc repro`.
+DVC has noticed the external dependency (import stage) has changed. It is
+telling us that it is necessary to now run `dvc repro`.
 
 ```dvc
 $ dvc repro prepare.dvc
