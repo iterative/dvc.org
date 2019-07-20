@@ -3,6 +3,7 @@ import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 
 import glossary from '../Documentation/glossary'
+import { OnlyDesktop, OnlyMobile } from '../styles'
 
 class Tooltip extends Component {
   state = {
@@ -139,36 +140,43 @@ class Tooltip extends Component {
     if (this.state.match) {
       return (
         <>
-          <HighlightedText
-            onMouseOver={this.hoverIn}
-            onMouseLeave={this.hoverOut}
-          >
-            <span id={`tooltip-text-${this.state.key}`}>{this.props.text}</span>
-          </HighlightedText>
-          {this.state.hover && (
-            <TooltipContainer
-              className="tooltip-container"
+          <OnlyDesktop>
+            <HighlightedText
               onMouseOver={this.hoverIn}
               onMouseLeave={this.hoverOut}
             >
-              <TooltipText
-                id={`tooltip-box-${this.state.key}`}
-                margin={this.state.margin}
-                width={this.state.width}
-                pointBorderAfter={this.state.pointBorderAfter}
-                pointBorderBefore={this.state.pointBorderBefore}
-                pointMargin={this.state.pointMargin}
-                pointTop={this.state.pointTop}
-                pointTopBefore={this.state.pointTopBefore}
-                pointTopAfter={this.state.pointTopAfter}
-                top={this.state.top}
-                bottom={this.state.bottom}
+              <span id={`tooltip-text-${this.state.key}`}>
+                {this.props.text}
+              </span>
+            </HighlightedText>
+            {this.state.hover && (
+              <TooltipContainer
+                className="tooltip-container"
+                onMouseOver={this.hoverIn}
+                onMouseLeave={this.hoverOut}
               >
-                <div className="header">{this.state.header}</div>
-                <ReactMarkdown source={this.state.description} />
-              </TooltipText>
-            </TooltipContainer>
-          )}
+                <TooltipText
+                  id={`tooltip-box-${this.state.key}`}
+                  margin={this.state.margin}
+                  width={this.state.width}
+                  pointBorderAfter={this.state.pointBorderAfter}
+                  pointBorderBefore={this.state.pointBorderBefore}
+                  pointMargin={this.state.pointMargin}
+                  pointTop={this.state.pointTop}
+                  pointTopBefore={this.state.pointTopBefore}
+                  pointTopAfter={this.state.pointTopAfter}
+                  top={this.state.top}
+                  bottom={this.state.bottom}
+                >
+                  <div className="header">{this.state.header}</div>
+                  <ReactMarkdown source={this.state.description} />
+                </TooltipText>
+              </TooltipContainer>
+            )}
+          </OnlyDesktop>
+          <OnlyMobile>
+            <span>{this.props.text}</span>
+          </OnlyMobile>
         </>
       )
     } else {
