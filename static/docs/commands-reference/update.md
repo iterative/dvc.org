@@ -17,8 +17,8 @@ After creating import stages with `dvc import`, the external data source can
 change. `dvc update` can be used to bring the imported <abbr>data
 artifact</abbr> up to date. This is currently the only method to do so.
 
-To indicate which import stage(s) to update, specify the corresponding
-DVC-file(s) `targets` as command argument(s).
+To indicate which import stages to update, specify the corresponding DVC-file
+`targets` as command arguments.
 
 ## Options
 
