@@ -213,8 +213,8 @@ outs:
 
 Sections of the file above include:
 
-- `cmd` — the command to run;
-- `deps` — dependencies with md5 checksums;
+- `cmd` — the command to run
+- `deps` — dependencies with md5 checksums
 - `outs` — outputs with md5 checksums
 
 And (as with the `dvc add` command) the `data/.gitignore` file was modified. Now

@@ -45,28 +45,28 @@ locked: True
 
 On the top level, `.dvc` file consists of such fields:
 
-- `cmd`: a command that is being run in this stage;
-- `deps`: a list of dependencies for this stage;
-- `outs`: a list of outputs for this stage;
-- `md5`: md5 checksum for this DVC-file;
-- `locked`: whether or not this stage is locked from reproduction;
+- `cmd`: a command that is being run in this stage
+- `deps`: a list of dependencies for this stage
+- `outs`: a list of outputs for this stage
+- `md5`: md5 checksum for this DVC-file
+- `locked`: whether or not this stage is locked from reproduction
 - `wdir`: a directory to run command in (default `.`)
 
 A dependency entry consists of such fields:
 
-- `path`: path to the dependency, relative to the `wdir` path;
+- `path`: path to the dependency, relative to the `wdir` path
 - `md5`: md5 checksum for the dependency
 
 An output entry consists of such fields:
 
-- `path`: path to the output, relative to the `wdir` path;
-- `md5`: md5 checksum for the output;
-- `cache`: whether or not dvc should cache the output;
+- `path`: path to the output, relative to the `wdir` path
+- `md5`: md5 checksum for the output
+- `cache`: whether or not dvc should cache the output
 - `metric`: whether or not this file is a metric file
 
 A metric entry consists of such fields:
 
-- `type`: type of the metrics file (e.g. raw/json/tsv/htsv/csv/hcsv);
+- `type`: type of the metrics file (e.g. raw/json/tsv/htsv/csv/hcsv)
 - `xpath`: path within the metrics file to the metrics data(e.g. `AUC.value` for
   `{"AUC": {"value": 0.624321}}`)
 

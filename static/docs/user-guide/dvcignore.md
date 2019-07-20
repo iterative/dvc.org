@@ -10,7 +10,7 @@ as simple as `dvc status`. To prevent this, we are implementing `.dvcignore`
 files handling. When fully implemented, their implementation is intended to
 provide similar functionality as `.gitignore` files provide for `git`.
 
-## How does it work
+## How does it work?
 
 - You need to create `.dvcignore` file;
 - Populate it with [patterns](https://git-scm.com/docs/gitignore) that you would

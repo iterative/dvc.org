@@ -31,8 +31,8 @@ on this process.
 first whether your task matches one of the cases that are considered safe, even
 when cache protected mode is enabled:
 
-- Adding more files to a directory input data set (say, images or videos);
-- Deleting files from a directory data set.
+- Adding more files to a directory input data set (say, images or videos)
+- Deleting files from a directory data set
 
 ## Options
 
