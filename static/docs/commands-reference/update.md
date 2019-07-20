@@ -1,6 +1,6 @@
 # update
 
-Update dependencies and reproduce specified DVC-files.
+Update <abbr>data artifacts</abbr> imported from other DVC repositories.
 
 ## Synopsis
 
