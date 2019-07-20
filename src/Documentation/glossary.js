@@ -16,10 +16,10 @@ export default {
       name: 'DVC cache',
       match: ['cache'],
       desc:
-        'DVC cache is a hidden storage which is found at `.dvc/cache`. This ' +
-        'storage is used to manage different versions of files which are ' +
-        'under DVC control. For more information on cache, please refer to ' +
-        'the this [guide](/doc/commands-reference/config#cache).'
+        'DVC cache is a hidden storage which is by default found at ' +
+        '`.dvc/cache`. This storage is used to manage different versions of ' +
+        'files which are under DVC control. For more information on cache, ' +
+        'please refer to this [guide](/doc/commands-reference/config#cache).'
     },
     {
       name: 'Data artifact',
