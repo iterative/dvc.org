@@ -14,12 +14,13 @@ export default {
     },
     {
       name: 'DVC cache',
-      match: ['cache'],
+      match: ['DVC cache', 'cache', 'cache directory'],
       desc:
-        'DVC cache is a hidden storage which is by default found at ' +
-        '`.dvc/cache`. This storage is used to manage different versions of ' +
-        'files which are under DVC control. For more information on cache, ' +
-        'please refer to this [guide](/doc/commands-reference/config#cache).'
+        'The DVC cache is a hidden storage (by default located in the ' +
+        '`.dvc/cache` directory) for files that are under DVC control, and ' +
+        'their different versions. For more details, please refer to this ' +
+        '[document](/doc/user-guide/dvc-files-and-directories' +
+        '#structure-of-cache-directory).'
     },
     {
       name: 'Data artifact',

@@ -36,8 +36,7 @@ your browser to download `code.zip`.
 </details>
 
 ```dvc
-$ mkdir example
-$ cd example
+$ mkdir example && cd example
 $ git init
 $ wget https://dvc.org/s3/examples/so/code.zip
 $ unzip code.zip

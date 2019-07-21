@@ -44,4 +44,48 @@ created in the current working directory with its original file name.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-<!--  ## Example -->
+## Example
+
+Lets create a new DVC repository (requires Git):
+
+```dvc
+$ mkdir example && cd example
+$ git init
+$ dvc init
+```
+
+Now being inside a DVC project, we can use `dvc get` to download the raw dataset
+used in our
+[get started example](https://github.com/iterative/example-get-started), which
+is also a DVC project (external to the one we're in). The desired data is
+located in the `data/data.xml` path.
+
+```dvc
+$ dvc get \
+  https://github.com/iterative/example-get-started \
+  data/data.xml
+Preparing to download data from 'https://remote.dvc.org/get-started'
+Preparing to collect status from https://remote.dvc.org/get-started
+Collecting information from local cache...
+[##############################] 100%
+
+Collecting information from remote cache...
+[##############################] 100%
+...
+$ git status
+...
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+
+	data.xml
+```
+
+Note that the `data.xml` file doesn't actually exist in the
+[data directory](https://github.com/iterative/example-get-started/tree/master/data)
+of the external Git repo. Instead, the corresponding DVC-file
+[data.xml.dvc](https://github.com/iterative/example-get-started/blob/master/data/data.xml.dvc)
+is found, which specifies `data/data.xml` in its outputs (`outs`). DVC then
+reproduces this stage locally by [pulling](/doc/commands-reference/pull) the
+data file from the default [remote](/doc/commands-reference/remote) of the
+external DVC project (found in its
+[config file](https://github.com/iterative/example-get-started/blob/master/.dvc/config)).
