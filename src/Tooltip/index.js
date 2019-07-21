@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
+import includes from 'lodash.includes'
 
 import glossary from '../Documentation/glossary'
 import { OnlyDesktop, OnlyMobile } from '../styles'
@@ -26,7 +27,7 @@ class Tooltip extends Component {
 
   componentDidMount() {
     glossary.contents.forEach((glossaryItem, index) => {
-      if (glossaryItem.match.includes(this.props.text)) {
+      if (includes(glossaryItem.match, this.props.text)) {
         this.setState({
           description: glossaryItem.desc,
           header: glossaryItem.name,
