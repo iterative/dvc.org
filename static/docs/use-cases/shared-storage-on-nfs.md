@@ -107,7 +107,7 @@ a dataset).
 ```dvc
 $ cd /mnt/dataset/
 $ cp -r . /project/
-$ cd /project1
+$ cd /project
 $ mv /mnt/dataset/project_data/ data/
 $ dvc add data
 ```
@@ -132,7 +132,7 @@ $ git push origin v1.0
 Next, you can easily get this appear in your workspace by:
 
 ```dvc
-$ cd /home/user/project1/
+$ cd /home/user/project/
 $ git pull
 $ dvc checkout
 ```
