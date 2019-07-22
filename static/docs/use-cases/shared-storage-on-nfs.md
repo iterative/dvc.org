@@ -90,7 +90,9 @@ $ dvc config cache.protected true
 ```
 
 `cache.protected true` - to make links `read only` so that we you don't corrupt
-data accidentally present in the workspace.
+data accidentally present in the workspace. Since, we are using `symlinks`
+between the cache and local workspace because both are located on different
+filesystem.
 
 Also, let Git know about the changes we have done.
 
