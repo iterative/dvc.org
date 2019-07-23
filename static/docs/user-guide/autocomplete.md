@@ -18,15 +18,15 @@ run     -- Generate a stage file from a command and execute the command.
 
 Depending on what you typed on the command line so far, it completes:
 
-- Available DVC commands.
+- Available DVC commands
 
-- Options that are available for a particular command.
+- Options that are available for a particular command
 
 - File names that make sense in a given context, such as using them as a target
-  for some commands.
+  for some commands
 
 - Arguments for selected options. For example, `dvc repro` completes with stage
-  files to reproduce.
+  files to reproduce
 
 Depending upon your preference and the availability of both Bash and Zsh on your
 system, follow the steps given below to Configure Bash and/or Zsh.

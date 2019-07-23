@@ -24,14 +24,12 @@ Let the NLP nature of the example not to discourage you from using DVC in other
 Data Science areas. There was no strong reason behind picking the NLP area. On
 contrary, DVC is designed to be pretty agnostic of frameworks, languages, etc.
 If you have data files or data sets and/or you produce other data files, models,
-data sets and you want to:
+datasets, etc., then you may want to:
 
 - capture and save those <abbr>data artifacts</abbr> the same way we capture
   code.
 - track and switch between different versions of the data easily.
-- being able to answer the question of how data artifacts (e.g. ML models) were
+- be able to answer the question of how data artifacts (e.g. ML models) were
   built in the first place.
-- being able to compare them.
+- be able to compare them.
 - bring best practices to your team and get everyone on the same page.
-
-Then you are in a good place! Click the `Next` button below to start ↘.
