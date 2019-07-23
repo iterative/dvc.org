@@ -55,12 +55,12 @@ to the DVC cache as the last step. What _commit_ means is that DVC:
 - Adds the file/directory or to the DVC cache.
 
 There are many cases where the last step is not desirable (usually, rapid
-iteration on some experiment). For the DVC commands where it is appropriate the
-`--no-commit` option prevents the last step from occurring - thus, we are saving
-some time and space, by not storing all the data artifacts for all the attempts
-we do. The checksum is still computed and added to the DVC-file, but the file is
-not added to the cache. That's where the `dvc commit` command comes into play.
-It handles that last step of adding the file to the DVC cache.
+iteration on some experiment). For the DVC commands where available, the
+`--no-commit` option prevents the last step from occurring, thus we are saving
+time and space by not storing all the <abbr>data artifacts</abbr> for every
+command attempt. The checksum is still computed and added to the DVC-file, but
+the file is not added to the cache. That's where the `dvc commit` command comes
+into play. It handles that last step of adding the file to the DVC cache.
 
 ## Options
 

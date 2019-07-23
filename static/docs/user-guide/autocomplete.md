@@ -31,10 +31,8 @@ Depending on what you typed on the command line so far, it completes:
 Depending upon your preference and the availability of both Bash and Zsh on your
 system, follow the steps given below to Configure Bash and/or Zsh.
 
-If you are new to working with shell or uncertain about your active shell, use
-`$0` to check your active shell.
-
-For example:
+If you are new to working with shell or uncertain about your active shell, print
+`$0` to check your active shell. For example:
 
 ```dvc
 $ echo $0

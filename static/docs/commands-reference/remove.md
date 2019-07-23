@@ -19,8 +19,8 @@ positional arguments:
                    DVC-files in the workspace by default.)
 ```
 
-Check also [Update Tracked Files](/doc/user-guide/update-tracked-file) to see
-how it can be used to replace or modify files that are under DVC control.
+Refer to [Update Tracked Files](/doc/user-guide/update-tracked-file) to see how
+it can be used to replace or modify files that are under DVC control.
 
 ## Options
 

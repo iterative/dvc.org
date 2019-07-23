@@ -3,8 +3,8 @@
 You can specify external files as outputs for
 [DVC-files](/doc/user-guide/dvc-file-format) created by `dvc run` (stage files).
 DVC will track changes in those files and will reflect so in your pipeline
-[status](/doc/commands-reference/status). Currently DVC supports these types of
-external outputs:
+[status](/doc/commands-reference/status). Currently, the following types of
+external outputs (protocols) are supported:
 
 1. Local files and directories outside of your dvc repository;
 2. Amazon S3;

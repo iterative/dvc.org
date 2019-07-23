@@ -20,8 +20,8 @@ positional arguments:
 
 `dvc repro` provides an interface to run the commands in a computational graph
 (a.k.a. pipeline) again, as defined in the stage files (DVC-files) found in the
-current workspace. (A pipeline is typically defined using the `dvc run` command,
-while data input nodes are defined by the `dvc add` command.)
+workspace. (A pipeline is typically defined using the `dvc run` command, while
+data input nodes are defined by the `dvc add` command.)
 
 There's a few ways to restrict the stages that will be run again by this
 command: by specifying stage file(s) as `targets`, or by using the
@@ -112,7 +112,7 @@ specified), and updates stage files with the new checksum information.
 ## Examples
 
 For simplicity, let's build a pipeline defined below (if you want get your hands
-on something more real, check this
+on something more real, see this
 [mini-tutorial](/doc/get-started/example-pipeline)). It takes this `text.txt`
 file:
 

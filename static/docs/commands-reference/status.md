@@ -31,12 +31,12 @@ synchronize them). The two modes, _local_ and _cloud_ are triggered by using the
 | remote | `--cloud`  | Comparisons are made between the local cache, and the default remote, defined with `dvc remote --default` command.            |
 
 DVC determines data and code files to compare by analyzing all
-[DVC-files](/doc/user-guide/dvc-file-format) in the current workspace
-(`--all-branches` and `--all-tags` in the `cloud` mode compare multiple
-workspaces - across all branches or tags). The comparison can be limited to
-specific DVC-files by listing them as `targets`. Changes are reported only
-against the given `targets`. When combined with the `--with-deps` option, a
-search is made for changes in other stages that affect the target.
+[DVC-files](/doc/user-guide/dvc-file-format) in the workspace (`--all-branches`
+and `--all-tags` in the `cloud` mode compare multiple workspaces - across all
+branches or tags). The comparison can be limited to specific DVC-files by
+listing them as `targets`. Changes are reported only against the given
+`targets`. When combined with the `--with-deps` option, a search is made for
+changes in other stages that affect the target.
 
 In the `local` mode, changes are detected through the checksum of every file
 listed in every DVC-file in question against the corresponding file in the file
@@ -115,15 +115,14 @@ cache. For the typical process to update workspaces, see
   name defined using the `dvc remote` command. Implies `--cloud`.
 
 - `-a`, `--all-branches` - compares cache content against all Git branches.
-  Instead of checking just the currently checked out workspace, it checks
-  against all other branches of this workspace. The corresponding branches are
-  shown in the status output. Applies only if `--cloud` or a remote is
-  specified.
+  Instead of checking just the workspace, it runs the same status command in all
+  the branches of this repo. The corresponding branches are shown in the status
+  output. Applies only if `--cloud` or a remote is specified.
 
 - `-T`, `--all-tags` - compares cache content against all Git tags. Both the
   `--all-branches` and `--all-tags` options cause DVC to check more than just
-  the currently checked out workspace. The corresponding tags are shown in the
-  status output. Applies only if `--cloud` or a remote is specified.
+  the workspace. The corresponding tags are shown in the status output. Applies
+  only if `--cloud` or a remote is specified.
 
 - `--show-checksums` - shows the DVC checksum for the file, rather than the file
   name. Applies only if `--cloud` is specified.

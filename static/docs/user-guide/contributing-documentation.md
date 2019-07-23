@@ -28,8 +28,8 @@ to update the docs and redeploy the website.
 ## Submitting changes
 
 In case of a minor change, you can use the **Edit on Github** button (found to
-the right of each page) to fork the project, edit it in place (check the right
-top corner for an Edit button on Github), and create a pull request (PR).
+the right of each page) to fork the project, edit it in place (with the source
+file **Edit** button in Github), and create a pull request (PR).
 
 Otherwise, please refer to the following procedure:
 

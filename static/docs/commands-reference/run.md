@@ -30,7 +30,10 @@ will become the required `command` argument.
 > Remember to wrap the `command` with `"` quotes if there are special characters
 > in it like `|` (pipe) or `<`, `>` (redirection) that would otherwise apply to
 > the entire `dvc run` command. E.g.
-> `dvc run -d script.sh "script.sh > /dev/null 2>&1"`
+> `dvc run -d script.sh "./script.sh > /dev/null 2>&1"`
+> Use single quotes `'` instead of `"` to wrap the `command` if there are
+> environment variables in it, that you want to be evaluated dynamically. E.g.
+> `dvc run -d script.sh './myscript.sh $MYENVVAR'`
 
 Unless the `-f` options is used, by default the DVC-file name generated is
 `<file>.dvc`, where `<file>` is file name of the first output (`-o`, `-O`, `-m`,
@@ -45,7 +48,7 @@ be no cycles, etc.
 
 Note that `dvc repro` provides an interface to check state and reproduce this
 graph later. This concept is similar to the one of the `Makefile` but DVC
-captures data and caches data artifacts along the way. Check this
+captures data and caches <abbr>data artifacts</abbr> along the way. See this
 [example](/doc/get-started/example-pipeline) to learn more and try to build a
 pipeline.
 
@@ -84,7 +87,7 @@ pipeline.
 
 - `-m`, `--metrics` - another kind of output files. It is usually a small human
   readable file (JSON, CSV, text, whatnot) with some numbers or other
-  information that describes a model or other outputs. Check `dvc metrics` to
+  information that describes a model or other outputs. See `dvc metrics` to
   learn more about tracking metrics and comparing them across different model or
   experiment versions.
 

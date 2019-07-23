@@ -7,8 +7,8 @@ the `.dvc` file extension (e.g. `process.dvc`), or with the default name
 to track your data and reproduce pipeline stages. The file itself contains a
 simple YAML format that could be easily written or altered manually.
 
-Check the [Syntax Highlighting](/doc/user-guide/plugins) to enable the
-highlighting for your editor.
+See the [Syntax Highlighting](/doc/user-guide/plugins) to learn how to enable
+the highlighting for your editor.
 
 Here is an example of a DVC-file:
 
@@ -34,7 +34,7 @@ outs:
 locked: True
 
 # Comments like this line persist through multiple executions of
-# dvc repro/commit but not through dvc run/add/import commands.
+# dvc repro/commit but not through dvc run/add/import-url/get-url commands.
 
  meta: # Special key to contain arbitary user data
   name: John
@@ -80,4 +80,5 @@ meta values are preserved between multiple executions of `dvc repro` and
 `dvc commit` commands.
 
 > Note that comments and meta values are not preserved when a DVC-file is
-> overwritten with the `dvc run`,`dvc add`,`dvc import-url` commands.
+> overwritten with the `dvc run`,`dvc add`,`dvc import-url`, and `dvc get-url`
+> commands.

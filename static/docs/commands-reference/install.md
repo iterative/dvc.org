@@ -154,7 +154,7 @@ bigrams-experiment
 
 These tags are used to mark points in the development of this workspace, and to
 document specific experiments conducted in the workspace. To take a look at one
-we check-out the workspace using the SCM (in this case Git):
+we checkout the workspace using the SCM (in this case Git):
 
 ```dvc
 $ git checkout 6-featurization

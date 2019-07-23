@@ -33,11 +33,11 @@ models and re-process data files. It also saves space on your local
 environment - DVC can [fetch](/doc/commands-reference/fetch) into the local
 cache only the data you need for a specific branch/commit.
 
-> If you installed DVC via `pip`, and depending on the remote type you plan to
-> use you might need to install optional dependencies: `s3`, `gs`, `azure`,
-> `ssh`. Or `all_remotes` to include them all. The command should look like
-> this: `pip install -U "dvc[s3]"` - it installs `boto3` library along with DVC
-> to support AWS S3 storage.
+> If you installed DVC via `pip`, depending on the remote type you plan to use
+> you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,
+> `[azure]`, and `[oss]`; or `[all]` to include them all. The command should
+> look like this: `pip install "dvc[s3]"` - it installs `boto3` library along
+> with DVC to support AWS S3 storage.
 
 Using DVC with a remote data storage is optional. By default, DVC is configured
 to use a local data storage only (usually `.dvc/cache` directory inside your
@@ -48,8 +48,8 @@ repository), which enables basic DVC usage scenarios out of the box.
 [list](/doc/commands-reference/remote-list),
 [modify](/doc/commands-reference/remote-modify), and
 [remove](/doc/commands-reference/remote-remove) commands read or modify DVC
-[config files](/doc/user-guide/dvc-files-and-directories). Alternatively,
-`dvc config` can be used or these files could be edited manually.
+[config files](/doc/commands-reference/config). Alternatively, `dvc config` can
+be used or these files could be edited manually.
 
 For the typical process to share the project via remote, see
 [Share Data And Model Files](/doc/use-cases/share-data-and-model-files).

@@ -18,7 +18,7 @@ usage: dvc remote add [-h] [--global] [--system] [--local] [-q | -v]
 
 positional arguments:
   name           Name of the remote.
-  url            URL. (See supported URLs below.)
+  url            URL. (See supported URLs in the examples below.)
 ```
 
 ## Description
@@ -26,20 +26,20 @@ positional arguments:
 `name` and `url` are required. `url` specifies a location to store your data. It
 could be S3 path, SSH path, Azure, Google cloud, Aliyun OSS local directory,
 etc. (See more examples below.) If `url` is a local relative path, it will be
-resolved relative to the current directory but saved **relative to the config
-file location** (see LOCAL example below). Whenever possible DVC will create a
-remote directory if it doesn't exists yet. It won't create an S3 bucket though
-and will rely on default access settings.
+resolved relative to the current working directory but saved **relative to the
+config file location** (see LOCAL example below). Whenever possible DVC will
+create a remote directory if it doesn't exists yet. It won't create an S3 bucket
+though and will rely on default access settings.
 
-> If you installed DVC via `pip`, and depending on the remote type you plan to
-> use you might need to install optional dependencies: `s3`, `gs`, `azure`,
-> `ssh`. Or `all_remotes` to include them all. The command should look like
-> this: `pip install -U "dvc[s3]"` - it installs `boto3` library along with DVC
-> to support AWS S3 storage.
+> If you installed DVC via `pip`, depending on the remote type you plan to use
+> you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,
+> `[azure]`, and `[oss]`; or `[all]` to include them all. The command should
+> look like this: `pip install "dvc[s3]"` - it installs `boto3` library along
+> with DVC to support AWS S3 storage.
 
 This command creates a section in the DVC
-[config file](/doc/user-guide/dvc-files-and-directories) and optionally assigns
-a default remote in the core section if the `--default` option is used:
+[config file](/doc/commands-reference/config) and optionally assigns a default
+remote in the core section if the `--default` option is used:
 
 ```ini
 ['remote "myremote"']
@@ -64,12 +64,11 @@ Use `dvc config` to unset/change the default remote as so:
 - `--system` - save remote configuration to the system config (e.g.
   `/etc/dvc.config`) instead of `.dvc/config`.
 
-- `--local` - modify a local
-  [config file](/doc/user-guide/dvc-files-and-directories) instead of
-  `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored. This
-  is useful when you need to specify private config options in your config that
-  you don't want to track and share through Git (credentials, private locations,
-  etc).
+- `--local` - modify a local [config file](/doc/commands-reference/config)
+  instead of `.dvc/config`. It is located in `.dvc/config.local` and is
+  Git-ignored. This is useful when you need to specify private config options in
+  your config that you don't want to track and share through Git (credentials,
+  private locations, etc).
 
 - `-d`, `-default` - commands like `dvc pull`, `dvc push`, `dvc fetch` will be
   using this remote by default to save or retrieve data files unless `-r` option
@@ -78,6 +77,8 @@ Use `dvc config` to unset/change the default remote as so:
 - `-f`, `--force` - to overwrite existing remote with new `url` value.
 
 ## Examples
+
+The following are the types and of remotes (protocols) supported:
 
 <details>
 
@@ -135,8 +136,8 @@ By default DVC expects your AWS CLI is already
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could the options described in `dvc remote modify`.
 
-We use `boto3` library to set up a client and communicate with AWS S3. The
-following API methods are performed:
+We use the `boto3` library to communicate with AWS S3. The following API methods
+are performed:
 
 - `list_objects_v2`, `list_objects`
 - `head_object`
@@ -147,10 +148,10 @@ following API methods are performed:
 
 So, make sure you have the following permissions enabled:
 
-- s3:ListBucket
-- s3:GetObject
-- s3:PutObject
-- s3:DeleteObject
+- `s3:ListBucket`
+- `s3:GetObject`
+- `s3:PutObject`
+- `s3:DeleteObject`
 
 </details>
 
@@ -250,6 +251,11 @@ $ dvc remote add myremote ssh://user@example.com/path/to/dir
 $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 ```
 
+> **NOTE!** If you are seeing `Unable to load libjvm` error on ubuntu with
+> openjdk-8, try setting JAVA_HOME env variable. This issue is solved in the
+> [upstream version of pyarrow](https://github.com/apache/arrow/pull/4907) and
+> the fix will be included into the next pyarrow release.
+
 </details>
 
 <details>
@@ -258,9 +264,8 @@ $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 
 > **Note!** Currently HTTP remotes only support downloads operations:
 >
-> - `pull`
-> - `fetch`
-> - `import`
+> - `pull` and `fetch`
+> - `import-url` and `get-url`
 > - As an [external dependency](/doc/user-guide/external-dependencies)
 
 ```dvc

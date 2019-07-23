@@ -9,14 +9,14 @@ it `python`. This is a short version of the [Tutorial](/doc/tutorial).
 
 In this example, we will focus on building a simple ML pipeline that takes an
 archive with StackOverflow posts and trains the prediction model and saves it as
-an output. Check [get started](/doc/get-started) to see links to other examples,
+an output. See [get started](/doc/get-started) to see links to other examples,
 tutorials, use cases if you want to cover other aspects of the DVC. The pipeline
 itself is a sequence of transformation we apply to the data file:
 
 ![](/static/img/example-flow-2x.png)
 
 DVC helps to describe these transformations and capture actual data involved -
-input data set we are processing, intermediate artifacts (useful if some
+input data set we are processing, intermediate results (useful if some
 transformations take a lot of time to run), output models. This way we can
 capture what data and code were used to produce a specific model in a sharable
 and reproducible way.
@@ -94,7 +94,7 @@ When we run `dvc add` `Posts.xml.zip`, DVC creates a
 
 `dvc init` created a new directory `example/.dvc/` with `config`, `.gitignore`
 files and the `cache` directory. These files and directories are hidden from
-users in general. Users don't interact with these files directly. Check
+users in general. Users don't interact with these files directly. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -129,10 +129,10 @@ $ git commit -m "add dataset"
 
 ## Define stages
 
-Each [stage](/doc/user-guide/dvc-files-and-directories) – the parts of a
-pipeline – is described by providing a command to run, input data it takes and a
-list of output files. DVC is not Python or any other language specific and can
-wrap any command runnable via CLI.
+Each [stage](/doc/commands-reference/run) – the parts of a pipeline – is
+described by providing a command to run, input data it takes and a list of
+output files. DVC is not Python or any other language specific and can wrap any
+command runnable via CLI.
 
 - The first stage is to extract XML from the archive. Note that we don't need to
   run `dvc add` on `Posts.xml` below, `dvc run` saves the data automatically
