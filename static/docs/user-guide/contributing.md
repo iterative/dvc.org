@@ -185,7 +185,7 @@ your OS. After that you should have `gcloud` command line tool available and
 authenticated with your google account.
 
 You then need to create a bucket, a service account and get its credentials. You
-can do this via web UI or console. Then you need to put your keys to
+can do this via web UI or terminal. Then you need to put your keys to
 `scripts/ci/gcp-creds.json` and add these to your `ENV`:
 
 ```dvc
