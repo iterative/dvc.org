@@ -265,7 +265,7 @@ $ ./scripts/ci/remove_hadoop.sh
 
 </details>
 
-## Code style guidelines
+## Code style guidelines (for Python)
 
 We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and checking
 that our code is formatted with [black](https://github.com/ambv/black).
@@ -274,7 +274,7 @@ For [docstrings](https://www.python.org/dev/peps/pep-0257/#what-is-a-docstring),
 we try to adhere by the
 [Google Python Style Guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings).
 
-## Commit style guidelines
+## Commit message format guidelines
 
 Format:
 

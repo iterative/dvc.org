@@ -82,7 +82,7 @@ setting up.
 
 - Visit `http://localhost:3000/` and navigate to the docs in question.
 
-## Code style guidelines
+## Doc style guidelines (for Markdown)
 
 - No trailing whitespaces are allowed.
 
@@ -97,13 +97,20 @@ setting up.
   configured. You may also run `npx prettier --write <file path(s)>` manually
   before committing changes.
 
-- **Markdown**: Using `dvc <command>` in the documentation will create a link to
-  that command automatically. No need to use `[]()` explicitly to create them.
+- Using `dvc <command>` in the documentation will create a link to that command
+  automatically. No need to use `[]()` explicitly to create them.
 
-- **Markdown**: Syntax highlighting in fenced code blocks should use the `usage`
-  and `dvc` custom languages. `usage` is employed to show `dvc help` commands
+- Bullet lists shouldn't be too long, nor each bullet's text (3 sentence
+  paragraphs max.) The bullets can begin in lower case and have no ending
+  punctuation if they're not full sentences (otherwise end with period `.`). The
+  bullets can be separated by an empty line if they contain short paragraphs.
+
+- Syntax highlighting in fenced code blocks should use the `usage` `dvc`, and
+  `yaml` custom languages. `usage` is employed to show `dvc help` commands
   output in each command reference doc. `dvc` can be used to show
   [DVC-file](/doc/user-guide/dvc-file-format) contents, or examples of terminal
   commands and their output.
 
-> Check out any of the command reference `.md` source code to get a better idea.
+> Check out any of the command reference `.md` source code to get a better idea,
+> for example
+> [this very doc](https://github.com/iterative/dvc.org/blob/master/static/docs/user-guide/contributing-documentation.md).
