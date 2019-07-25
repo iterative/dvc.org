@@ -20,6 +20,11 @@ artifact</abbr> up to date. This is currently the only method to do so.
 To indicate which import stages to update, specify the corresponding DVC-file
 `targets` as command arguments.
 
+Note that by default, import stages are locked in their DVC-files (via fields
+`lock: true` and `rev_lock`). For a locked stage, `dvc update` does `dvc unlock`
+
+- `dvc repro` + `dvc lock`, basically.
+
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.

@@ -12,6 +12,21 @@ positional arguments:
   targets        DVC-files to unlock.
 ```
 
+## Description
+
+There are several reasons that can produce data files to be locked in a DVC
+project, `dvc lock` being the most obvious one.
+
+Note that by default, <abbr>import stages</abbr> (both with `dvc import` and
+`dvc import-url`) are locked in their DVC-files (via fields `lock: true` and
+`rev_lock`). You may simply use `dvc update` on them to force updating the
+imported file, directory, or <abbr>data artifact</abbr> from the external data
+source. For a locked stage, `dvc update` does `dvc unlock` + `dvc repro` +
+`dvc lock`, basically.
+
+> If `dvc unlock` is used on locked imported stages, they will start to be
+> checked by `dvc status`, and updated by `dvc repro`.
+
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.

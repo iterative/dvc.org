@@ -54,6 +54,9 @@ Note that by default, import stages are locked in their DVC-files (via fields
 `lock: true` and `rev_lock`). Use `dvc update` manually on them to force
 updating the downloaded data artifact from the external data source.
 
+> If `dvc unlock` is used on locked imported stages, they will start to be
+> checked by `dvc status`, and updated by `dvc repro`.
+
 ## Options
 
 - `-o`, `--out` - specify a location in the workspace to place the imported data
