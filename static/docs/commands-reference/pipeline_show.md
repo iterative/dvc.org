@@ -116,6 +116,10 @@ instead of stages.
                 `--------------'
   ```
 
+  To navigate, use `W`,`A`,`S`,`D` keys.
+
+  To exit, press `Q`.
+
 - List dependencies recursively if graph have tree structure
 
   ```dvc
