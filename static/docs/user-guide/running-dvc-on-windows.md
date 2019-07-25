@@ -1,9 +1,9 @@
 # Running DVC on Windows
 
-There can be few performance issues while running DVC on Windows by default.
-They are mostly related to NTFS (a file system that the Windows uses)
-characteristics and Windows built-in security mechanisms. Below are some
-workarounds that can help avoid these performance penalties:
+There can different issues while running DVC on Windows. Some, for example, have
+to do with NTFS file system characteristics and Windows built-in security
+mechanisms. Below are some workarounds that can help avoid these potential
+problems:
 
 ## POSIX-like command line shell
 
@@ -18,9 +18,9 @@ Its even possible to enjoy a full Linux terminal experience with the
 ## Disable short-file name generation
 
 With NTFS, user may want to disable `8dot3` as per
-[this](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc778996(v=ws.10)>)
-reference to disable the short-file name generation. It is important when the
-user has over 300K files in a single directory for better performance.
+[this reference](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc778996(v=ws.10)>)
+to disable the short-file name generation. It is important to do so for better
+performance when the user has over 300K files in a single directory.
 
 ## Whitelist in Windows Security
 
