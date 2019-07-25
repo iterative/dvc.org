@@ -97,9 +97,13 @@ CLI tools for each service.
 
 When DVC inspects a DVC-file, its dependencies will be checked to see if any
 have changed. A changed dependency will appear in the `dvc status` report,
-indicating the need to reproduce this import stage. When DVC inspects an
-external dependency, it uses a method appropriate to that dependency to test its
-current status.
+indicating the need to reproduce this <abbr>import stage</abbr>. When DVC
+inspects an external dependency, it uses a method appropriate to that dependency
+to test its current status.
+
+Note that by default, import stages are locked in their DVC-files (via fields
+`lock: true` and `rev_lock`). Use `dvc update` manually on them to force
+updating the downloaded file or directory from the external data source.
 
 ## Options
 
