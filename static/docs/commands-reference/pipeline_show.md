@@ -35,9 +35,8 @@ instead of stages.
   option is specified) of stage outputs instead of paths to DVC-files.
 
 - `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
-  list of path to DVC-files.
-
-> To navigate, use arrows or `W`, `A`, `S`, `D` keys. To exit, press `Q`.
+  list of path to DVC-files. (To navigate, use arrows or `W`, `A`, `S`, `D`
+  keys. To exit, press `Q`.)
 
 - `--dot` - show contents of `.dot` files with a DVC pipeline graph. It can be
   passed to third party visualization utilities.
@@ -73,7 +72,8 @@ instead of stages.
   process.py data output
   ```
 
-- Visualize DVC pipeline:
+- Visualize DVC pipeline (To navigate, use arrows or `W`, `A`, `S`, `D` keys. To
+  exit, press `Q`.):
 
   ```dvc
   $ dvc pipeline show eval.txt.dvc --ascii
@@ -118,7 +118,7 @@ instead of stages.
                 `--------------'
   ```
 
-- List dependencies recursively if graph have tree structure
+- List dependencies recursively if graph have tree structure:
 
   ```dvc
   dvc pipeline show e.file.dvc --tree
