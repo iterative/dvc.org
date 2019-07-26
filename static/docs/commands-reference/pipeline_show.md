@@ -37,6 +37,8 @@ instead of stages.
 - `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
   list of path to DVC-files.
 
+> To navigate, use arrows or `W`, `A`, `S`, `D` keys. To exit, press `Q`.
+
 - `--dot` - show contents of `.dot` files with a DVC pipeline graph. It can be
   passed to third party visualization utilities.
 
@@ -115,10 +117,6 @@ instead of stages.
                 | eval.txt.dvc |
                 `--------------'
   ```
-
-  To navigate, use arrows or `W`, `A`, `S`, `D` keys.
-
-  To exit, press `Q`.
 
 - List dependencies recursively if graph have tree structure
 
