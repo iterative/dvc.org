@@ -61,7 +61,8 @@
       "plugins.md",
       "analytics.md",
       "dvcignore.md",
-      "running-dvc-on-windows.md"
+      "running-dvc-on-windows.md",
+      "update-DVC-pipelines.md"
     ],
     "labels": {
       "dvc-files-and-directories.md": "Files and Directories",
@@ -76,7 +77,8 @@
       "autocomplete.md": "Shell Autocomplete",
       "plugins.md": "Plugins & Integrations",
       "analytics.md": "Anonymized Usage Analytics",
-      "running-dvc-on-windows.md": "Running DVC on Windows"
+      "running-dvc-on-windows.md": "Running DVC on Windows",
+      "update-DVC-pipelines.md": "Updating pipelines"
     }
   },
   {
