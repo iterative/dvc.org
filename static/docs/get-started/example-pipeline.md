@@ -69,15 +69,15 @@ that are described in earlier [get started](/doc/get-started) chapters.
 > will be determined by the interdependencies between DVC-files, mentioned
 > below.
 
-- Initialize DVC repository (run it inside your Git repository):
+Initialize DVC repository (run it inside your Git repository):
 
 ```dvc
 $ dvc init
 $ git commit -m "initialize DVC"
 ```
 
-- Download an input data set to the `data` directory and take it under DVC
-  control:
+Download an input data set to the `data` directory and take it under DVC
+control:
 
 ```dvc
 $ mkdir data
@@ -134,7 +134,7 @@ described by providing a command to run, input data it takes and a list of
 output files. DVC is not Python or any other language specific and can wrap any
 command runnable via CLI.
 
-- The first stage is to extract XML from the archive. Note that we don't need to
+  The first stage is to extract XML from the archive. Note that we don't need to
   run `dvc add` on `Posts.xml` below, `dvc run` saves the data automatically
   (commits into the cache, takes the file under DVC control):
 
@@ -188,7 +188,7 @@ data files.
 
 </details>
 
-- Next stage: let's convert XML into TSV to make feature extraction easier:
+Next stage: let's convert XML into TSV to make feature extraction easier:
 
 ```dvc
 $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml \
@@ -197,8 +197,8 @@ $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml \
           python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
 ```
 
-- Split training and test data sets. Here `0.2` is a test dataset split ratio,
-  `20170426` is a seed for randomization. There are two output files:
+Split training and test data sets. Here `0.2` is a test dataset split ratio,
+`20170426` is a seed for randomization. There are two output files:
 
 ```dvc
 $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
@@ -208,8 +208,8 @@ $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
                                           data/Posts-train.tsv data/Posts-test.tsv
 ```
 
-- Extract features and labels from the data. Two TSV as inputs with two pickle
-  matrices as outputs:
+Extract features and labels from the data. Two TSV as inputs with two pickle
+matrices as outputs:
 
 ```dvc
 $ dvc run -d code/featurization.py -d data/Posts-train.tsv -d data/Posts-test.tsv \
@@ -219,7 +219,7 @@ $ dvc run -d code/featurization.py -d data/Posts-train.tsv -d data/Posts-test.ts
                                            data/matrix-train.pkl data/matrix-test.pkl
 ```
 
-- Train ML model on the training data set. 20170426 is a seed value here:
+Train ML model on the training data set. 20170426 is a seed value here:
 
 ```dvc
 $ dvc run -d code/train_model.py -d data/matrix-train.pkl \
@@ -228,7 +228,7 @@ $ dvc run -d code/train_model.py -d data/matrix-train.pkl \
           python code/train_model.py data/matrix-train.pkl 20170426 data/model.pkl
 ```
 
-- Finally, evaluate the model on the test data set and get the metrics file:
+Finally, evaluate the model on the test data set and get the metrics file:
 
 ```dvc
 $ dvc run -d code/evaluate.py -d data/model.pkl -d data/matrix-test.pkl \
@@ -300,7 +300,7 @@ $ dvc pipeline show --ascii evaluate.dvc
 > simpler to run this pipeline, exact metric number may vary sufficiently
 > depending on Python version you are using and other environment parameters.
 
-- An easy way to see metrics across different branches:
+An easy way to see metrics across different branches:
 
 ```dvc
 $ dvc metrics show
@@ -322,7 +322,7 @@ $ git commit -am "create pipeline"
 All stages could be automatically and efficiently reproduced even if some source
 files have been modified. For example:
 
-- Let's improve the feature extraction algorithm by making some modification to
+  Let's improve the feature extraction algorithm by making some modification to
   the `code/featurization.py`:
 
 ```dvc
@@ -337,7 +337,7 @@ bag_of_words = CountVectorizer(stop_words='english',
                                ngram_range=(1, 2))
 ```
 
-- Reproduce all required stages to get our target metrics file:
+Reproduce all required stages to get our target metrics file:
 
 ```dvc
 $ dvc repro evaluate.dvc
@@ -347,7 +347,7 @@ $ dvc repro evaluate.dvc
 > to run this pipeline, exact metric numbers may vary significantly depending on
 > the Python version you are using and other environment parameters.
 
-- Take a look at the target metric improvement:
+Take a look at the target metric improvement:
 
 ```dvc
 $ dvc metrics show -a

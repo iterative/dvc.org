@@ -31,7 +31,7 @@ contributing!
 
 ## Development environment
 
-- Get the latest development version. Fork and clone the repo:
+- Get the latest development version. Fork and clone the repo.
   ```dvc
   $ git clone git@github.com:<username>/dvc.git
   ```
