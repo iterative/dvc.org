@@ -30,7 +30,10 @@ will become the required `command` argument.
 > Remember to wrap the `command` with `"` quotes if there are special characters
 > in it like `|` (pipe) or `<`, `>` (redirection) that would otherwise apply to
 > the entire `dvc run` command. E.g.
-> `dvc run -d script.sh "script.sh > /dev/null 2>&1"`
+> `dvc run -d script.sh "./script.sh > /dev/null 2>&1"`
+> Use single quotes `'` instead of `"` to wrap the `command` if there are
+> environment variables in it, that you want to be evaluated dynamically. E.g.
+> `dvc run -d script.sh './myscript.sh $MYENVVAR'`
 
 Unless the `-f` options is used, by default the DVC-file name generated is
 `<file>.dvc`, where `<file>` is file name of the first output (`-o`, `-O`, `-m`,

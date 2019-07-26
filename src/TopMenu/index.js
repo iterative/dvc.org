@@ -48,7 +48,11 @@ class TopMenu extends Component {
 
     return (
       <Wrapper>
-        <Container scrolled={isDocPage || scrolled} wide={isDocPage}>
+        <Container
+          className="header"
+          scrolled={isDocPage || scrolled}
+          wide={isDocPage}
+        >
           <Logo href="/">
             <img
               src="/static/img/logo.png"
