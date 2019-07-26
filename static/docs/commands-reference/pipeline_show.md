@@ -116,7 +116,7 @@ instead of stages.
                 `--------------'
   ```
 
-  To navigate, use `W`, `A`, `S`, `D` keys.
+  To navigate, use arrows or `W`, `A`, `S`, `D` keys.
 
   To exit, press `Q`.
 
