@@ -45,25 +45,50 @@ detected, `dvc status` prints this message:
 
 ```dvc
     $ dvc status
-    Pipeline is up to date. Nothing to reproduce.
+    Pipelines are up to date. Nothing to reproduce.
 ```
 
-This says that no differences were detected, and therefore that no stages would
-be run again if `dvc repro` were executed.
+This indicates that no differences were detected, and therefore no stages would
+be run again by `dvc repro`.
 
 If instead, differences are detected, `dvc status` lists those changes. For each
-DVC-file (stage) with differences, the _dependencies_ and/or _outputs_ that
-differ are listed. For each item listed, either the file name or the checksum is
-shown, and additionally a status word is shown describing the change:
+DVC-file (stage) with differences, the changes in _dependencies_ and/or
+_outputs_ that differ are listed. For each item listed, either the file name or
+the checksum is shown, and additionally a status word is shown describing the
+changes. This changes list provides a reference to both the status of a
+DVC-file, as well as the changes to individual dependencies and outputs
+described in it:
 
-- For the local workspace:
-  - _changed_ means the file has changed
-- For comparison against a remote cache:
-  - _new_ means the file exists in the local cache but not the remote cache
-  - _deleted_ means the file doesn't exist in the local cache, but exists in the
+- _changed checksum_ means that the <abbr>DVC-file</abbr> checksum has changed
+  (e.g. someone manually edited the file)
+
+- _always changed_ means that this is a special DVC-file with no dependencies
+  (orphans), which is considered always changed and is always executed by `dvc
+  repro`
+
+- _changed deps_ or _changed outs_ means that there are changes in dependencies
+  or outputs defined by the <abbr>DVC-file</abbr>. Depending on the use case,
+  commands like `dvc commit` or `dvc repro`, `dvc run` should be run to update
+  the file. Possible states are:
+
+    - _new_: output exists in workspace, but there is no corresponding checksum
+      calculated and saved in the DVC-file for this output yet
+
+    - _modified_: output or dependency exists in workspace, but the
+      corresponding checksum in the DVC-file is not up to date
+
+    - _deleted_: output or dependency does not exist in workspace, but still
+      referred in the DVC-file
+
+    - _not in cache_: output exists in workspace and the corresponding checksum
+      in the DVC-file is up to date, but there is no corresponding
+      <abbr>cache</abbr> entry
+
+**For comparison against a remote cache:**
+
+- _new_ means the file exists in the local cache but not the remote cache
+- _deleted_ means the file doesn't exist in the local cache, but exists in the
     remote cache
-
-For the _changed_ case, the `dvc repro` command is indicated.
 
 For either the _new_ and _deleted_ cases, the local cache (subset of it, that is
 determined by the active workspace) is different from the remote cache. Bringing
@@ -118,14 +143,19 @@ cache. For the typical process to update workspaces, see
 ```dvc
 $ dvc status
 
-  bar.dvc
-          outs
-                  changed:  bar
-          deps
-                  changed:  foo
-  foo.dvc
-          outs
-                  changed:  foo
+bar.dvc:
+        changed deps:
+                modified:      bar
+        changed outs:
+                not in cache:      foo
+foo.dvc
+        changed outs:
+                deleted:      foo
+        changed checksum
+prepare.dvc
+        changed outs:
+                new:      bar
+        always changed
 ```
 
 This shows that for `bar.dvc` the dependency, `foo`, has changed, and the
@@ -143,8 +173,8 @@ Pipeline is up to date. Nothing to reproduce.
 
 $ dvc status model.p.dvc --with-deps
 matrix-train.p.dvc
-    deps
-        changed:  code/featurization.py
+    changed deps:
+            modified:  code/featurization.py
 ```
 
 If the `dvc status` command is limited to a target that had no changes, result
