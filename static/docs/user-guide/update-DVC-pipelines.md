@@ -1,11 +1,11 @@
 # Updating pipelines
 
+If you need to rename or relocate the file paths and/or dependencies of a
+specific DVC-file, then you can 
 
-
-> 1) Using `dvc move` to edit file paths of outputs or dependencies.
-> 2) Editting by hand the outputs paths.
-> 3) `dvc run` to make edits in the dependency files and `dvc commit` to save
-> changes.
+- use `dvc move` to edit file paths of outputs or dependencies.
+- `dvc run` to make edits in the files and/or dependencies and `dvc commit` to
+  save changes.
 
 If your source file is a data file, then use `dvc move`:
 
@@ -13,11 +13,34 @@ If your source file is a data file, then use `dvc move`:
 add`. The source file or directory is moved to its destination path, renamed 
 and corresponding DVC-file is updated.
 
-If your source file isn't data file then use `dvc run`. Then add the new file
-with `dvc add`. If you check your file using `git mv` then it shows that your
-path isn't updated. So, using `git mv` is not an option.
+First add DVC files to get tracked by DVC file-tree. Use `dvc add data.dvc`
+and the updated content of the `data.tsv.dvc`:
 
-`dvc run` is used to create a pipeline. It can be shown in a connected
-graph. While using `dvc run` and executing it with [-f,-o,-O,-m,-M] you can
-edit your file paths by hand. `dvc run` connects each individual staged
-commands to a graph.
+md5: 3d1a3e5a5b666390e198d6a6ae83784b
+outs:
+  - cache: true
+    md5: c8263e8422925b0872ee1fb7c959451a
+    path: data.tsv
+
+Then use `dvc move` to rename the files and/or direcories and `dvc move`
+change its location and our initial file is also moved.
+
+If your source file isn't data file then use `dvc run`. Change the location of
+the files and/or directories by hand. It will create a pipeline to show the
+changes made to the connected graph.
+
+$ dvc run -d test.txt -f stages/test.dvc -o result.out \
+  "cat test.txt | wc -l > result.out"
+
+$ tree .
+
+.
+├── result.out
+├── stages
+│   └── test.dvc
+└── test.txt
+
+
+If you check your file using `git mv` then it shows that your path isn't
+updated but the DVC files and/or directories are relocated to destination. So,
+using `git mv` is not an option.
