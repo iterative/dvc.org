@@ -45,7 +45,7 @@ detected, `dvc status` prints this message:
 
 ```dvc
     $ dvc status
-    Pipeline is up to date. Nothing to reproduce.
+    Pipelines are up to date. Nothing to reproduce.
 ```
 
 This indicates that no differences were detected, and therefore no stages would
@@ -59,36 +59,36 @@ changes. This changes list provides a reference to both the status of a
 DVC-file, as well as the changes to individual dependencies and outputs
 described in it:
 
-- For the local workspace:
+- _changed checksum_ means that the <abbr>DVC-file</abbr> checksum has changed
+  (e.g. someone manually edited the file)
 
-  - _changed checksum_ means that the update checksum of the data doesn't match
-    the one saved in the DVC-files;
-  - _always changed_ means that this is a special DVC-file with no dependencies
-    (orphans), which is considered always changed;
-  - _changed deps_ means that some changes in dependencies are incorporated in
-    the DVC-file, all these states are:
-    - _new_ : when reference of new dependency files are added into DVC-file;
-    - _modified_ : when checksum of an exsisting dependencies are changed in
-      workspace but not reflected in the DVC-file;
-    - _deleted_ : when an exsisting dependencies are removed from the workspace
-      but still referred in the DVC-file;
-    - _not in cache_ : when dependencies mentioned in DVC-file no longer exsist
-      in local cache;
-  - _changed outs_ means that some changes in output states are incorporated in
-    the DVC-file, all these states are:
-    - _new_ : when reference of new output files are are added into DVC-file;
-    - _modified_ : when checksum of an exsisting outputs are changed in
-      workspace but not reflected in the DVC-file;
-    - _deleted_ : when an exsisting outputs are removed from the workspace but
-      still referred in the DVC-file;
-    - _not in cache_ : when outputs mentioned in DVC-file no longer exsist in
-      local cache;
+- _always changed_ means that this is a special DVC-file with no dependencies
+  (orphans), which is considered always changed and is always executed by `dvc
+  repro`
 
-- For comparison against a remote cache:
+- _changed deps_ or _changed outs_ means that there are changes in dependencies
+  or outputs defined by the <abbr>DVC-file</abbr>. Depending on the use case,
+  commands like `dvc commit` or `dvc repro`, `dvc run` should be run to update
+  the file. Possible states are:
 
-  - _new_ means the file exists in the local cache but not the remote cache;
-  - _deleted_ means the file doesn't exist in the local cache, but exists in the
-    remote cache;
+    - _new_: output exists in workspace, but there is no corresponding checksum
+      calculated and saved in the DVC-file for this output yet
+
+    - _modified_: output or dependency exists in workspace, but the
+      corresponding checksum in the DVC-file is not up to date
+
+    - _deleted_: output or dependency does not exist in workspace, but still
+      referred in the DVC-file
+
+    - _not in cache_: output exists in workspace and the corresponding checksum
+      in the DVC-file is up to date, but there is no corresponding
+      <abbr>cache</abbr> entry
+
+**For comparison against a remote cache:**
+
+- _new_ means the file exists in the local cache but not the remote cache
+- _deleted_ means the file doesn't exist in the local cache, but exists in the
+    remote cache
 
 For either the _new_ and _deleted_ cases, the local cache (subset of it, that is
 determined by the active workspace) is different from the remote cache. Bringing
