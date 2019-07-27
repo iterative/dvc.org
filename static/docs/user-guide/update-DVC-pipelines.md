@@ -1,5 +1,7 @@
 # Updating pipelines
 
+
+
 > 1) Using `dvc move` to edit file paths of outputs or dependencies.
 > 2) Editting by hand the outputs paths.
 > 3) `dvc run` to make edits in the dependency files and `dvc commit` to save
