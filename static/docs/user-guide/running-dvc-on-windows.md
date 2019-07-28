@@ -1,9 +1,9 @@
 # Running DVC on Windows
 
-There can different issues while running DVC on Windows. Some, for example, have
-to do with NTFS file system characteristics and Windows built-in security
-mechanisms. Below are some workarounds that can help avoid these potential
-problems:
+Different issues can arise when running DVC on Microsoft Windows, mainly
+involving system performance. Some, for example, have to do with NTFS file
+system characteristics and Windows built-in security mechanisms. Below are some
+workarounds that can help avoid these potential problems:
 
 ## POSIX-like command line shell
 
@@ -24,9 +24,11 @@ performance when the user has over 300K files in a single directory.
 
 ## Whitelist in Windows Security
 
-Microsoft includes the Windows Security antivirus program. If user wants to
-avoid antivirus scans on specific folders or files to improve the performance,
-then whitelist them in Windows Security as per
+Windows 10 includes the
+[Windows Security](https://support.microsoft.com/en-us/help/4013263/windows-10-stay-protected-with-windows-security)
+antivirus features. If user wants to avoid antivirus scans on specific folders
+or files to improve the performance, then whitelist them in Windows Security as
+per
 [this](https://support.microsoft.com/en-in/help/4028485/windows-10-add-an-exclusion-to-windows-security)
 guide. For example, we can whitelist DVC binary files on Windows to speed up the
 processes.
