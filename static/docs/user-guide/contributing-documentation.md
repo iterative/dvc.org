@@ -82,7 +82,7 @@ setting up.
 
 - Visit `http://localhost:3000/` and navigate to the docs in question.
 
-## Doc style guidelines (for Markdown)
+## Doc style guidelines (for JavaScript and Markdown)
 
 - No trailing whitespaces are allowed.
 
@@ -92,24 +92,26 @@ setting up.
   plugin. Correct formatting will be done automatically by a Git pre-commit hook
   which is integrated when `npm install` runs in the instructions above.
 
-- We use `prettier` default conventions to format our files. The formatting of
-  staged files will automatically be done by the Git pre-commit hook we have
-  configured. You may also run `npx prettier --write <file path(s)>` manually
-  before committing changes.
+- We use [Prettier](https://prettier.io/) default conventions to format our
+  source code files. The formatting of staged files will automatically be done
+  by the Git pre-commit hook we have configured. You may also run
+  `npx prettier --write <file path(s)>` manually before committing changes.
 
-- Using `dvc <command>` in the documentation will create a link to that command
-  automatically. No need to use `[]()` explicitly to create them.
+- Using `dvc <command>` in the Markdown files, the docs engine will create a
+  link to that command automatically. (No need to use `[]()` explicitly to
+  create them.)
 
 - Bullet lists shouldn't be too long, nor each bullet's text (3 sentence
-  paragraphs max.) The bullets can begin in lower case and have no ending
-  punctuation if they're not full sentences (otherwise end with period `.`). The
-  bullets can be separated by an empty line if they contain short paragraphs.
+  paragraphs max.) Full sentence bullets should begin with a capital letter and
+  end in period `.` otherwise they can be all lower case and have no ending
+  punctuation. Bullets can be separated by an empty line if they contain short
+  paragraphs.
 
-- Syntax highlighting in fenced code blocks should use the `usage` `dvc`, and
-  `yaml` custom languages. `usage` is employed to show `dvc help` commands
-  output in each command reference doc. `dvc` can be used to show
-  [DVC-file](/doc/user-guide/dvc-file-format) contents, or examples of terminal
-  commands and their output.
+- Syntax highlighting in fenced code blocks (Markdown) should use the `usage`
+  `dvc`, and `yaml` custom languages. `usage` is employed to show `dvc --help`
+  commands output in each command reference doc. `dvc` can be used to show
+  examples of terminal commands and their output. `yaml` is used to show
+  [DVC-file](/doc/user-guide/dvc-file-format) contents.
 
 > Check out any of the command reference `.md` source code to get a better idea,
 > for example
