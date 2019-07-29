@@ -44,7 +44,7 @@ created in the current working directory, with its original file name.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example:
+## Example
 
 > Note that `dvc get` can be used form anywhere in the file system, as long as
 > DVC is [installed](/doc/get-started/install).
