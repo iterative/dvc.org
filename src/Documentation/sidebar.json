@@ -126,6 +126,7 @@
       "status.md",
       "unlock.md",
       "unprotect.md",
+      "update.md",
       "version.md"
     ],
     "labels": {
@@ -170,6 +171,7 @@
       "status.md": "status",
       "unlock.md": "unlock",
       "unprotect.md": "unprotect",
+      "update.md": "update",
       "version.md": "version"
     }
   },

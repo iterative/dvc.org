@@ -5,7 +5,7 @@
 
 Download or copy file or directory from another DVC repository (on a git server
 such as Github) into the <abbr>workspace</abbr>, and track changes in the remote
-source with DVC. Creates a DVC-file.
+data source with DVC. Creates a DVC-file.
 
 > See also `dvc get` which corresponds to the first step this command performs
 > (just download the data).
@@ -25,8 +25,8 @@ positional arguments:
 DVC provides an easy way to reuse datasets, intermediate results, ML models, or
 other files and directories tracked in another DVC repository into the present
 <abbr>workspace</abbr>. The `dvc import` command downloads such a <abbr>data
-artifact</abbr> in a way that it can be tracked with DVC, resulting in automatic
-updates when the external data source changes.
+artifact</abbr> in a way that it is tracked with DVC, so it can be updated when
+the external data source changes.
 
 The `url` argument specifies the external DVC project's Git repository URL (both
 HTTP and SSH protocols supported, e.g. `[user@]server:project.git`), while
@@ -50,6 +50,13 @@ determine whether the local copy is out of date.
 To actually [track the data](https://dvc.org/doc/get-started/add-files),
 `git add` (and `git commit`) the import stage (DVC-file).
 
+Note that by default, these import stages are locked in their DVC-files (with
+fields `locked: true` and `rev_lock`). Use `dvc update` manually on them to
+force updating the downloaded data artifact from the external DVC repo.
+
+> If `dvc unlock` is used on locked stages, they will start to be checked by
+> `dvc status`, and updated by `dvc repro`.
+
 ## Options
 
 - `-o`, `--out` - specify a location in the workspace to place the imported data
@@ -65,5 +72,3 @@ To actually [track the data](https://dvc.org/doc/get-started/add-files),
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-<!-- ## Example -->

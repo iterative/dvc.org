@@ -26,7 +26,7 @@ for these commands.
 
 The `dvc push` command allows one to upload data to remote storage. It doesn't
 save any changes in the code or DVC-files. Those should be saved by using
-`git commit` and `git push`. 
+`git commit` and `git push`.
 
 Under the hood a few actions are taken:
 
@@ -34,10 +34,12 @@ Under the hood a few actions are taken:
   [DVC-files](/doc/user-guide/dvc-file-format in the current version. The
   command-line options listed below will either limit or expand the set of
   DVC-files to consult.
+
 - For each output referenced from each selected DVC-files, it finds a
   corresponding entry in the local cache. DVC checks if the entry exists, or
   not, in the remote simply by looking for it using the checksum. From this DVC
   gathers a list of files missing from the remote storage.
+
 - Upload the cache files missing from the remote cache, if any, to the remote.
 
 The DVC `push` command always works with a remote storage, and it is an error if
@@ -197,7 +199,7 @@ Everything is up to date.
 
 $ dvc status --cloud
 
-Pipeline is up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 With the first `dvc push` we specified a stage in the middle of this pipeline
@@ -334,8 +336,7 @@ $ tree ../vault/recursive
 
 $ dvc status --cloud
 
-Pipeline is up to date. Nothing to reproduce.
-
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 And running `dvc status --cloud` verifies that indeed there are no more files to

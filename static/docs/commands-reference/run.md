@@ -160,8 +160,7 @@ pipeline.
   work. You don't need any actual data or scripts to play with this example:
 
   ```dvc
-  $ mkdir example
-  $ cd example
+  $ mkdir example && cd example
   $ git init
   $ dvc init
   $ mkdir data

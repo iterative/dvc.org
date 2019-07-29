@@ -39,6 +39,7 @@ The execution of `dvc checkout` does:
   on the command line. And if the `--with-deps` option is specified, it scans
   backward from the given `targets` in the corresponding
   [pipeline](/doc/get-started/pipeline).
+
 - For any data files where the checksum doesn't match their DVC-file entry, the
   data file is restored from the cache. The link strategy used (`reflink`,
   `hardlink`, `symlink`, or `copy`) depends on the OS and the configured value
@@ -82,7 +83,7 @@ be pulled from a remote cache using `dvc pull`.
   DVC will not checkout files referenced in later stage(s) than `targets`.
 
 - `-R`, `--recursive` - `targets` is expected to contain at least one directory
-  path for this option to have effect. Determines the files to checout by
+  path for this option to have effect. Determines the files to checkout by
   searching each target directory and its subdirectories for DVC-files to
   inspect.
 

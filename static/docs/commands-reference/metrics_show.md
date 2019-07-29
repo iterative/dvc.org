@@ -75,6 +75,13 @@ supported.
   have effect. Determines the metric files to show by searching each target
   directory and its subdirectories for DVC-files to inspect.
 
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
+
+- `-v`, `--verbose` - displays detailed tracing information.
+
 ## Examples
 
 Examples in [add](/doc/commands-reference/metrics-add),

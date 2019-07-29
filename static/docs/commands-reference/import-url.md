@@ -2,7 +2,7 @@
 
 Download or copy file or directory from any supported URL (for example `s3://`,
 `ssh://`, and other protocols) or local directory to the <abbr>workspace</abbr>,
-and track changes in the remote source with DVC. Creates a DVC-file.
+and track changes in the remote data source with DVC. Creates a DVC-file.
 
 > See also `dvc get-url` which corresponds to the first step this command
 > performs (just download the data).
@@ -20,13 +20,13 @@ positional arguments:
 ## Description
 
 In some cases it's convenient to add a data file or directory from a remote
-location into the workspace, such that it will be automatically updated when the
-external data source changes. Examples:
+location into the workspace, such that it will be automatically updated (by
+`dvc repro`) when the external data source changes. Examples:
 
-- A remote system may produce occasional data files that are used in other
-  projects.
-- A batch process running regularly updates a data file to import.
-- A shared dataset on a remote storage that is managed and updated outside DVC.
+- a remote system may produce occasional data files that are used in other
+  projects;
+- a batch process running regularly updates a data file to import; and
+- a shared dataset on a remote storage that is managed and updated outside DVC.
 
 The `dvc import-url` command helps the user create such an external data
 dependency. The `url` argument specifies the external location of the data to be
@@ -95,11 +95,12 @@ dependency. The `dvc import-url` command saves the user from having to manually
 copy files from each of the remote storage schemes, and from having to install
 CLI tools for each service.
 
-When DVC inspects a DVC-file, its dependencies will be checked to see if any
-have changed. A changed dependency will appear in the `dvc status` report,
-indicating the need to reproduce this import stage. When DVC inspects an
-external dependency, it uses a method appropriate to that dependency to test its
-current status.
+Note that by default, import stages are locked in their DVC-files (with
+`locked: true`). Use `dvc update` manually on them to force updating the
+downloaded file or directory from the external data source.
+
+> If `dvc unlock` is used on locked stages, they will start to be checked by
+> `dvc status`, and updated by `dvc repro`.
 
 ## Options
 
@@ -164,8 +165,8 @@ using `dvc import-url`:
 
 ### Click and expand to prepare the workspace
 
-This is needed to actually run the command below in case you are reproducing
-this example:
+This is needed to actually run the command below in case you are trying this
+example:
 
 ```dvc
 $ git checkout 2-remote
@@ -223,8 +224,8 @@ file has changed.
 
 What if that remote file is one which will be updated regularly? The project
 goal might include regenerating a <abbr>data artifact</abbr> based on the
-updated source. A pipeline can be triggered to re-execute based on a changed
-external dependency.
+updated data source. A pipeline can be triggered to re-execute based on a
+changed external dependency.
 
 Let us again use the [Getting Started](/doc/get-started) example, in a way which
 will mimic an updated external data source.
@@ -348,7 +349,7 @@ $ tree
 3 directories, 10 files
 
 $ dvc status
-Pipeline is up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 Then in the data store directory, edit `data.xml`. It doesn't matter what you
@@ -362,8 +363,8 @@ data.xml.dvc:
         modified:     /path/to/data-store/data.xml
 ```
 
-DVC has noticed the external dependency has changed. It is telling us that it is
-necessary to now run `dvc repro`.
+DVC has noticed the external dependency (import stage) has changed. It is
+telling us that it is necessary to now run `dvc repro`.
 
 ```dvc
 $ dvc repro prepare.dvc
@@ -396,11 +397,11 @@ $ git commit -a -m "updated data"
  2 files changed, 6 insertions(+), 6 deletions(-)
 
 $ dvc status
-Pipeline is up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 ```
 
-Because the external source for the data file changed, the change was noticed by
-the `dvc status` command. Running `dvc repro` then ran both stages of this
-pipeline, and if we had set up the other stages they also would have been run.
-It first downloaded the updated data file. And then noticing that
+Because the external data source for the data file changed, the change was
+noticed by the `dvc status` command. Running `dvc repro` then ran both stages of
+this pipeline, and if we had set up the other stages they also would have been
+run. It first downloaded the updated data file. And then noticing that
 `data/data.xml` had changed, that triggered the `prepare.dvc` stage to execute.

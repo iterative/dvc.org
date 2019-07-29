@@ -98,8 +98,8 @@ $ unzip data.zip
 $ rm -f data.zip
 ```
 
-This command downloads and extracts our initial dataset - 1000 labeled images
-for training and 800 labeled images for validation. In summary, it's a 43 MB
+This command downloads and extracts our raw dataset - 1000 labeled images for
+training and 800 labeled images for validation. In summary, it's a 43 MB
 dataset, with a directory structure like this:
 
 ```sh
