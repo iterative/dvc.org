@@ -30,6 +30,13 @@ export default {
         'result (such as extracted features or a ML model file) that is ' +
         'under DVC control. Refer to [Data and Model Files Versioning]' +
         '(/doc/use-cases/data-and-model-files-versioning) for more details.'
+    },
+    {
+      name: 'Import stage',
+      match: ['import stage', 'import stages'],
+      desc:
+        'Stage (DVC-file) created with the `dvc import` or `dvc import-url` ' +
+        'commands. They represent files or directories from external sources.'
     }
   ]
 }

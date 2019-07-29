@@ -39,9 +39,6 @@ files, intermediate or final results. It saves all the data files, intermediate
 or final results into the DVC cache (unless `--no-commit` option is specified),
 and updates stage files with the new checksum information.
 
-Note that reproducing import stages created with `dvc import-url` implies
-updating their data sources first, as if running `dvc update`.
-
 ## Options
 
 - `-f`, `--force` - reproduce a pipeline, regenerating its results, even if no
