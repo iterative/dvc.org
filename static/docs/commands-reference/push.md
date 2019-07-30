@@ -117,9 +117,9 @@ to check existing remotes. Just to remind how it is done and set a context for
 the example, let's define an SSH remote with the `dvc remote add` command:
 
 ```dvc
-    $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
-    $ dvc remote list
-    r1	ssh://_username_@_host_/path/to/dvc/cache/directory
+$ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
+$ dvc remote list
+r1	ssh://_username_@_host_/path/to/dvc/cache/directory
 ```
 
 > DVC supports several remote types. For details, see the

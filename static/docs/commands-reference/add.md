@@ -115,10 +115,7 @@ $ dvc add data.xml
 Adding 'data.xml' to '.gitignore'.
 Saving 'data.xml' to cache '.dvc/cache'.
 Saving information to 'data.xml.dvc'.
-
-To track the changes with git run:
-
-	git add .gitignore data.xml.dvc
+...
 ```
 
 As the output says, a DVC-file has been created for `data.xml`. Let us explore
@@ -191,10 +188,7 @@ Linking directory 'pics'.
 [##############################] 100% pics
 
 Saving information to 'pics.dvc'.
-
-To track the changes with git run:
-
-  	git add pics.dvc
+...
 ```
 
 There are no DVC-files generated within this directory structure, but the images

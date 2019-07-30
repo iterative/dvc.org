@@ -61,10 +61,7 @@ $ dvc add Posts.xml.zip
 Adding 'Posts.xml.zip' to '.gitignore'.
 Saving 'Posts.xml.zip' to cache '.dvc/cache'.
 Saving information to 'Posts.xml.zip.dvc'.
-
-To track the changes with git run:
-
-	git add .gitignore Posts.xml.zip.dvc
+...
 ```
 
 Check that file is a read-only link (@ sign means a link):
