@@ -70,6 +70,8 @@ $ brew cask install iterative/homebrew-dvc/dvc
 $ conda install -c conda-forge dvc
 ```
 
+> Currently, it supports only python version 2.7 and 3.6.
+
 </details>
 
 To install the most recent development version, See our
