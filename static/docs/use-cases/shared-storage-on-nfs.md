@@ -119,7 +119,9 @@ After copying the data, we have moved the data that is present in the
 dataset.
 
 `dvc add data` will take files in `data` directory under DVC control. By default
-an added file is committed to the DVC cache.
+an added file is committed to the DVC cache. After `dvc add` dvc will
+`unprotect` all the data. For more information, visit
+[here](/doc/user-guide/update-tracked-file).
 
 Now, commit changes to `.dvc/config` and push them to your git remote:
 
