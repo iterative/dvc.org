@@ -55,11 +55,10 @@ $ tree .
 └── test.txt
 ```
 
-If you change your file using `mv src dst` then it shows that your
-index isn't updated but the DVC files and/or directories are relocated to
-destination. So, after using regular `mv` you have to use
-`git add dst` and `git rm src` to update the index for both source
-and destination paths.
+If you change your file using `mv src dst` then it shows that your index isn't
+updated but the DVC files and/or directories are relocated to destination. So,
+after using regular `mv` you have to use `git add dst` and `git rm src` to
+update the index for both source and destination paths.
 
 While user doesn't need to use `git add` after `dvc move` or `dvc run` to
 change the index of both the source and destination files i.e., it gets
