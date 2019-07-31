@@ -13,7 +13,8 @@ design works similar way as `.gitignore` does.
 
 ## How does it work?
 
-- You need to create `.dvcignore` file.
+- You need to create the `.dvcignore` file. It can be placed in the root of the
+  project or inside any subdirectory (see also [remarks](#Remarks) below).
 - Populate it with [patterns](https://git-scm.com/docs/gitignore) that you would
   like to ignore.
 - Each line should contain only one pattern.
@@ -22,18 +23,22 @@ design works similar way as `.gitignore` does.
 
 ## Remarks
 
-- Ignored files will not be saved in cache, they will be non-existent for DVC.
-  It's worth to remember that, especially when ignoring files inside DVC-handled
-  directories. **It is crucial to understand, that DVC might remove ignored
-  files upon `dvc run` or `dvc repro`. If they are not produced by a
-  [pipeline](/doc/get-started/pipeline) step, they can be deleted permanently.**
-- Keep in mind, that when you add to .dvcignore entries that affect one of the
-  existing <abbr>outputs</abbr>, its status will change and DVC will behave as
-  if that affected files were deleted.
-- If DVC stumbles upon `.dvcignore` file inside a dependency or an
-  <abbr>output</abbr> directory, it raises an error. Ignoring files inside such
-  directory should be handled from `.dvcignore` file from upper levels of
-  project tree.
+Ignored files will not be saved in cache, they will be non-existent for DVC.
+It's worth to remember that, especially when ignoring files inside DVC-handled
+directories.
+
+**It is crucial to understand, that DVC might remove ignored files upon `dvc
+run` or `dvc repro`. If they are not produced by a
+[pipeline](/doc/get-started/pipeline) step, they can be deleted permanently.**
+
+Keep in mind, that when you add to `.dvcignore` entries that affect one of the
+existing <abbr>outputs</abbr>, its status will change and DVC will behave as if
+that affected files were deleted.
+
+If DVC stumbles upon `.dvcignore` file inside a dependency or an
+<abbr>output</abbr> directory, it raises an error. Ignoring files inside such
+directory should be handled from `.dvcignore` file from upper levels of the
+project tree.
 
 ## Syntax
 
@@ -91,7 +96,7 @@ Pipelines are up to date. Nothing to reproduce.
 ```
 
 Same modification applied to not ignored file will make `dvc status` inform
-about change.
+about change:
 
 ```dvc
 $ echo "123" >> data/data2
@@ -124,7 +129,7 @@ $ dvc add data
 ```
 
 If we move not ignored data, DVC will behave as if we modified data directory by
-adding new file.
+adding new file:
 
 ```dvc
 $ dvc status
