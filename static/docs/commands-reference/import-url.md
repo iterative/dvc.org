@@ -99,16 +99,18 @@ Note that by default, import stages are locked in their DVC-files (with
 `locked: true`). Use `dvc update` manually on them to force updating the
 downloaded file or directory from the external data source.
 
-> If `dvc unlock` is used on locked stages, they will start to be checked by
-> `dvc status`, and updated by `dvc repro`.
+> If a stage is unlocked (editing the `lock` value in its DVC-file, for example
+> using `dvc unlock`), they will start to be checked by `dvc status`, and
+> updated by `dvc repro`.
 
 ## Options
 
 - `-f`, `--file` - specify name of the DVC-file it generates. By default the
   DVC-file name generated is `<file>.dvc`, where `<file>` is file name of the
-  output (`out`). The stage file is placed in the same directory where `dvc run`
-  is run by default, but `-f` can be used to change this location, by including
-  a path in the provided value (e.g. `-f stages/stage.dvc`).
+  output (`out`). The stage file is placed in the same directory where
+  `dvc import-url` is run by default, but `-f` can be used to change this
+  location, by including a path in the provided value (e.g.
+  `-f stages/stage.dvc`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -128,7 +130,7 @@ playground for the examples below.
 ### Click and expand to setup the sample project
 
 Follow these instructions before each example if you actually want to try them
-on your system. First, download the project and move into it:
+on your system. First, download the project and `cd` into it:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -163,9 +165,6 @@ Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data/data.xml'
 ...
 ```
 
-> Note that it's possible to set up the other stages from the _Get Started_
-> project, but since we don't need them for this example, we'll skip it.
-
 Let's take a look at the resulting stage file (DVC-file) `data.xml.dvc`:
 
 ```yaml
@@ -186,7 +185,7 @@ outs:
 The `etag` field in the DVC-file contains the
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) recorded from the HTTP request.
 If the remote file changes, its ETag will be different, letting DVC know whether
-its necessary to download the it again.
+its necessary to download it again.
 
 > See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
 > text format above.
@@ -204,9 +203,10 @@ triggered to re-execute based on a changed external dependency.
 Let's use the [Get Started](/doc/get-started) project again, simulating an
 updated external data source.
 
-To make it easy to experiment with this, let's use a local directory as our
-remote data location. (In real life, the data file will probably be on a remote
-server.) Run these commands:
+To make it easy to experiment with this, let's use a local machine directory
+(external to the sample DVC project) to simulate a remote data source location.
+(In real life, the data file will probably be on a remote server.) Run these
+commands:
 
 ```dvc
 $ mkdir /tmp/dvc-import-url-example
@@ -363,6 +363,3 @@ Data and pipelines are up to date.[]
 stages, they also would have been run again). It first downloaded the updated
 data file. And then, noticing that `data/data.xml` had changed, that triggered
 the `prepare.dvc` stage to execute.
-
-> Feel free to clean up after this example get out of and remove the
-> `example-get-started` directory.
