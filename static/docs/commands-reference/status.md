@@ -124,9 +124,6 @@ cache. For the typical process to update workspaces, see
   the workspace. The corresponding tags are shown in the status output. Applies
   only if `--cloud` or a remote is specified.
 
-- `--show-checksums` - shows the DVC checksum for the file, rather than the file
-  name. Applies only if `--cloud` is specified.
-
 - `-j JOBS`, `--jobs JOBS` - specifies the number of jobs DVC can use to
   retrieve information from remote servers. This only applies when the `--cloud`
   option is used or a remote is given.
@@ -206,16 +203,5 @@ Preparing to collect status from s3://dvc-remote
 ```
 
 The output shows where the location of the remote cache as well as any
-differences between the local cache and remote cache. Alternatively, we can
-output a checksum instead of a file name:
+differences between the local cache and remote cache. 
 
-```dvc
-$ dvc status --remote rcache --show-checksums
-
-Preparing to collect status from s3://dvc-remote
-[##############################] 100% Collecting information
-    new:      f0a6e3eed7c7c1a1c707da2c1673ca72
-    new:      d6b228f7904bd200d4eb643fe0e8efd8
-    new:      f506aa14271f793ffd7eca113f5920cd
-    new:      9c0b1f5c3560b6a2838b3fbcd7d72665
-```
