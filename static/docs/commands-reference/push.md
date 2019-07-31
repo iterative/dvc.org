@@ -71,8 +71,6 @@ to push.
 
 ## Options
 
-- `--show-checksums` - shows checksums instead of file names.
-
 - `-r REMOTE`, `--remote REMOTE` specifies which remote cache (see
   `dvc remote list`) to push to. The value for `REMOTE` is a cache name defined
   using the `dvc remote` command. If no `REMOTE` is given, or if no remote's are
@@ -342,14 +340,3 @@ Pipelines are up to date. Nothing to reproduce.
 And running `dvc status --cloud` verifies that indeed there are no more files to
 upload to the remote cache.
 
-## Examples: Show checksums
-
-Normally the file names are shown, but DVC can display the checksums instead.
-
-```dvc
-$ dvc push --remote r1 --show-checksums
-
-(1/3): [####################] 100% 844ef0cd13ff786c686d76bb1627081c
-(2/3): [####################] 100% c5409fafe56c3b0d4d4d8d72dcc009c0
-(3/3): [####################] 100% a8c5ae04775fcde33bf03b7e59960e18
-```
