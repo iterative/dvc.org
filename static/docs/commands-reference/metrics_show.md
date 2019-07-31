@@ -22,17 +22,13 @@ The optional `path` argument can represent a DVC metric file or a directory. If
 `path` is a directory, recursively search and process all metric files in it
 with the `-R` option.
 
-- If type (via `-t`) and xpath (`-x`) are specified, they override the type and
-  xpath defined (if any) in the corresponding DVC-file (usually, using
-  `dvc metrics modify` command).
-- If type (via `-t`) is specified and xpath (`-x`) is not, type will overwrite
-  the type specified in DVC-file, no xpath will be considered, which will result
-  in displaying all metrics from file.
-- If type (via `-t`) is not specified and xpath (`-x`) is, DVC will try to read
-  type from DVC-file and apply xpath provided in `-x`.
+Providing `type` (via `-t` CLI option), overrides the full metric specification
+(both, `type` and `xpath`) defined in the DVC-file (usually, using `dvc metrics
+modify` command).
 
-The type can be detected by the file extension automatically if the type is
-supported.
+If `type` (via `-t`) is not specified and only `xpath` (`-x`) is, only `xpath`
+is overridden. It will try to read type from the DVC-file. The `type` can be
+detected by the file extension automatically.
 
 ## Options
 
@@ -55,7 +51,7 @@ supported.
   exist in the project, the same parser and path will be applied to all of them.
   If xpath for particular metric has been set using
   [`dvc metrics modify`](https://dvc.org/doc/commands-reference/metrics-modify#options)
-  xpath passed in this option will owervrite it, only for current command run.
+  `xpath` passed in this option will owervrite it, only for current command run.
   It may fail to produce any results or parse files that are not in a
   corresponding format in this case. Accepted value depends on the metric file
   type (`-t` option):
