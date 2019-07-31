@@ -37,6 +37,13 @@ export default {
       desc:
         'Stage (DVC-file) created with the `dvc import` or `dvc import-url` ' +
         'commands. They represent files or directories from external sources.'
+    },
+    {
+      name: 'Output',
+      match: ['output', 'outputs'],
+      desc:
+        'A file or a directory that is under DVC control. See `dvc add`,' +
+        ' `dvc run`, `dvc import`, `dvc import-url` commands.'
     }
   ]
 }
