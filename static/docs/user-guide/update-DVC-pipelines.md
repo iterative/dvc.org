@@ -1,25 +1,23 @@
 # Updating pipelines
 
-If you need to rename or relocate the file paths and/or dependencies and
-outputs of a specific DVC-file, then you can
+If you need to rename or relocate a DVC-file and/or dependencies and outputs
+of a specific DVC-file, then you can
 
 - use `dvc move` to edit file paths of outputs or dependencies.
 - `dvc run` to make edits in the files and/or dependencies and outputs then
   `dvc commit` to save changes to cache.
 
-If you want to relocate or rename data files and/or directories, dependencies
-and outputs use `dvc move`. `dvc move` is not permitted for stages that are
-not data sources.
+If you want to move or rename data files and/or directories, dependencies
+and outputs use `dvc move`. It modifies the location of corresponding DVC-file
+and changes the index of both the source and destination files. `dvc move` is
+not permitted for stages that are not data sources. The DVC-files to be moved
+by `dvc move` shouldn't be `.json`, `.py`, `.dvc` rather be `.tsv` or `.csv`
+DVC-files.
 
 ```dvc
-$ dvc move output/models/variables/risk_dict.json output/models/risk_dict.json
-?[31mError?[39m: failed to move 'output/models/variables/risk_dict.json' -> 'output/models/risk_dict.json'
-
-- move is not permitted for stages that are not data sources. You need to either move 
-
-'output\model_01_pre_estimation.dvc' to a new location and edit it by hand, or remove
-
-'output\model_01_pre_estimation.dvc' and create a new one at the desired location.
+$ dvc move example1.json exam.json
+ERROR: failed to move 'train.py' -> 'train1.py' - unable to find DVC-file with
+output 'train.py'
 ```
 
 `dvc move` is used if a file or a directory has been added to DVC with `dvc 
@@ -57,8 +55,12 @@ $ tree .
 └── test.txt
 ```
 
-If you change your file using `mv source destination` then it shows that your
+If you change your file using `mv src dst` then it shows that your
 index isn't updated but the DVC files and/or directories are relocated to
 destination. So, after using regular `mv` you have to use
-`git add destination` and `git rm source` to update the index for both source
+`git add dst` and `git rm src` to update the index for both source
 and destination paths.
+
+While user doesn't need to use `git add` after `dvc move` or `dvc run` to
+change the index of both the source and destination files i.e., it gets
+updated automatically. 
