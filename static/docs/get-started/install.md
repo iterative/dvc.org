@@ -1,9 +1,10 @@
 # Install
 
-There are three recommended ways to install DVC: OS-specific package/installer,
-`pip`, and Homebrew. (Depending on your OS, some of these may be not available.)
+There are a few recommended ways to install DVC: OS-specific package/installer,
+`pip`, `conda` (Anaconda), and Homebrew. (Depending on your OS, some of these
+may be not available.)
 
-To install DVC from terminal, run:
+To install DVC from `pip` (see instructions for other options below), run:
 
 ```dvc
 $ pip install dvc
