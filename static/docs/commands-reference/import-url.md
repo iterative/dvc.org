@@ -327,7 +327,7 @@ that it is necessary to now run `dvc repro` so that the rest of this pipeline
 > run `dvc update` on it first to make sure it's up to date, and then check with
 > `dvc status` for the need to reproduce the pipeline.
 
-Lets run the "prepare" stage again, since we know its outdated:
+Let's run the "prepare" stage again, since we know its outdated:
 
 ```dvc
 $ dvc repro prepare.dvc

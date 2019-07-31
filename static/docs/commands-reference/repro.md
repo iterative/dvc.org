@@ -209,7 +209,7 @@ information, new `md5` checksums and a new result respectively.
 ## Examples: Downstream
 
 The `--downstream` option allows us to only reproduce results from commands
-after a specific stage in a pipeline. To demonstrate how it works, lets make a
+after a specific stage in a pipeline. To demonstrate how it works, let's make a
 change in `text.txt` (the input of our first stage, defined in the previous
 example):
 
