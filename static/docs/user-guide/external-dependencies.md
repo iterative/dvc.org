@@ -124,7 +124,7 @@ The command above creates an <abbr>import stage</abbr> specified in DVC-file
 
 <details>
 
-### Expand to see the (partial) resulting DVC-file
+### Expand to see resulting dependencies in the DVC-file
 
 ```yaml
 deps:
@@ -157,7 +157,7 @@ dependency is specified.
 
 <details>
 
-### Expand to see the (partial) resulting DVC-file
+### Expand to see resulting dependencies in the DVC-file
 
 ```yaml
 deps:
