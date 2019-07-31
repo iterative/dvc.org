@@ -37,3 +37,20 @@ their DVC-files (via fields `lock: true` and `rev_lock`). For a locked stage,
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Example
+
+```dvc
+$ dvc import git@github.com:iterative/example-get-started model.pkl
+Importing 'model.pkl (git@github.com:iterative/example-get-started)' -> 'model.pkl'
+...
+Saving information to 'model.pkl.dvc'.
+...
+```
+
+```dvc
+$ dvc update model.pkl.dvc
+Stage 'model.pkl.dvc' didn't change.
+Output 'model.pkl' didn't change. Skipping saving.
+Saving information to 'model.pkl.dvc'.
+```
