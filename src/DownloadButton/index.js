@@ -32,9 +32,6 @@ const links = {
   [UNKNOWN]: {
     title: 'pip install dvc'
   },
-  [UNKNOWN]: {
-    title: 'conda install -c conda-forge dvc'
-  },
   [LINE]: {
     line: true
   }
