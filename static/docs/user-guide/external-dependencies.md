@@ -108,35 +108,66 @@ credentials for certain remotes.
 
 ## Example: Using import-url
 
-In the previous command examples, downloading commands were used: `aws s3 cp`,
-`scp`, `wget`, etc. `dvc import-url` simplifies the downloading part for all the
-supported types of dependencies.
+In the previous examples, downloading commands were used: `aws s3 cp`, `scp`,
+`wget`, etc. `dvc import-url` simplifies the downloading for all the supported
+types of dependencies.
 
 ```dvc
 $ dvc import-url https://dvc.org/s3/get-started/data.xml
+Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data.xml'
+[##############################] 100% data.xml
+...
 ```
+
+The command above creates an <abbr>import stage</abbr> specified in DVC-file
+`data.xml.dvc` that uses an external dependency (in this case of HTTP type).
 
 <details>
 
-### Expand to learn more about DVC internals
-
-The resulting DVC-file will contain something like this:
+### Expand to see the (partial) resulting DVC-file
 
 ```yaml
 deps:
-  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-    path: https://dvc.org/s3/get-started/data.xml
-outs:
-  - md5: a304afb96060aad90176268345e10355
-    path: data.xml
-    cache: true
-    metric: false
-    persist: false
+- etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
+  path: https://dvc.org/s3/get-started/data.xml
 ```
 
 DVC checks the headers returned by the server, looking for a strong
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
 [Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it to know
 if the file has changed and we need to download it again.
+
+</details>
+
+## Example: Using import
+
+`dvc import` can download a <abbr>data artifact</abbr> from an external DVC
+repository. It also creates an external dependency in its <abbr>import
+stage</abbr> (DVC-file).
+
+```dvc
+$ dvc import git@github.com:iterative/example-get-started model.pkl
+Importing 'model.pkl (git@github.com:iterative/example-get-started)' -> 'model.pkl'
+Preparing to download data from 'https://remote.dvc.org/get-started'
+...
+```
+
+The command above creates `model.pkl.dvc`, where a special `repo` external
+dependency is specified.
+
+<details>
+
+### Expand to see the (partial) resulting DVC-file
+
+```yaml
+deps:
+- path: model.pkl
+  repo:
+    url: git@github.com:iterative/example-get-started
+    rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
+```
+
+For external sources that are DVC repositories, `url` and `rev_lock` fields are
+used to specify the origin of the data artifact.
 
 </details>
