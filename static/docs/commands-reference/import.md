@@ -76,36 +76,36 @@ force updating the downloaded data artifact from the external DVC repo.
 
 ## Example
 
-An obvious case for this command is to import a complete ML model from an
-external DVC repo, such as our
+An obvious case for this command is to import a dataset from an external DVC
+repo, such as our
 [get started example repo](https://github.com/iterative/example-get-started).
 
 ```dvc
-$ dvc import git@github.com:iterative/example-get-started model.pkl
-Importing 'model.pkl (git@github.com:iterative/example-get-started)' -> 'model.pkl'
+$ dvc import git@github.com:iterative/example-get-started data/data.xml
+Importing 'data/data.xml (git@github.com:iterative/example-get-started)' -> 'data.xml'
 ...
-Saving information to 'model.pkl.dvc'.
+Saving information to 'data.xml.dvc'.
 ...
 ```
 
-In contrast with `dvc get`, this command doesn't just download the model file,
+In contrast with `dvc get`, this command doesn't just download the data file,
 but it also creates an import stage (DVC-file) to keep track of this <abbr>data
 artifact</abbr> as a special `repo`
 [external dependency](/doc/user-guide/external-dependencies). Check
-`model.pkl.dvc`:
+`data.xml.dvc`:
 
 ```yaml
-md5: 057a271f23ecdb6324b20aa0031df42c
+md5: 7de90e7de7b432ad972095bc1f2ec0f8
 wdir: .
 locked: true
 deps:
-- path: model.pkl
+- path: data/data.xml
   repo:
     url: git@github.com:iterative/example-get-started
     rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
 outs:
-- md5: 3863d0e317dee0a55c4e59d2ec0eef33
-  path: model.pkl
+- md5: a304afb96060aad90176268345e10355
+  path: data.xml
   cache: true
   metric: false
   persist: false
