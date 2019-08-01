@@ -109,7 +109,7 @@ downloaded file or directory from the external data source.
   DVC-file name generated is `<file>.dvc`, where `<file>` is file name of the
   output (`out`). The stage file is placed in the same directory where
   `dvc import-url` is run by default, but `-f` can be used to change this
-  location, by including a path in the provided value (e.g.
+  location and file name, by including a path in the provided value (e.g.
   `-f stages/stage.dvc`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
