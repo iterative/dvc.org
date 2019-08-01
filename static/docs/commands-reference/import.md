@@ -84,10 +84,8 @@ external DVC repo, such as our
 $ dvc import git@github.com:iterative/example-get-started model.pkl
 Importing 'model.pkl (git@github.com:iterative/example-get-started)' -> 'model.pkl'
 ...
-
-Output 'model.pkl' didn't change. Skipping saving.
-
 Saving information to 'model.pkl.dvc'.
+...
 ```
 
 In contrast with `dvc get`, this command doesn't just download the model file,
