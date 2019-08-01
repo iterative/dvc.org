@@ -182,6 +182,6 @@ outs:
 ```
 
 For external sources that are DVC repositories, `url` and `rev_lock` fields are
-used to specify the origin of the data artifact.
+used to specify the origin and version of the dependency.
 
 </details>

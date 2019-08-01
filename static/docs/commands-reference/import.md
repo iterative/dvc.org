@@ -54,8 +54,9 @@ Note that by default, these import stages are locked in their DVC-files (with
 fields `locked: true` and `rev_lock`). Use `dvc update` manually on them to
 force updating the downloaded data artifact from the external DVC repo.
 
-> If `dvc unlock` is used on locked stages, they will start to be checked by
-> `dvc status`, and updated by `dvc repro`.
+> If a stage is unlocked (editing the `lock` value in its DVC-file, for example
+> using `dvc unlock`), they will start to be checked by `dvc status`, and
+> updated by `dvc repro`.
 
 ## Options
 
@@ -72,3 +73,47 @@ force updating the downloaded data artifact from the external DVC repo.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Example
+
+An obvious case for this command is to import a complete ML model from an
+external DVC repo, such as our
+[get started example repo](https://github.com/iterative/example-get-started).
+
+```dvc
+$ dvc import git@github.com:iterative/example-get-started model.pkl
+Importing 'model.pkl (git@github.com:iterative/example-get-started)' -> 'model.pkl'
+...
+
+Output 'model.pkl' didn't change. Skipping saving.
+
+Saving information to 'model.pkl.dvc'.
+```
+
+In contrast with `dvc get`, this command doesn't just download the model file,
+but it also creates an import stage (DVC-file) to keep track of this <abbr>data
+artifact</abbr> as a special `repo`
+[external dependency](/doc/user-guide/external-dependencies). Check
+`model.pkl.dvc`:
+
+```yaml
+md5: 057a271f23ecdb6324b20aa0031df42c
+wdir: .
+locked: true
+deps:
+- path: model.pkl
+  repo:
+    url: git@github.com:iterative/example-get-started
+    rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
+outs:
+- md5: 3863d0e317dee0a55c4e59d2ec0eef33
+  path: model.pkl
+  cache: true
+  metric: false
+  persist: false
+```
+
+Several of the values above are pulled from the original stage file
+`model.pkl.dvc` in the external DVC repo. Note that the `locked: true` value is
+set by default (as explained in the command description above). `url` and
+`rev_lock` fields are used to specify the origin and version of the dependency.
