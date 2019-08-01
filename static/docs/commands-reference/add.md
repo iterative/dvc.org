@@ -162,7 +162,7 @@ $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
 
 What if you have not one dog picture, but hundreds of pictures of dogs and cats?
 Your goal might be to build an algorithm to identify dogs and cats in pictures,
-and this is your training data set:
+and this is your training dataset:
 
 ```dvc
 $ tree pics

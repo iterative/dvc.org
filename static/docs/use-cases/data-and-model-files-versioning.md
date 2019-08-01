@@ -83,7 +83,7 @@ There are two ways to get to the previous version of the dataset or model - a
 full workspace checkout or checkout of a specific data or model file. Let's
 consider the full checkout first. It's quite straightforward:
 
-> `v1.0` is a Git tag that should be created in advance to identify the data set
+> `v1.0` is a Git tag that should be created in advance to identify the dataset
 > version you are interested in, it can be just a Git commit hash instead.
 
 ```dvc
@@ -106,7 +106,7 @@ $ dvc checkout data.dvc
 ```
 
 If you run `git status` you will see that `data.dvc` is modified and currently
-points to the `v1.0` of the data set. While code and model files are from the
+points to the `v1.0` of the dataset. While code and model files are from the
 `v2.0` version.
 
 ![](/static/img/versioning.png)
