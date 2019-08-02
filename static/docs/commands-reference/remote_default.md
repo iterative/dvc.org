@@ -90,10 +90,6 @@ Change default remote value:
 $ dvc remote default mynewremote
 ```
 
-> Avoid using the same remote that you are using for `dvc push`, `dvc pull`,
-> `dvc fetch` as external cache for your external outputs, because it may cause
-> possible checksum overlaps.
-
 In the DVC config file, the updated value of default remote can be found in the
 core section (run `cat .dvc/config`):
 
