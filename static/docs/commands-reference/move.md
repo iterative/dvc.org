@@ -28,8 +28,8 @@ appropriately.
 > to a file in cache. The cached file is not changed by this command.
 
 If the destination path (`dst`) already exists and is a directory, the source
-file or directory (`src`) is moved unchanged into this folder along with the
-corresponding DVC-file.
+code file or directory (`src`) is moved unchanged into this folder along with
+the corresponding DVC-file.
 
 Let's imagine the following scenario:
 

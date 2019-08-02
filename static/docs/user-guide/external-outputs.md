@@ -12,11 +12,15 @@ external outputs (protocols) are supported:
 4. SSH;
 5. HDFS;
 
+> Note that these are a subset of the remote storage types supported by
+> `dvc remote`.
+
 In order to specify an external output for a stage file use the usual `-o` and
-`-O` options with the `dvc run` command, but with URLs pointing to your desired
-files. For cached external outputs (specified using `-o`) you will need to setup
-an [external cache](/doc/commands-reference/config#cache) location that will be
-used by dvc to store versions of your external file. Non-cached external outputs
+`-O` options with the `dvc run` command, but with the external path or URL
+pointing to your desired files. For cached external outputs (specified using
+`-o`) you will need to setup an
+[external cache](/doc/commands-reference/config#cache) location that will be
+used by DVC to store versions of your external file. Non-cached external outputs
 (specified using `-O`) do not require external cache to be setup.
 
 > Avoid using the same remote location that you are using for `dvc push`,
@@ -25,10 +29,17 @@ used by dvc to store versions of your external file. Non-cached external outputs
 > external storage can potentially collide with checksum generated locally for a
 > different file, with a different content.
 
+See also the [External Dependencies](/doc/user-guide/external-dependencies)
+guide.
+
 ## Examples
 
-As an example, let's take a look at a [stage](/doc/commands-reference/run) that
-simply moves local file to/from external location:
+For the examples, let's take a look at a [stage](/doc/commands-reference/run)
+that simply moves local file to an external location, producing a `data.txt.dvc`
+stage file (DVC-file).
+
+> Note that some of these commands use the `/home/shared/` directory, typical in
+> Linux distributions.
 
 ### Local
 
@@ -37,9 +48,9 @@ to specify it explicitly.
 
 ```dvc
 $ dvc add /home/shared/mydata
-$ dvc run -d /home/shared/data.txt \
-          -o data.txt \
-          cp /home/shared/data.txt data.txt
+$ dvc run -d data.txt \
+          -o /home/shared/data.txt \
+          cp data.txt /home/shared/data.txt
 ```
 
 ### Amazon S3

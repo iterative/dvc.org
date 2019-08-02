@@ -58,8 +58,6 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 ## Options
 
-- `--show-checksums` - shows checksums instead of file names.
-
 - `-r REMOTE`, `--remote REMOTE` specifies which remote cache (see
   `dvc remote list`) to pull from. The value for `REMOTE` is a cache name
   defined using the `dvc remote` command. If no `REMOTE` is given, or if no
@@ -203,14 +201,3 @@ Then we ran `dvc pull` specifying the last stage, `model.p.dvc`, and its data
 was downloaded. Finally, we ran `dvc pull` with no options to make sure that all
 data was already pulled with the previous commands.
 
-## Examples: Show checksums
-
-Normally the file names are shown, but DVC can display the checksums instead.
-
-```dvc
-$ dvc pull --remote r1 --show-checksums
-
-(1/3): [####################] 100% 844ef0cd13ff786c686d76bb1627081c
-(2/3): [####################] 100% c5409fafe56c3b0d4d4d8d72dcc009c0
-(3/3): [####################] 100% a8c5ae04775fcde33bf03b7e59960e18
-```

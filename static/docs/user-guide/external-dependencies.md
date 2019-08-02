@@ -12,13 +12,22 @@ pipeline state. Currently, the following types of external dependencies
 5. HDFS;
 6. HTTP;
 
-> Note that these match with the types supported by `dvc remote`.
+> Note that these match with the remote storage types supported by `dvc remote`.
 
 In order to specify an external dependency for your stage, use the usual '-d'
-option in `dvc run` with the remote URL pointing to your desired file or
-directory.
+option in `dvc run` with the external path or URL pointing to your desired file
+or directory.
 
-## Examples: Defined directly with URLs
+> See also the [External Outputs](/doc/user-guide/external-outputs) guide.
+
+## Examples
+
+As examples, let's take a look at a [stage](/doc/commands-reference/run) that
+simply moves local file from an external location, producing a `data.txt.dvc`
+stage file (DVC-file).
+
+> Note that some of these commands use the `/home/shared/` directory, typical in
+> Linux distributions.
 
 ### Local
 
@@ -70,7 +79,7 @@ $ dvc run -d https://example.com/data.txt \
           wget https://example.com/data.txt -O data.txt
 ```
 
-## Examples: Defined with DVC Remote aliases
+## Examples: Defined with DVC remote aliases
 
 If instead of a URL you'd like to use an alias that can be managed
 independently, or if the external dependency location requires access
@@ -90,7 +99,7 @@ $ dvc run -d remote://example/data.txt \
 Please refer to `dvc remote add` for more details like setting up access
 credentials for certain remotes.
 
-## Using import-url
+## Example: Using import-url
 
 In the previous command examples, downloading commands were used: `aws s3 cp`,
 `scp`, `wget`, etc. `dvc import-url` simplifies the downloading part for all the
@@ -104,17 +113,18 @@ $ dvc import-url https://dvc.org/s3/get-started/data.xml
 
 ### Expand to learn more about DVC internals
 
-If you open the resulting DVC-file, you will see something like this:
+The resulting DVC-file will contain something like this:
 
 ```yaml
 deps:
-  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-    path: https://dvc.org/s3/get-started/data.xml
-md5: bea9674331a4b1d165f2b0abaf2cb0ef
+- etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
+  path: https://dvc.org/s3/get-started/data.xml
 outs:
-  - cache: true
-    md5: a304afb96060aad90176268345e10355
-    path: data.xml
+- md5: a304afb96060aad90176268345e10355
+  path: data.xml
+  cache: true
+  metric: false
+  persist: false
 ```
 
 DVC checks the headers returned by the server, looking for a strong

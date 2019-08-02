@@ -1,9 +1,10 @@
 # Install
 
-There are three recommended ways to install DVC: OS-specific package/installer,
-`pip`, and Homebrew. (Depending on your OS, some of these may be not available.)
+There are a few recommended ways to install DVC: OS-specific package/installer,
+`pip`, `conda` (Anaconda), and Homebrew. (Depending on your OS, some of these
+may be not available.)
 
-To install DVC from terminal, run:
+To install DVC from `pip` (see instructions for other options below), run:
 
 ```dvc
 $ pip install dvc
@@ -19,6 +20,12 @@ $ pip install dvc
 The easiest option, self-contained binary packages (or Windows installer), are
 available by using the big "Download" button in the [home page](/). You may also
 get them [here](https://github.com/iterative/dvc/releases/).
+
+> For a POSIX-like command line terminal in Windows users, we recommend
+> [Git Bash](https://gitforwindows.org/#bash) or
+> [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win).
+> Its even possible to enjoy a full Linux terminal experience with the
+> [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
 
 We also provide `deb`, `rpm` and `homebrew` repositories:
 
@@ -70,7 +77,7 @@ $ brew cask install iterative/homebrew-dvc/dvc
 $ conda install -c conda-forge dvc
 ```
 
-> Currently, it supports only python version 2.7 and 3.6.
+> Currently, it supports only python version 2.7, 3.6, and 3.7.
 
 </details>
 
