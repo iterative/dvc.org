@@ -53,17 +53,16 @@ $ source .env/bin/activate
 $ pip install -e ".[all,tests]"
 ```
 
+> Note that the double quotes (`""`) used to wrap the dependencies to be
+> installed are only compulsory when using `zsh`. In `bash`, installation
+> commands can work without them: `pip install -e .[all,tests]`.
+
 Install coding style pre-commit hooks with:
 
 ```dvc
 $ pip install pre-commit
 $ pre-commit install
 ```
-
-> Note: the double quotes (`""`) used to wrap the dependencies, which are to be
-> installed, are only compulsory when using `zsh`. In `bash`, installation
-> commands can work even without them. For example,
-> `pip install -e .[all,tests]`.
 
 That should be it. You should be ready to make changes, run tests do commits! If
 you experience any problems, please don't hesitate to ping us in our
