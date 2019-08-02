@@ -44,6 +44,13 @@ export default {
       desc:
         'A file or a directory that is under DVC control. See `dvc add`, ' +
         '`dvc run`, `dvc import`, `dvc import-url` commands.'
+    },
+    {
+      name: 'External Dependency',
+      match: ['external dependency', 'external dependencies'],
+      desc:
+        'A DVC-file dependency with origin in an external source. See ' +
+        '[External Dependencies](/doc/user-guide/external-dependencies).'
     }
   ]
 }
