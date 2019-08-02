@@ -83,10 +83,10 @@ $ wget -P data https://dvc.org/s3/examples/so/Posts.xml.zip
 $ dvc add data/Posts.xml.zip
 ```
 
-<details>
-
 When we run `dvc add` `Posts.xml.zip`, DVC creates a
 [DVC-file](/doc/user-guide/dvc-file-format).
+
+<details>
 
 ### Expand to learn more about DVC internals
 
@@ -143,10 +143,10 @@ $ dvc run -d data/Posts.xml.zip \
           unzip data/Posts.xml.zip -d data
 ```
 
-<details>
-
 Similar to `dvc add`, `dvc run` creates a
 [DVC-file](/doc/user-guide/dvc-file-format) (or "stage file").
+
+<details>
 
 ### Expand to learn more about DVC internals
 
