@@ -19,11 +19,11 @@ an [external cache](/doc/commands-reference/config#cache) location that will be
 used by dvc to store versions of your external file. Non-cached external outputs
 (specified using `-O`) do not require external cache to be setup.
 
-> Avoid using the same remote that you are using for `dvc push`, `dvc pull`,
-> `dvc fetch` as external cache for your external outputs, because it may cause
-> possible checksum overlaps. Checksum for some data file on an external storage
-> can potentially collide with checksum generated locally for a different file,
-> with a different content.
+> Avoid using the same remote location that you are using for `dvc push`,
+> `dvc pull`, `dvc fetch` as external cache for your external outputs, because
+> it may cause possible checksum overlaps. Checksum for some data file on an
+> external storage can potentially collide with checksum generated locally for a
+> different file, with a different content.
 
 ## Examples
 
