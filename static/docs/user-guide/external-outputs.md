@@ -1,7 +1,17 @@
-# External Outputs
+# Managing External Data
 
-You can specify external files as outputs for
-[DVC-files](/doc/user-guide/dvc-file-format) created by `dvc run` (stage files).
+There are cases when data is large enough or processing is organized in a way
+that you would like to avoid moving data out of the remote storage. For example,
+you run Dask via SSH, or a script that streams data from S3 to process it, etc.
+A mechanism of external outputs and
+[External Dependencies](/doc/user-guide/external-dependencies) provide a way to
+for DVC to control data externally.
+
+## Description
+
+You can take under DVC control files on an external storage with `dvc add` or
+specify external files as outputs for
+[DVC-files](/doc/user-guide/dvc-file-format) created by `dvc run` (stage files)
 DVC will track changes in those files and will reflect so in your pipeline
 [status](/doc/commands-reference/status). Currently, the following types of
 external outputs (protocols) are supported:
@@ -28,9 +38,6 @@ used by DVC to store versions of your external file. Non-cached external outputs
 > it may cause possible checksum overlaps. Checksum for some data file on an
 > external storage can potentially collide with checksum generated locally for a
 > different file, with a different content.
-
-See also the [External Dependencies](/doc/user-guide/external-dependencies)
-guide.
 
 ## Examples
 

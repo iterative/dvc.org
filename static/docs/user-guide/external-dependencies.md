@@ -1,5 +1,14 @@
 # External Dependencies
 
+There are cases when data is large enough or processing is organized in a way
+that you would like to avoid moving data out of the remote storage. For example,
+you run Dask via SSH, or a script that streams data from S3 to process it, etc.
+A mechanism of external dependencies and
+[External Outputs](/doc/user-guide/external-outputs) provide a way to for DVC to
+control data externally.
+
+## Description
+
 With DVC you can specify external files as dependencies for your pipeline
 stages. DVC will track changes in those files and will reflect that in your
 pipeline state. Currently, the following types of external dependencies
@@ -17,8 +26,6 @@ pipeline state. Currently, the following types of external dependencies
 In order to specify an external dependency for your stage, use the usual '-d'
 option in `dvc run` with the external path or URL pointing to your desired file
 or directory.
-
-> See also the [External Outputs](/doc/user-guide/external-outputs) guide.
 
 ## Examples
 
@@ -117,14 +124,14 @@ The resulting DVC-file will contain something like this:
 
 ```yaml
 deps:
-- etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-  path: https://dvc.org/s3/get-started/data.xml
+  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
+    path: https://dvc.org/s3/get-started/data.xml
 outs:
-- md5: a304afb96060aad90176268345e10355
-  path: data.xml
-  cache: true
-  metric: false
-  persist: false
+  - md5: a304afb96060aad90176268345e10355
+    path: data.xml
+    cache: true
+    metric: false
+    persist: false
 ```
 
 DVC checks the headers returned by the server, looking for a strong
