@@ -64,5 +64,4 @@ Output 'model.pkl' didn't change. Skipping saving.
 Saving information to 'model.pkl.dvc'.
 ```
 
-This time nothing has changed (since our Get Started sample repo is pretty
-static).
+This time nothing has changed, since the source repository is pretty static.
