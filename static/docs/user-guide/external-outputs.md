@@ -23,8 +23,14 @@ pointing to your desired files. For cached external outputs (specified using
 used by DVC to store versions of your external file. Non-cached external outputs
 (specified using `-O`) do not require external cache to be setup.
 
-> See also the [External Dependencies](/doc/user-guide/external-dependencies)
-> guide.
+> Avoid using the same remote location that you are using for `dvc push`,
+> `dvc pull`, `dvc fetch` as external cache for your external outputs, because
+> it may cause possible checksum overlaps. Checksum for some data file on an
+> external storage can potentially collide with checksum generated locally for a
+> different file, with a different content.
+
+See also the [External Dependencies](/doc/user-guide/external-dependencies)
+guide.
 
 ## Examples
 

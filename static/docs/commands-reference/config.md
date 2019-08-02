@@ -144,6 +144,12 @@ details.)
 - `cache.ssh` - name of an
   [SSH remote to use as external cache](/doc/user-guide/external-outputs#ssh).
 
+  > Avoid using the same remote location that you are using for `dvc push`,
+  > `dvc pull`, `dvc fetch` as external cache for your external outputs, because
+  > it may cause possible checksum overlaps. Checksum for some data file on an
+  > external storage can potentially collide with checksum generated locally for
+  > a different file, with a different content.
+
 - `cache.s3` - name of an
   [Amazon S3 remote to use as external cache](/doc/user-guide/external-outputs#amazon-s-3).
 
