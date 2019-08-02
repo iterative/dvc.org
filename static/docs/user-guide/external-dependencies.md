@@ -4,8 +4,8 @@ There are cases when data is large enough or processing is organized in a way
 that you would like to avoid moving data out of the remote storage. For example,
 you are processing data on HDFS, run Dask via SSH, or have a script that streams
 data from S3 to process it, etc. A mechanism of external dependencies and
-[External Outputs](/doc/user-guide/external-outputs) provide a way to for DVC to
-control data externally.
+[External Outputs](/doc/user-guide/external-outputs) provides a way to for DVC
+to control data externally.
 
 ## Description
 
