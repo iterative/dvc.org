@@ -87,12 +87,12 @@ Now, lets modify `data1` and see if it affects `dvc status`.
 ```dvc
 $ dvc status
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 
 $ echo "123" >> data/data1
 $ dvc status
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 Same modification applied to not ignored file will make `dvc status` inform
@@ -134,7 +134,7 @@ adding new file:
 ```dvc
 $ dvc status
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 
 $ mv data/data1 data/data3
 $ dvc status

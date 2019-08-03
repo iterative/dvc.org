@@ -197,7 +197,7 @@ Everything is up to date.
 
 $ dvc status --cloud
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 With the first `dvc push` we specified a stage in the middle of this pipeline
@@ -334,7 +334,7 @@ $ tree ../vault/recursive
 
 $ dvc status --cloud
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 And running `dvc status --cloud` verifies that indeed there are no more files to
