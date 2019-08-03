@@ -49,7 +49,9 @@ export default {
       name: 'External Dependency',
       match: ['external dependency', 'external dependencies'],
       desc:
-        'A DVC-file dependency with origin in an external source. See ' +
+        'A DVC-file dependency with origin in an external source, for ' +
+        'example HTTP, SSH, Amazon S3, or Google Cloud Storage remote ' +
+        'locations. See ' +
         '[External Dependencies](/doc/user-guide/external-dependencies).'
     }
   ]
