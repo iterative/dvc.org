@@ -13,21 +13,19 @@ positional arguments:
 
 ## Description
 
-After creating import stages ([DVC-files](/doc/user-guide/dvc-file-format)) with
-`dvc import`, the external data source can change. `dvc update` can be used to
-bring the imported <abbr>data artifact</abbr> up to date. This is the only
-command that does so with locked stages, and import stages are locked by
-default.
+After creating <abbr>import stages</abbr>
+([DVC-files](/doc/user-guide/dvc-file-format)) with `dvc import` or
+`dvc import-url`, the external data source can change. `dvc update` can be used
+to bring the imported file, directory, or <abbr>data artifact</abbr> up to date.
+This is the only command that does so with locked stages.
 
-> Using `dvc update` on a locked stage is equivalent to running `dvc unlock`,
-> then `dvc repro`, and `dvc lock` again on an import stage.
+Note that by default, import stages are locked in their DVC-files (with fields
+`locked: true` and `rev_lock`). Using `dvc update` on a locked stage is
+equivalent to running `dvc unlock`, then `dvc repro`, and `dvc lock` again on
+it.
 
 To indicate which import stages to update, specify the corresponding DVC-file
 `targets` as command arguments.
-
-Note that by default, import stages created with `dvc import` are locked in
-their DVC-files (via fields `lock: true` and `rev_lock`). For a locked stage,
-`dvc update` does `dvc unlock` + `dvc repro` + `dvc lock`, basically.
 
 ## Options
 
@@ -51,7 +49,7 @@ Saving information to 'model.pkl.dvc'.
 ...
 ```
 
-As DVC mentions, the import stage (DVC-file) `model.pkl.dvc` is created. this
+As DVC mentions, the import stage (DVC-file) `model.pkl.dvc` is created. This
 [stage file](/doc/commands-reference/run) is locked by default though, so to
 [reproduce](/doc/commands-reference/repro) it, we would need to run `dvc unlock`
 on it first, then `dvc repro` (and `dvc lock` again). Let's just run

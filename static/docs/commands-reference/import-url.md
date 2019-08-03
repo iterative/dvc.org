@@ -95,9 +95,9 @@ Both methods generate an equivalent [stage file](/doc/commands-reference/run)
 user from having to manually copy files from each of the remote storage schemes,
 and from having to install CLI tools for each service.
 
-Note that by default, import stages are locked in their DVC-files (with
-`locked: true`). Use `dvc update` manually on them to force updating the
-downloaded file or directory from the external data source.
+Note that by default, import stages are locked in their DVC-files (with field
+`locked: true` in this case). Use `dvc update` manually on them to force
+updating the downloaded file or directory from the external data source.
 
 > If a stage is unlocked (editing the `lock` value in its DVC-file, for example
 > using `dvc unlock`), they will start to be checked by `dvc status`, and
