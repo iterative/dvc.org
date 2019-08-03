@@ -22,9 +22,9 @@ Lock is useful to avoid syncing data from the top of a pipeline and keep
 iterating on the last stages only. In this sense `lock` causes any DVC-file to
 behave as an _orphan_ stage file as if created with `dvc add`.
 
-Note that by default, <abbr>import stages</abbr> are locked in their DVC-files
-(with `locked: true`). Use `dvc update` manually on them to force updating the
-file, directory, or <abbr>data artifact</abbr> from the external data source.
+Note that <abbr>import stages</abbr> are considered locked by default. Use `dvc
+update` manually on them to force updating the file, directory, or
+<abbr>data artifact</abbr> from the external data source.
 
 > Using `dvc update` on a locked stage is equivalent to running `dvc unlock`,
 > then `dvc repro`, and `dvc lock` again on an import stage.

@@ -13,6 +13,7 @@ the highlighting for your editor.
 Here is a sample DVC-file:
 
 ```yaml
+locked: true
 cmd: python cmd.py input.data output.data metrics.json
 deps:
   - md5: da2259ee7c12ace6db43644aef2b754c
@@ -31,7 +32,6 @@ outs:
       type: json
       xpath: AUC
     path: metrics.json
-locked: True
 
 # Comments like this line persist through multiple executions of
 # dvc repro/commit but not through dvc run/add/import-url/get-url commands.

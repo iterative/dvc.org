@@ -95,9 +95,9 @@ Both methods generate an equivalent [stage file](/doc/commands-reference/run)
 user from having to manually copy files from each of the remote storage schemes,
 and from having to install CLI tools for each service.
 
-Note that by default, import stages are locked in their DVC-files (with field
-`locked: true` in this case). Use `dvc update` manually on them to force
-updating the downloaded file or directory from the external data source.
+Note that import stages are locked by default. Use `dvc update` manually on them
+to force updating the downloaded file or directory from the external data
+source.
 
 > If a stage is unlocked (editing the `lock` value in its DVC-file, for example
 > using `dvc unlock`), they will start to be checked by `dvc status`, and
@@ -170,7 +170,6 @@ Let's take a look at the resulting stage file (DVC-file) `data.xml.dvc`:
 ```yaml
 md5: 61e80c38c1ce04ed2e11e331258e6d0d
 wdir: .
-locked: true
 deps:
 - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
   path: https://dvc.org/s3/get-started/data.xml
@@ -232,7 +231,6 @@ example:
 ```yaml
 md5: eca0a296d67781cc488c6ffd1cc63b8e
 wdir: .
-locked: true
 deps:
 - md5: a304afb96060aad90176268345e10355
   path: /tmp/dvc-import-url-example/data.xml
