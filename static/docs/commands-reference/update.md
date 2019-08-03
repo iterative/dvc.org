@@ -15,14 +15,15 @@ positional arguments:
 
 After creating <abbr>import stages</abbr>
 ([DVC-files](/doc/user-guide/dvc-file-format)) with `dvc import` or
-`dvc import-url`, the external data source can change. `dvc update` can be used
-to bring the imported file, directory, or <abbr>data artifact</abbr> up to date.
-This is the only command that does so with locked stages.
+`dvc import-url`, the external data source can change. Use `dvc update` to bring
+these imported file, directory, or <abbr>data artifact</abbr> up to date.
 
 Note that by default, import stages are locked in their DVC-files (with fields
-`locked: true` and `rev_lock`). Using `dvc update` on a locked stage is
-equivalent to running `dvc unlock`, then `dvc repro`, and `dvc lock` again on
-it.
+`locked: true` and `rev_lock`). `dvc update` is the only single command that
+updates locked stages.
+
+> Using `dvc update` on a locked stage is equivalent to running `dvc unlock`,
+> then `dvc repro`, and `dvc lock` again on it.
 
 To indicate which import stages to update, specify the corresponding DVC-file
 `targets` as command arguments.
