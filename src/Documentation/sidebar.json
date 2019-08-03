@@ -69,7 +69,7 @@
       "large-dataset-optimization.md": "Large Dataset Optimization",
       "development.md": "Development Version",
       "external-dependencies.md": "External Dependencies",
-      "external-outputs.md": "External Outputs",
+      "external-outputs.md": "Managing External Data",
       "contributing.md": "Contributing",
       "contributing-documentation.md": "Contributing Documentation",
       "update-tracked-file.md": "Update a Tracked File",
@@ -126,6 +126,7 @@
       "status.md",
       "unlock.md",
       "unprotect.md",
+      "update.md",
       "version.md"
     ],
     "labels": {
@@ -170,6 +171,7 @@
       "status.md": "status",
       "unlock.md": "unlock",
       "unprotect.md": "unprotect",
+      "update.md": "update",
       "version.md": "version"
     }
   },

@@ -26,9 +26,9 @@ their corresponding pipeline(s) when connected. (See `dvc pipeline`.)
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples
+## Example
 
-- List available pipelines:
+List available pipelines:
 
 ```dvc
 $ dvc pipeline list
@@ -38,5 +38,5 @@ raw.dvc
 data.dvc
 output.dvc
 ======================================================================
-2 pipeline(s) total
+2 pipelines total
 ```

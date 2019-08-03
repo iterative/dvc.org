@@ -1,6 +1,6 @@
 # Add Files or Directories
 
-DVC allows storing and versioning source data files, ML models, directories,
+DVC allows storing and versioning data files, ML models, directories,
 intermediate results with Git, without checking the file contents into Git.
 Let's get a sample data set to play with:
 
@@ -34,7 +34,7 @@ Git to track versions of your file:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
-$ git commit -m "add source data to DVC"
+$ git commit -m "add raw data to DVC"
 ```
 
 <details>

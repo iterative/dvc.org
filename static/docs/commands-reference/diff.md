@@ -27,6 +27,11 @@ were deleted/changed, and the file size differences.
 Note that `dvc diff` does not show the line-to-line comparison among the target
 files in each revision, like `git diff` does.
 
+> For an example on how to create line-to-line text file comparison refer to
+> issue
+> [#770](https://github.com/iterative/dvc/issues/770#issuecomment-512693256) in
+> our code repository.
+
 If the `-t` option is used, the diff is limited to the `TARGET` file or
 directory specified.
 
@@ -35,9 +40,9 @@ by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
 
 ## Options
 
-- `-t TARGET`, `--target TARGET` - Source path to a data file or directory. If
-  not specified, compares all files and directories that are under DVC control
-  in the workspace.
+- `-t TARGET`, `--target TARGET` - path to a data file or directory. If not
+  specified, compares all files and directories that are under DVC control in
+  the workspace.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

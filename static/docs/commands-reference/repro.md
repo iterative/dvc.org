@@ -34,10 +34,10 @@ By default, this command recursively searches in pipeline stages, starting from
 the `targets`, to determine which ones have changed. Then it executes the
 corresponding commands again.
 
-`dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
-data files, intermediate or final results. It saves all the data files,
-intermediate or final results into the DVC cache (unless `--no-commit` option is
-specified), and updates stage files with the new checksum information.
+`dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
+files, intermediate or final results. It saves all the data files, intermediate
+or final results into the DVC cache (unless `--no-commit` option is specified),
+and updates stage files with the new checksum information.
 
 ## Options
 
@@ -176,7 +176,7 @@ $ dvc repro
 WARNING: assuming default target 'Dvcfile'.
 Stage 'filter.dvc' didn't change.
 Stage 'Dvcfile' didn't change.
-Pipeline is up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 It makes sense, since we haven't changed neither of the dependencies this
@@ -225,7 +225,7 @@ Now, using the `--downstream` option results in the following output:
 $ dvc repro --downstream
 WARNING: assuming default target 'Dvcfile'.
 Stage 'Dvcfile' didn't change.
-Pipeline is up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 The reason being that the `text.txt` is a file which is a dependency in the

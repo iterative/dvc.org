@@ -5,7 +5,7 @@
 > along the [versioning](/doc/get-started/example-versioning) get started
 > example.
 
-DVC allows storing and versioning source data files and directories, ML models,
+DVC allows storing and versioning data files and directories, ML models,
 intermediate results with Git, without checking the file contents into Git. It
 is useful when dealing with files that are too large for Git to handle. DVC
 stores information about your data file in a special

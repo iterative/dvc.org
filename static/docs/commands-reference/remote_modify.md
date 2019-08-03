@@ -51,6 +51,13 @@ manual editing could be used to change the configuration.
   your config that you don't want to track and share through Git (credentials,
   private locations, etc).
 
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
+
+- `-v`, `--verbose` - displays detailed tracing information.
+
 ## Examples
 
 The following are the types and of remotes (protocols) supported:
@@ -66,53 +73,53 @@ these settings, you could use the following options:
 
 - `region` - change AWS S3 remote region:
 
-```dvc
-$ dvc remote modify myremote region us-east-2
-```
+  ```dvc
+  $ dvc remote modify myremote region us-east-2
+  ```
 
 - `profile` - credentials profile name to use to access AWS S3:
 
-```dvc
-$ dvc remote modify myremote profile myprofile
-```
+  ```dvc
+  $ dvc remote modify myremote profile myprofile
+  ```
 
 - `credentialpath` - credentials path to use to access AWS S3:
 
-```dvc
-$ dvc remote modify myremote credentialpath /path/to/my/creds
-```
+  ```dvc
+  $ dvc remote modify myremote credentialpath /path/to/my/creds
+  ```
 
 - `endpointurl` - endpoint URL to use to access AWS S3:
 
-```dvc
-$ dvc remote modify myremote endpointurl https://myendpoint.com
-```
+  ```dvc
+  $ dvc remote modify myremote endpointurl https://myendpoint.com
+  ```
 
 - `url` - remote location URL
 
-```dvc
-$ dvc remote modify myremote url s3://bucket/remote
-```
+  ```dvc
+  $ dvc remote modify myremote url s3://bucket/remote
+  ```
 
 - `use_ssl` - whether or not to use SSL. By default, SSL is used
 
-```dvc
-$ dvc remote modify myremote use_ssl false
-```
+  ```dvc
+  $ dvc remote modify myremote use_ssl false
+  ```
 
 - `listobjects` - whether or not to use `list_objects`. By default,
   `list_objects_v2` is used. Useful for ceph and other s3 emulators.
 
-```dvc
-$ dvc remote modify myremote listobjects true
-```
+  ```dvc
+  $ dvc remote modify myremote listobjects true
+  ```
 
 - `sse` - server-side encryption algorithm to use (e.g., AES256, aws:kms). By
   default, no encryption is used.
 
-```dvc
-$ dvc remote modify myremote sse AES256
-```
+  ```dvc
+  $ dvc remote modify myremote sse AES256
+  ```
 
 </details>
 
@@ -152,15 +159,15 @@ For more information about the variables DVC supports, please visit
 
 - `url` - remote location URL.
 
-```dvc
-$ dvc remote modify myremote url "azure://ContainerName=remote;"
-```
+  ```dvc
+  $ dvc remote modify myremote url "azure://ContainerName=remote;"
+  ```
 
 - `connection_string` - connection string.
 
-```dvc
-$ dvc remote modify myremote connection_string my-connection-string --local
-```
+  ```dvc
+  $ dvc remote modify myremote connection_string my-connection-string --local
+  ```
 
 For more information on configuring Azure Storage connection strings, visit
 [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
@@ -177,22 +184,22 @@ For more information on configuring Azure Storage connection strings, visit
 
 - `projectname` - project name to use.
 
-```dvc
-$ dvc remote modify myremote projectname myproject
-```
+  ```dvc
+  $ dvc remote modify myremote projectname myproject
+  ```
 
 - `url` - remote location URL.
 
-```dvc
-$ dvc remote modify myremote url gs://bucket/remote
-```
+  ```dvc
+  $ dvc remote modify myremote url gs://bucket/remote
+  ```
 
 - `credentailpath` -
   [service account credentials](https://cloud.google.com/docs/authentication/production#obtaining_and_providing_service_account_credentials_manually).
 
-```dvc
-$ dvc remote modify myremote credentialpath /path/to/my/creds/[FILE_NAME].json
-```
+  ```dvc
+  $ dvc remote modify myremote credentialpath /path/to/my/creds/[FILE_NAME].json
+  ```
 
 </details>
 
@@ -202,53 +209,53 @@ $ dvc remote modify myremote credentialpath /path/to/my/creds/[FILE_NAME].json
 
 - `url` - remote location URL.
 
-```dvc
-$ dvc remote modify myremote url ssh://user@example.com:1234/path/to/remote
-```
+  ```dvc
+  $ dvc remote modify myremote url ssh://user@example.com:1234/path/to/remote
+  ```
 
 - `user` - username to use to access a remote. The order in which dvc searches
   for username:
 
-1. `user` specified in one of the dvc configs;
-2. `user` specified in the url(e.g. `ssh://user@example.com/path`);
-3. `user` specified in `~/.ssh/config` for remote host;
-4. current user;
+  1. `user` specified in one of the dvc configs;
+  2. `user` specified in the url(e.g. `ssh://user@example.com/path`);
+  3. `user` specified in `~/.ssh/config` for remote host;
+  4. current user;
 
-```dvc
-$ dvc remote modify myremote user myuser
-```
+  ```dvc
+  $ dvc remote modify myremote user myuser
+  ```
 
 - `port` - port to use to access a remote. The order in which dvc searches for
   port:
 
-1. `port` specified in one of the dvc configs;
-2. `port` specified in the url(e.g. `ssh://example.com:1234/path`);
-3. `port` specified in `~/.ssh/config` for remote host;
-4. default ssh port 22;
+  1. `port` specified in one of the dvc configs;
+  2. `port` specified in the url(e.g. `ssh://example.com:1234/path`);
+  3. `port` specified in `~/.ssh/config` for remote host;
+  4. default ssh port 22;
 
-```dvc
-$ dvc remote modify myremote port 2222
-```
+  ```dvc
+  $ dvc remote modify myremote port 2222
+  ```
 
 - `keyfile` - path to private key to use to access a remote.
 
-```dvc
-$ dvc remote modify myremote keyfile /path/to/keyfile
-```
+  ```dvc
+  $ dvc remote modify myremote keyfile /path/to/keyfile
+  ```
 
 - `password` - a private key passphrase or a password to use to use when
   accessing a remote.
 
-```dvc
-$ dvc remote modify myremote password mypassword
-```
+  ```dvc
+  $ dvc remote modify myremote password mypassword
+  ```
 
 - `ask_password` - ask for a private key passphrase or a password to use when
   accessing a remote.
 
-```dvc
-$ dvc remote modify myremote ask_password true
-```
+  ```dvc
+  $ dvc remote modify myremote ask_password true
+  ```
 
 </details>
 
@@ -258,9 +265,9 @@ $ dvc remote modify myremote ask_password true
 
 - `user` - username to use to access a remote.
 
-```dvc
-$ dvc remote modify myremote user myuser
-```
+  ```dvc
+  $ dvc remote modify myremote user myuser
+  ```
 
 </details>
 
@@ -270,21 +277,21 @@ $ dvc remote modify myremote user myuser
 
 - `oss_key_id` - OSS key id to use to access a remote.
 
-```dvc
-$ dvc remote modify myremote --local oss_key_id my-key-id
-```
+  ```dvc
+  $ dvc remote modify myremote --local oss_key_id my-key-id
+  ```
 
 - `oss_key_secret` - OSS secret key for authorizing access into a remote.
 
-```dvc
-$ dvc remote modify myremote --local oss_key_secret my-key-secret
-```
+  ```dvc
+  $ dvc remote modify myremote --local oss_key_secret my-key-secret
+  ```
 
 - `oss_endpoint endpoint` - OSS endpoint valuesfor accessing remote container.
 
-```dvc
-$ dvc remote modify myremote oss_endpoint endpoint
-```
+  ```dvc
+  $ dvc remote modify myremote oss_endpoint endpoint
+  ```
 
 </details>
 

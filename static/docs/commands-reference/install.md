@@ -46,9 +46,9 @@ The installed Git hook automates executing `dvc push`.
 ## Installed Git hooks
 
 - Git `pre-commit` hook executes `dvc status` before `git commit` to inform the
-  user about the workspace status.
+  user about the workspace status;
 - Git `post-checkout` hook executes `dvc checkout` after `git checkout` to
-  automatically synchronize the data files with the new workspace state.
+  automatically synchronize the data files with the new workspace state;
 - Git `pre-push` hook executes `dvc push` before `git push` to upload files and
   directories under DVC control to remote.
 
@@ -174,7 +174,7 @@ $ dvc checkout
 
 $ dvc status
 
-Pipeline is up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 After running `git checkout` we are also shown a message saying _You are in
@@ -231,7 +231,7 @@ HEAD is now at d13ba9a add featurization stage
 
 $ dvc status
 
-Pipeline is up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 ```
 
 Look carefully at this output and it is clear that the `dvc checkout` command
@@ -280,7 +280,7 @@ $ git status -s
 
 $ git commit -a -m "updated data after modified featurization"
 
-Pipeline is up to date. Nothing to reproduce.
+Pipelines are up to date. Nothing to reproduce.
 
 [master 78d0c44] modified featurization
  5 files changed, 12 insertions(+), 12 deletions(-)
@@ -289,5 +289,5 @@ Pipeline is up to date. Nothing to reproduce.
 After reproducing this pipeline up to the "evaluate" stage, the data files are
 in sync with the code/config files, but we must now commit the changes to the
 Git repository. Looking closely we see that `dvc status` is run again, informing
-us that the data files are synchronized with the `Pipeline is up to date.`
+us that the data files are synchronized with the `Pipelines are up to date.`
 message.
