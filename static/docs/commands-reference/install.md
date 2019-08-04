@@ -174,7 +174,7 @@ $ dvc checkout
 
 $ dvc status
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 After running `git checkout` we are also shown a message saying _You are in
@@ -231,7 +231,7 @@ HEAD is now at d13ba9a add featurization stage
 
 $ dvc status
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 Look carefully at this output and it is clear that the `dvc checkout` command
@@ -280,7 +280,7 @@ $ git status -s
 
 $ git commit -a -m "updated data after modified featurization"
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 
 [master 78d0c44] modified featurization
  5 files changed, 12 insertions(+), 12 deletions(-)

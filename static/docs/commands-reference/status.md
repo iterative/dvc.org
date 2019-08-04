@@ -45,7 +45,7 @@ detected, `dvc status` prints this message:
 
 ```dvc
 $ dvc status
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 This indicates that no differences were detected, and therefore no stages would
@@ -166,7 +166,7 @@ $ vi code/featurization.py
 ... edit the code
 
 $ dvc status model.p.dvc
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 
 $ dvc status model.p.dvc --with-deps
 matrix-train.p.dvc
