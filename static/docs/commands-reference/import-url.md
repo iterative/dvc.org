@@ -95,13 +95,9 @@ Both methods generate an equivalent [stage file](/doc/commands-reference/run)
 user from having to manually copy files from each of the remote storage schemes,
 and from having to install CLI tools for each service.
 
-Note that import stages are locked by default. Use `dvc update` manually on them
-to force updating the downloaded file or directory from the external data
-source.
-
-> If a stage is unlocked (editing the `lock` value in its DVC-file, for example
-> using `dvc unlock`), they will start to be checked by `dvc status`, and
-> updated by `dvc repro`.
+Note that import stages are considered always locked. (See `dvc lock`.) They can
+not be unlocked. Use `dvc update` on them to update the downloaded file or
+directory from the external data source.
 
 ## Options
 
@@ -129,15 +125,17 @@ playground for the examples below.
 
 ### Click and expand to setup the sample project
 
-Follow these instructions before each example if you actually want to try them
-on your system. First, download the project and `cd` into it:
+Follow these instructions before each example below if you actually want to try
+them on your system. First, download the project and `cd` into it:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
 
-Then run:
+The _Get Started_ section demonstrates a simple pipeline. In the
+[Add Files](/doc/get-started/add-files) step we are shown how to download a
+file, then use `dvc add` to integrate it with the workspace. Run:
 
 ```dvc
 $ git checkout 2-remote
@@ -151,10 +149,6 @@ the _Add Files_ step mentioned before.
 
 ## Example: Tracking a remote file
 
-The _Get Started_ section demonstrates a simple pipeline. In the
-[Add Files](/doc/get-started/add-files) step we are shown how to download a
-file, then use `dvc add` to integrate it with the workspace.
-
 An advanced alternate to initialize the _Get Started_ workspace, is using
 `dvc import-url`:
 
@@ -162,7 +156,18 @@ An advanced alternate to initialize the _Get Started_ workspace, is using
 $ dvc import-url https://dvc.org/s3/get-started/data.xml data/data.xml
 Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data/data.xml'
 [##############################] 100% data.xml
-...
+[##############################] 100% data.xml
+
+Adding 'data/data.xml' to 'data/.gitignore'.
+
+WARNING: data 'data/data.xml' exists. Removing before checkout.
+
+Saving information to 'data.xml.dvc'.
+
+
+To track the changes with git, run:
+
+	git add data.xml.dvc data/.gitignore
 ```
 
 Let's take a look at the resulting stage file (DVC-file) `data.xml.dvc`:
@@ -200,7 +205,8 @@ updated data source. A [pipeline](/doc/commands-reference/pipeline) can be
 triggered to re-execute based on a changed external dependency.
 
 Let's use the [Get Started](/doc/get-started) project again, simulating an
-updated external data source.
+updated external data source. (Remember to prepare the sample project as
+explained in [Examples](#examples))
 
 To make it easy to experiment with this, let's use a local machine directory
 (external to the sample DVC project) to simulate a remote data source location.
@@ -225,8 +231,7 @@ Importing '../../../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
 ...
 ```
 
-At this point we have the workspace set up in a similar fashion to the previous
-example:
+Check `data.xml.dvc `:
 
 ```yaml
 md5: eca0a296d67781cc488c6ffd1cc63b8e
@@ -248,24 +253,9 @@ directory we created previously. (Its `path` has the URL for the datastore.) And
 instead of an `etag` we have an `md5` checksum. We did this so its easy to edit
 the data file.
 
-It's important now to unlock the `data.xml.dvc` import stage, as `dvc status`
-(the main mechanism to detect pipeline changes, used later in this example)
-won't analyze locked stages:
-
-```dvc
-$ dvc unlock data.xml.dvc
-```
-
 Let's now manually reproduce
 [one of the processing steps](/doc/get-started/connect-code-and-data) from the
-_Get Started_ project:
-
-<details>
-
-### Click and expand to prepare the workspace
-
-Download the sample source code archive and unzip it if you wish to continue
-with this example.
+_Get Started_ project. Download the sample source code archive and unzip it:
 
 ```dvc
 $ wget https://dvc.org/s3/get-started/code.zip
@@ -273,13 +263,13 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
-</details>
-
 ```dvc
 $ dvc run -f prepare.dvc \
           -d src/prepare.py -d data/data.xml \
           -o data/prepared \
           python src/prepare.py data/data.xml
+Running command:
+	python src/prepare.py data/data.xml
 ...
 $ tree
 .
@@ -296,6 +286,8 @@ $ tree
     ├── featurization.py
     ├── prepare.py
     └── train.py
+
+3 directories, 10 files
 ```
 
 At this point, DVC considers everything being up to date:
@@ -308,56 +300,43 @@ Data and pipelines are up to date.
 In the datastore directory, edit `data.xml`. It doesn't matter what you change,
 as long as it remains a valid XML file, because any change will result in a
 different dependency file checksum (`md5`) in the import stage DVC-file. Once we
-do so, we'll see this:
+do so, we can run `dvc update` to make sure the import stage is up to date:
+
+```dvc
+$ dvc update data.xml.dvc
+WARNING: Dependency '.../tmp/dvc-import-url-example/data.xml' of 'data.xml.dvc' changed because it is 'modified'.
+WARNING: Stage 'data.xml.dvc' changed.
+Reproducing 'data.xml.dvc'
+Importing '.../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
+[##############################] 100% data.xml
+...
+Saving information to 'data.xml.dvc'.
+```
+
+DVC has noticed the "external" data source has changed, and updated the import
+stage (reproduced it). In this case it's also necessary to run `dvc repro` so
+that the rest of the pipeline is also run again. We can confirm so with:
 
 ```dvc
 $ dvc status
-data.xml.dvc:
+prepare.dvc:
 	changed deps:
-		modified:           .../tmp/dvc-import-url-example/data.xml
+		modified:           data/data.xml
 ```
 
-DVC has noticed the "external" source (import stage) has changed! This tells us
-that it is necessary to now run `dvc repro` so that the rest of this pipeline
-(i.e. the "prepare" stage) is automatically run again.
-
-> Note that had we not unlocked the import stage before, we could alternatively
-> run `dvc update` on it first to make sure it's up to date, and then check with
-> `dvc status` for the need to reproduce the pipeline.
-
-Let's run the "prepare" stage again, since we know its outdated:
+Since we know the "prepare" stage is all that's left, let's just reproduce that
+stage specifically:
 
 ```dvc
 $ dvc repro prepare.dvc
-WARNING: Dependency '../../../tmp/dvc-import-url-example/data.xml' of 'data.xml.dvc' changed because it is 'modified'.
-WARNING: Stage 'data.xml.dvc' changed.
-Reproducing 'data.xml.dvc'
-Importing '../../../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
-[##############################] 100% data.xml
-[##############################] 100% data.xml
-
-Saving 'data/data.xml' to '.dvc/cache/bf/23db315e2d9b25d3f30038c49a812e'.
-
-Saving information to 'data.xml.dvc'.
-
 WARNING: Dependency 'data/data.xml' of 'prepare.dvc' changed because it is 'modified'.
-
 WARNING: Stage 'prepare.dvc' changed.
-
 Reproducing 'prepare.dvc'
-
-Running command:
-	python src/prepare.py data/data.xml
-
-Output 'data/prepared' didn't change. Skipping saving.
-
-Saving information to 'prepare.dvc'.
 ...
 $ dvc status
 Data and pipelines are up to date.[]
 ```
 
-`dvc repro` ran again both stages of this pipeline (and if we had set up more
-stages, they also would have been run again). It first downloaded the updated
-data file. And then, noticing that `data/data.xml` had changed, that triggered
-the `prepare.dvc` stage to execute.
+`dvc repro` runs again the given stage `prepare.dvc`, noticing that its
+dependency `data/data.xml` has changed. `dvc status` should report "Nothing to
+reproduce." after this.

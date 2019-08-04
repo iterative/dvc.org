@@ -50,7 +50,7 @@ On the top level, `.dvc` file consists of these fields:
 - `outs`: a list of outputs for this stage
 - `md5`: md5 checksum for this DVC-file
 - `locked`: whether or not this stage is locked from reproduction
-- `wdir`: a directory to run command in (default `.`)
+- `wdir`: directory to run command in (default `.`)
 
 A dependency entry consists of a pair of fields:
 
