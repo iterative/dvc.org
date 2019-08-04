@@ -284,6 +284,8 @@ $ tree
     ├── featurization.py
     ├── prepare.py
     └── train.py
+
+3 directories, 10 files
 ```
 
 3 directories, 10 files
@@ -333,7 +335,7 @@ WARNING: Stage 'prepare.dvc' changed.
 Reproducing 'prepare.dvc'
 ...
 $ dvc status
-Data and pipelines are up to date.[]
+Data and pipelines are up to date.
 ```
 
 `dvc repro` runs again the given stage `prepare.dvc`, noticing that its
