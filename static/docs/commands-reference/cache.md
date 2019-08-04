@@ -35,7 +35,7 @@ config option, for more information on file links on different platforms.)
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Examples
 
 The main use of this command is to apply the `-v` and `-q` options to
 `dvc cache dir` which doesn't have them:

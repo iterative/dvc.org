@@ -114,36 +114,19 @@ specified in DVC-files currently in the workspace are considered by `dvc fetch`
 
 ## Examples
 
-To explore `dvc fetch` let's consider a simple
-[pipeline](/doc/get-started/pipeline) with several stages and a few Git tags.
-Then we can see what happens with `fetch` as we shift from tag to tag with
-`git`.
+Let's employ a simple workspace with some stages and a few Git tags, such as our
+[get started example repo](https://github.com/iterative/example-get-started).
+Then we can see what happens with `dvc fetch` as we switch from tag to tag.
 
 <details>
 
 ### Click and expand to setup the project
 
-This step is optional, and you can run it only if you want to run this examples
-in your environment. First, you need to download the project:
+Start by cloning our sample repo if you don't already have it:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
-```
-
-Second, let's install the requirements. But before we do that, we **strongly**
-recommend creating a virtual environment with
-[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool:
-
-```dvc
 $ cd example-get-started
-$ virtualenv -p python3 .env
-$ source .env/bin/activate
-```
-
-Now, we can install requirements for the project:
-
-```dvc
-$ pip install -r requirements.txt
 ```
 
 </details>
@@ -173,7 +156,7 @@ baseline     <- first simple version of the model
 bigram       <- use bigrams to improve the model
 ```
 
-## Examples: Default behavior
+## Example: Default behavior
 
 This project comes with a predefined HTTP
 [remote storage](/doc/commands-reference/remote). We can now just run
@@ -218,7 +201,7 @@ Checking out '{'scheme': 'local', 'path': '.../example-get-started/model.pkl'}' 
 Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/...
 ```
 
-## Examples: Specific stages
+## Example: Specific stages
 
 > Please delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
 > follow this example if you tried the previous one (**Default behavior**).
@@ -250,7 +233,7 @@ Cache entries for the necessary directories, as well as the actual
 `data/prepared/test.tsv` and `data/prepared/train.tsv` files were download,
 checksums shown above.
 
-## Examples: With dependencies
+## Example: With dependencies
 
 After following the previous example (**Specific stages**), only the files
 associated with the `prepare.dvc` stage file have been fetched. Several

@@ -90,37 +90,32 @@ into play. It handles that last step of adding the file to the DVC cache.
 
 ## Examples
 
-To explore `dvc commit` let's consider a simple pipeline with several stages:
-the example workspace used in the [Get Started](/doc/get-started) section.
+Let's employ a simple workspace with several stages, such as the DVC project
+created in our [Get Started](/doc/get-started) section. Then we can see what
+happens with `git commit` and `dvc commit` in different situations.
 
 <details>
 
 ### Click and expand to setup the project
 
-This step is optional, and you can run it only if you want to run this examples
-in your environment. First, you need to download the project:
+Start by cloning our sample repo if you don't already have it:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
+$ cd example-get-started
 ```
 
-Second, let's install the requirements. But before we do that, we **strongly**
-recommend creating a virtual environment with
-[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool:
+Now let's install the requirements. But before we do that, we **strongly**
+recommend creating a virtual environment with a tool such as
+[virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```dvc
-$ cd example-get-started
 $ virtualenv -p python3 .env
 $ source .env/bin/activate
-```
-
-Now, we can install requirements for the project:
-
-```dvc
 $ pip install -r requirements.txt
 ```
 
-Then download the precomputed data using:
+Download the precomputed data using:
 
 ```dvc
 $ dvc pull --all-branches --all-tags
@@ -221,7 +216,7 @@ $ ls .dvc/cache/70
 And we've verified that `dvc commit` has saved the changes into the cache, and
 that the new instance of `model.pkl` is in the cache.
 
-## Example: Running without DVC
+## Example: Running commands without DVC
 
 It is also possible to execute the commands that are executed by `dvc repro` by
 hand. You won't have DVC helping you, but you have the freedom to run any script

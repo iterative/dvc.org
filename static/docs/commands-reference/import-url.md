@@ -117,33 +117,30 @@ downloaded file or directory from the external data source.
 
 ## Examples
 
-To illustrate the examples we will be using the project explained in the
-[Get Started](/doc/get-started) section. With it, it's very easy to setup a
-playground for the examples below.
+To illustrate these examples we will be using the project explained in the
+[Get Started](/doc/get-started) section.
 
 <details>
 
 ### Click and expand to setup the sample project
 
 Follow these instructions before each example below if you actually want to try
-them on your system. First, download the project and `cd` into it:
+them on your system.
+
+Start by cloning our sample repo if you don't already have it. Then move into
+the repo and checkout the
+[version](https://github.com/iterative/example-get-started/releases/tag/2-remote)
+corresponding to the [Configure](/doc/get-started/configure) step:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
-```
-
-The _Get Started_ section demonstrates a simple pipeline. In the
-[Add Files](/doc/get-started/add-files) step we are shown how to download a
-file, then use `dvc add` to integrate it with the workspace. Run:
-
-```dvc
 $ git checkout 2-remote
 $ mkdir data
 ```
 
-After executing these commands you should have a blank workspace, just before
-the _Add Files_ step mentioned before.
+You should now have a blank workspace, just before the
+[Add Files](/doc/get-started/add-files) step.
 
 </details>
 
@@ -229,7 +226,7 @@ Importing '../../../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
 ...
 ```
 
-Check `data.xml.dvc `:
+Check `data.xml.dvc`:
 
 ```yaml
 md5: eca0a296d67781cc488c6ffd1cc63b8e
@@ -261,6 +258,22 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
+<details>
+
+### Click and expand to setup the environment
+
+For this step we'll need to install the project requirements. For that we
+**strongly** recommend creating a virtual environment with a tool such as
+[virtualenv](https://virtualenv.pypa.io/en/stable/):
+
+```dvc
+$ virtualenv -p python3 .env
+$ source .env/bin/activate
+$ pip install -r requirements.txt
+```
+
+</details>
+
 ```dvc
 $ dvc run -f prepare.dvc \
           -d src/prepare.py -d data/data.xml \
@@ -284,9 +297,6 @@ $ tree
     ├── featurization.py
     ├── prepare.py
     └── train.py
-
-3 directories, 10 files
-```
 
 3 directories, 10 files
 ```

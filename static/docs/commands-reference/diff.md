@@ -51,11 +51,10 @@ by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples: Previous version of the same branch
+## Examples
 
-For the setup of our examples we can use the steps in our
-[Get Started](/doc/get-started) guide up to the
-[Add Files](/doc/get-started/add-files) section.
+For these examples we can use the steps in our [Get Started](/doc/get-started)
+guide, up to the [Add Files](/doc/get-started/add-files) step.
 
 <details>
 
@@ -64,32 +63,25 @@ For the setup of our examples we can use the steps in our
 Start by cloning our sample repo if you don't already have it. Then move into
 the repo and checkout the
 [version](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
-corresponding to the add-files section mentioned above
+corresponding to the _Add Files_ step:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
-Cloning into 'example-get-started'...
-
 $ cd example-get-started
 $ git checkout 3-add-file
-Note: checking out '3-add-file'...
+```
 
+Download the precomputed data using:
+
+```dvc
 $ dvc pull
 Preparing to download data from 'https://remote.dvc.org/get-started'
 ...
 ```
 
-Now let's create a virtual environment with
-[virtualenv](https://virtualenv.pypa.io/en/stable/) and install the
-requirements.
-
-```dvc
-$ virtualenv -p python3 .env
-$ source .env/bin/activate
-$ pip install -r requirements.txt
-```
-
 </details>
+
+## Example: Previous version of the same branch
 
 The minimal `dvc diff` command only includes the A reference (`a_ref`) from
 which the difference is to be calculated. The B reference (`b_ref`) defaults to
@@ -107,7 +99,7 @@ diff for 'data/data.xml'
 added file with size 37.9 MB
 ```
 
-## Examples: Specific targets across Git references
+## Example: Specific targets across Git references
 
 We can base this example in the [Experiment Metrics](/doc/get-started/metrics)
 and [Compare Experiments](/doc/get-started/compare-experiments) sections of our

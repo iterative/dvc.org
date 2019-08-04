@@ -5,7 +5,7 @@ export default {
     'relevant DVC concepts and terminologies which are frequently used.',
   contents: [
     {
-      name: 'Workspace directory',
+      name: 'DVC Workspace',
       match: ['workspace'],
       desc:
         'The **workspace** contains all of your DVC **project** files and ' +
@@ -13,7 +13,7 @@ export default {
         '[`dvc init`](/doc/commands-reference/init).'
     },
     {
-      name: 'DVC cache',
+      name: 'DVC Cache',
       match: ['DVC cache', 'cache', 'cache directory'],
       desc:
         'The DVC cache is a hidden storage (by default located in the ' +
@@ -23,7 +23,7 @@ export default {
         '#structure-of-cache-directory).'
     },
     {
-      name: 'Data artifact',
+      name: 'Data Artifact',
       match: ['data artifact', 'data artifacts'],
       desc:
         'Any **data** file or directory, as well as intermediate or final ' +
@@ -32,7 +32,7 @@ export default {
         '(/doc/use-cases/data-and-model-files-versioning) for more details.'
     },
     {
-      name: 'Import stage',
+      name: 'Import Stage',
       match: ['import stage', 'import stages'],
       desc:
         'Stage (DVC-file) created with the `dvc import` or `dvc import-url` ' +

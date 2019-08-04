@@ -180,7 +180,7 @@ more about the state file that is used for optimization.
   so that when it needs to cleanup the database it could sort them by the
   timestamp and remove the oldest ones. Default quota is set to 50(percent).
 
-## Examples: Core config options
+## Example: Core config options
 
 Set the `dvc` log level to `debug`:
 
@@ -200,7 +200,7 @@ $ dvc remote add myremote s3://bucket/path
 $ dvc config core.remote myremote
 ```
 
-## Examples: Default remotes
+## Example: Default remotes
 
 Use remote `myremote` by default:
 
@@ -227,7 +227,7 @@ which is equivalent to:
 $ dvc config core.remote -u
 ```
 
-## Examples: Cache config options
+## Example: Cache config options
 
 Set the cache directory to an absolute path:
 

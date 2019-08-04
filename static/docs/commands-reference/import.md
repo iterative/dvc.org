@@ -70,7 +70,7 @@ downloaded data artifact from the external DVC repo.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Examples
 
 An obvious case for this command is to import a dataset from an external DVC
 repo, such as our
@@ -109,3 +109,5 @@ outs:
 Several of the values above are pulled from the original stage file
 `model.pkl.dvc` in the external DVC repo. `url` and `rev_lock` fields are used
 to specify the origin and version of the dependency.
+
+<!-- ## Example: Dataset registry -->

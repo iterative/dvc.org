@@ -40,7 +40,7 @@ file location**. They are required in the latter form for the config file.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
-## Examples: Using relative path
+## Example: Using relative path
 
 ```dvc
 $ dvc cache dir ../dir
@@ -54,7 +54,7 @@ $ cat .dvc/config
 `../dir` has been resolved relative to the `.dvc/` dir, resulting in
 `../../dir`.
 
-## Examples: Using absolute path
+## Example: Using absolute path
 
 ```dvc
 $ dvc cache dir /path/to/dir
