@@ -50,9 +50,9 @@ determine whether the local copy is out of date.
 To actually [track the data](https://dvc.org/doc/get-started/add-files),
 `git add` (and `git commit`) the import stage (DVC-file).
 
-Note that import stages are considered always locked. (See `dvc lock`.) They can
-not be unlocked. Use `dvc update` on them to update the downloaded data artifact
-from the external DVC repo.
+Note that import stages are considered always "locked" - meaning that if you run
+`dvc repro`, they won't be updated. Use `dvc update` on them to update the
+downloaded data artifact from the external DVC repo.
 
 ## Options
 
