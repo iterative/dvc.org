@@ -27,18 +27,17 @@ Ignored files will not be saved in cache, they will be non-existent for DVC.
 It's worth to remember that, especially when ignoring files inside DVC-handled
 directories.
 
-**It is crucial to understand, that DVC might remove ignored files upon `dvc
-run` or `dvc repro`. If they are not produced by a
+**It is crucial to understand, that DVC might remove ignored files upon
+`dvc run` or `dvc repro`. If they are not produced by a
 [pipeline](/doc/get-started/pipeline) step, they can be deleted permanently.**
 
 Keep in mind, that when you add to `.dvcignore` entries that affect one of the
 existing <abbr>outputs</abbr>, its status will change and DVC will behave as if
 that affected files were deleted.
 
-If DVC stumbles upon `.dvcignore` file inside a dependency or an
-<abbr>output</abbr> directory, it raises an error. Ignoring files inside such
-directory should be handled from `.dvcignore` file from upper levels of the
-project tree.
+If DVC finds a `.dvcignore` file inside a dependency or an <abbr>output</abbr>
+directory, it raises an error. Ignoring files inside such directory should be
+handled from `.dvcignore` file from upper levels of the project tree.
 
 ## Syntax
 
@@ -46,7 +45,7 @@ The same as for [`.gitignore`](https://git-scm.com/docs/gitignore).
 
 ## Examples: Modification of ignored data
 
-Lets see if what happens when we modify ignored file.
+Let's see what happens when we modify ignored file.
 
 ```dvc
 $ mkdir data
@@ -60,8 +59,8 @@ $ tree .
     └── data2
 ```
 
-We created the `data` directory. Lets ignore part of the `data` and add it under
-DVC control.
+We created the `data` directory. Let's ignore part of the `data` and add it
+under DVC control.
 
 ```dvc
 $ echo data/data1 >> .dvcignore
@@ -82,7 +81,7 @@ $ tree .dvc/cache
 As we can see, `data1` has been ignored. Cache contains only one file entry (for
 `data2`) and one dir entry (`data`).
 
-Now, lets modify `data1` and see if it affects `dvc status`.
+Now, let's modify `data1` and see if it affects `dvc status`.
 
 ```dvc
 $ dvc status
@@ -146,7 +145,7 @@ data.dvc:
 
 ## Examples: Ignore dvc controlled file
 
-Lets analyze an example project:
+Let's analyze an example project:
 
 ```dvc
 $ mkdir dir1 dir2

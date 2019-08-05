@@ -31,39 +31,38 @@ contributing!
 
 ## Development environment
 
-- Get the latest development version. Fork and clone the repo:
+Get the latest development version. Fork and clone the repo:
 
-  ```dvc
-  $ git clone git@github.com:<username>/dvc.git
-  ```
+```dvc
+$ git clone git@github.com:<username>/dvc.git
+```
 
-- Make sure that you have python 3 installed. Version 3.6 or higher is required
-  to run style checkers on pre-commit. On Mac OS, use `brew` to install the
-  latest version of python.
+Make sure that you have Python 3 installed. Version 3.6 or higher is required to
+run style checkers on pre-commit. On Mac OS, we recommend using `brew` to
+install Python.
 
-- Install DVC in editable mode with `pip install -e ".[all,tests]"`. We
-  **strongly** recommend initializing a
-  [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
-  installing the required libraries. For example:
+Install DVC in editable mode with `pip install -e ".[all,tests]"`. We
+**strongly** recommend initializing a
+[virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
+installing the required libraries. For example:
 
-  ```dvc
-  $ cd dvc
-  $ virtualenv --python python3 .env
-  $ source .env/bin/activate
-  $ pip install -e ".[all,tests]"
-  ```
+```dvc
+$ cd dvc
+$ virtualenv --python python3 .env
+$ source .env/bin/activate
+$ pip install -e ".[all,tests]"
+```
 
-- Install coding style pre-commit hooks with
+> Note that the double quotes (`""`) used to wrap the dependencies to be
+> installed are only compulsory when using `zsh`. In `bash`, installation
+> commands can work without them: `pip install -e .[all,tests]`.
 
-  ```dvc
-  $ pip install pre-commit
-  $ pre-commit install
-  ```
+Install coding style pre-commit hooks with:
 
-  > Note: the double quotes (`""`) used to wrap the dependencies, which are to
-  > be installed, are only compulsory when using `zsh`. In `bash`, installation
-  > commands can work even without them. For example,
-  > `pip install -e .[all,tests]`.
+```dvc
+$ pip install pre-commit
+$ pre-commit install
+```
 
 That should be it. You should be ready to make changes, run tests do commits! If
 you experience any problems, please don't hesitate to ping us in our

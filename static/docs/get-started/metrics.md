@@ -14,7 +14,7 @@ $ dvc run -f evaluate.dvc \
                  data/features auc.metric
 ```
 
-`evaluate.py` calculates AUC value using the test data set. It reads features
+`evaluate.py` calculates AUC value using the test dataset. It reads features
 from the `features/test.pkl` file and produces a DVC metric file - `auc.metric`.
 It is a special DVC output file type, in this case it's just a plain text file
 with a single number inside.

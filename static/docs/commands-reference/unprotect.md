@@ -27,12 +27,12 @@ safely updated. Read the
 [Update a Tracked File](/doc/user-guide/update-tracked-file) guide to learn more
 on this process.
 
-`dvc unprotect` can be an expensive operation (involves copying data), check
+`dvc unprotect` can be an expensive operation (involves copying data). Check
 first whether your task matches one of the cases that are considered safe, even
 when cache protected mode is enabled:
 
-- Adding more files to a directory input data set (say, images or videos)
-- Deleting files from a directory data set
+- Adding more files to a directory input dataset (say, images or videos)
+- Deleting files from a directory dataset
 
 ## Options
 
@@ -64,7 +64,7 @@ Saving information to 'Posts.xml.zip.dvc'.
 
 To track the changes with git run:
 
-	git add .gitignore Posts.xml.zip.dvc
+	git add .gitignore data.xml.dvc
 ```
 
 Check that file is a read-only link (@ sign means a link):

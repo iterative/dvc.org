@@ -2,7 +2,7 @@
 
 DVC allows storing and versioning data files, ML models, directories,
 intermediate results with Git, without checking the file contents into Git.
-Let's get a sample data set to play with:
+Let's get a sample dataset to play with:
 
 <details>
 

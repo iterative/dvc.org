@@ -50,12 +50,9 @@ determine whether the local copy is out of date.
 To actually [track the data](https://dvc.org/doc/get-started/add-files),
 `git add` (and `git commit`) the import stage (DVC-file).
 
-Note that by default, these import stages are locked in their DVC-files (with
-fields `locked: true` and `rev_lock`). Use `dvc update` manually on them to
-force updating the downloaded data artifact from the external DVC repo.
-
-> If `dvc unlock` is used on locked stages, they will start to be checked by
-> `dvc status`, and updated by `dvc repro`.
+Note that import stages are considered always "locked" - meaning that if you run
+`dvc repro`, they won't be updated. Use `dvc update` on them to update the
+downloaded data artifact from the external DVC repo.
 
 ## Options
 
@@ -72,3 +69,43 @@ force updating the downloaded data artifact from the external DVC repo.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Example
+
+An obvious case for this command is to import a dataset from an external DVC
+repo, such as our
+[get started example repo](https://github.com/iterative/example-get-started).
+
+```dvc
+$ dvc import git@github.com:iterative/example-get-started data/data.xml
+Importing 'data/data.xml (git@github.com:iterative/example-get-started)' -> 'data.xml'
+...
+Saving information to 'data.xml.dvc'.
+...
+```
+
+In contrast with `dvc get`, this command doesn't just download the data file,
+but it also creates an import stage (DVC-file) to keep track of this <abbr>data
+artifact</abbr> as a special `repo`
+[external dependency](/doc/user-guide/external-dependencies). Check
+`data.xml.dvc`:
+
+```yaml
+md5: 7de90e7de7b432ad972095bc1f2ec0f8
+wdir: .
+deps:
+- path: data/data.xml
+  repo:
+    url: git@github.com:iterative/example-get-started
+    rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
+outs:
+- md5: a304afb96060aad90176268345e10355
+  path: data.xml
+  cache: true
+  metric: false
+  persist: false
+```
+
+Several of the values above are pulled from the original stage file
+`model.pkl.dvc` in the external DVC repo. `url` and `rev_lock` fields are used
+to specify the origin and version of the dependency.

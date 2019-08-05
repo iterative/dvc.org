@@ -91,7 +91,7 @@ into play. It handles that last step of adding the file to the DVC cache.
 ## Examples
 
 To explore `dvc commit` let's consider a simple pipeline with several stages:
-the example workspace used in the [Getting Started](/doc/get-started) tutorial.
+the example workspace used in the [Get Started](/doc/get-started) section.
 
 <details>
 

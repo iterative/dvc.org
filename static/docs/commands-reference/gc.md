@@ -40,7 +40,7 @@ usually helps to save some space.
   project is a path) to keep data that is currently referenced from them.
 
 - `-c`, `--cloud` - also remove files in the remote storage. _This operation is
-  dangerous._ It removes data sets, models, other files that are not linked in
+  dangerous._ It removes datasets, models, other files that are not linked in
   the current branch/commit (unless `-a` or `-T` is specified).
 
 - `-r`, `--remote` - name of the remote storage to collect unused objects from

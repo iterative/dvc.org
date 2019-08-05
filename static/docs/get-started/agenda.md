@@ -3,8 +3,8 @@
 In the next few sections we will rebuild a simple natural language processing
 (NLP) project from scratch. Like we already mentioned, if you'd like to get the
 final result or have some issues along the way, you can download the fully
-reproducible
-[Github DVC project](https://github.com/iterative/example-get-started) here:
+reproducible [Github project](https://github.com/iterative/example-get-started)
+with:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -23,8 +23,8 @@ predict a post that is about the Python language by tagging it `python`.
 Let the NLP nature of the example not to discourage you from using DVC in other
 Data Science areas. There was no strong reason behind picking the NLP area. On
 contrary, DVC is designed to be pretty agnostic of frameworks, languages, etc.
-If you have data files or data sets and/or you produce other data files, models,
-data sets and you want to:
+If you have data files or datasets and/or you produce other data files, models,
+datasets and you want to:
 
 - Capture and save those <abbr>data artifacts</abbr> the same way we capture
   code

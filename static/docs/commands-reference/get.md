@@ -50,9 +50,9 @@ created in the current working directory, with its original file name.
 > DVC is [installed](/doc/get-started/install).
 
 We can use `dvc get` to download the resulting model file from our
-[get started example](https://github.com/iterative/example-get-started), which
-is a DVC project external to the current working directory). The desired file is
-located in the root of the external repo, and named `model.pkl`.
+[get started example repo](https://github.com/iterative/example-get-started),
+which is a DVC project external to the current working directory). The desired
+file is located in the root of the external repo, and named `model.pkl`.
 
 ```dvc
 $ dvc get https://github.com/iterative/example-get-started model.pkl
