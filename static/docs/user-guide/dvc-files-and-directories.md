@@ -8,29 +8,11 @@ Once initialized in a project, DVC populates its installation directory
 `.dvc/config` - this is a configuration file. The config file can be edited by
 hand or with a special command: `dvc config`.
 
-<<<<<<< HEAD
-`.dvc/config.local` - this is a local configuration file, that will overwrite
-options in `.dvc/config`. This is useful when you need to specify private
-options in your config that you don't want to track and share through Git
-(credentials, private locations, etc). The local config file can be edited by
-hand or with a special command: `dvc config --local`.
-
-`.dvc/cache` - the [cache directory](#structure-of-cache-directory) will
-contain your data files. (The data directories of DVC repositories will only
-contain links to the data files in the cache, refer to
-[Large Dataset Optimization](/docs/user-guide/large-dataset-optimization).)
-||||||| merged common ancestors
-- `.dvc/cache` - the [cache directory](#structure-of-cache-directory) will
-  contain your data files. (The data directories of DVC repositories will only
-  contain links to the data files in the cache, refer to
-  [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization).)
-=======
 - `.dvc/cache` - the [cache directory](#structure-of-cache-directory) will
   contain your data files. (The data directories of DVC repositories will only
   contain links to the data files in the cache, refer to
   [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization).)
   See `dvc config cache` for related configuration options.
->>>>>>> 88fdf845e2173c49aec0b867db81dc311f20b304
 
   > Note that DVC includes the cache directory in `.gitignore` during the
   > initialization. No data files (with actual content) will ever be pushed to

@@ -31,14 +31,8 @@ contributing!
 
 ## Development environment
 
-<<<<<<< HEAD
-- Get the latest development version. Fork and clone the repo.
-||||||| merged common ancestors
-- Get the latest development version. Fork and clone the repo:
-=======
 - Get the latest development version. Fork and clone the repo:
 
->>>>>>> 88fdf845e2173c49aec0b867db81dc311f20b304
   ```dvc
   $ git clone git@github.com:<username>/dvc.git
   ```

@@ -213,23 +213,9 @@ outs:
 
 Sections of the file above include:
 
-<<<<<<< HEAD
-- `cmd` — the command to run
-
-- `deps` — dependencies with md5 checksums
-
-- `outs` — outputs with md5 checksums
-||||||| merged common ancestors
-- `cmd` — the command to run.
-
-- `deps` — dependencies with md5 checksums.
-
-- `outs` — outputs with md5 checksums.
-=======
 - `cmd` — the command to run
 - `deps` — dependencies with md5 checksums
 - `outs` — outputs with md5 checksums
->>>>>>> 88fdf845e2173c49aec0b867db81dc311f20b304
 
 And (as with the `dvc add` command) the `data/.gitignore` file was modified. Now
 it includes the unarchived command output file `Posts.xml`.
