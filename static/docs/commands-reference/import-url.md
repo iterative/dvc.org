@@ -160,8 +160,6 @@ Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data/data.xml'
 
 Adding 'data/data.xml' to 'data/.gitignore'.
 
-WARNING: data 'data/data.xml' exists. Removing before checkout.
-
 Saving information to 'data.xml.dvc'.
 
 
