@@ -56,7 +56,7 @@ $ git add .dvc/config
 $ git commit -m "dvc: setup external cache dir"
 ```
 
-### Example
+### Examples
 
 You and your colleagues can work in your own workspaces as usual and DVC will
 handle all your data in the most effective way possible. Let's say you are

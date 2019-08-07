@@ -43,7 +43,7 @@ handled from `.dvcignore` file from upper levels of the project tree.
 
 The same as for [`.gitignore`](https://git-scm.com/docs/gitignore).
 
-## Examples: Modification of ignored data
+## Example: Modification of ignored data
 
 Let's see what happens when we modify ignored file.
 
@@ -106,7 +106,7 @@ data.dvc:
 		modified:           data
 ```
 
-## Examples: Moving ignored data
+## Example: Moving ignored data
 
 ```dvc
 $ mkdir data
@@ -143,7 +143,7 @@ data.dvc:
 		modified:           data
 ```
 
-## Examples: Ignore dvc controlled file
+## Example: Ignore dvc controlled file
 
 Let's analyze an example project:
 
