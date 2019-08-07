@@ -86,7 +86,7 @@ and edit it._
 ## Examples
 
 To explore `dvc install` let's consider a simple pipeline with several stages:
-the example workspace used in the [Getting Started](/doc/get-started) tutorial.
+the example workspace used in the [Get Started](/doc/get-started) section.
 
 <details>
 
@@ -132,8 +132,8 @@ Let's start our exploration with the impact of `dvc install` on the
 another changes the set of DVC-files in the workspace, which then also changes
 the data files that should be in the workspace.
 
-With the Getting Started example workspace described above, let's first list the
-available tags:
+With the _Get Started_ project described above, let's first list the available
+tags:
 
 ```dvc
 $ git tag
@@ -174,7 +174,7 @@ $ dvc checkout
 
 $ dvc status
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 After running `git checkout` we are also shown a message saying _You are in
@@ -231,11 +231,11 @@ HEAD is now at d13ba9a add featurization stage
 
 $ dvc status
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 Look carefully at this output and it is clear that the `dvc checkout` command
-has indeed been run. As a result the workspace is up-to-date with the data files
+has indeed been run. As a result the workspace is up to date with the data files
 matching what is referenced by the DVC-files.
 
 ## Example: Showing DVC status on Git commit
@@ -280,7 +280,7 @@ $ git status -s
 
 $ git commit -a -m "updated data after modified featurization"
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 
 [master 78d0c44] modified featurization
  5 files changed, 12 insertions(+), 12 deletions(-)

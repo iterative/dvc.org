@@ -34,14 +34,14 @@ single-purpose command that can be used out of the box after installing DVC.
 
 DVC supports several types of (local or) remote locations (protocols):
 
-| Type    | Discussion                                              | URL format                                 |
-| ------- | ------------------------------------------------------- | ------------------------------------------ |
-| `local` | Local path                                              | `/path/to/local/file`                      |
-| `s3`    | Amazon S3                                               | `s3://mybucket/data.csv`                   |
-| `gs`    | Google Storage                                          | `gs://mybucket/data.csv`                   |
-| `ssh`   | SSH server                                              | `ssh://user@example.com:/path/to/data.csv` |
-| `hdfs`  | HDFS                                                    | `hdfs://user@example.com/path/to/data.csv` |
-| `http`  | HTTP to file with _strong ETag_ (see explanation below) | `https://example.com/path/to/data.csv`     |
+| Type    | Discussion     | URL format                                 |
+| ------- | -------------- | ------------------------------------------ |
+| `local` | Local path     | `/path/to/local/file`                      |
+| `s3`    | Amazon S3      | `s3://mybucket/data.csv`                   |
+| `gs`    | Google Storage | `gs://mybucket/data.csv`                   |
+| `ssh`   | SSH server     | `ssh://user@example.com:/path/to/data.csv` |
+| `hdfs`  | HDFS           | `hdfs://user@example.com/path/to/data.csv` |
+| `http`  | HTTP to file   | `https://example.com/path/to/data.csv`     |
 
 > Depending on the remote locations type you plan to download data from you
 > might need to specify one of the optional dependencies: `[s3]`, `[ssh]`,

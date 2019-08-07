@@ -91,7 +91,7 @@ into play. It handles that last step of adding the file to the DVC cache.
 ## Examples
 
 To explore `dvc commit` let's consider a simple pipeline with several stages:
-the example workspace used in the [Getting Started](/doc/get-started) tutorial.
+the example workspace used in the [Get Started](/doc/get-started) section.
 
 <details>
 
@@ -213,7 +213,7 @@ execute this set of commands:
 ```dvc
 $ dvc commit
 $ dvc status
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 $ ls .dvc/cache/70
 599f166c2098d7ffca91a369a78b0d
 ```
@@ -275,7 +275,7 @@ Are you sure you commit it? [y/n] y
 
 $ dvc status
 
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 Nothing special is required, we simply `commit` to both the SCM and DVC. Since

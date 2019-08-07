@@ -176,7 +176,7 @@ $ dvc repro
 WARNING: assuming default target 'Dvcfile'.
 Stage 'filter.dvc' didn't change.
 Stage 'Dvcfile' didn't change.
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 It makes sense, since we haven't changed neither of the dependencies this
@@ -209,7 +209,7 @@ information, new `md5` checksums and a new result respectively.
 ## Examples: Downstream
 
 The `--downstream` option allows us to only reproduce results from commands
-after a specific stage in a pipeline. To demonstrate how it works, lets make a
+after a specific stage in a pipeline. To demonstrate how it works, let's make a
 change in `text.txt` (the input of our first stage, defined in the previous
 example):
 
@@ -225,7 +225,7 @@ Now, using the `--downstream` option results in the following output:
 $ dvc repro --downstream
 WARNING: assuming default target 'Dvcfile'.
 Stage 'Dvcfile' didn't change.
-Pipelines are up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 The reason being that the `text.txt` is a file which is a dependency in the

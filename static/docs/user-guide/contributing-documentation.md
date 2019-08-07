@@ -55,21 +55,18 @@ Installing development environment is _highly_ recommended to format your code
 and documents in accordance with the style guide automatically, and to run the
 server locally in case you are making some JS engine changes.
 
-- Get the latest development version by
-  [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
-  repository from GitHub:
+Get the latest development version by
+[forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
+repository from GitHub:
 
-  ```dvc
-  $ git clone git@github.com:<username>/dvc.org.git
-  ```
+```dvc
+$ git clone git@github.com:<username>/dvc.org.git
+```
 
-Next step, along with installing dependencies that are necessary to run the
-website locally, will enable the pre-commit hook that will be formatting your
-code and documentation files automatically:
-
-- Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
-  installed. Install and keep the dependencies up to date by running
-  `npm install` often.
+Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
+installed. Install and keep the dependencies up to date by running `npm install`
+often. This will also enable the Git pre-commit hook that will be formatting
+your code and documentation files automatically.
 
 It's highly recommended to run the Node.js docs app locally to test significant
 changes to the docs before submitting them, and its very much needed in order to
@@ -77,10 +74,9 @@ make changes to the docs JavaScript engine itself (rare). These changes need to
 be properly formatted as well. This is also ensured in the following steps for
 setting up.
 
-- Start the development server using `npm run dev` which will start the server
-  on the default port `3000`.
-
-- Visit `http://localhost:3000/` and navigate to the docs in question.
+Start the development server using `npm run dev` which will start the server on
+the default port `3000`. Visit `http://localhost:3000/` and navigate to the docs
+in question.
 
 ## Doc style guidelines (for JavaScript and Markdown)
 

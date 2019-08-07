@@ -42,8 +42,17 @@ export default {
       name: 'Output',
       match: ['output', 'outputs'],
       desc:
-        'A file or a directory that is under DVC control. See `dvc add`,' +
-        ' `dvc run`, `dvc import`, `dvc import-url` commands.'
+        'A file or a directory that is under DVC control. See `dvc add`, ' +
+        '`dvc run`, `dvc import`, `dvc import-url` commands.'
+    },
+    {
+      name: 'External Dependency',
+      match: ['external dependency', 'external dependencies'],
+      desc:
+        'A DVC-file dependency with origin in an external source, for ' +
+        'example HTTP, SSH, Amazon S3, Google Cloud Storage remote ' +
+        'locations, or even other DVC repositories. See ' +
+        '[External Dependencies](/doc/user-guide/external-dependencies).'
     }
   ]
 }
