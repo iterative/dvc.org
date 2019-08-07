@@ -23,8 +23,8 @@ The optional `path` argument can represent a DVC metric file or a directory. If
 with the `-R` option.
 
 Providing `type` (via `-t` CLI option), overrides the full metric specification
-(both, `type` and `xpath`) defined in the DVC-file (usually, using `dvc metrics
-modify` command).
+(both, `type` and `xpath`) defined in the DVC-file (usually, using
+`dvc metrics modify` command).
 
 If `type` (via `-t`) is not specified and only `xpath` (`-x`) is, only `xpath`
 is overridden. It will try to read type from the DVC-file. The `type` can be

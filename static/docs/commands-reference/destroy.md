@@ -64,9 +64,8 @@ $ dvc cache dir /mnt/cache
 $ dvc add foo
 ```
 
-`dvc cache dir` changed the location of cache storage to exernal
-location. Content of DVC repository:
-
+`dvc cache dir` changed the location of cache storage to exernal location.
+Content of DVC repository:
 
 ```dvc
 $ ls -a

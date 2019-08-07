@@ -200,5 +200,4 @@ Preparing to collect status from s3://dvc-remote
 ```
 
 The output shows where the location of the remote cache as well as any
-differences between the local cache and remote cache. 
-
+differences between the local cache and remote cache.
