@@ -295,7 +295,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 </details>
 
-## Examples: Customize an S3 remote
+## Example: Customize an S3 remote
 
 Let's first set up a _default_ S3 remote:
 

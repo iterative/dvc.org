@@ -54,77 +54,77 @@ instead of stages.
 
 ## Examples
 
-- Default mode: show stage files that `output.dvc` recursively depends on:
+Default mode: show stage files that `output.dvc` recursively depends on:
 
-  ```dvc
-  $ dvc pipeline show output.dvc
-  raw.dvc
-  data.dvc
-  output.dvc
-  ```
+```dvc
+$ dvc pipeline show output.dvc
+raw.dvc
+data.dvc
+output.dvc
+```
 
-- The same as previous, but show commands instead of DVC-files:
+The same as previous, but show commands instead of DVC-files:
 
-  ```dvc
-  $ dvc pipeline show output.dvc --commands
-  download.py s3://mybucket/myrawdata raw
-  cleanup.py raw data
-  process.py data output
-  ```
+```dvc
+$ dvc pipeline show output.dvc --commands
+download.py s3://mybucket/myrawdata raw
+cleanup.py raw data
+process.py data output
+```
 
-- Visualize DVC pipeline (To navigate, use arrows or `W`, `A`, `S`, `D` keys. To
-  exit, press `Q`.):
+Visualize DVC pipeline (To navigate, use arrows or `W`, `A`, `S`, `D` keys. To
+exit, press `Q`.):
 
-  ```dvc
-  $ dvc pipeline show eval.txt.dvc --ascii
-            .------------------------.
-            | data/Posts.xml.zip.dvc |
-            `------------------------'
-                        *
-                        *
-                        *
-                .---------------.
-                | Posts.xml.dvc |
-                `---------------'
-                        *
-                        *
-                        *
-                .---------------.
-                | Posts.tsv.dvc |
-                `---------------'
-                        *
-                        *
-                        *
-              .---------------------.
-              | Posts-train.tsv.dvc |
-              `---------------------'
-                        *
-                        *
-                        *
-              .--------------------.
-              | matrix-train.p.dvc |
-              `--------------------'
-                ***             ***
-              **                   ***
-            **                        **
-  .-------------.                       **
-  | model.p.dvc |                     **
-  `-------------'                  ***
-                ***             ***
-                  **         **
-                    **     **
-                .--------------.
-                | eval.txt.dvc |
-                `--------------'
-  ```
+```dvc
+$ dvc pipeline show eval.txt.dvc --ascii
+          .------------------------.
+          | data/Posts.xml.zip.dvc |
+          `------------------------'
+                      *
+                      *
+                      *
+              .---------------.
+              | Posts.xml.dvc |
+              `---------------'
+                      *
+                      *
+                      *
+              .---------------.
+              | Posts.tsv.dvc |
+              `---------------'
+                      *
+                      *
+                      *
+            .---------------------.
+            | Posts-train.tsv.dvc |
+            `---------------------'
+                      *
+                      *
+                      *
+            .--------------------.
+            | matrix-train.p.dvc |
+            `--------------------'
+              ***             ***
+            **                   ***
+          **                        **
+.-------------.                       **
+| model.p.dvc |                     **
+`-------------'                  ***
+              ***             ***
+                **         **
+                  **     **
+              .--------------.
+              | eval.txt.dvc |
+              `--------------'
+```
 
-- List dependencies recursively if graph have tree structure:
+List dependencies recursively if graph have tree structure:
 
-  ```dvc
-  dvc pipeline show e.file.dvc --tree
-  e.file.dvc
-  ├── c.file.dvc
-  │   └── b.file.dvc
-  │       └── a.file.dvc
-  └── d.file.dvc
-  ```
+```dvc
+dvc pipeline show e.file.dvc --tree
+e.file.dvc
+├── c.file.dvc
+│   └── b.file.dvc
+│       └── a.file.dvc
+└── d.file.dvc
+```

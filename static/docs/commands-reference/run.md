@@ -30,9 +30,9 @@ will become the required `command` argument.
 > Remember to wrap the `command` with `"` quotes if there are special characters
 > in it like `|` (pipe) or `<`, `>` (redirection) that would otherwise apply to
 > the entire `dvc run` command. E.g.
-> `dvc run -d script.sh "./script.sh > /dev/null 2>&1"`
-> Use single quotes `'` instead of `"` to wrap the `command` if there are
-> environment variables in it, that you want to be evaluated dynamically. E.g.
+> `dvc run -d script.sh "./script.sh > /dev/null 2>&1"` Use single quotes `'`
+> instead of `"` to wrap the `command` if there are environment variables in it,
+> that you want to be evaluated dynamically. E.g.
 > `dvc run -d script.sh './myscript.sh $MYENVVAR'`
 
 Unless the `-f` options is used, by default the DVC-file name generated is
@@ -156,69 +156,69 @@ pipeline.
 
 ## Examples
 
-- A trivial example to play with, try different set of options to see how they
-  work. You don't need any actual data or scripts to play with this example:
+A trivial example to play with, try different set of options to see how they
+work. You don't need any actual data or scripts to play with this example:
 
-  ```dvc
-  $ mkdir example && cd example
-  $ git init
-  $ dvc init
-  $ mkdir data
-  $ dvc run -d data -o metric -f metric.dvc "echo '1' >> metric"
+```dvc
+$ mkdir example && cd example
+$ git init
+$ dvc init
+$ mkdir data
+$ dvc run -d data -o metric -f metric.dvc "echo '1' >> metric"
 
-  Running command:
-    echo 'a' >> metric
-  Adding 'metric' to '.gitignore'.
-  Saving 'metric' to cache '.dvc/cache'.
-  Saving information to 'metric.dvc'.
+Running command:
+  echo 'a' >> metric
+Adding 'metric' to '.gitignore'.
+Saving 'metric' to cache '.dvc/cache'.
+Saving information to 'metric.dvc'.
 
-  To track the changes with git run:
+To track the changes with git run:
 
-    git add .gitignore metric.dvc
-  ```
+  git add .gitignore metric.dvc
+```
 
 > See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
 > text format above.
 
-- Execute a Python script as a DVC pipeline stage. The stage file name is not
-  specified, so a `model.p.dvc` DVC-file is created:
+Execute a Python script as a DVC pipeline stage. The stage file name is not
+specified, so a `model.p.dvc` DVC-file is created:
 
-  ```dvc
-  # Train ML model on the training dataset. 20180226 is a seed value.
-  $ dvc run -d matrix-train.p -d train_model.py \
-            -o model.p \
-            python train_model.py matrix-train.p 20180226 model.p
-  ```
+```dvc
+# Train ML model on the training dataset. 20180226 is a seed value.
+$ dvc run -d matrix-train.p -d train_model.py \
+          -o model.p \
+          python train_model.py matrix-train.p 20180226 model.p
+```
 
-- Execute an R script as s DVC pipeline stage:
+Execute an R script as s DVC pipeline stage:
 
-  ```dvc
-  $ dvc run -d parsingxml.R -d Posts.xml \
-            -o Posts.csv \
-            Rscript parsingxml.R Posts.xml Posts.csv
-  ```
+```dvc
+$ dvc run -d parsingxml.R -d Posts.xml \
+          -o Posts.csv \
+          Rscript parsingxml.R Posts.xml Posts.csv
+```
 
-- Extract an XML file from an archive to the `data/` folder:
+Extract an XML file from an archive to the `data/` folder:
 
-  ```dvc
-  $ mkdir data
-  $ dvc run -d Posts.xml.zip \
-            -o data/Posts.xml \
-            -f extract.dvc \
-            unzip Posts.xml.zip -d data/
-  ```
+```dvc
+$ mkdir data
+$ dvc run -d Posts.xml.zip \
+          -o data/Posts.xml \
+          -f extract.dvc \
+          unzip Posts.xml.zip -d data/
+```
 
-- Place the generated stage file (DVC-file) into a subdirectory:
+Place the generated stage file (DVC-file) into a subdirectory:
 
-  ```dvc
-  $ dvc run -d test.txt -f stages/test.dvc -o result.out \
-    "cat test.txt | wc -l > result.out"
+```dvc
+$ dvc run -d test.txt -f stages/test.dvc -o result.out \
+  "cat test.txt | wc -l > result.out"
 
-  $ tree .
+$ tree .
 
-  .
-  ├── result.out
-  ├── stages
-  │   └── test.dvc
-  └── test.txt
-  ```
+.
+├── result.out
+├── stages
+│   └── test.dvc
+└── test.txt
+```
