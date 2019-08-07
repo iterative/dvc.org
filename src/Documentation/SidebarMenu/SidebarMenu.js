@@ -11,6 +11,8 @@ import { getParentsListFromPath } from './helper'
 
 function SidebarMenuItem({ children, label, path, activePaths, onNavigate }) {
   const isActive = activePaths && activePaths.includes(path)
+  const isRootParent =
+    activePaths && activePaths.length > 1 && activePaths[0] === path
 
   return (
     <>
@@ -18,6 +20,7 @@ function SidebarMenuItem({ children, label, path, activePaths, onNavigate }) {
         href={path}
         onClick={e => onNavigate(path, e)}
         isActive={isActive}
+        className={isRootParent ? 'docSearch-lvl0' : ''}
       >
         {label}
       </SectionLink>
