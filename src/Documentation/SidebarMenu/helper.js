@@ -3,7 +3,7 @@ import startCase from 'lodash.startcase'
 import sidebar from '../sidebar'
 
 /*
-  We will use this function to normalize sidebar structure and create
+  We will use this helper to normalize sidebar structure and create
   all of the resurces we need to prevent future recalculations.
 
   Target structure example:
@@ -22,85 +22,16 @@ const PATH_ROOT = '/doc/'
 const FILE_ROOT = '/static/docs/'
 const FILE_EXTENSION = '.md'
 
-let prevReference // We will save prev item reference here to use for the next and prev fields
-
-function normalizeSidebar(data, parentPath) {
-  return data.map(item => {
-    let normalizedItem
-
-    /*
-      Edge case: If parent don't have source, we will need to return it's prev instead.
-      Because only items with children can be sourceless, it's safe to go back only once.
-    */
-    const prev =
-      prevReference &&
-      (prevReference.source ? prevReference.path : prevReference.prev)
-
-    if (typeof item === 'string') {
-      normalizedItem = {
-        path: PATH_ROOT + parentPath + item,
-        source: FILE_ROOT + parentPath + item + FILE_EXTENSION,
-        label: startCase(item),
-        prev,
-        next: undefined
-      }
-    } else {
-      const { label, slug, source, children } = item
-
-      if (!slug) {
-        throw Error("'slug' field is required in objects in sidebar.json")
-      }
-
-      const isSourceDisabled = source === false // is source explictly set to 'false'?
-
-      if (isSourceDisabled && (!children || !children.length)) {
-        throw Error(
-          "If you set 'source' to false, you had to add at least one child"
-        )
-      }
-
-      const sourceFileName = source ? source : slug + FILE_EXTENSION
-      const sourcePath = FILE_ROOT + parentPath + sourceFileName
-
-      normalizedItem = {
-        path: PATH_ROOT + parentPath + slug,
-        source: isSourceDisabled ? false : sourcePath,
-        label: label ? label : startCase(slug),
-        prev,
-        next: undefined
-      }
-    }
-
-    if (prevReference) {
-      prevReference.next = normalizedItem.path
-    }
-
-    prevReference = normalizedItem
-
-    if (item.children) {
-      const newParentPath = `${parentPath}${item.slug}/`
-      normalizedItem.children = normalizeSidebar(item.children, newParentPath)
-    }
-
-    return normalizedItem
-  })
-}
-
-const normalizedSidebar = normalizeSidebar(sidebar, '')
+// Inner helpers
 
 function findItem(data, targetPath) {
   if (data.length) {
     for (let i = 0; i < data.length; i++) {
-      const { path, source, children } = data[i]
+      const { path, children } = data[i]
 
-      if (path === targetPath && !source && children && children[0]) {
-        // If parent have blank source and children, then return first child instead
-        return children[0]
-      } else if (path === targetPath) {
-        // Return item normally
+      if (path === targetPath) {
         return data[i]
       } else if (children) {
-        // Search for match in children recursevly
         const result = findItem(children, targetPath)
         if (result) {
           return result
@@ -110,13 +41,95 @@ function findItem(data, targetPath) {
   }
 }
 
-export function getItemByPath(path) {
-  // Edge case for the root url, return first item instead
-  if (path === PATH_ROOT.slice(0, -1)) {
-    return normalizedSidebar[0]
+function findChildWithSource(item) {
+  return item.source ? item : findChildWithSource(item.children[0])
+}
+
+function findPrevItemWithSource(data, item) {
+  if (item.source) {
+    return item
+  } else if (item.prev) {
+    const prevItem = findItem(data, item.prev)
+
+    return findPrevItemWithSource(data, prevItem)
+  }
+}
+
+function validateRawItem({ slug, source, children }) {
+  const isSourceDisabled = source === false // is source set to 'false'?
+
+  if (!slug) {
+    throw Error("'slug' field is required in objects in sidebar.json")
   }
 
-  return findItem(normalizedSidebar, path)
+  if (isSourceDisabled && (!children || !children.length)) {
+    throw Error(
+      "If you set 'source' to false, you had to add at least one child"
+    )
+  }
+}
+
+// Global cache vars used in normalization
+
+let prevReference // Save last item here to generate the prev field
+const normalizedSidebar = [] // Current state of sidebar to search for prev
+
+// Normalization
+
+function normalizeItem(item, parentPath) {
+  validateRawItem(item)
+
+  const { label, slug, source } = item
+
+  // If prev item don't have source we need to recirsively search for it
+  const prevItemWithSource =
+    prevReference && findPrevItemWithSource(normalizedSidebar, prevReference)
+
+  const prev = prevItemWithSource && prevItemWithSource.path
+
+  const sourceFileName = source ? source : slug + FILE_EXTENSION
+  const sourcePath = FILE_ROOT + parentPath + sourceFileName
+
+  return {
+    path: PATH_ROOT + parentPath + slug,
+    source: source === false ? false : sourcePath,
+    label: label ? label : startCase(slug),
+    prev,
+    next: undefined
+  }
+}
+
+function normalizeSidebar(data, parentPath, currentSidebar) {
+  data.forEach(item => {
+    const isShortcut = typeof item === 'string'
+    const fullItem = isShortcut ? { slug: item } : item
+    const normalizedItem = normalizeItem(fullItem, parentPath)
+
+    if (prevReference) {
+      prevReference.next = normalizedItem.path
+    }
+
+    prevReference = normalizedItem // Set it before children to preserve order
+
+    if (item.children) {
+      const newParentPath = `${parentPath}${item.slug}/`
+      normalizedItem.children = []
+      normalizeSidebar(item.children, newParentPath, normalizedItem.children)
+    }
+
+    currentSidebar.push(normalizedItem)
+  })
+}
+
+normalizeSidebar(sidebar, '', normalizedSidebar) // Init normalization
+
+// Exports
+
+export function getItemByPath(path) {
+  const isRoot = path === PATH_ROOT.slice(0, -1)
+  const item = isRoot ? normalizedSidebar[0] : findItem(normalizedSidebar, path)
+
+  return item && findChildWithSource(item)
 }
 
 export function getParentsListFromPath(path) {
