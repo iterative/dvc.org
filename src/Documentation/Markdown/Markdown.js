@@ -133,6 +133,7 @@ export default class Markdown extends Component {
           <i /> Edit on Github
         </GithubLink>
         <ReactMarkdown
+          key={githubLink}
           className="markdown-body"
           escapeHtml={false}
           source={markdown}
