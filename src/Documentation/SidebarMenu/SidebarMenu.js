@@ -1,13 +1,41 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import $ from 'jquery'
+import PerfectScrollbar from 'perfect-scrollbar'
 // components
 import DownloadButton from '../../DownloadButton'
-// utils
-import startCase from 'lodash.startcase'
-import includes from 'lodash.includes'
 // styles
 import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
+// sidebar helpers
+import { getParentsListFromPath } from './helper'
+
+function SidebarMenuItem({ children, label, path, activePaths, onNavigate }) {
+  const isActive = activePaths && activePaths.includes(path)
+
+  return (
+    <>
+      <SectionLink
+        href={path}
+        onClick={e => onNavigate(path, e)}
+        isActive={isActive}
+      >
+        {label}
+      </SectionLink>
+      {children && (
+        <Collapse data-open={isActive ? 'true' : 'false'}>
+          {children.map(item => (
+            <SidebarMenuItem
+              key={item.path}
+              activePaths={activePaths}
+              onNavigate={onNavigate}
+              {...item}
+            />
+          ))}
+        </Collapse>
+      )}
+    </>
+  )
+}
 
 export default class SidebarMenu extends React.Component {
   constructor(props) {
@@ -22,112 +50,38 @@ export default class SidebarMenu extends React.Component {
   }
   componentDidMount() {
     this.collapse()
+
+    this.ps = new PerfectScrollbar('#sidebar-menu', {
+      // wheelPropagation: window.innerWidth <= 572
+      wheelPropagation: true
+    })
   }
+
+  componentDidUpdate() {
+    this.ps.update()
+  }
+
   componentWillReceiveProps(nextProps) {
-    if (
-      nextProps.currentSection !== this.props.currentSection ||
-      nextProps.currentFile !== this.props.currentFile
-    ) {
+    if (nextProps.currentPath !== this.props.currentPath) {
       this.collapse()
     }
   }
   render() {
-    let self = this
-    const {
-      sidebar,
-      currentSection,
-      currentFile,
-      onSectionSelect,
-      onFileSelect,
-      getLinkHref
-    } = this.props
+    const { sidebar, currentPath, onNavigate } = this.props
+    const activePaths = currentPath && getParentsListFromPath(currentPath)
 
     return (
       <Menu id="sidebar-menu">
         <Sections>
           <SectionLinks>
-            {sidebar.map(
-              ({ name, files = [], labels = {}, indexFile }, index) => {
-                const isSectionActive = currentSection === index
-                return (
-                  <div key={index}>
-                    <SectionLink
-                      level={1}
-                      href={getLinkHref(
-                        index,
-                        indexFile ? undefined : files[0]
-                      )}
-                      onClick={e => onSectionSelect(index, e)}
-                      className={isSectionActive ? 'docSearch-lvl0' : ''}
-                      isActive={isSectionActive}
-                    >
-                      {name}
-                    </SectionLink>
-
-                    {/* Section Files */}
-                    <Collapse data-open={isSectionActive ? 'true' : 'false'}>
-                      {files &&
-                        files.map((fileOrGroup, fileIndex) => {
-                          const file = Array.isArray(fileOrGroup)
-                            ? fileOrGroup[0]
-                            : fileOrGroup
-                          const subgroup = Array.isArray(fileOrGroup)
-                            ? fileOrGroup.slice(1)
-                            : null
-                          const isFileActive = currentFile === file
-                          return (
-                            <Fragment key={`file-${fileIndex}`}>
-                              <div>
-                                <SectionLink
-                                  level={2}
-                                  href={getLinkHref(index, file)}
-                                  onClick={e => onFileSelect(file, index, e)}
-                                  isActive={isFileActive}
-                                >
-                                  {labels[file] || startCase(file.slice(0, -3))}
-                                </SectionLink>
-                              </div>
-
-                              {/* Subgroup files */}
-                              {subgroup && (
-                                <Collapse
-                                  data-flag={'first'}
-                                  data-open={
-                                    Array.isArray(fileOrGroup) &&
-                                    includes(fileOrGroup, currentFile)
-                                      ? 'true'
-                                      : 'false'
-                                  }
-                                >
-                                  {subgroup.map((sub, subIndex) => {
-                                    return (
-                                      <div
-                                        key={`file-${fileIndex}-${subIndex}`}
-                                      >
-                                        <SectionLink
-                                          level={3}
-                                          href={getLinkHref(index, sub)}
-                                          onClick={e =>
-                                            onFileSelect(sub, index, e)
-                                          }
-                                          isActive={currentFile === sub}
-                                        >
-                                          {labels[sub] ||
-                                            startCase(sub.slice(0, -3))}
-                                        </SectionLink>
-                                      </div>
-                                    )
-                                  })}
-                                </Collapse>
-                              )}
-                            </Fragment>
-                          )
-                        })}
-                    </Collapse>
-                  </div>
-                )
-              }
-            )}
+            {sidebar.map(item => (
+              <SidebarMenuItem
+                key={item.path}
+                activePaths={activePaths}
+                onNavigate={onNavigate}
+                {...item}
+              />
+            ))}
           </SectionLinks>
         </Sections>
         <OnlyDesktop>
@@ -183,7 +137,13 @@ const SectionLink = styled.a`
   padding-bottom: 5px;
   padding-left: 15px;
   cursor: pointer;
-  margin: 0;
+  margin: 0 0 0 5px;
+
+  ${props =>
+    props.isActive &&
+    `
+    color: #40364d;
+	`};
 
   &:hover {
     color: #3c3937;
@@ -205,36 +165,11 @@ const SectionLink = styled.a`
       transform: rotate(-90deg);
     `};
   }
-
-  ${props =>
-    props.level === 1 &&
-    `
-    margin-left: 5px;
-  `} ${props =>
-    props.level === 2 &&
-    `
-      margin-left: 30px;
-  `};
-
-  ${props =>
-    props.level === 3 &&
-    `
-      margin-left: 45px;
-
-      &::before {
-        display: none;
-      }
-  `};
-
-  ${props =>
-    props.isActive &&
-    `
-    color: #40364d;
-	`};
 `
 
 const Collapse = styled.div`
   display: none;
+  padding-left: 20px;
 `
 
 const SideFooter = styled.div`

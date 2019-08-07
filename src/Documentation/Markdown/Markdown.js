@@ -23,8 +23,6 @@ import kebabCase from 'lodash.kebabcase'
 // styles
 import styled from 'styled-components'
 import { media } from '../../../src/styles'
-// json
-import sidebar from '../../../src/Documentation/sidebar'
 
 registerLanguage('dvc', dvc)
 registerLanguage('python', python)
@@ -115,27 +113,19 @@ export default class Markdown extends Component {
 
   handleSwipeGesture = () => {
     if (this.isCodeBlock) return
-    const { section, file, onFileSelect } = this.props
-    const files = sidebar[section].files
-    const fileIndex = files.findIndex(f => f === file)
-    const showPrev = fileIndex > 0
-    const showNext = fileIndex + 1 < sidebar[section].files.length
+    const { prev, next, onNavigate } = this.props
 
     if (this.touchstartX - this.touchendX > 100) {
-      showNext && onFileSelect(files[fileIndex + 1], section)
+      next && onNavigate(next)
     }
 
     if (this.touchendX - this.touchstartX > 100) {
-      showPrev && onFileSelect(files[fileIndex - 1], section)
+      prev && onNavigate(prev)
     }
   }
 
   render() {
-    const { markdown, githubLink, section, file, onFileSelect } = this.props
-    const files = sidebar[section].files
-    const fileIndex = files.findIndex(f => f === file)
-    const showPrev = fileIndex > 0
-    const showNext = fileIndex + 1 < sidebar[section].files.length
+    const { markdown, githubLink, prev, next, onNavigate } = this.props
 
     return (
       <Content>
@@ -143,7 +133,6 @@ export default class Markdown extends Component {
           <i /> Edit on Github
         </GithubLink>
         <ReactMarkdown
-          key={`${section}-${fileIndex}`}
           className="markdown-body"
           escapeHtml={false}
           source={markdown}
@@ -155,17 +144,11 @@ export default class Markdown extends Component {
           astPlugins={[linker()]}
         />
         <NavigationButtons>
-          <Button
-            onClick={() => onFileSelect(files[fileIndex - 1], section)}
-            disabled={!showPrev}
-          >
+          <Button onClick={() => onNavigate(prev)} disabled={!prev}>
             <i className="prev" />
             <span>Prev</span>
           </Button>
-          <Button
-            onClick={() => onFileSelect(files[fileIndex + 1], section)}
-            disabled={!showNext}
-          >
+          <Button onClick={() => onNavigate(next)} disabled={!next}>
             <span>Next</span>
             <i className="next" />
           </Button>
