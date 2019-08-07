@@ -10,7 +10,7 @@ process.
 1. **Git**. The difference is:
 
    - DVC extends Git by introducing the concept of _data files_ which are large
-     files that should NOT be stored in a Git repository but still needs to be
+     –files that should NOT be stored in a Git repository but still need to be
      tracked and versioned.
 
 2. **Workflow management tools** (pipelines and DAGs): Airflow, Luigi, etc. The
@@ -35,9 +35,9 @@ process.
    - DVC doesn't need to run any services. No graphical user interface as a
      result, but we expect some GUI services will be created on top of DVC.
 
-   - DVC has transparent design which
+   - DVC has transparent design of
      [meta files and directories](/doc/user-guide/dvc-files-and-directories)
-     (including the data cache) have a human-readable format and can be easily
+     (including the data cache), have a human-readable format and can be easily
      reused by external tools.
 
 4. **Git workflows** and Git usage methodologies such as Gitflow. The
