@@ -200,4 +200,3 @@ the `model.p.dvc` stage occurs later, its data was not pulled.
 Then we ran `dvc pull` specifying the last stage, `model.p.dvc`, and its data
 was downloaded. Finally, we ran `dvc pull` with no options to make sure that all
 data was already pulled with the previous commands.
-

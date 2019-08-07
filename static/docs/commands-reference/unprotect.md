@@ -29,10 +29,10 @@ on this process.
 
 `dvc unprotect` can be an expensive operation (involves copying data), check
 first whether your task matches one of the cases that are considered safe, even
-when cache protected mode is enabled:
+when cache protected mode is enabled by:
 
-- Adding more files to a directory input data set (say, images or videos)
-- Deleting files from a directory data set
+- Adding more files to a directory input data set (say, images or videos).
+- Deleting files from a directory data set.
 
 ## Options
 

@@ -339,4 +339,3 @@ Pipelines are up to date. Nothing to reproduce.
 
 And running `dvc status --cloud` verifies that indeed there are no more files to
 upload to the remote cache.
-
