@@ -306,7 +306,7 @@
     "label": "Understanding DVC",
     "slug": "understanding-dvc",
     "source": false,
-    "files": [
+    "children": [
       "collaboration-issues",
       "existing-tools",
       {
