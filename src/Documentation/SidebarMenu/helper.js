@@ -28,12 +28,20 @@ function normalizeSidebar(data, parentPath) {
   return data.map(item => {
     let normalizedItem
 
+    /*
+      Edge case: If parent don't have source, we will need to return it's prev instead.
+      Because only items with children can be sourceless, it's safe to go back only once.
+    */
+    const prev =
+      prevReference &&
+      (prevReference.source ? prevReference.path : prevReference.prev)
+
     if (typeof item === 'string') {
       normalizedItem = {
         path: PATH_ROOT + parentPath + item,
         source: FILE_ROOT + parentPath + item + FILE_EXTENSION,
         label: startCase(item),
-        prev: prevReference && prevReference.path,
+        prev,
         next: undefined
       }
     } else {
@@ -44,6 +52,13 @@ function normalizeSidebar(data, parentPath) {
       }
 
       const isSourceDisabled = source === false // is source explictly set to 'false'?
+
+      if (isSourceDisabled && (!children || !children.length)) {
+        throw Error(
+          "If you set 'source' to false, you had to add at least one child"
+        )
+      }
+
       const sourceFileName = source ? source : slug + FILE_EXTENSION
       const sourcePath = FILE_ROOT + parentPath + sourceFileName
 
@@ -51,13 +66,8 @@ function normalizeSidebar(data, parentPath) {
         path: PATH_ROOT + parentPath + slug,
         source: isSourceDisabled ? false : sourcePath,
         label: label ? label : startCase(slug),
-        prev: prevReference && prevReference.path,
+        prev,
         next: undefined
-      }
-
-      if (children) {
-        const newParentPath = `${parentPath}${slug}/`
-        normalizedItem.children = normalizeSidebar(children, newParentPath)
       }
     }
 
@@ -66,6 +76,11 @@ function normalizeSidebar(data, parentPath) {
     }
 
     prevReference = normalizedItem
+
+    if (item.children) {
+      const newParentPath = `${parentPath}${item.slug}/`
+      normalizedItem.children = normalizeSidebar(item.children, newParentPath)
+    }
 
     return normalizedItem
   })
