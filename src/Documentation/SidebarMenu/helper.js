@@ -81,7 +81,7 @@ function normalizeItem(item, parentPath) {
 
   const { label, slug, source } = item
 
-  // If prev item don't have source we need to recirsively search for it
+  // If prev item doesn't have source we need to recirsively search for it
   const prevItemWithSource =
     prevReference && findPrevItemWithSource(normalizedSidebar, prevReference)
 

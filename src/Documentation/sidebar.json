@@ -311,7 +311,7 @@
       "existing-tools",
       {
         "label": "What is DVC?",
-        "slug": "what-is-dvc.md"
+        "slug": "what-is-dvc"
       },
       "core-features",
       "how-it-works",

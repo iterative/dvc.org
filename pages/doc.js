@@ -79,31 +79,29 @@ export default class Documentation extends Component {
 
     if (!item) {
       this.setState({ pageNotFound: true, currentItem: {} })
-
-      return
-    }
-
-    fetch(item.source)
-      .then(res => {
-        res.text().then(text => {
-          this.setState(
-            {
-              markdown: text,
-              headings: [],
-              pageNotFound: false,
-              isMenuOpen: false,
-              currentItem: item
-            },
-            () => {
-              this.scrollTop()
-              this.parseHeadings(text)
-            }
-          )
+    } else {
+      fetch(item.source)
+        .then(res => {
+          res.text().then(text => {
+            this.setState(
+              {
+                markdown: text,
+                headings: [],
+                pageNotFound: false,
+                isMenuOpen: false,
+                currentItem: item
+              },
+              () => {
+                this.scrollTop()
+                this.parseHeadings(text)
+              }
+            )
+          })
         })
-      })
-      .catch(() => {
-        window.location.reload()
-      })
+        .catch(() => {
+          window.location.reload()
+        })
+    }
   }
 
   parseHeadings = text => {
