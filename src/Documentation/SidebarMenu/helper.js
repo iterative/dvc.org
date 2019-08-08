@@ -69,21 +69,16 @@ function validateRawItem({ slug, source, children }) {
   }
 }
 
-// Global cache vars used in normalization
-
-let prevReference // Save last item here to generate the prev field
-const normalizedSidebar = [] // Current state of sidebar to search for prev
-
 // Normalization
 
-function normalizeItem(item, parentPath) {
+function normalizeItem({ item, parentPath, resultRef, prevRef }) {
   validateRawItem(item)
 
   const { label, slug, source } = item
 
   // If prev item doesn't have source we need to recirsively search for it
   const prevItemWithSource =
-    prevReference && findPrevItemWithSource(normalizedSidebar, prevReference)
+    prevRef && findPrevItemWithSource(resultRef, prevRef)
 
   const prev = prevItemWithSource && prevItemWithSource.path
 
@@ -99,29 +94,51 @@ function normalizeItem(item, parentPath) {
   }
 }
 
-function normalizeSidebar(data, parentPath, currentSidebar) {
-  data.forEach(item => {
-    const isShortcut = typeof item === 'string'
-    const fullItem = isShortcut ? { slug: item } : item
-    const normalizedItem = normalizeItem(fullItem, parentPath)
+function normalizeSidebar({
+  data,
+  parentPath,
+  parentResultRef,
+  startingPrevRef
+}) {
+  const currentResult = []
+  const resultRef = parentResultRef || currentResult
+  let prevRef = startingPrevRef
 
-    if (prevReference) {
-      prevReference.next = normalizedItem.path
+  data.forEach(rawItem => {
+    const isShortcut = typeof rawItem === 'string'
+    const item = isShortcut ? { slug: rawItem } : rawItem
+    const normalizedItem = normalizeItem({
+      item,
+      parentPath,
+      resultRef,
+      prevRef
+    })
+
+    if (prevRef) {
+      prevRef.next = normalizedItem.path
     }
 
-    prevReference = normalizedItem // Set it before children to preserve order
+    prevRef = normalizedItem // Set it before children to preserve order
 
     if (item.children) {
-      const newParentPath = `${parentPath}${item.slug}/`
-      normalizedItem.children = []
-      normalizeSidebar(item.children, newParentPath, normalizedItem.children)
+      normalizedItem.children = normalizeSidebar({
+        data: item.children,
+        parentPath: `${parentPath}${item.slug}/`,
+        parentResultRef: resultRef,
+        startingPrevRef: prevRef
+      })
     }
 
-    currentSidebar.push(normalizedItem)
+    currentResult.push(normalizedItem)
   })
+
+  return currentResult
 }
 
-normalizeSidebar(sidebar, '', normalizedSidebar) // Init normalization
+const normalizedSidebar = normalizeSidebar({
+  data: sidebar,
+  parentPath: ''
+})
 
 // Exports
 
