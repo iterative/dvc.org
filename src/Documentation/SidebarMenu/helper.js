@@ -56,7 +56,7 @@ function findPrevItemWithSource(data, item) {
 }
 
 function validateRawItem({ slug, source, children }) {
-  const isSourceDisabled = source === false // is source set to 'false'?
+  const isSourceDisabled = source === false
 
   if (!slug) {
     throw Error("'slug' field is required in objects in sidebar.json")
