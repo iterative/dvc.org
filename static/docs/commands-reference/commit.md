@@ -90,9 +90,10 @@ into play. It handles that last step of adding the file to the DVC cache.
 
 ## Examples
 
-Let's employ a simple workspace with several stages, such as the DVC project
-created in our [Get Started](/doc/get-started) section. Then we can see what
-happens with `git commit` and `dvc commit` in different situations.
+Let's employ a simple workspace with some data, code, ML models, pipeline
+stages, such as the DVC project created in our [Get Started](/doc/get-started)
+section. Then we can see what happens with `git commit` and `dvc commit` in
+different situations.
 
 <details>
 

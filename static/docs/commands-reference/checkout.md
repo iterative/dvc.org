@@ -103,7 +103,8 @@ be pulled from a remote cache using `dvc pull`.
 
 ## Examples
 
-Let's employ a simple workspace with some stages and a few Git tags, such as our
+Let's employ a simple workspace with some data, code, ML models, pipeline
+stages, as well as a few Git tags, such as our
 [get started example repo](https://github.com/iterative/example-get-started).
 Then we can see what happens with `git checkout` and `dvc checkout` as we switch
 from tag to tag.
