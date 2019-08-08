@@ -3,13 +3,13 @@
 Modify configuration of remotes.
 
 > This command is commonly needed after `dvc remote add` or
-> [default](/doc/commands-reference/remote-default) to setup credentials or
+> [default](/doc/commands-reference/remote/default) to setup credentials or
 > other customizations to each remote type.
 
-See also [add](/doc/commands-reference/remote-add),
-[default](/doc/commands-reference/remote-default),
-[list](/doc/commands-reference/remote-list), and
-[remove](/doc/commands-reference/remote-remove) commands to manage data remotes.
+See also [add](/doc/commands-reference/remote/add),
+[default](/doc/commands-reference/remote/default),
+[list](/doc/commands-reference/remote/list), and
+[remove](/doc/commands-reference/remote/remove) commands to manage data remotes.
 
 ## Synopsis
 

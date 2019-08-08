@@ -5,10 +5,10 @@ Set/unset a default data remote.
 > Depending on your storage type, you may also need `dvc remote modify` to
 > provide credentials and/or configure other remote parameters.
 
-See also [add](/doc/commands-reference/remote-add),
-[list](/doc/commands-reference/remote-list),
-[modify](/doc/commands-reference/remote-modify), and
-[remove](/doc/commands-reference/remote-remove) commands to manage data remotes.
+See also [add](/doc/commands-reference/remote/add),
+[list](/doc/commands-reference/remote/list),
+[modify](/doc/commands-reference/remote/modify), and
+[remove](/doc/commands-reference/remote/remove) commands to manage data remotes.
 
 ## Synopsis
 
