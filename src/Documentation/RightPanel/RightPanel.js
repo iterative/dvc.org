@@ -1,51 +1,120 @@
+import React from 'react'
 import styled from 'styled-components'
 import { LightButton } from '../LightButton'
+// utils
+import debounce from 'lodash.debounce'
 
-export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
-  <Wrapper>
-    {!!headings.length ? (
-      <>
-        <Header>Content</Header>
-        <hr />
-      </>
-    ) : (
-      <Spacer />
-    )}
+// difference between header height and scrollToLink offset
+const SCROLL_OFFSET = 5
+const ROOT_ELEMENT = 'bodybag'
 
-    {!!headings.length &&
-      headings.map(({ text, slug }, headingIndex) => (
-        <HeadingLink
-          level={3}
-          key={`link-${headingIndex}`}
-          onClick={() => scrollToLink('#' + slug)}
-          href={`#${slug}`}
-        >
-          {text}
-        </HeadingLink>
-      ))}
+export default class RightPanel extends React.PureComponent {
+  state = {
+    coordinates: {},
+    current: undefined
+  }
+  componentDidMount() {
+    if (this.props.headings.length) {
+      this.updateHeadingsPosition()
+    }
 
-    <br />
-    <Description>Found an issue? Let us know or fix it:</Description>
+    const root = document.getElementById(ROOT_ELEMENT)
 
-    <Link href={githubLink} target="_blank">
-      <GithubButton>
-        <i />
-        Edit on Github
-      </GithubButton>
-    </Link>
+    root.addEventListener('scroll', this.setCurrentHeader)
+    window.addEventListener('resize', this.updateHeadingsPosition)
+  }
 
-    <br />
-    <br />
-    <Description>Have a question? Join our chat, we will help you:</Description>
+  componentDidUpdate(prevProps) {
+    if (this.props.headings != prevProps.headings) {
+      this.updateHeadingsPosition()
+    }
+  }
 
-    <Link href="/chat" target="_blank">
-      <DiscordButton>
-        <i />
-        Discord Chat
-      </DiscordButton>
-    </Link>
-  </Wrapper>
-)
+  componentWillUnmount() {
+    const root = document.getElementById(ROOT_ELEMENT)
+
+    root.removeEventListener('scroll', this.setCurrentHeader)
+    window.removeEventListener('resize', this.updateHeadingsPosition)
+  }
+
+  updateHeadingsPosition = () => {
+    const coordinates = this.props.headings.reduce((result, { slug }) => {
+      return { ...result, [document.getElementById(slug).offsetTop]: slug }
+    }, {})
+
+    this.setState({ coordinates })
+  }
+
+  setCurrentHeader = debounce(e => {
+    const { scrollTop } = e.target
+    const { coordinates } = this.state
+    const coordinateKeys = Object.keys(coordinates)
+
+    if (!coordinateKeys.length) return
+
+    const filteredKeys = coordinateKeys.filter(
+      top => top <= scrollTop + SCROLL_OFFSET
+    )
+
+    const current = filteredKeys.length
+      ? coordinates[filteredKeys[filteredKeys.length - 1]]
+      : undefined
+
+    this.setState({ current })
+  }, 100)
+
+  render() {
+    const { headings, scrollToLink, githubLink } = this.props
+    const { current } = this.state
+
+    return (
+      <Wrapper>
+        {headings.length ? (
+          <>
+            <Header>Content</Header>
+            <hr />
+            {headings.map(({ slug, text }, headingIndex) => (
+              <HeadingLink
+                isCurrent={current === slug}
+                level={3}
+                key={`link-${headingIndex}`}
+                onClick={() => scrollToLink('#' + slug)}
+                href={`#${slug}`}
+              >
+                {text}
+              </HeadingLink>
+            ))}
+          </>
+        ) : (
+          <Spacer />
+        )}
+        <br />
+
+        <Description>Found an issue? Let us know or fix it:</Description>
+
+        <Link href={githubLink} target="_blank">
+          <GithubButton>
+            <i />
+            Edit on Github
+          </GithubButton>
+        </Link>
+
+        <br />
+        <br />
+        <Description>
+          Have a question? Join our chat, we will help you:
+        </Description>
+
+        <Link href="/chat" target="_blank">
+          <DiscordButton>
+            <i />
+            Discord Chat
+          </DiscordButton>
+        </Link>
+      </Wrapper>
+    )
+  }
+}
 
 const Wrapper = styled.div`
   width: 170px;
@@ -83,6 +152,13 @@ const HeadingLink = styled.a`
   min-height: 26px;
   margin-bottom: 3px;
   cursor: pointer;
+
+  ${props =>
+    props.isCurrent &&
+    `
+    font-weight: bold;
+    color: #000;
+	`}
 
   &:hover {
     color: #3c3937;

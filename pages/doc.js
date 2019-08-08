@@ -4,7 +4,7 @@ import { HeadInjector } from '../src/Documentation/HeadInjector'
 // components
 import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
 import Markdown from '../src/Documentation/Markdown/Markdown'
-import { RightPanel } from '../src/Documentation/RightPanel/RightPanel'
+import RightPanel from '../src/Documentation/RightPanel/RightPanel'
 import Page from '../src/Page'
 import SearchForm from '../src/SearchForm'
 import Page404 from '../src/Page404'
@@ -86,14 +86,17 @@ export default class Documentation extends Component {
             this.setState(
               {
                 markdown: text,
-                headings: [],
                 pageNotFound: false,
                 isMenuOpen: false,
-                currentItem: item
+                currentItem: item,
+                headings: this.parseHeadings(text)
               },
               () => {
-                this.scrollTop()
-                this.parseHeadings(text)
+                if (window.location.hash) {
+                  this.autoScroll()
+                } else {
+                  this.scrollTop()
+                }
               }
             )
           })
@@ -117,7 +120,7 @@ export default class Documentation extends Component {
         })
     } while (match)
 
-    this.setState({ headings: matches }, this.autoScroll)
+    return matches
   }
 
   autoScroll = () => {
@@ -128,7 +131,7 @@ export default class Documentation extends Component {
   scrollToLink = href => {
     scroller.scrollTo(href.slice(1), {
       duration: 600,
-      offset: -85,
+      offset: -85, // if you change this, change offset in RightPanel accordingly
       delay: 0,
       smooth: 'ease',
       containerId: 'bodybag'
