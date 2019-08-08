@@ -127,7 +127,7 @@ The command above creates an <abbr>import stage</abbr> specified in DVC-file
 ### Expand to see resulting DVC-file
 
 ```yaml
----
+...
 deps:
   - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
     path: https://dvc.org/s3/get-started/data.xml
@@ -167,7 +167,7 @@ dependency is specified.
 ### Expand to see resulting DVC-file
 
 ```yaml
----
+...
 deps:
   - path: model.pkl
     repo:
