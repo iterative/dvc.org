@@ -3,6 +3,8 @@ import $ from 'jquery'
 import PerfectScrollbar from 'perfect-scrollbar'
 // components
 import DownloadButton from '../../DownloadButton'
+// utils
+import includes from 'lodash.includes'
 // styles
 import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
@@ -10,7 +12,7 @@ import { media, OnlyDesktop } from '../../styles'
 import { getParentsListFromPath } from './helper'
 
 function SidebarMenuItem({ children, label, path, activePaths, onNavigate }) {
-  const isActive = activePaths && activePaths.includes(path)
+  const isActive = activePaths && includes(activePaths, path)
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
 
