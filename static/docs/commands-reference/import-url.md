@@ -23,10 +23,10 @@ In some cases it's convenient to add a data file or directory from a remote
 location into the workspace, such that it will be automatically updated (by
 `dvc repro`) when the external data source changes. Examples:
 
-- a remote system may produce occasional data files that are used in other
-  projects;
-- a batch process running regularly updates a data file to import; and
-- a shared dataset on a remote storage that is managed and updated outside DVC.
+- A remote system may produce occasional data files that are used in other
+  projects.
+- A batch process running regularly updates a data file to import.
+- A shared dataset on a remote storage that is managed and updated outside DVC.
 
 The `dvc import-url` command helps the user create such an external data
 dependency. The `url` argument specifies the external location of the data to be
@@ -171,14 +171,14 @@ Let's take a look at the resulting stage file (DVC-file) `data.xml.dvc`:
 md5: 61e80c38c1ce04ed2e11e331258e6d0d
 wdir: .
 deps:
-- etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-  path: https://dvc.org/s3/get-started/data.xml
+  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
+    path: https://dvc.org/s3/get-started/data.xml
 outs:
-- md5: a304afb96060aad90176268345e10355
-  path: data/data.xml
-  cache: true
-  metric: false
-  persist: false
+  - md5: a304afb96060aad90176268345e10355
+    path: data/data.xml
+    cache: true
+    metric: false
+    persist: false
 ```
 
 The `etag` field in the DVC-file contains the
@@ -232,14 +232,14 @@ Check `data.xml.dvc`:
 md5: eca0a296d67781cc488c6ffd1cc63b8e
 wdir: .
 deps:
-- md5: a304afb96060aad90176268345e10355
-  path: /tmp/dvc-import-url-example/data.xml
+  - md5: a304afb96060aad90176268345e10355
+    path: /tmp/dvc-import-url-example/data.xml
 outs:
-- md5: a304afb96060aad90176268345e10355
-  path: data/data.xml
-  cache: true
-  metric: false
-  persist: false
+  - md5: a304afb96060aad90176268345e10355
+    path: data/data.xml
+    cache: true
+    metric: false
+    persist: false
 ```
 
 The DVC-file is nearly the same as in the previous example. The difference is

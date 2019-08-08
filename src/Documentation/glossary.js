@@ -5,11 +5,13 @@ export default {
     'relevant DVC concepts and terminologies which are frequently used.',
   contents: [
     {
-      name: 'DVC Workspace',
+      name: 'Workspace',
       match: ['workspace'],
       desc:
-        'The **workspace** contains all of your DVC **project** files and ' +
-        "directories. It's typically also a Git **repository**. See also " +
+        'The DVC workspace contains all of your project files and ' +
+        'directories. For example source code files, datasets or models ' +
+        "under DVC control, and corresponding DVC-files. It's typically " +
+        'also a Git repository. See also ' +
         '[`dvc init`](/doc/commands-reference/init).'
     },
     {
@@ -26,7 +28,7 @@ export default {
       name: 'Data Artifact',
       match: ['data artifact', 'data artifacts'],
       desc:
-        'Any **data** file or directory, as well as intermediate or final ' +
+        'Any data file or directory, as well as intermediate or final ' +
         'result (such as extracted features or a ML model file) that is ' +
         'under DVC control. Refer to [Data and Model Files Versioning]' +
         '(/doc/use-cases/data-and-model-files-versioning) for more details.'
