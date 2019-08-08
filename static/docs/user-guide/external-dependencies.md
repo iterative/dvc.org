@@ -129,14 +129,14 @@ The command above creates an <abbr>import stage</abbr> specified in DVC-file
 ```yaml
 ...
 deps:
-- etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-  path: https://dvc.org/s3/get-started/data.xml
+  - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
+    path: https://dvc.org/s3/get-started/data.xml
 outs:
-- md5: a304afb96060aad90176268345e10355
-  path: data.xml
-  cache: true
-  metric: false
-  persist: false
+  - md5: a304afb96060aad90176268345e10355
+    path: data.xml
+    cache: true
+    metric: false
+    persist: false
 ```
 
 DVC checks the headers returned by the server, looking for a strong
@@ -169,16 +169,16 @@ dependency is specified.
 ```yaml
 ...
 deps:
-- path: model.pkl
-  repo:
-    url: git@github.com:iterative/example-get-started
-    rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
+  - path: model.pkl
+    repo:
+      url: git@github.com:iterative/example-get-started
+      rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
 outs:
-- md5: 3863d0e317dee0a55c4e59d2ec0eef33
-  path: model.pkl
-  cache: true
-  metric: false
-  persist: false
+  - md5: 3863d0e317dee0a55c4e59d2ec0eef33
+    path: model.pkl
+    cache: true
+    metric: false
+    persist: false
 ```
 
 For external sources that are DVC repositories, `url` and `rev_lock` fields are

@@ -94,16 +94,16 @@ artifact</abbr> as a special `repo`
 md5: 7de90e7de7b432ad972095bc1f2ec0f8
 wdir: .
 deps:
-- path: data/data.xml
-  repo:
-    url: git@github.com:iterative/example-get-started
-    rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
+  - path: data/data.xml
+    repo:
+      url: git@github.com:iterative/example-get-started
+      rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
 outs:
-- md5: a304afb96060aad90176268345e10355
-  path: data.xml
-  cache: true
-  metric: false
-  persist: false
+  - md5: a304afb96060aad90176268345e10355
+    path: data.xml
+    cache: true
+    metric: false
+    persist: false
 ```
 
 Several of the values above are pulled from the original stage file
