@@ -3,25 +3,30 @@
 import visit from 'unist-util-visit'
 import { getItemByPath } from '../../SidebarMenu/helper'
 
+const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*\s/
+const COMMAND_REGEXP = /^[a-z][a-z-]*$/
+const COMMAND_ROOT = '/doc/commands-reference/'
+
 function linker() {
   function transformer(tree) {
     visit(tree, 'inlineCode', function(node, index, parent) {
-      if (parent.type !== 'link' && /dvc\s+[a-z-.]+/.test(node.value)) {
+      if (parent.type !== 'link' && DVC_REGEXP.test(node.value)) {
         let parts = node.value.split(/\s+/)
-
-        let tmpUrl = '/doc/commands-reference/'
         let url
 
-        if (getItemByPath(tmpUrl + parts[1])) {
-          url = tmpUrl = tmpUrl + parts[1]
-        }
+        const hasThirdSegment = parts[2] && COMMAND_REGEXP.test(parts[2])
+        const isCommandPageExists = getItemByPath(`${COMMAND_ROOT}${parts[1]}`)
+        const isSubcommandPageExists =
+          isCommandPageExists &&
+          hasThirdSegment &&
+          getItemByPath(`${COMMAND_ROOT}${parts[1]}/${parts[2]}`)
 
-        if (parts.length > 2) {
-          if (getItemByPath(tmpUrl + parts[2])) {
-            url += '/' + parts[2]
-          } else {
-            url += '#' + parts[2]
-          }
+        if (isSubcommandPageExists) {
+          url = `${COMMAND_ROOT}${parts[1]}/${parts[2]}`
+        } else if (isCommandPageExists && hasThirdSegment) {
+          url = `${COMMAND_ROOT}${parts[1]}#${parts[2]}`
+        } else if (isCommandPageExists) {
+          url = `${COMMAND_ROOT}${parts[1]}`
         }
 
         if (url) {
