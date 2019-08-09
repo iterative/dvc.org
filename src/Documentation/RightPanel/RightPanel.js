@@ -3,6 +3,38 @@ import styled from 'styled-components'
 import { LightButton } from '../LightButton'
 
 const ROOT_ELEMENT = 'bodybag'
+const MARKDOWN_ROOT = '.markdown-body'
+
+const imageChecker = (images, callback) => {
+  if (images.length) {
+    let counter = images.length
+
+    const unsubscribe = () => {
+      images.forEach(img => {
+        img.removeEventListener('load', decrement)
+        img.removeEventListener('error', decrement)
+      })
+    }
+
+    const decrement = e => {
+      counter -= 1
+
+      if (!counter) {
+        callback()
+        unsubscribe()
+      }
+    }
+
+    images.forEach(img => {
+      img.addEventListener('load', decrement)
+      img.addEventListener('error', decrement)
+    })
+
+    setTimeout(() => {
+      if (counter) unsubscribe()
+    }, 5000)
+  }
+}
 
 export default class RightPanel extends React.PureComponent {
   state = {
@@ -14,7 +46,7 @@ export default class RightPanel extends React.PureComponent {
     this.root = document.getElementById(ROOT_ELEMENT)
 
     if (this.props.headings.length) {
-      this.updateHeadingsPosition()
+      this.initHeadingsPosition()
     }
 
     this.root.addEventListener('scroll', this.setCurrentHeader)
@@ -23,13 +55,23 @@ export default class RightPanel extends React.PureComponent {
 
   componentDidUpdate(prevProps) {
     if (this.props.headings != prevProps.headings) {
-      this.updateHeadingsPosition()
+      this.initHeadingsPosition()
     }
   }
 
   componentWillUnmount() {
     this.root.removeEventListener('scroll', this.setCurrentHeader)
     window.removeEventListener('resize', this.updateHeadingsPosition)
+  }
+
+  initHeadingsPosition = () => {
+    const images = document.querySelectorAll(`${MARKDOWN_ROOT} img`)
+
+    if (images.length) {
+      imageChecker(images, this.updateHeadingsPosition)
+    } else {
+      this.updateHeadingsPosition()
+    }
   }
 
   updateHeadingsPosition = () => {
