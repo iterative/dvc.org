@@ -7,12 +7,13 @@ export default {
     {
       name: 'Workspace',
       match: ['workspace'],
-      desc:
-        'The DVC workspace contains all of your project files and ' +
-        'directories. For example source code files, datasets or models ' +
-        "under DVC control, and corresponding DVC-files. It's typically " +
-        'also a Git repository. See also ' +
-        '[`dvc init`](/doc/commands-reference/init).'
+      desc: `
+By "workspace" we refer to the directory containing all your project files. For
+example raw datasets, source code, ML models, etc. A workspace becomes a DVC
+project when [\`dvc init\`](/doc/commands-reference/init) is run, and
+[DVC-files](/doc/user-guide/dvc-file-format) are created in it. It\s typically
+also a Git repository.
+      `
     },
     {
       name: 'DVC Cache',
