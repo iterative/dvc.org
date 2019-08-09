@@ -92,12 +92,10 @@ export default class RightPanel extends React.PureComponent {
 
         <Description>Found an issue? Let us know or fix it:</Description>
 
-        <Link href={githubLink} target="_blank">
-          <GithubButton>
-            <i />
-            Edit on Github
-          </GithubButton>
-        </Link>
+        <GithubButton href={githubLink} target="_blank">
+          <i />
+          Edit on Github
+        </GithubButton>
 
         <br />
         <br />
@@ -105,12 +103,10 @@ export default class RightPanel extends React.PureComponent {
           Have a question? Join our chat, we will help you:
         </Description>
 
-        <Link href="/chat" target="_blank">
-          <DiscordButton>
-            <i />
-            Discord Chat
-          </DiscordButton>
-        </Link>
+        <DiscordButton href="/chat" target="_blank">
+          <i />
+          Discord Chat
+        </DiscordButton>
       </Wrapper>
     )
   }
@@ -183,10 +179,6 @@ const DiscordButton = styled(LightButton)`
     width: 1.2em;
     height: 1.2em;
   }
-`
-
-const Link = styled.a`
-  text-decoration: none;
 `
 
 const Spacer = styled.div`
