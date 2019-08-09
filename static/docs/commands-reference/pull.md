@@ -115,7 +115,7 @@ r1	ssh://_username_@_host_/path/to/dvc/cache/directory
 ```
 
 > DVC supports several remote types. For details, see the
-> [`remote add`](/doc/commands-reference/remote-add) documentation.
+> [`remote add`](/doc/commands-reference/remote/add) documentation.
 
 With a remote cache containing some images and other files, we can pull all
 changed files from the current Git branch:
@@ -200,4 +200,3 @@ the `model.p.dvc` stage occurs later, its data was not pulled.
 Then we ran `dvc pull` specifying the last stage, `model.p.dvc`, and its data
 was downloaded. Finally, we ran `dvc pull` with no options to make sure that all
 data was already pulled with the previous commands.
-

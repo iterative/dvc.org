@@ -27,8 +27,8 @@ system/environment:
 > filesystem type of the current working directory.
 
 > **Note** that if you've installed dvc using pip, you will need to install
-> `psutil` by yourself with `pip install psutil` in order for `dvc version`
-> to report fs information. Please see the original
+> `psutil` by yourself with `pip install psutil` in order for `dvc version` to
+> report fs information. Please see the original
 > [issue on github](https://github.com/iterative/dvc/issues/2284) for more info.
 
 #### Components of DVC version
