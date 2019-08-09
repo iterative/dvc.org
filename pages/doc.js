@@ -78,6 +78,8 @@ export default class Documentation extends Component {
   loadPath = path => {
     const item = getItemByPath(path)
 
+    if (item === this.state.currentItem) return
+
     if (!item) {
       this.setState({ pageNotFound: true, currentItem: {} })
     } else {
