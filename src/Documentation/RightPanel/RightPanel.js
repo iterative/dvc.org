@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { LightButton } from '../LightButton'
+// utils
+import throttle from 'lodash.throttle'
 
 const ROOT_ELEMENT = 'bodybag'
 const MARKDOWN_ROOT = '.markdown-body'
@@ -87,7 +89,7 @@ export default class RightPanel extends React.PureComponent {
     this.setState({ coordinates, height }, this.setCurrentHeader)
   }
 
-  setCurrentHeader = () => {
+  setCurrentHeader = throttle(() => {
     const { coordinates, height } = this.state
     const { scrollTop } = this.root
     const coordinateKeys = Object.keys(coordinates)
@@ -103,7 +105,7 @@ export default class RightPanel extends React.PureComponent {
       : undefined
 
     this.setState({ current })
-  }
+  }, 100)
 
   render() {
     const { headings, githubLink } = this.props
