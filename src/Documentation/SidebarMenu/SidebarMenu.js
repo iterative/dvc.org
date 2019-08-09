@@ -1,5 +1,4 @@
 import React from 'react'
-import $ from 'jquery'
 import PerfectScrollbar from 'perfect-scrollbar'
 // components
 import DownloadButton from '../../DownloadButton'
@@ -11,51 +10,59 @@ import { media, OnlyDesktop } from '../../styles'
 // sidebar helpers
 import { getParentsListFromPath } from './helper'
 
-function SidebarMenuItem({ children, label, path, activePaths, onNavigate }) {
-  const isActive = activePaths && includes(activePaths, path)
-  const isRootParent =
-    activePaths && activePaths.length > 1 && activePaths[0] === path
+const blankStyle = {}
 
-  return (
-    <>
-      <SectionLink
-        href={path}
-        onClick={e => onNavigate(path, e)}
-        isActive={isActive}
-        className={isRootParent ? 'docSearch-lvl0' : ''}
-      >
-        {label}
-      </SectionLink>
-      {children && (
-        <Collapse data-open={isActive ? 'true' : 'false'}>
-          {children.map(item => (
-            <SidebarMenuItem
-              key={item.path}
-              activePaths={activePaths}
-              onNavigate={onNavigate}
-              {...item}
-            />
-          ))}
-        </Collapse>
-      )}
-    </>
-  )
+class SidebarMenuItem extends React.PureComponent {
+  state = {
+    style: {}
+  }
+
+  componentDidMount() {
+    if (this.props.children) {
+      const height = this.linkRef.scrollHeight
+      this.setState({ style: { height } })
+    }
+  }
+
+  render() {
+    const { children, label, path, activePaths, onNavigate } = this.props
+    const { style } = this.state
+    const isActive = activePaths && includes(activePaths, path)
+    const isRootParent =
+      activePaths && activePaths.length > 1 && activePaths[0] === path
+
+    return (
+      <>
+        <SectionLink
+          href={path}
+          onClick={e => onNavigate(path, e)}
+          isActive={isActive}
+          className={isRootParent ? 'docSearch-lvl0' : ''}
+        >
+          {label}
+        </SectionLink>
+        {children && (
+          <Collapse
+            style={isActive ? style : blankStyle}
+            innerRef={r => (this.linkRef = r)}
+          >
+            {children.map(item => (
+              <SidebarMenuItem
+                key={item.path}
+                activePaths={activePaths}
+                onNavigate={onNavigate}
+                {...item}
+              />
+            ))}
+          </Collapse>
+        )}
+      </>
+    )
+  }
 }
 
 export default class SidebarMenu extends React.Component {
-  constructor(props) {
-    super(props)
-    this.collapse = this.collapse.bind(this)
-  }
-  collapse() {
-    setTimeout(function() {
-      $('[data-open=true]').slideDown()
-      $('[data-open=false]').slideUp()
-    })
-  }
   componentDidMount() {
-    this.collapse()
-
     this.ps = new PerfectScrollbar('#sidebar-menu', {
       // wheelPropagation: window.innerWidth <= 572
       wheelPropagation: true
@@ -66,11 +73,6 @@ export default class SidebarMenu extends React.Component {
     this.ps.update()
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.currentPath !== this.props.currentPath) {
-      this.collapse()
-    }
-  }
   render() {
     const { sidebar, currentPath, onNavigate } = this.props
     const activePaths = currentPath && getParentsListFromPath(currentPath)
@@ -82,7 +84,7 @@ export default class SidebarMenu extends React.Component {
             {sidebar.map(item => (
               <SidebarMenuItem
                 key={item.path}
-                activePaths={activePaths}
+                activePaths={includes(activePaths, item.path) && activePaths}
                 onNavigate={onNavigate}
                 {...item}
               />
@@ -173,7 +175,9 @@ const SectionLink = styled.a`
 `
 
 const Collapse = styled.div`
-  display: none;
+  overflow: hidden;
+  height: 0;
+  transition: height 400ms;
   padding-left: 20px;
 `
 
