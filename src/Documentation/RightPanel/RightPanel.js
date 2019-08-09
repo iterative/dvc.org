@@ -106,7 +106,7 @@ export default class RightPanel extends React.PureComponent {
   }
 
   render() {
-    const { headings, scrollToLink, githubLink } = this.props
+    const { headings, githubLink } = this.props
     const { current } = this.state
 
     return (
@@ -120,7 +120,6 @@ export default class RightPanel extends React.PureComponent {
                 isCurrent={current === slug}
                 level={3}
                 key={`link-${headingIndex}`}
-                onClick={() => scrollToLink(slug)}
                 href={`#${slug}`}
               >
                 {text}

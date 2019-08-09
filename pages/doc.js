@@ -78,10 +78,10 @@ export default class Documentation extends Component {
   loadPath = path => {
     const item = getItemByPath(path)
 
-    if (item === this.state.currentItem) return
-
     if (!item) {
       this.setState({ pageNotFound: true, currentItem: {} })
+    } else if (item === this.state.currentItem) {
+      this.updateScroll()
     } else {
       fetch(item.source)
         .then(res => {
@@ -94,19 +94,21 @@ export default class Documentation extends Component {
                 currentItem: item,
                 headings: this.parseHeadings(text)
               },
-              () => {
-                if (window.location.hash) {
-                  this.scrollToLink(window.location.hash)
-                } else {
-                  this.scrollTop()
-                }
-              }
+              () => this.updateScroll()
             )
           })
         })
         .catch(() => {
           window.location.reload()
         })
+    }
+  }
+
+  updateScroll() {
+    if (window.location.hash) {
+      this.scrollToLink(window.location.hash)
+    } else {
+      this.scrollTop()
     }
   }
 
@@ -193,11 +195,7 @@ export default class Documentation extends Component {
               onNavigate={this.onNavigate}
             />
           )}
-          <RightPanel
-            headings={headings}
-            scrollToLink={this.scrollToLink}
-            githubLink={githubLink}
-          />
+          <RightPanel headings={headings} githubLink={githubLink} />
         </Container>
       </Page>
     )
