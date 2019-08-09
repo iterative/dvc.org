@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 // components
 import ReactMarkdown from 'react-markdown'
 import { LightButton } from '../LightButton'
@@ -75,7 +75,7 @@ const CodeBlock = ({ value, language }) => {
   )
 }
 
-export default class Markdown extends Component {
+export default class Markdown extends React.PureComponent {
   constructor() {
     super()
     this.touchstartX = 0
