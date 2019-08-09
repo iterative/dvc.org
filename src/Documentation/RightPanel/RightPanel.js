@@ -6,17 +6,18 @@ const ROOT_ELEMENT = 'bodybag'
 
 export default class RightPanel extends React.PureComponent {
   state = {
+    height: 0,
     coordinates: {},
     current: undefined
   }
   componentDidMount() {
+    this.root = document.getElementById(ROOT_ELEMENT)
+
     if (this.props.headings.length) {
       this.updateHeadingsPosition()
     }
 
-    const root = document.getElementById(ROOT_ELEMENT)
-
-    root.addEventListener('scroll', this.setCurrentHeader)
+    this.root.addEventListener('scroll', this.setCurrentHeader)
     window.addEventListener('resize', this.updateHeadingsPosition)
   }
 
@@ -27,9 +28,7 @@ export default class RightPanel extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    const root = document.getElementById(ROOT_ELEMENT)
-
-    root.removeEventListener('scroll', this.setCurrentHeader)
+    this.root.removeEventListener('scroll', this.setCurrentHeader)
     window.removeEventListener('resize', this.updateHeadingsPosition)
   }
 
@@ -38,17 +37,21 @@ export default class RightPanel extends React.PureComponent {
       return { ...result, [document.getElementById(slug).offsetTop]: slug }
     }, {})
 
-    this.setState({ coordinates })
+    const height = this.root.offsetHeight
+
+    this.setState({ coordinates, height }, this.setCurrentHeader)
   }
 
-  setCurrentHeader = e => {
-    const { scrollTop } = e.target
-    const { coordinates } = this.state
+  setCurrentHeader = () => {
+    const { coordinates, height } = this.state
+    const { scrollTop } = this.root
     const coordinateKeys = Object.keys(coordinates)
 
     if (!coordinateKeys.length) return
 
-    const filteredKeys = coordinateKeys.filter(top => top <= scrollTop)
+    const filteredKeys = coordinateKeys.filter(
+      top => top <= scrollTop + height / 2
+    )
 
     const current = filteredKeys.length
       ? coordinates[filteredKeys[filteredKeys.length - 1]]
@@ -78,11 +81,13 @@ export default class RightPanel extends React.PureComponent {
                 {text}
               </HeadingLink>
             ))}
+            <br />
           </>
         ) : (
-          <Spacer />
+          <>
+            <Spacer />
+          </>
         )}
-        <br />
 
         <Description>Found an issue? Let us know or fix it:</Description>
 
@@ -146,7 +151,6 @@ const HeadingLink = styled.a`
   ${props =>
     props.isCurrent &&
     `
-    font-weight: bold;
     color: #000;
 	`}
 
