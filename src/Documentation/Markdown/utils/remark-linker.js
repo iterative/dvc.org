@@ -3,7 +3,7 @@
 import visit from 'unist-util-visit'
 import { getItemByPath } from '../../SidebarMenu/helper'
 
-const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*\s/
+const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*/
 const COMMAND_REGEXP = /^[a-z][a-z-]*$/
 const COMMAND_ROOT = '/doc/commands-reference/'
 
