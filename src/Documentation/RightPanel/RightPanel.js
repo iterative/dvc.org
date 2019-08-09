@@ -6,11 +6,14 @@ const ROOT_ELEMENT = 'bodybag'
 const MARKDOWN_ROOT = '.markdown-body'
 
 const imageChecker = (images, callback) => {
-  if (images.length) {
-    let counter = images.length
+  // IE can't use forEach on array-likes
+  const imagesArray = Array.prototype.slice.call(images)
+
+  if (imagesArray.length) {
+    let counter = imagesArray.length
 
     const unsubscribe = () => {
-      images.forEach(img => {
+      imagesArray.forEach(img => {
         img.removeEventListener('load', decrement)
         img.removeEventListener('error', decrement)
       })
@@ -25,7 +28,7 @@ const imageChecker = (images, callback) => {
       }
     }
 
-    images.forEach(img => {
+    imagesArray.forEach(img => {
       img.addEventListener('load', decrement)
       img.addEventListener('error', decrement)
     })
