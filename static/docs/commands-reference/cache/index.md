@@ -1,7 +1,7 @@
 # cache
 
 Contains a helper command to set the cache directory location:
-[dir](/doc/commands-reference/cache-dir).
+[dir](/doc/commands-reference/cache/dir).
 
 ## Synopsis
 

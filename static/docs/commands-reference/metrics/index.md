@@ -1,10 +1,10 @@
 # metrics
 
 A set of commands to collect and display project metrics:
-[add](/doc/commands-reference/metrics-add),
-[show](/doc/commands-reference/metrics-show),
-[modify](/doc/commands-reference/metrics-modify), and
-[remove](/doc/commands-reference/metrics-remove).
+[add](/doc/commands-reference/metrics/add),
+[show](/doc/commands-reference/metrics/show),
+[modify](/doc/commands-reference/metrics/modify), and
+[remove](/doc/commands-reference/metrics/remove).
 
 ## Synopsis
 
@@ -27,10 +27,10 @@ metrics to track. Metrics are usually any project specific numbers - `AUC`,
 Usually these numbers are produced by the model evaluation script and serve as a
 way to compare and pick the best performing experiment variant.
 
-[Add](/doc/commands-reference/metrics-add),
-[show](/doc/commands-reference/metrics-show),
-[modify](/doc/commands-reference/metrics-modify), and
-[remove](/doc/commands-reference/metrics-remove) commands are available to set
+[Add](/doc/commands-reference/metrics/add),
+[show](/doc/commands-reference/metrics/show),
+[modify](/doc/commands-reference/metrics/modify), and
+[remove](/doc/commands-reference/metrics/remove) commands are available to set
 up and manage DVC metrics.
 
 ## Options
