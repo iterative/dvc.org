@@ -1,11 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { LightButton } from '../LightButton'
-// utils
-import debounce from 'lodash.debounce'
 
-// difference between header height and scrollToLink offset
-const SCROLL_OFFSET = 5
 const ROOT_ELEMENT = 'bodybag'
 
 export default class RightPanel extends React.PureComponent {
@@ -45,23 +41,21 @@ export default class RightPanel extends React.PureComponent {
     this.setState({ coordinates })
   }
 
-  setCurrentHeader = debounce(e => {
+  setCurrentHeader = e => {
     const { scrollTop } = e.target
     const { coordinates } = this.state
     const coordinateKeys = Object.keys(coordinates)
 
     if (!coordinateKeys.length) return
 
-    const filteredKeys = coordinateKeys.filter(
-      top => top <= scrollTop + SCROLL_OFFSET
-    )
+    const filteredKeys = coordinateKeys.filter(top => top <= scrollTop)
 
     const current = filteredKeys.length
       ? coordinates[filteredKeys[filteredKeys.length - 1]]
       : undefined
 
     this.setState({ current })
-  }, 100)
+  }
 
   render() {
     const { headings, scrollToLink, githubLink } = this.props
@@ -78,7 +72,7 @@ export default class RightPanel extends React.PureComponent {
                 isCurrent={current === slug}
                 level={3}
                 key={`link-${headingIndex}`}
-                onClick={() => scrollToLink('#' + slug)}
+                onClick={() => scrollToLink(slug)}
                 href={`#${slug}`}
               >
                 {text}

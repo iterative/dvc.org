@@ -12,12 +12,13 @@ import Hamburger from '../src/Hamburger'
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
-import { scroller, animateScroll } from 'react-scroll'
 // styles
 import styled from 'styled-components'
 import { media } from '../src/styles'
 // sidebar data and helpers
 import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
+
+const ROOT_ELEMENT = 'bodybag'
 
 export default class Documentation extends Component {
   constructor() {
@@ -93,7 +94,7 @@ export default class Documentation extends Component {
               },
               () => {
                 if (window.location.hash) {
-                  this.autoScroll()
+                  this.scrollToLink(window.location.hash)
                 } else {
                   this.scrollTop()
                 }
@@ -123,29 +124,19 @@ export default class Documentation extends Component {
     return matches
   }
 
-  autoScroll = () => {
-    const { hash } = window.location
-    if (hash) this.scrollToLink(hash)
-  }
+  scrollToLink = hash => {
+    const element = document.getElementById(hash.replace(/^#/, ''))
 
-  scrollToLink = href => {
-    scroller.scrollTo(href.slice(1), {
-      duration: 600,
-      offset: -85, // if you change this, change offset in RightPanel accordingly
-      delay: 0,
-      smooth: 'ease',
-      containerId: 'bodybag'
-    })
+    if (element) {
+      element.scrollIntoView()
+    }
   }
 
   scrollTop = () => {
-    animateScroll.scrollTo(0, {
-      duration: 300,
-      offset: -85,
-      delay: 0,
-      smooth: 'ease',
-      containerId: 'bodybag'
-    })
+    const element = document.getElementById(ROOT_ELEMENT)
+    if (element) {
+      element.scrollTop = 0
+    }
   }
 
   toggleMenu = () => {
@@ -185,8 +176,6 @@ export default class Documentation extends Component {
             <SidebarMenu
               sidebar={sidebar}
               currentPath={path}
-              headings={headings}
-              scrollToLink={this.scrollToLink}
               onNavigate={this.onNavigate}
             />
           </Side>

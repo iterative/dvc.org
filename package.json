@@ -32,7 +32,6 @@
     "jquery": "^3.4.1",
     "lodash": ">=4.17.13",
     "lodash.compact": "^3.0.1",
-    "lodash.debounce": "^4.0.8",
     "lodash.flatten": "^4.4.0",
     "lodash.includes": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",

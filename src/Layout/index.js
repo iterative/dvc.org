@@ -55,4 +55,5 @@ const Bodybag = styled.div`
   overflow-y: auto;
   transition: top 0.2s linear;
   -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
 `
