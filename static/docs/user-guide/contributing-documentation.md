@@ -37,8 +37,8 @@ Otherwise, please refer to the following procedure:
 
 - Format the code by following the
   [code style guidelines](#code-style-guidelines) below. It's highly recommended
-  setup the [development environment](#development-environment) explained above.
-  It can help you to format your the documentation and/or JS engine files
+  to setup the [development environment](#development-environment) as explained
+  below. It can help you to format your the documentation and/or JS engine files
   automatically. Otherwise, we recommend using the Visual Studio Code and the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
   plugin to format the content of Markdown files.
