@@ -101,6 +101,7 @@ steps:
   ```
 
 - Exit from the shell and open a new one, or just reload `~/.bashrc`:
+
   ```dvc
   $ source ~/.bashrc
   ```
