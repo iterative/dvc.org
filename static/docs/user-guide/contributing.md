@@ -17,13 +17,13 @@ to learn how to submit your changes.
 ## Submitting changes
 
 - Open a new issue in the
-  [issue tracker](https://github.com/iterative/dvc/issues);
+  [issue tracker](https://github.com/iterative/dvc/issues).
 - Setup the [development environment](#development-environment) if you need to
-  run tests or [run](#running-development-version) the DVC with your changes;
+  run tests or [run](#running-development-version) the DVC with your changes.
 - Fork [DVC](https://github.com/iterative/dvc.git) and prepare necessary
-  changes;
-- Add tests for your changes to `tests/test_*.py`;
-- [Run tests](#running-tests) and make sure all of them pass;
+  changes.
+- Add tests for your changes to `tests/test_*.py`.
+- [Run tests](#running-tests) and make sure all of them pass.
 - Submit a pull request, referencing any issues it addresses.
 
 We will review your pull request as soon as possible. Thank you for
@@ -288,11 +288,11 @@ Fixes #(Github issue id).
 Message types:
 
 - *component* - name of a component that this patch is affecting. Use `dvc` in a
-  general case;
-- _short description_ - short description of the patch;
+  general case.
+- _short description_ - short description of the patch.
 - _long description_ - If needed, longer message describing the patch in more
-  details;
-- _github issue id_ - An id of the Github issue that this patch is addressing
+  details.
+- _github issue id_ - An id of the Github issue that this patch is addressing.
 
 Example:
 
