@@ -73,6 +73,43 @@ fi
 You can `source` your `~/.bash_profile` or launch a new terminal to utilize
 completion.
 
+<details>
+
+### Click to expand if it doesn't work on Debian/Ubuntu
+
+As mentioned above, it should work out of the box. But if it does not, try these
+steps:
+
+- Make sure that the package `bash-completion` is installed:
+
+  ```dvc
+  $ sudo apt install --reinstall bash-completion
+  ```
+
+- Make sure that it is enabled. Edit `~/.bashrc` and make sure that these lines
+  are there:
+
+  ```bash
+  # enable bash completion in interactive shells
+  if ! shopt -oq posix; then
+    if [ -f /usr/share/bash-completion/bash_completion ]; then
+      . /usr/share/bash-completion/bash_completion
+    elif [ -f /etc/bash_completion ]; then
+      . /etc/bash_completion
+    fi
+  fi
+  ```
+
+- Exit from the shell and open a new one, or just reload `~/.bashrc`:
+
+  ```dvc
+  $ source ~/.bashrc
+  ```
+
+For more details see: https://linuxhandbook.com/enable-tab-completion/
+
+</details>
+
 ## Configure Zsh
 
 The DVC specific completion script is located in this path of our main
