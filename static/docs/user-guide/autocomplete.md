@@ -77,13 +77,18 @@ completion.
 
 ### Click to expand if it doesn't work on Debian/Ubuntu
 
-As mentioned above, it should work out of the box. But if it does not, try these steps:
+As mentioned above, it should work out of the box. But if it does not, try these
+steps:
 
 - Make sure that the package `bash-completion` is installed:
-  ```bash
-  sudo apt install --reinstall bash-completion 
+
+  ```dvc
+  $ sudo apt install --reinstall bash-completion
   ```
-- Make sure that it is enabled. Edit `~/.bashrc` and make sure that these lines are there:
+
+- Make sure that it is enabled. Edit `~/.bashrc` and make sure that these lines
+  are there:
+
   ```bash
   # enable bash completion in interactive shells
   if ! shopt -oq posix; then
@@ -94,9 +99,10 @@ As mentioned above, it should work out of the box. But if it does not, try these
     fi
   fi
   ```
+
 - Exit from the shell and open a new one, or just reload `~/.bashrc`:
-  ```bash
-  source ~/.bashrc
+  ```dvc
+  $ source ~/.bashrc
   ```
 
 For more details see: https://linuxhandbook.com/enable-tab-completion/
