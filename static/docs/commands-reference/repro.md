@@ -20,8 +20,8 @@ positional arguments:
 
 `dvc repro` provides an interface to run the commands in a computational graph
 (a.k.a. pipeline) again, as defined in the stage files (DVC-files) found in the
-workspace. (A pipeline is typically defined using the `dvc run` command, while
-data input nodes are defined by the `dvc add` command.)
+<abbr>project</abbr>. (A pipeline is typically defined using the `dvc run`
+command, while data input nodes are defined by the `dvc add` command.)
 
 There's a few ways to restrict the stages that will be run again by this
 command: by specifying stage file(s) as `targets`, or by using the
@@ -36,8 +36,8 @@ corresponding commands again.
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
 files, intermediate or final results. It saves all the data files, intermediate
-or final results into the DVC cache (unless `--no-commit` option is specified),
-and updates stage files with the new checksum information.
+or final results into the <abbr>DVC cache</abbr> (unless `--no-commit` option is
+specified), and updates stage files with the new checksum information.
 
 ## Options
 
@@ -49,7 +49,7 @@ and updates stage files with the new checksum information.
   recursive search for changed dependencies. Multiple stages are run
   (non-recursively) if multiple stage files are given as `targets`.
 
-- `-c`, `--cwd` - directory within your project to reproduce from. If no
+- `-c`, `--cwd` - directory within the project to reproduce from. If no
   `targets` are given, it attempts to use `Dvcfile` in the specified directory.
   Instead of using `--cwd`, one can alternately specify a target in a
   subdirectory as `path/to/target.dvc`. This option can be useful for example
@@ -63,8 +63,8 @@ and updates stage files with the new checksum information.
   inspect.
 
 - `--no-commit` - do not save outputs to cache. Useful when running different
-  experiments and you don't want to fill up your cache with temporary files. Use
-  `dvc commit` when you are ready to save your results to cache.
+  experiments and you don't want to fill up the cache with temporary files. Use
+  `dvc commit` when ready to save results to cache.
 
 - `-m`, `--metrics` - show metrics after reproduction. The target pipeline(s)
   must have at least one metrics file defined either with the `dvc metrics`

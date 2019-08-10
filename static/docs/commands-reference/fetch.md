@@ -19,10 +19,10 @@ positional arguments:
 ## Description
 
 The `dvc fetch` command is a means to download files from remote storage into
-the local cache, but not directly into the workspace. This makes the data files
-available for linking (or copying) into the workspace. (Refer to
-[dvc config cache.type](/doc/commands-reference/config#cache).) Along with
-`dvc checkout`, it's performed automatically by `dvc pull` when the target
+the local cache, but without placing them in the <abbr>workspace</abbr>. This
+makes the data files available for linking (or copying) into the workspace.
+(Refer to [dvc config cache.type](/doc/commands-reference/config#cache).) Along
+with `dvc checkout`, it's performed automatically by `dvc pull` when the target
 [DVC-files](/doc/user-guide/dvc-file-format) are not already in the local cache:
 
 ```
@@ -42,11 +42,12 @@ local cache                      ++ | dvc pull |
  workspace
 ```
 
-Fetching could be useful when first checking out an existing DVC project, since
-files under DVC control could already exist in remote storage, but won't be in
-your local cache. (Refer to `dvc remote` for more information on DVC remotes.)
-These necessary data or model files are listed as dependencies or outputs in a
-DVC-file (target [stage](/doc/commands-reference/run)) so they are required to
+Fetching could be useful when first checking out an existing <abbr>DVC
+project</abbr>, since files under DVC control could already exist in remote
+storage, but won't be in your local cache. (Refer to `dvc remote` for more
+information on DVC remotes.) These necessary data or model files are listed as
+dependencies or outputs in a DVC-file (target
+[stage](/doc/commands-reference/run)) so they are required to
 [reproduce](/doc/get-started/reproduce) the corresponding
 [pipeline](/doc/get-started/pipeline). (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
@@ -67,7 +68,7 @@ which the set of files to push/fetch/pull is determined begins with calculating
 the checksums of the files in question, when these are
 [added](/doc/get-started/add-files) to DVC. File checksums are then stored in
 the corresponding DVC-files (usually saved in a Git branch). Only the checksums
-specified in DVC-files currently in the workspace are considered by `dvc fetch`
+specified in DVC-files currently in the project are considered by `dvc fetch`
 (unless the `-a` or `-T` options are used).
 
 ## Options
@@ -114,8 +115,9 @@ specified in DVC-files currently in the workspace are considered by `dvc fetch`
 
 ## Examples
 
-Let's employ a simple workspace with some data, code, ML models, pipeline
-stages, as well as a few Git tags, such as our
+Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
+pipeline stages, as well as a few Git tags, such as the <abbr>DVC project</abbr>
+created in our
 [get started example repo](https://github.com/iterative/example-get-started).
 Then we can see what happens with `dvc fetch` as we switch from tag to tag.
 
@@ -132,7 +134,7 @@ $ cd example-get-started
 
 </details>
 
-The workspace looks almost like in this
+The workspace `tree` looks almost like in this
 [pipeline setup](/doc/get-started/example-pipeline):
 
 ```dvc
@@ -196,8 +198,10 @@ by all DVC-files in the current branch, including for directories. The checksums
 `3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
 correspond to the `model.pkl` file and `data/features/` directory, respectively.
 
+Let's link files from local cache to the workspace with:
+
 ```dvc
-$ dvc checkout      <- links files from local cache to workspace
+$ dvc checkout
 Checking out '{'scheme': 'local', 'path': '.../example-get-started/model.pkl'}' with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
 Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/...
 ```

@@ -51,7 +51,7 @@ corresponding config file.
 ## Configuration sections
 
 These are the `name` parameters that can be used with `dvc config`, or the
-sections in the project config file (`.dvc/config`).
+sections in the <abbr>DVC project</abbr> config file (`.dvc/config`).
 
 ### core
 
@@ -98,21 +98,21 @@ for more details.)
   > option, properly transforming paths relative to the current working
   > directory into paths relative to the config file location.
 
-- `cache.protected` - makes files in the workspace read-only. Possible values
-  are `true` or `false` (default). Run `dvc checkout` for the change go into
-  effect. (It affects only files that are under DVC control.)
+- `cache.protected` - make files under DVC control read-only. Possible values
+  are `true` or `false` (default). Run `dvc checkout` for the change to go into
+  effect.
 
   Due to the way DVC handles linking between the data files in the cache and
-  their counterparts in the workspace, it's easy to accidentally corrupt the
-  cached version of a file by editing or overwriting it. Turning this config
-  option on forces you to run `dvc unprotect` before updating a file, providing
-  an additional layer of security to your data.
+  their counterparts in the <abbr>workspace</abbr>, it's easy to accidentally
+  corrupt the cached version of a file by editing or overwriting it. Turning
+  this config option on forces you to run `dvc unprotect` before updating a
+  file, providing an additional layer of security to your data.
 
   It's highly recommended to enable this mod when `cache.type` is set to
   `hardlink` or `symlink`.
 
 - `cache.type` - link type that DVC should use to link data files from cache to
-  your workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
+  the workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
   combination of those, separated by commas e.g: `reflink,hardlink,copy`.
 
   By default, DVC will try `reflink,copy` link types in order to choose the most
@@ -188,7 +188,7 @@ Set the `dvc` log level to `debug`:
 $ dvc config core.loglevel debug
 ```
 
-Add an S3 remote and set it as the project default:
+Add an S3 remote and set it as the <abbr>project</abbr> default:
 
 > **Note!** Before adding a new remote be sure to login into AWS services and
 > follow instructions at

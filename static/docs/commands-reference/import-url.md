@@ -117,8 +117,8 @@ downloaded file or directory from the external data source.
 
 ## Examples
 
-To illustrate these examples we will be using the project explained in the
-[Get Started](/doc/get-started) section.
+To illustrate these examples we will be using the <abbr>project</abbr> explained
+in the [Get Started](/doc/get-started) section.
 
 <details>
 
@@ -139,15 +139,15 @@ $ git checkout 2-remote
 $ mkdir data
 ```
 
-You should now have a blank workspace, just before the
+You should now have a blank <abbr>workspace</abbr>, just before the
 [Add Files](/doc/get-started/add-files) step.
 
 </details>
 
 ## Example: Tracking a remote file
 
-An advanced alternate to initialize the _Get Started_ workspace, is using
-`dvc import-url`:
+An advanced alternate to [Add Files](/doc/get-started/add-files) step of the
+_Get Started_ section is to use `dvc import-url`:
 
 ```dvc
 $ dvc import-url https://dvc.org/s3/get-started/data.xml data/data.xml
@@ -200,19 +200,18 @@ updated data source. A [pipeline](/doc/commands-reference/pipeline) can be
 triggered to re-execute based on a changed external dependency.
 
 Let's use the [Get Started](/doc/get-started) project again, simulating an
-updated external data source. (Remember to prepare the sample project as
-explained in [Examples](#examples))
+updated external data source. (Remember to prepare the <abbr>workspace</abbr>,
+as explained in [Examples](#examples))
 
 To make it easy to experiment with this, let's use a local machine directory
-(external to the sample DVC project) to simulate a remote data source location.
-(In real life, the data file will probably be on a remote server.) Run these
-commands:
+(external to the workspace) to simulate a remote data source location. (In real
+life, the data file will probably be on a remote server.) Run these commands:
 
 ```dvc
 $ mkdir /tmp/dvc-import-url-example
 $ cd /tmp/dvc-import-url-example/
 $ wget https://dvc.org/s3/get-started/data.xml
-$ cd -  # to go back to the Get Started project
+$ cd -  # to go back to the project
 ```
 
 In a production system, you might have a process to update data files. That's
