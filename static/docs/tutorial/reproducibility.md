@@ -238,8 +238,11 @@ checksums from the bigram branch: that is, by removing all checksums of the
 other branch.
 [Here](https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line)
 you can find a tutorial which clarifies how to do that. It is also important to
-remove all automatically generated conflict markers (<<<<<<<, =======, >>>>>>>)
-from `model.p.dvc` and `Dvcfile`.
+remove all automatically generated
+[conflict markers](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_checking_out_conflicts)
+(<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>,
+<code>&#61;&#61;&#61;&#61;&#61;&#61;&#61;</code>,
+<code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>) from `model.p.dvc` and `Dvcfile`.
 
 Another way to solve git merge conflicts is to simply replace all checksums with
 empty strings ''. The only disadvantage of this trick is that DVC will need to
