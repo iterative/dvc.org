@@ -40,10 +40,10 @@ need to simply move it from an old cache location to the new one:
 $ mv .dvc/cache/* /path/to/dvc-cache
 ```
 
-### Configure External Cache (Optional)
+### Configure External Cache
 
-This step is optional. Tell DVC to use the directory we've set up above as an
-shared cache location by running:
+Tell DVC to use the directory we've set up above as an shared cache location by
+running:
 
 ```dvc
 $ dvc config cache.dir /path/to/dvc-cache
