@@ -115,7 +115,7 @@ r1	ssh://_username_@_host_/path/to/dvc/cache/directory
 ```
 
 > DVC supports several remote types. For details, see the
-> [`remote add`](/doc/commands-reference/remote-add) documentation.
+> [`remote add`](/doc/commands-reference/remote/add) documentation.
 
 With a remote cache containing some images and other files, we can pull all
 changed files from the current Git branch:

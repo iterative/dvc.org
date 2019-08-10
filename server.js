@@ -24,7 +24,9 @@ app.prepare().then(() => {
     const chat = /^\/(help|chat)\/?$/i
 
     if (req.headers.host === 'man.dvc.org') {
-      const doc_pathname = '/doc/commands-reference' + pathname
+      let normalized_pathname =
+        pathname !== '/import-url' ? pathname.replace(/-/i, '/') : pathname
+      const doc_pathname = '/doc/commands-reference' + normalized_pathname
       res.writeHead(301, { Location: 'https://dvc.org' + doc_pathname })
       res.end()
     } else if (req.headers.host === 'pycon2019.dvc.org') {

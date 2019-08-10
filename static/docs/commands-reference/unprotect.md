@@ -48,7 +48,7 @@ when cache protected mode is enabled:
 Enable cache protected mode is enabled:
 
 ```dvc
-    $ dvc config cache.protected true
+$ dvc config cache.protected true
 ```
 
 Put a data file under DVC control:

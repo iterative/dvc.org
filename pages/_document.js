@@ -4,7 +4,8 @@ import reset from 'styled-reset'
 import { global } from '../src/styles'
 import Router from 'next/router'
 
-const DESCRIPTION = `Open-source version control system for Data Science and` +
+const DESCRIPTION =
+  `Open-source version control system for Data Science and` +
   ` Machine Learning projects. Track your data, models, and experiments with` +
   ` a Git-like tool.`
 const KEYWORDS = `data version control machine learning models management`
