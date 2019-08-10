@@ -96,7 +96,7 @@ The detail of `Binary` depends on the way DVC was downloading and
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Examples
 
 Getting the DVC version and environment information:
 

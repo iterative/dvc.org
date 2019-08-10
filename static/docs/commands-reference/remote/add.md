@@ -329,7 +329,7 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 
 </details>
 
-## Examples: Custom configuration of an S3 remote
+## Example: Custom configuration of an S3 remote
 
 Add a AWS S3 remote as the _default_ (via `-d` option), and modify its region:
 

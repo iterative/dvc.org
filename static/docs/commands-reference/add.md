@@ -105,7 +105,7 @@ models). This way you bring data provenance and make your project reproducible.
   location, by including a path in the provided value (e.g.
   `-f stages/stage.dvc`).
 
-## Examples: Single file
+## Example: Single file
 
 Take a file under DVC control:
 
@@ -158,7 +158,7 @@ $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
 .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b: ASCII text
 ```
 
-## Examples: Directory
+## Example: Directory
 
 What if you have not one dog picture, but hundreds of pictures of dogs and cats?
 Your goal might be to build an algorithm to identify dogs and cats in pictures,

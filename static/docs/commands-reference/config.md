@@ -86,8 +86,8 @@ remote. See `dvc remote` for more information.
 The DVC cache is a hidden storage (by default located in the `.dvc/cache`
 directory) for files that are under DVC control, and their different versions.
 (See `dvc cache` and
-[DVC internal files](/doc/user-guide/dvc-files-and-directories) for more
-details.)
+[DVC internal files](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+for more details.)
 
 - `cache.dir` - set/unset cache directory location. A correct value must be
   either an absolute path or a path **relative to the config file location**.
@@ -180,7 +180,7 @@ more about the state file that is used for optimization.
   so that when it needs to cleanup the database it could sort them by the
   timestamp and remove the oldest ones. Default quota is set to 50(percent).
 
-## Examples: Core config options
+## Example: Core config options
 
 Set the `dvc` log level to `debug`:
 
@@ -200,7 +200,7 @@ $ dvc remote add myremote s3://bucket/path
 $ dvc config core.remote myremote
 ```
 
-## Examples: Default remotes
+## Example: Default remotes
 
 Use remote `myremote` by default:
 
@@ -227,9 +227,9 @@ which is equivalent to:
 $ dvc config core.remote -u
 ```
 
-## Examples: Cache config options
+## Example: Cache config options
 
-Set the cache directory to an absolute path:
+Set the <abbr>cache directory</abbr> to an absolute path:
 
 ```dvc
 $ dvc config cache.dir /mnt/cache

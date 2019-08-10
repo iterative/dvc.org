@@ -145,7 +145,7 @@ $ dvc push data.zip.dvc
 [######################] 100% data.zip
 ```
 
-## Examples: With dependencies
+## Example: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example. First, assume a
 [pipeline](/doc/get-started/pipeline) has been setup with these
@@ -209,7 +209,7 @@ Then we ran `dvc push` specifying the last stage, `model.p.dvc`, and its data
 was uploaded. Finally, we ran `dvc push` and `dvc status` with no options to
 double check that all data had been uploaded.
 
-## Examples: What happens in the cache
+## Example: What happens in the cache
 
 Let's take a detailed look at what happens to the DVC cache as you run an
 experiment in a local workspace and push data to a remote cache. To set the

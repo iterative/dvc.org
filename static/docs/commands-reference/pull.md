@@ -141,7 +141,7 @@ In this case we left off the `--remote` option, so it will have pulled from the
 default remote. The only files considered in this case are what is listed in the
 `out` section of the target DVC-file(s).
 
-## Examples: With dependencies
+## Example: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example. First, assume a
 [pipeline](/doc/get-started/pipeline) has been setup with these

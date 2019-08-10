@@ -206,7 +206,7 @@ Saving information to 'Dvcfile'.
 You can now check that `Dvcfile` and `count.txt` have been updated with the new
 information, new `md5` checksums and a new result respectively.
 
-## Examples: Downstream
+## Example: Downstream
 
 The `--downstream` option allows us to only reproduce results from commands
 after a specific stage in a pipeline. To demonstrate how it works, let's make a

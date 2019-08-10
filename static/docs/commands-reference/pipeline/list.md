@@ -26,7 +26,7 @@ their corresponding pipeline(s) when connected. (See `dvc pipeline`.)
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Examples
 
 List available pipelines:
 

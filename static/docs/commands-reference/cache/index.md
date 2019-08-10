@@ -1,6 +1,6 @@
 # cache
 
-Contains a helper command to set the cache directory location:
+Contains a helper command to set the <abbr>cache directory</abbr> location:
 [dir](/doc/commands-reference/cache/dir).
 
 ## Synopsis
@@ -34,15 +34,3 @@ config option, for more information on file links on different platforms.)
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-## Example
-
-The main use of this command is to apply the `-v` and `-q` options to
-`dvc cache dir` which doesn't have them:
-
-```dvc
-$ dvc cache --verbose dir mycache
-DEBUG: Writing '/Users/user/myproject/.dvc/config'.
-$ dvc config cache.dir
-../mycache
-```

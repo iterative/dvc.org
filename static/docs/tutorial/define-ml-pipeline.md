@@ -63,8 +63,8 @@ need to run `dvc unprotect` or `dvc remove` first (see the
 If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
 `dvc add`, you will see that only outputs are defined in `outs`. In this file,
 only one output is defined. The output contains the data file path in the
-repository and md5 cache. This md5 cache determines a location of the actual
-content file in DVC cache directory `.dvc/cache`.
+repository and md5 checksum. This checksum determines a location of the actual
+content file in the <abbr>cache directory</abbr>, `.dvc/cache`.
 
 ```dvc
 $ cat data/Posts.xml.zip.dvc
@@ -186,8 +186,8 @@ and does some additional work if the command was successful:
 
 1. DVC transforms all the outputs `-o` files into data files. It is like
    applying `dvc add` for each of the outputs. As a result, all the actual data
-   files content goes to the cache directory `.dvc/cache` and each of the file
-   names will be added to `.gitignore`.
+   files content goes to the <abbr>cache directory</abbr> `.dvc/cache` and each
+   of the file names will be added to `.gitignore`.
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
    file in the workspace with information about this pipeline stage. (See

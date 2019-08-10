@@ -34,7 +34,7 @@ To indicate which import stages to update, specify the corresponding DVC-file
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Examples
 
 Let's first import a data artifact from our
 [get started example repo](https://github.com/iterative/example-get-started):

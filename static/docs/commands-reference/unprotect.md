@@ -43,7 +43,7 @@ when cache protected mode is enabled:
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Examples
 
 Enable cache protected mode is enabled:
 

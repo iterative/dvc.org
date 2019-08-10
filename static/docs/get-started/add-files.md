@@ -4,6 +4,11 @@ DVC allows storing and versioning data files, ML models, directories,
 intermediate results with Git, without checking the file contents into Git.
 Let's get a sample dataset to play with:
 
+```dvc
+$ mkdir data
+$ wget https://dvc.org/s3/get-started/data.xml -O data/data.xml
+```
+
 <details>
 
 ### Expand if you're on Windows or having problems downloading from command line
@@ -16,26 +21,24 @@ into `data` subdirectory. To download, right-click
 
 </details>
 
-```dvc
-$ mkdir data
-$ wget https://dvc.org/s3/get-started/data.xml -O data/data.xml
-```
-
-To take a file (or a directory) under DVC control just run `dvc add`, it accepts
-any file or directory:
+To take a file (or a directory) under DVC control just run `dvc add` on it. For
+example:
 
 ```dvc
 $ dvc add data/data.xml
 ```
 
-DVC stores information about your data file in a special DVC-file, that has a
-human-readable [format](/doc/user-guide/dvc-file-format) and can be committed to
-Git to track versions of your file:
+DVC stores information about the added data in a special **DVC-file** that has a
+human-readable [format](/doc/user-guide/dvc-file-format). It can be committed to
+Git:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
 $ git commit -m "add raw data to DVC"
 ```
+
+Committing these special files to Git allows us to tack different versions of
+the data as it evolves with the source code under Git control.
 
 <details>
 
@@ -43,10 +46,7 @@ $ git commit -m "add raw data to DVC"
 
 You can see that actual data file has been moved to the `.dvc/cache` directory,
 while the entries in the workspace may be links to the actual files in the DVC
-cache. (See
-[File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to learn about the supported file linking options, their tradeoffs, and how to
-enable them).
+cache.
 
 ```dvc
 $ ls -R .dvc/cache
@@ -54,9 +54,9 @@ $ ls -R .dvc/cache
     04afb96060aad90176268345e10355
 ```
 
-where `a304afb96060aad90176268345e10355` is an MD5 hash of the `data.xml` file.
-And if you check the `data/data.xml.dvc` DVC-file you will see that it has this
-hash inside.
+`a304afb96060aad90176268345e10355` from above is an MD5 hash of the `data.xml`
+file we just added to DVC. And if you check the `data/data.xml.dvc` DVC-file you
+will see that it has this hash inside.
 
 </details>
 
@@ -84,6 +84,11 @@ and `dvc config cache` for more information.
 > the file will reflect the changes.
 
 </details>
+
+If your <abbr>workspace</abbr> uses Git, without DVC you would have to manually
+put each data file or directory in into `.gitignore`. DVC commands that take or
+make files that will go under its control automatically takes care of this for
+you! (You just have to add the changes to Git.)
 
 Refer to
 [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning),
