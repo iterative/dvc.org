@@ -26,8 +26,8 @@ Once initialized in a project, DVC populates its installation directory
 - `.dvc/state` - this file is used for optimization. It is a SQLite db, that
   contains checksums for files in a project with respective timestamps and
   inodes to avoid unnecessary checksum computations. It also contains a list of
-  links (from cache to workspace) created by dvc and is used to cleanup your
-  workspace when calling `dvc checkout`.
+  links (from <abbr>cache</abbr> to <abbr>workspace</abbr>) created by DVC and
+  is used to cleanup your workspace when calling `dvc checkout`.
 
 - `.dvc/state-journal` - temporary file for SQLite operations
 

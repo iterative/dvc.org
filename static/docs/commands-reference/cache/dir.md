@@ -1,7 +1,7 @@
 # cache dir
 
-Set/unset the cache directory location intuitively (compared to using
-`dvc config cache`).
+Set/unset the <abbr>cache directory</abbr> location intuitively (compared to
+using `dvc config cache`).
 
 ## Synopsis
 
@@ -39,6 +39,11 @@ file location**. They are required in the latter form for the config file.
   Don't provide a `value` when using this flag.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
+
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Example: Using relative path
 

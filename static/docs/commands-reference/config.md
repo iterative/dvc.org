@@ -86,8 +86,8 @@ remote. See `dvc remote` for more information.
 The DVC cache is a hidden storage (by default located in the `.dvc/cache`
 directory) for files that are under DVC control, and their different versions.
 (See `dvc cache` and
-[DVC internal files](/doc/user-guide/dvc-files-and-directories) for more
-details.)
+[DVC internal files](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+for more details.)
 
 - `cache.dir` - set/unset cache directory location. A correct value must be
   either an absolute path or a path **relative to the config file location**.
@@ -229,7 +229,7 @@ $ dvc config core.remote -u
 
 ## Example: Cache config options
 
-Set the cache directory to an absolute path:
+Set the <abbr>cache directory</abbr> to an absolute path:
 
 ```dvc
 $ dvc config cache.dir /mnt/cache

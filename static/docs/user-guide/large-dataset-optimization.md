@@ -1,9 +1,9 @@
 # Large Dataset Optimization
 
 In order to track the data files and directories added with `dvc add` or
-`dvc run`, DVC moves all these files to a special cache directory. The DVC cache
-is a hidden storage (by default located in `.dvc/cache`) for files that are
-under DVC control, and their different versions. (See `dvc cache` and
+`dvc run`, DVC moves all these files to a special <abbr>cache directory</abbr>.
+The DVC cache is a hidden storage (by default located in `.dvc/cache`) for files
+that are under DVC control, and their different versions. (See `dvc cache` and
 [DVC internal files](/doc/user-guide/dvc-files-and-directories) for more
 details.)
 
@@ -102,10 +102,10 @@ efficiency:
 
 ## Configuring DVC cache file link type
 
-By default DVC tries to use reflinks if available on your system, however this
-is not the most common case at this time, so it falls back to the copying
-strategy. If you wish to enable hard or soft links, you can configure DVC like
-this:
+By default DVC tries to use reflinks for the <abbr>cache</abbr> if available on
+your system, however this is not the most common case at this time, so it falls
+back to the copying strategy. If you wish to enable hard or soft links, you can
+configure DVC like this:
 
 ```dvc
 $ dvc config cache.type hardlink,symlink
