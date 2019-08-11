@@ -37,7 +37,7 @@ $ echo $0
   /bin/bash
 ```
 
-In this case, follow the steps to configure Bash as it is your active shell.
+In this case, follow these steps to configure Bash, as it is your active shell.
 
 ## Configure Bash
 
@@ -77,7 +77,7 @@ completion.
 
 ### Click to expand if it doesn't work on Debian/Ubuntu
 
-As mentioned above, it should work out of the box. But if it does not, try these
+As mentioned above, it should work out of the box. But if it doesn't, try these
 steps:
 
 - Make sure that the package `bash-completion` is installed:
@@ -86,7 +86,7 @@ steps:
   $ sudo apt install --reinstall bash-completion
   ```
 
-- Make sure that it is enabled. Edit `~/.bashrc` and make sure that these lines
+- Make sure that it's enabled. Edit `~/.bashrc` and make sure that these lines
   are there:
 
   ```bash
