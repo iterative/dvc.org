@@ -1,7 +1,7 @@
 # repro
 
 Run again commands recorded in the [stages](/doc/commands-reference/run) of one
-or more [pipelines](/doc/get-started/pipeline), in the correct order. The
+or more [pipelines](/doc/commands-reference/pipeline), in the correct order. The
 commands to be run are determined by recursively analyzing target stages and
 changes in their dependencies.
 

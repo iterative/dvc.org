@@ -66,8 +66,8 @@ remove nor modify those files in the remote cache.
 If one or more `targets` are specified, DVC only considers the files associated
 with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
 backward from the target [stage](/doc/commands-reference/run) file(s), through
-the corresponding [pipeline(s)](/doc/get-started/pipeline), to find data files
-to push.
+the corresponding [pipeline(s)](/doc/commands-reference/pipeline), to find data
+files to push.
 
 ## Options
 
@@ -148,7 +148,7 @@ $ dvc push data.zip.dvc
 ## Example: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-[pipeline](/doc/get-started/pipeline) has been setup with these
+[pipeline](/doc/commands-reference/pipeline) has been setup with these
 [stages](/doc/commands-reference/run):
 
 ```dvc

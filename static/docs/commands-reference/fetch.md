@@ -49,7 +49,7 @@ information on DVC remotes.) These necessary data or model files are listed as
 dependencies or outputs in a DVC-file (target
 [stage](/doc/commands-reference/run)) so they are required to
 [reproduce](/doc/get-started/reproduce) the corresponding
-[pipeline](/doc/get-started/pipeline). (See
+[pipeline](/doc/commands-reference/pipeline). (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
 

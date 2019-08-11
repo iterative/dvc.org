@@ -18,9 +18,9 @@ positional arguments:
 
 The `dvc commit` command is useful for several scenarios where a dataset is
 being changed: when a [stage](/doc/commands-reference/run) or
-[pipeline](/doc/get-started/pipeline) is in development, when one wishes to run
-commands outside the control of DVC, or to force DVC-file updates to save time
-tying stages or a pipeline.
+[pipeline](/doc/commands-reference/pipeline) is in development, when one wishes
+to run commands outside the control of DVC, or to force DVC-file updates to save
+time tying stages or a pipeline.
 
 - Code or data for a stage is under active development, with rapid iteration of
   code, configuration, or data. Run DVC commands (`dvc run`, `dvc repro`, and

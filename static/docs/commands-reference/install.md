@@ -29,9 +29,10 @@ that the data files will match the current DVC-files.
 The installed Git hook automates running `dvc checkout`.
 
 **Commit**: When committing a change to the Git repository, that change possibly
-requires reproducing the corresponding [pipeline](/doc/get-started/pipeline)
-(with `dvc repro`) to regenerate the project results. Or there might be files
-not yet in the cache, which is a reminder to run `dvc commit`.
+requires reproducing the corresponding
+[pipeline](/doc/commands-reference/pipeline) (with `dvc repro`) to regenerate
+the project results. Or there might be files not yet in the cache, which is a
+reminder to run `dvc commit`.
 
 The installed Git hook automates reminding the user to run either `dvc repro` or
 `dvc commit`.
