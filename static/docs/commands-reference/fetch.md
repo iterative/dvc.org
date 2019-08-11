@@ -134,7 +134,7 @@ $ cd example-get-started
 
 </details>
 
-The workspace `tree` looks almost like in this
+The workspace looks almost like in this
 [pipeline setup](/doc/get-started/example-pipeline):
 
 ```dvc
