@@ -6,8 +6,8 @@ basic useful framework to track, save and share models and large data files. To
 achieve full reproducibility though, we'll have to connect code and
 configuration with the data it processes to produce the result.
 
-If you've followed this get started guide from the beginning, run these commands
-to get the sample code:
+If you've followed this _Get Started_ section from the beginning, run these
+commands to get the sample code:
 
 > On Windows just use your browser to download the archive instead.
 

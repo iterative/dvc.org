@@ -1,9 +1,9 @@
 # Retrieve Data
 
-> Make sure that the steps described in
+> Make sure that the steps described in the
 > [initialization](/doc/get-started/initialize) and
-> [configuration](/doc/get-started/configure) are completed before you run the
-> `dvc pull` command in a newly cloned or initialized Git repository.
+> [configuration](/doc/get-started/configure) chapters are completed before you
+> run the `dvc pull` command in a newly cloned or initialized Git repository.
 
 To retrieve data files into the <abbr>workspace</abbr> in your local machine,
 run:

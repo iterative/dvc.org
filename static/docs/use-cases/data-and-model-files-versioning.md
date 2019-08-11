@@ -2,7 +2,7 @@
 
 > This document provides an overview of the basic files versioning DVC workflow.
 > To get a hands on experience and try it yourself we recommend you to follow
-> along the [versioning](/doc/get-started/example-versioning) get started
+> along the [Versioning](/doc/get-started/example-versioning) _Get Started_
 > example.
 
 DVC allows storing and versioning data files and directories, ML models,
@@ -115,5 +115,5 @@ To share your data with others you need to setup a remote repository. See the
 [Share Data And Model Files](/doc/use-cases/share-data-and-model-files) use case
 to get a high level overview on how to setup it and use `dvc pull` and
 `dvc push` commands to collaborate. Please, don't forget to see the
-[versioning](/doc/get-started/example-versioning) example to get a hands-on
+[Versioning](/doc/get-started/example-versioning) example to get a hands-on
 experience with datasets and models versioning.

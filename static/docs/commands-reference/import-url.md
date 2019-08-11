@@ -130,7 +130,7 @@ them on your system.
 Start by cloning our sample repo if you don't already have it. Then move into
 the repo and checkout the
 [version](https://github.com/iterative/example-get-started/releases/tag/2-remote)
-corresponding to the [Configure](/doc/get-started/configure) step:
+corresponding to the [Configure](/doc/get-started/configure) chapter:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -140,13 +140,13 @@ $ mkdir data
 ```
 
 You should now have a blank <abbr>workspace</abbr>, just before the
-[Add Files](/doc/get-started/add-files) step.
+[Add Files](/doc/get-started/add-files) chapter.
 
 </details>
 
 ## Example: Tracking a remote file
 
-An advanced alternate to [Add Files](/doc/get-started/add-files) step of the
+An advanced alternate to [Add Files](/doc/get-started/add-files) chapter of the
 _Get Started_ section is to use `dvc import-url`:
 
 ```dvc
@@ -248,8 +248,8 @@ instead of an `etag` we have an `md5` checksum. We did this so its easy to edit
 the data file.
 
 Let's now manually reproduce
-[one of the processing steps](/doc/get-started/connect-code-and-data) from the
-_Get Started_ project. Download the sample source code archive and unzip it:
+[one of the processing chapters](/doc/get-started/connect-code-and-data) from
+the _Get Started_ project. Download the sample source code archive and unzip it:
 
 ```dvc
 $ wget https://dvc.org/s3/get-started/code.zip
