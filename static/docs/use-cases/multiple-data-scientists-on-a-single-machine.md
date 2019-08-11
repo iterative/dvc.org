@@ -70,8 +70,8 @@ $ git commit -m "cleanup raw data"
 $ git push
 ```
 
-Your colleague can pull the code and have both `raw` and `clean` instantly
-appear in his workspace without copying anything. After this he decides to
+Your colleagues can pull the code and have both `raw` and `clean` instantly
+appear in their workspace without copying anything. After this they decide to
 continue building this pipeline and process the cleaned up data:
 
 ```dvc
@@ -83,7 +83,7 @@ $ git commit -m "process clean data"
 $ git push
 ```
 
-And now you can just as easily make his work appear in your workspace by:
+And now you can just as easily make their work appear in your workspace by:
 
 ```dvc
 $ git pull

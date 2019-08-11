@@ -153,8 +153,8 @@ $ source tests/remotes_env
 ```
 
 If some member of your team had already went through all of this you may just
-ask his `remotes_env` file and Google Cloud credentials and you can skip any
-manipulations with `ENV` below.
+ask for their `remotes_env` file and Google Cloud credentials and you can skip
+any manipulations with `ENV` below.
 
 <details>
 
