@@ -122,8 +122,6 @@ Download the precomputed data using:
 $ dvc pull --all-branches --all-tags
 ```
 
-This data will be retrieved from a preconfigured remote cache.
-
 </details>
 
 ## Example: Rapid iterations
