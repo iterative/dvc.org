@@ -3,9 +3,9 @@
 Lock a [DVC-file](/doc/user-guide/dvc-file-format)
 ([stage](/doc/commands-reference/run)). Use `dvc unlock` to unlock the file.
 
-If DVC-file is locked the stage is considered _done_ and `dvc repro` will not
-run commands to rebuild outputs even if some dependencies have changed and even
-if `--force` is provided.
+If a DVC-file is locked, the stage is considered unchanged. `dvc repro` will not
+run commands to rebuild outputs of locked stages, even if some dependencies have
+changed and even if `--force` is provided.
 
 ## Synopsis
 
@@ -18,9 +18,15 @@ positional arguments:
 
 ## Description
 
-Lock is useful to avoid syncing data from the top of a pipeline and keep
-iterating on the last stages only. In this sense `lock` causes any DVC-file to
-behave as an _orphan_ stage file as if created with `dvc add`.
+`dvc lock` causes any DVC-file to be considered _not changed_ by `dvc status`
+and `dvc repro`.
+
+Locking a stage is useful to avoid syncing data from the top of its pipeline,
+and keep iterating on the last (unlocked) stages only.
+
+Note that <abbr>import stages</abbr> are considered always locked. They can not
+be unlocked. Use `dvc update` on them to update the file, directory, or
+<abbr>data artifact</abbr> from its external data source.
 
 ## Options
 
@@ -31,9 +37,9 @@ behave as an _orphan_ stage file as if created with `dvc add`.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Examples
 
-- First, let's create a sample DVC-file:
+First, let's create a sample DVC-file:
 
 ```dvc
 $ echo foo > foo
@@ -42,12 +48,12 @@ Adding 'foo'...
 
 $ dvc run -d foo -o bar cp foo bar
 Running command:
-	cp foo bar
+  cp foo bar
 ...
 ```
 
-- Then, let's change the file `foo` that the stage described in `bar.dvc`
-  depends on:
+Then, let's change the file `foo` that the stage described in `bar.dvc` depends
+on:
 
 ```dvc
 $ rm foo
@@ -62,7 +68,7 @@ foo.dvc
                 changed:  foo
 ```
 
-- Now, let's lock the `bar` stage:
+Now, let's lock the `bar` stage:
 
 ```dvc
 $ dvc lock bar.dvc
@@ -73,7 +79,7 @@ $ dvc status
                   changed:  foo
 ```
 
-- Run `dvc unlock` to unlock it back:
+Run `dvc unlock` to unlock it back:
 
 ```dvc
 $ dvc unlock bar.dvc

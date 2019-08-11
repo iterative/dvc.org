@@ -38,7 +38,7 @@ $ git status -s data/
 ?? data/Posts.xml.zip.dvc
 
 $ git add .
-$ git commit -m "add source dataset"
+$ git commit -m "add raw dataset"
 ```
 
 You have probably already noticed that the actual data file was not committed to
@@ -63,8 +63,8 @@ need to run `dvc unprotect` or `dvc remove` first (see the
 If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
 `dvc add`, you will see that only outputs are defined in `outs`. In this file,
 only one output is defined. The output contains the data file path in the
-repository and md5 cache. This md5 cache determines a location of the actual
-content file in DVC cache directory `.dvc/cache`.
+repository and md5 checksum. This checksum determines a location of the actual
+content file in the <abbr>cache directory</abbr>, `.dvc/cache`.
 
 ```dvc
 $ cat data/Posts.xml.zip.dvc
@@ -134,8 +134,8 @@ ML process and pipe them together into a ML
 However, the command to run alone is not as interesting as its role within a
 pipeline, so we'll need to specify its dependencies and output files. We call
 this a pipeline [stage](/doc/commands-reference/run). Dependencies may include
-input files and directories, and the actual source script to run. Outputs are
-files written to by the command, if any.
+input files and directories, and the actual command to run. Outputs are files
+written to by the command, if any.
 
 1. Option `-d file.tsv` should be used to specify a dependency file or
    directory. The dependency can be a regular file from a repository or a data
@@ -186,8 +186,8 @@ and does some additional work if the command was successful:
 
 1. DVC transforms all the outputs `-o` files into data files. It is like
    applying `dvc add` for each of the outputs. As a result, all the actual data
-   files content goes to the cache directory `.dvc/cache` and each of the file
-   names will be added to `.gitignore`.
+   files content goes to the <abbr>cache directory</abbr> `.dvc/cache` and each
+   of the file names will be added to `.gitignore`.
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
    file in the workspace with information about this pipeline stage. (See
@@ -213,11 +213,9 @@ outs:
 
 Sections of the file above include:
 
-- `cmd` — the command to run.
-
-- `deps` — dependencies with md5 checksums.
-
-- `outs` — outputs with md5 checksums.
+- `cmd` — the command to run
+- `deps` — dependencies with md5 checksums
+- `outs` — outputs with md5 checksums
 
 And (as with the `dvc add` command) the `data/.gitignore` file was modified. Now
 it includes the unarchived command output file `Posts.xml`.

@@ -28,7 +28,7 @@ their corresponding pipeline(s) when connected. (See `dvc pipeline`.)
 
 ## Examples
 
-- List available pipelines:
+List available pipelines:
 
 ```dvc
 $ dvc pipeline list
@@ -38,5 +38,5 @@ raw.dvc
 data.dvc
 output.dvc
 ======================================================================
-2 pipeline(s) total
+2 pipelines total
 ```

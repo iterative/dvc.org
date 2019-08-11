@@ -6,7 +6,7 @@ enabled with `dvc config cache`).
 ## Synopsis
 
 ```usage
-usage: dvc unlock [-h] [-q | -v] targets [targets ...]
+usage: dvc unprotect [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
   targets        Data files/directories to unprotect.
@@ -27,13 +27,12 @@ safely updated. Read the
 [Update a Tracked File](/doc/user-guide/update-tracked-file) guide to learn more
 on this process.
 
-`dvc unprotect` can be an expensive operation (involves copying data), check
+`dvc unprotect` can be an expensive operation (involves copying data). Check
 first whether your task matches one of the cases that are considered safe, even
 when cache protected mode is enabled:
 
-- Adding more files to a directory input data set (say, images or videos).
-
-- Deleting files from a directory data set.
+- Adding more files to a directory input dataset (say, images or videos)
+- Deleting files from a directory dataset
 
 ## Options
 
@@ -44,12 +43,12 @@ when cache protected mode is enabled:
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Examples
 
 Enable cache protected mode is enabled:
 
 ```dvc
-    $ dvc config cache.protected true
+$ dvc config cache.protected true
 ```
 
 Put a data file under DVC control:
@@ -65,7 +64,7 @@ Saving information to 'Posts.xml.zip.dvc'.
 
 To track the changes with git run:
 
-	git add .gitignore Posts.xml.zip.dvc
+	git add .gitignore data.xml.dvc
 ```
 
 Check that file is a read-only link (@ sign means a link):

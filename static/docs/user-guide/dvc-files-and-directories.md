@@ -16,6 +16,7 @@ Once initialized in a project, DVC populates its installation directory
   contain your data files. (The data directories of DVC repositories will only
   contain links to the data files in the cache, refer to
   [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization).)
+  See `dvc config cache` for related configuration options.
 
   > Note that DVC includes the cache directory in `.gitignore` during the
   > initialization. No data files (with actual content) will ever be pushed to
@@ -25,8 +26,8 @@ Once initialized in a project, DVC populates its installation directory
 - `.dvc/state` - this file is used for optimization. It is a SQLite db, that
   contains checksums for files in a project with respective timestamps and
   inodes to avoid unnecessary checksum computations. It also contains a list of
-  links (from cache to workspace) created by dvc and is used to cleanup your
-  workspace when calling `dvc checkout`.
+  links (from <abbr>cache</abbr> to <abbr>workspace</abbr>) created by DVC and
+  is used to cleanup your workspace when calling `dvc checkout`.
 
 - `.dvc/state-journal` - temporary file for SQLite operations
 

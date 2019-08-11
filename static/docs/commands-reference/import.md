@@ -5,7 +5,7 @@
 
 Download or copy file or directory from another DVC repository (on a git server
 such as Github) into the <abbr>workspace</abbr>, and track changes in the remote
-source with DVC. Creates a DVC-file.
+data source with DVC. Creates a DVC-file.
 
 > See also `dvc get` which corresponds to the first step this command performs
 > (just download the data).
@@ -25,8 +25,8 @@ positional arguments:
 DVC provides an easy way to reuse datasets, intermediate results, ML models, or
 other files and directories tracked in another DVC repository into the present
 <abbr>workspace</abbr>. The `dvc import` command downloads such a <abbr>data
-artifact</abbr> in a way that it can be tracked with DVC, resulting in automatic
-updates when the external data source changes.
+artifact</abbr> in a way that it is tracked with DVC, so it can be updated when
+the external data source changes.
 
 The `url` argument specifies the external DVC project's Git repository URL (both
 HTTP and SSH protocols supported, e.g. `[user@]server:project.git`), while
@@ -50,6 +50,10 @@ determine whether the local copy is out of date.
 To actually [track the data](https://dvc.org/doc/get-started/add-files),
 `git add` (and `git commit`) the import stage (DVC-file).
 
+Note that import stages are considered always "locked" - meaning that if you run
+`dvc repro`, they won't be updated. Use `dvc update` on them to update the
+downloaded data artifact from the external DVC repo.
+
 ## Options
 
 - `-o`, `--out` - specify a location in the workspace to place the imported data
@@ -66,4 +70,44 @@ To actually [track the data](https://dvc.org/doc/get-started/add-files),
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-<!-- ## Example -->
+## Examples
+
+An obvious case for this command is to import a dataset from an external DVC
+repo, such as our
+[get started example repo](https://github.com/iterative/example-get-started).
+
+```dvc
+$ dvc import git@github.com:iterative/example-get-started data/data.xml
+Importing 'data/data.xml (git@github.com:iterative/example-get-started)' -> 'data.xml'
+...
+Saving information to 'data.xml.dvc'.
+...
+```
+
+In contrast with `dvc get`, this command doesn't just download the data file,
+but it also creates an import stage (DVC-file) to keep track of this <abbr>data
+artifact</abbr> as a special `repo`
+[external dependency](/doc/user-guide/external-dependencies). Check
+`data.xml.dvc`:
+
+```yaml
+md5: 7de90e7de7b432ad972095bc1f2ec0f8
+wdir: .
+deps:
+  - path: data/data.xml
+    repo:
+      url: git@github.com:iterative/example-get-started
+      rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
+outs:
+  - md5: a304afb96060aad90176268345e10355
+    path: data.xml
+    cache: true
+    metric: false
+    persist: false
+```
+
+Several of the values above are pulled from the original stage file
+`model.pkl.dvc` in the external DVC repo. `url` and `rev_lock` fields are used
+to specify the origin and version of the dependency.
+
+<!-- ## Example: Dataset registry -->

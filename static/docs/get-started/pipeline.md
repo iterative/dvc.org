@@ -7,7 +7,7 @@ outputs of a command (stage) as dependencies in another one, we can describe a
 sequence of commands that gets to a desired result. This is what we call a
 **data pipeline** or computational graph.
 
-Lets create a second stage (after `prepare.dvc`, created in the previous
+Let's create a second stage (after `prepare.dvc`, created in the previous
 chapter) to perform feature extraction:
 
 ```dvc

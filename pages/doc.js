@@ -8,27 +8,22 @@ import { RightPanel } from '../src/Documentation/RightPanel/RightPanel'
 import Page from '../src/Page'
 import SearchForm from '../src/SearchForm'
 import Page404 from '../src/Page404'
-import PerfectScrollbar from 'perfect-scrollbar'
 import Hamburger from '../src/Hamburger'
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
-import compact from 'lodash.compact'
-import flatten from 'lodash.flatten'
 import { scroller, animateScroll } from 'react-scroll'
-import 'core-js/fn/array/find-index'
 // styles
 import styled from 'styled-components'
 import { media } from '../src/styles'
-// json
-import sidebar from '../src/Documentation/sidebar'
+// sidebar data and helpers
+import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
 
 export default class Documentation extends Component {
   constructor() {
     super()
     this.state = {
-      currentSection: 0,
-      currentFile: null,
+      currentItem: {},
       markdown: '',
       headings: [],
       pageNotFound: false,
@@ -54,50 +49,12 @@ export default class Documentation extends Component {
         search: false
       })
     }
-    window.addEventListener('popstate', this.loadStateFromURL)
-    this.ps = new PerfectScrollbar('#sidebar-menu', {
-      // wheelPropagation: window.innerWidth <= 572
-      wheelPropagation: true
-    })
-  }
 
-  componentDidUpdate() {
-    this.ps.update()
+    window.addEventListener('popstate', this.loadStateFromURL)
   }
 
   componentWillUnmount() {
     window.removeEventListener('popstate', this.loadStateFromURL)
-  }
-
-  loadStateFromURL = () => {
-    const { pathname } = window.location
-    const sectionURL = pathname.split('/')[2] // match section from URL
-    const sectionIndex = sidebar.findIndex(
-      section => (section.slug || kebabCase(section.name)) === sectionURL
-    )
-    if (sectionIndex === -1) {
-      sectionURL
-        ? this.setState({ pageNotFound: true })
-        : this.onSectionSelect(0)
-    } else {
-      const fileURL = pathname.split('/')[3] // match file from URL
-      const sectionFiles = flatten(sidebar[sectionIndex].files)
-      const fileIndex = sectionFiles.findIndex(
-        file => kebabCase(file.slice(0, -3)) === fileURL
-      )
-      if (fileIndex === -1) {
-        fileURL
-          ? this.setState({ pageNotFound: true })
-          : this.onSectionSelect(sectionIndex)
-      } else {
-        this.loadFile({
-          section: sectionIndex,
-          file: sectionFiles[fileIndex],
-          parseHeadings: true,
-          pageNotFound: false
-        })
-      }
-    }
   }
 
   initDocsearch = () => {
@@ -109,54 +66,42 @@ export default class Documentation extends Component {
     })
   }
 
-  getLinkHref = (section, file) => {
-    const sectionSlug =
-      sidebar[section].slug || kebabCase(sidebar[section].name)
-    const fileSlug = file ? kebabCase(file.slice(0, -3)) : undefined
-    return `/doc/${compact([sectionSlug, fileSlug]).join('/')}`
-  }
-
-  setCurrentPath = (section, file) => {
-    window.history.pushState(null, null, this.getLinkHref(section, file))
-  }
-
-  onSectionSelect = (section, e) => {
+  onNavigate = (path, e) => {
     e && e.preventDefault()
-    const { indexFile, files } = sidebar[section]
-    const file = indexFile || flatten(files)[0]
-    e && this.setCurrentPath(section, indexFile ? undefined : file)
-    this.loadFile({ file, section, parseHeadings: false })
+    window.history.pushState(null, null, path)
+    this.loadPath(path)
   }
 
-  onFileSelect = (file, section, e) => {
-    e && e.preventDefault()
-    this.setCurrentPath(section, file)
-    this.loadFile({ file, section, parseHeadings: true })
-  }
+  loadStateFromURL = () => this.loadPath(window.location.pathname)
 
-  loadFile = ({ file, section, parseHeadings }) => {
-    fetch(`${sidebar[section].folder}/${file}`)
-      .then(res => {
-        res.text().then(text => {
-          this.setState(
-            {
-              currentSection: section,
-              currentFile: file,
-              markdown: text,
-              headings: [],
-              pageNotFound: false,
-              isMenuOpen: false
-            },
-            () => {
-              this.scrollTop()
-              parseHeadings && this.parseHeadings(text)
-            }
-          )
+  loadPath = path => {
+    const item = getItemByPath(path)
+
+    if (!item) {
+      this.setState({ pageNotFound: true, currentItem: {} })
+    } else {
+      fetch(item.source)
+        .then(res => {
+          res.text().then(text => {
+            this.setState(
+              {
+                markdown: text,
+                headings: [],
+                pageNotFound: false,
+                isMenuOpen: false,
+                currentItem: item
+              },
+              () => {
+                this.scrollTop()
+                this.parseHeadings(text)
+              }
+            )
+          })
         })
-      })
-      .catch(() => {
-        window.location.reload()
-      })
+        .catch(() => {
+          window.location.reload()
+        })
+    }
   }
 
   parseHeadings = text => {
@@ -208,21 +153,18 @@ export default class Documentation extends Component {
 
   render() {
     const {
-      currentSection,
-      currentFile,
+      currentItem: { source, path, label, next, prev },
       headings,
       markdown,
       pageNotFound,
       isMenuOpen
     } = this.state
 
-    const directory = sidebar[currentSection].folder
-    const githubLink = `https://github.com/iterative/dvc.org/blob/master${directory}/${currentFile}`
-    const sectionName = sidebar[currentSection].name
+    const githubLink = `https://github.com/iterative/dvc.org/blob/master${source}`
 
     return (
       <Page stickHeader={true}>
-        <HeadInjector sectionName={sectionName} />
+        <HeadInjector sectionName={label} />
         <Container>
           <Backdrop onClick={this.toggleMenu} visible={isMenuOpen} />
 
@@ -239,13 +181,10 @@ export default class Documentation extends Component {
 
             <SidebarMenu
               sidebar={sidebar}
-              currentSection={currentSection}
-              currentFile={currentFile}
+              currentPath={path}
               headings={headings}
-              getLinkHref={this.getLinkHref}
               scrollToLink={this.scrollToLink}
-              onSectionSelect={this.onSectionSelect}
-              onFileSelect={this.onFileSelect}
+              onNavigate={this.onNavigate}
             />
           </Side>
 
@@ -255,12 +194,11 @@ export default class Documentation extends Component {
             <Markdown
               markdown={markdown}
               githubLink={githubLink}
-              section={currentSection}
-              file={currentFile}
-              onFileSelect={this.onFileSelect}
+              prev={prev}
+              next={next}
+              onNavigate={this.onNavigate}
             />
           )}
-
           <RightPanel
             headings={headings}
             scrollToLink={this.scrollToLink}

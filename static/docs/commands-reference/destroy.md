@@ -13,9 +13,9 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 ## Description
 
 It removes DVC-files, and the entire `.dvc/` meta directory from the current
-workspace. Note that the DVC cache will normally be removed as well, unless it's
-set to an external location with `dvc cache dir`. (By default a local cache is
-located in the `.dvc/cache` directory.) If you were using
+workspace. Note that the <abbr>DVC cache</abbr> will normally be removed as
+well, unless it's set to an external location with `dvc cache dir`. (By default
+a local cache is located in the `.dvc/cache` directory.) If you were using
 [symlinks for linking data](/doc/user-guide/large-dataset-optimization) from the
 cache, DVC will replace them with copies, so that your data is intact after the
 DVC repository destruction.
@@ -31,7 +31,7 @@ DVC repository destruction.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example
+## Examples
 
 ```dvc
 $ dvc init
@@ -52,10 +52,10 @@ $ ls -a
 .git code.py foo
 ```
 
-## Example: External Cache Directory
+## Example: External cache directory
 
-By default, the cache location is `.dvc/cache`. Let's change the cache location
-to `/mnt/cache` and then execute `dvc destroy` command:
+By default, the <abbr>cache</abbr> location is `.dvc/cache`. Let's change the
+cache location to `/mnt/cache` and then execute `dvc destroy` command:
 
 ```dvc
 $ dvc init
@@ -64,9 +64,8 @@ $ dvc cache dir /mnt/cache
 $ dvc add foo
 ```
 
-`dvc cache dir` changed the location of cache storage to exernal
-location. Content of DVC repository:
-
+`dvc cache dir` changed the location of cache storage to exernal location.
+Content of DVC repository:
 
 ```dvc
 $ ls -a

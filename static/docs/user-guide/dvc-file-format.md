@@ -10,9 +10,10 @@ simple YAML format that could be easily written or altered manually.
 See the [Syntax Highlighting](/doc/user-guide/plugins) to learn how to enable
 the highlighting for your editor.
 
-Here is an example of a DVC-file:
+Here is a sample DVC-file:
 
 ```yaml
+locked: true
 cmd: python cmd.py input.data output.data metrics.json
 deps:
   - md5: da2259ee7c12ace6db43644aef2b754c
@@ -31,7 +32,6 @@ outs:
       type: json
       xpath: AUC
     path: metrics.json
-locked: True
 
 # Comments like this line persist through multiple executions of
 # dvc repro/commit but not through dvc run/add/import-url/get-url commands.
@@ -43,32 +43,45 @@ locked: True
 
 ## Structure
 
-On the top level, `.dvc` file consists of such fields:
+On the top level, `.dvc` file consists of these fields:
 
-- `cmd`: a command that is being run in this stage;
-- `deps`: a list of dependencies for this stage;
-- `outs`: a list of outputs for this stage;
-- `md5`: md5 checksum for this DVC-file;
-- `locked`: whether or not this stage is locked from reproduction;
-- `wdir`: a directory to run command in (default `.`);
+- `cmd`: a command that is being run in this stage
+- `deps`: a list of dependencies for this stage
+- `outs`: a list of outputs for this stage
+- `md5`: md5 checksum for this DVC-file
+- `locked`: whether or not this stage is locked from reproduction
+- `wdir`: directory to run command in (default `.`)
 
-A dependency entry consists of such fields:
+A dependency entry consists of a pair of fields:
 
-- `path`: path to the dependency, relative to the `wdir` path;
-- `md5`: md5 checksum for the dependency;
+- `path`: path to the dependency, relative to the `wdir` path (always present)
+- `md5`: md5 checksum for the dependency (most
+  [stages](/doc/commands-reference/run))
+- `etag`: strong ETag response header (only HTTP <abbr>external
+  dependencies</abbr> created with `dvc import-url`)
+- `repo`: this entry is only for DVC repository external dependencies created
+  with `dvc import`, and in itself contains the following fields:
 
-An output entry consists of such fields:
+  - `url`: URL of Git repository with source DVC project
+  - `rev_lock`: revision or version (Git commit hash) of the DVC repo at the
+    time of importing the dependency
 
-- `path`: path to the output, relative to the `wdir` path;
-- `md5`: md5 checksum for the output;
-- `cache`: whether or not dvc should cache the output;
-- `metric`: whether or not this file is a metric file;
+  > See the examples in
+  > [External Dependencies](/doc/user-guide/external-dependencies) for more
+  > info.
 
-A metric entry consists of such fields:
+An output entry consists of these fields:
 
-- `type`: type of the metrics file (e.g. raw/json/tsv/htsv/csv/hcsv);
+- `path`: path to the output, relative to the `wdir` path
+- `md5`: md5 checksum for the output
+- `cache`: whether or not dvc should cache the output
+- `metric`: whether or not this file is a metric file
+
+A metric entry consists of these fields:
+
+- `type`: type of the metrics file (e.g. raw/json/tsv/htsv/csv/hcsv)
 - `xpath`: path within the metrics file to the metrics data(e.g. `AUC.value` for
-  `{"AUC": {"value": 0.624321}}`);
+  `{"AUC": {"value": 0.624321}}`)
 
 A `meta` entry consists of `key: value` pairs such as `name: John`. A meta entry
 can have any valid YAML structure containing any number of attributes.

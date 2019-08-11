@@ -34,10 +34,10 @@ By default, this command recursively searches in pipeline stages, starting from
 the `targets`, to determine which ones have changed. Then it executes the
 corresponding commands again.
 
-`dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get source
-data files, intermediate or final results. It saves all the data files,
-intermediate or final results into the DVC cache (unless `--no-commit` option is
-specified), and updates stage files with the new checksum information.
+`dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
+files, intermediate or final results. It saves all the data files, intermediate
+or final results into the DVC cache (unless `--no-commit` option is specified),
+and updates stage files with the new checksum information.
 
 ## Options
 
@@ -176,7 +176,7 @@ $ dvc repro
 WARNING: assuming default target 'Dvcfile'.
 Stage 'filter.dvc' didn't change.
 Stage 'Dvcfile' didn't change.
-Pipeline is up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 It makes sense, since we haven't changed neither of the dependencies this
@@ -206,10 +206,10 @@ Saving information to 'Dvcfile'.
 You can now check that `Dvcfile` and `count.txt` have been updated with the new
 information, new `md5` checksums and a new result respectively.
 
-## Examples: Downstream
+## Example: Downstream
 
 The `--downstream` option allows us to only reproduce results from commands
-after a specific stage in a pipeline. To demonstrate how it works, lets make a
+after a specific stage in a pipeline. To demonstrate how it works, let's make a
 change in `text.txt` (the input of our first stage, defined in the previous
 example):
 
@@ -225,7 +225,7 @@ Now, using the `--downstream` option results in the following output:
 $ dvc repro --downstream
 WARNING: assuming default target 'Dvcfile'.
 Stage 'Dvcfile' didn't change.
-Pipeline is up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 The reason being that the `text.txt` is a file which is a dependency in the

@@ -46,9 +46,9 @@ The installed Git hook automates executing `dvc push`.
 ## Installed Git hooks
 
 - Git `pre-commit` hook executes `dvc status` before `git commit` to inform the
-  user about the workspace status.
+  user about the workspace status;
 - Git `post-checkout` hook executes `dvc checkout` after `git checkout` to
-  automatically synchronize the data files with the new workspace state.
+  automatically synchronize the data files with the new workspace state;
 - Git `pre-push` hook executes `dvc push` before `git push` to upload files and
   directories under DVC control to remote.
 
@@ -86,7 +86,7 @@ and edit it._
 ## Examples
 
 To explore `dvc install` let's consider a simple pipeline with several stages:
-the example workspace used in the [Getting Started](/doc/get-started) tutorial.
+the example workspace used in the [Get Started](/doc/get-started) section.
 
 <details>
 
@@ -132,8 +132,8 @@ Let's start our exploration with the impact of `dvc install` on the
 another changes the set of DVC-files in the workspace, which then also changes
 the data files that should be in the workspace.
 
-With the Getting Started example workspace described above, let's first list the
-available tags:
+With the _Get Started_ project described above, let's first list the available
+tags:
 
 ```dvc
 $ git tag
@@ -174,7 +174,7 @@ $ dvc checkout
 
 $ dvc status
 
-Pipeline is up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 After running `git checkout` we are also shown a message saying _You are in
@@ -231,11 +231,11 @@ HEAD is now at d13ba9a add featurization stage
 
 $ dvc status
 
-Pipeline is up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 Look carefully at this output and it is clear that the `dvc checkout` command
-has indeed been run. As a result the workspace is up-to-date with the data files
+has indeed been run. As a result the workspace is up to date with the data files
 matching what is referenced by the DVC-files.
 
 ## Example: Showing DVC status on Git commit
@@ -280,7 +280,7 @@ $ git status -s
 
 $ git commit -a -m "updated data after modified featurization"
 
-Pipeline is up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 
 [master 78d0c44] modified featurization
  5 files changed, 12 insertions(+), 12 deletions(-)
@@ -289,5 +289,5 @@ Pipeline is up to date. Nothing to reproduce.
 After reproducing this pipeline up to the "evaluate" stage, the data files are
 in sync with the code/config files, but we must now commit the changes to the
 Git repository. Looking closely we see that `dvc status` is run again, informing
-us that the data files are synchronized with the `Pipeline is up to date.`
+us that the data files are synchronized with the `Pipelines are up to date.`
 message.

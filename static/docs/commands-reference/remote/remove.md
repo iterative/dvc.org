@@ -3,10 +3,10 @@
 Remove a specified remote. This command affects DVC configuration files only, it
 does not physically remove data files stored remotely.
 
-See also [add](/doc/commands-reference/remote-add),
-[default](/doc/commands-reference/remote-default),
-[list](/doc/commands-reference/remote-list), and
-[modify](/doc/commands-reference/remote-modify) commands to manage data remotes.
+See also [add](/doc/commands-reference/remote/add),
+[default](/doc/commands-reference/remote/default),
+[list](/doc/commands-reference/remote/list), and
+[modify](/doc/commands-reference/remote/modify) commands to manage data remotes.
 
 ## Synopsis
 
@@ -37,6 +37,13 @@ edit config files manually.
 - `--local` - modify a local [config file](/doc/commands-reference/config)
   instead of `.dvc/config`. It is located in `.dvc/config.local` and is
   Git-ignored.
+
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
+
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 

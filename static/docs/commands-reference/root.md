@@ -24,9 +24,7 @@ command can be used to build a path to a dependency file, command, or output.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples
-
-1. Basic output:
+## Example: Basic output
 
 ```dvc
 $ dvc root
@@ -39,7 +37,7 @@ $ dvc root
 ..
 ```
 
-2. Referencing files:
+## Example: Referencing files
 
 ```dvc
 $ dvc root

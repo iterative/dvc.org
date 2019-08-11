@@ -1,7 +1,17 @@
-# External Outputs
+# Managing External Data
 
-You can specify external files as outputs for
-[DVC-files](/doc/user-guide/dvc-file-format) created by `dvc run` (stage files).
+There are cases when data is large enough or processing is organized in a way
+that you would like to avoid moving data out of the remote storage. For example,
+you are processing data on HDFS, running Dask via SSH, or have a script that
+streams data from S3 to process it, etc. A mechanism of external outputs and
+[External Dependencies](/doc/user-guide/external-dependencies) provides a way
+for DVC to control data externally.
+
+## Description
+
+You can take under DVC control files on an external storage with `dvc add` or
+specify external files as outputs for
+[DVC-files](/doc/user-guide/dvc-file-format) created by `dvc run` (stage files)
 DVC will track changes in those files and will reflect so in your pipeline
 [status](/doc/commands-reference/status). Currently, the following types of
 external outputs (protocols) are supported:
@@ -12,17 +22,31 @@ external outputs (protocols) are supported:
 4. SSH;
 5. HDFS;
 
+> Note that these are a subset of the remote storage types supported by
+> `dvc remote`.
+
 In order to specify an external output for a stage file use the usual `-o` and
-`-O` options with the `dvc run` command, but with URLs pointing to your desired
-files. For cached external outputs (specified using `-o`) you will need to setup
-an [external cache](/doc/commands-reference/config#cache) location that will be
-used by dvc to store versions of your external file. Non-cached external outputs
+`-O` options with the `dvc run` command, but with the external path or URL
+pointing to your desired files. For cached external outputs (specified using
+`-o`) you will need to setup an
+[external cache](/doc/commands-reference/config#cache) location that will be
+used by DVC to store versions of your external file. Non-cached external outputs
 (specified using `-O`) do not require external cache to be setup.
+
+> Avoid using the same remote location that you are using for `dvc push`,
+> `dvc pull`, `dvc fetch` as external cache for your external outputs, because
+> it may cause possible checksum overlaps. Checksum for some data file on an
+> external storage can potentially collide with checksum generated locally for a
+> different file, with a different content.
 
 ## Examples
 
-As an example, let's take a look at a [stage](/doc/commands-reference/run) that
-simply moves local file to/from external location:
+For the examples, let's take a look at a [stage](/doc/commands-reference/run)
+that simply moves local file to an external location, producing a `data.txt.dvc`
+stage file (DVC-file).
+
+> Note that some of these commands use the `/home/shared/` directory, typical in
+> Linux distributions.
 
 ### Local
 
@@ -31,9 +55,9 @@ to specify it explicitly.
 
 ```dvc
 $ dvc add /home/shared/mydata
-$ dvc run -d /home/shared/data.txt \
-          -o data.txt \
-          cp /home/shared/data.txt data.txt
+$ dvc run -d data.txt \
+          -o /home/shared/data.txt \
+          cp data.txt /home/shared/data.txt
 ```
 
 ### Amazon S3
@@ -49,8 +73,7 @@ $ dvc config cache.s3 s3cache
 $ dvc add s3://mybucket/mydata
 
 # Run the stage with external S3 output
-$ dvc run \
-          -d data.txt \
+$ dvc run -d data.txt \
           -o s3://mybucket/data.txt \
           aws s3 cp data.txt s3://mybucket/data.txt
 ```
@@ -68,8 +91,7 @@ $ dvc config cache.gs gscache
 $ dvc add gs://mybucket/mydata
 
 # Run the stage with external GS output
-$ dvc run \
-          -d data.txt \
+$ dvc run -d data.txt \
           -o gs://mybucket/data.txt \
           gsutil cp data.txt gs://mybucket/data.txt
 ```
@@ -87,8 +109,7 @@ $ dvc config cache.ssh sshcache
 $ dvc add ssh://user@example.com:/mydata
 
 # Run the stage with external SSH output
-$ dvc run \
-          -d data.txt \
+$ dvc run -d data.txt \
           -o ssh://user@example.com:/home/shared/data.txt \
           scp data.txt user@example.com:/home/shared/data.txt
 ```
@@ -106,8 +127,7 @@ $ dvc config cache.hdfs hdfscache
 $ dvc add hdfs://user@example.com/mydata
 
 # Run the stage with external HDFS output
-$ dvc run \
-          -d data.txt \
+$ dvc run -d data.txt \
           -o hdfs://user@example.com/home/shared/data.txt \
           hdfs fs -copyFromLocal \
                             data.txt \

@@ -26,7 +26,7 @@ for these commands.
 
 The `dvc push` command allows one to upload data to remote storage. It doesn't
 save any changes in the code or DVC-files. Those should be saved by using
-`git commit` and `git push`. 
+`git commit` and `git push`.
 
 Under the hood a few actions are taken:
 
@@ -34,10 +34,12 @@ Under the hood a few actions are taken:
   [DVC-files](/doc/user-guide/dvc-file-format in the current version. The
   command-line options listed below will either limit or expand the set of
   DVC-files to consult.
+
 - For each output referenced from each selected DVC-files, it finds a
   corresponding entry in the local cache. DVC checks if the entry exists, or
   not, in the remote simply by looking for it using the checksum. From this DVC
   gathers a list of files missing from the remote storage.
+
 - Upload the cache files missing from the remote cache, if any, to the remote.
 
 The DVC `push` command always works with a remote storage, and it is an error if
@@ -68,8 +70,6 @@ the corresponding [pipeline(s)](/doc/get-started/pipeline), to find data files
 to push.
 
 ## Options
-
-- `--show-checksums` - shows checksums instead of file names.
 
 - `-r REMOTE`, `--remote REMOTE` specifies which remote cache (see
   `dvc remote list`) to push to. The value for `REMOTE` is a cache name defined
@@ -117,13 +117,13 @@ to check existing remotes. Just to remind how it is done and set a context for
 the example, let's define an SSH remote with the `dvc remote add` command:
 
 ```dvc
-    $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
-    $ dvc remote list
-    r1	ssh://_username_@_host_/path/to/dvc/cache/directory
+$ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
+$ dvc remote list
+r1	ssh://_username_@_host_/path/to/dvc/cache/directory
 ```
 
 > DVC supports several remote types. For details, see the
-> [`remote add`](/doc/commands-reference/remote-add) documentation.
+> [`remote add`](/doc/commands-reference/remote/add) documentation.
 
 Push all data file caches from the current Git branch to the default remote:
 
@@ -145,7 +145,7 @@ $ dvc push data.zip.dvc
 [######################] 100% data.zip
 ```
 
-## Examples: With dependencies
+## Example: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example. First, assume a
 [pipeline](/doc/get-started/pipeline) has been setup with these
@@ -197,7 +197,7 @@ Everything is up to date.
 
 $ dvc status --cloud
 
-Pipeline is up to date. Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 With the first `dvc push` we specified a stage in the middle of this pipeline
@@ -209,7 +209,7 @@ Then we ran `dvc push` specifying the last stage, `model.p.dvc`, and its data
 was uploaded. Finally, we ran `dvc push` and `dvc status` with no options to
 double check that all data had been uploaded.
 
-## Examples: What happens in the cache
+## Example: What happens in the cache
 
 Let's take a detailed look at what happens to the DVC cache as you run an
 experiment in a local workspace and push data to a remote cache. To set the
@@ -334,21 +334,8 @@ $ tree ../vault/recursive
 
 $ dvc status --cloud
 
-Pipeline is up to date. Nothing to reproduce.
-
+Data and pipelines are up to date.
 ```
 
 And running `dvc status --cloud` verifies that indeed there are no more files to
 upload to the remote cache.
-
-## Examples: Show checksums
-
-Normally the file names are shown, but DVC can display the checksums instead.
-
-```dvc
-$ dvc push --remote r1 --show-checksums
-
-(1/3): [####################] 100% 844ef0cd13ff786c686d76bb1627081c
-(2/3): [####################] 100% c5409fafe56c3b0d4d4d8d72dcc009c0
-(3/3): [####################] 100% a8c5ae04775fcde33bf03b7e59960e18
-```

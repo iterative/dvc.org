@@ -13,12 +13,12 @@ as`git checkout` for your code.
 
 ### Preparation
 
-In order to make it work on a shared server, you need to setup a shared cache
-location for your projects, so that every team member is using the same cache
-storage:
+In order to make it work on a shared server, you need to setup a shared
+<abbr>cache</abbr> location for your projects, so that every team member is
+using the same cache storage:
 
 ```dvc
-$ mkdir -p /dvc-cache
+$ mkdir -p /path/to/dvc-cache
 ```
 
 You will have to make sure that the directory has proper permissions setup, so
@@ -33,20 +33,20 @@ permissions.
 This step is optional. You can skip it if you are setting up a new DVC
 repository and don't have your local cache stored in `.dvc/cache`. If you did
 work on your project with DVC previously and you wish to transfer your cache to
-the external cache directory, you will need to simply move it from an old cache
-location to the new one:
+the shared cache directory (external to your <abbr>workspace</abbr>), you will
+need to simply move it from an old cache location to the new one:
 
 ```dvc
-$ mv .dvc/cache/* /dvc-cache
+$ mv .dvc/cache/* /path/to/dvc-cache
 ```
 
 ### Configure External Cache
 
-Tell DVC to use the directory we've set up as an external cache location by
+Tell DVC to use the directory we've set up above as an shared cache location by
 running:
 
 ```dvc
-$ dvc config cache.dir /dvc-cache
+$ dvc config cache.dir /path/to/dvc-cache
 ```
 
 Commit changes to `.dvc/config` and push them to your git remote:
@@ -56,7 +56,7 @@ $ git add .dvc/config
 $ git commit -m "dvc: setup external cache dir"
 ```
 
-### Example
+### Examples
 
 You and your colleagues can work in your own workspaces as usual and DVC will
 handle all your data in the most effective way possible. Let's say you are

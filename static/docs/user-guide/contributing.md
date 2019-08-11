@@ -17,13 +17,13 @@ to learn how to submit your changes.
 ## Submitting changes
 
 - Open a new issue in the
-  [issue tracker](https://github.com/iterative/dvc/issues).
+  [issue tracker](https://github.com/iterative/dvc/issues);
 - Setup the [development environment](#development-environment) if you need to
-  run tests or [run](#running-development-version) the DVC with your changes.
+  run tests or [run](#running-development-version) the DVC with your changes;
 - Fork [DVC](https://github.com/iterative/dvc.git) and prepare necessary
-  changes.
-- Add tests for your changes to `tests/test_*.py`.
-- [Run tests](#running-tests) and make sure all of them pass.
+  changes;
+- Add tests for your changes to `tests/test_*.py`;
+- [Run tests](#running-tests) and make sure all of them pass;
 - Submit a pull request, referencing any issues it addresses.
 
 We will review your pull request as soon as possible. Thank you for
@@ -31,36 +31,38 @@ contributing!
 
 ## Development environment
 
-- Get the latest development version. Fork and clone the repo:
-  ```dvc
-  $ git clone git@github.com:<username>/dvc.git
-  ```
-- Make sure that you have python 3 installed. Version 3.6 or higher is required
-  to run style checkers on pre-commit. On Mac OS, use `brew` to install the
-  latest version of python.
-- Install DVC in editable mode with `pip install -e ".[all,tests]"`. We
-  **strongly** recommend initializing a
-  [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
-  installing the required libraries. For example:
+Get the latest development version. Fork and clone the repo:
 
-  ```dvc
-  $ cd dvc
-  $ virtualenv --python python3 .env
-  $ source .env/bin/activate
-  $ pip install -e ".[all,tests]"
-  ```
+```dvc
+$ git clone git@github.com:<username>/dvc.git
+```
 
-- Install coding style pre-commit hooks with
+Make sure that you have Python 3 installed. Version 3.6 or higher is required to
+run style checkers on pre-commit. On Mac OS, we recommend using `brew` to
+install Python.
 
-  ```dvc
-  $ pip install pre-commit
-  $ pre-commit install
-  ```
+Install DVC in editable mode with `pip install -e ".[all,tests]"`. We
+**strongly** recommend initializing a
+[virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
+installing the required libraries. For example:
 
-  > Note: the double quotes (`""`) used to wrap the dependencies, which are to
-  > be installed, are only compulsory when using `zsh`. In `bash`, installation
-  > commands can work even without them. For example,
-  > `pip install -e .[all,tests]`.
+```dvc
+$ cd dvc
+$ virtualenv --python python3 .env
+$ source .env/bin/activate
+$ pip install -e ".[all,tests]"
+```
+
+> Note that the double quotes (`""`) used to wrap the dependencies to be
+> installed are only compulsory when using `zsh`. In `bash`, installation
+> commands can work without them: `pip install -e .[all,tests]`.
+
+Install coding style pre-commit hooks with:
+
+```dvc
+$ pip install pre-commit
+$ pre-commit install
+```
 
 That should be it. You should be ready to make changes, run tests do commits! If
 you experience any problems, please don't hesitate to ping us in our
@@ -182,7 +184,7 @@ your OS. After that you should have `gcloud` command line tool available and
 authenticated with your google account.
 
 You then need to create a bucket, a service account and get its credentials. You
-can do this via web UI or console. Then you need to put your keys to
+can do this via web UI or terminal. Then you need to put your keys to
 `scripts/ci/gcp-creds.json` and add these to your `ENV`:
 
 ```dvc
@@ -262,7 +264,7 @@ $ ./scripts/ci/remove_hadoop.sh
 
 </details>
 
-## Code style guidelines
+## Code style guidelines (for Python)
 
 We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and checking
 that our code is formatted with [black](https://github.com/ambv/black).
@@ -271,7 +273,7 @@ For [docstrings](https://www.python.org/dev/peps/pep-0257/#what-is-a-docstring),
 we try to adhere by the
 [Google Python Style Guide](https://github.com/google/styleguide/blob/gh-pages/pyguide.md#38-comments-and-docstrings).
 
-## Commit style guidelines
+## Commit message format guidelines
 
 Format:
 
@@ -290,7 +292,7 @@ Message types:
 - _short description_ - short description of the patch;
 - _long description_ - If needed, longer message describing the patch in more
   details;
-- _github issue id_ - An id of the Github issue that this patch is addressing;
+- _github issue id_ - An id of the Github issue that this patch is addressing
 
 Example:
 

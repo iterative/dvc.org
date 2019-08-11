@@ -65,9 +65,10 @@ let _javascript = function(hljs) {
                 keywords: {
                   built_in:
                     'help dvc init add import-url checkout run pull push ' +
-                    'fetch status repro remove move gc config remote metrics' +
-                    ' install root lock unlock pipeline destroy unprotect ' +
-                    ' commit cache pkg tag diff version get get-url'
+                    'fetch status repro remove move gc config remote metrics ' +
+                    'install root lock unlock pipeline destroy unprotect ' +
+                    'commit cache pkg tag diff version get get-url import ' +
+                    'update'
                 },
                 className: 'strong'
               }

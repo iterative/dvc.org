@@ -1,5 +1,14 @@
 # External Dependencies
 
+There are cases when data is large enough or processing is organized in a way
+that you would like to avoid moving data out of the remote storage. For example,
+you are processing data on HDFS, running Dask via SSH, or have a script that
+streams data from S3 to process it, etc. A mechanism of external dependencies
+and [External Outputs](/doc/user-guide/external-outputs) provides a way for DVC
+to control data externally.
+
+## Description
+
 With DVC you can specify external files as dependencies for your pipeline
 stages. DVC will track changes in those files and will reflect that in your
 pipeline state. Currently, the following types of external dependencies
@@ -12,13 +21,20 @@ pipeline state. Currently, the following types of external dependencies
 5. HDFS;
 6. HTTP;
 
-> Note that these match with the types supported by `dvc remote`.
+> Note that these match with the remote storage types supported by `dvc remote`.
 
 In order to specify an external dependency for your stage, use the usual '-d'
-option in `dvc run` with the remote URL pointing to your desired file or
-directory.
+option in `dvc run` with the external path or URL pointing to your desired file
+or directory.
 
-## Examples: Defined directly with URLs
+## Examples
+
+As examples, let's take a look at a [stage](/doc/commands-reference/run) that
+simply moves local file from an external location, producing a `data.txt.dvc`
+stage file (DVC-file).
+
+> Note that some of these commands use the `/home/shared/` directory, typical in
+> Linux distributions.
 
 ### Local
 
@@ -70,7 +86,7 @@ $ dvc run -d https://example.com/data.txt \
           wget https://example.com/data.txt -O data.txt
 ```
 
-## Examples: Defined with DVC Remote aliases
+## Example: Defined with DVC remote aliases
 
 If instead of a URL you'd like to use an alias that can be managed
 independently, or if the external dependency location requires access
@@ -90,36 +106,82 @@ $ dvc run -d remote://example/data.txt \
 Please refer to `dvc remote add` for more details like setting up access
 credentials for certain remotes.
 
-## Using import-url
+## Example: Using import-url
 
-In the previous command examples, downloading commands were used: `aws s3 cp`,
-`scp`, `wget`, etc. `dvc import-url` simplifies the downloading part for all the
-supported types of dependencies.
+In the previous examples, downloading commands were used: `aws s3 cp`, `scp`,
+`wget`, etc. `dvc import-url` simplifies the downloading for all the supported
+types of dependencies.
 
 ```dvc
 $ dvc import-url https://dvc.org/s3/get-started/data.xml
+Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data.xml'
+[##############################] 100% data.xml
+...
 ```
+
+The command above creates an <abbr>import stage</abbr> specified in DVC-file
+`data.xml.dvc` that uses an external dependency (in this case of HTTP type).
 
 <details>
 
-### Expand to learn more about DVC internals
-
-If you open the resulting DVC-file, you will see something like this:
+### Expand to see resulting DVC-file
 
 ```yaml
+# ...
 deps:
   - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
     path: https://dvc.org/s3/get-started/data.xml
-md5: bea9674331a4b1d165f2b0abaf2cb0ef
 outs:
-  - cache: true
-    md5: a304afb96060aad90176268345e10355
+  - md5: a304afb96060aad90176268345e10355
     path: data.xml
+    cache: true
+    metric: false
+    persist: false
 ```
 
 DVC checks the headers returned by the server, looking for a strong
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
 [Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it to know
 if the file has changed and we need to download it again.
+
+</details>
+
+## Example: Using import
+
+`dvc import` can download a <abbr>data artifact</abbr> from an external DVC
+repository. It also creates an external dependency in its <abbr>import
+stage</abbr> (DVC-file).
+
+```dvc
+$ dvc import git@github.com:iterative/example-get-started model.pkl
+Importing 'model.pkl (git@github.com:iterative/example-get-started)' -> 'model.pkl'
+Preparing to download data from 'https://remote.dvc.org/get-started'
+...
+```
+
+The command above creates `model.pkl.dvc`, where a special `repo` external
+dependency is specified.
+
+<details>
+
+### Expand to see resulting DVC-file
+
+```yaml
+# ...
+deps:
+  - path: model.pkl
+    repo:
+      url: git@github.com:iterative/example-get-started
+      rev_lock: 6c73875a5f5b522f90b5afa9ab12585f64327ca7
+outs:
+  - md5: 3863d0e317dee0a55c4e59d2ec0eef33
+    path: model.pkl
+    cache: true
+    metric: false
+    persist: false
+```
+
+For external sources that are DVC repositories, `url` and `rev_lock` fields are
+used to specify the origin and version of the dependency.
 
 </details>

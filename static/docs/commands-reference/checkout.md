@@ -39,6 +39,7 @@ The execution of `dvc checkout` does:
   on the command line. And if the `--with-deps` option is specified, it scans
   backward from the given `targets` in the corresponding
   [pipeline](/doc/get-started/pipeline).
+
 - For any data files where the checksum doesn't match their DVC-file entry, the
   data file is restored from the cache. The link strategy used (`reflink`,
   `hardlink`, `symlink`, or `copy`) depends on the OS and the configured value
@@ -82,7 +83,7 @@ be pulled from a remote cache using `dvc pull`.
   DVC will not checkout files referenced in later stage(s) than `targets`.
 
 - `-R`, `--recursive` - `targets` is expected to contain at least one directory
-  path for this option to have effect. Determines the files to checout by
+  path for this option to have effect. Determines the files to checkout by
   searching each target directory and its subdirectories for DVC-files to
   inspect.
 
@@ -102,36 +103,21 @@ be pulled from a remote cache using `dvc pull`.
 
 ## Examples
 
-To explore `dvc checkout` let's consider a simple workspace with several
-[stages](/doc/commands-reference/run), and a few Git tags. Then with
-`git checkout` and `dvc checkout` we can see what happens as we shift from tag
-to tag.
+Let's employ a simple workspace with some data, code, ML models, pipeline
+stages, as well as a few Git tags, such as our
+[get started example repo](https://github.com/iterative/example-get-started).
+Then we can see what happens with `git checkout` and `dvc checkout` as we switch
+from tag to tag.
 
 <details>
 
 ### Click and expand to setup the project
 
-This step is optional, and you can run it only if you want to run this examples
-in your environment. First, you need to download the project:
+Start by cloning our sample repo if you don't already have it:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
-```
-
-Second, let's install the requirements. But before we do that, we **strongly**
-recommend creating a virtual environment with
-[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool:
-
-```dvc
 $ cd example-get-started
-$ virtualenv -p python3 .env
-$ source .env/bin/activate
-```
-
-Now, we can install requirements for the project:
-
-```dvc
-$ pip install -r requirements.txt
 ```
 
 </details>
@@ -156,7 +142,6 @@ solving the problem:
 
 ```dvc
 $ git tag
-
 baseline     <- first simple version of the model
 bigram       <- use bigrams to improve the model
 ```

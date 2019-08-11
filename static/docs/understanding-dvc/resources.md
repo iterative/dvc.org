@@ -27,16 +27,16 @@
 
 ## Articles
 
-- [Using DVC to create an efficient version control system for data projects](https://medium.com/qonto-engineering/using-dvc-to-create-an-efficient-version-control-system-for-data-projects-96efd94355fe)
-- [Our Machine Learning Workflow: DVC, MLFlow and Training in Docker Containers](https://medium.com/ixorthink/our-machine-learning-workflow-dvc-mlflow-and-training-in-docker-containers-5b9c80cdf804)
-- [Principled Machine Learning: Practices and Tools for Efficient Collaboration](https://dev.to/robogeek/principled-machine-learning-4eho)
-- [Data version control with DVC. What do the authors have to say?](https://towardsdatascience.com/data-version-control-with-dvc-what-do-the-authors-have-to-say-3c3b10f27ee)
-- [Why Git and Git-LFS is not enough to solve the Machine Learning Reproducibility crisis](https://towardsdatascience.com/why-git-and-git-lfs-is-not-enough-to-solve-the-machine-learning-reproducibility-crisis-f733b49e96e8)
-- [My First Try at DVC](https://stdiff.net/MB2019051301.html)
-- [Machine Learning Reproducibility crisis](https://petewarden.com/2018/03/19/the-machine-learning-reproducibility-crisis/)
-- [Data Science Workflow](http://fouryears.eu/2018/11/29/the-data-science-workflow/)
-- [The Data Science Workflow](https://towardsdatascience.com/the-data-science-workflow-43859db0415)
-- [Data Versioning Notebook](https://www.kaggle.com/rtatman/kerneld4769833fe)
+- [Using DVC to create an efficient version control system for data projects](https://medium.com/qonto-engineering/using-dvc-to-create-an-efficient-version-control-system-for-data-projects-96efd94355fe);
+- [Our Machine Learning Workflow: DVC, MLFlow and Training in Docker Containers](https://medium.com/ixorthink/our-machine-learning-workflow-dvc-mlflow-and-training-in-docker-containers-5b9c80cdf804);
+- [Principled Machine Learning: Practices and Tools for Efficient Collaboration](https://dev.to/robogeek/principled-machine-learning-4eho);
+- [Data version control with DVC. What do the authors have to say?](https://towardsdatascience.com/data-version-control-with-dvc-what-do-the-authors-have-to-say-3c3b10f27ee);
+- [Why Git and Git-LFS is not enough to solve the Machine Learning Reproducibility crisis](https://towardsdatascience.com/why-git-and-git-lfs-is-not-enough-to-solve-the-machine-learning-reproducibility-crisis-f733b49e96e8);
+- [My First Try at DVC](https://stdiff.net/MB2019051301.html);
+- [Machine Learning Reproducibility crisis](https://petewarden.com/2018/03/19/the-machine-learning-reproducibility-crisis/);
+- [Data Science Workflow](http://fouryears.eu/2018/11/29/the-data-science-workflow/);
+- [The Data Science Workflow](https://towardsdatascience.com/the-data-science-workflow-43859db0415);
+- [Data Versioning Notebook](https://www.kaggle.com/rtatman/kerneld4769833fe);
 - [First Impressions of Data Science Version Control](https://medium.com/@christopher.samiullah/first-impressions-of-data-science-version-control-dvc-fe96ab29cdda?sk=05e1f1d1ba16c9037046f3568956f16c)
 
 ## Slides
