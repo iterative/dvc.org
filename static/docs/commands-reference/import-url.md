@@ -189,7 +189,7 @@ its necessary to download it again.
 > See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
 > text format above.
 
-You may want to get out of and remove the `example-get-started` directory after
+You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).
 
 ## Example: Detecting remote file changes

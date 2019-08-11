@@ -17,7 +17,7 @@ positional arguments:
 
 After DVC initialization, a hidden directory `.dvc/` is created with the
 [DVC internal files](/doc/user-guide/dvc-files-and-directories), including the
-default `cache` directory.
+default cache directory.
 
 The DVC cache is where your data files, models, etc (anything you want to
 version with DVC) are actually stored. The corresponding files you see in the

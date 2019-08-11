@@ -75,7 +75,8 @@ $ dvc init
 $ git commit -m "initialize DVC"
 ```
 
-Download an input dataset to the `data` directory and take it under DVC control:
+Download an input dataset to the `data/` directory and take it under DVC
+control:
 
 ```dvc
 $ mkdir data
@@ -91,10 +92,10 @@ When we run `dvc add` `Posts.xml.zip`, DVC creates a
 ### Expand to learn more about DVC internals
 
 `dvc init` created a new directory `example/.dvc/` with `config`, `.gitignore`
-files and the `cache` directory. These files and directories are hidden from
-users in general. Users don't interact with these files directly. See
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
-more.
+files and the <abbr>cache directory</abbr>. These files and directories are
+hidden from users in general. Users don't interact with these files directly.
+See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
+learn more.
 
 Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
 "_orphan_ stage file":
@@ -165,10 +166,11 @@ outs:
     path: data/Posts.xml
 ```
 
-This file is using the same technique - pointers (md5 hashes) to the cache to
-describe and version control dependencies and outputs. Output `Posts.xml` file
-is automatically added to the `.gitignore` file and a link is created into a
-cache `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
+This file is using the same technique - pointers (md5 hashes) to the
+<abbr>cache</abbr> to describe and version control dependencies and outputs.
+Output `Posts.xml` file is automatically added to the `.gitignore` file and a
+link is created into a cache `.dvc/cache/a3/04afb96060aad90176268345e10355` to
+save it.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
 that DVC-files describe, we can restore the full chain (DAG) of commands we need

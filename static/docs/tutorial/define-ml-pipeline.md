@@ -3,7 +3,7 @@
 ## Get data file
 
 To include a data file into your data science environment, you need to copy the
-file into the repository. We'll create a special `data` directory for the data
+file into the repository. We'll create a special `data/` directory for the data
 files and download a 40MB data archive into this directory.
 
 <details>

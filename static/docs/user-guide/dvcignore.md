@@ -60,7 +60,7 @@ $ tree .
     └── data2
 ```
 
-We created the `data` directory. Let's ignore part of the `data` and add it
+We created the `data/` directory. Let's ignore part of the `data` and add it
 under DVC control.
 
 ```dvc

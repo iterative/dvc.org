@@ -165,11 +165,11 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 
 ### Expand to learn more about DVC internals
 
-As we mentioned briefly, DVC does not commit the `data` directory and `model.h5`
-file into git, `dvc add` pushed them into the DVC cache and added to the
-`.gitignore`. Instead, we commit DVC-files that serve as pointers to the cache
-(usually in the `.dvc/cache` directory inside the repository) where actual data
-resides.
+As we mentioned briefly, DVC does not commit the `data/` directory and
+`model.h5` file into git, `dvc add` pushed them into the DVC cache and added to
+the `.gitignore`. Instead, we commit DVC-files that serve as pointers to the
+cache (usually in the `.dvc/cache` directory inside the repository) where actual
+data resides.
 
 In this case we created `data.dvc` and `model.h5.dvc` files. Refer to the
 [DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
@@ -291,7 +291,7 @@ place.
 
 `dvc add` is appropriate when you need to keep track of different versions of
 datasets or model files that come and are updated from external sources. The
-`data` directory above (with cats and dogs images) is a good example.
+`data/` directory above (with cats and dogs images) is a good example.
 
 On the other hand, there are files that are a result of running some code. In
 our example, please notice that `train.py` produces binary files (e.g.

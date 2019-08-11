@@ -45,7 +45,7 @@ For the examples, let's take a look at a [stage](/doc/commands-reference/run)
 that simply moves local file to an external location, producing a `data.txt.dvc`
 stage file (DVC-file).
 
-> Note that some of these commands use the `/home/shared/` directory, typical in
+> Note that some of these commands use the `/home/shared` directory, typical in
 > Linux distributions.
 
 ### Local
