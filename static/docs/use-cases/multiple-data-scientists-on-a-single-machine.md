@@ -28,7 +28,7 @@ you and your colleagues are members of the same group (e.g. `users`) and that
 your shared cache directory is owned by that group and has respective
 permissions.
 
-### Transfer Existing Cache (Optional)
+### Transfer existing cache (Optional)
 
 This step is optional. You can skip it if you are setting up a new DVC
 repository and don't have your local cache stored in `.dvc/cache`. If you did
@@ -40,7 +40,7 @@ move it from an old cache location to the new one:
 $ mv .dvc/cache/* /path/to/dvc-cache
 ```
 
-### Configure Shared Cache
+### Configure shared cache
 
 Tell DVC to use the directory we've set up above as an shared cache location by
 running:
