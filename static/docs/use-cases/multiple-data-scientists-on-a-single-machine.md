@@ -40,10 +40,10 @@ move it from an old cache location to the new one:
 $ mv .dvc/cache/* /path/to/dvc-cache
 ```
 
-### Configure External Cache (Optional)
+### Configure Shared Cache
 
-This step is optional. Tell DVC to use the directory we've set up above as an
-shared cache location by running:
+Tell DVC to use the directory we've set up above as an shared cache location by
+running:
 
 ```dvc
 $ dvc config cache.dir /path/to/dvc-cache
@@ -53,7 +53,7 @@ Commit changes to `.dvc/config` and push them to your git remote:
 
 ```dvc
 $ git add .dvc/config
-$ git commit -m "dvc: setup external cache dir"
+$ git commit -m "dvc: shared external cache dir"
 ```
 
 ### Examples
