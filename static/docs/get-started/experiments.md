@@ -38,6 +38,7 @@ $ dvc checkout
 ```
 
 DVC is designed to checkout large data files (no matter how large they are) into
-your workspace instantly on almost all modern operating systems with file links.
-See [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization)
-for more information.
+your <abbr>workspace</abbr> instantly on almost all modern operating systems
+with file links. See
+[Large Dataset Optimization](/docs/user-guide/large-dataset-optimization) for
+more information.

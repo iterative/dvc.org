@@ -64,9 +64,9 @@ $ pip install -r code/requirements.txt
 Next, we will create a pipeline step-by-step, utilizing the same set of commands
 that are described in earlier [get started](/doc/get-started) chapters.
 
-> Note that its possible to define more than one pipeline in each project. This
-> will be determined by the interdependencies between DVC-files, mentioned
-> below.
+> Note that its possible to define more than one pipeline in each <abbr>DVC
+> project</abbr>. This will be determined by the interdependencies between
+> DVC-files, mentioned below.
 
 Initialize DVC repository (run it inside your Git repository):
 
@@ -112,9 +112,10 @@ of the data file itself.
 
 Actual data file `Posts.xml.zip` is linked into the `.dvc/cache` directory,
 under the `.dvc/cache/ce/68b98d82545628782c66192c96f2d2` name and is added to
-`.gitignore`. Even if you remove it in the workspace, or checkout a different
-branch/commit the data is not lost if a corresponding DVC-file is committed.
-It's enough to run `dvc checkout` or `dvc pull` to restore data files.
+`.gitignore`. Even if you remove it in the <abbr>workspace</abbr>, or checkout a
+different branch/commit the data is not lost if a corresponding DVC-file is
+committed. It's enough to run `dvc checkout` or `dvc pull` to restore data
+files.
 
 </details>
 

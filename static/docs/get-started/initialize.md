@@ -5,8 +5,8 @@ In order to start using DVC, you need first to initialize it in your
 control management system, but for the best experience we recommend using DVC on
 top of Git repositories.
 
-If you don't have a directory for this project already, create it now with these
-commands:
+If you don't have a directory for this <abbr>project</abbr> already, create it
+now with these commands:
 
 ```dvc
 $ mkdir example-get-started

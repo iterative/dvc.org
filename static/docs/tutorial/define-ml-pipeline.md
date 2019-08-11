@@ -81,8 +81,8 @@ $ du -sh .dvc/cache/ec/*
 > Outputs from DVC-files define the relationship between the data file path in a
 > repository and the path in a cache directory.
 
-Keeping actual file content in a cache directory and a copy of the caches in
-user workspace during `$ git checkout` is a regular trick that
+Keeping actual file content in a cache directory and a copy of the caches in the
+user <abbr>workspace</abbr> during `$ git checkout` is a regular trick that
 [Git-LFS](https://git-lfs.github.com/) (Git for Large File Storage) uses. This
 trick works fine for tracking small files with source code. For large data
 files, this might not be the best approach, because of _checkout_ operation for
@@ -125,10 +125,9 @@ same.
 
 ## Running commands
 
-Once data source files are in the workspace you can start processing the data
-and train ML models out of the data files. DVC helps you to define steps of your
-ML process and pipe them together into a ML
-[pipeline](/doc/get-started/pipeline).
+Once the data files are in the workspace, you can start processing the data and
+train ML models out of the data files. DVC helps you to define steps of your ML
+process and pipe them together into a ML [pipeline](/doc/get-started/pipeline).
 
 `dvc run` executes any command that you pass into it as a list of parameters.
 However, the command to run alone is not as interesting as its role within a
@@ -190,9 +189,9 @@ and does some additional work if the command was successful:
    of the file names will be added to `.gitignore`.
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
-   file in the workspace with information about this pipeline stage. (See
-   [DVC-File Format](/doc/user-guide/dvc-file-format)). Note that the name of
-   this file could be specified by using the `-f` option, for example
+   file in the <abbr>project</abbr> with information about this pipeline stage.
+   (See [DVC-File Format](/doc/user-guide/dvc-file-format)). Note that the name
+   of this file could be specified by using the `-f` option, for example
    `-f extract.dvc`.
 
 Let's take a look at the resulting stage file created by `dvc run` above:

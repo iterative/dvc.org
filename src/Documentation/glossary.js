@@ -16,7 +16,7 @@ code, ML models, etc. A workspace becomes a **DVC project** when
     },
     {
       name: 'DVC Project',
-      match: ['DVC project', 'project'],
+      match: ['DVC project', 'project', 'projects'],
       desc: `
 Initialized by running \`dvc init\` in the **workspace**. It will contain the
 \`.dvc/\` directory and [DVC-files](/doc/user-guide/dvc-file-format) created
@@ -26,7 +26,7 @@ repository.
     },
     {
       name: 'DVC Cache',
-      match: ['DVC cache', 'cache', 'cache directory', 'cached'],
+      match: ['DVC cache', 'cache', 'cache directory', 'data cache', 'cached'],
       desc: `
 The DVC cache is a hidden storage (by default located in the \`.dvc/cache\`
 directory) for files that are under DVC control, and their different versions.

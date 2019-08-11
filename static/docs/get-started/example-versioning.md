@@ -68,9 +68,9 @@ $ pip install -r requirements.txt
 ### Expand to learn more about DVC internals
 
 The repository you cloned is already DVC-initialized. There should be a `.dvc/`
-directory with `config`, `.gitignore` files and the `cache` directory. These
-files and directories are hidden from users in general. Users don't interact
-with these files directly. See
+directory with `config`, `.gitignore` files and the <abbr>cache
+directory</abbr>. These files and directories are hidden from users in general.
+Users don't interact with these files directly. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -133,10 +133,12 @@ $ dvc add data
 This command should be used instead of `git add` on files or directories that
 are too large to be put into Git. Usually, input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
-the DVC cache (of course, it keeps a link to it in the workspace, so you can
-continue working with it the same way as before). Instead, it creates a simple
-human-readable [DVC-file](/doc/user-guide/dvc-file-format) that can be
-considered as a pointer to the cache.
+the DVC cache (while keeping a
+[file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+to it in the <abbr>workspace</abbr>, so you can continue working with it the
+same way as before). Instead, it creates a simple human-readable
+[DVC-file](/doc/user-guide/dvc-file-format) that can be considered as a pointer
+to the cache.
 
 Next, we run the training with `python train.py`. We picked this example and
 datasets to be small enough to be run on your machine in a reasonable amount of
@@ -238,11 +240,11 @@ An operation that helps to get the specific committed version of data is
 designed to be similar to Git. In Git (or any other code version control system)
 when you need to get to a previous committed version of the code you run
 `git checkout`. All we need to do in our case is to run additionally
-`dvc checkout` to get the right data to the workspace.
+`dvc checkout` to get the right data into the <abbr>workspace</abbr>.
 
 ![](/static/img/versioning.png)
 
-There are two ways of doing this - a full workspace checkout or checkout of a
+There are two ways of doing this: a full workspace checkout or checkout of a
 specific data or mode file. Let's consider the full checkout first. It's quite
 straightforward:
 

@@ -5,15 +5,16 @@
 > [configuration](/doc/get-started/configure) are completed before you run the
 > `dvc pull` command in a newly cloned or initialized Git repository.
 
-To retrieve data files to your local machine and your project's workspace run:
+To retrieve data files into the <abbr>workspace</abbr> in your local machine,
+run:
 
 ```dvc
 $ dvc pull
 ```
 
-This command retrieves data files that are referenced in _all_
-[DVC-files](/doc/user-guide/dvc-file-format) in the workspace. So, you usually
-run it after `git clone`, `git pull`, or `git checkout`.
+This command retrieves data files that are referenced in all
+[DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>project</abbr>. So,
+you usually run it after `git clone`, `git pull`, or `git checkout`.
 
 As an easy way to test it:
 

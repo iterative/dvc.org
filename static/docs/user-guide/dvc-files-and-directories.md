@@ -1,7 +1,7 @@
 # DVC Files and Directories
 
-Once initialized in a project, DVC populates its installation directory
-(`.dvc/`) with special DVC internal files and directories:
+Once initialized in a <abbr>project</abbr>, DVC populates its installation
+directory (`.dvc/`) with special internal files and directories:
 
 - `.dvc/config` - this is a configuration file. The config file can be edited by
   hand or with a special command: `dvc config`.
@@ -24,10 +24,10 @@ Once initialized in a project, DVC populates its installation directory
   > are needed to reproduce them.
 
 - `.dvc/state` - this file is used for optimization. It is a SQLite db, that
-  contains checksums for files in a project with respective timestamps and
-  inodes to avoid unnecessary checksum computations. It also contains a list of
-  links (from <abbr>cache</abbr> to <abbr>workspace</abbr>) created by DVC and
-  is used to cleanup your workspace when calling `dvc checkout`.
+  contains checksums for files tracked in a DVC project, with respective
+  timestamps and inodes to avoid unnecessary checksum computations. It also
+  contains a list of links (from cache to <abbr>workspace</abbr>) created by DVC
+  and is used to cleanup your workspace when calling `dvc checkout`.
 
 - `.dvc/state-journal` - temporary file for SQLite operations
 
@@ -38,12 +38,13 @@ Once initialized in a project, DVC populates its installation directory
 
 - `.dvc/updater.lock` - a lock file for `.dvc/updater`.
 
-- `.dvc/lock` - a lock file for the whole dvc project.
+- `.dvc/lock` - a lock file for the whole DVC project.
 
 ## Structure of cache directory
 
-There are two ways in which the data is stored in cache. It depends on if the
-actual data is stored in a file (eg. `data.csv`) or it is a directory of files.
+There are two ways in which the data is stored in <abbr>cache</abbr>. It depends
+on if the actual data is stored in a file (eg. `data.csv`) or it is a directory
+of files.
 
 We evaluate a checksum, usually MD5, for the data file which is a 32 characters
 long string. The first two characters are assigned to name the directory inside

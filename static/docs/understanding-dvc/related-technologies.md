@@ -37,8 +37,8 @@ process.
 
    - DVC has transparent design:
      [meta files and directories](/doc/user-guide/dvc-files-and-directories)
-     (including the data cache) have a human-readable format and can be easily
-     reused by external tools.
+     (including the <abbr>data cache</abbr>) have a human-readable format and
+     can be easily reused by external tools.
 
 4. **Git workflows** and Git usage methodologies such as Gitflow. The
    differences are:
@@ -116,8 +116,8 @@ process.
    - DVC attempts to use reflinks\* and has other
      [file linking options](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).
      This way the `dvc checkout` command does not actually copy data files from
-     cache to the workspace, as copying files is a heavy operation for large
-     files (30 GB+).
+     cache to the <abbr>workspace</abbr>, as copying files is a heavy operation
+     for large files (30 GB+).
 
    - `git-lfs` was not made with data science scenarios in mind, so it does not
      provide related features (e.g. pipelines, metrics), and thus Github has a

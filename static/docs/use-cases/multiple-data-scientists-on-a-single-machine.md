@@ -7,15 +7,15 @@ such as ability to use multiple GPUs, store all your data in one place, etc.
 ![](/static/img/shared-server.png)
 
 With DVC, you can easily setup a shared data storage on the server that will
-allow your team to share and store data for your projects as effectively as
-possible and have a workspace restoration/switching speed as instant
-as`git checkout` for your code.
+allow your team to store and share data for your projects effectively, as well
+as to have an instantaneous <abbr>workspace</abbr> restoration/switching speed –
+similar to `git checkout` for your code.
 
 ### Preparation
 
-In order to make it work on a shared server, you need to setup a shared
-<abbr>cache</abbr> location for your projects, so that every team member is
-using the same cache storage:
+In order to leverage DVC on a shared server, you need to setup a shared
+<abbr>cache</abbr> location for your <abbr>projects</abbr>, so that every team
+member is using the same cache storage:
 
 ```dvc
 $ mkdir -p /path/to/dvc-cache
@@ -24,7 +24,7 @@ $ mkdir -p /path/to/dvc-cache
 You will have to make sure that the directory has proper permissions setup, so
 that every one on your team can read and write to it and can access cache files
 written by others. The most straightforward way to do that is to make sure that
-you and your colleagues are members of the same group (e.g. 'users') and that
+you and your colleagues are members of the same group (e.g. `users`) and that
 your shared cache directory is owned by that group and has respective
 permissions.
 
@@ -33,17 +33,17 @@ permissions.
 This step is optional. You can skip it if you are setting up a new DVC
 repository and don't have your local cache stored in `.dvc/cache`. If you did
 work on your project with DVC previously and you wish to transfer your cache to
-the shared cache directory (external to your <abbr>workspace</abbr>), you will
-need to simply move it from an old cache location to the new one:
+the shared cache directory (external to your workspace), you will need to simply
+move it from an old cache location to the new one:
 
 ```dvc
 $ mv .dvc/cache/* /path/to/dvc-cache
 ```
 
-### Configure External Cache
+### Configure External Cache (Optional)
 
-Tell DVC to use the directory we've set up above as an shared cache location by
-running:
+This step is optional. Tell DVC to use the directory we've set up above as an
+shared cache location by running:
 
 ```dvc
 $ dvc config cache.dir /path/to/dvc-cache
@@ -58,9 +58,9 @@ $ git commit -m "dvc: setup external cache dir"
 
 ### Examples
 
-You and your colleagues can work in your own workspaces as usual and DVC will
-handle all your data in the most effective way possible. Let's say you are
-cleaning up the data:
+You and your colleagues can work in your own <abbr>workspaces</abbr> as usual
+and DVC will handle all your data in the most effective way possible. Let's say
+you are cleaning up the data:
 
 ```dvc
 $ dvc add raw
@@ -71,8 +71,8 @@ $ git push
 ```
 
 Your colleague can pull the code and have both `raw` and `clean` instantly
-appear in his workspace without copying. After this he decides to continue
-building this pipeline and process the cleaned up data:
+appear in his workspace without copying anything. After this he decides to
+continue building this pipeline and process the cleaned up data:
 
 ```dvc
 $ git pull
@@ -83,7 +83,7 @@ $ git commit -m "process clean data"
 $ git push
 ```
 
-And now you can just as easily get his work appear in your workspace by:
+And now you can just as easily make his work appear in your workspace by:
 
 ```dvc
 $ git pull
