@@ -1,6 +1,7 @@
 # checkout
 
-Update data files and directories in workspace based on current DVC-files.
+Update data files and directories in the <abbr>workspace</abbr> based on current
+DVC-files.
 
 ## Synopsis
 
@@ -15,14 +16,14 @@ positional arguments:
 
 ## Description
 
-[DVC-files](/doc/user-guide/dvc-file-format) in the workspace specify which
-instance of each data file or directory is to be used, using the checksum saved
-in the `outs` fields. The `dvc checkout` command updates the workspace data to
-match with the cache files corresponding to those checksums.
+[DVC-files](/doc/user-guide/dvc-file-format) in a <abbr>DVC project</abbr>
+specify which instance of each data file or directory is to be used, using the
+checksum saved in the `outs` fields. The `dvc checkout` command updates the
+workspace data to match with the cache files corresponding to those checksums.
 
 Using an SCM like Git, the DVC-files are kept under version control. At a given
-branch or tag of the SCM workspace, the DVC-files will contain checksums for the
-corresponding data files kept in the DVC cache. After an SCM command like
+branch or tag of the SCM repository, the DVC-files will contain checksums for
+the corresponding data files kept in the DVC cache. After an SCM command like
 `git checkout` is run, the DVC-files will change to the state at the specified
 branch or commit or tag. Afterwards, the `dvc checkout` command is required in
 order to synchronize the data files with the currently checked out DVC-files.
@@ -45,8 +46,9 @@ The execution of `dvc checkout` does:
   `hardlink`, `symlink`, or `copy`) depends on the OS and the configured value
   for `cache.type` – See `dvc config cache`.
 
-Note that this DVC by default tries NOT to copy files between the cache and the
-workspace by using reflinks when supported by the file system. (Refer to
+Note that this command by default tries NOT to copy files between the cache and
+the workspace, using reflinks instead when supported by the file system. (Refer
+to
 [File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).)
 The next linking strategy default value is `copy` though, so unless other file
 link types are manually configured in `cache.type` (using `dvc config`), files
@@ -103,8 +105,8 @@ be pulled from a remote cache using `dvc pull`.
 
 ## Examples
 
-Let's employ a simple workspace with some data, code, ML models, pipeline
-stages, as well as a few Git tags, such as our
+Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
+pipeline stages, as well as a few Git tags, such as our
 [get started example repo](https://github.com/iterative/example-get-started).
 Then we can see what happens with `git checkout` and `dvc checkout` as we switch
 from tag to tag.
@@ -122,7 +124,7 @@ $ cd example-get-started
 
 </details>
 
-The workspace looks almost like in this
+The workspace `tree` looks almost like in this
 [pipeline setup](/doc/get-started/example-pipeline):
 
 ```dvc

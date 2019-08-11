@@ -27,8 +27,9 @@ Under the hood, a few actions are taken for each file in `targets`:
 3. Replace the file by a link to the file in the cache (see details below).
 4. Create a corresponding [DVC-file](/doc/user-guide/dvc-file-format) and store
    the checksum to identify the cache entry.
-5. Add the target(s) to `.gitignore` (if Git is used in this workspace) to
-   prevent it from being committed to the Git repository.
+5. Add the target(s) to `.gitignore` (if Git is used in this
+   <abbr>workspace</abbr>) to prevent it from being committed to the Git
+   repository.
 6. Instructions are printed showing `git` commands for adding the files to a Git
    repository. If a different SCM system is being used, use the equivalent
    command for that system or nothing is printed if `--no-scm` was specified for
@@ -69,12 +70,13 @@ to work with directory hierarchies with `dvc add`.
    the single DVC-file points to a file in the DVC cache that contains
    references to the files in the added hierarchy.
 
-In a DVC project `dvc add` can be used to version control any <abbr>data
-artifact</abbr> (input, intermediate, or output files and directories, and model
-files). It is useful by itself to go back and forth between different versions
-of datasets or models. Usually though, it is recommended to use `dvc run` and
-`dvc repro` mechanism to version control intermediate and final results (like
-models). This way you bring data provenance and make your project reproducible.
+In a <abbr>DVC project</abbr>, `dvc add` can be used to version control any
+<abbr>data artifact</abbr> (input, intermediate, or output files and
+directories, and model files). It is useful by itself to go back and forth
+between different versions of datasets or models. Usually though, it is
+recommended to use `dvc run` and `dvc repro` mechanism to version control
+intermediate and final results (like models). This way you bring data provenance
+and make your project reproducible.
 
 ## Options
 

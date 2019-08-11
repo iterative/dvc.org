@@ -52,7 +52,7 @@ to the DVC cache as the last step. What _commit_ means is that DVC:
 - Computes a checksum for the file/directory
 - Enters the checksum and file name into the DVC-file
 - Tells the SCM to ignore the file/directory (e.g. add entry to `.gitignore`)
-  (Note that if the workspace was initialized with no SCM support
+  (Note that if the <abbr>workspace</abbr> was initialized with no SCM support
   (`dvc init --no-scm`), this does not happen.)
 - Adds the file/directory or to the DVC cache
 
@@ -90,10 +90,10 @@ into play. It handles that last step of adding the file to the DVC cache.
 
 ## Examples
 
-Let's employ a simple workspace with some data, code, ML models, pipeline
-stages, such as the DVC project created in our [Get Started](/doc/get-started)
-section. Then we can see what happens with `git commit` and `dvc commit` in
-different situations.
+Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
+pipeline stages, such as the <abbr>DVC project</abbr> created in our
+[Get Started](/doc/get-started) section. Then we can see what happens with
+`git commit` and `dvc commit` in different situations.
 
 <details>
 

@@ -19,8 +19,8 @@ for the metric file `path` provided (the one that specifies the file path in
 question among its outputs – see `dvc metrics add` or `dvc run` with `-m` and
 `-M` options), and updates the information that represents the metric.
 
-If the path provided is not defined in a workspace DVC-file, the following error
-will be raised:
+If the path provided is not defined in a <abbr>workspace</abbr> DVC-file, the
+following error will be raised:
 
 ```dvc
 ERROR: failed to modify metric file settings -

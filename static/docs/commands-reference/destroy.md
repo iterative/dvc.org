@@ -12,13 +12,13 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 
 ## Description
 
-It removes DVC-files, and the entire `.dvc/` meta directory from the current
-workspace. Note that the <abbr>DVC cache</abbr> will normally be removed as
-well, unless it's set to an external location with `dvc cache dir`. (By default
-a local cache is located in the `.dvc/cache` directory.) If you were using
-[symlinks for linking data](/doc/user-guide/large-dataset-optimization) from the
-cache, DVC will replace them with copies, so that your data is intact after the
-DVC repository destruction.
+`dvc destroy` removes DVC-files, and the entire `.dvc/` meta directory from the
+<abbr>workspace</abbr>. Note that the <abbr>DVC cache</abbr> will normally be
+removed as well, unless it's set to an external location with `dvc cache dir`.
+(By default a local cache is located in the `.dvc/cache` directory.) If you were
+using [symlinks for linking data](/doc/user-guide/large-dataset-optimization)
+from the cache, DVC will replace them with copies, so that your data is intact
+after the DVC repository destruction.
 
 ## Options
 
@@ -64,7 +64,7 @@ $ dvc cache dir /mnt/cache
 $ dvc add foo
 ```
 
-`dvc cache dir` changed the location of cache storage to exernal location.
+`dvc cache dir` changed the location of cache storage to external location.
 Content of DVC repository:
 
 ```dvc
@@ -96,8 +96,8 @@ yes
 ```
 
 `dvc destroy` command removed DVC-files, and the entire `.dvc/` meta directory
-from the workspace. But the cache files that are present in the `/mnt/cache`
-directory still persist:
+from the <abbr>workspace</abbr>. But the cache files that are present in the
+`/mnt/cache` directory still persist:
 
 ```dvc
  $ tree /mnt/cache

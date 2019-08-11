@@ -1,7 +1,7 @@
 # unprotect
 
-Unprotect tracked files or directories (when the cache protected mode has been
-enabled with `dvc config cache`).
+Unprotect tracked files or directories (when the <abbr>cache</abbr> protected
+mode has been enabled with `dvc config cache`).
 
 ## Synopsis
 
@@ -15,11 +15,13 @@ positional arguments:
 ## Description
 
 By default this command is not necessary, as DVC avoids hardlinks and symlinks
-to link tracked data files in the workspace to the cache. However, these types
-of file links can be enabled with `dvc config cache` (`cache.type` config
-option). These link types also require the `cache.protected` mode to be turned
-on, which makes the tracked data files in the workspace read-only to prevent
-users from accidentally corrupting the cache by modifying them.
+to link tracked data files from the cache to the <abbr>workspace</abbr>.
+However, these types of file links can be enabled with `dvc config cache`
+(`cache.type` config option).
+
+Enabling hardlinks or symlinks also requires the `cache.protected` mode to be
+turned on, which makes the tracked data files in the workspace read-only. (This
+prevent users from accidentally corrupting the cache by modifying file links.)
 
 Running `dvc unprotect` guarantees that the target files or directories
 (`targets`) in the workspace are physically "unlinked" from the cache and can be
@@ -83,7 +85,8 @@ $ dvc unprotect Posts.xml.zip
 ```
 
 Check that the file is writable now, the cached version is intact, and they are
-not linked (the file in the workspace is a copy of the file):
+not linked (the file in the <abbr>workspace</abbr> is a copy of the
+<abbr>cached</abbr> file):
 
 ```dvc
 $ ls -lh

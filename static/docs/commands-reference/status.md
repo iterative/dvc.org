@@ -18,11 +18,11 @@ positional arguments:
 ## Description
 
 `dvc status` searches for changes in the existing pipeline(s), either showing
-which [stages](/doc/commands-reference/run) have changed in the local workspace
-and must be reproduced (with `dvc repro`), or differences between the local
-cache and remote cache (meaning `dvc push` or `dvc pull` should be run to
-synchronize them). The two modes, _local_ and _cloud_ are triggered by using the
-`--cloud` or `--remote` options:
+which [stages](/doc/commands-reference/run) have changed in the
+<abbr>workspace</abbr> and must be reproduced (with `dvc repro`), or differences
+between local vs. remote <abbr>cache</abbr> (meaning `dvc push` or `dvc pull`
+should be run to synchronize them). The two modes, _local_ and _cloud_ are
+triggered by using the `--cloud` or `--remote` options:
 
 | Mode   | CLI Option | Description                                                                                                                   |
 | ------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
@@ -31,9 +31,9 @@ synchronize them). The two modes, _local_ and _cloud_ are triggered by using the
 | remote | `--cloud`  | Comparisons are made between the local cache, and the default remote, defined with `dvc remote --default` command.            |
 
 DVC determines data and code files to compare by analyzing all
-[DVC-files](/doc/user-guide/dvc-file-format) in the workspace (`--all-branches`
-and `--all-tags` in the `cloud` mode compare multiple workspaces - across all
-branches or tags). The comparison can be limited to specific DVC-files by
+[DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>project</abbr>
+(`--all-branches` and `--all-tags` in the `cloud` mode compare multiple
+workspace versions). The comparison can be limited to specific DVC-files by
 listing them as `targets`. Changes are reported only against the given
 `targets`. When combined with the `--with-deps` option, a search is made for
 changes in other stages that affect the target.
@@ -87,10 +87,10 @@ outputs described in it.
 - _deleted_ means the file doesn't exist in the local cache, but exists in the
   remote cache
 
-For either the _new_ and _deleted_ cases, the local cache (subset of it, that is
-determined by the active workspace) is different from the remote cache. Bringing
-the two into sync requires `dvc pull` or `dvc push` to synchronize the DVC
-cache. For the typical process to update workspaces, see
+For either the _new_ and _deleted_ cases, the local cache (subset of it
+determined by the current workspace) is different from the remote cache.
+Bringing the two into sync requires `dvc pull` or `dvc push` to synchronize the
+DVC cache. For the typical process to update the workspace, see
 [Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
 
 ## Options
@@ -112,14 +112,14 @@ cache. For the typical process to update workspaces, see
   name defined using the `dvc remote` command. Implies `--cloud`.
 
 - `-a`, `--all-branches` - compares cache content against all Git branches.
-  Instead of checking just the workspace, it runs the same status command in all
-  the branches of this repo. The corresponding branches are shown in the status
-  output. Applies only if `--cloud` or a remote is specified.
+  Instead of checking just the current workspace version, it runs the same
+  status command in all the branches of this repo. The corresponding branches
+  are shown in the status output. Applies only if `--cloud` or a `-r` remote is
+  specified.
 
-- `-T`, `--all-tags` - compares cache content against all Git tags. Both the
-  `--all-branches` and `--all-tags` options cause DVC to check more than just
-  the workspace. The corresponding tags are shown in the status output. Applies
-  only if `--cloud` or a remote is specified.
+- `-T`, `--all-tags` - compares cache content against all Git tags instead of
+  checking just the current workspace version. The corresponding tags are shown
+  in the status output. Applies only if `--cloud` or a `-r` remote is specified.
 
 - `-j JOBS`, `--jobs JOBS` - specifies the number of jobs DVC can use to
   retrieve information from remote servers. This only applies when the `--cloud`
