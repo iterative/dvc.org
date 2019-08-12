@@ -77,12 +77,14 @@ export default class Documentation extends Component {
   loadStateFromURL = () => this.loadPath(window.location.pathname)
 
   loadPath = path => {
+    const { currentItem } = this.state
     const item = getItemByPath(path)
-    const isPageChanged = item !== this.state.currentItem
+    const isPageChanged = currentItem !== item
+    const isFirstPage = !currentItem.path
 
     if (!item) {
       this.setState({ pageNotFound: true, currentItem: {} })
-    } else if (!isPageChanged) {
+    } else if (!isFirstPage && !isPageChanged) {
       this.updateScroll(isPageChanged)
     } else {
       fetch(item.source)
@@ -96,7 +98,7 @@ export default class Documentation extends Component {
                 currentItem: item,
                 headings: this.parseHeadings(text)
               },
-              () => this.updateScroll(isPageChanged)
+              () => this.updateScroll(!isFirstPage && isPageChanged)
             )
           })
         })
