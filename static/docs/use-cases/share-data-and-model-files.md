@@ -44,7 +44,7 @@ remote = myremote
 ```
 
 `dvc remote` provides a wide variety of options to configure S3 bucket. For more
-information visit [`dvc remote modify`](/doc/commands-reference/remote/modify).
+information visit `dvc remote modify`.
 
 Let's, commit your changes and push your code:
 
