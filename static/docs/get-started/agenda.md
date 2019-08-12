@@ -29,9 +29,9 @@ datasets and you want to:
 - Capture and save those <abbr>data artifacts</abbr> the same way we capture
   code
 - Track and switch between different versions of the data easily
-- Being able to answer the question of how data artifacts (e.g. ML models) were
+- Be able to answer the question of how data artifacts (e.g. ML models) were
   built in the first place
-- Being able to compare them
+- Be able to compare them
 - Bring best practices to your team and get everyone on the same page
 
 Then you are in a good place! Click the `Next` button below to start ↘

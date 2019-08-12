@@ -61,11 +61,11 @@ The detail of `Binary` depends on the way DVC was downloading and
 - **`Binary: True`** - displayed when DVC is downloaded/installed as one of:
 
   - Debian package (`.deb`) - file used to install packages in several Linux
-    distributions, like Ubuntu.
+    distributions, like Ubuntu
   - Red Hat package (`.rpm`) - file used to install packages in some Linux based
     distributions, such as Fedora, CentOS, etc.
-  - PKG file (`.pkg`) - file used to install apps on macOS.
-  - Windows executable (`.exe`) - file used to install applications on Windows.
+  - PKG file (`.pkg`) - file used to install apps on macOS
+  - Windows executable (`.exe`) - file used to install applications on Windows
 
   These downloads are available from our [home page](/). They ultimately contain
   a binary bundle, which is the executable version of a software program,
@@ -76,11 +76,11 @@ The detail of `Binary` depends on the way DVC was downloading and
 - **`Binary: False`** - shown when DVC is downloaded and installed from:
 
   - [DVC's GitHub repository](https://github.com/iterative/dvc) - where core
-    source code is hosted.
+    source code is hosted
   - [The Python Package Index (PyPI)](https://pypi.org/project/dvc/) - source
-    code is stored as a Python package.
+    code is stored as a Python package
   - [Homebrew package manager](https://github.com/iterative/homebrew-dvc) (for
-    macOS systems) - source code is stored as Python package.
+    macOS systems) - source code is stored as Python package
 
   This method of installation involves downloading DVC source code, and
   following certain setup instructions (See the
@@ -125,3 +125,4 @@ Platform: Linux-4.15.0-50-generic-x86_64-with-debian-buster-sid
 Binary: False
 Filesystem type (workspace): ('ext4', '/dev/sdb3')
 ```
+
