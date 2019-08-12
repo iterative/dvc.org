@@ -143,8 +143,11 @@ const normalizedSidebar = normalizeSidebar({
 // Exports
 
 export function getItemByPath(path) {
-  const isRoot = path === PATH_ROOT.slice(0, -1)
-  const item = isRoot ? normalizedSidebar[0] : findItem(normalizedSidebar, path)
+  const normalizedPath = path.replace(/\/$/, '')
+  const isRoot = normalizedPath === PATH_ROOT.slice(0, -1)
+  const item = isRoot
+    ? normalizedSidebar[0]
+    : findItem(normalizedSidebar, normalizedPath)
 
   return item && findChildWithSource(item)
 }
