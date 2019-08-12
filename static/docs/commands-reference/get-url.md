@@ -3,8 +3,8 @@
 Download or copy file or directory from any supported URL (for example `s3://`,
 `ssh://`, and other protocols) or local directory to the local file system.
 
-> Unlike `dvc import-url`, this command does not track the downloaded data
-> file(s) (does not create a DVC-file).
+> Unlike `dvc import-url`, this command does not track the downloaded data files
+> (does not create a DVC-file).
 
 ## Synopsis
 

@@ -65,9 +65,9 @@ remove nor modify those files in the remote cache.
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
-backward from the target [stage](/doc/commands-reference/run) file(s), through
-the corresponding [pipeline(s)](/doc/commands-reference/pipeline), to find data
-files to push.
+backward from the target [stage files](/doc/commands-reference/run), through the
+corresponding [pipelines](/doc/commands-reference/pipeline), to find data files
+to push.
 
 ## Options
 
@@ -86,10 +86,10 @@ files to push.
   save different experiments or project checkpoints.
 
 - `-d`, `--with-deps` - determines files to upload by tracking dependencies to
-  the target DVC-file(s) (stages). This option only has effect when one or more
+  the target DVC-files (stages). This option only has effect when one or more
   `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stage(s) in the corresponding pipeline(s). This means
-  DVC will not push files referenced in later stage(s) than `targets`.
+  backward from the target stages in the corresponding pipelines. This means DVC
+  will not push files referenced in later stages than the `targets`.
 
 - `-R`, `--recursive` - `targets` is expected to contain at least one directory
   path for this option to have effect. Determines the files to push by searching
@@ -268,7 +268,7 @@ the local cache compared to the remote.
 
 Next we can upload part of the data from the local cache to a remote using the
 command `dvc push --with-deps STAGE.dvc`. Remember that `--with-deps` searches
-backwards from the target DVC-file(s) to locate files to upload, and does not
+backwards from the DVC-file `targets` to locate files to upload, and does not
 upload files in subsequent stages.
 
 After doing that we can inspect the remote cache again:

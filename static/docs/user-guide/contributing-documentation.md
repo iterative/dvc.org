@@ -91,7 +91,7 @@ in question.
 - We use [Prettier](https://prettier.io/) default conventions to format our
   source code files. The formatting of staged files will automatically be done
   by the Git pre-commit hook we have configured. You may also run
-  `npx prettier --write <file path(s)>` manually before committing changes.
+  `npx prettier --write <file paths>` manually before committing changes.
 
 - Using `dvc <command>` in the Markdown files, the docs engine will create a
   link to that command automatically. (No need to use `[]()` explicitly to

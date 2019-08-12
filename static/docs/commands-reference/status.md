@@ -1,8 +1,9 @@
 # status
 
-Show changes in the [pipeline(s)](/doc/commands-reference/pipeline), as well as
-mismatches either between the local cache and local files, or between the local
-cache and remote cache.
+Show changes in the <abbr>project</abbr>
+[pipelines](/doc/commands-reference/pipeline), as well as mismatches either
+between the local cache and local files, or between the local cache and remote
+cache.
 
 ## Synopsis
 
@@ -17,7 +18,7 @@ positional arguments:
 
 ## Description
 
-`dvc status` searches for changes in the existing pipeline(s), either showing
+`dvc status` searches for changes in the existing pipelines, either showing
 which [stages](/doc/commands-reference/run) have changed in the
 <abbr>workspace</abbr> and must be reproduced (with `dvc repro`), or differences
 between local vs. remote <abbr>cache</abbr> (meaning `dvc push` or `dvc pull`
@@ -96,10 +97,10 @@ DVC cache. For the typical process to update the workspace, see
 ## Options
 
 - `-d`, `--with-deps` - determines files to check by tracking dependencies to
-  the target DVC-file(s) (stages). This option only has effect when one or more
+  the target DVC-files (stages). This option only has effect when one or more
   `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stage(s) in the corresponding pipeline(s). This means
-  DVC will not show changes occurring in later stage(s) than `targets`. Applies
+  backward from the target stages in the corresponding pipelines. This means DVC
+  will not show changes occurring in later stages than the `targets`. Applies
   whether or not `--cloud` is specified.
 
 - `-c`, `--cloud` - enables comparison against a remote cache. If no `--remote`

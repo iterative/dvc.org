@@ -12,7 +12,8 @@ usage: dvc pipeline list [-h] [-q | -v]
 ## Description
 
 `dvc list` displays a list of all existing stages in the <abbr>project</abbr>,
-grouped in their corresponding pipeline(s) when connected. (See `dvc pipeline`.)
+grouped in their corresponding [pipeline](/doc/commands-reference/pipeline),
+when connected.
 
 > Note that the stages in these lists are in ascending order, that is, from last
 > to first.

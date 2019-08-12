@@ -130,7 +130,7 @@ This tests require additional effort to set up, so they are skipped by default.
 You don't need this in most cases, however, if you develop or fix some remote
 related code you might need to go through steps below.
 
-Install requirements for whatever remote(s) you are going to test:
+Install requirements for whatever remotes you are going to test:
 
 ```dvc
 $ pip install -e ".[s3]"

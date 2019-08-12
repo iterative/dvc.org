@@ -28,8 +28,8 @@ it can be used to replace or modify files that are under DVC control.
 
 ## Options
 
-- `-o`, `--outs` (default) - remove outputs described in the provided DVC
-  file(s), keep the DVC-files.
+- `-o`, `--outs` (default) - remove outputs described in the given `targets`,
+  keep the DVC-files.
 
 - `-p`, `--purge` - remove outputs and DVC-files.
 

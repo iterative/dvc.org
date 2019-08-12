@@ -32,7 +32,7 @@ detected by the file extension automatically.
 
 ## Options
 
-- `-t`, `--type` - specify a type of the metric file(s) that will be used to
+- `-t`, `--type` - specify a type of the metric file that will be used to
   determine how to handle `xpath` parameter from down below. Accepted values
   are: `raw`, `json`, `tsv`, `htsv`, `csv`, `hcsv`. If this parameter is not
   given, the type can be detected by the file extension automatically if the

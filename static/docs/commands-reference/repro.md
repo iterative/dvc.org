@@ -19,13 +19,14 @@ positional arguments:
 ## Description
 
 `dvc repro` provides an interface to run the commands in a computational graph
-(a.k.a. pipeline) again, as defined in the stage files (DVC-files) found in the
+(a.k.a. pipeline) again, as defined in the
+[stage files](/doc/commands-reference/run) (DVC-files) found in the
 <abbr>project</abbr>. (A pipeline is typically defined using the `dvc run`
 command, while data input nodes are defined by the `dvc add` command.)
 
 There's a few ways to restrict the stages that will be run again by this
-command: by specifying stage file(s) as `targets`, or by using the
-`--single-item`, `--cwd`, or other options.
+command: by specifying stage file `targets`, or by using the `--single-item`,
+`--cwd`, or other options.
 
 If specific [DVC-files](/doc/user-guide/dvc-file-format) (`targets`) are
 omitted, `Dvcfile` will be assumed.
@@ -66,9 +67,9 @@ specified), and updates stage files with the new checksum information.
   experiments and you don't want to fill up the cache with temporary files. Use
   `dvc commit` when ready to save results to cache.
 
-- `-m`, `--metrics` - show metrics after reproduction. The target pipeline(s)
-  must have at least one metrics file defined either with the `dvc metrics`
-  command, or by the `-M` or `-m` options on the `dvc run` command.
+- `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
+  have at least one metrics file defined either with the `dvc metrics` command,
+  or by the `-M` or `-m` options on the `dvc run` command.
 
 - `--dry` - only print the commands that would be executed without actually
   executing the commands.
@@ -76,8 +77,8 @@ specified), and updates stage files with the new checksum information.
 - `-i`, `--interactive` - ask for confirmation before reproducing each stage.
   The stage is only run if the user types "y".
 
-- `-p`, `--pipeline` - reproduce the entire pipeline(s) that the target stage
-  file(s) belong(s) to. Use `dvc pipeline show <target>.dvc` to show the parent
+- `-p`, `--pipeline` - reproduce the entire pipelines that the stage file
+  `targets` belong to. Use `dvc pipeline show <target>.dvc` to show the parent
   pipeline of a target stage.
 
 - `-P`, `--all-pipelines` - reproduce all pipelines, for all the stage files
@@ -107,7 +108,7 @@ specified), and updates stage files with the new checksum information.
 - `-v`, `--verbose` - displays detailed tracing information.
 
 - `--downstream` - only run again the stages after the given `targets` in their
-  corresponding pipeline(s), including the target stages themselves.
+  corresponding pipelines, including the target stages themselves.
 
 ## Examples
 

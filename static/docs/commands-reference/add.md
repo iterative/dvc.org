@@ -26,8 +26,8 @@ Under the hood, a few actions are taken for each file in `targets`:
 2. Move the file content to the DVC cache (default location is `.dvc/cache`).
 3. Replace the file by a link to the file in the cache (see details below).
 4. Create a corresponding [DVC-file](/doc/user-guide/dvc-file-format) and store
-   the checksum to identify the cache entry.
-5. Add the target(s) to `.gitignore` (if Git is used in this
+   the MD5 checksum to identify the cache entry.
+5. Add the targets to `.gitignore` (if Git is used in this
    <abbr>workspace</abbr>) to prevent it from being committed to the Git
    repository.
 6. Instructions are printed showing `git` commands for adding the files to a Git
