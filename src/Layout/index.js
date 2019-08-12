@@ -60,5 +60,6 @@ const Bodybag = styled.div`
     enableSmoothScroll &&
     `
     scroll-behavior: smooth;
+    will-change: scroll-position;
   `}
 `
