@@ -29,7 +29,8 @@ export default class Documentation extends Component {
       headings: [],
       pageNotFound: false,
       isMenuOpen: false,
-      search: false
+      search: false,
+      isSmoothScrollEnabled: true
     }
   }
 
@@ -108,7 +109,10 @@ export default class Documentation extends Component {
     if (window.location.hash) {
       this.scrollToLink(window.location.hash)
     } else {
-      this.scrollTop()
+      this.setState({ isSmoothScrollEnabled: false }, () => {
+        this.scrollTop()
+        this.setState({ isSmoothScrollEnabled: true })
+      })
     }
   }
 
@@ -155,13 +159,14 @@ export default class Documentation extends Component {
       headings,
       markdown,
       pageNotFound,
-      isMenuOpen
+      isMenuOpen,
+      isSmoothScrollEnabled
     } = this.state
 
     const githubLink = `https://github.com/iterative/dvc.org/blob/master${source}`
 
     return (
-      <Page stickHeader={true}>
+      <Page stickHeader={true} enableSmoothScroll={isSmoothScrollEnabled}>
         <HeadInjector sectionName={label} />
         <Container>
           <Backdrop onClick={this.toggleMenu} visible={isMenuOpen} />

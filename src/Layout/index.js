@@ -23,13 +23,13 @@ class Layout extends Component {
   }
 
   render() {
-    const { children } = this.props
+    const { children, enableSmoothScroll } = this.props
 
     return (
       <Wrapper>
         <TopMenu isDocPage={this.isDocPage} />
         <HamburgerMenu />
-        <Bodybag id="bodybag">
+        <Bodybag id="bodybag" enableSmoothScroll={enableSmoothScroll}>
           {children}
           <Footer isDocPage={this.isDocPage} />
         </Bodybag>
@@ -55,5 +55,10 @@ const Bodybag = styled.div`
   overflow-y: auto;
   transition: top 0.2s linear;
   -webkit-overflow-scrolling: touch;
-  scroll-behavior: smooth;
+
+  ${({ enableSmoothScroll }) =>
+    enableSmoothScroll &&
+    `
+    scroll-behavior: smooth;
+  `}
 `

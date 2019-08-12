@@ -28,7 +28,6 @@ export const global = `
     font-smoothing: antialiased;
     font-weight: 400;
     text-rendering: optimizeLegibility !important;
-    scroll-behavior: smooth;
   }
   
   @-moz-document url-prefix() {
