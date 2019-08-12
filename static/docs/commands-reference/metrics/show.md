@@ -5,22 +5,23 @@ Find and print project metrics.
 ## Synopsis
 
 ```usage
-usage: dvc metrics show [-h] [-q | -v] [-t TYPE] [-x XPATH] [-a] [-T]
-                        [-R] [path]
+usage: dvc metrics show [-h] [-q | -v] [-t TYPE] [-x XPATH] [-a] [-T] [-R]
+                        [targets [targets ...]]
 
 positional arguments:
-  path                  Path to a metric file or a directory.
+  targets               Metric files or directories (see -R) to show (leave
+                        empty to display all)
 ```
 
 ## Description
 
 It will find and print all metric files (default) or a specified metric file in
-the current branch (if `path` is provided) or across all branches/tags (if `-a`
-or`-T` specified respectively).
+the current branch (if `targets` are provided) or across all branches/tags (if
+`-a` or`-T` specified respectively).
 
-The optional `path` argument can represent a DVC metric file or a directory. If
-`path` is a directory, recursively search and process all metric files in it
-with the `-R` option.
+The optional `targets` argument represents several DVC metric files or
+directories. If a `target` is a directory, recursively search and process all
+metric files in it with the `-R` option.
 
 Providing `type` (via `-t` CLI option), overrides the full metric specification
 (both, `type` and `xpath`) defined in the DVC-file (usually, using
