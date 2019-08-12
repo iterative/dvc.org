@@ -111,14 +111,14 @@ export default class Documentation extends Component {
   updateScroll(isPageChanged) {
     const { hash } = window.location
 
-    if (isPageChanged || !hash) {
+    if (isPageChanged) {
       this.setState({ isSmoothScrollEnabled: false }, () => {
         this.scrollTop()
-        this.setState({ isSmoothScrollEnabled: true })
+        this.setState({ isSmoothScrollEnabled: true }, () => {
+          if (hash) this.scrollToLink(hash)
+        })
       })
-    }
-
-    if (hash) {
+    } else if (hash) {
       this.scrollToLink(hash)
     }
   }
