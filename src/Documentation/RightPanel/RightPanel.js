@@ -1,51 +1,161 @@
+import React from 'react'
 import styled from 'styled-components'
 import { LightButton } from '../LightButton'
+// utils
+import throttle from 'lodash.throttle'
 
-export const RightPanel = ({ headings, scrollToLink, githubLink }) => (
-  <Wrapper>
-    {!!headings.length ? (
-      <>
-        <Header>Content</Header>
-        <hr />
-      </>
-    ) : (
-      <Spacer />
-    )}
+const ROOT_ELEMENT = 'bodybag'
+const MARKDOWN_ROOT = '.markdown-body'
 
-    {!!headings.length &&
-      headings.map(({ text, slug }, headingIndex) => (
-        <HeadingLink
-          level={3}
-          key={`link-${headingIndex}`}
-          onClick={() => scrollToLink('#' + slug)}
-          href={`#${slug}`}
-        >
-          {text}
-        </HeadingLink>
-      ))}
+const imageChecker = (images, callback) => {
+  // IE can't use forEach on array-likes
+  const imagesArray = Array.prototype.slice.call(images)
 
-    <br />
-    <Description>Found an issue? Let us know or fix it:</Description>
+  if (imagesArray.length) {
+    let counter = imagesArray.length
 
-    <Link href={githubLink} target="_blank">
-      <GithubButton>
-        <i />
-        Edit on Github
-      </GithubButton>
-    </Link>
+    const unsubscribe = () => {
+      imagesArray.forEach(img => {
+        img.removeEventListener('load', decrement)
+        img.removeEventListener('error', decrement)
+      })
+    }
 
-    <br />
-    <br />
-    <Description>Have a question? Join our chat, we will help you:</Description>
+    const decrement = e => {
+      counter -= 1
 
-    <Link href="/chat" target="_blank">
-      <DiscordButton>
-        <i />
-        Discord Chat
-      </DiscordButton>
-    </Link>
-  </Wrapper>
-)
+      if (!counter) {
+        callback()
+        unsubscribe()
+      }
+    }
+
+    imagesArray.forEach(img => {
+      img.addEventListener('load', decrement)
+      img.addEventListener('error', decrement)
+    })
+
+    setTimeout(() => {
+      if (counter) unsubscribe()
+    }, 5000)
+  }
+}
+
+export default class RightPanel extends React.PureComponent {
+  state = {
+    height: 0,
+    coordinates: {},
+    current: undefined
+  }
+  componentDidMount() {
+    this.root = document.getElementById(ROOT_ELEMENT)
+
+    if (this.props.headings.length) {
+      this.initHeadingsPosition()
+    }
+
+    this.root.addEventListener('scroll', this.setCurrentHeader)
+    window.addEventListener('resize', this.updateHeadingsPosition)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.headings != prevProps.headings) {
+      this.initHeadingsPosition()
+    }
+  }
+
+  componentWillUnmount() {
+    this.root.removeEventListener('scroll', this.setCurrentHeader)
+    window.removeEventListener('resize', this.updateHeadingsPosition)
+  }
+
+  initHeadingsPosition = () => {
+    const images = document.querySelectorAll(`${MARKDOWN_ROOT} img`)
+
+    if (images.length) {
+      imageChecker(images, this.updateHeadingsPosition)
+    } else {
+      this.updateHeadingsPosition()
+    }
+  }
+
+  updateHeadingsPosition = () => {
+    const coordinates = this.props.headings.reduce((result, { slug }) => {
+      return { ...result, [document.getElementById(slug).offsetTop]: slug }
+    }, {})
+
+    const height = this.root.offsetHeight
+
+    this.setState({ coordinates, height }, this.setCurrentHeader)
+  }
+
+  setCurrentHeader = throttle(() => {
+    const { coordinates, height } = this.state
+    const { scrollTop } = this.root
+    const coordinateKeys = Object.keys(coordinates)
+
+    if (!coordinateKeys.length) return
+
+    const filteredKeys = coordinateKeys.filter(
+      top => top <= scrollTop + height / 2
+    )
+
+    const current = filteredKeys.length
+      ? coordinates[filteredKeys[filteredKeys.length - 1]]
+      : undefined
+
+    this.setState({ current })
+  }, 100)
+
+  render() {
+    const { headings, githubLink } = this.props
+    const { current } = this.state
+
+    return (
+      <Wrapper>
+        {headings.length ? (
+          <>
+            <Header>Content</Header>
+            <hr />
+            {headings.map(({ slug, text }, headingIndex) => (
+              <HeadingLink
+                isCurrent={current === slug}
+                level={3}
+                key={`link-${headingIndex}`}
+                href={`#${slug}`}
+              >
+                {text}
+              </HeadingLink>
+            ))}
+            <br />
+          </>
+        ) : (
+          <>
+            <Spacer />
+          </>
+        )}
+
+        <Description>Found an issue? Let us know or fix it:</Description>
+
+        <GithubButton href={githubLink} target="_blank">
+          <i />
+          Edit on Github
+        </GithubButton>
+
+        <br />
+        <br />
+        <Description>
+          Have a question? Join our chat, we will help you:
+        </Description>
+
+        <DiscordButton href="/chat" target="_blank">
+          <i />
+          Discord Chat
+        </DiscordButton>
+      </Wrapper>
+    )
+  }
+}
 
 const Wrapper = styled.div`
   width: 170px;
@@ -84,6 +194,12 @@ const HeadingLink = styled.a`
   margin-bottom: 3px;
   cursor: pointer;
 
+  ${props =>
+    props.isCurrent &&
+    `
+    color: #000;
+	`}
+
   &:hover {
     color: #3c3937;
   }
@@ -107,10 +223,6 @@ const DiscordButton = styled(LightButton)`
     width: 1.2em;
     height: 1.2em;
   }
-`
-
-const Link = styled.a`
-  text-decoration: none;
 `
 
 const Spacer = styled.div`

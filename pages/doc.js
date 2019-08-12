@@ -4,7 +4,7 @@ import { HeadInjector } from '../src/Documentation/HeadInjector'
 // components
 import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
 import Markdown from '../src/Documentation/Markdown/Markdown'
-import { RightPanel } from '../src/Documentation/RightPanel/RightPanel'
+import RightPanel from '../src/Documentation/RightPanel/RightPanel'
 import Page from '../src/Page'
 import SearchForm from '../src/SearchForm'
 import Page404 from '../src/Page404'
@@ -12,12 +12,13 @@ import Hamburger from '../src/Hamburger'
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
-import { scroller, animateScroll } from 'react-scroll'
 // styles
 import styled from 'styled-components'
 import { media } from '../src/styles'
 // sidebar data and helpers
 import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
+
+const ROOT_ELEMENT = 'bodybag'
 
 export default class Documentation extends Component {
   constructor() {
@@ -28,7 +29,8 @@ export default class Documentation extends Component {
       headings: [],
       pageNotFound: false,
       isMenuOpen: false,
-      search: false
+      search: false,
+      isSmoothScrollEnabled: true
     }
   }
 
@@ -75,10 +77,15 @@ export default class Documentation extends Component {
   loadStateFromURL = () => this.loadPath(window.location.pathname)
 
   loadPath = path => {
+    const { currentItem } = this.state
     const item = getItemByPath(path)
+    const isPageChanged = currentItem !== item
+    const isFirstPage = !currentItem.path
 
     if (!item) {
       this.setState({ pageNotFound: true, currentItem: {} })
+    } else if (!isFirstPage && !isPageChanged) {
+      this.updateScroll(isPageChanged)
     } else {
       fetch(item.source)
         .then(res => {
@@ -86,21 +93,33 @@ export default class Documentation extends Component {
             this.setState(
               {
                 markdown: text,
-                headings: [],
                 pageNotFound: false,
                 isMenuOpen: false,
-                currentItem: item
+                currentItem: item,
+                headings: this.parseHeadings(text)
               },
-              () => {
-                this.scrollTop()
-                this.parseHeadings(text)
-              }
+              () => this.updateScroll(!isFirstPage && isPageChanged)
             )
           })
         })
         .catch(() => {
           window.location.reload()
         })
+    }
+  }
+
+  updateScroll(isPageChanged) {
+    const { hash } = window.location
+
+    if (isPageChanged) {
+      this.setState({ isSmoothScrollEnabled: false }, () => {
+        this.scrollTop()
+        this.setState({ isSmoothScrollEnabled: true }, () => {
+          if (hash) this.scrollToLink(hash)
+        })
+      })
+    } else if (hash) {
+      this.scrollToLink(hash)
     }
   }
 
@@ -117,32 +136,22 @@ export default class Documentation extends Component {
         })
     } while (match)
 
-    this.setState({ headings: matches }, this.autoScroll)
+    return matches
   }
 
-  autoScroll = () => {
-    const { hash } = window.location
-    if (hash) this.scrollToLink(hash)
-  }
+  scrollToLink = hash => {
+    const element = document.getElementById(hash.replace(/^#/, ''))
 
-  scrollToLink = href => {
-    scroller.scrollTo(href.slice(1), {
-      duration: 600,
-      offset: -85,
-      delay: 0,
-      smooth: 'ease',
-      containerId: 'bodybag'
-    })
+    if (element) {
+      element.scrollIntoView()
+    }
   }
 
   scrollTop = () => {
-    animateScroll.scrollTo(0, {
-      duration: 300,
-      offset: -85,
-      delay: 0,
-      smooth: 'ease',
-      containerId: 'bodybag'
-    })
+    const element = document.getElementById(ROOT_ELEMENT)
+    if (element) {
+      element.scrollTop = 0
+    }
   }
 
   toggleMenu = () => {
@@ -157,13 +166,14 @@ export default class Documentation extends Component {
       headings,
       markdown,
       pageNotFound,
-      isMenuOpen
+      isMenuOpen,
+      isSmoothScrollEnabled
     } = this.state
 
     const githubLink = `https://github.com/iterative/dvc.org/blob/master${source}`
 
     return (
-      <Page stickHeader={true}>
+      <Page stickHeader={true} enableSmoothScroll={isSmoothScrollEnabled}>
         <HeadInjector sectionName={label} />
         <Container>
           <Backdrop onClick={this.toggleMenu} visible={isMenuOpen} />
@@ -182,8 +192,6 @@ export default class Documentation extends Component {
             <SidebarMenu
               sidebar={sidebar}
               currentPath={path}
-              headings={headings}
-              scrollToLink={this.scrollToLink}
               onNavigate={this.onNavigate}
             />
           </Side>
@@ -199,11 +207,7 @@ export default class Documentation extends Component {
               onNavigate={this.onNavigate}
             />
           )}
-          <RightPanel
-            headings={headings}
-            scrollToLink={this.scrollToLink}
-            githubLink={githubLink}
-          />
+          <RightPanel headings={headings} githubLink={githubLink} />
         </Container>
       </Page>
     )
