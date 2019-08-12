@@ -88,9 +88,9 @@ specified), and updates stage files with the new checksum information.
   reproduce `A` first and then `B` even if `B` was previously executed with the
   same inputs from `A` (cached). It might be useful when we have a common
   dependency among all stages and want to specify it once (for the stage `A`
-  here). For example, if we know that all stages - `A` and below - depend on
-  `requirements.txt`, we can specify it only once in `A` and omit in `B` and
-  `C`. To be precise - it reproduces all descendants of a changed stage, or the
+  here). For example, if we know that all stages (`A` and below) depend on
+  `requirements.txt`, we can specify it only once in `A`, omitting it in `B` and
+  `C`. To be precise , it reproduces all descendants of a changed stage or the
   stages following the changed stage, even if their direct dependencies did not
   change. Like with the same option on `dvc run`, this is a way to force stages
   without changes to run again. This can also be useful for pipelines containing

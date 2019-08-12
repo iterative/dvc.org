@@ -43,7 +43,7 @@ time tying stages or a pipeline.
 
 The last two use cases are **not recommended**, and essentially force update the
 DVC-files and save data to cache. They are still useful, but keep in mind that
-DVC can't guarantee reproducibility in those cases - you commit any data your
+DVC can't guarantee reproducibility in those cases – You commit any data you
 want. Let's take a look at what is happening in the fist scenario closely:
 
 Normally DVC commands like `dvc add`, `dvc repro` or `dvc run`, commit the data

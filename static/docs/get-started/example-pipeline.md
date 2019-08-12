@@ -166,8 +166,8 @@ outs:
     path: data/Posts.xml
 ```
 
-This file is using the same technique - pointers (md5 hashes) to the
-<abbr>cache</abbr> to describe and version control dependencies and outputs.
+This file is using the same technique (checksums that point to to the
+<abbr>cache</abbr>) to describe and version control dependencies and outputs.
 Output `Posts.xml` file is automatically added to the `.gitignore` file and a
 link is created into a cache `.dvc/cache/a3/04afb96060aad90176268345e10355` to
 save it.

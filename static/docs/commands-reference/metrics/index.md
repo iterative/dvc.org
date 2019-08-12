@@ -22,7 +22,7 @@ positional arguments:
 ## Description
 
 DVC has the ability to tag a specified output file as a file that contains
-metrics to track. Metrics are usually any project specific numbers - `AUC`,
+metrics to track. Metrics are usually any project specific numbers e.g. `AUC`,
 `ROC`, etc. DVC itself does not ascribe any specific meaning for these numbers.
 Usually these numbers are produced by the model evaluation script and serve as a
 way to compare and pick the best performing experiment variant.

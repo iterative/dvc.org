@@ -27,8 +27,8 @@ positional arguments:
 ## Description
 
 Remote `name` and `option` name are required. Option names are remote type
-specific. See below examples and a list of per remote type - AWS S3, Google
-cloud, Azure, SSH, ALiyun OSS, and others.
+specific. See below examples and a list of per remote type: AWS S3, Google
+Cloud, Azure, SSH, ALiyun OSS, and others.
 
 This command modifies a `remote` section in the DVC project's
 [config file](/doc/commands-reference/config). Alternatively, `dvc config` or

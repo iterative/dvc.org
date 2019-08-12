@@ -20,7 +20,7 @@ manually, DVC removes them for you before running the stage which generates
 them.
 
 If you use DVC to track a file that is generated during your pipeline (e.g. some
-intermediate result or a final model file - `model.pkl`) and you don't use
+intermediate result or a final model file i.e. `model.pkl`) and you don't use
 `dvc run` and `dvc repro` to manage your pipeline, use the procedure below (run
 `dvc unprotect` or `dvc remove`) to unlink it from DVC cache prior to the
 execution of the script that modifies it.

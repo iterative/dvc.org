@@ -62,17 +62,17 @@ File link type benefits summary:
 Each file linking option is further detailed below, in function of their
 efficiency:
 
-1. **`reflink`** - copy-on-write\* links or "reflinks" are the best possible
-   link type, when available. They're is as efficient as hard/symlinks, but
-   don't carry a risk of cache corruption since the file system takes care of
-   copying the file if you try to edit it in place, thus keeping the linked
-   cache file intact.
+1. **`reflink`**: Copy-on-write\* links or "reflinks" are the best possible link
+   type, when available. They're is as efficient as hard/symlinks, but don't
+   carry a risk of cache corruption since the file system takes care of copying
+   the file if you try to edit it in place, thus keeping the linked cache file
+   intact.
 
    > Unfortunately reflinks are currently supported on a limited number of file
    > systems only (Linux: Btrfs, XFS, OCFS2; MacOS: APFS), but in the future
    > they will be supported by the majority of file systems in use.
 
-2. **`hardlink`** - hard links are the most efficient way to link your data to
+2. **`hardlink`**: Hard links are the most efficient way to link your data to
    cache if both your repo and your cache directory are located on the same
    partition or storage device.
 
@@ -80,7 +80,7 @@ efficiency:
    > instead deleted and then replaced with a new file, otherwise it might cause
    > cache corruption – and automatic deletion of cached files by DVC.
 
-3. **`symlink`** - symbolic (a.k.a. "soft") links are the most efficient way to
+3. **`symlink`**: Symbolic (a.k.a. "soft") links are the most efficient way to
    link your data to cache if your repo and your cache directory are located on
    different file systems/drives (i.e. repo is located on SSD for performance,
    but cache dir is located on HDD for bigger storage).
@@ -89,7 +89,7 @@ efficiency:
    > instead deleted and then replaced with a new file, otherwise it might cause
    > cache corruption – and automatic deletion of cached files by DVC.
 
-4. **`copy`** - an inefficient "linking" strategy, yet supported on all file
+4. **`copy`**: An inefficient "linking" strategy, yet supported on all file
    systems. Using `copy` means there will be no file links, but that the tracked
    files will be duplicated as copies existing in both the cache and workspace.
    Suitable for scenarios with relatively small data files, where copying them

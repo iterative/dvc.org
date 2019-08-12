@@ -10,9 +10,8 @@ models and datasets, let's play with a
 [tutorial](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
 that [François Chollet](https://twitter.com/fchollet) put together to show how
 to build a powerful image classifier, using only a small dataset. The goal of
-this example is to give you some hands-on experience with a very basic
-scenario - working with multiple versions of datasets and ML models using DVC
-commands.
+this example is to give you some hands-on experience with a very basic scenario
+– working with multiple versions of datasets and ML models using DVC commands.
 
 ![](/static/img/cats-and-dogs.jpg)
 
@@ -24,7 +23,7 @@ different versions.
 The specific algorithm that is used to train and validate the classifier is not
 important. No prior knowledge is required about Keras. We reuse the
 [script](https://gist.github.com/fchollet/f35fbc80e066a49d65f1688a7e99f069) (it
-goes along the blog post) in a "black box" way - it takes some data and produces
+goes along the blog post) in a "black box" way – it takes some data and produces
 a model file. We would highly recommend reading the
 [post](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
 itself since it's a great demonstration on how a general pre-trained model can
@@ -98,9 +97,9 @@ $ unzip data.zip
 $ rm -f data.zip
 ```
 
-This command downloads and extracts our raw dataset - 1000 labeled images for
-training and 800 labeled images for validation. In summary, it's a 43 MB
-dataset, with a directory structure like this:
+This command downloads and extracts our raw dataset, consisting of 1000 labeled
+images for training and 800 labeled images for validation. In summary, it's a 43
+MB dataset, with a directory structure like this:
 
 ```sh
 data
@@ -347,7 +346,7 @@ DVC pipelines. See this [example](/doc/get-started/example-pipeline) to get a
 hands-on experience with them and try to apply it here. Don't hesitate to join
 our [community](/chat) to ask any questions!
 
-Another thing, you should have noticed, is the metrics file - `metrics.json` and
+Another thing, you should have noticed, is the metrics file (`metrics.json`) and
 the way we captured it with `-M metrics.json` option. Metric file is a special
 type of output DVC provides an interface on top to compare across tags or
 branches. See `dvc metrics` command and

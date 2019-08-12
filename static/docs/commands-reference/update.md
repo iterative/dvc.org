@@ -18,7 +18,7 @@ After creating <abbr>import stages</abbr>
 `dvc import-url`, the external data source can change. Use `dvc update` to bring
 these imported file, directory, or <abbr>data artifact</abbr> up to date.
 
-Note that import stages are considered always "locked" - meaning that if you run
+Note that import stages are considered always "locked", meaning that if you run
 `dvc repro`, they won't be updated. `dvc update` is the only command that can
 update them.
 

@@ -92,9 +92,9 @@ $ dvc metrics show metrics.csv
     metrics.csv: auc, 0.9567
 ```
 
-Okay. Let's now, imagine we are interested only in numbers - second column of
-the CSV file. We can specify the type `CSV` and a path to extract the second
-column:
+Okay. Let's now, imagine we are interested only in the numeric values – second
+column of the CSV file. We can specify the `CSV` type (`-t`) and an `xpath`
+(`-x`) to extract the second column:
 
 ```dvc
 $ dvc metrics modify -t csv -x '0,1' metrics.csv

@@ -24,8 +24,8 @@ DVC doesn't require installing a server; it can be used on-premises (NAS, SSH,
 for example) or with any major cloud provider (S3, Google Cloud, Azure).
 
 Let's say you already have a <abbr>project</abbr> that uses a bunch of images
-stored in `images/` directory and has a `model.pkl` file - your model file that
-is deployed to production.
+stored in `images/` directory and has a `model.pkl` file – model file deployed
+to production.
 
 ```dvc
 $ ls images

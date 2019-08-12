@@ -5,16 +5,16 @@ directory (`.dvc/`) with special internal files and directories:
 
 ### Special DVC internal files and directories
 
-- `.dvc/config` - this is a configuration file. The config file can be edited by
+- `.dvc/config`: This is a configuration file. The config file can be edited by
   hand or with a special command: `dvc config`.
 
-- `.dvc/config.local` - this is a local configuration file, that will overwrite
+- `.dvc/config.local`: This is a local configuration file, that will overwrite
   options in `.dvc/config`. This is useful when you need to specify private
   options in your config that you don't want to track and share through Git
   (credentials, private locations, etc). The local config file can be edited by
   hand or with a special command: `dvc config --local`.
 
-- `.dvc/cache` - the [cache directory](#structure-of-cache-directory) will
+- `.dvc/cache`: The [cache directory](#structure-of-cache-directory) will
   contain your data files. (The data directories of DVC repositories will only
   contain links to the data files in the cache, refer to
   [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization).)
@@ -25,22 +25,22 @@ directory (`.dvc/`) with special internal files and directories:
   > the Git repository, only [DVC-files](/doc/user-guide/dvc-file-format) that
   > are needed to reproduce them.
 
-- `.dvc/state` - this file is used for optimization. It is a SQLite db, that
+- `.dvc/state`: This file is used for optimization. It is a SQLite db, that
   contains checksums for files tracked in a DVC project, with respective
   timestamps and inodes to avoid unnecessary checksum computations. It also
   contains a list of links (from cache to <abbr>workspace</abbr>) created by DVC
   and is used to cleanup your workspace when calling `dvc checkout`.
 
-- `.dvc/state-journal` - temporary file for SQLite operations
+- `.dvc/state-journal`: Temporary file for SQLite operations
 
-- `.dvc/state-wal` - another SQLite temporary file
+- `.dvc/state-wal`: Another SQLite temporary file
 
-- `.dvc/updater` - this file is used store latest available version of dvc,
-  which is used to remind user to upgrade.
+- `.dvc/updater`: This file is used store latest available version of dvc, which
+  is used to remind user to upgrade.
 
-- `.dvc/updater.lock` - lock file for `.dvc/updater`
+- `.dvc/updater.lock`: Lock file for `.dvc/updater`
 
-- `.dvc/lock` - lock file for the whole DVC project
+- `.dvc/lock`: Lock file for the whole DVC project
 
 ## Structure of cache directory
 
