@@ -98,6 +98,9 @@ specified), and updates stage files with the new checksum information.
   nondeterministic stages the outputs can vary on each execution, meaning the
   cache cannot be trusted for such stages.
 
+- `--downstream` - only run again the stages after the given `targets` in their
+  corresponding pipelines, including the target stages themselves.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
@@ -106,9 +109,6 @@ specified), and updates stage files with the new checksum information.
   this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-- `--downstream` - only run again the stages after the given `targets` in their
-  corresponding pipelines, including the target stages themselves.
 
 ## Examples
 

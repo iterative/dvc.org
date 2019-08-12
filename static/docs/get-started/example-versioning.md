@@ -143,7 +143,7 @@ to the cache.
 Next, we run the training with `python train.py`. We picked this example and
 datasets to be small enough to be run on your machine in a reasonable amount of
 time (a few minutes to train a model). This command produces a bunch of files,
-among them `model.h5` and `metrics.json` - weights of the trained model and
+among them `model.h5` and `metrics.json`, weights of the trained model and
 metrics history. The simplest way to capture the current version of the model is
 to use `dvc add` again:
 

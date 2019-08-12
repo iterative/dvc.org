@@ -141,9 +141,8 @@ written to by the command, if any.
    directory. The dependency can be a regular file from a repository or a data
    file.
 
-2. `-o file.tsv` (lower case o) specifies output data file which means DVC will
-   transform this file into a data file (think — it will run
-   `dvc add file.tsv`).
+2. `-o file.tsv` (lower case o) specifies output data file, which means DVC will
+   transform this file into a data file (as if running `dvc add file.tsv`).
 
 3. `-O file.tsv` (upper case O) specifies a regular output file (not to be added
    to DVC).
@@ -213,9 +212,9 @@ outs:
 
 Sections of the file above include:
 
-- `cmd` — the command to run
-- `deps` — dependencies with md5 checksums
-- `outs` — outputs with md5 checksums
+- `cmd` - the command to run
+- `deps` - dependencies with md5 checksums
+- `outs` - outputs with md5 checksums
 
 And (as with the `dvc add` command) the `data/.gitignore` file was modified. Now
 it includes the unarchived command output file `Posts.xml`.
