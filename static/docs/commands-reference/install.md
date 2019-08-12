@@ -19,8 +19,8 @@ Namely:
 
 **Checkout**: For any given branch or tag, Git checks out the
 [DVC-files](/doc/user-guide/dvc-file-format) corresponding to that version. The
-DVC-files in turn refer to data files in the DVC cache by checksum. When
-switching from one SCM branch or tag to another, the SCM retrieves the
+DVC-files in turn refer to data files in the <abbr>DVC cache</abbr> by checksum.
+When switching from one SCM branch or tag to another, the SCM retrieves the
 corresponding DVC-files. By default that leaves the <abbr>project</abbr> in a
 state where the DVC-files refer to data files other than what is currently in
 the <abbr>workspace</abbr>. The user at this point should run `dvc checkout` so
@@ -47,7 +47,7 @@ The installed Git hook automates executing `dvc push`.
 ## Installed Git hooks
 
 - A `pre-commit` hook executes `dvc status` before `git commit` to inform the
-  user about the differences between <abbr>cache</abbr> and workspace.
+  user about the differences between cache and workspace.
 - A `post-checkout` hook executes `dvc checkout` after `git checkout` to
   automatically synchronize the data files with the new workspace state.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and

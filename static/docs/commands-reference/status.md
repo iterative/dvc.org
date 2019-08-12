@@ -72,13 +72,13 @@ outputs described in it.
   commands like `dvc commit` or `dvc repro`, `dvc run` should be run to update
   the file. Possible states are:
 
-  - _new_: output exists in workspace, but there is no corresponding checksum
+  - _new_: Output exists in workspace, but there is no corresponding checksum
     calculated and saved in the DVC-file for this output yet.
-  - _modified_: output or dependency exists in workspace, but the corresponding
+  - _modified_: Output or dependency exists in workspace, but the corresponding
     checksum in the DVC-file is not up to date.
-  - _deleted_: output or dependency does not exist in workspace, but still
+  - _deleted_: Output or dependency does not exist in workspace, but still
     referred in the DVC-file.
-  - _not in cache_: output exists in workspace and the corresponding checksum in
+  - _not in cache_: Output exists in workspace and the corresponding checksum in
     the DVC-file is up to date, but there is no corresponding <abbr>cache</abbr>
     entry.
 

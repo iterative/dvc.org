@@ -45,25 +45,25 @@ outs:
 
 On the top level, `.dvc` file consists of these fields:
 
-- `cmd`: a command that is being run in this stage
-- `deps`: a list of dependencies for this stage
-- `outs`: a list of outputs for this stage
+- `cmd`: Command that is being run in this stage
+- `deps`: List of dependencies for this stage
+- `outs`: List of outputs for this stage
 - `md5`: md5 checksum for this DVC-file
-- `locked`: whether or not this stage is locked from reproduction
-- `wdir`: directory to run command in (default `.`)
+- `locked`: Whether or not this stage is locked from reproduction
+- `wdir`: Directory to run command in (default `.`)
 
 A dependency entry consists of a pair of fields:
 
-- `path`: path to the dependency, relative to the `wdir` path (always present)
+- `path`: Path to the dependency, relative to the `wdir` path (always present)
 - `md5`: md5 checksum for the dependency (most
   [stages](/doc/commands-reference/run))
-- `etag`: strong ETag response header (only HTTP <abbr>external
+- `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
-- `repo`: this entry is only for DVC repository external dependencies created
+- `repo`: This entry is only for DVC repository external dependencies created
   with `dvc import`, and in itself contains the following fields:
 
   - `url`: URL of Git repository with source DVC project
-  - `rev_lock`: revision or version (Git commit hash) of the DVC repo at the
+  - `rev_lock`: Revision or version (Git commit hash) of the DVC repo at the
     time of importing the dependency
 
   > See the examples in
@@ -72,15 +72,15 @@ A dependency entry consists of a pair of fields:
 
 An output entry consists of these fields:
 
-- `path`: path to the output, relative to the `wdir` path
+- `path`: Path to the output, relative to the `wdir` path
 - `md5`: md5 checksum for the output
-- `cache`: whether or not dvc should cache the output
-- `metric`: whether or not this file is a metric file
+- `cache`: Whether or not dvc should cache the output
+- `metric`: Whether or not this file is a metric file
 
 A metric entry consists of these fields:
 
-- `type`: type of the metrics file (e.g. raw/json/tsv/htsv/csv/hcsv)
-- `xpath`: path within the metrics file to the metrics data(e.g. `AUC.value` for
+- `type`: Type of the metrics file (e.g. raw/json/tsv/htsv/csv/hcsv)
+- `xpath`: Path within the metrics file to the metrics data(e.g. `AUC.value` for
   `{"AUC": {"value": 0.624321}}`)
 
 A `meta` entry consists of `key: value` pairs such as `name: John`. A meta entry

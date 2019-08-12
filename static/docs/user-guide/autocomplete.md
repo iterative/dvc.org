@@ -44,7 +44,7 @@ In this case, follow these steps to configure Bash, as it is your active shell.
 First, make sure Bash completion support is installed:
 
 - On a current Linux OS (in a non-minimal installation), bash completion should
-  be available;
+  be available.
 - On a Mac, install with `brew install bash-completion`.
 
 The DVC specific completion script is located in this path of our main

@@ -101,7 +101,7 @@ specified in DVC-files currently in the project are considered by `dvc fetch`
   of a DVC-file ([experiments](/doc/get-started/experiments)), not just the
   current one.
 
-- `-T`, `--all-tags` - fetch cache for all tags. Similar to `-a` above
+- `-T`, `--all-tags` - fetch cache for all tags. Similar to `-a` above.
 
 - `--show-checksums` - show checksums instead of file names when printing the
   download progress.

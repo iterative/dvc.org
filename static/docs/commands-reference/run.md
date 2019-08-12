@@ -58,7 +58,7 @@ pipeline.
   dependencies can be specified like this: `-d data.csv -d process.py`. Usually,
   each dependency is a file or a directory with data, or a code file, or a
   configuration file. DVC also supports certain
-  [external dependencies](/doc/user-guide/external-dependencies)
+  [external dependencies](/doc/user-guide/external-dependencies).
 
   DVC builds a computation graph and this list of dependencies is a way to
   connect different stages with each other. When you run `dvc repro` to

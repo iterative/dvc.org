@@ -10,14 +10,14 @@ run the website.
 To contribute documentation you need to know these locations:
 
 - [Content](https://github.com/iterative/dvc.org/tree/master/static/docs)
-  (`/static/docs`) -
+  (`/static/docs`):
   [Markdown](https://guides.github.com/features/mastering-markdown/) files of
-  the different pages to render dynamically in the browser;
+  the different pages to render dynamically in the browser.
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
-  (`/static/img`) - add new images, gif, svg, etc here. Reference them from the
-  Markdown files like this: `![](/static/img/reproducibility.png)`;
+  (`/static/img`): Add new images, gif, svg, etc here. Reference them from the
+  Markdown files like this: `![](/static/img/reproducibility.png)`.
 - [Sections](https://github.com/iterative/dvc.org/tree/master/src/Documentation/sidebar.json)
-  (`.../sidebar.json`) - edit it to register a new section for the navigation
+  (`.../sidebar.json`): Edit it to register a new section for the navigation
   menu.
 
 Merging the appropriate changes to these files into the master branch is enough
