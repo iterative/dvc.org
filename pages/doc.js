@@ -78,11 +78,12 @@ export default class Documentation extends Component {
 
   loadPath = path => {
     const item = getItemByPath(path)
+    const isPageChanged = item !== this.state.currentItem
 
     if (!item) {
       this.setState({ pageNotFound: true, currentItem: {} })
-    } else if (item === this.state.currentItem) {
-      this.updateScroll()
+    } else if (!isPageChanged) {
+      this.updateScroll(isPageChanged)
     } else {
       fetch(item.source)
         .then(res => {
@@ -95,7 +96,7 @@ export default class Documentation extends Component {
                 currentItem: item,
                 headings: this.parseHeadings(text)
               },
-              () => this.updateScroll()
+              () => this.updateScroll(isPageChanged)
             )
           })
         })
@@ -105,14 +106,18 @@ export default class Documentation extends Component {
     }
   }
 
-  updateScroll() {
-    if (window.location.hash) {
-      this.scrollToLink(window.location.hash)
-    } else {
+  updateScroll(isPageChanged) {
+    const { hash } = window.location
+
+    if (isPageChanged || !hash) {
       this.setState({ isSmoothScrollEnabled: false }, () => {
         this.scrollTop()
         this.setState({ isSmoothScrollEnabled: true })
       })
+    }
+
+    if (hash) {
+      this.scrollToLink(hash)
     }
   }
 
