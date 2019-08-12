@@ -288,11 +288,11 @@ Fixes #(Github issue id).
 Message types:
 
 - *component* - name of a component that this patch is affecting. Use `dvc` in a
-  general case.
-- _short description_ - short description of the patch.
-- _long description_ - If needed, longer message describing the patch in more
-  details.
-- _github issue id_ - An id of the Github issue that this patch is addressing.
+  general case
+- _short description_ - short description of the patch
+- _long description_ - if needed, longer message describing the patch in more
+  details
+- _github issue id_ - id of the GitHub issue that this patch is addressing
 
 Example:
 

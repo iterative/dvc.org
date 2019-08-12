@@ -1,7 +1,7 @@
 # DVC Files and Directories
 
 Once initialized in a project, DVC populates its installation directory
-(`.dvc/`) with special DVC internal files and directories.
+(`.dvc/`) with special DVC internal files and directories:
 
 ### Special DVC internal files and directories
 
@@ -38,9 +38,9 @@ Once initialized in a project, DVC populates its installation directory
 - `.dvc/updater` - this file is used store latest available version of dvc,
   which is used to remind user to upgrade.
 
-- `.dvc/updater.lock` - a lock file for `.dvc/updater`.
+- `.dvc/updater.lock` - lock file for `.dvc/updater`
 
-- `.dvc/lock` - a lock file for the whole dvc project.
+- `.dvc/lock` - lock file for the whole dvc project
 
 ## Structure of cache directory
 
