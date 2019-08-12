@@ -4,12 +4,12 @@ Marks which files and/or directories should be ignored when traversing
 repository.
 
 Sometimes you might want DVC to ignore some files while working with the
-project. For example, when working on a project with many files in its data
-directory, you might encounter extended execution time for operations that are
-as simple as `dvc status`. In other case you might want to omit files or folders
-unrelated to the project (like `.DS_Store` on Mac). To address these
-requirements we are implementing `.dvcignore` files handling. `.dvcignore` by
-design works similar way as `.gitignore` does.
+<abbr>project</abbr>. For example, when working on a <abbr>workspace</abbr> with
+many files in its data directory, you might encounter extended execution time
+for operations that are as simple as `dvc status`. In other case you might want
+to omit files or folders unrelated to the project (like `.DS_Store` on Mac). To
+address these requirements we are implementing `.dvcignore` files handling.
+`.dvcignore` by design works similar way as `.gitignore` does.
 
 ## How does it work?
 
@@ -146,7 +146,7 @@ data.dvc:
 
 ## Example: Ignore dvc controlled file
 
-Let's analyze an example project:
+Let's analyze an example <abbr>workspace</abbr>:
 
 ```dvc
 $ mkdir dir1 dir2

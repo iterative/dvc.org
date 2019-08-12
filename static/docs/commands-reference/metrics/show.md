@@ -1,6 +1,6 @@
 # metrics show
 
-Find and print project metrics.
+Find and print <abbr>project</abbr> metrics.
 
 ## Synopsis
 
@@ -48,8 +48,8 @@ detected by the file extension automatically.
 - `-x`, `--xpath` - specify a path within a metric file to get a specific metric
   value. Should be used if metric file contains multiple numbers and you need to
   get a only one of them. Only single path is allowed. If multiple metric files
-  exist in the project, the same parser and path will be applied to all of them.
-  If xpath for particular metric has been set using
+  exist in the <abbr>project</abbr>, the same parser and path will be applied to
+  all of them. If `xpath` for particular metric has been set using
   [`dvc metrics modify`](https://dvc.org/doc/commands-reference/metrics/modify#options)
   `xpath` passed in this option will owervrite it, only for current command run.
   It may fail to produce any results or parse files that are not in a

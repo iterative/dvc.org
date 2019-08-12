@@ -4,10 +4,10 @@ Once you install DVC, you will be able to start using it (in its local setup)
 immediately.
 
 However, remote storage should be set up (see `dvc remote`) if you need to share
-data or models outside of the context of single project, for example with other
-collaborators or even with yourself, in a different computing environment. It's
-similar to the way you would use Github or any other Git server to store and
-share your code.
+data or models outside of the context of a single project, for example with
+other collaborators or even with yourself, in a different computing environment.
+It's similar to the way you would use Github or any other Git server to store
+and share your code.
 
 For simplicity, let's setup a local remote:
 
@@ -16,9 +16,9 @@ For simplicity, let's setup a local remote:
 ### What is a "local remote" ?
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the machine where the project is stored, so it can be any directory
-accessible to the same system. The "remote" part refers specifically to the
-project/repository itself.
+refers to the machine where the <abbr>project</abbr> is stored, so it can be any
+directory accessible to the same system. The "remote" part refers specifically
+to the project/repository itself.
 
 </details>
 

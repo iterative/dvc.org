@@ -15,7 +15,7 @@ if you have any questions or need any help. We are very responsive ⚡.
 us a ⭐ if you like the project!
 
 ✅ Contribute either on [Github](https://github.com/iterative/dvc) or
-[Patreon](https://www.patreon.com/DVCorg/overview) to support the Project.
+[Patreon](https://www.patreon.com/DVCorg/overview) to support the project.
 
 This longer [Tutorial](/doc/tutorial) introduces DVC step-by-step while
 explaining in great detail the motivation and what's happening internally.

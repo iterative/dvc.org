@@ -9,10 +9,13 @@ guide if you want to fix or update the documentation or this website.
 
 Please search [issue tracker](https://github.com/iterative/dvc/issues) before
 creating a new issue (problem or an improvement request). Feel free to add
-issues related to the project and [dvc.org](https://dvc.org/) site.
+issues related to the project.
 
-If you feel that you can fix or implement it, please read a few paragraphs below
-to learn how to submit your changes.
+For problems with [dvc.org](https://dvc.org/) site please use this
+[Github repository](https://github.com/iterative/dvc.org/).
+
+If you feel that you can fix or implement it yourself, please read a few
+paragraphs below to learn how to submit your changes.
 
 ## Submitting changes
 
