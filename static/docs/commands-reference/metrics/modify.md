@@ -19,8 +19,8 @@ for the metric file `path` provided (the one that specifies the file path in
 question among its outputs – see `dvc metrics add` or `dvc run` with `-m` and
 `-M` options), and updates the information that represents the metric.
 
-If the path provided is not defined in a workspace DVC-file, the following error
-will be raised:
+If the path provided is not defined in a <abbr>workspace</abbr> DVC-file, the
+following error will be raised:
 
 ```dvc
 ERROR: failed to modify metric file settings -
@@ -40,19 +40,19 @@ ERROR: failed to modify metric file settings -
   when no type is provided.
 
 - `-x`, `--xpath` - specify a path within a metric file to get a specific metric
-  value. Should be used if metric file contains multiple numbers and you need to
-  get a only one of them. Only single path is allowed. This path will be saved
-  into the corresponding DVC-file and will be used automatically in
-  `dvc metrics show`. Accepted value depends on the metric file type (`-t`
-  option):
+  value. Should be used if the metric file contains multiple numbers and you
+  need to get a only one of them. Only a single path is allowed. This path will
+  be saved into the corresponding DVC-file and will be used automatically in
+  `dvc metrics show`. The accepted value depends on the metric file type
+  (`--type` option):
 
-  - `json` - see [JSONPath spec](https://goessner.net/articles/JsonPath/) for
-    available options. For example, `"AUC"` extracts the value from the
-    following json-formatted metric file: `{"AUC": "0.624652"}`.
-  - `tsv`/`csv` - `row,column`, e.g. `1,2`. Indices are 0-based.
-  - `htsv`/`hcsv` - `row,column name`. Row index is 0-based. First row is used
-    to specify column names and is not included into index. For example:
-    `0,Name`.
+  - `json` - see [JSONPath spec](https://goessner.net/articles/JsonPath/) or
+    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) for available options.
+    For example, `"AUC"` extracts the value from the following JSON-formatted
+    metric file: `{"AUC": "0.624652"}`.
+  - `tsv`/`csv` - `row,column` e.g. `1,2`. Indices are 0-based.
+  - `htsv`/`hcsv` - `row,column name` e.g. `0,Name`. Row index is 0-based. First
+    row is used to specify column names and is not included into index.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -92,9 +92,9 @@ $ dvc metrics show metrics.csv
     metrics.csv: auc, 0.9567
 ```
 
-Okay. Let's now, imagine we are interested only in numbers - second column of
-the CSV file. We can specify the type `CSV` and a path to extract the second
-column:
+Okay. Let's now, imagine we are interested only in the numeric values – second
+column of the CSV file. We can specify the `CSV` type (`-t`) and an `xpath`
+(`-x`) to extract the second column:
 
 ```dvc
 $ dvc metrics modify -t csv -x '0,1' metrics.csv

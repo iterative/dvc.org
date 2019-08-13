@@ -1,6 +1,6 @@
 # Use Cases
 
-Here we provide an overview for some DVC use cases - from very basic
+Here we provide an overview for some DVC use cases, from very basic
 ([data and model files management](/doc/use-cases/data-and-model-files-versioning))
 to more advanced (optimizing resources on a
 [single development machine](/doc/use-cases/multiple-data-scientists-on-a-single-machine)).

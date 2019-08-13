@@ -26,8 +26,8 @@ to update the docs and redeploy the website.
 ## Submitting changes
 
 In case of a minor change, you can use the **Edit on Github** button (found to
-the right of each page) to fork the project, edit it in place (with the source
-code file **Edit** button in Github), and create a pull request (PR).
+the right of each page) to fork the repository, edit it in place (with the
+source code file **Edit** button in Github), and create a pull request (PR).
 
 Otherwise, please refer to the following procedure:
 
@@ -91,7 +91,7 @@ in question.
 - We use [Prettier](https://prettier.io/) default conventions to format our
   source code files. The formatting of staged files will automatically be done
   by the Git pre-commit hook we have configured. You may also run
-  `npx prettier --write <file path(s)>` manually before committing changes.
+  `npx prettier --write <file paths>` manually before committing changes.
 
 - Using `dvc <command>` in the Markdown files, the docs engine will create a
   link to that command automatically. (No need to use `[]()` explicitly to

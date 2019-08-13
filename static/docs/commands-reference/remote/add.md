@@ -34,7 +34,7 @@ though and will rely on default access settings.
 > If you installed DVC via `pip`, depending on the remote type you plan to use
 > you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,
 > `[azure]`, and `[oss]`; or `[all]` to include them all. The command should
-> look like this: `pip install "dvc[s3]"` - it installs `boto3` library along
+> look like this: `pip install "dvc[s3]"`. This installs `boto3` library along
 > with DVC to support AWS S3 storage.
 
 This command creates a section in the DVC
@@ -85,9 +85,9 @@ The following are the types and of remotes (protocols) supported:
 ### Click for a local remote example
 
 > While the term may seem contradictory, it doesn't have to be. The "local" part
-> refers to the machine where the project is stored, so it can be any directory
-> accessible to the same system. The "remote" part refers specifically to the
-> project/repository itself.
+> refers to the machine where the <abbr>project</abbr> is stored, so it can be
+> any directory accessible to the same system. The "remote" part refers
+> specifically to the project/repository itself.
 
 Using an absolute path (recommended):
 

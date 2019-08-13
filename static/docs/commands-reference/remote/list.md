@@ -29,6 +29,13 @@ Including names and URLs.
 - `--local` - read a local [config file](/doc/commands-reference/config) instead
   of `.dvc/config`. It is located in `.dvc/config.local` and is Git-ignored.
 
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
+
+- `-v`, `--verbose` - displays detailed tracing information.
+
 ## Examples
 
 Let's for simplicity add a default local remote:
@@ -38,9 +45,9 @@ Let's for simplicity add a default local remote:
 ### What is a "local remote" ?
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the machine where the project is stored, so it can be any directory
-accessible to the same system. The "remote" part refers specifically to the
-project/repository itself.
+refers to the machine where the <abbr>project</abbr> is stored, so it can be any
+directory accessible to the same system. The "remote" part refers specifically
+to the project/repository itself.
 
 </details>
 

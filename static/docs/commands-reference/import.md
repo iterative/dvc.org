@@ -23,14 +23,15 @@ positional arguments:
 ## Description
 
 DVC provides an easy way to reuse datasets, intermediate results, ML models, or
-other files and directories tracked in another DVC repository into the present
-<abbr>workspace</abbr>. The `dvc import` command downloads such a <abbr>data
-artifact</abbr> in a way that it is tracked with DVC, so it can be updated when
-the external data source changes.
+other files and directories tracked in another DVC repository into the
+workspace. The `dvc import` command downloads such a <abbr>data artifact</abbr>
+in a way that it is tracked with DVC, so it can be updated when the external
+data source changes.
 
-The `url` argument specifies the external DVC project's Git repository URL (both
-HTTP and SSH protocols supported, e.g. `[user@]server:project.git`), while
-`path` is used to specify the path to the data to be downloaded within the repo.
+The `url` argument specifies the Git repository URL of the external <abbr>DVC
+project</abbr> (both HTTP and SSH protocols are supported, e.g.
+`[user@]server:project.git`), while `path` is used to specify the path to the
+data to be downloaded within the repo.
 
 > See `dvc import-url` to download and tack data from other supported URLs.
 
@@ -50,7 +51,7 @@ determine whether the local copy is out of date.
 To actually [track the data](https://dvc.org/doc/get-started/add-files),
 `git add` (and `git commit`) the import stage (DVC-file).
 
-Note that import stages are considered always "locked" - meaning that if you run
+Note that import stages are considered always "locked", meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` on them to update the
 downloaded data artifact from the external DVC repo.
 

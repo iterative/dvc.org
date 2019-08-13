@@ -10,9 +10,8 @@ models and datasets, let's play with a
 [tutorial](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
 that [François Chollet](https://twitter.com/fchollet) put together to show how
 to build a powerful image classifier, using only a small dataset. The goal of
-this example is to give you some hands-on experience with a very basic
-scenario - working with multiple versions of datasets and ML models using DVC
-commands.
+this example is to give you some hands-on experience with a very basic scenario
+– working with multiple versions of datasets and ML models using DVC commands.
 
 ![](/static/img/cats-and-dogs.jpg)
 
@@ -24,7 +23,7 @@ different versions.
 The specific algorithm that is used to train and validate the classifier is not
 important. No prior knowledge is required about Keras. We reuse the
 [script](https://gist.github.com/fchollet/f35fbc80e066a49d65f1688a7e99f069) (it
-goes along the blog post) in a "black box" way - it takes some data and produces
+goes along the blog post) in a "black box" way – it takes some data and produces
 a model file. We would highly recommend reading the
 [post](https://blog.keras.io/building-powerful-image-classification-models-using-very-little-data.html)
 itself since it's a great demonstration on how a general pre-trained model can
@@ -68,9 +67,9 @@ $ pip install -r requirements.txt
 ### Expand to learn more about DVC internals
 
 The repository you cloned is already DVC-initialized. There should be a `.dvc/`
-directory with `config`, `.gitignore` files and the `cache` directory. These
-files and directories are hidden from users in general. Users don't interact
-with these files directly. See
+directory with `config`, `.gitignore` files and the <abbr>cache
+directory</abbr>. These files and directories are hidden from users in general.
+Users don't interact with these files directly. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -98,9 +97,9 @@ $ unzip data.zip
 $ rm -f data.zip
 ```
 
-This command downloads and extracts our raw dataset - 1000 labeled images for
-training and 800 labeled images for validation. In summary, it's a 43 MB
-dataset, with a directory structure like this:
+This command downloads and extracts our raw dataset, consisting of 1000 labeled
+images for training and 800 labeled images for validation. In summary, it's a 43
+MB dataset, with a directory structure like this:
 
 ```sh
 data
@@ -133,15 +132,17 @@ $ dvc add data
 This command should be used instead of `git add` on files or directories that
 are too large to be put into Git. Usually, input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
-the DVC cache (of course, it keeps a link to it in the workspace, so you can
-continue working with it the same way as before). Instead, it creates a simple
-human-readable [DVC-file](/doc/user-guide/dvc-file-format) that can be
-considered as a pointer to the cache.
+the DVC cache (while keeping a
+[file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+to it in the <abbr>workspace</abbr>, so you can continue working with it the
+same way as before). Instead, it creates a simple human-readable
+[DVC-file](/doc/user-guide/dvc-file-format) that can be considered as a pointer
+to the cache.
 
 Next, we run the training with `python train.py`. We picked this example and
 datasets to be small enough to be run on your machine in a reasonable amount of
 time (a few minutes to train a model). This command produces a bunch of files,
-among them `model.h5` and `metrics.json` - weights of the trained model and
+among them `model.h5` and `metrics.json`, weights of the trained model and
 metrics history. The simplest way to capture the current version of the model is
 to use `dvc add` again:
 
@@ -163,11 +164,11 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 
 ### Expand to learn more about DVC internals
 
-As we mentioned briefly, DVC does not commit the `data` directory and `model.h5`
-file into git, `dvc add` pushed them into the DVC cache and added to the
-`.gitignore`. Instead, we commit DVC-files that serve as pointers to the cache
-(usually in the `.dvc/cache` directory inside the repository) where actual data
-resides.
+As we mentioned briefly, DVC does not commit the `data/` directory and
+`model.h5` file into git, `dvc add` pushed them into the DVC cache and added to
+the `.gitignore`. Instead, we commit DVC-files that serve as pointers to the
+cache (usually in the `.dvc/cache` directory inside the repository) where actual
+data resides.
 
 In this case we created `data.dvc` and `model.h5.dvc` files. Refer to the
 [DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
@@ -238,11 +239,11 @@ An operation that helps to get the specific committed version of data is
 designed to be similar to Git. In Git (or any other code version control system)
 when you need to get to a previous committed version of the code you run
 `git checkout`. All we need to do in our case is to run additionally
-`dvc checkout` to get the right data to the workspace.
+`dvc checkout` to get the right data into the <abbr>workspace</abbr>.
 
 ![](/static/img/versioning.png)
 
-There are two ways of doing this - a full workspace checkout or checkout of a
+There are two ways of doing this: a full workspace checkout or checkout of a
 specific data or mode file. Let's consider the full checkout first. It's quite
 straightforward:
 
@@ -289,7 +290,7 @@ place.
 
 `dvc add` is appropriate when you need to keep track of different versions of
 datasets or model files that come and are updated from external sources. The
-`data` directory above (with cats and dogs images) is a good example.
+`data/` directory above (with cats and dogs images) is a good example.
 
 On the other hand, there are files that are a result of running some code. In
 our example, please notice that `train.py` produces binary files (e.g.
@@ -345,7 +346,7 @@ DVC pipelines. See this [example](/doc/get-started/example-pipeline) to get a
 hands-on experience with them and try to apply it here. Don't hesitate to join
 our [community](/chat) to ask any questions!
 
-Another thing, you should have noticed, is the metrics file - `metrics.json` and
+Another thing, you should have noticed, is the metrics file (`metrics.json`) and
 the way we captured it with `-M metrics.json` option. Metric file is a special
 type of output DVC provides an interface on top to compare across tags or
 branches. See `dvc metrics` command and

@@ -14,26 +14,26 @@ usage: dvc version [-h] [-q | -v]
 Running the command `dvc version` outputs the following information about the
 system/environment:
 
-| Type                                        | Detail                                                                                                                                                                 |
-| ------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash in case of a development version)                                                                                         |
-| `Python version`                            | Version of the Python being used for the project in which DVC is initialized                                                                                           |
-| `Platform`                                  | Information about the operating system of the machine                                                                                                                  |
-| [`Binary`](#what-we-mean-by-binary)         | Shows whether DVC was installed from a package or from a binary release                                                                                                |
-| `Cache`                                     | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the DVC workspace and the <abbr>cache</abbr> directory |
-| `Filesystem type`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of <abbr>workspace</abbr> and the cache directory                                                      |
+| Line                                        | Detail                                                                                                                                                                |
+| ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash in case of a development version)                                                                                        |
+| `Python version`                            | Version of the Python being used on the environment in which DVC is initialized                                                                                       |
+| `Platform`                                  | Information about the operating system of the machine                                                                                                                 |
+| [`Binary`](#what-we-mean-by-binary)         | Shows whether DVC was installed from a package or from a binary release                                                                                               |
+| `Cache`                                     | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the <abbr>workspace</abbr> and the <abbr>cache</abbr> |
+| `Filesystem type`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of the cache and <abbr>workspace</abbr> directories                                                   |
 
-> If `dvc version` is executed outside a DVC workspace, the command outputs the
-> filesystem type of the current working directory.
+> If `dvc version` is executed outside a DVC project, no `Cache` is output and
+> the `Filesystem type` output is of the current working directory.
 
 > **Note** that if you've installed dvc using pip, you will need to install
 > `psutil` by yourself with `pip install psutil` in order for `dvc version` to
-> report fs information. Please see the original
-> [issue on github](https://github.com/iterative/dvc/issues/2284) for more info.
+> report file system information. Please see the original
+> [issue on Github](https://github.com/iterative/dvc/issues/2284) for more info.
 
 #### Components of DVC version
 
-The detail of DVC version depends upon the way of installing the project.
+The detail of DVC version depends upon the way of installing DVC.
 
 - **Official release**: This [install guide](/doc/get-started/install) mentions
   ways to install DVC using the official package stored in Python Packaging
@@ -100,7 +100,7 @@ The detail of `Binary` depends on the way DVC was downloading and
 
 Getting the DVC version and environment information:
 
-Inside a DVC workspace:
+Inside a DVC project:
 
 ```dvc
 $ dvc version
@@ -114,7 +114,7 @@ Filesystem type (cache directory): ('ext4', '/dev/sdb3')
 Filesystem type (workspace): ('ext4', '/dev/sdb3')
 ```
 
-Outside a DVC workspace:
+Outside a DVC project:
 
 ```dvc
 $ dvc version
@@ -125,4 +125,3 @@ Platform: Linux-4.15.0-50-generic-x86_64-with-debian-buster-sid
 Binary: False
 Filesystem type (workspace): ('ext4', '/dev/sdb3')
 ```
-

@@ -1,15 +1,8 @@
 # remove
 
-Remove data file or data directory.
+Properly remove data files or directories tracked by DVC.
 
-This command safely removes data files or directories that are tracked by DVC
-from your _workspace_. It takes a [DVC-File](/doc/user-guide/dvc-file-format) as
-input, removes all of its outputs (`outs`), and optionally removes the file
-itself.
-
-Note that it does not remove files from the DVC cache or remote storage (see
-`dvc gc`). However, remember to run `dvc push` to save the files you actually
-want to use or share in the future.
+## Synopsis
 
 ```usage
 usage: dvc remove [-h] [-q | -v] [-o | -p] [-f] targets [targets ...]
@@ -19,13 +12,24 @@ positional arguments:
                    DVC-files in the workspace by default.)
 ```
 
+## Description
+
+This command safely removes data files or directories that are tracked by DVC
+from the <abbr>workspace</abbr>. It takes a
+[DVC-File](/doc/user-guide/dvc-file-format) as input, removes all of its outputs
+(`outs`), and optionally removes the DVC-file itself.
+
+Note that it does not remove files from the DVC cache or remote storage (see
+`dvc gc`). However, remember to run `dvc push` to save the files you actually
+want to use or share in the future.
+
 Refer to [Update Tracked Files](/doc/user-guide/update-tracked-file) to see how
 it can be used to replace or modify files that are under DVC control.
 
 ## Options
 
-- `-o`, `--outs` (default) - remove outputs described in the provided DVC
-  file(s), keep the DVC-files.
+- `-o`, `--outs` (default) - remove outputs described in the given `targets`,
+  keep the DVC-files.
 
 - `-p`, `--purge` - remove outputs and DVC-files.
 

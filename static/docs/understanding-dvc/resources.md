@@ -23,7 +23,7 @@
     picture-in-picture" allowfullscreen></iframe>
 
 - Podcast featured by `Podcast.__init__`:
-  [Version control For your Machine Learning Projects](https://www.pythonpodcast.com/data-version-control-episode-206/) -
+  [Version control For your Machine Learning Projects](https://www.pythonpodcast.com/data-version-control-episode-206/)
 
 ## Articles
 

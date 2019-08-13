@@ -9,10 +9,13 @@ guide if you want to fix or update the documentation or this website.
 
 Please search [issue tracker](https://github.com/iterative/dvc/issues) before
 creating a new issue (problem or an improvement request). Feel free to add
-issues related to the project and [dvc.org](https://dvc.org/) site.
+issues related to the project.
 
-If you feel that you can fix or implement it, please read a few paragraphs below
-to learn how to submit your changes.
+For problems with [dvc.org](https://dvc.org/) site please use this
+[Github repository](https://github.com/iterative/dvc.org/).
+
+If you feel that you can fix or implement it yourself, please read a few
+paragraphs below to learn how to submit your changes.
 
 ## Submitting changes
 
@@ -127,7 +130,7 @@ This tests require additional effort to set up, so they are skipped by default.
 You don't need this in most cases, however, if you develop or fix some remote
 related code you might need to go through steps below.
 
-Install requirements for whatever remote(s) you are going to test:
+Install requirements for whatever remotes you are going to test:
 
 ```dvc
 $ pip install -e ".[s3]"
@@ -153,8 +156,8 @@ $ source tests/remotes_env
 ```
 
 If some member of your team had already went through all of this you may just
-ask his `remotes_env` file and Google Cloud credentials and you can skip any
-manipulations with `ENV` below.
+ask for their `remotes_env` file and Google Cloud credentials and you can skip
+any manipulations with `ENV` below.
 
 <details>
 
@@ -287,12 +290,12 @@ Fixes #(Github issue id).
 
 Message types:
 
-- *component* - name of a component that this patch is affecting. Use `dvc` in a
+- _component_: Name of a component that this patch is affecting. Use `dvc` in a
   general case
-- _short description_ - short description of the patch
-- _long description_ - if needed, longer message describing the patch in more
+- _short description_: Short description of the patch
+- _long description_: If needed, longer message describing the patch in more
   details
-- _github issue id_ - id of the GitHub issue that this patch is addressing
+- _github issue id_: ID of the GitHub issue that this patch is addressing
 
 Example:
 

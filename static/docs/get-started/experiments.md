@@ -1,7 +1,7 @@
 # Experiments
 
-Data science process is inherently iterative and R&D like - data scientist may
-try many different approaches, different hyper-parameter values and "fail" many
+Data science process is inherently iterative and R&D like. Data scientist may
+try many different approaches, different hyper-parameter values, and "fail" many
 times before the required level of a metric is achieved.
 
 DVC is built to provide a way to capture different experiments and navigate
@@ -38,6 +38,7 @@ $ dvc checkout
 ```
 
 DVC is designed to checkout large data files (no matter how large they are) into
-your workspace instantly on almost all modern operating systems with file links.
-See [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization)
-for more information.
+your <abbr>workspace</abbr> instantly on almost all modern operating systems
+with file links. See
+[Large Dataset Optimization](/docs/user-guide/large-dataset-optimization) for
+more information.

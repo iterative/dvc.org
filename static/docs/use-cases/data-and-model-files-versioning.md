@@ -23,9 +23,9 @@ ML <abbr>data artifacts</abbr> like data files, models, etc. Unlike `git-lfs`,
 DVC doesn't require installing a server; it can be used on-premises (NAS, SSH,
 for example) or with any major cloud provider (S3, Google Cloud, Azure).
 
-Let's say you already have a project that uses a bunch of images that are stored
-in `images` directory and has a `model.pkl` file - your model file that is
-deployed to production.
+Let's say you already have a <abbr>project</abbr> that uses a bunch of images
+stored in `images/` directory and has a `model.pkl` file – model file deployed
+to production.
 
 ```dvc
 $ ls images
@@ -79,9 +79,9 @@ $ git add .gitignore images.dvc model.pkl.dvc
 $ git commit -m "track images and models with dvc"
 ```
 
-There are two ways to get to the previous version of the dataset or model - a
-full workspace checkout or checkout of a specific data or model file. Let's
-consider the full checkout first. It's quite straightforward:
+There are two ways to get to the previous version of the dataset or model: a
+full <abbr>workspace</abbr> checkout or checkout of a specific data or model
+file. Let's consider the full checkout first. It's quite straightforward:
 
 > `v1.0` is a Git tag that should be created in advance to identify the dataset
 > version you are interested in, it can be just a Git commit hash instead.

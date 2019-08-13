@@ -36,9 +36,9 @@ Under the hood a few actions are taken:
   DVC-files to consult.
 
 - For each output referenced from each selected DVC-files, it finds a
-  corresponding entry in the local cache. DVC checks if the entry exists, or
-  not, in the remote simply by looking for it using the checksum. From this DVC
-  gathers a list of files missing from the remote storage.
+  corresponding entry in the local <abbr>cache</abbr>. DVC checks if the entry
+  exists, or not, in the remote simply by looking for it using the checksum.
+  From this DVC gathers a list of files missing from the remote storage.
 
 - Upload the cache files missing from the remote cache, if any, to the remote.
 
@@ -52,11 +52,11 @@ configure a remote.
 With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
 only the files (or directories) that are new in the local repository to the
 remote cache. It will not upload files associated with earlier versions or
-branches of the project directory, nor will it upload files which have not
-changed.
+branches of the <abbr>project</abbr> directory, nor will it upload files which
+have not changed.
 
 The command `dvc status -c` can list files that are new in the local cache and
-are referenced in the current workspace. It can be used to see what files
+are referenced in the <abbr>workspace</abbr>. It can be used to see what files
 `dvc push` would upload.
 
 The `dvc status -c` command can show files which exist in the remote cache and
@@ -65,8 +65,8 @@ remove nor modify those files in the remote cache.
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
-backward from the target [stage](/doc/commands-reference/run) file(s), through
-the corresponding [pipeline(s)](/doc/get-started/pipeline), to find data files
+backward from the target [stage files](/doc/commands-reference/run), through the
+corresponding [pipelines](/doc/commands-reference/pipeline), to find data files
 to push.
 
 ## Options
@@ -74,23 +74,22 @@ to push.
 - `-r REMOTE`, `--remote REMOTE` specifies which remote cache (see
   `dvc remote list`) to push to. The value for `REMOTE` is a cache name defined
   using the `dvc remote` command. If no `REMOTE` is given, or if no remote's are
-  defined in the workspace, an error message is printed. If the option is not
+  defined in the project, an error message is printed. If the option is not
   specified, then the default remote, configured with the `core.config` config
   option, is used.
 
-- `-a`, `--all-branches` - determines the files to upload by examining files
-  associated with all branches of the DVC-files in the project directory. It's
-  useful if branches are used to track "checkpoints" of an experiment or
-  project.
+- `-a`, `--all-branches` - determines the files to upload by examining DVC-files
+  in all branches of the project repository (if using Git). It's useful if
+  branches are used to track checkpoints of an experiment or project.
 
 - `-T`, `--all-tags` - the same as `-a`, `--all-branches` but tags are used to
   save different experiments or project checkpoints.
 
 - `-d`, `--with-deps` - determines files to upload by tracking dependencies to
-  the target DVC-file(s) (stages). This option only has effect when one or more
+  the target DVC-files (stages). This option only has effect when one or more
   `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stage(s) in the corresponding pipeline(s). This means
-  DVC will not push files referenced in later stage(s) than `targets`.
+  backward from the target stages in the corresponding pipelines. This means DVC
+  will not push files referenced in later stages than the `targets`.
 
 - `-R`, `--recursive` - `targets` is expected to contain at least one directory
   path for this option to have effect. Determines the files to push by searching
@@ -111,10 +110,11 @@ to push.
 
 ## Examples
 
-For using the `dvc push` command, remote storage must be defined. For an
-existing project a remote is usually defined and you can use `dvc remote list`
-to check existing remotes. Just to remind how it is done and set a context for
-the example, let's define an SSH remote with the `dvc remote add` command:
+For using the `dvc push` command, remote storage must be defined. (See
+`dvc remote`.) For an existing <abbr>project</abbr>, remotes are usually already
+set up and you can use `dvc remote list` to check them. Just to remind how it is
+done and set a context for the example, let's define an SSH remote with the
+`dvc remote add` command:
 
 ```dvc
 $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
@@ -148,7 +148,7 @@ $ dvc push data.zip.dvc
 ## Example: With dependencies
 
 Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-[pipeline](/doc/get-started/pipeline) has been setup with these
+[pipeline](/doc/commands-reference/pipeline) has been setup with these
 [stages](/doc/commands-reference/run):
 
 ```dvc
@@ -212,11 +212,9 @@ double check that all data had been uploaded.
 ## Example: What happens in the cache
 
 Let's take a detailed look at what happens to the DVC cache as you run an
-experiment in a local workspace and push data to a remote cache. To set the
-example consider having created a workspace that contains some code and data,
-and having created a remote cache. In this section we'll show the cache of a
-very simple project, but the details of this project doesn't matter so much as
-what happens in the caches as data is pushed.
+experiment locally and push data to a remote cache. To set the example consider
+having created a <abbr>workspace</abbr> that contains some code and data, and
+having set up a remote cache.
 
 Some work has been performed in the local workspace, and it contains new data to
 upload to the shared remote cache. When running `dvc status --cloud` the report
@@ -270,7 +268,7 @@ the local cache compared to the remote.
 
 Next we can upload part of the data from the local cache to a remote using the
 command `dvc push --with-deps STAGE.dvc`. Remember that `--with-deps` searches
-backwards from the target DVC-file(s) to locate files to upload, and does not
+backwards from the DVC-file `targets` to locate files to upload, and does not
 upload files in subsequent stages.
 
 After doing that we can inspect the remote cache again:

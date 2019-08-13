@@ -3,7 +3,7 @@
 Download or copy file or directory from another DVC repository (on a git server
 such as Github) into the local file system.
 
-> Unlike `dvc import`, this command does not track the downloaded data file(s)
+> Unlike `dvc import`, this command does not track the downloaded data files
 > (does not create a DVC-file).
 
 ## Synopsis

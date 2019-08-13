@@ -18,9 +18,9 @@ positional arguments:
 
 The `dvc commit` command is useful for several scenarios where a dataset is
 being changed: when a [stage](/doc/commands-reference/run) or
-[pipeline](/doc/get-started/pipeline) is in development, when one wishes to run
-commands outside the control of DVC, or to force DVC-file updates to save time
-tying stages or a pipeline.
+[pipeline](/doc/commands-reference/pipeline) is in development, when one wishes
+to run commands outside the control of DVC, or to force DVC-file updates to save
+time tying stages or a pipeline.
 
 - Code or data for a stage is under active development, with rapid iteration of
   code, configuration, or data. Run DVC commands (`dvc run`, `dvc repro`, and
@@ -43,7 +43,7 @@ tying stages or a pipeline.
 
 The last two use cases are **not recommended**, and essentially force update the
 DVC-files and save data to cache. They are still useful, but keep in mind that
-DVC can't guarantee reproducibility in those cases - you commit any data your
+DVC can't guarantee reproducibility in those cases – You commit any data you
 want. Let's take a look at what is happening in the fist scenario closely:
 
 Normally DVC commands like `dvc add`, `dvc repro` or `dvc run`, commit the data
@@ -52,7 +52,7 @@ to the DVC cache as the last step. What _commit_ means is that DVC:
 - Computes a checksum for the file/directory
 - Enters the checksum and file name into the DVC-file
 - Tells the SCM to ignore the file/directory (e.g. add entry to `.gitignore`)
-  (Note that if the workspace was initialized with no SCM support
+  (Note that if the <abbr>workspace</abbr> was initialized with no SCM support
   (`dvc init --no-scm`), this does not happen.)
 - Adds the file/directory or to the DVC cache
 
@@ -67,10 +67,10 @@ into play. It handles that last step of adding the file to the DVC cache.
 ## Options
 
 - `-d`, `--with-deps` - determine files to commit by tracking dependencies to
-  the target DVC-file(s) (stages). This option only has effect when one or more
+  the target DVC-files (stages). This option only has effect when one or more
   `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stage(s) in the corresponding pipeline(s). This means
-  DVC will not commit files referenced in later stage(s) than `targets`.
+  backward from the target stages in the corresponding pipelines. This means DVC
+  will not commit files referenced in later stages than the `targets`.
 
 - `-R`, `--recursive` - `targets` is expected to contain at least one directory
   path for this option to have effect. Determines the files to commit by
@@ -90,10 +90,10 @@ into play. It handles that last step of adding the file to the DVC cache.
 
 ## Examples
 
-Let's employ a simple workspace with some data, code, ML models, pipeline
-stages, such as the DVC project created in our [Get Started](/doc/get-started)
-section. Then we can see what happens with `git commit` and `dvc commit` in
-different situations.
+Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
+pipeline stages, such as the <abbr>DVC project</abbr> created in our
+[Get Started](/doc/get-started) section. Then we can see what happens with
+`git commit` and `dvc commit` in different situations.
 
 <details>
 
@@ -121,8 +121,6 @@ Download the precomputed data using:
 ```dvc
 $ dvc pull --all-branches --all-tags
 ```
-
-This data will be retrieved from a preconfigured remote cache.
 
 </details>
 

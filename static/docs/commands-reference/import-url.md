@@ -95,7 +95,7 @@ Both methods generate an equivalent [stage file](/doc/commands-reference/run)
 user from having to manually copy files from each of the remote storage schemes,
 and from having to install CLI tools for each service.
 
-Note that import stages are considered always "locked" - meaning that if you run
+Note that import stages are considered always "locked", meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` on them to update the
 downloaded file or directory from the external data source.
 
@@ -117,8 +117,8 @@ downloaded file or directory from the external data source.
 
 ## Examples
 
-To illustrate these examples we will be using the project explained in the
-[Get Started](/doc/get-started) section.
+To illustrate these examples we will be using the <abbr>project</abbr> explained
+in the [Get Started](/doc/get-started) section.
 
 <details>
 
@@ -139,15 +139,15 @@ $ git checkout 2-remote
 $ mkdir data
 ```
 
-You should now have a blank workspace, just before the
+You should now have a blank <abbr>workspace</abbr>, just before the
 [Add Files](/doc/get-started/add-files) step.
 
 </details>
 
 ## Example: Tracking a remote file
 
-An advanced alternate to initialize the _Get Started_ workspace, is using
-`dvc import-url`:
+An advanced alternate to [Add Files](/doc/get-started/add-files) step of the
+_Get Started_ section is to use `dvc import-url`:
 
 ```dvc
 $ dvc import-url https://dvc.org/s3/get-started/data.xml data/data.xml
@@ -189,30 +189,29 @@ its necessary to download it again.
 > See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
 > text format above.
 
-You may want to get out of and remove the `example-get-started` directory after
+You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).
 
 ## Example: Detecting remote file changes
 
 What if that remote file is one which will be updated regularly? The project
 goals might include regenerating a <abbr>data artifact</abbr> based on the
-updated data source. A [pipeline](/doc/commands-reference/pipeline) can be
-triggered to re-execute based on a changed external dependency.
+updated data source. [Pipeline](/doc/commands-reference/pipeline) reproduction
+can be triggered based on a changed external dependency.
 
 Let's use the [Get Started](/doc/get-started) project again, simulating an
-updated external data source. (Remember to prepare the sample project as
-explained in [Examples](#examples))
+updated external data source. (Remember to prepare the <abbr>workspace</abbr>,
+as explained in [Examples](#examples))
 
 To make it easy to experiment with this, let's use a local machine directory
-(external to the sample DVC project) to simulate a remote data source location.
-(In real life, the data file will probably be on a remote server.) Run these
-commands:
+(external to the workspace) to simulate a remote data source location. (In real
+life, the data file will probably be on a remote server.) Run these commands:
 
 ```dvc
 $ mkdir /tmp/dvc-import-url-example
 $ cd /tmp/dvc-import-url-example/
 $ wget https://dvc.org/s3/get-started/data.xml
-$ cd -  # to go back to the Get Started project
+$ cd -  # to go back to the project
 ```
 
 In a production system, you might have a process to update data files. That's

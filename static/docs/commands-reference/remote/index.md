@@ -25,18 +25,18 @@ positional arguments:
 
 What is data remote?
 
-The same way as Github serves as a master storage for Git-based projects, DVC
-data remotes provide a central place to keep and share data and model files.
-With a remote data storage, you can pull models and data files which were
-created by your team members without spending time and resources to re-build
-models and re-process data files. It also saves space on your local
-environment - DVC can [fetch](/doc/commands-reference/fetch) into the local
-cache only the data you need for a specific branch/commit.
+The same way as Github provides storage hosting for Git repositories, DVC data
+remotes provide a central place to keep and share data and model files. With a
+remote data storage, you can pull models and data files which were created by
+your team members without spending time and resources to build or process them
+locally. It also saves space on your local environment – DVC can
+[fetch](/doc/commands-reference/fetch) into the local cache only the data you
+need for a specific branch/commit.
 
 > If you installed DVC via `pip`, depending on the remote type you plan to use
 > you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,
 > `[azure]`, and `[oss]`; or `[all]` to include them all. The command should
-> look like this: `pip install "dvc[s3]"` - it installs `boto3` library along
+> look like this: `pip install "dvc[s3]"`. This installs `boto3` library along
 > with DVC to support AWS S3 storage.
 
 Using DVC with a remote data storage is optional. By default, DVC is configured
@@ -51,7 +51,7 @@ repository), which enables basic DVC usage scenarios out of the box.
 [config files](/doc/commands-reference/config). Alternatively, `dvc config` can
 be used or these files could be edited manually.
 
-For the typical process to share the project via remote, see
+For the typical process to share the <abbr>project</abbr> via remote, see
 [Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
 
 ## Options
@@ -72,9 +72,9 @@ For the typical process to share the project via remote, see
 ### What is a "local remote" ?
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the machine where the project is stored, so it can be any directory
-accessible to the same system. The "remote" part refers specifically to the
-project/repository itself.
+refers to the machine where the <abbr>project</abbr> is stored, so it can be any
+directory accessible to the same system. The "remote" part refers specifically
+to the project/repository itself.
 
 </details>
 

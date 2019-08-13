@@ -5,8 +5,8 @@ In order to start using DVC, you need first to initialize it in your
 control management system, but for the best experience we recommend using DVC on
 top of Git repositories.
 
-If you don't have a directory for this project already, create it now with these
-commands:
+If you don't have a directory for this <abbr>project</abbr> already, create it
+now with these commands:
 
 ```dvc
 $ mkdir example-get-started
@@ -23,8 +23,9 @@ $ git commit -m "initialize DVC"
 ```
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`
-and `.gitignore` files and `cache` directory. These files and directories are
-hidden from the user generally and are not meant to be manipulated directly.
+and `.gitignore` files and <abbr>cache directory</abbr>. These files and
+directories are hidden from the user generally and are not meant to be
+manipulated directly.
 
 > See `dvc init` if you want to get more details about the initialization
 > process, and

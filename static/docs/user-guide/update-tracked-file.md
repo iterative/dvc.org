@@ -1,8 +1,8 @@
 # Update a Tracked File
 
-Due to the way DVC handles linking between the data files in the cache and their
-counterparts in the workspace (refer to
-[Large Dataset Optimization](/docs/user-guide/large-dataset-optimization)),
+Due to the way DVC handles linking between the data files in the
+<abbr>cache</abbr> and their counterparts in the <abbr>workspace</abbr> (refer
+to [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization)),
 updating tracked files has to be carried out with caution to avoid data
 corruption when the DVC config option `cache.type` is set to `hardlink` or/and
 `symlink`. (See `dvc config cache` for more details on setting the cache file
@@ -20,7 +20,7 @@ manually, DVC removes them for you before running the stage which generates
 them.
 
 If you use DVC to track a file that is generated during your pipeline (e.g. some
-intermediate result or a final model file - `model.pkl`) and you don't use
+intermediate result or a final model file i.e. `model.pkl`) and you don't use
 `dvc run` and `dvc repro` to manage your pipeline, use the procedure below (run
 `dvc unprotect` or `dvc remove`) to unlink it from DVC cache prior to the
 execution of the script that modifies it.
