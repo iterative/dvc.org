@@ -67,7 +67,7 @@ process.
 - File tracking:
 
   - DVC tracks files based on checksum (md5) instead of file timestamps. This
-    helps avoid running into heavy processes like model re-training when you
+    helps avoid running into heavy processes like model retraining when you
     checkout a previous, trained version of a modeling code (Makefile will
     retrain the model).
 

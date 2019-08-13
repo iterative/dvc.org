@@ -27,14 +27,14 @@ principled way:
 3. Navigating through experiments.
 
 - How do you recover a model from last week without wasting time waiting for the
-  model to re-train?
+  model to retrain?
 
 - How do you quickly switch between the large data source and a small data
   subset without modifying source code?
 
 4. Reproducibility.
 
-- How do you run a model's evaluation again without re-training the model and
+- How do you run a model's evaluation again without retraining the model and
   preprocessing a raw dataset?
 
 5. Managing and sharing large data files.

@@ -196,8 +196,8 @@ trying this example (especially if trying out the following one).
 
 What if that remote file is one which will be updated regularly? The project
 goals might include regenerating a <abbr>data artifact</abbr> based on the
-updated data source. A [pipeline](/doc/commands-reference/pipeline) can be
-triggered to re-execute based on a changed external dependency.
+updated data source. [Pipeline](/doc/commands-reference/pipeline) reproduction
+can be triggered based on a changed external dependency.
 
 Let's use the [Get Started](/doc/get-started) project again, simulating an
 updated external data source. (Remember to prepare the <abbr>workspace</abbr>,

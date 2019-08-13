@@ -360,7 +360,7 @@ master:
 
 By wrapping your commands with `dvc run` it's easy to integrate DVC into your
 existing ML development pipeline/processes without any significant effort to
-re-implement your code/application.
+rewrite your code.
 
 The key step to notice is that DVC automatically derives the dependencies
 between the experiment stages and builds the dependency graph (DAG)
