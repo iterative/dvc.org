@@ -100,10 +100,7 @@ and make your project reproducible.
 
 - `-f`, `--file` - specify name of the DVC-file it generates. By default the
   DVC-file name generated is `<file>.dvc`, where `<file>` is file name of the
-  first output (from `targets`). The stage file is placed in the same directory
-  where `dvc run` is run by default, but `-f` can be used to change this
-  location, by including a path in the provided value (e.g.
-  `-f stages/stage.dvc`).
+  `<target>` (this option is not allowed with multiple targets).
 
 ## Example: Single file
 
