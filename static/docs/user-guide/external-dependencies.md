@@ -113,8 +113,8 @@ In the previous examples, downloading commands were used: `aws s3 cp`, `scp`,
 types of dependencies.
 
 ```dvc
-$ dvc import-url https://dvc.org/s3/get-started/data.xml
-Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data.xml'
+$ dvc import-url https://dvc.org/s3/data/get-started/data.xml
+Importing 'https://dvc.org/s3/data/get-started/data.xml' -> 'data.xml'
 [##############################] 100% data.xml
 ...
 ```
@@ -130,7 +130,7 @@ The command above creates an <abbr>import stage</abbr> specified in DVC-file
 # ...
 deps:
   - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-    path: https://dvc.org/s3/get-started/data.xml
+    path: https://dvc.org/s3/data/get-started/data.xml
 outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml

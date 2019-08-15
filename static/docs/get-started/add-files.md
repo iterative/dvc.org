@@ -6,7 +6,7 @@ Let's get a sample dataset to play with:
 
 ```dvc
 $ mkdir data
-$ wget https://dvc.org/s3/get-started/data.xml -O data/data.xml
+$ wget https://dvc.org/s3/data/get-started/data.xml -O data/data.xml
 ```
 
 <details>

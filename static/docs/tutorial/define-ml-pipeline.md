@@ -17,7 +17,7 @@ to download `data.xml`and save it into the `data` subdirectory.
 
 ```dvc
 $ mkdir data
-$ wget -P data https://dvc.org/s3/so/100K/Posts.xml.zip
+$ wget -P data https://dvc.org/s3/data/tutorial-nlp/100K/Posts.xml.zip
 $ du -sh data/*
  41M data/Posts.xml.zip
 ```

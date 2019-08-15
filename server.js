@@ -35,7 +35,8 @@ app.prepare().then(() => {
     } else if (req.headers.host === 'remote.dvc.org') {
       res.writeHead(301, {
         Location:
-          'https://s3-us-west-2.amazonaws.com/dvc-public/remote' + pathname
+          'https://s3-us-west-2.amazonaws.com/dvc-public/remote/' +
+          pathname.substring(1)
       })
       res.end()
     } else if (doc.test(pathname)) {
@@ -54,7 +55,7 @@ app.prepare().then(() => {
     } else if (s3.test(pathname)) {
       res.writeHead(301, {
         Location:
-          'https://s3-us-west-2.amazonaws.com/dvc-share/' +
+          'https://s3-us-west-2.amazonaws.com/dvc-public/' +
           pathname.substring(4)
       })
       res.end()
@@ -62,9 +63,7 @@ app.prepare().then(() => {
       res.writeHead(301, {
         Location:
           'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/' +
-          pathname.substring(1, 4) +
-          '/' +
-          pathname.substring(5)
+          pathname.substring(1)
       })
       res.end()
     } else if (chat.test(pathname)) {

@@ -92,7 +92,7 @@ right-click [this link](/s3/examples/versioning/data.zip) and click
 </details>
 
 ```dvc
-$ wget https://dvc.org/s3/examples/versioning/data.zip
+$ wget https://dvc.org/s3/data/tutorial-ver/data.zip
 $ unzip data.zip
 $ rm -f data.zip
 ```
@@ -182,7 +182,7 @@ Let's imagine that our images dataset is growing, we were able to double it.
 Next command extracts 500 cat and 500 dog images into `data/train`:
 
 ```dvc
-$ wget https://dvc.org/s3/examples/versioning/new-labels.zip
+$ wget https://dvc.org/s3/data/tutorial-ver/new-labels.zip
 $ unzip new-labels.zip
 $ rm -f new-labels.zip
 ```
