@@ -37,8 +37,6 @@ Under the hood, a few actions are taken for each file in `targets`:
 
 Unless the `-f` options is used, by default the DVC-file name generated is
 `<file>.dvc`, where `<file>` is file name of the first output (from `targets`).
-If neither `-f`, nor outputs are specified, the stage name defaults to
-`Dvcfile`.
 
 The result is data file is added to the DVC cache, and DVC-files can be tracked
 via Git or other version control system. The DVC-file lists the added file as an
@@ -100,12 +98,11 @@ and make your project reproducible.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `-f`, `--file` - specify name of the DVC-file it generates. By default the
-  DVC-file name generated is `<file>.dvc`, where `<file>` is file name of the
-  first output (from `targets`). The stage file is placed in the same directory
-  where `dvc run` is run by default, but `-f` can be used to change this
-  location, by including a path in the provided value (e.g.
-  `-f stages/stage.dvc`).
+- `-f`, `--file` - specify name of the DVC-file it generates. This option works
+  only if there is a single target. By default the name of the generated
+  DVC-file is `<target>.dvc`, where `<target>` is the file name of the given
+  target. This option allows to set the name and the path of the generated
+  DVC-file.
 
 ## Example: Single file
 
