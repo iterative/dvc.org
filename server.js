@@ -34,7 +34,8 @@ app.prepare().then(() => {
       res.end()
     } else if (req.headers.host === 'remote.dvc.org') {
       res.writeHead(301, {
-        Location: 'https://s3-us-west-2.amazonaws.com/dvc-storage' + pathname
+        Location:
+          'https://s3-us-west-2.amazonaws.com/dvc-public/remote' + pathname
       })
       res.end()
     } else if (doc.test(pathname)) {
