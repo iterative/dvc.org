@@ -29,9 +29,6 @@ app.prepare().then(() => {
       const doc_pathname = '/doc/commands-reference' + normalized_pathname
       res.writeHead(301, { Location: 'https://dvc.org' + doc_pathname })
       res.end()
-    } else if (req.headers.host === 'pycon2019.dvc.org') {
-      res.writeHead(301, { Location: 'https://dvc.org/doc/get-started' })
-      res.end()
     } else if (req.headers.host === 'remote.dvc.org') {
       res.writeHead(301, {
         Location: 'https://s3-us-west-2.amazonaws.com/dvc-storage' + pathname
