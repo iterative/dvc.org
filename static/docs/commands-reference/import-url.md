@@ -261,8 +261,8 @@ $ rm -f code.zip
 
 ### Click and expand to setup the environment
 
-For this step we'll need to install the project requirements. For that we
-**strongly** recommend creating a virtual environment with a tool such as
+Let's install the requirements. But before we do that, we **strongly** recommend
+creating a virtual environment with a tool such as
 [virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```dvc

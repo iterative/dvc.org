@@ -46,19 +46,14 @@ $ cd example-versioning
 This command pulls a repository with a single script `train.py` that runs the
 training.
 
-(Optional) It's highly recommended to initialize a virtual environment with
-[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool to keep
-your global packages clean and untouched:
+Now let's install the requirements. But before we do that, we **strongly**
+recommend creating a virtual environment with a tool such as
+[virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```dvc
-$ virtualenv .env
+$ virtualenv -p python3 .env
 $ source .env/bin/activate
 $ echo ".env/" >> .gitignore
-```
-
-Install required dependencies:
-
-```dvc
 $ pip install -r requirements.txt
 ```
 
