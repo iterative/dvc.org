@@ -26,7 +26,7 @@ But in case this is not possible (or is not preferable), we can easily setup the
 caches keep staying on the external drive. DVC will still be able to track them
 properly.
 
-### Make the data directory accessible
+## Make the data directory accessible
 
 For this to work, first you have to make sure that you can read and write the
 data directory `/mnt/data/`. The most straightforward way to do this is by
@@ -37,7 +37,7 @@ $ sudo chown <username>: -R /mnt/data/
 $ chmod u+rw -R /mnt/data/
 ```
 
-### Start a DVC project and setup a local external cache
+## Start a DVC project and setup a local external cache
 
 An _external_ <abbr>cache</abbr> is called so because it resides outside of your
 <abbr>workspace</abbr> directory. We also call it _local_ because it is located
@@ -71,14 +71,14 @@ $ cat .dvc/config
 dir = /mnt/data/dvc-cache
 ```
 
-### Example of tracking external dependencies and outputs
+## Example of tracking external dependencies and outputs
 
 Now, when you refer to the data files and directories, you have to use their
 absolute path. The DVC-files will be created on the <abbr>project</abbr>
 directory, and you can track their modifications with `git` as usual.
 
-For example let's say that the raw data are on `/mnt/data/raw/` you are cleaning
-them up. You could do it like this:
+For example let's say that the raw data are on `/mnt/data/raw/` and you are
+cleaning them up. You could do it like this:
 
 ```dvc
 $ dvc add /mnt/data/raw
@@ -88,6 +88,24 @@ $ dvc run -f clean.dvc \
           -o /mnt/data/clean \
           ./cleanup.py /mnt/data/raw /mnt/data/clean
 ```
+
+<details>
+
+### Using an environment variable for the data path
+
+In a real life situation probabaly you would declare an environment variable
+`DATA_PATH=/mnt/data` and use it to shorten the command options, like this:
+
+```dvc
+$ dvc add $DATA_PATH/raw
+
+$ dvc run -f clean.dvc \
+          -d $DATA_PATH/raw \
+          -o $DATA_PATH/clean \
+          ./cleanup.py $DATA_PATH/raw $DATA_PATH/clean
+```
+
+</details>
 
 If you check the contents of the files `raw.dvc` and `clean.dvc` you will notice
 that their `path:` field refers to the external directories:
