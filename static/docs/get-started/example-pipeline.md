@@ -75,7 +75,7 @@ control:
 
 ```dvc
 $ mkdir data
-$ wget -P data https://data.dvc.org/tutorial-nlp/10K/Posts.xml.zip
+$ wget -P data https://data.dvc.org/tutorial-nlp/25K/Posts.xml.zip
 $ dvc add data/Posts.xml.zip
 ```
 

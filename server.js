@@ -65,6 +65,8 @@ app.prepare().then(() => {
     } else {
       handle(req, res, parsedUrl)
     }
+
+    // Invokes server `createServer`
   }).listen(port, err => {
     if (err) throw err
     console.log('> Ready on http://localhost:3000')
