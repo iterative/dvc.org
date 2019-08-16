@@ -12,7 +12,7 @@ to get the sample code:
 > On Windows just use your browser to download the archive instead.
 
 ```dvc
-$ wget https://dvc.org/s3/code/get-started/code.zip
+$ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
 ```

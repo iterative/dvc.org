@@ -11,19 +11,16 @@ const next = require('next')
 const querystring = require('querystring')
 
 const dev = process.env.NODE_ENV !== 'production'
-const port = process.env.PORT || 3000
 const app = next({ dev })
+const port = process.env.PORT || 3000
 const handle = app.getRequestHandler()
 
 app.prepare().then(() => {
   createServer((req, res) => {
     const parsedUrl = parse(req.url, true)
     const { pathname, query } = parsedUrl
-    const doc = /^\/doc.*/i
-    const s3 = /^\/s3\/.*/i
-    const pkg = /^\/(deb|rpm)\/.*/i
-    const chat = /^\/(help|chat)\/?$/i
 
+    // Special URL host redirects
     if (req.headers.host === 'man.dvc.org') {
       let normalized_pathname =
         ['/get-url', '/import-url'].indexOf(pathname) > 0
@@ -32,14 +29,17 @@ app.prepare().then(() => {
       const doc_pathname = '/doc/commands-reference' + normalized_pathname
       res.writeHead(301, { Location: 'https://dvc.org' + doc_pathname })
       res.end()
-    } else if (req.headers.host === 'remote.dvc.org') {
+    } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
       res.writeHead(301, {
         Location:
-          'https://s3-us-west-2.amazonaws.com/dvc-public/remote/' +
-          pathname.substring(1)
+          'https://s3-us-east-2.amazonaws.com/dvc-public/' +
+          req.headers.host.split('.')[0] +
+          pathname
       })
       res.end()
-    } else if (doc.test(pathname)) {
+
+      // Special URL path redirects below
+    } else if (/^\/doc.*/i.test(pathname)) {
       let normalized_pathname = pathname.replace(/^\/doc[^?\/]*/i, '/doc')
       if (normalized_pathname !== pathname) {
         res.writeHead(301, {
@@ -52,21 +52,14 @@ app.prepare().then(() => {
       } else {
         app.render(req, res, '/doc', query)
       }
-    } else if (s3.test(pathname)) {
-      res.writeHead(301, {
-        Location:
-          'https://s3-us-west-2.amazonaws.com/dvc-public/' +
-          pathname.substring(4)
-      })
-      res.end()
-    } else if (pkg.test(pathname)) {
+    } else if (/^\/(deb|rpm)\/.*/i.test(pathname)) {
       res.writeHead(301, {
         Location:
           'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/' +
           pathname.substring(1)
       })
       res.end()
-    } else if (chat.test(pathname)) {
+    } else if (/^\/(help|chat)\/?$/i.test(pathname)) {
       res.writeHead(301, { Location: 'https://discordapp.com/invite/dvwXA2N' })
       res.end()
     } else {
