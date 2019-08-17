@@ -1,18 +1,20 @@
-# Huge Data On An External Local Drive
+# Managing Data Storage On An External Hard Drive
 
-Sometimes the data may be huge and they are stored on an external local drive.
+Sometimes the data may be huge and stored on an
+[external hard drive](https://whatis.techtarget.com/definition/external-hard-drive).
 By "huge" we mean that they won't fit on our home directory, and even if they
 did, it would certainly take a long time to copy them back an forth from the
 external drive to our home directory. For example let's say that the data are
-stored on an external HDD drive of size 16TB, which is mounted on `/mnt/data/`,
-while the disk of our home directory has a size of only 320GB.
+stored on an external hard drive of size 16TB, while the hard drive of our home
+directory has a size of only 320GB.
 
-In this case we would like to process the data where they are (on the external
-drive), to save the results there, and certainly to store the cached files on
-the external drive too.
+In this case we would like to process the data where they are located (on the
+external drive). We also would like to save the results there, and certainly to
+store the <abbr>cached</abbr> files there as well.
 
 The most easy way to do this would be to locate the <abbr>workspace</abbr> on
-the external drive as well, which could be done like this:
+the external drive itself. If we assume that the external drive is mounted on
+`/mnt/data/`, then it could be done like this:
 
 ```dvc
 $ sudo su
@@ -22,9 +24,8 @@ $ sudo su
 ```
 
 But in case this is not possible (or is not preferable), we can easily setup the
-<abbr>workspace</abbr> on our home directory, while all the data files and their
-caches keep staying on the external drive. DVC will still be able to track them
-properly.
+workspace in our home directory, while all the data files and their caches keep
+staying on the external drive. DVC will still be able to track them properly.
 
 ## Make the data directory accessible
 
@@ -37,19 +38,17 @@ $ sudo chown <username>: -R /mnt/data/
 $ chmod u+rw -R /mnt/data/
 ```
 
-## Start a DVC project and setup a local external cache
+## Start a DVC project and setup an external cache
 
-An _external_ <abbr>cache</abbr> is called so because it resides outside of your
-<abbr>workspace</abbr> directory. We also call it _local_ because it is located
-within our filesystem (as opposed to being located somewhere on the internet, in
-which case it is called _remote_). Let's create a directory for it:
+An _external_ <abbr>cache</abbr> is called so because it resides outside of the
+workspace directory. Let's create a directory for it on `/mnt/data/`:
 
 ```dvc
 $ mkdir -p /mnt/data/dvc-cache
 ```
 
-Now you can initialize a project on your home directory and configure it to use
-the external cache directory:
+Now you can initialize a <abbr>project</abbr> on your home directory and
+configure it to use the external cache directory:
 
 ```dvc
 $ cd ~/project/
@@ -60,10 +59,26 @@ $ dvc config cache.dir /mnt/data/dvc-cache
 $ rm -rf .dvc/cache/
 
 $ git add .dvc/config
-$ git commit -m 'DVC with external cache dir'
+$ git commit -m 'Initialize DVC with external cache'
 ```
 
-If you check the config file you will see something like this:
+<details>
+
+### Transfer the content of the cache to the external directory
+
+In this example we are just removing the default cache directory `.dvc/cache/`
+because we just initialized the project and we know that it is empty (there's
+nothing stored in it). If we had an existing project, we could preserve the
+content of the cache by moving it to the new directory:
+
+```dvc
+$ mv -a .dvc/cache/* /mnt/data/dvc-cache/
+$ rm -rf .dvc/cache/
+```
+
+</details>
+
+If you check the config file you should see something like this:
 
 ```dvc
 $ cat .dvc/config
@@ -71,13 +86,13 @@ $ cat .dvc/config
 dir = /mnt/data/dvc-cache
 ```
 
-## Example of tracking external dependencies and outputs
+## Tracking external dependencies and outputs
 
 Now, when you refer to the data files and directories, you have to use their
-absolute path. The DVC-files will be created on the <abbr>project</abbr>
+**absolute path**. The <abbr>DVC-files</abbr> will be created on the project
 directory, and you can track their modifications with `git` as usual.
 
-For example let's say that the raw data are on `/mnt/data/raw/` and you are
+For example let's say that the raw data file are on `/mnt/data/raw/` and you are
 cleaning them up. You could do it like this:
 
 ```dvc
@@ -93,7 +108,7 @@ $ dvc run -f clean.dvc \
 
 ### Using an environment variable for the data path
 
-In a real life situation probabaly you would declare an environment variable
+In a real life situation probably you would declare an environment variable
 `DATA_PATH=/mnt/data` and use it to shorten the command options, like this:
 
 ```dvc
@@ -112,28 +127,36 @@ that their `path:` field refers to the external directories:
 
 ```dvc
 $ cat raw.dvc
+```
+
+```yaml
 md5: 9cbbacd47133debf91dcb41891c64730
 wdir: .
 outs:
-- md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
-  path: /mnt/data/raw
-  cache: true
-  metric: false
-  persist: false
+  - md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
+    path: /mnt/data/raw
+    cache: true
+    metric: false
+    persist: false
+```
 
+```dvc
 $ cat clean.dvc
+```
+
+```yaml
 md5: 2b842ed58b1792dde6df27e3d0f73430
 cmd: cp -a /mnt/data/raw /mnt/data/clean
 wdir: .
 deps:
-- md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
-  path: /mnt/data/raw
+  - md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
+    path: /mnt/data/raw
 outs:
-- md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
-  path: /mnt/data/clean
-  cache: true
-  metric: false
-  persist: false
+  - md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
+    path: /mnt/data/clean
+    cache: true
+    metric: false
+    persist: false
 ```
 
 You can also check and verify that indeed all the data and cache files are
@@ -144,8 +167,7 @@ $ ls /mnt/data/
 clean  dvc-cache  raw
 
 $ ls /mnt/data/dvc-cache
-. . .
-
+...
 ```
 
 Now you can add and commit the DVC-files to git:
@@ -154,3 +176,32 @@ Now you can add and commit the DVC-files to git:
 $ git add raw.dvc clean.dvc
 $ git commit -m "cleanup raw data"
 ```
+
+<details>
+
+### Optimizing the data management
+
+Since we are talking about large data, it is worth spending some time for
+understanding
+[how DVC can optimize data management](/doc/user-guide/large-dataset-optimization),
+so that it does not make unnecessary copies of large data.
+
+In short, if your external drive is formatted with XFS, Btrfs, ZFS, or any other
+file system that supports <abbr>reflinks</abbr>, DVC will automatically use the
+most efficient way of handling large datasets, and there is no further
+configuration that needs to be done.
+
+If _reflinks_ are not available, then you should consider setting the cache type
+to _symlink_ or _hardlink_, like so:
+
+```dvc
+$ dvc config cache.type "reflink,symlink,hardlink,copy"
+$ dvc config cache.protected true
+```
+
+However this implies that for data files that are added to the project with
+`dvc add <datafile>`, you may need to run `dvc unprotect <datafile>` before
+modifying them. For more details make sure to read the man page of
+[dvc unprotect](/doc/commands-reference/unprotect).
+
+</details>
