@@ -23,7 +23,7 @@ the <abbr>project</abbr>. This can be done using the CLI as shown below.
 > _Get Started_.
 
 ```dvc
-$ dvc remote add -d upstream s3://dvc-public/remote/tutorial
+$ dvc remote add -d upstream s3://dvc-public/remote/tutorial/nlp
 $ git status -s
  M .dvc/config
 ```

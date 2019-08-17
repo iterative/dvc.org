@@ -38,7 +38,7 @@ your browser to download `code.zip`.
 ```dvc
 $ mkdir example && cd example
 $ git init
-$ wget https://code.dvc.org/tutorial-nlp/pipeline.zip
+$ wget https://code.dvc.org/tutorial/nlp/pipeline.zip
 $ unzip code.zip
 $ rm -f code.zip
 $ git add code/
@@ -75,7 +75,7 @@ control:
 
 ```dvc
 $ mkdir data
-$ wget -P data https://data.dvc.org/tutorial-nlp/25K/Posts.xml.zip
+$ wget -P data https://data.dvc.org/tutorial/nlp/25K/Posts.xml.zip
 $ dvc add data/Posts.xml.zip
 ```
 
