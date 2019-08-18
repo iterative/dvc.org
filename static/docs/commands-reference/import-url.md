@@ -150,8 +150,8 @@ An advanced alternate to [Add Files](/doc/get-started/add-files) step of the
 _Get Started_ section is to use `dvc import-url`:
 
 ```dvc
-$ dvc import-url https://dvc.org/s3/get-started/data.xml data/data.xml
-Importing 'https://dvc.org/s3/get-started/data.xml' -> 'data/data.xml'
+$ dvc import-url https://data.dvc.org/get-started/data.xml data/data.xml
+Importing 'https://data.dvc.org/get-started/data.xml' -> 'data/data.xml'
 [##############################] 100% data.xml
 [##############################] 100% data.xml
 
@@ -172,7 +172,7 @@ md5: 61e80c38c1ce04ed2e11e331258e6d0d
 wdir: .
 deps:
   - etag: '"f432e270cd634c51296ecd2bc2f5e752-5"'
-    path: https://dvc.org/s3/get-started/data.xml
+    path: https://data.dvc.org/get-started/data.xml
 outs:
   - md5: a304afb96060aad90176268345e10355
     path: data/data.xml
@@ -210,7 +210,7 @@ life, the data file will probably be on a remote server.) Run these commands:
 ```dvc
 $ mkdir /tmp/dvc-import-url-example
 $ cd /tmp/dvc-import-url-example/
-$ wget https://dvc.org/s3/get-started/data.xml
+$ wget https://data.dvc.org/get-started/data.xml
 $ cd -  # to go back to the project
 ```
 
@@ -252,7 +252,7 @@ Let's now manually reproduce
 _Get Started_ project. Download the sample source code archive and unzip it:
 
 ```dvc
-$ wget https://dvc.org/s3/get-started/code.zip
+$ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
 ```
@@ -261,8 +261,8 @@ $ rm -f code.zip
 
 ### Click and expand to setup the environment
 
-For this step we'll need to install the project requirements. For that we
-**strongly** recommend creating a virtual environment with a tool such as
+Let's install the requirements. But before we do that, we **strongly** recommend
+creating a virtual environment with a tool such as
 [virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```dvc

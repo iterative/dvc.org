@@ -12,7 +12,7 @@ to get the sample code:
 > On Windows just use your browser to download the archive instead.
 
 ```dvc
-$ wget https://dvc.org/s3/get-started/code.zip
+$ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
 ```
@@ -40,20 +40,20 @@ $ tree
     └── train.py
 ```
 
-We **strongly** recommend using
-[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool to isolate
-your environment:
+Now let's install the requirements. But before we do that, we **strongly**
+recommend creating a virtual environment with a tool such as
+[virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```dvc
-$ virtualenv .env
-$ echo ".env/" >> .gitignore
+$ virtualenv -p python3 .env
 $ source .env/bin/activate
+$ echo ".env/" >> .gitignore
+$ pip install -r requirements.txt
 ```
 
-Now, we are ready to install dependencies to run the code:
+Save the progress to Git:
 
 ```dvc
-$ pip install -U -r requirements.txt
 $ git add .
 $ git commit -m "add code"
 ```

@@ -15,15 +15,15 @@ DVC is able to push the cache to a cloud.
 First, you need to set a data remote which will be stored in the config file of
 the <abbr>project</abbr>. This can be done using the CLI as shown below.
 
-> Note that we are using `dvc-share` s3 bucket as an example and you don't have
-> write access to it, so in order to follow the tutorial you will need to either
-> create your own s3 bucket or use other types of
+> Note that we are using the `dvc-public` S3 bucket as an example and you don't
+> have write access to it, so in order to follow the tutorial you will need to
+> either create your own S3 bucket or use other types of
 > [remote storage](/doc/commands-reference/remote). E.g. you can set up a local
-> remote as we did in the [Get Started configure](/doc/get-started/configure)
-> section.
+> remote as we did in the [Configure](/doc/get-started/configure) chapter of
+> _Get Started_.
 
 ```dvc
-$ dvc remote add -d upstream s3://dvc-share/classify
+$ dvc remote add -d upstream s3://dvc-public/remote/tutorial/nlp
 $ git status -s
  M .dvc/config
 ```

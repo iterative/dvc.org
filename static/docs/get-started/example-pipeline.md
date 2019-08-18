@@ -38,27 +38,22 @@ your browser to download `code.zip`.
 ```dvc
 $ mkdir example && cd example
 $ git init
-$ wget https://dvc.org/s3/examples/so/code.zip
+$ wget https://code.dvc.org/tutorial/nlp/pipeline.zip
 $ unzip code.zip
 $ rm -f code.zip
 $ git add code/
 $ git commit -m "download and initialize code"
 ```
 
-(Optional) It's highly recommended to initialize a virtual environment with
-[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool to keep
-your global packages clean and untouched:
+Now let's install the requirements. But before we do that, we **strongly**
+recommend creating a virtual environment with a tool such as
+[virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```dvc
-$ virtualenv .env
+$ virtualenv -p python3 .env
 $ source .env/bin/activate
 $ echo ".env/" >> .gitignore
-```
-
-Install the required dependencies:
-
-```dvc
-$ pip install -r code/requirements.txt
+$ pip install -r requirements.txt
 ```
 
 Next, we will create a pipeline step-by-step, utilizing the same set of commands
@@ -80,7 +75,7 @@ control:
 
 ```dvc
 $ mkdir data
-$ wget -P data https://dvc.org/s3/examples/so/Posts.xml.zip
+$ wget -P data https://data.dvc.org/tutorial/nlp/25K/Posts.xml.zip
 $ dvc add data/Posts.xml.zip
 ```
 
