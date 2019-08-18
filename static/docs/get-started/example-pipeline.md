@@ -39,7 +39,7 @@ your browser to download `pipeline.zip`.
 $ mkdir example && cd example
 $ git init
 $ wget https://code.dvc.org/tutorial/nlp/pipeline.zip
-$ unzip pipeline.zip
+$ unzip pipeline.zip -d code
 $ rm -f pipeline.zip
 $ git add code/
 $ git commit -m "download and initialize code"
