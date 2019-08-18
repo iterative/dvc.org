@@ -31,7 +31,7 @@ nothing to do with DVC so far, it's just a simple preparation:
 ### Expand to learn how to download on Windows
 
 Windows doesn't ship `wget` utility by default, so you'll need to use just use
-your browser to download `code.zip`.
+your browser to download `pipeline.zip`.
 
 </details>
 
@@ -39,8 +39,8 @@ your browser to download `code.zip`.
 $ mkdir example && cd example
 $ git init
 $ wget https://code.dvc.org/tutorial/nlp/pipeline.zip
-$ unzip code.zip
-$ rm -f code.zip
+$ unzip pipeline.zip
+$ rm -f pipeline.zip
 $ git add code/
 $ git commit -m "download and initialize code"
 ```
