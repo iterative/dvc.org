@@ -118,15 +118,17 @@ function normalizeSidebar({
       prevRef.next = normalizedItem.path
     }
 
-    prevRef = normalizedItem // Set it before children to preserve order
-
     if (item.children) {
       normalizedItem.children = normalizeSidebar({
         data: item.children,
         parentPath: `${parentPath}${item.slug}/`,
         parentResultRef: resultRef,
-        startingPrevRef: prevRef
+        startingPrevRef: normalizedItem
       })
+
+      prevRef = normalizedItem.children[normalizedItem.children.length - 1]
+    } else {
+      prevRef = normalizedItem
     }
 
     currentResult.push(normalizedItem)
