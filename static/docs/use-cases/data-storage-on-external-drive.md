@@ -1,12 +1,12 @@
-# Managing Data Storage On An External Hard Drive
+# Data Storage On External Hard Drive
 
-Sometimes the data may be huge and stored on an
+Sometimes the data may be stored on an
 [external hard drive](https://whatis.techtarget.com/definition/external-hard-drive).
-By "huge" we mean that they won't fit on our home directory, and even if they
-did, it would certainly take a long time to copy them back an forth from the
-external drive to our home directory. For example let's say that the data are
-stored on an external hard drive of size 16TB, while the hard drive of our home
-directory has a size of only 320GB.
+Usually such data are huge, which means that they won't fit on our home
+directory, and even if they did, it would certainly take a long time to copy
+them back and forth from the external drive to the internal one. For example
+let's say that the size of the external drive is 16TB, while the hard drive of
+our home directory is only 320GB.
 
 In this case we would like to process the data where they are located (on the
 external drive). We also would like to save the results there, and certainly to

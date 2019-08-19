@@ -47,6 +47,10 @@
         "slug": "share-data-and-model-files"
       },
       {
+        "label": "Data Storage On External Drive",
+        "slug": "data-storage-on-external-drive"
+      },
+      {
         "label": "Shared Development Machine",
         "slug": "multiple-data-scientists-on-a-single-machine"
       }
