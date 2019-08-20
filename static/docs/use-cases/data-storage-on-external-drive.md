@@ -1,4 +1,4 @@
-# Data Storage On External Hard Drive
+# Data Storage on External Drive
 
 Sometimes the data may be stored on an
 [external hard drive](https://whatis.techtarget.com/definition/external-hard-drive).
@@ -92,8 +92,8 @@ Now, when you refer to the data files and directories, you have to use their
 **absolute path**. The <abbr>DVC-files</abbr> will be created on the project
 directory, and you can track their modifications with `git` as usual.
 
-For example let's say that the raw data file are on `/mnt/data/raw/` and you are
-cleaning them up. You could do it like this:
+For example let's say that the raw data files are on `/mnt/data/raw/` and you
+are cleaning them up. You could do it like this:
 
 ```dvc
 $ dvc add /mnt/data/raw
@@ -174,7 +174,7 @@ Now you can add and commit the DVC-files to git:
 
 ```dvc
 $ git add raw.dvc clean.dvc
-$ git commit -m "cleanup raw data"
+$ git commit -m "Cleanup raw data"
 ```
 
 <details>
