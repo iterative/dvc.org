@@ -205,3 +205,14 @@ modifying them. For more details make sure to read the man page of
 [dvc unprotect](/doc/commands-reference/unprotect).
 
 </details>
+
+## Similar cases
+
+If instead of an external drive we have a
+[network-attached storage(NAS)](https://searchstorage.techtarget.com/definition/network-attached-storage)
+mounted on the directory `/mnt/data/` (through NFS, Samba, etc.), the solution
+would be the same.
+
+However, in this case the data are most probably used by a team of people, so
+make sure to check also the case of
+[Shared Development Server](/doc/use-cases/multiple-data-scientists-on-a-single-machine).
