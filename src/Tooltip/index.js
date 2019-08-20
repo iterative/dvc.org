@@ -27,7 +27,12 @@ class Tooltip extends Component {
 
   componentDidMount() {
     glossary.contents.forEach((glossaryItem, index) => {
-      if (includes(glossaryItem.match.map(word => word.toLowerCase()), this.props.text.toLowerCase())) {
+      if (
+        includes(
+          glossaryItem.match.map(word => word.toLowerCase()),
+          this.props.text.toLowerCase()
+        )
+      ) {
         this.setState({
           description: glossaryItem.desc,
           header: glossaryItem.name,
