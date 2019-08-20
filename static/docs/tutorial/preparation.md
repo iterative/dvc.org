@@ -26,26 +26,21 @@ download `code.zip`.
 $ mkdir classify
 $ cd classify
 $ git init
-$ wget https://dvc.org/s3/so/code.zip
+$ wget https://code.dvc.org/tutorial/nlp/code.zip
 $ unzip code.zip -d code && rm -f code.zip
 $ git add code/
 $ git commit -m "download code"
 ```
 
-(Optional) It's highly recommended to initialize a virtual environment with
-[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool to keep
-your global packages clean and untouched:
+Now let's install the requirements. But before we do that, we **strongly**
+recommend creating a virtual environment with a tool such as
+[virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```dvc
-$ virtualenv .env
+$ virtualenv -p python3 .env
 $ source .env/bin/activate
-$ echo ".env/" >> .git/info/exclude
-```
-
-Install the code requirements:
-
-```dvc
-$ pip install -r code/requirements.txt
+$ echo ".env/" >> .gitignore
+$ pip install -r requirements.txt
 ```
 
 ## Install DVC

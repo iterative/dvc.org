@@ -47,7 +47,7 @@ install Python.
 Install DVC in editable mode with `pip install -e ".[all,tests]"`. We
 **strongly** recommend initializing a
 [virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
-installing the required libraries. For example:
+doing so:
 
 ```dvc
 $ cd dvc

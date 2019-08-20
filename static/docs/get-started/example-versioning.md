@@ -46,19 +46,14 @@ $ cd example-versioning
 This command pulls a repository with a single script `train.py` that runs the
 training.
 
-(Optional) It's highly recommended to initialize a virtual environment with
-[virtualenv](https://virtualenv.pypa.io/en/stable/) or a similar tool to keep
-your global packages clean and untouched:
+Now let's install the requirements. But before we do that, we **strongly**
+recommend creating a virtual environment with a tool such as
+[virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```dvc
-$ virtualenv .env
+$ virtualenv -p python3 .env
 $ source .env/bin/activate
 $ echo ".env/" >> .gitignore
-```
-
-Install required dependencies:
-
-```dvc
 $ pip install -r requirements.txt
 ```
 
@@ -92,7 +87,7 @@ right-click [this link](/s3/examples/versioning/data.zip) and click
 </details>
 
 ```dvc
-$ wget https://dvc.org/s3/examples/versioning/data.zip
+$ wget https://data.dvc.org/tutorial/ver/data.zip
 $ unzip data.zip
 $ rm -f data.zip
 ```
@@ -182,7 +177,7 @@ Let's imagine that our images dataset is growing, we were able to double it.
 Next command extracts 500 cat and 500 dog images into `data/train`:
 
 ```dvc
-$ wget https://dvc.org/s3/examples/versioning/new-labels.zip
+$ wget https://data.dvc.org/tutorial/ver/new-labels.zip
 $ unzip new-labels.zip
 $ rm -f new-labels.zip
 ```
