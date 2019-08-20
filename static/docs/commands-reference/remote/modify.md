@@ -121,6 +121,13 @@ these settings, you could use the following options:
   $ dvc remote modify myremote sse AES256
   ```
 
+- `acl` - set object level access control list (ACL) such as `private`,
+`public-read`, etc. By default, no ACL is specified.
+
+  ```dvc
+  $ dvc remote modify myremote acl bucket-owner-full-control
+  ```
+
 </details>
 
 <details>
