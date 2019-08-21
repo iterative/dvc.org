@@ -17,7 +17,7 @@ class Layout extends Component {
     logPageView()
   }
 
-  componentWillReceiveProps(nextProps) {
+  UNSAFE_componentWillReceiveProps(nextProps) {
     const { router } = nextProps
     this.isDocPage = router.pathname.split('/')[1] === 'doc'
   }

@@ -13,7 +13,7 @@ export default class GithubLine extends Component {
     count: `–––`
   }
 
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     axios.get(api).then(this.process)
   }
 
