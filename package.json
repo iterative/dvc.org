@@ -41,7 +41,7 @@
     "react-motion": "^0.5.2",
     "react-popover": "^0.5.10",
     "react-scroll": "^1.7.13",
-    "react-slick": "^0.23.2",
+    "react-slick": "^0.25.2",
     "react-syntax-highlighter": "^11.0.2",
     "styled-components": "^4.3.2",
     "styled-reset": "^3.0.2",
