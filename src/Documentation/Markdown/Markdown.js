@@ -3,18 +3,16 @@ import React from 'react'
 import ReactMarkdown from 'react-markdown'
 import { LightButton } from '../LightButton'
 import Tooltip from '../../Tooltip'
-// syntax highlighter
-import SyntaxHighlighter, {
-  registerLanguage
-} from 'react-syntax-highlighter/dist/light'
 import Collapsible from 'react-collapsible'
-import docco from 'react-syntax-highlighter/dist/styles/hljs/docco'
-import python from 'react-syntax-highlighter/dist/languages/hljs/python'
-import yaml from 'react-syntax-highlighter/dist/languages/hljs/yaml'
-import ini from 'react-syntax-highlighter/dist/languages/hljs/ini'
-import bash from 'react-syntax-highlighter/dist/languages/hljs/bash'
-import diff from 'react-syntax-highlighter/dist/languages/hljs/diff'
-import vim from 'react-syntax-highlighter/dist/languages/hljs/vim'
+// syntax highlighter
+import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import python from 'react-syntax-highlighter/dist/cjs/languages/hljs/python'
+import yaml from 'react-syntax-highlighter/dist/cjs/languages/hljs/yaml'
+import ini from 'react-syntax-highlighter/dist/cjs/languages/hljs/ini'
+import bash from 'react-syntax-highlighter/dist/cjs/languages/hljs/bash'
+import diff from 'react-syntax-highlighter/dist/cjs/languages/hljs/diff'
+import vim from 'react-syntax-highlighter/dist/cjs/languages/hljs/vim'
 import usage from './lang/usage'
 import dvc from './lang/dvc'
 import linker from './utils/remark-linker'
@@ -24,14 +22,14 @@ import kebabCase from 'lodash.kebabcase'
 import styled from 'styled-components'
 import { media } from '../../../src/styles'
 
-registerLanguage('dvc', dvc)
-registerLanguage('python', python)
-registerLanguage('usage', usage)
-registerLanguage('yaml', yaml)
-registerLanguage('ini', ini)
-registerLanguage('bash', bash)
-registerLanguage('vim', vim)
-registerLanguage('diff', diff)
+SyntaxHighlighter.registerLanguage('dvc', dvc)
+SyntaxHighlighter.registerLanguage('python', python)
+SyntaxHighlighter.registerLanguage('usage', usage)
+SyntaxHighlighter.registerLanguage('yaml', yaml)
+SyntaxHighlighter.registerLanguage('ini', ini)
+SyntaxHighlighter.registerLanguage('bash', bash)
+SyntaxHighlighter.registerLanguage('vim', vim)
+SyntaxHighlighter.registerLanguage('diff', diff)
 
 function flatten(text, child) {
   return typeof child === 'string'
