@@ -8,14 +8,14 @@ export default () => (
     method="post"
     id="mc-embedded-subscribe-form"
     name="mc-embedded-subscribe-form"
-    class="validate"
+    className="validate"
     target="_blank"
     novalidate
   >
     <Input
       type="email"
       name="EMAIL"
-      class="email"
+      className="email"
       id="mce-EMAIL"
       placeholder="email address"
       required
@@ -27,7 +27,6 @@ export default () => (
         type="text"
         name="b_a08bf93caae4063c4e6a351f6_24c0ecc49a"
         tabIndex="-1"
-        value=""
       />
     </div>
 
