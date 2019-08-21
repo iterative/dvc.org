@@ -30,7 +30,9 @@ class Tooltip extends Component {
       if (
         includes(
           glossaryItem.match.map(word => word.toLowerCase()),
-          this.props.text.toLowerCase()
+          // In v4 text field in a React.Node,
+          // so to get string we need to use it's children
+          this.props.text.props.children.toLowerCase()
         )
       ) {
         this.setState({
