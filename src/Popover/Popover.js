@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactPopover from 'react-popover'
-import { injectGlobal } from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 class Popover extends Component {
   constructor() {
@@ -33,16 +33,21 @@ class Popover extends Component {
     const { isOpen } = this.state
 
     return (
-      <ReactPopover isOpen={isOpen} onOuterAction={this.closePopover} {...rest}>
-        <div ref={ref => (this.trigger = ref)}>{children}</div>
-      </ReactPopover>
+      <>
+        <GlobalStyle />
+        <ReactPopover
+          isOpen={isOpen}
+          onOuterAction={this.closePopover}
+          {...rest}
+        >
+          <div ref={ref => (this.trigger = ref)}>{children}</div>
+        </ReactPopover>
+      </>
     )
   }
 }
 
-export default Popover
-
-injectGlobal`
+const GlobalStyle = createGlobalStyle`
   .Popover {
     
     .Popover-body {
@@ -57,3 +62,5 @@ injectGlobal`
     }
   }
 `
+
+export default Popover

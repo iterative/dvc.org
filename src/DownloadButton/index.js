@@ -143,7 +143,7 @@ export default class DownloadButton extends Component {
     const currentOS = links[os]
 
     return (
-      <Handler onClick={this.toggle} innerRef={this.setRef}>
+      <Handler onClick={this.toggle} ref={this.setRef}>
         <Button open={open}>
           <Icon>
             <img
