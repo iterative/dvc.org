@@ -44,9 +44,9 @@ the data as it evolves with the source code under Git control.
 
 ### Expand to learn about DVC internals
 
-You can see that actual data file has been moved to the <abbr>cache
-directory</abbr>, while the entries in the <abbr>workspace</abbr> may be file
-links to the actual files in the DVC cache.
+You can see that actual data file has been moved to the cache directory, while
+the entries in the workspace may be file links to the actual files in the DVC
+cache.
 
 ```dvc
 $ ls -R .dvc/cache
