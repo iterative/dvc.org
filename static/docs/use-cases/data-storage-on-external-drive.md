@@ -2,18 +2,18 @@
 
 Sometimes the data may be stored on an
 [external hard drive](https://whatis.techtarget.com/definition/external-hard-drive).
-Usually such data are huge, which means that they won't fit on our home
-directory, and even if they did, it would certainly take a long time to copy
-them back and forth from the external drive to the internal one. For example
-let's say that the size of the external drive is 16TB, while the hard drive of
-our home directory is only 320GB.
+Usually such data is huge, which means that it won't fit on our home directory,
+and even if it did, it would certainly take a long time to copy it back and
+forth from the external drive to the internal one. For example let's say that
+the size of the external drive is 16TB, while the hard drive of our home
+directory is only 320GB.
 
-In this case we would like to process the data where they are located (on the
+In this case we would like to process the data where it is located (on the
 external drive). We also would like to save the results there, and certainly to
 store the <abbr>cached</abbr> files there as well.
 
-The most easy way to do this would be to locate the <abbr>workspace</abbr> on
-the external drive itself. If we assume that the external drive is mounted on
+The most easy way to do this would be to initialize the <abbr>workspace</abbr>
+on the external drive itself. If we assume that the external drive is mounted on
 `/mnt/data/`, then it could be done like this:
 
 ```dvc
@@ -66,7 +66,7 @@ $ git commit -m 'Initialize DVC with external cache'
 
 ### Transfer the content of the cache to the external directory
 
-In this example we are just removing the default cache directory `.dvc/cache/`
+In this example we are removing the default cache directory `.dvc/cache/`
 because we just initialized the project and we know that it is empty (there's
 nothing stored in it). If we had an existing project, we could preserve the
 content of the cache by moving it to the new directory:
@@ -213,6 +213,6 @@ If instead of an external drive we have a
 mounted on the directory `/mnt/data/` (through NFS, Samba, etc.), the solution
 would be the same.
 
-However, in this case the data are most probably used by a team of people, so
+However, in this case the data is most probably used by a team of people, so
 make sure to check also the case of
 [Shared Development Server](/doc/use-cases/multiple-data-scientists-on-a-single-machine).
