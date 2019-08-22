@@ -263,6 +263,13 @@ For more information on configuring Azure Storage connection strings, visit
   ```dvc
   $ dvc remote modify myremote ask_password true
   ```
+  
+- `gss_auth` - use Generic Security Services authentication if available on
+  host (for example, [with kerberos](https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface#Relationship_to_Kerberos)). 
+
+  ```dvc
+  $ dvc remote modify myremote gss_auth true
+  ```
 
 </details>
 
