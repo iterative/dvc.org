@@ -18,7 +18,7 @@ on the external drive itself. If we assume that the external drive is mounted on
 
 ```dvc
 $ sudo su
-# cd /mnt/data/
+# cd /mnt/external-drive/
 # git init
 # dvc init
 ```
@@ -30,21 +30,21 @@ staying on the external drive. DVC will still be able to track them properly.
 ## Make the data directory accessible
 
 For this to work, first you have to make sure that you can read and write the
-data directory `/mnt/data/`. The most straightforward way to do this is by
-setting proper ownership and permissions to it, like this:
+data directory `/mnt/external-drive/`. The most straightforward way to do this
+is by setting proper ownership and permissions to it, like this:
 
 ```dvc
-$ sudo chown <username>: -R /mnt/data/
-$ chmod u+rw -R /mnt/data/
+$ sudo chown <username>: -R /mnt/external-drive/
+$ chmod u+rw -R /mnt/external-drive/
 ```
 
 ## Start a DVC project and setup an external cache
 
 An _external_ <abbr>cache</abbr> is called so because it resides outside of the
-workspace directory. Let's create a directory for it on `/mnt/data/`:
+workspace directory. Let's create a directory for it on `/mnt/external-drive/`:
 
 ```dvc
-$ mkdir -p /mnt/data/dvc-cache
+$ mkdir -p /mnt/external-drive/dvc-cache
 ```
 
 Now you can initialize a <abbr>project</abbr> on your home directory and
@@ -55,7 +55,7 @@ $ cd ~/project/
 $ git init
 $ dvc init
 
-$ dvc config cache.dir /mnt/data/dvc-cache
+$ dvc config cache.dir /mnt/external-drive/dvc-cache
 $ rm -rf .dvc/cache/
 
 $ git add .dvc/config
@@ -72,7 +72,7 @@ nothing stored in it). If we had an existing project, we could preserve the
 content of the cache by moving it to the new directory:
 
 ```dvc
-$ mv -a .dvc/cache/* /mnt/data/dvc-cache/
+$ mv -a .dvc/cache/* /mnt/external-drive/dvc-cache/
 $ rm -rf .dvc/cache/
 ```
 
@@ -83,7 +83,7 @@ If you check the config file you should see something like this:
 ```dvc
 $ cat .dvc/config
 [cache]
-dir = /mnt/data/dvc-cache
+dir = /mnt/external-drive/dvc-cache
 ```
 
 ## Tracking external dependencies and outputs
@@ -92,16 +92,16 @@ Now, when you refer to the data files and directories, you have to use their
 **absolute path**. The <abbr>DVC-files</abbr> will be created on the project
 directory, and you can track their modifications with `git` as usual.
 
-For example let's say that the raw data files are on `/mnt/data/raw/` and you
-are cleaning them up. You could do it like this:
+For example let's say that the raw data files are on `/mnt/external-drive/raw/`
+and you are cleaning them up. You could do it like this:
 
 ```dvc
-$ dvc add /mnt/data/raw
+$ dvc add /mnt/external-drive/raw
 
 $ dvc run -f clean.dvc \
-          -d /mnt/data/raw \
-          -o /mnt/data/clean \
-          ./cleanup.py /mnt/data/raw /mnt/data/clean
+          -d /mnt/external-drive/raw \
+          -o /mnt/external-drive/clean \
+          ./cleanup.py /mnt/external-drive/raw /mnt/external-drive/clean
 ```
 
 <details>
@@ -109,7 +109,8 @@ $ dvc run -f clean.dvc \
 ### Using an environment variable for the data path
 
 In a real life situation probably you would declare an environment variable
-`DATA_PATH=/mnt/data` and use it to shorten the command options, like this:
+`DATA_PATH=/mnt/external-drive` and use it to shorten the command options, like
+this:
 
 ```dvc
 $ dvc add $DATA_PATH/raw
@@ -134,7 +135,7 @@ md5: 9cbbacd47133debf91dcb41891c64730
 wdir: .
 outs:
   - md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
-    path: /mnt/data/raw
+    path: /mnt/external-drive/raw
     cache: true
     metric: false
     persist: false
@@ -146,14 +147,14 @@ $ cat clean.dvc
 
 ```yaml
 md5: 2b842ed58b1792dde6df27e3d0f73430
-cmd: cp -a /mnt/data/raw /mnt/data/clean
+cmd: cp -a /mnt/external-drive/raw /mnt/external-drive/clean
 wdir: .
 deps:
   - md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
-    path: /mnt/data/raw
+    path: /mnt/external-drive/raw
 outs:
   - md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
-    path: /mnt/data/clean
+    path: /mnt/external-drive/clean
     cache: true
     metric: false
     persist: false
@@ -163,10 +164,10 @@ You can also check and verify that indeed all the data and cache files are
 stored on the external drive:
 
 ```dvc
-$ ls /mnt/data/
+$ ls /mnt/external-drive/
 clean  dvc-cache  raw
 
-$ ls /mnt/data/dvc-cache
+$ ls /mnt/external-drive/dvc-cache
 ...
 ```
 
@@ -210,8 +211,8 @@ modifying them. For more details make sure to read the man page of
 
 If instead of an external drive we have a
 [network-attached storage(NAS)](https://searchstorage.techtarget.com/definition/network-attached-storage)
-mounted on the directory `/mnt/data/` (through NFS, Samba, etc.), the solution
-would be the same.
+mounted on the directory `/mnt/external-drive/` (through NFS, Samba, etc.), the
+solution would be the same.
 
 However, in this case the data is most probably used by a team of people, so
 make sure to check also the case of
