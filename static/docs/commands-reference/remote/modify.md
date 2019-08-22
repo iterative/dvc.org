@@ -265,7 +265,11 @@ For more information on configuring Azure Storage connection strings, visit
   ```
   
 - `gss_auth` - use Generic Security Services authentication if available on
-  host (for example, [with kerberos](https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface#Relationship_to_Kerberos)). 
+  host (for example, [with kerberos](https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface#Relationship_to_Kerberos)).
+  Using this option requires `paramiko[gssapi]` which is currently only
+  supported by our pip package and could be installed with
+  `pip install 'dvc[ssh_gssapi]'`. Other packages (Conda, Windows, Homebrew
+  cask and Mac pkg) do not support it.
 
   ```dvc
   $ dvc remote modify myremote gss_auth true
