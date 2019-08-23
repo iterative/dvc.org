@@ -41,7 +41,7 @@ currently active Git repository and branch.
 
 For example, in this tutorial 16 data files were created and only 9 will be
 pushed because the rest of the data files belong to different branches like
-`bigram`.
+`bigrams`.
 
 ## Pulling data from the cloud
 

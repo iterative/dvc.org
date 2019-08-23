@@ -39,7 +39,7 @@ Tries to reproduce the same pipeline... But there is still nothing to reproduce.
 ## Adding bigrams
 
 Our NLP model was based on [unigrams](https://en.wikipedia.org/wiki/N-gram)
-only. Let’s improve the model by adding bigrams. The bigram model will extract
+only. Let’s improve the model by adding bigrams. The bigrams model will extract
 signals not only from separate words but also from two-word combinations. This
 eventually increases the number of features for the model and hopefully improves
 the target metric.
@@ -48,7 +48,7 @@ Before editing the `code/featurization.py` file, please create and checkout a
 new branch `bigrams`.
 
 ```dvc
-$ git checkout -b bigram
+$ git checkout -b bigrams
 # Please use your favorite text editor:
 $ vi code/featurization.py
 ```
@@ -103,7 +103,7 @@ To compare it with the previous AUC, you can use the `metrics` command:
 ```dvc
 $ dvc metrics show -a
 
-bigram:
+bigrams:
 	data/eval.txt: AUC: 0.624727
 
 master:
@@ -113,8 +113,8 @@ master:
 > It's convenient to keep track of information even for failed experiments.
 > Sometimes a failed hypothesis gives more information than a successful one.
 
-Let’s keep the result in the repository. Later we can find out why bigram does
-not add value to the current model and change that.
+Let’s keep the result in the repository. Later we can find out why bigrams don't
+add value to the current model and change that.
 
 Many DVC-files were changed. This happened due to md5 checksum changes.
 
@@ -139,8 +139,8 @@ The previous experiment was done in the feature extraction step and provided no
 improvements. This might be caused by not having perfect model hyperparameters.
 Let’s try to improve the model by changing the hyperparameters.
 
-There is no good reason to improve the last bigram based model. Let’s checkout
-the original model from the master branch.
+There is no good reason to improve the last bigrams model. Let’s checkout the
+original model from the master branch.
 
 > Note that after checking out code and DVC-files from Git, data files have to
 > be checked out as well using the `dvc checkout` command.
@@ -215,7 +215,7 @@ $ git commit -m '700 trees in the forest'
 Now we can revisit the failing hypothesis with bigrams, which didn’t provide any
 model improvement even with one thousand more features. The current model with
 700 trees in the forest is stronger and we might be able to get more information
-using bigrams. So, let’s incorporate the bigram changes into the current model
+using bigrams. So, let’s incorporate the bigrams changes into the current model
 using a regular Git merge command.
 
 > Git merge logic works for data files and respectively for DVC models.
@@ -223,8 +223,8 @@ using a regular Git merge command.
 But first, let’s create a branch as usual.
 
 ```dvc
-$ git checkout -b train_bigram
-$ git merge bigram
+$ git checkout -b train_bigrams
+$ git merge bigrams
 Auto-merging model.p.dvc
 CONFLICT (content): Merge conflict in model.p.dvc
 Auto-merging Dvcfile
@@ -234,7 +234,7 @@ Automatic merge failed; fix conflicts and then commit the result.
 
 The merge has a few conflicts. All of the conflicts are related to md5 checksum
 mismatches in the branches. You can properly merge conflicts by prioritizing the
-checksums from the bigram branch: that is, by removing all checksums of the
+checksums from the bigrams branch: that is, by removing all checksums of the
 other branch.
 [Here](https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line)
 you can find a tutorial which clarifies how to do that. It is also important to
@@ -292,7 +292,7 @@ Now our current branch contains the best model and it can be merged into master.
 ```dvc
 $ git checkout master
 $ dvc checkout
-$ git merge train_bigram
+$ git merge train_bigrams
 Updating f5ff48c..4bd09da
 Fast-forward
  Dvcfile               | 6 +++---

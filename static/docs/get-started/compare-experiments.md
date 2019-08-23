@@ -6,7 +6,7 @@ back and forth. To find the best performing experiment or track the progress, a
 special _metric_ output type is supported in DVC (described in one of the
 previous chapters).
 
-Let's run evaluate for the latest `bigram` experiment we created in previous
+Let's run evaluate for the latest `bigrams` experiment we created in previous
 chapters. It mostly takes just running the `dvc repro`:
 
 ```dvc
@@ -33,7 +33,7 @@ $ dvc metrics show -T
 
 baseline-experiment:
     auc.metric: 0.588426
-bigram-experiment:
+bigrams-experiment:
     auc.metric: 0.602818
 ```
 
