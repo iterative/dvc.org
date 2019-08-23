@@ -14,7 +14,7 @@ usage: dvc init [-h] [-q | -v] [--no-scm] [-f]
 ## Description
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`
-and `.gitignore` files and <abbr>cache directory</abbr>. These files and
+and `.gitignore` files, and <abbr>cache directory</abbr>. These files and
 directories are hidden from the user generally and are not meant to be
 manipulated directly.
 
