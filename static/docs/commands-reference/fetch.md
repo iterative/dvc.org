@@ -155,8 +155,8 @@ solving the problem:
 ```dvc
 $ git tag
 
-baseline     <- first simple version of the model
-bigram       <- use bigrams to improve the model
+baseline-experiment     <- first simple version of the model
+bigrams-experiment       <- use bigrams to improve the model
 ```
 
 ## Example: Default behavior

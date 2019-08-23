@@ -53,8 +53,9 @@ by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
 
 ## Examples
 
-For these examples we can use the steps in our [Get Started](/doc/get-started)
-guide, up to the [Add Files](/doc/get-started/add-files) step.
+For these examples we can use the chapters in our
+[Get Started](/doc/get-started) guide, up to
+[Add Files](/doc/get-started/add-files).
 
 <details>
 
@@ -63,7 +64,7 @@ guide, up to the [Add Files](/doc/get-started/add-files) step.
 Start by cloning our sample repo if you don't already have it. Then move into
 the repo and checkout the
 [version](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
-corresponding to the _Add Files_ step:
+corresponding to the _Add Files_ chapter:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -103,7 +104,7 @@ added file with size 37.9 MB
 
 We can base this example in the [Experiment Metrics](/doc/get-started/metrics)
 and [Compare Experiments](/doc/get-started/compare-experiments) sections of our
-Get Started guide, which describe different experiments to produce the
+_Get Started_ section, which describe different experiments to produce the
 `model.pkl` file. Our sample repository has the `bigrams-experiment` and
 `baseline-experiment`
 [tags](https://github.com/iterative/example-get-started/tags) respectively to
@@ -174,7 +175,7 @@ Let's use our sample repo once again, which has several
 [available tags](https://github.com/iterative/example-get-started/tags) for
 conveniency. The `5-preparation` tag corresponds to the
 [Connect Code and Data](/doc/get-started/connect-code-and-data) section of our
-Get Started guide, in which the `dvc run` command is used to create the
+_Get Started_ section, in which the `dvc run` command is used to create the
 `prepare.dvc` stage file. The output defined in this DVC-file is the
 `data/prepared` directory.
 

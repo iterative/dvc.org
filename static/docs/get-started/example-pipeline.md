@@ -9,7 +9,7 @@ it `python`. This is a short version of the [Tutorial](/doc/tutorial).
 
 In this example, we will focus on building a simple ML pipeline that takes an
 archive with StackOverflow posts and trains the prediction model and saves it as
-an output. See [get started](/doc/get-started) to see links to other examples,
+an output. See [Get Started](/doc/get-started) to see links to other examples,
 tutorials, use cases if you want to cover other aspects of the DVC. The pipeline
 itself is a sequence of transformation we apply to the data file:
 
@@ -57,7 +57,7 @@ $ pip install -r requirements.txt
 ```
 
 Next, we will create a pipeline step-by-step, utilizing the same set of commands
-that are described in earlier [get started](/doc/get-started) chapters.
+that are described in earlier [Get Started](/doc/get-started) chapters.
 
 > Note that its possible to define more than one pipeline in each <abbr>DVC
 > project</abbr>. This will be determined by the interdependencies between

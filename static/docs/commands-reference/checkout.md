@@ -144,15 +144,16 @@ solving the problem:
 
 ```dvc
 $ git tag
-baseline     <- first simple version of the model
-bigram       <- use bigrams to improve the model
+baseline-experiment     <- first simple version of the model
+bigrams-experiment      <- use bigrams to improve the model
 ```
 
 This project comes with a predefined HTTP
 [remote storage](/doc/commands-reference/remote). We can now just run `dvc pull`
 that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
 files that are under DVC control. The model file checksum
-`3863d0e317dee0a55c4e59d2ec0eef33` is specified in the `train.dvc` file:
+`3863d0e317dee0a55c4e59d2ec0eef33` will be used in the `train.dvc`
+[stage file](/doc/commands-reference/run):
 
 ```dvc
 $ dvc pull
@@ -177,7 +178,7 @@ Note: checking out 'baseline'.
 HEAD is now at 40cc182...
 ```
 
-Let's check the `model.pkl` entry in `train.dvc` again:
+Let's check the `model.pkl` entry in `train.dvc` now:
 
 ```yaml
 outs:

@@ -34,7 +34,7 @@ Git:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
-$ git commit -m "add raw data to DVC"
+$ git commit -m "Add raw data to project"
 ```
 
 Committing these special files to Git allows us to tack different versions of

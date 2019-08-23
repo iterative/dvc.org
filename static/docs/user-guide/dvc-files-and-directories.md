@@ -78,7 +78,7 @@ in `.dvc/cache`.
 ```yaml
 - md5: 196a322c107c2572335158503c64bfba.dir
   path: data/images
-  ...
+  # ...
 ```
 
 The directory in cache is stored like this:

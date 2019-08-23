@@ -6,7 +6,8 @@ the previous version of the dataset if it was changed at some point?
 
 The answer is the `dvc checkout` command, and we already touched briefly the
 process of switching between different data versions in the
-[Experiments](/doc/get-started/experiments) step of this get started guide.
+[Experiments](/doc/get-started/experiments) chapter of this _Get Started_
+section.
 
 Let's say we want to get the previous `model.pkl` file. The short answer is:
 

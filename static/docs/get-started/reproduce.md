@@ -1,10 +1,11 @@
 # Reproduce
 
-In the previous section, we described our first pipeline. Basically, we created
-a number of [DVC-file](/doc/user-guide/dvc-file-format). Each file describes a
-single stage we need to run (a pipeline) towards a final result. Each depends on
-some data (either raw data files or intermediate results from another DVC-file)
-and code files.
+In the previous chapters, we described our first pipeline. Basically, we created
+a number of [stage files](/doc/commands-reference/run). Each of these
+[DVC-files](/doc/user-guide/dvc-file-format) describes single stage we need to
+run towards a final result (a [pipeline]](/doc/commands-reference/pipeline)).
+Each depends on some data (either raw data files or intermediate results from
+previous stages) and code files.
 
 If you just cloned the
 [project](https://github.com/iterative/example-get-started), make sure you first
@@ -16,6 +17,11 @@ end-to-end:
 ```dvc
 $ dvc repro train.dvc
 ```
+
+> If you've just followed the previous chapters, the command above will have
+> nothing to reproduce since you've already run all the pipeline stages. To
+> easily try this command, you can clone this example
+> [Github project](https://github.com/iterative/example-get-started) first.
 
 `train.dvc` file internally describes what data files and code we should take
 and how to run the command to get the binary model file. For each data file it

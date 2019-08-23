@@ -109,7 +109,7 @@ recommend creating a virtual environment with a tool such as
 ```dvc
 $ virtualenv -p python3 .env
 $ source .env/bin/activate
-$ pip install -r requirements.txt
+$ pip install -r src/requirements.txt
 ```
 
 Download the precomputed data using:
@@ -142,7 +142,8 @@ $ git tag
 6-featurization
 7-train
 8-evaluation
-9-bigrams
+9-bigrams-model
+10-bigrams-experiment
 baseline-experiment
 bigrams-experiment
 ```

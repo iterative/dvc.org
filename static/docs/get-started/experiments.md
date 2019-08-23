@@ -25,9 +25,14 @@ bag_of_words = CountVectorizer(stop_words='english',
 
 ```dvc
 $ vi src/featurization.py    # edit to use bigrams (see above)
-$ dvc repro train.dvc        # get and save the new model.pkl
-$ git commit -a -m "bigram model"
+$ dvc repro train.dvc        # regenerate the new model.pkl
+$ git commit -am "Reproduce model using bigrams"
 ```
+
+> Notice that `git commit -a` stages all the changes produced by `dvc repro`
+> before committing them to Git. Refer to the
+> [command reference](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--a)
+> for more details.
 
 Now, we have a new `model.pkl` captured and saved. To get back to the initial
 version we run `git checkout` along with `dvc checkout` command:

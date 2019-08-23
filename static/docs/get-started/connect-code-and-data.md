@@ -6,10 +6,12 @@ basic useful framework to track, save and share models and large data files. To
 achieve full reproducibility though, we'll have to connect code and
 configuration with the data it processes to produce the result.
 
-If you've followed this get started guide from the beginning, run these commands
-to get the sample code:
+<details>
 
-> On Windows just use your browser to download the archive instead.
+### Expand to prepare sample code ...
+
+If you've followed this _Get Started_ section from the beginning, run these
+commands to get the sample code:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
@@ -17,14 +19,9 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
-You'll also need to install its dependencies: Python packages like `pandas` and
-`scikit-learn` that are required to run this example.
+> On Windows just use your browser to download the archive instead.
 
-<details>
-
-### Expand to prepare sample code ...
-
-After downloading the sample code, your project structure should look like this:
+The workspace should now look like this:
 
 ```dvc
 $ tree
@@ -32,11 +29,11 @@ $ tree
 ├── data
 │   ├── data.xml
 │   └── data.xml.dvc
-├── requirements.txt
 └── src
     ├── evaluate.py
     ├── featurization.py
     ├── prepare.py
+    ├── requirements.txt
     └── train.py
 ```
 
@@ -48,14 +45,14 @@ recommend creating a virtual environment with a tool such as
 $ virtualenv -p python3 .env
 $ source .env/bin/activate
 $ echo ".env/" >> .gitignore
-$ pip install -r requirements.txt
+$ pip install -r src/requirements.txt
 ```
 
-Save the progress to Git:
+Optionally, save the progress to Git:
 
 ```dvc
 $ git add .
-$ git commit -m "add code"
+$ git commit -m "Add source code files to repo"
 ```
 
 </details>
@@ -94,11 +91,11 @@ This is how the result should look like now:
 +   │       ├── test.tsv
 +   │       └── train.tsv
 +   ├── prepare.dvc
-    ├── requirements.txt
     └── src
         ├── evaluate.py
         ├── featurization.py
         ├── prepare.py
+        ├── requirements.txt
         └── train.py
 ```
 
@@ -107,16 +104,16 @@ This is how `prepare.dvc` looks like internally:
 ```yaml
 cmd: python src/prepare.py data/data.xml
 deps:
-- md5: b4801c88a83f3bf5024c19a942993a48
-path: src/prepare.py
-- md5: a304afb96060aad90176268345e10355
-path: data/data.xml
+  - md5: b4801c88a83f3bf5024c19a942993a48
+    path: src/prepare.py
+  - md5: a304afb96060aad90176268345e10355
+    path: data/data.xml
 md5: c3a73109be6c186b9d72e714bcedaddb
 outs:
-- cache: true
-md5: 6836f797f3924fb46fcfd6b9f6aa6416.dir
-metric: false
-path: data/prepared
+  - cache: true
+    md5: 6836f797f3924fb46fcfd6b9f6aa6416.dir
+    metric: false
+    path: data/prepared
 wdir: .
 ```
 
@@ -160,6 +157,6 @@ Let's commit the changes to save the stage we built:
 
 ```dvc
 $ git add data/.gitignore prepare.dvc
-$ git commit -m "add data preparation stage"
+$ git commit -m "Create data preparation stage"
 $ dvc push
 ```
