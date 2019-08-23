@@ -59,10 +59,10 @@ name:
 
 ```dvc
 $ dvc move data.csv other.csv
-$ cat data.csv.dvc
+$ cat other.csv.dvc
 ```
 
-And here is the updated content of the `data.csv.dvc`:
+And here is the updated content of the `other.csv.dvc`:
 
 ```yaml
 md5: 3d1a3e5a5b662490e198d6a6ae84984b
