@@ -91,9 +91,13 @@ copy) might take a few minutes.
 
 DVC was designed with large data files in mind. This means gigabytes or even
 hundreds of gigabytes in file size. Instead of copying files from cache to
-workspace, DVC can create reflinks or other file link types. (See
-[File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-.)
+workspace, DVC can create reflinks or other file link types.
+
+> When reflinks are not supported by the file system, DVC defaults to copying
+> files, which doesn't save file storage. However, it's easy to enable other
+> file link types on most systems. See
+> [File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> for more information.
 
 Creating file links is a quick file system operation. So, with DVC you can
 easily checkout a few dozen files of any size. A file link prevents you from

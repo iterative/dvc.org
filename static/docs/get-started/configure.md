@@ -24,7 +24,7 @@ project/repository itself.
 
 ```dvc
 $ dvc remote add -d myremote /tmp/dvc-storage
-$ git commit .dvc/config -m "initialize DVC local remote"
+$ git commit .dvc/config -m "Configure local remote"
 ```
 
 > We only use a local remote in this guide for simplicity's sake in following

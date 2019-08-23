@@ -1,10 +1,9 @@
 # Agenda
 
-In the next few sections we will rebuild a simple natural language processing
-(NLP) project from scratch. Like we already mentioned, if you'd like to get the
-final result or have some issues along the way, you can download the fully
-reproducible [Github project](https://github.com/iterative/example-get-started)
-with:
+In the next few sections we will build a simple natural language processing
+(NLP) project from scratch. If you'd like to get the final result or have some
+issues along the way, you can download the fully reproducible
+[Github project](https://github.com/iterative/example-get-started) with:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
