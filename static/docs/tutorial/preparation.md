@@ -8,9 +8,9 @@ data will be used — only 180Mb xml files.
 Most of the code for the problem is ready and will be downloaded in the first
 steps. Later we will be modifying the code a bit to improve the model.
 
-## Getting the sample code
+## Getting the example code
 
-Take the following steps to initialize a new Git repository and get the sample
+Take the following steps to initialize a new Git repository and get the example
 code into it:
 
 <details>

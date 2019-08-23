@@ -8,10 +8,10 @@ configuration with the data it processes to produce the result.
 
 <details>
 
-### Expand to prepare sample code ...
+### Expand to prepare example code ...
 
 If you've followed this _Get Started_ section from the beginning, run these
-commands to get the sample code:
+commands to get the example code:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip

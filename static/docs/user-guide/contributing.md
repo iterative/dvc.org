@@ -196,7 +196,7 @@ $ export GCP_CREDS="yes"
 $ export DVC_TEST_GCP_REPO_BUCKET="dvc-test-xyz"
 ```
 
-Here goes a sample code to do this:
+Here are some command examples to do this:
 
 ```dvc
 # This name needs to be globally unique

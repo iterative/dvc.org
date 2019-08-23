@@ -125,7 +125,7 @@ Then we can see what happens with `dvc fetch` as we switch from tag to tag.
 
 ### Click and expand to setup the project
 
-Start by cloning our sample repo if you don't already have it:
+Start by cloning our example repo if you don't already have it:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -294,7 +294,7 @@ local cache. All the data for the second and third stages ("featurize" and
 get the data files needed to reproduce this pipeline up to the third stage into
 the workspace (with `dvc repro train.dvc`).
 
-> Note that in this sample project, the last stage file `evaluate.dvc` doesn't
+> Note that in this example project, the last stage file `evaluate.dvc` doesn't
 > add any more data files than those form previous stages so at this point all
 > of the files for this pipeline are in local cache and `dvc status -c` would
 > output `Pipelines are up to date.`

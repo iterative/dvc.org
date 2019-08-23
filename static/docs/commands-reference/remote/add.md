@@ -286,8 +286,8 @@ below:
 $ dvc remote add myremote oss://my-bucket/path
 ```
 
-To set key id, key secret and endpoint you need to use modify command from DVC,
-a sample usage is show below. Make sure to use the `--local` option to avoid
+To set key id, key secret and endpoint you need to use `dvc remote modify`.
+Example usage is show below. Make sure to use the `--local` option to avoid
 committing your secrets into Git:
 
 ```dvc

@@ -39,7 +39,7 @@ be unlocked. Use `dvc update` on them to update the file, directory, or
 
 ## Examples
 
-First, let's create a sample DVC-file:
+First, let's create a simple DVC-file:
 
 ```dvc
 $ echo foo > foo

@@ -122,12 +122,12 @@ in the [Get Started](/doc/get-started) section.
 
 <details>
 
-### Click and expand to setup the sample project
+### Click and expand to setup the example project
 
 Follow these instructions before each example below if you actually want to try
 them on your system.
 
-Start by cloning our sample repo if you don't already have it. Then move into
+Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
 [version](https://github.com/iterative/example-get-started/releases/tag/2-remote)
 corresponding to the [Configure](/doc/get-started/configure) chapter:
@@ -249,7 +249,8 @@ the data file.
 
 Let's now manually reproduce
 [one of the processing chapters](/doc/get-started/connect-code-and-data) from
-the _Get Started_ project. Download the sample source code archive and unzip it:
+the _Get Started_ project. Download the example source code archive and unzip
+it:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
