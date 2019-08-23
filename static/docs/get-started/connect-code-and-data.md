@@ -6,10 +6,12 @@ basic useful framework to track, save and share models and large data files. To
 achieve full reproducibility though, we'll have to connect code and
 configuration with the data it processes to produce the result.
 
+<details>
+
+### Expand to prepare sample code ...
+
 If you've followed this _Get Started_ section from the beginning, run these
 commands to get the sample code:
-
-> On Windows just use your browser to download the archive instead.
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
@@ -17,14 +19,9 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
-You'll also need to install its dependencies: Python packages (libraries) like
-`pandas` and `scikit-learn` that are required to run this example.
+> On Windows just use your browser to download the archive instead.
 
-<details>
-
-### Expand to prepare sample code ...
-
-After downloading the sample code, your project structure should look like this:
+The workspace should now look like this:
 
 ```dvc
 $ tree
@@ -51,16 +48,14 @@ $ echo ".env/" >> .gitignore
 $ pip install -r src/requirements.txt
 ```
 
-</details>
-
-Save the progress to Git:
+Optionally, save the progress to Git:
 
 ```dvc
 $ git add .
 $ git commit -m "Add source code files to repo"
 ```
 
-## Create a first data transformation stage
+</details>
 
 Having installed the `src/prepare.py` script in your repo, the following command
 transforms it into a reproducible [stage](/doc/commands-reference/run) for the
