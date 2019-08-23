@@ -155,7 +155,7 @@ describe('SidebarMenu/helper', () => {
       expect(sidebarData).toEqual(result)
     })
 
-    it('Adds correct prev/next links for for sourceless items', () => {
+    it('Adds correct prev/next links for sourceless items', () => {
       const rawData = [
         'first-item',
         { slug: 'second-item', source: false, children: ['nested-item'] }
@@ -192,7 +192,7 @@ describe('SidebarMenu/helper', () => {
       expect(sidebarData).toEqual(result)
     })
 
-    it('Adds correct prev/next links for for nested sourceless items', () => {
+    it('Adds correct prev/next links for nested sourceless items', () => {
       const rawData = [
         'first-item',
         {
@@ -255,7 +255,7 @@ describe('SidebarMenu/helper', () => {
       )
     })
 
-    it("Throws error if item has source: false and don't has children", () => {
+    it("Throws error if item has source: false and doesn't have children", () => {
       const rawData = [{ slug: 'item-name', source: false }]
 
       jest.doMock('../sidebar.json', () => rawData)
