@@ -138,7 +138,7 @@ outs:
   - cache: true
     md5: d8acabbfd4ee51c95da5d7628c7ef74b
     metric: false
-    path: data.xml.jpg
+    path: data.xml
 meta: # Special key to contain arbitary user data
   name: John
   email: john@xyz.com

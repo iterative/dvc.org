@@ -19,11 +19,11 @@ and directories:
 
 ```dvc
 $ dvc init
-$ git commit -m "initialize DVC"
+$ git commit -m "Initialize DVC project"
 ```
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`
-and `.gitignore` files and <abbr>cache directory</abbr>. These files and
+and `.gitignore` files, and <abbr>cache directory</abbr>. These files and
 directories are hidden from the user generally and are not meant to be
 manipulated directly.
 

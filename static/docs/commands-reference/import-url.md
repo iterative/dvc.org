@@ -139,7 +139,7 @@ $ git checkout 2-remote
 $ mkdir data
 ```
 
-You should now have a blank <abbr>workspace</abbr>, just before the
+You should now have a blank workspace, just before the
 [Add Files](/doc/get-started/add-files) chapter.
 
 </details>
