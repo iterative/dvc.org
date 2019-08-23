@@ -26,7 +26,7 @@ Let's again commit and save results:
 
 ```dvc
 $ git add evaluate.dvc auc.metric
-$ git commit -m "add evaluation step to the pipeline"
+$ git commit -m "Create evaluation stage"
 $ dvc push
 ```
 
@@ -35,7 +35,7 @@ experiments in the future, or if we need to go back and checkout it and the
 corresponding data:
 
 ```dvc
-$ git tag -a "baseline-experiment" -m "baseline"
+$ git tag -a "baseline-experiment" -m "Baseline experiment evaluation"
 ```
 
 The `dvc metrics show` command provides a way to compare different experiments,

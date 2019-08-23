@@ -31,7 +31,7 @@ Let's commit DVC-files that describe our pipeline so far:
 
 ```dvc
 $ git add data/.gitignore .gitignore featurize.dvc train.dvc
-$ git commit -m "add featurization and train steps to the pipeline"
+$ git commit -m "Create featurization and training stages"
 $ dvc push
 ```
 

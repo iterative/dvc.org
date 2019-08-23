@@ -12,6 +12,11 @@ run:
 $ dvc pull
 ```
 
+> If you've followed previous chapters of this section, try deleting
+> `data/data.xml` before running the command above, otherwise DVC won't find a
+> need to [checkout](/doc/commands-reference/checkout) the file, since it's
+> already in your workspace.
+
 This command retrieves data files that are referenced in all
 [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>project</abbr>. So,
 you usually run it after `git clone`, `git pull`, or `git checkout`.

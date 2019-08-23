@@ -21,8 +21,8 @@ experiment code and data respectively. And `dvc repro`, as we discussed in the
 necessary commands to build the model and measure its performance.
 
 ```dvc
-$ git commit -a -m "evaluate bigram model"
-$ git tag -a "bigram-experiment" -m "bigrams"
+$ git commit -am "Evaluate bigrams model"
+$ git tag -a "bigrams-experiment" -m "Bigrams experiment evaluation"
 ```
 
 Now, we can use `-T` option of the `dvc metrics show` command to see the

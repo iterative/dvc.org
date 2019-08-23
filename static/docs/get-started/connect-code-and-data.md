@@ -17,8 +17,8 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
-You'll also need to install its dependencies: Python packages like `pandas` and
-`scikit-learn` that are required to run this example.
+You'll also need to install its dependencies: Python packages (libraries) like
+`pandas` and `scikit-learn` that are required to run this example.
 
 <details>
 
@@ -32,11 +32,11 @@ $ tree
 ├── data
 │   ├── data.xml
 │   └── data.xml.dvc
-├── requirements.txt
 └── src
     ├── evaluate.py
     ├── featurization.py
     ├── prepare.py
+    ├── requirements.txt
     └── train.py
 ```
 
@@ -48,17 +48,19 @@ recommend creating a virtual environment with a tool such as
 $ virtualenv -p python3 .env
 $ source .env/bin/activate
 $ echo ".env/" >> .gitignore
-$ pip install -r requirements.txt
+$ pip install -r src/requirements.txt
 ```
+
+</details>
 
 Save the progress to Git:
 
 ```dvc
 $ git add .
-$ git commit -m "add code"
+$ git commit -m "Add source code files to repo"
 ```
 
-</details>
+## Create a first data transformation stage
 
 Having installed the `src/prepare.py` script in your repo, the following command
 transforms it into a reproducible [stage](/doc/commands-reference/run) for the
@@ -94,11 +96,11 @@ This is how the result should look like now:
 +   │       ├── test.tsv
 +   │       └── train.tsv
 +   ├── prepare.dvc
-    ├── requirements.txt
     └── src
         ├── evaluate.py
         ├── featurization.py
         ├── prepare.py
+        ├── requirements.txt
         └── train.py
 ```
 
@@ -160,6 +162,6 @@ Let's commit the changes to save the stage we built:
 
 ```dvc
 $ git add data/.gitignore prepare.dvc
-$ git commit -m "add data preparation stage"
+$ git commit -m "Create data preparation stage"
 $ dvc push
 ```
