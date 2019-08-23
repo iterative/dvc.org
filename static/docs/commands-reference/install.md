@@ -142,7 +142,8 @@ $ git tag
 6-featurization
 7-train
 8-evaluation
-9-bigrams
+9-bigrams-model
+10-bigrams-experiment
 baseline-experiment
 bigrams-experiment
 ```
