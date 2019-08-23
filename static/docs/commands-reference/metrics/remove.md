@@ -28,8 +28,8 @@ file as an output of the [stage](/doc/commands-reference/run) in question.
 Let's first create an output that is not a metric file:
 
 ```dvc
-    $ dvc run -M metrics.tsv \
-              "echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv"
+$ dvc run -M metrics.tsv \
+          "echo -e 'time/tauc/n2019-02-13/t0.9643' > metrics.tsv"
 ```
 
 This command produces the following metrics file:
