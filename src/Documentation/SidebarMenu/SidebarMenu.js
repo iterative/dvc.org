@@ -44,7 +44,7 @@ class SidebarMenuItem extends React.PureComponent {
         {children && (
           <Collapse
             style={isActive ? style : blankStyle}
-            innerRef={r => (this.linkRef = r)}
+            ref={r => (this.linkRef = r)}
           >
             {children.map(item => (
               <SidebarMenuItem

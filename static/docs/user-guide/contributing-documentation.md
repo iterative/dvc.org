@@ -78,6 +78,9 @@ Start the development server using `npm run dev` which will start the server on
 the default port `3000`. Visit `http://localhost:3000/` and navigate to the docs
 in question.
 
+If you intend to change JavaScript files, test the changes with `npm run test`
+command before committing them.
+
 ## Doc style guidelines (for JavaScript and Markdown)
 
 - No trailing whitespaces are allowed.
