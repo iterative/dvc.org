@@ -2,24 +2,21 @@
 
 DVC allows storing and versioning data files, ML models, directories,
 intermediate results with Git, without checking the file contents into Git.
-Let's get a sample dataset to play with:
+Let's get a dataset example to play with:
 
 ```dvc
 $ mkdir data
-$ wget https://data.dvc.org/get-started/data.xml -O data/data.xml
+$ cd data
+dvc import https://github.com/iterative/dataset-registry \
+           get-started/data.xml
+$ cd ..
 ```
 
-<details>
-
-### Expand if you're on Windows or having problems downloading from command line
-
-If you experienced problems using `wget` or you're on Windows and you don't want
-to install it, you'll need to use a browser to download `data.xml` and save it
-into `data` subdirectory. To download, right-click
-[this link](/s3/get-started/data.xml) and click `Save link as` (Chrome) or
-`Save object as` (Firefox).
-
-</details>
+> `dvc import` is a special way to download <abbr>data artifacts</abbr> from
+> other DVC projects so that the imported data is tracked by DVC in this
+> project. In this case we use our example
+> [iterative/dataset-registry](https://github.com/iterative/dataset-registry))
+> project as the external data source.
 
 To take a file (or a directory) under DVC control just run `dvc add` on it. For
 example:
