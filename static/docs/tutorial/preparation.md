@@ -17,6 +17,11 @@ code into it:
 
 ### Expand to learn how to download on Windows
 
+Windows doesn't include the `wget` utility by default, so you'll need to use the
+browser to download `code.zip`. Save it into the `classify` directory.
+(Right-click [this link](https://code.dvc.org/tutorial/nlp/code.zip) and click
+`Save link as`(Chrome) or `Save object as`(Firefox)).
+
 Windows doesn't ship `wget` utility by default, so you'll need to use browser to
 download `code.zip`.
 
