@@ -7,14 +7,14 @@ Let's get a dataset example to play with:
 ```dvc
 $ mkdir data
 $ cd data
-dvc import https://github.com/iterative/dataset-registry \
-           get-started/data.xml
+dvc get https://github.com/iterative/dataset-registry \
+        get-started/data.xml
 $ cd ..
 ```
 
-> `dvc import` is a special way to download <abbr>data artifacts</abbr> from
-> other DVC projects so that the imported data is tracked by DVC in this
-> project. In this case we use our example
+> `dvc get` is a special command to download <abbr>data artifacts</abbr> from
+> other DVC projects into the current working directory (similar to `wget` but
+> for DVC repositories). In this case we use our own
 > [iterative/dataset-registry](https://github.com/iterative/dataset-registry))
 > project as the external data source.
 
