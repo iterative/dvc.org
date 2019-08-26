@@ -30,8 +30,10 @@ nothing to do with DVC so far, it's just a simple preparation:
 
 ### Expand to learn how to download on Windows
 
-Windows doesn't ship `wget` utility by default, so you'll need to use just use
-your browser to download `pipeline.zip`.
+Windows doesn't include the `wget` utility by default, so you'll need to use a
+browser to download `pipeline.zip`. Save it into the `example` directory.
+(Right-click [this link](https://code.dvc.org/tutorial/nlp/pipeline.zip) and
+click `Save link as`(Chrome) or `Save object as`(Firefox)).
 
 </details>
 
@@ -160,7 +162,7 @@ outs:
     path: data/Posts.xml
 ```
 
-This file is using the same technique (checksums that point to to the cache) to
+This file is using the same technique (checksums that point to the cache) to
 describe and version control dependencies and outputs. Output `Posts.xml` file
 is automatically added to the `.gitignore` file and a link is created into a
 cache `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
