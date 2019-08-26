@@ -17,6 +17,7 @@
       "pipeline",
       "visualize",
       "reproduce",
+      "data-artifacts",
       "metrics",
       "experiments",
       "compare-experiments",
