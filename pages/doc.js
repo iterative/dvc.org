@@ -19,6 +19,7 @@ import { media } from '../src/styles'
 import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
 
 const ROOT_ELEMENT = 'bodybag'
+const SIDEBAR_MENU = 'sidebar-menu'
 
 export default class Documentation extends Component {
   constructor() {
@@ -148,9 +149,15 @@ export default class Documentation extends Component {
   }
 
   scrollTop = () => {
-    const element = document.getElementById(ROOT_ELEMENT)
-    if (element) {
-      element.scrollTop = 0
+    const rootElement = document.getElementById(ROOT_ELEMENT)
+    if (rootElement) {
+      rootElement.scrollTop = 0
+    }
+
+    const sideBarElement = document.getElementById(SIDEBAR_MENU)
+
+    if (sideBarElement) {
+      sideBarElement.scrollTop = 0
     }
   }
 
@@ -193,6 +200,7 @@ export default class Documentation extends Component {
               sidebar={sidebar}
               currentPath={path}
               onNavigate={this.onNavigate}
+              id={SIDEBAR_MENU}
             />
           </Side>
 

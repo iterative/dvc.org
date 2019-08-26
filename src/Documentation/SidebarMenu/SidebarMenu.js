@@ -63,7 +63,7 @@ class SidebarMenuItem extends React.PureComponent {
 
 export default class SidebarMenu extends React.Component {
   componentDidMount() {
-    this.ps = new PerfectScrollbar('#sidebar-menu', {
+    this.ps = new PerfectScrollbar(`#${this.props.id}`, {
       // wheelPropagation: window.innerWidth <= 572
       wheelPropagation: true
     })
@@ -74,11 +74,11 @@ export default class SidebarMenu extends React.Component {
   }
 
   render() {
-    const { sidebar, currentPath, onNavigate } = this.props
+    const { id, sidebar, currentPath, onNavigate } = this.props
     const activePaths = currentPath && getParentsListFromPath(currentPath)
 
     return (
-      <Menu id="sidebar-menu">
+      <Menu id={id}>
         <Sections>
           <SectionLinks>
             {sidebar.map(item => (
