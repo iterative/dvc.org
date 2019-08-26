@@ -110,12 +110,11 @@ const Menu = styled.div`
   -webkit-overflow-scrolling: touch;
 
   ${media.phablet`
-    width: auto;
     position: relative;
-    margin: 0;
     top: 0;
-    overflow-y: auto;
-    margin-left: 20px;
+    width: auto;
+    height: calc(100% - 60px);
+    padding-left: 20px;
   `};
 `
 
@@ -123,6 +122,10 @@ const Sections = styled.div`
   margin-bottom: 25px;
   margin-top: 10px;
   min-width: 280px;
+
+  ${media.phablet`
+    min-width: auto;
+  `}
 `
 
 const SectionLinks = styled.div`
