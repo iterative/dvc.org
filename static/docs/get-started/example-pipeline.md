@@ -160,7 +160,7 @@ outs:
     path: data/Posts.xml
 ```
 
-This file is using the same technique (checksums that point to to the cache) to
+This file is using the same technique (checksums that point to the cache) to
 describe and version control dependencies and outputs. Output `Posts.xml` file
 is automatically added to the `.gitignore` file and a link is created into a
 cache `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
