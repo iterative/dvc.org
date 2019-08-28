@@ -43,8 +43,8 @@ recommend creating a virtual environment with a tool such as
 
 ```dvc
 $ virtualenv -p python3 .env
-$ source .env/bin/activate
 $ echo ".env/" >> .gitignore
+$ source .env/bin/activate
 $ pip install -r src/requirements.txt
 ```
 

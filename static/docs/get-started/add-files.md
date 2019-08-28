@@ -7,8 +7,9 @@ Let's get a dataset example to play with:
 ```dvc
 $ mkdir data
 $ cd data
-dvc get https://github.com/iterative/dataset-registry \
+$ dvc get https://github.com/iterative/dataset-registry \
         get-started/data.xml
+...
 $ cd ..
 ```
 
