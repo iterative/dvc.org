@@ -62,6 +62,10 @@ class SidebarMenuItem extends React.PureComponent {
 }
 
 export default class SidebarMenu extends React.Component {
+  state = {
+    isScrollHidden: false
+  }
+
   componentDidMount() {
     this.ps = new PerfectScrollbar(`#${this.props.id}`, {
       // wheelPropagation: window.innerWidth <= 572
@@ -69,8 +73,15 @@ export default class SidebarMenu extends React.Component {
     })
   }
 
-  componentDidUpdate() {
-    this.ps.update()
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentPath === this.props.currentPath) return
+
+    this.setState({ isScrollHidden: true }, () =>
+      setTimeout(() => {
+        this.ps.update()
+        this.setState({ isScrollHidden: false })
+      }, 400)
+    )
   }
 
   render() {
@@ -78,7 +89,7 @@ export default class SidebarMenu extends React.Component {
     const activePaths = currentPath && getParentsListFromPath(currentPath)
 
     return (
-      <Menu id={id}>
+      <Menu id={id} isScrollHidden={this.state.isScrollHidden}>
         <Sections>
           <SectionLinks>
             {sidebar.map(item => (
@@ -106,15 +117,20 @@ const Menu = styled.div`
   top: 60px;
   width: 100%;
   height: calc(100vh - 138px);
-  overflow-y: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+
+  ${props =>
+    props.isScrollHidden &&
+    `
+    .ps__rail-y { opacity: 0; overflow: hidden; }
+	`};
 
   ${media.phablet`
     width: auto;
     position: relative;
     margin: 0;
     top: 0;
-    overflow-y: auto;
     margin-left: 20px;
   `};
 `

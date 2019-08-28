@@ -153,12 +153,6 @@ export default class Documentation extends Component {
     if (rootElement) {
       rootElement.scrollTop = 0
     }
-
-    const sideBarElement = document.getElementById(SIDEBAR_MENU)
-
-    if (sideBarElement) {
-      sideBarElement.scrollTop = 0
-    }
   }
 
   toggleMenu = () => {
