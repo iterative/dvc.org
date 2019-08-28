@@ -8,7 +8,7 @@ configuration with the data it processes to produce the result.
 
 <details>
 
-### Expand to prepare example code ...
+### Expand to prepare example code
 
 If you've followed this _Get Started_ section from the beginning, run these
 commands to get the example code:
@@ -78,7 +78,7 @@ about the Python command that is required to build it.
 
 <details>
 
-### Expand to learn more about what has just happened ...
+### Expand to learn more about what has just happened
 
 This is how the result should look like now:
 
