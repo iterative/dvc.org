@@ -27,9 +27,6 @@ and tries to retrieve the file using the external project's default remote
 (configured
 [here](https://github.com/iterative/dataset-registry/blob/master/.dvc/config)).
 
-As mentioned earlier, `dvc update` allows us to "force" update the imported data
-without having to reproduce the pipeline.
-
-```dvc
-$ dvc update data.xml.dvc
-```
+As mentioned earlier, `dvc update` allows us to check weather the imported data
+source has changed, and update it locally if so, without having to reproduce the
+pipeline.
