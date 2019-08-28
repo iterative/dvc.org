@@ -8,8 +8,8 @@ different machines). But what if we wanted to reuse a dataset from a project in
 a completely different one?
 
 That's why we created `dvc import`! This commands can download data from any DVC
-project hosted on a Git repository online. It also tracks the imported data by
-creating an import stage ([DVC-file](/doc/user-guide/dvc-file-format)). Example:
+project hosted on a Git repository. It also tracks the imported data by creating
+an import stage ([DVC-file](/doc/user-guide/dvc-file-format)). Example:
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
