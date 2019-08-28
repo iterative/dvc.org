@@ -17,7 +17,7 @@ $ dvc pull
 > need to [checkout](/doc/commands-reference/checkout) the file, since it's
 > already in your workspace.
 
-This command retrieves data files that are referenced in all
+This command downloads data files that are referenced in all
 [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>project</abbr>. So,
 you usually run it after `git clone`, `git pull`, or `git checkout`.
 

@@ -1,4 +1,4 @@
-# Data Artifacts
+# Reusing Data Artifacts
 
 Once <abbr>data artifacts</abbr> have been
 [uploaded](/doc/get-started/share-data) to remote storage in a <abbr>DVC
@@ -9,10 +9,10 @@ having to [download](/doc/get-started/retrieve-data) that entire project first.
 
 `dvc import` not only downloads data artifacts, but tracks the import as well by
 creating an import stage [DVC-file](/doc/user-guide/dvc-file-format). This is
-similar to using `dvc get` + `dvc add`. With import stages however, DVC
-automatically checks for updates in the external data source before
+equivalent to using `dvc get` + `dvc add`. With import stages however, we can
+run `dvc update` to checks for updates in the external data source before
 [reproducing](/doc/get-started/reproduce) the <abbr>pipeline</abbr> that depends
-on the import. For example:
+on the import.
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
@@ -27,8 +27,8 @@ and tries to retrieve the file using the external project's default remote
 (configured
 [here](https://github.com/iterative/dataset-registry/blob/master/.dvc/config)).
 
-Finally, `dvc update` allows us to "force" updating the imported data without
-having to reproduce the pipeline.
+As mentioned earlier, `dvc update` allows us to "force" update the imported data
+without having to reproduce the pipeline.
 
 ```dvc
 $ dvc update data.xml.dvc
