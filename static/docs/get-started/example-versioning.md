@@ -95,9 +95,9 @@ $ unzip data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` is a special command to download <abbr>data artifacts</abbr> from
-> other DVC projects into the current working directory (similar to `wget` but
-> for DVC repositories). In this case we use our own
+> `dvc get` can download <abbr>data artifacts</abbr> from any <abbr>DVC
+> project</abbr> hosted on Git repositories into the current working directory
+> (similar to `wget` but for DVC repositories). In this case we use our own
 > [iterative/dataset-registry](https://github.com/iterative/dataset-registry))
 > project as the external data source.
 
