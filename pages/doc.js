@@ -294,13 +294,9 @@ const SearchArea = styled.div`
   display: flex;
   align-items: center;
   background-color: #eef4f8;
-  z-index: 10;
-  position: sticky;
-  top: 0;
 
   ${media.phablet`
     position: relative;
-    padding: 0 20px;
   `};
 
   form {

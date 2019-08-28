@@ -1,5 +1,4 @@
 import React from 'react'
-import PerfectScrollbar from 'perfect-scrollbar'
 // components
 import DownloadButton from '../../DownloadButton'
 // utils
@@ -62,17 +61,6 @@ class SidebarMenuItem extends React.PureComponent {
 }
 
 export default class SidebarMenu extends React.Component {
-  componentDidMount() {
-    this.ps = new PerfectScrollbar('#sidebar-menu', {
-      // wheelPropagation: window.innerWidth <= 572
-      wheelPropagation: true
-    })
-  }
-
-  componentDidUpdate() {
-    this.ps.update()
-  }
-
   render() {
     const { sidebar, currentPath, onNavigate } = this.props
     const activePaths = currentPath && getParentsListFromPath(currentPath)
@@ -102,16 +90,11 @@ export default class SidebarMenu extends React.Component {
 }
 
 const Menu = styled.div`
-  position: sticky;
-  top: 60px;
   width: 100%;
-  height: calc(100vh - 138px);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
 
   ${media.phablet`
-    position: relative;
-    top: 0;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
     width: auto;
     height: calc(100% - 60px);
     padding-left: 20px;
