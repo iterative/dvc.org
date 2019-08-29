@@ -28,23 +28,16 @@ nothing to do with DVC so far, it's just a simple preparation:
 
 <details>
 
-### Expand to learn how to download on Windows
-
-Windows doesn't include the `wget` utility by default, so you'll need to use a
-browser to download `pipeline.zip`. Save it into the `example` directory.
-(Right-click [this link](https://code.dvc.org/tutorial/nlp/pipeline.zip) and
-click `Save link as`(Chrome) or `Save object as`(Firefox)).
-
-</details>
-
 ```dvc
 $ mkdir example && cd example
 $ git init
-$ wget https://code.dvc.org/tutorial/nlp/pipeline.zip
-$ unzip pipeline.zip -d code
+$ dvc get https://github.com/iterative/dataset-registry \
+          tutorial/nlp/pipeline.zip
+...
+$ unzip pipeline.zip
 $ rm -f pipeline.zip
 $ git add code/
-$ git commit -m "download and initialize code"
+$ git commit -m "Download and add code to new Git repo"
 ```
 
 Now let's install the requirements. But before we do that, we **strongly**
@@ -55,7 +48,7 @@ recommend creating a virtual environment with a tool such as
 $ virtualenv -p python3 .env
 $ echo ".env/" >> .gitignore
 $ source .env/bin/activate
-$ pip install -r requirements.txt
+$ pip install -r code/requirements.txt
 ```
 
 Next, we will create a pipeline step-by-step, utilizing the same set of commands
@@ -69,15 +62,17 @@ Initialize DVC repository (run it inside your Git repository):
 
 ```dvc
 $ dvc init
-$ git commit -m "initialize DVC"
+$ git add .
+$ git commit -m "Initialize DVC project"
 ```
 
 Download an input dataset to the `data/` directory and take it under DVC
 control:
 
 ```dvc
-$ mkdir data
-$ wget -P data https://data.dvc.org/tutorial/nlp/25K/Posts.xml.zip
+$ dvc get https://github.com/iterative/dataset-registry \
+          tutorial/nlp/Posts.xml.zip -o data/Posts.xml.zip
+...
 $ dvc add data/Posts.xml.zip
 ```
 
@@ -98,29 +93,32 @@ Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
 "_orphan_ stage file":
 
 ```yaml
-md5: 4dbe7a4e5a0d41b652f3d6286c4ae788
+md5: c183f094869ef359e87e68d2264b6cdd
+wdir: ..
 outs:
-  - cache: true
-    md5: ce68b98d82545628782c66192c96f2d2
-    path: Posts.xml.zip
+  - md5: ce68b98d82545628782c66192c96f2d2
+    path: data/Posts.xml.zip
+    cache: true
+    metric: false
+    persist: false
 ```
 
 This is the file that should be committed into a version control system instead
 of the data file itself.
 
-Actual data file `Posts.xml.zip` is linked into the `.dvc/cache` directory,
-under the `.dvc/cache/ce/68b98d82545628782c66192c96f2d2` name and is added to
-`.gitignore`. Even if you remove it in the workspace, or checkout a different
-branch/commit the data is not lost if a corresponding DVC-file is committed.
-It's enough to run `dvc checkout` or `dvc pull` to restore data files.
+Actual data file `Posts.xml.zip` is linked from the
+`.dvc/cache/ce/68b98d82545628782c66192c96f2d2` path, and added to `.gitignore`.
+Even if you remove it in the workspace, or `git checkout` a different commit,
+the data is not lost if a corresponding DVC-file is committed. It's enough to
+run `dvc checkout` or `dvc pull` to restore data files.
 
 </details>
 
-Commit the changes to Git repository:
+Commit the changes with Git:
 
 ```dvc
-$ git add data/Posts.xml.zip.dvc data/.gitignore
-$ git commit -m "add dataset"
+$ git add data/.gitignore data/Posts.xml.zip.dvc
+$ git commit -m "Add dataset archive to project"
 ```
 
 ## Define stages
