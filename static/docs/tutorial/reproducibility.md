@@ -84,9 +84,9 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-The process started with the feature creation step because one of its parameters
-was changed — the edited source code file `code/featurization.py`. All dependent
-stages were ran again as well.
+The process started with the feature creation stage because one of its
+parameters was changed — the edited source code file `code/featurization.py`.
+All dependent stages were ran again as well.
 
 Let’s take a look at the metric’s change. The improvement is close to zero
 (+0.0075% to be precise):
@@ -135,7 +135,7 @@ $ git commit -m Bigrams
 
 ## Checkout code and data files
 
-The previous experiment was done in the feature extraction step and provided no
+The previous experiment was done in the 'featurization' stage and provided no
 improvements. This might be caused by not having perfect model hyperparameters.
 Let’s try to improve the model by changing the hyperparameters.
 
@@ -181,7 +181,8 @@ clf = RandomForestClassifier(n_estimators=700,
                              n_jobs=6, random_state=seed)
 ```
 
-Only the modeling and the evaluation step need to be reproduced. Just run repro:
+Only the modeling and the evaluation stage need to be reproduced. Just run
+repro:
 
 ```dvc
 $ dvc repro

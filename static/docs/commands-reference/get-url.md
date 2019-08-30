@@ -1,7 +1,8 @@
 # get-url
 
-Download or copy file or directory from any supported URL (for example `s3://`,
-`ssh://`, and other protocols) or local directory to the local file system.
+Download or copy a file or directory from any supported URL (for example
+`s3://`, `ssh://`, and other protocols) or local directory to the local file
+system.
 
 > Unlike `dvc import-url`, this command does not track the downloaded data files
 > (does not create a DVC-file).
@@ -18,7 +19,7 @@ positional arguments:
 
 ## Description
 
-In some cases it's convenient to get a data file or directory from a remote
+In some cases it's convenient to get a <abbr>data artifact</abbr> from a remote
 location into the current working directory, regardless of whether it's a DVC
 project. The `dvc get-url` command helps the user do just that.
 

@@ -132,8 +132,8 @@ same.
 ## Running commands
 
 Once the data files are in the workspace, you can start processing the data and
-train ML models out of the data files. DVC helps you to define steps of your ML
-process and pipe them together into a ML
+train ML models out of the data files. DVC helps you to define stages of your ML
+process and easily connect them into a ML
 [pipeline](/doc/commands-reference/pipeline).
 
 `dvc run` executes any command that you pass into it as a list of parameters.
@@ -262,12 +262,12 @@ $ git commit -m "extract data"
 
 ## Running in bulk
 
-One single step of our ML pipeline was defined and committed into repository. It
-is not necessary to commit steps right after a step's definition. You can run a
-few steps and commit them later.
+A single stage of our ML pipeline was defined and committed into repository. It
+isn't necessary to commit stages right after their creation. You can create a
+few and commit them to Git together later.
 
-Let’s run the next step of converting an XML file to TSV and the following step
-of separating training and testing datasets one by one:
+Let’s run the following stages: converting an XML file to TSV, and then
+separating training and testing datasets:
 
 ```dvc
 $ dvc run -d data/Posts.xml -d code/xml_to_tsv.py -d code/conf.py \
@@ -287,8 +287,9 @@ Reproducing 'Posts-test.tsv.dvc':
 Positive size 2049, negative size 97951
 ```
 
-The result of the steps are two stage files corresponding to each of the
-commands: `Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file
+The result of the commands above are two
+[stage files](/doc/commands-reference/run) corresponding to each of the
+commands, `Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file
 was created. This type of file should not be tracked by Git. Let’s manually
 include this type of file into `.gitignore`.
 
@@ -302,7 +303,8 @@ $ git status -s
 $ echo "*.pyc" >> .gitignore
 ```
 
-Both of the steps can be committed to the repository together.
+As mentioned before, both of stage files can be committed to the repository
+together:
 
 ```dvc
 $ git add .
@@ -355,9 +357,9 @@ Reproducing 'Dvcfile':
 > Note that using `-f Dvcfile` with `dvc run` above isn't necessary as the
 > default stage file name is `Dvcfile` when there are no outputs (option `-o`).
 
-The model evaluation step is the last one. To help in the pipeline's
-reproducibility, we specify stage file name `Dvcfile`. (This will be discussed
-in more detail in the next chapter.)
+The model evaluation stage is the last one for this tutorial. To help in the
+pipeline's reproducibility, we use stage file name `Dvcfile`. (This will be
+discussed in more detail in the next chapter.)
 
 Note that the output file `data/eval.txt` was transformed by DVC into a metric
 file in accordance with the `-M` option.
@@ -376,7 +378,7 @@ $ git add .
 $ git commit -m Evaluate
 ```
 
-The evaluation step output contains the target metrics value in a simple text
+The evaluation stage output contains the target metrics value in a simple text
 form:
 
 ```dvc

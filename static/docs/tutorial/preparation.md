@@ -5,8 +5,8 @@ In this document, we will be building an ML model to classify
 `python` tag and without `python` tag. For training purposes, a small subset of
 data will be used — only 180Mb xml files.
 
-Most of the code for the problem is ready and will be downloaded in the first
-steps. Later we will be modifying the code a bit to improve the model.
+Most of the code to solve this problem is ready to be downloaded. We will be
+modifying some of the code during this tutorial to improve the model.
 
 ## Getting the sample code
 
