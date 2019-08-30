@@ -90,7 +90,7 @@ in general. Users don't interact with these files directly. See
 more.
 
 Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
-"_orphan_ stage file":
+_orphan_ [stage file](/doc/commands-reference/run):
 
 ```yaml
 md5: c183f094869ef359e87e68d2264b6cdd
@@ -106,11 +106,11 @@ outs:
 This is the file that should be committed into a version control system instead
 of the data file itself.
 
-Actual data file `Posts.xml.zip` is linked from the
-`.dvc/cache/ce/68b98d82545628782c66192c96f2d2` path, and added to `.gitignore`.
-Even if you remove it in the workspace, or `git checkout` a different commit,
-the data is not lost if a corresponding DVC-file is committed. It's enough to
-run `dvc checkout` or `dvc pull` to restore data files.
+The data file `Posts.xml.zip` is linked (or copied) from
+`.dvc/cache/ce/68b98d82545628782c66192c96f2d2`, and added to `.gitignore`. Even
+if you remove it in the workspace, or `git checkout` a different commit, the
+data is not lost if a corresponding DVC-file is committed. It's enough to run
+`dvc checkout` or `dvc pull` to restore data files.
 
 </details>
 
@@ -139,41 +139,45 @@ $ dvc run -d data/Posts.xml.zip \
           unzip data/Posts.xml.zip -d data
 ```
 
-Similar to `dvc add`, `dvc run` creates a
-[DVC-file](/doc/user-guide/dvc-file-format) (or "stage file").
+Similar to `dvc add`, `dvc run` creates a stage file (a DVC-file with
+dependencies).
 
 <details>
 
 ### Expand to learn more about DVC internals
 
-Here's what the DVC-file (stage file, with dependencies `deps`) looks like:
+Here's what the `extract.dvc` stage file looks like:
 
 ```yaml
-cmd: ' unzip data/Posts.xml.zip -d data'
+md5: c4280355ffe277571c1b7aa8a43d8107
+cmd: unzip data/Posts.xml.zip -d data
+wdir: .
 deps:
   - md5: ce68b98d82545628782c66192c96f2d2
     path: data/Posts.xml.zip
-md5: abaf651846ec4fb7a4a8e1a685546ed9
 outs:
-  - cache: true
-    md5: a304afb96060aad90176268345e10355
+  - md5: a304afb96060aad90176268345e10355
     path: data/Posts.xml
+    cache: true
+    metric: false
+    persist: false
 ```
 
-This file is using the same technique (checksums that point to the cache) to
-describe and version control dependencies and outputs. Output `Posts.xml` file
-is automatically added to the `.gitignore` file and a link is created into a
-cache `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
+Just like the DVC-file we created earlier with `dvc add`, this stage file uses
+checksums that point to the cache to describe and version control dependencies
+and outputs. Output `data/Posts.xml` file is saved as
+`.dvc/cache/a3/04afb96060aad90176268345e10355` and linked (or copied) to the
+workspace, as well as added to `.gitignore`.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
-that DVC-files describe, we can restore the full chain (DAG) of commands we need
-to apply. This is important when you run `dvc repro` to reproduce the final or
-intermediate result.
+in the DVC-files, we can restore the full chain of commands (DAG) we need to
+apply. This is important when you run `dvc repro` to regenerate intermediate or
+final results.
 
-Second, you should see by now that the actual data is stored in the `.dvc/cache`
-directory, each file having a name in a form of an md5 hash. This cache is
-similar to Git's internal objects store but made specifically to handle large
-data files.
+Second, hopefully it's clear by now that the actual data is stored in the
+`.dvc/cache` directory, each file having a name in a form of an md5 hash. This
+cache is similar to Git's internal objects store but made specifically to handle
+large data files.
 
 > **Note!** For performance with large datasets, DVC can use file links from the
 > cache to the workspace to avoid copying actual file contents. Refer to
@@ -185,50 +189,54 @@ data files.
 Next stage: let's convert XML into TSV to make feature extraction easier:
 
 ```dvc
-$ dvc run -d code/xml_to_tsv.py -d data/Posts.xml \
-          -o data/Posts.tsv \
+$ dvc run -d code/xml_to_tsv.py -d data/Posts.xml -o data/Posts.tsv \
           -f prepare.dvc \
           python code/xml_to_tsv.py data/Posts.xml data/Posts.tsv
 ```
 
-Split training and test datasets. Here `0.2` is a test dataset split ratio,
-`20170426` is a seed for randomization. There are two output files:
+Next, split training and test datasets. Here `0.2` is a test dataset split
+ratio, `20170426` is a seed for randomization. There are two output files:
 
 ```dvc
 $ dvc run -d code/split_train_test.py -d data/Posts.tsv \
           -o data/Posts-train.tsv -o data/Posts-test.tsv \
           -f split.dvc \
-          python code/split_train_test.py data/Posts.tsv 0.2 20170426 \
-                                          data/Posts-train.tsv data/Posts-test.tsv
+          python code/split_train_test.py \
+                 data/Posts.tsv 0.2 20170426 \
+                 data/Posts-train.tsv data/Posts-test.tsv
 ```
 
-Extract features and labels from the data. Two TSV as inputs with two pickle
-matrices as outputs:
+Now, extract features and labels from the data. Two TSV as inputs with two
+pickle matrices as outputs:
 
 ```dvc
-$ dvc run -d code/featurization.py -d data/Posts-train.tsv -d data/Posts-test.tsv \
+$ dvc run -d code/featurization.py \
+          -d data/Posts-train.tsv -d data/Posts-test.tsv \
           -o data/matrix-train.pkl -o data/matrix-test.pkl \
           -f featurize.dvc \
-          python code/featurization.py data/Posts-train.tsv data/Posts-test.tsv \
-                                          data/matrix-train.pkl data/matrix-test.pkl
+          python code/featurization.py \
+                 data/Posts-train.tsv data/Posts-test.tsv \
+                 data/matrix-train.pkl data/matrix-test.pkl
 ```
 
-Train ML model on the training dataset. 20170426 is a seed value here:
+Then, train a ML model on the training dataset. 20170426 is a seed value here:
 
 ```dvc
 $ dvc run -d code/train_model.py -d data/matrix-train.pkl \
           -o data/model.pkl \
           -f train.dvc \
-          python code/train_model.py data/matrix-train.pkl 20170426 data/model.pkl
+          python code/train_model.py data/matrix-train.pkl \
+                 20170426 data/model.pkl
 ```
 
 Finally, evaluate the model on the test dataset and get the metrics file:
 
 ```dvc
-$ dvc run -d code/evaluate.py -d data/model.pkl -d data/matrix-test.pkl \
-          -M auc.metric \
+$ dvc run -d code/evaluate.py -d data/model.pkl \
+          -d data/matrix-test.pkl -M auc.metric \
           -f evaluate.dvc \
-          python code/evaluate.py data/model.pkl data/matrix-test.pkl auc.metric
+          python code/evaluate.py data/model.pkl \
+                 data/matrix-test.pkl auc.metric
 ```
 
 <details>
@@ -244,46 +252,45 @@ actual commands instead of DVC-files):
 
 ```dvc
 $ dvc pipeline show --ascii evaluate.dvc
-
-       .------------------------.
+       +------------------------+
        | data/Posts.xml.zip.dvc |
-       `------------------------'
+       +------------------------+
                     *
                     *
                     *
-            .-------------.
+            +-------------+
             | extract.dvc |
-            `-------------'
+            +-------------+
                     *
                     *
                     *
-            .-------------.
+            +-------------+
             | prepare.dvc |
-            `-------------'
+            +-------------+
                     *
                     *
                     *
-              .-----------.
+              +-----------+
               | split.dvc |
-              `-----------'
+              +-----------+
                     *
                     *
                     *
-            .---------------.
+            +---------------+
             | featurize.dvc |
-            `---------------'
+            +---------------+
              **           ***
            **                **
          **                    **
-.-----------.                    **
++-----------+                    **
 | train.dvc |                  **
-`-----------'                **
++-----------+                **
              **           ***
                **       **
                  **   **
-            .--------------.
+            +--------------+
             | evaluate.dvc |
-            `--------------'
+            +--------------+
 ```
 
 </details>
