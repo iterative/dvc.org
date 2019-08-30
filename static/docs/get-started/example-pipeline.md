@@ -297,10 +297,6 @@ $ dvc pipeline show --ascii evaluate.dvc
 
 ## Check results
 
-> Since the dataset for this example is an extremely simplified to make it
-> simpler to run this pipeline, exact metric number may vary sufficiently
-> depending on Python version you are using and other environment parameters.
-
 An easy way to see metrics across different branches:
 
 ```dvc
@@ -308,29 +304,26 @@ $ dvc metrics show
   auc.metric: 0.620091
 ```
 
-It's time to save our pipeline. You can confirm that we do not save pickle model
-files or raw datasets into Git using the `git status` command. We are just
-saving a snapshot of the DVC-files that describe data and code versions and
+> Since the dataset for this example is extremely simplified to make it faster
+> to run this pipeline, the exact metric number may vary.
+
+It's time to save our pipeline. You can confirm that we do not save model files
+or raw datasets into Git using the `git status` command. We are just saving a
+snapshot of the DVC-files that describe data, transformations (stages), and
 relationships between them.
 
 ```dvc
-$ git add *.dvc auc.metric
-$ git commit -am "create pipeline"
+$ git add *.dvc auc.metric data/.gitignore
+$ git commit -m "Add tag prediction pipeline (6 stages)"
 ```
 
 ## Reproduce
 
 All stages could be automatically and efficiently reproduced even if any source
-code files have been modified. For example:
-
-Let's improve the feature extraction algorithm by making some modification to
-the `code/featurization.py`:
-
-```dvc
-$ vi code/featurization.py
-```
-
-Specify `ngram` parameter in `CountVectorizer` (lines 72–73):
+code files have been modified. For example, let's improve the feature extraction
+algorithm by making some modification to the `code/featurization.py`. Please
+open it with a text editor and specify `ngram` parameter in `CountVectorizer`
+(lines 72–73):
 
 ```python
 bag_of_words = CountVectorizer(stop_words='english',
@@ -338,35 +331,44 @@ bag_of_words = CountVectorizer(stop_words='english',
                               ngram_range=(1, 2))
 ```
 
-Reproduce all required stages to get our target metrics file:
+Reproduce all required stages to get to the target metrics file:
 
 ```dvc
 $ dvc repro evaluate.dvc
+WARNING: Dependency 'code/featurization.py' of 'featurize.dvc' changed because it is 'modified'.
+WARNING: Stage 'featurize.dvc' changed.
+Reproducing 'featurize.dvc'
+...
 ```
 
-> Since the dataset for this example is extremely simplified to make it simpler
-> to run this pipeline, exact metric numbers may vary significantly depending on
-> the Python version you are using and other environment parameters.
-
-Take a look at the target metric improvement:
+Once that's done, check the AUC metric again for an improvement:
 
 ```dvc
 $ dvc metrics show -a
+working tree:
+	auc.metric: AUC: 0.648462
 master:
-  auc.metric: 0.666618
+	auc.metric: AUC: 0.587951
 ```
+
+> Since the dataset for this example is extremely simplified to make it faster
+> to run this pipeline, the exact metric numbers may vary.
+
+The `-a` flag in the command above tells `dvc metrics show` to show the value
+for all Git branches.
+
+Feel free to commit the remaining changes to Git.
 
 ## Conclusion
 
-By wrapping your commands with `dvc run` it's easy to integrate DVC into your
-existing ML development pipeline/processes without any significant effort to
-rewrite your code.
+By wrapping your commands with `dvc run`, it's easy to integrate DVC into a
+machine learning or data processing pipeline – without any significant effort to
+rewrite the code.
 
-The key step to notice is that DVC automatically derives the dependencies
-between the experiment stages and builds the dependency graph (DAG)
-transparently.
+The key detail to notice is that DVC automatically derives the dependencies
+between the pipeline stages and builds a dependency graph (DAG) transparently.
 
-Not only can DVC streamline your work into a single, reproducible environment,
-it also makes it easy to share this environment by Git including the
-dependencies — an exciting collaboration feature which gives the ability to
-reproduce the research easily in a myriad of environments.
+DVC streamlines all of your experiments into a single, reproducible
+<abbr>project</abbr>, and it makes it easy to share it on Git, including the
+dependencies. This is an innovative collaboration feature which provides the
+ability to review data science research.
