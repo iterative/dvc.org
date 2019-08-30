@@ -27,8 +27,8 @@ $ dvc remote add -d myremote /tmp/dvc-storage
 $ git commit .dvc/config -m "Configure local remote"
 ```
 
-> We only use a local remote in this guide for simplicity's sake in following
-> these basic steps as you are learning to use DVC. We realize that for most
+> We only use a local remote in this guide for simplicity's sake when following
+> these steps, as you are learning to use DVC. For most
 > [use cases](/doc/use-cases), other "more remote" types of remotes will be
 > required.
 

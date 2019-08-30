@@ -336,16 +336,15 @@ changed.
 
 Here where DVC pipelines feature comes very handy and was designed for. We
 touched it briefly when we described `dvc run` and `dvc repro` at the very end.
-The next step here would be splitting the script into two steps and utilizing
-DVC pipelines. See this [example](/doc/get-started/example-pipeline) to get a
-hands-on experience with them and try to apply it here. Don't hesitate to join
-our [community](/chat) to ask any questions!
+The next step here would be splitting the script into two parts, and utilizing
+DVC [pipelines](/doc/commands-reference/pipeline). See
+[this example](/doc/get-started/example-pipeline) to get a hands-on experience
+with pipelines and try to apply it here. Don't hesitate to join our
+[community](/chat) to ask any questions!
 
-Another thing, you should have noticed, is the metrics file (`metrics.json`) and
-the way we captured it with `-M metrics.json` option. Metric file is a special
-type of output DVC provides an interface on top to compare across tags or
+Another detail we only brushed on here is the way we captured the `metrics.json`
+metrics file with the `-M` option of `dvc run`. Metric files are a special type
+of output DVC provides an interface for, in order to compare across Git tags or
 branches. See `dvc metrics` command and
 [Compare Experiments](/doc/get-started/compare-experiments) to learn more about
-managing metrics. Next step you should try on your own is converting both
-iterations we had into `dvc run` and then utilize `dvc metrics show` to compare
-them.
+managing metrics with DVC.

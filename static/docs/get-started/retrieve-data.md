@@ -1,34 +1,22 @@
 # Retrieve Data
 
-> Make sure that the steps described in the
-> [initialization](/doc/get-started/initialize) and
-> [configuration](/doc/get-started/configure) chapters are completed before you
-> run the `dvc pull` command in a newly cloned or initialized Git repository.
+> You'll need to complete the [initialization](/doc/get-started/initialize) and
+> [configuration](/doc/get-started/configure) chapters before being able to run
+> the commands explained here.
 
 To retrieve data files into the <abbr>workspace</abbr> in your local machine,
 run:
-
-```dvc
-$ dvc pull
-```
-
-> If you've followed previous chapters of this section, try deleting
-> `data/data.xml` before running the command above, otherwise DVC won't find a
-> need to [checkout](/doc/commands-reference/checkout) the file, since it's
-> already in your workspace.
-
-This command retrieves data files that are referenced in all
-[DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>project</abbr>. So,
-you usually run it after `git clone`, `git pull`, or `git checkout`.
-
-As an easy way to test it:
 
 ```dvc
 $ rm -f data/data.xml
 $ dvc pull
 ```
 
-Alternatively, if you want to retrieve a single dataset or a file:
+This command retrieves data files that are referenced in all
+[DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>project</abbr>. So,
+you usually run it after `git clone`, `git pull`, or `git checkout`.
+
+Alternatively, if you want to retrieve a single dataset or a file you can use:
 
 ```dvc
 $ dvc pull data/data.xml.dvc
