@@ -141,23 +141,24 @@ $ pip install -e ".[ssh]"
 $ pip install -e ".[all]"
 ```
 
-You will need to update your `ENV` throughout subsequent steps, so we created a
-template for you:
+You will need to update your environment throughout subsequent steps, so we
+created a template for you:
 
 ```dvc
 $ cp tests/remotes_env.sample tests/remotes_env
 ```
 
 Then uncomment lines you need and fill in needed values, the details are
-explained in remote specific subsections. To activate these env vars use:
+explained in remote specific subsections. To activate these environment
+variables, use:
 
 ```dvc
 $ source tests/remotes_env
 ```
 
-If some member of your team had already went through all of this you may just
-ask for their `remotes_env` file and Google Cloud credentials and you can skip
-any manipulations with `ENV` below.
+If another member of your team has already gone through this guide, you could
+just ask for their `remotes_env` file and Google Cloud credentials, and skip any
+env manipulations below.
 
 <details>
 
@@ -167,8 +168,8 @@ Install
 [aws cli](https://docs.aws.amazon.com/en_us/cli/latest/userguide/cli-chap-install.html)
 tools.
 
-Set up an account, get credentials, which will have access to S3. Then, set
-`ENV` vars like this:
+Set up an account, get credentials, which will have access to S3. Then, set env
+vars like this:
 
 ```dvc
 $ export AWS_ACCESS_KEY_ID="...YOUR-ACCESS-KEY-ID..."
@@ -188,7 +189,7 @@ authenticated with your google account.
 
 You then need to create a bucket, a service account and get its credentials. You
 can do this via web UI or terminal. Then you need to put your keys to
-`scripts/ci/gcp-creds.json` and add these to your `ENV`:
+`scripts/ci/gcp-creds.json` and add these to your env vars:
 
 ```dvc
 $ export GOOGLE_APPLICATION_CREDENTIALS=".gcp-creds.json"
@@ -231,7 +232,7 @@ $ mkdir azurite
 $ azurite -s -l azurite -d azurite/debug.log
 ```
 
-Add this to your `ENV`:
+Add this to your env:
 
 ```dvc
 $ export AZURE_STORAGE_CONTAINER_NAME="dvc-test"
