@@ -1,11 +1,12 @@
 # import-url
 
-Download or copy file or directory from any supported URL (for example `s3://`,
-`ssh://`, and other protocols) or local directory to the <abbr>workspace</abbr>,
-and track changes in the remote data source with DVC. Creates a DVC-file.
+Download or copy a file or directory from any supported URL (for example
+`s3://`, `ssh://`, and other protocols) or local directory to the
+<abbr>workspace</abbr>, and track changes in the remote data source with DVC.
+Creates a DVC-file.
 
-> See also `dvc get-url` which corresponds to the first step this command
-> performs (just download the data).
+> See also `dvc get-url` which corresponds to the first half of what this
+> command does (downloading the <abbr>data artifact</abbr>).
 
 ## Synopsis
 

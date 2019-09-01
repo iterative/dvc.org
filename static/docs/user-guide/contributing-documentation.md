@@ -63,22 +63,21 @@ repository from GitHub:
 $ git clone git@github.com:<username>/dvc.org.git
 ```
 
-Make sure you have the latest version of [Node.js](https://nodejs.org/en/)
-installed. Install and keep the dependencies up to date by running `npm install`
-often. This will also enable the Git pre-commit hook that will be formatting
-your code and documentation files automatically.
+Make sure you have the latest version of [Node.js](https://nodejs.org/en/) and
+[yarn](https://yarnpkg.com/en/) installed. Install and keep the dependencies up
+to date by running `yarn` often. This will also enable the Git pre-commit hook
+that will be formatting your code and documentation files automatically.
 
-It's highly recommended to run the Node.js docs app locally to test significant
-changes to the docs before submitting them, and its very much needed in order to
-make changes to the docs JavaScript engine itself (rare). These changes need to
-be properly formatted as well. This is also ensured in the following steps for
-setting up.
+It's highly recommended to run the Node docs app locally to check documentation
+changes before submitting them, and its very much needed in order to make
+changes to the docs JavaScript engine itself (rare). Source code files need to
+be properly formatted as well, which is also ensured by the full setup below.
 
-Start the development server using `npm run dev` which will start the server on
-the default port `3000`. Visit `http://localhost:3000/` and navigate to the docs
-in question.
+Start the development server using `yarn dev` which will start the server on the
+default port `3000`. Visit `http://localhost:3000/` and navigate to the docs in
+question.
 
-If you intend to change JavaScript files, test the changes with `npm run test`
+If you intend to change JavaScript files, test the changes with `yarn test`
 command before committing them.
 
 ## Doc style guidelines (for JavaScript and Markdown)
@@ -89,7 +88,7 @@ command before committing them.
   Visual Studio Code and the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
   plugin. Correct formatting will be done automatically by a Git pre-commit hook
-  which is integrated when `npm install` runs in the instructions above.
+  which is integrated when `yarn` runs in the instructions above.
 
 - We use [Prettier](https://prettier.io/) default conventions to format our
   source code files. The formatting of staged files will automatically be done
