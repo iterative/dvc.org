@@ -1,7 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document'
-import { createGlobalStyle, ServerStyleSheet } from 'styled-components'
-import reset from 'styled-reset'
-import { global } from '../src/styles'
+import { ServerStyleSheet } from 'styled-components'
 import Router from 'next/router'
 
 const DESCRIPTION =
@@ -11,11 +9,6 @@ const DESCRIPTION =
 const KEYWORDS = `data version control machine learning models management`
 
 const dev = process.env.NODE_ENV !== 'production'
-
-const GlobalStyle = createGlobalStyle`
-  ${reset}
-  ${global}
-`
 
 const inject = str => (
   <div className="inject" dangerouslySetInnerHTML={{ __html: str }} />
@@ -56,7 +49,6 @@ export default class MyDocument extends Document {
   render() {
     return (
       <>
-        <GlobalStyle />
         <html>
           <Head>
             <meta charSet="utf-8" />
