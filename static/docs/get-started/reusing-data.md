@@ -1,4 +1,4 @@
-# Reusing Data Artifacts
+# Reusing Data
 
 We've explained how to [upload](/doc/get-started/share-data) and
 [download](/doc/get-started/retrieve-data) <abbr>data artifacts</abbr> (with
@@ -16,7 +16,7 @@ $ dvc import https://github.com/iterative/dataset-registry \
            get-started/data.xml
 ```
 
-This downloads `data.xml` (adding it to `.gitignore`) and creates the
+The example above downloads `data.xml`, adds it to `.gitignore`, and creates the
 `data.xml.dvc` stage file. Feel free to `git commit` the changes if you'd like.
 
 <details>
@@ -35,7 +35,7 @@ and tries to retrieve the file using the external project's default remote
 </details>
 
 This is similar to manually downloading the data and using `dvc add` to track it
-with DVC. With an import stage however, we can run `dvc update` to checks for
+with DVC. With an import stage however, we can run `dvc update` to check for
 updates in the external data source before
 [reproducing](/doc/get-started/reproduce) the <abbr>pipeline</abbr> that depends
 on the import.

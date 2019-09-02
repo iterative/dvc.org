@@ -18,8 +18,8 @@
       "visualize",
       "reproduce",
       {
-        "label": "Reusing Data Artifacts",
-        "slug": "data-artifacts"
+        "label": "Reusing Data",
+        "slug": "reusing-data"
       },
       "metrics",
       "experiments",
