@@ -93,7 +93,7 @@ be pulled from remote storage using `dvc pull`.
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC-files with `git checkout` can result in the need for DVC to
   remove files that don't match those DVC-file references or are missing in the
-  local cache. (They are not "committed", in DVC terms.)
+  cache directory. (They are not "committed", in DVC terms.)
 
 - `-h`, `--help` - shows the help message and exit.
 
@@ -205,10 +205,10 @@ MD5 (model.pkl) = a66489653d1b6a8ba989799367b32c43
 ```
 
 What happened is that DVC went through the sole existing DVC-file and adjusted
-the current set of files to match the `outs` of that stage. `dvc fetch` command
-runs once to download missing data from the remote storage to the local cache.
-Alternatively, we could have just run `dvc pull` in this case to automatically
-do `dvc fetch` + `dvc checkout`.
+the current set of files to match the `outs` of that stage. `dvc fetch` runs
+once to download missing data from the remote storage to the <abbr>cache
+directory</abbr>. Alternatively, we could have just run `dvc pull` in this case
+to automatically do `dvc fetch` + `dvc checkout`.
 
 ## Automating `dvc checkout`
 

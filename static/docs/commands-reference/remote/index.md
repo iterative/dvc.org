@@ -30,8 +30,8 @@ remotes provide a central place to keep and share data and model files. With a
 remote data storage, you can pull models and data files which were created by
 your team members without spending time and resources to build or process them
 locally. It also saves space on your local environment – DVC can
-[fetch](/doc/commands-reference/fetch) into the local cache only the data you
-need for a specific branch/commit.
+[fetch](/doc/commands-reference/fetch) into the <abbr>cache directory</abbr>
+only the data you need for a specific branch/commit.
 
 > If you installed DVC via `pip`, depending on the remote type you plan to use
 > you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,

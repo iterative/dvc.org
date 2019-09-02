@@ -1,8 +1,8 @@
 # pull
 
 Downloads missing files and directories from
-[remote storage](/doc/commands-reference/remote) to the local <abbr>cache</abbr>
-based on [DVC-files](/doc/user-guide/dvc-file-format) in the
+[remote storage](/doc/commands-reference/remote) to the <abbr>cache
+directory</abbr> based on [DVC-files](/doc/user-guide/dvc-file-format) in the
 <abbr>workspace</abbr>, then links the downloaded files into the workspace.
 
 ## Synopsis
@@ -43,9 +43,9 @@ only the files (or directories) missing from the workspace by searching all
 versions or branches of the repository if using Git, nor will it download files
 which have not changed.
 
-The command `dvc status -c` can list files that are missing in the local cache
-but referenced in the current project DVC-files. It can be used to see what
-files `dvc pull` would download.
+The command `dvc status -c` can list files that are missing in the project's
+cache, but referenced in its current DVC-files. It can be used to see what files
+`dvc pull` would download.
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
@@ -159,7 +159,7 @@ Dvcfile
 ```
 
 Imagine the remote storage has been modified such that the data files in some of
-these stages should be updated into the local cache.
+these stages should be updated into the <abbr>cache directory</abbr>.
 
 ```dvc
 $ dvc status --cloud

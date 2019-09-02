@@ -2,8 +2,8 @@
 
 Show changes in the <abbr>project</abbr>
 [pipelines](/doc/commands-reference/pipeline), as well as mismatches either
-between the local <abbr>cache</abbr> and local files, or between the cache and
-remote storage.
+between the <abbr>cache directory</abbr> and <abbr>workspace</abbr> files, or
+between the cache and remote storage.
 
 ## Synopsis
 
@@ -19,17 +19,17 @@ positional arguments:
 ## Description
 
 `dvc status` searches for changes in the existing pipelines, either showing
-which [stages](/doc/commands-reference/run) have changed in the
-<abbr>workspace</abbr> and must be reproduced (with `dvc repro`), or differences
-between local cache vs. remote storage (meaning `dvc push` or `dvc pull` should
-be run to synchronize them). The two modes, _local_ and _cloud_ are triggered by
-using the `--cloud` or `--remote` options:
+which [stages](/doc/commands-reference/run) have changed in the workspace and
+must be reproduced (with `dvc repro`), or differences between cache vs. remote
+storage (meaning `dvc push` or `dvc pull` should be run to synchronize them).
+The two modes, _local_ and _cloud_ are triggered by using the `--cloud` or
+`--remote` options:
 
-| Mode   | CLI Option | Description                                                                                                                   |
-| ------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the local cache (`.dvc/cache`)            |
-| remote | `--remote` | Comparisons are made between the local cache, and the given remote. Remote storage is defined using the `dvc remote` command. |
-| remote | `--cloud`  | Comparisons are made between the local cache, and the default remote, defined with `dvc remote --default` command.            |
+| Mode   | CLI Option | Description                                                                                                                 |
+| ------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
+| local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the cache directory (e.g. `.dvc/cache`) |
+| remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
+| remote | `--cloud`  | Comparisons are made between the cache, and the default remote, defined with `dvc remote --default` command.                |
 
 DVC determines data and code files to compare by analyzing all
 [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>project</abbr>
@@ -85,14 +85,14 @@ outputs described in it.
 
 **For comparison against remote storage:**
 
-- _new_ means the file exists in the local cache but not remote storage
-- _deleted_ means the file doesn't exist in the local cache, but exists in
-  remote storage
+- _new_ means that the file/directory exists in the cache directory but not in
+  remote storage.
+- _deleted_ means that the file/directory doesn't exist in the cache, but exists
+  in remote storage.
 
-For either the _new_ and _deleted_ cases, the local cache (subset of it
-determined by the current workspace) is different from remote storage. Bringing
-the two into sync requires `dvc pull` or `dvc push`. For the typical process to
-update the workspace, see
+For either _new_ and _deleted_ data, the cache (subset determined by the current
+workspace) is different from remote storage. Bringing the two into sync requires
+`dvc pull` or `dvc push`. For the typical process to update the workspace, see
 [Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
 
 ## Options
@@ -202,4 +202,4 @@ Preparing to collect status from s3://dvc-remote
 ```
 
 The output shows where the location of the remote storage is, as well as any
-differences between the local cache and remote.
+differences between the <abbr>cache directory</abbr> and remote.

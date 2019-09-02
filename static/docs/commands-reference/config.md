@@ -137,9 +137,9 @@ for more details.)
   > These warnings are automatically turned off when `cache.type` is manually
   > set.
 
-- `cache.local` - name of a local remote to use as local cache. This will
-  overwrite the value provided to `dvc config cache.dir` or `dvc cache dir`.
-  Refer to `dvc remote` for more information on "local remotes".
+- `cache.local` - name of a local remote to use as cache directory. (Refer to
+  `dvc remote` for more information on "local remotes".) This will overwrite the
+  value provided to `dvc config cache.dir` or `dvc cache dir`.
 
 - `cache.ssh` - name of an
   [SSH remote to use as external cache](/doc/user-guide/external-outputs#ssh).

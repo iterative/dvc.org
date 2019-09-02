@@ -48,8 +48,8 @@
 
    ```dvc
    $ git checkout a03_normbatch_vgg16 # checkout code and DVC-files
-   $ dvc checkout # checkout data files from the local cache (not Git)
-   $ ls -l data/ # These LARGE files were copied from DVC cache, not from Git
+   $ dvc checkout # checkout data files from the cache directory
+   $ ls -l data/ # These LARGE files came from the cache, not from Git
 
    total 1017488
    -r--------  2 501  staff   273M Jan 27 03:48 Posts-test.tsv
@@ -72,17 +72,17 @@
        Rscript plot.R result.csv plots.jpg
    ```
 
-7. DVC's local cache can be transferred to your colleagues and partners through
+7. A DVC project's cache can be shared with your colleagues and partners through
    AWS S3, Azure Blob Storage or GCP Storage:
 
    ```dvc
    $ git push
-   $ dvc push # push from the cache to remote storage
+   $ dvc push # push from the cache directory to remote storage
 
    # On a colleague machine:
    $ git clone https://github.com/dataversioncontrol/myrepo.git
    $ cd myrepo
-   $ git pull # download the cache from remote storage
+   $ git pull # download tracked data from remote storage
    $ dvc checkout # checkout data files
    $ ls -l data/ # You just got gigabytes of data through Git and DVC:
 

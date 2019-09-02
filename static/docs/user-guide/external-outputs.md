@@ -31,7 +31,8 @@ pointing to your desired files. For cached external outputs (specified using
 `-o`) you will need to
 [setup an external cache](/doc/commands-reference/config#cache) location that
 will be used by DVC to store versions of your external file. Non-cached external
-outputs (specified using `-O`) do not require external cache to be setup.
+outputs (specified using `-O`) do not require an external <abbr>cache</abbr> to
+be setup.
 
 > Avoid using the same remote location that you are using for `dvc push`,
 > `dvc pull`, `dvc fetch` as external cache for your external outputs, because
@@ -50,8 +51,8 @@ stage file (DVC-file).
 
 ### Local
 
-Your local cache location already defaults to `.dvc/cache`, so there is no need
-to specify it explicitly.
+The default local cache location is `.dvc/cache`, so there is no need to specify
+it explicitly.
 
 ```dvc
 $ dvc add /home/shared/mydata

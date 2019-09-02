@@ -22,7 +22,7 @@ manipulated directly.
 [DVC directories](/doc/user-guide/dvc-files-and-directories). It will hold all
 the contents of tracked data files. Note that `.dvc/.gitignore` lists this
 directory, which means that the cache directory is not under Git control. This
-is your local cache and you cannot push it to any Git remote.
+is a local cache and you cannot `git push` it.
 
 ## Options
 
@@ -30,8 +30,8 @@ is your local cache and you cannot push it to any Git remote.
   written.
 
 - `-f`, `--force` - remove `.dvc/` if it exists before initialization. Will
-  remove all local cache. Useful when first `dvc init` got corrupted for some
-  reason.
+  remove any existing local cache. Useful when a previous `dvc init` has been
+  corrupted.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
