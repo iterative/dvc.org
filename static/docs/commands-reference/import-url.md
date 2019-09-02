@@ -326,7 +326,7 @@ Saving information to 'data.xml.dvc'.
 
 DVC has noticed the "external" data source has changed, and updated the import
 stage (reproduced it). In this case it's also necessary to run `dvc repro` so
-that the rest of the pipeline is also run again. We can confirm so with:
+that the rest of the pipeline is also regenerated. We can confirm so with:
 
 ```dvc
 $ dvc status
@@ -348,6 +348,6 @@ $ dvc status
 Data and pipelines are up to date.
 ```
 
-`dvc repro` runs again the given stage `prepare.dvc`, noticing that its
+`dvc repro` regenerates the given `prepare.dvc` stage, noticing that its
 dependency `data/data.xml` has changed. `dvc status` should report "Nothing to
 reproduce." after this.

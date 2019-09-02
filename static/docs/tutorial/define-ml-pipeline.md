@@ -398,4 +398,4 @@ focus is DVC, not ML modeling and we use a relatively small dataset without any
 advanced ML techniques.
 
 In the next chapter we will try to improve the metrics by changing our modeling
-code and using reproducibility in our pipeline regeneration.
+code and using reproducibility in our pipeline.
