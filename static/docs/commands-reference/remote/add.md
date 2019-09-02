@@ -37,7 +37,7 @@ though and will rely on default access settings.
 > look like this: `pip install "dvc[s3]"`. This installs `boto3` library along
 > with DVC to support AWS S3 storage.
 
-This command creates a section in the DVC
+This command creates a section in the <abbr>DVC project</abbr>'s
 [config file](/doc/commands-reference/config) and optionally assigns a default
 remote in the core section if the `--default` option is used:
 
@@ -195,7 +195,7 @@ $ dvc remote modify myremote connection_string my-connection-string --local
 ```
 
 > The connection string contains access to data and is inserted into the
-> `.dvc/config file.` Therefore, it is safer to add the connection string with
+> `.dvc/config` file. Therefore, it is safer to add the connection string with
 > the `--local` option, enforcing it to be written to a Git-ignored config file.
 
 The Azure Blob Storage remote can also be configured entirely via environment
@@ -340,7 +340,7 @@ Setting 'myremote' as a default remote.
 $ dvc remote modify myremote region us-east-2
 ```
 
-DVC config file (`.dvc/config`) now looks like this:
+The <abbr>project</abbr>'s config file (`.dvc/config`) now looks like this:
 
 ```ini
 ['remote "myremote"']

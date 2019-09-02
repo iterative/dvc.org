@@ -11,7 +11,8 @@ export default {
 Directory containing all your project files. For example raw datasets, source
 code, ML models, etc. A workspace becomes a **DVC project** when
 [\`dvc init\`](/doc/commands-reference/init) is run, and
-[DVC-files](/doc/user-guide/dvc-file-format) or stage files are created in it.
+[DVC-files](/doc/user-guide/dvc-file-format) (or stage files) are created in
+it.
       `
     },
     {

@@ -2,8 +2,8 @@
 
 Show changes in the <abbr>project</abbr>
 [pipelines](/doc/commands-reference/pipeline), as well as mismatches either
-between the local cache and local files, or between the local cache and remote
-cache.
+between the local <abbr>cache</abbr> and local files, or between the cache and
+remote cache.
 
 ## Synopsis
 

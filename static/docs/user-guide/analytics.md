@@ -49,7 +49,7 @@ DVC's analytics are sent throughout DVC's proxy to Google Analytics over HTTPS.
 
 ## Opting out
 
-DVC analytics helps the entire community and leaving it on is appreciated.
+DVC analytics help the entire community, so leaving it on is appreciated.
 However, if you want to opt out of DVC's analytics, you can disable it via
 `dvc config` command:
 

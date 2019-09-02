@@ -85,7 +85,7 @@ $ dvc remote list
 myremote        /path/to/remote
 ```
 
-DVC config file would look like:
+The <abbr>project</abbr>'s config file would look like:
 
 ```ini
 ['remote "myremote"']

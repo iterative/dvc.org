@@ -334,10 +334,10 @@ Features are written into files, and intention probably was that the
 very convenient to remember to comment/uncomment it every time dataset is
 changed.
 
-Here where DVC pipelines feature comes very handy and was designed for. We
-touched it briefly when we described `dvc run` and `dvc repro` at the very end.
-The next step here would be splitting the script into two parts, and utilizing
-DVC [pipelines](/doc/commands-reference/pipeline). See
+Here's where the [pipelines](/doc/commands-reference/pipeline) feature of DVC
+comes very handy and was designed for. We touched it briefly when we described
+`dvc run` and `dvc repro` at the very end. The next step here would be splitting
+the script into two parts, and utilizing pipelines. See
 [this example](/doc/get-started/example-pipeline) to get a hands-on experience
 with pipelines and try to apply it here. Don't hesitate to join our
 [community](/chat) to ask any questions!

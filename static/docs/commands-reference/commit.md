@@ -131,8 +131,8 @@ $ dvc pull --all-branches --all-tags
 
 Sometimes we want to iterate through multiple changes to configuration, code, or
 data, trying multiple options to improve the output of a stage. To avoid filling
-the <abbr>DVC cache</abbr> with undesired intermediate results, we can run a
-single stage with `dvc run --no-commit`, or reproduce an entire pipeline using
+the <abbr>cache</abbr> with undesired intermediate results, we can run a single
+stage with `dvc run --no-commit`, or reproduce an entire pipeline using
 `dvc repro --no-commit`. This prevents data from being pushed to cache. When
 development of the stage is finished, `dvc commit` can be used to store data
 files in the DVC cache.
@@ -149,7 +149,7 @@ bag_of_words = CountVectorizer(stop_words='english',
 This option not only changes the trained model, it also introduces a change
 which would cause the `featurize.dvc`, `train.dvc` and `evaluate.dvc` stages to
 execute if we ran `dvc repro`. But if we want to try several values for this
-option and save only the best result to the DVC cache, we can execute as so:
+option and save only the best result to the cache, we can execute as so:
 
 ```dvc
 $ dvc repro --no-commit evaluate.dvc
@@ -157,7 +157,7 @@ $ dvc repro --no-commit evaluate.dvc
 
 We can run this command as many times as we like, editing `featurize.py` any way
 we like, and so long as we use `--no-commit`, the data does not get saved to the
-DVC cache. But it is instructive to verify that's the case:
+cache directory. But it is instructive to verify that's the case:
 
 First verification:
 
@@ -194,10 +194,10 @@ wdir: .
 ```
 
 To verify this instance of `model.pkl` is not in the cache, we must know the
-names of the cache files. In the DVC cache the first two characters of the
-checksum are used as a directory name, and the file name is the remaining
-characters. Therefore, if the file had been committed to the cache it would
-appear in the directory `.dvc/cache/70`. But:
+path to the cached file. In the cache directory, the first two characters of the
+checksum are used as a subdirectory name, and the remaining characters are the
+file name. Therefore, if the file had been committed to the cache it would
+appear in the directory `.dvc/cache/70`. Let's check:
 
 ```dvc
 $ ls .dvc/cache/70
@@ -215,8 +215,8 @@ $ ls .dvc/cache/70
 599f166c2098d7ffca91a369a78b0d
 ```
 
-And we've verified that `dvc commit` has saved the changes into the cache, and
-that the new instance of `model.pkl` is in the cache.
+We've verified that `dvc commit` has saved the changes into the cache, and that
+the new instance of `model.pkl` is there.
 
 ## Example: Running commands without DVC
 
