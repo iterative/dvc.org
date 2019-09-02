@@ -40,7 +40,7 @@ Under the hood a few actions are taken:
   exists, or not, in the remote simply by looking for it using the checksum.
   From this DVC gathers a list of files missing from the remote storage.
 
-- Upload the cache files missing from the remote cache, if any, to the remote.
+- Upload the cache files missing from remote storage, if any, to the remote.
 
 The DVC `push` command always works with a remote storage, and it is an error if
 none are specified on the command line nor in the configuration. If a
@@ -50,18 +50,18 @@ and this [example](/doc/get-started/configure) for more information on how to
 configure a remote.
 
 With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
-only the files (or directories) that are new in the local repository to the
-remote cache. It will not upload files associated with earlier versions or
-branches of the <abbr>project</abbr> directory, nor will it upload files which
-have not changed.
+only the files (or directories) that are new in the local repository to remote
+storage. It will not upload files associated with earlier versions or branches
+of the <abbr>project</abbr> directory, nor will it upload files which have not
+changed.
 
 The command `dvc status -c` can list files that are new in the local cache and
 are referenced in the <abbr>workspace</abbr>. It can be used to see what files
 `dvc push` would upload.
 
-The `dvc status -c` command can show files which exist in the remote cache and
-not exist in the local cache. Running `dvc push` from the local cache does not
-remove nor modify those files in the remote cache.
+The `dvc status -c` command can show files which exist in the remote but not in
+the local cache. Running `dvc push` does not remove nor modify those files in
+remote storage.
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
@@ -71,12 +71,10 @@ to push.
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` specifies which remote cache (see
-  `dvc remote list`) to push to. The value for `REMOTE` is a cache name defined
-  using the `dvc remote` command. If no `REMOTE` is given, or if no remote's are
-  defined in the project, an error message is printed. If the option is not
-  specified, then the default remote, configured with the `core.config` config
-  option, is used.
+- `-r REMOTE`, `--remote REMOTE` specifies which remote to push from (see
+  `dvc remote list`). The value for `REMOTE` is a name defined using
+  `dvc remote`. If the option is not specified, then the default remote
+  (configured with the `core.config` config option) is used.
 
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
   in all branches of the project repository (if using Git). It's useful if
@@ -96,10 +94,10 @@ to push.
   each target directory and its subdirectories for DVC-files to inspect.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
-  while uploading files to the remote cache. The effect is to control the number
-  of files uploaded simultaneously. Default is `4 * cpu_count()`. For example
-  with `-j 1` DVC uploads one file at a time, with `-j 2` it uploads two at a
-  time, and so forth. For SSH remotes default is set to 4.
+  while uploading files to the remote. The effect is to control the number of
+  files uploaded simultaneously. Default is `4 * cpu_count()`. For example with
+  `-j 1` DVC uploads one file at a time, with `-j 2` it uploads two at a time,
+  and so forth. For SSH remotes default is set to 4.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -164,7 +162,7 @@ Dvcfile
 ```
 
 Imagine the local cache has been modified such that the data files in some of
-these stages should be uploaded to the remote cache.
+these stages should be uploaded to remote storage.
 
 ```dvc
 $ dvc status --cloud
@@ -212,14 +210,14 @@ double check that all data had been uploaded.
 ## Example: What happens in the cache
 
 Let's take a detailed look at what happens to the DVC cache as you run an
-experiment locally and push data to a remote cache. To set the example consider
+experiment locally and push data to remote storage. To set the example consider
 having created a <abbr>workspace</abbr> that contains some code and data, and
-having set up a remote cache.
+having set up a remote.
 
 Some work has been performed in the local workspace, and it contains new data to
-upload to the shared remote cache. When running `dvc status --cloud` the report
-will list several files in `new` state. By looking in the cache directories we
-can see exactly what that means.
+upload to the shared remote. When running `dvc status --cloud` the report will
+list several files in `new` state. By looking in the cache directories we can
+see exactly what that means.
 
 ```dvc
 $ tree .dvc/cache
@@ -262,16 +260,15 @@ $ tree ../vault/recursive
 ```
 
 The directory `.dvc/cache` is the local cache, while `../vault/recursive` is the
-remote cache. This listing clearly shows the local cache has more files in it
-than the remote cache. Therefore `new` literally means that new files exist in
-the local cache compared to the remote.
+remote storage – a "local remote" in this case. This listing shows the local
+cache having more files in it than the remote does (which is what `new` means).
 
 Next we can upload part of the data from the local cache to a remote using the
 command `dvc push --with-deps STAGE.dvc`. Remember that `--with-deps` searches
 backwards from the DVC-file `targets` to locate files to upload, and does not
 upload files in subsequent stages.
 
-After doing that we can inspect the remote cache again:
+After doing that we can inspect the remote storage again:
 
 ```dvc
 $ tree ../vault/recursive
@@ -296,13 +293,13 @@ $ tree ../vault/recursive
 8 directories, 8 files
 ```
 
-The remote cache now has some of the files which had been missing, but not all
+The remote storage now has some of the files which had been missing, but not all
 of them. Indeed `dvc status --cloud` still lists a couple files as `new`. We can
 clearly see this in that a couple files are in the local cache and not in the
-remote cache.
+remote.
 
-After running `dvc push` to cause all files to be uploaded the remote cache now
-has all the files:
+After running `dvc push` to cause all files to be uploaded, the remote storage
+now contains all of them:
 
 ```dvc
 $ tree ../vault/recursive
@@ -335,5 +332,5 @@ $ dvc status --cloud
 Data and pipelines are up to date.
 ```
 
-And running `dvc status --cloud` verifies that indeed there are no more files to
-upload to the remote cache.
+And running `dvc status --cloud`, DVC verifies that indeed there are no more
+files to push to remote storage.

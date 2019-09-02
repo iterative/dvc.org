@@ -74,7 +74,7 @@ checked out without error will be restored.
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
 regenerate its outputs. (See also `dvc pipeline`.) In other cases the cache can
-be pulled from a remote cache using `dvc pull`.
+be pulled from remote storage using `dvc pull`.
 
 ## Options
 
