@@ -1,4 +1,4 @@
-# Reusing Data
+# Reusing data
 
 We've explained how to [upload](/doc/get-started/share-data) and
 [download](/doc/get-started/retrieve-data) <abbr>data artifacts</abbr> (with
@@ -16,8 +16,11 @@ $ dvc import https://github.com/iterative/dataset-registry \
            get-started/data.xml
 ```
 
-The example above downloads `data.xml`, adds it to `.gitignore`, and creates the
-`data.xml.dvc` stage file. Feel free to `git commit` the changes if you'd like.
+> This command is only shown for informational purposes. No need to actually run
+> it in order to continue with this guide.
+
+This downloads `data.xml`, adds it to `.gitignore`, and creates the
+`data.xml.dvc` stage file.
 
 <details>
 
