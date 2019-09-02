@@ -63,9 +63,9 @@ specified), and updates stage files with the new checksum information.
   searching each target directory and its subdirectories for DVC-files to
   inspect.
 
-- `--no-commit` - do not save outputs to cache. Useful when running different
-  experiments and you don't want to fill up the cache with temporary files. Use
-  `dvc commit` when ready to save results to cache.
+- `--no-commit` - do not save outputs to cache. (See `dvc run`.) Useful when
+  running different experiments and you don't want to fill up the cache with
+  temporary files. Use `dvc commit` when ready to commit the results to cache.
 
 - `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
   have at least one metrics file defined either with the `dvc metrics` command,

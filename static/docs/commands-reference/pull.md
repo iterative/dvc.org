@@ -82,9 +82,9 @@ reflinks or hardlinks to put it in the workspace without copying. See
   each target directory and its subdirectories for DVC-files to inspect.
 
 - `-f`, `--force` - does not prompt when removing workspace files, which occurs
-  when these file no longer match the DVC-file references. This option surfaces
-  behavior from the `dvc fetch` and `dvc checkout` commands because `dvc pull`
-  in effect performs those 2 functions in a single command.
+  when these file no longer match the current DVC-file references. This option
+  surfaces behavior from the `dvc fetch` and `dvc checkout` commands because
+  `dvc pull` in effect performs those 2 functions in a single command.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while downloading files from the remote. The effect is to control the number

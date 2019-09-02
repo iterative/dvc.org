@@ -74,7 +74,7 @@ Use `dvc config` to unset/change the default remote as so:
   using this remote by default to save or retrieve data files unless `-r` option
   is specified for them.
 
-- `-f`, `--force` - to overwrite existing remote with new `url` value.
+- `-f`, `--force` - overwrite existing remote with new `url` value.
 
 ## Examples
 

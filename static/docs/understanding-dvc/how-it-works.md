@@ -77,12 +77,12 @@
 
    ```dvc
    $ git push
-   $ dvc push # push the data cache to the remote storage
+   $ dvc push # push from the cache to remote storage
 
    # On a colleague machine:
    $ git clone https://github.com/dataversioncontrol/myrepo.git
    $ cd myrepo
-   $ git pull # get the data cache from cloud
+   $ git pull # download the cache from remote storage
    $ dvc checkout # checkout data files
    $ ls -l data/ # You just got gigabytes of data through Git and DVC:
 

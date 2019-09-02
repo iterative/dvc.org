@@ -1,8 +1,8 @@
 # destroy
 
 Remove all
-[DVC files and directories](/doc/user-guide/dvc-files-and-directories) from the
-project.
+[DVC files and directories](/doc/user-guide/dvc-files-and-directories) from a
+<abbr>DVC project</abbr>.
 
 ## Synopsis
 
@@ -13,16 +13,17 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 ## Description
 
 `dvc destroy` removes DVC-files, and the entire `.dvc/` meta directory from the
-<abbr>workspace</abbr>. Note that the <abbr>DVC cache</abbr> will normally be
-removed as well, unless it's set to an external location with `dvc cache dir`.
-(By default a local cache is located in the `.dvc/cache` directory.) If you were
-using [symlinks for linking data](/doc/user-guide/large-dataset-optimization)
-from the cache, DVC will replace them with copies, so that your data is intact
-after the DVC repository destruction.
+<abbr>workspace</abbr>. Note that the <abbr>cache directory</abbr> will normally
+be removed as well, unless it's set to an external location with
+`dvc cache dir`. (By default a local cache is located in the `.dvc/cache`
+directory.) If you were using
+[symlinks for linking data](/doc/user-guide/large-dataset-optimization) from the
+cache, DVC will replace them with copies, so that your data is intact after the
+DVC repository destruction.
 
 ## Options
 
-- `-f`, `--force` - do not prompt when destroying DVC project.
+- `-f`, `--force` - do not prompt when destroying this project.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -42,8 +43,7 @@ $ ls -a
 .dvc .git code.py foo foo.dvc
 
 $ dvc destroy
-
-This will destroy all information about your pipelines, all data files, as well as cache in .dvc/cache.
+This will destroy all information about your pipelines, all data files...
 Are you sure you want to continue?
 yes
 
@@ -64,12 +64,11 @@ $ dvc cache dir /mnt/cache
 $ dvc add foo
 ```
 
-`dvc cache dir` changed the location of cache storage to external location.
-Content of DVC repository:
+`dvc cache dir` changed the location of the cache directory to an external
+location. Content of <abbr>workspace</abbr>:
 
 ```dvc
 $ ls -a
-
 .dvc .git code.py foo foo.dvc
 ```
 
@@ -87,7 +86,7 @@ Let's execute `dvc destroy`:
 ```dvc
 $ dvc destroy
 
-This will destroy all information about your pipelines, all data files, as well as cache in .dvc/cache.
+This will destroy all information about your pipelines, all data files...
 Are you sure you want to continue? [y/n]
 yes
 

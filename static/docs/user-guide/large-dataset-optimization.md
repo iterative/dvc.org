@@ -2,9 +2,10 @@
 
 In order to track the data files and directories added with `dvc add` or
 `dvc run`, DVC moves all these files to a special <abbr>cache directory</abbr>.
-The DVC cache is a hidden storage (by default located in `.dvc/cache`) for files
-that are under DVC control, and their different versions. (See `dvc cache` and
-[DVC internal files](/doc/user-guide/dvc-files-and-directories) for more
+A DVC <abbr>project</abbr> cache is the hidden storage (by default located in
+`.dvc/cache`) for files that are under DVC control, and their different
+versions. (See `dvc cache` and
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) for more
 details.)
 
 However, the versions of the tracked files that

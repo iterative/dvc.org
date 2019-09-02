@@ -16,14 +16,15 @@ positional arguments:
 
 ## Description
 
-[DVC-files](/doc/user-guide/dvc-file-format) in a <abbr>DVC project</abbr>
-specify which instance of each data file or directory is to be used, using the
-checksum saved in the `outs` fields. The `dvc checkout` command updates the
-workspace data to match with the cache files corresponding to those checksums.
+[DVC-files](/doc/user-guide/dvc-file-format) in a <abbr>project</abbr> specify
+which instance of each data file or directory is to be used, using the checksum
+saved in the `outs` fields. The `dvc checkout` command updates the workspace
+data to match with the <abbr>cached</abbr> files corresponding to those
+checksums.
 
 Using an SCM like Git, the DVC-files are kept under version control. At a given
 branch or tag of the SCM repository, the DVC-files will contain checksums for
-the corresponding data files kept in the DVC cache. After an SCM command like
+the corresponding data files kept in the cache. After an SCM command like
 `git checkout` is run, the DVC-files will change to the state at the specified
 branch or commit or tag. Afterwards, the `dvc checkout` command is required in
 order to synchronize the data files with the currently checked out DVC-files.
@@ -64,8 +65,8 @@ restoring any file size will be almost instantaneous.
 > `cache.slow_link_warning` config option to `false` with `dvc config cache`.
 
 The output of `dvc checkout` does not list which data files were restored. It
-does report removed files and files that DVC was unable to restore due to it
-missing from the cache.
+does report removed files and files that DVC was unable to restore because
+they're missing from the cache.
 
 This command will fail to checkout files that are missing from the cache. In
 such a case, `dvc checkout` prints a warning message. Any files that can be
@@ -90,10 +91,9 @@ be pulled from remote storage using `dvc pull`.
   inspect.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
-  current set of DVC-files with SCM commands like `git checkout` can result in
-  the need for DVC to remove files which should not exist in the current state
-  and are missing in the local cache (they are not committed in DVC terms). This
-  option controls whether the user will be asked to confirm these files removal.
+  current set of DVC-files with `git checkout` can result in the need for DVC to
+  remove files that don't match those DVC-file references or are missing in the
+  local cache. (They are not "committed", in DVC terms.)
 
 - `-h`, `--help` - shows the help message and exit.
 

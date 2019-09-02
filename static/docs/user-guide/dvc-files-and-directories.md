@@ -40,7 +40,7 @@ directory (`.dvc/`) with special internal files and directories:
 
 - `.dvc/updater.lock`: Lock file for `.dvc/updater`
 
-- `.dvc/lock`: Lock file for the whole DVC project
+- `.dvc/lock`: Lock file for the entire DVC project
 
 ## Structure of cache directory
 

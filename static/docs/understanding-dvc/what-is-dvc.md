@@ -45,7 +45,7 @@ DVC uses a few core concepts:
   [DVC-files](/doc/user-guide/dvc-file-format) describing that data are stored
   in Git for DVC needs (to maintain pipelines and reproducibility).
 
-- **Data cache**: Directory with all data files on a local hard drive or in
+- **Cache directory**: Directory with all data files on a local hard drive or in
   cloud storage, but not in the Git repository.
 
 - **Cloud storage** support: available complement to the core DVC features. This

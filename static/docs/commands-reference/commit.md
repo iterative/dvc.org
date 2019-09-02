@@ -1,8 +1,8 @@
 # commit
 
 Record changes to the repository by updating
-[DVC-files](/doc/user-guide/dvc-file-format) and saving outputs to
-<abbr>cache</abbr>.
+[DVC-files](/doc/user-guide/dvc-file-format) and saving outputs to <abbr>cache
+directory</abbr>.
 
 ## Synopsis
 
@@ -49,15 +49,15 @@ DVC can't guarantee reproducibility in those cases – You commit any data you
 want. Let's take a look at what is happening in the fist scenario closely:
 
 Normally DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data
-to the <abbr>DVC cache</abbr> after creating a DVC-file. What _commit_ means is
-that DVC:
+to the <abbr>cache</abbr> after creating a DVC-file. What _commit_ means is that
+DVC:
 
 - Computes a checksum for the file/directory
 - Enters the checksum and file name into the DVC-file
 - Tells the SCM to ignore the file/directory (e.g. add entry to `.gitignore`)
   (Note that if the <abbr>workspace</abbr> was initialized with no SCM support
   (`dvc init --no-scm`), this does not happen.)
-- Adds the file/directory or to the DVC cache
+- Adds the file/directory or to the cache directory
 
 There are many cases where the last step is not desirable (for example rapid
 iterations on an experiment). The `--no-commit` option prevents the last step
@@ -65,7 +65,7 @@ from occurring (on the commands where it's available), saving time and space by
 not storing unwanted <abbr>data artifacts</abbr>. Checksums is still computed
 and added to the DVC-file, but the actual data file is not saved in the DVC
 cache. This is where the `dvc commit` command comes into play. It performs that
-last step: storing the file in the DVC cache.
+last step: storing the file in the cache directory.
 
 ## Options
 
@@ -135,7 +135,7 @@ the <abbr>cache</abbr> with undesired intermediate results, we can run a single
 stage with `dvc run --no-commit`, or reproduce an entire pipeline using
 `dvc repro --no-commit`. This prevents data from being pushed to cache. When
 development of the stage is finished, `dvc commit` can be used to store data
-files in the DVC cache.
+files in the <abbr>cache directory</abbr>.
 
 In the `featurize.dvc` stage, `src/featurize.py` is executed. A useful change to
 make is adjusting a parameter to `CountVectorizer` in that script. Namely,
@@ -173,8 +173,8 @@ train.dvc:
         not in cache:       model.pkl
 ```
 
-And we can look in the DVC cache to see if the new version of `model.pkl` is
-indeed _not in cache_ as claimed. Look at `train.dvc` first:
+Now we can look in the cache directory to see if the new version of `model.pkl`
+is indeed _not in cache_ as claimed. Look at `train.dvc` first:
 
 ```yaml
 cmd: python src/train.py data/features model.pkl
