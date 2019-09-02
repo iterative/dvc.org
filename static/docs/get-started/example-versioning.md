@@ -230,7 +230,7 @@ Let's commit the second version:
 
 ```dvc
 $ git add model.h5.dvc data.dvc metrics.json
-$ git commit -m "Second model, trained with2000 images"
+$ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
