@@ -8,36 +8,12 @@ const DESCRIPTION =
   ` a Git-like tool.`
 const KEYWORDS = `data version control machine learning models management`
 
-const dev = process.env.NODE_ENV !== 'production'
-
 const inject = str => (
   <div className="inject" dangerouslySetInnerHTML={{ __html: str }} />
 )
 
 export default class MyDocument extends Document {
-  static getInitialProps({ req, res, renderPage }) {
-    let redirect
-
-    if (req.headers['host'].match(/^www/) !== null) {
-      redirect =
-        'https://' + req.headers['host'].replace(/^www\./, '') + req.url
-    } else if (req.headers['x-forwarded-proto'] !== 'https' && !dev) {
-      const host = req.headers['host'].replace(/^www\./, '')
-      redirect = 'https://' + host + req.url
-    }
-
-    if (redirect) {
-      if (res) {
-        res.writeHead(301, {
-          Location: redirect
-        })
-        res.end()
-        res.finished = true
-      } else {
-        Router.push(redirect)
-      }
-    }
-
+  static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet()
     const page = renderPage(App => props =>
       sheet.collectStyles(<App {...props} />)
