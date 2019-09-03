@@ -1,11 +1,12 @@
 # Reproduce
 
 In the previous chapters, we described our first
-[pipeline]](/doc/commands-reference/pipeline). Basically, we created a number of
-[stage files](/doc/commands-reference/run). Each of these
-[DVC-files](/doc/user-guide/dvc-file-format) describes single stage we need to
-run towards a final result (a pipeline). Each depends on some data (either raw
-data files or intermediate results from previous stages) and code files.
+[pipeline]](/doc/commands-reference/pipeline). Basically, we generated a number
+of [stage files](/doc/commands-reference/run)
+([DVC-files](/doc/user-guide/dvc-file-format)). Each of these stages define
+single commands to execute towards a final result. Each depends on some data
+(either raw data files or intermediate results from previous stages) and code
+files.
 
 If you just cloned the
 [project](https://github.com/iterative/example-get-started), make sure you first
@@ -19,8 +20,8 @@ $ dvc repro train.dvc
 ```
 
 > If you've just followed the previous chapters, the command above will have
-> nothing to reproduce since you've already run all the pipeline stages. To
-> easily try this command, clone this example
+> nothing to reproduce since you've recently executed all the pipeline stages.
+> To easily try this command, clone this example
 > [Github project](https://github.com/iterative/example-get-started) and run it
 > from there.
 

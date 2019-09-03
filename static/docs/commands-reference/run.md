@@ -59,10 +59,9 @@ pipeline.
   [external dependencies](/doc/user-guide/external-dependencies).
 
   DVC builds a dependency graph connecting different stages with each other.
-  When you run `dvc repro` to reproduce a stage (or when a stage is reproduced
-  due to recursive dependency), the list of dependencies helps DVC analyze
-  whether any dependencies have changed and thus running the stage again is
-  required. A special case is when no dependencies are specified.
+  When you run `dvc repro`, the list of dependencies helps DVC analyze whether
+  any dependencies have changed and thus executing stages as required to
+  regenerate their output. A special case is when no dependencies are specified.
 
   > Note that a DVC-file without dependencies is considered always _changed_, so
   > `dvc repro` always executes it.
@@ -112,11 +111,12 @@ pipeline.
   is used by `dvc repro` to change the working directory before running the
   command.
 
-- `--no-exec` - create a stage file, but do not run the command specified nor
-  take dependencies or outputs under DVC control. In the DVC-file contents, the
-  `md5` hash sums will be empty; They will be populated the next time this stage
-  is actually executed. This command is useful, if for example, you need to
-  build a pipeline (dependency graph) first, and then run it all at once.
+- `--no-exec` - create a stage file, but do not execute the command defined in
+  it, nor take dependencies or outputs under DVC control. In the DVC-file
+  contents, the `md5` hash sums will be empty; They will be populated the next
+  time this stage is actually executed. This command is useful, if for example,
+  you need to build a pipeline (dependency graph) first, and then run it all at
+  once.
 
 - `-y`, `--yes` - deprecated, use `--overwrite-dvcfile` instead.
 
@@ -132,7 +132,7 @@ pipeline.
   some reason (meaning it produces different outputs from the same list of
   inputs).
 
-- `--remove-outs` - it removes stage outputs before running the command. If
+- `--remove-outs` - it removes stage outputs before executing the command. If
   `--no-exec` specified outputs are removed anyway. This option is enabled by
   default and deprecated. See `dvc remove` as well for more details.
 

@@ -135,7 +135,8 @@ readable.
 `-d src/prepare.py` and `-d data/data.xml` mean that the `prepare.dvc` stage
 file depends on them to produce the result. When you run `dvc repro` next time
 (see next chapter) DVC will automatically check these dependencies and decide
-whether this stage is up to date or or whether it requires rebuilding.
+whether this stage is up to date or or whether it should be executed to
+regenerate its outputs.
 
 `-o data/prepared` specifies the output directory processed data will be put
 into. The script creates two files in it – that will be used later to generate

@@ -1,9 +1,9 @@
 # repro
 
-Regenerate [stages](/doc/commands-reference/run) of one or more
-[pipelines](/doc/commands-reference/pipeline) by executing commands recorded in
-them again, in the correct order. The commands to be executed are determined by
-recursively analyzing target stages and changes in their dependencies.
+Reproduce complete or partial [pipelines](/doc/commands-reference/pipeline) by
+executing commands defined in their [stages](/doc/commands-reference/run), in
+the correct order. The commands to be executed are determined by recursively
+analyzing dependencies and outputs of the target stages.
 
 ## Synopsis
 
@@ -18,12 +18,12 @@ positional arguments:
 
 ## Description
 
-`dvc repro` provides an way to regenerate data pipelines, by restoring the
-dependency graph (a [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))
-implicitly defined by [stage files](/doc/commands-reference/run) (DVC-files with
-dependencies) that are found in the <abbr>project</abbr>. The commands defined
-in these stages can then be executed in the correct order, reproducing pipeline
-results.
+`dvc repro` provides an way to regenerate data pipeline results, by restoring
+the dependency graph (a
+[DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly defined
+by [stage files](/doc/commands-reference/run) (DVC-files with dependencies) that
+are found in the <abbr>project</abbr>. The commands defined in these stages can
+then be executed in the correct order, reproducing pipeline results.
 
 > Pipeline stages are typically defined using the `dvc run` command, while
 > initial data dependencies can be registered by the `dvc add` command.
@@ -47,11 +47,11 @@ specified), and updates stage files with the new checksum information.
 ## Options
 
 - `-f`, `--force` - reproduce a pipeline, regenerating its results, even if no
-  changes were found. By default this runs all of its stages but it can be
+  changes were found. By default this executes all of its stages but it can be
   limited with the `targets` argument and `-s`, `-p`, or `-c` options.
 
 - `-s`, `--single-item` - reproduce only a single stage by turning off the
-  recursive search for changed dependencies. Multiple stages are run
+  recursive search for changed dependencies. Multiple stages are executed
   (non-recursively) if multiple stage files are given as `targets`.
 
 - `-c`, `--cwd` - directory within the project to reproduce from. If no
@@ -79,7 +79,7 @@ specified), and updates stage files with the new checksum information.
   executing the commands.
 
 - `-i`, `--interactive` - ask for confirmation before reproducing each stage.
-  The stage is only run if the user types "y".
+  The stage is only executed if the user types "y".
 
 - `-p`, `--pipeline` - reproduce the entire pipelines that the stage file
   `targets` belong to. Use `dvc pipeline show <target>.dvc` to show the parent
@@ -96,21 +96,21 @@ specified), and updates stage files with the new checksum information.
   `requirements.txt`, we can specify it only once in `A`, omitting it in `B` and
   `C`. To be precise , it reproduces all descendants of a changed stage or the
   stages following the changed stage, even if their direct dependencies did not
-  change. Like with the same option on `dvc run`, this is a way to force
-  regenerating stages without changes. This can also be useful for pipelines
-  containing stages that produce nondeterministic (semi-random) outputs. For
+  change. Like with the same option on `dvc run`, this is a way to force execute
+  stages without changes. This can also be useful for pipelines containing
+  stages that produce nondeterministic (semi-random) outputs. For
   nondeterministic stages the outputs can vary on each execution, meaning the
   cache cannot be trusted for such stages.
 
-- `--downstream` - only regenerate the stages after the given `targets` in their
+- `--downstream` - only execute the stages after the given `targets` in their
   corresponding pipelines, including the target stages themselves.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
-  stages are up to date or if all stages are successfully run, otherwise exit
-  with 1. The command run by the stage is free to make output irregardless of
-  this flag.
+  stages are up to date or if all stages are successfully executed, otherwise
+  exit with 1. The command defined in the stage is free to write output
+  irregardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

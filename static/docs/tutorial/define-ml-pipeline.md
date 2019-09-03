@@ -266,7 +266,7 @@ A single stage of our ML pipeline was defined and committed into repository. It
 isn't necessary to commit stages right after their creation. You can create a
 few and commit them to Git together later.
 
-Let’s run the following stages: converting an XML file to TSV, and then
+Let’s create the following stages: converting an XML file to TSV, and then
 separating training and testing datasets:
 
 ```dvc

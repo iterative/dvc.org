@@ -73,7 +73,7 @@ $ dvc config cache.s3 s3cache
 # Add data on S3 directly
 $ dvc add s3://mybucket/mydata
 
-# Run the stage with external S3 output
+# Create the stage with external S3 output
 $ dvc run -d data.txt \
           -o s3://mybucket/data.txt \
           aws s3 cp data.txt s3://mybucket/data.txt
@@ -91,7 +91,7 @@ $ dvc config cache.gs gscache
 # Add data on GS directly
 $ dvc add gs://mybucket/mydata
 
-# Run the stage with external GS output
+# Create the stage with external GS output
 $ dvc run -d data.txt \
           -o gs://mybucket/data.txt \
           gsutil cp data.txt gs://mybucket/data.txt
@@ -109,7 +109,7 @@ $ dvc config cache.ssh sshcache
 # Add data on SSH directly
 $ dvc add ssh://user@example.com:/mydata
 
-# Run the stage with external SSH output
+# Create the stage with external SSH output
 $ dvc run -d data.txt \
           -o ssh://user@example.com:/home/shared/data.txt \
           scp data.txt user@example.com:/home/shared/data.txt
@@ -127,7 +127,7 @@ $ dvc config cache.hdfs hdfscache
 # Add data on HDFS directly
 $ dvc add hdfs://user@example.com/mydata
 
-# Run the stage with external HDFS output
+# Create the stage with external HDFS output
 $ dvc run -d data.txt \
           -o hdfs://user@example.com/home/shared/data.txt \
           hdfs fs -copyFromLocal \
