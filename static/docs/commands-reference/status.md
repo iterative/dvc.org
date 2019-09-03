@@ -130,7 +130,7 @@ workspace) is different from remote storage. Bringing the two into sync requires
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if
-  Pipelines are up to date, otherwise 1.
+  data and pipelines are up to date, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

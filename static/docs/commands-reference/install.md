@@ -287,4 +287,4 @@ After reproducing this pipeline up to the "evaluate" stage, the data files are
 in sync with the code/config files, but we must now commit the changes to the
 Git repository. Looking closely we see that `dvc status` is used again,
 informing us that the data files are synchronized with the
-`Pipelines are up to date.` message.
+`Data and pipelines are up to date.` message.
