@@ -13,8 +13,10 @@ process.
   should NOT be stored in a Git repository but still need to be tracked and
   versioned.
 
-2. **Workflow management tools** (pipelines and DAGs): Airflow, Luigi, etc. The
-   differences are:
+2. **Workflow management tools** ([pipelines]](/doc/commands-reference/pipeline)
+   and dependency graphs
+   ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))): Airflow,
+   Luigi, etc. The differences are:
 
 - DVC is focused on data science and modeling. As a result, DVC pipelines are
   lightweight, easy to create and modify. However, DVC lacks pipeline execution
@@ -51,18 +53,22 @@ process.
 
 5. **Makefile** (and it's analogues). The differences are:
 
-- DVC utilizes a DAG:
+- DVC utilizes a
+  [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
+  (DAG):
 
-  - The DAG is defined by [DVC-files](/doc/user-guide/dvc-file-format) (with
-    file names `<file>.dvc` or `Dvcfile`).
+  - The DAG or dependency graph is defined by the connections between
+    [DVC-file](/doc/user-guide/dvc-file-format) (with file names `<file>.dvc` or
+    `Dvcfile`), based on their dependencies and outputs.
 
-  - One DVC-file defines one node in the DAG. All DVC-files in a repository make
-    up a single pipeline (think a single Makefile). All DVC-files (and
+  - Each DVC-file defines one node in the DAG. All DVC-files in a repository
+    make up a single pipeline (think a single Makefile). All DVC-files (and
     corresponding pipeline commands) are implicitly combined through their
     inputs and outputs, to simplify conflict resolving during merges.
 
-  - DVC provides a simple command `dvc run CMD` to generate a DVC-file
-    automatically based on the provided command, dependencies, and outputs.
+  - DVC provides a simple command `dvc run` to generate a DVC-file or "stage
+    file" automatically, based on the provided command, dependencies, and
+    outputs.
 
 - File tracking:
 

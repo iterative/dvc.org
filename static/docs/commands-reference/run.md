@@ -18,38 +18,36 @@ positional arguments:
 
 ## Description
 
-`dvc run` provides an interface to build a computational graph (a.k.a.
-pipeline). It's a way to describe commands, data inputs and intermediate results
-that go into creating a ML model (or other data results). By explicitly
-specifying a list of dependencies (with `-d` option) and outputs (with `-o`,
-`-O`, `-m`, or `-M` options) DVC can connect each individual stage (command)
-into a directed acyclic graph (DAG). All the remainder of command-line input
-provided to `dvc run` after the optional arguments (`-` or `--` dashed options)
-will become the required `command` argument.
+`dvc run` provides an interface to describe stages: individual commands and the
+data inputs and outputs that go into creating a data result. By specifying a
+list of dependencies (`-d` option) and outputs (`-o`, `-O`, `-m`, or `-M`
+options) DVC can later connect each stage by building a dependency graph
+([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)). This graph is
+used by DVC to restore a full data [pipeline](/doc/commands-reference/pipeline).
 
-> Remember to wrap the `command` with `"` quotes if there are special characters
-> in it like `|` (pipe) or `<`, `>` (redirection) that would otherwise apply to
-> the entire `dvc run` command. E.g.
-> `dvc run -d script.sh "./script.sh > /dev/null 2>&1"` Use single quotes `'`
-> instead of `"` to wrap the `command` if there are environment variables in it,
-> that you want to be evaluated dynamically. E.g.
-> `dvc run -d script.sh './myscript.sh $MYENVVAR'`
+The remainder of command-line input provided to `dvc run` after the options (`-`
+or `--` arguments) will become the required `command` argument. Please wrap the
+`command` with `"` quotes if there are special characters in it like `|` (pipe)
+or `<`, `>` (redirection) that would otherwise apply to the entire `dvc run`
+command e.g. `dvc run -d script.sh "./script.sh > /dev/null 2>&1"`. Use single
+quotes `'` instead of `"` to wrap the `command` if there are environment
+variables in it, that you want to be evaluated dynamically. E.g.
+`dvc run -d script.sh './myscript.sh $MYENVVAR'`
 
 Unless the `-f` options is used, by default the DVC-file name generated is
 `<file>.dvc`, where `<file>` is file name of the first output (`-o`, `-O`, `-m`,
 or `-M` option). If neither `-f`, nor outputs are specified, the stage name
 defaults to `Dvcfile`.
 
-Since `dvc run` provides a way to build a graph of computations, using
-dependencies and outputs to connect different stages it checks computational
-graph integrity properties before creating a new stage. For example, for every
-output there should be only one stage that explicitly specifies it. There should
-be no cycles, etc.
+Since `dvc run` provides a way to build a dependency graph using dependencies
+and outputs to connect different stages, it checks the graph's integrity before
+creating a new stage. For example, for every output there should be only one
+stage that explicitly specifies it. There should be no cycles, etc.
 
 Note that `dvc repro` provides an interface to check state and reproduce this
-graph later. This concept is similar to the one of the `Makefile` but DVC
-captures data and caches <abbr>data artifacts</abbr> along the way. See this
-[example](/doc/get-started/example-pipeline) to learn more and try to build a
+graph (pipeline) later. This concept is similar to the one of the `Makefile` but
+DVC captures data and caches <abbr>data artifacts</abbr> along the way. See this
+[example](/doc/get-started/example-pipeline) to learn more and try to create a
 pipeline.
 
 ## Options
@@ -60,20 +58,19 @@ pipeline.
   configuration file. DVC also supports certain
   [external dependencies](/doc/user-guide/external-dependencies).
 
-  DVC builds a computation graph and this list of dependencies is a way to
-  connect different stages with each other. When you run `dvc repro` to
-  reproduce a stage (or when a stage is reproduced due to recursive dependency),
-  the list of dependencies helps DVC analyze whether any dependencies have
-  changed and thus running the stage again is required. A special case is when
-  no dependencies are specified.
+  DVC builds a dependency graph connecting different stages with each other.
+  When you run `dvc repro` to reproduce a stage (or when a stage is reproduced
+  due to recursive dependency), the list of dependencies helps DVC analyze
+  whether any dependencies have changed and thus running the stage again is
+  required. A special case is when no dependencies are specified.
 
   > Note that a DVC-file without dependencies is considered always _changed_, so
   > `dvc repro` always executes it.
 
 - `-o`, `--outs` - specify a file or a directory that are results of running the
   command. Multiple outputs can be specified like this:
-  `-o model.pkl -o output.log`. DVC is building a computation graph and this
-  list of outputs (along with dependencies described above) is a way to connect
+  `-o model.pkl -o output.log`. DVC is building a dependency graph and this list
+  of outputs (along with dependencies described above) is a way to connect
   different stages with each other. DVC takes all output files and directories
   under its control and will put them into the cache (this is similar to what's
   happening when you run `dvc add`).
@@ -119,7 +116,7 @@ pipeline.
   take dependencies or outputs under DVC control. In the DVC-file contents, the
   `md5` hash sums will be empty; They will be populated the next time this stage
   is actually executed. This command is useful, if for example, you need to
-  build a pipeline (computational graph) first, and then run it all at once.
+  build a pipeline (dependency graph) first, and then run it all at once.
 
 - `-y`, `--yes` - deprecated, use `--overwrite-dvcfile` instead.
 

@@ -118,9 +118,8 @@ wdir: .
 ```
 
 > `dvc run` is just the first of a set of DVC command required to generate a
-> [pipeline](/doc/get-started/pipeline) computational graph, or in other words,
-> instructions on how to build a ML model (data file) from previous data files
-> (or directories).
+> [pipeline](/doc/get-started/pipeline), or in other words, instructions on how
+> to build a ML model (data file) from previous data files (or directories).
 
 We would recommend to read a few next chapters first, before switching to other
 documents. Hopefully, `dvc run` and `dvc repro` will make more sense after

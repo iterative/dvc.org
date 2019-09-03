@@ -10,14 +10,14 @@ The most exciting part of DVC is reproducibility.
 DVC tracks all the dependencies, which helps you iterate on ML models faster
 without thinking what was affected by your last change.
 
-> In order to track all the dependencies, DVC finds and reads ALL the DVC-files
-> in a repository and builds a dependency graph
-> ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) based on these
-> files.
+In order to track all the dependencies, DVC finds and reads all the DVC-files in
+a repository and builds a dependency graph
+([pipeline](/doc/commands-reference/pipeline)) based on these files.
 
 This is one of the differences between DVC reproducibility and traditional
 Makefile-like build automation tools (Make, Maven, Ant, Rakefile etc). It was
-designed in such a way to localize specification of DAG nodes.
+designed in such a way to localize specification of the graph nodes (pipeline
+[stages](/doc/commands-reference/run)).
 
 If you run `repro` on any [DVC-file](/doc/user-guide/dvc-file-format) from our
 repository, nothing happens because nothing was changed in the pipeline defined
