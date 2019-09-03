@@ -16,9 +16,9 @@ this example is to give you some hands-on experience with a very basic scenario
 ![](/static/img/cats-and-dogs.jpg)
 
 We first train a classifier model using 1000 labeled images, then we double the
-number and run the training again. We capture both datasets and both results and
-show how to use `dvc checkout` along with `git checkout` to switch between
-different versions.
+number and retrain our model. We capture both datasets and both results and show
+how to use `dvc checkout` along with `git checkout` to switch between different
+versions.
 
 The specific algorithm that is used to train and validate the classifier is not
 important. No prior knowledge is required about Keras. We reuse the
@@ -207,7 +207,7 @@ data
        └── cat.1400.jpg
 ```
 
-Of course, we want to leverage these new labels and train the model again.
+Of course, we want to leverage these new labels and retrain the model.
 
 ```dvc
 $ dvc add data
