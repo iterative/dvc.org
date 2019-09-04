@@ -45,7 +45,7 @@ recommend creating a virtual environment with a tool such as
 $ virtualenv -p python3 .env
 $ source .env/bin/activate
 $ echo ".env/" >> .gitignore
-$ pip install -r requirements.txt
+$ pip install -r code/requirements.txt
 ```
 
 ## Install DVC
