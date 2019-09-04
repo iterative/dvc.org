@@ -1,5 +1,7 @@
 import React from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
+import scrollIntoView from 'scroll-into-view-if-needed'
+
 // components
 import DownloadButton from '../../DownloadButton'
 // utils
@@ -49,6 +51,7 @@ class SidebarMenuItem extends React.PureComponent {
       <>
         <SectionLink
           href={path}
+          id={path}
           onClick={e => onNavigate(path, e)}
           isActive={isActive}
           className={isRootParent ? 'docSearch-lvl0' : ''}
@@ -95,6 +98,11 @@ export default class SidebarMenu extends React.Component {
     this.setState({ isScrollHidden: true }, () =>
       setTimeout(() => {
         this.ps.update()
+        scrollIntoView(document.getElementById(this.props.currentPath), {
+          behavior: 'smooth',
+          scrollMode: 'if-needed',
+          block: 'start'
+        })
         this.setState({ isScrollHidden: false })
       }, 400)
     )
