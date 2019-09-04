@@ -30,8 +30,10 @@ nothing to do with DVC so far, it's just a simple preparation:
 
 ### Expand to learn how to download on Windows
 
-Windows doesn't ship `wget` utility by default, so you'll need to use just use
-your browser to download `pipeline.zip`.
+Windows doesn't include the `wget` utility by default, so you'll need to use a
+browser to download `pipeline.zip`. Save it into the `example` directory.
+(Right-click [this link](https://code.dvc.org/tutorial/nlp/pipeline.zip) and
+click `Save link as`(Chrome) or `Save object as`(Firefox)).
 
 </details>
 

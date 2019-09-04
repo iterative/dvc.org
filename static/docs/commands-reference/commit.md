@@ -1,7 +1,8 @@
 # commit
 
 Record changes to the repository by updating
-[DVC-files](/doc/user-guide/dvc-file-format) and saving outputs to cache.
+[DVC-files](/doc/user-guide/dvc-file-format) and saving outputs to
+<abbr>cache</abbr>.
 
 ## Synopsis
 
@@ -19,8 +20,9 @@ positional arguments:
 The `dvc commit` command is useful for several scenarios where a dataset is
 being changed: when a [stage](/doc/commands-reference/run) or
 [pipeline](/doc/commands-reference/pipeline) is in development, when one wishes
-to run commands outside the control of DVC, or to force DVC-file updates to save
-time tying stages or a pipeline.
+to run commands outside the control of DVC, or to force
+[DVC-file](/doc/user-guide/dvc-file-format) updates to save time tying stages or
+a pipeline.
 
 - Code or data for a stage is under active development, with rapid iteration of
   code, configuration, or data. Run DVC commands (`dvc run`, `dvc repro`, and
@@ -46,8 +48,9 @@ DVC-files and save data to cache. They are still useful, but keep in mind that
 DVC can't guarantee reproducibility in those cases – You commit any data you
 want. Let's take a look at what is happening in the fist scenario closely:
 
-Normally DVC commands like `dvc add`, `dvc repro` or `dvc run`, commit the data
-to the DVC cache as the last step. What _commit_ means is that DVC:
+Normally DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data
+to the <abbr>DVC cache</abbr> after creating a DVC-file. What _commit_ means is
+that DVC:
 
 - Computes a checksum for the file/directory
 - Enters the checksum and file name into the DVC-file
@@ -56,13 +59,13 @@ to the DVC cache as the last step. What _commit_ means is that DVC:
   (`dvc init --no-scm`), this does not happen.)
 - Adds the file/directory or to the DVC cache
 
-There are many cases where the last step is not desirable (usually, rapid
-iteration on some experiment). For the DVC commands where available, the
-`--no-commit` option prevents the last step from occurring, thus we are saving
-time and space by not storing all the <abbr>data artifacts</abbr> for every
-command attempt. The checksum is still computed and added to the DVC-file, but
-the file is not added to the cache. That's where the `dvc commit` command comes
-into play. It handles that last step of adding the file to the DVC cache.
+There are many cases where the last step is not desirable (for example rapid
+iterations on an experiment). The `--no-commit` option prevents the last step
+from occurring (on the commands where it's available), saving time and space by
+not storing unwanted <abbr>data artifacts</abbr>. Checksums is still computed
+and added to the DVC-file, but the actual data file is not saved in the DVC
+cache. This is where the `dvc commit` command comes into play. It performs that
+last step: storing the file in the DVC cache.
 
 ## Options
 
@@ -128,8 +131,8 @@ $ dvc pull --all-branches --all-tags
 
 Sometimes we want to iterate through multiple changes to configuration, code, or
 data, trying multiple options to improve the output of a stage. To avoid filling
-the DVC cache with undesired intermediate results, we can run a single stage
-with `dvc run --no-commit`, or reproduce an entire pipeline using
+the <abbr>DVC cache</abbr> with undesired intermediate results, we can run a
+single stage with `dvc run --no-commit`, or reproduce an entire pipeline using
 `dvc repro --no-commit`. This prevents data from being pushed to cache. When
 development of the stage is finished, `dvc commit` can be used to store data
 files in the DVC cache.
@@ -219,7 +222,8 @@ that the new instance of `model.pkl` is in the cache.
 
 It is also possible to execute the commands that are executed by `dvc repro` by
 hand. You won't have DVC helping you, but you have the freedom to run any script
-you like, even ones not recorded in a DVC-file. For example:
+you like, even ones not recorded in a
+[DVC-file](/doc/user-guide/dvc-file-format). For example:
 
 ```dvc
 $ python src/featurization.py data/prepared data/features
@@ -228,7 +232,7 @@ $ python src/evaluate.py model.pkl data/features auc.metric
 ```
 
 As before, `dvc status` will show which the files have changed, and when your
-work is finalized `dvc commit` will commit everything to the cache.
+work is finalized `dvc commit` will commit everything to the <abbr>cache</abbr>.
 
 ## Example: Updating dependencies
 

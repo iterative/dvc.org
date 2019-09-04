@@ -127,8 +127,8 @@ $ python -m tests --pdb
 ## Testing remotes
 
 This tests require additional effort to set up, so they are skipped by default.
-You don't need this in most cases, however, if you develop or fix some remote
-related code you might need to go through steps below.
+However, running code tests locally may be necessary when changing core source
+code.
 
 Install requirements for whatever remotes you are going to test:
 
@@ -167,8 +167,8 @@ Install
 [aws cli](https://docs.aws.amazon.com/en_us/cli/latest/userguide/cli-chap-install.html)
 tools.
 
-Set up an account, get credentials, which will have access to S3. When set `ENV`
-vars like this:
+Set up an account, get credentials, which will have access to S3. Then, set
+`ENV` vars like this:
 
 ```dvc
 $ export AWS_ACCESS_KEY_ID="...YOUR-ACCESS-KEY-ID..."

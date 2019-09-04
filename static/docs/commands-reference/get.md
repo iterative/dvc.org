@@ -37,6 +37,13 @@ created in the current working directory, with its original file name.
 
 ## Options
 
+- `-o`, `--out` - specify a path (directory and file name) to the desired
+  location to place the imported data in. The default value (when this option
+  isn't used) is the current working directory (`.`) and original file name.
+
+- `--rev` - specific Git revision of the DVC repository to import the data from.
+  `HEAD` by default.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no

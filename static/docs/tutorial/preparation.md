@@ -5,8 +5,8 @@ In this document, we will be building an ML model to classify
 `python` tag and without `python` tag. For training purposes, a small subset of
 data will be used — only 180Mb xml files.
 
-Most of the code for the problem is ready and will be downloaded in the first
-steps. Later we will be modifying the code a bit to improve the model.
+Most of the code to solve this problem is ready to be downloaded. We will be
+modifying some of the code during this tutorial to improve the model.
 
 ## Getting the sample code
 
@@ -16,6 +16,11 @@ code into it:
 <details>
 
 ### Expand to learn how to download on Windows
+
+Windows doesn't include the `wget` utility by default, so you'll need to use the
+browser to download `code.zip`. Save it into the `classify` directory.
+(Right-click [this link](https://code.dvc.org/tutorial/nlp/code.zip) and click
+`Save link as`(Chrome) or `Save object as`(Firefox)).
 
 Windows doesn't ship `wget` utility by default, so you'll need to use browser to
 download `code.zip`.
@@ -40,7 +45,7 @@ recommend creating a virtual environment with a tool such as
 $ virtualenv -p python3 .env
 $ source .env/bin/activate
 $ echo ".env/" >> .gitignore
-$ pip install -r requirements.txt
+$ pip install -r code/requirements.txt
 ```
 
 ## Install DVC

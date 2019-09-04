@@ -26,18 +26,17 @@ Depending on what you typed on the command line so far, it completes:
   files to reproduce
 
 Depending upon your preference and the availability of both Bash and Zsh on your
-system, follow the steps given below to Configure Bash and/or Zsh.
+system, follow the steps below to Configure your shell.
 
 If you are new to working with shell or uncertain about your active shell, print
 `$0` to check your active shell. For example:
 
 ```dvc
 $ echo $0
-
   /bin/bash
 ```
 
-In this case, follow these steps to configure Bash, as it is your active shell.
+In this example, you would follow the Bash configuration instructions.
 
 ## Configure Bash
 
@@ -138,8 +137,8 @@ Then reload your shell:
 $ exec $SHELL -l
 ```
 
-This step is optional but will make look much nicer by adding more colors to it.
-Add the following to your `~/.zshrc`:
+This step is optional but will make look the DVC output much nicer, by adding
+more colors to it. Add the following to your `~/.zshrc`:
 
 ```bash
 # Case insensitive match
