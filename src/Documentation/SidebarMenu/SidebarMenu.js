@@ -100,8 +100,7 @@ export default class SidebarMenu extends React.Component {
         this.ps.update()
         scrollIntoView(document.getElementById(this.props.currentPath), {
           behavior: 'smooth',
-          scrollMode: 'if-needed',
-          block: 'start'
+          scrollMode: 'if-needed'
         })
         this.setState({ isScrollHidden: false })
       }, 400)
