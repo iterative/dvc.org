@@ -27,21 +27,24 @@ Under the hood, a few actions are taken for each file in `targets`:
 3. Replace the file by a link to the file in the cache (see details below).
 4. Create a corresponding [DVC-file](/doc/user-guide/dvc-file-format) and store
    the MD5 checksum to identify the cached file.
-5. Add the targets to `.gitignore` (if Git is used in this
+5. Add the `targets` to `.gitignore` (if Git is used in this
    <abbr>workspace</abbr>) to prevent it from being committed to the Git
    repository.
 6. Instructions are printed showing `git` commands for adding the files to a Git
    repository. If a different SCM system is being used, use the equivalent
-   command for that system or nothing is printed if `--no-scm` was specified for
-   the repository.
+   command for that system. Nothing is printed if `--no-scm` was specified when
+   [initializing](/doc/commands-reference/init) the project.
 
-Unless the `-f` options is used, by default the DVC-file name generated is
-`<file>.dvc`, where `<file>` is file name of the first output (from `targets`).
+Note that `targets` outside the current workspace are supported, creating
+[external outputs](/doc/user-guide/external-outputs).
+
+Unless the `-f` options is used, the DVC-file name generated is `<file>.dvc` by
+default, where `<file>` is file name of the first output (from `targets`).
 
 The result is data file is placed in the cache directory, and DVC-files can be
-tracked via Git or other version control system. The DVC-file lists the added
-file as an output (`out`), and references the cached file using the checksum.
-See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details.
+tracked via SCM. The DVC-file lists the added file as an output (`outs` field),
+and references the cached file using the checksum. See
+[DVC-File Format](/doc/user-guide/dvc-file-format) for more details.
 
 > Note that DVC-files created by this command are _orphans_: they have no
 > dependencies. _Orphan_ "stage files" are always considered _changed_ by

@@ -1,10 +1,11 @@
 # Managing External Data
 
-There are cases when data is large enough or processing is organized in a way
-that you would like to avoid moving data out of the remote storage. For example,
-you are processing data on HDFS, running Dask via SSH, or have a script that
-streams data from S3 to process it, etc. A mechanism of external outputs and
-[External Dependencies](/doc/user-guide/external-dependencies) provides a way
+There are cases when data is so large, or its processing is organized in a way
+that you would like to avoid moving it out of its external/remote location. For
+example from a network attached storage (NAS) drive, processing data on HDFS,
+running [Dask](https://dask.org/) via SSH, or having a script that streams data
+from S3 to process it. A mechanism for external outputs and
+[external dependencies](/doc/user-guide/external-dependencies) provides a way
 for DVC to control data externally.
 
 ## Description
