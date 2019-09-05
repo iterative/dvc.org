@@ -66,7 +66,9 @@ If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
 `dvc add`, you will see that only outputs are defined in `outs`. In this file,
 only one output is defined. The output contains the data file path in the
 repository and md5 checksum. This checksum determines a location of the actual
-content file in the <abbr>cache</abbr> directory, `.dvc/cache`.
+content file in the
+[cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
+`.dvc/cache`.
 
 ```dvc
 $ cat data/Posts.xml.zip.dvc
@@ -83,10 +85,10 @@ $ du -sh .dvc/cache/ec/*
 > Outputs from DVC-files define the relationship between the data file path in a
 > repository and the path in the cache directory.
 
-Keeping actual file contents in the cache, and a copy of the cached file in the
-<abbr>workspace</abbr> during `$ git checkout` is a regular trick that
-[Git-LFS](https://git-lfs.github.com/) (Git for Large File Storage) uses. This
-trick works fine for tracking small files with source code. For large data
+Keeping actual file contents in the <abbr>cache</abbr>, and a copy of the cached
+file in the <abbr>workspace</abbr> during `$ git checkout` is a regular trick
+that [Git-LFS](https://git-lfs.github.com/) (Git for Large File Storage) uses.
+This trick works fine for tracking small files with source code. For large data
 files, this might not be the best approach, because of _checkout_ operation for
 a 10Gb data file might take several seconds and a 50GB file checkout (think
 copy) might take a few minutes.

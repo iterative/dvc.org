@@ -36,9 +36,9 @@ Under the hood a few actions are taken:
   DVC-files to consult.
 
 - For each output referenced from each selected DVC-file, DVC finds a
-  corresponding entry in the <abbr>cache</abbr> directory. DVC checks whether
-  the entry exists in the remote. From this DVC gathers a list of files missing
-  from the remote storage.
+  corresponding entry in the<abbr>cache</abbr>. DVC checks whether the entry
+  exists in the remote. From this DVC gathers a list of files missing from the
+  remote storage.
 
 - Upload the cache files missing from remote storage, if any, to the remote.
 
@@ -205,15 +205,16 @@ double check that all data had been uploaded.
 
 ## Example: What happens in the cache
 
-Let's take a detailed look at what happens to the <abbr>cache</abbr> directory
+Let's take a detailed look at what happens to the
+[cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 as you run an experiment locally and push data to remote storage. To set the
 example consider having created a <abbr>workspace</abbr> that contains some code
 and data, and having set up a remote.
 
 Some work has been performed in the workspace, and it contains new data to
 upload to the shared remote. When running `dvc status --cloud` the report will
-list several files in `new` state. By looking in the cached directories we can
-see exactly what that means.
+list several files in `new` state. We can see exactly what that means by looking
+in the project's <abbr>cache</abbr>:
 
 ```dvc
 $ tree .dvc/cache
