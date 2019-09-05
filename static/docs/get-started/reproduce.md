@@ -3,10 +3,9 @@
 In the previous chapters, we described our first
 [pipeline]](/doc/commands-reference/pipeline). Basically, we generated a number
 of [stage files](/doc/commands-reference/run)
-([DVC-files](/doc/user-guide/dvc-file-format)). Each of these stages define
-single commands to execute towards a final result. Each depends on some data
-(either raw data files or intermediate results from previous stages) and code
-files.
+([DVC-files](/doc/user-guide/dvc-file-format)). These stages define individual
+commands to execute towards a final result. Each depends on some data (either
+raw data files or intermediate results from previous stages) and code files.
 
 If you just cloned the
 [project](https://github.com/iterative/example-get-started), make sure you first
