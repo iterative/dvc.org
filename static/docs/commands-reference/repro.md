@@ -98,8 +98,8 @@ specified), and updates stage files with the new checksum information.
   stages following the changed stage, even if their direct dependencies did not
   change. Like with the same option on `dvc run`, this is a way to force execute
   stages without changes. This can also be useful for pipelines containing
-  stages that produce nondeterministic (semi-random) outputs. For
-  nondeterministic stages the outputs can vary on each execution, meaning the
+  stages that produce non-deterministic (semi-random) outputs. For
+  non-deterministic stages the outputs can vary on each execution, meaning the
   cache cannot be trusted for such stages.
 
 - `--downstream` - only execute the stages after the given `targets` in their
