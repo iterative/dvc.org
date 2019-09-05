@@ -22,8 +22,8 @@ DVC uses a few core concepts:
   features, change model hyperparameters, data cleaning, add a new data source)
   should be performed in a separate branch and then merged into the master
   branch only if the experiment is successful. DVC allows experiments to be
-  integrated into a project's history and NEVER needs to recompute the results
-  after a successful merge.
+  integrated into a Git repository history and NEVER needs to recompute the
+  results after a successful merge.
 
 - **Experiment state** or state: Equivalent to a Git snapshot (all committed
   files). Git checksum, branch name, or tag can be used as a reference to a
@@ -48,7 +48,7 @@ DVC uses a few core concepts:
   in Git for DVC needs (to maintain pipelines and reproducibility).
 
 - **Cache directory**: Directory with all data files on a local hard drive or in
-  cloud storage, but not in the Git repository.
+  cloud storage, but not in the Git repository. See `dvc cache dir`.
 
 - **Cloud storage** support: available complement to the core DVC features. This
   is how a data scientist transfers large data files or shares a GPU-trained

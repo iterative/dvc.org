@@ -31,15 +31,14 @@ save any changes in the code or DVC-files. Those should be saved by using
 Under the hood a few actions are taken:
 
 - The push command by default uses all
-  [DVC-files](/doc/user-guide/dvc-file-format in the current version. The
+  [DVC-files](/doc/user-guide/dvc-file-format in the <abbr>workspace</abbr>. The
   command-line options listed below will either limit or expand the set of
   DVC-files to consult.
 
-- For each output referenced from each selected DVC-files, it finds a
-  corresponding entry in the <abbr>cache directory</abbr>. DVC checks if the
-  entry exists, or not, in the remote simply by looking for it using the
-  checksum. From this DVC gathers a list of files missing from the remote
-  storage.
+- For each output referenced from each selected DVC-file, DVC finds a
+  corresponding entry in the <abbr>cache</abbr> directory. DVC checks whether
+  the entry exists in the remote. From this DVC gathers a list of files missing
+  from the remote storage.
 
 - Upload the cache files missing from remote storage, if any, to the remote.
 
@@ -57,8 +56,8 @@ of the <abbr>project</abbr> directory, nor will it upload files which have not
 changed.
 
 The `dvc status -c` command can list files tracked by DVC that are new in the
-cache directory (compared to the default remote.) It can be used to see what
-files `dvc push` would upload.
+cache (compared to the default remote.) It can be used to see what files
+`dvc push` would upload.
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
@@ -158,8 +157,8 @@ model.p.dvc
 Dvcfile
 ```
 
-Imagine the project's cache has been modified such that the data files in some
-of these stages should be uploaded to remote storage.
+Imagine the project has been modified such that the output of some of these
+stages should be uploaded to remote storage.
 
 ```dvc
 $ dvc status --cloud
@@ -206,12 +205,12 @@ double check that all data had been uploaded.
 
 ## Example: What happens in the cache
 
-Let's take a detailed look at what happens to the <abbr>cache directory</abbr>
+Let's take a detailed look at what happens to the <abbr>cache</abbr> directory
 as you run an experiment locally and push data to remote storage. To set the
 example consider having created a <abbr>workspace</abbr> that contains some code
 and data, and having set up a remote.
 
-Some work has been performed in the local workspace, and it contains new data to
+Some work has been performed in the workspace, and it contains new data to
 upload to the shared remote. When running `dvc status --cloud` the report will
 list several files in `new` state. By looking in the cached directories we can
 see exactly what that means.
@@ -260,10 +259,10 @@ The directory `.dvc/cache` is the local cache, while `../vault/recursive` is the
 remote storage – a "local remote" in this case. This listing shows the cache
 having more files in it than the remote does (which is what `new` means).
 
-Next we can upload part of the data from the cache directory to a remote using
-the command `dvc push --with-deps STAGE.dvc`. Remember that `--with-deps`
-searches backwards from the DVC-file `targets` to locate files to upload, and
-does not upload files in subsequent stages.
+Next we can upload part of the data from the cache to the remote using the
+command `dvc push --with-deps <stage>.dvc`. Remember that `--with-deps` searches
+backwards from the DVC-file `targets` to locate files to upload, and does not
+upload files in subsequent stages.
 
 After doing that we can inspect the remote storage again:
 
@@ -292,8 +291,8 @@ $ tree ../vault/recursive
 
 The remote storage now has some of the files which had been missing, but not all
 of them. Indeed `dvc status --cloud` still lists a couple files as `new`. We can
-clearly see this in that a couple files are in the cache directory and not in
-the remote.
+clearly see this above, since a couple files are in the cache, but not in the
+remote.
 
 After running `dvc push` to cause all files to be uploaded, the remote storage
 now contains all of them:

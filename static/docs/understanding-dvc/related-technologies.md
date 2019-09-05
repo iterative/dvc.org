@@ -38,7 +38,7 @@ process.
 
 - DVC has transparent design. Its
   [internal files and directories](/doc/user-guide/dvc-files-and-directories)
-  (including the <abbr>cache directory</abbr>) have a human-readable format and
+  (including the <abbr>cache</abbr> directory) have a human-readable format and
   can be easily reused by external tools.
 
 4. **Git workflows** and Git usage methodologies such as Gitflow. The

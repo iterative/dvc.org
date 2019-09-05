@@ -78,7 +78,7 @@ $ dvc metrics show
       data/eval.json: 0.624652
 ```
 
-And finally let's remove `data/eval.json` from project's metrics:
+And finally let's remove `data/eval.json` from the project's metrics:
 
 ```dvc
 $ dvc metrics remove data/eval.json

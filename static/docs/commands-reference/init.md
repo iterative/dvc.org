@@ -14,15 +14,16 @@ usage: dvc init [-h] [-q | -v] [--no-scm] [-f]
 ## Description
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`
-and `.gitignore` files, and <abbr>cache directory</abbr>. These files and
+and `.gitignore` files, and <abbr>cache</abbr> directory. These files and
 directories are hidden from the user generally and are not meant to be
 manipulated directly.
 
 `.dvc/cache` is one of the most important
 [DVC directories](/doc/user-guide/dvc-files-and-directories). It will hold all
 the contents of tracked data files. Note that `.dvc/.gitignore` lists this
-directory, which means that the cache directory is not under Git control. This
-is a local cache and you cannot `git push` it.
+directory, which means that the
+[cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+is not under Git control. This is a local cache and you cannot `git push` it.
 
 ## Options
 

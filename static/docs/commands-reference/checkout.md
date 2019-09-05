@@ -66,7 +66,7 @@ restoring any file size will be almost instantaneous.
 
 The output of `dvc checkout` does not list which data files were restored. It
 does report removed files and files that DVC was unable to restore because
-they're missing from the cache.
+they're missing from the <abbr>cache</abbr>.
 
 This command will fail to checkout files that are missing from the cache. In
 such a case, `dvc checkout` prints a warning message. Any files that can be
@@ -92,8 +92,8 @@ be pulled from remote storage using `dvc pull`.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC-files with `git checkout` can result in the need for DVC to
-  remove files that don't match those DVC-file references or are missing in the
-  cache directory. (They are not "committed", in DVC terms.)
+  remove files that don't match those DVC-file references or are missing from
+  cache. (They are not "committed", in DVC terms.)
 
 - `-h`, `--help` - shows the help message and exit.
 
@@ -206,9 +206,9 @@ MD5 (model.pkl) = a66489653d1b6a8ba989799367b32c43
 
 What happened is that DVC went through the sole existing DVC-file and adjusted
 the current set of files to match the `outs` of that stage. `dvc fetch` runs
-once to download missing data from the remote storage to the <abbr>cache
-directory</abbr>. Alternatively, we could have just run `dvc pull` in this case
-to automatically do `dvc fetch` + `dvc checkout`.
+once to download missing data from the remote storage to the <abbr>cache</abbr>.
+Alternatively, we could have just run `dvc pull` in this case to automatically
+do `dvc fetch` + `dvc checkout`.
 
 ## Automating `dvc checkout`
 

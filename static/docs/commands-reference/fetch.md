@@ -2,7 +2,7 @@
 
 Get files that are under DVC control from
 [remote](/doc/commands-reference/remote#description) storage into the
-<abbr>cache directory</abbr>.
+<abbr>cache</abbr>.
 
 ## Synopsis
 
@@ -19,10 +19,11 @@ positional arguments:
 ## Description
 
 The `dvc fetch` command is a means to download files from remote storage into
-the cache directory, but without placing them in the <abbr>workspace</abbr>.
-This makes the data files available for linking (or copying) into the workspace.
-(Refer to [dvc config cache.type](/doc/commands-reference/config#cache).) Along
-with `dvc checkout`, it's performed automatically by `dvc pull` when the target
+the cache of the project, but without placing them in the
+<abbr>workspace</abbr>. This makes the data files available for linking (or
+copying) into the workspace. (Refer to
+[dvc config cache.type](/doc/commands-reference/config#cache).) Along with
+`dvc checkout`, it's performed automatically by `dvc pull` when the target
 [DVC-files](/doc/user-guide/dvc-file-format) are not already in the cache:
 
 ```
@@ -34,7 +35,7 @@ remote storage
      |         +------------+
      | - - - - | dvc fetch  | ++
      v         +------------+   +   +----------+
-cache directory                  ++ | dvc pull |
+project's cache                  ++ | dvc pull |
      +         +------------+   +   +----------+
      | - - - - |dvc checkout| ++
      |         +------------+
@@ -42,22 +43,21 @@ cache directory                  ++ | dvc pull |
  workspace
 ```
 
-Fetching could be useful when first checking out an existing <abbr>DVC
-project</abbr>, since files under DVC control could already exist in remote
-storage, but won't be in the project's cache. (Refer to `dvc remote` for more
-information on DVC remotes.) These necessary data or model files are listed as
-dependencies or outputs in a DVC-file (target
-[stage](/doc/commands-reference/run)) so they are required to
-[reproduce](/doc/get-started/reproduce) the corresponding
+Fetching could be useful when first checking out a <abbr>DVC project</abbr>,
+since files under DVC control should already exist in remote storage, but won't
+be in the project's cache. (Refer to `dvc remote` for more information on DVC
+remotes.) These necessary data or model files are listed as dependencies or
+outputs in a DVC-file (target [stage](/doc/commands-reference/run)) so they are
+required to [reproduce](/doc/get-started/reproduce) the corresponding
 [pipeline](/doc/commands-reference/pipeline). (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
 
 `dvc fetch` ensures that the files needed for a DVC-file to be
-[reproduced](/doc/get-started/reproduce) exist in the cache directory. If no
-`targets` are specified, the set of data files to fetch is determined by
-analyzing all DVC-files in the current branch, unless `--all-branches` or
-`--all-tags` is specified.
+[reproduced](/doc/get-started/reproduce) exist in cache. If no `targets` are
+specified, the set of data files to fetch is determined by analyzing all
+DVC-files in the current branch, unless `--all-branches` or `--all-tags` is
+specified.
 
 The default remote is used unless `--remote` is specified. See `dvc remote add`
 for more information on how to configure different remote storage providers.
@@ -191,7 +191,7 @@ $ tree .dvc
 ├── ...
 ```
 
-> `dvc status --cloud` (or `-c`) compares the cache directory vs. the default
+> `dvc status --cloud` (or `-c`) compares the cache contents vs. the default
 > remote.
 
 As seen above, used without arguments, `dvc fetch` downloads all assets needed
@@ -287,14 +287,15 @@ $ tree .dvc/cache
     └── a9c512fda11293cfee7617b66648dc
 ```
 
-Fetching using `--with-deps` starts with the target DVC-file (stage) and
-searches backwards through its pipeline for data files to download into the
-cache directory. All the data for the second and third stages ("featurize" and
-"train") has now been downloaded to cache. We could now use `dvc checkout` to
-get the data files needed to reproduce this pipeline up to the third stage into
-the workspace (with `dvc repro train.dvc`).
+Fetching using `--with-deps` starts with the target
+[DVC-file](/doc/user-guide/dvc-file-format) (`train.dvc` stage) and searches
+backwards through its pipeline for data to download into the project's cache.
+All the data for the second and third stages ("featurize" and "train") has now
+been downloaded to the cache. We could now use `dvc checkout` to get the data
+files needed to reproduce this pipeline up to the third stage into the workspace
+(with `dvc repro train.dvc`).
 
 > Note that in this sample project, the last stage file `evaluate.dvc` doesn't
-> add any more data files than those form previous stages so at this point all
-> of the files for this pipeline are in the project's cache and `dvc status -c`
-> would output `Data and pipelines are up to date.`
+> add any more data files than those from previous stages. So at this point
+> (after reproducing `train.dvc`) all of the data for this pipeline is cached,
+> and `dvc status -c` would output `Data and pipelines are up to date.`

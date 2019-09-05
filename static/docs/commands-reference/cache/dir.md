@@ -1,6 +1,6 @@
 # cache dir
 
-Set/unset the <abbr>cache directory</abbr> location intuitively (compared to
+Set/unset the <abbr>cache</abbr> directory location intuitively (compared to
 using `dvc config cache`).
 
 ## Synopsis

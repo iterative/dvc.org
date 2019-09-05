@@ -2,8 +2,8 @@
 
 Show changes in the <abbr>project</abbr>
 [pipelines](/doc/commands-reference/pipeline), as well as mismatches either
-between the <abbr>cache directory</abbr> and <abbr>workspace</abbr> files, or
-between the cache and remote storage.
+between the <abbr>cache</abbr> and <abbr>workspace</abbr> files, or between the
+cache and remote storage.
 
 ## Synopsis
 
@@ -85,8 +85,8 @@ outputs described in it.
 
 **For comparison against remote storage:**
 
-- _new_ means that the file/directory exists in the cache directory but not in
-  remote storage.
+- _new_ means that the file/directory exists in the cache but not in remote
+  storage.
 - _deleted_ means that the file/directory doesn't exist in the cache, but exists
   in remote storage.
 
@@ -192,7 +192,6 @@ remote yet:
 
 ```dvc
 $ dvc status --remote storage
-
 Preparing to collect status from s3://dvc-remote
 [##############################] 100% Collecting information
     new:      data/model.p
@@ -202,4 +201,4 @@ Preparing to collect status from s3://dvc-remote
 ```
 
 The output shows where the location of the remote storage is, as well as any
-differences between the <abbr>cache directory</abbr> and remote.
+differences between the <abbr>cache</abbr> and `storage` remote.

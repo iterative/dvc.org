@@ -29,7 +29,7 @@ Initialized by running \`dvc init\` in the **workspace**. It will contain the
     },
     {
       name: 'DVC Cache',
-      match: ['DVC cache', 'cache', 'cache directory', 'cached'],
+      match: ['DVC cache', 'cache', 'cached'],
       desc: `
 The DVC cache is a hidden storage (by default located in the \`.dvc/cache\`
 directory) for files that are under DVC control, and their different versions.

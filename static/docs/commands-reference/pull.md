@@ -1,9 +1,9 @@
 # pull
 
 Downloads missing files and directories from
-[remote storage](/doc/commands-reference/remote) to the <abbr>cache
-directory</abbr> based on [DVC-files](/doc/user-guide/dvc-file-format) in the
-<abbr>workspace</abbr>, then links the downloaded files into the workspace.
+[remote storage](/doc/commands-reference/remote) to the <abbr>cache</abbr> based
+on [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>,
+then links the downloaded files into the workspace.
 
 ## Synopsis
 
@@ -43,9 +43,9 @@ only the files (or directories) missing from the workspace by searching all
 versions or branches of the repository if using Git, nor will it download files
 which have not changed.
 
-The command `dvc status -c` can list files that are missing in the project's
-cache, but referenced in its current DVC-files. It can be used to see what files
-`dvc pull` would download.
+The command `dvc status -c` can list files referenced in current DVC-files, but
+missing in the <abbr>cache</abbr>. It can be used to see what files `dvc pull`
+would download.
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
@@ -108,9 +108,9 @@ done and set a context for the example, let's define an SSH remote with the
 `dvc remote add` command:
 
 ```dvc
-$ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
+$ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/remote/storage
 $ dvc remote list
-r1	ssh://_username_@_host_/path/to/dvc/cache/directory
+r1	ssh://_username_@_host_/path/to/dvc/remote/storage
 ```
 
 > DVC supports several remote types. For details, see the
@@ -158,8 +158,8 @@ model.p.dvc
 Dvcfile
 ```
 
-Imagine the remote storage has been modified such that the data files in some of
-these stages should be updated into the <abbr>cache directory</abbr>.
+Imagine the remote storage has been modified such that the data in some of these
+stages should be updated in the <abbr>workspace</abbr>.
 
 ```dvc
 $ dvc status --cloud

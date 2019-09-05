@@ -28,7 +28,7 @@ $ git status -s
  M .dvc/config
 ```
 
-Then, a simple command pushes files from your cache directory to the cloud:
+Then, a simple command pushes files from your cache to the cloud:
 
 ```dvc
 $ dvc push

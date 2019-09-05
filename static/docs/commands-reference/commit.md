@@ -1,8 +1,8 @@
 # commit
 
 Record changes to the repository by updating
-[DVC-files](/doc/user-guide/dvc-file-format) and saving outputs to <abbr>cache
-directory</abbr>.
+[DVC-files](/doc/user-guide/dvc-file-format) and saving outputs to the
+<abbr>cache</abbr>.
 
 ## Synopsis
 
@@ -20,9 +20,8 @@ positional arguments:
 The `dvc commit` command is useful for several scenarios where a dataset is
 being changed: when a [stage](/doc/commands-reference/run) or
 [pipeline](/doc/commands-reference/pipeline) is in development, when one wishes
-to run commands outside the control of DVC, or to force
-[DVC-file](/doc/user-guide/dvc-file-format) updates to save time tying stages or
-a pipeline.
+to run commands outside the control of DVC, or to force DVC-file updates to save
+time tying stages or a pipeline.
 
 - Code or data for a stage is under active development, with rapid iteration of
   code, configuration, or data. Run DVC commands (`dvc run`, `dvc repro`, and
@@ -43,29 +42,29 @@ a pipeline.
   stages. `dvc commit` can help avoid having to reproduce a pipeline in these
   cases by forcing the update of the DVC-files.
 
-The last two use cases are **not recommended**, and essentially force update the
-DVC-files and save data to cache. They are still useful, but keep in mind that
-DVC can't guarantee reproducibility in those cases – You commit any data you
-want. Let's take a look at what is happening in the fist scenario closely:
+Let's take a look at what is happening in the fist scenario closely. Normally
+DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
+<abbr>cache</abbr> after creating a DVC-file. What _commit_ means is that DVC:
 
-Normally DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data
-to the <abbr>cache</abbr> after creating a DVC-file. What _commit_ means is that
-DVC:
-
-- Computes a checksum for the file/directory
-- Enters the checksum and file name into the DVC-file
-- Tells the SCM to ignore the file/directory (e.g. add entry to `.gitignore`)
-  (Note that if the <abbr>workspace</abbr> was initialized with no SCM support
+- Computes a checksum for the file/directory.
+- Enters the checksum and file name into the DVC-file.
+- Tells Git to ignore the file/directory (adding an entry to `.gitignore`).
+  (Note that if the <abbr>project</abbr> was initialized with no SCM support
   (`dvc init --no-scm`), this does not happen.)
-- Adds the file/directory or to the cache directory
+- Adds the file/directory or to the cache.
 
 There are many cases where the last step is not desirable (for example rapid
 iterations on an experiment). The `--no-commit` option prevents the last step
 from occurring (on the commands where it's available), saving time and space by
 not storing unwanted <abbr>data artifacts</abbr>. Checksums is still computed
-and added to the DVC-file, but the actual data file is not saved in the DVC
-cache. This is where the `dvc commit` command comes into play. It performs that
-last step: storing the file in the cache directory.
+and added to the DVC-file, but the actual data file is not saved in the cache.
+This is where the `dvc commit` command comes into play. It performs that last
+step (saving the data in cache).
+
+The last two scenarios are **not recommended**. They essentially force-update
+the [DVC-files](/doc/user-guide/dvc-file-format) and save data to cache. They
+are still useful, but keep in mind that DVC can't guarantee reproducibility in
+those cases – where you commit any data you want.
 
 ## Options
 
@@ -135,7 +134,7 @@ the <abbr>cache</abbr> with undesired intermediate results, we can run a single
 stage with `dvc run --no-commit`, or reproduce an entire pipeline using
 `dvc repro --no-commit`. This prevents data from being pushed to cache. When
 development of the stage is finished, `dvc commit` can be used to store data
-files in the <abbr>cache directory</abbr>.
+files in the cache.
 
 In the `featurize.dvc` stage, `src/featurize.py` is executed. A useful change to
 make is adjusting a parameter to `CountVectorizer` in that script. Namely,
@@ -157,7 +156,7 @@ $ dvc repro --no-commit evaluate.dvc
 
 We can run this command as many times as we like, editing `featurize.py` any way
 we like, and so long as we use `--no-commit`, the data does not get saved to the
-cache directory. But it is instructive to verify that's the case:
+cache. Let's verify that's the case:
 
 First verification:
 
@@ -196,8 +195,8 @@ wdir: .
 To verify this instance of `model.pkl` is not in the cache, we must know the
 path to the cached file. In the cache directory, the first two characters of the
 checksum are used as a subdirectory name, and the remaining characters are the
-file name. Therefore, if the file had been committed to the cache it would
-appear in the directory `.dvc/cache/70`. Let's check:
+file name. Therefore, had the file been committed to the cache, it would appear
+in the directory `.dvc/cache/70`. Let's check:
 
 ```dvc
 $ ls .dvc/cache/70
