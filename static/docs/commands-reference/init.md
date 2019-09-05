@@ -1,6 +1,6 @@
 # init
 
-This command initializes a DVC project on a directory.
+This command initializes a <abbr>DVC project</abbr> on a directory.
 
 Note that by default the current working directory is expected to contain a Git
 repository, unless the `--no-scm` option is used.
@@ -42,7 +42,7 @@ is a local cache and you cannot `git push` it.
 
 ## Examples
 
-Creating a new DVC repository (requires a Git repository).
+Create a new DVC repository (requires Git):
 
 ```dvc
 $ mkdir example && cd example

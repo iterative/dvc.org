@@ -1,6 +1,6 @@
 # install
 
-Install DVC hooks into the Git repository to automate certain common actions.
+Install Git hooks into the DVC repository to automate certain common actions.
 
 ## Synopsis
 
@@ -17,30 +17,28 @@ automatically.
 
 Namely:
 
-**Checkout**: For any given branch or tag, Git checks out the
+**Checkout**: For any given branch or tag, `git checkout` retrieves the
 [DVC-files](/doc/user-guide/dvc-file-format) corresponding to that version. The
-DVC-files in turn refer to data files in the <abbr>DVC cache</abbr> by checksum.
-When switching from one SCM branch or tag to another, the SCM retrieves the
-corresponding DVC-files. By default that leaves the <abbr>project</abbr> in a
-state where the DVC-files refer to data files other than what is currently in
-the <abbr>workspace</abbr>. The user at this point should run `dvc checkout` so
-that the data files will match the current DVC-files.
+<abbr>project</abbr>'s DVC-files in turn refer to data stored in
+<abbr>cache</abbr>, but not necessarily in the <abbr>workspace</abbr>. Normally,
+it would be necessary to run `dvc checkout` to synchronize workspace and
+DVC-files.
 
 The installed Git hook automates running `dvc checkout`.
 
 **Commit**: When committing a change to the Git repository, that change possibly
 requires reproducing the corresponding
-[pipeline](/doc/commands-reference/pipeline) (with `dvc repro`) to regenerate
-the project results. Or there might be files not yet in the cache, which is a
-reminder to run `dvc commit`.
+[pipeline](/doc/commands-reference/pipeline) (using `dvc repro`) to regenerate
+the project results. Or there might be new data not yet in cache, which requires
+running `dvc commit` to update.
 
 The installed Git hook automates reminding the user to run either `dvc repro` or
-`dvc commit`.
+`dvc commit`, as needed.
 
 **Push**: While publishing changes to the Git remote repository with `git push`,
-it easy to forget that `dvc push` command usually needs to be run to save
-corresponding changes in data files and directories that are under DVC control
-to the DVC remote storage.
+it easy to forget that the `dvc push` command is necessary to upload new or
+updated data files and directories under DVC control to
+[remote storage](/doc/commands-reference/remote).
 
 The installed Git hook automates executing `dvc push`.
 
@@ -51,7 +49,7 @@ The installed Git hook automates executing `dvc push`.
 - A `post-checkout` hook executes `dvc checkout` after `git checkout` to
   automatically synchronize the data files with the new workspace state.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and
-  directories under DVC control to remote.
+  directories under DVC control to remote storage.
 
 For more information about git hooks, refer to the
 [git-scm documentation](https://git-scm.com/docs/githooks).

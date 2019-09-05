@@ -31,7 +31,7 @@ way to compare and pick the best performing experiment variant.
 [show](/doc/commands-reference/metrics/show),
 [modify](/doc/commands-reference/metrics/modify), and
 [remove](/doc/commands-reference/metrics/remove) commands are available to set
-up and manage DVC metrics.
+up and manage <abbr>DVC project</abbr> metrics.
 
 ## Options
 
@@ -56,7 +56,7 @@ $ dvc run -d code/evaluate.py -M data/eval.json \
 > running `dvc metrics add data/eval.json` to explicitly mark `data/eval.json`
 > as a metric file.
 
-Now let's print metric values that we are tracking in this DVC project:
+Now let's print metric values that we are tracking in this <abbr>project</abbr>:
 
 ```dvc
 $ dvc metrics show -a
@@ -65,8 +65,8 @@ $ dvc metrics show -a
       data/eval.json: {"AUC": "0.624652"}
 ```
 
-Then we can tell DVC an `xpath` for the metric file, so that it can output only
-the value of AUC. In the case of JSON, it uses
+We can also tell DVC an `xpath` for the metric file, so that it can output only
+the value of AUC. In the case of JSON, use
 [JSONPath expressions](https://goessner.net/articles/JsonPath/index.html) to
 selectively extract data out of metric files:
 

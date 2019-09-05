@@ -28,10 +28,10 @@ workspace. The `dvc import` command downloads such a <abbr>data artifact</abbr>
 in a way that it is tracked with DVC, so it can be updated when the external
 data source changes.
 
-The `url` argument specifies the Git repository URL of the external <abbr>DVC
-project</abbr> (both HTTP and SSH protocols are supported, e.g.
-`[user@]server:project.git`), while `path` is used to specify the path to the
-data to be downloaded within the repo.
+The `url` argument specifies the address of the Git repository containing the
+external <abbr>DVC project</abbr> (both HTTP and SSH protocols supported, e.g.
+`[user@]server:project.git`). `path` is used to specify the path of the data to
+be downloaded within the repo.
 
 > See `dvc import-url` to download and tack data from other supported URLs.
 
@@ -53,7 +53,7 @@ To actually [track the data](https://dvc.org/doc/get-started/add-files),
 
 Note that import stages are considered always "locked", meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` on them to update the
-downloaded data artifact from the external DVC repo.
+downloaded data artifact from the external DVC repository.
 
 ## Options
 
@@ -74,8 +74,8 @@ downloaded data artifact from the external DVC repo.
 
 ## Examples
 
-An obvious case for this command is to import a dataset from an external DVC
-repo, such as our
+A simple case for this command is to import a dataset from an external DVC repo,
+such as our
 [get started example repo](https://github.com/iterative/example-get-started).
 
 ```dvc
@@ -111,5 +111,3 @@ outs:
 Several of the values above are pulled from the original stage file
 `model.pkl.dvc` in the external DVC repo. `url` and `rev_lock` fields are used
 to specify the origin and version of the dependency.
-
-<!-- ## Example: Dataset registry -->

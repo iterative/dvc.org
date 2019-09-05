@@ -41,8 +41,8 @@ DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to data in
 an external location, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such a
 DVC-file, the `deps` section stores the remote URL, and the `outs` section
-contains the corresponding local path in the workspace. It records enough data
-from the external file or directory to enable DVC to efficiently check it to
+contains the corresponding local path in the workspace. It records metadata from
+the external file or directory, allowing DVC to efficiently check it later and
 determine whether the local copy is out of date.
 
 DVC supports several types of (local or) remote locations (protocols):
@@ -184,8 +184,8 @@ outs:
 
 The `etag` field in the DVC-file contains the
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) recorded from the HTTP request.
-If the remote file changes, its ETag will be different, letting DVC know whether
-its necessary to download it again.
+If the remote file changes, its ETag will be different. This metadata allows DVC
+to determine whether its necessary to download it again.
 
 > See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
 > text format above.

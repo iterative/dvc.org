@@ -2,16 +2,16 @@
 
 DVC is a command-line tool. The typical use case for DVC goes as follows:
 
-- In an existing Git repository, initialize a DVC repository with `dvc init`.
-- Copy source code files for modeling into the repository and convert the files
-  into DVC data files with `dvc add` command.
-- Process raw data files through your data processing and modeling code using
-  the `dvc run` command.
-- Use `--outs` option to specify `dvc run` command outputs which will be
-  converted to DVC data files after the code runs.
-- Clone a git repo with the code of your ML application pipeline. However, this
-  will not copy your DVC cache. Use
-  [data remotes](/doc/commands-reference/remote) and `dvc push` to share the
-  cache (data).
-- Use `dvc repro` to quickly reproduce your pipeline on a new iteration, after
-  your data item files or source code of your ML application are modified.
+- In an existing Git repository, initialize a <abbr>DVC project</abbr> with
+  `dvc init`.
+- Copy source code files for modeling into the repository and track the files
+  with DVC using the `dvc add` command.
+- Process raw data with your own data processing and modeling code using the
+  `dvc run` command, using the `--outs` option to outputs which will also be
+  tracked by DVC after the code is executed.
+- Sharing a Git repository with the source code of your ML
+  [pipeline](/doc/commands-reference/pipeline) will not include the project's
+  <abbr>cache</abbr>. Use [remote storage](/doc/commands-reference/remote) and
+  `dvc push` to share this cache (data tracked by DVC).
+- Use `dvc repro` to automatically reproduce your full pipeline, iteratively as
+  input data or source code change.
