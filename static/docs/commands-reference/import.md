@@ -111,3 +111,5 @@ outs:
 Several of the values above are pulled from the original stage file
 `model.pkl.dvc` in the external DVC repo. `url` and `rev_lock` fields are used
 to specify the origin and version of the dependency.
+
+<!-- ## Example: Dataset registry -->

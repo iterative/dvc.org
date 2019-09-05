@@ -205,7 +205,7 @@ MD5 (model.pkl) = a66489653d1b6a8ba989799367b32c43
 ```
 
 What happened is that DVC went through the sole existing DVC-file and adjusted
-the current set of files to match the `outs` of that stage. `dvc fetch` runs
+the current set of files to match the `outs` of that stage. `dvc fetch` is run
 once to download missing data from the remote storage to the <abbr>cache</abbr>.
 Alternatively, we could have just run `dvc pull` in this case to automatically
 do `dvc fetch` + `dvc checkout`.

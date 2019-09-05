@@ -43,8 +43,8 @@ $ git clone https://github.com/iterative/example-versioning.git
 $ cd example-versioning
 ```
 
-This command pulls a repository with a single script `train.py` that runs the
-training.
+This command pulls a repository with a single script `train.py` that will train
+the model.
 
 Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a virtual environment with a tool such as
@@ -326,10 +326,10 @@ commands. Here we would like to outline some next topics and ideas you would be
 interested to try to learn more about DVC and how it makes managing ML projects
 simpler.
 
-First of all, you should have probably noticed that the script that trains a
-model is written in a monolithic way. It runs the `save_bottleneck_feature`
-function to pre-calculate bottom, "frozen" part of the net every time it is run.
-Features are written into files, and intention probably was that the
+First of all, you may have noticed that the script that trains the model is
+written in a monolithic way. It uses the `save_bottleneck_feature` function to
+pre-calculate bottom, "frozen" part of the net every time it is run. Features
+are written into files, and intention probably was that the
 `save_bottleneck_feature` can be commented out after the first run. It's not
 very convenient to remember to comment/uncomment it every time dataset is
 changed.

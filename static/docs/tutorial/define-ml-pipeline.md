@@ -188,8 +188,8 @@ command. `-d data/Posts.xml.zip` defines the input file and `-o data/Posts.xml`
 the resulting extracted data file.
 
 The `unzip` command extracts data file `data/Posts.xml.zip` to a regular file
-`data/Posts.xml`. It knows nothing about data files or DVC. DVC runs the command
-and does some additional work if the command was successful:
+`data/Posts.xml`. It knows nothing about data files or DVC. DVC executes the
+command and does some additional work if the command was successful:
 
 1. DVC transforms all the outputs `-o` files into data files. It is like
    applying `dvc add` for each of the outputs. As a result, all the actual data

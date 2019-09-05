@@ -113,14 +113,15 @@ workspace) is different from remote storage. Bringing the two into sync requires
   `dvc remote list`) to compare against. The argument, `REMOTE`, is a remote
   name defined using the `dvc remote` command. Implies `--cloud`.
 
-- `-a`, `--all-branches` - compares cache content against all Git branches.
-  Instead of checking just the current workspace version, it runs the same
-  status command in all the branches of this repo. The corresponding branches
-  are shown in the status output. Applies only if `--cloud` or a `-r` remote is
-  specified.
+- `-a`, `--all-branches` - compares cache content against all Git branches
+  instead of checking just the current workspace version. This basically runs
+  the same status command in all the branches of this repo. The corresponding
+  branches are shown in the status output. Applies only if `--cloud` or a `-r`
+  remote is specified.
 
 - `-T`, `--all-tags` - compares cache content against all Git tags instead of
-  checking just the current workspace version. The corresponding tags are shown
+  checking just the current workspace version. This basically runs the same
+  status command in all the tags of this repo. The corresponding tags are shown
   in the status output. Applies only if `--cloud` or a `-r` remote is specified.
 
 - `-j JOBS`, `--jobs JOBS` - specifies the number of jobs DVC can use to

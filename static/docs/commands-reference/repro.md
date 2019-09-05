@@ -116,10 +116,10 @@ specified), and updates stage files with the new checksum information.
 
 ## Examples
 
-For simplicity, let's build a pipeline defined below (if you want get your hands
-on something more real, see this
-[mini-tutorial](/doc/get-started/example-pipeline)). It takes this `text.txt`
-file:
+For simplicity, let's build a pipeline defined below. (If you want get your
+hands on something more real, see this shot
+[pipeline tutorial](/doc/get-started/example-pipeline)). It takes this
+`text.txt` file:
 
 ```
 dvc
@@ -166,7 +166,7 @@ $ tree
 ├── count.txt      <---- result: "2"
 ├── filter.dvc     <---- first stage
 ├── numbers.txt    <---- intermediate result of the first stage
-├── process.py     <---- code that runs some transformation
+├── process.py     <---- code that causes data transformation
 └── text.txt       <---- text file to process
 ```
 
