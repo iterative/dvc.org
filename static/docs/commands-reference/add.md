@@ -17,14 +17,14 @@ positional arguments:
 
 The `dvc add` command is analogous to the `git add` command. By default though,
 an added file or directory is also committed to the <abbr>cache</abbr>. (Use the
-`--no-commit` option to avoid this, and `dvc commit` to commit the data to cache
-as a separate step.)
+`--no-commit` option to avoid this, and `dvc commit` as a separate step when
+ready.)
 
-This command's `targets` are files or directories to be places under DVC
-control. These are turned into outputs (`outs` field) in a resulting
+The `targets` are files or directories to be places under DVC control. These are
+turned into outputs (`outs` field) in a resulting
 [DVC-file](/doc/user-guide/dvc-file-format). (See steps below for more details.)
 Note that target data outside the current <abbr>workspace</abbr> is supported,
-which turn into [external outputs](/doc/user-guide/external-outputs).
+which becomes [external outputs](/doc/user-guide/external-outputs).
 
 Under the hood, a few actions are taken for each file (or directory) in
 `targets`:
