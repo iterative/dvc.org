@@ -1,6 +1,6 @@
 # remote list
 
-Show all available remotes.
+Show all available data remotes.
 
 See also [add](/doc/commands-reference/remote/add),
 [default](/doc/commands-reference/remote/default),
@@ -15,8 +15,8 @@ usage: dvc remote list [-h] [--global] [--system] [--local] [-q | -v]
 
 ## Description
 
-Reads DVC configuration files and prints the list of available remotes.
-Including names and URLs.
+Reads DVC configuration files and prints the list of available remotes,
+including names and URLs.
 
 ## Options
 

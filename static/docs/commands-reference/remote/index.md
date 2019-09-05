@@ -25,19 +25,19 @@ positional arguments:
 
 What is data remote?
 
-The same way as Github provides storage hosting for Git repositories, DVC data
-remotes provide a central place to keep and share data and model files. With a
-remote data storage, you can pull models and data files which were created by
+The same way as Github provides storage hosting for Git repositories, DVC
+remotes provide a central place to keep and share data and model files. With
+this remote storage, you can pull models and data files which were created by
 your team members without spending time and resources to build or process them
 locally. It also saves space on your local environment – DVC can
 [fetch](/doc/commands-reference/fetch) into the <abbr>cache directory</abbr>
 only the data you need for a specific branch/commit.
 
-> If you installed DVC via `pip`, depending on the remote type you plan to use
-> you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,
-> `[azure]`, and `[oss]`; or `[all]` to include them all. The command should
-> look like this: `pip install "dvc[s3]"`. This installs `boto3` library along
-> with DVC to support AWS S3 storage.
+> If you installed DVC via `pip`, depending on the remote storage type you plan
+> to use you might need to install optional dependencies: `[s3]`, `[ssh]`,
+> `[gs]`, `[azure]`, and `[oss]`; or `[all]` to include them all. The command
+> should look like this: `pip install "dvc[s3]"`. This installs `boto3` library
+> along with DVC to support AWS S3 storage.
 
 Using DVC with a remote data storage is optional. By default, DVC is configured
 to use a local data storage only (usually `.dvc/cache` directory inside your

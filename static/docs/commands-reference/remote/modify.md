@@ -1,10 +1,10 @@
 # remote modify
 
-Modify configuration of remotes.
+Modify configuration of data remotes.
 
 > This command is commonly needed after `dvc remote add` or
 > [default](/doc/commands-reference/remote/default) to setup credentials or
-> other customizations to each remote type.
+> other customizations to each remote storage type.
 
 See also [add](/doc/commands-reference/remote/add),
 [default](/doc/commands-reference/remote/default),
@@ -27,7 +27,7 @@ positional arguments:
 ## Description
 
 Remote `name` and `option` name are required. Option names are remote type
-specific. See below examples and a list of per remote type: AWS S3, Google
+specific. See below examples and a list of remote storage types: AWS S3, Google
 Cloud, Azure, SSH, ALiyun OSS, and others.
 
 This command modifies a `remote` section in the project's
@@ -60,7 +60,7 @@ manual editing could be used to change the configuration.
 
 ## Examples
 
-The following are the types and of remotes (protocols) supported:
+The following are the types of remote storage (protocols) supported:
 
 <details>
 

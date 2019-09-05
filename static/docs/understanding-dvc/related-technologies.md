@@ -94,11 +94,12 @@ process.
 
 - Git-annex is a datafile-centric system whereas DVC is focused on providing a
   workflow for machine learning and reproducible experiments. When a DVC or
-  Git-annex repository is cloned via git clone, data files won't be copied to
-  the local machine as file content is stored in separate data remotes. However,
+  Git-annex repository is cloned via `git clone`, data files won't be copied to
+  the local machine as file contents are stored in separate
+  [remotes](/doc/commands-reference/remote). With DVC,
   [DVC-files](/doc/user-guide/dvc-file-format) (which provide the reproducible
-  workflow) are always included in the cloned Git repository and hence can be
-  recreated locally with minimal effort.
+  workflow) are always included in the Git repository and hence can be recreated
+  locally with minimal effort.
 
 - DVC is not fundamentally bound to Git, having the option of changing the
   repository format.
