@@ -62,8 +62,8 @@ downloaded data artifact from the external DVC repo.
   isn't used) is the current working directory (`.`) and original file name.
 
 - `--rev` - specific Git revision of the DVC repository to import the data from.
-  [`HEAD`](https://git-scm.com/book/en/v2/Git-Internals-Git-References#ref_the_ref)
-  is used by default when this option is not specified.
+  The tip of the default branch is used by default when this option is not
+  specified.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
