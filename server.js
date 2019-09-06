@@ -29,6 +29,7 @@ app.prepare().then(() => {
         Location:
           'https://' + req.headers['host'].replace(/^www\./, '') + req.url
       })
+      res.end()
     } else if (req.headers.host === 'man.dvc.org') {
       let normalized_pathname =
         ['/get-url', '/import-url'].indexOf(pathname) > 0
