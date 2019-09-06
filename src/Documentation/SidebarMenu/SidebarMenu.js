@@ -101,7 +101,7 @@ export default class SidebarMenu extends React.Component {
     this.setState({ isScrollHidden: true }, () =>
       setTimeout(() => {
         this.ps.update()
-        scrollIntoView(node, parent)
+        scrollIntoView(node, parent, { onlyScrollIfNeeded: true })
         this.setState({ isScrollHidden: false })
       }, 400)
     )
