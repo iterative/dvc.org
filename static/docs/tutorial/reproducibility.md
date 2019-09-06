@@ -10,14 +10,14 @@ The most exciting part of DVC is reproducibility.
 DVC tracks all the dependencies, which helps you iterate on ML models faster
 without thinking what was affected by your last change.
 
-> In order to track all the dependencies, DVC finds and reads ALL the DVC-files
-> in a repository and builds a dependency graph
-> ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) based on these
-> files.
+In order to track all the dependencies, DVC finds and reads all the DVC-files in
+a repository and builds a dependency graph
+([pipeline](/doc/commands-reference/pipeline)) based on these files.
 
 This is one of the differences between DVC reproducibility and traditional
 Makefile-like build automation tools (Make, Maven, Ant, Rakefile etc). It was
-designed in such a way to localize specification of DAG nodes.
+designed in such a way to localize specification of the graph nodes (pipeline
+[stages](/doc/commands-reference/run)).
 
 If you run `repro` on any [DVC-file](/doc/user-guide/dvc-file-format) from our
 repository, nothing happens because nothing was changed in the pipeline defined
@@ -86,7 +86,7 @@ Reproducing 'Dvcfile':
 
 The process started with the feature creation stage because one of its
 parameters was changed — the edited source code file `code/featurization.py`.
-All dependent stages were ran again as well.
+All dependent stages were executed as well.
 
 Let’s take a look at the metric’s change. The improvement is close to zero
 (+0.0075% to be precise):
@@ -181,8 +181,7 @@ clf = RandomForestClassifier(n_estimators=700,
                              n_jobs=6, random_state=seed)
 ```
 
-Only the modeling and the evaluation stage need to be reproduced. Just run
-repro:
+Only the modeling and the evaluation stage need to be reproduced. Just run:
 
 ```dvc
 $ dvc repro

@@ -19,9 +19,9 @@ It will find and print all metric files (default) or a specified metric file in
 the current branch (if `targets` are provided) or across all branches/tags (if
 `-a` or`-T` specified respectively).
 
-The optional `targets` argument represents several DVC metric files or
-directories. If a `target` is a directory, recursively search and process all
-metric files in it with the `-R` option.
+The optional `targets` argument represents several metric files or directories.
+If a `target` is a directory, recursively search and process all metric files in
+it with the `-R` option.
 
 Providing `type` (via `-t` CLI option), overrides the full metric specification
 (both, `type` and `xpath`) defined in the DVC-file (usually, using

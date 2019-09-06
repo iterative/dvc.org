@@ -118,10 +118,10 @@ $ dvc pipeline show eval.txt.dvc --ascii
               `--------------'
 ```
 
-List dependencies recursively if graph have tree structure:
+List dependencies recursively if the graph has a tree structure:
 
 ```dvc
-dvc pipeline show e.file.dvc --tree
+$ dvc pipeline show e.file.dvc --tree
 e.file.dvc
 ├── c.file.dvc
 │   └── b.file.dvc

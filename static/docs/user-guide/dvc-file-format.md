@@ -45,7 +45,7 @@ meta: # Special key to contain arbitary user data
 
 On the top level, `.dvc` file consists of these fields:
 
-- `cmd`: Command that is being run in this stage
+- `cmd`: Executable command defined in this stage
 - `deps`: List of dependencies for this stage
 - `outs`: List of outputs for this stage
 - `md5`: md5 checksum for this DVC-file

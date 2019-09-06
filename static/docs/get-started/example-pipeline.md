@@ -168,9 +168,9 @@ is automatically added to the `.gitignore` file and a link is created into a
 cache `.dvc/cache/a3/04afb96060aad90176268345e10355` to save it.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
-that DVC-files describe, we can restore the full chain (DAG) of commands we need
-to apply. This is important when you run `dvc repro` to reproduce the final or
-intermediate result.
+that DVC-files describe, we can restore the full series of commands (pipeline
+stages) we need to apply. This is important when you run `dvc repro` to
+reproduce the final or intermediate result.
 
 Second, you should see by now that the actual data is stored in the `.dvc/cache`
 directory, each file having a name in a form of an md5 hash. This cache is
@@ -237,9 +237,9 @@ $ dvc run -d code/evaluate.py -d data/model.pkl -d data/matrix-test.pkl \
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and outputs in DVC-files, we can restore the full
-chain of commands (DAG) we need to apply. This is important when you run
-`dvc repro` to reproduce the final or intermediate result.
+By analyzing dependencies and outputs in DVC-files, we can generate a dependency
+graph: a series of commands DVC needs to execute. `dvc repro` does this in order
+to restore a pipeline and reproduce its intermediate or final results.
 
 `dvc pipeline show` helps to visualize pipelines (run it with `-c` option to see
 actual commands instead of DVC-files):
@@ -357,9 +357,9 @@ By wrapping your commands with `dvc run` it's easy to integrate DVC into your
 existing ML development pipeline/processes without any significant effort to
 rewrite your code.
 
-The key step to notice is that DVC automatically derives the dependencies
-between the experiment stages and builds the dependency graph (DAG)
-transparently.
+The key detail to notice is that DVC automatically derives the dependencies
+between the defined stages by building dependency graphs that represent data
+pipelines.
 
 Not only can DVC streamline your work into a single, reproducible environment,
 it also makes it easy to share this environment by Git including the

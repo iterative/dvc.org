@@ -1,6 +1,6 @@
 # config
 
-Get or set repository or global DVC config options.
+Get or set <abbr>project</abbr>-level (or global) DVC configuration options.
 
 ## Synopsis
 
@@ -51,7 +51,7 @@ corresponding config file.
 ## Configuration sections
 
 These are the `name` parameters that can be used with `dvc config`, or the
-sections in the <abbr>DVC project</abbr> config file (`.dvc/config`).
+sections in the <abbr>project</abbr> config file (`.dvc/config`).
 
 ### core
 
@@ -83,10 +83,10 @@ remote. See `dvc remote` for more information.
 
 ### cache
 
-The DVC cache is a hidden storage (by default located in the `.dvc/cache`
-directory) for files that are under DVC control, and their different versions.
-(See `dvc cache` and
-[DVC internal files](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+A DVC project <abbr>cache</abbr> is the hidden storage (by default located in
+the `.dvc/cache` directory) for files that are under DVC control, and their
+different versions. (See `dvc cache` and
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 for more details.)
 
 - `cache.dir` - set/unset cache directory location. A correct value must be
@@ -137,9 +137,9 @@ for more details.)
   > These warnings are automatically turned off when `cache.type` is manually
   > set.
 
-- `cache.local` - name of a local remote to use as local cache. This will
-  overwrite the value provided to `dvc config cache.dir` or `dvc cache dir`.
-  Refer to `dvc remote` for more information on "local remotes".
+- `cache.local` - name of a local remote to use as cache directory. (Refer to
+  `dvc remote` for more information on "local remotes".) This will overwrite the
+  value provided to `dvc config cache.dir` or `dvc cache dir`.
 
 - `cache.ssh` - name of an
   [SSH remote to use as external cache](/doc/user-guide/external-outputs#ssh).

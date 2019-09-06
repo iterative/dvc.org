@@ -64,9 +64,10 @@ $ git clone git@github.com:<username>/dvc.org.git
 ```
 
 Make sure you have the latest version of [Node.js](https://nodejs.org/en/) and
-[yarn](https://yarnpkg.com/en/) installed. Install and keep the dependencies up
-to date by running `yarn` often. This will also enable the Git pre-commit hook
-that will be formatting your code and documentation files automatically.
+[yarn](https://yarnpkg.com/en/) installed. Install the dependencies by running
+`yarn`. (Run it continuously as the repository changes to keep the dependencies
+up to date.) This will also enable the Git pre-commit hook that will be
+formatting your code and documentation files automatically.
 
 It's highly recommended to run the Node docs app locally to check documentation
 changes before submitting them, and its very much needed in order to make
@@ -88,7 +89,8 @@ command before committing them.
   Visual Studio Code and the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
   plugin. Correct formatting will be done automatically by a Git pre-commit hook
-  which is integrated when `yarn` runs in the instructions above.
+  which is integrated when `yarn` installs the project dependencies (explained
+  in the instructions above).
 
 - We use [Prettier](https://prettier.io/) default conventions to format our
   source code files. The formatting of staged files will automatically be done
