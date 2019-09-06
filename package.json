@@ -32,7 +32,7 @@
     "lodash.kebabcase": "^4.1.1",
     "lodash.startcase": "^4.4.0",
     "lodash.throttle": "^4.1.1",
-    "next": "^7.0.3",
+    "next": "^9.0.5",
     "perfect-scrollbar": "^1.4.0",
     "prop-types": "^15.7.2",
     "react": "^16.9.0",
