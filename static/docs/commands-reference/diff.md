@@ -102,9 +102,9 @@ added file with size 37.9 MB
 
 ## Example: Specific targets across Git references
 
-We can base this example in the [Experiment Metrics](/doc/get-started/metrics)
-and [Compare Experiments](/doc/get-started/compare-experiments) sections of our
-_Get Started_ section, which describe different experiments to produce the
+We can base this example in the [Metrics](/doc/get-started/metrics) and
+[Compare Experiments](/doc/get-started/compare-experiments) sections of our _Get
+Started_ section, which describe different experiments to produce the
 `model.pkl` file. Our sample repository has the `bigrams-experiment` and
 `baseline-experiment`
 [tags](https://github.com/iterative/example-get-started/tags) respectively to

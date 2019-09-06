@@ -13,14 +13,20 @@ positional arguments:
 
 ## Description
 
-Sets a special flag in the relevant [DVC-file](/doc/user-guide/dvc-file-format)
-to identify a specified output as a metric file. Alternatively, an output file
-can be marked as a metric via `-M` or `-m` parameter of the `dvc run` command.
+Sets a special field in the [DVC-file](/doc/user-guide/dvc-file-format) which
+defines the given `path` as an <abbr>output</abbr>, identifying this output as a
+[project metric](/doc/commands-reference/metrics) to track.
 
-While any text file could be used as a metric file to track, it's recommended to
-use `TSV`, `CSV`, or `JSON` formats. DVC provides a way (see
-`dvc metrics show`), to parse those formats to get to a specific value if file
-contains multiple metrics.
+Note that outputs can also be marked as metrics via the `-m` or `-M` options of
+the `dvc run` command.
+
+While any text file can be tracked as a metric file, it's recommended to use
+`TSV`, `CSV`, or `JSON` formats. DVC provides a way to parse those formats to
+get to a specific value, if the file contains multiple metrics. See
+`dvc metrics show` for more details.
+
+> Note that [external output](/doc/user-guide/external-outputs) cannot be marked
+> as project metrics.
 
 ## Options
 

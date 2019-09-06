@@ -21,11 +21,12 @@ positional arguments:
 
 ## Description
 
-DVC has the ability to tag a specified output file as a file that contains
-metrics to track. Metrics are usually any project specific numbers e.g. `AUC`,
-`ROC`, etc. DVC itself does not ascribe any specific meaning for these numbers.
-Usually these numbers are produced by the model evaluation script and serve as a
-way to compare and pick the best performing experiment variant.
+DVC has the ability to mark a certain stage <abbr>outputs</abbr> as files
+containing metrics to track. (See `--metrics` option of `dvc run`.) Metrics are
+project-specific numeric values e.g. `AUC`, `ROC`, etc. DVC itself does not
+ascribe any specific meaning for these numbers. Usually these numbers are
+produced by the model evaluation script and serve as a way to compare and pick
+the best performing experiment variant.
 
 [Add](/doc/commands-reference/metrics/add),
 [show](/doc/commands-reference/metrics/show),
@@ -78,7 +79,7 @@ $ dvc metrics show
       data/eval.json: 0.624652
 ```
 
-And finally let's remove `data/eval.json` from the project's metrics:
+And finally let's remove `data/eval.json` from the project metrics:
 
 ```dvc
 $ dvc metrics remove data/eval.json
