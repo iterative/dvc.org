@@ -1,6 +1,6 @@
 import React from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
-import scrollIntoView from 'scroll-into-view-if-needed'
+import scrollIntoView from 'dom-scroll-into-view'
 
 // components
 import DownloadButton from '../../DownloadButton'
@@ -95,13 +95,13 @@ export default class SidebarMenu extends React.Component {
   componentDidUpdate(prevProps) {
     if (prevProps.currentPath === this.props.currentPath) return
 
+    const node = document.getElementById(this.props.currentPath)
+    const parent = document.getElementById(this.props.id)
+
     this.setState({ isScrollHidden: true }, () =>
       setTimeout(() => {
         this.ps.update()
-        scrollIntoView(document.getElementById(this.props.currentPath), {
-          behavior: 'smooth',
-          scrollMode: 'if-needed'
-        })
+        scrollIntoView(node, parent)
         this.setState({ isScrollHidden: false })
       }, 400)
     )
