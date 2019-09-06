@@ -24,6 +24,7 @@
   "dependencies": {
     "axios": "^0.19.0",
     "color": "^3.1.2",
+    "dom-scroll-into-view": "^2.0.1",
     "force-ssl-heroku": "^1.0.2",
     "github-markdown-css": "^3.0.1",
     "isomorphic-fetch": "^2.2.1",
