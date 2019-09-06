@@ -30,11 +30,11 @@ permissions.
 
 ### Transfer existing cache (Optional)
 
-This step is optional. You can skip it if you are setting up a new DVC
-repository and don't have your local cache stored in `.dvc/cache`. If you did
-work on your project with DVC previously and you wish to transfer your cache to
-the shared cache directory (external to your workspace), you will need to simply
-move it from an old cache location to the new one:
+This step is optional. You can skip it if you are setting up a new DVC project
+whose cache directory is not stored in the default location, `.dvc/cache`. If
+you did work on your project with DVC previously and you wish to transfer your
+cache to the shared cache directory (external to your workspace), you will need
+to simply move it from an old cache location to the new one:
 
 ```dvc
 $ mv .dvc/cache/* /path/to/dvc-cache

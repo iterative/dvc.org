@@ -22,7 +22,7 @@ with a single number inside.
 > Please, refer to the `dvc metrics` command documentation to see more available
 > options and details.
 
-Let's again commit and save results:
+Let's save the updated results:
 
 ```dvc
 $ git add evaluate.dvc auc.metric

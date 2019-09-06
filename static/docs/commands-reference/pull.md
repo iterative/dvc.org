@@ -1,9 +1,9 @@
 # pull
 
 Downloads missing files and directories from
-[remote storage](/doc/commands-reference/remote) to the local <abbr>cache</abbr>
-based on [DVC-files](/doc/user-guide/dvc-file-format) in the
-<abbr>workspace</abbr>, then links the downloaded files into the workspace.
+[remote storage](/doc/commands-reference/remote) to the <abbr>cache</abbr> based
+on [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>,
+then links the downloaded files into the workspace.
 
 ## Synopsis
 
@@ -43,9 +43,9 @@ only the files (or directories) missing from the workspace by searching all
 versions or branches of the repository if using Git, nor will it download files
 which have not changed.
 
-The command `dvc status -c` can list files that are missing in the local cache
-but referenced in the current project DVC-files. It can be used to see what
-files `dvc pull` would download.
+The command `dvc status -c` can list files referenced in current DVC-files, but
+missing in the <abbr>cache</abbr>. It can be used to see what files `dvc pull`
+would download.
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
@@ -59,12 +59,10 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` specifies which remote cache (see
-  `dvc remote list`) to pull from. The value for `REMOTE` is a cache name
-  defined using the `dvc remote` command. If no `REMOTE` is given, or if no
-  remote's are defined in the project, an error message is printed. If the
-  option is not specified, then the default remote, configured with the
-  `core.config` config option, is used.
+- `-r REMOTE`, `--remote REMOTE` specifies which remote to pull from (see
+  `dvc remote list`). The value for `REMOTE` is a name defined using
+  `dvc remote`. If the option is not specified, then the default remote
+  (configured with the `core.config` config option) is used.
 
 - `-a`, `--all-branches` - determines the files to download by examining
   DVC-files in all branches of the project repository (if using Git). It's
@@ -84,15 +82,15 @@ reflinks or hardlinks to put it in the workspace without copying. See
   each target directory and its subdirectories for DVC-files to inspect.
 
 - `-f`, `--force` - does not prompt when removing workspace files, which occurs
-  when these file no longer match the DVC-file references. This option surfaces
-  behavior from the `dvc fetch` and `dvc checkout` commands because `dvc pull`
-  in effect performs those 2 functions in a single command.
+  when these file no longer match the current DVC-file references. This option
+  surfaces behavior from the `dvc fetch` and `dvc checkout` commands because
+  `dvc pull` in effect performs those 2 functions in a single command.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
-  while downloading files from the remote cache. The effect is to control the
-  number of files downloaded simultaneously. Default is `4 * cpu_count()`. For
-  example with `-j 1` DVC downloads one file at a time, with `-j 2` it downloads
-  two at a time, and so forth. For SSH remotes default is set to 4.
+  while downloading files from the remote. The effect is to control the number
+  of files downloaded simultaneously. Default is `4 * cpu_count()`. For example
+  with `-j 1` DVC downloads one file at a time, with `-j 2` it downloads two at
+  a time, and so forth. For SSH remotes default is set to 4.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -110,16 +108,16 @@ done and set a context for the example, let's define an SSH remote with the
 `dvc remote add` command:
 
 ```dvc
-$ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
+$ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/remote/storage
 $ dvc remote list
-r1	ssh://_username_@_host_/path/to/dvc/cache/directory
+r1	ssh://_username_@_host_/path/to/dvc/remote/storage
 ```
 
 > DVC supports several remote types. For details, see the
 > [`remote add`](/doc/commands-reference/remote/add) documentation.
 
-With a remote cache containing some images and other files, we can pull all
-changed files from the current Git branch:
+Having some images and other files in remote storage, we can pull all changed
+files from the current Git branch:
 
 ```dvc
 $ dvc pull --remote r1
@@ -160,8 +158,8 @@ model.p.dvc
 Dvcfile
 ```
 
-Imagine the remote storage has been modified such that the data files in some of
-these stages should be updated into the local cache.
+Imagine the remote storage has been modified such that the data in some of these
+stages should be updated in the <abbr>workspace</abbr>.
 
 ```dvc
 $ dvc status --cloud

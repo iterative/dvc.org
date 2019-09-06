@@ -17,16 +17,19 @@ positional arguments:
 
 ## Description
 
-A data pipeline, in general, is a chain of commands that process data files. It
-produces intermediate data and a final result. For example, Machine Learning
-(ML) pipelines typically start a with large raw datasets, include featurization
-and training intermediate stages, and produce a final model, as well as certain
-metrics.
+A data pipeline, in general, is a series of data processes (for example console
+commands that take an input and produce an output). A pipeline may produce
+intermediate data, and has a final result. Machine Learning (ML) pipelines
+typically start a with large raw datasets, include intermediate featurization
+and training stages, and produce a final model, as well as accuracy metrics.
 
-In DVC, pipeline stage files and commands, their data I/O, interdependencies,
-and results (intermediate or final) are defined with `dvc add` and `dvc run`,
-among other commands. This allows us to form one or more pipelines of stages
-connected by their dependencies and outputs.
+In DVC, pipeline stages and commands, their data I/O, interdependencies, and
+results (intermediate or final) are defined with `dvc add` and `dvc run`, among
+other commands. This allows DVC to restore one or more pipelines of stages
+interconnected by their dependencies and outputs later. (See `dvc repro`.)
+
+> DVC builds a dependency graph
+> ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) to do this.
 
 `dvc pipeline` commands help users display the existing project pipelines in
 different ways.

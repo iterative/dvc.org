@@ -16,9 +16,9 @@ this example is to give you some hands-on experience with a very basic scenario
 ![](/static/img/cats-and-dogs.jpg)
 
 We first train a classifier model using 1000 labeled images, then we double the
-number and run the training again. We capture both datasets and both results and
-show how to use `dvc checkout` along with `git checkout` to switch between
-different versions.
+number and retrain our model. We capture both datasets and both results and show
+how to use `dvc checkout` along with `git checkout` to switch between different
+versions.
 
 The specific algorithm that is used to train and validate the classifier is not
 important. No prior knowledge is required about Keras. We reuse the
@@ -43,8 +43,8 @@ $ git clone https://github.com/iterative/example-versioning.git
 $ cd example-versioning
 ```
 
-This command pulls a repository with a single script `train.py` that runs the
-training.
+This command pulls a repository with a single script `train.py` that will train
+the model.
 
 Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a virtual environment with a tool such as
@@ -207,7 +207,7 @@ data
        └── cat.1400.jpg
 ```
 
-Of course, we want to leverage these new labels and train the model again.
+Of course, we want to leverage these new labels and retrain the model.
 
 ```dvc
 $ dvc add data
@@ -326,18 +326,18 @@ commands. Here we would like to outline some next topics and ideas you would be
 interested to try to learn more about DVC and how it makes managing ML projects
 simpler.
 
-First of all, you should have probably noticed that the script that trains a
-model is written in a monolithic way. It runs the `save_bottleneck_feature`
-function to pre-calculate bottom, "frozen" part of the net every time it is run.
-Features are written into files, and intention probably was that the
+First of all, you may have noticed that the script that trains the model is
+written in a monolithic way. It uses the `save_bottleneck_feature` function to
+pre-calculate bottom, "frozen" part of the net every time it is run. Features
+are written into files, and intention probably was that the
 `save_bottleneck_feature` can be commented out after the first run. It's not
 very convenient to remember to comment/uncomment it every time dataset is
 changed.
 
-Here where DVC pipelines feature comes very handy and was designed for. We
-touched it briefly when we described `dvc run` and `dvc repro` at the very end.
-The next step here would be splitting the script into two parts, and utilizing
-DVC [pipelines](/doc/commands-reference/pipeline). See
+Here's where the [pipelines](/doc/commands-reference/pipeline) feature of DVC
+comes very handy and was designed for. We touched it briefly when we described
+`dvc run` and `dvc repro` at the very end. The next step here would be splitting
+the script into two parts, and utilizing pipelines. See
 [this example](/doc/get-started/example-pipeline) to get a hands-on experience
 with pipelines and try to apply it here. Don't hesitate to join our
 [community](/chat) to ask any questions!

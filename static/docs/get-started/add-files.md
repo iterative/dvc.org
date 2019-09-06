@@ -16,8 +16,8 @@ $ wget https://data.dvc.org/get-started/data.xml -O data/data.xml
 If you experienced problems using `wget` or you're on Windows and you don't want
 to install it, you'll need to use a browser to download `data.xml` and save it
 into `data` subdirectory. To download, right-click
-[this link](https://data.dvc.org/get-started/data.xml) and click `Save link as` (Chrome) or
-`Save object as` (Firefox).
+[this link](https://data.dvc.org/get-started/data.xml) and click `Save link As`
+(Chrome) or `Save Object As` (Firefox).
 
 </details>
 

@@ -1,7 +1,7 @@
 # get
 
-Download or copy file or directory from another DVC repository (on a git server
-such as Github) into the local file system.
+Download or copy file or directory from another DVC repository (on a Git server
+e.g. Github) into the local file system.
 
 > Unlike `dvc import`, this command does not track the downloaded data files
 > (does not create a DVC-file).
@@ -23,9 +23,10 @@ other files and directories tracked in another DVC repository into the current
 working directory, regardless of whether it's a DVC project. The `dvc get`
 command downloads such a <abbr>data artifact</abbr>.
 
-The `url` argument specifies the external DVC project's Git repository URL (both
-HTTP and SSH protocols supported, e.g. `[user@]server:project.git`), while
-`path` is used to specify the path to the data to be downloaded within the repo.
+The `url` argument specifies the address of the Git repository containing the
+external <abbr>DVC project</abbr> (both HTTP and SSH protocols supported, e.g.
+`[user@]server:project.git`). `path` is used to specify the path of the data to
+be downloaded within the repo.
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
@@ -42,7 +43,8 @@ created in the current working directory, with its original file name.
   isn't used) is the current working directory (`.`) and original file name.
 
 - `--rev` - specific Git revision of the DVC repository to import the data from.
-  `HEAD` by default.
+  The tip of the default branch is used by default when this option is not
+  specified.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -79,12 +81,12 @@ is found, which specifies `model.pkl` in its outputs (`outs`). DVC then
 its
 [config file](https://github.com/iterative/example-get-started/blob/master/.dvc/config)).
 
-A common use for downloading binary files from DVC repos, as done in this
-example, is to place a ML model inside a wrapper application that serves as an
-[ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) pipeline or as an
-HTTP/RESTful API (web service) that provides predictions upon request. This can
-be automated leveraging DVC with [CI/CD](https://en.wikipedia.org/wiki/CI/CD)
-tools.
+A recommended use for downloading binary files from DVC repositories, as done in
+this example, is to place a ML model inside a wrapper application that serves as
+an [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) pipeline or as
+an HTTP/RESTful API (web service) that provides predictions upon request. This
+can be automated leveraging DVC with
+[CI/CD](https://en.wikipedia.org/wiki/CI/CD) tools.
 
 The same example applies to raw or intermediate data files as well, of course,
 for cases where we want to download those files and perform some analysis on

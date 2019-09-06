@@ -1,10 +1,10 @@
 # remote modify
 
-Modify configuration of remotes.
+Modify configuration of data remotes.
 
 > This command is commonly needed after `dvc remote add` or
 > [default](/doc/commands-reference/remote/default) to setup credentials or
-> other customizations to each remote type.
+> other customizations to each remote storage type.
 
 See also [add](/doc/commands-reference/remote/add),
 [default](/doc/commands-reference/remote/default),
@@ -27,10 +27,10 @@ positional arguments:
 ## Description
 
 Remote `name` and `option` name are required. Option names are remote type
-specific. See below examples and a list of per remote type: AWS S3, Google
+specific. See below examples and a list of remote storage types: AWS S3, Google
 Cloud, Azure, SSH, ALiyun OSS, and others.
 
-This command modifies a `remote` section in the DVC project's
+This command modifies a `remote` section in the project's
 [config file](/doc/commands-reference/config). Alternatively, `dvc config` or
 manual editing could be used to change the configuration.
 
@@ -60,7 +60,7 @@ manual editing could be used to change the configuration.
 
 ## Examples
 
-The following are the types and of remotes (protocols) supported:
+The following are the types of remote storage (protocols) supported:
 
 <details>
 
@@ -122,7 +122,7 @@ these settings, you could use the following options:
   ```
 
 - `acl` - set object level access control list (ACL) such as `private`,
-`public-read`, etc. By default, no ACL is specified.
+  `public-read`, etc. By default, no ACL is specified.
 
   ```dvc
   $ dvc remote modify myremote acl bucket-owner-full-control
@@ -263,13 +263,14 @@ For more information on configuring Azure Storage connection strings, visit
   ```dvc
   $ dvc remote modify myremote ask_password true
   ```
-  
-- `gss_auth` - use Generic Security Services authentication if available on
-  host (for example, [with kerberos](https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface#Relationship_to_Kerberos)).
+
+- `gss_auth` - use Generic Security Services authentication if available on host
+  (for example,
+  [with kerberos](https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface#Relationship_to_Kerberos)).
   Using this option requires `paramiko[gssapi]` which is currently only
   supported by our pip package and could be installed with
-  `pip install 'dvc[ssh_gssapi]'`. Other packages (Conda, Windows, Homebrew
-  cask and Mac pkg) do not support it.
+  `pip install 'dvc[ssh_gssapi]'`. Other packages (Conda, Windows, Homebrew cask
+  and Mac pkg) do not support it.
 
   ```dvc
   $ dvc remote modify myremote gss_auth true
