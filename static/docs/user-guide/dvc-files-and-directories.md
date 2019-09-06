@@ -40,13 +40,13 @@ directory (`.dvc/`) with special internal files and directories:
 
 - `.dvc/updater.lock`: Lock file for `.dvc/updater`
 
-- `.dvc/lock`: Lock file for the whole DVC project
+- `.dvc/lock`: Lock file for the entire DVC project
 
 ## Structure of cache directory
 
 There are two ways in which the data is stored in <abbr>cache</abbr>. It depends
-on if the actual data is stored in a file (eg. `data.csv`) or it is a directory
-of files.
+on whether the actual data is stored in a single file (eg. `data.csv`) or in a
+directory of files.
 
 We evaluate a checksum, usually MD5, for the data file which is a 32 characters
 long string. The first two characters are assigned to name the directory inside
@@ -108,3 +108,5 @@ $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
   {"md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg"}
 ]
 ```
+
+See also `dvc cache dir` to set the location of the cache directory.

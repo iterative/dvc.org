@@ -8,8 +8,7 @@ Properly remove data files or directories tracked by DVC.
 usage: dvc remove [-h] [-q | -v] [-o | -p] [-f] targets [targets ...]
 
 positional arguments:
-  targets          DVC-files to remove. Optional. (Finds all
-                   DVC-files in the workspace by default.)
+  targets        DVC-files to remove.
 ```
 
 ## Description

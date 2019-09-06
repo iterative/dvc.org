@@ -16,7 +16,7 @@ may mean either replacing `train.tsv` with a new file having the same name or
 editing the content of the file.
 
 If you run `dvc repro` there is no need to manage generated (output) files
-manually, DVC removes them for you before running the stage which generates
+manually, DVC removes them for you before executing the stage which generates
 them.
 
 If you use DVC to track a file that is generated during your pipeline (e.g. some

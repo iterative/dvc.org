@@ -4,8 +4,8 @@ Lock a [DVC-file](/doc/user-guide/dvc-file-format)
 ([stage](/doc/commands-reference/run)). Use `dvc unlock` to unlock the file.
 
 If a DVC-file is locked, the stage is considered unchanged. `dvc repro` will not
-run commands to rebuild outputs of locked stages, even if some dependencies have
-changed and even if `--force` is provided.
+execute commands to regenerate outputs of locked stages, even if some
+dependencies have changed and even if `--force` is provided.
 
 ## Synopsis
 

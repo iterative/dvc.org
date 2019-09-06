@@ -13,8 +13,10 @@ process.
   should NOT be stored in a Git repository but still need to be tracked and
   versioned.
 
-2. **Workflow management tools** (pipelines and DAGs): Airflow, Luigi, etc. The
-   differences are:
+2. **Workflow management tools** ([pipelines]](/doc/commands-reference/pipeline)
+   and dependency graphs
+   ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))): Airflow,
+   Luigi, etc. The differences are:
 
 - DVC is focused on data science and modeling. As a result, DVC pipelines are
   lightweight, easy to create and modify. However, DVC lacks pipeline execution
@@ -34,10 +36,10 @@ process.
 - DVC doesn't need to run any services. No graphical user interface as a result,
   but we expect some GUI services will be created on top of DVC.
 
-- DVC has transparent design:
-  [meta files and directories](/doc/user-guide/dvc-files-and-directories)
-  (including the <abbr>data cache</abbr>) have a human-readable format and can
-  be easily reused by external tools.
+- DVC has transparent design. Its
+  [internal files and directories](/doc/user-guide/dvc-files-and-directories)
+  (including the <abbr>cache</abbr> directory) have a human-readable format and
+  can be easily reused by external tools.
 
 4. **Git workflows** and Git usage methodologies such as Gitflow. The
    differences are:
@@ -51,18 +53,22 @@ process.
 
 5. **Makefile** (and it's analogues). The differences are:
 
-- DVC utilizes a DAG:
+- DVC utilizes a
+  [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
+  (DAG):
 
-  - The DAG is defined by [DVC-files](/doc/user-guide/dvc-file-format) (with
-    file names `<file>.dvc` or `Dvcfile`).
+  - The DAG or dependency graph is defined by the connections between
+    [DVC-file](/doc/user-guide/dvc-file-format) (with file names `<file>.dvc` or
+    `Dvcfile`), based on their dependencies and outputs.
 
-  - One DVC-file defines one node in the DAG. All DVC-files in a repository make
-    up a single pipeline (think a single Makefile). All DVC-files (and
+  - Each DVC-file defines one node in the DAG. All DVC-files in a repository
+    make up a single pipeline (think a single Makefile). All DVC-files (and
     corresponding pipeline commands) are implicitly combined through their
     inputs and outputs, to simplify conflict resolving during merges.
 
-  - DVC provides a simple command `dvc run CMD` to generate a DVC-file
-    automatically based on the provided command, dependencies, and outputs.
+  - DVC provides a simple command `dvc run` to generate a DVC-file or "stage
+    file" automatically, based on the provided command, dependencies, and
+    outputs.
 
 - File tracking:
 
@@ -88,11 +94,12 @@ process.
 
 - Git-annex is a datafile-centric system whereas DVC is focused on providing a
   workflow for machine learning and reproducible experiments. When a DVC or
-  Git-annex repository is cloned via git clone, data files won't be copied to
-  the local machine as file content is stored in separate data remotes. However,
+  Git-annex repository is cloned via `git clone`, data files won't be copied to
+  the local machine as file contents are stored in separate
+  [remotes](/doc/commands-reference/remote). With DVC,
   [DVC-files](/doc/user-guide/dvc-file-format) (which provide the reproducible
-  workflow) are always included in the cloned Git repository and hence can be
-  recreated locally with minimal effort.
+  workflow) are always included in the Git repository and hence can be recreated
+  locally with minimal effort.
 
 - DVC is not fundamentally bound to Git, having the option of changing the
   repository format.

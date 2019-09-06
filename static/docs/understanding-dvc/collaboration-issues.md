@@ -29,8 +29,8 @@ principled way:
 - How do you recover a model from last week without wasting time waiting for the
   model to retrain?
 
-- How do you quickly switch between the large data source and a small data
-  subset without modifying source code?
+- How do you quickly switch between the large dataset and a small subset without
+  modifying source code?
 
 4. Reproducibility.
 

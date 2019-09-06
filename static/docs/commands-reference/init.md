@@ -1,6 +1,6 @@
 # init
 
-This command initializes a DVC project on a directory.
+This command initializes a <abbr>DVC project</abbr> on a directory.
 
 Note that by default the current working directory is expected to contain a Git
 repository, unless the `--no-scm` option is used.
@@ -14,7 +14,7 @@ usage: dvc init [-h] [-q | -v] [--no-scm] [-f]
 ## Description
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`
-and `.gitignore` files, and <abbr>cache directory</abbr>. These files and
+and `.gitignore` files, and <abbr>cache</abbr> directory. These files and
 directories are hidden from the user generally and are not meant to be
 manipulated directly.
 
@@ -22,7 +22,7 @@ manipulated directly.
 [DVC directories](/doc/user-guide/dvc-files-and-directories). It will hold all
 the contents of tracked data files. Note that `.dvc/.gitignore` lists this
 directory, which means that the cache directory is not under Git control. This
-is your local cache and you cannot push it to any Git remote.
+is a local cache and you cannot `git push` it.
 
 ## Options
 
@@ -30,8 +30,8 @@ is your local cache and you cannot push it to any Git remote.
   written.
 
 - `-f`, `--force` - remove `.dvc/` if it exists before initialization. Will
-  remove all local cache. Useful when first `dvc init` got corrupted for some
-  reason.
+  remove any existing local cache. Useful when a previous `dvc init` has been
+  corrupted.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -42,7 +42,7 @@ is your local cache and you cannot push it to any Git remote.
 
 ## Examples
 
-Creating a new DVC repository (requires a Git repository).
+Create a new DVC repository (requires Git):
 
 ```dvc
 $ mkdir example && cd example

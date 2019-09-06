@@ -22,8 +22,8 @@ DVC uses a few core concepts:
   features, change model hyperparameters, data cleaning, add a new data source)
   should be performed in a separate branch and then merged into the master
   branch only if the experiment is successful. DVC allows experiments to be
-  integrated into a project's history and NEVER needs to recompute the results
-  after a successful merge.
+  integrated into a Git repository history and NEVER needs to recompute the
+  results after a successful merge.
 
 - **Experiment state** or state: Equivalent to a Git snapshot (all committed
   files). Git checksum, branch name, or tag can be used as a reference to a
@@ -33,9 +33,11 @@ DVC uses a few core concepts:
   generates output files based on a set of input files and source code. This
   action usually changes experiment state.
 
-- **Pipeline**: Directed acyclic graph (DAG) or chain of commands to reproduce
-  an experiment state. The commands are connected by input and output files.
-  Pipelines are defined by special **DVC-files** (which act like Makefiles).
+- **Pipeline**: Dependency graph or series of commands to reproduce data
+  processing results. The commands are connected by input and output files
+  (dependencies). Pipelines are defined by special
+  [stage files](/doc/commands-reference/run) (similar to Makefiles). Refer to
+  [pipeline]](/doc/commands-reference/pipeline) for more information.
 
 - **Workflow**: Set of experiments and relationships among them. Workflow
   corresponds to the entire Git repository.
@@ -45,8 +47,8 @@ DVC uses a few core concepts:
   [DVC-files](/doc/user-guide/dvc-file-format) describing that data are stored
   in Git for DVC needs (to maintain pipelines and reproducibility).
 
-- **Data cache**: Directory with all data files on a local hard drive or in
-  cloud storage, but not in the Git repository.
+- **Cache directory**: Directory with all data files on a local hard drive or in
+  cloud storage, but not in the Git repository. See `dvc cache dir`.
 
 - **Cloud storage** support: available complement to the core DVC features. This
   is how a data scientist transfers large data files or shares a GPU-trained
