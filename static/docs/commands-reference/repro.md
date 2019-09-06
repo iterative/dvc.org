@@ -166,7 +166,7 @@ $ tree
 ├── count.txt      <---- result: "2"
 ├── filter.dvc     <---- first stage
 ├── numbers.txt    <---- intermediate result of the first stage
-├── process.py     <---- code that causes data transformation
+├── process.py     <---- code that implements data transformation
 └── text.txt       <---- text file to process
 ```
 
