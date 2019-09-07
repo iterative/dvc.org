@@ -1,7 +1,7 @@
 # metrics modify
 
-Modify metric settings (like type, path expression that is used to parse it,
-etc).
+Modify [project metric](/doc/commands-reference/metrics) values such as type,
+path expression that is used to parse it, etc. See full options below.
 
 ## Synopsis
 
@@ -15,9 +15,9 @@ positional arguments:
 ## Description
 
 This command finds a corresponding [DVC-file](/doc/user-guide/dvc-file-format)
-for the metric file `path` provided (the one that specifies the file path in
-question among its outputs – see `dvc metrics add` or `dvc run` with `-m` and
-`-M` options), and updates the information that represents the metric.
+for the provided metric file `path` – the one that defines `path` among its
+<abbr>outputs</abbr> – see `dvc metrics add` or the `-m` and `-M` options of
+`dvc run` – and updates the information that represents the metric.
 
 If the path provided is not defined in a <abbr>workspace</abbr> DVC-file, the
 following error will be raised:
@@ -64,35 +64,36 @@ ERROR: failed to modify metric file settings -
 ## Examples
 
 Let's first imagine we have a [stage](/doc/commands-reference/run) with a
-generic raw metric file initially. The stage file below is a dummy written for
-the sake or this examples section:
+generic metric file initially. The dummy command below simulates this imaginary
+setup:
 
 ```dvc
 $ dvc run -M metrics.csv "echo auc, 0.9567 > metrics.csv"
 ```
 
-Stage file `metrics.csv.dvc` file should look like this:
+The resulting stage file `metrics.csv.dvc` should look like this:
 
 ```yaml
-cmd: echo auc, 0.9567 > metrics.csv
 md5: 6ed9b798bf460e1aa80b27388425a07d
+cmd: echo auc, 0.9567 > metrics.csv
+wdir: .
 outs:
-  - cache: false
-    md5: 13ee80c6b3e238c5097427c2114ae6e4
-    metric: true
+  - md5: 13ee80c6b3e238c5097427c2114ae6e4
     path: metrics.csv
+    cache: false
+    metric: true
+    persist: false
 ```
 
-And if we run `dvc metrics show metrics.csv` we will get the complete content of
-the file:
+And if we run `dvc metrics show metrics.csv`, we will get the complete contents
+of the file:
 
 ```dvc
 $ dvc metrics show metrics.csv
-
-    metrics.csv: auc, 0.9567
+	metrics.csv: auc    0.9567
 ```
 
-Okay. Let's now, imagine we are interested only in the numeric values – second
+Okay. Let's now imagine we are interested only in the numeric value, the second
 column of the CSV file. We can specify the `CSV` type (`-t`) and an `xpath`
 (`-x`) to extract the second column:
 
@@ -105,6 +106,14 @@ and exclude names:
 
 ```dvc
 $ dvc metrics show metrics.csv
+	metrics.csv: [' 0.9567']
+```
 
-    metrics.csv: [' 0.9567']
+Notice that the `metric` field in the `metrics.csv.dvc` stage file changed to
+include this information:
+
+```yaml
+metric:
+  type: csv
+  xpath: 0,1
 ```
