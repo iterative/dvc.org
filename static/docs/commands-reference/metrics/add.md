@@ -1,6 +1,6 @@
 # metrics add
 
-Tag the file located at `path` as a metric file.
+Mark the file located at `path` as a metric file.
 
 ## Synopsis
 
@@ -13,7 +13,7 @@ positional arguments:
 
 ## Description
 
-Sets a special field in the [DVC-file](/doc/user-guide/dvc-file-format) which
+Sets a special field, in the [DVC-file](/doc/user-guide/dvc-file-format) that
 defines the given `path` as an <abbr>output</abbr>, marking this output as a
 [project metric](/doc/commands-reference/metrics) to track.
 

@@ -16,16 +16,20 @@ positional arguments:
 
 This command finds a corresponding [DVC-file](/doc/user-guide/dvc-file-format)
 for the provided metric file `path` – the one that defines `path` among its
-<abbr>outputs</abbr> – see `dvc metrics add` or the `-m` and `-M` options of
-`dvc run` – and updates the information that represents the metric.
+<abbr>outputs</abbr>, see `dvc metrics add` or the `-m` and `-M` options of
+`dvc run` – and updates the information that describes the metric. See full
+options below.
 
-If the path provided is not defined in a <abbr>workspace</abbr> DVC-file, the
-following error will be raised:
+If `path` isn't defined in a <abbr>workspace</abbr> DVC-file, the following
+error will be raised:
 
 ```dvc
 ERROR: failed to modify metric file settings -
        unable to find stage file with output '<path>'
 ```
+
+> Alternatively, see `dvc metrics moshowdify` command to learn how to apply `-t`
+> and `-x` temporarily.
 
 ## Options
 
