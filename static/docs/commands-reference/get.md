@@ -1,7 +1,7 @@
 # get
 
-Download or copy file or directory from an external <abbr>DVC project</abbr>
-hosted on a Git repository online (e.g. Github) into the local file system.
+Download or copy file or directory from any <abbr>DVC project</abbr> in a Git
+repository (e.g. hosted on Github) into the current working directory.
 
 > Unlike `dvc import`, this command does not track the downloaded data files
 > (does not create a DVC-file).
@@ -18,22 +18,23 @@ positional arguments:
 
 ## Description
 
-DVC provides an easy way to reuse datasets, intermediate results, ML models, or
-other files and directories tracked in another DVC repository into the current
-working directory. The `dvc get` command downloads such a <abbr>data
-artifact</abbr>.
+Provides an easy way to reuse datasets, intermediate results, ML models, or
+other files and directories (any <abbr>data artifact</abbr>) tracked in another
+DVC repository, by downloading them into the current working directory.
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
 
 The `url` argument specifies the address of the Git repository containing the
-external <abbr>DVC project</abbr> (both HTTP and SSH protocols supported, e.g.
-`[user@]server:project.git`). `path` is used to specify the path of the data to
-be downloaded within the repo.
+source <abbr>DVC project</abbr>. Both HTTP and SSH protocols are supported for
+online repositories (e.g. `[user@]server:project.git`). `url` can also be a
+local file system path to an "offline" repository. The `path` argument of this
+command is used to specify the path of the data to be downloaded within the
+repo.
 
 Note that the required `path` is expected to point to a file or directory
-defined in one of the [DVC-files](/doc/user-guide/dvc-file-format) in the
-external repo (at `url`). You will not find these files by browsing the Git
+defined in one of the [DVC-files](/doc/user-guide/dvc-file-format) in the source
+repository (at `url`). You will not find these files by browsing the Git
 repository as one of the main points of using DVC in the first place is because
 Git cannot and does not control your data files.
 
