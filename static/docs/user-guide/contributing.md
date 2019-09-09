@@ -91,8 +91,8 @@ $ python -m tests
 ============= 434 passed, 6 skipped, 8 warnings in 131.43 seconds ==============
 ```
 
-Otherwise, for each failed test you should see and output like this that should
-help you identify the problem:
+Otherwise, for each failed test you should see and <abbr>output</abbr> like this
+that should help you identify the problem:
 
 ```
 $ python -m tests

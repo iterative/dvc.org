@@ -42,7 +42,7 @@ Our NLP model was based on [unigrams](https://en.wikipedia.org/wiki/N-gram)
 only. Let’s improve the model by adding bigrams. The bigrams model will extract
 signals not only from separate words but also from two-word combinations. This
 eventually increases the number of features for the model and hopefully improves
-the target metric.
+the target [metric](/doc/commands-reference/metrics).
 
 Before editing the `code/featurization.py` file, please create and checkout a
 new branch `bigrams`.
@@ -98,7 +98,7 @@ AUC: 0.624727
 
 This is not a great result but it gives us some information about the model.
 
-To compare it with the previous AUC, you can use the `metrics` command:
+To compare it with the previous AUC, you can use the `dvc metrics` command:
 
 ```dvc
 $ dvc metrics show -a
@@ -157,8 +157,8 @@ After proper checkout, there is nothing to reproduce because all the correct
 files were checked out by Git and all data files by DVC.
 
 In more detail — `git checkout master` checked out the code and DVC-files. The
-DVC-files from the master branch point to old (unigram based) data files outputs
-and dependencies. `dvc checkout` command found all the DVC-files and restored
+DVC-files from the master branch point to old (unigram based) dependencies and
+<abbr>output</abbr>. `dvc checkout` command found all the DVC-files and restored
 the data files based on them.
 
 ## Tune the model
@@ -195,7 +195,8 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-Validate the metric and commit all the changes.
+Validate the [metric](/doc/commands-reference/metrics) and commit all the
+changes.
 
 ```dvc
 $ cat data/eval.txt
@@ -246,7 +247,7 @@ remove all automatically generated
 
 Another way to solve git merge conflicts is to simply replace all checksums with
 empty strings ''. The only disadvantage of this trick is that DVC will need to
-recompute the outputs checksums.
+recompute the <abbr>outputs</abbr> checksums.
 
 After resolving the conflicts you need to checkout a proper version of the data
 files:
@@ -272,7 +273,7 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-The target metric:
+Check the target [metric](/doc/commands-reference/metrics):
 
 ```dvc
 $ cat data/eval.txt

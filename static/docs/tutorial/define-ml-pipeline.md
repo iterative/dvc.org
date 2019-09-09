@@ -63,10 +63,10 @@ need to run `dvc unprotect` or `dvc remove` first (see the
 ## Data file internals
 
 If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
-`dvc add`, you will see that only outputs are defined in `outs`. In this file,
-only one output is defined. The output contains the data file path in the
-repository and md5 checksum. This checksum determines a location of the actual
-content file in the
+`dvc add`, you will see that <abbr>outputs</abbr> are defined with the `outs`
+field. In this file, only one output is defined. The output contains the data
+file path in the repository and md5 checksum. This checksum determines a
+location of the actual content file in the
 [cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
 `.dvc/cache`.
 
@@ -155,8 +155,8 @@ written to by the command, if any.
 3. `-O file.tsv` (upper case O) specifies a regular output file (not to be added
    to DVC).
 
-It is important to specify the dependencies and the outputs of the run command
-before the command to run itself.
+It is important to specify the dependencies and the outputs of the command to
+run before the command to run itself.
 
 Let's see how an extract command `unzip` works under DVC:
 
@@ -191,7 +191,7 @@ The `unzip` command extracts data file `data/Posts.xml.zip` to a regular file
 `data/Posts.xml`. It knows nothing about data files or DVC. DVC executes the
 command and does some additional work if the command was successful:
 
-1. DVC transforms all the outputs `-o` files into data files. It is like
+1. DVC transforms all the output files (`-o` option) into data files. It's like
    applying `dvc add` for each of the outputs. As a result, all the actual data
    files content goes to the <abbr>cache</abbr> directory `.dvc/cache` and each
    of the file names will be added to `.gitignore`.
@@ -363,8 +363,9 @@ The model evaluation stage is the last one for this tutorial. To help in the
 pipeline's reproducibility, we use stage file name `Dvcfile`. (This will be
 discussed in more detail in the next chapter.)
 
-Note that the output file `data/eval.txt` was transformed by DVC into a metric
-file in accordance with the `-M` option.
+Note that the output file `data/eval.txt` was transformed by DVC into a
+[metric](/doc/commands-reference/metrics) file in accordance with the `-M`
+option.
 
 The result of the last three `dvc run` commands execution is three stage files
 and a modified .gitignore file. All the changes should be committed into Git:
@@ -380,8 +381,8 @@ $ git add .
 $ git commit -m Evaluate
 ```
 
-The evaluation stage output contains the target metrics value in a simple text
-form:
+The evaluation stage <abbr>output</abbr> contains the target metrics value in a
+simple text form:
 
 ```dvc
 $ cat data/eval.txt

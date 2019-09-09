@@ -19,10 +19,10 @@ positional arguments:
 
 The `dvc push` command is the twin pair to the `dvc pull` command, and together
 they are the means for uploading and downloading data to and from remote
-storage. [Data sharing](/doc/use-cases/share-data-and-model-files) across
-environments and preserving data versions (input datasets, intermediate results,
-models, metrics, etc) remotely (S3, SSH, GCS, etc) are the most common use cases
-for these commands.
+storage, respectively. [Data sharing](/doc/use-cases/share-data-and-model-files)
+across environments and preserving data versions (input datasets, intermediate
+results, models, [metrics](/doc/commands-reference/metrics), etc) remotely (S3,
+SSH, GCS, etc.) are the most common use cases for these commands.
 
 The `dvc push` command allows one to upload data to remote storage. It doesn't
 save any changes in the code or DVC-files. Those should be saved by using
@@ -35,8 +35,8 @@ Under the hood a few actions are taken:
   command-line options listed below will either limit or expand the set of
   DVC-files to consult.
 
-- For each output referenced from each selected DVC-file, DVC finds a
-  corresponding entry in the<abbr>cache</abbr>. DVC checks whether the entry
+- For each <abbr>output</abbr> referenced from each selected DVC-file, DVC finds
+  a corresponding entry in the<abbr>cache</abbr>. DVC checks whether the entry
   exists in the remote. From this DVC gathers a list of files missing from the
   remote storage.
 
@@ -131,7 +131,7 @@ $ dvc push
 (8/8): [###########           ] 57% model.pkl
 ```
 
-Push outputs of a specific DVC-file:
+Push <abbr>outputs</abbr> of a specific DVC-file:
 
 ```dvc
 $ dvc push data.zip.dvc
@@ -157,8 +157,8 @@ model.p.dvc
 Dvcfile
 ```
 
-Imagine the project has been modified such that the output of some of these
-stages should be uploaded to remote storage.
+Imagine the project has been modified such that the <abbr>output</abbr> of some
+of these stages should be uploaded to remote storage.
 
 ```dvc
 $ dvc status --cloud

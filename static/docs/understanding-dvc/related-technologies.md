@@ -59,7 +59,7 @@ process.
 
   - The DAG or dependency graph is defined by the connections between
     [DVC-file](/doc/user-guide/dvc-file-format) (with file names `<file>.dvc` or
-    `Dvcfile`), based on their dependencies and outputs.
+    `Dvcfile`), based on their dependencies and <abbr>outputs</abbr>.
 
   - Each DVC-file defines one node in the DAG. All DVC-files in a repository
     make up a single pipeline (think a single Makefile). All DVC-files (and
@@ -126,8 +126,9 @@ process.
   large files (30 GB+).
 
 - `git-lfs` was not made with data science scenarios in mind, so it does not
-  provide related features (e.g. pipelines, metrics), and thus Github has a
-  limit of 2 GB per repository.
+  provide related features (e.g. pipelines,
+  [metrics](/doc/commands-reference/metrics)), and thus Github has a limit of 2
+  GB per repository.
 
 ---
 

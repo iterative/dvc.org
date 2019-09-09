@@ -73,7 +73,7 @@ more.
 ## First model version
 
 Let's now add some data, then train the first model and capture it with DVC,
-including input dataset and metrics.
+including input dataset and [metrics](/doc/commands-reference/metrics).
 
 <details>
 
@@ -138,16 +138,16 @@ Next, we run the training with `python train.py`. We picked this example and
 datasets to be small enough to be run on your machine in a reasonable amount of
 time (a few minutes to train a model). This command produces a bunch of files,
 among them `model.h5` and `metrics.json`, weights of the trained model and
-metrics history. The simplest way to capture the current version of the model is
-to use `dvc add` again:
+[metrics](/doc/commands-reference/metrics) history. The simplest way to capture
+the current version of the model is to use `dvc add` again:
 
 ```dvc
 $ python train.py
 $ dvc add model.h5
 ```
 
-The recommended way of capturing script outputs is using `dvc run`. We'll touch
-it a little bit later. For now, let's commit the current state:
+The recommended way of capturing script <abbr>outputs</abbr> is using `dvc run`.
+We'll touch it a little bit later. For now, let's commit the current state:
 
 ```dvc
 $ git add .gitignore model.h5.dvc data.dvc metrics.json
@@ -289,11 +289,11 @@ datasets or model files that come and are updated from external sources. The
 
 On the other hand, there are files that are a result of running some code. In
 our example, please notice that `train.py` produces binary files (e.g.
-`bottlneck_features_train.npy`), the model file `model.h5`, and the metric file
-`metrics.json`.
+`bottlneck_features_train.npy`), the model file `model.h5`, and the
+[metric](/doc/commands-reference/metrics) file `metrics.json`.
 
 When you have a script that takes some data as an input and produces other data
-outputs, a better way to capture them is to use `dvc run`:
+<abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:
 
 ```dvc
 $ dvc remove -p model.h5.dvc
@@ -343,8 +343,9 @@ with pipelines and try to apply it here. Don't hesitate to join our
 [community](/chat) to ask any questions!
 
 Another detail we only brushed on here is the way we captured the `metrics.json`
-metrics file with the `-M` option of `dvc run`. Metric files are a special type
-of output DVC provides an interface for, in order to compare across Git tags or
-branches. See `dvc metrics` command and
+metrics file with the `-M` option of `dvc run`.
+[Metrics](/doc/commands-reference/metrics) are a special type of output DVC
+provides an interface for, in order to compare across Git tags or branches. See
+`dvc metrics` command and
 [Compare Experiments](/doc/get-started/compare-experiments) to learn more about
 managing metrics with DVC.

@@ -20,8 +20,8 @@ positional arguments:
 
 `dvc run` provides an interface to describe stages: individual commands and the
 data inputs and outputs that go into creating a data result. By specifying a
-list of dependencies (`-d` option) and outputs (`-o`, `-O`, `-m`, or `-M`
-options) DVC can later connect each stage by building a dependency graph
+list of dependencies (`-d` option) and <abbr>output</abbr> (`-o`, `-O`, `-m`, or
+`-M` options) DVC can later connect each stage by building a dependency graph
 ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)). This graph is
 used by DVC to restore a full data [pipeline](/doc/commands-reference/pipeline).
 
