@@ -32,11 +32,12 @@ local file system path to an "offline" repository. The `path` argument of this
 command is used to specify the path of the data to be downloaded within the
 repo.
 
-Note that the required `path` is expected to point to a file or directory
-defined in one of the [DVC-files](/doc/user-guide/dvc-file-format) in the source
-repository (at `url`). You will not find these files by browsing the Git
-repository as one of the main points of using DVC in the first place is because
-Git cannot and does not control your data files.
+Note that the required `path` is expected to point to a data file or directory
+tracked by DVC – defined in one of the
+[DVC-files](/doc/user-guide/dvc-file-format) of the source repository at `url`.
+You will not find these files by browsing the Git repository as one of the main
+points of using DVC in the first place is because Git cannot and does not
+control your data files.
 
 > See `dvc get-url` to download data from other supported URLs.
 
