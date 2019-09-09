@@ -1,7 +1,7 @@
 # metrics modify
 
 Modify [project metric](/doc/commands-reference/metrics) values such as type,
-path expression that is used to parse it, etc. See full options below.
+path expression that is used to parse it, etc. (See full options below.)
 
 ## Synopsis
 
@@ -17,8 +17,8 @@ positional arguments:
 This command finds a corresponding [DVC-file](/doc/user-guide/dvc-file-format)
 for the provided metric file `path` – the one that defines `path` among its
 <abbr>outputs</abbr>, see `dvc metrics add` or the `-m` and `-M` options of
-`dvc run` – and updates the information that describes the metric. See full
-options below.
+`dvc run` – and updates the specification of the metric. (See full options
+below.)
 
 If `path` isn't defined in a <abbr>workspace</abbr> DVC-file, the following
 error will be raised:
@@ -28,8 +28,8 @@ ERROR: failed to modify metric file settings -
        unable to find stage file with output '<path>'
 ```
 
-> Alternatively, see `dvc metrics moshowdify` command to learn how to apply `-t`
-> and `-x` temporarily.
+> Alternatively, see `dvc metrics modify` command to learn how to apply `-t` and
+> `-x` temporarily.
 
 ## Options
 
