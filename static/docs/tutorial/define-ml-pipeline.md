@@ -254,7 +254,7 @@ $ du -sh .
 186M .
 ```
 
-Let’s commit the result of the `unzip` command. This will be the first stage of
+Let's commit the result of the `unzip` command. This will be the first stage of
 our ML pipeline.
 
 ```dvc
@@ -268,7 +268,7 @@ A single stage of our ML pipeline was defined and committed into repository. It
 isn't necessary to commit stages right after their creation. You can create a
 few and commit them to Git together later.
 
-Let’s create the following stages: converting an XML file to TSV, and then
+Let's create the following stages: converting an XML file to TSV, and then
 separating training and testing datasets:
 
 ```dvc
@@ -292,7 +292,7 @@ Positive size 2049, negative size 97951
 The result of the commands above are two
 [stage files](/doc/commands-reference/run) corresponding to each of the
 commands, `Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file
-was created. This type of file should not be tracked by Git. Let’s manually
+was created. This type of file should not be tracked by Git. Let's manually
 include this type of file into `.gitignore`.
 
 ```dvc
@@ -313,7 +313,7 @@ $ git add .
 $ git commit -m "Process to TSV and separate test and train"
 ```
 
-Let’s run and save the following commands for our pipeline. First, define the
+Let's run and save the following commands for our pipeline. First, define the
 feature extraction stage, that takes `train` and `test` TSVs and generates
 corresponding matrix files:
 

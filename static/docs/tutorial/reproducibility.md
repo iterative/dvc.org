@@ -39,7 +39,7 @@ Tries to reproduce the same pipeline... But there is still nothing to reproduce.
 ## Adding bigrams
 
 Our NLP model was based on [unigrams](https://en.wikipedia.org/wiki/N-gram)
-only. Let’s improve the model by adding bigrams. The bigrams model will extract
+only. Let's improve the model by adding bigrams. The bigrams model will extract
 signals not only from separate words but also from two-word combinations. This
 eventually increases the number of features for the model and hopefully improves
 the target [metric](/doc/commands-reference/metrics).
@@ -88,7 +88,7 @@ The process started with the feature creation stage because one of its
 parameters was changed — the edited source code file `code/featurization.py`.
 All dependent stages were executed as well.
 
-Let’s take a look at the metric’s change. The improvement is close to zero
+Let's take a look at the metric's change. The improvement is close to zero
 (+0.0075% to be precise):
 
 ```dvc
@@ -113,7 +113,7 @@ master:
 > It's convenient to keep track of information even for failed experiments.
 > Sometimes a failed hypothesis gives more information than a successful one.
 
-Let’s keep the result in the repository. Later we can find out why bigrams don't
+Let's keep the result in the repository. Later we can find out why bigrams don't
 add value to the current model and change that.
 
 Many DVC-files were changed. This happened due to md5 checksum changes.
@@ -137,9 +137,9 @@ $ git commit -m Bigrams
 
 The previous experiment was done in the 'featurization' stage and provided no
 improvements. This might be caused by not having perfect model hyperparameters.
-Let’s try to improve the model by changing the hyperparameters.
+Let's try to improve the model by changing the hyperparameters.
 
-There is no good reason to improve the last bigrams model. Let’s checkout the
+There is no good reason to improve the last bigrams model. Let's checkout the
 original model from the master branch.
 
 > Note that after checking out code and DVC-files from Git, data files have to
@@ -213,15 +213,15 @@ $ git commit -m '700 trees in the forest'
 
 ## Merge the model to master
 
-Now we can revisit the failing hypothesis with bigrams, which didn’t provide any
+Now we can revisit the failing hypothesis with bigrams, which didn't provide any
 model improvement even with one thousand more features. The current model with
 700 trees in the forest is stronger and we might be able to get more information
-using bigrams. So, let’s incorporate the bigrams changes into the current model
+using bigrams. So, let's incorporate the bigrams changes into the current model
 using a regular Git merge command.
 
 > Git merge logic works for data files and respectively for DVC models.
 
-But first, let’s create a branch as usual.
+But first, let's create a branch as usual.
 
 ```dvc
 $ git checkout -b train_bigrams
