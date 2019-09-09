@@ -10,6 +10,7 @@ usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
                [-m METRICS] [-M METRICS_NO_CACHE] [-f FILE] [-c CWD]
                [-w WDIR] [--no-exec] [-y] [--overwrite-dvcfile]
                [--ignore-build-cache] [--remove-outs] [--no-commit]
+               [--always-changed]
                command
 
 positional arguments:
@@ -142,6 +143,10 @@ pipeline.
   cache.
 
   > The `dvc status` command will mention that the file is `not in cache`.
+
+- `--always-changed` - always consider this DVC-file as changed. As a result
+  `dvc status` will report it as `always changed` and `dvc repro` will always
+  run it.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
