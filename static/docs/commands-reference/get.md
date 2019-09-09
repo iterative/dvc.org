@@ -33,7 +33,7 @@ command is used to specify the path of the data to be downloaded within the
 repo.
 
 Note that the required `path` is expected to point to a data file or directory
-tracked by DVC – defined in one of the
+tracked by DVC – specified in one of the
 [DVC-files](/doc/user-guide/dvc-file-format) of the source repository at `url`.
 You will not find these files by browsing the Git repository as one of the main
 points of using DVC in the first place is because Git cannot and does not

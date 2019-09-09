@@ -3,7 +3,7 @@
 Reproduce complete or partial [pipelines](/doc/commands-reference/pipeline) by
 executing commands defined in their [stages](/doc/commands-reference/run), in
 the correct order. The commands to be executed are determined by recursively
-analyzing dependencies and outputs of the target stages.
+analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 
 ## Synopsis
 
@@ -174,7 +174,7 @@ You may want to check the contents of `Dvcfile` and `count.txt` for later
 reference.
 
 Ok, now, let's run the `dvc repro` command (remember, by default it reproduces
-outputs defined in `Dvcfile`, `count.txt` in this case):
+<abbr>outputs</abbr> tracked in `Dvcfile`, in this case `count.txt`):
 
 ```dvc
 $ dvc repro
@@ -215,7 +215,7 @@ information, new `md5` checksums and a new result respectively.
 
 The `--downstream` option allows us to only reproduce results from commands
 after a specific stage in a pipeline. To demonstrate how it works, let's make a
-change in `text.txt` (the input of our first stage, defined in the previous
+change in `text.txt` (the input of our first stage, created in the previous
 example):
 
 ```

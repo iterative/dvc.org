@@ -23,8 +23,8 @@ for the provided metric file `path` – the one that defines `path` among its
 This does not remove or delete the file in question. It only unmarks it as a
 metric file. It also keeps the file as an output of the corresponding DVC-file.
 
-If `path` isn't defined in a <abbr>workspace</abbr> DVC-file, the following
-error will be raised:
+If `path` isn't tracked by DVC (described in one of the <abbr>workspace</abbr>
+DVC-files), the following error will be raised:
 
 ```dvc
 ERROR: failed to remove metric file '<path>' -

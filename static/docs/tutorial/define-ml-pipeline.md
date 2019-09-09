@@ -63,8 +63,8 @@ need to run `dvc unprotect` or `dvc remove` first (see the
 ## Data file internals
 
 If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
-`dvc add`, you will see that <abbr>outputs</abbr> are defined with the `outs`
-field. In this file, only one output is defined. The output contains the data
+`dvc add`, you will see that <abbr>outputs</abbr> are tracked in the `outs`
+field. In this file, only one output is specified. The output contains the data
 file path in the repository and md5 checksum. This checksum determines a
 location of the actual content file in the
 [cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
@@ -134,16 +134,15 @@ same.
 ## Running commands
 
 Once the data files are in the workspace, you can start processing the data and
-train ML models out of the data files. DVC helps you to define stages of your ML
-process and easily connect them into a ML
-[pipeline](/doc/commands-reference/pipeline).
+train ML models out of the data files. DVC helps you to define
+[stages](/doc/commands-reference/run) of your ML process and easily connect them
+into a ML [pipeline](/doc/commands-reference/pipeline).
 
 `dvc run` executes any command that you pass into it as a list of parameters.
 However, the command to run alone is not as interesting as its role within a
 pipeline, so we'll need to specify its dependencies and output files. We call
-this a pipeline [stage](/doc/commands-reference/run). Dependencies may include
-input files and directories, and the actual command to run. Outputs are files
-written to by the command, if any.
+this a pipeline stage. Dependencies may include input files and directories, and
+the actual command to run. Outputs are files written to by the command, if any.
 
 1. Option `-d file.tsv` should be used to specify a dependency file or
    directory. The dependency can be a regular file from a repository or a data
@@ -264,9 +263,9 @@ $ git commit -m "extract data"
 
 ## Running in bulk
 
-A single stage of our ML pipeline was defined and committed into repository. It
-isn't necessary to commit stages right after their creation. You can create a
-few and commit them to Git together later.
+A single [stage](/doc/commands-reference/run) of our ML pipeline was created and
+committed into repository. It isn't necessary to commit stages right after their
+creation. You can create a few and commit them to Git together later.
 
 Let's create the following stages: converting an XML file to TSV, and then
 separating training and testing datasets:
@@ -381,8 +380,8 @@ $ git add .
 $ git commit -m Evaluate
 ```
 
-The evaluation stage <abbr>output</abbr> contains the target metrics value in a
-simple text form:
+The <abbr>output</abbr> of the evaluation stage contains the target metrics
+value in a simple text form:
 
 ```dvc
 $ cat data/eval.txt

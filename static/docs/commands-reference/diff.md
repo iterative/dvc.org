@@ -151,7 +151,7 @@ The output from this command confirms that there's a difference in the
 Unlike Git, DVC features controlling entire directories without having to add
 each individual file. See `dvc add` without `--recursive` for example. `dvc run`
 can also put whole directories under DVC control (when these are specified as
-command dependencies or outputs).
+command dependencies or <abbr>outputs</abbr>).
 
 We can use `dvc diff` to check for changes in a directory by specifying the
 directory as the target (with option `-t`). Note that we skip the `b_ref`
@@ -176,8 +176,8 @@ Let's use our sample repo once again, which has several
 conveniency. The `5-preparation` tag corresponds to the
 [Connect Code and Data](/doc/get-started/connect-code-and-data) section of our
 _Get Started_ section, in which the `dvc run` command is used to create the
-`prepare.dvc` stage file. The output defined in this DVC-file is the
-`data/prepared` directory.
+`prepare.dvc` stage file. This DVC-file tracks the `data/prepared` directory
+<abbr>output</abbr>.
 
 ```dvc
 $ dvc diff -t data/prepared 5-preparation

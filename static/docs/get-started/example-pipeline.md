@@ -7,12 +7,12 @@ predicting tags for a given StackOverflow question. For example, we want one
 classifier which can predict a post that is about the Python language by tagging
 it `python`. This is a short version of the [Tutorial](/doc/tutorial).
 
-In this example, we will focus on building a simple ML pipeline that takes an
-archive with StackOverflow posts and trains the prediction model and saves it as
-an <abbr>output</abbr>. See [Get Started](/doc/get-started) to see links to
-other examples, tutorials, use cases if you want to cover other aspects of the
-DVC. The pipeline itself is a sequence of transformation we apply to the data
-file:
+In this example, we will focus on building a simple ML
+[pipeline](/doc/commands-reference/pipeline) that takes an archive with
+StackOverflow posts and trains the prediction model and saves it as an
+<abbr>output</abbr>. See [Get Started](/doc/get-started) to see links to other
+examples, tutorials, use cases if you want to cover other aspects of the DVC.
+The pipeline itself is a sequence of transformation we apply to the data file:
 
 ![](/static/img/example-flow-2x.png)
 
@@ -126,10 +126,11 @@ $ git commit -m "add dataset"
 
 ## Define stages
 
-Each [stage](/doc/commands-reference/run) – the parts of a pipeline – is
-described by providing a command to run, input data it takes and a list of
-<abbr>outputs</abbr>. DVC is not Python or any other language specific and can
-wrap any command runnable via CLI.
+Each [stage](/doc/commands-reference/run) – the parts of a
+[pipeline](/doc/commands-reference/pipeline) – is described by providing a
+command to run, input data it takes and a list of <abbr>outputs</abbr>. DVC is
+not Python or any other language specific and can wrap any command runnable via
+CLI.
 
 The first stage is to extract XML from the archive. Note that we don't need to
 run `dvc add` on `Posts.xml` below, `dvc run` saves the data automatically
@@ -358,12 +359,12 @@ master:
 ## Conclusion
 
 By wrapping your commands with `dvc run` it's easy to integrate DVC into your
-existing ML development pipeline/processes without any significant effort to
-rewrite your code.
+existing ML development [pipeline](/doc/commands-reference/pipeline) or other
+data science processes without any significant effort to rewrite your code.
 
 The key detail to notice is that DVC automatically derives the dependencies
-between the defined stages by building dependency graphs that represent data
-pipelines.
+between the pipeline [stages](/doc/commands-reference/run) by building
+dependency graphs that represent data pipelines.
 
 Not only can DVC streamline your work into a single, reproducible environment,
 it also makes it easy to share this environment by Git including the

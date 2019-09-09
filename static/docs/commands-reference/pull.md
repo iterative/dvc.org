@@ -101,7 +101,7 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 ## Examples
 
-For using the `dvc pull` command, remote storage must be defined. (See
+For using the `dvc pull` command, a remote storage must be defined. (See
 `dvc remote`.) For an existing <abbr>project</abbr>, remotes are usually already
 set up and you can use `dvc remote list` to check them. Just to remind how it is
 done and set a context for the example, let's define an SSH remote with the

@@ -57,7 +57,7 @@ process.
   [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
   (DAG):
 
-  - The DAG or dependency graph is defined by the connections between
+  - The DAG or dependency graph is defined implicitly by the connections between
     [DVC-file](/doc/user-guide/dvc-file-format) (with file names `<file>.dvc` or
     `Dvcfile`), based on their dependencies and <abbr>outputs</abbr>.
 

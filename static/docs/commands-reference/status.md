@@ -41,8 +41,8 @@ changes in other stages that affect the target.
 
 In the `local` mode, changes are detected through the checksum of every file
 listed in every DVC-file in question against the corresponding file in the file
-system. The output indicates the detected changes, if any. If no differences are
-detected, `dvc status` prints this message:
+system. The <abbr>outputs</abbr> indicates the detected changes, if any. If no
+differences are detected, `dvc status` prints this message:
 
 ```dvc
 $ dvc status
@@ -68,7 +68,7 @@ outputs described in it.
   `dvc repro`.
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
-  or outputs defined by the <abbr>DVC-file</abbr>. Depending on the use case,
+  or outputs tracked by the <abbr>DVC-file</abbr>. Depending on the use case,
   commands like `dvc commit` or `dvc repro`, `dvc run` should be run to update
   the file. Possible states are:
 
@@ -155,9 +155,9 @@ prepare.dvc
         always changed
 ```
 
-This shows that for `bar.dvc` the dependency, `foo`, has changed, and the
-output, `bar` has changed. Likewise for `foo.dvc` the dependency `foo` has
-changed, but no output has changed.
+This shows that for stage `bar.dvc`, the dependency `foo` and the
+<abbr>output</abbr> `bar` have changed. Likewise for `foo.dvc`, the dependency
+`foo` has changed, but no output has changed.
 
 ## Example: Dependencies
 

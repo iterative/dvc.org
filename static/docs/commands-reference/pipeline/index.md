@@ -25,8 +25,8 @@ featurization and training stages, and produce a final model, as well as
 accuracy [metrics](/doc/commands-reference/metrics).
 
 In DVC, pipeline stages and commands, their data I/O, interdependencies, and
-results (intermediate or final) are defined with `dvc add` and `dvc run`, among
-other commands. This allows DVC to restore one or more pipelines of stages
+results (intermediate or final) are specified with `dvc add` and `dvc run`,
+among other commands. This allows DVC to restore one or more pipelines of stages
 interconnected by their dependencies and outputs later. (See `dvc repro`.)
 
 > DVC builds a dependency graph
