@@ -37,7 +37,7 @@ $ git add data/.gitignore data/data.xml.dvc
 $ git commit -m "Add raw data to project"
 ```
 
-Committing these special files to Git allows us to tack different versions of
+Committing these special files to Git allows us to track different versions of
 the data as it evolves with the source code under Git control.
 
 <details>
