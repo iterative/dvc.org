@@ -1,28 +1,7 @@
 import styled, { css } from 'styled-components'
 
-export function fontFace(
-  name,
-  src,
-  fontWeight = 'normal',
-  fontStyle = 'normal'
-) {
-  return `
-        @font-face{
-            font-family: "${name}";
-            src: url(${'/static/fonts/' + src + '.otf'});
-            font-style: ${fontStyle};
-            font-weight: ${fontWeight};
-        }
-    `
-}
-
 export const global = `
-  ${fontFace('BrandonGrotesque', 'Brandon_reg')}
-  ${fontFace('BrandonGrotesqueBold', 'Brandon_bld')}
-  ${fontFace('BrandonGrotesqueMed', 'Brandon_med')}
-  ${fontFace('BrandonGrotesqueLight', 'Brandon_light')}
-  
-	html {
+  html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased !important;
     font-smoothing: antialiased;

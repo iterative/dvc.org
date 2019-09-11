@@ -85,6 +85,11 @@ export default class MyDocument extends Document {
               href="/static/favicon-16x16.png"
               sizes="16x16"
             />
+            <link
+              rel="stylesheet"
+              type="text/css"
+              href="/static/fonts/fonts.css"
+            />
             {this.props.styleTags}
           </Head>
           <body>
