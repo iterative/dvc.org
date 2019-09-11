@@ -1,5 +1,7 @@
 import React from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
+import scrollIntoView from 'dom-scroll-into-view'
+
 // components
 import DownloadButton from '../../DownloadButton'
 // utils
@@ -49,6 +51,7 @@ class SidebarMenuItem extends React.PureComponent {
       <>
         <SectionLink
           href={path}
+          id={path}
           onClick={e => onNavigate(path, e)}
           isActive={isActive}
           className={isRootParent ? 'docSearch-lvl0' : ''}
@@ -78,23 +81,38 @@ class SidebarMenuItem extends React.PureComponent {
 }
 
 export default class SidebarMenu extends React.Component {
+  state = {
+    isScrollHidden: false
+  }
+
   componentDidMount() {
-    this.ps = new PerfectScrollbar('#sidebar-menu', {
+    this.ps = new PerfectScrollbar(`#${this.props.id}`, {
       // wheelPropagation: window.innerWidth <= 572
       wheelPropagation: true
     })
   }
 
-  componentDidUpdate() {
-    this.ps.update()
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentPath === this.props.currentPath) return
+
+    const node = document.getElementById(this.props.currentPath)
+    const parent = document.getElementById(this.props.id)
+
+    this.setState({ isScrollHidden: true }, () =>
+      setTimeout(() => {
+        this.ps.update()
+        scrollIntoView(node, parent, { onlyScrollIfNeeded: true })
+        this.setState({ isScrollHidden: false })
+      }, 400)
+    )
   }
 
   render() {
-    const { sidebar, currentPath, onNavigate } = this.props
+    const { id, sidebar, currentPath, onNavigate } = this.props
     const activePaths = currentPath && getParentsListFromPath(currentPath)
 
     return (
-      <Menu id="sidebar-menu">
+      <Menu id={id} isScrollHidden={this.state.isScrollHidden}>
         <Sections>
           <SectionLinks>
             {sidebar.map(item => (
@@ -120,15 +138,19 @@ export default class SidebarMenu extends React.Component {
 const Menu = styled.div`
   position: sticky;
   top: 60px;
-  width: 100%;
   height: calc(100vh - 138px);
-  overflow-y: auto;
+  overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
+
+  ${props =>
+    props.isScrollHidden &&
+    `
+    .ps__rail-y { opacity: 0; overflow: hidden; }
+	`};
 
   ${media.phablet`
     position: relative;
     top: 0;
-    width: auto;
     height: calc(100% - 60px);
     padding-left: 20px;
   `};
