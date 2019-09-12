@@ -9,17 +9,15 @@ export const spin = keyframes`
   }
 `
 
-const Wrapper = styled.div`
-  flex-grow: 1;
-  text-align: center;
-  padding-top: 10vw;
-  color: #24292e;
-`
-
 const Container = styled.div`
   position: relative;
-  display: inline-block;
-  box-sizing: border-box;
+  display: flex;
+  align-self: stretch;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #24292e;
 `
 
 const Circle = styled.div`
@@ -32,18 +30,10 @@ const Circle = styled.div`
   animation: ${spin} 1s infinite linear;
 `
 
-const Text = styled.div`
-  font-size: 16px;
-  line-height: 1.5;
-`
-
 export default function Loader() {
   return (
-    <Wrapper>
-      <Container>
-        <Circle />
-      </Container>
-      <Text>Loading...</Text>
-    </Wrapper>
+    <Container>
+      <Circle />
+    </Container>
   )
 }
