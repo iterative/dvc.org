@@ -41,7 +41,7 @@ changes in other stages that affect the target.
 
 In the `local` mode, changes are detected through the checksum of every file
 listed in every DVC-file in question against the corresponding file in the file
-system. The <abbr>outputs</abbr> indicates the detected changes, if any. If no
+system. The command output indicates the detected changes, if any. If no
 differences are detected, `dvc status` prints this message:
 
 ```dvc

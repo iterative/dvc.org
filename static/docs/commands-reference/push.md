@@ -157,7 +157,7 @@ model.p.dvc
 Dvcfile
 ```
 
-Imagine the project has been modified such that the <abbr>output</abbr> of some
+Imagine the project has been modified such that the <abbr>outputs</abbr> of some
 of these stages should be uploaded to remote storage.
 
 ```dvc

@@ -135,7 +135,7 @@ same way as before). Instead, it creates a simple human-readable
 to the cache.
 
 Next, we run the training with `python train.py`. We picked this example and
-datasets to be small enough to be run on your machine in a reasonable amount of
+datasets to be small enough to run on most computers in a reasonable amount of
 time (a few minutes to train a model). This command produces a bunch of files,
 among them `model.h5` and `metrics.json`, weights of the trained model and
 [metrics](/doc/commands-reference/metrics) history. The simplest way to capture
@@ -146,8 +146,10 @@ $ python train.py
 $ dvc add model.h5
 ```
 
-The recommended way of capturing script <abbr>outputs</abbr> is using `dvc run`.
-We'll touch it a little bit later. For now, let's commit the current state:
+> The recommended way of capturing command <abbr>outputs</abbr> is using
+> `dvc run`. We'll explain that strategy later.
+
+Let's commit the current state:
 
 ```dvc
 $ git add .gitignore model.h5.dvc data.dvc metrics.json

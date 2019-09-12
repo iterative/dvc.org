@@ -380,8 +380,8 @@ $ git add .
 $ git commit -m Evaluate
 ```
 
-The <abbr>output</abbr> of the evaluation stage contains the target metrics
-value in a simple text form:
+The <abbr>output</abbr> of the evaluation stage contains the target value in a
+simple text form:
 
 ```dvc
 $ cat data/eval.txt

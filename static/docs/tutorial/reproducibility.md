@@ -158,8 +158,8 @@ files were checked out by Git and all data files by DVC.
 
 In more detail — `git checkout master` checked out the code and DVC-files. The
 DVC-files from the master branch point to old (unigram based) dependencies and
-<abbr>output</abbr>. `dvc checkout` command found all the DVC-files and restored
-the data files based on them.
+<abbr>outputs</abbr>. `dvc checkout` command found all the DVC-files and
+restored the data files based on them.
 
 ## Tune the model
 
