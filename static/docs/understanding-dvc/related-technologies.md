@@ -13,7 +13,7 @@ process.
   should NOT be stored in a Git repository but still need to be tracked and
   versioned.
 
-2. **Workflow management tools** ([pipelines]](/doc/commands-reference/pipeline)
+2. **Workflow management tools** ([pipelines](/doc/commands-reference/pipeline)
    and dependency graphs
    ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))): Airflow,
    Luigi, etc. The differences are:
