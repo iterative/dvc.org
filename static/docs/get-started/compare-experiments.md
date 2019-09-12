@@ -3,8 +3,8 @@
 DVC makes it easy to iterate on your project using Git commits with tags or Git
 branches. It provides a way to try different ideas, keep track of them, switch
 back and forth. To find the best performing experiment or track the progress,
-special [project metrics](/doc/commands-reference/metrics) (a type of
-<abbr>output</abbr>) are supported in DVC (described in one of the previous
+[project metrics](/doc/commands-reference/metrics) (a special type of
+<abbr>output</abbr>) are supported in DVC (as described in one of the previous
 chapters).
 
 Let's run evaluate for the latest `bigrams` experiment we created in previous

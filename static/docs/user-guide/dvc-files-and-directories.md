@@ -1,18 +1,19 @@
 # DVC Files and Directories
 
 Once initialized in a <abbr>project</abbr>, DVC populates its installation
-directory (`.dvc/`) with special internal files and directories:
+directory (`.dvc/`) with the internal files and directories needed for DVC
+operation:
 
-### Special DVC internal files and directories
+### DVC internal files and directories
 
 - `.dvc/config`: This is a configuration file. The config file can be edited by
-  hand or with a special command: `dvc config`.
+  hand or with the `dvc config` command.
 
 - `.dvc/config.local`: This is a local configuration file, that will overwrite
   options in `.dvc/config`. This is useful when you need to specify private
   options in your config that you don't want to track and share through Git
   (credentials, private locations, etc). The local config file can be edited by
-  hand or with a special command: `dvc config --local`.
+  hand or with the command `dvc config --local`.
 
 - `.dvc/cache`: The [cache directory](#structure-of-cache-directory) will
   contain your data files. (The data directories of DVC repositories will only

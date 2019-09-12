@@ -28,17 +28,17 @@ example:
 $ dvc add data/data.xml
 ```
 
-DVC stores information about the added data in a special **DVC-file** that has a
-human-readable [format](/doc/user-guide/dvc-file-format). It can be committed to
-Git:
+DVC stores information about the added data in a special file called a
+**DVC-file**. DVC-files are small text files with a human-readable
+[format](/doc/user-guide/dvc-file-format) and they can be committed to Git:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
 $ git commit -m "Add raw data to project"
 ```
 
-Committing these special files to Git allows us to tack different versions of
-the data as it evolves with the source code under Git control.
+Committing DVC-files to Git allows us to tack different versions of the
+<abbr>project</abbr> data as it evolves with the source code under Git control.
 
 <details>
 

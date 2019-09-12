@@ -37,7 +37,7 @@ outs:
 # Comments like this line persist through multiple executions of
 # dvc repro/commit but not through dvc run/add/import-url/get-url commands.
 
-meta: # Special key to contain arbitary user data
+meta: # Special field to contain arbitary user data
   name: John
   email: john@xyz.com
 ```

@@ -96,9 +96,9 @@ Saving information to 'data.xml.dvc'.
 
 In contrast with `dvc get`, this command doesn't just download the data file,
 but it also creates an import stage (DVC-file) to keep track of this <abbr>data
-artifact</abbr> as a special `repo`
-[external dependency](/doc/user-guide/external-dependencies). Check
-`data.xml.dvc`:
+artifact</abbr> as an
+[external dependency](/doc/user-guide/external-dependencies) (using the `repo`
+field). Check `data.xml.dvc`:
 
 ```yaml
 md5: 7de90e7de7b432ad972095bc1f2ec0f8

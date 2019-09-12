@@ -17,9 +17,10 @@ $ dvc run -f evaluate.dvc \
 
 `evaluate.py` calculates AUC value using the test dataset. It reads features
 from the `features/test.pkl` file and produces a
-[metric](/doc/commands-reference/metrics) file (`auc.metric`). It is a special
-DVC output file type, in this case it's just a plain text file with a single
-number inside.
+[metric](/doc/commands-reference/metrics) file (`auc.metric`). Any
+<abbr>output</abbr> (in this case just a plain text file containing a single
+numeric value) can be marked as a metric, for example by using the `-R` option
+of `dvc run`.
 
 > Please, refer to the `dvc metrics` command documentation to see more available
 > options and details.

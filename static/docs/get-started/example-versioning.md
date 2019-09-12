@@ -304,11 +304,11 @@ $ dvc run -f Dvcfile \
           python train.py
 ```
 
-Similar to `dvc add`, `dvc run` creates a single DVC-file (forced to have file
-name `Dvcfile` with the `-f` option). It puts all outputs (`-o`) under DVC
-control the same way as `dvc add` does. Unlike, `dvc add`, `dvc run` also tracks
+Similar to `dvc add`, `dvc run` creates a DVC-file (forced to have file name
+`Dvcfile` with the `-f` option). It puts all outputs (`-o`) under DVC control
+the same way as `dvc add` does. Unlike, `dvc add`, `dvc run` also tracks
 dependencies (`-d`) and the command (`python train.py`) that was run to produce
-the result.
+the result. We also such a DVC-file a "stage file".
 
 `dvc repro` will run `Dvcfile` if any of its dependencies (`-d`) changed, for
 example after we added new images like we did when we built the second model
@@ -343,9 +343,8 @@ with pipelines and try to apply it here. Don't hesitate to join our
 [community](/chat) to ask any questions!
 
 Another detail we only brushed on here is the way we captured the `metrics.json`
-metrics file with the `-M` option of `dvc run`.
-[Metrics](/doc/commands-reference/metrics) are a special type of output DVC
-provides an interface for, in order to compare across Git tags or branches. See
-`dvc metrics` command and
+metrics file with the `-M` option of `dvc run`. Marking this <abbr>output</abbr>
+as a metric, we're able to compare its values across Git tags or branches (for
+example, representing different experiments). See `dvc metrics` and
 [Compare Experiments](/doc/get-started/compare-experiments) to learn more about
 managing metrics with DVC.

@@ -42,8 +42,9 @@ initialize it in your repository:
 $ dvc init
 ```
 
-DVC creates a `.dvc/` directory that stores special files and also a
-`.dvc/cache` directory that will be used to store cache for your data.
+DVC creates a `.dvc/` directory that stores
+[internal files](/doc/user-guide/dvc-files-and-directories) and the `.dvc/cache`
+directory that will be used to cache your data.
 
 ```dvc
 $ git status

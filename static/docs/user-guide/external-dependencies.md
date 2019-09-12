@@ -92,8 +92,8 @@ $ dvc run -d https://example.com/data.txt \
 If instead of a URL you'd like to use an alias that can be managed
 independently, or if the external dependency location requires access
 credentials, you may use `dvc remote add` to define this location as a DVC
-Remote, and then use a special `remote://{remote_name}/{path}` URL to define an
-external dependency.
+Remote, and then use a special URL with format `remote://{remote_name}/{path}`
+to define an external dependency.
 
 For example, for an HTTP remote/dependency:
 
@@ -160,8 +160,8 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 ...
 ```
 
-The command above creates `model.pkl.dvc`, where a special `repo` external
-dependency is specified.
+The command above creates `model.pkl.dvc`, where th external dependency is
+specified (with the `repo` field).
 
 <details>
 

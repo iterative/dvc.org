@@ -63,10 +63,10 @@ outputs described in it.
 - _changed checksum_ means that the <abbr>DVC-file</abbr> checksum has changed
   (e.g. someone manually edited the file).
 
-- _always changed_ means that this is a special DVC-file with no dependencies
-  (orphans) or it has `always_changed: true` option set (see
-  [`--always-changed` flag for `dvc run`](/doc/commands-reference/run)), which
-  is considered always changed and is always executed by `dvc repro`.
+- _always changed_ means that this is a DVC-file with no dependencies (an
+  _orphan_ stage file) or it has the `always_changed: true` value set (see
+  `--always-changed` option in `dvc run`), which is considered always changed
+  and is always executed by `dvc repro`.
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs tracked by the <abbr>DVC-file</abbr>. Depending on the use case,
