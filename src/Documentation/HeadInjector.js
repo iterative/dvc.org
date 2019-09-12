@@ -5,7 +5,7 @@ export const HeadInjector = ({ sectionName = 'Documentation' }) => (
     <link
       rel="stylesheet"
       type="text/css"
-      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/2.10.0/github-markdown.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/3.0.1/github-markdown.min.css"
     />
     <link
       rel="stylesheet"
