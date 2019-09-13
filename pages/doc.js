@@ -90,7 +90,7 @@ export default class Documentation extends Component {
     } else if (!isFirstPage && !isPageChanged) {
       this.updateScroll(isPageChanged)
     } else {
-      this.setState({ isLoading: true })
+      this.setState({ isLoading: true, headings: [] })
       fetch(item.source)
         .then(res => {
           res.text().then(text => {
@@ -208,17 +208,15 @@ export default class Documentation extends Component {
           ) : pageNotFound ? (
             <Page404 />
           ) : (
-            <>
-              <Markdown
-                markdown={markdown}
-                githubLink={githubLink}
-                prev={prev}
-                next={next}
-                onNavigate={this.onNavigate}
-              />
-              <RightPanel headings={headings} githubLink={githubLink} />
-            </>
+            <Markdown
+              markdown={markdown}
+              githubLink={githubLink}
+              prev={prev}
+              next={next}
+              onNavigate={this.onNavigate}
+            />
           )}
+          <RightPanel headings={headings} githubLink={githubLink} />
         </Container>
       </Page>
     )
