@@ -8,6 +8,7 @@ import RightPanel from '../src/Documentation/RightPanel/RightPanel'
 import Page from '../src/Page'
 import SearchForm from '../src/SearchForm'
 import Page404 from '../src/Page404'
+import Loader from '../src/Loader/Loader'
 import Hamburger from '../src/Hamburger'
 // utils
 import fetch from 'isomorphic-fetch'
@@ -26,12 +27,13 @@ export default class Documentation extends Component {
     super()
     this.state = {
       currentItem: {},
-      markdown: '',
       headings: [],
-      pageNotFound: false,
+      isLoading: false,
       isMenuOpen: false,
+      isSmoothScrollEnabled: true,
       search: false,
-      isSmoothScrollEnabled: true
+      markdown: '',
+      pageNotFound: false
     }
   }
 
@@ -88,16 +90,18 @@ export default class Documentation extends Component {
     } else if (!isFirstPage && !isPageChanged) {
       this.updateScroll(isPageChanged)
     } else {
+      this.setState({ isLoading: true, headings: [] })
       fetch(item.source)
         .then(res => {
           res.text().then(text => {
             this.setState(
               {
-                markdown: text,
-                pageNotFound: false,
-                isMenuOpen: false,
                 currentItem: item,
-                headings: this.parseHeadings(text)
+                headings: this.parseHeadings(text),
+                isLoading: false,
+                isMenuOpen: false,
+                markdown: text,
+                pageNotFound: false
               },
               () => this.updateScroll(!isFirstPage && isPageChanged)
             )
@@ -167,6 +171,7 @@ export default class Documentation extends Component {
       headings,
       markdown,
       pageNotFound,
+      isLoading,
       isMenuOpen,
       isSmoothScrollEnabled
     } = this.state
@@ -198,7 +203,9 @@ export default class Documentation extends Component {
             />
           </Side>
 
-          {pageNotFound ? (
+          {isLoading ? (
+            <Loader />
+          ) : pageNotFound ? (
             <Page404 />
           ) : (
             <Markdown
