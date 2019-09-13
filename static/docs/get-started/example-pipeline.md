@@ -170,9 +170,9 @@ and outputs. Output `data/Posts.xml` file is saved as
 workspace, as well as added to `.gitignore`.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
-in the DVC-files, we can restore the full chain of commands (DAG) we need to
-apply. This is important when you run `dvc repro` to regenerate intermediate or
-final results.
+that DVC-files describe, we can restore the full series of commands (pipeline
+stages) we need to apply. This is important when you run `dvc repro` to
+regenerate the final or intermediate result.
 
 Second, hopefully it's clear by now that the actual data is stored in the
 `.dvc/cache` directory, each file having a name in a form of an md5 hash. This
@@ -243,9 +243,9 @@ $ dvc run -d code/evaluate.py -d data/model.pkl \
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and outputs in DVC-files, we can restore the full
-chain of commands (DAG) we need to apply. This is important when you run
-`dvc repro` to reproduce the final or intermediate result.
+By analyzing dependencies and outputs in DVC-files, we can generate a dependency
+graph: a series of commands DVC needs to execute. `dvc repro` does this in order
+to restore a pipeline and reproduce its intermediate or final results.
 
 `dvc pipeline show` helps to visualize pipelines (run it with `-c` option to see
 actual commands instead of DVC-files):

@@ -66,7 +66,9 @@ If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
 `dvc add`, you will see that only outputs are defined in `outs`. In this file,
 only one output is defined. The output contains the data file path in the
 repository and md5 checksum. This checksum determines a location of the actual
-content file in the <abbr>cache directory</abbr>, `.dvc/cache`.
+content file in the
+[cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
+`.dvc/cache`.
 
 ```dvc
 $ cat data/Posts.xml.zip.dvc
@@ -81,12 +83,12 @@ $ du -sh .dvc/cache/ec/*
 ```
 
 > Outputs from DVC-files define the relationship between the data file path in a
-> repository and the path in a cache directory.
+> repository and the path in the cache directory.
 
-Keeping actual file content in a cache directory and a copy of the caches in the
-user <abbr>workspace</abbr> during `$ git checkout` is a regular trick that
-[Git-LFS](https://git-lfs.github.com/) (Git for Large File Storage) uses. This
-trick works fine for tracking small files with source code. For large data
+Keeping actual file contents in the <abbr>cache</abbr>, and a copy of the cached
+file in the <abbr>workspace</abbr> during `$ git checkout` is a regular trick
+that [Git-LFS](https://git-lfs.github.com/) (Git for Large File Storage) uses.
+This trick works fine for tracking small files with source code. For large data
 files, this might not be the best approach, because of _checkout_ operation for
 a 10Gb data file might take several seconds and a 50GB file checkout (think
 copy) might take a few minutes.
@@ -186,12 +188,12 @@ command. `-d data/Posts.xml.zip` defines the input file and `-o data/Posts.xml`
 the resulting extracted data file.
 
 The `unzip` command extracts data file `data/Posts.xml.zip` to a regular file
-`data/Posts.xml`. It knows nothing about data files or DVC. DVC runs the command
-and does some additional work if the command was successful:
+`data/Posts.xml`. It knows nothing about data files or DVC. DVC executes the
+command and does some additional work if the command was successful:
 
 1. DVC transforms all the outputs `-o` files into data files. It is like
    applying `dvc add` for each of the outputs. As a result, all the actual data
-   files content goes to the <abbr>cache directory</abbr> `.dvc/cache` and each
+   files content goes to the <abbr>cache</abbr> directory `.dvc/cache` and each
    of the file names will be added to `.gitignore`.
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
@@ -266,7 +268,7 @@ A single stage of our ML pipeline was defined and committed into repository. It
 isn't necessary to commit stages right after their creation. You can create a
 few and commit them to Git together later.
 
-Let’s run the following stages: converting an XML file to TSV, and then
+Let’s create the following stages: converting an XML file to TSV, and then
 separating training and testing datasets:
 
 ```dvc
@@ -398,4 +400,4 @@ focus is DVC, not ML modeling and we use a relatively small dataset without any
 advanced ML techniques.
 
 In the next chapter we will try to improve the metrics by changing our modeling
-code and using reproducibility in our pipeline regeneration.
+code and using reproducibility in our pipeline.

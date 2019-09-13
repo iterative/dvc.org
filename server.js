@@ -21,7 +21,16 @@ app.prepare().then(() => {
     const { pathname, query } = parsedUrl
 
     // Special URL host redirects
-    if (req.headers.host === 'man.dvc.org') {
+    if (
+      req.headers['host'].match(/^www/) !== null ||
+      (req.headers['x-forwarded-proto'] !== 'https' && !dev)
+    ) {
+      res.writeHead(301, {
+        Location:
+          'https://' + req.headers['host'].replace(/^www\./, '') + req.url
+      })
+      res.end()
+    } else if (req.headers.host === 'man.dvc.org') {
       let normalized_pathname =
         ['/get-url', '/import-url'].indexOf(pathname) > 0
           ? pathname.replace(/-/i, '/')

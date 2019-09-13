@@ -24,20 +24,21 @@ positional arguments:
 ## Description
 
 `name` and `url` are required. `url` specifies a location to store your data. It
-could be S3 path, SSH path, Azure, Google cloud, Aliyun OSS local directory,
-etc. (See more examples below.) If `url` is a local relative path, it will be
-resolved relative to the current working directory but saved **relative to the
-config file location** (see LOCAL example below). Whenever possible DVC will
-create a remote directory if it doesn't exists yet. It won't create an S3 bucket
-though and will rely on default access settings.
+can be an SSH, S3 path, Azure, Google Cloud address, Aliyun OSS, local
+directory, etc. (See all the supported remote storage types in the examples
+below.) If `url` is a local relative path, it will be resolved relative to the
+current working directory but saved **relative to the config file location**
+(see LOCAL example below). Whenever possible DVC will create a remote directory
+if it doesn't exists yet. It won't create an S3 bucket though and will rely on
+default access settings.
 
-> If you installed DVC via `pip`, depending on the remote type you plan to use
-> you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,
-> `[azure]`, and `[oss]`; or `[all]` to include them all. The command should
-> look like this: `pip install "dvc[s3]"`. This installs `boto3` library along
-> with DVC to support AWS S3 storage.
+> If you installed DVC via `pip`, depending on the remote storage type you plan
+> to use you might need to install optional dependencies: `[s3]`, `[ssh]`,
+> `[gs]`, `[azure]`, and `[oss]`; or `[all]` to include them all. The command
+> should look like this: `pip install "dvc[s3]"`. This installs `boto3` library
+> along with DVC to support AWS S3 storage.
 
-This command creates a section in the DVC
+This command creates a section in the <abbr>DVC project</abbr>'s
 [config file](/doc/commands-reference/config) and optionally assigns a default
 remote in the core section if the `--default` option is used:
 
@@ -74,11 +75,11 @@ Use `dvc config` to unset/change the default remote as so:
   using this remote by default to save or retrieve data files unless `-r` option
   is specified for them.
 
-- `-f`, `--force` - to overwrite existing remote with new `url` value.
+- `-f`, `--force` - overwrite existing remote with new `url` value.
 
 ## Examples
 
-The following are the types and of remotes (protocols) supported:
+The following are the types of remote storage (protocols) supported:
 
 <details>
 
@@ -195,7 +196,7 @@ $ dvc remote modify myremote connection_string my-connection-string --local
 ```
 
 > The connection string contains access to data and is inserted into the
-> `.dvc/config file.` Therefore, it is safer to add the connection string with
+> `.dvc/config` file. Therefore, it is safer to add the connection string with
 > the `--local` option, enforcing it to be written to a Git-ignored config file.
 
 The Azure Blob Storage remote can also be configured entirely via environment
@@ -340,7 +341,7 @@ Setting 'myremote' as a default remote.
 $ dvc remote modify myremote region us-east-2
 ```
 
-DVC config file (`.dvc/config`) now looks like this:
+The <abbr>project</abbr>'s config file (`.dvc/config`) now looks like this:
 
 ```ini
 ['remote "myremote"']

@@ -118,9 +118,8 @@ wdir: .
 ```
 
 > `dvc run` is just the first of a set of DVC command required to generate a
-> [pipeline](/doc/get-started/pipeline) computational graph, or in other words,
-> instructions on how to build a ML model (data file) from previous data files
-> (or directories).
+> [pipeline](/doc/get-started/pipeline), or in other words, instructions on how
+> to build a ML model (data file) from previous data files (or directories).
 
 We would recommend to read a few next chapters first, before switching to other
 documents. Hopefully, `dvc run` and `dvc repro` will make more sense after
@@ -136,7 +135,8 @@ readable.
 `-d src/prepare.py` and `-d data/data.xml` mean that the `prepare.dvc` stage
 file depends on them to produce the result. When you run `dvc repro` next time
 (see next chapter) DVC will automatically check these dependencies and decide
-whether this stage is up to date or or whether it requires rebuilding.
+whether this stage is up to date or or whether it should be executed to
+regenerate its outputs.
 
 `-o data/prepared` specifies the output directory processed data will be put
 into. The script creates two files in it – that will be used later to generate

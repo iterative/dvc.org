@@ -1,10 +1,11 @@
 # Large Dataset Optimization
 
 In order to track the data files and directories added with `dvc add` or
-`dvc run`, DVC moves all these files to a special <abbr>cache directory</abbr>.
-The DVC cache is a hidden storage (by default located in `.dvc/cache`) for files
-that are under DVC control, and their different versions. (See `dvc cache` and
-[DVC internal files](/doc/user-guide/dvc-files-and-directories) for more
+`dvc run`, DVC moves all these files to a special <abbr>cache</abbr>. A
+<abbr>DVC project</abbr>'s cache is the hidden storage (by default located in
+`.dvc/cache`) for files that are under DVC control, and their different
+versions. (See `dvc cache` and
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) for more
 details.)
 
 However, the versions of the tracked files that
@@ -37,11 +38,11 @@ Symbolic links, and Reflinks in more recent systems. While reflinks bring all
 the benefits and none of the worries, they're not commonly supported in most
 platforms yet. Hard/soft links optimize **speed** and **space** in the file
 system, but may break your workflow since updating hard/sym-linked files tracked
-by DVC in the workspace causes cache corruption. These 2 link types thus require
-using cache **protected mode** (see the `cache.protected` config option in
-`dvc config cache`). Finally, a 4th "linking" option is to actually copy files
-from/to the cache, which is safe but inefficient, especially for large files
-(several GBs or more data).
+by DVC in the workspace causes <abbr>cache</abbr> corruption. These 2 link types
+thus require using cache **protected mode** (see the `cache.protected` config
+option in `dvc config cache`). Finally, a 4th "linking" option is to actually
+copy files from/to the cache, which is safe but inefficient, especially for
+large files (several GBs or more data).
 
 > Some versions of Windows (e.g. Windows Server 2012+ and Windows 10 Enterprise)
 > support hard or soft links on the

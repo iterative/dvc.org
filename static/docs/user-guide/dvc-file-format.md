@@ -13,6 +13,7 @@ the highlighting for your editor.
 Here is a sample DVC-file:
 
 ```yaml
+always_changed: true
 locked: true
 cmd: python cmd.py input.data output.data metrics.json
 deps:
@@ -45,12 +46,14 @@ meta: # Special key to contain arbitary user data
 
 On the top level, `.dvc` file consists of these fields:
 
-- `cmd`: Command that is being run in this stage
+- `cmd`: Executable command defined in this stage
 - `deps`: List of dependencies for this stage
 - `outs`: List of outputs for this stage
 - `md5`: md5 checksum for this DVC-file
 - `locked`: Whether or not this stage is locked from reproduction
 - `wdir`: Directory to run command in (default `.`)
+- `always_changed`: Whether or not this stage should always be considered as
+  changed by commands such as `dvc status` and `dvc repro` (default `false`)
 
 A dependency entry consists of a pair of fields:
 

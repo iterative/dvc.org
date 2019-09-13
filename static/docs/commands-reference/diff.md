@@ -1,10 +1,10 @@
 # diff
 
-Show changes between versions of the DVC repository. It can be narrowed down to
-specific target files and directories under DVC control.
+Show changes between versions of the <abbr>DVC project</abbr>. It can be
+narrowed down to specific target files and directories under DVC control.
 
-> This command requires the repository to be versioned with
-> [Git](https://git-scm.com/).
+> This command requires that the project is a [Git](https://git-scm.com/)
+> repository.
 
 ## Synopsis
 

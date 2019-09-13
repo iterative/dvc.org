@@ -1,7 +1,5 @@
 import Document, { Head, Main, NextScript } from 'next/document'
-import { createGlobalStyle, ServerStyleSheet } from 'styled-components'
-import reset from 'styled-reset'
-import { global } from '../src/styles'
+import { ServerStyleSheet } from 'styled-components'
 import Router from 'next/router'
 
 const DESCRIPTION =
@@ -10,41 +8,12 @@ const DESCRIPTION =
   ` a Git-like tool.`
 const KEYWORDS = `data version control machine learning models management`
 
-const dev = process.env.NODE_ENV !== 'production'
-
-const GlobalStyle = createGlobalStyle`
-  ${reset}
-  ${global}
-`
-
 const inject = str => (
   <div className="inject" dangerouslySetInnerHTML={{ __html: str }} />
 )
 
 export default class MyDocument extends Document {
-  static getInitialProps({ req, res, renderPage }) {
-    let redirect
-
-    if (req.headers['host'].match(/^www/) !== null) {
-      redirect =
-        'https://' + req.headers['host'].replace(/^www\./, '') + req.url
-    } else if (req.headers['x-forwarded-proto'] !== 'https' && !dev) {
-      const host = req.headers['host'].replace(/^www\./, '')
-      redirect = 'https://' + host + req.url
-    }
-
-    if (redirect) {
-      if (res) {
-        res.writeHead(301, {
-          Location: redirect
-        })
-        res.end()
-        res.finished = true
-      } else {
-        Router.push(redirect)
-      }
-    }
-
+  static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet()
     const page = renderPage(App => props =>
       sheet.collectStyles(<App {...props} />)
@@ -56,7 +25,6 @@ export default class MyDocument extends Document {
   render() {
     return (
       <>
-        <GlobalStyle />
         <html>
           <Head>
             <meta charSet="utf-8" />
@@ -116,6 +84,11 @@ export default class MyDocument extends Document {
               type="image/png"
               href="/static/favicon-16x16.png"
               sizes="16x16"
+            />
+            <link
+              rel="stylesheet"
+              type="text/css"
+              href="/static/fonts/fonts.css"
             />
             {this.props.styleTags}
           </Head>

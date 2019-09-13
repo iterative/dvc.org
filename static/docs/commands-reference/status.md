@@ -2,8 +2,8 @@
 
 Show changes in the <abbr>project</abbr>
 [pipelines](/doc/commands-reference/pipeline), as well as mismatches either
-between the local cache and local files, or between the local cache and remote
-cache.
+between the <abbr>cache</abbr> and <abbr>workspace</abbr> files, or between the
+cache and remote storage.
 
 ## Synopsis
 
@@ -19,17 +19,17 @@ positional arguments:
 ## Description
 
 `dvc status` searches for changes in the existing pipelines, either showing
-which [stages](/doc/commands-reference/run) have changed in the
-<abbr>workspace</abbr> and must be reproduced (with `dvc repro`), or differences
-between local vs. remote <abbr>cache</abbr> (meaning `dvc push` or `dvc pull`
-should be run to synchronize them). The two modes, _local_ and _cloud_ are
-triggered by using the `--cloud` or `--remote` options:
+which [stages](/doc/commands-reference/run) have changed in the workspace and
+must be reproduced (with `dvc repro`), or differences between cache vs. remote
+storage (meaning `dvc push` or `dvc pull` should be run to synchronize them).
+The two modes, _local_ and _cloud_ are triggered by using the `--cloud` or
+`--remote` options:
 
-| Mode   | CLI Option | Description                                                                                                                   |
-| ------ | ---------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the local cache (`.dvc/cache`)            |
-| remote | `--remote` | Comparisons are made between the local cache, and the given remote. Remote caches are defined using the `dvc remote` command. |
-| remote | `--cloud`  | Comparisons are made between the local cache, and the default remote, defined with `dvc remote --default` command.            |
+| Mode   | CLI Option | Description                                                                                                                 |
+| ------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
+| local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the cache directory (e.g. `.dvc/cache`) |
+| remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
+| remote | `--cloud`  | Comparisons are made between the cache, and the default remote, defined with `dvc remote --default` command.                |
 
 DVC determines data and code files to compare by analyzing all
 [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>project</abbr>
@@ -50,7 +50,7 @@ Data and pipelines are up to date.
 ```
 
 This indicates that no differences were detected, and therefore no stages would
-be run again by `dvc repro`.
+be executed by `dvc repro`.
 
 If instead, differences are detected, `dvc status` lists those changes. For each
 DVC-file (stage) with differences, the changes in _dependencies_ and/or
@@ -64,8 +64,9 @@ outputs described in it.
   (e.g. someone manually edited the file).
 
 - _always changed_ means that this is a special DVC-file with no dependencies
-  (orphans), which is considered always changed and is always executed by
-  `dvc repro`.
+  (orphans) or it has `always_changed: true` option set (see
+  [`--always-changed` flag for `dvc run`](/doc/commands-reference/run)), which
+  is considered always changed and is always executed by `dvc repro`.
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs defined by the <abbr>DVC-file</abbr>. Depending on the use case,
@@ -83,16 +84,16 @@ outputs described in it.
     the DVC-file is up to date, but there is no corresponding <abbr>cache</abbr>
     entry.
 
-**For comparison against a remote cache:**
+**For comparison against remote storage:**
 
-- _new_ means the file exists in the local cache but not the remote cache
-- _deleted_ means the file doesn't exist in the local cache, but exists in the
-  remote cache
+- _new_ means that the file/directory exists in the cache but not in remote
+  storage.
+- _deleted_ means that the file/directory doesn't exist in the cache, but exists
+  in remote storage.
 
-For either the _new_ and _deleted_ cases, the local cache (subset of it
-determined by the current workspace) is different from the remote cache.
-Bringing the two into sync requires `dvc pull` or `dvc push` to synchronize the
-DVC cache. For the typical process to update the workspace, see
+For either _new_ and _deleted_ data, the cache (subset determined by the current
+workspace) is different from remote storage. Bringing the two into sync requires
+`dvc pull` or `dvc push`. For the typical process to update the workspace, see
 [Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
 
 ## Options
@@ -104,23 +105,24 @@ DVC cache. For the typical process to update the workspace, see
   will not show changes occurring in later stages than the `targets`. Applies
   whether or not `--cloud` is specified.
 
-- `-c`, `--cloud` - enables comparison against a remote cache. If no `--remote`
-  option has been given, DVC will compare against the default remote cache,
-  which is specified in the `core.remote` config option. Otherwise the
+- `-c`, `--cloud` - enables comparison against a remote. (See `dvc remote`.). If
+  no `--remote` option has been given, DVC will compare against the default
+  remote (specified in the `core.remote` config option). Otherwise the
   comparison will be against the remote specified in the `--remote` option.
 
 - `-r REMOTE`, `--remote REMOTE` - specifies which remote storage (see
   `dvc remote list`) to compare against. The argument, `REMOTE`, is a remote
   name defined using the `dvc remote` command. Implies `--cloud`.
 
-- `-a`, `--all-branches` - compares cache content against all Git branches.
-  Instead of checking just the current workspace version, it runs the same
-  status command in all the branches of this repo. The corresponding branches
-  are shown in the status output. Applies only if `--cloud` or a `-r` remote is
-  specified.
+- `-a`, `--all-branches` - compares cache content against all Git branches
+  instead of checking just the current workspace version. This basically runs
+  the same status command in all the branches of this repo. The corresponding
+  branches are shown in the status output. Applies only if `--cloud` or a `-r`
+  remote is specified.
 
 - `-T`, `--all-tags` - compares cache content against all Git tags instead of
-  checking just the current workspace version. The corresponding tags are shown
+  checking just the current workspace version. This basically runs the same
+  status command in all the tags of this repo. The corresponding tags are shown
   in the status output. Applies only if `--cloud` or a `-r` remote is specified.
 
 - `-j JOBS`, `--jobs JOBS` - specifies the number of jobs DVC can use to
@@ -130,7 +132,7 @@ DVC cache. For the typical process to update the workspace, see
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if
-  Pipelines are up to date, otherwise 1.
+  data and pipelines are up to date, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
@@ -184,15 +186,14 @@ what files we have generated but haven't pushed to the remote yet:
 
 ```dvc
 $ dvc remote list
-rcache	s3://dvc-remote
+storage	s3://dvc-remote
 ```
 
 And would like to check what files we have generated but haven't pushed to the
 remote yet:
 
 ```dvc
-$ dvc status --remote rcache
-
+$ dvc status --remote storage
 Preparing to collect status from s3://dvc-remote
 [##############################] 100% Collecting information
     new:      data/model.p
@@ -201,5 +202,5 @@ Preparing to collect status from s3://dvc-remote
     new:      data/matrix-test.p
 ```
 
-The output shows where the location of the remote cache as well as any
-differences between the local cache and remote cache.
+The output shows where the location of the remote storage is, as well as any
+differences between the <abbr>cache</abbr> and `storage` remote.

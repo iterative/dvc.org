@@ -7,13 +7,13 @@ repositories. These repositories will contain all the information needed for
 reproducibility and it might be a good idea to share these DVC-repositories
 using GitHub or other Git services.
 
-DVC is able to push the cache to a cloud.
+DVC is able to push the <abbr>cache</abbr> to cloud storage.
 
-> Using your shared cache a colleague can reuse ML models that were trained on
-> your machine.
+> Using shared cloud storage, a colleague can reuse ML models that were trained
+> on your machine.
 
-First, you need to set a data remote which will be stored in the config file of
-the <abbr>project</abbr>. This can be done using the CLI as shown below.
+First, you need to set a remote storage which will be stored in the config file
+of the <abbr>project</abbr>. This can be done using the CLI as shown below.
 
 > Note that we are using the `dvc-public` S3 bucket as an example and you don't
 > have write access to it, so in order to follow the tutorial you will need to
@@ -28,7 +28,7 @@ $ git status -s
  M .dvc/config
 ```
 
-Then, a simple command pushes files from your local cache to the cloud:
+Then, a simple command pushes files from your cache to the cloud:
 
 ```dvc
 $ dvc push
