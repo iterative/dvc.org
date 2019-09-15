@@ -22,10 +22,10 @@ const Container = styled.div`
 
 const Circle = styled.div`
   box-sizing: border-box;
-  width: 80px;
-  height: 80px;
+  width: 40px;
+  height: 40px;
   border-radius: 100%;
-  border: 10px solid rgb(36, 41, 46, 0.2);
+  border: 5px solid rgb(36, 41, 46, 0.2);
   border-top-color: currentColor;
   animation: ${spin} 1s infinite linear;
 `
