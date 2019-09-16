@@ -1,26 +1,33 @@
-# Reusing data
+# Reusing Data
 
 We've explained how to [upload](/doc/get-started/share-data) and
 [download](/doc/get-started/retrieve-data) <abbr>data artifacts</abbr> (with
 `dvc pull` and `dvc push`) as a way to share them on remote storage. This is
 great for several people to work on the same <abbr>DVC project</abbr> (on
 different machines). But what if we wanted to reuse a dataset from a project in
-a completely different one?
+a different one?
 
 That's why we created `dvc import`! This commands can download data from any DVC
 project hosted on a Git repository. It also tracks the imported data by creating
-an import stage ([DVC-file](/doc/user-guide/dvc-file-format)). Example:
+an import stage ([DVC-file](/doc/user-guide/dvc-file-format)).
+
+If you remember the [Add Files](/doc/get-started/add-files) chapter where we
+download the raw data for this example project, the `dvc get` command is used
+(which unlike `dvc import` does not track the downloaded artifact). Let's say we
+wanted to download and track the data with a single command:
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
-           get-started/data.xml
+           get-started/data.xml -o data/data.xml
 ```
 
 > This command is only shown for informational purposes. No need to actually run
-> it in order to continue with this guide.
+> it in order to continue with this guide, as `data.xml` is already in the
+> `data/` directory and has already been processed at this point.
 
-This downloads `data.xml`, adds it to `.gitignore`, and creates the
-`data.xml.dvc` stage file.
+This would download `data.xml`, add it to `.gitignore`, and creates the
+`data.xml.dvc` [import stage](/doc/commands-reference/import) in the root
+directory.
 
 <details>
 

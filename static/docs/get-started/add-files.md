@@ -6,11 +6,8 @@ Let's get a dataset example to play with:
 
 ```dvc
 $ mkdir data
-$ cd data
 $ dvc get https://github.com/iterative/dataset-registry \
-        get-started/data.xml
-...
-$ cd ..
+        get-started/data.xml -o data/data.xml
 ```
 
 > `dvc get` can download <abbr>data artifacts</abbr> from any <abbr>DVC
@@ -25,6 +22,10 @@ example:
 ```dvc
 $ dvc add data/data.xml
 ```
+
+> For an alternative and faster way to download the project's dataset in a
+> single command, see the later [Reusing Data](/doc/get-started/reusing-data)
+> chapter.
 
 DVC stores information about the added data in a special **DVC-file** that has a
 human-readable [format](/doc/user-guide/dvc-file-format). It can be committed to
