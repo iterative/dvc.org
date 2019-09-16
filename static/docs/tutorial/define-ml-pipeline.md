@@ -265,7 +265,7 @@ $ git commit -m "extract data"
 
 A single [stage](/doc/commands-reference/run) of our ML pipeline was created and
 committed into repository. It isn't necessary to commit stages right after their
-creation. You can create a few and commit them to Git together later.
+creation. You can create a few and commit them with Git together later.
 
 Let's create the following stages: converting an XML file to TSV, and then
 separating training and testing datasets:

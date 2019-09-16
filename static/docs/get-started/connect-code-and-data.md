@@ -48,7 +48,7 @@ $ echo ".env/" >> .gitignore
 $ pip install -r src/requirements.txt
 ```
 
-Optionally, save the progress to Git:
+Optionally, save the progress with Git:
 
 ```dvc
 $ git add .

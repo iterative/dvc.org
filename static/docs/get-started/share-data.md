@@ -12,8 +12,8 @@ The same way as with Git remote, it ensures that your data files and your models
 are safely stored remotely and are shareable. It means that this data could be
 pulled by your team or you when you need it.
 
-Usually, you run it along with `git commit` and `git push` to save changed
-[DVC-files](/doc/user-guide/dvc-file-format) to Git.
+Usually, you run it along with `git commit` and `git push` to save the changed
+[DVC-files](/doc/user-guide/dvc-file-format).
 
 The `dvc push` command allows one to upload data to remote storage. It doesn't
 save any changes in the code or DVC-files. Those should be saved by using

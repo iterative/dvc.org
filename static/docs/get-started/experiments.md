@@ -30,7 +30,7 @@ $ git commit -am "Reproduce model using bigrams"
 ```
 
 > Notice that `git commit -a` stages all the changes produced by `dvc repro`
-> before committing them to Git. Refer to the
+> before committing them with Git. Refer to the
 > [command reference](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--a)
 > for more details.
 

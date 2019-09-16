@@ -356,6 +356,14 @@ master:
   auc.metric: 0.666618
 ```
 
+> Since the dataset for this example is extremely simplified to make it faster
+> to run this pipeline, the exact metric numbers may vary.
+
+The `-a` flag in the command above tells `dvc metrics show` to show the value
+for all Git branches.
+
+Feel free to commit the remaining changes with Git.
+
 ## Conclusion
 
 By wrapping your commands with `dvc run` it's easy to integrate DVC into your
