@@ -369,6 +369,6 @@ The key detail to notice is that DVC automatically derives the dependencies
 between the pipeline stages and builds a dependency graph (DAG) transparently.
 
 DVC streamlines all of your experiments into a single, reproducible
-<abbr>project</abbr>, and it makes it easy to share it on Git, including the
-dependencies. This is an innovative collaboration feature which provides the
-ability to review data science research.
+<abbr>project</abbr>, and it makes it easy to share it with Git, including
+dependencies. This collaboration feature provides the ability to review data
+science research.
