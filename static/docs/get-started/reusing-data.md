@@ -10,8 +10,8 @@ a different one?
 That's why we created `dvc import`! This commands can download data from any DVC
 project hosted on a Git repository. It also records the connection between this
 and the external project by creating an import stage
-([DVC-file](/doc/user-guide/dvc-file-format)). To track the the imported data,
-one can then add and commit the DVC-file with Git.
+([DVC-file](/doc/user-guide/dvc-file-format)). To track the imported data, one
+can then add and commit the DVC-file with Git.
 
 If you remember the [Add Files](/doc/get-started/add-files) chapter where we
 download the raw data for this example project, the `dvc get` command is used –
