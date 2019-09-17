@@ -362,9 +362,9 @@ The model evaluation stage is the last one for this tutorial. To help in the
 pipeline's reproducibility, we use stage file name `Dvcfile`. (This will be
 discussed in more detail in the next chapter.)
 
-Note that the output file `data/eval.txt` was transformed by DVC into a
-[metric](/doc/commands-reference/metrics) file in accordance with the `-M`
-option.
+Note that the <abbr>output</abbr> file `data/eval.txt` was transformed by DVC
+into a [metric](/doc/commands-reference/metrics) file in accordance with the
+`-M` option.
 
 The result of the last three `dvc run` commands execution is three stage files
 and a modified .gitignore file. All the changes should be committed into Git:
@@ -380,8 +380,8 @@ $ git add .
 $ git commit -m Evaluate
 ```
 
-The <abbr>output</abbr> of the evaluation stage contains the target value in a
-simple text form:
+The output of the evaluation stage contains the target value in a simple text
+form:
 
 ```dvc
 $ cat data/eval.txt
