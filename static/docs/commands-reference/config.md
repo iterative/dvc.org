@@ -21,7 +21,8 @@ takes a config option `name` (a section and a key, separated by a dot) and its
 
 This command reads and overwrites the DVC configuration file `.dvc/config`. If
 `--local` option is specified, `.dvc/config.local` is modified instead. If None
-of `--local`, `--global`, or `--system` is provided, `--local` is set by default.
+of `--local`, `--global`, or `--system` is provided, `--local` is set by
+default.
 
 If the config option `value` is not provided and `--unset` option is not used,
 this command returns the current value of the config option, if found in the
