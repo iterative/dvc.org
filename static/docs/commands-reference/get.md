@@ -53,7 +53,7 @@ created in the current working directory, with its original file name.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: Machine learning model deployment
+## Examples
 
 > Note that `dvc get` can be used from anywhere in the file system, as long as
 > DVC is [installed](/doc/get-started/install).
@@ -82,18 +82,18 @@ is found, which specifies `model.pkl` in its outputs (`outs`). DVC then
 its
 [config file](https://github.com/iterative/example-get-started/blob/master/.dvc/config)).
 
-A recommended use for downloading binary files from DVC repositories, as done in
-this example, is to place a ML model inside a wrapper application that serves as
-an [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load) pipeline or as
-an HTTP/RESTful API (web service) that provides predictions upon request. This
-can be automated leveraging DVC with
-[CI/CD](https://en.wikipedia.org/wiki/CI/CD) tools.
+> A recommended use for downloading binary files from DVC repositories, as done
+> in this example, is to place a ML model inside a wrapper application that
+> serves as an [ETL](https://en.wikipedia.org/wiki/Extract,_transform,_load)
+> pipeline or as an HTTP/RESTful API (web service) that provides predictions
+> upon request. This can be automated leveraging DVC with
+> [CI/CD](https://en.wikipedia.org/wiki/CI/CD) tools.
 
-The same example applies to raw or intermediate data files as well, of course,
-for cases where we want to download those files and perform some analysis on
-them.
+The same example applies to raw or intermediate <abbr>data artifacts</abbr> as
+well, of course, for cases where we want to download those files or directories
+and perform some analysis on them.
 
-## Example: Compare different versions of the same experiment
+## Example: Compare different versions of data or model
 
 `dvc get` has the `--rev` option, to specify which version of the repository to
 download a <abbr>data artifact</abbr> from. It also has the `--out` option to
