@@ -248,10 +248,9 @@ directory we created previously. (Its `path` has the URL for the datastore.) And
 instead of an `etag` we have an `md5` checksum. We did this so its easy to edit
 the data file.
 
-Let's now manually reproduce
-[one of the processing chapters](/doc/get-started/connect-code-and-data) from
-the _Get Started_ project. Download the example source code archive and unzip
-it:
+Let's now manually reproduce a
+[processing chapter](/doc/get-started/connect-code-and-data) from the _Get
+Started_ project. Download the example source code archive and unzip it:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
