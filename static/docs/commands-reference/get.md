@@ -18,7 +18,7 @@ positional arguments:
 
 ## Description
 
-Provides an easy way to reuse datasets, intermediate results, ML models, or
+Provides an easy way to download datasets, intermediate results, ML models, or
 other files and directories (any <abbr>data artifact</abbr>) tracked in another
 DVC repository, by downloading them into the current working directory.
 
@@ -75,8 +75,6 @@ was reproduced) and named `model.pkl`.
 
 ```dvc
 $ dvc get https://github.com/iterative/example-get-started model.pkl
-Preparing to download data from 'https://remote.dvc.org/get-started'
-...
 $ ls
 model.pkl
 ```

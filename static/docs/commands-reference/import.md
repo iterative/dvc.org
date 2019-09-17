@@ -91,7 +91,6 @@ $ dvc import git@github.com:iterative/example-get-started data/data.xml
 Importing 'data/data.xml (git@github.com:iterative/example-get-started)' -> 'data.xml'
 ...
 Saving information to 'data.xml.dvc'.
-...
 ```
 
 In contrast with `dvc get`, this command doesn't just download the data file,
