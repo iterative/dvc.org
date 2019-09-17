@@ -26,15 +26,15 @@ Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
 
 The `url` argument specifies the address of the Git repository containing the
-source <abbr>DVC project</abbr>. Both HTTP and SSH protocols are supported for
+external <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
 online repositories (e.g. `[user@]server:project.git`). `url` can also be a
 local file system path to an "offline" repository.
 
 The `path` argument of this command is used to specify the location of the data
-to be downloaded within the repo. It should point to a data file or directory
-tracked by the source DVC project – specified in one of the
-[DVC-files](/doc/user-guide/dvc-file-format) of the repository at `url`. You
-will not find these files directly in the source Git repository. The source
+to be downloaded within the source project. It should point to a data file or
+directory tracked by that project – specified in one of the
+[DVC-files](/doc/user-guide/dvc-file-format) of the repository at `url`. (You
+will not find these files directly in the source Git repository.) The source
 project should have a default [DVC remote](/doc/commands-reference/remote)
 configured, containing them.)
 
