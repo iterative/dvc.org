@@ -23,10 +23,6 @@ example:
 $ dvc add data/data.xml
 ```
 
-> For an alternative and faster way to download the project's dataset in a
-> single command, see the later [Reusing Data](/doc/get-started/reusing-data)
-> chapter.
-
 DVC stores information about the added data in a special **DVC-file** that has a
 human-readable [format](/doc/user-guide/dvc-file-format). It can be committed to
 Git:
