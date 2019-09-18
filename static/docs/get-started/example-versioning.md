@@ -53,7 +53,6 @@ recommend creating a virtual environment with a tool such as
 ```dvc
 $ virtualenv -p python3 .env
 $ source .env/bin/activate
-$ echo ".env/" >> .gitignore
 $ pip install -r requirements.txt
 ```
 
@@ -75,22 +74,21 @@ more.
 Let's now add some data, then train the first model and capture it with DVC,
 including input dataset and [metrics](/doc/commands-reference/metrics).
 
-<details>
-
-### Expand to learn how to download on Windows
-
-Windows doesn't include the `wget` utility by default, so you'll need to use the
-browser to download `data.xml`. Save it into the `data` subdirectory.
-(Right-click [this link](https://data.dvc.org/tutorial/ver/data.zip) and click
-`Save link as`(Chrome) or `Save object as`(Firefox)).
-
-</details>
-
 ```dvc
-$ wget https://data.dvc.org/tutorial/ver/data.zip
+$ mkdir data
+$ cd data
+$ dvc get https://github.com/iterative/dataset-registry \
+          tutorial/ver/data.zip
+...
 $ unzip data.zip
 $ rm -f data.zip
 ```
+
+> `dvc get` can download <abbr>data artifacts</abbr> from any <abbr>DVC
+> project</abbr> hosted on Git repositories into the current working directory
+> (similar to `wget` but for DVC repositories). In this case we use our own
+> [iterative/dataset-registry](https://github.com/iterative/dataset-registry))
+> project as the external data source.
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In summary, it's a 43
@@ -153,7 +151,7 @@ Let's commit the current state:
 
 ```dvc
 $ git add .gitignore model.h5.dvc data.dvc metrics.json
-$ git commit -m "model first version, 1000 images"
+$ git commit -m "First model, trained with 1000 images"
 $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ```
 
@@ -173,13 +171,25 @@ files work.
 
 </details>
 
+> Note that executing `train.py` produced other intermediate files. This is OK,
+> we will use them later.
+>
+> ```dvc
+> $ git status
+> ...
+> 	bottleneck_features_train.npy
+> 	bottleneck_features_validation.npy
+> ```
+
 ## Second model version
 
 Let's imagine that our images dataset is growing, we were able to double it.
 Next command extracts 500 cat and 500 dog images into `data/train`:
 
 ```dvc
-$ wget https://data.dvc.org/tutorial/ver/new-labels.zip
+$ dvc get https://github.com/iterative/dataset-registry \
+          tutorial/ver/new-labels.zip
+...
 $ unzip new-labels.zip
 $ rm -f new-labels.zip
 ```
@@ -222,7 +232,7 @@ Let's commit the second version:
 
 ```dvc
 $ git add model.h5.dvc data.dvc metrics.json
-$ git commit -m "model second version, 2000 images"
+$ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
@@ -297,8 +307,16 @@ our example, please notice that `train.py` produces binary files (e.g.
 When you have a script that takes some data as an input and produces other data
 <abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:
 
+> Please go back to the master branch code and data if you tried the commands in
+> the [Switching between versions](#switching-between-versions) section with:
+>
+> ```dvc
+> $ git checkout master
+> $ dvc checkout
+> ```
+
 ```dvc
-$ dvc remove -p model.h5.dvc
+$ dvc remove -pf model.h5.dvc
 $ dvc run -f Dvcfile \
           -d train.py -d data \
           -M metrics.json \
@@ -311,6 +329,9 @@ Similar to `dvc add`, `dvc run` creates a DVC-file (forced to have file name
 the same way as `dvc add` does. Unlike, `dvc add`, `dvc run` also tracks
 dependencies (`-d`) and the command (`python train.py`) that was run to produce
 the result. We also such a DVC-file a "stage file".
+
+> BTW, at this point you could `git add .` and `git commit` to save the
+> `Dvcfile` stage file and its changed output files to the repository.
 
 `dvc repro` will run `Dvcfile` if any of its dependencies (`-d`) changed, for
 example after we added new images like we did when we built the second model

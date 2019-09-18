@@ -50,7 +50,7 @@ stage file (DVC-file).
 > Note that some of these commands use the `/home/shared` directory, typical in
 > Linux distributions.
 
-### Local
+### Local file system path
 
 The default local cache location is `.dvc/cache`, so there is no need to specify
 it explicitly.

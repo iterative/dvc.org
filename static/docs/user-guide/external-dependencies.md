@@ -37,7 +37,7 @@ stage file (DVC-file).
 > Note that some of these commands use the `/home/shared` directory, typical in
 > Linux distributions.
 
-### Local
+### Local file system path
 
 ```dvc
 $ dvc run -d /home/shared/data.txt \
@@ -81,13 +81,15 @@ $ dvc run -d hdfs://user@example.com/home/shared/data.txt \
 
 ### HTTP
 
+> Including HTTPs
+
 ```dvc
 $ dvc run -d https://example.com/data.txt \
           -o data.txt \
           wget https://example.com/data.txt -O data.txt
 ```
 
-## Example: Defined with DVC remote aliases
+## Example: DVC remote aliases
 
 If instead of a URL you'd like to use an alias that can be managed
 independently, or if the external dependency location requires access
@@ -95,7 +97,7 @@ credentials, you may use `dvc remote add` to define this location as a DVC
 Remote, and then use a special URL with format `remote://{remote_name}/{path}`
 to define an external dependency.
 
-For example, for an HTTP remote/dependency:
+For example, for an HTTPs remote/dependency:
 
 ```dvc
 $ dvc remote add example https://example.com
@@ -107,11 +109,11 @@ $ dvc run -d remote://example/data.txt \
 Please refer to `dvc remote add` for more details like setting up access
 credentials for certain remotes.
 
-## Example: Using import-url
+## Example: import-url command
 
 In the previous examples, downloading commands were used: `aws s3 cp`, `scp`,
 `wget`, etc. `dvc import-url` simplifies the downloading for all the supported
-types of dependencies.
+external path or URL types.
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml
@@ -120,8 +122,8 @@ Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
 ...
 ```
 
-The command above creates an <abbr>import stage</abbr> specified in DVC-file
-`data.xml.dvc` that uses an external dependency (in this case of HTTP type).
+The command above creates the <abbr>import stage</abbr> (DVC-file)
+`data.xml.dvc`, that uses an external dependency (in this case an HTTPs URL).
 
 <details>
 

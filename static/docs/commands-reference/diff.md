@@ -61,7 +61,7 @@ For these examples we can use the chapters in our
 
 ### Click and expand to setup example
 
-Start by cloning our sample repo if you don't already have it. Then move into
+Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
 [version](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
 corresponding to the _Add Files_ chapter:
@@ -103,9 +103,9 @@ added file with size 37.9 MB
 ## Example: Specific targets across Git references
 
 We can base this example in the [Metrics](/doc/get-started/metrics) and
-[Compare Experiments](/doc/get-started/compare-experiments) sections of our _Get
+[Compare Experiments](/doc/get-started/compare-experiments) chapters of our _Get
 Started_ section, which describe different experiments to produce the
-`model.pkl` file. Our sample repository has the `bigrams-experiment` and
+`model.pkl` file. Our example repository has the `bigrams-experiment` and
 `baseline-experiment`
 [tags](https://github.com/iterative/example-get-started/tags) respectively to
 reference these experiments.
@@ -126,7 +126,7 @@ $ dvc fetch -T
 The `-T` flag passed to `dvc fetch` makes sure we have all the data files
 related to all existing tags in the repo. You take a look at the
 [available tags](https://github.com/iterative/example-get-started/tags) of our
-sample repo.
+example repo.
 
 </details>
 
@@ -169,9 +169,9 @@ diff for 'data/features'
 0 files deleted, size was increased by 2.9 MB
 ```
 
-## Examples: Confirming that a target has not changed
+## Example: Confirming that a target has not changed
 
-Let's use our sample repo once again, which has several
+Let's use our example repo once again, which has several
 [available tags](https://github.com/iterative/example-get-started/tags) for
 conveniency. The `5-preparation` tag corresponds to the
 [Connect Code and Data](/doc/get-started/connect-code-and-data) section of our

@@ -17,6 +17,10 @@
       "pipeline",
       "visualize",
       "reproduce",
+      {
+        "label": "Reusing Data",
+        "slug": "reusing-data"
+      },
       "metrics",
       "experiments",
       "compare-experiments",
