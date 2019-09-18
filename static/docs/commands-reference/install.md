@@ -51,7 +51,8 @@ The installed Git hook automates executing `dvc push`.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and
   directories under DVC control to remote storage.
 
-_If a hook already exists, DVC will raise exception._
+_If a hook already exists, DVC will raise an exception. In such case, user
+should try to manually edit existing link or remove it and retry install._
 
 For more information about git hooks, refer to the
 [git-scm documentation](https://git-scm.com/docs/githooks).
