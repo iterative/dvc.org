@@ -11,9 +11,9 @@ files and download a 40MB data archive into this directory.
 ### Expand to learn how to download on Windows
 
 Windows doesn't include the `wget` utility by default, so you'll need to use the
-browser to download `data.xml`. Save it into the `data` subdirectory.
+browser to download `data.xml`. Save it into the `data/` subdirectory.
 (Right-click [this link](https://data.dvc.org/tutorial/ver/data.zip) and click
-`Save link as`(Chrome) or `Save object as`(Firefox)).
+`Save Link As...`(Chrome).
 
 </details>
 

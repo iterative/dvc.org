@@ -20,10 +20,11 @@ these imported file, directory, or <abbr>data artifact</abbr> up to date.
 
 Note that import stages are considered always "locked", meaning that if you run
 `dvc repro`, they won't be updated. `dvc update` is the only command that can
-update them.
+update them. Also, for `dvc import` DVC-files, the `rev_lock` field is updated
+by `dvc update`.
 
-To indicate which import stages to update, specify the corresponding DVC-file
-`targets` as command arguments.
+To indicate which import stages to update, we must specify the corresponding
+DVC-file `targets` as command arguments.
 
 ## Options
 

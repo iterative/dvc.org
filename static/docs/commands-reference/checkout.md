@@ -115,7 +115,7 @@ from tag to tag.
 
 ### Click and expand to setup the project
 
-Start by cloning our sample repo if you don't already have it:
+Start by cloning our example repo if you don't already have it:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
