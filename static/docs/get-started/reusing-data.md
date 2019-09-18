@@ -21,13 +21,7 @@ connection between DVC projects:
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
-           get-started/data.xml -o data/data.xml
-...
-Saving information to 'data.xml.dvc'.
-
-To track the changes with git, run:
-
-	git add data.xml.dvc
+             get-started/data.xml -o data/data.xml
 ```
 
 > This command is only shown for informational purposes. No need to actually run
