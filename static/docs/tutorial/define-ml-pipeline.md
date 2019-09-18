@@ -3,8 +3,8 @@
 ## Get data file
 
 To include a data file into your data science environment, you need to copy the
-file into the repository. We'll create a special `data/` directory for the data
-files and download a 40MB data archive into this directory.
+file into the repository. We'll create a `data/` directory for the data files
+and download a 40MB data archive into this directory.
 
 <details>
 
@@ -63,10 +63,10 @@ need to run `dvc unprotect` or `dvc remove` first (see the
 ## Data file internals
 
 If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
-`dvc add`, you will see that only outputs are defined in `outs`. In this file,
-only one output is defined. The output contains the data file path in the
-repository and md5 checksum. This checksum determines a location of the actual
-content file in the
+`dvc add`, you will see that <abbr>outputs</abbr> are tracked in the `outs`
+field. In this file, only one output is specified. The output contains the data
+file path in the repository and md5 checksum. This checksum determines a
+location of the actual content file in the
 [cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
 `.dvc/cache`.
 
@@ -134,16 +134,15 @@ same.
 ## Running commands
 
 Once the data files are in the workspace, you can start processing the data and
-train ML models out of the data files. DVC helps you to define stages of your ML
-process and easily connect them into a ML
-[pipeline](/doc/commands-reference/pipeline).
+train ML models out of the data files. DVC helps you to define
+[stages](/doc/commands-reference/run) of your ML process and easily connect them
+into a ML [pipeline](/doc/commands-reference/pipeline).
 
 `dvc run` executes any command that you pass into it as a list of parameters.
 However, the command to run alone is not as interesting as its role within a
 pipeline, so we'll need to specify its dependencies and output files. We call
-this a pipeline [stage](/doc/commands-reference/run). Dependencies may include
-input files and directories, and the actual command to run. Outputs are files
-written to by the command, if any.
+this a pipeline stage. Dependencies may include input files and directories, and
+the actual command to run. Outputs are files written to by the command, if any.
 
 1. Option `-d file.tsv` should be used to specify a dependency file or
    directory. The dependency can be a regular file from a repository or a data
@@ -155,8 +154,8 @@ written to by the command, if any.
 3. `-O file.tsv` (upper case O) specifies a regular output file (not to be added
    to DVC).
 
-It is important to specify the dependencies and the outputs of the run command
-before the command to run itself.
+It is important to specify the dependencies and the outputs of the command to
+run before the command to run itself.
 
 Let's see how an extract command `unzip` works under DVC:
 
@@ -191,7 +190,7 @@ The `unzip` command extracts data file `data/Posts.xml.zip` to a regular file
 `data/Posts.xml`. It knows nothing about data files or DVC. DVC executes the
 command and does some additional work if the command was successful:
 
-1. DVC transforms all the outputs `-o` files into data files. It is like
+1. DVC transforms all the output files (`-o` option) into data files. It's like
    applying `dvc add` for each of the outputs. As a result, all the actual data
    files content goes to the <abbr>cache</abbr> directory `.dvc/cache` and each
    of the file names will be added to `.gitignore`.
@@ -254,7 +253,7 @@ $ du -sh .
 186M .
 ```
 
-Let’s commit the result of the `unzip` command. This will be the first stage of
+Let's commit the result of the `unzip` command. This will be the first stage of
 our ML pipeline.
 
 ```dvc
@@ -264,11 +263,11 @@ $ git commit -m "extract data"
 
 ## Running in bulk
 
-A single stage of our ML pipeline was defined and committed into repository. It
-isn't necessary to commit stages right after their creation. You can create a
-few and commit them to Git together later.
+A single [stage](/doc/commands-reference/run) of our ML pipeline was created and
+committed into repository. It isn't necessary to commit stages right after their
+creation. You can create a few and commit them with Git together later.
 
-Let’s create the following stages: converting an XML file to TSV, and then
+Let's create the following stages: converting an XML file to TSV, and then
 separating training and testing datasets:
 
 ```dvc
@@ -292,7 +291,7 @@ Positive size 2049, negative size 97951
 The result of the commands above are two
 [stage files](/doc/commands-reference/run) corresponding to each of the
 commands, `Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file
-was created. This type of file should not be tracked by Git. Let’s manually
+was created. This type of file should not be tracked by Git. Let's manually
 include this type of file into `.gitignore`.
 
 ```dvc
@@ -313,7 +312,7 @@ $ git add .
 $ git commit -m "Process to TSV and separate test and train"
 ```
 
-Let’s run and save the following commands for our pipeline. First, define the
+Let's run and save the following commands for our pipeline. First, define the
 feature extraction stage, that takes `train` and `test` TSVs and generates
 corresponding matrix files:
 
@@ -363,8 +362,9 @@ The model evaluation stage is the last one for this tutorial. To help in the
 pipeline's reproducibility, we use stage file name `Dvcfile`. (This will be
 discussed in more detail in the next chapter.)
 
-Note that the output file `data/eval.txt` was transformed by DVC into a metric
-file in accordance with the `-M` option.
+Note that the <abbr>output</abbr> file `data/eval.txt` was transformed by DVC
+into a [metric](/doc/commands-reference/metrics) file in accordance with the
+`-M` option.
 
 The result of the last three `dvc run` commands execution is three stage files
 and a modified .gitignore file. All the changes should be committed into Git:
@@ -380,7 +380,7 @@ $ git add .
 $ git commit -m Evaluate
 ```
 
-The evaluation stage output contains the target metrics value in a simple text
+The output of the evaluation stage contains the target value in a simple text
 form:
 
 ```dvc

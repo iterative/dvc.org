@@ -1,7 +1,7 @@
 # get
 
-Download or copy file or directory from another DVC repository (on a Git server
-e.g. Github) into the local file system.
+Download or copy file or directory from any <abbr>DVC project</abbr> in a Git
+repository (e.g. hosted on Github) into the current working directory.
 
 > Unlike `dvc import`, this command does not track the downloaded data files
 > (does not create a DVC-file).
@@ -18,18 +18,25 @@ positional arguments:
 
 ## Description
 
-DVC provides an easy way to reuse datasets, intermediate results, ML models, or
-other files and directories tracked in another DVC repository into the current
-working directory, regardless of whether it's a DVC project. The `dvc get`
-command downloads such a <abbr>data artifact</abbr>.
-
-The `url` argument specifies the address of the Git repository containing the
-external <abbr>DVC project</abbr> (both HTTP and SSH protocols supported, e.g.
-`[user@]server:project.git`). `path` is used to specify the path of the data to
-be downloaded within the repo.
+Provides an easy way to download datasets, intermediate results, ML models, or
+other files and directories (any <abbr>data artifact</abbr>) tracked in another
+DVC repository, by downloading them into the current working directory.
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
+
+The `url` argument specifies the address of the Git repository containing the
+external <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
+online repositories (e.g. `[user@]server:project.git`). `url` can also be a
+local file system path to an "offline" repository.
+
+The `path` argument of this command is used to specify the location of the data
+to be downloaded within the source project. It should point to a data file or
+directory tracked by that project – specified in one of the
+[DVC-files](/doc/user-guide/dvc-file-format) of the repository at `url`. (You
+will not find these files directly in the source Git repository.) The source
+project should have a default [DVC remote](/doc/commands-reference/remote)
+configured, containing them.)
 
 > See `dvc get-url` to download data from other supported URLs.
 
@@ -60,14 +67,14 @@ created in the current working directory, with its original file name.
 
 We can use `dvc get` to download the resulting model file from our
 [get started example repo](https://github.com/iterative/example-get-started),
-which is a DVC repository external to the current working directory). The
-desired file is tracked in the root of the external <abbr>project</abbr>, and
-named `model.pkl`.
+which is a <abbr>DVC project</abbr> external to the current working directory.
+The desired <abbr>output</abbr> file would be located in the root of the
+external project (if the
+[`train.dvc` stage](https://github.com/iterative/example-get-started/blob/master/train.dvc)
+was reproduced) and named `model.pkl`.
 
 ```dvc
 $ dvc get https://github.com/iterative/example-get-started model.pkl
-Preparing to download data from 'https://remote.dvc.org/get-started'
-...
 $ ls
 model.pkl
 ```

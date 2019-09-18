@@ -7,11 +7,12 @@ predicting tags for a given StackOverflow question. For example, we want one
 classifier which can predict a post that is about the Python language by tagging
 it `python`. This is a short version of the [Tutorial](/doc/tutorial).
 
-In this example, we will focus on building a simple ML pipeline that takes an
-archive with StackOverflow posts and trains the prediction model and saves it as
-an output. See [Get Started](/doc/get-started) to see links to other examples,
-tutorials, use cases if you want to cover other aspects of the DVC. The pipeline
-itself is a sequence of transformation we apply to the data file:
+In this example, we will focus on building a simple ML
+[pipeline](/doc/commands-reference/pipeline) that takes an archive with
+StackOverflow posts and trains the prediction model and saves it as an
+<abbr>output</abbr>. See [Get Started](/doc/get-started) to see links to other
+examples, tutorials, use cases if you want to cover other aspects of the DVC.
+The pipeline itself is a sequence of transformation we apply to the data file:
 
 ![](/static/img/example-flow-2x.png)
 
@@ -51,8 +52,9 @@ $ source .env/bin/activate
 $ pip install -r code/requirements.txt
 ```
 
-Next, we will create a pipeline step-by-step, utilizing the same set of commands
-that are described in earlier [Get Started](/doc/get-started) chapters.
+Next, we will create a [pipeline](/doc/commands-reference/pipeline)
+step-by-step, utilizing the same set of commands that are described in earlier
+[Get Started](/doc/get-started) chapters.
 
 > Note that its possible to define more than one pipeline in each <abbr>DVC
 > project</abbr>. This will be determined by the interdependencies between
@@ -123,10 +125,11 @@ $ git commit -m "Add dataset archive to project"
 
 ## Define stages
 
-Each [stage](/doc/commands-reference/run) – the parts of a pipeline – is
-described by providing a command to run, input data it takes and a list of
-output files. DVC is not Python or any other language specific and can wrap any
-command runnable via CLI.
+Each [stage](/doc/commands-reference/run) – the parts of a
+[pipeline](/doc/commands-reference/pipeline) – is described by providing a
+command to run, input data it takes and a list of <abbr>outputs</abbr>. DVC is
+not Python or any other language specific and can wrap any command runnable via
+CLI.
 
 The first stage is to extract XML from the archive. Note that we don't need to
 run `dvc add` on `Posts.xml` below, `dvc run` saves the data automatically
@@ -229,7 +232,8 @@ $ dvc run -d code/train_model.py -d data/matrix-train.pkl \
                  20170426 data/model.pkl
 ```
 
-Finally, evaluate the model on the test dataset and get the metrics file:
+Finally, evaluate the model on the test dataset and get the
+[metric](/doc/commands-reference/metrics) file:
 
 ```dvc
 $ dvc run -d code/evaluate.py -d data/model.pkl \
@@ -243,9 +247,10 @@ $ dvc run -d code/evaluate.py -d data/model.pkl \
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and outputs in DVC-files, we can generate a dependency
-graph: a series of commands DVC needs to execute. `dvc repro` does this in order
-to restore a pipeline and reproduce its intermediate or final results.
+By analyzing dependencies and <abbr>outputs</abbr> in DVC-files, we can generate
+a dependency graph: a series of commands DVC needs to execute. `dvc repro` does
+this in order to restore a pipeline and reproduce its intermediate or final
+results.
 
 `dvc pipeline show` helps to visualize pipelines (run it with `-c` option to see
 actual commands instead of DVC-files):
@@ -307,10 +312,10 @@ $ dvc metrics show
 > Since the dataset for this example is extremely simplified to make it faster
 > to run this pipeline, the exact metric number may vary.
 
-It's time to save our pipeline. You can confirm that we do not save model files
-or raw datasets into Git using the `git status` command. We are just saving a
-snapshot of the DVC-files that describe data, transformations (stages), and
-relationships between them.
+It's time to save our [pipeline](/doc/commands-reference/pipeline). You can
+confirm that we do not save model files or raw datasets into Git using the
+`git status` command. We are just saving a snapshot of the DVC-files that
+describe data, transformations (stages), and relationships between them.
 
 ```dvc
 $ git add *.dvc auc.metric data/.gitignore
@@ -331,7 +336,8 @@ bag_of_words = CountVectorizer(stop_words='english',
                               ngram_range=(1, 2))
 ```
 
-Reproduce all required stages to get to the target metrics file:
+Reproduce all required stages to get to the target
+[metric](/doc/commands-reference/metrics) file:
 
 ```dvc
 $ dvc repro evaluate.dvc
@@ -357,16 +363,18 @@ master:
 The `-a` flag in the command above tells `dvc metrics show` to show the value
 for all Git branches.
 
-Feel free to commit the remaining changes to Git.
+Feel free to commit the remaining changes with Git.
 
 ## Conclusion
 
 By wrapping your commands with `dvc run`, it's easy to integrate DVC into a
-machine learning or data processing pipeline – without any significant effort to
-rewrite the code.
+machine learning or data processing [pipeline](/doc/commands-reference/pipeline)
+or other data science processes without any significant effort to rewrite your
+code.
 
 The key detail to notice is that DVC automatically derives the dependencies
-between the pipeline stages and builds a dependency graph (DAG) transparently.
+between pipeline [stages](/doc/commands-reference/run) by building dependency
+graphs that represent data pipelines.
 
 DVC streamlines all of your experiments into a single, reproducible
 <abbr>project</abbr>, and it makes it easy to share it with Git, including

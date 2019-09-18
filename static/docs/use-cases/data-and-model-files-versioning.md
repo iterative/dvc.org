@@ -6,9 +6,9 @@
 > example.
 
 DVC allows storing and versioning data files and directories, ML models,
-intermediate results with Git, without checking the file contents into Git. It
-is useful when dealing with files that are too large for Git to handle. DVC
-stores information about your data file in a special
+intermediate results with Git, without adding the file contents into Git. It's
+useful when dealing with files that are too large for Git to handle. DVC stores
+information about your data file in a special
 [DVC-file](/doc/user-guide/dvc-file-format), that has a description of a file
 that can be used for versioning. DVC supports various types of remote locations
 for your data files and allows you to easily store and share your data alongside
@@ -42,8 +42,9 @@ initialize it in your repository:
 $ dvc init
 ```
 
-DVC creates a `.dvc/` directory that stores special files and also a
-`.dvc/cache` directory that will be used to store cache for your data.
+DVC creates a `.dvc/` directory that stores
+[internal files](/doc/user-guide/dvc-files-and-directories) and the `.dvc/cache`
+directory that will be used to cache your data.
 
 ```dvc
 $ git status

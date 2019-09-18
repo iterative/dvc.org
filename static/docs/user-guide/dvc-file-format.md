@@ -37,7 +37,7 @@ outs:
 # Comments like this line persist through multiple executions of
 # dvc repro/commit but not through dvc run/add/import-url/get-url commands.
 
-meta: # Special key to contain arbitary user data
+meta: # Special field to contain arbitary user data
   name: John
   email: john@xyz.com
 ```
@@ -48,7 +48,7 @@ On the top level, `.dvc` file consists of these fields:
 
 - `cmd`: Executable command defined in this stage
 - `deps`: List of dependencies for this stage
-- `outs`: List of outputs for this stage
+- `outs`: List of <abbr>outputs</abbr> for this stage
 - `md5`: md5 checksum for this DVC-file
 - `locked`: Whether or not this stage is locked from reproduction
 - `wdir`: Directory to run command in (default `.`)
@@ -78,7 +78,8 @@ An output entry consists of these fields:
 - `path`: Path to the output, relative to the `wdir` path
 - `md5`: md5 checksum for the output
 - `cache`: Whether or not dvc should cache the output
-- `metric`: Whether or not this file is a metric file
+- `metric`: Whether or not this file is a
+  [metric](/doc/commands-reference/metrics) file
 
 A metric entry consists of these fields:
 

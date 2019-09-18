@@ -39,10 +39,10 @@ Tries to reproduce the same pipeline... But there is still nothing to reproduce.
 ## Adding bigrams
 
 Our NLP model was based on [unigrams](https://en.wikipedia.org/wiki/N-gram)
-only. Let’s improve the model by adding bigrams. The bigrams model will extract
+only. Let's improve the model by adding bigrams. The bigrams model will extract
 signals not only from separate words but also from two-word combinations. This
 eventually increases the number of features for the model and hopefully improves
-the target metric.
+the target [metric](/doc/commands-reference/metrics).
 
 Before editing the `code/featurization.py` file, please create and checkout a
 new branch `bigrams`.
@@ -88,7 +88,7 @@ The process started with the feature creation stage because one of its
 parameters was changed — the edited source code file `code/featurization.py`.
 All dependent stages were executed as well.
 
-Let’s take a look at the metric’s change. The improvement is close to zero
+Let's take a look at the metric's change. The improvement is close to zero
 (+0.0075% to be precise):
 
 ```dvc
@@ -98,7 +98,7 @@ AUC: 0.624727
 
 This is not a great result but it gives us some information about the model.
 
-To compare it with the previous AUC, you can use the `metrics` command:
+To compare it with the previous AUC, you can use the `dvc metrics` command:
 
 ```dvc
 $ dvc metrics show -a
@@ -113,7 +113,7 @@ master:
 > It's convenient to keep track of information even for failed experiments.
 > Sometimes a failed hypothesis gives more information than a successful one.
 
-Let’s keep the result in the repository. Later we can find out why bigrams don't
+Let's keep the result in the repository. Later we can find out why bigrams don't
 add value to the current model and change that.
 
 Many DVC-files were changed. This happened due to md5 checksum changes.
@@ -137,9 +137,9 @@ $ git commit -m Bigrams
 
 The previous experiment was done in the 'featurization' stage and provided no
 improvements. This might be caused by not having perfect model hyperparameters.
-Let’s try to improve the model by changing the hyperparameters.
+Let's try to improve the model by changing the hyperparameters.
 
-There is no good reason to improve the last bigrams model. Let’s checkout the
+There is no good reason to improve the last bigrams model. Let's checkout the
 original model from the master branch.
 
 > Note that after checking out code and DVC-files from Git, data files have to
@@ -157,9 +157,9 @@ After proper checkout, there is nothing to reproduce because all the correct
 files were checked out by Git and all data files by DVC.
 
 In more detail — `git checkout master` checked out the code and DVC-files. The
-DVC-files from the master branch point to old (unigram based) data files outputs
-and dependencies. `dvc checkout` command found all the DVC-files and restored
-the data files based on them.
+DVC-files from the master branch point to old (unigram based) dependencies and
+<abbr>outputs</abbr>. `dvc checkout` command found all the DVC-files and
+restored the data files based on them.
 
 ## Tune the model
 
@@ -195,7 +195,8 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-Validate the metric and commit all the changes.
+Validate the [metric](/doc/commands-reference/metrics) and commit all the
+changes.
 
 ```dvc
 $ cat data/eval.txt
@@ -212,15 +213,15 @@ $ git commit -m '700 trees in the forest'
 
 ## Merge the model to master
 
-Now we can revisit the failing hypothesis with bigrams, which didn’t provide any
+Now we can revisit the failing hypothesis with bigrams, which didn't provide any
 model improvement even with one thousand more features. The current model with
 700 trees in the forest is stronger and we might be able to get more information
-using bigrams. So, let’s incorporate the bigrams changes into the current model
+using bigrams. So, let's incorporate the bigrams changes into the current model
 using a regular Git merge command.
 
 > Git merge logic works for data files and respectively for DVC models.
 
-But first, let’s create a branch as usual.
+But first, let's create a branch as usual.
 
 ```dvc
 $ git checkout -b train_bigrams
@@ -246,7 +247,7 @@ remove all automatically generated
 
 Another way to solve git merge conflicts is to simply replace all checksums with
 empty strings ''. The only disadvantage of this trick is that DVC will need to
-recompute the outputs checksums.
+recompute the <abbr>outputs</abbr> checksums.
 
 After resolving the conflicts you need to checkout a proper version of the data
 files:
@@ -272,7 +273,7 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-The target metric:
+Check the target [metric](/doc/commands-reference/metrics):
 
 ```dvc
 $ cat data/eval.txt

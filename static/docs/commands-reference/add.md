@@ -145,7 +145,7 @@ outs:
     md5: d8acabbfd4ee51c95da5d7628c7ef74b
     metric: false
     path: data.xml
-meta: # Special key to contain arbitary user data
+meta: # Special field to contain arbitary user data
   name: John
   email: john@xyz.com
 ```
@@ -155,7 +155,7 @@ correspond to an entry in the cache.
 
 > Note that the `meta` values above were entered manually for this example. Meta
 > values and `#` comments are not preserved when a DVC-file is overwritten with
-> the `dvc add` command.
+> the `dvc add`, `dvc run`, `dvc import`, or `dvc import-url` commands.
 
 ```dvc
 $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b

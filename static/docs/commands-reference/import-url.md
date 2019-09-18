@@ -151,7 +151,8 @@ An advanced alternate to [Add Files](/doc/get-started/add-files) chapter of the
 _Get Started_ section is to use `dvc import-url`:
 
 ```dvc
-$ dvc import-url https://data.dvc.org/get-started/data.xml data/data.xml
+$ dvc import-url https://data.dvc.org/get-started/data.xml \
+                 data/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data/data.xml'
 [##############################] 100% data.xml
 [##############################] 100% data.xml
@@ -315,9 +316,7 @@ do so, we can run `dvc update` to make sure the import stage is up to date:
 
 ```dvc
 $ dvc update data.xml.dvc
-WARNING: Dependency '.../tmp/dvc-import-url-example/data.xml' of 'data.xml.dvc' changed because it is 'modified'.
-WARNING: Stage 'data.xml.dvc' changed.
-Reproducing 'data.xml.dvc'
+...
 Importing '.../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
 [##############################] 100% data.xml
 ...
@@ -341,8 +340,7 @@ stage specifically:
 
 ```dvc
 $ dvc repro prepare.dvc
-WARNING: Dependency 'data/data.xml' of 'prepare.dvc' changed because it is 'modified'.
-WARNING: Stage 'prepare.dvc' changed.
+...
 Reproducing 'prepare.dvc'
 ...
 $ dvc status

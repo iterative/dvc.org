@@ -24,8 +24,8 @@ downloading data to and from remote storage. These commands are analogous to the
 `git pull` and `git push` commands.
 [Data sharing](/doc/use-cases/share-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results, models,
-metrics, etc) remotely (S3, SSH, GCS, etc) are the most common use cases for
-these commands.
+[metrics](/doc/commands-reference/metrics), etc) remotely (S3, SSH, GCS, etc.)
+are the most common use cases for these commands.
 
 The `dvc pull` command allows one to retrieve data from remote storage.
 `dvc pull` has the same effect as running `dvc fetch` and `dvc checkout`
@@ -101,7 +101,7 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 ## Examples
 
-For using the `dvc pull` command, remote storage must be defined. (See
+For using the `dvc pull` command, a remote storage must be defined. (See
 `dvc remote`.) For an existing <abbr>project</abbr>, remotes are usually already
 set up and you can use `dvc remote list` to check them. Just to remind how it is
 done and set a context for the example, let's define an SSH remote with the
@@ -129,7 +129,8 @@ $ dvc pull --remote r1
 (8/8): [####################] 100% model.pkl
 ```
 
-We can download specific files that are outputs of a specific DVC-file:
+We can download specific files that are <abbr>outputs</abbr> of a specific
+DVC-file:
 
 ```dvc
 $ dvc pull data.zip.dvc

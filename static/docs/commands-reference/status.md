@@ -41,8 +41,8 @@ changes in other stages that affect the target.
 
 In the `local` mode, changes are detected through the checksum of every file
 listed in every DVC-file in question against the corresponding file in the file
-system. The output indicates the detected changes, if any. If no differences are
-detected, `dvc status` prints this message:
+system. The command output indicates the detected changes, if any. If no
+differences are detected, `dvc status` prints this message:
 
 ```dvc
 $ dvc status
@@ -63,13 +63,13 @@ outputs described in it.
 - _changed checksum_ means that the <abbr>DVC-file</abbr> checksum has changed
   (e.g. someone manually edited the file).
 
-- _always changed_ means that this is a special DVC-file with no dependencies
-  (orphans) or it has `always_changed: true` option set (see
-  [`--always-changed` flag for `dvc run`](/doc/commands-reference/run)), which
-  is considered always changed and is always executed by `dvc repro`.
+- _always changed_ means that this is a DVC-file with no dependencies (an
+  _orphan_ stage file) or it has the `always_changed: true` value set (see
+  `--always-changed` option in `dvc run`), which is considered always changed
+  and is always executed by `dvc repro`.
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
-  or outputs defined by the <abbr>DVC-file</abbr>. Depending on the use case,
+  or outputs tracked by the <abbr>DVC-file</abbr>. Depending on the use case,
   commands like `dvc commit` or `dvc repro`, `dvc run` should be run to update
   the file. Possible states are:
 
@@ -156,9 +156,9 @@ prepare.dvc
         always changed
 ```
 
-This shows that for `bar.dvc` the dependency, `foo`, has changed, and the
-output, `bar` has changed. Likewise for `foo.dvc` the dependency `foo` has
-changed, but no output has changed.
+This shows that for stage `bar.dvc`, the dependency `foo` and the
+<abbr>output</abbr> `bar` have changed. Likewise for `foo.dvc`, the dependency
+`foo` has changed, but no output has changed.
 
 ## Example: Dependencies
 

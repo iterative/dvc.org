@@ -1,10 +1,11 @@
 # Experiment Metrics
 
 The last stage we would like to add to our pipeline is its the evaluation. Data
-science is a metric-driven R&D-like process and `dvc metrics` along with DVC
-metric files provide a framework to capture and compare experiments performance.
-It doesn't require installing any databases or instrumenting your code to use
-some API, all is tracked by Git and is stored in Git or DVC remote storage:
+science is a metric-driven R&D-like process and `dvc metrics` commands along
+with DVC metric files provide a framework to capture and compare experiments
+performance. It doesn't require installing any databases or instrumenting your
+code to use some API, all is tracked by Git and is stored in Git or DVC remote
+storage:
 
 ```dvc
 $ dvc run -f evaluate.dvc \
@@ -15,9 +16,11 @@ $ dvc run -f evaluate.dvc \
 ```
 
 `evaluate.py` calculates AUC value using the test dataset. It reads features
-from the `features/test.pkl` file and produces a DVC metric file (`auc.metric`).
-It is a special DVC output file type, in this case it's just a plain text file
-with a single number inside.
+from the `features/test.pkl` file and produces a
+[metric](/doc/commands-reference/metrics) file (`auc.metric`). Any
+<abbr>output</abbr> (in this case just a plain text file containing a single
+numeric value) can be marked as a metric, for example by using the `-R` option
+of `dvc run`.
 
 > Please, refer to the `dvc metrics` command documentation to see more available
 > options and details.
@@ -39,5 +42,5 @@ $ git tag -a "baseline-experiment" -m "Baseline experiment evaluation"
 ```
 
 The `dvc metrics show` command provides a way to compare different experiments,
-by analyzing DVC metric files across different branches, tags, etc. But first we
+by analyzing metric files across different branches, tags, etc. But first we
 need to create a new experiment to compare the baseline with.

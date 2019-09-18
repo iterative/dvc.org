@@ -23,17 +23,17 @@ example:
 $ dvc add data/data.xml
 ```
 
-DVC stores information about the added data in a special **DVC-file** that has a
-human-readable [format](/doc/user-guide/dvc-file-format). It can be committed to
-Git:
+DVC stores information about the added data in a special file called a
+**DVC-file**. DVC-files are small text files with a human-readable
+[format](/doc/user-guide/dvc-file-format) and they can be committed to Git:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
 $ git commit -m "Add raw data to project"
 ```
 
-Committing these special files to Git allows us to track different versions of
-the data as it evolves with the source code under Git control.
+Committing DVC-files with Git allows us to tack different versions of the
+<abbr>project</abbr> data as it evolves with the source code under Git control.
 
 <details>
 
@@ -83,7 +83,7 @@ and `dvc config cache` for more information.
 If your workspace uses Git, without DVC you would have to manually put each data
 file or directory in into `.gitignore`. DVC commands that take or make files
 that will go under its control automatically takes care of this for you! (You
-just have to add the changes to Git.)
+just have to add the changes with Git.)
 
 Refer to
 [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning),

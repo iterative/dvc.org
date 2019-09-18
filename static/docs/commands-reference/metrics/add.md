@@ -1,6 +1,6 @@
 # metrics add
 
-Tag the file located at `path` as a metric file.
+Mark the file located at `path` as a metric file.
 
 ## Synopsis
 
@@ -13,14 +13,20 @@ positional arguments:
 
 ## Description
 
-Sets a special flag in the relevant [DVC-file](/doc/user-guide/dvc-file-format)
-to identify a specified output as a metric file. Alternatively, an output file
-can be marked as a metric via `-M` or `-m` parameter of the `dvc run` command.
+Sets the `metric` field in the [DVC-file](/doc/user-guide/dvc-file-format) that
+defines the given `path` as an <abbr>output</abbr>, marking `path` as a
+[project metric](/doc/commands-reference/metrics) to track.
 
-While any text file could be used as a metric file to track, it's recommended to
-use `TSV`, `CSV`, or `JSON` formats. DVC provides a way (see
-`dvc metrics show`), to parse those formats to get to a specific value if file
-contains multiple metrics.
+Note that outputs can also be marked as metrics via the `-m` or `-M` options of
+the `dvc run` command.
+
+While any text file can be tracked as a metric file, it's recommended to use
+`TSV`, `CSV`, or `JSON` formats. DVC provides a way to parse those formats to
+get to a specific value, if the file contains multiple metrics. See
+`dvc metrics show` for more details.
+
+> Note that [external output](/doc/user-guide/external-outputs) cannot be marked
+> as project metrics.
 
 ## Options
 
@@ -58,14 +64,17 @@ contains multiple metrics.
 
 ## Examples
 
-Let's first create an output that is not a metric file:
+Let's first create a regular <abbr>output</abbr> with the `-o` option of
+`dvc run`:
 
 ```dvc
 $ dvc run -o metrics.txt "echo 0.9643 > metrics.txt"
 ```
 
-The content of `metrics.txt.dvc` should look like (notice the `mertic: false`
-field):
+Even when we named this output file `metrics.txt`, DVC won't know that it's a
+metric if we don't specify so. The content of stage file `metrics.txt.dvc`
+(which is a [DVC-file](/doc/user-guide/dvc-file-format)) should look like this:
+(Notice the `metric: false` field.)
 
 ```yaml
 cmd: echo 0.9643 > metrics.txt
@@ -77,7 +86,7 @@ outs:
     path: metrics.txt
 ```
 
-If you run `dvc metrics show` you should get an error message like this:
+If you run `dvc metrics show` now, you should get an error message:
 
 ```dvc
 ERROR: failed to show metrics - no metric files in
@@ -85,7 +94,7 @@ ERROR: failed to show metrics - no metric files in
        a metric file to track.
 ```
 
-Now, let's make a metric file out it:
+Now, let's mark the output as a metric:
 
 ```dvc
 $ dvc metrics add metrics.txt
@@ -93,8 +102,8 @@ $ dvc metrics add metrics.txt
 Saving information to 'metrics.txt.dvc'.
 ```
 
-This command updates the `metrics.txt.dvc` to specify that the `metrics.txt`
-output is a metric file now:
+This command updates `metrics.txt.dvc` to specify that `metrics.txt` is actually
+a metric file:
 
 ```yaml
 cmd: echo 0.9643 > metrics.txt
@@ -107,7 +116,7 @@ outs:
     path: metrics.txt
 ```
 
-And if you run `dvc metrics show` you should see something like this:
+And if you run `dvc metrics show` you should now see a report like this:
 
 ```dvc
 metrics.txt: 0.9643

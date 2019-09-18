@@ -1,6 +1,7 @@
 # metrics show
 
-Find and print <abbr>project</abbr> metrics.
+Find and print [project metrics](/doc/commands-reference/metrics), with optional
+formatting.
 
 ## Synopsis
 
@@ -15,21 +16,28 @@ positional arguments:
 
 ## Description
 
-It will find and print all metric files (default) or a specified metric file in
-the current branch (if `targets` are provided) or across all branches/tags (if
-`-a` or`-T` specified respectively).
+Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
+[DVC-files](/doc/user-guide/dvc-file-format). If `targets` are provided, it will
+show those specific metric files instead. With the `-a` or`-T` options, this
+command shows the different metrics values across all Git branches or tags,
+respectively.
 
-The optional `targets` argument represents several metric files or directories.
-If a `target` is a directory, recursively search and process all metric files in
-it with the `-R` option.
+The optional `targets` argument can contain several metric files. With the `-R`
+option, a target can even be a directory, so that DVC recursively shows all
+metric files in it.
 
-Providing `type` (via `-t` CLI option), overrides the full metric specification
-(both, `type` and `xpath`) defined in the DVC-file (usually, using
+Providing a `type` (`-t` option) overwrites the full metric specification (both
+`type` and `xpath` fields) defined in the
+[DVC-file](/doc/user-guide/dvc-file-format) (usually set originally with the
 `dvc metrics modify` command).
 
-If `type` (via `-t`) is not specified and only `xpath` (`-x`) is, only `xpath`
-is overridden. It will try to read type from the DVC-file. The `type` can be
-detected by the file extension automatically.
+If `type` (via `-t`) is not specified and only `xpath` (`-x` option) is, only
+the `xpath` field is overwritten in its DVC-file. (DVC will first try to read
+`type` from the DVC-file, but it can be automatically detected by the file
+extension.)
+
+> Alternatively, see `dvc metrics modify` command to learn how to apply `-t` and
+> `-x` permanently.
 
 ## Options
 
@@ -93,6 +101,6 @@ Examples in [add](/doc/commands-reference/metric/add),
 [remove](/doc/commands-reference/metrics/remove) cover most of the basic cases
 for the `dvc metrics show`.
 
-Example in the [compare experiments](/doc/get-started/compare-experiments)
-section covers the `-a` option to collect and output a metric file value within
-multiple branches.
+The [Compare Experiments](/doc/get-started/compare-experiments) chapter of our
+_Get Started_ section covers the `-a` option to collect and print a metric file
+value across all Git branches.

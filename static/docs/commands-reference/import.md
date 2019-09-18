@@ -4,8 +4,8 @@
 > previous version is still available as the `dvc import-url` command.
 
 Download or copy file or directory from another DVC repository (on a git server
-such as Github) into the <abbr>workspace</abbr>, and track changes in the remote
-data source with DVC. Creates a DVC-file.
+such as Github) into the <abbr>workspace</abbr>, and track changes in the
+external data source with DVC. Creates a DVC-file.
 
 > See also `dvc get` which corresponds to the first step this command performs
 > (just download the data).
@@ -29,17 +29,25 @@ in a way that it is tracked with DVC, so it can be updated when the external
 data source changes.
 
 The `url` argument specifies the address of the Git repository containing the
-external <abbr>DVC project</abbr> (both HTTP and SSH protocols supported, e.g.
-`[user@]server:project.git`). `path` is used to specify the path of the data to
-be downloaded within the repo.
+external <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
+online repositories (e.g. `[user@]server:project.git`). `url` can also be a
+local file system path to an "offline" repository.
+
+The `path` argument of this command is used to specify the location of the data
+to be downloaded within the source project. It should point to a data file or
+directory tracked by that project – specified in one of the
+[DVC-files](/doc/user-guide/dvc-file-format) of the repository at `url`. (You
+will not find these files directly in the source Git repository.) The source
+project should have a default [DVC remote](/doc/commands-reference/remote)
+configured, containing them.)
 
 > See `dvc import-url` to download and tack data from other supported URLs.
 
-After running this command successfully, the data found in the `url` `path` is
-created in the current working directory with its original file name e.g.
-`data.txt`. An import stage (DVC-file) is then created (similar to having used
-`dvc run` to generate the same output) extending the full file or directory name
-of the imported data e.g. `data.txt.dvc`.
+After running this command successfully, the imported data is placed in the
+current working directory with its original file name e.g. `data.txt`. An import
+stage (DVC-file) is then created extending the full file or directory name of
+the imported data e.g. `data.txt.dvc` – similar to having used `dvc run` to
+generate the same output.
 
 DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to data in
 an external DVC repository (hosted on a Git server). In such a DVC-file, the
@@ -83,14 +91,13 @@ $ dvc import git@github.com:iterative/example-get-started data/data.xml
 Importing 'data/data.xml (git@github.com:iterative/example-get-started)' -> 'data.xml'
 ...
 Saving information to 'data.xml.dvc'.
-...
 ```
 
 In contrast with `dvc get`, this command doesn't just download the data file,
 but it also creates an import stage (DVC-file) to keep track of this <abbr>data
-artifact</abbr> as a special `repo`
-[external dependency](/doc/user-guide/external-dependencies). Check
-`data.xml.dvc`:
+artifact</abbr> as an
+[external dependency](/doc/user-guide/external-dependencies) (using the `repo`
+field). Check `data.xml.dvc`:
 
 ```yaml
 md5: 7de90e7de7b432ad972095bc1f2ec0f8
