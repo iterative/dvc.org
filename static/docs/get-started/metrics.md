@@ -19,7 +19,7 @@ $ dvc run -f evaluate.dvc \
 from the `features/test.pkl` file and produces a
 [metric](/doc/commands-reference/metrics) file (`auc.metric`). Any
 <abbr>output</abbr> (in this case just a plain text file containing a single
-numeric value) can be marked as a metric, for example by using the `-R` option
+numeric value) can be marked as a metric, for example by using the `-M` option
 of `dvc run`.
 
 > Please, refer to the `dvc metrics` command documentation to see more available
