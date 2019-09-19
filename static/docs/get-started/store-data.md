@@ -1,4 +1,4 @@
-# Save and Share Data
+# Store and Share Data
 
 Now, that your data files are managed by DVC (see
 [Add Files](/doc/get-started/add-files)), you can push them from your repository

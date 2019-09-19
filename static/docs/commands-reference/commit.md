@@ -220,8 +220,8 @@ the new instance of `model.pkl` is there.
 ## Example: Running commands without DVC
 
 It is also possible to execute the commands that are executed by `dvc repro` by
-hand. You won't have DVC helping you, but you have the freedom to run any script
-you like, even ones not recorded in a
+hand. You won't have DVC helping you, but you have the freedom to run any
+command you like, even ones not defined in a
 [DVC-file](/doc/user-guide/dvc-file-format). For example:
 
 ```dvc

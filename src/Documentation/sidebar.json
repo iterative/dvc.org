@@ -8,8 +8,12 @@
       "initialize",
       "configure",
       "add-files",
-      "share-data",
+      "store-data",
       "retrieve-data",
+      {
+        "label": "Import Data",
+        "slug": "import-data"
+      },
       {
         "label": "Connect with Code",
         "slug": "connect-code-and-data"
@@ -17,10 +21,6 @@
       "pipeline",
       "visualize",
       "reproduce",
-      {
-        "label": "Reusing Data",
-        "slug": "reusing-data"
-      },
       "metrics",
       "experiments",
       "compare-experiments",
