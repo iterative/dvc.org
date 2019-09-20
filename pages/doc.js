@@ -72,7 +72,10 @@ export default class Documentation extends Component {
   }
 
   onNavigate = (path, e) => {
-    e && e.preventDefault()
+    if (e && (e.ctrlKey || e.metaKey)) return
+
+    e.preventDefault()
+
     window.history.pushState(null, null, path)
     this.loadPath(path)
   }
