@@ -10,10 +10,7 @@
       "add-files",
       "store-data",
       "retrieve-data",
-      {
-        "label": "Import Data",
-        "slug": "import-data"
-      },
+      "import-data",
       {
         "label": "Connect with Code",
         "slug": "connect-code-and-data"
