@@ -65,31 +65,31 @@ class Tooltip extends Component {
     switch (`${horizontal} ${vertical}`) {
       case 'left top':
         this.setState({
-          margin: -70,
+          margin: -10,
           pointBorderAfter: 'white transparent transparent transparent',
           pointBorderBefore: '#d1d5da transparent transparent transparent',
           pointMargin: -15,
           pointTop: 100,
           pointTopAfter: 'unset',
           pointTopBefore: 'unset',
-          top: -tooltipBoxHeight
+          top: -tooltipBoxHeight - 5
         })
         break
       case 'right top':
         this.setState({
-          margin: -340,
+          margin: -290,
           pointBorderAfter: 'white transparent transparent transparent',
           pointBorderBefore: '#d1d5da transparent transparent transparent',
           pointMargin: 260,
           pointTop: 100,
           pointTopAfter: 'unset',
           pointTopBefore: 'unset',
-          top: -tooltipBoxHeight
+          top: -tooltipBoxHeight - 5
         })
         break
       case 'left bottom':
         this.setState({
-          margin: -70,
+          margin: -10,
           pointBorderAfter: 'transparent transparent white transparent',
           pointBorderBefore: 'transparent transparent #d1d5da transparent',
           pointMargin: -15,
@@ -101,7 +101,7 @@ class Tooltip extends Component {
         break
       case 'right bottom':
         this.setState({
-          margin: -340,
+          margin: -290,
           pointBorderAfter: 'transparent transparent white transparent',
           pointBorderBefore: 'transparent transparent #d1d5da transparent',
           pointMargin: 260,
@@ -149,14 +149,6 @@ class Tooltip extends Component {
       return (
         <>
           <OnlyDesktop>
-            <HighlightedText
-              onMouseOver={this.hoverIn}
-              onMouseLeave={this.hoverOut}
-            >
-              <span id={`tooltip-text-${this.state.key}`}>
-                {this.props.text}
-              </span>
-            </HighlightedText>
             {this.state.hover && (
               <TooltipContainer
                 className="tooltip-container"
@@ -181,6 +173,14 @@ class Tooltip extends Component {
                 </TooltipText>
               </TooltipContainer>
             )}
+            <HighlightedText
+              onMouseOver={this.hoverIn}
+              onMouseLeave={this.hoverOut}
+            >
+              <span id={`tooltip-text-${this.state.key}`}>
+                {this.props.text}
+              </span>
+            </HighlightedText>
           </OnlyDesktop>
           <OnlyMobile>
             <span>{this.props.text}</span>
