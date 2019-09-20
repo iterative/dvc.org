@@ -3,20 +3,22 @@
 We've seen how to [push](/doc/get-started/store-data) and
 [pull](/doc/get-started/retrieve-data) data a <abbr>DVC project</abbr>'s
 [remote](/doc/commands-reference/remote). But what if we wanted to integrate a
-dataset or ML model produced in one project into another project? (As an
-[external dependency](/doc/user-guide/external-dependencies))
+dataset or ML model produced in one project into another project (as an
+[external dependency](/doc/user-guide/external-dependencies))?
 
 One way is to download the data (with `wget` or `dvc get`, for example) and use
-`dvc add` to track it locally, but the connection between projects would be
-lost: we couldn't tell where the data came from or whether there are new
-versions available. We offer the `dvc import` command instead (for projects
-hosted on a Git repository). It downloads the data, and creates a
+`dvc add` to track it, but the connection between projects would be lost. We
+wouldn't be able to tell where the data came from or whether there are new
+versions available.
+
+There's a better alternative (for projects in a Git repository): the
+`dvc import` command. It downloads the data, and creates a
 [DVC-file](/doc/user-guide/dvc-file-format) to track changes in the imported
 data.
 
 <details>
 
-### Expand to for an example
+### Expand for an example
 
 In the [Add Files](/doc/get-started/add-files) chapter we download raw data
 using the `dvc get` command, and then track it with `dvc add`. Let's see how
