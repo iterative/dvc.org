@@ -14,7 +14,10 @@ versions available.
 There's a better alternative (for projects in a Git repository): the
 `dvc import` command. It downloads the data, and creates a
 [DVC-file](/doc/user-guide/dvc-file-format) to track changes in the imported
-data.
+data. This is better than using `dvc add` to track downloaded data, because with
+_imports_ we can run `dvc update` to check for changes in the external data
+source before [reproducing](/doc/get-started/reproduce) the
+<abbr>pipeline</abbr> that depends on this data.
 
 <details>
 
@@ -65,8 +68,3 @@ which Git version did the data come from. Note that `dvc update` updates the
 `rev_lock` value.
 
 </details>
-
-This is better than using `dvc add` to track downloaded data, because with
-_imports_ we can run `dvc update` to check for changes in the external data
-source before [reproducing](/doc/get-started/reproduce) the
-<abbr>pipeline</abbr> that depends on this data.
