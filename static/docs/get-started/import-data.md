@@ -43,28 +43,4 @@ to `.gitignore`, and create the `data.xml.dvc` DVC-file.
 > and tries to retrieve the file using the project's default remote (configured
 > [here](https://github.com/iterative/dataset-registry/blob/master/.dvc/config)).
 
-DVC-files created by `dvc import` are called _import stages_. They use the
-`repo` field in the dependencies section (`deps`) in order to track source data
-changes, enabling the reusability of data artifacts. For example:
-
-```yaml
-md5: 31b266a32dc67a0f3af693b3b87d4194
-locked: true
-deps:
-  - path: get-started/data.xml
-    repo:
-      url: https://github.com/iterative/dataset-registry
-      rev_lock: 7476a858f6200864b5755863c729bff41d0fb045
-outs:
-  - md5: a304afb96060aad90176268345e10355
-    path: data/data.xml
-    cache: true
-    metric: false
-    persist: false
-```
-
-The `url` subfield points to the source project, while `rev_lock` lets DVC know
-which Git version did the data come from. Note that `dvc update` updates the
-`rev_lock` value.
-
 </details>
