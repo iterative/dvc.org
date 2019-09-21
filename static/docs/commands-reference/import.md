@@ -1,8 +1,5 @@
 # import
 
-> **Note!** This command has been repurposed after its original release. The
-> previous functionality is now available as the `dvc import-url` command.
-
 Download or copy file or directory from any <abbr>DVC project</abbr> in a Git
 repository (e.g. hosted on Github) into the <abbr>workspace</abbr>, and track
 changes in this [external dependency](/doc/user-guide/external-dependencies).
