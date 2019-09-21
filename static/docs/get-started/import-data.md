@@ -1,7 +1,7 @@
 # Import Data
 
 We've seen how to [push](/doc/get-started/store-data) and
-[pull](/doc/get-started/retrieve-data) data a <abbr>DVC project</abbr>'s
+[pull](/doc/get-started/retrieve-data) data for a <abbr>DVC project</abbr>'s
 [remote](/doc/commands-reference/remote). But what if we wanted to integrate a
 dataset or ML model produced in one project into another project (as an
 [external dependency](/doc/user-guide/external-dependencies))?
@@ -11,8 +11,8 @@ One way is to download the data (with `wget` or `dvc get`, for example) and use
 wouldn't be able to tell where the data came from or whether there are new
 versions available.
 
-There's a better alternative (for projects in a Git repository): the
-`dvc import` command. It downloads the data, and creates a
+A better alternative is the `dvc import` command. It downloads data from any DVC
+project in a Git repository, and creates a
 [DVC-file](/doc/user-guide/dvc-file-format) to track changes in the imported
 data. This is better than using `dvc add` to track downloaded data, because with
 _imports_ we can run `dvc update` to check for changes in the external data
