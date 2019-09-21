@@ -14,10 +14,10 @@ versions available.
 A better alternative is the `dvc import` command. It downloads data from any DVC
 project in a Git repository, and creates a
 [DVC-file](/doc/user-guide/dvc-file-format) to track changes in the imported
-data. This is better than using `dvc add` to track downloaded data, because with
-_imports_ we can run `dvc update` to check for changes in the external data
-source before [reproducing](/doc/get-started/reproduce) the
-<abbr>pipeline</abbr> that depends on this data.
+data. This is better, because with _imports_ we can use `dvc update` to check
+for changes in the external data source before
+[reproducing](/doc/get-started/reproduce) any <abbr>pipeline</abbr> that depends
+on this data.
 
 <details>
 
