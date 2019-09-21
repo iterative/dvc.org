@@ -97,5 +97,5 @@ meta values are preserved between multiple executions of `dvc repro` and
 `dvc commit` commands.
 
 > Note that comments and meta values are not preserved when a DVC-file is
-> overwritten with the `dvc run`,`dvc add`,`dvc import-url`, and `dvc get-url`
+> overwritten with the `dvc run`,`dvc add`,`dvc import`, and `dvc import-url`
 > commands.

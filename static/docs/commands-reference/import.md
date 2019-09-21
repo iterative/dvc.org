@@ -1,11 +1,9 @@
 # import
 
-> **Note!** This command has been repurposed after its original release. The
-> previous version is still available as the `dvc import-url` command.
-
-Download or copy file or directory from another DVC repository (on a git server
-such as Github) into the <abbr>workspace</abbr>, and track changes in the
-external data source with DVC. Creates a DVC-file.
+Download or copy file or directory from any <abbr>DVC project</abbr> in a Git
+repository (e.g. hosted on Github) into the <abbr>workspace</abbr>, and track
+changes in this [external dependency](/doc/user-guide/external-dependencies).
+Creates a DVC-file.
 
 > See also `dvc get` which corresponds to the first step this command performs
 > (just download the data).
@@ -94,8 +92,7 @@ Saving information to 'data.xml.dvc'.
 ```
 
 In contrast with `dvc get`, this command doesn't just download the data file,
-but it also creates an import stage (DVC-file) to keep track of this <abbr>data
-artifact</abbr> as an
+but it also creates an import stage (DVC-file) to register this data as an
 [external dependency](/doc/user-guide/external-dependencies) (using the `repo`
 field). Check `data.xml.dvc`:
 

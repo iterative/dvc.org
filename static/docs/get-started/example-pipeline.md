@@ -41,6 +41,12 @@ $ git add code/
 $ git commit -m "Download and add code to new Git repo"
 ```
 
+> `dvc get` can download <abbr>data artifacts</abbr> from any <abbr>DVC
+> project</abbr> hosted on a Git repository into the current working directory
+> (similar to `wget` but for DVC repositories). In this case we use our own
+> [iterative/dataset-registry](https://github.com/iterative/dataset-registry))
+> project as the external data source.
+
 Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a virtual environment with a tool such as
 [virtualenv](https://virtualenv.pypa.io/en/stable/):
