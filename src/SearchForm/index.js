@@ -3,12 +3,7 @@ import styled from 'styled-components'
 
 export default props => (
   <SearchForm novalidate>
-    <Input
-      type="text"
-      id="doc-search"
-      placeholder={`Search documentation`}
-      {...props}
-    />
+    <Input type="text" id="doc-search" placeholder={`Search docs`} {...props} />
   </SearchForm>
 )
 
@@ -30,6 +25,9 @@ const Input = styled.input`
   background-image: url('/static/img/search.svg');
   background-repeat: no-repeat;
   background-position: 15px center;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
+  width: 240px;
+  box-sizing: border-box;
+  display: block;
 `
