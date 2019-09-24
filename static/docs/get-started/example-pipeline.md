@@ -25,9 +25,7 @@ and reproducible way.
 ## Initialize
 
 Okay, let's first download the code and set up a Git repository. This step has
-nothing to do with DVC so far, it's just a simple preparation:
-
-<details>
+nothing to do with DVC so far, it's just a simple preparation.
 
 ```dvc
 $ mkdir example && cd example
@@ -41,9 +39,9 @@ $ git add code/
 $ git commit -m "Download and add code to new Git repo"
 ```
 
-> `dvc get` can download <abbr>data artifacts</abbr> from any <abbr>DVC
-> project</abbr> hosted on a Git repository into the current working directory
-> (similar to `wget` but for DVC repositories). In this case we use our own
+> `dvc get` can download data artifacts from any DVC project hosted on a Git
+> repository into the current working directory (similar to `wget` but for DVC
+> repositories). In this case we use our own
 > [iterative/dataset-registry](https://github.com/iterative/dataset-registry))
 > project as the external data source.
 
@@ -62,9 +60,9 @@ Next, we will create a [pipeline](/doc/commands-reference/pipeline)
 step-by-step, utilizing the same set of commands that are described in earlier
 [Get Started](/doc/get-started) chapters.
 
-> Note that its possible to define more than one pipeline in each <abbr>DVC
-> project</abbr>. This will be determined by the interdependencies between
-> DVC-files, mentioned below.
+> Note that its possible to define more than one pipeline in each DVC project.
+> This will be determined by the interdependencies between DVC-files, mentioned
+> below.
 
 Initialize DVC repository (run it inside your Git repository):
 
