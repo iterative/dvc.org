@@ -78,6 +78,7 @@ Download an input dataset to the `data/` directory and take it under DVC
 control:
 
 ```dvc
+$ mkdir data
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/nlp/Posts.xml.zip -o data/Posts.xml.zip
 ...
