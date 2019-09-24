@@ -21,13 +21,10 @@ to this open-source project.
   ways in which DVC can keep track of files external to the project (or even
   remote on a network or cloud location) as
   [DVC-file](/doc/user-guide/dvc-files-and-directories) dependencies.
-
 - [Managing External Data](/doc/user-guide/external-outputs) explains both
   external outputs and external <abbr>cache</abbr>.
-
 - [Dvcignore](/doc/user-guide/dvcignore) specifies how the optional `.dvcignore`
   file works in DVC projects.
-
 - [Development Version](/doc/user-guide/development),
   [Contributing](/doc/user-guide/contributing), and
   [Contributing Documentation](/doc/user-guide/contributing-documentation) are

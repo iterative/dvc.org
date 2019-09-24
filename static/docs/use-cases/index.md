@@ -1,10 +1,16 @@
 # Use Cases
 
 We provide common DVC scenarios in this section, with examples that combine
-several features and commands in DVC. These range from basic (like data and
-model [file versioning](/doc/use-cases/data-and-model-files-versioning)) to more
-advanced (such as optimizing resources on a
-[single development machine](/doc/use-cases/multiple-data-scientists-on-a-single-machine)).
+several features and commands in DVC. These range from basic to more advanced:
+
+- [Data Versioning](/doc/use-cases/data-and-model-files-versioning) describes
+  our most primary use: tracking and versioning large files with Git + DVC.
+- [Update a Tracked File](/doc/use-cases/update-tracked-file) explains how to
+  modify data that has been put under DVC control.
+- [Share Data and Model Files](/doc/use-cases/share-data-and-model-files) goes
+  over basic collaboration possibilities enabled by DVC.
+- [Shared Development Server](/doc/use-cases/multiple-data-scientists-on-a-single-machine)
+  describes a single development machine setup for teams that prefer so.
 
 This list is _not_ exhaustive. We keep reviewing it and try to include
 interesting scenarios that surface in our community. Please,
