@@ -25,25 +25,22 @@ and reproducible way.
 ## Initialize
 
 Okay, let's first download the code and set up a Git repository. This step has
-nothing to do with DVC so far, it's just a simple preparation:
-
-<details>
+nothing to do with DVC so far, it's just a simple preparation.
 
 ```dvc
-$ mkdir example && cd example
+$ mkdir example-pipeline && cd example-pipeline
 $ git init
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/nlp/pipeline.zip
-...
 $ unzip pipeline.zip
 $ rm -f pipeline.zip
 $ git add code/
 $ git commit -m "Download and add code to new Git repo"
 ```
 
-> `dvc get` can download <abbr>data artifacts</abbr> from any <abbr>DVC
-> project</abbr> hosted on a Git repository into the current working directory
-> (similar to `wget` but for DVC repositories). In this case we use our own
+> `dvc get` can download data artifacts from any DVC project hosted on a Git
+> repository into the current working directory (similar to `wget` but for DVC
+> repositories). In this case we use our own
 > [iterative/dataset-registry](https://github.com/iterative/dataset-registry))
 > project as the external data source.
 
@@ -62,9 +59,9 @@ Next, we will create a [pipeline](/doc/commands-reference/pipeline)
 step-by-step, utilizing the same set of commands that are described in earlier
 [Get Started](/doc/get-started) chapters.
 
-> Note that its possible to define more than one pipeline in each <abbr>DVC
-> project</abbr>. This will be determined by the interdependencies between
-> DVC-files, mentioned below.
+> Note that its possible to define more than one pipeline in each DVC project.
+> This will be determined by the interdependencies between DVC-files, mentioned
+> below.
 
 Initialize DVC repository (run it inside your Git repository):
 
@@ -78,9 +75,9 @@ Download an input dataset to the `data/` directory and take it under DVC
 control:
 
 ```dvc
+$ mkdir data
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/nlp/Posts.xml.zip -o data/Posts.xml.zip
-...
 $ dvc add data/Posts.xml.zip
 ```
 
@@ -148,7 +145,7 @@ $ dvc run -d data/Posts.xml.zip \
           unzip data/Posts.xml.zip -d data
 ```
 
-Similar to `dvc add`, `dvc run` creates a stage file (a DVC-file with
+Similarly to `dvc add`, `dvc run` creates a stage file (a DVC-file with
 dependencies).
 
 <details>
@@ -253,10 +250,9 @@ $ dvc run -d code/evaluate.py -d data/model.pkl \
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and <abbr>outputs</abbr> in DVC-files, we can generate
-a dependency graph: a series of commands DVC needs to execute. `dvc repro` does
-this in order to restore a pipeline and reproduce its intermediate or final
-results.
+By analyzing dependencies and outputs in DVC-files, we can generate a dependency
+graph: a series of commands DVC needs to execute. `dvc repro` does this in order
+to restore a pipeline and reproduce its intermediate or final results.
 
 `dvc pipeline show` helps to visualize pipelines (run it with `-c` option to see
 actual commands instead of DVC-files):
@@ -349,8 +345,8 @@ Reproduce all required stages to get to the target
 $ dvc repro evaluate.dvc
 WARNING: Dependency 'code/featurization.py' of 'featurize.dvc' changed because it is 'modified'.
 WARNING: Stage 'featurize.dvc' changed.
-Reproducing 'featurize.dvc'
-...
+Running command:
+	python code/featurization.py ...
 ```
 
 Once that's done, check the AUC metric again for an improvement:
