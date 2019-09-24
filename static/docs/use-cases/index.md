@@ -1,15 +1,16 @@
 # Use Cases
 
-Here we provide an overview for some DVC use cases, from very basic
-([data and model files management](/doc/use-cases/data-and-model-files-versioning))
-to more advanced (optimizing resources on a
+We provide common DVC scenarios in this section, with examples that combine
+several features and commands in DVC. These range from basic (like data and
+model [file versioning](/doc/use-cases/data-and-model-files-versioning)) to more
+advanced (such as optimizing resources on a
 [single development machine](/doc/use-cases/multiple-data-scientists-on-a-single-machine)).
-This list is _not_ exhaustive. We keep growing it and try to include interesting
-scenarios from the community. Please, [contact us](/support) if you have some
-suggestions!
 
-If you want to get some hands-on experience we recommend to follow along
-[Get Started](/doc/get-started) and try examples at the very end of it. They
-include prepared datasets and code to run. Use cases are not written to be run
-end to end, specifically we don't provide prepared datasets and code to train
-models.
+This list is _not_ exhaustive. We keep reviewing it and try to include
+interesting scenarios that surface in our community. Please,
+[contact us](/support) if you need help or have suggestions!
+
+Use cases are not written to be run end-to-end. For more general hands-on
+experience with DVC, we recommend to follow the [Get Started](/doc/get-started),
+and/or [Tutorial](/doc/tutorial)] first, which include prepared datasets, source
+code files, and example commands that can be copied and pasted into terminal.
