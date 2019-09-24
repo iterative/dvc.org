@@ -26,12 +26,14 @@ usually helps to save some space.
 ## Options
 
 - `-a`, `--all-branches` - keep cached objects referenced from the latest commit
-  across all branches. It should be used if you want to keep data for the latest
-  experiment revisions. Especially, if you intend to use `dvc gc -c` this option
-  is much safer.
+  across all Git branches. It should be used if you want to keep data for the
+  latest experiment revisions. Especially, if you intend to use `dvc gc -c` this
+  option is much safer.
 
-- `-T`, `--all-tags` - the same as `-a` but keeps cache for existing tags. It's
-  useful if tags are used to track "checkpoints" of an experiment or project.
+- `-T`, `--all-tags` - the same as `-a` above but keeps cache for existing Git
+  tags. It's useful if tags are used to track "checkpoints" of an experiment or
+  project. Note that both options can be combined, for example using the `-aT`
+  flag.
 
 - `-p`, `--projects` - if a single remote or a single cache is shared (e.g. a
   configuration one describe

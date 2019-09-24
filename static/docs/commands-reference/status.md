@@ -121,9 +121,8 @@ workspace) is different from remote storage. Bringing the two into sync requires
   remote is specified.
 
 - `-T`, `--all-tags` - compares cache content against all Git tags instead of
-  checking just the current workspace version. This basically runs the same
-  status command in all the tags of this repo. The corresponding tags are shown
-  in the status output. Applies only if `--cloud` or a `-r` remote is specified.
+  checking just the current workspace version. Similar to `-a` above. Note that
+  both options can be combined, for example using the `-aT` flag.
 
 - `-j JOBS`, `--jobs JOBS` - specifies the number of jobs DVC can use to
   retrieve information from remote servers. This only applies when the `--cloud`

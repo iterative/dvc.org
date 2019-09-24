@@ -96,12 +96,13 @@ specified in DVC-files currently in the project are considered by `dvc fetch`
   fetched. The default value is `4 * cpu_count()`. For SSH remotes default is
   just 4.
 
-- `-a`, `--all-branches` - fetch cache for all branches, not just the active
+- `-a`, `--all-branches` - fetch cache for all Git branches, not just the active
   one. This means DVC may download files needed to reproduce different versions
   of a DVC-file ([experiments](/doc/get-started/experiments)), not just the
   current one.
 
-- `-T`, `--all-tags` - fetch cache for all tags. Similar to `-a` above.
+- `-T`, `--all-tags` - fetch cache for all Git tags. Similar to `-a` above. Note
+  that both options can be combined, for example using the `-aT` flag.
 
 - `--show-checksums` - show checksums instead of file names when printing the
   download progress.
