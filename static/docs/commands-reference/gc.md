@@ -1,6 +1,6 @@
 # gc
 
-Remove unused objects from cache or remote storage.
+Remove unused objects from <abbr>cache</abbr> or remote storage.
 
 ## Synopsis
 
@@ -11,17 +11,23 @@ usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c] [-r REMOTE] [-f] [-j JOBS]
 
 ## Description
 
-If a data file was created in a different branch or commit than current, then it
-will be removed by `dvc gc`, unless `--all-branches` or `--all-tags` option is
-specified. If the cache holds a few cached versions of a data file, all except
-the current one will be removed. You can `dvc fetch` all the needed files back
-anytime you want **as long as you have previously pushed them to a remote**.
-(See `dvc remote` and `dvc push` for more information.)
+This command deletes (garbage collects) data files or directories that may exist
+in the cache (or [remote storage](/doc/commands-reference/remote)) but no longer
+referred to in [DVC-files](/doc/user-guide/dvc-file-format) currently
+[checked out](/doc/commands-reference/checkout) in the <abbr>project</abbr>. By
+default this command only cleans up the local cache, which is typically located
+on the same machine as the project in question; This usually helps to free up
+disk space.
 
-Note that unless `--cloud` is specified, this action does not remove data files
-from remote storage. This command is just a way to clean the working cache which
-is usually located on the machine your are running experiments on, so this
-usually helps to save some space.
+Data added to DVC in a different branch or version than the current Git commit
+(`HEAD`), it will be deleted by `dvc gc` unless the `--all-branches` or
+`--all-tags` options are used. Note that if the cache/remote holds several
+versions of the same data file, all except the current one will be deleted.
+
+Unless the `--cloud` option is used, this action does not remove data files from
+remote storage. This means that you can `dvc fetch` all the needed files back
+anytime you want **as long as they have previously been pushed**. (See
+`dvc push`.)
 
 ## Options
 
@@ -63,7 +69,7 @@ usually helps to save some space.
 
 ## Examples
 
-Basic example of cleaning up the cache:
+Basic example of cleaning up the <abbr>cache</abbr>:
 
 ```dvc
 $ du -sh .dvc/cache/
@@ -93,3 +99,5 @@ Let's check the size now:
 $ du -sh .dvc/cache/
 3.1G    .dvc/cache/
 ```
+
+<!-- TODO: Add `dvc gc -aT` example. -->
