@@ -32,7 +32,7 @@ jobs:
 
       - run: yarn test
 
-      - run: yarn eslint
+      - run: yarn lint
 
       - save_cache:
           paths:

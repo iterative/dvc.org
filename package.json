@@ -10,7 +10,7 @@
     "test": "jest",
     "prettier-js": "prettier --write '{pages,src}/**/*.{js,jsx}'",
     "prettier-md": "prettier --write 'static/docs/**/*.md'",
-    "eslint": "yarn run eslint"
+    "lint": "yarn run eslint src"
   },
   "repository": {
     "type": "git",
@@ -69,7 +69,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged --no-restage --bail && eslint src"
+      "pre-commit": "pretty-quick --staged --no-restage --bail && yarn lint"
     }
   }
 }
