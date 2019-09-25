@@ -32,6 +32,8 @@ jobs:
 
       - run: yarn test
 
+      - run: yarn eslint
+
       - save_cache:
           paths:
             - node_modules

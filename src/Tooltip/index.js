@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 import includes from 'lodash.includes'
@@ -153,7 +154,9 @@ class Tooltip extends Component {
               <TooltipContainer
                 className="tooltip-container"
                 onMouseOver={this.hoverIn}
+                onFocus={this.hoverIn}
                 onMouseLeave={this.hoverOut}
+                onBlur={this.hoverOut}
               >
                 <TooltipText
                   id={`tooltip-box-${this.state.key}`}
@@ -176,6 +179,8 @@ class Tooltip extends Component {
             <HighlightedText
               onMouseOver={this.hoverIn}
               onMouseLeave={this.hoverOut}
+              onFocus={this.hoverIn}
+              onBlur={this.hoverOut}
             >
               <span id={`tooltip-text-${this.state.key}`}>
                 {this.props.text}
@@ -191,6 +196,10 @@ class Tooltip extends Component {
       return <span>{this.props.text}</span>
     }
   }
+}
+
+Tooltip.propTypes = {
+  text: PropTypes.string.isRequired
 }
 
 const HighlightedText = styled.span`

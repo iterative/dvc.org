@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { withRouter } from 'next/router'
 // components
@@ -36,6 +37,12 @@ class Layout extends Component {
       </Wrapper>
     )
   }
+}
+
+Layout.propTypes = {
+  children: PropTypes.node.isRequired,
+  enableSmoothScroll: PropTypes.bool,
+  router: PropTypes.object.isRequired
 }
 
 export default withRouter(Layout)

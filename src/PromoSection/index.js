@@ -13,24 +13,25 @@ const features = () => {
   window.location = '/features'
 }
 
-export default ({}) => (
-  <PromoSection>
-    <a name="video" />
-    <Container>
-      <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
-      <Title>For data scientists, by data scientists</Title>
-      <Buttons>
-        <Button first onClick={() => getStarted()}>
-          Get Started
-        </Button>
-        <Button onClick={() => features()}>Full Features</Button>
-      </Buttons>
-      <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
-    </Container>
-  </PromoSection>
-)
+export default function PromoSection() {
+  return (
+    <Wrapper>
+      <Container id="video">
+        <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
+        <Title>For data scientists, by data scientists</Title>
+        <Buttons>
+          <Button first onClick={() => getStarted()}>
+            Get Started
+          </Button>
+          <Button onClick={() => features()}>Full Features</Button>
+        </Buttons>
+        <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
+      </Container>
+    </Wrapper>
+  )
+}
 
-const PromoSection = styled.section`
+const Wrapper = styled.section`
   position: relative;
   height: 278px;
   background-color: #945dd6;
@@ -137,7 +138,9 @@ const Glyph = styled.img`
     `
 		top: -25px;
 		left: 40px;
-	`} ${props =>
+	`}
+
+  ${props =>
     props.gid === 'rigthbottom' &&
     `
     bottom: -60px;

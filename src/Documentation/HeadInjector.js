@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 export const HeadInjector = ({ sectionName = 'Documentation' }) => (
   <Head>
@@ -22,3 +24,7 @@ export const HeadInjector = ({ sectionName = 'Documentation' }) => (
     <title>{sectionName} | Machine Learning Version Control System · DVC</title>
   </Head>
 )
+
+HeadInjector.propTypes = {
+  sectionName: PropTypes.string
+}

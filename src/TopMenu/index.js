@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 // components
 import Nav from '../Nav'
 // utils
@@ -66,6 +67,10 @@ class TopMenu extends Component {
       </Wrapper>
     )
   }
+}
+
+TopMenu.propTypes = {
+  isDocPage: PropTypes.bool
 }
 
 export default TopMenu

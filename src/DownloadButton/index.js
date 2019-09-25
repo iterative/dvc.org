@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
 import isClient from '../utils/isClient'
@@ -168,6 +169,10 @@ export default class DownloadButton extends Component {
       </Handler>
     )
   }
+}
+
+DownloadButton.propTypes = {
+  openTop: PropTypes.bool
 }
 
 const Handler = styled.span`

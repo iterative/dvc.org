@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Collapse from 'react-collapse'
 import { presets } from 'react-motion'
@@ -19,19 +20,33 @@ class TextCollapse extends Component {
     const { isOpened } = this.state
 
     return (
-      <div onClick={this.toggleCollapsed}>
+      <Wrapper onClick={this.toggleCollapsed}>
         {header}
         <Collapse isOpened={isOpened} springConfig={presets.gentle}>
           {children}
         </Collapse>
         {!isOpened && <MoreText>More...</MoreText>}
-      </div>
+      </Wrapper>
     )
   }
 }
 
+TextCollapse.propTypes = {
+  children: PropTypes.node.isRequired,
+  header: PropTypes.node.isRequired
+}
+
 export default TextCollapse
+
+const Wrapper = styled.button`
+  text-align: left;
+  border: none;
+  appearance: none;
+  background: none;
+  font-family: BrandonGrotesque, Tahoma, Arial;
+`
 
 const MoreText = styled.div`
   color: #13adc7;
+  font-size: 16px;
 `

@@ -1,13 +1,20 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default props => (
-  <SearchForm novalidate>
-    <Input type="text" id="doc-search" placeholder={`Search docs`} {...props} />
-  </SearchForm>
-)
+export default function SearchForm(props) {
+  return (
+    <Wrapper novalidate>
+      <Input
+        type="text"
+        id="doc-search"
+        placeholder={`Search docs`}
+        {...props}
+      />
+    </Wrapper>
+  )
+}
 
-const SearchForm = styled.form`
+const Wrapper = styled.form`
   width: 100%;
   height: 100%;
   display: flex;
