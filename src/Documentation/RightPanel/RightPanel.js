@@ -160,7 +160,7 @@ export default class RightPanel extends React.PureComponent {
 
 RightPanel.propTypes = {
   headings: PropTypes.arrayOf(
-    PropTypes.objectOf({
+    PropTypes.shape({
       slug: PropTypes.string.isRequired,
       text: PropTypes.string.isRequired
     })

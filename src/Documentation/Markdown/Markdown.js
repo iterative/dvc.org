@@ -189,8 +189,8 @@ export default class Markdown extends React.PureComponent {
 Markdown.propTypes = {
   markdown: PropTypes.string.isRequired,
   githubLink: PropTypes.string.isRequired,
-  prev: PropTypes.string.isRequired,
-  next: PropTypes.string.isRequired,
+  prev: PropTypes.string,
+  next: PropTypes.string,
   onNavigate: PropTypes.func.isRequired
 }
 

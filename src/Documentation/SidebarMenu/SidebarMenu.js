@@ -82,10 +82,13 @@ class SidebarMenuItem extends React.PureComponent {
 }
 
 SidebarMenuItem.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.arrayOf(PropTypes.object),
   label: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
-  activePaths: PropTypes.arrayOf(PropTypes.string).isRequired,
+  activePaths: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.bool
+  ]).isRequired,
   onNavigate: PropTypes.func.isRequired
 }
 
@@ -146,8 +149,8 @@ export default class SidebarMenu extends React.Component {
 
 SidebarMenu.propTypes = {
   id: PropTypes.string.isRequired,
-  sidebar: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentPath: PropTypes.string.isRequired,
+  sidebar: PropTypes.arrayOf(PropTypes.object).isRequired,
+  currentPath: PropTypes.string,
   onNavigate: PropTypes.func.isRequired
 }
 
