@@ -1,37 +1,43 @@
 # Share Data and Model Files
 
-Same as Git, DVC allows for distributed environment and collaboration. It is
-dead easy to consistently get all your data files and code to any machine. All
-you need to do is to setup a remote DVC repository, that will store cache files
-for your project. Currently DVC supports AWS S3, Google Cloud Storage, Microsoft
-Azure Blob Storage, SSH and HDFS as remote location and the list is constantly
-growing. For complete information about supported remote types and their
-configuration take a look at `dvc remote`.
+Like Git, DVC allows for a distributed environment and collaboration. We make it
+easy to consistently get all your data files and directories, along with
+matching source code to any machine. All you need to do is to setup
+[remote storage](/doc/commands-reference/remote) for your <abbr>DVC
+project</abbr> to store data files online, where others can reach them.
+Currently DVC supports AWS S3, Google Cloud Storage, Microsoft Azure Blob
+Storage, SSH, and HDFS as remote locations, and the list is constantly growing.
+(For a complete list of supported remote types and their configuration, take a
+look at the examples in `dvc remote add`.)
 
 ![](/static/img/model-sharing-digram.png)
 
-As an example, let's take a look at how you could setup DVC remote on Amazon S3
+As an example, let's take a look at how you could setup Amazon S3
+[remote storage](/doc/commands-reference/remote) for a <abbr>DVC project</abbr>,
 and push/pull to/from it.
 
-## Create a bucket at Amazon S3
+## Create an S3 bucket
 
-If you don't already have it, get Amazon S3 account and then follow instructions
-at
-[Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
-to create your bucket.
+If you don't already have one available in your S3 account, follow instructions
+in
+[Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
+As an advanced alternative, you may use the
+[`aws s3 mb`](https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html)
+command instead.
 
 ## Setup DVC remote
 
-To setup DVC remote on s3, you need to supply an URL to the location where you
-wish to store data:
+To actually configure a S3 remote in the <abbr>project</abbr>, supply the URL to
+the bucket where the data should be stored to the `dvc remote add` command. For
+example:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/myproject
-Setting "myremote" as a default remote.
+Setting 'myremote' as a default remote.
 ```
 
-> The `-d` (`--default`) option sets `myremote` as a default repository for the
-> project.
+> The `-d` (`--default`) option sets `myremote` as the default remote storage
+> for this project.
 
 This will add `myremote` to your `.dvc/config`. The `config` file now have a
 section like this:
@@ -44,9 +50,9 @@ remote = myremote
 ```
 
 `dvc remote` provides a wide variety of options to configure S3 bucket. For more
-information visit `dvc remote modify`.
+information see `dvc remote modify`.
 
-Let's, commit your changes and push your code:
+Let's commit your changes and push your code:
 
 ```dvc
 $ git add .dvc/config
@@ -55,12 +61,12 @@ $ git push
 
 ## Upload data and code
 
-After adding data to DVC locally with `dvc run` or other commands, to upload
-data from your project locally to `remote storage` run:
+After adding data to the <abbr>project</abbr> with `dvc run` or other commands,
+it should be stored in your local <abbr>cache</abbr>. Upload it to remote
+storage with the `dvc push` command:
 
 ```dvc
 $ dvc push
-
 (1/5): [##############################] 100% images/0001.jpg
 (2/5): [##############################] 100% images/0002.jpg
 (3/5): [##############################] 100% images/0001.jpg
@@ -68,17 +74,13 @@ $ dvc push
 (5/5): [##############################] 100% model.pkl
 ```
 
-Code with [DVC-files](/doc/user-guide/dvc-file-format) should be uploaded
-through Git:
-
-```dvc
-$ git push
-```
+Code and [DVC-files](/doc/user-guide/dvc-file-format) should be committed and
+pushed with Git.
 
 ## Download code
 
 Please use regular Git commands to download code and DVC-files from your Git
-servers.
+servers. For example:
 
 ```dvc
 $ git clone https://github.com/myaccount/myproject.git
@@ -93,11 +95,10 @@ $ git pull
 
 ## Download data
 
-To download data files for your project run:
+To download data files for your <abbr>project</abbr>, run:
 
 ```dvc
 $ dvc pull
-
 (1/5): [##############################] 100% images/0001.jpg
 (2/5): [##############################] 100% images/0002.jpg
 (3/5): [##############################] 100% images/0003.jpg
@@ -105,5 +106,5 @@ $ dvc pull
 (5/5): [##############################] 100% model.pkl
 ```
 
-`dvc pull` will download the missing data files from the `remote storage`
-mentioned in the `.dvc/config` file.
+`dvc pull` will download the missing data files from the default remote storage
+configured in the `.dvc/config` file.
