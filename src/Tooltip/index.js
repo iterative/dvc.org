@@ -12,7 +12,6 @@ class Tooltip extends Component {
     description: '',
     header: '',
     hover: false,
-    id: null,
     margin: -70,
     match: false,
     pointBorderAfter: 'white transparent transparent transparent',
@@ -21,13 +20,12 @@ class Tooltip extends Component {
     pointTop: 100,
     pointTopAfter: -14,
     pointTopBefore: 16,
-    timeout: null,
     top: 'unset',
     width: 400
   }
 
   componentDidMount() {
-    glossary.contents.forEach((glossaryItem, index) => {
+    glossary.contents.forEach(glossaryItem => {
       if (
         includes(
           glossaryItem.match.map(word => word.toLowerCase()),
@@ -39,7 +37,6 @@ class Tooltip extends Component {
         this.setState({
           description: glossaryItem.desc,
           header: glossaryItem.name,
-          key: index,
           match: true
         })
       }
@@ -51,10 +48,10 @@ class Tooltip extends Component {
       .offsetHeight
     const markdownBody = document.getElementsByClassName('markdown-body')[0]
     const tooltipBoundary = document
-      .getElementById(`tooltip-text-${this.state.key}`)
+      .getElementById(`tooltip-text-${this.props.id}`)
       .getBoundingClientRect()
     const tooltipBoxHeight = document.getElementById(
-      `tooltip-box-${this.state.key}`
+      `tooltip-box-${this.props.id}`
     ).offsetHeight
     const tooltipHeight = tooltipBoundary.top - tooltipBoxHeight
     const maxWidth = markdownBody.offsetLeft + markdownBody.clientWidth
@@ -159,7 +156,7 @@ class Tooltip extends Component {
                 onBlur={this.hoverOut}
               >
                 <TooltipText
-                  id={`tooltip-box-${this.state.key}`}
+                  id={`tooltip-box-${this.props.id}`}
                   margin={this.state.margin}
                   width={this.state.width}
                   pointBorderAfter={this.state.pointBorderAfter}
@@ -182,7 +179,7 @@ class Tooltip extends Component {
               onFocus={this.hoverIn}
               onBlur={this.hoverOut}
             >
-              <span id={`tooltip-text-${this.state.key}`}>
+              <span id={`tooltip-text-${this.props.id}`}>
                 {this.props.text}
               </span>
             </HighlightedText>
@@ -199,6 +196,7 @@ class Tooltip extends Component {
 }
 
 Tooltip.propTypes = {
+  id: PropTypes.string.isRequired,
   text: PropTypes.node.isRequired
 }
 

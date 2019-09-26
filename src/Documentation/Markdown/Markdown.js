@@ -80,7 +80,8 @@ const HtmlRenderer = props => {
     )
   } else if (props.tag === 'abbr') {
     const text = props.children[0]
-    return <Tooltip text={text} />
+    const key = props.children[0].key
+    return <Tooltip id={key} text={text} />
   }
 }
 
