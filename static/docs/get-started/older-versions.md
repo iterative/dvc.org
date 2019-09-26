@@ -49,5 +49,5 @@ $ git checkout baseline-experiment
 $ dvc checkout
 ```
 
-Read `dvc checkout` command reference and a dedicated data versioning
-[example](/doc/get-started/example-versioning) to get more information.
+Read the `dvc checkout` command reference and a dedicated data versioning
+[example](/doc/get-started/example-versioning) for more information.

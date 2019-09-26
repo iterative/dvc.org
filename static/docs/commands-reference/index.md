@@ -1,6 +1,6 @@
 # Using DVC Commands
 
-DVC is a command-line tool. The typical use case for DVC goes as follows:
+DVC is a command-line tool. The typical DVC workflow goes as follows:
 
 - In an existing Git repository, initialize a <abbr>DVC project</abbr> with
   `dvc init`.
@@ -15,3 +15,8 @@ DVC is a command-line tool. The typical use case for DVC goes as follows:
   `dvc push` to share this cache (data tracked by DVC).
 - Use `dvc repro` to automatically reproduce your full pipeline, iteratively as
   input data or source code change.
+
+The command references under this section provide a precise specification,
+complete description, and isolated usage examples for the `dvc` CLI tool. These
+are our most technical documentation pages, similar to
+[man-pages](https://www.kernel.org/doc/man-pages/) in Linux.

@@ -63,19 +63,19 @@
         "label": "File Format (.dvc)",
         "slug": "dvc-file-format"
       },
+      "dvcignore",
       "large-dataset-optimization",
       "external-dependencies",
       {
         "label": "Managing External Data",
-        "slug": "external-outputs"
+        "slug": "external-cache-and-outputs"
       },
-      "dvcignore",
       {
         "label": "Development Version",
         "slug": "development"
       },
       "contributing",
-      "contributing-documentation",
+      "contributing-docs",
       {
         "label": "Shell Autocomplete",
         "slug": "autocomplete"
