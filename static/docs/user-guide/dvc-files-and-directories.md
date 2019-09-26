@@ -4,7 +4,7 @@ Once initialized in a <abbr>project</abbr>, DVC populates its installation
 directory (`.dvc/`) with the internal files and directories needed for DVC
 operation:
 
-### DVC internal files and directories
+### DVC internals
 
 - `.dvc/config`: This is a configuration file. The config file can be edited by
   hand or with the `dvc config` command.
@@ -17,7 +17,7 @@ operation:
 
 - `.dvc/cache`: The [cache directory](#structure-of-cache-directory) will store
   your data. The data files and directories in DVC repositories will only
-  contain links to the data files in the cache (refer to
+  contain links to the data files in the cache. (Refer to
   [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization). See
   `dvc config cache` for related configuration options.
 

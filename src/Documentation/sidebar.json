@@ -44,17 +44,11 @@
         "slug": "data-and-model-files-versioning"
       },
       {
-        "label": "Update a Tracked File",
-        "slug": "update-tracked-file"
-      },
-      {
         "label": "Share Data & Model Files",
         "slug": "share-data-and-model-files"
       },
-      {
-        "label": "Shared Development Machine",
-        "slug": "multiple-data-scientists-on-a-single-machine"
-      }
+      "update-tracked-files",
+      "shared-development-server"
     ]
   },
   {

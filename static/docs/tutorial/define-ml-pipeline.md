@@ -57,7 +57,7 @@ files with DVC.
 
 Note that to modify or replace a data file that is under DVC control you may
 need to run `dvc unprotect` or `dvc remove` first (see the
-[Update Tracked File](/doc/user-guide/update-tracked-file) guide). Use
+[Update Tracked File](/doc/user-guide/update-tracked-files) guide). Use
 `dvc move` to rename or move a data file that is under DVC control.
 
 ## Data file internals

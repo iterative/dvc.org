@@ -22,7 +22,7 @@ Note that it does not remove files from the DVC cache or remote storage (see
 `dvc gc`). However, remember to run `dvc push` to save the files you actually
 want to use or share in the future.
 
-Refer to [Update Tracked Files](/doc/user-guide/update-tracked-file) to see how
+Refer to [Update Tracked Files](/doc/user-guide/update-tracked-files) to see how
 it can be used to replace or modify files that are under DVC control.
 
 ## Options

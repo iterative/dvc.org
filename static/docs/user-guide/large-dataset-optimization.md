@@ -98,7 +98,7 @@ efficiency:
 
 > DVC avoids `symlink` and `hardlink` types by default to protect user from
 > accidental cache corruption. Refer to the
-> [Update a Tracked File](/doc/user-guide/update-tracked-file) guide to learn
+> [Update a Tracked File](/doc/user-guide/update-tracked-files) guide to learn
 > more.
 
 ## Configuring DVC cache file link type
@@ -117,7 +117,7 @@ $ dvc config cache.protected true
 
 Setting `cache.protected` is important with `hardlink` and/or `symlink` cache
 file link types. Please refer to the
-[Update a Tracked File](/docs/user-guide/update-tracked-file) on how to manage
+[Update a Tracked File](/docs/user-guide/update-tracked-files) on how to manage
 tracked files under these cache configurations.
 
 ---

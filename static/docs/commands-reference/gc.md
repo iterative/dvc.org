@@ -43,9 +43,9 @@ anytime you want **as long as they have previously been pushed**. (See
 
 - `-p`, `--projects` - if a single remote or a single cache is shared (e.g. a
   configuration one describe
-  [here](/doc/use-cases/multiple-data-scientists-on-a-single-machine)) among
-  different projects, this option can be used to specify a list of them (each
-  project is a path) to keep data that is currently referenced from them.
+  [here](/doc/use-cases/shared-development-server.md)) among different projects,
+  this option can be used to specify a list of them (each project is a path) to
+  keep data that is currently referenced from them.
 
 - `-c`, `--cloud` - also remove files in the remote storage. _This operation is
   dangerous._ It removes datasets, models, other files that are not linked in
