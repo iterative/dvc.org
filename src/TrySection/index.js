@@ -1,24 +1,32 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { media, container } from '../styles'
 
-export default ({ title, buttonText = 'Get Started' }) => (
-  <TrySection>
-    <Container>
-      <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
-      <Title>{title}</Title>
-      <Buttons>
-        <a href="/doc/get-started">
-          <Button first>{buttonText}</Button>
-        </a>
-      </Buttons>
-      <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
-    </Container>
-  </TrySection>
-)
+export default function TrySection({ title, buttonText = 'Get Started' }) {
+  return (
+    <Wrapper>
+      <Container>
+        <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
+        <Title>{title}</Title>
+        <Buttons>
+          <a href="/doc/get-started">
+            <Button first>{buttonText}</Button>
+          </a>
+        </Buttons>
+        <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
+      </Container>
+    </Wrapper>
+  )
+}
 
-const TrySection = styled.section`
+TrySection.propTypes = {
+  title: PropTypes.string.isRequired,
+  buttonText: PropTypes.string.isRequired
+}
+
+const Wrapper = styled.section`
   position: relative;
   height: 278px;
   background-color: #945dd6;
@@ -105,7 +113,9 @@ const Glyph = styled.img`
     `
 		top: -25px;
 		left: 40px;
-	`} ${props =>
+	`}
+
+  ${props =>
     props.gid === 'rigthbottom' &&
     `
     bottom: -60px;

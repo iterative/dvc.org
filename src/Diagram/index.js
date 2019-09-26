@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import {
   media,
@@ -15,12 +16,21 @@ const LearnMore = ({ href }) => (
   <LearnMoreArea href={href}>
     <a href={href}>
       <span>Learn&nbsp;more</span>
-      <img src="/static/img/learn_more_arrow.svg" width={18} height={18} />
+      <img
+        src="/static/img/learn_more_arrow.svg"
+        width={18}
+        height={18}
+        alt=""
+      />
     </a>
   </LearnMoreArea>
 )
 
-const ColumnOne = ({ fullWidth }) => (
+LearnMore.propTypes = {
+  href: PropTypes.string.isRequired
+}
+
+const ColumnOne = () => (
   <Column>
     <Caption text={`#945dd6`}>ML project version control</Caption>
     <Description fullWidth>
@@ -39,7 +49,7 @@ const ColumnOne = ({ fullWidth }) => (
   </Column>
 )
 
-const ColumnTwo = ({ fullWidth }) => (
+const ColumnTwo = () => (
   <Column>
     <Caption text={`#13adc7`}>ML experiment management</Caption>
     <Description fullWidth>
@@ -60,7 +70,7 @@ const ColumnTwo = ({ fullWidth }) => (
   </Column>
 )
 
-const ColumnThree = ({ fullWidth }) => (
+const ColumnThree = () => (
   <Column>
     <Caption text={`#f46837`}>Deployment & Collaboration</Caption>
     <Description fullWidth>
@@ -106,7 +116,7 @@ export class DiagramSection extends Component {
 
           <OnlyDesktop>
             <Graphic>
-              <img src="/static/img/graphic.png" />
+              <img src="/static/img/graphic.png" alt="" />
             </Graphic>
             <Columns>
               <ColumnOne />

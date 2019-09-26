@@ -1,3 +1,5 @@
+/* global exports:readonly */
+
 'use strict'
 
 Object.defineProperty(exports, '__esModule', {
@@ -25,14 +27,14 @@ var _javascript = function(hljs) {
     contains: [
       {
         begin: /^\s*(usage:|positional arguments:|optional arguments:)/,
-        end: /\n|\Z/,
-        lexemes: /\b-?[a-z\._]+\b/,
+        end: /\n|$/,
+        lexemes: /\b-?[a-z._]+\b/,
         keywords: {
           keyword: 'usage arguments optional positional'
         },
         contains: [
           {
-            begin: / dvc [a-z\-]+/,
+            begin: / dvc [a-z-]+/,
             lexemes: '[a-z-]+',
             keywords: {
               built_in:

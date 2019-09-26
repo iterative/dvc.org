@@ -15,16 +15,18 @@ const scrollToDiagram = () => {
   })
 }
 
-export default () => (
-  <LearnMore onClick={scrollToDiagram}>
-    <Icon>
-      <img src="/static/img/learn-more.svg" alt="Learn More" />
-    </Icon>
-    <Caption>Learn more</Caption>
-  </LearnMore>
-)
+export default function LearnMore() {
+  return (
+    <Wrapper onClick={scrollToDiagram}>
+      <Icon>
+        <img src="/static/img/learn-more.svg" alt="Learn More" />
+      </Icon>
+      <Caption>Learn more</Caption>
+    </Wrapper>
+  )
+}
 
-const LearnMore = styled.a`
+const Wrapper = styled.a`
   display: flex;
   flex-direction: column;
   align-items: center;

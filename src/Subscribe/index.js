@@ -1,23 +1,25 @@
 import React from 'react'
 import styled from 'styled-components'
-import { media, container } from '../styles'
+import { media } from '../styles'
 
 import SubscribeForm from '../SubscribeForm'
 
-export default ({}) => (
-  <Subscribe>
-    <Glyph src="/static/img/glyph-1.svg" gid={'topleft'} />
-    <Container>
-      <Title>Subscribe for updates. We won&#39;t spam you.</Title>
-      <SubscribeContainer>
-        <SubscribeForm />
-      </SubscribeContainer>
-    </Container>
-    <Glyph src="/static/img/glyph-2.svg" gid={'rigthbottom'} />
-  </Subscribe>
-)
+export default function Subscribe() {
+  return (
+    <Wrapper>
+      <Glyph src="/static/img/glyph-1.svg" gid={'topleft'} />
+      <Container>
+        <Title>Subscribe for updates. We won&#39;t spam you.</Title>
+        <SubscribeContainer>
+          <SubscribeForm />
+        </SubscribeContainer>
+      </Container>
+      <Glyph src="/static/img/glyph-2.svg" gid={'rigthbottom'} />
+    </Wrapper>
+  )
+}
 
-const Subscribe = styled.section`
+const Wrapper = styled.section`
   position: relative;
   height: 300px;
   background-color: #13adc7;

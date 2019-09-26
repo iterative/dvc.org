@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { columns, container, media } from '../styles'
 
@@ -8,77 +9,89 @@ const SocialLink = ({ src, href, children }) => (
   </Link>
 )
 
-export default props => (
-  <Footer>
-    <Container wide={props.isDocPage}>
-      <Top>
-        <Logo href="/">
-          <img
-            src="/static/img/logo_white.png"
-            alt="site logo"
-            width={36}
-            height={23}
-          />
-        </Logo>
-      </Top>
-      <Columns>
-        <Column>
-          <Heading>Product</Heading>
-          <Links>
-            <Link href="/?">Overview</Link>
-            <Link href="/features">Features</Link>
-          </Links>
-        </Column>
-        <Column>
-          <Heading>Help</Heading>
-          <Links>
-            <Link href="/support">Support</Link>
-            <Link href="/doc/get-started">Get started</Link>
-            <SocialLink src="/static/img/chat.png" href="/chat">
-              Chat
-            </SocialLink>
-            <Link href="/doc">Documentation</Link>
-          </Links>
-        </Column>
-        <Column>
-          <Heading>Company</Heading>
-          <Links>
-            <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
-            <SocialLink
-              src="/static/img/iterative.png"
-              href="https://iterative.ai/"
-            >
-              Iterative.ai
-            </SocialLink>
-          </Links>
-        </Column>
-        <Column>
-          <Heading>Social</Heading>
-          <Links>
-            <SocialLink
-              src="/static/img/twitter.png"
-              href="https://twitter.com/DVCorg"
-            >
-              Twitter
-            </SocialLink>
-            <SocialLink
-              src="/static/img/github.png"
-              href="https://github.com/iterative/dvc"
-            >
-              Github
-            </SocialLink>
-            <SocialLink src="/static/img/discord.png" href="/chat">
-              Discord
-            </SocialLink>
-          </Links>
-        </Column>
-      </Columns>
-      <Copyright />
-    </Container>
-  </Footer>
-)
+SocialLink.propTypes = {
+  src: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  children: PropTypes.node.isRequired
+}
 
-const Footer = styled.section`
+export default function Footer(props) {
+  return (
+    <Wrapper>
+      <Container wide={props.isDocPage}>
+        <Top>
+          <Logo href="/">
+            <img
+              src="/static/img/logo_white.png"
+              alt="site logo"
+              width={36}
+              height={23}
+            />
+          </Logo>
+        </Top>
+        <Columns>
+          <Column>
+            <Heading>Product</Heading>
+            <Links>
+              <Link href="/?">Overview</Link>
+              <Link href="/features">Features</Link>
+            </Links>
+          </Column>
+          <Column>
+            <Heading>Help</Heading>
+            <Links>
+              <Link href="/support">Support</Link>
+              <Link href="/doc/get-started">Get started</Link>
+              <SocialLink src="/static/img/chat.png" href="/chat">
+                Chat
+              </SocialLink>
+              <Link href="/doc">Documentation</Link>
+            </Links>
+          </Column>
+          <Column>
+            <Heading>Company</Heading>
+            <Links>
+              <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
+              <SocialLink
+                src="/static/img/iterative.png"
+                href="https://iterative.ai/"
+              >
+                Iterative.ai
+              </SocialLink>
+            </Links>
+          </Column>
+          <Column>
+            <Heading>Social</Heading>
+            <Links>
+              <SocialLink
+                src="/static/img/twitter.png"
+                href="https://twitter.com/DVCorg"
+              >
+                Twitter
+              </SocialLink>
+              <SocialLink
+                src="/static/img/github.png"
+                href="https://github.com/iterative/dvc"
+              >
+                Github
+              </SocialLink>
+              <SocialLink src="/static/img/discord.png" href="/chat">
+                Discord
+              </SocialLink>
+            </Links>
+          </Column>
+        </Columns>
+        <Copyright />
+      </Container>
+    </Wrapper>
+  )
+}
+
+Footer.propTypes = {
+  isDocPage: PropTypes.bool
+}
+
+const Wrapper = styled.section`
   min-height: 300px;
   background-color: #40364d;
   color: #fff;
@@ -97,7 +110,9 @@ const Container = styled.div`
   ${media.tablet`
     padding: 64px 61px 44px 67px;
     max-width: auto;
-  `} ${media.phablet`
+  `}
+
+  ${media.phablet`
     padding: 30px 25px;
     max-width: auto;
   `};

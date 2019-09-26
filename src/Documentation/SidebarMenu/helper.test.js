@@ -1,3 +1,5 @@
+/* eslint-env jest */
+
 describe('SidebarMenu/helper', () => {
   beforeEach(() => {
     jest.resetModules()

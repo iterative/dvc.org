@@ -1,3 +1,5 @@
+/* global exports:readonly */
+
 'use strict'
 
 Object.defineProperty(exports, '__esModule', {
@@ -35,7 +37,7 @@ let _javascript = function(hljs) {
     contains: [
       {
         begin: /^\s*\$/,
-        end: /\n|\Z/,
+        end: /\n|$/,
         returnBegin: true,
         keywords: {
           keyword:
@@ -44,7 +46,7 @@ let _javascript = function(hljs) {
         },
         contains: [
           {
-            begin: /^\s*\$\s(dvc|git) [a-z\-]+/,
+            begin: /^\s*\$\s(dvc|git) [a-z-]+/,
             returnBegin: true,
             contains: [
               {
@@ -52,7 +54,7 @@ let _javascript = function(hljs) {
                 className: 'skipped'
               },
               {
-                begin: /git [a-z\-]+/,
+                begin: /git [a-z-]+/,
                 keywords: {
                   keyword:
                     'git commit status pull push fetch add init checkout ' +
@@ -60,7 +62,7 @@ let _javascript = function(hljs) {
                 }
               },
               {
-                begin: /dvc [a-z\-]+/,
+                begin: /dvc [a-z-]+/,
                 lexemes: '[a-z-]+',
                 keywords: {
                   built_in:
@@ -90,7 +92,7 @@ let _javascript = function(hljs) {
       hljs.HASH_COMMENT_MODE,
       {
         begin: /^\s*[^\s#$]/,
-        end: /\n|\Z/,
+        end: /\n|$/,
         className: 'meta'
       }
     ]

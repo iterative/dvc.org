@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { LightButton } from '../LightButton'
 // utils
@@ -21,7 +22,7 @@ const imageChecker = (images, callback) => {
       })
     }
 
-    const decrement = e => {
+    const decrement = () => {
       counter -= 1
 
       if (!counter) {
@@ -59,7 +60,7 @@ export default class RightPanel extends React.PureComponent {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.headings != prevProps.headings) {
+    if (this.props.headings !== prevProps.headings) {
       this.initHeadingsPosition()
     }
   }
@@ -155,6 +156,16 @@ export default class RightPanel extends React.PureComponent {
       </Wrapper>
     )
   }
+}
+
+RightPanel.propTypes = {
+  headings: PropTypes.arrayOf(
+    PropTypes.shape({
+      slug: PropTypes.string.isRequired,
+      text: PropTypes.string.isRequired
+    })
+  ).isRequired,
+  githubLink: PropTypes.string.isRequired
 }
 
 const Wrapper = styled.div`
