@@ -30,7 +30,7 @@ or directory.
 
 ## Examples
 
-As examples, let's take a look at a [stage](/doc/commands-reference/run) that
+As examples, let's take a look at a [stage](/doc/command-reference/run) that
 simply moves local file from an external location, producing a `data.txt.dvc`
 stage file (DVC-file).
 
@@ -162,7 +162,7 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 ...
 ```
 
-The command above creates `model.pkl.dvc`, where th external dependency is
+The command above creates `model.pkl.dvc`, where the external dependency is
 specified (with the `repo` field).
 
 <details>
