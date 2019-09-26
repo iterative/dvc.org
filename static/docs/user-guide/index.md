@@ -1,4 +1,4 @@
-# User Guides
+# User Guide
 
 This section describes the main DVC concepts and features comprehensively,
 explaining when and how to use them, as well as connections between them. These

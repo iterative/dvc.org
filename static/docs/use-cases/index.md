@@ -24,5 +24,5 @@ experience with DVC, we recommend to follow the [Get Started](/doc/get-started),
 and/or [Tutorial](/doc/tutorial)] first – These include prepared datasets,
 source code files, and example commands that can be copied and pasted into
 terminal. These articles also link to our more general
-[user guides](/doc/user-guide), and to multiple
+[User Guide](/doc/user-guide), and technical
 [command references](/doc/commands-reference).
