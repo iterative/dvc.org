@@ -196,6 +196,7 @@ class Tooltip extends Component {
 }
 
 Tooltip.propTypes = {
+  id: PropTypes.string.isRequired,
   text: PropTypes.node.isRequired
 }
 
