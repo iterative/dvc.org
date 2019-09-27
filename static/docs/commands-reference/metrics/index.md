@@ -60,7 +60,7 @@ $ dvc run -d code/evaluate.py -M data/eval.json \
 Now let's print metric values that we are tracking in this <abbr>project</abbr>:
 
 ```dvc
-$ dvc metrics show -a
+$ dvc metrics show --all-branches
 
   master:
       data/eval.json: {"AUC": "0.624652"}
