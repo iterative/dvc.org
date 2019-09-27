@@ -19,10 +19,13 @@ You can query/set/replace/unset DVC configuration options with this command. It
 takes a config option `name` (a section and a key, separated by a dot) and its
 `value` (any valid alpha-numeric string generally).
 
-This command reads and overwrites the DVC configuration file `.dvc/config`. If
-`--local` option is specified, `.dvc/config.local` is modified instead. If None
-of `--local`, `--global`, or `--system` is provided, `--local` is set by
-default.
+This command reads and updates the DVC configuration files. By default (if none
+of `--local`, `--global`, or `--system` is provided) a project's config
+(`.dvc/config`) file is read or modified. This file is by default meant to be
+under Git control and should not contain sensitive and/or user-specific
+information (passwords, SSH keys, etc). Use `--local`, `--global`, or `--system`
+options instead to override project's settings, for sensitive, or user-specific
+settings.
 
 If the config option `value` is not provided and `--unset` option is not used,
 this command returns the current value of the config option, if found in the
