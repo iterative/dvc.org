@@ -143,12 +143,13 @@ class DesktopView extends Component {
           </TooltipContainer>
         )}
         <HighlightedText
+          id={`tooltip-text-${this.props.id}`}
           onMouseOver={this.hoverIn}
           onMouseLeave={this.hoverOut}
           onFocus={this.hoverIn}
           onBlur={this.hoverOut}
         >
-          <span id={`tooltip-text-${this.props.id}`}>{this.props.text}</span>
+          {this.props.text}
         </HighlightedText>
       </>
     )

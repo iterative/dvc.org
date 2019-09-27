@@ -34,6 +34,7 @@ class Layout extends Component {
           {children}
           <Footer isDocPage={this.isDocPage} />
         </Bodybag>
+        <ModalRoot id="modal-root"></ModalRoot>
       </Wrapper>
     )
   }
@@ -69,4 +70,10 @@ const Bodybag = styled.div`
     scroll-behavior: smooth;
     will-change: scroll-position;
   `}
+`
+
+const ModalRoot = styled.div`
+  position: fixed;
+  z-index: 100000;
+  height: 100%;
 `

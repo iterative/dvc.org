@@ -5,6 +5,7 @@ import includes from 'lodash.includes'
 import glossary from '../Documentation/glossary'
 import { OnlyDesktop, OnlyMobile } from '../styles'
 import DesktopView from './desktop-view'
+import MobileView from './mobile-view'
 
 class Tooltip extends Component {
   state = {
@@ -45,7 +46,11 @@ class Tooltip extends Component {
             />
           </OnlyDesktop>
           <OnlyMobile>
-            <span>{this.props.text}</span>
+            <MobileView
+              description={this.state.description}
+              header={this.state.header}
+              text={this.props.text}
+            />
           </OnlyMobile>
         </>
       )
