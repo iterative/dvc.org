@@ -1,5 +1,10 @@
 [
   {
+    "slug": "learn",
+    "label": "Learn DVC",
+    "source": "learn/index.md"
+  },
+  {
     "slug": "get-started",
     "source": "get-started/index.md",
     "children": [

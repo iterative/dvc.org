@@ -22,6 +22,14 @@ export default function Nav({ mobile = false }) {
           Features
         </Link>
         <Link
+          href="https://katacoda.com/dvc/courses/basics"
+          onClick={() => {
+            logEvent('menu', 'learn')
+          }}
+        >
+          Learn
+        </Link>
+        <Link
           href="/doc"
           onClick={() => {
             logEvent('menu', 'doc')
