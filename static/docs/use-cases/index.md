@@ -1,9 +1,10 @@
 # Use Cases
 
-We provide short articles on common DVC scenarios in this section, with a
-justified context (usually extracted from real-life support cases). Their
-solution approaches combine several features and commands of DVC, for didactic
-purposes. These range from basic to more advanced:
+We provide short articles on common ML workflow or data management scenarios
+that DVC can help with or improve. These include a justified context (usually
+extracted from real-life cases), and the approaches to solving them combine
+several features and commands of DVC, as well as other appropriate tools. They
+range from basic to more advanced:
 
 - [Data Versioning](/doc/use-cases/data-and-model-files-versioning) describes
   our most primary use: tracking and versioning large files with Git + DVC.
@@ -21,7 +22,7 @@ include interesting scenarios that surface in our community. Please,
 
 Use cases are not written to be run end-to-end. For more general hands-on
 experience with DVC, we recommend to follow the [Get Started](/doc/get-started),
-and/or [Tutorial](/doc/tutorial)] first – These include prepared datasets,
+and/or [Tutorial](/doc/tutorial)] first – which include prepared datasets,
 source code files, and example commands that can be copied and pasted into
 terminal. These articles also link to our more general
 [User Guide](/doc/user-guide), and technical
