@@ -99,5 +99,3 @@ Let's check the size now:
 $ du -sh .dvc/cache/
 3.1G    .dvc/cache/
 ```
-
-<!-- TODO: Add `dvc gc -aT` example. -->
