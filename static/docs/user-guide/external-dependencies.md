@@ -30,7 +30,7 @@ or directory.
 
 ## Examples
 
-As examples, let's take a look at a [stage](/doc/command-reference/run) that
+As examples, let's take a look at a [stage](/doc/commands-reference/run) that
 simply moves local file from an external location, producing a `data.txt.dvc`
 stage file (DVC-file).
 
