@@ -5,8 +5,8 @@ that you would like to avoid moving it out of its external/remote location. For
 example from a network attached storage (NAS) drive, processing data on HDFS,
 running [Dask](https://dask.org/) via SSH, or having a script that streams data
 from S3 to process it. A mechanism for external dependencies and
-[external outputs](/doc/user-guide/external-cache-and-outputs) provides a way
-for DVC to control data externally.
+[external outputs](/doc/user-guide/managing-external-data) provides a way for
+DVC to control data externally.
 
 ## Description
 

@@ -24,8 +24,8 @@ to contributing to this [open-source project](https://github.com/iterative/dvc).
   ways in which DVC can keep track of files external to the project (or even
   remote on a network or cloud location) as
   [DVC-file](/doc/user-guide/dvc-files-and-directories) dependencies.
-- [Managing External Data](/doc/user-guide/external-cache-and-outputs) explains
-  both external outputs and external <abbr>cache</abbr>.
+- [Managing External Data](/doc/user-guide/managing-external-data) explains both
+  external outputs and external <abbr>cache</abbr>.
 - [Development Version](/doc/user-guide/development),
   [Contributing](/doc/user-guide/contributing), and
   [Contributing Documentation](/doc/user-guide/contributing-docs) are related
