@@ -10,9 +10,6 @@ range from basic to more advanced:
   our most primary use: tracking and versioning large files with Git + DVC.
 - [Share Data and Model Files](/doc/use-cases/share-data-and-model-files) goes
   over basic collaboration possibilities enabled by DVC.
-- [Update a Tracked File](/doc/use-cases/update-tracked-files) explains how to
-  modify protected data under DVC control (related to the `cache.type` option of
-  DVC).
 - [Shared Development Server](/doc/use-cases/shared-development-server.md)
   describes a single development machine setup for teams that prefer so.
 

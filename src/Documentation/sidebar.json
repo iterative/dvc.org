@@ -47,7 +47,6 @@
         "label": "Share Data & Model Files",
         "slug": "share-data-and-model-files"
       },
-      "update-tracked-files",
       "shared-development-server"
     ]
   },
@@ -64,6 +63,7 @@
         "slug": "dvc-file-format"
       },
       "dvcignore",
+      "update-tracked-files",
       "large-dataset-optimization",
       "external-dependencies",
       {
