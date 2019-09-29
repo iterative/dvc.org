@@ -85,6 +85,8 @@ The following are the types of remote storage (protocols) supported:
 
 ### Click for a local remote example
 
+A "local remote" is a directory in the machine's file system.
+
 > While the term may seem contradictory, it doesn't have to be. The "local" part
 > refers to the machine where the project is stored, so it can be any directory
 > accessible to the same system. The "remote" part refers specifically to the

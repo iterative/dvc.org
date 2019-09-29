@@ -33,6 +33,10 @@ locally. It also saves space on your local environment – DVC can
 [fetch](/doc/commands-reference/fetch) into the <abbr>cache directory</abbr>
 only the data you need for a specific branch/commit.
 
+DVC supports several types of remote storage: local file system, SSH, AWS S3,
+Google Cloud Storage, HTTP, HDFS, among others. Refer to `dvc remote add` for
+more details.
+
 > If you installed DVC via `pip`, depending on the remote storage type you plan
 > to use you might need to install optional dependencies: `[s3]`, `[ssh]`,
 > `[gs]`, `[azure]`, and `[oss]`; or `[all]` to include them all. The command

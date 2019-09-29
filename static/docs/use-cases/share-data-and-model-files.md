@@ -16,6 +16,10 @@ As an example, let's take a look at how you could setup Amazon S3
 [remote storage](/doc/commands-reference/remote) for a <abbr>DVC project</abbr>,
 and push/pull to/from it.
 
+> Note that DVC supports several types of remote storage: SSH, AWS S3, Google
+> Cloud Storage, HTTP, HDFS, among others. Refer to `dvc remote add` for more
+> details.
+
 ## Create an S3 bucket
 
 If you don't already have one available in your S3 account, follow instructions
