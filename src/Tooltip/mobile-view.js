@@ -86,11 +86,11 @@ const ModalBackground = styled.div`
 
 const CloseContainer = styled.div`
   float: right;
-  margin: 4px 8px 0 0;
+  margin: 2px 10px 0 0;
 `
 const Line = styled.div`
   position: absolute;
-  height: 15px;
+  height: 23px;
   width: 2px;
   background-color: black;
 
