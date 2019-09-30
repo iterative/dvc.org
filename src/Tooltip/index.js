@@ -7,21 +7,79 @@ import includes from 'lodash.includes'
 import glossary from '../Documentation/glossary'
 import { OnlyDesktop, OnlyMobile } from '../styles'
 
+/**
+ * @param {Number} MARGIN Control horizontal position of tooltip box
+ * @param {String} POINT_BORDER_AFTER Control direction and color of pointer
+ * @param {String} POINT_BORDER_BEFORE Control direction and color of pointer's
+ * shadow
+ * @param {Number} POINT_MARGIN Control horizontal position of pointer
+ * @param {Number} POINT_TOP Control vertical position of pointer
+ * @param {Number} TOP Control vertical position of tooltip box
+ * @param {Number} WIDTH Control width of tooltip box
+ * @param {Number} POINT_TOP_AFTER Control pointer's alignment with its shadow
+ * @param {Number} POINT_TOP_BEFORE Control shadow's alignment with its pointer
+ */
+
+const WIDTH = 400
+
+const LEFT_TOP = {
+  MARGIN: -10,
+  POINT_BORDER_AFTER: 'white transparent transparent transparent',
+  POINT_BORDER_BEFORE: '#d1d5da transparent transparent transparent',
+  POINT_MARGIN: -15,
+  POINT_TOP: 100,
+  POINT_TOP_AFTER: 'unset',
+  POINT_TOP_BEFORE: 'unset',
+  TOP: 'unset'
+}
+
+const RIGHT_TOP = {
+  MARGIN: -290,
+  POINT_BORDER_AFTER: 'white transparent transparent transparent',
+  POINT_BORDER_BEFORE: '#d1d5da transparent transparent transparent',
+  POINT_MARGIN: 260,
+  POINT_TOP: 100,
+  POINT_TOP_AFTER: 'unset',
+  POINT_TOP_BEFORE: 'unset'
+}
+
+const LEFT_BOTTOM = {
+  MARGIN: -10,
+  POINT_BORDER_AFTER: 'transparent transparent white transparent',
+  POINT_BORDER_BEFORE: 'transparent transparent #d1d5da transparent',
+  POINT_MARGIN: -15,
+  POINT_TOP: -15,
+  POINT_TOP_AFTER: -20,
+  POINT_TOP_BEFORE: -23,
+  TOP: 40
+}
+
+const RIGHT_BOTTOM = {
+  MARGIN: -290,
+  POINT_BORDER_AFTER: 'transparent transparent white transparent',
+  POINT_BORDER_BEFORE: 'transparent transparent #d1d5da transparent',
+  POINT_MARGIN: 260,
+  POINT_TOP: -15,
+  POINT_TOP_AFTER: -20,
+  POINT_TOP_BEFORE: -23,
+  TOP: 40
+}
+
 class Tooltip extends Component {
   state = {
     description: '',
     header: '',
     hover: false,
-    margin: -70,
+    margin: LEFT_TOP.MARGIN,
     match: false,
-    pointBorderAfter: 'white transparent transparent transparent',
-    pointBorderBefore: '#d1d5da transparent transparent transparent',
-    pointMargin: -15,
-    pointTop: 100,
-    pointTopAfter: -14,
-    pointTopBefore: 16,
-    top: 'unset',
-    width: 400
+    pointBorderAfter: LEFT_TOP.POINT_BORDER_AFTER,
+    pointBorderBefore: LEFT_TOP.POINT_BORDER_BEFORE,
+    pointMargin: LEFT_TOP.POINT_MARGIN,
+    pointTop: LEFT_TOP.POINT_TOP,
+    pointTopAfter: LEFT_TOP.POINT_TOP_AFTER,
+    pointTopBefore: LEFT_TOP.POINT_TOP_BEFORE,
+    top: LEFT_TOP.TOP,
+    width: WIDTH
   }
 
   componentDidMount() {
@@ -63,50 +121,50 @@ class Tooltip extends Component {
     switch (`${horizontal} ${vertical}`) {
       case 'left top':
         this.setState({
-          margin: -10,
-          pointBorderAfter: 'white transparent transparent transparent',
-          pointBorderBefore: '#d1d5da transparent transparent transparent',
-          pointMargin: -15,
-          pointTop: 100,
-          pointTopAfter: 'unset',
-          pointTopBefore: 'unset',
+          margin: LEFT_TOP.MARGIN,
+          pointBorderAfter: LEFT_TOP.POINT_BORDER_AFTER,
+          pointBorderBefore: LEFT_TOP.POINT_BORDER_BEFORE,
+          pointMargin: LEFT_TOP.POINT_MARGIN,
+          pointTop: LEFT_TOP.POINT_TOP,
+          pointTopAfter: LEFT_TOP.POINT_TOP_AFTER,
+          pointTopBefore: LEFT_TOP.POINT_TOP_BEFORE,
           top: -tooltipBoxHeight - 5
         })
         break
       case 'right top':
         this.setState({
-          margin: -290,
-          pointBorderAfter: 'white transparent transparent transparent',
-          pointBorderBefore: '#d1d5da transparent transparent transparent',
-          pointMargin: 260,
-          pointTop: 100,
-          pointTopAfter: 'unset',
-          pointTopBefore: 'unset',
+          margin: RIGHT_TOP.MARGIN,
+          pointBorderAfter: RIGHT_TOP.POINT_BORDER_AFTER,
+          pointBorderBefore: RIGHT_TOP.POINT_BORDER_BEFORE,
+          pointMargin: RIGHT_TOP.POINT_MARGIN,
+          pointTop: RIGHT_TOP.POINT_TOP,
+          pointTopAfter: RIGHT_TOP.POINT_TOP_AFTER,
+          pointTopBefore: RIGHT_TOP.POINT_TOP_BEFORE,
           top: -tooltipBoxHeight - 5
         })
         break
       case 'left bottom':
         this.setState({
-          margin: -10,
-          pointBorderAfter: 'transparent transparent white transparent',
-          pointBorderBefore: 'transparent transparent #d1d5da transparent',
-          pointMargin: -15,
-          pointTop: -15,
-          pointTopAfter: -20,
-          pointTopBefore: -23,
-          top: 40
+          margin: LEFT_BOTTOM.MARGIN,
+          pointBorderAfter: LEFT_BOTTOM.POINT_BORDER_AFTER,
+          pointBorderBefore: LEFT_BOTTOM.POINT_BORDER_BEFORE,
+          pointMargin: LEFT_BOTTOM.POINT_MARGIN,
+          pointTop: LEFT_BOTTOM.POINT_TOP,
+          pointTopAfter: LEFT_BOTTOM.POINT_TOP_AFTER,
+          pointTopBefore: LEFT_BOTTOM.POINT_TOP_BEFORE,
+          top: LEFT_BOTTOM.TOP
         })
         break
       case 'right bottom':
         this.setState({
-          margin: -290,
-          pointBorderAfter: 'transparent transparent white transparent',
-          pointBorderBefore: 'transparent transparent #d1d5da transparent',
-          pointMargin: 260,
-          pointTop: -15,
-          pointTopAfter: -20,
-          pointTopBefore: -23,
-          top: 40
+          margin: RIGHT_BOTTOM.MARGIN,
+          pointBorderAfter: RIGHT_BOTTOM.POINT_BORDER_AFTER,
+          pointBorderBefore: RIGHT_BOTTOM.POINT_BORDER_BEFORE,
+          pointMargin: RIGHT_BOTTOM.POINT_MARGIN,
+          pointTop: RIGHT_BOTTOM.POINT_TOP,
+          pointTopAfter: RIGHT_BOTTOM.POINT_TOP_AFTER,
+          pointTopBefore: RIGHT_BOTTOM.POINT_TOP_BEFORE,
+          top: RIGHT_BOTTOM.TOP
         })
         break
     }
