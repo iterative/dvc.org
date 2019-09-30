@@ -1,8 +1,8 @@
 [
   {
-    "slug": "learn",
-    "label": "Learn DVC",
-    "source": "learn/index.md"
+    "slug": "basics",
+    "label": "DVC Basics",
+    "source": "basics/index.md"
   },
   {
     "slug": "get-started",
