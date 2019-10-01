@@ -47,15 +47,12 @@
         "label": "Share Data & Model Files",
         "slug": "share-data-and-model-files"
       },
-      {
-        "label": "Shared Development Machine",
-        "slug": "multiple-data-scientists-on-a-single-machine"
-      }
+      "shared-development-server"
     ]
   },
   {
     "slug": "user-guide",
-    "source": false,
+    "source": "user-guide/index.md",
     "children": [
       {
         "label": "Files and Directories",
@@ -65,22 +62,20 @@
         "label": "File Format (.dvc)",
         "slug": "dvc-file-format"
       },
+      "dvcignore",
+      "update-tracked-files",
       "large-dataset-optimization",
       "external-dependencies",
       {
         "label": "Managing External Data",
-        "slug": "external-outputs"
+        "slug": "managing-external-data"
       },
       {
         "label": "Development Version",
         "slug": "development"
       },
       "contributing",
-      "contributing-documentation",
-      {
-        "label": "Update a Tracked File",
-        "slug": "update-tracked-file"
-      },
+      "contributing-docs",
       {
         "label": "Shell Autocomplete",
         "slug": "autocomplete"
@@ -90,13 +85,12 @@
         "slug": "plugins"
       },
       {
-        "label": "Anonymized Usage Analytics",
-        "slug": "analytics"
-      },
-      "dvcignore",
-      {
         "label": "Running DVC on Windows",
         "slug": "running-dvc-on-windows"
+      },
+      {
+        "label": "Anonymized Usage Analytics",
+        "slug": "analytics"
       }
     ]
   },

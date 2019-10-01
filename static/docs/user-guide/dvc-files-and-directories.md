@@ -4,8 +4,6 @@ Once initialized in a <abbr>project</abbr>, DVC populates its installation
 directory (`.dvc/`) with the internal files and directories needed for DVC
 operation:
 
-### DVC internal files and directories
-
 - `.dvc/config`: This is a configuration file. The config file can be edited by
   hand or with the `dvc config` command.
 
@@ -15,16 +13,16 @@ operation:
   (credentials, private locations, etc). The local config file can be edited by
   hand or with the command `dvc config --local`.
 
-- `.dvc/cache`: The [cache directory](#structure-of-cache-directory) will
-  contain your data files. (The data directories of DVC repositories will only
-  contain links to the data files in the cache, refer to
-  [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization).)
-  See `dvc config cache` for related configuration options.
+- `.dvc/cache`: The [cache directory](#structure-of-cache-directory) will store
+  your data. The data files and directories in DVC repositories will only
+  contain links to the data files in the cache. (Refer to
+  [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization). See
+  `dvc config cache` for related configuration options.
 
-  > Note that DVC includes the cache directory in `.gitignore` during the
-  > initialization. No data files (with actual content) will ever be pushed to
-  > the Git repository, only [DVC-files](/doc/user-guide/dvc-file-format) that
-  > are needed to reproduce them.
+  > Note that DVC includes the cache directory in `.gitignore` during
+  > initialization. No data tracked by DVC will ever be pushed to the Git
+  > repository, only [DVC-files](/doc/user-guide/dvc-file-format) that are
+  > needed to download or reproduce them.
 
 - `.dvc/state`: This file is used for optimization. It is a SQLite db, that
   contains checksums for files tracked in a DVC project, with respective

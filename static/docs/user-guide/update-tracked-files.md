@@ -1,6 +1,6 @@
-# Update a Tracked File
+# Update Tracked Files
 
-Due to the way DVC handles linking between the data files in the
+Due to the way DVC handles linking between the data files between the
 <abbr>cache</abbr> and their counterparts in the <abbr>workspace</abbr> (refer
 to [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization)),
 updating tracked files has to be carried out with caution to avoid data

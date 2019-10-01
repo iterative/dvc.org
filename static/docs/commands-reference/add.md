@@ -24,7 +24,7 @@ The `targets` are files or directories to be places under DVC control. These are
 turned into outputs (`outs` field) in a resulting
 [DVC-file](/doc/user-guide/dvc-file-format). (See steps below for more details.)
 Note that target data outside the current <abbr>workspace</abbr> is supported,
-which becomes [external outputs](/doc/user-guide/external-outputs).
+which becomes [external outputs](/doc/user-guide/managing-external-data).
 
 Under the hood, a few actions are taken for each file (or directory) in
 `targets`:
@@ -151,7 +151,7 @@ meta: # Special field to contain arbitary user data
 ```
 
 This is a standard DVC-file with only an `outs` entry. The checksum should
-correspond to an entry in the cache.
+correspond to an entry in the <abbr>cache</abbr>.
 
 > Note that the `meta` values above were entered manually for this example. Meta
 > values and `#` comments are not preserved when a DVC-file is overwritten with

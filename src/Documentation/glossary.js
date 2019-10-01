@@ -13,8 +13,8 @@ code, ML models, etc. A workspace becomes a **DVC project** when
 [\`dvc init\`](/doc/commands-reference/init) is run, and
 [DVC-files](/doc/user-guide/dvc-file-format) or stage files are created in it.
 
-Note that [external outputs](/doc/user-guide/external-outputs) also form part
-of your expanded workspace, technically.
+Note that [external outputs](/doc/user-guide/managing-external-data) also
+form part of your expanded workspace, technically.
       `
     },
     {

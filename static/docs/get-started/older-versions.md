@@ -21,7 +21,7 @@ working tree.
 
 <details>
 
-### Expand to learn more about DVC internals
+### Expand to learn about DVC internals
 
 DVC uses special files called [DVC-files](/doc/user-guide/dvc-file-format) to
 track data files, directories, end results that are under DVC control. In this
@@ -49,5 +49,5 @@ $ git checkout baseline-experiment
 $ dvc checkout
 ```
 
-Read `dvc checkout` command reference and a dedicated data versioning
-[example](/doc/get-started/example-versioning) to get more information.
+Read the `dvc checkout` command reference and a dedicated data versioning
+[example](/doc/get-started/example-versioning) for more information.

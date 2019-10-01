@@ -1,15 +1,15 @@
 # .dvcignore File
 
-Marks which files and/or directories should be ignored when traversing
-repository.
+Marks which files and/or directories should be excluded when traversing a
+<abbr>DVC project</abbr>.
 
 Sometimes you might want DVC to ignore some files while working with the
-<abbr>project</abbr>. For example, when working on a <abbr>workspace</abbr> with
-many files in its data directory, you might encounter extended execution time
-for operations that are as simple as `dvc status`. In other cases you might want
-to omit files or folders unrelated to the project (like `.DS_Store` on Mac). To
-address these requirements we are implementing `.dvcignore` files handling.
-`.dvcignore` by design works similar way as `.gitignore` does.
+project. For example, when working in a <abbr>workspace</abbr> directory with a
+large number of data files, you might encounter extended execution time for
+operations as simple as `dvc status`. In other case you might want to omit files
+or folders unrelated to the project (like `.DS_Store` on Mac). To address these
+scenarios, DVC supports optional `.dvcignore` files. `.dvcignore` works similar
+to `.gitignore` in Git.
 
 ## How does it work?
 

@@ -47,7 +47,7 @@ path. DVC currently supports seven types of remotes:
 > you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,
 > `[azure]`, and `[oss]`; or `[all]` to include them all. The command should
 > look like this: `pip install "dvc[s3]"`. This installs `boto3` library along
-> with DVC to support AWS S3 storage.
+> with DVC to support Amazon S3 storage.
 
 For example, to setup an S3 remote we would use something like (make sure that
 `mybucket` exists):

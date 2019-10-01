@@ -122,8 +122,8 @@ process.
 - DVC attempts to use reflinks\* and has other
   [file linking options](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).
   This way the `dvc checkout` command does not actually copy data files from
-  cache to the <abbr>workspace</abbr>, as copying files is a heavy operation for
-  large files (30 GB+).
+  <abbr>cache</abbr> to the <abbr>workspace</abbr>, as copying files is a heavy
+  operation for large files (30 GB+).
 
 - `git-lfs` was not made with data science scenarios in mind, so it does not
   provide related features (e.g. pipelines,

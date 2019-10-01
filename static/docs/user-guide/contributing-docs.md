@@ -108,11 +108,11 @@ command before committing them.
   paragraphs.
 
 - Syntax highlighting in fenced code blocks (Markdown) should use the `usage`
-  `dvc`, and `yaml` custom languages. `usage` is employed to show `dvc --help`
-  commands output in each command reference doc. `dvc` can be used to show
-  examples of terminal commands and their output. `yaml` is used to show
-  [DVC-file](/doc/user-guide/dvc-file-format) contents.
+  `dvc`, and `yaml` custom languages. `usage` is employed to show the
+  `dvc --help` output for each command reference. `dvc` can be used to show
+  examples of commands and their output in a terminal session. `yaml` is used to
+  show [DVC-file](/doc/user-guide/dvc-file-format) contents.
 
-> Check out any of the command reference `.md` source code to get a better idea,
-> for example
-> [this very doc](https://github.com/iterative/dvc.org/blob/master/static/docs/user-guide/contributing-documentation.md).
+> Check out the `.md` source code of any command reference to get a better idea,
+> for example in
+> [this very file](https://raw.githubusercontent.com/iterative/dvc.org/master/static/docs/user-guide/contributing-doc.md).

@@ -26,8 +26,8 @@ prevent users from accidentally corrupting the cache by modifying file links.)
 Running `dvc unprotect` guarantees that the target files or directories
 (`targets`) in the workspace are physically "unlinked" from the cache and can be
 safely updated. Read the
-[Update a Tracked File](/doc/user-guide/update-tracked-file) guide to learn more
-on this process.
+[Update a Tracked File](/doc/user-guide/update-tracked-files) guide to learn
+more on this process.
 
 `dvc unprotect` can be an expensive operation (involves copying data). Check
 first whether your task matches one of the cases that are considered safe, even

@@ -73,11 +73,12 @@ to push.
   (configured with the `core.config` config option) is used.
 
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
-  in all branches of the project repository (if using Git). It's useful if
+  in all Git branches of the project repository (if using Git). It's useful if
   branches are used to track checkpoints of an experiment or project.
 
-- `-T`, `--all-tags` - the same as `-a`, `--all-branches` but tags are used to
-  save different experiments or project checkpoints.
+- `-T`, `--all-tags` - the same as `-a`, `--all-branches`, but Git tags are used
+  to save different experiments or project checkpoints. Note that both options
+  can be combined, for example using the `-aT` flag.
 
 - `-d`, `--with-deps` - determines files to upload by tracking dependencies to
   the target DVC-files (stages). This option only has effect when one or more

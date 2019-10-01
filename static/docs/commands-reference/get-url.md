@@ -85,7 +85,7 @@ The above command will copy the `/local/path/to/data` file or directory into
 
 <details>
 
-### Click for AWS S3 example
+### Click for Amazon S3 example
 
 This command will copy an S3 object into the current working directory with the
 same file name:
@@ -99,7 +99,7 @@ By default DVC expects your AWS CLI is already
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could the options described in `dvc remote modify`.
 
-> We use the `boto3` library to and communicate with AWS S3. The following API
+> We use the `boto3` library to and communicate with AWS. The following API
 > methods may be performed:
 >
 > - `head_object`

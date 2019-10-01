@@ -1,31 +1,30 @@
 # Data and Model Files Versioning
 
-> This document provides an overview of the basic files versioning DVC workflow.
-> To get a hands on experience and try it yourself we recommend you to follow
-> along the [Versioning](/doc/get-started/example-versioning) _Get Started_
-> example.
+> This document provides an overview the file versioning workflow with DVC. To
+> get more hands-on experience on this we recommend following along the
+> [Versioning example](/doc/get-started/example-versioning).
 
-DVC allows storing and versioning data files and directories, ML models,
-intermediate results with Git, without adding the file contents into Git. It's
-useful when dealing with files that are too large for Git to handle. DVC stores
-information about your data file in a special
-[DVC-file](/doc/user-guide/dvc-file-format), that has a description of a file
-that can be used for versioning. DVC supports various types of remote locations
-for your data files and allows you to easily store and share your data alongside
-your code.
+DVC allows versioning data files and directories, intermediate results, and ML
+models using Git, but without storing the file contents in the repository. It's
+useful in general when dealing with files that are too large for Git to handle
+properly. DVC records information about your data in a special
+[DVC-file](/doc/user-guide/dvc-file-format). This description of files or
+directories can be used for versioning. DVC supports various types of
+[remote storage](/doc/commands-reference/remote) for data that allows easily
+saving and sharing data alongside code.
 
 ![](/static/img/model-versioning-diagram.png)
 
-In this very basic scenario, DVC is a better replacement for `git-lfs` (see
-[Related Technologies](/doc/understanding-dvc/related-technologies)) and ad-hoc
-scripts on top of Amazon S3 (or any other cloud) that are usually used to manage
-ML <abbr>data artifacts</abbr> like data files, models, etc. Unlike `git-lfs`,
-DVC doesn't require installing a server; it can be used on-premises (NAS, SSH,
-for example) or with any major cloud provider (S3, Google Cloud, Azure).
+In this basic scenario, DVC is a better replacement for `git-lfs` (see
+[Related Technologies](/doc/understanding-dvc/related-technologies)) and for
+ad-hoc scripts on top of Amazon S3 (or any other cloud) used to manage ML
+<abbr>data artifacts</abbr> like raw data, models, etc. Unlike `git-lfs`, DVC
+doesn't require installing a dedicated server; It can be used on-premises (NAS,
+SSH, for example) or with any major cloud provider (S3, Google Cloud, Azure).
 
-Let's say you already have a <abbr>project</abbr> that uses a bunch of images
-stored in `images/` directory and has a `model.pkl` file – model file deployed
-to production.
+Let's say you already have a Git repository that uses a bunch of images stored
+in the `images/` directory and has a `model.pkl` file – a model file deployed to
+production.
 
 ```dvc
 $ ls images
@@ -36,24 +35,23 @@ model.pkl ...
 ```
 
 To start using dvc and keeping track of a model and images we need first to
-initialize it in your repository:
+initialize the <abbr>DVC project</abbr> on top of the existing repository:
 
 ```dvc
 $ dvc init
 ```
 
 DVC creates a `.dvc/` directory that stores
-[internal files](/doc/user-guide/dvc-files-and-directories) and the `.dvc/cache`
-directory that will be used to cache your data.
+[internals](/doc/user-guide/dvc-files-and-directories), including the
+`.dvc/cache` directory (local data storage). These can safely be added to Git:
 
 ```dvc
 $ git status
-
 ...
     new file:   .dvc/.gitignore
     new file:   .dvc/config
 
-$ git commit -m "Initialize dvc"
+$ git commit -am "Initialize DVC"
 ```
 
 Start tracking images and models with `dvc add`:
@@ -63,13 +61,13 @@ $ dvc add images
 $ dvc add model.pkl
 ```
 
-> Refer also to `dvc run` for more advanced ways to version data.
+> Refer also to `dvc run` for more advanced ways to version data and data
+> processes.
 
 Commit your changes:
 
 ```dvc
 $ git status
-
 ...
 Untracked files:
     .gitignore
@@ -77,15 +75,16 @@ Untracked files:
     model.pkl.dvc
 
 $ git add .gitignore images.dvc model.pkl.dvc
-$ git commit -m "track images and models with dvc"
+$ git commit -m "Track images and model with DVC"
 ```
 
 There are two ways to get to the previous version of the dataset or model: a
-full <abbr>workspace</abbr> checkout or checkout of a specific data or model
+full <abbr>workspace</abbr> checkout, or checkout of a specific data or model
 file. Let's consider the full checkout first. It's quite straightforward:
 
 > `v1.0` is a Git tag that should be created in advance to identify the dataset
-> version you are interested in, it can be just a Git commit hash instead.
+> version you are interested in. Any Git reference (for example `HEAD^` or a
+> commit hash) can be used instead.
 
 ```dvc
 $ git checkout v1.0
@@ -93,9 +92,10 @@ $ dvc checkout
 ```
 
 These commands will restore the working tree to the first snapshot we made -
-code, dataset and model files. DVC optimizes this operation internally to avoid
-copying dataset or model files each time. So `dvc checkout` is quick even if you
-have large dataset or model files.
+code, dataset and model files all matching each other. DVC can
+[optimize](/doc/user-guide/large-dataset-optimization) this operation to avoid
+copying files each time, so `dvc checkout` is quick even if you have large
+dataset or model files.
 
 On the other hand, if we want to keep the current version of code and go back to
 the previous dataset only, we can do something like this (make sure that you
@@ -107,14 +107,16 @@ $ dvc checkout data.dvc
 ```
 
 If you run `git status` you will see that `data.dvc` is modified and currently
-points to the `v1.0` of the dataset. While code and model files are from the
-`v2.0` version.
+points to the version `v1.0` of the dataset. Meanwhile, code and model files are
+their latest versions.
 
 ![](/static/img/versioning.png)
 
-To share your data with others you need to setup a remote repository. See the
+To share your data with others you need to setup a
+[data storage](/doc/commands-reference/remote). See the
 [Share Data And Model Files](/doc/use-cases/share-data-and-model-files) use case
-to get a high level overview on how to setup it and use `dvc pull` and
-`dvc push` commands to collaborate. Please, don't forget to see the
+to get an overview on how to do this.
+
+Please also don't forget to see the
 [Versioning](/doc/get-started/example-versioning) example to get a hands-on
 experience with datasets and models versioning.

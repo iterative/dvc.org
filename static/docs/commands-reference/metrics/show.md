@@ -76,12 +76,12 @@ extension.)
   - `htsv`/`hcsv` - `row,column name` e.g. `0,Name`. Row index is 0-based. First
     row is used to specify column names and is not included into index.
 
-- `-a`, `--all-branches` - get and print metric file contents across all
+- `-a`, `--all-branches` - get and print metric file contents across all Git
   branches. It can be used to compare different variants of an experiment.
 
-- `-T`, `--all-tags` - get and print metric file contents across all tags. It
-  can be used to compare different variants of an experiment if tags are used
-  for checkpoints.
+- `-T`, `--all-tags` - get and print metric file contents across all Git tags.
+  Similar to `-a` above. Note that both options can be combined, for example
+  using the `-aT` flag.
 
 - `-R`, `--recursive` - `path` is expected to be a directory for this option to
   have effect. Determines the metric files to show by searching each target

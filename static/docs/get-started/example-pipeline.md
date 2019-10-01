@@ -86,11 +86,11 @@ When we run `dvc add` `Posts.xml.zip`, DVC creates a
 
 <details>
 
-### Expand to learn more about DVC internals
+### Expand to learn about DVC internals
 
-`dvc init` created a new directory `example/.dvc/` with `config`, `.gitignore`
-files and the cache directory. These files and directories are hidden from users
-in general. Users don't interact with these files directly. See
+`dvc init` created a new directory `.dvc/`, with `config`, `.gitignore` files,
+and the cache directory. These files and directories are hidden from users in
+general. Users don't interact with these files directly. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -136,7 +136,7 @@ CLI.
 
 The first stage is to extract XML from the archive. Note that we don't need to
 run `dvc add` on `Posts.xml` below, `dvc run` saves the data automatically
-(commits into the cache, takes the file under DVC control):
+(commits into the <abbr>cache</abbr>, takes the file under DVC control):
 
 ```dvc
 $ dvc run -d data/Posts.xml.zip \
@@ -182,8 +182,9 @@ regenerate the final or intermediate result.
 
 Second, hopefully it's clear by now that the actual data is stored in the
 `.dvc/cache` directory, each file having a name in a form of an md5 hash. This
-cache is similar to Git's internal objects store but made specifically to handle
-large data files.
+cache is similar to Git's
+[objects database](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects) but
+made specifically to handle large data files.
 
 > **Note!** For performance with large datasets, DVC can use file links from the
 > cache to the workspace to avoid copying actual file contents. Refer to

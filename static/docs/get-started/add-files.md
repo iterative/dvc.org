@@ -39,7 +39,8 @@ Committing DVC-files with Git allows us to tack different versions of the
 
 ### Expand to learn about DVC internals
 
-You can see that actual data file has been moved to the cache directory, while
+`dvc add` moves the actual data file to the cache directory (see
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)), while
 the entries in the workspace may be file links to the actual files in the DVC
 cache.
 
@@ -53,11 +54,7 @@ $ ls -R .dvc/cache
 file we just added to DVC. And if you check the `data/data.xml.dvc` DVC-file you
 will see that it has this hash inside.
 
-</details>
-
-<details>
-
-### Expand for an important note on cache performance
+### Important note on cache performance
 
 DVC tries to use reflinks\* by default to link your data files from the DVC
 cache to the workspace, optimizing speed and storage space. However, reflinks
