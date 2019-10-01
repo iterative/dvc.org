@@ -13,7 +13,7 @@ process.
   should NOT be stored in a Git repository but still need to be tracked and
   versioned.
 
-2. **Workflow management tools** ([pipelines](/doc/commands-reference/pipeline)
+2. **Workflow management tools** ([pipelines](/doc/command-reference/pipeline)
    and dependency graphs
    ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))): Airflow,
    Luigi, etc. The differences are:
@@ -96,7 +96,7 @@ process.
   workflow for machine learning and reproducible experiments. When a DVC or
   Git-annex repository is cloned via `git clone`, data files won't be copied to
   the local machine as file contents are stored in separate
-  [remotes](/doc/commands-reference/remote). With DVC,
+  [remotes](/doc/command-reference/remote). With DVC,
   [DVC-files](/doc/user-guide/dvc-file-format) (which provide the reproducible
   workflow) are always included in the Git repository and hence can be recreated
   locally with minimal effort.
@@ -127,7 +127,7 @@ process.
 
 - `git-lfs` was not made with data science scenarios in mind, so it does not
   provide related features (e.g. pipelines,
-  [metrics](/doc/commands-reference/metrics)), and thus Github has a limit of 2
+  [metrics](/doc/command-reference/metrics)), and thus Github has a limit of 2
   GB per repository.
 
 ---

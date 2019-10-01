@@ -1,6 +1,6 @@
 # Pipeline
 
-Support for [pipelines](/doc/commands-reference/pipeline) is the biggest
+Support for [pipelines](/doc/command-reference/pipeline) is the biggest
 difference between DVC and other version control tools that can handle large
 data files (e.g. `git lfs`). By using `dvc run` multiple times, and specifying
 outputs of a command (stage) as dependencies in another one, we can describe a

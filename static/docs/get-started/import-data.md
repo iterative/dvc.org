@@ -2,7 +2,7 @@
 
 We've seen how to [push](/doc/get-started/store-data) and
 [pull](/doc/get-started/retrieve-data) data from/to a <abbr>DVC project</abbr>'s
-[remote](/doc/commands-reference/remote). But what if we wanted to integrate a
+[remote](/doc/command-reference/remote). But what if we wanted to integrate a
 dataset or ML model produced in one project into another project?
 
 One way is to download the data (with `wget` or `dvc get`, for example) and use

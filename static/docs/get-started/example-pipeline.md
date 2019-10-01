@@ -8,7 +8,7 @@ classifier which can predict a post that is about the Python language by tagging
 it `python`. This is a short version of the [Tutorial](/doc/tutorial).
 
 In this example, we will focus on building a simple ML
-[pipeline](/doc/commands-reference/pipeline) that takes an archive with
+[pipeline](/doc/command-reference/pipeline) that takes an archive with
 StackOverflow posts and trains the prediction model and saves it as an
 <abbr>output</abbr>. See [Get Started](/doc/get-started) to see links to other
 examples, tutorials, use cases if you want to cover other aspects of the DVC.
@@ -55,8 +55,8 @@ $ source .env/bin/activate
 $ pip install -r code/requirements.txt
 ```
 
-Next, we will create a [pipeline](/doc/commands-reference/pipeline)
-step-by-step, utilizing the same set of commands that are described in earlier
+Next, we will create a [pipeline](/doc/command-reference/pipeline) step-by-step,
+utilizing the same set of commands that are described in earlier
 [Get Started](/doc/get-started) chapters.
 
 > Note that its possible to define more than one pipeline in each DVC project.
@@ -95,7 +95,7 @@ general. Users don't interact with these files directly. See
 more.
 
 Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
-_orphan_ [stage file](/doc/commands-reference/run):
+_orphan_ [stage file](/doc/command-reference/run):
 
 ```yaml
 md5: c183f094869ef359e87e68d2264b6cdd
@@ -128,8 +128,8 @@ $ git commit -m "Add dataset archive to project"
 
 ## Define stages
 
-Each [stage](/doc/commands-reference/run) – the parts of a
-[pipeline](/doc/commands-reference/pipeline) – is described by providing a
+Each [stage](/doc/command-reference/run) – the parts of a
+[pipeline](/doc/command-reference/pipeline) – is described by providing a
 command to run, input data it takes and a list of <abbr>outputs</abbr>. DVC is
 not Python or any other language specific and can wrap any command runnable via
 CLI.
@@ -237,7 +237,7 @@ $ dvc run -d code/train_model.py -d data/matrix-train.pkl \
 ```
 
 Finally, evaluate the model on the test dataset and get the
-[metric](/doc/commands-reference/metrics) file:
+[metric](/doc/command-reference/metrics) file:
 
 ```dvc
 $ dvc run -d code/evaluate.py -d data/model.pkl \
@@ -315,7 +315,7 @@ $ dvc metrics show
 > Since the dataset for this example is extremely simplified to make it faster
 > to run this pipeline, the exact metric number may vary.
 
-It's time to save our [pipeline](/doc/commands-reference/pipeline). You can
+It's time to save our [pipeline](/doc/command-reference/pipeline). You can
 confirm that we do not save model files or raw datasets into Git using the
 `git status` command. We are just saving a snapshot of the DVC-files that
 describe data, transformations (stages), and relationships between them.
@@ -340,7 +340,7 @@ bag_of_words = CountVectorizer(stop_words='english',
 ```
 
 Reproduce all required stages to get to the target
-[metric](/doc/commands-reference/metrics) file:
+[metric](/doc/command-reference/metrics) file:
 
 ```dvc
 $ dvc repro evaluate.dvc
@@ -371,12 +371,12 @@ Feel free to commit the remaining changes with Git.
 ## Conclusion
 
 By wrapping your commands with `dvc run`, it's easy to integrate DVC into a
-machine learning or data processing [pipeline](/doc/commands-reference/pipeline)
+machine learning or data processing [pipeline](/doc/command-reference/pipeline)
 or other data science processes without any significant effort to rewrite your
 code.
 
 The key detail to notice is that DVC automatically derives the dependencies
-between pipeline [stages](/doc/commands-reference/run) by building dependency
+between pipeline [stages](/doc/command-reference/run) by building dependency
 graphs that represent data pipelines.
 
 DVC streamlines all of your experiments into a single, reproducible

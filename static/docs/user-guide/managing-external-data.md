@@ -14,7 +14,7 @@ You can take under DVC control files on an external storage with `dvc add` or
 specify external files as outputs for
 [DVC-files](/doc/user-guide/dvc-file-format) created by `dvc run` (stage files)
 DVC will track changes in those files and will reflect so in your pipeline
-[status](/doc/commands-reference/status). Currently, the following types of
+[status](/doc/command-reference/status). Currently, the following types of
 external outputs (protocols) are supported:
 
 1. Local files and directories outside of your dvc repository;
@@ -30,7 +30,7 @@ In order to specify an external output for a stage file use the usual `-o` and
 `-O` options with the `dvc run` command, but with the external path or URL
 pointing to your desired files. For cached external outputs (specified using
 `-o`) you will need to
-[setup an external cache](/doc/commands-reference/config#cache) location that
+[setup an external cache](/doc/command-reference/config#cache) location that
 will be used by DVC to store versions of your external file. Non-cached external
 outputs (specified using `-O`) do not require an external <abbr>cache</abbr> to
 be setup.
@@ -43,7 +43,7 @@ be setup.
 
 ## Examples
 
-For the examples, let's take a look at a [stage](/doc/commands-reference/run)
+For the examples, let's take a look at a [stage](/doc/command-reference/run)
 that simply moves local file to an external location, producing a `data.txt.dvc`
 stage file (DVC-file).
 

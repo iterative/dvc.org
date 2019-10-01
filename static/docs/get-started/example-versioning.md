@@ -72,7 +72,7 @@ more.
 ## First model version
 
 Let's now add some data, then train the first model and capture it with DVC,
-including input dataset and [metrics](/doc/commands-reference/metrics).
+including input dataset and [metrics](/doc/command-reference/metrics).
 
 ```dvc
 $ mkdir data
@@ -136,7 +136,7 @@ Next, we run the training with `python train.py`. We picked this example and
 datasets to be small enough to run on most computers in a reasonable amount of
 time (a few minutes to train a model). This command produces a bunch of files,
 among them `model.h5` and `metrics.json`, weights of the trained model and
-[metrics](/doc/commands-reference/metrics) history. The simplest way to capture
+[metrics](/doc/command-reference/metrics) history. The simplest way to capture
 the current version of the model is to use `dvc add` again:
 
 ```dvc
@@ -302,7 +302,7 @@ datasets or model files that come and are updated from external sources. The
 On the other hand, there are files that are a result of running some code. In
 our example, please notice that `train.py` produces binary files (e.g.
 `bottlneck_features_train.npy`), the model file `model.h5`, and the
-[metric](/doc/commands-reference/metrics) file `metrics.json`.
+[metric](/doc/command-reference/metrics) file `metrics.json`.
 
 When you have a script that takes some data as an input and produces other data
 <abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:
@@ -357,7 +357,7 @@ are written into files, and intention probably was that the
 very convenient to remember to comment/uncomment it every time dataset is
 changed.
 
-Here's where the [pipelines](/doc/commands-reference/pipeline) feature of DVC
+Here's where the [pipelines](/doc/command-reference/pipeline) feature of DVC
 comes very handy and was designed for. We touched it briefly when we described
 `dvc run` and `dvc repro` at the very end. The next step here would be splitting
 the script into two parts, and utilizing pipelines. See

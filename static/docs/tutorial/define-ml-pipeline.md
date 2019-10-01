@@ -135,8 +135,8 @@ same.
 
 Once the data files are in the workspace, you can start processing the data and
 train ML models out of the data files. DVC helps you to define
-[stages](/doc/commands-reference/run) of your ML process and easily connect them
-into a ML [pipeline](/doc/commands-reference/pipeline).
+[stages](/doc/command-reference/run) of your ML process and easily connect them
+into a ML [pipeline](/doc/command-reference/pipeline).
 
 `dvc run` executes any command that you pass into it as a list of parameters.
 However, the command to run alone is not as interesting as its role within a
@@ -263,7 +263,7 @@ $ git commit -m "extract data"
 
 ## Running in bulk
 
-A single [stage](/doc/commands-reference/run) of our ML pipeline was created and
+A single [stage](/doc/command-reference/run) of our ML pipeline was created and
 committed into repository. It isn't necessary to commit stages right after their
 creation. You can create a few and commit them with Git together later.
 
@@ -289,10 +289,10 @@ Positive size 2049, negative size 97951
 ```
 
 The result of the commands above are two
-[stage files](/doc/commands-reference/run) corresponding to each of the
-commands, `Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file
-was created. This type of file should not be tracked by Git. Let's manually
-include this type of file into `.gitignore`.
+[stage files](/doc/command-reference/run) corresponding to each of the commands,
+`Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file was
+created. This type of file should not be tracked by Git. Let's manually include
+this type of file into `.gitignore`.
 
 ```dvc
 $ git status -s
@@ -363,8 +363,8 @@ pipeline's reproducibility, we use stage file name `Dvcfile`. (This will be
 discussed in more detail in the next chapter.)
 
 Note that the <abbr>output</abbr> file `data/eval.txt` was transformed by DVC
-into a [metric](/doc/commands-reference/metrics) file in accordance with the
-`-M` option.
+into a [metric](/doc/command-reference/metrics) file in accordance with the `-M`
+option.
 
 The result of the last three `dvc run` commands execution is three stage files
 and a modified .gitignore file. All the changes should be committed into Git:

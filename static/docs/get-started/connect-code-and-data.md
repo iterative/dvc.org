@@ -58,8 +58,8 @@ $ git commit -m "Add source code files to repo"
 </details>
 
 Having installed the `src/prepare.py` script in your repo, the following command
-transforms it into a reproducible [stage](/doc/commands-reference/run) for the
-ML pipeline we're building (described in the
+transforms it into a reproducible [stage](/doc/command-reference/run) for the ML
+pipeline we're building (described in the
 [next chapter](/doc/get-started/example-pipeline)).
 
 ```dvc

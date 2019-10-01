@@ -22,7 +22,7 @@ principled way:
 - How do you track which of the
   [hyperparameter](<https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)>)
   changes contributed the most to producing your target
-  [metric](/doc/commands-reference/metrics)? How do you monitor the extent of
+  [metric](/doc/command-reference/metrics)? How do you monitor the extent of
   each change?
 
 3. Navigating through experiments.

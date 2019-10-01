@@ -35,7 +35,7 @@ app.prepare().then(() => {
         ['/get-url', '/import-url'].indexOf(pathname) > 0
           ? pathname.replace(/-/i, '/')
           : pathname
-      const doc_pathname = '/doc/commands-reference' + normalized_pathname
+      const doc_pathname = '/doc/command-reference' + normalized_pathname
       res.writeHead(301, { Location: 'https://dvc.org' + doc_pathname })
       res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
