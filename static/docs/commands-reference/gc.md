@@ -50,7 +50,7 @@ anytime you want **as long as they have previously been pushed**. (See
 - `-c`, `--cloud` - also remove files in the default remote storage. _This
   operation is dangerous._ It removes datasets, models, other files that are not
   linked in the current branch/commit (unless `-a` or `-T` is specified). Use
-  `-r`to specify which remote to collect from (instead of the default).
+  `-r` to specify which remote to collect from (instead of the default).
 
 - `-r`, `--remote` - name of the remote storage to collect unused objects from
   if `-c` option is specified.
