@@ -47,7 +47,7 @@ edit config files manually.
 
 ## Examples
 
-Add AWS S3 remote and modify its region:
+Add Amazon S3 remote and modify its region:
 
 ```dvc
 $ dvc remote add myremote s3://mybucket/myproject

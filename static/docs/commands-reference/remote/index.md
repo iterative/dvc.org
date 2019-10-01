@@ -33,7 +33,7 @@ locally. It also saves space on your local environment – DVC can
 [fetch](/doc/commands-reference/fetch) into the <abbr>cache directory</abbr>
 only the data you need for a specific branch/commit.
 
-DVC supports several types of remote storage: local file system, SSH, AWS S3,
+DVC supports several types of remote storage: local file system, SSH, Amazon S3,
 Google Cloud Storage, HTTP, HDFS, among others. Refer to `dvc remote add` for
 more details.
 
@@ -41,7 +41,7 @@ more details.
 > to use you might need to install optional dependencies: `[s3]`, `[ssh]`,
 > `[gs]`, `[azure]`, and `[oss]`; or `[all]` to include them all. The command
 > should look like this: `pip install "dvc[s3]"`. This installs `boto3` library
-> along with DVC to support AWS S3 storage.
+> along with DVC to support S3 storage.
 
 Using DVC with a remote data storage is optional. By default, DVC is configured
 to use a local data storage only (usually `.dvc/cache` directory inside your
@@ -98,12 +98,11 @@ url = /path/to/remote
 remote = myremote
 ```
 
-2. Add AWS S3 remote and modify its region:
+2. Add Amazon S3 remote and modify its region:
 
-> **Note!** Before adding a new remote be sure to login into AWS services and
-> follow instructions at
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
-> to create your bucket.
+> **Note!** Before adding a new remote be sure to login into AWS and follow
+> instructions at
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
 $ dvc remote add mynewremote s3://mybucket/myproject

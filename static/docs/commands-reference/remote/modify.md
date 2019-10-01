@@ -27,8 +27,8 @@ positional arguments:
 ## Description
 
 Remote `name` and `option` name are required. Option names are remote type
-specific. See below examples and a list of remote storage types: AWS S3, Google
-Cloud, Azure, SSH, ALiyun OSS, and others.
+specific. See below examples and a list of remote storage types: Amazon S3,
+Google Cloud, Azure, SSH, ALiyun OSS, among others.
 
 This command modifies a `remote` section in the project's
 [config file](/doc/commands-reference/config). Alternatively, `dvc config` or
@@ -64,32 +64,32 @@ The following are the types of remote storage (protocols) supported:
 
 <details>
 
-### Click for AWS S3 available options
+### Click for Amazon S3 available options
 
 By default DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could use the following options:
 
-- `region` - change AWS S3 remote region:
+- `region` - change S3 remote region:
 
   ```dvc
   $ dvc remote modify myremote region us-east-2
   ```
 
-- `profile` - credentials profile name to use to access AWS S3:
+- `profile` - credentials profile name to use to access S3:
 
   ```dvc
   $ dvc remote modify myremote profile myprofile
   ```
 
-- `credentialpath` - credentials path to use to access AWS S3:
+- `credentialpath` - credentials path to use to access S3:
 
   ```dvc
   $ dvc remote modify myremote credentialpath /path/to/my/creds
   ```
 
-- `endpointurl` - endpoint URL to use to access AWS S3:
+- `endpointurl` - endpoint URL to use to access S3:
 
   ```dvc
   $ dvc remote modify myremote endpointurl https://myendpoint.com
@@ -147,7 +147,7 @@ $ dvc remote add -d myremote s3://path/to/dir
 $ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
 
-AWS S3 remote can also be configured entirely via environment variables:
+S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
 $ export AWS_ACCESS_KEY_ID="<my-access-key>"
@@ -306,7 +306,7 @@ For more information on configuring Azure Storage connection strings, visit
   $ dvc remote modify myremote --local oss_key_secret my-key-secret
   ```
 
-- `oss_endpoint endpoint` - OSS endpoint valuesfor accessing remote container.
+- `oss_endpoint endpoint` - OSS endpoint values for accessing remote container.
 
   ```dvc
   $ dvc remote modify myremote oss_endpoint endpoint

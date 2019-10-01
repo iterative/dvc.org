@@ -15,7 +15,7 @@ $ pip install dvc
 > to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`, `[azure]`, and
 > `[oss]`; or `[all]` to include them all. The command should look like this:
 > `pip install "dvc[s3]"`. This installs `boto3` library along with DVC to
-> support AWS S3 storage.
+> support Amazon S3 storage.
 
 The easiest option, self-contained binary packages (or Windows installer), are
 available by using the big "Download" button in the [home page](/). You may also

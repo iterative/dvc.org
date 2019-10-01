@@ -36,7 +36,7 @@ default access settings.
 > to use you might need to install optional dependencies: `[s3]`, `[ssh]`,
 > `[gs]`, `[azure]`, and `[oss]`; or `[all]` to include them all. The command
 > should look like this: `pip install "dvc[s3]"`. This installs `boto3` library
-> along with DVC to support AWS S3 storage.
+> along with DVC to support Amazon S3 storage.
 
 This command creates a section in the <abbr>DVC project</abbr>'s
 [config file](/doc/commands-reference/config) and optionally assigns a default
@@ -123,7 +123,7 @@ $ cat .dvc/config
 
 <details>
 
-### Click for AWS S3 example
+### Click for Amazon S3 example
 
 > **Note!** Before adding a new remote be sure to login into AWS services and
 > follow instructions at
@@ -139,7 +139,7 @@ By default DVC expects your AWS CLI is already
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could the options described in `dvc remote modify`.
 
-We use the `boto3` library to communicate with AWS S3. The following API methods
+We use the `boto3` library to communicate with AWS. The following API methods
 are performed:
 
 - `list_objects_v2`, `list_objects`
@@ -175,7 +175,7 @@ $ dvc remote add -d myremote s3://mybucket/path/to/dir
 $ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
 
-AWS S3 remote can also be configured entirely via environment variables:
+S3 remotes can also be configured entirely via environment variables:
 
 ```dvc
 $ export AWS_ACCESS_KEY_ID="<my-access-key>"
@@ -334,7 +334,8 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 
 ## Example: Custom configuration of an S3 remote
 
-Add a AWS S3 remote as the _default_ (via `-d` option), and modify its region:
+Add an Amazon S3 remote as the _default_ (via `-d` option), and modify its
+region:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/myproject
