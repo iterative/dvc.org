@@ -99,7 +99,7 @@ This is how the result should look like now:
         └── train.py
 ```
 
-This is how `prepare.dvc` looks like internally:
+This is how `prepare.dvc` looks like:
 
 ```yaml
 cmd: python src/prepare.py data/data.xml

@@ -80,8 +80,8 @@ $ cd dvc
 $ python -m tests
 ```
 
-Internally, it is using `pytest` to run the full test suite and report the
-result. At the very end you should see something like this:
+This uses `pytest` to run the full test suite and report the result. At the very
+end you should see something like this:
 
 ```dvc
 $ python -m tests

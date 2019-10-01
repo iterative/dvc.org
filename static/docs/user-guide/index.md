@@ -8,7 +8,7 @@ of DVC, to more advanced things you can do. We also include a few guides related
 to contributing to this [open-source project](https://github.com/iterative/dvc).
 
 - [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
-  describes the internal `.dvc/` directory, and it's contents.
+  describes the internal `.dvc/` directory and it's contents.
 - [DVC-File Format](/doc/user-guide/dvc-file-format) explains how the special
   metafiles that DVC creates to track <abbr>project</abbr> data are constructed.
 - [Dvcignore](/doc/user-guide/dvcignore) explains how to exclude files from DVC
@@ -17,15 +17,15 @@ to contributing to this [open-source project](https://github.com/iterative/dvc).
   modify protected data under DVC control (related to the `cache.type` option of
   DVC).
 - [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization)
-  covers the topic of how cached data can be automatically file linked to the
-  workspace to avoid duplication of storage or slow and unnecessary file
-  operations.
+  covers the topic of how <abbr>caches</abbr> data can be automatically file
+  linked to the workspace to avoid duplication of storage or slow and
+  unnecessary file operations.
 - [External Dependencies](/doc/user-guide/external-dependencies) goes over the
   ways in which DVC can keep track of files external to the project (or even
   remote on a network or cloud location) as
   [DVC-file](/doc/user-guide/dvc-files-and-directories) dependencies.
 - [Managing External Data](/doc/user-guide/managing-external-data) explains both
-  external outputs and external <abbr>cache</abbr>.
+  external outputs and external cache.
 - [Development Version](/doc/user-guide/development),
   [Contributing](/doc/user-guide/contributing), and
   [Contributing Documentation](/doc/user-guide/contributing-docs) are related

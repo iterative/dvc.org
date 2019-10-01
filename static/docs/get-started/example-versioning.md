@@ -58,7 +58,7 @@ $ pip install -r requirements.txt
 
 <details>
 
-### Expand to learn more about DVC internals
+### Expand to learn about DVC internals
 
 The repository you cloned is already DVC-initialized. There should be a `.dvc/`
 directory with `config`, `.gitignore` files and the cache directory. These files
@@ -125,7 +125,7 @@ $ dvc add data
 This command should be used instead of `git add` on files or directories that
 are too large to be put into Git. Usually, input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
-the DVC cache (while keeping a
+the <abbr>DVC cache</abbr> (while keeping a
 [file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to it in the <abbr>workspace</abbr>, so you can continue working with it the
 same way as before). Instead, it creates a simple human-readable
@@ -260,9 +260,9 @@ $ dvc checkout
 ```
 
 These commands will restore the working tree to the first snapshot we made -
-code, data files, model. DVC optimizes this operation internally to avoid
-copying data or model files each time. So `dvc checkout` is quick even if you
-have large datasets, data files, or model.
+code, data files, model. DVC optimizes this operation to avoid copying data or
+model files each time. So `dvc checkout` is quick even if you have large
+datasets, data files, or model.
 
 On the other hand, if we want to keep the current version of the code and go
 back to the previous dataset only, we can do something like this (make sure that
@@ -335,7 +335,7 @@ the result. We also such a DVC-file a "stage file".
 
 `dvc repro` will run `Dvcfile` if any of its dependencies (`-d`) changed, for
 example after we added new images like we did when we built the second model
-version. It also updates outputs and puts them into the cache.
+version. It also updates outputs and puts them into the <abbr>cache</abbr>.
 
 If `dvc add` and `dvc checkout` provide a basic mechanism to version control
 large data files or models, `dvc run` and `dvc repro` provide a build system for

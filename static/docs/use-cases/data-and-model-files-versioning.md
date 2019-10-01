@@ -42,7 +42,7 @@ $ dvc init
 ```
 
 DVC creates a `.dvc/` directory that stores
-[internal files](/doc/user-guide/dvc-files-and-directories), including the
+[internals](/doc/user-guide/dvc-files-and-directories), including the
 `.dvc/cache` directory (local data storage). These can safely be added to Git:
 
 ```dvc
@@ -92,10 +92,10 @@ $ dvc checkout
 ```
 
 These commands will restore the working tree to the first snapshot we made -
-code, dataset and model files all matching each other. DVC
-[can optimize](/doc/user-guide/large-dataset-optimization) this operation
-internally to avoid copying files each time, so `dvc checkout` is quick even if
-you have large dataset or model files.
+code, dataset and model files all matching each other. DVC can
+[optimize](/doc/user-guide/large-dataset-optimization) this operation to avoid
+copying files each time, so `dvc checkout` is quick even if you have large
+dataset or model files.
 
 On the other hand, if we want to keep the current version of code and go back to
 the previous dataset only, we can do something like this (make sure that you

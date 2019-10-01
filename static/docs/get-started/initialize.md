@@ -30,7 +30,7 @@ manipulated directly.
 > See `dvc init` if you want to get more details about the initialization
 > process, and
 > [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
-> learn about the DVC internal file and directories structure.
+> learn about the DVC internal file and directory structure.
 
 The last command, `git commit`, puts the `.dvc/config` and `.dvc/.gitignore`
 files (DVC internals) under Git control.
