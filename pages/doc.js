@@ -1,3 +1,5 @@
+/* global docsearch:readonly */
+
 import React, { Component } from 'react'
 // nextjs
 import { HeadInjector } from '../src/Documentation/HeadInjector'

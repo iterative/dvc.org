@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 
@@ -21,4 +22,8 @@ export default class Page extends Component {
       </>
     )
   }
+}
+
+Page.propTypes = {
+  children: PropTypes.node.isRequired
 }

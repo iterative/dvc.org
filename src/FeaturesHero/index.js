@@ -1,16 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 
-export default ({}) => (
-  <FeaturesHero>
-    <Heading>
-      DVC brings agility, reproducibility, and collaboration into your existing
-      data science workflow
-    </Heading>
-  </FeaturesHero>
-)
+export default function FeaturesHero() {
+  return (
+    <Wrapper>
+      <Heading>
+        DVC brings agility, reproducibility, and collaboration into your
+        existing data science workflow
+      </Heading>
+    </Wrapper>
+  )
+}
 
-const FeaturesHero = styled.div`
+const Wrapper = styled.div`
   padding-top: 87px;
   padding-bottom: 58px;
   overflow: hidden;

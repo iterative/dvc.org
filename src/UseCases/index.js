@@ -9,7 +9,7 @@ import TextCollapse from '../TextCollapse'
 const Heading1 = () => (
   <Top>
     <Icon>
-      <img src="/static/img/save-reprro.svg" width={30} height={30} />
+      <img src="/static/img/save-reprro.svg" width={30} height={30} alt="" />
     </Icon>
     <Title>Save and reproduce your experiments</Title>
   </Top>
@@ -18,7 +18,7 @@ const Heading1 = () => (
 const Heading2 = () => (
   <Top>
     <Icon>
-      <img src="/static/img/git-icon.svg" width={30} height={30} />
+      <img src="/static/img/git-icon.svg" width={30} height={30} alt="" />
     </Icon>
     <Title>Version control models and data</Title>
   </Top>
@@ -27,7 +27,7 @@ const Heading2 = () => (
 const Heading3 = () => (
   <Top>
     <Icon>
-      <img src="/static/img/share.svg" width={30} height={31} />
+      <img src="/static/img/share.svg" width={30} height={31} alt="" />
     </Icon>
     <Title>Establish workflow for deployment & collaboration</Title>
   </Top>
@@ -58,61 +58,63 @@ const Description3 = () => (
   </Description>
 )
 
-export default ({}) => (
-  <UseCases>
-    <Element name="how-it-works" />
+export default function UseCases() {
+  return (
+    <Wrapper>
+      <Element name="how-it-works" />
 
-    <Container>
-      <Heading>Use cases</Heading>
-      <FlexWrap>
-        <Video>
-          <YoutubeVideo id={`4h6I9_xeYA4`} />
-        </Video>
+      <Container>
+        <Heading>Use cases</Heading>
+        <FlexWrap>
+          <Video>
+            <YoutubeVideo id={`4h6I9_xeYA4`} />
+          </Video>
 
-        <Right>
-          <OnlyDesktop>
-            <Cases>
-              <Case>
-                <Heading1 />
-                <Description1 />
-              </Case>
-              <Case>
-                <Heading2 />
-                <Description2 />
-              </Case>
-              <Case>
-                <Heading3 />
-                <Description3 />
-              </Case>
-            </Cases>
-          </OnlyDesktop>
-
-          <OnlyMobile>
-            <Cases>
-              <Case>
-                <TextCollapse header={<Heading1 />}>
+          <Right>
+            <OnlyDesktop>
+              <Cases>
+                <Case>
+                  <Heading1 />
                   <Description1 />
-                </TextCollapse>
-              </Case>
-              <Case>
-                <TextCollapse header={<Heading2 />}>
+                </Case>
+                <Case>
+                  <Heading2 />
                   <Description2 />
-                </TextCollapse>
-              </Case>
-              <Case>
-                <TextCollapse header={<Heading3 />}>
+                </Case>
+                <Case>
+                  <Heading3 />
                   <Description3 />
-                </TextCollapse>
-              </Case>
-            </Cases>
-          </OnlyMobile>
-        </Right>
-      </FlexWrap>
-    </Container>
-  </UseCases>
-)
+                </Case>
+              </Cases>
+            </OnlyDesktop>
 
-const UseCases = styled.section`
+            <OnlyMobile>
+              <Cases>
+                <Case>
+                  <TextCollapse header={<Heading1 />}>
+                    <Description1 />
+                  </TextCollapse>
+                </Case>
+                <Case>
+                  <TextCollapse header={<Heading2 />}>
+                    <Description2 />
+                  </TextCollapse>
+                </Case>
+                <Case>
+                  <TextCollapse header={<Heading3 />}>
+                    <Description3 />
+                  </TextCollapse>
+                </Case>
+              </Cases>
+            </OnlyMobile>
+          </Right>
+        </FlexWrap>
+      </Container>
+    </Wrapper>
+  )
+}
+
+const Wrapper = styled.section`
   padding-top: 80px;
   padding-bottom: 57px;
 `

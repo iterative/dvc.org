@@ -3,7 +3,9 @@ const IS_CLIENT = (() => {
   try {
     window
     isDefined = true
-  } catch (x) {}
+  } catch (x) {
+    // nothing to do here, move on
+  }
   return isDefined
 })()
 

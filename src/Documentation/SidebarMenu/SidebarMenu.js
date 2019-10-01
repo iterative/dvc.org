@@ -1,6 +1,7 @@
 import React from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
 import scrollIntoView from 'dom-scroll-into-view'
+import PropTypes from 'prop-types'
 
 // components
 import DownloadButton from '../../DownloadButton'
@@ -80,6 +81,17 @@ class SidebarMenuItem extends React.PureComponent {
   }
 }
 
+SidebarMenuItem.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.object),
+  label: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
+  activePaths: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.string),
+    PropTypes.bool
+  ]).isRequired,
+  onNavigate: PropTypes.func.isRequired
+}
+
 export default class SidebarMenu extends React.Component {
   state = {
     isScrollHidden: false
@@ -133,6 +145,13 @@ export default class SidebarMenu extends React.Component {
       </Menu>
     )
   }
+}
+
+SidebarMenu.propTypes = {
+  id: PropTypes.string.isRequired,
+  sidebar: PropTypes.arrayOf(PropTypes.object).isRequired,
+  currentPath: PropTypes.string,
+  onNavigate: PropTypes.func.isRequired
 }
 
 const Menu = styled.div`

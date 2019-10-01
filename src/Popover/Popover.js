@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import ReactPopover from 'react-popover'
 import { createGlobalStyle } from 'styled-components'
 
@@ -45,6 +46,10 @@ class Popover extends Component {
       </>
     )
   }
+}
+
+Popover.propTypes = {
+  children: PropTypes.node.isRequired
 }
 
 const GlobalStyle = createGlobalStyle`

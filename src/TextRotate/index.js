@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import styled, { css } from 'styled-components'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 export default class TextRotate extends Component {
   static defaultProps = {
@@ -89,7 +90,7 @@ export default class TextRotate extends Component {
       nextWordIndex = 0
     }
 
-    this.setState(prevState => ({
+    this.setState(() => ({
       currentWordIndex: nextWordIndex,
       pos: 0,
       grow: true
@@ -119,6 +120,14 @@ export default class TextRotate extends Component {
       </Wrapper>
     )
   }
+}
+
+TextRotate.propTypes = {
+  textBefore: PropTypes.string.isRequired,
+  textAfter: PropTypes.string.isRequired,
+  delay: PropTypes.number.isRequired,
+  words: PropTypes.arrayOf(PropTypes.string).isRequired,
+  wordDelay: PropTypes.number.isRequired
 }
 
 const Wrapper = styled.span``

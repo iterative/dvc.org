@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { media } from '../styles'
 
@@ -10,6 +11,13 @@ const SocialLink = ({ src, href, click, children }) => (
     {children}
   </Link>
 )
+
+SocialLink.propTypes = {
+  src: PropTypes.string.isRequired,
+  href: PropTypes.string.isRequired,
+  click: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired
+}
 
 export default class HamburgerMenu extends Component {
   state = {
@@ -90,7 +98,7 @@ export default class HamburgerMenu extends Component {
                     <SocialLink
                       src="/static/img/chat.png"
                       href="/chat"
-                      onClick={this.itemClick('chat')}
+                      click={this.itemClick('chat')}
                     >
                       Chat
                     </SocialLink>
@@ -216,6 +224,7 @@ const Logo = styled.a`
   margin-top: 5px;
   display: block;
   -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
   transform: translate3d(0, 0, 0);
 `
 

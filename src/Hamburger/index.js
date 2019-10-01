@@ -1,16 +1,23 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const WIDTH = 30
 const HEIGHT = 3
 
-export default ({ open }) => (
-  <Wrapper>
-    <Line first open={open} />
-    <Line second open={open} />
-    <Line third open={open} />
-  </Wrapper>
-)
+export default function Hamburger({ open }) {
+  return (
+    <Wrapper>
+      <Line first open={open} />
+      <Line second open={open} />
+      <Line third open={open} />
+    </Wrapper>
+  )
+}
+
+Hamburger.propTypes = {
+  open: PropTypes.bool
+}
 
 const Wrapper = styled.div`
   display: inline-block;
@@ -28,7 +35,9 @@ const Line = styled.div`
     props.open &&
     `
       background-color: #fff;
-	`} ${props =>
+	`}
+
+  ${props =>
     props.open &&
     props.first &&
     `

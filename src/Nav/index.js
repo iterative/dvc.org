@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { media } from '../styles'
 import { logEvent } from '../utils/ga'
@@ -8,61 +9,67 @@ const getStarted = () => {
   window.location = '/doc/get-started'
 }
 
-export default ({ mobile = false }) => (
-  <Nav mobile={mobile}>
-    <Links>
-      <Link
-        href="/features"
-        onClick={() => {
-          logEvent('menu', 'features')
-        }}
-      >
-        Features
-      </Link>
-      <Link
-        href="/doc"
-        onClick={() => {
-          logEvent('menu', 'doc')
-        }}
-      >
-        Doc
-      </Link>
-      <Link
-        href="https://blog.dataversioncontrol.com"
-        onClick={() => {
-          logEvent('menu', 'blog')
-        }}
-      >
-        Blog
-      </Link>
-      <Link
-        href="/chat"
-        onClick={() => {
-          logEvent('menu', 'chat')
-        }}
-      >
-        Chat
-      </Link>
-      <Link
-        href="https://github.com/iterative/dvc"
-        onClick={() => {
-          logEvent('menu', 'github')
-        }}
-      >
-        Github
-      </Link>
-      <Link
-        href="/support"
-        onClick={() => {
-          logEvent('menu', 'support')
-        }}
-      >
-        Support
-      </Link>
-    </Links>
-    <GetStartedButton onClick={getStarted}>Get Started</GetStartedButton>
-  </Nav>
-)
+export default function Nav({ mobile = false }) {
+  return (
+    <Wrapper mobile={mobile}>
+      <Links>
+        <Link
+          href="/features"
+          onClick={() => {
+            logEvent('menu', 'features')
+          }}
+        >
+          Features
+        </Link>
+        <Link
+          href="/doc"
+          onClick={() => {
+            logEvent('menu', 'doc')
+          }}
+        >
+          Doc
+        </Link>
+        <Link
+          href="https://blog.dataversioncontrol.com"
+          onClick={() => {
+            logEvent('menu', 'blog')
+          }}
+        >
+          Blog
+        </Link>
+        <Link
+          href="/chat"
+          onClick={() => {
+            logEvent('menu', 'chat')
+          }}
+        >
+          Chat
+        </Link>
+        <Link
+          href="https://github.com/iterative/dvc"
+          onClick={() => {
+            logEvent('menu', 'github')
+          }}
+        >
+          Github
+        </Link>
+        <Link
+          href="/support"
+          onClick={() => {
+            logEvent('menu', 'support')
+          }}
+        >
+          Support
+        </Link>
+      </Links>
+      <GetStartedButton onClick={getStarted}>Get Started</GetStartedButton>
+    </Wrapper>
+  )
+}
+
+Nav.propTypes = {
+  mobile: PropTypes.bool
+}
 
 const Links = styled.div`
   display: flex;
@@ -87,7 +94,7 @@ const Link = styled.a`
   }
 `
 
-const Nav = styled.div`
+const Wrapper = styled.div`
   display: flex;
   flex-shrink: 0;
   flex-direction: row;
@@ -97,7 +104,9 @@ const Nav = styled.div`
     props.mobile &&
     `
     display: none;
- `} ${media.phablet` 
+ `}
+
+  ${media.phablet`
      ${props =>
        !props.mobile &&
        `
