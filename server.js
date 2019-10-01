@@ -20,17 +20,19 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true)
     const { pathname, query } = parsedUrl
 
-    // Special URL host redirects
+    // Special URL redirects:
     if (
-      req.headers['host'].match(/^www/) !== null ||
-      (req.headers['x-forwarded-proto'] !== 'https' && !dev)
+      (req.headers['x-forwarded-proto'] !== 'https' && !dev) ||
+      req.headers.host.match(/^www/) !== null
     ) {
+      // Enforce https protocol and remove www from host/
       res.writeHead(301, {
         Location:
           'https://' + req.headers['host'].replace(/^www\./, '') + req.url
       })
       res.end()
     } else if (req.headers.host === 'man.dvc.org') {
+      // man.dvc.org/{cmd} -> dvc.org/doc/command-reference/{cmd}
       let normalized_pathname =
         ['/get-url', '/import-url'].indexOf(pathname) > 0
           ? pathname.replace(/-/i, '/')
@@ -39,6 +41,7 @@ app.prepare().then(() => {
       res.writeHead(301, { Location: 'https://dvc.org' + doc_pathname })
       res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
+      // {code/data/remote}.dvc.org -> corresponding S3 bucket
       res.writeHead(301, {
         Location:
           'https://s3-us-east-2.amazonaws.com/dvc-public/' +
@@ -46,9 +49,14 @@ app.prepare().then(() => {
           pathname
       })
       res.end()
-
-      // Special URL path redirects below
+    } else if (/^\/doc\/commands-reference.*/.test(pathname)) {
+      // TMP: path /doc/commands-reference/* -> /doc/command-reference/*
+      res.writeHead(302, {
+        Location: req.url.replace('commands-reference', 'command-reference')
+      })
+      res.end()
     } else if (/^\/doc.*/i.test(pathname)) {
+      // path /doc* -> /doc
       let normalized_pathname = pathname.replace(/^\/doc[^?\/]*/i, '/doc')
       if (normalized_pathname !== pathname) {
         res.writeHead(301, {
@@ -62,6 +70,7 @@ app.prepare().then(() => {
         app.render(req, res, '/doc', query)
       }
     } else if (/^\/(deb|rpm)\/.*/i.test(pathname)) {
+      // dvc.org/(deb|rpm) -> corresponding S3 bucket
       res.writeHead(301, {
         Location:
           'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/' +
@@ -69,6 +78,7 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (/^\/(help|chat)\/?$/i.test(pathname)) {
+      // dvc.org/(help|chat) -> Discord Chat
       res.writeHead(301, { Location: 'https://discordapp.com/invite/dvwXA2N' })
       res.end()
     } else {
@@ -78,6 +88,6 @@ app.prepare().then(() => {
     // Invokes server `createServer`
   }).listen(port, err => {
     if (err) throw err
-    console.log('> Ready on http://localhost:3000')
+    console.info('> Ready on http://localhost:3000')
   })
 })
