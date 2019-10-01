@@ -16,7 +16,7 @@ in the cache (or [remote storage](/doc/commands-reference/remote)) but no longer
 referred to in [DVC-files](/doc/user-guide/dvc-file-format) currently
 [checked out](/doc/commands-reference/checkout) in the <abbr>project</abbr>. By
 default this command only cleans up the local cache, which is typically located
-on the same machine as the project in question; This usually helps to free up
+on the same machine as the project in question. This usually helps to free up
 disk space.
 
 Data added to DVC in a different branch or version than the current Git commit
@@ -47,9 +47,10 @@ anytime you want **as long as they have previously been pushed**. (See
   this option can be used to specify a list of them (each project is a path) to
   keep data that is currently referenced from them.
 
-- `-c`, `--cloud` - also remove files in the remote storage. _This operation is
-  dangerous._ It removes datasets, models, other files that are not linked in
-  the current branch/commit (unless `-a` or `-T` is specified).
+- `-c`, `--cloud` - also remove files in the default remote storage. _This
+  operation is dangerous._ It removes datasets, models, other files that are not
+  linked in the current branch/commit (unless `-a` or `-T` is specified). Use
+  `-r`to specify which remote to collect from (instead of the default).
 
 - `-r`, `--remote` - name of the remote storage to collect unused objects from
   if `-c` option is specified.
