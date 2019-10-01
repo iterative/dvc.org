@@ -2,7 +2,7 @@
 
 > This document provides an overview the file versioning workflow with DVC. To
 > get more hands-on experience on this we recommend following along the
-> [Versioning example](/doc/get-started/example-versioning).
+> [Versioning](/doc/get-started/example-versioning) example.
 
 DVC allows versioning data files and directories, intermediate results, and ML
 models using Git, but without storing the file contents in the repository. It's
