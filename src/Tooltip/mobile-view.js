@@ -40,7 +40,7 @@ class MobileView extends Component {
                 </CloseContainer>
                 <Header>{this.props.header}</Header>
                 <ReactMarkdown
-                  className="markdown-body"
+                  className="markdown-body portal-font"
                   source={this.props.description}
                 />
               </ModalContent>
@@ -100,6 +100,10 @@ const ModalContent = styled.div`
   padding: 8px 10px;
   border: 1px solid #d1d5da;
   border-radius: 3px;
+
+  .portal-font {
+    font-family: BrandonGrotesque;
+  }
 `
 
 const Header = styled.div`
