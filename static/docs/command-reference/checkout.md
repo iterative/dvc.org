@@ -125,7 +125,7 @@ $ cd example-get-started
 </details>
 
 The workspace looks almost like in this
-[pipeline setup](/doc/get-started/example-pipeline):
+[pipeline setup](/doc/tutorials/pipelines):
 
 ```dvc
 .

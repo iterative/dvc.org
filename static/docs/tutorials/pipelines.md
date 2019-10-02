@@ -1,4 +1,4 @@
-# Example: Pipelines
+# Tutorial: Pipelines
 
 To show DVC in action, let's play with an actual machine learning scenario.
 Let's explore the natural language processing
