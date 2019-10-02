@@ -45,13 +45,13 @@ The detail of DVC version depends upon the way of installing DVC.
   install DVC using the `master` branch of DVC's repository. Another way of
   setting up the development version is to clone the repository and run
   `pip install .`. The master branch is continuously being updated with changes
-  which might not be ready to publish yet. Therefore installing using the above
+  that might not be ready to publish yet. Therefore installing using the above
   command might have issues regarding its usage. So to trace any error reported
-  with this setup, we need to know exactly which version is being used. For
-  this, we rely on git commit hash which is displayed in output as
-  `0.40.2+292cab.mod`. The part before `+` is the `BASE_VERSION` and the latter
-  part is the git commit hash which is one of the commits in the `master` branch
-  (also, optional suffix `.mod` means that code is modified).
+  with this setup, we need to know exactly which version is being used. For this
+  we rely on a git commit hash that is displayed in this command's output like
+  this: `0.40.2+292cab.mod`. The part before `+` is the `BASE_VERSION` and the
+  latter part is the `master` branch commit hash. The optional suffix `.mod`
+  means that code is modified.
 
 #### What we mean by "Binary"
 
@@ -68,7 +68,7 @@ The detail of `Binary` depends on the way DVC was downloading and
   - Windows executable (`.exe`) - file used to install applications on Windows
 
   These downloads are available from our [home page](/). They ultimately contain
-  a binary bundle, which is the executable version of a software program,
+  a binary bundle, which is the executable file of a software application,
   meaning that it will run natively on a specific platform (Linux, Windows,
   Mac). In our case, we use [PyInstaller](https://pythonhosted.org/PyInstaller/)
   to bundle our source code into the binary package app.

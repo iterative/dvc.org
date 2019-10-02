@@ -145,7 +145,7 @@ $ dvc run -f Dvcfile -d numbers.txt -d process.py -M count.txt \
 > example because that's the default stage file name `dvc repro` will read
 > without having to provide any `targets`.
 
-Where `process.py` is a script which for simplicity just prints the number of
+Where `process.py` is a script that, for simplicity, just prints the number of
 lines:
 
 ```python
@@ -233,10 +233,10 @@ Stage 'Dvcfile' didn't change.
 Data and pipelines are up to date.
 ```
 
-The reason being that the `text.txt` is a file which is a dependency in the
-target DVC-file (`Dvcfile` by default). Instead, it's dependent on `filter.dvc`,
-which happens before the target stage in this pipeline (shown above in the
-following figure).
+The reason being that the `text.txt` file is a dependency in the target
+[DVC-file](/doc/user-guide/dvc-file-format) (`Dvcfile` by default). This
+`Dvcfile` stage is dependent on `filter.dvc`, which happens first in this
+pipeline (shown in the following figure):
 
 ```dvc
 $ dvc pipeline show --ascii

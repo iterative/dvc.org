@@ -38,9 +38,9 @@ This command assigns the default remote in the core section of the DVC
 remote = myremote
 ```
 
-For the commands which take a `--remote` option (`dvc pull`, `dvc push`,
-`dvc status`, `dvc gc`, `dvc fetch`), default remote is used if that option is
-not specified.
+For the commands that accept a `--remote` option (`dvc pull`, `dvc push`,
+`dvc status`, `dvc gc`, `dvc fetch`), the default remote is used if that option
+is not used.
 
 You can also use `dvc config`, `dvc remote add` and `dvc remote modify` commands
 to set/unset/change the default remote configurations.

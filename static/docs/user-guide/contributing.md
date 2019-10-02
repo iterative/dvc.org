@@ -25,9 +25,9 @@ paragraphs below to learn how to submit your changes.
   run tests or [run](#running-development-version) the DVC with your changes.
 - Fork [DVC](https://github.com/iterative/dvc.git) and prepare necessary
   changes.
-- Add tests for your changes to `tests/test_*.py`. You can skip this step if
-  the effort to create tests for your change is unreasonable. Changes
-  without tests are still going to be considered by us.
+- Add tests for your changes to `tests/test_*.py`. You can skip this step if the
+  effort to create tests for your change is unreasonable. Changes without tests
+  are still going to be considered by us.
 - [Run tests](#running-tests) and make sure all of them pass.
 - Submit a pull request, referencing any issues it addresses.
 
@@ -170,7 +170,7 @@ Install
 [aws cli](https://docs.aws.amazon.com/en_us/cli/latest/userguide/cli-chap-install.html)
 tools.
 
-Set up an account, get credentials, which will have access to S3. Then, set env
+To set up AWS access, first get credentials with S3 permissions. Then, set env
 vars like this:
 
 ```dvc

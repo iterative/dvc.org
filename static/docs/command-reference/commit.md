@@ -38,9 +38,9 @@ time tying stages or a pipeline.
 - Sometimes we want to clean up a code or configuration file in a way that
   doesn't cause a change in its results. We might write in-line documentation
   with comments, change indentation, remove some debugging printouts, or any
-  other change which doesn't introduce a change in the output of pipeline
-  stages. `dvc commit` can help avoid having to reproduce a pipeline in these
-  cases by forcing the update of the DVC-files.
+  other change that doesn't produce different output of pipeline stages.
+  `dvc commit` can help avoid having to reproduce a pipeline in these cases by
+  forcing the update of the DVC-files.
 
 Let's take a look at what is happening in the fist scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
@@ -145,8 +145,8 @@ bag_of_words = CountVectorizer(stop_words='english',
             max_features=6000, ngram_range=(1, 2))
 ```
 
-This option not only changes the trained model, it also introduces a change
-which would cause the `featurize.dvc`, `train.dvc` and `evaluate.dvc` stages to
+This option not only changes the trained model, it also introduces a change that
+would cause the `featurize.dvc`, `train.dvc` and `evaluate.dvc` stages to
 execute if we ran `dvc repro`. But if we want to try several values for this
 option and save only the best result to the cache, we can execute as so:
 
@@ -230,15 +230,15 @@ $ python src/train.py data/features model.pkl
 $ python src/evaluate.py model.pkl data/features auc.metric
 ```
 
-As before, `dvc status` will show which the files have changed, and when your
-work is finalized `dvc commit` will commit everything to the <abbr>cache</abbr>.
+As before, `dvc status` will show which files have changed, and when your work
+is finalized `dvc commit` will commit everything to the <abbr>cache</abbr>.
 
 ## Example: Updating dependencies
 
 Sometimes we want to clean up a code or configuration file in a way that doesn't
 cause a change in its results. We might write in-line documentation with
 comments, change indentation, remove some debugging printouts, or any other
-change which doesn't introduce a change in the output of pipeline stages.
+change that doesn't produce different output of pipeline stages.
 
 ```dvc
 $ git status -s

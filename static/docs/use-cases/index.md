@@ -17,10 +17,9 @@ This list of use cases is _not_ exhaustive. We keep reviewing our docs and will
 include interesting scenarios that surface in our community. Please,
 [contact us](/support) if you need help or have suggestions!
 
-Use cases are not written to be run end-to-end. For more general hands-on
-experience with DVC, we recommend to follow the [Get Started](/doc/get-started),
-and/or [Tutorial](/doc/tutorial)] first – which include prepared datasets,
-source code files, and example commands that can be copied and pasted into
-terminal. These articles also link to our more general
-[User Guide](/doc/user-guide), and technical
-[command references](/doc/command-reference).
+Use cases are not written to be run end-to-end. For more general, hands-on
+experience with DVC, we recommend following the [Get Started](/doc/get-started),
+and/or [Tutorial](/doc/tutorial)] first. These include prepared datasets, source
+code files, and example commands that can be copied and pasted into terminal.
+These use cases also link to our more general [User Guide](/doc/user-guide), and
+technical [command references](/doc/command-reference).

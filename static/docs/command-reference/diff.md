@@ -104,8 +104,8 @@ added file with size 37.9 MB
 
 We can base this example in the [Metrics](/doc/get-started/metrics) and
 [Compare Experiments](/doc/get-started/compare-experiments) chapters of our _Get
-Started_ section, which describe different experiments to produce the
-`model.pkl` file. Our example repository has the `bigrams-experiment` and
+Started_ section, that describe different experiments to produce the `model.pkl`
+file. Our example repository has the `bigrams-experiment` and
 `baseline-experiment`
 [tags](https://github.com/iterative/example-get-started/tags) respectively to
 reference these experiments.
@@ -155,7 +155,7 @@ command dependencies or <abbr>outputs</abbr>).
 
 We can use `dvc diff` to check for changes in a directory by specifying the
 directory as the target (with option `-t`). Note that we skip the `b_ref`
-argument this time, which defaults to `HEAD`.
+argument this time, that defaults to `HEAD`.
 
 ```dvc
 $ dvc diff -t data/features baseline-experiment
@@ -171,11 +171,11 @@ diff for 'data/features'
 
 ## Example: Confirming that a target has not changed
 
-Let's use our example repo once again, which has several
+Let's use our example repo once again, that has several
 [available tags](https://github.com/iterative/example-get-started/tags) for
 conveniency. The `5-preparation` tag corresponds to the
-[Connect Code and Data](/doc/get-started/connect-code-and-data) section of our
-_Get Started_ section, in which the `dvc run` command is used to create the
+[Connect Code and Data](/doc/get-started/connect-code-and-data) chapter of our
+_Get Started_ section, where the `dvc run` command is used to create a
 `prepare.dvc` stage file. This DVC-file tracks the `data/prepared` directory
 <abbr>output</abbr>.
 

@@ -52,7 +52,7 @@ configure a remote.
 With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
 only the files (or directories) that are new in the local repository to remote
 storage. It will not upload files associated with earlier versions or branches
-of the <abbr>project</abbr> directory, nor will it upload files which have not
+of the <abbr>project</abbr> directory, nor will it upload files that have not
 changed.
 
 The `dvc status -c` command can list files tracked by DVC that are new in the
@@ -259,7 +259,7 @@ $ tree ../vault/recursive
 
 The directory `.dvc/cache` is the local cache, while `../vault/recursive` is the
 remote storage – a "local remote" in this case. This listing shows the cache
-having more files in it than the remote does (which is what `new` means).
+having more files in it than the remote – which is what the `new` state means.
 
 Next we can upload part of the data from the cache to the remote using the
 command `dvc push --with-deps <stage>.dvc`. Remember that `--with-deps` searches

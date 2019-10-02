@@ -24,7 +24,7 @@ The `targets` are files or directories to be places under DVC control. These are
 turned into outputs (`outs` field) in a resulting
 [DVC-file](/doc/user-guide/dvc-file-format). (See steps below for more details.)
 Note that target data outside the current <abbr>workspace</abbr> is supported,
-which becomes [external outputs](/doc/user-guide/managing-external-data).
+that becomes [external outputs](/doc/user-guide/managing-external-data).
 
 Under the hood, a few actions are taken for each file (or directory) in
 `targets`:
@@ -126,8 +126,8 @@ To track the changes with git run:
 	git add .gitignore data.xml.dvc
 ```
 
-As the output says, a DVC-file has been created for `data.xml`. Let us explore
-the result:
+As the output says, a [DVC-file](/doc/user-guide/dvc-file-format)) has been
+created for `data.xml`. Let us explore the result:
 
 ```dvc
 $ tree
@@ -229,8 +229,8 @@ Saving 'pics/train/cats/cat.438.jpg' to cache '.dvc/cache'.
 In this case a DVC-file corresponding to each file is generated, and no
 top-level DVC-file is generated. But this is less convenient.
 
-With the `dvc add pics` a single DVC-file is generated, `pics.dvc`, which lets
-us treat the entire directory structure in one unit. It lets you pass the whole
+With `dvc add pics`, a single `pics.dvc` DVC-file is generated, that lets us
+treat the entire directory structure in one unit. It lets you pass the whole
 directory tree as a dependency to a `dvc run` stage definition, like this:
 
 ```dvc

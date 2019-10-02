@@ -6,9 +6,9 @@ DVC is a command-line tool. The typical DVC workflow goes as follows:
   `dvc init`.
 - Copy source code files for modeling into the repository and track the files
   with DVC using the `dvc add` command.
-- Process raw data with your own data processing and modeling code using the
-  `dvc run` command, using the `--outs` option to outputs which will also be
-  tracked by DVC after the code is executed.
+- Process raw data with your own data processing and modeling code, using the
+  `dvc run` command, along with its `--outs` option for outputs that should also
+  be tracked by DVC after the code is executed.
 - Sharing a Git repository with the source code of your ML
   [pipeline](/doc/command-reference/pipeline) will not include the project's
   <abbr>cache</abbr>. Use [remote storage](/doc/command-reference/remote) and

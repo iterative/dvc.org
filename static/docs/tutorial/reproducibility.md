@@ -7,7 +7,7 @@ The most exciting part of DVC is reproducibility.
 > Reproducibility is the time you are getting benefits out of DVC instead of
 > spending time managing ML pipelines.
 
-DVC tracks all the dependencies, which helps you iterate on ML models faster
+DVC tracks all the dependencies. This helps you iterate on ML models faster
 without thinking what was affected by your last change.
 
 In order to track all the dependencies, DVC finds and reads all the DVC-files in
@@ -238,7 +238,7 @@ mismatches in the branches. You can properly merge conflicts by prioritizing the
 checksums from the bigrams branch: that is, by removing all checksums of the
 other branch.
 [Here](https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line)
-you can find a tutorial which clarifies how to do that. It is also important to
+you can find a tutorial that clarifies how to do that. It is also important to
 remove all automatically generated
 [conflict markers](https://git-scm.com/book/en/v2/Git-Tools-Advanced-Merging#_checking_out_conflicts)
 (<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>,

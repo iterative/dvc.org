@@ -1,8 +1,8 @@
 export default {
   name: 'Glossary',
   desc:
-    'This guide is aimed to familiarize the users with definitions to ' +
-    'relevant DVC concepts and terminologies which are frequently used.',
+    'This guide is aimed to provide definitions for relevant DVC concepts ' +
+    'and terminologies that are frequently used.',
   contents: [
     {
       name: 'Workspace',

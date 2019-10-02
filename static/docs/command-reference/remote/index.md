@@ -27,9 +27,9 @@ What is data remote?
 
 The same way as Github provides storage hosting for Git repositories, DVC
 remotes provide a central place to keep and share data and model files. With
-this remote storage, you can pull models and data files which were created by
-your team members without spending time and resources to build or process them
-locally. It also saves space on your local environment – DVC can
+this remote storage, you can pull models and data files created by colleagues
+without spending time and resources to build or process them locally. It also
+saves space on your local environment – DVC can
 [fetch](/doc/command-reference/fetch) into the <abbr>cache directory</abbr> only
 the data you need for a specific branch/commit.
 
@@ -44,8 +44,8 @@ more details.
 > along with DVC to support S3 storage.
 
 Using DVC with a remote data storage is optional. By default, DVC is configured
-to use a local data storage only (usually `.dvc/cache` directory inside your
-repository), which enables basic DVC usage scenarios out of the box.
+to use a local data storage only (usually the `.dvc/cache` directory). This
+enables basic DVC usage scenarios out of the box.
 
 [Add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),

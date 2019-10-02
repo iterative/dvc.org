@@ -49,10 +49,9 @@ url = /tmp/dvc-storage
 remote = myremote
 ```
 
-DVC supports the concept of a _default remote_. For the commands which take a
+DVC supports the concept of a _default remote_. For the commands that accept a
 `--remote` option (`dvc pull`, `dvc push`, `dvc status`, `dvc gc`, `dvc fetch`),
-this option can be left off the command line and the default remote will be used
-instead.
+the default remote is used if that option is not used.
 
 Use `dvc config` to unset/change the default remote as so:
 `dvc config -u core.remote`.
@@ -327,7 +326,7 @@ $ export OSS_ACCESS_KEY_ID='AccessKeyID'
 $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 ```
 
-> Use default key id and key secret when they are not given, which gives read
+> Uses default key id and key secret when they are not given, which gives read
 > access to public read bucket and public bucket.
 
 </details>

@@ -24,8 +24,8 @@ operation:
   > repository, only [DVC-files](/doc/user-guide/dvc-file-format) that are
   > needed to download or reproduce them.
 
-- `.dvc/state`: This file is used for optimization. It is a SQLite db, that
-  contains checksums for files tracked in a DVC project, with respective
+- `.dvc/state`: This file is used for optimization. It is a SQLite database,
+  that contains checksums for files tracked in a DVC project, with respective
   timestamps and inodes to avoid unnecessary checksum computations. It also
   contains a list of links (from cache to <abbr>workspace</abbr>) created by DVC
   and is used to cleanup your workspace when calling `dvc checkout`.
@@ -34,8 +34,8 @@ operation:
 
 - `.dvc/state-wal`: Another SQLite temporary file
 
-- `.dvc/updater`: This file is used store latest available version of dvc, which
-  is used to remind user to upgrade.
+- `.dvc/updater`: This file is used store the latest available version of DVC.
+  It's used to remind the user to upgrade when the installed version is behind.
 
 - `.dvc/updater.lock`: Lock file for `.dvc/updater`
 
@@ -44,20 +44,20 @@ operation:
 ## Structure of cache directory
 
 There are two ways in which the data is stored in <abbr>cache</abbr>. It depends
-on whether the actual data is stored in a single file (eg. `data.csv`) or in a
-directory of files.
+on whether the data in question is a single file (eg. `data.csv`) or a directory
+of files.
 
-We evaluate a checksum, usually MD5, for the data file which is a 32 characters
-long string. The first two characters are assigned to name the directory inside
-`.dvc/cache` and rest are given to name the cache file. For example, if a data
-file, say `Posts.xml.zip`, is converted to a MD5 checksum, it will evaluate to
-`ec1d2935f811b77cc49b031b999cbf17`. The cache file for this data file will be
-stored as `.dvc/ec/1d2935f811b77cc49b031b999cbf17` on the local storage and if
-it is pushed to a remote storage, its location will be
-`<prefix>/ec/1d2935f811b77cc49b031b999cbf17` where prefix is the name of the
-remote storage. `/tmp/dvc-storage` can be one example of a prefix.
+For the first case, we calculate the file's checksum, a 32 characters long
+string (usually MD5). The first two characters are used to name the directory
+inside `.dvc/cache` and the rest become the file name of the cached file. For
+example, if a data file `Posts.xml.zip` has checksum
+`ec1d2935f811b77cc49b031b999cbf17`, its cache entry will be
+`.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17` locally. If pushed to
+[remote storage](/doc/command-reference/remote), its location will be
+`<prefix>/ec/1d2935f811b77cc49b031b999cbf17`, where prefix is the name of the
+DVC remote.
 
-For the second case, let us consider a directory of 2 images.
+For the second case, let us consider a directory with 2 images.
 
 ```dvc
 $ tree data/images/
@@ -69,10 +69,9 @@ $ dvc add data/images
 ...
 ```
 
-On running `dvc add` on this directory of images, a
-[DVC-file](/doc/user-guide/dvc-file-format) is created by default, with
-information including the checksum of the directory, which is cached as a file
-in `.dvc/cache`.
+When running `dvc add` on this directory of images, a
+[DVC-file](/doc/user-guide/dvc-file-format) is created, containing the checksum
+of the directory.
 
 ```yaml
 - md5: 196a322c107c2572335158503c64bfba.dir
@@ -91,6 +90,7 @@ $ tree
 │   └── a6c8271c0c8fbf75d3b97aecee589f
 └── df
     └── f70c0392d7d386c39a23c64fcc0376
+...
 ```
 
 Like the previous case, the first two digits of the checksum are used to name

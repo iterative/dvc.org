@@ -72,9 +72,9 @@ $ dvc run -o metrics.txt "echo 0.9643 > metrics.txt"
 ```
 
 Even when we named this output file `metrics.txt`, DVC won't know that it's a
-metric if we don't specify so. The content of stage file `metrics.txt.dvc`
-(which is a [DVC-file](/doc/user-guide/dvc-file-format)) should look like this:
-(Notice the `metric: false` field.)
+metric if we don't specify so. The content of stage file `metrics.txt.dvc` (a
+[DVC-file](/doc/user-guide/dvc-file-format)) should look like this: (Notice the
+`metric: false` field.)
 
 ```yaml
 cmd: echo 0.9643 > metrics.txt

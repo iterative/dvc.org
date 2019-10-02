@@ -23,8 +23,8 @@ supported by the file system.
 ## File link types for the DVC cache
 
 File links are entries in the file system that don't necessarily hold the file
-contents, but which point to where the file is actually stored. File links are
-more common in file systems used with UNIX-like operating systems and come in
+contents, but point to where the file is actually stored. File links are more
+common in file systems used with UNIX-like operating systems and come in
 different kinds, that differ in how they connect filenames to inodes in the
 system.
 
@@ -41,8 +41,8 @@ system, but may break your workflow since updating hard/sym-linked files tracked
 by DVC in the workspace causes <abbr>cache</abbr> corruption. These 2 link types
 thus require using cache **protected mode** (see the `cache.protected` config
 option in `dvc config cache`). Finally, a 4th "linking" option is to actually
-copy files from/to the cache, which is safe but inefficient, especially for
-large files (several GBs or more data).
+copy files from/to the cache, which is safe but inefficient – especially for
+large files (several GBs or more).
 
 > Some versions of Windows (e.g. Windows Server 2012+ and Windows 10 Enterprise)
 > support hard or soft links on the
