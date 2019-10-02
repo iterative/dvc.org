@@ -2,7 +2,7 @@
 
 > This document provides an overview the file versioning workflow with DVC. To
 > get more hands-on experience on this we recommend following along the
-> [Versioning example](/doc/get-started/example-versioning).
+> [Versioning](/doc/get-started/example-versioning) example.
 
 DVC allows versioning data files and directories, intermediate results, and ML
 models using Git, but without storing the file contents in the repository. It's
@@ -10,7 +10,7 @@ useful in general when dealing with files that are too large for Git to handle
 properly. DVC records information about your data in a special
 [DVC-file](/doc/user-guide/dvc-file-format). This description of files or
 directories can be used for versioning. DVC supports various types of
-[remote storage](/doc/commands-reference/remote) for data that allows easily
+[remote storage](/doc/command-reference/remote) for data that allows easily
 saving and sharing data alongside code.
 
 ![](/static/img/model-versioning-diagram.png)
@@ -113,7 +113,7 @@ their latest versions.
 ![](/static/img/versioning.png)
 
 To share your data with others you need to setup a
-[data storage](/doc/commands-reference/remote). See the
+[data storage](/doc/command-reference/remote). See the
 [Share Data And Model Files](/doc/use-cases/share-data-and-model-files) use case
 to get an overview on how to do this.
 

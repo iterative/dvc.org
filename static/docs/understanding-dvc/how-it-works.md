@@ -10,7 +10,7 @@
    > See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
 
 2. DVC helps define command pipelines, and keeps each command
-   [stage](/doc/commands-reference/run) and dependencies in a Git repository:
+   [stage](/doc/command-reference/run) and dependencies in a Git repository:
 
    ```dvc
    $ dvc run -d input.csv -o model.pkl -o results.csv \

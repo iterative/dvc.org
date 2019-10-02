@@ -23,4 +23,4 @@ and/or [Tutorial](/doc/tutorial)] first – which include prepared datasets,
 source code files, and example commands that can be copied and pasted into
 terminal. These articles also link to our more general
 [User Guide](/doc/user-guide), and technical
-[command references](/doc/commands-reference).
+[command references](/doc/command-reference).

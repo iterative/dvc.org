@@ -95,8 +95,8 @@
     ]
   },
   {
-    "slug": "commands-reference",
-    "source": "commands-reference/index.md",
+    "slug": "command-reference",
+    "source": "command-reference/index.md",
     "children": [
       {
         "label": "add",

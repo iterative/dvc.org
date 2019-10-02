@@ -14,7 +14,7 @@ $ dvc pull
 
 > If you've followed previous chapters of this section, try deleting
 > `data/data.xml` before running the command above, otherwise DVC won't find a
-> need to [checkout](/doc/commands-reference/checkout) the file, since it's
+> need to [checkout](/doc/command-reference/checkout) the file, since it's
 > already in your workspace.
 
 This command downloads data files that are referenced in all

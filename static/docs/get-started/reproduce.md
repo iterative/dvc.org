@@ -1,8 +1,8 @@
 # Reproduce
 
 In the previous chapters, we described our first
-[pipeline](/doc/commands-reference/pipeline). Basically, we generated a number
-of [stage files](/doc/commands-reference/run)
+[pipeline](/doc/command-reference/pipeline). Basically, we generated a number of
+[stage files](/doc/command-reference/run)
 ([DVC-files](/doc/user-guide/dvc-file-format)). These stages define individual
 commands to execute towards a final result. Each depends on some data (either
 raw data files or intermediate results from previous stages) and code files.

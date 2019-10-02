@@ -12,12 +12,12 @@ without thinking what was affected by your last change.
 
 In order to track all the dependencies, DVC finds and reads all the DVC-files in
 a repository and builds a dependency graph
-([pipeline](/doc/commands-reference/pipeline)) based on these files.
+([pipeline](/doc/command-reference/pipeline)) based on these files.
 
 This is one of the differences between DVC reproducibility and traditional
 Makefile-like build automation tools (Make, Maven, Ant, Rakefile etc). It was
 designed in such a way to localize specification of the graph nodes (pipeline
-[stages](/doc/commands-reference/run)).
+[stages](/doc/command-reference/run)).
 
 If you run `repro` on any [DVC-file](/doc/user-guide/dvc-file-format) from our
 repository, nothing happens because nothing was changed in the pipeline defined
@@ -42,7 +42,7 @@ Our NLP model was based on [unigrams](https://en.wikipedia.org/wiki/N-gram)
 only. Let's improve the model by adding bigrams. The bigrams model will extract
 signals not only from separate words but also from two-word combinations. This
 eventually increases the number of features for the model and hopefully improves
-the target [metric](/doc/commands-reference/metrics).
+the target [metric](/doc/command-reference/metrics).
 
 Before editing the `code/featurization.py` file, please create and checkout a
 new branch `bigrams`.
@@ -195,7 +195,7 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-Validate the [metric](/doc/commands-reference/metrics) and commit all the
+Validate the [metric](/doc/command-reference/metrics) and commit all the
 changes.
 
 ```dvc
@@ -273,7 +273,7 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-Check the target [metric](/doc/commands-reference/metrics):
+Check the target [metric](/doc/command-reference/metrics):
 
 ```dvc
 $ cat data/eval.txt

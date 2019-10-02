@@ -5,7 +5,7 @@ import { getItemByPath } from '../../SidebarMenu/helper'
 
 const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*/
 const COMMAND_REGEXP = /^[a-z][a-z-]*$/
-const COMMAND_ROOT = '/doc/commands-reference/'
+const COMMAND_ROOT = '/doc/command-reference/'
 
 function linker() {
   function transformer(tree) {

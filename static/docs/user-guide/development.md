@@ -7,7 +7,7 @@ following.
 > dynamically generate dvc version from the current git commit SHA. It allows us
 > to distinguish official dvc release (e.g. `0.24.3`) from a development version
 > (e.g. `0.24.3-9c7381`). For more information on naming convention, refer to
-> [dvc version](/doc/commands-reference/version).
+> [dvc version](/doc/command-reference/version).
 
 ```dvc
 $ pip install gitpython

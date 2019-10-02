@@ -1,11 +1,11 @@
 # DVC-File Format
 
 When you add a file (with `dvc add`) or a command (with `dvc run`) to a
-[pipeline](/doc/commands-reference/pipeline), DVC creates a special text
-metafile with the `.dvc` file extension (e.g. `process.dvc`), or with the
-default name `Dvcfile`. DVC-files a.k.a. **stage files** contain all the needed
-information to track your data and reproduce pipeline stages. The file itself
-contains a simple YAML format that could be easily written or altered manually.
+[pipeline](/doc/command-reference/pipeline), DVC creates a special text metafile
+with the `.dvc` file extension (e.g. `process.dvc`), or with the default name
+`Dvcfile`. DVC-files a.k.a. **stage files** contain all the needed information
+to track your data and reproduce pipeline stages. The file itself contains a
+simple YAML format that could be easily written or altered manually.
 
 See the [Syntax Highlighting](/doc/user-guide/plugins) to learn how to enable
 the highlighting for your editor.
@@ -59,7 +59,7 @@ A dependency entry consists of a pair of fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
 - `md5`: md5 checksum for the dependency (most
-  [stages](/doc/commands-reference/run))
+  [stages](/doc/command-reference/run))
 - `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
 - `repo`: This entry is only for DVC repository external dependencies created
@@ -79,7 +79,7 @@ An output entry consists of these fields:
 - `md5`: md5 checksum for the output
 - `cache`: Whether or not dvc should cache the output
 - `metric`: Whether or not this file is a
-  [metric](/doc/commands-reference/metrics) file
+  [metric](/doc/command-reference/metrics) file
 
 A metric entry consists of these fields:
 
