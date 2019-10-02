@@ -55,6 +55,12 @@ app.prepare().then(() => {
         Location: req.url.replace('commands-reference', 'command-reference')
       })
       res.end()
+    } else if (pathname == '/doc/tutorial') {
+      // TMP: path /doc/tutorial -> /doc/tutorials/tutorial
+      res.writeHead(302, {
+        Location: req.url.replace('/doc/tutorial', '/doc/tutorials/tutorial')
+      })
+      res.end()
     } else if (/^\/doc.*/i.test(pathname)) {
       // path /doc* -> /doc
       let normalized_pathname = pathname.replace(/^\/doc[^?\/]*/i, '/doc')

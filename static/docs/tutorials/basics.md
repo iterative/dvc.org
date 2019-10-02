@@ -1,4 +1,4 @@
-# DVC Basic Concepts and Features
+# Basic Concepts
 
 Learn basic concepts and features of DVC with interactive lessons:
 

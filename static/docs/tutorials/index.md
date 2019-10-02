@@ -1,4 +1,6 @@
-# DVC Basic Concepts and Features
+# Tutorials
+
+## Basic Concepts
 
 Learn basic concepts and features of DVC with interactive lessons:
 
@@ -21,33 +23,35 @@ Learn basic concepts and features of DVC with interactive lessons:
    <br/> DVC has a built-in way to connect ML steps into a DAG and run the full
    pipeline end-to-end.
 
-# Interactive Tutorials
+## Interactive Tutorials
+
+Learn how DVC can be used in simple ML scenarios:
 
 1. [Data Versioning](https://katacoda.com/dvc/courses/tutorials/versioning)
    <br/> Using DVC commands to work with multiple versions of datasets and ML
    models.
 
-2. [Pipelines](https://katacoda.com/dvc/courses/tutorials/pipelines) <br/> Using
-   DVC commands to build a simple ML pipeline.
+2. [Stages and Pipelines](https://katacoda.com/dvc/courses/tutorials/pipelines)
+   <br/> Using DVC commands to build a simple ML pipeline.
 
 3. [dvc fetch](https://katacoda.com/dvc/courses/examples) <br/> We will use an
    example project with some data, code, ML models, pipeline stages, as well as
    a few Git tags. Then we will see what happens with dvc fetch as we switch
    from tag to tag.
 
-# Native Tutorials
+## Native Tutorials
 
-1. [Versioning](/docs/tutorials/versioning) <br/> Using DVC commands to work
-   with multiple versions of datasets and ML models.
+1. [Data Versioning](/docs/tutorials/versioning) <br/> Using DVC commands to
+   work with multiple versions of datasets and ML models.
 
-2. [Pipelines](/docs/tutorials/pipelines) <br/> Using DVC commands to build a
-   simple ML pipeline.
+2. [Stages and Pipelines](/docs/tutorials/pipelines) <br/> Using DVC commands to
+   build a simple ML pipeline.
 
 3. [Longer Tutorial](/docs/tutorials/tutorial) <br/> Introduces DVC
    step-by-step, while additionally explaining in great detail the motivation
    and what's happening internally.
 
-# Community Blogs and Tutorials
+## Community Tutorials
 
 - [Data Version Control Tutorial](https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46)
 

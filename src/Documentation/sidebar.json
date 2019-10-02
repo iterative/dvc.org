@@ -31,12 +31,25 @@
     "slug": "tutorials",
     "source": "tutorials/index.md",
     "children": [
-      "basics",
-      "interactive",
-      "versioning",
-      "pipelines",
+      {
+        "slug": "basics",
+        "label": "Interactive: Basics"
+      },
+      {
+        "slug": "interactive",
+        "label": "Interactive: Tutorials"
+      },
+      {
+        "slug": "versioning",
+        "label": "Data Versioning"
+      },
+      {
+        "slug": "pipelines",
+        "label": "Stages and Pipelines"
+      },
       {
         "slug": "tutorial",
+        "label": "Longer Tutorial",
         "source": "tutorial/index.md",
         "children": [
           "preparation",
