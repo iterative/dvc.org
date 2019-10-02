@@ -74,8 +74,8 @@ changes before submitting them, and its very much needed in order to make
 changes to the docs JavaScript engine itself (rare). Source code files need to
 be properly formatted as well, which is also ensured by the full setup below.
 
-Start the development server using `yarn dev` which will start the server on the
-default port `3000`. Visit `http://localhost:3000/` and navigate to the docs in
+Start the development server using `yarn dev`. This will start the server on the
+default port, `3000`. Visit `http://localhost:3000/` and navigate to the docs in
 question.
 
 If you intend to change JavaScript files, test the changes with `yarn test`
@@ -89,8 +89,8 @@ command before committing them.
   Visual Studio Code and the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
   plugin. Correct formatting will be done automatically by a Git pre-commit hook
-  which is integrated when `yarn` installs the project dependencies (explained
-  in the instructions above).
+  that is integrated when `yarn` installs the project dependencies (explained in
+  the instructions above).
 
 - We use [Prettier](https://prettier.io/) default conventions to format our
   source code files. The formatting of staged files will automatically be done

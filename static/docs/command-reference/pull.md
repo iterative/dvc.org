@@ -41,7 +41,7 @@ only the files (or directories) missing from the workspace by searching all
 [DVC-files](/doc/user-guide/dvc-file-format) currently in the
 <abbr>project</abbr>. It will not download files associated with earlier
 versions or branches of the repository if using Git, nor will it download files
-which have not changed.
+that have not changed.
 
 The command `dvc status -c` can list files referenced in current DVC-files, but
 missing in the <abbr>cache</abbr>. It can be used to see what files `dvc pull`

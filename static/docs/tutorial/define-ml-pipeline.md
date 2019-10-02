@@ -98,7 +98,7 @@ hundreds of gigabytes in file size. Instead of copying files from cache to
 workspace, DVC can create reflinks or other file link types.
 
 > When reflinks are not supported by the file system, DVC defaults to copying
-> files, which doesn't save file storage. However, it's easy to enable other
+> files, which doesn't optimize file storage. However, it's easy to enable other
 > file link types on most systems. See
 > [File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > for more information.
@@ -148,8 +148,10 @@ the actual command to run. Outputs are files written to by the command, if any.
    directory. The dependency can be a regular file from a repository or a data
    file.
 
-2. `-o file.tsv` (lower case o) specifies output data file, which means DVC will
-   transform this file into a data file (as if running `dvc add file.tsv`).
+2. `-o file.tsv` (lower case o) specifies output data file. DVC will track this
+   data file by creating a corresponding
+   [DVC-file](/doc/user-guide/dvc-file-format) (as if running `dvc add file.tsv`
+   after `dvc run` instead).
 
 3. `-O file.tsv` (upper case O) specifies a regular output file (not to be added
    to DVC).
@@ -238,8 +240,7 @@ Posts.xml
 
 The output file `Posts.xml` was transformed by DVC into a data file in
 accordance with the `-o` option. You can find the corresponding cache file with
-the checksum, which starts with `c1fa36d` as we can see in the `Posts.xml.dvc`
-stage file:
+the checksum, with a path starting in `c1/fa36d` as we can see below:
 
 ```dvc
 $ ls .dvc/cache/

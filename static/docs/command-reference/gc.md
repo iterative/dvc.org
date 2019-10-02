@@ -15,7 +15,7 @@ This command deletes (garbage collects) data files or directories that may exist
 in the cache (or [remote storage](/doc/command-reference/remote)) but no longer
 referred to in [DVC-files](/doc/user-guide/dvc-file-format) currently
 [checked out](/doc/command-reference/checkout) in the <abbr>project</abbr>. By
-default this command only cleans up the local cache, which is typically located
+default this command only cleans up the local cache, that is typically located
 on the same machine as the project in question. This usually helps to free up
 disk space.
 

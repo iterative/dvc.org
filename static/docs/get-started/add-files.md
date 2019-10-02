@@ -59,7 +59,7 @@ will see that it has this hash inside.
 DVC tries to use reflinks\* by default to link your data files from the DVC
 cache to the workspace, optimizing speed and storage space. However, reflinks
 are not widely supported yet and DVC falls back to actually copying data files
-to/from the cache **which can be very slow with large files**, and duplicates
+to/from the cache. **Copying can be very slow with large files**, and duplicates
 storage requirements.
 
 Hardlinks and symlinks are also available for optimized cache linking but,

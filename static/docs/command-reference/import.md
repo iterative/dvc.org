@@ -5,7 +5,7 @@ repository (e.g. hosted on Github) into the <abbr>workspace</abbr>, and track
 changes in this [external dependency](/doc/user-guide/external-dependencies).
 Creates a DVC-file.
 
-> See also `dvc get` which corresponds to the first step this command performs
+> See also `dvc get`, that corresponds to the first step this command performs
 > (just download the data).
 
 ## Synopsis
@@ -47,7 +47,7 @@ stage (DVC-file) is then created extending the full file or directory name of
 the imported data e.g. `data.txt.dvc` – similar to having used `dvc run` to
 generate the same output.
 
-DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to data in
+DVC supports [DVC-files](/doc/user-guide/dvc-file-format) that refer to data in
 an external DVC repository (hosted on a Git server). In such a DVC-file, the
 `deps` section specifies the `repo` URL and data `path`, and the `outs` section
 contains the corresponding local path in the workspace. It records enough data

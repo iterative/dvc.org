@@ -14,8 +14,8 @@ the same result together!
 
 The idea of the project is a simplified version of the
 [Tutorial](/doc/tutorial). It explores the NLP problem of predicting tags for a
-given StackOverflow question. For example, we want one classifier which can
-predict a post that is about the Python language by tagging it `python`.
+given StackOverflow question. For example, we want a classifier that can predict
+posts about the Python language by tagging them `python`.
 
 ![](/static/img/example-flow-2x.png)
 

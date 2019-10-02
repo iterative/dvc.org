@@ -29,8 +29,8 @@ The installed Git hook automates running `dvc checkout`.
 **Commit**: When committing a change to the Git repository, that change possibly
 requires reproducing the corresponding
 [pipeline](/doc/command-reference/pipeline) (using `dvc repro`) to regenerate
-the project results. Or there might be new data not yet in cache, which requires
-running `dvc commit` to update.
+the project results. Or there might be new data files not yet in cache, which
+requires running `dvc commit` to store them.
 
 The installed Git hook automates reminding the user to run either `dvc repro` or
 `dvc commit`, as needed.
@@ -121,9 +121,10 @@ $ dvc pull --all-branches --all-tags
 
 Let's start our exploration with the impact of `dvc install` on the
 `dvc checkout` command. Remember that switching from one Git version to another
-(with `git checkout`) changes the set of DVC-files in the project, which then
-also changes the data files that should be placed in the workspace (with
-`dvc checkout`).
+(with `git checkout`) changes the set of
+[DVC-files](/doc/user-guide/dvc-file-format) in the project. This changes the
+set of data files that should be located in the workspace (which can be achieved
+with `dvc checkout`).
 
 Let's first list the available tags in the _Get Started_ project:
 
@@ -209,7 +210,7 @@ exec dvc checkout
 ```
 
 The two Git hooks have been installed, and the one of interest for this exercise
-is the `post-checkout` script which runs after `git checkout`.
+is the `post-checkout` script that runs after `git checkout`.
 
 We can now repeat the command run earlier, to see the difference.
 
@@ -252,8 +253,8 @@ featurize.dvc:
  1 file changed, 1 insertion(+), 1 deletion(-)
 ```
 
-We see that `dvc status` output has appeared in the `git commit` interaction.
-This new behavior corresponds to the Git hook which was installed, and it
+We see that the output of `dvc status` has appeared in the `git commit`
+interaction. This new behavior corresponds to the Git hook installed, and it
 helpfully informs us the workspace is out of sync. We should therefore run the
 `dvc repro` command.
 

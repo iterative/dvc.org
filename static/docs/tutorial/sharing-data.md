@@ -12,8 +12,10 @@ DVC is able to push the <abbr>cache</abbr> to cloud storage.
 > Using shared cloud storage, a colleague can reuse ML models that were trained
 > on your machine.
 
-First, you need to set a remote storage which will be stored in the config file
-of the <abbr>project</abbr>. This can be done using the CLI as shown below.
+First, you need to setup remote storage for the <abbr>project</abbr>, that will
+be stored in the
+[config file](https://dvc.org/doc/user-guide/dvc-files-and-directories). This
+can be done using the CLI as shown below.
 
 > Note that we are using the `dvc-public` S3 bucket as an example and you don't
 > have write access to it, so in order to follow the tutorial you will need to

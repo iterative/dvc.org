@@ -5,7 +5,7 @@ Download or copy a file or directory from any supported URL (for example
 <abbr>workspace</abbr>, and track changes in the remote data source with DVC.
 Creates a DVC-file.
 
-> See also `dvc get-url` which corresponds to the first half of what this
+> See also `dvc get-url`, that corresponds to the first half of what this
 > command does (downloading the <abbr>data artifact</abbr>).
 
 ## Synopsis
@@ -37,8 +37,8 @@ for the imported data file or directory in the workspace.
 > See `dvc import` to download and tack data or model files or directories from
 > other DVC repositories (e.g. Github URLs).
 
-DVC supports [DVC-files](/doc/user-guide/dvc-file-format) which refer to data in
-an external location, see
+DVC supports [DVC-files](/doc/user-guide/dvc-file-format) that refer to data in
+external locations, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such a
 DVC-file, the `deps` section stores the remote URL, and the `outs` section
 contains the corresponding local path in the workspace. It records metadata from
@@ -196,10 +196,10 @@ trying this example (especially if trying out the following one).
 
 ## Example: Detecting remote file changes
 
-What if that remote file is one which will be updated regularly? The project
-goals might include regenerating a <abbr>data artifact</abbr> based on the
-updated data source. [Pipeline](/doc/command-reference/pipeline) reproduction
-can be triggered based on a changed external dependency.
+What if that remote file is updated regularly? The project goals might include
+regenerating a <abbr>data artifact</abbr> based on the updated data source.
+[Pipeline](/doc/command-reference/pipeline) reproduction can be triggered based
+on a changed external dependency.
 
 Let's use the [Get Started](/doc/get-started) project again, simulating an
 updated external data source. (Remember to prepare the <abbr>workspace</abbr>,

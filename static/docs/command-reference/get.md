@@ -66,10 +66,10 @@ created in the current working directory, with its original file name.
 > DVC is [installed](/doc/get-started/install).
 
 We can use `dvc get` to download the resulting model file from our
-[get started example repo](https://github.com/iterative/example-get-started),
-which is a <abbr>DVC project</abbr> external to the current working directory.
-The desired <abbr>output</abbr> file would be located in the root of the
-external project (if the
+[get started example repo](https://github.com/iterative/example-get-started), a
+<abbr>DVC project</abbr> external to the current working directory. The desired
+<abbr>output</abbr> file would be located in the root of the external project
+(if the
 [`train.dvc` stage](https://github.com/iterative/example-get-started/blob/master/train.dvc)
 was reproduced) and named `model.pkl`.
 
@@ -83,7 +83,7 @@ Note that the `model.pkl` file doesn't actually exist in the
 [root directory](https://github.com/iterative/example-get-started/tree/master/)
 of the external Git repository. Instead, the corresponding DVC-file
 [train.dvc](https://github.com/iterative/example-get-started/blob/master/train.dvc)
-is found, which specifies `model.pkl` in its outputs (`outs`). DVC then
+is found, that specifies `model.pkl` in its outputs (`outs`). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
 [remote](/doc/command-reference/remote) of the external DVC project (found in
 its
@@ -140,9 +140,10 @@ The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with
 
 `-o model.bigrams.pkl` and `--rev 9-bigrams-model` or even without `--rev`
-(since it's the latest version anyway). In fact in this case using `dvc pull`
-should suffice, downloading the file as just `model.pkl`, which we can then
-rename to make it extra obvious:
+(since it's the latest version anyway). In fact, in this case using `dvc pull`
+with the corresponding [DVC-files](/doc/user-guide/dvc-file-format) should
+suffice, downloading the file as just `model.pkl`. We can then rename it to make
+its version explicit:
 
 ```dvc
 $ dvc pull train.dvc

@@ -121,12 +121,12 @@ pipeline.
 
 - `-y`, `--yes` - deprecated, use `--overwrite-dvcfile` instead.
 
-- `--overwrite-dvcfile` - overwrite an existing DVC-file (the same file name
-  which is determined by the logic described in the `-f` option) without asking
-  for confirmation.
+- `--overwrite-dvcfile` - overwrite an existing DVC-file (with file name
+  determined by the logic described in the `-f` option) without asking for
+  confirmation.
 
 - `--ignore-build-cache` - if an exactly equal DVC-file exists (same list of
-  outputs and inputs, the same command to run) which has been already executed,
+  outputs and inputs, the same command to run), which has been already executed
   and is up to date, `dvc run` won't normally execute the command again (thus
   "build cache"). This option gives a way to forcefully execute the command
   anyway. It's useful if the command is non-deterministic (meaning it produces

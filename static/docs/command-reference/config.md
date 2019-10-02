@@ -96,8 +96,8 @@ for more details.)
 
 - `cache.dir` - set/unset cache directory location. A correct value must be
   either an absolute path or a path **relative to the config file location**.
-  The default value is `cache`, which resolved relative to the default project
-  config location results in `.dvc/cache`.
+  The default value is `cache` that, resolved relative to the default project
+  config location, results in `.dvc/cache`.
 
   > See also helper command `dvc cache dir` to intuitively set this config
   > option, properly transforming paths relative to the current working
@@ -171,10 +171,10 @@ for more details.)
 
 State config options. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
-more about the state file that is used for optimization.
+more about the state file (database) that is used for optimization.
 
-- `state.row_limit` - maximum number of entries in the state database which
-  affects the physical size of the state file itself as well as the performance
+- `state.row_limit` - maximum number of entries in the state database, which
+  affects the physical size of the state file itself, as well as the performance
   of certain DVC operations. The bigger the limit the more checksum history DVC
   can keep in order to avoid sequential checksum recalculations for the files.
   Default limit is set to 10 000 000 rows.
@@ -226,7 +226,7 @@ Clear default remote value:
 $ dvc config --unset core.remote
 ```
 
-which is equivalent to:
+The above command is equivalent to:
 
 ```dvc
 $ dvc config core.remote -u

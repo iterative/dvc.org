@@ -97,7 +97,7 @@ process.
   Git-annex repository is cloned via `git clone`, data files won't be copied to
   the local machine as file contents are stored in separate
   [remotes](/doc/command-reference/remote). With DVC,
-  [DVC-files](/doc/user-guide/dvc-file-format) (which provide the reproducible
+  [DVC-files](/doc/user-guide/dvc-file-format) (that provide the reproducible
   workflow) are always included in the Git repository and hence can be recreated
   locally with minimal effort.
 
