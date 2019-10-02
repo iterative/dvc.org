@@ -25,7 +25,9 @@ paragraphs below to learn how to submit your changes.
   run tests or [run](#running-development-version) the DVC with your changes.
 - Fork [DVC](https://github.com/iterative/dvc.git) and prepare necessary
   changes.
-- Add tests for your changes to `tests/test_*.py`.
+- Add tests for your changes to `tests/test_*.py`. You can skip this step if
+  the effort to create tests for your change is unreasonable. Changes
+  without tests are still going to be considered by us.
 - [Run tests](#running-tests) and make sure all of them pass.
 - Submit a pull request, referencing any issues it addresses.
 
