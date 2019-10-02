@@ -49,7 +49,7 @@ app.prepare().then(() => {
           pathname
       })
       res.end()
-    } else if (/^\/doc\/commands-reference.*/.test(pathname)) {
+    } else if (/^\/doc\/commands-reference(\/.*)?/.test(pathname)) {
       // TMP: path /doc/commands-reference/* -> /doc/command-reference/*
       res.writeHead(302, {
         Location: req.url.replace('commands-reference', 'command-reference')
