@@ -75,5 +75,4 @@ const Bodybag = styled.div`
 const ModalRoot = styled.div`
   position: fixed;
   z-index: 100000;
-  height: 100%;
 `

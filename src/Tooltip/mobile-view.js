@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
-import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+
+import Modal from '../Modal'
 
 class MobileView extends Component {
   state = {
@@ -38,7 +39,10 @@ class MobileView extends Component {
                   <Line second />
                 </CloseContainer>
                 <Header>{this.props.header}</Header>
-                <ReactMarkdown source={this.props.description} />
+                <ReactMarkdown
+                  className="markdown-body"
+                  source={this.props.description}
+                />
               </ModalContent>
             </ModalBackground>
           </Modal>
@@ -54,29 +58,12 @@ MobileView.propTypes = {
   text: PropTypes.node.isRequired
 }
 
-class Modal extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return ReactDOM.createPortal(
-      this.props.children,
-      document.getElementById('modal-root')
-    )
-  }
-}
-
-Modal.propTypes = {
-  children: PropTypes.node.isRequired
-}
-
 const HighlightedText = styled.span`
   border-bottom: 1px black dotted;
 `
 
 const ModalBackground = styled.div`
-  height: 100%;
+  height: 100vh;
   width: 100%;
   display: flex;
   align-items: center;
