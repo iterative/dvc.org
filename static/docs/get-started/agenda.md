@@ -21,8 +21,8 @@ posts about the Python language by tagging them `python`.
 
 Do not let the NLP nature of the example discourage you from using DVC in other
 Data Science areas. There was no strong reason behind picking the NLP area. On
-contrary, DVC is designed to be pretty agnostic of frameworks, languages, etc.
-If you have data files or datasets and/or you produce other data files, models,
+contrary, DVC is designed to be agnostic of frameworks, languages, etc. If you
+have data files or datasets and/or you produce other data files, models,
 datasets and you want to:
 
 - Capture and save those <abbr>data artifacts</abbr> the same way we capture

@@ -39,12 +39,10 @@ Otherwise, please refer to the following procedure:
   [code style guidelines](#code-style-guidelines) below. It's highly recommended
   to setup the [development environment](#development-environment) as explained
   below. It can help you to format your the documentation and/or JS engine files
-  automatically. Otherwise, we recommend using the Visual Studio Code and the
-  [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
-  plugin to format the content of Markdown files.
+  automatically.
 
 - Push the changes to your fork of
-  [dvc.org](https://github.com/iterative/dvc.org.git) and create a PR to the
+  [dvc.org](https://github.com/iterative/dvc.org.git) and submit a PR to the
   original repository.
 
 We will review your PR as soon as possible. Thank you for contributing!
@@ -79,18 +77,22 @@ default port, `3000`. Visit `http://localhost:3000/` and navigate to the docs in
 question.
 
 If you intend to change JavaScript files, test the changes with `yarn test`
-command before committing them.
+command before committing them. For code styling, try `yarn lint`. (Both of
+these will be enforced automatically upon
+[submitting PRs](#submitting-changes).)
 
-## Doc style guidelines (for JavaScript and Markdown)
+## Doc style guidelines and tips (for JavaScript and Markdown)
+
+The first few of these should be enforced automatically by a Git pre-commit hook
+that is integrated when `yarn` installs the project dependencies (explained in
+the instructions above). See `yarn pretty` and `yarn lint` scripts for details.
 
 - No trailing whitespaces are allowed.
 
 - Content must be properly formatted at 80 symbols width. We recommend using
-  Visual Studio Code and the
+  Visual Studio Code with the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
-  plugin. Correct formatting will be done automatically by a Git pre-commit hook
-  that is integrated when `yarn` installs the project dependencies (explained in
-  the instructions above).
+  plugin for this.
 
 - We use [Prettier](https://prettier.io/) default conventions to format our
   source code files. The formatting of staged files will automatically be done
@@ -101,7 +103,7 @@ command before committing them.
   link to that command automatically. (No need to use `[]()` explicitly to
   create them.)
 
-- Bullet lists shouldn't be too long, nor each bullet's text (3 sentence
+- Neither bullet lists nor each bullet's text should be too long (3 sentence
   paragraphs max.) Full sentence bullets should begin with a capital letter and
   end in period `.` otherwise they can be all lower case and have no ending
   punctuation. Bullets can be separated by an empty line if they contain short
