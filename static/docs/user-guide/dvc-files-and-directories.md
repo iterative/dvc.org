@@ -81,14 +81,21 @@ outs:
     # ...
 ```
 
-The directory in cache is stored like this:
+The directory in cache is stored as a JSON metafile describing it's contents,
+along with the files it contains in cache, like this:
 
 ```dvc
 $ tree .dvc/cache
 .dvc/cache/
 ├── 19
 │   └── 6a322c107c2572335158503c64bfba.dir
-...
+├── d4
+│   └── 1d8cd98f00b204e9800998ecf8427e
+├── 20
+│   └── 0b40427ee0998e9802335d98f08cd98f
+$ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
+[{"md5": "d41d8cd98f00b204e9800998ecf8427e", "relpath": "cat.jpeg"},
+ {"md5": "200b40427ee0998e9802335d98f08cd98f", "relpath": "index.jpeg"}]
 ```
 
 Like the previous case, the first two digits of the checksum are used to name
