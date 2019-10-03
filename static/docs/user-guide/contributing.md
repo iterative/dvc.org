@@ -183,7 +183,7 @@ $ export DVC_TEST_AWS_REPO_BUCKET="...TEST-S3-BUCKET..."
 
 <details>
 
-### Click for Google Cloud storage testing instructions
+### Click for Google Cloud Storage testing instructions
 
 Go through the [quick start](https://cloud.google.com/sdk/docs/quickstarts) for
 your OS. After that you should have `gcloud` command line tool available and
