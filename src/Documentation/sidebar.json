@@ -32,12 +32,8 @@
     "source": "tutorials/index.md",
     "children": [
       {
-        "slug": "basics",
-        "label": "Interactive: Basics"
-      },
-      {
         "slug": "interactive",
-        "label": "Interactive: Tutorials"
+        "label": "Interactive Tutorials"
       },
       {
         "slug": "versioning",
@@ -60,6 +56,10 @@
           "reproducibility",
           "sharing-data"
         ]
+      },
+      {
+        "slug": "community",
+        "label": "Community Tutorials"
       }
     ]
   },

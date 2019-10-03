@@ -56,9 +56,9 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (pathname == '/doc/tutorial') {
-      // TMP: path /doc/tutorial -> /doc/tutorials/tutorial
+      // path /doc/tutorial -> /doc/tutorials
       res.writeHead(302, {
-        Location: req.url.replace('/doc/tutorial', '/doc/tutorials/tutorial')
+        Location: req.url.replace('/doc/tutorial', '/doc/tutorials')
       })
       res.end()
     } else if (/^\/doc.*/i.test(pathname)) {
