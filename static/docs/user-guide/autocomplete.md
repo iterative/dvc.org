@@ -137,7 +137,7 @@ Then reload your shell:
 $ exec $SHELL -l
 ```
 
-This step is optional but will make look the DVC output much nicer, by adding
+This step is optional but will make the DVC output look much nicer, by adding
 more colors to it. Add the following to your `~/.zshrc`:
 
 ```bash

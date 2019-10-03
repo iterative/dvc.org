@@ -51,7 +51,8 @@ process.
 - DVC innovates by giving experimenters the ability to easily navigate through
   past experiments without recomputing them.
 
-5. **Makefile** (and it's analogues). The differences are:
+5. **[Make](https://www.gnu.org/software/make/)** (and other build automation
+   tools). The differences are:
 
 - DVC utilizes a
   [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
@@ -72,10 +73,10 @@ process.
 
 - File tracking:
 
-  - DVC tracks files based on checksum (md5) instead of file timestamps. This
+  - DVC tracks files based on checksum (MD5) instead of file timestamps. This
     helps avoid running into heavy processes like model retraining when you
-    checkout a previous, trained version of a modeling code (Makefile will
-    retrain the model).
+    checkout a previous, trained version of a modeling code (Make would retrain
+    the model).
 
   - DVC uses file timestamps and inodes for optimization. This allows DVC to
     avoid recomputing all dependency files checksum, which would be highly

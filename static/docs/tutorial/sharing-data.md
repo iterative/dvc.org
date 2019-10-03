@@ -13,7 +13,7 @@ DVC is able to push the <abbr>cache</abbr> to cloud storage.
 > on your machine.
 
 First, you need to setup remote storage for the <abbr>project</abbr>, that will
-be stored in the
+be stored in the project's
 [config file](https://dvc.org/doc/user-guide/dvc-files-and-directories). This
 can be done using the CLI as shown below.
 

@@ -14,10 +14,10 @@ In order to track all the dependencies, DVC finds and reads all the DVC-files in
 a repository and builds a dependency graph
 ([pipeline](/doc/command-reference/pipeline)) based on these files.
 
-This is one of the differences between DVC reproducibility and traditional
-Makefile-like build automation tools (Make, Maven, Ant, Rakefile etc). It was
-designed in such a way to localize specification of the graph nodes (pipeline
-[stages](/doc/command-reference/run)).
+This is one of the differences between DVC reproducibility and software build
+automation tools ([Make](https://www.gnu.org/software/make/), Maven, Ant,
+Rakefile etc). It was designed in such a way to localize specification of the
+graph nodes (pipeline [stages](/doc/command-reference/run)).
 
 If you run `repro` on any [DVC-file](/doc/user-guide/dvc-file-format) from our
 repository, nothing happens because nothing was changed in the pipeline defined

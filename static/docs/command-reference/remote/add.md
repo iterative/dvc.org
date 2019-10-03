@@ -280,8 +280,8 @@ $ dvc remote add myremote https://example.com/path/to/dir
 
 ### Click for Aliyun OSS
 
-First you need to setup OSS storage on Aliyun Cloud and then use S3 style URL
-for OSS storage and make endpoint a configurable value, an example is shown
+First you need to setup OSS storage on Aliyun Cloud and then use an S3 style URL
+for OSS storage and make the endpoint value configurable. An example is shown
 below:
 
 ```dvc

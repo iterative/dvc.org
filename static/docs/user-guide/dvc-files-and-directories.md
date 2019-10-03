@@ -69,27 +69,25 @@ $ dvc add data/images
 ...
 ```
 
-When running `dvc add` on this directory of images, a
+When running `dvc add` on this directory of images, a `data/images.dvc`
 [DVC-file](/doc/user-guide/dvc-file-format) is created, containing the checksum
-of the directory.
+of the directory:
 
 ```yaml
-- md5: 196a322c107c2572335158503c64bfba.dir
-  path: data/images
-  # ...
+md5: 77e511dafe2178d936e54331d5d6288f
+outs:
+  - md5: 196a322c107c2572335158503c64bfba.dir
+    path: data/images
+    # ...
 ```
 
 The directory in cache is stored like this:
 
 ```dvc
-$ tree
+$ tree .dvc/cache
 .dvc/cache/
 ├── 19
 │   └── 6a322c107c2572335158503c64bfba.dir
-├── 29
-│   └── a6c8271c0c8fbf75d3b97aecee589f
-└── df
-    └── f70c0392d7d386c39a23c64fcc0376
 ...
 ```
 
