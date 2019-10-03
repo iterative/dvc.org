@@ -9,8 +9,8 @@ $ dvc push
 ```
 
 The same way as with Git remote, it ensures that your data files and your models
-are safely stored remotely and are shareable. It means that this data could be
-pulled by your team or you when you need it.
+are safely stored remotely and are shareable. This means that the data can be
+pulled by yourself or your colleagues whenever you need it.
 
 Usually, you run it along with `git commit` and `git push` to save the changed
 [DVC-files](/doc/user-guide/dvc-file-format).

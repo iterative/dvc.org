@@ -11,7 +11,7 @@ If you just cloned the
 [project](https://github.com/iterative/example-get-started), make sure you first
 fetch the input data from DVC by calling `dvc pull`.
 
-It's now extremely easy for you or anyone in your team to reproduce the result
+It's now extremely easy for you or your colleagues to reproduce the result
 end-to-end:
 
 ```dvc

@@ -158,9 +158,9 @@ variables, use:
 $ source tests/remotes_env
 ```
 
-If another member of your team has already gone through this guide, you could
-just ask for their `remotes_env` file and Google Cloud credentials, and skip any
-env manipulations below.
+If one of your colleagues has already gone through this guide, you could just
+ask for their `remotes_env` file and Google Cloud credentials, and skip any env
+manipulations below.
 
 <details>
 

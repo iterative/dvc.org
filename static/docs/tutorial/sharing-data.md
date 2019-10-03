@@ -2,10 +2,11 @@
 
 ## Pushing data to the cloud
 
-It is pretty clear how code and DVC-files can be shared through Git
-repositories. These repositories will contain all the information needed for
-reproducibility and it might be a good idea to share these DVC-repositories
-using GitHub or other Git services.
+We've gone over how source code and [DVC-files](/doc/user-guide/dvc-file-format)
+can be shared using a Git repository. These DVC repositories will contain all
+the information needed for reproducibility, so it might be a good idea to share
+them with your team using Git hosting services (such as
+[GitHub](https://github.com/)).
 
 DVC is able to push the <abbr>cache</abbr> to cloud storage.
 
@@ -47,8 +48,8 @@ pushed because the rest of the data files belong to different branches like
 
 ## Pulling data from the cloud
 
-In order to reuse your data files, a colleague of yours can pull data the same
-way from the master branch:
+In order to reuse your data files, a colleague can pull data the same way from
+the master branch:
 
 ```dvc
 $ git clone https://github.com/dmpetrov/new_tag_classifier.git
