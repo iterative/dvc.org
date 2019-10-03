@@ -116,7 +116,7 @@ master:
 Let's keep the result in the repository. Later we can find out why bigrams don't
 add value to the current model and change that.
 
-Many DVC-files were changed. This happened due to md5 checksum changes.
+Many DVC-files were changed. This happened due to MD5 checksum changes.
 
 ```dvc
 $ git status -s
@@ -233,7 +233,7 @@ CONFLICT (content): Merge conflict in Dvcfile
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-The merge has a few conflicts. All of the conflicts are related to md5 checksum
+The merge has a few conflicts. All of the conflicts are related to MD5 checksum
 mismatches in the branches. You can properly merge conflicts by prioritizing the
 checksums from the bigrams branch: that is, by removing all checksums of the
 other branch.

@@ -158,7 +158,7 @@ export default class Markdown extends React.PureComponent {
     return (
       <Content>
         <GithubLink href={githubLink} target="_blank">
-          <i /> Edit on Github
+          <i /> Edit on GitHub
         </GithubLink>
         <ReactMarkdown
           key={githubLink}

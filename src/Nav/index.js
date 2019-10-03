@@ -51,7 +51,7 @@ export default function Nav({ mobile = false }) {
             logEvent('menu', 'github')
           }}
         >
-          Github
+          GitHub
         </Link>
         <Link
           href="/support"
@@ -111,7 +111,7 @@ const Wrapper = styled.div`
        !props.mobile &&
        `
         display: none;
-     `} 
+     `}
   `};
 `
 

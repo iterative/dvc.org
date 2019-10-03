@@ -11,10 +11,10 @@ on [pipelines and reproducibility](/doc/get-started/example-pipeline).
 ✅ Please, join our [community](/chat) or see these [support](/support) options
 if you have any questions or need any help. We are very responsive ⚡.
 
-✅ Check out our [Github repository](https://github.com/iterative/dvc) and give
+✅ Check out our [GitHub repository](https://github.com/iterative/dvc) and give
 us a ⭐ if you like the project!
 
-✅ Contribute either [on Github](https://github.com/iterative/dvc) or
+✅ Contribute either [on GitHub](https://github.com/iterative/dvc) or
 [on Patreon](https://www.patreon.com/DVCorg/overview) to support the project.
 
 Separate to this section, the longer [Tutorial](/doc/tutorial) also introduces

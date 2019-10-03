@@ -6,7 +6,7 @@ immediately.
 However, remote storage should be set up (see `dvc remote`) if you need to share
 data or models outside of the context of a single project, for example with
 other collaborators or even with yourself, in a different computing environment.
-It's similar to the way you would use Github or any other Git server to store
+It's similar to the way you would use GitHub or any other Git server to store
 and share your code.
 
 For simplicity, let's setup a local remote:

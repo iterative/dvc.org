@@ -35,10 +35,10 @@ const Heading3 = () => (
 
 const Description1 = () => (
   <Description>
-    At any time, fetch the full context about any experiment you or your team
-    has run. DVC guarantees that all files and metrics will be consistent and in
-    the right place to reproduce the experiment or use it as a baseline for a
-    new iteration.
+    At any time, fetch the full context about any experiment you or your
+    colleagues have run. DVC guarantees that all files and metrics will be
+    consistent and in the right place to reproduce the experiment or use it as a
+    baseline for a new iteration.
   </Description>
 )
 

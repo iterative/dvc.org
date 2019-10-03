@@ -1,7 +1,7 @@
 # get
 
 Download or copy file or directory from any <abbr>DVC project</abbr> in a Git
-repository (e.g. hosted on Github) into the current working directory.
+repository (e.g. hosted on GitHub) into the current working directory.
 
 > Unlike `dvc import`, this command does not track the downloaded data files
 > (does not create a DVC-file).

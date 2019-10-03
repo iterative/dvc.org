@@ -8,5 +8,5 @@
   example: "Fix #bugnum: Introduce the first version of the collection editor.".
 
 - Please make sure to mention "Fix #bugnum" (if applicable) somewhere in the
-  description of the PR. This enables Github to link the PR to the corresponding
+  description of the PR. This enables GitHub to link the PR to the corresponding
   bug.

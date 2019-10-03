@@ -12,7 +12,7 @@ creating a new issue (problem or an improvement request). Feel free to add
 issues related to the project.
 
 For problems with [dvc.org](https://dvc.org/) site please use this
-[Github repository](https://github.com/iterative/dvc.org/).
+[GitHub repository](https://github.com/iterative/dvc.org/).
 
 If you feel that you can fix or implement it yourself, please read a few
 paragraphs below to learn how to submit your changes.
@@ -158,9 +158,9 @@ variables, use:
 $ source tests/remotes_env
 ```
 
-If another member of your team has already gone through this guide, you could
-just ask for their `remotes_env` file and Google Cloud credentials, and skip any
-env manipulations below.
+If one of your colleagues has already gone through this guide, you could just
+ask for their `remotes_env` file and Google Cloud credentials, and skip any env
+manipulations below.
 
 <details>
 
@@ -183,7 +183,7 @@ $ export DVC_TEST_AWS_REPO_BUCKET="...TEST-S3-BUCKET..."
 
 <details>
 
-### Click for Google Cloud storage testing instructions
+### Click for Google Cloud Storage testing instructions
 
 Go through the [quick start](https://cloud.google.com/sdk/docs/quickstarts) for
 your OS. After that you should have `gcloud` command line tool available and
@@ -288,7 +288,7 @@ Format:
 
 (long description)
 
-Fixes #(Github issue id).
+Fixes #(GitHub issue id).
 ```
 
 Message types:

@@ -65,7 +65,7 @@ need to run `dvc unprotect` or `dvc remove` first (see the
 If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
 `dvc add`, you will see that <abbr>outputs</abbr> are tracked in the `outs`
 field. In this file, only one output is specified. The output contains the data
-file path in the repository and md5 checksum. This checksum determines a
+file path in the repository and its MD5 checksum. This checksum determines a
 location of the actual content file in the
 [cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
 `.dvc/cache`.

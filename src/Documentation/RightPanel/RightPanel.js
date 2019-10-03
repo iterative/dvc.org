@@ -140,7 +140,7 @@ export default class RightPanel extends React.PureComponent {
 
         <GithubButton href={githubLink} target="_blank">
           <i />
-          Edit on Github
+          Edit on GitHub
         </GithubButton>
 
         <br />

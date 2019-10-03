@@ -120,8 +120,8 @@ $ dvc pull --all-branches --all-tags
 ## Example: Checkout both DVC and Git
 
 Let's start our exploration with the impact of `dvc install` on the
-`dvc checkout` command. Remember that switching from one Git version to another
-(with `git checkout`) changes the set of
+`dvc checkout` command. Remember that switching from one Git repository version
+to another (with `git checkout`) changes the set of
 [DVC-files](/doc/user-guide/dvc-file-format) in the project. This changes the
 set of data files that should be located in the workspace (which can be achieved
 with `dvc checkout`).

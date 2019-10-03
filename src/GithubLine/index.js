@@ -30,7 +30,7 @@ export default class GithubLine extends Component {
       <Wrapper>
         <Github src="/static/img/github_small.png" width="20" height="20" />
         We’re on
-        <Link href={gh}>Github</Link>
+        <Link href={gh}>GitHub</Link>
         <Star
           src="/static/img/star_small.svg"
           width="11.74"

@@ -35,7 +35,7 @@ export default () => (
           <Name>Git-compatible</Name>
           <Description>
             DVC runs on top of any Git repository and is compatible with any
-            standard Git server or provider (Github, Gitlab, etc). Data file
+            standard Git server or provider (GitHub, GitLab, etc). Data file
             contents can be shared by network-accessible storage or any
             supported cloud solution. DVC offers all the advantages of a
             distributed version control system — lock-free, local branching, and
@@ -63,7 +63,7 @@ export default () => (
               alt="Reproducibility"
             />
           </Icon>
-          <Name>Reproducible </Name>
+          <Name>Reproducible</Name>
           <Description>
             The single 'dvc repro' command reproduces experiments end-to-end.
             DVC guarantees reproducibility by consistently maintaining a
@@ -78,7 +78,7 @@ export default () => (
               alt="Low-friction branching"
             />
           </Icon>
-          <Name>Low friction branching </Name>
+          <Name>Low friction branching</Name>
           <Description>
             DVC fully supports instantaneous Git branching, even with large
             files. Branches beautifully reflect the non-linear structure and
@@ -92,7 +92,7 @@ export default () => (
           <Icon>
             <img src="/static/img/features/icons/storage-icon.svg" alt="" />
           </Icon>
-          <Name>Metric tracking </Name>
+          <Name>Metric tracking</Name>
           <Description>
             Metrics are first-class citizens in DVC. DVC includes a command to
             list all branches, along with metric values, to track the progress
@@ -154,8 +154,8 @@ export default () => (
           </Icon>
           <Name>Track failures</Name>
           <Description>
-            Bad ideas can sometimes bring more information to colleagues than
-            the successful ones. Retaining knowledge of failed attempts can save
+            Bad ideas can sometimes spark more ideas among colleagues than
+            successful ones. Retaining knowledge of failed attempts can save
             time in the future. DVC is built to track everything in a
             reproducible and easily accessible way.
           </Description>

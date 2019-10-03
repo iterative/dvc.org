@@ -31,7 +31,7 @@ Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
 
 > See `dvc get` to download data or model files or directories from other DVC
-> repositories (e.g. Github URLs).
+> repositories (e.g. GitHub URLs).
 
 DVC supports several types of (local or) remote locations (protocols):
 

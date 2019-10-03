@@ -35,7 +35,7 @@ imported, while `out` can be used to specify the (path and) file name desired
 for the imported data file or directory in the workspace.
 
 > See `dvc import` to download and tack data or model files or directories from
-> other DVC repositories (e.g. Github URLs).
+> other DVC repositories (e.g. GitHub URLs).
 
 DVC supports [DVC-files](/doc/user-guide/dvc-file-format) that refer to data in
 external locations, see

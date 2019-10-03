@@ -72,14 +72,14 @@
        Rscript plot.R result.csv plots.jpg
    ```
 
-7. The cache of a DVC project can be shared with your colleagues and partners
-   through Amazon S3, Azure Blob Storage GCP Storage, among others:
+7. The cache of a DVC project can be shared with colleagues through Amazon S3,
+   Azure Blob Storage, Google Cloud Storage, among others:
 
    ```dvc
    $ git push
    $ dvc push # push from the cache to remote storage
 
-   # On a colleague machine:
+   # On a colleague's machine:
    $ git clone https://github.com/dataversioncontrol/myrepo.git
    $ cd myrepo
    $ git pull # download tracked data from remote storage
