@@ -285,7 +285,7 @@ As we have learned already, DVC keeps data files out of Git (by adjusting
 `.gitignore`) and puts them into the cache (usually it's a `.dvc/cache`
 directory inside the repository). Instead, DVC creates
 [DVC-files](/doc/user-guide/dvc-file-format). These text files serve as pointers
-(`md5` hash) to the cache and are version controlled by Git.
+(MD5 hash) to the cache and are version controlled by Git.
 
 When we run `git checkout` we restore pointers (DVC-files) first, then when we
 run `dvc checkout` we use these pointers to put the right data in the right

@@ -113,7 +113,7 @@ of the data file itself.
 
 The data file `Posts.xml.zip` is linked (or copied) from
 `.dvc/cache/ce/68b98d82545628782c66192c96f2d2`, and added to `.gitignore`. Even
-if you remove it in the workspace, or `git checkout` a different commit, the
+if you remove it from the workspace, or `git checkout` a different commit, the
 data is not lost if a corresponding DVC-file is committed. It's enough to run
 `dvc checkout` or `dvc pull` to restore data files.
 
@@ -181,10 +181,10 @@ stages) we need to apply. This is important when you run `dvc repro` to
 regenerate the final or intermediate result.
 
 Second, hopefully it's clear by now that the actual data is stored in the
-`.dvc/cache` directory, each file having a name in a form of an md5 hash. This
-cache is similar to Git's
-[objects database](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects) but
-made specifically to handle large data files.
+`.dvc/cache` directory, each file having a name based on an MD5 hash. This cache
+is similar to Git's
+[objects database](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects),
+but made specifically to handle large data files.
 
 > **Note!** For performance with large datasets, DVC can use file links from the
 > cache to the workspace to avoid copying actual file contents. Refer to
