@@ -339,7 +339,8 @@ version. It also updates outputs and puts them into the <abbr>cache</abbr>.
 
 If `dvc add` and `dvc checkout` provide a basic mechanism to version control
 large data files or models, `dvc run` and `dvc repro` provide a build system for
-ML models, which would be similar to makefiles in software engineering.
+ML models, which is similar to [Make](https://www.gnu.org/software/make/) in
+software build automation.
 
 ## What's next?
 

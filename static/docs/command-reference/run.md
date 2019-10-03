@@ -46,8 +46,9 @@ creating a new stage. For example, for every output there should be only one
 stage that explicitly specifies it. There should be no cycles, etc.
 
 Note that `dvc repro` provides an interface to check state and reproduce this
-graph (pipeline) later. This concept is similar to the one of the `Makefile` but
-DVC captures data and caches <abbr>data artifacts</abbr> along the way. See this
+graph (pipeline) later. This concept is similar to that of
+[Make](https://www.gnu.org/software/make/) in software build automation, but DVC
+captures data and caches <abbr>data artifacts</abbr> along the way. See this
 [example](/doc/get-started/example-pipeline) to learn more and try to create a
 pipeline.
 
