@@ -29,7 +29,7 @@ system/environment:
 > **Note** that if you've installed dvc using pip, you will need to install
 > `psutil` by yourself with `pip install psutil` in order for `dvc version` to
 > report file system information. Please see the original
-> [issue on Github](https://github.com/iterative/dvc/issues/2284) for more info.
+> [issue on GitHub](https://github.com/iterative/dvc/issues/2284) for more info.
 
 #### Components of DVC version
 

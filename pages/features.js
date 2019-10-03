@@ -35,7 +35,7 @@ export default () => (
           <Name>Git-compatible</Name>
           <Description>
             DVC runs on top of any Git repository and is compatible with any
-            standard Git server or provider (Github, Gitlab, etc). Data file
+            standard Git server or provider (GitHub, GitLab, etc). Data file
             contents can be shared by network-accessible storage or any
             supported cloud solution. DVC offers all the advantages of a
             distributed version control system — lock-free, local branching, and

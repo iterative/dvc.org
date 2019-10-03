@@ -21,7 +21,7 @@ $ dvc repro train.dvc
 > If you've just followed the previous chapters, the command above will have
 > nothing to reproduce since you've recently executed all the pipeline stages.
 > To easily try this command, clone this example
-> [Github project](https://github.com/iterative/example-get-started) and run it
+> [GitHub project](https://github.com/iterative/example-get-started) and run it
 > from there.
 
 `train.dvc` describes which source code and data files to use, and how to run

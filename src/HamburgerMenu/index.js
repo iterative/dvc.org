@@ -140,7 +140,7 @@ export default class HamburgerMenu extends Component {
                       href="https://github.com/iterative/dvc"
                       click={this.itemClick('github')}
                     >
-                      Github
+                      GitHub
                     </SocialLink>
                     <SocialLink
                       src="/static/img/discord.png"

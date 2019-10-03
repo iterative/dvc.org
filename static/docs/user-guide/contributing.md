@@ -12,7 +12,7 @@ creating a new issue (problem or an improvement request). Feel free to add
 issues related to the project.
 
 For problems with [dvc.org](https://dvc.org/) site please use this
-[Github repository](https://github.com/iterative/dvc.org/).
+[GitHub repository](https://github.com/iterative/dvc.org/).
 
 If you feel that you can fix or implement it yourself, please read a few
 paragraphs below to learn how to submit your changes.
@@ -288,7 +288,7 @@ Format:
 
 (long description)
 
-Fixes #(Github issue id).
+Fixes #(GitHub issue id).
 ```
 
 Message types:

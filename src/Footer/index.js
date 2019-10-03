@@ -73,7 +73,7 @@ export default function Footer(props) {
                 src="/static/img/github.png"
                 href="https://github.com/iterative/dvc"
               >
-                Github
+                GitHub
               </SocialLink>
               <SocialLink src="/static/img/discord.png" href="/chat">
                 Discord

@@ -1,7 +1,7 @@
 # import
 
 Download or copy file or directory from any <abbr>DVC project</abbr> in a Git
-repository (e.g. hosted on Github) into the <abbr>workspace</abbr>, and track
+repository (e.g. hosted on GitHub) into the <abbr>workspace</abbr>, and track
 changes in this [external dependency](/doc/user-guide/external-dependencies).
 Creates a DVC-file.
 
