@@ -18,11 +18,11 @@ branch or commit.
 
 DVC uses a few core concepts:
 
-- **Experiment**: Equivalent to a Git version. Each experiment (extract new
-  features, change model hyperparameters, data cleaning, add a new data source)
-  should be performed in a separate branch and then merged into the master
-  branch only if the experiment is successful. DVC allows experiments to be
-  integrated into a Git repository history and NEVER needs to recompute the
+- **Experiment**: Equivalent to a Git repository version. Each experiment
+  (extract new features, change model hyperparameters, data cleaning, add a new
+  data source) should be performed in a separate branch and then merged into the
+  master branch only if the experiment is successful. DVC allows experiments to
+  be integrated into a Git repository history and NEVER needs to recompute the
   results after a successful merge.
 
 - **Experiment state** or state: Equivalent to a Git snapshot (all committed
