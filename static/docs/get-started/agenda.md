@@ -13,9 +13,9 @@ Otherwise, bear with us and we will introduce the basic DVC concepts and get to
 the same result together!
 
 The idea of the project is a simplified version of the
-[Tutorial](/doc/tutorial). It explores the NLP problem of predicting tags for a
-given StackOverflow question. For example, we want a classifier that can predict
-posts about the Python language by tagging them `python`.
+[Tutorial](/doc/tutorials/deep). It explores the NLP problem of predicting tags
+for a given StackOverflow question. For example, we want a classifier that can
+predict posts about the Python language by tagging them `python`.
 
 ![](/static/img/example-flow-2x.png)
 

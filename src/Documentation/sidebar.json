@@ -44,8 +44,8 @@
         "label": "Stages and Pipelines"
       },
       {
-        "slug": "tutorial",
-        "label": "Longer Tutorial",
+        "slug": "deep",
+        "label": "Deep Dive Tutorial",
         "source": "tutorial/index.md",
         "children": [
           "preparation",
