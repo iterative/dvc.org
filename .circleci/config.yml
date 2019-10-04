@@ -32,6 +32,8 @@ jobs:
 
       - run: yarn test
 
+      - run: yarn format-check
+
       - run: yarn lint
 
       - save_cache:

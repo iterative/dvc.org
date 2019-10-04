@@ -8,7 +8,8 @@
     "build": "next build",
     "test": "jest",
     "start": "NODE_ENV=production node server.js",
-    "pretty": "pretty-quick --staged --no-restage --bail",
+    "format-staged": "pretty-quick --staged --no-restage --bail",
+    "format-check": "pretty-quick --check --verbose",
     "lint": "yarn run eslint src"
   },
   "repository": {
@@ -68,7 +69,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn pretty && yarn lint"
+      "pre-commit": "yarn format-staged && yarn lint"
     }
   }
 }
