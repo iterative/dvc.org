@@ -1,4 +1,4 @@
-# Example: Versioning
+# Tutorial: Versioning
 
 > Reading time is 10-13 minutes. Running the training is 30-40 minutes
 > (including downloading the dataset). Running the code is optional, and reading
@@ -362,8 +362,8 @@ Here's where the [pipelines](/doc/command-reference/pipeline) feature of DVC
 comes very handy and was designed for. We touched it briefly when we described
 `dvc run` and `dvc repro` at the very end. The next step here would be splitting
 the script into two parts, and utilizing pipelines. See
-[this example](/doc/get-started/example-pipeline) to get a hands-on experience
-with pipelines and try to apply it here. Don't hesitate to join our
+[this example](/doc/tutorials/pipelines) to get a hands-on experience with
+pipelines and try to apply it here. Don't hesitate to join our
 [community](/chat) to ask any questions!
 
 Another detail we only brushed on here is the way we captured the `metrics.json`

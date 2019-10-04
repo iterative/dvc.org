@@ -24,14 +24,42 @@
       {
         "label": "Get Older Files",
         "slug": "older-versions"
+      }
+    ]
+  },
+  {
+    "slug": "tutorials",
+    "source": "tutorials/index.md",
+    "children": [
+      {
+        "slug": "interactive",
+        "label": "Interactive Tutorials"
       },
       {
-        "label": "Example: Versioning",
-        "slug": "example-versioning"
+        "slug": "versioning",
+        "label": "Data Versioning"
       },
       {
-        "label": "Example: Pipelines",
-        "slug": "example-pipeline"
+        "slug": "pipelines",
+        "label": "Stages and Pipelines"
+      },
+      {
+        "slug": "tutorial",
+        "label": "Longer Tutorial",
+        "source": "tutorial/index.md",
+        "children": [
+          "preparation",
+          {
+            "label": "Define ML Pipeline",
+            "slug": "define-ml-pipeline"
+          },
+          "reproducibility",
+          "sharing-data"
+        ]
+      },
+      {
+        "slug": "community",
+        "label": "Community Tutorials"
       }
     ]
   },
@@ -282,19 +310,6 @@
         "label": "version",
         "slug": "version"
       }
-    ]
-  },
-  {
-    "slug": "tutorial",
-    "source": "tutorial/index.md",
-    "children": [
-      "preparation",
-      {
-        "label": "Define ML Pipeline",
-        "slug": "define-ml-pipeline"
-      },
-      "reproducibility",
-      "sharing-data"
     ]
   },
   {

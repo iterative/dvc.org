@@ -118,8 +118,7 @@ specified), and updates stage files with the new checksum information.
 
 For simplicity, let's build a pipeline defined below. (If you want get your
 hands-on something more real, see this shot
-[pipeline tutorial](/doc/get-started/example-pipeline)). It takes this
-`text.txt` file:
+[pipeline tutorial](/doc/tutorials/pipelines)). It takes this `text.txt` file:
 
 ```
 dvc
