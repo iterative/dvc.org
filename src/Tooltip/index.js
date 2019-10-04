@@ -68,6 +68,7 @@ Tooltip.propTypes = {
 
 export const HighlightedText = styled.span`
   border-bottom: 1px black dotted;
+  white-space: nowrap;
 `
 
 export default Tooltip
