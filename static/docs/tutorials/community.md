@@ -2,9 +2,7 @@
 
 Blog posts from the community which show how they use DVC in their ML scenarios:
 
-- [Data Version Control Tutorial](https://blog.dataversioncontrol.com/data-version-control-tutorial-9146715eda46)
-
-- [DVC tutorial: improving CNN model](https://medium.com/@fullstackml/aab8162f8e3f)
+- [Creating reproducible data science workflows with DVC](https://medium.com/y-data-stories/creating-reproducible-data-science-workflows-with-dvc-3bf058e9797b)
 
 - [Creating an awesome project using DVC and DAGsHub](https://dagshub.com/docs/overview/)
 
