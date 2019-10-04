@@ -46,7 +46,7 @@
       {
         "slug": "deep",
         "label": "Deep Dive Tutorial",
-        "source": "tutorial/index.md",
+        "source": "deep/index.md",
         "children": [
           "preparation",
           {
