@@ -8,8 +8,8 @@ multiple GPUs, centralize all data storage, etc.
 
 With DVC, you can easily setup shared data storage on the server. This allows
 your team to store and share data for your projects effectively, and to have
-instantaneous <abbr>workspace</abbr> restoration/switching speed – similar to
-`git checkout` for your code.
+almost instantaneous <abbr>workspace</abbr> restoration/switching speed –
+similar to `git checkout` for your code.
 
 ### Preparation
 
@@ -70,9 +70,9 @@ $ git push
 ```
 
 Your colleagues can [checkout](/doc/command-reference/checkout) the project
-data, and have both `raw` and `clean` data files instantly appear in their
-workspace without moving anything manually. After this, they could decide to
-continue building this pipeline and process the cleaned up data:
+data, and have both `raw` and `clean` data files appear in their workspace
+without moving anything manually. After this, they could decide to continue
+building this pipeline and process the cleaned up data:
 
 ```dvc
 $ git pull
