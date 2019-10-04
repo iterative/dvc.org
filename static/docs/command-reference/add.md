@@ -129,8 +129,8 @@ To track the changes with git run:
 	git add .gitignore data.xml.dvc
 ```
 
-As the output says, a [DVC-file](/doc/user-guide/dvc-file-format)) has been
-created for `data.xml`. Let us explore the result:
+As the output says, a [DVC-file](/doc/user-guide/dvc-file-format) has been
+created for `data.xml`. Let's explore the result:
 
 ```dvc
 $ tree
