@@ -16,7 +16,7 @@ Blog posts from the community which show how they use DVC in their ML scenarios:
 
 - [DVC dependency management](https://blog.codecentric.de/en/2019/08/dvc-dependency-management/)
 
-- [How to use data version control (dvc) in a machine learning project](https://towardsdatascience.com/how-to-use-data-version-control-dvc-in-a-machine-learning-project-a78245c0185)
+- [How to use data version control (DVC) in a machine learning project](https://towardsdatascience.com/how-to-use-data-version-control-dvc-in-a-machine-learning-project-a78245c0185)
 
 - [My first try at DVC](https://stdiff.net/MB2019051301.html)
 
