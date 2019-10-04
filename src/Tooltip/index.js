@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import includes from 'lodash.includes'
+import styled from 'styled-components'
 
 import glossary from '../Documentation/glossary'
 import { OnlyDesktop, OnlyMobile } from '../styles'
@@ -64,5 +65,9 @@ Tooltip.propTypes = {
   id: PropTypes.string.isRequired,
   text: PropTypes.node.isRequired
 }
+
+export const HighlightedText = styled.span`
+  border-bottom: 1px black dotted;
+`
 
 export default Tooltip

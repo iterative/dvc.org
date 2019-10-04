@@ -3,82 +3,72 @@ import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 
+import Modal from '../Modal'
+import { HighlightedText } from './index'
+
 class DesktopView extends Component {
   state = {
     hover: false,
-    margin: -70,
-    pointBorderAfter: 'white transparent transparent transparent',
-    pointBorderBefore: '#d1d5da transparent transparent transparent',
-    pointMargin: -15,
-    pointTop: 100,
-    pointTopAfter: -14,
-    pointTopBefore: 16,
-    top: 'unset',
     width: 400
   }
 
   tooltipPositionEval = () => {
     const headerHeight = document.getElementsByClassName('header')[0]
       .offsetHeight
-    const markdownBody = document.getElementsByClassName('markdown-body')[0]
     const tooltipBoundary = document
       .getElementById(`tooltip-text-${this.props.id}`)
       .getBoundingClientRect()
-    const tooltipBoxHeight = document.getElementById('tooltip-box').offsetHeight
-    const tooltipHeight = tooltipBoundary.top - tooltipBoxHeight
-    const maxWidth = markdownBody.offsetLeft + markdownBody.clientWidth
     const container = document.getElementsByClassName('tooltip-container')[0]
-    const tooltipWidth = container.offsetLeft + this.state.width
+    const tooltipBoxHeight = container.offsetHeight
+    const tooltipHeight = tooltipBoundary.top - tooltipBoxHeight
+    const maxWidth = document.getElementById('bodybag').clientWidth
+    const tooltipWidth = tooltipBoundary.left + this.state.width
     const vertical = tooltipHeight > headerHeight ? 'top' : 'bottom'
     const horizontal = tooltipWidth > maxWidth ? 'right' : 'left'
 
     switch (`${horizontal} ${vertical}`) {
       case 'left top':
         this.setState({
-          margin: -10,
-          pointBorderAfter: 'white transparent transparent transparent',
-          pointBorderBefore: '#d1d5da transparent transparent transparent',
-          pointMargin: -15,
-          pointTop: 100,
-          pointTopAfter: 'unset',
-          pointTopBefore: 'unset',
-          top: -tooltipBoxHeight - 5
+          marginLeft: tooltipBoundary.left - 50,
+          pointBorderColorAfter: 'white transparent transparent transparent',
+          pointBorderColorBefore: '#d1d5da transparent transparent transparent',
+          pointBottom: 'unset',
+          pointHorizontalPosition: 55,
+          pointTop: tooltipBoxHeight - 2,
+          top: tooltipHeight - 6
         })
         break
       case 'right top':
         this.setState({
-          margin: -290,
-          pointBorderAfter: 'white transparent transparent transparent',
-          pointBorderBefore: '#d1d5da transparent transparent transparent',
-          pointMargin: 260,
-          pointTop: 100,
-          pointTopAfter: 'unset',
-          pointTopBefore: 'unset',
-          top: -tooltipBoxHeight - 5
+          marginLeft: tooltipBoundary.left - 320,
+          pointBorderColorAfter: 'white transparent transparent transparent',
+          pointBorderColorBefore: '#d1d5da transparent transparent transparent',
+          pointBottom: 'unset',
+          pointHorizontalPosition: tooltipBoundary.width + 290,
+          pointTop: tooltipBoxHeight - 2,
+          top: tooltipHeight - 6
         })
         break
       case 'left bottom':
         this.setState({
-          margin: -10,
-          pointBorderAfter: 'transparent transparent white transparent',
-          pointBorderBefore: 'transparent transparent #d1d5da transparent',
-          pointMargin: -15,
-          pointTop: -15,
-          pointTopAfter: -20,
-          pointTopBefore: -23,
-          top: 40
+          marginLeft: tooltipBoundary.left - 50,
+          pointBorderColorAfter: 'transparent transparent white transparent',
+          pointBorderColorBefore: 'transparent transparent #d1d5da transparent',
+          pointBottom: tooltipBoxHeight - 2,
+          pointHorizontalPosition: 55,
+          pointTop: 'unset',
+          top: tooltipBoundary.top + 40
         })
         break
       case 'right bottom':
         this.setState({
-          margin: -290,
-          pointBorderAfter: 'transparent transparent white transparent',
-          pointBorderBefore: 'transparent transparent #d1d5da transparent',
-          pointMargin: 260,
-          pointTop: -15,
-          pointTopAfter: -20,
-          pointTopBefore: -23,
-          top: 40
+          marginLeft: tooltipBoundary.left - 320,
+          pointBorderColorAfter: 'transparent transparent white transparent',
+          pointBorderColorBefore: 'transparent transparent #d1d5da transparent',
+          pointBottom: tooltipBoxHeight - 2,
+          pointHorizontalPosition: tooltipBoundary.width + 290,
+          pointTop: 'unset',
+          top: tooltipBoundary.top + 40
         })
         break
     }
@@ -117,30 +107,31 @@ class DesktopView extends Component {
     return (
       <>
         {this.state.hover && (
-          <TooltipContainer
-            className="tooltip-container"
-            onMouseOver={this.hoverIn}
-            onFocus={this.hoverIn}
-            onMouseLeave={this.hoverOut}
-            onBlur={this.hoverOut}
-          >
-            <TooltipText
-              id="tooltip-box"
-              margin={this.state.margin}
-              width={this.state.width}
-              pointBorderAfter={this.state.pointBorderAfter}
-              pointBorderBefore={this.state.pointBorderBefore}
-              pointMargin={this.state.pointMargin}
+          <Modal>
+            <TooltipContainer
+              className="tooltip-container"
+              // events
+              onMouseOver={this.hoverIn}
+              onFocus={this.hoverIn}
+              onMouseLeave={this.hoverOut}
+              onBlur={this.hoverOut}
+              // styles
+              marginLeft={this.state.marginLeft}
+              pointBorderColorAfter={this.state.pointBorderColorAfter}
+              pointBorderColorBefore={this.state.pointBorderColorBefore}
+              pointBottom={this.state.pointBottom}
+              pointHorizontalPosition={this.state.pointHorizontalPosition}
               pointTop={this.state.pointTop}
-              pointTopBefore={this.state.pointTopBefore}
-              pointTopAfter={this.state.pointTopAfter}
               top={this.state.top}
-              bottom={this.state.bottom}
+              width={this.state.width}
             >
               <div className="header">{this.props.header}</div>
-              <ReactMarkdown source={this.props.description} />
-            </TooltipText>
-          </TooltipContainer>
+              <ReactMarkdown
+                className="markdown-body portal-font"
+                source={this.props.description}
+              />
+            </TooltipContainer>
+          </Modal>
         )}
         <HighlightedText
           id={`tooltip-text-${this.props.id}`}
@@ -156,59 +147,51 @@ class DesktopView extends Component {
   }
 }
 
-const HighlightedText = styled.span`
-  border-bottom: 1px black dotted;
-`
-
 const TooltipContainer = styled.div`
-  position: absolute;
-  display: inline-block;
-  z-index: 300000000;
   background-color: white;
-`
-
-const TooltipText = styled.div`
+  width: ${props => props.width}px;
   padding: 8px 10px;
   border: 1px solid #d1d5da;
   border-radius: 3px;
-  background-color: white;
   position: absolute;
-  z-index: 1;
-  top: ${props => {
-    if (props.top === 'unset') {
-      return 'unset'
-    } else {
-      return `${props.top}px`
-    }
-  }};
-  margin-left: ${props => props.margin || -70}px;
-  width: ${props => props.width || 400}px;
-
-  &:after,
-  &:before {
-    content: '';
-    position: absolute;
-    top: ${props => props.pointTop}%;
-    border-style: solid;
-    margin-left: ${props => props.pointMargin || -15}px;
-  }
-
-  &:after {
-    top: ${props => props.pointTopAfter}px;
-    left: 10%;
-    border-width: 10px;
-    border-color: ${props => props.pointBorderAfter};
-  }
-  &:before {
-    top: ${props => props.pointTopBefore}px;
-    left: 10%;
-    border-width: 11px;
-    border-color: ${props => props.pointBorderBefore};
-  }
+  top: ${props => props.top}px;
+  margin-left: ${props => props.marginLeft}px;
 
   .header {
     font-size: 1.3em;
     font-weight: bold;
+  }
+
+  .portal-font {
+    font-family: BrandonGrotesque;
+  }
+
+  &:after,
+  &:before {
+    left: ${props => props.pointHorizontalPosition}px;
+    content: '';
+    position: absolute;
+    border-style: solid;
+  }
+
+  &:after {
+    top: ${props =>
+      props.pointTop === 'unset' ? 'unset' : `${props.pointTop}px`};
+    bottom: ${props =>
+      props.pointBottom === 'unset' ? 'unset' : `${props.pointBottom}px`};
+    border-width: 10px;
+    border-color: ${props => props.pointBorderColorAfter};
+  }
+  /*
+  * 1 is added to give the shadow effect to the pointer.
+  */
+  &:before {
+    top: ${props =>
+      props.pointTop === 'unset' ? 'unset' : `${props.pointTop + 1}px`};
+    bottom: ${props =>
+      props.pointBottom === 'unset' ? 'unset' : `${props.pointBottom + 1}px`};
+    border-width: 11px;
+    border-color: ${props => props.pointBorderColorBefore};
   }
 `
 

@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import Modal from '../Modal'
+import { HighlightedText } from './index'
 
 class MobileView extends Component {
   state = {
@@ -57,10 +58,6 @@ MobileView.propTypes = {
   header: PropTypes.string.isRequired,
   text: PropTypes.node.isRequired
 }
-
-const HighlightedText = styled.span`
-  border-bottom: 1px black dotted;
-`
 
 const ModalBackground = styled.div`
   height: 100vh;
