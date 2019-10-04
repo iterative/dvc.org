@@ -69,10 +69,10 @@ $ git commit -m "cleanup raw data"
 $ git push
 ```
 
-Your colleagues can pull the project, and have both `raw` and `clean` data files
-instantly appear in their workspace without moving anything manually. After
-this, they could decide to continue building this pipeline and process the
-cleaned up data:
+Your colleagues can [checkout](/doc/command-reference/checkout) the project
+data, and have both `raw` and `clean` data files instantly appear in their
+workspace without moving anything manually. After this, they could decide to
+continue building this pipeline and process the cleaned up data:
 
 ```dvc
 $ git pull
