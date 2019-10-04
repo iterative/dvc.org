@@ -244,7 +244,7 @@ $ dvc run -f train.dvc \
 ```
 
 To see this whole example go to
-[Example: Versioning](/doc/get-started/example-versioning).
+[Tutorial: Versioning](/doc/tutorials/versioning).
 
 Since no top-level DVC-file is generated with the `--recursive` option we cannot
 use the directory structure as a whole.

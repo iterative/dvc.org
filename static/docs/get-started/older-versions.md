@@ -50,4 +50,4 @@ $ dvc checkout
 ```
 
 Read the `dvc checkout` command reference and a dedicated data versioning
-[example](/doc/get-started/example-versioning) for more information.
+[example](/doc/tutorials/versioning) for more information.
