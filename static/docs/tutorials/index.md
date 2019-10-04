@@ -10,9 +10,9 @@
 - [Stages and Pipelines](/docs/tutorials/pipelines) <br/> Using DVC commands to
   build a simple ML pipeline.
 
-- [Longer Tutorial](/docs/tutorials/tutorial) <br/> Introduces DVC step-by-step,
-  while additionally explaining in great detail the motivation and what's
-  happening internally.
+- [Comprehensive Tutorial](/docs/tutorials/tutorial) <br/> Introduces DVC
+  step-by-step, while additionally explaining in great detail the motivation and
+  what's happening internally.
 
 - [Community Tutorials](/docs/tutorials/community) <br/> Blog posts from the
   community which show how they use DVC in their ML scenarios.
