@@ -10,7 +10,7 @@
     "start": "NODE_ENV=production node server.js",
     "format-staged": "pretty-quick --staged --no-restage --bail",
     "format-check": "pretty-quick --check --verbose",
-    "lint": "yarn run eslint src"
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
