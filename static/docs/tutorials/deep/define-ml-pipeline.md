@@ -169,7 +169,6 @@ Running command:
   unzip data/Posts.xml.zip -d data/
 Archive:  data/Posts.xml.zip
     inflating: data/Posts.xml
-Adding 'data/Posts.xml' to 'data/.gitignore'.
 Saving 'data/Posts.xml' to cache '.dvc/cache'.
 Saving information to 'Posts.xml.dvc'.
 

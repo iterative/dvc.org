@@ -157,7 +157,6 @@ Importing 'https://data.dvc.org/get-started/data.xml' -> 'data/data.xml'
 [##############################] 100% data.xml
 [##############################] 100% data.xml
 
-Adding 'data/data.xml' to 'data/.gitignore'.
 
 Saving information to 'data.xml.dvc'.
 

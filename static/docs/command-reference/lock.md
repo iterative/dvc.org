@@ -44,7 +44,7 @@ First, let's create a simple DVC-file:
 ```dvc
 $ echo foo > foo
 $ dvc add foo
-Adding 'foo'...
+Saving 'foo'...
 
 $ dvc run -d foo -o bar cp foo bar
 Running command:
