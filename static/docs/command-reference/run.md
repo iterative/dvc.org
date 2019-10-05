@@ -169,7 +169,6 @@ $ dvc run -d data -o metric -f metric.dvc "echo '1' >> metric"
 
 Running command:
   echo 'a' >> metric
-Adding 'metric' to '.gitignore'.
 Saving 'metric' to cache '.dvc/cache'.
 Saving information to 'metric.dvc'.
 
