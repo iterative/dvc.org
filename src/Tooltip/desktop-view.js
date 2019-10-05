@@ -12,6 +12,25 @@ class DesktopView extends Component {
     width: 400
   }
 
+  componentDidMount() {
+    document.getElementById('bodybag').addEventListener('scroll', () => {
+      if (this.state.hover) {
+        const headerHeight = document.getElementsByClassName('header')[0]
+          .offsetHeight
+        const tooltipBoundary = document
+          .getElementById(`tooltip-text-${this.props.id}`)
+          .getBoundingClientRect()
+        if (tooltipBoundary.top < headerHeight) {
+          this.setState({
+            hover: false
+          })
+        } else {
+          this.tooltipPositionEval()
+        }
+      }
+    })
+  }
+
   tooltipPositionEval = () => {
     const headerHeight = document.getElementsByClassName('header')[0]
       .offsetHeight
@@ -94,12 +113,13 @@ class DesktopView extends Component {
   }
 
   hoverOut = () => {
+    const TIMEOUT = 50 // time in milliseconds
     this.setState({
       interval: setTimeout(() => {
         this.setState({
           hover: false
         })
-      }, 100)
+      }, TIMEOUT)
     })
   }
 
