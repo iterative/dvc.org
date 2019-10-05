@@ -55,10 +55,16 @@ app.prepare().then(() => {
         Location: req.url.replace('commands-reference', 'command-reference')
       })
       res.end()
-    } else if (pathname == '/doc/tutorial') {
+    } else if (pathname == '/doc/tutorial' || pathname == '/doc/tutorial/') {
       // path /doc/tutorial -> /doc/tutorials
       res.writeHead(302, {
         Location: req.url.replace('/doc/tutorial', '/doc/tutorials')
+      })
+      res.end()
+    } else if (/^\/doc\/tutorial\/(.*)?/.test(pathname)) {
+      // path /doc/tutorial/* -> /doc/tutorials/deep/*
+      res.writeHead(302, {
+        Location: req.url.replace('/doc/tutorial/', '/doc/tutorials/deep/')
       })
       res.end()
     } else if (/^\/doc.*/i.test(pathname)) {
