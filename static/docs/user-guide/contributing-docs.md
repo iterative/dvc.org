@@ -77,15 +77,16 @@ default port, `3000`. Visit `http://localhost:3000/` and navigate to the docs in
 question.
 
 If you intend to change JavaScript files, test the changes with `yarn test`
-command before committing them. For code styling, try `yarn lint`. (Both of
-these will be enforced automatically upon
-[submitting PRs](#submitting-changes).)
+command before committing them. For code formatting and styling, try
+`yarn format-staged` and `yarn lint`. (All of these checks will be enforced
+automatically upon [submitting PRs](#submitting-changes).)
 
 ## Doc style guidelines and tips (for JavaScript and Markdown)
 
 The first few of these should be enforced automatically by a Git pre-commit hook
 that is integrated when `yarn` installs the project dependencies (explained in
-the instructions above). See `yarn pretty` and `yarn lint` scripts for details.
+the instructions above). See `yarn format-staged` and `yarn lint` scripts for
+details.
 
 - No trailing whitespaces are allowed.
 
@@ -97,7 +98,7 @@ the instructions above). See `yarn pretty` and `yarn lint` scripts for details.
 - We use [Prettier](https://prettier.io/) default conventions to format our
   source code files. The formatting of staged files will automatically be done
   by the Git pre-commit hook we have configured. You may also run
-  `scripts/prettier.sh <file paths>` manually before committing changes.
+  `yarn format-staged` manually before committing changes.
 
 - Using `dvc <command>` in the Markdown files, the docs engine will create a
   link to that command automatically. (No need to use `[]()` explicitly to
