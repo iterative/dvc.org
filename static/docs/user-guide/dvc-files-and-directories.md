@@ -91,8 +91,8 @@ $ tree .dvc/cache
 │   └── 6a322c107c2572335158503c64bfba.dir
 ├── d4
 │   └── 1d8cd98f00b204e9800998ecf8427e
-├── 20
-│   └── 0b40427ee0998e9802335d98f08cd98f
+└── 20
+    └── 0b40427ee0998e9802335d98f08cd98f
 $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
 [{"md5": "d41d8cd98f00b204e9800998ecf8427e", "relpath": "cat.jpeg"},
  {"md5": "200b40427ee0998e9802335d98f08cd98f", "relpath": "index.jpeg"}]
