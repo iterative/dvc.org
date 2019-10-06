@@ -19,7 +19,7 @@ jobs:
     steps:
       - checkout
 
-      # CircleCI breaks master branch which affects pterrier check below
+      # CircleCI breaks master branch which affects format check below
       # https://discuss.circleci.com/t/checkout-script-adds-commits-to-master-from-circle-branch/14194
       - run:
           name: restore master
