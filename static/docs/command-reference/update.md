@@ -56,7 +56,6 @@ on it first, then `dvc repro` (and `dvc lock` again). Let's just run
 
 ```dvc
 $ dvc update model.pkl.dvc
-Stage 'model.pkl.dvc' didn't change.
 Output 'model.pkl' didn't change. Skipping saving.
 Saving information to 'model.pkl.dvc'.
 ```

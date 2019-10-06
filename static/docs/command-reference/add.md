@@ -120,7 +120,6 @@ Take a file under DVC control:
 ```dvc
 $ dvc add data.xml
 
-Adding 'data.xml' to '.gitignore'.
 Saving 'data.xml' to cache '.dvc/cache'.
 Saving information to 'data.xml.dvc'.
 

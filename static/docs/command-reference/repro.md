@@ -178,8 +178,6 @@ Ok, now, let's run the `dvc repro` command (remember, by default it reproduces
 ```dvc
 $ dvc repro
 WARNING: assuming default target 'Dvcfile'.
-Stage 'filter.dvc' didn't change.
-Stage 'Dvcfile' didn't change.
 Data and pipelines are up to date.
 ```
 
@@ -198,7 +196,6 @@ If we now run `dvc repro`, that's what we should see:
 ```dvc
 $ dvc repro
 WARNING: assuming default target 'Dvcfile'.
-Stage 'filter.dvc' didn't change.
 Stage 'Dvcfile' changed.
 Reproducing 'Dvcfile'
 Running command:
@@ -228,7 +225,6 @@ Now, using the `--downstream` option results in the following output:
 ```dvc
 $ dvc repro --downstream
 WARNING: assuming default target 'Dvcfile'.
-Stage 'Dvcfile' didn't change.
 Data and pipelines are up to date.
 ```
 
