@@ -160,12 +160,12 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ### Expand to learn more about DVC internals
 
 As we mentioned briefly, DVC does not commit the `data/` directory and
-`model.h5` file into git, `dvc add` pushed them into the DVC cache and added to
-the `.gitignore`. Instead, we commit DVC-files that serve as pointers to the
-cache (usually in the `.dvc/cache` directory inside the repository) where actual
-data resides.
+`model.h5` file to the Git repository, `dvc add` placed them into the DVC cache
+and added them to `.gitignore`. Instead, we commit DVC-files that serve as
+pointers to the cache (usually in the `.dvc/cache` directory inside the
+repository) where actual data resides.
 
-In this case we created `data.dvc` and `model.h5.dvc` files. Refer to the
+In this case we created `data.dvc` and `model.h5.dvc`. Refer to
 [DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
 files work.
 
@@ -194,8 +194,9 @@ $ unzip new-labels.zip
 $ rm -f new-labels.zip
 ```
 
-For simplicity we keep the validation dataset the same. Now our dataset has 2000
-images for training and 800 images for validation, with a total size of 67 MB:
+For simplicity, we keep the validation dataset the same. Now our dataset has
+2000 images for training and 800 images for validation, with a total size of 67
+MB:
 
 ```sh
 data
@@ -219,7 +220,7 @@ data
        └── cat.1400.jpg
 ```
 
-Of course, we want to leverage these new labels and retrain the model.
+Of course, we want to leverage these new labels and retrain the model:
 
 ```dvc
 $ dvc add data
@@ -227,6 +228,10 @@ $ dvc remove model.h5.dvc
 $ python train.py
 $ dvc add model.h5
 ```
+
+> `dvc remove` is necessary here because `model.h5` was already added with
+> `dvc add` earlier, but we want to do so again. Later we'll see how `dvc run`
+> eliminates this extra step.
 
 Let's commit the second version:
 
@@ -324,11 +329,12 @@ $ dvc run -f Dvcfile \
           python train.py
 ```
 
-Similar to `dvc add`, `dvc run` creates a DVC-file (forced to have file name
-`Dvcfile` with the `-f` option). It puts all outputs (`-o`) under DVC control
-the same way as `dvc add` does. Unlike, `dvc add`, `dvc run` also tracks
-dependencies (`-d`) and the command (`python train.py`) that was run to produce
-the result. We also such a DVC-file a "stage file".
+Similar to `dvc add`, `dvc run` creates a
+[DVC-file](/doc/user-guide/dvc-file-format) named `Dvcfile` (specified using the
+`-f` option). It puts all outputs (`-o`) under DVC control the same way as
+`dvc add` does. Unlike, `dvc add`, `dvc run` also tracks dependencies (`-d`) and
+the command (`python train.py`) that was run to produce the result. We also such
+a DVC-file a "stage file".
 
 > BTW, at this point you could `git add .` and `git commit` to save the
 > `Dvcfile` stage file and its changed output files to the repository.
