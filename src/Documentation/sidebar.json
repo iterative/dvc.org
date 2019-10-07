@@ -76,7 +76,7 @@
         "slug": "share-data-and-model-files"
       },
       "shared-development-server",
-      "shared-data-registry"
+      "data-registry"
     ]
   },
   {

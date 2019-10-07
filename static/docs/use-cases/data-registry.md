@@ -1,4 +1,4 @@
-# Shared Data Registry
+# Data Registry
 
 In the [Versioning Tutorial](/doc/tutorials/versioning) we use two ZIP files
 containing parts of a dataset with labeled images of cat and dogs. For
@@ -67,7 +67,8 @@ Let's download and extract the first half of this dataset to better understand
 its structure:
 
 ```dvc
-$ dvc get https://github.com/iterative/dataset-registry tutorial/ver/data.zip
+$ dvc get https://github.com/iterative/dataset-registry \
+          tutorial/ver/data.zip
 ...
 $ unzip -q ...
 $ rm data.zip
