@@ -8,17 +8,20 @@ code.
 
 # Documentation
 
-Documentation engine was built using React, react Markdown library, Algolia to
-provide the full text search. Motivation for building it from scratch was lack
-of flexibility (customization, sidebar tuning) and ads in engines like
-readthedocs, docsify, etc.
+This docs engine was built using [Node](https://nodejs.org/) +
+[React](https://reactjs.org/),
+[react-markdown](https://github.com/rexxars/react-markdown), and integrates with
+[Algolia](https://www.algolia.com/products/search/) to provide full text search.
+The motivation for building it from scratch was the lack of flexibility
+(customization, sidebar tuning) and ads in engines like readthedocs, docsify,
+etc.
 
-Please, feel free to use it for your own sites and
+Please feel free to use it for your own sites and
 [reach out to us](https://dvc.org/support) if you have any questions.
 
 # Contributing
 
-We welcome contributions to DVC by the community!
+We welcome contributions to the DVC docs by the community!
 
 You can refer to our
 [Contribution Guide](https://dvc.org/doc/user-guide/contributing-docs/) for more
@@ -27,8 +30,8 @@ details. Thank you!
 **If you need help:**
 
 If you have any questions, please join the [community](https://dvc.org/chat) and
-use the `#dev-docs` channel to discuss any website and docs related issues. We
-are very responsive and happy to help.
+use the `#dev-docs` channel to discuss any issues in our website or docs. We are
+very responsive and happy to help.
 
 # Copyright
 

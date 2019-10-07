@@ -39,12 +39,10 @@ Otherwise, please refer to the following procedure:
   [code style guidelines](#code-style-guidelines) below. It's highly recommended
   to setup the [development environment](#development-environment) as explained
   below. It can help you to format your the documentation and/or JS engine files
-  automatically. Otherwise, we recommend using the Visual Studio Code and the
-  [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
-  plugin to format the content of Markdown files.
+  automatically.
 
 - Push the changes to your fork of
-  [dvc.org](https://github.com/iterative/dvc.org.git) and create a PR to the
+  [dvc.org](https://github.com/iterative/dvc.org.git) and submit a PR to the
   original repository.
 
 We will review your PR as soon as possible. Thank you for contributing!
@@ -64,44 +62,53 @@ $ git clone git@github.com:<username>/dvc.org.git
 ```
 
 Make sure you have the latest version of [Node.js](https://nodejs.org/en/) and
-[yarn](https://yarnpkg.com/en/) installed. Install the dependencies by running
+[Yarn](https://yarnpkg.com/) installed. Install the dependencies by running
 `yarn`. (Run it continuously as the repository changes to keep the dependencies
 up to date.) This will also enable the Git pre-commit hook that will be
 formatting your code and documentation files automatically.
 
 It's highly recommended to run the Node docs app locally to check documentation
 changes before submitting them, and its very much needed in order to make
-changes to the docs JavaScript engine itself (rare). Source code files need to
-be properly formatted as well, which is also ensured by the full setup below.
+changes to the [Node](https://nodejs.org/) documentation engine itself (rare).
+Source code files need to be properly formatted as well, which is also ensured
+by the full setup below.
 
 Start the development server using `yarn dev`. This will start the server on the
 default port, `3000`. Visit `http://localhost:3000/` and navigate to the docs in
 question.
 
-If you intend to change JavaScript files, test the changes with `yarn test`
-command before committing them.
+If you intend to change JavaScript (Node) files, test the changes with
+`yarn test` command before committing them. For code formatting and styling, try
+`yarn format-staged` and `yarn lint`. (All of these checks will be enforced
+automatically upon [submitting PRs](#submitting-changes).)
 
-## Doc style guidelines (for JavaScript and Markdown)
+## Doc style guidelines and tips (for JavaScript and Markdown)
+
+The first few of the rules below should be enforced automatically by a Git
+pre-commit hook that is integrated when `yarn` installs the project dependencies
+(explained above).
 
 - No trailing whitespaces are allowed.
 
 - Content must be properly formatted at 80 symbols width. We recommend using
-  Visual Studio Code and the
+  Visual Studio Code with the
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
-  plugin. Correct formatting will be done automatically by a Git pre-commit hook
-  that is integrated when `yarn` installs the project dependencies (explained in
-  the instructions above).
+  plugin for this.
 
 - We use [Prettier](https://prettier.io/) default conventions to format our
-  source code files. The formatting of staged files will automatically be done
-  by the Git pre-commit hook we have configured. You may also run
-  `scripts/prettier.sh <file paths>` manually before committing changes.
+  source code. The formatting of staged files will automatically be done by the
+  Git pre-commit hook we have configured. You may also run `yarn format-staged`
+  manually before committing changes if you prefer. More
+  [advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
+  available through `yarn`, for example
+  `yarn prettier --write '{pages,src}/**/*.{js,jsx}` formats all the JavaScript
+  files.
 
 - Using `dvc <command>` in the Markdown files, the docs engine will create a
   link to that command automatically. (No need to use `[]()` explicitly to
   create them.)
 
-- Bullet lists shouldn't be too long, nor each bullet's text (3 sentence
+- Neither bullet lists nor each bullet's text should be too long (3 sentence
   paragraphs max.) Full sentence bullets should begin with a capital letter and
   end in period `.` otherwise they can be all lower case and have no ending
   punctuation. Bullets can be separated by an empty line if they contain short

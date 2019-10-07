@@ -48,8 +48,9 @@ stage that explicitly specifies it. There should be no cycles, etc.
 Note that `dvc repro` provides an interface to check state and reproduce this
 graph (pipeline) later. This concept is similar to the one of the
 [Make](https://www.gnu.org/software/make/) in software build automation, but DVC
-captures data and caches <abbr>data artifacts</abbr> along the way. See this
-[example](/doc/tutorials/pipelines) to learn more and try to create a pipeline.
+captures data and <abbr>caches</abbr> relevant <abbr>data artifacts</abbr> along
+the way. See [this example](/doc/get-started/example-pipeline) to learn more and
+try creating a pipeline.
 
 ## Options
 
@@ -67,33 +68,30 @@ captures data and caches <abbr>data artifacts</abbr> along the way. See this
   > Note that a DVC-file without dependencies is considered always _changed_, so
   > `dvc repro` always executes it.
 
-- `-o`, `--outs` - specify a file or a directory that are results of running the
-  command. Multiple outputs can be specified like this:
-  `-o model.pkl -o output.log`. DVC is building a dependency graph and this list
-  of outputs (along with dependencies described above) is a way to connect
-  different stages with each other. DVC takes all output files and directories
-  under its control and will put them into the cache (this is similar to what's
-  happening when you run `dvc add`).
+- `-o`, `--outs` - specify a file or directory that is the result of running the
+  `command`. Multiple outputs can be specified: `-o model.pkl -o output.log`.
+  DVC builds a dependency graph (pipeline) to connect different stages with each
+  other based on this list of outputs, along with dependencies (see `-d`). DVC
+  takes all output files and directories under its control and puts them into
+  the cache (this is similar to what's happening when you run `dvc add`).
 
 - `-O`, `--outs-no-cache` - the same as `-o` except outputs are not put
   automatically under DVC control. It means that they are not cached, and it's
-  up to a user to save and version control them. Usually, it's useful if outputs
-  are small enough to be put into Git or other underlying version control
-  system, or these files are not of any interest and there is no requirement to
-  save and share them.
+  up to a user to save and version control them. This is useful if the outputs
+  are small enough to be put into Git control, or if these files are not of
+  future interest.
 
-- `-m`, `--metrics` - another kind of output files. It is usually a small human
-  readable file (JSON, CSV, text, whatnot) with some numbers or other
-  information that describes a model or other outputs. See `dvc metrics` to
-  learn more about tracking metrics and comparing them across different model or
-  experiment versions.
+- `-m`, `--metrics` - specify a metric type of output. This option behaves like
+  `-o` but also adds `metric: true` in the output record of the resulting stage
+  file. Metrics are usually small, human readable files (e.g. JSON or CSV) with
+  numeric values or other information that describes a model (or any other
+  regular output). See `dvc metrics` to learn more about using metrics.
 
 - `-M`, `--metrics-no-cache` - the same as `-m` except files are not put
   automatically under DVC control. It means that they are not cached, and it's
-  up to a user to save and version control them. In case of metrics it's pretty
-  usual because metric files are small enough to be put into Git or other
-  underlying version control system. See also the difference between `-o` and
-  `-O` options.
+  up to a user to save and version control them. This is typically desirable
+  with metric files, because they are small enough to be put into Git control.
+  See also the difference between `-o` and `-O`.
 
 - `-f`, `--file` - specify stage file name. By default the DVC-file name
   generated is `<file>.dvc`, where `<file>` is file name of the first output

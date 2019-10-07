@@ -19,6 +19,15 @@ jobs:
     steps:
       - checkout
 
+      # CircleCI breaks master branch which affects format check below
+      # https://discuss.circleci.com/t/checkout-script-adds-commits-to-master-from-circle-branch/14194
+      - run:
+          name: restore master
+          command: |
+            git checkout master
+            git reset --hard origin/master
+            git checkout -
+
       # Download and cache dependencies
       - restore_cache:
           keys:
@@ -31,6 +40,8 @@ jobs:
       - run: yarn build
 
       - run: yarn test
+
+      - run: yarn format-check
 
       - run: yarn lint
 
