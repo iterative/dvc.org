@@ -30,6 +30,14 @@ export const global = `
 	*:focus {
     outline: 0;
   }
+
+  img + em {
+    color: #6a737d;
+    font-size: 0.9em;
+    display: block;
+    margin-top: -6px;
+    text-align: center;
+  }
 `
 
 const maxWidth = 1005
