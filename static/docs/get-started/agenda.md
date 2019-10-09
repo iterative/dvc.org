@@ -13,17 +13,17 @@ Otherwise, bear with us and we'll introduce some basic DVC concepts to get to
 the same result together!
 
 The idea of the project is a simplified version of our
-[text classification tutorial](/doc/tutorials/deep). It explores the NLP problem
-of predicting tags for a given StackOverflow question. For example, we might
-want a classifier that can flag (or predict) posts about Python by tagging them
+[Deep Dive Tutorial](/doc/tutorials/deep). It explores the NLP problem of
+predicting tags for a given StackOverflow question. For example, we might want a
+classifier that can classify (or predict) posts about Python by tagging them
 with `python`.
 
 ![](/static/img/example-flow-2x.png)
 
-This is a natural language processing context, but NLP isn't the only area where
-DVC can help. DVC is designed to be agnostic of frameworks, languages, etc. If
-you _have_ data files or datasets and/or you _produce_ data files, models, or
-datasets and you want to:
+This is a natural language processing context, but NLP isn't the only area of
+data science where DVC can help. DVC is designed to be agnostic of frameworks,
+languages, etc. If you have data files or datasets and/or you produce data
+files, models, or datasets and you want to:
 
 - Capture and save those <abbr>data artifacts</abbr> the same way you capture
   code
