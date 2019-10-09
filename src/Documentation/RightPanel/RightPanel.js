@@ -136,7 +136,9 @@ export default class RightPanel extends React.PureComponent {
           </>
         )}
 
-        <Description>Found an issue? Let us know or fix it:</Description>
+        <Description>
+          Found an issue in this doc? Let us know or fix it:
+        </Description>
 
         <GithubButton href={githubLink} target="_blank">
           <i />
