@@ -9,8 +9,8 @@ along the way, you can download the fully reproducible
 $ git clone https://github.com/iterative/example-get-started
 ```
 
-Otherwise, bear with us and we'll introduce some basic DVC concepts to get to
-the same result together!
+Otherwise, bear with us and we'll introduce some basic DVC concepts to get the
+same results together!
 
 The idea of the project is a simplified version of our
 [Deep Dive Tutorial](/doc/tutorials/deep). It explores the NLP problem of
