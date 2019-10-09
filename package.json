@@ -6,11 +6,11 @@
   "scripts": {
     "dev": "node server.js",
     "build": "next build",
-    "start": "NODE_ENV=production node server.js",
     "test": "jest",
-    "prettier-js": "prettier --write '{pages,src}/**/*.{js,jsx}'",
-    "prettier-md": "prettier --write 'static/docs/**/*.md'",
-    "lint": "yarn run eslint src"
+    "start": "NODE_ENV=production node server.js",
+    "format-staged": "pretty-quick --staged --no-restage --bail",
+    "format-check": "pretty-quick --check --verbose",
+    "lint": "eslint src"
   },
   "repository": {
     "type": "git",
@@ -69,7 +69,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged --no-restage --bail && yarn lint"
+      "pre-commit": "yarn format-staged && yarn lint"
     }
   }
 }
