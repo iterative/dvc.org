@@ -67,9 +67,7 @@ For the typical process to share the <abbr>project</abbr> via remote, see
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples
-
-1. Let's for simplicity add a default local remote:
+## Example: Add a default local remote:
 
 <details>
 
@@ -85,11 +83,10 @@ project/repository itself.
 ```dvc
 $ dvc remote add -d myremote /path/to/remote
 $ dvc remote list
-
 myremote        /path/to/remote
 ```
 
-The <abbr>project</abbr>'s config file would look like:
+The <abbr>project</abbr>'s config file should now look like this:
 
 ```ini
 ['remote "myremote"']
@@ -98,10 +95,9 @@ url = /path/to/remote
 remote = myremote
 ```
 
-2. Add Amazon S3 remote and modify its region:
+## Example: Add Amazon S3 remote and modify its region:
 
-> **Note!** Before adding a new remote be sure to login into AWS and follow
-> instructions at
+> **Note!** Before adding a new remote be sure follow the instructions at
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
@@ -109,7 +105,7 @@ $ dvc remote add mynewremote s3://mybucket/myproject
 $ dvc remote modify mynewremote region us-east-2
 ```
 
-3. Remove remote:
+## Example: Remove remote:
 
 ```dvc
 $ dvc remote remove mynewremote

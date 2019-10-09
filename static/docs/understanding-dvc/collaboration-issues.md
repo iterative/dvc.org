@@ -10,14 +10,16 @@ manage.
 
 To make progress on this challenge, many areas of the ML experimentation process
 need to be formalized. Many common questions need to be answered in an unified,
-principled way:
+principled way.
 
-1. Source code and data versioning.
+## Questions
+
+### Source code and data versioning
 
 - How do you avoid any discrepancies between versions of the source code and
   versions of the data files when the data cannot fit into a repository?
 
-2. Experiment time log.
+### Experiment time log
 
 - How do you track which of the
   [hyperparameter](<https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)>)
@@ -25,7 +27,7 @@ principled way:
   [metric](/doc/command-reference/metrics)? How do you monitor the extent of
   each change?
 
-3. Navigating through experiments.
+### Navigating through experiments
 
 - How do you recover a model from last week without wasting time waiting for the
   model to retrain?
@@ -33,12 +35,12 @@ principled way:
 - How do you quickly switch between the large dataset and a small subset without
   modifying source code?
 
-4. Reproducibility.
+### Reproducibility
 
 - How do you run a model's evaluation again without retraining the model and
   preprocessing a raw dataset?
 
-5. Managing and sharing large data files.
+### Managing and sharing large data files
 
 - How do you share models trained in a GPU environment with colleagues who don't
   have access to a GPU?
