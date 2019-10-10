@@ -216,6 +216,12 @@ outs:
 wdir: .
 ```
 
+The cache file with `.dir` extension is a special text file that stores the
+mapping of files in the `pics/` directory (as a JSON array), along with their
+checksums. (Refer to
+[Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+for an example.)
+
 If instead you use the `--recursive` option, the output looks as so:
 
 ```dvc

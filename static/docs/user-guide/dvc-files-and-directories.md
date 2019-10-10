@@ -93,24 +93,17 @@ $ tree .dvc/cache
 │   └── 1d8cd98f00b204e9800998ecf8427e
 └── 20
     └── 0b40427ee0998e9802335d98f08cd98f
-$ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
-[{"md5": "d41d8cd98f00b204e9800998ecf8427e", "relpath": "cat.jpeg"},
- {"md5": "200b40427ee0998e9802335d98f08cd98f", "relpath": "index.jpeg"}]
 ```
 
-Like the previous case, the first two digits of the checksum are used to name
-the directory and rest 30 characters are used in naming the cache file. The
-cache file with `.dir` extension stores the mapping of files in the data
-directory and their checksum as an array. The other two cache file names are
-checksums of the files stored inside data directory. A typical `.dir` cache file
-looks like this:
+The cache file with `.dir` extension is a special text file that stores the
+mapping of files in the `data/` directory (as a JSON array), along with their
+checksums. The other two cache files are the files inside `data/`. A typical
+`.dir` cache file looks like this:
 
 ```dvc
 $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
-[
-  {"md5": "dff70c0392d7d386c39a23c64fcc0376", "relpath": "cat.jpeg"},
-  {"md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg"}
-]
+[{"md5": "dff70c0392d7d386c39a23c64fcc0376", "relpath": "cat.jpeg"},
+{"md5": "29a6c8271c0c8fbf75d3b97aecee589f", "relpath": "index.jpeg"}]
 ```
 
 See also `dvc cache dir` to set the location of the cache directory.

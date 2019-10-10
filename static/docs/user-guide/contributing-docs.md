@@ -101,8 +101,8 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
   manually before committing changes if you prefer. More
   [advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
   available through `yarn`, for example
-  `yarn prettier --write '{pages,src}/**/*.{js,jsx}` formats all the JavaScript
-  files.
+  `yarn prettier --write '{pages,src}/**/*.{js,jsx,md}` formats all the
+  JavaScript and Markdown files.
 
 - Using `dvc <command>` in the Markdown files, the docs engine will create a
   link to that command automatically. (No need to use `[]()` explicitly to

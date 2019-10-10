@@ -1,22 +1,24 @@
 # Comparison to Existing Technologies
 
-Due to the the novelty of this approach, DVC can be better understood in
-comparison to existing technologies and ideas.
+Due to the the novelty of our approach, it may be easier to understand DVC in
+comparison to existing technologies and tools.
 
-DVC combines a number of existing technologies and ideas into a single product
-with the goal of bringing the best engineering practices into the data science
-process.
+DVC combines a number of existing ideas into a single product, with the goal of
+bringing best practices from software engineering into the data science field.
 
-1. **Git**. The difference is:
+## Differences with related tools
+
+### Git
 
 - DVC extends Git by introducing the concept of _data files_ – large files that
   should NOT be stored in a Git repository but still need to be tracked and
   versioned.
 
-2. **Workflow management tools** ([pipelines](/doc/command-reference/pipeline)
-   and dependency graphs
-   ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))): Airflow,
-   Luigi, etc. The differences are:
+### Workflow management tools
+
+Pipelines and dependency graphs
+([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) such as Airflow,
+Luigi, etc.
 
 - DVC is focused on data science and modeling. As a result, DVC pipelines are
   lightweight, easy to create and modify. However, DVC lacks pipeline execution
@@ -26,9 +28,10 @@ process.
   doesn't run any daemons or servers. Nevertheless, DVC can generate images with
   pipeline and experiment workflow visualization.
 
-3. **Experiment management software** today is mostly designed for enterprise
-   usage. An open-sourced experimentation tool example: http://studio.ml/. The
-   differences are:
+### Experiment management software
+
+Mostly designed for enterprise usage, but with open-sourced options such as
+http://studio.ml/
 
 - DVC uses Git as the underlying platform for experiment tracking instead of a
   web application.
@@ -41,8 +44,7 @@ process.
   (including the <abbr>cache</abbr> directory) have a human-readable format and
   can be easily reused by external tools.
 
-4. **Git workflows** and Git usage methodologies such as Gitflow. The
-   differences are:
+### Git workflows/methodologies such as Gitflow
 
 - DVC supports a new experimentation methodology that integrates easily with a
   Git workflow. A separate branch should be created for each experiment, with a
@@ -51,8 +53,9 @@ process.
 - DVC innovates by giving experimenters the ability to easily navigate through
   past experiments without recomputing them.
 
-5. **[Make](https://www.gnu.org/software/make/)** (and other build automation
-   tools). The differences are:
+### Build automation tools
+
+[Make](https://www.gnu.org/software/make/) and others.
 
 - DVC utilizes a
   [directed acyclic graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph)
@@ -82,7 +85,7 @@ process.
     avoid recomputing all dependency files checksum, which would be highly
     problematic when working with large files (10 GB+).
 
-6. **Git-annex**. The differences are:
+### Git-annex
 
 - DVC uses the idea of storing the content of large files (that you don't want
   to see in your Git repository) in a local key-value store and use file
@@ -105,7 +108,7 @@ process.
 - DVC is not fundamentally bound to Git, having the option of changing the
   repository format.
 
-7. **Git-LFS** (Large File Storage). The differences are:
+### Git-LFS (Large File Storage)
 
 - DVC does not require special Git servers like Git-LFS demands. Any cloud
   storage like S3, GCS, or on-premises SSH server can be used as a backend for
