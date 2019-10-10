@@ -67,7 +67,7 @@ For the typical process to share the <abbr>project</abbr> via remote, see
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: Add a default local remote:
+## Example: Add a default local remote
 
 <details>
 
@@ -95,7 +95,7 @@ url = /path/to/remote
 remote = myremote
 ```
 
-## Example: Add Amazon S3 remote and modify its region:
+## Example: Add Amazon S3 remote and modify its region
 
 > **Note!** Before adding a new remote be sure follow the instructions at
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
