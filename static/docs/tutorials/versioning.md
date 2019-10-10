@@ -15,8 +15,6 @@ this example is to give you some hands-on experience with a very basic use case
 
 ![](/static/img/cats-and-dogs.jpg)
 
-_(maybe we should build an "adorable" classifier)_
-
 We first train a classifier model using 1000 labeled images, then we double the
 number of images (2000) and retrain our model. We capture both datasets and both
 classifier results and show how to use `dvc checkout` along with `git checkout`
