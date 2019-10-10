@@ -12,22 +12,24 @@ usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c] [-r REMOTE] [-f] [-j JOBS]
 ## Description
 
 This command deletes (garbage collects) data files or directories that may exist
-in the cache (or [remote storage](/doc/command-reference/remote)) but no longer
-referred to in [DVC-files](/doc/user-guide/dvc-file-format) currently
-[checked out](/doc/command-reference/checkout) in the <abbr>project</abbr>. By
-default this command only cleans up the local cache, that is typically located
-on the same machine as the project in question. This usually helps to free up
-disk space.
+in the cache (or [remote storage](/doc/command-reference/remote) if `-c` is
+used) but no longer referenced in [DVC-files](/doc/user-guide/dvc-file-format)
+currently in the <abbr>workspace</abbr>. By default, this command only cleans up
+the local cache, which is typically located on the same machine as the project
+in question. This usually helps to free up disk space.
 
-Data added to DVC in a different branch or version than the current Git commit
-(`HEAD`), it will be deleted by `dvc gc` unless the `--all-branches` or
-`--all-tags` options are used. Note that if the cache/remote holds several
-versions of the same data file, all except the current one will be deleted.
+There are important things to note when using Git to version the
+<abbr>project</abbr>:
 
-Unless the `--cloud` option is used, this action does not remove data files from
-remote storage. This means that you can `dvc fetch` all the needed files back
-anytime you want **as long as they have previously been pushed**. (See
-`dvc push`.)
+- If the cache/remote holds several versions of the same data, all except the
+  current one will be deleted.
+- Use the `--all-branches` or `--all-tags` options to avoid collecting data
+  referenced in the tips of all branches or in all tags, respectively.
+
+Unless the `--cloud` (`-c`) option is used, `dvc gc` does not remove data files
+from any remote. This means that any files collected from the local cache can be
+restored using `dvc fetch`, as long as they have previously been uploaded with
+`dvc push`.
 
 ## Options
 
@@ -41,11 +43,11 @@ anytime you want **as long as they have previously been pushed**. (See
   project. Note that both options can be combined, for example using the `-aT`
   flag.
 
-- `-p`, `--projects` - if a single remote or a single cache is shared (e.g. a
-  configuration one describe
-  [here](/doc/use-cases/shared-development-server.md)) among different projects,
-  this option can be used to specify a list of them (each project is a path) to
-  keep data that is currently referenced from them.
+- `-p`, `--projects` - if a single remote or a single cache is shared among
+  different projects (e.g. a configuration like the one described
+  [here](/doc/use-cases/shared-development-server.md)), this option can be used
+  to specify a list of them (each project is a path) to keep data that is
+  currently referenced from them.
 
 - `-c`, `--cloud` - also remove files in the default remote storage. _This
   operation is dangerous._ It removes datasets, models, other files that are not
