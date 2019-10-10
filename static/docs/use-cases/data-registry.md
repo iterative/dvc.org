@@ -2,7 +2,7 @@
 
 In the [Versioning Tutorial](/doc/tutorials/versioning) we use two ZIP files
 containing parts of a dataset with labeled images of cat and dogs. For
-simplicity, these archives are downloaded with `dvc get` from our
+simplicity, these compressed archives are downloaded with `dvc get` from our
 [dataset registry](https://github.com/iterative/dataset-registry), a <abbr>DVC
 project</abbr> hosted on GitHub.
 
@@ -56,10 +56,10 @@ Trusting 3rd party registries should be considered a risk.
 For illustration purposes, our own
 [dataset registry](https://github.com/iterative/dataset-registry) contains a
 poorly handled dataset, in the `tutorial/ver` directory. It contains 2
-[DVC-files](/doc/user-guide/dvc-file-format) that track a couple of ZIP files
-(problem #1). Each archive, when extracted, contains the same directory
-structure, but with complementary files, that together form a single dataset
-(problem #2) of 2000 images of cats and dogs.
+[DVC-files](/doc/user-guide/dvc-file-format) that track a couple of compressed
+ZIP files (problem #1). Each archive, when extracted, contains the same
+directory structure, but with complementary files, that together form a single
+dataset (problem #2) of 2000 images of cats and dogs.
 
 > As mentioned in the introduction, these ZIP files are used as-is for
 > simplicity in our [Versioning Tutorial](/doc/tutorials/versioning).
@@ -90,19 +90,14 @@ $ rm -f data.zip
 
 `dvc add`, the command to place existing data under DVC control, supports
 tracking both files
+
 [and directories](/doc/command-reference/add#example-directory). For this
-reason, adding compressed directories to a <abbr>project</abbr> is not
+reason, adding compressed directory contents to a <abbr>project</abbr> is not
 recommended, especially when the files contained are already compressed (like
-typical image file formats).
+typical image file formats). Also, uncompressing files after downloading them is
+an extra step we may prefer to avoid.
 
-While compression can save space for some files, such as tabular data stored in
-text files (CSV, TSV, JSON, etc.), versioning compressed files risks storing
-repeated files in the <abbr>cache</abbr> or
-[remote storage](/doc/command-reference/remote), when the dataset is not
-partitioned correctly. You will also need an extra step after downloading the
-files to uncompress the data.
-
-Let's add the entire `data/` dir to DVC instead to a new, Git-backed DVC
+Let's add the entire `data/` dir to DVC instead, in a new Git-backed DVC
 project:
 
 ```dvc
@@ -121,13 +116,16 @@ $ git commit -m "Add 1800 cats and dogs images dataset"
 > Refer to
 > [Adding a directory example](/doc/command-reference/add#example-directory) and
 > [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-> for more details on what happens under the hood.
+> for more details on what happens under the hood when adding directories.
 
 ### Problem #2: Dataset partitioning
 
-Under some contexts, such as distributed storage or distribution (p2p), data
-partitioning (i.e. the automatic kind) can be a great tool. Manually separating
-data directories however, besides prone to human error, is unnecessary with DVC.
+Consistent data partitioning can be very valuable for some applications, such as
+distributed storage and distribution (p2p). Versioning parts of a dataset
+separately with DVC, however, is an unnecessary complication. This would also
+deprive us from neat performance features such as automatic "deduplication"
+(avoidance of file repetition) among dataset versions on DVC <abbr>caches</abbr>
+or [remotes](/doc/command-reference/remote).
 
 Let's extract the remaining cats and dogs images from our example, to see what
 changes in our data directory:
@@ -149,11 +147,12 @@ $ tree --filelimit 3
 └── new-labels.zip
 
 7 directories, 2 files
+$ rm -f new-labels.zip
 ```
 
-It seems an additional 500 images of cats and another 500 of dogs have been
-added to the `data/train` directory. To update the DVC <abbr>cache</abbr> with
-this merged dataset, we simply need to run `dvc add data` again:
+An additional 500 images of cats and another 500 of dogs have been added to the
+corresponding `data/train` directories. To update the DVC <abbr>cache</abbr>
+with this reconstructed dataset, we simply need to run `dvc add data` again:
 
 ```dvc
 $ dvc add data
@@ -164,11 +163,15 @@ Saving information to 'data.dvc'.
 ...
 ```
 
+Note that when adding an updated data directory, DVC only needs to move the new
+and changed files to the <abbr>cache</abbr>.
+
 Finally, let's commit the new dataset version to Git, and list the 2 versions:
 
 ```dvc
-$ git commit -m "Add 1000 more cats and dogs images to dataset"
+$ git commit -am "Add 1000 more cats and dogs images to dataset"
 $ git log --format="%h %s"
+162b2e7 Add 1000 more cats and dogs images to dataset
 cbcf466 Add 1800 cats and dogs images dataset
 5b058a3 Initialize DVC project
 ```
