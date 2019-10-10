@@ -14,20 +14,22 @@ usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c] [-r REMOTE] [-f] [-j JOBS]
 This command deletes (garbage collects) data files or directories that may exist
 in the cache (or [remote storage](/doc/command-reference/remote) if `-c` is
 used) but no longer referenced in [DVC-files](/doc/user-guide/dvc-file-format)
-currently [checked out](/doc/command-reference/checkout) in the
-<abbr>workspace</abbr>. By default, this command only cleans up the local cache,
-which is typically located on the same machine as the project in question. This
-usually helps to free up disk space.
+currently in the <abbr>workspace</abbr>. By default, this command only cleans up
+the local cache, which is typically located on the same machine as the project
+in question. This usually helps to free up disk space.
 
-Note that if the cache/remote holds several versions of the same data, all
-except the current one will be deleted. Use the `--all-branches` or `--all-tags`
-options to avoid collecting data referenced in the tips of all branches or in
-all tags, respectively - if Git is used for the <abbr>project</abbr>.
+There are important things to note when using Git to version the
+<abbr>project</abbr>:
 
-Unless the `--cloud` option is used, this action does not remove data files from
-remote storage. This means that you can `dvc fetch` all the needed files back
-anytime you want **as long as they have previously been pushed**. (See
-`dvc push`.)
+- If the cache/remote holds several versions of the same data, all except the
+  current one will be deleted.
+- Use the `--all-branches` or `--all-tags` options to avoid collecting data
+  referenced in the tips of all branches or in all tags, respectively.
+
+Unless the `--cloud` (`-c`) option is used, `dvc gc` does not remove data files
+from any remote. This means that any files collected from the local cache can be
+restored using `dvc fetch`, as long as they have previously been uploaded with
+`dvc push`.
 
 ## Options
 
