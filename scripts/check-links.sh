@@ -5,7 +5,7 @@
 #     scripts/check_links.sh <base-url> [<list-of-md-files>]
 #
 # If <base-url> is missing, default is 'https://dvc.org'
-# If the list of files is missing, all the .md files is 'static/' will be checked
+# If the list of files is missing, all the .md files in 'static/' will be checked
 #
 # Examples:
 #     scripts/check_links.sh https://dvc.org static/docs/user-guide/*.md
@@ -42,4 +42,3 @@ for file in $files; do
             wget $settings "$url" || echo "$file: '$link'"
         done
 done
-
