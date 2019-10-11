@@ -10,7 +10,7 @@ range from basic to more advanced:
   our most primary use: tracking and versioning large files with Git + DVC.
 - [Share Data and Model Files](/doc/use-cases/share-data-and-model-files) goes
   over basic collaboration possibilities enabled by DVC.
-- [Shared Development Server](/doc/use-cases/shared-development-server.md)
+- [Shared Development Server](/doc/use-cases/shared-development-server)
   describes a single development machine setup for teams that prefer so.
 
 This list of use cases is _not_ exhaustive. We keep reviewing our docs and will
