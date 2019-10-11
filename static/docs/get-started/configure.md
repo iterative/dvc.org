@@ -1,6 +1,6 @@
 # Configure
 
-Once you install DVC, you will be able to start using it (in its local setup)
+Once you install DVC, you'll be able to start using it (in its local setup)
 immediately.
 
 However, remote storage should be set up (see `dvc remote`) if you need to share
@@ -27,15 +27,14 @@ $ dvc remote add -d myremote /tmp/dvc-storage
 $ git commit .dvc/config -m "Configure local remote"
 ```
 
-> We only use a local remote in this guide for simplicity's sake when following
-> these steps, as you are learning to use DVC. For most
-> [use cases](/doc/use-cases), other "more remote" types of remotes will be
-> required.
+> We only use a local remote in this guide for simplicity's sake as you learn to
+> use DVC. For most [use cases](/doc/use-cases), other "more remote" types of
+> remotes will be required.
 
 Adding a remote should be specified by both its type prefix (protocol) and its
 path. DVC currently supports seven types of remotes:
 
-- `local`: local directory
+- `local`: Local Directory
 - `s3`: Amazon Simple Storage Service
 - `gs`: Google Cloud Storage
 - `azure`: Azure Blob Storage
@@ -49,8 +48,8 @@ path. DVC currently supports seven types of remotes:
 > look like this: `pip install "dvc[s3]"`. This installs `boto3` library along
 > with DVC to support Amazon S3 storage.
 
-For example, to setup an S3 remote we would use something like (make sure that
-`mybucket` exists):
+For example, to setup an S3 remote we would use something like this (make sure
+that `mybucket` exists):
 
 ```dvc
 $ dvc remote add -d s3remote s3://mybucket/myproject
@@ -61,7 +60,7 @@ $ dvc remote add -d s3remote s3://mybucket/myproject
 
 You can see that DVC doesn't require installing any databases, servers, or
 warehouses. It can use bare S3 or SSH to store data, intermediate results, and
-your models.
+models.
 
 See `dvc config` to get information about more configuration options and
 `dvc remote` to learn more about remotes and get more examples.
