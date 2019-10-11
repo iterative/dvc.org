@@ -23,8 +23,9 @@ to switch between different versions.
 
 The specific algorithm used to train and validate the classifier is not
 important, and no prior knowledge of Keras is required. We'll reuse the
-[script from the original blog post](https://gist.github.com/fchollet/f35fbc80e066a49d65f1688a7e99f069)
-as a sort of black box – it takes some data and produces a model file.
+[script](https://gist.github.com/fchollet/f35fbc80e066a49d65f1688a7e99f069) from
+the original blog post as a _black box_ – it takes some data and produces a
+model file.
 
 ## Preparation
 
@@ -41,8 +42,8 @@ $ cd example-versioning
 This command pulls a <abbr>DVC project</abbr> with a single script `train.py`
 that will train the model.
 
-Let's now install the project's requirements. But before we do that, we
-**strongly** recommend creating a virtual environment with a tool such as
+Let's now install the requirements. But before we do that, we **strongly**
+recommend creating a virtual environment with a tool such as
 [virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```dvc
@@ -56,9 +57,9 @@ $ pip install -r requirements.txt
 ### Expand to learn about DVC internals
 
 The repository you cloned is already DVC-initialized. There should be a `.dvc/`
-directory with `config` and `.gitignore` files, as well as the cache directory.
-These files and directories are hidden from users in general, as you don't need
-to interact with these files directly. See
+directory with the `config` and `.gitignore` files, as well as `cache/`
+directory. These files and directories are hidden from users in general, as
+there's no need to interact with them directly. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -66,9 +67,9 @@ more.
 
 ## First model version
 
-Now that we have the repository ready to go, let's add some data and then train
-the first model. We'll capture everything with DVC, including the input dataset
-and model [metrics](/doc/command-reference/metrics).
+Now that we're done with preparations, let's add some data and then train the
+first model. We'll capture everything with DVC, including the input dataset and
+model [metrics](/doc/command-reference/metrics).
 
 ```dvc
 $ mkdir data
@@ -334,9 +335,9 @@ the result. We call such a DVC-file a "stage file".
 > stage file and its changed output files to the repository.
 
 `dvc repro` will run `Dvcfile` if any of its dependencies (`-d`) changed. For
-example, after we added new images like we did when we built the second model
-version, that's a dependency change. It also updates outputs and puts them into
-the <abbr>cache</abbr>.
+example, when we added new images to built the second version of our model, that
+was a dependency change. It also updates outputs and puts them into the
+<abbr>cache</abbr>.
 
 To make things a little simpler: if `dvc add` and `dvc checkout` provide a basic
 mechanism to version control large data files or models, `dvc run` and

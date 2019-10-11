@@ -88,9 +88,9 @@ When we run `dvc add` `Posts.xml.zip`, DVC creates a
 
 ### Expand to learn about DVC internals
 
-`dvc init` created a new directory `.dvc/`, with `config`, `.gitignore` files,
-and the cache directory. These files and directories are hidden from users in
-general, as you don't need to interact with these files directly. See
+`dvc init` created a new directory `.dvc/`, with the `config` and `.gitignore`
+files, as well as `cache/` directory. These files and directories are hidden
+from users in general, as there's no need to interact with them directly See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
