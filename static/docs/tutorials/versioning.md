@@ -57,8 +57,8 @@ $ pip install -r requirements.txt
 
 The repository you cloned is already DVC-initialized. There should be a `.dvc/`
 directory with `config` and `.gitignore` files, as well as the cache directory.
-These files and directories are hidden from users in general, as users don't
-need to interact with these files directly. See
+These files and directories are hidden from users in general, as you don't need
+to interact with these files directly. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -83,12 +83,12 @@ $ rm -f data.zip
 > `dvc get` can download <abbr>data artifacts</abbr> from any DVC project hosted
 > on a Git repository into the current working directory (similar to `wget` but
 > for DVC repositories). In this case we use our own
-> [iterative/dataset-registry project](https://github.com/iterative/dataset-registry)
-> as the external data source.
+> [iterative/dataset-registry](https://github.com/iterative/dataset-registry)
+> project as the external data source.
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
-images for training and 800 labeled images for validation. In total, it's a 43MB
-dataset, with a directory structure like this:
+images for training and 800 labeled images for validation. In total, it's a 43
+MB dataset, with a directory structure like this:
 
 ```sh
 data
@@ -190,7 +190,7 @@ $ rm -f new-labels.zip
 
 For simplicity's sake, we keep the validation dataset the same. Now our dataset
 has 2000 images for training and 800 images for validation, with a total size of
-67MB:
+67 MB:
 
 ```sh
 data
