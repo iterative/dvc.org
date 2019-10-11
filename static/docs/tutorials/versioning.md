@@ -17,14 +17,14 @@ to build a powerful image classifier using a pretty small dataset.
 > new highly performant model, with very limited resources.
 
 We first train a classifier model using 1000 labeled images, then we double the
-number of images (2000) and retrain our model. We capture both datasets and both
+number of images (2000) and retrain our model. We capture both datasets and
 classifier results and show how to use `dvc checkout` along with `git checkout`
 to switch between different versions.
 
 The specific algorithm used to train and validate the classifier is not
 important, and no prior knowledge of Keras is required. We'll reuse the
 [script from the original blog post](https://gist.github.com/fchollet/f35fbc80e066a49d65f1688a7e99f069)
-– it takes some data and produces a model file.
+as a sort of black box – it takes some data and produces a model file.
 
 ## Preparation
 
@@ -41,8 +41,8 @@ $ cd example-versioning
 This command pulls a <abbr>DVC project</abbr> with a single script `train.py`
 that will train the model.
 
-Now let's install our requirements. But before we do that, we **strongly**
-recommend creating a virtual environment with a tool such as
+Let's now install the project's requirements. But before we do that, we
+**strongly** recommend creating a virtual environment with a tool such as
 [virtualenv](https://virtualenv.pypa.io/en/stable/):
 
 ```dvc
@@ -51,17 +51,14 @@ $ source .env/bin/activate
 $ pip install -r requirements.txt
 ```
 
-This will make it much easier to install and manage dependencies without
-worrying about your local enviroment's setup.
-
 <details>
 
 ### Expand to learn about DVC internals
 
 The repository you cloned is already DVC-initialized. There should be a `.dvc/`
-directory with `config` and `.gitignore` files, along with the cache directory.
+directory with `config` and `.gitignore` files, as well as the cache directory.
 These files and directories are hidden from users in general, as users don't
-interact with these files directly. See
+need to interact with these files directly. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
