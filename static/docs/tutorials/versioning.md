@@ -173,7 +173,12 @@ files work.
 > Note that executing `train.py` produced other intermediate files. This is OK,
 > we will use them later.
 >
-> `dvc $ git status ... bottleneck_features_train.npy bottleneck_features_validation.npy`
+> ```dvc
+> $ git status
+> ...
+>       bottleneck_features_train.npy
+>       bottleneck_features_validation.npy`
+> ```
 
 ## Second model version
 
@@ -305,7 +310,10 @@ When you have a script that takes some data as an input and produces other data
 > [Switching between versions](#switching-between-versions) section, go back to
 > the master branch code and data with:
 >
-> `dvc $ git checkout master $ dvc checkout`
+> ```dvc
+> $ git checkout master
+> $ dvc checkout
+> ```
 
 ```dvc
 $ dvc remove -pf model.h5.dvc
