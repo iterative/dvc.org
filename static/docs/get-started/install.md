@@ -1,8 +1,8 @@
 # Install
 
 There are a few recommended ways to install DVC: OS-specific package/installer,
-`pip`, `conda` (Anaconda), and Homebrew. (Depending on your OS, some of these
-may be not available.)
+`pip`, `conda` (Anaconda), and Homebrew (Depending on your OS, some of these may
+be not available).
 
 To install DVC from `pip` (see instructions for other options below), run:
 
@@ -17,17 +17,17 @@ $ pip install dvc
 > `pip install "dvc[s3]"`. This installs `boto3` library along with DVC to
 > support Amazon S3 storage.
 
-The easiest option, self-contained binary packages (or Windows installer), are
-available by using the big "Download" button in the [home page](/). You may also
+The easiest option, self-contained binary packages (or Windows installer), is
+available by using the big "Download" button on the [home page](/). You can also
 get them [here](https://github.com/iterative/dvc/releases/).
 
-> For a POSIX-like command line terminal in Windows users, we recommend
+> For a POSIX-like command line terminal in Windows, we recommend
 > [Git Bash](https://gitforwindows.org/#bash) or
 > [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win).
-> Its even possible to enjoy a full Linux terminal experience with the
+> It's even possible to enjoy a full Linux terminal experience with the
 > [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
 
-We also provide `deb`, `rpm` and `homebrew` repositories:
+We also provide `deb`, `rpm`, and `homebrew` repositories:
 
 <details>
 
@@ -81,15 +81,15 @@ $ conda install -c conda-forge dvc
 
 </details>
 
-To install the most recent development version, See our
+To install the most recent development version, see our
 [development](/doc/user-guide/development) guide.
 
 ### Shell autocomplete
 
 Visit the [Shell Autocomplete](/doc/user-guide/autocomplete) guide to learn how
-to install the completion scripts for your command-line shell.
+to install the completion scripts for your command line shell.
 
 ### Editors and IDEs integration
 
-Visit [Vim and IDE Integrations](/doc/user-guide/plugins) for how to enable
-shell syntax highlighting and install DVC support on different IDEs.
+Visit [Vim and IDE Integrations](/doc/user-guide/plugins) for information on how
+to enable shell syntax highlighting and install DVC support on different IDEs.
