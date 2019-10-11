@@ -1,13 +1,12 @@
 # Data Registry
 
 We developed the `dvc get`, `dvc import`, and `dvc update` commands with the aim
-to enable reusability of any <abbr>outputs</abbr> (raw data, intermediate
+to enable reusability of any <abbr>data artifacts</abbr> (raw data, intermediate
 results, models, etc) between different projects. For example, project A may use
 a data file to begin its data [pipeline](/doc/command-reference/pipeline), but
 project B also requires this same file; Instead of
 [adding it](/doc/command-reference/add#example-single-file) it to both projects,
-B can simply import it from A. (This can bring many benefits that we'll explain
-soon.)
+B can simply import it from A.
 
 Taking this idea to a useful extreme, we could create a <abbr>project</abbr>
 that is exclusively dedicated to
@@ -15,9 +14,9 @@ that is exclusively dedicated to
 datasets (or any kind of large files) – by mainly using `dvc add` to build it.
 Such a project would not have [stages](/doc/command-reference/run), but its data
 files may be updated manually as they evolve. Other projects can then share
-these files by downloading (`dvc get`) or importing (`dvc import`) them for use
-in different data processes – and these don't even have to be _DVC projects_, as
-`dvc get` works anywhere in your system.
+these artifacts by downloading (`dvc get`) or importing (`dvc import`) them for
+use in different data processes – and these don't even have to be _DVC
+projects_, as `dvc get` works anywhere in your system.
 
 The advantages of using a data registry are:
 
@@ -33,25 +32,33 @@ The advantages of using a data registry are:
 - Easier to manage **access control** per remote storage configured in a single
   data registry project.
 
-A possible weakness of shared data registries is that, if the source project or
-its remote storage are lost for any reason, several other projects depending on
-it may stop being reproducible. So this strategy is best when the registry is
-owned and controlled internally by the same team as the projects that employ it.
-Trusting 3rd party registries should be considered a risk.
+A possible risk of shared data registries is that, if the source project or its
+remote storage are lost for any reason, several other projects depending on it
+may stop being reproducible. So this strategy is best when the registry is owned
+and controlled internally by the same team as the projects that employ it.
 
 ## Example: A sub-optimal approach
 
-In the [Versioning Tutorial](/doc/tutorials/versioning) we use two ZIP files
-containing parts of a dataset with labeled images of cat and dogs. For
-simplicity, these compressed archives are downloaded with `dvc get` from our
-[dataset registry](https://github.com/iterative/dataset-registry), a <abbr>DVC
-project</abbr> hosted on GitHub. Each archive, when extracted, contains the same
-directory structure, but with complementary files, that together form a single
-dataset of 2800 images of cats and dogs.
+In the [Versioning Tutorial](/doc/tutorials/versioning) we use a ZIP file
+containing a dataset with images of cats and dogs, and later on we get a second
+archive to update the dataset with more images. For simplicity, these compressed
+archives are downloaded with `dvc get` from our own
+[iterative/dataset-registry](https://github.com/iterative/dataset-registry)), a
+<abbr>DVC project</abbr> hosted on GitHub. These data files can be found as
+<abbr>outputs</abbr> of 2 separate
+[DVC-files](/doc/user-guide/dvc-files-and-directories) in the `tutorial/ver`
+directory.
 
-Let's see a better approach to versioning this same dataset with DVC. First, we
-download and extract the first half of this dataset (in an empty directory) to
-better understand its structure:
+There are a few possible problems with the way this dataset is stored (as 2
+parts, in compressed archives). One is that dataset partitioning is complicated.
+It can cause data duplication and other hurdles, so it's best to avoid. Another
+issue is that storing file archives requires the extra steps of bundling and
+extracting them. The data compression also raises questions in this approach.
+
+## Example: Better dataset versioning
+
+Let's download and extract the first archive we discussed above (in an empty
+directory) to visualize the structure of the dataset:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
@@ -72,24 +79,16 @@ $ tree --filelimit 3
 $ rm -f data.zip
 ```
 
-### Problem #1: Compressed data files
-
-`dvc add`, the command to place existing data under DVC control, supports
-tracking both files
-[and directories](/doc/command-reference/add#example-directory). For this
-reason, adding compressed archives to a <abbr>project</abbr> is not recommended,
-especially when the files contained are already compressed (like typical image
-file formats). Also, uncompressing files after downloading them is an extra step
-we may prefer to avoid.
-
-Let's add the entire `data/` dir to DVC instead, in a new Git-backed DVC
-project:
+Instead of creating an archive containing the `data/` directory, we can simply
+put it under DVC control as-is! This is done with the `dvc add` command, and
+this first version can be saved with Git:
 
 ```dvc
-$ git init
-$ dvc init
+$ git init  # Initialize Git repository
+$ dvc init  # Initialize DVC project
 ...
 $ git commit -m "Initialize DVC project"
+...
 $ dvc add data
 Adding 'data' to '.gitignore'...
 Saving information to 'data.dvc'.
@@ -103,13 +102,7 @@ $ git commit -m "Add 1800 cats and dogs images dataset"
 > [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 > for more details on what happens under the hood when adding directories.
 
-### Problem #2: Dataset partitioning
-
-Consistent data partitioning can be very valuable for some applications, such as
-distributed storage and distribution (p2p). Versioning parts of a dataset
-separately with DVC, however, is an unnecessary complication.
-
-Let's extract the remaining cats and dogs images from our example, to see what
+Let's add the remaining cats and dogs images from the archive, to see what
 changes in our data directory:
 
 ```dvc
@@ -132,9 +125,10 @@ $ tree --filelimit 3
 $ rm -f new-labels.zip
 ```
 
-An additional 500 images of cats and another 500 of dogs have been added to the
-corresponding `data/train` directories. To update the DVC <abbr>cache</abbr>
-with this reconstructed dataset, we simply need to run `dvc add data` again:
+Now that an additional 500 images of each kind have been added to their
+corresponding subdirectories, we'll want to save the updates with DVC. To do
+this, we simply need to use `dvc add` again, commit the new dataset version with
+Git:
 
 ```dvc
 $ dvc add data
@@ -143,17 +137,13 @@ WARNING: Output 'data' of 'data.dvc' changed because it is 'modified'
 ...
 Saving information to 'data.dvc'.
 ...
-```
-
-Note that when adding an updated data directory, DVC only needs to move the new
-and changed files to the <abbr>cache</abbr>.
-
-Finally, let's commit the new dataset version to Git, and list all the commits:
-
-```dvc
 $ git commit -am "Add 1000 more cats and dogs images to dataset"
 $ git log --format="%h %s"
 162b2e7 Add 1000 more cats and dogs images to dataset
 cbcf466 Add 1800 cats and dogs images dataset
 5b058a3 Initialize DVC project
 ```
+
+Note that when adding an updated data directory, DVC only needs to move the new
+and changed files to the <abbr>cache</abbr>, as all the previous ones were
+already there after the initial use of `dvc add`.

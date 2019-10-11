@@ -85,10 +85,10 @@ $ rm -f data.zip
 ```
 
 > `dvc get` can download <abbr>data artifacts</abbr> from any <abbr>DVC
-> project</abbr> hosted on a Git repository into the current working directory
-> (similar to `wget` but for DVC repositories). In this case we use our own
-> [dataset registry](https://github.com/iterative/dataset-registry)) project as
-> the external data source. (Refer to
+> project</abbr> hosted on a Git repository (similar to `wget` but for DVC
+> repositories). In this case we use our own
+> [iterative/dataset-registry](https://github.com/iterative/dataset-registry))
+> project as the external data source. (Refer to
 > [Data Registry](/doc/use-cases/data-registry) for more info about this setup.)
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled

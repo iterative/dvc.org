@@ -27,12 +27,12 @@ $ dvc import https://github.com/iterative/dataset-registry \
              get-started/data.xml
 ```
 
-This downloads `data.xml` from our
-[dataset-registry](https://github.com/iterative/dataset-registry) DVC project
-into the current working directory, adds it to `.gitignore`, and creates the
-`data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format) to track changes in
-the source data. With _imports_, we can use `dvc update` to check for changes in
-the external data source before [reproducing](/doc/get-started/reproduce) any
+This downloads `data.xml` from our own
+[iterative/dataset-registry](https://github.com/iterative/dataset-registry)
+project into the current working directory, adds it to `.gitignore`, and creates
+the `data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format) to track changes
+in the source data. With _imports_, we can use `dvc update` to check for changes
+in the external data source before [reproducing](/doc/get-started/reproduce) any
 <abbr>pipeline</abbr> that depends on this data.
 
 <details>
