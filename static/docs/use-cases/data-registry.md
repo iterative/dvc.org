@@ -1,17 +1,5 @@
 # Data Registry
 
-In the [Versioning Tutorial](/doc/tutorials/versioning) we use two ZIP files
-containing parts of a dataset with labeled images of cat and dogs. For
-simplicity, these compressed archives are downloaded with `dvc get` from our
-[dataset registry](https://github.com/iterative/dataset-registry), a <abbr>DVC
-project</abbr> hosted on GitHub.
-
-In this document we'll explain the idea behind **shared data registries**, how
-to easily create one with DVC, and the best ways to version datasets based on
-the same example above (without ZIP files!)
-
-## Concept
-
 We developed the `dvc get`, `dvc import`, and `dvc update` commands with the aim
 to enable reusability of any <abbr>outputs</abbr> (raw data, intermediate
 results, models, etc) between different projects. For example, project A may use
@@ -19,7 +7,7 @@ a data file to begin its data [pipeline](/doc/command-reference/pipeline), but
 project B also requires this same file; Instead of
 [adding it](/doc/command-reference/add#example-single-file) it to both projects,
 B can simply import it from A. (This can bring many benefits that we'll explain
-a little later.)
+soon.)
 
 Taking this idea to a useful extreme, we could create a <abbr>project</abbr>
 that is exclusively dedicated to
@@ -45,27 +33,25 @@ The advantages of using a data registry are:
 - Easier to manage **access control** per remote storage configured in a single
   data registry project.
 
-A possible weakness of data registries is that, if the source project or its
-remote storage are lost for any reason, several other projects depending on it
-may stop being reproducible. So this strategy is best when the registry is owned
-and controlled internally by the same team as the projects that employ it.
+A possible weakness of shared data registries is that, if the source project or
+its remote storage are lost for any reason, several other projects depending on
+it may stop being reproducible. So this strategy is best when the registry is
+owned and controlled internally by the same team as the projects that employ it.
 Trusting 3rd party registries should be considered a risk.
 
 ## Example: A sub-optimal approach
 
-For illustration purposes, our own
-[dataset registry](https://github.com/iterative/dataset-registry) contains a
-poorly handled dataset, in the `tutorial/ver` directory. It contains 2
-[DVC-files](/doc/user-guide/dvc-file-format) that track a couple of compressed
-ZIP files (problem #1). Each archive, when extracted, contains the same
+In the [Versioning Tutorial](/doc/tutorials/versioning) we use two ZIP files
+containing parts of a dataset with labeled images of cat and dogs. For
+simplicity, these compressed archives are downloaded with `dvc get` from our
+[dataset registry](https://github.com/iterative/dataset-registry), a <abbr>DVC
+project</abbr> hosted on GitHub. Each archive, when extracted, contains the same
 directory structure, but with complementary files, that together form a single
-dataset (problem #2) of 2000 images of cats and dogs.
+dataset of 2800 images of cats and dogs.
 
-> As mentioned in the introduction, these ZIP files are used as-is for
-> simplicity in our [Versioning Tutorial](/doc/tutorials/versioning).
-
-Let's download and extract the first half of this dataset (in an empty
-directory) to better understand its structure:
+Let's see a better approach to versioning this same dataset with DVC. First, we
+download and extract the first half of this dataset (in an empty directory) to
+better understand its structure:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
@@ -90,12 +76,11 @@ $ rm -f data.zip
 
 `dvc add`, the command to place existing data under DVC control, supports
 tracking both files
-
 [and directories](/doc/command-reference/add#example-directory). For this
-reason, adding compressed directory contents to a <abbr>project</abbr> is not
-recommended, especially when the files contained are already compressed (like
-typical image file formats). Also, uncompressing files after downloading them is
-an extra step we may prefer to avoid.
+reason, adding compressed archives to a <abbr>project</abbr> is not recommended,
+especially when the files contained are already compressed (like typical image
+file formats). Also, uncompressing files after downloading them is an extra step
+we may prefer to avoid.
 
 Let's add the entire `data/` dir to DVC instead, in a new Git-backed DVC
 project:
@@ -122,10 +107,7 @@ $ git commit -m "Add 1800 cats and dogs images dataset"
 
 Consistent data partitioning can be very valuable for some applications, such as
 distributed storage and distribution (p2p). Versioning parts of a dataset
-separately with DVC, however, is an unnecessary complication. This would also
-deprive us from neat performance features such as automatic "deduplication"
-(avoidance of file repetition) among dataset versions on DVC <abbr>caches</abbr>
-or [remotes](/doc/command-reference/remote).
+separately with DVC, however, is an unnecessary complication.
 
 Let's extract the remaining cats and dogs images from our example, to see what
 changes in our data directory:
@@ -166,7 +148,7 @@ Saving information to 'data.dvc'.
 Note that when adding an updated data directory, DVC only needs to move the new
 and changed files to the <abbr>cache</abbr>.
 
-Finally, let's commit the new dataset version to Git, and list the 2 versions:
+Finally, let's commit the new dataset version to Git, and list all the commits:
 
 ```dvc
 $ git commit -am "Add 1000 more cats and dogs images to dataset"
