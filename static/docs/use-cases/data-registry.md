@@ -42,7 +42,7 @@ and controlled internally by the same team as the projects that employ it.
 In the [Versioning Tutorial](/doc/tutorials/versioning) we use a ZIP file
 containing a dataset with images of cats and dogs, and later on we get a second
 archive to update the dataset with more images. For simplicity, these compressed
-archives are downloaded with `dvc get` from our own
+archives are downloaded from our own
 [iterative/dataset-registry](https://github.com/iterative/dataset-registry)), a
 <abbr>DVC project</abbr> hosted on GitHub. These data files can be found as
 <abbr>outputs</abbr> of 2 separate
@@ -50,10 +50,13 @@ archives are downloaded with `dvc get` from our own
 directory.
 
 There are a few possible problems with the way this dataset is stored (as 2
-parts, in compressed archives). One is that dataset partitioning is complicated.
-It can cause data duplication and other hurdles, so it's best to avoid. Another
-issue is that storing file archives requires the extra steps of bundling and
-extracting them. The data compression also raises questions in this approach.
+parts, in compressed archives). One is that dataset partitioning is an
+unnecessary complication in this case; It can cause data duplication and other
+hurdles. Another issue is that storing file archives requires the extra steps of
+bundling and extracting them. The data compression also raises questions in this
+approach. Most importantly, both files are parts of the same dataset, however
+they are tracked by 2 different DVC-files, instead of as 2 versions of the same
+one, as we'll explain next.
 
 ## Example: Better dataset versioning
 
@@ -80,8 +83,8 @@ $ rm -f data.zip
 ```
 
 Instead of creating an archive containing the `data/` directory, we can simply
-put it under DVC control as-is! This is done with the `dvc add` command, and
-this first version can be saved with Git:
+put it under DVC control as-is! This is done with the `dvc add` command, which
+accepts entire directories. We can then save this first version using Git:
 
 ```dvc
 $ git init  # Initialize Git repository
@@ -102,8 +105,8 @@ $ git commit -m "Add 1800 cats and dogs images dataset"
 > [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 > for more details on what happens under the hood when adding directories.
 
-Let's add the remaining cats and dogs images from the archive, to see what
-changes in our data directory:
+Let's add the remaining images from the second archive, and see what changes in
+our data directory:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
@@ -115,20 +118,14 @@ $ tree --filelimit 3
 │   ├── train
 │   │   ├── cats [1000 entries ...]
 │   │   └── dogs [1000 entries ...]
-│   └── validation
-│       ├── cats [400 entries ...]
-│       └── dogs [400 entries ...]
-├── data.dvc
-└── new-labels.zip
-
-7 directories, 2 files
+...
 $ rm -f new-labels.zip
 ```
 
-Now that an additional 500 images of each kind have been added to their
-corresponding subdirectories, we'll want to save the updates with DVC. To do
-this, we simply need to use `dvc add` again, commit the new dataset version with
-Git:
+An additional 500 images of each kind have been added to the corresponding
+subdirectories, and we probably want to save this update in our
+<abbr>project</abbr>. To do this, we simply run `dvc add` again on the same
+directory, and commit the new version with Git:
 
 ```dvc
 $ dvc add data
@@ -144,6 +141,52 @@ cbcf466 Add 1800 cats and dogs images dataset
 5b058a3 Initialize DVC project
 ```
 
-Note that when adding an updated data directory, DVC only needs to move the new
-and changed files to the <abbr>cache</abbr>, as all the previous ones were
-already there after the initial use of `dvc add`.
+As shown by the output of `git log` above, now we have 2 different versions of
+the project which we can switch between at any time. (Refer to `dvc checkout`.)
+Both have a single `data.dvc`
+[DVC-file](/doc/user-guide/dvc-files-and-directories), but the first version
+tacks a `data/` directory with the first 1800 images, while the latest one has
+the entire 2800 set.
+
+Note that when adding an updated data directory, DVC only needs to move the
+_delta_ (new and changed files) to the <abbr>cache</abbr>, as the unchanged
+files were already placed there by previous use(s) of `dvc add`. This optimizes
+file system performance, and avoids file duplication in caches or
+[remotes](/doc/command-reference/remote).
+
+This strategy enables exact reproducibility of old experiments (originally
+performed with the initial dataset). It also provides the ability to track the
+history of changes to datasets, via Git.
+
+## Taking full advantage of data registries
+
+If we want to keep the connection between the current <abbr>project</abbr> and
+an external DVC repository (e.g. A data registry)) we would use `dvc import`
+instead of `dvc get`. (Please refer to the command reference.) Let's try this
+with our example
+[dataset registry](https://github.com/iterative/dataset-registry), where we
+already registered the dataset, in the `use-cases` directory (with
+[2 versions](https://github.com/iterative/dataset-registry/commits/master/use-cases),
+as described in the previous section):
+
+```dvc
+dvc import --rev 0547f58 \
+           git@github.com:iterative/dataset-registry.git \
+           use-cases/data
+```
+
+This downloads the `data/` directory from Git version
+[0547f58](https://github.com/iterative/dataset-registry/tree/0547f58), which
+corresponds to the 1800 image dataset, and creates a local `data.dvc` _import
+stage_. Unlike typical DVC-files, this one records the source (project) of the
+imported data. This connection between projects allows us to check for updates
+in the data, using `dvc update`:
+
+```dvc
+$ dvc update data.dvc
+```
+
+This brings the `data/` directory up to its
+[latest version](https://github.com/iterative/dataset-registry/commit/99d1cdb)
+with 2800 images. Note that DVC only downloads the _delta_ when updating
+imports.
