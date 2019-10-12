@@ -1,6 +1,6 @@
 # Using DVC Commands
 
-DVC is a command-line tool. The typical DVC workflow goes as follows:
+DVC is a command line tool. The typical DVC workflow goes as follows:
 
 - In an existing Git repository, initialize a <abbr>DVC project</abbr> with
   `dvc init`.

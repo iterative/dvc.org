@@ -26,7 +26,7 @@ options) DVC can later connect each stage by building a dependency graph
 ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)). This graph is
 used by DVC to restore a full data [pipeline](/doc/command-reference/pipeline).
 
-The remainder of command-line input provided to `dvc run` after the options (`-`
+The remainder of command line input provided to `dvc run` after the options (`-`
 or `--` arguments) will become the required `command` argument. Please wrap the
 `command` with `"` quotes if there are special characters in it like `|` (pipe)
 or `<`, `>` (redirection) that would otherwise apply to the entire `dvc run`
