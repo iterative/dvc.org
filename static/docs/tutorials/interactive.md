@@ -26,6 +26,10 @@ Learn basic concepts and features of DVC with interactive lessons:
    <br/> DVC has a built-in way to connect ML steps into a DAG and run the full
    pipeline end-to-end.
 
+6. [Importing Data](https://katacoda.com/dvc/courses/basics/importing) <br/>
+   Download and track data from another DVC project that is hosted in a Git
+   repository.
+
 ## Simple ML Scenarios
 
 Learn how DVC can be used in simple ML scenarios:
