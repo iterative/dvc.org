@@ -72,7 +72,7 @@ specified), and updates stage files with the new checksum information.
   temporary files. Use `dvc commit` when ready to commit the results to cache.
 
 - `-m`, `--metrics` - show metrics after reproduction. The target pipelines must
-  have at least one metrics file defined either with the `dvc metrics` command,
+  have at least one metric file defined either with the `dvc metrics` command,
   or by the `-M` or `-m` options on the `dvc run` command.
 
 - `--dry` - only print the commands that would be executed without actually
