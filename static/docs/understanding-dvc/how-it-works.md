@@ -57,7 +57,7 @@
   ```
 
 - DVC makes repositories reproducible. DVC-files can be easily shared through
-  any Git server, and allows for experiments to be easily reproduced:
+  any Git server, and allow for experiments to be easily reproduced:
 
   ```dvc
   $ git clone https://github.com/dataversioncontrol/myrepo.git
@@ -73,7 +73,7 @@
   ```
 
 - The cache of a DVC project can be shared with colleagues through Amazon S3,
-  Azure Blob Storage, Google Cloud Storage, among others:
+  Azure Blob Storage, and Google Cloud Storage, among others:
 
   ```dvc
   $ git push
