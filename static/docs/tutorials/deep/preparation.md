@@ -65,7 +65,7 @@ DVC works on top of Git repositories. You run DVC initialization in a repository
 directory to create DVC meta files and directories.
 
 After DVC initialization, a new directory `.dvc/` will be created with `config`
-and `.gitignore` files, and <abbr>cache</abbr> directory. These files and
+and `.gitignore` files, and the <abbr>cache</abbr> directory. These files and
 directories are hidden from the user generally and are not meant to be
 manipulated directly. However, we describe some DVC internals below for a better
 understanding of how it works.
