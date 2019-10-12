@@ -100,7 +100,7 @@ workspace, DVC can create reflinks or other file link types.
 > When reflinks are not supported by the file system, DVC defaults to copying
 > files, which doesn't optimize file storage. However, it's easy to enable other
 > file link types on most systems. See
-> [File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > for more information.
 
 Creating file links is a quick file system operation. So, with DVC you can
@@ -109,7 +109,7 @@ using twice as much space in the hard drive. Even if each of the files contains
 41MB of data, the overall size of the repository is still 41MB. Both of the
 files correspond to the same `inode` (a file metadata record) in the file
 system. Refer to
-[Large Dataset Optimization](/docs/user-guide/large-dataset-optimization) for
+[Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) for
 more details.
 
 > Note that in systems supporting reflinks, use the `df` command to confirm that

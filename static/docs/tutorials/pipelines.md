@@ -188,7 +188,7 @@ but made specifically to handle large data files.
 
 > **Note!** For performance with large datasets, DVC can use file links from the
 > cache to the workspace to avoid copying actual file contents. Refer to
-> [File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > to learn which options exist and how to enable them.
 
 </details>
