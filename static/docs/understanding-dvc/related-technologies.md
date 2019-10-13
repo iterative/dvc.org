@@ -1,7 +1,7 @@
 # Comparison to Existing Technologies
 
-DVC takes a novel approach, and it may be easier to understand DVC in
-comparison to existing technologies and tools.
+DVC takes a novel approach, and it may be easier to understand DVC in comparison
+to existing technologies and tools.
 
 DVC combines a number of existing ideas into a single product, with the goal of
 bringing best practices from software engineering into the data science field.
@@ -21,8 +21,9 @@ Pipelines and dependency graphs
 Luigi, etc.
 
 - DVC is focused on data science and modeling. As a result, DVC pipelines are
-  lightweight and easy to create and modify. However, DVC lacks pipeline execution
-  features like execution monitoring, execution error handling, and recovering.
+  lightweight and easy to create and modify. However, DVC lacks pipeline
+  execution features like execution monitoring, execution error handling, and
+  recovering.
 
 - DVC is purely a command line tool without a graphical user interface (GUI) and
   doesn't run any daemons or servers. Nevertheless, DVC can generate images with
@@ -36,8 +37,8 @@ http://studio.ml/
 - DVC uses Git as the underlying platform for experiment tracking instead of a
   web application.
 
-- DVC doesn't need to run any services. There's no graphical user interface as a result,
-  but we expect some GUI services will be created on top of DVC.
+- DVC doesn't need to run any services. There's no graphical user interface as a
+  result, but we expect some GUI services will be created on top of DVC.
 
 - DVC has transparent design. Its
   [internal files and directories](/doc/user-guide/dvc-files-and-directories)
@@ -62,8 +63,8 @@ http://studio.ml/
   (DAG):
 
   - The DAG or dependency graph is defined implicitly by the connections between
-    [DVC-files](/doc/user-guide/dvc-file-format) (with file names `<file>.dvc` or
-    `Dvcfile`), based on their dependencies and <abbr>outputs</abbr>.
+    [DVC-files](/doc/user-guide/dvc-file-format) (with file names `<file>.dvc`
+    or `Dvcfile`), based on their dependencies and <abbr>outputs</abbr>.
 
   - Each DVC-file defines one node in the DAG. All DVC-files in a repository
     make up a single pipeline (think a single Makefile). All DVC-files (and
@@ -105,18 +106,18 @@ http://studio.ml/
   workflow) are always included in the Git repository and hence can be recreated
   locally with minimal effort.
 
-- DVC is not fundamentally bound to Git, and users have the option of changing the
-  repository format.
+- DVC is not fundamentally bound to Git, and users have the option of changing
+  the repository format.
 
 ### Git-LFS (Large File Storage)
 
 - DVC does not require special Git servers like Git-LFS demands. Any cloud
-  storage like S3, GCS, or an on-premises SSH server can be used as a backend for
-  datasets and models. No additional databases, servers, or infrastructure are
-  required.
+  storage like S3, GCS, or an on-premises SSH server can be used as a backend
+  for datasets and models. No additional databases, servers, or infrastructure
+  are required.
 
-- DVC is not fundamentally bound to Git, and users have the option of changing the
-  repository format.
+- DVC is not fundamentally bound to Git, and users have the option of changing
+  the repository format.
 
 - DVC does not add any hooks to Git by default. To checkout data files, the
   `dvc checkout` command has to be run after each `git checkout` and `git clone`

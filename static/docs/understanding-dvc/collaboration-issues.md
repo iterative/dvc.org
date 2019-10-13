@@ -1,23 +1,21 @@
 # Collaboration Issues in Data Science
 
-Even with all the success we've seen today in machine learning (ML), specifically deep
-learning and its applications in business, the data science community still
-lacks good practices for organizing their projects and effectively
-collaborating across their varied ML projects. This is a critical challenge: we
-need to evolve towards ML algorithms and methods no longer being
-"tribal knowledge" and making them easy to implement, reuse, and
-manage.
+Even with all the success we've seen today in machine learning (ML),
+specifically deep learning and its applications in business, the data science
+community still lacks good practices for organizing their projects and
+effectively collaborating across their varied ML projects. This is a critical
+challenge: we need to evolve towards ML algorithms and methods no longer being
+"tribal knowledge" and making them easy to implement, reuse, and manage.
 
-To make progress, many areas of the ML experimentation process
-need to be formalized. Common questions need to be answered in an unified,
-principled way.
+To make progress, many areas of the ML experimentation process need to be
+formalized. Common questions need to be answered in an unified, principled way.
 
 ## Questions
 
 ### Source code and data versioning
 
 - How do you avoid discrepancies between versions of the source code and
-  versions of the data files when the data cannot fit into a traditional 
+  versions of the data files when the data cannot fit into a traditional
   repository format?
 
 ### Experiment time log
@@ -38,8 +36,8 @@ principled way.
 
 ### Reproducibility
 
-- How do you run a model's evaluation process again without retraining the model and
-  preprocessing a raw dataset?
+- How do you run a model's evaluation process again without retraining the model
+  and preprocessing a raw dataset?
 
 ### Managing and sharing large data files
 
