@@ -83,8 +83,8 @@ An output entry consists of these fields:
 
 A metric entry consists of these fields:
 
-- `type`: Type of the metrics file (e.g. raw/json/tsv/htsv/csv/hcsv)
-- `xpath`: Path within the metrics file to the metrics data(e.g. `AUC.value` for
+- `type`: Type of the metric file (e.g. raw/json/tsv/htsv/csv/hcsv)
+- `xpath`: Path within the metric file to the metrics data(e.g. `AUC.value` for
   `{"AUC": {"value": 0.624321}}`)
 
 A `meta` entry consists of `key: value` pairs such as `name: John`. A meta entry

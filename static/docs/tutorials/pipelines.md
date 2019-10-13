@@ -88,9 +88,9 @@ When we run `dvc add` `Posts.xml.zip`, DVC creates a
 
 ### Expand to learn about DVC internals
 
-`dvc init` created a new directory `.dvc/`, with `config`, `.gitignore` files,
-and the cache directory. These files and directories are hidden from users in
-general. Users don't interact with these files directly. See
+`dvc init` created a new directory `.dvc/`, with the `config` and `.gitignore`
+files, as well as `cache/` directory. These files and directories are hidden
+from users in general, as there's no need to interact with them directly See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -188,7 +188,7 @@ but made specifically to handle large data files.
 
 > **Note!** For performance with large datasets, DVC can use file links from the
 > cache to the workspace to avoid copying actual file contents. Refer to
-> [File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > to learn which options exist and how to enable them.
 
 </details>
