@@ -32,7 +32,7 @@ Under the hood a few actions are taken:
 
 - The push command by default uses all
   [DVC-files](/doc/user-guide/dvc-file-format in the <abbr>workspace</abbr>. The
-  command-line options listed below will either limit or expand the set of
+  command line options listed below will either limit or expand the set of
   DVC-files to consult.
 
 - For each <abbr>output</abbr> referenced from each selected DVC-file, DVC finds
