@@ -169,7 +169,6 @@ Running command:
   unzip data/Posts.xml.zip -d data/
 Archive:  data/Posts.xml.zip
     inflating: data/Posts.xml
-Saving 'data/Posts.xml' to cache '.dvc/cache'.
 Saving information to 'Posts.xml.dvc'.
 
 To track the changes with git run:
