@@ -83,6 +83,45 @@
     "source": "user-guide/index.md",
     "children": [
       {
+        "label": "Installation",
+        "slug": "install",
+        "source": "install/index.md",
+        "children": [
+          {
+            "label": "Mac OS",
+            "slug": "mac"
+          },
+          {
+            "label": "Windows",
+            "slug": "win"
+          },
+          {
+            "label": "Linux Deb",
+            "slug": "deb"
+          },
+          {
+            "label": "Linux RPM",
+            "slug": "rpm"
+          },
+          {
+            "label": "Arch Linux",
+            "slug": "arch"
+          },
+          {
+            "label": "Tab Completion",
+            "slug": "completion"
+          },
+          {
+            "label": "Plugins",
+            "slug": "plugins"
+          },
+          {
+            "label": "Development",
+            "slug": "dev"
+          }
+        ]
+      },
+      {
         "label": "Files and Directories",
         "slug": "dvc-files-and-directories"
       },
