@@ -22,4 +22,5 @@
    ```
 
 3. Bash completion should work out of the box on Debian and Ubuntu. But if not,
-   try [these instructions](install/completion#bash-completion-on-ubuntu).
+   try
+   [these instructions](/doc/user-guide/install/completion#bash-completion-on-ubuntu).

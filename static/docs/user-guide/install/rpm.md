@@ -22,4 +22,4 @@
    ```
 
 3. Bash completion should work out of the box. But if not, check
-   [these instructions](install/completion#bash-completion-on-ubuntu).
+   [these instructions](/doc/user-guide/install/completion#bash-completion-on-ubuntu).

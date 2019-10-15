@@ -31,10 +31,11 @@ In this case it installs `boto3` library as well, besides DVC.
 
 </details>
 
-> It is recommended to install [shell autocompletion](install/completion)
-> scripts as well.
+> It is recommended to install
+> [shell autocompletion](/doc/user-guide/install/completion) scripts as well.
 >
-> Check out some other [plugins](install/plugins) that might be useful too.
+> Check out some other [plugins](/doc/user-guide/install/plugins) that might be
+> useful too.
 
 ## Install with conda
 
@@ -46,16 +47,16 @@ $ conda install -c conda-forge dvc
 
 ## Alternative installation ways
 
-- [Install on Mac OS](install/mac)
+- [Install on Mac OS](/doc/user-guide/install/mac)
 
-- [Install on Windows](install/win)
+- [Install on Windows](/doc/user-guide/install/win)
 
 - Install on Linux
 
-  - [DEB package (Ubuntu, Debian)](install/deb)
+  - [DEB package (Ubuntu, Debian)](/doc/user-guide/install/deb)
 
-  - [RPM package (Fedora, CentOS)](install/rpm)
+  - [RPM package (Fedora, CentOS)](/doc/user-guide/install/rpm)
 
-  - [Install on Arch Linux](install/arch)
+  - [Install on Arch Linux](/doc/user-guide/install/arch)
 
-- [Install for testing and development](install/dev)
+- [Install for testing and development](/doc/user-guide/install/dev)

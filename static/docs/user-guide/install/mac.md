@@ -17,4 +17,4 @@
    [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 
 3. To install bash completion follow
-   [these instructions](completion#bash-completion-on-mac-os).
+   [these instructions](/doc/user-guide/install/completion#bash-completion-on-mac-os).
