@@ -1,41 +1,20 @@
 # Installation on MacOS
 
-## Install DVC
-
-```dvc
-$ brew install iterative/homebrew-dvc/dvc
-```
-
-or:
-
-```dvc
-$ brew cask install iterative/homebrew-dvc/dvc
-```
-
-## Install bash-completion
-
-1. First, make sure that Bash completion support is installed:
+1. Install with `brew`:
 
    ```dvc
-   $ brew install bash-completion
+   $ brew install iterative/homebrew-dvc/dvc
    ```
 
-2. Then download the
-   [DVC completion script](https://github.com/iterative/dvc/blob/master/scripts/completion/dvc.bash)
-   and save it on `/usr/local/etc/bash_completion.d/`:
+   or:
 
    ```dvc
-   $ sudo wget \
-       -O /usr/local/etc/bash_completion.d/dvc \
-       https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.bash
+   $ brew cask install iterative/homebrew-dvc/dvc
    ```
 
-3. Edit `~/.bash_profile` and make sure that these lines are there:
+2. Alternatively, you can install the PKG package from the big "Download" button
+   on the [home page](/), or from the
+   [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 
-   ```dvc
-   if [ -f $(brew --prefix)/etc/bash_completion ]; then
-       . $(brew --prefix)/etc/bash_completion
-   fi
-   ```
-
-4. Finally, `source ~/.bash_profile` or launch a new terminal to activate it.
+3. To install bash completion follow
+   [these instructions](completion#bash-completion-on-mac-os).
