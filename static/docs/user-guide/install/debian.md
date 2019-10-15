@@ -1,4 +1,4 @@
-# Installation on Arch Linux
+# Installation on Debian and Ubuntu
 
 ## Install with pip
 
@@ -34,5 +34,21 @@ $ conda install -c conda-forge dvc
 ## Install from repo
 
 ```dvc
-$ yay -S dvc
+$ sudo wget \
+       https://dvc.org/deb/dvc.list \
+       -O /etc/apt/sources.list.d/dvc.list
+
+$ sudo apt update
+
+$ sudo apt install dvc
+```
+
+## Install from package
+
+Get the DEB package from the big "Download" button on the [home page](/), or
+from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
+Then install it like this:
+
+```dvc
+$ sudo apt install ./dvc_0.62.1_amd64.deb
 ```

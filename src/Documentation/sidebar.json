@@ -88,37 +88,18 @@
         "source": "install/index.md",
         "children": [
           {
-            "label": "Mac OS",
-            "slug": "mac"
+            "label": "MacOS",
+            "slug": "macos"
           },
+          "windows",
+          "debian",
+          "fedora",
+          "arch",
           {
-            "label": "Windows",
-            "slug": "win"
-          },
-          {
-            "label": "Linux Deb",
-            "slug": "deb"
-          },
-          {
-            "label": "Linux RPM",
-            "slug": "rpm"
-          },
-          {
-            "label": "Arch Linux",
-            "slug": "arch"
-          },
-          {
-            "label": "Tab Completion",
+            "label": "Shell Completion",
             "slug": "completion"
           },
-          {
-            "label": "Plugins",
-            "slug": "plugins"
-          },
-          {
-            "label": "Development",
-            "slug": "dev"
-          }
+          "plugins"
         ]
       },
       {

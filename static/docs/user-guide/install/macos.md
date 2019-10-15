@@ -1,4 +1,15 @@
-# Installation on Arch Linux
+# Installation on MacOS
+
+## Install with brew
+
+```dvc
+$ brew install iterative/homebrew-dvc/dvc
+```
+
+## Install from package
+
+Get the PKG package from the big "Download" button on the [home page](/), or
+from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 
 ## Install with pip
 
@@ -30,9 +41,3 @@ $ conda install -c conda-forge dvc
 ```
 
 > Currently, it supports only Python versions 2.7, 3.6, and 3.7.
-
-## Install from repo
-
-```dvc
-$ yay -S dvc
-```
