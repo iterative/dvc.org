@@ -1,12 +1,11 @@
 # Install
 
 There are a few ways to install DVC: using `pip` or `conda`, which are system
-agnostic, and using packages/installers for specific systems.
+agnostic, or using packages/installers for specific platforms
+(Linux/Windows/Mac).
 
-> It may happen that you install DVC first for testing and then try to install
-> it again via a different way. This may cause any conflicts or confusion. So,
-> before trying to install it, make sure that it is not already installed, using
-> a command like: `which dvc`.
+> Please double check you don't already have DVC, before trying to install it
+> (again), with a command like `which dvc`.
 
 ## Install with pip
 
