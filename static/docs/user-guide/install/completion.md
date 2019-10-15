@@ -47,7 +47,7 @@ install and configure shell completion.
    [DVC completion script](https://github.com/iterative/dvc/blob/master/scripts/completion/dvc.bash)
    and save it on `/usr/local/etc/bash_completion.d/`:
 
-   ```bash
+   ```dvc
    $ sudo wget \
        -O /usr/local/etc/bash_completion.d/dvc \
        https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.bash
@@ -55,7 +55,7 @@ install and configure shell completion.
 
 3. Edit `~/.bash_profile` and make sure that these lines are there:
 
-   ```bash
+   ```dvc
    if [ -f $(brew --prefix)/etc/bash_completion ]; then
        . $(brew --prefix)/etc/bash_completion
    fi
@@ -71,7 +71,7 @@ steps to make sure that it is installed:
 
 1. First, make sure that Bash completion support is installed:
 
-   ```bash
+   ```dvc
    $ sudo apt install --reinstall bash-completion
    ```
 
@@ -79,7 +79,7 @@ steps to make sure that it is installed:
    [DVC completion script](https://github.com/iterative/dvc/blob/master/scripts/completion/dvc.bash)
    and save it on `/etc/bash_completion.d/`:
 
-   ```bash
+   ```dvc
    $ sudo wget \
        -O /etc/bash_completion.d/dvc \
        https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.bash
@@ -87,7 +87,7 @@ steps to make sure that it is installed:
 
 3. Edit `~/.bashrc` and make sure that these lines are there:
 
-   ```bash
+   ```dvc
    # enable bash completion in interactive shells
    if ! shopt -oq posix; then
      if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -113,7 +113,7 @@ should be `_dvc`.
 
 For example:
 
-```bash
+```dvc
 $ sudo wget \
     -O /usr/share/zsh/site-functions/_dvc \
     https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.zsh
@@ -121,20 +121,20 @@ $ sudo wget \
 
 Make sure `compinit` is loaded or do it by adding in `~/.zshrc`:
 
-```bash
+```dvc
 $ autoload -Uz compinit && compinit -i
 ```
 
 Then reload your shell:
 
-```bash
+```dvc
 $ exec $SHELL -l
 ```
 
 This step is optional but will make the DVC output look much nicer, by adding
 more colors to it. Add the following to your `~/.zshrc`:
 
-```bash
+```dvc
 # Case insensitive match
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 

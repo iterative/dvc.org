@@ -2,7 +2,7 @@
 
 1. Install from the DVC deb repo:
 
-   ```bash
+   ```dvc
    $ sudo wget \
           https://dvc.org/deb/dvc.list \
           -O /etc/apt/sources.list.d/dvc.list
@@ -17,7 +17,7 @@
    [release page](https://github.com/iterative/dvc/releases/) on GitHub. Then
    install it like this:
 
-   ```bash
+   ```dvc
    $ sudo apt install ./dvc_0.62.1_amd64.deb
    ```
 

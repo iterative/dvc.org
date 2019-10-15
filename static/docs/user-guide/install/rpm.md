@@ -2,7 +2,7 @@
 
 1. Install from the DVC rpm repo:
 
-   ```bash
+   ```dvc
    $ sudo wget \
           https://dvc.org/rpm/dvc.repo \
           -O /etc/yum.repos.d/dvc.repo
@@ -17,7 +17,7 @@
    [release page](https://github.com/iterative/dvc/releases/) on GitHub. Then
    install it like this:
 
-   ```bash
+   ```dvc
    $ sudo yum install dvc-0.62.1-1.x86_64.rpm
    ```
 

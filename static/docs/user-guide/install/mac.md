@@ -24,7 +24,7 @@ $ brew cask install iterative/homebrew-dvc/dvc
    [DVC completion script](https://github.com/iterative/dvc/blob/master/scripts/completion/dvc.bash)
    and save it on `/usr/local/etc/bash_completion.d/`:
 
-   ```bash
+   ```dvc
    $ sudo wget \
        -O /usr/local/etc/bash_completion.d/dvc \
        https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.bash
@@ -32,7 +32,7 @@ $ brew cask install iterative/homebrew-dvc/dvc
 
 3. Edit `~/.bash_profile` and make sure that these lines are there:
 
-   ```bash
+   ```dvc
    if [ -f $(brew --prefix)/etc/bash_completion ]; then
        . $(brew --prefix)/etc/bash_completion
    fi

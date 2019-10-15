@@ -7,7 +7,7 @@ your testing environment.
 
 You can do it like this:
 
-```bash
+```dvc
 $ virtualenv -p python3 .env
 $ source .env/bin/activate
 $ pip install gitpython
@@ -23,7 +23,7 @@ $ pip install git+https://github.com/iterative/dvc.git
 If you want to install instead a certain `<branch>`, you can add the branch name
 after an `@`-sign, like this:
 
-```bash
+```dvc
 $ virtualenv -p python3 .env
 $ source .env/bin/activate
 $ pip install gitpython
@@ -33,7 +33,7 @@ $ pip install git+https://github.com/iterative/dvc.git@<branch>
 If you want to install and test the DVC from the code that you are working on,
 you can do it like this:
 
-```bash
+```dvc
 $ git clone https://github.com/iterative/dvc dvc-dev
 $ mkdir test
 $ cd test/

@@ -1,5 +1,5 @@
 # Installation on Arch Linux
 
-```bash
+```dvc
 $ yay -S dvc
 ```
