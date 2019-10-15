@@ -44,16 +44,18 @@ $ conda install -c conda-forge dvc
 
 > Currently, it supports only Python versions 2.7, 3.6, and 3.7.
 
-## Other installation options
+## Alternative installation ways
 
 - [Install on Mac OS](install/mac)
 
 - [Install on Windows](install/win)
 
-- [Install from DEB package (Ubuntu, Debian)](install/deb)
+- Install on Linux
 
-- [Install from RPM package (Fedora, CentOS)](install/rpm)
+  - [DEB package (Ubuntu, Debian)](install/deb)
 
-- [Install on Arch Linux](install/arch)
+  - [RPM package (Fedora, CentOS)](install/rpm)
+
+  - [Install on Arch Linux](install/arch)
 
 - [Install for testing and development](install/dev)
