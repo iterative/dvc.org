@@ -1,4 +1,4 @@
-# Installation on Debian and Ubuntu
+# Installation on Linux
 
 ## Install with pip
 
@@ -35,6 +35,10 @@ $ conda install -c conda-forge dvc
 
 ## Install from repo
 
+<details>
+
+### On Debian/Ubuntu
+
 ```dvc
 $ sudo wget \
        https://dvc.org/deb/dvc.list \
@@ -45,13 +49,56 @@ $ sudo apt update
 $ sudo apt install dvc
 ```
 
+</details>
+
+<details>
+
+### On Fedora/CentOS
+
+```dvc
+$ sudo wget \
+       https://dvc.org/rpm/dvc.repo \
+       -O /etc/yum.repos.d/dvc.repo
+
+$ sudo yum update
+
+$ sudo yum install dvc
+```
+
+</details>
+
+<details>
+
+### On Arch Linux
+
+```dvc
+$ yay -S dvc
+```
+
+</details>
+
 ## Install from package
 
-Get the DEB package (binary) from the big "Download" button on the
-[home page](/), or from the
-[release page](https://github.com/iterative/dvc/releases/) on GitHub. Then
-install it like this:
+Get the binary package from the big "Download" button on the [home page](/), or
+from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
+Then install it with the following command.
+
+<details>
+
+### On Debian/Ubuntu
 
 ```dvc
 $ sudo apt install ./dvc_0.62.1_amd64.deb
 ```
+
+</details>
+
+<details>
+
+### On Fedora/CentOS
+
+```dvc
+$ sudo yum install dvc-0.62.1-1.x86_64.rpm
+```
+
+</details>

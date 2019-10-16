@@ -88,50 +88,20 @@
         "source": "install/index.md",
         "children": [
           {
-            "label": "MacOS",
+            "label": "Mac OS",
             "slug": "macos"
           },
+          "windows",
+          "linux",
           {
-            "label": "Windows",
-            "slug": "windows"
+            "label": "Install from code",
+            "slug": "code"
           },
           {
-            "slug": "linux",
-            "source": "linux/index.md",
-            "children": [
-              {
-                "label": "Debian / Ubuntu",
-                "slug": "debian"
-              },
-              {
-                "label": "Fedora / CentOS",
-                "slug": "fedora"
-              },
-              {
-                "label": "Arch Linux",
-                "slug": "arch"
-              }
-            ]
+            "label": "Shell Completion",
+            "slug": "completion"
           },
-          {
-            "label": "Extra",
-            "slug": "extra",
-            "source": "extra/index.md",
-            "children": [
-              {
-                "label": "Install from code",
-                "slug": "code"
-              },
-              {
-                "label": "Shell Completion",
-                "slug": "completion"
-              },
-              {
-                "label": "Plugins",
-                "slug": "plugins"
-              }
-            ]
-          }
+          "plugins"
         ]
       },
       {
