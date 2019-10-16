@@ -31,8 +31,9 @@ location into the workspace, such that it will be automatically updated (by
 
 The `dvc import-url` command helps the user create such an external data
 dependency. The `url` argument specifies the external location of the data to be
-imported, while `out` can be used to specify the (path and) file name desired
-for the imported data file or directory in the workspace.
+imported, while `out` can be used to specify the directory and/or file name
+desired for the downloaded data. If an existing directory is specified, then the
+output will be placed inside of it.
 
 > See `dvc import` to download and tack data or model files or directories from
 > other DVC repositories (e.g. GitHub URLs).
