@@ -25,6 +25,8 @@ In this case it installs `boto3` library as well, besides DVC.
 
 ## Install with conda
 
+> Requires [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+
 ```dvc
 $ conda install -c conda-forge dvc
 ```
@@ -45,9 +47,10 @@ $ sudo yum install dvc
 
 ## Install from package
 
-Get the RPM package from the big "Download" button on the [home page](/), or
-from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
-Then install it like this:
+Get the RPM package (binary) from the big "Download" button on the
+[home page](/), or from the
+[release page](https://github.com/iterative/dvc/releases/) on GitHub. Then
+install it like this:
 
 ```dvc
 $ sudo yum install dvc-0.62.1-1.x86_64.rpm

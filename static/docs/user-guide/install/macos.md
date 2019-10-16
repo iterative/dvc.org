@@ -2,14 +2,17 @@
 
 ## Install with brew
 
+Recommended. Requires [Homebrew](https://brew.sh/).
+
 ```dvc
 $ brew install iterative/homebrew-dvc/dvc
 ```
 
 ## Install from package
 
-Get the PKG package from the big "Download" button on the [home page](/), or
-from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
+Get the PKG package (binary) from the big "Download" button on the
+[home page](/), or from the
+[release page](https://github.com/iterative/dvc/releases/) on GitHub.
 
 ## Install with pip
 
@@ -35,6 +38,8 @@ In this case it installs `boto3` library as well, besides DVC.
 </details>
 
 ## Install with conda
+
+> Requires [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
 
 ```dvc
 $ conda install -c conda-forge dvc

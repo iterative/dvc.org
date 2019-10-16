@@ -1,7 +1,7 @@
-# Install
+# Installation
 
-Please double check you don't already have DVC, before trying to install it
-(again), with a command like `which dvc`.
+Please double check that you don't already have DVC (for example running
+`which dvc`) before trying to install it (again).
 
 - [Install on Mac OS](/doc/user-guide/install/macos)
 - [Install on Windows](/doc/user-guide/install/windows)
@@ -10,14 +10,10 @@ Please double check you don't already have DVC, before trying to install it
   - [Install on Fedora and CentOS](/doc/user-guide/install/linux/fedora)
   - [Install on Arch Linux](/doc/user-guide/install/linux/arch)
 
-Some other options:
+You can also
+[install the latest version of code](/doc/user-guide/install/extra/code), before
+the official release.
 
-- You can also
-  [install the latest version of code](/doc/user-guide/install/extra/code),
-  before the official release.
-
-- It is recommended to install
-  [shell completion](/doc/user-guide/install/extra/completion) scripts as well.
-
-- Check out some other [plugins](/doc/user-guide/install/extra/plugins) that
-  might be useful too.
+It is recommended to setup
+[shell completion](/doc/user-guide/install/completion) as well. And check out
+these [plugins](/doc/user-guide/install/plugins), which might be useful too.

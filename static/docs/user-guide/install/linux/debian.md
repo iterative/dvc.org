@@ -25,6 +25,8 @@ In this case it installs `boto3` library as well, besides DVC.
 
 ## Install with conda
 
+> Requires [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+
 ```dvc
 $ conda install -c conda-forge dvc
 ```
@@ -45,9 +47,10 @@ $ sudo apt install dvc
 
 ## Install from package
 
-Get the DEB package from the big "Download" button on the [home page](/), or
-from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
-Then install it like this:
+Get the DEB package (binary) from the big "Download" button on the
+[home page](/), or from the
+[release page](https://github.com/iterative/dvc/releases/) on GitHub. Then
+install it like this:
 
 ```dvc
 $ sudo apt install ./dvc_0.62.1_amd64.deb

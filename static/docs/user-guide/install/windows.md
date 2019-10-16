@@ -1,15 +1,17 @@
 # Installation on Windows
 
-## Install from exe
+## Windows installer
 
-The easiest way is to use the self-contained Windows installer, which is
-available from the big "Download" button on the [home page](/). You can also get
-it from the [release page](https://github.com/iterative/dvc/releases/) on
-GitHub.
+The easiest way is to use the self-contained, executable installer (binary),
+which is available from the big "Download" button on the [home page](/). You can
+also get it from the [release page](https://github.com/iterative/dvc/releases/)
+on GitHub.
 
 ## Install with conda
 
-You can install with `conda` from
+> Requires [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+
+You can use `conda` from
 [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win),
 which is a POSIX-like command line terminal in Windows.
 

@@ -25,6 +25,8 @@ In this case it installs `boto3` library as well, besides DVC.
 
 ## Install with conda
 
+> Requires [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+
 ```dvc
 $ conda install -c conda-forge dvc
 ```
