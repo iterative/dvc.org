@@ -40,7 +40,7 @@ First, let's create a simple DVC-file:
 ```dvc
 $ echo foo > foo
 $ dvc add foo
-Saving 'foo'...
+Saving information ...
 
 $ dvc run -d foo -o bar cp foo bar
 Running command:

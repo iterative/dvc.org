@@ -166,8 +166,7 @@ $ mkdir data
 $ dvc run -d data -o metric -f metric.dvc "echo '1' >> metric"
 
 Running command:
-  echo 'a' >> metric
-Saving 'metric' to cache '.dvc/cache'.
+  echo '1' >> metric
 Saving information to 'metric.dvc'.
 
 To track the changes with git run:

@@ -120,7 +120,6 @@ Take a file under DVC control:
 ```dvc
 $ dvc add data.xml
 
-Saving 'data.xml' to cache '.dvc/cache'.
 Saving information to 'data.xml.dvc'.
 
 To track the changes with git run:
@@ -192,8 +191,6 @@ Computing md5 for a large directory pics/train/cats. This is only done once.
 
 ...
 
-Saving 'pics' to cache '.dvc/cache'.
-
 Linking directory 'pics'.
 [##############################] 100% pics
 
@@ -227,10 +224,10 @@ If instead you use the `--recursive` option, the output looks as so:
 ```dvc
 $ dvc add --recursive pics
 
-Saving 'pics/train/cats/cat.150.jpg' to cache '.dvc/cache'.
-Saving 'pics/train/cats/cat.130.jpg' to cache '.dvc/cache'.
-Saving 'pics/train/cats/cat.111.jpg' to cache '.dvc/cache'.
-Saving 'pics/train/cats/cat.438.jpg' to cache '.dvc/cache'.
+Saving information to 'pics/cat1.jpg.dvc'.
+Saving information to 'pics/cat3.jpg.dvc'.
+Saving information to 'pics/cat2.jpg.dvc'.
+Saving information to 'pics/cat4.jpg.dvc'.
 ...
 ```
 
