@@ -91,15 +91,47 @@
             "label": "MacOS",
             "slug": "macos"
           },
-          "windows",
-          "debian",
-          "fedora",
-          "arch",
           {
-            "label": "Shell Completion",
-            "slug": "completion"
+            "label": "Windows",
+            "slug": "windows"
           },
-          "plugins"
+          {
+            "slug": "linux",
+            "source": "linux/index.md",
+            "children": [
+              {
+                "label": "Debian / Ubuntu",
+                "slug": "debian"
+              },
+              {
+                "label": "Fedora / CentOS",
+                "slug": "fedora"
+              },
+              {
+                "label": "Arch Linux",
+                "slug": "arch"
+              }
+            ]
+          },
+          {
+            "label": "Extra",
+            "slug": "extra",
+            "source": "extra/index.md",
+            "children": [
+              {
+                "label": "Install from code",
+                "slug": "code"
+              },
+              {
+                "label": "Shell Completion",
+                "slug": "completion"
+              },
+              {
+                "label": "Plugins",
+                "slug": "plugins"
+              }
+            ]
+          }
         ]
       },
       {

@@ -39,7 +39,7 @@ install and configure shell completion.
 
 1. First, make sure that Bash completion support is installed:
 
-   ```shell
+   ```dvc
    $ brew install bash-completion
    ```
 
@@ -55,7 +55,7 @@ install and configure shell completion.
 
 3. Edit `~/.bash_profile` and make sure that these lines are there:
 
-   ```dvc
+   ```bash
    if [ -f $(brew --prefix)/etc/bash_completion ]; then
        . $(brew --prefix)/etc/bash_completion
    fi
@@ -87,7 +87,7 @@ steps to make sure that it is installed:
 
 3. Edit `~/.bashrc` and make sure that these lines are there:
 
-   ```dvc
+   ```bash
    # enable bash completion in interactive shells
    if ! shopt -oq posix; then
      if [ -f /usr/share/bash-completion/bash_completion ]; then
@@ -134,7 +134,7 @@ $ exec $SHELL -l
 This step is optional but will make the DVC output look much nicer, by adding
 more colors to it. Add the following to your `~/.zshrc`:
 
-```dvc
+```bash
 # Case insensitive match
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
