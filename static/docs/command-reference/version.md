@@ -64,7 +64,7 @@ The detail of `Binary` depends on the way DVC was downloading and
     distributions, like Ubuntu
   - Red Hat package (`.rpm`) - file used to install packages in some Linux based
     distributions, such as Fedora, CentOS, etc.
-  - PKG file (`.pkg`) - file used to install apps on macOS
+  - PKG file (`.pkg`) - file used to install apps on MacOS
   - Windows executable (`.exe`) - file used to install applications on Windows
 
   These downloads are available from our [home page](/). They ultimately contain
@@ -80,7 +80,7 @@ The detail of `Binary` depends on the way DVC was downloading and
   - [The Python Package Index (PyPI)](https://pypi.org/project/dvc/) - source
     code is stored as a Python package
   - [Homebrew package manager](https://github.com/iterative/homebrew-dvc) (for
-    macOS systems) - source code is stored as Python package
+    MacOS systems) - source code is stored as Python package
 
   This method of installation involves downloading DVC source code, and
   following certain setup instructions (See the

@@ -48,9 +48,8 @@ $ pip install -r code/requirements.txt
 ## Install DVC
 
 Now DVC software should be installed. The easiest way to install DVC is a system
-dependent package. DVC supports all common operating systems: Mac OS X, Linux
-and Windows. You can find the latest version of the package on the
-[home page](/).
+dependent package. DVC supports all common operating systems: MacOS X, Linux and
+Windows. You can find the latest version of the package on the [home page](/).
 
 Alternatively, you can install DVC by Python package manager — PIP if you use
 Python:
