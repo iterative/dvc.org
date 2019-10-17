@@ -60,7 +60,6 @@ $ ls -lh
 -rw-r--r--  1 10576022 Nov 27 13:30 Posts.xml.zip
 
 $ dvc add Posts.xml.zip
-Saving 'Posts.xml.zip' to cache '.dvc/cache'.
 Saving information to 'Posts.xml.zip.dvc'.
 
 To track the changes with git run:

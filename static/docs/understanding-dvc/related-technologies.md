@@ -1,7 +1,7 @@
 # Comparison to Existing Technologies
 
-Due to the the novelty of our approach, it may be easier to understand DVC in
-comparison to existing technologies and tools.
+DVC takes a novel approach, and it may be easier to understand DVC in comparison
+to existing technologies and tools.
 
 DVC combines a number of existing ideas into a single product, with the goal of
 bringing best practices from software engineering into the data science field.
@@ -21,23 +21,24 @@ Pipelines and dependency graphs
 Luigi, etc.
 
 - DVC is focused on data science and modeling. As a result, DVC pipelines are
-  lightweight, easy to create and modify. However, DVC lacks pipeline execution
-  features like execution monitoring, execution error handling, and recovering.
+  lightweight and easy to create and modify. However, DVC lacks pipeline
+  execution features like execution monitoring, execution error handling, and
+  recovering.
 
 - DVC is purely a command line tool without a graphical user interface (GUI) and
   doesn't run any daemons or servers. Nevertheless, DVC can generate images with
-  pipeline and experiment workflow visualization.
+  pipeline and experiment workflow visualizations.
 
 ### Experiment management software
 
-Mostly designed for enterprise usage, but with open-sourced options such as
+Mostly designed for enterprise usage, but with open source options such as
 http://studio.ml/
 
 - DVC uses Git as the underlying platform for experiment tracking instead of a
   web application.
 
-- DVC doesn't need to run any services. No graphical user interface as a result,
-  but we expect some GUI services will be created on top of DVC.
+- DVC doesn't need to run any services. There's no graphical user interface as a
+  result, but we expect some GUI services will be created on top of DVC.
 
 - DVC has transparent design. Its
   [internal files and directories](/doc/user-guide/dvc-files-and-directories)
@@ -48,10 +49,10 @@ http://studio.ml/
 
 - DVC supports a new experimentation methodology that integrates easily with a
   Git workflow. A separate branch should be created for each experiment, with a
-  subsequent merge of this branch if it was successful.
+  subsequent merge of the branch if the experiment was successful.
 
 - DVC innovates by giving experimenters the ability to easily navigate through
-  past experiments without recomputing them.
+  past experiments without recomputing them each time.
 
 ### Build automation tools
 
@@ -62,15 +63,15 @@ http://studio.ml/
   (DAG):
 
   - The DAG or dependency graph is defined implicitly by the connections between
-    [DVC-file](/doc/user-guide/dvc-file-format) (with file names `<file>.dvc` or
-    `Dvcfile`), based on their dependencies and <abbr>outputs</abbr>.
+    [DVC-files](/doc/user-guide/dvc-file-format) (with file names `<file>.dvc`
+    or `Dvcfile`), based on their dependencies and <abbr>outputs</abbr>.
 
   - Each DVC-file defines one node in the DAG. All DVC-files in a repository
     make up a single pipeline (think a single Makefile). All DVC-files (and
     corresponding pipeline commands) are implicitly combined through their
-    inputs and outputs, to simplify conflict resolving during merges.
+    inputs and outputs, simplifying conflict resolution during merges.
 
-  - DVC provides a simple command `dvc run` to generate a DVC-file or "stage
+  - DVC provides a simple command – `dvc run` – to generate a DVC-file or "stage
     file" automatically, based on the provided command, dependencies, and
     outputs.
 
@@ -78,21 +79,21 @@ http://studio.ml/
 
   - DVC tracks files based on checksum (MD5) instead of file timestamps. This
     helps avoid running into heavy processes like model retraining when you
-    checkout a previous, trained version of a modeling code (Make would retrain
+    checkout a previous, trained version of a model's code (Make would retrain
     the model).
 
   - DVC uses file timestamps and inodes for optimization. This allows DVC to
-    avoid recomputing all dependency files checksum, which would be highly
+    avoid recomputing all dependency files' checksums, which would be highly
     problematic when working with large files (10 GB+).
 
 ### Git-annex
 
 - DVC uses the idea of storing the content of large files (that you don't want
-  to see in your Git repository) in a local key-value store and use file
+  to see in your Git repository) in a local key-value store and uses file
   symlinks instead of the actual files.
 
 - DVC can use reflinks\* or hardlinks (depending on the system) instead of
-  symlinks to improve performance and make the user experience better.
+  symlinks to improve performance and the user experience.
 
 - DVC optimizes checksum calculation.
 
@@ -105,23 +106,23 @@ http://studio.ml/
   workflow) are always included in the Git repository and hence can be recreated
   locally with minimal effort.
 
-- DVC is not fundamentally bound to Git, having the option of changing the
-  repository format.
+- DVC is not fundamentally bound to Git, and users have the option of changing
+  the repository format.
 
 ### Git-LFS (Large File Storage)
 
 - DVC does not require special Git servers like Git-LFS demands. Any cloud
-  storage like S3, GCS, or on-premises SSH server can be used as a backend for
-  datasets and models, no additional databases, servers or infrastructure are
-  required.
+  storage like S3, GCS, or an on-premises SSH server can be used as a backend
+  for datasets and models. No additional databases, servers, or infrastructure
+  are required.
 
-- DVC is not fundamentally bound to Git, having the option of changing the
-  repository format.
+- DVC is not fundamentally bound to Git, and users have the option of changing
+  the repository format.
 
 - DVC does not add any hooks to Git by default. To checkout data files, the
   `dvc checkout` command has to be run after each `git checkout` and `git clone`
   command. It gives more granularity on managing data and code separately. Hooks
-  could be configured to make workflow simpler.
+  could be configured to make workflows simpler.
 
 - DVC attempts to use reflinks\* and has other
   [file linking options](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).
