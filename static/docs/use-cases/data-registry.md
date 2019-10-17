@@ -38,28 +38,25 @@ remote storage are lost for any reason, several other projects depending on it
 may stop being reproducible. So this strategy is best when the registry is owned
 and controlled internally by the same team as the projects that employ it.
 
-## Example: A sub-optimal approach
+## Implementing proper data versioning
 
 In the [Versioning Tutorial](/doc/tutorials/versioning) we use a ZIP file
-containing a dataset with images of cats and dogs, and later on we get a second
-archive to update the dataset with more images. For simplicity, these compressed
-archives are downloaded from our own
+containing images of cats and dogs, and then we update the dataset with more
+images from a second ZIP file. These compressed archives are downloaded from our
+own
 [iterative/dataset-registry](https://github.com/iterative/dataset-registry)), a
-<abbr>DVC project</abbr> hosted on GitHub. These data files can be found as
+<abbr>DVC project</abbr> hosted on GitHub. They can be found as
 <abbr>outputs</abbr> of 2 separate
 [DVC-files](/doc/user-guide/dvc-files-and-directories) in the `tutorial/ver`
 directory.
 
-There are a few possible problems with the way this dataset is stored (as 2
-parts, in compressed archives). One is that dataset partitioning is an
-unnecessary complication in this case; It can cause data duplication and other
-hurdles. Another issue is that storing file archives requires the extra steps of
-bundling and extracting them. The data compression also raises questions in this
-approach. Most importantly, both files are parts of the same dataset, however
-they are tracked by 2 different DVC-files, instead of as 2 versions of the same
-one, as we'll explain next.
-
-## Example: Better dataset versioning
+There are a few possible problems with the way this dataset is stored (in 2
+parts, as compressed archives). One is that dataset partitioning is an
+unnecessary complication; It can cause data duplication and other hurdles.
+Another issue is that extra steps are needed to bundle and extract file
+archives. The data compression also raises questions. But most importantly, this
+single dataset is tracked by 2 different DVC-files, instead of 2 versions of the
+same one, as we'll explain next.
 
 Let's download and extract the first archive we discussed above (in an empty
 directory) to visualize the structure of the dataset:
