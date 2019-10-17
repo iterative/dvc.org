@@ -38,10 +38,8 @@ The detail of DVC version depends upon the way of installing DVC.
 - **Official release**: This [install guide](/doc/get-started/install) mentions
   ways to install DVC using the official package stored in Python Packaging
   Authority. We mark these official releases with tags on DVC's repository. Any
-  issues reported with the official build can be traced using the
-  `_BASE_VERSION` constant
-  [in our core repo](https://github.com/iterative/dvc/blob/master/dvc/version.py).
-  For example `0.40.2`.
+  issues reported with the official build can be traced using the `BASE_VERSION`
+  itself. So the output is simply `0.40.2`.
 
 - **Development version**: `pip install git+git://github.com/iterative/dvc` will
   install DVC using the `master` branch of DVC's repository. Another way of
@@ -51,9 +49,9 @@ The detail of DVC version depends upon the way of installing DVC.
   command might have issues regarding its usage. So to trace any error reported
   with this setup, we need to know exactly which version is being used. For this
   we rely on a git commit hash that is displayed in this command's output like
-  this: `0.40.2+292cab.mod`. The part before `+` is the `_BASE_VERSION`, and the
-  following part is the latest `master` branch commit hash. The optional suffix
-  `.mod` means that code is modified.
+  this: `0.40.2+292cab.mod`. The part before `+` is the `BASE_VERSION` and the
+  latter part is the `master` branch commit hash. The optional suffix `.mod`
+  means that code is modified.
 
 #### What we mean by "Binary"
 
