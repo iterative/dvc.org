@@ -1,13 +1,11 @@
-# Install latest version
-
-## Install master from GitHub
+# Install development version
 
 If you want to test the latest version of DVC, before the official release, you
 can install it from the code on GitHub. In this case it is highly recommended to
 use [virtualenv](https://virtualenv.pypa.io/en/stable/), in order to encapsulate
 your testing environment.
 
-You can do it like this:
+## Install master from GitHub
 
 ```dvc
 $ virtualenv -p python3 .env

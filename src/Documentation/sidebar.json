@@ -94,8 +94,8 @@
           "windows",
           "linux",
           {
-            "label": "Install latest version",
-            "slug": "latest"
+            "label": "Development version",
+            "slug": "dev"
           },
           {
             "label": "Shell Completion",
