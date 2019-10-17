@@ -27,10 +27,11 @@ The advantages of using a data registry are:
   the same data versions.
 - Projects that import data from the registry don't need to push these large
   files to their own [remotes](/doc/command-reference/remote), **saving space**
-  on storage – they may not even need to a remote at all, using only the local
+  on storage – they may not even need a remote at all, using only their local
   <abbr>cache</abbr>.
-- Easier to manage **access control** per remote storage configured in a single
-  data registry project.
+- It may be easier to manage **access control** for remote storage configured in
+  a single data registry project. A possible setup would use a read-only remote,
+  so other projects can't affect each other accidentally.
 
 A possible risk of shared data registries is that, if the source project or its
 remote storage are lost for any reason, several other projects depending on it
