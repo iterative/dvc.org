@@ -25,7 +25,7 @@ supported by the file system.
 File links are entries in the file system that don't necessarily hold the file
 contents, but point to where the file is actually stored. File links are more
 common in file systems used with UNIX-like operating systems and come in
-different kinds, that differ in how they connect filenames to inodes in the
+different kinds, that differ in how they connect file names to inodes in the
 system.
 
 > **Inodes** are metadata file records to locate and store permissions to the

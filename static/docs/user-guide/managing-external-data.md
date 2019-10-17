@@ -14,14 +14,14 @@ You can take under DVC control files on an external storage with `dvc add` or
 specify external files as outputs for
 [DVC-files](/doc/user-guide/dvc-file-format) created by `dvc run` (stage files)
 DVC will track changes in those files and will reflect so in your pipeline
-[status](/doc/command-reference/status). Currently, the following types of
-external outputs (protocols) are supported:
+[status](/doc/command-reference/status). Currently, the following types
+(protocols) of external outputs (and cache) are supported:
 
-1. Local files and directories outside of your dvc repository;
-2. Amazon S3;
-3. Google Cloud Storage;
-4. SSH;
-5. HDFS;
+- Local files and directories outside of your <abbr>workspace</abbr>;
+- SSH;
+- Amazon S3;
+- Google Cloud Storage;
+- HDFS
 
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
@@ -62,10 +62,28 @@ $ dvc run -d data.txt \
           cp data.txt /home/shared/data.txt
 ```
 
+### SSH
+
+```dvc
+# Add SSH remote to be used as cache location for SSH files
+$ dvc remote add sshcache ssh://user@example.com:/cache
+
+# Tell dvc to use the 'sshcache' remote as SSH cache location
+$ dvc config cache.ssh sshcache
+
+# Add data on SSH directly
+$ dvc add ssh://user@example.com:/mydata
+
+# Create the stage with external SSH output
+$ dvc run -d data.txt \
+          -o ssh://user@example.com:/home/shared/data.txt \
+          scp data.txt user@example.com:/home/shared/data.txt
+```
+
 ### Amazon S3
 
 ```dvc
-# Add S3 remote to be uses as cache location for S3 files
+# Add S3 remote to be used as cache location for S3 files
 $ dvc remote add s3cache s3://mybucket/cache
 
 # Tell dvc to use the 's3cache' remote as S3 cache location
@@ -96,24 +114,6 @@ $ dvc add gs://mybucket/mydata
 $ dvc run -d data.txt \
           -o gs://mybucket/data.txt \
           gsutil cp data.txt gs://mybucket/data.txt
-```
-
-### SSH
-
-```dvc
-# Add SSH remote to be used as cache location for SSH files
-$ dvc remote add sshcache ssh://user@example.com:/cache
-
-# Tell dvc to use the 'sshcache' remote as SSH cache location
-$ dvc config cache.ssh sshcache
-
-# Add data on SSH directly
-$ dvc add ssh://user@example.com:/mydata
-
-# Create the stage with external SSH output
-$ dvc run -d data.txt \
-          -o ssh://user@example.com:/home/shared/data.txt \
-          scp data.txt user@example.com:/home/shared/data.txt
 ```
 
 ### HDFS

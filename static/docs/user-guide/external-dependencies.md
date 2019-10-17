@@ -12,17 +12,18 @@ DVC to control data externally.
 
 With DVC you can specify external files as dependencies for your pipeline
 stages. DVC will track changes in those files and will reflect that in your
-pipeline state. Currently, the following types of external dependencies
-(protocols) are supported:
+pipeline state. Currently, the following types (protocols) of external
+dependencies are supported:
 
-1. Local files and directories outside of your dvc repository;
-2. Amazon S3;
-3. Google Cloud Storage;
-4. SSH;
-5. HDFS;
-6. HTTP;
+- Local files and directories outside of your <abbr>workspace</abbr>;
+- SSH;
+- Amazon S3;
+- Google Cloud Storage;
+- HDFS;
+- HTTP
 
-> Note that these match with the remote storage types supported by `dvc remote`.
+> Note that these are a subset of the remote storage types supported by
+> `dvc remote`.
 
 In order to specify an external dependency for your stage, use the usual '-d'
 option in `dvc run` with the external path or URL pointing to your desired file
@@ -45,6 +46,14 @@ $ dvc run -d /home/shared/data.txt \
           cp /home/shared/data.txt data.txt
 ```
 
+### SSH
+
+```dvc
+$ dvc run -d ssh://user@example.com:/home/shared/data.txt \
+          -o data.txt \
+          scp user@example.com:/home/shared/data.txt data.txt
+```
+
 ### Amazon S3
 
 ```dvc
@@ -59,14 +68,6 @@ $ dvc run -d s3://mybucket/data.txt \
 $ dvc run -d gs://mybucket/data.txt \
           -o data.txt \
           gsutil cp gs://mybucket/data.txt data.txt
-```
-
-### SSH
-
-```dvc
-$ dvc run -d ssh://user@example.com:/home/shared/data.txt \
-          -o data.txt \
-          scp user@example.com:/home/shared/data.txt data.txt
 ```
 
 ### HDFS

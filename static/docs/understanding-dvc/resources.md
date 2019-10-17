@@ -9,14 +9,14 @@
     picture-in-picture" allowfullscreen></iframe>
 
 - DVC Co-founder Dmitry Petrov talking about Model and Dataset versioning
-  practices using DVC in PyCon, 2019:
+  practices using DVC at PyCon, 2019:
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/jkfh2PM5Sz8"
     frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;
     picture-in-picture" allowfullscreen></iframe>
 
 - DVC Co-founder Dmitry Petrov talking about Model and Dataset versioning
-  practices using DVC in PyData Berlin, 2018:
+  practices using DVC at PyData Berlin, 2018:
 
     <iframe width="560" height="315" src="https://www.youtube.com/embed/BneW7jgB298"
     frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope;

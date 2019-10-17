@@ -100,7 +100,7 @@ workspace, DVC can create reflinks or other file link types.
 > When reflinks are not supported by the file system, DVC defaults to copying
 > files, which doesn't optimize file storage. However, it's easy to enable other
 > file link types on most systems. See
-> [File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+> [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > for more information.
 
 Creating file links is a quick file system operation. So, with DVC you can
@@ -109,7 +109,7 @@ using twice as much space in the hard drive. Even if each of the files contains
 41MB of data, the overall size of the repository is still 41MB. Both of the
 files correspond to the same `inode` (a file metadata record) in the file
 system. Refer to
-[Large Dataset Optimization](/docs/user-guide/large-dataset-optimization) for
+[Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) for
 more details.
 
 > Note that in systems supporting reflinks, use the `df` command to confirm that
@@ -138,28 +138,28 @@ train ML models out of the data files. DVC helps you to define
 [stages](/doc/command-reference/run) of your ML process and easily connect them
 into a ML [pipeline](/doc/command-reference/pipeline).
 
-`dvc run` executes any command that you pass into it as a list of parameters.
+`dvc run` executes any command that you pass it as a list of parameters.
 However, the command to run alone is not as interesting as its role within a
-pipeline, so we'll need to specify its dependencies and output files. We call
-this a pipeline stage. Dependencies may include input files and directories, and
-the actual command to run. Outputs are files written to by the command, if any.
+larger data pipeline, so we'll need to specify its dependencies and output
+files. We call all this a pipeline _stage_. Dependencies may include input files
+or directories, and the actual command to run. Outputs are files written to by
+the command, if any.
 
-1. Option `-d file.tsv` should be used to specify a dependency file or
-   directory. The dependency can be a regular file from a repository or a data
-   file.
+- Option `-d file.tsv` should be used to specify a dependency file or directory.
+  The dependency can be a regular file from a repository or a data file.
 
-2. `-o file.tsv` (lower case o) specifies output data file. DVC will track this
-   data file by creating a corresponding
-   [DVC-file](/doc/user-guide/dvc-file-format) (as if running `dvc add file.tsv`
-   after `dvc run` instead).
+- `-o file.tsv` (lower case o) specifies output data file. DVC will track this
+  data file by creating a corresponding
+  [DVC-file](/doc/user-guide/dvc-file-format) (as if running `dvc add file.tsv`
+  after `dvc run` instead).
 
-3. `-O file.tsv` (upper case O) specifies a regular output file (not to be added
-   to DVC).
+- `-O file.tsv` (upper case O) specifies a regular output file (not to be added
+  to DVC).
 
-It is important to specify the dependencies and the outputs of the command to
-run before the command to run itself.
+It's important to specify dependencies and outputs before the command to run
+itself.
 
-Let's see how an extract command `unzip` works under DVC:
+Let's see how an extraction command `unzip` works under DVC, for example:
 
 ```dvc
 $ dvc run -d data/Posts.xml.zip -o data/Posts.xml \
@@ -169,7 +169,6 @@ Running command:
   unzip data/Posts.xml.zip -d data/
 Archive:  data/Posts.xml.zip
     inflating: data/Posts.xml
-Saving 'data/Posts.xml' to cache '.dvc/cache'.
 Saving information to 'Posts.xml.dvc'.
 
 To track the changes with git run:
@@ -191,9 +190,9 @@ The `unzip` command extracts data file `data/Posts.xml.zip` to a regular file
 `data/Posts.xml`. It knows nothing about data files or DVC. DVC executes the
 command and does some additional work if the command was successful:
 
-1. DVC transforms all the output files (`-o` option) into data files. It's like
-   applying `dvc add` for each of the outputs. As a result, all the actual data
-   files content goes to the <abbr>cache</abbr> directory `.dvc/cache` and each
+1. DVC transforms all the output files (`-o` option) into tracked data files
+   (similar to using `dvc add` for each of them). As a result, all the actual
+   data contents goes to the <abbr>cache</abbr> directory `.dvc/cache`, and each
    of the file names will be added to `.gitignore`.
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage

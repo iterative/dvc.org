@@ -63,9 +63,11 @@ downloaded data artifact from the external DVC repository.
 
 ## Options
 
-- `-o`, `--out` - specify a path (directory and file name) to the desired
+- `-o`, `--out` - specify a path (directory and/or file name) to the desired
   location to place the imported data in. The default value (when this option
-  isn't used) is the current working directory (`.`) and original file name.
+  isn't used) is the current working directory (`.`) and original file name. If
+  an existing directory is specified, then the output will be placed inside of
+  it.
 
 - `--rev` - specific Git revision of the DVC repository to import the data from.
   The tip of the default branch is used by default when this option is not
