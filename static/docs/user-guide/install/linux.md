@@ -33,7 +33,7 @@ $ conda install -c conda-forge dvc
 
 > Currently, it supports only Python versions 2.7, 3.6, and 3.7.
 
-## Install from repo
+## Install from repository
 
 <details>
 
@@ -43,9 +43,7 @@ $ conda install -c conda-forge dvc
 $ sudo wget \
        https://dvc.org/deb/dvc.list \
        -O /etc/apt/sources.list.d/dvc.list
-
 $ sudo apt update
-
 $ sudo apt install dvc
 ```
 
@@ -59,9 +57,7 @@ $ sudo apt install dvc
 $ sudo wget \
        https://dvc.org/rpm/dvc.repo \
        -O /etc/yum.repos.d/dvc.repo
-
 $ sudo yum update
-
 $ sudo yum install dvc
 ```
 

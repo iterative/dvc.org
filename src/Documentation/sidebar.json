@@ -94,8 +94,8 @@
           "windows",
           "linux",
           {
-            "label": "Install from code",
-            "slug": "code"
+            "label": "Install latest version",
+            "slug": "latest"
           },
           {
             "label": "Shell Completion",

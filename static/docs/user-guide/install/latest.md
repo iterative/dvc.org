@@ -1,4 +1,4 @@
-# Install from code
+# Install latest version
 
 ## Install master from GitHub
 
@@ -32,20 +32,4 @@ $ virtualenv -p python3 .env
 $ source .env/bin/activate
 $ pip install gitpython
 $ pip install git+https://github.com/iterative/dvc.git@<branch>
-```
-
-## Install from local code
-
-If you want to install DVC from code that you have on your local machine, you
-can do it like this:
-
-```dvc
-$ git clone https://github.com/iterative/dvc dvc-dev
-$ mkdir test
-$ cd test/
-
-$ virtualenv -p python3 .env
-$ source .env/bin/activate
-$ pip install gitpython
-$ pip install ../dvc-dev[all]
 ```
