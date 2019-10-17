@@ -20,17 +20,16 @@ projects_, as `dvc get` works anywhere in your system.
 
 The advantages of using a data registry are:
 
-- Tracked files can be safely stored in a **centralized** remote location, with
-  the ability to create any amount of distributed copies on other remote
-  storage.
-- Several projects can **share** the same files, trusting that everyone is using
-  the same data versions.
+- Tracked data is stored in a **centralized** remote location, with the ability
+  to create distributed copies on other remotes.
+- Several projects can **share** the same files, guaranteeing that everyone has
+  access to the same data versions.
 - Projects that import data from the registry don't need to push these large
   files to their own [remotes](/doc/command-reference/remote), **saving space**
   on storage – they may not even need a remote at all, using only their local
   <abbr>cache</abbr>.
-- It may be easier to manage **access control** for remote storage configured in
-  a single data registry project. A possible setup would use a read-only remote,
+- Its easier to manage **access control** for remote storage configured in a
+  single data registry project. A possible setup would use a read-only remote,
   so other projects can't affect each other accidentally.
 
 A possible risk of shared data registries is that, if the source project or its
@@ -89,10 +88,10 @@ $ dvc init  # Initialize DVC project
 $ git commit -m "Initialize DVC project"
 ...
 $ dvc add data
-Adding 'data' to '.gitignore'...
+...
 Saving information to 'data.dvc'.
 ...
-$	git add data.dvc .gitignore
+$ git add data.dvc .gitignore
 $ git commit -m "Add 1800 cats and dogs images dataset"
 ```
 
@@ -119,7 +118,7 @@ $ tree --filelimit 3
 │   │   └── dogs [1000 entries ...]
 ...
 $ dvc add data
-Computing md5 for a large number of files. This is only done once.
+...
 WARNING: Output 'data' of 'data.dvc' changed because it is 'modified'
 ...
 Saving information to 'data.dvc'.
