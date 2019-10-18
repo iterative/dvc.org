@@ -2,14 +2,13 @@
 
 If you want to test the latest version of DVC, before the official release, you
 can install it from the code on GitHub. In this case it is highly recommended to
-use [virtualenv](https://virtualenv.pypa.io/en/stable/), in order to encapsulate
-your testing environment.
+use [virtualenv](https://virtualenv.pypa.io/en/stable/) in order to encapsulate
+your testing environment, otherwise it will automatically upgrade your system's
+DVC version to the latest development version.
 
 ## Install master from GitHub
 
 ```dvc
-$ virtualenv -p python3 .env
-$ source .env/bin/activate
 $ pip install gitpython
 $ pip install git+https://github.com/iterative/dvc.git
 ```
@@ -26,8 +25,6 @@ If you want to install instead a certain `<branch>`, you can add the branch name
 after an `@`-sign, like this:
 
 ```dvc
-$ virtualenv -p python3 .env
-$ source .env/bin/activate
 $ pip install gitpython
 $ pip install git+https://github.com/iterative/dvc.git@<branch>
 ```
