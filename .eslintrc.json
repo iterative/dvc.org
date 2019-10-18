@@ -13,5 +13,8 @@
     "react": {
       "version": "detect"
     }
+  },
+  "rules": {
+    "no-tabs": "error"
   }
 }

@@ -136,18 +136,18 @@ const Glyph = styled.img`
   ${props =>
     props.gid === 'topleft' &&
     `
-		top: -25px;
-		left: 40px;
-	`}
+    top: -25px;
+    left: 40px;
+  `}
 
   ${props =>
     props.gid === 'rigthbottom' &&
     `
     bottom: -60px;
     right: 30px;
-	`};
+  `};
 
   ${media.phablet`
-	  display: none;
-	`};
+    display: none;
+  `};
 `
