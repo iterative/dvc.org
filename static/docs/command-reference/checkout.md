@@ -158,7 +158,6 @@ files that are under DVC control. The model file checksum
 ```dvc
 $ dvc pull
 ...
-(1/6): [#######################] 100% model.pkl
 Checking out model.pkl with cache '3863d0e317dee0a55c4e59d2ec0eef33'
 ...
 

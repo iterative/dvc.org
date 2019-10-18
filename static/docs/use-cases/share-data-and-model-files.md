@@ -67,11 +67,6 @@ storage with the `dvc push` command:
 
 ```dvc
 $ dvc push
-(1/5): [##############################] 100% images/0001.jpg
-(2/5): [##############################] 100% images/0002.jpg
-(3/5): [##############################] 100% images/0001.jpg
-(4/5): [##############################] 100% images
-(5/5): [##############################] 100% model.pkl
 ```
 
 Code and [DVC-files](/doc/user-guide/dvc-file-format) should be committed and
@@ -99,11 +94,6 @@ To download data files for your <abbr>project</abbr>, run:
 
 ```dvc
 $ dvc pull
-(1/5): [##############################] 100% images/0001.jpg
-(2/5): [##############################] 100% images/0002.jpg
-(3/5): [##############################] 100% images/0003.jpg
-(4/5): [##############################] 100% images
-(5/5): [##############################] 100% model.pkl
 ```
 
 `dvc pull` will download the missing data files from the default remote storage
