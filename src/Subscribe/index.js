@@ -27,7 +27,7 @@ const Wrapper = styled.section`
   ${media.phablet`
     display: flex;
     align-items: center;
-	`};
+  `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     display: flex;
@@ -43,7 +43,7 @@ const Container = styled.div`
 
   ${media.phablet`
     padding: 0px 10px;
-	`};
+  `};
 
   @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
     padding: 0px 10px;
@@ -51,9 +51,9 @@ const Container = styled.div`
 `
 
 const Glyph = styled.img`
-	position: absolute;
-	z-index: 0;
-	
+  position: absolute;
+  z-index: 0;
+  
   width: 158px;
   height: auto;
 
@@ -62,24 +62,24 @@ const Glyph = styled.img`
   `};
   
   object-fit: contain;
-	
-	${props =>
+  
+  ${props =>
     props.gid === 'topleft' &&
     `
-		top: -32px;
-		left: 28px;
-	`}
-	
-	${props =>
+    top: -32px;
+    left: 28px;
+  `}
+  
+  ${props =>
     props.gid === 'rigthbottom' &&
     `
     bottom: -60px;
     right: 28px;
-	`}
-	
-	${media.phablet`
-	  display: none;
-	`}
+  `}
+  
+  ${media.phablet`
+    display: none;
+  `}
 `
 
 const Title = styled.h3`
@@ -93,8 +93,8 @@ const Title = styled.h3`
   text-align: center;
 
   ${media.phablet`
-		min-width: auto;
-	`};
+    min-width: auto;
+  `};
 `
 
 const SubscribeContainer = styled.div`

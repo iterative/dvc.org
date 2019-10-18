@@ -192,7 +192,6 @@ Taking a directory under DVC control as simple as with a single file:
 $ dvc add pics
 Computing md5 for a large number of files. This is only done once.
 ...
-
 Linking directory 'pics'.
 
 Saving information to 'pics.dvc'.
@@ -238,7 +237,6 @@ If instead we use the `--recursive` (`-R`) option, the output looks like this:
 
 ```dvc
 $ dvc add -R pics
-
 Saving information to 'pics/cat1.jpg.dvc'.
 Saving information to 'pics/cat3.jpg.dvc'.
 Saving information to 'pics/cat2.jpg.dvc'.
