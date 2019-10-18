@@ -47,12 +47,12 @@ stage (DVC-file) is then created extending the full file or directory name of
 the imported data e.g. `data.txt.dvc` – similar to having used `dvc run` to
 generate the same output.
 
-DVC supports [DVC-files](/doc/user-guide/dvc-file-format) that refer to data in
-an external DVC repository (hosted on a Git server). In such a DVC-file, the
-`deps` section specifies the `repo` URL and data `path`, and the `outs` section
-contains the corresponding local path in the workspace. It records enough data
-from the external file or directory to enable DVC to efficiently check it to
-determine whether the local copy is out of date.
+DVC supports DVC-files that refer to data in an external DVC repository (hosted
+on a Git server). In such a DVC-file, the `deps` section specifies the `repo`
+URL and data `path`, and the `outs` section contains the corresponding local
+path in the workspace. It records enough data from the external file or
+directory to enable DVC to efficiently check it to determine whether the local
+copy is out of date.
 
 To actually [track the data](https://dvc.org/doc/get-started/add-files),
 `git add` (and `git commit`) the import stage (DVC-file).
@@ -94,7 +94,8 @@ Saving information to 'data.xml.dvc'.
 ```
 
 In contrast with `dvc get`, this command doesn't just download the data file,
-but it also creates an import stage (DVC-file) to register this data as an
+but it also creates an import stage
+([DVC-file](/doc/user-guide/dvc-file-format)) to register this data as an
 [external dependency](/doc/user-guide/external-dependencies) (using the `repo`
 field). Check `data.xml.dvc`:
 
@@ -117,5 +118,3 @@ outs:
 Several of the values above are pulled from the original stage file
 `model.pkl.dvc` in the external DVC repo. `url` and `rev_lock` fields are used
 to specify the origin and version of the dependency.
-
-<!-- ## Example: Dataset registry -->
