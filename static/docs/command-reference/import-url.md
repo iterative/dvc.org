@@ -155,9 +155,6 @@ _Get Started_ section is to use `dvc import-url`:
 $ dvc import-url https://data.dvc.org/get-started/data.xml \
                  data/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data/data.xml'
-[##############################] 100% data.xml
-[##############################] 100% data.xml
-
 
 Saving information to 'data.xml.dvc'.
 
@@ -223,7 +220,6 @@ edit the data file.
 ```dvc
 $ dvc import-url /tmp/dvc-import-url-example/data.xml data/data.xml
 Importing '../../../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
-[##############################] 100% data.xml
 ...
 ```
 
@@ -318,7 +314,6 @@ do so, we can run `dvc update` to make sure the import stage is up to date:
 $ dvc update data.xml.dvc
 ...
 Importing '.../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
-[##############################] 100% data.xml
 ...
 Saving information to 'data.xml.dvc'.
 ```

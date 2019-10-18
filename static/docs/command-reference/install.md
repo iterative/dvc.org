@@ -164,8 +164,6 @@ featurize.dvc:
 
 $ dvc checkout
 
-[##############################] 100% Checkout finished!
-
 $ dvc status
 
 Data and pipelines are up to date.
@@ -190,7 +188,6 @@ Switched to branch 'master'
 Your branch is up to date with 'origin/master'.
 
 $ dvc checkout
-[##############################] 100% Checkout finished!
 ```
 
 We've seen the default behavior with there being no Git hooks installed. We want
@@ -221,7 +218,6 @@ Note: checking out '6-featurization'.
 You are in 'detached HEAD' state. ...
 
 HEAD is now at d13ba9a add featurization stage
-[##############################] 100% Checkout finished!
 
 $ dvc status
 
