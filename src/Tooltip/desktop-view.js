@@ -168,6 +168,7 @@ const TooltipContainer = styled.div`
 `
 
 const TooltipText = styled.div`
+  color: black;
   padding: 8px 10px;
   border: 1px solid #d1d5da;
   border-radius: 3px;
