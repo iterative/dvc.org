@@ -65,10 +65,6 @@ install and configure shell completion.
 
 ## Bash completion on Ubuntu
 
-On a Linux system bash-completion should work out of the box, but if you are
-using a VPS on the cloud it might not be installed. In any case, follow these
-steps to make sure that it is installed:
-
 1. First, make sure that Bash completion support is installed:
 
    ```dvc
@@ -99,8 +95,6 @@ steps to make sure that it is installed:
    ```
 
 4. Finally, `source ~/.bashrc` or open a new terminal to activate it.
-
-For more details see: https://linuxhandbook.com/enable-tab-completion/
 
 ## Zsh completion
 
