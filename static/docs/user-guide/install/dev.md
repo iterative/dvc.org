@@ -1,4 +1,4 @@
-# Install development version
+# Install Development Version
 
 If you want to test the latest version of DVC, before the official release, you
 can install it from the code on GitHub. In this case it is highly recommended to

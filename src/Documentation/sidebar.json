@@ -94,7 +94,7 @@
           "windows",
           "linux",
           {
-            "label": "Development version",
+            "label": "Development Version",
             "slug": "dev"
           },
           {
