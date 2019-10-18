@@ -35,14 +35,14 @@ const Line = styled.div`
     props.open &&
     `
       background-color: #fff;
-	`}
+  `}
 
   ${props =>
     props.open &&
     props.first &&
     `
-		transform: rotate(-45deg) translate(-7px, 6px);
-	`};
+    transform: rotate(-45deg) translate(-7px, 6px);
+  `};
 
   ${props =>
     props.open &&

@@ -209,7 +209,7 @@ const HeadingLink = styled.a`
     props.isCurrent &&
     `
     color: #000;
-	`}
+  `}
 
   &:hover {
     color: #3c3937;

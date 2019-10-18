@@ -14,20 +14,20 @@ export const global = `
       font-weight: lighter !important;
     }
   }
-	
-	body {
-		padding: 0px;
-		font-family: BrandonGrotesque, Tahoma, Arial;
-		font-weight: normal;
-		-webkit-font-smoothing: antialiased;
+  
+  body {
+    padding: 0px;
+    font-family: BrandonGrotesque, Tahoma, Arial;
+    font-weight: normal;
+    -webkit-font-smoothing: antialiased;
     line-height: 1.5;
     
     // IE flex min-height fix https://stackoverflow.com/a/40491316
     display: flex;
     flex-direction: column;
-	}
-	
-	*:focus {
+  }
+  
+  *:focus {
     outline: 0;
   }
 

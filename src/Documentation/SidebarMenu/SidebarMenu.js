@@ -165,7 +165,7 @@ const Menu = styled.div`
     props.isScrollHidden &&
     `
     .ps__rail-y { opacity: 0; overflow: hidden; }
-	`};
+  `};
 
   ${media.phablet`
     position: relative;
@@ -210,7 +210,7 @@ const SectionLink = styled.a`
     props.isActive &&
     `
     color: #40364d;
-	`};
+  `};
 
   &:hover {
     color: #3c3937;
