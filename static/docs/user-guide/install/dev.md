@@ -1,12 +1,7 @@
 # Install Development Version
 
-If you want to test the latest version of DVC, before the official release, you
-can install it from the code on GitHub. In this case it is highly recommended to
-use [virtualenv](https://virtualenv.pypa.io/en/stable/) in order to encapsulate
-your testing environment, otherwise it will automatically upgrade your system's
-DVC version to the latest development version.
-
-## Install master from GitHub
+If you would like to install the latest version of DVC, you can do the
+following:
 
 ```dvc
 $ pip install gitpython
@@ -19,7 +14,9 @@ $ pip install git+https://github.com/iterative/dvc.git
 > (e.g. `0.24.3-9c7381`). For more information on naming convention, refer to
 > [dvc version](/doc/command-reference/version).
 
-## Install branch from GitHub
+Note that this will automatically upgrade your system's DVC version to the
+latest development version. To encapsulate your dev environment, we highly
+recommend using [virtualenv](https://virtualenv.pypa.io/en/stable/).
 
 If you want to install instead a certain `<branch>`, you can add the branch name
 after an `@`-sign, like this:
