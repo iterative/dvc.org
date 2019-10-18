@@ -187,12 +187,9 @@ Taking a directory under DVC control as simple as taking a single file:
 $ dvc add pics
 
 Computing md5 for a large directory pics/train/cats. This is only done once.
-[##############################] 100% pics/train/cats
-
 ...
 
 Linking directory 'pics'.
-[##############################] 100% pics
 
 Saving information to 'pics.dvc'.
 ...

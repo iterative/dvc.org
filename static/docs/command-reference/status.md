@@ -194,7 +194,6 @@ remote yet:
 ```dvc
 $ dvc status --remote storage
 Preparing to collect status from s3://dvc-remote
-[##############################] 100% Collecting information
     new:      data/model.p
     new:      data/eval.txt
     new:      data/matrix-train.p

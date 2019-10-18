@@ -175,10 +175,6 @@ $ dvc status --cloud
 
 $ dvc fetch
 ...
-(2/6): [##############################] 100% data/features/test.pkl
-(3/6): [##############################] 100% model.pkl
-(4/6): [##############################] 100% data/features/train.pkl
-...
 
 $ tree .dvc
 .dvc
@@ -218,9 +214,6 @@ corresponding DVC-file (command target) is specified:
 
 ```dvc
 $ dvc fetch prepare.dvc
-...
-(1/2): [##############################] 100% data/prepared/test.tsv
-(2/2): [##############################] 100% data/prepared/train.tsv
 
 $ tree .dvc/cache
 .dvc/cache
@@ -261,12 +254,6 @@ to retrieve the data up to our third stage, `train.dvc`? We can use the
 
 ```dvc
 $ dvc fetch --with-deps train.dvc
-...
-(1/4): [##############################] 100% model.pkl
-(2/4): [######                        ] 21% data/data.xml
-(2/4): [##############################] 100% data/features/train.pkl
-(3/4): [##############################] 100% data/features/test.pkl
-(4/4): [##############################] 100% data/data.xml
 
 $ tree .dvc/cache
 .dvc/cache

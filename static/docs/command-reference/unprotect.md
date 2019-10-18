@@ -79,7 +79,6 @@ Unprotect the file:
 
 ```dvc
 $ dvc unprotect Posts.xml.zip
-[##############################] 100% Posts.xml.zip
 ```
 
 Check that the file is writable now, the cached version is intact, and they are
