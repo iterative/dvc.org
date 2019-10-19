@@ -62,7 +62,7 @@ let _javascript = function(hljs) {
                 }
               },
               {
-                begin: /dvc [a-z-]+/,
+                begin: /dvc [a-z-]+(\s[a-z]+)?/,
                 lexemes: '[a-z-]+',
                 keywords: {
                   built_in:
@@ -70,7 +70,7 @@ let _javascript = function(hljs) {
                     'fetch status repro remove move gc config remote metrics ' +
                     'install root lock unlock pipeline destroy unprotect ' +
                     'commit cache pkg tag diff version get get-url import ' +
-                    'update'
+                    'update list show modify dir default'
                 },
                 className: 'strong'
               }
