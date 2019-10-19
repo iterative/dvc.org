@@ -69,9 +69,11 @@ downloaded data artifact from the external DVC repository.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - specific Git revision of the DVC repository to import the data from.
-  The tip of the default branch is used by default when this option is not
-  specified.
+- `--rev` - specific
+  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+  (such as a branch name, a tag, or a commit hash) of the DVC repository to
+  import the data from. The tip of the default branch is used by default when
+  this option is not specified.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
