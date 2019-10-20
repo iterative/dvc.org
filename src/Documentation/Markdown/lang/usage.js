@@ -42,7 +42,7 @@ var _javascript = function(hljs) {
                 'remove move gc config remote metrics install root lock ' +
                 'unlock pipeline destroy unprotect commit cache diff tag pkg ' +
                 'version import-url get-url import get list show modify dir ' +
-                'default'
+                'default update'
             },
             className: 'strong'
           }
