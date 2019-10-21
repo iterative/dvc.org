@@ -27,10 +27,9 @@ were deleted/changed, and the file size differences.
 Note that `dvc diff` does not show the line-to-line comparison among the target
 files in each revision, like `git diff` does.
 
-> For an example on how to create line-to-line text file comparison refer to
-> issue
-> [#770](https://github.com/iterative/dvc/issues/770#issuecomment-512693256) in
-> our code repository.
+> For an example on how to create line-to-line text file comparison, refer to
+> [issue #770](https://github.com/iterative/dvc/issues/770#issuecomment-512693256)
+> in our GitHub repository.
 
 If the `-t` option is used, the diff is limited to the `TARGET` file or
 directory specified.
@@ -54,7 +53,7 @@ by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
 ## Examples
 
 For these examples we can use the chapters in our
-[Get Started](/doc/get-started) guide, up to
+[Get Started](/doc/get-started) section, up to
 [Add Files](/doc/get-started/add-files).
 
 <details>

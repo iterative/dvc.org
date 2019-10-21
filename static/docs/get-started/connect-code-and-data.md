@@ -122,8 +122,8 @@ wdir: .
 > to build a ML model (data file) from previous data files (or directories).
 
 We would recommend to read a few next chapters first, before switching to other
-documents. Hopefully, `dvc run` and `dvc repro` will make more sense after
-finishing up this guide. You can always refer to the `dvc run` and `dvc repro`
+documents. Hopefully, `dvc run` and `dvc repro` will make more sense after a few
+more Get Started chapters. You can always refer to the `dvc run` and `dvc repro`
 documentation to learn the specific details about how they behave and all of
 their options. Let's briefly mention what the options used above mean for this
 particular example:

@@ -27,8 +27,8 @@ $ dvc remote add -d myremote /tmp/dvc-storage
 $ git commit .dvc/config -m "Configure local remote"
 ```
 
-> We only use a local remote in this guide for simplicity's sake as you learn to
-> use DVC. For most [use cases](/doc/use-cases), other "more remote" types of
+> We only use a local remote in this section for simplicity's sake as you learn
+> to use DVC. For most [use cases](/doc/use-cases), other "more remote" types of
 > remotes will be required.
 
 Adding a remote should be specified by both its type prefix (protocol) and its
@@ -56,7 +56,7 @@ $ dvc remote add -d s3remote s3://mybucket/myproject
 ```
 
 > This command is only shown for informational purposes. No need to actually run
-> it in order to continue with this guide.
+> it in order to continue with the Get Started.
 
 You can see that DVC doesn't require installing any databases, servers, or
 warehouses. It can use bare S3 or SSH to store data, intermediate results, and

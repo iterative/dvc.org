@@ -1,6 +1,6 @@
 **IMPORTANT NOTES** (please read, then delete):
 
-- Have you followed the guidelines in our
+- Have you followed the guidelines in
   [Contributing Documentation](https://dvc.org/doc/user-guide/contributing-docs)?
 
 - The PR title should start with "Fix #bugnum: " (if applicable), followed by a

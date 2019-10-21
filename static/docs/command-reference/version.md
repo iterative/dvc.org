@@ -35,7 +35,7 @@ system/environment:
 
 The detail of DVC version depends upon the way of installing DVC.
 
-- **Official release**: This [install guide](/doc/get-started/install) mentions
+- **Official release**: [These instructions](/doc/get-started/install) include
   ways to install DVC using the official package stored in Python Packaging
   Authority. We mark these official releases with tags on DVC's repository. Any
   issues reported with the official build can be traced using the `BASE_VERSION`
@@ -64,7 +64,7 @@ The detail of `Binary` depends on the way DVC was downloading and
     distributions, like Ubuntu
   - Red Hat package (`.rpm`) - file used to install packages in some Linux based
     distributions, such as Fedora, CentOS, etc.
-  - PKG file (`.pkg`) - file used to install apps on macOS
+  - PKG file (`.pkg`) - file used to install apps on MacOS
   - Windows executable (`.exe`) - file used to install applications on Windows
 
   These downloads are available from our [home page](/). They ultimately contain
@@ -80,7 +80,7 @@ The detail of `Binary` depends on the way DVC was downloading and
   - [The Python Package Index (PyPI)](https://pypi.org/project/dvc/) - source
     code is stored as a Python package
   - [Homebrew package manager](https://github.com/iterative/homebrew-dvc) (for
-    macOS systems) - source code is stored as Python package
+    MacOS systems) - source code is stored as Python package
 
   This method of installation involves downloading DVC source code, and
   following certain setup instructions (See the

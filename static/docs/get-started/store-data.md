@@ -20,7 +20,7 @@ save any changes in the code or DVC-files. Those should be saved by using
 `git commit` and `git push`.
 
 > \*As noted in the DVC [configuration](/doc/get-started/configure) chapter, we
-> are using a **local remote** in this guide for educational purposes.
+> are using a **local remote** in this section for illustrative purposes.
 
 <details>
 

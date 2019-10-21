@@ -164,41 +164,45 @@ $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
 .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b: ASCII text
 ```
 
+Note that tracking compressed files (e.g. ZIP or TAR archives) is not
+recommended, as `dvc add` supports tracking directories. (Details below.) For
+more context, refer to
+[Data Registry](/doc/use-cases/data-registry#problem-1-compressed-data-files)
+
 ## Example: Directory
 
-What if you have not one dog picture, but hundreds of pictures of dogs and cats?
-Your goal might be to build an algorithm to identify dogs and cats in pictures,
-and this is your training dataset:
+Let's suppose your goal is to build an algorithm to identify cats and dogs in
+pictures. You may then have hundreds or thousands of pictures of these animals
+in a directory, and this is your training dataset:
 
 ```dvc
 $ tree pics
 pics
 ├── train
-│   ├── cats        <-- a lot of images of cats
-│   └── dogs        <-- a lot of images of dogs
+│   ├── cats        <-- A lot of images of cats
+│   └── dogs        <-- A lot of images of dogs
 └── validation
-    ├── cats        <-- images of cats
-    └── dogs        <-- images of dogs
+    ├── cats        <-- More images of cats
+    └── dogs        <-- More images of dogs
 ```
 
-Taking a directory under DVC control as simple as taking a single file:
+Taking a directory under DVC control as simple as with a single file:
 
 ```dvc
 $ dvc add pics
-
-Computing md5 for a large directory pics/train/cats. This is only done once.
+Computing md5 for a large number of files. This is only done once.
 ...
-
 Linking directory 'pics'.
 
 Saving information to 'pics.dvc'.
 ...
 ```
 
-There are no DVC-files generated within this directory structure, but the images
-are all added to the <abbr>cache</abbr>. DVC prints a message to that effect,
-saying that `md5` values are computed for each directory. A DVC-file is
-generated for the top-level directory, and it contains this:
+There are no [DVC-files](/doc/user-guide/dvc-file-format) generated within this
+directory structure, but the images are all added to the <abbr>cache</abbr>. DVC
+prints a message to that effect, mentioning that `md5` values are computed for
+each directory. A single `pics.dvc` DVC-file is generated for the top-level
+directory, and it contains:
 
 ```yaml
 md5: df06d8d51e6483ed5a74d3979f8fe42e
@@ -210,30 +214,14 @@ outs:
 wdir: .
 ```
 
-The cache file with `.dir` extension is a special text file that stores the
-mapping of files in the `pics/` directory (as a JSON array), along with their
-checksums. (Refer to
-[Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-for an example.)
+> The cache file with `.dir` extension is a special text file that records the
+> mapping of files in the `pics/` directory. (Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> for an example.)
 
-If instead you use the `--recursive` option, the output looks as so:
-
-```dvc
-$ dvc add --recursive pics
-
-Saving information to 'pics/cat1.jpg.dvc'.
-Saving information to 'pics/cat3.jpg.dvc'.
-Saving information to 'pics/cat2.jpg.dvc'.
-Saving information to 'pics/cat4.jpg.dvc'.
-...
-```
-
-In this case a DVC-file corresponding to each file is generated, and no
-top-level DVC-file is generated. But this is less convenient.
-
-With `dvc add pics`, a single `pics.dvc` DVC-file is generated, that lets us
-treat the entire directory structure in one unit. It lets you pass the whole
-directory tree as a dependency to a `dvc run` stage definition, like this:
+This allows us to treat the entire directory structure as one unit (a dependency
+or an <abbr>output</abbr>) with DVC commands. For example, it lets you pass the
+whole directory tree as a dependency to a `dvc run` stage definition:
 
 ```dvc
 $ dvc run -f train.dvc \
@@ -242,8 +230,21 @@ $ dvc run -f train.dvc \
           python train.py
 ```
 
-To see this whole example go to
-[Tutorial: Versioning](/doc/tutorials/versioning).
+> To follow the full example, see
+> [Tutorial: Versioning](/doc/tutorials/versioning).
 
-Since no top-level DVC-file is generated with the `--recursive` option we cannot
-use the directory structure as a whole.
+If instead we use the `--recursive` (`-R`) option, the output looks like this:
+
+```dvc
+$ dvc add -R pics
+Saving information to 'pics/cat1.jpg.dvc'.
+Saving information to 'pics/cat3.jpg.dvc'.
+Saving information to 'pics/cat2.jpg.dvc'.
+Saving information to 'pics/cat4.jpg.dvc'.
+...
+```
+
+In this case, a DVC-file is generated for each file in the `pics/` directory
+tree. No top-level DVC-file is generated, which is typically less convenient.
+For example, we cannot use the directory structure as one unit with `dvc run` or
+other commands.
