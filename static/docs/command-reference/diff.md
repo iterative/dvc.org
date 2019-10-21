@@ -53,7 +53,7 @@ by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
 ## Examples
 
 For these examples we can use the chapters in our
-[Get Started](/doc/get-started) guide, up to
+[Get Started](/doc/get-started) section, up to
 [Add Files](/doc/get-started/add-files).
 
 <details>

@@ -35,7 +35,7 @@ system/environment:
 
 The detail of DVC version depends upon the way of installing DVC.
 
-- **Official release**: This [install guide](/doc/get-started/install) mentions
+- **Official release**: [These instructions](/doc/get-started/install) include
   ways to install DVC using the official package stored in Python Packaging
   Authority. We mark these official releases with tags on DVC's repository. Any
   issues reported with the official build can be traced using the `BASE_VERSION`
