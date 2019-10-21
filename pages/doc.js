@@ -20,6 +20,8 @@ import styled from 'styled-components'
 import { media } from '../src/styles'
 // sidebar data and helpers
 import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
+// constants
+import { HEADER } from '../consts'
 
 const ROOT_ELEMENT = 'bodybag'
 const SIDEBAR_MENU = 'sidebar-menu'
@@ -153,7 +155,7 @@ export default class Documentation extends Component {
     const element = document.getElementById(hash.replace(/^#/, ''))
 
     if (element) {
-      const headerHeight = document.getElementsByClassName('header')[0]
+      const headerHeight = document.getElementsByClassName(HEADER)[0]
         .offsetHeight
       const elementBoundary = element.getBoundingClientRect()
       const rootElement = document.getElementById(ROOT_ELEMENT)
