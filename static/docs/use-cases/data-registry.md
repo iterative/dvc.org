@@ -23,14 +23,19 @@ The advantages of using a data registry are:
 - Tracked data is stored in a **centralized** remote location, with the ability
   to create distributed copies on other remotes.
 - Several projects can **share** the same files, guaranteeing that everyone has
-  access to the same data versions.
+  access to the same data versions. See
+  [Share Data and Model Files](/doc/use-cases/share-data-and-model-files) for
+  more information.
 - Projects that import data from the registry don't need to push these large
   files to their own [remotes](/doc/command-reference/remote), **saving space**
   on storage – they may not even need a remote at all, using only their local
   <abbr>cache</abbr>.
-- Its easier to manage **access control** for remote storage configured in a
-  single data registry project. A possible setup would use a read-only remote,
-  so other projects can't affect each other accidentally.
+- DVC data registries can handle multiple versions of data and ML modes with a
+  familiar CLI. See
+  [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
+  for more information.
+- DVC data registries are versioned with Git, so you can always track the
+  history of the project the same as you manage your source code repository.
 
 A possible risk of shared data registries is that, if the source project or its
 remote storage are lost for any reason, several other projects depending on it
