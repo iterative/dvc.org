@@ -20,7 +20,7 @@ class DesktopView extends Component {
   }
 
   tooltipPositionEval = () => {
-    const headerHeight = document.getElementsByClassName(HEADER)[0].offsetHeight
+    const headerHeight = document.getElementById(HEADER).offsetHeight
     const markdownBody = document.getElementsByClassName('markdown-body')[0]
     const tooltipBoundary = document
       .getElementById(`tooltip-text-${this.props.id}`)

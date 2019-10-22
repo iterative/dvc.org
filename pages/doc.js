@@ -155,8 +155,7 @@ export default class Documentation extends Component {
     const element = document.getElementById(hash.replace(/^#/, ''))
 
     if (element) {
-      const headerHeight = document.getElementsByClassName(HEADER)[0]
-        .offsetHeight
+      const headerHeight = document.getElementById(HEADER).offsetHeight
       const elementBoundary = element.getBoundingClientRect()
       const rootElement = document.getElementById(ROOT_ELEMENT)
       rootElement.scroll({ top: elementBoundary.top - headerHeight })

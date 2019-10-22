@@ -52,7 +52,7 @@ class TopMenu extends Component {
     return (
       <Wrapper>
         <Container
-          className={HEADER}
+          id={HEADER}
           scrolled={isDocPage || scrolled}
           wide={isDocPage}
         >
