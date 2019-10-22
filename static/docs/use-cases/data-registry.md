@@ -37,7 +37,7 @@ The advantages of using a data registry are:
 - DVC data registries are versioned with Git, so you can always track the
   history of the project the same as you manage your source code repository.
 
-## Using properly versioned registries
+## Example
 
 In the [Versioning Tutorial](/doc/tutorials/versioning) we use a ZIP file
 containing images of cats and dogs, and then we update the dataset with more
