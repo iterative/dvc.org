@@ -35,8 +35,6 @@ Then, a simple command pushes files from your cache to the cloud:
 
 ```dvc
 $ dvc push
-(1/9): [#########################] 100% 23/404ed8212fc1ee6f5a81ff6f6df2ef
-(2/9): [##########               ] 34% 5f/42ecd9a121b4382cd6510534533ec3
 ```
 
 The command does not push all cached files, but only the ones that belong to the

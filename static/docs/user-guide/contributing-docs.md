@@ -50,8 +50,8 @@ We will review your PR as soon as possible. Thank you for contributing!
 ## Development environment
 
 Installing development environment is _highly_ recommended to format your code
-and documents in accordance with the style guide automatically, and to run the
-server locally in case you are making some JS engine changes.
+and documents in accordance with the style guidelines (below) automatically, and
+to run the server locally in case you are making some JS engine changes.
 
 Get the latest development version by
 [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the

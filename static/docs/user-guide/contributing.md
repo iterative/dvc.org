@@ -43,8 +43,8 @@ $ git clone git@github.com:<username>/dvc.git
 ```
 
 Make sure that you have Python 3 installed. Version 3.6 or higher is required to
-run style checkers on pre-commit. On Mac OS, we recommend using `brew` to
-install Python.
+run style checkers on pre-commit. On MacOS, we recommend using `brew` to install
+Python.
 
 Install DVC in editable mode with `pip install -e ".[all,tests]"`. We
 **strongly** recommend initializing a

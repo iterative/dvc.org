@@ -1,8 +1,5 @@
 # Tutorial: Versioning
 
-> Reading time: 10-15 min.<br> Downloading dataset and running training: 30-40
-> min.
-
 The goal of this example is to give you some hands-on experience with a basic
 machine learning version control scenario: working with multiple versions of
 datasets and ML models using DVC commands. We'll work with a

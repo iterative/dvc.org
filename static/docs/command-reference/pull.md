@@ -122,12 +122,6 @@ files from the current Git branch:
 
 ```dvc
 $ dvc pull --remote r1
-
-(1/8): [####################] 100% images/0001.jpg
-(2/8): [####################] 100% images/0002.jpg
-...
-(7/8): [####################] 100% images/0007.jpg
-(8/8): [####################] 100% model.pkl
 ```
 
 We can download specific files that are <abbr>outputs</abbr> of a specific
@@ -135,7 +129,6 @@ DVC-file:
 
 ```dvc
 $ dvc pull data.zip.dvc
-[####################] 100% data.zip
 ```
 
 In this case we left off the `--remote` option, so it will have pulled from the
@@ -177,14 +170,9 @@ to retrieve part of the data?
 ```dvc
 $ dvc pull --remote r1 --with-deps matrix-train.p.dvc
 
-(1/2): [####################] 100% data/matrix-test.p data/matrix-test.p
-(2/2): [####################] 100% data/matrix-train.p data/matrix-train.p
-
 ... Do some work based on the partial update
 
 $ dvc pull --remote r1 --with-deps model.p.dvc
-
-(1/1): [####################] 100% data/model.p data/model.p
 
 ... Pull the rest of the data
 

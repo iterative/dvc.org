@@ -119,7 +119,6 @@ external path or URL types.
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
-[##############################] 100% data.xml
 ...
 ```
 

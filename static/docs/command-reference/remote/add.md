@@ -136,7 +136,7 @@ $ dvc remote add myremote s3://bucket/path
 By default DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
 DVC will be using default AWS credentials file to access S3. To override some of
-these settings, you could the options described in `dvc remote modify`.
+these settings, use the options described in `dvc remote modify`.
 
 We use the `boto3` library to communicate with AWS. The following API methods
 are performed:

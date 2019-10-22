@@ -124,20 +124,12 @@ Push all data file caches from the current Git branch to the default remote:
 
 ```dvc
 $ dvc push
-
-(1/8): [######################] 100% images/0001.jpg
-(2/8): [######################] 100% images/0002.jpg
-...
-(7/8): [######################] 100% images/0007.jpg
-(8/8): [###########           ] 57% model.pkl
 ```
 
 Push <abbr>outputs</abbr> of a specific DVC-file:
 
 ```dvc
 $ dvc push data.zip.dvc
-
-[######################] 100% data.zip
 ```
 
 ## Example: With dependencies
@@ -175,14 +167,9 @@ want to upload part of the data?
 ```dvc
 $ dvc push --remote r1 --with-deps matrix-train.p.dvc
 
-(1/2): [####################] 100% data/matrix-test.p data/matrix-test.p
-(2/2): [####################] 100% data/matrix-train.p data/matrix-train.p
-
 ... Do some work based on the partial update
 
 $ dvc push --remote r1 --with-deps model.p.dvc
-
-(1/1): [####################] 100% data/model.p data/model.p
 
 ... Push the rest of the data
 
