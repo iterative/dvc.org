@@ -171,14 +171,14 @@ Your goal might be to build an algorithm to identify dogs and cats in pictures,
 and this is your training dataset:
 
 ```dvc
-$ tree pics
+$ tree pics --filelimit 3
 pics
 ├── train
-│   ├── cats        <-- a lot of images of cats
-│   └── dogs        <-- a lot of images of dogs
+│   ├── cats [many image files]
+│   └── dogs [many image files]
 └── validation
-    ├── cats        <-- images of cats
-    └── dogs        <-- images of dogs
+    ├── cats [more image files]
+    └── dogs [more image files]
 ```
 
 Taking a directory under DVC control as simple as taking a single file:
