@@ -42,133 +42,80 @@ remote storage are lost for any reason, several other projects depending on it
 may stop being reproducible. So this strategy is best when the registry is owned
 and controlled internally by the same team as the projects that employ it.
 
-## Implementing proper data versioning
+## Using properly versioned registries
 
 In the [Versioning Tutorial](/doc/tutorials/versioning) we use a ZIP file
 containing images of cats and dogs, and then we update the dataset with more
 images from a second ZIP file. These compressed archives are downloaded from our
 own
 [iterative/dataset-registry](https://github.com/iterative/dataset-registry)), a
-<abbr>DVC project</abbr> hosted on GitHub. They can be found as
+<abbr>DVC project</abbr> hosted on GitHub using `dvc get`. They can be found as
 <abbr>outputs</abbr> of 2 separate
 [DVC-files](/doc/user-guide/dvc-files-and-directories) in the `tutorial/ver`
 directory.
 
-There are a few possible problems with the way this dataset is stored (in 2
-parts, as compressed archives). One is that dataset partitioning is an
-unnecessary complication; It can cause data duplication and other hurdles.
-Another issue is that extra steps are needed to bundle and extract file
-archives. The data compression also raises questions. But most importantly, this
-single dataset is tracked by 2 different DVC-files, instead of 2 versions of the
-same one, as we'll explain next.
+There are a few problems with the way this dataset is structured (in 2 parts, as
+compressed archives). One is that dataset partitioning is an unnecessary
+complication; It can cause data duplication, among other hurdles. Another issue
+is that extra steps are needed to bundle or extract file archives. The data
+compression also raises questions. But most importantly, this single dataset is
+tracked by 2 different DVC-files, instead of 2 versions of the same one,
+preventing us from leveraging Git's central features to track changes.
 
-Let's download and extract the first archive we discussed above (in an empty
-directory) to visualize the structure of the dataset:
+Fortunately, we have also prepared a better alternative in the `use-cases`
+directory of the same
+[repository](https://github.com/iterative/dataset-registry)). First, we used
+<code>dvc add cats-dogs</code> to
+[track the entire directory](https://dvc.org/doc/command-reference/add#example-directory)
+(without bundling or compression) in first version of this dataset, which looks
+like this:
 
-```dvc
-$ dvc get https://github.com/iterative/dataset-registry \
-          tutorial/ver/data.zip
-$ unzip -q data.zip
-$ rm -f data.zip
-$ tree --filelimit 3
-.
-└── data
-    ├── train
-    │   ├── cats [500 entries ...]
-    │   └── dogs [500 entries ...]
-    └── validation
-        ├── cats [400 entries ...]
-        └── dogs [400 entries ...]
-...
+```
+ cats-dogs
+ ├── train
+ │   ├── cats [500 image files]
+ │   └── dogs [500 image files]
+ └── validation
+     ├── cats [400 image files]
+     └── dogs [400 image files]
 ```
 
-Instead of creating an archive containing the `data/` directory, we can simply
-put it under DVC control as-is! This is done with the `dvc add` command, which
-accepts entire directories. We can then save this first version using Git:
+This first version uses the
+[`cats-dogs-v1`](https://github.com/iterative/dataset-registry/tree/cats-dogs-v1/use-cases)
+Git tag. In a local DVC project, we can obtain this dataset with the following
+command:
 
 ```dvc
-$ git init  # Initialize Git repository
-$ dvc init  # Initialize DVC project
-...
-$ git commit -m "Initialize DVC project"
-...
-$ dvc add data
-...
-Saving information to 'data.dvc'.
-...
-$ git add data.dvc .gitignore
-$ git commit -m "Add 1800 cats and dogs images dataset"
+$ dvc import --rev cats-dogs-v1 \
+             git@github.com:iterative/dataset-registry.git \
+             use-cases/cats-dogs
 ```
 
-> Refer to
-> [Adding a directory example](/doc/command-reference/add#example-directory) and
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-> for more details on what happens under the hood when adding directories.
+> Unlike downloading with `dvc get`, which can be used from any directory,
+> `dvc import` has to be run from an [initialized](/doc/command-reference/init)
+> DVC project. For illustrative purposes, the optional `--rev` option is used in
+> the example above to specify an exact version of the dataset.
 
-Let's add the remaining images from the second archive (500 of each kind), and
-see what changes in our data directory. To save the updates in our
-<abbr>project</abbr>, we simply run `dvc add` again on the same directory, and
-commit the new version with Git:
+Importing keeps the connection between the local project and an external DVC
+repository (e.g. a data registry)) where we are downloading data from. This is
+achieved by creating a DVC-file (a.k.a. an _import stage_), in this case
+`cats-dogs.dvc` – which can be used for versioning the import with Git in the
+local project. This connection will come in handy when the source data changes,
+and we want to obtain these updates...
+
+Back in our **dataset-registry** repository, the second (and last) version of
+our dataset exists under the
+[`cats-dogs-v2`](https://github.com/iterative/dataset-registry/tree/cats-dogs-v2/use-cases)
+tag. It was created by placing the additional 500 cat images in
+`cats-dogs/training/cats` and 500 dog images in `cats-dogs/training/dogs`, and
+simply running <code>dvc add cats-dogs</code> again.
+
+In our local project, all we have to do in order to obtain this latest version
+of the dataset is to run:
 
 ```dvc
-$ dvc get https://github.com/iterative/dataset-registry \
-          tutorial/ver/new-labels.zip
-$ unzip -q new-labels.zip
-$ rm -f new-labels.zip
-$ tree --filelimit 3
-.
-├── data
-│   ├── train
-│   │   ├── cats [1000 entries ...]
-│   │   └── dogs [1000 entries ...]
-...
-$ dvc add data
-...
-WARNING: Output 'data' of 'data.dvc' changed because it is 'modified'
-...
-Saving information to 'data.dvc'.
-...
-$ git commit -am "Add 1000 more cats and dogs images to dataset"
+$ dvc update cats-dogs.dvc
 ```
 
-> Note that when adding updates to a tracked data directory, DVC only moves new
-> and changed files to the cache. This optimizes file system performance, and
-> avoids file duplication in cache and [remotes](/doc/command-reference/remote).
-
-Done! We now have a straightforward dataset stored as a full directory in our
-data registry. Its first version tracks 1800 images, while the updated second
-version tracks 1000 more. This strategy enables easy reproducibility of any
-experiments (matching their dataset versions, see `dvc checkout`). It also
-provides the ability to track the history of changes to the dataset with Git.
-
-## Taking full advantage of data registries
-
-If we want to keep the connection between the current <abbr>project</abbr> and
-an external DVC repository (e.g. A data registry)) we would use `dvc import`
-instead of `dvc get`. Let's try this with our example
-[dataset registry](https://github.com/iterative/dataset-registry), where we
-already registered the dataset in the `use-cases` directory (with
-[2 versions](https://github.com/iterative/dataset-registry/commits/master/use-cases),
-as described in the previous section):
-
-```dvc
-dvc import --rev 0547f58 \
-           git@github.com:iterative/dataset-registry.git \
-           use-cases/data
-```
-
-This downloads the `data/` directory from Git version
-[0547f58](https://github.com/iterative/dataset-registry/tree/0547f58), which
-corresponds to the 1800 image dataset, and creates a local `data.dvc` _import
-stage_. Unlike typical DVC-files, this one records the source (project) of the
-imported data. This connection between projects allows us to check for updates
-in the data, using `dvc update`:
-
-```dvc
-$ dvc update data.dvc
-```
-
-This brings the `data/` directory up to its
-[latest version](https://github.com/iterative/dataset-registry/commit/99d1cdb)
-with 2800 images. Note that DVC only downloads new and changed files when
-updating imports.
+This downloads new and changed files in `cats-dogs/` from the source project,
+and updates the metadata in `cats-dogs.dvc`.
