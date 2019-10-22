@@ -62,7 +62,7 @@ compression also raises questions. But most importantly, this single dataset is
 tracked by 2 different DVC-files, instead of 2 versions of the same one,
 preventing us from leveraging Git's central features to track changes.
 
-Fortunately, we have also prepared a better alternative in the `use-cases`
+Fortunately, we have also prepared a better alternative in the `use-cases/`
 directory of the same
 [repository](https://github.com/iterative/dataset-registry)). First, we used
 <code>dvc add cats-dogs</code> to
@@ -97,8 +97,8 @@ $ dvc import --rev cats-dogs-v1 \
 > the example above to specify an exact version of the dataset.
 
 Importing keeps the connection between the local project and an external DVC
-repository (e.g. a data registry)) where we are downloading data from. This is
-achieved by creating a DVC-file (a.k.a. an _import stage_), in this case
+repository (e.g. a data registry) where we are downloading data from. This is
+achieved by creating a special DVC-file a.k.a. an _import stage_, in this case
 `cats-dogs.dvc` – which can be used for versioning the import with Git in the
 local project. This connection will come in handy when the source data changes,
 and we want to obtain these updates...
