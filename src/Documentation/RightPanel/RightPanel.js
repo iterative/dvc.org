@@ -136,7 +136,12 @@ export default class RightPanel extends React.PureComponent {
           </>
         )}
 
-        <Description>Found an issue? Let us know or fix it:</Description>
+        <Description>
+          <span role="img" aria-label="bug">
+            🐛
+          </span>{' '}
+          Found an issue? Let us know or fix it:
+        </Description>
 
         <GithubButton href={githubLink} target="_blank">
           <i />
@@ -146,6 +151,9 @@ export default class RightPanel extends React.PureComponent {
         <br />
         <br />
         <Description>
+          <span role="img" aria-label="question">
+            ❓
+          </span>{' '}
           Have a question? Join our chat, we will help you:
         </Description>
 
