@@ -37,11 +37,6 @@ The advantages of using a data registry are:
 - DVC data registries are versioned with Git, so you can always track the
   history of the project the same as you manage your source code repository.
 
-A possible risk of shared data registries is that, if the source project or its
-remote storage are lost for any reason, several other projects depending on it
-may stop being reproducible. So this strategy is best when the registry is owned
-and controlled internally by the same team as the projects that employ it.
-
 ## Using properly versioned registries
 
 In the [Versioning Tutorial](/doc/tutorials/versioning) we use a ZIP file
