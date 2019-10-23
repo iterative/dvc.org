@@ -126,8 +126,8 @@ $ dvc run -f clean.dvc \
 
 </details>
 
-If you check the contents of the files `raw.dvc` and `clean.dvc` you will notice
-that their `path:` field refers to the external directories:
+If you check the contents of `raw.dvc` (and `clean.dvc`) you'll notice that the
+`path` field refers to the external directories:
 
 ```dvc
 $ cat raw.dvc
