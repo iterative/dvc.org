@@ -24,7 +24,7 @@ Please feel free to use it for your own sites and
 We welcome contributions to the DVC docs by the community!
 
 You can refer to our
-[Contributing guide](https://dvc.org/doc/user-guide/contributing-docs/) for more
+[Contributing guide](https://dvc.org/doc/user-guide/contributing/docs/) for more
 details. Thank you!
 
 **If you need help:**
