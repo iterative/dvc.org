@@ -108,12 +108,12 @@
         "source": "contributing/index.md",
         "children": [
           {
-            "label": "Contributig Docs",
-            "slug": "docs"
+            "label": "DVC Core Project",
+            "slug": "code"
           },
           {
-            "label": "Contributing Code",
-            "slug": "code"
+            "label": "Documentation and This Site",
+            "slug": "docs"
           }
         ]
       },
