@@ -102,8 +102,21 @@
         "label": "Development Version",
         "slug": "development"
       },
-      "contributing",
-      "contributing-docs",
+      {
+        "label": "Contributing",
+        "slug": "contributing",
+        "source": "contributing/index.md",
+        "children": [
+          {
+            "label": "Contributig Docs",
+            "slug": "docs"
+          },
+          {
+            "label": "Contributing Code",
+            "slug": "code"
+          }
+        ]
+      },
       {
         "label": "Shell Autocomplete",
         "slug": "autocomplete"
