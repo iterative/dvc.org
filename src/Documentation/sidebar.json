@@ -109,7 +109,7 @@
         "children": [
           {
             "label": "DVC Core Project",
-            "slug": "code"
+            "slug": "core"
           },
           {
             "label": "Docs and Website",

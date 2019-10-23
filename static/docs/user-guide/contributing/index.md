@@ -2,22 +2,22 @@
 
 ## Contributing to DVC
 
-We welcome [contributions](/doc/user-guide/contributing/code) to
+We welcome [contributions](/doc/user-guide/contributing/core) to
 [DVC](https://github.com/iterative/dvc) by the community.
 
-- [How to report a problem](/doc/user-guide/contributing/code#how-to-report-a-problem)
+- [How to report a problem](/doc/user-guide/contributing/core#how-to-report-a-problem)
 
-- [Submitting changes](/doc/user-guide/contributing/code#submitting-changes)
+- [Submitting changes](/doc/user-guide/contributing/core#submitting-changes)
 
-- [Development environment](/doc/user-guide/contributing/code#development-environment)
+- [Development environment](/doc/user-guide/contributing/core#development-environment)
 
-- [Running tests](/doc/user-guide/contributing/code#running-tests)
+- [Running tests](/doc/user-guide/contributing/core#running-tests)
 
-- [Testing remotes](/doc/user-guide/contributing/code#testing-remotes)
+- [Testing remotes](/doc/user-guide/contributing/core#testing-remotes)
 
-- [Code style guidelines (for Python)](/doc/user-guide/contributing/code#code-style-guidelines-for-python)
+- [Code style guidelines (for Python)](/doc/user-guide/contributing/core#code-style-guidelines-for-python)
 
-- [Commit message format guidelines](/doc/user-guide/contributing/code#commit-message-format-guidelines)
+- [Commit message format guidelines](/doc/user-guide/contributing/core#commit-message-format-guidelines)
 
 ## Contributing Docs
 
