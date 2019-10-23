@@ -43,7 +43,7 @@ For more details, please refer to this
       desc: `
 Any data file or directory, as well as intermediate or final result (such as
 extracted features or a ML model file) that is under DVC control. Refer to
-[Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
+[Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
 for more details.
       `
     },

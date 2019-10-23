@@ -29,5 +29,5 @@ $ dvc pull data/data.xml.dvc
 
 DVC remotes, `dvc push`, and `dvc pull` provide a basic collaboration workflow,
 the same way as Git remotes, `git push` and `git pull`. See
-[Share Data and Model Files](/doc/use-cases/share-data-and-model-files) for more
-information.
+[Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files) for
+more information.

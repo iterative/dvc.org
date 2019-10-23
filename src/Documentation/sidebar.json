@@ -68,12 +68,12 @@
     "source": "use-cases/index.md",
     "children": [
       {
-        "label": "Data & Model Files Versioning",
-        "slug": "data-and-model-files-versioning"
+        "label": "Versioning Data & Model Files",
+        "slug": "versioning-data-and-model-files"
       },
       {
-        "label": "Share Data & Model Files",
-        "slug": "share-data-and-model-files"
+        "label": "Sharing Data & Model Files",
+        "slug": "sharing-data-and-model-files"
       },
       "shared-development-server"
     ]
@@ -91,7 +91,7 @@
         "slug": "dvc-file-format"
       },
       "dvcignore",
-      "update-tracked-files",
+      "updating-tracked-files",
       "large-dataset-optimization",
       "external-dependencies",
       {

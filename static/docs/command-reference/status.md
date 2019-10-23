@@ -94,7 +94,7 @@ outputs described in it.
 For either _new_ and _deleted_ data, the cache (subset determined by the current
 workspace) is different from remote storage. Bringing the two into sync requires
 `dvc pull` or `dvc push`. For the typical process to update the workspace, see
-[Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
+[Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
 
 ## Options
 

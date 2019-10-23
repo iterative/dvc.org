@@ -1,4 +1,4 @@
-# Data and Model Files Versioning
+# Versioning Data and Model Files
 
 > This document provides an overview the file versioning workflow with DVC. To
 > get more hands-on experience on this we recommend following along the
@@ -114,8 +114,8 @@ their latest versions.
 
 To share your data with others you need to setup a
 [data storage](/doc/command-reference/remote). See the
-[Share Data And Model Files](/doc/use-cases/share-data-and-model-files) use case
-to get an overview on how to do this.
+[Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files) use
+case to get an overview on how to do this.
 
 Please also don't forget to see the [Versioning](/doc/tutorials/versioning)
 example to get a hands-on experience with datasets and models versioning.
