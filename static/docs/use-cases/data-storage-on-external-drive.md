@@ -2,18 +2,17 @@
 
 Sometimes the data may be stored on an
 [external hard drive](https://whatis.techtarget.com/definition/external-hard-drive).
-Usually such data is huge, which means that it won't fit on our home directory,
-and even if it did, it would certainly take a long time to copy it back and
-forth from the external drive to the internal one. For example let's say that
-the size of the external drive is 16TB, while the hard drive of our home
-directory is only 320GB.
+Usually such data is huge, which means that it won't fit on our local drive, and
+even if it did, it would certainly take a long time to copy it back and forth
+from the external drive to the internal one. For example let's say that the size
+of the external drive is 16TB, while the local drive is only 320GB.
 
-In this case we would like to process the data where it is located (on the
-external drive). We also would like to save the results there, and certainly to
-store the <abbr>cached</abbr> files there as well.
+In this case we would like to process the data where it is already located (on
+the external drive). We also would like to save the results there, and certainly
+to store the <abbr>cached</abbr> files there as well.
 
-The most easy way to do this would be to initialize the <abbr>workspace</abbr>
-on the external drive itself. If we assume that the external drive is mounted on
+The easiest way to do this would be to initialize the <abbr>workspace</abbr> on
+the external drive itself. If we assume that the external drive is mounted on
 `/mnt/data/`, then it could be done like this:
 
 ```dvc
@@ -24,8 +23,8 @@ $ sudo su
 ```
 
 But in case this is not possible (or is not preferable), we can easily setup the
-workspace in our home directory, while all the data files and their caches keep
-staying on the external drive. DVC will still be able to track them properly.
+workspace in our local drive, while all the data files and their caches stay on
+the external drive. DVC will still be able to track them properly.
 
 ## Make the data directory accessible
 
@@ -38,10 +37,15 @@ $ sudo chown <username>: -R /mnt/external-drive/
 $ chmod u+rw -R /mnt/external-drive/
 ```
 
+> Or refer to
+> [User Account Control](https://docs.microsoft.com/en-us/windows/security/identity-protection/user-account-control/user-account-control-overview)
+> for Windows.
+
 ## Start a DVC project and setup an external cache
 
-An _external_ <abbr>cache</abbr> is called so because it resides outside of the
-workspace directory. Let's create a directory for it on `/mnt/external-drive/`:
+An [external cache](/doc/user-guide/external-outputs) is called so because it
+resides outside of the workspace directory. Let's create a directory for it on
+`/mnt/external-drive/`:
 
 ```dvc
 $ mkdir -p /mnt/external-drive/dvc-cache
@@ -56,7 +60,6 @@ $ git init
 $ dvc init
 
 $ dvc config cache.dir /mnt/external-drive/dvc-cache
-$ rm -rf .dvc/cache/
 
 $ git add .dvc/config
 $ git commit -m 'Initialize DVC with external cache'
@@ -69,7 +72,7 @@ $ git commit -m 'Initialize DVC with external cache'
 In this example we are removing the default cache directory `.dvc/cache/`
 because we just initialized the project and we know that it is empty (there's
 nothing stored in it). If we had an existing project, we could preserve the
-content of the cache by moving it to the new directory:
+content of the <abbr>cache</abbr> by moving it to the new directory:
 
 ```dvc
 $ mv -a .dvc/cache/* /mnt/external-drive/dvc-cache/
@@ -174,8 +177,8 @@ $ ls /mnt/external-drive/dvc-cache
 Now you can add and commit the DVC-files to git:
 
 ```dvc
-$ git add raw.dvc clean.dvc
-$ git commit -m "Cleanup raw data"
+$ git add .
+$ git commit -m 'Cleanup raw data'
 ```
 
 <details>
