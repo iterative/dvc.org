@@ -6,7 +6,7 @@ import { LightButton } from '../LightButton'
 import throttle from 'lodash.throttle'
 
 const ROOT_ELEMENT = 'bodybag'
-const MARKDOWN_ROOT = '.markdown-body'
+const MARKDOWN_ROOT = '#markdown-root'
 
 const imageChecker = (images, callback) => {
   // IE can't use forEach on array-likes
