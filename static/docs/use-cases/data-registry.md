@@ -20,22 +20,25 @@ projects_, as `dvc get` works anywhere in your system.
 
 The advantages of using a data registry are:
 
-- Tracked data is stored in a **centralized** remote location, with the ability
-  to create distributed copies on other remotes.
-- Several projects can **share** the same files, guaranteeing that everyone has
-  access to the same data versions. See
-  [Share Data and Model Files](/doc/use-cases/share-data-and-model-files) for
-  more information.
-- Projects that import data from the registry don't need to push these large
-  files to their own [remotes](/doc/command-reference/remote), **saving space**
-  on storage – they may not even need a remote at all, using only their local
-  <abbr>cache</abbr>.
-- DVC data registries can handle multiple versions of data and ML modes with a
-  familiar CLI. See
-  [Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning)
-  for more information.
-- DVC data registries are versioned with Git, so you can always track the
-  history of the project the same as you manage your source code repository.
+- Centralization: Data [shared](/doc/use-cases/share-data-and-model-files) by
+  multiple projects can be stored in a single location (with the ability to
+  create distributed copies on other remotes). This simplifies data management
+  and helps use storage space efficiently.
+- [Versioning](/doc/use-cases/data-and-model-files-versioning): Any version of
+  the stored data or ML modes can be used in other <abbr>projects</abbr> at any
+  time.
+- Persistence: The registry controlled
+  [remote storage](/doc/command-reference/remote) (e.g. an S3 bucket) improves
+  data security. There are less chances someone can delete or rewrite a model,
+  for example.
+- Lifecycle management: Manage your data like you do with code, leveraging Git
+  and GitHub features such as version history, pull requests, reviews, or even
+  continuous deployment of ML models.
+- Security: Registries can be setup to have read-only remote storage (e.g. an
+  HTTP location). Git versioning of DVC-files allows us to track and audit data
+  changes.
+- Reusability: Reproduce and organizing _feature stores_ with `dvc get` and
+  `dvc import`.
 
 ## Example
 
@@ -111,3 +114,8 @@ $ dvc update cats-dogs.dvc
 
 This downloads new and changed files in `cats-dogs/` from the source project,
 and updates the metadata in the import stage DVC-file.
+
+As an extra detail, notice that so far our local project is working only with a
+local <abbr>cache</abbr>. It has no need to setup a
+[remotes](/doc/command-reference/remote) to [pull](/doc/command-reference/pull)
+or [push](/doc/command-reference/push) this dataset.
