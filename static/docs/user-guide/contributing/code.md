@@ -1,4 +1,4 @@
-# Contributing to the DVC Project
+# Contributing to DVC
 
 We welcome contributions to [DVC](https://github.com/iterative/dvc) by the
 community. See the
