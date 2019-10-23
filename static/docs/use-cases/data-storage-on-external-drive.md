@@ -129,35 +129,12 @@ $ dvc run -f clean.dvc \
 If you check the contents of `raw.dvc` (and `clean.dvc`) you'll notice that the
 `path` field refers to the external directories:
 
-```dvc
-$ cat raw.dvc
-```
-
 ```yaml
 md5: 9cbbacd47133debf91dcb41891c64730
 wdir: .
 outs:
   - md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
     path: /mnt/external-drive/raw
-    cache: true
-    metric: false
-    persist: false
-```
-
-```dvc
-$ cat clean.dvc
-```
-
-```yaml
-md5: 2b842ed58b1792dde6df27e3d0f73430
-cmd: cp -a /mnt/external-drive/raw /mnt/external-drive/clean
-wdir: .
-deps:
-  - md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
-    path: /mnt/external-drive/raw
-outs:
-  - md5: 0ee0a6bc0a1f1be0610f7a3f67f1cb54.dir
-    path: /mnt/external-drive/clean
     cache: true
     metric: false
     persist: false
