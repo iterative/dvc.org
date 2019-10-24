@@ -35,10 +35,10 @@ system/environment:
 
 The detail of DVC version depends upon the way of installing DVC.
 
-- **Official release**: [These instructions](/doc/get-started/install) include
-  ways to install DVC using the official package stored in Python Packaging
-  Authority. We mark these official releases with tags on DVC's repository. Any
-  issues reported with the official build can be traced using the `BASE_VERSION`
+- **Official release**: [These instructions](/doc/install) include ways to
+  install DVC using the official package stored in Python Packaging Authority.
+  We mark these official releases with tags on DVC's repository. Any issues
+  reported with the official build can be traced using the `BASE_VERSION`
   itself. So the output is simply `0.40.2`.
 
 - **Development version**: `pip install git+git://github.com/iterative/dvc` will
@@ -56,7 +56,7 @@ The detail of DVC version depends upon the way of installing DVC.
 #### What we mean by "Binary"
 
 The detail of `Binary` depends on the way DVC was downloading and
-[installed](/doc/get-started/install).
+[installed](/doc/install).
 
 - **`Binary: True`** - displayed when DVC is downloaded/installed as one of:
 
