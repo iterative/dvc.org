@@ -2,6 +2,12 @@
 
 ## Install with pip
 
+> It's highly recommended using
+> [Virtual Environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> or
+> [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
+> for Python 3.6+ to keep your system environment safe.
+
 ```dvc
 $ pip install dvc
 ```
@@ -25,7 +31,8 @@ In this case it installs `boto3` library as well, besides DVC.
 
 ## Install with conda
 
-> Requires [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+> Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.htm) or
+> l[Anaconda Distribution](https://docs.anaconda.com/anaconda/).
 
 ```dvc
 $ conda install -c conda-forge dvc

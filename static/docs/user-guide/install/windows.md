@@ -9,7 +9,8 @@ on GitHub.
 
 ## Install with conda
 
-> Requires [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
+> Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.htm) or
+> l[Anaconda Distribution](https://docs.anaconda.com/anaconda/).
 
 You can use `conda` from
 [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win),

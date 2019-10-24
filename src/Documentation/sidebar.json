@@ -94,8 +94,8 @@
           "windows",
           "linux",
           {
-            "label": "Development Version",
-            "slug": "dev"
+            "label": "Pre-release Version",
+            "slug": "pre-release"
           },
           {
             "label": "Shell Completion",
