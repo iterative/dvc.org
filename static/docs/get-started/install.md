@@ -61,12 +61,6 @@ $ sudo yum install dvc
 $ brew install iterative/homebrew-dvc/dvc
 ```
 
-or:
-
-```dvc
-$ brew cask install iterative/homebrew-dvc/dvc
-```
-
 </details>
 
 <details>
