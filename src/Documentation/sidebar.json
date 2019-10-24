@@ -28,6 +28,28 @@
     ]
   },
   {
+    "label": "Installation",
+    "slug": "install",
+    "source": "install/index.md",
+    "children": [
+      {
+        "label": "Mac OS",
+        "slug": "macos"
+      },
+      "windows",
+      "linux",
+      {
+        "label": "Pre-release Version",
+        "slug": "pre-release"
+      },
+      {
+        "label": "Shell Completion",
+        "slug": "completion"
+      },
+      "plugins"
+    ]
+  },
+  {
     "slug": "tutorials",
     "source": "tutorials/index.md",
     "children": [
@@ -82,28 +104,6 @@
     "slug": "user-guide",
     "source": "user-guide/index.md",
     "children": [
-      {
-        "label": "Installation",
-        "slug": "install",
-        "source": "install/index.md",
-        "children": [
-          {
-            "label": "Mac OS",
-            "slug": "macos"
-          },
-          "windows",
-          "linux",
-          {
-            "label": "Pre-release Version",
-            "slug": "pre-release"
-          },
-          {
-            "label": "Shell Completion",
-            "slug": "completion"
-          },
-          "plugins"
-        ]
-      },
       {
         "label": "Files and Directories",
         "slug": "dvc-files-and-directories"
