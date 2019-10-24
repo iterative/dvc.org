@@ -4,7 +4,6 @@
     "source": "get-started/index.md",
     "children": [
       "agenda",
-      "install",
       "initialize",
       "configure",
       "add-files",
