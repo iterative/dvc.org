@@ -4,7 +4,7 @@ If you would like to install the latest version of DVC, you can do the
 following:
 
 > It's highly recommended using
-> [Virtual Environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
 > or
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
 > for Python 3.6+ to keep your system environment safe.
