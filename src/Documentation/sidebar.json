@@ -83,6 +83,28 @@
     "source": "user-guide/index.md",
     "children": [
       {
+        "label": "Installation",
+        "slug": "install",
+        "source": "install/index.md",
+        "children": [
+          {
+            "label": "Mac OS",
+            "slug": "macos"
+          },
+          "windows",
+          "linux",
+          {
+            "label": "Development Version",
+            "slug": "dev"
+          },
+          {
+            "label": "Shell Completion",
+            "slug": "completion"
+          },
+          "plugins"
+        ]
+      },
+      {
         "label": "Files and Directories",
         "slug": "dvc-files-and-directories"
       },
