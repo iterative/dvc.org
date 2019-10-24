@@ -121,10 +121,6 @@
         "slug": "managing-external-data"
       },
       {
-        "label": "Development Version",
-        "slug": "development"
-      },
-      {
         "label": "Contributing",
         "slug": "contributing",
         "source": "contributing/index.md",
@@ -138,14 +134,6 @@
             "slug": "docs"
           }
         ]
-      },
-      {
-        "label": "Shell Autocomplete",
-        "slug": "autocomplete"
-      },
-      {
-        "label": "Plugins & Integrations",
-        "slug": "plugins"
       },
       {
         "label": "Running DVC on Windows",
