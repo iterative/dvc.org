@@ -139,8 +139,8 @@
         "source": "howto/index.md",
         "children": [
           {
-            "label": "Manage Data and Cache on External Drive",
-            "slug": "manage-data-and-cache-on-external-drive"
+            "label": "Keep Data and Cache on External Drive",
+            "slug": "keep-data-and-cache-on-external-drive"
           }
         ]
       }

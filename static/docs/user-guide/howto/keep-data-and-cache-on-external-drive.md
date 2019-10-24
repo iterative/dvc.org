@@ -1,4 +1,4 @@
-# Manage Data and Cache on External Drive
+# Keep Data and Cache on External Drive
 
 Sometimes the data may be stored on an
 [external hard drive](https://whatis.techtarget.com/definition/external-hard-drive).
@@ -11,23 +11,34 @@ In this case we would like to process the data where it is already located (on
 the external drive). We also would like to save the results there, and certainly
 to store the <abbr>cached</abbr> files there as well.
 
-The easiest way to do this would be to initialize the <abbr>workspace</abbr> on
-the external drive itself. If we assume that the external drive is mounted on
-`/mnt/external-drive/`, then it could be done like this:
+<details>
+
+Alternative solution: Initialize the workspace on the external drive itself
+
+The easiest way to do this would be to initialize the workspace on the external
+drive itself. If we assume that the external drive is mounted on
+`/mnt/external-drive/` and the data is on `/mnt/external-drive/data/raw/`, then
+it could be done like this:
 
 ```dvc
 $ cd /mnt/external-drive/
 $ git init
 $ dvc init
+$ dvc add data/raw/
+...
 ```
 
-But in case this is not possible (or is not preferable), we can easily setup the
+But often this is not possible (or is not preferable). So we have to setup the
 workspace in our local drive, while all the data files and their caches stay on
-the external drive. DVC will still be able to track them properly.
+the external drive. This is the solution that is described in the rest of this
+page.
+
+</details>
 
 ## Make the data directory accessible
 
-First you have to make sure that you can read and write the data directory
+Let's assume that the external drive is mounted on `/mnt/external-drive/`. First
+we have to make sure that we can read and write the data directory
 `/mnt/external-drive/`. The most straightforward way to do this is by setting
 proper ownership and permissions to it, like this:
 
@@ -39,32 +50,37 @@ $ chmod u+rw -R /mnt/external-drive/
 ## Start a DVC project and setup an external cache
 
 An [external cache](/doc/user-guide/external-outputs) is called so because it
-resides outside of the workspace directory. Let's create a directory for it on
-`/mnt/external-drive/`:
+resides outside of the workspace directory.
 
-```dvc
-$ mkdir -p /mnt/external-drive/dvc-cache
-```
+- Let's create a directory for it on `/mnt/external-drive/`:
 
-Now you can initialize a <abbr>project</abbr> on your home directory and
-configure it to use the external cache directory:
+  ```dvc
+  $ mkdir -p /mnt/external-drive/dvc-cache
+  ```
 
-```dvc
-# initialize a project
-$ cd ~/project/
-$ git init
-$ dvc init
+- Now you can initialize a <abbr>project</abbr> on your home directory:
 
-# use the external directory for caches
-$ dvc config cache.dir /mnt/external-drive/dvc-cache
-$ cat .dvc/config
-[cache]
-dir = /mnt/external-drive/dvc-cache
+  ```dvc
+  $ cd ~/project/
+  $ git init
+  $ dvc init
+  ```
 
-# commit to git
-$ git add .dvc/config
-$ git commit -m 'Initialize DVC with external cache'
-```
+- Configure it to use the external directory for caches:
+
+  ```dvc
+  $ dvc config cache.dir /mnt/external-drive/dvc-cache
+  $ cat .dvc/config
+  [cache]
+  dir = /mnt/external-drive/dvc-cache
+  ```
+
+- Commit changes to git:
+
+  ```dvc
+  $ git add .dvc/config
+  $ git commit -m 'Initialize DVC with external cache'
+  ```
 
 <details>
 
@@ -94,7 +110,7 @@ Now, when you refer to the data files and directories, you have to use their
 **absolute path**. The <abbr>DVC-files</abbr> will be created on the project
 directory, and you can track their modifications with `git` as usual.
 
-For example let's say that the raw data files are on
+For example, let's say that the raw data files are on
 `/mnt/external-drive/data/raw/` and you are cleaning them up. You could do it
 like this:
 
