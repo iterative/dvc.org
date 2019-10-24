@@ -84,8 +84,8 @@ The detail of `Binary` depends on the way DVC was downloading and
 
   This method of installation involves downloading DVC source code, and
   following certain setup instructions (See the
-  [development](/doc/user-guide/development) guide) to build the application
-  before being able to it.
+  [development](/doc/install/pre-release) guide) to build the application before
+  being able to it.
 
 ## Options
 
