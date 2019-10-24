@@ -58,7 +58,7 @@ $ sudo yum install dvc
 ### Expand to install via Homebrew (MacOS)
 
 ```dvc
-$ brew install iterative/homebrew-dvc/dvc
+$ brew install dvc
 ```
 
 </details>

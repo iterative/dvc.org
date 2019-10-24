@@ -5,7 +5,7 @@
 Recommended. Requires [Homebrew](https://brew.sh/).
 
 ```dvc
-$ brew install iterative/homebrew-dvc/dvc
+$ brew install dvc
 ```
 
 ## Install from package
