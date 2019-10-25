@@ -16,25 +16,31 @@ const LINE = `line`
 const links = {
   [OSX]: {
     title: 'Mac OS',
-    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}.pkg`
+    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}.pkg`,
+    download: true
   },
   [WINDOWS]: {
     title: 'Windows',
-    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}.exe`
+    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}.exe`,
+    download: true
   },
   [LINUX]: {
     title: 'Linux Deb',
-    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc_${VERSION}_amd64.deb`
+    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc_${VERSION}_amd64.deb`,
+    download: true
   },
   [LINUX_RPM]: {
     title: 'Linux RPM',
-    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}-1.x86_64.rpm`
-  },
-  [UNKNOWN]: {
-    title: 'pip install dvc'
+    url: `https://github.com/iterative/dvc/releases/download/${VERSION}/dvc-${VERSION}-1.x86_64.rpm`,
+    download: true
   },
   [LINE]: {
     line: true
+  },
+  [UNKNOWN]: {
+    title: 'pip, conda, brew',
+    url: `/doc/install`,
+    download: false
   }
 }
 
@@ -102,7 +108,7 @@ export default class DownloadButton extends Component {
 
   renderLinks = () => (
     <Links>
-      {[OSX, WINDOWS, LINUX, LINUX_RPM, LINE, UNKNOWN].map(id => {
+      {[UNKNOWN, LINE, OSX, WINDOWS, LINUX, LINUX_RPM].map(id => {
         const link = links[id]
 
         if (link.line) {
@@ -125,7 +131,7 @@ export default class DownloadButton extends Component {
 
         return (
           <DownloadLink
-            download={true}
+            download={link.download}
             key={id}
             href={link.url}
             onClick={() => this.download(id)}
