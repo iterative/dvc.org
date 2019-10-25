@@ -1,15 +1,11 @@
 # Initialize
 
-First of all install DVC from `pip` (on the [installation](/doc/install) page
-there are other options and details):
+There are a few recommended ways to install DVC: OS-specific package/installer,
+`pip`, `conda` (Anaconda), and Homebrew. See the [installation](/doc/install)
+page for all the options and details.
 
-```dvc
-$ pip install dvc
-```
-
-Then create a <abbr>workspace</abbr>. DVC doesn't require Git and can work
-without any source control management system, but for the best experience we
-recommend using DVC on top of Git repositories.
+In order to start using DVC, you need first to initialize it in your
+<abbr>workspace</abbr>:
 
 ```dvc
 $ mkdir example-get-started
