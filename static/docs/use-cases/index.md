@@ -19,7 +19,7 @@ include interesting scenarios that surface in our community. Please,
 
 Use cases are not written to be run end-to-end. For more general, hands-on
 experience with DVC, we recommend following the [Get Started](/doc/get-started),
-and/or [Tutorials](/doc/tutorials)] first. These include prepared datasets,
+and/or [Tutorials](/doc/tutorials) first. These include prepared datasets,
 source code files, and example commands that can be copied and pasted into
 terminal. These use cases also link to our more general
 [User Guide](/doc/user-guide), and technical

@@ -156,7 +156,7 @@ export default class Markdown extends React.PureComponent {
     const { markdown, githubLink, prev, next, onNavigate } = this.props
 
     return (
-      <Content>
+      <Content id="markdown-root">
         <GithubLink href={githubLink} target="_blank">
           <i /> Edit on GitHub
         </GithubLink>

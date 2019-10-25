@@ -27,11 +27,9 @@ guides related to contributing to this
   [DVC-file](/doc/user-guide/dvc-files-and-directories) dependencies.
 - [Managing External Data](/doc/user-guide/managing-external-data) explains both
   external outputs and external cache.
-- [Development Version](/doc/user-guide/development),
-  [Contributing](/doc/user-guide/contributing), and
-  [Contributing Documentation](/doc/user-guide/contributing-docs) are related
-  with getting involved directly in developing DVC. Contributors are very
-  welcomed in our [community](/support)!
+- [Contributing](/doc/user-guide/contributing) is related with getting involved
+  directly in developing DVC. Contributors are very welcomed in our
+  [community](/support)!
 
 The remaining guides are about optional productivity enhancements and other tips
 and tools related to advanced usage of DVC.

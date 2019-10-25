@@ -7,6 +7,8 @@ import throttle from 'lodash.throttle'
 // styles
 import styled from 'styled-components'
 import { media } from '../styles'
+// constants
+import { HEADER } from '../../consts'
 
 const MIN_HEIGHT = 78
 
@@ -50,7 +52,7 @@ class TopMenu extends Component {
     return (
       <Wrapper>
         <Container
-          className="header"
+          id={HEADER}
           scrolled={isDocPage || scrolled}
           wide={isDocPage}
         >

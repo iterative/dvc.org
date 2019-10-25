@@ -26,8 +26,8 @@ model file.
 
 ## Preparation
 
-If DVC is not installed, please follow these
-[instructions](/doc/get-started/install) to install it.
+If DVC is not installed, please follow these [instructions](/doc/install) to
+install it.
 
 Okay! Let's first download the code and set up a Git repository:
 

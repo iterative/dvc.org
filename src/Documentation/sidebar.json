@@ -4,7 +4,6 @@
     "source": "get-started/index.md",
     "children": [
       "agenda",
-      "install",
       "initialize",
       "configure",
       "add-files",
@@ -25,6 +24,28 @@
         "label": "Get Older Files",
         "slug": "older-versions"
       }
+    ]
+  },
+  {
+    "label": "Installation",
+    "slug": "install",
+    "source": "install/index.md",
+    "children": [
+      {
+        "label": "Mac OS",
+        "slug": "macos"
+      },
+      "windows",
+      "linux",
+      {
+        "label": "Pre-release Version",
+        "slug": "pre-release"
+      },
+      {
+        "label": "Shell Completion",
+        "slug": "completion"
+      },
+      "plugins"
     ]
   },
   {
@@ -99,18 +120,19 @@
         "slug": "managing-external-data"
       },
       {
-        "label": "Development Version",
-        "slug": "development"
-      },
-      "contributing",
-      "contributing-docs",
-      {
-        "label": "Shell Autocomplete",
-        "slug": "autocomplete"
-      },
-      {
-        "label": "Plugins & Integrations",
-        "slug": "plugins"
+        "label": "Contributing",
+        "slug": "contributing",
+        "source": "contributing/index.md",
+        "children": [
+          {
+            "label": "DVC Core Project",
+            "slug": "core"
+          },
+          {
+            "label": "Docs and Website",
+            "slug": "docs"
+          }
+        ]
       },
       {
         "label": "Running DVC on Windows",

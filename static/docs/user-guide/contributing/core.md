@@ -1,8 +1,8 @@
-# Contributing
+# Contributing to DVC
 
 We welcome contributions to [DVC](https://github.com/iterative/dvc) by the
 community. See the
-[Contributing to the Documentation](/doc/user-guide/contributing-docs) guide if
+[Contributing to the Documentation](/doc/user-guide/contributing/docs) guide if
 you want to fix or update the documentation or this website.
 
 ## How to report a problem

@@ -67,7 +67,7 @@ created in the current working directory, with its original file name.
 ## Examples
 
 > Note that `dvc get` can be used from anywhere in the file system, as long as
-> DVC is [installed](/doc/get-started/install).
+> DVC is [installed](/doc/install).
 
 We can use `dvc get` to download the resulting model file from our
 [get started example repo](https://github.com/iterative/example-get-started), a

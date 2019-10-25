@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 
+import { HEADER } from '../../consts'
+
 class DesktopView extends Component {
   state = {
     hover: false,
@@ -18,9 +20,8 @@ class DesktopView extends Component {
   }
 
   tooltipPositionEval = () => {
-    const headerHeight = document.getElementsByClassName('header')[0]
-      .offsetHeight
-    const markdownBody = document.getElementsByClassName('markdown-body')[0]
+    const headerHeight = document.getElementById(HEADER).offsetHeight
+    const markdownBody = document.getElementById('markdown-root')
     const tooltipBoundary = document
       .getElementById(`tooltip-text-${this.props.id}`)
       .getBoundingClientRect()
