@@ -1,27 +1,5 @@
 [
   {
-    "label": "Installation",
-    "slug": "install",
-    "source": "install/index.md",
-    "children": [
-      {
-        "label": "Mac OS",
-        "slug": "macos"
-      },
-      "windows",
-      "linux",
-      {
-        "label": "Pre-release Version",
-        "slug": "pre-release"
-      },
-      {
-        "label": "Shell Completion",
-        "slug": "completion"
-      },
-      "plugins"
-    ]
-  },
-  {
     "slug": "get-started",
     "source": "get-started/index.md",
     "children": [
@@ -46,6 +24,28 @@
         "label": "Get Older Files",
         "slug": "older-versions"
       }
+    ]
+  },
+  {
+    "label": "Install",
+    "slug": "install",
+    "source": "install/index.md",
+    "children": [
+      {
+        "label": "Mac OS",
+        "slug": "macos"
+      },
+      "windows",
+      "linux",
+      {
+        "label": "Pre-release Version",
+        "slug": "pre-release"
+      },
+      {
+        "label": "Shell Completion",
+        "slug": "completion"
+      },
+      "plugins"
     ]
   },
   {
