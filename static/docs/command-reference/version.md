@@ -79,8 +79,8 @@ The detail of `Binary` depends on the way DVC was downloading and
     source code is hosted
   - [The Python Package Index (PyPI)](https://pypi.org/project/dvc/) - source
     code is stored as a Python package
-  - [Homebrew package manager](https://github.com/iterative/homebrew-dvc) (for
-    MacOS systems) - source code is stored as Python package
+  - [Homebrew package manager](https://formulae.brew.sh/formula/dvc) (for MacOS
+    systems) - source code is stored as Python package
 
   This method of installation involves downloading DVC source code, and
   following certain setup instructions (See the
