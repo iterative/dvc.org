@@ -5,7 +5,7 @@ There are a few recommended ways to install DVC: OS-specific package/installer,
 all the options and details.
 
 In order to start using DVC, you need first to initialize it in your
-<abbr>workspace</abbr>:
+<abbr>workspace</abbr>, but let's prepare it first:
 
 ```dvc
 $ mkdir example-get-started
