@@ -61,7 +61,7 @@ DVC supports several types of (local or) remote locations (protocols):
 > Depending on the remote locations type you plan to download data from you
 > might need to specify one of the optional dependencies: `[s3]`, `[ssh]`,
 > `[gs]`, `[azure]`, and `[oss]` (or `[all]` to include them all) when
-> [installing DVC](/doc/get-started/install) with `pip`.
+> [installing DVC](/doc/install) with `pip`.
 
 > In case of HTTP,
 > [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
