@@ -1,8 +1,8 @@
 # Initialize
 
 There are a few recommended ways to install DVC: OS-specific package/installer,
-`pip`, `conda` (Anaconda), and Homebrew. See the [installation](/doc/install)
-page for all the options and details.
+`pip`, `conda`, and Homebrew. See the **[installation](/doc/install)** page for
+all the options and details.
 
 In order to start using DVC, you need first to initialize it in your
 <abbr>workspace</abbr>:
