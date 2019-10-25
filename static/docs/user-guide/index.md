@@ -8,8 +8,6 @@ of DVC, to more advanced and specific things you can do. We also include a few
 guides related to contributing to this
 [open-source project](https://github.com/iterative/dvc).
 
-- [Installation](/doc/user-guide/install) has all the information needed to
-  install DVC and some optional components.
 - [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
   describes the internal `.dvc/` directory and it's contents.
 - [DVC-File Format](/doc/user-guide/dvc-file-format) explains how the special
