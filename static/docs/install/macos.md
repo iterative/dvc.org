@@ -45,7 +45,7 @@ In this case it installs `boto3` library as well, besides DVC.
 
 ## Install with conda
 
-> Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.htm) or
+> Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
 > [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
 
 ```dvc
