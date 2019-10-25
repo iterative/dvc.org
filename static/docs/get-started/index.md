@@ -17,6 +17,6 @@ us a ⭐ if you like the project!
 ✅ Contribute either [on GitHub](https://github.com/iterative/dvc) or
 [on Patreon](https://www.patreon.com/DVCorg/overview) to support the project.
 
-Separate to this section, the longer [Tutorial](/doc/tutorials/deep) also
-introduces DVC step-by-step, while additionally explaining in great detail the
-motivation and what's happening internally.
+The longer [Tutorials](/doc/tutorials) section contains a step-by-step introduction to DVC. 
+In addition section explains, in great detail the motivation behind the project and its 
+internal mechanism.
