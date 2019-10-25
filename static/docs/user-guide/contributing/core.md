@@ -69,8 +69,8 @@ $ pip install pre-commit
 $ pre-commit install
 ```
 
-That should be it. You should be ready to make changes, run tests do commits! If
-you experience any problems, please don't hesitate to ping us in our
+That should be it. You should be ready to make changes, run tests, and make
+commits! If you experience any problems, please don't hesitate to ping us in our
 [chat](/chat).
 
 ## Running tests
