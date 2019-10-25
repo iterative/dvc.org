@@ -3,16 +3,15 @@
 If you want to test the latest stable version of DVC, ahead of official
 releases, you can install it from our code repository GitHub.
 
-> It's highly recommended to use a virtual environment for Python such as
-> [virtualenv](https://virtualenv.pypa.io/en/stable/), in order to encapsulate
-> your local environment:
->
-> ```dvc
-> $ virtualenv -p python3 .env
-> $ source .env/bin/activate
-> ```
+> It's highly recommended using
+> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> or
+> [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
+> (on Python 3.6+) to encapsulate your local environment.
 
 ```dvc
+$ virtualenv -p python3 .env
+$ source .env/bin/activate
 $ pip install gitpython
 $ pip install git+https://github.com/iterative/dvc
 ```

@@ -260,8 +260,8 @@ $ rm -f code.zip
 ### Click and expand to setup the environment
 
 Let's install the requirements. But before we do that, we **strongly** recommend
-creating a virtual environment with a tool such as
-[virtualenv](https://virtualenv.pypa.io/en/stable/):
+creating a
+[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
 
 ```dvc
 $ virtualenv -p python3 .env

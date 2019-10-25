@@ -20,7 +20,7 @@ Get the PKG package (binary) from the big "Download" button on the
 > [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
 > or
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
-> for Python 3.6+ to keep your system environment safe.
+> (on Python 3.6+) to encapsulate your local environment.
 
 ```dvc
 $ pip install dvc

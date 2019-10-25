@@ -40,8 +40,8 @@ This command pulls a <abbr>DVC project</abbr> with a single script `train.py`
 that will train the model.
 
 Let's now install the requirements. But before we do that, we **strongly**
-recommend creating a virtual environment with a tool such as
-[virtualenv](https://virtualenv.pypa.io/en/stable/):
+recommend creating a
+[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
 
 ```dvc
 $ virtualenv -p python3 .env
