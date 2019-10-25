@@ -57,7 +57,7 @@ The detail of DVC version depends upon the way of installing DVC.
 
 #### What we mean by "Binary"
 
-The detail of `Binary` depends on the way DVC was downloading and
+The detail of `Binary` depends on the way DVC was downloaded and
 [installed](/doc/install).
 
 - **`Binary: True`** - displayed when DVC is downloaded/installed as one of:
