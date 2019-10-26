@@ -22,6 +22,10 @@ browser to download `data.xml`. (Right-click
 [this link](https://data.dvc.org/tutorial/ver/data.zip) and select
 `Save Link As...` (Chrome). Save it into the `data/` subdirectory.
 
+> Please also review
+> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
+> tips to improve your experience using DVC on Windows.
+
 </details>
 
 At this time, `data/Posts.xml.zip` is an untracked regular file. We can place it

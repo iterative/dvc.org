@@ -22,10 +22,16 @@ transformations take a lot of time to run), output models. This way we can
 capture what data and code were used to produce a specific model in a sharable
 and reproducible way.
 
-## Initialize
+## Preparation
 
-Okay, let's first download the code and set up a Git repository. This step has
-nothing to do with DVC so far, it's just a simple preparation.
+If DVC is not installed, please follow these [instructions](/doc/install) to do
+so.
+
+> If you're using Windows, please review
+> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
+> tips to improve your experience.
+
+Okay! Let's first download the code and set up a Git repository:
 
 ```dvc
 $ mkdir example-pipeline && cd example-pipeline
