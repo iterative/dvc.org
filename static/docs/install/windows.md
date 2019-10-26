@@ -9,7 +9,7 @@ on GitHub.
 
 ## Install with conda
 
-> Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.htm) or
+> Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
 > [Anaconda Distribution](https://docs.anaconda.com/anaconda/).
 
 You can use `conda` from
