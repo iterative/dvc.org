@@ -120,6 +120,12 @@ To run a single test case:
 $ python -m tests tests/func/test_metrics.py::TestCachedMetrics
 ```
 
+To run a single test function:
+
+```dvc
+$ python -m tests tests/unit/utils/test_fs.py::test_get_inode
+```
+
 To pass additional arguments:
 
 ```dvc
