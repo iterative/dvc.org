@@ -10,8 +10,6 @@ releases, you can install it from our code repository GitHub.
 > (on Python 3.6+) to encapsulate your local environment.
 
 ```dvc
-$ virtualenv -p python3 .env
-$ source .env/bin/activate
 $ pip install gitpython
 $ pip install git+https://github.com/iterative/dvc
 ```
