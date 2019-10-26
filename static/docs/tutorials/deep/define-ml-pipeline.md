@@ -6,23 +6,23 @@ To include a data file into your data science environment, you need to copy the
 file into the repository. We'll create a `data/` directory for the data files
 and download a 40MB data archive into this directory.
 
-<details>
-
-### Expand to learn how to download on Windows
-
-Windows doesn't include the `wget` utility by default, so you'll need to use the
-browser to download `data.xml`. Save it into the `data/` subdirectory.
-(Right-click [this link](https://data.dvc.org/tutorial/ver/data.zip) and click
-`Save Link As...`(Chrome).
-
-</details>
-
 ```dvc
 $ mkdir data
 $ wget -P data https://data.dvc.org/tutorial/nlp/100K/Posts.xml.zip
 $ du -sh data/*
  41M data/Posts.xml.zip
 ```
+
+<details>
+
+### Expand to learn how to download on Windows
+
+Windows doesn't include the `wget` utility by default, but you can use the
+browser to download `data.xml`. (Right-click
+[this link](https://data.dvc.org/tutorial/ver/data.zip) and select
+`Save Link As...` (Chrome). Save it into the `data/` subdirectory.
+
+</details>
 
 At this time, `data/Posts.xml.zip` is an untracked regular file. We can place it
 under DVC control using `dvc add` (see below). After executing the command you
