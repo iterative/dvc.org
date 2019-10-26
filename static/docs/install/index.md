@@ -7,9 +7,17 @@ Please double check that you don't already have DVC (for example running
 - [Install on Windows](/doc/install/windows)
 - [Install on Linux](/doc/install/linux)
 
-You can also [install a pre-release](/doc/install/pre-release) to stay ahead of
-official releases.
+## Advanced options
 
-It's recommended to setup [shell completion](/doc/user-guide/install/completion)
-as well. And check out these [plugins](/doc/user-guide/install/plugins), which
-might be useful too.
+- Shell completion is included with certain installation methods
+  ([Debian/UbuntuFedora/CentOS Linux repositories](/doc/install/linux#install-from-repository)
+  and
+  [MacOS Homebrew](http://localhost:3000/doc/install/macos#install-with-brew)),
+  and it can be easily [setup manually](/doc/install/completion) for most
+  others.
+
+- You can [install a stable pre-release](/doc/install/pre-release) of DVC to
+  stay ahead of official releases.
+
+- Please also check out these 3rd-party tool
+  [plugins](/doc/user-guide/install/plugins), which might be useful.

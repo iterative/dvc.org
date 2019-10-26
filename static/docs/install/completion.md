@@ -27,7 +27,7 @@ Depending on what you typed on the command line so far, it completes:
 - Arguments for selected options. For example, `dvc repro` completes with stage
   files to reproduce.
 
-## Which shell you have
+## What shell do you have?
 
 Use the command `echo $0` to check your active shell, if you are not sure which
 one you are using (Bash or Zsh).
@@ -35,7 +35,16 @@ one you are using (Bash or Zsh).
 Depending on the shell that you are using, follow the instruction below to
 install and configure shell completion.
 
-## Bash completion on Mac OS
+## Manual setup
+
+Note that Shell completion is automatically included when DVC is installed on
+MacOS with
+[Homebrew](http://localhost:3000/doc/install/macos#install-with-brew), or on
+Debian/Ubuntu Linux
+[from deb repository](/doc/install/linux#install-from-repository). Please follow
+the instructions below for other DVC installation methods.
+
+### Bash completion on Mac OS
 
 1. First, make sure that Bash completion support is installed:
 
@@ -63,7 +72,7 @@ install and configure shell completion.
 
 4. Finally, `source ~/.bash_profile` or launch a new terminal to activate it.
 
-## Bash completion on Ubuntu
+### Bash completion on Debian/Ubuntu
 
 1. First, make sure that Bash completion support is installed:
 
@@ -96,7 +105,7 @@ install and configure shell completion.
 
 4. Finally, `source ~/.bashrc` or open a new terminal to activate it.
 
-## Zsh completion
+### Zsh completion
 
 The DVC specific completion script is located in this path of our main
 repository:
