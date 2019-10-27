@@ -38,11 +38,9 @@ install and configure shell completion.
 ## Manual setup
 
 Note that Shell completion is automatically included when DVC is installed on
-MacOS with
-[Homebrew](http://localhost:3000/doc/install/macos#install-with-brew), or on
-Debian/Ubuntu Linux
-[from deb repository](/doc/install/linux#install-from-repository). Please follow
-the instructions below for other DVC installation methods.
+MacOS with [Homebrew](/doc/install/macos#install-with-brew), or on Debian/Ubuntu
+Linux [from deb repository](/doc/install/linux#install-from-repository). Please
+follow the instructions below for other DVC installation methods.
 
 ### Bash completion on Mac OS
 
