@@ -9,10 +9,9 @@ Please double check that you don't already have DVC (for example running
 
 ## Advanced options
 
-- Shell completion is included with certain installation methods
-  ([Debian/UbuntuFedora/CentOS Linux repositories](/doc/install/linux#install-from-repository)
-  and [MacOS Homebrew](/doc/install/macos#install-with-brew)), and it can be
-  easily [setup manually](/doc/install/completion) for most others.
+- Shell completion is automatically enabled by certain installation methods. If
+  it does not work for you, please see
+  [these instructions](/doc/install/completion) to set it up.
 
 - You can [install a stable pre-release](/doc/install/pre-release) of DVC to
   stay ahead of official releases.
