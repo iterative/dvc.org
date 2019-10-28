@@ -14,7 +14,7 @@ Get the PKG package (binary) from the big "Download" button on the
 [home page](/), or from the
 [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 
-> You may try [these instructions](https://stackoverflow.com/a/27546100/761963)
+> You may try [these instructions](https://stackoverflow.com/a/42120328/761963)
 > to uninstall a MacOS package.
 
 ## Install with pip
