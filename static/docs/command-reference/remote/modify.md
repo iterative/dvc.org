@@ -269,8 +269,8 @@ For more information on configuring Azure Storage connection strings, visit
   [with kerberos](https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface#Relationship_to_Kerberos)).
   Using this option requires `paramiko[gssapi]`, which is currently only
   supported by our pip package, and could be installed with
-  `pip install 'dvc[ssh_gssapi]'`. Other packages (Conda, Windows, and Mac pkg)
-  do not support it.
+  `pip install 'dvc[ssh_gssapi]'`. Other packages (Conda, Windows, and MacOS
+  PKG) do not support it.
 
   ```dvc
   $ dvc remote modify myremote gss_auth true

@@ -90,4 +90,4 @@
   -r--------  2 501  staff   273M Jan 27 03:48 Posts-test.tsv
   ```
 
-- DVC works on Mac, Linux, and Windows.
+- DVC works on MacOS, Linux, and Windows.

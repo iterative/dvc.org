@@ -72,8 +72,9 @@ The detail of `Binary` depends on the way DVC was downloaded and
   These downloads are available from our [home page](/). They ultimately contain
   a binary bundle, which is the executable file of a software application,
   meaning that it will run natively on a specific platform (Linux, Windows,
-  Mac). In our case, we use [PyInstaller](https://pythonhosted.org/PyInstaller/)
-  to bundle our source code into the binary package app.
+  MacOS). In our case, we use
+  [PyInstaller](https://pythonhosted.org/PyInstaller/) to bundle our source code
+  into the binary package app.
 
 - **`Binary: False`** - shown when DVC is downloaded and installed from:
 
