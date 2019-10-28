@@ -26,6 +26,8 @@ system/environment:
 > If `dvc version` is executed outside a DVC project, no `Cache` is output and
 > the `Filesystem type` output is of the current working directory.
 
+<!-- Separate MD quote: -->
+
 > **Note** that if you've installed dvc using pip, you will need to install
 > `psutil` by yourself with `pip install psutil` in order for `dvc version` to
 > report file system information. Please see the original
