@@ -299,8 +299,7 @@ Fixes #(GitHub issue id).
 
 Message types:
 
-- _component_: Name of a component that this patch is affecting. Use `dvc` in a
-  general case
+- _component_: If applicable, comma-separated list of affected component(s)
 - _short description_: Short description of the patch
 - _long description_: If needed, longer message describing the patch in more
   details
