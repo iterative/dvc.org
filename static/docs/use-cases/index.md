@@ -6,10 +6,10 @@ extracted from real-life cases), and the approaches to solving them combine
 several features and commands of DVC, as well as other appropriate tools. They
 range from basic to more advanced:
 
-- [Data Versioning](/doc/use-cases/data-and-model-files-versioning) describes
+- [Data Versioning](/doc/use-cases/versioning-data-and-model-files) describes
   our most primary use: tracking and versioning large files with Git + DVC.
-- [Share Data and Model Files](/doc/use-cases/share-data-and-model-files) goes
-  over basic collaboration possibilities enabled by DVC.
+- [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
+  goes over basic collaboration possibilities enabled by DVC.
 - [Shared Development Server](/doc/use-cases/shared-development-server)
   describes a single development machine setup for teams that prefer so.
 

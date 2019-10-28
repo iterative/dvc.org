@@ -90,7 +90,7 @@ This will destroy all information about your pipelines, all data files...
 Are you sure you want to continue? [y/n]
 yes
 
- $ ls -a
+$ ls -a
 .git code.py foo
 ```
 
@@ -99,8 +99,8 @@ from the <abbr>workspace</abbr>. But the cache files that are present in the
 `/mnt/cache` directory still persist:
 
 ```dvc
- $ tree /mnt/cache
- /mnt/cache/
- └── b1
-     └── 946ac92492d2347c6235b4d2611184
+$ tree /mnt/cache
+/mnt/cache/
+└── b1
+    └── 946ac92492d2347c6235b4d2611184
 ```

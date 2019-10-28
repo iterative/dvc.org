@@ -1,5 +1,9 @@
 # Installation on Windows
 
+> **Note!** Please review
+> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
+> tips to improve your experience using DVC on Windows.
+
 ## Windows installer
 
 The easiest way is to use the self-contained, executable installer (binary),

@@ -63,10 +63,14 @@ DVC supports several types of (local or) remote locations (protocols):
 > `[gs]`, `[azure]`, and `[oss]` (or `[all]` to include them all) when
 > [installing DVC](/doc/install) with `pip`.
 
+<!-- Separate MD quote: -->
+
 > In case of HTTP,
 > [strong ETag](https://en.wikipedia.org/wiki/HTTP_ETag#Strong_and_weak_validation)
 > is necessary to track if the specified remote file (URL) changed to download
 > it again.
+
+<!-- Separate MD quote: -->
 
 > `remote://myremote/path/to/file` notation just means that a DVC
 > [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is
@@ -260,8 +264,8 @@ $ rm -f code.zip
 ### Click and expand to setup the environment
 
 Let's install the requirements. But before we do that, we **strongly** recommend
-creating a virtual environment with a tool such as
-[virtualenv](https://virtualenv.pypa.io/en/stable/):
+creating a
+[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
 
 ```dvc
 $ virtualenv -p python3 .env

@@ -56,7 +56,7 @@ enables basic DVC usage scenarios out of the box.
 be used or these files could be edited manually.
 
 For the typical process to share the <abbr>project</abbr> via remote, see
-[Share Data And Model Files](/doc/use-cases/share-data-and-model-files).
+[Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
 
 ## Options
 

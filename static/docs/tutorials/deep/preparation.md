@@ -17,10 +17,14 @@ code into it:
 
 ### Expand to learn how to download on Windows
 
-Windows doesn't include the `wget` utility by default, so you'll need to use the
-browser to download `code.zip`. Save it into the project directory, `classify/`.
-(Right-click [this link](https://code.dvc.org/tutorial/nlp/code.zip) and click
-`Save Link As...`(Chrome).
+Windows doesn't include the `wget` utility by default, but you can use the
+browser to download `code.zip`. (Right-click
+[this link](https://code.dvc.org/tutorial/nlp/code.zip) and select
+`Save Link As...` (Chrome). Save it into the project directory.
+
+> Please also review
+> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
+> tips to improve your experience using DVC on Windows.
 
 </details>
 
@@ -35,8 +39,8 @@ $ git commit -m "download code"
 ```
 
 Now let's install the requirements. But before we do that, we **strongly**
-recommend creating a virtual environment with a tool such as
-[virtualenv](https://virtualenv.pypa.io/en/stable/):
+recommend creating a
+[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
 
 ```dvc
 $ virtualenv -p python3 .env
@@ -47,12 +51,10 @@ $ pip install -r code/requirements.txt
 
 ## Install DVC
 
-Now DVC software should be installed. The easiest way to install DVC is a system
-dependent package. DVC supports all common operating systems: MacOS, Linux and
-Windows. You can find the latest version of the package on the [home page](/).
-
-Alternatively, you can install DVC by Python package manager — PIP if you use
-Python:
+You'll need DVC on your system to continue this tutorial. Please refer to
+[Installation](/doc/install) for the easiest way to install DVC on your system.
+For this tutorial, installing DVC with [pip](https://pip.pypa.io/) is probably
+the easiest:
 
 ```dvc
 $ pip install dvc

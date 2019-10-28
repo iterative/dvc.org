@@ -22,10 +22,16 @@ transformations take a lot of time to run), output models. This way we can
 capture what data and code were used to produce a specific model in a sharable
 and reproducible way.
 
-## Initialize
+## Preparation
 
-Okay, let's first download the code and set up a Git repository. This step has
-nothing to do with DVC so far, it's just a simple preparation.
+If DVC is not installed, please follow these [instructions](/doc/install) to do
+so.
+
+> If you're using Windows, please review
+> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
+> tips to improve your experience.
+
+Okay! Let's first download the code and set up a Git repository:
 
 ```dvc
 $ mkdir example-pipeline && cd example-pipeline
@@ -45,8 +51,8 @@ $ git commit -m "Download and add code to new Git repo"
 > project as the external data source.
 
 Now let's install the requirements. But before we do that, we **strongly**
-recommend creating a virtual environment with a tool such as
-[virtualenv](https://virtualenv.pypa.io/en/stable/):
+recommend creating a
+[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
 
 ```dvc
 $ virtualenv -p python3 .env

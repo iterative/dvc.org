@@ -14,7 +14,7 @@ guides related to contributing to this
   metafiles that DVC creates to track <abbr>project</abbr> data are constructed.
 - [Dvcignore](/doc/user-guide/dvcignore) explains how to exclude files from DVC
   operations with the optional `.dvcignore` file.
-- [Update a Tracked File](/doc/use-cases/update-tracked-files) explains how to
+- [Update a Tracked File](/doc/use-cases/updating-tracked-files) explains how to
   modify protected data under DVC control (related to the `cache.type` option of
   DVC).
 - [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization)
