@@ -3,120 +3,105 @@
 Sometimes the data may be stored on an
 [external hard drive](https://whatis.techtarget.com/definition/external-hard-drive).
 Usually such data is huge, which means that it won't fit on our local drive, and
-even if it did, it would certainly take a long time to copy it back and forth
-from the external drive to the internal one. For example let's say that the size
-of the external drive is 16TB, while the local drive is only 320GB.
+even if it did, it would take a long time to copy it back and forth from the
+external drive to the internal one. For example let's say that the size of the
+external drive is 16TB, while the local drive is only 320GB.
 
 In this case we would like to process the data where it is already located (on
-the external drive). We also would like to save the results there, and certainly
-to store the <abbr>cached</abbr> files there as well.
+the external drive). We also would like to store the results there, as well as
+the <abbr>cached</abbr> files.
 
 <details>
 
-Alternative solution: Initialize the workspace on the external drive itself
+### A simple approach: initialize the workspace on the external drive itself
 
 The easiest way to do this would be to initialize the workspace on the external
 drive itself. If we assume that the external drive is mounted on
-`/mnt/external-drive/` and the data is on `/mnt/external-drive/data/raw/`, then
+`/mnt/external-drive/` and the data is on `/mnt/external-drive/data/raw`, then
 it could be done like this:
 
 ```dvc
 $ cd /mnt/external-drive/
 $ git init
 $ dvc init
-$ dvc add data/raw/
+$ dvc add data/raw
 ...
 ```
 
-But often this is not possible (or is not preferable). So we have to setup the
-workspace in our local drive, while all the data files and their caches stay on
-the external drive. This is the solution that is described in the rest of this
-page.
+But often this is not possible (or preferable). Another solution is described in
+the rest of this page.
 
 </details>
+
+Most likely, the best approach for this is to setup the <abbr>workspace</abbr>
+in our local drive, while all the data files and their caches stay on the
+external drive.
 
 ## Make the data directory accessible
 
 Let's assume that the external drive is mounted on `/mnt/external-drive/`. First
-we have to make sure that we can read and write the data directory
-`/mnt/external-drive/`. The most straightforward way to do this is by setting
-proper ownership and permissions to it, like this:
+we have to make sure that we can read and write this data directory:
 
 ```dvc
 $ sudo chown <username>: -R /mnt/external-drive/
 $ chmod u+rw -R /mnt/external-drive/
 ```
 
-## Start a DVC project and setup an external cache
+> Or refer to
+> [User Account Control](https://docs.microsoft.com/en-us/windows/security/identity-protection/user-account-control/user-account-control-overview)
+> for Windows.
 
-An [external cache](/doc/user-guide/external-outputs) is called so because it
-resides outside of the workspace directory.
+## Create a DVC project with external cache
 
-- Let's create a directory for it on `/mnt/external-drive/`:
-
-  ```dvc
-  $ mkdir -p /mnt/external-drive/dvc-cache
-  ```
-
-- Now you can initialize a <abbr>project</abbr> on your home directory:
-
-  ```dvc
-  $ cd ~/project/
-  $ git init
-  $ dvc init
-  ```
-
-- Configure it to use the external directory for caches:
-
-  ```dvc
-  $ dvc config cache.dir /mnt/external-drive/dvc-cache
-  $ cat .dvc/config
-  [cache]
-  dir = /mnt/external-drive/dvc-cache
-  ```
-
-- Commit changes to git:
-
-  ```dvc
-  $ git add .dvc/config
-  $ git commit -m 'Initialize DVC with external cache'
-  ```
-
-<details>
-
-### Transfer the content of the cache to the external directory
-
-In this example we can remove the default cache directory `.dvc/cache/` because
-we just initialized the project and we know that it is empty (there's nothing
-stored in it):
+An [external cache](/doc/user-guide/external-outputs) resides outside of the
+workspace directory. Let's create a directory for it on `/mnt/external-drive/`:
 
 ```dvc
-$ rm -rf .dvc/cache/
+$ mkdir -p /mnt/external-drive/dvc-cache
 ```
 
-If we had an existing project, we could preserve the content of the cache by
-moving it to the new cache directory, before deleting the old one:
+Now you can initialize a <abbr>project</abbr> on your home directory:
 
 ```dvc
-$ mv -a .dvc/cache/* /mnt/external-drive/dvc-cache/
-$ rm -rf .dvc/cache/
+$ cd ~/project/
+$ git init
+$ dvc init
 ```
 
-</details>
+> If this was an existing project, we could preserve the content of its cache by
+> moving it to the external directory with
+> `mv -a .dvc/cache/* /mnt/external-drive/dvc-cache/`
+
+Configure it to use the external directory as <abbr>cache</abbr>:
+
+```dvc
+$ dvc config cache.dir /mnt/external-drive/dvc-cache
+$ cat .dvc/config
+[cache]
+dir = /mnt/external-drive/dvc-cache
+```
+
+Commit changes to git:
+
+```dvc
+$ git add .dvc/config
+$ git commit -m 'Initialize DVC with external cache'
+```
 
 ## Tracking external dependencies and outputs
 
-Now, when you refer to the data files and directories, you have to use their
-**absolute path**. The <abbr>DVC-files</abbr> will be created on the project
-directory, and you can track their modifications with `git` as usual.
+Now, when you refer to the data files and directories in DVC commands, you'll
+have to **use their absolute path**. <abbr>DVC-files</abbr> will be created in
+the <abbr>project</abbr>, and you can track their modifications with Git as
+usual.
 
-For example, let's say that the raw data files are on
-`/mnt/external-drive/data/raw/` and you are cleaning them up. You could do it
+For example, let's say that the raw data files are in
+`/mnt/external-drive/data/raw/`, and you are cleaning them up. You could do it
 like this:
 
 ```dvc
 $ dvc add /mnt/external-drive/data/raw
-
+...
 $ dvc run \
       -f clean.dvc \
       -d /mnt/external-drive/data/raw \
@@ -128,15 +113,14 @@ $ dvc run \
 
 <details>
 
-### Using an environment variable for the data path
+### Tip: use an environment variable for the data path
 
-In a real life situation probably you would declare an environment variable
-`DATA=/mnt/external-drive/data` and use it to shorten the command options, like
-this:
+In a real life situation you may want to declare an environment variable like
+`DATA=/mnt/external-drive/data`, in order to shorten the command lines:
 
 ```dvc
 $ dvc add $DATA/raw
-
+...
 $ dvc run -f clean.dvc -d $DATA/raw -o $DATA/clean \
           ./cleanup.py $DATA/raw $DATA/clean
 ```
@@ -171,7 +155,7 @@ $ ls /mnt/external-drive/dvc-cache
 ...
 ```
 
-Now you can add and commit the DVC-files to git:
+Now you can add and commit the DVC-files with Git:
 
 ```dvc
 $ git add .
@@ -180,40 +164,37 @@ $ git commit -m 'Cleanup raw data'
 
 <details>
 
-### Optimizing the data management
+### Optimizing data management
 
-Since we are talking about large data, it is worth spending some time for
-understanding
-[how DVC can optimize data management](/doc/user-guide/large-dataset-optimization),
-so that it does not make unnecessary copies of large data.
+Since we're talking about large data, it's worth spending some time to
+understand how DVC can
+[optimize data management](/doc/user-guide/large-dataset-optimization), so that
+it does not create unnecessary copies of large data.
 
 In short, if your external drive is formatted with XFS, Btrfs, ZFS, or any other
-file system that supports reflinks, DVC will automatically use the most
-efficient way of handling large datasets, and there is no further configuration
-that needs to be done.
+file system that supports _reflinks_, DVC will automatically use the most
+efficient way of handling large datasets, without custom configuration.
 
-If _reflinks_ are not available, then you should consider setting the cache type
-to _symlink_ or _hardlink_, like so:
+If reflinks are not available, then you should consider setting the cache type
+to _symlink_ or _hardlink_, like this:
 
 ```dvc
 $ dvc config cache.type "reflink,symlink,hardlink,copy"
 $ dvc config cache.protected true
 ```
 
-However this implies that for data files that are added to the project with
+However this implies that, for data files that are added to the project with
 `dvc add <datafile>`, you may need to run `dvc unprotect <datafile>` before
-modifying them. For more details make sure to read the man page of
-[dvc unprotect](/doc/commands-reference/unprotect).
+modifying them. For more details, refer to `dvc unprotect`.
 
 </details>
 
 ## Other similar cases
 
-If instead of an external drive we have a
+If instead of an external drive we had a
 [network-attached storage (NAS)](https://searchstorage.techtarget.com/definition/network-attached-storage)
-mounted on the directory `/mnt/external-drive/` (through NFS, Samba, etc.), the
-solution would be the same.
-
-However, in this case the data is most probably used by a team of people, so
-make sure to check also the case of
-[Shared Development Server](/doc/use-cases/multiple-data-scientists-on-a-single-machine).
+mounted on `/mnt/external-drive/` (through NFS, Samba, etc.), the solution would
+be the same. However, in this case the data is most probably used by a team of
+people; Please refer to
+[Shared Development Server](/doc/use-cases/shared-development-server) for more
+information on that use case.
