@@ -6,23 +6,27 @@ To include a data file into your data science environment, you need to copy the
 file into the repository. We'll create a `data/` directory for the data files
 and download a 40MB data archive into this directory.
 
-<details>
-
-### Expand to learn how to download on Windows
-
-Windows doesn't include the `wget` utility by default, so you'll need to use the
-browser to download `data.xml`. Save it into the `data/` subdirectory.
-(Right-click [this link](https://data.dvc.org/tutorial/ver/data.zip) and click
-`Save Link As...`(Chrome).
-
-</details>
-
 ```dvc
 $ mkdir data
 $ wget -P data https://data.dvc.org/tutorial/nlp/100K/Posts.xml.zip
 $ du -sh data/*
  41M data/Posts.xml.zip
 ```
+
+<details>
+
+### Expand to learn how to download on Windows
+
+Windows doesn't include the `wget` utility by default, but you can use the
+browser to download `data.xml`. (Right-click
+[this link](https://data.dvc.org/tutorial/ver/data.zip) and select
+`Save Link As...` (Chrome). Save it into the `data/` subdirectory.
+
+> Please also review
+> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
+> tips to improve your experience using DVC on Windows.
+
+</details>
 
 At this time, `data/Posts.xml.zip` is an untracked regular file. We can place it
 under DVC control using `dvc add` (see below). After executing the command you
@@ -51,13 +55,13 @@ so Git ignores this data file from now on.
 > `.gitignore`.
 
 Refer to
-[Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning),
+[Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files),
 `dvc add`, and `dvc run` for more information on storing and versioning data
 files with DVC.
 
 Note that to modify or replace a data file that is under DVC control you may
 need to run `dvc unprotect` or `dvc remove` first (see the
-[Update Tracked File](/doc/user-guide/update-tracked-files) guide). Use
+[Update Tracked File](/doc/user-guide/updating-tracked-files) guide). Use
 `dvc move` to rename or move a data file that is under DVC control.
 
 ## Data file internals

@@ -26,8 +26,12 @@ model file.
 
 ## Preparation
 
-If DVC is not installed, please follow these [instructions](/doc/install) to
-install it.
+If DVC is not installed, please follow these [instructions](/doc/install) to do
+so.
+
+> If you're using Windows, please review
+> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
+> tips to improve your experience.
 
 Okay! Let's first download the code and set up a Git repository:
 
@@ -40,8 +44,8 @@ This command pulls a <abbr>DVC project</abbr> with a single script `train.py`
 that will train the model.
 
 Let's now install the requirements. But before we do that, we **strongly**
-recommend creating a virtual environment with a tool such as
-[virtualenv](https://virtualenv.pypa.io/en/stable/):
+recommend creating a
+[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
 
 ```dvc
 $ virtualenv -p python3 .env

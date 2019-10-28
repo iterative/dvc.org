@@ -83,6 +83,6 @@ will go under its control automatically takes care of this for you! (You just
 have to add the changes with Git.)
 
 Refer to
-[Data and Model Files Versioning](/doc/use-cases/data-and-model-files-versioning),
+[Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files),
 `dvc add`, and `dvc run` for more information on storing and versioning data
 files with DVC.

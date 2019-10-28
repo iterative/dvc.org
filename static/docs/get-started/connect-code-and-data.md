@@ -19,7 +19,10 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
-> On Windows just use your browser to download the archive instead.
+Windows doesn't include the `wget` utility by default, but you can use the
+browser to download `code.zip`. (Right-click
+[this link](https://code.dvc.org/get-started/code.zip) and select
+`Save Link As...` (Chrome). Save it into the project directory.
 
 The workspace should now look like this:
 
@@ -38,8 +41,8 @@ $ tree
 ```
 
 Now let's install the requirements. But before we do that, we **strongly**
-recommend creating a virtual environment with a tool such as
-[virtualenv](https://virtualenv.pypa.io/en/stable/):
+recommend creating a
+[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
 
 ```dvc
 $ virtualenv -p python3 .env

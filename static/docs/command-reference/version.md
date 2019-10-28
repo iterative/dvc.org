@@ -26,6 +26,8 @@ system/environment:
 > If `dvc version` is executed outside a DVC project, no `Cache` is output and
 > the `Filesystem type` output is of the current working directory.
 
+<!-- Separate MD quote: -->
+
 > **Note** that if you've installed dvc using pip, you will need to install
 > `psutil` by yourself with `pip install psutil` in order for `dvc version` to
 > report file system information. Please see the original
@@ -38,8 +40,10 @@ The detail of DVC version depends upon the way of installing DVC.
 - **Official release**: [These instructions](/doc/install) include ways to
   install DVC using the official package stored in Python Packaging Authority.
   We mark these official releases with tags on DVC's repository. Any issues
-  reported with the official build can be traced using the `BASE_VERSION`
-  itself. So the output is simply `0.40.2`.
+  reported with the official build can be traced using the `_BASE_VERSION`
+  constant
+  [in our core repo](https://github.com/iterative/dvc/blob/master/dvc/version.py).
+  For example `0.40.2`.
 
 - **Development version**: `pip install git+git://github.com/iterative/dvc` will
   install DVC using the `master` branch of DVC's repository. Another way of
@@ -49,13 +53,13 @@ The detail of DVC version depends upon the way of installing DVC.
   command might have issues regarding its usage. So to trace any error reported
   with this setup, we need to know exactly which version is being used. For this
   we rely on a git commit hash that is displayed in this command's output like
-  this: `0.40.2+292cab.mod`. The part before `+` is the `BASE_VERSION` and the
-  latter part is the `master` branch commit hash. The optional suffix `.mod`
-  means that code is modified.
+  this: `0.40.2+292cab.mod`. The part before `+` is the `_BASE_VERSION`, and the
+  following part is the latest `master` branch commit hash. The optional suffix
+  `.mod` means that code is modified.
 
 #### What we mean by "Binary"
 
-The detail of `Binary` depends on the way DVC was downloading and
+The detail of `Binary` depends on the way DVC was downloaded and
 [installed](/doc/install).
 
 - **`Binary: True`** - displayed when DVC is downloaded/installed as one of:
@@ -70,8 +74,9 @@ The detail of `Binary` depends on the way DVC was downloading and
   These downloads are available from our [home page](/). They ultimately contain
   a binary bundle, which is the executable file of a software application,
   meaning that it will run natively on a specific platform (Linux, Windows,
-  Mac). In our case, we use [PyInstaller](https://pythonhosted.org/PyInstaller/)
-  to bundle our source code into the binary package app.
+  MacOS). In our case, we use
+  [PyInstaller](https://pythonhosted.org/PyInstaller/) to bundle our source code
+  into the binary package app.
 
 - **`Binary: False`** - shown when DVC is downloaded and installed from:
 

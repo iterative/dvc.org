@@ -46,10 +46,9 @@ Make sure that you have Python 3 installed. Version 3.6 or higher is required to
 run style checkers on pre-commit. On MacOS, we recommend using `brew` to install
 Python.
 
-Install DVC in editable mode with `pip install -e ".[all,tests]"`. We
-**strongly** recommend initializing a
-[virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
-doing so:
+Install DVC in editable mode with `pip install -e ".[all,tests]"`. But before we
+do that, we **strongly** recommend creating a
+[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
 
 ```dvc
 $ cd dvc
@@ -69,8 +68,8 @@ $ pip install pre-commit
 $ pre-commit install
 ```
 
-That should be it. You should be ready to make changes, run tests do commits! If
-you experience any problems, please don't hesitate to ping us in our
+That should be it. You should be ready to make changes, run tests, and make
+commits! If you experience any problems, please don't hesitate to ping us in our
 [chat](/chat).
 
 ## Running tests

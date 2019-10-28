@@ -1,4 +1,4 @@
-# Share Data and Model Files
+# Sharing Data and Model Files
 
 Like Git, DVC allows for a distributed environment and collaboration. We make it
 easy to consistently get all your data files and directories, along with
