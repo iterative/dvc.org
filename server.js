@@ -61,7 +61,10 @@ app.prepare().then(() => {
         Location: req.url.replace('/doc/tutorial', '/doc/tutorials')
       })
       res.end()
-    } else if (pathname === 'doc/use-cases/data-and-model-files-versioning') {
+    } else if (
+      pathname === '/doc/use-cases/data-and-model-files-versioning' ||
+      pathname === '/doc/use-cases/data-and-model-files-versioning/'
+    ) {
       // path /doc/tutorial -> /doc/tutorials
       res.writeHead(301, {
         Location: req.url.replace(
