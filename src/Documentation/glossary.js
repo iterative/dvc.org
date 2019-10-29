@@ -33,8 +33,8 @@ Initialized by running \`dvc init\` in the **workspace**. It will contain the
       desc: `
 The DVC cache is a hidden storage (by default located in the \`.dvc/cache\`
 directory) for files that are under DVC control, and their different versions.
-For more details, please refer to this [document]
-(/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).
+For more details, please refer to this
+[document](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).
       `
     },
     {
@@ -43,8 +43,8 @@ For more details, please refer to this [document]
       desc: `
 Any data file or directory, as well as intermediate or final result (such as
 extracted features or a ML model file) that is under DVC control. Refer to
-[Versioning Data and Model Files]
-(/doc/use-cases/versioning-data-and-model-files) for more details.
+[Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
+for more details.
       `
     },
     {
@@ -68,9 +68,8 @@ A file or a directory that is under DVC control. See \`dvc add\` \`dvc run\`,
       match: ['external dependency', 'external dependencies'],
       desc: `
 A DVC-file dependency with origin in an external source, for example HTTP, SSH,
-Amazon S3, Google Cloud Storage remote locations, or even other DVC
-repositories. See [External Dependencies]
-(/doc/user-guide/external-dependencies).
+Amazon S3, Google Cloud Storage remote locations, or even other DVC repositories.
+See [External Dependencies](/doc/user-guide/external-dependencies).
       `
     }
   ]

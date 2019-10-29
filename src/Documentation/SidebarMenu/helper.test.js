@@ -257,7 +257,6 @@ describe('SidebarMenu/helper', () => {
       )
     })
 
-    // eslint-disable-next-line max-len
     it("Throws error if item has source: false and doesn't have children", () => {
       const rawData = [{ slug: 'item-name', source: false }]
 
