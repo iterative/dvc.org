@@ -15,7 +15,10 @@
     }
   },
   "rules": {
-    "max-len": ["error", { "ignoreTemplateLiterals": true }],
+    "max-len": [
+      "error",
+      { "ignoreTemplateLiterals": true, "ignoreUrls": true }
+    ],
     "no-tabs": "error"
   }
 }
