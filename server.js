@@ -65,7 +65,8 @@ app.prepare().then(() => {
       pathname === '/doc/use-cases/data-and-model-files-versioning' ||
       pathname === '/doc/use-cases/data-and-model-files-versioning/'
     ) {
-      // path /doc/tutorial -> /doc/tutorials
+      // path /doc/use-cases/data-and-model-files-versioning ->
+      // /doc/use-cases/versioning-data-and-model-files
       res.writeHead(301, {
         Location: req.url.replace(
           'data-and-model-files-versioning',
