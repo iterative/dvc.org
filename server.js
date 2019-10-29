@@ -51,19 +51,28 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/doc\/commands-reference(\/.*)?/.test(pathname)) {
       // TMP: path /doc/commands-reference/* -> /doc/command-reference/*
-      res.writeHead(302, {
+      res.writeHead(301, {
         Location: req.url.replace('commands-reference', 'command-reference')
       })
       res.end()
-    } else if (pathname == '/doc/tutorial' || pathname == '/doc/tutorial/') {
+    } else if (pathname === '/doc/tutorial' || pathname === '/doc/tutorial/') {
       // path /doc/tutorial -> /doc/tutorials
-      res.writeHead(302, {
+      res.writeHead(301, {
         Location: req.url.replace('/doc/tutorial', '/doc/tutorials')
+      })
+      res.end()
+    } else if (pathname === 'doc/use-cases/data-and-model-files-versioning') {
+      // path /doc/tutorial -> /doc/tutorials
+      res.writeHead(301, {
+        Location: req.url.replace(
+          'data-and-model-files-versioning',
+          'versioning-data-and-model-files'
+        )
       })
       res.end()
     } else if (/^\/doc\/tutorial\/(.*)?/.test(pathname)) {
       // path /doc/tutorial/* -> /doc/tutorials/deep/*
-      res.writeHead(302, {
+      res.writeHead(301, {
         Location: req.url.replace('/doc/tutorial/', '/doc/tutorials/deep/')
       })
       res.end()
