@@ -1,6 +1,6 @@
 # Experiment Metrics
 
-The last stage we would like to add to our pipeline is its the evaluation. Data
+As a final stage we would like to add an evaluation part to our pipeline. Data
 science is a metric-driven R&D-like process and `dvc metrics` commands along
 with DVC metric files provide a framework to capture and compare experiments
 performance. It doesn't require installing any databases or instrumenting your
