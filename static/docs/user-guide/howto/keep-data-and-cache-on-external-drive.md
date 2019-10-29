@@ -53,8 +53,9 @@ $ chmod u+rw -R /mnt/external-drive/
 
 ## Create a DVC project with external cache
 
-An [external cache](/doc/user-guide/external-outputs) resides outside of the
-workspace directory. Let's create a directory for it on `/mnt/external-drive/`:
+An [external cache](/doc/user-guide/managing-external-data) resides outside of
+the workspace directory. Let's create a directory for it on
+`/mnt/external-drive/`:
 
 ```dvc
 $ mkdir -p /mnt/external-drive/dvc-cache
