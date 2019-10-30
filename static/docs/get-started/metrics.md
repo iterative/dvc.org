@@ -1,11 +1,11 @@
 # Experiment Metrics
 
-The last stage we would like to add to our pipeline is its the evaluation. Data
-science is a metric-driven R&D-like process and `dvc metrics` commands along
-with DVC metric files provide a framework to capture and compare experiments
-performance. It doesn't require installing any databases or instrumenting your
-code to use some API, all is tracked by Git and is stored in Git or DVC remote
-storage:
+Finally, we'd like to add an evaluation stage to our
+[pipeline](/doc/command-reference/pipeline). Data science is a metric-driven
+R&D-like process and `dvc metrics` commands along with DVC metric files provide
+a framework to capture and compare experiments performance. It doesn't require
+installing any databases or instrumenting your code to use some API, all is
+tracked by Git and is stored in Git or DVC remote storage:
 
 ```dvc
 $ dvc run -f evaluate.dvc \

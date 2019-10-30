@@ -40,6 +40,12 @@ Learn how DVC can be used in simple ML scenarios:
 - [Stages and Pipelines](https://katacoda.com/dvc/courses/tutorials/pipelines)
   <br/> Using DVC commands to build a simple ML pipeline.
 
+- [Scripting DVC](https://katacoda.com/dvc/courses/tutorials/scripting) <br/>
+  Using bash scripting to build stages and pipelines.
+
+- [MNIST](https://katacoda.com/dvc/courses/tutorials/mnist) <br/> Creating a
+  model to classify images of hand-written digits using MNIST as the data-set.
+
 ## Examples
 
 Interactive examples about using DVC commands and other features of DVC.

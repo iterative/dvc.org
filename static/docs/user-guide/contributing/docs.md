@@ -122,4 +122,4 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
 
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
-> [this very file](https://raw.githubusercontent.com/iterative/dvc.org/master/static/docs/user-guide/contributing-doc.md).
+> [this very file](https://raw.githubusercontent.com/iterative/dvc.org/master/static/docs/user-guide/contributing/docs.md).

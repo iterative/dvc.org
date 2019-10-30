@@ -1,23 +1,16 @@
 # Initialize
 
-In order to start using DVC, you need first to initialize it in your
-<abbr>workspace</abbr>. DVC doesn't require Git and can work without any source
-control management system, but for the best experience we recommend using DVC on
-top of Git repositories.
+There are a few recommended ways to install DVC: OS-specific package/installer,
+`pip`, `conda`, and Homebrew. See the [**Installation**](/doc/install) page for
+all the options and details.
 
-If you don't have a directory for this <abbr>project</abbr> already, create it
-now with these commands:
+Let's start by creating a <abbr>workspace</abbr> we can version with Git. Then
+run `dvc init` inside to create the DVC <abbr>project</abbr>:
 
 ```dvc
 $ mkdir example-get-started
 $ cd example-get-started
 $ git init
-```
-
-Run DVC initialization in a repository directory to create the DVC meta files
-and directories:
-
-```dvc
 $ dvc init
 $ git commit -m "Initialize DVC project"
 ```

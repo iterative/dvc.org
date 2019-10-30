@@ -1,4 +1,4 @@
-# IDE Plugins & Syntax Highlighting
+# IDE Plugins and Syntax Highlighting
 
 When you add a file or a stage to your pipeline, DVC creates a special
 [DVC-file](/doc/user-guide/dvc-file-format) that contains all the needed

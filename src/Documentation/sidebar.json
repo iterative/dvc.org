@@ -4,7 +4,6 @@
     "source": "get-started/index.md",
     "children": [
       "agenda",
-      "install",
       "initialize",
       "configure",
       "add-files",
@@ -25,6 +24,28 @@
         "label": "Get Older Files",
         "slug": "older-versions"
       }
+    ]
+  },
+  {
+    "label": "Install",
+    "slug": "install",
+    "source": "install/index.md",
+    "children": [
+      {
+        "label": "Mac OS",
+        "slug": "macos"
+      },
+      "windows",
+      "linux",
+      {
+        "label": "Pre-release Version",
+        "slug": "pre-release"
+      },
+      {
+        "label": "Shell Completion",
+        "slug": "completion"
+      },
+      "plugins"
     ]
   },
   {
@@ -68,12 +89,12 @@
     "source": "use-cases/index.md",
     "children": [
       {
-        "label": "Data & Model Files Versioning",
-        "slug": "data-and-model-files-versioning"
+        "label": "Versioning Data & Model Files",
+        "slug": "versioning-data-and-model-files"
       },
       {
-        "label": "Share Data & Model Files",
-        "slug": "share-data-and-model-files"
+        "label": "Sharing Data & Model Files",
+        "slug": "sharing-data-and-model-files"
       },
       "shared-development-server",
       "data-registry"
@@ -92,7 +113,7 @@
         "slug": "dvc-file-format"
       },
       "dvcignore",
-      "update-tracked-files",
+      "updating-tracked-files",
       "large-dataset-optimization",
       "external-dependencies",
       {
@@ -100,18 +121,19 @@
         "slug": "managing-external-data"
       },
       {
-        "label": "Development Version",
-        "slug": "development"
-      },
-      "contributing",
-      "contributing-docs",
-      {
-        "label": "Shell Autocomplete",
-        "slug": "autocomplete"
-      },
-      {
-        "label": "Plugins & Integrations",
-        "slug": "plugins"
+        "label": "Contributing",
+        "slug": "contributing",
+        "source": "contributing/index.md",
+        "children": [
+          {
+            "label": "DVC Core Project",
+            "slug": "core"
+          },
+          {
+            "label": "Docs and Website",
+            "slug": "docs"
+          }
+        ]
       },
       {
         "label": "Running DVC on Windows",

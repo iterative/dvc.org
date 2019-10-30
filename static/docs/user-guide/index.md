@@ -14,7 +14,7 @@ guides related to contributing to this
   metafiles that DVC creates to track <abbr>project</abbr> data are constructed.
 - [Dvcignore](/doc/user-guide/dvcignore) explains how to exclude files from DVC
   operations with the optional `.dvcignore` file.
-- [Update a Tracked File](/doc/use-cases/update-tracked-files) explains how to
+- [Update a Tracked File](/doc/use-cases/updating-tracked-files) explains how to
   modify protected data under DVC control (related to the `cache.type` option of
   DVC).
 - [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization)
@@ -27,11 +27,9 @@ guides related to contributing to this
   [DVC-file](/doc/user-guide/dvc-files-and-directories) dependencies.
 - [Managing External Data](/doc/user-guide/managing-external-data) explains both
   external outputs and external cache.
-- [Development Version](/doc/user-guide/development),
-  [Contributing](/doc/user-guide/contributing), and
-  [Contributing Documentation](/doc/user-guide/contributing-docs) are related
-  with getting involved directly in developing DVC. Contributors are very
-  welcomed in our [community](/support)!
+- [Contributing](/doc/user-guide/contributing) is related with getting involved
+  directly in developing DVC. Contributors are very welcomed in our
+  [community](/support)!
 
 The remaining guides are about optional productivity enhancements and other tips
 and tools related to advanced usage of DVC.

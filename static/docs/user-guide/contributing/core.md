@@ -1,8 +1,8 @@
-# Contributing
+# Contributing to DVC
 
 We welcome contributions to [DVC](https://github.com/iterative/dvc) by the
 community. See the
-[Contributing to the Documentation](/doc/user-guide/contributing-docs) guide if
+[Contributing to the Documentation](/doc/user-guide/contributing/docs) guide if
 you want to fix or update the documentation or this website.
 
 ## How to report a problem
@@ -46,10 +46,9 @@ Make sure that you have Python 3 installed. Version 3.6 or higher is required to
 run style checkers on pre-commit. On MacOS, we recommend using `brew` to install
 Python.
 
-Install DVC in editable mode with `pip install -e ".[all,tests]"`. We
-**strongly** recommend initializing a
-[virtual environment](https://virtualenv.pypa.io/en/latest/userguide/) before
-doing so:
+Install DVC in editable mode with `pip install -e ".[all,tests]"`. But before we
+do that, we **strongly** recommend creating a
+[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
 
 ```dvc
 $ cd dvc
@@ -69,8 +68,8 @@ $ pip install pre-commit
 $ pre-commit install
 ```
 
-That should be it. You should be ready to make changes, run tests do commits! If
-you experience any problems, please don't hesitate to ping us in our
+That should be it. You should be ready to make changes, run tests, and make
+commits! If you experience any problems, please don't hesitate to ping us in our
 [chat](/chat).
 
 ## Running tests
@@ -118,6 +117,12 @@ To run a single test case:
 
 ```dvc
 $ python -m tests tests/func/test_metrics.py::TestCachedMetrics
+```
+
+To run a single test function:
+
+```dvc
+$ python -m tests tests/unit/utils/test_fs.py::test_get_inode
 ```
 
 To pass additional arguments:
@@ -293,8 +298,7 @@ Fixes #(GitHub issue id).
 
 Message types:
 
-- _component_: Name of a component that this patch is affecting. Use `dvc` in a
-  general case
+- _component_: If applicable, comma-separated list of affected component(s)
 - _short description_: Short description of the patch
 - _long description_: If needed, longer message describing the patch in more
   details

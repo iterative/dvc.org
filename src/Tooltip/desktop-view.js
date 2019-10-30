@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 
+import { HEADER } from '../../consts'
+
 class DesktopView extends Component {
   state = {
     hover: false,
@@ -18,16 +20,19 @@ class DesktopView extends Component {
   }
 
   tooltipPositionEval = () => {
-    const headerHeight = document.getElementsByClassName('header')[0]
-      .offsetHeight
-    const markdownBody = document.getElementsByClassName('markdown-body')[0]
+    const headerHeight = document.getElementById(HEADER).offsetHeight
+    const markdownBody = document.getElementById('markdown-root')
     const tooltipBoundary = document
       .getElementById(`tooltip-text-${this.props.id}`)
       .getBoundingClientRect()
-    const tooltipBoxHeight = document.getElementById('tooltip-box').offsetHeight
+    const tooltipBoxHeight = document.getElementById(
+      `tooltip-box-${this.props.id}`
+    ).offsetHeight
     const tooltipHeight = tooltipBoundary.top - tooltipBoxHeight
     const maxWidth = markdownBody.offsetLeft + markdownBody.clientWidth
-    const container = document.getElementsByClassName('tooltip-container')[0]
+    const container = document.getElementById(
+      `tooltip-container-${this.props.id}`
+    )
     const tooltipWidth = container.offsetLeft + this.state.width
     const vertical = tooltipHeight > headerHeight ? 'top' : 'bottom'
     const horizontal = tooltipWidth > maxWidth ? 'right' : 'left'
@@ -118,14 +123,14 @@ class DesktopView extends Component {
       <>
         {this.state.hover && (
           <TooltipContainer
-            className="tooltip-container"
+            id={`tooltip-container-${this.props.id}`}
             onMouseOver={this.hoverIn}
             onFocus={this.hoverIn}
             onMouseLeave={this.hoverOut}
             onBlur={this.hoverOut}
           >
             <TooltipText
-              id="tooltip-box"
+              id={`tooltip-box-${this.props.id}`}
               margin={this.state.margin}
               width={this.state.width}
               pointBorderAfter={this.state.pointBorderAfter}
