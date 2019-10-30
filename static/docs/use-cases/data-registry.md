@@ -113,11 +113,13 @@ See the `dvc import` command reference for more details on the `--rev`
 
 Importing keeps the connection between the local project and data registry where
 we are downloading the dataset from. This is achieved by creating a special
-DVC-file (a.k.a. _import stage_) – that can be used for versioning the import
-with Git. This connection will come in handy when the source data changes, and
-we want to obtain these updates...
+[DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_) that uses
+the `repo` field. (This file can be used for versioning the import with Git.)
 
-Back in our **dataset-registry** repository, a
+> For a sample DVC-file resulting from `dvc import`, refer to
+> [this example](/doc/command-reference/import#example-data-registry).
+
+Back in our **dataset-registry** project, a
 [second version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v2/use-cases)
 of our dataset was created by extracting the second part, with 1000 additional
 images (500 cats, 500 dogs), into the same directory structure. Then, we simply
@@ -129,6 +131,9 @@ of the dataset is to run:
 ```dvc
 $ dvc update cats-dogs.dvc
 ```
+
+This is possible because of the connection that the import stage saved among
+local and source projects, as explained earlier.
 
 <details>
 

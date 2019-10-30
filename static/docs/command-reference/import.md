@@ -154,3 +154,54 @@ $ dvc import --rev master \
 This will overwrite the import stage (DVC-file) either removing or replacing the
 `rev` field. This can produce an import stage that is able to be updated
 normally with `dvc update` going forward.
+
+## Example: Data registry
+
+If you take a look at our
+[dataset-registry](https://github.com/iterative/dataset-registry)
+<abbr>project</abbr>, you'll see that it's organized into different directories
+such as `tutorial/ver` and `use-cases/`, and these contain
+[DVC-files](/doc/user-guide/dvc-file-format) that track different datasets.
+Given this simple structure, these files can be easily shared among several
+other projects, using `dvc get` and `dvc import`. For example:
+
+```dvc
+$ dvc get https://github.com/iterative/dataset-registry \
+          tutorial/ver/data.zip
+```
+
+> Used in our [versioning tutorial](/doc/tutorials/versioning)
+
+Or
+
+```dvc
+$ dvc import git@github.com:iterative/dataset-registry.git \
+             use-cases/cats-dogs
+```
+
+`dvc import` provides a better way to incorporate data files tracked in external
+projects because it saves the connection between the current project and the
+source project. This means that enough information is recorded in an import
+stage (DVC-file) in order to [reproduce](/doc/command-reference/repro)
+downloading of this same data version in the future, where and when needed. This
+is achieved with the `repo` field, for example (matching the import command
+above):
+
+```yaml
+md5: 96fd8e791b0ee4824fc1ceffd13b1b49
+locked: true
+deps:
+  - path: use-cases/cats-dogs
+    repo:
+      url: git@github.com:iterative/dataset-registry.git
+      rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
+outs:
+  - md5: b6923e1e4ad16ea1a7e2b328842d56a2.dir
+    path: cats-dogs
+    cache: true
+    metric: false
+    persist: false
+```
+
+See a full explanation in our [Data Registry](/doc/use-cases/data-registry) use
+case.
