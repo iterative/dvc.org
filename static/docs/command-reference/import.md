@@ -3,7 +3,7 @@
 Download or copy file or directory from any <abbr>DVC project</abbr> in a Git
 repository (e.g. hosted on GitHub) into the <abbr>workspace</abbr>, and track
 changes in this [external dependency](/doc/user-guide/external-dependencies).
-Creates a DVC-file.
+Creates a special DVC-file a.k.a _import stage_.
 
 > See also `dvc get`, that corresponds to the first step this command performs
 > (just download the data).
@@ -23,11 +23,11 @@ positional arguments:
 DVC provides an easy way to reuse datasets, intermediate results, ML models, or
 other files and directories tracked in another DVC repository into the
 workspace. The `dvc import` command downloads such a <abbr>data artifact</abbr>
-in a way that it is tracked with DVC, so it can be updated when the external
-data source changes.
+in a way that it is tracked with DVC, so it can be updated when the data source
+changes.
 
 The `url` argument specifies the address of the Git repository containing the
-external <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
+source <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
 online repositories (e.g. `[user@]server:project.git`). `url` can also be a
 local file system path to an "offline" repository.
 
@@ -35,31 +35,31 @@ The `path` argument of this command is used to specify the location of the data
 to be downloaded within the source project. It should point to a data file or
 directory tracked by that project – specified in one of the
 [DVC-files](/doc/user-guide/dvc-file-format) of the repository at `url`. (You
-will not find these files directly in the source Git repository.) The source
+will not find these files directly in the external Git repository.) The source
 project should have a default [DVC remote](/doc/command-reference/remote)
 configured, containing them.)
 
 > See `dvc import-url` to download and tack data from other supported URLs.
 
 After running this command successfully, the imported data is placed in the
-current working directory with its original file name e.g. `data.txt`. An import
-stage (DVC-file) is then created extending the full file or directory name of
-the imported data e.g. `data.txt.dvc` – similar to having used `dvc run` to
-generate the same output.
+current working directory with its original file name e.g. `data.txt`. An
+_import stage_ (DVC-file) is then created, extending the full file or directory
+name of the imported data e.g. `data.txt.dvc` – similar to having used `dvc run`
+to generate the same output.
 
 DVC supports DVC-files that refer to data in an external DVC repository (hosted
-on a Git server). In such a DVC-file, the `deps` section specifies the `repo`
-URL and data `path`, and the `outs` section contains the corresponding local
-path in the workspace. It records enough data from the external file or
-directory to enable DVC to efficiently check it to determine whether the local
-copy is out of date.
+on a Git server) a.k.a _import stages_. In such a DVC-file, the `deps` section
+specifies the `repo` URL and data `path`, and the `outs` section contains the
+corresponding local path in the workspace. It records enough data from the
+external file or directory to enable DVC to efficiently check it to determine
+whether the local copy is out of date.
 
 To actually [track the data](https://dvc.org/doc/get-started/add-files),
-`git add` (and `git commit`) the import stage (DVC-file).
+`git add` (and `git commit`) the import stage.
 
 Note that import stages are considered always "locked", meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` on them to update the
-downloaded data artifact from the external DVC repository.
+downloaded data artifact from the source DVC repository.
 
 ## Options
 
@@ -72,8 +72,10 @@ downloaded data artifact from the external DVC repository.
 - `--rev` - specific
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash) of the DVC repository to
-  import the data from. The tip of the default branch is used by default when
-  this option is not specified.
+  import the data from. The tip of the repository's default branch is used by
+  default when this option is not specified. Note that this adds a `rev` field
+  in the import stage that fixes it to this revision. This can impact the
+  behavior of `dvc update`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -120,3 +122,35 @@ outs:
 Several of the values above are pulled from the original stage file
 `model.pkl.dvc` in the external DVC repo. `url` and `rev_lock` fields are used
 to specify the origin and version of the dependency.
+
+## Example: fixed revisions & re-importing
+
+When the `--rev` option is used, the import stage
+([DVC-file](/doc/user-guide/dvc-file-format)) will include a `rev` field under
+`repo` like this:
+
+```yaml
+deps:
+  - path: data/data.xml
+    repo:
+      url: git@github.com:iterative/dataset-registry.git
+      rev: cats-dogs-v1
+      rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
+```
+
+If the Git revision moves, such as a branch, this doesn't have much of an effect
+on the import/update workflow. However, for static refs such as tags (unless
+manually updated), or for SHA commits, `dvc update` will not have any effect on
+the import. In this cases, in order to actually "update" an import, it's
+necessary to **re-import the data** instead, by using `dvc import` again without
+or with a different `--rev`. For example:
+
+```dvc
+$ dvc import --rev master \
+             git@github.com:iterative/dataset-registry.git \
+             use-cases/cats-dogs
+```
+
+This will overwrite the import stage (DVC-file) either removing or replacing the
+`rev` field. This can produce an import stage that is able to be updated
+normally with `dvc update` going forward.

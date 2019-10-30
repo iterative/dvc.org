@@ -47,22 +47,24 @@ containing 2800 images of cats and dogs. We partitioned the dataset in two for
 our [Versioning Tutorial](/doc/tutorials/versioning), and backed up the parts on
 a storage server, downloading them with `wget` in our examples. This setup was
 then revised to download the dataset with `dvc get` instead, so we created the
-[dataset-registry](https://github.com/iterative/dataset-registry)) project, a
+[dataset-registry](https://github.com/iterative/dataset-registry)) repository, a
 <abbr>DVC project</abbr> hosted on GitHub, to version the dataset (see its
 [`tutorial/ver`](https://github.com/iterative/dataset-registry/tree/master/tutorial/ver)
 directory).
 
-However, there are a few problems with the way this dataset is structured (in 2
-parts). Most importantly, this single dataset is tracked by 2 different
+However, there are a few problems with the way this dataset is structured. Most
+importantly, this single dataset is tracked by 2 different
 [DVC-files](/doc/user-guide/dvc-file-format), instead of 2 versions of the same
 one, which would better reflect the intentions of this dataset... Fortunately,
 we have also prepared an improved alternative in the
 [`use-cases/`](https://github.com/iterative/dataset-registry/tree/master/use-cases)
 directory of the same repository.
 
-As step one, we extracted the first part of the dataset into the
-`use-cases/cats-dogs` directory (illustrated below), and ran <code>dvc add
-use-cases/cats-dogs</code> to
+To create a
+[first version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v1/use-cases)
+of our dataset, we extracted the first part into the `use-cases/cats-dogs`
+directory (illustrated below), and ran <code>dvc add use-cases/cats-dogs</code>
+to
 [track the entire directory](https://dvc.org/doc/command-reference/add#example-directory).
 
 ```dvc
@@ -77,14 +79,11 @@ use-cases/cats-dogs
         └── dogs [400 image files]
 ```
 
-This first version uses the
-[`cats-dogs-v1`](https://github.com/iterative/dataset-registry/tree/cats-dogs-v1/use-cases)
-Git tag. In a local DVC project, we can obtain this dataset with the following
-command (note the usage of `--rev`):
+In a local DVC project, we could have obtained this dataset at this point with
+the following command:
 
 ```dvc
-$ dvc import --rev cats-dogs-v1 \
-             git@github.com:iterative/dataset-registry.git \
+$ dvc import git@github.com:iterative/dataset-registry.git \
              use-cases/cats-dogs
 ```
 
@@ -92,18 +91,37 @@ $ dvc import --rev cats-dogs-v1 \
 > always needs to run from an [initialized](/doc/command-reference/init) DVC
 > project.
 
+<details>
+
+### Expand for actionable command (optional)
+
+The command above is meant for informational purposes only. If you actually run
+it in a DVC project, although it should work, it will import the latest version
+of `use-cases/cats-dogs` from `dataset-registry`. The following command would
+actually bring in the version in question:
+
+```dvc
+$ dvc import --rev cats-dogs-v1 \
+             git@github.com:iterative/dataset-registry.git \
+             use-cases/cats-dogs
+```
+
+See the `dvc import` command reference for more details on the `--rev`
+(revision) option.
+
+</details>
+
 Importing keeps the connection between the local project and data registry where
 we are downloading the dataset from. This is achieved by creating a special
-DVC-file (a.k.a. an _import stage_) – which can be used for versioning the
-import with Git in the local project. This connection will come in handy when
-the source data changes, and we want to obtain these updates...
+DVC-file (a.k.a. _import stage_) – that can be used for versioning the import
+with Git. This connection will come in handy when the source data changes, and
+we want to obtain these updates...
 
-Back in our **dataset-registry** repository, the second (and last) version of
-our dataset exists under the
-[`cats-dogs-v2`](https://github.com/iterative/dataset-registry/tree/cats-dogs-v2/use-cases)
-tag. It was created by extracting the second part of the dataset, with 1000
-additional images (500 cats, 500 dogs) in the same directory structure, and
-simply running <code>dvc add use-cases/cats-dogs</code> again.
+Back in our **dataset-registry** repository, a
+[second version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v2/use-cases)
+of our dataset was created by extracting the second part, with 1000 additional
+images (500 cats, 500 dogs), into the same directory structure. Then, we simply
+ran <code>dvc add use-cases/cats-dogs</code> again.
 
 In our local project, all we have to do in order to obtain this latest version
 of the dataset is to run:
@@ -111,6 +129,25 @@ of the dataset is to run:
 ```dvc
 $ dvc update cats-dogs.dvc
 ```
+
+<details>
+
+### Expand for actionable command (optional)
+
+As with the previous hidden note, actually trying the commands above should
+produced the expected results, but not for obvious reasons. Specifically, the
+initial `dvc import` command would have already obtained the latest version of
+the dataset (as noted before), so this `dvc update` is unnecessary and won't
+have an effect.
+
+If you ran the `dvc import --rev cats-dogs-v1 ...` command instead, its import
+stage (DVC-file) would be fixed to that Git tag (`cats-dogs-v1`). In order to
+update it, do not use `dvc update`. Instead, re-import the data by using the
+original import command (without `--rev`). Refer to
+[this example](http://localhost:3000/doc/command-reference/import#example-fixed-revisions-re-importing)
+for more information.
+
+</details>
 
 This downloads new and changed files in `cats-dogs/` from the source project,
 and updates the metadata in the import stage DVC-file.
