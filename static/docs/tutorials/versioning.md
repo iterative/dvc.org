@@ -73,12 +73,10 @@ first model. We'll capture everything with DVC, including the input dataset and
 model [metrics](/doc/command-reference/metrics).
 
 ```dvc
-$ mkdir data
-$ cd data
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/ver/data.zip
 ...
-$ unzip data.zip
+$ unzip -q data.zip
 $ rm -f data.zip
 ```
 
