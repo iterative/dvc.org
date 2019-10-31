@@ -73,12 +73,10 @@ first model. We'll capture everything with DVC, including the input dataset and
 model [metrics](/doc/command-reference/metrics).
 
 ```dvc
-$ mkdir data
-$ cd data
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/ver/data.zip
 ...
-$ unzip data.zip
+$ unzip -q data.zip
 $ rm -f data.zip
 ```
 
@@ -191,7 +189,7 @@ Let's imagine that our image dataset doubles in size. The next command extracts
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/ver/new-labels.zip
 ...
-$ unzip new-labels.zip
+$ unzip -q new-labels.zip
 $ rm -f new-labels.zip
 ```
 
@@ -225,7 +223,6 @@ We will now want to leverage these new labels and retrain the model:
 
 ```dvc
 $ dvc add data
-$ dvc remove model.h5.dvc
 $ python train.py
 $ dvc add model.h5
 ```
