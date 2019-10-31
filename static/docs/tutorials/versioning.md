@@ -189,7 +189,7 @@ Let's imagine that our image dataset doubles in size. The next command extracts
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/ver/new-labels.zip
 ...
-$ unzip new-labels.zip
+$ unzip -q new-labels.zip
 $ rm -f new-labels.zip
 ```
 
@@ -223,7 +223,6 @@ We will now want to leverage these new labels and retrain the model:
 
 ```dvc
 $ dvc add data
-$ dvc remove model.h5.dvc
 $ python train.py
 $ dvc add model.h5
 ```
