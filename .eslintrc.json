@@ -17,7 +17,7 @@
   "rules": {
     "max-len": [
       "error",
-      { "ignoreTemplateLiterals": true, "ignoreUrls": true }
+      { "code": 80, "ignoreTemplateLiterals": true, "ignoreUrls": true }
     ],
     "no-tabs": "error"
   }
