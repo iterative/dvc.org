@@ -44,12 +44,13 @@ $ git add code/
 $ git commit -m "Download and add code to new Git repo"
 ```
 
-> `dvc get` can download <abbr>data artifacts</abbr> from any <abbr>DVC
+> `dvc get` can download <abbr>data artifacts</abbr> from the
+> [remote storage](/doc/command-reference/remote) of any <abbr>DVC
 > project</abbr> hosted on a Git repository (similar to `wget` but for DVC
-> repositories). In this case we use our
-> [dataset-registry](https://github.com/iterative/dataset-registry)) project as
-> the external data source. (Refer to
-> [Data Registry](/doc/use-cases/data-registry) for more info about this setup.)
+> repositories). In this case we use
+> [dataset-registry](https://github.com/iterative/dataset-registry)) as the
+> source project. (Refer to [Data Registry](/doc/use-cases/data-registry) for
+> more info about this setup.)
 
 Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a
@@ -66,9 +67,9 @@ Next, we will create a [pipeline](/doc/command-reference/pipeline) step-by-step,
 utilizing the same set of commands that are described in earlier
 [Get Started](/doc/get-started) chapters.
 
-> Note that its possible to define more than one pipeline in each DVC project.
-> This will be determined by the interdependencies between DVC-files, mentioned
-> below.
+> Note that its possible to define more than one pipeline in each <abbr>DVC
+> project</abbr>. This will be determined by the interdependencies between
+> DVC-files, mentioned below.
 
 Initialize DVC repository (run it inside your Git repository):
 

@@ -82,11 +82,13 @@ $ unzip data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` can download <abbr>data artifacts</abbr> from any DVC project hosted
-> on a Git repository (similar to `wget` but for DVC repositories). In this case
-> we use our [dataset-registry](https://github.com/iterative/dataset-registry)
-> project as the external data source. (Refer to
-> [Data Registry](/doc/use-cases/data-registry) for more info about this setup.)
+> `dvc get` can download <abbr>data artifacts</abbr> from the
+> [remote storage](/doc/command-reference/remote) of any <abbr>DVC
+> project</abbr> hosted on a Git repository (similar to `wget` but for DVC
+> repositories). In this case we use
+> [dataset-registry](https://github.com/iterative/dataset-registry)) as the
+> source project. (Refer to [Data Registry](/doc/use-cases/data-registry) for
+> more info about this setup.)
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43
@@ -300,7 +302,7 @@ place.
 ## Automating capturing
 
 `dvc add` makes sense when you need to keep track of different versions of
-datasets or model files that come from external sources. The `data/` directory
+datasets or model files that come from source projects. The `data/` directory
 above (with cats and dogs images) is a good example.
 
 On the other hand, there are files that are the result of running some code. In

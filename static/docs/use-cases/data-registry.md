@@ -111,10 +111,11 @@ See the `dvc import` command reference for more details on the `--rev`
 
 </details>
 
-Importing keeps the connection between the local project and data registry where
-we are downloading the dataset from. This is achieved by creating a special
-[DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_) that uses
-the `repo` field. (This file can be used for versioning the import with Git.)
+Importing keeps the connection between the local project and the source data
+registry where we are downloading the dataset from. This is achieved by creating
+a special [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_)
+that uses the `repo` field. (This file can be used for versioning the import
+with Git.)
 
 > For a sample DVC-file resulting from `dvc import`, refer to
 > [this example](/doc/command-reference/import#example-data-registry).
