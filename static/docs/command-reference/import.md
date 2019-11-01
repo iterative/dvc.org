@@ -3,7 +3,7 @@
 Download or copy file or directory from any <abbr>DVC project</abbr> in a Git
 repository (e.g. hosted on GitHub) into the <abbr>workspace</abbr>, and track
 changes in this [external dependency](/doc/user-guide/external-dependencies).
-Creates a special DVC-file a.k.a _import stage_.
+Creates [DVC-files](/doc/user-guide/dvc-file-format).
 
 > See also `dvc get`, that corresponds to the first step this command performs
 > (just download the data).
@@ -75,7 +75,8 @@ downloaded data artifact from the source DVC repository.
   import the data from. The tip of the repository's default branch is used by
   default when this option is not specified. Note that this adds a `rev` field
   in the import stage that fixes it to this revision. This can impact the
-  behavior of `dvc update`.
+  behavior of `dvc update`. (See
+  [re-importing](#example-fixed-revisions-re-importing) example below.)
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

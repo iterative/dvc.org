@@ -12,40 +12,40 @@ Taking this idea to a useful extreme, we could create a <abbr>project</abbr>
 that is exclusively dedicated to
 [tracking and versioning](/doc/use-cases/data-and-model-files-versioning)
 datasets (or any kind of large files) – by mainly using `dvc add` to build it.
-Such a project would not have [stages](/doc/command-reference/run), but its data
-files may be updated manually as they evolve. Other projects can then share
-these artifacts by downloading (`dvc get`) or importing (`dvc import`) them for
-use in different data processes – and these don't even have to be _DVC
-projects_, as `dvc get` works anywhere in your system.
+Other projects can then share these artifacts by downloading (`dvc get`) or
+importing (`dvc import`) them for use in different data processes – and these
+don't even have to be _DVC projects_, as `dvc get` works anywhere in your
+system.
 
-The advantages of using a data registry are:
+The advantages of using a DVC **data registry** project are:
 
-- Centralization: Data [shared](/doc/use-cases/share-data-and-model-files) by
-  multiple projects can be stored in a single location (with the ability to
-  create distributed copies on other remotes). This simplifies data management
-  and helps use storage space efficiently.
 - [Versioning](/doc/use-cases/data-and-model-files-versioning): Any version of
-  the stored data or ML modes can be used in other <abbr>projects</abbr> at any
-  time.
-- Persistence: The registry controlled
+  the data or ML modes tracked by a DVC registry can be used in other projects
+  at any time.
+- Reusability: Reproduce and organizing _feature stores_ with `dvc get` and
+  `dvc import`.
+- Persistence: The DVC registry controlled
   [remote storage](/doc/command-reference/remote) (e.g. an S3 bucket) improves
   data security. There are less chances someone can delete or rewrite a model,
   for example.
+- Storage Optimization: Track data
+  [shared](/doc/use-cases/share-data-and-model-files) by multiple projects
+  centralized in a single location (with the ability to create distributed
+  copies on other remotes). This simplifies data management and helps use
+  storage space efficiently.
 - Lifecycle management: Manage your data like you do with code, leveraging Git
   and GitHub features such as version history, pull requests, reviews, or even
   continuous deployment of ML models.
 - Security: Registries can be setup to have read-only remote storage (e.g. an
   HTTP location). Git versioning of DVC-files allows us to track and audit data
   changes.
-- Reusability: Reproduce and organizing _feature stores_ with `dvc get` and
-  `dvc import`.
 
 ## Example
 
-A dataset we use for several of our examples and tutorials in these docs is one
-containing 2800 images of cats and dogs. We partitioned the dataset in two for
-our [Versioning Tutorial](/doc/tutorials/versioning), and backed up the parts on
-a storage server, downloading them with `wget` in our examples. This setup was
+A dataset we use for several of our examples and tutorials is one containing
+2800 images of cats and dogs. We partitioned the dataset in two for our
+[Versioning Tutorial](/doc/tutorials/versioning), and backed up the parts on a
+storage server, downloading them with `wget` in our examples. This setup was
 then revised to download the dataset with `dvc get` instead, so we created the
 [dataset-registry](https://github.com/iterative/dataset-registry)) repository, a
 <abbr>DVC project</abbr> hosted on GitHub, to version the dataset (see its
