@@ -57,7 +57,7 @@ output (`outs` field), and references the cached file using the checksum. See
 > `dvc run` to learn about regular stage files.
 
 By default DVC tries to use reflinks (see
-[File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
+[File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to avoid copying any file contents and to optimize DVC-file operations for large
 files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the

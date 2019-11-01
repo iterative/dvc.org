@@ -66,7 +66,7 @@ Hardlinks and symlinks are also available for optimized cache linking but,
 (unlike reflinks) they carry the risk of accidentally corrupting the cache if
 tacked data files are modified in the workspace.
 
-See [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization)
+See [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization)
 and `dvc config cache` for more information.
 
 > \***copy-on-write links or "reflinks"** are a relatively new way to link files

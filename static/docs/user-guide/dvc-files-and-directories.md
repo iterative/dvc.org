@@ -16,7 +16,7 @@ operation:
 - `.dvc/cache`: The [cache directory](#structure-of-cache-directory) will store
   your data. The data files and directories in DVC repositories will only
   contain links to the data files in the cache. (Refer to
-  [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization). See
+  [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
   `dvc config cache` for related configuration options.
 
   > Note that DVC includes the cache directory in `.gitignore` during

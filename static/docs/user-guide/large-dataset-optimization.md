@@ -117,7 +117,7 @@ $ dvc config cache.protected true
 
 Setting `cache.protected` is important with `hardlink` and/or `symlink` cache
 file link types. Please refer to the
-[Update a Tracked File](/docs/user-guide/updating-tracked-files) on how to
+[Update a Tracked File](/doc/user-guide/updating-tracked-files) on how to
 manage tracked files under these cache configurations.
 
 ---
