@@ -8,6 +8,17 @@ data will be used — only 180Mb xml files.
 Most of the code to solve this problem is ready to be downloaded. We will be
 modifying some of the code during this tutorial to improve the model.
 
+> We have tested our tutorials and examples with Python 3. We don't recommend
+> using earlier versions.
+
+You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
+Also, if DVC is not installed, please follow these [instructions](/doc/install)
+to do so.
+
+> If you're using Windows, please review
+> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
+> tips to improve your experience.
+
 ## Getting the example code
 
 Take the following steps to initialize a new Git repository and get the example
@@ -21,10 +32,6 @@ Windows doesn't include the `wget` utility by default, but you can use the
 browser to download `code.zip`. (Right-click
 [this link](https://code.dvc.org/tutorial/nlp/code.zip) and select
 `Save Link As...` (Chrome). Save it into the project directory.
-
-> Please also review
-> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
-> tips to improve your experience using DVC on Windows.
 
 </details>
 
@@ -47,17 +54,6 @@ $ virtualenv -p python3 .env
 $ source .env/bin/activate
 $ echo ".env/" >> .gitignore
 $ pip install -r code/requirements.txt
-```
-
-## Install DVC
-
-You'll need DVC on your system to continue this tutorial. Please refer to
-[Installation](/doc/install) for the easiest way to install DVC on your system.
-For this tutorial, installing DVC with [pip](https://pip.pypa.io/) is probably
-the easiest:
-
-```dvc
-$ pip install dvc
 ```
 
 ## Initialize

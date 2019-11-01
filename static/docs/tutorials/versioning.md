@@ -26,8 +26,12 @@ model file.
 
 ## Preparation
 
-If DVC is not installed, please follow these [instructions](/doc/install) to do
-so.
+> We have tested our tutorials and examples with Python 3. We don't recommend
+> using earlier versions.
+
+You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
+Also, if DVC is not installed, please follow these [instructions](/doc/install)
+to do so.
 
 > If you're using Windows, please review
 > [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
@@ -75,7 +79,6 @@ model [metrics](/doc/command-reference/metrics).
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/ver/data.zip
-...
 $ unzip -q data.zip
 $ rm -f data.zip
 ```
@@ -130,13 +133,12 @@ before). This is achieved by creating a simple human-readable
 [DVC-file](/doc/user-guide/dvc-file-format) that serves as a pointer to the
 cache.
 
-Next, we train our first model with `python train.py`. Because of the small
-dataset, this training process should be small enough to run on most computers
-in a reasonable amount of time (a few minutes). This command
-<abbr>outputs</abbr> a bunch of files, among them `model.h5` and `metrics.json`,
-weights of the trained model, and [metrics](/doc/command-reference/metrics)
-history. The simplest way to capture the current version of the model is to use
-`dvc add` again:
+Next, we train our first model with `train.py`. Because of the small dataset,
+this training process should be small enough to run on most computers in a
+reasonable amount of time (a few minutes). This command <abbr>outputs</abbr> a
+bunch of files, among them `model.h5` and `metrics.json`, weights of the trained
+model, and [metrics](/doc/command-reference/metrics) history. The simplest way
+to capture the current version of the model is to use `dvc add` again:
 
 ```dvc
 $ python train.py
@@ -188,7 +190,6 @@ Let's imagine that our image dataset doubles in size. The next command extracts
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/ver/new-labels.zip
-...
 $ unzip -q new-labels.zip
 $ rm -f new-labels.zip
 ```
