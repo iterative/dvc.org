@@ -22,8 +22,11 @@ The advantages of using a DVC **data registry** project are:
 - [Versioning](/doc/use-cases/data-and-model-files-versioning): Any version of
   the data or ML modes tracked by a DVC registry can be used in other projects
   at any time.
-- Reusability: Reproduce and organizing _feature stores_ with `dvc get` and
-  `dvc import`.
+- Data as code: Version straightforward dataset directory structures without
+  special ad-hoc conventions.
+- Reusability: Reproduce and organize _feature stores_ with a simple CLI
+  (`dvc get` and `dvc import` commands, similar to software package management
+  systems like `pip`).
 - Persistence: The DVC registry controlled
   [remote storage](/doc/command-reference/remote) (e.g. an S3 bucket) improves
   data security. There are less chances someone can delete or rewrite a model,
@@ -34,7 +37,7 @@ The advantages of using a DVC **data registry** project are:
   copies on other remotes). This simplifies data management and helps use
   storage space efficiently.
 - Lifecycle management: Manage your data like you do with code, leveraging Git
-  and GitHub features such as version history, pull requests, reviews, or even
+  (and GitHub) features such as version history, pull requests, reviews, or even
   continuous deployment of ML models.
 - Security: Registries can be setup to have read-only remote storage (e.g. an
   HTTP location). Git versioning of DVC-files allows us to track and audit data
