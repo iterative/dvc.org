@@ -63,8 +63,7 @@ directory of the same repository.
 To create a
 [first version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v1/use-cases)
 of our dataset, we extracted the first part into the `use-cases/cats-dogs`
-directory (illustrated below), and ran <code>dvc add use-cases/cats-dogs</code>
-to
+directory (illustrated below), and ran `dvc add use-cases/cats-dogs` to
 [track the entire directory](https://dvc.org/doc/command-reference/add#example-directory).
 
 ```dvc
@@ -124,7 +123,7 @@ Back in our **dataset-registry** project, a
 [second version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v2/use-cases)
 of our dataset was created by extracting the second part, with 1000 additional
 images (500 cats, 500 dogs), into the same directory structure. Then, we simply
-ran <code>dvc add use-cases/cats-dogs</code> again.
+ran `dvc add use-cases/cats-dogs` again.
 
 In our local project, all we have to do in order to obtain this latest version
 of the dataset is to run:
