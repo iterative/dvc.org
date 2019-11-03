@@ -34,7 +34,7 @@ app.prepare().then(() => {
     } else if (req.headers.host === 'man.dvc.org') {
       // man.dvc.org/{cmd} -> dvc.org/doc/command-reference/{cmd}
       let normalized_pathname =
-        ['/get-url', '/import-url'].indexOf(pathname) >= 0
+        ['/get-url', '/import-url'].indexOf(pathname) < 0
           ? pathname.replace('-', '/')
           : pathname
       const doc_pathname = '/doc/command-reference' + normalized_pathname
