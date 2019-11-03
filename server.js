@@ -34,8 +34,8 @@ app.prepare().then(() => {
     } else if (req.headers.host === 'man.dvc.org') {
       // man.dvc.org/{cmd} -> dvc.org/doc/command-reference/{cmd}
       let normalized_pathname =
-        ['/get-url', '/import-url'].indexOf(pathname) > 0
-          ? pathname.replace(/-/i, '/')
+        ['/get-url', '/import-url'].indexOf(pathname) >= 0
+          ? pathname.replace('-', '/')
           : pathname
       const doc_pathname = '/doc/command-reference' + normalized_pathname
       res.writeHead(301, { Location: 'https://dvc.org' + doc_pathname })
@@ -50,7 +50,7 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (/^\/doc\/commands-reference(\/.*)?/.test(pathname)) {
-      // TMP: path /doc/commands-reference/* -> /doc/command-reference/*
+      // path /doc/commands-reference... -> /doc/command-reference...
       res.writeHead(301, {
         Location: req.url.replace('commands-reference', 'command-reference')
       })
@@ -65,8 +65,8 @@ app.prepare().then(() => {
       pathname === '/doc/use-cases/data-and-model-files-versioning' ||
       pathname === '/doc/use-cases/data-and-model-files-versioning/'
     ) {
-      // path /doc/use-cases/data-and-model-files-versioning ->
-      // /doc/use-cases/versioning-data-and-model-files
+      // path /doc/use-cases/data-and-model-files-versioning
+      //  ->  /doc/use-cases/versioning-data-and-model-files
       res.writeHead(301, {
         Location: req.url.replace(
           'data-and-model-files-versioning',
@@ -75,13 +75,13 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (/^\/doc\/tutorial\/(.*)?/.test(pathname)) {
-      // path /doc/tutorial/* -> /doc/tutorials/deep/*
+      // path /doc/tutorial/... -> /doc/tutorials/deep/...
       res.writeHead(301, {
         Location: req.url.replace('/doc/tutorial/', '/doc/tutorials/deep/')
       })
       res.end()
     } else if (/^\/doc.*/i.test(pathname)) {
-      // path /doc* -> /doc
+      // path /doc*/... -> /doc/...
       let normalized_pathname = pathname.replace(/^\/doc[^?\/]*/i, '/doc')
       if (normalized_pathname !== pathname) {
         res.writeHead(301, {
@@ -103,7 +103,7 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (/^\/(help|chat)\/?$/i.test(pathname)) {
-      // dvc.org/(help|chat) -> Discord Chat
+      // dvc.org/(help|chat) -> Discord chat
       res.writeHead(301, { Location: 'https://discordapp.com/invite/dvwXA2N' })
       res.end()
     } else {
