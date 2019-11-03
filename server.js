@@ -32,13 +32,17 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (req.headers.host === 'man.dvc.org') {
-      // man.dvc.org/{cmd} -> dvc.org/doc/command-reference/{cmd}
-      let normalized_pathname =
-        ['/get-url', '/import-url'].indexOf(pathname) < 0
-          ? pathname.replace('-', '/')
-          : pathname
-      const doc_pathname = '/doc/command-reference' + normalized_pathname
-      res.writeHead(301, { Location: 'https://dvc.org' + doc_pathname })
+      // man.dvc.org/{cmd} -> dvc.org/doc/command-reference/{cmd},
+      // replace - for / in {cmd} except for /get-url, /import-url
+      let new_path
+      if (['/get-url', '/import-url'].indexOf(pathname) < 0) {
+        new_path = pathname.replace('-', '/')
+      } else {
+        new_path = pathname
+      }
+      res.writeHead(301, {
+        Location: 'https://dvc.org/doc/command-reference' + new_path
+      })
       res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
       // {code/data/remote}.dvc.org -> corresponding S3 bucket
