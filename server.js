@@ -27,21 +27,18 @@ app.prepare().then(() => {
     ) {
       // Enforce https protocol and remove www from host/
       res.writeHead(301, {
-        Location:
-          'https://' + req.headers['host'].replace(/^www\./, '') + req.url
+        Location: 'https://' + req.headers.host.replace(/^www\./, '') + req.url
       })
       res.end()
     } else if (req.headers.host === 'man.dvc.org') {
       // man.dvc.org/{cmd} -> dvc.org/doc/command-reference/{cmd},
       // replace - for / in {cmd} except for /get-url, /import-url
-      let new_path
-      if (['/get-url', '/import-url'].indexOf(pathname) < 0) {
-        new_path = pathname.replace('-', '/')
-      } else {
-        new_path = pathname
-      }
       res.writeHead(301, {
-        Location: 'https://dvc.org/doc/command-reference' + new_path
+        Location:
+          'https://dvc.org/doc/command-reference' +
+          (['/get-url', '/import-url'].indexOf(pathname) < 0
+            ? pathname.replace('-', '/')
+            : pathname)
       })
       res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
