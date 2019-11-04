@@ -49,6 +49,17 @@ $ echo ".env/" >> .gitignore
 $ pip install -r code/requirements.txt
 ```
 
+## Install DVC
+
+You'll need DVC on your system to continue this tutorial. Please refer to
+[Installation](/doc/install) for the easiest way to install DVC on your system.
+For this tutorial, installing DVC with [pip](https://pip.pypa.io/) is probably
+the easiest:
+
+```dvc
+$ pip install dvc
+```
+
 ## Initialize
 
 DVC works on top of Git repositories. You run DVC initialization in a repository
