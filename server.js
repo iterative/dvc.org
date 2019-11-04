@@ -41,15 +41,6 @@ app.prepare().then(() => {
             : pathname)
       })
       res.end()
-    } else if (req.headers.host === 'man.localhost:3000') {
-      res.writeHead(301, {
-        Location:
-          'http://localhost:3000/doc/command-reference' +
-          (['/get-url', '/import-url'].indexOf(pathname) < 0
-            ? pathname.replace('-', '/')
-            : pathname)
-      })
-      res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
       // {code/data/remote}.dvc.org -> corresponding S3 bucket
       res.writeHead(301, {
