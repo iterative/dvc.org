@@ -1,9 +1,18 @@
+/*
+ * React fn component `Subscribe`
+ * FIXME: Similar to ../TrySection
+ * and to ../PromoSection
+ */
+
 import React from 'react'
 import styled from 'styled-components'
 import { media } from '../styles'
 
 import SubscribeForm from '../SubscribeForm'
 
+/**
+ * Subscribe section for home page
+ */
 export default function Subscribe() {
   return (
     <Wrapper>
@@ -53,30 +62,30 @@ const Container = styled.div`
 const Glyph = styled.img`
   position: absolute;
   z-index: 0;
-  
+
   width: 158px;
   height: auto;
 
   ${media.tablet`
     width: 110px;
   `};
-  
+
   object-fit: contain;
-  
+
   ${props =>
     props.gid === 'topleft' &&
     `
     top: -32px;
     left: 28px;
   `}
-  
+
   ${props =>
     props.gid === 'rigthbottom' &&
     `
     bottom: -60px;
     right: 28px;
   `}
-  
+
   ${media.phablet`
     display: none;
   `}
@@ -109,8 +118,8 @@ const SubscribeContainer = styled.div`
     margin: 0px auto;
     margin-top: 40px;
     min-height: auto;
-  `} @media only screen 
-  and (min-device-width : 768px) 
+  `} @media only screen
+  and (min-device-width : 768px)
   and (max-device-width : 1024px) {
     width: 100%;
     margin: 0px auto;

@@ -1,9 +1,18 @@
+/*
+ * React fn component `TrySection`
+ * FIXME: Similar to ../Subscribe
+ * and to ../PromoSection
+ */
+
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 import { media, container } from '../styles'
 
+/**
+ * Try section for /features, /support pages
+ */
 export default function TrySection({ title, buttonText = 'Get Started' }) {
   return (
     <Wrapper>
@@ -94,7 +103,7 @@ const Button = styled.button`
     border-radius: 4px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
-    
+
     background-image: url('/static/img/arrow_right_dark.svg');
   `};
 `

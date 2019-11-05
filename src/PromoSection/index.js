@@ -1,18 +1,32 @@
+/*
+ * React fn component `PromoSection`
+ * FIXME: Similar to ../Subscribe and ../TrySection
+ */
+
 import React from 'react'
 import styled from 'styled-components'
 import { media } from '../styles'
 import { logEvent } from '../utils/ga'
 
+/**
+ * Helper fn to go to /doc/get-started
+ */
 const getStarted = () => {
   logEvent('promo', 'get-started')
   window.location = '/doc/get-started'
 }
 
+/**
+ * Helper fn to go to /features
+ */
 const features = () => {
   logEvent('promo', 'features')
   window.location = '/features'
 }
 
+/**
+ * Promo section for home page
+ */
 export default function PromoSection() {
   return (
     <Wrapper>
@@ -20,10 +34,10 @@ export default function PromoSection() {
         <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
         <Title>For data scientists, by data scientists</Title>
         <Buttons>
-          <Button first onClick={() => getStarted()}>
+          <Button first onClick={getStarted}>
             Get Started
           </Button>
-          <Button onClick={() => features()}>Full Features</Button>
+          <Button onClick={features}>Full Features</Button>
         </Buttons>
         <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
       </Container>
@@ -102,14 +116,14 @@ const Button = styled.button`
     border-radius: 4px;
     background-color: #ffffff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
-    
+
     background-image: url('/static/img/arrow_right_dark.svg');
     transition: 0.2s background-color ease-out;
-    
+
     &:hover {
       background-color: #F5F5F5
     }
-    
+
      ${media.phablet`
       margin-right: 0px;
    `}
