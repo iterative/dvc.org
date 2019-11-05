@@ -1,3 +1,7 @@
+/*
+ * Home page
+ */
+
 import React from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
@@ -12,6 +16,29 @@ import PromoSection from '../src/PromoSection'
 import UseCases from '../src/UseCases'
 import Subscribe from '../src/Subscribe'
 
+/**
+ * HomePage fn component
+ */
+const HomePage = () => (
+  <Page stickHeader={true}>
+    <HeadInjector />
+    <Hero>
+      <LandingHero />
+      <LearnMoreSection>
+        <LearnMore />
+      </LearnMoreSection>
+      <span name="nextSlide" style={{ marginTop: `-58px` }} />
+    </Hero>
+    <Diagram />
+    <PromoSection />
+    <UseCases />
+    <Subscribe />
+  </Page>
+)
+
+/**
+ * HeadInjector fn component
+ */
 const HeadInjector = () => (
   <Head>
     <link
@@ -29,23 +56,9 @@ const HeadInjector = () => (
   </Head>
 )
 
-export default () => (
-  <Page stickHeader={true}>
-    <HeadInjector />
-    <Hero>
-      <LandingHero />
-      <a name="nextSlide" style={{ marginTop: `-58px` }} />
-      <LearnMoreSection>
-        <LearnMore />
-      </LearnMoreSection>
-    </Hero>
-    <Diagram />
-    <PromoSection />
-    <UseCases />
-    <Subscribe />
-  </Page>
-)
-
+/**
+ * LearnMoreSection styled <div> component
+ */
 const LearnMoreSection = styled.div`
   z-index: 2;
   position: absolute;
@@ -53,3 +66,5 @@ const LearnMoreSection = styled.div`
   left: 50%;
   bottom: 16px;
 `
+
+export default HomePage

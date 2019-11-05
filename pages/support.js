@@ -1,9 +1,12 @@
+/*
+ * Support page
+ */
+
 import React from 'react'
 import styled from 'styled-components'
 import { Mark } from '../src/styles'
 import color from 'color'
 
-// nextjs
 import Head from 'next/head'
 
 import { container, media, OnlyDesktop } from '../src/styles'
@@ -13,13 +16,10 @@ import Hero from '../src/Hero'
 import TrySection from '../src/TrySection'
 import Popover from '../src/Popover/Popover'
 
-const HeadInjector = () => (
-  <Head>
-    <title>Support | Machine Learning Version Control System</title>
-  </Head>
-)
-
-export default () => (
+/**
+ * SupportPage fn component
+ */
+const SupportPage = () => (
   <Page stickHeader>
     <HeadInjector />
     <Hero>
@@ -27,7 +27,6 @@ export default () => (
         <Heading>Questions, feedback, or just need to get in touch?</Heading>
       </SupportHero>
     </Hero>
-
     <Container>
       <Features>
         <Feature>
@@ -50,10 +49,11 @@ export default () => (
               <Popover
                 body={
                   <iframe
+                    title="Discord Members Online"
                     src="https://discordapp.com/widget?id=485586884165107732&theme=light"
                     width="350"
                     height="500"
-                    allowtransparency="true"
+                    allowTransparency="true"
                     frameBorder="0"
                   />
                 }
@@ -64,7 +64,6 @@ export default () => (
             </OnlyDesktop>
           </FlexRow>
         </Feature>
-
         <Feature>
           <FeatureHeading>
             <Icon url="/static/img/support/bug.svg" color="#13adc7" />
@@ -81,7 +80,6 @@ export default () => (
             <Button color="#13adc7">Open GitHub</Button>
           </Link>
         </Feature>
-
         <Feature>
           <FeatureHeading>
             <Icon url="/static/img/support/forum.svg" color="#f46837" />
@@ -98,7 +96,6 @@ export default () => (
             <Button color="#f46837">Go To Forum</Button>
           </Link>
         </Feature>
-
         <Feature>
           <FeatureHeading>
             <Icon url="/static/img/support/email.svg" color="#945dd6" />
@@ -119,21 +116,31 @@ export default () => (
         </Feature>
       </Features>
     </Container>
-
     <TrySection title="Don't know where to start?" buttonText="Get Started" />
   </Page>
 )
 
-const Container = styled.div`
-  ${container};
-`
+/**
+ * HeadInjector fn component
+ */
+const HeadInjector = () => (
+  <Head>
+    <title>Support | Machine Learning Version Control System</title>
+  </Head>
+)
 
+/**
+ * SupportHero styled <div> component
+ */
 const SupportHero = styled.div`
   padding-top: 90px;
   padding-bottom: 80px;
   overflow: hidden;
 `
 
+/**
+ * Heading styled <h1> component
+ */
 const Heading = styled.h1`
   font-family: BrandonGrotesqueMed;
   margin: 0px auto;
@@ -145,6 +152,16 @@ const Heading = styled.h1`
   color: #40364d;
 `
 
+/**
+ * Container styled <div> component
+ */
+const Container = styled.div`
+  ${container};
+`
+
+/**
+ * Features styled <div> component
+ */
 const Features = styled.div`
   display: flex;
   flex-flow: row;
@@ -157,21 +174,30 @@ const Features = styled.div`
   ${media.phablet`
     padding-top: 70px;
     padding-bottom: 50px;
-	`};
+  `};
 `
 
+/**
+ * Feature styled <div> component
+ */
 const Feature = styled.div`
   flex: 1 0 300px;
   margin: 0 20px 60px;
   padding: 10px;
 `
 
+/**
+ * FeatureHeading styled <div> component
+ */
 const FeatureHeading = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 `
 
+/**
+ * Icon styled <div> component
+ */
 const Icon = styled.div`
   height: 50px;
   width: 50px;
@@ -195,28 +221,10 @@ const Icon = styled.div`
     transform: translate(-10px, 0);
   }
 `
-const FlexRow = styled.div`
-  display: flex;
-  align-items: center;
-`
 
-const DiscrodWidget = styled.img`
-  display: block;
-  margin-top: 20px;
-  margin-left: 20px;
-  width: 50px;
-  height: 50px;
-  cursor: pointer;
-  mask-image: url('/static/img/support/discord.svg');
-  mask-repeat: no-repeat;
-  mask-position: center;
-  background-color: #b88eeb;
-
-  &:hover {
-    opacity: 0.7;
-  }
-`
-
+/**
+ * Name styled <h3> component
+ */
 const Name = styled.h3`
   font-family: BrandonGrotesqueMed;
   margin-top: 10px;
@@ -227,11 +235,32 @@ const Name = styled.h3`
   min-height: 28px;
 `
 
+/**
+ * Description styled <div> component
+ */
 const Description = styled.div`
   font-size: 20px;
   color: #5f6c72;
 `
 
+/**
+ * FlexRow styled <div> component
+ */
+const FlexRow = styled.div`
+  display: flex;
+  align-items: center;
+`
+
+/**
+ * Link styled <a> component
+ */
+const Link = styled.a`
+  text-decoration: none;
+`
+
+/**
+ * Button styled <button> component
+ */
 const Button = styled.button`
   text-decoration: none;
   margin-top: 20px;
@@ -252,6 +281,24 @@ const Button = styled.button`
   }
 `
 
-const Link = styled.a`
-  text-decoration: none;
+/**
+ * DiscrodWidget styled <img> component
+ */
+const DiscrodWidget = styled.img`
+  display: block;
+  margin-top: 20px;
+  margin-left: 20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  mask-image: url('/static/img/support/discord.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-color: #b88eeb;
+
+  &:hover {
+    opacity: 0.7;
+  }
 `
+
+export default SupportPage

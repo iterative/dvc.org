@@ -1,6 +1,10 @@
+/*
+ * Features page
+ */
+
 import React from 'react'
 import styled from 'styled-components'
-// nextjs
+
 import Head from 'next/head'
 
 import { container } from '../src/styles'
@@ -11,13 +15,10 @@ import Hero from '../src/Hero'
 import FeaturesHero from '../src/FeaturesHero'
 import TrySection from '../src/TrySection'
 
-const HeadInjector = () => (
-  <Head>
-    <title>Features | Machine Learning Version Control System</title>
-  </Head>
-)
-
-export default () => (
+/**
+ * FeaturesPage fn component
+ */
+const FeaturesPage = () => (
   <Page stickHeader={true}>
     <HeadInjector />
     <Hero>
@@ -65,10 +66,10 @@ export default () => (
           </Icon>
           <Name>Reproducible</Name>
           <Description>
-            The single 'dvc repro' command reproduces experiments end-to-end.
-            DVC guarantees reproducibility by consistently maintaining a
-            combination of input data, configuration, and the code that was
-            initially used to run an experiment.
+            The single &#39;dvc repro&#39; command reproduces experiments
+            end-to-end. DVC guarantees reproducibility by consistently
+            maintaining a combination of input data, configuration, and the code
+            that was initially used to run an experiment.
           </Description>
         </Feature>
         <Feature>
@@ -166,10 +167,25 @@ export default () => (
   </Page>
 )
 
+/**
+ * HeadInjector fn component
+ */
+const HeadInjector = () => (
+  <Head>
+    <title>Features | Machine Learning Version Control System</title>
+  </Head>
+)
+
+/**
+ * Container styled <div> component
+ */
 const Container = styled.div`
   ${container};
 `
 
+/**
+ * Features styled <div> component
+ */
 const Features = styled.div`
   display: flex;
   flex-flow: row;
@@ -180,15 +196,21 @@ const Features = styled.div`
   ${media.phablet`
     padding-top: 70px;
     padding-bottom: 50px;
-	`};
+  `};
 `
 
+/**
+ * Feature styled <div> component
+ */
 const Feature = styled.div`
   flex: 33.3%;
   flex-basis: 311px;
   margin-bottom: 63px;
 `
 
+/**
+ * Icon styled <div> component
+ */
 const Icon = styled.div`
   height: 48px;
 
@@ -198,6 +220,9 @@ const Icon = styled.div`
   }
 `
 
+/**
+ * Name styled <h3> component
+ */
 const Name = styled.h3`
   font-family: BrandonGrotesqueMed;
   margin-top: 10px;
@@ -210,9 +235,14 @@ const Name = styled.h3`
   min-height: 28px;
 `
 
+/**
+ * Description styled <div> component
+ */
 const Description = styled.div`
   max-width: 311px;
 
   font-size: 16px;
   color: #5f6c72;
 `
+
+export default FeaturesPage
