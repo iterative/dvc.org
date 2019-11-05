@@ -28,6 +28,9 @@ export default function Subscribe() {
   )
 }
 
+/**
+ * Wrapper styled <section> component
+ */
 const Wrapper = styled.section`
   position: relative;
   height: 300px;
@@ -44,21 +47,9 @@ const Wrapper = styled.section`
   }
 `
 
-const Container = styled.div`
-  width: 100%;
-  margin: 0px auto;
-  max-width: 1035px;
-  padding-top: 90px;
-
-  ${media.phablet`
-    padding: 0px 10px;
-  `};
-
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    padding: 0px 10px;
-  }
-`
-
+/**
+ * Glyph styled <img> component
+ */
 const Glyph = styled.img`
   position: absolute;
   z-index: 0;
@@ -66,11 +57,11 @@ const Glyph = styled.img`
   width: 158px;
   height: auto;
 
+  object-fit: contain;
+
   ${media.tablet`
     width: 110px;
   `};
-
-  object-fit: contain;
 
   ${props =>
     props.gid === 'topleft' &&
@@ -91,6 +82,27 @@ const Glyph = styled.img`
   `}
 `
 
+/**
+ * Container styled <div> component
+ */
+const Container = styled.div`
+  width: 100%;
+  margin: 0px auto;
+  max-width: 1035px;
+  padding-top: 90px;
+
+  ${media.phablet`
+    padding: 0px 10px;
+  `};
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    padding: 0px 10px;
+  }
+`
+
+/**
+ * Title styled <h3> component
+ */
 const Title = styled.h3`
   font-family: BrandonGrotesqueMed;
   min-width: 550px;
@@ -106,6 +118,9 @@ const Title = styled.h3`
   `};
 `
 
+/**
+ * SubscribeContainer styled <div> component
+ */
 const SubscribeContainer = styled.div`
   margin: 0px auto;
   margin-top: 15px;

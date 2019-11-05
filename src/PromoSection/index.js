@@ -45,6 +45,9 @@ export default function PromoSection() {
   )
 }
 
+/**
+ * Wrapper styled <section> component
+ */
 const Wrapper = styled.section`
   position: relative;
   height: 278px;
@@ -54,11 +57,17 @@ const Wrapper = styled.section`
   justify-content: center;
 `
 
+/**
+ * Container styled <div> component
+ */
 const Container = styled.div`
   width: 100%;
   max-width: 1035px;
 `
 
+/**
+ * Title styled <h3> component
+ */
 const Title = styled.h3`
   font-family: BrandonGrotesqueMed;
   max-width: 438px;
@@ -70,6 +79,9 @@ const Title = styled.h3`
   margin: 0px auto;
 `
 
+/**
+ * Buttons styled <div> component
+ */
 const Buttons = styled.div`
   display: flex;
   max-width: 386px;
@@ -82,6 +94,9 @@ const Buttons = styled.div`
   `};
 `
 
+/**
+ * Button styled <button> component
+ */
 const Button = styled.button`
   font-family: BrandonGrotesqueMed;
   cursor: pointer;
