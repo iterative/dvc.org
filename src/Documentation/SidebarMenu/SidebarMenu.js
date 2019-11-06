@@ -20,8 +20,10 @@ const blankStyle = {}
 const heightMap = {}
 
 /**
- * Helper function to calculate element height with all opened children
- * @param {*} param0
+ * Calculate element height with all open children.
+ * @param {Object} params - Parameters needed to calculate height.
+ * @param {Object} params.activePaths - ???.
+ * @param {string} params.path - ???.
  */
 function calculateHeight({ activePaths, path }) {
   let height = 0
