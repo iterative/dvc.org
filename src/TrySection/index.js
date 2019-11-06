@@ -1,7 +1,5 @@
 /*
  * <TrySection> component
- * FIXME: Similar to ../Subscribe
- * and to ../PromoSection
  */
 
 import React from 'react'
@@ -36,7 +34,6 @@ TrySection.propTypes = {
   buttonText: PropTypes.string.isRequired
 }
 
-// FIXME: Same as in ../PromoSection/index.js
 const Wrapper = styled.section`
   position: relative;
   height: 278px;
@@ -51,7 +48,6 @@ const Container = styled.div`
   width: 100%;
 `
 
-// FIXME: Similar to the one in ../Subscribe
 const Glyph = styled.img`
   position: absolute;
   z-index: 0;
@@ -80,7 +76,6 @@ const Glyph = styled.img`
   `};
 `
 
-// FIXME: Similar to the one in ../PromoSection
 const Title = styled.h3`
   font-family: BrandonGrotesqueMed;
   max-width: 600px;
@@ -101,7 +96,6 @@ const Buttons = styled.div`
   justify-content: center;
 `
 
-// FIXME: Similar to the one in ../PromoSection
 const Button = styled.button`
   font-family: BrandonGrotesqueMed;
   cursor: pointer;

@@ -1,6 +1,5 @@
 /*
  * <PromoSection> component
- * FIXME: Similar to ../Subscribe and ../TrySection
  */
 
 import React from 'react'

@@ -1,7 +1,5 @@
 /*
  * <Subscribe> component
- * FIXME: Similar to ../TrySection
- * and to ../PromoSection
  */
 
 import React from 'react'
