@@ -6,7 +6,6 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-// import Router from 'next/router'
 
 const DESCRIPTION =
   `Open-source version control system for Data Science and Machine Learning ` +
