@@ -1,8 +1,7 @@
 # fetch
 
 Get files that are under DVC control from
-[remote](/doc/command-reference/remote#description) storage into the
-<abbr>cache</abbr>.
+[remote storage](/doc/command-reference/remote) into the <abbr>cache</abbr>.
 
 ## Synopsis
 
@@ -74,7 +73,7 @@ specified in DVC-files currently in the project are considered by `dvc fetch`
 ## Options
 
 - `-r REMOTE`, `--remote REMOTE` - name of the
-  [remote storage](/doc/command-reference/remote#description) to fetch from (see
+  [remote storage](/doc/command-reference/remote) to fetch from (see
   `dvc remote list`). If not specified, the default remote is used (see
   `dvc config core.remote`). The argument `REMOTE` is a remote name defined
   using the `dvc remote` command.

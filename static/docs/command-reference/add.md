@@ -165,9 +165,7 @@ $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
 ```
 
 Note that tracking compressed files (e.g. ZIP or TAR archives) is not
-recommended, as `dvc add` supports tracking directories. (Details below.) For
-more context, refer to
-[Data Registry](/doc/use-cases/data-registry#problem-1-compressed-data-files)
+recommended, as `dvc add` supports tracking directories. (Details below.)
 
 ## Example: Directory
 
