@@ -1,5 +1,9 @@
 /* global docsearch:readonly */
 
+/*
+ * Documentation "page" (dynamic section at /doc)
+ */
+
 import React, { Component } from 'react'
 // components
 import Page from '../src/Page'

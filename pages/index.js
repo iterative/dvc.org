@@ -17,7 +17,7 @@ import UseCases from '../src/UseCases'
 import Subscribe from '../src/Subscribe'
 
 /**
- * HomePage fn component
+ * <HomePage> fn component
  */
 const HomePage = () => (
   <Page stickHeader={true}>
@@ -37,7 +37,7 @@ const HomePage = () => (
 )
 
 /**
- * HeadInjector fn component
+ * <HeadInjector> fn component
  */
 const HeadInjector = () => (
   <Head>

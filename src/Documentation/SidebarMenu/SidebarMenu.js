@@ -39,7 +39,7 @@ function calculateHeight({ activePaths, path }) {
 }
 
 /**
- * <SidebarMenuItem> (Pure) Pomponent for <SidebarMenu>
+ * <SidebarMenuItem> (Pure) component for <SidebarMenu>
  */
 class SidebarMenuItem extends React.PureComponent {
   componentDidMount() {

@@ -17,7 +17,7 @@ import TrySection from '../src/TrySection'
 import Popover from '../src/Popover/Popover'
 
 /**
- * SupportPage fn component
+ * <SupportPage> fn component
  */
 const SupportPage = () => (
   <Page stickHeader>
@@ -121,7 +121,7 @@ const SupportPage = () => (
 )
 
 /**
- * HeadInjector fn component
+ * <HeadInjector> fn component
  */
 const HeadInjector = () => (
   <Head>

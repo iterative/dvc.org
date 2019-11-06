@@ -1,12 +1,16 @@
+/*
+ * HTML document
+ * Uses Next.
+ */
+
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-// FIXME: import Router from 'next/router'
+// import Router from 'next/router'
 
 const DESCRIPTION =
-  `Open-source version control system for Data Science and` +
-  ` Machine Learning projects. Track your data, models, and experiments with` +
-  ` a Git-like tool.`
+  `Open-source version control system for Data Science and Machine Learning ` +
+  `projects. Track your data, models, and experiments with a Git-like tool.`
 const KEYWORDS = `data version control machine learning models management`
 
 const inject = str => (

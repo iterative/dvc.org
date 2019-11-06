@@ -16,7 +16,7 @@ import FeaturesHero from '../src/FeaturesHero'
 import TrySection from '../src/TrySection'
 
 /**
- * FeaturesPage fn component
+ * <FeaturesPage> fn component
  */
 const FeaturesPage = () => (
   <Page stickHeader={true}>
@@ -168,7 +168,7 @@ const FeaturesPage = () => (
 )
 
 /**
- * HeadInjector fn component
+ * <HeadInjector> fn component
  */
 const HeadInjector = () => (
   <Head>

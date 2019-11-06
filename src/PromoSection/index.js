@@ -25,7 +25,8 @@ const features = () => {
 }
 
 /**
- * Promo section for home page
+ * <PromoSection> fn component
+ * For home page
  */
 export default function PromoSection() {
   return (

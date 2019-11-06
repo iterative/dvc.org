@@ -11,7 +11,8 @@ import { media } from '../styles'
 import SubscribeForm from '../SubscribeForm'
 
 /**
- * Subscribe section for home page
+ * <Subscribe> fn component
+ * For home page
  */
 export default function Subscribe() {
   return (
