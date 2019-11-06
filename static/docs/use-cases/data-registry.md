@@ -61,7 +61,7 @@ importantly, this single dataset is tracked by 2 different
 one, which would better reflect the intentions of this dataset... Fortunately,
 we have also prepared an improved alternative in the
 [`use-cases/`](https://github.com/iterative/dataset-registry/tree/master/use-cases)
-directory of the same repository.
+directory of the same <abbr>DVC repository</abbr>.
 
 To create a
 [first version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v1/use-cases)

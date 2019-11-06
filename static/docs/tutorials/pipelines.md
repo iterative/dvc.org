@@ -71,9 +71,9 @@ Next, we will create a [pipeline](/doc/command-reference/pipeline) step-by-step,
 utilizing the same set of commands that are described in earlier
 [Get Started](/doc/get-started) chapters.
 
-> Note that its possible to define more than one pipeline in each <abbr>DVC
-> project</abbr>. This will be determined by the interdependencies between
-> DVC-files, mentioned below.
+> Note that its possible to define more than one pipeline in each DVC project.
+> This will be determined by the interdependencies between DVC-files, mentioned
+> below.
 
 Initialize <abbr>DVC repository</abbr> (run it inside your Git repository):
 

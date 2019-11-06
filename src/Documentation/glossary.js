@@ -30,7 +30,7 @@ repository). It will contain the
     },
     {
       name: 'DVC Repository',
-      match: ['DVC repository'],
+      match: ['DVC repository', 'DVC repositories'],
       desc: `
 **DVC project** initialized using \`dvc init\` in a Git repository. It will
 contain \`.git/\` and [\`.dvc/\`](/doc/user-guide/dvc-files-and-directories)

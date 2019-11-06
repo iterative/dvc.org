@@ -1,7 +1,8 @@
 # update
 
-Update <abbr>data artifacts</abbr> imported from external DVC repositories, and
-corresponding [DVC-files](/doc/user-guide/dvc-file-format).
+Update <abbr>data artifacts</abbr> imported from external <abbr>DVC
+repositories</abbr>, and corresponding
+[DVC-files](/doc/user-guide/dvc-file-format).
 
 ## Synopsis
 

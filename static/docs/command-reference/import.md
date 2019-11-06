@@ -35,7 +35,7 @@ The `path` argument of this command is used to specify the location of the data
 to be downloaded within the source project. It should point to a data file or
 directory tracked by that project – specified in one of the
 [DVC-files](/doc/user-guide/dvc-file-format) of the repository at `url`. (You
-will not find these files directly in the external Git repository.) The source
+will not find data files directly in the external Git repository.) The source
 project should have a default [DVC remote](/doc/command-reference/remote)
 configured, containing them.)
 
@@ -51,15 +51,16 @@ DVC supports DVC-files that refer to data in an external DVC repository (hosted
 on a Git server) a.k.a _import stages_. In such a DVC-file, the `deps` section
 specifies the `repo` URL and data `path`, and the `outs` section contains the
 corresponding local path in the workspace. It records enough data from the
-external file or directory to enable DVC to efficiently check it to determine
-whether the local copy is out of date.
+imported data to enable DVC to efficiently check it to determine whether the
+local copy is out of date.
 
 To actually [track the data](https://dvc.org/doc/get-started/add-files),
 `git add` (and `git commit`) the import stage.
 
 Note that import stages are considered always "locked", meaning that if you run
-`dvc repro`, they won't be updated. Use `dvc update` on them to update the
-downloaded data artifact from the source DVC repository.
+`dvc repro`, they won't be updated. Use `dvc update` or
+[re-import](#example-fixed-revisions-re-importing) them to update the downloaded
+data artifact from the source project.
 
 ## Options
 
@@ -75,8 +76,7 @@ downloaded data artifact from the source DVC repository.
   import the data from. The tip of the repository's default branch is used by
   default when this option is not specified. Note that this adds a `rev` field
   in the import stage that fixes it to this revision. This can impact the
-  behavior of `dvc update`. (See
-  [re-importing](#example-fixed-revisions-re-importing) example below.)
+  behavior of `dvc update`. (See **re-importing** example below.)
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -87,8 +87,8 @@ downloaded data artifact from the source DVC repository.
 
 ## Examples
 
-A simple case for this command is to import a dataset from an external DVC
-repository, such as our
+A simple case for this command is to import a dataset from an external <abbr>DVC
+repository</abbr>, such as our
 [get started example repo](https://github.com/iterative/example-get-started).
 
 ```dvc
@@ -121,8 +121,8 @@ outs:
 ```
 
 Several of the values above are pulled from the original stage file
-`model.pkl.dvc` in the external <abbr>DVC repository</abbr>. `url` and
-`rev_lock` fields are used to specify the origin and version of the dependency.
+`model.pkl.dvc` in the external DVC repository. `url` and `rev_lock` fields are
+used to specify the origin and version of the dependency.
 
 ## Example: fixed revisions & re-importing
 
@@ -181,12 +181,12 @@ $ dvc import git@github.com:iterative/dataset-registry.git \
 ```
 
 `dvc import` provides a better way to incorporate data files tracked in external
-projects because it saves the connection between the current project and the
-source project. This means that enough information is recorded in an import
-stage (DVC-file) in order to [reproduce](/doc/command-reference/repro)
-downloading of this same data version in the future, where and when needed. This
-is achieved with the `repo` field, for example (matching the import command
-above):
+<abbr>DVC repositories</abbr> because it saves the connection between the
+current project and the source project. This means that enough information is
+recorded in an import stage (DVC-file) in order to
+[reproduce](/doc/command-reference/repro) downloading of this same data version
+in the future, where and when needed. This is achieved with the `repo` field,
+for example (matching the import command above):
 
 ```yaml
 md5: 96fd8e791b0ee4824fc1ceffd13b1b49
