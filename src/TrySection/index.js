@@ -1,5 +1,5 @@
 /*
- * React fn component `TrySection`
+ * <TrySection> component
  * FIXME: Similar to ../Subscribe
  * and to ../PromoSection
  */
@@ -36,10 +36,7 @@ TrySection.propTypes = {
   buttonText: PropTypes.string.isRequired
 }
 
-/**
- * Wrapper styled <section> component
- * FIXME: Same as in ../PromoSection/index.js
- */
+// FIXME: Same as in ../PromoSection/index.js
 const Wrapper = styled.section`
   position: relative;
   height: 278px;
@@ -49,18 +46,12 @@ const Wrapper = styled.section`
   justify-content: center;
 `
 
-/**
- * Container styled <div> component
- */
 const Container = styled.div`
   ${container};
   width: 100%;
 `
 
-/**
- * Glyph styled <img> component
- * FIXME: Similar to the one in ../Subscribe
- */
+// FIXME: Similar to the one in ../Subscribe
 const Glyph = styled.img`
   position: absolute;
   z-index: 0;
@@ -89,10 +80,7 @@ const Glyph = styled.img`
   `};
 `
 
-/**
- * Title styled <h3> component
- * FIXME: Similar to the one in ../PromoSection
- */
+// FIXME: Similar to the one in ../PromoSection
 const Title = styled.h3`
   font-family: BrandonGrotesqueMed;
   max-width: 600px;
@@ -104,9 +92,6 @@ const Title = styled.h3`
   margin: 0px auto;
 `
 
-/**
- * Buttons styled <div> component
- */
 const Buttons = styled.div`
   max-width: 386px;
   margin: 0px auto;
@@ -116,10 +101,7 @@ const Buttons = styled.div`
   justify-content: center;
 `
 
-/**
- * Button styled <button> component
- * FIXME: Similar to the one in ../PromoSection
- */
+// FIXME: Similar to the one in ../PromoSection
 const Button = styled.button`
   font-family: BrandonGrotesqueMed;
   cursor: pointer;

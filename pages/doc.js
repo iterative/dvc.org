@@ -1,7 +1,8 @@
 /* global docsearch:readonly */
 
 /*
- * Documentation "page" (dynamic section at /doc)
+ * Doc (documentation) page
+ * Dynamic section at /doc
  */
 
 import React, { Component } from 'react'
@@ -30,7 +31,7 @@ const ROOT_ELEMENT = 'bodybag'
 const SIDEBAR_MENU = 'sidebar-menu'
 
 /**
- * Documentation Component
+ * <Documentation> Component
  */
 export default class Documentation extends Component {
   constructor() {
@@ -239,9 +240,6 @@ export default class Documentation extends Component {
   }
 }
 
-/**
- * Container styled <div> component
- */
 const Container = styled.div`
   display: flex;
   flex-direction: row;
@@ -264,9 +262,6 @@ const Container = styled.div`
   }
 `
 
-/**
- * Backdrop styled <div> component
- */
 const Backdrop = styled.div`
   display: none;
 
@@ -293,9 +288,6 @@ const Backdrop = styled.div`
   `};
 `
 
-/**
- * Side styled <div> component
- */
 const Side = styled.div`
   width: 280px;
   background-color: #eef4f8;
@@ -324,9 +316,6 @@ const Side = styled.div`
   `};
 `
 
-/**
- * SearchArea styled <div> component
- */
 const SearchArea = styled.div`
   height: 60px;
   display: flex;
@@ -346,9 +335,6 @@ const SearchArea = styled.div`
   }
 `
 
-/**
- * SideToggle styled <div> component
- */
 const SideToggle = styled.div`
   display: none;
   position: fixed;

@@ -129,18 +129,12 @@ const HeadInjector = () => (
   </Head>
 )
 
-/**
- * SupportHero styled <div> component
- */
 const SupportHero = styled.div`
   padding-top: 90px;
   padding-bottom: 80px;
   overflow: hidden;
 `
 
-/**
- * Heading styled <h1> component
- */
 const Heading = styled.h1`
   font-family: BrandonGrotesqueMed;
   margin: 0px auto;
@@ -152,16 +146,10 @@ const Heading = styled.h1`
   color: #40364d;
 `
 
-/**
- * Container styled <div> component
- */
 const Container = styled.div`
   ${container};
 `
 
-/**
- * Features styled <div> component
- */
 const Features = styled.div`
   display: flex;
   flex-flow: row;
@@ -177,27 +165,18 @@ const Features = styled.div`
   `};
 `
 
-/**
- * Feature styled <div> component
- */
 const Feature = styled.div`
   flex: 1 0 300px;
   margin: 0 20px 60px;
   padding: 10px;
 `
 
-/**
- * FeatureHeading styled <div> component
- */
 const FeatureHeading = styled.div`
   display: flex;
   align-items: center;
   margin-bottom: 10px;
 `
 
-/**
- * Icon styled <div> component
- */
 const Icon = styled.div`
   height: 50px;
   width: 50px;
@@ -222,9 +201,6 @@ const Icon = styled.div`
   }
 `
 
-/**
- * Name styled <h3> component
- */
 const Name = styled.h3`
   font-family: BrandonGrotesqueMed;
   margin-top: 10px;
@@ -235,32 +211,20 @@ const Name = styled.h3`
   min-height: 28px;
 `
 
-/**
- * Description styled <div> component
- */
 const Description = styled.div`
   font-size: 20px;
   color: #5f6c72;
 `
 
-/**
- * FlexRow styled <div> component
- */
 const FlexRow = styled.div`
   display: flex;
   align-items: center;
 `
 
-/**
- * Link styled <a> component
- */
 const Link = styled.a`
   text-decoration: none;
 `
 
-/**
- * Button styled <button> component
- */
 const Button = styled.button`
   text-decoration: none;
   margin-top: 20px;
@@ -281,9 +245,6 @@ const Button = styled.button`
   }
 `
 
-/**
- * DiscrodWidget styled <img> component
- */
 const DiscrodWidget = styled.img`
   display: block;
   margin-top: 20px;

@@ -176,16 +176,10 @@ const HeadInjector = () => (
   </Head>
 )
 
-/**
- * Container styled <div> component
- */
 const Container = styled.div`
   ${container};
 `
 
-/**
- * Features styled <div> component
- */
 const Features = styled.div`
   display: flex;
   flex-flow: row;
@@ -199,18 +193,12 @@ const Features = styled.div`
   `};
 `
 
-/**
- * Feature styled <div> component
- */
 const Feature = styled.div`
   flex: 33.3%;
   flex-basis: 311px;
   margin-bottom: 63px;
 `
 
-/**
- * Icon styled <div> component
- */
 const Icon = styled.div`
   height: 48px;
 
@@ -220,9 +208,6 @@ const Icon = styled.div`
   }
 `
 
-/**
- * Name styled <h3> component
- */
 const Name = styled.h3`
   font-family: BrandonGrotesqueMed;
   margin-top: 10px;
@@ -235,9 +220,6 @@ const Name = styled.h3`
   min-height: 28px;
 `
 
-/**
- * Description styled <div> component
- */
 const Description = styled.div`
   max-width: 311px;
 

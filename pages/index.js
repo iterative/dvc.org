@@ -56,9 +56,6 @@ const HeadInjector = () => (
   </Head>
 )
 
-/**
- * LearnMoreSection styled <div> component
- */
 const LearnMoreSection = styled.div`
   z-index: 2;
   position: absolute;
