@@ -20,7 +20,8 @@ positional arguments:
 
 Provides an easy way to download datasets, intermediate results, ML models, or
 other files and directories (any <abbr>data artifact</abbr>) tracked in another
-DVC repository, by downloading them into the current working directory.
+<abbr>DVC repository</abbr>, by downloading them into the current working
+directory.
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.

@@ -34,8 +34,8 @@ The advantages of using a DVC **data registry** project are:
 - Storage Optimization: Track data
   [shared](/doc/use-cases/share-data-and-model-files) by multiple projects
   centralized in a single location (with the ability to create distributed
-  copies on other remotes). This simplifies data management and helps use
-  storage space efficiently.
+  copies on other remotes). This simplifies data management and optimizes space
+  requirements.
 - Lifecycle management: Manage your data like you do with code, leveraging Git
   (and GitHub) features such as version history, pull requests, reviews, or even
   continuous deployment of ML models.

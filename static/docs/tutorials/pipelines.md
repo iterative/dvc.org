@@ -71,7 +71,7 @@ utilizing the same set of commands that are described in earlier
 > project</abbr>. This will be determined by the interdependencies between
 > DVC-files, mentioned below.
 
-Initialize DVC repository (run it inside your Git repository):
+Initialize <abbr>DVC repository</abbr> (run it inside your Git repository):
 
 ```dvc
 $ dvc init

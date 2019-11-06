@@ -21,10 +21,10 @@ positional arguments:
 ## Description
 
 DVC provides an easy way to reuse datasets, intermediate results, ML models, or
-other files and directories tracked in another DVC repository into the
-workspace. The `dvc import` command downloads such a <abbr>data artifact</abbr>
-in a way that it is tracked with DVC, so it can be updated when the data source
-changes.
+other files and directories tracked in another <abbr>DVC repository</abbr> into
+the workspace. The `dvc import` command downloads such a <abbr>data
+artifact</abbr> in a way that it is tracked with DVC, so it can be updated when
+the data source changes.
 
 The `url` argument specifies the address of the Git repository containing the
 source <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
@@ -87,8 +87,8 @@ downloaded data artifact from the source DVC repository.
 
 ## Examples
 
-A simple case for this command is to import a dataset from an external DVC repo,
-such as our
+A simple case for this command is to import a dataset from an external DVC
+repository, such as our
 [get started example repo](https://github.com/iterative/example-get-started).
 
 ```dvc
@@ -121,8 +121,8 @@ outs:
 ```
 
 Several of the values above are pulled from the original stage file
-`model.pkl.dvc` in the external DVC repo. `url` and `rev_lock` fields are used
-to specify the origin and version of the dependency.
+`model.pkl.dvc` in the external <abbr>DVC repository</abbr>. `url` and
+`rev_lock` fields are used to specify the origin and version of the dependency.
 
 ## Example: fixed revisions & re-importing
 

@@ -1,6 +1,7 @@
 # install
 
-Install Git hooks into the DVC repository to automate certain common actions.
+Install Git hooks into the <abbr>DVC repository</abbr> to automate certain
+common actions.
 
 ## Synopsis
 
