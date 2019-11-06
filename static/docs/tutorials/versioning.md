@@ -26,8 +26,12 @@ model file.
 
 ## Preparation
 
-If DVC is not installed, please follow these [instructions](/doc/install) to do
-so.
+> We have tested our tutorials and examples with Python 3. We don't recommend
+> using earlier versions.
+
+You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
+Also, if DVC is not installed, please follow these [instructions](/doc/install)
+to do so.
 
 > If you're using Windows, please review
 > [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
@@ -73,12 +77,9 @@ first model. We'll capture everything with DVC, including the input dataset and
 model [metrics](/doc/command-reference/metrics).
 
 ```dvc
-$ mkdir data
-$ cd data
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/ver/data.zip
-...
-$ unzip data.zip
+$ unzip -q data.zip
 $ rm -f data.zip
 ```
 
@@ -134,13 +135,12 @@ before). This is achieved by creating a simple human-readable
 [DVC-file](/doc/user-guide/dvc-file-format) that serves as a pointer to the
 cache.
 
-Next, we train our first model with `python train.py`. Because of the small
-dataset, this training process should be small enough to run on most computers
-in a reasonable amount of time (a few minutes). This command
-<abbr>outputs</abbr> a bunch of files, among them `model.h5` and `metrics.json`,
-weights of the trained model, and [metrics](/doc/command-reference/metrics)
-history. The simplest way to capture the current version of the model is to use
-`dvc add` again:
+Next, we train our first model with `train.py`. Because of the small dataset,
+this training process should be small enough to run on most computers in a
+reasonable amount of time (a few minutes). This command <abbr>outputs</abbr> a
+bunch of files, among them `model.h5` and `metrics.csv`, weights of the trained
+model, and [metrics](/doc/command-reference/metrics) history. The simplest way
+to capture the current version of the model is to use `dvc add` again:
 
 ```dvc
 $ python train.py
@@ -153,7 +153,7 @@ $ dvc add model.h5
 Let's commit the current state:
 
 ```dvc
-$ git add .gitignore model.h5.dvc data.dvc metrics.json
+$ git add .gitignore model.h5.dvc data.dvc metrics.csv
 $ git commit -m "First model, trained with 1000 images"
 $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ```
@@ -191,8 +191,7 @@ Let's imagine that our image dataset doubles in size. The next command extracts
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/ver/new-labels.zip
-...
-$ unzip new-labels.zip
+$ unzip -q new-labels.zip
 $ rm -f new-labels.zip
 ```
 
@@ -226,7 +225,6 @@ We will now want to leverage these new labels and retrain the model:
 
 ```dvc
 $ dvc add data
-$ dvc remove model.h5.dvc
 $ python train.py
 $ dvc add model.h5
 ```
@@ -238,7 +236,7 @@ $ dvc add model.h5
 Let's commit the second version:
 
 ```dvc
-$ git add model.h5.dvc data.dvc metrics.json
+$ git add model.h5.dvc data.dvc metrics.csv
 $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
@@ -308,7 +306,7 @@ above (with cats and dogs images) is a good example.
 On the other hand, there are files that are the result of running some code. In
 our example, `train.py` produces binary files (e.g.
 `bottlneck_features_train.npy`), the model file `model.h5`, and the
-[metrics](/doc/command-reference/metrics) file `metrics.json`.
+[metrics](/doc/command-reference/metrics) file `metrics.csv`.
 
 When you have a script that takes some data as an input and produces other data
 <abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:
@@ -326,7 +324,7 @@ When you have a script that takes some data as an input and produces other data
 $ dvc remove -pf model.h5.dvc
 $ dvc run -f Dvcfile \
           -d train.py -d data \
-          -M metrics.json \
+          -M metrics.csv \
           -o model.h5 -o bottleneck_features_train.npy -o bottleneck_features_validation.npy \
           python train.py
 ```
@@ -376,7 +374,7 @@ hands-on experience with pipelines, and try to apply it here. Don't hesitate to
 join our [community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
-`metrics.json` metrics file with the `-M` option of `dvc run`. Marking this
+`metrics.csv` metrics file with the `-M` option of `dvc run`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See `dvc metrics`
 and [Compare Experiments](/doc/get-started/compare-experiments) to learn more

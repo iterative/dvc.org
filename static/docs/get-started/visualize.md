@@ -30,9 +30,9 @@ $ dvc pipeline show --ascii train.dvc
                *
                *
                *
-       .---------------.
-       | model.pkl.dvc |
-       `---------------'
+         +-----------+
+         | train.dvc |
+         +-----------+
 ```
 
 ## Commands

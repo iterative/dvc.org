@@ -22,7 +22,10 @@ export default function SubscribeForm() {
         required
       />
 
-      {/*real people should not fill this in and expect good things - do not remove this or risk form bot signups*/}
+      {/*
+        real people should not fill this in and expect good things - 
+        do not remove this or risk form bot signups
+      */}
       <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
         <input
           type="text"
