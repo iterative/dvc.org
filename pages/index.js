@@ -1,7 +1,3 @@
-/*
- * Home page
- */
-
 import React from 'react'
 import styled from 'styled-components'
 import Head from 'next/head'
@@ -16,10 +12,7 @@ import PromoSection from '../src/PromoSection'
 import UseCases from '../src/UseCases'
 import Subscribe from '../src/Subscribe'
 
-/**
- * <HomePage> fn component
- */
-const HomePage = () => (
+export const HomePage = () => (
   <Page stickHeader={true}>
     <HeadInjector />
     <Hero>
@@ -36,9 +29,6 @@ const HomePage = () => (
   </Page>
 )
 
-/**
- * <HeadInjector> fn component
- */
 const HeadInjector = () => (
   <Head>
     <link
@@ -63,5 +53,3 @@ const LearnMoreSection = styled.div`
   left: 50%;
   bottom: 16px;
 `
-
-export default HomePage

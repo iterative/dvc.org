@@ -1,7 +1,3 @@
-/*
- * Features page
- */
-
 import React from 'react'
 import styled from 'styled-components'
 
@@ -15,10 +11,7 @@ import Hero from '../src/Hero'
 import FeaturesHero from '../src/FeaturesHero'
 import TrySection from '../src/TrySection'
 
-/**
- * <FeaturesPage> fn component
- */
-const FeaturesPage = () => (
+export const FeaturesPage = () => (
   <Page stickHeader={true}>
     <HeadInjector />
     <Hero>
@@ -167,9 +160,6 @@ const FeaturesPage = () => (
   </Page>
 )
 
-/**
- * <HeadInjector> fn component
- */
 const HeadInjector = () => (
   <Head>
     <title>Features | Machine Learning Version Control System</title>
@@ -226,5 +216,3 @@ const Description = styled.div`
   font-size: 16px;
   color: #5f6c72;
 `
-
-export default FeaturesPage

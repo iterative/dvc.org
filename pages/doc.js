@@ -1,10 +1,5 @@
 /* global docsearch:readonly */
 
-/*
- * Doc (documentation) page
- * Dynamic section at /doc
- */
-
 import React, { Component } from 'react'
 // components
 import Page from '../src/Page'
@@ -30,9 +25,6 @@ import { media } from '../src/styles'
 const ROOT_ELEMENT = 'bodybag'
 const SIDEBAR_MENU = 'sidebar-menu'
 
-/**
- * <Documentation> Component
- */
 export default class Documentation extends Component {
   constructor() {
     super()

@@ -1,7 +1,3 @@
-/*
- * Support page
- */
-
 import React from 'react'
 import styled from 'styled-components'
 import { Mark } from '../src/styles'
@@ -16,10 +12,7 @@ import Hero from '../src/Hero'
 import TrySection from '../src/TrySection'
 import Popover from '../src/Popover/Popover'
 
-/**
- * <SupportPage> fn component
- */
-const SupportPage = () => (
+export const SupportPage = () => (
   <Page stickHeader>
     <HeadInjector />
     <Hero>
@@ -120,9 +113,6 @@ const SupportPage = () => (
   </Page>
 )
 
-/**
- * <HeadInjector> fn component
- */
 const HeadInjector = () => (
   <Head>
     <title>Support | Machine Learning Version Control System</title>
@@ -261,5 +251,3 @@ const DiscrodWidget = styled.img`
     opacity: 0.7;
   }
 `
-
-export default SupportPage
