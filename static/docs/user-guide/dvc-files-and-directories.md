@@ -55,8 +55,8 @@ example, if a data file `Posts.xml.zip` has checksum
 
 > **Note!** File checksums are calculated from file contents only. 2 or more
 > files with different names but the same contents can exist in the workspace
-> and be tracked by DVC, but only one copy can be stored in the cache! This
-> helps avoid data duplication in cache and remotes.
+> and be tracked by DVC, but only one copy is stored in the cache. This helps
+> avoid data duplication in cache and remotes.
 
 For the second case, let us consider a directory with 2 images.
 
@@ -96,7 +96,7 @@ $ tree .dvc/cache
     └── 0b40427ee0998e9802335d98f08cd98f
 ```
 
-The cache file with `.dir` extension is a special text file that records the
+The cache file with `.dir` extension is a special text file that contains the
 mapping of files in the `data/` directory (as a JSON array), along with their
 checksums. The other two cache files are the files inside `data/`. A typical
 `.dir` cache file looks like this:
