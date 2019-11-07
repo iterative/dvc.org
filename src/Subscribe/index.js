@@ -1,17 +1,9 @@
-/*
- * <Subscribe> component
- */
-
 import React from 'react'
 import styled from 'styled-components'
 import { media } from '../styles'
 
 import SubscribeForm from '../SubscribeForm'
 
-/**
- * <Subscribe> fn component
- * For home page
- */
 export default function Subscribe() {
   return (
     <Wrapper>

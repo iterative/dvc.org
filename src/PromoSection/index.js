@@ -1,32 +1,18 @@
-/*
- * <PromoSection> component
- */
-
 import React from 'react'
 import styled from 'styled-components'
 import { media } from '../styles'
 import { logEvent } from '../utils/ga'
 
-/**
- * Helper fn to go to /doc/get-started
- */
-const getStarted = () => {
+function goToDocGetStarted() {
   logEvent('promo', 'get-started')
   window.location = '/doc/get-started'
 }
 
-/**
- * Helper fn to go to /features
- */
-const features = () => {
+function goToFeatures() {
   logEvent('promo', 'features')
   window.location = '/features'
 }
 
-/**
- * <PromoSection> fn component
- * For home page
- */
 export default function PromoSection() {
   return (
     <Wrapper>
@@ -34,10 +20,10 @@ export default function PromoSection() {
         <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
         <Title>For data scientists, by data scientists</Title>
         <Buttons>
-          <Button first onClick={getStarted}>
+          <Button first onClick={goToDocGetStarted}>
             Get Started
           </Button>
-          <Button onClick={features}>Full Features</Button>
+          <Button onClick={goToFeatures}>Full Features</Button>
         </Buttons>
         <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
       </Container>

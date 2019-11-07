@@ -15,16 +15,10 @@ import { getParentsListFromPath } from './helper'
 
 const blankStyle = {}
 
-// We will cache height of each menu child items here to calculate
-// Element weight for animations
+/** Height of each menu child items (to calc Element weight for animations) */
 const heightMap = {}
 
-/**
- * Calculate element height with all open children.
- * @param {Object} params - Parameters needed to calculate height.
- * @param {Object} params.activePaths - ???.
- * @param {string} params.path - ???.
- */
+/** Calculate element height with all open children. */
 function calculateHeight({ activePaths, path }) {
   let height = 0
   const reversePaths = [...activePaths].reverse()
@@ -40,9 +34,6 @@ function calculateHeight({ activePaths, path }) {
   return height
 }
 
-/**
- * <SidebarMenuItem> (Pure) component for <SidebarMenu>
- */
 class SidebarMenuItem extends React.PureComponent {
   componentDidMount() {
     heightMap[this.props.path] = this.props.children
@@ -100,9 +91,6 @@ SidebarMenuItem.propTypes = {
   onNavigate: PropTypes.func.isRequired
 }
 
-/**
- * <SidebarMenu> Component
- */
 export default class SidebarMenu extends Component {
   state = {
     isScrollHidden: false
