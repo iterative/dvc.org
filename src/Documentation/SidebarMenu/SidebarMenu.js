@@ -13,10 +13,10 @@ import { media, OnlyDesktop } from '../../styles'
 // sidebar helpers
 import { getParentsListFromPath } from './helper'
 
-const blankStyle = {}
-
 /** Height of each menu child items (to calc Element weight for animations) */
 const heightMap = {}
+
+const blankStyle = {}
 
 /** Calculate element height with all open children. */
 function calculateHeight({ activePaths, path }) {
