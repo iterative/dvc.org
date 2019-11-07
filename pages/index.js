@@ -12,22 +12,24 @@ import PromoSection from '../src/PromoSection'
 import UseCases from '../src/UseCases'
 import Subscribe from '../src/Subscribe'
 
-export const HomePage = () => (
-  <Page stickHeader={true}>
-    <HeadInjector />
-    <Hero>
-      <LandingHero />
-      <LearnMoreSection>
-        <LearnMore />
-      </LearnMoreSection>
-      <span name="nextSlide" style={{ marginTop: `-58px` }} />
-    </Hero>
-    <Diagram />
-    <PromoSection />
-    <UseCases />
-    <Subscribe />
-  </Page>
-)
+export default function HomePage() {
+  return (
+    <Page stickHeader={true}>
+      <HeadInjector />
+      <Hero>
+        <LandingHero />
+        <LearnMoreSection>
+          <LearnMore />
+        </LearnMoreSection>
+        <span name="nextSlide" style={{ marginTop: `-58px` }} />
+      </Hero>
+      <Diagram />
+      <PromoSection />
+      <UseCases />
+      <Subscribe />
+    </Page>
+  )
+}
 
 const HeadInjector = () => (
   <Head>
