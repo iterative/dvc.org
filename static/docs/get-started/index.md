@@ -20,3 +20,7 @@ us a ⭐ if you like the project!
 Separate to this section, the longer [Tutorial](/doc/tutorials/deep) also
 introduces DVC step-by-step, while additionally explaining in great detail the
 motivation and what's happening internally.
+
+You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
+Also, if DVC is not installed, please follow these [instructions](/doc/install)
+to do so.
