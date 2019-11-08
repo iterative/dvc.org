@@ -48,10 +48,10 @@ $ git add code/
 $ git commit -m "Download and add code to new Git repo"
 ```
 
-> `dvc get` can download <abbr>data artifacts</abbr> from the
-> [remote storage](/doc/command-reference/remote) of any <abbr>DVC
-> project</abbr> hosted on a Git repository (similar to `wget` but for DVC
-> repositories). In this case we use
+> `dvc get` can use any <abbr>DVC project</abbr> hosted on a Git repository to
+> find the appropriate [remote storage](/doc/command-reference/remote) and
+> download <abbr>data artifacts</abbr> from it. (It works like `wget`, but for
+> DVC repositories.) In this case we use
 > [dataset-registry](https://github.com/iterative/dataset-registry)) as the
 > source project. (Refer to [Data Registry](/doc/use-cases/data-registry) for
 > more info about this setup.)

@@ -1,5 +1,11 @@
 # Data Registry
 
+## Introduction
+
+Sell it, advantages
+
+## Workflow (How)
+
 We developed the `dvc get`, `dvc import`, and `dvc update` commands with the aim
 to enable reusability of any <abbr>data artifacts</abbr> (raw data, intermediate
 results, models, etc) between different projects. For example, project A may use
@@ -19,7 +25,7 @@ system.
 
 The advantages of using a DVC **data registry** project are:
 
-- Data as code: Improve lifecycle management with
+- Data as code: Improve _lifecycle management_ with
   [versioning](/doc/use-cases/data-and-model-files-versioning) of simple
   directory structures (without ad-hoc conventions); Any version of the data or
   results tracked by a DVC registry can be used in other projects at any time.

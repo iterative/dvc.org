@@ -28,8 +28,8 @@ Learn basic concepts and features of DVC with interactive lessons:
 
 6. [Importing Data](https://katacoda.com/dvc/courses/basics/importing) <br/>
    Download and track data from the
-   [remote storage](/doc/command-reference/remote) of another DVC project that
-   is hosted on a Git repository.
+   [remote storage](/doc/command-reference/remote) of any DVC project that is
+   hosted on a Git repository.
 
 ## Simple ML Scenarios
 

@@ -1,7 +1,8 @@
 # get
 
-Download or copy file or directory from any <abbr>DVC project</abbr> in a Git
-repository (e.g. hosted on GitHub) into the current working directory.
+Download or copy file or directory from the
+[remote storage](/doc/command-reference/remote) of any <abbr>DVC project</abbr>
+in a Git repository (e.g. hosted on GitHub) into the current working directory.
 
 > Unlike `dvc import`, this command does not track the downloaded data files
 > (does not create a DVC-file).
@@ -21,7 +22,7 @@ positional arguments:
 Provides an easy way to download datasets, intermediate results, ML models, or
 other files and directories (any <abbr>data artifact</abbr>) tracked in another
 <abbr>DVC repository</abbr>, by downloading them into the current working
-directory.
+directory. (It works like `wget`, but for DVC repositories.)
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
