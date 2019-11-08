@@ -1,11 +1,5 @@
 # Data Registry
 
-## Introduction
-
-Sell it, advantages
-
-## Workflow (How)
-
 We developed the `dvc get`, `dvc import`, and `dvc update` commands with the aim
 to enable reusability of any <abbr>data artifacts</abbr> (raw data, intermediate
 results, models, etc) between different projects. For example, project A may use
