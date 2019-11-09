@@ -1,21 +1,28 @@
 # Data Registry
 
-We developed the `dvc get`, `dvc import`, and `dvc update` commands with the aim
-to enable reusability of any <abbr>data artifacts</abbr> (raw data, intermediate
-results, models, etc) between different projects. For example, project A may use
-a data file to begin its data [pipeline](/doc/command-reference/pipeline), but
-project B also requires this same file; Instead of
-[adding it](/doc/command-reference/add#example-single-file) it to both projects,
-B can simply import it from A.
+One of the main uses of <abbr>DVC repositories</abbr> is the
+[versioning of data and model files](/doc/use-cases/data-and-model-files-versioning).
+This is provided by commands such as `dvc add` and `dvc run`, that allow
+tracking of datasets and any other <abbr>data artifacts</abbr>.
 
-Taking this idea to a useful extreme, we could create a <abbr>project</abbr>
-that is exclusively dedicated to
-[tracking and versioning](/doc/use-cases/data-and-model-files-versioning)
-datasets (or any kind of large files) – by mainly using `dvc add` to build it.
-Other projects can then share these artifacts by downloading (`dvc get`) or
-importing (`dvc import`) them for use in different data processes – and these
-don't even have to be _DVC projects_, as `dvc get` works anywhere in your
-system.
+With the aim to enable reusability of these versioned artifacts between
+different projects (similar to package management systems, but for data), DVC
+also includes the `dvc get`, `dvc import`, and `dvc update` commands. For
+example, project A may use a data file to begin its data
+[pipeline](/doc/command-reference/pipeline), but project B also requires this
+same file; Instead of
+[adding it](/doc/command-reference/add#example-single-file) it to both projects,
+B can simply import it from A. Furthermore, the version of the data file
+imported to B can be an older iteration than what's currently used in A.
+
+Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
+tracking and versioning datasets (or any kind of large files). This way we would
+have a repository that has all the metadata and change history for the project's
+data. We can see who updated what, and when; use pull requests to update data
+the same way you do with code; and we don't need ad-hoc conventions to store
+different data versions. Other projects can share the data in the registry by
+downloading (`dvc get`) or importing (`dvc import`) them for use in different
+data processes.
 
 The advantages of using a DVC **data registry** project are:
 
@@ -114,9 +121,9 @@ See the `dvc import` command reference for more details on the `--rev`
 
 Importing keeps the connection between the local project and the source data
 registry where we are downloading the dataset from. This is achieved by creating
-a special [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_)
-that uses the `repo` field. (This file can be used for versioning the import
-with Git.)
+a particular kind of [DVC-file](/doc/user-guide/dvc-file-format) that uses the
+`repo` field (a.k.a. _import stage_). (This file can be used for versioning the
+import with Git.)
 
 > For a sample DVC-file resulting from `dvc import`, refer to
 > [this example](/doc/command-reference/import#example-data-registry).
