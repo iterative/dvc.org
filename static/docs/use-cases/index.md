@@ -9,13 +9,16 @@ range from basic to more advanced:
 - [Data Versioning](/doc/use-cases/versioning-data-and-model-files) describes
   our most primary use: tracking and versioning large files with Git + DVC.
 - [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
-  goes over basic collaboration possibilities enabled by DVC.
-- [Shared Development Server](/doc/use-cases/shared-development-server)
-  describes a single development machine setup for teams that prefer so.
+  goes over the basic collaboration possibilities enabled by DVC.
+- [Shared Development Server](/doc/use-cases/shared-development-server) provides
+  instructions to setup a single development machine for teams that prefer so.
+- [Data Registry](/doc/use-cases/data-registry) explains how to use a <abbr>DVC
+  repository<abbr> as a shared hub for reusing datasets or models among several
+  projects.
 
-This list of use cases is _not_ exhaustive. We keep reviewing our docs and will
-include interesting scenarios that surface in our community. Please,
-[contact us](/support) if you need help or have suggestions!
+> This list of use cases is **not** exhaustive. We keep reviewing our docs and
+> will include interesting scenarios that surface in the community. Please,
+> [contact us](/support) if you need help or have suggestions!
 
 Use cases are not written to be run end-to-end. For more general, hands-on
 experience with DVC, we recommend following the [Get Started](/doc/get-started),

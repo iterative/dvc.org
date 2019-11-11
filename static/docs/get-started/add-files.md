@@ -10,11 +10,13 @@ $ dvc get https://github.com/iterative/dataset-registry \
         get-started/data.xml -o data/data.xml
 ```
 
-> `dvc get` can download <abbr>data artifacts</abbr> from any <abbr>DVC
-> project</abbr> hosted on a Git repository into the current working directory
-> (similar to `wget` but for DVC repositories). In this case we use our own
-> [iterative/dataset-registry](https://github.com/iterative/dataset-registry))
-> project as the external data source.
+> `dvc get` can use any <abbr>DVC project</abbr> hosted on a Git repository to
+> find the appropriate [remote storage](/doc/command-reference/remote) and
+> download <abbr>data artifacts</abbr> from it. (It works like `wget`, but for
+> DVC repositories.) In this case we use
+> [dataset-registry](https://github.com/iterative/dataset-registry)) as the
+> source project. (Refer to [Data Registry](/doc/use-cases/data-registry) for
+> more info about this setup.)
 
 To take a file (or a directory) under DVC control just run `dvc add` on it. For
 example:

@@ -44,7 +44,7 @@ is a local cache and you cannot `git push` it.
 
 ## Examples
 
-Create a new DVC repository (requires Git):
+Create a new <abbr>DVC repository</abbr> (requires Git):
 
 ```dvc
 $ mkdir example && cd example

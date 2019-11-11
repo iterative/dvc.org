@@ -83,11 +83,13 @@ $ unzip -q data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` can download <abbr>data artifacts</abbr> from any DVC project hosted
-> on a Git repository into the current working directory (similar to `wget` but
-> for DVC repositories). In this case we use our own
-> [iterative/dataset-registry](https://github.com/iterative/dataset-registry)
-> project as the external data source.
+> `dvc get` can use any <abbr>DVC project</abbr> hosted on a Git repository to
+> find the appropriate [remote storage](/doc/command-reference/remote) and
+> download <abbr>data artifacts</abbr> from it. (It works like `wget`, but for
+> DVC repositories.) In this case we use
+> [dataset-registry](https://github.com/iterative/dataset-registry)) as the
+> source project. (Refer to [Data Registry](/doc/use-cases/data-registry) for
+> more info about this setup.)
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43
@@ -161,12 +163,11 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ### Expand to learn more about DVC internals
 
 As we mentioned briefly, DVC does not commit the `data/` directory and
-`model.h5` file with Git. Instead, `dvc add` pushes them into the cache and adds
-them to `.gitignore`. We then `git commit` DVC-files that serve as pointers to
-the cache (usually in the `.dvc/cache` directory in the repository), where the
-actual data resides.
+`model.h5` file with Git. Instead, `dvc add` stores them in the cache (usually
+in `.dvc/cache`) and adds them to `.gitignore`. We then `git commit` DVC-files
+that contain pointers to the cached data.
 
-In this case we created `data.dvc` and `model.h5.dvc` files. Refer to the
+In this case we created `data.dvc` and `model.h5.dvc`. Refer to
 [DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
 files work.
 
@@ -194,7 +195,7 @@ $ unzip -q new-labels.zip
 $ rm -f new-labels.zip
 ```
 
-For simplicity's sake, we keep the validation dataset the same. Now our dataset
+For simplicity's sake, we keep the validation subset the same. Now our dataset
 has 2000 images for training and 800 images for validation, with a total size of
 67 MB:
 
@@ -227,6 +228,10 @@ $ dvc add data
 $ python train.py
 $ dvc add model.h5
 ```
+
+> `dvc remove` is necessary here because `model.h5` was already added with
+> `dvc add` earlier, but we want to do so again. Later we'll see how `dvc run`
+> eliminates this extra step.
 
 Let's commit the second version:
 
@@ -295,7 +300,7 @@ place.
 ## Automating capturing
 
 `dvc add` makes sense when you need to keep track of different versions of
-datasets or model files that come from external sources. The `data/` directory
+datasets or model files that come from source projects. The `data/` directory
 above (with cats and dogs images) is a good example.
 
 On the other hand, there are files that are the result of running some code. In
@@ -324,11 +329,12 @@ $ dvc run -f Dvcfile \
           python train.py
 ```
 
-Similar to `dvc add`, `dvc run` creates a DVC-file (forced to have the file name
-`Dvcfile` with the `-f` option). It puts all outputs (`-o`) under DVC control
-the same way that `dvc add` does. Unlike `dvc add`, `dvc run` also tracks
-dependencies (`-d`) and the command (`python train.py`) that was run to produce
-the result. We call such a DVC-file a "stage file".
+Similar to `dvc add`, `dvc run` creates a
+[DVC-file](/doc/user-guide/dvc-file-format) named `Dvcfile` (specified using the
+`-f` option). It puts all outputs (`-o`) under DVC control the same way as
+`dvc add` does. Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and
+the command (`python train.py`) that was run to produce the result. We call such
+a DVC-file a "stage file".
 
 > At this point you could run `git add .` and `git commit` to save the `Dvcfile`
 > stage file and its changed output files to the repository.

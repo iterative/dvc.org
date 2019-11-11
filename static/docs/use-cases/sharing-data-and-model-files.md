@@ -1,14 +1,14 @@
 # Sharing Data and Model Files
 
 Like Git, DVC allows for a distributed environment and collaboration. We make it
-easy to consistently get all your data files and directories, along with
-matching source code to any machine. All you need to do is to setup
+easy to consistently get all your data files and directories into any machine,
+along with matching source code. All you need to do is to setup
 [remote storage](/doc/command-reference/remote) for your <abbr>DVC
-project</abbr> to store data files online, where others can reach them.
-Currently DVC supports Amazon S3, Google Cloud Storage, Microsoft Azure Blob
-Storage, SSH, HDFS, and other remote locations, and the list is constantly
-growing. (For a complete list of supported remote types and their configuration,
-take a look at the examples in `dvc remote add`.)
+project</abbr>, and push the data there, so others can reach it. Currently DVC
+supports Amazon S3, Google Cloud Storage, Microsoft Azure Blob Storage, SSH,
+HDFS, and other remote locations, and the list is constantly growing. (For a
+complete list and configuration instructions, take a look at the examples in
+`dvc remote add`.)
 
 ![](/static/img/model-sharing-digram.png)
 

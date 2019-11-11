@@ -17,9 +17,9 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 be removed as well, unless it's set to an external location with
 `dvc cache dir`. (By default a local cache is located in the `.dvc/cache`
 directory.) If you were using
-[symlinks for linking data](/doc/user-guide/large-dataset-optimization) from the
+[symlinks for linking](/doc/user-guide/large-dataset-optimization) data from the
 cache, DVC will replace them with copies, so that your data is intact after the
-DVC repository destruction.
+project's destruction.
 
 ## Options
 

@@ -151,9 +151,9 @@ if the file has changed and we need to download it again.
 
 ## Example: Using import
 
-`dvc import` can download a <abbr>data artifact</abbr> from an external DVC
-repository. It also creates an external dependency in its <abbr>import
-stage</abbr> (DVC-file).
+`dvc import` can download a <abbr>data artifact</abbr> from an external
+<abbr>DVC repository</abbr>repository. It also creates an external dependency in
+its <abbr>import stage</abbr> (DVC-file).
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl
@@ -184,7 +184,7 @@ outs:
     persist: false
 ```
 
-For external sources that are DVC repositories, `url` and `rev_lock` fields are
-used to specify the origin and version of the dependency.
+For external sources that are <abbr>DVC repositories</abbr>, `url` and
+`rev_lock` fields are used to specify the origin and version of the dependency.
 
 </details>

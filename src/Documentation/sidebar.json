@@ -96,7 +96,8 @@
         "label": "Sharing Data & Model Files",
         "slug": "sharing-data-and-model-files"
       },
-      "shared-development-server"
+      "shared-development-server",
+      "data-registry"
     ]
   },
   {

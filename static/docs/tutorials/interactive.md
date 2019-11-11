@@ -27,8 +27,9 @@ Learn basic concepts and features of DVC with interactive lessons:
    pipeline end-to-end.
 
 6. [Importing Data](https://katacoda.com/dvc/courses/basics/importing) <br/>
-   Download and track data from another DVC project that is hosted in a Git
-   repository.
+   Download and track data from the
+   [remote storage](/doc/command-reference/remote) of any DVC project that is
+   hosted on a Git repository.
 
 ## Simple ML Scenarios
 
