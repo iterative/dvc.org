@@ -50,7 +50,7 @@ The execution of `dvc checkout` does:
 Note that this command by default tries NOT to copy files between the cache and
 the workspace, using reflinks instead when supported by the file system. (Refer
 to
-[File link types](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).)
+[File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).)
 The next linking strategy default value is `copy` though, so unless other file
 link types are manually configured in `cache.type` (using `dvc config`), files
 will be copied. Keep in mind that having file copies doesn't present much of a

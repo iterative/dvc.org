@@ -134,7 +134,7 @@ $ dvc remote add myremote s3://bucket/path
 ```
 
 By default DVC expects your AWS CLI is already
-[configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html).
+[configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, use the options described in `dvc remote modify`.
 
@@ -162,7 +162,7 @@ So, make sure you have the following permissions enabled:
 ### Click for S3 API compatible storage example
 
 To communicate with a remote object storage that supports an S3 compatible API
-(e.g. [Minio](https://minio.io/),
+(e.g. [Minio](https://min.io/),
 [DigitalOcean Spaces](https://www.digitalocean.com/products/spaces/),
 [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.) you
 must explicitly set the `endpointurl` in the configuration:

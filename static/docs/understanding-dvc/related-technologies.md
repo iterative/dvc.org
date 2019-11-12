@@ -125,7 +125,7 @@ http://studio.ml/
   could be configured to make workflows simpler.
 
 - DVC attempts to use reflinks\* and has other
-  [file linking options](/docs/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).
+  [file linking options](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).
   This way the `dvc checkout` command does not actually copy data files from
   <abbr>cache</abbr> to the <abbr>workspace</abbr>, as copying files is a heavy
   operation for large files (30 GB+).
