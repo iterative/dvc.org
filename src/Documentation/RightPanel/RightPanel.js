@@ -140,7 +140,7 @@ export default class RightPanel extends React.PureComponent {
           <span role="img" aria-label="bug">
             🐛
           </span>{' '}
-          Found an issue? Let us know or fix it:
+          Found an issue? Let us know! Or fix it:
         </Description>
 
         <GithubButton href={githubLink} target="_blank">

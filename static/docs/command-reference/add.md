@@ -165,9 +165,7 @@ $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
 ```
 
 Note that tracking compressed files (e.g. ZIP or TAR archives) is not
-recommended, as `dvc add` supports tracking directories. (Details below.) For
-more context, refer to
-[Data Registry](/doc/use-cases/data-registry#problem-1-compressed-data-files)
+recommended, as `dvc add` supports tracking directories. (Details below.)
 
 ## Example: Directory
 
@@ -176,14 +174,14 @@ pictures. You may then have hundreds or thousands of pictures of these animals
 in a directory, and this is your training dataset:
 
 ```dvc
-$ tree pics
+$ tree pics --filelimit 3
 pics
 ├── train
-│   ├── cats        <-- A lot of images of cats
-│   └── dogs        <-- A lot of images of dogs
+│   ├── cats [many image files]
+│   └── dogs [many image files]
 └── validation
-    ├── cats        <-- More images of cats
-    └── dogs        <-- More images of dogs
+    ├── cats [more image files]
+    └── dogs [more image files]
 ```
 
 Taking a directory under DVC control as simple as with a single file:

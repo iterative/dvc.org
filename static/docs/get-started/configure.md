@@ -31,8 +31,8 @@ $ git commit .dvc/config -m "Configure local remote"
 > to use DVC. For most [use cases](/doc/use-cases), other "more remote" types of
 > remotes will be required.
 
-Adding a remote should be specified by both its type prefix (protocol) and its
-path. DVC currently supports seven types of remotes:
+Adding a remote should be specified by both its type (protocol) and its path.
+DVC currently supports seven types of remotes:
 
 - `local`: Local Directory
 - `s3`: Amazon Simple Storage Service

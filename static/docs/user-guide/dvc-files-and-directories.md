@@ -14,9 +14,9 @@ operation:
   hand or with the command `dvc config --local`.
 
 - `.dvc/cache`: The [cache directory](#structure-of-cache-directory) will store
-  your data. The data files and directories in DVC repositories will only
-  contain links to the data files in the cache. (Refer to
-  [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
+  your data. The data files and directories in <abbr>DVC repositories</abbr>
+  will only contain links to the data files in the cache. (Refer to
+  [Large Dataset Optimization](/docs/user-guide/large-dataset-optimization). See
   `dvc config cache` for related configuration options.
 
   > Note that DVC includes the cache directory in `.gitignore` during
@@ -43,19 +43,20 @@ operation:
 
 ## Structure of cache directory
 
-There are two ways in which the data is stored in <abbr>cache</abbr>. It depends
-on whether the data in question is a single file (eg. `data.csv`) or a directory
-of files.
+There are two ways in which the data is stored in <abbr>cache</abbr>: As a
+single file (eg. `data.csv`), or a directory of files.
 
 For the first case, we calculate the file's checksum, a 32 characters long
 string (usually MD5). The first two characters are used to name the directory
-inside `.dvc/cache` and the rest become the file name of the cached file. For
+inside `.dvc/cache`, and the rest become the file name of the cached file. For
 example, if a data file `Posts.xml.zip` has checksum
 `ec1d2935f811b77cc49b031b999cbf17`, its cache entry will be
-`.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17` locally. If pushed to
-[remote storage](/doc/command-reference/remote), its location will be
-`<prefix>/ec/1d2935f811b77cc49b031b999cbf17`, where prefix is the name of the
-DVC remote.
+`.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17` locally.
+
+> **Note!** File checksums are calculated from file contents only. 2 or more
+> files with different names but the same contents can exist in the workspace
+> and be tracked by DVC, but only one copy is stored in the cache. This helps
+> avoid data duplication in cache and remotes.
 
 For the second case, let us consider a directory with 2 images.
 
@@ -95,7 +96,7 @@ $ tree .dvc/cache
     └── 0b40427ee0998e9802335d98f08cd98f
 ```
 
-The cache file with `.dir` extension is a special text file that stores the
+The cache file with `.dir` extension is a special text file that contains the
 mapping of files in the `data/` directory (as a JSON array), along with their
 checksums. The other two cache files are the files inside `data/`. A typical
 `.dir` cache file looks like this:

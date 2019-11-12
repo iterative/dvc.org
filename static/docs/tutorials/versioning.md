@@ -83,11 +83,13 @@ $ unzip -q data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` can download <abbr>data artifacts</abbr> from any DVC project hosted
-> on a Git repository into the current working directory (similar to `wget` but
-> for DVC repositories). In this case we use our own
-> [iterative/dataset-registry](https://github.com/iterative/dataset-registry)
-> project as the external data source.
+> `dvc get` can use any <abbr>DVC project</abbr> hosted on a Git repository to
+> find the appropriate [remote storage](/doc/command-reference/remote) and
+> download <abbr>data artifacts</abbr> from it. (It works like `wget`, but for
+> DVC repositories.) In this case we use
+> [dataset-registry](https://github.com/iterative/dataset-registry)) as the
+> source project. (Refer to [Data Registry](/doc/use-cases/data-registry) for
+> more info about this setup.)
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43
@@ -136,7 +138,7 @@ cache.
 Next, we train our first model with `train.py`. Because of the small dataset,
 this training process should be small enough to run on most computers in a
 reasonable amount of time (a few minutes). This command <abbr>outputs</abbr> a
-bunch of files, among them `model.h5` and `metrics.json`, weights of the trained
+bunch of files, among them `model.h5` and `metrics.csv`, weights of the trained
 model, and [metrics](/doc/command-reference/metrics) history. The simplest way
 to capture the current version of the model is to use `dvc add` again:
 
@@ -151,7 +153,7 @@ $ dvc add model.h5
 Let's commit the current state:
 
 ```dvc
-$ git add .gitignore model.h5.dvc data.dvc metrics.json
+$ git add .gitignore model.h5.dvc data.dvc metrics.csv
 $ git commit -m "First model, trained with 1000 images"
 $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ```
@@ -161,12 +163,11 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ### Expand to learn more about DVC internals
 
 As we mentioned briefly, DVC does not commit the `data/` directory and
-`model.h5` file with Git. Instead, `dvc add` pushes them into the cache and adds
-them to `.gitignore`. We then `git commit` DVC-files that serve as pointers to
-the cache (usually in the `.dvc/cache` directory in the repository), where the
-actual data resides.
+`model.h5` file with Git. Instead, `dvc add` stores them in the cache (usually
+in `.dvc/cache`) and adds them to `.gitignore`. We then `git commit` DVC-files
+that contain pointers to the cached data.
 
-In this case we created `data.dvc` and `model.h5.dvc` files. Refer to the
+In this case we created `data.dvc` and `model.h5.dvc`. Refer to
 [DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
 files work.
 
@@ -194,7 +195,7 @@ $ unzip -q new-labels.zip
 $ rm -f new-labels.zip
 ```
 
-For simplicity's sake, we keep the validation dataset the same. Now our dataset
+For simplicity's sake, we keep the validation subset the same. Now our dataset
 has 2000 images for training and 800 images for validation, with a total size of
 67 MB:
 
@@ -228,10 +229,14 @@ $ python train.py
 $ dvc add model.h5
 ```
 
+> `dvc remove` is necessary here because `model.h5` was already added with
+> `dvc add` earlier, but we want to do so again. Later we'll see how `dvc run`
+> eliminates this extra step.
+
 Let's commit the second version:
 
 ```dvc
-$ git add model.h5.dvc data.dvc metrics.json
+$ git add model.h5.dvc data.dvc metrics.csv
 $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
@@ -295,13 +300,13 @@ place.
 ## Automating capturing
 
 `dvc add` makes sense when you need to keep track of different versions of
-datasets or model files that come from external sources. The `data/` directory
+datasets or model files that come from source projects. The `data/` directory
 above (with cats and dogs images) is a good example.
 
 On the other hand, there are files that are the result of running some code. In
 our example, `train.py` produces binary files (e.g.
 `bottlneck_features_train.npy`), the model file `model.h5`, and the
-[metrics](/doc/command-reference/metrics) file `metrics.json`.
+[metrics](/doc/command-reference/metrics) file `metrics.csv`.
 
 When you have a script that takes some data as an input and produces other data
 <abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:
@@ -319,16 +324,17 @@ When you have a script that takes some data as an input and produces other data
 $ dvc remove -pf model.h5.dvc
 $ dvc run -f Dvcfile \
           -d train.py -d data \
-          -M metrics.json \
+          -M metrics.csv \
           -o model.h5 -o bottleneck_features_train.npy -o bottleneck_features_validation.npy \
           python train.py
 ```
 
-Similar to `dvc add`, `dvc run` creates a DVC-file (forced to have the file name
-`Dvcfile` with the `-f` option). It puts all outputs (`-o`) under DVC control
-the same way that `dvc add` does. Unlike `dvc add`, `dvc run` also tracks
-dependencies (`-d`) and the command (`python train.py`) that was run to produce
-the result. We call such a DVC-file a "stage file".
+Similar to `dvc add`, `dvc run` creates a
+[DVC-file](/doc/user-guide/dvc-file-format) named `Dvcfile` (specified using the
+`-f` option). It puts all outputs (`-o`) under DVC control the same way as
+`dvc add` does. Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and
+the command (`python train.py`) that was run to produce the result. We call such
+a DVC-file a "stage file".
 
 > At this point you could run `git add .` and `git commit` to save the `Dvcfile`
 > stage file and its changed output files to the repository.
@@ -368,7 +374,7 @@ hands-on experience with pipelines, and try to apply it here. Don't hesitate to
 join our [community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
-`metrics.json` metrics file with the `-M` option of `dvc run`. Marking this
+`metrics.csv` metrics file with the `-M` option of `dvc run`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See `dvc metrics`
 and [Compare Experiments](/doc/get-started/compare-experiments) to learn more

@@ -48,11 +48,13 @@ $ git add code/
 $ git commit -m "Download and add code to new Git repo"
 ```
 
-> `dvc get` can download data artifacts from any DVC project hosted on a Git
-> repository into the current working directory (similar to `wget` but for DVC
-> repositories). In this case we use our own
-> [iterative/dataset-registry](https://github.com/iterative/dataset-registry))
-> project as the external data source.
+> `dvc get` can use any <abbr>DVC project</abbr> hosted on a Git repository to
+> find the appropriate [remote storage](/doc/command-reference/remote) and
+> download <abbr>data artifacts</abbr> from it. (It works like `wget`, but for
+> DVC repositories.) In this case we use
+> [dataset-registry](https://github.com/iterative/dataset-registry)) as the
+> source project. (Refer to [Data Registry](/doc/use-cases/data-registry) for
+> more info about this setup.)
 
 Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a
@@ -73,7 +75,7 @@ utilizing the same set of commands that are described in earlier
 > This will be determined by the interdependencies between DVC-files, mentioned
 > below.
 
-Initialize DVC repository (run it inside your Git repository):
+Initialize <abbr>DVC repository</abbr> (run it inside your Git repository):
 
 ```dvc
 $ dvc init

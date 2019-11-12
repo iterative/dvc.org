@@ -36,7 +36,7 @@ desired for the downloaded data. If an existing directory is specified, then the
 output will be placed inside of it.
 
 > See `dvc import` to download and tack data or model files or directories from
-> other DVC repositories (e.g. GitHub URLs).
+> other <abbr>DVC repositories</abbr> (e.g. GitHub URLs).
 
 DVC supports [DVC-files](/doc/user-guide/dvc-file-format) that refer to data in
 external locations, see

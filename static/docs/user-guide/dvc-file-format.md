@@ -3,9 +3,9 @@
 When you add a file (with `dvc add`) or a command (with `dvc run`) to a
 [pipeline](/doc/command-reference/pipeline), DVC creates a special text metafile
 with the `.dvc` file extension (e.g. `process.dvc`), or with the default name
-`Dvcfile`. DVC-files a.k.a. **stage files** contain all the needed information
-to track your data and reproduce pipeline stages. The file itself contains a
-simple YAML format that could be easily written or altered manually.
+`Dvcfile`. These **DVC-files** (a.k.a. stage files) contain all the needed
+information to track your data and reproduce pipeline stages. The file itself
+contains a simple YAML format that could be easily written or altered manually.
 
 See the [Syntax Highlighting](/doc/install/plugins) to learn how to enable the
 highlighting for your editor.
@@ -62,12 +62,12 @@ A dependency entry consists of a pair of fields:
   [stages](/doc/command-reference/run))
 - `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
-- `repo`: This entry is only for DVC repository external dependencies created
-  with `dvc import`, and in itself contains the following fields:
+- `repo`: This entry is only for external dependencies created with
+  `dvc import`, and in itself contains the following fields:
 
   - `url`: URL of Git repository with source DVC project
-  - `rev_lock`: Revision or version (Git commit hash) of the DVC repo at the
-    time of importing the dependency
+  - `rev_lock`: Revision or version (Git commit hash) of the external <abbr>DVC
+    repository</abbr> at the time of importing the dependency
 
   > See the examples in
   > [External Dependencies](/doc/user-guide/external-dependencies) for more

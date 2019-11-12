@@ -1,6 +1,8 @@
 # update
 
-Update <abbr>data artifacts</abbr> imported from other DVC repositories.
+Update <abbr>data artifacts</abbr> imported from external <abbr>DVC
+repositories</abbr>, and corresponding
+[DVC-files](/doc/user-guide/dvc-file-format).
 
 ## Synopsis
 
@@ -15,16 +17,24 @@ positional arguments:
 
 After creating <abbr>import stages</abbr>
 ([DVC-files](/doc/user-guide/dvc-file-format)) with `dvc import` or
-`dvc import-url`, the external data source can change. Use `dvc update` to bring
-these imported file, directory, or <abbr>data artifact</abbr> up to date.
-
-Note that import stages are considered always "locked", meaning that if you run
-`dvc repro`, they won't be updated. `dvc update` is the only command that can
-update them. Also, for `dvc import` DVC-files, the `rev_lock` field is updated
-by `dvc update`.
+`dvc import-url`, the data source can change. Use `dvc update` to bring these
+imported file, directory, or <abbr>data artifact</abbr> up to date.
 
 To indicate which import stages to update, we must specify the corresponding
 DVC-file `targets` as command arguments.
+
+Note that import stages are considered always "locked", meaning that if you run
+`dvc repro`, they won't be updated. `dvc update` is the only command that can
+update them. Also, for `dvc import` import stages, the `rev_lock` field is
+updated by `dvc update`.
+
+Another detail to note is that when the `--rev` (revision) option of
+`dvc import` has been used to create an import stage, DVC is not aware of what
+kind of
+[Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References) this
+is, for example a branch or a tag. For static refs such as tags (unless manually
+updated), or for SHA commits, `dvc update` will not have any effect on the
+import.
 
 ## Options
 
@@ -60,4 +70,7 @@ Output 'model.pkl' didn't change. Skipping saving.
 Saving information to 'model.pkl.dvc'.
 ```
 
-This time nothing has changed, since the source repository is rather stable.
+This time nothing has changed, since the source <abbr>project</abbr> is rather
+stable.
+
+> Refer to this [re-importing example]() for
