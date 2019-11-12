@@ -120,6 +120,29 @@
         "slug": "managing-external-data"
       },
       {
+        "label": "Data Sharing",
+        "slug": "data-sharing",
+        "source": "data-sharing/index.md",
+        "children": [
+          {
+            "label": "Remote DVC Storage",
+            "slug": "remote-storage"
+          },
+          {
+            "label": "Shared Development Server",
+            "slug": "shared-server"
+          },
+          {
+            "label": "Mounted DVC Storage",
+            "slug": "mounted-storage"
+          },
+          {
+            "label": "Synced DVC Storage",
+            "slug": "synced-storage"
+          }
+        ]
+      },
+      {
         "label": "Contributing",
         "slug": "contributing",
         "source": "contributing/index.md",
