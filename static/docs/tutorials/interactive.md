@@ -51,7 +51,35 @@ Learn how DVC can be used in simple ML scenarios:
 
 Interactive examples about using DVC commands and other features of DVC.
 
+- [dvcignore](https://katacoda.com/dvc/courses/examples/dvcignore) <br/>
+  Sometimes you might want DVC to ignore some files while working with the
+  project. To address this, DVC supports optional `.dvcignore` files, which have
+  the same syntax and work similarly to `.gitignore` in Git.
+
 - [dvc fetch](https://katacoda.com/dvc/courses/examples/fetch) <br/> We will use
   an example project with some data, code, ML models, pipeline stages, as well
   as a few Git tags. Then we will see what happens with dvc fetch as we switch
   from tag to tag.
+
+- [SSH Remote DVC Storage](https://katacoda.com/dvc/courses/examples/ssh-storage)
+  <br/> In this example we assume a central DVC storage server that can be
+  accessed through SSH. For the sake of example the central Git repository is
+  located in the same server too, but in general it can be anywhere.
+
+- [Shared Server](https://katacoda.com/dvc/courses/examples/shared-server) <br/>
+  Some teams may prefer using one single shared machine to run their
+  experiments. In this example we will see how two different users on the same
+  host can share data with the help of a local data storage.
+
+- [Mounted DVC Storage](https://katacoda.com/dvc/courses/examples/mounted-storage)
+  <br/> In this example we will see how to share data with the help of a storage
+  directory that is network-mounted through SSHFS. Once you understand how it
+  works, it should be easy to implement it for other types of mounted storages
+  (like NFS, Samba, etc.).
+
+- [Synchronized DVC Storage](https://katacoda.com/dvc/courses/examples/synced-storage)
+  <br/> In this example we will see how to share DVC data with the help of a SSH
+  server and `rsync`. Actually there are better ways to use a SSH server for
+  data sharing, but we are using it just as an example. Once you understand how
+  it works, it should be easy to implement it with other storage types and
+  synchronization tools.
