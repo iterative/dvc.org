@@ -76,6 +76,13 @@ Use `dvc config` to unset/change the default remote as so:
 
 - `-f`, `--force` - overwrite existing remote with new `url` value.
 
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
+
+- `-v`, `--verbose` - displays detailed tracing information.
+
 ## Examples
 
 The following are the types of remote storage (protocols) supported:
