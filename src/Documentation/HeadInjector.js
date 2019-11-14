@@ -2,7 +2,7 @@ import Head from 'next/head'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-export const HeadInjector = ({ sectionName = 'Documentation' }) => (
+export const HeadInjector = () => (
   <Head>
     <link
       rel="stylesheet"
@@ -21,7 +21,7 @@ export const HeadInjector = ({ sectionName = 'Documentation' }) => (
       type="text/javascript"
       src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.js"
     />
-    <title>{sectionName} | Machine Learning Version Control System · DVC</title>
+    <title>Documentation | Machine Learning Version Control System · DVC</title>
   </Head>
 )
 

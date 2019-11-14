@@ -1,18 +1,17 @@
+import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-import Router from 'next/router'
 
 const DESCRIPTION =
-  `Open-source version control system for Data Science and` +
-  ` Machine Learning projects. Track your data, models, and experiments with` +
-  ` a Git-like tool.`
+  `Open-source version control system for Data Science and Machine Learning ` +
+  `projects. Track your data, models, and experiments with a Git-like tool.`
 const KEYWORDS = `data version control machine learning models management`
 
 const inject = str => (
   <div className="inject" dangerouslySetInnerHTML={{ __html: str }} />
 )
 
-export default class MyDocument extends Document {
+export default class Page extends Document {
   static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet()
     const page = renderPage(App => props =>
@@ -25,7 +24,7 @@ export default class MyDocument extends Document {
   render() {
     return (
       <>
-        <html>
+        <html lang="en">
           <Head>
             <meta charSet="utf-8" />
             <meta name="description" content={DESCRIPTION} />
@@ -43,7 +42,9 @@ export default class MyDocument extends Document {
             <meta
               prefix="og: http://ogp.me/ns#"
               property="og:description"
-              content="DVC is designed to handle large data files, models, and metrics as well as code. DVC is an open-source framework and distributed version control system for machine learning projects."
+              content="DVC is designed to handle large data files, models, and
+              metrics as well as code. DVC is an open-source framework and
+              distributed version control system for machine learning projects."
             />
             <meta
               prefix="og: http://ogp.me/ns#"
@@ -57,11 +58,14 @@ export default class MyDocument extends Document {
             />
             <meta
               name="twitter:description"
-              content="DVC is designed to handle large data files, models, and metrics as well as code. DVC is an open-source framework and distributed version control system for machine learning projects."
+              content="DVC is designed to handle large data files, models, and
+              metrics as well as code. DVC is an open-source framework and
+              distributed version control system for machine learning projects."
             />
             <meta
               name="viewport"
-              content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+              content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
+              user-scalable=0"
             />
             <link
               rel="shortcut icon"
