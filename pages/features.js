@@ -11,6 +11,12 @@ import Hero from '../src/Hero'
 import FeaturesHero from '../src/FeaturesHero'
 import TrySection from '../src/TrySection'
 
+const HeadInjector = () => (
+  <Head>
+    <title>Features | Machine Learning Version Control System</title>
+  </Head>
+)
+
 export default function FeaturesPage() {
   return (
     <Page stickHeader={true}>
@@ -162,12 +168,6 @@ export default function FeaturesPage() {
     </Page>
   )
 }
-
-const HeadInjector = () => (
-  <Head>
-    <title>Features | Machine Learning Version Control System</title>
-  </Head>
-)
 
 const Container = styled.div`
   ${container};

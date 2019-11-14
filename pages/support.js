@@ -12,6 +12,12 @@ import Hero from '../src/Hero'
 import TrySection from '../src/TrySection'
 import Popover from '../src/Popover/Popover'
 
+const HeadInjector = () => (
+  <Head>
+    <title>Support | Machine Learning Version Control System</title>
+  </Head>
+)
+
 export default function SupportPage() {
   return (
     <Page stickHeader>
@@ -117,12 +123,6 @@ export default function SupportPage() {
     </Page>
   )
 }
-
-const HeadInjector = () => (
-  <Head>
-    <title>Support | Machine Learning Version Control System</title>
-  </Head>
-)
 
 const SupportHero = styled.div`
   padding-top: 90px;

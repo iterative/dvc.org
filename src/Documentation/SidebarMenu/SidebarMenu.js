@@ -16,8 +16,6 @@ import { getParentsListFromPath } from './helper'
 /** Height of each menu child items (to calc Element weight for animations) */
 const heightMap = {}
 
-const blankStyle = {}
-
 /** Calculate element height with all open children. */
 function calculateHeight({ activePaths, path }) {
   let height = 0
@@ -60,9 +58,7 @@ class SidebarMenuItem extends React.PureComponent {
         </SectionLink>
         {children && (
           <Collapse
-            style={
-              isActive ? { height: calculateHeight(this.props) } : blankStyle
-            }
+            style={isActive ? { height: calculateHeight(this.props) } : {}}
             ref={r => (this.linkRef = r)}
           >
             {children.map(item => (
