@@ -8,8 +8,7 @@
     "build": "next build",
     "test": "jest",
     "start": "NODE_ENV=production node server.js",
-    "format-staged": "pretty-quick --staged --no-restage --bail",
-    "format-check": "pretty-quick --check --verbose",
+    "format": "prettier --write \"**/*.+(js|md|json)\"",
     "lint": "eslint src"
   },
   "repository": {
@@ -64,12 +63,12 @@
     "eslint-plugin-react": "^7.14.3",
     "husky": "^3.0.4",
     "jest": "^24.9.0",
-    "prettier": "^1.18.2",
-    "pretty-quick": "^1.11.1"
+    "lint-staged": "^9.4.3",
+    "prettier": "^1.18.2"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format-staged && yarn lint"
+      "pre-commit": "lint-staged"
     }
   }
 }
