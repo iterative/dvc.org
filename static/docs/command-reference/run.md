@@ -135,12 +135,10 @@ try creating a pipeline.
   default and deprecated. See `dvc remove` as well for more details.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
-  entry is added to `.dvc/state`, while nothing is added to the cache. Useful
-  when running different experiments and you don't want to fill up your cache
-  with temporary files. Use `dvc commit` when ready to commit the results to
-  cache.
-
-  > The `dvc status` command will mention that the file is `not in cache`.
+  entry is added to `.dvc/state`, while nothing is added to the cache. (The
+  `dvc status` command will report that the file is `not in cache`.) Useful when
+  running different experiments and you don't want to fill up your cache with
+  temporary files. Use `dvc commit` when ready to commit the results to cache.
 
 - `--always-changed` - always consider this DVC-file as changed. As a result
   `dvc status` will report it as `always changed` and `dvc repro` will always

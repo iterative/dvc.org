@@ -82,7 +82,7 @@ If you intend to change JavaScript (Node) files, test the changes with
 `yarn format-staged` and `yarn lint`. (All of these checks will be enforced
 automatically upon [submitting PRs](#submitting-changes).)
 
-## Doc style guidelines and tips (for JavaScript and Markdown)
+## Doc style guidelines (JavaScript and Markdown)
 
 The first few of the rules below should be enforced automatically by a Git
 pre-commit hook that is integrated when `yarn` installs the project dependencies
@@ -104,17 +104,16 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
   `yarn prettier --write '{static,src}/**/*.{js,jsx,md}'` formats all the
   JavaScript and Markdown files.
 
-- Using `dvc <command>` in the Markdown files, the docs engine will create a
-  link to that command automatically. (No need to use `[]()` explicitly to
-  create them.)
+- Markdown: Using `dvc <command>`, the docs engine will create a link to that
+  command automatically. (No need to use `[]()` explicitly to create them.)
 
-- Neither bullet lists nor each bullet's text should be too long (3 sentence
+- Markdown: Neither bullet lists nor each item's should be too long (3 sentence
   paragraphs max.) Full sentence bullets should begin with a capital letter and
   end in period `.` otherwise they can be all lower case and have no ending
-  punctuation. Bullets can be separated by an empty line if they contain short
-  paragraphs.
+  punctuation. Bullets can be separated by an empty line if they contain several
+  paragraphs, but this is discouraged, to keep each item short.
 
-- Syntax highlighting in fenced code blocks (Markdown) should use the `usage`
+- Markdown: Syntax highlighting in fenced code blocks should use the `usage`
   `dvc`, and `yaml` custom languages. `usage` is employed to show the
   `dvc --help` output for each command reference. `dvc` can be used to show
   examples of commands and their output in a terminal session. `yaml` is used to

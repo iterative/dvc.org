@@ -41,40 +41,46 @@ extension.)
 
 ## Options
 
-- `-t`, `--type` - specify a type of the metric file that will be used to
-  determine how to handle `xpath` parameter from down below. Accepted values
-  are: `raw`, `json`, `tsv`, `htsv`, `csv`, `hcsv`. If this parameter is not
+- `-t`, `--type` - specify a type of the metric file. Accepted values are:
+  `raw`, `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be saved into the
+  corresponding DVC-file, and used by `dvc metrics show` to determine how to
+  handle displaying metrics.
+
+  `raw` is the default when no type is provided. It means that no additional
+  parsing is applied, and `--xpath` is ignored. `htsv`/`hcsv` are the same as
+  `tsv`/`csv`, but the values in the first row of the file will be used as the
+  field names and should be used to address columns in the `--xpath` option.
+
+  This option along with `--xpath` below takes precedence over the `type` and
+  `xpath` specified in the corresponding DVC file. If this parameter is not
   given, the type can be detected by the file extension automatically if the
-  type is supported. If any other value is specified it is ignored and `type` is
-  defaulted to `raw`. `htsv`/`hcsv` are the same `tsv`/`csv` but the values in
-  the first row of the file will be used as the field names and should be used
-  to address columns in the `--xpath` option. `raw` means that no additional
-  parsing is applied, and `--xpath` is ignored. `raw` is the same as default
-  when no type is provided. This option along with `--xpath` below takes
-  precedence over the `type` and `xpath` specified in the corresponding DVC
-  file.
+  type is supported. If any other value is specified, it is ignored and
+  defaulted back to `raw`.
 
 - `-x`, `--xpath` - specify a path within a metric file to get a specific metric
   value. Should be used if the metric file contains multiple numbers and you
-  need to get a only one of them. Only a single path is allowed. If multiple
-  metric files exist in the <abbr>project</abbr>, the same parser and path will
-  be applied to all of them. If `xpath` for a particular metric has been set
-  using `dvc metrics modify`, the path passed with this option will overwrite it
-  for the current command run only – It may fail to produce any results or parse
-  files that are not in a corresponding format in this case. The Accepted value
-  depends on the metric file type (`--type` option):
+  need to get a only one of them. Only a single path is allowed. It will be
+  saved into the corresponding DVC-file, and used by `dvc metrics show` to
+  determine how to handle displaying metrics. The accepted value depends on the
+  metric file type (`--type` option):
 
-  - `json` - see [JSONPath spec](https://goessner.net/articles/JsonPath/) or
+  - For `json` - see [JSONPath spec](https://goessner.net/articles/JsonPath/) or
     [jsonpath-ng](https://github.com/h2non/jsonpath-ng) for available options.
-    For example, `"AUC"` extracts the value from the following json-formatted
+    For example, `"AUC"` extracts the value from the following JSON-formatted
     metric file: `{"AUC": "0.624652"}`. You can also filter on certain values,
     for example `"$.metrics[?(@.deviation_mse<0.30) & (@.value_mse>0.4)]"`
     extracts only the values for model versions if they meet the given
     conditions from the metric file:
     `{"metrics": [{"dataset": "train", "deviation_mse": 0.173461, "value_mse": 0.421601}]}`
-  - `tsv`/`csv` - `row,column` e.g. `1,2`. Indices are 0-based.
-  - `htsv`/`hcsv` - `row,column name` e.g. `0,Name`. Row index is 0-based. First
-    row is used to specify column names and is not included into index.
+  - For `tsv`/`csv` - `row,column` e.g. `1,2`. Indices are 0-based.
+  - For `htsv`/`hcsv` - `row,column name` e.g. `0,Name`. Row index is 0-based.
+    First row is used to specify column names and is not included into index.
+
+  If multiple metric files exist in the <abbr>project</abbr>, the same parser
+  and path will be applied to all of them. If `xpath` for a particular metric
+  has been set using `dvc metrics modify`, the path passed with this option will
+  overwrite it for the current command run only – It may fail to produce any
+  results or parse files that are not in a corresponding format in this case.
 
 - `-a`, `--all-branches` - get and print metric file contents across all Git
   branches. It can be used to compare different variants of an experiment.
