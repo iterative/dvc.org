@@ -24,3 +24,6 @@ motivation and what's happening internally.
 You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
 Also, if DVC is not installed, please follow these [instructions](/doc/install)
 to do so.
+
+> For a quick start you can also try these hands-on
+> [interactive lessons](https://katacoda.com/dvc/courses/get-started/initialize).

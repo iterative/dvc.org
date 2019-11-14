@@ -46,6 +46,8 @@ The same as for [`.gitignore`](https://git-scm.com/docs/gitignore).
 
 ## Example: Modification of ignored data
 
+> [Try these examples interactively](https://katacoda.com/dvc/courses/examples/dvcignore).
+
 Let's see what happens when we modify ignored file.
 
 ```dvc
