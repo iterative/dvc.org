@@ -11,7 +11,7 @@ const inject = str => (
   <div className="inject" dangerouslySetInnerHTML={{ __html: str }} />
 )
 
-export default class Documentation extends Document {
+export default class Page extends Document {
   static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet()
     const page = renderPage(App => props =>
