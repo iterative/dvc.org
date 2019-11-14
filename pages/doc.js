@@ -1,27 +1,26 @@
 /* global docsearch:readonly */
 
 import React, { Component } from 'react'
-// nextjs
-import { HeadInjector } from '../src/Documentation/HeadInjector'
 // components
+import Page from '../src/Page'
+import { HeadInjector } from '../src/Documentation/HeadInjector'
+import Hamburger from '../src/Hamburger'
+import SearchForm from '../src/SearchForm'
 import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
+import Loader from '../src/Loader/Loader'
+import Page404 from '../src/Page404'
 import Markdown from '../src/Documentation/Markdown/Markdown'
 import RightPanel from '../src/Documentation/RightPanel/RightPanel'
-import Page from '../src/Page'
-import SearchForm from '../src/SearchForm'
-import Page404 from '../src/Page404'
-import Loader from '../src/Loader/Loader'
-import Hamburger from '../src/Hamburger'
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
+// constants
+import { HEADER } from '../consts'
+// sidebar data and helpers
+import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
 // styles
 import styled from 'styled-components'
 import { media } from '../src/styles'
-// sidebar data and helpers
-import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
-// constants
-import { HEADER } from '../consts'
 
 const ROOT_ELEMENT = 'bodybag'
 const SIDEBAR_MENU = 'sidebar-menu'
@@ -254,6 +253,7 @@ const Container = styled.div`
     pointer-events: none;
   }
 `
+
 const Backdrop = styled.div`
   display: none;
 
@@ -275,8 +275,8 @@ const Backdrop = styled.div`
       background-color: rgba(0, 0, 0, 0.4);
       z-index: 1;
       opacity: 1;
-      pointer-events: all;    
-    `} 
+      pointer-events: all;
+    `}
   `};
 `
 
@@ -304,7 +304,7 @@ const Side = styled.div`
       props.isOpen &&
       `
       transform: translateX(0);
-    `} 
+    `}
   `};
 `
 

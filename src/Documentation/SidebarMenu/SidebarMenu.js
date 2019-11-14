@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
 import scrollIntoView from 'dom-scroll-into-view'
 import PropTypes from 'prop-types'
@@ -13,13 +13,10 @@ import { media, OnlyDesktop } from '../../styles'
 // sidebar helpers
 import { getParentsListFromPath } from './helper'
 
-const blankStyle = {}
-
-// We will cache height of each menu child items here to calculate
-// Element weight for animations
+/** Height of each menu child items (to calc Element weight for animations) */
 const heightMap = {}
 
-// Helper function to calculate element height with all opened children
+/** Calculate element height with all open children. */
 function calculateHeight({ activePaths, path }) {
   let height = 0
   const reversePaths = [...activePaths].reverse()
@@ -61,9 +58,7 @@ class SidebarMenuItem extends React.PureComponent {
         </SectionLink>
         {children && (
           <Collapse
-            style={
-              isActive ? { height: calculateHeight(this.props) } : blankStyle
-            }
+            style={isActive ? { height: calculateHeight(this.props) } : {}}
             ref={r => (this.linkRef = r)}
           >
             {children.map(item => (
@@ -92,7 +87,7 @@ SidebarMenuItem.propTypes = {
   onNavigate: PropTypes.func.isRequired
 }
 
-export default class SidebarMenu extends React.Component {
+export default class SidebarMenu extends Component {
   state = {
     isScrollHidden: false
   }

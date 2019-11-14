@@ -29,22 +29,24 @@ const HeadInjector = () => (
   </Head>
 )
 
-export default () => (
-  <Page stickHeader={true}>
-    <HeadInjector />
-    <Hero>
-      <LandingHero />
-      <a name="nextSlide" style={{ marginTop: `-58px` }} />
-      <LearnMoreSection>
-        <LearnMore />
-      </LearnMoreSection>
-    </Hero>
-    <Diagram />
-    <PromoSection />
-    <UseCases />
-    <Subscribe />
-  </Page>
-)
+export default function HomePage() {
+  return (
+    <Page stickHeader={true}>
+      <HeadInjector />
+      <Hero>
+        <LandingHero />
+        <LearnMoreSection>
+          <LearnMore />
+        </LearnMoreSection>
+        <span name="nextSlide" style={{ marginTop: `-58px` }} />
+      </Hero>
+      <Diagram />
+      <PromoSection />
+      <UseCases />
+      <Subscribe />
+    </Page>
+  )
+}
 
 const LearnMoreSection = styled.div`
   z-index: 2;

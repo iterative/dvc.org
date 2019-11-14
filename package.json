@@ -8,8 +8,8 @@
     "build": "next build",
     "test": "jest",
     "start": "NODE_ENV=production node server.js",
-    "format": "prettier --write \"**/*.+(js|md|json)\"",
-    "lint": "eslint src"
+    "format": "prettier --write \"**/*.+(js|json|md)\"",
+    "lint": "eslint src pages"
   },
   "repository": {
     "type": "git",
