@@ -67,16 +67,12 @@
     "prettier": "^1.18.2"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint"
-    ],
-    "*.{json,md}": [
-      "prettier --check"
-    ]
+    "*.{js,jsx}": "eslint",
+    "*.{json,md}": "prettier --check"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged --debug"
+      "pre-commit": "lint-staged"
     }
   }
 }
