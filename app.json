@@ -1,21 +1,17 @@
 {
-  "addons": [
-
-  ],
+  "addons": [],
   "buildpacks": [
     {
       "url": "heroku/nodejs"
     }
   ],
-  "env": {
-  },
+  "env": {},
   "formation": {
     "web": {
       "quantity": 1
     }
   },
   "name": "dvc.org",
-  "scripts": {
-  },
+  "scripts": {},
   "stack": "heroku-18"
 }
