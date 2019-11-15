@@ -89,18 +89,20 @@ specified), and updates stage files with the new checksum information.
   present in `DVC` repository.
 
 - `--ignore-build-cache` - in cases like `... -> A (changed) -> B -> C` it will
-  reproduce `A` first and then `B` even if `B` was previously executed with the
-  same inputs from `A` (cached). It might be useful when we have a common
-  dependency among all stages and want to specify it once (for the stage `A`
-  here). For example, if we know that all stages (`A` and below) depend on
-  `requirements.txt`, we can specify it only once in `A`, omitting it in `B` and
-  `C`. To be precise , it reproduces all descendants of a changed stage or the
-  stages following the changed stage, even if their direct dependencies did not
-  change. Like with the same option on `dvc run`, this is a way to force execute
-  stages without changes. This can also be useful for pipelines containing
-  stages that produce non-deterministic (semi-random) outputs. For
-  non-deterministic stages the outputs can vary on each execution, meaning the
-  cache cannot be trusted for such stages.
+  reproduce `A` first and then `B`, even if `B` was previously executed with the
+  same inputs from `A` (cached). To be precise, it reproduces all descendants of
+  a changed stage or the stages following the changed stage, even if their
+  direct dependencies did not change.
+
+  It can be useful when we have a common dependency among all stages, and want
+  to specify it only once (for stage `A` here). For example, if we know that all
+  stages (`A` and below) depend on `requirements.txt`, we can specify it in `A`,
+  and omit it in `B` and `C`.
+
+  Like with the same option on `dvc run`, this is a way to force-execute stages
+  without changes. This can also be useful for pipelines containing stages that
+  produce non-deterministic (semi-random) outputs, where outputs can vary on
+  each execution, meaning the cache cannot be trusted for such stages.
 
 - `--downstream` - only execute the stages after the given `targets` in their
   corresponding pipelines, including the target stages themselves.

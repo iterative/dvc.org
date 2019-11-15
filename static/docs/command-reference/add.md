@@ -94,11 +94,10 @@ and make your project reproducible.
   description.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
-  entry is added to `.dvc/state`, while nothing is added to the cache. This is
+  entry is added to `.dvc/state`, while nothing is added to the cache. (The
+  `dvc status` command will report that the file is `not in cache`.) This is
   analogous to using `git add` before `git commit`. Use `dvc commit` when ready
   to commit the results to cache.
-
-  > The `dvc status` command will mention that the file is `not in cache`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

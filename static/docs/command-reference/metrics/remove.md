@@ -31,6 +31,15 @@ ERROR: failed to remove metric file '<path>' -
        unable to find DVC-file with output '<path>'
 ```
 
+## Options
+
+- `-h`, `--help` - prints the usage/help message, and exit.
+
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+  problems arise, otherwise 1.
+
+- `-v`, `--verbose` - displays detailed tracing information.
+
 ## Examples
 
 Let's first create a dummy non-cached metric <abbr>output</abbr> with the `-M`

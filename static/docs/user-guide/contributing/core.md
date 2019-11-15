@@ -275,7 +275,7 @@ $ ./scripts/ci/remove_hadoop.sh
 
 </details>
 
-## Code style guidelines (for Python)
+## Code style guidelines (Python)
 
 We are using [PEP8](https://www.python.org/dev/peps/pep-0008/?) and checking
 that our code is formatted with [black](https://github.com/ambv/black).
