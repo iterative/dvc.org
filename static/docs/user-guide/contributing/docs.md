@@ -78,9 +78,8 @@ default port, `3000`. Visit `http://localhost:3000/` and navigate to the docs in
 question.
 
 If you intend to change JavaScript (Node) files, test the changes with
-`yarn test` command before committing them. For code formatting and styling, try
-`yarn format-staged` and `yarn lint`. (All of these checks will be enforced
-automatically upon [submitting PRs](#submitting-changes).)
+`yarn test` command before committing them. (All of these checks will be
+enforced automatically upon [submitting PRs](#submitting-changes).)
 
 ## Doc style guidelines and tips (for JavaScript and Markdown)
 
@@ -97,9 +96,9 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
 
 - We use [Prettier](https://prettier.io/) default conventions to format our
   source code. The formatting of staged files will automatically be done by the
-  Git pre-commit hook we have configured. You may also run `yarn format-staged`
-  manually before committing changes if you prefer. More
-  [advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
+  Git pre-commit hook we have configured. (See `yarn format-check` script in
+  [package.json](package.json) for an example.) More
+  [Advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
   available through `yarn`, for example
   `yarn prettier --write '{static,src}/**/*.{js,jsx,md}'` formats all the
   JavaScript and Markdown files.

@@ -41,9 +41,9 @@ jobs:
 
       - run: yarn test
 
-      - run: yarn check-format
+      - run: yarn format-check
 
-      - run: yarn lint
+      - run: yarn lint-check
 
       - save_cache:
           paths:
