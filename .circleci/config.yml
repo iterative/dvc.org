@@ -41,7 +41,7 @@ jobs:
 
       - run: yarn test
 
-      - run: yarn format
+      - run: yarn check-format
 
       - run: yarn lint
 

@@ -8,7 +8,7 @@
     "build": "next build",
     "test": "jest",
     "start": "NODE_ENV=production node server.js",
-    "format": "prettier --write \"**/*.+(js|json|md)\"",
+    "check-format": "prettier --check \"**/*.+(js|jsx|json|md)\"",
     "lint": "eslint src pages"
   },
   "repository": {
