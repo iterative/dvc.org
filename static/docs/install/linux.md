@@ -70,16 +70,6 @@ $ sudo yum install dvc
 
 </details>
 
-<details>
-
-### On Arch Linux
-
-```dvc
-$ yay -S dvc
-```
-
-</details>
-
 ## Install from package
 
 Get the binary package from the big "Download" button on the [home page](/), or
