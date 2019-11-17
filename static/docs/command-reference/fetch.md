@@ -120,7 +120,7 @@ pipeline stages, as well as a few Git tags, such as our
 [get started example repo](https://github.com/iterative/example-get-started).
 Then we can see what happens with `dvc fetch` as we switch from tag to tag.
 
-> [Try these examples interactively](https://katacoda.com/dvc/courses/examples/fetch).
+#### [`▶ Try examples interactively`](https://katacoda.com/dvc/courses/examples/fetch)
 
 <details>
 
