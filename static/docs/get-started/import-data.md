@@ -67,9 +67,9 @@ outs:
     persist: false
 ```
 
-The `url` subfield points to the source project, while `rev_lock` lets DVC know
-which Git repository version did the data come from. Note that `dvc update`
-updates the `rev_lock` value.
+The `url` subfield under `repo` points to the source project, while `rev_lock`
+lets DVC know which Git repository version did the data come from. Note that
+`dvc update` updates the `rev_lock` value.
 
 </details>
 
