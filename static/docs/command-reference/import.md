@@ -148,12 +148,18 @@ deps:
       rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
 ```
 
-If the Git revision tends to move, i.e. branches, this doesn't have much of an
-effect on the import/update workflow. However, for typically static references
-i.e. tags, or for SHA commits, `dvc update` will not have any effect on the
-import. In this cases, in order to actually "update" an import, it's necessary
-to **re-import the data** instead, by using `dvc import` again without or with a
-different `--rev`. For example:
+If the
+[Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+tends to move, i.e. branches, this doesn't have much of an effect on the
+import/update workflow. However, for typically static references i.e. tags, or
+for SHA commits, `dvc update` will not have any effect on the import.
+
+In this cases, in order to actually "update" an import, it's necessary to
+**re-import the data** instead, by using `dvc import` again without or with a
+different `--rev`. This will overwrite the import stage (DVC-file), either
+removing or replacing the `rev` field, respectively. This can produce an import
+stage that is able to be updated normally with `dvc update` going forward. For
+example:
 
 ```dvc
 $ dvc import --rev master \
@@ -161,9 +167,9 @@ $ dvc import --rev master \
              use-cases/cats-dogs
 ```
 
-This will overwrite the import stage (DVC-file) either removing or replacing the
-`rev` field. This can produce an import stage that is able to be updated
-normally with `dvc update` going forward.
+> In the above example, the value for `rev` in the new import stage will be
+> `master`, which happens to be the default branch in this Git repository, so
+> the command is equivalent to not using `--rev` at all.
 
 ## Example: Data registry
 
