@@ -126,6 +126,9 @@ under `repo` are used to save the origin and version of the dependency.
 
 ## Example: fixed revisions & re-importing
 
+To import a specific revision of a <abbr>data artifact</abbr>, we may use the
+`--rev` option:
+
 ```dvc
 $ dvc import --rev cats-dogs-v1 \
              git@github.com:iterative/dataset-registry.git \
@@ -135,7 +138,7 @@ Importing
 -> 'cats-dogs'
 ```
 
-When the `--rev` option is used, the import stage
+When using this option, the import stage
 ([DVC-file](/doc/user-guide/dvc-file-format)) will also have a `rev` subfield
 under `repo`:
 
