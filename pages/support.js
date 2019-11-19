@@ -15,7 +15,7 @@ import { META_BASE_TITLE } from '../consts'
 
 const HeadInjector = () => (
   <Head>
-    <title>Support | {{ META_BASE_TITLE }}</title>
+    <title>Support | {META_BASE_TITLE}</title>
   </Head>
 )
 
