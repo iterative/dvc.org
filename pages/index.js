@@ -11,7 +11,7 @@ import Diagram from '../src/Diagram'
 import PromoSection from '../src/PromoSection'
 import UseCases from '../src/UseCases'
 import Subscribe from '../src/Subscribe'
-import { META_BASE_TITLE } from '../consts'
+import { META_BASE_TITLE } from '../src/consts'
 
 const HeadInjector = () => (
   <Head>

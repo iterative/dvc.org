@@ -15,7 +15,7 @@ import RightPanel from '../src/Documentation/RightPanel/RightPanel'
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
 // constants
-import { HEADER } from '../consts'
+import { HEADER } from '../src/consts'
 // sidebar data and helpers
 import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
 // styles

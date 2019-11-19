@@ -6,7 +6,7 @@ import {
   META_DESCRIPTION,
   META_KEYWORDS,
   META_SOCIAL_IMAGE
-} from '../consts'
+} from '../src/consts'
 
 const inject = str => (
   <div className="inject" dangerouslySetInnerHTML={{ __html: str }} />

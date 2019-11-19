@@ -10,7 +10,7 @@ import Page from '../src/Page'
 import Hero from '../src/Hero'
 import FeaturesHero from '../src/FeaturesHero'
 import TrySection from '../src/TrySection'
-import { META_BASE_TITLE } from '../consts'
+import { META_BASE_TITLE } from '../src/consts'
 
 const HeadInjector = () => (
   <Head>

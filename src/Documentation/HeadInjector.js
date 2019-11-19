@@ -2,7 +2,7 @@ import Head from 'next/head'
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { META_BASE_TITLE } from '../../consts'
+import { META_BASE_TITLE } from '../consts'
 
 export const HeadInjector = ({ sectionName = 'Documentation' }) => (
   <Head>
