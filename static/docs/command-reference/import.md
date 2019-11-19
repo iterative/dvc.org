@@ -154,7 +154,7 @@ deps:
 
 If the
 [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-moves (e.g. branches), you may use `dvc update` to bring the data up to date.
+moves (e.g. a branch), you may use `dvc update` to bring the data up to date.
 However, for typically static references (e.g. tags), or for SHA commits, in
 order to actually "update" an import, it's necessary to **re-import the data**
 instead, by using `dvc import` again without or with a different `--rev`. This
