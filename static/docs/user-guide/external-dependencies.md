@@ -119,7 +119,6 @@ external path or URL types.
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
-...
 ```
 
 The command above creates the <abbr>import stage</abbr> (DVC-file)
@@ -157,9 +156,8 @@ stage</abbr> (DVC-file).
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl
-Importing 'model.pkl (git@github.com:iterative/example-get-started)' -> 'model.pkl'
-Preparing to download data from 'https://remote.dvc.org/get-started'
-...
+Importing 'model.pkl (git@github.com:iterative/example-get-started)'
+-> 'model.pkl'
 ```
 
 The command above creates `model.pkl.dvc`, where the external dependency is

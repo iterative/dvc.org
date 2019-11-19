@@ -159,10 +159,7 @@ _Get Started_ section is to use `dvc import-url`:
 $ dvc import-url https://data.dvc.org/get-started/data.xml \
                  data/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data/data.xml'
-
-Saving information to 'data.xml.dvc'.
-
-
+...
 To track the changes with git, run:
 
 	git add data.xml.dvc data/.gitignore
@@ -224,7 +221,6 @@ edit the data file.
 ```dvc
 $ dvc import-url /tmp/dvc-import-url-example/data.xml data/data.xml
 Importing '../../../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
-...
 ```
 
 Check `data.xml.dvc`:
@@ -318,8 +314,6 @@ do so, we can run `dvc update` to make sure the import stage is up to date:
 $ dvc update data.xml.dvc
 ...
 Importing '.../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
-...
-Saving information to 'data.xml.dvc'.
 ```
 
 DVC has noticed the "external" data source has changed, and updated the import
