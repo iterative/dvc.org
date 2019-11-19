@@ -83,13 +83,13 @@ Use `dvc config` to unset/change the default remote as so:
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples
+## Supported storage types
 
-The following are the types of remote storage (protocols) supported:
+These are the possible remote storage (protocols) DVC can work with:
 
 <details>
 
-### Click for a local remote example
+### Click for local remote
 
 A "local remote" is a directory in the machine's file system.
 
@@ -129,7 +129,7 @@ $ cat .dvc/config
 
 <details>
 
-### Click for Amazon S3 example
+### Click for Amazon S3
 
 > **Note!** Before adding a new remote be sure to login into AWS services and
 > follow instructions at
@@ -166,7 +166,7 @@ So, make sure you have the following permissions enabled:
 
 <details>
 
-### Click for S3 API compatible storage example
+### Click for S3 API compatible storage
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
@@ -196,7 +196,7 @@ For more information about the variables DVC supports, please visit
 
 <details>
 
-### Click for Azure example
+### Click for Azure
 
 ```dvc
 $ dvc remote add myremote azure://my-container-name/path
@@ -234,7 +234,7 @@ $ dvc remote add myremote "azure://"
 
 <details>
 
-### Click for Google Cloud Storage example
+### Click for Google Cloud Storage
 
 ```dvc
 $ dvc remote add myremote gs://bucket/path
@@ -244,16 +244,16 @@ $ dvc remote add myremote gs://bucket/path
 
 <details>
 
-### Click for SSH example
+### Click for SSH
 
 ```dvc
 $ dvc remote add myremote ssh://user@example.com/path/to/dir
 ```
 
-> **NOTE!** DVC requires SSH and SFTP access to work properly. Please use `ssh`
+> **Note!** DVC requires SSH and SFTP access to work properly. Please use `ssh`
 > and `sftp` CLI commands to ensure that you are able to connect to your remote.
 
-> **NOTE!** Your server's SFTP root might differ from the physical root (see
+> **Note!** Your server's SFTP root might differ from the physical root (see
 > `ChrootDirectory` config option in `/etc/ssh/sshd_config`), in which case you
 > have to specify `/path/to/dir` component of the remote url relative to the
 > SFTP root and not the physical root. For example, on some Synology NASes your
@@ -265,13 +265,13 @@ $ dvc remote add myremote ssh://user@example.com/path/to/dir
 
 <details>
 
-### Click for HDFS example
+### Click for HDFS
 
 ```dvc
 $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 ```
 
-> **NOTE!** If you are seeing `Unable to load libjvm` error on ubuntu with
+> **Note!** If you are seeing `Unable to load libjvm` error on ubuntu with
 > openjdk-8, try setting JAVA_HOME env variable. This issue is solved in the
 > [upstream version of pyarrow](https://github.com/apache/arrow/pull/4907) and
 > the fix will be included into the next pyarrow release.
@@ -280,7 +280,7 @@ $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 
 <details>
 
-### Click for HTTP example
+### Click for HTTP
 
 > **Note!** Currently HTTP remotes only support downloads operations:
 >
