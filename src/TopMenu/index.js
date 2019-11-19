@@ -8,7 +8,7 @@ import throttle from 'lodash.throttle'
 import styled from 'styled-components'
 import { media } from '../styles'
 // constants
-import { HEADER } from '../../consts'
+import { HEADER } from '../consts'
 
 const MIN_HEIGHT = 78
 
