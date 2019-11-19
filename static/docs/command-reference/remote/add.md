@@ -250,6 +250,17 @@ $ dvc remote add myremote gs://bucket/path
 $ dvc remote add myremote ssh://user@example.com/path/to/dir
 ```
 
+> **NOTE!** DVC requires SSH and SFTP access to work properly. Please use `ssh`
+> and `sftp` CLI commands to ensure that you are able to connect to your remote.
+
+> **NOTE!** Your server's SFTP root might differ from the physical root (see
+> `ChrootDirectory` config option in `/etc/ssh/sshd_config`), in which case you
+> have to specify `/path/to/dir` component of the remote url relative to the
+> SFTP root and not the physical root. For example, on some Synology NASes your
+> SFTP root might correspond to a physical directory `/volume1`, in which case
+> you should specify something like `ssh://user@example.com/path/to/dir` instead
+> of `ssh://user@example.com/volume1/path/to/dir`.
+
 </details>
 
 <details>
