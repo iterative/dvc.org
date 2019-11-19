@@ -25,8 +25,7 @@ DVC-file `targets` as command arguments.
 
 Note that import stages are considered always "locked", meaning that if you run
 `dvc repro`, they won't be updated. `dvc update` is the only command that can
-update them. Also, for `dvc import` import stages, the `rev_lock` field is
-updated by `dvc update`.
+update them.
 
 Another detail to note is that when the `--rev` (revision) option of
 `dvc import` has been used to create an import stage, DVC is not aware of what
@@ -54,10 +53,8 @@ Let's first import a data artifact from our
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl
-Importing 'model.pkl (git@github.com:iterative/example-get-started)' -> 'model.pkl'
-...
-Saving information to 'model.pkl.dvc'.
-...
+Importing 'model.pkl (git@github.com:iterative/example-get-started)'
+-> 'model.pkl'
 ```
 
 As DVC mentions, the import stage (DVC-file) `model.pkl.dvc` is created. This
@@ -74,3 +71,7 @@ Saving information to 'model.pkl.dvc'.
 
 This time nothing has changed, since the source <abbr>project</abbr> is rather
 stable.
+
+> Note that `dvc update` updates the `rev_lock` field of the corresponding
+> [DVC-file](/doc/user-guide/dvc-file-format) (when there are changes to bring
+> in).

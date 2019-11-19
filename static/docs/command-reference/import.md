@@ -121,8 +121,9 @@ outs:
 ```
 
 Several of the values above are pulled from the original stage file
-`model.pkl.dvc` in the external DVC repository. `url` and `rev_lock` subfields
-under `repo` are used to save the origin and version of the dependency.
+`model.pkl.dvc` in the external DVC repository. The `url` and `rev_lock`
+subfields under `repo` are used to save the origin and version of the
+dependency.
 
 ## Example: fixed revisions & re-importing
 
@@ -154,8 +155,6 @@ deps:
 If the
 [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 moves (e.g. branches), you may use `dvc update` to bring the data up to date.
-This will update `rev_lock` in the import stage (DVC-file).
-
 However, for typically static references (e.g. tags), or for SHA commits, in
 order to actually "update" an import, it's necessary to **re-import the data**
 instead, by using `dvc import` again without or with a different `--rev`. This

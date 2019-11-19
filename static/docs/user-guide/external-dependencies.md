@@ -108,7 +108,7 @@ $ dvc run -d remote://example/data.txt \
 ```
 
 Please refer to `dvc remote add` for more details like setting up access
-credentials for certain remotes.
+credentials for the different remotes.
 
 ## Example: import-url command
 
@@ -144,16 +144,16 @@ outs:
 
 DVC checks the headers returned by the server, looking for a strong
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) or a
-[Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it to know
-if the file has changed and we need to download it again.
+[Content-MD5](https://tools.ietf.org/html/rfc1864) header, and uses it to
+determine whether the source has changed and we need to download the file again.
 
 </details>
 
 ## Example: Using import
 
-`dvc import` can download a <abbr>data artifact</abbr> from an external
-<abbr>DVC repository</abbr>repository. It also creates an external dependency in
-its <abbr>import stage</abbr> (DVC-file).
+`dvc import` can download a <abbr>data artifact</abbr> from any <abbr>DVC
+repository</abbr>. It also creates an external dependency in its <abbr>import
+stage</abbr> (DVC-file).
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl
@@ -184,7 +184,7 @@ outs:
     persist: false
 ```
 
-For external sources that are <abbr>DVC repositories</abbr>, `url` and
-`rev_lock` fields are used to specify the origin and version of the dependency.
+The `url` and `rev_lock` subfields under `repo` are used to save the origin and
+version of the dependency.
 
 </details>
