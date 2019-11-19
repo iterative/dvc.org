@@ -24,7 +24,7 @@ DVC provides an easy way to reuse datasets, intermediate results, ML models, or
 other files and directories tracked in another <abbr>DVC repository</abbr> into
 the workspace. The `dvc import` command downloads such a <abbr>data
 artifact</abbr> in a way that it is tracked with DVC, so it can be updated when
-the data source changes.
+the data source changes. (See `dvc update`.)
 
 The `url` argument specifies the address of the Git repository containing the
 source <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
@@ -92,10 +92,10 @@ repository</abbr>, such as our
 [get started example repo](https://github.com/iterative/example-get-started).
 
 ```dvc
-$ dvc import git@github.com:iterative/example-get-started data/data.xml
-Importing 'data/data.xml (git@github.com:iterative/example-get-started)' -> 'data.xml'
-...
-Saving information to 'data.xml.dvc'.
+$ dvc import git@github.com:iterative/example-get-started \
+             data/data.xml
+Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
+-> 'data.xml'
 ```
 
 In contrast with `dvc get`, this command doesn't just download the data file,
@@ -121,14 +121,27 @@ outs:
 ```
 
 Several of the values above are pulled from the original stage file
-`model.pkl.dvc` in the external DVC repository. `url` and `rev_lock` fields are
-used to specify the origin and version of the dependency.
+`model.pkl.dvc` in the external DVC repository. The `url` and `rev_lock`
+subfields under `repo` are used to save the origin and version of the
+dependency.
 
 ## Example: fixed revisions & re-importing
 
-When the `--rev` option is used, the import stage
-([DVC-file](/doc/user-guide/dvc-file-format)) will include a `rev` field under
-`repo` like this:
+To import a specific revision of a <abbr>data artifact</abbr>, we may use the
+`--rev` option:
+
+```dvc
+$ dvc import --rev cats-dogs-v1 \
+             git@github.com:iterative/dataset-registry.git \
+             use-cases/cats-dogs
+Importing
+'use-cases/cats-dogs (git@github.com:iterative/dataset-registry.git)'
+-> 'cats-dogs'
+```
+
+When using this option, the import stage
+([DVC-file](/doc/user-guide/dvc-file-format)) will also have a `rev` subfield
+under `repo`:
 
 ```yaml
 deps:
@@ -139,12 +152,15 @@ deps:
       rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
 ```
 
-If the Git revision moves, such as a branch, this doesn't have much of an effect
-on the import/update workflow. However, for static refs such as tags (unless
-manually updated), or for SHA commits, `dvc update` will not have any effect on
-the import. In this cases, in order to actually "update" an import, it's
-necessary to **re-import the data** instead, by using `dvc import` again without
-or with a different `--rev`. For example:
+If the
+[Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+moves (e.g. a branch), you may use `dvc update` to bring the data up to date.
+However, for typically static references (e.g. tags), or for SHA commits, in
+order to actually "update" an import, it's necessary to **re-import the data**
+instead, by using `dvc import` again without or with a different `--rev`. This
+will overwrite the import stage (DVC-file), either removing or replacing the
+`rev` field, respectively. This can produce an import stage that is able to be
+updated normally with `dvc update` going forward. For example:
 
 ```dvc
 $ dvc import --rev master \
@@ -152,9 +168,9 @@ $ dvc import --rev master \
              use-cases/cats-dogs
 ```
 
-This will overwrite the import stage (DVC-file) either removing or replacing the
-`rev` field. This can produce an import stage that is able to be updated
-normally with `dvc update` going forward.
+> In the above example, the value for `rev` in the new import stage will be
+> `master`, which happens to be the default branch in this Git repository, so
+> the command is equivalent to not using `--rev` at all.
 
 ## Example: Data registry
 

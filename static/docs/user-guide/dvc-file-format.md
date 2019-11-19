@@ -63,11 +63,16 @@ A dependency entry consists of a pair of fields:
 - `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
 - `repo`: This entry is only for external dependencies created with
-  `dvc import`, and in itself contains the following fields:
+  `dvc import`, and can contains the following fields:
 
   - `url`: URL of Git repository with source DVC project
+  - `rev`: Only present when the `--rev` option of `dvc import` is used.
+    Specific
+    [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+    used to import the dependency from.
   - `rev_lock`: Revision or version (Git commit hash) of the external <abbr>DVC
-    repository</abbr> at the time of importing the dependency
+    repository</abbr> at the time of importing or updating (with `dvc update`)
+    the dependency.
 
   > See the examples in
   > [External Dependencies](/doc/user-guide/external-dependencies) for more

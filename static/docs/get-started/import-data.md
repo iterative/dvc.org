@@ -3,12 +3,12 @@
 We've seen how to [push](/doc/get-started/store-data) and
 [pull](/doc/get-started/retrieve-data) data from/to a <abbr>DVC project</abbr>'s
 [remote](/doc/command-reference/remote). But what if we wanted to integrate a
-dataset or ML model produced in one project into another project?
+dataset or ML model produced in one project into another one?
 
-One way is to download the data (with `wget` or `dvc get`, for example) and use
-`dvc add` to track it, but the connection between projects would be lost. We
-wouldn't be able to tell where the data came from or whether there are new
-versions available. A better alternative is the `dvc import` command:
+One way is to manually download the data (with `wget` or `dvc get`, for example)
+and use `dvc add` to track it, but the connection between the projects would be
+lost. We wouldn't be able to tell where the data came from or whether there are
+new versions available. A better alternative is the `dvc import` command:
 
 <!--
 In the [Add Files](/doc/get-started/add-files) chapter, for example, we download
@@ -31,7 +31,7 @@ This downloads `data.xml` from our
 [dataset-registry](https://github.com/iterative/dataset-registry) project into
 the current working directory, adds it to `.gitignore`, and creates the
 `data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format) to track changes in
-the source data. With _imports_, we can use `dvc update` to check for changes in
+the source data. With _imports_, we can use `dvc update` to bring in changes in
 the external data source before [reproducing](/doc/get-started/reproduce) any
 <abbr>pipeline</abbr> that depends on this data.
 
@@ -67,9 +67,11 @@ outs:
     persist: false
 ```
 
-The `url` subfield points to the source project, while `rev_lock` lets DVC know
-which Git repository version did the data come from. Note that `dvc update`
-updates the `rev_lock` value.
+The `url` and `rev_lock` subfields under `repo` are used to save the origin and
+version of the dependency.
+
+> Note that `dvc update` updates the `rev_lock` field of the corresponding
+> DVC-file (when there are changes to bring in).
 
 </details>
 
@@ -80,3 +82,5 @@ to normal with:
 $ git reset --hard
 $ rm -f data.*
 ```
+
+> See also `dvc import-url`.
