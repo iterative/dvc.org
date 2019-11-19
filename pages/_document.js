@@ -1,11 +1,12 @@
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-
-const DESCRIPTION =
-  `Open-source version control system for Data Science and Machine Learning ` +
-  `projects. Track your data, models, and experiments with a Git-like tool.`
-const KEYWORDS = `data version control machine learning models management`
+import {
+  META_BASE_TITLE,
+  META_DESCRIPTION,
+  META_KEYWORDS,
+  META_SOCIAL_IMAGE
+} from '../consts'
 
 const inject = str => (
   <div className="inject" dangerouslySetInnerHTML={{ __html: str }} />
@@ -27,41 +28,31 @@ export default class Page extends Document {
         <html lang="en">
           <Head>
             <meta charSet="utf-8" />
-            <meta name="description" content={DESCRIPTION} />
-            <meta name="keywords" content={KEYWORDS} />
+            <meta name="description" content={META_DESCRIPTION} />
+            <meta name="keywords" content={META_KEYWORDS} />
             <meta
               prefix="og: http://ogp.me/ns#"
               property="og:image"
-              content="http://dvc.org/static/social-share.png"
+              content={META_SOCIAL_IMAGE}
             />
             <meta
               prefix="og: http://ogp.me/ns#"
               property="og:image:secure_url"
-              content="https://dvc.org/static/social-share.png"
+              content={META_SOCIAL_IMAGE}
             />
             <meta
               prefix="og: http://ogp.me/ns#"
               property="og:description"
-              content="DVC is designed to handle large data files, models, and
-              metrics as well as code. DVC is an open-source framework and
-              distributed version control system for machine learning projects."
+              content={META_DESCRIPTION}
             />
             <meta
               prefix="og: http://ogp.me/ns#"
               property="og:title"
-              content="Data Science Version Control System"
+              content={META_BASE_TITLE}
             />
             <meta name="twitter:card" content="summary_large_image" />
-            <meta
-              name="twitter:image"
-              content="https://dvc.org/static/social-share.png"
-            />
-            <meta
-              name="twitter:description"
-              content="DVC is designed to handle large data files, models, and
-              metrics as well as code. DVC is an open-source framework and
-              distributed version control system for machine learning projects."
-            />
+            <meta name="twitter:image" content={META_SOCIAL_IMAGE} />
+            <meta name="twitter:description" content={META_DESCRIPTION} />
             <meta
               name="viewport"
               content="width=device-width, initial-scale=1.0, maximum-scale=1.0,

@@ -11,6 +11,7 @@ import Diagram from '../src/Diagram'
 import PromoSection from '../src/PromoSection'
 import UseCases from '../src/UseCases'
 import Subscribe from '../src/Subscribe'
+import { META_BASE_TITLE } from '../consts'
 
 const HeadInjector = () => (
   <Head>
@@ -25,7 +26,7 @@ const HeadInjector = () => (
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
     />
-    <title>Machine Learning Version Control System · DVC</title>
+    <title>{META_BASE_TITLE}</title>
   </Head>
 )
 

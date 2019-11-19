@@ -10,10 +10,11 @@ import Page from '../src/Page'
 import Hero from '../src/Hero'
 import FeaturesHero from '../src/FeaturesHero'
 import TrySection from '../src/TrySection'
+import { META_BASE_TITLE } from '../consts'
 
 const HeadInjector = () => (
   <Head>
-    <title>Features | Machine Learning Version Control System</title>
+    <title>Features | {META_BASE_TITLE}</title>
   </Head>
 )
 

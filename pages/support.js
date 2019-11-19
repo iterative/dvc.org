@@ -11,10 +11,11 @@ import Page from '../src/Page'
 import Hero from '../src/Hero'
 import TrySection from '../src/TrySection'
 import Popover from '../src/Popover/Popover'
+import { META_BASE_TITLE } from '../consts'
 
 const HeadInjector = () => (
   <Head>
-    <title>Support | Machine Learning Version Control System</title>
+    <title>Support | {{ META_BASE_TITLE }}</title>
   </Head>
 )
 
