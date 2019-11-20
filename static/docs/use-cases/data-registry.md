@@ -13,13 +13,13 @@ example, project A may use a data file to begin its data
 same file; Instead of
 [adding it](/doc/command-reference/add#example-single-file) it to both projects,
 B can simply import it from A. Furthermore, the version of the data file
-imported to B can be an older iteration than what's currently used in A.
+imported to B can be different than what's currently used in A.
 
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
 tracking and versioning datasets (or any kind of large files). This way we would
-have a repository that has all the metadata and change history for the project's
-data. We can see who updated what, and when; use pull requests to update data
-the same way you do with code; and we don't need ad-hoc conventions to store
+have a repository with all the metadata and history of changes in the project's
+data. We can see who updated what, and when, use pull requests to update data
+the same way you do with code, and we don't need ad-hoc conventions to store
 different data versions. Other projects can share the data in the registry by
 downloading (`dvc get`) or importing (`dvc import`) them for use in different
 data processes.
@@ -28,9 +28,8 @@ The advantages of using a DVC **data registry** project are:
 
 - Data as code: Improve _lifecycle management_ with versioning of simple
   directory structures (like Git for your cloud storage), without ad-hoc
-  conventions. Leverage Git and Git hosting features such as change history,
-  branching, pull requests, reviews, and even continuous deployment of ML
-  models.
+  conventions. Leverage Git and Git hosting features such as commits, branching,
+  pull requests, reviews, and even continuous deployment of ML models.
 - Reusability: Reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
   systems like `pip`).
@@ -49,8 +48,8 @@ The advantages of using a DVC **data registry** project are:
 
 ## Example
 
-A dataset we use for several of our examples and tutorials is one containing
-2800 images of cats and dogs. We partitioned the dataset in two for our
+A dataset we use for several of our examples and tutorials contains 2800 images
+of cats and dogs. We partitioned the dataset in two for our
 [Versioning Tutorial](/doc/tutorials/versioning), and backed up the parts on a
 storage server, downloading them with `wget` in our examples. This setup was
 then revised to download the dataset with `dvc get` instead, so we created the
