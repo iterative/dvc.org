@@ -5,7 +5,7 @@ and process data remotely (for example with [Dask](https://dask.org/)).
 
 ## SSH Remotes
 
-We can add a SSH remote like this:
+We can create a SSH remote like this:
 
 ```dvc
 $ dvc remote add ssh-remote ssh://user@example.com/path/to/dir
@@ -33,7 +33,7 @@ url = ssh://user@example.com:1234/path/to/dir
 
 <details>
 
-### Details: All SSH options
+### Details: All remote options
 
 - `url` - remote location URL.
 
@@ -251,32 +251,34 @@ $ dvc run \
 
 Let's take as example a stage that simply copies a local file to a SSH location.
 
-For cached external outputs (specified using `-o`) we will need to setup an
-external cache location that will be used by DVC to store versions of the
-external file. Non-cached external outputs (specified using `-O`) do not require
-an external cache to be setup.
+For cached external outputs (specified using `-o`) we need to setup an external
+cache location that will be used by DVC to store versions of the external file.
+Non-cached external outputs (specified using `-O`) do not require an external
+cache to be setup.
 
 > When you setup an external cache for your external outputs, avoid using the
-> same location that you are using for the DVC storage (which is accesses by
+> same location that you are using for the DVC storage (which is accessed by
 > `dvc push`, `dvc pull`, `dvc fetch`), because it may cause possible checksum
 > overlaps. Checksum for some data file on an external storage can potentially
 > collide with checksum generated locally for a different file, with a different
 > content.
 
 ```dvc
-# Add a SSH DVC storage
-$ dvc remote add ssh-storage ssh://user@example.com:/srv/dvc-storage
+# Add a DVC storage
+$ dvc remote add --default \
+      ssh-storage ssh://user@example.com:/srv/dvc-storage
 
 # Add SSH remote to be used as cache for the remote files
-$ dvc remote add ssh-cache ssh://user@example.com:/srv/cache
+$ dvc remote add \
+      ssh-cache ssh://user@example.com:/srv/cache
 
 # Tell dvc to use the remote 'ssh-cache' as a SSH cache
 $ dvc config cache.ssh ssh-cache
 
-# Add data on SSH directly
+# Add data that is located on the SSH server
 $ dvc add ssh://user@example.com:/srv/data/file.csv
 
-# Create the stage with SSH external output
+# Create a stage with SSH external output
 $ dvc run \
       -d model.pkl \
       -o ssh://user@example.com:/srv/data/model.pkl \
