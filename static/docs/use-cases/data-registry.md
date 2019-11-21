@@ -10,7 +10,7 @@ different projects (similar to package management systems, but for data), DVC
 also includes the `dvc get`, `dvc import`, and `dvc update` commands. For
 example, project A may use a data file to begin its data
 [pipeline](/doc/command-reference/pipeline), but project B also requires this
-same file; Instead of
+same file. Instead of
 [adding it](/doc/command-reference/add#example-single-file) it to both projects,
 B can simply import it from A. Furthermore, the version of the data file
 imported to B can be different than what's currently used in A.
@@ -18,13 +18,13 @@ imported to B can be different than what's currently used in A.
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
 tracking and versioning datasets (or any kind of large files). This way we would
 have a repository with all the metadata and history of changes in the project's
-data. We can see who updated what, and when, use pull requests to update data
-the same way you do with code, and we don't need ad-hoc conventions to store
-different data versions. Other projects can share the data in the registry by
-downloading (`dvc get`) or importing (`dvc import`) them for use in different
-data processes.
+data. We could see who updated what, and when, use pull requests to update data
+(the same way we do with code), and avoid ad-hoc conventions to store different
+data versions. This is what we call a data registry. Other projects can share
+datasets in a registry by downloading (`dvc get`) or importing (`dvc import`)
+them for use in different data processes.
 
-The advantages of using a DVC **data registry** project are:
+Advantages of using a DVC **data registry** project:
 
 - Data as code: Improve _lifecycle management_ with versioning of simple
   directory structures (like Git for your cloud storage), without ad-hoc
