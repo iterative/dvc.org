@@ -49,7 +49,7 @@ Advantages of using a DVC **data registry** project:
 ## Example
 
 A dataset we use for several of our examples and tutorials contains 2800 images
-of cats and dogs. We partitioned the dataset in two for our
+of cats and dogs. We split the dataset in two for our
 [Versioning Tutorial](/doc/tutorials/versioning), and backed up the parts on a
 storage server, downloading them with `wget` in our examples. This setup was
 then revised to download the dataset with `dvc get` instead, so we created the
