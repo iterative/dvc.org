@@ -7,13 +7,9 @@ tracking of datasets and any other <abbr>data artifacts</abbr>.
 
 With the aim to enable reusability of these versioned artifacts between
 different projects (similar to package management systems, but for data), DVC
-also includes the `dvc get`, `dvc import`, and `dvc update` commands. For
-example, project A may use a data file to begin its data
-[pipeline](/doc/command-reference/pipeline), but project B also requires this
-same file. Instead of
-[adding it](/doc/command-reference/add#example-single-file) it to both projects,
-B can simply import it from A. Furthermore, the version of the data file
-imported to B can be different than what's currently used in A.
+also includes the `dvc get`, `dvc import`, and `dvc update` commands. This means
+that a project can depend on data from an external <abbr>DVC project</abbr>, but
+chaining several projects this way can easily become messy...
 
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
 tracking and versioning datasets (or any kind of large files). This way we would
