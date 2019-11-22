@@ -3,7 +3,7 @@
 A SSH server usually is used as a DVC storage, but it may also be used to keep
 and process data remotely (for example with [Dask](https://dask.org/)).
 
-## SSH Remotes
+## Create Remotes
 
 We can create a SSH remote like this:
 

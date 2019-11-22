@@ -3,7 +3,7 @@
 Azure Storage is Microsoft's cloud storage solution for modern data storage
 scenarios.
 
-## Azure Remotes
+## Create Remotes
 
 We can create an Azure remote like this:
 

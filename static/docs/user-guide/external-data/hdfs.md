@@ -10,7 +10,7 @@ data.
 Note that as long as there is a `hdfs://...` path for your data, DVC can handle
 it. So systems like Hadoop, Hive, and HBase are supported!
 
-## HDFS Remotes
+## Create Remotes
 
 We can create an HDFS remote like this:
 

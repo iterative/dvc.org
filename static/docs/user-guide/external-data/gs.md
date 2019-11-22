@@ -3,7 +3,7 @@
 Google Cloud Storage is a RESTful online file storage web service for storing
 and accessing data on Google Cloud Platform infrastructure.
 
-## GS Remotes
+## Create Remotes
 
 We can create a GS remote like this:
 

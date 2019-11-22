@@ -2,7 +2,7 @@
 
 **❗ Note:** HTTP/HTTPS remotes support only download operations.
 
-## HTTPS Remotes
+## Create Remotes
 
 We can create an HTTPS remote like this:
 

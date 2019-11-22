@@ -4,7 +4,7 @@ Alibaba Cloud Object Storage Service (OSS) is an encrypted, secure,
 cost-effective, and easy-to-use object storage service that enables you to
 store, back up, and archive large amounts of data in the cloud.
 
-## Aliyun OSS Remotes
+## Create Remotes
 
 First you need to setup OSS storage on Aliyun Cloud and then use an S3 style URL
 for OSS storage and make the endpoint value configurable.
