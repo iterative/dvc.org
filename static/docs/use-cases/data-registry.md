@@ -44,17 +44,17 @@ Advantages of using a DVC **data registry** project:
 
 ## Example
 
-A dataset we use for several of our examples and tutorials contains 2800 images
-of cats and dogs. We split the dataset in two for our
-[Versioning Tutorial](/doc/tutorials/versioning), and backed up the parts on a
-storage server, downloading them with `wget` in our examples. This setup was
-then revised to download the dataset with `dvc get` instead, so we created the
+A dataset we commonly use for several of our examples and tutorials contains
+2800 images of cats and dogs. We split it in two for our
+[Versioning Tutorial](/doc/tutorials/versioning). Originally, the parts were
+backed up on a storage server, and downloaded with `wget`. This setup was then
+revised to download the dataset sing `dvc get` instead, so we created the
 [dataset-registry](https://github.com/iterative/dataset-registry)) repository, a
 <abbr>DVC project</abbr> hosted on GitHub, to version the dataset (see its
 [`tutorial/ver`](https://github.com/iterative/dataset-registry/tree/master/tutorial/ver)
 directory).
 
-However, there are a few problems with the way this dataset is structured. Most
+However, there are a few problems with the way that dataset is structured. Most
 importantly, this single dataset is tracked by 2 different
 [DVC-files](/doc/user-guide/dvc-file-format), instead of 2 versions of the same
 one, which would better reflect the intentions of this dataset... Fortunately,
