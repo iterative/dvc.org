@@ -31,3 +31,9 @@ Currently DVC supports these types of remote directories:
 
 Not all of them support all the cases mentioned above. Read the corresponding
 pages for more details and examples about each type.
+
+> If you installed DVC via `pip`, depending on the remote storage type you plan
+> to use you might need to install optional dependencies: `[s3]`, `[ssh]`,
+> `[gs]`, `[azure]`, and `[oss]`; or `[all]` to include them all. The command
+> should look like this: `pip install "dvc[s3]"`. This installs `boto3` library
+> along with DVC to support Amazon S3 storage.
