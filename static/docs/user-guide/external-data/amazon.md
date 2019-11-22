@@ -160,9 +160,6 @@ $ dvc run \
 
 ## External Data and Outputs
 
-Let's take as example a stage that simply copies a local file to an Amazon S3
-bucket.
-
 For cached external outputs (specified using `-o`) we need to setup an external
 cache location that will be used by DVC to store versions of the external file.
 Non-cached external outputs (specified using `-O`) do not require an external
@@ -174,6 +171,9 @@ cache to be setup.
 > overlaps. Checksum for some data file on an external storage can potentially
 > collide with checksum generated locally for a different file, with a different
 > content.
+
+Let's take as example a stage that simply copies a local file to an Amazon S3
+bucket.
 
 ```dvc
 # Add a DVC storage
@@ -187,10 +187,10 @@ $ dvc remote add \
 # Tell dvc to use the 's3cache' remote as S3 cache location
 $ dvc config cache.s3 s3cache
 
-# Add data that is located on Amazon S3
+# Track data that is located on Amazon S3
 $ dvc add s3://mybucket/data/file.csv
 
-# Create a stage with external output
+# Create a stage with an S3 external output
 $ dvc run \
       -d model.pkl \
       -o s3://mybucket/data/model.pkl \

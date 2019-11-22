@@ -249,8 +249,6 @@ $ dvc run \
 
 ## External Data and Outputs
 
-Let's take as example a stage that simply copies a local file to a SSH location.
-
 For cached external outputs (specified using `-o`) we need to setup an external
 cache location that will be used by DVC to store versions of the external file.
 Non-cached external outputs (specified using `-O`) do not require an external
@@ -262,6 +260,8 @@ cache to be setup.
 > overlaps. Checksum for some data file on an external storage can potentially
 > collide with checksum generated locally for a different file, with a different
 > content.
+
+Let's take as example a stage that simply copies a local file to a SSH location.
 
 ```dvc
 # Add a DVC storage
@@ -275,10 +275,10 @@ $ dvc remote add \
 # Tell dvc to use the remote 'ssh-cache' as a SSH cache
 $ dvc config cache.ssh ssh-cache
 
-# Add data that is located on the SSH server
+# Track data that is located on the SSH server
 $ dvc add ssh://user@example.com:/srv/data/file.csv
 
-# Create a stage with SSH external output
+# Create a stage with an SSH external output
 $ dvc run \
       -d model.pkl \
       -o ssh://user@example.com:/srv/data/model.pkl \
