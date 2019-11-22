@@ -158,6 +158,19 @@ $ dvc run \
       'aws s3 cp s3://mybucket/file.csv file.csv'
 ```
 
+It is even easier to download a file if we use the command `dvc import-url`:
+
+```dvc
+$ dvc import-url s3://mybucket/file.csv
+```
+
+Or, using a remote:
+
+```dvc
+$ dvc remote add s3-data s3://mybucket
+$ dvc import-url remote://s3-data/file.csv
+```
+
 ## External Data and Outputs
 
 For cached external outputs (specified using `-o`) we need to setup an external

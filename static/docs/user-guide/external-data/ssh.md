@@ -247,6 +247,19 @@ $ dvc run \
 > `remote://ssh-data/file.csv` using the
 > [DVC API](https://github.com/iterative/dvc/blob/master/dvc/api.py)
 
+It is even easier to download a file if we use the command `dvc import-url`:
+
+```dvc
+$ dvc import-url ssh://user@example.com/srv/data/file.csv
+```
+
+Or, using a remote:
+
+```dvc
+$ dvc remote add ssh-data ssh://user@example.com/srv/data
+$ dvc import-url remote://ssh-data/file.csv
+```
+
 ## External Data and Outputs
 
 For cached external outputs (specified using `-o`) we need to setup an external

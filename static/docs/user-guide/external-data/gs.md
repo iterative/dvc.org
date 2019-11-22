@@ -74,6 +74,19 @@ $ dvc run \
       'gsutil cp gs://mybucket/file.csv file.csv'
 ```
 
+It is even easier to download a file if we use the command `dvc import-url`:
+
+```dvc
+$ dvc import-url gs://mybucket/file.csv
+```
+
+Or, using a remote:
+
+```dvc
+$ dvc remote add gs-data gs://mybucket
+$ dvc import-url remote://gs-data/file.csv
+```
+
 ## External Data and Outputs
 
 For cached external outputs (specified using `-o`) we need to setup an external
