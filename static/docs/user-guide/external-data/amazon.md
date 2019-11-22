@@ -130,7 +130,7 @@ these settings, you could use the following options:
 
 ## DVC Storage
 
-To use an Amazon S3 as a DVC storage we should declare it as a default remote:
+To use Amazon S3 as a DVC storage we should create a default remote:
 
 ```dvc
 $ dvc remote add --default s3storage s3://mybucket/path

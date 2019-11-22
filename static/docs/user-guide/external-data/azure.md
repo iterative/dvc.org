@@ -54,8 +54,7 @@ $ dvc remote add myremote "azure://"
 
 ## DVC Storage
 
-To use an Azure storage as a DVC storage we should declare it as a default
-remote:
+To use Azure as a DVC storage we should create a default remote:
 
 ```dvc
 $ dvc remote add --default \

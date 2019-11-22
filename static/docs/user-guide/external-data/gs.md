@@ -46,7 +46,7 @@ url = gs://bucket/path
 
 ## DVC Storage
 
-To use GS as a DVC storage we should declare it as a default remote:
+To use GS as a DVC storage we should create a default remote:
 
 ```dvc
 $ dvc remote add --default myremote gs://bucket/path
