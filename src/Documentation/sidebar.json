@@ -130,6 +130,10 @@
             "slug": "local"
           },
           {
+            "label": "HTTP",
+            "slug": "http"
+          },
+          {
             "label": "SSH",
             "slug": "ssh"
           },
@@ -156,10 +160,6 @@
           {
             "label": "Aliyun OSS",
             "slug": "oss"
-          },
-          {
-            "label": "HTTP",
-            "slug": "http"
           }
         ]
       },
