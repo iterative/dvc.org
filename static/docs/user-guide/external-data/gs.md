@@ -90,29 +90,41 @@ $ dvc import-url remote://gs-data/file.csv
 ## External Data and Outputs
 
 For cached external outputs (specified using `-o`) we need to setup an external
-cache location that will be used by DVC to store versions of the external file.
-Non-cached external outputs (specified using `-O`) do not require an external
-cache to be setup.
-
-> When you setup an external cache for your external outputs, avoid using the
-> same location that you are using for the DVC storage (which is accessed by
-> `dvc push`, `dvc pull`, `dvc fetch`), because it may cause possible checksum
-> overlaps. Checksum for some data file on an external storage can potentially
-> collide with checksum generated locally for a different file, with a different
-> content.
-
-Let's take as example a stage that simply copies a local file to a GS location.
+cache location that will be used by DVC to store versions of the external file:
 
 ```dvc
-# Add a DVC storage
-$ dvc remote add --default storage gs://mybucket/dvc-storage
-
 # Add GS remote to be used as cache location for GS files
 $ dvc remote add gscache gs://mybucket/cache
 
 # Tell dvc to use the 'gscache' remote as GS cache location
 $ dvc config cache.gs gscache
+```
 
+> Non-cached external outputs (specified using `-O`) do not require an external
+> cache to be setup.
+
+<details>
+
+### Warning: Don't use the same location for the external cache and for the DVC storage
+
+When you setup an external cache for your external outputs, avoid using the same
+location that you are using for the DVC storage (which is accessed by
+`dvc push`, `dvc pull`, `dvc fetch`), because it may cause possible checksum
+overlaps. Checksum for some data file on an external storage can potentially
+collide with checksum generated locally for a different file, with a different
+content.
+
+```dvc
+# Add a DVC storage
+$ dvc remote add --default storage gs://mybucket/dvc-storage
+```
+
+</details>
+
+Now we can track remote data or create a stage with remote output. Let's take as
+example a stage that simply copies a local file to a GS location:
+
+```dvc
 # Track data that is located on GS
 $ dvc add gs://mybucket/data/file.csv
 
