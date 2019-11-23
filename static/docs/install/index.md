@@ -17,4 +17,4 @@ Please double check that you don't already have DVC (for example running
   stay ahead of official releases.
 
 - Please also check out these 3rd-party tool
-  [plugins](/doc/user-guide/install/plugins), which might be useful.
+  [plugins](/doc/install/plugins), which might be useful.
