@@ -27,11 +27,13 @@ guides related to contributing to this
   [DVC-file](/doc/user-guide/dvc-files-and-directories) dependencies.
 - [Managing External Data](/doc/user-guide/managing-external-data) explains both
   external outputs and external cache.
-- [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) contains useful information for our Windows users.
-- [Using Docker](/doc/user-guide/using-docker) explains how to set up a Docker image to develop with DVC and which considerations to have.
 - [Contributing](/doc/user-guide/contributing) is related with getting involved
   directly in developing DVC. Contributors are very welcomed in our
   [community](/support)!
+- [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) contains
+  useful information for our Windows users.
+- [Using Docker](/doc/user-guide/using-docker) explains how to set up a Docker
+  image to develop with DVC and which considerations to have.
 
 The remaining guides are about optional productivity enhancements and other tips
 and tools related to advanced usage of DVC.
