@@ -16,5 +16,5 @@ Please double check that you don't already have DVC (for example running
 - You can [install a stable pre-release](/doc/install/pre-release) of DVC to
   stay ahead of official releases.
 
-- Please also check out these 3rd-party tool
-  [plugins](/doc/install/plugins), which might be useful.
+- Please also check out these 3rd-party tool [plugins](/doc/install/plugins),
+  which might be useful.
