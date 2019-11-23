@@ -7,7 +7,16 @@ import Tooltip from '../../Tooltip'
 import Collapsible from 'react-collapsible'
 // syntax highlighter
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
+import {
+  docco,
+  python,
+  yaml,
+  ini,
+  bash,
+  diff,
+  vim,
+  dockerfile
+} from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import usage from './lang/usage'
 import dvc from './lang/dvc'
 import linker from './utils/remark-linker'
@@ -18,7 +27,14 @@ import styled from 'styled-components'
 import { media } from '../../../src/styles'
 
 SyntaxHighlighter.registerLanguage('dvc', dvc)
+SyntaxHighlighter.registerLanguage('python', python)
 SyntaxHighlighter.registerLanguage('usage', usage)
+SyntaxHighlighter.registerLanguage('yaml', yaml)
+SyntaxHighlighter.registerLanguage('ini', ini)
+SyntaxHighlighter.registerLanguage('bash', bash)
+SyntaxHighlighter.registerLanguage('vim', vim)
+SyntaxHighlighter.registerLanguage('diff', diff)
+SyntaxHighlighter.registerLanguage('dockerfile', dockerfile)
 
 function flatten(text, child) {
   return typeof child === 'string'
