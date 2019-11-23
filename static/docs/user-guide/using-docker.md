@@ -9,6 +9,7 @@ We support several ways to install DVC, the two recommended ones are through
 `pip` and `conda`.
 
 You can base your image on the official Python one:
+
 ```dockerfile
 FROM python
 
@@ -18,33 +19,35 @@ RUN pip install dvc
 ```
 
 Or use a conda based image:
+
 ```dockerfile
 FROM continuumio/miniconda3
 
 RUN conda install dvc -y --quiet
 ```
 
-For a recommended reading about writing Dockerfiles for Python applications,
-you can take a look at https://pythonspeed.com/docker/
+For a recommended reading about writing Dockerfiles for Python applications, you
+can take a look at https://pythonspeed.com/docker/
 
 ## Using Docker for your development environment
 
-Since `dvc` is a command line application, we have several recommendiations
-to enhance the experience:
-  * Make sure your _locale_ is set to UTF-8
-  * Install the `Zsh` shell and its respective autocompletion script.
-  * Install `less` so you can pipe the output of `dvc pipeline show`.
-  * Enable movements with `Ctrl + Arrow` by editing the _inputrc_ file.
-  * Use `pip install dvc` at the end of the file for better caching.
-  * Set your `WORKDIR` to the path where you are going to mount your project.
+Since `dvc` is a command line application, we have several recommendiations to
+enhance the experience:
+
+- Make sure your _locale_ is set to UTF-8
+- Install the `Zsh` shell and its respective autocompletion script.
+- Install `less` so you can pipe the output of `dvc pipeline show`.
+- Enable movements with `Ctrl + Arrow` by editing the _inputrc_ file.
+- Use `pip install dvc` at the end of the file for better caching.
+- Set your `WORKDIR` to the path where you are going to mount your project.
 
 If you are using Linux, remember to map your user to your container. This way,
 you make sure your files are still writtable. For more information:
 https://docs.docker.com/engine/security/userns-remap/
 
-### Dockerfile
+### Example Dockerfile
 
-The following is a suggestion for a Dockerfile to use during development:
+The following is a **suggestion** for a Dockerfile to use during development:
 
 ```dockerfile
 FROM python
@@ -73,6 +76,8 @@ RUN apt-get update -y && apt-get install -y \
 SHELL ["/usr/bin/zsh", "-c"]
 
 # Enable autocompletion scripts for DVC
+# and rice the completion style with `zstyle`:
+# http://zsh.sourceforge.net/Doc/Release/Zsh-Modules.html#The-zsh_002fzutil-Module
 RUN wget \
       -O /usr/local/share/zsh/site-functions/_dvc \
       https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.zsh \
@@ -90,13 +95,14 @@ RUN wget \
       && echo "zstyle ':completion:*' group-name ''" >> /root/.zshrc \
       && echo "zstyle ':completion:*' verbose yes" >> /root/.zshrc
 
-# Install DVC with s3 enabled
-RUN pip install "dvc[s3]"
+# Install DVC supporting all the remotes
+RUN pip install "dvc[all]"
 
 # vim: ft=dockerfile
 ```
 
 Then, build the image and run it:
+
 ```console
 $ TAG="dvc:development"
 $ docker build -t $TAG .
