@@ -18,7 +18,7 @@ FROM python
 RUN pip install dvc
 ```
 
-Or use a conda based image:
+Or use a Conda based image:
 
 ```dockerfile
 FROM continuumio/miniconda3
@@ -31,18 +31,18 @@ can take a look at https://pythonspeed.com/docker/
 
 ## Using Docker for your development environment
 
-Since `dvc` is a command line application, we have several recommendiations to
+Since `dvc` is a command line application, we have several recommendations to
 enhance the experience:
 
 - Make sure your _locale_ is set to UTF-8
-- Install the `Zsh` shell and its respective autocompletion script.
+- Install the Zsh shell and its respective autocompletion script.
 - Install `less` so you can pipe the output of `dvc pipeline show`.
 - Enable movements with `Ctrl + Arrow` by editing the _inputrc_ file.
 - Use `pip install dvc` at the end of the file for better caching.
 - Set your `WORKDIR` to the path where you are going to mount your project.
 
 If you are using Linux, remember to map your user to your container. This way,
-you make sure your files are still writtable. For more information:
+you make sure your files are still writable. For more information:
 https://docs.docker.com/engine/security/userns-remap/
 
 ### Example Dockerfile
