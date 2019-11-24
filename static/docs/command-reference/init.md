@@ -14,11 +14,10 @@ usage: dvc init [-h] [-q | -v] [--no-scm] [-f]
 ## Description
 
 After DVC initialization, a new directory `.dvc/` will be created with the
-`config` and `.gitignore` files, as well as `cache/` directory. These files and
-directories are hidden from users in general, as there's no need to interact
-with them directly. See
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
-more.
+`config` and `.gitignore` files. These and other files and directories are
+hidden from user, as typically there's no need to interact with them directly.
+See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
+learn more.
 
 `.dvc/cache` is one of the most important
 [DVC directories](/doc/user-guide/dvc-files-and-directories). It will hold all
