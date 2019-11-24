@@ -3,8 +3,8 @@
 Download or copy an <abbr>output</abbr> file or directory from any <abbr>DVC
 repository</abbr> (e.g. hosted on GitHub) into the <abbr>workspace</abbr>. DVC
 creates a [DVC-file](/doc/user-guide/dvc-file-format) with information about the
-data source, which can later be used for
-[updating](/doc/command-reference/update) the import.
+data source, which can later be used to [update](/doc/command-reference/update)
+the import.
 
 > See also `dvc get`, that corresponds to the first step this command performs
 > (just download the data).
@@ -100,9 +100,9 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 
 In contrast with `dvc get`, this command doesn't just download the data file,
 but it also creates an import stage
-([DVC-file](/doc/user-guide/dvc-file-format)) with a link to this data source.
-This DVC-file with the link is used during imported file
-[update](/doc/user-guide/external-dependencies). Check `data.xml.dvc`:
+([DVC-file](/doc/user-guide/dvc-file-format)) with a link to the data source (as
+explained in the description above). (This import stage can later be used to
+[update](/doc/command-reference/update) the import.) Check `data.xml.dvc`:
 
 ```yaml
 md5: 7de90e7de7b432ad972095bc1f2ec0f8
