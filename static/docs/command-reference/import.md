@@ -1,9 +1,11 @@
 # import
 
-Download or copy file or directory from any <abbr>DVC project</abbr> in a Git
-repository (e.g. hosted on GitHub) into the <abbr>workspace</abbr>, and track
-changes in this [external dependency](/doc/user-guide/external-dependencies).
-Creates [DVC-files](/doc/user-guide/dvc-file-format).
+Import file or directory from any <abbr>DVC project</abbr> in a Git
+repository (e.g. hosted on GitHub). The imported files will be copied
+or downloaded into the <abbr>workspace</abbr> while DVC keeps information
+about the source in a created [DVC-files](/doc/user-guide/dvc-file-format).
+Information about the source is a link to a imported repository and it is
+used during imported file [update](/doc/user-guide/external-dependencies).
 
 > See also `dvc get`, that corresponds to the first step this command performs
 > (just download the data).
@@ -100,9 +102,10 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 
 In contrast with `dvc get`, this command doesn't just download the data file,
 but it also creates an import stage
-([DVC-file](/doc/user-guide/dvc-file-format)) to register this data as an
-[external dependency](/doc/user-guide/external-dependencies) (using the `repo`
-field). Check `data.xml.dvc`:
+([DVC-file](/doc/user-guide/dvc-file-format)) with a link to this data source.
+This DVC-file with the link is used during imported
+file [update](/doc/user-guide/external-dependencies).
+Check `data.xml.dvc`:
 
 ```yaml
 md5: 7de90e7de7b432ad972095bc1f2ec0f8
