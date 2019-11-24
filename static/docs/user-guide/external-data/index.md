@@ -22,7 +22,7 @@ Currently DVC supports these types of remote directories:
 - [Local Filesystem](/doc/user-guide/external-data/local)
 - [SSH](/doc/user-guide/external-data/ssh)
 - [Amazon S3](/doc/user-guide/external-data/amazon)
-- [S3 API](/doc/user-guide/external-data/s3)
+- [S3 Compatible](/doc/user-guide/external-data/s3)
 - [Azure](/doc/user-guide/external-data/azure)
 - [Google Cloud Storage](/doc/user-guide/external-data/gs)
 - [HDFS](/doc/user-guide/external-data/hdfs)
