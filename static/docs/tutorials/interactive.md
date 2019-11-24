@@ -46,12 +46,3 @@ Learn how DVC can be used in simple ML scenarios:
 
 - [MNIST](https://katacoda.com/dvc/courses/tutorials/mnist) <br/> Creating a
   model to classify images of hand-written digits using MNIST as the data-set.
-
-## Examples
-
-Interactive examples about using DVC commands and other features of DVC.
-
-- [dvc fetch](https://katacoda.com/dvc/courses/examples/fetch) <br/> We will use
-  an example project with some data, code, ML models, pipeline stages, as well
-  as a few Git tags. Then we will see what happens with dvc fetch as we switch
-  from tag to tag.
