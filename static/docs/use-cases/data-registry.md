@@ -9,7 +9,7 @@ With the aim to enable reusability of these versioned artifacts between
 different projects (similar to package management systems, but for data), DVC
 also includes the `dvc get`, `dvc import`, and `dvc update` commands. This means
 that a project can depend on data from an external <abbr>DVC project</abbr>, but
-chaining several projects this way can easily become messy...
+chaining several projects this way can easily become messy.
 
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
 tracking and versioning datasets (or any kind of large files). This way we would
