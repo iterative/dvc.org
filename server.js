@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 // This file doesn't go through babel or webpack transformation.
 // Make sure the syntax and sources this file requires are compatible with the
 // current node version you are running.
@@ -6,9 +8,9 @@
 
 const { createServer } = require('http')
 const { parse } = require('url')
-const _ = require('force-ssl-heroku')
 const next = require('next')
 const querystring = require('querystring')
+const request = require('request')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -96,7 +98,7 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/doc.*/i.test(pathname)) {
       // path /doc*/... -> /doc/...
-      let normalized_pathname = pathname.replace(/^\/doc[^?\/]*/i, '/doc')
+      let normalized_pathname = pathname.replace(/^\/doc[^?/]*/i, '/doc')
       if (normalized_pathname !== pathname) {
         res.writeHead(301, {
           Location:
@@ -108,6 +110,18 @@ app.prepare().then(() => {
       } else {
         app.render(req, res, '/doc', query)
       }
+    } else if (/^\/api\/comments/i.test(pathname)) {
+      request(`${query.url}.json`, (error, response, body) => {
+        if (error || response.statusCode !== 200) {
+          res.write(JSON.stringify({ error }))
+        } else {
+          // post_count return all posts including topic itself
+          const count = JSON.parse(body).posts_count - 1
+
+          res.write(JSON.stringify({ count }))
+        }
+        res.end()
+      })
     } else {
       handle(req, res, parsedUrl)
     }
