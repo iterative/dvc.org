@@ -10,10 +10,9 @@ const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
 const querystring = require('querystring')
-const request = require('request')
 
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev })
+const app = next({ dev, crossOrigin: 'anonymous' })
 const port = process.env.PORT || 3000
 const handle = app.getRequestHandler()
 
@@ -110,18 +109,6 @@ app.prepare().then(() => {
       } else {
         app.render(req, res, '/doc', query)
       }
-    } else if (/^\/api\/comments/i.test(pathname)) {
-      request(`${query.url}.json`, (error, response, body) => {
-        if (error || response.statusCode !== 200) {
-          res.write(JSON.stringify({ error }))
-        } else {
-          // post_count return all posts including topic itself
-          const count = JSON.parse(body).posts_count - 1
-
-          res.write(JSON.stringify({ count }))
-        }
-        res.end()
-      })
     } else {
       handle(req, res, parsedUrl)
     }
