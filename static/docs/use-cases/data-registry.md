@@ -46,9 +46,8 @@ Advantages of using a DVC **data registry** project:
 
 A dataset we commonly use for several of our examples and tutorials contains
 2800 images of cats and dogs, which was originally split it in two for our
-[Versioning Tutorial](/doc/tutorials/versioning). We then properly versioned
-this same dataset (without splitting) in the
-[`use-cases/`](https://github.com/iterative/dataset-registry/tree/master/use-cases)
+[Versioning tutorial](/doc/tutorials/versioning). We then improved the
+versioning of this same dataset (without splitting) in the `use-cases/`
 directory of our
 [dataset-registry](https://github.com/iterative/dataset-registry)
 <abbr>project</abbr> (hosted on GitHub). Let's see how this was done.
@@ -59,10 +58,11 @@ directory of our
 > Versioning tutorial above.
 
 To create the
-[initial version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v1/use-cases)
-of our dataset, we extracted the first part (`data.zip`) into
-`use-cases/cats-dogs`, and used `dvc add` to
-[track the entire directory](https://dvc.org/doc/command-reference/add#example-directory):
+[initial version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v1/use-cases),
+we extracted the first part (`data.zip`) into `use-cases/cats-dogs` and used
+`dvc add` to
+[track the entire directory](https://dvc.org/doc/command-reference/add#example-directory),
+and committed this state with Git:
 
 ```dvc
 $ mkdir use-cases && cd use-cases
@@ -77,13 +77,30 @@ use-cases/cats-dogs
         ├── cats [400 image files]
         └── dogs [400 image files]
 $ dvc add use-cases/cats-dogs
+
+... This creates DVC-file `use-cases/cats-dogs.dvc`
+
+$ git add .gitignore use-cases/cats-dogs.dvc
+$ git commit -m 'Add 1800 cats and dogs images dataset.'
 ```
 
 The
 [second version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v2/use-cases)
-was created by similarly extracting the second part, with 1000 additional images
-(500 cats, 500 dogs), on top of the same directory structure. Then we simply ran
-`dvc add use-cases/cats-dogs` again.
+was created by extracting the remaining part of the dataset, with 1000
+additional training images (500 cats, 500 dogs), on top of the same directory
+structure. Then we simply added the directory again! DVC recognizes the changes
+and updates the DVC-file, which can then be committed with Git again:
+
+```dvc
+$ dvc add use-cases/cats-dogs
+$ git add use-cases/cats-dogs.dvc
+$ git commit -m 'Add 1000 more cats and dogs images to dataset.'
+```
+
+> The versioned dataset was then uploaded to
+> [remote storage](/doc/command-reference/remote) with `dvc push`. This is
+> necessary for others being able to access the data from other projects and
+> locations.
 
 The result is a properly versioned dataset, with 2 versions of a single DVC-file
 representing the entire (merged) data. This is in contrast to having one single
