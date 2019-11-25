@@ -2,10 +2,10 @@
 
 We have seen already how to share data through a
 [mounted DVC storage](/doc/user-guide/data-sharing/mounted-storage). In that
-setup we have a copy of the data on the remote server and at least one copy of
-the data on the local filesystem. This situation can be further optimized
-(regarding data management) if we use a shared cache.
+case we have a copy of the data on the DVC storage and at least one copy on each
+user project, since deduplication does not work across filesystems.
 
+However the data management can be further optimized if we use a shared cache.
 The idea is that instead of mounting the DVC storage from the server, we can
 directly mount the cache directory (`.dvc/cache/`). If all the users do this,
 then effectively they will be using the same cache directory (which is mounted
@@ -14,16 +14,16 @@ appear automatically to the cache of all the others. As a result, no `dvc push`
 and `dvc pull` are needed to share the data, just a `dvc checkout` will be
 sufficient.
 
-> ** ❗ Caution:** Deleting data from the cache will also make it vanish from
-> the cache of the other users. So, be careful with the command `dvc gc` which
-> cleans obsolete data from the cache and consult the other users of the cache
-> before using it.
+> ** ❗ Caution:** Deleting data from the cache will also make it disappear from
+> the cache of the other users. So, be careful with the command `dvc gc` (which
+> cleans obsolete data from the cache) and consult the other users of the
+> project before using this command.
 
 The optimization in data management comes from using the _symlink_ cache type.
 You can find more details about it in the page of
 [Large Dataset Optimization](https://dvc.org/doc/user-guide/large-dataset-optimization).
 
-## SSHFS Mounted Cache Example
+## Mounted Cache Example
 
 In this example we will see how to share data with the help of a cache directory
 that is mounted through SSHFS. We are using a SSHFS example because it is easy
@@ -38,7 +38,9 @@ storages (like NFS, Samba, etc.).
 <img src="/static/img/user-guide/data-sharing/mounted-cache.png"/>
 </p>
 
-### Setup the server
+<details>
+
+### Prerequisites: Setup the server
 
 We have to do these configurations on the SSH server:
 
@@ -47,6 +49,10 @@ We have to do these configurations on the SSH server:
 - Create a bare git repository (for example on `/srv/project.git/`) and an empty
   directory for the DVC cache (for example on `/srv/project.cache/`).
 - Grant users read/write access to these directories (through the groups).
+
+</details>
+
+<details>
 
 ### Setup each user
 
@@ -69,6 +75,8 @@ Host dvc-server
 Here `dvc-server` is the name or alias that we can use for our server, `host01`
 can actually be the IP or the FQDN of the server, and `user1` is the username of
 the first user on the server.
+
+</details>
 
 ### Mount the DVC cache
 
@@ -101,11 +109,22 @@ type = "reflink,symlink,hardlink,copy"
 protected = true
 ```
 
+This configuration is the same for all the users, so we can add it to Git in
+order to share it with the other users:
+
+```dvc
+$ git add .dvc/config
+$ git commit -m "Use symlinks if reflinks are not available"
+$ git push
+```
+
 ### Sharing data
 
-Let's say that one of the users has added some data with `dvc add` or `dvc run`.
-This data is stored in `.dvc/cache` and it is linked (with symlink) from the
-workspace. He can share the DVC-files with:
+When we add data to the project with `dvc add` or `dvc run`, some DVC-files are
+created, the data is stored in `.dvc/cache/`, and it is linked (with symlink)
+from the workspace.
+
+We can share the DVC-files with:
 
 ```dvc
 $ git push

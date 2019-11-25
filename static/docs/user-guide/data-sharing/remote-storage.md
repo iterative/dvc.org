@@ -1,18 +1,28 @@
 # Sharing Data Through a Remote DVC Storage
 
-This is the recommended and the most common case of data sharing. In this case
-we setup a [remote storage](/doc/command-reference/remote) on a data storage
-provider, to store data files online, where others can reach them. Currently DVC
-supports Amazon S3, Google Cloud Storage, Microsoft Azure Blob Storage, SSH,
-HDFS, and other remote locations, and the list is constantly growing.
+We can setup a _default_ [remote storage](/doc/user-guide/external-data) to a
+data storage provider, where we can upload the cached data files, so that the
+other users can access them.
 
-## S3 Remote Example
+> Currently DVC supports Amazon S3, Google Cloud Storage, Microsoft Azure Blob
+> Storage, SSH, HDFS, and other remote storage types/providers, and the list is
+> constantly growing.
 
-As an example, let's take a look at how you could setup an S3
-[remote storage](/doc/command-reference/remote) for a <abbr>DVC project</abbr>,
-and push/pull to/from it.
+We can share data using `git push` (to upload DVC-files) and `dvc push` (to
+upload cached data files). The other users can use `git pull` followed by
+`dvc pull` to receive them.
 
-### Create an S3 bucket
+> This is the recommended and the most common case of data sharing.
+
+## Example: S3 Remote Storage
+
+As an example, let's take a look at how we could setup an
+[Amazon S3 remote storage](/doc/user-guide/external-data/amazon) for a <abbr>DVC
+project</abbr>, and share data through it.
+
+<details>
+
+### Prerequisite: Create first an S3 bucket
 
 If you don't already have one available in your S3 account, follow instructions
 in
@@ -21,98 +31,79 @@ As an advanced alternative, you may use the
 [`aws s3 mb`](https://docs.aws.amazon.com/cli/latest/reference/s3/mb.html)
 command instead.
 
-### Setup DVC remote
+</details>
 
-To actually configure a S3 remote in the <abbr>project</abbr>, supply the URL to
-the bucket where the data should be stored to the `dvc remote add` command. For
-example:
+### Set the DVC storage
+
+To setup an S3 DVC storage we need to create a _default_ remote like this:
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/myproject
-Setting 'myremote' as a default remote.
+$ dvc remote add --default s3storage s3://mybucket/myproject
+Setting 's3storage' as a default remote.
+
+$ dvc remote list
+s3storage	s3://mybucket/myproject
 ```
 
-> The `-d` (`--default`) option sets `myremote` as the default remote storage
-> for this project.
-
-This will add `myremote` to your `.dvc/config`. The `config` file now have a
-section like this:
+This command will add to `.dvc/config` some lines like these:
 
 ```dvc
-['remote "myremote"']
+['remote "s3storage"']
 url = s3://mybucket/myproject
 [core]
-remote = myremote
+remote = s3storage
 ```
 
-`dvc remote` provides a wide variety of options to configure S3 bucket. For more
-information see `dvc remote modify`.
-
-Let's commit your changes and push your code:
+This configuration is the same for all the users, so let's commit it to Git:
 
 ```dvc
 $ git add .dvc/config
+$ git commit -m 'Setup S3 storage'
 $ git push
 ```
 
-### Upload data and code
+### Sharing data
 
-After adding data to the <abbr>project</abbr> with `dvc run` or other commands,
-it should be stored in your local <abbr>cache</abbr>. Upload it to remote
-storage with the `dvc push` command:
+When we add data to the project with `dvc add` or `dvc run`, some DVC-files are
+created and the data is stored in `.dvc/cache/`. We can upload DVC-files to the
+Git server with `git push`, and upload the cached files to the remote storage
+with `dvc push`:
 
 ```dvc
+$ git push
 $ dvc push
 ```
 
-Code and [DVC-files](/doc/user-guide/dvc-file-format) should be committed and
-pushed with Git.
-
-### Download code
-
-Please use regular Git commands to download code and DVC-files from your Git
-servers. For example:
-
-```dvc
-$ git clone https://github.com/myaccount/myproject.git
-$ cd myproject
-```
-
-or
+The other users can receive the DVC-files and the cached data files like this:
 
 ```dvc
 $ git pull
-```
-
-### Download data
-
-To download data files for your <abbr>project</abbr>, run:
-
-```dvc
 $ dvc pull
 ```
 
-`dvc pull` will download the missing data files from the default remote storage
-configured in the `.dvc/config` file.
+## Example: SSH Remote Storage
 
-## SSH Remote Example
-
-As an other example, let's see how to setup an SSH remote storage for a project
-and share data through it.
+As an other example, let's see how to setup an
+[SSH remote storage](/doc/user-guide/external-data/ssh) for a project and share
+data through it.
 
 > For more detailed instructions check out this
 > [interactive example](https://katacoda.com/dvc/courses/examples/ssh-storage).
 
 In this example we will assume a central data storage server that can be
-accessed through SSH from two different users. For the sake of example the
-central Git repository will be located in this server too, but in general it can
-be anywhere, it doesn't have to be on the same server with the DVC data storage.
+accessed through SSH from two different users.
+
+> For the sake of example the central Git repository will be located in this
+> server too, but in general it can be anywhere, it doesn't have to be on the
+> same server with the DVC data storage.
 
 <p align="center">
 <img src="/static/img/user-guide/data-sharing/ssh-storage.png"/>
 </p>
 
-### Setup the server
+<details>
+
+### Prequisite: Setup the SSH server
 
 Usually we need to do these configurations on a SSH server:
 
@@ -120,10 +111,13 @@ Usually we need to do these configurations on a SSH server:
   repository and the DVC storage.
 - Create a bare git repository (for example on `/srv/project.git/`) and an empty
   directory for the DVC storage (for example on `/srv/project.cache/`).
-
 - Grant users read/write access to these directories (through the groups).
 
-### Setup each user
+</details>
+
+<details>
+
+### Prerequisite: Setup each user
 
 When we have to access a SSH server, we definitely want to generate ssh key
 pairs and setup the SSH config so that we can access the server without a
@@ -145,47 +139,54 @@ Here `dvc-server` is the name or alias that we can use for our server, `host01`
 can actually be the IP or the FQDN of the server, and `user1` is the username of
 the first user on the server.
 
-### Setup DVC remote
+</details>
 
-The configuration of the project with the SSH remote storage can be done with a
-command like this:
+### Set the DVC storage
+
+We can setup the project to use the
+[SSH remote storage](/doc/user-guide/external-data/ssh) by adding a _default
+remote_ like this:
 
 ```dvc
 $ dvc remote add --default \
-      ssh-cache ssh://dvc-server:/srv/project.cache
+      ssh-storage ssh://dvc-server:/srv/project.cache
+Setting 'ssh-storage' as a default remote.
+
+$ dvc remote list
+ssh-storage	ssh://dvc-server:/srv/project.cache
 ```
 
-This command will add a default remote configuration on `.dvc/config` that looks
-like this:
+The configuration file `.dvc/config` now should look like this:
 
 ```
-['remote "ssh-cache"']
+['remote "ssh-storage"']
 url = ssh://dvc-server:/srv/project.cache
 [core]
-remote = ssh-cache
+remote = ssh-storage
 ```
 
-Note that this configuration is the same for all the users, so we can add it to
-Git in order to share it with the other users:
+This configuration is the same for all the users, so we can add it to Git in
+order to share it with the other users:
 
 ```dvc
 $ git add .dvc/config
-$ git commit -m 'Add a SSH remote cache'
+$ git commit -m 'Add a SSH remote storage'
 $ git push
 ```
 
 ### Sharing data
 
-After adding data to the project with `dvc add` and `dvc run`, it is stored in
-`.dvc/cache`. We can upload to the server both the code changes and the data
-like this:
+When we add data to the project with `dvc add` or `dvc run`, some DVC-files are
+created and the data is stored in `.dvc/cache/`. We can upload DVC-files to the
+Git server with `git push`, and upload the cached files to the remote storage
+with `dvc push`:
 
 ```dvc
 $ git push
 $ dvc push
 ```
 
-On the other end, we can receive the code changes and data like this:
+The other users can receive the DVC-files and the cached data like this:
 
 ```dvc
 $ git pull
