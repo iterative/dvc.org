@@ -137,6 +137,10 @@
             "slug": "mounted-storage"
           },
           {
+            "label": "Mounted DVC Cache",
+            "slug": "mounted-cache"
+          },
+          {
             "label": "Synced DVC Storage",
             "slug": "synced-storage"
           }

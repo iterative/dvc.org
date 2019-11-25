@@ -34,6 +34,16 @@ common scenarios.
   network-attached storage (NAS) and can be accessed through protocols like NFS,
   Samba, SSHFS, etc.
 
+- [Sharing Data Through a Mounted DVC Cache](/doc/user-guide/data-sharing/mounted-cache)
+
+  Instead of mounting the DVC storage from the server, we can directly mount the
+  cache directory (`.dvc/cache/`). If all the users do this, then effectively
+  they will be using the same cache directory (which is mounted from the NAS
+  server). So, if one of them adds something to the cache, it will appear
+  automatically to the cache of all the others. As a result, no `dvc push` and
+  `dvc pull` are needed to share the data, just a `dvc checkout` will be
+  sufficient.
+
 - [Sharing Data Through a Synchronized DVC Storage](/doc/user-guide/data-sharing/synched-storage)
 
   There are cloud data storage providers that are not supported yet by DVC. But
