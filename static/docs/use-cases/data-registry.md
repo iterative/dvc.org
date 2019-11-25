@@ -3,28 +3,29 @@
 One of the main uses of <abbr>DVC repositories</abbr> is the
 [versioning of data and model files](/doc/use-cases/data-and-model-files-versioning).
 This is provided by commands such as `dvc add` and `dvc run`, that allow
-tracking of datasets and any other <abbr>data artifacts</abbr>.
+tracking of datasets or any other <abbr>data artifacts</abbr>.
 
 With the aim to enable reusability of these versioned artifacts between
-different projects (similar to package management systems, but for data), DVC
-also includes the `dvc get`, `dvc import`, and `dvc update` commands. This means
-that a project can depend on data from an external <abbr>DVC project</abbr>.
+different projects, DVC also includes the `dvc get`, `dvc import`, and
+`dvc update` commands. This means that a project can depend on data from an
+external <abbr>DVC project</abbr>, similar to package management systems, but
+for data.
+
+<!-- Insert diagram image here -->
 
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
 tracking and versioning datasets (or any kind of large files). This way we would
-have a repository with all the metadata and history of changes in the project's
+have a repository with all the metadata and history of changes of the project's
 data. We could see who updated what, and when, use pull requests to update data
-(the same way we do with code), and avoid ad-hoc conventions to store different
-data versions. This is what we call a data registry. Other projects can share
-datasets in a registry by downloading (`dvc get`) or importing (`dvc import`)
-them for use in different data processes.
+(the same way we do with code). This is what we call a data registry, and it
+works as data management middleware between your ML project and cloud storage.
 
 Advantages of using a DVC **data registry** project:
 
 - Data as code: Improve _lifecycle management_ with versioning of simple
-  directory structures (like Git for your cloud storage), without ad-hoc
-  conventions. Leverage Git and Git hosting features such as commits, branching,
-  pull requests, reviews, and even continuous deployment of ML models.
+  directory structures (like Git on cloud storage), without ad-hoc conventions.
+  Leverage Git and Git hosting features such as commits, branching, pull
+  requests, reviews, and even continuous deployment of ML models.
 - Reusability: Reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
   systems like `pip`).
