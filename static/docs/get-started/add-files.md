@@ -7,7 +7,7 @@ Let's get a dataset example to play with:
 ```dvc
 $ mkdir data
 $ dvc get https://github.com/iterative/dataset-registry \
-        get-started/data.xml -o data/data.xml
+          get-started/data.xml -o data/data.xml
 ```
 
 > `dvc get` can use any <abbr>DVC project</abbr> hosted on a Git repository to

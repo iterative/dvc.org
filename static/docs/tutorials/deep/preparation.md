@@ -31,7 +31,7 @@ code into it:
 Windows doesn't include the `wget` utility by default, but you can use the
 browser to download `code.zip`. (Right-click
 [this link](https://code.dvc.org/tutorial/nlp/code.zip) and select
-`Save Link As...` (Chrome). Save it into the project directory.
+`Save Link As...` (Chrome). Save it into the <abbr>project</abbr> directory.
 
 </details>
 
@@ -41,7 +41,7 @@ $ cd classify
 $ git init
 $ wget https://code.dvc.org/tutorial/nlp/code.zip
 $ unzip code.zip -d code && rm -f code.zip
-$ git add code/
+$ git add code
 $ git commit -m "download code"
 ```
 
@@ -62,43 +62,44 @@ DVC works on top of Git repositories. You run DVC initialization in a repository
 directory to create DVC meta files and directories.
 
 After DVC initialization, a new directory `.dvc/` will be created with the
-`config` and `.gitignore` files, as well as `cache/` directory. These files and
-directories are hidden from users in general, as there's no need to interact
-with them directly See
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
-more. However, we describe some DVC internals below for a better understanding
-of how it works.
+`config` and `.gitignore` files. These and other files and directories are
+hidden from user, as typically there's no need to interact with them directly.
+See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
+learn more. However, we describe some DVC internals below for a better
+understanding of how it works.
 
 ```dvc
 $ dvc init
 ...
 
 $ ls -a .dvc
-./      ../     .gitignore  cache/  config
+.          ..         .gitignore config     tmp
 
 $ git status -s
 A  .dvc/.gitignore
 A  .dvc/config
+?? .gitignore
 
 $ cat .dvc/.gitignore
-/state
-/lock
 /config.local
 /updater
-/updater.lock
 /state-journal
 /state-wal
+/state
+/lock
+/tmp
+/updater.lock
 /cache
 
-$ git commit -m "init DVC"
+$ git commit -am "init DVC"
 ```
 
 The `.dvc/cache` directory is one of the most important parts of any <abbr>DVC
-repositories</abbr>. The directory contains all the content of data files and
-will be described in the next chapter in more detail. Note that the cache
-directory is contained in the `.dvc/.gitignore` file, which means that it's not
-under Git control — this is your local directory and you cannot push it to any
-Git remote.
+repositories</abbr>. It will contain all the content of data files. (This is
+explained in more detail in the next chapter.) Note that the <abbr>cache</abbr>
+directory is contained in `.dvc/.gitignore`, which means that it won't be under
+Git control — It's a local <abbr>project</abbr> directory and you cannot push it
+to any Git remote.
 
 For more information refer to
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories).

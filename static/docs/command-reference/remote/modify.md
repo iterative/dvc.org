@@ -58,7 +58,7 @@ manual editing could be used to change the configuration.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples
+## Available settings per storage type
 
 The following are the types of remote storage (protocols) supported:
 

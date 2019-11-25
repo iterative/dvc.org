@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import ReactMarkdown from 'react-markdown'
 import styled from 'styled-components'
 
-import { HEADER } from '../../consts'
+import { HEADER } from '../consts'
 
 class DesktopView extends Component {
   state = {
