@@ -1,9 +1,10 @@
 # import
 
-Download or copy file or directory from any <abbr>DVC project</abbr> in a Git
-repository (e.g. hosted on GitHub) into the <abbr>workspace</abbr>, and track
-changes in this [external dependency](/doc/user-guide/external-dependencies).
-Creates [DVC-files](/doc/user-guide/dvc-file-format).
+Download or copy an <abbr>output</abbr> file or directory from any <abbr>DVC
+repository</abbr> (e.g. hosted on GitHub) into the <abbr>workspace</abbr>. DVC
+creates a [DVC-file](/doc/user-guide/dvc-file-format) with information about the
+data source, which can later be used to [update](/doc/command-reference/update)
+the import.
 
 > See also `dvc get`, that corresponds to the first step this command performs
 > (just download the data).
@@ -47,12 +48,11 @@ _import stage_ (DVC-file) is then created, extending the full file or directory
 name of the imported data e.g. `data.txt.dvc` – similar to having used `dvc run`
 to generate the same output.
 
-DVC supports DVC-files that refer to data in an external DVC repository (hosted
-on a Git server) a.k.a _import stages_. In such a DVC-file, the `deps` section
-specifies the `repo` URL and data `path`, and the `outs` section contains the
-corresponding local path in the workspace. It records enough data from the
-imported data to enable DVC to efficiently check it to determine whether the
-local copy is out of date.
+DVC-files support references to data in an external DVC repository (hosted on a
+Git server). In such a DVC-file, the `deps` section specifies the `repo`-`url`
+and data `path` fields, and the `outs` section contains the corresponding local
+workspace `path` field. This is enough data about the imported data, to enable
+DVC efficiently determining whether the local copy is out of date.
 
 To actually [track the data](https://dvc.org/doc/get-started/add-files),
 `git add` (and `git commit`) the import stage.
@@ -100,9 +100,9 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 
 In contrast with `dvc get`, this command doesn't just download the data file,
 but it also creates an import stage
-([DVC-file](/doc/user-guide/dvc-file-format)) to register this data as an
-[external dependency](/doc/user-guide/external-dependencies) (using the `repo`
-field). Check `data.xml.dvc`:
+([DVC-file](/doc/user-guide/dvc-file-format)) with a link to the data source (as
+explained in the description above). (This import stage can later be used to
+[update](/doc/command-reference/update) the import.) Check `data.xml.dvc`:
 
 ```yaml
 md5: 7de90e7de7b432ad972095bc1f2ec0f8
