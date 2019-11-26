@@ -1,24 +1,21 @@
 # Data Registry
 
 One of the main uses of <abbr>DVC repositories</abbr> is the
-[versioning of data and model files](/doc/use-cases/data-and-model-files-versioning).
-This is provided by commands such as `dvc add` and `dvc run`, that allow
-tracking of datasets or any other <abbr>data artifacts</abbr>.
-
-With the aim to enable reusability of these versioned artifacts between
-different projects, DVC also includes the `dvc get`, `dvc import`, and
-`dvc update` commands. This means that a project can depend on data from an
-external <abbr>DVC project</abbr>, similar to package management systems, but
-for data.
+[versioning of data and model files](/doc/use-cases/data-and-model-files-versioning),
+with commands such as `dvc add`. With the aim to enable reusability of these
+<abbr>data artifacts</abbr> between different projects, DVC also provides the
+`dvc get`, `dvc import`, and `dvc update` commands. This means that a project
+can depend on data from an external <abbr>DVC project</abbr>, **similar to
+package management systems, but for data**.
 
 <!-- Insert diagram image here. -->
 
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
 tracking and versioning datasets (or any large data). This way we would have a
-repository with all the metadata and history of changes of the project's data.
-We could see who updated what, and when, use pull requests to update data (the
-same way we do with code). This is what we call a data registry, and it works as
-data management middleware between your ML project and cloud storage.
+repository with all the metadata and history of changes of different datasets.
+We could see who updated what, and when, and use pull requests to update data
+(the same way we do with code). This is what we call a **data registry**, which
+can work as data management _middleware_ between ML projects and cloud storage.
 
 Advantages of using a DVC **data registry** project:
 
@@ -44,9 +41,9 @@ Advantages of using a DVC **data registry** project:
 
 ## Building data registries
 
-A data registry is a kind of <abbr>DVC repository</abbr>, so it can be created
-locally like to any other Git + DVC <abbr>project</abbr>. However, the registry
-should be available online, so it must pushed to a Git server:
+Data registries are <abbr>DVC repositories</abbr>, so they can be created
+locally like any other Git + DVC <abbr>project</abbr>. However, registries
+should be available online i.e. pushed to a Git server. For example:
 
 ```dvc
 $ mkdir my-data-registry && cd my-data-registry
@@ -57,15 +54,16 @@ $ git branch -u origin/master
 $ git push
 ```
 
-What will make the online registry special, is that it will mainly contain
-[DVC-files](/doc/user-guide/dvc-file-format). These will track the different
-datasets we want to version. The actual data will be stored in one or more
-[remote storage](/doc/command-reference/remote) locations configured in the
-<abbr>project</abbr>.
+What makes online data registries special, is that they mainly contain simple
+[DVC-files](/doc/user-guide/dvc-file-format) (probably no source code or
+[pipelines](/doc/command-reference/pipeline)). These [DVC-files track the
+different datasets we may want to version. The actual data will be stored in one
+or more [remote storage](/doc/command-reference/remote) locations configured in
+the <abbr>project</abbr>.
 
 A good way to organize these DVC-files is in different directories that group
-the <abbr>data artifacts</abbr> for different uses, for example `images/`,
-`natural-language/`, etc. As an example, our
+the data into separate uses, for example `images/`, `natural-language/`, etc. As
+an example, our
 [dataset-registry](https://github.com/iterative/dataset-registry) uses a
 directory for each of our website documentation sections, such as `get-started/`
 and `use-cases/`.
@@ -75,7 +73,12 @@ and `use-cases/`.
 > [in Get Started](/doc/get-started/add-files), and some Command Reference
 > examples.
 
-### Adding datasets to the registry
+### Adding datasets to a registry
+
+<!-- Probably we will need to touch cats & dogs example and answer (again, high level perspective) to questions like - how do we get data there, how do we update it, how do we consume it from other repos.  -->
+<!-- we should be comparing no DVC at all (ad-hoc conventions and total mess on S3) vs. the DVC Data Registry – which effectively provides some "meta" information for the same data on S3. -->
+<!-- something like - we had S3 like everyone - few buckets already (for such a small case & docs), few versions of the files in different locations, directories with images repeatings, etc - explain high level problems -->
+<!-- let’s just assume that we have a directory and we keep adding files -->
 
 Imagine a training dataset with 1000 images of cats and dogs that will be used
 to build an ML model. Without DVC, in order for a team to collaborate on this
