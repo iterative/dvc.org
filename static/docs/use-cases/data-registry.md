@@ -11,14 +11,14 @@ different projects, DVC also includes the `dvc get`, `dvc import`, and
 external <abbr>DVC project</abbr>, similar to package management systems, but
 for data.
 
-<!-- Insert diagram image here -->
+<!-- Insert diagram image here. -->
 
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
-tracking and versioning datasets (or any kind of large files). This way we would
-have a repository with all the metadata and history of changes of the project's
-data. We could see who updated what, and when, use pull requests to update data
-(the same way we do with code). This is what we call a data registry, and it
-works as data management middleware between your ML project and cloud storage.
+tracking and versioning datasets (or any large data). This way we would have a
+repository with all the metadata and history of changes of the project's data.
+We could see who updated what, and when, use pull requests to update data (the
+same way we do with code). This is what we call a data registry, and it works as
+data management middleware between your ML project and cloud storage.
 
 Advantages of using a DVC **data registry** project:
 
@@ -39,23 +39,58 @@ Advantages of using a DVC **data registry** project:
   copies on other remotes). This simplifies data management and optimizes space
   requirements.
 - Security: Registries can be setup to have read-only remote storage (e.g. an
-  HTTP location). Git versioning of DVC-files allows us to track and audit data
-  changes.
+  HTTP location). Git versioning of [DVC-files](/doc/user-guide/dvc-file-format)
+  allows us to track and audit data changes.
 
-## Building a data registry
+## Building data registries
 
-A dataset we commonly use for several of our examples and tutorials contains
-2800 images of cats and dogs, which was originally split it in two for our
-[Versioning tutorial](/doc/tutorials/versioning). We then improved the
-versioning of this same dataset (without splitting) in the `use-cases/`
+A data registry is a kind of <abbr>DVC repository</abbr>, so it can be created
+locally like to any other Git + DVC <abbr>project</abbr>. However, the registry
+should be available online, so it must pushed to a Git server:
+
+```dvc
+$ mkdir my-data-registry && cd my-data-registry
+$ git init && dvc init
+$ git commit -am "Initialize DVC project"
+$ git remote add origin git@... # Git server URL
+$ git branch -u origin/master
+$ git push
+```
+
+What will make the online registry special, is that it will mainly contain
+[DVC-files](/doc/user-guide/dvc-file-format). These will track the different
+datasets we want to version. The actual data will be stored in one or more
+[remote storage](/doc/command-reference/remote) locations configured in the
+<abbr>project</abbr>.
+
+A good way to organize these DVC-files is in different directories that group
+the <abbr>data artifacts</abbr> for different uses, for example `images/`,
+`natural-language/`, etc. As an example, our
+[dataset-registry](https://github.com/iterative/dataset-registry) uses a
+directory for each of our website documentation sections, such as `get-started/`
+and `use-cases/`.
+
+> We use this example registry for all of our docs, where needed, for example in
+> the [Versioning](/doc/tutorials/versioning) tutorial,
+> [in Get Started](/doc/get-started/add-files), and some Command Reference
+> examples.
+
+### Adding datasets to the registry
+
+Imagine a training dataset with 1000 images of cats and dogs that will be used
+to build an ML model. Without DVC, in order for a team to collaborate on this
+project, we could just uploading it to cloud storage (e.g. Amazon S3) and
+provide everyone with access.
+
+At some point though, we need to add another 1000 images to the dataset, but the
+colleagues already have work based on the initial set. For simplicity, we keep
+the dataset split into 2 directories (or compressed files) uploaded separately
+to the cloud.
+
+We actually versioned such a dataset (without split) in the `use-cases/`
 directory of our
 [dataset-registry](https://github.com/iterative/dataset-registry)
 <abbr>project</abbr> (hosted on GitHub). Let's see how this was done.
-
-> Note that first, the **dataset-registry** <abbr>repository</abbr> was
-> initialized with `git init` and `dvc init`, and the `tutorial/ver/` directory
-> was populated with the 2 parts of the data as ZIP files, as shown in the
-> Versioning tutorial above.
 
 To create the
 [initial version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v1/use-cases),
@@ -65,8 +100,8 @@ we extracted the first part (`data.zip`) into `use-cases/cats-dogs` and used
 and committed this state with Git:
 
 ```dvc
-$ mkdir use-cases && cd use-cases
-$ unzip -q tutorial/ver/data.zip -d use-cases/cats-dogs
+$ mkdir use-cases
+$ cp path/to/data-part-one/ use-cases/cats-dogs
 $ tree use-cases/cats-dogs --filelimit 3
 use-cases/cats-dogs
 └── data
@@ -89,7 +124,8 @@ The
 was created by extracting the remaining part of the dataset, with 1000
 additional training images (500 cats, 500 dogs), on top of the same directory
 structure. Then we simply added the directory again! DVC recognizes the changes
-and updates the DVC-file, which can then be committed with Git again:
+and updates the [DVC-file](/doc/user-guide/dvc-file-format), which can then be
+committed with Git again:
 
 ```dvc
 $ dvc add use-cases/cats-dogs
