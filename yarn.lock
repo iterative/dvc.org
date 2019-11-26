@@ -3885,11 +3885,6 @@ for-in@^1.0.2:
   resolved "https://registry.yarnpkg.com/for-in/-/for-in-1.0.2.tgz#81068d295a8142ec0ac726c6e2200c30fb6d5e80"
   integrity sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=
 
-force-ssl-heroku@^1.0.2:
-  version "1.0.2"
-  resolved "https://registry.yarnpkg.com/force-ssl-heroku/-/force-ssl-heroku-1.0.2.tgz#52850323066ba789dc330feccd7817c7cebb2680"
-  integrity sha1-UoUDIwZrp4ncMw/szXgXx867JoA=
-
 forever-agent@~0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/forever-agent/-/forever-agent-0.6.1.tgz#fbc71f0c41adeb37f96c577ad1ed42d8fdacca91"
