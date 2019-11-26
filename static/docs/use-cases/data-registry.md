@@ -82,8 +82,8 @@ and `use-cases/`.
 
 Imagine a training dataset with 1000 images of cats and dogs that will be used
 to build an ML model. Without DVC, in order for a team to collaborate on this
-project, we could just uploading it to cloud storage (e.g. Amazon S3) and
-provide everyone with access.
+project, we could just upload it to cloud storage (e.g. Amazon S3) and provide
+everyone with access.
 
 At some point though, we need to add another 1000 images to the dataset, but the
 colleagues already have work based on the initial set. For simplicity, we keep
