@@ -8,3 +8,6 @@ export const META_DESCRIPTION =
 export const META_KEYWORDS =
   'data version control machine learning models management'
 export const META_SOCIAL_IMAGE = 'https://dvc.org/static/social-share.png'
+
+export const FORUM_URL = 'https://discuss.dvc.org'
+export const BLOG_URL = 'https://blog.dvc.org'
