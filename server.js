@@ -12,7 +12,7 @@ const next = require('next')
 const querystring = require('querystring')
 
 const dev = process.env.NODE_ENV !== 'production'
-const app = next({ dev, crossOrigin: 'anonymous' })
+const app = next({ dev })
 const port = process.env.PORT || 3000
 const handle = app.getRequestHandler()
 
