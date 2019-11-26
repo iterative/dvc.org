@@ -1,28 +1,40 @@
 # get
 
-Download or copy file or directory from the
-[remote storage](/doc/command-reference/remote) of any <abbr>DVC project</abbr>
-in a Git repository (e.g. hosted on GitHub) into the current working directory.
+Download a file or directory from any <abbr>DVC project</abbr> or Git repository
+(e.g. hosted on GitHub) into the current working directory.
 
-> Unlike `dvc import`, this command does not track the downloaded data files
-> (does not create a DVC-file).
+> Unlike `dvc import`, this command does not track the downloaded files (does
+> not create a DVC-file).
 
 ## Synopsis
 
 ```usage
 usage: dvc get [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
+Download files or directories from DVC repository.
+Documentation: <https://man.dvc.org/get>
+
 positional arguments:
-  url         URL of Git repository with DVC project to download from.
-  path        Path to data within DVC repository.
+  url                   URL of Git repository with DVC project to
+                        download from.
+  path                  Path to a file or directory within a
+                        DVC repository.
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q, --quiet           Be quiet.
+  -v, --verbose         Be verbose.
+  -o [OUT], --out [OUT]
+                        Destination path.
+  --rev [REV]           DVC repository git revision.
 ```
 
 ## Description
 
 Provides an easy way to download datasets, intermediate results, ML models, or
-other files and directories (any <abbr>data artifact</abbr>) tracked in another
-<abbr>DVC repository</abbr>, by downloading them into the current working
-directory. (It works like `wget`, but for DVC repositories.)
+other files and directories tracked in another <abbr>DVC repository</abbr>, by
+downloading them into the current working directory. (It works like `wget`, but
+for DVC repositories.)
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
@@ -66,7 +78,7 @@ created in the current working directory, with its original file name.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples
+## Example: Retrieve a model from a DVC remote
 
 > Note that `dvc get` can be used from anywhere in the file system, as long as
 > DVC is [installed](/doc/install).
@@ -105,6 +117,17 @@ its
 The same example applies to raw or intermediate <abbr>data artifacts</abbr> as
 well, of course, for cases where we want to download those files or directories
 and perform some analysis on them.
+
+## Examples: Retrieve a file from a git repository
+
+We can also use `dvc get` to retrieve any file or directory that exists in a git
+repository.
+
+```dvc
+$ dvc get https://github.com/schacon/cowsay/install.sh install.sh
+$ ls
+install.sh
+```
 
 ## Example: Compare different versions of data or model
 
