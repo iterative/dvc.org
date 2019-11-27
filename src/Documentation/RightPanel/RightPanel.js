@@ -4,6 +4,8 @@ import styled from 'styled-components'
 import { LightButton } from '../LightButton'
 // utils
 import throttle from 'lodash.throttle'
+import topairs from 'lodash.topairs'
+import startCase from 'lodash.startcase'
 
 const ROOT_ELEMENT = 'bodybag'
 const MARKDOWN_ROOT = '#markdown-root'
@@ -109,20 +111,23 @@ export default class RightPanel extends React.PureComponent {
   }, 100)
 
   render() {
-    const { headings, githubLink } = this.props
+    const { headings, githubLink, tutorials } = this.props
     const { current } = this.state
+
+    const tutorialsData = topairs(tutorials)
 
     return (
       <Wrapper>
-        {headings.length ? (
+        {!headings.length && !tutorialsData.length && <Spacer />}
+        {headings.length > 0 && (
           <>
             <Header>Content</Header>
             <hr />
-            {headings.map(({ slug, text }, headingIndex) => (
+            {headings.map(({ slug, text }) => (
               <HeadingLink
                 isCurrent={current === slug}
                 level={3}
-                key={`link-${headingIndex}`}
+                key={`link-${slug}`}
                 href={`#${slug}`}
               >
                 {text}
@@ -130,12 +135,19 @@ export default class RightPanel extends React.PureComponent {
             ))}
             <br />
           </>
-        ) : (
+        )}
+        {tutorialsData.length > 0 && (
           <>
-            <Spacer />
+            <Header>Tutorials</Header>
+            <hr />
+            {tutorialsData.map(([key, value]) => (
+              <HeadingLink href={value} key={value} isCurrent={true}>
+                {startCase(key)}
+              </HeadingLink>
+            ))}
+            <br />
           </>
         )}
-
         <Description>
           <span role="img" aria-label="bug">
             🐛
@@ -173,6 +185,7 @@ RightPanel.propTypes = {
       text: PropTypes.string.isRequired
     })
   ).isRequired,
+  tutorials: PropTypes.object,
   githubLink: PropTypes.string.isRequired
 }
 
