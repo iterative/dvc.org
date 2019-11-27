@@ -10,6 +10,10 @@ import startCase from 'lodash.startcase'
 const ROOT_ELEMENT = 'bodybag'
 const MARKDOWN_ROOT = '#markdown-root'
 
+const icons = {
+  katacoda: '/static/tutorial-icons/katacoda.png'
+}
+
 const imageChecker = (images, callback) => {
   // IE can't use forEach on array-likes
   const imagesArray = Array.prototype.slice.call(images)
@@ -142,7 +146,8 @@ export default class RightPanel extends React.PureComponent {
             <hr />
             {tutorialsData.map(([key, value]) => (
               <HeadingLink href={value} key={value} isCurrent={true}>
-                {startCase(key)}
+                {icons[key] && <Icon src={icons[key]} alt="" />}
+                Run in {startCase(key)}
               </HeadingLink>
             ))}
             <br />
@@ -263,4 +268,11 @@ const Spacer = styled.div`
 
 const Description = styled.p`
   color: #3c3937;
+`
+
+const Icon = styled.img`
+  float: left;
+  width: 16px;
+  height: 16px;
+  margin: 5px 5px 5px 0;
 `
