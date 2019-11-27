@@ -142,7 +142,7 @@
             "slug": "amazon"
           },
           {
-            "label": "S3 API",
+            "label": "S3 Compatible",
             "slug": "s3"
           },
           {
