@@ -145,7 +145,13 @@ export default class RightPanel extends React.PureComponent {
             <Header>Tutorials</Header>
             <hr />
             {tutorialsData.map(([key, value]) => (
-              <HeadingLink href={value} key={value} isCurrent={true}>
+              <HeadingLink
+                href={value}
+                key={value}
+                isCurrent={true}
+                target="_blank"
+                rel="noopener nofollow"
+              >
                 {icons[key] && <Icon src={icons[key]} alt="" />}
                 Run in {startCase(key)}
               </HeadingLink>
