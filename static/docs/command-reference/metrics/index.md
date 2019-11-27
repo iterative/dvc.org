@@ -26,7 +26,7 @@ containing metrics to track. (See `--metrics` option of `dvc run`.) Metrics are
 project-specific numeric values e.g. `AUC`, `ROC`, etc. DVC itself does not
 ascribe any specific meaning for these numbers. Usually these numbers are
 produced by the model evaluation script and serve as a way to compare and pick
-the best performing experiment variant.
+the best performing experiment.
 
 [Add](/doc/command-reference/metrics/add),
 [show](/doc/command-reference/metrics/show),

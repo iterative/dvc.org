@@ -203,9 +203,9 @@ Let's use the [Get Started](/doc/get-started) project again, simulating an
 updated external data source. (Remember to prepare the <abbr>workspace</abbr>,
 as explained in [Examples](#examples))
 
-To make it easy to experiment with this, let's use a local machine directory
-(external to the workspace) to simulate a remote data source location. (In real
-life, the data file will probably be on a remote server.) Run these commands:
+To illustrate this scenario, let's use a local machine directory (external to
+the workspace) to simulate a remote data source location. (In real life, the
+data file will probably be on a remote server.) Run these commands:
 
 ```dvc
 $ mkdir /tmp/dvc-import-url-example
