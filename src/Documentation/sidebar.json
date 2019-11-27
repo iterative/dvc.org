@@ -12,7 +12,10 @@
       "import-data",
       {
         "label": "Connect with Code",
-        "slug": "connect-code-and-data"
+        "slug": "connect-code-and-data",
+        "tutorials": {
+          "katacoda": "https://www.katacoda.com/loodse/courses/dvc/dvc-01-install"
+        }
       },
       "pipeline",
       "visualize",
