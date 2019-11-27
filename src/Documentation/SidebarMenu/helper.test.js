@@ -13,6 +13,7 @@ describe('SidebarMenu/helper', () => {
           label: 'Item Name',
           path: '/doc/item-name',
           source: '/static/docs/item-name.md',
+          tutorials: {},
           prev: undefined,
           next: undefined
         }
@@ -31,6 +32,7 @@ describe('SidebarMenu/helper', () => {
           label: 'Item Name',
           path: '/doc/item-name',
           source: '/static/docs/item-name.md',
+          tutorials: {},
           prev: undefined,
           next: undefined
         }
@@ -49,6 +51,7 @@ describe('SidebarMenu/helper', () => {
           label: 'Custom Label',
           path: '/doc/item-name',
           source: '/static/docs/item-name.md',
+          tutorials: {},
           prev: undefined,
           next: undefined
         }
@@ -67,6 +70,37 @@ describe('SidebarMenu/helper', () => {
           label: 'Item Name',
           path: '/doc/item-name',
           source: '/static/docs/item-name/index.md',
+          tutorials: {},
+          prev: undefined,
+          next: undefined
+        }
+      ]
+
+      jest.doMock('../sidebar.json', () => rawData)
+      const sidebarData = require('./helper').default
+
+      expect(sidebarData).toEqual(result)
+    })
+
+    it('Forwards tutorials', () => {
+      const rawData = [
+        {
+          slug: 'item-name',
+          tutorials: {
+            katacoda:
+              'https://www.katacoda.com/loodse/courses/dvc/dvc-01-install'
+          }
+        }
+      ]
+      const result = [
+        {
+          label: 'Item Name',
+          path: '/doc/item-name',
+          source: '/static/docs/item-name.md',
+          tutorials: {
+            katacoda:
+              'https://www.katacoda.com/loodse/courses/dvc/dvc-01-install'
+          },
           prev: undefined,
           next: undefined
         }
@@ -90,6 +124,7 @@ describe('SidebarMenu/helper', () => {
           label: 'Item Name',
           path: '/doc/item-name',
           source: '/static/docs/item-name.md',
+          tutorials: {},
           prev: undefined,
           next: '/doc/item-name/nested-item',
           children: [
@@ -97,6 +132,7 @@ describe('SidebarMenu/helper', () => {
               label: 'Nested Item',
               path: '/doc/item-name/nested-item',
               source: '/static/docs/item-name/nested-item.md',
+              tutorials: {},
               prev: '/doc/item-name',
               next: '/doc/item-name/nested-item/subnested-item',
               children: [
@@ -105,6 +141,7 @@ describe('SidebarMenu/helper', () => {
                   path: '/doc/item-name/nested-item/subnested-item',
                   source:
                     '/static/docs/item-name/nested-item/subnested-item.md',
+                  tutorials: {},
                   prev: '/doc/item-name/nested-item',
                   next: undefined
                 }
@@ -130,6 +167,7 @@ describe('SidebarMenu/helper', () => {
           label: 'First Item',
           path: '/doc/first-item',
           source: '/static/docs/first-item.md',
+          tutorials: {},
           prev: undefined,
           next: '/doc/first-item/nested-item',
           children: [
@@ -137,6 +175,7 @@ describe('SidebarMenu/helper', () => {
               label: 'Nested Item',
               path: '/doc/first-item/nested-item',
               source: '/static/docs/first-item/nested-item.md',
+              tutorials: {},
               prev: '/doc/first-item',
               next: '/doc/second-item'
             }
@@ -146,6 +185,7 @@ describe('SidebarMenu/helper', () => {
           label: 'Second Item',
           path: '/doc/second-item',
           source: '/static/docs/second-item.md',
+          tutorials: {},
           prev: '/doc/first-item/nested-item',
           next: undefined
         }
@@ -167,6 +207,7 @@ describe('SidebarMenu/helper', () => {
           label: 'First Item',
           path: '/doc/first-item',
           source: '/static/docs/first-item.md',
+          tutorials: {},
           prev: undefined,
           next: '/doc/second-item'
         },
@@ -174,6 +215,7 @@ describe('SidebarMenu/helper', () => {
           label: 'Second Item',
           path: '/doc/second-item',
           source: false,
+          tutorials: {},
           prev: '/doc/first-item',
           next: '/doc/second-item/nested-item',
           children: [
@@ -181,6 +223,7 @@ describe('SidebarMenu/helper', () => {
               label: 'Nested Item',
               path: '/doc/second-item/nested-item',
               source: '/static/docs/second-item/nested-item.md',
+              tutorials: {},
               prev: '/doc/first-item',
               next: undefined
             }
@@ -210,6 +253,7 @@ describe('SidebarMenu/helper', () => {
           label: 'First Item',
           path: '/doc/first-item',
           source: '/static/docs/first-item.md',
+          tutorials: {},
           prev: undefined,
           next: '/doc/second-item'
         },
@@ -217,6 +261,7 @@ describe('SidebarMenu/helper', () => {
           label: 'Second Item',
           path: '/doc/second-item',
           source: false,
+          tutorials: {},
           prev: '/doc/first-item',
           next: '/doc/second-item/nested-item',
           children: [
@@ -224,6 +269,7 @@ describe('SidebarMenu/helper', () => {
               label: 'Nested Item',
               path: '/doc/second-item/nested-item',
               source: false,
+              tutorials: {},
               prev: '/doc/first-item',
               next: '/doc/second-item/nested-item/subnested-item',
               children: [
@@ -232,6 +278,7 @@ describe('SidebarMenu/helper', () => {
                   path: '/doc/second-item/nested-item/subnested-item',
                   source:
                     '/static/docs/second-item/nested-item/subnested-item.md',
+                  tutorials: {},
                   prev: '/doc/first-item',
                   next: undefined
                 }
@@ -278,6 +325,7 @@ describe('SidebarMenu/helper', () => {
         label: 'Item Name',
         path: '/doc/item-name',
         source: '/static/docs/item-name.md',
+        tutorials: {},
         prev: undefined,
         next: undefined
       }
@@ -302,6 +350,7 @@ describe('SidebarMenu/helper', () => {
         label: 'Subnested Item',
         path: '/doc/item-name/nested-item/subnested-item',
         source: '/static/docs/item-name/nested-item/subnested-item.md',
+        tutorials: {},
         prev: undefined,
         next: undefined
       }
