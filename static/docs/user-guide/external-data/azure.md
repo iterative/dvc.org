@@ -3,27 +3,21 @@
 Azure Storage is Microsoft's cloud storage solution for modern data storage
 scenarios.
 
-## Create Remotes
+## Remotes
 
 We can create an Azure remote like this:
 
 ```dvc
 $ dvc remote add \
       myremote azure://my-container-name/path
+
 $ dvc remote modify --local \
       myremote connection_string my-connection-string
-
-$ dvc remote list
-myremote	azure://my-container-name/path
-
-$ cat .dvc/config
-['remote "myremote"']
-url = azure://my-container-name/path
-
-$ cat .dvc/config.local
-['remote "myremote"']
-connection_string = my-connection-string
 ```
+
+> Notice that we used the option `--local` of the command `dvc remote modify` to
+> save the connection string to `.dvc/config.local`, which is ignored by Git,
+> since it contains access to data and should not be published.
 
 - `my-container-name` is the top-level container in your Azure Storage Account
   under which all the files for this remote will be uploaded. If the container
@@ -36,9 +30,26 @@ connection_string = my-connection-string
   The connection string can be found in the "Access Keys" pane of your Storage
   Account resource in the Azure portal.
 
-> Notice that we used the option `--local` of the command `dvc remote modify` to
-> save the connection string to `.dvc/config.local`, which is ignored by Git,
-> since it contains access to data and should not be published.
+  For more information on configuring Azure Storage connection strings, visit
+  [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
+
+Configuration files `.dvc/config` and `.dvc/config.local` should look like this:
+
+```ini
+# .dvc/config
+['remote "myremote"']
+url = azure://my-container-name/path
+```
+
+```ini
+# .dvc/config.local
+['remote "myremote"']
+connection_string = my-connection-string
+```
+
+<details>
+
+### Configure Azure remotes via environment variables
 
 The Azure Blob Storage remote can also be configured entirely via environment
 variables:
@@ -49,12 +60,14 @@ $ export AZURE_STORAGE_CONTAINER_NAME="my-container-name"
 $ dvc remote add myremote "azure://"
 ```
 
-> For more information on configuring Azure Storage connection strings, visit
-> [here](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
+</details>
 
-## DVC Storage
+<details>
 
-To use Azure as a DVC storage we should create a default remote:
+### Use Azure as a DVC Storage
+
+To use Azure as a DVC storage we should create a _default_ remote with the
+option `-d, --default`, like this:
 
 ```dvc
 $ dvc remote add --default \
@@ -63,17 +76,22 @@ Setting 'myremote' as a default remote.
 
 $ dvc remote modify --local \
       myremote connection_string my-connection-string
+```
 
-$ dvc remote list
-myremote	azure://my-container-name/path
+Configuration files `.dvc/config` and `.dvc/config.local` should look like this:
 
-$ cat .dvc/config
+```ini
+# .dvc/config
 ['remote "myremote"']
 url = azure://my-container-name/path
 [core]
 remote = myremote
+```
 
-$ cat .dvc/config.local
+```ini
+# .dvc/config.local
 ['remote "myremote"']
 connection_string = my-connection-string
 ```
+
+</details>

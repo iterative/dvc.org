@@ -3,20 +3,43 @@
 Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web
 Services (AWS) that provides object storage through a web service interface.
 
-## Create Remotes
+## Remotes
 
-We can create an Amazon S3 remote like this:
+We can create an Amazon S3 remote with `dvc remote add`, like this:
 
 ```dvc
 $ dvc remote add s3remote s3://mybucket/path
+```
 
-$ dvc remote list
-s3remote	s3://mybucket/path
+The configuration file `.dvc/config` should have a content like this:
 
-$ cat .dvc/config
+```ini
 ['remote "s3remote"']
 url = s3://mybucket/path
 ```
+
+<details>
+
+### Use Amazon S3 as a DVC Storage
+
+To use Amazon S3 as a DVC storage we should create a _default_ remote with the
+option `-d, --default`, like this:
+
+```dvc
+$ dvc remote add --default s3storage s3://mybucket/path
+Setting 's3storage' as a default remote.
+```
+
+The configuration file `.dvc/config` should have a content like this:
+
+```ini
+['remote "s3storage"']
+url = s3://mybucket/path
+[core]
+remote = s3storage
+```
+
+</details>
 
 > **Note!** Before adding a new remote be sure to login into AWS services and
 > follow instructions at
@@ -50,11 +73,11 @@ We can modify the remote settings with `dvc remote modify`, for example:
 
 ```dvc
 $ dvc remote modify s3remote url s3://mybucket/new-path
+```
 
-$ dvc remote list
-s3remote	s3://mybucket/new-path
+The configuration file `.dvc/config` should have a content like this:
 
-$ cat .dvc/config
+```ini
 ['remote "s3remote"']
 url = s3://mybucket/new-path
 ```
@@ -127,24 +150,6 @@ these settings, you could use the following options:
   ```
 
 </details>
-
-## DVC Storage
-
-To use Amazon S3 as a DVC storage we should create a default remote:
-
-```dvc
-$ dvc remote add --default s3storage s3://mybucket/path
-Setting 's3storage' as a default remote.
-
-$ dvc remote list
-s3storage	s3://mybucket/path
-
-$ cat .dvc/config
-['remote "s3storage"']
-url = s3://mybucket/path
-[core]
-remote = s3storage
-```
 
 ## External Dependencies
 

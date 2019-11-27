@@ -4,43 +4,52 @@ Alibaba Cloud Object Storage Service (OSS) is an encrypted, secure,
 cost-effective, and easy-to-use object storage service that enables you to
 store, back up, and archive large amounts of data in the cloud.
 
-## Create Remotes
+## Remotes
 
 First you need to setup OSS storage on Aliyun Cloud and then use an S3 style URL
 for OSS storage and make the endpoint value configurable.
 
-Then you can create a remote like this:
+Then you can create an OSS remote like this:
 
 ```dvc
 $ dvc remote add myremote oss://my-bucket/path
-$ dvc remote list
-myremote	oss://my-bucket/path
 ```
 
-You can set the `oss_key_id`, `oss_key_secret` and `oss_endpoint` with the
-command `dvc remote modify`, like this:
+You can set the `oss_endpoint` with the command `dvc remote modify`:
+
+```dvc
+$ dvc remote modify \
+      myremote oss_endpoint endpoint
+```
+
+Set also the `oss_key_id` and `oss_key_secret`:
 
 ```dvc
 $ dvc remote modify --local \
       myremote oss_key_id my-key-id
+
 $ dvc remote modify --local \
       myremote oss_key_secret my-key-secret
-$ dvc remote modify \
-      myremote oss_endpoint endpoint
-
-$ cat .dvc/config
-['remote "myremote"']
-url = oss://my-bucket/path
-oss_endpoint = endpoint
-
-$ cat .dvc/config.local
-['remote "myremote"']
-oss_key_id = my-key-id
-oss_key_secret = my-key-secret
 ```
 
 > Make sure to use the `--local` option to avoid committing your secrets into
 > Git.
+
+Configuration files `.dvc/config` and `.dvc/config.local` should look like this:
+
+```ini
+# .dvc/config
+['remote "myremote"']
+url = oss://my-bucket/path
+oss_endpoint = endpoint
+```
+
+```ini
+# .dvc/config.local
+['remote "myremote"']
+oss_key_id = my-key-id
+oss_key_secret = my-key-secret
+```
 
 <details>
 
@@ -81,6 +90,33 @@ $ export OSS_ENDPOINT="endpoint"
 
 <details>
 
+### Use OSS as a DVC Storage
+
+To use OSS as a DVC storage we should create a _default_ remote with the option
+`-d, --default`, like this:
+
+```dvc
+$ export OSS_ACCESS_KEY_ID="my-key-id"
+$ export OSS_ACCESS_KEY_SECRET="my-key-secret"
+$ export OSS_ENDPOINT="endpoint"
+
+$ dvc remote add --default storage oss://my-bucket/dvc-storage
+Setting 'storage' as a default remote.
+```
+
+The configuration file `.dvc/config` should have a content like this:
+
+```ini
+['remote "storage"']
+url = oss://my-bucket/dvc-storage
+[core]
+remote = storage
+```
+
+</details>
+
+<details>
+
 ### Test your OSS storage using docker
 
 Start a container running an OSS emulator.
@@ -104,25 +140,3 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 > access to public read bucket and public bucket.
 
 </details>
-
-## DVC Storage
-
-To use Aliyun OSS as a DVC storage we should create a default remote:
-
-```dvc
-$ export OSS_ACCESS_KEY_ID="my-key-id"
-$ export OSS_ACCESS_KEY_SECRET="my-key-secret"
-$ export OSS_ENDPOINT="endpoint"
-
-$ dvc remote add --default storage oss://my-bucket/dvc-storage
-Setting 'storage' as a default remote.
-
-$ dvc remote list
-storage	oss://my-bucket/dvc-storage
-
-$ cat .dvc/config
-['remote "storage"']
-url = oss://my-bucket/dvc-storage
-[core]
-remote = storage
-```

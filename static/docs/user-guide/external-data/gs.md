@@ -3,20 +3,43 @@
 Google Cloud Storage is a RESTful online file storage web service for storing
 and accessing data on Google Cloud Platform infrastructure.
 
-## Create Remotes
+## Remotes
 
-We can create a GS remote like this:
+We can create a GS remote with `dvc remote add` like this:
 
 ```dvc
 $ dvc remote add myremote gs://bucket/path
+```
 
-$ dvc remote list
-myremote	gs://bucket/path
+The configuration file `.dvc/config` should have a content like this:
 
-$ cat .dvc/config
+```ini
 ['remote "myremote"']
 url = gs://bucket/path
 ```
+
+<details>
+
+### Use GS as a DVC Storage
+
+To use GS as a DVC storage we should create a _default_ remote with the option
+`-d, --default`, like this:
+
+```dvc
+$ dvc remote add --default myremote gs://bucket/path
+Setting 'myremote' as a default remote.
+```
+
+The configuration file `.dvc/config` should have a content like this:
+
+```ini
+['remote "myremote"']
+url = gs://bucket/path
+[core]
+remote = myremote
+```
+
+</details>
 
 <details>
 
@@ -43,24 +66,6 @@ url = gs://bucket/path
   ```
 
 </details>
-
-## DVC Storage
-
-To use GS as a DVC storage we should create a default remote:
-
-```dvc
-$ dvc remote add --default myremote gs://bucket/path
-Setting 'myremote' as a default remote.
-
-$ dvc remote list
-myremote	gs://bucket/path
-
-$ cat .dvc/config
-['remote "myremote"']
-url = gs://bucket/path
-[core]
-remote = myremote
-```
 
 ## External Dependencies
 

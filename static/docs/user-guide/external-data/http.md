@@ -2,17 +2,17 @@
 
 **❗ Note:** HTTP/HTTPS remotes support only download operations.
 
-## Create Remotes
+## Remotes
 
-We can create an HTTPS remote like this:
+We can create an HTTPS remote with `dvc remote add`, like this:
 
 ```dvc
 $ dvc remote add get-started https://data.dvc.org/get-started
+```
 
-$ dvc remote list
-get-started	https://data.dvc.org/get-started
+The configuration file `.dvc/config` should have a content like this:
 
-$ cat .dvc/config
+```ini
 ['remote "get-started"']
 url = https://data.dvc.org/get-started
 ```

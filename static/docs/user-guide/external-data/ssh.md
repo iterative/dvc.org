@@ -3,33 +3,67 @@
 A SSH server usually is used as a DVC storage, but it may also be used to keep
 and process data remotely (for example with [Dask](https://dask.org/)).
 
-## Create Remotes
+## Remotes
 
-We can create a SSH remote like this:
+We can create an SSH remote with `dvc remote add`, like this:
 
 ```dvc
 $ dvc remote add ssh-remote ssh://user@example.com/path/to/dir
-
-$ dvc remote list
-ssh-remote	ssh://user@example.com/path/to/dir
-
-$ cat .dvc/config
-['remote "ssh-remote"']
-url = ssh://user@example.com/path/to/dir
 ```
 
-We can modify the remote settings with `dvc remote modify`, for example:
+We can modify the remote settings with `dvc remote modify`, like this:
 
 ```dvc
-$ dvc remote modify ssh-remote url ssh://user@example.com:1234/path/to/dir
-
-$ dvc remote list
-ssh-remote	ssh://user@example.com:1234/path/to/dir
-
-$ cat .dvc/config
-['remote "ssh-remote"']
-url = ssh://user@example.com:1234/path/to/dir
+$ dvc remote modify ssh-remote port 2222
 ```
+
+The configuration file `.dvc/config` now should have a content like this:
+
+```ini
+['remote "ssh-remote"']
+url = ssh://user@example.com/path/to/dir
+port = 2222
+```
+
+<details>
+
+### Use SSH server as a DVC Storage
+
+Let's say that we want to use the directory `/srv/dvc-storage/` on the server
+`ssh-server` as a DVC storage for sharing data and collaboration (using
+`dvc push` and `dvc pull`). We need to create a _default_ remote with the option
+`-d, --default`, like this:
+
+```dvc
+$ dvc remote add --default \
+      ssh-storage ssh://ssh-server/srv/dvc-storage
+Setting 'ssh-storage' as a default remote.
+```
+
+The configuration file `.dvc/config` should have a content like this:
+
+```ini
+['remote "ssh-storage"']
+url = ssh://ssh-server/srv/dvc-storage
+[core]
+remote = ssh-storage
+```
+
+> In the setup above we assume that we already have something like this on
+> `~/.ssh/config`:
+>
+> ```
+> Host ssh-server
+>     HostName example.org
+>     Port 1234
+>     User myuser
+>     IdentityFile ~/.ssh/ssh-server-key
+>     IdentitiesOnly yes
+> ```
+>
+> It also assumes that the private key is on `~/.ssh/ssh-server-key`
+
+</details>
 
 <details>
 
@@ -186,40 +220,6 @@ file, etc. because SSH gets them automatically from the configuration file
 > case you should use path `/path/to/dir` instead of `/volume1/path/to/dir`.
 
 </details>
-
-## DVC Storage
-
-Let's say that we want to use the directory `/srv/dvc-storage/` on the server
-`ssh-server` as a DVC storage for sharing data and collaboration (using
-`dvc push` and `dvc pull`). We need to set a **default** remote like this:
-
-```dvc
-$ dvc remote add --default ssh-storage ssh://ssh-server/srv/dvc-storage
-Setting 'ssh-storage' as a default remote.
-
-$ dvc remote list
-ssh-storage	ssh://ssh-server/srv/dvc-storage
-
-$ cat .dvc/config
-['remote "ssh-storage"']
-url = ssh://ssh-server/srv/dvc-storage
-[core]
-remote = ssh-storage
-```
-
-> In the setup above we assume that we already have something like this on
-> `~/.ssh/config`:
->
-> ```
-> Host ssh-server
->     HostName example.org
->     Port 1234
->     User myuser
->     IdentityFile ~/.ssh/ssh-server-key
->     IdentitiesOnly yes
-> ```
->
-> It also assumes that the private key is on `~/.ssh/ssh-server-key`
 
 ## External Dependencies
 
