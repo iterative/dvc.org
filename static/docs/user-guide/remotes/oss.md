@@ -1,10 +1,8 @@
 # External Data on Aliyun OSS
 
-Alibaba Cloud Object Storage Service (OSS) is an encrypted, secure,
-cost-effective, and easy-to-use object storage service that enables you to
-store, back up, and archive large amounts of data in the cloud.
-
-## Remotes
+> Alibaba Cloud Object Storage Service (OSS) is an encrypted, secure,
+> cost-effective, and easy-to-use object storage service that enables you to
+> store, back up, and archive large amounts of data in the cloud.
 
 First you need to setup OSS storage on Aliyun Cloud and then use an S3 style URL
 for OSS storage and make the endpoint value configurable.
@@ -78,7 +76,7 @@ oss_key_secret = my-key-secret
 
 </details>
 
-You can also use the environment variables to set the options, like this:
+You can also use the environment variables to set the options:
 
 ```dvc
 $ export OSS_ACCESS_KEY_ID="my-key-id"
@@ -90,10 +88,10 @@ $ export OSS_ENDPOINT="endpoint"
 
 <details>
 
-### Use OSS as a DVC Storage
+### Using OSS as a DVC Storage
 
 To use OSS as a DVC storage we should create a _default_ remote with the option
-`-d, --default`, like this:
+`-d, --default`:
 
 ```dvc
 $ export OSS_ACCESS_KEY_ID="my-key-id"

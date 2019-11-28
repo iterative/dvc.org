@@ -36,6 +36,8 @@ outs:
 md5: 22ee63d16fe8c622fd1a4f138533b036
 ```
 
+<details>
+
 ### Using an environment variable
 
 If the data directory has a long path, it could save us some typing and make our
@@ -63,6 +65,10 @@ outs:
     md5: 800be79fa2d0c411def72cd04e8600c8.dir
 md5: 22ee63d16fe8c622fd1a4f138533b036
 ```
+
+</details>
+
+<details>
 
 ### Using a DVC remote
 
@@ -97,6 +103,8 @@ outs:
     md5: 800be79fa2d0c411def72cd04e8600c8.dir
 ```
 
+</details>
+
 ## External Deps and Outs
 
 This is very similar to tracking external data. We can just use the absolute
@@ -112,6 +120,10 @@ $ dvc run \
           /var/data/clean/
 ```
 
+<details>
+
+### Using an environment variable
+
 We can also define a variable `DATA=/var/data` and use it to define the stage,
 like this:
 
@@ -124,6 +136,12 @@ $ dvc run \
           $DATA/raw/ \
           $DATA/clean/
 ```
+
+</details>
+
+<details>
+
+### Using a DVC remote
 
 Or we can define first a DVC remote, and then use it to specify the dependencies
 and outputs of the stage, like this:
@@ -139,9 +157,11 @@ $ dvc run \
           remote://data/clean/
 ```
 
+</details>
+
 <details>
 
-### Using environment variables vs. using a DVC remote
+### Using environment variable vs. using a DVC remote
 
 It seems like using an environment variable is simpler, since less configuration
 is needed. However using a DVC remote is more flexible. To understand why, let's
@@ -238,11 +258,17 @@ $ cat .dvc/config
 dir = /var/data/dvc-cache/
 ```
 
+<details>
+
+### Using a relative path for the cache directory
+
 It is also possible to use a relative path for the cache directory, but it
 should be given relative to the directory of the config file (which is `.dvc/`).
+
 In this case it is more suitable to use the command `dvc cache dir`, which gets
 as argument a directory relative to the current directory, and saves in the
 configuration file the same directory, but relative to the configuration file.
+
 For example:
 
 ```dvc
@@ -252,6 +278,8 @@ $ cat .dvc/config
 [cache]
 dir = ../../dvc-cache/
 ```
+
+</details>
 
 ## Local DVC Storage
 

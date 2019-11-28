@@ -1,9 +1,4 @@
-# External Data on Azure Storage
-
-Azure Storage is Microsoft's cloud storage solution for modern data storage
-scenarios.
-
-## Remotes
+# Azure
 
 We can create an Azure remote like this:
 
@@ -64,10 +59,10 @@ $ dvc remote add myremote "azure://"
 
 <details>
 
-### Use Azure as a DVC Storage
+### Using Azure as a DVC Storage
 
 To use Azure as a DVC storage we should create a _default_ remote with the
-option `-d, --default`, like this:
+option `-d, --default`:
 
 ```dvc
 $ dvc remote add --default \

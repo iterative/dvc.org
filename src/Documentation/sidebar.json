@@ -121,12 +121,12 @@
         "slug": "managing-external-data"
       },
       {
-        "label": "External Data and Remotes",
-        "slug": "external-data",
-        "source": "external-data/index.md",
+        "label": "Remotes",
+        "slug": "remotes",
+        "source": "remotes/index.md",
         "children": [
           {
-            "label": "Local Filesystem",
+            "label": "Local",
             "slug": "local"
           },
           {
@@ -160,6 +160,37 @@
           {
             "label": "Aliyun OSS",
             "slug": "oss"
+          }
+        ]
+      },
+      {
+        "label": "External Data",
+        "slug": "external-data",
+        "source": "external-data/index.md",
+        "children": [
+          {
+            "label": "Local Filesystem",
+            "slug": "local"
+          },
+          {
+            "label": "HTTP",
+            "slug": "http"
+          },
+          {
+            "label": "SSH",
+            "slug": "ssh"
+          },
+          {
+            "label": "Amazon S3",
+            "slug": "amazon"
+          },
+          {
+            "label": "Google Cloud Storage",
+            "slug": "gs"
+          },
+          {
+            "label": "HDFS",
+            "slug": "hdfs"
           }
         ]
       },
