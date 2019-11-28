@@ -22,46 +22,6 @@ port = 2222
 
 <details>
 
-### Using SSH server as a DVC Storage
-
-Let's say that we want to use the directory `/srv/dvc-storage/` on the server
-`ssh-server` as a DVC storage for sharing data and collaboration (using
-`dvc push` and `dvc pull`). We need to create a _default_ remote with the option
-`-d, --default`:
-
-```dvc
-$ dvc remote add --default \
-      ssh-storage ssh://ssh-server/srv/dvc-storage
-Setting 'ssh-storage' as a default remote.
-```
-
-The configuration file `.dvc/config` should have a content like this:
-
-```ini
-['remote "ssh-storage"']
-url = ssh://ssh-server/srv/dvc-storage
-[core]
-remote = ssh-storage
-```
-
-> In the setup above we assume that we already have something like this on
-> `~/.ssh/config`:
->
-> ```
-> Host ssh-server
->     HostName example.org
->     Port 1234
->     User myuser
->     IdentityFile ~/.ssh/ssh-server-key
->     IdentitiesOnly yes
-> ```
->
-> It also assumes that the private key is on `~/.ssh/ssh-server-key`
-
-</details>
-
-<details>
-
 ### Details: All remote options
 
 - `url` - remote location URL.

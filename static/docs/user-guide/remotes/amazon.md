@@ -44,29 +44,6 @@ So, make sure you have the following permissions enabled:
 
 </details>
 
-<details>
-
-### Use Amazon S3 as a DVC Storage
-
-To use Amazon S3 as a DVC storage we should create a _default_ remote with the
-option `-d, --default`:
-
-```dvc
-$ dvc remote add --default s3storage s3://mybucket/path
-Setting 's3storage' as a default remote.
-```
-
-The configuration file `.dvc/config` should have a content like this:
-
-```ini
-['remote "s3storage"']
-url = s3://mybucket/path
-[core]
-remote = s3storage
-```
-
-</details>
-
 We can modify the remote settings with `dvc remote modify`, for example:
 
 ```dvc

@@ -15,29 +15,6 @@ url = gs://bucket/path
 
 <details>
 
-### Use GS as a DVC Storage
-
-To use GS as a DVC storage we should create a _default_ remote with the option
-`-d, --default`:
-
-```dvc
-$ dvc remote add --default myremote gs://bucket/path
-Setting 'myremote' as a default remote.
-```
-
-The configuration file `.dvc/config` should have a content like this:
-
-```ini
-['remote "myremote"']
-url = gs://bucket/path
-[core]
-remote = myremote
-```
-
-</details>
-
-<details>
-
 ### Details: GS available options
 
 - `projectname` - project name to use.

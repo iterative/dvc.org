@@ -30,29 +30,6 @@ url = hdfs://user@example.com/path/to/dir
 
 <details>
 
-### Using HDFS as a DVC Storage
-
-To use HDFS as a DVC storage we should create a _default_ remote with the option
-`-d, --default`:
-
-```dvc
-$ dvc remote add --default \
-      storage hdfs://user@example.com/path/to/dir
-```
-
-The configuration file `.dvc/config` should have a content like this:
-
-```ini
-['remote "storage"']
-url = hdfs://user@example.com/path/to/dir
-[core]
-remote = storage
-```
-
-</details>
-
-<details>
-
 ### Details: HDFS available options
 
 - `user` - username to use to access a remote.

@@ -56,37 +56,3 @@ $ dvc remote add myremote "azure://"
 ```
 
 </details>
-
-<details>
-
-### Using Azure as a DVC Storage
-
-To use Azure as a DVC storage we should create a _default_ remote with the
-option `-d, --default`:
-
-```dvc
-$ dvc remote add --default \
-      myremote azure://my-container-name/path
-Setting 'myremote' as a default remote.
-
-$ dvc remote modify --local \
-      myremote connection_string my-connection-string
-```
-
-Configuration files `.dvc/config` and `.dvc/config.local` should look like this:
-
-```ini
-# .dvc/config
-['remote "myremote"']
-url = azure://my-container-name/path
-[core]
-remote = myremote
-```
-
-```ini
-# .dvc/config.local
-['remote "myremote"']
-connection_string = my-connection-string
-```
-
-</details>

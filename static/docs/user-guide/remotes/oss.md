@@ -88,33 +88,6 @@ $ export OSS_ENDPOINT="endpoint"
 
 <details>
 
-### Using OSS as a DVC Storage
-
-To use OSS as a DVC storage we should create a _default_ remote with the option
-`-d, --default`:
-
-```dvc
-$ export OSS_ACCESS_KEY_ID="my-key-id"
-$ export OSS_ACCESS_KEY_SECRET="my-key-secret"
-$ export OSS_ENDPOINT="endpoint"
-
-$ dvc remote add --default storage oss://my-bucket/dvc-storage
-Setting 'storage' as a default remote.
-```
-
-The configuration file `.dvc/config` should have a content like this:
-
-```ini
-['remote "storage"']
-url = oss://my-bucket/dvc-storage
-[core]
-remote = storage
-```
-
-</details>
-
-<details>
-
 ### Test your OSS storage using docker
 
 Start a container running an OSS emulator.
