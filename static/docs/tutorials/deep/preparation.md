@@ -31,7 +31,7 @@ code into it:
 Windows doesn't include the `wget` utility by default, but you can use the
 browser to download `code.zip`. (Right-click
 [this link](https://code.dvc.org/tutorial/nlp/code.zip) and select
-`Save Link As...` (Chrome). Save it into the <abbr>project</abbr> directory.
+`Save Link As...` (Chrome). Save it into the project directory.
 
 </details>
 
