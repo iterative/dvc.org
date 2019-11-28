@@ -8,7 +8,7 @@ with commands such as `dvc add`. With the aim to enable reusability of these
 can depend on data from an external <abbr>DVC project</abbr>, **similar to
 package management systems, but for data**.
 
-<!-- Insert diagram image here. -->
+<!-- TODO: Insert diagram image here. -->
 
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
 tracking and versioning datasets (or any large data). This way we would have a
@@ -41,25 +41,9 @@ Advantages of using a DVC **data registry** project:
 
 ## Building data registries
 
-Data registries are <abbr>DVC repositories</abbr>, so they can be created
-locally like any other Git + DVC <abbr>project</abbr>. However, registries
-should be available online i.e. pushed to a Git server. For example:
-
-```dvc
-$ mkdir my-data-registry && cd my-data-registry
-$ git init && dvc init
-$ git commit -am "Initialize DVC project"
-$ git remote add origin git@... # Git server URL
-$ git branch -u origin/master
-$ git push
-```
-
-What makes online data registries special, is that they mainly contain simple
-[DVC-files](/doc/user-guide/dvc-file-format) (probably no source code or
-[pipelines](/doc/command-reference/pipeline)). These [DVC-files track the
-different datasets we may want to version. The actual data will be stored in one
-or more [remote storage](/doc/command-reference/remote) locations configured in
-the <abbr>project</abbr>.
+Data registries can be created locally like any other <abbr>DVC
+repositories</abbr> with `git init` and `dvc init`, and pushed to a Git server
+for sharing with others.
 
 A good way to organize these DVC-files is in different directories that group
 the data into separate uses, for example `images/`, `natural-language/`, etc. As
@@ -69,16 +53,26 @@ directory for each of our website documentation sections, such as `get-started/`
 and `use-cases/`.
 
 > We use this example registry for all of our docs, where needed, for example in
-> the [Versioning](/doc/tutorials/versioning) tutorial,
+> the [Versioning tutorial](/doc/tutorials/versioning),
 > [in Get Started](/doc/get-started/add-files), and some Command Reference
 > examples.
 
 ### Adding datasets to a registry
 
-<!-- Probably we will need to touch cats & dogs example and answer (again, high level perspective) to questions like - how do we get data there, how do we update it, how do we consume it from other repos.  -->
-<!-- we should be comparing no DVC at all (ad-hoc conventions and total mess on S3) vs. the DVC Data Registry – which effectively provides some "meta" information for the same data on S3. -->
-<!-- something like - we had S3 like everyone - few buckets already (for such a small case & docs), few versions of the files in different locations, directories with images repeatings, etc - explain high level problems -->
-<!-- let’s just assume that we have a directory and we keep adding files -->
+...
+
+What makes data registries special, is that they mainly contain simple
+[DVC-files](/doc/user-guide/dvc-file-format) (probably no source code or
+[pipelines](/doc/command-reference/pipeline)). These [DVC-files track the
+different datasets we may want to version. The actual data will be stored in one
+or more [remote storage](/doc/command-reference/remote) locations configured in
+the <abbr>project</abbr>.
+
+## Using a data registry
+
+...
+
+## Example
 
 Imagine a training dataset with 1000 images of cats and dogs that will be used
 to build an ML model. Without DVC, in order for a team to collaborate on this
@@ -146,7 +140,7 @@ representing the entire (merged) data. This is in contrast to having one single
 version of 2 separate DVC-files, one for each part of the data split (as in the
 Versioning example).
 
-## Using a data registry
+## Example: Consuming
 
 Let's say at the time of creating the
 [initial version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v1/use-cases)
