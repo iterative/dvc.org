@@ -15,6 +15,6 @@ if you have any questions or need any help. We are very responsive ⚡.
 ✅ Check out our [GitHub repository](https://github.com/iterative/dvc) and give
 us a ⭐ if you like the project!
 
-When you are done with Get Started or if you'd like to try other alternatives to
-learn DVC, check the available examples, interactive and community
-[tutorials](/doc/tutorials).
+When you are done with _Get Started_ or if you'd like to try other alternatives
+to learn DVC, check the available examples, interactive and community tutorials
+on this [page](/doc/tutorials).
