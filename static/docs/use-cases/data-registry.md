@@ -11,7 +11,7 @@ package management systems, but for data**.
 <!-- TODO: Insert diagram image here. -->
 
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
-tracking and versioning datasets (or any large data). This way we would have a
+tracking and versioning _datasets_ (or any large data). This way we would have a
 repository with all the metadata and history of changes of different datasets.
 We could see who updated what, and when, and use pull requests to update data
 (the same way we do with code). This is what we call a **data registry**, which
@@ -43,182 +43,81 @@ Advantages of using a DVC **data registry** project:
 
 Data registries can be created locally like any other <abbr>DVC
 repositories</abbr> with `git init` and `dvc init`, and pushed to a Git server
-for sharing with others.
-
-A good way to organize these DVC-files is in different directories that group
-the data into separate uses, for example `images/`, `natural-language/`, etc. As
-an example, our
+for sharing with others. A good way to organize them is with different
+directories, to group the data into separate uses, such as `images/`,
+`natural-language/`, etc. For example, our
 [dataset-registry](https://github.com/iterative/dataset-registry) uses a
-directory for each of our website documentation sections, such as `get-started/`
-and `use-cases/`.
+directory for each of our website documentation sections, like `get-started/`,
+`use-cases/`, etc.
 
-> We use this example registry for all of our docs, where needed, for example in
+> We use **dataset-registry** for all of our docs, where needed, for example in
 > the [Versioning tutorial](/doc/tutorials/versioning),
 > [in Get Started](/doc/get-started/add-files), and some Command Reference
 > examples.
 
-### Adding datasets to a registry
+Adding datasets to a registry can be as simple as placing the data file or
+directory in question inside the <abbr>workspace</abbr>, and telling DVC to
+track it, with `dvc add`. For example:
 
+```dvc
+$ mkdir -p music/Beatles
+$ cp ~/Downloads/millionsongsubset_full music/songs
+$ dvc add music/songs
+100% Add                                       1/1 [00:03<00:00,  3.58s/file]
 ...
+$ git add music/songs.dvc music/.gitignore
+$ git commit -m "Track 1.8 GB 10,000 song dataset."
+```
 
-What makes data registries special, is that they mainly contain simple
-[DVC-files](/doc/user-guide/dvc-file-format) (probably no source code or
-[pipelines](/doc/command-reference/pipeline)). These [DVC-files track the
-different datasets we may want to version. The actual data will be stored in one
-or more [remote storage](/doc/command-reference/remote) locations configured in
-the <abbr>project</abbr>.
+> This example dataset actually exists. See
+> [MillionSongSubset](http://millionsongdataset.com/pages/getting-dataset/#subset).
+
+As shown above, a regular Git workflow can be followed with the tiny
+[DVC-files](/doc/user-guide/dvc-file-format) that substitute the actual data
+(`music/songs.dvc` in the example). This enables team collaboration on data at
+the same level as with source code (commit history, branching, pull requests,
+reviews, etc.)
+
+Datasets evolve, and DVC is prepared to handle it. Just add/remove or change the
+contents of the data registry, and apply updates by running `dvc add` again.
+This can be iterated as many times as necessary. Example:
+
+```dvc
+$ cp /path/to/1000/image/dir music/songs
+$ dvc add music/songs
+...
+$ git status
+Changes not staged for commit:
+...
+	modified:   music/songs.dvc
+$ git commit -am "Add 1000 more songs."
+```
+
+Repeating this process for several datasets will give shape to a robust
+registry, which are basically repositories that mainly version a bunch of
+DVC-files, as you can see in the hypotetical example below.
+
+> The actual data will be [pushed](/doc/command-reference/push) to one or more
+> [remote storage](/doc/command-reference/remote) locations that need to be
+> configured separately in the <abbr>project</abbr>.
+
+```dvc
+$ tree --filelimit=100
+.
+├── images
+│   ├── .gitignore
+│   ├── cats-dogs [2800 entries]  # Listed in .gitignore
+│   ├── faces [10000 entries]     # Listed in .gitignore
+│   ├── cats-dogs.dvc
+│   └── faces.dvc
+├── music
+│   ├── .gitignore
+│   ├── songs [11000 entries]     # Listed in .gitignore
+│   └── songs.dvc
+├── text
+...
+```
 
 ## Using a data registry
 
 ...
-
-## Example
-
-Imagine a training dataset with 1000 images of cats and dogs that will be used
-to build an ML model. Without DVC, in order for a team to collaborate on this
-project, we could just upload it to cloud storage (e.g. Amazon S3) and provide
-everyone with access.
-
-At some point though, we need to add another 1000 images to the dataset, but the
-colleagues already have work based on the initial set. For simplicity, we keep
-the dataset split into 2 directories (or compressed files) uploaded separately
-to the cloud.
-
-We actually versioned such a dataset (without split) in the `use-cases/`
-directory of our
-[dataset-registry](https://github.com/iterative/dataset-registry)
-<abbr>project</abbr> (hosted on GitHub). Let's see how this was done.
-
-To create the
-[initial version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v1/use-cases),
-we extracted the first part (`data.zip`) into `use-cases/cats-dogs` and used
-`dvc add` to
-[track the entire directory](https://dvc.org/doc/command-reference/add#example-directory),
-and committed this state with Git:
-
-```dvc
-$ mkdir use-cases
-$ cp path/to/data-part-one/ use-cases/cats-dogs
-$ tree use-cases/cats-dogs --filelimit 3
-use-cases/cats-dogs
-└── data
-    ├── train
-    │   ├── cats [500 image files]
-    │   └── dogs [500 image files]
-    └── validation
-        ├── cats [400 image files]
-        └── dogs [400 image files]
-$ dvc add use-cases/cats-dogs
-
-... This creates DVC-file `use-cases/cats-dogs.dvc`
-
-$ git add .gitignore use-cases/cats-dogs.dvc
-$ git commit -m 'Add 1800 cats and dogs images dataset.'
-```
-
-The
-[second version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v2/use-cases)
-was created by extracting the remaining part of the dataset, with 1000
-additional training images (500 cats, 500 dogs), on top of the same directory
-structure. Then we simply added the directory again! DVC recognizes the changes
-and updates the [DVC-file](/doc/user-guide/dvc-file-format), which can then be
-committed with Git again:
-
-```dvc
-$ dvc add use-cases/cats-dogs
-$ git add use-cases/cats-dogs.dvc
-$ git commit -m 'Add 1000 more cats and dogs images to dataset.'
-```
-
-> The versioned dataset was then uploaded to
-> [remote storage](/doc/command-reference/remote) with `dvc push`. This is
-> necessary for others being able to access the data from other projects and
-> locations.
-
-The result is a properly versioned dataset, with 2 versions of a single DVC-file
-representing the entire (merged) data. This is in contrast to having one single
-version of 2 separate DVC-files, one for each part of the data split (as in the
-Versioning example).
-
-## Example: Consuming
-
-Let's say at the time of creating the
-[initial version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v1/use-cases)
-of the dataset example above, we want to obtain it in another DVC project. This
-could easily be done with the following command:
-
-```dvc
-$ dvc import git@github.com:iterative/dataset-registry.git \
-             use-cases/cats-dogs
-```
-
-> Note that unlike `dvc get`, which can be used from any directory, `dvc import`
-> always needs to run from an [initialized](/doc/command-reference/init) DVC
-> project. Remember also that with both commands, the data comes from the source
-> project's remote storage, not from the Git repository itself.
-
-<details>
-
-### Expand for actionable command (optional)
-
-The command above is meant for informational purposes only. If you actually run
-it, although it will work, it will import the latest version of
-`use-cases/cats-dogs` from `dataset-registry`. The following command would
-actually bring in the version in question:
-
-```dvc
-$ dvc import --rev cats-dogs-v1 \
-             git@github.com:iterative/dataset-registry.git \
-             use-cases/cats-dogs
-```
-
-See the `dvc import` command reference for more details on the `--rev`
-(revision) option.
-
-</details>
-
-Importing keeps the connection between the local <abbr>project</abbr> and the
-data source (registry <abbr>repository</abbr>). This is achieved by creating a
-particular kind of [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import
-stage_) that includes a `repo` field. (This file can be used staged and
-committed with Git.)
-
-> For a sample DVC-file resulting from `dvc import`, refer to
-> [this example](/doc/command-reference/import#example-data-registry).
-
-Then, once the
-[second version](https://github.com/iterative/dataset-registry/tree/cats-dogs-v2/use-cases)
-of the dataset is created, we can easily bring the dataset up to date locally
-with `dvc update`:
-
-```dvc
-$ dvc update cats-dogs.dvc
-```
-
-<details>
-
-### Expand for actionable command (optional)
-
-As with the previous hidden note, actually trying the command above will produce
-the desired results, but not for obvious reasons. The initial `dvc import`
-command would have already obtained the latest version of the dataset (as noted
-before), so this `dvc update` is unnecessary and won't have any effect.
-
-And if you ran the `dvc import --rev cats-dogs-v1 ...` command instead, its
-import stage (DVC-file) would be
-[fixed to that revision](/doc/command-reference/import#example-fixed-revisions-re-importing)
-(`cats-dogs-v1` tag), so `dvc update` would also be ineffective. In order to
-actually "update" it, re-import the data instead, by now running the initial
-import command (the one without `--rev`):
-
-```dvc
-$ dvc import git@github.com:iterative/dataset-registry.git \
-             use-cases/cats-dogs
-```
-
-</details>
-
-This is possible because of the connection that the import stage saved among
-local and source projects, as explained earlier. The update downloads new and
-changed files in `cats-dogs/` based on the source project, and updates the
-metadata in the import stage DVC-file.
