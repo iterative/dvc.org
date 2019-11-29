@@ -121,6 +121,29 @@
         "slug": "managing-external-data"
       },
       {
+        "label": "Manage Experiments",
+        "slug": "experiments",
+        "source": "experiments/index.md",
+        "children": [
+          {
+            "label": "Tags",
+            "slug": "tags"
+          },
+          {
+            "label": "Branches",
+            "slug": "branches"
+          },
+          {
+            "label": "Directories",
+            "slug": "dirs"
+          },
+          {
+            "label": "Mixed",
+            "slug": "mixed"
+          }
+        ]
+      },
+      {
         "label": "Contributing",
         "slug": "contributing",
         "source": "contributing/index.md",
