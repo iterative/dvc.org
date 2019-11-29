@@ -2,6 +2,9 @@
   {
     "slug": "get-started",
     "source": "get-started/index.md",
+    "tutorials": {
+      "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
+    },
     "children": [
       "agenda",
       "initialize",
@@ -12,10 +15,7 @@
       "import-data",
       {
         "label": "Connect with Code",
-        "slug": "connect-code-and-data",
-        "tutorials": {
-          "katacoda": "https://www.katacoda.com/loodse/courses/dvc/dvc-01-install"
-        }
+        "slug": "connect-code-and-data"
       },
       "pipeline",
       "visualize",
@@ -115,7 +115,12 @@
         "label": "File Format (.dvc)",
         "slug": "dvc-file-format"
       },
-      "dvcignore",
+      {
+        "slug": "dvcignore",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
+        }
+      },
       "updating-tracked-files",
       "large-dataset-optimization",
       "external-dependencies",
@@ -189,7 +194,10 @@
       },
       {
         "label": "fetch",
-        "slug": "fetch"
+        "slug": "fetch",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/examples/fetch"
+        }
       },
       {
         "label": "get-url",
