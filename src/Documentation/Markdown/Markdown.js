@@ -104,6 +104,27 @@ CodeBlock.propTypes = {
   value: PropTypes.node.isRequired
 }
 
+const Link = ({ children, ...props }) => {
+  const externalLink = props.href.match(/^(\/\/|http(s)?:\/\/)/)
+  const showIcon =
+    externalLink && children && typeof children[0].props.children === 'string'
+
+  const modifiedProps = externalLink
+    ? { ...props, target: '_blank', rel: 'noopener nofollow' }
+    : props
+
+  if (showIcon) {
+    return <ExternalLink {...modifiedProps}>{children}</ExternalLink>
+  }
+
+  return <a {...modifiedProps}>{children}</a>
+}
+
+Link.propTypes = {
+  children: PropTypes.node.isRequired,
+  href: PropTypes.string.isRequired
+}
+
 export default class Markdown extends React.PureComponent {
   constructor() {
     super()
@@ -167,6 +188,7 @@ export default class Markdown extends React.PureComponent {
           escapeHtml={false}
           source={markdown}
           renderers={{
+            link: Link,
             code: CodeBlock,
             heading: HeadingRenderer,
             virtualHtml: HtmlRenderer
@@ -364,5 +386,20 @@ export const GithubLink = styled(LightButton)`
 
   i {
     background-image: url(/static/img/github_icon.svg);
+  }
+`
+
+const ExternalLink = styled.a`
+  position: relative;
+  padding-right: 21px;
+
+  &:after {
+    position: absolute;
+    top: 2px;
+    right: 0;
+    width: 16px;
+    height: 16px;
+    /* Icon source https://www.iconfinder.com/icons/2561428/external_link_icon */
+    content: url(/static/img/external-link.svg);
   }
 `
