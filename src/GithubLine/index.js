@@ -1,45 +1,32 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 
 const repo = `iterative/dvc`
 const gh = `https://github.com/${repo}`
 const api = `https://api.github.com/repos/${repo}`
 
-export default class GithubLine extends Component {
-  static defaultProps = {}
+export default function GithubLine() {
+  const [count, setCount] = useState('–––')
 
-  state = {
-    count: `–––`
-  }
-
-  UNSAFE_componentWillMount() {
-    axios.get(api).then(this.process)
-  }
-
-  process = res => {
-    const count = res.data.stargazers_count
-    this.setState({
-      count
+  useEffect(() => {
+    fetch(api).then(res => {
+      res.json().then(({ stargazers_count }) => setCount(stargazers_count))
     })
-  }
+  }, [count, setCount])
 
-  render() {
-    const { count } = this.state
-    return (
-      <Wrapper>
-        <Github src="/static/img/github_small.png" width="20" height="20" />
-        We’re on
-        <Link href={gh}>GitHub</Link>
-        <Star
-          src="/static/img/star_small.svg"
-          width="11.74"
-          height="11.74"
-        />{' '}
-        <Count>{count}</Count>
-      </Wrapper>
-    )
-  }
+  return (
+    <Wrapper>
+      <Github src="/static/img/github_small.png" width="20" height="20" />
+      We’re on
+      <Link href={gh}>GitHub</Link>
+      <Star
+        src="/static/img/star_small.svg"
+        width="11.74"
+        height="11.74"
+      />{' '}
+      <Count>{count}</Count>
+    </Wrapper>
+  )
 }
 
 const Wrapper = styled.div`
