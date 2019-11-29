@@ -10,10 +10,6 @@ import startCase from 'lodash.startcase'
 const ROOT_ELEMENT = 'bodybag'
 const MARKDOWN_ROOT = '#markdown-root'
 
-const icons = {
-  katacoda: '/static/tutorial-icons/katacoda.png'
-}
-
 const imageChecker = (images, callback) => {
   // IE can't use forEach on array-likes
   const imagesArray = Array.prototype.slice.call(images)
@@ -122,7 +118,7 @@ export default class RightPanel extends React.PureComponent {
 
     return (
       <Wrapper>
-        {!headings.length && !tutorialsData.length && <Spacer />}
+        {!headings.length && <Spacer />}
         {headings.length > 0 && (
           <>
             <Header>Content</Header>
@@ -142,20 +138,28 @@ export default class RightPanel extends React.PureComponent {
         )}
         {tutorialsData.length > 0 && (
           <>
-            <Header>Tutorials</Header>
-            <hr />
-            {tutorialsData.map(([key, value]) => (
-              <HeadingLink
-                href={value}
-                key={value}
-                isCurrent={true}
-                target="_blank"
-                rel="noopener nofollow"
-              >
-                {icons[key] && <Icon src={icons[key]} alt="" />}
-                Run in {startCase(key)}
-              </HeadingLink>
-            ))}
+            <Description>
+              <span role="img" aria-label="bug">
+                🖥️
+              </span>{' '}
+              Need a tutorial?
+            </Description>
+            {tutorialsData.map(([key, value]) => {
+              const ButtonComponent = icons[key] || ExternalButton
+
+              return (
+                <ButtonComponent
+                  href={value}
+                  key={value}
+                  target="_blank"
+                  rel="noopener nofollow"
+                >
+                  {icons[key] && <i />}
+                  Run in {startCase(key)}
+                </ButtonComponent>
+              )
+            })}
+            <br />
             <br />
           </>
         )}
@@ -248,23 +252,31 @@ const HeadingLink = styled.a`
   }
 `
 
-const GithubButton = styled(LightButton)`
-  min-width: 120px;
+const ExternalButton = styled(LightButton)`
+  box-sizing: border-box;
+  min-width: 170px;
   margin: 10px 0;
+`
 
+const GithubButton = styled(ExternalButton)`
   i {
     background-image: url(/static/img/github_icon.svg);
   }
 `
 
-const DiscordButton = styled(LightButton)`
-  min-width: 120px;
-  margin: 10px 0;
-
+const DiscordButton = styled(ExternalButton)`
   i {
     background-image: url(/static/img/discord.svg);
     width: 1.2em;
     height: 1.2em;
+  }
+`
+
+const KatacodaButton = styled(ExternalButton)`
+  i {
+    background-image: url(/static/tutorial-icons/katacoda.png);
+    width: 24px;
+    height: 24px;
   }
 `
 
@@ -276,9 +288,6 @@ const Description = styled.p`
   color: #3c3937;
 `
 
-const Icon = styled.img`
-  float: left;
-  width: 16px;
-  height: 16px;
-  margin: 5px 5px 5px 0;
-`
+const icons = {
+  katacoda: KatacodaButton
+}
