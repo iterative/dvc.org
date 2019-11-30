@@ -74,8 +74,7 @@ A dependency entry consists of a pair of fields:
     repository</abbr> at the time of importing or updating (with `dvc update`)
     the dependency.
 
-  > See the examples in
-  > [External Dependencies](/doc/user-guide/external-dependencies) for more
+  > See the examples in [External Data](/doc/user-guide/external-data) for more
   > info.
 
 An output entry consists of these fields:

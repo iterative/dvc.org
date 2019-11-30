@@ -48,8 +48,8 @@ and tries to retrieve the file using the project's default remote (configured
 
 DVC-files created by `dvc import` are called _import stages_. They use the
 `repo` field in the dependencies section (`deps`) in order to track source data
-changes (as an [external dependency](/doc/user-guide/external-dependencies)),
-enabling the reusability of data artifacts. For example:
+changes (as an [external dependency](/doc/user-guide/external-data)), enabling
+the reusability of data artifacts. For example:
 
 ```yaml
 md5: fd56a1794c147fea48d408f2bc95a33a

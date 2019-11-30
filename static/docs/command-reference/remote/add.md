@@ -288,7 +288,7 @@ $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 >
 > - `pull` and `fetch`
 > - `import-url` and `get-url`
-> - As an [external dependency](/doc/user-guide/external-dependencies)
+> - As an [external dependency](/doc/user-guide/external-data/http)
 
 ```dvc
 $ dvc remote add myremote https://example.com/path/to/dir

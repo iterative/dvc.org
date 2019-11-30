@@ -21,12 +21,10 @@ guides related to contributing to this
   covers the topic of how <abbr>caches</abbr> data can be automatically file
   linked to the workspace to avoid duplication of storage or slow and
   unnecessary file operations.
-- [External Dependencies](/doc/user-guide/external-dependencies) goes over the
-  ways in which DVC can keep track of files external to the project (or even
-  remote on a network or cloud location) as
-  [DVC-file](/doc/user-guide/dvc-files-and-directories) dependencies.
-- [Managing External Data](/doc/user-guide/managing-external-data) explains both
-  external outputs and external cache.
+- [External Data](/doc/user-guide/external-data) goes over the ways in which DVC
+  can keep track of files external to the project (or even remote on a network
+  or cloud location) as [DVC-file](/doc/user-guide/dvc-files-and-directories)
+  dependencies. It also explains external outputs and external cache.
 - [Contributing](/doc/user-guide/contributing) is related with getting involved
   directly in developing DVC. Contributors are very welcomed in our
   [community](/support)!

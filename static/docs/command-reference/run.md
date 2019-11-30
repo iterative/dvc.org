@@ -57,8 +57,8 @@ try creating a pipeline.
 - `-d`, `--deps` - specify a file or a directory the stage depends on. Multiple
   dependencies can be specified like this: `-d data.csv -d process.py`. Usually,
   each dependency is a file or a directory with data, or a code file, or a
-  configuration file. DVC also supports certain
-  [external dependencies](/doc/user-guide/external-dependencies).
+  configuration file. DVC also supports certain <abbr>external
+  dependencies</abbr>.
 
   DVC builds a dependency graph connecting different stages with each other.
   When you run `dvc repro`, the list of dependencies helps DVC analyze whether

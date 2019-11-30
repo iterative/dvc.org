@@ -24,7 +24,7 @@ The `targets` are files or directories to be places under DVC control. These are
 turned into outputs (`outs` field) in a resulting
 [DVC-file](/doc/user-guide/dvc-file-format). (See steps below for more details.)
 Note that target data outside the current <abbr>workspace</abbr> is supported,
-that becomes [external outputs](/doc/user-guide/managing-external-data).
+that becomes <abbr>external outputs</abbr>.
 
 Under the hood, a few actions are taken for each file (or directory) in
 `targets`:

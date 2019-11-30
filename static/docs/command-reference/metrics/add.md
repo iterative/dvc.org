@@ -25,8 +25,7 @@ While any text file can be tracked as a metric file, it's recommended to use
 get to a specific value, if the file contains multiple metrics. See
 `dvc metrics show` for more details.
 
-> Note that [external output](/doc/user-guide/managing-external-data) cannot be
-> marked as project metrics.
+> Note that <abbr>external output</abbr> cannot be marked as project metrics.
 
 ## Options
 

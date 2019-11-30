@@ -39,9 +39,8 @@ output will be placed inside of it.
 > other <abbr>DVC repositories</abbr> (e.g. GitHub URLs).
 
 DVC supports [DVC-files](/doc/user-guide/dvc-file-format) that refer to data in
-external locations, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such a
-DVC-file, the `deps` section stores the remote URL, and the `outs` section
+external locations, see [External Data](/doc/user-guide/external-data). In such
+a DVC-file, the `deps` section stores the remote URL, and the `outs` section
 contains the corresponding local path in the workspace. It records metadata from
 the external file or directory, allowing DVC to efficiently check it later and
 determine whether the local copy is out of date.
@@ -79,8 +78,8 @@ DVC supports several types of (local or) remote locations (protocols):
 
 Another way to understand the `dvc import-url` command is as a short-cut for a
 more verbose `dvc run` command. This is discussed in the
-[External Dependencies](/doc/user-guide/external-dependencies) documentation,
-where an alternative is demonstrated for each of these schemes.
+[External Data](/doc/user-guide/external-data) documentation, where an
+alternative is demonstrated for each of these schemes.
 
 Instead of `dvc import-url`:
 

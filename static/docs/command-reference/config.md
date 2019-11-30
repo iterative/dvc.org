@@ -147,7 +147,7 @@ for more details.)
   value provided to `dvc config cache.dir` or `dvc cache dir`.
 
 - `cache.ssh` - name of an
-  [SSH remote to use as external cache](/doc/user-guide/managing-external-data#ssh).
+  [SSH remote to use as external cache](/doc/user-guide/external-data/ssh).
 
   > Avoid using the same remote location that you are using for `dvc push`,
   > `dvc pull`, `dvc fetch` as external cache for your external outputs, because
@@ -156,16 +156,16 @@ for more details.)
   > a different file, with a different content.
 
 - `cache.s3` - name of an
-  [Amazon S3 remote to use as external cache](/doc/user-guide/managing-external-data#amazon-s-3).
+  [Amazon S3 remote to use as external cache](/doc/user-guide/external-data/amazon).
 
 - `cache.gs` - name of a
-  [Google Cloud Storage remote to use as external cache](/doc/user-guide/managing-external-data#google-cloud-storage).
+  [Google Cloud Storage remote to use as external cache](/doc/user-guide/external-data/gs).
 
 - `cache.hdfs` - name of an
-  [HDFS remote to use as external cache](/doc/user-guide/managing-external-data#hdfs).
+  [HDFS remote to use as external cache](/doc/user-guide/external-data/hdfs).
 
 - `cache.azure` - name of an Azure remote to use as
-  [external cache](/doc/user-guide/managing-external-data).
+  [external cache](/doc/user-guide/external-data/azure).
 
 ### state
 

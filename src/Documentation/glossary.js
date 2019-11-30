@@ -12,9 +12,6 @@ Directory containing all your project files. For example raw datasets, source
 code, ML models, etc. A workspace becomes a **DVC project** when
 [\`dvc init\`](/doc/command-reference/init) is run, and
 [DVC-files](/doc/user-guide/dvc-file-format) or stage files are created in it.
-
-Note that [external outputs](/doc/user-guide/managing-external-data) also
-form part of your expanded workspace, technically.
       `
     },
     {
@@ -81,8 +78,8 @@ commands. They represent files or directories from external sources.
       desc: `
 A DVC-file dependency with origin in an external source, for example HTTP, SSH,
 Amazon S3, Google Cloud Storage remote locations, or even other DVC
-repositories. See [External Dependencies]
-(/doc/user-guide/external-dependencies).
+repositories. See [External Data]
+(/doc/user-guide/external-data).
       `
     }
   ]
