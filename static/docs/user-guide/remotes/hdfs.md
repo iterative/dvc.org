@@ -21,14 +21,10 @@ The configuration file `.dvc/config` should have a content like this:
 url = hdfs://user@example.com/path/to/dir
 ```
 
-<details>
-
-### Details: HDFS available options
+### HDFS available options
 
 - `user` - username to use to access a remote.
 
   ```dvc
   $ dvc remote modify myremote user myuser
   ```
-
-</details>

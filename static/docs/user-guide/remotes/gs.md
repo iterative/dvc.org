@@ -13,9 +13,7 @@ The configuration file `.dvc/config` should have a content like this:
 url = gs://bucket/path
 ```
 
-<details>
-
-### Details: GS available options
+### GS available options
 
 - `projectname` - project name to use.
 
@@ -36,5 +34,3 @@ url = gs://bucket/path
   $ dvc remote modify myremote \
         credentialpath /path/to/my/creds/[FILE_NAME].json
   ```
-
-</details>

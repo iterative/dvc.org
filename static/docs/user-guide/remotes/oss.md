@@ -45,33 +45,6 @@ oss_key_id = my-key-id
 oss_key_secret = my-key-secret
 ```
 
-<details>
-
-### Details: Aliyun OSS available options
-
-- `oss_key_id` - OSS key id to use to access a remote.
-
-  ```dvc
-  $ dvc remote modify --local \
-        myremote oss_key_id my-key-id
-  ```
-
-- `oss_key_secret` - OSS secret key for authorizing access into a remote.
-
-  ```dvc
-  $ dvc remote modify --local \
-        myremote oss_key_secret my-key-secret
-  ```
-
-- `oss_endpoint` - OSS endpoint values for accessing remote container.
-
-  ```dvc
-  $ dvc remote modify \
-        myremote oss_endpoint endpoint
-  ```
-
-</details>
-
 You can also use the environment variables to set the options:
 
 ```dvc
@@ -107,3 +80,26 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 > access to public read bucket and public bucket.
 
 </details>
+
+### Aliyun OSS available options
+
+- `oss_key_id` - OSS key id to use to access a remote.
+
+  ```dvc
+  $ dvc remote modify --local \
+        myremote oss_key_id my-key-id
+  ```
+
+- `oss_key_secret` - OSS secret key for authorizing access into a remote.
+
+  ```dvc
+  $ dvc remote modify --local \
+        myremote oss_key_secret my-key-secret
+  ```
+
+- `oss_endpoint` - OSS endpoint values for accessing remote container.
+
+  ```dvc
+  $ dvc remote modify \
+        myremote oss_endpoint endpoint
+  ```

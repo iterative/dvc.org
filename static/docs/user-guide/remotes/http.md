@@ -1,7 +1,5 @@
 # HTTP/HTTPS
 
-> **❗ Note:** HTTP/HTTPS remotes support only download operations.
-
 We can create an HTTPS remote with `dvc remote add`:
 
 ```dvc
@@ -14,3 +12,5 @@ The configuration file `.dvc/config` should have a content like this:
 ['remote "get-started"']
 url = https://data.dvc.org/get-started
 ```
+
+> **❗ Note:** HTTP/HTTPS remotes support only download operations.

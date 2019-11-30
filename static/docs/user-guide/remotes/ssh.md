@@ -20,9 +20,7 @@ url = ssh://user@example.com/path/to/dir
 port = 2222
 ```
 
-<details>
-
-### Details: All remote options
+### All remote options
 
 - `url` - remote location URL.
 
@@ -85,8 +83,6 @@ port = 2222
   ```dvc
   $ dvc remote modify ssh-remote gss_auth true
   ```
-
-</details>
 
 <details>
 

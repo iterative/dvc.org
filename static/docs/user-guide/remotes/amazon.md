@@ -50,9 +50,7 @@ $ dvc remote modify s3remote url s3://mybucket/new-path
 By default DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 
-<details>
-
-### Details: Override default AWS credentials
+### Override default AWS credentials
 
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could use the following options:
@@ -113,5 +111,3 @@ these settings, you could use the following options:
   ```dvc
   $ dvc remote modify s3remote acl bucket-owner-full-control
   ```
-
-</details>
