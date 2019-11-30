@@ -1,7 +1,8 @@
 # External Data
 
 External data are located outside the project directory, either on the local
-filesystem or on a remote host. They may be used in order to:
+filesystem, or on a remote host, or on a cloud data storage. They may be used in
+order to:
 
 - Track data that is located on an external directory.
 - Read the dependencies of a stage from an external directory.

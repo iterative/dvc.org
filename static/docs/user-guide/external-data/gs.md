@@ -27,8 +27,9 @@ $ dvc import-url remote://gs-data/file.csv
 
 ## External Data and Outputs
 
-For cached external outputs (specified using `-o`) we need to setup an external
-cache location that will be used by DVC to store versions of the external file:
+For tracked data and for cached external outputs (specified using `-o`) we need
+to setup an external cache location that will be used by DVC to store versions
+of the external file:
 
 ```dvc
 # Add GS remote to be used as cache location for GS files

@@ -105,7 +105,7 @@ outs:
 
 </details>
 
-## External Deps and Outs
+## Dependencies and Outputs
 
 This is very similar to tracking external data. We can just use the absolute
 paths of dependencies and outputs, like this:

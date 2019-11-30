@@ -1,7 +1,5 @@
 # External Data on HTTP/HTTPS
 
-**❗ Note:** HTTP/HTTPS remotes support only download operations.
-
 ## External Dependencies
 
 Let's take as an example a stage that simply downloads a file:
