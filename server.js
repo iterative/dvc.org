@@ -94,6 +94,26 @@ app.prepare().then(() => {
         )
       })
       res.end()
+    } else if (
+      pathname === '/doc/user-guide/external-dependencies' ||
+      pathname === '/doc/user-guide/external-dependencies/'
+    ) {
+      // path /doc/user-guide/external-dependencies
+      //  ->  /doc/user-guide/external-data
+      res.writeHead(301, {
+        Location: req.url.replace('external-dependencies', 'external-data')
+      })
+      res.end()
+    } else if (
+      pathname === '/doc/user-guide/managing-external-data' ||
+      pathname === '/doc/user-guide/managing-external-data/'
+    ) {
+      // path /doc/user-guide/managing-external-data
+      //  ->  /doc/user-guide/external-data
+      res.writeHead(301, {
+        Location: req.url.replace('managing-external-data', 'external-data')
+      })
+      res.end()
     } else if (/^\/doc.*/i.test(pathname)) {
       // path /doc*/... -> /doc/...
       let normalized_pathname = pathname.replace(/^\/doc[^?\/]*/i, '/doc')
