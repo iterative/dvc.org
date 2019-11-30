@@ -39,21 +39,15 @@ Advantages of using a DVC **data registry** project:
   HTTP location). Git versioning of [DVC-files](/doc/user-guide/dvc-file-format)
   allows us to track and audit data changes.
 
-## Building data registries
+## Construction and workflow
 
-Data registries can be created locally like any other <abbr>DVC
-repositories</abbr> with `git init` and `dvc init`, and pushed to a Git server
-for sharing with others. A good way to organize them is with different
+Data registries can be created like any other <abbr>DVC repositories</abbr> with
+`git init` and `dvc init`. A good way to organize them is with different
 directories, to group the data into separate uses, such as `images/`,
 `natural-language/`, etc. For example, our
 [dataset-registry](https://github.com/iterative/dataset-registry) uses a
-directory for each of our website documentation sections, like `get-started/`,
+directory for each section in our website documentation, like `get-started/`,
 `use-cases/`, etc.
-
-> We use **dataset-registry** for all of our docs, where needed, for example in
-> the [Versioning tutorial](/doc/tutorials/versioning),
-> [in Get Started](/doc/get-started/add-files), and some Command Reference
-> examples.
 
 Adding datasets to a registry can be as simple as placing the data file or
 directory in question inside the <abbr>workspace</abbr>, and telling DVC to
@@ -65,18 +59,25 @@ $ cp ~/Downloads/millionsongsubset_full music/songs
 $ dvc add music/songs
 100% Add                                       1/1 [00:03<00:00,  3.58s/file]
 ...
-$ git add music/songs.dvc music/.gitignore
-$ git commit -m "Track 1.8 GB 10,000 song dataset."
 ```
 
 > This example dataset actually exists. See
 > [MillionSongSubset](http://millionsongdataset.com/pages/getting-dataset/#subset).
 
-As shown above, a regular Git workflow can be followed with the tiny
+A regular Git workflow can be followed with the tiny
 [DVC-files](/doc/user-guide/dvc-file-format) that substitute the actual data
-(`music/songs.dvc` in the example). This enables team collaboration on data at
+(`music/songs.dvc` in this example). This enables team collaboration on data at
 the same level as with source code (commit history, branching, pull requests,
-reviews, etc.)
+reviews, etc.):
+
+```dvc
+$ git add music/songs.dvc music/.gitignore
+$ git commit -m "Track 1.8 GB 10,000 song dataset."
+```
+
+> The actual data is stored in the project's <abbr>cache</abbr> and can be
+> [pushed](/doc/command-reference/push) to one or more
+> [remote storage](/doc/command-reference/remote) locations.
 
 Datasets evolve, and DVC is prepared to handle it. Just add/remove or change the
 contents of the data registry, and apply updates by running `dvc add` again.
@@ -90,16 +91,11 @@ $ git status
 Changes not staged for commit:
 ...
 	modified:   music/songs.dvc
-$ git commit -am "Add 1000 more songs."
 ```
 
 Repeating this process for several datasets will give shape to a robust
 registry, which are basically repositories that mainly version a bunch of
 DVC-files, as you can see in the hypotetical example below.
-
-> The actual data will be [pushed](/doc/command-reference/push) to one or more
-> [remote storage](/doc/command-reference/remote) locations that need to be
-> configured separately in the <abbr>project</abbr>.
 
 ```dvc
 $ tree --filelimit=100
@@ -118,6 +114,6 @@ $ tree --filelimit=100
 ...
 ```
 
-## Using a data registry
+## Usage
 
 ...
