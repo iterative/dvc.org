@@ -3,9 +3,9 @@
 _Get Started_ is a step-by-step introduction into basic DVC features. It doesn't
 go into details much, but provides links and expandable sections to learn more.
 
-You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
-Also, if DVC is not installed, please follow these [instructions](/doc/install)
-to do so.
+You'll need [Git](https://git-scm.com) to run the commands in this guide. Also,
+if DVC is not installed, please follow these [instructions](/doc/install) to do
+so.
 
 Before you start ...
 
@@ -18,6 +18,7 @@ us a ⭐ if you like the project!
 ✅ Contribute to DVC [on GitHub](https://github.com/iterative/dvc) or help us
 improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
 
-When you are done with _Get Started_ and ready to cover other topics, or if
-you'd just like to try other ways to learn DVC, check the available examples,
-interactive and community tutorials on this [page](/doc/tutorials).
+When you're done, feel free to check out official and community
+[tutorials](/doc/tutorials). They provide in-depth explanations,
+[interactive](doc/tutorials/interactive) scenarios, and various examples on how
+DVC can be used.
