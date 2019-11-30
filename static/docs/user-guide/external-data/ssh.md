@@ -58,25 +58,6 @@ $ dvc config cache.ssh ssh-cache
 > Non-cached external outputs (specified using `-O`) do not require an external
 > cache to be setup.
 
-<details>
-
-### Warning: Don't use the same location for the external cache and for the DVC storage
-
-When you setup an external cache for your external outputs, avoid using the same
-location that you are using for the DVC storage (which is accessed by
-`dvc push`, `dvc pull`, `dvc fetch`), because it may cause possible checksum
-overlaps. Checksum for some data file on an external storage can potentially
-collide with checksum generated locally for a different file, with a different
-content.
-
-```dvc
-# Add a DVC storage
-$ dvc remote add --default \
-      ssh-storage ssh://user@example.com:/srv/dvc-storage
-```
-
-</details>
-
 Now we can track remote data or create a stage with remote output. Let's take as
 example a stage that simply copies a local file to a SSH server:
 

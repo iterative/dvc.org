@@ -1,14 +1,7 @@
 # HDFS
 
-> The Hadoop Distributed File System is a distributed file system designed to
-> run on commodity hardware. HDFS is highly fault-tolerant and is designed to be
-> deployed on low-cost hardware. HDFS provides high throughput access to
-> application data and is suitable for applications that have large data sets.
-> HDFS relaxes a few POSIX requirements to enable streaming access to file
-> system data.
->
-> Note that as long as there is a `hdfs://...` path for your data, DVC can
-> handle it. So systems like Hadoop, Hive, and HBase are supported!
+> As long as there is a `hdfs://...` path for your data, DVC can handle it.
+> Systems like Hadoop, Hive, and HBase are supported.
 
 We can create an HDFS remote with `dvc remote add`:
 

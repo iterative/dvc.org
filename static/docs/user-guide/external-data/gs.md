@@ -1,8 +1,5 @@
 # External Data on Google Cloud Storage
 
-Google Cloud Storage is a RESTful online file storage web service for storing
-and accessing data on Google Cloud Platform infrastructure.
-
 ## External Dependencies
 
 Let's take as an example a stage that simply downloads a file from a GS
@@ -43,24 +40,6 @@ $ dvc config cache.gs gscache
 
 > Non-cached external outputs (specified using `-O`) do not require an external
 > cache to be setup.
-
-<details>
-
-### Warning: Don't use the same location for the external cache and for the DVC storage
-
-When you setup an external cache for your external outputs, avoid using the same
-location that you are using for the DVC storage (which is accessed by
-`dvc push`, `dvc pull`, `dvc fetch`), because it may cause possible checksum
-overlaps. Checksum for some data file on an external storage can potentially
-collide with checksum generated locally for a different file, with a different
-content.
-
-```dvc
-# Add a DVC storage
-$ dvc remote add --default storage gs://mybucket/dvc-storage
-```
-
-</details>
 
 Now we can track remote data or create a stage with remote output. Let's take as
 example a stage that simply copies a local file to a GS location:

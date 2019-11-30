@@ -1,8 +1,5 @@
 # Amazon S3
 
-Amazon S3 or Amazon Simple Storage Service is a service offered by Amazon Web
-Services (AWS) that provides object storage through a web service interface.
-
 We can create an Amazon S3 remote with `dvc remote add`:
 
 ```dvc
