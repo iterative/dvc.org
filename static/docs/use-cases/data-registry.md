@@ -17,6 +17,9 @@ We could see who updated what, and when, and use pull requests to update data
 (the same way we do with code). This is what we call a **data registry**, which
 can work as data management _middleware_ between ML projects and cloud storage.
 
+> Note that a single dedicated repository is just one possible pattern to create
+> data registries with DVC.
+
 Advantages of using a DVC **data registry** project:
 
 - Data as code: Improve _lifecycle management_ with versioning of simple
@@ -39,7 +42,7 @@ Advantages of using a DVC **data registry** project:
   HTTP location). Git versioning of [DVC-files](/doc/user-guide/dvc-file-format)
   allows us to track and audit data changes.
 
-## Construction and workflow
+## Construction
 
 Data registries can be created like any other <abbr>DVC repositories</abbr> with
 `git init` and `dvc init`. A good way to organize them is with different
@@ -57,8 +60,7 @@ track it, with `dvc add`. For example:
 $ mkdir -p music/Beatles
 $ cp ~/Downloads/millionsongsubset_full music/songs
 $ dvc add music/songs
-100% Add                                       1/1 [00:03<00:00,  3.58s/file]
-...
+100% Add                                       1/1 [...
 ```
 
 > This example dataset actually exists. See
@@ -72,30 +74,37 @@ reviews, etc.):
 
 ```dvc
 $ git add music/songs.dvc music/.gitignore
-$ git commit -m "Track 1.8 GB 10,000 song dataset."
+$ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 ```
 
 > The actual data is stored in the project's <abbr>cache</abbr> and can be
 > [pushed](/doc/command-reference/push) to one or more
 > [remote storage](/doc/command-reference/remote) locations.
 
-Datasets evolve, and DVC is prepared to handle it. Just add/remove or change the
-contents of the data registry, and apply updates by running `dvc add` again.
-This can be iterated as many times as necessary. Example:
+## Evolution
+
+Datasets change, and DVC is prepared to handle it. Just add/remove or change the
+contents of the data registry, and apply the updates by running `dvc add` again:
 
 ```dvc
 $ cp /path/to/1000/image/dir music/songs
 $ dvc add music/songs
 ...
+```
+
+DVC then modifies the corresponding DVC-file to reflect the changes in the data,
+and this will be noticed by Git:
+
+```dvc
 $ git status
 Changes not staged for commit:
 ...
 	modified:   music/songs.dvc
 ```
 
-Repeating this process for several datasets will give shape to a robust
+Iterating on this process for several datasets can give shape to a robust
 registry, which are basically repositories that mainly version a bunch of
-DVC-files, as you can see in the hypotetical example below.
+DVC-files, as you can see in the hypothetical example below.
 
 ```dvc
 $ tree --filelimit=100
