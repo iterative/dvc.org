@@ -35,8 +35,8 @@ from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 $ pip install dvc
 ```
 
-Depending on the type of the [remote storage](/doc/user-guide/remotes) you plan
-to use, you might need to install optional dependencies: `[s3]`, `[ssh]`,
+Depending on the type of the [remote storage](/doc/command-reference/remote) you
+plan to use, you might need to install optional dependencies: `[s3]`, `[ssh]`,
 `[gs]`, `[azure]`, and `[oss]`. Use `[all]` to include them all.
 
 <details>
