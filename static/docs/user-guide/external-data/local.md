@@ -280,32 +280,3 @@ dir = ../../dvc-cache/
 ```
 
 </details>
-
-## Local DVC Storage
-
-A local DVC storage might be useful in these cases:
-
-- When we are using a
-  [shared development server](/doc/user-guide/data-sharing/shared-server)
-- When our data storage is
-  [network-mounted](/doc/user-guide/data-sharing/mounted-storage)
-- When our data storage is
-  [synchronized with a central storage](/doc/user-guide/data-sharing/synched-storage)
-
-Assuming that we want to use `/var/data/dvc-storage/` as a local DVC storage, we
-can configure it by creating a **default** remote (which can be used by
-`dvc push` and `dvc pull`), like this:
-
-```dvc
-$ dvc remote add --default storage /var/data/dvc-storage
-Setting 'storage' as a default remote.
-
-$ dvc remote list
-storage	/var/data/dvc-storage
-
-$ cat .dvc/config
-['remote "storage"']
-url = /var/data/dvc-storage
-[core]
-remote = storage
-```
