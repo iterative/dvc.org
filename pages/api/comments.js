@@ -29,7 +29,7 @@ const getCommentCount = (req, res) => {
     const json = JSON.parse(body)
 
     if (!json.posts_count) {
-      res.status(404).json({ error: "Forum's don't have 'posts_count' field" })
+      res.status(502).json({ error: "Unexpected payload from Forum" })
 
       return
     }
