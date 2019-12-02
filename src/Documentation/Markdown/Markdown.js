@@ -390,16 +390,14 @@ export const GithubLink = styled(LightButton)`
 `
 
 const ExternalLink = styled.a`
-  position: relative;
-  padding-right: 21px;
-
   &:after {
-    position: absolute;
-    top: 2px;
+    position: relative;
+    top: 1px;
     right: 0;
-    width: 16px;
-    height: 16px;
-    /* Icon source https://www.iconfinder.com/icons/2561428/external_link_icon */
+    width: 12px;
+    height: 12px;
+    margin-left: 1px;
+    /* Icon source https://en.wikipedia.org/w/skins/Vector/images/external-link-ltr-icon.svg */
     content: url(/static/img/external-link.svg);
   }
 `
