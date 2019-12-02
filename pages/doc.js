@@ -220,6 +220,7 @@ export default class Documentation extends Component {
             <Markdown
               markdown={markdown}
               githubLink={githubLink}
+              tutorials={tutorials}
               prev={prev}
               next={next}
               onNavigate={this.onNavigate}

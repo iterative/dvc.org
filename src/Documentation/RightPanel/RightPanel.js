@@ -2,10 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { LightButton } from '../LightButton'
+import Tutorials from '../Tutorials'
 // utils
 import throttle from 'lodash.throttle'
-import topairs from 'lodash.topairs'
-import startCase from 'lodash.startcase'
 
 const ROOT_ELEMENT = 'bodybag'
 const MARKDOWN_ROOT = '#markdown-root'
@@ -114,8 +113,6 @@ export default class RightPanel extends React.PureComponent {
     const { headings, githubLink, tutorials } = this.props
     const { current } = this.state
 
-    const tutorialsData = topairs(tutorials)
-
     return (
       <Wrapper>
         {!headings.length && <Spacer />}
@@ -136,7 +133,7 @@ export default class RightPanel extends React.PureComponent {
             <br />
           </>
         )}
-        {tutorialsData.length > 0 && (
+        {Object.keys(tutorials || {}).length > 0 && (
           <>
             <Description>
               <span role="img" aria-label="bug">
@@ -144,22 +141,7 @@ export default class RightPanel extends React.PureComponent {
               </span>{' '}
               It can be run online
             </Description>
-            {tutorialsData.map(([key, value]) => {
-              const ButtonComponent = icons[key] || ExternalButton
-
-              return (
-                <ButtonComponent
-                  href={value}
-                  key={value}
-                  target="_blank"
-                  rel="noopener nofollow"
-                >
-                  {icons[key] && <i />}
-                  Run in {startCase(key)}
-                </ButtonComponent>
-              )
-            })}
-            <br />
+            <Tutorials tutorials={tutorials} />
             <br />
           </>
         )}
@@ -272,14 +254,6 @@ const DiscordButton = styled(ExternalButton)`
   }
 `
 
-const KatacodaButton = styled(ExternalButton)`
-  i {
-    background-image: url(/static/tutorial-icons/katacoda.png);
-    width: 24px;
-    height: 24px;
-  }
-`
-
 const Spacer = styled.div`
   height: 65px;
 `
@@ -287,7 +261,3 @@ const Spacer = styled.div`
 const Description = styled.p`
   color: #3c3937;
 `
-
-const icons = {
-  katacoda: KatacodaButton
-}
