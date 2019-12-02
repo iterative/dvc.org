@@ -4,6 +4,12 @@ Show [stages](/doc/command-reference/run) in a pipeline that lead to the
 specified stage. By default it lists
 [DVC-files](/doc/user-guide/dvc-file-format).
 
+This command's output is automatically pushed to `less` command line tool if
+`less` is installed 
+If `less` cannot be found, the ouput is simply printed out.
+You can also override default `less` via `DVC_PAGER` environemnt variable.
+
+
 ## Synopsis
 
 ```usage
