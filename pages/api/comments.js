@@ -14,7 +14,7 @@ const getCommentCount = (req, res) => {
   } = req
 
   if (!url.startsWith(FORUM_URL)) {
-    res.status(404).json({ error: `URL should starts with '${FORUM_URL}'` })
+    res.status(400)
 
     return
   }
