@@ -23,7 +23,7 @@ export default function TrySection({ title, buttonText = 'Get Started' }) {
 
 TrySection.propTypes = {
   title: PropTypes.string.isRequired,
-  buttonText: PropTypes.string.isRequired
+  buttonText: PropTypes.string
 }
 
 const Wrapper = styled.section`
