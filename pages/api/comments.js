@@ -21,7 +21,7 @@ const getCommentCount = (req, res) => {
 
   request(`${url}.json`, (error, response, body) => {
     if (error || response.statusCode !== 200) {
-      res.status(404).json({ error: 'Forum returned incorrect response' })
+      res.status(502).json({ error: "Unexpected response from Forum" })
 
       return
     }
