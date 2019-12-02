@@ -21,7 +21,7 @@ const getCommentCount = (req, res) => {
 
   request(`${url}.json`, (error, response, body) => {
     if (error || response.statusCode !== 200) {
-      res.status(502).json({ error: "Unexpected response from Forum" })
+      res.status(502).json({ error: 'Unexpected response from Forum' })
 
       return
     }
@@ -29,7 +29,7 @@ const getCommentCount = (req, res) => {
     const json = JSON.parse(body)
 
     if (!json.posts_count) {
-      res.status(502).json({ error: "Unexpected payload from Forum" })
+      res.status(502).json({ error: 'Unexpected payload from Forum' })
 
       return
     }
