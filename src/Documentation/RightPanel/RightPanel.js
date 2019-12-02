@@ -140,9 +140,9 @@ export default class RightPanel extends React.PureComponent {
           <>
             <Description>
               <span role="img" aria-label="bug">
-                🖥️
+                ▶️
               </span>{' '}
-              Need a tutorial?
+              It can be run online
             </Description>
             {tutorialsData.map(([key, value]) => {
               const ButtonComponent = icons[key] || ExternalButton
