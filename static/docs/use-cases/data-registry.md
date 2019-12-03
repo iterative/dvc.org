@@ -42,7 +42,7 @@ Advantages of using a DVC **data registry** project:
   HTTP location). Git versioning of [DVC-files](/doc/user-guide/dvc-file-format)
   allows us to track and audit data changes.
 
-## Construction
+## Building
 
 Data registries can be created like any other <abbr>DVC repositories</abbr> with
 `git init` and `dvc init`. A good way to organize them is with different
@@ -81,7 +81,7 @@ $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 > [pushed](/doc/command-reference/push) to one or more
 > [remote storage](/doc/command-reference/remote) locations.
 
-## Evolution
+## Updating
 
 Datasets change, and DVC is prepared to handle it. Just add/remove or change the
 contents of the data registry, and apply the updates by running `dvc add` again:
@@ -123,6 +123,38 @@ $ tree --filelimit=100
 ...
 ```
 
-## Usage
+## Using
 
-...
+The main methods to consume <abbr>data artifacts</abbr> from a **data registry**
+are the `dvc import` and `dvc update` commands.
+
+To import a dataset versioned in a <abbr>repository</abbr> online, we can run
+something like:
+
+```dvc
+$ dvc import git@git-server.url:path/to/repository.git \
+             path/to/dataset
+```
+
+> Note that unlike `dvc get`, which can be used from any directory, `dvc import`
+> needs to run within an [initialized](/doc/command-reference/init) DVC project.
+
+Importing saves the dependency of the local <abbr>project</abbr> towards the
+data source (registry repository). This is achieved by creating a particular
+kind of [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_).
+This file can be used staged and committed with Git.
+
+> For a sample DVC-file resulting from `dvc import`, refer to
+> [this example](/doc/command-reference/import#example-data-registry).
+
+Given this saved dependency, whenever the the dataset changes in the source
+project (data registry), we can easily bring it up to date in our consumer
+project with:
+
+```dvc
+$ dvc update dataset.dvc
+```
+
+`dvc update` downloads new and changed files or removed deleted ones from
+`path/to/dataset` based on the latest version of the source project, and updates
+the project dependency metadata in the import stage (DVC-file).
