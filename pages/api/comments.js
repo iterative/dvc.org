@@ -1,3 +1,14 @@
+/*
+ * This API endpoint is used by https://blog.dvc.org
+ * to get comments count for the post, it gets
+ * discuss.dvc.org topic url as a param and returns
+ * comments count or error.
+ *
+ * It made this way to configure CORS, reduce user's payload
+ * and to add potential ability to cache comments count
+ * in the future.
+ */
+
 import Cors from 'micro-cors'
 import request from 'request'
 
