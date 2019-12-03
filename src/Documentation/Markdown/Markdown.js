@@ -383,6 +383,8 @@ const Button = styled.div`
 `
 
 const TutorialsWrapper = styled.div`
+  position: relative;
+  z-index: 1;
   float: right;
   margin: 5px 0 0 10px;
 
