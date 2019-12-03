@@ -47,7 +47,7 @@ $ git tag bigrams-experiment -am 'Bigrams experiment'
 
 > The command `dvc commit` might not be strictly required, since `dvc repro`
 > usually commits everything, but we are using it just in case there is still
-> some data that is not commited yet.
+> some data that is not committed yet.
 
 ### Compare the metrics
 
