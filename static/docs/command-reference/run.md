@@ -126,9 +126,11 @@ try creating a pipeline.
 - `--ignore-build-cache` - if an exactly equal DVC-file exists (same list of
   outputs and inputs, the same command to run), which has been already executed
   and is up to date, `dvc run` won't normally execute the command again (thus
-  "build cache"). This option gives a way to forcefully execute the command
-  anyway. It's useful if the command is non-deterministic (meaning it produces
-  different outputs from the same list of inputs).
+  "build cache"), unless it is an `--always-changed` DVC-file or it doesn't have
+  any dependencies (same as `--always-changed`). This option gives a way to
+  forcefully execute the command anyway. It's useful if the command is
+  non-deterministic (meaning it produces different outputs from the same list of
+  inputs).
 
 - `--remove-outs` - it removes stage outputs before executing the command. If
   `--no-exec` specified outputs are removed anyway. This option is enabled by
