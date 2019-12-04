@@ -176,7 +176,7 @@ export default class Documentation extends Component {
 
   render() {
     const {
-      currentItem: { source, path, label, next, prev },
+      currentItem: { source, path, label, tutorials, next, prev },
       headings,
       markdown,
       pageNotFound,
@@ -220,12 +220,17 @@ export default class Documentation extends Component {
             <Markdown
               markdown={markdown}
               githubLink={githubLink}
+              tutorials={tutorials}
               prev={prev}
               next={next}
               onNavigate={this.onNavigate}
             />
           )}
-          <RightPanel headings={headings} githubLink={githubLink} />
+          <RightPanel
+            headings={headings}
+            tutorials={tutorials}
+            githubLink={githubLink}
+          />
         </Container>
       </Page>
     )

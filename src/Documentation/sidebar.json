@@ -2,6 +2,9 @@
   {
     "slug": "get-started",
     "source": "get-started/index.md",
+    "tutorials": {
+      "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
+    },
     "children": [
       "agenda",
       "initialize",
@@ -58,16 +61,25 @@
       },
       {
         "slug": "versioning",
-        "label": "Data Versioning"
+        "label": "Data Versioning",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/tutorials/versioning"
+        }
       },
       {
         "slug": "pipelines",
-        "label": "Stages and Pipelines"
+        "label": "Stages and Pipelines",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
+        }
       },
       {
         "slug": "deep",
         "label": "Deep Dive Tutorial",
         "source": "deep/index.md",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
+        },
         "children": [
           "preparation",
           {
@@ -112,7 +124,12 @@
         "label": "File Format (.dvc)",
         "slug": "dvc-file-format"
       },
-      "dvcignore",
+      {
+        "slug": "dvcignore",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/examples/dvcignore"
+        }
+      },
       "updating-tracked-files",
       "large-dataset-optimization",
       "external-dependencies",
@@ -186,7 +203,10 @@
       },
       {
         "label": "fetch",
-        "slug": "fetch"
+        "slug": "fetch",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/examples/fetch"
+        }
       },
       {
         "label": "get-url",

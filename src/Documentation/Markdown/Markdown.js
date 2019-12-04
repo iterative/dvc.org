@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 // components
 import ReactMarkdown from 'react-markdown'
 import { LightButton } from '../LightButton'
+import Tutorials from '../Tutorials'
 import Tooltip from '../../Tooltip'
 import Collapsible from 'react-collapsible'
 // syntax highlighter
@@ -175,11 +176,23 @@ export default class Markdown extends React.PureComponent {
   }
 
   render() {
-    const { markdown, githubLink, prev, next, onNavigate } = this.props
+    const {
+      markdown,
+      githubLink,
+      tutorials,
+      prev,
+      next,
+      onNavigate
+    } = this.props
 
     return (
       <Content id="markdown-root">
-        <GithubLink href={githubLink} target="_blank">
+        {tutorials && (
+          <TutorialsWrapper>
+            <Tutorials tutorials={tutorials} compact={true} />
+          </TutorialsWrapper>
+        )}
+        <GithubLink href={githubLink} target="_blank" rel="nofollow noopener">
           <i /> Edit on GitHub
         </GithubLink>
         <ReactMarkdown
@@ -213,6 +226,7 @@ export default class Markdown extends React.PureComponent {
 Markdown.propTypes = {
   markdown: PropTypes.string.isRequired,
   githubLink: PropTypes.string.isRequired,
+  tutorials: PropTypes.object,
   prev: PropTypes.string,
   next: PropTypes.string,
   onNavigate: PropTypes.func.isRequired
@@ -365,6 +379,21 @@ const Button = styled.div`
   &[disabled] {
     pointer-events: none;
     opacity: 0.5;
+  }
+`
+
+const TutorialsWrapper = styled.div`
+  position: relative;
+  z-index: 1;
+  float: right;
+  margin: 5px 0 0 10px;
+
+  ${media.tablet`
+    margin: 0 0 15px 0;
+  `}
+
+  @media only screen and (min-width: 1200px) {
+    display: none;
   }
 `
 
