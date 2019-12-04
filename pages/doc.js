@@ -56,16 +56,18 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
 
       setIsSearchAvaible(true)
 
-      docsearch({
-        apiKey: '755929839e113a981f481601c4f52082',
-        indexName: 'dvc',
-        inputSelector: '#doc-search',
-        debug: false // Set debug to true if you want to inspect the dropdown
-      })
+      if (isSearchAvaible) {
+        docsearch({
+          apiKey: '755929839e113a981f481601c4f52082',
+          indexName: 'dvc',
+          inputSelector: '#doc-search',
+          debug: false // Set debug to true if you want to inspect the dropdown
+        })
+      }
     } catch (ReferenceError) {
       // nothing there
     }
-  }, [])
+  }, [isSearchAvaible])
 
   const githubLink = `https://github.com/iterative/dvc.org/blob/master${source}`
 
