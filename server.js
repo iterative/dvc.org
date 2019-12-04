@@ -19,7 +19,7 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   createServer((req, res) => {
     const parsedUrl = parse(req.url, true)
-    const { pathname, query, origin } = parsedUrl
+    const { pathname, query } = parsedUrl
 
     // Special URL redirects:
     if (
@@ -107,7 +107,7 @@ app.prepare().then(() => {
         })
         res.end()
       } else {
-        app.render(req, res, '/doc', { ...query, origin })
+        app.render(req, res, '/doc', query)
       }
     } else {
       handle(req, res, parsedUrl)
