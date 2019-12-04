@@ -62,7 +62,7 @@ const ExternalButton = styled(LightButton)`
 
 const KatacodaButton = styled(ExternalButton)`
   i {
-    background-image: url(/static/tutorial-icons/katacoda.png);
+    background-image: url(/static/img/katacoda_grey_small.png);
     width: 24px;
     height: 24px;
   }

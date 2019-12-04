@@ -139,7 +139,7 @@ export default class RightPanel extends React.PureComponent {
               <span role="img" aria-label="bug">
                 ▶️
               </span>{' '}
-              It can be run online
+              It can be run online:
             </Description>
             <Tutorials tutorials={tutorials} />
             <br />
