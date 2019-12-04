@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import Link from 'next/link'
+import Router from 'next/router'
 // components
 import ReactMarkdown from 'react-markdown'
 import { LightButton } from '../LightButton'
@@ -18,6 +20,8 @@ import vim from 'react-syntax-highlighter/dist/cjs/languages/hljs/vim'
 import usage from './lang/usage'
 import dvc from './lang/dvc'
 import linker from './utils/remark-linker'
+// consts
+import { PAGE_DOC } from '../../consts'
 // utils
 import kebabCase from 'lodash.kebabcase'
 // styles
@@ -105,7 +109,7 @@ CodeBlock.propTypes = {
   value: PropTypes.node.isRequired
 }
 
-const Link = ({ children, ...props }) => {
+const MDLink = ({ children, ...props }) => {
   const externalLink = props.href.match(/^(\/\/|http(s)?:\/\/)/)
   const showIcon =
     externalLink && children && typeof children[0].props.children === 'string'
@@ -121,7 +125,7 @@ const Link = ({ children, ...props }) => {
   return <a {...modifiedProps}>{children}</a>
 }
 
-Link.propTypes = {
+MDLink.propTypes = {
   children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired
 }
@@ -164,14 +168,14 @@ export default class Markdown extends React.PureComponent {
 
   handleSwipeGesture = () => {
     if (this.isCodeBlock) return
-    // const { prev, next } = this.props
+    const { prev, next } = this.props
 
     if (this.touchstartX - this.touchendX > 100) {
-      // add navigation menthod
+      Router.push({ asPath: PAGE_DOC, pathname: next })
     }
 
     if (this.touchendX - this.touchstartX > 100) {
-      // add navigation menthod
+      Router.push({ asPath: PAGE_DOC, pathname: prev })
     }
   }
 
@@ -194,7 +198,7 @@ export default class Markdown extends React.PureComponent {
           escapeHtml={false}
           source={markdown}
           renderers={{
-            link: Link,
+            link: MDLink,
             code: CodeBlock,
             heading: HeadingRenderer,
             virtualHtml: HtmlRenderer
@@ -202,14 +206,18 @@ export default class Markdown extends React.PureComponent {
           astPlugins={[linker()]}
         />
         <NavigationButtons>
-          <Button href={prev} disabled={!prev}>
-            <i className="prev" />
-            <span>Prev</span>
-          </Button>
-          <Button href={next} disabled={!next}>
-            <span>Next</span>
-            <i className="next" />
-          </Button>
+          <Link href={PAGE_DOC} as={prev}>
+            <Button disabled={!prev}>
+              <i className="prev" />
+              <span>Prev</span>
+            </Button>
+          </Link>
+          <Link href={PAGE_DOC} as={next}>
+            <Button disabled={!next}>
+              <span>Next</span>
+              <i className="next" />
+            </Button>
+          </Link>
         </NavigationButtons>
       </Content>
     )

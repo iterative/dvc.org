@@ -2,6 +2,7 @@
 
 import React, { useCallback, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import Error from 'next/error'
 // components
 import Page from '../src/Page'
 import { HeadInjector } from '../src/Documentation/HeadInjector'
@@ -37,7 +38,11 @@ const parseHeadings = text => {
   return matches
 }
 
-export default function Documentation({ item, headings, markdown }) {
+export default function Documentation({ item, headings, markdown, errorCode }) {
+  if (errorCode) {
+    return <Error statusCode={errorCode} />
+  }
+
   const { source, path, label, next, prev, tutorials } = item
 
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -102,11 +107,29 @@ export default function Documentation({ item, headings, markdown }) {
   )
 }
 
-Documentation.getInitialProps = async ({ asPath, req }) => {
+Documentation.getInitialProps = async ({ asPath }) => {
   const item = getItemByPath(asPath)
 
-  const textRes = await fetch(`http://${req.headers.host}${item.source}`)
-  const text = await textRes.text()
+  if (!item) {
+    return {
+      errorCode: 404
+    }
+  }
+
+  const source =
+    typeof window !== 'undefined'
+      ? item.source
+      : `http://localhost:3000${item.source}`
+
+  const res = await fetch(source)
+
+  if (res.status !== 200) {
+    return {
+      errorCode: res.status
+    }
+  }
+
+  const text = await res.text()
 
   return {
     item: item,
@@ -118,7 +141,8 @@ Documentation.getInitialProps = async ({ asPath, req }) => {
 Documentation.propTypes = {
   item: PropTypes.object,
   headings: PropTypes.array,
-  markdown: PropTypes.string
+  markdown: PropTypes.string,
+  errorCode: PropTypes.bool
 }
 
 const Container = styled.div`
