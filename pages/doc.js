@@ -107,7 +107,7 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
   )
 }
 
-Documentation.getInitialProps = async ({ asPath }) => {
+Documentation.getInitialProps = async ({ asPath, req }) => {
   const item = getItemByPath(asPath)
 
   if (!item) {
@@ -116,12 +116,10 @@ Documentation.getInitialProps = async ({ asPath }) => {
     }
   }
 
-  const source =
-    typeof window !== 'undefined'
-      ? item.source
-      : `http://localhost:3000${item.source}`
+  const host = req ? req.headers['host'] : window.location.host
+  const protocol = host.indexOf('localhost') > -1 ? 'http:' : 'https:'
 
-  const res = await fetch(source)
+  const res = await fetch(`${protocol}//${host}${item.source}`)
 
   if (res.status !== 200) {
     return {
