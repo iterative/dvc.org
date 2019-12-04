@@ -40,7 +40,7 @@ class SidebarMenuItem extends React.PureComponent {
   }
 
   render() {
-    const { children, label, path, activePaths, onNavigate } = this.props
+    const { children, label, path, activePaths } = this.props
     const isActive = activePaths && includes(activePaths, path)
     const isRootParent =
       activePaths && activePaths.length > 1 && activePaths[0] === path
@@ -50,7 +50,6 @@ class SidebarMenuItem extends React.PureComponent {
         <SectionLink
           href={path}
           id={path}
-          onClick={e => onNavigate(path, e)}
           isActive={isActive}
           className={isRootParent ? 'docSearch-lvl0' : ''}
         >
@@ -65,7 +64,6 @@ class SidebarMenuItem extends React.PureComponent {
               <SidebarMenuItem
                 key={item.path}
                 activePaths={activePaths}
-                onNavigate={onNavigate}
                 {...item}
               />
             ))}
@@ -83,8 +81,7 @@ SidebarMenuItem.propTypes = {
   activePaths: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.bool
-  ]).isRequired,
-  onNavigate: PropTypes.func.isRequired
+  ]).isRequired
 }
 
 export default class SidebarMenu extends Component {
@@ -115,7 +112,7 @@ export default class SidebarMenu extends Component {
   }
 
   render() {
-    const { id, sidebar, currentPath, onNavigate } = this.props
+    const { id, sidebar, currentPath } = this.props
     const activePaths = currentPath && getParentsListFromPath(currentPath)
 
     return (
@@ -126,7 +123,6 @@ export default class SidebarMenu extends Component {
               <SidebarMenuItem
                 key={item.path}
                 activePaths={includes(activePaths, item.path) && activePaths}
-                onNavigate={onNavigate}
                 {...item}
               />
             ))}
@@ -145,8 +141,7 @@ export default class SidebarMenu extends Component {
 SidebarMenu.propTypes = {
   id: PropTypes.string.isRequired,
   sidebar: PropTypes.arrayOf(PropTypes.object).isRequired,
-  currentPath: PropTypes.string,
-  onNavigate: PropTypes.func.isRequired
+  currentPath: PropTypes.string
 }
 
 const Menu = styled.div`

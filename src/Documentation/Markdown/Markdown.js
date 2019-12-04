@@ -164,26 +164,19 @@ export default class Markdown extends React.PureComponent {
 
   handleSwipeGesture = () => {
     if (this.isCodeBlock) return
-    const { prev, next, onNavigate } = this.props
+    // const { prev, next } = this.props
 
     if (this.touchstartX - this.touchendX > 100) {
-      next && onNavigate(next)
+      // add navigation menthod
     }
 
     if (this.touchendX - this.touchstartX > 100) {
-      prev && onNavigate(prev)
+      // add navigation menthod
     }
   }
 
   render() {
-    const {
-      markdown,
-      githubLink,
-      tutorials,
-      prev,
-      next,
-      onNavigate
-    } = this.props
+    const { markdown, githubLink, prev, next, tutorials } = this.props
 
     return (
       <Content id="markdown-root">
@@ -209,11 +202,11 @@ export default class Markdown extends React.PureComponent {
           astPlugins={[linker()]}
         />
         <NavigationButtons>
-          <Button onClick={() => onNavigate(prev)} disabled={!prev}>
+          <Button href={prev} disabled={!prev}>
             <i className="prev" />
             <span>Prev</span>
           </Button>
-          <Button onClick={() => onNavigate(next)} disabled={!next}>
+          <Button href={next} disabled={!next}>
             <span>Next</span>
             <i className="next" />
           </Button>
@@ -228,8 +221,7 @@ Markdown.propTypes = {
   githubLink: PropTypes.string.isRequired,
   tutorials: PropTypes.object,
   prev: PropTypes.string,
-  next: PropTypes.string,
-  onNavigate: PropTypes.func.isRequired
+  next: PropTypes.string
 }
 
 const Content = styled.article`
@@ -337,8 +329,8 @@ const NavigationButtons = styled.div`
   font-size: 14px;
 `
 
-const Button = styled.div`
-  border: none;
+const Button = styled.a`
+  text-decoration: none;
   background: white;
   padding: 10px 15px;
   text-transform: uppercase;
