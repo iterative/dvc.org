@@ -143,6 +143,7 @@ Install requirements for whatever remotes you are going to test:
 $ pip install -e ".[s3]"
 $ pip install -e ".[gs]"
 $ pip install -e ".[azure]"
+$ pip install -e ".[gdrive]"
 $ pip install -e ".[ssh]"
 # or
 $ pip install -e ".[all]"
@@ -244,6 +245,25 @@ Add this to your env:
 ```dvc
 $ export AZURE_STORAGE_CONTAINER_NAME="dvc-test"
 $ export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
+```
+
+</details>
+
+<details>
+
+### Click for Google Drive testing instructions
+
+#### WARNING: Do not share Google Drive access token with anyone to avoid unauthorized usage of your Google Drive.
+
+To avoid tests flow interruption by manual login, do authorization once and
+backup obtained Google Drive access token which is stored by default under
+`.dvc/tmp/gdrive-user-credentials.json`. Restore `gdrive-user-credentials.json`
+from backup for any new DVC repo setup to avoid manual login.
+
+Or add this to your env (use encryption for CI setup):
+
+```dvc
+$ export GDRIVE_USER_CREDENTIALS_DATA='CONTENT_of_gdrive-user-credentials.json'
 ```
 
 </details>

@@ -24,19 +24,19 @@ positional arguments:
 ## Description
 
 `name` and `url` are required. `url` specifies a location to store your data. It
-can be an SSH, S3 path, Azure, Google Cloud address, Aliyun OSS, local
-directory, etc. (See all the supported remote storage types in the examples
-below.) If `url` is a local relative path, it will be resolved relative to the
-current working directory but saved **relative to the config file location**
-(see LOCAL example below). Whenever possible DVC will create a remote directory
-if it doesn't exists yet. It won't create an S3 bucket though and will rely on
-default access settings.
+can be an SSH, S3 path, Azure, Google Drive path, Google Cloud address, Aliyun
+OSS, local directory, etc. (See all the supported remote storage types in the
+examples below.) If `url` is a local relative path, it will be resolved relative
+to the current working directory but saved **relative to the config file
+location** (see LOCAL example below). Whenever possible DVC will create a remote
+directory if it doesn't exists yet. It won't create an S3 bucket though and will
+rely on default access settings.
 
 > If you installed DVC via `pip`, depending on the remote storage type you plan
 > to use you might need to install optional dependencies: `[s3]`, `[ssh]`,
-> `[gs]`, `[azure]`, and `[oss]`; or `[all]` to include them all. The command
-> should look like this: `pip install "dvc[s3]"`. This installs `boto3` library
-> along with DVC to support Amazon S3 storage.
+> `[gs]`, `[azure]`, `[gdrive]`, and `[oss]`; or `[all]` to include them all.
+> The command should look like this: `pip install "dvc[s3]"`. This installs
+> `boto3` library along with DVC to support Amazon S3 storage.
 
 This command creates a section in the <abbr>DVC project</abbr>'s
 [config file](/doc/command-reference/config) and optionally assigns a default
@@ -229,6 +229,35 @@ $ dvc remote add myremote "azure://"
 - `container name` - this is the top-level container in your Azure Storage
   Account under which all the files for this remote will be uploaded. If the
   container doesn't already exist, it will be created automatically.
+
+</details>
+
+<details>
+
+### Click for Google Drive
+
+> Since Google Drive has tight API usage quotas, creation and configuration of
+> your own `Google Project` is required:
+
+> 1. Log into the [Google Cloud Platform](https://console.developers.google.com)
+>    account associated with Google Drive you want to use as remote.
+> 2. Create `New Project` or select available one.
+> 3. Click `ENABLE APIS AND SERVICES` and search for `drive` to enable
+>    `Google Drive API` from search results.
+> 4. Navigate to
+>    [All Credentials](https://console.developers.google.com/apis/credentials)
+>    page and click `Create Credentials` to select `OAuth client ID`. It might
+>    ask you to setup a product name on the consent screen.
+> 5. Select `Other` for `Application type` and click `Create` to proceed with
+>    default `Name`.
+> 6. `client id` and `client secret` should be showed to you. Use them for
+>    further DVC's configuration.
+
+```dvc
+$ dvc remote add myremote gdrive://root/my-dvc-root
+$ dvc remote modify myremote gdrive_client_id my_gdrive_client_id
+$ dvc remote modify myremote gdrive_client_secret gdrive_client_secret
+```
 
 </details>
 

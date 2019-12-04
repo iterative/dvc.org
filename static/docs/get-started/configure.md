@@ -38,15 +38,16 @@ DVC currently supports seven types of remotes:
 - `s3`: Amazon Simple Storage Service
 - `gs`: Google Cloud Storage
 - `azure`: Azure Blob Storage
+- `gdrive` : Google Drive
 - `ssh`: Secure Shell
 - `hdfs`: Hadoop Distributed File System
 - `http`: HTTP and HTTPS protocols
 
 > If you installed DVC via `pip`, depending on the remote type you plan to use
 > you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,
-> `[azure]`, and `[oss]`; or `[all]` to include them all. The command should
-> look like this: `pip install "dvc[s3]"`. This installs `boto3` library along
-> with DVC to support Amazon S3 storage.
+> `[azure]`, `[gdrive]`, and `[oss]`; or `[all]` to include them all. The
+> command should look like this: `pip install "dvc[s3]"`. This installs `boto3`
+> library along with DVC to support Amazon S3 storage.
 
 For example, to setup an S3 remote we would use something like this (make sure
 that `mybucket` exists):
