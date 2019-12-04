@@ -61,16 +61,25 @@
       },
       {
         "slug": "versioning",
-        "label": "Data Versioning"
+        "label": "Data Versioning",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/tutorials/versioning"
+        }
       },
       {
         "slug": "pipelines",
-        "label": "Stages and Pipelines"
+        "label": "Stages and Pipelines",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
+        }
       },
       {
         "slug": "deep",
         "label": "Deep Dive Tutorial",
         "source": "deep/index.md",
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/tutorials/pipelines"
+        },
         "children": [
           "preparation",
           {
