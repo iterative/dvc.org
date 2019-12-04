@@ -3,6 +3,7 @@
 import React, { useCallback, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 import Error from 'next/error'
+import Router from 'next/router'
 // components
 import Page from '../src/Page'
 import { HeadInjector } from '../src/Documentation/HeadInjector'
@@ -20,6 +21,7 @@ import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
 import styled from 'styled-components'
 import { media } from '../src/styles'
 
+const ROOT_ELEMENT = 'bodybag'
 const SIDEBAR_MENU = 'sidebar-menu'
 
 const parseHeadings = text => {
@@ -68,6 +70,19 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
       // nothing there
     }
   }, [isSearchAvaible])
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      const rootElement = document.getElementById(ROOT_ELEMENT)
+      if (rootElement) {
+        rootElement.scrollTop = 0
+      }
+    }
+
+    Router.events.on('routeChangeComplete', handleRouteChange)
+
+    return () => Router.events.off('routeChangeComplete', handleRouteChange)
+  }, [])
 
   const githubLink = `https://github.com/iterative/dvc.org/blob/master${source}`
 
