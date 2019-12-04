@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 // This file doesn't go through babel or webpack transformation.
 // Make sure the syntax and sources this file requires are compatible with the
 // current node version you are running.
@@ -6,7 +8,6 @@
 
 const { createServer } = require('http')
 const { parse } = require('url')
-const _ = require('force-ssl-heroku')
 const next = require('next')
 const querystring = require('querystring')
 
@@ -96,7 +97,7 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/doc.*/i.test(pathname)) {
       // path /doc*/... -> /doc/...
-      let normalized_pathname = pathname.replace(/^\/doc[^?\/]*/i, '/doc')
+      let normalized_pathname = pathname.replace(/^\/doc[^?/]*/i, '/doc')
       if (normalized_pathname !== pathname) {
         res.writeHead(301, {
           Location:
