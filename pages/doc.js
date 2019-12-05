@@ -136,20 +136,26 @@ Documentation.getInitialProps = async ({ asPath, req }) => {
   const host = req ? req.headers['host'] : window.location.host
   const protocol = host.indexOf('localhost') > -1 ? 'http:' : 'https:'
 
-  const res = await fetch(`${protocol}//${host}${item.source}`)
+  try {
+    const res = await fetch(`${protocol}//${host}${item.source}`)
 
-  if (res.status !== 200) {
-    return {
-      errorCode: res.status
+    if (res.status !== 200) {
+      return {
+        errorCode: res.status
+      }
     }
-  }
 
-  const text = await res.text()
+    const text = await res.text()
 
-  return {
-    item: item,
-    headings: parseHeadings(text),
-    markdown: text
+    return {
+      item: item,
+      headings: parseHeadings(text),
+      markdown: text
+    }
+  } catch (e) {
+    return {
+      errorCode: 404
+    }
   }
 }
 
