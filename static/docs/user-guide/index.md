@@ -27,9 +27,6 @@ guides related to contributing to this
   [DVC-file](/doc/user-guide/dvc-files-and-directories) dependencies.
 - [Managing External Data](/doc/user-guide/managing-external-data) explains both
   external outputs and external cache.
-- [Writing well-behaved commands](/doc/user-guide/well-behaved-command) goes
-  through the few technicalities that you need to take into account when using
-  DVC to run your commands.
 - [Contributing](/doc/user-guide/contributing) is related with getting involved
   directly in developing DVC. Contributors are very welcomed in our
   [community](/support)!
