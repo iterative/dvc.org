@@ -52,6 +52,21 @@ captures data and <abbr>caches</abbr> relevant <abbr>data artifacts</abbr> along
 the way. See [this example](/doc/get-started/example-pipeline) to learn more and
 try creating a pipeline.
 
+### Well-behaved commands
+
+DVC is simple to use, you only need to wrap your commands with `dvc run`, and
+define your dependencies and outputs.
+
+However, to prevent unexpected behaviors, ideally, your commands should follow
+some principles:
+
+- Read exclusively from specified dependencies.
+- Write exclusively to specified outputs.
+- Completely rewrite the outputs (do not append).
+- Stop reading and writing when the command exits.
+
+This will enhance reproducibility.
+
 ## Options
 
 - `-d`, `--deps` - specify a file or a directory the stage depends on. Multiple
@@ -150,21 +165,6 @@ try creating a pipeline.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-### Well-behaved commands
-
-DVC is simple to use, you only need to wrap your commands with `dvc run`, and
-define your dependencies and outputs.
-
-However, to prevent unexpected behaviors, ideally, your commands should follow
-some principles:
-
-- Read exclusively from specified dependencies.
-- Write exclusively to specified outputs.
-- Completely rewrite the outputs (do not append).
-- Stop reading and writing when the command exits.
-
-This will enhance reproducibility.
 
 ## Examples
 
