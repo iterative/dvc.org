@@ -37,9 +37,11 @@ $ git add .
 $ git commit -m 'Baseline experiment'
 $ dvc commit
 $ git tag baseline-experiment
+```
 
-# experiment with bigrams
-...
+Do some changes to run an experiment with bigrams and commit it:
+
+```dvc
 $ git commit -am 'Evaluate bigrams model'
 $ dvc commit
 $ git tag bigrams-experiment -am 'Bigrams experiment'
