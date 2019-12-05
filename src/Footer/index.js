@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import NextLink from 'next/link'
 import { columns, container, media } from '../styles'
 
 const SocialLink = ({ src, href, children }) => (
@@ -20,32 +21,44 @@ export default function Footer(props) {
     <Wrapper>
       <Container wide={props.isDocPage}>
         <Top>
-          <Logo href="/">
-            <img
-              src="/static/img/logo_white.png"
-              alt="site logo"
-              width={36}
-              height={23}
-            />
-          </Logo>
+          <NextLink href="/">
+            <Logo>
+              <img
+                src="/static/img/logo_white.png"
+                alt="site logo"
+                width={36}
+                height={23}
+              />
+            </Logo>
+          </NextLink>
         </Top>
         <Columns>
           <Column>
             <Heading>Product</Heading>
             <Links>
-              <Link href="/?">Overview</Link>
-              <Link href="/features">Features</Link>
+              <NextLink href="/" passHref>
+                <Link>Overview</Link>
+              </NextLink>
+              <NextLink href="/features" passHref>
+                <Link>Features</Link>
+              </NextLink>
             </Links>
           </Column>
           <Column>
             <Heading>Help</Heading>
             <Links>
-              <Link href="/support">Support</Link>
-              <Link href="/doc/get-started">Get started</Link>
+              <NextLink href="/support" passHref>
+                <Link>Support</Link>
+              </NextLink>
+              <NextLink href="/doc" as="/doc/get-started" passHref>
+                <Link>Get started</Link>
+              </NextLink>
               <SocialLink src="/static/img/chat.png" href="/chat">
                 Chat
               </SocialLink>
-              <Link href="/doc">Documentation</Link>
+              <NextLink href="/doc" passHref>
+                <Link>Documentation</Link>
+              </NextLink>
             </Links>
           </Column>
           <Column>

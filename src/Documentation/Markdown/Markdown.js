@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import Router from 'next/router'
 // components
 import ReactMarkdown from 'react-markdown'
@@ -109,8 +109,8 @@ CodeBlock.propTypes = {
   value: PropTypes.node.isRequired
 }
 
-const MDLink = ({ children, ...props }) => {
-  const externalLink = props.href.match(/^(\/\/|http(s)?:\/\/)/)
+const Link = ({ children, href, ...props }) => {
+  const externalLink = href.match(/^(\/\/|http(s)?:\/\/)/)
   const showIcon =
     externalLink && children && typeof children[0].props.children === 'string'
 
@@ -119,13 +119,25 @@ const MDLink = ({ children, ...props }) => {
     : props
 
   if (showIcon) {
-    return <ExternalLink {...modifiedProps}>{children}</ExternalLink>
+    return (
+      <ExternalLink href={href} {...modifiedProps}>
+        {children}
+      </ExternalLink>
+    )
   }
 
-  return <a {...modifiedProps}>{children}</a>
+  const nextProps = href.match(/^\/doc/)
+    ? { href: PAGE_DOC, as: href }
+    : { href }
+
+  return (
+    <NextLink {...nextProps}>
+      <a {...modifiedProps}>{children}</a>
+    </NextLink>
+  )
 }
 
-MDLink.propTypes = {
+Link.propTypes = {
   children: PropTypes.node.isRequired,
   href: PropTypes.string.isRequired
 }
@@ -198,7 +210,7 @@ export default class Markdown extends React.PureComponent {
           escapeHtml={false}
           source={markdown}
           renderers={{
-            link: MDLink,
+            link: Link,
             code: CodeBlock,
             heading: HeadingRenderer,
             virtualHtml: HtmlRenderer
@@ -206,18 +218,18 @@ export default class Markdown extends React.PureComponent {
           astPlugins={[linker()]}
         />
         <NavigationButtons>
-          <Link href={PAGE_DOC} as={prev}>
+          <NextLink href={PAGE_DOC} as={prev} passHref>
             <Button disabled={!prev}>
               <i className="prev" />
               <span>Prev</span>
             </Button>
-          </Link>
-          <Link href={PAGE_DOC} as={next}>
+          </NextLink>
+          <NextLink href={PAGE_DOC} as={next} passHref>
             <Button disabled={!next}>
               <span>Next</span>
               <i className="next" />
             </Button>
-          </Link>
+          </NextLink>
         </NavigationButtons>
       </Content>
     )
@@ -346,7 +358,6 @@ const Button = styled.a`
   border-bottom: 3px solid #13adc7;
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
   transition: 0.2s border-color ease-out;
 
   &:hover {

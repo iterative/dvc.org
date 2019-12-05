@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import Router from 'next/router'
 import { media } from '../styles'
 import { logEvent } from '../utils/ga'
 
@@ -10,7 +11,7 @@ function goToDocGetStarted() {
 
 function goToFeatures() {
   logEvent('promo', 'features')
-  window.location = '/features'
+  Router.push('/features')
 }
 
 export default function PromoSection() {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import NextLink from 'next/link'
 // components
 import Nav from '../Nav'
 // utils
@@ -56,14 +57,16 @@ class TopMenu extends Component {
           scrolled={isDocPage || scrolled}
           wide={isDocPage}
         >
-          <Logo href="/">
-            <img
-              src="/static/img/logo.png"
-              alt="dvc.org"
-              width={36}
-              height={23}
-            />
-          </Logo>
+          <NextLink href="/" passHref>
+            <Logo>
+              <img
+                src="/static/img/logo.png"
+                alt="dvc.org"
+                width={36}
+                height={23}
+              />
+            </Logo>
+          </NextLink>
           <Nav mobile={false} />
         </Container>
       </Wrapper>

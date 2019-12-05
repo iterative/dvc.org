@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
 import scrollIntoView from 'dom-scroll-into-view'
 import PropTypes from 'prop-types'
-import Link from 'next/link'
+import NextLink from 'next/link'
 // consts
 import { PAGE_DOC } from '../../consts'
 // components
@@ -49,7 +49,7 @@ class SidebarMenuItem extends React.PureComponent {
 
     return (
       <>
-        <Link href={PAGE_DOC} as={path}>
+        <NextLink href={PAGE_DOC} as={path} passHref>
           <SectionLink
             id={path}
             isActive={isActive}
@@ -57,7 +57,7 @@ class SidebarMenuItem extends React.PureComponent {
           >
             {label}
           </SectionLink>
-        </Link>
+        </NextLink>
         {children && (
           <Collapse
             style={isActive ? { height: calculateHeight(this.props) } : {}}
@@ -196,7 +196,6 @@ const SectionLink = styled.a`
   min-height: 26px;
   padding-bottom: 5px;
   padding-left: 15px;
-  cursor: pointer;
   margin: 0 0 0 5px;
 
   ${props =>
