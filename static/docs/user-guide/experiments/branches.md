@@ -31,7 +31,7 @@ this:
 
 ```dvc
 $ git commit -am 'Evaluate'
-$ dvc commit   # just to make sure all the data are committed
+$ dvc commit   # just to make sure all the data is committed
 $ git checkout -b unigrams
 $ git checkout master
 ```
