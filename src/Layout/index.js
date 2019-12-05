@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Router from 'next/router'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { withRouter } from 'next/router'
@@ -16,11 +17,22 @@ class Layout extends Component {
       window.GA_INITIALIZED = true
     }
     logPageView()
+
+    Router.events.on('routeChangeComplete', this.handleRouteChange)
+  }
+
+  componentWillUnmount() {
+    Router.events.off('routeChangeComplete', this.handleRouteChange)
   }
 
   UNSAFE_componentWillReceiveProps(nextProps) {
     const { router } = nextProps
     this.isDocPage = router.pathname.split('/')[1] === 'doc'
+  }
+
+  handleRouteChange = () => {
+    // Without timeout GA will send old page title
+    setTimeout(() => logPageView(), 100)
   }
 
   render() {
