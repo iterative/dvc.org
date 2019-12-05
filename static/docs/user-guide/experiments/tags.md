@@ -1,4 +1,4 @@
-# Manage Experiments by Tags
+# How to Manage Experiments by Tags
 
 You can mark (or label) each experiment using Git tags.
 

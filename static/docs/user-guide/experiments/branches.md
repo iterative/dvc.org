@@ -1,4 +1,4 @@
-# Manage Experiments By Branches
+# How to Manage Experiments by Branches
 
 You can use a different Git branch for each experiment.
 

@@ -1,4 +1,4 @@
-# Manage Experiments by Tags, Branches and Dirs
+# How to Manage Experiments by Several Methods
 
 On complex projects you can use a combination of the methods that we have seen
 so far, in order to manage experiments.

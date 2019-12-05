@@ -1,4 +1,4 @@
-# Manage Experiments
+# Managing Experiments
 
 Data science process is inherently iterative and R&D like. Data scientist may
 try many different approaches, different hyper-parameter values, and "fail" many
@@ -16,7 +16,7 @@ You can use several ways to manage experiments, which are described on this
 section. Which one is more suitable for you depends on your preferences and also
 on the kind and complexity of your project.
 
-- [Manage Experiments by Tags](/doc/user-guide/experiments/tags)
-- [Manage Experiments by Branches](/doc/user-guide/experiments/branches)
-- [Manage Experiments by Directories](/doc/user-guide/experiments/dirs)
-- [Manage Experiments by Tags and Branches and Directories](/doc/user-guide/experiments/mixed)
+- [How to Manage Experiments by Tags](/doc/user-guide/experiments/tags)
+- [How to Manage Experiments by Branches](/doc/user-guide/experiments/branches)
+- [How to Manage Experiments by Directories](/doc/user-guide/experiments/dirs)
+- [How to Manage Experiments by Several Methods](/doc/user-guide/experiments/mixed)

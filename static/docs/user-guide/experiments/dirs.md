@@ -1,4 +1,4 @@
-# Manage Experiments By Directories
+# How to Manage Experiments by Directories
 
 Using a separate directory for each experiment is the most intuitive solution
 for managing experiments and is the first thing that comes to mind. Most of

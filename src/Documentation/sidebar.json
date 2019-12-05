@@ -121,7 +121,7 @@
         "slug": "managing-external-data"
       },
       {
-        "label": "Manage Experiments",
+        "label": "Managing Experiments",
         "slug": "experiments",
         "source": "experiments/index.md",
         "children": [
