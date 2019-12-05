@@ -67,7 +67,7 @@ experiment and its metrics (results).
 
 <details>
 
-### Tip: Use a script to create experiments
+### 💡 Use a script to create experiments
 
 When we build a pipeline we have to use some long `dvc run` commands, with lots
 of options, to define stages. Doing all this manually is long and tedious and
