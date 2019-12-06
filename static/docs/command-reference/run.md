@@ -62,10 +62,15 @@ some principles:
 
 - Read exclusively from specified dependencies.
 - Write exclusively to specified outputs.
-- Completely rewrite the outputs (do not append).
+- Completely rewrite the outputs (i.e. do not append or edit).
 - Stop reading and writing when the command exits.
 
-This will enhance reproducibility.
+To guarantee reproducibilty, your command should be
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (i.e. it
+must produce the same results given the same inputs/dependencies).
+
+Have in mind what brings entropy to your command (e.g. random generators, seeds,
+hardware, etc.).
 
 ## Options
 
