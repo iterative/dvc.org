@@ -55,8 +55,9 @@ corresponding config file.
 
 ## Configuration sections
 
-These are the `name` parameters that can be used with `dvc config`, or the
-sections in the <abbr>project</abbr> config file (`.dvc/config`).
+Sections are essentially a collection of options that define a particular setting. 
+These `name` parameters can be used with `dvc config`, or in the <abbr>project</abbr> 
+config file (`.dvc/config`).
 
 ### core
 
