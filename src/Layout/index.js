@@ -1,8 +1,7 @@
-import React, { Component } from 'react'
-import Router from 'next/router'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
-import { withRouter } from 'next/router'
+import { useRouter } from 'next/router'
 // components
 import TopMenu from '../TopMenu'
 import Footer from '../Footer'
@@ -10,55 +9,39 @@ import HamburgerMenu from '../HamburgerMenu'
 // utils
 import { initGA, logPageView } from '../utils/ga'
 
-class Layout extends Component {
-  componentDidMount() {
+export default function Layout({ children, enableSmoothScroll }) {
+  const router = useRouter()
+  const isDocPage = router.pathname === '/doc'
+
+  useEffect(() => {
     if (!window.GA_INITIALIZED) {
       initGA()
       window.GA_INITIALIZED = true
     }
-    logPageView()
 
-    Router.events.on('routeChangeComplete', this.handleRouteChange)
-  }
+    // Apperently next/head is using promises and because of that
+    // it updates after page is already rendered and useEffect is called,
+    // because of that we use rAF to place GA call after head update
+    requestAnimationFrame(() => logPageView())
+  }, [router.asPath])
 
-  componentWillUnmount() {
-    Router.events.off('routeChangeComplete', this.handleRouteChange)
-  }
-
-  UNSAFE_componentWillReceiveProps(nextProps) {
-    const { router } = nextProps
-    this.isDocPage = router.pathname.split('/')[1] === 'doc'
-  }
-
-  handleRouteChange = () => {
-    // Without timeout GA will send old page title
-    setTimeout(() => logPageView(), 100)
-  }
-
-  render() {
-    const { children, enableSmoothScroll } = this.props
-
-    return (
-      <Wrapper>
-        <TopMenu isDocPage={this.isDocPage} />
-        <HamburgerMenu />
-        <Bodybag id="bodybag" enableSmoothScroll={enableSmoothScroll}>
-          {children}
-          <Footer isDocPage={this.isDocPage} />
-        </Bodybag>
-        <ModalRoot id="modal-root"></ModalRoot>
-      </Wrapper>
-    )
-  }
+  return (
+    <Wrapper>
+      <TopMenu isDocPage={isDocPage} />
+      <HamburgerMenu />
+      <Bodybag id="bodybag" enableSmoothScroll={enableSmoothScroll}>
+        {children}
+        <Footer isDocPage={isDocPage} />
+      </Bodybag>
+      <ModalRoot id="modal-root"></ModalRoot>
+    </Wrapper>
+  )
 }
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  enableSmoothScroll: PropTypes.bool,
-  router: PropTypes.object.isRequired
+  enableSmoothScroll: PropTypes.bool
 }
-
-export default withRouter(Layout)
 
 const Wrapper = styled.div`
   overflow: hidden;
