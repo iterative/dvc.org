@@ -152,10 +152,8 @@ Documentation.getInitialProps = async ({ asPath, req }) => {
       headings: parseHeadings(text),
       markdown: text
     }
-  } catch (e) {
-    return {
-      errorCode: 404
-    }
+  } catch {
+    window.location.reload()
   }
 }
 
