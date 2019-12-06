@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
 import scrollIntoView from 'dom-scroll-into-view'
 import PropTypes from 'prop-types'
@@ -34,47 +34,45 @@ function calculateHeight({ activePaths, path }) {
   return height
 }
 
-class SidebarMenuItem extends React.PureComponent {
-  componentDidMount() {
-    heightMap[this.props.path] = this.props.children
-      ? this.linkRef.scrollHeight
-      : 0
-  }
+function SidebarMenuItem({ children, label, path, activePaths }) {
+  const linkRef = useRef()
+  const isActive = activePaths && includes(activePaths, path)
+  const isRootParent =
+    activePaths && activePaths.length > 1 && activePaths[0] === path
 
-  render() {
-    const { children, label, path, activePaths } = this.props
-    const isActive = activePaths && includes(activePaths, path)
-    const isRootParent =
-      activePaths && activePaths.length > 1 && activePaths[0] === path
+  useEffect(() => {
+    heightMap[path] = children ? linkRef.current.scrollHeight : 0
+  }, [])
 
-    return (
-      <>
-        <NextLink href={PAGE_DOC} as={path} passHref>
-          <SectionLink
-            id={path}
-            isActive={isActive}
-            className={isRootParent ? 'docSearch-lvl0' : ''}
-          >
-            {label}
-          </SectionLink>
-        </NextLink>
-        {children && (
-          <Collapse
-            style={isActive ? { height: calculateHeight(this.props) } : {}}
-            ref={r => (this.linkRef = r)}
-          >
-            {children.map(item => (
-              <SidebarMenuItem
-                key={item.path}
-                activePaths={activePaths}
-                {...item}
-              />
-            ))}
-          </Collapse>
-        )}
-      </>
-    )
-  }
+  return (
+    <>
+      <NextLink href={PAGE_DOC} as={path} passHref>
+        <SectionLink
+          id={path}
+          isActive={isActive}
+          className={isRootParent ? 'docSearch-lvl0' : ''}
+        >
+          {label}
+        </SectionLink>
+      </NextLink>
+      {children && (
+        <Collapse
+          style={
+            isActive ? { height: calculateHeight({ activePaths, path }) } : {}
+          }
+          ref={linkRef}
+        >
+          {children.map(item => (
+            <SidebarMenuItem
+              key={item.path}
+              activePaths={activePaths}
+              {...item}
+            />
+          ))}
+        </Collapse>
+      )}
+    </>
+  )
 }
 
 SidebarMenuItem.propTypes = {
@@ -87,58 +85,55 @@ SidebarMenuItem.propTypes = {
   ]).isRequired
 }
 
-export default class SidebarMenu extends Component {
-  state = {
-    isScrollHidden: false
-  }
+export default function SidebarMenu({ id, sidebar, currentPath }) {
+  const psRef = useRef()
+  const [isScrollHidden, setIsScrollHidden] = useState(false)
+  const activePaths = currentPath && getParentsListFromPath(currentPath)
 
-  componentDidMount() {
-    this.ps = new PerfectScrollbar(`#${this.props.id}`, {
-      // wheelPropagation: window.innerWidth <= 572
-      wheelPropagation: true
-    })
-  }
+  useEffect(() => {
+    if (!psRef.current) {
+      psRef.current = new PerfectScrollbar(`#${id}`, {
+        wheelPropagation: true
+      })
+    }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.currentPath === this.props.currentPath) return
+    const node = document.getElementById(currentPath)
+    const parent = document.getElementById(id)
 
-    const node = document.getElementById(this.props.currentPath)
-    const parent = document.getElementById(this.props.id)
+    setIsScrollHidden(true)
 
-    this.setState({ isScrollHidden: true }, () =>
-      setTimeout(() => {
-        this.ps.update()
-        scrollIntoView(node, parent, { onlyScrollIfNeeded: true })
-        this.setState({ isScrollHidden: false })
-      }, 400)
-    )
-  }
+    setTimeout(() => {
+      psRef.current.update()
+      scrollIntoView(node, parent, { onlyScrollIfNeeded: true })
+      setIsScrollHidden(false)
+    }, 400)
 
-  render() {
-    const { id, sidebar, currentPath } = this.props
-    const activePaths = currentPath && getParentsListFromPath(currentPath)
+    return () => {
+      psRef.current.destroy()
+      psRef.current = null
+    }
+  }, [currentPath])
 
-    return (
-      <Menu id={id} isScrollHidden={this.state.isScrollHidden}>
-        <Sections>
-          <SectionLinks>
-            {sidebar.map(item => (
-              <SidebarMenuItem
-                key={item.path}
-                activePaths={includes(activePaths, item.path) && activePaths}
-                {...item}
-              />
-            ))}
-          </SectionLinks>
-        </Sections>
-        <OnlyDesktop>
-          <SideFooter>
-            <DownloadButton openTop />
-          </SideFooter>
-        </OnlyDesktop>
-      </Menu>
-    )
-  }
+  return (
+    <Menu id={id} isScrollHidden={isScrollHidden}>
+      <Sections>
+        <SectionLinks>
+          {sidebar.map(item => (
+            <SidebarMenuItem
+              key={item.path}
+              activePaths={includes(activePaths, item.path) && activePaths}
+              {...item}
+            />
+          ))}
+        </SectionLinks>
+      </Sections>
+      <OnlyDesktop>
+        <SideFooter>
+          <DownloadButton openTop />
+        </SideFooter>
+      </OnlyDesktop>
+    </Menu>
+  )
 }
 
 SidebarMenu.propTypes = {
