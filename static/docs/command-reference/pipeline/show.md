@@ -8,6 +8,7 @@ specified stage. By default it lists
 
 This command's output is automatically pushed to `less` command line tool if
 `less` is runnable (installed and can be executed in your shell).
+To be exact, the actuall command is `less --chop-long-lines --clear-screen`.
 
 If `less` is not runnable (usually Microsoft Windows), the ouput is simply printed out.
 
