@@ -4,29 +4,6 @@ Show [stages](/doc/command-reference/run) in a pipeline that lead to the
 specified stage. By default it lists
 [DVC-files](/doc/user-guide/dvc-file-format).
 
-## Paging the output
-
-This command's output is automatically pushed to `less` command line tool if
-`less` is runnable (installed and can be executed in your shell).
-To be exact, the actuall command is `less --chop-long-lines --clear-screen`.
-
-If `less` is not runnable (usually Microsoft Windows), the ouput is simply printed out.
-
-> Note Microsoft Windows users may also want to read
-> [this how-to](/doc/user-guide/running-dvc-on-windows.md#enabling-paging-with-less).
-
-### Providing a custom pager
-
-You can also override the default pager via `DVC_PAGER` environemnt variable.
-
-For example
-
-```
-# one-time change in Bash
-DVC_PAGER=more dvc pipeline show --ascii my-pipeline.dvc
-```
-
-
 ## Synopsis
 
 ```usage
@@ -73,6 +50,28 @@ instead of stages.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
+
+## Paging the output
+
+This command's output is automatically pushed to `less` command line tool if
+`less` is runnable (installed and can be executed in your shell).
+To be exact, the actual command is `less --chop-long-lines --clear-screen`.
+
+If `less` is not runnable (usually Microsoft Windows), the ouput is simply printed out.
+
+> Note Microsoft Windows users may also want to read
+> [this how-to](/doc/user-guide/running-dvc-on-windows.md#enabling-paging-with-less).
+
+### Providing a custom pager
+
+You can also override the default pager via `DVC_PAGER` environemnt variable.
+
+For example
+
+```
+# one-time change in Bash
+DVC_PAGER=more dvc pipeline show --ascii my-pipeline.dvc
+```
 
 ## Examples
 
