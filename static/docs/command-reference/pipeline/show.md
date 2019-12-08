@@ -54,10 +54,11 @@ instead of stages.
 ## Paging the output
 
 This command's output is automatically pushed to `less` command line tool if
-`less` is runnable (installed and can be executed in your shell).
-To be exact, the actual command is `less --chop-long-lines --clear-screen`.
+`less` is runnable (installed and can be executed in your shell). To be exact,
+the actual command is `less --chop-long-lines --clear-screen`.
 
-If `less` is not runnable (usually Microsoft Windows), the ouput is simply printed out.
+If `less` is not runnable (usually Microsoft Windows), the ouput is simply
+printed out.
 
 > Note Microsoft Windows users may also want to read
 > [this how-to](/doc/user-guide/running-dvc-on-windows.md#enabling-paging-with-less).
