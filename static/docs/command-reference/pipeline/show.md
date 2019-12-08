@@ -61,7 +61,7 @@ If `less` is not runnable (usually Microsoft Windows), the ouput is simply
 printed out.
 
 > Note Microsoft Windows users may also want to read
-> [this how-to](/doc/user-guide/running-dvc-on-windows.md#enabling-paging-with-less).
+> [this how-to](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
 
 ### Providing a custom pager
 
