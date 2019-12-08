@@ -47,3 +47,24 @@ The performance of NTFS degrades while handling large volumes of files in a
 directory.
 [Here](https://stackoverflow.com/questions/197162/ntfs-performance-and-large-volumes-of-files-and-directories)
 is the resource for reference.
+
+## Enabling paging with `less`
+
+By default DVC uses `less` to page output for some commands.
+Although, many operating systems have `less` preinstalled, there are still
+platforms where `less` is not installed. This usually happens for Microsoft
+Windows. Fortunately, there is a easy way of installing `less` via
+[Chocolatey](https://chocolatey.org/).
+
+```
+choco install less
+```
+
+If you do not want to use [Chocolatey](https://chocolatey.org/) for some
+reason, you can still provide `less` by your own way. However, you must
+make `less` to be runnable from `cmd`/`Powershell`.
+This usually means to add the `less` installation directory to the `PATH`
+environement vairable.
+
+
+
