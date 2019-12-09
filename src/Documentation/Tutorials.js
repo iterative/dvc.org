@@ -61,6 +61,8 @@ const ExternalButton = styled(LightButton)`
 `
 
 const KatacodaButton = styled(ExternalButton)`
+  white-space: nowrap;
+
   i {
     background-image: url(/static/img/katacoda_grey_small.png);
     width: 24px;
