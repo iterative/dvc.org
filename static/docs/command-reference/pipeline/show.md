@@ -71,11 +71,21 @@ You can also override the default pager via `DVC_PAGER` environemnt variable.
 
 For example:
 
-Following command will replace the default pager with `more` for a single call
+Following command will replace the default pager with
+[`more`](https://en.wikipedia.org/wiki/More_(command)) for a single call
 
 ```bash
 $ DVC_PAGER=more dvc pipeline show --ascii my-pipeline.dvc
 ```
+
+To make it persistent, you need to add it to a shell depending file.
+
+For `Bash` it means adding this line
+```bash
+export DVC_PAGER=more
+```
+to `~/.bashrc`.
+
 
 ## Examples
 
