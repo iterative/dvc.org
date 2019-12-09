@@ -265,11 +265,12 @@ $ export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountN
 
 ### Click for Google Drive testing instructions
 
-❗Do not share Google Drive access token with anyone to avoid unauthorized usage
-of your Google Drive.
+> Please remember that Google Drive access tokens are personal credentials and
+> should not be shared with anyone, otherwise risking unauthorized usage of the
+> Google account.
 
-To avoid tests flow interruption by manual login, do authorization once and
-backup obtained Google Drive access token which is stored by default under
+To avoid tests flow interruption by manual login, perform authorization once and
+backup the obtained Google Drive access token, which is stored by default under
 `.dvc/tmp/gdrive-user-credentials.json`. Restore `gdrive-user-credentials.json`
 from backup for any new DVC repo setup to avoid manual login.
 
