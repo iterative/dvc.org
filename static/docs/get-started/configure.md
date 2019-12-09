@@ -18,7 +18,7 @@ For simplicity, let's setup a local remote:
 While the term may seem contradictory, it doesn't have to be. The "local" part
 refers to the machine where the project is stored, so it can be any directory
 accessible to the same system. The "remote" part refers specifically to the
-project/repository itself.
+project/repository itself. Read "local, but external" storage.
 
 </details>
 
