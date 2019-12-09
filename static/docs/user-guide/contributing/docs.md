@@ -59,13 +59,20 @@ repository from GitHub:
 
 ```dvc
 $ git clone git@github.com:<username>/dvc.org.git
+$ cd dvc.org
 ```
 
 Make sure you have the latest version of [Node.js](https://nodejs.org/en/) and
-[Yarn](https://yarnpkg.com/) installed. Install the dependencies by running
-`yarn`. (Run it continuously as the repository changes to keep the dependencies
-up to date.) This will also enable the Git pre-commit hook that will be
-formatting your code and documentation files automatically.
+[Yarn](https://yarnpkg.com/) are installed:
+
+```dvc
+$ npm install -g yarn
+```
+
+Install the dependencies by running `yarn`. (Run it continuously as the
+repository changes to keep the dependencies up to date.) This will also enable
+the Git pre-commit hook that will be formatting your code and documentation
+files automatically.
 
 It's highly recommended to run the Node docs app locally to check documentation
 changes before submitting them, and its very much needed in order to make
