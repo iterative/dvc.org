@@ -28,7 +28,7 @@ positional arguments:
 
 Remote `name` and `option` name are required. Option names are remote type
 specific. See below examples and a list of remote storage types: Amazon S3,
-Google Cloud, Azure, SSH, ALiyun OSS, among others.
+Google Cloud, Azure, Google Drive, SSH, ALiyun OSS, among others.
 
 This command modifies a `remote` section in the project's
 [config file](/doc/command-reference/config). Alternatively, `dvc config` or
@@ -182,6 +182,28 @@ For more information on configuring Azure Storage connection strings, visit
 > The connection string contains access to data and is inserted into the
 > `.dvc/config file.` Therefore, it is safer to add the connection string with
 > the `--local` option, enforcing it to be written to a Git-ignored config file.
+
+</details>
+
+### Click for Google Drive available options
+
+- `url` - remote location URL.
+
+  ```dvc
+  $ dvc remote modify myremote url "gdrive://root/my-dvc-root"
+  ```
+
+- `gdrive_client_id` - Google Project's OAuth 2.0 client id.
+
+  ```dvc
+  $ dvc remote modify myremote gdrive_client_id my_gdrive_client_id
+  ```
+
+- `gdrive_client_secret` - Google Project's OAuth 2.0 client secret.
+
+  ```dvc
+  $ dvc remote modify myremote gdrive_client_secret gdrive_client_secret
+  ```
 
 </details>
 

@@ -47,8 +47,8 @@ DVC supports several types of (local or) remote locations (protocols):
 
 > Depending on the remote locations type you plan to download data from you
 > might need to specify one of the optional dependencies: `[s3]`, `[ssh]`,
-> `[gs]`, `[azure]`, and `[oss]` (or `[all]` to include them all) when
-> [installing DVC](/doc/install) with `pip`.
+> `[gs]`, `[azure]`, `[gdrive]`, and `[oss]` (or `[all]` to include them all)
+> when [installing DVC](/doc/install) with `pip`.
 
 Another way to understand the `dvc get-url` command is as a tool for downloading
 data files.
