@@ -25,9 +25,9 @@ paragraphs below to learn how to submit your changes.
   run tests or [run](#running-development-version) the DVC with your changes.
 - Fork [DVC](https://github.com/iterative/dvc.git) and prepare necessary
   changes.
-- Add tests for your changes to `tests/test_*.py`. You can skip this step if the
-  effort to create tests for your change is unreasonable. Changes without tests
-  are still going to be considered by us.
+- [Add tests](#writing-tests) for your changes to `tests/`. You can skip this
+  step if the effort to create tests for your change is unreasonable. Changes
+  without tests are still going to be considered by us.
 - [Run tests](#running-tests) and make sure all of them pass.
 - Submit a pull request, referencing any issues it addresses.
 
@@ -71,6 +71,18 @@ $ pre-commit install
 That should be it. You should be ready to make changes, run tests, and make
 commits! If you experience any problems, please don't hesitate to ping us in our
 [chat](/chat).
+
+## Writing tests
+
+We have unit tests and functional ones in `tests/unit/` and `tests/func/`
+correspondingly. Consider writing the former to ensure complicated functions and
+classes behave as expected.
+
+To test a specific functionality you will need to use functional tests alongside
+some [pytest](https://docs.pytest.org/en/latest/) fixtures to create a temporary
+directory, git and/or dvc repo and bootstrap some files. See a
+[dir_helpers module](https://github.com/iterative/dvc/blob/master/tests/dir_helpers.py)
+docstring for some usage examples.
 
 ## Running tests
 
