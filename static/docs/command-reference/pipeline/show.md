@@ -35,7 +35,9 @@ instead of stages.
   option is specified) of stage outputs instead of paths to DVC-files.
 
 - `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
-  list of path to DVC-files. (To navigate, use arrows keys. To exit, press `Q`.)
+  list of path to DVC-files (`less` pager may be used, see
+  [this section](/doc/command-reference/pipeline/show#paging-the-output) for
+  details).
 
 - `--dot` - show contents of `.dot` files with a DVC pipeline graph. It can be
   passed to third party visualization utilities.
@@ -95,7 +97,9 @@ cleanup.py raw data
 process.py data output
 ```
 
-Visualize DVC pipeline (To navigate, use arrows. To exit, press `Q`.):
+Visualize DVC pipeline (`less` pager may be used, see
+[this section](/doc/command-reference/pipeline/show#paging-the-output) for
+details).
 
 ```dvc
 $ dvc pipeline show eval.txt.dvc --ascii
