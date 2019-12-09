@@ -67,10 +67,11 @@ printed out.
 
 You can also override the default pager via `DVC_PAGER` environemnt variable.
 
-For example
+For example:
 
-```
-# one-time change in Bash
+Following command will replace the default pager with `more` for a single call
+
+```bash
 DVC_PAGER=more dvc pipeline show --ascii my-pipeline.dvc
 ```
 
@@ -94,8 +95,7 @@ cleanup.py raw data
 process.py data output
 ```
 
-Visualize DVC pipeline (To navigate, use arrows or `W`, `A`, `S`, `D` keys. To
-exit, press `Q`.):
+Visualize DVC pipeline (To navigate, use arrows. To exit, press `Q`.):
 
 ```dvc
 $ dvc pipeline show eval.txt.dvc --ascii

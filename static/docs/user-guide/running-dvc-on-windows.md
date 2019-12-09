@@ -56,7 +56,7 @@ operating systems have `less` preinstalled, there are still platforms where
 Fortunately, there is a easy way of installing `less` via
 [Chocolatey](https://chocolatey.org/).
 
-```
+```dvc
 choco install less
 ```
 
