@@ -27,7 +27,8 @@ positional arguments:
 ## Description
 
 Remote `name` and `option` name are required. Option names are remote type
-specific. See `dvc remote add` and **Available settings** section below for a
+specific. See `dvc remote add` and
+[Available settings](#available-settings-per-storage-type) section below for a
 list of remote storage types.
 
 This command modifies a `remote` section in the project's
