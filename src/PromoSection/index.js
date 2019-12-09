@@ -1,16 +1,21 @@
 import React from 'react'
 import styled from 'styled-components'
+import Router from 'next/router'
 import { media } from '../styles'
 import { logEvent } from '../utils/ga'
+// consts
+import { PAGE_DOC } from '../consts'
 
 function goToDocGetStarted() {
   logEvent('promo', 'get-started')
-  window.location = '/doc/get-started'
+
+  Router.push({ pathname: '/doc/get-started', asPath: PAGE_DOC })
 }
 
 function goToFeatures() {
   logEvent('promo', 'features')
-  window.location = '/features'
+
+  Router.push('/features')
 }
 
 export default function PromoSection() {
