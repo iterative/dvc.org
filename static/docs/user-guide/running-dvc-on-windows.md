@@ -67,6 +67,6 @@ installation directory to the `PATH` environement vairable.
 
 ### Providing a custom pager
 
-See [this
-section](/doc/command-reference/pipeline/show#providing-a-custom-pager) for
-details.
+See
+[this section](/doc/command-reference/pipeline/show#providing-a-custom-pager)
+for details.
