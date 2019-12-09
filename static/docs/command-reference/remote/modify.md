@@ -185,6 +185,8 @@ For more information on configuring Azure Storage connection strings, visit
 
 </details>
 
+<details>
+
 ### Click for Google Drive available options
 
 - `url` - remote location URL.
