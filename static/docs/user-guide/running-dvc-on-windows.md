@@ -57,7 +57,7 @@ Fortunately, there is a easy way of installing `less` via
 [Chocolatey](https://chocolatey.org/).
 
 ```dvc
-choco install less
+$ choco install less
 ```
 
 If you do not want to use [Chocolatey](https://chocolatey.org/) for some reason,

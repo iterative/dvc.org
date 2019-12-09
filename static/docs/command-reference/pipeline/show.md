@@ -74,7 +74,7 @@ For example:
 Following command will replace the default pager with `more` for a single call
 
 ```bash
-DVC_PAGER=more dvc pipeline show --ascii my-pipeline.dvc
+$ DVC_PAGER=more dvc pipeline show --ascii my-pipeline.dvc
 ```
 
 ## Examples
