@@ -103,7 +103,12 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
             </SearchArea>
           )}
 
-          <SidebarMenu sidebar={sidebar} currentPath={path} id={SIDEBAR_MENU} />
+          <SidebarMenu
+            sidebar={sidebar}
+            currentPath={path}
+            id={SIDEBAR_MENU}
+            onClick={toggleMenu}
+          />
         </Side>
 
         <Markdown

@@ -34,7 +34,7 @@ function calculateHeight({ activePaths, path }) {
   return height
 }
 
-function SidebarMenuItem({ children, label, path, activePaths }) {
+function SidebarMenuItem({ children, label, path, activePaths, onClick }) {
   const linkRef = useRef()
   const isActive = activePaths && includes(activePaths, path)
   const isRootParent =
@@ -50,6 +50,7 @@ function SidebarMenuItem({ children, label, path, activePaths }) {
         <SectionLink
           id={path}
           isActive={isActive}
+          onClick={onClick}
           className={isRootParent ? 'docSearch-lvl0' : ''}
         >
           {label}
@@ -66,6 +67,7 @@ function SidebarMenuItem({ children, label, path, activePaths }) {
             <SidebarMenuItem
               key={item.path}
               activePaths={activePaths}
+              onClick={onClick}
               {...item}
             />
           ))}
@@ -79,13 +81,14 @@ SidebarMenuItem.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object),
   label: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   activePaths: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.bool
   ]).isRequired
 }
 
-export default function SidebarMenu({ id, sidebar, currentPath }) {
+export default function SidebarMenu({ id, sidebar, currentPath, onClick }) {
   const psRef = useRef()
   const [isScrollHidden, setIsScrollHidden] = useState(false)
   const activePaths = currentPath && getParentsListFromPath(currentPath)
@@ -122,6 +125,7 @@ export default function SidebarMenu({ id, sidebar, currentPath }) {
             <SidebarMenuItem
               key={item.path}
               activePaths={includes(activePaths, item.path) && activePaths}
+              onClick={onClick}
               {...item}
             />
           ))}
@@ -139,7 +143,8 @@ export default function SidebarMenu({ id, sidebar, currentPath }) {
 SidebarMenu.propTypes = {
   id: PropTypes.string.isRequired,
   sidebar: PropTypes.arrayOf(PropTypes.object).isRequired,
-  currentPath: PropTypes.string
+  currentPath: PropTypes.string,
+  onClick: PropTypes.func
 }
 
 const Menu = styled.div`
