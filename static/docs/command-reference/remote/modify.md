@@ -27,8 +27,8 @@ positional arguments:
 ## Description
 
 Remote `name` and `option` name are required. Option names are remote type
-specific. See below examples and a list of remote storage types: Amazon S3,
-Google Cloud, Azure, Google Drive, SSH, ALiyun OSS, among others.
+specific. See `dvc remote add` and **Available settings** section below for a
+list of remote storage types.
 
 This command modifies a `remote` section in the project's
 [config file](/doc/command-reference/config). Alternatively, `dvc config` or
@@ -64,7 +64,7 @@ The following are the types of remote storage (protocols) supported:
 
 <details>
 
-### Click for Amazon S3 available options
+### Click for Amazon S3 options
 
 By default DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
@@ -132,7 +132,7 @@ these settings, you could use the following options:
 
 <details>
 
-### Click for S3 API compatible storage available options
+### Click for S3 API compatible storage options
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
@@ -162,7 +162,7 @@ For more information about the variables DVC supports, please visit
 
 <details>
 
-### Click for Azure available options
+### Click for Microsoft Azure Blob Storage options
 
 - `url` - remote location URL.
 
@@ -187,7 +187,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for Google Drive available options
+### Click for Google Drive options
 
 - `url` - remote location URL.
 
@@ -211,7 +211,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for Google Cloud Storage available options
+### Click for Google Cloud Storage options
 
 - `projectname` - project name to use.
 
@@ -236,7 +236,31 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for SSH available options
+### Click for Aliyun OSS options
+
+- `oss_key_id` - OSS key id to use to access a remote.
+
+  ```dvc
+  $ dvc remote modify myremote --local oss_key_id my-key-id
+  ```
+
+- `oss_key_secret` - OSS secret key for authorizing access into a remote.
+
+  ```dvc
+  $ dvc remote modify myremote --local oss_key_secret my-key-secret
+  ```
+
+- `oss_endpoint endpoint` - OSS endpoint values for accessing remote container.
+
+  ```dvc
+  $ dvc remote modify myremote oss_endpoint endpoint
+  ```
+
+</details>
+
+<details>
+
+### Click for SSH options
 
 - `url` - remote location URL.
 
@@ -304,36 +328,12 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for HDFS available options
+### Click for HDFS options
 
 - `user` - username to use to access a remote.
 
   ```dvc
   $ dvc remote modify myremote user myuser
-  ```
-
-</details>
-
-<details>
-
-### Click for Aliyun OSS available options
-
-- `oss_key_id` - OSS key id to use to access a remote.
-
-  ```dvc
-  $ dvc remote modify myremote --local oss_key_id my-key-id
-  ```
-
-- `oss_key_secret` - OSS secret key for authorizing access into a remote.
-
-  ```dvc
-  $ dvc remote modify myremote --local oss_key_secret my-key-secret
-  ```
-
-- `oss_endpoint endpoint` - OSS endpoint values for accessing remote container.
-
-  ```dvc
-  $ dvc remote modify myremote oss_endpoint endpoint
   ```
 
 </details>

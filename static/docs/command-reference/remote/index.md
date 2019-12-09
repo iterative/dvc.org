@@ -37,11 +37,11 @@ DVC supports several types of remote storage: local file system, SSH, Amazon S3,
 Google Cloud Storage, HTTP, HDFS, among others. Refer to `dvc remote add` for
 more details.
 
-> If you installed DVC via `pip`, depending on the remote storage type you plan
-> to use you might need to install optional dependencies: `[s3]`, `[ssh]`,
-> `[gs]`, `[azure]`, `[gdrive]`, and `[oss]`; or `[all]` to include them all.
-> The command should look like this: `pip install "dvc[s3]"`. This installs
-> `boto3` library along with DVC to support S3 storage.
+> If you installed DVC via `pip` and plan to use cloud services as remote
+> storage, you might need to install these optional dependencies: `[s3]`,
+> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
+> include them all. The command should look like this: `pip install "dvc[s3]"`.
+> (This example installs `boto3` library along with DVC to support S3 storage.)
 
 Using DVC with a remote data storage is optional. By default, DVC is configured
 to use a local data storage only (usually the `.dvc/cache` directory). This

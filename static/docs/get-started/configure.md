@@ -31,23 +31,23 @@ $ git commit .dvc/config -m "Configure local remote"
 > to use DVC. For most [use cases](/doc/use-cases), other "more remote" types of
 > remotes will be required.
 
-Adding a remote should be specified by both its type (protocol) and its path.
-DVC currently supports seven types of remotes:
+[Adding a remote](/doc/command-reference/remote/add) should be specified by both
+its type (protocol) and its path. DVC currently supports these types of remotes:
 
-- `local`: Local Directory
 - `s3`: Amazon Simple Storage Service
-- `gs`: Google Cloud Storage
-- `azure`: Azure Blob Storage
+- `azure`: Microsoft Azure Blob Storage
 - `gdrive` : Google Drive
-- `ssh`: Secure Shell
+- `gs`: Google Cloud Storage
+- `ssh`: Secure Shell (requires SFTP)
 - `hdfs`: Hadoop Distributed File System
 - `http`: HTTP and HTTPS protocols
+- `local`: Directory in the local file system
 
-> If you installed DVC via `pip`, depending on the remote type you plan to use
-> you might need to install optional dependencies: `[s3]`, `[ssh]`, `[gs]`,
-> `[azure]`, `[gdrive]`, and `[oss]`; or `[all]` to include them all. The
-> command should look like this: `pip install "dvc[s3]"`. This installs `boto3`
-> library along with DVC to support Amazon S3 storage.
+> If you installed DVC via `pip` and plan to use cloud services as remote
+> storage, you might need to install these optional dependencies: `[s3]`,
+> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
+> include them all. The command should look like this: `pip install "dvc[s3]"`.
+> (This example installs `boto3` library along with DVC to support S3 storage.)
 
 For example, to setup an S3 remote we would use something like this (make sure
 that `mybucket` exists):

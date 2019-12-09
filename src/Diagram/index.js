@@ -41,8 +41,8 @@ const ColumnOne = () => (
     <Description fullWidth>
       <p>
         Version control machine learning models, data sets and intermediate
-        files. DVC connects them with code and uses S3, Azure, Google Drive,
-        GCP, SSH, Aliyun OSS or to store file contents.
+        files. DVC connects them with code, and uses cloud storage, SSH, NAS,
+        etc. to store file contents.
       </p>
       <p>
         Full code and data provenance help track the complete evolution of every

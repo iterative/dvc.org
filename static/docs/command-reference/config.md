@@ -164,7 +164,7 @@ for more details.)
 - `cache.hdfs` - name of an
   [HDFS remote to use as external cache](/doc/user-guide/managing-external-data#hdfs).
 
-- `cache.azure` - name of an Azure remote to use as
+- `cache.azure` - name of a Microsoft Azure Blob Storage remote to use as
   [external cache](/doc/user-guide/managing-external-data).
 
 ### state
