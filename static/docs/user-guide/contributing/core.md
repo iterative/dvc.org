@@ -80,7 +80,7 @@ classes behave as expected.
 
 To test a specific functionality you will need to use functional tests alongside
 some [pytest](https://docs.pytest.org/en/latest/) fixtures to create a temporary
-directory, git and/or dvc repo and bootstrap some files. See a
+directory, Git and/or DVC repo and bootstrap some files. See a
 [dir_helpers module](https://github.com/iterative/dvc/blob/master/tests/dir_helpers.py)
 docstring for some usage examples.
 
