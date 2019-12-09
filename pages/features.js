@@ -53,8 +53,8 @@ export default function FeaturesPage() {
             </Icon>
             <Name>Storage agnostic</Name>
             <Description>
-              Use S3, Azure, GCP, SSH, SFTP, Aliyun OSS rsync or any
-              network-attached storage to store data. The list of supported
+              Use S3, Azure, Google Drive, GCP, SSH, SFTP, Aliyun OSS rsync or
+              any network-attached storage to store data. The list of supported
               protocols is constantly expanding.
             </Description>
           </Feature>

@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import NextLink from 'next/link'
 
 import { media, container } from '../styles'
 
@@ -11,9 +12,9 @@ export default function TrySection({ title, buttonText = 'Get Started' }) {
         <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
         <Title>{title}</Title>
         <Buttons>
-          <a href="/doc/get-started">
+          <NextLink href="/doc" as="/doc/get-started">
             <Button first>{buttonText}</Button>
-          </a>
+          </NextLink>
         </Buttons>
         <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
       </Container>

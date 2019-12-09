@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import NextLink from 'next/link'
 import { media } from '../styles'
 
 import Hamburger from '../Hamburger'
@@ -62,39 +63,40 @@ export default class HamburgerMenu extends Component {
           <Menu>
             <Section>
               <Top>
-                <Logo href="/">
-                  <img
-                    src="/static/img/logo_white.png"
-                    alt="dvc.org"
-                    width={34}
-                  />
-                </Logo>
+                <NextLink href="/" passHref>
+                  <Logo>
+                    <img
+                      src="/static/img/logo_white.png"
+                      alt="dvc.org"
+                      width={34}
+                    />
+                  </Logo>
+                </NextLink>
               </Top>
 
               <Columns>
                 <Column>
                   <Heading>Product</Heading>
                   <Links>
-                    <Link href="/#" onClick={this.scrollToTop}>
-                      Overview
-                    </Link>
-                    <Link href="/features" onClick={this.itemClick('features')}>
-                      Features
-                    </Link>
+                    <NextLink href="/" passHref>
+                      <Link onClick={this.scrollToTop}>Overview</Link>
+                    </NextLink>
+                    <NextLink href="/features" passHref>
+                      <Link onClick={this.itemClick('features')}>Features</Link>
+                    </NextLink>
                   </Links>
                 </Column>
                 <Column>
                   <Heading>Help</Heading>
                   <Links>
-                    <Link href="/support" onClick={this.itemClick('support')}>
-                      Support
-                    </Link>
-                    <Link
-                      href="/doc/get-started"
-                      onClick={this.itemClick('get-started')}
-                    >
-                      Get started
-                    </Link>
+                    <NextLink href="/support" passHref>
+                      <Link onClick={this.itemClick('support')}>Support</Link>
+                    </NextLink>
+                    <NextLink href="/doc/get-started" passHref>
+                      <Link onClick={this.itemClick('get-started')}>
+                        Get started
+                      </Link>
+                    </NextLink>
                     <SocialLink
                       src="/static/img/chat.png"
                       href="/chat"
@@ -102,9 +104,9 @@ export default class HamburgerMenu extends Component {
                     >
                       Chat
                     </SocialLink>
-                    <Link href="/doc" onClick={this.itemClick('doc')}>
-                      Documentation
-                    </Link>
+                    <NextLink href="/doc" passHref>
+                      <Link onClick={this.itemClick('doc')}>Documentation</Link>
+                    </NextLink>
                   </Links>
                 </Column>
                 <Column>

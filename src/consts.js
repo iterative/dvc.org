@@ -13,3 +13,5 @@ export const META_SOCIAL_IMAGE = `https://${WEBSITE_HOST}/static/social-share.pn
 
 export const FORUM_URL = `https://discuss.${WEBSITE_HOST}`
 export const BLOG_URL = `https://blog.${WEBSITE_HOST}`
+
+export const PAGE_DOC = '/doc'

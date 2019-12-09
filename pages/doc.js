@@ -1,21 +1,20 @@
 /* global docsearch:readonly */
 
-import React, { Component } from 'react'
+import React, { useCallback, useState, useEffect } from 'react'
+import PropTypes from 'prop-types'
+import Error from 'next/error'
+import Router from 'next/router'
 // components
 import Page from '../src/Page'
 import { HeadInjector } from '../src/Documentation/HeadInjector'
 import Hamburger from '../src/Hamburger'
 import SearchForm from '../src/SearchForm'
 import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
-import Loader from '../src/Loader/Loader'
-import Page404 from '../src/Page404'
 import Markdown from '../src/Documentation/Markdown/Markdown'
 import RightPanel from '../src/Documentation/RightPanel/RightPanel'
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
-// constants
-import { HEADER } from '../src/consts'
 // sidebar data and helpers
 import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
 // styles
@@ -25,216 +24,149 @@ import { media } from '../src/styles'
 const ROOT_ELEMENT = 'bodybag'
 const SIDEBAR_MENU = 'sidebar-menu'
 
-export default class Documentation extends Component {
-  constructor() {
-    super()
-    this.state = {
-      currentItem: {},
-      headings: [],
-      isLoading: false,
-      isMenuOpen: false,
-      isSmoothScrollEnabled: true,
-      search: false,
-      markdown: '',
-      pageNotFound: false
-    }
+const parseHeadings = text => {
+  const headingRegex = /\n(## \s*)(.*)/g
+  const matches = []
+  let match
+  do {
+    match = headingRegex.exec(text)
+    if (match)
+      matches.push({
+        text: match[2],
+        slug: kebabCase(match[2])
+      })
+  } while (match)
+
+  return matches
+}
+
+export default function Documentation({ item, headings, markdown, errorCode }) {
+  if (errorCode) {
+    return <Error statusCode={errorCode} />
   }
 
-  componentDidMount() {
-    this.loadStateFromURL()
+  const { source, path, label, next, prev, tutorials } = item
+
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isSearchAvaible, setIsSearchAvaible] = useState(false)
+
+  const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
+
+  useEffect(() => {
     try {
       docsearch
-      this.setState(
-        {
-          search: true
-        },
-        () => {
-          this.initDocsearch()
-        }
-      )
+
+      setIsSearchAvaible(true)
+
+      if (isSearchAvaible) {
+        docsearch({
+          apiKey: '755929839e113a981f481601c4f52082',
+          indexName: 'dvc',
+          inputSelector: '#doc-search',
+          debug: false // Set debug to true if you want to inspect the dropdown
+        })
+      }
     } catch (ReferenceError) {
-      this.setState({
-        search: false
-      })
+      // nothing there
     }
+  }, [isSearchAvaible])
 
-    window.addEventListener('popstate', this.loadStateFromURL)
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener('popstate', this.loadStateFromURL)
-  }
-
-  initDocsearch = () => {
-    docsearch({
-      apiKey: '755929839e113a981f481601c4f52082',
-      indexName: 'dvc',
-      inputSelector: '#doc-search',
-      debug: false // Set debug to true if you want to inspect the dropdown
-    })
-  }
-
-  onNavigate = (path, e) => {
-    if (e && (e.ctrlKey || e.metaKey)) return
-
-    if (e) e.preventDefault()
-
-    window.history.pushState(null, null, path)
-    this.loadPath(path)
-  }
-
-  loadStateFromURL = () => this.loadPath(window.location.pathname)
-
-  loadPath = path => {
-    const { currentItem } = this.state
-    const item = getItemByPath(path)
-    const isPageChanged = currentItem !== item
-    const isFirstPage = !currentItem.path
-
-    if (!item) {
-      this.setState({ pageNotFound: true, currentItem: {} })
-    } else if (!isFirstPage && !isPageChanged) {
-      this.updateScroll(isPageChanged)
-    } else {
-      this.setState({ isLoading: true, headings: [] })
-      fetch(item.source)
-        .then(res => {
-          res.text().then(text => {
-            this.setState(
-              {
-                currentItem: item,
-                headings: this.parseHeadings(text),
-                isLoading: false,
-                isMenuOpen: false,
-                markdown: text,
-                pageNotFound: false
-              },
-              () => this.updateScroll(!isFirstPage && isPageChanged)
-            )
-          })
-        })
-        .catch(() => {
-          window.location.reload()
-        })
-    }
-  }
-
-  updateScroll(isPageChanged) {
-    const { hash } = window.location
-
-    if (isPageChanged) {
-      this.setState({ isSmoothScrollEnabled: false }, () => {
-        this.scrollTop()
-        this.setState({ isSmoothScrollEnabled: true }, () => {
-          if (hash) this.scrollToLink(hash)
-        })
-      })
-    } else if (hash) {
-      this.scrollToLink(hash)
-    }
-  }
-
-  parseHeadings = text => {
-    const headingRegex = /\n(## \s*)(.*)/g
-    const matches = []
-    let match
-    do {
-      match = headingRegex.exec(text)
-      if (match)
-        matches.push({
-          text: match[2],
-          slug: kebabCase(match[2])
-        })
-    } while (match)
-
-    return matches
-  }
-
-  scrollToLink = hash => {
-    const element = document.getElementById(hash.replace(/^#/, ''))
-
-    if (element) {
-      const headerHeight = document.getElementById(HEADER).offsetHeight
-      const elementBoundary = element.getBoundingClientRect()
+  useEffect(() => {
+    const handleRouteChange = () => {
       const rootElement = document.getElementById(ROOT_ELEMENT)
-      rootElement.scroll({ top: elementBoundary.top - headerHeight })
+      if (rootElement) {
+        rootElement.scrollTop = 0
+      }
     }
-  }
 
-  scrollTop = () => {
-    const rootElement = document.getElementById(ROOT_ELEMENT)
-    if (rootElement) {
-      rootElement.scrollTop = 0
-    }
-  }
+    Router.events.on('routeChangeComplete', handleRouteChange)
 
-  toggleMenu = () => {
-    this.setState(prevState => ({
-      isMenuOpen: !prevState.isMenuOpen
-    }))
-  }
+    return () => Router.events.off('routeChangeComplete', handleRouteChange)
+  }, [])
 
-  render() {
-    const {
-      currentItem: { source, path, label, tutorials, next, prev },
-      headings,
-      markdown,
-      pageNotFound,
-      isLoading,
-      isMenuOpen,
-      isSmoothScrollEnabled
-    } = this.state
+  const githubLink = `https://github.com/iterative/dvc.org/blob/master${source}`
 
-    const githubLink = `https://github.com/iterative/dvc.org/blob/master${source}`
+  return (
+    <Page stickHeader={true}>
+      <HeadInjector sectionName={label} />
+      <Container>
+        <Backdrop onClick={toggleMenu} visible={isMenuOpen} />
 
-    return (
-      <Page stickHeader={true} enableSmoothScroll={isSmoothScrollEnabled}>
-        <HeadInjector sectionName={label} />
-        <Container>
-          <Backdrop onClick={this.toggleMenu} visible={isMenuOpen} />
+        <SideToggle onClick={toggleMenu} isMenuOpen={isMenuOpen}>
+          <Hamburger />
+        </SideToggle>
 
-          <SideToggle onClick={this.toggleMenu} isMenuOpen={isMenuOpen}>
-            <Hamburger />
-          </SideToggle>
-
-          <Side isOpen={isMenuOpen}>
-            {this.state.search && (
-              <SearchArea>
-                <SearchForm />
-              </SearchArea>
-            )}
-
-            <SidebarMenu
-              sidebar={sidebar}
-              currentPath={path}
-              onNavigate={this.onNavigate}
-              id={SIDEBAR_MENU}
-            />
-          </Side>
-
-          {isLoading ? (
-            <Loader />
-          ) : pageNotFound ? (
-            <Page404 />
-          ) : (
-            <Markdown
-              markdown={markdown}
-              githubLink={githubLink}
-              tutorials={tutorials}
-              prev={prev}
-              next={next}
-              onNavigate={this.onNavigate}
-            />
+        <Side isOpen={isMenuOpen}>
+          {isSearchAvaible && (
+            <SearchArea>
+              <SearchForm />
+            </SearchArea>
           )}
-          <RightPanel
-            headings={headings}
-            tutorials={tutorials}
-            githubLink={githubLink}
+
+          <SidebarMenu
+            sidebar={sidebar}
+            currentPath={path}
+            id={SIDEBAR_MENU}
+            onClick={toggleMenu}
           />
-        </Container>
-      </Page>
-    )
+        </Side>
+
+        <Markdown
+          markdown={markdown}
+          githubLink={githubLink}
+          prev={prev}
+          next={next}
+          tutorials={tutorials}
+        />
+
+        <RightPanel
+          headings={headings}
+          githubLink={githubLink}
+          tutorials={tutorials}
+        />
+      </Container>
+    </Page>
+  )
+}
+
+Documentation.getInitialProps = async ({ asPath, req }) => {
+  const item = getItemByPath(asPath)
+
+  if (!item) {
+    return {
+      errorCode: 404
+    }
   }
+
+  const host = req ? req.headers['host'] : window.location.host
+  const protocol = host.indexOf('localhost') > -1 ? 'http:' : 'https:'
+
+  try {
+    const res = await fetch(`${protocol}//${host}${item.source}`)
+
+    if (res.status !== 200) {
+      return {
+        errorCode: res.status
+      }
+    }
+
+    const text = await res.text()
+
+    return {
+      item: item,
+      headings: parseHeadings(text),
+      markdown: text
+    }
+  } catch {
+    window.location.reload()
+  }
+}
+
+Documentation.propTypes = {
+  item: PropTypes.object,
+  headings: PropTypes.array,
+  markdown: PropTypes.string,
+  errorCode: PropTypes.bool
 }
 
 const Container = styled.div`

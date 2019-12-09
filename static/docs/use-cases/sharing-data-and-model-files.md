@@ -5,10 +5,10 @@ easy to consistently get all your data files and directories into any machine,
 along with matching source code. All you need to do is to setup
 [remote storage](/doc/command-reference/remote) for your <abbr>DVC
 project</abbr>, and push the data there, so others can reach it. Currently DVC
-supports Amazon S3, Google Cloud Storage, Microsoft Azure Blob Storage, SSH,
-HDFS, and other remote locations, and the list is constantly growing. (For a
-complete list and configuration instructions, take a look at the examples in
-`dvc remote add`.)
+supports Amazon S3, Google Cloud Storage, Microsoft Azure Blob Storage, Google
+Drive, SSH, HDFS, and other remote locations, and the list is constantly
+growing. (For a complete list and configuration instructions, take a look at the
+examples in `dvc remote add`.)
 
 ![](/static/img/model-sharing-digram.png)
 

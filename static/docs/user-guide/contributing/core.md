@@ -25,9 +25,9 @@ paragraphs below to learn how to submit your changes.
   run tests or [run](#running-development-version) the DVC with your changes.
 - Fork [DVC](https://github.com/iterative/dvc.git) and prepare necessary
   changes.
-- Add tests for your changes to `tests/test_*.py`. You can skip this step if the
-  effort to create tests for your change is unreasonable. Changes without tests
-  are still going to be considered by us.
+- [Add tests](#writing-tests) for your changes to `tests/`. You can skip this
+  step if the effort to create tests for your change is unreasonable. Changes
+  without tests are still going to be considered by us.
 - [Run tests](#running-tests) and make sure all of them pass.
 - Submit a pull request, referencing any issues it addresses.
 
@@ -71,6 +71,18 @@ $ pre-commit install
 That should be it. You should be ready to make changes, run tests, and make
 commits! If you experience any problems, please don't hesitate to ping us in our
 [chat](/chat).
+
+## Writing tests
+
+We have unit tests and functional ones in `tests/unit/` and `tests/func/`
+correspondingly. Consider writing the former to ensure complicated functions and
+classes behave as expected.
+
+To test a specific functionality you will need to use functional tests alongside
+some [pytest](https://docs.pytest.org/en/latest/) fixtures to create a temporary
+directory, Git and/or DVC repo and bootstrap some files. See a
+[dir_helpers module](https://github.com/iterative/dvc/blob/master/tests/dir_helpers.py)
+docstring for some usage examples.
 
 ## Running tests
 
@@ -143,6 +155,7 @@ Install requirements for whatever remotes you are going to test:
 $ pip install -e ".[s3]"
 $ pip install -e ".[gs]"
 $ pip install -e ".[azure]"
+$ pip install -e ".[gdrive]"
 $ pip install -e ".[ssh]"
 # or
 $ pip install -e ".[all]"
@@ -244,6 +257,26 @@ Add this to your env:
 ```dvc
 $ export AZURE_STORAGE_CONTAINER_NAME="dvc-test"
 $ export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
+```
+
+</details>
+
+<details>
+
+### Click for Google Drive testing instructions
+
+❗Do not share Google Drive access token with anyone to avoid unauthorized usage
+of your Google Drive.
+
+To avoid tests flow interruption by manual login, do authorization once and
+backup obtained Google Drive access token which is stored by default under
+`.dvc/tmp/gdrive-user-credentials.json`. Restore `gdrive-user-credentials.json`
+from backup for any new DVC repo setup to avoid manual login.
+
+Or add this to your env (use encryption for CI setup):
+
+```dvc
+$ export GDRIVE_USER_CREDENTIALS_DATA='CONTENT_of_gdrive-user-credentials.json'
 ```
 
 </details>

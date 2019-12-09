@@ -1,5 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import NextLink from 'next/link'
+import Router from 'next/router'
 // components
 import ReactMarkdown from 'react-markdown'
 import { LightButton } from '../LightButton'
@@ -18,6 +20,8 @@ import vim from 'react-syntax-highlighter/dist/cjs/languages/hljs/vim'
 import usage from './lang/usage'
 import dvc from './lang/dvc'
 import linker from './utils/remark-linker'
+// consts
+import { PAGE_DOC } from '../../consts'
 // utils
 import kebabCase from 'lodash.kebabcase'
 // styles
@@ -105,8 +109,8 @@ CodeBlock.propTypes = {
   value: PropTypes.node.isRequired
 }
 
-const Link = ({ children, ...props }) => {
-  const externalLink = props.href.match(/^(\/\/|http(s)?:\/\/)/)
+const Link = ({ children, href, ...props }) => {
+  const externalLink = href.match(/^(\/\/|http(s)?:\/\/)/)
   const showIcon =
     externalLink && children && typeof children[0].props.children === 'string'
 
@@ -115,10 +119,22 @@ const Link = ({ children, ...props }) => {
     : props
 
   if (showIcon) {
-    return <ExternalLink {...modifiedProps}>{children}</ExternalLink>
+    return (
+      <ExternalLink href={href} {...modifiedProps}>
+        {children}
+      </ExternalLink>
+    )
   }
 
-  return <a {...modifiedProps}>{children}</a>
+  const nextProps = href.match(/^\/doc/)
+    ? { href: PAGE_DOC, as: href }
+    : { href }
+
+  return (
+    <NextLink {...nextProps}>
+      <a {...modifiedProps}>{children}</a>
+    </NextLink>
+  )
 }
 
 Link.propTypes = {
@@ -164,26 +180,19 @@ export default class Markdown extends React.PureComponent {
 
   handleSwipeGesture = () => {
     if (this.isCodeBlock) return
-    const { prev, next, onNavigate } = this.props
+    const { prev, next } = this.props
 
     if (this.touchstartX - this.touchendX > 100) {
-      next && onNavigate(next)
+      Router.push({ asPath: PAGE_DOC, pathname: next })
     }
 
     if (this.touchendX - this.touchstartX > 100) {
-      prev && onNavigate(prev)
+      Router.push({ asPath: PAGE_DOC, pathname: prev })
     }
   }
 
   render() {
-    const {
-      markdown,
-      githubLink,
-      tutorials,
-      prev,
-      next,
-      onNavigate
-    } = this.props
+    const { markdown, githubLink, prev, next, tutorials } = this.props
 
     return (
       <Content id="markdown-root">
@@ -209,14 +218,18 @@ export default class Markdown extends React.PureComponent {
           astPlugins={[linker()]}
         />
         <NavigationButtons>
-          <Button onClick={() => onNavigate(prev)} disabled={!prev}>
-            <i className="prev" />
-            <span>Prev</span>
-          </Button>
-          <Button onClick={() => onNavigate(next)} disabled={!next}>
-            <span>Next</span>
-            <i className="next" />
-          </Button>
+          <NextLink href={PAGE_DOC} as={prev} passHref>
+            <Button disabled={!prev}>
+              <i className="prev" />
+              <span>Prev</span>
+            </Button>
+          </NextLink>
+          <NextLink href={PAGE_DOC} as={next} passHref>
+            <Button disabled={!next}>
+              <span>Next</span>
+              <i className="next" />
+            </Button>
+          </NextLink>
         </NavigationButtons>
       </Content>
     )
@@ -228,8 +241,7 @@ Markdown.propTypes = {
   githubLink: PropTypes.string.isRequired,
   tutorials: PropTypes.object,
   prev: PropTypes.string,
-  next: PropTypes.string,
-  onNavigate: PropTypes.func.isRequired
+  next: PropTypes.string
 }
 
 const Content = styled.article`
@@ -337,8 +349,8 @@ const NavigationButtons = styled.div`
   font-size: 14px;
 `
 
-const Button = styled.div`
-  border: none;
+const Button = styled.a`
+  text-decoration: none;
   background: white;
   padding: 10px 15px;
   text-transform: uppercase;
@@ -346,7 +358,6 @@ const Button = styled.div`
   border-bottom: 3px solid #13adc7;
   display: inline-flex;
   align-items: center;
-  cursor: pointer;
   transition: 0.2s border-color ease-out;
 
   &:hover {

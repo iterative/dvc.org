@@ -3,32 +3,37 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { media } from '../styles'
 import { logEvent } from '../utils/ga'
+import NextLink from 'next/link'
+import Router from 'next/router'
 
 const getStarted = () => {
   logEvent('menu', 'get-started')
-  window.location = '/doc/get-started'
+
+  Router.push('/doc/get-started')
 }
 
 export default function Nav({ mobile = false }) {
   return (
     <Wrapper mobile={mobile}>
       <Links>
-        <Link
-          href="/features"
-          onClick={() => {
-            logEvent('menu', 'features')
-          }}
-        >
-          Features
-        </Link>
-        <Link
-          href="/doc"
-          onClick={() => {
-            logEvent('menu', 'doc')
-          }}
-        >
-          Doc
-        </Link>
+        <NextLink href="/features" passHref>
+          <Link
+            onClick={() => {
+              logEvent('menu', 'features')
+            }}
+          >
+            Features
+          </Link>
+        </NextLink>
+        <NextLink href="/doc" passHref>
+          <Link
+            onClick={() => {
+              logEvent('menu', 'doc')
+            }}
+          >
+            Doc
+          </Link>
+        </NextLink>
         <Link
           href="https://blog.dataversioncontrol.com"
           onClick={() => {
@@ -53,14 +58,15 @@ export default function Nav({ mobile = false }) {
         >
           GitHub
         </Link>
-        <Link
-          href="/support"
-          onClick={() => {
-            logEvent('menu', 'support')
-          }}
-        >
-          Support
-        </Link>
+        <NextLink href="/support" passHref>
+          <Link
+            onClick={() => {
+              logEvent('menu', 'support')
+            }}
+          >
+            Support
+          </Link>
+        </NextLink>
       </Links>
       <GetStartedButton onClick={getStarted}>Get Started</GetStartedButton>
     </Wrapper>

@@ -1,8 +1,10 @@
-import React, { Component } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
 import scrollIntoView from 'dom-scroll-into-view'
 import PropTypes from 'prop-types'
-
+import NextLink from 'next/link'
+// consts
+import { PAGE_DOC } from '../../consts'
 // components
 import DownloadButton from '../../DownloadButton'
 // utils
@@ -32,121 +34,117 @@ function calculateHeight({ activePaths, path }) {
   return height
 }
 
-class SidebarMenuItem extends React.PureComponent {
-  componentDidMount() {
-    heightMap[this.props.path] = this.props.children
-      ? this.linkRef.scrollHeight
-      : 0
-  }
+function SidebarMenuItem({ children, label, path, activePaths, onClick }) {
+  const linkRef = useRef()
+  const isActive = activePaths && includes(activePaths, path)
+  const isRootParent =
+    activePaths && activePaths.length > 1 && activePaths[0] === path
 
-  render() {
-    const { children, label, path, activePaths, onNavigate } = this.props
-    const isActive = activePaths && includes(activePaths, path)
-    const isRootParent =
-      activePaths && activePaths.length > 1 && activePaths[0] === path
+  useEffect(() => {
+    heightMap[path] = children ? linkRef.current.scrollHeight : 0
+  }, [])
 
-    return (
-      <>
+  return (
+    <>
+      <NextLink href={PAGE_DOC} as={path} passHref>
         <SectionLink
-          href={path}
           id={path}
-          onClick={e => onNavigate(path, e)}
           isActive={isActive}
+          onClick={onClick}
           className={isRootParent ? 'docSearch-lvl0' : ''}
         >
           {label}
         </SectionLink>
-        {children && (
-          <Collapse
-            style={isActive ? { height: calculateHeight(this.props) } : {}}
-            ref={r => (this.linkRef = r)}
-          >
-            {children.map(item => (
-              <SidebarMenuItem
-                key={item.path}
-                activePaths={activePaths}
-                onNavigate={onNavigate}
-                {...item}
-              />
-            ))}
-          </Collapse>
-        )}
-      </>
-    )
-  }
+      </NextLink>
+      {children && (
+        <Collapse
+          style={
+            isActive ? { height: calculateHeight({ activePaths, path }) } : {}
+          }
+          ref={linkRef}
+        >
+          {children.map(item => (
+            <SidebarMenuItem
+              key={item.path}
+              activePaths={activePaths}
+              onClick={onClick}
+              {...item}
+            />
+          ))}
+        </Collapse>
+      )}
+    </>
+  )
 }
 
 SidebarMenuItem.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object),
   label: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
+  onClick: PropTypes.func,
   activePaths: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),
     PropTypes.bool
-  ]).isRequired,
-  onNavigate: PropTypes.func.isRequired
+  ]).isRequired
 }
 
-export default class SidebarMenu extends Component {
-  state = {
-    isScrollHidden: false
-  }
+export default function SidebarMenu({ id, sidebar, currentPath, onClick }) {
+  const psRef = useRef()
+  const [isScrollHidden, setIsScrollHidden] = useState(false)
+  const activePaths = currentPath && getParentsListFromPath(currentPath)
 
-  componentDidMount() {
-    this.ps = new PerfectScrollbar(`#${this.props.id}`, {
-      // wheelPropagation: window.innerWidth <= 572
-      wheelPropagation: true
-    })
-  }
+  useEffect(() => {
+    if (!psRef.current) {
+      psRef.current = new PerfectScrollbar(`#${id}`, {
+        wheelPropagation: true
+      })
+    }
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.currentPath === this.props.currentPath) return
+    const node = document.getElementById(currentPath)
+    const parent = document.getElementById(id)
 
-    const node = document.getElementById(this.props.currentPath)
-    const parent = document.getElementById(this.props.id)
+    setIsScrollHidden(true)
 
-    this.setState({ isScrollHidden: true }, () =>
-      setTimeout(() => {
-        this.ps.update()
-        scrollIntoView(node, parent, { onlyScrollIfNeeded: true })
-        this.setState({ isScrollHidden: false })
-      }, 400)
-    )
-  }
+    setTimeout(() => {
+      psRef.current.update()
+      scrollIntoView(node, parent, { onlyScrollIfNeeded: true })
+      setIsScrollHidden(false)
+    }, 400)
 
-  render() {
-    const { id, sidebar, currentPath, onNavigate } = this.props
-    const activePaths = currentPath && getParentsListFromPath(currentPath)
+    return () => {
+      psRef.current.destroy()
+      psRef.current = null
+    }
+  }, [currentPath])
 
-    return (
-      <Menu id={id} isScrollHidden={this.state.isScrollHidden}>
-        <Sections>
-          <SectionLinks>
-            {sidebar.map(item => (
-              <SidebarMenuItem
-                key={item.path}
-                activePaths={includes(activePaths, item.path) && activePaths}
-                onNavigate={onNavigate}
-                {...item}
-              />
-            ))}
-          </SectionLinks>
-        </Sections>
-        <OnlyDesktop>
-          <SideFooter>
-            <DownloadButton openTop />
-          </SideFooter>
-        </OnlyDesktop>
-      </Menu>
-    )
-  }
+  return (
+    <Menu id={id} isScrollHidden={isScrollHidden}>
+      <Sections>
+        <SectionLinks>
+          {sidebar.map(item => (
+            <SidebarMenuItem
+              key={item.path}
+              activePaths={includes(activePaths, item.path) && activePaths}
+              onClick={onClick}
+              {...item}
+            />
+          ))}
+        </SectionLinks>
+      </Sections>
+      <OnlyDesktop>
+        <SideFooter>
+          <DownloadButton openTop />
+        </SideFooter>
+      </OnlyDesktop>
+    </Menu>
+  )
 }
 
 SidebarMenu.propTypes = {
   id: PropTypes.string.isRequired,
   sidebar: PropTypes.arrayOf(PropTypes.object).isRequired,
   currentPath: PropTypes.string,
-  onNavigate: PropTypes.func.isRequired
+  onClick: PropTypes.func
 }
 
 const Menu = styled.div`
@@ -198,7 +196,6 @@ const SectionLink = styled.a`
   min-height: 26px;
   padding-bottom: 5px;
   padding-left: 15px;
-  cursor: pointer;
   margin: 0 0 0 5px;
 
   ${props =>
