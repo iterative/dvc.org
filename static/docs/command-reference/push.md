@@ -75,7 +75,7 @@ to push.
 
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
   in all Git branches of the project repository (if using Git). It's useful if
-  branches are used to track checkpoints of an experiment or project.
+  branches are used to track experiments or project checkpoints.
 
 - `-T`, `--all-tags` - the same as `-a`, `--all-branches`, but Git tags are used
   to save different experiments or project checkpoints. Note that both options

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import { LightButton } from '../LightButton'
+import Tutorials from '../Tutorials'
 // utils
 import throttle from 'lodash.throttle'
 
@@ -109,20 +110,21 @@ export default class RightPanel extends React.PureComponent {
   }, 100)
 
   render() {
-    const { headings, githubLink } = this.props
+    const { headings, githubLink, tutorials } = this.props
     const { current } = this.state
 
     return (
       <Wrapper>
-        {headings.length ? (
+        {!headings.length && <Spacer />}
+        {headings.length > 0 && (
           <>
             <Header>Content</Header>
             <hr />
-            {headings.map(({ slug, text }, headingIndex) => (
+            {headings.map(({ slug, text }) => (
               <HeadingLink
                 isCurrent={current === slug}
                 level={3}
-                key={`link-${headingIndex}`}
+                key={`link-${slug}`}
                 href={`#${slug}`}
               >
                 {text}
@@ -130,12 +132,19 @@ export default class RightPanel extends React.PureComponent {
             ))}
             <br />
           </>
-        ) : (
+        )}
+        {Object.keys(tutorials || {}).length > 0 && (
           <>
-            <Spacer />
+            <Description>
+              <span role="img" aria-label="bug">
+                ▶️
+              </span>{' '}
+              It can be run online:
+            </Description>
+            <Tutorials tutorials={tutorials} />
+            <br />
           </>
         )}
-
         <Description>
           <span role="img" aria-label="bug">
             🐛
@@ -173,6 +182,7 @@ RightPanel.propTypes = {
       text: PropTypes.string.isRequired
     })
   ).isRequired,
+  tutorials: PropTypes.object,
   githubLink: PropTypes.string.isRequired
 }
 
@@ -224,19 +234,19 @@ const HeadingLink = styled.a`
   }
 `
 
-const GithubButton = styled(LightButton)`
-  min-width: 120px;
+const ExternalButton = styled(LightButton)`
+  box-sizing: border-box;
+  min-width: 170px;
   margin: 10px 0;
+`
 
+const GithubButton = styled(ExternalButton)`
   i {
     background-image: url(/static/img/github_icon.svg);
   }
 `
 
-const DiscordButton = styled(LightButton)`
-  min-width: 120px;
-  margin: 10px 0;
-
+const DiscordButton = styled(ExternalButton)`
   i {
     background-image: url(/static/img/discord.svg);
     width: 1.2em;

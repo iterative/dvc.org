@@ -14,6 +14,9 @@ import sidebar from '../sidebar'
     source: "/static/docs/get-started/add-files.md",
     prev: "/doc/get-started/configure",
     next: "/doc/get-started/share-data",
+    tutorials: {
+      katacoda: "https://www.katacoda.com/loodse/courses/docker/docker-02-install"
+    }
     children: []
   }
 */
@@ -74,7 +77,7 @@ function validateRawItem({ slug, source, children }) {
 function normalizeItem({ item, parentPath, resultRef, prevRef }) {
   validateRawItem(item)
 
-  const { label, slug, source } = item
+  const { label, slug, source, tutorials } = item
 
   // If prev item doesn't have source we need to recirsively search for it
   const prevItemWithSource =
@@ -89,6 +92,7 @@ function normalizeItem({ item, parentPath, resultRef, prevRef }) {
     path: PATH_ROOT + parentPath + slug,
     source: source === false ? false : sourcePath,
     label: label ? label : startCase(slug),
+    tutorials: tutorials || {},
     prev,
     next: undefined
   }

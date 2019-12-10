@@ -1,5 +1,8 @@
+/* eslint jsx-a11y/anchor-is-valid: off */
+
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import NextLink from 'next/link'
 import styled from 'styled-components'
 import {
   media,
@@ -13,16 +16,18 @@ import { Element } from 'react-scroll'
 import Slider from 'react-slick'
 
 const LearnMore = ({ href }) => (
-  <LearnMoreArea href={href}>
-    <a href={href}>
-      <span>Learn&nbsp;more</span>
-      <img
-        src="/static/img/learn_more_arrow.svg"
-        width={18}
-        height={18}
-        alt=""
-      />
-    </a>
+  <LearnMoreArea>
+    <NextLink href={href}>
+      <a>
+        <span>Learn&nbsp;more</span>
+        <img
+          src="/static/img/learn_more_arrow.svg"
+          width={18}
+          height={18}
+          alt=""
+        />
+      </a>
+    </NextLink>
   </LearnMoreArea>
 )
 
@@ -36,8 +41,8 @@ const ColumnOne = () => (
     <Description fullWidth>
       <p>
         Version control machine learning models, data sets and intermediate
-        files. DVC connects them with code and uses S3, Azure, GCP, SSH, Aliyun
-        OSS or to store file contents.
+        files. DVC connects them with code and uses S3, Azure, Google Drive,
+        GCP, SSH, Aliyun OSS or to store file contents.
       </p>
       <p>
         Full code and data provenance help track the complete evolution of every

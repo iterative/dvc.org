@@ -1,11 +1,7 @@
-**IMPORTANT NOTES** (please read, then delete):
+Disregard the recommendations below if you use **Edit on Github** button to improve the docs in place.
 
-- Have you followed the guidelines in
-  [Contributing Documentation](https://dvc.org/doc/user-guide/contributing/docs)?
+❗ Please read the guidelines in the [Contributing to the Documentation](https://dvc.org/doc/user-guide/contributing/docs) list if you make any substantial changes to the documentation or JS engine.
 
-- Please use the title to provide a clear one-line present-tense summary of the
-  changes introduced in the PR. For example: "Introduce the first version of the
-  collection editor.".
+🐛 Please make sure to mention `Fix #issue` (if applicable) in the description of the PR. This enables GitHub to link the PR to the corresponding bug and close it automatically when PR is merged.
 
-- Please make sure to mention "Fix #bugnum" (if applicable) in the description
-  of the PR. This enables GitHub to link the PR to the corresponding bug.
+Thank you for the contribution - we'll try to review and merge it as soon as possible. 🙏

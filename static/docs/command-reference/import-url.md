@@ -60,8 +60,8 @@ DVC supports several types of (local or) remote locations (protocols):
 
 > Depending on the remote locations type you plan to download data from you
 > might need to specify one of the optional dependencies: `[s3]`, `[ssh]`,
-> `[gs]`, `[azure]`, and `[oss]` (or `[all]` to include them all) when
-> [installing DVC](/doc/install) with `pip`.
+> `[gs]`, `[azure]`, `[gdrive]`, and `[oss]` (or `[all]` to include them all)
+> when [installing DVC](/doc/install) with `pip`.
 
 <!-- Separate MD quote: -->
 
@@ -203,9 +203,9 @@ Let's use the [Get Started](/doc/get-started) project again, simulating an
 updated external data source. (Remember to prepare the <abbr>workspace</abbr>,
 as explained in [Examples](#examples))
 
-To make it easy to experiment with this, let's use a local machine directory
-(external to the workspace) to simulate a remote data source location. (In real
-life, the data file will probably be on a remote server.) Run these commands:
+To illustrate this scenario, let's use a local machine directory (external to
+the workspace) to simulate a remote data source location. (In real life, the
+data file will probably be on a remote server.) Run these commands:
 
 ```dvc
 $ mkdir /tmp/dvc-import-url-example

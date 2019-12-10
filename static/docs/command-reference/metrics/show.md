@@ -83,7 +83,7 @@ extension.)
   results or parse files that are not in a corresponding format in this case.
 
 - `-a`, `--all-branches` - get and print metric file contents across all Git
-  branches. It can be used to compare different variants of an experiment.
+  branches. It can be used to compare different experiments.
 
 - `-T`, `--all-tags` - get and print metric file contents across all Git tags.
   Similar to `-a` above. Note that both options can be combined, for example

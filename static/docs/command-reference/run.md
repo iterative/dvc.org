@@ -52,6 +52,26 @@ captures data and <abbr>caches</abbr> relevant <abbr>data artifacts</abbr> along
 the way. See [this example](/doc/get-started/example-pipeline) to learn more and
 try creating a pipeline.
 
+### Well-behaved commands
+
+DVC is simple to use, you only need to wrap your commands with `dvc run`, and
+define your dependencies and outputs.
+
+However, to prevent unexpected behaviors, ideally, your commands should follow
+some principles:
+
+- Read exclusively from specified dependencies.
+- Write exclusively to specified outputs.
+- Completely rewrite the outputs (i.e. do not append or edit).
+- Stop reading and writing when the command exits.
+
+To guarantee reproducibilty, your command should be
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (i.e. it
+must produce the same results given the same inputs/dependencies).
+
+Have in mind what brings entropy to your command (e.g. random generators, time,
+hardware, etc.) and try to minize it (e.g. fix seeds).
+
 ## Options
 
 - `-d`, `--deps` - specify a file or a directory the stage depends on. Multiple
