@@ -30,7 +30,9 @@ the data source changes. (See `dvc update`.)
 The `url` argument specifies the address of the Git repository containing the
 source <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
 online repositories (e.g. `[user@]server:project.git`). `url` can also be a
-local file system path to an "offline" repository.
+local file system path to an "offline" repository (in this case instead of
+downloading, DVC may copy the target data from the external source project or
+it's cache).
 
 The `path` argument of this command is used to specify the location of the data
 to be downloaded within the source project. It should point to a data file or
