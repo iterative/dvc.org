@@ -85,7 +85,7 @@ use-cases/cats-dogs
         └── dogs [400 image files]
 ```
 
-In a local DVC project, we could have obtained this dataset at this point with
+In a local DVC project, we could have downloaded this dataset at this point with
 the following command:
 
 ```dvc
