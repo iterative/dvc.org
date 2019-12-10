@@ -97,7 +97,7 @@ remote = myremote
 
 ## Example: Add Amazon S3 remote and modify its region
 
-> **Note!** Before adding a new remote be sure follow the instructions at
+> 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
