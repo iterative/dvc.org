@@ -224,9 +224,9 @@ $ export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountN
 
 ### Click for Google Drive instructions
 
-> Please remember that Google Drive access tokens are personal credentials and
-> should not be shared with anyone, otherwise risking unauthorized usage of the
-> Google account.
+> 💡 Please remember that Google Drive access tokens are personal credentials
+> and should not be shared with anyone, otherwise risking unauthorized usage of
+> the Google account.
 
 To avoid tests flow interruption by manual login, perform authorization once and
 backup the obtained Google Drive access token, which is stored by default under

@@ -124,10 +124,10 @@ for more details.)
   effective of those two. DVC avoids `symlink` and `hardlink` types by default
   to protect user from accidental cache and repository corruption.
 
-  > **Note!** If you manually set `cache.type` to `hardlink` or `symlink`, **you
-  > will corrupt the cache** if you modify tracked data files in the workspace.
-  > See the `cache.protected` config option above and corresponding
-  > `dvc unprotect` command to modify files safely.
+  **Note** ⚠️ If you manually set `cache.type` to `hardlink` or `symlink`, **you
+  will corrupt the cache** if you modify tracked data files in the workspace.
+  See the `cache.protected` config option above and corresponding
+  `dvc unprotect` command to modify files safely.
 
   There are pros and cons to different link types. Refer to
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
@@ -185,20 +185,18 @@ more about the state file (database) that is used for optimization.
   so that when it needs to cleanup the database it could sort them by the
   timestamp and remove the oldest ones. Default quota is set to 50(percent).
 
-## Example: Core config options
-
-Set the `dvc` log level to `debug`:
+## Example: Set the debug level
 
 ```dvc
 $ dvc config core.loglevel debug
 ```
 
-Add an S3 remote and set it as the <abbr>project</abbr> default:
+## Example: Add an S3 remote
 
-> **Note!** Before adding a new remote be sure to login into AWS services and
-> follow instructions at
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
-> to create your bucket.
+> 💡 Before adding an S3 remote, be sure to
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
+
+This also sets the remote as the <abbr>project</abbr> default:
 
 ```dvc
 $ dvc remote add myremote s3://bucket/path

@@ -91,10 +91,8 @@ These are the possible remote storage (protocols) DVC can work with:
 
 ### Click for Amazon S3
 
-> **Note!** Before adding a new remote be sure to login into AWS services and
-> follow instructions at
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
-> to create your bucket.
+> 💡 Before adding an S3 remote, be sure to
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
 $ dvc remote add myremote s3://bucket/path
@@ -303,11 +301,9 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 $ dvc remote add myremote ssh://user@example.com/path/to/dir
 ```
 
-> **Note!** DVC requires both SSH and SFTP access to work with SSH remote
-> storage. Please check that you are able to connect both ways to the remote
-> location, with tools like `ssh` and `sftp` (GNU/Linux).
-
-<!-- Separate MD quote: -->
+**Note** ⚠️ DVC requires both SSH and SFTP access to work with SSH remote
+storage. Please check that you are able to connect both ways to the remote
+location, with tools like `ssh` and `sftp` (GNU/Linux).
 
 > Note that your server's SFTP root might differ from its physical root (`/`).
 > (On Linux, see the `ChrootDirectory` config option in `/etc/ssh/sshd_config`.)
@@ -326,8 +322,8 @@ $ dvc remote add myremote ssh://user@example.com/path/to/dir
 $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 ```
 
-> **Note!** If you are seeing `Unable to load libjvm` error on ubuntu with
-> openjdk-8, try setting JAVA_HOME env variable. This issue is solved in the
+> If you are seeing an `Unable to load libjvm` error on Ubuntu with openjdk-8,
+> try setting the `JAVA_HOME` environment variable. This issue is solved in the
 > [upstream version of pyarrow](https://github.com/apache/arrow/pull/4907) and
 > the fix will be included into the next pyarrow release.
 
@@ -337,15 +333,15 @@ $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 
 ### Click for HTTP
 
-> **Note!** Currently HTTP remotes only support downloads operations:
->
-> - `pull` and `fetch`
-> - `import-url` and `get-url`
-> - As an [external dependency](/doc/user-guide/external-dependencies)
-
 ```dvc
 $ dvc remote add myremote https://example.com/path/to/dir
 ```
+
+**Note** ⚠️ HTTP remotes only support downloads operations:
+
+- `pull` and `fetch`
+- `import-url` and `get-url`
+- As an [external dependency](/doc/user-guide/external-dependencies)
 
 </details>
 
