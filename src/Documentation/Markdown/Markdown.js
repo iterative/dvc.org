@@ -126,10 +126,14 @@ const Link = ({ children, href, ...props }) => {
     )
   }
 
+  const nextProps = href.match(/^\/doc/)
+    ? { href: PAGE_DOC, as: href }
+    : { href }
+
   return (
-    <a {...modifiedProps} href={href}>
-      {children}
-    </a>
+    <NextLink {...nextProps}>
+      <a {...modifiedProps}>{children}</a>
+    </NextLink>
   )
 }
 
