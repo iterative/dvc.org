@@ -10,6 +10,8 @@ package management systems, but for data**.
 
 <!-- TODO: Insert diagram image here. -->
 
+![](/static/img/data-registry.png)
+
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
 tracking and versioning _datasets_ (or any large data). This way we would have a
 repository with all the metadata and history of changes of different datasets.
