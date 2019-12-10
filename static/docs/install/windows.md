@@ -1,6 +1,6 @@
 # Installation on Windows
 
-> **Note!** Please review
+> 💡 Please review
 > [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
 > tips to improve your experience using DVC on Windows.
 

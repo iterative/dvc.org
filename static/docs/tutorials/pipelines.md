@@ -198,8 +198,8 @@ is similar to Git's
 [objects database](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects),
 but made specifically to handle large data files.
 
-> **Note!** For performance with large datasets, DVC can use file links from the
-> cache to the workspace to avoid copying actual file contents. Refer to
+> Note that for performance with large datasets, DVC can use file links from the
+> cache to the workspace. This avoids copying actual file contents. Refer to
 > [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > to learn which options exist and how to enable them.
 
