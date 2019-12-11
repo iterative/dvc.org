@@ -64,9 +64,3 @@ If you do not want to use [Chocolatey](https://chocolatey.org/) for some reason,
 you can still provide `less` by your own way. However, you must make `less` to
 be runnable from `cmd`/`Powershell`. This usually means to add the `less`
 installation directory to the `PATH` environment variable.
-
-### Providing a custom pager
-
-See
-[this section](/doc/command-reference/pipeline/show#providing-a-custom-pager)
-for details.

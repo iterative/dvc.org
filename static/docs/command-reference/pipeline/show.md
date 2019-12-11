@@ -80,8 +80,6 @@ example in Bash, we could add the following line to `~/.bashrc`:
 export DVC_PAGER=more
 ```
 
-to `~/.bashrc`.
-
 ## Examples
 
 Default mode: show stage files that `output.dvc` recursively depends on:
