@@ -35,7 +35,7 @@ instead of stages.
   option is specified) of stage outputs instead of paths to DVC-files.
 
 - `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
-  list of path to DVC-files (`less` pager may be used, see
+  list of path to DVC-files. (`less` pager may be used, see
   [this section](/doc/command-reference/pipeline/show#paging-the-output) for
   details).
 
@@ -55,32 +55,26 @@ instead of stages.
 
 ## Paging the output
 
-This command's output is automatically pushed to `less` command line tool if
-`less` is runnable (installed and can be executed in your shell). To be exact,
-the actual command is `less --chop-long-lines --clear-screen`.
+This command's output is automatically piped to
+[`less`](<https://en.wikipedia.org/wiki/Less_(Unix)>), if available in the
+terminal. (The exact command used is `less --chop-long-lines --clear-screen`.)
+If less is not available (e.g. on Windows), the output is simply printed out.
 
-If `less` is not runnable (usually Microsoft Windows), the ouput is simply
-printed out.
-
-> Note Microsoft Windows users may also want to read
-> [this how-to](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
+> It's also possible to
+> [enable Less paging on Windows](/doc/user-guide/running-dvc-on-windows#enabling-paging-with-less).
 
 ### Providing a custom pager
 
-You can also override the default pager via `DVC_PAGER` environemnt variable.
-
-For example:
-
-Following command will replace the default pager with
-[`more`](<https://en.wikipedia.org/wiki/More_(command)>) for a single call
+It's possible to override the default pager via the `DVC_PAGER` environment
+variable. For example, the following command will replace the default pager with
+[`more`](<https://en.wikipedia.org/wiki/More_(command)>), for a single run:
 
 ```bash
 $ DVC_PAGER=more dvc pipeline show --ascii my-pipeline.dvc
 ```
 
-To make it persistent, you need to add it to a shell depending file.
-
-For `Bash` it means adding this line
+For a persistent change, define `DVC_PAGER` in the shell configuration. For
+example in Bash, we could add the following line to `~/.bashrc`:
 
 ```bash
 export DVC_PAGER=more
@@ -108,9 +102,7 @@ cleanup.py raw data
 process.py data output
 ```
 
-Visualize DVC pipeline (`less` pager may be used, see
-[this section](/doc/command-reference/pipeline/show#paging-the-output) for
-details).
+Visualize DVC pipeline:
 
 ```dvc
 $ dvc pipeline show eval.txt.dvc --ascii

@@ -50,11 +50,11 @@ is the resource for reference.
 
 ## Enabling paging with `less`
 
-By default DVC uses `less` to page output for some commands. Although, many
-operating systems have `less` preinstalled, there are still platforms where
-`less` is not installed. This usually happens for Microsoft Windows.
+By default, DVC tries to use
+[`Less`](<https://en.wikipedia.org/wiki/Less_(Unix)>) as pager for the output of
+`dvc pipeline show`. Windows doesn't have the less command available however.
 Fortunately, there is a easy way of installing `less` via
-[Chocolatey](https://chocolatey.org/).
+[Chocolatey](https://chocolatey.org/) (please install the tool first):
 
 ```dvc
 $ choco install less
