@@ -322,11 +322,6 @@ location, with tools like `ssh` and `sftp` (GNU/Linux).
 $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 ```
 
-> If you are seeing an `Unable to load libjvm` error on Ubuntu with openjdk-8,
-> try setting the `JAVA_HOME` environment variable. This issue is solved in the
-> [upstream version of pyarrow](https://github.com/apache/arrow/pull/4907) and
-> the fix will be included into the next pyarrow release.
-
 </details>
 
 <details>
