@@ -78,7 +78,7 @@ created in the current working directory, with its original file name.
 
 We can use `dvc get` to download the resulting model file from our
 [get started example repo](https://github.com/iterative/example-get-started), a
-<abbr>DVC project</abbr> hosted on Github:
+<abbr>DVC project</abbr> hosted on GitHub:
 
 ```dvc
 $ dvc get https://github.com/iterative/example-get-started model.pkl

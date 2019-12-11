@@ -60,5 +60,5 @@ $ choco install less
 ```
 
 `less` can be installed in other ways, just make sure it's available in
-`cmd`/Powershell, where you run dvc. (This usually means adding the directory
+`cmd`/PowerShell, where you run `dvc`. (This usually means adding the directory
 where `less` is installed to the `PATH` environment variable.)
