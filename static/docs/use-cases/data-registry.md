@@ -1,4 +1,4 @@
-# Data Registry
+# Data Registries
 
 One of the main uses of <abbr>DVC repositories</abbr> is the
 [versioning of data and model files](/doc/use-cases/data-and-model-files-versioning),
@@ -9,11 +9,12 @@ can depend on data from an external <abbr>DVC project</abbr>, **similar to
 package management systems, but for data**.
 
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
-tracking and versioning _datasets_ (or any large data). This way we would have a
-repository with all the metadata and history of changes of different datasets.
-We could see who updated what, and when, and use pull requests to update data
-(the same way we do with code). This is what we call a **data registry**, which
-can work as data management _middleware_ between ML projects and cloud storage.
+tracking and versioning _datasets_ (or any large data, even ML models). This way
+we would have a repository with all the metadata and history of changes of
+different datasets. We could see who updated what, and when, and use pull
+requests to update data (the same way we do with code). This is what we call a
+**data registry**, which can work as data management _middleware_ between ML
+projects and cloud storage.
 
 ![](/static/img/data-registry.png)
 
@@ -42,7 +43,7 @@ Advantages of using a DVC **data registry** project:
   HTTP location). Git versioning of [DVC-files](/doc/user-guide/dvc-file-format)
   allows us to track and audit data changes.
 
-## Building
+## Building registries
 
 Data registries can be created like any other <abbr>DVC repositories</abbr> with
 `git init` and `dvc init`. A good way to organize them is with different
@@ -81,49 +82,7 @@ $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 > [pushed](/doc/command-reference/push) to one or more
 > [remote storage](/doc/command-reference/remote) locations.
 
-## Updating
-
-Datasets change, and DVC is prepared to handle it. Just add/remove or change the
-contents of the data registry, and apply the updates by running `dvc add` again:
-
-```dvc
-$ cp /path/to/1000/image/dir music/songs
-$ dvc add music/songs
-...
-```
-
-DVC then modifies the corresponding DVC-file to reflect the changes in the data,
-and this will be noticed by Git:
-
-```dvc
-$ git status
-Changes not staged for commit:
-...
-	modified:   music/songs.dvc
-```
-
-Iterating on this process for several datasets can give shape to a robust
-registry, which are basically repositories that mainly version a bunch of
-DVC-files, as you can see in the hypothetical example below.
-
-```dvc
-$ tree --filelimit=100
-.
-├── images
-│   ├── .gitignore
-│   ├── cats-dogs [2800 entries]  # Listed in .gitignore
-│   ├── faces [10000 entries]     # Listed in .gitignore
-│   ├── cats-dogs.dvc
-│   └── faces.dvc
-├── music
-│   ├── .gitignore
-│   ├── songs [11000 entries]     # Listed in .gitignore
-│   └── songs.dvc
-├── text
-...
-```
-
-## Using
+## Using registries
 
 The main methods to consume <abbr>data artifacts</abbr> from a **data registry**
 are the `dvc import` and `dvc get` commands, as well as the `dvc.api.open()`
@@ -188,3 +147,45 @@ dvc.api.open('path/to/dataset', 'git@git-server.url:path/to/repository.git')
 
 This opens `path/to/dataset` as a file descriptor. Such a method could be used
 as a code-internal **deployment** method for ML models, for example.
+
+## Updating registries
+
+Datasets change, and DVC is prepared to handle it. Just add/remove or change the
+contents of the data registry, and apply the updates by running `dvc add` again:
+
+```dvc
+$ cp /path/to/1000/image/dir music/songs
+$ dvc add music/songs
+...
+```
+
+DVC then modifies the corresponding DVC-file to reflect the changes in the data,
+and this will be noticed by Git:
+
+```dvc
+$ git status
+Changes not staged for commit:
+...
+	modified:   music/songs.dvc
+```
+
+Iterating on this process for several datasets can give shape to a robust
+registry, which are basically repositories that mainly version a bunch of
+DVC-files, as you can see in the hypothetical example below.
+
+```dvc
+$ tree --filelimit=100
+.
+├── images
+│   ├── .gitignore
+│   ├── cats-dogs [2800 entries]  # Listed in .gitignore
+│   ├── faces [10000 entries]     # Listed in .gitignore
+│   ├── cats-dogs.dvc
+│   └── faces.dvc
+├── music
+│   ├── .gitignore
+│   ├── songs [11000 entries]     # Listed in .gitignore
+│   └── songs.dvc
+├── text
+...
+```
