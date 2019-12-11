@@ -186,4 +186,5 @@ import dvc.api.open
 dvc.api.open('path/to/dataset', 'git@git-server.url:path/to/repository.git')
 ```
 
-This opens `path/to/dataset` as a file descriptor.
+This opens `path/to/dataset` as a file descriptor. Such a method could be used
+as a code-internal **deployment** method for ML models, for example.
