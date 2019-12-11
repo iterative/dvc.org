@@ -23,14 +23,14 @@ positional arguments:
 
 ## Description
 
-`name` and `url` are required. `url` specifies a location (path, address,
-endpoint) to store your data. It can represent a cloud storage service, an SSH
-server, network-attached storage, or even a directory in the local file system.
-(See all the supported remote storage types in the examples below.) If `url` is
-a relative path, it will be resolved against the current working directory, but
-saved **relative to the config file location** (see LOCAL example below).
-Whenever possible, DVC will create a remote directory if it doesn't exists yet.
-(It won't create an S3 bucket though, and will rely on default access settings.)
+`name` and `url` are required. `url` specifies a location to store your data. It
+can point to a cloud storage service, an SSH server, network-attached storage,
+or even a directory in the local file system. (See all the supported remote
+storage types in the examples below.) If `url` is a relative path, it will be
+resolved against the current working directory, but saved **relative to the
+config file location** (see LOCAL example below). Whenever possible, DVC will
+create a remote directory if it doesn't exists yet. (It won't create an S3
+bucket though, and will rely on default access settings.)
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
