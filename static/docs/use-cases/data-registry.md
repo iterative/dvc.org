@@ -8,16 +8,14 @@ with commands such as `dvc add`. With the aim to enable reusability of these
 can depend on data from an external <abbr>DVC project</abbr>, **similar to
 package management systems, but for data**.
 
-<!-- TODO: Insert diagram image here. -->
-
-![](/static/img/data-registry.png)
-
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
 tracking and versioning _datasets_ (or any large data). This way we would have a
 repository with all the metadata and history of changes of different datasets.
 We could see who updated what, and when, and use pull requests to update data
 (the same way we do with code). This is what we call a **data registry**, which
 can work as data management _middleware_ between ML projects and cloud storage.
+
+![](/static/img/data-registry.png)
 
 > Note that a single dedicated repository is just one possible pattern to create
 > data registries with DVC.
@@ -128,10 +126,26 @@ $ tree --filelimit=100
 ## Using
 
 The main methods to consume <abbr>data artifacts</abbr> from a **data registry**
-are the `dvc import` and `dvc update` commands.
+are the `dvc import` and `dvc get` commands, as well as the `dvc.api.open()`
+function.
 
-To import a dataset versioned in a <abbr>repository</abbr> online, we can run
-something like:
+### Simple download (get)
+
+To download a dataset versioned in a <abbr>DVC repository</abbr> online, we can
+run something like:
+
+```dvc
+$ dvc get git@git-server.url:path/to/repository.git \
+          path/to/dataset
+```
+
+This downloads `path/to/dataset` from the <abbr>project</abbr>'s
+[default remote](/doc/command-reference/remote/default) and places it in the
+current working directory (anywhere in the file system with user write access).
+
+### Import workflow
+
+`dvc import` uses the same syntax as `dvc get`:
 
 ```dvc
 $ dvc import git@git-server.url:path/to/repository.git \
@@ -141,22 +155,35 @@ $ dvc import git@git-server.url:path/to/repository.git \
 > Note that unlike `dvc get`, which can be used from any directory, `dvc import`
 > needs to run within an [initialized](/doc/command-reference/init) DVC project.
 
-Importing saves the dependency of the local <abbr>project</abbr> towards the
-data source (registry repository). This is achieved by creating a particular
+Besides downloading, importing saves the dependency of the local project towards
+the data source (registry repository). This is achieved by creating a particular
 kind of [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_).
 This file can be used staged and committed with Git.
 
 > For a sample DVC-file resulting from `dvc import`, refer to
 > [this example](/doc/command-reference/import#example-data-registry).
 
-Given this saved dependency, whenever the the dataset changes in the source
-project (data registry), we can easily bring it up to date in our consumer
-project with:
+As an addition to the import workflow, and enabled the saved dependency, we can
+easily bring it up to date in our consumer project with `dvc update` whenever
+the the dataset changes in the source project (data registry):
 
 ```dvc
 $ dvc update dataset.dvc
 ```
 
-`dvc update` downloads new and changed files or removed deleted ones from
-`path/to/dataset` based on the latest version of the source project, and updates
-the project dependency metadata in the import stage (DVC-file).
+`dvc update` downloads new and changed files, or removes deleted ones, from
+`path/to/dataset` based on the latest version of the source project. It also
+updates the project dependency metadata in the import stage (DVC-file).
+
+### Programatic reusability of DVC data
+
+Our Python API, included with the `dvc` package installed with DVC, includes the
+`open` function to load/stream data directly from remote DVC projects:
+
+```python
+import dvc.api.open
+
+dvc.api.open('path/to/dataset', 'git@git-server.url:path/to/repository.git')
+```
+
+This opens `path/to/dataset` as a file descriptor.
