@@ -36,8 +36,7 @@ instead of stages.
 
 - `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
   list of path to DVC-files. (`less` pager may be used, see
-  [this section](/doc/command-reference/pipeline/show#paging-the-output) for
-  details).
+  [Paging the output](#paging-the-output) below for details).
 
 - `--dot` - show contents of `.dot` files with a DVC pipeline graph. It can be
   passed to third party visualization utilities.
