@@ -124,10 +124,10 @@ for more details.)
   effective of those two. DVC avoids `symlink` and `hardlink` types by default
   to protect user from accidental cache and repository corruption.
 
-  **Note** ⚠️ If you manually set `cache.type` to `hardlink` or `symlink`, **you
-  will corrupt the cache** if you modify tracked data files in the workspace.
-  See the `cache.protected` config option above and corresponding
-  `dvc unprotect` command to modify files safely.
+  ⚠️ If you manually set `cache.type` to `hardlink` or `symlink`, **you will
+  corrupt the cache** if you modify tracked data files in the workspace. See the
+  `cache.protected` config option above and corresponding `dvc unprotect`
+  command to modify files safely.
 
   There are pros and cons to different link types. Refer to
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)

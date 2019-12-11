@@ -301,9 +301,9 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 $ dvc remote add myremote ssh://user@example.com/path/to/dir
 ```
 
-**Note** ⚠️ DVC requires both SSH and SFTP access to work with SSH remote
-storage. Please check that you are able to connect both ways to the remote
-location, with tools like `ssh` and `sftp` (GNU/Linux).
+⚠️ DVC requires both SSH and SFTP access to work with SSH remote storage. Please
+check that you are able to connect both ways to the remote location, with tools
+like `ssh` and `sftp` (GNU/Linux).
 
 > Note that your server's SFTP root might differ from its physical root (`/`).
 > (On Linux, see the `ChrootDirectory` config option in `/etc/ssh/sshd_config`.)
@@ -332,7 +332,7 @@ $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 $ dvc remote add myremote https://example.com/path/to/dir
 ```
 
-**Note** ⚠️ HTTP remotes only support downloads operations:
+⚠️ HTTP remotes only support downloads operations:
 
 - `pull` and `fetch`
 - `import-url` and `get-url`
