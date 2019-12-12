@@ -55,9 +55,8 @@ corresponding config file.
 
 ## Configuration sections
 
-Sections are essentially a collection of options that define a particular 
-setting like `core`, or `remote`. These are written to the project config file 
-(in `.dvc/config` by default) by this command, and support the options below:
+The following config sections are written by this command to the project config 
+file (in `.dvc/config` by default), and they support the options below:
 
 ### core
 
