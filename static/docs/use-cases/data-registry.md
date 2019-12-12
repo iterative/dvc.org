@@ -8,6 +8,8 @@ with commands such as `dvc add`. With the aim to enable reusability of these
 can depend on data from an external <abbr>DVC project</abbr>, **similar to
 package management systems, but for data**.
 
+![](/static/img/data-registry.png) _Codify datasets and models with DVC_
+
 Keeping this in mind, we could build a <abbr>DVC project</abbr> dedicated to
 tracking and versioning _datasets_ (or any large data, even ML models). This way
 we would have a repository with all the metadata and history of changes of
@@ -15,8 +17,6 @@ different datasets. We could see who updated what, and when, and use pull
 requests to update data (the same way we do with code). This is what we call a
 **data registry**, which can work as data management _middleware_ between ML
 projects and cloud storage.
-
-![](/static/img/data-registry.png)
 
 > Note that a single dedicated repository is just one possible pattern to create
 > data registries with DVC.
@@ -61,7 +61,6 @@ track it, with `dvc add`. For example:
 $ mkdir -p music/Beatles
 $ cp ~/Downloads/millionsongsubset_full music/songs
 $ dvc add music/songs
-100% Add                                       1/1 [...
 ```
 
 > This example dataset actually exists. See
@@ -86,12 +85,14 @@ $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 
 The main methods to consume <abbr>data artifacts</abbr> from a **data registry**
 are the `dvc import` and `dvc get` commands, as well as the `dvc.api.open()`
-function.
+function (Python).
 
 ### Simple download (get)
 
-To download a dataset versioned in a <abbr>DVC repository</abbr> online, we can
-run something like:
+This is analogous to using direct download tools like
+[`wget`](https://www.gnu.org/software/wget/) (HTTP),
+[`aws s3 cp`](https://docs.aws.amazon.com/cli/latest/reference/s3/cp.html) (S3),
+etc. To get a dataset for example, we can run something like:
 
 ```dvc
 $ dvc get git@git-server.url:path/to/repository.git \
@@ -101,6 +102,9 @@ $ dvc get git@git-server.url:path/to/repository.git \
 This downloads `path/to/dataset` from the <abbr>project</abbr>'s
 [default remote](/doc/command-reference/remote/default) and places it in the
 current working directory (anywhere in the file system with user write access).
+
+> Note that this command (as well as `dvc import`) has a `--revision` option to
+> download specific versions of the data.
 
 ### Import workflow
 
@@ -118,9 +122,6 @@ Besides downloading, importing saves the dependency of the local project towards
 the data source (registry repository). This is achieved by creating a particular
 kind of [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_).
 This file can be used staged and committed with Git.
-
-> For a sample DVC-file resulting from `dvc import`, refer to
-> [this example](/doc/command-reference/import#example-data-registry).
 
 As an addition to the import workflow, and enabled the saved dependency, we can
 easily bring it up to date in our consumer project with `dvc update` whenever
@@ -142,7 +143,12 @@ Our Python API, included with the `dvc` package installed with DVC, includes the
 ```python
 import dvc.api.open
 
-dvc.api.open('path/to/dataset', 'git@git-server.url:path/to/repository.git')
+data_path = 'path/to/dataset'
+repo_url = 'git@git-server.url:path/to/repository.git'
+
+with dvc.api.open(data_path, repo_url) as dataset:
+    # process the data
+    # ...
 ```
 
 This opens `path/to/dataset` as a file descriptor. Such a method could be used
@@ -150,13 +156,12 @@ as a code-internal **deployment** method for ML models, for example.
 
 ## Updating registries
 
-Datasets change, and DVC is prepared to handle it. Just add/remove or change the
-contents of the data registry, and apply the updates by running `dvc add` again:
+Datasets evolve, and DVC is prepared to handle it. Just change the data in the
+registry, and apply the updates by running `dvc add` again:
 
 ```dvc
 $ cp /path/to/1000/image/dir music/songs
 $ dvc add music/songs
-...
 ```
 
 DVC then modifies the corresponding DVC-file to reflect the changes in the data,
