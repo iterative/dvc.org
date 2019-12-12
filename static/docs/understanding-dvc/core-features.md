@@ -15,5 +15,5 @@
 - It's **Open-source** and **Self-serve**: DVC is free and doesn't require any
   additional services.
 
-- DVC supports cloud storage (Amazon S3, Azure Blob Storage, Google Drive, and
-  Google Cloud Storage) for **data sources and pre-trained model sharing**.
+- DVC supports cloud storage (Amazon S3, Microsoft Azure Blob Storage, Google
+  Cloud Storage, etc.) for **data sources and pre-trained model sharing**.

@@ -1,4 +1,4 @@
-Disregard the recommendations below if you use **Edit on Github** button to improve the docs in place.
+Disregard the recommendations below if you use **Edit on GitHub** button to improve the docs in place.
 
 ❗ Please read the guidelines in the [Contributing to the Documentation](https://dvc.org/doc/user-guide/contributing/docs) list if you make any substantial changes to the documentation or JS engine.
 

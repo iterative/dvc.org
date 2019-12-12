@@ -53,7 +53,7 @@ example, if a data file `Posts.xml.zip` has checksum
 `ec1d2935f811b77cc49b031b999cbf17`, its cache entry will be
 `.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17` locally.
 
-> **Note!** File checksums are calculated from file contents only. 2 or more
+> Note that file checksums are calculated from file contents only. 2 or more
 > files with different names but the same contents can exist in the workspace
 > and be tracked by DVC, but only one copy is stored in the cache. This helps
 > avoid data duplication in cache and remotes.

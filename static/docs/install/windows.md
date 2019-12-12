@@ -1,6 +1,6 @@
 # Installation on Windows
 
-> **Note!** Please review
+> 💡 Please review
 > [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
 > tips to improve your experience using DVC on Windows.
 
@@ -37,8 +37,8 @@ $ pip install dvc
 ```
 
 Depending on the type of the [remote storage](/doc/command-reference/remote) you
-plan to use, you might need to install optional dependencies: `[s3]`, `[ssh]`,
-`[gs]`, `[azure]`, `[gdrive]`, and `[oss]`. Use `[all]` to include them all.
+plan to use, you might need to install optional dependencies: `[s3]`, `[azure]`,
+`[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them all.
 
 <details>
 

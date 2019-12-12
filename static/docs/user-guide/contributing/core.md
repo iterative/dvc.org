@@ -153,10 +153,9 @@ Install requirements for whatever remotes you are going to test:
 
 ```dvc
 $ pip install -e ".[s3]"
-$ pip install -e ".[gs]"
 $ pip install -e ".[azure]"
 $ pip install -e ".[gdrive]"
-$ pip install -e ".[ssh]"
+$ pip install -e ".[gs]"
 # or
 $ pip install -e ".[all]"
 ```
@@ -182,7 +181,7 @@ manipulations below.
 
 <details>
 
-### Click for S3 testing instructions
+### Click for Amazon S3 instructions
 
 Install
 [aws cli](https://docs.aws.amazon.com/en_us/cli/latest/userguide/cli-chap-install.html)
@@ -201,7 +200,50 @@ $ export DVC_TEST_AWS_REPO_BUCKET="...TEST-S3-BUCKET..."
 
 <details>
 
-### Click for Google Cloud Storage testing instructions
+### Click for Microsoft Azure Blob Storage instructions
+
+Install [Node.js](https://nodejs.org/en/download/) and then install and run
+Azurite:
+
+```dvc
+$ npm install -g 'azurite@<3' # Need 2.x version
+$ mkdir azurite
+$ azurite -s -l azurite -d azurite/debug.log
+```
+
+Add this to your env:
+
+```dvc
+$ export AZURE_STORAGE_CONTAINER_NAME="dvc-test"
+$ export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
+```
+
+</details>
+
+<details>
+
+### Click for Google Drive instructions
+
+> 💡 Please remember that Google Drive access tokens are personal credentials
+> and should not be shared with anyone, otherwise risking unauthorized usage of
+> the Google account.
+
+To avoid tests flow interruption by manual login, perform authorization once and
+backup the obtained Google Drive access token, which is stored by default under
+`.dvc/tmp/gdrive-user-credentials.json`. Restore `gdrive-user-credentials.json`
+from backup for any new DVC repo setup to avoid manual login.
+
+Or add this to your env (use encryption for CI setup):
+
+```dvc
+$ export GDRIVE_USER_CREDENTIALS_DATA='CONTENT_of_gdrive-user-credentials.json'
+```
+
+</details>
+
+<details>
+
+### Click for Google Cloud Storage instructions
 
 Go through the [quick start](https://cloud.google.com/sdk/docs/quickstarts) for
 your OS. After that you should have `gcloud` command line tool available and
@@ -241,49 +283,7 @@ may use different names.
 
 <details>
 
-### Click for Azure testing instructions
-
-Install [Node.js](https://nodejs.org/en/download/) and then install and run
-Azurite:
-
-```dvc
-$ npm install -g 'azurite@<3' # Need 2.x version
-$ mkdir azurite
-$ azurite -s -l azurite -d azurite/debug.log
-```
-
-Add this to your env:
-
-```dvc
-$ export AZURE_STORAGE_CONTAINER_NAME="dvc-test"
-$ export AZURE_STORAGE_CONNECTION_STRING="DefaultEndpointsProtocol=http;AccountName=devstoreaccount1;AccountKey=Eby8vdM02xNOcqFlqUwJPLlmEtlCDXJ1OUzFT50uSRZ6IFsuFq2UVErCz4I6tq/K1SZFPTOtr/KBHBeksoGMGw==;BlobEndpoint=http://127.0.0.1:10000/devstoreaccount1;"
-```
-
-</details>
-
-<details>
-
-### Click for Google Drive testing instructions
-
-❗Do not share Google Drive access token with anyone to avoid unauthorized usage
-of your Google Drive.
-
-To avoid tests flow interruption by manual login, do authorization once and
-backup obtained Google Drive access token which is stored by default under
-`.dvc/tmp/gdrive-user-credentials.json`. Restore `gdrive-user-credentials.json`
-from backup for any new DVC repo setup to avoid manual login.
-
-Or add this to your env (use encryption for CI setup):
-
-```dvc
-$ export GDRIVE_USER_CREDENTIALS_DATA='CONTENT_of_gdrive-user-credentials.json'
-```
-
-</details>
-
-<details>
-
-### Click for HDFS testing instructions
+### Click for HDFS instructions
 
 Tests currently only work on Linux. First you need to set up passwordless ssh
 access to localhost:
