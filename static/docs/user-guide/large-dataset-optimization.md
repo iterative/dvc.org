@@ -25,7 +25,7 @@ supported by the file system.
 File links are entries in the file system that don't necessarily hold the file
 contents, but point to where the file is actually stored. File links are more
 common in file systems used with UNIX-like operating systems and come in
-different kinds, that differ in how they connect file names to inodes in the
+different kinds, that differ in how they connect file names to _inodes_ in the
 system.
 
 > **Inodes** are metadata file records to locate and store permissions to the
@@ -117,8 +117,8 @@ $ dvc config cache.protected true
 
 Setting `cache.protected` is important with `hardlink` and/or `symlink` cache
 file link types. Please refer to the
-[Update a Tracked File](/doc/user-guide/updating-tracked-files) on how to
-manage tracked files under these cache configurations.
+[Update a Tracked File](/doc/user-guide/updating-tracked-files) on how to manage
+tracked files under these cache configurations.
 
 ---
 

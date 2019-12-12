@@ -45,10 +45,11 @@ DVC supports several types of (local or) remote locations (protocols):
 | `hdfs`  | HDFS           | `hdfs://user@example.com/path/to/data.csv` |
 | `http`  | HTTP to file   | `https://example.com/path/to/data.csv`     |
 
-> Depending on the remote locations type you plan to download data from you
-> might need to specify one of the optional dependencies: `[s3]`, `[ssh]`,
-> `[gs]`, `[azure]`, `[gdrive]`, and `[oss]` (or `[all]` to include them all)
-> when [installing DVC](/doc/install) with `pip`.
+> If you installed DVC via `pip` and plan to use cloud services as remote
+> storage, you might need to install these optional dependencies: `[s3]`,
+> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
+> include them all. The command should look like this: `pip install "dvc[s3]"`.
+> (This example installs `boto3` library along with DVC to support S3 storage.)
 
 Another way to understand the `dvc get-url` command is as a tool for downloading
 data files.
