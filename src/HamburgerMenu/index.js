@@ -97,13 +97,11 @@ export default class HamburgerMenu extends Component {
                         Get started
                       </Link>
                     </NextLink>
-                    <SocialLink
-                      src="/static/img/chat.png"
-                      href="/chat"
-                      click={this.itemClick('chat')}
-                    >
-                      Chat
-                    </SocialLink>
+                    <NextLink href="/community" passHref>
+                      <Link onClick={this.itemClick('community')}>
+                        Community
+                      </Link>
+                    </NextLink>
                     <NextLink href="/doc" passHref>
                       <Link onClick={this.itemClick('doc')}>Documentation</Link>
                     </NextLink>

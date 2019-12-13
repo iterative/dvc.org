@@ -15,6 +15,7 @@ import RightPanel from '../src/Documentation/RightPanel/RightPanel'
 // utils
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
+import { makeAbsoluteURL } from '../src/utils/api'
 // sidebar data and helpers
 import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
 // styles
@@ -138,11 +139,8 @@ Documentation.getInitialProps = async ({ asPath, req }) => {
     }
   }
 
-  const host = req ? req.headers['host'] : window.location.host
-  const protocol = host.indexOf('localhost') > -1 ? 'http:' : 'https:'
-
   try {
-    const res = await fetch(`${protocol}//${host}${item.source}`)
+    const res = await fetch(makeAbsoluteURL(req, item.source))
 
     if (res.status !== 200) {
       return {

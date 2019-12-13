@@ -42,22 +42,15 @@ export default function Nav({ mobile = false }) {
         >
           Blog
         </Link>
-        <Link
-          href="/chat"
-          onClick={() => {
-            logEvent('menu', 'chat')
-          }}
-        >
-          Chat
-        </Link>
-        <Link
-          href="https://github.com/iterative/dvc"
-          onClick={() => {
-            logEvent('menu', 'github')
-          }}
-        >
-          GitHub
-        </Link>
+        <NextLink href="/community" passHref>
+          <Link
+            onClick={() => {
+              logEvent('menu', 'community')
+            }}
+          >
+            Community
+          </Link>
+        </NextLink>
         <NextLink href="/support" passHref>
           <Link
             onClick={() => {

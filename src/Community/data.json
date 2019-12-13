@@ -1,0 +1,86 @@
+{
+  "hero": {
+    "picture": "/static/img/community/hero.png",
+    "url": "http://event.link"
+  },
+  "section": {
+    "contribute": {
+      "title": "Contribute",
+      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
+      "color": "#F46737",
+      "icon": "/static/img/community/contribute.svg"
+    },
+    "events": {
+      "title": "Events",
+      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
+      "color": "#955DD6",
+      "icon": "/static/img/community/events.svg"
+    },
+    "learn": {
+      "title": "Learn",
+      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
+      "color": "#13ADC7",
+      "icon": "/static/img/community/learn.svg"
+    },
+    "meet": {
+      "title": "Meet the Community",
+      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
+      "color": "#955DD6",
+      "icon": "/static/img/community/meet.svg"
+    }
+  },
+  "documentation": [
+    {
+      "url": "/doc/get-started",
+      "title": "Get started",
+      "description": "Learn how to set up your project"
+    },
+    {
+      "url": "/doc/tutorials",
+      "title": "Tutorials",
+      "description": "Learn how to solve most typical tasks"
+    },
+    {
+      "url": "/doc/changelog",
+      "title": "Changelog",
+      "description": "See what's new in DVC core "
+    }
+  ],
+  "userContent": [
+    {
+      "url": "/1",
+      "title": "How we use DVC in our project",
+      "author": "James Hopfield",
+      "date": 1576072266986
+    },
+    {
+      "url": "/2",
+      "title": "DVC in high loaded realtime AR applications",
+      "author": "Mark Fuggle",
+      "date": 1576072266986
+    },
+    {
+      "url": "/3",
+      "title": "Switching to DVC with no pain",
+      "author": "Lucy Yii",
+      "date": 1576072266986
+    }
+  ],
+  "events": [
+    {
+      "url": "/1",
+      "title": "Big Data Conf'19",
+      "description": "DVC team will give a talk about deployment DVC environment on Heroku server",
+      "city": "New York",
+      "date": 1576072266986,
+      "picture": "/static/img/community/events/event1.png"
+    },
+    {
+      "url": "/2",
+      "title": "Internet of Things Conference 2019",
+      "description": "Say hello to Dmitry Petrov at desk #42",
+      "city": "Munich",
+      "date": 1576072266986
+    }
+  ]
+}

@@ -53,9 +53,9 @@ export default function Footer(props) {
               <NextLink href="/doc" as="/doc/get-started" passHref>
                 <Link>Get started</Link>
               </NextLink>
-              <SocialLink src="/static/img/chat.png" href="/chat">
-                Chat
-              </SocialLink>
+              <NextLink href="/community" passHref>
+                <Link>Community</Link>
+              </NextLink>
               <NextLink href="/doc" passHref>
                 <Link>Documentation</Link>
               </NextLink>
