@@ -62,7 +62,9 @@ To actually [track the data](https://dvc.org/doc/get-started/add-files),
 Note that import stages are considered always "locked", meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` or
 [re-import](#example-fixed-revisions-re-importing) them to update the downloaded
-data artifact from the source project.
+data artifact from the source project. Furthermore, if the target repository is 
+local and, doesn't have a default remote set up, dvc will try to get the cache 
+from the target repository's cache directory. 
 
 ## Options
 

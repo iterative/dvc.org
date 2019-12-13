@@ -48,7 +48,10 @@ configured in the project, containing the actual data.)
 > See `dvc get-url` to download data from other supported URLs.
 
 After running this command successfully, the data found in the `url` `path` is
-created in the current working directory, with its original file name.
+created in the current working directory, with its original file name. 
+Furthermore, if the target repository is local and, doesn't have a default 
+remote set up, dvc will try to get the cache from the target repository's cache 
+directory. 
 
 ## Options
 
