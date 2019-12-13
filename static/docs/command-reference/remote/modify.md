@@ -129,6 +129,47 @@ these settings, you could use the following options:
   $ dvc remote modify myremote acl bucket-owner-full-control
   ```
 
+- `grant_read`\* - grants `READ` permissions at object level access control list
+  for specific grantees\*\*. Grantee can read object and its metadata.
+
+  ```dvc
+  $ dvc remote modify myremote grant_read id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  ```
+
+- `grant_read_acp`\* - grants `READ_ACP` permissions at object level access
+  control list for specific grantees\*\*. Grantee can read the object's ACP.
+
+  ```dvc
+  $ dvc remote modify myremote grant_read_acp id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  ```
+
+- `grant_write_acp`\* - grants `WRITE_ACP` permissions at object level access
+  control list for specific grantees\*\*. Grantee can modify the object's ACP.
+
+  ```dvc
+  $ dvc remote modify myremote grant_write_acp id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  ```
+
+- `grant_full_control`\* - grants `FULL_CONTROL` permissions at object level
+  access control list for specific grantees\*\*. Equivalent of grant_read +
+  grant_read_acp + grant_write_acp
+
+  ```dvc
+  $ dvc remote modify myremote grant_full_control id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  ```
+
+  > \* - `grant_read`, `grant_read_acp`, `grant_write_acp` and
+  > `grant_full_control` options are mutually exclusive with `acl` option.
+  >
+  > \*\* - default ACL grantees are overwritten. Grantees are AWS accounts
+  > identifiable by `id` (AWS Canonical User ID), `emailAddress` or `uri`
+  > (predefined group).
+
+  > **References**:
+  >
+  > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
+  > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
+
 </details>
 
 <details>
