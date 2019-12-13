@@ -4,9 +4,9 @@ One of the main uses of <abbr>DVC repositories</abbr> is the
 [versioning of data and model files](/doc/use-cases/data-and-model-files-versioning),
 with commands such as `dvc add`. With the aim to enable reusability of these
 <abbr>data artifacts</abbr> between different projects, DVC also provides the
-`dvc get`, `dvc import`, and `dvc update` commands. This means that a project
-can depend on data from an external <abbr>DVC project</abbr>, **similar to
-package management systems, but for data**.
+`dvc import` and `dvc get` commands, among others. This means that a project can
+depend on data from an external <abbr>DVC project</abbr>, **similar to package
+management systems, but for data science projects**.
 
 ![](/static/img/data-registry.png) _Data and models as code_
 
@@ -45,7 +45,7 @@ Advantages of using a DVC **data registry** project:
 
 ## Building registries
 
-Data registries can be created like any other <abbr>DVC repositories</abbr> with
+Data registries can be created like any other <abbr>DVC repository</abbr> with
 `git init` and `dvc init`. A good way to organize them is with different
 directories, to group the data into separate uses, such as `images/`,
 `natural-language/`, etc. For example, our
@@ -77,7 +77,7 @@ $ git add music/songs.dvc music/.gitignore
 $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 ```
 
-> The actual data is stored in the project's <abbr>cache</abbr> and can be
+> The actual data is stored in the project's <abbr>cache</abbr> and should be
 > [pushed](/doc/command-reference/push) to one or more
 > [remote storage](/doc/command-reference/remote) locations.
 
@@ -103,7 +103,7 @@ This downloads `path/to/dataset` from the <abbr>project</abbr>'s
 [default remote](/doc/command-reference/remote/default) and places it in the
 current working directory (anywhere in the file system with user write access).
 
-> Note that this command (as well as `dvc import`) has a `--revision` option to
+> Note that this command (as well as `dvc import`) has a `--rev` option to
 > download specific versions of the data.
 
 ### Import workflow
@@ -143,12 +143,11 @@ Our Python API, included with the `dvc` package installed with DVC, includes the
 ```python
 import dvc.api.open
 
-data_path = 'path/to/dataset'
+model_path = 'path/to/model'
 repo_url = 'git@git-server.url:path/to/repository.git'
 
-with dvc.api.open(data_path, repo_url) as dataset:
-    # process the data
-    # ...
+with dvc.api.open(model_path, repo_url) as model:
+    # Make some predictions...
 ```
 
 This opens `path/to/dataset` as a file descriptor. Such a method could be used
