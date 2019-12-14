@@ -198,7 +198,7 @@ Since Google Drive has tight API usage quotas, creation and configuration of
 your own `Google Project` is required:
 
 1.  Log into the [Google Cloud Platform](https://console.developers.google.com)
-    account associated with Google Drive you want to use as remote.
+    account.
 2.  Create `New Project` or select available one.
 3.  Click `ENABLE APIS AND SERVICES` and search for `drive` to enable
     `Google Drive API` from search results.
