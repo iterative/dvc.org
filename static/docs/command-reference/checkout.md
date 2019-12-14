@@ -6,7 +6,7 @@ DVC-files.
 ## Synopsis
 
 ```usage
-usage: dvc checkout [-h] [-q | -v] [-d] [-f] [-R]
+usage: dvc checkout [-h] [-q | -v] [-d] [-R] [-f] [--relink]
                     [targets [targets ...]]
 
 positional arguments:
@@ -94,6 +94,10 @@ be pulled from remote storage using `dvc pull`.
   current set of DVC-files with `git checkout` can result in the need for DVC to
   remove files that don't match those DVC-file references or are missing from
   cache. (They are not "committed", in DVC terms.)
+
+- `--relink` - recreates links or copies for all checked out files even ones
+  with unchanged checksums. This ensures that link types of all the files in a
+  workspace match configured `cache.type`.
 
 - `-h`, `--help` - shows the help message and exit.
 
