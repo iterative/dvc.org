@@ -160,6 +160,9 @@ with dvc.api.open(model_path, repo_url) as fd:
 This opens `model.pkl` as a file descriptor. The example above tries to
 illustrate a hardcoded ML model **deployment** method.
 
+> Notice that the `dvc.api.get_url` and `dvc.api.read` functions are also
+> available.
+
 ## Updating registries
 
 Datasets evolve, and DVC is prepared to handle it. Just change the data in the
