@@ -77,9 +77,15 @@ $ git add music/songs.dvc music/.gitignore
 $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 ```
 
-> The actual data is stored in the project's <abbr>cache</abbr> and should be
-> [pushed](/doc/command-reference/push) to one or more
-> [remote storage](/doc/command-reference/remote) locations.
+The actual data is stored in the project's <abbr>cache</abbr> and should be
+[pushed](/doc/command-reference/push) to one or more
+[remote storage](/doc/command-reference/remote) locations, so the registry can
+be accessed from other locations or by other people:
+
+```
+$ dvc remote add myremote s3://bucket/path
+$ dvc push
+```
 
 ## Using registries
 
@@ -99,7 +105,7 @@ $ dvc get https://github.com/example/registry \
           music/songs/
 ```
 
-This downloads `path/to/dataset` from the <abbr>project</abbr>'s
+This downloads `music/songs/` from the <abbr>project</abbr>'s
 [default remote](/doc/command-reference/remote/default) and places it in the
 current working directory (anywhere in the file system with user write access).
 
@@ -132,13 +138,13 @@ $ dvc update dataset.dvc
 ```
 
 `dvc update` downloads new and changed files, or removes deleted ones, from
-`path/to/dataset` based on the latest version of the source project. It also
+`images/faces/`, based on the latest version of the source project. It also
 updates the project dependency metadata in the import stage (DVC-file).
 
 ### Programatic reusability of DVC data
 
 Our Python API, included with the `dvc` package installed with DVC, includes the
-`open` function to load/stream data directly from remote DVC projects:
+`open` function to load/stream data directly from external DVC projects:
 
 ```python
 import dvc.api.open
@@ -147,11 +153,12 @@ model_path = 'model.pkl'
 repo_url = 'https://github.com/example/registry'
 
 with dvc.api.open(model_path, repo_url) as fd:
-    # Consume model file descriptor...
+    model = pickle.load(fd)
+    # ... Use the model!
 ```
 
-This opens `path/to/dataset` as a file descriptor. Such a method could be used
-as a code-internal **deployment** method for ML models, for example.
+This opens `model.pkl` as a file descriptor. The example above tries to
+illustrate a hardcoded ML model **deployment** method.
 
 ## Updating registries
 
@@ -171,6 +178,7 @@ $ git status
 Changes not staged for commit:
 ...
 	modified:   music/songs.dvc
+$ git commit -am "Add 1,000 more songs to music/ dataset."
 ```
 
 Iterating on this process for several datasets can give shape to a robust
@@ -192,4 +200,11 @@ $ tree --filelimit=100
 │   └── songs.dvc
 ├── text
 ...
+```
+
+And let's not forget to `dvc push` data changes to the
+[remote storage](/doc/command-reference/remote), so others can obtain them!
+
+```
+$ dvc push
 ```
