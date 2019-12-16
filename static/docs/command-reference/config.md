@@ -79,6 +79,12 @@ This is the main section with the general config options:
 - `core.checksum_jobs` - number of threads for computing checksums. Accepts
   positive integers. The default value is `max(1, min(4, cpu_count() // 2))`.
 
+- `core.hardlink_lock` - use hardlink file locks instead of the default ones,
+  based on [`flock`](https://linux.die.net/man/2/flock) (i.e. project lock file
+  `.dvc/lock`). Accepts values `true` and `false` (default). Useful when the DVC
+  project is on a file system that doesn't properly support file locking (e.g.
+  [NFS v3 and older](http://nfs.sourceforge.net/)).
+
 ### remote
 
 These are sections in the config file that describe particular remotes. These
