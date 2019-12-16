@@ -175,7 +175,7 @@ different names, and not currently tracked by Git:
 $ git status
 ...
 Untracked files:
-  (use "git add <file>..." to include in what will be committed)
+  (use "git add <file> ..." to include in what will be committed)
 
 	model.bigrams.pkl
 	model.monograms.pkl
