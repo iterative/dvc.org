@@ -23,10 +23,6 @@ projects and cloud storage.
 
 Advantages of using a DVC **data registry** project:
 
-- Data as code: Improve _lifecycle management_ with versioning of simple
-  directory structures (like Git on cloud storage), without ad-hoc conventions.
-  Leverage Git and Git hosting features such as commits, branching, pull
-  requests, reviews, and even continuous deployment of ML models.
 - Reusability: Reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
   systems like `pip`).
@@ -42,6 +38,9 @@ Advantages of using a DVC **data registry** project:
 - Security: Registries can be setup to have read-only remote storage (e.g. an
   HTTP location). Git versioning of [DVC-files](/doc/user-guide/dvc-file-format)
   allows us to track and audit data changes.
+- Data as code: Leverage Git workflow such as commits, branching, pull requests,
+  reviews, and even CI/CD for your data and models lifecycle. Think Git for
+  cloud storage, but without ad-hoc conventions.
 
 ## Building registries
 
@@ -159,6 +158,9 @@ with dvc.api.open(model_path, repo_url) as fd:
 
 This opens `model.pkl` as a file descriptor. The example above tries to
 illustrate a hardcoded ML model **deployment** method.
+
+> Notice that the `dvc.api.get_url` and `dvc.api.read` functions are also
+> available.
 
 ## Updating registries
 
