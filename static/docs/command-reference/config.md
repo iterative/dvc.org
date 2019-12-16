@@ -55,8 +55,8 @@ corresponding config file.
 
 ## Configuration sections
 
-These are the `name` parameters that can be used with `dvc config`, or the
-sections in the <abbr>project</abbr> config file (`.dvc/config`).
+The following config sections are written by this command to the project config 
+file (in `.dvc/config` by default), and they support the options below:
 
 ### core
 
@@ -92,7 +92,7 @@ A DVC project <abbr>cache</abbr> is the hidden storage (by default located in
 the `.dvc/cache` directory) for files that are under DVC control, and their
 different versions. (See `dvc cache` and
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-for more details.)
+for more details.) This section contains the following options:
 
 - `cache.dir` - set/unset cache directory location. A correct value must be
   either an absolute path or a path **relative to the config file location**.
@@ -169,8 +169,7 @@ for more details.)
 
 ### state
 
-State config options. See
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
+See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more about the state file (database) that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database, which
