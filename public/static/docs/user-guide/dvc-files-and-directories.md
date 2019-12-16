@@ -41,6 +41,12 @@ operation:
 
 - `.dvc/lock`: Lock file for the entire DVC project
 
+- `.dvc/tmp`: Directory for miscellaneous temporary files
+
+- `.dvc/tmp/rwlock`: JSON file that contains read and write locks for specific
+  dependencies and outputs, to allow safely running multiple DVC commands in
+  parallel.
+
 ## Structure of cache directory
 
 There are two ways in which the data is stored in <abbr>cache</abbr>: As a
