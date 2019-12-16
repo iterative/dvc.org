@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.div``
+export const Wrapper = styled.div`
+  margin: 50px 0;
+`
 
 export const Header = styled.div`
   display: flex;
@@ -13,9 +15,12 @@ export const Title = styled.div`
   line-height: 60px;
 `
 
-export const Icon = styled.img``
+export const Icon = styled.img`
+  margin: -2px 0;
+`
 
 export const Description = styled.div`
+  margin-top: 10px;
   font-size: 16px;
   line-height: 24px;
   color: #838d93;

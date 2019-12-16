@@ -7,25 +7,21 @@
     "contribute": {
       "title": "Contribute",
       "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
-      "color": "#F46737",
       "icon": "/static/img/community/contribute.svg"
     },
     "events": {
       "title": "Events",
       "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
-      "color": "#955DD6",
       "icon": "/static/img/community/events.svg"
     },
     "learn": {
       "title": "Learn",
       "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
-      "color": "#13ADC7",
       "icon": "/static/img/community/learn.svg"
     },
     "meet": {
       "title": "Meet the Community",
       "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
-      "color": "#955DD6",
       "icon": "/static/img/community/meet.svg"
     }
   },
