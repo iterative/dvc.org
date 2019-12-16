@@ -88,8 +88,8 @@ $ rm -f data.zip
 > download <abbr>data artifacts</abbr> from it. (It works like `wget`, but for
 > DVC repositories.) In this case we use
 > [dataset-registry](https://github.com/iterative/dataset-registry)) as the
-> source project. (Refer to [Data Registry](/doc/use-cases/data-registry) for
-> more info about this setup.)
+> source project. (Refer to [Data Registries](/doc/use-cases/data-registries)
+> for more info about this setup.)
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43

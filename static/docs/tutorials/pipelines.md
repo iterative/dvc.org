@@ -53,8 +53,8 @@ $ git commit -m "Download and add code to new Git repo"
 > download <abbr>data artifacts</abbr> from it. (It works like `wget`, but for
 > DVC repositories.) In this case we use
 > [dataset-registry](https://github.com/iterative/dataset-registry)) as the
-> source project. (Refer to [Data Registry](/doc/use-cases/data-registry) for
-> more info about this setup.)
+> source project. (Refer to [Data Registries](/doc/use-cases/data-registries)
+> for more info about this setup.)
 
 Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a

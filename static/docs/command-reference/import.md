@@ -222,5 +222,5 @@ outs:
     persist: false
 ```
 
-See a full explanation in our [Data Registry](/doc/use-cases/data-registry) use
-case.
+See a full explanation in our [Data Registries](/doc/use-cases/data-registries)
+use case.
