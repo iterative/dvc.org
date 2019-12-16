@@ -84,8 +84,8 @@ $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 ## Using registries
 
 The main methods to consume <abbr>data artifacts</abbr> from a **data registry**
-are the `dvc import` and `dvc get` commands, as well as the `dvc.api.open()`
-function (Python).
+are the `dvc import` and `dvc get` commands, as well as the `dvc.api` Python
+API.
 
 ### Simple download (get)
 
@@ -95,8 +95,8 @@ This is analogous to using direct download tools like
 etc. To get a dataset for example, we can run something like:
 
 ```dvc
-$ dvc get git@git-server.url:path/to/repository.git \
-          path/to/dataset
+$ dvc get https://github.com/example/registry \
+          music/songs/
 ```
 
 This downloads `path/to/dataset` from the <abbr>project</abbr>'s
@@ -111,8 +111,8 @@ current working directory (anywhere in the file system with user write access).
 `dvc import` uses the same syntax as `dvc get`:
 
 ```dvc
-$ dvc import git@git-server.url:path/to/repository.git \
-             path/to/dataset
+$ dvc import https://github.com/example/registry \
+             images/faces/
 ```
 
 > Note that unlike `dvc get`, which can be used from any directory, `dvc import`
@@ -143,11 +143,11 @@ Our Python API, included with the `dvc` package installed with DVC, includes the
 ```python
 import dvc.api.open
 
-model_path = 'path/to/model'
-repo_url = 'git@git-server.url:path/to/repository.git'
+model_path = 'model.pkl'
+repo_url = 'https://github.com/example/registry'
 
-with dvc.api.open(model_path, repo_url) as model:
-    # Make some predictions...
+with dvc.api.open(model_path, repo_url) as fd:
+    # Consume model file descriptor...
 ```
 
 This opens `path/to/dataset` as a file descriptor. Such a method could be used
