@@ -11,9 +11,6 @@ Download a file or directory from any <abbr>DVC project</abbr> or Git repository
 ```usage
 usage: dvc get [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
-Download/copy files or directories from DVC repository.
-Documentation: <https://man.dvc.org/get>
-
 positional arguments:
   url         URL of Git repository with DVC project to download from.
   path        Path to a file or directory within a DVC repository.
