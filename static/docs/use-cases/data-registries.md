@@ -38,10 +38,9 @@ Advantages of using a DVC **data registry** project:
 - Security: Registries can be setup to have read-only remote storage (e.g. an
   HTTP location). Git versioning of [DVC-files](/doc/user-guide/dvc-file-format)
   allows us to track and audit data changes.
-- Data as code: Improve _lifecycle management_ with versioning of simple
-  directory structures (like Git on cloud storage), without ad-hoc conventions.
-  Leverage Git and Git hosting features such as commits, branching, pull
-  requests, reviews, and even continuous deployment of ML models.
+- Data as code: Leverage Git workflow such as commits, branching, pull requests,
+  reviews, and even CI/CD for your data and models lifecycle. Think Git for
+  cloud storage, but without ad-hoc conventions.
 
 ## Building registries
 
