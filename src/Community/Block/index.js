@@ -6,8 +6,6 @@ import { Action, Content, Icon, Header, Wrapper } from './styles'
 export default function Block({ action, children, icon, title }) {
   const hasAction = !!action
 
-  console.log(title, action, hasAction)
-
   return (
     <Wrapper hasAction={hasAction}>
       {title && (
