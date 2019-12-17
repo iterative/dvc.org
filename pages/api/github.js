@@ -3,6 +3,8 @@
 
 const { graphql } = require('@octokit/graphql')
 
+// Mock data is used if process.env.GITHUB_TOKEN is not set
+
 const mock = {
   issues: [
     {
