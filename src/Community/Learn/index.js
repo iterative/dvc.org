@@ -10,16 +10,17 @@ import { Comments, Item, Items, Line, Link, Meta, Wrapper } from './styles'
 
 import data from '../data'
 
-const { description, icon, title } = data.section.learn
+const { description, title } = data.section.learn
 const { documentation, userContent } = data
 
 export default function CommunityLearn({ posts, theme }) {
   return (
     <Wrapper>
       <CommunitySection
+        background="/static/img/community/learn_bg.jpg"
         color={theme.color}
         description={description}
-        icon={icon}
+        icon="/static/img/community/learn.svg"
         title={title}
       >
         <Items>

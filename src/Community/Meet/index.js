@@ -10,7 +10,7 @@ import { formatNumber } from '../../utils/format'
 
 import data from '../data'
 
-const { description, icon, title } = data.section.meet
+const { description, title } = data.section.meet
 
 import {
   Comments,
@@ -29,9 +29,10 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
   return (
     <Wrapper>
       <CommunitySection
+        background="/static/img/community/meet_bg.jpg"
         color={theme.color}
         description={description}
-        icon={icon}
+        icon="/static/img/community/meet.svg"
         title={title}
       >
         <Items>

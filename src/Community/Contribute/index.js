@@ -9,15 +9,16 @@ import data from '../data'
 
 import { Item, Items, Wrapper } from './styles'
 
-const { description, icon, title } = data.section.contribute
+const { description, title } = data.section.contribute
 
 export default function CommunityContribute({ theme }) {
   return (
     <Wrapper>
       <CommunitySection
+        background="/static/img/community/contribute_bg.jpg"
         color={theme.color}
         description={description}
-        icon={icon}
+        icon="/static/img/community/contribute.svg"
         title={title}
       >
         <Items>

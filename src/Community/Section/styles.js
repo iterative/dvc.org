@@ -1,7 +1,13 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  margin: 50px 0;
+  margin: 50px -50px;
+  padding: ${({ background }) => (background ? '0 50px 260px' : '0 50px')};
+  background-size: 1100px 450px;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  background-image: ${({ background }) =>
+    background ? `url(${background})` : 'none'};
 `
 
 export const Header = styled.div`
@@ -20,6 +26,7 @@ export const Icon = styled.img`
 `
 
 export const Description = styled.div`
+  max-width: 600px;
   margin-top: 10px;
   font-size: 16px;
   line-height: 24px;

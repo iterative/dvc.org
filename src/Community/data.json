@@ -6,23 +6,19 @@
   "section": {
     "contribute": {
       "title": "Contribute",
-      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
-      "icon": "/static/img/community/contribute.svg"
+      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way."
     },
     "events": {
       "title": "Events",
-      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
-      "icon": "/static/img/community/events.svg"
+      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way."
     },
     "learn": {
       "title": "Learn",
-      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
-      "icon": "/static/img/community/learn.svg"
+      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way."
     },
     "meet": {
       "title": "Meet the Community",
-      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
-      "icon": "/static/img/community/meet.svg"
+      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way."
     }
   },
   "documentation": [

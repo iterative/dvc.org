@@ -19,7 +19,7 @@ import {
   Wrapper
 } from './styles'
 
-const { description, icon, title } = data.section.events
+const { description, title } = data.section.events
 const { events } = data
 
 const modifiedEvents = events.length > 3 ? events.slice(0, 3) : events
@@ -31,7 +31,7 @@ export default function CommunityEvents({ theme }) {
       <CommunitySection
         color={theme.color}
         description={description}
-        icon={icon}
+        icon="/static/img/community/events.svg"
         title={title}
       >
         <Items>
