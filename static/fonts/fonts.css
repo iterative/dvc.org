@@ -6,6 +6,13 @@
 }
 
 @font-face {
+  font-family: BrandonGrotesqueBlack;
+  src: url('/static/fonts/Brandon_blk.otf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
   font-family: BrandonGrotesqueBold;
   src: url('/static/fonts/Brandon_bld.otf');
   font-style: normal;

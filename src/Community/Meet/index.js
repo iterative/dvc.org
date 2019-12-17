@@ -6,11 +6,24 @@ import CommunityBlock from '../Block'
 import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
+import { formatNumber } from '../../utils/format'
+
 import data from '../data'
 
 const { description, icon, title } = data.section.meet
 
-import { Comments, Item, Items, Line, Link, Meta, Wrapper } from './styles'
+import {
+  Comments,
+  Item,
+  Items,
+  Line,
+  Link,
+  Meta,
+  StatLabel,
+  StatLine,
+  StatValue,
+  Wrapper
+} from './styles'
 
 export default function CommunityMeet({ discord, issues, theme, topics }) {
   return (
@@ -32,11 +45,24 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
               }
               icon="/static/img/community/discord.svg"
             >
-              <div>{discord.registered} registered developers</div>
-              <div>
-                {discord.messages_per_month} messages posted over the past month
-              </div>
-              <div>{discord.online} users online</div>
+              <StatLine>
+                <StatValue>{formatNumber(discord.registered)}</StatValue>
+                <StatLabel>registered developers</StatLabel>
+              </StatLine>
+              <StatLine>
+                <StatValue>
+                  {formatNumber(discord.messages_per_month)}
+                </StatValue>
+                <StatLabel>messages posted over the past month</StatLabel>
+              </StatLine>
+              <StatLine>
+                <StatValue>{formatNumber(discord.online)}</StatValue>
+                <StatLabel>
+                  users
+                  <br />
+                  online
+                </StatLabel>
+              </StatLine>
             </CommunityBlock>
           </Item>
           <Item>
