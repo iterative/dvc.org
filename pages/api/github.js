@@ -1,4 +1,7 @@
+/* eslint-env node */
 /* eslint max-len:0 */
+
+const { graphql } = require('@octokit/graphql')
 
 const mock = {
   issues: [
@@ -25,6 +28,47 @@ const mock = {
   ]
 }
 
-export default (_, res) => {
-  res.status(200).json(mock)
+export default async (_, res) => {
+  if (!process.env.GITHUB_TOKEN) {
+    res.status(200).json(mock)
+  } else {
+    try {
+      const { repository } = await graphql(
+        `
+          {
+            repository(owner: "iterative", name: "dvc") {
+              issues(last: 3, states: OPEN) {
+                edges {
+                  node {
+                    title
+                    createdAt
+                    url
+                    comments {
+                      totalCount
+                    }
+                  }
+                }
+              }
+            }
+          }
+        `,
+        {
+          headers: {
+            authorization: `token ${process.env.GITHUB_TOKEN}`
+          }
+        }
+      )
+
+      res.status(200).json({
+        issues: repository.issues.edges.map(({ node }) => ({
+          title: node.title,
+          url: node.url,
+          comments: node.comments.totalCount,
+          date: node.createdAt
+        }))
+      })
+    } catch (e) {
+      res.status(404)
+    }
+  }
 }

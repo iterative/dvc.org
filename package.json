@@ -53,6 +53,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
+    "@octokit/graphql": "^4.3.1",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-plugin-transform-define": "^2.0.0",

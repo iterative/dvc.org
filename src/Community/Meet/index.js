@@ -105,12 +105,24 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
             >
               {issues.map(({ url, title, date, comments }) => (
                 <Line key={url}>
-                  <Link color={theme.color} href={url}>
+                  <Link
+                    color={theme.color}
+                    href={url}
+                    target="_black"
+                    rel="noreferrer nofollow"
+                  >
                     {title}
                   </Link>
                   <Meta>
-                    <Comments href={url}>{comments} comments</Comments>
-                    &nbsp;opened {formatDistanceToNow(date, 'MMMM, d')} ago
+                    <Comments
+                      href={url}
+                      target="_black"
+                      rel="noreferrer nofollow"
+                    >
+                      {comments} comments
+                    </Comments>
+                    &nbsp;opened{' '}
+                    {formatDistanceToNow(new Date(date), 'MMMM, d')} ago
                   </Meta>
                 </Line>
               ))}
