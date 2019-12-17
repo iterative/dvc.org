@@ -13,7 +13,7 @@ import includes from 'lodash.includes'
 import styled from 'styled-components'
 import { media, OnlyDesktop } from '../../styles'
 // sidebar helpers
-import { getParentsListFromPath } from './helper'
+import { getParentsListFromPath } from '../../../utils/helper'
 
 /** Height of each menu child items (to calc Element weight for animations) */
 const heightMap = {}

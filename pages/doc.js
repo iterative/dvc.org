@@ -16,7 +16,7 @@ import RightPanel from '../src/Documentation/RightPanel/RightPanel'
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
 // sidebar data and helpers
-import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
+import { sidebar, getItemByPath } from '../utils/helper'
 // styles
 import styled from 'styled-components'
 import { media } from '../src/styles'
@@ -166,7 +166,7 @@ Documentation.propTypes = {
   item: PropTypes.object,
   headings: PropTypes.array,
   markdown: PropTypes.string,
-  errorCode: PropTypes.bool
+  errorCode: PropTypes.number
 }
 
 const Container = styled.div`

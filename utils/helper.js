@@ -1,6 +1,7 @@
-import startCase from 'lodash.startcase'
+/* eslint-env node */
 
-import sidebar from '../sidebar'
+const startCase = require('lodash.startcase')
+const sidebar = require('./sidebar')
 
 /*
   We will use this helper to normalize sidebar structure and create
@@ -148,7 +149,7 @@ const normalizedSidebar = normalizeSidebar({
 
 // Exports
 
-export function getItemByPath(path) {
+function getItemByPath(path) {
   const normalizedPath = path.replace(/\/$/, '')
   const isRoot = normalizedPath === PATH_ROOT.slice(0, -1)
   const item = isRoot
@@ -158,7 +159,7 @@ export function getItemByPath(path) {
   return item && findChildWithSource(item)
 }
 
-export function getParentsListFromPath(path) {
+function getParentsListFromPath(path) {
   let currentPath = PATH_ROOT.slice(0, -1)
 
   return path
@@ -172,4 +173,8 @@ export function getParentsListFromPath(path) {
     })
 }
 
-export default normalizedSidebar
+module.exports = {
+  sidebar: normalizedSidebar,
+  getItemByPath,
+  getParentsListFromPath
+}

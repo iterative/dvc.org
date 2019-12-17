@@ -19,8 +19,8 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../sidebar.json', () => rawData)
-      const sidebarData = require('./helper').default
+      jest.doMock('./sidebar.json', () => rawData)
+      const sidebarData = require('./helper').sidebar
 
       expect(sidebarData).toEqual(result)
     })
@@ -38,8 +38,8 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../sidebar.json', () => rawData)
-      const sidebarData = require('./helper').default
+      jest.doMock('./sidebar.json', () => rawData)
+      const sidebarData = require('./helper').sidebar
 
       expect(sidebarData).toEqual(result)
     })
@@ -57,8 +57,8 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../sidebar.json', () => rawData)
-      const sidebarData = require('./helper').default
+      jest.doMock('./sidebar.json', () => rawData)
+      const sidebarData = require('./helper').sidebar
 
       expect(sidebarData).toEqual(result)
     })
@@ -76,8 +76,8 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../sidebar.json', () => rawData)
-      const sidebarData = require('./helper').default
+      jest.doMock('./sidebar.json', () => rawData)
+      const sidebarData = require('./helper').sidebar
 
       expect(sidebarData).toEqual(result)
     })
@@ -106,8 +106,8 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../sidebar.json', () => rawData)
-      const sidebarData = require('./helper').default
+      jest.doMock('./sidebar.json', () => rawData)
+      const sidebarData = require('./helper').sidebar
 
       expect(sidebarData).toEqual(result)
     })
@@ -151,8 +151,8 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../sidebar.json', () => rawData)
-      const sidebarData = require('./helper').default
+      jest.doMock('./sidebar.json', () => rawData)
+      const sidebarData = require('./helper').sidebar
 
       expect(sidebarData).toEqual(result)
     })
@@ -191,8 +191,8 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../sidebar.json', () => rawData)
-      const sidebarData = require('./helper').default
+      jest.doMock('./sidebar.json', () => rawData)
+      const sidebarData = require('./helper').sidebar
 
       expect(sidebarData).toEqual(result)
     })
@@ -231,8 +231,8 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../sidebar.json', () => rawData)
-      const sidebarData = require('./helper').default
+      jest.doMock('./sidebar.json', () => rawData)
+      const sidebarData = require('./helper').sidebar
 
       expect(sidebarData).toEqual(result)
     })
@@ -288,8 +288,8 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../sidebar.json', () => rawData)
-      const sidebarData = require('./helper').default
+      jest.doMock('./sidebar.json', () => rawData)
+      const sidebarData = require('./helper').sidebar
 
       expect(sidebarData).toEqual(result)
     })
@@ -297,7 +297,7 @@ describe('SidebarMenu/helper', () => {
     it("Throws error if item didn't have slug field", () => {
       const rawData = [{}]
 
-      jest.doMock('../sidebar.json', () => rawData)
+      jest.doMock('./sidebar.json', () => rawData)
 
       expect(() => require('./helper')).toThrow(
         new Error("'slug' field is required in objects in sidebar.json")
@@ -308,7 +308,7 @@ describe('SidebarMenu/helper', () => {
     it("Throws error if item has source: false and doesn't have children", () => {
       const rawData = [{ slug: 'item-name', source: false }]
 
-      jest.doMock('../sidebar.json', () => rawData)
+      jest.doMock('./sidebar.json', () => rawData)
 
       expect(() => require('./helper')).toThrow(
         new Error(
@@ -330,7 +330,7 @@ describe('SidebarMenu/helper', () => {
         next: undefined
       }
 
-      jest.doMock('../sidebar.json', () => rawData)
+      jest.doMock('./sidebar.json', () => rawData)
       const { getItemByPath } = require('./helper')
 
       expect(getItemByPath('/doc')).toEqual(result)
@@ -355,7 +355,7 @@ describe('SidebarMenu/helper', () => {
         next: undefined
       }
 
-      jest.doMock('../sidebar.json', () => rawData)
+      jest.doMock('./sidebar.json', () => rawData)
       const { getItemByPath } = require('./helper')
 
       expect(getItemByPath('/doc/item-name')).toEqual(result)
@@ -372,7 +372,7 @@ describe('SidebarMenu/helper', () => {
         '/doc/item-name/nested-item/subnested-item'
       ]
 
-      jest.doMock('../sidebar.json', () => rawData)
+      jest.doMock('./sidebar.json', () => rawData)
       const { getParentsListFromPath } = require('./helper')
 
       expect(getParentsListFromPath(path)).toEqual(result)
