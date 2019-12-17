@@ -127,7 +127,7 @@ try creating a pipeline.
   file exists (same dependencies, outputs, and command to execute) which has
   been already executed and is up to date. In this case, `dvc run` won't
   normally execute the command again. The exception is when the existing stage
-  was is considered always changed (see `--always-changed` option). This option
+  is considered always changed (see `--always-changed` option). This option
   gives a way to forcefully execute the command anyway. It's useful if the
   command is non-deterministic (meaning it produces different outputs from the
   same list of inputs).
