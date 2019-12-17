@@ -32,7 +32,7 @@ external <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
 online repositories (e.g. `[user@]server:project.git`). `url` can also be a
 local file system path to an "offline" repository (in this case and if it
 doesn't have a default remote set up, instead of downloading, DVC will try to
-copy the target data from the external source project or it's
+copy the target data from the external source project or its
 <abbr>cache</abbr>).
 
 The `path` argument of this command is used to specify the location, within the
