@@ -3,17 +3,27 @@ import PropTypes from 'prop-types'
 import format from 'date-fns/format'
 
 import CommunityBlock from '../Block'
+import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
 import data from '../data'
 
-import { Image, ImageWrapper, Item, Items, Wrapper } from './styles'
+import {
+  Image,
+  ImageWrapper,
+  Item,
+  Items,
+  Line,
+  Link,
+  Meta,
+  Wrapper
+} from './styles'
 
 const { description, icon, title } = data.section.events
 const { events } = data
 
 const modifiedEvents = events.length > 3 ? events.slice(0, 3) : events
-const eventPlaceholders = new Array(3 - modifiedEvents.length).fill(<Item />)
+const eventPlaceholders = new Array(3 - modifiedEvents.length).fill(Item)
 
 export default function CommunityEvents({ theme }) {
   return (
@@ -28,21 +38,34 @@ export default function CommunityEvents({ theme }) {
           {modifiedEvents.map(
             ({ url, title, description, date, city, picture }) => (
               <Item key={url}>
-                <CommunityBlock>
+                <CommunityBlock
+                  action={
+                    <CommunityButton href={url} theme={theme}>
+                      Event Info
+                    </CommunityButton>
+                  }
+                >
                   {picture && (
                     <ImageWrapper href={url}>
                       <Image src={picture} alt="" />
                     </ImageWrapper>
                   )}
-                  <a href={url}>{title}</a>
-                  <div>{description}</div>
-                  <div>{city}</div>
-                  <div>{format(date, 'MMMM, d')}</div>
+                  <Link color={theme.color} href={url}>
+                    {title}
+                  </Link>
+                  <Meta>
+                    <Line>{description}</Line>
+                    <Line>
+                      {city},{format(date, 'MMMM, d')}
+                    </Line>
+                  </Meta>
                 </CommunityBlock>
               </Item>
             )
           )}
-          {eventPlaceholders.map(i => i)}
+          {eventPlaceholders.map((Component, key) => (
+            <Component key={key} />
+          ))}
         </Items>
       </CommunitySection>
     </Wrapper>

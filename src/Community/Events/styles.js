@@ -27,6 +27,29 @@ export const Items = styled.div`
   padding-top: 30px;
 `
 
+export const Line = styled.div`
+  & + & {
+    margin-top: 20px;
+  }
+`
+
+export const Link = styled.a`
+  font-size: 24px;
+  font-family: BrandonGrotesqueBold;
+  line-height: 34px;
+  text-decoration: none;
+  color: ${({ color }) => color};
+
+  &:hover {
+    opacity: 0.7;
+  }
+`
+
+export const Meta = styled.div`
+  margin-top: 10px;
+  line-height: 20px;
+`
+
 export const Wrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
