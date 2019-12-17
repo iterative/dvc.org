@@ -93,7 +93,7 @@ $ git checkout master
 $ dvc checkout
 ```
 
-In any case the command `dvc repro` should not have to re-run anything and
+In any case, the command `dvc repro` should not have to re-run anything and
 should finish quickly, if all the data of the experiments have been committed
 properly.
 
