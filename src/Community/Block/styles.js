@@ -14,6 +14,8 @@ export const Content = styled.div`
 `
 
 export const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
   margin-bottom: 15px;
   padding-bottom: 10px;
   border-bottom: 1px solid #d8dfe3;
@@ -23,7 +25,9 @@ export const Header = styled.div`
   color: #24292e;
 `
 
-export const Icon = styled.img``
+export const Icon = styled.img`
+  margin: 6px -2px 0 0;
+`
 
 export const Wrapper = styled.div`
   position: relative;

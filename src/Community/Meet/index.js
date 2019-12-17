@@ -30,6 +30,7 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
                   Open Chat
                 </CommunityButton>
               }
+              icon="/static/img/community/discord.svg"
             >
               <div>{discord.registered} registered developers</div>
               <div>
@@ -46,6 +47,7 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
                   Read All Topics
                 </CommunityButton>
               }
+              icon="/static/img/community/discourse.svg"
             >
               {topics.map(({ url, title, date, comments }) => (
                 <Line key={url}>
@@ -72,6 +74,7 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
                   Read All Issues
                 </CommunityButton>
               }
+              icon="/static/img/community/github.svg"
             >
               {issues.map(({ url, title, date, comments }) => (
                 <Line key={url}>
