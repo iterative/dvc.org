@@ -6,7 +6,7 @@ import CommunityBlock from '../Block'
 import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
-import { Comments, Item, Items, Line, Link, Meta, Wrapper } from './styles'
+import { Item, Items, Line, Link, Meta, Wrapper } from './styles'
 
 import data from '../data'
 
@@ -52,15 +52,17 @@ export default function CommunityLearn({ posts, theme }) {
                 </CommunityButton>
               }
             >
-              {posts.map(({ url, title, date, comments }) => (
+              {posts.map(({ url, title, date }) => (
                 <Line key={url}>
-                  <Link color={theme.color} href={url}>
+                  <Link
+                    color={theme.color}
+                    href={url}
+                    target="_blank"
+                    rel="noreferrer nofollow"
+                  >
                     {title}
                   </Link>
-                  <Meta>
-                    <Comments href={url}>{comments} comments</Comments>{' '}
-                    {format(date, 'MMMM, d')}
-                  </Meta>
+                  <Meta>Posted on {format(new Date(date), 'MMMM, d')}</Meta>
                 </Line>
               ))}
             </CommunityBlock>

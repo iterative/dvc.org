@@ -1,26 +1,19 @@
-const mock = {
-  posts: [
-    {
-      url: 'https://blog.dvc.org/1',
-      title: 'October ’19 DVC❤️Heartbeat',
-      date: 1576072266986,
-      comments: 4
-    },
-    {
-      url: 'https://blog.dvc.org/2',
-      title: 'DVC.org for Hacktoberfest 2019',
-      date: 1576072266986,
-      comments: 10
-    },
-    {
-      url: 'https://blog.dvc.org/3',
-      title: 'September ’19 DVC❤️Heartbeat',
-      date: 1576072266986,
-      comments: 2
-    }
-  ]
-}
+import fetch from 'isomorphic-fetch'
 
-export default (_, res) => {
-  res.status(200).json(mock)
+export default async (_, res) => {
+  try {
+    const response = await fetch(`https://blog.dvc.org/api/posts.json`)
+
+    if (response.status !== 200) {
+      res.status(502).json({ error: 'Unexpected response from Blog' })
+
+      return
+    }
+
+    const data = await response.text()
+
+    res.status(200).json(data)
+  } catch {
+    res.status(404)
+  }
 }
