@@ -16,7 +16,7 @@ import RightPanel from '../src/Documentation/RightPanel/RightPanel'
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
 // sidebar data and helpers
-import { sidebar, getItemByPath } from '../utils/helper'
+import { structure, getItemByPath } from '../src/utils/sidebar'
 // styles
 import styled from 'styled-components'
 import { media } from '../src/styles'
@@ -104,7 +104,7 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
           )}
 
           <SidebarMenu
-            sidebar={sidebar}
+            sidebar={structure}
             currentPath={path}
             id={SIDEBAR_MENU}
             onClick={toggleMenu}

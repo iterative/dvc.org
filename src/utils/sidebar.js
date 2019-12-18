@@ -1,7 +1,7 @@
 /* eslint-env node */
 
 const startCase = require('lodash.startcase')
-const sidebar = require('./sidebar')
+const sidebar = require('../../static/docs/sidebar.json')
 
 /*
   We will use this helper to normalize sidebar structure and create
@@ -174,7 +174,7 @@ function getParentsListFromPath(path) {
 }
 
 module.exports = {
-  sidebar: normalizedSidebar,
+  structure: normalizedSidebar,
   getItemByPath,
   getParentsListFromPath
 }

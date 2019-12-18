@@ -9,7 +9,7 @@ const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
 const querystring = require('querystring')
-const { getItemByPath } = require('./utils/helper')
+const { getItemByPath } = require('./src/utils/sidebar')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
