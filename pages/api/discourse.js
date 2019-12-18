@@ -1,30 +1,34 @@
 /* eslint max-len:0 */
 
-const mock = {
-  topics: [
-    {
-      url: 'https://blog.dvc.org/1',
-      title:
-        'Dvc get doesn’t work with absolute paths, but everything else seems to',
-      date: 1576072266986,
-      comments: 4
-    },
-    {
-      url: 'https://blog.dvc.org/2',
-      title:
-        'How do i remove files which are no longer tracked by dvc from dvc remote ssh storage',
-      date: 1576072266986,
-      comments: 10
-    },
-    {
-      url: 'https://blog.dvc.org/3',
-      title: 'Best practice for hyperparameters sweep',
-      date: 1576072266986,
-      comments: 2
-    }
-  ]
-}
+import fetch from 'isomorphic-fetch'
 
-export default (_, res) => {
-  res.status(200).json(mock)
+export default async (_, res) => {
+  try {
+    const response = await fetch(
+      'https://discuss.dvc.org/latest.json?order=created'
+    )
+
+    if (response.status !== 200) {
+      res.status(502).json({ error: 'Unexpected response from Forum' })
+
+      return
+    }
+
+    const data = await response.text()
+
+    const {
+      topic_list: { topics: original_topics }
+    } = JSON.parse(data)
+
+    const topics = original_topics.slice(0, 3).map(item => ({
+      title: item.title,
+      comments: item.posts_count - 1,
+      date: item.last_posted_at,
+      url: `https://discuss.dvc.org/t/${item.slug}/${item.id}`
+    }))
+
+    res.status(200).json({ topics })
+  } catch {
+    res.status(404)
+  }
 }
