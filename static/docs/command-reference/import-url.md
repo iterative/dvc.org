@@ -102,7 +102,7 @@ Both methods generate an equivalent [stage file](/doc/command-reference/run)
 user from having to manually copy files from each of the remote storage schemes,
 and from having to install CLI tools for each service.
 
-Note that import stages are considered always "locked", meaning that if you run
+Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` on them to update the
 downloaded file or directory from the external data source.
 
