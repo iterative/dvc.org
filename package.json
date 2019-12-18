@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/iterative/dvc.org#readme",
   "dependencies": {
+    "@octokit/graphql": "^4.3.1",
     "color": "^3.1.2",
     "date-fns": "^2.8.1",
     "dom-scroll-into-view": "^2.0.1",
@@ -53,7 +54,6 @@
   },
   "devDependencies": {
     "@babel/core": "^7.7.4",
-    "@octokit/graphql": "^4.3.1",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-plugin-transform-define": "^2.0.0",
