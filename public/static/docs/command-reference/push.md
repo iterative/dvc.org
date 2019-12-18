@@ -104,6 +104,19 @@ to push.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
+## Common problems
+
+- `[Errno 24] Too many open files` - most common for MacOs users who work with
+  s3 remote. Each upload thread needs to open one or more file descriptor(s).
+  The more `jobs` is specified, the more file descriptors needs to be open on
+  host filesystem. If there is too many open file descriptors, host filesystem
+  will not allow opening new ones. Recommended approach to handle this error is
+  to increase open file descriptors limit. On UNIX systems that can be done
+  using `ulimit -n`. In case of Windows, please refer to
+  [official resources](https://blogs.technet.microsoft.com/markrussinovich/2009/09/29/pushing-the-limits-of-windows-handles/).
+  If changing limits is impossible, the workaround would be to use lower `jobs`
+  option value.
+
 ## Examples
 
 For using the `dvc push` command, a remote storage must be defined. (See
