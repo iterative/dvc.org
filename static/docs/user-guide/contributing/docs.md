@@ -16,7 +16,7 @@ To contribute documentation you need to know these locations:
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
   (`/static/img`): Add new images, gif, svg, etc here. Reference them from the
   Markdown files like this: `![](/static/img/reproducibility.png)`.
-- [Sections](https://github.com/iterative/dvc.org/tree/master/src/Documentation/sidebar.json)
+- [Sections](https://github.com/iterative/dvc.org/tree/master/static/docs/sidebar.json)
   (`.../sidebar.json`): Edit it to register a new section for the navigation
   menu.
 
