@@ -33,9 +33,10 @@ single-purpose command that can be used out of the box after installing DVC.
 The `url` argument specifies the address of the Git repository containing the
 external <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
 online repositories (e.g. `[user@]server:project.git`). `url` can also be a
-local file system path to an "offline" repository (in this case instead of
-downloading, DVC may copy the target data from the external source project or
-it's cache).
+local file system path to an "offline" repository (in this case and if it
+doesn't have a default remote set up, instead of downloading, DVC will try to
+copy the target data from the external source project or it's
+<abbr>cache</abbr>).
 
 The `path` argument of this command is used to specify the location, within the
 source repository at `url`, of the target(s) to be downloaded. It can point to
@@ -47,11 +48,9 @@ configured in the project, containing the actual data.)
 
 > See `dvc get-url` to download data from other supported URLs.
 
-After running this command successfully, the data found in the `url` `path` is
-created in the current working directory, with its original file name. 
-Furthermore, if the target repository is local and, doesn't have a default 
-remote set up, dvc will try to get the cache from the target repository's cache 
-directory. 
+After running this command successfully, the data found in the `url`, `path`
+combination is created in the current working directory, with its original file
+name.
 
 ## Options
 
