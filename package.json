@@ -9,7 +9,7 @@
     "test": "jest",
     "start": "NODE_ENV=production node server.js",
     "format-staged": "pretty-quick --staged --no-restage --bail",
-    "format-check": "pretty-quick --check --verbose",
+    "format-check": "prettier --check '{.,pages/**,src/**,static/**}/*.{js,jsx,md}'",
     "lint-check": "eslint src pages"
   },
   "repository": {
