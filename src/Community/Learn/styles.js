@@ -1,5 +1,19 @@
 import styled from 'styled-components'
 
+export const Comments = styled.a`
+  display: inline-block;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 4px;
+  text-decoration: none;
+  color: inherit;
+  background-color: #d8dfe3;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`
+
 export const Item = styled.div`
   display: flex;
   flex-grow: 1;

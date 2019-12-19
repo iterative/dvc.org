@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import format from 'date-fns/format'
 
@@ -6,12 +6,57 @@ import CommunityBlock from '../Block'
 import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
-import { Item, Items, Line, Link, Meta, Wrapper } from './styles'
+import { pluralizeComments } from '../../utils/i18n'
+
+import { Comments, Item, Items, Line, Link, Meta, Wrapper } from './styles'
 
 import data from '../data'
 
 const { description, title } = data.section.learn
 const { documentation, userContent } = data
+
+function CommunityBlogPost({ url, title, date, color, commentsUrl }) {
+  const [count, setCount] = useState()
+  const loaded = count !== undefined
+
+  useEffect(() => {
+    if (commentsUrl) {
+      fetch(`/api/comments?url=${commentsUrl}`)
+        .then(result => result.json())
+        .then(data => setCount(data.count))
+    }
+  }, [])
+
+  return (
+    <Line key={url}>
+      <Link color={color} href={url} target="_blank" rel="noreferrer nofollow">
+        {title}
+      </Link>
+      <Meta>
+        {loaded && (
+          <>
+            <Comments
+              href={commentsUrl}
+              target="_blank"
+              rel="noreferrer nofollow"
+            >
+              {pluralizeComments(count)}
+            </Comments>{' '}
+          </>
+        )}
+        {format(new Date(date), 'MMMM, d')}
+      </Meta>
+    </Line>
+  )
+}
+
+CommunityBlogPost.propTypes = {
+  color: PropTypes.string,
+  commentsUrl: PropTypes.string,
+  date: PropTypes.string,
+  title: PropTypes.string,
+  url: PropTypes.string
+}
 
 export default function CommunityLearn({ posts, theme }) {
   return (
@@ -52,18 +97,12 @@ export default function CommunityLearn({ posts, theme }) {
                 </CommunityButton>
               }
             >
-              {posts.map(({ url, title, date }) => (
-                <Line key={url}>
-                  <Link
-                    color={theme.color}
-                    href={url}
-                    target="_blank"
-                    rel="noreferrer nofollow"
-                  >
-                    {title}
-                  </Link>
-                  <Meta>Posted on {format(new Date(date), 'MMMM, d')}</Meta>
-                </Line>
+              {posts.map(post => (
+                <CommunityBlogPost
+                  {...post}
+                  key={post.url}
+                  color={theme.color}
+                />
               ))}
             </CommunityBlock>
           </Item>
