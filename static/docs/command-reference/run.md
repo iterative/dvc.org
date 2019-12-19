@@ -55,14 +55,16 @@ try creating a pipeline.
 ### Unsupported command behavior
 
 We don't want to tell you how to write your code! However, please be aware that
-in order to prevent unexpected behavior when DVC executes or reproduces your
-commands, your they should ideally follow these rules:
+in order to prevent unexpected results when DVC executes or reproduces your
+commands, they should ideally follow these rules:
 
-- Read/write exclusively from/to the specified dependencies and outputs.
-- Completely rewrite outputs (i.e. do not append or edit).
-- Stop reading and writing files when the command exits.
+- Read/write exclusively from/to the specified dependencies (input files) and
+  <abbr>output files</abbr>.
+- Completely rewrite outputs (i.e. do not append or edit).<br/> ⚠️ DVC deletes
+  output files before executing commands, including at `dvc repro`.
+- Stop reading and writing files when the `command` exits.
 
-At the very least, to guarantee reproducibility, your command should be
+At the very least, to guarantee reproducibility, your code should be
 [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (i.e.
 always produce the same output for a given input). So avoid code that bring
 entropy into your data process (e.g. random numbers, time functions, hardware
