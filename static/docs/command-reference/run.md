@@ -64,11 +64,11 @@ commands, they should ideally follow these rules:
   output files before executing commands, including at `dvc repro`.
 - Stop reading and writing files when the `command` exits.
 
-At the very least, to guarantee reproducibility, your code should be
-[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (i.e.
-always produce the same output for a given input). So avoid code that bring
-entropy into your data process (e.g. random numbers, time functions, hardware
-dependency, etc.)
+At the very least, if you want to guarantee exact reproducibility, your code
+should be [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm)
+(i.e. always produce the same output for a given input). So avoid code that
+bring entropy into your data process (e.g. random numbers, time functions,
+hardware dependency, etc.)
 
 ## Options
 
