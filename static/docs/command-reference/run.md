@@ -67,8 +67,8 @@ commands, they should ideally follow these rules:
 At the very least, if you want to guarantee exact reproducibility, your code
 should be [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm)
 (i.e. always produce the same output for a given input). So avoid code that
-bring entropy into your data process (e.g. random numbers, time functions,
-hardware dependency, etc.)
+bring [entropy](https://en.wikipedia.org/wiki/Software_entropy) into your data
+pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 
 ## Options
 
