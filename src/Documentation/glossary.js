@@ -49,7 +49,7 @@ For more details, please refer to this [document]
     },
     {
       name: 'Output',
-      match: ['output', 'outputs'],
+      match: ['output', 'outputs', 'output files'],
       desc: `
 A file or a directory that is under DVC control, recorded in the \`outs\`
 section of a DVC-file. See \`dvc add\` \`dvc run\`, \`dvc import\`,

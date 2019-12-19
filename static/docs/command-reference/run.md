@@ -52,22 +52,21 @@ captures data and <abbr>caches</abbr> relevant <abbr>data artifacts</abbr> along
 the way. See [this example](/doc/get-started/example-pipeline) to learn more and
 try creating a pipeline.
 
-### Well-behaved commands
+### Unsupported command behavior
 
-In a sense, `dvc run` works as a special wrapper for your commands. To prevent
-unexpected behavior when DVC executes them, your commands should ideally follow
-these rules:
+We don't want to tell you how to write your code! However, please be aware that
+in order to prevent unexpected behavior when DVC executes or reproduces your
+commands, your they should ideally follow these rules:
 
-- Read exclusively from the specified dependencies.
-- Write exclusively to the specified outputs.
+- Read/write exclusively from/to the specified dependencies and outputs.
 - Completely rewrite outputs (i.e. do not append or edit).
 - Stop reading and writing files when the command exits.
 
 At the very least, to guarantee reproducibility, your command should be
-[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (i.e. it
-produce the same outputs given the same inputs/dependencies). So avoid code that
-bring entropy into your data process (e.g. random numbers, time functions,
-hardware dependency, etc.)
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (i.e.
+always produce the same output for a given input). So avoid code that bring
+entropy into your data process (e.g. random numbers, time functions, hardware
+dependency, etc.)
 
 ## Options
 
