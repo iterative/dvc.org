@@ -54,23 +54,20 @@ try creating a pipeline.
 
 ### Well-behaved commands
 
-DVC is simple to use, you only need to wrap your commands with `dvc run`, and
-define your dependencies and outputs.
+In a sense, `dvc run` works as a special wrapper for your commands. To prevent
+unexpected behavior when DVC executes them, your commands should ideally follow
+these rules:
 
-However, to prevent unexpected behaviors, ideally, your commands should follow
-some principles:
+- Read exclusively from the specified dependencies.
+- Write exclusively to the specified outputs.
+- Completely rewrite outputs (i.e. do not append or edit).
+- Stop reading and writing files when the command exits.
 
-- Read exclusively from specified dependencies.
-- Write exclusively to specified outputs.
-- Completely rewrite the outputs (i.e. do not append or edit).
-- Stop reading and writing when the command exits.
-
-To guarantee reproducibilty, your command should be
+At the very least, to guarantee reproducibility, your command should be
 [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (i.e. it
-must produce the same results given the same inputs/dependencies).
-
-Have in mind what brings entropy to your command (e.g. random generators, time,
-hardware, etc.) and try to minize it (e.g. fix seeds).
+produce the same outputs given the same inputs/dependencies). So avoid code that
+bring entropy into your data process (e.g. random numbers, time functions,
+hardware dependency, etc.)
 
 ## Options
 
@@ -127,7 +124,7 @@ hardware, etc.) and try to minize it (e.g. fix seeds).
   `dvc run` expects that dependencies, outputs, metric files are specified
   relative to this directory. This value is saved in the `wdir` field of the
   stage file generated (as a relative path to the location of the DVC-file) and
-  is used by `dvc repro` to change the working directory before execuring the
+  is used by `dvc repro` to change the working directory before executing the
   command.
 
 - `--no-exec` - create a stage file, but do not execute the command defined in
