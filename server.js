@@ -9,6 +9,7 @@ const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
 const querystring = require('querystring')
+const { getItemByPath } = require('./src/utils/sidebar')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
@@ -106,6 +107,10 @@ app.prepare().then(() => {
         })
         res.end()
       } else {
+        if (!getItemByPath(pathname)) {
+          res.statusCode = 404
+        }
+
         app.render(req, res, '/doc', query)
       }
     } else {
