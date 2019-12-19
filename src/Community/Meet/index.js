@@ -6,6 +6,7 @@ import CommunityBlock from '../Block'
 import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
+import { pluralizeComments } from '../../utils/i18n'
 import { formatNumber } from '../../utils/format'
 
 import data from '../data'
@@ -92,7 +93,7 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
                       target="_blank"
                       rel="norefferer nofollow"
                     >
-                      {comments} comments
+                      {pluralizeComments(comments)}
                     </Comments>
                     &nbsp; last activity{' '}
                     {formatDistanceToNow(new Date(date), 'MMMM, d')} ago
@@ -127,7 +128,7 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
                       target="_black"
                       rel="noreferrer nofollow"
                     >
-                      {comments} comments
+                      {pluralizeComments(comments)}
                     </Comments>
                     &nbsp;opened{' '}
                     {formatDistanceToNow(new Date(date), 'MMMM, d')} ago
