@@ -6,11 +6,11 @@
   "section": {
     "contribute": {
       "title": "Contribute",
-      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way."
+      "description": "DVC is 100% open-source and we welcome contributions of all sorts to our code and docs."
     },
     "events": {
       "title": "Events",
-      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way."
+      "description": "Conferences, meetups and talks to learn more about DVC or meet in person."
     },
     "learn": {
       "title": "Learn",
@@ -18,7 +18,7 @@
     },
     "meet": {
       "title": "Meet the Community",
-      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way."
+      "description": "Ask questions, find answers, share your ideas and connect with DVC community."
     }
   },
   "documentation": [
