@@ -118,7 +118,7 @@ pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   this location, by including a path in the provided value (e.g.
   `-f stages/stage.dvc`).
 
-- `-c`, `--cwd` - deprecated, use `-f` and `-w` to change location and working
+- `-c`, `--cwd` - DEPRECATED - use `-f` and `-w` to change location and working
   directory of a stage file.
 
 - `-w`, `--wdir` - specifies a working directory for the `command` to run in.
@@ -135,7 +135,7 @@ pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   you need to build a pipeline (dependency graph) first, and then run it all at
   once.
 
-- `-y`, `--yes` - deprecated, use `--overwrite-dvcfile` instead.
+- `-y`, `--yes` - DEPRECATED - use `--overwrite-dvcfile` instead.
 
 - `--overwrite-dvcfile` - overwrite an existing DVC-file (with file name
   determined by the logic described in the `-f` option) without asking for
@@ -150,9 +150,9 @@ pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   command is non-deterministic (meaning it produces different outputs from the
   same list of inputs).
 
-- `--remove-outs` - it removes stage outputs before executing the command. If
-  `--no-exec` specified outputs are removed anyway. This option is enabled by
-  default and deprecated. See `dvc remove` as well for more details.
+- `--remove-outs` - DEPRECATED - remove stage outputs before executing the
+  command. If `--no-exec` specified outputs are removed anyway. See `dvc remove`
+  as well for more details. This is the default behavior.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
   entry is added to `.dvc/state`, while nothing is added to the cache. (The
@@ -164,8 +164,8 @@ pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   `dvc status` will report it as `always changed` and `dvc repro` will always
   execute it.
 
-  > Note that a DVC-file without dependencies is automatically considered always
-  > changed, so this option has no effect in that case.
+  > Note that a DVC-file without dependencies is considered always changed, so
+  > this option has no effect in that case.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
