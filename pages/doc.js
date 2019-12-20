@@ -16,7 +16,7 @@ import RightPanel from '../src/Documentation/RightPanel/RightPanel'
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
 // sidebar data and helpers
-import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
+import { structure, getItemByPath } from '../src/utils/sidebar'
 // styles
 import styled from 'styled-components'
 import { media } from '../src/styles'
@@ -104,7 +104,7 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
           )}
 
           <SidebarMenu
-            sidebar={sidebar}
+            sidebar={structure}
             currentPath={path}
             id={SIDEBAR_MENU}
             onClick={toggleMenu}
@@ -130,7 +130,7 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
 }
 
 Documentation.getInitialProps = async ({ asPath, req }) => {
-  const item = getItemByPath(asPath)
+  const item = getItemByPath(asPath.split('#')[0])
 
   if (!item) {
     return {
@@ -166,7 +166,7 @@ Documentation.propTypes = {
   item: PropTypes.object,
   headings: PropTypes.array,
   markdown: PropTypes.string,
-  errorCode: PropTypes.bool
+  errorCode: PropTypes.number
 }
 
 const Container = styled.div`

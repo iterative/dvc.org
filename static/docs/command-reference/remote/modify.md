@@ -27,8 +27,9 @@ positional arguments:
 ## Description
 
 Remote `name` and `option` name are required. Option names are remote type
-specific. See below examples and a list of remote storage types: Amazon S3,
-Google Cloud, Azure, Google Drive, SSH, ALiyun OSS, among others.
+specific. See `dvc remote add` and
+[Available settings](#available-settings-per-storage-type) section below for a
+list of remote storage types.
 
 This command modifies a `remote` section in the project's
 [config file](/doc/command-reference/config). Alternatively, `dvc config` or
@@ -64,7 +65,7 @@ The following are the types of remote storage (protocols) supported:
 
 <details>
 
-### Click for Amazon S3 available options
+### Click for Amazon S3 options
 
 By default DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
@@ -128,11 +129,52 @@ these settings, you could use the following options:
   $ dvc remote modify myremote acl bucket-owner-full-control
   ```
 
+- `grant_read`\* - grants `READ` permissions at object level access control list
+  for specific grantees\*\*. Grantee can read object and its metadata.
+
+  ```dvc
+  $ dvc remote modify myremote grant_read id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  ```
+
+- `grant_read_acp`\* - grants `READ_ACP` permissions at object level access
+  control list for specific grantees\*\*. Grantee can read the object's ACP.
+
+  ```dvc
+  $ dvc remote modify myremote grant_read_acp id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  ```
+
+- `grant_write_acp`\* - grants `WRITE_ACP` permissions at object level access
+  control list for specific grantees\*\*. Grantee can modify the object's ACP.
+
+  ```dvc
+  $ dvc remote modify myremote grant_write_acp id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  ```
+
+- `grant_full_control`\* - grants `FULL_CONTROL` permissions at object level
+  access control list for specific grantees\*\*. Equivalent of grant_read +
+  grant_read_acp + grant_write_acp
+
+  ```dvc
+  $ dvc remote modify myremote grant_full_control id=aws-canonical-user-id,id=another-aws-canonical-user-id
+  ```
+
+  > \* - `grant_read`, `grant_read_acp`, `grant_write_acp` and
+  > `grant_full_control` options are mutually exclusive with `acl` option.
+  >
+  > \*\* - default ACL grantees are overwritten. Grantees are AWS accounts
+  > identifiable by `id` (AWS Canonical User ID), `emailAddress` or `uri`
+  > (predefined group).
+
+  > **References**:
+  >
+  > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
+  > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
+
 </details>
 
 <details>
 
-### Click for S3 API compatible storage available options
+### Click for S3 API compatible storage options
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
@@ -162,7 +204,7 @@ For more information about the variables DVC supports, please visit
 
 <details>
 
-### Click for Azure available options
+### Click for Microsoft Azure Blob Storage options
 
 - `url` - remote location URL.
 
@@ -187,7 +229,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for Google Drive available options
+### Click for Google Drive options
 
 - `url` - remote location URL.
 
@@ -211,7 +253,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for Google Cloud Storage available options
+### Click for Google Cloud Storage options
 
 - `projectname` - project name to use.
 
@@ -236,7 +278,31 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for SSH available options
+### Click for Aliyun OSS options
+
+- `oss_key_id` - OSS key id to use to access a remote.
+
+  ```dvc
+  $ dvc remote modify myremote --local oss_key_id my-key-id
+  ```
+
+- `oss_key_secret` - OSS secret key for authorizing access into a remote.
+
+  ```dvc
+  $ dvc remote modify myremote --local oss_key_secret my-key-secret
+  ```
+
+- `oss_endpoint endpoint` - OSS endpoint values for accessing remote container.
+
+  ```dvc
+  $ dvc remote modify myremote oss_endpoint endpoint
+  ```
+
+</details>
+
+<details>
+
+### Click for SSH options
 
 - `url` - remote location URL.
 
@@ -304,36 +370,12 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for HDFS available options
+### Click for HDFS options
 
 - `user` - username to use to access a remote.
 
   ```dvc
   $ dvc remote modify myremote user myuser
-  ```
-
-</details>
-
-<details>
-
-### Click for Aliyun OSS available options
-
-- `oss_key_id` - OSS key id to use to access a remote.
-
-  ```dvc
-  $ dvc remote modify myremote --local oss_key_id my-key-id
-  ```
-
-- `oss_key_secret` - OSS secret key for authorizing access into a remote.
-
-  ```dvc
-  $ dvc remote modify myremote --local oss_key_secret my-key-secret
-  ```
-
-- `oss_endpoint endpoint` - OSS endpoint values for accessing remote container.
-
-  ```dvc
-  $ dvc remote modify myremote oss_endpoint endpoint
   ```
 
 </details>

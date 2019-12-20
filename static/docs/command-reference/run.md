@@ -81,11 +81,11 @@ hardware, etc.) and try to minize it (e.g. fix seeds).
   [external dependencies](/doc/user-guide/external-dependencies).
 
   DVC builds a dependency graph connecting different stages with each other.
-  When you run `dvc repro`, the list of dependencies helps DVC analyze whether
+  When you use `dvc repro`, the list of dependencies helps DVC analyze whether
   any dependencies have changed and thus executing stages as required to
   regenerate their output. A special case is when no dependencies are specified.
 
-  > Note that a DVC-file without dependencies is considered always _changed_, so
+  > Note that a DVC-file without dependencies is considered always changed, so
   > `dvc repro` always executes it.
 
 - `-o`, `--outs` - specify a file or directory that is the result of running the
@@ -93,7 +93,7 @@ hardware, etc.) and try to minize it (e.g. fix seeds).
   DVC builds a dependency graph (pipeline) to connect different stages with each
   other based on this list of outputs, along with dependencies (see `-d`). DVC
   takes all output files and directories under its control and puts them into
-  the cache (this is similar to what's happening when you run `dvc add`).
+  the cache (this is similar to what's happening when you use `dvc add`).
 
 - `-O`, `--outs-no-cache` - the same as `-o` except outputs are not put
   automatically under DVC control. It means that they are not cached, and it's
@@ -115,19 +115,19 @@ hardware, etc.) and try to minize it (e.g. fix seeds).
 
 - `-f`, `--file` - specify stage file name. By default the DVC-file name
   generated is `<file>.dvc`, where `<file>` is file name of the first output
-  (`-o`, `-O`, `-m`, or `-M` option). The stage file is placed in the same
-  directory where `dvc run` is run by default, but `-f` can be used to change
+  (`-o`, `-O`, `-m`, or `-M` option). By default, The stage file is placed in
+  the same directory where `dvc run` is used, but `-f` can be used to change
   this location, by including a path in the provided value (e.g.
   `-f stages/stage.dvc`).
 
 - `-c`, `--cwd` - deprecated, use `-f` and `-w` to change location and working
   directory of a stage file.
 
-- `-w`, `--wdir` - specifies a working directory for the `command` to run it in.
+- `-w`, `--wdir` - specifies a working directory for the `command` to run in.
   `dvc run` expects that dependencies, outputs, metric files are specified
   relative to this directory. This value is saved in the `wdir` field of the
   stage file generated (as a relative path to the location of the DVC-file) and
-  is used by `dvc repro` to change the working directory before running the
+  is used by `dvc repro` to change the working directory before execuring the
   command.
 
 - `--no-exec` - create a stage file, but do not execute the command defined in
@@ -143,12 +143,14 @@ hardware, etc.) and try to minize it (e.g. fix seeds).
   determined by the logic described in the `-f` option) without asking for
   confirmation.
 
-- `--ignore-build-cache` - if an exactly equal DVC-file exists (same list of
-  outputs and inputs, the same command to run), which has been already executed
-  and is up to date, `dvc run` won't normally execute the command again (thus
-  "build cache"). This option gives a way to forcefully execute the command
-  anyway. It's useful if the command is non-deterministic (meaning it produces
-  different outputs from the same list of inputs).
+- `--ignore-build-cache` - This options has an effect if an equivalent stage
+  file exists (same dependencies, outputs, and command to execute) which has
+  been already executed and is up to date. In this case, `dvc run` won't
+  normally execute the command again. The exception is when the existing stage
+  is considered always changed (see `--always-changed` option). This option
+  gives a way to forcefully execute the command anyway. It's useful if the
+  command is non-deterministic (meaning it produces different outputs from the
+  same list of inputs).
 
 - `--remove-outs` - it removes stage outputs before executing the command. If
   `--no-exec` specified outputs are removed anyway. This option is enabled by
@@ -162,7 +164,10 @@ hardware, etc.) and try to minize it (e.g. fix seeds).
 
 - `--always-changed` - always consider this DVC-file as changed. As a result
   `dvc status` will report it as `always changed` and `dvc repro` will always
-  run it.
+  execute it.
+
+  > Note that a DVC-file without dependencies is automatically considered always
+  > changed, so this option has no effect in that case.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

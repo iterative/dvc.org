@@ -73,7 +73,7 @@
   ```
 
 - The cache of a DVC project can be shared with colleagues through Amazon S3,
-  Azure Blob Storage, Google Drive, and Google Cloud Storage, among others:
+  Microsoft Azure Blob Storage, Google Cloud Storage, among others:
 
   ```dvc
   $ git push

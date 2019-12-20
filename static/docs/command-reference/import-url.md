@@ -58,10 +58,11 @@ DVC supports several types of (local or) remote locations (protocols):
 | `http`   | HTTP to file with _strong ETag_ (see explanation below) | `https://example.com/path/to/data.csv`     |
 | `remote` | Remote path (see explanation below)                     | `remote://myremote/path/to/file`           |
 
-> Depending on the remote locations type you plan to download data from you
-> might need to specify one of the optional dependencies: `[s3]`, `[ssh]`,
-> `[gs]`, `[azure]`, `[gdrive]`, and `[oss]` (or `[all]` to include them all)
-> when [installing DVC](/doc/install) with `pip`.
+> If you installed DVC via `pip` and plan to use cloud services as remote
+> storage, you might need to install these optional dependencies: `[s3]`,
+> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
+> include them all. The command should look like this: `pip install "dvc[s3]"`.
+> (This example installs `boto3` library along with DVC to support S3 storage.)
 
 <!-- Separate MD quote: -->
 
@@ -101,7 +102,7 @@ Both methods generate an equivalent [stage file](/doc/command-reference/run)
 user from having to manually copy files from each of the remote storage schemes,
 and from having to install CLI tools for each service.
 
-Note that import stages are considered always "locked", meaning that if you run
+Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` on them to update the
 downloaded file or directory from the external data source.
 

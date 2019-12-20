@@ -24,19 +24,19 @@ positional arguments:
 ## Description
 
 `name` and `url` are required. `url` specifies a location to store your data. It
-can be an SSH, S3 path, Azure, Google Drive path, Google Cloud path, Aliyun OSS,
-local directory, etc. (See all the supported remote storage types in the
-examples below.) If `url` is a local relative path, it will be resolved relative
-to the current working directory but saved **relative to the config file
-location** (see LOCAL example below). Whenever possible DVC will create a remote
-directory if it doesn't exists yet. It won't create an S3 bucket though and will
-rely on default access settings.
+can point to a cloud storage service, an SSH server, network-attached storage,
+or even a directory in the local file system. (See all the supported remote
+storage types in the examples below.) If `url` is a relative path, it will be
+resolved against the current working directory, but saved **relative to the
+config file location** (see LOCAL example below). Whenever possible, DVC will
+create a remote directory if it doesn't exists yet. (It won't create an S3
+bucket though, and will rely on default access settings.)
 
-> If you installed DVC via `pip`, depending on the remote storage type you plan
-> to use you might need to install optional dependencies: `[s3]`, `[ssh]`,
-> `[gs]`, `[azure]`, `[gdrive]`, and `[oss]`; or `[all]` to include them all.
-> The command should look like this: `pip install "dvc[s3]"`. This installs
-> `boto3` library along with DVC to support Amazon S3 storage.
+> If you installed DVC via `pip` and plan to use cloud services as remote
+> storage, you might need to install these optional dependencies: `[s3]`,
+> `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
+> include them all. The command should look like this: `pip install "dvc[s3]"`.
+> (This example installs `boto3` library along with DVC to support S3 storage.)
 
 This command creates a section in the <abbr>DVC project</abbr>'s
 [config file](/doc/command-reference/config) and optionally assigns a default
@@ -89,52 +89,10 @@ These are the possible remote storage (protocols) DVC can work with:
 
 <details>
 
-### Click for local remote
-
-A "local remote" is a directory in the machine's file system.
-
-> While the term may seem contradictory, it doesn't have to be. The "local" part
-> refers to the machine where the project is stored, so it can be any directory
-> accessible to the same system. The "remote" part refers specifically to the
-> project/repository itself.
-
-Using an absolute path (recommended):
-
-```dvc
-$ dvc remote add myremote /tmp/my-dvc-storage
-$ cat .dvc/config
-  ...
-  ['remote "myremote"']
-        url = /tmp/my-dvc-storage
-  ...
-```
-
-> Note that the absolute path `/tmp/my-dvc-storage` is saved as is.
-
-Using a relative path:
-
-```dvc
-$ dvc remote add myremote ../my-dvc-storage
-$ cat .dvc/config
-  ...
-  ['remote "myremote"']
-      url = ../../my-dvc-storage
-  ...
-```
-
-> Note that `../my-dvc-storage` has been resolved relative to the `.dvc/` dir,
-> resulting in `../../my-dvc-storage`.
-
-</details>
-
-<details>
-
 ### Click for Amazon S3
 
-> **Note!** Before adding a new remote be sure to login into AWS services and
-> follow instructions at
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
-> to create your bucket.
+> 💡 Before adding an S3 remote, be sure to
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
 $ dvc remote add myremote s3://bucket/path
@@ -196,7 +154,7 @@ For more information about the variables DVC supports, please visit
 
 <details>
 
-### Click for Azure
+### Click for Microsoft Azure Blob Storage
 
 ```dvc
 $ dvc remote add myremote azure://my-container-name/path
@@ -240,7 +198,7 @@ Since Google Drive has tight API usage quotas, creation and configuration of
 your own `Google Project` is required:
 
 1.  Log into the [Google Cloud Platform](https://console.developers.google.com)
-    account associated with Google Drive you want to use as remote.
+    account.
 2.  Create `New Project` or select available one.
 3.  Click `ENABLE APIS AND SERVICES` and search for `drive` to enable
     `Google Drive API` from search results.
@@ -276,60 +234,6 @@ data with anyone else to prevent unauthorized access to your Google Drive.
 
 ```dvc
 $ dvc remote add myremote gs://bucket/path
-```
-
-</details>
-
-<details>
-
-### Click for SSH
-
-```dvc
-$ dvc remote add myremote ssh://user@example.com/path/to/dir
-```
-
-> **Note!** DVC requires both SSH and SFTP access to work with SSH remote
-> storage. Please check that you are able to connect to the remote location with
-> tools like `ssh` and `sftp` (GNU/Linux).
-
-<!-- Separate MD quote: -->
-
-> Note that your server's SFTP root might differ from its physical root (`/`).
-> (On Linux, see the `ChrootDirectory` config option in `/etc/ssh/sshd_config`.)
-> In these cases, the path component in the SSH URL (e.g. `/path/to/dir` above)
-> should be specified relative to the SFTP root instead. For example, on some
-> Sinology NAS drives, the SFTP root might be in directory `/volume1`, in which
-> case you should use path `/path/to/dir` instead of `/volume1/path/to/dir`.
-
-</details>
-
-<details>
-
-### Click for HDFS
-
-```dvc
-$ dvc remote add myremote hdfs://user@example.com/path/to/dir
-```
-
-> **Note!** If you are seeing `Unable to load libjvm` error on ubuntu with
-> openjdk-8, try setting JAVA_HOME env variable. This issue is solved in the
-> [upstream version of pyarrow](https://github.com/apache/arrow/pull/4907) and
-> the fix will be included into the next pyarrow release.
-
-</details>
-
-<details>
-
-### Click for HTTP
-
-> **Note!** Currently HTTP remotes only support downloads operations:
->
-> - `pull` and `fetch`
-> - `import-url` and `get-url`
-> - As an [external dependency](/doc/user-guide/external-dependencies)
-
-```dvc
-$ dvc remote add myremote https://example.com/path/to/dir
 ```
 
 </details>
@@ -386,6 +290,93 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 
 > Uses default key id and key secret when they are not given, which gives read
 > access to public read bucket and public bucket.
+
+</details>
+
+<details>
+
+### Click for SSH
+
+```dvc
+$ dvc remote add myremote ssh://user@example.com/path/to/dir
+```
+
+⚠️ DVC requires both SSH and SFTP access to work with SSH remote storage. Please
+check that you are able to connect both ways to the remote location, with tools
+like `ssh` and `sftp` (GNU/Linux).
+
+> Note that your server's SFTP root might differ from its physical root (`/`).
+> (On Linux, see the `ChrootDirectory` config option in `/etc/ssh/sshd_config`.)
+> In these cases, the path component in the SSH URL (e.g. `/path/to/dir` above)
+> should be specified relative to the SFTP root instead. For example, on some
+> Sinology NAS drives, the SFTP root might be in directory `/volume1`, in which
+> case you should use path `/path/to/dir` instead of `/volume1/path/to/dir`.
+
+</details>
+
+<details>
+
+### Click for HDFS
+
+```dvc
+$ dvc remote add myremote hdfs://user@example.com/path/to/dir
+```
+
+</details>
+
+<details>
+
+### Click for HTTP
+
+```dvc
+$ dvc remote add myremote https://example.com/path/to/dir
+```
+
+⚠️ HTTP remotes only support downloads operations:
+
+- `pull` and `fetch`
+- `import-url` and `get-url`
+- As an [external dependency](/doc/user-guide/external-dependencies)
+
+</details>
+
+<details>
+
+### Click for local remote
+
+A "local remote" is a directory in the machine's file system.
+
+> While the term may seem contradictory, it doesn't have to be. The "local" part
+> refers to the machine where the project is stored, so it can be any directory
+> accessible to the same system. The "remote" part refers specifically to the
+> project/repository itself. Read "local, but external" storage.
+
+Using an absolute path (recommended):
+
+```dvc
+$ dvc remote add myremote /tmp/my-dvc-storage
+$ cat .dvc/config
+  ...
+  ['remote "myremote"']
+        url = /tmp/my-dvc-storage
+  ...
+```
+
+> Note that the absolute path `/tmp/my-dvc-storage` is saved as is.
+
+Using a relative path:
+
+```dvc
+$ dvc remote add myremote ../my-dvc-storage
+$ cat .dvc/config
+  ...
+  ['remote "myremote"']
+      url = ../../my-dvc-storage
+  ...
+```
+
+> Note that `../my-dvc-storage` has been resolved relative to the `.dvc/` dir,
+> resulting in `../../my-dvc-storage`.
 
 </details>
 

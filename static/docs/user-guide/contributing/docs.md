@@ -16,7 +16,7 @@ To contribute documentation you need to know these locations:
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
   (`/static/img`): Add new images, gif, svg, etc here. Reference them from the
   Markdown files like this: `![](/static/img/reproducibility.png)`.
-- [Sections](https://github.com/iterative/dvc.org/tree/master/src/Documentation/sidebar.json)
+- [Sections](https://github.com/iterative/dvc.org/tree/master/static/docs/sidebar.json)
   (`.../sidebar.json`): Edit it to register a new section for the navigation
   menu.
 
@@ -64,17 +64,22 @@ $ git clone git@github.com:<username>/dvc.org.git
 $ cd dvc.org
 ```
 
-Make sure you have the latest version of [Node.js](https://nodejs.org/en/) and
-[Yarn](https://yarnpkg.com/) are installed:
+Make sure you have the latest version of [Node.js](https://nodejs.org/en/), and
+install [Yarn](https://yarnpkg.com/):
 
 ```dvc
 $ npm install -g yarn
 ```
 
-Install the dependencies by running `yarn` and launch the server locally:
+Install the project dependencies with Yarn:
 
 ```dvc
 $ yarn
+```
+
+Launch the server locally with:
+
+```dvc
 $ yarn dev
 ```
 

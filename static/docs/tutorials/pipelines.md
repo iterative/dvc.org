@@ -53,8 +53,8 @@ $ git commit -m "Download and add code to new Git repo"
 > download <abbr>data artifacts</abbr> from it. (It works like `wget`, but for
 > DVC repositories.) In this case we use
 > [dataset-registry](https://github.com/iterative/dataset-registry)) as the
-> source project. (Refer to [Data Registry](/doc/use-cases/data-registry) for
-> more info about this setup.)
+> source project. (Refer to [Data Registries](/doc/use-cases/data-registries)
+> for more info about this setup.)
 
 Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a
@@ -198,8 +198,8 @@ is similar to Git's
 [objects database](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects),
 but made specifically to handle large data files.
 
-> **Note!** For performance with large datasets, DVC can use file links from the
-> cache to the workspace to avoid copying actual file contents. Refer to
+> Note that for performance with large datasets, DVC can use file links from the
+> cache to the workspace. This avoids copying actual file contents. Refer to
 > [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 > to learn which options exist and how to enable them.
 

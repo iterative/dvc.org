@@ -34,7 +34,7 @@ $ dvc repro model.p.dvc
 $ dvc repro
 ```
 
-Tries to reproduce the same pipeline... But there is still nothing to reproduce.
+Tries to reproduce the same pipeline, but there is still nothing to reproduce.
 
 ## Adding bigrams
 

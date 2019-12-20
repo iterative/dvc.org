@@ -55,8 +55,8 @@ corresponding config file.
 
 ## Configuration sections
 
-These are the `name` parameters that can be used with `dvc config`, or the
-sections in the <abbr>project</abbr> config file (`.dvc/config`).
+The following config sections are written by this command to the project config
+file (in `.dvc/config` by default), and they support the options below:
 
 ### core
 
@@ -79,6 +79,12 @@ This is the main section with the general config options:
 - `core.checksum_jobs` - number of threads for computing checksums. Accepts
   positive integers. The default value is `max(1, min(4, cpu_count() // 2))`.
 
+- `core.hardlink_lock` - use hardlink file locks instead of the default ones,
+  based on [`flock`](https://linux.die.net/man/2/flock) (i.e. project lock file
+  `.dvc/lock`). Accepts values `true` and `false` (default). Useful when the DVC
+  project is on a file system that doesn't properly support file locking (e.g.
+  [NFS v3 and older](http://nfs.sourceforge.net/)).
+
 ### remote
 
 These are sections in the config file that describe particular remotes. These
@@ -92,7 +98,7 @@ A DVC project <abbr>cache</abbr> is the hidden storage (by default located in
 the `.dvc/cache` directory) for files that are under DVC control, and their
 different versions. (See `dvc cache` and
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-for more details.)
+for more details.) This section contains the following options:
 
 - `cache.dir` - set/unset cache directory location. A correct value must be
   either an absolute path or a path **relative to the config file location**.
@@ -124,10 +130,10 @@ for more details.)
   effective of those two. DVC avoids `symlink` and `hardlink` types by default
   to protect user from accidental cache and repository corruption.
 
-  > **Note!** If you manually set `cache.type` to `hardlink` or `symlink`, **you
-  > will corrupt the cache** if you modify tracked data files in the workspace.
-  > See the `cache.protected` config option above and corresponding
-  > `dvc unprotect` command to modify files safely.
+  ⚠️ If you manually set `cache.type` to `hardlink` or `symlink`, **you will
+  corrupt the cache** if you modify tracked data files in the workspace. See the
+  `cache.protected` config option above and corresponding `dvc unprotect`
+  command to modify files safely.
 
   There are pros and cons to different link types. Refer to
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
@@ -164,14 +170,13 @@ for more details.)
 - `cache.hdfs` - name of an
   [HDFS remote to use as external cache](/doc/user-guide/managing-external-data#hdfs).
 
-- `cache.azure` - name of an Azure remote to use as
+- `cache.azure` - name of a Microsoft Azure Blob Storage remote to use as
   [external cache](/doc/user-guide/managing-external-data).
 
 ### state
 
-State config options. See
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
-more about the state file (database) that is used for optimization.
+See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
+learn more about the state file (database) that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database, which
   affects the physical size of the state file itself, as well as the performance
@@ -185,20 +190,18 @@ more about the state file (database) that is used for optimization.
   so that when it needs to cleanup the database it could sort them by the
   timestamp and remove the oldest ones. Default quota is set to 50(percent).
 
-## Example: Core config options
-
-Set the `dvc` log level to `debug`:
+## Example: Set the debug level
 
 ```dvc
 $ dvc config core.loglevel debug
 ```
 
-Add an S3 remote and set it as the <abbr>project</abbr> default:
+## Example: Add an S3 remote
 
-> **Note!** Before adding a new remote be sure to login into AWS services and
-> follow instructions at
-> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html)
-> to create your bucket.
+> 💡 Before adding an S3 remote, be sure to
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
+
+This also sets the remote as the <abbr>project</abbr> default:
 
 ```dvc
 $ dvc remote add myremote s3://bucket/path

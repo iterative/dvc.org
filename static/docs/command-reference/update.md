@@ -23,7 +23,7 @@ imported file, directory, or <abbr>data artifact</abbr> up to date.
 To indicate which import stages to update, we must specify the corresponding
 DVC-file `targets` as command arguments.
 
-Note that import stages are considered always "locked", meaning that if you run
+Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. `dvc update` is the only command that can
 update them.
 
