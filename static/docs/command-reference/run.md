@@ -65,11 +65,12 @@ commands, they should ideally follow these rules:
   at `dvc repro`).
 - Stop reading and writing files when the `command` exits.
 
-At the very least, if you want to guarantee exact reproducibility, your code
-should be [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm)
-(i.e. always produce the same output for a given input). So avoid code that
-bring [entropy](https://en.wikipedia.org/wiki/Software_entropy) into your data
-pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
+Keep in mind that if exact reproducibility of the pipeline is desired, its code
+should be as
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) as
+possible (produce the same output for a given input). In this case, avoid code
+that brings [entropy](https://en.wikipedia.org/wiki/Software_entropy) into your
+data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 
 ## Options
 
