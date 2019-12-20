@@ -120,8 +120,8 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   this location, by including a path in the provided value (e.g.
   `-f stages/stage.dvc`).
 
-- `-c`, `--cwd` - DEPRECATED - use `-f` and `-w` to change location and working
-  directory of a stage file.
+- `-c`, `--cwd` (_deprecated_) - Use `-f` and `-w` to change the name and
+  location (working directory) of a stage file.
 
 - `-w`, `--wdir` - specifies a working directory for the `command` to run in.
   `dvc run` expects that dependencies, outputs, metric files are specified
@@ -137,7 +137,7 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   you need to build a pipeline (dependency graph) first, and then run it all at
   once.
 
-- `-y`, `--yes` - DEPRECATED - use `--overwrite-dvcfile` instead.
+- `-y`, `--yes` (_deprecated_) - See `--overwrite-dvcfile` below.
 
 - `--overwrite-dvcfile` - overwrite an existing DVC-file (with file name
   determined by the logic described in the `-f` option) without asking for
@@ -152,7 +152,7 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   command is non-deterministic (meaning it produces different outputs from the
   same list of inputs).
 
-- `--remove-outs` - DEPRECATED - remove stage outputs before executing the
+- `--remove-outs` (_deprecated_) - remove stage outputs before executing the
   command. If `--no-exec` specified outputs are removed anyway. See `dvc remove`
   as well for more details. This is the default behavior.
 
