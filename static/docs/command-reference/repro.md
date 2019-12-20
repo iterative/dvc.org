@@ -39,7 +39,7 @@ By default, this command recursively searches in pipeline stages, starting from
 the `targets`, to determine which ones have changed. Then it executes the
 corresponding commands.
 
-⚠️ DVC deletes <abbr>output files</abbr> before executing commands.
+⚠️ DVC deletes stage <abbr>outputs</abbr> before executing their commands.
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
 files, intermediate or final results. It saves all the data files, intermediate

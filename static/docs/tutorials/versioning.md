@@ -337,7 +337,7 @@ the command (`python train.py`) that was run to produce the result. We call such
 a DVC-file a "stage file".
 
 > At this point you could run `git add .` and `git commit` to save the `Dvcfile`
-> stage file and its changed output files to the repository.
+> stage file and its changed outputs to the repository.
 
 `dvc repro` will run `Dvcfile` if any of its dependencies (`-d`) changed. For
 example, when we added new images to built the second version of our model, that

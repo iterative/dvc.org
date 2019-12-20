@@ -1,8 +1,8 @@
 # commit
 
 Record changes to the repository by updating
-[DVC-files](/doc/user-guide/dvc-file-format) and saving outputs to the
-<abbr>cache</abbr>.
+[DVC-files](/doc/user-guide/dvc-file-format) and saving <abbr>outputs<abbr> to
+the <abbr>cache</abbr>.
 
 ## Synopsis
 
@@ -38,9 +38,9 @@ time tying stages or a pipeline.
 - Sometimes we want to clean up a code or configuration file in a way that
   doesn't cause a change in its results. We might write in-line documentation
   with comments, change indentation, remove some debugging printouts, or any
-  other change that doesn't produce different output of pipeline stages.
-  `dvc commit` can help avoid having to reproduce a pipeline in these cases by
-  forcing the update of the DVC-files.
+  other change that doesn't produce different <abbr>outputs<abbr> of pipeline
+  stages. `dvc commit` can help avoid having to reproduce a pipeline in these
+  cases by forcing the update of the DVC-files.
 
 Let's take a look at what is happening in the fist scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the

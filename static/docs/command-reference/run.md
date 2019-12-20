@@ -58,10 +58,10 @@ We don't want to tell you how to write your code! However, please be aware that
 in order to prevent unexpected results when DVC executes or reproduces your
 commands, they should ideally follow these rules:
 
-- Read/write exclusively from/to the specified dependencies (input files) and
-  <abbr>output files</abbr>.
+- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
+  <abbr>outputs</abbr>.
 - Completely rewrite outputs (i.e. do not append or edit).<br/> ⚠️ DVC deletes
-  output files before executing commands, including at `dvc repro`.
+  stage outputs before executing their commands, including at `dvc repro`.
 - Stop reading and writing files when the `command` exits.
 
 At the very least, if you want to guarantee exact reproducibility, your code
@@ -89,9 +89,9 @@ pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 - `-o`, `--outs` - specify a file or directory that is the result of running the
   `command`. Multiple outputs can be specified: `-o model.pkl -o output.log`.
   DVC builds a dependency graph (pipeline) to connect different stages with each
-  other based on this list of outputs, along with dependencies (see `-d`). DVC
-  takes all output files and directories under its control and puts them into
-  the cache (this is similar to what's happening when you use `dvc add`).
+  other based on this list of outputs and dependencies (see `-d`). DVC takes all
+  output files and directories under its control and puts them into the cache
+  (this is similar to what's happening when you use `dvc add`).
 
 - `-O`, `--outs-no-cache` - the same as `-o` except outputs are not put
   automatically under DVC control. It means that they are not cached, and it's
