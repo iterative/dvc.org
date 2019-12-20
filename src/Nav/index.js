@@ -35,7 +35,7 @@ export default function Nav({ mobile = false }) {
           </Link>
         </NextLink>
         <Link
-          href="https://blog.dataversioncontrol.com"
+          href="https://blog.dvc.org"
           onClick={() => {
             logEvent('menu', 'blog')
           }}
