@@ -52,7 +52,7 @@ captures data and <abbr>caches</abbr> relevant <abbr>data artifacts</abbr> along
 the way. See [this example](/doc/get-started/example-pipeline) to learn more and
 try creating a pipeline.
 
-### Unsupported command behavior
+### Reproducibility notes
 
 We don't want to tell you how to write your code! However, please be aware that
 in order to prevent unexpected results when DVC executes or reproduces your
@@ -65,8 +65,8 @@ commands, they should ideally follow these rules:
   at `dvc repro`).
 - Stop reading and writing files when the `command` exits.
 
-Keep in mind that if exact reproducibility of the pipeline is desired, its code
-should be as
+Keep in mind that if the pipeline's reproducibility goals include consistent
+output data, its code should be as
 [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) as
 possible (produce the same output for a given input). In this case, avoid code
 that brings [entropy](https://en.wikipedia.org/wiki/Software_entropy) into your
