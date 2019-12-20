@@ -60,8 +60,9 @@ commands, they should ideally follow these rules:
 
 - Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
   <abbr>outputs</abbr>.
-- Completely rewrite outputs (i.e. do not append or edit).<br/> ⚠️ DVC deletes
-  stage outputs before executing their commands, including at `dvc repro`.
+- Completely rewrite outputs (i.e. do not append or edit).<br/> Note that DVC
+  removes cached outputs before running the stages that produce them (including
+  at `dvc repro`).
 - Stop reading and writing files when the `command` exits.
 
 At the very least, if you want to guarantee exact reproducibility, your code
