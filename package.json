@@ -11,7 +11,8 @@
     "format-staged": "pretty-quick --staged --no-restage --bail",
     "format-check": "prettier --check '{.,pages/**,src/**,static/**}/*.{js,jsx,md}'",
     "lint-check": "eslint src pages",
-    "format": "prettier --write '{.,pages/**,src/**,static/**}/*.{js,jsx,md}'"
+    "format-all": "prettier --write '{.,pages/**,src/**,static/**}/*.{js,jsx,md}'",
+    "format": "prettier --write"
   },
   "repository": {
     "type": "git",
