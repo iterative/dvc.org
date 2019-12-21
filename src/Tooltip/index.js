@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import includes from 'lodash.includes'
 
-import glossary from '../Documentation/glossary'
+import glossary from '../../static/docs/glossary'
 import { OnlyDesktop, OnlyMobile } from '../styles'
 import DesktopView from './desktop-view'
 import MobileView from './mobile-view'

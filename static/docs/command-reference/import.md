@@ -1,8 +1,7 @@
 # import
 
-Download a file or directory, possibly being an <abbr>output</abbr>, from any
-<abbr>DVC repository</abbr> (e.g. hosted on GitHub) into the
-<abbr>workspace</abbr>. This also creates a
+Download a file or directory from any <abbr>DVC repository</abbr> (e.g. hosted
+on GitHub) into the <abbr>workspace</abbr>. This also creates a
 [DVC-file](/doc/user-guide/dvc-file-format) with information about the data
 source, which can later be used to [update](/doc/command-reference/update) the
 import.
@@ -38,11 +37,12 @@ copy the target data from the external source project or its
 
 The `path` argument of this command is used to specify the location, within the
 source repository at `url`, of the target(s) to be downloaded. It can point to
-any file or directory in the source project, including all files tracked by Git.
-Note that data tracked by DVC should be specified in one of the
-[DVC-files](/doc/user-guide/dvc-file-format) of the source repository. (In this
-case, a default [DVC remote](/doc/command-reference/remote) needs to be
-configured in the project, containing the actual data.)
+any file or directory in the source project, including <abbr>outputs</abbr>
+tracked by DVC as well as files tracked by Git. Note that for the former, data
+should be specified in one of the [DVC-files](/doc/user-guide/dvc-file-format)
+of the source repository. (In this case, a default
+[DVC remote](/doc/command-reference/remote) needs to be configured in the
+project, containing the actual data.)
 
 > See `dvc import-url` to download and tack data from other supported URLs.
 

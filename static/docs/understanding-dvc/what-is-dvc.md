@@ -30,13 +30,13 @@ DVC uses a few core concepts:
   experiment state.
 
 - **Reproducibility**: Action to reproduce an experiment state. This action
-  generates output files based on a set of input files and source code. This
-  action usually changes experiment state.
+  generates output files (or directories) based on a set of input files and
+  source code. This action usually changes experiment state.
 
 - **Pipeline**: Dependency graph or series of commands to reproduce data
-  processing results. The commands are connected by input and output files
-  (dependencies). Pipelines are defined by special
-  [stage files](/doc/command-reference/run) (similar to
+  processing results. The commands are connected by their inputs
+  (<abbr>dependencies</abbr>) and <abbr>outputs</abbr>. Pipelines are defined by
+  special [stage files](/doc/command-reference/run) (similar to
   [Makefiles](https://www.gnu.org/software/make/manual/make.html#Introduction)).
   Refer to [pipeline]](/doc/command-reference/pipeline) for more information.
 
