@@ -26,13 +26,13 @@ options) DVC can later connect each stage by building a dependency graph
 ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)). This graph is
 used by DVC to restore a full data [pipeline](/doc/command-reference/pipeline).
 
-The remainder of command line input provided to `dvc run` after the options (`-`
-or `--` arguments) will become the required `command` argument. Please wrap the
+The remaining terminal input provided to `dvc run` after the options (`-`/`--`
+arguments) will become the required `command` argument. Please wrap the
 `command` with `"` quotes if there are special characters in it like `|` (pipe)
-or `<`, `>` (redirection) that would otherwise apply to the entire `dvc run`
-command e.g. `dvc run -d script.sh "./script.sh > /dev/null 2>&1"`. Use single
-quotes `'` instead of `"` to wrap the `command` if there are environment
-variables in it, that you want to be evaluated dynamically. E.g.
+or `<`, `>` (redirection) that would otherwise apply to `dvc run` itself e.g.
+`dvc run -d script.sh "./script.sh > /dev/null 2>&1"`. Use single quotes `'`
+instead of `"` to wrap the `command` if there are environment variables in it,
+that you want to be evaluated dynamically. E.g.
 `dvc run -d script.sh './myscript.sh $MYENVVAR'`
 
 Unless the `-f` options is used, by default the DVC-file name generated is
@@ -128,14 +128,13 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   relative to this directory. This value is saved in the `wdir` field of the
   stage file generated (as a relative path to the location of the DVC-file) and
   is used by `dvc repro` to change the working directory before executing the
-  command.
+  `command`.
 
-- `--no-exec` - create a stage file, but do not execute the command defined in
+- `--no-exec` - create a stage file, but do not execute the `command` defined in
   it, nor take dependencies or outputs under DVC control. In the DVC-file
   contents, the `md5` hash sums will be empty; They will be populated the next
-  time this stage is actually executed. This command is useful, if for example,
-  you need to build a pipeline (dependency graph) first, and then run it all at
-  once.
+  time this stage is actually executed. This is useful if, for example, you need
+  to build a pipeline (dependency graph) first, and then run it all at once.
 
 - `-y`, `--yes` (_deprecated_) - See `--overwrite-dvcfile` below.
 
@@ -144,21 +143,21 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   confirmation.
 
 - `--ignore-build-cache` - This options has an effect if an equivalent stage
-  file exists (same dependencies, outputs, and command to execute) which has
+  file exists (same dependencies, outputs, and `command` to execute) which has
   been already executed and is up to date. In this case, `dvc run` won't
-  normally execute the command again. The exception is when the existing stage
+  normally execute the `command` again. The exception is when the existing stage
   is considered always changed (see `--always-changed` option). This option
-  gives a way to forcefully execute the command anyway. It's useful if the
-  command is non-deterministic (meaning it produces different outputs from the
-  same list of inputs).
+  gives a way to forcefully execute the `command` anyway. Useful if the
+  command's code is non-deterministic (meaning it produces different outputs
+  from the same list of inputs).
 
 - `--remove-outs` (_deprecated_) - remove stage outputs before executing the
-  command. If `--no-exec` specified outputs are removed anyway. See `dvc remove`
-  as well for more details. This is the default behavior.
+  `command`. If `--no-exec` specified outputs are removed anyway. See
+  `dvc remove` as well for more details. This is the default behavior.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
-  entry is added to `.dvc/state`, while nothing is added to the cache. (The
-  `dvc status` command will report that the file is `not in cache`.) Useful when
+  entry is added to `.dvc/state`, while nothing is added to the cache.
+  (`dvc status` will report that the file is `not in cache`.) Useful when
   running different experiments and you don't want to fill up your cache with
   temporary files. Use `dvc commit` when ready to commit the results to cache.
 
