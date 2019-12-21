@@ -52,7 +52,7 @@ captures data and <abbr>caches</abbr> relevant <abbr>data artifacts</abbr> along
 the way. See [this example](/doc/get-started/example-pipeline) to learn more and
 try creating a pipeline.
 
-### Reproducibility notes
+### Avoiding unexpected behavior
 
 We don't want to tell you how to write your code! However, please be aware that
 in order to prevent unexpected results when DVC executes or reproduces your
