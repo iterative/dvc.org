@@ -57,6 +57,14 @@ commands. A.k.a. **data artifact*.
       `
     },
     {
+      name: 'Dependency',
+      match: ['dependency', 'dependencies'],
+      desc: `
+A file or directory (possibly under DVC control) recorded in the \`deps\`
+section of a DVC-file. See \`dvc run\`.
+      `
+    },
+    {
       name: 'Data Artifact',
       match: ['data artifact', 'data artifacts'],
       desc: `
@@ -65,14 +73,6 @@ extracted features or a ML model file) that is under DVC control. Refer to
 [Versioning Data and Model Files]
 (/doc/use-cases/versioning-data-and-model-files) for more details. A.k.a
 **output*.
-      `
-    },
-    {
-      name: 'Dependency',
-      match: ['dependency', 'dependencies'],
-      desc: `
-A file or directory (typically under DVC control) recorded in the \`deps\`
-section of a DVC-file. See \`dvc run\`.
       `
     },
     {
