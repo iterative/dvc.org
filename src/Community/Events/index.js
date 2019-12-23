@@ -26,6 +26,8 @@ const modifiedEvents = events.length > 3 ? events.slice(0, 3) : events
 const eventPlaceholders = new Array(3 - modifiedEvents.length).fill(Item)
 
 export default function CommunityEvents({ theme }) {
+  if (!events.length) return ''
+
   return (
     <Wrapper>
       <CommunitySection
