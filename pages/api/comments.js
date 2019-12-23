@@ -9,6 +9,9 @@
 
 import Cors from 'micro-cors'
 import request from 'request'
+import NodeCache from 'node-cache'
+
+const cache = new NodeCache({ stdTTL: 900 })
 
 import { BLOG_URL, FORUM_URL } from '../../src/consts'
 
@@ -24,6 +27,13 @@ const getCommentCount = (req, res) => {
 
   if (!url.startsWith(FORUM_URL)) {
     res.status(400)
+
+    return
+  }
+
+  if (cache.get(url)) {
+    console.log(`Using cache for ${url}`)
+    res.status(200).json({ count: cache.get(url) })
 
     return
   }
@@ -45,6 +55,9 @@ const getCommentCount = (req, res) => {
 
     // post_count return all posts including topic itself
     const count = json.posts_count - 1
+
+    console.log(`Not using cache for ${url}`)
+    cache.set(url, count)
 
     res.status(200).json({ count })
   })

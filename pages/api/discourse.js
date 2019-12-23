@@ -1,8 +1,18 @@
 /* eslint max-len:0 */
 
 import fetch from 'isomorphic-fetch'
+import NodeCache from 'node-cache'
+
+const cache = new NodeCache({ stdTTL: 900 })
 
 export default async (_, res) => {
+  if (cache.get('topics')) {
+    console.log(`Using cache for 'topics'`)
+    res.status(200).json(cache.get('topics'))
+
+    return
+  }
+
   try {
     const response = await fetch(
       'https://discuss.dvc.org/latest.json?order=created'
@@ -26,6 +36,9 @@ export default async (_, res) => {
       date: item.last_posted_at,
       url: `https://discuss.dvc.org/t/${item.slug}/${item.id}`
     }))
+
+    cache.set('topics', { topics })
+    console.log(`Not using cache for 'topics'`)
 
     res.status(200).json({ topics })
   } catch {
