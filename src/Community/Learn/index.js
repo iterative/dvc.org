@@ -8,7 +8,16 @@ import CommunitySection from '../Section'
 
 import { pluralizeComments } from '../../utils/i18n'
 
-import { Comments, Item, Items, Line, Link, Meta, Wrapper } from '../styles'
+import {
+  Comments,
+  Item,
+  Items,
+  Line,
+  Link,
+  Meta,
+  Placeholder,
+  Wrapper
+} from '../styles'
 
 import data from '../data'
 
@@ -92,18 +101,24 @@ export default function CommunityLearn({ posts, theme }) {
             <CommunityBlock
               title="DVC Blog"
               action={
-                <CommunityButton theme={theme} href="https://blog.dvc.org">
-                  See all Posts
-                </CommunityButton>
+                posts.length && (
+                  <CommunityButton theme={theme} href="https://blog.dvc.org">
+                    See all Posts
+                  </CommunityButton>
+                )
               }
             >
-              {posts.map(post => (
-                <CommunityBlogPost
-                  {...post}
-                  key={post.url}
-                  color={theme.color}
-                />
-              ))}
+              {posts.length ? (
+                posts.map(post => (
+                  <CommunityBlogPost
+                    {...post}
+                    key={post.url}
+                    color={theme.color}
+                  />
+                ))
+              ) : (
+                <Placeholder>Blog is unavailable right now</Placeholder>
+              )}
             </CommunityBlock>
           </Item>
           <Item>

@@ -1,13 +1,11 @@
 import styled from 'styled-components'
 
 export const Action = styled.div`
-  position: absolute;
-  right: 20px;
-  bottom: 20px;
-  left: 20px;
+  margin-top: 20px;
 `
 
 export const Content = styled.div`
+  flex-grow: 1;
   font-size: 16px;
   line-height: 24px;
   color: #838d93;
@@ -31,9 +29,11 @@ export const Icon = styled.img`
 
 export const Wrapper = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
   width: 100%;
-  padding: ${({ hasAction }) =>
-    hasAction ? '10px 20px 78px' : '10px 20px 20px'};
+  padding: 10px 20px 20px;
   border-radius: 5px;
   background: #eef4f8;
 `

@@ -7,7 +7,7 @@ export default function Block({ action, children, icon, large, title }) {
   const hasAction = !!action
 
   return (
-    <Wrapper hasAction={hasAction}>
+    <Wrapper>
       {title && (
         <Header large={large}>
           {title}

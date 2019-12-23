@@ -53,6 +53,13 @@ export const Meta = styled.div`
   line-height: 20px;
 `
 
+export const Placeholder = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+`
+
 export const Wrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;

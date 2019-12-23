@@ -8,22 +8,49 @@ export function makeAbsoluteURL(req, uri) {
 }
 
 export async function getLatestIssues(req) {
-  const res = await fetch(makeAbsoluteURL(req, '/api/github'))
-  const { issues } = await res.json()
+  try {
+    const res = await fetch(makeAbsoluteURL(req, '/api/github'))
 
-  return issues
+    if (res.status !== 200) return []
+
+    const { issues } = await res.json()
+
+    return issues
+  } catch (e) {
+    console.error(e)
+
+    return []
+  }
 }
 
 export async function getLatestPosts(req) {
-  const res = await fetch(makeAbsoluteURL(req, '/api/blog'))
-  const { posts } = await res.json()
+  try {
+    const res = await fetch(makeAbsoluteURL(req, '/api/blog'))
 
-  return posts
+    if (res.status !== 200) return []
+
+    const { posts } = await res.json()
+
+    return posts
+  } catch (e) {
+    console.error(e)
+
+    return []
+  }
 }
 
 export async function getLatestTopics(req) {
-  const res = await fetch(makeAbsoluteURL(req, '/api/discourse'))
-  const { topics } = await res.json()
+  try {
+    const res = await fetch(makeAbsoluteURL(req, '/api/discourse'))
 
-  return topics
+    if (res.status !== 200) return []
+
+    const { topics } = await res.json()
+
+    return topics
+  } catch (e) {
+    console.error(e)
+
+    return []
+  }
 }

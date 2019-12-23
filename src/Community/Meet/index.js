@@ -12,7 +12,16 @@ import data from '../data'
 
 const { description, title } = data.section.meet
 
-import { Comments, Item, Items, Line, Link, Meta, Wrapper } from '../styles'
+import {
+  Comments,
+  Item,
+  Items,
+  Line,
+  Link,
+  Meta,
+  Placeholder,
+  Wrapper
+} from '../styles'
 
 export default function CommunityMeet({ issues, theme, topics }) {
   return (
@@ -39,72 +48,84 @@ export default function CommunityMeet({ issues, theme, topics }) {
             <CommunityBlock
               title="Ask a Question"
               action={
-                <CommunityButton theme={theme} href="/">
-                  Read All Topics
-                </CommunityButton>
+                topics.length && (
+                  <CommunityButton theme={theme} href="/">
+                    Read All Topics
+                  </CommunityButton>
+                )
               }
               icon="/static/img/community/discourse.svg"
               large={true}
             >
-              {topics.map(({ url, title, date, comments }) => (
-                <Line key={url}>
-                  <Link
-                    color={theme.color}
-                    href={url}
-                    target="_blank"
-                    rel="norefferer nofollow"
-                  >
-                    {title}
-                  </Link>
-                  <Meta>
-                    <Comments
+              {topics.length ? (
+                topics.map(({ url, title, date, comments }) => (
+                  <Line key={url}>
+                    <Link
+                      color={theme.color}
                       href={url}
                       target="_blank"
                       rel="norefferer nofollow"
                     >
-                      {pluralizeComments(comments)}
-                    </Comments>
-                    &nbsp; last activity{' '}
-                    {formatDistanceToNow(new Date(date), 'MMMM, d')} ago
-                  </Meta>
-                </Line>
-              ))}
+                      {title}
+                    </Link>
+                    <Meta>
+                      <Comments
+                        href={url}
+                        target="_blank"
+                        rel="norefferer nofollow"
+                      >
+                        {pluralizeComments(comments)}
+                      </Comments>
+                      &nbsp; last activity{' '}
+                      {formatDistanceToNow(new Date(date), 'MMMM, d')} ago
+                    </Meta>
+                  </Line>
+                ))
+              ) : (
+                <Placeholder>Forum is unavailable right now</Placeholder>
+              )}
             </CommunityBlock>
           </Item>
           <Item>
             <CommunityBlock
               title="Post an Issue"
               action={
-                <CommunityButton theme={theme} href="/">
-                  Read All Issues
-                </CommunityButton>
+                issues.length && (
+                  <CommunityButton theme={theme} href="/">
+                    Read All Issues
+                  </CommunityButton>
+                )
               }
               icon="/static/img/community/github.svg"
               large={true}
             >
-              {issues.map(({ url, title, date, comments }) => (
-                <Line key={url}>
-                  <Link
-                    color={theme.color}
-                    href={url}
-                    target="_black"
-                    rel="noreferrer nofollow"
-                  >
-                    {title}
-                  </Link>
-                  <Meta>
-                    <Comments
+              {issues.length ? (
+                issues.map(({ url, title, date, comments }) => (
+                  <Line key={url}>
+                    <Link
+                      color={theme.color}
                       href={url}
                       target="_black"
                       rel="noreferrer nofollow"
                     >
-                      {pluralizeComments(comments)}
-                    </Comments>
-                    &nbsp;opened{' '}
-                    {formatDistanceToNow(new Date(date), 'MMMM, d')} ago
-                  </Meta>
-                </Line>
-              ))}
+                      {title}
+                    </Link>
+                    <Meta>
+                      <Comments
+                        href={url}
+                        target="_black"
+                        rel="noreferrer nofollow"
+                      >
+                        {pluralizeComments(comments)}
+                      </Comments>
+                      &nbsp;opened{' '}
+                      {formatDistanceToNow(new Date(date), 'MMMM, d')} ago
+                    </Meta>
+                  </Line>
+                ))
+              ) : (
+                <Placeholder>Github is unavailable right now</Placeholder>
+              )}
             </CommunityBlock>
           </Item>
         </Items>
