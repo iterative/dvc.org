@@ -1,39 +1,24 @@
 /* eslint-env node */
-/* eslint max-len:0 */
 
-const { graphql } = require('@octokit/graphql')
+import { graphql } from '@octokit/graphql'
+import NodeCache from 'node-cache'
 
-// Mock data is used if process.env.GITHUB_TOKEN is not set
+const cache = new NodeCache({ stdTTL: 900 })
 
-const mock = {
-  issues: [
-    {
-      title:
-        'ssh/sftp: detect that we are not in a physical root and print a meaninful error...',
-      url: 'https://github.com/iterative/dvc/issues/2936',
-      comments: 1,
-      date: 1576072266986
-    },
-    {
-      title: 'pipeline show: use pager instead of rendering ourselves',
-      url: 'https://github.com/iterative/dvc/issues/2937',
-      comments: 0,
-      date: 1576072266986
-    },
-    {
-      title:
-        'tests: disabling analytics through `config --global` breaks tests',
-      url: 'https://github.com/iterative/dvc/issues/2938',
-      comments: 1,
-      date: 1576072266986
-    }
-  ]
-}
+const dev = process.env.NODE_ENV === 'development'
 
 export default async (_, res) => {
   if (!process.env.GITHUB_TOKEN) {
-    res.status(200).json(mock)
+    res.status(200).json({ issues: [] })
   } else {
+    if (cache.get('issues')) {
+      if (dev) console.log('Using cache for "issues"')
+
+      res.status(200).json({ issues: cache.get('issues') })
+    } else {
+      console.log('Not using cache for "issues"')
+    }
+
     try {
       const { repository } = await graphql(
         `
@@ -61,14 +46,16 @@ export default async (_, res) => {
         }
       )
 
-      res.status(200).json({
-        issues: repository.issues.edges.map(({ node }) => ({
-          title: node.title,
-          url: node.url,
-          comments: node.comments.totalCount,
-          date: node.createdAt
-        }))
-      })
+      const issues = repository.issues.edges.map(({ node }) => ({
+        title: node.title,
+        url: node.url,
+        comments: node.comments.totalCount,
+        date: node.createdAt
+      }))
+
+      cache.set('issues', issues)
+
+      res.status(200).json({ issues })
     } catch (e) {
       res.status(404)
     }
