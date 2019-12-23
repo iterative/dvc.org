@@ -1,22 +1,27 @@
-/* eslint max-len:0 */
+/* eslint-env node */
 
 import fetch from 'isomorphic-fetch'
 import NodeCache from 'node-cache'
 
+import { FORUM_URL } from '../../src/consts'
+
 const cache = new NodeCache({ stdTTL: 900 })
+
+const dev = process.env.NODE_ENV === 'development'
 
 export default async (_, res) => {
   if (cache.get('topics')) {
-    console.log(`Using cache for 'topics'`)
+    if (dev) console.log('Using cache for "topics"')
+
     res.status(200).json(cache.get('topics'))
 
     return
+  } else {
+    if (dev) console.log('Not using cache for "topics"')
   }
 
   try {
-    const response = await fetch(
-      'https://discuss.dvc.org/latest.json?order=created'
-    )
+    const response = await fetch(`${FORUM_URL}/latest.json?order=created`)
 
     if (response.status !== 200) {
       res.status(502).json({ error: 'Unexpected response from Forum' })
@@ -34,11 +39,10 @@ export default async (_, res) => {
       title: item.title,
       comments: item.posts_count - 1,
       date: item.last_posted_at,
-      url: `https://discuss.dvc.org/t/${item.slug}/${item.id}`
+      url: `${FORUM_URL}/t/${item.slug}/${item.id}`
     }))
 
     cache.set('topics', { topics })
-    console.log(`Not using cache for 'topics'`)
 
     res.status(200).json({ topics })
   } catch {

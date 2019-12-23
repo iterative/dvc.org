@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 /*
  * This API endpoint is used by our blog to get comments count for the post, it
  * gets discuss.dvc.org topic URL as a param and returns comments count or
@@ -11,9 +13,11 @@ import fetch from 'isomorphic-fetch'
 import Cors from 'micro-cors'
 import NodeCache from 'node-cache'
 
+import { BLOG_URL, FORUM_URL } from '../../src/consts'
+
 const cache = new NodeCache({ stdTTL: 900 })
 
-import { BLOG_URL, FORUM_URL } from '../../src/consts'
+const dev = process.env.NODE_ENV === 'development'
 
 const cors = Cors({
   allowedMethods: ['GET', 'HEAD'],
@@ -32,10 +36,13 @@ const getCommentCount = async (req, res) => {
   }
 
   if (cache.get(url) !== undefined) {
-    console.log(`Using cache for ${url}`)
+    if (dev) console.log(`Using cache for ${url}`)
+
     res.status(200).json({ count: cache.get(url) })
 
     return
+  } else {
+    if (dev) console.log(`Not using cache for ${url}`)
   }
 
   try {
@@ -58,7 +65,6 @@ const getCommentCount = async (req, res) => {
     // post_count return all posts including topic itself
     const count = data.posts_count - 1
 
-    console.log(`Not using cache for ${url}`)
     cache.set(url, count)
 
     res.status(200).json({ count })
