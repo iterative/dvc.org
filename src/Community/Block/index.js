@@ -3,13 +3,13 @@ import PropTypes from 'prop-types'
 
 import { Action, Content, Icon, Header, Wrapper } from './styles'
 
-export default function Block({ action, children, icon, title }) {
+export default function Block({ action, children, icon, large, title }) {
   const hasAction = !!action
 
   return (
     <Wrapper hasAction={hasAction}>
       {title && (
-        <Header>
+        <Header large={large}>
           {title}
           {icon && <Icon src={icon} />}
         </Header>
@@ -24,5 +24,6 @@ Block.propTypes = {
   action: PropTypes.node,
   children: PropTypes.node,
   icon: PropTypes.string,
+  large: PropTypes.bool,
   title: PropTypes.string
 }

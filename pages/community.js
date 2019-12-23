@@ -2,7 +2,6 @@ import React from 'react'
 import Head from 'next/head'
 
 import {
-  getDiscordInfo,
   getLatestIssues,
   getLatestTopics,
   getLatestPosts
@@ -33,13 +32,11 @@ export default function CommunityPage(props) {
 CommunityPage.getInitialProps = async ({ req }) => {
   const issues = await getLatestIssues(req)
   const posts = await getLatestPosts(req)
-  const discord = await getDiscordInfo(req)
   const topics = await getLatestTopics(req)
 
   return {
     issues,
     posts,
-    discord,
     topics
   }
 }

@@ -8,7 +8,7 @@ import CommunitySection from '../Section'
 
 import { pluralizeComments } from '../../utils/i18n'
 
-import { Comments, Item, Items, Line, Link, Meta, Wrapper } from './styles'
+import { Comments, Item, Items, Line, Link, Meta, Wrapper } from '../styles'
 
 import data from '../data'
 

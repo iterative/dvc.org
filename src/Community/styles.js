@@ -21,7 +21,7 @@ export const Item = styled.div`
   align-items: stretch;
 
   & + & {
-    margin-left: 30px;
+    margin-left: 20px;
   }
 `
 

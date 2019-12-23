@@ -21,12 +21,12 @@ export const Header = styled.div`
   border-bottom: 1px solid #d8dfe3;
   font-family: BrandonGrotesqueMed;
   font-size: 24px;
-  line-height: 34px;
+  line-height: ${({ large }) => (large ? '54px' : '34px')};
   color: #24292e;
 `
 
 export const Icon = styled.img`
-  margin: 6px -2px 0 0;
+  margin: 0 -2px 0 0;
 `
 
 export const Wrapper = styled.div`
@@ -34,6 +34,6 @@ export const Wrapper = styled.div`
   width: 100%;
   padding: ${({ hasAction }) =>
     hasAction ? '10px 20px 78px' : '10px 20px 20px'};
-  border-radius: 20px;
+  border-radius: 5px;
   background: #eef4f8;
 `

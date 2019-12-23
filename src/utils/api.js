@@ -27,10 +27,3 @@ export async function getLatestTopics(req) {
 
   return topics
 }
-
-export async function getDiscordInfo(req) {
-  const res = await fetch(makeAbsoluteURL(req, '/api/discord'))
-  const info = await res.json()
-
-  return info
-}

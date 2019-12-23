@@ -7,26 +7,14 @@ import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
 import { pluralizeComments } from '../../utils/i18n'
-import { formatNumber } from '../../utils/format'
 
 import data from '../data'
 
 const { description, title } = data.section.meet
 
-import {
-  Comments,
-  Item,
-  Items,
-  Line,
-  Link,
-  Meta,
-  StatLabel,
-  StatLine,
-  StatValue,
-  Wrapper
-} from './styles'
+import { Comments, Item, Items, Line, Link, Meta, Wrapper } from '../styles'
 
-export default function CommunityMeet({ discord, issues, theme, topics }) {
+export default function CommunityMeet({ issues, theme, topics }) {
   return (
     <Wrapper>
       <CommunitySection
@@ -38,34 +26,14 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
       >
         <Items>
           <Item>
-            <CommunityBlock
-              title="Join the Dev Chat"
-              action={
-                <CommunityButton theme={theme} href="/">
-                  Open Chat
-                </CommunityButton>
-              }
-              icon="/static/img/community/discord.svg"
-            >
-              <StatLine>
-                <StatValue>{formatNumber(discord.registered)}</StatValue>
-                <StatLabel>registered developers</StatLabel>
-              </StatLine>
-              <StatLine>
-                <StatValue>
-                  {formatNumber(discord.messages_per_month)}
-                </StatValue>
-                <StatLabel>messages posted over the past month</StatLabel>
-              </StatLine>
-              <StatLine>
-                <StatValue>{formatNumber(discord.online)}</StatValue>
-                <StatLabel>
-                  users
-                  <br />
-                  online
-                </StatLabel>
-              </StatLine>
-            </CommunityBlock>
+            <iframe
+              title="chat"
+              src="https://discordapp.com/widget?id=485586884165107732&theme=light&header=Text"
+              width="100%"
+              height="100%"
+              allowTransparency="true"
+              frameBorder="0"
+            ></iframe>
           </Item>
           <Item>
             <CommunityBlock
@@ -76,6 +44,7 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
                 </CommunityButton>
               }
               icon="/static/img/community/discourse.svg"
+              large={true}
             >
               {topics.map(({ url, title, date, comments }) => (
                 <Line key={url}>
@@ -111,6 +80,7 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
                 </CommunityButton>
               }
               icon="/static/img/community/github.svg"
+              large={true}
             >
               {issues.map(({ url, title, date, comments }) => (
                 <Line key={url}>
@@ -144,7 +114,6 @@ export default function CommunityMeet({ discord, issues, theme, topics }) {
 }
 
 CommunityMeet.propTypes = {
-  discord: PropTypes.object,
   issues: PropTypes.array,
   theme: PropTypes.shape({
     backgroundColor: PropTypes.string,

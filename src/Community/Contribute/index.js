@@ -7,7 +7,7 @@ import CommunitySection from '../Section'
 
 import data from '../data'
 
-import { Item, Items, Wrapper } from './styles'
+import { Item, Items, Wrapper } from '../styles'
 
 const { description, title } = data.section.contribute
 

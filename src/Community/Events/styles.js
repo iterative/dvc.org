@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Image = styled.img`
   width: 100%;
-  border-radius: 20px 20px 0 0;
+  border-radius: 5px 5px 0 0;
 `
 
 export const ImageWrapper = styled.a`
@@ -17,7 +17,7 @@ export const Item = styled.div`
   align-items: stretch;
 
   & + & {
-    margin-left: 30px;
+    margin-left: 20px;
   }
 `
 
