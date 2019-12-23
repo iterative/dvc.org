@@ -60,7 +60,7 @@ class TopMenu extends Component {
           <NextLink href="/" passHref>
             <Logo>
               <img
-                src="/static/img/logo.png"
+                src="/img/logo.png"
                 alt="dvc.org"
                 width={36}
                 height={23}

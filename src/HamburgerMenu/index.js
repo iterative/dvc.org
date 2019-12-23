@@ -66,7 +66,7 @@ export default class HamburgerMenu extends Component {
                 <NextLink href="/" passHref>
                   <Logo>
                     <img
-                      src="/static/img/logo_white.png"
+                      src="/img/logo_white.png"
                       alt="dvc.org"
                       width={34}
                     />
@@ -98,7 +98,7 @@ export default class HamburgerMenu extends Component {
                       </Link>
                     </NextLink>
                     <SocialLink
-                      src="/static/img/chat.png"
+                      src="/img/chat.png"
                       href="/chat"
                       click={this.itemClick('chat')}
                     >
@@ -119,7 +119,7 @@ export default class HamburgerMenu extends Component {
                       Blog
                     </Link>
                     <SocialLink
-                      src="/static/img/iterative.png"
+                      src="/img/iterative.png"
                       href="https://iterative.ai/"
                       click={this.itemClick('iterative')}
                     >
@@ -131,21 +131,21 @@ export default class HamburgerMenu extends Component {
                   <Heading>Social</Heading>
                   <Links>
                     <SocialLink
-                      src="/static/img/twitter.png"
+                      src="/img/twitter.png"
                       href="https://twitter.com/DVCorg "
                       click={this.itemClick('twitter')}
                     >
                       Twitter
                     </SocialLink>
                     <SocialLink
-                      src="/static/img/github.png"
+                      src="/img/github.png"
                       href="https://github.com/iterative/dvc"
                       click={this.itemClick('github')}
                     >
                       GitHub
                     </SocialLink>
                     <SocialLink
-                      src="/static/img/discord.png"
+                      src="/img/discord.png"
                       href="/chat"
                       click={this.itemClick('chat')}
                     >

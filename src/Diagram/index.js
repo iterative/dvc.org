@@ -21,7 +21,7 @@ const LearnMore = ({ href }) => (
       <a>
         <span>Learn&nbsp;more</span>
         <img
-          src="/static/img/learn_more_arrow.svg"
+          src="/img/learn_more_arrow.svg"
           width={18}
           height={18}
           alt=""
@@ -122,7 +122,7 @@ export class DiagramSection extends Component {
 
           <OnlyDesktop>
             <Graphic>
-              <img src="/static/img/graphic.png" alt="" />
+              <img src="/img/graphic.png" alt="" />
             </Graphic>
             <Columns>
               <ColumnOne />
@@ -136,21 +136,21 @@ export class DiagramSection extends Component {
               <Slider {...imagesSliderProps}>
                 <Slide>
                   <img
-                    src="/static/img/experiments.png"
+                    src="/img/experiments.png"
                     alt="ML project version control"
                   />
                   <ColumnOne fullWidth />
                 </Slide>
                 <Slide>
                   <img
-                    src="/static/img/graph.png"
+                    src="/img/graph.png"
                     alt="ML experiment management"
                   />
                   <ColumnTwo fullWidth />
                 </Slide>
                 <Slide>
                   <img
-                    src="/static/img/result.png"
+                    src="/img/result.png"
                     alt="Deployment & Collaboration"
                   />
                   <ColumnThree fullWidth />

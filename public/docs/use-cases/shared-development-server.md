@@ -7,7 +7,7 @@ storage on a server accessed by several users, in a way that enables almost
 instantaneous <abbr>workspace</abbr> restoration/switching speed for everyone –
 similar to `git checkout` for your code.
 
-![](/static/img/shared-server.png)
+![](/img/shared-server.png)
 
 ## Preparation
 

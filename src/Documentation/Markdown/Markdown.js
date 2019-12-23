@@ -295,7 +295,7 @@ const Content = styled.article`
       right: 0;
       width: 20px;
       height: 20px;
-      background-image: url('/static/img/click.png');
+      background-image: url('/img/click.png');
       content: '';
       font-family: monospace;
       transition: transform 200ms;
@@ -366,7 +366,7 @@ const Button = styled.a`
 
   i {
     display: inline-block;
-    background-image: url(/static/img/arrow.svg);
+    background-image: url(/img/arrow.svg);
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -425,7 +425,7 @@ export const GithubLink = styled(LightButton)`
   }
 
   i {
-    background-image: url(/static/img/github_icon.svg);
+    background-image: url(/img/github_icon.svg);
   }
 `
 
@@ -438,6 +438,6 @@ const ExternalLink = styled.a`
     height: 12px;
     margin-left: 1px;
     /* Icon source https://en.wikipedia.org/w/skins/Vector/images/external-link-ltr-icon.svg */
-    content: url(/static/img/external-link.svg);
+    content: url(/img/external-link.svg);
   }
 `

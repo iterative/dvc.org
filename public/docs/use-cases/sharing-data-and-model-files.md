@@ -9,7 +9,7 @@ supports Amazon S3, Microsoft Azure Blob Storage, Google Drive, Google Cloud
 Storage, SSH, HDFS, and other remote locations. The list is constantly growing.
 (For a complete list and configuration instructions, refer to `dvc remote add`.)
 
-![](/static/img/model-sharing-digram.png)
+![](/img/model-sharing-digram.png)
 
 As an example, let's take a look at how you could setup an S3
 [remote storage](/doc/command-reference/remote) for a <abbr>DVC project</abbr>,

@@ -13,7 +13,7 @@ and reuse.
 
 DVC has been built to address the reproducibility.
 
-![](/static/img/reproducibility.png)
+![](/img/reproducibility.png)
 
 Git branches should beautifully reflect the non-linear structure common to the
 ML process, where each hypothesis can be presented as a Git branch. However,
@@ -28,4 +28,4 @@ and this approach will not require storing binary files in your Git repository.
 The diagram below describes all the DVC commands and relationships between a
 local cache and remote storage.
 
-![](/static/img/flow-large.png)
+![](/img/flow-large.png)

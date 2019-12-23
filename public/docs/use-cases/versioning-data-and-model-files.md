@@ -13,7 +13,7 @@ for versioning. To actually store the data, DVC supports various types of
 [remote storage](/doc/command-reference/remote). This allows easily saving and
 sharing data alongside code.
 
-![](/static/img/model-versioning-diagram.png)
+![](/img/model-versioning-diagram.png)
 
 In this basic scenario, DVC is a better replacement for `git-lfs` (see
 [Related Technologies](/doc/understanding-dvc/related-technologies)) and for
@@ -111,7 +111,7 @@ If you run `git status` you will see that `data.dvc` is modified and currently
 points to the version `v1.0` of the dataset. Meanwhile, code and model files are
 their latest versions.
 
-![](/static/img/versioning.png)
+![](/img/versioning.png)
 
 To share your data with others you need to setup a
 [data storage](/doc/command-reference/remote). See the

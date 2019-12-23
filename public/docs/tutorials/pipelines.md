@@ -14,7 +14,7 @@ StackOverflow posts and trains the prediction model and saves it as an
 examples, tutorials, use cases if you want to cover other aspects of the DVC.
 The pipeline itself is a sequence of transformation we apply to the data file:
 
-![](/static/img/example-flow-2x.png)
+![](/img/example-flow-2x.png)
 
 DVC helps to describe these transformations and capture actual data involved -
 input dataset we are processing, intermediate results (useful if some
