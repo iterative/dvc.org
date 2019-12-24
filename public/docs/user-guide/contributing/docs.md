@@ -9,13 +9,12 @@ run the website.
 
 To contribute documentation you need to know these locations:
 
-- [Content](https://github.com/iterative/dvc.org/tree/master/docs)
-  (`/docs`):
+- [Content](https://github.com/iterative/dvc.org/tree/master/docs) (`/docs`):
   [Markdown](https://guides.github.com/features/mastering-markdown/) files of
   the different pages to render dynamically in the browser.
-- [Images](https://github.com/iterative/dvc.org/tree/master/img)
-  (`/img`): Add new images, gif, svg, etc here. Reference them from the
-  Markdown files like this: `![](/img/reproducibility.png)`.
+- [Images](https://github.com/iterative/dvc.org/tree/master/img) (`/img`): Add
+  new images, gif, svg, etc here. Reference them from the Markdown files like
+  this: `![](/img/reproducibility.png)`.
 - [Sections](https://github.com/iterative/dvc.org/tree/master/docs/sidebar.json)
   (`.../sidebar.json`): Edit it to register a new section for the navigation
   menu.
@@ -87,6 +86,25 @@ This will start the server on the default port, `3000`. Visit
 `http://localhost:3000/` and navigate to the docs in question. This will also
 enable the Git pre-commit hook that will be formatting your code and
 documentation files automatically.
+
+### Debugger
+
+The `yarn dev:debugger` script runs the local development server with Node's
+[`--inspect-brk` option](https://nodejs.org/en/docs/guides/debugging-getting-started/#command-line-options)
+in order for debuggers to connect to it (on the default port, 9229).
+
+> For example, use this launch configuration in **Visual Studio Code**:
+>
+> ```json
+> {
+>   "type": "node",
+>   "request": "launch",
+>   "name": "Launch via Yarn",
+>   "runtimeExecutable": "yarn",
+>   "runtimeArgs": ["dev:debugger"],
+>   "port": 9229
+> }
+> ```
 
 ### Running tests
 
