@@ -31,7 +31,7 @@ Advantages of using a DVC **data registry** project:
   data security. There are less chances someone can delete or rewrite a model,
   for example.
 - Storage Optimization: Track data
-  [shared](/doc/use-cases/share-data-and-model-files) by multiple projects
+  [shared](/doc/use-cases/sharing-data-and-model-files) by multiple projects
   centralized in a single location (with the ability to create distributed
   copies on other remotes). This simplifies data management and optimizes space
   requirements.
