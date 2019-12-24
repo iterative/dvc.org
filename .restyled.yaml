@@ -1,8 +1,8 @@
----
 restylers:
-  - name: prettier
-    image: restyled/restyler-prettier:v1.19.1
-    command: 'prettier'
-    arguments: '--write'
-    include: '{.,pages/**,src/**,public/**}/*.{js,jsx,md}'
-    interpreters: []
+  - prettier
+  # - name: prettier
+  #   image: restyled/restyler-prettier:v1.19.1
+  #   command: 'prettier'
+  #   arguments: '--write'
+  #   include: '{.,pages/**,src/**,public/**}/*.{js,jsx,md}'
+  #   interpreters: []
