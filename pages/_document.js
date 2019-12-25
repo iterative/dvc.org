@@ -58,11 +58,7 @@ export default class Page extends Document {
               content="width=device-width, initial-scale=1.0, maximum-scale=1.0,
               user-scalable=0"
             />
-            <link
-              rel="shortcut icon"
-              type="image/x-icon"
-              href="/favicon.ico"
-            />
+            <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
             <link
               rel="shortcut icon"
               type="image/vnd.microsoft.icon"
@@ -80,11 +76,7 @@ export default class Page extends Document {
               href="/favicon-16x16.png"
               sizes="16x16"
             />
-            <link
-              rel="stylesheet"
-              type="text/css"
-              href="/fonts/fonts.css"
-            />
+            <link rel="stylesheet" type="text/css" href="/fonts/fonts.css" />
             <link
               rel="stylesheet"
               type="text/css"

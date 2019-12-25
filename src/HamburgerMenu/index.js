@@ -65,11 +65,7 @@ export default class HamburgerMenu extends Component {
               <Top>
                 <NextLink href="/" passHref>
                   <Logo>
-                    <img
-                      src="/img/logo_white.png"
-                      alt="dvc.org"
-                      width={34}
-                    />
+                    <img src="/img/logo_white.png" alt="dvc.org" width={34} />
                   </Logo>
                 </NextLink>
               </Top>

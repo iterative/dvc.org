@@ -139,8 +139,7 @@ describe('SidebarMenu/helper', () => {
                 {
                   label: 'Subnested Item',
                   path: '/doc/item-name/nested-item/subnested-item',
-                  source:
-                    '/docs/item-name/nested-item/subnested-item.md',
+                  source: '/docs/item-name/nested-item/subnested-item.md',
                   tutorials: {},
                   prev: '/doc/item-name/nested-item',
                   next: undefined
@@ -276,8 +275,7 @@ describe('SidebarMenu/helper', () => {
                 {
                   label: 'Subnested Item',
                   path: '/doc/second-item/nested-item/subnested-item',
-                  source:
-                    '/docs/second-item/nested-item/subnested-item.md',
+                  source: '/docs/second-item/nested-item/subnested-item.md',
                   tutorials: {},
                   prev: '/doc/first-item',
                   next: undefined

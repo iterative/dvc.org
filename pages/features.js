@@ -61,10 +61,7 @@ export default function FeaturesPage() {
           </Feature>
           <Feature>
             <Icon>
-              <img
-                src="/img/features/icons/repro.svg"
-                alt="Reproducibility"
-              />
+              <img src="/img/features/icons/repro.svg" alt="Reproducibility" />
             </Icon>
             <Name>Reproducible</Name>
             <Description>
