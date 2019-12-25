@@ -10,9 +10,9 @@
     "test": "jest",
     "start": "NODE_ENV=production node server.js",
     "format-staged": "pretty-quick --staged --no-restage --bail",
-    "format-check": "prettier --check '{.,pages/**,src/**,public/**}/*.{js,jsx,md}'",
+    "format-check": "prettier --check '{.,pages/**,public/docs/**,src/**}/*.{js,md}'",
     "lint-check": "eslint src pages",
-    "format-all": "prettier --write '{.,pages/**,src/**,public/**}/*.{js,jsx,md}'",
+    "format-all": "prettier --write '{.,pages/**,public/docs/**,src/**}/*.{js,md}'",
     "format": "prettier --write"
   },
   "repository": {
@@ -78,6 +78,6 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint"
+    "*.js": "eslint"
   }
 }
