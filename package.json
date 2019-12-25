@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
-    "dev:debugger": "node --inspect-brk server.js",
+    "dev:debug": "node --inspect server.js",
     "build": "next build",
     "test": "jest",
     "start": "NODE_ENV=production node server.js",

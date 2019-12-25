@@ -87,10 +87,10 @@ This will start the server on the default port, `3000`. Visit
 enable the Git pre-commit hook that will be formatting your code and
 documentation files automatically.
 
-### Debugger
+### Debugging
 
-The `yarn dev:debugger` script runs the local development server with Node's
-[`--inspect-brk` option](https://nodejs.org/en/docs/guides/debugging-getting-started/#command-line-options)
+The `yarn dev:debug` script runs the local development server with Node's
+[`--inspect` option](https://nodejs.org/en/docs/guides/debugging-getting-started/#command-line-options)
 in order for debuggers to connect to it (on the default port, 9229).
 
 > For example, use this launch configuration in **Visual Studio Code**:
@@ -101,7 +101,7 @@ in order for debuggers to connect to it (on the default port, 9229).
 >   "request": "launch",
 >   "name": "Launch via Yarn",
 >   "runtimeExecutable": "yarn",
->   "runtimeArgs": ["dev:debugger"],
+>   "runtimeArgs": ["dev:debug"],
 >   "port": 9229
 > }
 > ```
