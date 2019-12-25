@@ -1,7 +1,15 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import { Content, Description, Header, Icon, Title, Wrapper } from './styles'
+import {
+  Content,
+  Description,
+  Header,
+  Icon,
+  Picture,
+  Title,
+  Wrapper
+} from './styles'
 
 export default function CommunitySection({
   background,
@@ -12,12 +20,13 @@ export default function CommunitySection({
   title
 }) {
   return (
-    <Wrapper background={background}>
+    <Wrapper hasBg={!!background}>
       <Header color={color}>
         <Title>{title}</Title>
         <Icon src={icon} />
       </Header>
       <Description>{description}</Description>
+      {background && <Picture src={background} />}
       <Content>{children}</Content>
     </Wrapper>
   )

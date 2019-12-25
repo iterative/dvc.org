@@ -12,6 +12,8 @@ import data from '../data'
 
 const { description, title } = data.section.meet
 
+import { FrameWrapper } from './styles'
+
 import {
   Comments,
   Item,
@@ -35,14 +37,15 @@ export default function CommunityMeet({ issues, theme, topics }) {
       >
         <Items>
           <Item>
-            <iframe
-              title="chat"
-              src="https://discordapp.com/widget?id=485586884165107732&theme=light&header=Text"
-              width="100%"
-              height="100%"
-              allowTransparency="true"
-              frameBorder="0"
-            ></iframe>
+            <FrameWrapper>
+              <iframe
+                title="chat"
+                src="https://discordapp.com/widget?id=485586884165107732&theme=light&header=Text"
+                width="100%"
+                height="100%"
+                frameBorder="0"
+              ></iframe>
+            </FrameWrapper>
           </Item>
           <Item>
             <CommunityBlock

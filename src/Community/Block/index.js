@@ -9,7 +9,7 @@ export default function Block({ action, children, icon, large, title }) {
   return (
     <Wrapper>
       {title && (
-        <Header large={large}>
+        <Header large={large} hasIcon={!!icon}>
           {title}
           {icon && <Icon src={icon} />}
         </Header>

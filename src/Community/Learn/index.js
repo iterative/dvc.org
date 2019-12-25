@@ -86,6 +86,7 @@ export default function CommunityLearn({ posts, theme }) {
                   See all docs
                 </CommunityButton>
               }
+              icon="/static/img/community/documentation.svg"
             >
               {documentation.map(({ url, title, description }) => (
                 <Line key={url}>
@@ -107,6 +108,7 @@ export default function CommunityLearn({ posts, theme }) {
                   </CommunityButton>
                 )
               }
+              icon="/static/img/community/blog.svg"
             >
               {posts.length ? (
                 posts.map(post => (
@@ -122,7 +124,10 @@ export default function CommunityLearn({ posts, theme }) {
             </CommunityBlock>
           </Item>
           <Item>
-            <CommunityBlock title="User Content">
+            <CommunityBlock
+              title="User Content"
+              icon="/static/img/community/user_content.svg"
+            >
               {userContent.map(({ url, title, author, date }) => (
                 <Line key={url}>
                   <Link color={theme.color} href={url}>

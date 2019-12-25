@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { media } from '../../styles'
 
 export const Action = styled.div`
   margin-top: 20px;
@@ -21,6 +22,17 @@ export const Header = styled.div`
   font-size: 24px;
   line-height: ${({ large }) => (large ? '54px' : '34px')};
   color: #24292e;
+
+  ${media.tablet`
+    ${({ hasIcon }) =>
+      !hasIcon &&
+      `
+      margin: 0;
+      border: none;
+    `}
+    font-size: 20px;
+    line-height: 30px;
+  `}
 `
 
 export const Icon = styled.img`
@@ -28,6 +40,7 @@ export const Icon = styled.img`
 `
 
 export const Wrapper = styled.div`
+  box-sizing: border-box;
   position: relative;
   display: flex;
   flex-direction: column;

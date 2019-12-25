@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { media } from '../styles'
 
 export const Comments = styled.a`
   display: inline-block;
@@ -22,6 +23,10 @@ export const Item = styled.div`
 
   & + & {
     margin-left: 20px;
+
+    ${media.tablet`
+      margin: 5px 0 0 0;
+    `}
   }
 `
 
@@ -29,6 +34,14 @@ export const Items = styled.div`
   display: flex;
   align-items: stretch;
   padding-top: 30px;
+
+  ${media.phablet`
+    padding: 0;
+  `}
+
+  ${media.tablet`
+    flex-direction: column;
+  `}
 `
 
 export const Line = styled.div`
@@ -42,6 +55,7 @@ export const Link = styled.a`
   font-family: BrandonGrotesqueBold;
   line-height: ${({ large }) => (large ? '34px' : '18px')};
   text-decoration: none;
+  overflow-wrap: break-word;
   color: ${({ color }) => color};
 
   &:hover {
@@ -63,4 +77,8 @@ export const Placeholder = styled.div`
 export const Wrapper = styled.div`
   max-width: 1000px;
   margin: 0 auto;
+
+  ${media.tablet`
+    padding: 0 5px;
+  `}
 `

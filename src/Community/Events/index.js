@@ -8,16 +8,9 @@ import CommunitySection from '../Section'
 
 import data from '../data'
 
-import {
-  Image,
-  ImageWrapper,
-  Item,
-  Items,
-  Line,
-  Link,
-  Meta,
-  Wrapper
-} from './styles'
+import { Item, Items, Line, Link, Wrapper } from '../styles'
+
+import { Image, ImageWrapper, Meta } from './styles'
 
 const { description, title } = data.section.events
 const { events } = data
@@ -52,7 +45,7 @@ export default function CommunityEvents({ theme }) {
                       <Image src={picture} alt="" />
                     </ImageWrapper>
                   )}
-                  <Link color={theme.color} href={url}>
+                  <Link color={theme.color} href={url} large={true}>
                     {title}
                   </Link>
                   <Meta>
