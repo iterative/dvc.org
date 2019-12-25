@@ -15,6 +15,7 @@ export default function CommunityContribute({ theme }) {
   return (
     <Wrapper>
       <CommunitySection
+        anchor="contribute"
         background="/static/img/community/contribute_bg.jpg"
         color={theme.color}
         description={description}

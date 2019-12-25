@@ -71,6 +71,7 @@ export default function CommunityLearn({ posts, theme }) {
   return (
     <Wrapper>
       <CommunitySection
+        anchor="learn"
         background="/static/img/community/learn_bg.jpg"
         color={theme.color}
         description={description}

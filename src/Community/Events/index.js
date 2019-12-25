@@ -24,6 +24,7 @@ export default function CommunityEvents({ theme }) {
   return (
     <Wrapper>
       <CommunitySection
+        anchor="events"
         color={theme.color}
         description={description}
         icon="/static/img/community/events.svg"

@@ -12,6 +12,7 @@ import {
 } from './styles'
 
 export default function CommunitySection({
+  anchor,
   background,
   color,
   children,
@@ -20,7 +21,7 @@ export default function CommunitySection({
   title
 }) {
   return (
-    <Wrapper hasBg={!!background}>
+    <Wrapper hasBg={!!background} id={anchor}>
       <Header color={color}>
         <Title>{title}</Title>
         <Icon src={icon} />
@@ -33,6 +34,7 @@ export default function CommunitySection({
 }
 
 CommunitySection.propTypes = {
+  anchor: PropTypes.string,
   background: PropTypes.string,
   color: PropTypes.string,
   children: PropTypes.node,

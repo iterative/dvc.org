@@ -42,15 +42,55 @@ export default function Nav({ mobile = false }) {
         >
           Blog
         </Link>
-        <NextLink href="/community" passHref>
-          <Link
-            onClick={() => {
-              logEvent('menu', 'community')
-            }}
-          >
-            Community
-          </Link>
-        </NextLink>
+        <DropdownWrapper>
+          <NextLink href="/community" passHref>
+            <Link
+              onClick={() => {
+                logEvent('menu', 'community')
+              }}
+            >
+              Community
+            </Link>
+          </NextLink>
+          <Dropdown>
+            <NextLink href="/community#meet" passHref>
+              <DropdownLink
+                onClick={() => {
+                  logEvent('menu', 'community')
+                }}
+              >
+                Meet the Community
+              </DropdownLink>
+            </NextLink>
+            <NextLink href="/community#contribute" passHref>
+              <DropdownLink
+                onClick={() => {
+                  logEvent('menu', 'community')
+                }}
+              >
+                Contribute
+              </DropdownLink>
+            </NextLink>
+            <NextLink href="/community#learn" passHref>
+              <DropdownLink
+                onClick={() => {
+                  logEvent('menu', 'community')
+                }}
+              >
+                Learn
+              </DropdownLink>
+            </NextLink>
+            <NextLink href="/community#events" passHref>
+              <DropdownLink
+                onClick={() => {
+                  logEvent('menu', 'community')
+                }}
+              >
+                Event
+              </DropdownLink>
+            </NextLink>
+          </Dropdown>
+        </DropdownWrapper>
         <NextLink href="/support" passHref>
           <Link
             onClick={() => {
@@ -79,6 +119,7 @@ const Link = styled.a`
   text-decoration: none;
   text-transform: uppercase;
 
+  display: block;
   font-family: BrandonGrotesqueBold, Tahoma, Arial;
   font-size: 13px;
   color: #838d93;
@@ -130,5 +171,41 @@ const GetStartedButton = styled.button`
 
   &:hover {
     background-color: #13a3bd;
+  }
+`
+
+const DropdownWrapper = styled.span`
+  position: relative;
+`
+
+const Dropdown = styled.div`
+  display: none;
+  position: absolute;
+  top: 32px;
+  left: 30px;
+  padding: 20px;
+  background: #fff;
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.18);
+
+  ${DropdownWrapper}:hover & {
+    display: block;
+  }
+`
+
+const DropdownLink = styled.a`
+  display: block;
+  font-size: 13px;
+  font-family: BrandonGrotesqueBold, Tahoma, Arial;
+  white-space: nowrap;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #838d93;
+
+  &:hover {
+    color: #40364d;
+  }
+
+  & + & {
+    margin-top: 10px;
   }
 `

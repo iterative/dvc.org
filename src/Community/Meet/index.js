@@ -29,6 +29,7 @@ export default function CommunityMeet({ issues, theme, topics }) {
   return (
     <Wrapper>
       <CommunitySection
+        anchor="meet"
         background="/static/img/community/meet_bg.jpg"
         color={theme.color}
         description={description}
