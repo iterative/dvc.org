@@ -20,12 +20,7 @@ const LearnMore = ({ href }) => (
     <NextLink href={href}>
       <a>
         <span>Learn&nbsp;more</span>
-        <img
-          src="/img/learn_more_arrow.svg"
-          width={18}
-          height={18}
-          alt=""
-        />
+        <img src="/img/learn_more_arrow.svg" width={18} height={18} alt="" />
       </a>
     </NextLink>
   </LearnMoreArea>
@@ -142,17 +137,11 @@ export class DiagramSection extends Component {
                   <ColumnOne fullWidth />
                 </Slide>
                 <Slide>
-                  <img
-                    src="/img/graph.png"
-                    alt="ML experiment management"
-                  />
+                  <img src="/img/graph.png" alt="ML experiment management" />
                   <ColumnTwo fullWidth />
                 </Slide>
                 <Slide>
-                  <img
-                    src="/img/result.png"
-                    alt="Deployment & Collaboration"
-                  />
+                  <img src="/img/result.png" alt="Deployment & Collaboration" />
                   <ColumnThree fullWidth />
                 </Slide>
               </Slider>

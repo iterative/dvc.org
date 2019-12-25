@@ -65,10 +65,7 @@ export default function Footer(props) {
             <Heading>Company</Heading>
             <Links>
               <Link href="https://blog.dvc.org/">Blog</Link>
-              <SocialLink
-                src="/img/iterative.png"
-                href="https://iterative.ai/"
-              >
+              <SocialLink src="/img/iterative.png" href="https://iterative.ai/">
                 Iterative.ai
               </SocialLink>
             </Links>
