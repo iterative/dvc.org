@@ -95,7 +95,7 @@ app.prepare().then(() => {
         )
       })
       res.end()
-    } else if (/^\/doc.*/i.test(pathname)) {
+    } else if (/^\/doc(?!s\/).*/i.test(pathname)) {
       // path /doc*/... -> /doc/...
       let normalized_pathname = pathname.replace(/^\/doc[^?/]*/i, '/doc')
       if (normalized_pathname !== pathname) {
@@ -107,6 +107,7 @@ app.prepare().then(() => {
         })
         res.end()
       } else {
+        // Force 404 response for inexistent /doc/... sidebar items.
         if (!getItemByPath(pathname)) {
           res.statusCode = 404
         }
