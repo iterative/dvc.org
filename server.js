@@ -13,8 +13,8 @@ const { getItemByPath } = require('./src/utils/sidebar')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
-const port = process.env.PORT || 3000
 const handle = app.getRequestHandler()
+const port = process.env.PORT || 3000
 
 app.prepare().then(() => {
   createServer((req, res) => {
@@ -96,7 +96,7 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (/^\/doc(?!s\/).*/i.test(pathname)) {
-      // path /doc*/... -> /doc/...
+      // path /doc*/... -> /doc/... except for /docs/* (static .md files)
       let normalized_pathname = pathname.replace(/^\/doc[^?/]*/i, '/doc')
       if (normalized_pathname !== pathname) {
         res.writeHead(301, {
@@ -117,10 +117,9 @@ app.prepare().then(() => {
     } else {
       handle(req, res, parsedUrl)
     }
-
-    // Invokes server `createServer`
   }).listen(port, err => {
+    // Invokes `createServer` server.
     if (err) throw err
-    console.info('> Ready on http://localhost:3000')
+    console.info(`> Ready on localhost:${port}`)
   })
 })
