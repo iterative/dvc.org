@@ -26,7 +26,7 @@ function calculateHeight({ activePaths, path }) {
   for (let i = 0; i < reversePaths.length; i++) {
     const current = reversePaths[i]
 
-    height += heightMap[current]
+    height += heightMap[current] ? heightMap[current] : 0
 
     if (path === current) break
   }
