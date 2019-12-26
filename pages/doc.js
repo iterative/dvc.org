@@ -2,7 +2,7 @@
 
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import Error from 'next/error'
@@ -15,7 +15,7 @@ import SearchForm from '../src/SearchForm'
 import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
 import Markdown from '../src/Documentation/Markdown/Markdown'
 import RightPanel from '../src/Documentation/RightPanel/RightPanel'
-import { structure, getItemByPath } from '../src/utils/sidebar'
+import { getItemByPath, structure } from '../src/utils/sidebar'
 
 import { media } from '../src/styles'
 

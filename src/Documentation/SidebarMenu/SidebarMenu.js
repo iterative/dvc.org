@@ -11,7 +11,7 @@ import DownloadButton from '../../DownloadButton'
 import includes from 'lodash.includes'
 // styles
 import styled from 'styled-components'
-import { media, OnlyDesktop } from '../../styles'
+import { OnlyDesktop, media } from '../../styles'
 // sidebar helpers
 import { getParentsListFromPath } from '../../utils/sidebar'
 

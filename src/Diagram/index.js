@@ -5,12 +5,12 @@ import PropTypes from 'prop-types'
 import NextLink from 'next/link'
 import styled from 'styled-components'
 import {
-  media,
-  container,
-  columns,
-  column,
   OnlyDesktop,
-  OnlyMobile
+  OnlyMobile,
+  column,
+  columns,
+  container,
+  media
 } from '../styles'
 import { Element } from 'react-scroll'
 import Slider from 'react-slick'

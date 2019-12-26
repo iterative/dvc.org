@@ -19,6 +19,7 @@
       "error",
       { "code": 80, "ignoreTemplateLiterals": true, "ignoreUrls": true }
     ],
-    "no-tabs": "error"
+    "no-tabs": "error",
+    "sort-imports": "warn"
   }
 }

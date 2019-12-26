@@ -5,7 +5,7 @@ import color from 'color'
 
 import Head from 'next/head'
 
-import { container, media, OnlyDesktop } from '../src/styles'
+import { OnlyDesktop, container, media } from '../src/styles'
 
 import Page from '../src/Page'
 import Hero from '../src/Hero'
