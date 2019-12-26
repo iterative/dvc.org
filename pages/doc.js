@@ -1,10 +1,13 @@
 /* global docsearch:readonly */
 
+import fetch from 'isomorphic-fetch'
+import kebabCase from 'lodash.kebabcase'
 import React, { useCallback, useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import Error from 'next/error'
 import Router from 'next/router'
-// components
+
 import Page from '../src/Page'
 import { HeadInjector } from '../src/Documentation/HeadInjector'
 import Hamburger from '../src/Hamburger'
@@ -12,13 +15,8 @@ import SearchForm from '../src/SearchForm'
 import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
 import Markdown from '../src/Documentation/Markdown/Markdown'
 import RightPanel from '../src/Documentation/RightPanel/RightPanel'
-// utils
-import fetch from 'isomorphic-fetch'
-import kebabCase from 'lodash.kebabcase'
-// sidebar data and helpers
 import { structure, getItemByPath } from '../src/utils/sidebar'
-// styles
-import styled from 'styled-components'
+
 import { media } from '../src/styles'
 
 const ROOT_ELEMENT = 'bodybag'
@@ -158,6 +156,7 @@ Documentation.getInitialProps = async ({ asPath, req }) => {
       markdown: text
     }
   } catch {
+    console.error(`Can't fetch ${protocol}//${host}${item.source}`)
     window.location.reload()
   }
 }
