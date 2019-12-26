@@ -80,8 +80,12 @@ export const Link = styled.a`
 `
 
 export const Meta = styled.div`
-  margin-top: 5px;
-  line-height: 30px;
+  line-height: 20px;
+
+  ${media.tablet`
+    margin-top: 5px;
+    line-height: 30px;
+  `}
 `
 
 export const Placeholder = styled.div`
