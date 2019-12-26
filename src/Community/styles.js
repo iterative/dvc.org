@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { media } from '../styles'
 
 export const Comments = styled.a`
+  box-sizing: border-box;
   display: inline-block;
   height: 20px;
   padding: 0 5px;
@@ -9,6 +10,11 @@ export const Comments = styled.a`
   text-decoration: none;
   color: inherit;
   background-color: #d8dfe3;
+
+  ${media.tablet`
+    height: 30px;
+    background-color: #eef4f8;
+  `}
 
   &:hover {
     opacity: 0.7;
@@ -35,7 +41,7 @@ export const Items = styled.div`
   align-items: stretch;
   padding-top: 30px;
 
-  ${media.phablet`
+  ${media.tablet`
     padding: 0;
   `}
 
@@ -47,6 +53,10 @@ export const Items = styled.div`
 export const Line = styled.div`
   & + & {
     margin-top: 20px;
+
+    ${media.tablet`
+      margin-top: 25px;
+  `}
   }
 `
 
@@ -58,13 +68,20 @@ export const Link = styled.a`
   overflow-wrap: break-word;
   color: ${({ color }) => color};
 
+  ${media.tablet`
+    font-size: ${({ large }) => (large ? '24px' : '20px')};
+    font-family: BrandonGrotesque;
+    line-height: ${({ large }) => (large ? '34px' : '30px')};
+  `}
+
   &:hover {
     opacity: 0.7;
   }
 `
 
 export const Meta = styled.div`
-  line-height: 20px;
+  margin-top: 5px;
+  line-height: 30px;
 `
 
 export const Placeholder = styled.div`

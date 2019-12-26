@@ -10,6 +10,11 @@ export const Content = styled.div`
   font-size: 16px;
   line-height: 24px;
   color: #838d93;
+
+  ${media.tablet`
+    font-size: 20px;
+    line-height: 30px;
+  `}
 `
 
 export const Header = styled.div`
@@ -23,20 +28,18 @@ export const Header = styled.div`
   line-height: ${({ large }) => (large ? '54px' : '34px')};
   color: #24292e;
 
-  ${media.tablet`
-    ${({ hasIcon }) =>
-      !hasIcon &&
-      `
-      margin: 0;
-      border: none;
-    `}
-    font-size: 20px;
-    line-height: 30px;
+  ${media.phablet`
+    margin: 0;
+    border: none;
   `}
 `
 
 export const Icon = styled.img`
   margin: 0 -2px 0 0;
+
+  ${media.phablet`
+    display: none;
+  `}
 `
 
 export const Wrapper = styled.div`
@@ -49,4 +52,9 @@ export const Wrapper = styled.div`
   padding: 10px 20px 20px;
   border-radius: 5px;
   background: #eef4f8;
+
+  ${media.phablet`
+    padding: 10px 10px 20px;
+    background: none;
+  `}
 `
