@@ -6,8 +6,8 @@
 // discussions on universal Webpack vs universal Babel.)
 
 const { createServer } = require('http')
-const { parse } = require('url')
 const next = require('next')
+const { parse } = require('url')
 const querystring = require('querystring')
 const { getItemByPath } = require('./src/utils/sidebar')
 
