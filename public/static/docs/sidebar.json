@@ -157,6 +157,10 @@
         "slug": "running-dvc-on-windows"
       },
       {
+        "label": "Troubleshooting guide",
+        "slug": "troubleshooting"
+      },
+      {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
       }
