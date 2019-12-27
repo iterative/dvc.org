@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import NextLink from 'next/link'
-import { media } from '../styles'
 
 import Hamburger from '../Hamburger'
+import NextLink from 'next/link'
+import PropTypes from 'prop-types'
 import { logEvent } from '../utils/ga'
+import { media } from '../styles'
+import styled from 'styled-components'
 
 const SocialLink = ({ src, href, click, children }) => (
   <Link src={src} href={href} onClick={click}>

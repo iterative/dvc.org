@@ -1,13 +1,12 @@
 import React, { useEffect } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { useRouter } from 'next/router'
-// components
-import TopMenu from '../TopMenu'
+import { initGA, logPageView } from '../utils/ga'
+
 import Footer from '../Footer'
 import HamburgerMenu from '../HamburgerMenu'
-// utils
-import { initGA, logPageView } from '../utils/ga'
+import PropTypes from 'prop-types'
+import TopMenu from '../TopMenu'
+import styled from 'styled-components'
+import { useRouter } from 'next/router'
 
 export default function Layout({ children, enableSmoothScroll }) {
   const router = useRouter()

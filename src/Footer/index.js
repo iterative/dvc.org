@@ -1,8 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import NextLink from 'next/link'
 import { columns, container, media } from '../styles'
+
+import NextLink from 'next/link'
+import PropTypes from 'prop-types'
+import React from 'react'
+import styled from 'styled-components'
 
 const SocialLink = ({ src, href, children }) => (
   <Link src={src} href={href}>
