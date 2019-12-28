@@ -128,9 +128,9 @@ export default function FeaturesPage() {
             <Description>
               No matter which programming language or libraries are in use or
               how code is structured, reproducibility and pipelines are based on
-              input and output files. Python, R, Julia, Scala Spark, custom
-              binary, Notebooks, flatfiles/TensorFlow, PyTorch, etc. are all
-              supported.
+              input and output files or directories. Python, R, Julia, Scala
+              Spark, custom binary, Notebooks, flatfiles/TensorFlow, PyTorch,
+              etc. are all supported.
             </Description>
           </Feature>
           <Feature>

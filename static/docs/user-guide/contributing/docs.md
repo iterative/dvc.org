@@ -16,7 +16,7 @@ To contribute documentation you need to know these locations:
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
   (`/static/img`): Add new images, gif, svg, etc here. Reference them from the
   Markdown files like this: `![](/static/img/reproducibility.png)`.
-- [Sections](https://github.com/iterative/dvc.org/tree/master/src/Documentation/sidebar.json)
+- [Sections](https://github.com/iterative/dvc.org/tree/master/static/docs/sidebar.json)
   (`.../sidebar.json`): Edit it to register a new section for the navigation
   menu.
 
@@ -108,14 +108,14 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
   [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
   plugin for this.
 
-- We use [Prettier](https://prettier.io/) default conventions to format our
-  source code. The formatting of staged files will automatically be done by the
-  Git pre-commit hook we have configured. You may also run `yarn format-staged`
-  manually before committing changes if you prefer. More
-  [advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
-  available through `yarn`, for example
-  `yarn prettier --write '{static,src}/**/*.{js,jsx,md}'` formats all the
-  JavaScript and Markdown files.
+- We use [Prettier](https://prettier.io/) to format our source code (see
+  [its configuration](https://github.com/iterative/dvc.org/blob/master/.prettierrc)).
+  The formatting of staged files will automatically be done by a Git pre-commit
+  hook. You may also run `yarn format <file>` (format specific file/pattern),
+  `yarn format-staged` (all staged files), or `yarn format-all` (all md,js,jsx
+  files) before committing changes if needed.
+  ([Advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
+  available through `yarn prettier ...`)
 
 - Markdown: Using `dvc <command>`, the docs engine will create a link to that
   command automatically. (No need to use `[]()` explicitly to create them.)

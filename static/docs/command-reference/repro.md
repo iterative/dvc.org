@@ -37,7 +37,8 @@ omitted, `Dvcfile` will be assumed.
 
 By default, this command recursively searches in pipeline stages, starting from
 the `targets`, to determine which ones have changed. Then it executes the
-corresponding commands.
+corresponding commands.<br /> Note that DVC removes cached <abbr>outputs</abbr>
+before running the stages that produce them.
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
 files, intermediate or final results. It saves all the data files, intermediate

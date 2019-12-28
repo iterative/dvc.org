@@ -113,7 +113,7 @@ export default class HamburgerMenu extends Component {
                   <Heading>Company</Heading>
                   <Links>
                     <Link
-                      href="https://blog.dataversioncontrol.com/"
+                      href="https://blog.dvc.org/"
                       onClick={this.itemClick('blog')}
                     >
                       Blog

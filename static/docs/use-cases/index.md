@@ -12,9 +12,9 @@ range from basic to more advanced:
   goes over the basic collaboration possibilities enabled by DVC.
 - [Shared Development Server](/doc/use-cases/shared-development-server) provides
   instructions to setup a single development machine for teams that prefer so.
-- [Data Registry](/doc/use-cases/data-registry) explains how to use a <abbr>DVC
-  repository<abbr> as a shared hub for reusing datasets or models among several
-  projects.
+- [Data Registries](/doc/use-cases/data-registries) explains how to use a
+  <abbr>DVC repository<abbr> as a shared hub for reusing datasets or models
+  among several projects.
 
 > This list of use cases is **not** exhaustive. We keep reviewing our docs and
 > will include interesting scenarios that surface in the community. Please,

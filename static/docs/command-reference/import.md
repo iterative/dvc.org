@@ -1,10 +1,10 @@
 # import
 
-Download or copy an <abbr>output</abbr> file or directory from any <abbr>DVC
-repository</abbr> (e.g. hosted on GitHub) into the <abbr>workspace</abbr>. DVC
-creates a [DVC-file](/doc/user-guide/dvc-file-format) with information about the
-data source, which can later be used to [update](/doc/command-reference/update)
-the import.
+Download a file or directory from any <abbr>DVC repository</abbr> (e.g. hosted
+on GitHub) into the <abbr>workspace</abbr>. This also creates a
+[DVC-file](/doc/user-guide/dvc-file-format) with information about the data
+source, which can later be used to [update](/doc/command-reference/update) the
+import.
 
 > See also `dvc get`, that corresponds to the first step this command performs
 > (just download the data).
@@ -30,17 +30,19 @@ the data source changes. (See `dvc update`.)
 The `url` argument specifies the address of the Git repository containing the
 source <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
 online repositories (e.g. `[user@]server:project.git`). `url` can also be a
-local file system path to an "offline" repository (in this case instead of
-downloading, DVC may copy the target data from the external source project or
-it's cache).
+local file system path to an "offline" repository (in this case and if it
+doesn't have a default remote set up, instead of downloading, DVC will try to
+copy the target data from the external source project or its
+<abbr>cache</abbr>).
 
-The `path` argument of this command is used to specify the location of the data
-to be downloaded within the source project. It should point to a data file or
-directory tracked by that project – specified in one of the
-[DVC-files](/doc/user-guide/dvc-file-format) of the repository at `url`. (You
-will not find data files directly in the external Git repository.) The source
-project should have a default [DVC remote](/doc/command-reference/remote)
-configured, containing them.)
+The `path` argument of this command is used to specify the location, within the
+source repository at `url`, of the target(s) to be downloaded. It can point to
+any file or directory in the source project, including <abbr>outputs</abbr>
+tracked by DVC as well as files tracked by Git. Note that for the former, data
+should be specified in one of the [DVC-files](/doc/user-guide/dvc-file-format)
+of the source repository. (In this case, a default
+[DVC remote](/doc/command-reference/remote) needs to be configured in the
+project, containing the actual data.)
 
 > See `dvc import-url` to download and tack data from other supported URLs.
 
@@ -59,7 +61,7 @@ DVC efficiently determining whether the local copy is out of date.
 To actually [track the data](https://dvc.org/doc/get-started/add-files),
 `git add` (and `git commit`) the import stage.
 
-Note that import stages are considered always "locked", meaning that if you run
+Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` or
 [re-import](#example-fixed-revisions-re-importing) them to update the downloaded
 data artifact from the source project.
@@ -222,5 +224,5 @@ outs:
     persist: false
 ```
 
-See a full explanation in our [Data Registry](/doc/use-cases/data-registry) use
-case.
+See a full explanation in our [Data Registries](/doc/use-cases/data-registries)
+use case.

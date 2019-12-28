@@ -155,7 +155,7 @@ checkout the `6-featurization` tag:
 $ git checkout 6-featurization
 Note: checking out '6-featurization'.
 
-You are in 'detached HEAD' state.  ...
+You are in 'detached HEAD' state...
 
 $ dvc status
 
@@ -216,7 +216,7 @@ We can now repeat the command run earlier, to see the difference.
 $ git checkout 6-featurization
 Note: checking out '6-featurization'.
 
-You are in 'detached HEAD' state. ...
+You are in 'detached HEAD' state...
 
 HEAD is now at d13ba9a add featurization stage
 
@@ -257,8 +257,7 @@ helpfully informs us the workspace is out of sync. We should therefore run the
 
 ```dvc
 $ dvc repro evaluate.dvc
-
-... much output
+...
 To track the changes with git run:
 
     git add featurize.dvc train.dvc evaluate.dvc
