@@ -17,39 +17,35 @@ positional arguments:
 ## Description
 
 [DVC-files](/doc/user-guide/dvc-file-format) in a <abbr>project</abbr> specify
-which instance of each data file or directory is to be used, using the checksum
-saved in the `outs` fields. The `dvc checkout` command updates the workspace
-data to match with the <abbr>cached</abbr> files corresponding to those
-checksums.
+which instance of each data file or directory should be used, with the checksums
+saved in the `outs` field. The `dvc checkout` command updates the workspace data
+to match with the <abbr>cached</abbr> files that correspond to those checksums.
 
-Using an SCM like Git, the DVC-files are kept under version control. At a given
-branch or tag of the SCM repository, the DVC-files will contain checksums for
-the corresponding data files kept in the cache. After an SCM command like
-`git checkout` is run, the DVC-files will change to the state at the specified
-branch or commit or tag. Afterwards, the `dvc checkout` command is required in
-order to synchronize the data files with the currently checked out DVC-files.
+When using Git, the DVC-files can be kept under version control. DVC-files in
+different branches or tags may contain checksums for different data files, saved
+by DVC in the project's cache. The DVC-files in the workspace, or the value of
+their `outs` fields can change when using `git checkout`. The `dvc checkout`
+command is required in this situation, in order to synchronize the data files
+(tracked by DVC) with the checked out DVC-files.
 
-This command must be executed after `git checkout` since Git doesn't track files
-that are under DVC control. For convenience a Git hook is available, simply by
-running `dvc install`, that will automate running `dvc checkout` after
-`git checkout`. See `dvc install` for more information.
+For convenience a Git hook is available to automate running `dvc checkout` after
+`git checkout`. To install it, use `dvc install`.
 
 The execution of `dvc checkout` does:
 
-- Scan the `outs` entries in DVC-files to compare with the currently checked out
-  data files. The scanned DVC-files is limited by the listed `targets` (if any)
-  on the command line. And if the `--with-deps` option is specified, it scans
-  backward from the given `targets` in the corresponding
-  [pipeline](/doc/command-reference/pipeline).
+- Scan the `outs` entries in DVC-files to compare with the <abbr>outputs</abbr>
+  currently in the <abbr>workspace</abbr>. Scanning is limited to the given
+  `targets` (if any).
 
-- For any data files where the checksum doesn't match their DVC-file entry, the
-  data file is restored from the cache. The link strategy used (`reflink`,
-  `hardlink`, `symlink`, or `copy`) depends on the OS and the configured value
-  for `cache.type` – See `dvc config cache`.
+- Missing data files or directories, or those with checksums that don't match
+  any DVC-file, are restored from the cache. If the `--relink` option is used,
+  all <abbr>outputs</abbr> in the workspace are recreated (overwritten). The
+  file linking strategy used (`reflink`, `hardlink`, `symlink`, or `copy`)
+  depends on the OS, and on the configured value for `cache.type`. (See
+  `dvc config cache`.)
 
-Note that this command by default tries NOT to copy files between the cache and
-the workspace, using reflinks instead when supported by the file system. (Refer
-to
+By default, this command tries not to copy files between the cache and the
+workspace, using reflinks instead when supported by the file system. (Refer to
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).)
 The next linking strategy default value is `copy` though, so unless other file
 link types are manually configured in `cache.type` (using `dvc config`), files
@@ -64,13 +60,10 @@ restoring any file size will be almost instantaneous.
 > the faster link types available. These warnings can be turned off setting the
 > `cache.slow_link_warning` config option to `false` with `dvc config cache`.
 
-The output of `dvc checkout` does not list which data files were restored. It
-does report removed files and files that DVC was unable to restore because
-they're missing from the <abbr>cache</abbr>.
-
 This command will fail to checkout files that are missing from the cache. In
-such a case, `dvc checkout` prints a warning message. Any files that can be
-checked out without error will be restored.
+such a case, `dvc checkout` prints a warning message. It also lists removed
+files. Any files that can be checked out without error will be restored without
+being reported individually.
 
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
@@ -95,11 +88,11 @@ be pulled from remote storage using `dvc pull`.
   remove files that don't match those DVC-file references or are missing from
   cache. (They are not "committed", in DVC terms.)
 
-- `--relink` - recreates links or copies from cache to workspace for all data
-  files in the workspace, including the ones normally checked out by this
-  command, as well as existing ones that already have matching checksums in
-  current DVC-files. This ensures the link types of all the data files in the
-  workspace match the project's
+- `--relink` - recreates (overwrites) links or copies from cache to workspace
+  for all <abbr>outputs</abbr> in the workspace, including the ones normally
+  checked out by this command, **as well as existing ones** with matching
+  checksums in current DVC-files. This ensures the link types of all the data
+  files in the workspace match the project's
   [`cache.type`](/doc/command-reference/config#cache).
 
 - `-h`, `--help` - shows the help message and exit.
