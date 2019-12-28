@@ -55,7 +55,7 @@ corresponding config file.
 
 ## Configuration sections
 
-The following config sections are written by this command to the project config 
+The following config sections are written by this command to the project config
 file (in `.dvc/config` by default), and they support the options below:
 
 ### core
@@ -133,6 +133,10 @@ for more details.) This section contains the following options:
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
   for a full explanation of each one.
 
+  To re-create the file links in the workspace after this option, please use
+  `dvc checkout --relink`. See
+  [checkout options](/doc/command-reference/checkout#options) for more details.
+
 - `cache.slow_link_warning` - used to turn off the warnings about having a slow
   cache link type. These warnings are thrown by `dvc pull` and `dvc checkout`
   when linking files takes longer than usual, to remind them that there are
@@ -169,8 +173,8 @@ for more details.) This section contains the following options:
 
 ### state
 
-See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
-more about the state file (database) that is used for optimization.
+See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
+learn more about the state file (database) that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database, which
   affects the physical size of the state file itself, as well as the performance
