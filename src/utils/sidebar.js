@@ -1,7 +1,7 @@
 /* eslint-env node */
 
 const startCase = require('lodash.startcase')
-const sidebar = require('../../public/docs/sidebar.json')
+const sidebar = require('../../public/static/docs/sidebar.json')
 
 /*
   We will use this helper to normalize sidebar structure and create
@@ -12,7 +12,7 @@ const sidebar = require('../../public/docs/sidebar.json')
   {
     label: "Add Files or Directories",
     path: "/doc/get-started/add-files",
-    source: "/docs/get-started/add-files.md",
+    source: "/static/docs/get-started/add-files.md",
     prev: "/doc/get-started/configure",
     next: "/doc/get-started/share-data",
     tutorials: {
@@ -23,7 +23,7 @@ const sidebar = require('../../public/docs/sidebar.json')
 */
 
 const PATH_ROOT = '/doc/'
-const FILE_ROOT = '/docs/'
+const FILE_ROOT = '/static/docs/'
 const FILE_EXTENSION = '.md'
 
 // Inner helpers

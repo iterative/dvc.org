@@ -95,9 +95,13 @@ app.prepare().then(() => {
         )
       })
       res.end()
-    } else if (/^\/doc(?!s\/).*/i.test(pathname)) {
-      // path /doc*/... -> /doc/... except for /docs/* (static .md files)
-      let normalized_pathname = pathname.replace(/^\/doc[^?/]*/i, '/doc')
+    } else if (/^\/doc.*/i.test(pathname)) {
+      // path /doc*/{item} -> /doc/{item} and trim trailing / if present
+      let normalized_pathname = pathname.replace(
+        /^(\/doc[^/?]*)\/(.*[^/])?\/?/i,
+        '/doc/$2'
+      )
+
       if (normalized_pathname !== pathname) {
         res.writeHead(301, {
           Location:

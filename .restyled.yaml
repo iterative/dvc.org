@@ -4,5 +4,5 @@ restylers:
     include:
       - './*.{js,md}'
       - 'pages/**/*.js'
-      - 'public/docs/**/*.{js,md}'
+      - 'public/static/docs/**/*.{js,md}'
       - 'src/**/*.js'
