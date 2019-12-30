@@ -73,7 +73,7 @@ app.prepare().then(() => {
     } else if (/^\/doc\/tutorial\/(.*)?/.test(pathname)) {
       // path /doc/tutorial/... -> /doc/tutorials/deep/...
       res.writeHead(301, {
-        Location: req.url.replace('/doc/tutorial/', '/doc/tutorials/deep/')
+        Location: req.url.replace('/doc/tutorial/', '/doc/tutorials/deep')
       })
       res.end()
     } else if (pathname === '/doc/tutorial' || pathname === '/doc/tutorial/') {
@@ -110,7 +110,7 @@ app.prepare().then(() => {
         })
         res.end()
       } else {
-        // Force 404 response for inexistent /doc/... sidebar items.
+        // Force 404 response for any inexistent /doc/{item}.
         if (!getItemByPath(pathname)) {
           res.statusCode = 404
         }
