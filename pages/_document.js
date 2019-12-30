@@ -77,7 +77,11 @@ export default class Page extends Document {
               href="/favicon-16x16.png"
               sizes="16x16"
             />
-            <link rel="stylesheet" type="text/css" href="/fonts/fonts.css" />
+            <link
+              rel="stylesheet"
+              type="text/css"
+              href="/static/fonts/fonts.css"
+            />
             <link
               rel="stylesheet"
               type="text/css"
