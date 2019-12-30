@@ -95,10 +95,10 @@ app.prepare().then(() => {
         )
       })
       res.end()
-    } else if (/^\/doc.*/i.test(pathname)) {
+    } else if (/^\/(doc|docs|documentation)\//i.test(pathname)) {
       // path /doc*/{item} -> /doc/{item} and trim trailing / if present
       let normalized_pathname = pathname.replace(
-        /^(\/doc[^/?]*)(\/.*[^/])?\/*/i,
+        /^(\/[^/?]*)(\/.*[^/])?[/?]*/i,
         '/doc$2'
       )
       if (normalized_pathname !== pathname) {
