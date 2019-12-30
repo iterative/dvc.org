@@ -64,7 +64,7 @@ export default class LandingHero extends Component {
             <WatchButton onClick={this.scrollToVideo}>
               <ActionIcon>
                 <img
-                  src="/img/play-icon.svg"
+                  src="/static/img/play-icon.svg"
                   alt="Watch video"
                   width={20}
                   height={20}

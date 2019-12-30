@@ -9,7 +9,7 @@ export const META_DESCRIPTION =
   'experiments.'
 export const META_KEYWORDS =
   'data version control machine learning models management'
-export const META_SOCIAL_IMAGE = `https://${WEBSITE_HOST}/img/social-share.png`
+export const META_SOCIAL_IMAGE = `https://${WEBSITE_HOST}/static/img/social-share.png`
 
 export const FORUM_URL = `https://discuss.${WEBSITE_HOST}`
 export const BLOG_URL = `https://blog.${WEBSITE_HOST}`

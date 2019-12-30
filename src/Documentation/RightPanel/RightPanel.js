@@ -241,13 +241,13 @@ const ExternalButton = styled(LightButton)`
 
 const GithubButton = styled(ExternalButton)`
   i {
-    background-image: url(/img/github_icon.svg);
+    background-image: url(/static/img/github_icon.svg);
   }
 `
 
 const DiscordButton = styled(ExternalButton)`
   i {
-    background-image: url(/img/discord.svg);
+    background-image: url(/static/img/discord.svg);
     width: 1.2em;
     height: 1.2em;
   }

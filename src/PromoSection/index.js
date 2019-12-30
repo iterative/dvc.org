@@ -21,7 +21,7 @@ export default function PromoSection() {
   return (
     <Wrapper>
       <Container id="video">
-        <Glyph src="/img/glyph-3.svg" gid={'topleft'} />
+        <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
         <Title>For data scientists, by data scientists</Title>
         <Buttons>
           <Button first onClick={goToDocGetStarted}>
@@ -29,7 +29,7 @@ export default function PromoSection() {
           </Button>
           <Button onClick={goToFeatures}>Full Features</Button>
         </Buttons>
-        <Glyph src="/img/glyph-4.svg" gid={'rigthbottom'} />
+        <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
       </Container>
     </Wrapper>
   )
@@ -90,7 +90,7 @@ const Button = styled.button`
 
   color: #ffffff;
 
-  background: url('/img/arrow_right_white.svg') right center no-repeat;
+  background: url('/static/img/arrow_right_white.svg') right center no-repeat;
   background-position-x: 147px;
   transition: 0.2s background-color ease-out;
 
@@ -107,7 +107,7 @@ const Button = styled.button`
     background-color: #ffffff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
 
-    background-image: url('/img/arrow_right_dark.svg');
+    background-image: url('/static/img/arrow_right_dark.svg');
     transition: 0.2s background-color ease-out;
 
     &:hover {

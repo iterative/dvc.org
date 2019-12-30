@@ -62,23 +62,23 @@ export default class Page extends Document {
             <link
               rel="shortcut icon"
               type="image/x-icon"
-              href="/img/favicon.ico"
+              href="/static/img/favicon.ico"
             />
             <link
               rel="shortcut icon"
               type="image/vnd.microsoft.icon"
-              href="/img/favicon.ico"
+              href="/static/img/favicon.ico"
             />
             <link
               rel="icon"
               type="image/png"
-              href="/img/favicon-32x32.png"
+              href="/static/img/favicon-32x32.png"
               sizes="32x32"
             />
             <link
               rel="icon"
               type="image/png"
-              href="/img/favicon-16x16.png"
+              href="/static/img/favicon-16x16.png"
               sizes="16x16"
             />
             <link

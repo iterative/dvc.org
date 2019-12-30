@@ -18,7 +18,7 @@ predicting tags for a given StackOverflow question. For example, we might want a
 classifier that can classify (or predict) posts about Python by tagging them
 with `python`.
 
-![](/img/example-flow-2x.png)
+![](/static/img/example-flow-2x.png)
 
 This is a natural language processing context, but NLP isn't the only area of
 data science where DVC can help. DVC is designed to be agnostic of frameworks,

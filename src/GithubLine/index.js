@@ -16,10 +16,14 @@ export default function GithubLine() {
 
   return (
     <Wrapper>
-      <Github src="/img/github_small.png" width="20" height="20" />
+      <Github src="/static/img/github_small.png" width="20" height="20" />
       We’re on
       <Link href={gh}>GitHub</Link>
-      <Star src="/img/star_small.svg" width="11.74" height="11.74" />{' '}
+      <Star
+        src="/static/img/star_small.svg"
+        width="11.74"
+        height="11.74"
+      />{' '}
       <Count>{count}</Count>
     </Wrapper>
   )

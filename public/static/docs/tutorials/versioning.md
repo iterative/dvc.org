@@ -7,7 +7,7 @@ datasets and ML models using DVC commands. We'll work with a
 that [François Chollet](https://twitter.com/fchollet) put together to show how
 to build a powerful image classifier using a pretty small dataset.
 
-![](/img/cats-and-dogs.jpg) _Dataset to classify cats and dogs_
+![](/static/img/cats-and-dogs.jpg) _Dataset to classify cats and dogs_
 
 > We highly recommend reading the François' tutorial itself. It's a great
 > demonstration of how a general pre-trained model can be leveraged to build a
@@ -252,7 +252,7 @@ to be similar to `git checkout`. All we need to do in our case is to
 additionally run `dvc checkout` to get the right data into the
 <abbr>workspace</abbr>.
 
-![](/img/versioning.png)
+![](/static/img/versioning.png)
 
 There are two ways of doing this: a full workspace checkout or checkout of a
 specific data or model file. Let's consider the full checkout first. It's pretty

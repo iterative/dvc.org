@@ -65,7 +65,11 @@ export default class HamburgerMenu extends Component {
               <Top>
                 <NextLink href="/" passHref>
                   <Logo>
-                    <img src="/img/logo_white.png" alt="dvc.org" width={34} />
+                    <img
+                      src="/static/img/logo_white.png"
+                      alt="dvc.org"
+                      width={34}
+                    />
                   </Logo>
                 </NextLink>
               </Top>
@@ -94,7 +98,7 @@ export default class HamburgerMenu extends Component {
                       </Link>
                     </NextLink>
                     <SocialLink
-                      src="/img/chat.png"
+                      src="/static/img/chat.png"
                       href="/chat"
                       click={this.itemClick('chat')}
                     >
@@ -115,7 +119,7 @@ export default class HamburgerMenu extends Component {
                       Blog
                     </Link>
                     <SocialLink
-                      src="/img/iterative.png"
+                      src="/static/img/iterative.png"
                       href="https://iterative.ai/"
                       click={this.itemClick('iterative')}
                     >
@@ -127,21 +131,21 @@ export default class HamburgerMenu extends Component {
                   <Heading>Social</Heading>
                   <Links>
                     <SocialLink
-                      src="/img/twitter.png"
+                      src="/static/img/twitter.png"
                       href="https://twitter.com/DVCorg "
                       click={this.itemClick('twitter')}
                     >
                       Twitter
                     </SocialLink>
                     <SocialLink
-                      src="/img/github.png"
+                      src="/static/img/github.png"
                       href="https://github.com/iterative/dvc"
                       click={this.itemClick('github')}
                     >
                       GitHub
                     </SocialLink>
                     <SocialLink
-                      src="/img/discord.png"
+                      src="/static/img/discord.png"
                       href="/chat"
                       click={this.itemClick('chat')}
                     >

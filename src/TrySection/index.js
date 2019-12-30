@@ -9,14 +9,14 @@ export default function TrySection({ title, buttonText = 'Get Started' }) {
   return (
     <Wrapper>
       <Container>
-        <Glyph src="/img/glyph-3.svg" gid={'topleft'} />
+        <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
         <Title>{title}</Title>
         <Buttons>
           <NextLink href="/doc" as="/doc/get-started">
             <Button first>{buttonText}</Button>
           </NextLink>
         </Buttons>
-        <Glyph src="/img/glyph-4.svg" gid={'rigthbottom'} />
+        <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
       </Container>
     </Wrapper>
   )
@@ -107,7 +107,7 @@ const Button = styled.button`
 
   color: #ffffff;
 
-  background: url('/img/arrow_right_white.svg') right center no-repeat;
+  background: url('/static/img/arrow_right_white.svg') right center no-repeat;
   background-position-x: calc(100% - 15px);
   transition: 0.2s background-color ease-out;
 
@@ -124,6 +124,6 @@ const Button = styled.button`
     background-color: #ffffff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
 
-    background-image: url('/img/arrow_right_dark.svg');
+    background-image: url('/static/img/arrow_right_dark.svg');
   `};
 `

@@ -30,7 +30,7 @@ export default function SupportPage() {
         <Features>
           <Feature>
             <FeatureHeading>
-              <Icon url="/img/support/chat.svg" color="#945dd6" />
+              <Icon url="/static/img/support/chat.svg" color="#945dd6" />
               <Name>Slack-like Chat</Name>
             </FeatureHeading>
             <Description>
@@ -65,7 +65,7 @@ export default function SupportPage() {
           </Feature>
           <Feature>
             <FeatureHeading>
-              <Icon url="/img/support/bug.svg" color="#13adc7" />
+              <Icon url="/static/img/support/bug.svg" color="#13adc7" />
               <Name>Bugs & Features</Name>
             </FeatureHeading>
             <Description>
@@ -84,7 +84,7 @@ export default function SupportPage() {
           </Feature>
           <Feature>
             <FeatureHeading>
-              <Icon url="/img/support/forum.svg" color="#f46837" />
+              <Icon url="/static/img/support/forum.svg" color="#f46837" />
               <Name>Forum</Name>
             </FeatureHeading>
             <Description>
@@ -100,7 +100,7 @@ export default function SupportPage() {
           </Feature>
           <Feature>
             <FeatureHeading>
-              <Icon url="/img/support/email.svg" color="#945dd6" />
+              <Icon url="/static/img/support/email.svg" color="#945dd6" />
               <Name>Email</Name>
             </FeatureHeading>
             <Description>
@@ -246,7 +246,7 @@ const DiscrodWidget = styled.img`
   width: 50px;
   height: 50px;
   cursor: pointer;
-  mask-image: url('/img/support/discord.svg');
+  mask-image: url('/static/img/support/discord.svg');
   mask-repeat: no-repeat;
   mask-position: center;
   background-color: #b88eeb;
