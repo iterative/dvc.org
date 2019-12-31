@@ -21,7 +21,7 @@ an added file or directory is also committed to the <abbr>cache</abbr>. (Use the
 ready.)
 
 The `targets` are files or directories to be places under DVC control. These are
-turned into outputs (`outs` field) in a resulting
+turned into <abbr>outputs<abbr> (`outs` field) in a resulting
 [DVC-file](/doc/user-guide/dvc-file-format). (See steps below for more details.)
 Note that target data outside the current <abbr>workspace</abbr> is supported,
 that becomes [external outputs](/doc/user-guide/managing-external-data).

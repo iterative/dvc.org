@@ -144,20 +144,20 @@ into a ML [pipeline](/doc/command-reference/pipeline).
 
 `dvc run` executes any command that you pass it as a list of parameters.
 However, the command to run alone is not as interesting as its role within a
-larger data pipeline, so we'll need to specify its dependencies and output
-files. We call all this a pipeline _stage_. Dependencies may include input files
-or directories, and the actual command to run. Outputs are files written to by
-the command, if any.
+larger data pipeline, so we'll need to specify its <abbr>dependencies</abbr> and
+<abbr>outputs</abbr>. We call all this a pipeline _stage_. Dependencies may
+include input files or directories, and the actual command to run. Outputs are
+files written to by the command, if any.
 
 - Option `-d file.tsv` should be used to specify a dependency file or directory.
   The dependency can be a regular file from a repository or a data file.
 
-- `-o file.tsv` (lower case o) specifies output data file. DVC will track this
-  data file by creating a corresponding
+- `-o file.tsv` (lower case o) specifies an output data file. DVC will track
+  this data file by creating a corresponding
   [DVC-file](/doc/user-guide/dvc-file-format) (as if running `dvc add file.tsv`
   after `dvc run` instead).
 
-- `-O file.tsv` (upper case O) specifies a regular output file (not to be added
+- `-O file.tsv` (upper case O) specifies a simple output file (not to be added
   to DVC).
 
 It's important to specify dependencies and outputs before the command to run
@@ -194,10 +194,10 @@ The `unzip` command extracts data file `data/Posts.xml.zip` to a regular file
 `data/Posts.xml`. It knows nothing about data files or DVC. DVC executes the
 command and does some additional work if the command was successful:
 
-1. DVC transforms all the output files (`-o` option) into tracked data files
-   (similar to using `dvc add` for each of them). As a result, all the actual
-   data contents goes to the <abbr>cache</abbr> directory `.dvc/cache`, and each
-   of the file names will be added to `.gitignore`.
+1. DVC transforms all the outputs (`-o` option) into tracked data files (similar
+   to using `dvc add` for each of them). As a result, all the actual data
+   contents goes to the <abbr>cache</abbr> directory `.dvc/cache`, and each of
+   the file names will be added to `.gitignore`.
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
    file in the <abbr>project</abbr> with information about this pipeline stage.

@@ -26,13 +26,13 @@ options) DVC can later connect each stage by building a dependency graph
 ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)). This graph is
 used by DVC to restore a full data [pipeline](/doc/command-reference/pipeline).
 
-The remainder of command line input provided to `dvc run` after the options (`-`
-or `--` arguments) will become the required `command` argument. Please wrap the
+The remaining terminal input provided to `dvc run` after the options (`-`/`--`
+arguments) will become the required `command` argument. Please wrap the
 `command` with `"` quotes if there are special characters in it like `|` (pipe)
-or `<`, `>` (redirection) that would otherwise apply to the entire `dvc run`
-command e.g. `dvc run -d script.sh "./script.sh > /dev/null 2>&1"`. Use single
-quotes `'` instead of `"` to wrap the `command` if there are environment
-variables in it, that you want to be evaluated dynamically. E.g.
+or `<`, `>` (redirection) that would otherwise apply to `dvc run` itself e.g.
+`dvc run -d script.sh "./script.sh > /dev/null 2>&1"`. Use single quotes `'`
+instead of `"` to wrap the `command` if there are environment variables in it,
+that you want to be evaluated dynamically. E.g.
 `dvc run -d script.sh './myscript.sh $MYENVVAR'`
 
 Unless the `-f` options is used, by default the DVC-file name generated is
@@ -52,25 +52,25 @@ captures data and <abbr>caches</abbr> relevant <abbr>data artifacts</abbr> along
 the way. See [this example](/doc/get-started/example-pipeline) to learn more and
 try creating a pipeline.
 
-### Well-behaved commands
+### Avoiding unexpected behavior
 
-DVC is simple to use, you only need to wrap your commands with `dvc run`, and
-define your dependencies and outputs.
+We don't want to tell you how to write your code! However, please be aware that
+in order to prevent unexpected results when DVC executes or reproduces your
+commands, they should ideally follow these rules:
 
-However, to prevent unexpected behaviors, ideally, your commands should follow
-some principles:
+- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
+  <abbr>outputs</abbr>.
+- Completely rewrite outputs (i.e. do not append or edit).<br/> Note that DVC
+  removes cached outputs before running the stages that produce them (including
+  at `dvc repro`).
+- Stop reading and writing files when the `command` exits.
 
-- Read exclusively from specified dependencies.
-- Write exclusively to specified outputs.
-- Completely rewrite the outputs (i.e. do not append or edit).
-- Stop reading and writing when the command exits.
-
-To guarantee reproducibilty, your command should be
-[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (i.e. it
-must produce the same results given the same inputs/dependencies).
-
-Have in mind what brings entropy to your command (e.g. random generators, time,
-hardware, etc.) and try to minize it (e.g. fix seeds).
+Keep in mind that if the pipeline's reproducibility goals include consistent
+output data, its code should be as
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) as
+possible (produce the same output for a given input). In this case, avoid code
+that brings [entropy](https://en.wikipedia.org/wiki/Software_entropy) into your
+data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 
 ## Options
 
@@ -91,9 +91,9 @@ hardware, etc.) and try to minize it (e.g. fix seeds).
 - `-o`, `--outs` - specify a file or directory that is the result of running the
   `command`. Multiple outputs can be specified: `-o model.pkl -o output.log`.
   DVC builds a dependency graph (pipeline) to connect different stages with each
-  other based on this list of outputs, along with dependencies (see `-d`). DVC
-  takes all output files and directories under its control and puts them into
-  the cache (this is similar to what's happening when you use `dvc add`).
+  other based on this list of outputs and dependencies (see `-d`). DVC takes all
+  output files and directories under its control and puts them into the cache
+  (this is similar to what's happening when you use `dvc add`).
 
 - `-O`, `--outs-no-cache` - the same as `-o` except outputs are not put
   automatically under DVC control. It means that they are not cached, and it's
@@ -120,45 +120,44 @@ hardware, etc.) and try to minize it (e.g. fix seeds).
   this location, by including a path in the provided value (e.g.
   `-f stages/stage.dvc`).
 
-- `-c`, `--cwd` - deprecated, use `-f` and `-w` to change location and working
-  directory of a stage file.
+- `-c`, `--cwd` (_deprecated_) - Use `-f` and `-w` to change the name and
+  location (working directory) of a stage file.
 
 - `-w`, `--wdir` - specifies a working directory for the `command` to run in.
   `dvc run` expects that dependencies, outputs, metric files are specified
   relative to this directory. This value is saved in the `wdir` field of the
   stage file generated (as a relative path to the location of the DVC-file) and
-  is used by `dvc repro` to change the working directory before execuring the
-  command.
+  is used by `dvc repro` to change the working directory before executing the
+  `command`.
 
-- `--no-exec` - create a stage file, but do not execute the command defined in
+- `--no-exec` - create a stage file, but do not execute the `command` defined in
   it, nor take dependencies or outputs under DVC control. In the DVC-file
   contents, the `md5` hash sums will be empty; They will be populated the next
-  time this stage is actually executed. This command is useful, if for example,
-  you need to build a pipeline (dependency graph) first, and then run it all at
-  once.
+  time this stage is actually executed. This is useful if, for example, you need
+  to build a pipeline (dependency graph) first, and then run it all at once.
 
-- `-y`, `--yes` - deprecated, use `--overwrite-dvcfile` instead.
+- `-y`, `--yes` (_deprecated_) - See `--overwrite-dvcfile` below.
 
 - `--overwrite-dvcfile` - overwrite an existing DVC-file (with file name
   determined by the logic described in the `-f` option) without asking for
   confirmation.
 
 - `--ignore-build-cache` - This options has an effect if an equivalent stage
-  file exists (same dependencies, outputs, and command to execute) which has
+  file exists (same dependencies, outputs, and `command` to execute) which has
   been already executed and is up to date. In this case, `dvc run` won't
-  normally execute the command again. The exception is when the existing stage
+  normally execute the `command` again. The exception is when the existing stage
   is considered always changed (see `--always-changed` option). This option
-  gives a way to forcefully execute the command anyway. It's useful if the
-  command is non-deterministic (meaning it produces different outputs from the
-  same list of inputs).
+  gives a way to forcefully execute the `command` anyway. Useful if the
+  command's code is non-deterministic (meaning it produces different outputs
+  from the same list of inputs).
 
-- `--remove-outs` - it removes stage outputs before executing the command. If
-  `--no-exec` specified outputs are removed anyway. This option is enabled by
-  default and deprecated. See `dvc remove` as well for more details.
+- `--remove-outs` (_deprecated_) - remove stage outputs before executing the
+  `command`. If `--no-exec` specified outputs are removed anyway. See
+  `dvc remove` as well for more details. This is the default behavior.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
-  entry is added to `.dvc/state`, while nothing is added to the cache. (The
-  `dvc status` command will report that the file is `not in cache`.) Useful when
+  entry is added to `.dvc/state`, while nothing is added to the cache.
+  (`dvc status` will report that the file is `not in cache`.) Useful when
   running different experiments and you don't want to fill up your cache with
   temporary files. Use `dvc commit` when ready to commit the results to cache.
 
@@ -166,8 +165,8 @@ hardware, etc.) and try to minize it (e.g. fix seeds).
   `dvc status` will report it as `always changed` and `dvc repro` will always
   execute it.
 
-  > Note that a DVC-file without dependencies is automatically considered always
-  > changed, so this option has no effect in that case.
+  > Note that a DVC-file without dependencies is considered always changed, so
+  > this option has no effect in that case.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
