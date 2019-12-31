@@ -49,6 +49,7 @@
     "react-scroll": "^1.7.13",
     "react-slick": "^0.25.2",
     "react-syntax-highlighter": "^11.0.2",
+    "request": "^2.88.0",
     "styled-components": "^4.4.1",
     "styled-reset": "^4.0.8",
     "unist-util-visit": "2.0.1"
@@ -68,8 +69,7 @@
     "jest": "^24.9.0",
     "lint-staged": "^10.0.0-1",
     "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1",
-    "request": "^2.88.0"
+    "pretty-quick": "^2.0.1"
   },
   "husky": {
     "hooks": {
