@@ -8,7 +8,6 @@
 const { createServer } = require('http')
 const next = require('next')
 const { parse } = require('url')
-const querystring = require('querystring')
 const { getItemByPath } = require('./src/utils/sidebar')
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -64,22 +63,31 @@ app.prepare().then(() => {
       // path /(help|chat) -> Discord chat invite
       res.writeHead(301, { Location: 'https://discordapp.com/invite/dvwXA2N' })
       res.end()
+    } else if (/^\/(docs|documentation)(\/.*)?$/i.test(pathname)) {
+      // path /docs... or /documentation... -> /doc...
+      res.writeHead(301, {
+        Location: req.url.replace(/\/(docs|documentation)/i, '/doc')
+      })
+      res.end()
     } else if (/^\/doc\/commands-reference(\/.*)?/.test(pathname)) {
       // path /doc/commands-reference... -> /doc/command-reference...
       res.writeHead(301, {
-        Location: req.url.replace('commands-reference', 'command-reference')
+        Location: req.url.replace(
+          '/doc/commands-reference',
+          '/doc/command-reference'
+        )
+      })
+      res.end()
+    } else if (/^\/doc\/tutorial\/*$/.test(pathname)) {
+      // path /doc/tutorial (removes any trailing /) -> /doc/tutorials
+      res.writeHead(301, {
+        Location: req.url.replace(/\/doc\/tutorial\/*/, '/doc/tutorials')
       })
       res.end()
     } else if (/^\/doc\/tutorial\/(.*)?/.test(pathname)) {
       // path /doc/tutorial/... -> /doc/tutorials/deep/...
       res.writeHead(301, {
-        Location: req.url.replace('/doc/tutorial/', '/doc/tutorials/deep')
-      })
-      res.end()
-    } else if (pathname === '/doc/tutorial' || pathname === '/doc/tutorial/') {
-      // path /doc/tutorial -> /doc/tutorials
-      res.writeHead(301, {
-        Location: req.url.replace('/doc/tutorial', '/doc/tutorials')
+        Location: req.url.replace('/doc/tutorial/', '/doc/tutorials/deep/')
       })
       res.end()
     } else if (
@@ -95,29 +103,16 @@ app.prepare().then(() => {
         )
       })
       res.end()
-    } else if (/^\/(doc|docs|documentation)\//i.test(pathname)) {
-      // path /doc*/{item} -> /doc/{item} and trim trailing / if present
-      let normalized_pathname = pathname.replace(
-        /^(\/[^/?]*)(\/.*[^/])?[/?]*/i,
-        '/doc$2'
-      )
-      if (normalized_pathname !== pathname) {
-        res.writeHead(301, {
-          Location:
-            normalized_pathname +
-            (Object.keys(query).length === 0 ? '' : '?') +
-            querystring.stringify(query)
-        })
-        res.end()
-      } else {
-        // Force 404 response for any inexistent /doc/{item}.
-        if (!getItemByPath(pathname)) {
-          res.statusCode = 404
-        }
-
-        app.render(req, res, '/doc', query)
+    } else if (/^\/doc(\/.*)$/.test(pathname)) {
+      // Force 404 response for any inexistent /doc item.
+      if (!getItemByPath(pathname)) {
+        res.statusCode = 404
       }
+
+      // Fire up docs engine!
+      app.render(req, res, '/doc', query)
     } else {
+      // Regular Next behavior
       handle(req, res, parsedUrl)
     }
   }).listen(port, err => {
