@@ -88,11 +88,10 @@ be pulled from remote storage using `dvc pull`.
   remove files that don't match those DVC-file references or are missing from
   cache. (They are not "committed", in DVC terms.)
 
-- `--relink` - recreates (overwrites) links or copies from cache to workspace
-  for all <abbr>outputs</abbr> in the workspace, including the ones normally
-  checked out by this command, **as well as existing ones** with matching
-  checksums in current DVC-files. This ensures the link types of all the data
-  files in the workspace match the project's
+- `--relink` - recreates (overwrites) file links or copies, from cache to
+  workspace, of **all <abbr>outputs</abbr>** referenced in current DVC-files
+  (regardless of whether the checksums match a DVC-file). This ensures the link
+  types of all the data files in the workspace are consistent with the project's
   [`cache.type`](/doc/command-reference/config#cache).
 
 - `-h`, `--help` - shows the help message and exit.
