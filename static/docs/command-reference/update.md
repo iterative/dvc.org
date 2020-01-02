@@ -7,7 +7,7 @@ repositories</abbr>, and corresponding
 ## Synopsis
 
 ```usage
-usage: dvc update [-h] [-q | -v] targets [targets ...]
+usage: dvc update [-h] [-q | -v] [--rev [REV]] targets [targets ...]
 
 positional arguments:
   targets        DVC-files to update.
@@ -38,6 +38,12 @@ to the
 to learn how to "update" fixed-revision imports.
 
 ## Options
+
+- `--rev` - specific
+  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+  (such as a branch name, a tag, or a commit hash) of the DVC repository to
+  update the data from. Repository's revision formed by the first import is used
+  by default when this option is not specified.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
