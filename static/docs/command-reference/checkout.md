@@ -21,12 +21,12 @@ which instance of each data file or directory should be used, with the checksums
 saved in the `outs` field. The `dvc checkout` command updates the workspace data
 to match with the <abbr>cached</abbr> files that correspond to those checksums.
 
-When using Git, the DVC-files can be kept under version control. DVC-files in
-different branches or tags may contain checksums for different data files, saved
-by DVC in the project's cache. The DVC-files in the workspace, or the value of
-their `outs` fields can change when using `git checkout`. The `dvc checkout`
-command is required in this situation, in order to synchronize the data files
-(tracked by DVC) with the checked out DVC-files.
+When using Git, the different DVC-files versioned in separate branches or tags
+may contain checksums for different data files (saved by DVC in the project's
+cache). So when using `git checkout`, the DVC-files in the
+<abbr>workspace</abbr>, or the value of their `outs` fields, can change. The
+`dvc checkout` command is required in this situation, in order to synchronize
+the data files (tracked by DVC) with the checked out DVC-files.
 
 For convenience a Git hook is available to automate running `dvc checkout` after
 `git checkout`. To install it, use `dvc install`.
