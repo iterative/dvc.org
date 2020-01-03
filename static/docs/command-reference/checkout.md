@@ -41,9 +41,9 @@ The execution of `dvc checkout` does the following:
 
 - Missing data files or directories, or those with checksums that don't match
   any DVC-file, are restored from the cache. If the `--relink` option is used,
-  all outputs in the workspace are recreated (overwritten). The file linking
-  strategy used (`reflink`, `hardlink`, `symlink`, or `copy`) depends on the OS,
-  and on the configured value for `cache.type`. (See `dvc config cache`.)
+  all outputs in the workspace are recreated. The file linking strategy used
+  (`reflink`, `hardlink`, `symlink`, or `copy`) depends on the OS, and on the
+  configured value for `cache.type`. (See `dvc config cache`.)
 
 By default, this command tries not to copy files between the cache and the
 workspace, using reflinks instead, when supported by the file system. (Refer to
@@ -89,11 +89,11 @@ be pulled from remote storage using `dvc pull`.
   remove files that don't match those DVC-file references or are missing from
   cache. (They are not "committed", in DVC terms.)
 
-- `--relink` - recreates (overwrites) file links or copies, from cache to
-  workspace, of **all <abbr>outputs</abbr>** referenced in current DVC-files
-  (regardless of whether the checksums match a DVC-file). This ensures the link
-  types of all the data files in the workspace are consistent with the project's
-  [`cache.type`](/doc/command-reference/config#cache).
+- `--relink` - recreates **all <abbr>outputs</abbr>** referenced in current
+  DVC-files (regardless of whether the checksums match a DVC-file). This means
+  overwriting the file links or copies from cache to workspace. This ensures the
+  link types of all the data files in the workspace are consistent with the
+  project's [`cache.type`](/doc/command-reference/config#cache).
 
 - `-h`, `--help` - shows the help message and exit.
 
