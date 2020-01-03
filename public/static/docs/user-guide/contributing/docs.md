@@ -9,9 +9,9 @@ run the website.
 
 To contribute documentation you need to know these locations:
 
-- [Content](https://github.com/iterative/dvc.org/tree/master/docs) (`/docs`):
-  [Markdown](https://guides.github.com/features/mastering-markdown/) files of
-  the different pages to render dynamically in the browser.
+- [Content](https://github.com/iterative/dvc.org/tree/master/public/static/docs)
+  (`/docs`): [Markdown](https://guides.github.com/features/mastering-markdown/)
+  files of the different pages to render dynamically in the browser.
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
   (`/static/img`): Add new images, gif, svg, etc here. Reference them from the
   Markdown files like this: `![](/static/img/reproducibility.png)`.
@@ -152,4 +152,4 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
 
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
-> [this very file](https://raw.githubusercontent.com/iterative/dvc.org/master/docs/user-guide/contributing/docs.md).
+> [this very file](https://raw.githubusercontent.com/iterative/dvc.org/master/public/static/docs/user-guide/contributing/docs.md).
