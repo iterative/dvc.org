@@ -37,13 +37,11 @@ The execution of `dvc checkout` does the following:
 
 - Scans the `outs` field values in DVC-files to compare with the outputs
   currently in the <abbr>workspace</abbr>. Scanning is limited to the given
-  `targets` (if any).
+  `targets` (if any). See also the `--recursive` option below.
 
 - Missing data files or directories, or those with checksums that don't match
-  any DVC-file, are restored from the cache. If the `--relink` option is used,
-  all outputs in the workspace are recreated. The file linking strategy used
-  (`reflink`, `hardlink`, `symlink`, or `copy`) depends on the OS, and on the
-  configured value for `cache.type`. (See `dvc config cache`.)
+  any DVC-file, are restored from the cache. See also options `--force`,
+  `--with-deps`, and `--relink`.
 
 By default, this command tries not to copy files between the cache and the
 workspace, using reflinks instead, when supported by the file system. (Refer to
@@ -73,12 +71,6 @@ be pulled from remote storage using `dvc pull`.
 
 ## Options
 
-- `-d`, `--with-deps` - determine files to update by tracking dependencies to
-  the target DVC-files (stages). This option only has effect when one or more
-  `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stages in the corresponding pipelines. This means DVC
-  will not checkout files referenced in later stages than the `targets`.
-
 - `-R`, `--recursive` - `targets` is expected to contain at least one directory
   path for this option to have effect. Determines the files to checkout by
   searching each target directory and its subdirectories for DVC-files to
@@ -89,12 +81,18 @@ be pulled from remote storage using `dvc pull`.
   remove files that don't match those DVC-file references or are missing from
   cache. (They are not "committed", in DVC terms.)
 
-- `--relink` - ensures the link types of all the data files in the workspace are
-  consistent with the project's
-  [`cache.type`](/doc/command-reference/config#cache). This is achieved by
-  recreating **all <abbr>outputs</abbr>** referenced in current DVC-files
-  (regardless of whether the checksums match a DVC-file). This means overwriting
-  the file links or copies from cache to workspace.
+- `-d`, `--with-deps` - determine files to update by tracking dependencies to
+  the target DVC-files (stages). This option only has effect when one or more
+  `targets` are specified. By traversing all stage dependencies, DVC searches
+  backward from the target stages in the corresponding pipelines. This means DVC
+  will not checkout files referenced in later stages than the `targets`.
+
+- `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
+  `symlink`, or `copy`) for all data files in the workspace is consistent with
+  the project's [`cache.type`](/doc/command-reference/config#cache). This is
+  achieved by recreating **all <abbr>outputs</abbr>** referenced in current
+  DVC-files (regardless of whether the checksums match a DVC-file). This means
+  overwriting the file links or copies from cache to workspace.
 
 - `-h`, `--help` - shows the help message and exit.
 
