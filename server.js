@@ -32,11 +32,11 @@ app.prepare().then(() => {
       res.end()
     } else if (req.headers.host === 'man.dvc.org') {
       // man.dvc.org/{cmd} -> dvc.org/doc/command-reference/{cmd},
-      // replace - for / in {cmd} except for /get-url, /import-url
       res.writeHead(301, {
         'Cache-Control': 'no-cache',
         Location:
           'https://dvc.org/doc/command-reference' +
+          // replace - for / in {cmd} except for get-url, import-url
           (['/get-url', '/import-url'].indexOf(pathname) < 0
             ? pathname.replace('-', '/')
             : pathname)
@@ -59,11 +59,11 @@ app.prepare().then(() => {
           pathname.substring(1)
       })
       res.end()
-    } else if (/^\/(help|chat)\/?$/i.test(pathname)) {
+    } else if (/^\/(help|chat)\/*$/i.test(pathname)) {
       // path /(help|chat) -> Discord chat invite
       res.writeHead(301, { Location: 'https://discordapp.com/invite/dvwXA2N' })
       res.end()
-    } else if (/^\/(docs|documentation)(\/.*)?$/i.test(pathname)) {
+    } else if (/^\/(docs|documentation)(\/.*)?/i.test(pathname)) {
       // path /docs... or /documentation... -> /doc...
       res.writeHead(301, {
         Location: req.url.replace(/\/(docs|documentation)/i, '/doc')
@@ -103,7 +103,9 @@ app.prepare().then(() => {
         )
       })
       res.end()
-    } else if (/^\/doc(\/.*)$/.test(pathname)) {
+    } else if (/^\/doc(\/.*)?/.test(pathname)) {
+      // Docs engine handler case.
+
       // Force 404 response for any inexistent /doc item.
       if (!getItemByPath(pathname)) {
         res.statusCode = 404
