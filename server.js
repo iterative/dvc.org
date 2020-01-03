@@ -59,17 +59,17 @@ app.prepare().then(() => {
           pathname.substring(1)
       })
       res.end()
-    } else if (/^\/(help|chat)\/*$/i.test(pathname)) {
+    } else if (/^\/(help|chat)\/?$/i.test(pathname)) {
       // path /(help|chat) -> Discord chat invite
       res.writeHead(301, { Location: 'https://discordapp.com/invite/dvwXA2N' })
       res.end()
-    } else if (/^\/(docs|documentation)(\/.*)?/i.test(pathname)) {
+    } else if (/^\/(docs|documentation)(\/.*)?$/i.test(pathname)) {
       // path /docs... or /documentation... -> /doc...
       res.writeHead(301, {
         Location: req.url.replace(/\/(docs|documentation)/i, '/doc')
       })
       res.end()
-    } else if (/^\/doc\/commands-reference(\/.*)?/.test(pathname)) {
+    } else if (/^\/doc\/commands-reference(\/.*)?$/i.test(pathname)) {
       // path /doc/commands-reference... -> /doc/command-reference...
       res.writeHead(301, {
         Location: req.url.replace(
@@ -78,10 +78,10 @@ app.prepare().then(() => {
         )
       })
       res.end()
-    } else if (/^\/doc\/tutorial\/*$/.test(pathname)) {
+    } else if (/^\/doc\/tutorial\/?$/i.test(pathname)) {
       // path /doc/tutorial (removes any trailing /) -> /doc/tutorials
       res.writeHead(301, {
-        Location: req.url.replace(/\/doc\/tutorial\/*/, '/doc/tutorials')
+        Location: req.url.replace(/\/doc\/tutorial\/?/, '/doc/tutorials')
       })
       res.end()
     } else if (/^\/doc\/tutorial\/(.*)?/.test(pathname)) {
@@ -103,7 +103,7 @@ app.prepare().then(() => {
         )
       })
       res.end()
-    } else if (/^\/doc(\/.*)?/.test(pathname)) {
+    } else if (/^\/doc(\/.*)?$/.test(pathname)) {
       // Docs engine handler case.
 
       // Force 404 response for any inexistent /doc item.
