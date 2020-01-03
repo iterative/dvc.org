@@ -20,7 +20,10 @@ app.prepare().then(() => {
     const parsedUrl = parse(req.url, true)
     const { pathname, query } = parsedUrl
 
-    // Special URL redirects:
+    /*
+     * Special URL redirects.
+     * NOTE: The order of the redirects is important.
+     */
     if (
       (req.headers['x-forwarded-proto'] !== 'https' && !dev) ||
       req.headers.host.match(/^www/) !== null
@@ -52,7 +55,7 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (/^\/(deb|rpm)\/.*/i.test(pathname)) {
-      // path /(deb|rpm) -> corresponding S3 bucket
+      // path /(deb|rpm)/... -> corresponding S3 bucket
       res.writeHead(301, {
         Location:
           'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/' +
@@ -79,7 +82,7 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (/^\/doc\/tutorial\/?$/i.test(pathname)) {
-      // path /doc/tutorial (removes any trailing /) -> /doc/tutorials
+      // path /doc/tutorial -> /doc/tutorials
       res.writeHead(301, {
         Location: req.url.replace(/\/doc\/tutorial\/?/, '/doc/tutorials')
       })
@@ -91,20 +94,21 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (
-      pathname === '/doc/use-cases/data-and-model-files-versioning' ||
-      pathname === '/doc/use-cases/data-and-model-files-versioning/'
+      /^\/doc\/use-cases\/data-and-model-files-versioning\/?$/.test(pathname)
     ) {
       // path /doc/use-cases/data-and-model-files-versioning
       //  ->  /doc/use-cases/versioning-data-and-model-files
       res.writeHead(301, {
         Location: req.url.replace(
-          'data-and-model-files-versioning',
-          'versioning-data-and-model-files'
+          '/doc/use-cases/data-and-model-files-versioning',
+          '/doc/use-cases/versioning-data-and-model-files'
         )
       })
       res.end()
     } else if (/^\/doc(\/.*)?$/.test(pathname)) {
-      // Docs engine handler case.
+      /*
+       * Special Docs Engine handler
+       */
 
       // Force 404 response for any inexistent /doc item.
       if (!getItemByPath(pathname)) {
@@ -114,7 +118,7 @@ app.prepare().then(() => {
       // Fire up docs engine!
       app.render(req, res, '/doc', query)
     } else {
-      // Regular Next behavior
+      // Regular Next handler
       handle(req, res, parsedUrl)
     }
   }).listen(port, err => {
