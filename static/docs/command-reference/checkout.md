@@ -16,19 +16,19 @@ positional arguments:
 
 ## Description
 
-[DVC-files](/doc/user-guide/dvc-file-format) in a <abbr>project</abbr> specify
-which data files or directories from the <abbr>cache</abbr> should be in use. We
-call these files <abbr>outputs</abbr>, and their checksums are saved in the
-`outs` fields inside DVC-files to achieve this.
-
-When using Git, different DVC-files versioned in separate
-[revisions](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-probably specify different data files from the cache. When switching to those
-versions (with Git commands such as `git checkout`), the current DVC-files will
-no longer match with all of the data in the <abbr>workspace</abbr>.
-
 The `dvc checkout` command synchronizes the workspace data to match with the
-current DVC-files, using a mechanism described below.
+current [DVC-files](/doc/user-guide/dvc-file-format) in the
+<abbr>project</abbr>. DVC knows which data files (a.k.a. <abbr>outputs</abbr>)
+to use because their checksums are saved in the `outs` fields inside the
+DVC-files.
+
+This is useful when the project is a <abbr>DVC repository</abbr>, since
+DVC-files versioned in different
+[revisions](https://git-scm.com/book/en/v2/Git-Internals-Git-References) will
+specify different outputs. When switching to those versions (with Git commands
+such as `git checkout`), the current DVC-files will no longer match with all of
+the data in the <abbr>workspace</abbr>, and so `dvc checkout` will be needed at
+that point.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. Use `dvc install` to install it.
