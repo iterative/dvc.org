@@ -17,8 +17,9 @@ positional arguments:
 ## Description
 
 [DVC-files](/doc/user-guide/dvc-file-format) in a <abbr>project</abbr> specify
-which data files or directories from the <abbr>cache</abbr> should be in use.
-DVC saves data file checksums in the `outs` fields inside DVC-files for this.
+which data files or directories from the <abbr>cache</abbr> should be in use. We
+call these files <abbr>outputs</abbr>, and their checksums are saved in the
+`outs` fields inside DVC-files to achieve this.
 
 When using Git, different DVC-files versioned in separate
 [revisions](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
@@ -34,16 +35,15 @@ after `git checkout`. Use `dvc install` to install it.
 
 The execution of `dvc checkout` does the following:
 
-- Scans the `outs` field values in DVC-files to compare with the
-  <abbr>outputs</abbr> currently in the <abbr>workspace</abbr>. Scanning is
-  limited to the given `targets` (if any).
+- Scans the `outs` field values in DVC-files to compare with the outputs
+  currently in the <abbr>workspace</abbr>. Scanning is limited to the given
+  `targets` (if any).
 
 - Missing data files or directories, or those with checksums that don't match
   any DVC-file, are restored from the cache. If the `--relink` option is used,
-  all <abbr>outputs</abbr> in the workspace are recreated (overwritten). The
-  file linking strategy used (`reflink`, `hardlink`, `symlink`, or `copy`)
-  depends on the OS, and on the configured value for `cache.type`. (See
-  `dvc config cache`.)
+  all outputs in the workspace are recreated (overwritten). The file linking
+  strategy used (`reflink`, `hardlink`, `symlink`, or `copy`) depends on the OS,
+  and on the configured value for `cache.type`. (See `dvc config cache`.)
 
 By default, this command tries not to copy files between the cache and the
 workspace, using reflinks instead, when supported by the file system. (Refer to
