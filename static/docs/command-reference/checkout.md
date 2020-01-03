@@ -17,25 +17,26 @@ positional arguments:
 ## Description
 
 [DVC-files](/doc/user-guide/dvc-file-format) in a <abbr>project</abbr> specify
-which instance of each data file or directory should be used, with the checksums
-saved in the `outs` field. The `dvc checkout` command updates the workspace data
-to match with the <abbr>cached</abbr> files that correspond to those checksums.
+which data files or directories from the <abbr>cache</abbr> should be in use.
+DVC saves data file checksums in the `outs` fields inside DVC-files for this.
 
-When using Git, the different DVC-files versioned in separate branches or tags
-may contain checksums for different data files (saved by DVC in the project's
-cache). So when using `git checkout`, the DVC-files in the
-<abbr>workspace</abbr>, or the value of their `outs` fields, can change. The
-`dvc checkout` command is required in this situation, in order to synchronize
-the data files (tracked by DVC) with the checked out DVC-files.
+When using Git, different DVC-files versioned in separate
+[revisions](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+probably specify different data files from the cache. When switching to those
+versions (with Git commands such as `git checkout`), the current DVC-files will
+no longer match with all of the data in the <abbr>workspace</abbr>.
 
-For convenience a Git hook is available to automate running `dvc checkout` after
-`git checkout`. To install it, use `dvc install`.
+The `dvc checkout` command synchronizes the workspace data to match with the
+current DVC-files, using a mechanism described below.
 
-The execution of `dvc checkout` does:
+💡 For convenience, a Git hook is available to automate running `dvc checkout`
+after `git checkout`. Use `dvc install` to install it.
 
-- Scan the `outs` entries in DVC-files to compare with the <abbr>outputs</abbr>
-  currently in the <abbr>workspace</abbr>. Scanning is limited to the given
-  `targets` (if any).
+The execution of `dvc checkout` does the following:
+
+- Scans the `outs` field values in DVC-files to compare with the
+  <abbr>outputs</abbr> currently in the <abbr>workspace</abbr>. Scanning is
+  limited to the given `targets` (if any).
 
 - Missing data files or directories, or those with checksums that don't match
   any DVC-file, are restored from the cache. If the `--relink` option is used,
@@ -45,14 +46,14 @@ The execution of `dvc checkout` does:
   `dvc config cache`.)
 
 By default, this command tries not to copy files between the cache and the
-workspace, using reflinks instead when supported by the file system. (Refer to
+workspace, using reflinks instead, when supported by the file system. (Refer to
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).)
 The next linking strategy default value is `copy` though, so unless other file
 link types are manually configured in `cache.type` (using `dvc config`), files
 will be copied. Keep in mind that having file copies doesn't present much of a
 negative impact unless the project uses very large data (several GBs or more).
-But leveraging file links is crucial for large files where checking out a 50Gb
-by copying file might take a few minutes for example, whereas with links,
+But leveraging file links is crucial with large files, for example when checking
+out a 50Gb file by copying might take a few minutes whereas, with links,
 restoring any file size will be almost instantaneous.
 
 > When linking files takes longer than expected (10 seconds for any one file)
