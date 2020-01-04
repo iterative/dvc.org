@@ -27,23 +27,15 @@ Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. `dvc update` is the only command that can
 update them.
 
-Another detail to note is that when the `--rev` (revision) option of
-`dvc import` has been used to create an import stage, DVC is not aware of what
-kind of
-[Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References) this
-is, for example a branch or a tag. For typically static references (e.g. tags),
-or for SHA commits, `dvc update` will not have any effect on the import. Refer
-to the
-[re-importing example](/doc/command-reference/import#example-fixed-revisions-re-importing)
-to learn how to "update" fixed-revision imports.
+To "update" fixed-revision to static references (e.g. tags), or for SHA commits,
+use `dvc update` with the `--rev` option.
 
 ## Options
 
 - `--rev` - specific
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash) of the DVC repository to
-  update the data from. Repository's revision formed by the first import is used
-  by default when this option is not specified.
+  update the data from. Using this option also updates the fixed-revision.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -81,3 +73,14 @@ stable.
 > Note that `dvc update` updates the `rev_lock` field of the corresponding
 > [DVC-file](/doc/user-guide/dvc-file-format) (when there are changes to bring
 > in).
+
+To update from and also lock to a specific revision of a <abbr>data
+artifact</abbr>, we may use the `--rev` option this time:
+
+```dvc
+$ dvc update --rev v2 model.pkl.dvc
+Importing 'model.pkl (git@github.com:iterative/example-get-started)'
+-> 'model.pkl'
+```
+
+Since the source files has changed, we see the results of our "update".

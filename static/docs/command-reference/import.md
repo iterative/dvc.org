@@ -158,23 +158,8 @@ deps:
 
 If the
 [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-moves (e.g. a branch), you may use `dvc update` to bring the data up to date.
-However, for typically static references (e.g. tags), or for SHA commits, in
-order to actually "update" an import, it's necessary to **re-import the data**
-instead, by using `dvc import` again without or with a different `--rev`. This
-will overwrite the import stage (DVC-file), either removing or replacing the
-`rev` field, respectively. This can produce an import stage that is able to be
-updated normally with `dvc update` going forward. For example:
-
-```dvc
-$ dvc import --rev master \
-             git@github.com:iterative/dataset-registry.git \
-             use-cases/cats-dogs
-```
-
-> In the above example, the value for `rev` in the new import stage will be
-> `master`, which happens to be the default branch in this Git repository, so
-> the command is equivalent to not using `--rev` at all.
+moves (e.g. a branch), you may use `dvc update` preferably with `--rev` option
+to bring the data up to date. Using `--rev` also updates the fixed-revision.
 
 ## Example: Data registry
 
