@@ -1,11 +1,7 @@
 /* eslint-env node */
-
-const startCase = require('lodash.startcase')
-const sidebar = require('../../static/docs/sidebar.json')
-
 /*
-  We will use this helper to normalize sidebar structure and create
-  all of the resurces we need to prevent future recalculations.
+  These helpers normalize sidebar structure and create all the resources needed.
+  This prevents future recalculations.
 
   Target structure example:
 
@@ -22,11 +18,18 @@ const sidebar = require('../../static/docs/sidebar.json')
   }
 */
 
+const startCase = require('lodash.startcase')
+
+/* Base sidebar structure */
+const sidebar = require('../../static/docs/sidebar.json')
+
 const PATH_ROOT = '/doc/'
 const FILE_ROOT = '/static/docs/'
 const FILE_EXTENSION = '.md'
 
-// Inner helpers
+/*
+ * Private functions
+ */
 
 function findItem(data, targetPath) {
   if (data.length) {
@@ -73,7 +76,7 @@ function validateRawItem({ slug, source, children }) {
   }
 }
 
-// Normalization
+/* Normalization */
 
 function normalizeItem({ item, parentPath, resultRef, prevRef }) {
   validateRawItem(item)
@@ -142,12 +145,14 @@ function normalizeSidebar({
   return currentResult
 }
 
+/*
+ * Exports
+ */
+
 const normalizedSidebar = normalizeSidebar({
   data: sidebar,
   parentPath: ''
 })
-
-// Exports
 
 function getItemByPath(path) {
   const normalizedPath = path.replace(/\/$/, '')

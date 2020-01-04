@@ -30,7 +30,6 @@
     ]
   },
   {
-    "label": "Install",
     "slug": "install",
     "source": "install/index.md",
     "children": [
@@ -356,8 +355,8 @@
     ]
   },
   {
-    "label": "Understanding DVC",
     "slug": "understanding-dvc",
+    "label": "Understanding DVC",
     "source": false,
     "children": [
       "collaboration-issues",

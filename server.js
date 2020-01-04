@@ -1,9 +1,13 @@
 /* eslint-env node */
 
-// This file doesn't go through babel or webpack transformation. Make sure the
-// syntax and sources this file requires are compatible with the current Node.js
-// version you are running. (See https://github.com/zeit/next.js/issues/1245 for
-// discussions on universal Webpack vs universal Babel.)
+/*
+ * Custom server (with custom routes) See
+ * https://nextjs.org/docs/advanced-features/custom-server
+ *
+ * NOTE: This file doesn't go through babel or webpack. Make sure the syntax and
+ * sources this file requires are compatible with the current node version you
+ * are running.
+ */
 
 const { createServer } = require('http')
 const { parse } = require('url')
@@ -111,6 +115,7 @@ app.prepare().then(() => {
           res.statusCode = 404
         }
 
+        // Custom route for all docs ("engine" based on /pages/doc.js page)
         app.render(req, res, '/doc', query)
       }
     } else {
