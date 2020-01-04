@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import includes from 'lodash.includes'
-
-import glossary from '../../static/docs/glossary'
 import { OnlyDesktop, OnlyMobile } from '../styles'
+import React, { Component } from 'react'
+
 import DesktopView from './desktop-view'
 import MobileView from './mobile-view'
+import PropTypes from 'prop-types'
+import glossary from '../../public/static/docs/glossary'
+import includes from 'lodash.includes'
 
 class Tooltip extends Component {
   state = {

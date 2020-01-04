@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
+    "dev:debug": "node --inspect server.js",
     "build": "next build",
     "test": "jest",
     "start": "NODE_ENV=production node server.js",
     "format-staged": "pretty-quick --staged --no-restage --bail",
-    "format-check": "prettier --check '{.,pages/**,src/**,static/**}/*.{js,jsx,md}'",
+    "format-check": "prettier --check '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
     "lint-check": "eslint src pages",
-    "format-all": "prettier --write '{.,pages/**,src/**,static/**}/*.{js,jsx,md}'",
+    "format-all": "prettier --write '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
     "format": "prettier --write"
   },
   "repository": {
@@ -77,6 +78,6 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint"
+    "*.js": "eslint"
   }
 }
