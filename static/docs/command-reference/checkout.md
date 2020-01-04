@@ -16,32 +16,28 @@ positional arguments:
 
 ## Description
 
-The `dvc checkout` command synchronizes the workspace data to match with the
-current [DVC-files](/doc/user-guide/dvc-file-format) in the
-<abbr>project</abbr>. DVC knows which data files (a.k.a. <abbr>outputs</abbr>)
-to use because their checksums are saved in the `outs` fields inside the
-DVC-files.
+[DVC-files](/doc/user-guide/dvc-file-format) are essentially placeholders that
+point to the actual data files or a directories under DVC control. This command
+synchronizes the workspace data with the versions specified in the current
+DVC-files. DVC knows which data files (<abbr>outputs</abbr>) to use because
+their checksums are saved in the `outs` fields inside the DVC-files.
 
-This is useful when the project is a <abbr>DVC repository</abbr>, since
-DVC-files versioned in different
-[revisions](https://git-scm.com/book/en/v2/Git-Internals-Git-References) will
-specify different outputs. When switching to those versions (with Git commands
-such as `git checkout`), the current DVC-files will no longer match with all of
-the data in the <abbr>workspace</abbr>, and so `dvc checkout` will be needed at
-that point.
+`dvc checkout` is useful when using Git in the <abbr>project</abbr>, after
+`git clone`, `git checkout`, or any other repository operations that change the
+currently present DVC-files.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. Use `dvc install` to install it.
 
 The execution of `dvc checkout` does the following:
 
-- Scans the `outs` field values in DVC-files to compare with the outputs
-  currently in the <abbr>workspace</abbr>. Scanning is limited to the given
-  `targets` (if any). See also the `--recursive` option below.
+- Scans the `outs` field values in DVC-files to compare with the data files or a
+  directories currently in the <abbr>workspace</abbr>. Scanning is limited to
+  the given `targets` (if any). See also the `--recursive` option below.
 
 - Missing data files or directories, or those with checksums that don't match
-  any DVC-file, are restored from the cache. See also options `--force`,
-  `--with-deps`, and `--relink`.
+  any DVC-file, are restored from the <abbr>cache</abbr>. See also options
+  `--force`, `--with-deps`, and `--relink`.
 
 By default, this command tries not to copy files between the cache and the
 workspace, using reflinks instead, when supported by the file system. (Refer to
@@ -90,9 +86,9 @@ be pulled from remote storage using `dvc pull`.
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
   `symlink`, or `copy`) for all data files in the workspace is consistent with
   the project's [`cache.type`](/doc/command-reference/config#cache). This is
-  achieved by recreating **all <abbr>outputs</abbr>** referenced in current
-  DVC-files (regardless of whether the checksums match a DVC-file). This means
-  overwriting the file links or copies from cache to workspace.
+  achieved by recreating **all data files or a directories** referenced in
+  current DVC-files (regardless of whether the checksums match a DVC-file). This
+  means overwriting the file links or copies from cache to workspace.
 
 - `-h`, `--help` - shows the help message and exit.
 
