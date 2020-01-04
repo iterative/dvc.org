@@ -139,7 +139,7 @@ for more details.) This section contains the following options:
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
   for a full explanation of each one.
 
-  To apply changes to this option in the workspace, by recreating file
+  To apply changes to this option in the workspace, by restoring all file
   links/copies from cache, please use `dvc checkout --relink`. See
   [checkout options](/doc/command-reference/checkout#options) for more details.
 

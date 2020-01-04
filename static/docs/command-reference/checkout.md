@@ -86,7 +86,7 @@ be pulled from remote storage using `dvc pull`.
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
   `symlink`, or `copy`) for all data files in the workspace is consistent with
   the project's [`cache.type`](/doc/command-reference/config#cache). This is
-  achieved by recreating **all data files or a directories** referenced in
+  achieved by restoring **all data files or a directories** referenced in
   current DVC-files (regardless of whether they match a current DVC-file). This
   means overwriting the file links or copies from cache to workspace.
 
