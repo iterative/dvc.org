@@ -31,14 +31,13 @@ after `git checkout`. Use `dvc install` to install it.
 
 The execution of `dvc checkout` does the following:
 
-- Scans the `outs` field values in DVC-files to compare with the data files or a
-  directories currently in the <abbr>workspace</abbr>. Scanning is limited to
-  the given `targets` (if any). See also options `--with-deps` and `--recursive`
-  below.
+- Scans the DVC-files to compare vs. the data files or directories currently in
+  the <abbr>workspace</abbr>. Scanning is limited to the given `targets` (if
+  any). See also options `--with-deps` and `--recursive` below.
 
-- Missing data files or directories, or those with checksums that don't match
-  any DVC-file, are restored from the <abbr>cache</abbr>. See options `--force`
-  and `--relink`.
+- Missing data files or directories, or those that don't match with any
+  DVC-file, are restored from the <abbr>cache</abbr>. See options `--force` and
+  `--relink`.
 
 By default, this command tries not to copy files between the cache and the
 workspace, using reflinks instead, when supported by the file system. (Refer to
