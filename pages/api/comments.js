@@ -7,10 +7,10 @@
  * potential ability to cache comments count in the future.
  */
 
+import { BLOG_URL, FORUM_URL } from '../../src/consts'
+
 import Cors from 'micro-cors'
 import request from 'request'
-
-import { BLOG_URL, FORUM_URL } from '../../src/consts'
 
 const cors = Cors({
   allowedMethods: ['GET', 'HEAD'],

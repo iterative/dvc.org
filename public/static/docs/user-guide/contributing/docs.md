@@ -9,14 +9,13 @@ run the website.
 
 To contribute documentation you need to know these locations:
 
-- [Content](https://github.com/iterative/dvc.org/tree/master/static/docs)
-  (`/static/docs`):
-  [Markdown](https://guides.github.com/features/mastering-markdown/) files of
-  the different pages to render dynamically in the browser.
-- [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
+- [Content](https://github.com/iterative/dvc.org/tree/master/public/static/docs)
+  (`/docs`): [Markdown](https://guides.github.com/features/mastering-markdown/)
+  files of the different pages to render dynamically in the browser.
+- [Images](https://github.com/iterative/dvc.org/tree/master/public/static/img)
   (`/static/img`): Add new images, gif, svg, etc here. Reference them from the
   Markdown files like this: `![](/static/img/reproducibility.png)`.
-- [Sections](https://github.com/iterative/dvc.org/tree/master/static/docs/sidebar.json)
+- [Sections](https://github.com/iterative/dvc.org/tree/master/public/static/docs/sidebar.json)
   (`.../sidebar.json`): Edit it to register a new section for the navigation
   menu.
 
@@ -88,6 +87,25 @@ This will start the server on the default port, `3000`. Visit
 enable the Git pre-commit hook that will be formatting your code and
 documentation files automatically.
 
+### Debugging
+
+The `yarn dev:debug` script runs the local development server with Node's
+[`--inspect` option](https://nodejs.org/en/docs/guides/debugging-getting-started/#command-line-options)
+in order for debuggers to connect to it (on the default port, 9229).
+
+> For example, use this launch configuration in **Visual Studio Code**:
+>
+> ```json
+> {
+>   "type": "node",
+>   "request": "launch",
+>   "name": "Launch via Yarn",
+>   "runtimeExecutable": "yarn",
+>   "runtimeArgs": ["dev:debug"],
+>   "port": 9229
+> }
+> ```
+
 ### Running tests
 
 If you intend to change JavaScript (Node) files, test the changes with
@@ -112,7 +130,7 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
   [its configuration](https://github.com/iterative/dvc.org/blob/master/.prettierrc)).
   The formatting of staged files will automatically be done by a Git pre-commit
   hook. You may also run `yarn format <file>` (format specific file/pattern),
-  `yarn format-staged` (all staged files), or `yarn format-all` (all md,js,jsx
+  `yarn format-staged` (all staged files), or `yarn format-all` (all .md, .js
   files) before committing changes if needed.
   ([Advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
   available through `yarn prettier ...`)
@@ -134,4 +152,4 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
 
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
-> [this very file](https://raw.githubusercontent.com/iterative/dvc.org/master/static/docs/user-guide/contributing/docs.md).
+> [this very file](https://raw.githubusercontent.com/iterative/dvc.org/master/public/static/docs/user-guide/contributing/docs.md).
