@@ -20,7 +20,7 @@
 
 const startCase = require('lodash.startcase')
 
-/* Base sidebar structure */
+// Base to build the target struct described above
 const sidebar = require('../../public/static/docs/sidebar.json')
 
 const PATH_ROOT = '/doc/'
