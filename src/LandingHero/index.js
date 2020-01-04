@@ -1,7 +1,7 @@
+import { OnlyDesktop, OnlyMobile, media } from '../styles'
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 
-import { media, OnlyDesktop, OnlyMobile } from '../styles'
 import DownloadButton from '../DownloadButton'
 import GithubLine from '../GithubLine'
 import { logEvent } from '../utils/ga'

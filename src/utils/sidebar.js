@@ -1,7 +1,7 @@
 /* eslint-env node */
 
 const startCase = require('lodash.startcase')
-const sidebar = require('../../static/docs/sidebar.json')
+const sidebar = require('../../public/static/docs/sidebar.json')
 
 /*
   We will use this helper to normalize sidebar structure and create

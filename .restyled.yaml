@@ -1,0 +1,8 @@
+restylers:
+  - name: prettier
+    arguments: ['--write']
+    include:
+      - './*.{js,md}'
+      - 'pages/**/*.js'
+      - 'public/static/docs/**/*.{js,md}'
+      - 'src/**/*.js'

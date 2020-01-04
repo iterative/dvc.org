@@ -1,12 +1,13 @@
-import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
 import {
   META_BASE_TITLE,
   META_DESCRIPTION,
   META_KEYWORDS,
   META_SOCIAL_IMAGE
 } from '../src/consts'
+
+import React from 'react'
+import { ServerStyleSheet } from 'styled-components'
 
 const inject = str => (
   <div className="inject" dangerouslySetInnerHTML={{ __html: str }} />
@@ -61,23 +62,23 @@ export default class Page extends Document {
             <link
               rel="shortcut icon"
               type="image/x-icon"
-              href="/static/favicon.ico"
+              href="/static/img/favicon.ico"
             />
             <link
               rel="shortcut icon"
               type="image/vnd.microsoft.icon"
-              href="/static/favicon.ico"
+              href="/static/img/favicon.ico"
             />
             <link
               rel="icon"
               type="image/png"
-              href="/static/favicon-32x32.png"
+              href="/static/img/favicon-32x32.png"
               sizes="32x32"
             />
             <link
               rel="icon"
               type="image/png"
-              href="/static/favicon-16x16.png"
+              href="/static/img/favicon-16x16.png"
               sizes="16x16"
             />
             <link

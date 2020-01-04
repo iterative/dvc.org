@@ -1,9 +1,8 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { LightButton } from '../LightButton'
+import PropTypes from 'prop-types'
+import React from 'react'
 import Tutorials from '../Tutorials'
-// utils
+import styled from 'styled-components'
 import throttle from 'lodash.throttle'
 
 const ROOT_ELEMENT = 'bodybag'

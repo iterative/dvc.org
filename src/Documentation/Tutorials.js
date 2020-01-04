@@ -1,10 +1,9 @@
-import React from 'react'
+import { LightButton } from './LightButton'
 import PropTypes from 'prop-types'
-import topairs from 'lodash.topairs'
+import React from 'react'
 import startCase from 'lodash.startcase'
 import styled from 'styled-components'
-
-import { LightButton } from './LightButton'
+import topairs from 'lodash.topairs'
 
 export default function Tutorials({ compact, tutorials }) {
   const tutorialsData = topairs(tutorials)

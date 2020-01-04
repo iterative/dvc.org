@@ -1,5 +1,5 @@
-import ReactDOM from 'react-dom'
 import PropTypes from 'prop-types'
+import ReactDOM from 'react-dom'
 
 const Modal = ({ children }) =>
   ReactDOM.createPortal(children, document.getElementById('modal-root'))

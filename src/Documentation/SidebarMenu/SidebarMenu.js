@@ -1,19 +1,15 @@
+import { OnlyDesktop, media } from '../../styles'
 import React, { useEffect, useRef, useState } from 'react'
-import PerfectScrollbar from 'perfect-scrollbar'
-import scrollIntoView from 'dom-scroll-into-view'
-import PropTypes from 'prop-types'
-import NextLink from 'next/link'
-// consts
-import { PAGE_DOC } from '../../consts'
-// components
+
 import DownloadButton from '../../DownloadButton'
-// utils
-import includes from 'lodash.includes'
-// styles
-import styled from 'styled-components'
-import { media, OnlyDesktop } from '../../styles'
-// sidebar helpers
+import NextLink from 'next/link'
+import { PAGE_DOC } from '../../consts'
+import PerfectScrollbar from 'perfect-scrollbar'
+import PropTypes from 'prop-types'
 import { getParentsListFromPath } from '../../utils/sidebar'
+import includes from 'lodash.includes'
+import scrollIntoView from 'dom-scroll-into-view'
+import styled from 'styled-components'
 
 /** Height of each menu child items (to calc Element weight for animations) */
 const heightMap = {}
@@ -26,7 +22,7 @@ function calculateHeight({ activePaths, path }) {
   for (let i = 0; i < reversePaths.length; i++) {
     const current = reversePaths[i]
 
-    height += heightMap[current]
+    height += heightMap[current] ? heightMap[current] : 0
 
     if (path === current) break
   }

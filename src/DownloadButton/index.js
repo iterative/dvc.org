@@ -1,11 +1,11 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import styled, { css } from 'styled-components'
 
+import PropTypes from 'prop-types'
 import isClient from '../utils/isClient'
 import { logEvent } from '../utils/ga'
 
-const VERSION = `0.78.1`
+const VERSION = `0.80.0`
 const OSX = `osx`
 const WINDOWS = `win`
 const LINUX = `linux`

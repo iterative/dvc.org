@@ -1,8 +1,7 @@
 import React from 'react'
-import styled from 'styled-components'
-import { media } from '../styles'
-
 import SubscribeForm from '../SubscribeForm'
+import { media } from '../styles'
+import styled from 'styled-components'
 
 export default function Subscribe() {
   return (
