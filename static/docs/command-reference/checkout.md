@@ -33,11 +33,12 @@ The execution of `dvc checkout` does the following:
 
 - Scans the `outs` field values in DVC-files to compare with the data files or a
   directories currently in the <abbr>workspace</abbr>. Scanning is limited to
-  the given `targets` (if any). See also the `--recursive` option below.
+  the given `targets` (if any). See also options `--with-deps` and `--recursive`
+  below.
 
 - Missing data files or directories, or those with checksums that don't match
-  any DVC-file, are restored from the <abbr>cache</abbr>. See also options
-  `--force`, `--with-deps`, and `--relink`.
+  any DVC-file, are restored from the <abbr>cache</abbr>. See options `--force`
+  and `--relink`.
 
 By default, this command tries not to copy files between the cache and the
 workspace, using reflinks instead, when supported by the file system. (Refer to
@@ -67,6 +68,12 @@ be pulled from remote storage using `dvc pull`.
 
 ## Options
 
+- `-d`, `--with-deps` - determine files to update by tracking dependencies to
+  the target DVC-files (stages). This option only has effect when one or more
+  `targets` are specified. By traversing all stage dependencies, DVC searches
+  backward from the target stages in the corresponding pipelines. This means DVC
+  will not checkout files referenced in later stages than the `targets`.
+
 - `-R`, `--recursive` - `targets` is expected to contain at least one directory
   path for this option to have effect. Determines the files to checkout by
   searching each target directory and its subdirectories for DVC-files to
@@ -76,12 +83,6 @@ be pulled from remote storage using `dvc pull`.
   current set of DVC-files with `git checkout` can result in the need for DVC to
   remove files that don't match those DVC-file references or are missing from
   cache. (They are not "committed", in DVC terms.)
-
-- `-d`, `--with-deps` - determine files to update by tracking dependencies to
-  the target DVC-files (stages). This option only has effect when one or more
-  `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stages in the corresponding pipelines. This means DVC
-  will not checkout files referenced in later stages than the `targets`.
 
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
   `symlink`, or `copy`) for all data files in the workspace is consistent with
