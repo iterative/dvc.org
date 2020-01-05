@@ -118,6 +118,7 @@ app.prepare().then(() => {
       // Force 404 response for any inexistent /doc item.
       if (!getItemByPath(pathname)) {
         res.statusCode = 404
+        // NOTE: Assumes the route below will render a 404 page.
       }
 
       // Custom route for all docs

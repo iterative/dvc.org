@@ -139,7 +139,7 @@
       {
         "label": "Contributing",
         "slug": "contributing",
-        "source": "contributing/index.md",
+        "source": false,
         "children": [
           {
             "label": "DVC Core Project",

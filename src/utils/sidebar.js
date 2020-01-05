@@ -27,9 +27,19 @@ const PATH_ROOT = '/doc/'
 const FILE_ROOT = '/static/docs/'
 const FILE_EXTENSION = '.md'
 
-/*
- * Private functions
- */
+function validateRawItem({ slug, source, children }) {
+  const isSourceDisabled = source === false
+
+  if (!slug) {
+    throw Error("'slug' field is required in objects in sidebar.json")
+  }
+
+  if (isSourceDisabled && (!children || !children.length)) {
+    throw Error(
+      "If you set 'source' to false, you had to add at least one child"
+    )
+  }
+}
 
 function findItem(data, targetPath) {
   if (data.length) {
@@ -48,35 +58,15 @@ function findItem(data, targetPath) {
   }
 }
 
-function findChildWithSource(item) {
-  return item.source ? item : findChildWithSource(item.children[0])
-}
-
-function findPrevItemWithSource(data, item) {
-  if (item.source) {
-    return item
-  } else if (item.prev) {
-    const prevItem = findItem(data, item.prev)
+function findPrevItemWithSource(data, ref) {
+  if (ref && ref.source) {
+    return ref
+  } else if (ref && ref.prev) {
+    const prevItem = findItem(data, ref.prev)
 
     return findPrevItemWithSource(data, prevItem)
   }
 }
-
-function validateRawItem({ slug, source, children }) {
-  const isSourceDisabled = source === false
-
-  if (!slug) {
-    throw Error("'slug' field is required in objects in sidebar.json")
-  }
-
-  if (isSourceDisabled && (!children || !children.length)) {
-    throw Error(
-      "If you set 'source' to false, you had to add at least one child"
-    )
-  }
-}
-
-/* Normalization */
 
 function normalizeItem({ item, parentPath, resultRef, prevRef }) {
   validateRawItem(item)
@@ -145,15 +135,25 @@ function normalizeSidebar({
   return currentResult
 }
 
+function findChildWithSource(item) {
+  return item.source ? item : findChildWithSource(item.children[0])
+}
+
 /*
  * Exports
  */
 
+// Runs at module load time
 const normalizedSidebar = normalizeSidebar({
   data: sidebar,
   parentPath: ''
 })
 
+/**
+ * Finds `path` in sidebar struct
+ * @param {*} path
+ * @uses `normalizedSidebar`
+ */
 function getItemByPath(path) {
   const normalizedPath = path.replace(/\/$/, '')
   const isRoot = normalizedPath === PATH_ROOT.slice(0, -1)
@@ -161,7 +161,10 @@ function getItemByPath(path) {
     ? normalizedSidebar[0]
     : findItem(normalizedSidebar, normalizedPath)
 
-  return item && findChildWithSource(item)
+  if (!item) return false
+
+  // TODO: Refactor this recursive fn into a loop inside `getItemByPath`
+  return findChildWithSource(item)
 }
 
 function getParentsListFromPath(path) {
