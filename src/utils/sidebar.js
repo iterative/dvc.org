@@ -19,8 +19,6 @@
 */
 
 const startCase = require('lodash.startcase')
-
-// Base to build the target struct described above
 const sidebar = require('../../public/static/docs/sidebar.json')
 
 const PATH_ROOT = '/doc/'
@@ -58,7 +56,6 @@ function findItem(data, targetPath) {
   }
 }
 
-// Recursive
 function findPrevItemWithSource(data, item) {
   if (item && item.source) {
     return item
@@ -93,7 +90,6 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
   }
 }
 
-// Recursive
 function normalizeSidebar({
   data,
   parentPath,
@@ -137,7 +133,6 @@ function normalizeSidebar({
   return currentResult
 }
 
-// Recursive
 function findChildWithSource(item) {
   return item.source ? item : findChildWithSource(item.children[0])
 }
@@ -146,17 +141,11 @@ function findChildWithSource(item) {
  * Exports
  */
 
-// Runs at module load time
 const normalizedSidebar = normalizeSidebar({
   data: sidebar,
   parentPath: ''
 })
 
-/**
- * Finds `path` in sidebar struct
- * @param {*} path
- * @uses `normalizedSidebar`
- */
 function getItemByPath(path) {
   const normalizedPath = path.replace(/\/$/, '')
   const isRoot = normalizedPath === PATH_ROOT.slice(0, -1)

@@ -25,7 +25,7 @@ app.prepare().then(() => {
     const { pathname, query } = parsedUrl
 
     /*
-     * Special URL redirects.
+     * HTTP redirects
      * NOTE: The order of the redirects is important.
      */
     if (
@@ -111,14 +111,12 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/doc(\/.*)?$/.test(pathname)) {
       /*
-       * Special Docs Engine handler
-       * Based on /pages/doc.js page.
+       * Docs Engine handler
        */
 
-      // Force 404 response for any inexistent /doc item.
+      // Force 404 response code for any inexistent /doc item.
       if (!getItemByPath(pathname)) {
         res.statusCode = 404
-        // NOTE: Assumes the route below will render a 404 page.
       }
 
       // Custom route for all docs
@@ -128,7 +126,6 @@ app.prepare().then(() => {
       handle(req, res, parsedUrl)
     }
   }).listen(port, err => {
-    // Invokes `createServer` server.
     if (err) throw err
     console.info(`> Ready on localhost:${port}`)
   })
