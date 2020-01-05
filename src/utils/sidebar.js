@@ -58,22 +58,23 @@ function findItem(data, targetPath) {
   }
 }
 
-function findPrevItemWithSource(data, ref) {
-  if (ref && ref.source) {
-    return ref
-  } else if (ref && ref.prev) {
-    const prevItem = findItem(data, ref.prev)
+// Recursive
+function findPrevItemWithSource(data, item) {
+  if (item && item.source) {
+    return item
+  } else if (item && item.prev) {
+    const prevItem = findItem(data, item.prev)
 
     return findPrevItemWithSource(data, prevItem)
   }
 }
 
-function normalizeItem({ item, parentPath, resultRef, prevRef }) {
-  validateRawItem(item)
+function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
+  validateRawItem(rawItem)
 
-  const { label, slug, source, tutorials } = item
+  const { label, slug, source, tutorials } = rawItem
 
-  // If prev item doesn't have source we need to recirsively search for it
+  // If prev item doesn't have source we need to search for it
   const prevItemWithSource =
     prevRef && findPrevItemWithSource(resultRef, prevRef)
 
@@ -92,6 +93,7 @@ function normalizeItem({ item, parentPath, resultRef, prevRef }) {
   }
 }
 
+// Recursive
 function normalizeSidebar({
   data,
   parentPath,
@@ -104,9 +106,9 @@ function normalizeSidebar({
 
   data.forEach(rawItem => {
     const isShortcut = typeof rawItem === 'string'
-    const item = isShortcut ? { slug: rawItem } : rawItem
+    rawItem = isShortcut ? { slug: rawItem } : rawItem
     const normalizedItem = normalizeItem({
-      item,
+      rawItem,
       parentPath,
       resultRef,
       prevRef
@@ -116,10 +118,10 @@ function normalizeSidebar({
       prevRef.next = normalizedItem.path
     }
 
-    if (item.children) {
+    if (rawItem.children) {
       normalizedItem.children = normalizeSidebar({
-        data: item.children,
-        parentPath: `${parentPath}${item.slug}/`,
+        data: rawItem.children,
+        parentPath: `${parentPath}${rawItem.slug}/`,
         parentResultRef: resultRef,
         startingPrevRef: normalizedItem
       })
@@ -135,6 +137,7 @@ function normalizeSidebar({
   return currentResult
 }
 
+// Recursive
 function findChildWithSource(item) {
   return item.source ? item : findChildWithSource(item.children[0])
 }
@@ -163,7 +166,6 @@ function getItemByPath(path) {
 
   if (!item) return false
 
-  // TODO: Refactor this recursive fn into a loop inside `getItemByPath`
   return findChildWithSource(item)
 }
 
