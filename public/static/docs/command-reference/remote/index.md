@@ -101,7 +101,7 @@ remote = myremote
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add mynewremote s3://mybucket/myproject
+$ dvc remote add -d mynewremote s3://mybucket/myproject
 $ dvc remote modify mynewremote region us-east-2
 ```
 
