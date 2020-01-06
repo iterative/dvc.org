@@ -48,11 +48,10 @@ We will review your PR as soon as possible. Thank you for contributing!
 
 ## Development environment
 
-It's highly recommendable to run the Node docs app locally to check
-documentation changes before submitting them, and its very much needed in order
-to make changes to the [Node](https://nodejs.org/) documentation engine itself
-(rare). Source code files need to be properly formatted as well, which is also
-ensured by the full setup below.
+It's highly recommendable to run this web app locally to check documentation
+changes before submitting them, and quite necessary when making changes to the
+[Next.js](https://nexyjs.org/) engine itself (rare). Source code files need to
+be properly formatted as well, which is also ensured by the full setup below.
 
 Get the latest development version by
 [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the

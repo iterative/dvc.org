@@ -21,10 +21,10 @@ We welcome [contributions](/doc/user-guide/contributing/core) to
 
 ## Contributing Docs
 
-We welcome any [contributions](/doc/user-guide/contributing/docs) to our
-documentation repository, [dvc.org](https://github.com/iterative/dvc.org).
-Contribution can be an update to the documentation or (rare) updating or fixing
-the JS engine that we use to run the website.
+We welcome any contributions to our documentation repository,
+[dvc.org](https://github.com/iterative/dvc.org). Contributions can be updates to
+the documentation content, or (rare) changes to the JS engine we use to run the
+website.
 
 - [Structure of the project](/doc/user-guide/contributing/docs#structure-of-the-project)
 

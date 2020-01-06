@@ -107,7 +107,7 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/doc(\/.*)?$/.test(pathname)) {
       /*
-       * Special Docs Engine handler
+       * Special docs engine handler
        */
 
       // Force 404 response for any inexistent /doc item.
