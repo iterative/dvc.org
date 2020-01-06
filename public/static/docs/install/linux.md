@@ -2,7 +2,7 @@
 
 ## Install with pip
 
-> It's highly recommended using
+> It's highly recommended to use a
 > [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
 > or
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)

@@ -3,7 +3,7 @@
 If you want to test the latest stable version of DVC, ahead of official
 releases, you can install it from our code repository GitHub.
 
-> It's highly recommended using
+> It's highly recommended to use a
 > [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
 > or
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)

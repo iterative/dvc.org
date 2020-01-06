@@ -1,9 +1,9 @@
 # Contributing to the Documentation
 
 We welcome any contributions to our documentation repository,
-[dvc.org](https://github.com/iterative/dvc.org). Contribution can be an update
-to the documentation or (rare) updating or fixing the JS engine that we use to
-run the website.
+[dvc.org](https://github.com/iterative/dvc.org). Contributions can be updates to
+the documentation content, or (rare) changes to the JS engine we use to run the
+website.
 
 ## Structure of the project
 
@@ -35,10 +35,10 @@ Otherwise, please refer to the following procedure:
   that you are working on this.
 
 - Format the code by following the
-  [code style guidelines](#code-style-guidelines) below. It's highly recommended
-  to setup the [development environment](#development-environment) as explained
-  below. It can help you to format your the documentation and/or JS engine files
-  automatically.
+  [code style guidelines](#code-style-guidelines) below. It's highly
+  recommendable to setup the [development environment](#development-environment)
+  explained below. Among other things, it can help format the documentation
+  and/or JS code automatically.
 
 - Push the changes to your fork of
   [dvc.org](https://github.com/iterative/dvc.org.git) and submit a PR to the
@@ -48,11 +48,11 @@ We will review your PR as soon as possible. Thank you for contributing!
 
 ## Development environment
 
-It's highly recommended to run the Node docs app locally to check documentation
-changes before submitting them, and its very much needed in order to make
-changes to the [Node](https://nodejs.org/) documentation engine itself (rare).
-Source code files need to be properly formatted as well, which is also ensured
-by the full setup below.
+It's highly recommendable to run the Node docs app locally to check
+documentation changes before submitting them, and its very much needed in order
+to make changes to the [Node](https://nodejs.org/) documentation engine itself
+(rare). Source code files need to be properly formatted as well, which is also
+ensured by the full setup below.
 
 Get the latest development version by
 [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
