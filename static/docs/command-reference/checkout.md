@@ -17,7 +17,7 @@ positional arguments:
 ## Description
 
 [DVC-files](/doc/user-guide/dvc-file-format) are essentially placeholders that
-point to the actual data files or a directories under DVC control. This command
+point to the actual data files or directories under DVC control. This command
 synchronizes the workspace data with the versions specified in the current
 DVC-files. DVC knows which data files (<abbr>outputs</abbr>) to use because
 their checksums are saved in the `outs` fields inside the DVC-files.
