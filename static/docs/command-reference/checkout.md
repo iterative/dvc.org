@@ -19,12 +19,12 @@ positional arguments:
 [DVC-files](/doc/user-guide/dvc-file-format) are essentially placeholders that
 point to the actual data files or directories under DVC control. This command
 synchronizes the workspace data with the versions specified in the current
-DVC-files. DVC knows which data files (<abbr>outputs</abbr>) to use because
-their checksums are saved in the `outs` fields inside the DVC-files.
+DVC-files. DVC knows which data (<abbr>outputs</abbr>) to use because their
+checksums are saved in the `outs` fields inside the DVC-files.
 
-`dvc checkout` is useful when using Git in the <abbr>project</abbr>, after
-`git clone`, `git checkout`, or any other repository operations that change the
-currently present DVC-files.
+`dvc checkout` is useful, for example, when using Git in the
+<abbr>project</abbr>, after `git clone`, `git checkout`, or any other repository
+operation that changes the currently present DVC-files.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. Use `dvc install` to install it.
@@ -84,11 +84,11 @@ be pulled from remote storage using `dvc pull`.
   cache. (They are not "committed", in DVC terms.)
 
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
-  `symlink`, or `copy`) for all data files in the workspace is consistent with
-  the project's [`cache.type`](/doc/command-reference/config#cache). This is
+  `symlink`, or `copy`) for all data in the workspace is consistent with the
+  project's [`cache.type`](/doc/command-reference/config#cache). This is
   achieved by restoring **all data files or a directories** referenced in
   current DVC-files (regardless of whether they match a current DVC-file). Note
-  that this overwrites the data files or directories in the workspace.
+  that this overwrites the data in the workspace.
 
 - `-h`, `--help` - shows the help message and exit.
 
@@ -206,18 +206,21 @@ do `dvc fetch` + `dvc checkout`.
 
 ## Automating `dvc checkout`
 
-We have the data files (managed by DVC) lined up with the other files (managed
-by Git). This required us to remember to run `dvc checkout`, and of course we
-won't always remember to do so. Wouldn't it be nice to automate this?
+We want the data files or directories (managed by DVC) to match with the other
+files (managed by Git e.g. source code). This requires us to remember running
+`dvc checkout` when needed, and of course we won't always remember to do so.
+Wouldn't it be nice to automate this?
 
-Let's run this command:
+Let's try this:
 
 ```dvc
 $ dvc install
 ```
 
-This installs Git hooks to automate running `dvc checkout` (or `dvc status`)
-when needed. Then we can checkout the master branch again:
+`dvc install` installs Git hooks to automate common operations, including
+running `dvc checkout` when needed.
+
+We can then checkout the master branch again:
 
 ```dvc
 $ git checkout bigrams
@@ -229,6 +232,6 @@ $ md5 model.pkl
 MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
 ```
 
-Previously this took two steps, `git checkout` followed by `dvc checkout`. We
-can now skip the second one, which is automatically executed for us. The
-workspace is automatically synchronized accordingly.
+Previously this took two commands, `git checkout` followed by `dvc checkout`. We
+can now skip the second one, which is automatically run for us. The workspace is
+automatically synchronized accordingly.
