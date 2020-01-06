@@ -19,25 +19,25 @@ positional arguments:
 [DVC-files](/doc/user-guide/dvc-file-format) are essentially placeholders that
 point to the actual data files or directories under DVC control. This command
 synchronizes the workspace data with the versions specified in the current
-DVC-files. DVC knows which data (<abbr>outputs</abbr>) to use because their
-checksums are saved in the `outs` fields inside the DVC-files.
+DVC-files.
 
 `dvc checkout` is useful, for example, when using Git in the
-<abbr>project</abbr>, after `git clone`, `git checkout`, or any other repository
-operation that changes the currently present DVC-files.
+<abbr>project</abbr>, after `git clone`, `git checkout`, or any other operation
+that changes the DVC-files in the workspace.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. Use `dvc install` to install it.
 
 The execution of `dvc checkout` does the following:
 
-- Scans the DVC-files to compare vs. the data files or directories currently in
-  the <abbr>workspace</abbr>. Scanning is limited to the given `targets` (if
-  any). See also options `--with-deps` and `--recursive` below.
+- Scans the DVC-files to compare against the data files or directories in the
+  <abbr>workspace</abbr>. Scanning is limited to the given `targets` (if any).
+  See also options `--with-deps` and `--recursive` below.
 
 - Missing data files or directories, or those that don't match with any
-  DVC-file, are restored from the <abbr>cache</abbr>. See options `--force` and
-  `--relink`.
+  DVC-file, are restored from the <abbr>cache</abbr>. DVC knows which data
+  (<abbr>outputs</abbr>) to use because their checksums are saved in the `outs`
+  fields inside the DVC-files. See options `--force` and `--relink`.
 
 By default, this command tries not to copy files between the cache and the
 workspace, using reflinks instead, when supported by the file system. (Refer to
@@ -87,8 +87,7 @@ be pulled from remote storage using `dvc pull`.
   `symlink`, or `copy`) for all data in the workspace is consistent with the
   project's [`cache.type`](/doc/command-reference/config#cache). This is
   achieved by restoring **all data files or a directories** referenced in
-  current DVC-files (regardless of whether they match a current DVC-file). Note
-  that this overwrites the data in the workspace.
+  current DVC-files (regardless of whether they match a current DVC-file).
 
 - `-h`, `--help` - shows the help message and exit.
 
