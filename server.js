@@ -118,7 +118,7 @@ app.prepare().then(() => {
       // Fire up docs engine!
       app.render(req, res, '/doc', query)
     } else {
-      // Regular Next handler
+      // Regular Next.js handler
       handle(req, res, parsedUrl)
     }
   }).listen(port, err => {

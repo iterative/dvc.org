@@ -124,7 +124,7 @@ wdir: .
 > [pipeline](/doc/get-started/pipeline), or in other words, instructions on how
 > to build a ML model (data file) from previous data files (or directories).
 
-We would recommend to read a few next chapters first, before switching to other
+We would recommend to read a few more chapters first, before switching to other
 documents. Hopefully, `dvc run` and `dvc repro` will make more sense after a few
 more Get Started chapters. You can always refer to the `dvc run` and `dvc repro`
 documentation to learn the specific details about how they behave and all of

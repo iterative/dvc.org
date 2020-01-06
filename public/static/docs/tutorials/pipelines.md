@@ -205,7 +205,7 @@ but made specifically to handle large data files.
 
 </details>
 
-Next stage: let's convert XML into TSV to make feature extraction easier:
+Let's convert XML into TSV to make feature extraction easier:
 
 ```dvc
 $ dvc run -d code/xml_to_tsv.py -d data/Posts.xml -o data/Posts.tsv \
