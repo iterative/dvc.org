@@ -336,20 +336,31 @@ describe('SidebarMenu/helper', () => {
       expect(getItemByPath('/doc')).toEqual(result)
     })
 
-    it('Returns first child with source for sourceless parents', () => {
+    // eslint-disable-next-line max-len
+    it('Returns first child with source for all parents with source:false', () => {
       const rawData = [
         {
-          slug: 'item-name',
+          slug: 'item',
           source: false,
           children: [
-            { slug: 'nested-item', source: false, children: ['subnested-item'] }
+            {
+              slug: 'nested',
+              source: false,
+              children: [
+                {
+                  slug: 'subnested',
+                  source: false,
+                  children: ['leaf-item']
+                }
+              ]
+            }
           ]
         }
       ]
       const result = {
-        label: 'Subnested Item',
-        path: '/doc/item-name/nested-item/subnested-item',
-        source: '/static/docs/item-name/nested-item/subnested-item.md',
+        label: 'Leaf Item',
+        path: '/doc/item/nested/subnested/leaf-item',
+        source: '/static/docs/item/nested/subnested/leaf-item.md',
         tutorials: {},
         prev: undefined,
         next: undefined
@@ -358,7 +369,9 @@ describe('SidebarMenu/helper', () => {
       jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
       const { getItemByPath } = require('./sidebar')
 
-      expect(getItemByPath('/doc/item-name')).toEqual(result)
+      expect(getItemByPath('/doc/item')).toEqual(result)
+      expect(getItemByPath('/doc/item/nested')).toEqual(result)
+      expect(getItemByPath('/doc/item/nested/subnested')).toEqual(result)
     })
   })
 
