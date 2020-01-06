@@ -19,7 +19,7 @@ positional arguments:
 ## Description
 
 Provides an easy way to download files or directories tracked in any <abbr>DVC
-repository</abbr>, both by Git (e.g. source code) and DVC (e.g. datasets, ML
+repository</abbr>, both by Git (e.g. source code) or DVC (e.g. datasets, ML
 models). The file or directory in path is copied to the current working
 directory. (For remote URLs, it works like downloading with wget, but supporting
 DVC <abbr>data artifacts</abbr>.)
