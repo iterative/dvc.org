@@ -81,7 +81,7 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
     return () => Router.events.off('routeChangeComplete', handleRouteChange)
   }, [])
 
-  const githubLink = `https://github.com/iterative/dvc.org/blob/master/public/${source}`
+  const githubLink = `https://github.com/iterative/dvc.org/blob/master/public${source}`
 
   return (
     <Page stickHeader={true}>
