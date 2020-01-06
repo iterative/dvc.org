@@ -18,7 +18,9 @@ plan to use, you might need to install optional dependencies: `[s3]`, `[azure]`,
 
 > Please restart your terminal (or resource the shell configuration file e.g.
 > `.bashrc`, `.profile`, `.zshrc`) if you get a `Command 'dvc' not found` error
-> when trying to use `dvc` after installation.
+> when trying to use `dvc` after installation. For containers (or any
+> environment where restarting the terminal isn't desirable), it's also possible
+> to manually prefix DVC's binary directory to the `PATH` environment variable.
 
 <details>
 
