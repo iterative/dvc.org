@@ -120,12 +120,9 @@ file link types. Please refer to the
 [Update a Tracked File](/doc/user-guide/updating-tracked-files) on how to manage
 tracked files under these cache configurations.
 
-### Re-linking data in the workspace
-
-To re-create the file links in the workspace, for example after changing the
-`cache.type` option for a <abbr>project</abbr>, please use
-`dvc checkout --relink`. See
-[checkout options](/doc/command-reference/checkout#options) for more details.
+To make sure that the data files in the workspace are consistent with the
+<abbr>project</abbr>'s `cache.type` option, you may use `dvc checkout --relink`.
+See `dvc checkout` for more information.
 
 ---
 
