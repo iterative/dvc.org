@@ -1,7 +1,7 @@
 # import
 
-Download a file or directory from any <abbr>DVC repository</abbr> (e.g. hosted
-on GitHub) into the <abbr>workspace</abbr>. This also creates a
+Download a file or directory from any Git or <abbr>DVC repository</abbr> (e.g.
+hosted on GitHub) into the <abbr>workspace</abbr>. This also creates a
 [DVC-file](/doc/user-guide/dvc-file-format) with information about the data
 source, which can later be used to [update](/doc/command-reference/update) the
 import.
@@ -15,17 +15,17 @@ import.
 usage: dvc import [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url         URL of Git repository with DVC project to download from.
+  url         URL of DVC or Git repository to download from.
   path        Path to data within DVC repository.
 ```
 
 ## Description
 
 DVC provides an easy way to reuse datasets, intermediate results, ML models, or
-other files and directories tracked in another <abbr>DVC repository</abbr> into
-the workspace. The `dvc import` command downloads such a <abbr>data
-artifact</abbr> in a way that it is tracked with DVC, so it can be updated when
-the data source changes. (See `dvc update`.)
+other files and directories tracked in another Git or <abbr>DVC
+repository</abbr> into the workspace. The `dvc import` command downloads such a
+<abbr>data artifact</abbr> in a way that it is tracked with DVC, so it can be
+updated when the data source changes. (See `dvc update`.)
 
 The `url` argument specifies the address of the Git repository containing the
 source <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
