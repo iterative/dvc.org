@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import { media } from '../styles'
-import { logEvent } from '../utils/ga'
 import NextLink from 'next/link'
+import PropTypes from 'prop-types'
+import React from 'react'
 import Router from 'next/router'
+import { logEvent } from '../utils/ga'
+import { media } from '../styles'
+import styled from 'styled-components'
 
 const getStarted = () => {
   logEvent('menu', 'get-started')
@@ -134,6 +134,7 @@ const GetStartedButton = styled.button`
   border: none;
   cursor: pointer;
   transition: 0.2s background-color ease-out;
+  padding: 1px 7px 2px;
 
   &:hover {
     background-color: #13a3bd;

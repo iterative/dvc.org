@@ -1,15 +1,12 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import NextLink from 'next/link'
-// components
-import Nav from '../Nav'
-// utils
-import throttle from 'lodash.throttle'
-// styles
-import styled from 'styled-components'
-import { media } from '../styles'
-// constants
+
 import { HEADER } from '../consts'
+import Nav from '../Nav'
+import NextLink from 'next/link'
+import PropTypes from 'prop-types'
+import { media } from '../styles'
+import styled from 'styled-components'
+import throttle from 'lodash.throttle'
 
 const MIN_HEIGHT = 78
 
@@ -90,10 +87,6 @@ const Wrapper = styled.div`
   background-color: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
   overflow-y: scroll;
-
-  &::-webkit-scrollbar {
-    visibility: hidden;
-  }
 `
 
 const Container = styled.section`

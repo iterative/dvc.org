@@ -1,10 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
-import Router from 'next/router'
-import { media } from '../styles'
-import { logEvent } from '../utils/ga'
-// consts
 import { PAGE_DOC } from '../consts'
+import React from 'react'
+import Router from 'next/router'
+import { logEvent } from '../utils/ga'
+import { media } from '../styles'
+import styled from 'styled-components'
 
 function goToDocGetStarted() {
   logEvent('promo', 'get-started')

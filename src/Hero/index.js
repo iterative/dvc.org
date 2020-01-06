@@ -1,7 +1,7 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+import React from 'react'
 import { container } from '../styles'
+import styled from 'styled-components'
 
 export default function Hero({ children }) {
   return (

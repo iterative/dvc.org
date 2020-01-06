@@ -1,7 +1,7 @@
 ;`use strict`
 
-import visit from 'unist-util-visit'
 import { getItemByPath } from '../../../utils/sidebar'
+import visit from 'unist-util-visit'
 
 const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*/
 const COMMAND_REGEXP = /^[a-z][a-z-]*$/
