@@ -61,8 +61,8 @@ name.
 - `--rev` - specific
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash) of the DVC repository to
-  download the file from. The tip of the default branch is used by default when
-  this option is not specified.
+  download the file or directory from. The tip of the default branch is used by
+  default when this option is not specified.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
