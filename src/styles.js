@@ -51,10 +51,10 @@ export const sizes = {
 
 sizes.phablet = Math.floor((sizes.tablet + sizes.phone) / 2)
 
-export const media = Object.keys(sizes).reduce((acc, cur) => {
+export const media = Object.keys(sizes).reduce((acc, s) => {
   return Object.assign(acc, {
-    [cur]: (...args) => css`
-      @media (max-width: ${sizes[cur]}px) {
+    [s]: (...args) => css`
+      @media (max-width: ${sizes[s]}px) {
         ${css(...args)};
       }
     `
