@@ -139,6 +139,10 @@ for more details.) This section contains the following options:
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
   for a full explanation of each one.
 
+  To apply changes to this option in the workspace, by restoring all file
+  links/copies from cache, please use `dvc checkout --relink`. See
+  [checkout options](/doc/command-reference/checkout#options) for more details.
+
 - `cache.slow_link_warning` - used to turn off the warnings about having a slow
   cache link type. These warnings are thrown by `dvc pull` and `dvc checkout`
   when linking files takes longer than usual, to remind them that there are
