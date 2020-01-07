@@ -95,7 +95,7 @@ url = /path/to/remote
 remote = myremote
 ```
 
-## Example: Add Amazon S3 remote and modify its region
+## Example: Add a default Amazon S3 remote and modify its region
 
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
