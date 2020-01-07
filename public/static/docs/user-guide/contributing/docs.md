@@ -89,8 +89,8 @@ documentation files automatically.
 
 ### Debugging
 
-The `yarn dev:debug` script runs the local development server with Node's
-[`--inspect` option](https://nodejs.org/en/docs/guides/debugging-getting-started/#command-line-options)
+The `yarn debug` script runs the local development server with `node`'s
+[`--inspect-brk` option](https://nodejs.org/en/docs/guides/debugging-getting-started/#command-line-options)
 in order for debuggers to connect to it (on the default port, 9229).
 
 > For example, use this launch configuration in **Visual Studio Code**:
@@ -101,7 +101,7 @@ in order for debuggers to connect to it (on the default port, 9229).
 >   "request": "launch",
 >   "name": "Launch via Yarn",
 >   "runtimeExecutable": "yarn",
->   "runtimeArgs": ["dev:debug"],
+>   "runtimeArgs": ["debug"],
 >   "port": 9229
 > }
 > ```

@@ -1,9 +1,13 @@
 /* eslint-env node */
 
-// This file doesn't go through babel or webpack transformation. Make sure the
-// syntax and sources this file requires are compatible with the current Node.js
-// version you are running. (See https://github.com/zeit/next.js/issues/1245 for
-// discussions on universal Webpack vs universal Babel.)
+/*
+ * Custom server (with custom routes) See
+ * https://nextjs.org/docs/advanced-features/custom-server
+ *
+ * NOTE: This file doesn't go through babel or webpack. Make sure the syntax and
+ * sources this file requires are compatible with the current node version you
+ * are running.
+ */
 
 const { createServer } = require('http')
 const next = require('next')
@@ -21,7 +25,7 @@ app.prepare().then(() => {
     const { pathname, query } = parsedUrl
 
     /*
-     * Special URL redirects.
+     * HTTP redirects
      * NOTE: The order of the redirects is important.
      */
     if (
@@ -107,22 +111,21 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/doc(\/.*)?$/.test(pathname)) {
       /*
-       * Special Docs Engine handler
+       * Docs Engine handler
        */
 
-      // Force 404 response for any inexistent /doc item.
+      // Force 404 response code for any inexistent /doc item.
       if (!getItemByPath(pathname)) {
         res.statusCode = 404
       }
 
-      // Fire up docs engine!
+      // Custom route for all docs
       app.render(req, res, '/doc', query)
     } else {
       // Regular Next handler
       handle(req, res, parsedUrl)
     }
   }).listen(port, err => {
-    // Invokes `createServer` server.
     if (err) throw err
     console.info(`> Ready on localhost:${port}`)
   })

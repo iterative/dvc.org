@@ -156,9 +156,9 @@ export default class Markdown extends React.PureComponent {
   }
 
   isInsideCodeBlock = elem => {
-    for (; elem && elem !== document; elem = elem.parentNode) {
-      if (elem.tagName === 'PRE') return true
-      if (elem.tagName === 'ARTICLE') return false
+    for (let el = elem; el && el !== document; el = el.parentNode) {
+      if (el.tagName === 'PRE') return true
+      if (el.tagName === 'ARTICLE') return false
     }
     return false
   }

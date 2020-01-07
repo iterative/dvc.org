@@ -1,11 +1,7 @@
 /* eslint-env node */
-
-const startCase = require('lodash.startcase')
-const sidebar = require('../../public/static/docs/sidebar.json')
-
 /*
-  We will use this helper to normalize sidebar structure and create
-  all of the resurces we need to prevent future recalculations.
+  These helpers normalize sidebar structure and create all the resources needed.
+  This prevents future recalculations.
 
   Target structure example:
 
@@ -22,11 +18,26 @@ const sidebar = require('../../public/static/docs/sidebar.json')
   }
 */
 
+const startCase = require('lodash.startcase')
+const sidebar = require('../../public/static/docs/sidebar.json')
+
 const PATH_ROOT = '/doc/'
 const FILE_ROOT = '/static/docs/'
 const FILE_EXTENSION = '.md'
 
-// Inner helpers
+function validateRawItem({ slug, source, children }) {
+  const isSourceDisabled = source === false
+
+  if (!slug) {
+    throw Error("'slug' field is required in objects in sidebar.json")
+  }
+
+  if (isSourceDisabled && (!children || !children.length)) {
+    throw Error(
+      "If you set 'source' to false, you had to add at least one child"
+    )
+  }
+}
 
 function findItem(data, targetPath) {
   if (data.length) {
@@ -45,42 +56,22 @@ function findItem(data, targetPath) {
   }
 }
 
-function findChildWithSource(item) {
-  return item.source ? item : findChildWithSource(item.children[0])
-}
-
 function findPrevItemWithSource(data, item) {
-  if (item.source) {
+  if (item && item.source) {
     return item
-  } else if (item.prev) {
+  } else if (item && item.prev) {
     const prevItem = findItem(data, item.prev)
 
     return findPrevItemWithSource(data, prevItem)
   }
 }
 
-function validateRawItem({ slug, source, children }) {
-  const isSourceDisabled = source === false
+function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
+  validateRawItem(rawItem)
 
-  if (!slug) {
-    throw Error("'slug' field is required in objects in sidebar.json")
-  }
+  const { label, slug, source, tutorials } = rawItem
 
-  if (isSourceDisabled && (!children || !children.length)) {
-    throw Error(
-      "If you set 'source' to false, you had to add at least one child"
-    )
-  }
-}
-
-// Normalization
-
-function normalizeItem({ item, parentPath, resultRef, prevRef }) {
-  validateRawItem(item)
-
-  const { label, slug, source, tutorials } = item
-
-  // If prev item doesn't have source we need to recirsively search for it
+  // If prev item doesn't have source we need to search for it
   const prevItemWithSource =
     prevRef && findPrevItemWithSource(resultRef, prevRef)
 
@@ -111,9 +102,9 @@ function normalizeSidebar({
 
   data.forEach(rawItem => {
     const isShortcut = typeof rawItem === 'string'
-    const item = isShortcut ? { slug: rawItem } : rawItem
+    rawItem = isShortcut ? { slug: rawItem } : rawItem
     const normalizedItem = normalizeItem({
-      item,
+      rawItem,
       parentPath,
       resultRef,
       prevRef
@@ -123,10 +114,10 @@ function normalizeSidebar({
       prevRef.next = normalizedItem.path
     }
 
-    if (item.children) {
+    if (rawItem.children) {
       normalizedItem.children = normalizeSidebar({
-        data: item.children,
-        parentPath: `${parentPath}${item.slug}/`,
+        data: rawItem.children,
+        parentPath: `${parentPath}${rawItem.slug}/`,
         parentResultRef: resultRef,
         startingPrevRef: normalizedItem
       })
@@ -142,12 +133,18 @@ function normalizeSidebar({
   return currentResult
 }
 
+function findChildWithSource(item) {
+  return item.source ? item : findChildWithSource(item.children[0])
+}
+
+/*
+ * Exports
+ */
+
 const normalizedSidebar = normalizeSidebar({
   data: sidebar,
   parentPath: ''
 })
-
-// Exports
 
 function getItemByPath(path) {
   const normalizedPath = path.replace(/\/$/, '')
@@ -156,7 +153,9 @@ function getItemByPath(path) {
     ? normalizedSidebar[0]
     : findItem(normalizedSidebar, normalizedPath)
 
-  return item && findChildWithSource(item)
+  if (!item) return false
+
+  return findChildWithSource(item)
 }
 
 function getParentsListFromPath(path) {

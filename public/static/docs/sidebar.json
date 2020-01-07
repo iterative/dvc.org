@@ -30,7 +30,6 @@
     ]
   },
   {
-    "label": "Install",
     "slug": "install",
     "source": "install/index.md",
     "children": [
@@ -140,7 +139,7 @@
       {
         "label": "Contributing",
         "slug": "contributing",
-        "source": "contributing/index.md",
+        "source": false,
         "children": [
           {
             "label": "DVC Core Project",
@@ -356,8 +355,8 @@
     ]
   },
   {
-    "label": "Understanding DVC",
     "slug": "understanding-dvc",
+    "label": "Understanding DVC",
     "source": false,
     "children": [
       "collaboration-issues",
