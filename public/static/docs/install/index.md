@@ -7,6 +7,10 @@ Please double check that you don't already have DVC (for example running
 - [Install on Windows](/doc/install/windows)
 - [Install on Linux](/doc/install/linux)
 
+⚠️ Please try to use the same/latest DVC version on all the team member
+machines. DVC is in active development and compatibility issues may arise
+between significantly different versions.
+
 ## Advanced options
 
 - Shell completion is automatically enabled by certain installation methods. If
