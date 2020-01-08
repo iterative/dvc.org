@@ -52,7 +52,7 @@
   },
   {
     "slug": "tutorials",
-    "source": false,
+    "source": "tutorials/index.md",
     "children": [
       {
         "slug": "interactive",
