@@ -1,13 +1,20 @@
 # dvc.api.get_url()
 
-get_url(path, repo=None, rev=None, remote=None) - returns an url of an artifact.
+Returns an url of an artifact.
 
-## Arguments
+## Signature
 
-path - a path to an artifact, relative to repo root
+```py
+get_url(path, repo=None, rev=None, remote=None)
+```
 
-repo - a path or git url of a repo
+## Parameters
 
-rev - revision, i.e. a branch, a tag, a sha. This only works with an url in repo
+- `path` - a path to an artifact, relative to repo root
 
-remote - a name of a remote to fetch artifact from/give url to
+- `repo` - a path or git url of a repo
+
+- `rev` - revision, i.e. a branch, a tag, a SHA. This only works with an url in
+  repo
+
+- `remote` - a name of a remote to fetch artifact from/give url to

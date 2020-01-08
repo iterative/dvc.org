@@ -370,6 +370,10 @@
       {
         "slug": "open",
         "label": "open()"
+      },
+      {
+        "slug": "summon",
+        "label": "summon()"
       }
     ]
   },
