@@ -147,8 +147,8 @@ $ python train.py
 $ dvc add model.h5
 ```
 
-> We manually added the model output here, which isn't ideal. The recommended
-> way of capturing command outputs is with `dvc run`. More on this later.
+> We manually added the model output here, which isn't ideal. The preferred way
+> of capturing command outputs is with `dvc run`. More on this later.
 
 Let's commit the current state:
 

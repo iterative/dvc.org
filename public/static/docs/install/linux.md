@@ -2,9 +2,9 @@
 
 ## Install with pip
 
-> It's highly recommended to use a
-> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
-> or
+> We **strongly** recommend creating a
+> [virtual-environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> or using
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
 > (on Python 3.6+) to encapsulate your local environment.
 

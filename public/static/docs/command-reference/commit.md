@@ -61,10 +61,10 @@ and added to the DVC-file, but the actual data file is not saved in the cache.
 This is where the `dvc commit` command comes into play. It performs that last
 step (saving the data in cache).
 
-The last two scenarios are **not recommended**. They essentially force-update
-the [DVC-files](/doc/user-guide/dvc-file-format) and save data to cache. They
-are still useful, but keep in mind that DVC can't guarantee reproducibility in
-those cases – where you commit any data you want.
+Note that it's best to avoid the last two scenarios. They essentially
+force-update the [DVC-files](/doc/user-guide/dvc-file-format) and save data to
+cache. They are still useful, but keep in mind that DVC can't guarantee
+reproducibility in those cases.
 
 ## Options
 

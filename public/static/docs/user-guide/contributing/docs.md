@@ -35,10 +35,10 @@ Otherwise, please refer to the following procedure:
   that you are working on this.
 
 - Format the code by following the
-  [code style guidelines](#code-style-guidelines) below. It's highly
-  recommendable to setup the [development environment](#development-environment)
-  explained below. Among other things, it can help format the documentation
-  and/or JS code automatically.
+  [code style guidelines](#code-style-guidelines) below. We highly recommend
+  setting up a [development environment](#development-environment) as explained
+  below. Among other things, it can help format the documentation and/or JS code
+  automatically.
 
 - Push the changes to your fork of
   [dvc.org](https://github.com/iterative/dvc.org.git) and submit a PR to the
@@ -48,8 +48,8 @@ We will review your PR as soon as possible. Thank you for contributing!
 
 ## Development environment
 
-It's highly recommendable to run this web app locally to check documentation
-changes before submitting them, and quite necessary when making changes to the
+We highly recommend running this web app locally to check documentation changes
+before submitting them, and it's quite necessary when making changes to the
 [Next.js](https://nexyjs.org/) engine itself (rare). Source code files need to
 be properly formatted as well, which is also ensured by the full setup below.
 
@@ -120,10 +120,11 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
 
 - No trailing whitespaces are allowed.
 
-- Content must be properly formatted at 80 symbols width. We recommend using
-  Visual Studio Code with the
-  [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
-  plugin for this.
+- Content must be properly formatted at 80 symbols width.
+
+  > 💡 We recommend using Visual Studio Code with the
+  > [Rewrap](https://marketplace.visualstudio.com/items?itemName=stkb.rewrap)
+  > plugin for help with this.
 
 - We use [Prettier](https://prettier.io/) to format our source code (see
   [its configuration](https://github.com/iterative/dvc.org/blob/master/.prettierrc)).

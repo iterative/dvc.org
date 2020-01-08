@@ -26,8 +26,8 @@ intermediate result or a final model file i.e. `model.pkl`) and you don't use
 `dvc unprotect` or `dvc remove`) to unlink it from DVC cache prior to the
 execution of the script that modifies it.
 
-See also `dvc unprotect` and `dvc config cache` to learn more about the
-recommended ways to protect your data files.
+See also `dvc unprotect` and `dvc config cache` to learn more about protecting
+your data files.
 
 ## Replacing file
 
