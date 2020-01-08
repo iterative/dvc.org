@@ -289,7 +289,7 @@ Tests currently only work on Linux. First you need to set up passwordless ssh
 access to localhost:
 
 ```dvc
-# Only run next line if you don't yet have keys
+# Only run the next line if you don't yet have keys
 $ ssh-keygen -t rsa -P ""
 $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```

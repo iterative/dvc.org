@@ -119,7 +119,7 @@ for more details.) This section contains the following options:
   this config option on forces you to run `dvc unprotect` before updating a
   file, providing an additional layer of security to your data.
 
-  It's highly recommended to enable this mod when `cache.type` is set to
+  We highly recommend enabling this option when `cache.type` is set to
   `hardlink` or `symlink`.
 
 - `cache.type` - link type that DVC should use to link data files from cache to

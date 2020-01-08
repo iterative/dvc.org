@@ -122,7 +122,7 @@ app.prepare().then(() => {
       // Custom route for all docs
       app.render(req, res, '/doc', query)
     } else {
-      // Regular Next handler
+      // Regular Next.js handler
       handle(req, res, parsedUrl)
     }
   }).listen(port, err => {

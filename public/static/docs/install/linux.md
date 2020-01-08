@@ -2,9 +2,9 @@
 
 ## Install with pip
 
-> It's highly recommended using
-> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
-> or
+> We **strongly** recommend creating a
+> [virtual-environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> or using
 > [pipx](https://packaging.python.org/guides/installing-stand-alone-command-line-tools/)
 > (on Python 3.6+) to encapsulate your local environment.
 
@@ -15,6 +15,11 @@ $ pip install dvc
 Depending on the type of the [remote storage](/doc/command-reference/remote) you
 plan to use, you might need to install optional dependencies: `[s3]`, `[azure]`,
 `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them all.
+
+> Please restart your terminal or re-source the shell configuration file
+> (`.bashrc`, `.zshrc`, etc.) if you get `Command 'dvc' not found` after
+> installation. If restarting the terminal isn't desirable (e.g. containers),
+> it's also possible to manually edit the `PATH` env variable.
 
 <details>
 

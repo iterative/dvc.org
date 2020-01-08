@@ -10,8 +10,8 @@ export default function Tutorials({ compact, tutorials }) {
 
   return (
     <Wrapper compact={compact}>
-      {tutorialsData.map(([key, value]) => {
-        const ButtonComponent = icons[key] || ExternalButton
+      {tutorialsData.map(([k, value]) => {
+        const ButtonComponent = icons[k] || ExternalButton
 
         return (
           <ButtonComponent
@@ -21,8 +21,8 @@ export default function Tutorials({ compact, tutorials }) {
             rel="noopener nofollow"
             compact={compact}
           >
-            {icons[key] && <i />}
-            {!compact && `Run in ${startCase(key)}`}
+            {icons[k] && <i />}
+            {!compact && `Run in ${startCase(k)}`}
           </ButtonComponent>
         )
       })}
