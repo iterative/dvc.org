@@ -25,7 +25,7 @@ export const Header = styled.div`
   border-bottom: 1px solid #d8dfe3;
   font-family: BrandonGrotesqueMed;
   font-size: 24px;
-  line-height: ${({ large }) => (large ? '54px' : '34px')};
+  line-height: 34px;
   color: #24292e;
 
   ${media.phablet`
@@ -35,7 +35,7 @@ export const Header = styled.div`
 `
 
 export const Icon = styled.img`
-  margin: 0 -2px 0 0;
+  margin: 6px -2px 0 0;
 
   ${media.phablet`
     display: none;
@@ -50,7 +50,7 @@ export const Wrapper = styled.div`
   justify-content: stretch;
   width: 100%;
   padding: 10px 20px 20px;
-  border-radius: 5px;
+  border-radius: 20px;
   background: #eef4f8;
 
   ${media.phablet`

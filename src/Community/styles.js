@@ -28,7 +28,7 @@ export const Item = styled.div`
   align-items: stretch;
 
   & + & {
-    margin-left: 20px;
+    margin-left: 30px;
 
     ${media.tablet`
       margin: 5px 0 0 0;

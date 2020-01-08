@@ -12,7 +12,7 @@ import data from '../data'
 
 const { description, title } = data.section.meet
 
-import { FrameWrapper } from './styles'
+import { StatLabel, StatLine, StatValue } from './styles'
 
 import {
   Comments,
@@ -38,15 +38,27 @@ export default function CommunityMeet({ issues, theme, topics }) {
       >
         <Items>
           <Item>
-            <FrameWrapper>
-              <iframe
-                title="chat"
-                src="https://discordapp.com/widget?id=485586884165107732&theme=light&header=Text"
-                width="100%"
-                height="100%"
-                frameBorder="0"
-              ></iframe>
-            </FrameWrapper>
+            <CommunityBlock
+              title="Join the Dev Chat"
+              action={
+                <CommunityButton theme={theme} href="/">
+                  Open Chat
+                </CommunityButton>
+              }
+              icon="/static/img/community/discord.svg"
+            >
+              <Meta>
+                Need urgent help? Ask advice from experienced developers online
+              </Meta>
+              <StatLine>
+                <StatValue>1380+</StatValue>
+                <StatLabel>registered developers</StatLabel>
+              </StatLine>
+              <StatLine>
+                <StatValue>500+</StatValue>
+                <StatLabel>messages posted over the past month</StatLabel>
+              </StatLine>
+            </CommunityBlock>
           </Item>
           <Item>
             <CommunityBlock
@@ -59,7 +71,6 @@ export default function CommunityMeet({ issues, theme, topics }) {
                 )
               }
               icon="/static/img/community/discourse.svg"
-              large={true}
             >
               {topics.length ? (
                 topics.map(({ url, title, date, comments }) => (
@@ -101,7 +112,6 @@ export default function CommunityMeet({ issues, theme, topics }) {
                 )
               }
               icon="/static/img/community/github.svg"
-              large={true}
             >
               {issues.length ? (
                 issues.map(({ url, title, date, comments }) => (

@@ -46,7 +46,7 @@ export default function CommunityEvents({ theme }) {
                       <Image src={picture} alt="" />
                     </ImageWrapper>
                   )}
-                  <Link color={theme.color} href={url} large={true}>
+                  <Link color={theme.color} href={url}>
                     {title}
                   </Link>
                   <Meta>
