@@ -19,4 +19,7 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 
 - `remote` - a name of a remote to fetch artifact from/give url to
 
-- `encoding` - an encoding used to decode contents to a string
+- `mode` - Mirrors their namesake builtin `open()` has.
+
+- `encoding` - an encoding used to decode contents to a string. Mirrors their
+  namesake builtin `open()` has.

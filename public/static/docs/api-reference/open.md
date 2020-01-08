@@ -1,6 +1,6 @@
 # dvc.api.open()
 
-Opens an artifact as a file, may only be used as context manager
+Opens an artifact as a file. May only be used as context manager.
 
 ## Signature
 
@@ -19,4 +19,16 @@ open(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 
 - `remote` - a name of a remote to fetch artifact from/give url to
 
-- `encoding` - an encoding used to decode contents to a string
+- `mode` - Mirrors their namesake builtin `open()` has.
+
+- `encoding` - an encoding used to decode contents to a string. Mirrors their
+  namesake builtin `open()` has.
+
+## Example: `open` as a context manager
+
+```py
+with dvc.api.open("path/to/data.csv", remote="my-s3", encoding="utf-8") as f:
+    for line in f:
+        process(line)
+    ...
+```

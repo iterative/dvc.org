@@ -5,7 +5,13 @@ Instantiate an object described in the summon file.
 ## Signature
 
 ```py
-def summon(name, repo=None, rev=None, summon_file="dvcsummon.yaml", args=None)
+def summon(
+  name,
+  repo=None,
+  rev=None,
+  summon_file="dvcsummon.yaml",
+  args=None
+)
 ```
 
 ## Parameters
@@ -18,3 +24,5 @@ def summon(name, repo=None, rev=None, summon_file="dvcsummon.yaml", args=None)
   repo
 
 - `summon_file` - DVC summon configuration file
+
+- `args` - other arguments
