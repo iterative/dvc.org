@@ -51,11 +51,11 @@ export default function CommunityMeet({ issues, theme, topics }) {
                 Need urgent help? Ask advice from experienced developers online
               </Meta>
               <StatLine>
-                <StatValue>1380+</StatValue>
+                <StatValue>{data.stats.users}</StatValue>
                 <StatLabel>registered developers</StatLabel>
               </StatLine>
               <StatLine>
-                <StatValue>500+</StatValue>
+                <StatValue>{data.stats.messages}</StatValue>
                 <StatLabel>messages posted over the past month</StatLabel>
               </StatLine>
             </CommunityBlock>

@@ -74,5 +74,9 @@
       "city": "Munich",
       "date": 1576072266986
     }
-  ]
+  ],
+  "stats": {
+    "users": "1380+",
+    "messages": "50K+"
+  }
 }
