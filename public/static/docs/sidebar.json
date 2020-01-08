@@ -355,6 +355,25 @@
     ]
   },
   {
+    "slug": "api-reference",
+    "label": "Python API Reference",
+    "source": "api-reference/index.md",
+    "children": [
+      {
+        "slug": "read",
+        "label": "read()"
+      },
+      {
+        "slug": "get_url",
+        "label": "get_url()"
+      },
+      {
+        "slug": "open",
+        "label": "open()"
+      }
+    ]
+  },
+  {
     "slug": "understanding-dvc",
     "label": "Understanding DVC",
     "source": false,
