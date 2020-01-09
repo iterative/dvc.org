@@ -25,9 +25,10 @@ def summon(
   an "offline" project.
 
 - `rev` - (optional)
-  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+  [Git-revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash). `rev` only has an effect
-  when a URL is supplied as parameter to `repo`.
+  when a URL is supplied as parameter to `repo`. If not supplied, it uses the
+  default Git revision, `HEAD`.
 
 - `summon_file` - YAML file describing the object in question. Defaults to
   `dvcsummon.yaml`.

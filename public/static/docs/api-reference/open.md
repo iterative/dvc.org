@@ -22,19 +22,21 @@ open(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
   an "offline" project.
 
 - `rev` - (optional)
-  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+  [Git-revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash). `rev` only has an effect
-  when a URL is supplied as parameter to `repo`.
+  when a URL is supplied as parameter to `repo`. If not supplied, it uses the
+  default Git revision, `HEAD`.
 
 - `remote` - (optional) name of the [DVC remote](/doc/command-reference/remote)
-  to fetch the target artifact from
+  to fetch the target artifact from. If not supplied, the default project's
+  remote is employed.
 
 - `mode` - (optional) mirrors the namesake parameter in builtin
   [`open()`](https://docs.python.org/3.7/library/functions.html#open). Defaults
   to `"r"` (read).
 
 - `encoding` - (optional) used to decode contents to a string. Mirrors the
-  namesake parameter in builtin `open()`.
+  namesake parameter in builtin `open()`. Defaults to `"utf-8"`.
 
 ## Example: open from a DVC remote
 
