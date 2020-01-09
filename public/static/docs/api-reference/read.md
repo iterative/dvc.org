@@ -26,8 +26,8 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 
 - `rev` - (optional)
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash). This only works with `repo`
-  URLs.
+  (such as a branch name, a tag, or a commit hash). `rev` only has an effect
+  when a URL is supplied as parameter to `repo`.
 
 - `remote` - (optional) name of the [DVC remote](/doc/command-reference/remote)
   to fetch the target artifact from
