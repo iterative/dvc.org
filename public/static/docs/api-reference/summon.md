@@ -18,11 +18,14 @@ def summon(
 
 - `name` - object to summon
 
-- `repo` - a path or git url of a repo
+- `repo` - path or Git URL of a DVC repository
 
-- `rev` - revision, i.e. a branch, a tag, a SHA. This only works with an url in
-  repo
+- `rev` -
+  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+  (such as a branch name, a tag, or a commit hash). This only works with `repo`
+  URLs.
 
-- `summon_file` - DVC summon configuration file
+- `summon_file` - summon file describing the object in question. Defaults to
+  `dvcsummon.yaml`.
 
-- `args` - other arguments
+- `args` - arguments to pass onto the object, if any

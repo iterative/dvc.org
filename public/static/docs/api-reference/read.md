@@ -1,6 +1,7 @@
 # dvc.api.read()
 
-Returns the contents of an artifact as a bytes object or a string.
+Returns the contents of a <abbr>data artifact</abbr> as a bytes object or as a
+string.
 
 ## Signature
 
@@ -10,16 +11,32 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 
 ## Parameters
 
-- `path` - a path to an artifact, relative to repo root
+- `path` - path to the target artifact relative to the repository's root
 
-- `repo` - a path or git url of a repo
+- `repo` - path or Git URL of a DVC repository
 
-- `rev` - revision, i.e. a branch, a tag, a SHA. This only works with an url in
-  repo
+- `rev` -
+  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+  (such as a branch name, a tag, or a commit hash). This only works with `repo`
+  URLs.
 
-- `remote` - a name of a remote to fetch artifact from/give url to
+- `remote` - (optional) name of the [DVC remote](/doc/command-reference/remote)
+  to fetch the target artifact from
 
-- `mode` - Mirrors their namesake builtin `open()` has.
+- `mode` - (optional) mirrors the namesake parameter in builtin
+  [`open()`](https://docs.python.org/3.7/library/functions.html#open). Defaults
+  to "r" (read).
 
-- `encoding` - an encoding used to decode contents to a string. Mirrors their
-  namesake builtin `open()` has.
+- `encoding` - (optional) used to decode contents to a string. Mirrors the
+  namesake parameter in builtin `open()`.
+
+## Example: loading from content
+
+```py
+import pickle
+import dvc.api
+
+model = pickle.loads(
+  dvc.api.read("model.pkl", repo="https://github.com/my-org/my-repo.git")
+)
+```
