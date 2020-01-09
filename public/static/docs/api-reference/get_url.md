@@ -1,7 +1,11 @@
 # dvc.api.get_url()
 
-Returns the full URL to the <abbr>data artifact</abbr> specified by its `path`
-in a `repo` (<abbr>DVC project</abbr>).
+Returns the full URL to the physical location (in a
+[DVC remote](/doc/command-reference/remote)) of a <abbr>data artifact</abbr>
+specified by its `path` in a `repo` (<abbr>DVC project</abbr>).
+
+> For possible URL formats, refer to the
+> [supported remote types](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
 
 ## Signature
 
@@ -28,12 +32,14 @@ get_url(path, repo=None, rev=None, remote=None)
 
 - `remote` - (optional) name of the [DVC remote](/doc/command-reference/remote)
   to fetch the target artifact from. If not supplied, the default project's
-  remote is employed.
+  remote is used.
 
 ## Example
 
 ```py
 import dvc.api
 
-resource_url = dvc.api.get_url("data/prepared.tsv", repo="https://github.com/my-org/my-repo.git", remote="my-s3")
+resource_url = dvc.api.get_url("data/data.xml", repo="https://github.com/iterative/example-get-started")
+
+# resource_url = https://remote.dvc.org/get-started/a3/04afb96060aad90176268345e10355
 ```

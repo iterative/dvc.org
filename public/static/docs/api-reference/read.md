@@ -33,7 +33,7 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 
 - `remote` - (optional) name of the [DVC remote](/doc/command-reference/remote)
   to fetch the target artifact from. If not supplied, the default project's
-  remote is employed.
+  remote is used.
 
 - `mode` - (optional) mirrors the namesake parameter in builtin
   [`open()`](https://docs.python.org/3.7/library/functions.html#open). Defaults
