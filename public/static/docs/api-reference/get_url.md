@@ -1,6 +1,7 @@
 # dvc.api.get_url()
 
-Returns the URL of a <abbr>data artifact</abbr>.
+Returns the full URL to the <abbr>data artifact</abbr> specified by its `path`
+in a `repo`.
 
 ## Signature
 
@@ -14,7 +15,7 @@ get_url(path, repo=None, rev=None, remote=None)
 
 - `repo` - path or Git URL of a DVC repository
 
-- `rev` -
+- `rev` - (optional)
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash). This only works with `repo`
   URLs.

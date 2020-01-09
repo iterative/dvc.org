@@ -360,16 +360,16 @@
     "source": "api-reference/index.md",
     "children": [
       {
-        "slug": "read",
-        "label": "read()"
-      },
-      {
         "slug": "get_url",
         "label": "get_url()"
       },
       {
         "slug": "open",
         "label": "open()"
+      },
+      {
+        "slug": "read",
+        "label": "read()"
       },
       {
         "slug": "summon",
