@@ -16,9 +16,13 @@ def summon(
 
 ## Parameters
 
-- `name` - object to summon
+- **`name`** - object to summon within the source project in `repo`, as defined
+  in the `summon_file`.
 
-- `repo` - path or Git URL of a DVC repository
+- `repo` - specifies the location of the source DVC project. Both HTTP and SSH
+  protocols are supported for online Git repositories (e.g.
+  `[user@]server:project.git`). `repo` can also be a local file system path to
+  an "offline" project.
 
 - `rev` - (optional)
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)

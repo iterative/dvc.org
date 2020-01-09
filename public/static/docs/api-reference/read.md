@@ -16,11 +16,13 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 
 ## Parameters
 
-- `path` -
-  [path](https://docs.python.org/3.7/glossary.html#term-path-like-object) to the
-  target artifact relative to the repository's root
+- **`path`** - used to specify the location of the target artifact within the
+  source project in `repo`, relative to the project's root.
 
-- `repo` - path or Git URL of a DVC repository
+- `repo` - specifies the location of the source DVC project. Both HTTP and SSH
+  protocols are supported for online Git repositories (e.g.
+  `[user@]server:project.git`). `repo` can also be a local file system path to
+  an "offline" project.
 
 - `rev` - (optional)
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)

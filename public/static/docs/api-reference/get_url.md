@@ -1,7 +1,7 @@
 # dvc.api.get_url()
 
 Returns the full URL to the <abbr>data artifact</abbr> specified by its `path`
-in a `repo`.
+in a `repo` (<abbr>DVC project</abbr>).
 
 ## Signature
 
@@ -11,9 +11,13 @@ get_url(path, repo=None, rev=None, remote=None)
 
 ## Parameters
 
-- `path` - path to the target artifact relative to the repository's root
+- **`path`** - used to specify the location of the target artifact within the
+  source project in `repo`, relative to the project's root.
 
-- `repo` - path or Git URL of a DVC repository
+- `repo` - specifies the location of the source DVC project. Both HTTP and SSH
+  protocols are supported for online Git repositories (e.g.
+  `[user@]server:project.git`). `repo` can also be a local file system path to
+  an "offline" project.
 
 - `rev` - (optional)
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
