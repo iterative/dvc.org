@@ -19,7 +19,8 @@ open(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 - `repo` - specifies the location of the source DVC project. Both HTTP and SSH
   protocols are supported for online Git repositories (e.g.
   `[user@]server:project.git`). `repo` can also be a local file system path to
-  an "offline" project.
+  an "offline" project. If not supplied, this defaults to the current working
+  directory.
 
 - `rev` - (optional)
   [Git-revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
