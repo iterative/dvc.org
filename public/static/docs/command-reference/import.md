@@ -35,9 +35,9 @@ doesn't have a default remote set up, instead of downloading, DVC will try to
 copy the target data from the external source project or its
 <abbr>cache</abbr>).
 
-The `path` argument of this command is used to specify the location, within the
-source repository at `url`, of the target(s) to be downloaded. It can point to
-any file or directory in the source project, including <abbr>outputs</abbr>
+The `path` argument of this command is used to specify the location of the
+target(s) to be downloaded within the source repository at `url`. It can point
+to any file or directory in the source project, including <abbr>outputs</abbr>
 tracked by DVC as well as files tracked by Git. Note that for the former, data
 should be specified in one of the [DVC-files](/doc/user-guide/dvc-file-format)
 of the source repository. (In this case, a default
