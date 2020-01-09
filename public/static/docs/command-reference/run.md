@@ -49,8 +49,8 @@ Note that `dvc repro` provides an interface to check state and reproduce this
 graph (pipeline) later. This concept is similar to the one of the
 [Make](https://www.gnu.org/software/make/) in software build automation, but DVC
 captures data and <abbr>caches</abbr> relevant <abbr>data artifacts</abbr> along
-the way. See [this example](/doc/get-started/example-pipeline) to learn more and
-try creating a pipeline.
+the way. See [this tutorial](/doc/tutorials/pipelines) to learn more and try
+creating a pipeline.
 
 ### Avoiding unexpected behavior
 
