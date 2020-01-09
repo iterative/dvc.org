@@ -127,7 +127,7 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
 }
 
 Documentation.getInitialProps = async ({ asPath, req }) => {
-  const item = getItemByPath(asPath.split('#')[0])
+  const item = getItemByPath(asPath.split('#')[0].split('?')[0])
 
   if (!item) {
     return {
