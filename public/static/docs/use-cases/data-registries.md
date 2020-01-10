@@ -88,9 +88,9 @@ $ dvc push
 
 ## Using registries
 
-The main methods to consume <abbr>data artifacts</abbr> from a **data registry**
-are the `dvc import` and `dvc get` commands, as well as the `dvc.api` Python
-API.
+The main methods to consume <abbr>data artifacts</abbr> from a Git repository or
+**data registry** are the `dvc import` and `dvc get` commands, as well as the
+`dvc.api` Python API.
 
 ### Simple download (get)
 

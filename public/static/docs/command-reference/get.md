@@ -12,17 +12,16 @@ Download a file or directory from any <abbr>DVC project</abbr> or Git repository
 usage: dvc get [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url         URL of Git repository with DVC project to download from.
-  path        Path to a file or directory within a DVC repository.
+  url         URL of Git repository to download from.
+  path        Path to a file or directory within the repository.
 ```
 
 ## Description
 
-Provides an easy way to download files or directories tracked in any <abbr>DVC
-repository</abbr>, both by Git (e.g. source code) or DVC (e.g. datasets, ML
-models). The file or directory in path is copied to the current working
-directory. (For remote URLs, it works like downloading with wget, but supporting
-DVC <abbr>data artifacts</abbr>.)
+Provides an easy way to download files or directories tracked in a, both by Git
+(e.g. source code) or DVC (e.g. datasets, ML models). The file or directory in
+path is copied to the current working directory. (For remote URLs, it works like
+downloading with wget, but supporting DVC <abbr>data artifacts</abbr>.)
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
@@ -60,7 +59,7 @@ name.
 
 - `--rev` - specific
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the DVC repository to
+  (such as a branch name, a tag, or a commit hash) of the Git repository to
   download the file or directory from. The tip of the default branch is used by
   default when this option is not specified.
 
