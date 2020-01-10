@@ -6,6 +6,10 @@ Download a file or directory from any <abbr>DVC project</abbr> or Git repository
 > Unlike `dvc import`, this command does not track the downloaded files (does
 > not create a DVC-file).
 
+<!-- Separate MD quote: -->
+
+> See also our `dvc.api.open` Python API function.
+
 ## Synopsis
 
 ```usage

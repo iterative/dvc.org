@@ -5,6 +5,8 @@ Opens a file <abbr>artifact</abbr> as a
 only be used as
 [context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library).
 
+> This has similar uses as the `dvc get` and `dvc import` CLI commands.
+
 ## Signature
 
 ```py

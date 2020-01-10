@@ -4,7 +4,7 @@ Returns the contents of a file <abbr>artifact</abbr> as a bytes object or as a
 string.
 
 > Wrapper for [`dvc.api.open()`](/doc/api-reference/open) that returns the
-> results of the file object's
+> complete file contents directly, by using the file object's
 > [`read()`](https://docs.python.org/3.7/tutorial/inputoutput.html#methods-of-file-objects)
 > method.
 

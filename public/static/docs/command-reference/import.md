@@ -9,6 +9,10 @@ import.
 > See also `dvc get`, that corresponds to the first step this command performs
 > (just download the data).
 
+<!-- Separate MD quote: -->
+
+> See also our `dvc.api.open` Python API function.
+
 ## Synopsis
 
 ```usage
