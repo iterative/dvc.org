@@ -1,4 +1,4 @@
-import { OnlyDesktop, OnlyMobile } from '../styles'
+import { OnlyDesktopInline, OnlyMobileInline } from '../styles'
 import React, { Component } from 'react'
 
 import DesktopView from './desktop-view'
@@ -37,21 +37,21 @@ class Tooltip extends Component {
     if (this.state.match) {
       return (
         <>
-          <OnlyDesktop>
+          <OnlyDesktopInline>
             <DesktopView
               description={this.state.description}
               header={this.state.header}
               id={this.props.id}
               text={this.props.text}
             />
-          </OnlyDesktop>
-          <OnlyMobile>
+          </OnlyDesktopInline>
+          <OnlyMobileInline>
             <MobileView
               description={this.state.description}
               header={this.state.header}
               text={this.props.text}
             />
-          </OnlyMobile>
+          </OnlyMobileInline>
         </>
       )
     } else {
