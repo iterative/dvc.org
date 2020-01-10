@@ -1,9 +1,9 @@
 # Troubleshooting
 
 In this section we provide help for some of the problems that DVC user might
-stumbe upon.
+stumble upon.
 
-## Too many open files error
+<h2 id="many-files">Too many open files error</h2>
 
 A known problem some users run into with the `dvc pull`, `dvc fetch` and
 `dvc push` commands is `[Errno 24] Too many open files` (most common for S3
