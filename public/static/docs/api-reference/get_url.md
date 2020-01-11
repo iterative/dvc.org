@@ -4,7 +4,11 @@ Returns the full URL to the physical location (in a
 [DVC remote](/doc/command-reference/remote)) of a <abbr>data artifact</abbr>
 specified by its `path` in a `repo` (<abbr>DVC project</abbr>).
 
-> For possible URL formats, refer to the
+Having the resource's URL, it would be possible to download it directly with an
+appropriate tool such as `wget` for HTTP locations, `aws s3 cp` for Amazon S3,
+etc.
+
+> For possible location protocols, refer to the
 > [supported remote types](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
 
 ## Signature
@@ -40,6 +44,10 @@ get_url(path, repo=None, rev=None, remote=None)
 import dvc.api
 
 resource_url = dvc.api.get_url("data/data.xml", repo="https://github.com/iterative/example-get-started")
-
-# resource_url = https://remote.dvc.org/get-started/a3/04afb96060aad90176268345e10355
 ```
+
+The value of `resource_url` in this case would be something like
+`https://remote.dvc.org/get-started/a3/04afb96060aad90176268345e10355`. This URL
+represents the physical location fo the data, built by interpreting the
+corresponding [DVC-file](/doc/user-guide/dvc-file-format), where the file's
+checksum is stored, and the project's remote configuration.

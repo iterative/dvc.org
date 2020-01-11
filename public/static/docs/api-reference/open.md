@@ -41,25 +41,20 @@ open(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 - `encoding` - (optional) used to decode contents to a string. Mirrors the
   namesake parameter in builtin `open()`. Defaults to `"utf-8"`.
 
-## Example: open from a DVC remote
-
-> See
-> [PEP 343 -- The "with" Statement](https://www.python.org/dev/peps/pep-0343/)
-
-```py
-with dvc.api.open("data/raw.csv", remote="my-s3", encoding="utf-8") as f:
-    for line in f:
-        process(line)
-```
-
-## Example: open from a DVC repository
+## Example: read CSV file from an external DVC repository
 
 ```py
 import csv
 import dvc.api
 
-with dvc.api.open("dataset/", repo="https://github.com/my-org/my-repo.git") as f:
-    reader = csv.reader(f)
-    for row in reader:
-        # ...
+with dvc.api.open(
+  "data/rows.csv",
+  repo="https://github.com/example/dvc-repository"
+) as fd:
+  reader = csv.reader(fd)
+  for row in reader:
+    # ... Process columns
 ```
+
+> See also `dvc.api.read` for a more direct way to read the complete contents of
+> a file <abbr>artifact</abbr>.
