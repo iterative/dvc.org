@@ -23,7 +23,7 @@ get_url(path, repo=None, rev=None, remote=None)
   source project in `repo`, relative to the project's root.
 
 - `repo` - specifies the location of the source DVC project. Both HTTP and SSH
-  protocols are supported for online Git repositories (e.g.
+  protocols are supported for online Git repository URLs (e.g.
   `[user@]server:project.git`). `repo` can also be a local file system path to
   an "offline" project. If not supplied, this defaults to the current working
   directory.
@@ -35,15 +35,17 @@ get_url(path, repo=None, rev=None, remote=None)
   default Git revision, `HEAD`.
 
 - `remote` - (optional) name of the [DVC remote](/doc/command-reference/remote)
-  to fetch the target artifact from. If not supplied, the default project's
-  remote is used.
+  to fetch the target artifact from. If not supplied, the default depends on the
+  value of `repo`. The local cache is used when `repo` is the current working
+  directory (default value of `repo`). when `repo` is an external repository
+  URL, the default project remote is used.
 
-## Example
+## Examples
 
 ```py
 import dvc.api
 
-resource_url = dvc.api.get_url("get-started/data.xml", repo="https://github.com/iterative/dataset-registry")
+resource_url = dvc.api.get_url('get-started/data.xml', repo='https://github.com/iterative/dataset-registry')
 ```
 
 The value of `resource_url` in this case would be something like

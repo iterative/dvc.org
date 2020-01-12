@@ -20,7 +20,7 @@ def summon(
   in the `summon_file`.
 
 - `repo` - specifies the location of the source DVC project. Both HTTP and SSH
-  protocols are supported for online Git repositories (e.g.
+  protocols are supported for online Git repository URLs (e.g.
   `[user@]server:project.git`). `repo` can also be a local file system path to
   an "offline" project. If not supplied, this defaults to the current working
   directory.

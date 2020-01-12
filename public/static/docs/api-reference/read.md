@@ -20,7 +20,7 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
   source project in `repo`, relative to the project's root.
 
 - `repo` - specifies the location of the source DVC project. Both HTTP and SSH
-  protocols are supported for online Git repositories (e.g.
+  protocols are supported for online Git repository URLs (e.g.
   `[user@]server:project.git`). `repo` can also be a local file system path to
   an "offline" project. If not supplied, this defaults to the current working
   directory.
@@ -32,8 +32,10 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
   default Git revision, `HEAD`.
 
 - `remote` - (optional) name of the [DVC remote](/doc/command-reference/remote)
-  to fetch the target artifact from. If not supplied, the default project's
-  remote is used.
+  to fetch the target artifact from. If not supplied, the default depends on the
+  value of `repo`. The local cache is used when `repo` is the current working
+  directory (default value of `repo`). when `repo` is an external repository
+  URL, the default project remote is used.
 
 - `mode` - (optional) mirrors the namesake parameter in builtin
   [`open()`](https://docs.python.org/3.7/library/functions.html#open). Defaults
@@ -42,7 +44,7 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 - `encoding` - (optional) used to decode contents to a string. Mirrors the
   namesake parameter in builtin `open()`. Defaults to `"utf-8"`.
 
-## Example
+## Examples
 
 ```py
 import pickle
