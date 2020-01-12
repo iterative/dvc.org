@@ -43,11 +43,11 @@ get_url(path, repo=None, rev=None, remote=None)
 ```py
 import dvc.api
 
-resource_url = dvc.api.get_url("data/data.xml", repo="https://github.com/iterative/example-get-started")
+resource_url = dvc.api.get_url("get-started/data.xml", repo="https://github.com/iterative/dataset-registry")
 ```
 
 The value of `resource_url` in this case would be something like
-`https://remote.dvc.org/get-started/a3/04afb96060aad90176268345e10355`. This URL
-represents the physical location fo the data, built by interpreting the
+`https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`.
+This URL represents the physical location fo the data, built by interpreting the
 corresponding [DVC-file](/doc/user-guide/dvc-file-format), where the file's
 checksum is stored, and the project's remote configuration.
