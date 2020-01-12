@@ -217,28 +217,22 @@ $ dvc remote modify myremote gdrive_client_id my_gdrive_client_id
 $ dvc remote modify myremote gdrive_client_secret gdrive_client_secret
 ```
 
-On first usage of remote you will be prompted to visit access token generation
-link in browser. It will ask you to log into Google account associated with
-Google Drive, which you want to use as DVC's remote. Login process will guide
-you through granting Google Drive access permissions to the used Google Project.
+On first usage of the remote you will be prompted to visit an access token
+generation URL via browser. It will ask you to log into the Google account
+associated with the Google Drive you want to use as remote. The login process
+will guide you through the granting of the required access permissions.
 
-On successful access token generation, token data will be cached in git ignored
-directory with path `.dvc/tmp/gdrive-user-credentials.json`. Do not share token
-data with anyone else to prevent unauthorized access to your Google Drive.
+On successful access token generation, the token data will be cached in a
+Git-ignored directory (located in `.dvc/tmp/gdrive-user-credentials.json`).
 
-#### Shared drives support
+> 💡 Do not share the token data with anyone else to prevent unauthorized access
+> to your Google Drive.
 
-You need to obtain `id` of your shared drive directory to use it as part of URL
-passed to DVC. `id` can be found in your web browser address bar when shared
-drive is opened. For example, for the URL
-
-```dvc
-https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA
-```
-
-the `id` will be equal to `0AIac4JZqHhKmUk9PDA`.
-
-Use obtained `id` in remote's URL:
+For **shared drives**, you need to obtain the directory ID and use it as part of
+URL passed to DVC. This ID can be found in your web browser address bar when the
+shared drive is opened. For example, for the URL
+`https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`, use
+`0AIac4JZqHhKmUk9PDA` as ID:
 
 ```dvc
 $ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA/my-dvc-root
@@ -287,19 +281,13 @@ $ export OSS_ACCESS_KEY_SECRET="my-key-secret"
 $ export OSS_ENDPOINT="endpoint"
 ```
 
-#### Test your OSS storage using docker
-
-Start a container running an OSS emulator.
+To **test your OSS storage using docker**, start a container running an OSS
+emulator, and setup the environment variables, for example:
 
 ```dvc
 $ git clone https://github.com/nanaya-tachibana/oss-emulator.git
 $ docker image build -t oss:1.0 oss-emulator
 $ docker run --detach -p 8880:8880 --name oss-emulator oss:1.0
-```
-
-Setup environment variables.
-
-```dvc
 $ export OSS_BUCKET='my-bucket'
 $ export OSS_ENDPOINT='localhost:8880'
 $ export OSS_ACCESS_KEY_ID='AccessKeyID'
