@@ -80,6 +80,8 @@ project/repository itself. Read "local, but external" storage.
 
 </details>
 
+We use the `-d` (`--default`) option of `dvc remote add` for this:
+
 ```dvc
 $ dvc remote add -d myremote /path/to/remote
 ```
