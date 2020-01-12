@@ -105,7 +105,7 @@ $ dvc remote add -d mynewremote s3://mybucket/myproject
 $ dvc remote modify mynewremote region us-east-2
 ```
 
-## Example: Remove remote:
+## Example: Remove remote
 
 ```dvc
 $ dvc remote remove mynewremote

@@ -129,7 +129,7 @@ Several of the values above are pulled from the original stage file
 subfields under `repo` are used to save the origin and version of the
 dependency.
 
-## Example: fixed revisions & re-importing
+## Example: Fixed revisions & re-importing
 
 To import a specific revision of a <abbr>data artifact</abbr>, we may use the
 `--rev` option:
