@@ -228,9 +228,11 @@ Git-ignored directory (located in `.dvc/tmp/gdrive-user-credentials.json`).
 > 💡 Do not share the token data with anyone else to prevent unauthorized access
 > to your Google Drive.
 
-For **shared drives**, you need to obtain the directory ID and use it as part of
-URL passed to DVC. This ID can be found in your web browser address bar when the
-shared drive is opened. For example, for the URL
+**Support for shared drives**
+
+For this, you need to obtain the directory ID and use it as part of URL passed
+to DVC. This ID can be found in your web browser address bar when the shared
+drive is opened. For example, for the URL
 `https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`, use
 `0AIac4JZqHhKmUk9PDA` as ID:
 
@@ -281,8 +283,10 @@ $ export OSS_ACCESS_KEY_SECRET="my-key-secret"
 $ export OSS_ENDPOINT="endpoint"
 ```
 
-To **test your OSS storage using docker**, start a container running an OSS
-emulator, and setup the environment variables, for example:
+**Testing your OSS storage using docker**
+
+Start a container running an OSS emulator, and setup the environment variables,
+for example:
 
 ```dvc
 $ git clone https://github.com/nanaya-tachibana/oss-emulator.git
