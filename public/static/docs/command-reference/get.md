@@ -12,8 +12,10 @@ Download a file or directory from any <abbr>DVC project</abbr> or Git repository
 usage: dvc get [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url         URL of Git repository to download from.
-  path        Path to a file or directory within the repository.
+  url                   Location of DVC project or Git repository to download
+                        from
+  path                  Path to a file or directory within the project or
+                        repository
 ```
 
 ## Description
