@@ -15,21 +15,21 @@ about the data source, which can later be used to
 usage: dvc import [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url                   Location of DVC project or Git repository to download from
-  path                  Path to a file or directory within the project or repository
+  url         Location of DVC project or Git repository to download from
+  path        Path to a file or directory within the project or repository
 
 ```
 
 ## Description
 
 DVC provides an easy way to reuse datasets, intermediate results, ML models, or
-other files and directories tracked in a <abbr>Git repository</abbr> into the
+other files and directories tracked in another Git/DVC repository into the
 workspace. The `dvc import` command downloads such a <abbr>data artifact</abbr>
 in a way that it is tracked with DVC, so it can be updated when the data source
 changes. (See `dvc update`.)
 
-The `url` argument specifies the address of the Git repository containing the
-source <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
+The `url` argument specifies the address of the Git/DVC repository containing
+the source <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
 online repositories (e.g. `[user@]server:project.git`). `url` can also be a
 local file system path to an "offline" repository (in this case and if it
 doesn't have a default remote set up, instead of downloading, DVC will try to
@@ -202,12 +202,12 @@ $ dvc import git@github.com:iterative/dataset-registry.git \
 ```
 
 `dvc import` provides a better way to incorporate data files tracked in external
-<abbr>Git repositories</abbr> because it saves the connection between the
-current project and the source project. This means that enough information is
-recorded in an import stage (DVC-file) in order to
-[reproduce](/doc/command-reference/repro) downloading of this same data version
-in the future, where and when needed. This is achieved with the `repo` field,
-for example (matching the import command above):
+Git/DVC repositories because it saves the connection between the current project
+and the source project. This means that enough information is recorded in an
+import stage (DVC-file) in order to [reproduce](/doc/command-reference/repro)
+downloading of this same data version in the future, where and when needed. This
+is achieved with the `repo` field, for example (matching the import command
+above):
 
 ```yaml
 md5: 96fd8e791b0ee4824fc1ceffd13b1b49

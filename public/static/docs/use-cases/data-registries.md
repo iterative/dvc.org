@@ -5,8 +5,8 @@ One of the main uses of <abbr>DVC repositories</abbr> is the
 with commands such as `dvc add`. With the aim to enable reusability of these
 <abbr>data artifacts</abbr> between different projects, DVC also provides the
 `dvc import` and `dvc get` commands, among others. This means that a project can
-depend on data from an external <abbr>Git repository</abbr>, **similar to
-package management systems, but for data science projects**.
+depend on data from an external <abbr>DVC project</abbr>, **similar to package
+management systems, but for data science projects**.
 
 ![](/static/img/data-registry.png) _Data and models as code_
 
@@ -88,9 +88,9 @@ $ dvc push
 
 ## Using registries
 
-The main methods to consume <abbr>data artifacts</abbr> from a Git repository or
-**data registry** are the `dvc import` and `dvc get` commands, as well as the
-`dvc.api` Python API.
+The main methods to consume <abbr>data artifacts</abbr> from a **data registry**
+are the `dvc import` and `dvc get` commands, as well as the `dvc.api` Python
+API.
 
 ### Simple download (get)
 
