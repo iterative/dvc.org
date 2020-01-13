@@ -58,7 +58,8 @@ name.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - specific
+- `--rev` - `url` is expected to represent a Git repository for this option to
+  have an effect. Specific
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash) of the DVC repository to
   download the file or directory from. The tip of the default branch is used by

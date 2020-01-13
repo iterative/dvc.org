@@ -143,8 +143,8 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   confirmation.
 
 - `--ignore-build-cache` - This options has an effect if an equivalent stage
-  file exists (same dependencies, outputs, and `command` to execute) which has
-  been already executed and is up to date. In this case, `dvc run` won't
+  file exists (same dependencies, outputs, and `command` to execute), that has
+  been already executed, and is up to date. In this case, `dvc run` won't
   normally execute the `command` again. The exception is when the existing stage
   is considered always changed (see `--always-changed` option). This option
   gives a way to forcefully execute the `command` anyway. Useful if the

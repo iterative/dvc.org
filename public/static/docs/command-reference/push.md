@@ -81,15 +81,15 @@ to push.
   to save different experiments or project checkpoints. Note that both options
   can be combined, for example using the `-aT` flag.
 
-- `-d`, `--with-deps` - determines files to upload by tracking dependencies to
-  the target DVC-files (stages). This option only has effect when one or more
-  `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stages in the corresponding pipelines. This means DVC
-  will not push files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - one or more `targets` should be specified for this
+  option to have effect. Determines files to upload by tracking dependencies to
+  the target DVC-files (stages). By traversing all stage dependencies, DVC
+  searches backward from the target stages in the corresponding pipelines. This
+  means DVC will not push files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain at least one directory
-  path for this option to have effect. Determines the files to push by searching
-  each target directory and its subdirectories for DVC-files to inspect.
+- `-R`, `--recursive` - `targets` is expected to contain one or more directories
+  for this option to have effect. Determines the files to push by searching each
+  target directory and its subdirectories for DVC-files to inspect.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
   while uploading files to the remote. The effect is to control the number of

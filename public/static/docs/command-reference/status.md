@@ -98,12 +98,12 @@ workspace) is different from remote storage. Bringing the two into sync requires
 
 ## Options
 
-- `-d`, `--with-deps` - determines files to check by tracking dependencies to
-  the target DVC-files (stages). This option only has effect when one or more
-  `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stages in the corresponding pipelines. This means DVC
-  will not show changes occurring in later stages than the `targets`. Applies
-  whether or not `--cloud` is specified.
+- `-d`, `--with-deps` - one or more `targets` should be specified for this
+  option to have effect. Determines files to check by tracking dependencies to
+  the target DVC-files (stages). By traversing all stage dependencies, DVC
+  searches backward from the target stages in the corresponding pipelines. This
+  means DVC will not show changes occurring in later stages than the `targets`.
+  Applies whether or not `--cloud` is specified.
 
 - `-c`, `--cloud` - enables comparison against a remote. (See `dvc remote`.). If
   no `--remote` option has been given, DVC will compare against the default

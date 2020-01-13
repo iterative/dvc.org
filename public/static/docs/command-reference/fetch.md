@@ -78,16 +78,15 @@ specified in DVC-files currently in the project are considered by `dvc fetch`
   `dvc config core.remote`). The argument `REMOTE` is a remote name defined
   using the `dvc remote` command.
 
-- `-d`, `--with-deps` - determine files to download by tracking dependencies to
-  the target DVC-files (stages). This option only has effect when one or more
-  `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stages in the corresponding pipelines. This means DVC
-  will not fetch files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - one or more `targets` should be specified for this
+  option to have effect. Determines files to download by tracking dependencies
+  to the target DVC-files (stages). By traversing all stage dependencies, DVC
+  searches backward from the target stages in the corresponding pipelines. This
+  means DVC will not fetch files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain at least one directory
-  path for this option to have effect. Determines the files to fetch by
-  searching each target directory and its subdirectories for DVC-files to
-  inspect.
+- `-R`, `--recursive` - `targets` is expected to contain one or more directories
+  for this option to have effect. Determines the files to fetch by searching
+  each target directory and its subdirectories for DVC-files to inspect.
 
 - `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
   the downloading of files from the remote. Using more jobs may improve the

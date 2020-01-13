@@ -74,13 +74,16 @@ data artifact from the source project.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - specific
-  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+- `--rev` - `url` is expected to represent a Git repository for this option to
+  have an effect. Specific
+  [Git-revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash) of the DVC repository to
   import the data from. The tip of the repository's default branch is used by
-  default when this option is not specified. Note that this adds a `rev` field
-  in the import stage that fixes it to this revision. This can impact the
-  behavior of `dvc update`. (See **re-importing** example below.)
+  default when this option is not specified.
+
+  > Note that this adds a `rev` field in the import stage that fixes it to this
+  > revision. This can impact the behavior of `dvc update`. (See
+  > **re-importing** example below.)
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
