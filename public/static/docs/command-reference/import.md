@@ -1,10 +1,10 @@
 # import
 
-Download a file or directory from any <abbr>DVC repository</abbr> (e.g. hosted
-on GitHub) into the <abbr>workspace</abbr>. This also creates a
-[DVC-file](/doc/user-guide/dvc-file-format) with information about the data
-source, which can later be used to [update](/doc/command-reference/update) the
-import.
+Download a file or directory from any <abbr>Git repository</abbr> or <abbr>DVC
+repository</abbr> (e.g. hosted on GitHub) into the <abbr>workspace</abbr>. This
+also creates a [DVC-file](/doc/user-guide/dvc-file-format) with information
+about the data source, which can later be used to
+[update](/doc/command-reference/update) the import.
 
 > See also `dvc get`, that corresponds to the first step this command performs
 > (just download the data).
@@ -23,10 +23,10 @@ positional arguments:
 ## Description
 
 DVC provides an easy way to reuse datasets, intermediate results, ML models, or
-other files and directories tracked in another <abbr>DVC repository</abbr> into
-the workspace. The `dvc import` command downloads such a <abbr>data
-artifact</abbr> in a way that it is tracked with DVC, so it can be updated when
-the data source changes. (See `dvc update`.)
+other files and directories tracked in a <abbr>Git repository</abbr> into the
+workspace. The `dvc import` command downloads such a <abbr>data artifact</abbr>
+in a way that it is tracked with DVC, so it can be updated when the data source
+changes. (See `dvc update`.)
 
 The `url` argument specifies the address of the Git repository containing the
 source <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
@@ -45,7 +45,7 @@ of the source repository. (In this case, a default
 [DVC remote](/doc/command-reference/remote) needs to be configured in the
 project, containing the actual data.)
 
-> See `dvc import-url` to download and tack data from other supported URLs.
+> See `dvc import-url` to download and track data from other supported URLs.
 
 After running this command successfully, the imported data is placed in the
 current working directory with its original file name e.g. `data.txt`. An
@@ -202,7 +202,7 @@ $ dvc import git@github.com:iterative/dataset-registry.git \
 ```
 
 `dvc import` provides a better way to incorporate data files tracked in external
-<abbr>DVC repositories</abbr> because it saves the connection between the
+<abbr>Git repositories</abbr> because it saves the connection between the
 current project and the source project. This means that enough information is
 recorded in an import stage (DVC-file) in order to
 [reproduce](/doc/command-reference/repro) downloading of this same data version

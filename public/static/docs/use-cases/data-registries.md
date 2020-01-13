@@ -5,8 +5,8 @@ One of the main uses of <abbr>DVC repositories</abbr> is the
 with commands such as `dvc add`. With the aim to enable reusability of these
 <abbr>data artifacts</abbr> between different projects, DVC also provides the
 `dvc import` and `dvc get` commands, among others. This means that a project can
-depend on data from an external <abbr>DVC project</abbr>, **similar to package
-management systems, but for data science projects**.
+depend on data from an external <abbr>Git repository</abbr>, **similar to
+package management systems, but for data science projects**.
 
 ![](/static/img/data-registry.png) _Data and models as code_
 

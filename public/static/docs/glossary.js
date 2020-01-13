@@ -38,6 +38,14 @@ directories, as well as any DVC-files created by DVC.
       `
     },
     {
+      name: 'Git repository',
+      match: ['Git repository', 'Git repositories'],
+      desc: `
+A Git SCM repository. May or may not be a DVC Repository, depending on
+whether \`dvc init\` was run within it.
+`
+    },
+    {
       name: 'DVC Cache',
       match: ['DVC cache', 'cache', 'caches', 'cached'],
       desc: `

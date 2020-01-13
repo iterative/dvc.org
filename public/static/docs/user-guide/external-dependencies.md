@@ -151,8 +151,8 @@ determine whether the source has changed and we need to download the file again.
 ## Example: Using import
 
 `dvc import` can download a <abbr>data artifact</abbr> from any <abbr>DVC
-repository</abbr>. It also creates an external dependency in its <abbr>import
-stage</abbr> (DVC-file).
+Repository</abbr> or <abbr>Git repository</abbr>. It also creates an external
+dependency in its <abbr>import stage</abbr> (DVC-file).
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl
