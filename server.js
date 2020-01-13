@@ -45,8 +45,8 @@ app.prepare().then(() => {
             : pathname)
       })
       res.end()
-    } else if (req.headers.host === 'err.dvc.org') {
-      // err.dvc.org/{hdr} -> dvc.org/doc/user-guide/troubleshooting#{hdr},
+    } else if (req.headers.host === 'error.dvc.org') {
+      // error.dvc.org/{hdr} -> dvc.org/doc/user-guide/troubleshooting#{hdr},
       res.writeHead(301, {
         'Cache-Control': 'no-cache',
         Location: `https://dvc.org/doc/user-guide/troubleshooting#${pathname}`
