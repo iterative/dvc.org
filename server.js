@@ -41,8 +41,7 @@ app.prepare().then(() => {
       // man.dvc.org/{cmd} -> dvc.org/doc/command-reference/{cmd},
       res.writeHead(301, {
         'Cache-Control': 'no-cache',
-        Location:
-          'https://dvc.org/doc/command-reference' + pathname.replace('-', '/')
+        Location: 'https://dvc.org/doc/command-reference' + pathname
       })
       res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
