@@ -39,14 +39,14 @@ app.prepare().then(() => {
       res.end()
     } else if (req.headers.host === 'man.dvc.org') {
       // man.dvc.org/{cmd} -> dvc.org/doc/command-reference/{cmd},
-      res.writeHead(301, {
+      res.writeHead(303, {
         'Cache-Control': 'no-cache',
         Location: 'https://dvc.org/doc/command-reference' + pathname
       })
       res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
       // {code/data/remote}.dvc.org -> corresponding S3 bucket
-      res.writeHead(301, {
+      res.writeHead(303, {
         Location:
           'https://s3-us-east-2.amazonaws.com/dvc-public/' +
           req.headers.host.split('.')[0] +
@@ -55,7 +55,7 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/(deb|rpm)\/.*/i.test(pathname)) {
       // path /(deb|rpm)/... -> corresponding S3 bucket
-      res.writeHead(301, {
+      res.writeHead(303, {
         Location:
           'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/' +
           pathname.substring(1)
@@ -63,17 +63,17 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/(help|chat)\/?$/i.test(pathname)) {
       // path /(help|chat) -> Discord chat invite
-      res.writeHead(301, { Location: 'https://discordapp.com/invite/dvwXA2N' })
+      res.writeHead(303, { Location: 'https://discordapp.com/invite/dvwXA2N' })
       res.end()
     } else if (/^\/(docs|documentation)(\/.*)?$/i.test(pathname)) {
       // path /docs... or /documentation... -> /doc...
-      res.writeHead(301, {
+      res.writeHead(303, {
         Location: req.url.replace(/\/(docs|documentation)/i, '/doc')
       })
       res.end()
     } else if (/^\/doc\/commands-reference(\/.*)?$/i.test(pathname)) {
       // path /doc/commands-reference... -> /doc/command-reference...
-      res.writeHead(301, {
+      res.writeHead(303, {
         Location: req.url.replace(
           '/doc/commands-reference',
           '/doc/command-reference'
@@ -82,13 +82,13 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/doc\/tutorial\/?$/i.test(pathname)) {
       // path /doc/tutorial -> /doc/tutorials
-      res.writeHead(301, {
+      res.writeHead(303, {
         Location: req.url.replace(/\/doc\/tutorial\/?/, '/doc/tutorials')
       })
       res.end()
     } else if (/^\/doc\/tutorial\/(.*)?/.test(pathname)) {
       // path /doc/tutorial/... -> /doc/tutorials/deep/...
-      res.writeHead(301, {
+      res.writeHead(303, {
         Location: req.url.replace('/doc/tutorial/', '/doc/tutorials/deep/')
       })
       res.end()
@@ -97,7 +97,7 @@ app.prepare().then(() => {
     ) {
       // path /doc/use-cases/data-and-model-files-versioning
       //  ->  /doc/use-cases/versioning-data-and-model-files
-      res.writeHead(301, {
+      res.writeHead(303, {
         Location: req.url.replace(
           '/doc/use-cases/data-and-model-files-versioning',
           '/doc/use-cases/versioning-data-and-model-files'
