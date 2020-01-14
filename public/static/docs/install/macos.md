@@ -1,5 +1,8 @@
 # Installation on MacOS
 
+> For [API](/doc/api-reference) use, please
+> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+
 ## Install with brew
 
 Recommended. Requires [Homebrew](https://brew.sh/).

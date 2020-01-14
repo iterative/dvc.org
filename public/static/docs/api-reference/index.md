@@ -6,8 +6,9 @@ interpreter. While most of the package implements our
 [command-line tool](/doc/command-reference), we wrote the `dvc.api` module to
 expose special functions you can use in your Python source code.
 
-> We **strongly** recommend having `dvc` in a requirements or setup file for
-> your Python project, and installing it via and env manager such as `pip`.
+> For API use, we **strongly** recommend having `dvc` in a requirements or setup
+> file for your Python project, and installing it via and env manager such as
+> `pip`.
 
 To use the API, import the module first with:
 

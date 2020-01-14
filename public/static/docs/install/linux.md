@@ -1,5 +1,8 @@
 # Installation on Linux
 
+> For [API](/doc/api-reference) use, please
+> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+
 ## Install with pip
 
 > We **strongly** recommend creating a

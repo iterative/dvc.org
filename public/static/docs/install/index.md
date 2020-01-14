@@ -7,6 +7,17 @@ Please double check that you don't already have DVC (for example running
 - [Install on Windows](/doc/install/windows)
 - [Install on Linux](/doc/install/linux)
 
+## Install as a Python library
+
+When you install DVC with an environment manager like `pip` or `conda`, the
+`dvc` package becomes available to the corresponding `python` interpreter. This
+is particularly useful in order to access the [Python API](/doc/api-reference)
+(`dvc.api` module).
+
+> For API use, we **strongly** recommend having `dvc` in a requirements or setup
+> file for your Python project, and installing it via and env manager such as
+> `pip`.
+
 ## Advanced options
 
 - Shell completion is automatically enabled by certain installation methods. If

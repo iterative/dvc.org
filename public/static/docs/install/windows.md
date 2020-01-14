@@ -4,6 +4,11 @@
 > [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
 > tips to improve your experience using DVC on Windows.
 
+<!-- Separate MD quote: -->
+
+> For [API](/doc/api-reference) use, please
+> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+
 ## Windows installer
 
 The easiest way is to use the self-contained, executable installer (binary),
