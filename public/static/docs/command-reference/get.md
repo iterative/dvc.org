@@ -1,7 +1,7 @@
 # get
 
 Download a file or directory from any <abbr>DVC project</abbr> or Git repository
-(e.g. hosted on GitHub) into the current working directory.
+into the current working directory.
 
 > Unlike `dvc import`, this command does not track the downloaded files (does
 > not create a DVC-file).
@@ -27,22 +27,22 @@ wget, but supporting DVC <abbr>data artifacts</abbr> and files tracked by Git.)
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
 
-The `url` argument specifies the address of the Git repository containing the
-external <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
-online repositories (e.g. `[user@]server:project.git`). `url` can also be a
+The `url` argument specifies the address of the <abbr>DVC project</abbr> or Git
+repository containing the data source. Both HTTP and SSH protocols are supported
+for online repositories (e.g. `[user@]server:project.git`). `url` can also be a
 local file system path to an "offline" repository (in this case and if it
 doesn't have a default remote set up, instead of downloading, DVC will try to
 copy the target data from the external source project or its
 <abbr>cache</abbr>).
 
 The `path` argument of this command is used to specify the location, within the
-source repository at `url`, of the target(s) to be downloaded. It can point to
-any file or directory in the source project, including <abbr>outputs</abbr>
-tracked by DVC as well as files tracked by Git. Note that for the former, data
-should be specified in one of the [DVC-files](/doc/user-guide/dvc-file-format)
-of the source repository. (In this case, a default
-[DVC remote](/doc/command-reference/remote) needs to be configured in the
-project, containing the actual data.)
+source project or repository at `url`, of the target(s) to be downloaded. It can
+point to any file or directory in the source project, including <abbr>outputs
+</abbr> tracked by DVC as well as files tracked by Git. Note that for the
+former, data should be specified in one of the
+[DVC-files](/doc/user-guide/dvc-file-format) of the source repository. (In this
+case, a default [DVC remote](/doc/command-reference/remote) needs to be
+configured in the project, containing the actual data.)
 
 > See `dvc get-url` to download data from other supported URLs.
 
@@ -60,7 +60,7 @@ name.
 
 - `--rev` - specific
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the Git/DVC repository to
+  (such as a branch name, a tag, or a commit hash) of the Git repository to
   download the file or directory from. The tip of the default branch is used by
   default when this option is not specified.
 
