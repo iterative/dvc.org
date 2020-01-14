@@ -42,11 +42,7 @@ app.prepare().then(() => {
       res.writeHead(301, {
         'Cache-Control': 'no-cache',
         Location:
-          'https://dvc.org/doc/command-reference' +
-          // replace - for / in {cmd} except for get-url, import-url
-          (['/get-url', '/import-url'].indexOf(pathname) < 0
-            ? pathname.replace('-', '/')
-            : pathname)
+          'https://dvc.org/doc/command-reference' + pathname.replace('-', '/')
       })
       res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
