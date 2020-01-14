@@ -73,7 +73,7 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/doc\/commands-reference(\/.*)?$/i.test(pathname)) {
       // path /doc/commands-reference... -> /doc/command-reference...
-      res.writeHead(303, {
+      res.writeHead(301, {
         Location: req.url.replace(
           '/doc/commands-reference',
           '/doc/command-reference'
@@ -82,13 +82,13 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/doc\/tutorial\/?$/i.test(pathname)) {
       // path /doc/tutorial -> /doc/tutorials
-      res.writeHead(303, {
+      res.writeHead(301, {
         Location: req.url.replace(/\/doc\/tutorial\/?/, '/doc/tutorials')
       })
       res.end()
     } else if (/^\/doc\/tutorial\/(.*)?/.test(pathname)) {
       // path /doc/tutorial/... -> /doc/tutorials/deep/...
-      res.writeHead(303, {
+      res.writeHead(301, {
         Location: req.url.replace('/doc/tutorial/', '/doc/tutorials/deep/')
       })
       res.end()
@@ -97,7 +97,7 @@ app.prepare().then(() => {
     ) {
       // path /doc/use-cases/data-and-model-files-versioning
       //  ->  /doc/use-cases/versioning-data-and-model-files
-      res.writeHead(303, {
+      res.writeHead(301, {
         Location: req.url.replace(
           '/doc/use-cases/data-and-model-files-versioning',
           '/doc/use-cases/versioning-data-and-model-files'
