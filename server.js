@@ -49,6 +49,13 @@ app.prepare().then(() => {
             : pathname)
       })
       res.end()
+    } else if (req.headers.host === 'error.dvc.org') {
+      // error.dvc.org/{hdr} -> dvc.org/doc/user-guide/troubleshooting#{hdr},
+      res.writeHead(303, {
+        'Cache-Control': 'no-cache',
+        Location: 'https://dvc.org/doc/user-guide/troubleshooting#' + pathname
+      })
+      res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
       // {code/data/remote}.dvc.org -> corresponding S3 bucket
       res.writeHead(301, {
