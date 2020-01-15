@@ -1,7 +1,7 @@
 # import
 
-Download a file or directory from any <abbr>DVC repository</abbr> (e.g. hosted
-on GitHub) into the <abbr>workspace</abbr>. This also creates a
+Download a file or directory from any <abbr>DVC project</abbr> or Git repository
+into the <abbr>workspace</abbr>. This also creates a
 [DVC-file](/doc/user-guide/dvc-file-format) with information about the data
 source, which can later be used to [update](/doc/command-reference/update) the
 import.
@@ -15,36 +15,37 @@ import.
 usage: dvc import [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url         URL of Git repository with DVC project to download from.
-  path        Path to data within DVC repository.
+  url         Location of DVC project or Git repository to download from
+  path        Path to a file or directory within the project or repository
 ```
 
 ## Description
 
-DVC provides an easy way to reuse datasets, intermediate results, ML models, or
-other files and directories tracked in another <abbr>DVC repository</abbr> into
-the workspace. The `dvc import` command downloads such a <abbr>data
-artifact</abbr> in a way that it is tracked with DVC, so it can be updated when
-the data source changes. (See `dvc update`.)
+Provides an easy way to reuse files or directories tracked in any <abbr>DVC
+project</abbr> (e.g. datasets, intermediate results, ML models) or Git
+repository (e.g. other files and directories), into the workspace. The
+`dvc import` command downloads such a <abbr>data artifact</abbr> in a way that
+it is tracked with DVC, so it can be updated when the data source changes. (See
+`dvc update`.)
 
-The `url` argument specifies the address of the Git repository containing the
-source <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
-online repositories (e.g. `[user@]server:project.git`). `url` can also be a
+The `url` argument specifies the address of the <abbr>DVC project</abbr> or Git
+repository containing the data source. Both HTTP and SSH protocols are supported
+for online repositories (e.g. `[user@]server:project.git`). `url` can also be a
 local file system path to an "offline" repository (in this case and if it
 doesn't have a default remote set up, instead of downloading, DVC will try to
 copy the target data from the external source project or its
 <abbr>cache</abbr>).
 
 The `path` argument of this command is used to specify the location of the
-target(s) to be downloaded within the source repository at `url`. It can point
-to any file or directory in the source project, including <abbr>outputs</abbr>
-tracked by DVC as well as files tracked by Git. Note that for the former, data
-should be specified in one of the [DVC-files](/doc/user-guide/dvc-file-format)
-of the source repository. (In this case, a default
-[DVC remote](/doc/command-reference/remote) needs to be configured in the
-project, containing the actual data.)
+target(s) to be downloaded within the source project or repository at `url`. It
+can point to any file or directory in the source project, including
+<abbr>outputs </abbr> tracked by DVC as well as files tracked by Git. Note that
+for the former, data should be specified in one of the
+[DVC-files](/doc/user-guide/dvc-file-format) of the source repository. (In this
+case, a default [DVC remote](/doc/command-reference/remote) needs to be
+configured in the project, containing the actual data.)
 
-> See `dvc import-url` to download and tack data from other supported URLs.
+> See `dvc import-url` to download and track data from other supported URLs.
 
 After running this command successfully, the imported data is placed in the
 current working directory with its original file name e.g. `data.txt`. An
@@ -76,10 +77,10 @@ data artifact from the source project.
 
 - `--rev` - `url` is expected to represent a Git repository for this option to
   have an effect. Specific
-  [Git-revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the DVC repository to
-  import the data from. The tip of the repository's default branch is used by
-  default when this option is not specified.
+  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+  (such as a branch name, a tag, or a commit hash) of the repository to download
+  the file or directory from. The tip of the default branch is used by default
+  when this option is not specified.
 
   > Note that this adds a `rev` field in the import stage that fixes it to this
   > revision. This can impact the behavior of `dvc update`. (See

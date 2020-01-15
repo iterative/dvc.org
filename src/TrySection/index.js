@@ -1,9 +1,9 @@
-import { container, media } from '../styles'
-
-import NextLink from 'next/link'
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import NextLink from 'next/link'
+
+import { container, media } from '../styles'
 
 export default function TrySection({ title, buttonText = 'Get Started' }) {
   return (

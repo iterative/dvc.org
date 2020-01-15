@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
+import ReactMarkdown from 'react-markdown'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
 
 import Modal from '../Modal'
-import PropTypes from 'prop-types'
-import ReactMarkdown from 'react-markdown'
-import styled from 'styled-components'
 
 class MobileView extends Component {
   state = {

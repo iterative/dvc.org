@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const WIDTH = 30
@@ -55,7 +55,7 @@ const Line = styled.div`
     props.open &&
     props.third &&
     `
-
+    
      transform: rotate(45deg) translate(-5px,-5px);
   `};
 `
