@@ -5,7 +5,7 @@ string.
 
 > Wrapper for [`dvc.api.open()`](/doc/api-reference/open) that returns the
 > complete file contents directly, by using the file object's
-> [`read()`](https://docs.python.org/3.7/tutorial/inputoutput.html#methods-of-file-objects)
+> [`read()`](https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects)
 > method.
 
 ## Signature
@@ -38,8 +38,8 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
   URL, the default project remote is used.
 
 - `mode` - (optional) mirrors the namesake parameter in builtin
-  [`open()`](https://docs.python.org/3.7/library/functions.html#open). Defaults
-  to `"r"` (read).
+  [`open()`](https://docs.python.org/3/library/functions.html#open). Defaults to
+  `"r"` (read).
 
 - `encoding` - (optional) used to decode contents to a string. Mirrors the
   namesake parameter in builtin `open()`. Defaults to `"utf-8"`.

@@ -1,14 +1,14 @@
 # dvc.api.open()
 
 Opens a file <abbr>artifact</abbr> as a
-[file object](https://docs.python.org/3.7/glossary.html#term-file-object). May
+[file object](https://docs.python.org/3/glossary.html#term-file-object). May
 only be used as
 [context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library).
 
 > This has similar uses as the `dvc get` and `dvc import` CLI commands.
 
 💡 Note that `dvc.api.open` is able to
-[stream](https://docs.python.org/3.7/library/io.html) the file directly from
+[stream](https://docs.python.org/3/library/io.html) the file directly from
 **some** [remote](/doc/command-reference/remote) types. Otherwise, the file is
 downloaded regularly into a temporary local path before the file object is made
 available.
@@ -43,8 +43,8 @@ open(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
   URL, the default project remote is used.
 
 - `mode` - (optional) mirrors the namesake parameter in builtin
-  [`open()`](https://docs.python.org/3.7/library/functions.html#open). Defaults
-  to `"r"` (read).
+  [`open()`](https://docs.python.org/3/library/functions.html#open). Defaults to
+  `"r"` (read).
 
 - `encoding` - (optional) used to decode contents to a string. Mirrors the
   namesake parameter in builtin `open()`. Defaults to `"utf-8"`.

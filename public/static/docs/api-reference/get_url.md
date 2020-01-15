@@ -4,9 +4,16 @@ Returns the full URL to the physical location (in a
 [DVC remote](/doc/command-reference/remote)) of a <abbr>data artifact</abbr>
 specified by its `path` in a `repo` (<abbr>DVC project</abbr>).
 
-Having the resource's URL, it would be possible to download it directly with an
-appropriate tool such as `wget` for HTTP locations, `aws s3 cp` for Amazon S3,
-etc.
+⚠️ Note that the returned URL is formed by analyzing the corresponding
+[DVC-file](/doc/user-guide/dvc-file-format) (see [Examples](#examples) below).
+**There is no guarantee that the file actually exists in that location**. Please
+keep this in mind when using the URL string in your code.
+
+💡 Having the resource's URL, it should be possible to download it directly with
+an appropriate tool such as
+[`urlretrieve`](https://docs.python.org/3/library/urllib.request.html#urllib.request.urlretrieve)
+or `boto3`
+[download_fileobj](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Object.download_fileobj).
 
 > For possible location protocols, refer to the
 > [supported remote types](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
@@ -45,11 +52,18 @@ get_url(path, repo=None, rev=None, remote=None)
 ```py
 import dvc.api
 
-resource_url = dvc.api.get_url('get-started/data.xml', repo='https://github.com/iterative/dataset-registry')
+resource_url = dvc.api.get_url(
+  'get-started/data.xml',
+  repo='https://github.com/iterative/dataset-registry'
+)
 ```
 
-The value of `resource_url` in this case would be something like
-`https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`.
+The value of `resource_url` in this case would be something like:
+
+`https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`
+
 This URL represents the physical location fo the data, built by interpreting the
 corresponding [DVC-file](/doc/user-guide/dvc-file-format), where the file's
-checksum is stored, and the project's remote configuration.
+checksum `a304afb96060aad90176268345e10355` is stored, and the project's remote
+configuration where the base URL `https://remote.dvc.org/dataset-registry/` is
+saved.
