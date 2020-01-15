@@ -64,7 +64,7 @@ export default function Footer(props) {
           <Column>
             <Heading>Company</Heading>
             <Links>
-              <Link href="https://blog.dataversioncontrol.com/">Blog</Link>
+              <Link href="https://blog.dvc.org/">Blog</Link>
               <SocialLink
                 src="/static/img/iterative.png"
                 href="https://iterative.ai/"

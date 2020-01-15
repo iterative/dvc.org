@@ -35,7 +35,7 @@ export default function Nav({ mobile = false }) {
           </Link>
         </NextLink>
         <Link
-          href="https://blog.dataversioncontrol.com"
+          href="https://blog.dvc.org"
           onClick={() => {
             logEvent('menu', 'blog')
           }}
@@ -168,6 +168,7 @@ const GetStartedButton = styled.button`
   border: none;
   cursor: pointer;
   transition: 0.2s background-color ease-out;
+  padding: 1px 7px 2px;
 
   &:hover {
     background-color: #13a3bd;

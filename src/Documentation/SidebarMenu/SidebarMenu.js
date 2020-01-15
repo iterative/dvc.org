@@ -11,9 +11,9 @@ import DownloadButton from '../../DownloadButton'
 import includes from 'lodash.includes'
 // styles
 import styled from 'styled-components'
-import { media, OnlyDesktop } from '../../styles'
+import { OnlyDesktop, media } from '../../styles'
 // sidebar helpers
-import { getParentsListFromPath } from './helper'
+import { getParentsListFromPath } from '../../utils/sidebar'
 
 /** Height of each menu child items (to calc Element weight for animations) */
 const heightMap = {}
@@ -26,7 +26,7 @@ function calculateHeight({ activePaths, path }) {
   for (let i = 0; i < reversePaths.length; i++) {
     const current = reversePaths[i]
 
-    height += heightMap[current]
+    height += heightMap[current] ? heightMap[current] : 0
 
     if (path === current) break
   }

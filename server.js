@@ -1,26 +1,34 @@
 /* eslint-env node */
 
-// This file doesn't go through babel or webpack transformation. Make sure the
-// syntax and sources this file requires are compatible with the current Node.js
-// version you are running. (See https://github.com/zeit/next.js/issues/1245 for
-// discussions on universal Webpack vs universal Babel.)
+/*
+ * Custom server (with custom routes) See
+ * https://nextjs.org/docs/advanced-features/custom-server
+ *
+ * NOTE: This file doesn't go through babel or webpack. Make sure the syntax and
+ * sources this file requires are compatible with the current node version you
+ * are running.
+ */
 
 const { createServer } = require('http')
 const { parse } = require('url')
 const next = require('next')
-const querystring = require('querystring')
+
+const { getItemByPath } = require('./src/utils/sidebar')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
-const port = process.env.PORT || 3000
 const handle = app.getRequestHandler()
+const port = process.env.PORT || 3000
 
 app.prepare().then(() => {
   createServer((req, res) => {
     const parsedUrl = parse(req.url, true)
     const { pathname, query } = parsedUrl
 
-    // Special URL redirects:
+    /*
+     * HTTP redirects
+     * NOTE: The order of the redirects is important.
+     */
     if (
       (req.headers['x-forwarded-proto'] !== 'https' && !dev) ||
       req.headers.host.match(/^www/) !== null
@@ -32,14 +40,21 @@ app.prepare().then(() => {
       res.end()
     } else if (req.headers.host === 'man.dvc.org') {
       // man.dvc.org/{cmd} -> dvc.org/doc/command-reference/{cmd},
-      // replace - for / in {cmd} except for /get-url, /import-url
       res.writeHead(301, {
         'Cache-Control': 'no-cache',
         Location:
           'https://dvc.org/doc/command-reference' +
+          // replace - for / in {cmd} except for get-url, import-url
           (['/get-url', '/import-url'].indexOf(pathname) < 0
             ? pathname.replace('-', '/')
             : pathname)
+      })
+      res.end()
+    } else if (req.headers.host === 'error.dvc.org') {
+      // error.dvc.org/{hdr} -> dvc.org/doc/user-guide/troubleshooting#{hdr},
+      res.writeHead(303, {
+        'Cache-Control': 'no-cache',
+        Location: 'https://dvc.org/doc/user-guide/troubleshooting#' + pathname
       })
       res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
@@ -52,7 +67,7 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (/^\/(deb|rpm)\/.*/i.test(pathname)) {
-      // path /(deb|rpm) -> corresponding S3 bucket
+      // path /(deb|rpm)/... -> corresponding S3 bucket
       res.writeHead(301, {
         Location:
           'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/' +
@@ -63,10 +78,25 @@ app.prepare().then(() => {
       // path /(help|chat) -> Discord chat invite
       res.writeHead(301, { Location: 'https://discordapp.com/invite/dvwXA2N' })
       res.end()
-    } else if (/^\/doc\/commands-reference(\/.*)?/.test(pathname)) {
+    } else if (/^\/(docs|documentation)(\/.*)?$/i.test(pathname)) {
+      // path /docs... or /documentation... -> /doc...
+      res.writeHead(301, {
+        Location: req.url.replace(/\/(docs|documentation)/i, '/doc')
+      })
+      res.end()
+    } else if (/^\/doc\/commands-reference(\/.*)?$/i.test(pathname)) {
       // path /doc/commands-reference... -> /doc/command-reference...
       res.writeHead(301, {
-        Location: req.url.replace('commands-reference', 'command-reference')
+        Location: req.url.replace(
+          '/doc/commands-reference',
+          '/doc/command-reference'
+        )
+      })
+      res.end()
+    } else if (/^\/doc\/tutorial\/?$/i.test(pathname)) {
+      // path /doc/tutorial -> /doc/tutorials
+      res.writeHead(301, {
+        Location: req.url.replace(/\/doc\/tutorial\/?/, '/doc/tutorials')
       })
       res.end()
     } else if (/^\/doc\/tutorial\/(.*)?/.test(pathname)) {
@@ -75,46 +105,36 @@ app.prepare().then(() => {
         Location: req.url.replace('/doc/tutorial/', '/doc/tutorials/deep/')
       })
       res.end()
-    } else if (pathname === '/doc/tutorial' || pathname === '/doc/tutorial/') {
-      // path /doc/tutorial -> /doc/tutorials
-      res.writeHead(301, {
-        Location: req.url.replace('/doc/tutorial', '/doc/tutorials')
-      })
-      res.end()
     } else if (
-      pathname === '/doc/use-cases/data-and-model-files-versioning' ||
-      pathname === '/doc/use-cases/data-and-model-files-versioning/'
+      /^\/doc\/use-cases\/data-and-model-files-versioning\/?$/.test(pathname)
     ) {
       // path /doc/use-cases/data-and-model-files-versioning
       //  ->  /doc/use-cases/versioning-data-and-model-files
       res.writeHead(301, {
         Location: req.url.replace(
-          'data-and-model-files-versioning',
-          'versioning-data-and-model-files'
+          '/doc/use-cases/data-and-model-files-versioning',
+          '/doc/use-cases/versioning-data-and-model-files'
         )
       })
       res.end()
-    } else if (/^\/doc.*/i.test(pathname)) {
-      // path /doc*/... -> /doc/...
-      let normalized_pathname = pathname.replace(/^\/doc[^?/]*/i, '/doc')
-      if (normalized_pathname !== pathname) {
-        res.writeHead(301, {
-          Location:
-            normalized_pathname +
-            (Object.keys(query).length === 0 ? '' : '?') +
-            querystring.stringify(query)
-        })
-        res.end()
-      } else {
-        app.render(req, res, '/doc', query)
+    } else if (/^\/doc(\/.*)?$/.test(pathname)) {
+      /*
+       * Docs Engine handler
+       */
+
+      // Force 404 response code for any inexistent /doc item.
+      if (!getItemByPath(pathname)) {
+        res.statusCode = 404
       }
+
+      // Custom route for all docs
+      app.render(req, res, '/doc', query)
     } else {
+      // Regular Next.js handler
       handle(req, res, parsedUrl)
     }
-
-    // Invokes server `createServer`
   }).listen(port, err => {
     if (err) throw err
-    console.info('> Ready on http://localhost:3000')
+    console.info(`> Ready on localhost:${port}`)
   })
 })

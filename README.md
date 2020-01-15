@@ -9,12 +9,11 @@ code.
 # Documentation
 
 This docs engine was built using [Node](https://nodejs.org/) +
-[React](https://reactjs.org/),
+[Next.js](https://nextjs.org/)/[React](https://reactjs.org/),
 [react-markdown](https://github.com/rexxars/react-markdown), and integrates with
 [Algolia](https://www.algolia.com/products/search/) to provide full text search.
 The motivation for building it from scratch was the lack of flexibility
-(customization, sidebar tuning) and ads in engines like readthedocs, docsify,
-etc.
+(customization, sidebar tuning) and ads in sites like readthedocs, docsify, etc.
 
 Please feel free to use it for your own sites and
 [reach out to us](https://dvc.org/support) if you have any questions.
@@ -24,7 +23,7 @@ Please feel free to use it for your own sites and
 We welcome contributions to the DVC docs by the community!
 
 You can refer to our
-[Contributing guide](https://dvc.org/doc/user-guide/contributing/docs/) for more
+[Contributing guide](https://dvc.org/doc/user-guide/contributing/docs) for more
 details. Thank you!
 
 **If you need help:**

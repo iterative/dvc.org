@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "dev": "node server.js",
+    "debug": "node --inspect-brk server.js",
     "build": "next build",
     "test": "jest",
     "start": "NODE_ENV=production node server.js",
     "format-staged": "pretty-quick --staged --no-restage --bail",
-    "format-check": "pretty-quick --check --verbose",
-    "lint-check": "eslint src pages"
+    "format-check": "prettier --check '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
+    "lint-check": "eslint src pages",
+    "format-all": "prettier --write '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
+    "format": "prettier --write"
   },
   "repository": {
     "type": "git",
@@ -34,7 +37,8 @@
     "lodash.startcase": "^4.4.0",
     "lodash.throttle": "^4.1.1",
     "lodash.topairs": "^4.3.0",
-    "next": "^9.1.4",
+    "micro-cors": "^0.1.1",
+    "next": "^9.1.6",
     "node-cache": "^5.1.0",
     "perfect-scrollbar": "^1.4.0",
     "prop-types": "^15.7.2",
@@ -49,12 +53,13 @@
     "react-scroll": "^1.7.13",
     "react-slick": "^0.25.2",
     "react-syntax-highlighter": "^11.0.2",
+    "request": "^2.88.0",
     "styled-components": "^4.4.1",
     "styled-reset": "^4.0.8",
     "unist-util-visit": "2.0.1"
   },
   "devDependencies": {
-    "@babel/core": "^7.7.4",
+    "@babel/core": "^7.7.7",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-plugin-transform-define": "^2.0.0",
@@ -67,7 +72,6 @@
     "husky": "^3.1.0",
     "jest": "^24.9.0",
     "lint-staged": "^10.0.0-1",
-    "micro-cors": "^0.1.1",
     "prettier": "^1.19.1",
     "pretty-quick": "^2.0.1"
   },
@@ -77,6 +81,6 @@
     }
   },
   "lint-staged": {
-    "*.{js,jsx}": "eslint"
+    "*.js": "eslint"
   }
 }

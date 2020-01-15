@@ -1,9 +1,12 @@
 /* global docsearch:readonly */
 
-import React, { useCallback, useState, useEffect } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
+import styled from 'styled-components'
 import Error from 'next/error'
 import Router from 'next/router'
+import fetch from 'isomorphic-fetch'
+import kebabCase from 'lodash.kebabcase'
 // components
 import Page from '../src/Page'
 import { HeadInjector } from '../src/Documentation/HeadInjector'
@@ -13,13 +16,10 @@ import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
 import Markdown from '../src/Documentation/Markdown/Markdown'
 import RightPanel from '../src/Documentation/RightPanel/RightPanel'
 // utils
-import fetch from 'isomorphic-fetch'
-import kebabCase from 'lodash.kebabcase'
 import { makeAbsoluteURL } from '../src/utils/api'
 // sidebar data and helpers
-import sidebar, { getItemByPath } from '../src/Documentation/SidebarMenu/helper'
+import { getItemByPath, structure } from '../src/utils/sidebar'
 // styles
-import styled from 'styled-components'
 import { media } from '../src/styles'
 
 const ROOT_ELEMENT = 'bodybag'
@@ -64,7 +64,7 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
           apiKey: '755929839e113a981f481601c4f52082',
           indexName: 'dvc',
           inputSelector: '#doc-search',
-          debug: false // Set debug to true if you want to inspect the dropdown
+          debug: false // Set to `true` if you want to inspect the dropdown
         })
       }
     } catch (ReferenceError) {
@@ -85,7 +85,7 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
     return () => Router.events.off('routeChangeComplete', handleRouteChange)
   }, [])
 
-  const githubLink = `https://github.com/iterative/dvc.org/blob/master${source}`
+  const githubLink = `https://github.com/iterative/dvc.org/blob/master/public${source}`
 
   return (
     <Page stickHeader={true}>
@@ -105,7 +105,7 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
           )}
 
           <SidebarMenu
-            sidebar={sidebar}
+            sidebar={structure}
             currentPath={path}
             id={SIDEBAR_MENU}
             onClick={toggleMenu}
@@ -131,7 +131,7 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
 }
 
 Documentation.getInitialProps = async ({ asPath, req }) => {
-  const item = getItemByPath(asPath.split('#')[0])
+  const item = getItemByPath(asPath.split('#')[0].split('?')[0])
 
   if (!item) {
     return {
@@ -164,7 +164,7 @@ Documentation.propTypes = {
   item: PropTypes.object,
   headings: PropTypes.array,
   markdown: PropTypes.string,
-  errorCode: PropTypes.bool
+  errorCode: PropTypes.number
 }
 
 const Container = styled.div`

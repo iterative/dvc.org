@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import NextLink from 'next/link'
 
-import { media, container } from '../styles'
+import { container, media } from '../styles'
 
 export default function TrySection({ title, buttonText = 'Get Started' }) {
   return (
