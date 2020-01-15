@@ -10,8 +10,9 @@
  */
 
 const { createServer } = require('http')
-const next = require('next')
 const { parse } = require('url')
+const next = require('next')
+
 const { getItemByPath } = require('./src/utils/sidebar')
 
 const dev = process.env.NODE_ENV !== 'production'

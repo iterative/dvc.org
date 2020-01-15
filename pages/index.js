@@ -1,15 +1,17 @@
-import Diagram from '../src/Diagram'
+import React from 'react'
+import styled from 'styled-components'
 import Head from 'next/head'
+
+import LearnMore from '../src/LearnMore'
+
+import Page from '../src/Page'
 import Hero from '../src/Hero'
 import LandingHero from '../src/LandingHero'
-import LearnMore from '../src/LearnMore'
-import { META_BASE_TITLE } from '../src/consts'
-import Page from '../src/Page'
+import Diagram from '../src/Diagram'
 import PromoSection from '../src/PromoSection'
-import React from 'react'
-import Subscribe from '../src/Subscribe'
 import UseCases from '../src/UseCases'
-import styled from 'styled-components'
+import Subscribe from '../src/Subscribe'
+import { META_BASE_TITLE } from '../src/consts'
 
 const HeadInjector = () => (
   <Head>

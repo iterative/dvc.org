@@ -1,9 +1,8 @@
-import styled, { keyframes } from 'styled-components'
-
 import React from 'react'
-import { logEvent } from '../utils/ga'
+import styled, { keyframes } from 'styled-components'
 import { media } from '../styles'
 import { scroller } from 'react-scroll'
+import { logEvent } from '../utils/ga'
 
 const scrollToDiagram = () => {
   logEvent('hero', 'learn-more')
