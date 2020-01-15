@@ -53,7 +53,9 @@ app.prepare().then(() => {
       // error.dvc.org/{hdr} -> dvc.org/doc/user-guide/troubleshooting#{hdr},
       res.writeHead(303, {
         'Cache-Control': 'no-cache',
-        Location: 'https://dvc.org/doc/user-guide/troubleshooting#' + pathname
+        Location:
+          'https://dvc.org/doc/user-guide/troubleshooting#' +
+          pathname.substring(1)
       })
       res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
