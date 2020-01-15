@@ -1,6 +1,6 @@
 import React from 'react'
-import { media } from '../styles'
 import styled from 'styled-components'
+import { media } from '../styles'
 
 export default function SubscribeForm() {
   return (
@@ -23,7 +23,7 @@ export default function SubscribeForm() {
       />
 
       {/*
-        real people should not fill this in and expect good things -
+        real people should not fill this in and expect good things - 
         do not remove this or risk form bot signups
       */}
       <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">

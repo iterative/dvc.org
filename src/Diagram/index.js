@@ -1,5 +1,9 @@
 /* eslint jsx-a11y/anchor-is-valid: off */
 
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import NextLink from 'next/link'
+import styled from 'styled-components'
 import {
   OnlyDesktop,
   OnlyMobile,
@@ -8,13 +12,8 @@ import {
   container,
   media
 } from '../styles'
-import React, { Component } from 'react'
-
 import { Element } from 'react-scroll'
-import NextLink from 'next/link'
-import PropTypes from 'prop-types'
 import Slider from 'react-slick'
-import styled from 'styled-components'
 
 const LearnMore = ({ href }) => (
   <LearnMoreArea>
