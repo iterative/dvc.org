@@ -7,7 +7,7 @@ import Error from 'next/error'
 import Router from 'next/router'
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
-// components
+
 import Page from '../src/Page'
 import { HeadInjector } from '../src/Documentation/HeadInjector'
 import Hamburger from '../src/Hamburger'
@@ -15,9 +15,9 @@ import SearchForm from '../src/SearchForm'
 import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
 import Markdown from '../src/Documentation/Markdown/Markdown'
 import RightPanel from '../src/Documentation/RightPanel/RightPanel'
-// sidebar data and helpers
+
 import { getItemByPath, structure } from '../src/utils/sidebar'
-// styles
+
 import { media } from '../src/styles'
 
 const ROOT_ELEMENT = 'bodybag'

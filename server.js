@@ -1,5 +1,4 @@
 /* eslint-env node */
-
 /*
  * Custom server (with custom routes) See
  * https://nextjs.org/docs/advanced-features/custom-server

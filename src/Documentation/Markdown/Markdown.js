@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import NextLink from 'next/link'
 import Router from 'next/router'
-// components
+
 import ReactMarkdown from 'react-markdown'
 import { LightButton } from '../LightButton'
 import Tutorials from '../Tutorials'
 import Tooltip from '../../Tooltip'
 import Collapsible from 'react-collapsible'
-// syntax highlighter
+
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
 import python from 'react-syntax-highlighter/dist/cjs/languages/hljs/python'
@@ -20,11 +20,11 @@ import vim from 'react-syntax-highlighter/dist/cjs/languages/hljs/vim'
 import usage from './lang/usage'
 import dvc from './lang/dvc'
 import linker from './utils/remark-linker'
-// consts
+
 import { PAGE_DOC } from '../../consts'
-// utils
+
 import kebabCase from 'lodash.kebabcase'
-// styles
+
 import styled from 'styled-components'
 import { media } from '../../../src/styles'
 
