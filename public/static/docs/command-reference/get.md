@@ -19,10 +19,11 @@ positional arguments:
 ## Description
 
 Provides an easy way to download files or directories tracked in any <abbr>DVC
-project</abbr> (e.g. datasets, ML models), or Git repository (e.g. source code,
-small images or data files). The file or directory in path is copied to the
-current working directory. (For remote URLs, it works like downloading with
-wget, but supporting DVC <abbr>data artifacts</abbr> and files tracked by Git.)
+project</abbr> (e.g. datasets, intermediate results, ML models), or Git
+repository (e.g. source code, small image/other files). `dvc get` copies the
+target file or directory (`url`/`path`) to the current working directory. (For
+remote URLs, it works like downloading with `wget`, but supporting DVC
+<abbr>data artifacts</abbr> and other files tracked in the repository.)
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
