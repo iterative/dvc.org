@@ -113,7 +113,7 @@ We can also use `dvc get` to retrieve any file or directory that exists in a git
 repository.
 
 ```dvc
-$ dvc get https://github.com/schacon/cowsay/install.sh install.sh
+$ dvc get https://github.com/schacon/cowsay install.sh
 $ ls
 install.sh
 ```
