@@ -29,7 +29,7 @@ export const Title = styled.div`
   line-height: 60px;
 
   ${media.tablet`
-    font-size: 34px;
+    font-size: 30px;
     line-height: 40px;
   `}
 `
@@ -50,9 +50,7 @@ export const Description = styled.div`
   color: #838d93;
 
   ${media.tablet`
-    margin: 10px 10px 15px;
-    font-size: 20px;
-    line-height: 30px;
+    margin: 10px 10px 30px;
   `};
 `
 
