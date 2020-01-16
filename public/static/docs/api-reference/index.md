@@ -7,10 +7,10 @@ interpreter. While most of the package implements our
 expose special functions you can use in your Python source code.
 
 > For API use, we **strongly** recommend having `dvc` in a requirements or setup
-> file for your Python project, and installing it via and env manager such as
-> `pip`.
-
-To use the API, import the module first with:
+> file for your Python project, and installing it with a package manager such as
+> `pip` (and in a
+> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)).
+> To use the API, import the module first with:
 
 ```py
 import dvc.api
@@ -26,4 +26,4 @@ documentation, which you get from the module's
 > functions we could add to the Python API.
 
 Please choose a function from the navigation sidebar to the left, or click the
-`Next` button below to jump into the fist one ↘
+`Next` button below to jump into the first one ↘

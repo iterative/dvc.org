@@ -62,7 +62,7 @@ The value of `resource_url` in this case would be something like:
 
 `https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`
 
-This URL represents the physical location fo the data, built by interpreting the
+This URL represents the physical location of the data, built by interpreting the
 corresponding [DVC-file](/doc/user-guide/dvc-file-format), where the file's
 checksum `a304afb96060aad90176268345e10355` is stored, and the project's remote
 configuration where the base URL `https://remote.dvc.org/dataset-registry/` is

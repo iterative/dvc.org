@@ -15,8 +15,9 @@ is particularly useful in order to access the [Python API](/doc/api-reference)
 (`dvc.api` module).
 
 > For API use, we **strongly** recommend having `dvc` in a requirements or setup
-> file for your Python project, and installing it via and env manager such as
-> `pip`.
+> file for your Python project, and installing it with a package manager such as
+> `pip` (and in a
+> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)).
 
 ## Advanced options
 
