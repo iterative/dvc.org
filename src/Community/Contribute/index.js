@@ -9,7 +9,7 @@ import data from '../data'
 
 import { Item, Items, Wrapper } from '../styles'
 
-const { description, title } = data.section.contribute
+const { description, mobileDescription, title } = data.section.contribute
 
 export default function CommunityContribute({ theme }) {
   return (
@@ -20,6 +20,7 @@ export default function CommunityContribute({ theme }) {
         color={theme.color}
         description={description}
         icon="/static/img/community/contribute.svg"
+        mobileDescription={mobileDescription}
         title={title}
       >
         <Items>

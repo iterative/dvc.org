@@ -21,7 +21,7 @@ import {
 
 import data from '../data'
 
-const { description, title } = data.section.learn
+const { description, mobileDescription, title } = data.section.learn
 const { documentation, userContent } = data
 
 function CommunityBlogPost({ url, title, date, color, commentsUrl }) {
@@ -76,6 +76,7 @@ export default function CommunityLearn({ posts, theme }) {
         color={theme.color}
         description={description}
         icon="/static/img/community/learn.svg"
+        mobileDescription={mobileDescription}
         title={title}
       >
         <Items>

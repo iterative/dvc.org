@@ -10,7 +10,7 @@ import { pluralizeComments } from '../../utils/i18n'
 
 import data from '../data'
 
-const { description, title } = data.section.meet
+const { description, mobileDescription, title } = data.section.meet
 
 import { StatLabel, StatLine, StatValue } from './styles'
 
@@ -32,8 +32,10 @@ export default function CommunityMeet({ issues, theme, topics }) {
         anchor="meet"
         background="/static/img/community/meet_bg.jpg"
         color={theme.color}
+        contentVisible={true}
         description={description}
         icon="/static/img/community/meet.svg"
+        mobileDescription={mobileDescription}
         title={title}
       >
         <Items>

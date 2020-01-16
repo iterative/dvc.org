@@ -25,7 +25,7 @@ export const Item = styled.div`
     margin-left: 30px;
 
     ${media.tablet`
-      margin: 5px 0 0 0;
+      margin: 15px 0 0 0;
     `}
   }
 `
@@ -79,6 +79,10 @@ export const Wrapper = styled.div`
   margin: 0 auto;
 
   ${media.tablet`
-    padding: 0 5px;
+    margin: 0 15px;
+
+    & + & {
+      border-top: 1px solid #e6e8e9;
+    }
   `}
 `

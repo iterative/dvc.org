@@ -12,7 +12,7 @@ import { Item, Items, Line, Link, Wrapper } from '../styles'
 
 import { Image, ImageWrapper, Meta } from './styles'
 
-const { description, title } = data.section.events
+const { description, mobileDescription, title } = data.section.events
 const { events } = data
 
 const modifiedEvents = events.length > 3 ? events.slice(0, 3) : events
@@ -28,6 +28,7 @@ export default function CommunityEvents({ theme }) {
         color={theme.color}
         description={description}
         icon="/static/img/community/events.svg"
+        mobileDescription={mobileDescription}
         title={title}
       >
         <Items>

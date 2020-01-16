@@ -6,21 +6,15 @@ export const Wrapper = styled.div`
   margin: 50px -50px;
   padding: ${({ hasBg }) => (hasBg ? '0 50px 260px' : '0 50px')};
 
-  ${media.phablet`
-    margin: 20px -5px;
-    padding: 0 5px;
-    background-position: top center;
-    background-size: 550px 225px;
+  ${media.tablet`
+    margin: 20px 0;
+    padding: 0;
   `}
 `
 
 export const Header = styled.div`
   display: flex;
   color: ${({ color }) => color};
-
-  ${media.tablet`
-    margin: 0 10px;
-  `}
 `
 
 export const Title = styled.div`
@@ -29,8 +23,30 @@ export const Title = styled.div`
   line-height: 60px;
 
   ${media.tablet`
-    font-size: 30px;
-    line-height: 40px;
+    font-size: 34px;
+    line-height: 60px;
+
+    &::after {
+      content: '';
+
+      position: relative;
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 10px;
+      border-left: 7px solid transparent;
+      border-right: 7px solid transparent;
+      ${({ isContentVisible }) =>
+        isContentVisible
+          ? `
+          border-bottom: 12px solid currentColor;
+          top: -2px;
+         `
+          : `
+          border-top: 12px solid currentColor;
+      `}
+      
+    }
   `}
 `
 
@@ -38,7 +54,9 @@ export const Icon = styled.img`
   margin: -2px 0;
 
   ${media.tablet`
-    display: none;
+    margin: -2px -5px -12px auto;
+    width: 72px;
+    height: 72px;
   `}
 `
 
@@ -50,7 +68,19 @@ export const Description = styled.div`
   color: #838d93;
 
   ${media.tablet`
-    margin: 10px 10px 30px;
+    display: none;
+  `};
+`
+
+export const MobileDescription = styled.div`
+  display: none;
+  margin: 0 0 25px;
+  font-size: 18px;
+  line-height: 30px;
+  color: #838d93;
+
+  ${media.tablet`
+    display: block;
   `};
 `
 
@@ -63,13 +93,13 @@ export const Picture = styled.img`
   height: 450px;
   margin-left: -550px;
 
-  ${media.phablet`
-    position: relative;
-    display: block;
-    width: 550px;
-    height: 225px;
-    margin: 0 -275px 5px;
+  ${media.tablet`
+    display: none;
   `}
 `
 
-export const Content = styled.div``
+export const Content = styled.div`
+  ${media.tablet`
+    display: ${({ isContentVisible }) => (isContentVisible ? 'block' : 'none')}
+  `}
+`
