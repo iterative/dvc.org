@@ -9,9 +9,10 @@ only be used as
 
 💡 Note that `dvc.api.open` is able to
 [stream](https://docs.python.org/3/library/io.html) the file directly from
-**some** [remote](/doc/command-reference/remote) types. Otherwise, the file is
-downloaded regularly into a temporary local path before the file object is made
-available.
+**most**
+[remote types](/doc/command-reference/remote/add#supported-storage-types)
+(local, S3, Azure, GCP, OSS, SSH, HDFS). Otherwise, the file is downloaded
+regularly into a temporary local path before the file object is made available.
 
 ## Signature
 
