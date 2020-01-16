@@ -8,9 +8,9 @@
  * are running.
  */
 
+const next = require('next')
 const { createServer } = require('http')
 const { parse } = require('url')
-const next = require('next')
 
 const { getItemByPath } = require('./src/utils/sidebar')
 

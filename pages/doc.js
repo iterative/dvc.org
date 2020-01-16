@@ -1,12 +1,14 @@
 /* global docsearch:readonly */
 
-import React, { useCallback, useEffect, useState } from 'react'
-import PropTypes from 'prop-types'
-import styled from 'styled-components'
-import Error from 'next/error'
+import React, { useState, useCallback, useEffect } from 'react'
+import kebabCase from 'lodash.kebabcase'
+import Error from 'next/error' // comp
 import Router from 'next/router'
 import fetch from 'isomorphic-fetch'
-import kebabCase from 'lodash.kebabcase'
+import PropTypes from 'prop-types'
+import styled from 'styled-components'
+
+import { structure, getItemByPath } from '../src/utils/sidebar'
 
 import Page from '../src/Page'
 import { HeadInjector } from '../src/Documentation/HeadInjector'
@@ -15,9 +17,6 @@ import SearchForm from '../src/SearchForm'
 import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
 import Markdown from '../src/Documentation/Markdown/Markdown'
 import RightPanel from '../src/Documentation/RightPanel/RightPanel'
-
-import { getItemByPath, structure } from '../src/utils/sidebar'
-
 import { media } from '../src/styles'
 
 const ROOT_ELEMENT = 'bodybag'
