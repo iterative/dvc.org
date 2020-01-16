@@ -91,7 +91,7 @@ export default class LandingHero extends Component {
               <Line>$ dvc run -d images -o model.p cnn.py</Line>
             </Command>
             <Command active={activeCommand === 2}>
-              <Line>$ dvc remote add myrepo s3://mybucket</Line>
+              <Line>$ dvc remote add -d myrepo s3://mybucket</Line>
             </Command>
             <Command active={activeCommand === 3}>
               <Line>$ dvc push</Line>

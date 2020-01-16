@@ -95,14 +95,14 @@ url = /path/to/remote
 remote = myremote
 ```
 
-## Example: Add an Amazon S3 remote and modify its region
+## Example: Customize an additional S3 remote
 
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add mynewremote s3://mybucket/myproject
-$ dvc remote modify mynewremote region us-east-2
+$ dvc remote add newremote s3://mybucket/myproject
+$ dvc remote modify newremote endpointurl https://object-storage.example.com
 ```
 
 The project's config file should now look something like this:
@@ -112,9 +112,9 @@ The project's config file should now look something like this:
 url = /path/to/remote
 [core]
 remote = myremote
-['remote "mynewremote"']
+['remote "newremote"']
 url = s3://mybucket/myproject
-region = us-east-2
+endpointurl = https://object-storage.example.com
 ```
 
 ## Example: List all remotes in the project
@@ -122,11 +122,11 @@ region = us-east-2
 ```dvc
 $ dvc remote list
 myremote	/path/to/remote
-mynewremote	s3://mybucket/myproject
+newremote	s3://mybucket/myproject
 ```
 
 ## Example: Remove a remote
 
 ```dvc
-$ dvc remote remove mynewremote
+$ dvc remote remove newremote
 ```

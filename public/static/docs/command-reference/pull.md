@@ -103,19 +103,18 @@ reflinks or hardlinks to put it in the workspace without copying. See
 ## Examples
 
 For using the `dvc pull` command, a remote storage must be defined. (See
-`dvc remote`.) For an existing <abbr>project</abbr>, remotes are usually already
-set up and you can use `dvc remote list` to check them. Just to remind how it is
-done and set a context for the example, let's define an SSH remote with the
-`dvc remote add` command:
+`dvc remote add`.) For an existing <abbr>project</abbr>, remotes are usually
+already set up and you can use `dvc remote list` to check them. To remember how
+it's done, and set a context for the example, let's define a default SSH remote:
 
 ```dvc
-$ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/remote/storage
+$ dvc remote add -d r1 ssh://_username_@_host_/path/to/dvc/remote/storage
 $ dvc remote list
 r1	ssh://_username_@_host_/path/to/dvc/remote/storage
 ```
 
-> DVC supports several remote types. For details, see the
-> [`remote add`](/doc/command-reference/remote/add) documentation.
+> DVC supports several
+> [remote types](/doc/command-reference/remote/add#supported-storage-types).
 
 Having some images and other files in remote storage, we can pull all changed
 files from the current Git branch:

@@ -132,10 +132,10 @@ To communicate with a remote object storage that supports an S3 compatible API
 [IBM Cloud Object Storage](https://www.ibm.com/cloud/object-storage) etc.) you
 must explicitly set the `endpointurl` in the configuration:
 
-For example:
+For example, using `dvc remote modify`:
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/path/to/dir
+$ dvc remote add myremote s3://mybucket/path/to/dir
 $ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
 
@@ -390,10 +390,13 @@ $ cat .dvc/config
 
 </details>
 
-## Example: Custom configuration of an S3 remote
+## Example: Customize an S3 remote
 
 Add an Amazon S3 remote as the _default_ (via `-d` option), and modify its
-region:
+region.
+
+> 💡 Before adding an S3 remote, be sure to
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/myproject

@@ -107,10 +107,9 @@ to push.
 ## Examples
 
 For using the `dvc push` command, a remote storage must be defined. (See
-`dvc remote`.) For an existing <abbr>project</abbr>, remotes are usually already
-set up and you can use `dvc remote list` to check them. Just to remind how it is
-done and set a context for the example, let's define an SSH remote with the
-`dvc remote add` command:
+`dvc remote add`.) For an existing <abbr>project</abbr>, remotes are usually
+already set up and you can use `dvc remote list` to check them. To remember how
+it's done, and set a context for the example, let's define a default SSH remote:
 
 ```dvc
 $ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
@@ -118,8 +117,8 @@ $ dvc remote list
 r1	ssh://_username_@_host_/path/to/dvc/cache/directory
 ```
 
-> DVC supports several remote types. For details, see the
-> [`remote add`](/doc/command-reference/remote/add) documentation.
+> DVC supports several
+> [remote types](/doc/command-reference/remote/add#supported-storage-types).
 
 Push all data file caches from the current Git branch to the default remote:
 
