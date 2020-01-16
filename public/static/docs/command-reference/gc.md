@@ -45,9 +45,9 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
 
 - `-p`, `--projects` - if a single remote or a single cache is shared among
   different projects (e.g. a configuration like the one described
-  [here](/doc/use-cases/shared-development-server.md)), this option can be used
-  to specify a list of them (each project is a path) to keep data that is
-  currently referenced from them.
+  [here](/doc/use-cases/shared-development-server)), this option can be used to
+  specify a list of them (each project is a path) to keep data that is currently
+  referenced from them.
 
 - `-c`, `--cloud` - also remove files in the default remote storage. _This
   operation is dangerous._ It removes datasets, models, other files that are not

@@ -102,7 +102,7 @@ extension.)
 
 ## Examples
 
-Examples in [add](/doc/command-reference/metric/add),
+Examples in [add](/doc/command-reference/metrics/add),
 [modify](/doc/command-reference/metrics/modify), and
 [remove](/doc/command-reference/metrics/remove) cover most of the basic cases
 for the `dvc metrics show`.

@@ -1,22 +1,24 @@
 /* global docsearch:readonly */
 
 import React, { useCallback, useEffect, useState } from 'react'
-import { getItemByPath, structure } from '../src/utils/sidebar'
-
-import Error from 'next/error'
-import Hamburger from '../src/Hamburger'
-import { HeadInjector } from '../src/Documentation/HeadInjector'
-import Markdown from '../src/Documentation/Markdown/Markdown'
-import Page from '../src/Page'
 import PropTypes from 'prop-types'
-import RightPanel from '../src/Documentation/RightPanel/RightPanel'
+import styled from 'styled-components'
+import Error from 'next/error'
 import Router from 'next/router'
-import SearchForm from '../src/SearchForm'
-import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
 import fetch from 'isomorphic-fetch'
 import kebabCase from 'lodash.kebabcase'
+// components
+import Page from '../src/Page'
+import { HeadInjector } from '../src/Documentation/HeadInjector'
+import Hamburger from '../src/Hamburger'
+import SearchForm from '../src/SearchForm'
+import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
+import Markdown from '../src/Documentation/Markdown/Markdown'
+import RightPanel from '../src/Documentation/RightPanel/RightPanel'
+// sidebar data and helpers
+import { getItemByPath, structure } from '../src/utils/sidebar'
+// styles
 import { media } from '../src/styles'
-import styled from 'styled-components'
 
 const ROOT_ELEMENT = 'bodybag'
 const SIDEBAR_MENU = 'sidebar-menu'
@@ -127,7 +129,7 @@ export default function Documentation({ item, headings, markdown, errorCode }) {
 }
 
 Documentation.getInitialProps = async ({ asPath, req }) => {
-  const item = getItemByPath(asPath.split('#')[0])
+  const item = getItemByPath(asPath.split('#')[0].split('?')[0])
 
   if (!item) {
     return {

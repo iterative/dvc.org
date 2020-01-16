@@ -226,6 +226,24 @@ On successful access token generation, token data will be cached in git ignored
 directory with path `.dvc/tmp/gdrive-user-credentials.json`. Do not share token
 data with anyone else to prevent unauthorized access to your Google Drive.
 
+#### Shared drives support
+
+You need to obtain `id` of your shared drive directory to use it as part of URL
+passed to DVC. `id` can be found in your web browser address bar when shared
+drive is opened. For example, for the URL
+
+```dvc
+https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA
+```
+
+the `id` will be equal to `0AIac4JZqHhKmUk9PDA`.
+
+Use obtained `id` in remote's URL:
+
+```dvc
+$ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA/my-dvc-root
+```
+
 </details>
 
 <details>

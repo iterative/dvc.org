@@ -1,12 +1,15 @@
 import React, { Component } from 'react'
-
-import { HEADER } from '../consts'
-import Nav from '../Nav'
-import NextLink from 'next/link'
 import PropTypes from 'prop-types'
-import { media } from '../styles'
-import styled from 'styled-components'
+import NextLink from 'next/link'
+// components
+import Nav from '../Nav'
+// utils
 import throttle from 'lodash.throttle'
+// styles
+import styled from 'styled-components'
+import { media } from '../styles'
+// constants
+import { HEADER } from '../consts'
 
 const MIN_HEIGHT = 78
 

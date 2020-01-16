@@ -1,7 +1,7 @@
 # get
 
 Download a file or directory from any <abbr>DVC project</abbr> or Git repository
-(e.g. hosted on GitHub) into the current working directory.
+into the current working directory.
 
 > Unlike `dvc import`, this command does not track the downloaded files (does
 > not create a DVC-file).
@@ -16,37 +16,37 @@ Download a file or directory from any <abbr>DVC project</abbr> or Git repository
 usage: dvc get [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url         URL of Git repository with DVC project to download from.
-  path        Path to a file or directory within a DVC repository.
+  url         Location of DVC project or Git repository to download from
+  path        Path to a file or directory within the project or repository
 ```
 
 ## Description
 
 Provides an easy way to download files or directories tracked in any <abbr>DVC
-repository</abbr>, both by Git (e.g. source code) or DVC (e.g. datasets, ML
-models). The file or directory in path is copied to the current working
-directory. (For remote URLs, it works like downloading with wget, but supporting
-DVC <abbr>data artifacts</abbr>.)
+project</abbr> (e.g. datasets, ML models), or Git repository (e.g. source code,
+small images or data files). The file or directory in path is copied to the
+current working directory. (For remote URLs, it works like downloading with
+wget, but supporting DVC <abbr>data artifacts</abbr> and files tracked by Git.)
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
 
-The `url` argument specifies the address of the Git repository containing the
-external <abbr>project</abbr>. Both HTTP and SSH protocols are supported for
-online repositories (e.g. `[user@]server:project.git`). `url` can also be a
+The `url` argument specifies the address of the <abbr>DVC project</abbr> or Git
+repository containing the data source. Both HTTP and SSH protocols are supported
+for online repositories (e.g. `[user@]server:project.git`). `url` can also be a
 local file system path to an "offline" repository (in this case and if it
 doesn't have a default remote set up, instead of downloading, DVC will try to
 copy the target data from the external source project or its
 <abbr>cache</abbr>).
 
 The `path` argument of this command is used to specify the location of the
-target(s) to be downloaded within the source repository at `url`. It can point
-to any file or directory in the source project, including <abbr>outputs</abbr>
-tracked by DVC as well as files tracked by Git. Note that for the former, data
-should be specified in one of the [DVC-files](/doc/user-guide/dvc-file-format)
-of the source repository. (In this case, a default
-[DVC remote](/doc/command-reference/remote) needs to be configured in the
-project, containing the actual data.)
+target(s) to be downloaded within the source project or repository at `url`. It
+can point to any file or directory in the source project, including
+<abbr>outputs</abbr> tracked by DVC as well as files tracked by Git. Note that
+for the former, data should be specified in one of the
+[DVC-files](/doc/user-guide/dvc-file-format) of the source repository. (In this
+case, a default [DVC remote](/doc/command-reference/remote) needs to be
+configured in the project, containing the actual data.)
 
 > See `dvc get-url` to download data from other supported URLs.
 
@@ -64,7 +64,7 @@ name.
 
 - `--rev` - specific
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the DVC repository to
+  (such as a branch name, a tag, or a commit hash) of the Git repository to
   download the file or directory from. The tip of the default branch is used by
   default when this option is not specified.
 
@@ -117,7 +117,7 @@ We can also use `dvc get` to retrieve any file or directory that exists in a git
 repository.
 
 ```dvc
-$ dvc get https://github.com/schacon/cowsay/install.sh install.sh
+$ dvc get https://github.com/schacon/cowsay install.sh
 $ ls
 install.sh
 ```

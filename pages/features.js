@@ -1,13 +1,16 @@
-import FeaturesHero from '../src/FeaturesHero'
-import Head from 'next/head'
-import Hero from '../src/Hero'
-import { META_BASE_TITLE } from '../src/consts'
-import Page from '../src/Page'
 import React from 'react'
-import TrySection from '../src/TrySection'
+import styled from 'styled-components'
+
+import Head from 'next/head'
+
 import { container } from '../src/styles'
 import { media } from '../src/styles'
-import styled from 'styled-components'
+
+import Page from '../src/Page'
+import Hero from '../src/Hero'
+import FeaturesHero from '../src/FeaturesHero'
+import TrySection from '../src/TrySection'
+import { META_BASE_TITLE } from '../src/consts'
 
 const HeadInjector = () => (
   <Head>

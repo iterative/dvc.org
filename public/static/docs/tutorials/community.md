@@ -4,7 +4,7 @@ Blog posts from the community which show how they use DVC in their ML scenarios:
 
 - [Creating reproducible data science workflows with DVC](https://medium.com/y-data-stories/creating-reproducible-data-science-workflows-with-dvc-3bf058e9797b)
 
-- [Creating an awesome project using DVC and DAGsHub](https://dagshub.com/docs/overview/)
+- [Creating an awesome project using DVC and DAGsHub](https://dagshub.com)
 
 - [Using DVC to create an efficient version control system for data projects](https://medium.com/qonto-engineering/using-dvc-to-create-an-efficient-version-control-system-for-data-projects-96efd94355fe)
 
