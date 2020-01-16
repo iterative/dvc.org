@@ -76,7 +76,7 @@ with dvc.api.open(
 
 In this case we don't supply a `repo` value, which means the current working
 directory will be tried instead, so make sure that the code is run from within a
-<abbr>DVC repository</abbr>:
+<abbr>DVC project</abbr>:
 
 ```py
 import dvc.api

@@ -1,7 +1,9 @@
 # dvc.api.read()
 
-Returns the contents of a file <abbr>artifact</abbr> as a bytes object or as a
-string.
+Returns the contents of a file <abbr>artifact</abbr> as a
+[bytes object](https://docs.python.org/3/glossary.html#term-bytes-like-object)
+or as a
+[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
 
 > Wrapper for [`dvc.api.open()`](/doc/api-reference/open) that returns the
 > complete file contents directly, by using the file object's

@@ -1,8 +1,10 @@
 # dvc.api.get_url()
 
-Returns the full URL to the physical location (in a
-[DVC remote](/doc/command-reference/remote)) of a <abbr>data artifact</abbr>
-specified by its `path` in a `repo` (<abbr>DVC project</abbr>).
+Returns the full URL
+[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)
+to the physical location (in a [DVC remote](/doc/command-reference/remote)) of a
+<abbr>data artifact</abbr> specified by its `path` in a `repo` (<abbr>DVC
+project</abbr>).
 
 ⚠️ Note that the returned URL is formed by analyzing the corresponding
 [DVC-file](/doc/user-guide/dvc-file-format) (see [Examples](#examples) below).
