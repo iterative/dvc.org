@@ -25,6 +25,8 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
   an "offline" project. If not supplied, this defaults to the current working
   directory.
 
+  > A `NotDvcRepoError` is thrown if `repo` is not a valid DVC project.
+
 - `rev` - (optional)
   [Git-revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash). `rev` only has an effect
@@ -36,6 +38,9 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
   value of `repo`. The local cache is used when `repo` is the current working
   directory (default value of `repo`). when `repo` is an external repository
   URL, the default project remote is used.
+
+  > A `NoRemoteError` is thrown if no `remote` is specified and the project has
+  > no default remote.
 
 - `mode` - (optional) mirrors the namesake parameter in builtin
   [`open()`](https://docs.python.org/3/library/functions.html#open). Defaults to

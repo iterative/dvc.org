@@ -25,6 +25,8 @@ def summon(
   an "offline" project. If not supplied, this defaults to the current working
   directory.
 
+  > A `NotDvcRepoError` is thrown if `repo` is not a valid DVC project.
+
 - `rev` - (optional)
   [Git-revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash). `rev` only has an effect
