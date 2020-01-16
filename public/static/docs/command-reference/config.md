@@ -110,8 +110,8 @@ for more details.) This section contains the following options:
   > directory into paths relative to the config file location.
 
 - `cache.protected` - make files under DVC control read-only. Possible values
-  are `true` or `false` (default). Run `dvc checkout` after setting changing the
-  value for this option for the change to go into effect.
+  are `true` or `false` (default). Run `dvc checkout` after changing the value
+  of this option for the change to go into effect.
 
   Due to the way DVC handles linking between the data files in the cache and
   their counterparts in the <abbr>workspace</abbr>, it's easy to accidentally

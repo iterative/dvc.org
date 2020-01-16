@@ -15,7 +15,7 @@ Common Windows terminal alternatives are
 [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
 – but they may not support all the POSIX features (e.g. `\` line continuation).
 
-**We recommend the full [Cmder](https://cmder.net/) console emulator** (which
+💡 We recommend the full [Cmder](https://cmder.net/) console emulator (which
 already includes _Git for Windows_).
 
 Its also possible to enjoy a full Linux terminal experience with the
