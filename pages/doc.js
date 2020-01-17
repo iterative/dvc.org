@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import Error from 'next/error'
 import Router from 'next/router'
 import fetch from 'isomorphic-fetch'
-import kebabCase from 'lodash.kebabcase'
+
 // components
 import Page from '../src/Page'
 import { HeadInjector } from '../src/Documentation/HeadInjector'
@@ -17,6 +17,7 @@ import Markdown from '../src/Documentation/Markdown/Markdown'
 import RightPanel from '../src/Documentation/RightPanel/RightPanel'
 // sidebar data and helpers
 import { getItemByPath, structure } from '../src/utils/sidebar'
+import { extractSlugFromTitle } from '../src/Documentation/Markdown/Markdown'
 // styles
 import { media } from '../src/styles'
 
@@ -29,11 +30,13 @@ const parseHeadings = text => {
   let match
   do {
     match = headingRegex.exec(text)
-    if (match)
+    if (match) {
+      const [title, slug] = extractSlugFromTitle(match[2])
       matches.push({
-        text: match[2],
-        slug: kebabCase(match[2])
+        text: title,
+        slug: slug
       })
+    }
   } while (match)
 
   return matches
