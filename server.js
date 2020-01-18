@@ -77,7 +77,7 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/(docs|documentation)(\/.*)?$/i.test(pathname)) {
       // path /docs... or /documentation... -> /doc...
-      res.writeHead(303, {
+      res.writeHead(301, {
         Location: req.url.replace(/\/(docs|documentation)/i, '/doc')
       })
       res.end()
