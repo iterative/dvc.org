@@ -1,4 +1,5 @@
 /* eslint-env node */
+
 /*
  * Custom server (with custom routes) See
  * https://nextjs.org/docs/advanced-features/custom-server
@@ -8,9 +9,9 @@
  * are running.
  */
 
-const next = require('next')
 const { createServer } = require('http')
 const { parse } = require('url')
+const next = require('next')
 
 const { getItemByPath } = require('./src/utils/sidebar')
 

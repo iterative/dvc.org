@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Router from 'next/router'
 import { media } from '../styles'
 import { logEvent } from '../utils/ga'
-
+// consts
 import { PAGE_DOC } from '../consts'
 
 function goToDocGetStarted() {

@@ -1,14 +1,14 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import NextLink from 'next/link'
-
+// components
 import Nav from '../Nav'
-
+// utils
 import throttle from 'lodash.throttle'
-
+// styles
 import styled from 'styled-components'
 import { media } from '../styles'
-
+// constants
 import { HEADER } from '../consts'
 
 const MIN_HEIGHT = 78
