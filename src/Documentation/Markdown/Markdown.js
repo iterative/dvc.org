@@ -46,7 +46,7 @@ function flatten(text, child) {
 export function extractSlugFromTitle(title) {
   // extracts expressions like {#too-many-files} from the end of a title
   const meta = title.match(/\s+{#([a-z0-9-]*[a-z0-9]+)}\s*$/)
-  if (meta !== null) {
+  if (meta) {
     return [title.substring(0, meta.index), meta[1]]
   }
   return [title, kebabCase(title)]
