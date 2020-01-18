@@ -108,9 +108,9 @@ The same example applies to raw or intermediate <abbr>data artifacts</abbr> as
 well, of course, for cases where we want to download those files or directories
 and perform some analysis on them.
 
-## Examples: Get a Git-tracked model file
+## Examples: Get a misc. Git-tracked file
 
-We can also use `dvc get` to retrieve any file or directory that exists in a git
+We can also use `dvc get` to retrieve any file or directory that exists in a Git
 repository.
 
 ```dvc
