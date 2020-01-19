@@ -24,7 +24,7 @@ positional arguments:
 Provides an easy way to reuse datasets, intermediate results, ML models, or
 other files and directories tracked in another <abbr>DVC project</abbr> or Git
 repository into the workspace. The `dvc import` command downloads such a
-<abbr>data artifact</abbr> in a way that it is tracked with DVC, so it can be
+file or <abbr>artifact</abbr> in a way that it is tracked with DVC, so it can be
 updated when the data source changes. (See `dvc update`.)
 
 The `url` argument specifies the address of the Git repository containing the
