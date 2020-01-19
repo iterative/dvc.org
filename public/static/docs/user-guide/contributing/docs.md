@@ -153,3 +153,17 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
 > [this very file](https://raw.githubusercontent.com/iterative/dvc.org/master/public/static/docs/user-guide/contributing/docs.md).
+
+## General language guidelines
+
+We try to use a casual and fun tone in our docs. We also avoid authoritative
+language such as "As you can see, clearly this is what happened..." which while
+good-intentioned, may scare off beginners.
+
+We also use "emoji" symbols sparingly for emphasis on certain things. Mainly:
+
+- ⚠️ Warnings about possible problems related to DVC usage (similar to **Note!**
+  and "Note that..." notes)
+- 💡 Useful tips related to external tools/integrations
+
+Some other emojis currently in use here and there: ⚡🙏🐛⭐❗
