@@ -110,8 +110,8 @@ for more details.) This section contains the following options:
   > directory into paths relative to the config file location.
 
 - `cache.protected` - make files under DVC control read-only. Possible values
-  are `true` or `false` (default). Run `dvc checkout` for the change to go into
-  effect.
+  are `true` or `false` (default). Run `dvc checkout` after changing the value
+  of this option for the change to go into effect.
 
   Due to the way DVC handles linking between the data files in the cache and
   their counterparts in the <abbr>workspace</abbr>, it's easy to accidentally
@@ -200,17 +200,18 @@ learn more about the state file (database) that is used for optimization.
 $ dvc config core.loglevel debug
 ```
 
-## Example: Add an S3 remote
+## Example: Add an S3 remote, and set it as default
 
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
-
-This also sets the remote as the <abbr>project</abbr> default:
 
 ```dvc
 $ dvc remote add myremote s3://bucket/path
 $ dvc config core.remote myremote
 ```
+
+> Note that this is equivalent to using `dvc remote add` with the
+> `-d`/`--default` option.
 
 ## Example: Default remotes
 

@@ -110,11 +110,11 @@ $ dvc run -d remote://example/data.txt \
 Please refer to `dvc remote add` for more details like setting up access
 credentials for the different remotes.
 
-## Example: import-url command
+## Example: `import-url` command
 
-In the previous examples, downloading commands were used: `aws s3 cp`, `scp`,
-`wget`, etc. `dvc import-url` simplifies the downloading for all the supported
-external path or URL types.
+In the previous examples, special downloading tools were used: `scp`,
+`aws s3 cp`, etc. `dvc import-url` simplifies the downloading for all the
+supported external path or URL types.
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml

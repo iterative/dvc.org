@@ -68,7 +68,7 @@ $ dvc run -d data.txt \
 # Add SSH remote to be used as cache location for SSH files
 $ dvc remote add sshcache ssh://user@example.com:/cache
 
-# Tell dvc to use the 'sshcache' remote as SSH cache location
+# Tell DVC to use the 'sshcache' remote as SSH cache location
 $ dvc config cache.ssh sshcache
 
 # Add data on SSH directly
@@ -86,7 +86,7 @@ $ dvc run -d data.txt \
 # Add S3 remote to be used as cache location for S3 files
 $ dvc remote add s3cache s3://mybucket/cache
 
-# Tell dvc to use the 's3cache' remote as S3 cache location
+# Tell DVC to use the 's3cache' remote as S3 cache location
 $ dvc config cache.s3 s3cache
 
 # Add data on S3 directly
@@ -104,7 +104,7 @@ $ dvc run -d data.txt \
 # Add GS remote to be used as cache location for GS files
 $ dvc remote add gscache gs://mybucket/cache
 
-# Tell dvc to use the 'gscache' remote as GS cache location
+# Tell DVC to use the 'gscache' remote as GS cache location
 $ dvc config cache.gs gscache
 
 # Add data on GS directly
@@ -122,7 +122,7 @@ $ dvc run -d data.txt \
 # Add HDFS remote to be used as cache location for HDFS files
 $ dvc remote add hdfscache hdfs://user@example.com/cache
 
-# Tell dvc to use the 'hdfscache' remote as HDFS cache location
+# Tell DVC to use the 'hdfscache' remote as HDFS cache location
 $ dvc config cache.hdfs hdfscache
 
 # Add data on HDFS directly

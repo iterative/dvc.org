@@ -80,10 +80,10 @@ project/repository itself. Read "local, but external" storage.
 
 </details>
 
+We use the `-d` (`--default`) option of `dvc remote add` for this:
+
 ```dvc
 $ dvc remote add -d myremote /path/to/remote
-$ dvc remote list
-myremote        /path/to/remote
 ```
 
 The <abbr>project</abbr>'s config file should now look like this:
@@ -95,18 +95,38 @@ url = /path/to/remote
 remote = myremote
 ```
 
-## Example: Add a default Amazon S3 remote and modify its region
+## Example: Customize an additional S3 remote
 
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d mynewremote s3://mybucket/myproject
-$ dvc remote modify mynewremote region us-east-2
+$ dvc remote add newremote s3://mybucket/myproject
+$ dvc remote modify newremote endpointurl https://object-storage.example.com
 ```
 
-## Example: Remove remote:
+The project's config file should now look something like this:
+
+```ini
+['remote "myremote"']
+url = /path/to/remote
+[core]
+remote = myremote
+['remote "newremote"']
+url = s3://mybucket/myproject
+endpointurl = https://object-storage.example.com
+```
+
+## Example: List all remotes in the project
 
 ```dvc
-$ dvc remote remove mynewremote
+$ dvc remote list
+myremote	/path/to/remote
+newremote	s3://mybucket/myproject
+```
+
+## Example: Remove a remote
+
+```dvc
+$ dvc remote remove newremote
 ```
