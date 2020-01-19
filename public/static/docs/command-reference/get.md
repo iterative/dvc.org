@@ -23,10 +23,10 @@ positional arguments:
 ## Description
 
 Provides an easy way to download files or directories tracked in any <abbr>DVC
-project</abbr> (e.g. datasets, ML models), or Git repository (e.g. source code,
-small images or data files). The file or directory in path is copied to the
-current working directory. (For remote URLs, it works like downloading with
-wget, but supporting DVC <abbr>data artifacts</abbr> and files tracked by Git.)
+project</abbr> (e.g. datasets, intermediate results, ML models), or Git
+repository (e.g. source code, small image/other files). `dvc get` copies the
+target file or directory (`url`/`path`) to the current working directory. (For
+<abbr>DVC repositories</abbr>, it's analogous to `wget`.)
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
@@ -62,11 +62,12 @@ name.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - specific
+- `--rev` - `url` is expected to represent a Git repository for this option to
+  have an effect. Specific
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the Git repository to
-  download the file or directory from. The tip of the default branch is used by
-  default when this option is not specified.
+  (such as a branch name, a tag, or a commit hash) of the repository to download
+  the file or directory from. The tip of the default branch is used by default
+  when this option is not specified.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -111,9 +112,9 @@ The same example applies to raw or intermediate <abbr>data artifacts</abbr> as
 well, of course, for cases where we want to download those files or directories
 and perform some analysis on them.
 
-## Examples: Get a Git-tracked model file
+## Examples: Get a misc. Git-tracked file
 
-We can also use `dvc get` to retrieve any file or directory that exists in a git
+We can also use `dvc get` to retrieve any file or directory that exists in a Git
 repository.
 
 ```dvc

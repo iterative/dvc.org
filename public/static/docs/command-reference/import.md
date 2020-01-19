@@ -27,10 +27,10 @@ positional arguments:
 
 Provides an easy way to reuse files or directories tracked in any <abbr>DVC
 project</abbr> (e.g. datasets, intermediate results, ML models) or Git
-repository (e.g. other files and directories), into the workspace. The
-`dvc import` command downloads such a <abbr>data artifact</abbr> in a way that
-it is tracked with DVC, so it can be updated when the data source changes. (See
-`dvc update`.)
+repository (e.g. source code, small image/other files). `dvc import` downloads
+the target file or directory (`url`/`path`) in a way so that it's tracked with
+DVC, becoming a local <abbr>data artifact</abbr>. This also permits updating the
+import later, if it has changed in its data source. (See `dvc update`.)
 
 The `url` argument specifies the address of the <abbr>DVC project</abbr> or Git
 repository containing the data source. Both HTTP and SSH protocols are supported
@@ -79,13 +79,16 @@ data artifact from the source project.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - specific
+- `--rev` - `url` is expected to represent a Git repository for this option to
+  have an effect. Specific
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the Git repository to
-  import the data from. The tip of the repository's default branch is used by
-  default when this option is not specified. Note that this adds a `rev` field
-  in the import stage that fixes it to this revision. This can impact the
-  behavior of `dvc update`. (See **re-importing** example below.)
+  (such as a branch name, a tag, or a commit hash) of the repository to download
+  the file or directory from. The tip of the default branch is used by default
+  when this option is not specified.
+
+  > Note that this adds a `rev` field in the import stage that fixes it to this
+  > revision. This can impact the behavior of `dvc update`. (See
+  > **re-importing** example below.)
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -134,7 +137,7 @@ Several of the values above are pulled from the original stage file
 subfields under `repo` are used to save the origin and version of the
 dependency.
 
-## Example: fixed revisions & re-importing
+## Example: Fixed revisions & re-importing
 
 To import a specific revision of a <abbr>data artifact</abbr>, we may use the
 `--rev` option:

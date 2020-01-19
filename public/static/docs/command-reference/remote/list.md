@@ -38,7 +38,7 @@ including names and URLs.
 
 ## Examples
 
-Let's for simplicity add a default local remote:
+Let's for simplicity add a _default_ local remote:
 
 <details>
 
@@ -60,6 +60,7 @@ And now the list of remotes should look like:
 
 ```dvc
 $ dvc remote list
-
-myremote        /path/to/remote
+myremote	/path/to/remote
 ```
+
+The list will also include any previously added remotes.
