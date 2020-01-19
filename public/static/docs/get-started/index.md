@@ -20,5 +20,5 @@ improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
 
 When you're done, feel free to check out official and community
 [tutorials](/doc/tutorials). They provide in-depth explanations,
-[interactive](doc/tutorials/interactive) scenarios, and various examples on how
+[interactive](/doc/tutorials/interactive) scenarios, and various examples on how
 DVC can be used.

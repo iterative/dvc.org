@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-
 import PropTypes from 'prop-types'
-import { logEvent } from '../utils/ga'
 import styled from 'styled-components'
+import { logEvent } from '../utils/ga'
 
 const WatchButton = ({ onClick, disabled }) => (
   <Button onClick={onClick} disabled={disabled}>

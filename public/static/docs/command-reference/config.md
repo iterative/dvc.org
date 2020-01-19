@@ -110,8 +110,8 @@ for more details.) This section contains the following options:
   > directory into paths relative to the config file location.
 
 - `cache.protected` - make files under DVC control read-only. Possible values
-  are `true` or `false` (default). Run `dvc checkout` for the change to go into
-  effect.
+  are `true` or `false` (default). Run `dvc checkout` after changing the value
+  of this option for the change to go into effect.
 
   Due to the way DVC handles linking between the data files in the cache and
   their counterparts in the <abbr>workspace</abbr>, it's easy to accidentally
@@ -119,7 +119,7 @@ for more details.) This section contains the following options:
   this config option on forces you to run `dvc unprotect` before updating a
   file, providing an additional layer of security to your data.
 
-  It's highly recommended to enable this mod when `cache.type` is set to
+  We highly recommend enabling this option when `cache.type` is set to
   `hardlink` or `symlink`.
 
 - `cache.type` - link type that DVC should use to link data files from cache to
@@ -138,6 +138,10 @@ for more details.) This section contains the following options:
   There are pros and cons to different link types. Refer to
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
   for a full explanation of each one.
+
+  To apply changes to this option in the workspace, by restoring all file
+  links/copies from cache, please use `dvc checkout --relink`. See
+  [checkout options](/doc/command-reference/checkout#options) for more details.
 
 - `cache.slow_link_warning` - used to turn off the warnings about having a slow
   cache link type. These warnings are thrown by `dvc pull` and `dvc checkout`
@@ -196,17 +200,18 @@ learn more about the state file (database) that is used for optimization.
 $ dvc config core.loglevel debug
 ```
 
-## Example: Add an S3 remote
+## Example: Add an S3 remote, and set it as default
 
 > 💡 Before adding an S3 remote, be sure to
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
-
-This also sets the remote as the <abbr>project</abbr> default:
 
 ```dvc
 $ dvc remote add myremote s3://bucket/path
 $ dvc config core.remote myremote
 ```
+
+> Note that this is equivalent to using `dvc remote add` with the
+> `-d`/`--default` option.
 
 ## Example: Default remotes
 

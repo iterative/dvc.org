@@ -83,10 +83,10 @@ $ unzip -q data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` can use any <abbr>DVC project</abbr> hosted on a Git repository to
-> find the appropriate [remote storage](/doc/command-reference/remote) and
-> download <abbr>data artifacts</abbr> from it. (It works like `wget`, but for
-> DVC repositories.) In this case we use
+> `dvc get` can use any <abbr>DVC project</abbr> to find the appropriate
+> [remote storage](/doc/command-reference/remote) and download <abbr>data
+> artifacts</abbr> from it. (It's analogous to `wget`, but for <abbr>DVC
+> repositories</abbr>.) In this case we use
 > [dataset-registry](https://github.com/iterative/dataset-registry)) as the
 > source project. (Refer to [Data Registries](/doc/use-cases/data-registries)
 > for more info about this setup.)
@@ -147,8 +147,8 @@ $ python train.py
 $ dvc add model.h5
 ```
 
-> We manually added the model output here, which isn't ideal. The recommended
-> way of capturing command outputs is with `dvc run`. More on this later.
+> We manually added the model output here, which isn't ideal. The preferred way
+> of capturing command outputs is with `dvc run`. More on this later.
 
 Let's commit the current state:
 

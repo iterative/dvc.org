@@ -1,13 +1,18 @@
 /* eslint-env node */
 
-// This file doesn't go through babel or webpack transformation. Make sure the
-// syntax and sources this file requires are compatible with the current Node.js
-// version you are running. (See https://github.com/zeit/next.js/issues/1245 for
-// discussions on universal Webpack vs universal Babel.)
+/*
+ * Custom server (with custom routes) See
+ * https://nextjs.org/docs/advanced-features/custom-server
+ *
+ * NOTE: This file doesn't go through babel or webpack. Make sure the syntax and
+ * sources this file requires are compatible with the current node version you
+ * are running.
+ */
 
 const { createServer } = require('http')
-const next = require('next')
 const { parse } = require('url')
+const next = require('next')
+
 const { getItemByPath } = require('./src/utils/sidebar')
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -21,7 +26,7 @@ app.prepare().then(() => {
     const { pathname, query } = parsedUrl
 
     /*
-     * Special URL redirects.
+     * HTTP redirects
      * NOTE: The order of the redirects is important.
      */
     if (
@@ -35,19 +40,23 @@ app.prepare().then(() => {
       res.end()
     } else if (req.headers.host === 'man.dvc.org') {
       // man.dvc.org/{cmd} -> dvc.org/doc/command-reference/{cmd},
-      res.writeHead(301, {
+      res.writeHead(303, {
+        'Cache-Control': 'no-cache',
+        Location: 'https://dvc.org/doc/command-reference' + pathname
+      })
+      res.end()
+    } else if (req.headers.host === 'error.dvc.org') {
+      // error.dvc.org/{hdr} -> dvc.org/doc/user-guide/troubleshooting#{hdr},
+      res.writeHead(303, {
         'Cache-Control': 'no-cache',
         Location:
-          'https://dvc.org/doc/command-reference' +
-          // replace - for / in {cmd} except for get-url, import-url
-          (['/get-url', '/import-url'].indexOf(pathname) < 0
-            ? pathname.replace('-', '/')
-            : pathname)
+          'https://dvc.org/doc/user-guide/troubleshooting#' +
+          pathname.substring(1)
       })
       res.end()
     } else if (/^(code|data|remote)\.dvc\.org$/.test(req.headers.host)) {
       // {code/data/remote}.dvc.org -> corresponding S3 bucket
-      res.writeHead(301, {
+      res.writeHead(303, {
         Location:
           'https://s3-us-east-2.amazonaws.com/dvc-public/' +
           req.headers.host.split('.')[0] +
@@ -56,7 +65,7 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/(deb|rpm)\/.*/i.test(pathname)) {
       // path /(deb|rpm)/... -> corresponding S3 bucket
-      res.writeHead(301, {
+      res.writeHead(303, {
         Location:
           'https://s3-us-east-2.amazonaws.com/dvc-s3-repo/' +
           pathname.substring(1)
@@ -64,7 +73,7 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/(help|chat)\/?$/i.test(pathname)) {
       // path /(help|chat) -> Discord chat invite
-      res.writeHead(301, { Location: 'https://discordapp.com/invite/dvwXA2N' })
+      res.writeHead(303, { Location: 'https://discordapp.com/invite/dvwXA2N' })
       res.end()
     } else if (/^\/(docs|documentation)(\/.*)?$/i.test(pathname)) {
       // path /docs... or /documentation... -> /doc...
@@ -107,22 +116,21 @@ app.prepare().then(() => {
       res.end()
     } else if (/^\/doc(\/.*)?$/.test(pathname)) {
       /*
-       * Special Docs Engine handler
+       * Docs Engine handler
        */
 
-      // Force 404 response for any inexistent /doc item.
+      // Force 404 response code for any inexistent /doc item.
       if (!getItemByPath(pathname)) {
         res.statusCode = 404
       }
 
-      // Fire up docs engine!
+      // Custom route for all docs
       app.render(req, res, '/doc', query)
     } else {
-      // Regular Next handler
+      // Regular Next.js handler
       handle(req, res, parsedUrl)
     }
   }).listen(port, err => {
-    // Invokes `createServer` server.
     if (err) throw err
     console.info(`> Ready on localhost:${port}`)
   })

@@ -57,10 +57,6 @@ $ source .env/bin/activate
 $ pip install -e ".[all,tests]"
 ```
 
-> Note that the double quotes (`""`) used to wrap the dependencies to be
-> installed are only compulsory when using `zsh`. In `bash`, installation
-> commands can work without them: `pip install -e .[all,tests]`.
-
 Install coding style pre-commit hooks with:
 
 ```dvc
@@ -289,7 +285,7 @@ Tests currently only work on Linux. First you need to set up passwordless ssh
 access to localhost:
 
 ```dvc
-# Only run next line if you don't yet have keys
+# Only run the next line if you don't yet have keys
 $ ssh-keygen -t rsa -P ""
 $ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
 ```

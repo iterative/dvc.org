@@ -124,30 +124,29 @@ wdir: .
 > [pipeline](/doc/get-started/pipeline), or in other words, instructions on how
 > to build a ML model (data file) from previous data files (or directories).
 
-We would recommend to read a few next chapters first, before switching to other
-documents. Hopefully, `dvc run` and `dvc repro` will make more sense after a few
-more Get Started chapters. You can always refer to the `dvc run` and `dvc repro`
-documentation to learn the specific details about how they behave and all of
-their options. Let's briefly mention what the options used above mean for this
-particular example:
+Let's briefly mention what the options used above mean for this particular
+example:
 
 `-f prepare.dvc` specifies a name for the DVC-file (pipeline stage). It's
-optional but we highly recommend using it to make your project structure more
-readable.
+optional but we recommend using it to make your project structure more readable.
 
 `-d src/prepare.py` and `-d data/data.xml` mean that the `prepare.dvc` stage
 file depends on them to produce the result. When you run `dvc repro` next time
 (see next chapter) DVC will automatically check these dependencies and decide
-whether this stage is up to date or or whether it should be executed to
-regenerate its outputs.
+whether this stage is up to date or whether it should be executed to regenerate
+its outputs.
 
 `-o data/prepared` specifies the output directory processed data will be put
 into. The script creates two files in it – that will be used later to generate
 features, train and evaluate the model.
 
 And, the last line, `python src/prepare.py data/data.xml`, specifies a command
-to run. This command is saved to the generated DVC-file and required by
+to run. This command is saved to the generated DVC-file, and used later by
 `dvc repro`.
+
+Hopefully, `dvc run` (and `dvc repro`) will become intuitive after a few more
+Get Started chapters. You can always refer to the their command references to
+learn the specific details about how they behave, and all of their options.
 
 </details>
 

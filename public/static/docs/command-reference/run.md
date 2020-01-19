@@ -49,8 +49,8 @@ Note that `dvc repro` provides an interface to check state and reproduce this
 graph (pipeline) later. This concept is similar to the one of the
 [Make](https://www.gnu.org/software/make/) in software build automation, but DVC
 captures data and <abbr>caches</abbr> relevant <abbr>data artifacts</abbr> along
-the way. See [this example](/doc/get-started/example-pipeline) to learn more and
-try creating a pipeline.
+the way. See [this tutorial](/doc/tutorials/pipelines) to learn more and try
+creating a pipeline.
 
 ### Avoiding unexpected behavior
 
@@ -143,8 +143,8 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   confirmation.
 
 - `--ignore-build-cache` - This options has an effect if an equivalent stage
-  file exists (same dependencies, outputs, and `command` to execute) which has
-  been already executed and is up to date. In this case, `dvc run` won't
+  file exists (same dependencies, outputs, and `command` to execute), that has
+  been already executed, and is up to date. In this case, `dvc run` won't
   normally execute the `command` again. The exception is when the existing stage
   is considered always changed (see `--always-changed` option). This option
   gives a way to forcefully execute the `command` anyway. Useful if the

@@ -1,17 +1,18 @@
-import { LightButton } from './LightButton'
-import PropTypes from 'prop-types'
 import React from 'react'
+import PropTypes from 'prop-types'
+import topairs from 'lodash.topairs'
 import startCase from 'lodash.startcase'
 import styled from 'styled-components'
-import topairs from 'lodash.topairs'
+
+import { LightButton } from './LightButton'
 
 export default function Tutorials({ compact, tutorials }) {
   const tutorialsData = topairs(tutorials)
 
   return (
     <Wrapper compact={compact}>
-      {tutorialsData.map(([key, value]) => {
-        const ButtonComponent = icons[key] || ExternalButton
+      {tutorialsData.map(([k, value]) => {
+        const ButtonComponent = icons[k] || ExternalButton
 
         return (
           <ButtonComponent
@@ -21,8 +22,8 @@ export default function Tutorials({ compact, tutorials }) {
             rel="noopener nofollow"
             compact={compact}
           >
-            {icons[key] && <i />}
-            {!compact && `Run in ${startCase(key)}`}
+            {icons[k] && <i />}
+            {!compact && `Run in ${startCase(k)}`}
           </ButtonComponent>
         )
       })}

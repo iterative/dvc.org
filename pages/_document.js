@@ -1,13 +1,12 @@
+import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
+import { ServerStyleSheet } from 'styled-components'
 import {
   META_BASE_TITLE,
   META_DESCRIPTION,
   META_KEYWORDS,
   META_SOCIAL_IMAGE
 } from '../src/consts'
-
-import React from 'react'
-import { ServerStyleSheet } from 'styled-components'
 
 const inject = str => (
   <div className="inject" dangerouslySetInnerHTML={{ __html: str }} />

@@ -1,7 +1,7 @@
-import { OnlyDesktop, OnlyMobile, media } from '../styles'
 import React, { Component } from 'react'
 import styled, { css } from 'styled-components'
 
+import { OnlyDesktop, OnlyMobile, media } from '../styles'
 import DownloadButton from '../DownloadButton'
 import GithubLine from '../GithubLine'
 import { logEvent } from '../utils/ga'
@@ -91,7 +91,7 @@ export default class LandingHero extends Component {
               <Line>$ dvc run -d images -o model.p cnn.py</Line>
             </Command>
             <Command active={activeCommand === 2}>
-              <Line>$ dvc remote add myrepo s3://mybucket</Line>
+              <Line>$ dvc remote add -d myrepo s3://mybucket</Line>
             </Command>
             <Command active={activeCommand === 3}>
               <Line>$ dvc push</Line>

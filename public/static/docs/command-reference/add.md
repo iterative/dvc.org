@@ -80,17 +80,17 @@ to work with directory hierarchies with `dvc add`:
 In a <abbr>DVC project</abbr>, `dvc add` can be used to version control any
 <abbr>data artifact</abbr> (input, intermediate, or output files and
 directories, and model files). It is useful by itself to go back and forth
-between different versions of datasets or models. Usually though, it is
-recommended to use `dvc run` and `dvc repro` mechanism to version control
-intermediate and final results (like models). This way you bring data provenance
-and make your project reproducible.
+between different versions of datasets or models. We recommend using `dvc run`
+and `dvc repro` mechanism to version control intermediate and final results
+(like models) though. This way you bring data provenance and make your project
+reproducible.
 
 ## Options
 
-- `-R`, `--recursive` - `targets` is expected to contain at least one directory
-  path for this option to have effect. Determines the files to add by searching
-  each target directory and its subdirectories for data files. For each file
-  found, a new DVC-file is created using the process described in this command's
+- `-R`, `--recursive` - `targets` is expected to contain one or more directories
+  for this option to have effect. Determines the files to add by searching each
+  target directory and its subdirectories for data files. For each file found, a
+  new DVC-file is created using the process described in this command's
   description.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
@@ -197,8 +197,8 @@ Saving information to 'pics.dvc'.
 
 There are no [DVC-files](/doc/user-guide/dvc-file-format) generated within this
 directory structure, but the images are all added to the <abbr>cache</abbr>. DVC
-prints a message to that effect, mentioning that `md5` values are computed for
-each directory. A single `pics.dvc` DVC-file is generated for the top-level
+prints a message about this, mentioning that `md5` values are computed for each
+directory. A single `pics.dvc` DVC-file is generated for the top-level
 directory, and it contains:
 
 ```yaml

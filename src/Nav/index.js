@@ -1,10 +1,10 @@
-import NextLink from 'next/link'
-import PropTypes from 'prop-types'
 import React from 'react'
-import Router from 'next/router'
-import { logEvent } from '../utils/ga'
-import { media } from '../styles'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
+import { media } from '../styles'
+import { logEvent } from '../utils/ga'
+import NextLink from 'next/link'
+import Router from 'next/router'
 
 const getStarted = () => {
   logEvent('menu', 'get-started')

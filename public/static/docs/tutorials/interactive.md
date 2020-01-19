@@ -2,6 +2,7 @@
 
 Interactive lessons and tutorials on [Katacoda](https://katacoda.com/dvc) that
 explain the basic concepts of DVC and show how to use it in simple ML scenarios.
+Try and learn DVC without having to install it locally!
 
 ## Basic Concepts
 

@@ -34,7 +34,7 @@ system/environment:
 > report file system information. Please see the original
 > [issue on GitHub](https://github.com/iterative/dvc/issues/2284) for more info.
 
-#### Components of DVC version
+### Components of DVC version
 
 The detail of DVC version depends upon the way of installing DVC.
 
@@ -58,7 +58,7 @@ The detail of DVC version depends upon the way of installing DVC.
   following part is the latest `master` branch commit hash. The optional suffix
   `.mod` means that code is modified.
 
-#### What we mean by "Binary"
+### What we mean by "Binary"
 
 The detail of `Binary` depends on the way DVC was downloaded and
 [installed](/doc/install).

@@ -47,14 +47,13 @@ edit config files manually.
 
 ## Examples
 
-Add Amazon S3 remote and modify its region:
+Add Amazon S3 remote:
 
 ```dvc
 $ dvc remote add myremote s3://mybucket/myproject
-$ dvc remote modify myremote region us-east-2
 ```
 
-Remove remote:
+Remove it:
 
 ```dvc
 $ dvc remote remove myremote

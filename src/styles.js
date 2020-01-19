@@ -8,25 +8,25 @@ export const global = `
     font-weight: 400;
     text-rendering: optimizeLegibility !important;
   }
-  
+
   @-moz-document url-prefix() {
     body {
       font-weight: lighter !important;
     }
   }
-  
+
   body {
     padding: 0px;
     font-family: BrandonGrotesque, Tahoma, Arial;
     font-weight: normal;
     -webkit-font-smoothing: antialiased;
     line-height: 1.5;
-    
+
     // IE flex min-height fix https://stackoverflow.com/a/40491316
     display: flex;
     flex-direction: column;
   }
-  
+
   *:focus {
     outline: 0;
   }
@@ -51,13 +51,14 @@ export const sizes = {
 
 sizes.phablet = Math.floor((sizes.tablet + sizes.phone) / 2)
 
-export const media = Object.keys(sizes).reduce((accumulator, label) => {
-  accumulator[label] = (...args) => css`
-    @media (max-width: ${sizes[label]}px) {
-      ${css(...args)};
-    }
-  `
-  return accumulator
+export const media = Object.keys(sizes).reduce((acc, s) => {
+  return Object.assign(acc, {
+    [s]: (...args) => css`
+      @media (max-width: ${sizes[s]}px) {
+        ${css(...args)};
+      }
+    `
+  })
 }, {})
 
 export const container = css`
@@ -145,6 +146,24 @@ export const OnlyDesktop = styled.div`
   ${media.giant`display: initial;`};
   ${media.desktop`display: initial;`};
   ${media.tablet`display: initial;`};
+  ${media.phablet`display: none;`};
+  ${media.phone`display: none;`};
+`
+
+export const OnlyMobileInline = styled.span`
+  display: none;
+  ${media.giant`display: none;`};
+  ${media.desktop`display: none;`};
+  ${media.tablet`display: none;`};
+  ${media.phablet`display: inline-block;`};
+  ${media.phone`display: inline-block;`};
+`
+
+export const OnlyDesktopInline = styled.span`
+  display: inline-block;
+  ${media.giant`display: inline-block;`};
+  ${media.desktop`display: inline-block;`};
+  ${media.tablet`display: inline-block;`};
   ${media.phablet`display: none;`};
   ${media.phone`display: none;`};
 `

@@ -20,10 +20,10 @@ defines the given `path` as an <abbr>output</abbr>, marking `path` as a
 Note that outputs can also be marked as metrics via the `-m` or `-M` options of
 the `dvc run` command.
 
-While any text file can be tracked as a metric file, it's recommended to use
-`TSV`, `CSV`, or `JSON` formats. DVC provides a way to parse those formats to
-get to a specific value, if the file contains multiple metrics. See
-`dvc metrics show` for more details.
+While any text file can be tracked as a metric file, we recommend using `TSV`,
+`CSV`, or `JSON` formats. DVC provides a way to parse those formats to get to a
+specific value, if the file contains multiple metrics. See `dvc metrics show`
+for more details.
 
 > Note that [external output](/doc/user-guide/managing-external-data) cannot be
 > marked as project metrics.

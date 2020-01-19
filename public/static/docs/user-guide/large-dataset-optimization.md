@@ -38,11 +38,11 @@ Symbolic links, and Reflinks in more recent systems. While reflinks bring all
 the benefits and none of the worries, they're not commonly supported in most
 platforms yet. Hard/soft links optimize **speed** and **space** in the file
 system, but may break your workflow since updating hard/sym-linked files tracked
-by DVC in the workspace causes <abbr>cache</abbr> corruption. These 2 link types
-thus require using cache **protected mode** (see the `cache.protected` config
-option in `dvc config cache`). Finally, a 4th "linking" option is to actually
-copy files from/to the cache, which is safe but inefficient – especially for
-large files (several GBs or more).
+by DVC in the <abbr>workspace</abbr> causes <abbr>cache</abbr> corruption. These
+2 link types thus require using cache **protected mode** (see the
+`cache.protected` config option in `dvc config cache`). Finally, a 4th "linking"
+option is to actually copy files from/to the cache, which is safe but
+inefficient – especially for large files (several GBs or more).
 
 > Some versions of Windows (e.g. Windows Server 2012+ and Windows 10 Enterprise)
 > support hard or soft links on the
@@ -92,9 +92,9 @@ efficiency:
 
 4. **`copy`**: An inefficient "linking" strategy, yet supported on all file
    systems. Using `copy` means there will be no file links, but that the tracked
-   files will be duplicated as copies existing in both the cache and workspace.
-   Suitable for scenarios with relatively small data files, where copying them
-   is not a storage performance concern.
+   files will be duplicated as copies existing in both the cache and
+   <abbr>workspace</abbr>. Suitable for scenarios with relatively small data
+   files, where copying them is not a storage performance concern.
 
 > DVC avoids `symlink` and `hardlink` types by default to protect user from
 > accidental cache corruption. Refer to the
@@ -119,6 +119,10 @@ Setting `cache.protected` is important with `hardlink` and/or `symlink` cache
 file link types. Please refer to the
 [Update a Tracked File](/doc/user-guide/updating-tracked-files) on how to manage
 tracked files under these cache configurations.
+
+To make sure that the data files in the workspace are consistent with the
+<abbr>project</abbr>'s `cache.type` option, you may use `dvc checkout --relink`.
+See `dvc checkout` for more information.
 
 ---
 

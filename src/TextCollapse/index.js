@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-
-import Collapse from 'react-collapse'
 import PropTypes from 'prop-types'
-import { presets } from 'react-motion'
 import styled from 'styled-components'
+import Collapse from 'react-collapse'
+import { presets } from 'react-motion'
 
 class TextCollapse extends Component {
   state = {

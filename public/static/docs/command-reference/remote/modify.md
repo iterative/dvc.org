@@ -185,7 +185,7 @@ must explicitly set the `endpointurl` in the configuration:
 For example:
 
 ```dvc
-$ dvc remote add -d myremote s3://path/to/dir
+$ dvc remote add myremote s3://path/to/dir
 $ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
 
@@ -382,26 +382,28 @@ For more information on configuring Azure Storage connection strings, visit
 
 ## Example: Customize an S3 remote
 
-Let's first set up a _default_ S3 remote:
+Let's first set up a _default_ S3 remote.
+
+> 💡 Before adding an S3 remote, be sure to
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/storage
-
+$ dvc remote add -d myremote s3://mybucket/myproject
 Setting 'myremote' as a default remote.
 ```
 
-Modify its endpoint URL:
+Modify its access profile:
 
 ```dvc
-$ dvc remote modify myremote endpointurl https://object-storage.example.com
+$ dvc remote modify myremote profile myusername
 ```
 
-Now the config file should look like (run `cat .dvc/config`):
+Now the project config file should look like this:
 
 ```ini
 ['remote "myremote"']
 url = s3://mybucket/storage
-endpointurl = https://object-storage.example.com
+profile = myusername
 [core]
 remote = myremote
 ```

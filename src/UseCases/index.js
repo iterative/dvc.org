@@ -1,10 +1,10 @@
+import React from 'react'
+import styled from 'styled-components'
 import { OnlyDesktop, OnlyMobile, container, media } from '../styles'
 
-import { Element } from 'react-scroll'
-import React from 'react'
-import TextCollapse from '../TextCollapse'
 import { default as YoutubeVideo } from '../Video'
-import styled from 'styled-components'
+import { Element } from 'react-scroll'
+import TextCollapse from '../TextCollapse'
 
 const Heading1 = () => (
   <Top>

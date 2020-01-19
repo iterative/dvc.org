@@ -61,23 +61,22 @@ and added to the DVC-file, but the actual data file is not saved in the cache.
 This is where the `dvc commit` command comes into play. It performs that last
 step (saving the data in cache).
 
-The last two scenarios are **not recommended**. They essentially force-update
-the [DVC-files](/doc/user-guide/dvc-file-format) and save data to cache. They
-are still useful, but keep in mind that DVC can't guarantee reproducibility in
-those cases – where you commit any data you want.
+Note that it's best to avoid the last two scenarios. They essentially
+force-update the [DVC-files](/doc/user-guide/dvc-file-format) and save data to
+cache. They are still useful, but keep in mind that DVC can't guarantee
+reproducibility in those cases.
 
 ## Options
 
-- `-d`, `--with-deps` - determine files to commit by tracking dependencies to
-  the target DVC-files (stages). This option only has effect when one or more
-  `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stages in the corresponding pipelines. This means DVC
-  will not commit files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - one or more `targets` should be specified for this
+  option to have effect. Determines files to commit by tracking dependencies to
+  the target DVC-files (stages). By traversing all stage dependencies, DVC
+  searches backward from the target stages in the corresponding pipelines. This
+  means DVC will not commit files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain at least one directory
-  path for this option to have effect. Determines the files to commit by
-  searching each target directory and its subdirectories for DVC-files to
-  inspect.
+- `-R`, `--recursive` - `targets` is expected to contain one or more directories
+  for this option to have effect. Determines the files to commit by searching
+  each target directory and its subdirectories for DVC-files to inspect.
 
 - `-f`, `--force` - commit data even if checksums for dependencies or outputs
   did not change.
