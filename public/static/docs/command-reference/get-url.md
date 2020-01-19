@@ -1,8 +1,7 @@
 # get-url
 
-Download or copy a file or directory from any supported URL (for example
-`s3://`, `ssh://`, and other protocols) or local directory to the local file
-system.
+Download a file or directory from a supported URL (for example `s3://`,
+`ssh://`, and other protocols) into the local file system.
 
 > Unlike `dvc import-url`, this command does not track the downloaded data files
 > (does not create a DVC-file).
@@ -14,14 +13,14 @@ usage: dvc get-url [-h] [-q | -v] url [out]
 
 positional arguments:
   url            (See supported URLs in the description.)
-  out            Destination path to put data to.
+  out            Destination path to put data in.
 ```
 
 ## Description
 
 In some cases it's convenient to get a <abbr>data artifact</abbr> from a remote
-location into the current working directory, regardless of whether it's a DVC
-project. The `dvc get-url` command helps the user do just that.
+location into the local file system. The `dvc get-url` command helps the user do
+just that.
 
 The `url` argument should provide the location of the data to be downloaded,
 while `out` can be used to specify the directory and/or file name desired for
@@ -36,14 +35,19 @@ single-purpose command that can be used out of the box after installing DVC.
 
 DVC supports several types of (local or) remote locations (protocols):
 
-| Type    | Discussion     | URL format                                 |
+| Type    | Description    | `url` format                               |
 | ------- | -------------- | ------------------------------------------ |
-| `local` | Local path     | `/path/to/local/file`                      |
-| `s3`    | Amazon S3      | `s3://mybucket/data.csv`                   |
-| `gs`    | Google Storage | `gs://mybucket/data.csv`                   |
-| `ssh`   | SSH server     | `ssh://user@example.com:/path/to/data.csv` |
-| `hdfs`  | HDFS           | `hdfs://user@example.com/path/to/data.csv` |
-| `http`  | HTTP to file   | `https://example.com/path/to/data.csv`     |
+| `local` | Local path     | `/path/to/local/data`                      |
+| `s3`    | Amazon S3      | `s3://mybucket/data`                       |
+| `gs`    | Google Storage | `gs://mybucket/data`                       |
+| `ssh`   | SSH server     | `ssh://user@example.com:/path/to/data`     |
+| `hdfs`  | HDFS to file\* | `hdfs://user@example.com/path/to/data.csv` |
+| `http`  | HTTP to file\* | `https://example.com/path/to/data.csv`     |
+
+> \* HDFS and HTTP **do not** support downloading entire directories, only
+> single files.
+
+<!-- Separate MD quote: -->
 
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
@@ -141,7 +145,7 @@ directory).
 ### Click for HDFS example
 
 ```dvc
-$ dvc get-url hdfs://user@example.com/path/to/data
+$ dvc get-url hdfs://user@example.com/path/to/file
 ```
 
 </details>
@@ -153,7 +157,7 @@ $ dvc get-url hdfs://user@example.com/path/to/data
 > Both HTTP and HTTPS protocols are supported.
 
 ```dvc
-$ dvc get-url https://example.com/path/to/data
+$ dvc get-url https://example.com/path/to/file
 ```
 
 </details>
