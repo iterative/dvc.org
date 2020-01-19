@@ -160,7 +160,10 @@ We try to use a casual and fun tone in our docs. We also avoid authoritative
 language such as "As you can see, clearly this is what happened..." which while
 good-intentioned, may scare off beginners.
 
-We also use "emoji" symbols sparingly for emphasis on certain things. Mainly:
+For emphasis, we tend to use **bold** text, and _italics_ for some special
+terms.
+
+We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 
 - ⚠️ Warnings about possible problems related to DVC usage (similar to **Note!**
   and "Note that..." notes)
