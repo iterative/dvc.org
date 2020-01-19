@@ -371,10 +371,6 @@
       {
         "slug": "read",
         "label": "read()"
-      },
-      {
-        "slug": "summon",
-        "label": "summon()"
       }
     ]
   },
