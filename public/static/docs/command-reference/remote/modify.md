@@ -59,13 +59,13 @@ manual editing could be used to change the configuration.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Available settings per storage type
+## Available parameters per storage type
 
-The following are the types of remote storage (protocols) supported:
+The following are the customizable types of remote storage (protocols):
 
 <details>
 
-### Click for Amazon S3 options
+### Click for Amazon S3
 
 By default DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
@@ -174,7 +174,7 @@ these settings, you could use the following options:
 
 <details>
 
-### Click for S3 API compatible storage options
+### Click for S3 API compatible storage
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
@@ -204,7 +204,7 @@ For more information about the variables DVC supports, please visit
 
 <details>
 
-### Click for Microsoft Azure Blob Storage options
+### Click for Microsoft Azure Blob Storage
 
 - `url` - remote location URL.
 
@@ -229,7 +229,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for Google Drive options
+### Click for Google Drive
 
 - `url` - remote location URL.
 
@@ -253,7 +253,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for Google Cloud Storage options
+### Click for Google Cloud Storage
 
 - `projectname` - project name to use.
 
@@ -278,7 +278,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for Aliyun OSS options
+### Click for Aliyun OSS
 
 - `oss_key_id` - OSS key id to use to access a remote.
 
@@ -302,7 +302,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for SSH options
+### Click for SSH
 
 - `url` - remote location URL.
 
@@ -370,7 +370,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for HDFS options
+### Click for HDFS
 
 - `user` - username to use to access a remote.
 
