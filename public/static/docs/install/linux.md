@@ -44,6 +44,21 @@ $ conda install -c conda-forge dvc
 
 > Currently, it supports only Python versions 2.7, 3.6, and 3.7.
 
+## Install with snap
+
+> Requires [snapd](https://snapcraft.io/docs/installing-snapd).
+
+To install the latest stable version of `dvc`:
+
+```dvc
+$ snap install --classic dvc
+```
+
+Add `--edge` to install the latest beta (master) version.
+
+> When connected to the internet, `snap` will automatically look for updates
+> every 6 hours.
+
 ## Install from repository
 
 <details>
