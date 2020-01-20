@@ -23,7 +23,7 @@ export const Title = styled.div`
   line-height: 60px;
 
   ${media.tablet`
-    font-size: 34px;
+    font-size: 30px;
     line-height: 60px;
 
     &::after {
@@ -40,7 +40,7 @@ export const Title = styled.div`
         isContentVisible
           ? `
           border-bottom: 12px solid currentColor;
-          top: -2px;
+          
          `
           : `
           border-top: 12px solid currentColor;

@@ -24,12 +24,8 @@ export const Header = styled.div`
   color: #24292e;
 
   ${media.tablet`
-    ${({ hasIcon }) =>
-      !hasIcon &&
-      `
-      margin: 0;
-      border: none;
-    `}
+    margin: 0;
+    border: none;
     font-size: 20px;
     line-height: 30px;
   `}
@@ -37,6 +33,10 @@ export const Header = styled.div`
 
 export const Icon = styled.img`
   margin: 0 -2px 0 0;
+
+  ${media.tablet`
+    display: none;
+  `}
 `
 
 export const Wrapper = styled.div`

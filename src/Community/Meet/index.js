@@ -12,7 +12,7 @@ import data from '../data'
 
 const { description, mobileDescription, title } = data.section.meet
 
-import { StatLabel, StatLine, StatValue } from './styles'
+import { Stats, StatLabel, StatLine, StatValue } from './styles'
 
 import {
   Comments,
@@ -52,14 +52,16 @@ export default function CommunityMeet({ issues, theme, topics }) {
               <Meta>
                 Need urgent help? Ask advice from experienced developers online
               </Meta>
-              <StatLine>
-                <StatValue>{data.stats.users}</StatValue>
-                <StatLabel>registered developers</StatLabel>
-              </StatLine>
-              <StatLine>
-                <StatValue>{data.stats.messages}</StatValue>
-                <StatLabel>messages posted over the past month</StatLabel>
-              </StatLine>
+              <Stats>
+                <StatLine>
+                  <StatValue>{data.stats.users}</StatValue>
+                  <StatLabel>registered developers</StatLabel>
+                </StatLine>
+                <StatLine>
+                  <StatValue>{data.stats.messages}</StatValue>
+                  <StatLabel>messages posted over the past month</StatLabel>
+                </StatLine>
+              </Stats>
             </CommunityBlock>
           </Item>
           <Item>
