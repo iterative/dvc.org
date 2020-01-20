@@ -25,7 +25,8 @@ workspace data with the versions specified in the current DVC-files.
 that changes the DVC-files in the workspace.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
-after `git checkout`. Use `dvc install` to install it.
+after `git checkout`. See the
+**[Automating `dvc checkout`](#example-automating-dvc-checkout)** example below.
 
 The execution of `dvc checkout` does the following:
 
@@ -203,14 +204,12 @@ once to download missing data from the remote storage to the <abbr>cache</abbr>.
 Alternatively, we could have just run `dvc pull` in this case to automatically
 do `dvc fetch` + `dvc checkout`.
 
-## Automating `dvc checkout`
+## Example: Automating `dvc checkout`
 
 We want the data files or directories (managed by DVC) to match with the other
 files (managed by Git e.g. source code). This requires us to remember running
 `dvc checkout` when needed, and of course we won't always remember to do so.
 Wouldn't it be nice to automate this?
-
-Let's try this:
 
 ```dvc
 $ dvc install
@@ -219,7 +218,8 @@ $ dvc install
 `dvc install` installs Git hooks to automate common operations, including
 running `dvc checkout` when needed.
 
-We can then checkout the master branch again:
+(Having followed the previous example) we can then checkout the master branch
+again:
 
 ```dvc
 $ git checkout bigrams
