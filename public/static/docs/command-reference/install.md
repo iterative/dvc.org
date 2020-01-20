@@ -16,6 +16,9 @@ like Git to store code and configuration files. With `dvc install`, the two are
 more tightly integrated in order to cause certain convenient actions to happen
 automatically.
 
+> Note that the hooks only have an effect in repository versions (branches,
+> etc.) where DVC is active.
+
 Namely:
 
 **Checkout**: For any given branch or tag, `git checkout` retrieves the

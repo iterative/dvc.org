@@ -218,6 +218,9 @@ $ dvc install
 `dvc install` installs Git hooks to automate common operations, including
 running `dvc checkout` when needed.
 
+> Note that the hooks only have an effect in repository versions (branches,
+> etc.) where DVC is active.
+
 (Having followed the previous example) we can then checkout the master branch
 again:
 
