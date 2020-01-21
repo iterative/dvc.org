@@ -26,7 +26,11 @@ that changes the DVC-files in the workspace.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. See the
-**[Automating `dvc checkout`](#example-automating-dvc-checkout)** example below.
+[**Automating** example](#example-automating-dvc-checkout) below or
+`dvc install` for more details.
+
+> Note that the hooks only have an effect in repository versions (branches,
+> etc.) where DVC is active.
 
 The execution of `dvc checkout` does the following:
 
@@ -208,8 +212,8 @@ do `dvc fetch` + `dvc checkout`.
 
 We want the data files or directories (managed by DVC) to match with the other
 files (managed by Git e.g. source code). This requires us to remember running
-`dvc checkout` when needed, and of course we won't always remember to do so.
-Wouldn't it be nice to automate this?
+`dvc checkout` when needed after a `git checkout`, and of course we won't always
+remember to do so. Wouldn't it be nice to automate this?
 
 ```dvc
 $ dvc install
@@ -217,9 +221,6 @@ $ dvc install
 
 `dvc install` installs Git hooks to automate common operations, including
 running `dvc checkout` when needed.
-
-> Note that the hooks only have an effect in repository versions (branches,
-> etc.) where DVC is active.
 
 (Having followed the previous example) we can then checkout the master branch
 again:

@@ -28,23 +28,23 @@ Namely:
 it would be necessary to run `dvc checkout` to synchronize workspace and
 DVC-files.
 
-The installed Git hook automates running `dvc checkout`.
+This hook automates running `dvc checkout`.
 
-**Commit**: When committing a change to the Git repository, that change possibly
-requires reproducing the corresponding
-[pipeline](/doc/command-reference/pipeline) (using `dvc repro`) to regenerate
-the project results. Or there might be new data files not yet in cache, which
-requires running `dvc commit` to store them.
+**Commit/Reproduce**: When committing a change to the Git repository, that
+change possibly produces new data files not yet in cache, which requires running
+`dvc commit` to store them. Or the change might require reproducing the
+corresponding [pipeline](/doc/command-reference/pipeline) (with `dvc repro`) to
+regenerate the project results (which implicitly commits them to DVC as well).
 
-The installed Git hook automates reminding the user to run either `dvc repro` or
-`dvc commit`, as needed.
+This hook automates reminding the user to run either `dvc commit` or
+`dvc repro`, as needed.
 
 **Push**: While publishing changes to the Git remote repository with `git push`,
 it easy to forget that the `dvc push` command is necessary to upload new or
 updated data files and directories under DVC control to
 [remote storage](/doc/command-reference/remote).
 
-The installed Git hook automates executing `dvc push`.
+This hook automates `dvc push`.
 
 ## Installed Git hooks
 
