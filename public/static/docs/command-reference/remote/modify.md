@@ -59,13 +59,14 @@ manual editing could be used to change the configuration.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Avialable settings for all remotes
+## Available settings for all remotes
 
-The following options are avialable for all remotes:
+The following options are available for all remote types:
 
 - `verify` - upon downloading cache files (`dvc pull`, `dvc fetch`) DVC will
-  recalculate downloaded file checksum to make sure that it is not corrupted or
-  modified during download. It may slow down mentioned commands.
+  recalculate downloaded file checksums to make sure that these are not
+  corrupted or modified during download. It may slow down the aforementioned
+  commands.
 
   ```dvc
   $ dvc remote modify myremote verify true
