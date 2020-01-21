@@ -1,8 +1,8 @@
 # Python API
 
 When you [install](/doc/install) DVC with an package manager like `pip` or
-`conda`, the `dvc` package becomes available to the corresponding `python`
-interpreter. While most of the package implements our
+`conda`, the `dvc` package becomes available to the corresponding Python
+environment. While most of the package implements our
 [command-line tool](/doc/command-reference), we wrote the `dvc.api` module to
 expose special functions you can use in your Python source code.
 

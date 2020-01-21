@@ -1,6 +1,7 @@
 # dvc.api.open()
 
-_Context manager_ to open a DVC-tracked file <abbr>artifact</abbr> as a
+[Context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
+to open a DVC-tracked file <abbr>artifact</abbr> as a
 [file object](https://docs.python.org/3/glossary.html#term-file-object).
 
 ## Signature
@@ -14,10 +15,8 @@ open(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 This function is analogous to the
 [`open()`](https://docs.python.org/3/library/functions.html#open) Python
 builtin, but for files tracked in <abbr>DVC projects</abbr>. However, it may
-only be used as a
-[context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
-(using the `with` keyword as shown in the examples below). There is no
-`close()`.
+only be used as a _context manager_ (using the `with` keyword as shown in the
+examples below). There is no `close()`.
 
 💡 Note that `dvc.api.open` is able to
 [stream](https://docs.python.org/3/library/io.html) the file directly from

@@ -10,11 +10,10 @@ get_url(path, repo=None, rev=None, remote=None)
 
 ## Description
 
-Returns the full URL
-[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)
-to the physical location (in a [DVC remote](/doc/command-reference/remote))
-where a target <abbr>data artifact</abbr> specified by its `path` in a `repo`
-(<abbr>DVC project</abbr>) is stored.
+Returns the full URL string (`str` type) to the physical location (in a
+[DVC remote](/doc/command-reference/remote)) where a target <abbr>data
+artifact</abbr> specified by its `path` in a `repo` (<abbr>DVC project</abbr>)
+is stored.
 
 ⚠️ Note that the returned URL is formed by analyzing the corresponding
 [DVC-file](/doc/user-guide/dvc-file-format) (see [Examples](#examples) below).
