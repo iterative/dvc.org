@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 import CommunityBlock from '../Block'
+import CommunityCarousel from '../Carousel'
 import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
@@ -25,7 +26,64 @@ import {
   Wrapper
 } from '../styles'
 
+function CommunityTopic({ url, title, date, comments, color }) {
+  return (
+    <Line>
+      <Link color={color} href={url} target="_blank" rel="norefferer nofollow">
+        {title}
+      </Link>
+      <Meta>
+        <Comments href={url} target="_blank" rel="norefferer nofollow">
+          {pluralizeComments(comments)}
+        </Comments>
+        &nbsp; last activity {formatDistanceToNow(new Date(date), 'MMMM, d')}{' '}
+        ago
+      </Meta>
+    </Line>
+  )
+}
+
+CommunityTopic.propTypes = {
+  url: PropTypes.string,
+  title: PropTypes.string,
+  date: PropTypes.string,
+  comments: PropTypes.number,
+  color: PropTypes.string
+}
+
+function CommunityIssue({ url, title, date, comments, color }) {
+  return (
+    <Line>
+      <Link color={color} href={url} target="_black" rel="noreferrer nofollow">
+        {title}
+      </Link>
+      <Meta>
+        <Comments href={url} target="_black" rel="noreferrer nofollow">
+          {pluralizeComments(comments)}
+        </Comments>
+        &nbsp;opened {formatDistanceToNow(new Date(date), 'MMMM, d')} ago
+      </Meta>
+    </Line>
+  )
+}
+
+CommunityIssue.propTypes = {
+  url: PropTypes.string,
+  title: PropTypes.string,
+  date: PropTypes.string,
+  comments: PropTypes.number,
+  color: PropTypes.string
+}
+
 export default function CommunityMeet({ issues, theme, topics }) {
+  const topicsItems = topics.map(topic => (
+    <CommunityTopic {...topic} key={topic.url} color={theme.color} />
+  ))
+
+  const issuesItems = issues.map(issue => (
+    <CommunityIssue {...issue} key={issue.url} color={theme.color} />
+  ))
+
   return (
     <Wrapper>
       <CommunitySection
@@ -77,29 +135,7 @@ export default function CommunityMeet({ issues, theme, topics }) {
               icon="/static/img/community/discourse.svg"
             >
               {topics.length ? (
-                topics.map(({ url, title, date, comments }) => (
-                  <Line key={url}>
-                    <Link
-                      color={theme.color}
-                      href={url}
-                      target="_blank"
-                      rel="norefferer nofollow"
-                    >
-                      {title}
-                    </Link>
-                    <Meta>
-                      <Comments
-                        href={url}
-                        target="_blank"
-                        rel="norefferer nofollow"
-                      >
-                        {pluralizeComments(comments)}
-                      </Comments>
-                      &nbsp; last activity{' '}
-                      {formatDistanceToNow(new Date(date), 'MMMM, d')} ago
-                    </Meta>
-                  </Line>
-                ))
+                <CommunityCarousel items={topicsItems} />
               ) : (
                 <Placeholder>Forum is unavailable right now</Placeholder>
               )}
@@ -118,29 +154,7 @@ export default function CommunityMeet({ issues, theme, topics }) {
               icon="/static/img/community/github.svg"
             >
               {issues.length ? (
-                issues.map(({ url, title, date, comments }) => (
-                  <Line key={url}>
-                    <Link
-                      color={theme.color}
-                      href={url}
-                      target="_black"
-                      rel="noreferrer nofollow"
-                    >
-                      {title}
-                    </Link>
-                    <Meta>
-                      <Comments
-                        href={url}
-                        target="_black"
-                        rel="noreferrer nofollow"
-                      >
-                        {pluralizeComments(comments)}
-                      </Comments>
-                      &nbsp;opened{' '}
-                      {formatDistanceToNow(new Date(date), 'MMMM, d')} ago
-                    </Meta>
-                  </Line>
-                ))
+                <CommunityCarousel items={issuesItems} />
               ) : (
                 <Placeholder>Github is unavailable right now</Placeholder>
               )}

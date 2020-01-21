@@ -4,6 +4,7 @@ import format from 'date-fns/format'
 
 import CommunityBlock from '../Block'
 import CommunityButton from '../Button'
+import CommunityCarousel from '../Carousel'
 import CommunitySection from '../Section'
 
 import { pluralizeComments } from '../../utils/i18n'
@@ -67,7 +68,66 @@ CommunityBlogPost.propTypes = {
   url: PropTypes.string
 }
 
+function CommunityUserContent({ url, title, author, date, color }) {
+  return (
+    <Line key={url}>
+      <Link color={color} href={url}>
+        {title}
+      </Link>
+      <Meta>
+        {author} • {format(date, 'MMMM, d')}
+      </Meta>
+    </Line>
+  )
+}
+
+CommunityUserContent.propTypes = {
+  color: PropTypes.string,
+  author: PropTypes.string,
+  date: PropTypes.string,
+  title: PropTypes.string,
+  url: PropTypes.string
+}
+
+function CommunityDocumentation({ url, title, description, color }) {
+  return (
+    <Line key={url}>
+      <Link color={color} large href={url}>
+        {title}
+      </Link>
+      <Meta>{description}</Meta>
+    </Line>
+  )
+}
+
+CommunityDocumentation.propTypes = {
+  color: PropTypes.string,
+  description: PropTypes.string,
+  title: PropTypes.string,
+  url: PropTypes.string
+}
+
 export default function CommunityLearn({ posts, theme }) {
+  const postItems = posts.map(post => (
+    <CommunityBlogPost {...post} key={post.url} color={theme.color} />
+  ))
+
+  const userContentItems = userContent.map(userContent => (
+    <CommunityUserContent
+      {...userContent}
+      key={userContent.url}
+      color={theme.color}
+    />
+  ))
+
+  const documentationItems = documentation.map(documentation => (
+    <CommunityDocumentation
+      {...documentation}
+      key={documentation.url}
+      color={theme.color}
+    />
+  ))
+
   return (
     <Wrapper>
       <CommunitySection
@@ -90,14 +150,7 @@ export default function CommunityLearn({ posts, theme }) {
               }
               icon="/static/img/community/documentation.svg"
             >
-              {documentation.map(({ url, title, description }) => (
-                <Line key={url}>
-                  <Link color={theme.color} large href={url}>
-                    {title}
-                  </Link>
-                  <Meta>{description}</Meta>
-                </Line>
-              ))}
+              <CommunityCarousel items={documentationItems} />
             </CommunityBlock>
           </Item>
           <Item>
@@ -113,13 +166,7 @@ export default function CommunityLearn({ posts, theme }) {
               icon="/static/img/community/blog.svg"
             >
               {posts.length ? (
-                posts.map(post => (
-                  <CommunityBlogPost
-                    {...post}
-                    key={post.url}
-                    color={theme.color}
-                  />
-                ))
+                <CommunityCarousel items={postItems} />
               ) : (
                 <Placeholder>Blog is unavailable right now</Placeholder>
               )}
@@ -130,16 +177,7 @@ export default function CommunityLearn({ posts, theme }) {
               title="User Content"
               icon="/static/img/community/user_content.svg"
             >
-              {userContent.map(({ url, title, author, date }) => (
-                <Line key={url}>
-                  <Link color={theme.color} href={url}>
-                    {title}
-                  </Link>
-                  <Meta>
-                    {author} • {format(date, 'MMMM, d')}
-                  </Meta>
-                </Line>
-              ))}
+              <CommunityCarousel items={userContentItems} />
             </CommunityBlock>
           </Item>
         </Items>
