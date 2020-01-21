@@ -59,5 +59,5 @@ can confirm this by trying to reproduce the default goal:
 
 ```dvc
 # Nothing to reproduce:
-$ dvc repro
+$ dvc repro evaluate.dvc
 ```
