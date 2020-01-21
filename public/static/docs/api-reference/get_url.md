@@ -1,10 +1,20 @@
 # dvc.api.get_url()
 
+Return the URL to the storage location of the target data (`repo`/`path`).
+
+## Signature
+
+```py
+get_url(path, repo=None, rev=None, remote=None)
+```
+
+## Description
+
 Returns the full URL
 [string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)
-to the physical location (in a [DVC remote](/doc/command-reference/remote)) of a
-<abbr>data artifact</abbr> specified by its `path` in a `repo` (<abbr>DVC
-project</abbr>).
+to the physical location (in a [DVC remote](/doc/command-reference/remote))
+where a target <abbr>data artifact</abbr> specified by its `path` in a `repo`
+(<abbr>DVC project</abbr>) is stored.
 
 ⚠️ Note that the returned URL is formed by analyzing the corresponding
 [DVC-file](/doc/user-guide/dvc-file-format) (see [Examples](#examples) below).
@@ -19,12 +29,6 @@ or `boto3`
 
 > For possible location protocols, refer to the
 > [supported remote types](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
-
-## Signature
-
-```py
-get_url(path, repo=None, rev=None, remote=None)
-```
 
 ## Parameters
 
