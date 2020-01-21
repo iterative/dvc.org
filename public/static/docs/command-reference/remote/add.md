@@ -240,6 +240,12 @@ drive is opened. For example, for the URL
 $ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA/my-dvc-root
 ```
 
+Note that GDrive remotes are not "trusted" by default. This means that the
+[`verify`](`/doc/command-reference/remote/modify#available-settings-for-all-remotes`)
+option is enabled on this type of storage, so DVC recalculates the checksums of
+files upon download (e.g. `dvc pull`), to make sure that these haven't been
+modified.
+
 </details>
 
 <details>

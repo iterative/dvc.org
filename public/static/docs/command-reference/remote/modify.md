@@ -63,10 +63,12 @@ manual editing could be used to change the configuration.
 
 The following options are available for all remote types:
 
-- `verify` - upon downloading cache files (`dvc pull`, `dvc fetch`) DVC will
-  recalculate downloaded file checksums to make sure that these are not
-  corrupted or modified during download. It may slow down the aforementioned
-  commands.
+- `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
+  DVC will recalculate the checksums of files upon download (e.g. `dvc pull`) to
+  make sure that these haven't been modified, or corrupted during download. It
+  may slow down the aforementioned commands.
+
+  > Note that this option is enabled on **Google Drive** remotes by default.
 
   ```dvc
   $ dvc remote modify myremote verify true
