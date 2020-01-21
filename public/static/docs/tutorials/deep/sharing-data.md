@@ -50,7 +50,7 @@ In order to reuse your data files, a colleague can pull data the same way from
 the master branch:
 
 ```dvc
-$ git clone https://github.com/dmpetrov/new_tag_classifier.git
+$ git clone https://github.com/iterative/example-get-started.git
 $ dvc pull
 ```
 
