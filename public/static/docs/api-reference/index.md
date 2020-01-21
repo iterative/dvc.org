@@ -1,16 +1,17 @@
 # Python API
 
-When you [install](/doc/install) DVC with an environment manager like `pip` or
+When you [install](/doc/install) DVC with an package manager like `pip` or
 `conda`, the `dvc` package becomes available to the corresponding `python`
 interpreter. While most of the package implements our
 [command-line tool](/doc/command-reference), we wrote the `dvc.api` module to
 expose special functions you can use in your Python source code.
 
-> For API use, we **strongly** recommend having `dvc` in a requirements or setup
-> file for your Python project, and installing it with a package manager such as
-> `pip` (and in a
-> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)).
-> To use the API, import the module first with:
+> For API use, we **strongly** recommend having `dvc` in a requirements file for
+> your Python project, and installing it with a package manager (in a
+> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> preferably).
+
+To use the API, import the module first with:
 
 ```py
 import dvc.api

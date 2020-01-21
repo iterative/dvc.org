@@ -9,15 +9,15 @@ Please double check that you don't already have DVC (for example running
 
 ## Install as a Python library
 
-When you install DVC with an environment manager like `pip` or `conda`, the
-`dvc` package becomes available to the corresponding `python` interpreter. This
-is particularly useful in order to access the [Python API](/doc/api-reference)
+When you install DVC with an package manager like `pip` or `conda`, the `dvc`
+package becomes available to the corresponding `python` interpreter. This is
+particularly useful in order to access the [Python API](/doc/api-reference)
 (`dvc.api` module).
 
-> For API use, we **strongly** recommend having `dvc` in a requirements or setup
-> file for your Python project, and installing it with a package manager such as
-> `pip` (and in a
-> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)).
+> For API use, we **strongly** recommend having `dvc` in a requirements file for
+> your Python project, and installing it with a package manager (in a
+> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> preferably).
 
 ## Advanced options
 
