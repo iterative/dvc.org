@@ -66,7 +66,9 @@ The following options are available for all remote types:
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
   DVC will recalculate the checksums of files upon download (e.g. `dvc pull`) to
   make sure that these haven't been modified, or corrupted during download. It
-  may slow down the aforementioned commands.
+  may slow down the aforementioned commands. The calculated checksum is compared
+  to the one saved in the corresponding
+  [DVC-file](/doc/user-guide/dvc-file-format).
 
   > Note that this option is enabled on **Google Drive** remotes by default.
 
