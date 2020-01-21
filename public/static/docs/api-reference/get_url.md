@@ -37,7 +37,8 @@ get_url(path, repo=None, rev=None, remote=None)
   an "offline" project. If not supplied, this defaults to the current working
   directory.
 
-  > A `NotDvcRepoError` is thrown if `repo` is not a valid DVC project.
+  > A `dvc.exceptions.NotDvcRepoError` is thrown if `repo` is not a valid DVC
+  > project.
 
 - `rev` - (optional)
   [Git-revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
@@ -51,8 +52,8 @@ get_url(path, repo=None, rev=None, remote=None)
   directory (default value of `repo`). when `repo` is an external repository
   URL, the default project remote is used.
 
-  > A `NoRemoteError` is thrown if no `remote` is specified and the project has
-  > no default remote.
+  > A `dvc.exceptions.NoRemoteError` is thrown if no `remote` is specified and
+  > the project has no default remote.
 
 ## Examples
 
