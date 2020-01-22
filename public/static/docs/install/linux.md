@@ -56,7 +56,7 @@ $ snap install --classic dvc
 
 Add `--edge` to install the latest beta (master) version.
 
-> When connected to the internet, `snap` will automatically look for updates
+> 💡 When connected to the internet, `snap` will automatically look for updates
 > every 6 hours.
 
 ## Install from repository
