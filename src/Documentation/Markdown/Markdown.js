@@ -43,10 +43,27 @@ function flatten(text, child) {
     : React.Children.toArray(child.props.children).reduce(flatten, text)
 }
 
+export function extractSlugFromTitle(title) {
+  // extracts expressions like {#too-many-files} from the end of a title
+  const meta = title.match(/\s+{#([a-z0-9-]*[a-z0-9]+)}\s*$/)
+  if (meta) {
+    return [title.substring(0, meta.index), meta[1]]
+  }
+  return [title, kebabCase(title)]
+}
+
 const HeadingRenderer = ({ level, children }) => {
   const content = React.Children.toArray(children)
   const text = children.reduce(flatten, '')
-  const slug = kebabCase(text)
+  let slug = kebabCase(text)
+
+  const lastElement = content[content.length - 1].props.children
+  if (typeof lastElement === 'string') {
+    const [newValue, newSlug] = extractSlugFromTitle(lastElement)
+    content.push(React.cloneElement(content.pop(), [], newValue))
+    slug = newSlug
+  }
+
   const anchor =
     level !== 1 ? (
       <a className="anchor" aria-hidden="true" href={`#${slug}`}>
