@@ -23,9 +23,9 @@ similar to `.gitignore` in Git.
 
 ## Remarks
 
-Ignored files will not be saved in cache, they will be non-existent for DVC.
-It's worth to remember that, especially when ignoring files inside DVC-handled
-directories.
+Ignored files will not be saved in <abbr>cache</abbr>, they will be non-existent
+for DVC. It's worth to remember that, especially when ignoring files inside
+DVC-handled directories.
 
 **It is crucial to understand, that DVC might remove ignored files upon
 `dvc run` or `dvc repro`. If they are not produced by a
@@ -44,9 +44,9 @@ it raises an error. Ignoring files inside such directory should be handled from
 
 The same as for [`.gitignore`](https://git-scm.com/docs/gitignore).
 
-## Example: Modification of ignored data
+## Example: Ignoring specific files
 
-Let's see what happens when we modify ignored file.
+Let's see what happens when we add a file to `.dvcignore`.
 
 ```dvc
 $ mkdir data
@@ -60,8 +60,8 @@ $ tree .
     └── data2
 ```
 
-We created the `data/` directory. Let's ignore part of the `data` and add it
-under DVC control.
+We created the `data/` directory with two files. Let's ignore one of them, and
+add track the directory with DVC.
 
 ```dvc
 $ echo data/data1 >> .dvcignore
@@ -70,6 +70,7 @@ $ cat .dvcignore
 data/data1
 
 $ dvc add data
+
 $ tree .dvc/cache
 
 .dvc/cache
@@ -79,10 +80,16 @@ $ tree .dvc/cache
     └── c3d3797971f12c7f5e1d106dd5cee2
 ```
 
-As we can see, `data1` has been ignored. Cache contains only one file entry (for
-`data2`) and one dir entry (`data`).
+Only the checksums of a directory (`data/`) and one files have been
+<abbr>cached</abbr>. This means that `dvc add` ignored one of the files
+(`data1`).
 
-Now, let's modify `data1` and see if it affects `dvc status`.
+> The cache file with `.dir` extension is a special text file that contains the
+> mapping of files in the `data/` directory (as a JSON array), along with their
+> checksums. (Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).)
+
+Now, let's modify file `data1` and see if it affects `dvc status`.
 
 ```dvc
 $ dvc status
@@ -95,8 +102,8 @@ $ dvc status
 Data and pipelines are up to date.
 ```
 
-Same modification applied to not ignored file will make `dvc status` inform
-about change:
+`dvc status` also ignores `data1`. The same modification on a tracked file will
+produce a different output:
 
 ```dvc
 $ echo "123" >> data/data2
