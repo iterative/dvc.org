@@ -35,9 +35,8 @@ function CommunityTopic({ url, title, date, comments, color }) {
       <Meta>
         <Comments href={url} target="_blank" rel="norefferer nofollow">
           {pluralizeComments(comments)}
-        </Comments>
-        &nbsp; last activity{' '}
-        {formatDistanceToNow(new Date(date), 'MMMM, d') + ' '}
+        </Comments>{' '}
+        • last activity {formatDistanceToNow(new Date(date), 'MMM, d') + ' '}
         ago
       </Meta>
     </Line>
@@ -62,7 +61,7 @@ function CommunityIssue({ url, title, date, comments, color }) {
         <Comments href={url} target="_black" rel="noreferrer nofollow">
           {pluralizeComments(comments)}
         </Comments>
-        &nbsp;opened {formatDistanceToNow(new Date(date), 'MMMM, d')} ago
+        {' •'} opened {formatDistanceToNow(new Date(date), 'MMM, d')} ago
       </Meta>
     </Line>
   )

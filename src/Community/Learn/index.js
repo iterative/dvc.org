@@ -20,12 +20,21 @@ import {
   Wrapper
 } from '../styles'
 
+import { Image } from './styles'
+
 import data from '../data'
 
 const { description, mobileDescription, title } = data.section.learn
 const { documentation, userContent } = data
 
-function CommunityBlogPost({ url, title, date, color, commentsUrl }) {
+function CommunityBlogPost({
+  url,
+  title,
+  date,
+  color,
+  commentsUrl,
+  pictureUrl
+}) {
   const [count, setCount] = useState()
   const loaded = count !== undefined
 
@@ -39,6 +48,7 @@ function CommunityBlogPost({ url, title, date, color, commentsUrl }) {
 
   return (
     <Line key={url}>
+      {pictureUrl && <Image src={pictureUrl} alt="" />}
       <Link color={color} href={url} target="_blank" rel="noreferrer nofollow">
         {title}
       </Link>
@@ -51,10 +61,11 @@ function CommunityBlogPost({ url, title, date, color, commentsUrl }) {
               rel="noreferrer nofollow"
             >
               {pluralizeComments(count)}
-            </Comments>{' '}
+            </Comments>
+            {' • '}
           </>
         )}
-        {format(new Date(date), 'MMMM, d')}
+        {format(new Date(date), 'MMM, d')}
       </Meta>
     </Line>
   )
@@ -63,6 +74,7 @@ function CommunityBlogPost({ url, title, date, color, commentsUrl }) {
 CommunityBlogPost.propTypes = {
   color: PropTypes.string,
   commentsUrl: PropTypes.string,
+  pictureUrl: PropTypes.string,
   date: PropTypes.string,
   title: PropTypes.string,
   url: PropTypes.string
@@ -75,7 +87,7 @@ function CommunityUserContent({ url, title, author, date, color }) {
         {title}
       </Link>
       <Meta>
-        {author} • {format(date, 'MMMM, d')}
+        {author} • {format(date, 'MMM, d')}
       </Meta>
     </Line>
   )
