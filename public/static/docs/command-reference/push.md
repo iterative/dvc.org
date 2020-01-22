@@ -250,6 +250,11 @@ $ tree ../vault/recursive
 5 directories, 5 files
 ```
 
+> Cache files with `.dir` extension is a special text file that contains the
+> mapping of files in the directory (as a JSON array), along with their
+> checksums. (Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).)
+
 The directory `.dvc/cache` is the local cache, while `../vault/recursive` is the
 remote storage – a "local remote" in this case. This listing shows the cache
 having more files in it than the remote – which is what the `new` state means.

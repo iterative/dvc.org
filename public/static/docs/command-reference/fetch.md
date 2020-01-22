@@ -185,6 +185,13 @@ $ tree .dvc
 ├── ...
 ```
 
+> The cache file with `.dir` extension is a special text file that contains the
+> mapping of files in the directory (as a JSON array), along with their
+> checksums. (Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).)
+
+<!-- Separate MD quote: -->
+
 > `dvc status --cloud` (or `-c`) compares the cache contents vs. the default
 > remote.
 
