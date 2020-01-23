@@ -126,25 +126,29 @@ install.sh
 
 ### Example: Getting the storage URL of a DVC-tracked file
 
-We can use `dvc get --show-url` to get the actual location of the resulting
-model file from our
-[get started example repo](https://github.com/iterative/example-get-started), a
-<abbr>DVC project</abbr> hosted on GitHub:
+We can use `dvc get --show-url` to get the actual location where the final model
+file from our
+[get started example repo](https://github.com/iterative/example-get-started) is
+stored:
 
 ```dvc
 $ dvc get https://github.com/iterative/example-get-started model.pkl --show-url
 https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 ```
 
+`remote.dvc.org/get-started` is an HTTP
+[DVC remote](/doc/command-reference/remote), whereas
+`662eb7f64216d9c2c1088d0a5e2c6951` is the file's checksum.
+
 ## Example: Compare different versions of data or model
 
-`dvc get` has the `--rev` option, to specify which version of the repository to
-download a <abbr>data artifact</abbr> from. It also has the `--out` option to
+`dvc get` provides the `--rev` option to specify which version of the repository
+to download a <abbr>data artifact</abbr> from. It also has the `--out` option to
 specify the location to place the artifact within the workspace. Combining these
 two options allows us to do something we can't achieve with the regular
 `git checkout` + `dvc checkout` process – see for example the
 [Get Older Data Version](/doc/get-started/older-versions) chapter of our _Get
-Started_ section.
+Started_.
 
 Let's use the
 [get started example repo](https://github.com/iterative/example-get-started)
