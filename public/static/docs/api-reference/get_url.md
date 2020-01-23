@@ -26,6 +26,11 @@ an appropriate tool such as
 or `boto3`
 [download_fileobj](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Object.download_fileobj).
 
+Note that for directories, DVC stores a special text file with `.dir` that
+contains the mapping of files in the directory (as a JSON array), along with
+their checksums. (Refer to
+[Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).)
+
 > For possible location protocols, refer to the
 > [supported remote types](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
 
