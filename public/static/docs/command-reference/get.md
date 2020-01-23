@@ -58,17 +58,16 @@ name.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - `url` is expected to represent a Git repository for this option to
+- `--rev` - `url` is expected to contain a Git repository for this option to
   have an effect. Specific
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash) of the repository to download
   the file or directory from. The tip of the default branch is used by default
   when this option is not specified.
 
-- `--show-url` - `url` is expected to represent a DVC project for this option to
-  have an effect (as opposed to a Git-only, non-DVC repository). When
-  `--show-url` is used, instead of downloading the file or directory, this
-  command just prints the storage location (URL) of the target data.
+- `--show-url` - `path` is expected to represent a DVC-tracked file for this
+  option to have an effect. Instead of downloading the file or directory, just
+  print the storage location (URL) of the target data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
