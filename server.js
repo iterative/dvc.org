@@ -50,6 +50,7 @@ app.prepare().then(() => {
         redirectLocation += '?' + query
       }
       res.writeHead(303, {
+        'Cache-control': 'no-cache',
         Location: redirectLocation
       })
       res.end()
