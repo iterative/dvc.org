@@ -65,12 +65,10 @@ name.
   the file or directory from. The tip of the default branch is used by default
   when this option is not specified.
 
-- `--show-url` - Returns path or url to the location in remote for given path,
-  from where the **file** will be downloaded. `path` is used to specify the location
-  of the target artifact within the source project in `url`, relative to the project's
-  root. `url` can be an address to a DVC project or a path to a local DVC project.
-  When this option is specified, it will not download the files.
-  Git-only repository is not supported.
+- `--show-url` - `url` is expected to represent a DVC project for this option to
+  have an effect (as opposed to a Git-only, non-DVC repository). When
+  `--show-url` is used, instead of downloading the file or directory, this
+  command just prints the storage location (URL) of the target data.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -124,6 +122,18 @@ repository.
 $ dvc get https://github.com/schacon/cowsay install.sh
 $ ls
 install.sh
+```
+
+### Example: Getting the storage URL of a DVC-tracked file
+
+We can use `dvc get --show-url` to get the actual location of the resulting
+model file from our
+[get started example repo](https://github.com/iterative/example-get-started), a
+<abbr>DVC project</abbr> hosted on GitHub:
+
+```dvc
+$ dvc get https://github.com/iterative/example-get-started model.pkl --show-url
+https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 ```
 
 ## Example: Compare different versions of data or model
@@ -187,17 +197,4 @@ Untracked files:
 
 	model.bigrams.pkl
 	model.monograms.pkl
-```
-
-### Example: Getting a url for a file in a DVC repository
-> Note that `dvc get` can be used from anywhere in the file system, as long as
-> DVC is [installed](/doc/install).
-
-We can use `dvc get --show-url` to get the actual location of the resulting model file from our
-[get started example repo](https://github.com/iterative/example-get-started), a
-<abbr>DVC project</abbr> hosted on GitHub:
-
-```dvc
-$ dvc get https://github.com/iterative/example-get-started model.pkl --show-url
-https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 ```
