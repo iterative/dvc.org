@@ -148,9 +148,8 @@ original model from the master branch.
 ```dvc
 $ git checkout master
 $ dvc checkout
-# Nothing to reproduce since code was checked out by `git checkout`
-# and data files were checked out by `dvc checkout`
 $ dvc repro
+Nothing to reproduce.
 ```
 
 After proper checkout, there is nothing to reproduce because all the correct
@@ -309,6 +308,6 @@ changes in the right place and reproduction is not needed.
 
 ```dvc
 $ dvc checkout
-# Nothing to reproduce:
 $ dvc repro
+Nothing to reproduce.
 ```

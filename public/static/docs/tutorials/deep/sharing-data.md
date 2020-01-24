@@ -51,13 +51,14 @@ the master branch:
 
 ```dvc
 $ git clone https://github.com/dmpetrov/new_tag_classifier.git
+$ cd new_tag_classifier
 $ dvc pull
 ```
 
-After executing this command, all the data files will be in the right place. You
+After executing `dvc pull`, all the data files should be in the right place. You
 can confirm this by trying to reproduce the default goal:
 
 ```dvc
-# Nothing to reproduce:
 $ dvc repro
+Nothing to reproduce.
 ```
