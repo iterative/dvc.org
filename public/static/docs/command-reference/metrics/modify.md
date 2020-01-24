@@ -1,7 +1,8 @@
 # metrics modify
 
-Modify [project metric](/doc/command-reference/metrics) values such as type,
-path expression that is used to parse it, etc. (See full options below.)
+Modify [project metric](/doc/command-reference/metrics#description) values such
+as type, path expression that is used to parse it, etc. (See full options
+below.)
 
 ## Synopsis
 

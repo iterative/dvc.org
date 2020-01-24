@@ -22,8 +22,8 @@ they are the means for uploading and downloading data to and from remote
 storage, respectively.
 [Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results, models,
-[metrics](/doc/command-reference/metrics), etc) remotely (S3, SSH, GCS, etc.)
-are the most common use cases for these commands.
+[metrics](/doc/command-reference/metrics#description), etc) remotely (S3, SSH,
+GCS, etc.) are the most common use cases for these commands.
 
 The `dvc push` command allows one to upload data to remote storage. It doesn't
 save any changes in the code or DVC-files. Those should be saved by using

@@ -42,7 +42,7 @@ Our NLP model was based on [unigrams](https://en.wikipedia.org/wiki/N-gram)
 only. Let's improve the model by adding bigrams. The bigrams model will extract
 signals not only from separate words but also from two-word combinations. This
 eventually increases the number of features for the model and hopefully improves
-the target [metric](/doc/command-reference/metrics).
+the target [metric](/doc/command-reference/metrics#description).
 
 Before editing the `code/featurization.py` file, please create and checkout a
 new branch `bigrams`.
@@ -195,8 +195,8 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-Validate the [metric](/doc/command-reference/metrics) and commit all the
-changes.
+Validate the [metric](/doc/command-reference/metrics#description) and commit all
+the changes.
 
 ```dvc
 $ cat data/eval.txt
@@ -273,7 +273,7 @@ Reproducing 'Dvcfile':
     python code/evaluate.py
 ```
 
-Check the target [metric](/doc/command-reference/metrics):
+Check the target [metric](/doc/command-reference/metrics#description):
 
 ```dvc
 $ cat data/eval.txt

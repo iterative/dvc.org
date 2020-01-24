@@ -74,7 +74,7 @@ more.
 
 Now that we're done with preparations, let's add some data and then train the
 first model. We'll capture everything with DVC, including the input dataset and
-model [metrics](/doc/command-reference/metrics).
+model [metrics](/doc/command-reference/metrics#description).
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
@@ -139,8 +139,9 @@ Next, we train our first model with `train.py`. Because of the small dataset,
 this training process should be small enough to run on most computers in a
 reasonable amount of time (a few minutes). This command <abbr>outputs</abbr> a
 bunch of files, among them `model.h5` and `metrics.csv`, weights of the trained
-model, and [metrics](/doc/command-reference/metrics) history. The simplest way
-to capture the current version of the model is to use `dvc add` again:
+model, and [metrics](/doc/command-reference/metrics#description) history. The
+simplest way to capture the current version of the model is to use `dvc add`
+again:
 
 ```dvc
 $ python train.py
@@ -306,7 +307,7 @@ above (with cats and dogs images) is a good example.
 On the other hand, there are files that are the result of running some code. In
 our example, `train.py` produces binary files (e.g.
 `bottlneck_features_train.npy`), the model file `model.h5`, and the
-[metrics](/doc/command-reference/metrics) file `metrics.csv`.
+[metrics](/doc/command-reference/metrics#description) file `metrics.csv`.
 
 When you have a script that takes some data as an input and produces other data
 <abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:

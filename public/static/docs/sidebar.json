@@ -254,6 +254,10 @@
             "slug": "modify"
           },
           {
+            "label": "metrics diff",
+            "slug": "diff"
+          },
+          {
             "label": "metrics remove",
             "slug": "remove"
           },

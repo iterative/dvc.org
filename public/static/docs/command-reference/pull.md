@@ -24,8 +24,8 @@ downloading data to and from remote storage. These commands are analogous to the
 `git pull` and `git push` commands.
 [Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results, models,
-[metrics](/doc/command-reference/metrics), etc) remotely (S3, SSH, GCS, etc.)
-are the most common use cases for these commands.
+[metrics](/doc/command-reference/metrics#description), etc) remotely (S3, SSH,
+GCS, etc.) are the most common use cases for these commands.
 
 The `dvc pull` command allows one to retrieve data from remote storage.
 `dvc pull` has the same effect as running `dvc fetch` and `dvc checkout`

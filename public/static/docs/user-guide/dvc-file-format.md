@@ -84,7 +84,7 @@ An output entry consists of these fields:
 - `md5`: md5 checksum for the output
 - `cache`: Whether or not dvc should cache the output
 - `metric`: Whether or not this file is a
-  [metric](/doc/command-reference/metrics) file
+  [metric](/doc/command-reference/metrics#description) file
 
 A metric entry consists of these fields:
 

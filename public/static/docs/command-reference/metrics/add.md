@@ -15,7 +15,7 @@ positional arguments:
 
 Sets the `metric` field in the [DVC-file](/doc/user-guide/dvc-file-format) that
 defines the given `path` as an <abbr>output</abbr>, marking `path` as a
-[project metric](/doc/command-reference/metrics) to track.
+[project metric](/doc/command-reference/metrics#description) to track.
 
 Note that outputs can also be marked as metrics via the `-m` or `-M` options of
 the `dvc run` command.

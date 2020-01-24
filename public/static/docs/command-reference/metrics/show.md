@@ -1,7 +1,7 @@
 # metrics show
 
-Find and print [project metrics](/doc/command-reference/metrics), with optional
-formatting.
+Find and print [project metrics](/doc/command-reference/metrics#description),
+with optional formatting.
 
 ## Synopsis
 

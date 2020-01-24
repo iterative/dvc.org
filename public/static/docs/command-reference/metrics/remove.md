@@ -1,7 +1,8 @@
 # metrics remove
 
-Stop tracking a [project metric](/doc/command-reference/metrics): Keeps file
-located at `path` an <abbr>output</abbr>, but removes its metric mark.
+Stop tracking a [project metric](/doc/command-reference/metrics#description):
+Keeps file located at `path` an <abbr>output</abbr>, but removes its metric
+mark.
 
 ## Synopsis
 

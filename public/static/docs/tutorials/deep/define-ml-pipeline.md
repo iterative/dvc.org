@@ -366,8 +366,8 @@ pipeline's reproducibility, we use stage file name `Dvcfile`. (This will be
 discussed in more detail in the next chapter.)
 
 Note that the <abbr>output</abbr> file `data/eval.txt` was transformed by DVC
-into a [metric](/doc/command-reference/metrics) file in accordance with the `-M`
-option.
+into a [metric](/doc/command-reference/metrics#description) file in accordance
+with the `-M` option.
 
 The result of the last three `dvc run` commands execution is three stage files
 and a modified .gitignore file. All the changes should be committed into Git:

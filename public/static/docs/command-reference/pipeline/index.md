@@ -22,7 +22,7 @@ commands that take an input and produce an <abbr>output</abbr>). A pipeline may
 produce intermediate data, and has a final result. Machine Learning (ML)
 pipelines typically start a with large raw datasets, include intermediate
 featurization and training stages, and produce a final model, as well as
-accuracy [metrics](/doc/command-reference/metrics).
+accuracy [metrics](/doc/command-reference/metrics#description).
 
 In DVC, pipeline stages and commands, their data I/O, interdependencies, and
 results (intermediate or final) are specified with `dvc add` and `dvc run`,

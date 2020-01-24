@@ -132,8 +132,8 @@ http://studio.ml/
 
 - `git-lfs` was not made with data science scenarios in mind, so it does not
   provide related features (e.g. pipelines,
-  [metrics](/doc/command-reference/metrics)), and thus GitHub has a limit of 2
-  GB per repository.
+  [metrics](/doc/command-reference/metrics#description)), and thus GitHub has a
+  limit of 2 GB per repository.
 
 ---
 

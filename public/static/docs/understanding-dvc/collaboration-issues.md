@@ -23,8 +23,8 @@ formalized. Common questions need to be answered in an unified, principled way.
 - How do you track which of your
   [hyperparameter](<https://en.wikipedia.org/wiki/Hyperparameter_(machine_learning)>)
   changes contributed the most to producing or improving your target
-  [metric](/doc/command-reference/metrics)? How do you monitor the degree of
-  each change?
+  [metric](/doc/command-reference/metrics#description)? How do you monitor the
+  degree of each change?
 
 ### Navigating through experiments
 

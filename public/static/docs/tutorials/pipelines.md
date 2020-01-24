@@ -249,7 +249,7 @@ $ dvc run -d code/train_model.py -d data/matrix-train.pkl \
 ```
 
 Finally, evaluate the model on the test dataset and get the
-[metric](/doc/command-reference/metrics) file:
+[metric](/doc/command-reference/metrics#description) file:
 
 ```dvc
 $ dvc run -d code/evaluate.py -d data/model.pkl \
@@ -352,7 +352,7 @@ bag_of_words = CountVectorizer(stop_words='english',
 ```
 
 Reproduce all required stages to get to the target
-[metric](/doc/command-reference/metrics) file:
+[metric](/doc/command-reference/metrics#description) file:
 
 ```dvc
 $ dvc repro evaluate.dvc
