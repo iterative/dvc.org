@@ -66,7 +66,7 @@ name.
 
 - `--show-url` - instead of downloading the file or directory, just print the
   storage location (URL) of the target data. `path` is expected to represent a
-  cached, DVC-tracked file for this option to have an effect.
+  cached, DVC-tracked file for this option to have effect.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
