@@ -184,12 +184,13 @@ const SectionLinks = styled.div`
   }
 `
 
+const sectionLinkColor = '#b0b8c5'
 const SectionLink = styled.a`
   display: block;
   position: relative;
   font-size: 18px;
   font-weight: 500;
-  color: #b0b8c5;
+  color: ${sectionLinkColor};
   text-decoration: none;
   font-weight: 400;
   line-height: 26px;
@@ -206,6 +207,9 @@ const SectionLink = styled.a`
 
   &:hover {
     color: #3c3937;
+    ${media.phablet`
+      color: ${sectionLinkColor};
+    `}
   }
 
   &::before {
