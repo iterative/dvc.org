@@ -1,15 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
-
 import Head from 'next/head'
 
-import { container } from '../src/styles'
-import { media } from '../src/styles'
+import Page from '../src/components/Page'
+import Hero from '../src/components/Hero'
+import FeaturesHero from '../src/components/FeaturesHero'
+import TrySection from '../src/components/TrySection'
 
-import Page from '../src/Page'
-import Hero from '../src/Hero'
-import FeaturesHero from '../src/FeaturesHero'
-import TrySection from '../src/TrySection'
+import { container, media } from '../src/styles'
+
 import { META_BASE_TITLE } from '../src/consts'
 
 const HeadInjector = () => (

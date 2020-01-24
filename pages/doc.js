@@ -8,17 +8,19 @@ import Router from 'next/router'
 import fetch from 'isomorphic-fetch'
 
 // components
-import Page from '../src/Page'
-import { HeadInjector } from '../src/Documentation/HeadInjector'
-import Hamburger from '../src/Hamburger'
-import SearchForm from '../src/SearchForm'
-import SidebarMenu from '../src/Documentation/SidebarMenu/SidebarMenu'
-import Markdown from '../src/Documentation/Markdown/Markdown'
-import RightPanel from '../src/Documentation/RightPanel/RightPanel'
+import Page from '../src/components/Page'
+import { HeadInjector } from '../src/components/Documentation/HeadInjector'
+import Hamburger from '../src/components/Hamburger'
+import SearchForm from '../src/components/SearchForm'
+import SidebarMenu from '../src/components/Documentation/SidebarMenu/SidebarMenu'
+import Markdown, {
+  extractSlugFromTitle
+} from '../src/components/Documentation/Markdown/Markdown'
+import RightPanel from '../src/components/Documentation/RightPanel/RightPanel'
 // sidebar data and helpers
+
 import { getItemByPath, structure } from '../src/utils/sidebar'
-import { extractSlugFromTitle } from '../src/Documentation/Markdown/Markdown'
-// styles
+
 import { media } from '../src/styles'
 
 const ROOT_ELEMENT = 'bodybag'

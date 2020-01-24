@@ -1,16 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Mark } from '../src/styles'
 import color from 'color'
-
 import Head from 'next/head'
 
-import { OnlyDesktop, container, media } from '../src/styles'
+import Page from '../src/components/Page'
+import Hero from '../src/components/Hero'
+import TrySection from '../src/components/TrySection'
+import Popover from '../src/components/Popover/Popover'
 
-import Page from '../src/Page'
-import Hero from '../src/Hero'
-import TrySection from '../src/TrySection'
-import Popover from '../src/Popover/Popover'
+import { Mark, OnlyDesktop, container, media } from '../src/styles'
+
 import { META_BASE_TITLE } from '../src/consts'
 
 const HeadInjector = () => (
