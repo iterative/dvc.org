@@ -1,7 +1,7 @@
 # metrics diff
 
-Find and print [project metrics](/doc/command-reference/metrics) changes between
-commits, commit and a working tree, etc.
+Find and print [project metrics](/doc/command-reference/metrics#description)
+changes between commits, commit and a working tree, etc.
 
 ## Synopsis
 
