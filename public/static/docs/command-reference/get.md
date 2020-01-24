@@ -41,8 +41,8 @@ can point to any file or directory in the source project, including
 <abbr>outputs </abbr> tracked by DVC as well as files tracked by Git. Note that
 for the former, data should be specified in one of the
 [DVC-files](/doc/user-guide/dvc-file-format) of the source repository. (In this
-case, a default [DVC remote](/doc/command-reference/remote) needs to be
-configured in the project, containing the actual data.)
+case, a default [DVC remote](/doc/command-reference/remote#description) needs to
+be configured in the project, containing the actual data.)
 
 > See `dvc get-url` to download data from other supported URLs.
 
@@ -93,8 +93,8 @@ of the external Git repository. Instead, the corresponding DVC-file
 [train.dvc](https://github.com/iterative/example-get-started/blob/master/train.dvc)
 is found, that specifies `model.pkl` in its outputs (`outs`). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
-[remote](/doc/command-reference/remote) of the external DVC project (found in
-its
+[remote](/doc/command-reference/remote#description) of the external DVC project
+(found in its
 [config file](https://github.com/iterative/example-get-started/blob/master/.dvc/config)).
 
 > A recommended use for downloading binary files from DVC repositories, as done

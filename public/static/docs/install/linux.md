@@ -12,9 +12,10 @@
 $ pip install dvc
 ```
 
-Depending on the type of the [remote storage](/doc/command-reference/remote) you
-plan to use, you might need to install optional dependencies: `[s3]`, `[azure]`,
-`[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them all.
+Depending on the type of the
+[remote storage](/doc/command-reference/remote#description) you plan to use, you
+might need to install optional dependencies: `[s3]`, `[azure]`, `[gdrive]`,
+`[gs]`, `[oss]`, `[ssh]`. Use `[all]` to include them all.
 
 > Please restart your terminal or re-source the shell configuration file
 > (`.bashrc`, `.zshrc`, etc.) if you get `Command 'dvc' not found` after

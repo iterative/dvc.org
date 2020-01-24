@@ -27,9 +27,9 @@ Advantages of using a DVC **data registry** project:
   (`dvc get` and `dvc import` commands, similar to software package management
   systems like `pip`).
 - Persistence: The DVC registry-controlled
-  [remote storage](/doc/command-reference/remote) (e.g. an S3 bucket) improves
-  data security. There are less chances someone can delete or rewrite a model,
-  for example.
+  [remote storage](/doc/command-reference/remote#description) (e.g. an S3
+  bucket) improves data security. There are less chances someone can delete or
+  rewrite a model, for example.
 - Storage Optimization: Track data
   [shared](/doc/use-cases/sharing-data-and-model-files) by multiple projects
   centralized in a single location (with the ability to create distributed
@@ -78,8 +78,8 @@ $ git commit -m "Track 1.8 GB 10,000 song dataset in music/"
 
 The actual data is stored in the project's <abbr>cache</abbr> and should be
 [pushed](/doc/command-reference/push) to one or more
-[remote storage](/doc/command-reference/remote) locations, so the registry can
-be accessed from other locations or by other people:
+[remote storage](/doc/command-reference/remote#description) locations, so the
+registry can be accessed from other locations or by other people:
 
 ```
 $ dvc remote add -d myremote s3://bucket/path
@@ -205,7 +205,8 @@ $ tree --filelimit=100
 ```
 
 And let's not forget to `dvc push` data changes to the
-[remote storage](/doc/command-reference/remote), so others can obtain them!
+[remote storage](/doc/command-reference/remote#description), so others can
+obtain them!
 
 ```
 $ dvc push

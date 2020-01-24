@@ -21,9 +21,9 @@ can be done using the CLI as shown below.
 > Note that we are using the `dvc-public` S3 bucket as an example and you don't
 > have write access to it, so in order to follow the tutorial you will need to
 > either create your own S3 bucket or use other types of
-> [remote storage](/doc/command-reference/remote). E.g. you can set up a local
-> remote as we did in the [Configure](/doc/get-started/configure) chapter of
-> _Get Started_.
+> [remote storage](/doc/command-reference/remote#description). E.g. you can set
+> up a local remote as we did in the [Configure](/doc/get-started/configure)
+> chapter of _Get Started_.
 
 ```dvc
 $ dvc remote add -d upstream s3://dvc-public/remote/tutorial/nlp

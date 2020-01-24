@@ -1,7 +1,8 @@
 # fetch
 
 Get files that are under DVC control from
-[remote storage](/doc/command-reference/remote) into the <abbr>cache</abbr>.
+[remote storage](/doc/command-reference/remote#description) into the
+<abbr>cache</abbr>.
 
 ## Synopsis
 
@@ -73,7 +74,7 @@ specified in DVC-files currently in the project are considered by `dvc fetch`
 ## Options
 
 - `-r REMOTE`, `--remote REMOTE` - name of the
-  [remote storage](/doc/command-reference/remote) to fetch from (see
+  [remote storage](/doc/command-reference/remote#description) to fetch from (see
   `dvc remote list`). If not specified, the default remote is used (see
   `dvc config core.remote`). The argument `REMOTE` is a remote name defined
   using the `dvc remote` command.
@@ -160,9 +161,9 @@ bigrams-experiment       <- use bigrams to improve the model
 ## Example: Default behavior
 
 This project comes with a predefined HTTP
-[remote storage](/doc/command-reference/remote). We can now just run `dvc fetch`
-to download the most recent `model.pkl`, `data.xml`, and other files that are
-under DVC control into our local <abbr>cache</abbr>.
+[remote storage](/doc/command-reference/remote#description). We can now just run
+`dvc fetch` to download the most recent `model.pkl`, `data.xml`, and other files
+that are under DVC control into our local <abbr>cache</abbr>.
 
 ```dvc
 $ dvc status --cloud

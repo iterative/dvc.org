@@ -42,8 +42,8 @@ can point to any file or directory in the source project, including
 <abbr>outputs </abbr> tracked by DVC as well as files tracked by Git. Note that
 for the former, data should be specified in one of the
 [DVC-files](/doc/user-guide/dvc-file-format) of the source repository. (In this
-case, a default [DVC remote](/doc/command-reference/remote) needs to be
-configured in the project, containing the actual data.)
+case, a default [DVC remote](/doc/command-reference/remote#description) needs to
+be configured in the project, containing the actual data.)
 
 > See `dvc import-url` to download and track data from other supported URLs.
 

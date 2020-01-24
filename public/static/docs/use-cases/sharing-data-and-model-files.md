@@ -3,7 +3,7 @@
 Like Git, DVC allows for a distributed environment and collaboration. We make it
 easy to consistently get all your data files and directories into any machine,
 along with matching source code. All you need to do is to setup
-[remote storage](/doc/command-reference/remote) for your <abbr>DVC
+[remote storage](/doc/command-reference/remote#description) for your <abbr>DVC
 project</abbr>, and push the data there, so others can reach it. Currently DVC
 supports Amazon S3, Microsoft Azure Blob Storage, Google Drive, Google Cloud
 Storage, SSH, HDFS, and other remote locations. The list is constantly growing.
@@ -12,8 +12,8 @@ Storage, SSH, HDFS, and other remote locations. The list is constantly growing.
 ![](/static/img/model-sharing-digram.png)
 
 As an example, let's take a look at how you could setup an S3
-[remote storage](/doc/command-reference/remote) for a <abbr>DVC project</abbr>,
-and push/pull to/from it.
+[remote storage](/doc/command-reference/remote#description) for a <abbr>DVC
+project</abbr>, and push/pull to/from it.
 
 ## Create an S3 bucket
 

@@ -10,8 +10,8 @@ It's useful when dealing with files that are too large for Git to handle
 properly in general. DVC saves information about your data in special
 [DVC-files](/doc/user-guide/dvc-file-format), and these metafiles can be used
 for versioning. To actually store the data, DVC supports various types of
-[remote storage](/doc/command-reference/remote). This allows easily saving and
-sharing data alongside code.
+[remote storage](/doc/command-reference/remote#description). This allows easily
+saving and sharing data alongside code.
 
 ![](/static/img/model-versioning-diagram.png)
 
@@ -114,7 +114,7 @@ their latest versions.
 ![](/static/img/versioning.png)
 
 To share your data with others you need to setup a
-[data storage](/doc/command-reference/remote). See the
+[data storage](/doc/command-reference/remote#description). See the
 [Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files) use
 case to get an overview on how to do this.
 

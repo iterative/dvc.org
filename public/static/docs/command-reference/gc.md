@@ -12,11 +12,12 @@ usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c] [-r REMOTE] [-f] [-j JOBS]
 ## Description
 
 This command deletes (garbage collects) data files or directories that may exist
-in the cache (or [remote storage](/doc/command-reference/remote) if `-c` is
-used) but no longer referenced in [DVC-files](/doc/user-guide/dvc-file-format)
-currently in the <abbr>workspace</abbr>. By default, this command only cleans up
-the local cache, which is typically located on the same machine as the project
-in question. This usually helps to free up disk space.
+in the cache (or [remote storage](/doc/command-reference/remote#description) if
+`-c` is used) but no longer referenced in
+[DVC-files](/doc/user-guide/dvc-file-format) currently in the
+<abbr>workspace</abbr>. By default, this command only cleans up the local cache,
+which is typically located on the same machine as the project in question. This
+usually helps to free up disk space.
 
 There are important things to note when using Git to version the
 <abbr>project</abbr>:

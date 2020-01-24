@@ -39,7 +39,7 @@ The installed Git hook automates reminding the user to run either `dvc repro` or
 **Push**: While publishing changes to the Git remote repository with `git push`,
 it easy to forget that the `dvc push` command is necessary to upload new or
 updated data files and directories under DVC control to
-[remote storage](/doc/command-reference/remote).
+[remote storage](/doc/command-reference/remote#description).
 
 The installed Git hook automates executing `dvc push`.
 

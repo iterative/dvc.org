@@ -143,9 +143,9 @@ bigrams-experiment      <- use bigrams to improve the model
 ```
 
 This project comes with a predefined HTTP
-[remote storage](/doc/command-reference/remote). We can now just run `dvc pull`
-that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
-files that are under DVC control. The model file checksum
+[remote storage](/doc/command-reference/remote#description). We can now just run
+`dvc pull` that will fetch and checkout the most recent `model.pkl`, `data.xml`,
+and other files that are under DVC control. The model file checksum
 `3863d0e317dee0a55c4e59d2ec0eef33` will be used in the `train.dvc`
 [stage file](/doc/command-reference/run):
 

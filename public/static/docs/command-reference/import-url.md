@@ -74,9 +74,10 @@ DVC supports several types of (local or) remote locations (protocols):
 <!-- Separate MD quote: -->
 
 > `remote://myremote/path/to/file` notation just means that a DVC
-> [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is
-> running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
-> URL by appending `/path/to/file` to the `myremote`'s configured base path.
+> [remote](/doc/command-reference/remote#description) `myremote` is defined and
+> when DVC is running. DVC automatically expands this URL into a regular S3,
+> SSH, GS, etc URL by appending `/path/to/file` to the `myremote`'s configured
+> base path.
 
 Another way to understand the `dvc import-url` command is as a short-cut for a
 more verbose `dvc run` command. This is discussed in the

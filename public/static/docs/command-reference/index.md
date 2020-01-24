@@ -11,8 +11,9 @@ DVC is a command line tool. The typical DVC workflow goes as follows:
   be tracked by DVC after the code is executed.
 - Sharing a Git repository with the source code of your ML
   [pipeline](/doc/command-reference/pipeline) will not include the project's
-  <abbr>cache</abbr>. Use [remote storage](/doc/command-reference/remote) and
-  `dvc push` to share this cache (data tracked by DVC).
+  <abbr>cache</abbr>. Use
+  [remote storage](/doc/command-reference/remote#description) and `dvc push` to
+  share this cache (data tracked by DVC).
 - Use `dvc repro` to automatically reproduce your full pipeline, iteratively as
   input data or source code change.
 

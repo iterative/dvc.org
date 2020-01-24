@@ -1,9 +1,9 @@
 # pull
 
 Downloads missing files and directories from
-[remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr> based
-on [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>,
-then links the downloaded files into the workspace.
+[remote storage](/doc/command-reference/remote#description) to the
+<abbr>cache</abbr> based on [DVC-files](/doc/user-guide/dvc-file-format) in the
+<abbr>workspace</abbr>, then links the downloaded files into the workspace.
 
 ## Synopsis
 

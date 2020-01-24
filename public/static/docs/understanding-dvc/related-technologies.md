@@ -101,7 +101,7 @@ http://studio.ml/
   workflow for machine learning and reproducible experiments. When a DVC or
   Git-annex repository is cloned via `git clone`, data files won't be copied to
   the local machine, as file contents are stored in separate
-  [remotes](/doc/command-reference/remote). With DVC,
+  [remotes](/doc/command-reference/reremote#descriptionmote). With DVC,
   [DVC-files](/doc/user-guide/dvc-file-format), which provide the reproducible
   workflow, are always included in the Git repository. Hence, they can be
   executed locally with minimal effort.
