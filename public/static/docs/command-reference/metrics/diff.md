@@ -1,45 +1,48 @@
 # metrics diff
 
-Find and print [project metrics](/doc/command-reference/metrics#description)
-changes between commits, commit and a working tree, etc.
+Find and print changes in [metrics](/doc/command-reference/metrics#description)
+between <abbr>project</abbr> versions.
 
 ## Synopsis
 
 ```usage
-usage: dvc metrics diff [-h] [-q | -v] [--targets [TARGETS [TARGETS ...]]]
+usage: dvc metrics diff [-h] [-q | -v]
+                        [--targets [TARGETS [TARGETS ...]]]
                         [-t TYPE] [-x XPATH] [-R] [--show-json]
                         [a_ref] [b_ref]
 
 positional arguments:
-  a_ref                 Git reference from which diff is calculated. If
-                        omitted `HEAD`(latest commit) is used.
-  b_ref                 Git reference to which diff is calculated. If omitted
-                        current working tree is used.
+  a_ref     Git reference from which diff is calculated. If
+            omitted, `HEAD` (latest commit) is used.
+  b_ref     Git reference to which diff is calculated. If omitted,
+            the current workspace is used instead.
 ```
 
 ## Description
 
-Finds and prints changes between commits for all metrics in the
+Calculates the numeric difference (delta) between a metric's value in two
+different
+[Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+(such as a branch name, a tag, or a commit hash) for all metrics in the
 <abbr>project</abbr> by examining all of its
-[DVC-files](/doc/user-guide/dvc-file-format). If `--targets` are provided, it
-will show changes for those specific metric files instead.
+[DVC-files](/doc/user-guide/dvc-file-format).
 
-The optional `--targets` argument can contain several metric files. With the
-`-R` option, a target can even be a directory, so that DVC recursively shows
-changes for all metric files in it.
+Note that `a_ref` and `b_ref` have different defaults than those in `dvc diff`,
+and omitting `b_ref` causes the current <abbr>workspace</abbr> metrics (included
+uncommitted local changes) to be used, instead of a Git reference.
 
-Providing a `type` (`-t` option) overwrites the full metric specification (both
-`type` and `xpath` fields) defined in the
-[DVC-file](/doc/user-guide/dvc-file-format) (usually set originally with the
-`dvc metrics modify` command).
+If `--targets` are provided, it will show changes for those specific metric
+files instead. With the `-R` option, a target can even be a directory, so that
+DVC recursively shows changes for all metric files in it.
 
-If `type` (via `-t`) is not specified and only `xpath` (`-x` option) is, only
-the `xpath` field is overwritten in its DVC-file. (DVC will first try to read
-`type` from the DVC-file, but it can be automatically detected by the file
+Providing a type of metric (`-t` option) overwrites the full metric
+specification (both `type` and `xpath` fields) defined in the
+[DVC-file](/doc/user-guide/dvc-file-format). If only the `--xpath` (`-x`) option
+is used, just the `xpath` field is overwritten. (DVC will first try to read
+`type` from the DVC-file, or it can be automatically detected by the file
 extension.)
 
-> Alternatively, see `dvc metrics modify` command to learn how to apply `-t` and
-> `-x` permanently.
+> See `dvc metrics modify` to learn how to apply `-t` and `-x` permanently.
 
 ## Options
 
@@ -82,7 +85,7 @@ extension.)
 
 ## Examples
 
-Let's create a metrics file using a dummy command and commit it to git:
+Let's create a metrics file using a dummy command and commit it with Git:
 
 ```
 $ dvc run -M metrics.json 'echo "{\"AUC\": 0.5}" > metrics.json'
@@ -95,9 +98,9 @@ Now let's say we've adjusted our scripts and our AUC has changed:
 $ dvc run -M metrics.json 'echo "{\"AUC\": 0.6}" > metrics.json'
 ```
 
-To see the change, let's run `dvc metrics diff` without arguments, that would
-compare our current metrics to what we've had in the last commit (similar to
-`git diff`):
+To see the change, let's run `dvc metrics diff` without arguments. This compares
+our current <abbr>workspace</abbr> metrics to what we had in the previous
+commit:
 
 ```
 $ dvc metrics diff

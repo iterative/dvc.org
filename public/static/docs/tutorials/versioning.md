@@ -263,10 +263,10 @@ $ git checkout v1.0
 $ dvc checkout
 ```
 
-These commands will restore the working tree to the first snapshot we made:
-code, data files, model, all of it. DVC optimizes this operation to avoid
-copying data or model files each time. So `dvc checkout` is quick even if you
-have large datasets, data files, or models.
+These commands will restore the workspace to the first snapshot we made: code,
+data files, model, all of it. DVC optimizes this operation to avoid copying data
+or model files each time. So `dvc checkout` is quick even if you have large
+datasets, data files, or models.
 
 On the other hand, if we want to keep the current version of the code and go
 back to the previous dataset only, we can do something like this (make sure that

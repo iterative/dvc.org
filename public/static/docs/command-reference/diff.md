@@ -12,17 +12,18 @@ narrowed down to specific target files and directories under DVC control.
 usage: dvc diff [-h] [-q | -v] [-t TARGET] a_ref [b_ref]
 
 positional arguments:
-  a_ref                 Git reference from which diff calculates
-  b_ref                 Git reference until which diff calculates, if
-                        omitted diff shows the difference between
-                        current HEAD and a_ref
+  a_ref     Git reference from which diff calculates
+  b_ref     Git reference until which diff calculates, if omitted
+            `HEAD` (latest commit) is used.
 ```
 
 ## Description
 
-Given two Git commit references (commit hash, branch or tag name, etc) `a_ref`
-and `b_ref`, this command shows a a summary of basic statistics: how many files
-were deleted/changed, and the file size differences.
+Given two
+[Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+(commit hash, branch or tag name, etc.) `a_ref` and `b_ref`, this command shows
+a a summary of basic statistics: how many files were deleted/changed, and the
+file size differences. `a_ref` is required, while `b_ref` defaults to `HEAD`.
 
 Note that `dvc diff` does not show the line-to-line comparison among the target
 files in each revision, like `git diff` does.
@@ -31,17 +32,13 @@ files in each revision, like `git diff` does.
 > [issue #770](https://github.com/iterative/dvc/issues/770#issuecomment-512693256)
 > in our GitHub repository.
 
-If the `-t` option is used, the diff is limited to the `TARGET` file or
-directory specified.
-
-Note that `dvc diff` does not have an effect when the repository is not tracked
-by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
+`dvc diff` does not have an effect when the repository is not tracked by Git,
+for example when `dvc init` was used with the `--no-scm` option.
 
 ## Options
 
-- `-t TARGET`, `--target TARGET` - path to a data file or directory. If not
-  specified, compares all files and directories that are under DVC control in
-  the workspace.
+- `-t TARGET`, `--target TARGET` - path to a data file or directory to limit
+  diff for.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -83,11 +80,12 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 
 ## Example: Previous version of the same branch
 
-The minimal `dvc diff` command only includes the A reference (`a_ref`) from
-which the difference is to be calculated. The B reference (`b_ref`) defaults to
-Git `HEAD` (the currently checked out version). To find the general differences
-with the very previous committed version of the project, we can use the `HEAD^`
-Git reference.
+The minimal `dvc diff` command only includes the "from" reference (`a_ref`) from
+which to calculate the difference. The "until" reference (`b_ref`) defaults to
+`HEAD` (currently checked out Git version).
+
+To find the general differences with the very previous version of the project,
+we can use `HEAD^` as reference A:
 
 ```dvc
 $ dvc diff HEAD^
@@ -143,7 +141,8 @@ diff for 'model.pkl'
 ```
 
 The output from this command confirms that there's a difference in the
-`model.pkl` file between the 2 Git references we indicated.
+`model.pkl` file between the 2 Git references (tags `baseline-experiment` and
+`bigrams-experiment`) we indicated.
 
 ### What about directories?
 

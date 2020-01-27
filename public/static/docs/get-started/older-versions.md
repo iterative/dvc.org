@@ -17,7 +17,7 @@ $ dvc checkout train.dvc
 ```
 
 These two commands will bring the previous model file to its place in the
-working tree.
+<abbr>workspace</abbr>.
 
 <details>
 

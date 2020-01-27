@@ -13,6 +13,10 @@ code, ML models, etc. A workspace becomes a **DVC project** when
 [\`dvc init\`](/doc/command-reference/init) is run, and
 [DVC-files](/doc/user-guide/dvc-file-format) or stage files are created in it.
 
+Includes the
+[working tree](https://git-scm.com/docs/gitglossary#def_working_tree) (\`HEAD\`
+plus local changes) for Git repositories.
+
 Note that [external outputs](/doc/user-guide/managing-external-data) also
 form part of your expanded workspace, technically.
       `
