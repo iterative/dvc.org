@@ -55,8 +55,8 @@ extension.)
   `dvc metrics diff` will try to detect it on-the-fly.
 
 - `-x`, `--xpath` - specify a path within a metric file to get a specific metric
-  value to show changes for. If ommited, will show changes for all possible
-  paths. It will override `xpath` defined in the correspodning DVC-file. See
+  value to show changes for. If omitted, will show changes for all possible
+  paths. It will override `xpath` defined in the corresponding DVC-file. See
   `dvc metrics modify` for a full description of `xpath` when applied to
   specific metric types.
 
@@ -70,7 +70,7 @@ extension.)
   have effect. Determines the metric files to show changes for by searching each
   target directory and its subdirectories for DVC-files to inspect.
 
-- `--show-json` - prints diff in easilly parsable JSON format instead of
+- `--show-json` - prints diff in easily parsable JSON format instead of
   human-readable table.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
