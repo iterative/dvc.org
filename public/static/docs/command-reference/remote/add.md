@@ -182,7 +182,8 @@ $ dvc remote add myremote "azure://"
   one following
   [these instructions](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account).
   The connection string can be found in the "Access Keys" pane of your Storage
-  Account resource in the Azure portal.
+  Account resource in the Azure portal. 
+  > Make sure the value is quoted to prevent shell from misprocessing the command.
 
 - `container name` - this is the top-level container in your Azure Storage
   Account under which all the files for this remote will be uploaded. If the
