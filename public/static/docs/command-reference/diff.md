@@ -12,8 +12,8 @@ narrowed down to specific target files and directories under DVC control.
 usage: dvc diff [-h] [-q | -v] [-t TARGET] a_ref [b_ref]
 
 positional arguments:
-  a_ref     Git reference from which diff calculates
-  b_ref     Git reference until which diff calculates, if omitted
+  a_ref     Git reference from which the diff begins
+  b_ref     Git reference until which the diff ends. If omitted,
             `HEAD` (latest commit) is used.
 ```
 
@@ -22,8 +22,8 @@ positional arguments:
 Given two
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 (commit hash, branch or tag name, etc.) `a_ref` and `b_ref`, this command shows
-a a summary of basic statistics: how many files were deleted/changed, and the
-file size differences. `a_ref` is required, while `b_ref` defaults to `HEAD`.
+a summary of basic statistics: how many files were deleted/changed, and the file
+size differences. `a_ref` is required, while `b_ref` defaults to `HEAD`.
 
 Note that `dvc diff` does not show the line-to-line comparison among the target
 files in each revision, like `git diff` does.
