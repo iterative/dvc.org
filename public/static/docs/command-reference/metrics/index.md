@@ -3,6 +3,7 @@
 A set of commands to collect and display project metrics:
 [add](/doc/command-reference/metrics/add),
 [show](/doc/command-reference/metrics/show),
+[diff](/doc/command-reference/metrics/show),
 [modify](/doc/command-reference/metrics/modify), and
 [remove](/doc/command-reference/metrics/remove).
 

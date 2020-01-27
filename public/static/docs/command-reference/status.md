@@ -19,11 +19,11 @@ positional arguments:
 ## Description
 
 `dvc status` searches for changes in the existing pipelines, either showing
-which [stages](/doc/command-reference/run) have changed in the workspace and
-must be reproduced (with `dvc repro`), or differences between cache vs. remote
-storage (meaning `dvc push` or `dvc pull` should be run to synchronize them).
-The two modes, _local_ and _cloud_ are triggered by using the `--cloud` or
-`--remote` options:
+which [stages](/doc/command-reference/run) have changed in the workspace
+(including uncommitted local changes) and must be reproduced (with `dvc repro`),
+or differences between cache vs. remote storage (meaning `dvc push` or
+`dvc pull` should be run to synchronize them). The two modes, _local_ and
+_cloud_ are triggered by using the `--cloud` or `--remote` options:
 
 | Mode   | CLI Option | Description                                                                                                                 |
 | ------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |

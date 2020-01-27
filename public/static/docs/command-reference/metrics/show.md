@@ -26,43 +26,41 @@ The optional `targets` argument can contain several metric files. With the `-R`
 option, a target can even be a directory, so that DVC recursively shows all
 metric files in it.
 
-Providing a `type` (`-t` option) overwrites the full metric specification (both
+Providing a `type` (`-t` option) overrides the full metric specification (both
 `type` and `xpath` fields) defined in the
-[DVC-file](/doc/user-guide/dvc-file-format) (usually set originally with the
-`dvc metrics modify` command).
+[DVC-file](/doc/user-guide/dvc-file-format) (originally with
+`dvc metrics modify`, typically).
 
 If `type` (via `-t`) is not specified and only `xpath` (`-x` option) is, only
-the `xpath` field is overwritten in its DVC-file. (DVC will first try to read
+the `xpath` field from the DVC-file is overridden. (DVC will first try to read
 `type` from the DVC-file, but it can be automatically detected by the file
 extension.)
 
-> Alternatively, see `dvc metrics modify` command to learn how to apply `-t` and
-> `-x` permanently.
+> See `dvc metrics modify` to learn how to apply `-t` and `-x` permanently.
+
+See also `dvc metrics diff` to show changes in metrics between different
+<abbr>repository</abbr> versions.
 
 ## Options
 
-- `-t`, `--type` - specify a type of the metric file. Accepted values are:
-  `raw`, `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be saved into the
-  corresponding DVC-file, and used by `dvc metrics show` to determine how to
-  handle displaying metrics.
+- `-t`, `--type` - specify a type of the metric file. Accepted values are: `raw`
+  (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be used to determine
+  how to parse and format metics for display.
 
-  `raw` is the default when no type is provided. It means that no additional
-  parsing is applied, and `--xpath` is ignored. `htsv`/`hcsv` are the same as
-  `tsv`/`csv`, but the values in the first row of the file will be used as the
-  field names and should be used to address columns in the `--xpath` option.
+  `raw` means that no additional parsing is applied, and `--xpath` is ignored.
+  `htsv`/`hcsv` are the same as `tsv`/`csv`, but the values in the first row of
+  the file will be used as the field names and should be used to address columns
+  in the `--xpath` option.
 
-  This option along with `--xpath` below takes precedence over the `type` and
-  `xpath` specified in the corresponding DVC file. If this parameter is not
-  given, the type can be detected by the file extension automatically if the
-  type is supported. If any other value is specified, it is ignored and
-  defaulted back to `raw`.
+  This option will override `type` and `xpath` defined in the corresponding
+  DVC-file. If no `type` is provided or found in the DVC-file, DVC will try to
+  detect it based on file extension.
 
 - `-x`, `--xpath` - specify a path within a metric file to get a specific metric
   value. Should be used if the metric file contains multiple numbers and you
-  need to get a only one of them. Only a single path is allowed. It will be
-  saved into the corresponding DVC-file, and used by `dvc metrics show` to
-  determine how to handle displaying metrics. The accepted value depends on the
-  metric file type (`--type` option):
+  want to use only one of them. Only a single path is allowed. It will override
+  `xpath` defined in the corresponding DVC-file. The accepted value depends on
+  the metric file type (`--type` option):
 
   - For `json` - see [JSONPath spec](https://goessner.net/articles/JsonPath/) or
     [jsonpath-ng](https://github.com/h2non/jsonpath-ng) for available options.

@@ -39,9 +39,9 @@ The execution of `dvc checkout` does the following:
   DVC-file, are restored from the <abbr>cache</abbr>. See options `--force` and
   `--relink`.
 
-By default, this command tries not to copy files between the cache and the
-workspace, using reflinks instead, when supported by the file system. (Refer to
-[File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).)
+By default, this command tries not make copies of cached files in the workspace,
+using reflinks instead when supported by the file system (refer to
+[File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)).
 The next linking strategy default value is `copy` though, so unless other file
 link types are manually configured in `cache.type` (using `dvc config`), files
 will be copied. Keep in mind that having file copies doesn't present much of a
