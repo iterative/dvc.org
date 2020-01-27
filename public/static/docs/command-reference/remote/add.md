@@ -158,7 +158,7 @@ For more information about the variables DVC supports, please visit
 
 ```dvc
 $ dvc remote add myremote azure://my-container-name/path
-$ dvc remote modify myremote connection_string my-connection-string --local
+$ dvc remote modify myremote connection_string "my-connection-string" --local
 ```
 
 > The connection string contains access to data and is inserted into the
