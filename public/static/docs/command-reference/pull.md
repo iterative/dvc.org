@@ -78,9 +78,9 @@ reflinks or hardlinks to put it in the workspace without copying. See
   searches backward from the target stages in the corresponding pipelines. This
   means DVC will not pull files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain one or more directories
-  for this option to have effect. Determines the files to pull by searching each
-  target directory and its subdirectories for DVC-files to inspect.
+- `-R`, `--recursive` - determines the metric files to show by searching each
+  target directory and its subdirectories for DVC-files to inspect. `targets` is
+  expected to contain one or more directories for this option to have effect.
 
 - `-f`, `--force` - does not prompt when removing workspace files, which occurs
   when these file no longer match the current DVC-file references. This option
