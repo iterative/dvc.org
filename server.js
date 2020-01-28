@@ -14,21 +14,32 @@ const { parse } = require('url')
 const next = require('next')
 
 const { getItemByPath } = require('./src/utils/sidebar')
-const { redirects } = require('./src/redirects')
+const redirects = require('./src/redirects.json')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const port = process.env.PORT || 3000
 
-const getRedirectLocation = (req, host, pathname) => {
+// Generating the RegExp objects once is faster than generating
+// them on the fly and throwing them away.
+redirects.forEach(redirect => {
+  redirect.regexObject = new RegExp(redirect.regex)
+})
+
+const getRedirect = (req, host, pathname) => {
   if (req.headers['x-forwarded-proto'] !== 'https' && !dev) {
-    return 'https://' + host.replace(/^www\./, '') + req.url
+    return [301, `https://${host.replace(/^www\./, '')}${req.url}`]
   }
 
-  for (const redirect of redirects) {
-    const location = redirect.getLocation(host, pathname)
-    if (location) return location
+  const wholeUrl = `https://${host}${pathname}`
+
+  for (const { match, regexObject, replace, permanent } of redirects) {
+    const matchTarget = match === 'url' ? wholeUrl : pathname
+    if (regexObject.test(matchTarget)) {
+      const code = permanent ? 301 : 303
+      return [code, matchTarget.replace(regexObject, replace)]
+    }
   }
 }
 
@@ -41,7 +52,7 @@ app.prepare().then(() => {
     /*
      * HTTP redirects
      */
-    let redirectLocation = getRedirectLocation(req, host, pathname)
+    let [redirectCode, redirectLocation] = getRedirect(req, host, pathname)
 
     if (redirectLocation) {
       // should be getting the query as a string
@@ -49,7 +60,7 @@ app.prepare().then(() => {
       if (query) {
         redirectLocation += '?' + query
       }
-      res.writeHead(303, {
+      res.writeHead(redirectCode, {
         'Cache-control': 'no-cache',
         Location: redirectLocation
       })

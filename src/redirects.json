@@ -1,0 +1,63 @@
+[
+  {
+    "match": "url",
+    "regex": "^https://(?:www\\.)dvc\\.org/(.+)?",
+    "replace": "https://dvc.org/$1",
+    "permanent": true
+  },
+  {
+    "match": "url",
+    "regex": "^https://man\\.dvc\\.org/(.+)?",
+    "replace": "https://dvc.org/doc/command-reference/$1"
+  },
+  {
+    "match": "url",
+    "regex": "^https://error\\.dvc\\.org/(.+)?",
+    "replace": "https://dvc.org/user-guide/troubleshooting#$1"
+  },
+  {
+    "match": "url",
+    "regex": "^https://(code|data|remote)\\.dvc\\.org/(.+)",
+    "replace": "https://s3-us-east-2.amazonaws.com/dvc-public/$1/$2"
+  },
+  {
+    "match": "pathname",
+    "regex": "^/((?:deb|rpm)/.+)",
+    "replace": "https://s3-us-east-2.amazonaws.com/dvc-s3-repo/$1"
+  },
+  {
+    "match": "pathname",
+    "regex": "^/(?:help|chat)/?$",
+    "replace": "https://discordapp.com/invite/dvwXA2N"
+  },
+  {
+    "match": "pathname",
+    "regex": "^/(?:docs|documentation)(/.*)?$",
+    "replace": "/doc$1",
+    "permanent": true
+  },
+  {
+    "match": "pathname",
+    "regex": "^/doc/commands-reference(/.*)?$",
+    "replace": "/doc/command-reference$1",
+    "permanent": true
+  },
+  {
+    "match": "pathname",
+    "regex": "^/doc/tutorial/?$",
+    "replace": "/doc/tutorials",
+    "permanent": true
+  },
+  {
+    "match": "pathname",
+    "regex": "^/doc/tutorial/(.*)?",
+    "replace": "/doc/tutorials/deep/$1",
+    "permanent": true
+  },
+  {
+    "match": "pathname",
+    "regex": "^/doc/use-cases/data-and-model-files-versioning/?$",
+    "replace": "/doc/use-cases/versioning-data-and-model-files",
+    "permanent": true
+  }
+]
