@@ -27,11 +27,7 @@ redirects.forEach(redirect => {
   redirect.regexObject = new RegExp(redirect.regex)
 })
 
-const getRedirect = (req, host, pathname) => {
-  if (req.headers['x-forwarded-proto'] !== 'https' && !dev) {
-    return [301, `https://${host.replace(/^www\./, '')}${req.url}`]
-  }
-
+const matchRedirectList = (host, pathname) => {
   const wholeUrl = `https://${host}${pathname}`
 
   for (const { match, regexObject, replace, permanent } of redirects) {
@@ -43,6 +39,14 @@ const getRedirect = (req, host, pathname) => {
   }
 
   return []
+}
+
+const getRedirect = (req, host, pathname) => {
+  if (req.headers['x-forwarded-proto'] !== 'https' && !dev) {
+    return [301, `https://${host.replace(/^www\./, '')}${req.url}`]
+  }
+
+  return matchRedirectList(host, pathname)
 }
 
 app.prepare().then(() => {
