@@ -35,13 +35,13 @@ export default function CommunitySection({
       id={anchor}
       isContentVisible={isContentVisible}
     >
-      <Header color={color}>
-        <Title onClick={toggleVisibility} isContentVisible={isContentVisible}>
-          {title}
-        </Title>
+      <Header color={color} onClick={toggleVisibility}>
+        <Title isContentVisible={isContentVisible}>{title}</Title>
         <Icon src={icon} />
       </Header>
-      <MobileDescription>{mobileDescription}</MobileDescription>
+      <MobileDescription onClick={toggleVisibility}>
+        {mobileDescription}
+      </MobileDescription>
       <Description>{description}</Description>
       {background && <Picture src={background} />}
       <Content isContentVisible={isContentVisible}>{children}</Content>
