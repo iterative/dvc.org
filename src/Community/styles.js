@@ -40,6 +40,8 @@ export const Items = styled.div`
 `
 
 export const Line = styled.div`
+  overflow: hidden;
+
   & + & {
     margin-top: 20px;
   }
