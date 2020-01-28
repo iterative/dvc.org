@@ -6,9 +6,9 @@ details on how to setup it check the respective sections in the `dvc remote add`
 and `dvc remote modify` commands as well as the relevant Google Drive section of
 this User Guide.
 
-DVC uses the the _DVC Google Drive_ application on Google Cloud Platform. That
-is the name you will see in a consent screen. DVC integration is governed by
-common policies recorded here
+DVC uses the _DVC Google Drive_ application on Google Cloud Platform. That is
+the name you will see in a consent screen. DVC integration is governed by common
+policies recorded here.
 
 Your use of Google APIs with DVC is subject to each API’s respective terms of
 service. See
@@ -43,7 +43,7 @@ section of this User Guide.
 ## Scopes
 
 DVC allows you to manage your Google Drive files and therefore the default
-scopes include read/write access.
+scopes include read/write access to Google Drive.
 
 ## Sharing user data
 
