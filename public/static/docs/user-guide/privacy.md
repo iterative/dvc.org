@@ -42,8 +42,16 @@ section of this User Guide.
 
 ## Scopes
 
+`userinfo.email` scope (view your email address), `userinfo.profile` scope (see
+your personal info, including any personal info you've made publicly available),
+and `openid` scope (authenticate using OpenID Connect) are required to be used
+by Google Auth. DVC authorizes users via
+[Google's server](https://accounts.google.com/o/oauth2/auth) and doesn't access
+or collect users data used by Google Auth.
+
 DVC allows you to manage your Google Drive files and therefore the default
-scopes include read/write access to Google Drive.
+scopes include `drive` scope (read/write access to your Google Drive) and
+`drive.appdata` scope (manage configuration folder in your Google Drive).
 
 ## Sharing user data
 
