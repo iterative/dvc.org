@@ -41,6 +41,8 @@ const getRedirect = (req, host, pathname) => {
       return [code, matchTarget.replace(regexObject, replace)]
     }
   }
+
+  return []
 }
 
 app.prepare().then(() => {
