@@ -71,3 +71,9 @@ If you use DVC inside another package or application that executes its own logic
 must communicate this clearly to the user. Do not use credentials from the _DVC
 Google Drive_ application; instead, use credentials associated with your project
 or your user.
+
+## Acknowledgments
+
+This document is a modified version of the
+[Privacy policy for packages that access Google APIs](https://www.tidyverse.org/google_privacy_policy/)
+by [Tidyverse](https://www.tidyverse.org/).
