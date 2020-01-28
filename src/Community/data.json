@@ -1,6 +1,7 @@
 {
   "hero": {
-    "picture": "/static/img/community/hero.png",
+    "pictureDesktop": "/static/img/community/hero_desktop.png",
+    "pictureMobile": "/static/img/community/hero_mobile.jpg",
     "url": "http://event.link"
   },
   "section": {
