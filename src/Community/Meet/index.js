@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 import CommunityBlock from '../Block'
-import CommunityCarousel from '../Carousel'
 import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
@@ -76,14 +75,6 @@ CommunityIssue.propTypes = {
 }
 
 export default function CommunityMeet({ issues, theme, topics }) {
-  const topicsItems = topics.map(topic => (
-    <CommunityTopic {...topic} key={topic.url} color={theme.color} />
-  ))
-
-  const issuesItems = issues.map(issue => (
-    <CommunityIssue {...issue} key={issue.url} color={theme.color} />
-  ))
-
   return (
     <Wrapper>
       <CommunitySection
@@ -135,7 +126,13 @@ export default function CommunityMeet({ issues, theme, topics }) {
               icon="/static/img/community/discourse.svg"
             >
               {topics.length ? (
-                <CommunityCarousel items={topicsItems} />
+                topics.map(topic => (
+                  <CommunityTopic
+                    {...topic}
+                    key={topic.url}
+                    color={theme.color}
+                  />
+                ))
               ) : (
                 <Placeholder>Forum is unavailable right now</Placeholder>
               )}
@@ -154,7 +151,13 @@ export default function CommunityMeet({ issues, theme, topics }) {
               icon="/static/img/community/github.svg"
             >
               {issues.length ? (
-                <CommunityCarousel items={issuesItems} />
+                issues.map(issue => (
+                  <CommunityIssue
+                    {...issue}
+                    key={issue.url}
+                    color={theme.color}
+                  />
+                ))
               ) : (
                 <Placeholder>Github is unavailable right now</Placeholder>
               )}

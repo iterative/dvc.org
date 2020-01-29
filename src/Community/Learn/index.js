@@ -4,7 +4,6 @@ import format from 'date-fns/format'
 
 import CommunityBlock from '../Block'
 import CommunityButton from '../Button'
-import CommunityCarousel from '../Carousel'
 import CommunitySection from '../Section'
 
 import { pluralizeComments } from '../../utils/i18n'
@@ -120,26 +119,6 @@ CommunityDocumentation.propTypes = {
 }
 
 export default function CommunityLearn({ posts, theme }) {
-  const postItems = posts.map(post => (
-    <CommunityBlogPost {...post} key={post.url} color={theme.color} />
-  ))
-
-  const userContentItems = userContent.map(userContent => (
-    <CommunityUserContent
-      {...userContent}
-      key={userContent.url}
-      color={theme.color}
-    />
-  ))
-
-  const documentationItems = documentation.map(documentation => (
-    <CommunityDocumentation
-      {...documentation}
-      key={documentation.url}
-      color={theme.color}
-    />
-  ))
-
   return (
     <Wrapper>
       <CommunitySection
@@ -162,7 +141,13 @@ export default function CommunityLearn({ posts, theme }) {
               }
               icon="/static/img/community/documentation.svg"
             >
-              <CommunityCarousel items={documentationItems} />
+              {documentation.map(documentation => (
+                <CommunityDocumentation
+                  {...documentation}
+                  key={documentation.url}
+                  color={theme.color}
+                />
+              ))}
             </CommunityBlock>
           </Item>
           <Item>
@@ -178,7 +163,13 @@ export default function CommunityLearn({ posts, theme }) {
               icon="/static/img/community/blog.svg"
             >
               {posts.length ? (
-                <CommunityCarousel items={postItems} />
+                posts.map(post => (
+                  <CommunityBlogPost
+                    {...post}
+                    key={post.url}
+                    color={theme.color}
+                  />
+                ))
               ) : (
                 <Placeholder>Blog is unavailable right now</Placeholder>
               )}
@@ -189,7 +180,13 @@ export default function CommunityLearn({ posts, theme }) {
               title="User Content"
               icon="/static/img/community/user_content.svg"
             >
-              <CommunityCarousel items={userContentItems} />
+              {userContent.map(userContent => (
+                <CommunityUserContent
+                  {...userContent}
+                  key={userContent.url}
+                  color={theme.color}
+                />
+              ))}
             </CommunityBlock>
           </Item>
         </Items>
