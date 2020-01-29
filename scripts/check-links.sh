@@ -4,16 +4,8 @@
 #     check_links.sh [<files>]
 
 base_url="${CHECK_LINKS_RELATIVE_URL:-https://dvc.org}"
-exclude=$(echo "
-https://example.com/data.txt
-https://example.com/path/to/data
-https://example.com/path/to/data.csv
-https://example.com/path/to/dir
-https://github.com/dataversioncontrol/myrepo.git
-https://github.com/example/registry
-https://github.com/myaccount/myproject.git
-" | sort -u)
-
+exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname $0)/exclude-links.txt}"
+[ -f "$exclude" ] && exclude="$(cat $exclude)"
 
 finder(){  # expects list of files
   # explicit links
@@ -40,8 +32,8 @@ fails=0
 for file in "$@"; do
   echo -n "$file:"
   prev=$fails
-  checker $(finder "$file" | sort -u | comm -23 - <(echo "$exclude") ) || fails=$(($fails + 1))
+  checker $(finder "$file" | sort -u | comm -23 - <(echo "$exclude" | sort -u) ) || fails=$(($fails + 1))
   [ $prev -eq $fails ] && echo OK
 done
-[ $fails -eq 0 ] || echo -e "\n---\nERROR:$fails failures" >&2
+[ $fails -eq 0 ] || echo -e "ERROR:$fails failures\n---" >&2
 exit $fails
