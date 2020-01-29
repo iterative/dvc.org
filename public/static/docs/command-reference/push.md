@@ -37,7 +37,7 @@ Under the hood a few actions are taken:
   DVC-files to consult.
 
 - For each <abbr>output</abbr> referenced from each selected DVC-file, DVC finds
-  a corresponding entry in the<abbr>cache</abbr>. DVC checks whether the entry
+  a corresponding entry in the <abbr>cache</abbr>. DVC checks whether the entry
   exists in the remote. From this DVC gathers a list of files missing from the
   remote storage.
 
