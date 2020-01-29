@@ -45,6 +45,12 @@ jobs:
 
       - run: yarn lint-check
 
+      - run:
+          name: check 404 links
+          command: |
+            # only diff (otherwise would take ~60s)
+            scripts/check-links.sh <(git diff origin/master -U0)
+
       - save_cache:
           paths:
             - node_modules
