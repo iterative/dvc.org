@@ -14,81 +14,100 @@ const { parse } = require('url')
 const next = require('next')
 
 const { getItemByPath } = require('./src/utils/sidebar')
-const redirects = require('./src/redirects.json')
+let redirects = require('./src/redirects.json')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const port = process.env.PORT || 3000
 
-// Generating the RegExp objects once is faster than generating
-// them on the fly and throwing them away.
-redirects.forEach(redirect => {
-  redirect.regexObject = new RegExp(redirect.regex)
-})
+const processRedirectString = redirectString => {
+  let [regex, replace, code = 301] = redirectString.split(/\s+/g)
+  const matchPathname = /^\^?\//.test(regex)
+  regex = new RegExp(regex)
+  code = Number(code)
+  return {
+    regex,
+    matchPathname,
+    replace,
+    code
+  }
+}
+
+exports.processRedirectString = processRedirectString
+
+// Parse redirects when starting up
+redirects = redirects.map(processRedirectString)
 
 const matchRedirectList = (host, pathname) => {
   const wholeUrl = `https://${host}${pathname}`
 
-  for (const { match, regexObject, replace, permanent } of redirects) {
-    const matchTarget = match === 'url' ? wholeUrl : pathname
-    if (regexObject.test(matchTarget)) {
-      const code = permanent ? 301 : 303
-      return [code, matchTarget.replace(regexObject, replace)]
+  for (const { matchPathname, regex, replace, code } of redirects) {
+    const matchTarget = matchPathname ? pathname : wholeUrl
+    if (regex.test(matchTarget)) {
+      return [code, matchTarget.replace(regex, replace)]
     }
   }
 
   return []
 }
 
-const getRedirect = (req, host, pathname) => {
-  if (req.headers['x-forwarded-proto'] !== 'https' && !dev) {
+const getRedirect = (host, pathname, { req, dev } = {}) => {
+  if (req != null && req.headers['x-forwarded-proto'] !== 'https' && !dev) {
     return [301, `https://${host.replace(/^www\./, '')}${req.url}`]
   }
 
   return matchRedirectList(host, pathname)
 }
 
-app.prepare().then(() => {
-  createServer((req, res) => {
-    const parsedUrl = parse(req.url, true)
-    const { pathname, query } = parsedUrl
-    const host = req.headers.host
+exports.getRedirect = getRedirect
 
-    /*
-     * HTTP redirects
-     */
-    let [redirectCode, redirectLocation] = getRedirect(req, host, pathname)
+// Do not run the server if the module is being required by something else
+if (module.parent == null) {
+  app.prepare().then(() => {
+    createServer((req, res) => {
+      const parsedUrl = parse(req.url, true)
+      const { pathname, query } = parsedUrl
+      const host = req.headers.host
 
-    if (redirectLocation) {
-      // should be getting the query as a string
-      const { query } = parse(req.url)
-      if (query) {
-        redirectLocation += '?' + query
-      }
-      res.writeHead(redirectCode, {
-        'Cache-control': 'no-cache',
-        Location: redirectLocation
-      })
-      res.end()
-    } else if (/^\/doc(\/.*)?$/.test(pathname)) {
       /*
-       * Docs Engine handler
+       * HTTP redirects
        */
+      let [redirectCode, redirectLocation] = getRedirect(host, pathname, {
+        req,
+        dev
+      })
 
-      // Force 404 response code for any inexistent /doc item.
-      if (!getItemByPath(pathname)) {
-        res.statusCode = 404
+      if (redirectLocation) {
+        // should be getting the query as a string
+        const { query } = parse(req.url)
+        if (query) {
+          redirectLocation += '?' + query
+        }
+        res.writeHead(redirectCode, {
+          'Cache-control': 'no-cache',
+          Location: redirectLocation
+        })
+        res.end()
+      } else if (/^\/doc(\/.*)?$/.test(pathname)) {
+        /*
+         * Docs Engine handler
+         */
+
+        // Force 404 response code for any inexistent /doc item.
+        if (!getItemByPath(pathname)) {
+          res.statusCode = 404
+        }
+
+        // Custom route for all docs
+        app.render(req, res, '/doc', query)
+      } else {
+        // Regular Next.js handler
+        handle(req, res, parsedUrl)
       }
-
-      // Custom route for all docs
-      app.render(req, res, '/doc', query)
-    } else {
-      // Regular Next.js handler
-      handle(req, res, parsedUrl)
-    }
-  }).listen(port, err => {
-    if (err) throw err
-    console.info(`> Ready on localhost:${port}`)
+    }).listen(port, err => {
+      if (err) throw err
+      console.info(`> Ready on localhost:${port}`)
+    })
   })
-})
+}
