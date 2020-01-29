@@ -8,7 +8,7 @@
     "contribute": {
       "title": "Contribute",
       "description": "DVC is 100% open-source and we welcome contributions of all sorts to our code and docs.",
-      "mobileDescription": "PRs • Blog Posts • Talks • Ambassadors"
+      "mobileDescription": "PRs, Blog Posts, Talks, Ambassadors"
     },
     "events": {
       "title": "Events",
@@ -18,12 +18,12 @@
     "learn": {
       "title": "Learn",
       "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
-      "mobileDescription": "Docs • Blog • User Content"
+      "mobileDescription": "Docs, Blog, User Content"
     },
     "meet": {
       "title": "Community",
       "description": "Ask questions, find answers, share your ideas and connect with DVC community.",
-      "mobileDescription": "Chat • Forum • Github"
+      "mobileDescription": "Chat, Forum, Github"
     }
   },
   "documentation": [

@@ -25,6 +25,7 @@ export const Title = styled.div`
   ${media.tablet`
     font-size: 30px;
     line-height: 60px;
+    cursor: pointer;
 
     &::after {
       content: '';
@@ -36,14 +37,12 @@ export const Title = styled.div`
       margin-left: 10px;
       border-left: 7px solid transparent;
       border-right: 7px solid transparent;
+      border-top: 12px solid currentColor;
+      transition: transform 200ms;
+
       ${({ isContentVisible }) =>
-        isContentVisible
-          ? `
-          border-bottom: 12px solid currentColor;
-          
-         `
-          : `
-          border-top: 12px solid currentColor;
+        isContentVisible &&
+        `transform: rotate(-180deg)
       `}
       
     }
@@ -78,6 +77,7 @@ export const MobileDescription = styled.div`
   font-size: 18px;
   line-height: 30px;
   color: #838d93;
+  cursor: pointer;
 
   ${media.tablet`
     display: block;
