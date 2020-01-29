@@ -19,11 +19,11 @@ automatically.
 Namely:
 
 **Checkout**: For any given branch or tag, `git checkout` retrieves the
-[DVC-files](/doc/user-guide/dvc-file-format) corresponding to that version. The
-<abbr>project</abbr>'s DVC-files in turn refer to data stored in
-<abbr>cache</abbr>, but not necessarily in the <abbr>workspace</abbr>. Normally,
-it would be necessary to run `dvc checkout` to synchronize workspace and
-DVC-files.
+[DVC-files](/doc/user-guide/dvc-file-format) corresponding to that
+[Git revision](https://git-scm.com/docs/revisions). The <abbr>project</abbr>'s
+DVC-files in turn refer to data stored in <abbr>cache</abbr>, but not
+necessarily in the <abbr>workspace</abbr>. Normally, it would be necessary to
+run `dvc checkout` to synchronize workspace and DVC-files.
 
 The installed Git hook automates running `dvc checkout`.
 
@@ -121,8 +121,8 @@ $ dvc pull --all-branches --all-tags
 ## Example: Checkout both DVC and Git
 
 Let's start our exploration with the impact of `dvc install` on the
-`dvc checkout` command. Remember that switching from one Git repository version
-to another (with `git checkout`) changes the set of
+`dvc checkout` command. Remember that switching from one Git revision to another
+(with `git checkout`) changes the set of
 [DVC-files](/doc/user-guide/dvc-file-format) in the project. This changes the
 set of data files that should be located in the workspace (which can be achieved
 with `dvc checkout`).

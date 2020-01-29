@@ -154,7 +154,7 @@ solving the problem:
 $ git tag
 
 baseline-experiment     <- first simple version of the model
-bigrams-experiment       <- use bigrams to improve the model
+bigrams-experiment      <- use bigrams to improve the model
 ```
 
 ## Example: Default behavior

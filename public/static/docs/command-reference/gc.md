@@ -24,7 +24,7 @@ There are important things to note when using Git to version the
 - If the cache/remote holds several versions of the same data, all except the
   current one will be deleted.
 - Use the `--all-branches` or `--all-tags` options to avoid collecting data
-  referenced in the tips of all branches or in all tags, respectively.
+  referenced in the tips of all branches or all tags, respectively.
 
 Unless the `--cloud` (`-c`) option is used, `dvc gc` does not remove data files
 from any remote. This means that any files collected from the local cache can be
@@ -38,10 +38,9 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
   latest experiment revisions. Especially, if you intend to use `dvc gc -c` this
   option is much safer.
 
-- `-T`, `--all-tags` - the same as `-a` above but keeps cache for existing Git
-  tags. It's useful if tags are used to track "checkpoints" of an experiment or
-  project. Note that both options can be combined, for example using the `-aT`
-  flag.
+- `-T`, `--all-tags` - the same as `-a` above but applies to Git tags. It's
+  useful if tags are used to track "checkpoints" of an experiment or project.
+  Note that both options can be combined, for example using the `-aT` flag.
 
 - `-p`, `--projects` - if a single remote or a single cache is shared among
   different projects (e.g. a configuration like the one described

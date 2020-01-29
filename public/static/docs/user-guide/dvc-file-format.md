@@ -67,12 +67,10 @@ A dependency entry consists of a pair of fields:
 
   - `url`: URL of Git repository with source DVC project
   - `rev`: Only present when the `--rev` option of `dvc import` is used.
-    Specific
-    [Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-    (such as a branch name or a tag) used to import the dependency from.
-  - `rev_lock`: Revision or version (Git commit hash) of the external <abbr>DVC
-    repository</abbr> at the time of importing or updating (with `dvc update`)
-    the dependency.
+    Specific [Git revision](https://git-scm.com/docs/revisions) (such as a
+    branch name or a tag) used to import the dependency from.
+  - `rev_lock`: Git commit hash of the external <abbr>DVC repository</abbr> at
+    the time of importing or updating (with `dvc update`) the dependency.
 
   > See the examples in
   > [External Dependencies](/doc/user-guide/external-dependencies) for more

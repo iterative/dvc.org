@@ -58,11 +58,10 @@ name.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - specific
-  [Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the repository to download
-  the file or directory from. The tip of the default branch is used by default
-  when this option is not specified.
+- `--rev` - specific [Git revision](https://git-scm.com/docs/revisions) (such as
+  a branch name, a tag, or a commit hash) of the repository to download the file
+  or directory from. The tip of the default branch is used by default when this
+  option is not specified.
 
 - `--show-url` - instead of downloading the file or directory, just print the
   storage location (URL) of the target data. `path` is expected to represent a
@@ -140,11 +139,12 @@ https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 
 ## Example: Compare different versions of data or model
 
-`dvc get` provides the `--rev` option to specify which version of the repository
-to download a <abbr>data artifact</abbr> from. It also has the `--out` option to
-specify the location to place the artifact within the workspace. Combining these
-two options allows us to do something we can't achieve with the regular
-`git checkout` + `dvc checkout` process – see for example the
+`dvc get` provides the `--rev` option to specify which
+[Git revision](https://git-scm.com/docs/revisions) of the repository to download
+a <abbr>data artifact</abbr> from. It also has the `--out` option to specify the
+location to place the artifact within the workspace. Combining these two options
+allows us to do something we can't achieve with the regular `git checkout` +
+`dvc checkout` process – see for example the
 [Get Older Data Version](/doc/get-started/older-versions) chapter of our _Get
 Started_.
 
@@ -178,10 +178,10 @@ The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with
 
 `-o model.bigrams.pkl` and `--rev 9-bigrams-model` or even without `--rev`
-(since it's the latest version anyway). In fact, in this case using `dvc pull`
+(since it's the latest revision anyway). In fact, in this case using `dvc pull`
 with the corresponding [DVC-files](/doc/user-guide/dvc-file-format) should
 suffice, downloading the file as just `model.pkl`. We can then rename it to make
-its version explicit:
+its variant explicit:
 
 ```dvc
 $ dvc pull train.dvc

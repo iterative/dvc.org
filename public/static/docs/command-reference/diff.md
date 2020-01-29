@@ -1,10 +1,10 @@
 # diff
 
-Show changes between versions of the <abbr>DVC project</abbr>. It can be
+Show changes between revisions of the <abbr>DVC repository</abbr>. It can be
 narrowed down to specific target files and directories under DVC control.
 
-> This command requires that the project is a [Git](https://git-scm.com/)
-> repository.
+> This command requires that the <abbr>project</abbr> is a
+> [Git](https://git-scm.com/) repository.
 
 ## Synopsis
 
@@ -58,9 +58,9 @@ For these examples we can use the chapters in our
 ### Click and expand to setup example
 
 Start by cloning our example repo if you don't already have it. Then move into
-the repo and checkout the
-[version](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
-corresponding to the _Add Files_ chapter:
+the repo and checkout
+[the revision](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
+corresponding to the [Add Files](/doc/get-started/add-files) chapter:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -80,12 +80,12 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 
 ## Example: Previous version of the same branch
 
-The minimal `dvc diff` command only includes the "from" reference (`a_ref`) from
-which to calculate the difference. The "until" reference (`b_ref`) defaults to
-`HEAD` (currently checked out Git version).
+The minimal `dvc diff` command only includes the "from" revision (`a_ref`) from
+which to calculate the difference. The "until" revision (`b_ref`) defaults to
+`HEAD` (currently checked out Git revision).
 
-To find the general differences with the very previous version of the project,
-we can use `HEAD^` as reference A:
+To find the general differences with the very previous revision of the project,
+we can use `HEAD^` as `a_ref`:
 
 ```dvc
 $ dvc diff HEAD^
@@ -97,7 +97,7 @@ diff for 'data/data.xml'
 added file with size 37.9 MB
 ```
 
-## Example: Specific targets across Git references
+## Example: Specific targets across Git revisions
 
 We can base this example in the [Metrics](/doc/get-started/metrics) and
 [Compare Experiments](/doc/get-started/compare-experiments) chapters of our _Get
@@ -127,7 +127,7 @@ example repo.
 
 </details>
 
-To see the difference in `model.pkl` among these versions, we can run the
+To see the difference in `model.pkl` among these revisions, we can run the
 following command.
 
 ```dvc
@@ -141,7 +141,7 @@ diff for 'model.pkl'
 ```
 
 The output from this command confirms that there's a difference in the
-`model.pkl` file between the 2 Git references (tags `baseline-experiment` and
+`model.pkl` file between the 2 Git revisions (tags `baseline-experiment` and
 `bigrams-experiment`) we indicated.
 
 ### What about directories?
@@ -190,6 +190,6 @@ diff for 'data/prepared'
 ```
 
 The command above checks whether there have been any changes to the
-`data/prepared` directory after the `5-preparation` version (since the `b_ref`
-is the current version, `HEAD` by default). The output tells us that there have
+`data/prepared` directory after the `5-preparation` revision (since the `b_ref`
+is the current revision, `HEAD` by default). The output tells us that there have
 been no changes to that directory (or to any other file).

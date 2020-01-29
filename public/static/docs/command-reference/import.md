@@ -75,11 +75,10 @@ data artifact from the source project.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - specific
-  [Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the repository to download
-  the file or directory from. The tip of the default branch is used by default
-  when this option is not specified.
+- `--rev` - specific [Git revision](https://git-scm.com/docs/revisions) (such as
+  a branch name, a tag, or a commit hash) of the repository to download the file
+  or directory from. The tip of the default branch is used by default when this
+  option is not specified.
 
   > Note that this adds a `rev` field in the import stage that fixes it to this
   > revision. This can impact the behavior of `dvc update`. (See
@@ -129,8 +128,8 @@ outs:
 
 Several of the values above are pulled from the original stage file
 `model.pkl.dvc` in the external DVC repository. The `url` and `rev_lock`
-subfields under `repo` are used to save the origin and version of the
-dependency.
+subfields under `repo` are used to save the origin and revision of the
+dependency, respectively.
 
 ## Example: Fixed revisions & re-importing
 

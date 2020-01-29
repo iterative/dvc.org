@@ -1,8 +1,11 @@
 # metrics diff
 
 Show a table of changes between
-[metrics](/doc/command-reference/metrics#description) among
-<abbr>repository</abbr> versions.
+[metrics](/doc/command-reference/metrics#description) among <abbr>DVC
+repository</abbr> revisions.
+
+> This command requires that the <abbr>project</abbr> is a
+> [Git](https://git-scm.com/) repository.
 
 ## Synopsis
 
@@ -25,9 +28,9 @@ The changes shown by this command includes the new value, and numeric difference
 (delta) from the previous value of metrics. They're calculated between two
 different
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(such as branch names, tags, or commit SHA hashes) for all metrics in the
+(commit hash, branch or tag name, etc.) for all metrics in the
 <abbr>project</abbr>, found by examining all of the
-[DVC-files](/doc/user-guide/dvc-file-format) in both versions.
+[DVC-files](/doc/user-guide/dvc-file-format) in both revisions.
 
 The metrics to use in this command can be limited with the `--targets` option.
 target can also be directories (with the `-R` option), so that DVC recursively
@@ -36,8 +39,8 @@ shows changes for all metric files in it.
 ## Options
 
 - `--targets` - specific metric files or directories to calculate metrics
-  differences for. If omitted (default), this command use all metric files found
-  in both Git references.
+  differences for. If omitted (default), this command uses all metric files
+  found in both Git revisions.
 
 - `-R`, `--recursive` - determines the metric files to use by searching each
   target directory and its subdirectories for DVC-files to inspect. `targets` is

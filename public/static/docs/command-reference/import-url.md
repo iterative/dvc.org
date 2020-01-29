@@ -135,8 +135,8 @@ Follow these instructions before each example below if you actually want to try
 them on your system.
 
 Start by cloning our example repo if you don't already have it. Then move into
-the repo and checkout the
-[version](https://github.com/iterative/example-get-started/releases/tag/2-remote)
+the repo and checkout
+[the revision](https://github.com/iterative/example-get-started/releases/tag/2-remote)
 corresponding to the [Configure](/doc/get-started/configure) chapter:
 
 ```dvc

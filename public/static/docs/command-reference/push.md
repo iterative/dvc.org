@@ -52,9 +52,9 @@ configure a remote.
 
 With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
 only the files (or directories) that are new in the local repository to remote
-storage. It will not upload files associated with earlier versions or branches
-of the <abbr>project</abbr> directory, nor will it upload files that have not
-changed.
+storage. It will not upload files associated with earlier
+[revisions](https://git-scm.com/docs/revisions) of the <abbr>repository</abbr>
+(if using Git), nor will it upload files that have not changed.
 
 The `dvc status -c` command can list files tracked by DVC that are new in the
 cache (compared to the default remote.) It can be used to see what files

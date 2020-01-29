@@ -14,9 +14,9 @@ formalized. Common questions need to be answered in an unified, principled way.
 
 ### Source code and data versioning
 
-- How do you avoid discrepancies between versions of the source code and
-  versions of the data files when the data cannot fit into a traditional
-  repository format?
+- How do you avoid discrepancies between
+  [revisions](https://git-scm.com/docs/revisions) of source code and versions of
+  data files, when the data cannot fit into a traditional repository?
 
 ### Experiment time log
 

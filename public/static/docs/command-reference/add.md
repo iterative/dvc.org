@@ -74,8 +74,8 @@ to work with directory hierarchies with `dvc add`:
    directory (with default name `dirname.dvc`). Every file in the hierarchy is
    added to the cache (unless `--no-commit` flag is added), but DVC does not
    produce individual DVC-files for each file in the directory tree. Instead,
-   the single DVC-file points to a file in the cache that contains references to
-   the files in the added hierarchy.
+   the single DVC-file references a file in the cache that in turn points to the
+   files in the added hierarchy.
 
 In a <abbr>DVC project</abbr>, `dvc add` can be used to version control any
 <abbr>data artifact</abbr> (input, intermediate, or output files and
