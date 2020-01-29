@@ -47,7 +47,11 @@ function CommunityBlogPost({
 
   return (
     <Line key={url}>
-      {pictureUrl && <Image src={pictureUrl} alt="" />}
+      {pictureUrl && (
+        <a href={url}>
+          <Image src={pictureUrl} alt="" />
+        </a>
+      )}
       <Link color={color} href={url} target="_blank" rel="noreferrer nofollow">
         {title}
       </Link>
@@ -79,9 +83,14 @@ CommunityBlogPost.propTypes = {
   url: PropTypes.string
 }
 
-function CommunityUserContent({ url, title, author, date, color }) {
+function CommunityUserContent({ url, title, author, date, color, pictureUrl }) {
   return (
     <Line key={url}>
+      {pictureUrl && (
+        <a href={url}>
+          <Image src={pictureUrl} alt="" />
+        </a>
+      )}
       <Link color={color} href={url}>
         {title}
       </Link>
@@ -93,9 +102,10 @@ function CommunityUserContent({ url, title, author, date, color }) {
 }
 
 CommunityUserContent.propTypes = {
-  color: PropTypes.string,
   author: PropTypes.string,
+  color: PropTypes.string,
   date: PropTypes.string,
+  pictureUrl: PropTypes.string,
   title: PropTypes.string,
   url: PropTypes.string
 }

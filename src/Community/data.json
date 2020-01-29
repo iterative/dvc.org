@@ -48,6 +48,7 @@
       "url": "/1",
       "title": "How we use DVC in our project",
       "author": "James Hopfield",
+      "pictureUrl": "/static/img/community/ugc/donuts.png",
       "date": 1576072266986
     },
     {
@@ -70,7 +71,7 @@
       "description": "DVC team will give a talk about deployment DVC environment on Heroku server",
       "city": "New York",
       "date": 1576072266986,
-      "picture": "/static/img/community/events/event1.png"
+      "pictureUrl": "/static/img/community/events/event1.png"
     },
     {
       "url": "/2",

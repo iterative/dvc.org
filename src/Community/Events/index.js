@@ -33,7 +33,7 @@ export default function CommunityEvents({ theme }) {
       >
         <Items>
           {modifiedEvents.map(
-            ({ url, title, description, date, city, picture }) => (
+            ({ url, title, description, date, city, pictureUrl }) => (
               <Item key={url}>
                 <CommunityBlock
                   action={
@@ -42,9 +42,9 @@ export default function CommunityEvents({ theme }) {
                     </CommunityButton>
                   }
                 >
-                  {picture && (
+                  {pictureUrl && (
                     <ImageWrapper href={url}>
-                      <Image src={picture} alt="" />
+                      <Image src={pictureUrl} alt="" />
                     </ImageWrapper>
                   )}
                   <Link color={theme.color} href={url}>
