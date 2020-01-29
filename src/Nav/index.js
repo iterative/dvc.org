@@ -182,10 +182,11 @@ const DropdownWrapper = styled.span`
 const Dropdown = styled.div`
   display: none;
   position: absolute;
-  top: 32px;
+  top: 29px;
   left: 30px;
-  padding: 20px;
-  background: #fff;
+  border-radius: 5px;
+  padding: 0 20px;
+  background: #222934;
   box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.18);
 
   ${DropdownWrapper}:hover & {
@@ -195,18 +196,19 @@ const Dropdown = styled.div`
 
 const DropdownLink = styled.a`
   display: block;
-  font-size: 13px;
-  font-family: BrandonGrotesqueBold, Tahoma, Arial;
+  padding: 10px 0;
+  font-size: 18px;
+  line-height: 29px;
+  font-family: BrandonGrotesque, Tahoma, Arial;
   white-space: nowrap;
   text-decoration: none;
-  text-transform: uppercase;
-  color: #838d93;
+  color: #fff;
 
   &:hover {
-    color: #40364d;
+    opacity: 0.75;
   }
 
   & + & {
-    margin-top: 10px;
+    border-top: 1px solid #333a44;
   }
 `
