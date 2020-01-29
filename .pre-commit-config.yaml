@@ -1,0 +1,10 @@
+files: '.md$'
+repos:
+- repo: local
+  hooks:
+  - id: dead-url
+    name: Dead URL Checker
+    entry: scripts/check-links.sh
+    language: script
+    types: [text]
+    description: This hook searches for 404 URLs.
