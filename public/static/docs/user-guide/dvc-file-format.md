@@ -69,8 +69,8 @@ A dependency entry consists of a pair of fields:
   - `rev`: Only present when the `--rev` option of `dvc import` is used.
     Specific [Git revision](https://git-scm.com/docs/revisions) (such as a
     branch name or a tag) used to import the dependency from.
-  - `rev_lock`: Git commit hash of the external <abbr>DVC repository</abbr> at
-    the time of importing or updating (with `dvc update`) the dependency.
+  - `rev_lock`: Git commit SHA hash of the external <abbr>DVC repository</abbr>
+    at the time of importing or updating (with `dvc update`) the dependency.
 
   > See the examples in
   > [External Dependencies](/doc/user-guide/external-dependencies) for more
@@ -92,8 +92,8 @@ A metric entry consists of these fields:
 
 A `meta` entry consists of `key: value` pairs such as `name: John`. A meta entry
 can have any valid YAML structure containing any number of attributes.
-`"meta: string"` is also possible, it doesn't need to contain a hash (a.k.a.
-dictionary) structure always.
+`"meta: string"` is also possible, it doesn't need to contain a _hash_ structure
+(a.k.a. dictionary) always.
 
 Comments can be added to the DVC-file using `# comment` syntax. Comments and
 meta values are preserved between multiple executions of `dvc repro` and

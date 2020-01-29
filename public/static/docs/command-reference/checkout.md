@@ -179,7 +179,7 @@ outs:
   path: model.pkl
 ```
 
-But if you check `model.pkl`, the file hash is still the same:
+But if you check `model.pkl`, the file checksum is still the same:
 
 ```dvc
 $ md5 model.pkl

@@ -197,7 +197,7 @@ Saving information to 'pics.dvc'.
 
 There are no [DVC-files](/doc/user-guide/dvc-file-format) generated within this
 directory structure, but the images are all added to the <abbr>cache</abbr>. DVC
-prints a message about this, mentioning that `md5` values are computed for each
+prints a message about this, mentioning that MD5 checksums are computed for each
 directory. A single `pics.dvc` DVC-file is generated for the top-level
 directory, and it contains:
 

@@ -43,7 +43,8 @@ before running the stages that produce them.
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
 files, intermediate or final results. It saves all the data files, intermediate
 or final results into the <abbr>DVC cache</abbr> (unless `--no-commit` option is
-specified), and updates stage files with the new checksum information.
+specified), and updates stage files with the new dependency/output file or
+directory checksums.
 
 ### Parallel stage execution
 
@@ -239,7 +240,8 @@ Saving information to 'Dvcfile'.
 ```
 
 You can now check that `Dvcfile` and `count.txt` have been updated with the new
-information, new `md5` checksums and a new result respectively.
+information and updated dependency/output file checksums, and a new result,
+respectively.
 
 ## Example: Downstream
 

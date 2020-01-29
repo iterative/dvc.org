@@ -28,7 +28,7 @@ The changes shown by this command includes the new value, and numeric difference
 (delta) from the previous value of metrics. They're calculated between two
 different
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(commit hash, branch or tag name, etc.) for all metrics in the
+(commit SHA hash, branch or tag name, etc.) for all metrics in the
 <abbr>project</abbr>, found by examining all of the
 [DVC-files](/doc/user-guide/dvc-file-format) in both revisions.
 

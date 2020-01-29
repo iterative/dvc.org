@@ -85,7 +85,7 @@ file. Let's consider the full checkout first. It's quite straightforward:
 
 > `v1.0` below is a Git tag that should be created in advance to identify the
 > dataset version you are interested in. Any revision (for example `HEAD^` or a
-> commit hash) can be used instead.
+> commit SHA hash) can be used instead.
 
 ```dvc
 $ git checkout v1.0

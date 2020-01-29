@@ -15,9 +15,9 @@ $ pip install git+https://github.com/iterative/dvc
 ```
 
 > `gitpython` allows the installation process to generate a DVC version using
-> the current Git commit hash. This lets us to distinguish official DVC releases
-> (e.g. `0.64.3`) from a development version (e.g. `0.64.3-9c7381`). For more
-> information on our versioning convention, refer to
+> the current Git commit SHA hash. This lets us to distinguish official DVC
+> releases (e.g. `0.64.3`) from a development version (e.g. `0.64.3-9c7381`).
+> For more information on our versioning convention, refer to
 > [Components of DVC version](/doc/command-reference/version#components-of-dvc-version).
 
 To install a development version for contributing to the project, please refer

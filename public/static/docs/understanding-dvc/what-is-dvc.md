@@ -27,7 +27,7 @@ DVC uses a few core concepts:
   results after a successful merge.
 
 - **Experiment state** or state: Equivalent to a Git snapshot (all committed
-  files). A Git commit hash, branch or tag name, etc. can be used as a
+  files). A Git commit SHA hash, branch or tag name, etc. can be used as a
   [reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References) to an
   experiment state.
 

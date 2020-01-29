@@ -32,7 +32,7 @@ Another detail to note is that when the `--rev` (revision) option of
 kind of
 [Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 this is, for example a branch or a tag. For typically static references (e.g.
-tags), or for commits hashes, `dvc update` will not have any effect on the
+tags), or for commit SHA hashes, `dvc update` will not have any effect on the
 import. Refer to the
 [re-importing example](/doc/command-reference/import#example-fixed-revisions-re-importing)
 to learn how to "update" fixed-revision imports.

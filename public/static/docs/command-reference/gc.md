@@ -33,12 +33,13 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
 
 ## Options
 
-- `-a`, `--all-branches` - keep cached objects referenced from the latest commit
-  across all Git branches. It should be used if you want to keep data for the
-  latest experiment revisions. Especially, if you intend to use `dvc gc -c` this
-  option is much safer.
+- `-a`, `--all-branches` - keep cached objects referenced from the latest
+  [revisions](https://git-scm.com/docs/revisions) across all Git branches (tip
+  commits). It should be used if you want to keep data for the latest experiment
+  revisions. Especially, if you intend to use `dvc gc -c` this option is much
+  safer.
 
-- `-T`, `--all-tags` - the same as `-a` above but applies to Git tags. It's
+- `-T`, `--all-tags` - the same as `-a` above, but applies to Git tags. It's
   useful if tags are used to track "checkpoints" of an experiment or project.
   Note that both options can be combined, for example using the `-aT` flag.
 

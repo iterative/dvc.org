@@ -76,9 +76,9 @@ data artifact from the source project.
   it.
 
 - `--rev` - specific [Git revision](https://git-scm.com/docs/revisions) (such as
-  a branch name, a tag, or a commit hash) of the repository to download the file
-  or directory from. The tip of the default branch is used by default when this
-  option is not specified.
+  a commit SHA hash, or a branch or tag name) of the repository to download the
+  file or directory from. The tip of the default branch is used by default when
+  this option is not specified.
 
   > Note that this adds a `rev` field in the import stage that fixes it to this
   > revision. This can impact the behavior of `dvc update`. (See
@@ -159,14 +159,14 @@ deps:
 ```
 
 If the
-[Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+[Git-reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 moves (e.g. a branch), you may use `dvc update` to bring the data up to date.
-However, for typically static references (e.g. tags), or for commits hashes, in
-order to actually "update" an import, it's necessary to **re-import the data**
-instead, by using `dvc import` again without or with a different `--rev`. This
-will overwrite the import stage (DVC-file), either removing or replacing the
-`rev` field, respectively. This can produce an import stage that is able to be
-updated normally with `dvc update` going forward. For example:
+However, for typically static references (e.g. tags), or for commit SHA hashes,
+in order to actually "update" an import, it's necessary to **re-import the
+data** instead, by using `dvc import` again without or with a different `--rev`.
+This will overwrite the import stage (DVC-file), either removing or replacing
+the `rev` field, respectively. This can produce an import stage that is able to
+be updated normally with `dvc update` going forward. For example:
 
 ```dvc
 $ dvc import --rev master \
