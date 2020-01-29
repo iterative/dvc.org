@@ -1,41 +1,37 @@
-#!/bin/bash
-# Check links on the given .md files. If no files are given, check all
-# the .md files of the project.
+#!/usr/bin/env bash
+# Check links in the given files don't 404.
 # Usage:
-#     scripts/check_links.sh <base-url> [<list-of-md-files>]
-#
-# If <base-url> is missing, default is 'https://dvc.org'. If the list
-# of files is missing, all the .md files in 'static/' will be checked
-#
-# Examples:
-#     scripts/check_links.sh https://dvc.org static/docs/*/*.md
-#     scripts/check_links.sh http://localhost:3000
-#     scripts/check_links.sh
+#     check_links.sh [<files>]
 
-cd $(dirname $0)
-cd ..
+base_url="${CHECK_LINKS_RELATIVE_URL:-https://dvc.org}"
 
-# wget settings
-# the option '--max-redirect=0' disables redirections
-settings="-q --max-redirect=0 --method=HEAD"
+finder(){  # expects list of files
+  # explicit links
+  grep -Eo 'https?://[^)\S]+' "$@"
+  # markdown relative links
+  sed -nr 's/.*]\((\/[^)]+).*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
+}
+checker(){  # expects list of urls
+  errors=0
+  for url in "$@"; do
+    case $(curl -IL -w '%{http_code}' -so /dev/null "$url") in
+      404)
+        echo " ERROR:404:$url" 1>&2
+        errors=$(($errors + 1))
+        ;;
+      *)
+        ;;
+    esac
+  done
+  return $errors
+}
 
-BASE_URL=${1:-https://dvc.org}
-BASE_URL=${BASE_URL%/}    # remove a trailing /
-shift
-
-files="$@"
-[[ -z $files ]] && files='static/**/*.md'
-
-shopt -s globstar
-for file in $files; do
-    grep -o ']([^)]*)' $file | sed -e 's/^](//' -e 's/)$//' | \
-        while read link; do
-            case $link in
-                /*)   url="${BASE_URL}${link}" ;;
-                '#'*) continue ;;
-                '')   continue ;;
-                *)    url=$link ;;
-            esac
-            wget $settings "$url" || echo "$file: '$link'"
-        done
+fails=0
+for file in "$@"; do
+  echo -n "$file:"
+  prev=$fails
+  checker $(finder "$file") || fails=$(($fails + 1))
+  [ $prev -eq $fails ] && echo OK
 done
+[[ $fails -eq 0 ]] || echo "ERROR:$fails failures" >&2
+exit $fails
