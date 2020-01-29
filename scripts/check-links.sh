@@ -7,7 +7,7 @@ base_url="${CHECK_LINKS_RELATIVE_URL:-https://dvc.org}"
 
 finder(){  # expects list of files
   # explicit links
-  grep -Eo 'https?://[^)\S]+' "$@"
+  grep -Eo 'https?://[^)\S"'"'"']+' "$@"
   # markdown relative links
   sed -nr 's/.*]\((\/[^)]+).*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
 }
@@ -16,7 +16,7 @@ checker(){  # expects list of urls
   for url in "$@"; do
     case $(curl -IL -w '%{http_code}' -so /dev/null "$url") in
       404)
-        echo " ERROR:404:$url" 1>&2
+        echo " ERROR:404:$url" >&2
         errors=$(($errors + 1))
         ;;
       *)
@@ -33,5 +33,5 @@ for file in "$@"; do
   checker $(finder "$file") || fails=$(($fails + 1))
   [ $prev -eq $fails ] && echo OK
 done
-[[ $fails -eq 0 ]] || echo "ERROR:$fails failures" >&2
+[ $fails -eq 0 ] || echo -e "\n---\nERROR:$fails failures" >&2
 exit $fails
