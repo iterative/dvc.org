@@ -20,6 +20,7 @@ export const Item = styled.div`
     margin-left: 30px;
 
     ${media.tablet`
+      display: block;
       margin: 15px 0 0 0;
     `}
   }
