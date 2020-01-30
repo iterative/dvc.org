@@ -26,7 +26,7 @@ a summary of basic statistics: how many files were deleted/changed, and the file
 size differences. `a_ref` is required, while `b_ref` defaults to `HEAD`.
 
 Note that `dvc diff` does not show the line-to-line comparison among the target
-files in each revision, like `git diff` does.
+files in each reference, like `git diff` does.
 
 > For an example on how to create line-to-line text file comparison, refer to
 > [issue #770](https://github.com/iterative/dvc/issues/770#issuecomment-512693256)
@@ -80,12 +80,12 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 
 ## Example: Previous version of the same branch
 
-The minimal `dvc diff` command only includes the "from" revision (`a_ref`) from
-which to calculate the difference. The "until" revision (`b_ref`) defaults to
-`HEAD` (currently checked out Git revision).
+The minimal `dvc diff` command only includes the "from" reference (`a_ref`) from
+which to calculate the difference. The "until" reference (`b_ref`) defaults to
+`HEAD` (current Git revision).
 
-To find the general differences with the very previous revision of the project,
-we can use `HEAD^` as `a_ref`:
+To see the difference with the very previous revision of the project, we can use
+`HEAD^` as `a_ref`:
 
 ```dvc
 $ dvc diff HEAD^
@@ -127,7 +127,7 @@ example repo.
 
 </details>
 
-To see the difference in `model.pkl` among these revisions, we can run the
+To see the difference in `model.pkl` among these references, we can run the
 following command.
 
 ```dvc
@@ -141,7 +141,7 @@ diff for 'model.pkl'
 ```
 
 The output from this command confirms that there's a difference in the
-`model.pkl` file between the 2 Git revisions (tags `baseline-experiment` and
+`model.pkl` file between the 2 Git references (tags `baseline-experiment` and
 `bigrams-experiment`) we indicated.
 
 ### What about directories?
@@ -191,5 +191,5 @@ diff for 'data/prepared'
 
 The command above checks whether there have been any changes to the
 `data/prepared` directory after the `5-preparation` revision (since the `b_ref`
-is the current revision, `HEAD` by default). The output tells us that there have
-been no changes to that directory (or to any other file).
+is `HEAD` by default). The output tells us that there have been no changes to
+that directory (or to any other file).
