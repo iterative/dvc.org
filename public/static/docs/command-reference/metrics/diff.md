@@ -25,8 +25,8 @@ positional arguments:
 ## Description
 
 The changes shown by this command includes the new value, and numeric difference
-(delta) from the previous value of metrics. They're calculated between two
-different
+(delta) from the previous value of metrics (with 3-digit accuracy). They're
+calculated between two different
 [Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 (commit SHA hash, branch or tag name, etc.) for all metrics in the
 <abbr>project</abbr>, found by examining all of the
@@ -73,25 +73,53 @@ shows changes for all metric files in it.
 
 ## Examples
 
-Let's create a metrics file using a dummy command and commit it with Git:
+Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
+pipeline stages, such as the <abbr>DVC project</abbr> created in our
+[Get Started](/doc/get-started) section. Then we can see what happens with
+`dvc install` in different situations.
+
+<details>
+
+### Click and expand to setup the project
+
+Start by cloning our example repo if you don't already have it:
+
+```dvc
+$ git clone https://github.com/iterative/example-get-started
+$ cd example-get-started
+```
+
+</details>
+
+Notice that we have an `auc.metric` metric file:
 
 ```
-$ dvc run -M metrics.json 'echo "{\"AUC\": 0.5}" > metrics.json'
-$ git commit -a -m "add metrics"
+$ cat auc.metric
+0.602818
 ```
 
-Now let's say we've adjusted our scripts and our AUC has changed:
+Now let's mock a change in our AUC metric:
 
 ```
-$ dvc run -M metrics.json 'echo "{\"AUC\": 0.6}" > metrics.json'
+$ echo '0.5' > auc.metric
 ```
 
-To see the change, let's run `dvc metrics diff` without arguments. This compares
-our current <abbr>workspace</abbr> metrics to what we had in the previous
-commit:
+To see the change, let's run `dvc metrics diff`. This compares our current
+<abbr>workspace</abbr> (including uncommitted local changes) metrics to what we
+had in the previous commit:
 
 ```
+$ git diff
+--- a/auc.metric
++++ b/auc.metric
+@@ -1 +1 @@
+-0.602818
++0.5
+
 $ dvc metrics diff
-    Path       Metric   Value   Change
-metrics.json   AUC      0.600   0.100
+   Path      Metric   Value   Change
+auc.metric            0.500   -0.103
 ```
+
+> Note that metric files are typically versioned with Git, so we can use both
+> `git diff` and `dvc metrics diff` to understand their changes, as seen above.

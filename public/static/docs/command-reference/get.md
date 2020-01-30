@@ -121,7 +121,7 @@ $ ls
 install.sh
 ```
 
-### Example: Getting the storage URL of a DVC-tracked file
+## Example: Getting the storage URL of a DVC-tracked file
 
 We can use `dvc get --show-url` to get the actual location where the final model
 file from our
@@ -129,7 +129,8 @@ file from our
 stored:
 
 ```dvc
-$ dvc get https://github.com/iterative/example-get-started model.pkl --show-url
+$ dvc get --show-url \
+          https://github.com/iterative/example-get-started model.pkl
 https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 ```
 

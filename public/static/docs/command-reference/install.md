@@ -131,7 +131,6 @@ Let's first list the available tags in the _Get Started_ project:
 
 ```dvc
 $ git tag
-
 0-empty
 1-initialize
 2-remote
@@ -158,7 +157,6 @@ Note: checking out '6-featurization'.
 You are in 'detached HEAD' state...
 
 $ dvc status
-
 featurize.dvc:
     changed outs:
         modified:           data/features
@@ -241,7 +239,7 @@ If we simply edit one of the code files:
 ```dvc
 $ vi src/featurization.py
 
-$ git commit -a -m "modified featurization"
+$ git commit -a -m "Modified featurization"
 
 featurize.dvc:
     changed deps:

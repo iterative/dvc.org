@@ -100,10 +100,9 @@ be pulled from remote storage using `dvc pull`.
 ## Examples
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
-pipeline stages, as well as a few Git tags, such as our
-[get started example repo](https://github.com/iterative/example-get-started).
-Then we can see what happens with `git checkout` and `dvc checkout` as we switch
-from tag to tag.
+pipeline stages, such as the <abbr>DVC project</abbr> created in our
+[Get Started](/doc/get-started) section. Then we can see what happens with
+`git checkout` and `dvc checkout` as we switch from tag to tag.
 
 <details>
 
@@ -118,8 +117,7 @@ $ cd example-get-started
 
 </details>
 
-The workspace looks almost like in this
-[pipeline setup](/doc/tutorials/pipelines):
+The workspace looks like this:
 
 ```dvc
 .
@@ -133,15 +131,6 @@ The workspace looks almost like in this
     └── <code files here>
 ```
 
-We have these tags in the repository that represent different iterations of
-solving the problem:
-
-```dvc
-$ git tag
-baseline-experiment     <- first simple version of the model
-bigrams-experiment      <- use bigrams to improve the model
-```
-
 This project comes with a predefined HTTP
 [remote storage](/doc/command-reference/remote). We can now just run `dvc pull`
 that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
@@ -152,56 +141,56 @@ files that are under DVC control. The model file checksum
 ```dvc
 $ dvc pull
 ...
-Checking out model.pkl with cache '3863d0e317dee0a55c4e59d2ec0eef33'
+Checking out model.pkl with cache '662eb7f64216d9c2c1088d0a5e2c6951'
 ...
 
 $ md5 model.pkl
-MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
+MD5 (model.pkl) = 662eb7f64216d9c2c1088d0a5e2c6951
 ```
 
-What if we want to rewind history, so to speak? The `git checkout` command lets
-us checkout at any point in the commit history, or even checkout other tags. It
+What if we want to "rewind history", so to speak? The `git checkout` command
+lets us restore any point in the repository history, including any tags. It
 automatically adjusts the files, by replacing file content and adding or
 deleting files as necessary.
 
 ```dvc
-$ git checkout baseline
-Note: checking out 'baseline'.
+$ git checkout 7-train  # Tag to stage where model is created
+Note: checking out '7-train'.
 ...
-HEAD is now at 40cc182...
+HEAD is now at  2df4172...
 ```
 
 Let's check the `model.pkl` entry in `train.dvc` now:
 
 ```yaml
 outs:
-  md5: a66489653d1b6a8ba989799367b32c43
-  path: model.pkl
+  - md5: 43630cce66a2432dcecddc9dd006d0a7
+    path: model.pkl
 ```
 
 But if you check `model.pkl`, the file checksum is still the same:
 
 ```dvc
 $ md5 model.pkl
-MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
+MD5 (model.pkl) = 662eb7f64216d9c2c1088d0a5e2c6951
 ```
 
 This is because `git checkout` changed `featurize.dvc`, `train.dvc`, and other
 DVC-files. But it did nothing with the `model.pkl` and `matrix.pkl` files. Git
-doesn't track those files, DVC does, so we must do this:
+doesn't track those files; DVC does, so we must do this:
 
 ```dvc
 $ dvc fetch
 $ dvc checkout
 $ md5 model.pkl
-MD5 (model.pkl) = a66489653d1b6a8ba989799367b32c43
+MD5 (model.pkl) = 43630cce66a2432dcecddc9dd006d0a7
 ```
 
-What happened is that DVC went through the sole existing DVC-file and adjusted
-the current set of files to match the `outs` of that stage. `dvc fetch` is run
+What happened is that DVC went through the sole project DVC-files and adjusted
+the current set of files to match the `outs` in them. `dvc fetch` is run this
 once to download missing data from the remote storage to the <abbr>cache</abbr>.
-Alternatively, we could have just run `dvc pull` in this case to automatically
-do `dvc fetch` + `dvc checkout`.
+(Alternatively, we could have just run `dvc pull` to do `dvc fetch` +
+`dvc checkout` in one step.)
 
 ## Automating `dvc checkout`
 
@@ -222,9 +211,9 @@ running `dvc checkout` when needed.
 We can then checkout the master branch again:
 
 ```dvc
-$ git checkout bigrams
-Previous HEAD position was d171a12 add evaluation stage
-HEAD is now at d092b42 try using bigrams
+$ git checkout 9-bigrams-model  # Bigrams version of the model
+Previous HEAD position was dd2cc99 Create evaluation stage
+HEAD is now at 72e0f12 try using 9-bigrams-model
 Checking out model.pkl with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
 
 $ md5 model.pkl

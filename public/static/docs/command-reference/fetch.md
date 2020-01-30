@@ -115,9 +115,9 @@ specified in DVC-files currently in the project are considered by `dvc fetch`
 ## Examples
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
-pipeline stages, as well as a few Git tags, such as our
-[get started example repo](https://github.com/iterative/example-get-started).
-Then we can see what happens with `dvc fetch` as we switch from tag to tag.
+pipeline stages, such as the <abbr>DVC project</abbr> created in our
+[Get Started](/doc/get-started) section. Then we can see what happens with
+`dvc fetch` as we switch from tag to tag.
 
 <details>
 
