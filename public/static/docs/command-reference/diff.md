@@ -12,9 +12,10 @@ narrowed down to specific target files and directories under DVC control.
 usage: dvc diff [-h] [-q | -v] [-t TARGET] a_ref [b_ref]
 
 positional arguments:
-  a_ref     Git reference from which the diff begins
-  b_ref     Git reference until which the diff ends. If omitted,
-            `HEAD` (latest commit) is used.
+  a_ref     Git reference to the older version to compare
+            (defaults to `HEAD`)
+  b_ref     Git reference to the newer version to compare
+            (defaults to the current workspace including changes)
 ```
 
 ## Description

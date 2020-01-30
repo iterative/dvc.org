@@ -16,10 +16,10 @@ usage: dvc metrics diff [-h] [-q | -v]
                         [a_ref] [b_ref]
 
 positional arguments:
-  a_ref     Git reference from which the diff begins. If omitted,
-           `HEAD` (latest commit) is used.
-  b_ref     Git reference until which the diff ends. If omitted,
-            the current workspace is used instead.
+  a_ref     Git reference to the older version to compare
+            (defaults to `HEAD`)
+  b_ref     Git reference to the newer version to compare
+            (defaults to the current workspace including changes)
 ```
 
 ## Description
