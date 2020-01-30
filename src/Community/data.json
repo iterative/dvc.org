@@ -64,23 +64,29 @@
     }
   ],
   "events": [
-
     {
       "url": "https://www.widsconference.org/",
       "title": "Women in Data Science San Diego",
       "description": "Elle O'Brien is talking about data catalogs and feature stores.",
       "city": "San Diego",
       "date": 1589062285000,
-      "pictureUrl" : "/static/img/community/events/wids_logo.jpg"
-    },{
+    },
+    {
       "url": "https://www.mlprague.com/#schedule-saturday",
       "title": "Machine Learning Prague 2020",
       "description": "Paweł Redzyński will talk about open source tools for versioning machine learning projects",
       "city": "Prague",
       "date": 1584687600000,
       "pictureUrl": "/static/img/community/events/mlprague.png"
+    },
+    {
+      "url": "https://divops.org",
+      "title": "DivOps",
+      "description": "Paweł Redzyński will talk about open source tools for versioning machine learning projects",
+      "city": "Remote",
+      "date": 1585088349000,
+      "pictureUrl": "/static/img/community/events/divops.png"
     }
-
   ],
   "stats": {
     "users": "1380+",
