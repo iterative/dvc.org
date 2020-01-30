@@ -5,7 +5,7 @@ import color from 'color'
 import Page from '../Page'
 import Hero from '../Hero'
 import TrySection from '../TrySection'
-import Popover from '../Popover/Popover'
+import Popover from '../Popover'
 
 import { Mark, OnlyDesktop, container, media } from '../../styles'
 
