@@ -109,8 +109,8 @@ This downloads `music/songs/` from the <abbr>project</abbr>'s
 current working directory (anywhere in the file system with user write access).
 
 > Note that this command (as well as `dvc import`) has a `--rev` option to
-> download the data from a specific
-> [revision](https://git-scm.com/docs/revisions) of the source project.
+> download the data from a specific [commit](https://git-scm.com/docs/revisions)
+> of the source <abbr>repository</abbr>.
 
 ### Import workflow
 
@@ -138,8 +138,7 @@ $ dvc update dataset.dvc
 ```
 
 `dvc update` downloads new and changed files, or removes deleted ones, from
-`images/faces/`, based on the latest
-[revision](https://git-scm.com/docs/revisions) of the source project. It also
+`images/faces/`, based on the latest version of the source project. It also
 updates the project dependency metadata in the import stage (DVC-file).
 
 ### Programatic reusability of DVC data
