@@ -33,7 +33,7 @@ _cloud_ are triggered by using the `--cloud` or `--remote` options:
 
 DVC determines data and code files to compare by analyzing all
 [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>repository</abbr>
-(`--all-branches` and `--all-tags` in the `cloud` mode compare multiple
+(`--all-branches` and `--all-tags` in `--cloud` mode compare to multiple
 [Git revisions](https://git-scm.com/docs/revisions)). The comparison can be
 limited to specific DVC-files by listing them as `targets`. Changes are reported
 only against the given `targets`. When combined with the `--with-deps` option, a
@@ -113,13 +113,13 @@ workspace) is different from remote storage. Bringing the two into sync requires
   name defined using the `dvc remote` command. Implies `--cloud`.
 
 - `-a`, `--all-branches` - compares cache content against all Git branches
-  instead of checking just the current revision. This basically runs the same
+  instead of checking just the current workspace. This basically runs the same
   status command in all the branches of this repo. The corresponding branches
   are shown in the status output. Applies only if `--cloud` or a `-r` remote is
   specified.
 
 - `-T`, `--all-tags` - compares cache content against all Git tags instead of
-  checking just the current revision. Similar to `-a` above. Note that both
+  checking just the current workspace. Similar to `-a` above. Note that both
   options can be combined, for example using the `-aT` flag.
 
 - `-j JOBS`, `--jobs JOBS` - specifies the number of jobs DVC can use to

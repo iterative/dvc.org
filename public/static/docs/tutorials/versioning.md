@@ -268,8 +268,8 @@ data files, model, all of it. DVC optimizes this operation to avoid copying data
 or model files each time. So `dvc checkout` is quick even if you have large
 datasets, data files, or models.
 
-On the other hand, if we want to keep the current revision of the code, but go
-back to the previous dataset version, we can do something like this:
+On the other hand, if we want to keep the current code, but go back to the
+previous dataset version, we can do something like this:
 
 ```dvc
 $ git checkout v1.0 data.dvc
@@ -277,8 +277,8 @@ $ dvc checkout data.dvc
 ```
 
 If you run `git status` you'll see that `data.dvc` is modified and currently
-points to the `v1.0` of the dataset, while code and model files are from the
-`v2.0` [revision](https://git-scm.com/docs/revisions).
+points to the `v1.0` version of the dataset, while code and model files are from
+the `v2.0` tag.
 
 <details>
 

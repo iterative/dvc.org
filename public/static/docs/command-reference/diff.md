@@ -1,8 +1,7 @@
 # diff
 
-Show changes between <abbr>DVC repository</abbr>
-[revisions](https://git-scm.com/docs/revisions). It can be narrowed down to
-specific target files and directories under DVC control.
+Show changes between versions of the <abbr>DVC repository</abbr>. It can be
+narrowed down to specific target files and directories under DVC control.
 
 > This command requires that the <abbr>project</abbr> is a
 > [Git](https://git-scm.com/) repository.
@@ -84,7 +83,7 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 
 The minimal `dvc diff` command only includes the "from" reference (`a_ref`) from
 which to calculate the difference. The "until" reference (`b_ref`) defaults to
-`HEAD` (current Git revision).
+`HEAD` (current [Git revision](https://git-scm.com/docs/revisions)).
 
 To see the difference with the very previous revision of the project, we can use
 `HEAD^` as `a_ref`:
@@ -192,6 +191,6 @@ diff for 'data/prepared'
 ```
 
 The command above checks whether there have been any changes to the
-`data/prepared` directory after the `5-preparation` revision (since the `b_ref`
-is `HEAD` by default). The output tells us that there have been no changes to
-that directory (or to any other file).
+`data/prepared` directory after the `5-preparation` tag (since the `b_ref` is
+`HEAD` by default). The output tells us that there have been no changes to that
+directory (or to any other file).

@@ -84,8 +84,9 @@ full <abbr>workspace</abbr> checkout, or checkout of a specific data or model
 file. Let's consider the full checkout first. It's quite straightforward:
 
 > `v1.0` below is a Git tag that should be created in advance to identify the
-> dataset version you are interested in. Any revision (for example `HEAD^` or a
-> commit SHA hash) can be used instead.
+> dataset version you are interested in. Any
+> [Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+> (for example `HEAD^` or a commit SHA hash) can be used instead.
 
 ```dvc
 $ git checkout v1.0
@@ -108,8 +109,8 @@ $ dvc checkout data.dvc
 ```
 
 If you run `git status` you will see that `data.dvc` is modified and currently
-points to the `v1.0` [revision](https://git-scm.com/docs/revisions) of the
-repository. Meanwhile, code and model files are their latest versions.
+points to the `v1.0` version of the <abbr>cached</abbr> data. Meanwhile, code
+and model files are their latest versions.
 
 ![](/static/img/versioning.png)
 

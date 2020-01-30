@@ -109,7 +109,8 @@ This downloads `music/songs/` from the <abbr>project</abbr>'s
 current working directory (anywhere in the file system with user write access).
 
 > Note that this command (as well as `dvc import`) has a `--rev` option to
-> download specific [revision](https://git-scm.com/docs/revisions) of the data.
+> download the data from a specific
+> [revision](https://git-scm.com/docs/revisions) of the source project.
 
 ### Import workflow
 
@@ -144,7 +145,8 @@ updates the project dependency metadata in the import stage (DVC-file).
 ### Programatic reusability of DVC data
 
 Our Python API, included with the `dvc` package installed with DVC, includes the
-`open` function to load/stream data directly from external DVC projects:
+`open` function to load/stream data directly from external <abbr>DVC
+projects</abbr>:
 
 ```python
 import dvc.api.open

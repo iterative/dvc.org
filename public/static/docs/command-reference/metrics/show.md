@@ -39,7 +39,7 @@ extension.)
 > See `dvc metrics modify` to learn how to apply `-t` and `-x` permanently.
 
 See also `dvc metrics diff` to show changes in metrics between different
-<abbr>repository</abbr> [revisions](https://git-scm.com/docs/revisions).
+versions of the <abbr>repository</abbr>.
 
 ## Options
 
