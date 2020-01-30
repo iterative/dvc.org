@@ -80,12 +80,13 @@ versions of the <abbr>repository</abbr>.
   overwrite it for the current command run only – It may fail to produce any
   results or parse files that are not in a corresponding format in this case.
 
-- `-a`, `--all-branches` - get and print metric file contents across all Git
-  branches. It can be used to compare different experiments.
+- `-a`, `--all-branches` - print metric file contents in all Git branches
+  instead of just those present in the current workspace. It can be used to
+  compare different experiments.
 
-- `-T`, `--all-tags` - get and print metric file contents across all Git tags.
-  Similar to `-a` above. Note that both options can be combined, for example
-  using the `-aT` flag.
+- `-T`, `--all-tags` - print metric file contents in all Git tags. Similar to
+  `-a` above. Note that both options can be combined, for example using the
+  `-aT` flag.
 
 - `-R`, `--recursive` - determines the metric files to show by searching each
   target directory and its subdirectories for DVC-files to inspect. `targets` is

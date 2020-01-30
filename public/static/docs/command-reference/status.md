@@ -113,10 +113,9 @@ workspace) is different from remote storage. Bringing the two into sync requires
   name defined using the `dvc remote` command. Implies `--cloud`.
 
 - `-a`, `--all-branches` - compares cache content against all Git branches
-  instead of checking just the current workspace. This basically runs the same
-  status command in all the branches of this repo. The corresponding branches
-  are shown in the status output. Applies only if `--cloud` or a `-r` remote is
-  specified.
+  instead of just the current workspace. This basically runs the same status
+  command in every branch of this repo. The corresponding branches are shown in
+  the status output. Applies only if `--cloud` or a `-r` remote is specified.
 
 - `-T`, `--all-tags` - compares cache content against all Git tags instead of
   checking just the current workspace. Similar to `-a` above. Note that both
