@@ -59,9 +59,10 @@ For these examples we can use the chapters in our
 ### Click and expand to setup example
 
 Start by cloning our example repo if you don't already have it. Then move into
-the repo and checkout
-[the revision](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
-corresponding to the [Add Files](/doc/get-started/add-files) chapter:
+the repo and checkout the
+[3-add-file](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
+tag, corresponding to the [Add Files](/doc/get-started/add-files) _Get Started_
+chapter:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
