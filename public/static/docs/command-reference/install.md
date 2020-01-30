@@ -18,8 +18,8 @@ automatically.
 
 Namely:
 
-**Checkout**: For any given branch or tag, `git checkout` retrieves the
-[DVC-files](/doc/user-guide/dvc-file-format) corresponding to that
+**Checkout**: For any commit SHA hash, branch or tag name, etc. `git checkout`
+retrieves the [DVC-files](/doc/user-guide/dvc-file-format) corresponding to that
 [Git revision](https://git-scm.com/docs/revisions). The <abbr>project</abbr>'s
 DVC-files in turn refer to data stored in <abbr>cache</abbr>, but not
 necessarily in the <abbr>workspace</abbr>. Normally, it would be necessary to

@@ -109,7 +109,7 @@ This downloads `music/songs/` from the <abbr>project</abbr>'s
 current working directory (anywhere in the file system with user write access).
 
 > Note that this command (as well as `dvc import`) has a `--rev` option to
-> download specific revision of the data.
+> download specific [revision](https://git-scm.com/docs/revisions) of the data.
 
 ### Import workflow
 

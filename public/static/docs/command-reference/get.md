@@ -58,10 +58,10 @@ name.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - specific [Git revision](https://git-scm.com/docs/revisions) (such as
-  a commit SHA hash, or a branch or tag name) of the repository to download the
-  file or directory from. The tip of the default branch is used by default when
-  this option is not specified.
+- `--rev` - specific commit SHA hash, branch or tag name, etc. (any
+  [Git revision](https://git-scm.com/docs/revisions)) of the repository to
+  download the file or directory from. The tip of the default branch is used by
+  default when this option is not specified.
 
 - `--show-url` - instead of downloading the file or directory, just print the
   storage location (URL) of the target data. `path` is expected to represent a

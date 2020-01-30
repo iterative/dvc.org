@@ -20,11 +20,11 @@ positional arguments:
 
 ## Description
 
-Given two
-[Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-(commit hash, branch or tag name, etc.) `a_ref` and `b_ref`, this command shows
-a summary of basic statistics: how many files were deleted/changed, and the file
-size differences. `a_ref` is required, while `b_ref` defaults to `HEAD`.
+Given two commit SHA hashes, branch or tag names, etc.
+([Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References))
+`a_ref` and `b_ref`, this command shows a summary of basic statistics: how many
+files were deleted/changed, and the file size differences. `a_ref` is required,
+while `b_ref` defaults to `HEAD`.
 
 Note that `dvc diff` does not show the line-to-line comparison among the target
 files in each reference, like `git diff` does.
