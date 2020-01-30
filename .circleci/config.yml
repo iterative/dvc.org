@@ -51,7 +51,7 @@ jobs:
           name: check 404 links
           command: |
             # only diff
-            scripts/check-links.sh <(git diff origin/master -U0)
+            scripts/check-links-git-diff.sh
 
       - save_cache:
           paths:

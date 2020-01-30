@@ -75,7 +75,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format-staged && lint-staged && scripts/check-links.sh <(git diff origin/master -U0)"
+      "pre-commit": "yarn format-staged && lint-staged && scripts/check-links-git-diff.sh"
     }
   },
   "lint-staged": {
