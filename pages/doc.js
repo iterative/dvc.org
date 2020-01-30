@@ -12,11 +12,11 @@ import Page from '../src/components/Page'
 import { HeadInjector } from '../src/components/Documentation/HeadInjector'
 import Hamburger from '../src/components/Hamburger'
 import SearchForm from '../src/components/SearchForm'
-import SidebarMenu from '../src/components/Documentation/SidebarMenu/SidebarMenu'
+import SidebarMenu from '../src/components/Documentation/SidebarMenu'
 import Markdown, {
   extractSlugFromTitle
-} from '../src/components/Documentation/Markdown/Markdown'
-import RightPanel from '../src/components/Documentation/RightPanel/RightPanel'
+} from '../src/components/Documentation/Markdown'
+import RightPanel from '../src/components/Documentation/RightPanel'
 // sidebar data and helpers
 
 import { getItemByPath, structure } from '../src/utils/sidebar'
