@@ -1,8 +1,9 @@
 import PropTypes from 'prop-types'
 import React, { useCallback, useState } from 'react'
+import Collapse from 'react-collapse'
+import { presets } from 'react-motion'
 
 import {
-  Content,
   Description,
   Header,
   Icon,
@@ -11,6 +12,7 @@ import {
   Title,
   Wrapper
 } from './styles'
+import { OnlyDesktop, OnlyMobile } from '../../styles'
 
 export default function CommunitySection({
   anchor,
@@ -44,7 +46,12 @@ export default function CommunitySection({
       </MobileDescription>
       <Description>{description}</Description>
       {background && <Picture src={background} />}
-      <Content isContentVisible={isContentVisible}>{children}</Content>
+      <OnlyDesktop>{children}</OnlyDesktop>
+      <OnlyMobile>
+        <Collapse isOpened={isContentVisible} springConfig={presets.gentle}>
+          {children}
+        </Collapse>
+      </OnlyMobile>
     </Wrapper>
   )
 }

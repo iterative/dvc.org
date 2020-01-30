@@ -97,9 +97,3 @@ export const Picture = styled.img`
     display: none;
   `}
 `
-
-export const Content = styled.div`
-  ${media.tablet`
-    display: ${({ isContentVisible }) => (isContentVisible ? 'block' : 'none')}
-  `}
-`
