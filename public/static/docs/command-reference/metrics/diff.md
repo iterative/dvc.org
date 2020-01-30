@@ -48,7 +48,7 @@ shows changes for all metric files in it.
 
 - `-t`, `--type` - specify a type of the metric file. Accepted values are: `raw`
   (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be used to determine
-  how to parse and format metics for display. See `dvc metrics modify` for more
+  how to parse and format metics for display. See `dvc metrics show` for more
   details.
 
   This option will override `type` and `xpath` defined in the corresponding
@@ -59,7 +59,7 @@ shows changes for all metric files in it.
   specific metric value only. Should be used if the metric file contains
   multiple numbers and you want to use only one of them. Only a single path is
   allowed. It will override `xpath` defined in the corresponding DVC-file. See
-  `dvc metrics modify` for more details.
+  `dvc metrics show` for more details.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
