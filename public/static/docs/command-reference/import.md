@@ -158,15 +158,15 @@ deps:
       rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
 ```
 
-If the
-[Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-moves (e.g. a branch), you may use `dvc update` to bring the data up to date.
-However, for typically static references (e.g. tags), or for commit SHA hashes,
-in order to actually "update" an import, it's necessary to **re-import the
-data** instead, by using `dvc import` again without or with a different `--rev`.
-This will overwrite the import stage (DVC-file), either removing or replacing
-the `rev` field, respectively. This can produce an import stage that is able to
-be updated normally with `dvc update` going forward. For example:
+If the `rev`
+[reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References) moves
+(e.g. a branch), you may use `dvc update` to bring the data up to date. However,
+for typically static references (e.g. tags), or for commit hashes, in order to
+actually "update" an import, it's necessary to **re-import the data** instead,
+by using `dvc import` again without or with a different `--rev`. This will
+overwrite the import stage (DVC-file), either removing or replacing the `rev`
+field, respectively. This can produce an import stage that is able to be updated
+normally with `dvc update` going forward. For example:
 
 ```dvc
 $ dvc import --rev master \
