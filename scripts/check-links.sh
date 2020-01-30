@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
-# Check links in the given files don't 404.
+# Check HTTP status codes of links in the given files.
+# Success: 2xx, Errors: 4xx/5xx, Warnings: anything else.
+# Redirects (3xx) are followed.
 # Usage:
 #     check_links.sh [<files>]
 
