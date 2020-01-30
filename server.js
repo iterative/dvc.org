@@ -14,53 +14,12 @@ const { parse } = require('url')
 const next = require('next')
 
 const { getItemByPath } = require('./src/utils/sidebar')
-let redirects = require('./src/redirects.json')
+const { getRedirect } = require('./src/redirects.js')
 
 const dev = process.env.NODE_ENV !== 'production'
 const app = next({ dev })
 const handle = app.getRequestHandler()
 const port = process.env.PORT || 3000
-
-const processRedirectString = redirectString => {
-  let [regex, replace, code = 301] = redirectString.split(/\s+/g)
-  const matchPathname = /^\^?\//.test(regex)
-  regex = new RegExp(regex)
-  code = Number(code)
-  return {
-    regex,
-    matchPathname,
-    replace,
-    code
-  }
-}
-
-exports.processRedirectString = processRedirectString
-
-// Parse redirects when starting up
-redirects = redirects.map(processRedirectString)
-
-const matchRedirectList = (host, pathname) => {
-  const wholeUrl = `https://${host}${pathname}`
-
-  for (const { matchPathname, regex, replace, code } of redirects) {
-    const matchTarget = matchPathname ? pathname : wholeUrl
-    if (regex.test(matchTarget)) {
-      return [code, matchTarget.replace(regex, replace)]
-    }
-  }
-
-  return []
-}
-
-const getRedirect = (host, pathname, { req, dev } = {}) => {
-  if (req != null && req.headers['x-forwarded-proto'] !== 'https' && !dev) {
-    return [301, `https://${host.replace(/^www\./, '')}${req.url}`]
-  }
-
-  return matchRedirectList(host, pathname)
-}
-
-exports.getRedirect = getRedirect
 
 // Do not run the server if the module is being required by something else
 if (module.parent == null) {
