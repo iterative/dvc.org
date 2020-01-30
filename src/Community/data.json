@@ -65,19 +65,12 @@
   ],
   "events": [
     {
-      "url": "/1",
-      "title": "Big Data Conf'19",
-      "description": "DVC team will give a talk about deployment DVC environment on Heroku server",
-      "city": "New York",
-      "date": 1576072266986,
-      "pictureUrl": "/static/img/community/events/event1.png"
-    },
-    {
-      "url": "/2",
-      "title": "Internet of Things Conference 2019",
-      "description": "Say hello to Dmitry Petrov at desk #42",
-      "city": "Munich",
-      "date": 1576072266986
+      "url": "https://www.mlprague.com/#schedule-saturday",
+      "title": "Machine Learning Prague 2020",
+      "description": "Paweł Redzyński will talk about open source tools for versioning machine learning projects",
+      "city": "Prague",
+      "date": 1584687600000,
+      "pictureUrl": "/static/img/community/events/mlprague.png"
     }
   ],
   "stats": {
