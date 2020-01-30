@@ -9,9 +9,9 @@ exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname $0)/exclude-links.txt}"
 
 finder(){  # expects list of files
   # explicit links
-  grep -Eo 'https?://[^)\S"'"'"']+' "$@"
+  grep -Eo 'https?://[^)[:space:]"'"'"'`]+' "$@"
   # markdown relative links
-  sed -nr 's/.*]\((\/[^)]+).*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
+  sed -nr 's/.*]\((\/[^)[:space:]]+).*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
 }
 checker(){  # expects list of urls
   errors=0
