@@ -5,7 +5,8 @@ Let's explore the natural language processing
 ([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)) problem of
 predicting tags for a given StackOverflow question. For example, we want a
 classifier that can predict posts about the Python language by tagging them
-`python`. (This is a short version of the [Deep Tutorial](/doc/tutorials/deep).)
+`python`. (This is a short version of the
+[Deep Dive Tutorial](/doc/tutorials/deep).)
 
 In this example, we will focus on building a simple ML
 [pipeline](/doc/command-reference/pipeline) that takes an archive with
