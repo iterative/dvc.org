@@ -8,12 +8,13 @@ export default {
       name: 'Workspace',
       match: ['workspace'],
       desc: `
-Collection of all your project files e.g. raw datasets, sourc code, ML models,
-etc – typically in a single directory.
-[external outputs](/doc/user-guide/managing-external-data) also form part of
-your (expanded) workspace. This includes the
-[working tree](https://git-scm.com/docs/gitglossary#def_working_tree) (\`HEAD\`
-+ local changes) when using Git.
+Directory containing all your project files. For example raw datasets, source
+code, ML models, etc. A workspace becomes a **DVC project** when
+[\`dvc init\`](/doc/command-reference/init) is run, and
+[DVC-files](/doc/user-guide/dvc-file-format) or stage files are created in it.
+
+Note that [external outputs](/doc/user-guide/managing-external-data) also
+form part of your expanded workspace, technically.
       `
     },
     {
