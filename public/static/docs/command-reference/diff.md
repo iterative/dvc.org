@@ -1,7 +1,8 @@
 # diff
 
-Show changes between revisions of the <abbr>DVC repository</abbr>. It can be
-narrowed down to specific target files and directories under DVC control.
+Show changes between <abbr>DVC repository</abbr>
+[revisions](https://git-scm.com/docs/revisions). It can be narrowed down to
+specific target files and directories under DVC control.
 
 > This command requires that the <abbr>project</abbr> is a
 > [Git](https://git-scm.com/) repository.
