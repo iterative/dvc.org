@@ -1,4 +1,4 @@
-files: '.md$'
+files: '.(md|js)$'
 repos:
 - repo: local
   hooks:
