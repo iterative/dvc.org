@@ -16,15 +16,17 @@ finder(){  # expects list of files
 checker(){  # expects list of urls
   errors=0
   for url in "$@"; do
-    case $(curl -IL -w '%{http_code}' -so /dev/null "$url") in
+    status="$(curl -IL -w '%{http_code}' -so /dev/null "$url")"
+    case "$status" in
       2??)
+        # success
         ;;
       [45]??)
-        echo " ERROR:${REPLY}:$url" >&2
+        echo " ERROR:$status:$url" >&2
         errors=$(($errors + 1))
         ;;
       *)
-        echo " WARNING:${REPLY}:$url" >&2
+        echo " WARNING:$status:$url" >&2
         ;;
     esac
   done
