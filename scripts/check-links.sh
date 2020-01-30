@@ -22,10 +22,12 @@ checker(){  # expects list of urls
         # success
         ;;
       [45]??)
+        echo
         echo " ERROR:$status:$url" >&2
         errors=$(($errors + 1))
         ;;
       *)
+        echo
         echo " WARNING:$status:$url" >&2
         ;;
     esac
