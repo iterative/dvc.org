@@ -1,4 +1,4 @@
-# Google Privacy Policy
+# DVC privacy policy to access Google Services and APIs
 
 DVC is using the [Google Drive API](https://developers.google.com/drive/) to
 make it easier to store and version files in the Google Drive storage. For the
@@ -6,9 +6,9 @@ details on how to setup it check the respective sections in the `dvc remote add`
 and `dvc remote modify` commands as well as the relevant Google Drive section of
 this User Guide.
 
-DVC uses the _DVC Google Drive_ application on Google Cloud Platform. That is
-the name you will see in a consent screen. DVC integration is governed by common
-policies recorded here.
+DVC uses the _DVC_ application on Google Cloud Platform. That is the name you
+will see in a consent screen. DVC integration is governed by common policies
+recorded here.
 
 Your use of Google APIs with DVC is subject to each API’s respective terms of
 service. See
@@ -24,21 +24,23 @@ owners of the project can only see anonymous, aggregated information about usage
 of tokens obtained through its OAuth client, such as which APIs and endpoints
 are being used.
 
-DVC Google Drive integration includes functions that you can execute in order to
-read or modify your own data (or data shared with you). This can only happen
-after you provide a token, which requires that you authenticate yourself as a
-specific Google user and authorize these actions.
+## Using user data
+
+DVC includes functions that you can execute in order to read or modify your own
+data (or data shared with you). This can only happen after you provide a token,
+which requires that you authenticate yourself as a specific Google user and
+authorize these actions.
 
 DVC can help you get a token by guiding you through the OAuth flow in the
-browser. There you must consent to allow the _DVC Google Drive_ application to
-operate on your behalf. The OAuth consent screen will describe the scope of what
-is being authorized, e.g., it will name the target API(s) and whether you are
-authorizing “read only” or “read and write” access.
+browser. There you must consent to allow the _DVC_ application to operate on
+your behalf. The OAuth consent screen will describe the scope of what is being
+authorized, e.g., it will name the target API(s) and whether you are authorizing
+“read only” or “read and write” access.
 
-There are two ways to use DVC with Google Drive without authorizing the _DVC
-Google Drive_ application: bring your own service account token or configure the
-package to use an OAuth client of your choice. See the relevant Google Drive
-section of this User Guide.
+There are two ways to use DVC with Google Drive without authorizing the _DVC_
+application: bring your own service account token or configure the package to
+use an OAuth client of your choice. See the relevant Google Drive section of
+this User Guide.
 
 ## Scopes
 
@@ -56,7 +58,7 @@ scopes include `drive` scope (read/write access to your Google Drive) and
 ## Sharing user data
 
 DVC only communicates with Google APIs. No user data is shared with the owners
-of the _DVC Google Drive_ application, DVC, Iterative or any other servers.
+of the _DVC_ application, DVC, Iterative or any other servers.
 
 ## Storing user data
 
@@ -68,17 +70,16 @@ By default, an OAuth token is cached in a local file per DVC repository -
 
 ## Usage in other packages or applications
 
-Do not use an API key or client ID from the _DVC Google Drive_ application in an
-external package or tool. Per the
+Do not use an API key or client ID from the _DVC_ application in an external
+package or tool. Per the
 [Google User Data Policy](https://developers.google.com/terms/api-services-user-data-policy),
 your application must accurately represent itself when authenticating to Google
 API services.
 
 If you use DVC inside another package or application that executes its own logic
-— as opposed to code in the DVC Google Drive integration or by the user — you
-must communicate this clearly to the user. Do not use credentials from the _DVC
-Google Drive_ application; instead, use credentials associated with your project
-or your user.
+— as opposed to code in the DVC or by the user — you must communicate this
+clearly to the user. Do not use credentials from the _DVC_ application; instead,
+use credentials associated with your project or your user.
 
 ## Acknowledgments
 
