@@ -35,7 +35,7 @@ $ ls -R /tmp/dvc-storage
 04afb96060aad90176268345e10355
 ```
 
-`a304afb96060aad90176268345e10355` above is the file checksum of the `data.xml`
+`a304afb96060aad90176268345e10355` above is the file hash of the `data.xml`
 file. If you check the `data.xml.dvc`
 [DVC-file](/doc/user-guide/dvc-file-format), you will see that it has this
 string inside.

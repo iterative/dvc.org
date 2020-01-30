@@ -31,7 +31,7 @@ The execution of `dvc checkout` does the following:
 
 - Scans the DVC-files to compare against the data files or directories in the
   <abbr>workspace</abbr>. DVC knows which data (<abbr>outputs</abbr>) match
-  because their checksums are saved in the `outs` fields inside the DVC-files.
+  because their hash values are saved in the `outs` fields inside the DVC-files.
   Scanning is limited to the given `targets` (if any). See also options
   `--with-deps` and `--recursive` below.
 
@@ -134,7 +134,7 @@ The workspace looks like this:
 This project comes with a predefined HTTP
 [remote storage](/doc/command-reference/remote). We can now just run `dvc pull`
 that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
-files that are under DVC control. The model file checksum
+files that are under DVC control. The model file hash
 `3863d0e317dee0a55c4e59d2ec0eef33` will be used in the `train.dvc`
 [stage file](/doc/command-reference/run):
 
@@ -168,7 +168,7 @@ outs:
     path: model.pkl
 ```
 
-But if you check `model.pkl`, the file checksum is still the same:
+But if you check `model.pkl`, the file hash is still the same:
 
 ```dvc
 $ md5 model.pkl

@@ -183,8 +183,8 @@ outs:
 ```
 
 Just like the DVC-file we created earlier with `dvc add`, this stage file uses
-checksums that point to the cache, to describe and version control dependencies
-and outputs. Output `data/Posts.xml` file is saved as
+`md5` hashes (that point to the cache) to describe and version control
+dependencies and outputs. Output `data/Posts.xml` file is saved as
 `.dvc/cache/a3/04afb96060aad90176268345e10355` and linked (or copied) to the
 workspace, as well as added to `.gitignore`.
 
@@ -194,7 +194,7 @@ stages) we need to apply. This is important when you run `dvc repro` to
 regenerate the final or intermediate result.
 
 Second, hopefully it's clear by now that the actual data is stored in the
-`.dvc/cache` directory, each file having a name based on an `md5` checksum. This
+`.dvc/cache` directory, each file having a name based on an `md5` hash. This
 cache is similar to Git's
 [objects database](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects),
 but made specifically to handle large data files.

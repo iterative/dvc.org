@@ -77,13 +77,13 @@ http://studio.ml/
 
 - File tracking:
 
-  - DVC tracks files based on their checksum (MD5) instead of file timestamps.
+  - DVC tracks files based on their hashes (MD5) instead of file timestamps.
     This helps avoid running into heavy processes like model retraining when you
     checkout a previous, trained version of a model's code (Make would retrain
     the model).
 
   - DVC uses file timestamps and inodes for optimization. This allows DVC to
-    avoid recomputing all dependency files' checksums, which would be highly
+    avoid recomputing all dependency file hashes, which would be highly
     problematic when working with large files (10 GB+).
 
 ### Git-annex
@@ -95,7 +95,7 @@ http://studio.ml/
 - DVC can use reflinks\* or hardlinks (depending on the system) instead of
   symlinks to improve performance and the user experience.
 
-- DVC optimizes checksum calculation.
+- DVC optimizes file hash calculation.
 
 - Git-annex is a datafile-centric system whereas DVC is focused on providing a
   workflow for machine learning and reproducible experiments. When a DVC or

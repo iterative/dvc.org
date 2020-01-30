@@ -241,8 +241,8 @@ outs:
 The DVC-file is nearly the same as in the previous example. The difference is
 that the dependency (`deps`) now references the local file in the "datastore"
 directory we created previously. (Its `path` has the URL for the datastore.) And
-instead of an `etag` we have an `md5` checksum. We did this so its easy to edit
-the data file.
+instead of an `etag`, we have an `md5` hash value. We did this so its easy to
+edit the data file.
 
 Let's now manually reproduce a
 [processing chapter](/doc/get-started/connect-code-and-data) from the _Get
@@ -306,8 +306,8 @@ Data and pipelines are up to date.
 
 In the datastore directory, edit `data.xml`. It doesn't matter what you change,
 as long as it remains a valid XML file, because any change will result in a
-different dependency file checksum (`md5`) in the import stage DVC-file. Once we
-do so, we can run `dvc update` to make sure the import stage is up to date:
+different dependency file hash (`md5`) in the import stage DVC-file. Once we do
+so, we can run `dvc update` to make sure the import stage is up to date:
 
 ```dvc
 $ dvc update data.xml.dvc

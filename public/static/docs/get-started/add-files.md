@@ -52,9 +52,9 @@ $ ls -R .dvc/cache
     04afb96060aad90176268345e10355
 ```
 
-`a304afb96060aad90176268345e10355` above is the file checksum of the `data.xml`
-file we just added to DVC. If you check the `data/data.xml.dvc` DVC-file, you
-will see that it has this string inside.
+`a304afb96060aad90176268345e10355` above is the file hash of the `data.xml` file
+we just added to DVC. If you check the `data/data.xml.dvc` DVC-file, you will
+see that it has this string inside.
 
 ### Important note on cache performance
 

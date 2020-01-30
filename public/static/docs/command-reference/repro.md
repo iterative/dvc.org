@@ -44,7 +44,7 @@ before running the stages that produce them.
 files, intermediate or final results. It saves all the data files, intermediate
 or final results into the <abbr>DVC cache</abbr> (unless `--no-commit` option is
 specified), and updates stage files with the new dependency/output file or
-directory checksums.
+directory hash values.
 
 ### Parallel stage execution
 
@@ -240,7 +240,7 @@ Saving information to 'Dvcfile'.
 ```
 
 You can now check that `Dvcfile` and `count.txt` have been updated with the new
-information and updated dependency/output file checksums, and a new result,
+information and updated dependency/output file hash values, and a new result,
 respectively.
 
 ## Example: Downstream
