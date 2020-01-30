@@ -13,7 +13,8 @@
     "format-check": "prettier --check '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
     "lint-check": "eslint src pages",
     "format-all": "prettier --write '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
-    "format": "prettier --write"
+    "format": "prettier --write",
+    "link-check": "scripts/check-links.sh $(git ls-files '*.md')"
   },
   "repository": {
     "type": "git",
