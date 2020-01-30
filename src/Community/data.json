@@ -1,8 +1,8 @@
 {
   "hero": {
-    "pictureDesktop": "/static/img/community/hero_desktop.png",
-    "pictureMobile": "/static/img/community/hero_mobile.jpg",
-    "url": "http://event.link"
+    "pictureDesktop": "/static/img/community/banner.png",
+    "pictureMobile": "/static/img/community/banner-mobile.png",
+    "url": "http://dvc.org"
   },
   "section": {
     "contribute": {
