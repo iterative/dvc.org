@@ -45,6 +45,8 @@ jobs:
 
       - run: yarn lint-check
 
+      - run: yarn link-check  # takes ~60s
+
       - run:
           name: check 404 links
           command: |
