@@ -12,6 +12,8 @@ finder(){  # expects list of files
   grep -Eo 'https?://[^)[:space:]"'"'"'`]+' "$@"
   # markdown relative links
   sed -nr 's/.*]\((\/[^)[:space:]]+).*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
+  # html relative links
+  sed -nr 's/.*href=["'"'"'](\/[^"'"'"']+?)["'"'"'].*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
 }
 checker(){  # expects list of urls
   errors=0
