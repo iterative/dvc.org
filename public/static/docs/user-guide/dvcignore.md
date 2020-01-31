@@ -84,10 +84,9 @@ Only the checksums of a directory (`data/`) and one files have been
 <abbr>cached</abbr>. This means that `dvc add` ignored one of the files
 (`data1`).
 
-> The cache file with `.dir` extension is a special text file that contains the
-> mapping of files in the `data/` directory (as a JSON array), along with their
-> checksums. (Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).)
+> Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> for more info on the cache directory.
 
 Now, let's modify file `data1` and see if it affects `dvc status`.
 
