@@ -141,8 +141,8 @@ https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 ## Example: Compare different versions of data or model
 
 `dvc get` provides the `--rev` option to specify which
-[Git revision](https://git-scm.com/docs/revisions) of the repository to download
-a <abbr>data artifact</abbr> from. It also has the `--out` option to specify the
+[commit](https://git-scm.com/docs/revisions) of the repository to download a
+<abbr>data artifact</abbr> from. It also has the `--out` option to specify the
 location to place the artifact within the workspace. Combining these two options
 allows us to do something we can't achieve with the regular `git checkout` +
 `dvc checkout` process – see for example the
