@@ -52,7 +52,7 @@ function CommunityBlogPost({
           <Image src={pictureUrl} alt="" />
         </a>
       )}
-      <Link color={color} href={url} target="_blank" rel="noreferrer nofollow">
+      <Link color={color} href={url} target="_blank" rel="noreferrer noopener">
         {title}
       </Link>
       <Meta>
@@ -61,7 +61,7 @@ function CommunityBlogPost({
             <Comments
               href={commentsUrl}
               target="_blank"
-              rel="noreferrer nofollow"
+              rel="noreferrer noopener"
             >
               {pluralizeComments(count)}
             </Comments>
@@ -87,11 +87,11 @@ function CommunityUserContent({ url, title, author, date, color, pictureUrl }) {
   return (
     <Line key={url}>
       {pictureUrl && (
-        <a href={url}>
+        <a href={url} target="_blank" rel="noreferrer noopener">
           <Image src={pictureUrl} alt="" />
         </a>
       )}
-      <Link color={color} href={url}>
+      <Link color={color} href={url} target="_blank" rel="noreferrer noopener">
         {title}
       </Link>
       <Meta>

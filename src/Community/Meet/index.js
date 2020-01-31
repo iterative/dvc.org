@@ -28,11 +28,11 @@ import {
 function CommunityTopic({ url, title, date, comments, color }) {
   return (
     <Line>
-      <Link color={color} href={url} target="_blank" rel="norefferer nofollow">
+      <Link color={color} href={url} target="_blank" rel="noreferrer noopener">
         {title}
       </Link>
       <Meta>
-        <Comments href={url} target="_blank" rel="norefferer nofollow">
+        <Comments href={url} target="_blank" rel="noreferrer noopener">
           {pluralizeComments(comments)}
         </Comments>{' '}
         • last activity {formatDistanceToNow(new Date(date), 'MMM, d') + ' '}
@@ -53,11 +53,11 @@ CommunityTopic.propTypes = {
 function CommunityIssue({ url, title, date, comments, color }) {
   return (
     <Line>
-      <Link color={color} href={url} target="_black" rel="noreferrer nofollow">
+      <Link color={color} href={url} target="_black" rel="noreferrer noopener">
         {title}
       </Link>
       <Meta>
-        <Comments href={url} target="_black" rel="noreferrer nofollow">
+        <Comments href={url} target="_black" rel="noreferrer noopener">
           {pluralizeComments(comments)}
         </Comments>
         {' •'} opened {formatDistanceToNow(new Date(date), 'MMM, d')} ago
