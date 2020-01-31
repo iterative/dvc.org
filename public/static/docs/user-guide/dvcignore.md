@@ -44,7 +44,7 @@ it raises an error. Ignoring files inside such directory should be handled from
 
 The same as for [`.gitignore`](https://git-scm.com/docs/gitignore).
 
-## Example: Ignoring specific files
+## Examples
 
 Let's see what happens when we add a file to `.dvcignore`.
 
