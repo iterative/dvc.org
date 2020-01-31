@@ -194,7 +194,7 @@ stages) we need to apply. This is important when you run `dvc repro` to
 regenerate the final or intermediate result.
 
 Second, hopefully it's clear by now that the actual data is stored in the
-`.dvc/cache` directory, each file having a name based on an `md5` checksum. This
+`.dvc/cache` directory, each file having a name based on an `md5` hash. This
 cache is similar to Git's
 [objects database](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects),
 but made specifically to handle large data files.

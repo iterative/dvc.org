@@ -31,9 +31,9 @@ The execution of `dvc checkout` does the following:
 
 - Scans the DVC-files to compare against the data files or directories in the
   <abbr>workspace</abbr>. DVC knows which data (<abbr>outputs</abbr>) match
-  because their checksums are saved in the `outs` fields inside the DVC-files.
-  Scanning is limited to the given `targets` (if any). See also options
-  `--with-deps` and `--recursive` below.
+  because the corresponding file hash values are saved in the `outs` fields in
+  the DVC-files. Scanning is limited to the given `targets` (if any). See also
+  options `--with-deps` and `--recursive` below.
 
 - Missing data files or directories, or those that don't match with any
   DVC-file, are restored from the <abbr>cache</abbr>. See options `--force` and
@@ -168,7 +168,7 @@ outs:
     path: model.pkl
 ```
 
-But if you check `model.pkl`, the file checksum is still the same:
+But if you check `model.pkl`, the file hash is still the same:
 
 ```dvc
 $ md5 model.pkl
