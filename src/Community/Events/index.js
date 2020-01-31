@@ -53,7 +53,7 @@ export default function CommunityEvents({ theme }) {
                   <Meta>
                     <Line>{description}</Line>
                     <Line>
-                      {city}, {format(date, 'MMMM d')}
+                      {city}, {format(new Date(date), 'MMMM d')}
                     </Line>
                   </Meta>
                 </CommunityBlock>

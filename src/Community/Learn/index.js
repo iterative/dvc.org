@@ -95,7 +95,7 @@ function CommunityUserContent({ url, title, author, date, color, pictureUrl }) {
         {title}
       </Link>
       <Meta>
-        {author} • {format(date, 'MMM, d')}
+        {author} • {format(new Date(date), 'MMM, d')}
       </Meta>
     </Line>
   )
