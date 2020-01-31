@@ -86,7 +86,7 @@ export default function Nav({ mobile = false }) {
                   logEvent('menu', 'community')
                 }}
               >
-                Event
+                Events
               </DropdownLink>
             </NextLink>
           </Dropdown>
