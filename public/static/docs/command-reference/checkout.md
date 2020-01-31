@@ -205,7 +205,7 @@ once to download missing data from the remote storage to the <abbr>cache</abbr>.
 Alternatively, we could have just run `dvc pull` in this case to automatically
 do `dvc fetch` + `dvc checkout`.
 
-## Example: Automating `dvc checkout`
+## Example: Automating DVC checkout
 
 We want the data files or directories (managed by DVC) to match with the other
 files (managed by Git e.g. source code). This requires us to remember running
