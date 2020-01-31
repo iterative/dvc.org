@@ -101,10 +101,9 @@ and only execute the final stage.
   reproduced as part of the pipeline in the parent directory, or as an
   independent unit.
 
-- `-R`, `--recursive` - `targets` is expected to contain one or more directories
-  for this option to have effect. Determines the stages to reproduce by
-  searching each target directory and its subdirectories for DVC-files to
-  inspect.
+- `-R`, `--recursive` - determines the stages to reproduce by searching each
+  target directory and its subdirectories for DVC-files to inspect. `targets` is
+  expected to contain one or more directories for this option to have effect.
 
 - `--no-commit` - do not save outputs to cache. (See `dvc run`.) Useful when
   running different experiments and you don't want to fill up the cache with

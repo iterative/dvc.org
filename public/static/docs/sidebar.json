@@ -159,6 +159,10 @@
       {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
+      },
+      {
+        "label": "Privacy Policy",
+        "slug": "privacy"
       }
     ]
   },

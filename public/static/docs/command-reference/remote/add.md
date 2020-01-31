@@ -160,7 +160,7 @@ For more information about the variables DVC supports, please visit
 
 ```dvc
 $ dvc remote add myremote azure://my-container-name/path
-$ dvc remote modify --local myremote connection_string my-connection-string
+$ dvc remote modify --local myremote connection_string "my-connection-string"
 ```
 
 > The connection string contains access to data and is inserted into the
@@ -186,6 +186,9 @@ $ dvc remote add myremote "azure://"
   [these instructions](https://docs.microsoft.com/en-us/azure/storage/common/storage-create-storage-account).
   The connection string can be found in the "Access Keys" pane of your Storage
   Account resource in the Azure portal.
+
+  > 💡Make sure the value is quoted to prevent shell from misprocessing the
+  > command.
 
 - `container name` - this is the top-level container in your Azure Storage
   Account under which all the files for this remote will be uploaded. If the
@@ -246,7 +249,7 @@ $ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA/my-dvc-root
 ```
 
 Note that GDrive remotes are not "trusted" by default. This means that the
-[`verify`](`/doc/command-reference/remote/modify#available-settings-for-all-remotes`)
+[`verify`](/doc/command-reference/remote/modify#available-settings-for-all-remotes)
 option is enabled on this type of storage, so DVC recalculates the checksums of
 files upon download (e.g. `dvc pull`), to make sure that these haven't been
 modified.

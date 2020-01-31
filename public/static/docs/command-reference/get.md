@@ -58,12 +58,15 @@ name.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - `url` is expected to represent a Git repository for this option to
-  have an effect. Specific
+- `--rev` - specific
   [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash) of the repository to download
   the file or directory from. The tip of the default branch is used by default
   when this option is not specified.
+
+- `--show-url` - instead of downloading the file or directory, just print the
+  storage location (URL) of the target data. `path` is expected to represent a
+  cached, DVC-tracked file for this option to have effect.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -119,15 +122,31 @@ $ ls
 install.sh
 ```
 
+### Example: Getting the storage URL of a DVC-tracked file
+
+We can use `dvc get --show-url` to get the actual location where the final model
+file from our
+[get started example repo](https://github.com/iterative/example-get-started) is
+stored:
+
+```dvc
+$ dvc get https://github.com/iterative/example-get-started model.pkl --show-url
+https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
+```
+
+`remote.dvc.org/get-started` is an HTTP
+[DVC remote](/doc/command-reference/remote), whereas
+`662eb7f64216d9c2c1088d0a5e2c6951` is the file's checksum.
+
 ## Example: Compare different versions of data or model
 
-`dvc get` has the `--rev` option, to specify which version of the repository to
-download a <abbr>data artifact</abbr> from. It also has the `--out` option to
+`dvc get` provides the `--rev` option to specify which version of the repository
+to download a <abbr>data artifact</abbr> from. It also has the `--out` option to
 specify the location to place the artifact within the workspace. Combining these
 two options allows us to do something we can't achieve with the regular
 `git checkout` + `dvc checkout` process – see for example the
 [Get Older Data Version](/doc/get-started/older-versions) chapter of our _Get
-Started_ section.
+Started_.
 
 Let's use the
 [get started example repo](https://github.com/iterative/example-get-started)

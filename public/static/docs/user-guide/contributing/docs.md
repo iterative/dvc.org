@@ -13,12 +13,12 @@ To contribute documentation, these are the relevant locations under
 - [Content](https://github.com/iterative/dvc.org/tree/master/public/static/docs)
   (`docs/`): [Markdown](https://guides.github.com/features/mastering-markdown/)
   files of the different pages to render dynamically in the browser.
-- [Sections](https://github.com/iterative/dvc.org/tree/master/public/static/docs/sidebar.json)
-  (`docs/sidebar.json`): Edit it to register a new section for the navigation
-  menu.
 - [Images](https://github.com/iterative/dvc.org/tree/master/public/static/img)
   (`img/`): Add new images (png, svg, etc.) here. Reference them from the
   Markdown files like this: `![](/static/img/reproducibility.png)`.
+- [Sections](https://github.com/iterative/dvc.org/tree/master/public/static/docs/sidebar.json)
+  (`docs/sidebar.json`): Edit it to register a new section for the navigation
+  menu.
 
 Merging the appropriate changes to these files into the master branch is enough
 to update the docs and redeploy the website.

@@ -232,7 +232,7 @@ For more information about the variables DVC supports, please visit
 - `connection_string` - connection string.
 
   ```dvc
-  $ dvc remote modify myremote connection_string my-connection-string --local
+  $ dvc remote modify myremote connection_string "my-connection-string" --local
   ```
 
 For more information on configuring Azure Storage connection strings, visit
