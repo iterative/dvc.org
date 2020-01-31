@@ -29,10 +29,10 @@ export const Item = styled.div`
 export const Items = styled.div`
   display: flex;
   align-items: stretch;
-  padding-top: 30px;
+  padding-top: 40px;
 
   ${media.phablet`
-    padding: 0;
+    padding-top: 20px;
   `}
 
   ${media.tablet`

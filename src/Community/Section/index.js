@@ -4,7 +4,7 @@ import Collapse from 'react-collapse'
 import { presets } from 'react-motion'
 
 import {
-  Description,
+  DesktopDescription,
   Header,
   Icon,
   MobileDescription,
@@ -38,13 +38,13 @@ export default function CommunitySection({
       isContentVisible={isContentVisible}
     >
       <Header color={color} onClick={toggleVisibility}>
-        <Title isContentVisible={isContentVisible}>{title}</Title>
         <Icon src={icon} />
+        <div>
+          <Title isContentVisible={isContentVisible}>{title}</Title>
+          <DesktopDescription>{description}</DesktopDescription>
+          <MobileDescription>{mobileDescription}</MobileDescription>
+        </div>
       </Header>
-      <MobileDescription onClick={toggleVisibility}>
-        {mobileDescription}
-      </MobileDescription>
-      <Description>{description}</Description>
       {background && <Picture src={background} />}
       <OnlyDesktop>{children}</OnlyDesktop>
       <OnlyMobile>

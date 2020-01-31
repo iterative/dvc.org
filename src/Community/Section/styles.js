@@ -24,7 +24,7 @@ export const Title = styled.div`
 
   ${media.tablet`
     font-size: 30px;
-    line-height: 60px;
+    line-height: 35px;
     cursor: pointer;
 
     &::after {
@@ -50,18 +50,13 @@ export const Title = styled.div`
 `
 
 export const Icon = styled.img`
-  margin: -2px 0;
-
-  ${media.tablet`
-    margin: -2px -5px -12px auto;
-    width: 72px;
-    height: 72px;
-  `}
+  width: 50px;
+  height: 50px;
+  margin: 5px 10px 0 0;
 `
 
-export const Description = styled.div`
+const Description = styled.div`
   max-width: 600px;
-  margin-top: 10px;
   font-size: 16px;
   line-height: 24px;
   color: #838d93;
@@ -71,13 +66,16 @@ export const Description = styled.div`
   `};
 `
 
-export const MobileDescription = styled.div`
+export const DesktopDescription = styled(Description)`
+  max-width: 600px;
+
+  ${media.tablet`
+    display: none;
+  `};
+`
+
+export const MobileDescription = styled(Description)`
   display: none;
-  margin: 0 0 25px;
-  font-size: 18px;
-  line-height: 30px;
-  color: #838d93;
-  cursor: pointer;
 
   ${media.tablet`
     display: block;
