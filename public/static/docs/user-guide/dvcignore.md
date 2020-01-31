@@ -86,7 +86,7 @@ Only the checksums of a directory (`data/`) and one files have been
 
 > Refer to
 > [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-> for more info on the cache directory.
+> for more info.
 
 Now, let's modify file `data1` and see if it affects `dvc status`.
 

@@ -172,10 +172,9 @@ $ dvc status --cloud
 
 $ dvc fetch
 ...
-
 $ tree .dvc
 .dvc
-├── cache           <- dir .dvc/cache was created and populated
+├── cache
 │   ├── 38
 │   │   └── 63d0e317dee0a55c4e59d2ec0eef33
 │   ├── 42
@@ -185,15 +184,13 @@ $ tree .dvc
 ├── ...
 ```
 
-> The cache file with `.dir` extension is a special text file that contains the
-> mapping of files in the directory (as a JSON array), along with their
-> checksums. (Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).)
+> `dvc status --cloud` compares the cache contents vs. the default remote.
 
-<!-- Separate MD quote: -->
+Note that the `.dvc/cache` directory was created and populated.
 
-> `dvc status --cloud` (or `-c`) compares the cache contents vs. the default
-> remote.
+> Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> for more info.
 
 As seen above, used without arguments, `dvc fetch` downloads all assets needed
 by all DVC-files in the current branch, including for directories. The checksums

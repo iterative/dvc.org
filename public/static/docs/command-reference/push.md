@@ -254,7 +254,7 @@ what the `new` state means.
 
 > Refer to
 > [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-> for more info on the cache directory.
+> for more info.
 
 Next we can upload part of the data from the cache to the remote using the
 command `dvc push --with-deps <stage>.dvc`. Remember that `--with-deps` searches

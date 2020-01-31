@@ -168,11 +168,6 @@ diff for 'data/features'
 0 files deleted, size was increased by 2.9 MB
 ```
 
-> The cache file with `.dir` extension is a special text file that contains the
-> mapping of files in the `data/features/` directory (as a JSON array), along
-> with their checksums. (Refer to
-> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).)
-
 ## Example: Confirming that a target has not changed
 
 Let's use our example repo once again, that has several
