@@ -4,15 +4,22 @@ import scrollIntoView from 'dom-scroll-into-view'
 import PropTypes from 'prop-types'
 import NextLink from 'next/link'
 import includes from 'lodash.includes'
-import styled from 'styled-components'
-
-import { PAGE_DOC } from '../../../consts'
 
 import DownloadButton from '../../DownloadButton'
 
-import { OnlyDesktop, media } from '../../../styles'
-
+import { PAGE_DOC } from '../../../consts'
 import { getParentsListFromPath } from '../../../utils/sidebar'
+
+import { OnlyDesktop } from '../../../styles'
+
+import {
+  Collapse,
+  Menu,
+  SectionLink,
+  SectionLinks,
+  Sections,
+  SideFooter
+} from './styles'
 
 /** Height of each menu child items (to calc Element weight for animations) */
 const heightMap = {}
@@ -145,94 +152,3 @@ SidebarMenu.propTypes = {
   currentPath: PropTypes.string,
   onClick: PropTypes.func
 }
-
-const Menu = styled.div`
-  position: sticky;
-  top: 60px;
-  height: calc(100vh - 138px);
-  overflow-y: hidden;
-  -webkit-overflow-scrolling: touch;
-
-  ${props =>
-    props.isScrollHidden &&
-    `
-    .ps__rail-y { opacity: 0; overflow: hidden; }
-  `};
-
-  ${media.phablet`
-    position: relative;
-    top: 0;
-    height: calc(100% - 60px);
-    padding-left: 20px;
-  `};
-`
-
-const Sections = styled.div`
-  margin-bottom: 25px;
-  margin-top: 10px;
-  min-width: 280px;
-
-  ${media.phablet`
-    min-width: auto;
-  `}
-`
-
-const SectionLinks = styled.div`
-  @media (max-width: 768px) {
-    position: relative;
-  }
-`
-
-const SectionLink = styled.a`
-  display: block;
-  position: relative;
-  font-size: 18px;
-  font-weight: 500;
-  color: #b0b8c5;
-  text-decoration: none;
-  font-weight: 400;
-  line-height: 26px;
-  min-height: 26px;
-  padding-bottom: 5px;
-  padding-left: 15px;
-  margin: 0 0 0 5px;
-
-  ${props =>
-    props.isActive &&
-    `
-    color: #40364d;
-  `};
-
-  &:hover {
-    color: #3c3937;
-  }
-
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    width: 8px;
-    height: 5px;
-    background: url('/static/img/triangle_dark.svg') no-repeat center center;
-    left: 0px;
-    top: 10px;
-
-    ${props =>
-      props.isActive &&
-      `
-      transform: rotate(-90deg);
-    `};
-  }
-`
-
-const Collapse = styled.div`
-  overflow: hidden;
-  height: 0;
-  transition: height 400ms;
-  padding-left: 20px;
-`
-
-const SideFooter = styled.div`
-  margin-top: 30px;
-  padding-bottom: 30px;
-`

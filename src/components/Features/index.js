@@ -1,12 +1,11 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import Page from '../Page'
 import Hero from '../Hero'
 import FeaturesHero from '../FeaturesHero'
 import TrySection from '../TrySection'
 
-import { container, media } from '../../styles'
+import { Container, Description, Feature, Features, Icon, Name } from './styles'
 
 export default function FeaturesPage() {
   return (
@@ -159,54 +158,3 @@ export default function FeaturesPage() {
     </Page>
   )
 }
-
-const Container = styled.div`
-  ${container};
-`
-
-const Features = styled.div`
-  display: flex;
-  flex-flow: row;
-  flex-wrap: wrap;
-  padding-top: 110px;
-  padding-bottom: 90px;
-
-  ${media.phablet`
-    padding-top: 70px;
-    padding-bottom: 50px;
-  `};
-`
-
-const Feature = styled.div`
-  flex: 33.3%;
-  flex-basis: 311px;
-  margin-bottom: 63px;
-`
-
-const Icon = styled.div`
-  height: 48px;
-
-  img {
-    width: 48px;
-    height: 48px;
-  }
-`
-
-const Name = styled.h3`
-  font-family: BrandonGrotesqueMed;
-  margin-top: 10px;
-  margin-bottom: 10px;
-
-  font-size: 20px;
-  font-weight: 500;
-  color: #40364d;
-
-  min-height: 28px;
-`
-
-const Description = styled.div`
-  max-width: 311px;
-
-  font-size: 16px;
-  color: #5f6c72;
-`

@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import includes from 'lodash.includes'
 
-import DesktopView from './desktop-view'
-import MobileView from './mobile-view'
+import DesktopView from './DesktopView'
+import MobileView from './MobileView'
 
 import glossary from '../../../public/static/docs/glossary'
 

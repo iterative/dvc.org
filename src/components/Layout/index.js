@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import { useRouter } from 'next/router'
 
 import TopMenu from '../TopMenu'
@@ -8,6 +7,8 @@ import Footer from '../Footer'
 import HamburgerMenu from '../HamburgerMenu'
 
 import { initGA, logPageView } from '../../utils/ga'
+
+import { Wrapper, Bodybag, ModalRoot } from './styles'
 
 export default function Layout({ children, enableSmoothScroll }) {
   const router = useRouter()
@@ -42,32 +43,3 @@ Layout.propTypes = {
   children: PropTypes.node.isRequired,
   enableSmoothScroll: PropTypes.bool
 }
-
-const Wrapper = styled.div`
-  overflow: hidden;
-`
-
-const Bodybag = styled.div`
-  position: fixed;
-  top: 80px;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  transition: top 0.2s linear;
-  -webkit-overflow-scrolling: touch;
-
-  ${({ enableSmoothScroll }) =>
-    enableSmoothScroll &&
-    `
-    scroll-behavior: smooth;
-    will-change: scroll-position;
-  `}
-`
-
-const ModalRoot = styled.div`
-  position: fixed;
-  z-index: 100000;
-`

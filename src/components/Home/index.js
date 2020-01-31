@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 
 import LearnMore from '../LearnMore'
 import Page from '../Page'
@@ -9,6 +8,8 @@ import Diagram from '../Diagram'
 import PromoSection from '../PromoSection'
 import UseCases from '../UseCases'
 import Subscribe from '../Subscribe'
+
+import { LearnMoreSection } from './styles'
 
 export default function HomePage() {
   return (
@@ -27,11 +28,3 @@ export default function HomePage() {
     </Page>
   )
 }
-
-const LearnMoreSection = styled.div`
-  z-index: 2;
-  position: absolute;
-  transform: translate(-50%, 0%);
-  left: 50%;
-  bottom: 16px;
-`

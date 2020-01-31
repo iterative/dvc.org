@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
+
+import { Cursor, Wrapper } from './styles'
 
 export default class TextRotate extends Component {
   static defaultProps = {
@@ -129,8 +130,3 @@ TextRotate.propTypes = {
   words: PropTypes.arrayOf(PropTypes.string).isRequired,
   wordDelay: PropTypes.number.isRequired
 }
-
-const Wrapper = styled.span``
-const Cursor = styled.span`
-  vertical-align: 4px;
-`

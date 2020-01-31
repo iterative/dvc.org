@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styled from 'styled-components'
 import Collapse from 'react-collapse'
 import { presets } from 'react-motion'
 
-class TextCollapse extends Component {
+import { MoreText, Wrapper } from './styles'
+
+export default class TextCollapse extends Component {
   state = {
     isOpened: false
   }
@@ -35,18 +36,3 @@ TextCollapse.propTypes = {
   children: PropTypes.node.isRequired,
   header: PropTypes.node.isRequired
 }
-
-export default TextCollapse
-
-const Wrapper = styled.button`
-  text-align: left;
-  border: none;
-  appearance: none;
-  background: none;
-  font-family: BrandonGrotesque, Tahoma, Arial;
-`
-
-const MoreText = styled.div`
-  color: #13adc7;
-  font-size: 16px;
-`

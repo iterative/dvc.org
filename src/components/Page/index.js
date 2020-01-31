@@ -1,16 +1,9 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import { createGlobalStyle } from 'styled-components'
-import reset from 'styled-reset'
 
 import Layout from '../Layout'
 
-import { global } from '../../styles'
-
-const GlobalStyle = createGlobalStyle`
-  ${reset}
-  ${global}
-`
+import { GlobalStyle } from '../../styles'
 
 export default class Page extends Component {
   render() {
