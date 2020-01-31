@@ -28,8 +28,13 @@ export default function CommunityContribute({ theme }) {
             <CommunityBlock
               title="Make a PR"
               action={
-                <CommunityButton theme={theme} href="/">
-                  Open Chat
+                <CommunityButton
+                  theme={theme}
+                  href="https://github.com/iterative/dvc"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                >
+                  Go to Github
                 </CommunityButton>
               }
             >
@@ -40,8 +45,8 @@ export default function CommunityContribute({ theme }) {
             <CommunityBlock
               title="Write a blogpost"
               action={
-                <CommunityButton theme={theme} href="/">
-                  Learn More
+                <CommunityButton theme={theme} href="mailto:info@dvc.org">
+                  Let’s talk!
                 </CommunityButton>
               }
             >
@@ -53,8 +58,8 @@ export default function CommunityContribute({ theme }) {
             <CommunityBlock
               title="Give a talk"
               action={
-                <CommunityButton theme={theme} href="/">
-                  Learn More
+                <CommunityButton theme={theme} href="mailto:info@dvc.org">
+                  Let’s talk!
                 </CommunityButton>
               }
             >
@@ -66,8 +71,8 @@ export default function CommunityContribute({ theme }) {
             <CommunityBlock
               title="Be an Ambassador"
               action={
-                <CommunityButton theme={theme} href="/">
-                  Apply
+                <CommunityButton theme={theme} href="mailto:info@dvc.org">
+                  Let’s talk!
                 </CommunityButton>
               }
             >
