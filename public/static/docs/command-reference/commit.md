@@ -26,9 +26,6 @@ time tying stages or a pipeline. These scenarios are further detailed below.
 💡 For convenience, a Git hook is available to remind you to `dvc commit` when
 needed after a `git commit`. See `dvc install` for more details.
 
-> Note that the hooks only have an effect in repository versions (branches,
-> etc.) where DVC is active.
-
 - Code or data for a stage is under active development, with rapid iteration of
   code, configuration, or data. Run DVC commands (`dvc run`, `dvc repro`, and
   even `dvc add`) using the `--no-commit` option to avoid caching unnecessary

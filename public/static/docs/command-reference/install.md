@@ -16,8 +16,9 @@ like Git to store code and configuration files. With `dvc install`, the two are
 more tightly integrated in order to cause certain convenient actions to happen
 automatically.
 
-> Note that the hooks only have an effect in repository versions (branches,
-> etc.) where DVC is active.
+Note that this command requires the <abbr>DVC project</abbr> to be a Git
+repository. But **the hooks won't activate** if the current branch (commit, tag,
+etc.) doesn't have DVC initialized (no `.dvc/` directory present).
 
 Namely:
 

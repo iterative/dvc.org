@@ -32,9 +32,6 @@ save any changes in the code or DVC-files. Those should be saved by using
 💡 For convenience, a Git hook is available to automate running `dvc push` after
 `git push`. See `dvc install` for more details.
 
-> Note that the hooks only have an effect in repository versions (branches,
-> etc.) where DVC is active.
-
 Under the hood a few actions are taken:
 
 - The push command by default uses all

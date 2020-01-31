@@ -29,9 +29,6 @@ after `git checkout`. See the
 [**Automating** example](#example-automating-dvc-checkout) below or
 `dvc install` for more details.
 
-> Note that the hooks only have an effect in repository versions (branches,
-> etc.) where DVC is active.
-
 The execution of `dvc checkout` does the following:
 
 - Scans the DVC-files to compare against the data files or directories in the
