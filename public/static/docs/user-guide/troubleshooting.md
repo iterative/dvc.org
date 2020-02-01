@@ -3,7 +3,10 @@
 In this section we provide help for some of the problems that DVC user might
 stumble upon.
 
-<!-- This file uses a special engine feature for the following headers, so that a custom anchor link is used. Just add {#custom-anchor} after each title: -->
+<!--
+This file uses a special engine feature for the following headers, so that a
+custom anchor link is used. Just add {#custom-anchor} after each title:
+-->
 
 ## Too many open files error {#many-files}
 
