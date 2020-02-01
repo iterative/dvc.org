@@ -161,10 +161,11 @@ deps:
       rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
 ```
 
-If `rev` moves (e.g. a branch), you may use `dvc update` to bring the data up to
-date. If it's static however (e.g. a commit hash), it would be necessary to
-**re-import the data** instead, by using `dvc import` again with a different (or
-without) `--rev`. For example:
+If `rev` is a branch, it will probably have newer commits periodically. To bring
+the data up to date (and update `rev_lock` in the DVC-file), simply use
+`dvc update`. If `rev` is static though (e.g. a commit hash or a tag), you would
+need to **re-import** a different commit instead, by using `dvc import` again
+with a different (or without) `--rev`. For example:
 
 ```dvc
 $ dvc import --rev master \
