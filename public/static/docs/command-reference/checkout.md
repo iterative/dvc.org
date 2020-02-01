@@ -26,8 +26,8 @@ that changes the DVC-files in the workspace.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
 after `git checkout`. See the
-[**Automating** example](#example-automating-dvc-checkout) below or
-`dvc install` for more details.
+[Automating example](#example-automating-dvc-checkout) below or `dvc install`
+for more details.
 
 The execution of `dvc checkout` does the following:
 
