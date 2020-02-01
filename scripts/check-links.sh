@@ -4,7 +4,7 @@
 # Redirects (3xx) are followed.
 # Usage:
 #     check_links.sh [<files>]
-set -euxo pipefail
+set -euo pipefail
 
 base_url="${CHECK_LINKS_RELATIVE_URL:-https://dvc.org}"
 exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname $0)/exclude-links.txt}"
