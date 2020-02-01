@@ -13,8 +13,8 @@ changes in the remote data source. Creates a DVC-file.
 usage: dvc import-url [-h] [-q | -v] [-f FILE] url [out]
 
 positional arguments:
-  url                   (See supported URLs in the description.)
-  out                   Destination path to put files in.
+  url            (See supported URLs in the description.)
+  out            Destination path to put data in.
 ```
 
 ## Description

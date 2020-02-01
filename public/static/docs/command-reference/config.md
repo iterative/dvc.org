@@ -9,8 +9,8 @@ usage: dvc config [-h] [--global] [--system] [--local] [-q | -v] [-u]
                   name [value]
 
 positional arguments:
-  name           Option name.
-  value          Option value.
+  name              Option name.
+  value             Option value.
 ```
 
 ## Description
