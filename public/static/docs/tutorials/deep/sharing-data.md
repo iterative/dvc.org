@@ -50,15 +50,17 @@ In order to reuse your data files, a colleague can pull data the same way from
 the master branch:
 
 ```dvc
-$ git clone https://github.com/dmpetrov/new_tag_classifier.git
-$ cd new_tag_classifier
-$ dvc pull
+$ git clone https://github.com/iterative/example-get-started.git
+$ cd example-get-started
+$ dvc pull data/data.xml.dvc prepare.dvc
 ```
 
-After executing `dvc pull`, all the data files should be in the right place. You
-can confirm this by trying to reproduce the default goal:
+After running `dvc pull` above, all the data files related to the
+['prepare' stage](https://github.com/iterative/example-get-started/blob/master/prepare.dvc)
+in that repo should be in the right place. You can confirm this by trying to
+reproduce the default goal:
 
 ```dvc
-$ dvc repro
-Nothing to reproduce.
+$ dvc repro prepare.dvc
+Data and pipelines are up to date.
 ```
