@@ -8,10 +8,8 @@ export default {
       name: 'Workspace',
       match: ['workspace'],
       desc: `
-Directory containing all your project files. For example raw datasets, source
-code, ML models, etc. Note that
-[external outputs](/doc/user-guide/managing-external-data) also form part of
-your expanded workspace.
+Directory containing all your project files, for example raw datasets, source
+code, ML models, etc. It will conatain your DVC project.
       `
     },
     {
@@ -22,14 +20,14 @@ Initialized by running \`dvc init\` in the **workspace** (typically in a Git
 repository). It will contain the
 [\`.dvc/\` directory](/doc/user-guide/dvc-files-and-directories) and
 [DVC-files](/doc/user-guide/dvc-file-format) created with commands such as
-\`dvc add\` or \`dvc run\`. It may also be a Git repository.
+\`dvc add\` or \`dvc run\`.
       `
     },
     {
       name: 'DVC Repository',
       match: ['DVC repository', 'DVC repositories'],
       desc: `
-**DVC project** initialized using \`dvc init\` in a Git repository. It will
+**DVC project** initialized (with \`dvc init\`) in a Git repository. It will
 contain \`.git/\` and [\`.dvc/\`](/doc/user-guide/dvc-files-and-directories)
 directories, as well as any DVC-files created by DVC.
       `
