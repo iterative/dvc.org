@@ -159,10 +159,16 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
 
 We try to use a casual and fun tone in our docs. We also avoid authoritative
 language such as "As you can see, clearly this is what happened..." which while
-good-intentioned, may scare off beginners.
+good-intentioned, may scare off readers.
 
-For emphasis, we tend to use **bold** text, and _italics_ for some special
-terms.
+We prefer human-friendly language than exact jargon, but we do seek preciseness,
+even if using simple, general terms. Our
+[command-references](/doc/command-reference) and some
+[user-guides](/doc/user-guide) are the most technical documents we have, where
+specialized terminology is used the most, but even there, often we use
+expandable sections for complex implementation details.
+
+We use **bold** text for emphasis, and _italics_ for special terms.
 
 We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 
@@ -170,4 +176,5 @@ We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
   and "Note that..." notes)
 - 💡 Useful tips related to external tools/integrations
 
-Some other emojis currently in use here and there: ⚡🙏🐛⭐❗
+Some other emojis currently in use here and there: ⚡🙏🐛⭐❗ (We're not limited
+to these.)
