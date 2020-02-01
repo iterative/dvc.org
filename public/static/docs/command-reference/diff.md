@@ -13,7 +13,7 @@ usage: dvc diff [-h] [-q | -v] [-t TARGET] a_ref [b_ref]
 
 positional arguments:
   a_ref     Git reference to the older version to compare
-            (defaults to `HEAD`)
+            (defaults to HEAD)
   b_ref     Git reference to the newer version to compare
             (defaults to the current workspace including changes)
 ```
