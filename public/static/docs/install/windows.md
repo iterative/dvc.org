@@ -24,7 +24,7 @@ which is a POSIX-like command line terminal in Windows.
 $ conda install -c conda-forge dvc
 ```
 
-> Currently, it supports only Python versions 2.7, 3.6, and 3.7.
+> Currently, it supports only Python versions 3.6, and 3.7.
 
 ## Install with pip
 
