@@ -347,4 +347,4 @@ Data and pipelines are up to date.
 
 `dvc repro` executes the command defined in the given `prepare.dvc` stage after
 noticing that its dependency `data/data.xml` has changed. `dvc status` should
-report "Nothing to reproduce." after this.
+report "Data and pipelines are up to date." after this.

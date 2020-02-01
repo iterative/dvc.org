@@ -21,7 +21,7 @@ graph nodes (pipeline [stages](/doc/command-reference/run)).
 
 If you run `repro` on any [DVC-file](/doc/user-guide/dvc-file-format) from our
 repository, nothing happens because nothing was changed in the pipeline defined
-in the <abbr>project</abbr>. There's nothing to reproduce.
+in the <abbr>project</abbr>: There's nothing to reproduce.
 
 ```dvc
 $ dvc repro model.p.dvc
@@ -149,11 +149,11 @@ original model from the master branch.
 $ git checkout master
 $ dvc checkout
 $ dvc repro
-Nothing to reproduce.
+Data and pipelines are up to date.
 ```
 
 After proper checkout, there is nothing to reproduce because all the correct
-files were checked out by Git and all data files by DVC.
+files were checked out by Git, and all data files by DVC.
 
 In more detail — `git checkout master` checked out the code and DVC-files. The
 DVC-files from the master branch point to old (unigram based) dependencies and
@@ -309,5 +309,5 @@ changes in the right place and reproduction is not needed.
 ```dvc
 $ dvc checkout
 $ dvc repro
-Nothing to reproduce.
+Data and pipelines are up to date.
 ```
