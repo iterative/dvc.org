@@ -11,11 +11,13 @@ exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname $0)/exclude-links.txt}"
 [ -f "$exclude" ] && exclude="$(cat $exclude)"
 
 finder(){  # expects list of files
-  # explicit links
-  grep -Eo 'https?://[^)[:space:]"'"'"'`}]+' "$@"
-  # markdown relative links
+  # explicit links not in markdown
+  pcregrep -o '(?<!\]\()https?://[^\s<>"'"'"'`;}]+' "$@"
+  # explicit links in markdown
+  pcregrep -o '(?<=\])\(https?://[^[\]\s]+\)' "$@" | pcregrep -o '\((?:[^)(]*(?R)?)*+\)' | pcregrep -o '(?<=\().*(?=\))'
+  # relative links in markdown
   sed -nr 's/.*]\((\/[^)[:space:]]+).*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
-  # html relative links
+  # relative links in html
   sed -nr 's/.*href=["'"'"'](\/[^"'"'"']+?)["'"'"'].*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
 }
 checker(){  # expects list of urls
@@ -44,7 +46,7 @@ fails=0
 for file in "$@"; do
   echo -n "$file:"
   prev=$fails
-  checker $(finder "$file" | sort -u | comm -23 - <(echo "$exclude" | sort -u) ) || fails=$(($fails + 1))
+  checker $(finder "$file" | sort -u | comm -23 - <(echo "$exclude" | sort -u)) || fails=$(($fails + 1))
   [ $prev -eq $fails ] && echo OK
 done
 [ $fails -eq 0 ] || echo -e "ERROR:$fails failures\n---" >&2
