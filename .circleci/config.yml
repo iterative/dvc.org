@@ -45,11 +45,7 @@ jobs:
 
       - run: yarn lint-check
 
-      - run:
-          name: check problematic links
-          command: |
-            # only diff
-            scripts/link-check-git-diff.sh
+      - run: yarn link-check-diff
 
       - save_cache:
           paths:
