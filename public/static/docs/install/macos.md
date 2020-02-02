@@ -21,7 +21,7 @@ from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 <!-- Separate MD quote: -->
 
 > You may try [these instructions](https://stackoverflow.com/a/42120328/761963)
-> to uninstall a MacOS package.
+> to uninstall the MacOS package.
 
 ## Install with pip
 
@@ -51,9 +51,6 @@ In this case it installs `boto3` library as well, besides DVC.
 
 </details>
 
-> To uninstall, use
-> [`pip uninstall`](https://pip.pypa.io/en/stable/reference/pip_uninstall/)
-
 ## Install with conda
 
 > Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
@@ -66,6 +63,3 @@ $ conda install -c conda-forge dvc
 > Currently, it supports Python 3.5-3.7
 
 <!-- Separate MD quote: -->
-
-> To uninstall, use
-> [`conda remove`](https://docs.conda.io/projects/conda/en/latest/commands/remove.html)

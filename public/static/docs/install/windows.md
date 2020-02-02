@@ -11,6 +11,9 @@ which is available from the big "Download" button on the [home page](/). You can
 also get it from the [release page](https://github.com/iterative/dvc/releases/)
 on GitHub.
 
+> You may use Windows Uninstaller to
+> [remove the program](https://support.microsoft.com/en-us/help/4028054/windows-10-repair-or-remove-programs).
+
 ## Install with conda
 
 > Requires [Miniconda](https://docs.conda.io/en/latest/miniconda.html) or
