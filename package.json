@@ -14,7 +14,7 @@
     "lint-check": "eslint src pages",
     "format-all": "prettier --write '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
     "format": "prettier --write",
-    "link-check": "scripts/link-check.sh $(find pages/ public/static/docs/ src/ .github/ -name '*.md' -o -name '*.js' && ls *.md *.js)"
+    "link-check": "scripts/link-check-git-all.sh"
   },
   "repository": {
     "type": "git",
