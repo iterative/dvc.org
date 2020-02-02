@@ -3,7 +3,7 @@
 # Success: 2xx, Errors: 4xx/5xx, Warnings: anything else.
 # Redirects (3xx) are followed.
 # Usage:
-#     check_links.sh [<files>]
+#     link-check.sh [<files>]
 set -euo pipefail
 
 base_url="${CHECK_LINKS_RELATIVE_URL:-https://dvc.org}"

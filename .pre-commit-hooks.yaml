@@ -1,6 +1,6 @@
 - id: dead-url
   name: Dead URL Checker
-  entry: scripts/check-links.sh
+  entry: scripts/link-check.sh
   language: script
   types: [text]
-  description: This hook searches for 404 URLs.
+  description: This hook searches for problematic URLs.

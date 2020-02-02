@@ -14,7 +14,7 @@
     "lint-check": "eslint src pages",
     "format-all": "prettier --write '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
     "format": "prettier --write",
-    "link-check": "scripts/check-links.sh $(find pages/ public/static/docs/ src/ .github/ -name '*.md' -o -name '*.js' && ls *.md *.js)"
+    "link-check": "scripts/link-check.sh $(find pages/ public/static/docs/ src/ .github/ -name '*.md' -o -name '*.js' && ls *.md *.js)"
   },
   "repository": {
     "type": "git",
@@ -75,7 +75,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format-staged && lint-staged && scripts/check-links-git-diff.sh"
+      "pre-commit": "yarn format-staged && lint-staged && scripts/link-check-git-diff.sh"
     }
   },
   "lint-staged": {

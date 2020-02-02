@@ -45,13 +45,11 @@ jobs:
 
       - run: yarn lint-check
 
-      # - run: yarn link-check  # takes ~2min and fails
-
       - run:
-          name: check 404 links
+          name: check problematic links
           command: |
             # only diff
-            scripts/check-links-git-diff.sh
+            scripts/link-check-git-diff.sh
 
       - save_cache:
           paths:
