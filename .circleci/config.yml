@@ -29,15 +29,22 @@ commands:
             git reset --hard origin/master
             git checkout -
 
-      # Download and cache dependencies
+      # Download cached dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - run:
+          name: apt dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install pcregrep
+
   cache:
     steps:
+      # Upload dependencies cache
       - save_cache:
           paths:
             - node_modules
