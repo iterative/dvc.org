@@ -1,3 +1,5 @@
+http://127.0.0.1:10000/devstoreaccount1
+http://localhost:3000/
 https://example.com/data.txt
 https://example.com/path/to/data
 https://example.com/path/to/data.csv
@@ -5,3 +7,5 @@ https://example.com/path/to/dir
 https://github.com/dataversioncontrol/myrepo.git
 https://github.com/example/registry
 https://github.com/myaccount/myproject.git
+https://myendpoint.com
+https://object-storage.example.com
