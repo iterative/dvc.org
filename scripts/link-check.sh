@@ -12,7 +12,7 @@ exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname $0)/exclude-links.txt}"
 
 finder(){  # expects list of files
   # explicit links not in markdown
-  pcregrep -o '(?<!\]\()https?://[^\s<>{}"'"'"'`;]+' "$@"
+  pcregrep -o '(?<!\]\()https?://[^\s<>{}"'"'"'`]+' "$@"
   # explicit links in markdown
   pcregrep -o '(?<=\])\(https?://[^[\]\s]+\)' "$@" | pcregrep -o '\((?:[^)(]*(?R)?)*+\)' | pcregrep -o '(?<=\().*(?=\))'
   # relative links in markdown
