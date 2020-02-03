@@ -90,7 +90,7 @@ model.pkl
 
 Note that the `model.pkl` file doesn't actually exist in the
 [root directory](https://github.com/iterative/example-get-started/tree/master/)
-of the external Git repository. Instead, the corresponding DVC-file
+of the external Git repo. Instead, the corresponding DVC-file
 [train.dvc](https://github.com/iterative/example-get-started/blob/master/train.dvc)
 is found, that specifies `model.pkl` in its outputs (`outs`). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
@@ -169,8 +169,7 @@ $ dvc get . model.pkl --rev 7-train --out model.monograms.pkl
 ```
 
 > Notice that the `url` provided to `dvc get` above is `.`. `dvc get` accepts
-> file system paths as a "URL" to the repository to get the data from for edge
-> cases.
+> file system paths as the "URL" to the source repo, for edge cases.
 
 The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with

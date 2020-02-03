@@ -37,8 +37,9 @@ Then, a simple command pushes files from your cache to the cloud:
 $ dvc push
 ```
 
-The command does not push all cached files, but only the ones that belong to the
-currently active Git repository and branch.
+The command does not push all cached files, but only the ones currently
+references in the <abbr>workspace</abbr> (in the _working tree_ of the Git
+repo).
 
 For example, in this tutorial 16 data files were created and only 9 will be
 pushed because the rest of the data files belong to different branches like

@@ -34,9 +34,6 @@ imported, while `out` can be used to specify the directory and/or file name
 desired for the downloaded data. If an existing directory is specified, the
 <abbr>output</abbr> will be created inside of it.
 
-> See `dvc import` to download and tack data or model files or directories from
-> other <abbr>DVC repositories</abbr> (e.g. GitHub URLs).
-
 DVC supports [DVC-files](/doc/user-guide/dvc-file-format) that refer to data in
 external locations, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such a
@@ -82,12 +79,17 @@ DVC supports several types of (local or) remote locations (protocols):
 > running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
 > URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
+<!-- Separate MD quote: -->
+
+> See `dvc import` to download and tack data/model files or directories from
+> other <abbr>DVC repositories</abbr> (e.g. GitHub URLs).
+
 Another way to understand the `dvc import-url` command is as a short-cut for a
 more verbose `dvc run` command. This is discussed in the
 [External Dependencies](/doc/user-guide/external-dependencies) documentation,
 where an alternative is demonstrated for each of these schemes.
 
-Instead of `dvc import-url`:
+Instead of:
 
 ```dvc
 $ dvc import-url https://example.com/path/to/data.csv data.csv

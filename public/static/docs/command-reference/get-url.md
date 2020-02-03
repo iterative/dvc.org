@@ -27,11 +27,9 @@ while `out` can be used to specify the directory and/or file name desired for
 the downloaded data. If an existing directory is specified, then the output will
 be placed inside of it.
 
-Note that this command doesn't require an existing DVC project to run in. It's a
-single-purpose command that can be used out of the box after installing DVC.
-
-> See `dvc get` to download data or model files or directories from other
-> <abbr>DVC repository</abbr> (e.g. GitHub URLs).
+Note that this command doesn't require an existing <abbr>DVC project</abbr> to
+run in. It's a single-purpose command that can be used out of the box after
+installing DVC.
 
 DVC supports several types of (local or) remote locations (protocols):
 
@@ -55,11 +53,14 @@ DVC supports several types of (local or) remote locations (protocols):
 > include them all. The command should look like this: `pip install "dvc[s3]"`.
 > (This example installs `boto3` library along with DVC to support S3 storage.)
 
-Another way to understand the `dvc get-url` command is as a tool for downloading
-data files.
+<!-- Separate MD quote: -->
 
-On GNU/Linux systems for example, instead of `dvc get-url` with HTTP(S) it's
-possible to instead use:
+> See `dvc get` to download data/model files or directories from other <abbr>DVC
+> repositories</abbr> (e.g. GitHub URLs).
+
+Another way to understand the `dvc get-url` command is as a tool for downloading
+data files. On GNU/Linux systems for example, instead of `dvc get-url` with
+HTTP(S) it's possible to instead use:
 
 ```dvc
 $ wget https://example.com/path/to/data.csv
