@@ -161,12 +161,12 @@ deps:
       rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
 ```
 
-If `rev` is a Git branch or tag, it may have new commits periodically. To bring
-the data up to date (and update `rev_lock` in the DVC-file), simply use
-`dvc update <stage>.dvc`. If `rev` is a specific commit (does not change),
-`dvc update` will never have an effect on the import stage. You may
-**re-import** a different commit instead, by using `dvc import` again with a
-different (or without) `--rev`. For example:
+If `rev` is a Git branch or tag (where the commit it points to changes), the
+data source may have updates at a later time. To bring it up to date if so (and
+update `rev_lock` in the DVC-file), simply use `dvc update <stage>.dvc`. If
+`rev` is a specific commit (does not change), `dvc update` will never have an
+effect on the import stage. You may **re-import** a different commit instead, by
+using `dvc import` again with a different (or without) `--rev`. For example:
 
 ```dvc
 $ dvc import --rev master \
