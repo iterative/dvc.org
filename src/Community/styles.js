@@ -53,7 +53,8 @@ export const Link = styled.a`
   font-family: BrandonGrotesqueBold;
   line-height: ${({ large }) => (large ? '34px' : '18px')};
   text-decoration: none;
-  overflow-wrap: break-word;
+  word-break: break-word;
+  overflow-wrap: anywhere;
   color: ${({ color }) => color};
 
   &:hover {
