@@ -161,12 +161,16 @@ We try to use a casual and fun tone in our docs. We also avoid authoritative
 language such as "As you can see, clearly this is what happened..." which while
 good-intentioned, may scare off readers.
 
-We prefer human-friendly language than exact jargon, but we do seek preciseness,
-even if using simple, general terms. Our
-[command-references](/doc/command-reference) and some
-[user-guides](/doc/user-guide) are the most technical documents we have, where
-specialized terminology is used the most, but even there, often we use
-expandable sections for complex implementation details.
+We prefer human-friendly language than exact jargon, as long as it's correct,
+even if using general terminology. Example: avoid Git jargon such as _revision_
+or _reference_, preferring the more basic concept _commit_.
+
+The [command reference](/doc/command-reference) contains some of our most
+technical documents where specialized language is used the most, but even there,
+we use expandable sections for complex implementation details.
+
+Start by writing the essence in simple terms, and complete it with
+clarifications, edge cases, or other precisions in a separate iteration.
 
 We use **bold** text for emphasis, and _italics_ for special terms.
 
@@ -176,5 +180,5 @@ We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
   and "Note that..." notes)
 - 💡 Useful tips related to external tools/integrations
 
-Some other emojis currently in use here and there: ⚡🙏🐛⭐❗ (We're not limited
-to these.)
+> Some other emojis currently in use here and there: ⚡🙏🐛⭐❗ (We're not
+> limited to these.)
