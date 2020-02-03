@@ -10,9 +10,9 @@
     "test": "jest",
     "start": "NODE_ENV=production node server.js",
     "format-staged": "pretty-quick --staged --no-restage --bail",
-    "format-check": "prettier --check '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
-    "lint-check": "eslint src pages",
-    "format-all": "prettier --write '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
+    "format-check": "prettier --check '{.,pages/**,public/static/docs/**,src/**}/*.{js,md,json}'",
+    "lint-check": "eslint --ext .json,.js src pages",
+    "format-all": "prettier --write '{.,pages/**,public/static/docs/**,src/**}/*.{js,md,json}'",
     "format": "prettier --write"
   },
   "repository": {
@@ -66,6 +66,7 @@
     "babel-plugin-transform-object-assign": "^6.22.0",
     "eslint": "^6.7.2",
     "eslint-config-prettier": "^6.7.0",
+    "eslint-plugin-json": "^2.0.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-react": "^7.17.0",
@@ -77,10 +78,10 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn lint-staged"
+      "pre-commit": "yarn format-staged && yarn lint-staged"
     }
   },
   "lint-staged": {
-    "*.js": "eslint"
+    "*.{js,json}": "eslint"
   }
 }
