@@ -61,5 +61,3 @@ $ conda install -c conda-forge dvc
 ```
 
 > Currently, it supports Python 3.5-3.7
-
-<!-- Separate MD quote: -->
