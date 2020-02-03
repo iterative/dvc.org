@@ -6,6 +6,10 @@ export const Wrapper = styled.div`
   margin: 50px -50px;
   padding: ${({ hasBg }) => (hasBg ? '0 50px 260px' : '0 50px')};
 
+  ${media.desktop`
+    padding: ${({ hasBg }) => (hasBg ? '0 65px 260px' : '0 65px')};
+  `}
+
   ${media.tablet`
     margin: 20px 0;
     padding: 0;
