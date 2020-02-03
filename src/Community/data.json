@@ -1,8 +1,8 @@
 {
   "hero": {
-    "pictureDesktop": "/static/img/community/banner.png",
-    "pictureMobile": "/static/img/community/banner-mobile.png",
-    "url": "http://dvc.org"
+    "pictureDesktop": "/static/img/community/banner_feb20.png",
+    "pictureMobile": "/static/img/community/banner_mobile_feb20.png",
+    "url": "https://www.mlprague.com/#schedule-saturday"
   },
   "section": {
     "contribute": {
@@ -82,7 +82,7 @@
     {
       "url": "https://divops.org",
       "title": "DivOps",
-      "description": "Paweł Redzyński will talk about open source tools for versioning machine learning projects",
+      "description": "Elle O'Brien is talking about open source software in the growing field of MLOps.",
       "city": "Remote",
       "date": "2020-03-25",
       "pictureUrl": "/static/img/community/events/divops.png"
