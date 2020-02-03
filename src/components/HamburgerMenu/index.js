@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import NextLink from 'next/link'
 
 import Hamburger from '../Hamburger'
+import LocalLink from '../LocalLink'
 
 import { logEvent } from '../../utils/ga'
 
@@ -76,40 +76,48 @@ export default class HamburgerMenu extends Component {
           <Menu>
             <Section>
               <Top>
-                <NextLink href="/" passHref>
-                  <Logo>
-                    <img
-                      src="/static/img/logo_white.png"
-                      alt="dvc.org"
-                      width={34}
-                    />
-                  </Logo>
-                </NextLink>
+                <LocalLink href="/" as={Logo}>
+                  <img
+                    src="/static/img/logo_white.png"
+                    alt="dvc.org"
+                    width={34}
+                  />
+                </LocalLink>
               </Top>
 
               <Columns>
                 <Column>
                   <Heading>Product</Heading>
                   <Links>
-                    <NextLink href="/" passHref>
-                      <Link onClick={this.scrollToTop}>Overview</Link>
-                    </NextLink>
-                    <NextLink href="/features" passHref>
-                      <Link onClick={this.itemClick('features')}>Features</Link>
-                    </NextLink>
+                    <LocalLink href="/" as={Link} onClick={this.scrollToTop}>
+                      Overview
+                    </LocalLink>
+                    <LocalLink
+                      href="/features"
+                      as={Link}
+                      onClick={this.itemClick('features')}
+                    >
+                      Features
+                    </LocalLink>
                   </Links>
                 </Column>
                 <Column>
                   <Heading>Help</Heading>
                   <Links>
-                    <NextLink href="/support" passHref>
-                      <Link onClick={this.itemClick('support')}>Support</Link>
-                    </NextLink>
-                    <NextLink href="/doc/get-started" passHref>
-                      <Link onClick={this.itemClick('get-started')}>
-                        Get started
-                      </Link>
-                    </NextLink>
+                    <LocalLink
+                      href="/support"
+                      as={Link}
+                      onClick={this.itemClick('support')}
+                    >
+                      Support
+                    </LocalLink>
+                    <LocalLink
+                      href="/doc/get-started"
+                      as={Link}
+                      onClick={this.itemClick('get-started')}
+                    >
+                      Get started
+                    </LocalLink>
                     <SocialLink
                       src="/static/img/chat.png"
                       href="/chat"
@@ -117,9 +125,13 @@ export default class HamburgerMenu extends Component {
                     >
                       Chat
                     </SocialLink>
-                    <NextLink href="/doc" passHref>
-                      <Link onClick={this.itemClick('doc')}>Documentation</Link>
-                    </NextLink>
+                    <LocalLink
+                      href="/doc"
+                      as={Link}
+                      onClick={this.itemClick('doc')}
+                    >
+                      Documentation
+                    </LocalLink>
                   </Links>
                 </Column>
                 <Column>

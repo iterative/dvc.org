@@ -64,24 +64,25 @@ export const Buttons = styled.div`
   justify-content: center;
 `
 
-export const Button = styled.button`
-  font-family: BrandonGrotesqueMed;
-  cursor: pointer;
+export const Button = styled.a`
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+
   min-width: 186px;
   height: 60px;
+  padding: 0 50px 0 20px;
   border-radius: 4px;
-  background-color: #945dd6;
   border: solid 2px rgba(255, 255, 255, 0.3);
 
+  font-family: BrandonGrotesqueMed;
   font-size: 20px;
-
   line-height: 0.9;
-
   text-align: left;
-  padding: 0px 50px 0 20px;
-
+  text-decoration: none;
   color: #ffffff;
 
+  background-color: #945dd6;
   background: url('/static/img/arrow_right_white.svg') right center no-repeat;
   background-position-x: calc(100% - 15px);
   transition: 0.2s background-color ease-out;

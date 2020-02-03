@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 import { Element } from 'react-scroll'
 import Slider from 'react-slick'
 
-import NextLink from 'next/link'
+import LocalLink from '../LocalLink'
 
 import { OnlyDesktop, OnlyMobile } from '../../styles'
 
@@ -27,17 +27,15 @@ import {
 
 const LearnMore = ({ href }) => (
   <LearnMoreArea>
-    <NextLink href={href}>
-      <a>
-        <span>Learn&nbsp;more</span>
-        <img
-          src="/static/img/learn_more_arrow.svg"
-          width={18}
-          height={18}
-          alt=""
-        />
-      </a>
-    </NextLink>
+    <LocalLink href={href}>
+      <span>Learn&nbsp;more</span>
+      <img
+        src="/static/img/learn_more_arrow.svg"
+        width={18}
+        height={18}
+        alt=""
+      />
+    </LocalLink>
   </LearnMoreArea>
 )
 

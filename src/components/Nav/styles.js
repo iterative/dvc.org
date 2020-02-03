@@ -46,20 +46,25 @@ export const Wrapper = styled.div`
   `};
 `
 
-export const GetStartedButton = styled.button`
-  text-decoration: none;
-  margin-left: 40px;
-  border-radius: 4px;
-  background-color: #13adc7;
-  font-family: BrandonGrotesqueMed, Tahoma, Arial;
-  color: #fff;
+export const GetStartedButton = styled.a`
+  box-sizing: border-box;
+
   width: 113px;
   height: 38px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  transition: 0.2s background-color ease-out;
+  margin-left: 40px;
   padding: 1px 7px 2px;
+  border-radius: 4px;
+  border: none;
+
+  font-family: BrandonGrotesqueMed, Tahoma, Arial;
+  font-size: 16px;
+  line-height: 35px;
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+
+  background-color: #13adc7;
+  transition: 0.2s background-color ease-out;
 
   &:hover {
     background-color: #13a3bd;

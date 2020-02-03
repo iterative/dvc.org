@@ -1,23 +1,12 @@
 import React from 'react'
-import Router from 'next/router'
+import LocalLink from '../LocalLink'
 
 import { logEvent } from '../../utils/ga'
 
-import { PAGE_DOC } from '../../consts'
-
 import { Button, Buttons, Container, Glyph, Title, Wrapper } from './styles'
 
-function goToDocGetStarted() {
-  logEvent('promo', 'get-started')
-
-  Router.push({ pathname: '/doc/get-started', asPath: PAGE_DOC })
-}
-
-function goToFeatures() {
-  logEvent('promo', 'features')
-
-  Router.push('/features')
-}
+const goToDocGetStarted = () => logEvent('promo', 'get-started')
+const goToFeatures = () => logEvent('promo', 'features')
 
 export default function PromoSection() {
   return (
@@ -26,10 +15,17 @@ export default function PromoSection() {
         <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
         <Title>For data scientists, by data scientists</Title>
         <Buttons>
-          <Button first onClick={goToDocGetStarted}>
+          <LocalLink
+            href="/doc/get-started"
+            as={Button}
+            first
+            onClick={goToDocGetStarted}
+          >
             Get Started
-          </Button>
-          <Button onClick={goToFeatures}>Full Features</Button>
+          </LocalLink>
+          <LocalLink as={Button} href="/features" onClick={goToFeatures}>
+            Full Features
+          </LocalLink>
         </Buttons>
         <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
       </Container>

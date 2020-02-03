@@ -39,24 +39,26 @@ export const Buttons = styled.div`
   `};
 `
 
-export const Button = styled.button`
-  font-family: BrandonGrotesqueMed;
-  cursor: pointer;
+export const Button = styled.a`
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+
   min-width: 186px;
   height: 60px;
+  padding: 0px 21px;
   border-radius: 4px;
-  background-color: #945dd6;
   border: solid 2px rgba(255, 255, 255, 0.3);
 
+  font-family: BrandonGrotesqueMed;
   font-size: 20px;
   font-weight: 500;
   line-height: 0.9;
-
+  text-decoration: none;
   text-align: left;
-  padding: 0px 21px;
-
   color: #ffffff;
 
+  background-color: #945dd6;
   background: url('/static/img/arrow_right_white.svg') right center no-repeat;
   background-position-x: 147px;
   transition: 0.2s background-color ease-out;

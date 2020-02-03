@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import NextLink from 'next/link'
+
+import LocalLink from '../LocalLink'
 
 import {
   Column,
@@ -32,44 +33,42 @@ export default function Footer(props) {
     <Wrapper>
       <Container wide={props.isDocPage}>
         <Top>
-          <NextLink href="/">
-            <Logo>
-              <img
-                src="/static/img/logo_white.png"
-                alt="site logo"
-                width={36}
-                height={23}
-              />
-            </Logo>
-          </NextLink>
+          <LocalLink href="/" as={Logo}>
+            <img
+              src="/static/img/logo_white.png"
+              alt="site logo"
+              width={36}
+              height={23}
+            />
+          </LocalLink>
         </Top>
         <Columns>
           <Column>
             <Heading>Product</Heading>
             <Links>
-              <NextLink href="/" passHref>
-                <Link>Overview</Link>
-              </NextLink>
-              <NextLink href="/features" passHref>
-                <Link>Features</Link>
-              </NextLink>
+              <LocalLink href="/" as={Link}>
+                Overview
+              </LocalLink>
+              <LocalLink href="/features" as={Link}>
+                Features
+              </LocalLink>
             </Links>
           </Column>
           <Column>
             <Heading>Help</Heading>
             <Links>
-              <NextLink href="/support" passHref>
-                <Link>Support</Link>
-              </NextLink>
-              <NextLink href="/doc" as="/doc/get-started" passHref>
-                <Link>Get started</Link>
-              </NextLink>
+              <LocalLink href="/support" as={Link}>
+                Support
+              </LocalLink>
+              <LocalLink href="/doc/get-started" as={Link}>
+                Get started
+              </LocalLink>
               <SocialLink src="/static/img/chat.png" href="/chat">
                 Chat
               </SocialLink>
-              <NextLink href="/doc" passHref>
-                <Link>Documentation</Link>
-              </NextLink>
+              <LocalLink href="/doc" as={Link}>
+                Documentation
+              </LocalLink>
             </Links>
           </Column>
           <Column>

@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import fetch from 'isomorphic-fetch'
+
 import Error from 'next/error'
 import Head from 'next/head'
-import fetch from 'isomorphic-fetch'
 
 import Documentation from '../src/components/Documentation'
 

@@ -1,13 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import NextLink from 'next/link'
-import Router from 'next/router'
 import ReactMarkdown from 'react-markdown'
 import Collapsible from 'react-collapsible'
 import kebabCase from 'lodash.kebabcase'
 
-import Tutorials from '../Tutorials'
+import Router from 'next/router'
+
+import LocalLink from '../../LocalLink'
 import Tooltip from '../../Tooltip'
+
+import Tutorials from '../Tutorials'
 
 import { Light as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { docco } from 'react-syntax-highlighter/dist/cjs/styles/hljs'
@@ -147,14 +149,10 @@ const Link = ({ children, href, ...props }) => {
     )
   }
 
-  const nextProps = href.match(/^\/doc/)
-    ? { href: PAGE_DOC, as: href }
-    : { href }
-
   return (
-    <NextLink {...nextProps}>
-      <a {...modifiedProps}>{children}</a>
-    </NextLink>
+    <LocalLink href={href} {...modifiedProps}>
+      {children}
+    </LocalLink>
   )
 }
 
@@ -239,18 +237,28 @@ export default class Markdown extends React.PureComponent {
           astPlugins={[linker()]}
         />
         <NavigationButtons>
-          <NextLink href={PAGE_DOC} as={prev} passHref>
-            <Button disabled={!prev}>
+          {prev ? (
+            <LocalLink href={prev} as={Button}>
+              <i className="prev" />
+              <span>Prev</span>
+            </LocalLink>
+          ) : (
+            <Button disabled={true}>
               <i className="prev" />
               <span>Prev</span>
             </Button>
-          </NextLink>
-          <NextLink href={PAGE_DOC} as={next} passHref>
-            <Button disabled={!next}>
+          )}
+          {next ? (
+            <LocalLink href={next} as={Button} disabled={!next}>
+              <span>Next</span>
+              <i className="next" />
+            </LocalLink>
+          ) : (
+            <Button disabled={true}>
               <span>Next</span>
               <i className="next" />
             </Button>
-          </NextLink>
+          )}
         </NavigationButtons>
       </Content>
     )

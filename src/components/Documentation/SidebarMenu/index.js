@@ -2,12 +2,11 @@ import React, { useEffect, useRef, useState } from 'react'
 import PerfectScrollbar from 'perfect-scrollbar'
 import scrollIntoView from 'dom-scroll-into-view'
 import PropTypes from 'prop-types'
-import NextLink from 'next/link'
 import includes from 'lodash.includes'
 
 import DownloadButton from '../../DownloadButton'
+import LocalLink from '../../LocalLink'
 
-import { PAGE_DOC } from '../../../consts'
 import { getParentsListFromPath } from '../../../utils/sidebar'
 
 import { OnlyDesktop } from '../../../styles'
@@ -52,16 +51,16 @@ function SidebarMenuItem({ children, label, path, activePaths, onClick }) {
 
   return (
     <>
-      <NextLink href={PAGE_DOC} as={path} passHref>
-        <SectionLink
-          id={path}
-          isActive={isActive}
-          onClick={onClick}
-          className={isRootParent ? 'docSearch-lvl0' : ''}
-        >
-          {label}
-        </SectionLink>
-      </NextLink>
+      <LocalLink
+        href={path}
+        as={SectionLink}
+        id={path}
+        isActive={isActive}
+        onClick={onClick}
+        className={isRootParent ? 'docSearch-lvl0' : ''}
+      >
+        {label}
+      </LocalLink>
       {children && (
         <Collapse
           style={

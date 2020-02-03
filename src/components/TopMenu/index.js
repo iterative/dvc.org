@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import NextLink from 'next/link'
 import throttle from 'lodash.throttle'
 
+import LocalLink from '../LocalLink'
 import Nav from '../Nav'
 
 import { HEADER } from '../../consts'
@@ -53,16 +53,14 @@ export default class TopMenu extends Component {
           scrolled={isDocPage || scrolled}
           wide={isDocPage}
         >
-          <NextLink href="/" passHref>
-            <Logo>
-              <img
-                src="/static/img/logo.png"
-                alt="dvc.org"
-                width={36}
-                height={23}
-              />
-            </Logo>
-          </NextLink>
+          <LocalLink href="/" as={Logo}>
+            <img
+              src="/static/img/logo.png"
+              alt="dvc.org"
+              width={36}
+              height={23}
+            />
+          </LocalLink>
           <Nav mobile={false} />
         </Container>
       </Wrapper>

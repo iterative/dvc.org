@@ -10,9 +10,8 @@ import { initGA, logPageView } from '../../utils/ga'
 
 import { Wrapper, Bodybag, ModalRoot } from './styles'
 
-export default function Layout({ children, enableSmoothScroll }) {
+export default function Layout({ children, enableSmoothScroll, isDocPage }) {
   const router = useRouter()
-  const isDocPage = router.pathname === '/doc'
 
   useEffect(() => {
     if (!window.GA_INITIALIZED) {
@@ -41,5 +40,6 @@ export default function Layout({ children, enableSmoothScroll }) {
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
-  enableSmoothScroll: PropTypes.bool
+  enableSmoothScroll: PropTypes.bool,
+  isDocPage: PropTypes.bool
 }

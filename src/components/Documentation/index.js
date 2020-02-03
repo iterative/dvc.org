@@ -85,7 +85,7 @@ export default function Documentation({
   const githubLink = `https://github.com/iterative/dvc.org/blob/master/public${source}`
 
   return (
-    <Page stickHeader={true}>
+    <Page stickHeader={true} isDocPage={true}>
       <Container>
         <Backdrop onClick={toggleMenu} visible={isMenuOpen} />
 
