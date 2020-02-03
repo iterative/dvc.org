@@ -48,19 +48,22 @@
       "url": "https://blog.codecentric.de/en/2020/01/remote-training-gitlab-ci-dvc/",
       "title": "Remote training with GitLab-CI and DVC",
       "author": "Marcel Mikl and Bert Besser",
-      "date": "2020-01-28"
+      "date": "2020-01-28",
+      "pictureUrl": "/static/img/community/ugc/codecentric.png"
     },
     {
       "url": "https://martinfowler.com/articles/cd4ml.html",
       "title": "Continuous Delivery for Machine Learning",
       "author": "Danilo Sato, Arif Wider and Christoph Windheuser",
-      "date": "2019-09-20"
+      "date": "2019-09-20",
+      "pictureUrl": "/static/img/community/ugc/fowler_icon.ico"
     },
     {
       "url": "https://towardsdatascience.com/mlops-reducing-the-technical-debt-of-machine-learning-dac528ef39de",
       "title": "MLOps: Reducing the Technical Debt of Machine Learning",
       "author": "Saurav Chakravorty",
-      "date": "2019-12-21"
+      "date": "2019-12-21",
+      "pictureUrl": "/static/img/community/ugc/tds_logo.png"
     }
   ],
   "events": [
