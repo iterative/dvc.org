@@ -12,10 +12,8 @@ repository into the current working directory.
 usage: dvc get [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url       Location of DVC project or Git repository to download
-            from.
-  path      Path to a file or directory within the project or
-            repository.
+  url       Location of DVC or Git repository to download from.
+  path      Path to a file or directory within the repository.
 ```
 
 ## Description
@@ -32,7 +30,7 @@ single-purpose command that can be used out of the box after installing DVC.
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported for online repos
 (e.g. `[user@]server:project.git`). `url` can also be a local file system path
-to an "offline" repo (if it's a DVC project without a default remote, instead of
+to an "offline" repo (if it's a DVC repo without a default remote, instead of
 downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 
 The `path` argument of this command is used to specify the location of the
