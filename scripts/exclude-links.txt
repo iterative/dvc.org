@@ -18,3 +18,13 @@ https://github.com/myaccount/myproject.git
 https://myendpoint.com
 https://object-storage.example.com
 https://www.youtube.com/embed/$
+https://accounts.google.com/o/oauth2/auth
+http://ogp.me/ns#
+https://remote.dvc.org/get-started
+https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA
+http://millionsongdataset.com/pages/getting-dataset/#subset
+https://circleci.com/gh/iterative/dvc.org
+https://s3-us-east-2.amazonaws.com/dvc-s3-repo/
+https://www.katacoda.com/loodse/courses/docker/docker-02-install
+https://www.katacoda.com/loodse/courses/dvc/dvc-01-install
+

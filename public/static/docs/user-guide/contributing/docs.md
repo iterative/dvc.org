@@ -51,7 +51,7 @@ We will review your PR as soon as possible. Thank you for contributing!
 
 We highly recommend running this web app locally to check documentation changes
 before submitting them, and it's quite necessary when making changes to the
-[Next.js](https://nexyjs.org/) engine itself (rare). Source code files need to
+[Next.js](https://nextjs.org/) engine itself (rare). Source code files need to
 be properly formatted as well, which is also ensured by the full setup below.
 
 Get the latest development version by
