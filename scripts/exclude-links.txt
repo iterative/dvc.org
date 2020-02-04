@@ -15,7 +15,6 @@ https://github.com/example/registry
 https://github.com/iterative/dvc.org/blob/master/public$
 https://github.com/iterative/dvc/releases/download/$
 https://github.com/myaccount/myproject.git
-https://dvc.org/user-guide/troubleshooting
 https://myendpoint.com
 https://object-storage.example.com
 https://www.youtube.com/embed/$
