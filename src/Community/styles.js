@@ -51,6 +51,9 @@ export const Line = styled.div`
     margin-top: 20px;
   }
 `
+export const ImageLine = styled(Line)`
+  display: flex;
+`
 
 export const Link = styled.a`
   font-size: ${({ large }) => (large ? '24px' : '16px')};
@@ -88,4 +91,10 @@ export const Wrapper = styled.div`
       border-top: 1px solid #e6e8e9;
     }
   `}
+`
+
+export const TextWrapper = styled.div``
+
+export const NbspWrapper = styled.span`
+  white-space: nowrap;
 `

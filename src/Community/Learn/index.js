@@ -14,12 +14,15 @@ import { pluralizeComments } from '../../utils/i18n'
 
 import {
   Comments,
+  ImageLine,
   Item,
   Items,
   Line,
   Link,
   Meta,
+  NbspWrapper,
   Placeholder,
+  TextWrapper,
   Wrapper
 } from '../styles'
 
@@ -56,7 +59,7 @@ function CommunityBlogPost({
   }, [])
 
   return (
-    <Line key={url}>
+    <ImageLine key={url}>
       {pictureUrl && (
         <a
           href={url}
@@ -67,31 +70,33 @@ function CommunityBlogPost({
           <Image src={pictureUrl} alt="" />
         </a>
       )}
-      <Link
-        color={color}
-        href={url}
-        target="_blank"
-        rel="noreferrer noopener"
-        onClick={logPost}
-      >
-        {title}
-      </Link>
-      <Meta>
-        {loaded && (
-          <>
-            <Comments
-              href={commentsUrl}
-              target="_blank"
-              rel="noreferrer noopener"
-            >
-              {pluralizeComments(count)}
-            </Comments>
-            {' • '}
-          </>
-        )}
-        {format(new Date(date), 'MMM, d')}
-      </Meta>
-    </Line>
+      <TextWrapper>
+        <Link
+          color={color}
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          onClick={logPost}
+        >
+          {title}
+        </Link>
+        <Meta>
+          {loaded && (
+            <>
+              <Comments
+                href={commentsUrl}
+                target="_blank"
+                rel="noreferrer noopener"
+              >
+                {pluralizeComments(count)}
+              </Comments>
+              {' • '}
+            </>
+          )}
+          <NbspWrapper>{format(new Date(date), 'MMM, d')}</NbspWrapper>
+        </Meta>
+      </TextWrapper>
+    </ImageLine>
   )
 }
 
@@ -111,7 +116,7 @@ function CommunityUserContent({ url, title, author, date, color, pictureUrl }) {
   )
 
   return (
-    <Line key={url}>
+    <ImageLine key={url}>
       {pictureUrl && (
         <a
           href={url}
@@ -122,19 +127,22 @@ function CommunityUserContent({ url, title, author, date, color, pictureUrl }) {
           <Image src={pictureUrl} alt="" />
         </a>
       )}
-      <Link
-        color={color}
-        href={url}
-        target="_blank"
-        rel="noreferrer noopener"
-        onClick={logUserContent}
-      >
-        {title}
-      </Link>
-      <Meta>
-        {author} • {format(new Date(date), 'MMM, d')}
-      </Meta>
-    </Line>
+      <TextWrapper>
+        <Link
+          color={color}
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          onClick={logUserContent}
+        >
+          {title}
+        </Link>
+        <Meta>
+          {author} •{' '}
+          <NbspWrapper>{format(new Date(date), 'MMM, d')}</NbspWrapper>
+        </Meta>
+      </TextWrapper>
+    </ImageLine>
   )
 }
 
