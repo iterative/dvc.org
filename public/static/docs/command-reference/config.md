@@ -155,7 +155,7 @@ for more details.) This section contains the following options:
 - `cache.shared` - permissions for newly created or downloaded cache files and
   directories. The default permissions are `0o664`(rw-r--r--) for files and
   `0o755`(rwxr-xr-x) for directories. The only accepted value right now is
-  `group`, which makes dvc use `0o664`(rw-rw-r--) for files and
+  `group`, which makes DVC use `0o664`(rw-rw-r--) for files and
   `0o775`(rwxrwxr-x) for directories, which is useful when you are using a a
   [shared development server](/doc/use-cases/shared-development-server).
 
