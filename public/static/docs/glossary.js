@@ -26,9 +26,7 @@ Initialized by running \`dvc init\` in the **workspace** (typically in a Git
 repository). It will contain the
 [\`.dvc/\` directory](/doc/user-guide/dvc-files-and-directories) and
 [DVC-files](/doc/user-guide/dvc-file-format) created with commands such as
-\`dvc add\` or \`dvc run\`. Some DVC commands require it to be in a Git repo –
-explained in each [command reference](/doc/command-reference) but usually
-obvious from the context.
+\`dvc add\` or \`dvc run\`.
       `
     },
     {
