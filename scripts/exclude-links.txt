@@ -27,4 +27,6 @@ https://circleci.com/gh/iterative/dvc.org
 https://s3-us-east-2.amazonaws.com/dvc-s3-repo/
 https://www.katacoda.com/loodse/courses/docker/docker-02-install
 https://www.katacoda.com/loodse/courses/dvc/dvc-01-install
+https://marketplace.visualstudio.com/items?itemName=stkb.rewrap
+https://www.kaggle.com/rtatman/kerneld4769833fe
 
