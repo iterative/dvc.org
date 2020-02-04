@@ -1,6 +1,7 @@
-import styled, { css } from 'styled-components'
+import styled, { css, createGlobalStyle } from 'styled-components'
+import reset from 'styled-reset'
 
-export const global = `
+const global = `
   html {
     -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased !important;
@@ -40,6 +41,10 @@ export const global = `
   }
 `
 
+export const GlobalStyle = createGlobalStyle`
+  ${reset}
+  ${global}
+`
 const maxWidth = 1005
 
 export const sizes = {
