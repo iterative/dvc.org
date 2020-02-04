@@ -42,11 +42,6 @@ DVC supports several types of (local or) remote locations (protocols):
 | `hdfs`  | HDFS to file\* | `hdfs://user@example.com/path/to/data.csv` |
 | `http`  | HTTP to file\* | `https://example.com/path/to/data.csv`     |
 
-> \* HDFS and HTTP **do not** support downloading entire directories, only
-> single files.
-
-<!-- Separate MD quote: -->
-
 > If you installed DVC via `pip` and plan to use cloud services as remote
 > storage, you might need to install these optional dependencies: `[s3]`,
 > `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
@@ -55,8 +50,8 @@ DVC supports several types of (local or) remote locations (protocols):
 
 <!-- Separate MD quote: -->
 
-> See `dvc get` to download data/model files or directories from other <abbr>DVC
-> repositories</abbr> (e.g. GitHub URLs).
+\* HDFS and HTTP **do not** support downloading entire directories, only single
+files.
 
 Another way to understand the `dvc get-url` command is as a tool for downloading
 data files. On GNU/Linux systems for example, instead of `dvc get-url` with
@@ -65,6 +60,9 @@ HTTP(S) it's possible to instead use:
 ```dvc
 $ wget https://example.com/path/to/data.csv
 ```
+
+> See `dvc get` to download data/model files or directories from other <abbr>DVC
+> repositories</abbr> (e.g. GitHub URLs).
 
 ## Options
 
