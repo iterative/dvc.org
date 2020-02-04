@@ -49,16 +49,18 @@ function CommunityEvent({
           </CommunityButton>
         }
       >
-        {pictureUrl && (
-          <ImageWrapper
-            href={url}
-            target="_blank"
-            rel="noreferrer noopener"
-            onClick={logEventClick}
-          >
-            <Image src={pictureUrl} alt="" />
-          </ImageWrapper>
-        )}
+        <ImageWrapper
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          onClick={logEventClick}
+        >
+          <Image
+            src={pictureUrl || '/static/img/community/event-placeholder.svg'}
+            alt=""
+          />
+        </ImageWrapper>
+
         <Link
           color={theme.color}
           href={url}
