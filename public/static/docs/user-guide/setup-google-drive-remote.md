@@ -42,8 +42,8 @@ API connections, and its
 
 ⚠️ It should be safe to share **client ID** and **client secret** among your
 team. These credentials are only used to generate the
-[authorization](#authorization) DVC will later need in order to connect to the
-Google Drive.
+[authorization](#authorization) URL DVC will later prompt to visit in order to
+connect to the Google Drive.
 
 > Note that Google Drive API has usage limits/quotas per credentials in a
 > _project_ (which you can review in the
@@ -108,7 +108,6 @@ guide you through granting the necessary access permissions. On success, the
 token data will be cached in a Git-ignored directory located in
 `.dvc/tmp/gdrive-user-credentials.json`.
 
-⚠️ In order to prevent unauthenticated access to your Google Drive, **do not
-share access token data with others**. Each team member should have
-[separate access](https://support.google.com/drive/answer/7166529) to the
-appropriate Google Drive resources, and generate their own tokens.
+⚠️ In order to prevent unauthorized access to your Google Drive, **do not share
+access token data with others**. Each team member should generate their own
+tokens.
