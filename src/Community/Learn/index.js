@@ -1,6 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import format from 'date-fns/format'
+
+import NextLink from 'next/link'
+
+import { logEvent } from '../../utils/ga'
 
 import CommunityBlock from '../Block'
 import CommunityButton from '../Button'
@@ -26,6 +30,9 @@ import data from '../data'
 const { description, mobileDescription, title } = data.section.learn
 const { documentation, userContent } = data
 
+const logPostAll = logEvent('community', 'blog', 'all')
+const logDocumentationAll = logEvent('community', 'documentation', 'all')
+
 function CommunityBlogPost({
   url,
   title,
@@ -36,6 +43,9 @@ function CommunityBlogPost({
 }) {
   const [count, setCount] = useState()
   const loaded = count !== undefined
+  const logPost = useCallback(() => logEvent('community', 'blog', title), [
+    title
+  ])
 
   useEffect(() => {
     if (commentsUrl) {
@@ -48,11 +58,22 @@ function CommunityBlogPost({
   return (
     <Line key={url}>
       {pictureUrl && (
-        <a href={url}>
+        <a
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          onClick={logPost}
+        >
           <Image src={pictureUrl} alt="" />
         </a>
       )}
-      <Link color={color} href={url} target="_blank" rel="noreferrer noopener">
+      <Link
+        color={color}
+        href={url}
+        target="_blank"
+        rel="noreferrer noopener"
+        onClick={logPost}
+      >
         {title}
       </Link>
       <Meta>
@@ -84,14 +105,30 @@ CommunityBlogPost.propTypes = {
 }
 
 function CommunityUserContent({ url, title, author, date, color, pictureUrl }) {
+  const logUserContent = useCallback(
+    () => logEvent('community', 'user-content', title),
+    [title]
+  )
+
   return (
     <Line key={url}>
       {pictureUrl && (
-        <a href={url} target="_blank" rel="noreferrer noopener">
+        <a
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          onClick={logUserContent}
+        >
           <Image src={pictureUrl} alt="" />
         </a>
       )}
-      <Link color={color} href={url} target="_blank" rel="noreferrer noopener">
+      <Link
+        color={color}
+        href={url}
+        target="_blank"
+        rel="noreferrer noopener"
+        onClick={logUserContent}
+      >
         {title}
       </Link>
       <Meta>
@@ -111,11 +148,18 @@ CommunityUserContent.propTypes = {
 }
 
 function CommunityDocumentation({ url, title, description, color }) {
+  const logDocumentation = useCallback(
+    () => logEvent('community', 'documentation', title),
+    [title]
+  )
+
   return (
     <Line key={url}>
-      <Link color={color} large href={url}>
-        {title}
-      </Link>
+      <NextLink href="/doc" as={url} passHref>
+        <Link color={color} large onClick={logDocumentation}>
+          {title}
+        </Link>
+      </NextLink>
       <Meta>{description}</Meta>
     </Line>
   )
@@ -145,9 +189,11 @@ export default function CommunityLearn({ posts, theme }) {
             <CommunityBlock
               title="Documentation"
               action={
-                <CommunityButton theme={theme} href="/">
-                  See all docs
-                </CommunityButton>
+                <NextLink href="/doc" passHref>
+                  <CommunityButton theme={theme} onClick={logDocumentationAll}>
+                    See all docs
+                  </CommunityButton>
+                </NextLink>
               }
               icon="/static/img/community/documentation.svg"
             >
@@ -165,7 +211,13 @@ export default function CommunityLearn({ posts, theme }) {
               title="DVC Blog"
               action={
                 posts.length && (
-                  <CommunityButton theme={theme} href="https://blog.dvc.org">
+                  <CommunityButton
+                    theme={theme}
+                    href="https://blog.dvc.org"
+                    target="_blank"
+                    rel="noreferrer noopener"
+                    onClick={logPostAll}
+                  >
                     See all Posts
                   </CommunityButton>
                 )

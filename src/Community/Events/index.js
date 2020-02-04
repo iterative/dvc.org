@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import format from 'date-fns/format'
+
+import { logEvent } from '../../utils/ga'
 
 import CommunityBlock from '../Block'
 import CommunityButton from '../Button'
@@ -18,6 +20,75 @@ const { events } = data
 const modifiedEvents = events.length > 3 ? events.slice(0, 3) : events
 const eventPlaceholders = new Array(3 - modifiedEvents.length).fill(Item)
 
+function CommunityEvent({
+  color,
+  city,
+  date,
+  description,
+  pictureUrl,
+  title,
+  url
+}) {
+  const logEventClick = useCallback(
+    () => logEvent('community', 'event', title),
+    [title]
+  )
+
+  return (
+    <Item>
+      <CommunityBlock
+        action={
+          <CommunityButton
+            href={url}
+            theme={color}
+            target="_blank"
+            rel="noreferrer noopener"
+            onClick={logEventClick}
+          >
+            Event Info
+          </CommunityButton>
+        }
+      >
+        {pictureUrl && (
+          <ImageWrapper
+            href={url}
+            target="_blank"
+            rel="noreferrer noopener"
+            onClick={logEventClick}
+          >
+            <Image src={pictureUrl} alt="" />
+          </ImageWrapper>
+        )}
+        <Link
+          color={color}
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          onClick={logEventClick}
+        >
+          {title}
+        </Link>
+        <Meta>
+          <Line>{description}</Line>
+          <Line>
+            {city}, {format(new Date(date), 'MMMM d')}
+          </Line>
+        </Meta>
+      </CommunityBlock>
+    </Item>
+  )
+}
+
+CommunityEvent.propTypes = {
+  color: PropTypes.string,
+  city: PropTypes.string,
+  date: PropTypes.string,
+  description: PropTypes.string,
+  pictureUrl: PropTypes.string,
+  title: PropTypes.string,
+  url: PropTypes.string
+}
+
 export default function CommunityEvents({ theme }) {
   if (!events.length) return ''
 
@@ -32,34 +103,9 @@ export default function CommunityEvents({ theme }) {
         title={title}
       >
         <Items>
-          {modifiedEvents.map(
-            ({ url, title, description, date, city, pictureUrl }) => (
-              <Item key={url}>
-                <CommunityBlock
-                  action={
-                    <CommunityButton href={url} theme={theme}>
-                      Event Info
-                    </CommunityButton>
-                  }
-                >
-                  {pictureUrl && (
-                    <ImageWrapper href={url}>
-                      <Image src={pictureUrl} alt="" />
-                    </ImageWrapper>
-                  )}
-                  <Link color={theme.color} href={url}>
-                    {title}
-                  </Link>
-                  <Meta>
-                    <Line>{description}</Line>
-                    <Line>
-                      {city}, {format(new Date(date), 'MMMM d')}
-                    </Line>
-                  </Meta>
-                </CommunityBlock>
-              </Item>
-            )
-          )}
+          {modifiedEvents.map(event => (
+            <CommunityEvent {...event} color={theme.color} key={event.url} />
+          ))}
           {eventPlaceholders.map((Component, key) => (
             <Component key={key} />
           ))}

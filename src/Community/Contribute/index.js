@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { logEvent } from '../../utils/ga'
+
 import CommunityButton from '../Button'
 import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
@@ -10,6 +12,11 @@ import data from '../data'
 import { Item, Items, Wrapper } from '../styles'
 
 const { description, mobileDescription, title } = data.section.contribute
+
+const logPR = () => logEvent('community', 'contribute-pr')
+const logBlogpost = () => logEvent('community', 'contribute-blogpost')
+const logTalk = () => logEvent('community', 'contribute-talk')
+const logAmbassador = () => logEvent('community', 'contribute-ambassador')
 
 export default function CommunityContribute({ theme }) {
   return (
@@ -33,6 +40,7 @@ export default function CommunityContribute({ theme }) {
                   href="https://github.com/iterative/dvc"
                   target="_blank"
                   rel="noreferrer noopener"
+                  onClick={logPR}
                 >
                   Go to Github
                 </CommunityButton>
@@ -45,7 +53,11 @@ export default function CommunityContribute({ theme }) {
             <CommunityBlock
               title="Write a blogpost"
               action={
-                <CommunityButton theme={theme} href="mailto:info@dvc.org">
+                <CommunityButton
+                  theme={theme}
+                  href="mailto:info@dvc.org"
+                  onClick={logBlogpost}
+                >
                   Let’s talk!
                 </CommunityButton>
               }
@@ -58,7 +70,11 @@ export default function CommunityContribute({ theme }) {
             <CommunityBlock
               title="Give a talk"
               action={
-                <CommunityButton theme={theme} href="mailto:info@dvc.org">
+                <CommunityButton
+                  theme={theme}
+                  href="mailto:info@dvc.org"
+                  onClick={logTalk}
+                >
                   Let’s talk!
                 </CommunityButton>
               }
@@ -71,7 +87,11 @@ export default function CommunityContribute({ theme }) {
             <CommunityBlock
               title="Be an Ambassador"
               action={
-                <CommunityButton theme={theme} href="mailto:info@dvc.org">
+                <CommunityButton
+                  theme={theme}
+                  href="mailto:info@dvc.org"
+                  onClick={logAmbassador}
+                >
                   Let’s talk!
                 </CommunityButton>
               }

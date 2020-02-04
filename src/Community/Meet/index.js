@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
@@ -7,6 +7,7 @@ import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
 import { pluralizeComments } from '../../utils/i18n'
+import { logEvent } from '../../utils/ga'
 
 import data from '../data'
 
@@ -25,14 +26,33 @@ import {
   Wrapper
 } from '../styles'
 
+const logIssueAll = logEvent('community', 'issue', 'all')
+const logTopicAll = logEvent('community', 'topic', 'all')
+const logDiscord = logEvent('community', 'discord')
+
 function CommunityTopic({ url, title, date, comments, color }) {
+  const logTopic = useCallback(() => logEvent('community', 'forum', title), [
+    title
+  ])
+
   return (
     <Line>
-      <Link color={color} href={url} target="_blank" rel="noreferrer noopener">
+      <Link
+        color={color}
+        href={url}
+        target="_blank"
+        rel="noreferrer noopener"
+        onClick={logTopic}
+      >
         {title}
       </Link>
       <Meta>
-        <Comments href={url} target="_blank" rel="noreferrer noopener">
+        <Comments
+          href={url}
+          target="_blank"
+          rel="noreferrer noopener"
+          onClick={logTopic}
+        >
           {pluralizeComments(comments)}
         </Comments>{' '}
         • last activity {formatDistanceToNow(new Date(date), 'MMM, d') + ' '}
@@ -51,13 +71,28 @@ CommunityTopic.propTypes = {
 }
 
 function CommunityIssue({ url, title, date, comments, color }) {
+  const logIssue = useCallback(() => logEvent('community', 'issue', title), [
+    title
+  ])
+
   return (
     <Line>
-      <Link color={color} href={url} target="_black" rel="noreferrer noopener">
+      <Link
+        color={color}
+        href={url}
+        target="_black"
+        rel="noreferrer noopener"
+        onClick={logIssue}
+      >
         {title}
       </Link>
       <Meta>
-        <Comments href={url} target="_black" rel="noreferrer noopener">
+        <Comments
+          href={url}
+          target="_black"
+          rel="noreferrer noopener"
+          onClick={logIssue}
+        >
           {pluralizeComments(comments)}
         </Comments>
         {' •'} opened {formatDistanceToNow(new Date(date), 'MMM, d')} ago
@@ -92,7 +127,13 @@ export default function CommunityMeet({ issues, theme, topics }) {
             <CommunityBlock
               title="Join the Dev Chat"
               action={
-                <CommunityButton theme={theme} href="/">
+                <CommunityButton
+                  theme={theme}
+                  href="/chat"
+                  target="_black"
+                  rel="noreferrer noopener"
+                  onClick={logDiscord}
+                >
                   Open Chat
                 </CommunityButton>
               }
@@ -118,7 +159,13 @@ export default function CommunityMeet({ issues, theme, topics }) {
               title="Ask a Question"
               action={
                 topics.length && (
-                  <CommunityButton theme={theme} href="/">
+                  <CommunityButton
+                    theme={theme}
+                    href="https://discuss.dvc.org"
+                    target="_black"
+                    rel="noreferrer noopener"
+                    onClick={logTopicAll}
+                  >
                     Read All Topics
                   </CommunityButton>
                 )
@@ -143,7 +190,13 @@ export default function CommunityMeet({ issues, theme, topics }) {
               title="Post an Issue"
               action={
                 issues.length && (
-                  <CommunityButton theme={theme} href="/">
+                  <CommunityButton
+                    theme={theme}
+                    href="https://github.com/iterative/dvc/issues"
+                    target="_black"
+                    rel="noreferrer noopener"
+                    onClick={logIssueAll}
+                  >
                     Read All Issues
                   </CommunityButton>
                 )
