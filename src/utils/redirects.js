@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-let redirects = require('./redirects-list.json')
+let redirects = require('../../redirects-list.json')
 
 const processRedirectString = redirectString => {
   let [regex, replace, code = 301] = redirectString.split(/\s+/g)

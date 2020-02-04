@@ -46,7 +46,7 @@ fails=0
 for file in "$@"; do
   echo -n "$file:"
   prev=$fails
-  checker $(finder "$file" | sort -u | comm -23 - <(echo "$exclude" | sort -u)) || fails=$(($fails + 1))
+  checker $(finder "$file" | sed 's/#.*//g' | sort -u | comm -23 - <(echo "$exclude" | sort -u)) || fails=$(($fails + 1))
   [ $prev -eq $fails ] && echo OK
 done
 [ $fails -eq 0 ] || echo -e "ERROR:$fails failures\n---" >&2
