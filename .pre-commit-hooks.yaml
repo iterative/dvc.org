@@ -1,0 +1,6 @@
+- id: dead-url
+  name: Dead URL Checker
+  entry: scripts/link-check.sh
+  language: script
+  types: [text]
+  description: This hook searches for problematic URLs.
