@@ -80,7 +80,7 @@
       "description": "Paweł Redzyński will talk about open source tools for versioning machine learning projects",
       "city": "Prague",
       "date": "2020-03-20",
-      "pictureUrl": "/static/img/community/events/mlprague.png"
+      "pictureUrl": "/static/img/community/events/mlprague.jpg"
     },
     {
       "url": "https://divops.org",
@@ -88,7 +88,7 @@
       "description": "Elle O'Brien is talking about open source software in the growing field of MLOps.",
       "city": "Remote",
       "date": "2020-03-25",
-      "pictureUrl": "/static/img/community/events/divops.png"
+      "pictureUrl": "/static/img/community/events/divops.jpg"
     }
   ],
   "stats": {
