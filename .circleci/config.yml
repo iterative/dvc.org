@@ -2,20 +2,21 @@
 #
 # Check https://circleci.com/docs/2.0/language-javascript/ for more details
 #
-version: 2
-jobs:
-  build:
-    docker:
-      # specify the version you desire here
-      - image: circleci/node:10.16.3
+version: 2.1
 
-      # Specify service dependencies here if necessary
-      # CircleCI maintains a library of pre-built images
-      # documented at https://circleci.com/docs/2.0/circleci-images/
-      # - image: circleci/mongo:3.4.4
+defaults: &defaults
+  working_directory: ~/repo
+  docker:
+    # specify the version you desire here
+    - image: circleci/node:10.16.3
 
-    working_directory: ~/repo
+    # Specify service dependencies here if necessary
+    # CircleCI maintains a library of pre-built images
+    # documented at https://circleci.com/docs/2.0/circleci-images/
+    # - image: circleci/mongo:3.4.4
 
+commands:
+  install:
     steps:
       - checkout
 
@@ -28,24 +29,65 @@ jobs:
             git reset --hard origin/master
             git checkout -
 
-      # Download and cache dependencies
+      # Download cached dependencies
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "yarn.lock" }}
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
-      - run: yarn
+      - run:
+          name: apt dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install pcregrep
 
-      - run: yarn build
-
-      - run: yarn test
-
-      - run: yarn format-check
-
-      - run: yarn lint-check
-
+  cache:
+    steps:
+      # Upload dependencies cache
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
+jobs:
+  test:
+    <<: *defaults
+    steps:
+      - install
+      - run: yarn
+      - run: yarn build
+      - run: yarn test
+      - run: yarn format-check
+      - run: yarn lint-check
+      - run: yarn link-check-diff
+      - cache
+
+  test_full:
+    <<: *defaults
+    steps:
+      - install
+      - run: yarn
+      - run: yarn build
+      - run: yarn test
+      - run: yarn format-check
+      - run: yarn lint-check
+      - run: yarn link-check
+      - cache
+
+workflows:
+  version: 2
+
+  commit:
+    jobs:
+      - test
+
+  daily:
+    triggers:
+      - schedule:
+          cron: '0 0 * * *'
+          filters:
+            branches:
+              only:
+                - master
+    jobs:
+      - test_full

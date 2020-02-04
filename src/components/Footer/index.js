@@ -81,6 +81,7 @@ export default function Footer(props) {
               >
                 Iterative.ai
               </SocialLink>
+              <Link href="/doc/user-guide/privacy">Privacy Policy</Link>
             </Links>
           </Column>
           <Column>
