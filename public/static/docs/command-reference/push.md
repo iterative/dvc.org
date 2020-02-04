@@ -29,6 +29,9 @@ The `dvc push` command allows one to upload data to remote storage. It doesn't
 save any changes in the code or DVC-files. Those should be saved by using
 `git commit` and `git push`.
 
+💡 For convenience, a Git hook is available to automate running `dvc push` after
+`git push`. See `dvc install` for more details.
+
 Under the hood a few actions are taken:
 
 - The push command by default uses all
@@ -245,8 +248,13 @@ $ tree ../vault/recursive
 ```
 
 The directory `.dvc/cache` is the local cache, while `../vault/recursive` is the
-remote storage – a "local remote" in this case. This listing shows the cache
-having more files in it than the remote – which is what the `new` state means.
+[remote storage](/doc/command-reference/remote) – a "local remote" in this case.
+This listing shows the cache having more files in it than the remote – which is
+what the `new` state means.
+
+> Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> for more info.
 
 Next we can upload part of the data from the cache to the remote using the
 command `dvc push --with-deps <stage>.dvc`. Remember that `--with-deps` searches

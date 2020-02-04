@@ -14,8 +14,8 @@ To contribute documentation, these are the relevant locations under
   (`docs/`): [Markdown](https://guides.github.com/features/mastering-markdown/)
   files of the different pages to render dynamically in the browser.
 - [Images](https://github.com/iterative/dvc.org/tree/master/public/static/img)
-  (`img/`): Add new images (png, svg, etc.) here. Reference them from the
-  Markdown files like this: `![](/static/img/reproducibility.png)`.
+  (`img/`): Add new images (png, svg, etc.) here. Use them in Markdown files
+  like this: `![](/static/img/<filename>.gif)`.
 - [Sections](https://github.com/iterative/dvc.org/tree/master/public/static/docs/sidebar.json)
   (`docs/sidebar.json`): Edit it to register a new section for the navigation
   menu.
@@ -154,3 +154,31 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
 > [this very file](https://raw.githubusercontent.com/iterative/dvc.org/master/public/static/docs/user-guide/contributing/docs.md).
+
+## General language guidelines
+
+We try to use a casual and fun tone in our docs. We also avoid authoritative
+language such as "As you can see, clearly this is what happened..." which while
+good-intentioned, may scare off readers.
+
+We prefer human-friendly language than exact jargon, as long as it's correct,
+even if using general terminology. Example: avoid Git jargon such as _revision_
+or _reference_, preferring the more basic concept _commit_.
+
+The [command reference](/doc/command-reference) contains some of our most
+technical documents where specialized language is used the most, but even there,
+we use expandable sections for complex implementation details.
+
+Start by writing the essence in simple terms, and complete it with
+clarifications, edge cases, or other precisions in a separate iteration.
+
+We use **bold** text for emphasis, and _italics_ for special terms.
+
+We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
+
+- ⚠️ Warnings about possible problems related to DVC usage (similar to **Note!**
+  and "Note that..." notes)
+- 💡 Useful tips related to external tools/integrations
+
+> Some other emojis currently in use here and there: ⚡🙏🐛⭐❗ (We're not
+> limited to these.)

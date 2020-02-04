@@ -10,7 +10,7 @@ usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [-f FILE]
                targets [targets ...]
 
 positional arguments:
-  targets               Input files/directories to add.
+  targets           Input files/directories to add.
 ```
 
 ## Description
@@ -211,10 +211,9 @@ outs:
 wdir: .
 ```
 
-> The cache file with `.dir` extension is a special text file that records the
-> mapping of files in the `pics/` directory. (Refer to
+> Refer to
 > [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-> for an example.)
+> for more info.
 
 This allows us to treat the entire directory structure as one unit (a dependency
 or an <abbr>output</abbr>) with DVC commands. For example, it lets you pass the
