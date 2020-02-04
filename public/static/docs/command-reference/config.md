@@ -152,6 +152,13 @@ for more details.) This section contains the following options:
   > These warnings are automatically turned off when `cache.type` is manually
   > set.
 
+- `cache.shared` - permissions for newly created or downloaded cache files and
+  directories. The default permissions are `0o664`(rw-r--r--) for files and
+  `0o755`(rwxr-xr-x) for directories. The only accepted value right now is
+  `group`, which makes dvc use `0o664`(rw-rw-r--) for files and
+  `0o775`(rwxrwxr-x) for directories, which is useful when you are using a a
+  [shared development server](/doc/use-cases/shared-development-server).
+
 - `cache.local` - name of a local remote to use as cache directory. (Refer to
   `dvc remote` for more information on "local remotes".) This will overwrite the
   value provided to `dvc config cache.dir` or `dvc cache dir`.
