@@ -195,7 +195,6 @@ export default function CommunityLearn({ posts, theme }) {
                   </CommunityButton>
                 </NextLink>
               }
-              icon="/static/img/community/documentation.svg"
             >
               {documentation.map(documentation => (
                 <CommunityDocumentation
@@ -222,7 +221,6 @@ export default function CommunityLearn({ posts, theme }) {
                   </CommunityButton>
                 )
               }
-              icon="/static/img/community/blog.svg"
             >
               {posts.length ? (
                 posts.map(post => (
@@ -238,10 +236,7 @@ export default function CommunityLearn({ posts, theme }) {
             </CommunityBlock>
           </Item>
           <Item>
-            <CommunityBlock
-              title="User Content"
-              icon="/static/img/community/user_content.svg"
-            >
+            <CommunityBlock title="User Content">
               {userContent.map(userContent => (
                 <CommunityUserContent
                   {...userContent}

@@ -21,7 +21,7 @@ const modifiedEvents = events.length > 3 ? events.slice(0, 3) : events
 const eventPlaceholders = new Array(3 - modifiedEvents.length).fill(Item)
 
 function CommunityEvent({
-  color,
+  theme,
   city,
   date,
   description,
@@ -40,7 +40,7 @@ function CommunityEvent({
         action={
           <CommunityButton
             href={url}
-            theme={color}
+            theme={theme}
             target="_blank"
             rel="noreferrer noopener"
             onClick={logEventClick}
@@ -60,7 +60,7 @@ function CommunityEvent({
           </ImageWrapper>
         )}
         <Link
-          color={color}
+          color={theme.color}
           href={url}
           target="_blank"
           rel="noreferrer noopener"
@@ -80,7 +80,7 @@ function CommunityEvent({
 }
 
 CommunityEvent.propTypes = {
-  color: PropTypes.string,
+  theme: PropTypes.object,
   city: PropTypes.string,
   date: PropTypes.string,
   description: PropTypes.string,
@@ -104,7 +104,7 @@ export default function CommunityEvents({ theme }) {
       >
         <Items>
           {modifiedEvents.map(event => (
-            <CommunityEvent {...event} color={theme.color} key={event.url} />
+            <CommunityEvent {...event} theme={theme} key={event.url} />
           ))}
           {eventPlaceholders.map((Component, key) => (
             <Component key={key} />
