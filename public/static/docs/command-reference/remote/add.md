@@ -200,52 +200,15 @@ $ dvc remote add myremote "azure://"
 
 ### Click for Google Drive
 
-Since Google Drive has tight API usage quotas, creation and configuration of
-your own `Google Project` is required:
-
-1.  Log into the [Google Cloud Platform](https://console.developers.google.com)
-    account.
-2.  Create `New Project` or select available one.
-3.  Click `ENABLE APIS AND SERVICES` and search for `drive` to enable
-    `Google Drive API` from search results.
-4.  Navigate to
-    [All Credentials](https://console.developers.google.com/apis/credentials)
-    page and click `Create Credentials` to select `OAuth client ID`. It might
-    ask you to setup a product name on the consent screen.
-5.  Select `Other` for `Application type` and click `Create` to proceed with
-    default `Name`.
-6.  `client id` and `client secret` should be showed to you. Use them for
-    further DVC's configuration.
+Please check out
+[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
+a full guide on configuring Google Drives for use as DVC remote storage,
+including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 
 ```dvc
-$ dvc remote add myremote gdrive://root/my-dvc-root
-$ dvc remote modify myremote gdrive_client_id my_gdrive_client_id
-$ dvc remote modify myremote gdrive_client_secret gdrive_client_secret
-```
-
-> See `dvc remote modify` for a full list of GDrive parameters.
-
-On first usage of the remote you will be prompted to visit an access token
-generation URL via browser. It will ask you to log into the Google account
-associated with the Google Drive you want to use as remote. The login process
-will guide you through the granting of the required access permissions.
-
-On successful access token generation, the token data will be cached in a
-Git-ignored directory (located in `.dvc/tmp/gdrive-user-credentials.json`).
-
-> 💡 Do not share the token data with anyone else to prevent unauthorized access
-> to your Google Drive.
-
-**Support for shared drives**
-
-For this, you need to obtain the directory ID and use it as part of URL passed
-to DVC. This ID can be found in your web browser address bar when the shared
-drive is opened. For example, for the URL
-`https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`, use
-`0AIac4JZqHhKmUk9PDA` as ID:
-
-```dvc
-$ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA/my-dvc-root
+$ dvc remote add -d myremote gdrive://root/path/to/folder
+$ dvc remote modify myremote gdrive_client_id <client ID>
+$ dvc remote modify myremote gdrive_client_secret <client secret>
 ```
 
 Note that GDrive remotes are not "trusted" by default. This means that the

@@ -130,6 +130,7 @@
         }
       },
       "updating-tracked-files",
+      "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
       {
