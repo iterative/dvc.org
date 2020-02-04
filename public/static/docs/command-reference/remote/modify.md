@@ -248,22 +248,27 @@ For more information on configuring Azure Storage connection strings, visit
 
 ### Click for Google Drive
 
+Please check out
+[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
+a full guide on configuring Google Drives for use as DVC remote storage,
+including obtaining the necessary credentials, and how to form `gdrive://` URLs.
+
 - `url` - remote location URL.
 
   ```dvc
-  $ dvc remote modify myremote url "gdrive://root/my-dvc-root"
+  $ dvc remote modify myremote url gdrive://root/path/to/folder
   ```
 
-- `gdrive_client_id` - Google Project's OAuth 2.0 client id.
+- `gdrive_client_id` - Google Project's OAuth 2.0 **client ID**.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_id my_gdrive_client_id
+  $ dvc remote modify myremote gdrive_client_id <client ID>
   ```
 
-- `gdrive_client_secret` - Google Project's OAuth 2.0 client secret.
+- `gdrive_client_secret` - Google Project's OAuth 2.0 **client secret**.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_secret gdrive_client_secret
+  $ dvc remote modify myremote gdrive_client_secret <client secret>
   ```
 
 </details>
