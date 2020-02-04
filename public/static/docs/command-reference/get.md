@@ -37,7 +37,7 @@ The `path` argument of this command is used to specify the location of the
 target to be downloaded within the source repository at `url`. It can point to
 any file or directory in there, including <abbr>outputs</abbr> tracked by DVC,
 as well as files tracked by Git. Note that for DVC repos, the target should be
-found in one of the [DVC-files](/doc/user-guide/dvc-file-format) pf the project.
+found in one of the [DVC-files](/doc/user-guide/dvc-file-format) of the project.
 The project should also have a default
 [DVC remote](/doc/command-reference/remote), containing the actual data.
 
