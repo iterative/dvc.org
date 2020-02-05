@@ -59,13 +59,30 @@ manual editing could be used to change the configuration.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Available settings per storage type
+## Available parameters for all remotes
 
-The following are the types of remote storage (protocols) supported:
+The following options are available for all remote types:
+
+- `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
+  DVC will recalculate the checksums of files upon download (e.g. `dvc pull`) to
+  make sure that these haven't been modified, or corrupted during download. It
+  may slow down the aforementioned commands. The calculated checksum is compared
+  to the one saved in the corresponding
+  [DVC-file](/doc/user-guide/dvc-file-format).
+
+  > Note that this option is enabled on **Google Drive** remotes by default.
+
+  ```dvc
+  $ dvc remote modify myremote verify true
+  ```
+
+## Available parameters per storage type
+
+The following are the customizable types of remote storage (protocols):
 
 <details>
 
-### Click for Amazon S3 options
+### Click for Amazon S3
 
 By default DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
@@ -174,7 +191,7 @@ these settings, you could use the following options:
 
 <details>
 
-### Click for S3 API compatible storage options
+### Click for S3 API compatible storage
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
@@ -185,7 +202,7 @@ must explicitly set the `endpointurl` in the configuration:
 For example:
 
 ```dvc
-$ dvc remote add -d myremote s3://path/to/dir
+$ dvc remote add myremote s3://path/to/dir
 $ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
 
@@ -204,7 +221,7 @@ For more information about the variables DVC supports, please visit
 
 <details>
 
-### Click for Microsoft Azure Blob Storage options
+### Click for Microsoft Azure Blob Storage
 
 - `url` - remote location URL.
 
@@ -215,7 +232,7 @@ For more information about the variables DVC supports, please visit
 - `connection_string` - connection string.
 
   ```dvc
-  $ dvc remote modify myremote connection_string my-connection-string --local
+  $ dvc remote modify myremote connection_string "my-connection-string" --local
   ```
 
 For more information on configuring Azure Storage connection strings, visit
@@ -229,31 +246,36 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for Google Drive options
+### Click for Google Drive
+
+Please check out
+[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
+a full guide on configuring Google Drives for use as DVC remote storage,
+including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 
 - `url` - remote location URL.
 
   ```dvc
-  $ dvc remote modify myremote url "gdrive://root/my-dvc-root"
+  $ dvc remote modify myremote url gdrive://root/path/to/folder
   ```
 
-- `gdrive_client_id` - Google Project's OAuth 2.0 client id.
+- `gdrive_client_id` - Google Project's OAuth 2.0 **client ID**.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_id my_gdrive_client_id
+  $ dvc remote modify myremote gdrive_client_id <client ID>
   ```
 
-- `gdrive_client_secret` - Google Project's OAuth 2.0 client secret.
+- `gdrive_client_secret` - Google Project's OAuth 2.0 **client secret**.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_secret gdrive_client_secret
+  $ dvc remote modify myremote gdrive_client_secret <client secret>
   ```
 
 </details>
 
 <details>
 
-### Click for Google Cloud Storage options
+### Click for Google Cloud Storage
 
 - `projectname` - project name to use.
 
@@ -278,7 +300,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for Aliyun OSS options
+### Click for Aliyun OSS
 
 - `oss_key_id` - OSS key id to use to access a remote.
 
@@ -302,7 +324,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for SSH options
+### Click for SSH
 
 - `url` - remote location URL.
 
@@ -370,7 +392,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for HDFS options
+### Click for HDFS
 
 - `user` - username to use to access a remote.
 
@@ -382,26 +404,28 @@ For more information on configuring Azure Storage connection strings, visit
 
 ## Example: Customize an S3 remote
 
-Let's first set up a _default_ S3 remote:
+Let's first set up a _default_ S3 remote.
+
+> 💡 Before adding an S3 remote, be sure to
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/storage
-
+$ dvc remote add -d myremote s3://mybucket/myproject
 Setting 'myremote' as a default remote.
 ```
 
-Modify its endpoint URL:
+Modify its access profile:
 
 ```dvc
-$ dvc remote modify myremote endpointurl https://object-storage.example.com
+$ dvc remote modify myremote profile myusername
 ```
 
-Now the config file should look like (run `cat .dvc/config`):
+Now the project config file should look like this:
 
 ```ini
 ['remote "myremote"']
 url = s3://mybucket/storage
-endpointurl = https://object-storage.example.com
+profile = myusername
 [core]
 remote = myremote
 ```

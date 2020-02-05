@@ -37,6 +37,16 @@ to simply move it from an old cache location to the new one:
 $ mv .dvc/cache/* /path/to/dvc-cache
 ```
 
+Now you need to ensure that cache files/directories have appropriate
+permissions, so that they could be accessed by your collegues that are members
+of the same group:
+
+```dvc
+$ sudo find /path/to/dvc-cache -type f -exec chmod 0664 {} \;
+$ sudo find /path/to/dvc-cache -type d -exec chmod 0775 {} \;
+$ sudo chown -R myuser:ourgroup /path/to/dvc-cache/
+```
+
 ## Configure shared cache
 
 Tell DVC to use the directory we've set up above as an shared cache location by
@@ -44,6 +54,13 @@ running:
 
 ```dvc
 $ dvc config cache.dir /path/to/dvc-cache
+```
+
+And tell DVC to set group permissions on the newly created/downloaded cache
+files:
+
+```dvc
+$ dvc config cache.shared group
 ```
 
 Commit changes to `.dvc/config` and push them to your git remote:

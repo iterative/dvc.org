@@ -78,16 +78,15 @@ specified in DVC-files currently in the project are considered by `dvc fetch`
   `dvc config core.remote`). The argument `REMOTE` is a remote name defined
   using the `dvc remote` command.
 
-- `-d`, `--with-deps` - determine files to download by tracking dependencies to
-  the target DVC-files (stages). This option only has effect when one or more
-  `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stages in the corresponding pipelines. This means DVC
-  will not fetch files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - one or more `targets` should be specified for this
+  option to have effect. Determines files to download by tracking dependencies
+  to the target DVC-files (stages). By traversing all stage dependencies, DVC
+  searches backward from the target stages in the corresponding pipelines. This
+  means DVC will not fetch files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain at least one directory
-  path for this option to have effect. Determines the files to fetch by
-  searching each target directory and its subdirectories for DVC-files to
-  inspect.
+- `-R`, `--recursive` - determines the files to fetch by searching each target
+  directory and its subdirectories for DVC-files to inspect. `targets` is
+  expected to contain one or more directories for this option to have effect.
 
 - `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
   the downloading of files from the remote. Using more jobs may improve the
@@ -173,10 +172,9 @@ $ dvc status --cloud
 
 $ dvc fetch
 ...
-
 $ tree .dvc
 .dvc
-├── cache           <- dir .dvc/cache was created and populated
+├── cache
 │   ├── 38
 │   │   └── 63d0e317dee0a55c4e59d2ec0eef33
 │   ├── 42
@@ -186,8 +184,13 @@ $ tree .dvc
 ├── ...
 ```
 
-> `dvc status --cloud` (or `-c`) compares the cache contents vs. the default
-> remote.
+> `dvc status --cloud` compares the cache contents vs. the default remote.
+
+Note that the `.dvc/cache` directory was created and populated.
+
+> Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> for more info.
 
 As seen above, used without arguments, `dvc fetch` downloads all assets needed
 by all DVC-files in the current branch, including for directories. The checksums

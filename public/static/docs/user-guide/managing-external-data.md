@@ -10,17 +10,19 @@ for DVC to control data externally.
 
 ## Description
 
-You can take under DVC control files on an external storage with `dvc add` or
-specify external files as outputs for
-[DVC-files](/doc/user-guide/dvc-file-format) created by `dvc run` (stage files)
-DVC will track changes in those files and will reflect so in your pipeline
-[status](/doc/command-reference/status). Currently, the following types
-(protocols) of external outputs (and cache) are supported:
+DVC can track files on an external storage with `dvc add` or specify external
+files as outputs for [DVC-files](/doc/user-guide/dvc-file-format) created by
+`dvc run` (stage files). External outputs are considered part of the <abbr>DVC
+project</abbr>. DVC will track changes in them and reflect this in the output of
+`dvc status`.
 
-- Local files and directories outside of your <abbr>workspace</abbr>;
-- SSH;
-- Amazon S3;
-- Google Cloud Storage;
+Currently, the following types (protocols) of external outputs (and cache) are
+supported:
+
+- Local files and directories outside of your <abbr>workspace</abbr>
+- SSH
+- Amazon S3
+- Google Cloud Storage
 - HDFS
 
 > Note that these are a subset of the remote storage types supported by
@@ -68,7 +70,7 @@ $ dvc run -d data.txt \
 # Add SSH remote to be used as cache location for SSH files
 $ dvc remote add sshcache ssh://user@example.com:/cache
 
-# Tell dvc to use the 'sshcache' remote as SSH cache location
+# Tell DVC to use the 'sshcache' remote as SSH cache location
 $ dvc config cache.ssh sshcache
 
 # Add data on SSH directly
@@ -86,7 +88,7 @@ $ dvc run -d data.txt \
 # Add S3 remote to be used as cache location for S3 files
 $ dvc remote add s3cache s3://mybucket/cache
 
-# Tell dvc to use the 's3cache' remote as S3 cache location
+# Tell DVC to use the 's3cache' remote as S3 cache location
 $ dvc config cache.s3 s3cache
 
 # Add data on S3 directly
@@ -104,7 +106,7 @@ $ dvc run -d data.txt \
 # Add GS remote to be used as cache location for GS files
 $ dvc remote add gscache gs://mybucket/cache
 
-# Tell dvc to use the 'gscache' remote as GS cache location
+# Tell DVC to use the 'gscache' remote as GS cache location
 $ dvc config cache.gs gscache
 
 # Add data on GS directly
@@ -122,7 +124,7 @@ $ dvc run -d data.txt \
 # Add HDFS remote to be used as cache location for HDFS files
 $ dvc remote add hdfscache hdfs://user@example.com/cache
 
-# Tell dvc to use the 'hdfscache' remote as HDFS cache location
+# Tell DVC to use the 'hdfscache' remote as HDFS cache location
 $ dvc config cache.hdfs hdfscache
 
 # Add data on HDFS directly

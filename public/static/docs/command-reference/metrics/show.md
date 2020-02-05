@@ -89,9 +89,9 @@ extension.)
   Similar to `-a` above. Note that both options can be combined, for example
   using the `-aT` flag.
 
-- `-R`, `--recursive` - `path` is expected to be a directory for this option to
-  have effect. Determines the metric files to show by searching each target
-  directory and its subdirectories for DVC-files to inspect.
+- `-R`, `--recursive` - determines the metric files to show by searching each
+  target directory and its subdirectories for DVC-files to inspect. `targets` is
+  expected to contain one or more directories for this option to have effect.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

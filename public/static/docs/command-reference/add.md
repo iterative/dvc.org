@@ -87,11 +87,11 @@ reproducible.
 
 ## Options
 
-- `-R`, `--recursive` - `targets` is expected to contain at least one directory
-  path for this option to have effect. Determines the files to add by searching
-  each target directory and its subdirectories for data files. For each file
-  found, a new DVC-file is created using the process described in this command's
-  description.
+- `-R`, `--recursive` - determines the files to add by searching each target
+  directory and its subdirectories for data files. For each file found, a new
+  DVC-file is created using the process described in this command's description.
+  `targets` is expected to contain one or more directories for this option to
+  have effect.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
   entry is added to `.dvc/state`, while nothing is added to the cache. (The
@@ -197,8 +197,8 @@ Saving information to 'pics.dvc'.
 
 There are no [DVC-files](/doc/user-guide/dvc-file-format) generated within this
 directory structure, but the images are all added to the <abbr>cache</abbr>. DVC
-prints a message to that effect, mentioning that `md5` values are computed for
-each directory. A single `pics.dvc` DVC-file is generated for the top-level
+prints a message about this, mentioning that `md5` values are computed for each
+directory. A single `pics.dvc` DVC-file is generated for the top-level
 directory, and it contains:
 
 ```yaml
@@ -211,10 +211,9 @@ outs:
 wdir: .
 ```
 
-> The cache file with `.dir` extension is a special text file that records the
-> mapping of files in the `pics/` directory. (Refer to
+> Refer to
 > [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
-> for an example.)
+> for more info.
 
 This allows us to treat the entire directory structure as one unit (a dependency
 or an <abbr>output</abbr>) with DVC commands. For example, it lets you pass the

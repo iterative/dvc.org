@@ -25,7 +25,9 @@ workspace data with the versions specified in the current DVC-files.
 that changes the DVC-files in the workspace.
 
 💡 For convenience, a Git hook is available to automate running `dvc checkout`
-after `git checkout`. Use `dvc install` to install it.
+after `git checkout`. See the
+[Automating example](#example-automating-dvc-checkout) below or `dvc install`
+for more details.
 
 The execution of `dvc checkout` does the following:
 
@@ -67,16 +69,16 @@ be pulled from remote storage using `dvc pull`.
 
 ## Options
 
-- `-d`, `--with-deps` - determine files to update by tracking dependencies to
-  the target DVC-files (stages). This option only has effect when one or more
-  `targets` are specified. By traversing all stage dependencies, DVC searches
-  backward from the target stages in the corresponding pipelines. This means DVC
-  will not checkout files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - one or more `targets` should be specified for this
+  option to have effect. Determines files to update by tracking dependencies to
+  the target DVC-files (stages). By traversing all stage dependencies, DVC
+  searches backward from the target stages in the corresponding pipelines. This
+  means DVC will not checkout files referenced in later stages than the
+  `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain at least one directory
-  path for this option to have effect. Determines the files to checkout by
-  searching each target directory and its subdirectories for DVC-files to
-  inspect.
+- `-R`, `--recursive` - `targets` is expected to contain one or more directories
+  for this option to have effect. Determines the files to checkout by searching
+  each target directory and its subdirectories for DVC-files to inspect.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC-files with `git checkout` can result in the need for DVC to
@@ -203,14 +205,12 @@ once to download missing data from the remote storage to the <abbr>cache</abbr>.
 Alternatively, we could have just run `dvc pull` in this case to automatically
 do `dvc fetch` + `dvc checkout`.
 
-## Automating `dvc checkout`
+## Example: Automating DVC checkout
 
 We want the data files or directories (managed by DVC) to match with the other
 files (managed by Git e.g. source code). This requires us to remember running
-`dvc checkout` when needed, and of course we won't always remember to do so.
-Wouldn't it be nice to automate this?
-
-Let's try this:
+`dvc checkout` when needed after a `git checkout`, and of course we won't always
+remember to do so. Wouldn't it be nice to automate this?
 
 ```dvc
 $ dvc install
@@ -219,7 +219,8 @@ $ dvc install
 `dvc install` installs Git hooks to automate common operations, including
 running `dvc checkout` when needed.
 
-We can then checkout the master branch again:
+(Having followed the previous example) we can then checkout the master branch
+again:
 
 ```dvc
 $ git checkout bigrams

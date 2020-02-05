@@ -7,9 +7,9 @@ import {
   getLatestPosts
 } from '../src/utils/api'
 
-import Community from '../src/Community'
-import Page from '../src/Page'
-import Subscribe from '../src/Subscribe'
+import Community from '../src/components/Community'
+import Page from '../src/components/Page'
+import Subscribe from '../src/components/Subscribe'
 
 import { META_BASE_TITLE } from '../src/consts'
 

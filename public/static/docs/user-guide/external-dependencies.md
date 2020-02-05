@@ -10,16 +10,18 @@ DVC to control data externally.
 
 ## Description
 
-With DVC you can specify external files as dependencies for your pipeline
-stages. DVC will track changes in those files and will reflect that in your
-pipeline state. Currently, the following types (protocols) of external
-dependencies are supported:
+With DVC, you can specify external files as dependencies for your pipeline
+stages. DVC will track changes in them and reflect this in the output of
+`dvc status`.
 
-- Local files and directories outside of your <abbr>workspace</abbr>;
-- SSH;
-- Amazon S3;
-- Google Cloud Storage;
-- HDFS;
+Currently, the following types (protocols) of external dependencies are
+supported:
+
+- Local files and directories outside of your <abbr>workspace</abbr>
+- SSH
+- Amazon S3
+- Google Cloud Storage
+- HDFS
 - HTTP
 
 > Note that these are a subset of the remote storage types supported by
@@ -110,11 +112,11 @@ $ dvc run -d remote://example/data.txt \
 Please refer to `dvc remote add` for more details like setting up access
 credentials for the different remotes.
 
-## Example: import-url command
+## Example: `import-url` command
 
-In the previous examples, downloading commands were used: `aws s3 cp`, `scp`,
-`wget`, etc. `dvc import-url` simplifies the downloading for all the supported
-external path or URL types.
+In the previous examples, special downloading tools were used: `scp`,
+`aws s3 cp`, etc. `dvc import-url` simplifies the downloading for all the
+supported external path or URL types.
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml
@@ -151,8 +153,8 @@ determine whether the source has changed and we need to download the file again.
 ## Example: Using import
 
 `dvc import` can download a <abbr>data artifact</abbr> from any <abbr>DVC
-repository</abbr>. It also creates an external dependency in its <abbr>import
-stage</abbr> (DVC-file).
+project</abbr> or Git repository. It also creates an external dependency in its
+<abbr>import stage</abbr> (DVC-file).
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl

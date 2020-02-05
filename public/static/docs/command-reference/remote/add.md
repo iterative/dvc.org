@@ -85,7 +85,7 @@ Use `dvc config` to unset/change the default remote as so:
 
 ## Supported storage types
 
-These are the possible remote storage (protocols) DVC can work with:
+The following are the types of remote storage (protocols) supported:
 
 <details>
 
@@ -101,7 +101,7 @@ $ dvc remote add myremote s3://bucket/path
 By default DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 DVC will be using default AWS credentials file to access S3. To override some of
-these settings, use the options described in `dvc remote modify`.
+these settings, use the parameters described in `dvc remote modify`.
 
 We use the `boto3` library to communicate with AWS. The following API methods
 are performed:
@@ -135,9 +135,11 @@ must explicitly set the `endpointurl` in the configuration:
 For example:
 
 ```dvc
-$ dvc remote add -d myremote s3://mybucket/path/to/dir
+$ dvc remote add myremote s3://mybucket/path/to/dir
 $ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
+
+> See `dvc remote modify` for a full list of S3 API parameters.
 
 S3 remotes can also be configured entirely via environment variables:
 
@@ -158,12 +160,13 @@ For more information about the variables DVC supports, please visit
 
 ```dvc
 $ dvc remote add myremote azure://my-container-name/path
-$ dvc remote modify myremote connection_string my-connection-string --local
+$ dvc remote modify --local myremote connection_string "my-connection-string"
 ```
 
 > The connection string contains access to data and is inserted into the
 > `.dvc/config` file. Therefore, it is safer to add the connection string with
 > the `--local` option, enforcing it to be written to a Git-ignored config file.
+> See `dvc remote modify` for a full list of Azure storage parameters.
 
 The Azure Blob Storage remote can also be configured entirely via environment
 variables:
@@ -184,6 +187,9 @@ $ dvc remote add myremote "azure://"
   The connection string can be found in the "Access Keys" pane of your Storage
   Account resource in the Azure portal.
 
+  > 💡Make sure the value is quoted to prevent shell from misprocessing the
+  > command.
+
 - `container name` - this is the top-level container in your Azure Storage
   Account under which all the files for this remote will be uploaded. If the
   container doesn't already exist, it will be created automatically.
@@ -194,55 +200,22 @@ $ dvc remote add myremote "azure://"
 
 ### Click for Google Drive
 
-Since Google Drive has tight API usage quotas, creation and configuration of
-your own `Google Project` is required:
-
-1.  Log into the [Google Cloud Platform](https://console.developers.google.com)
-    account.
-2.  Create `New Project` or select available one.
-3.  Click `ENABLE APIS AND SERVICES` and search for `drive` to enable
-    `Google Drive API` from search results.
-4.  Navigate to
-    [All Credentials](https://console.developers.google.com/apis/credentials)
-    page and click `Create Credentials` to select `OAuth client ID`. It might
-    ask you to setup a product name on the consent screen.
-5.  Select `Other` for `Application type` and click `Create` to proceed with
-    default `Name`.
-6.  `client id` and `client secret` should be showed to you. Use them for
-    further DVC's configuration.
+Please check out
+[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
+a full guide on configuring Google Drives for use as DVC remote storage,
+including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 
 ```dvc
-$ dvc remote add myremote gdrive://root/my-dvc-root
-$ dvc remote modify myremote gdrive_client_id my_gdrive_client_id
-$ dvc remote modify myremote gdrive_client_secret gdrive_client_secret
+$ dvc remote add -d myremote gdrive://root/path/to/folder
+$ dvc remote modify myremote gdrive_client_id <client ID>
+$ dvc remote modify myremote gdrive_client_secret <client secret>
 ```
 
-On first usage of remote you will be prompted to visit access token generation
-link in browser. It will ask you to log into Google account associated with
-Google Drive, which you want to use as DVC's remote. Login process will guide
-you through granting Google Drive access permissions to the used Google Project.
-
-On successful access token generation, token data will be cached in git ignored
-directory with path `.dvc/tmp/gdrive-user-credentials.json`. Do not share token
-data with anyone else to prevent unauthorized access to your Google Drive.
-
-#### Shared drives support
-
-You need to obtain `id` of your shared drive directory to use it as part of URL
-passed to DVC. `id` can be found in your web browser address bar when shared
-drive is opened. For example, for the URL
-
-```dvc
-https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA
-```
-
-the `id` will be equal to `0AIac4JZqHhKmUk9PDA`.
-
-Use obtained `id` in remote's URL:
-
-```dvc
-$ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA/my-dvc-root
-```
+Note that GDrive remotes are not "trusted" by default. This means that the
+[`verify`](/doc/command-reference/remote/modify#available-settings-for-all-remotes)
+option is enabled on this type of storage, so DVC recalculates the checksums of
+files upon download (e.g. `dvc pull`), to make sure that these haven't been
+modified.
 
 </details>
 
@@ -253,6 +226,8 @@ $ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA/my-dvc-root
 ```dvc
 $ dvc remote add myremote gs://bucket/path
 ```
+
+> See also `dvc remote modify` for a full list of GC object storage parameters.
 
 </details>
 
@@ -268,9 +243,9 @@ below:
 $ dvc remote add myremote oss://my-bucket/path
 ```
 
-To set key id, key secret and endpoint you need to use `dvc remote modify`.
-Example usage is show below. Make sure to use the `--local` option to avoid
-committing your secrets into Git:
+To set key id, key secret and endpoint (or any other OSS parameter), use
+`dvc remote modify`. Example usage is show below. Make sure to use the `--local`
+option to avoid committing your secrets into Git:
 
 ```dvc
 $ dvc remote modify myremote --local oss_key_id my-key-id
@@ -287,19 +262,15 @@ $ export OSS_ACCESS_KEY_SECRET="my-key-secret"
 $ export OSS_ENDPOINT="endpoint"
 ```
 
-#### Test your OSS storage using docker
+**Testing your OSS storage using docker**
 
-Start a container running an OSS emulator.
+Start a container running an OSS emulator, and setup the environment variables,
+for example:
 
 ```dvc
 $ git clone https://github.com/nanaya-tachibana/oss-emulator.git
 $ docker image build -t oss:1.0 oss-emulator
 $ docker run --detach -p 8880:8880 --name oss-emulator oss:1.0
-```
-
-Setup environment variables.
-
-```dvc
 $ export OSS_BUCKET='my-bucket'
 $ export OSS_ENDPOINT='localhost:8880'
 $ export OSS_ACCESS_KEY_ID='AccessKeyID'
@@ -318,6 +289,8 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 ```dvc
 $ dvc remote add myremote ssh://user@example.com/path/to/dir
 ```
+
+> See also `dvc remote modify` for a full list of SSH parameters.
 
 ⚠️ DVC requires both SSH and SFTP access to work with SSH remote storage. Please
 check that you are able to connect both ways to the remote location, with tools
@@ -339,6 +312,8 @@ like `ssh` and `sftp` (GNU/Linux).
 ```dvc
 $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 ```
+
+> See also `dvc remote modify` for a full list of HDFS parameters.
 
 </details>
 
@@ -398,10 +373,13 @@ $ cat .dvc/config
 
 </details>
 
-## Example: Custom configuration of an S3 remote
+## Example: Customize an S3 remote
 
 Add an Amazon S3 remote as the _default_ (via `-d` option), and modify its
-region:
+region.
+
+> 💡 Before adding an S3 remote, be sure to
+> [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/myproject
