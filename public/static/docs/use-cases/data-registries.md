@@ -57,7 +57,7 @@ directory in question inside the <abbr>workspace</abbr>, and telling DVC to
 track it, with `dvc add`. For example:
 
 ```dvc
-$ mkdir -p music/Beatles
+$ mkdir -p music/songs
 $ cp ~/Downloads/millionsongsubset_full music/songs
 $ dvc add music/songs
 ```
