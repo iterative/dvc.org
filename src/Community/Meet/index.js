@@ -26,9 +26,9 @@ import {
   Wrapper
 } from '../styles'
 
-const logIssueAll = logEvent('community', 'issue', 'all')
-const logTopicAll = logEvent('community', 'topic', 'all')
-const logDiscord = logEvent('community', 'discord')
+const logIssueAll = () => logEvent('community', 'issue', 'all')
+const logTopicAll = () => logEvent('community', 'topic', 'all')
+const logDiscord = () => logEvent('community', 'discord')
 
 function CommunityTopic({ url, title, date, comments, color }) {
   const logTopic = useCallback(() => logEvent('community', 'forum', title), [

@@ -33,8 +33,8 @@ import data from '../data'
 const { description, mobileDescription, title } = data.section.learn
 const { documentation, userContent } = data
 
-const logPostAll = logEvent('community', 'blog', 'all')
-const logDocumentationAll = logEvent('community', 'documentation', 'all')
+const logPostAll = () => logEvent('community', 'blog', 'all')
+const logDocumentationAll = () => logEvent('community', 'documentation', 'all')
 
 function CommunityBlogPost({
   url,
