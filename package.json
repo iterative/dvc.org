@@ -55,6 +55,7 @@
     "react-scroll": "^1.7.13",
     "react-slick": "^0.25.2",
     "react-syntax-highlighter": "^11.0.2",
+    "react-use": "^13.24.0",
     "request": "^2.88.0",
     "styled-components": "^4.4.1",
     "styled-reset": "^4.0.8",

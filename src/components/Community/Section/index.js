@@ -2,6 +2,7 @@ import PropTypes from 'prop-types'
 import React, { useCallback, useState } from 'react'
 import Collapse from 'react-collapse'
 import { presets } from 'react-motion'
+import { useWindowSize } from 'react-use'
 
 import {
   DesktopDescription,
@@ -12,7 +13,7 @@ import {
   Title,
   Wrapper
 } from './styles'
-import { OnlyDesktop, OnlyMobile } from '../../../styles'
+import { sizes } from '../../../styles'
 
 export default function CommunitySection({
   anchor,
@@ -30,6 +31,9 @@ export default function CommunitySection({
     () => setIsContentVisible(!isContentVisible),
     [isContentVisible]
   )
+  const { width } = useWindowSize()
+
+  const isTablet = width <= sizes.tablet
 
   return (
     <Wrapper
@@ -46,12 +50,14 @@ export default function CommunitySection({
         </div>
       </Header>
       {background && <Picture src={background} />}
-      <OnlyDesktop>{children}</OnlyDesktop>
-      <OnlyMobile>
+
+      {isTablet ? (
         <Collapse isOpened={isContentVisible} springConfig={presets.gentle}>
           {children}
         </Collapse>
-      </OnlyMobile>
+      ) : (
+        children
+      )}
     </Wrapper>
   )
 }
