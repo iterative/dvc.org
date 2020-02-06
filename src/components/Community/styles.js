@@ -98,3 +98,15 @@ export const TextWrapper = styled.div``
 export const NbspWrapper = styled.span`
   white-space: nowrap;
 `
+
+export const HeaderLink = styled.a`
+  font-family: BrandonGrotesqueMed;
+  font-size: 24px;
+  line-height: 34px;
+  color: #24292e;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.7;
+  }
+`

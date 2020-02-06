@@ -24,5 +24,5 @@ Block.propTypes = {
   action: PropTypes.node,
   children: PropTypes.node,
   icon: PropTypes.string,
-  title: PropTypes.string
+  title: PropTypes.node
 }

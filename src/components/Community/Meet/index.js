@@ -17,6 +17,7 @@ import { Stats, StatLabel, StatLine, StatValue } from './styles'
 
 import {
   Comments,
+  HeaderLink,
   Item,
   Items,
   Line,
@@ -125,7 +126,16 @@ export default function CommunityMeet({ issues, theme, topics }) {
         <Items>
           <Item>
             <CommunityBlock
-              title="Join the Dev Chat"
+              title={
+                <HeaderLink
+                  href="/chat"
+                  target="_black"
+                  rel="noreferrer noopener"
+                  onClick={logDiscord}
+                >
+                  Join the Dev Chat
+                </HeaderLink>
+              }
               action={
                 <CommunityButton
                   theme={theme}
@@ -156,7 +166,16 @@ export default function CommunityMeet({ issues, theme, topics }) {
           </Item>
           <Item>
             <CommunityBlock
-              title="Ask a Question"
+              title={
+                <HeaderLink
+                  href="https://discuss.dvc.org"
+                  target="_black"
+                  rel="noreferrer noopener"
+                  onClick={logTopicAll}
+                >
+                  Ask a Question
+                </HeaderLink>
+              }
               action={
                 topics.length && (
                   <CommunityButton
@@ -187,7 +206,16 @@ export default function CommunityMeet({ issues, theme, topics }) {
           </Item>
           <Item>
             <CommunityBlock
-              title="Post an Issue"
+              title={
+                <HeaderLink
+                  href="https://github.com/iterative/dvc/issues"
+                  target="_black"
+                  rel="noreferrer noopener"
+                  onClick={logIssueAll}
+                >
+                  Post an Issue
+                </HeaderLink>
+              }
               action={
                 issues.length && (
                   <CommunityButton

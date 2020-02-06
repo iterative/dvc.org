@@ -14,6 +14,7 @@ import { pluralizeComments } from '../../../utils/i18n'
 
 import {
   Comments,
+  HeaderLink,
   ImageLine,
   Item,
   Items,
@@ -199,7 +200,15 @@ export default function CommunityLearn({ posts, theme }) {
         <Items>
           <Item>
             <CommunityBlock
-              title="Documentation"
+              title={
+                <LocalLink
+                  href="/doc"
+                  as={HeaderLink}
+                  onClick={logDocumentationAll}
+                >
+                  Documentation
+                </LocalLink>
+              }
               action={
                 <LocalLink
                   href="/doc"
@@ -222,7 +231,16 @@ export default function CommunityLearn({ posts, theme }) {
           </Item>
           <Item>
             <CommunityBlock
-              title="DVC Blog"
+              title={
+                <HeaderLink
+                  href="https://blog.dvc.org"
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  onClick={logPostAll}
+                >
+                  DVC Blog
+                </HeaderLink>
+              }
               action={
                 posts.length && (
                   <CommunityButton

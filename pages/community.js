@@ -26,7 +26,7 @@ const HeadInjector = () => (
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
     />
-    <title>{META_BASE_TITLE}</title>
+    <title>Community | {META_BASE_TITLE}</title>
   </Head>
 )
 
