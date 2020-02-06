@@ -34,7 +34,7 @@ export const DropdownLink = styled.a`
   color: #838d93;
 
   &:hover {
-    opacity: 0.75;
+    opacity: 0.7;
   }
 
   & + & {
@@ -81,7 +81,7 @@ export const ImageLink = styled.a`
   }
 
   &:hover {
-    opacity: 0.75;
+    opacity: 0.7;
   }
 `
 

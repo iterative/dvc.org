@@ -68,7 +68,7 @@ export const ImageLink = styled.div`
   }
 
   &:hover {
-    opacity: 0.75;
+    opacity: 0.7;
   }
 `
 
@@ -102,7 +102,7 @@ export const Link = styled.a`
   color: #fff;
 
   &:hover {
-    opacity: 0.75;
+    opacity: 0.7;
   }
 `
 
@@ -120,6 +120,6 @@ export const LinkButton = styled.a`
   color: #24292e;
 
   &:hover {
-    opacity: 0.75;
+    opacity: 0.7;
   }
 `
