@@ -1,8 +1,10 @@
 import PropTypes from 'prop-types'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Collapse from 'react-collapse'
 import { presets } from 'react-motion'
 import { useWindowSize } from 'react-use'
+
+import Router from 'next/router'
 
 import {
   DesktopDescription,
@@ -32,6 +34,24 @@ export default function CommunitySection({
     [isContentVisible]
   )
   const { width } = useWindowSize()
+
+  useEffect(() => {
+    const updateVisibility = () => {
+      const { hash } = window.location
+
+      if (anchor && hash === `#${anchor}`) {
+        setIsContentVisible(true)
+      }
+    }
+
+    updateVisibility()
+
+    Router.events.on('hashChangeComplete', updateVisibility)
+
+    return () => {
+      Router.events.off('hashChangeComplete', updateVisibility)
+    }
+  }, [])
 
   const isTablet = width <= sizes.tablet
 
