@@ -45,6 +45,7 @@ export const DropdownLink = styled.a`
 export const Links = styled.div`
   display: flex;
   flex-direction: row;
+  align-items: center;
 `
 
 export const Link = styled.a`
@@ -66,7 +67,21 @@ export const Link = styled.a`
   }
 
   ${DropdownWrapper} &:hover {
-    border: none;
+    border-color: #fff;
+  }
+`
+
+export const ImageLink = styled.a`
+  display: block;
+  margin-left: 35px;
+  padding-top: 10px;
+
+  & + & {
+    margin-left: 18px;
+  }
+
+  &:hover {
+    opacity: 0.75;
   }
 `
 
@@ -115,3 +130,5 @@ export const GetStartedButton = styled.a`
     background-color: #13a3bd;
   }
 `
+
+export const Image = styled.img``

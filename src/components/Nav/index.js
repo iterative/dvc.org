@@ -10,6 +10,8 @@ import {
   DropdownLink,
   DropdownWrapper,
   GetStartedButton,
+  ImageLink,
+  Image,
   Link,
   Links,
   Wrapper
@@ -85,6 +87,16 @@ export default function Nav({ mobile = false }) {
         >
           Support
         </LocalLink>
+        <ImageLink
+          href="https://github.com/iterative/dvc"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <Image src="/static/img/community/github.svg" />
+        </ImageLink>
+        <ImageLink href="/chat" target="_blank" rel="noreferrer noopener">
+          <Image src="/static/img/community/discord.svg" />
+        </ImageLink>
       </Links>
       <LocalLink
         as={GetStartedButton}
