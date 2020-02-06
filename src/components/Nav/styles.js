@@ -2,6 +2,46 @@ import styled from 'styled-components'
 
 import { media } from '../../styles'
 
+export const DropdownWrapper = styled.span`
+  position: relative;
+`
+
+export const Dropdown = styled.div`
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 34px;
+  left: 30px;
+  padding: 0 20px;
+  border-radius: 5px;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.18);
+  background-color: #ffffff;
+
+  ${DropdownWrapper}:hover & {
+    display: block;
+  }
+`
+
+export const DropdownLink = styled.a`
+  display: block;
+  padding: 9px 0 13px;
+  font-size: 18px;
+  line-height: 27px;
+  font-family: BrandonGrotesque, Tahoma, Arial;
+  white-space: nowrap;
+  text-decoration: none;
+  color: #838d93;
+
+  &:hover {
+    opacity: 0.75;
+  }
+
+  & + & {
+    border-top: 1px solid #e7e9ea;
+  }
+`
+
 export const Links = styled.div`
   display: flex;
   flex-direction: row;
@@ -23,6 +63,10 @@ export const Link = styled.a`
   &:hover {
     color: #40364d;
     border-bottom: 1.5px solid #40364d;
+  }
+
+  ${DropdownWrapper} &:hover {
+    border: none;
   }
 `
 
@@ -69,43 +113,5 @@ export const GetStartedButton = styled.a`
 
   &:hover {
     background-color: #13a3bd;
-  }
-`
-
-export const DropdownWrapper = styled.span`
-  position: relative;
-`
-
-export const Dropdown = styled.div`
-  display: none;
-  position: absolute;
-  top: 29px;
-  left: 30px;
-  border-radius: 5px;
-  padding: 0 20px;
-  background: #222934;
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.18);
-
-  ${DropdownWrapper}:hover & {
-    display: block;
-  }
-`
-
-export const DropdownLink = styled.a`
-  display: block;
-  padding: 10px 0;
-  font-size: 18px;
-  line-height: 29px;
-  font-family: BrandonGrotesque, Tahoma, Arial;
-  white-space: nowrap;
-  text-decoration: none;
-  color: #fff;
-
-  &:hover {
-    opacity: 0.75;
-  }
-
-  & + & {
-    border-top: 1px solid #333a44;
   }
 `
