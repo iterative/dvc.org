@@ -45,7 +45,7 @@ their checksums. (Refer to
   an "offline" project. If not supplied, this defaults to the current working
   directory.
 
-  > A `dvc.exceptions.NotDvcRepoError` is thrown if `repo` is not a valid DVC
+  > A `dvc.api.UrlNotDvcRepoError` is thrown if `repo` is not a valid DVC
   > project.
 
 - `rev` - (optional)
