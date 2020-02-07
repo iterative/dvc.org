@@ -10,17 +10,24 @@ export const Dropdown = styled.div`
   display: none;
   position: absolute;
   z-index: 1;
-  top: 34px;
-  left: 30px;
-  padding: 0 20px;
-  border-radius: 5px;
-  backdrop-filter: blur(5px);
-  box-shadow: 0 1px 5px 0 rgba(0, 0, 0, 0.18);
-  background-color: #ffffff;
+  top: 30px;
+  left: 23px;
+  border-style: solid;
+  border-width: 19px 10px 11px 37.5px;
+  border-image-source: url(/static/img/community/menu.png);
+  border-image-slice: 38 20 22 75;
+  border-image-width: 19px 10px 11px 37.5px;
+  border-image-repeat: repeat repeat;
 
   ${DropdownWrapper}:hover & {
     display: block;
   }
+`
+
+export const DropdownInset = styled.div`
+  margin: -5px 0 -5px -9.5px;
+  padding: 0 16px 0 0;
+  background: #fff;
 `
 
 export const DropdownLink = styled.a`

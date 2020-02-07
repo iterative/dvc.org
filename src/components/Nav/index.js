@@ -7,6 +7,7 @@ import { logEvent } from '../../utils/ga'
 
 import {
   Dropdown,
+  DropdownInset,
   DropdownLink,
   DropdownWrapper,
   GetStartedButton,
@@ -50,34 +51,36 @@ export default function Nav({ mobile = false }) {
             Community
           </LocalLink>
           <Dropdown>
-            <LocalLink
-              href="/community#meet"
-              as={DropdownLink}
-              onClick={() => logEvent('menu', 'community')}
-            >
-              Meet the Community
-            </LocalLink>
-            <LocalLink
-              href="/community#contribute"
-              as={DropdownLink}
-              onClick={() => logEvent('menu', 'community')}
-            >
-              Contribute
-            </LocalLink>
-            <LocalLink
-              href="/community#learn"
-              as={DropdownLink}
-              onClick={() => logEvent('menu', 'community')}
-            >
-              Learn
-            </LocalLink>
-            <LocalLink
-              href="/community#events"
-              as={DropdownLink}
-              onClick={() => logEvent('menu', 'community')}
-            >
-              Events
-            </LocalLink>
+            <DropdownInset>
+              <LocalLink
+                href="/community#meet"
+                as={DropdownLink}
+                onClick={() => logEvent('menu', 'community')}
+              >
+                Meet the Community
+              </LocalLink>
+              <LocalLink
+                href="/community#contribute"
+                as={DropdownLink}
+                onClick={() => logEvent('menu', 'community')}
+              >
+                Contribute
+              </LocalLink>
+              <LocalLink
+                href="/community#learn"
+                as={DropdownLink}
+                onClick={() => logEvent('menu', 'community')}
+              >
+                Learn
+              </LocalLink>
+              <LocalLink
+                href="/community#events"
+                as={DropdownLink}
+                onClick={() => logEvent('menu', 'community')}
+              >
+                Events
+              </LocalLink>
+            </DropdownInset>
           </Dropdown>
         </DropdownWrapper>
         <LocalLink
