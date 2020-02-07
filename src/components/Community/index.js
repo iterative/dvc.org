@@ -7,6 +7,8 @@ import CommunityHero from './Hero'
 import CommunityLearn from './Learn'
 import CommunityMeet from './Meet'
 
+import { PageWrapper } from './styles'
+
 const themes = {
   green: { backgroundColor: '#C2E6EE', color: '#13ADC7' },
   orange: { backgroundColor: '#EFD8D1', color: '#F46737' },
@@ -15,13 +17,13 @@ const themes = {
 
 export default function Community({ issues, posts, topics }) {
   return (
-    <>
+    <PageWrapper>
       <CommunityHero />
       <CommunityMeet issues={issues} topics={topics} theme={themes.purple} />
       <CommunityContribute theme={themes.orange} />
       <CommunityLearn posts={posts} theme={themes.green} />
       <CommunityEvents theme={themes.purple} />
-    </>
+    </PageWrapper>
   )
 }
 

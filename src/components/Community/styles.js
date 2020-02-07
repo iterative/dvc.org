@@ -110,3 +110,13 @@ export const HeaderLink = styled.a`
     opacity: 0.7;
   }
 `
+
+export const PageWrapper = styled.div`
+  ${media.tablet`
+    padding-bottom: 30px;
+  `}
+
+  ${media.phablet`
+    padding-bottom: 0;
+  `}
+`
