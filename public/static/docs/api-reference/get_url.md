@@ -69,9 +69,8 @@ their checksums. (Refer to
 import dvc.api
 
 resource_url = dvc.api.get_url(
-  'get-started/data.xml',
-  repo='https://github.com/iterative/dataset-registry'
-)
+    'get-started/data.xml',
+    repo='https://github.com/iterative/dataset-registry')
 ```
 
 The value of `resource_url` in this case would be something like:

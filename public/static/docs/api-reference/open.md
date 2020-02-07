@@ -71,11 +71,11 @@ from xml.dom.minidom import parse
 import dvc.api
 
 with dvc.api.open(
-  "get-started/data.xml",
-  "https://github.com/iterative/dataset-registry"
-) as fd:
-  xmldom = parse(fd)
-  # ... Process elements
+        "get-started/data.xml",
+        repo="https://github.com/iterative/dataset-registry"
+        ) as fd:
+    xmldom = parse(fd)
+    # ... Process elements
 ```
 
 > See also `dvc.api.read` for a more direct way to read the complete contents of
@@ -83,23 +83,27 @@ with dvc.api.open(
 
 ## Example: use a file from the local cache
 
-In this case we don't supply a `repo` value, which means the current working
-directory will be tried instead, so make sure that the code is run from within a
-<abbr>DVC project</abbr>:
+In this case we don't supply a `repo` value. DVC will walk up the current
+working directory tree to find the <abbr>DVC project</abbr>:
 
 ```py
 import dvc.api
 
 with dvc.api.open('data/nlp/words.txt') as fd:
-  print(fd.name)
+    for word in fd:
+        # ... Process words
 ```
 
 DVC will look for `data/nlp/words.txt` in the local cache of the
 <abbr>project</abbr>. (If it's not found there, the default
 [remote](/doc/command-reference/remote) will be tried.)
 
-The output of the script above should be something like
-`.dvc/cache/3a/01762e96060aa04a68345fbd910355` – the physical data location.
+To specify the file encoding of a text file:
+
+```py
+with dvc.api.open('data/nlp/words.txt', encoding="utf-8") as fd:
+    # ...
+```
 
 ## Example: process CSV file from a private repository
 
@@ -112,12 +116,12 @@ import csv
 import dvc.api
 
 with dvc.api.open(
-  "sea_ice.csv",
-  repo="git@github.com:iterative/df_sea_ice_no_header.git"
-) as fd:
-  reader = csv.reader(fd)
-  for row in reader:
-    # ... Process columns
+        "sea_ice.csv",
+        repo="git@github.com:iterative/df_sea_ice_no_header.git"
+        ) as fd:
+    reader = csv.reader(fd)
+    for row in reader:
+        # ... Process columns
 ```
 
 ## Example: stream file from a specific remote
@@ -130,10 +134,9 @@ by providing a `remote` argument:
 import dvc.api
 
 with dvc.api.open(
-  'model.pkl',
-  repo='https://github.com/example/dvc-repository'
-  remote='my-s3-bucket'
-) as fd:
-  for line in fd:
-    # ... Process lines
+        'model.pkl', repo='https://github.com/example/dvc-repository'
+        remote='my-s3-bucket'
+        ) as fd:
+    for line in fd:
+        # ... Process lines
 ```
