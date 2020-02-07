@@ -73,11 +73,11 @@ export const Link = styled.a`
 
 export const ImageLink = styled.a`
   display: block;
-  margin-left: 35px;
+  margin-left: 30px;
   padding-top: 10px;
 
   & + & {
-    margin-left: 18px;
+    margin-left: 10px;
   }
 
   &:hover {
@@ -111,7 +111,7 @@ export const GetStartedButton = styled.a`
 
   width: 113px;
   height: 38px;
-  margin-left: 40px;
+  margin-left: 30px;
   padding: 1px 7px 2px;
   border-radius: 4px;
   border: none;
@@ -131,4 +131,7 @@ export const GetStartedButton = styled.a`
   }
 `
 
-export const Image = styled.img``
+export const Image = styled.img`
+  width: 24px;
+  height: 24px;
+`
