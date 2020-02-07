@@ -14,8 +14,8 @@ operation:
   hand or with the command `dvc config --local`.
 
 - `.dvc/cache`: The [cache directory](#structure-of-cache-directory) will store
-  your data. The data files and directories in <abbr>DVC repositories</abbr>
-  will only contain links to the data files in the cache. (Refer to
+  your data. The data files and directories in the <abbr>workspace</abbr> will
+  only contain links to the data files in the cache. (Refer to
   [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization). See
   `dvc config cache` for related configuration options.
 
@@ -104,8 +104,9 @@ $ tree .dvc/cache
 
 The cache file with `.dir` extension is a special text file that contains the
 mapping of files in the `data/` directory (as a JSON array), along with their
-checksums. The other two cache files are the files inside `data/`. A typical
-`.dir` cache file looks like this:
+checksums. The other two cache files are the files inside `data/`.
+
+A typical `.dir` cache file looks like this:
 
 ```dvc
 $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir

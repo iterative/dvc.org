@@ -3,8 +3,12 @@
 In this section we provide help for some of the problems that DVC user might
 stumble upon.
 
-<!-- Hardcoded id for error.dvc.org/many-files -> #many-files redirect -->
-<h2 id="many-files">Too many open files error</h2>
+<!--
+This file uses a special engine feature for the following headers, so that a
+custom anchor link is used. Just add {#custom-anchor} after each title:
+-->
+
+## Too many open files error {#many-files}
 
 A known problem some users run into with the `dvc pull`, `dvc fetch` and
 `dvc push` commands is `[Errno 24] Too many open files` (most common for S3
