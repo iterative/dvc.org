@@ -90,8 +90,8 @@ to push.
   searches backward from the target stages in the corresponding pipelines. This
   means DVC will not push files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - determines the metric files to show by searching each
-  target directory and its subdirectories for DVC-files to inspect. `targets` is
+- `-R`, `--recursive` - determines the files to push by searching each target
+  directory and its subdirectories for DVC-files to inspect. `targets` is
   expected to contain one or more directories for this option to have effect.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
