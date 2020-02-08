@@ -71,8 +71,8 @@ from xml.dom.minidom import parse
 import dvc.api
 
 with dvc.api.open(
-        "get-started/data.xml",
-        repo="https://github.com/iterative/dataset-registry"
+        'get-started/data.xml',
+        repo='https://github.com/iterative/dataset-registry'
         ) as fd:
     xmldom = parse(fd)
     # ... Process elements
@@ -101,7 +101,7 @@ DVC will look for `data/nlp/words.txt` in the local cache of the
 To specify the file encoding of a text file:
 
 ```py
-with dvc.api.open('data/nlp/words.txt', encoding="utf-8") as fd:
+with dvc.api.open('data/nlp/words.txt', encoding='utf-8') as fd:
     # ...
 ```
 
@@ -116,8 +116,8 @@ import csv
 import dvc.api
 
 with dvc.api.open(
-        "sea_ice.csv",
-        repo="git@github.com:iterative/df_sea_ice_no_header.git"
+        'sea_ice.csv',
+        repo='git@github.com:iterative/df_sea_ice_no_header.git'
         ) as fd:
     reader = csv.reader(fd)
     for row in reader:
@@ -144,7 +144,7 @@ with open(
         remote='my-s3-bucket'
         ) as fd:
     for line in fd:
-        match = re.search(r"user=(\w+)", line)
+        match = re.search(r'user=(\w+)', line)
         # ...
 ```
 
@@ -159,3 +159,6 @@ with dvc.api.open('model.pkl', repo='...') as fd:
     pickle.load(fd)
     # ... Use model
 ```
+
+> For a faster shorthand way to perform a similar example, please see the
+> [read() example](/doc/api-reference/read#examples).
