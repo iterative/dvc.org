@@ -1,7 +1,8 @@
 # dvc.api.get_url()
 
-Return the URL to the storage location of a <abbr>data artifact</abbr> tracked
-by DVC.
+Return the URL
+([string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)
+type)) to the storage location of a <abbr>data artifact</abbr> tracked by DVC.
 
 ## Signature
 
@@ -11,16 +12,16 @@ get_url(path, repo=None, rev=None, remote=None)
 
 ## Description
 
-Returns the full URL string (`str` type) to the physical location (in a
+Returns the full URL to the physical location (in a
 [DVC remote](/doc/command-reference/remote)) where a target data artifact
-specified by its `path` in a `repo` (<abbr>DVC project</abbr>) is stored.
-
-⚠️ Note that the returned URL is formed by evaluating the corresponding
+specified by its `path` in a `repo` (<abbr>DVC project</abbr>) is stored. The
+URL is formed by evaluating the corresponding
 [DVC-file](/doc/user-guide/dvc-file-format) (see [Examples](#examples) below) as
 well as the project's
-[default remote](https://dvc.org/doc/command-reference/remote/default). **There
-is no guarantee that the file actually exists in that location**. Please keep
-this in mind when using the URL string in your code.
+[default remote](https://dvc.org/doc/command-reference/remote/default).
+
+⚠️ This function does not check for the actual existence of the file or
+directory in the remote storage.
 
 💡 Having the resource's URL, it should be possible to download it directly with
 an appropriate tool such as
