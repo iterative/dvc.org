@@ -23,9 +23,10 @@ positional arguments:
 Provides an easy way to reuse files or directories tracked in any <abbr>DVC
 repository</abbr> (e.g. datasets, intermediate results, ML models) or Git
 repository (e.g. source code, small image/other files). `dvc import` downloads
-the target file or directory (`url`/`path`) in a way so that it's tracked with
-DVC, becoming a local <abbr>data artifact</abbr>. This also permits updating the
-import later, if it has changed in its data source. (See `dvc update`.)
+the target file or directory (found at `path` in `url`) in a way so that it's
+tracked with DVC, becoming a local <abbr>data artifact</abbr>. This also permits
+updating the import later, if it has changed in its data source. (See
+`dvc update`.)
 
 > Note that `dvc get` corresponds to the first step this command performs (just
 > download the data).

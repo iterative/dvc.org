@@ -20,8 +20,8 @@ positional arguments:
 Provides an easy way to download files or directories tracked in any <abbr>DVC
 repository</abbr> (e.g. datasets, intermediate results, ML models), or Git
 repository (e.g. source code, small image/other files). `dvc get` copies the
-target file or directory (`url`/`path`) to the current working directory.
-(Analogous to `wget`, but for repos.)
+target file or directory (found at `path` in `url`) to the current working
+directory. (Analogous to `wget`, but for repos.)
 
 > Note that unlike `dvc import`, this command does not track the downloaded
 > files (does not create a DVC-file). For that reason, this command doesn't
