@@ -63,7 +63,7 @@ regularly into a temporary local path before the file object is made available.
 - `encoding` - (optional) used to decode contents to a string. Mirrors the
   namesake parameter in builtin `open()`. Defaults to `"utf-8"`.
 
-## Example: process XML file from an external DVC repository
+## Example: Process XML file from an external DVC repository
 
 ```py
 from xml.dom.minidom import parse
@@ -81,7 +81,7 @@ with dvc.api.open(
 > See also `dvc.api.read` for a more direct way to read the complete contents of
 > a file <abbr>artifact</abbr>.
 
-## Example: use a file from the local cache
+## Example: Use a file from the local cache
 
 In this case we don't supply a `repo` value. DVC will walk up the current
 working directory tree to find the <abbr>DVC project</abbr>:
@@ -105,7 +105,7 @@ with dvc.api.open('data/nlp/words.txt', encoding="utf-8") as fd:
     # ...
 ```
 
-## Example: process CSV file from a private repository
+## Example: Process CSV file from a private repository
 
 For this we'll have to use the SSH URL to the Git repo (assuming the local
 [SSH credentials](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
@@ -124,19 +124,38 @@ with dvc.api.open(
         # ... Process columns
 ```
 
-## Example: stream file from a specific remote
+> Note that we're using an SSH Git URL for the `repo` argument above.
+
+## Example: Stream file from a specific remote
 
 Sometimes we may want to chose the [remote](/doc/command-reference/remote) data
-source, for example to ensure that file streaming is enabled. This can be done
-by providing a `remote` argument:
+source, for example to ensure that file streaming is enabled (as only certain
+remote storage types support streaming). This can be done by providing a
+`remote` argument:
 
 ```py
+import pandas as pd
+
 import dvc.api
 
-with dvc.api.open(
-        'model.pkl', repo='https://github.com/example/dvc-repository'
+with open(
+        'activity.log',
+        repo='https://example.com/dvc/repo',
         remote='my-s3-bucket'
         ) as fd:
     for line in fd:
-        # ... Process lines
+        match = re.search(r"user=(\w+)", line)
+        # ...
+```
+
+## Example: Unserialize and employ a binary model
+
+```py
+import pickle
+
+import dvc.api
+
+with dvc.api.open('model.pkl', repo='...') as fd:
+    pickle.load(fd)
+    # ... Use model
 ```
