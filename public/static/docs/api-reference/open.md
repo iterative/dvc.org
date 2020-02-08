@@ -18,7 +18,7 @@ builtin, but for files tracked in <abbr>DVC projects</abbr>. However, it may
 only be used as a _context manager_ (using the `with` keyword as shown in the
 examples below). There is no `close()`.
 
-💡 Note that `dvc.api.open` is able to
+💡 Note that `dvc.api.open()` is able to
 [stream](https://docs.python.org/3/library/io.html) the file directly from
 **most**
 [remote types](/doc/command-reference/remote/add#supported-storage-types)

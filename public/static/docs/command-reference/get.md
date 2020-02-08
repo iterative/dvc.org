@@ -3,12 +3,7 @@
 Download a file or directory tracked by DVC or by Git into the current working
 directory.
 
-> Unlike `dvc import`, this command does not track the downloaded files (does
-> not create a DVC-file).
-
-<!-- Separate MD quote: -->
-
-> See also our `dvc.api.open` Python API function.
+> See also our `dvc.api.open()` Python API function.
 
 ## Synopsis
 
@@ -28,8 +23,9 @@ repository (e.g. source code, small image/other files). `dvc get` copies the
 target file or directory (`url`/`path`) to the current working directory.
 (Analogous to `wget`, but for repos.)
 
-Note that this command doesn't require an existing DVC project to run in. It's a
-single-purpose command that can be used out of the box after installing DVC.
+> Note that unlike `dvc import`, this command does not track the downloaded
+> files (does not create a DVC-file). For that reason, this command doesn't
+> require an existing DVC project to run in.
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported for online repos

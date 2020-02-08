@@ -6,12 +6,7 @@ Download a file or directory tracked by DVC or by Git into the
 source, which can later be used to [update](/doc/command-reference/update) the
 import.
 
-> See also `dvc get`, that corresponds to the first step this command performs
-> (just download the data).
-
-<!-- Separate MD quote: -->
-
-> See also our `dvc.api.open` Python API function.
+> See also our `dvc.api.open()` Python API function.
 
 ## Synopsis
 
@@ -31,6 +26,9 @@ repository (e.g. source code, small image/other files). `dvc import` downloads
 the target file or directory (`url`/`path`) in a way so that it's tracked with
 DVC, becoming a local <abbr>data artifact</abbr>. This also permits updating the
 import later, if it has changed in its data source. (See `dvc update`.)
+
+> Note that `dvc get` corresponds to the first step this command performs (just
+> download the data).
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported for online repos

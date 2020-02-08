@@ -4,8 +4,8 @@ Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track
 changes in the remote data source. Creates a DVC-file.
 
-> See also `dvc get-url`, that corresponds to the first half of what this
-> command does (downloading the <abbr>data artifact</abbr>).
+> See `dvc import` to download and tack data/model files or directories from
+> other <abbr>DVC repositories</abbr> (e.g. GitHub URLs).
 
 ## Synopsis
 
@@ -27,6 +27,9 @@ external data source changes. Example scenarios:
   projects.
 - A batch process running regularly updates a data file to import.
 - A shared dataset on a remote storage that is managed and updated outside DVC.
+
+> Note that `dvc get-url` corresponds to the first step this command performs
+> (just download the file or directory).
 
 The `dvc import-url` command helps the user create such an external data
 dependency. The `url` argument specifies the external location of the data to be
@@ -102,9 +105,6 @@ and from having to install CLI tools for each service.
 Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` on them to bring the import
 up to date from the external data source.
-
-> See `dvc import` to download and tack data/model files or directories from
-> other <abbr>DVC repositories</abbr> (e.g. GitHub URLs).
 
 ## Options
 
