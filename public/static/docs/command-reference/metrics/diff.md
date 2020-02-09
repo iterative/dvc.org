@@ -27,8 +27,8 @@ positional arguments:
 The changes shown by this command includes the new value, and numeric difference
 (delta) from the previous value of metrics (with 3-digit accuracy). They're
 calculated between two commit SHA hashes, branch or tag names, etc.
-([Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References))
-for all metrics in the <abbr>project</abbr>, found by examining all of the
+([Git references](https://git-scm.com/docs/revisions)) for all metrics in the
+<abbr>project</abbr>, found by examining all of the
 [DVC-files](/doc/user-guide/dvc-file-format) in both references.
 
 The metrics to use in this command can be limited with the `--targets` option.

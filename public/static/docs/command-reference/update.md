@@ -28,10 +28,9 @@ update them.
 
 Another detail to note is that when the `--rev`
 ([revision](https://git-scm.com/docs/revisions)) option of `dvc import` has been
-used to create an import stage, DVC is not aware of what kind of
-[Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References) has
-been provided, for example a branch or a tag. For typically static references
-(e.g. tags), or for commit hashes, `dvc update` will not have any effect on the
+used to create an import stage, DVC is not aware of what kind of Git reference
+has been provided, for example a branch or a tag. For typically static ones
+(e.g. tags), or for commit hashes, `dvc update` will never have an effect on the
 import. Refer to the
 [re-importing example](/doc/command-reference/import#example-fixed-revisions-re-importing)
 to learn how to "update" fixed-revision imports.
