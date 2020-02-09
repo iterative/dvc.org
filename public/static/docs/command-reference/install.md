@@ -120,14 +120,13 @@ $ dvc pull --all-branches --all-tags
 
 </details>
 
-## Example: Checkout both DVC and Git
+## Example: Checkout both Git and DVC
 
-Let's start our exploration with the impact of `dvc install` on the
-`dvc checkout` command. Remember that switching from one Git commit to another
-(with `git checkout`) changes the set of
-[DVC-files](/doc/user-guide/dvc-file-format) in the project. This changes the
-set of data files that should be located in the workspace (which can be achieved
-with `dvc checkout`).
+Switching from one Git commit to another (with `git checkout`) may change the
+set of [DVC-files](/doc/user-guide/dvc-file-format) in the
+<abbr>workspace</abbr>. This would mean that the currently present data files
+and directories no longer matches project's version (which can be fixed with
+`dvc checkout`).
 
 Let's first list the available tags in the _Get Started_ repo:
 
@@ -166,7 +165,6 @@ featurize.dvc:
 $ dvc checkout
 
 $ dvc status
-
 Data and pipelines are up to date.
 ```
 
@@ -229,12 +227,10 @@ Look carefully at this output and it is clear that the `dvc checkout` command
 has indeed been run. As a result the workspace is up to date with the data files
 matching what is referenced by the DVC-files.
 
-## Example: Showing DVC status on Git commit
+## Example: Showing DVC status when committing with Git
 
-The other hook installed by `dvc install` runs before `git commit` operation. To
-see see what that does, start with the same workspace, making sure it is not in
-the _detached HEAD_ state from the previous example by first running
-`git checkout master`.
+To follow this example, start with the same workspace as before, making sure it
+is not in a _detached HEAD_ state by running `git checkout master`.
 
 If we simply edit one of the code files:
 
