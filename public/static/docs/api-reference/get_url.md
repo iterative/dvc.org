@@ -46,8 +46,7 @@ and `dvc add` to learn more about how DVC handles data directories.
 - `repo` - specifies the location of the source DVC project. Both HTTP and SSH
   protocols are supported for online Git repository URLs (e.g.
   `[user@]server:project.git`). `repo` can also be a local file system path to
-  an "offline" project. If not supplied, defaults to the current working
-  directory.
+  an "offline" project. If not supplied, defaults to the current DVC project.
 
   A `dvc.api.UrlNotDvcRepoError` is thrown if `repo` is not a valid DVC project.
 
@@ -78,8 +77,8 @@ The value of `resource_url` in this case would be something like:
 
 `https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`
 
-This URL represents the physical location of the data, built by interpreting the
+This URL represents the physical location of the data, built by evaluating the
 corresponding [DVC-file](/doc/user-guide/dvc-file-format), where the file's
-checksum `a304afb96060aad90176268345e10355` is stored, and the project's remote
-configuration where the base URL `https://remote.dvc.org/dataset-registry/` is
-saved.
+checksum (`a304afb96060aad90176268345e10355`) is stored, and the
+[project-configuration](https://github.com/iterative/dataset-registry/blob/master/.dvc/config)
+where the remote URL (`https://remote.dvc.org/dataset-registry`) is saved.
