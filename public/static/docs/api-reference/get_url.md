@@ -53,15 +53,13 @@ and `dvc add` to learn more about how DVC handles data directories.
 
 - `rev` -
   [Git-revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash). `rev` only has an effect
-  when a URL is supplied as parameter to `repo`. If not supplied, it uses the
-  default Git revision, `HEAD`.
+  (such as a branch name, a tag, or a commit hash). It only has an effect when
+  `repo` is a Git repository. If not supplied, it uses the default Git revision,
+  `HEAD`.
 
 - `remote` - name of the [DVC remote](/doc/command-reference/remote) to fetch
-  the target artifact from. If not supplied, the default depends on the value of
-  `repo`. The local cache is used when `repo` is the current working directory
-  (default value of `repo`). when `repo` is an external repository URL, the
-  default project remote is used.
+  the target artifact from. If not supplied, the default remote or `repo` is
+  used (or the cache directory for local projects).
 
   A `dvc.exceptions.NoRemoteError` is thrown if no `remote` is specified and the
   project has no default remote.
