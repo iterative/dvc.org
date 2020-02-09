@@ -25,7 +25,7 @@ command shows a comparative summary of basic statistics: how many files were
 deleted/changed, and the file size differences.
 
 > Note that `dvc diff` does not show the line-to-line comparison among the
-> target files in each revision, like `git diff` or
+> target files in each version, like `git diff` or
 > [GNU `diff`](https://www.gnu.org/software/diffutils/) can. This is because the
 > data data tracked by DVC can come in many possible formats e.g. structured
 > text, or binary blobs, etc.
@@ -85,9 +85,9 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 
 The minimal `dvc diff` command only includes the "from" reference (`a_ref`) from
 which to calculate the difference. The "until" reference (`b_ref`) defaults to
-`HEAD` (current [Git revision](https://git-scm.com/docs/revisions)).
+`HEAD` (current Git commit).
 
-To see the difference with the very previous revision of the project, we can use
+To see the difference with the very previous commit of the project, we can use
 `HEAD^` as `a_ref`:
 
 ```dvc
@@ -100,7 +100,7 @@ diff for 'data/data.xml'
 added file with size 37.9 MB
 ```
 
-## Example: Specific targets across Git revisions
+## Example: Specific targets across Git commits
 
 We can base this example in the [Metrics](/doc/get-started/metrics) and
 [Compare Experiments](/doc/get-started/compare-experiments) chapters of our _Get
@@ -130,8 +130,8 @@ example repo.
 
 </details>
 
-To see the difference in `model.pkl` among these references, we can run the
-following command.
+To see the difference in `model.pkl` among these tags, we can run the following
+command.
 
 ```dvc
 $ dvc diff -t model.pkl baseline-experiment bigrams-experiment
@@ -144,7 +144,7 @@ diff for 'model.pkl'
 ```
 
 The output from this command confirms that there's a difference in the
-`model.pkl` file between the 2 Git references (tags `baseline-experiment` and
+`model.pkl` file between the 2 Git commits (tags `baseline-experiment` and
 `bigrams-experiment`) we indicated.
 
 ### What about directories?
