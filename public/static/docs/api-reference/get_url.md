@@ -40,32 +40,31 @@ and `dvc add` to learn more about how DVC handles data directories.
 
 ## Parameters
 
-- **`path`** - used to specify the location of the target artifact within the
-  source project in `repo`, relative to the project's root.
+- **`path`** - specifies the location of the target artifact within the source
+  project in `repo`, relative to the project's root.
 
 - `repo` - specifies the location of the source DVC project. Both HTTP and SSH
   protocols are supported for online Git repository URLs (e.g.
   `[user@]server:project.git`). `repo` can also be a local file system path to
-  an "offline" project. If not supplied, this defaults to the current working
+  an "offline" project. If not supplied, defaults to the current working
   directory.
 
-  > A `dvc.api.UrlNotDvcRepoError` is thrown if `repo` is not a valid DVC
-  > project.
+  A `dvc.api.UrlNotDvcRepoError` is thrown if `repo` is not a valid DVC project.
 
-- `rev` - (optional)
+- `rev` -
   [Git-revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
   (such as a branch name, a tag, or a commit hash). `rev` only has an effect
   when a URL is supplied as parameter to `repo`. If not supplied, it uses the
   default Git revision, `HEAD`.
 
-- `remote` - (optional) name of the [DVC remote](/doc/command-reference/remote)
-  to fetch the target artifact from. If not supplied, the default depends on the
-  value of `repo`. The local cache is used when `repo` is the current working
-  directory (default value of `repo`). when `repo` is an external repository
-  URL, the default project remote is used.
+- `remote` - name of the [DVC remote](/doc/command-reference/remote) to fetch
+  the target artifact from. If not supplied, the default depends on the value of
+  `repo`. The local cache is used when `repo` is the current working directory
+  (default value of `repo`). when `repo` is an external repository URL, the
+  default project remote is used.
 
-  > A `dvc.exceptions.NoRemoteError` is thrown if no `remote` is specified and
-  > the project has no default remote.
+  A `dvc.exceptions.NoRemoteError` is thrown if no `remote` is specified and the
+  project has no default remote.
 
 ## Examples
 
