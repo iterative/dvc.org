@@ -29,15 +29,18 @@ The `dvc push` command allows one to upload data to remote storage. It doesn't
 save any changes in the code or DVC-files. Those should be saved by using
 `git commit` and `git push`.
 
+💡 For convenience, a Git hook is available to automate running `dvc push` after
+`git push`. See `dvc install` for more details.
+
 Under the hood a few actions are taken:
 
 - The push command by default uses all
-  [DVC-files](/doc/user-guide/dvc-file-format in the <abbr>workspace</abbr>. The
-  command line options listed below will either limit or expand the set of
+  [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>.
+  The command line options listed below will either limit or expand the set of
   DVC-files to consult.
 
 - For each <abbr>output</abbr> referenced from each selected DVC-file, DVC finds
-  a corresponding entry in the<abbr>cache</abbr>. DVC checks whether the entry
+  a corresponding entry in the <abbr>cache</abbr>. DVC checks whether the entry
   exists in the remote. From this DVC gathers a list of files missing from the
   remote storage.
 
@@ -87,8 +90,8 @@ to push.
   searches backward from the target stages in the corresponding pipelines. This
   means DVC will not push files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - determines the metric files to show by searching each
-  target directory and its subdirectories for DVC-files to inspect. `targets` is
+- `-R`, `--recursive` - determines the files to push by searching each target
+  directory and its subdirectories for DVC-files to inspect. `targets` is
   expected to contain one or more directories for this option to have effect.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
@@ -245,8 +248,13 @@ $ tree ../vault/recursive
 ```
 
 The directory `.dvc/cache` is the local cache, while `../vault/recursive` is the
-remote storage – a "local remote" in this case. This listing shows the cache
-having more files in it than the remote – which is what the `new` state means.
+[remote storage](/doc/command-reference/remote) – a "local remote" in this case.
+This listing shows the cache having more files in it than the remote – which is
+what the `new` state means.
+
+> Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> for more info.
 
 Next we can upload part of the data from the cache to the remote using the
 command `dvc push --with-deps <stage>.dvc`. Remember that `--with-deps` searches

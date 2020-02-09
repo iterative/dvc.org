@@ -13,7 +13,9 @@
     "format-check": "prettier --check '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
     "lint-check": "eslint src pages",
     "format-all": "prettier --write '{.,pages/**,public/static/docs/**,src/**}/*.{js,md}'",
-    "format": "prettier --write"
+    "format": "prettier --write",
+    "link-check": "scripts/link-check-git-all.sh",
+    "link-check-diff": "scripts/link-check-git-diff.sh"
   },
   "repository": {
     "type": "git",

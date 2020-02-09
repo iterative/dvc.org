@@ -31,9 +31,6 @@ Luigi, etc.
 
 ### Experiment management software
 
-Mostly designed for enterprise usage, but with open source options such as
-http://studio.ml/
-
 - DVC uses Git as the underlying platform for experiment tracking instead of a
   web application.
 
