@@ -26,14 +26,11 @@ Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. `dvc update` is the only command that can
 update them.
 
-Another detail to note is that when the `--rev`
-([revision](https://git-scm.com/docs/revisions)) option of `dvc import` has been
-used to create an import stage, DVC is not aware of what kind of Git reference
-has been provided, for example a branch or a tag. For typically static ones
-(e.g. tags), or for commit hashes, `dvc update` will never have an effect on the
-import. Refer to the
-[re-importing example](/doc/command-reference/import#example-fixed-revisions-re-importing)
-to learn how to "update" fixed-revision imports.
+`dvc update` will not have an effect on import stages created with `dvc import`
+if option `--rev` is used with a specific commit (`rev` does not change). (In
+these cases, you may
+[re-import](/doc/command-reference/import#example-fixed-revisions-re-importing)
+a different commit instead.)
 
 ## Options
 
