@@ -55,7 +55,7 @@ export default function CommunityContribute({ theme }) {
               action={
                 <CommunityButton
                   theme={theme}
-                  href="mailto:info@dvc.org"
+                  href="mailto:info@dvc.org?subject=I want to write a blogpost!"
                   onClick={logBlogpost}
                 >
                   Let’s talk!
@@ -72,7 +72,7 @@ export default function CommunityContribute({ theme }) {
               action={
                 <CommunityButton
                   theme={theme}
-                  href="mailto:info@dvc.org"
+                  href="mailto:info@dvc.org?subject=I want to give a talk!"
                   onClick={logTalk}
                 >
                   Let’s talk!
@@ -89,7 +89,8 @@ export default function CommunityContribute({ theme }) {
               action={
                 <CommunityButton
                   theme={theme}
-                  href="mailto:info@dvc.org"
+                  // eslint-disable-next-line
+                  href="mailto:info@dvc.org?subject=I want to become an Ambassador!"
                   onClick={logAmbassador}
                 >
                   Let’s talk!
