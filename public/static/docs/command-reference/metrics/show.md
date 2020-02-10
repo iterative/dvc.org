@@ -22,14 +22,14 @@ show those specific metric files instead. With the `-a` or`-T` options, this
 command shows the different metrics values across all Git branches or tags,
 respectively.
 
-The optional `targets` argument can contain several metric files. With the `-R`
-option, a target can even be a directory, so that DVC recursively shows all
-metric files in it.
+The optional `targets` argument can contain one or more metric files. With the
+`-R` option, some of the target can even be directories, so that DVC recursively
+shows all metric files inside.
 
 Providing a `type` (`-t` option) overrides the full metric specification (both
 `type` and `xpath` fields) defined in the
-[DVC-file](/doc/user-guide/dvc-file-format) (originally with
-`dvc metrics modify`, typically).
+[DVC-file](/doc/user-guide/dvc-file-format) (with `dvc metrics modify`,
+typically).
 
 If `type` (via `-t`) is not specified and only `xpath` (`-x` option) is, only
 the `xpath` field from the DVC-file is overridden. (DVC will first try to read
@@ -38,8 +38,9 @@ extension.)
 
 > See `dvc metrics modify` to learn how to apply `-t` and `-x` permanently.
 
-See also `dvc metrics diff` to show changes in metrics between different
-versions of the <abbr>repository</abbr>.
+When metrics change in more recent <abbr>repository</abbr> versions, an
+alternative way to display them is `dvc metrics diff`, which shows a table of
+the changes.
 
 ## Options
 

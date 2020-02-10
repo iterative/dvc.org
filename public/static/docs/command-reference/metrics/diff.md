@@ -1,8 +1,7 @@
 # metrics diff
 
-Show a table of changes between
-[metrics](/doc/command-reference/metrics#description) among versions of the
-<abbr>DVC repository</abbr>.
+Show a table of changes in [metrics](/doc/command-reference/metrics#description)
+between two versions of the <abbr>DVC repository</abbr>.
 
 > This command requires that the <abbr>project</abbr> is a
 > [Git](https://git-scm.com/) repository.
