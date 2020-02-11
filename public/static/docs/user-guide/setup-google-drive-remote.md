@@ -111,3 +111,5 @@ token data will be cached in a Git-ignored directory located in
 ⚠️ In order to prevent unauthorized access to your Google Drive, **do not share
 access token data with others**. Each team member should generate their own
 tokens.
+
+> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
