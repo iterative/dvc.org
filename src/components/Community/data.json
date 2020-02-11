@@ -1,7 +1,7 @@
 {
   "hero": {
-    "pictureDesktop": "/static/img/community/banner_feb20.png",
-    "pictureMobile": "/static/img/community/banner_mobile_feb20.png",
+    "pictureDesktop": "/static/img/community/banner.png",
+    "pictureMobile": "/static/img/community/banner-mobile.png",
     "url": "https://www.mlprague.com/#schedule-saturday"
   },
   "section": {
