@@ -125,9 +125,11 @@ export default function HamburgerMenu() {
             <Subsection>
               <ImageLink
                 href="mailto:support@dvc.org"
+                target="_blank"
+                rel="noreferrer noopener"
                 click={itemClick('mail')}
               >
-                <Image src="/static/img/community/icon-discord.svg" />
+                <Image src="/static/img/community/icon-mail.svg" />
                 <ImageComment>E-Mail</ImageComment>
               </ImageLink>
               <ImageLink
