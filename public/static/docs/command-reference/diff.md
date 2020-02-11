@@ -1,10 +1,7 @@
 # diff
 
-Show differences between two versions of the <abbr>DVC project</abbr>. It can be
-narrowed down to specific target files and directories under DVC control.
-
-> This command requires that the <abbr>project</abbr> is a
-> [Git](https://git-scm.com/) repository.
+Show differences between two versions of the <abbr>DVC repository</abbr>. It can
+be narrowed down to specific target files and directories under DVC control.
 
 ## Synopsis
 
