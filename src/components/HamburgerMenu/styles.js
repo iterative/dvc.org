@@ -59,7 +59,7 @@ export const ImageComment = styled.div`
   white-space: nowrap;
 `
 
-export const ImageLink = styled.div`
+export const ImageLink = styled.a`
   flex: 1 1 0;
   cursor: pointer;
 
