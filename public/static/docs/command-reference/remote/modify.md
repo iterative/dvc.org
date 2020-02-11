@@ -271,6 +271,8 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote gdrive_client_secret <client secret>
   ```
 
+> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+
 </details>
 
 <details>
