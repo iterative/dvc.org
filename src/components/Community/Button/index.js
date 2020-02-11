@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Wrapper } from './styles'
 
-function BareButton({ theme, children, forwardedRef, ...props }) {
+function CommunityButton({ theme, children, forwardedRef, ...props }) {
   return (
     <Wrapper {...props} {...theme} ref={forwardedRef}>
       {children}
@@ -11,7 +11,7 @@ function BareButton({ theme, children, forwardedRef, ...props }) {
   )
 }
 
-BareButton.propTypes = {
+CommunityButton.propTypes = {
   children: PropTypes.node,
   theme: PropTypes.shape({
     backgroundColor: PropTypes.string,
@@ -22,5 +22,5 @@ BareButton.propTypes = {
 
 // eslint-disable-next-line react/display-name
 export default React.forwardRef((props, ref) => (
-  <BareButton {...props} forwardedRef={ref} />
+  <CommunityButton {...props} forwardedRef={ref} />
 ))
