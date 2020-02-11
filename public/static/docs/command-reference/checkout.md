@@ -134,6 +134,16 @@ The workspace looks something like this:
 └── train.dvc
 ```
 
+This repository includes the following tags, that represent different variants
+of the resulting model:
+
+```dvc
+$ git tag
+...
+baseline-experiment     <- First simple version of the model
+bigrams-experiment      <- Uses bigrams to improve the model
+```
+
 This project comes with a predefined HTTP
 [remote storage](/doc/command-reference/remote). We can now just run `dvc pull`
 that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
@@ -154,7 +164,7 @@ automatically adjusts the files, by replacing file content and adding or
 deleting files as necessary.
 
 ```dvc
-$ git checkout baseline-experiment  # Stage where model is created
+$ git checkout baseline-experiment  # Stage where model is first created
 ```
 
 Let's check the `model.pkl` entry in `train.dvc` now:
