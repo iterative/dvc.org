@@ -24,7 +24,11 @@ export default async (_, res) => {
         `
           {
             repository(owner: "iterative", name: "dvc") {
-              issues(last: 3, states: OPEN) {
+              issues(
+                first: 3
+                states: OPEN
+                orderBy: { field: CREATED_AT, direction: DESC }
+              ) {
                 edges {
                   node {
                     title
