@@ -40,7 +40,7 @@ export const Items = styled.div`
   `}
 
   ${media.tablet`
-    flex-direction: column;
+    display: block;
   `}
 `
 

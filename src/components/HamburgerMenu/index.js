@@ -151,7 +151,7 @@ export default function HamburgerMenu() {
                 <ImageComment>Discord</ImageComment>
               </ImageLink>
               <ImageLink
-                href="https://twitter.com/DVCorg "
+                href="https://twitter.com/DVCorg"
                 click={itemClick('twitter')}
                 target="_blank"
                 rel="noreferrer noopener"

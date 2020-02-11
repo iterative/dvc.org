@@ -14,6 +14,10 @@ export const Wrapper = styled.div`
     margin: 20px 0;
     padding: 0;
   `}
+
+  .ReactCollapse--collapse {
+    transition: height 500ms;
+  }
 `
 
 export const Header = styled.div`

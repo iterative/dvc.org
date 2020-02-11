@@ -1,7 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useState } from 'react'
-import Collapse from 'react-collapse'
-import { presets } from 'react-motion'
+import { Collapse } from 'react-collapse'
 import { useWindowSize } from 'react-use'
 
 import Router from 'next/router'
@@ -15,6 +14,7 @@ import {
   Title,
   Wrapper
 } from './styles'
+
 import { sizes } from '../../../styles'
 
 export default function CommunitySection({
@@ -28,11 +28,13 @@ export default function CommunitySection({
   mobileDescription,
   title
 }) {
+  const [isTablet, setIsTablet] = useState(false)
   const [isContentVisible, setIsContentVisible] = useState(contentVisible)
   const toggleVisibility = useCallback(
     () => setIsContentVisible(!isContentVisible),
     [isContentVisible]
   )
+
   const { width } = useWindowSize()
 
   useEffect(() => {
@@ -53,7 +55,7 @@ export default function CommunitySection({
     }
   }, [])
 
-  const isTablet = width <= sizes.tablet
+  useEffect(() => setIsTablet(width <= sizes.tablet), [width])
 
   return (
     <Wrapper
@@ -72,9 +74,7 @@ export default function CommunitySection({
       {background && <Picture src={background} />}
 
       {isTablet ? (
-        <Collapse isOpened={isContentVisible} springConfig={presets.gentle}>
-          {children}
-        </Collapse>
+        <Collapse isOpened={isContentVisible}>{children}</Collapse>
       ) : (
         children
       )}
