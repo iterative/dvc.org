@@ -38,16 +38,17 @@ command: by specifying stage file `targets`, or by using the `--single-item`,
 If specific [DVC-files](/doc/user-guide/dvc-file-format) (`targets`) are
 omitted, `Dvcfile` will be assumed.
 
+`dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
+files, intermediate or final results.
+
 By default, this command recursively searches in pipeline stages, starting from
 the `targets`, to determine which ones have changed. Then it executes the
 corresponding commands.<br/> Note that DVC removes cached <abbr>outputs</abbr>
 before running the stages that produce them.
 
-`dvc repro` does not use `dvc fetch`, `dvc pull`, or `dvc checkout` internally
-to get data files, intermediate or final results. It actually regenerates and
-overwrites all the <abbr>artifacts</abbr> in the <abbr>cache</abbr> (unless the
-`--no-commit` option is used), and updates the hash values of changed
-dependencies and outputs in the corresponding stage files.
+It saves all the data files, intermediate or final results into the <abbr>DVC
+cache</abbr> (unless the `--no-commit` option is used), and updates the hash
+values of changed dependencies and outputs in the corresponding stage files.
 
 ### Parallel stage execution
 
