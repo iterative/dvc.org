@@ -62,6 +62,7 @@ export const ImageComment = styled.div`
 export const ImageLink = styled.a`
   flex: 1 1 0;
   cursor: pointer;
+  text-decoration: none;
 
   & + & {
     margin-left: 15px;

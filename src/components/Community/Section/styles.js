@@ -11,8 +11,8 @@ export const Wrapper = styled.div`
   `}
 
   ${media.tablet`
-    margin: 20px 0;
-    padding: 0;
+    margin: 0;
+    padding: 20px 0;
   `}
 
   .ReactCollapse--collapse {
