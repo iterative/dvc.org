@@ -1,7 +1,7 @@
 # import
 
-Download a file or directory from any <abbr>DVC repository</abbr> or plain Git
-repository into the <abbr>workspace</abbr>. It also creates a
+Download a file or directory tracked by DVC or by Git into the
+<abbr>workspace</abbr>. It also creates a
 [DVC-file](/doc/user-guide/dvc-file-format) with information about the data
 source, which can later be used to [update](/doc/command-reference/update) the
 import.

@@ -29,6 +29,8 @@
   "homepage": "https://github.com/iterative/dvc.org#readme",
   "dependencies": {
     "@octokit/graphql": "^4.3.1",
+    "@sentry/browser": "^5.12.1",
+    "@zeit/next-source-maps": "^0.0.3",
     "color": "^3.1.2",
     "date-fns": "^2.8.1",
     "dom-scroll-into-view": "^2.0.1",

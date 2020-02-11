@@ -217,6 +217,8 @@ option is enabled on this type of storage, so DVC recalculates the checksums of
 files upon download (e.g. `dvc pull`), to make sure that these haven't been
 modified.
 
+> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+
 </details>
 
 <details>

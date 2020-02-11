@@ -1,7 +1,7 @@
 # get
 
-Download a file or directory from any <abbr>DVC repository</abbr> or plain Git
-repository into the current working directory.
+Download a file or directory tracked by DVC or by Git into the current working
+directory.
 
 > Unlike `dvc import`, this command does not track the downloaded files (does
 > not create a DVC-file).

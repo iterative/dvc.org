@@ -35,8 +35,8 @@ save any changes in the code or DVC-files. Those should be saved by using
 Under the hood a few actions are taken:
 
 - The push command by default uses all
-  [DVC-files](/doc/user-guide/dvc-file-format in the <abbr>workspace</abbr>. The
-  command line options listed below will either limit or expand the set of
+  [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>.
+  The command line options listed below will either limit or expand the set of
   DVC-files to consult.
 
 - For each <abbr>output</abbr> referenced from each selected DVC-file, DVC finds
@@ -90,8 +90,8 @@ to push.
   searches backward from the target stages in the corresponding pipelines. This
   means DVC will not push files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - determines the metric files to show by searching each
-  target directory and its subdirectories for DVC-files to inspect. `targets` is
+- `-R`, `--recursive` - determines the files to push by searching each target
+  directory and its subdirectories for DVC-files to inspect. `targets` is
   expected to contain one or more directories for this option to have effect.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
