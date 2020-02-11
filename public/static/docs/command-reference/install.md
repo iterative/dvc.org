@@ -143,8 +143,7 @@ $ git tag
 8-evaluation
 9-bigrams-model
 10-bigrams-experiment
-baseline-experiment
-bigrams-experiment
+...
 ```
 
 These tags are used to mark points in the development of the project, and to
