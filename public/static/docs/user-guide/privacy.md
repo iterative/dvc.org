@@ -1,4 +1,4 @@
-# DVC privacy policy to access Google Services and APIs
+# Privacy Policy for Access to Google APIs
 
 DVC is using the [Google Drive API](https://developers.google.com/drive/) to
 make it easier to store files on Google Drive. For more details on how to set it
