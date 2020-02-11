@@ -1,6 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Page from '../Page'
+import Subscribe from '../Subscribe'
+
 import CommunityContribute from './Contribute'
 import CommunityEvents from './Events'
 import CommunityHero from './Hero'
@@ -17,13 +20,16 @@ const themes = {
 
 export default function Community({ issues, posts, topics }) {
   return (
-    <PageWrapper>
-      <CommunityHero />
-      <CommunityMeet issues={issues} topics={topics} theme={themes.purple} />
-      <CommunityContribute theme={themes.orange} />
-      <CommunityLearn posts={posts} theme={themes.green} />
-      <CommunityEvents theme={themes.purple} />
-    </PageWrapper>
+    <Page stickHeader={true}>
+      <PageWrapper>
+        <CommunityHero />
+        <CommunityMeet issues={issues} topics={topics} theme={themes.purple} />
+        <CommunityContribute theme={themes.orange} />
+        <CommunityLearn posts={posts} theme={themes.green} />
+        <CommunityEvents theme={themes.purple} />
+        <Subscribe />
+      </PageWrapper>
+    </Page>
   )
 }
 
