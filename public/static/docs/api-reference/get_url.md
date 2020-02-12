@@ -31,7 +31,7 @@ or `boto3`
 
 Note that if the target is a directory, the URL will end in `.dir`, as DVC
 stores a special JSON file with `.dir` extension that contains the mapping of
-files in the directory (as a JSON array), along with their checksums. Refer to
+files in the directory (as a JSON array), along with their hash values. Refer to
 [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 and `dvc add` to learn more about how DVC handles data directories.
 
@@ -73,12 +73,26 @@ resource_url = dvc.api.get_url(
     repo='https://github.com/iterative/dataset-registry')
 ```
 
-The value of `resource_url` in this case would be something like:
+The value of `resource_url` in this case would result in:
 
 `https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`
 
-This URL represents the physical location of the data, built by evaluating the
-corresponding [DVC-file](/doc/user-guide/dvc-file-format), where the file's
-checksum (`a304afb96060aad90176268345e10355`) is stored, and the
-[project-configuration](https://github.com/iterative/dataset-registry/blob/master/.dvc/config)
-where the remote URL (`https://remote.dvc.org/dataset-registry`) is saved.
+This URL represents the physical location of the data, and is built by
+evaluating the corresponding DVC-file
+([`get-started/data.xml.dvc`](https://github.com/iterative/dataset-registry/blob/master/get-started/data.xml.dvc))
+where the `md5` file hash is stored,
+
+```yaml
+outs:
+  - md5: a304afb96060aad90176268345e10355
+    path: get-started/data.xml
+```
+
+and the project configuration
+([`.dvc/config`](https://github.com/iterative/dataset-registry/blob/master/.dvc/config))
+where the remote URL is saved:
+
+```dvc
+['remote "storage"']
+url = https://remote.dvc.org/dataset-registry
+```
