@@ -5,14 +5,12 @@ import NodeCache from 'node-cache'
 
 const cache = new NodeCache({ stdTTL: 900 })
 
-const dev = process.env.NODE_ENV === 'development'
-
 export default async (_, res) => {
   if (!process.env.GITHUB_TOKEN) {
     res.status(200).json({ issues: [] })
   } else {
     if (cache.get('issues')) {
-      if (dev) console.log('Using cache for "issues"')
+      console.log('Using cache for "issues"')
 
       res.status(200).json({ issues: cache.get('issues') })
     } else {

@@ -17,8 +17,6 @@ import { BLOG_URL, FORUM_URL } from '../../src/consts'
 
 const cache = new NodeCache({ stdTTL: 900 })
 
-const dev = process.env.NODE_ENV === 'development'
-
 const cors = Cors({
   allowedMethods: ['GET', 'HEAD'],
   origin: BLOG_URL
@@ -36,13 +34,13 @@ const getCommentCount = async (req, res) => {
   }
 
   if (cache.get(url) !== undefined) {
-    if (dev) console.log(`Using cache for ${url}`)
+    console.log(`Using cache for ${url}`)
 
     res.status(200).json({ count: cache.get(url) })
 
     return
   } else {
-    if (dev) console.log(`Not using cache for ${url}`)
+    console.log(`Not using cache for ${url}`)
   }
 
   try {
