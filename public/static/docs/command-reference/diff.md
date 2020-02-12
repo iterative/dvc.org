@@ -21,15 +21,12 @@ Given two commit SHA hashes, branch or tag names, etc.
 command shows a comparative summary of basic statistics: how many files were
 deleted/changed, and the file size differences.
 
-> Note that `dvc diff` does not show the line-to-line comparison among the
-> target files in each version, like `git diff` or
-> [GNU `diff`](https://www.gnu.org/software/diffutils/) can. This is because the
-> data data tracked by DVC can come in many possible formats e.g. structured
-> text, or binary blobs, etc.
-
-> For an example on how to create line-to-line text file comparison, refer to
-> [issue #770](https://github.com/iterative/dvc/issues/770#issuecomment-512693256)
-> in our GitHub repository.
+> Note that `dvc diff` does not show the line-to-line comparisons like
+> `git diff` or [GNU `diff`](https://www.gnu.org/software/diffutils/) can. This
+> is because the data data tracked by DVC comes in many formats such as
+> structured text, binary blobs, etc. For an example on how to create
+> line-to-line text file comparison, refer to
+> [issue #770](https://github.com/iterative/dvc/issues/770#issuecomment-512693256).
 
 `dvc diff` does not have an effect when the repository is not tracked by Git,
 for example when `dvc init` was used with the `--no-scm` option.

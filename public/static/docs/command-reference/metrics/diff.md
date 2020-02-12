@@ -20,16 +20,22 @@ positional arguments:
 
 ## Description
 
-The changes shown by this command includes the new value, and numeric difference
+This command means to provide a quick way to compare results from your previous
+experiments with the current results of your pipeline, as long as you're using
+metrics that DVC is aware of (see `dvc metrics add`). Run without arguments,
+this command compares all existing metric files currently present in the
+<abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
+
+The metrics files to compare can be limited with the `--targets` option. Targets
+can also be directories (with the `-R` option), so that DVC recursively shows
+changes for all metric files in it.
+
+The changes shown by this command include the new value, and numeric difference
 (delta) from the previous value of metrics (with 3-digit accuracy). They're
-calculated between two commit SHA hashes, branch or tag names, etc.
-([Git references](https://git-scm.com/docs/revisions)) for all metrics in the
+calculated between two commits (hash, branch, tag, or any
+[Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
 <abbr>project</abbr>, found by examining all of the
 [DVC-files](/doc/user-guide/dvc-file-format) in both references.
-
-The metrics to use in this command can be limited with the `--targets` option.
-target can also be directories (with the `-R` option), so that DVC recursively
-shows changes for all metric files in it.
 
 ## Options
 
