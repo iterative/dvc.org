@@ -8,6 +8,7 @@ import Head from 'next/head'
 import Documentation from '../src/components/Documentation'
 
 import { getItemByPath } from '../src/utils/sidebar'
+import { makeAbsoluteURL } from '../src/utils/api'
 
 import { META_BASE_TITLE } from '../src/consts'
 
@@ -43,11 +44,8 @@ DocumentationPage.getInitialProps = async ({ asPath, req }) => {
     }
   }
 
-  const host = req ? req.headers['host'] : window.location.host
-  const protocol = host.indexOf('localhost') > -1 ? 'http:' : 'https:'
-
   try {
-    const res = await fetch(`${protocol}//${host}${item.source}`)
+    const res = await fetch(makeAbsoluteURL(req, item.source))
 
     if (res.status !== 200) {
       return {
@@ -62,7 +60,6 @@ DocumentationPage.getInitialProps = async ({ asPath, req }) => {
       markdown
     }
   } catch {
-    console.error(`Can't fetch ${protocol}//${host}${item.source}`)
     window.location.reload()
   }
 }
