@@ -12,10 +12,9 @@ usage: dvc metrics diff [-h] [-q | -v]
                         [a_ref] [b_ref]
 
 positional arguments:
-  a_ref     Git reference to the older version to compare
-            (defaults to HEAD)
-  b_ref     Git reference to the newer version to compare
-            (defaults to the current workspace including changes)
+  a_rev                 Old Git commit to compare (defaults to HEAD)
+  b_rev                 New Git commit to compare (defaults to the
+                        current workspace)
 ```
 
 ## Description
