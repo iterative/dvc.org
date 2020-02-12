@@ -1,6 +1,6 @@
 # diff
 
-Show changes between versions of the <abbr>DVC repository</abbr>. It can be
+Show differences between two versions of the <abbr>DVC project</abbr>. It can be
 narrowed down to specific target files and directories under DVC control.
 
 > This command requires that the <abbr>project</abbr> is a
@@ -12,22 +12,22 @@ narrowed down to specific target files and directories under DVC control.
 usage: dvc diff [-h] [-q | -v] [-t TARGET] a_ref [b_ref]
 
 positional arguments:
-  a_ref     Git reference to the older version to compare
-            (defaults to `HEAD`)
-  b_ref     Git reference to the newer version to compare
-            (defaults to the current workspace including changes)
+  a_ref      Git reference from which diff calculates
+  b_ref      Git reference until which diff calculates, if omitted diff
+             shows the difference between current HEAD and a_ref
 ```
 
 ## Description
 
-Given two commit SHA hashes, branch or tag names, etc.
-([Git references](https://git-scm.com/book/en/v2/Git-Internals-Git-References))
-`a_ref` and `b_ref`, this command shows a summary of basic statistics: how many
-files were deleted/changed, and the file size differences. `a_ref` is required,
-while `b_ref` defaults to `HEAD`.
+Given two Git commit references (commit SHA hash, branch or tag name, etc)
+`a_ref` and `b_ref`, this command shows a comparative summary of basic
+statistics: how many files were deleted/changed, and the file size differences.
 
-Note that `dvc diff` does not show the line-to-line comparison among the target
-files in each reference, like `git diff` does.
+> Note that `dvc diff` does not show the line-to-line comparison among the
+> target files in each revision, like `git diff` or
+> [GNU `diff`](https://www.gnu.org/software/diffutils/) can. This is because the
+> data data tracked by DVC can come in many possible formats e.g. structured
+> text, or binary blobs, etc.
 
 > For an example on how to create line-to-line text file comparison, refer to
 > [issue #770](https://github.com/iterative/dvc/issues/770#issuecomment-512693256)

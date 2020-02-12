@@ -11,8 +11,8 @@ usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R]
                   [targets [targets ...]]
 
 positional arguments:
-  targets          DVC-files to commit. Optional. (Finds all
-                   DVC-files in the workspace by default.)
+  targets          DVC-files to commit. Optional. (Finds all DVC-files
+                   in the workspace by default.)
 ```
 
 ## Description
@@ -21,7 +21,10 @@ The `dvc commit` command is useful for several scenarios where a dataset is
 being changed: when a [stage](/doc/command-reference/run) or
 [pipeline](/doc/command-reference/pipeline) is in development, when one wishes
 to run commands outside the control of DVC, or to force DVC-file updates to save
-time tying stages or a pipeline.
+time tying stages or a pipeline. These scenarios are further detailed below.
+
+💡 For convenience, a Git hook is available to remind you to `dvc commit` when
+needed after a `git commit`. See `dvc install` for more details.
 
 - Code or data for a stage is under active development, with rapid iteration of
   code, configuration, or data. Run DVC commands (`dvc run`, `dvc repro`, and

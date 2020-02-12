@@ -83,13 +83,13 @@ $ unzip -q data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` can use any <abbr>DVC project</abbr> to find the appropriate
+> `dvc get` can use any <abbr>DVC repository</abbr> to find the appropriate
 > [remote storage](/doc/command-reference/remote) and download <abbr>data
-> artifacts</abbr> from it. (It's analogous to `wget`, but for <abbr>DVC
-> repositories</abbr>.) In this case we use
-> [dataset-registry](https://github.com/iterative/dataset-registry)) as the
-> source project. (Refer to [Data Registries](/doc/use-cases/data-registries)
-> for more info about this setup.)
+> artifacts</abbr> from it (analogous to `wget`, but for repositories). In this
+> case we use [dataset-registry](https://github.com/iterative/dataset-registry))
+> as the source repo. (Refer to
+> [Data Registries](/doc/use-cases/data-registries) for more info about this
+> setup.)
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43

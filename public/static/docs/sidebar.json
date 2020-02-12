@@ -130,6 +130,7 @@
         }
       },
       "updating-tracked-files",
+      "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
       {
@@ -159,6 +160,10 @@
       {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
+      },
+      {
+        "label": "Privacy Policy (Google APIs)",
+        "slug": "privacy"
       }
     ]
   },

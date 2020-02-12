@@ -1,7 +1,7 @@
 # get
 
-Download a file or directory from any <abbr>DVC project</abbr> or Git repository
-into the current working directory.
+Download a file or directory tracked by DVC or by Git into the current working
+directory.
 
 > Unlike `dvc import`, this command does not track the downloaded files (does
 > not create a DVC-file).
@@ -12,39 +12,37 @@ into the current working directory.
 usage: dvc get [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url         Location of DVC project or Git repository to download from
-  path        Path to a file or directory within the project or repository
+  url              Location of DVC or Git repository to download from.
+  path             Path to a file or directory within the repository.
 ```
 
 ## Description
 
 Provides an easy way to download files or directories tracked in any <abbr>DVC
-project</abbr> (e.g. datasets, intermediate results, ML models), or Git
+repository</abbr> (e.g. datasets, intermediate results, ML models), or Git
 repository (e.g. source code, small image/other files). `dvc get` copies the
-target file or directory (`url`/`path`) to the current working directory. (For
-<abbr>DVC repositories</abbr>, it's analogous to `wget`.)
+target file or directory (`url`/`path`) to the current working directory.
+(Analogous to `wget`, but for repos.)
 
 Note that this command doesn't require an existing DVC project to run in. It's a
 single-purpose command that can be used out of the box after installing DVC.
 
-The `url` argument specifies the address of the <abbr>DVC project</abbr> or Git
-repository containing the data source. Both HTTP and SSH protocols are supported
-for online repositories (e.g. `[user@]server:project.git`). `url` can also be a
-local file system path to an "offline" repository (in this case and if it
-doesn't have a default remote set up, instead of downloading, DVC will try to
-copy the target data from the external source project or its
-<abbr>cache</abbr>).
+The `url` argument specifies the address of the DVC or Git repository containing
+the data source. Both HTTP and SSH protocols are supported for online repos
+(e.g. `[user@]server:project.git`). `url` can also be a local file system path
+to an "offline" repo (if it's a DVC repo without a default remote, instead of
+downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 
 The `path` argument of this command is used to specify the location of the
-target(s) to be downloaded within the source project or repository at `url`. It
-can point to any file or directory in the source project, including
-<abbr>outputs </abbr> tracked by DVC as well as files tracked by Git. Note that
-for the former, data should be specified in one of the
-[DVC-files](/doc/user-guide/dvc-file-format) of the source repository. (In this
-case, a default [DVC remote](/doc/command-reference/remote) needs to be
-configured in the project, containing the actual data.)
+target to be downloaded within the source repository at `url`. It can point to
+any file or directory in there, including <abbr>outputs</abbr> tracked by DVC,
+as well as files tracked by Git. Note that for DVC repos, the target should be
+found in one of the [DVC-files](/doc/user-guide/dvc-file-format) of the project.
+The project should also have a default
+[DVC remote](/doc/command-reference/remote), containing the actual data.
 
-> See `dvc get-url` to download data from other supported URLs.
+> See `dvc get-url` to download data from other supported locations such as S3,
+> SSH, HTTP, etc.
 
 After running this command successfully, the data found in the `url`, `path`
 combination is created in the current working directory, with its original file
@@ -91,7 +89,7 @@ model.pkl
 
 Note that the `model.pkl` file doesn't actually exist in the
 [root directory](https://github.com/iterative/example-get-started/tree/master/)
-of the external Git repository. Instead, the corresponding DVC-file
+of the external Git repo. Instead, the corresponding DVC-file
 [train.dvc](https://github.com/iterative/example-get-started/blob/master/train.dvc)
 is found, that specifies `model.pkl` in its outputs (`outs`). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
@@ -172,8 +170,7 @@ $ dvc get . model.pkl --rev 7-train --out model.monograms.pkl
 ```
 
 > Notice that the `url` provided to `dvc get` above is `.`. `dvc get` accepts
-> file system paths as a "URL" to the repository to get the data from for edge
-> cases.
+> file system paths as the "URL" to the source repo, for edge cases.
 
 The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with

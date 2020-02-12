@@ -1,6 +1,18 @@
+/* eslint-env node */
+
 import React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
+import * as Sentry from '@sentry/browser'
+
+process.on('unhandledRejection', err => {
+  Sentry.captureException(err)
+})
+
+process.on('uncaughtException', err => {
+  Sentry.captureException(err)
+})
+
 import {
   META_BASE_TITLE,
   META_DESCRIPTION,

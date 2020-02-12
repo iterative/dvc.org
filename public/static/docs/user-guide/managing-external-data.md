@@ -10,17 +10,19 @@ for DVC to control data externally.
 
 ## Description
 
-You can take under DVC control files on an external storage with `dvc add` or
-specify external files as outputs for
-[DVC-files](/doc/user-guide/dvc-file-format) created by `dvc run` (stage files)
-DVC will track changes in those files and will reflect so in your pipeline
-[status](/doc/command-reference/status). Currently, the following types
-(protocols) of external outputs (and cache) are supported:
+DVC can track files on an external storage with `dvc add` or specify external
+files as outputs for [DVC-files](/doc/user-guide/dvc-file-format) created by
+`dvc run` (stage files). External outputs are considered part of the <abbr>DVC
+project</abbr>. DVC will track changes in them and reflect this in the output of
+`dvc status`.
 
-- Local files and directories outside of your <abbr>workspace</abbr>;
-- SSH;
-- Amazon S3;
-- Google Cloud Storage;
+Currently, the following types (protocols) of external outputs (and cache) are
+supported:
+
+- Local files and directories outside of your <abbr>workspace</abbr>
+- SSH
+- Amazon S3
+- Google Cloud Storage
 - HDFS
 
 > Note that these are a subset of the remote storage types supported by
