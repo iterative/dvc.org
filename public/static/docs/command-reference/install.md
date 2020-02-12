@@ -21,11 +21,11 @@ etc.) doesn't have DVC initialized (no `.dvc/` directory present).
 
 Namely:
 
-**Checkout**: For any commit hash, branch or tag, `git checkout` retrieves the
-[DVC-files](/doc/user-guide/dvc-file-format) corresponding to that version. The
-project's DVC-files in turn refer to data stored in <abbr>cache</abbr>, but not
-necessarily in the <abbr>workspace</abbr>. Normally, it would be necessary to
-run `dvc checkout` to synchronize workspace and DVC-files.
+**Checkout**: For any commit SHA hash, branch or tag, `git checkout` retrieves
+the [DVC-files](/doc/user-guide/dvc-file-format) corresponding to that version.
+The project's DVC-files in turn refer to data stored in <abbr>cache</abbr>, but
+not necessarily in the <abbr>workspace</abbr>. Normally, it would be necessary
+to run `dvc checkout` to synchronize workspace and DVC-files.
 
 This hook automates running `dvc checkout`.
 

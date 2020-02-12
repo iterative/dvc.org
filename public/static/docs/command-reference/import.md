@@ -73,7 +73,7 @@ data artifact from the source repo.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - commit hash, branch or tag name, etc. (any
+- `--rev` - commit SHA hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
   download the file or directory from. The latest commit in `master` (tip of the
   default branch) is used by default when this option is not specified.
