@@ -38,9 +38,8 @@ extension.)
 
 > See `dvc metrics modify` to learn how to apply `-t` and `-x` permanently.
 
-When metrics change in more recent <abbr>repository</abbr> versions, an
-alternative way to display them is `dvc metrics diff`, which shows a table of
-the changes.
+When metrics change, an alternative way to display them is `dvc metrics diff`,
+which compares them with a previous version.
 
 ## Options
 
