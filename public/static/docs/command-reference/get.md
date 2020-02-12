@@ -157,16 +157,16 @@ $ git clone git@github.com:iterative/example-get-started.git
 $ cd example-get-started
 ```
 
-If you are familiar with our [Get Started](/doc/get-started) example, you may
-know that each chapter has a corresponding
-[tag](https://github.com/iterative/example-get-started/tags). Tag `7-train` is
-where we train a first version of the example model, and tag `9-bigrams-model`
-has an improved model (trained using bigrams). What if we wanted to have both
-versions of the model "checked out" at the same time? `dvc get` provides an easy
-way to do this:
+If you are familiar with our [Get Started](/doc/get-started) project (used in
+these examples), you may remember that the chapter where we train a first
+version of the model corresponds to the the `baseline-experiment` tag in the
+repo. Similarly `bigrams-experiment` points to an improved model (trained using
+bigrams). What if we wanted to have both versions of the model "checked out" at
+the same time? `dvc get` provides an easy way to do this:
 
 ```dvc
-$ dvc get . model.pkl --rev 7-train --out model.monograms.pkl
+$ dvc get . model.pkl --rev baseline-experiment
+                      --out model.monograms.pkl
 ```
 
 > Notice that the `url` provided to `dvc get` above is `.`. `dvc get` accepts
@@ -174,7 +174,7 @@ $ dvc get . model.pkl --rev 7-train --out model.monograms.pkl
 
 The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with
-`-o model.bigrams.pkl` and `--rev 9-bigrams-model` (or even without `--rev`
+`-o model.bigrams.pkl` and `--rev bigrams-experiment` (or even without `--rev`
 since that tag has the latest model version anyway). In fact, in this case using
 `dvc pull` with the corresponding [DVC-files](/doc/user-guide/dvc-file-format)
 should suffice, downloading the file as just `model.pkl`. We can then rename it
