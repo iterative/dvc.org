@@ -126,12 +126,12 @@ outs:
 
 Several of the values above are pulled from the original stage file
 `model.pkl.dvc` in the external DVC repository. The `url` and `rev_lock`
-subfields under `repo` are used to save the origin and revision of the
+subfields under `repo` are used to save the origin and version of the
 dependency, respectively.
 
 ## Example: Fixed revisions & re-importing
 
-To import a specific revision of a <abbr>data artifact</abbr>, we may use the
+To import a specific version of a <abbr>data artifact</abbr>, we may use the
 `--rev` option:
 
 ```dvc
