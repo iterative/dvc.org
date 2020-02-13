@@ -15,7 +15,7 @@ to build a powerful image classifier using a pretty small dataset.
 
 We first train a classifier model using 1000 labeled images, then we double the
 number of images (2000) and retrain our model. We capture both datasets and
-classifier results and show how to use `dvc checkout` to switch between data or
+classifier results and show how to use `dvc checkout` to switch between data and
 model versions.
 
 The specific algorithm used to train and validate the classifier is not
@@ -245,7 +245,7 @@ That's it! We have a second model and dataset saved and pointers to them
 committed with Git. Let's now look at how DVC can help us go back to the
 previous version if we need to.
 
-## Switching between data or model versions
+## Switching between data and model versions
 
 The DVC command that helps get a specific committed version of data is designed
 to be similar to `git checkout`. All we need to do in our case is to
