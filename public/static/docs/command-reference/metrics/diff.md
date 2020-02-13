@@ -25,10 +25,6 @@ metrics that DVC is aware of (see `dvc metrics add`). Run without arguments,
 this command compares all existing metric files currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
 
-The metrics files to compare can be limited with the `--targets` option. Targets
-can also be directories (with the `-R` option), so that DVC recursively shows
-changes for all metric files in it.
-
 The differences shown by this command include the new value, and numeric
 difference (delta) from the previous value of metrics (with 3-digit accuracy).
 They're calculated between two commits (hash, branch, tag, or any
