@@ -38,8 +38,8 @@ extension.)
 
 > See `dvc metrics modify` to learn how to apply `-t` and `-x` permanently.
 
-When metrics change, an alternative way to display them is `dvc metrics diff`,
-which compares them with a previous version.
+An alternative way to display metrics is the `dvc metrics diff` command, which
+compares them with a previous version.
 
 ## Options
 
