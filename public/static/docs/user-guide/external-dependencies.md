@@ -185,6 +185,6 @@ outs:
 ```
 
 The `url` and `rev_lock` subfields under `repo` are used to save the origin and
-[revision](https://git-scm.com/docs/revisions) of the dependency, respectively.
+[version](https://git-scm.com/docs/revisions) of the dependency, respectively.
 
 </details>

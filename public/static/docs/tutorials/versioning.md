@@ -15,8 +15,8 @@ to build a powerful image classifier using a pretty small dataset.
 
 We first train a classifier model using 1000 labeled images, then we double the
 number of images (2000) and retrain our model. We capture both datasets and
-classifier results and show how to use `dvc checkout` to switch between model
-versions.
+classifier results and show how to use `dvc checkout` to switch between data
+and/or model versions.
 
 The specific algorithm used to train and validate the classifier is not
 important, and no prior knowledge of Keras is required. We'll reuse the
@@ -245,7 +245,7 @@ That's it! We have a second model and dataset saved and pointers to them
 committed with Git. Let's now look at how DVC can help us go back to the
 previous version if we need to.
 
-## Switching between model versions
+## Switching between data and/or model versions
 
 The DVC command that helps get a specific committed version of data is designed
 to be similar to `git checkout`. All we need to do in our case is to
@@ -312,8 +312,8 @@ When you have a script that takes some data as an input and produces other data
 <abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:
 
 > If you tried the commands in the
-> [Switching between model versions](#switching-between-model-versions) section,
-> go back to the master branch code and data with:
+> [Switching between data and/or model versions](#switching-between-data-and-or-model-versions)
+> section, go back to the master branch code and data with:
 >
 > ```dvc
 > $ git checkout master

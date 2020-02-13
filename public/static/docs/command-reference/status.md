@@ -29,20 +29,21 @@ _cloud_ are triggered by using the `--cloud` or `--remote` options:
 | ------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
 | local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the cache directory (e.g. `.dvc/cache`) |
 | remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
-| remote | `--cloud`  | Comparisons are made between the cache, and the default remote, defined with `dvc remote --default` command.                |
+| remote | `--cloud`  | Comparisons are made between the cache, and the default remote, typically defined with `dvc remote --default`.              |
 
-DVC determines data and code files to compare by analyzing all
-[DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>repository</abbr>
-(`--all-branches` and `--all-tags` in `--cloud` mode compare to multiple
-[Git revisions](https://git-scm.com/docs/revisions)). The comparison can be
-limited to specific DVC-files by listing them as `targets`. Changes are reported
-only against the given `targets`. When combined with the `--with-deps` option, a
-search is made for changes in other stages that affect the target.
+DVC determines which data and code files to compare by analyzing all
+[DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr> (the
+`--all-branches` and `--all-tags` options compare multiple workspace versions).
 
-In the `local` mode, changes are detected by comparing the hash value of every
-file listed in every (target) DVC-file, against the computed hash of
-corresponding files in the workspace. The command output lists detected changes,
-if any. If no differences are detected, `dvc status` prints this message:
+The comparison can be limited to certain DVC-files only, by listing them as
+`targets`. (Changes are reported only against these.) When this is combined with
+the `--with-deps` option, a search is made for changes in other stages that
+affect each target.
+
+In the `local` mode, changes are detected through the hash value of every file
+listed in every DVC-file in question against the corresponding file in the file
+system. The command output indicates the detected changes, if any. If no
+differences are detected, `dvc status` prints this message:
 
 ```dvc
 $ dvc status

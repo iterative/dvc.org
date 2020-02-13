@@ -12,7 +12,7 @@ $ git clone https://github.com/iterative/example-get-started
 Otherwise, bear with us and we'll introduce some basic DVC concepts to get the
 same results together!
 
-The idea of the project is a simplified version of our
+The idea for this project is a simplified version of our
 [Deep Dive Tutorial](/doc/tutorials/deep). It explores the NLP problem of
 predicting tags for a given StackOverflow question. For example, we might want a
 classifier that can classify (or predict) posts about Python by tagging them

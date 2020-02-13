@@ -3,7 +3,7 @@
 A set of commands to collect and display project metrics:
 [add](/doc/command-reference/metrics/add),
 [show](/doc/command-reference/metrics/show),
-[diff](/doc/command-reference/metrics/show),
+[diff](/doc/command-reference/metrics/diff),
 [modify](/doc/command-reference/metrics/modify), and
 [remove](/doc/command-reference/metrics/remove).
 
@@ -31,7 +31,7 @@ the best performing experiment.
 
 [Add](/doc/command-reference/metrics/add),
 [show](/doc/command-reference/metrics/show),
-[diff](/doc/command-reference/metrics/show),
+[diff](/doc/command-reference/metrics/diff),
 [modify](/doc/command-reference/metrics/modify), and
 [remove](/doc/command-reference/metrics/remove) commands are available to set up
 and manage <abbr>DVC project</abbr> metrics.

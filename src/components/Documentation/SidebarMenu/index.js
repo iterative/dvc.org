@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { Collapse } from 'react-collapse'
 import PerfectScrollbar from 'perfect-scrollbar'
 import scrollIntoView from 'dom-scroll-into-view'
 import PropTypes from 'prop-types'
@@ -11,43 +12,12 @@ import { getParentsListFromPath } from '../../../utils/sidebar'
 
 import { OnlyDesktop } from '../../../styles'
 
-import {
-  Collapse,
-  Menu,
-  SectionLink,
-  SectionLinks,
-  Sections,
-  SideFooter
-} from './styles'
-
-/** Height of each menu child items (to calc Element weight for animations) */
-const heightMap = {}
-
-/** Calculate element height with all open children. */
-function calculateHeight({ activePaths, path }) {
-  let height = 0
-  const reversePaths = [...activePaths].reverse()
-
-  for (let i = 0; i < reversePaths.length; i++) {
-    const current = reversePaths[i]
-
-    height += heightMap[current] ? heightMap[current] : 0
-
-    if (path === current) break
-  }
-
-  return height
-}
+import { Menu, SectionLink, SectionLinks, Sections, SideFooter } from './styles'
 
 function SidebarMenuItem({ children, label, path, activePaths, onClick }) {
-  const linkRef = useRef()
   const isActive = activePaths && includes(activePaths, path)
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
-
-  useEffect(() => {
-    heightMap[path] = children ? linkRef.current.scrollHeight : 0
-  }, [])
 
   return (
     <>
@@ -62,12 +32,7 @@ function SidebarMenuItem({ children, label, path, activePaths, onClick }) {
         {label}
       </LocalLink>
       {children && (
-        <Collapse
-          style={
-            isActive ? { height: calculateHeight({ activePaths, path }) } : {}
-          }
-          ref={linkRef}
-        >
+        <Collapse isOpened={isActive}>
           {children.map(item => (
             <SidebarMenuItem
               key={item.path}

@@ -33,9 +33,9 @@ The execution of `dvc checkout` does the following:
 
 - Scans the DVC-files to compare against the data files or directories in the
   <abbr>workspace</abbr>. DVC knows which data (<abbr>outputs</abbr>) match
-  because their hash values are saved in the `outs` fields inside the DVC-files.
-  Scanning is limited to the given `targets` (if any). See also options
-  `--with-deps` and `--recursive` below.
+  because the corresponding hash values are saved in the `outs` fields in the
+  DVC-files. Scanning is limited to the given `targets` (if any). See also
+  options `--with-deps` and `--recursive` below.
 
 - Missing data files or directories, or those that don't match with any
   DVC-file, are restored from the <abbr>cache</abbr>. See options `--force` and
@@ -119,7 +119,7 @@ $ cd example-get-started
 
 </details>
 
-The workspace looks like this:
+The workspace looks something like this:
 
 ```dvc
 .
@@ -129,8 +129,19 @@ The workspace looks like this:
 ├── featurize.dvc
 ├── prepare.dvc
 ├── train.dvc
-└── src
-    └── <code files here>
+├── src
+│   └── ...
+└── train.dvc
+```
+
+This repository includes the following tags, that represent different variants
+of the resulting model:
+
+```dvc
+$ git tag
+...
+baseline-experiment     <- First simple version of the model
+bigrams-experiment      <- Uses bigrams to improve the model
 ```
 
 This project comes with a predefined HTTP
@@ -142,9 +153,6 @@ files that are under DVC control. The model file hash
 
 ```dvc
 $ dvc pull
-...
-Checking out model.pkl with cache '662eb7f64216d9c2c1088d0a5e2c6951'
-...
 
 $ md5 model.pkl
 MD5 (model.pkl) = 662eb7f64216d9c2c1088d0a5e2c6951
@@ -156,10 +164,7 @@ automatically adjusts the files, by replacing file content and adding or
 deleting files as necessary.
 
 ```dvc
-$ git checkout 7-train  # Tag to stage where model is created
-Note: checking out '7-train'.
-...
-HEAD is now at  2df4172...
+$ git checkout baseline-experiment  # Stage where model is first created
 ```
 
 Let's check the `model.pkl` entry in `train.dvc` now:
@@ -184,15 +189,16 @@ doesn't track those files; DVC does, so we must do this:
 ```dvc
 $ dvc fetch
 $ dvc checkout
+
 $ md5 model.pkl
 MD5 (model.pkl) = 43630cce66a2432dcecddc9dd006d0a7
 ```
 
-What happened is that DVC went through the sole project DVC-files and adjusted
-the current set of files to match the `outs` in them. `dvc fetch` is run this
-once to download missing data from the remote storage to the <abbr>cache</abbr>.
-(Alternatively, we could have just run `dvc pull` to do `dvc fetch` +
-`dvc checkout` in one step.)
+What happened is that DVC went through the DVC-files and adjusted the current
+set of <abbr>output</abbr> files to match the `outs` in them. `dvc fetch` is run
+this once to download missing data from the remote storage to the
+<abbr>cache</abbr>. (Alternatively, we could have just run `dvc pull` to do
+`dvc fetch` + `dvc checkout` in one step.)
 
 ## Example: Automating DVC checkout
 
@@ -212,13 +218,10 @@ running `dvc checkout` when needed.
 again:
 
 ```dvc
-$ git checkout 9-bigrams-model  # Bigrams version of the model
-Previous HEAD position was dd2cc99 Create evaluation stage
-HEAD is now at 72e0f12 try using 9-bigrams-model
-Checking out model.pkl with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
+$ git checkout bigrams-experiment  # Has the latest model version
 
 $ md5 model.pkl
-MD5 (model.pkl) = 3863d0e317dee0a55c4e59d2ec0eef33
+MD5 (model.pkl) = 662eb7f64216d9c2c1088d0a5e2c6951
 ```
 
 Previously this took two commands, `git checkout` followed by `dvc checkout`. We

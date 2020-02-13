@@ -132,9 +132,9 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 
 - `--no-exec` - create a stage file, but do not execute the `command` defined in
   it, nor take dependencies or outputs under DVC control. In the DVC-file
-  contents, the file hashes will be empty; They will be populated the next time
-  this stage is actually executed. This is useful if, for example, you need to
-  build a pipeline (dependency graph) first, and then run it all at once.
+  contents, the file hash values will be empty; They will be populated the next
+  time this stage is actually executed. This is useful if, for example, you need
+  to build a pipeline (dependency graph) first, and then run it all at once.
 
 - `-y`, `--yes` (_deprecated_) - See `--overwrite-dvcfile` below.
 

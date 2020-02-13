@@ -34,8 +34,9 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
 ## Options
 
 - `-a`, `--all-branches` - keep cached objects referenced in all Git branches.
-  Useful for keeping data for all the latest experiment versions. This option is
-  a safer alternative to `dvc gc -c`.
+  Useful for keeping data for all the latest experiment versions. Its
+  recommended to consider including this option when using `-c` i.e.
+  `dvc gc -ac`.
 
 - `-T`, `--all-tags` - the same as `-a` above, but applies to Git tags. It's
   useful if tags are used to track "checkpoints" of an experiment or project.
@@ -47,10 +48,10 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
   specify a list of them (each project is a path) to keep data that is currently
   referenced from them.
 
-- `-c`, `--cloud` - also remove files in the default remote storage. _This
-  operation is dangerous._ It removes datasets, models, other files that are not
-  linked in the current branch/commit (unless `-a` or `-T` is specified). Use
-  `-r` to specify which remote to collect from (instead of the default).
+- `-c`, `--cloud` - also remove files in remote storage. _This operation is
+  dangerous._ It removes datasets, models, other files that are not linked in
+  the current commit (unless `-a` or `-T` are also used). The default remote is
+  used unless a specific one is given with `-r`.
 
 - `-r`, `--remote` - name of the remote storage to collect unused objects from
   if `-c` option is specified.

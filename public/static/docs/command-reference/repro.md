@@ -21,9 +21,9 @@ positional arguments:
 `dvc repro` provides an way to regenerate data pipeline results, by restoring
 the dependency graph (a
 [DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)) implicitly defined
-by [stage files](/doc/command-reference/run) (DVC-files with dependencies) that
-are found in the <abbr>project</abbr>. The commands defined in these stages can
-then be executed in the correct order, reproducing pipeline results.
+by the [stage files](/doc/command-reference/run) (DVC-files with dependencies)
+that are found in the <abbr>project</abbr>. The commands defined in these stages
+can then be executed in the correct order, reproducing pipeline results.
 
 > Pipeline stages are typically defined using the `dvc run` command, while
 > initial data dependencies can be registered by the `dvc add` command.
@@ -38,16 +38,17 @@ command: by specifying stage file `targets`, or by using the `--single-item`,
 If specific [DVC-files](/doc/user-guide/dvc-file-format) (`targets`) are
 omitted, `Dvcfile` will be assumed.
 
+`dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
+files, intermediate or final results.
+
 By default, this command recursively searches in pipeline stages, starting from
 the `targets`, to determine which ones have changed. Then it executes the
-corresponding commands.<br /> Note that DVC removes cached <abbr>outputs</abbr>
+corresponding commands.<br/> Note that DVC removes cached <abbr>outputs</abbr>
 before running the stages that produce them.
 
-`dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
-files, intermediate or final results. It saves all the data files, intermediate
-or final results into the <abbr>DVC cache</abbr> (unless `--no-commit` option is
-specified), and updates stage files with the new dependency/output file or
-directory hash values.
+It saves all the data files, intermediate or final results into the <abbr>DVC
+cache</abbr> (unless the `--no-commit` option is used), and updates the hash
+values of changed dependencies and outputs in the corresponding stage files.
 
 ### Parallel stage execution
 
