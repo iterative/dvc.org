@@ -1,7 +1,8 @@
 # diff
 
-Show differences between two commits in the <abbr>DVC repository</abbr>. It can
-be narrowed down to specific target files and directories under DVC control.
+Show changes between commits in the <abbr>DVC repository</abbr>, or between a
+commit and the <abbr>workspace</abbr>. The comparison can be narrowed down to
+specific target files/directories tracked by DVC.
 
 ## Synopsis
 
