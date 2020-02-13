@@ -9,6 +9,11 @@ export const Menu = styled.div`
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 
+  .ReactCollapse--collapse {
+    padding-left: 20px;
+    transition: height 500ms;
+  }
+
   ${props =>
     props.isScrollHidden &&
     `
@@ -86,13 +91,6 @@ export const SectionLink = styled.a`
       transform: rotate(-90deg);
     `};
   }
-`
-
-export const Collapse = styled.div`
-  overflow: hidden;
-  height: 0;
-  transition: height 400ms;
-  padding-left: 20px;
 `
 
 export const SideFooter = styled.div`
