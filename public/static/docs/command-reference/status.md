@@ -32,9 +32,8 @@ _cloud_ are triggered by using the `--cloud` or `--remote` options:
 | remote | `--cloud`  | Comparisons are made between the cache, and the default remote, typically defined with `dvc remote --default`.              |
 
 DVC determines which data and code files to compare by analyzing all
-[DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>
-(`--all-branches` and `--all-tags` use multiple <abbr>repository</abbr>
-[revisions](https://git-scm.com/docs/revisions)).
+[DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr> (the
+`--all-branches` and `--all-tags` options compare multiple workspace versions).
 
 The comparison can be limited to certain DVC-files only, by listing them as
 `targets`. (Changes are reported only against these.) When this is combined with
