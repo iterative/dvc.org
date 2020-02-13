@@ -56,11 +56,10 @@ name.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - specific
-  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the repository to download
-  the file or directory from. The tip of the default branch is used by default
-  when this option is not specified.
+- `--rev` - commit SHA hash, branch or tag name, etc. (any
+  [Git revision](https://git-scm.com/docs/revisions)) of the repository to
+  download the file or directory from. The latest commit in `master` (tip of the
+  default branch) is used by default when this option is not specified.
 
 - `--show-url` - instead of downloading the file or directory, just print the
   storage location (URL) of the target data. `path` is expected to represent a
@@ -120,7 +119,7 @@ $ ls
 install.sh
 ```
 
-### Example: Getting the storage URL of a DVC-tracked file
+## Example: Getting the storage URL of a DVC-tracked file
 
 We can use `dvc get --show-url` to get the actual location where the final model
 file from our
@@ -128,7 +127,8 @@ file from our
 stored:
 
 ```dvc
-$ dvc get https://github.com/iterative/example-get-started model.pkl --show-url
+$ dvc get --show-url \
+          https://github.com/iterative/example-get-started model.pkl
 https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 ```
 
@@ -138,11 +138,12 @@ https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 
 ## Example: Compare different versions of data or model
 
-`dvc get` provides the `--rev` option to specify which version of the repository
-to download a <abbr>data artifact</abbr> from. It also has the `--out` option to
-specify the location to place the artifact within the workspace. Combining these
-two options allows us to do something we can't achieve with the regular
-`git checkout` + `dvc checkout` process – see for example the
+`dvc get` provides the `--rev` option to specify which
+[commit](https://git-scm.com/docs/revisions) of the repository to download a
+<abbr>data artifact</abbr> from. It also has the `--out` option to specify the
+location to place the artifact within the workspace. Combining these two options
+allows us to do something we can't achieve with the regular `git checkout` +
+`dvc checkout` process – see for example the
 [Get Older Data Version](/doc/get-started/older-versions) chapter of our _Get
 Started_.
 
@@ -156,16 +157,16 @@ $ git clone git@github.com:iterative/example-get-started.git
 $ cd example-get-started
 ```
 
-If you are familiar with our [Get Started](/doc/get-started) example, you may
-know that each chapter has a corresponding
-[tag](https://github.com/iterative/example-get-started/tags). Tag `7-train` is
-where we train a first version of the example model, and tag `9-bigrams-model`
-has an improved model (trained using bigrams). What if we wanted to have both
-versions of the model "checked out" at the same time? `dvc get` provides an easy
-way to do this:
+If you are familiar with our [Get Started](/doc/get-started) project (used in
+these examples), you may remember that the chapter where we train a first
+version of the model corresponds to the the `baseline-experiment` tag in the
+repo. Similarly `bigrams-experiment` points to an improved model (trained using
+bigrams). What if we wanted to have both versions of the model "checked out" at
+the same time? `dvc get` provides an easy way to do this:
 
 ```dvc
-$ dvc get . model.pkl --rev 7-train --out model.monograms.pkl
+$ dvc get . model.pkl --rev baseline-experiment
+                      --out model.monograms.pkl
 ```
 
 > Notice that the `url` provided to `dvc get` above is `.`. `dvc get` accepts
@@ -173,12 +174,11 @@ $ dvc get . model.pkl --rev 7-train --out model.monograms.pkl
 
 The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with
-
-`-o model.bigrams.pkl` and `--rev 9-bigrams-model` or even without `--rev`
-(since it's the latest version anyway). In fact, in this case using `dvc pull`
-with the corresponding [DVC-files](/doc/user-guide/dvc-file-format) should
-suffice, downloading the file as just `model.pkl`. We can then rename it to make
-its version explicit:
+`-o model.bigrams.pkl` and `--rev bigrams-experiment` (or even without `--rev`
+since that tag has the latest model version anyway). In fact, in this case using
+`dvc pull` with the corresponding [DVC-files](/doc/user-guide/dvc-file-format)
+should suffice, downloading the file as just `model.pkl`. We can then rename it
+to make its variant explicit:
 
 ```dvc
 $ dvc pull train.dvc

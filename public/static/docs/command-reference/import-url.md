@@ -129,15 +129,13 @@ in the [Get Started](/doc/get-started) section.
 
 <details>
 
-### Click and expand to setup the example project
-
-Follow these instructions before each example below if you actually want to try
-them on your system.
+### Click and expand to setup example
 
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
-[version](https://github.com/iterative/example-get-started/releases/tag/2-remote)
-corresponding to the [Configure](/doc/get-started/configure) chapter:
+[2-remote](https://github.com/iterative/example-get-started/releases/tag/2-remote)
+tag, corresponding to the [Configure](/doc/get-started/configure) _Get Started_
+chapter:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started

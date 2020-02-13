@@ -52,9 +52,9 @@ $ ls -R .dvc/cache
     04afb96060aad90176268345e10355
 ```
 
-`a304afb96060aad90176268345e10355` from above is an MD5 hash of the `data.xml`
-file we just added to DVC. And if you check the `data/data.xml.dvc` DVC-file you
-will see that it has this hash inside.
+`a304afb96060aad90176268345e10355` above is the hash value of the `data.xml`
+file we just added to DVC. If you check the `data/data.xml.dvc` DVC-file, you
+will see that it has this string inside.
 
 ### Important note on cache performance
 

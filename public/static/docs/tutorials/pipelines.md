@@ -5,7 +5,8 @@ Let's explore the natural language processing
 ([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)) problem of
 predicting tags for a given StackOverflow question. For example, we want a
 classifier that can predict posts about the Python language by tagging them
-`python`. (This is a short version of the [Tutorial](/doc/tutorials/deep).)
+`python`. (This is a short version of the
+[Deep Dive Tutorial](/doc/tutorials/deep).)
 
 In this example, we will focus on building a simple ML
 [pipeline](/doc/command-reference/pipeline) that takes an archive with
@@ -182,7 +183,7 @@ outs:
 ```
 
 Just like the DVC-file we created earlier with `dvc add`, this stage file uses
-checksums that point to the cache to describe and version control dependencies
+checksums that point to the cache, to describe and version control dependencies
 and outputs. Output `data/Posts.xml` file is saved as
 `.dvc/cache/a3/04afb96060aad90176268345e10355` and linked (or copied) to the
 workspace, as well as added to `.gitignore`.
@@ -193,8 +194,8 @@ stages) we need to apply. This is important when you run `dvc repro` to
 regenerate the final or intermediate result.
 
 Second, hopefully it's clear by now that the actual data is stored in the
-`.dvc/cache` directory, each file having a name based on an MD5 hash. This cache
-is similar to Git's
+`.dvc/cache` directory, each file having a name based on an `md5` hash. This
+cache is similar to Git's
 [objects database](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects),
 but made specifically to handle large data files.
 

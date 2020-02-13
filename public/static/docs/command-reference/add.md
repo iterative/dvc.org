@@ -74,8 +74,8 @@ to work with directory hierarchies with `dvc add`:
    directory (with default name `dirname.dvc`). Every file in the hierarchy is
    added to the cache (unless `--no-commit` flag is added), but DVC does not
    produce individual DVC-files for each file in the directory tree. Instead,
-   the single DVC-file points to a file in the cache that contains references to
-   the files in the added hierarchy.
+   the single DVC-file references a file in the cache that in turn points to the
+   files in the added hierarchy.
 
 In a <abbr>DVC project</abbr>, `dvc add` can be used to version control any
 <abbr>data artifact</abbr> (input, intermediate, or output files and
@@ -197,8 +197,8 @@ Saving information to 'pics.dvc'.
 
 There are no [DVC-files](/doc/user-guide/dvc-file-format) generated within this
 directory structure, but the images are all added to the <abbr>cache</abbr>. DVC
-prints a message about this, mentioning that `md5` values are computed for each
-directory. A single `pics.dvc` DVC-file is generated for the top-level
+prints a message about this, mentioning that MD5 hash values are computed for
+each directory. A single `pics.dvc` DVC-file is generated for the top-level
 directory, and it contains:
 
 ```yaml

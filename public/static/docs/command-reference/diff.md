@@ -1,10 +1,8 @@
 # diff
 
-Show differences between two versions of the <abbr>DVC project</abbr>. It can be
-narrowed down to specific target files and directories under DVC control.
-
-> This command requires that the project is a [Git](https://git-scm.com/)
-> repository.
+Show changes between commits in the <abbr>DVC repository</abbr>, or between a
+commit and the <abbr>workspace</abbr>. The comparison can be narrowed down to
+specific target files/directories tracked by DVC.
 
 ## Synopsis
 
@@ -12,38 +10,32 @@ narrowed down to specific target files and directories under DVC control.
 usage: dvc diff [-h] [-q | -v] [-t TARGET] a_ref [b_ref]
 
 positional arguments:
-  a_ref      Git reference from which diff calculates
-  b_ref      Git reference until which diff calculates, if omitted diff
-             shows the difference between current HEAD and a_ref
+  a_rev                 Old Git commit to compare (defaults to HEAD)
+  b_rev                 New Git commit to compare (defaults to the
+                        current workspace)
 ```
 
 ## Description
 
-Given two Git commit references (commit hash, branch or tag name, etc) `a_ref`
-and `b_ref`, this command shows a comparative summary of basic statistics: how
-many files were deleted/changed, and the file size differences.
+Given two commit SHA hashes, branch or tag names, etc.
+([references](https://git-scm.com/docs/revisions)) `a_ref` and `b_ref`, this
+command shows a comparative summary of basic statistics: how many files were
+deleted/changed, and the file size differences.
 
-> Note that `dvc diff` does not show the line-to-line comparison among the
-> target files in each revision, like `git diff` or
-> [GNU `diff`](https://www.gnu.org/software/diffutils/) can. This is because the
-> data data tracked by DVC can come in many possible formats e.g. structured
-> text, or binary blobs, etc.
+> Note that `dvc diff` does not show the line-to-line comparisons like
+> `git diff` or [GNU `diff`](https://www.gnu.org/software/diffutils/) can. This
+> is because the data data tracked by DVC comes in many formats such as
+> structured text, binary blobs, etc. For an example on how to create
+> line-to-line text file comparison, refer to
+> [issue #770](https://github.com/iterative/dvc/issues/770#issuecomment-512693256).
 
-> For an example on how to create line-to-line text file comparison, refer to
-> [issue #770](https://github.com/iterative/dvc/issues/770#issuecomment-512693256)
-> in our GitHub repository.
-
-If the `-t` option is used, the diff is limited to the `TARGET` file or
-directory specified.
-
-Note that `dvc diff` does not have an effect when the repository is not tracked
-by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
+`dvc diff` does not have an effect when the repository is not tracked by Git,
+for example when `dvc init` was used with the `--no-scm` option.
 
 ## Options
 
-- `-t TARGET`, `--target TARGET` - path to a data file or directory. If not
-  specified, compares all files and directories that are under DVC control in
-  the workspace.
+- `-t TARGET`, `--target TARGET` - path to a data file or directory to limit
+  diff for.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -64,8 +56,9 @@ For these examples we can use the chapters in our
 
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
-[version](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
-corresponding to the _Add Files_ chapter:
+[3-add-file](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
+tag, corresponding to the [Add Files](/doc/get-started/add-files) _Get Started_
+chapter:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -83,13 +76,14 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 
 </details>
 
-## Example: Previous version of the same branch
+## Example: Previous commit in the same branch
 
-The minimal `dvc diff` command only includes the A reference (`a_ref`) from
-which the difference is to be calculated. The B reference (`b_ref`) defaults to
-Git `HEAD` (the currently checked out version). To find the general differences
-with the very previous committed version of the project, we can use the `HEAD^`
-Git reference.
+The minimal `dvc diff` command only includes the "from" reference (`a_ref`) from
+which to calculate the difference. The "until" reference (`b_ref`) defaults to
+`HEAD` (current Git commit).
+
+To see the difference with the very previous commit of the project, we can use
+`HEAD^` as `a_ref`:
 
 ```dvc
 $ dvc diff HEAD^
@@ -101,7 +95,7 @@ diff for 'data/data.xml'
 added file with size 37.9 MB
 ```
 
-## Example: Specific targets across Git references
+## Example: Specific targets across Git commits
 
 We can base this example in the [Metrics](/doc/get-started/metrics) and
 [Compare Experiments](/doc/get-started/compare-experiments) chapters of our _Get
@@ -131,8 +125,8 @@ example repo.
 
 </details>
 
-To see the difference in `model.pkl` among these versions, we can run the
-following command.
+To see the difference in `model.pkl` among these tags, we can run the following
+command.
 
 ```dvc
 $ dvc diff -t model.pkl baseline-experiment bigrams-experiment
@@ -145,7 +139,8 @@ diff for 'model.pkl'
 ```
 
 The output from this command confirms that there's a difference in the
-`model.pkl` file between the 2 Git references we indicated.
+`model.pkl` file between the 2 Git commits (tags `baseline-experiment` and
+`bigrams-experiment`) we indicated.
 
 ### What about directories?
 
@@ -193,6 +188,6 @@ diff for 'data/prepared'
 ```
 
 The command above checks whether there have been any changes to the
-`data/prepared` directory after the `5-preparation` version (since the `b_ref`
-is the current version, `HEAD` by default). The output tells us that there have
-been no changes to that directory (or to any other file).
+`data/prepared` directory after the `5-preparation` tag (since the `b_ref` is
+`HEAD` by default). The output tells us that there have been no changes to that
+directory (or to any other file).

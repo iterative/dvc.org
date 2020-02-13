@@ -15,8 +15,8 @@ to build a powerful image classifier using a pretty small dataset.
 
 We first train a classifier model using 1000 labeled images, then we double the
 number of images (2000) and retrain our model. We capture both datasets and
-classifier results and show how to use `dvc checkout` along with `git checkout`
-to switch between different versions.
+classifier results and show how to use `dvc checkout` to switch between data
+and/or model versions.
 
 The specific algorithm used to train and validate the classifier is not
 important, and no prior knowledge of Keras is required. We'll reuse the
@@ -245,7 +245,7 @@ That's it! We have a second model and dataset saved and pointers to them
 committed with Git. Let's now look at how DVC can help us go back to the
 previous version if we need to.
 
-## Switching between versions
+## Switching between data and/or model versions
 
 The DVC command that helps get a specific committed version of data is designed
 to be similar to `git checkout`. All we need to do in our case is to
@@ -263,14 +263,13 @@ $ git checkout v1.0
 $ dvc checkout
 ```
 
-These commands will restore the working tree to the first snapshot we made:
-code, data files, model, all of it. DVC optimizes this operation to avoid
-copying data or model files each time. So `dvc checkout` is quick even if you
-have large datasets, data files, or models.
+These commands will restore the workspace to the first snapshot we made: code,
+data files, model, all of it. DVC optimizes this operation to avoid copying data
+or model files each time. So `dvc checkout` is quick even if you have large
+datasets, data files, or models.
 
-On the other hand, if we want to keep the current version of the code and go
-back to the previous dataset only, we can do something like this (make sure that
-you don't have uncommitted changes in `data.dvc`):
+On the other hand, if we want to keep the current code, but go back to the
+previous dataset version, we can do something like this:
 
 ```dvc
 $ git checkout v1.0 data.dvc
@@ -278,8 +277,8 @@ $ dvc checkout data.dvc
 ```
 
 If you run `git status` you'll see that `data.dvc` is modified and currently
-points to the `v1.0` of the dataset, while code and model files are from the
-`v2.0` version.
+points to the `v1.0` version of the dataset, while code and model files are from
+the `v2.0` tag.
 
 <details>
 
@@ -288,8 +287,9 @@ points to the `v1.0` of the dataset, while code and model files are from the
 As we have learned already, DVC keeps data files out of Git (by adjusting
 `.gitignore`) and puts them into the cache (usually it's a `.dvc/cache`
 directory inside the repository). Instead, DVC creates
-[DVC-files](/doc/user-guide/dvc-file-format). These text files serve as pointers
-(MD5 hash) to the cache and are version controlled by Git.
+[DVC-files](/doc/user-guide/dvc-file-format). These text files serve as data
+placeholders that point to the cached files, and they can be easily version
+controlled with Git.
 
 When we run `git checkout` we restore pointers (DVC-files) first, then when we
 run `dvc checkout` we use these pointers to put the right data in the right
@@ -312,8 +312,8 @@ When you have a script that takes some data as an input and produces other data
 <abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:
 
 > If you tried the commands in the
-> [Switching between versions](#switching-between-versions) section, go back to
-> the master branch code and data with:
+> [Switching between data or model versions](#switching-between-data-or-model-versions)
+> section, go back to the master branch code and data with:
 >
 > ```dvc
 > $ git checkout master
@@ -374,7 +374,7 @@ hands-on experience with pipelines, and try to apply it here. Don't hesitate to
 join our [community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
-`metrics.csv` metrics file with the `-M` option of `dvc run`. Marking this
+`metrics.csv` metric file with the `-M` option of `dvc run`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See `dvc metrics`
 and [Compare Experiments](/doc/get-started/compare-experiments) to learn more

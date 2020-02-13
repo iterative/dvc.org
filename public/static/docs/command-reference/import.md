@@ -73,11 +73,10 @@ data artifact from the source repo.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - specific
-  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the repository to download
-  the file or directory from. The tip of the default branch is used by default
-  when this option is not specified.
+- `--rev` - commit SHA hash, branch or tag name, etc. (any
+  [Git revision](https://git-scm.com/docs/revisions)) of the repository to
+  download the file or directory from. The latest commit in `master` (tip of the
+  default branch) is used by default when this option is not specified.
 
   > Note that this adds a `rev` field in the import stage that fixes it to this
   > revision. This can impact the behavior of `dvc update`. (See
@@ -128,11 +127,11 @@ outs:
 Several of the values above are pulled from the original stage file
 `model.pkl.dvc` in the external DVC repository. The `url` and `rev_lock`
 subfields under `repo` are used to save the origin and version of the
-dependency.
+dependency, respectively.
 
 ## Example: Fixed revisions & re-importing
 
-To import a specific revision of a <abbr>data artifact</abbr>, we may use the
+To import a specific version of a <abbr>data artifact</abbr>, we may use the
 `--rev` option:
 
 ```dvc
@@ -160,9 +159,10 @@ deps:
 If `rev` is a Git branch or tag (where the commit it points to changes), the
 data source may have updates at a later time. To bring it up to date if so (and
 update `rev_lock` in the DVC-file), simply use `dvc update <stage>.dvc`. If
-`rev` is a specific commit (does not change), `dvc update` will never have an
-effect on the import stage. You may **re-import** a different commit instead, by
-using `dvc import` again with a different (or without) `--rev`. For example:
+`rev` is a specific commit SHA hash (does not change), `dvc update` will never
+have an effect on the import stage. You may **re-import** a different commit
+instead, by using `dvc import` again with a different (or without) `--rev`. For
+example:
 
 ```dvc
 $ dvc import --rev master \

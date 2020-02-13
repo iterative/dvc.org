@@ -1,9 +1,9 @@
 # status
 
 Show changes in the <abbr>project</abbr>
-[pipelines](/doc/command-reference/pipeline), as well as mismatches either
-between the <abbr>cache</abbr> and <abbr>workspace</abbr> files, or between the
-cache and remote storage.
+[pipelines](/doc/command-reference/pipeline), as well as file mismatches either
+between the <abbr>cache</abbr> and <abbr>workspace</abbr>, or between the cache
+and remote storage.
 
 ## Synopsis
 
@@ -19,25 +19,26 @@ positional arguments:
 ## Description
 
 `dvc status` searches for changes in the existing pipelines, either showing
-which [stages](/doc/command-reference/run) have changed in the workspace and
-must be reproduced (with `dvc repro`), or differences between cache vs. remote
-storage (meaning `dvc push` or `dvc pull` should be run to synchronize them).
-The two modes, _local_ and _cloud_ are triggered by using the `--cloud` or
-`--remote` options:
+which [stages](/doc/command-reference/run) have changed in the workspace
+(including uncommitted local changes) and must be reproduced (with `dvc repro`),
+or differences between <abbr>cache</abbr> vs. remote storage (meaning `dvc push`
+or `dvc pull` should be run to synchronize them). The two modes, _local_ and
+_cloud_ are triggered by using the `--cloud` or `--remote` options:
 
 | Mode   | CLI Option | Description                                                                                                                 |
 | ------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
 | local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the cache directory (e.g. `.dvc/cache`) |
 | remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
-| remote | `--cloud`  | Comparisons are made between the cache, and the default remote, defined with `dvc remote --default` command.                |
+| remote | `--cloud`  | Comparisons are made between the cache, and the default remote, typically defined with `dvc remote --default`.              |
 
-DVC determines data and code files to compare by analyzing all
-[DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>project</abbr>
-(`--all-branches` and `--all-tags` in the `cloud` mode compare multiple
-workspace versions). The comparison can be limited to specific DVC-files by
-listing them as `targets`. Changes are reported only against the given
-`targets`. When combined with the `--with-deps` option, a search is made for
-changes in other stages that affect the target.
+DVC determines which data and code files to compare by analyzing all
+[DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr> (the
+`--all-branches` and `--all-tags` options compare multiple workspace versions).
+
+The comparison can be limited to certain DVC-files only, by listing them as
+`targets`. (Changes are reported only against these.) When this is combined with
+the `--with-deps` option, a search is made for changes in other stages that
+affect each target.
 
 In the `local` mode, changes are detected through the checksum of every file
 listed in every DVC-file in question against the corresponding file in the file
@@ -53,12 +54,10 @@ This indicates that no differences were detected, and therefore no stages would
 be executed by `dvc repro`.
 
 If instead, differences are detected, `dvc status` lists those changes. For each
-DVC-file (stage) with differences, the changes in _dependencies_ and/or
-_outputs_ that differ are listed. For each item listed, either the file name or
-the checksum is shown, and additionally a status word is shown describing the
-changes (described below). This changes list provides a reference to both the
-status of a DVC-file, as well as the changes to individual dependencies and
-outputs described in it.
+DVC-file (stage) with differences, the changes in <abbr>dependencies</abbr>
+and/or <abbr>outputs</abbr> that differ are listed. For each item listed, either
+the file name or the checksum is shown, and additionally a status word is shown
+describing the changes (described below).
 
 - _changed checksum_ means that the <abbr>DVC-file</abbr> checksum has changed
   (e.g. someone manually edited the file).
@@ -115,14 +114,13 @@ workspace) is different from remote storage. Bringing the two into sync requires
   name defined using the `dvc remote` command. Implies `--cloud`.
 
 - `-a`, `--all-branches` - compares cache content against all Git branches
-  instead of checking just the current workspace version. This basically runs
-  the same status command in all the branches of this repo. The corresponding
-  branches are shown in the status output. Applies only if `--cloud` or a `-r`
-  remote is specified.
+  instead of just the current workspace. This basically runs the same status
+  command in every branch of this repo. The corresponding branches are shown in
+  the status output. Applies only if `--cloud` or a `-r` remote is specified.
 
 - `-T`, `--all-tags` - compares cache content against all Git tags instead of
-  checking just the current workspace version. Similar to `-a` above. Note that
-  both options can be combined, for example using the `-aT` flag.
+  checking just the current workspace. Similar to `-a` above. Note that both
+  options can be combined, for example using the `-aT` flag.
 
 - `-j JOBS`, `--jobs JOBS` - specifies the number of jobs DVC can use to
   retrieve information from remote servers. This only applies when the `--cloud`
