@@ -17,7 +17,7 @@ positional arguments:
 
 ## Description
 
-Given two commit SHA hashes, branch or tag names, etc.
+Given two commit hashes, branch or tag names, etc.
 ([references](https://git-scm.com/docs/revisions)) `a_ref` and `b_ref`, this
 command shows a comparative summary of basic statistics related to files tracked
 by DVC: how many files were deleted/changed, and the file size differences.
