@@ -1,7 +1,7 @@
 # metrics diff
 
-Show differences among [metrics](/doc/command-reference/metrics#description)
-between two versions of the <abbr>DVC repository</abbr>.
+Show [metrics](/doc/command-reference/metrics#description) differences between
+two commits in the <abbr>DVC repository</abbr>.
 
 ## Synopsis
 

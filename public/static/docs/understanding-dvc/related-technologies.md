@@ -76,8 +76,8 @@ Luigi, etc.
 
   - DVC tracks files based on their checksum (MD5) instead of file timestamps.
     This helps avoid running into heavy processes like model retraining when you
-    checkout a previous, trained version of a model's code (Make would retrain
-    the model).
+    checkout a previously trained version of a model (Make would retrain the
+    model).
 
   - DVC uses file timestamps and inodes for optimization. This allows DVC to
     avoid recomputing all dependency files' checksums, which would be highly

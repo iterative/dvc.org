@@ -55,7 +55,7 @@ configure a remote.
 
 With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
 only the files (or directories) that are new in the local repository to remote
-storage. It will not upload files associated with earlier versions of the
+storage. It will not upload files associated with earlier commits in the
 <abbr>repository</abbr> (if using Git), nor will it upload files that have not
 changed.
 

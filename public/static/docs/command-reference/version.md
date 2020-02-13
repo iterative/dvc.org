@@ -17,7 +17,7 @@ system/environment:
 | Line                                        | Detail                                                                                                                                                                |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit SHA hash in case of a development version)                                                                                    |
-| `Python version`                            | Version of the Python being used on the environment in which DVC is initialized                                                                                       |
+| `Python version`                            | Version of Python being used in the environment where DVC is initialized                                                                                              |
 | `Platform`                                  | Information about the operating system of the machine                                                                                                                 |
 | [`Binary`](#what-we-mean-by-binary)         | Shows whether DVC was installed from a package or from a binary release                                                                                               |
 | `Package manager`                           | Name of the package manager used to install DVC if any (`pip`, `conda`, etc)                                                                                          |

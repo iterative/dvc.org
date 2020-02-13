@@ -1,6 +1,6 @@
 # diff
 
-Show differences between two versions of the <abbr>DVC repository</abbr>. It can
+Show differences between two commits in the <abbr>DVC repository</abbr>. It can
 be narrowed down to specific target files and directories under DVC control.
 
 ## Synopsis
@@ -75,7 +75,7 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 
 </details>
 
-## Example: Previous version of the same branch
+## Example: Previous commit in the same branch
 
 The minimal `dvc diff` command only includes the "from" reference (`a_ref`) from
 which to calculate the difference. The "until" reference (`b_ref`) defaults to

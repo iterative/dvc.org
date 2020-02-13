@@ -138,8 +138,8 @@ $ dvc update dataset.dvc
 ```
 
 `dvc update` downloads new and changed files, or removes deleted ones, from
-`images/faces/`, based on the latest version of the source project. It also
-updates the project dependency metadata in the import stage (DVC-file).
+`images/faces/`, based on the latest commit in the source repo. It also updates
+the project dependency metadata in the import stage (DVC-file).
 
 ### Programatic reusability of DVC data
 
