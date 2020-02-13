@@ -27,7 +27,7 @@ DVC's analytics record the following information per event:
 
 - The DVC version e.g. `0.82.0`
 - Whether DVC was installed from a binary release
-- Operating system information, e.g. Ubuntu 14.04
+- Operating system information, e.g. Ubuntu Linux 14.04
 - Whether the project uses Git
 - Command type e.g. `CmdDataPull`
 - Command return code e.g. `1`

@@ -213,9 +213,8 @@ $ dvc remote modify myremote gdrive_client_secret <client secret>
 
 Note that GDrive remotes are not "trusted" by default. This means that the
 [`verify`](/doc/command-reference/remote/modify#available-settings-for-all-remotes)
-option is enabled on this type of storage, so DVC recalculates the checksums of
-files upon download (e.g. `dvc pull`), to make sure that these haven't been
-modified.
+option is enabled on this type of storage, so DVC recalculates the file hashes
+upon download (e.g. `dvc pull`), to make sure that these haven't been modified.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 

@@ -56,7 +56,7 @@ name.
   an existing directory is specified, then the output will be placed inside of
   it.
 
-- `--rev` - commit SHA hash, branch or tag name, etc. (any
+- `--rev` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
   download the file or directory from. The latest commit in `master` (tip of the
   default branch) is used by default when this option is not specified.
@@ -134,7 +134,7 @@ https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 
 `remote.dvc.org/get-started` is an HTTP
 [DVC remote](/doc/command-reference/remote), whereas
-`662eb7f64216d9c2c1088d0a5e2c6951` is the file's checksum.
+`662eb7f64216d9c2c1088d0a5e2c6951` is the file hash.
 
 ## Example: Compare different versions of data or model
 

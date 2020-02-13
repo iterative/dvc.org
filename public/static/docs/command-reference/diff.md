@@ -17,10 +17,10 @@ positional arguments:
 
 ## Description
 
-Given two commit SHA hashes, branch or tag names, etc.
+Given two commit hashes, branch or tag names, etc.
 ([references](https://git-scm.com/docs/revisions)) `a_ref` and `b_ref`, this
-command shows a comparative summary of basic statistics: how many files were
-deleted/changed, and the file size differences.
+command shows a comparative summary of basic statistics related to files tracked
+by DVC: how many files were deleted/changed, and the file size differences.
 
 > Note that `dvc diff` does not show the line-to-line comparisons like
 > `git diff` or [GNU `diff`](https://www.gnu.org/software/diffutils/) can. This
@@ -78,12 +78,12 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 
 ## Example: Previous commit in the same branch
 
-The minimal `dvc diff` command only includes the "from" reference (`a_ref`) from
-which to calculate the difference. The "until" reference (`b_ref`) defaults to
-`HEAD` (current Git commit).
+The minimal `dvc diff`, run without arguments, defaults to comparing DVC-tacked
+files between `HEAD` (current Git commit) and the current <abbr>workspace</abbr>
+(uncommitted changes, if any).
 
-To see the difference with the very previous commit of the project, we can use
-`HEAD^` as `a_ref`:
+To see the difference between the very previous commit of the project and the
+workspace, we can use `HEAD^` as `a_ref`:
 
 ```dvc
 $ dvc diff HEAD^

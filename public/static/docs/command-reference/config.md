@@ -76,7 +76,7 @@ This is the main section with the general config options:
   [anonymized usage statistics](/doc/user-guide/analytics). Accepts values
   `true` (default) and `false`.
 
-- `core.checksum_jobs` - number of threads for computing checksums. Accepts
+- `core.checksum_jobs` - number of threads for computing file hashes. Accepts
   positive integers. The default value is `max(1, min(4, cpu_count() // 2))`.
 
 - `core.hardlink_lock` - use hardlink file locks instead of the default ones,
@@ -168,9 +168,9 @@ for more details.) This section contains the following options:
 
   > Avoid using the same remote location that you are using for `dvc push`,
   > `dvc pull`, `dvc fetch` as external cache for your external outputs, because
-  > it may cause possible checksum overlaps. Checksum for some data file on an
-  > external storage can potentially collide with checksum generated locally for
-  > a different file, with a different content.
+  > it may cause possible file hash overlaps: the hash of a data file in
+  > external storage could collide with a hash generated locally for another
+  > file with a different content.
 
 - `cache.s3` - name of an
   [Amazon S3 remote to use as external cache](/doc/user-guide/managing-external-data#amazon-s-3).
@@ -191,9 +191,9 @@ learn more about the state file (database) that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database, which
   affects the physical size of the state file itself, as well as the performance
-  of certain DVC operations. The bigger the limit the more checksum history DVC
-  can keep in order to avoid sequential checksum recalculations for the files.
-  Default limit is set to 10 000 000 rows.
+  of certain DVC operations. The bigger the limit, the longer the file hash
+  history that DVC can keep, in order to avoid sequential hash recalculations.
+  The default limit is set to 10,000,000 rows.
 
 - `state.row_cleanup_quota` - percentage of the state database that is going to
   be deleted when it hits the `state.row_limit`. When an entry in the database

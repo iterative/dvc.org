@@ -27,7 +27,7 @@ Note that import stages are considered always locked, meaning that if you run
 update them.
 
 `dvc update` will not have an effect on import stages that are fixed to a commit
-SHA hash (`rev` field in the DVC-file). Please refer to
+hash (`rev` field in the DVC-file). Please refer to
 [Fixed revisions & re-importing](/doc/command-reference/import#example-fixed-revisions-re-importing)
 for more details.
 

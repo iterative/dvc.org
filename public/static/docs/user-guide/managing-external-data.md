@@ -37,9 +37,8 @@ Non-cached external outputs (`-O`) do not require an external cache to be setup.
 
 > Avoid using the same remote location that you are using for `dvc push`,
 > `dvc pull`, `dvc fetch` as external cache for your external outputs, because
-> it may cause possible checksum overlaps. Checksum for some data file on an
-> external storage can potentially collide with checksum generated locally for a
-> different file, with a different content.
+> it may cause possible file hash overlaps: The hash value of a data file in
+> external storage could collide with that generated locally for another file.
 
 ## Examples
 

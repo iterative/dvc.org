@@ -40,7 +40,7 @@ The comparison can be limited to certain DVC-files only, by listing them as
 the `--with-deps` option, a search is made for changes in other stages that
 affect each target.
 
-In the `local` mode, changes are detected through the checksum of every file
+In the `local` mode, changes are detected through the hash value of every file
 listed in every DVC-file in question against the corresponding file in the file
 system. The command output indicates the detected changes, if any. If no
 differences are detected, `dvc status` prints this message:
@@ -56,11 +56,11 @@ be executed by `dvc repro`.
 If instead, differences are detected, `dvc status` lists those changes. For each
 DVC-file (stage) with differences, the changes in <abbr>dependencies</abbr>
 and/or <abbr>outputs</abbr> that differ are listed. For each item listed, either
-the file name or the checksum is shown, and additionally a status word is shown
+the file name or hash is shown, and additionally a status word is shown
 describing the changes (described below).
 
-- _changed checksum_ means that the <abbr>DVC-file</abbr> checksum has changed
-  (e.g. someone manually edited the file).
+- _changed checksum_ means that the <abbr>DVC-file</abbr> hash has changed (e.g.
+  someone manually edited the file).
 
 - _always changed_ means that this is a DVC-file with no dependencies (an
   _orphan_ stage file) or that it has the `always_changed: true` value set (see
@@ -72,16 +72,15 @@ describing the changes (described below).
   commands like `dvc commit` or `dvc repro`, `dvc run` should be run to update
   the file. Possible states are:
 
-  - _new_: <abbr>Output</abbr> exists in workspace, but there is no
-    corresponding checksum calculated and saved in the DVC-file for this output
-    yet.
-  - _modified_: Output or dependency exists in workspace, but the corresponding
-    checksum in the DVC-file is not up to date.
-  - _deleted_: Output or dependency does not exist in workspace, but still
-    referred in the DVC-file.
-  - _not in cache_: Output exists in workspace and the corresponding checksum in
-    the DVC-file is up to date, but there is no corresponding <abbr>cache</abbr>
-    entry.
+  - _new_: An <abbr>output</abbr> is found in the workspace, but there is no
+    corresponding file hash saved in a DVC-file yet.
+  - _modified_: An output or <abbr>dependency</abbr> is found in the workspace,
+    but the corresponding file hash the DVC-file is not up to date.
+  - _deleted_: The output or dependency is references in a DVC-file, but does
+    not exist in the workspace.
+  - _not in cache_: An output exists in workspace and the corresponding file
+    hash in the DVC-file is up to date, but there is no corresponding
+    <abbr>cache</abbr> entry.
 
 **For comparison against remote storage:**
 

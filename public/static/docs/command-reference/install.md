@@ -21,11 +21,11 @@ etc.) doesn't have DVC initialized (no `.dvc/` directory present).
 
 Namely:
 
-**Checkout**: For any commit SHA hash, branch or tag, `git checkout` retrieves
-the [DVC-files](/doc/user-guide/dvc-file-format) corresponding to that version.
-The project's DVC-files in turn refer to data stored in <abbr>cache</abbr>, but
-not necessarily in the <abbr>workspace</abbr>. Normally, it would be necessary
-to run `dvc checkout` to synchronize workspace and DVC-files.
+**Checkout**: For any commit hash, branch or tag, `git checkout` retrieves the
+[DVC-files](/doc/user-guide/dvc-file-format) corresponding to that version. The
+project's DVC-files in turn refer to data stored in <abbr>cache</abbr>, but not
+necessarily in the <abbr>workspace</abbr>. Normally, it would be necessary to
+run `dvc checkout` to synchronize workspace and DVC-files.
 
 This hook automates running `dvc checkout`.
 
@@ -174,10 +174,11 @@ running `git checkout master`.
 We also see that the first `dvc status` tells us about differences between the
 project's <abbr>cache</abbr> and the data files currently in the workspace. Git
 changed the DVC-files in the workspace, which changed references to data files.
-What `dvc status` did is inform us the data files in the workspace no longer
-matched the checksums in the [DVC-files](/doc/user-guide/dvc-file-format).
-Running `dvc checkout` then checks out the corresponding data files, and a
-second `dvc status` now tells us the data files match the DVC-files.
+`dvc status` first informed us that the data files in the workspace no longer
+matched the hash values in the corresponding
+[DVC-files](/doc/user-guide/dvc-file-format). Running `dvc checkout` then brings
+them up to date, and a second `dvc status` tells us that the data files now do
+match the DVC-files.
 
 ```dvc
 $ git checkout master

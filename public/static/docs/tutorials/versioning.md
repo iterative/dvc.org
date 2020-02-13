@@ -312,7 +312,7 @@ When you have a script that takes some data as an input and produces other data
 <abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:
 
 > If you tried the commands in the
-> [Switching between data or model versions](#switching-between-data-or-model-versions)
+> [Switching between data and/or model versions](#switching-between-data-and-or-model-versions)
 > section, go back to the master branch code and data with:
 >
 > ```dvc

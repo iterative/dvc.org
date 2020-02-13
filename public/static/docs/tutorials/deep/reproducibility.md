@@ -116,7 +116,7 @@ master:
 Let's keep the result in the repository. Later we can find out why bigrams don't
 add value to the current model and change that.
 
-Many DVC-files were changed. This happened due to file checksum changes.
+Many DVC-files were changed. This happened due to file hash changes.
 
 ```dvc
 $ git status -s
@@ -232,9 +232,9 @@ CONFLICT (content): Merge conflict in Dvcfile
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-The merge has a few conflicts. All of the conflicts are related to file checksum
+The merge has a few conflicts. All of the conflicts are related to file hash
 mismatches in the branches. You can properly merge conflicts by prioritizing the
-checksums from the bigrams branch: that is, by removing all checksums of the
+file hashes from the bigrams branch: that is, by removing all hashes of the
 other branch.
 [Here](https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line)
 you can find a tutorial that clarifies how to do that. It is also important to
@@ -244,15 +244,15 @@ remove all automatically generated
 <code>&#61;&#61;&#61;&#61;&#61;&#61;&#61;</code>,
 <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>) from `model.p.dvc` and `Dvcfile`.
 
-Another way to solve git merge conflicts is to simply replace all checksums with
-empty strings ''. The only disadvantage of this trick is that DVC will need to
-recompute the <abbr>outputs</abbr> checksums.
+Another way to solve git merge conflicts is to simply replace all file hashes
+with empty strings ''. The only disadvantage of this trick is that DVC will need
+to recompute the <abbr>output</abbr> hashes.
 
 After resolving the conflicts you need to checkout a proper version of the data
 files:
 
 ```dvc
-# Replace conflicting checksums to empty string ''
+# Replace conflicting hashes with empty string ''
 $ vi model.p.dvc
 $ vi Dvcfile
 $ dvc checkout
