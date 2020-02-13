@@ -26,11 +26,10 @@ Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. `dvc update` is the only command that can
 update them.
 
-`dvc update` will not have an effect on import stages created with `dvc import`
-if option `--rev` is used with a specific commit (`rev` does not change). (In
-these cases, you may
-[re-import](/doc/command-reference/import#example-fixed-revisions-re-importing)
-a different commit instead.)
+`dvc update` will not have an effect on import stages that are fixed to a commit
+SHA hash (`rev` field in the DVC-file). Please refer to
+[Fixed revisions & re-importing](/doc/command-reference/import#example-fixed-revisions-re-importing)
+for more details.
 
 ## Options
 

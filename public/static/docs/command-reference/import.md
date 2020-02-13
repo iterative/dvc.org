@@ -159,9 +159,10 @@ deps:
 If `rev` is a Git branch or tag (where the commit it points to changes), the
 data source may have updates at a later time. To bring it up to date if so (and
 update `rev_lock` in the DVC-file), simply use `dvc update <stage>.dvc`. If
-`rev` is a specific commit (does not change), `dvc update` will never have an
-effect on the import stage. You may **re-import** a different commit instead, by
-using `dvc import` again with a different (or without) `--rev`. For example:
+`rev` is a specific commit SHA hash (does not change), `dvc update` will never
+have an effect on the import stage. You may **re-import** a different commit
+instead, by using `dvc import` again with a different (or without) `--rev`. For
+example:
 
 ```dvc
 $ dvc import --rev master \
