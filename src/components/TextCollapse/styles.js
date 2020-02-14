@@ -6,6 +6,10 @@ export const Wrapper = styled.button`
   appearance: none;
   background: none;
   font-family: BrandonGrotesque, Tahoma, Arial;
+
+  .ReactCollapse--collapse {
+    transition: height 500ms;
+  }
 `
 
 export const MoreText = styled.div`

@@ -69,7 +69,7 @@ need to run `dvc unprotect` or `dvc remove` first (see the
 If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
 `dvc add`, you will see that <abbr>outputs</abbr> are tracked in the `outs`
 field. In this file, only one output is specified. The output contains the data
-file path in the repository and its MD5 checksum. This checksum determines a
+file path in the repository and its MD5 hash. This hash value determines the
 location of the actual content file in the
 [cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
 `.dvc/cache`.
@@ -224,8 +224,8 @@ outs:
 Sections of the file above include:
 
 - `cmd`: The command to run
-- `deps`: Dependencies with MD5 checksums
-- `outs`: Outputs with MD5 checksums
+- `deps`: Dependencies with MD5 hashes
+- `outs`: Outputs with MD5 hashes
 
 And (as with the `dvc add` command) the `data/.gitignore` file was modified. Now
 it includes the unarchived command output file `Posts.xml`.
@@ -242,7 +242,7 @@ Posts.xml
 
 The output file `Posts.xml` was transformed by DVC into a data file in
 accordance with the `-o` option. You can find the corresponding cache file with
-the checksum, with a path starting in `c1/fa36d` as we can see below:
+the hash value, as a path starting in `c1/fa36d`:
 
 ```dvc
 $ ls .dvc/cache/

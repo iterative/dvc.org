@@ -5,7 +5,18 @@ import LocalLink from '../LocalLink'
 
 import { logEvent } from '../../utils/ga'
 
-import { GetStartedButton, Link, Links, Wrapper } from './styles'
+import {
+  Dropdown,
+  DropdownInset,
+  DropdownLink,
+  DropdownWrapper,
+  GetStartedButton,
+  ImageLink,
+  Image,
+  Link,
+  Links,
+  Wrapper
+} from './styles'
 
 export default function Nav({ mobile = false }) {
   return (
@@ -31,15 +42,47 @@ export default function Nav({ mobile = false }) {
         >
           Blog
         </Link>
-        <Link href="/chat" onClick={() => logEvent('menu', 'chat')}>
-          Chat
-        </Link>
-        <Link
-          href="https://github.com/iterative/dvc"
-          onClick={() => logEvent('menu', 'github')}
-        >
-          GitHub
-        </Link>
+        <DropdownWrapper>
+          <LocalLink
+            href="/community"
+            as={Link}
+            onClick={() => logEvent('menu', 'community')}
+          >
+            Community
+          </LocalLink>
+          <Dropdown>
+            <DropdownInset>
+              <LocalLink
+                href="/community#meet"
+                as={DropdownLink}
+                onClick={() => logEvent('menu', 'community')}
+              >
+                Meet the Community
+              </LocalLink>
+              <LocalLink
+                href="/community#contribute"
+                as={DropdownLink}
+                onClick={() => logEvent('menu', 'community')}
+              >
+                Contribute
+              </LocalLink>
+              <LocalLink
+                href="/community#learn"
+                as={DropdownLink}
+                onClick={() => logEvent('menu', 'community')}
+              >
+                Learn
+              </LocalLink>
+              <LocalLink
+                href="/community#events"
+                as={DropdownLink}
+                onClick={() => logEvent('menu', 'community')}
+              >
+                Events
+              </LocalLink>
+            </DropdownInset>
+          </Dropdown>
+        </DropdownWrapper>
         <LocalLink
           href="/support"
           as={Link}
@@ -47,6 +90,16 @@ export default function Nav({ mobile = false }) {
         >
           Support
         </LocalLink>
+        <ImageLink
+          href="https://github.com/iterative/dvc"
+          target="_blank"
+          rel="noreferrer noopener"
+        >
+          <Image src="/static/img/community/github.svg" />
+        </ImageLink>
+        <ImageLink href="/chat" target="_blank" rel="noreferrer noopener">
+          <Image src="/static/img/community/discord.svg" />
+        </ImageLink>
       </Links>
       <LocalLink
         as={GetStartedButton}

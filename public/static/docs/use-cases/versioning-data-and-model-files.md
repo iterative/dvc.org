@@ -83,17 +83,18 @@ There are two ways to get to the previous version of the dataset or model: a
 full <abbr>workspace</abbr> checkout, or checkout of a specific data or model
 file. Let's consider the full checkout first. It's quite straightforward:
 
-> `v1.0` is a Git tag that should be created in advance to identify the dataset
-> version you are interested in. Any Git reference (for example `HEAD^` or a
-> commit hash) can be used instead.
+> `v1.0` below is a Git tag that should be created in advance to identify the
+> dataset version you are interested in. Any
+> [Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
+> (for example `HEAD^` or a commit hash) can be used instead.
 
 ```dvc
 $ git checkout v1.0
 $ dvc checkout
 ```
 
-These commands will restore the working tree to the first snapshot we made -
-code, dataset and model files all matching each other. DVC can
+These commands will restore the workspace to the first snapshot we made - code,
+dataset and model files all matching each other. DVC can
 [optimize](/doc/user-guide/large-dataset-optimization) this operation to avoid
 copying files each time, so `dvc checkout` is quick even if you have large
 dataset or model files.
@@ -108,8 +109,8 @@ $ dvc checkout data.dvc
 ```
 
 If you run `git status` you will see that `data.dvc` is modified and currently
-points to the version `v1.0` of the dataset. Meanwhile, code and model files are
-their latest versions.
+points to the `v1.0` version of the <abbr>cached</abbr> data. Meanwhile, code
+and model files are their latest versions.
 
 ![](/static/img/versioning.png)
 

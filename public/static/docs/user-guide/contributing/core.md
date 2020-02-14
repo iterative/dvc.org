@@ -202,7 +202,7 @@ Install [Node.js](https://nodejs.org/en/download/) and then install and run
 Azurite:
 
 ```dvc
-$ npm install -g 'azurite@<3' # Need 2.x version
+$ npm install -g 'azurite@<3'
 $ mkdir azurite
 $ azurite -s -l azurite -d azurite/debug.log
 ```

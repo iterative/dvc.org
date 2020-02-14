@@ -49,7 +49,7 @@ On the top level, `.dvc` file consists of these fields:
 - `cmd`: Executable command defined in this stage
 - `deps`: List of dependencies for this stage
 - `outs`: List of <abbr>outputs</abbr> for this stage
-- `md5`: md5 checksum for this DVC-file
+- `md5`: MD5 hash for this DVC-file
 - `locked`: Whether or not this stage is locked from reproduction
 - `wdir`: Directory to run command in (default `.`)
 - `always_changed`: Whether or not this stage should always be considered as
@@ -58,8 +58,7 @@ On the top level, `.dvc` file consists of these fields:
 A dependency entry consists of a pair of fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
-- `md5`: md5 checksum for the dependency (most
-  [stages](/doc/command-reference/run))
+- `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
 - `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
 - `repo`: This entry is only for external dependencies created with
@@ -67,12 +66,11 @@ A dependency entry consists of a pair of fields:
 
   - `url`: URL of Git repository with source DVC project
   - `rev`: Only present when the `--rev` option of `dvc import` is used.
-    Specific
-    [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-    used to import the dependency from.
-  - `rev_lock`: Revision or version (Git commit hash) of the external <abbr>DVC
-    repository</abbr> at the time of importing or updating (with `dvc update`)
-    the dependency.
+    Specific commit hash, branch or tag name, etc. (a
+    [Git revision](https://git-scm.com/docs/revisions)) used to import the
+    dependency from.
+  - `rev_lock`: Git commit hash of the external <abbr>DVC repository</abbr> at
+    the time of importing or updating (with `dvc update`) the dependency.
 
   > See the examples in
   > [External Dependencies](/doc/user-guide/external-dependencies) for more
@@ -81,7 +79,7 @@ A dependency entry consists of a pair of fields:
 An output entry consists of these fields:
 
 - `path`: Path to the output, relative to the `wdir` path
-- `md5`: md5 checksum for the output
+- `md5`: MD5 hash for the output
 - `cache`: Whether or not dvc should cache the output
 - `metric`: Whether or not this file is a
   [metric](/doc/command-reference/metrics) file
@@ -94,8 +92,8 @@ A metric entry consists of these fields:
 
 A `meta` entry consists of `key: value` pairs such as `name: John`. A meta entry
 can have any valid YAML structure containing any number of attributes.
-`"meta: string"` is also possible, it doesn't need to contain a hash (a.k.a.
-dictionary) structure always.
+`"meta: string"` is also possible, it doesn't need to contain a _hash_ structure
+(a.k.a. dictionary) always.
 
 Comments can be added to the DVC-file using `# comment` syntax. Comments and
 meta values are preserved between multiple executions of `dvc repro` and

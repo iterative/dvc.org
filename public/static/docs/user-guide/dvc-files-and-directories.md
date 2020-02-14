@@ -25,8 +25,8 @@ operation:
   > needed to download or reproduce them.
 
 - `.dvc/state`: This file is used for optimization. It is a SQLite database,
-  that contains checksums for files tracked in a DVC project, with respective
-  timestamps and inodes to avoid unnecessary checksum computations. It also
+  that contains hash values for files tracked in a DVC project, with respective
+  timestamps and inodes to avoid unnecessary file hash computations. It also
   contains a list of links (from cache to <abbr>workspace</abbr>) created by DVC
   and is used to cleanup your workspace when calling `dvc checkout`.
 
@@ -52,17 +52,17 @@ operation:
 There are two ways in which the data is stored in <abbr>cache</abbr>: As a
 single file (eg. `data.csv`), or a directory of files.
 
-For the first case, we calculate the file's checksum, a 32 characters long
-string (usually MD5). The first two characters are used to name the directory
-inside `.dvc/cache`, and the rest become the file name of the cached file. For
-example, if a data file `Posts.xml.zip` has checksum
-`ec1d2935f811b77cc49b031b999cbf17`, its cache entry will be
-`.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17` locally.
+For the first case, we calculate the file hash, a 32 characters long string
+(usually MD5). The first two characters are used to name the directory inside
+`.dvc/cache`, and the rest become the file name of the cached file. For example,
+if a data file `Posts.xml.zip` has a hash value of
+`ec1d2935f811b77cc49b031b999cbf17`, its local cache entry will be
+`.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17`.
 
-> Note that file checksums are calculated from file contents only. 2 or more
-> files with different names but the same contents can exist in the workspace
-> and be tracked by DVC, but only one copy is stored in the cache. This helps
-> avoid data duplication in cache and remotes.
+> Note that file hashes are calculated from file contents only. 2 or more files
+> with different names but the same contents can exist in the workspace and be
+> tracked by DVC, but only one copy is stored in the cache. This helps avoid
+> data duplication in cache and remotes.
 
 For the second case, let us consider a directory with 2 images.
 
@@ -77,8 +77,8 @@ $ dvc add data/images
 ```
 
 When running `dvc add` on this directory of images, a `data/images.dvc`
-[DVC-file](/doc/user-guide/dvc-file-format) is created, containing the checksum
-of the directory:
+[DVC-file](/doc/user-guide/dvc-file-format) is created, containing the hash
+value of the directory:
 
 ```yaml
 md5: 77e511dafe2178d936e54331d5d6288f
@@ -104,7 +104,7 @@ $ tree .dvc/cache
 
 The cache file with `.dir` extension is a special text file that contains the
 mapping of files in the `data/` directory (as a JSON array), along with their
-checksums. The other two cache files are the files inside `data/`.
+hash values. The other two cache files are the files inside `data/`.
 
 A typical `.dir` cache file looks like this:
 
