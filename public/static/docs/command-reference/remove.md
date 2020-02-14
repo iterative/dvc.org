@@ -43,7 +43,7 @@ how it can be used to replace or modify files that are tracked by DVC.
 
 ## Examples
 
-Let's imagine we're tracking `data.csv` with DVC:
+Let's imagine have a `data.csv` data file, and track it with DVC:
 
 ```dvc
 $ dvc add data.csv

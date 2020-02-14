@@ -64,7 +64,7 @@ for more information on how to configure different remote storage providers.
 `dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
 perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
-file hashes when these are [added](/doc/get-started/add-files) to DVC. File
+file hashes when these are [added](/doc/get-started/add-files) with DVC. File
 hashes are stored in the corresponding DVC-files (typically versioned with Git).
 Only the hashes specified in DVC-files currently in the workspace are considered
 by `dvc fetch` (unless the `-a` or `-T` options are used).
