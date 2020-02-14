@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
@@ -8,6 +8,7 @@ import CommunitySection from '../Section'
 
 import { pluralizeComments } from '../../../utils/i18n'
 import { logEvent } from '../../../utils/ga'
+import { getLatestIssues, getLatestTopics } from '../../../utils/api'
 
 import data from '../data'
 
@@ -110,7 +111,24 @@ CommunityIssue.propTypes = {
   color: PropTypes.string
 }
 
-export default function CommunityMeet({ issues, theme, topics }) {
+export default function CommunityMeet({ theme }) {
+  const [isIssuesLoaded, setIsIssuesLoaded] = useState(false)
+  const [issues, setIssues] = useState([])
+
+  const [isTopicsLoaded, setIsTopicsLoaded] = useState(false)
+  const [topics, setTopics] = useState([])
+
+  useEffect(() => {
+    getLatestIssues().then(result => {
+      setIssues(result)
+      setIsIssuesLoaded(true)
+    })
+    getLatestTopics().then(result => {
+      setTopics(result)
+      setIsTopicsLoaded(true)
+    })
+  }, [])
+
   return (
     <Wrapper>
       <CommunitySection
@@ -191,15 +209,17 @@ export default function CommunityMeet({ issues, theme, topics }) {
               }
               icon="/static/img/community/discourse.svg"
             >
-              {topics.length ? (
+              {!isTopicsLoaded && <Placeholder>Loading...</Placeholder>}
+              {isTopicsLoaded &&
+                !!topics.length &&
                 topics.map(topic => (
                   <CommunityTopic
                     {...topic}
                     key={topic.url}
                     color={theme.color}
                   />
-                ))
-              ) : (
+                ))}
+              {isTopicsLoaded && !topics.length && (
                 <Placeholder>Forum is unavailable right now</Placeholder>
               )}
             </CommunityBlock>
@@ -231,15 +251,17 @@ export default function CommunityMeet({ issues, theme, topics }) {
               }
               icon="/static/img/community/github.svg"
             >
-              {issues.length ? (
+              {!isIssuesLoaded && <Placeholder>Loading...</Placeholder>}
+              {isIssuesLoaded &&
+                !!issues.length &&
                 issues.map(issue => (
                   <CommunityIssue
                     {...issue}
                     key={issue.url}
                     color={theme.color}
                   />
-                ))
-              ) : (
+                ))}
+              {isIssuesLoaded && !issues.lengts && (
                 <Placeholder>Github is unavailable right now</Placeholder>
               )}
             </CommunityBlock>

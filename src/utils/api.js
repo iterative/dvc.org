@@ -6,10 +6,9 @@ export function makeAbsoluteURL(req, uri) {
 
   return `${protocol}//${host}${uri}`
 }
-
-export async function getLatestIssues(req) {
+export async function getLatestIssues() {
   try {
-    const res = await fetch(makeAbsoluteURL(req, '/api/github'))
+    const res = await fetch('/api/github')
 
     if (res.status !== 200) return []
 
@@ -23,9 +22,9 @@ export async function getLatestIssues(req) {
   }
 }
 
-export async function getLatestPosts(req) {
+export async function getLatestPosts() {
   try {
-    const res = await fetch(makeAbsoluteURL(req, '/api/blog'))
+    const res = await fetch('/api/blog')
 
     if (res.status !== 200) return []
 
@@ -39,9 +38,9 @@ export async function getLatestPosts(req) {
   }
 }
 
-export async function getLatestTopics(req) {
+export async function getLatestTopics() {
   try {
-    const res = await fetch(makeAbsoluteURL(req, '/api/discourse'))
+    const res = await fetch('/api/discourse')
 
     if (res.status !== 200) return []
 
@@ -52,5 +51,18 @@ export async function getLatestTopics(req) {
     console.error(e)
 
     return []
+  }
+}
+
+export async function getCommentsCount(commentsUrl) {
+  try {
+    const res = await fetch(`/api/comments?url=${commentsUrl}`)
+
+    if (res.status === 200) {
+      const { count } = await res.json()
+      return count
+    }
+  } catch (e) {
+    console.error(e)
   }
 }

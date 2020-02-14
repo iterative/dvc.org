@@ -10,6 +10,7 @@ import CommunityBlock from '../Block'
 import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
+import { getLatestPosts, getCommentsCount } from '../../../utils/api'
 import { pluralizeComments } from '../../../utils/i18n'
 
 import {
@@ -53,9 +54,7 @@ function CommunityBlogPost({
 
   useEffect(() => {
     if (commentsUrl) {
-      fetch(`/api/comments?url=${commentsUrl}`)
-        .then(result => result.json())
-        .then(data => setCount(data.count))
+      getCommentsCount(commentsUrl).then(result => setCount(result))
     }
   }, [])
 
@@ -185,7 +184,17 @@ CommunityDocumentation.propTypes = {
   url: PropTypes.string
 }
 
-export default function CommunityLearn({ posts, theme }) {
+export default function CommunityLearn({ theme }) {
+  const [isPostsLoaded, setIsPostsLoaded] = useState(false)
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    getLatestPosts().then(result => {
+      setPosts(result)
+      setIsPostsLoaded(true)
+    })
+  }, [])
+
   return (
     <Wrapper>
       <CommunitySection
@@ -255,15 +264,17 @@ export default function CommunityLearn({ posts, theme }) {
                 )
               }
             >
-              {posts.length ? (
+              {!isPostsLoaded && <Placeholder>Loading...</Placeholder>}
+              {isPostsLoaded &&
+                !!posts.length &&
                 posts.map(post => (
                   <CommunityBlogPost
                     {...post}
                     key={post.url}
                     color={theme.color}
                   />
-                ))
-              ) : (
+                ))}
+              {isPostsLoaded && !posts.length && (
                 <Placeholder>Blog is unavailable right now</Placeholder>
               )}
             </CommunityBlock>
@@ -286,7 +297,6 @@ export default function CommunityLearn({ posts, theme }) {
 }
 
 CommunityLearn.propTypes = {
-  posts: PropTypes.array,
   theme: PropTypes.shape({
     backgroundColor: PropTypes.string,
     color: PropTypes.string
