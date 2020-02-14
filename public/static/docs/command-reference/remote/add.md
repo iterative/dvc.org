@@ -187,7 +187,7 @@ $ dvc remote add myremote "azure://"
   The connection string can be found in the "Access Keys" pane of your Storage
   Account resource in the Azure portal.
 
-  > 💡Make sure the value is quoted to prevent shell from misprocessing the
+  > 💡 Make sure the value is quoted to prevent shell from misprocessing the
   > command.
 
 - `container name` - this is the top-level container in your Azure Storage
