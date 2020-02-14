@@ -43,8 +43,8 @@ project's cache                  ++ | dvc pull |
 ```
 
 Fetching could be useful when first checking out a <abbr>DVC project</abbr>,
-since files under DVC control should already exist in remote storage, but won't
-be in the project's cache. (Refer to `dvc remote` for more information on DVC
+since files tracked by DVC should already exist in remote storage, but won't be
+in the project's cache. (Refer to `dvc remote` for more information on DVC
 remotes.) These necessary data or model files are listed as dependencies or
 outputs in a DVC-file (target [stage](/doc/command-reference/run)) so they are
 required to [reproduce](/doc/get-started/reproduce) the corresponding
@@ -161,8 +161,8 @@ bigrams-experiment      <- use bigrams to improve the model
 
 This project comes with a predefined HTTP
 [remote storage](/doc/command-reference/remote). We can now just run `dvc fetch`
-to download the most recent `model.pkl`, `data.xml`, and other files that are
-under DVC control into our local <abbr>cache</abbr>.
+to download the most recent `model.pkl`, `data.xml`, and other DVC-tracked files
+into our local <abbr>cache</abbr>.
 
 ```dvc
 $ dvc status --cloud

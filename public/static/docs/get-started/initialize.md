@@ -26,5 +26,5 @@ learn more.
 > [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
 > learn about the DVC internal file and directory structure.
 
-The last command, `git commit`, puts the `.dvc/config` and `.dvc/.gitignore`
-files (DVC internals) under Git control.
+The last command, `git commit`, versions the `.dvc/config` and `.dvc/.gitignore`
+files (DVC internals) with Git.

@@ -149,7 +149,7 @@ CLI.
 
 The first stage is to extract XML from the archive. Note that we don't need to
 run `dvc add` on `Posts.xml` below, `dvc run` saves the data automatically
-(commits into the <abbr>cache</abbr>, takes the file under DVC control):
+(commits into the <abbr>cache</abbr>, tracks the file with DVC):
 
 ```dvc
 $ dvc run -d data/Posts.xml.zip \

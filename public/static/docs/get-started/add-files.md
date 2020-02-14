@@ -18,8 +18,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 > [Data Registries](/doc/use-cases/data-registries) for more info about this
 > setup.)
 
-To take a file (or a directory) under DVC control just run `dvc add` on it. For
-example:
+To track a file (or a directory) with DVC just run `dvc add` on it. For example:
 
 ```dvc
 $ dvc add data/data.xml
@@ -35,7 +34,7 @@ $ git commit -m "Add raw data to project"
 ```
 
 Committing DVC-files with Git allows us to track different versions of the
-<abbr>project</abbr> data as it evolves with the source code under Git control.
+<abbr>project</abbr> data as it evolves with the source code tracked by Git.
 
 <details>
 
@@ -80,9 +79,9 @@ See [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
 </details>
 
 If your workspace uses Git, without DVC you would have to manually put each data
-file or directory into `.gitignore`. DVC commands that take or make files that
-will go under its control automatically takes care of this for you! (You just
-have to add the changes with Git.)
+file or directory into `.gitignore`. DVC commands that track data files
+automatically takes care of this for you! (You just have to add the changes with
+Git.)
 
 Refer to
 [Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files),
