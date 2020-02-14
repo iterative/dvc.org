@@ -1,6 +1,6 @@
 # fetch
 
-Get files that are under DVC control from
+Get files or directories tracked by DVC from
 [remote storage](/doc/command-reference/remote) into the <abbr>cache</abbr>.
 
 ## Synopsis
