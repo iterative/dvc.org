@@ -28,8 +28,8 @@ supported:
 > `dvc remote`.
 
 In order to specify an external dependency for your stage, use the usual '-d'
-option in `dvc run` with the external path or URL pointing to your desired file
-or directory.
+option in `dvc run` with the external path or URL to your desired file or
+directory.
 
 ## Examples
 

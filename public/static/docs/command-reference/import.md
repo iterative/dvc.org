@@ -35,12 +35,13 @@ to an "offline" repo (if it's a DVC repo without a default remote, instead of
 downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 
 The `path` argument of this command is used to specify the location of the
-target to be downloaded within the source repository at `url`. It can point to
-any file or directory in there, including <abbr>outputs</abbr> tracked by DVC,
-as well as files tracked by Git. Note that for DVC repos, the target should be
-found in one of the [DVC-files](/doc/user-guide/dvc-file-format) of the project.
-The project should also have a default
-[DVC remote](/doc/command-reference/remote), containing the actual data.
+target to be downloaded within the source repository at `url`. `path` can
+specify any file or directory in the source repo, including <abbr>outputs</abbr>
+tracked by DVC, as well as files tracked by Git. Note that for DVC repos, the
+target should be found in one of the
+[DVC-files](/doc/user-guide/dvc-file-format) of the project. The project should
+also have a default [DVC remote](/doc/command-reference/remote), containing the
+actual data.
 
 > See `dvc import-url` to download and track data from other supported locations
 > such as S3, SSH, HTTP, etc.
@@ -156,8 +157,8 @@ deps:
       rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
 ```
 
-If `rev` is a Git branch or tag (where the commit it points to changes), the
-data source may have updates at a later time. To bring it up to date if so (and
+If `rev` is a Git branch or tag (where the underlying commit changes), the data
+source may have updates at a later time. To bring it up to date if so (and
 update `rev_lock` in the DVC-file), simply use `dvc update <stage>.dvc`. If
 `rev` is a specific commit hash (does not change), `dvc update` will never have
 an effect on the import stage. You may **re-import** a different commit instead,

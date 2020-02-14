@@ -29,10 +29,9 @@ supported:
 > `dvc remote`.
 
 In order to specify an external output for a stage file, use the usual `-o` or
-`-O` options of the `dvc run` command, but with the external path or URL
-pointing to the file in question. For <abbr>cached</abbr> external outputs
-(`-o`) you will need to
-[setup an external cache](/doc/command-reference/config#cache) location.
+`-O` options of the `dvc run` command, but with the external path or URL to the
+file in question. For <abbr>cached</abbr> external outputs (`-o`) you will need
+to [setup an external cache](/doc/command-reference/config#cache) location.
 Non-cached external outputs (`-O`) do not require an external cache to be setup.
 
 > Avoid using the same remote location that you are using for `dvc push`,
