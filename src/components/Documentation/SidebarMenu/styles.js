@@ -11,7 +11,7 @@ export const Menu = styled.div`
 
   .ReactCollapse--collapse {
     padding-left: 20px;
-    transition: height 500ms;
+    transition: height 250ms;
   }
 
   ${props =>
