@@ -24,7 +24,7 @@ positional arguments:
 ## Description
 
 `name` and `url` are required. `url` specifies a location to store your data. It
-can point to a cloud storage service, an SSH server, network-attached storage,
+can represent a cloud storage service, an SSH server, network-attached storage,
 or even a directory in the local file system. (See all the supported remote
 storage types in the examples below.) If `url` is a relative path, it will be
 resolved against the current working directory, but saved **relative to the

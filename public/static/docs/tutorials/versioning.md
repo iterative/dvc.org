@@ -15,8 +15,8 @@ to build a powerful image classifier using a pretty small dataset.
 
 We first train a classifier model using 1000 labeled images, then we double the
 number of images (2000) and retrain our model. We capture both datasets and
-classifier results and show how to use `dvc checkout` to switch between data
-and/or model versions.
+classifier results and show how to use `dvc checkout` to switch between
+<abbr>workspace</abbr> versions.
 
 The specific algorithm used to train and validate the classifier is not
 important, and no prior knowledge of Keras is required. We'll reuse the
@@ -165,7 +165,7 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 As we mentioned briefly, DVC does not commit the `data/` directory and
 `model.h5` file with Git. Instead, `dvc add` stores them in the cache (usually
 in `.dvc/cache`) and adds them to `.gitignore`. We then `git commit` DVC-files
-that contain pointers to the cached data.
+that contain file hashes that point to cached data.
 
 In this case we created `data.dvc` and `model.h5.dvc`. Refer to
 [DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
@@ -241,11 +241,11 @@ $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
-That's it! We have a second model and dataset saved and pointers to them
-committed with Git. Let's now look at how DVC can help us go back to the
-previous version if we need to.
+That's it! We have tracked a second dataset, model, and metrics versioned DVC,
+and the DVC-files that point to them committed with Git. Let's now look at how
+DVC can help us go back to the previous version if we need to.
 
-## Switching between data and/or model versions
+## Switching between workspace versions
 
 The DVC command that helps get a specific committed version of data is designed
 to be similar to `git checkout`. All we need to do in our case is to
@@ -291,8 +291,8 @@ directory inside the repository). Instead, DVC creates
 placeholders that point to the cached files, and they can be easily version
 controlled with Git.
 
-When we run `git checkout` we restore pointers (DVC-files) first, then when we
-run `dvc checkout` we use these pointers to put the right data in the right
+When we run `git checkout` we restore pointers (DVC-files) first. Then, when we
+run `dvc checkout`, we use these pointers to put the right data in the right
 place.
 
 </details>
@@ -312,7 +312,7 @@ When you have a script that takes some data as an input and produces other data
 <abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:
 
 > If you tried the commands in the
-> [Switching between data and/or model versions](#switching-between-data-and-or-model-versions)
+> [Switching between workspace versions](#switching-between-workspace-versions)
 > section, go back to the master branch code and data with:
 >
 > ```dvc
