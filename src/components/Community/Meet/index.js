@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
@@ -8,7 +8,7 @@ import CommunitySection from '../Section'
 
 import { pluralizeComments } from '../../../utils/i18n'
 import { logEvent } from '../../../utils/ga'
-import { getLatestIssues, getLatestTopics } from '../../../utils/api'
+import { useIssues, useTopics } from '../../../utils/api'
 
 import data from '../data'
 
@@ -112,22 +112,8 @@ CommunityIssue.propTypes = {
 }
 
 export default function CommunityMeet({ theme }) {
-  const [isIssuesLoaded, setIsIssuesLoaded] = useState(false)
-  const [issues, setIssues] = useState([])
-
-  const [isTopicsLoaded, setIsTopicsLoaded] = useState(false)
-  const [topics, setTopics] = useState([])
-
-  useEffect(() => {
-    getLatestIssues().then(result => {
-      setIssues(result)
-      setIsIssuesLoaded(true)
-    })
-    getLatestTopics().then(result => {
-      setTopics(result)
-      setIsTopicsLoaded(true)
-    })
-  }, [])
+  const { erorr: issuesError, ready: issuesReady, result: issues } = useIssues()
+  const { erorr: topicsError, ready: topicsReady, result: topics } = useTopics()
 
   return (
     <Wrapper>
@@ -195,7 +181,7 @@ export default function CommunityMeet({ theme }) {
                 </HeaderLink>
               }
               action={
-                topics.length && (
+                topics && (
                   <CommunityButton
                     theme={theme}
                     href="https://discuss.dvc.org"
@@ -209,9 +195,11 @@ export default function CommunityMeet({ theme }) {
               }
               icon="/static/img/community/discourse.svg"
             >
-              {!isTopicsLoaded && <Placeholder>Loading...</Placeholder>}
-              {isTopicsLoaded &&
-                !!topics.length &&
+              {!topicsReady && <Placeholder>Loading...</Placeholder>}
+              {topicsError && (
+                <Placeholder>Forum is unavailable right now</Placeholder>
+              )}
+              {topics &&
                 topics.map(topic => (
                   <CommunityTopic
                     {...topic}
@@ -219,9 +207,6 @@ export default function CommunityMeet({ theme }) {
                     color={theme.color}
                   />
                 ))}
-              {isTopicsLoaded && !topics.length && (
-                <Placeholder>Forum is unavailable right now</Placeholder>
-              )}
             </CommunityBlock>
           </Item>
           <Item>
@@ -237,7 +222,7 @@ export default function CommunityMeet({ theme }) {
                 </HeaderLink>
               }
               action={
-                issues.length && (
+                issues && (
                   <CommunityButton
                     theme={theme}
                     href="https://github.com/iterative/dvc/issues"
@@ -251,9 +236,11 @@ export default function CommunityMeet({ theme }) {
               }
               icon="/static/img/community/github.svg"
             >
-              {!isIssuesLoaded && <Placeholder>Loading...</Placeholder>}
-              {isIssuesLoaded &&
-                !!issues.length &&
+              {!issuesReady && <Placeholder>Loading...</Placeholder>}
+              {issuesError && (
+                <Placeholder>Github is unavailable right now</Placeholder>
+              )}
+              {issues &&
                 issues.map(issue => (
                   <CommunityIssue
                     {...issue}
@@ -261,9 +248,6 @@ export default function CommunityMeet({ theme }) {
                     color={theme.color}
                   />
                 ))}
-              {isIssuesLoaded && !issues.lengts && (
-                <Placeholder>Github is unavailable right now</Placeholder>
-              )}
             </CommunityBlock>
           </Item>
         </Items>
@@ -273,10 +257,8 @@ export default function CommunityMeet({ theme }) {
 }
 
 CommunityMeet.propTypes = {
-  issues: PropTypes.array,
   theme: PropTypes.shape({
     backgroundColor: PropTypes.string,
     color: PropTypes.string
-  }),
-  topics: PropTypes.array
+  })
 }
