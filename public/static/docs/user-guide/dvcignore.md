@@ -61,7 +61,7 @@ $ tree .
 ```
 
 We created the `data/` directory with two files. Let's ignore one of them, and
-add track the directory with DVC.
+track the directory with DVC.
 
 ```dvc
 $ echo data/data1 >> .dvcignore

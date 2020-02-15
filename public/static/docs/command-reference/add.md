@@ -1,7 +1,7 @@
 # add
 
-Take a data file or a directory under DVC control (by creating a corresponding
-[DVC-file](/doc/user-guide/dvc-file-format)).
+Track data files or directories with DVC, by creating a corresponding
+[DVC-file](/doc/user-guide/dvc-file-format).
 
 ## Synopsis
 
@@ -15,13 +15,13 @@ positional arguments:
 
 ## Description
 
-The `dvc add` command is analogous to the `git add` command. By default though,
-an added file or directory is also committed to the <abbr>cache</abbr>. (Use the
-`--no-commit` option to avoid this, and `dvc commit` as a separate step when
-ready.)
+The `dvc add` command is analogous to `git add`, in that it makes DVC aware of
+the target data, as a first step to version it. Data added with DVC is also
+committed to the <abbr>cache</abbr> (use the `--no-commit` option to avoid this,
+and `dvc commit` as a separate step when needed).
 
-The `targets` are files or directories to be places under DVC control. These are
-turned into <abbr>outputs<abbr> (`outs` field) in a resulting
+The `targets` are files or directories to be track with DVC. These are turned
+into <abbr>outputs<abbr> (`outs` field) in a resulting
 [DVC-file](/doc/user-guide/dvc-file-format). (See steps below for more details.)
 Note that target data outside the current <abbr>workspace</abbr> is supported,
 that becomes [external outputs](/doc/user-guide/managing-external-data).
@@ -115,7 +115,7 @@ reproducible.
 
 ## Example: Single file
 
-Take a file under DVC control:
+Track a file with DVC:
 
 ```dvc
 $ dvc add data.xml
@@ -184,7 +184,7 @@ pics
     └── dogs [more image files]
 ```
 
-Taking a directory under DVC control as simple as with a single file:
+Tracking a directory with DVC as simple as with a single file:
 
 ```dvc
 $ dvc add pics

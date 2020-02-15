@@ -22,9 +22,9 @@ takes a config option `name` (a section and a key, separated by a dot) and its
 This command reads and updates the DVC configuration files. By default (if none
 of `--local`, `--global`, or `--system` is provided) a project's config
 (`.dvc/config`) file is read or modified. This file is by default meant to be
-under Git control and should not contain sensitive and/or user-specific
-information (passwords, SSH keys, etc). Use `--local`, `--global`, or `--system`
-options instead to override project's settings, for sensitive, or user-specific
+tracked by Git and should not contain sensitive and/or user-specific information
+(passwords, SSH keys, etc). Use `--local`, `--global`, or `--system` options
+instead to override project's settings, for sensitive, or user-specific
 settings.
 
 If the config option `value` is not provided and `--unset` option is not used,
@@ -95,7 +95,7 @@ remote. See `dvc remote` for more information.
 ### cache
 
 A DVC project <abbr>cache</abbr> is the hidden storage (by default located in
-the `.dvc/cache` directory) for files that are under DVC control, and their
+the `.dvc/cache` directory) for files that are tracked by DVC, and their
 different versions. (See `dvc cache` and
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 for more details.) This section contains the following options:
@@ -109,9 +109,9 @@ for more details.) This section contains the following options:
   > option, properly transforming paths relative to the current working
   > directory into paths relative to the config file location.
 
-- `cache.protected` - make files under DVC control read-only. Possible values
-  are `true` or `false` (default). Run `dvc checkout` after changing the value
-  of this option for the change to go into effect.
+- `cache.protected` - make DVC-tracked files read-only. Possible values are
+  `true` or `false` (default). Run `dvc checkout` after changing the value of
+  this option for the change to go into effect.
 
   Due to the way DVC handles linking between the data files in the cache and
   their counterparts in the <abbr>workspace</abbr>, it's easy to accidentally
@@ -272,7 +272,7 @@ Set cache type: if `reflink` is not available, use `copy`:
 $ dvc config cache.type reflink,copy
 ```
 
-Protect data files under DVC control by making them read-only:
+Protect DVC-tracked data files by making them read-only:
 
 ```dvc
 $ dvc config cache.protected true

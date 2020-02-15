@@ -17,7 +17,7 @@ positional arguments:
 ## Description
 
 [DVC-files](/doc/user-guide/dvc-file-format) act as pointers to specific version
-of data files or directories under DVC control. This command synchronizes the
+of data files or directories tracked by DVC. This command synchronizes the
 workspace data with the versions specified in the current DVC-files.
 
 `dvc checkout` is useful, for example, when using Git in the
@@ -147,7 +147,7 @@ bigrams-experiment      <- Uses bigrams to improve the model
 This project comes with a predefined HTTP
 [remote storage](/doc/command-reference/remote). We can now just run `dvc pull`
 that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
-files that are under DVC control. The model file hash
+files that are tracked by DVC. The model file hash
 `3863d0e317dee0a55c4e59d2ec0eef33` will be used in the `train.dvc`
 [stage file](/doc/command-reference/run):
 

@@ -91,15 +91,14 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 - `-o`, `--outs` - specify a file or directory that is the result of running the
   `command`. Multiple outputs can be specified: `-o model.pkl -o output.log`.
   DVC builds a dependency graph (pipeline) to connect different stages with each
-  other based on this list of outputs and dependencies (see `-d`). DVC takes all
-  output files and directories under its control and puts them into the cache
-  (this is similar to what's happening when you use `dvc add`).
+  other based on this list of outputs and dependencies (see `-d`). DVC tracks
+  all output files and directories and puts them into the cache (this is similar
+  to what's happening when you use `dvc add`).
 
-- `-O`, `--outs-no-cache` - the same as `-o` except outputs are not put
-  automatically under DVC control. It means that they are not cached, and it's
-  up to a user to save and version control them. This is useful if the outputs
-  are small enough to be put into Git control, or if these files are not of
-  future interest.
+- `-O`, `--outs-no-cache` - the same as `-o` except that outputs are not tracked
+  by DVC. It means that they are not cached, and it's up to a user to save and
+  version control them. This is useful if the outputs are small enough to be put
+  into Git control, or if these files are not of future interest.
 
 - `-m`, `--metrics` - specify a metric type of output. This option behaves like
   `-o` but also adds `metric: true` in the output record of the resulting stage
@@ -107,11 +106,11 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   numeric values or other information that describes a model (or any other
   regular output). See `dvc metrics` to learn more about using metrics.
 
-- `-M`, `--metrics-no-cache` - the same as `-m` except files are not put
-  automatically under DVC control. It means that they are not cached, and it's
-  up to a user to save and version control them. This is typically desirable
-  with metric files, because they are small enough to be put into Git control.
-  See also the difference between `-o` and `-O`.
+- `-M`, `--metrics-no-cache` - the same as `-m` except that files are not
+  tracked by DVC. It means that they are not cached, and it's up to a user to
+  save and version control them. This is typically desirable with metric files,
+  because they are small enough to be put into Git control. See also the
+  difference between `-o` and `-O`.
 
 - `-f`, `--file` - specify stage file name. By default the DVC-file name
   generated is `<file>.dvc`, where `<file>` is file name of the first output
@@ -131,10 +130,10 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   `command`.
 
 - `--no-exec` - create a stage file, but do not execute the `command` defined in
-  it, nor take dependencies or outputs under DVC control. In the DVC-file
-  contents, the file hash values will be empty; They will be populated the next
-  time this stage is actually executed. This is useful if, for example, you need
-  to build a pipeline (dependency graph) first, and then run it all at once.
+  it, nor track dependencies or outputs with DVC. In the DVC-file contents, the
+  file hash values will be empty; They will be populated the next time this
+  stage is actually executed. This is useful if, for example, you need to build
+  a pipeline (dependency graph) first, and then run it all at once.
 
 - `-y`, `--yes` (_deprecated_) - See `--overwrite-dvcfile` below.
 
