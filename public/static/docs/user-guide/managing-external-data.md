@@ -28,20 +28,16 @@ supported:
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
 
-In order to specify an external output for a stage file use the usual `-o` and
-`-O` options with the `dvc run` command, but with the external path or URL
-pointing to your desired files. For cached external outputs (specified using
-`-o`) you will need to
-[setup an external cache](/doc/command-reference/config#cache) location that
-will be used by DVC to store versions of your external file. Non-cached external
-outputs (specified using `-O`) do not require an external <abbr>cache</abbr> to
-be setup.
+In order to specify an external output for a stage file, use the usual `-o` or
+`-O` options of the `dvc run` command, but with the external path or URL to the
+file in question. For <abbr>cached</abbr> external outputs (`-o`) you will need
+to [setup an external cache](/doc/command-reference/config#cache) location.
+Non-cached external outputs (`-O`) do not require an external cache to be setup.
 
 > Avoid using the same remote location that you are using for `dvc push`,
 > `dvc pull`, `dvc fetch` as external cache for your external outputs, because
-> it may cause possible checksum overlaps. Checksum for some data file on an
-> external storage can potentially collide with checksum generated locally for a
-> different file, with a different content.
+> it may cause possible file hash overlaps: The hash value of a data file in
+> external storage could collide with that generated locally for another file.
 
 ## Examples
 

@@ -145,7 +145,7 @@ const Link = ({ children, href, ...props }) => {
     externalLink && children && typeof children[0].props.children === 'string'
 
   const modifiedProps = externalLink
-    ? { ...props, target: '_blank', rel: 'noopener nofollow' }
+    ? { ...props, target: '_blank', rel: 'noreferrer noopener' }
     : props
 
   if (showIcon) {
@@ -227,7 +227,7 @@ export default class Markdown extends React.PureComponent {
             <Tutorials tutorials={tutorials} compact={true} />
           </TutorialsWrapper>
         )}
-        <GithubLink href={githubLink} target="_blank" rel="nofollow noopener">
+        <GithubLink href={githubLink} target="_blank" rel="noreferrer noopener">
           <i /> Edit on GitHub
         </GithubLink>
         <ReactMarkdown

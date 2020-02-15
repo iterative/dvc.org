@@ -13,7 +13,10 @@ export const Wrapper = styled.div`
 
   background-color: #ffffff;
   box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.15);
-  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    visibility: hidden;
+  }
 `
 
 export const Container = styled.section`

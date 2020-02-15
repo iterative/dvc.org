@@ -129,15 +129,13 @@ in the [Get Started](/doc/get-started) section.
 
 <details>
 
-### Click and expand to setup the example project
-
-Follow these instructions before each example below if you actually want to try
-them on your system.
+### Click and expand to setup example
 
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
-[version](https://github.com/iterative/example-get-started/releases/tag/2-remote)
-corresponding to the [Configure](/doc/get-started/configure) chapter:
+[2-remote](https://github.com/iterative/example-get-started/releases/tag/2-remote)
+tag, corresponding to the [Configure](/doc/get-started/configure) _Get Started_
+chapter:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -243,7 +241,7 @@ outs:
 The DVC-file is nearly the same as in the previous example. The difference is
 that the dependency (`deps`) now references the local file in the data store
 directory we created previously. (Its `path` has the URL for the data store.)
-And instead of an `etag` we have an `md5` checksum. We did this so its easy to
+And instead of an `etag` we have an `md5` hash value. We did this so its easy to
 edit the data file.
 
 Let's now manually reproduce a
@@ -308,8 +306,8 @@ Data and pipelines are up to date.
 
 In the data store directory, edit `data.xml`. It doesn't matter what you change,
 as long as it remains a valid XML file, because any change will result in a
-different dependency file checksum (`md5`) in the import stage DVC-file. Once we
-do so, we can run `dvc update` to make sure the import stage is up to date:
+different dependency file hash (`md5`) in the import stage DVC-file. Once we do
+so, we can run `dvc update` to make sure the import stage is up to date:
 
 ```dvc
 $ dvc update data.xml.dvc
