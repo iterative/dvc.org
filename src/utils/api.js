@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import fetch from 'isomorphic-fetch'
 
 export function makeAbsoluteURL(req, uri) {
@@ -7,50 +8,64 @@ export function makeAbsoluteURL(req, uri) {
   return `${protocol}//${host}${uri}`
 }
 
-export async function getLatestIssues(req) {
-  try {
-    const res = await fetch(makeAbsoluteURL(req, '/api/github'))
+const useAPICall = url => {
+  const [ready, setReady] = useState(false)
+  const [error, setError] = useState(false)
+  const [result, setResult] = useState(null)
 
-    if (res.status !== 200) return []
+  useEffect(() => {
+    let cancelled = false
 
-    const { issues } = await res.json()
+    const fetchData = async () => {
+      try {
+        const res = await fetch(url)
 
-    return issues
-  } catch (e) {
-    console.error(e)
+        if (!cancelled) {
+          if (res.status !== 200) {
+            setError('Bad response status')
+          } else {
+            setResult(await res.json())
+          }
+        }
+      } catch {
+        if (!cancelled) setError('Error loading request')
+      } finally {
+        if (!cancelled) setReady(true)
+      }
+    }
 
-    return []
-  }
+    fetchData()
+
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  return { error, ready, result }
 }
 
-export async function getLatestPosts(req) {
-  try {
-    const res = await fetch(makeAbsoluteURL(req, '/api/blog'))
+export function useIssues() {
+  const { error, ready, result } = useAPICall('/api/github')
 
-    if (res.status !== 200) return []
-
-    const { posts } = await res.json()
-
-    return posts
-  } catch (e) {
-    console.error(e)
-
-    return []
-  }
+  return { error, ready, result: result && result.issues }
 }
 
-export async function getLatestTopics(req) {
-  try {
-    const res = await fetch(makeAbsoluteURL(req, '/api/discourse'))
+export function usePosts() {
+  const { error, ready, result } = useAPICall('/api/blog')
 
-    if (res.status !== 200) return []
+  return { error, ready, result: result && result.posts }
+}
 
-    const { topics } = await res.json()
+export function useTopics() {
+  const { error, ready, result } = useAPICall('/api/discourse')
 
-    return topics
-  } catch (e) {
-    console.error(e)
+  return { error, ready, result: result && result.topics }
+}
 
-    return []
-  }
+export function useCommentsCount(commentsUrl) {
+  const { error, ready, result } = useAPICall(
+    `/api/comments?url=${commentsUrl}`
+  )
+
+  return { error, ready, result: result && result.count }
 }
