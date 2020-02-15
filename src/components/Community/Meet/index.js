@@ -197,7 +197,7 @@ export default function CommunityMeet({ theme }) {
             >
               {!topicsReady && <Placeholder>Loading...</Placeholder>}
               {topicsError && (
-                <Placeholder>Forum is unavailable right now</Placeholder>
+                <Placeholder>Forum unavailable right now</Placeholder>
               )}
               {topics &&
                 topics.map(topic => (
