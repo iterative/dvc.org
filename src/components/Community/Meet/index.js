@@ -238,7 +238,7 @@ export default function CommunityMeet({ theme }) {
             >
               {!issuesReady && <Placeholder>Loading...</Placeholder>}
               {issuesError && (
-                <Placeholder>Github is unavailable right now</Placeholder>
+                <Placeholder>Github unavailable right now</Placeholder>
               )}
               {issues &&
                 issues.map(issue => (
