@@ -22,7 +22,7 @@ const useAPICall = url => {
 
         if (!cancelled) {
           if (res.status !== 200) {
-            setError('Wrong response types')
+            setError('Bad response status')
           } else {
             setResult(await res.json())
           }
