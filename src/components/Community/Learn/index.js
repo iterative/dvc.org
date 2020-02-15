@@ -250,9 +250,7 @@ export default function CommunityLearn({ theme }) {
               }
             >
               {!ready && <Placeholder>Loading...</Placeholder>}
-              {error && (
-                <Placeholder>Blog unavailable right now</Placeholder>
-              )}
+              {error && <Placeholder>Blog unavailable right now</Placeholder>}
               {posts &&
                 posts.map(post => (
                   <CommunityBlogPost
