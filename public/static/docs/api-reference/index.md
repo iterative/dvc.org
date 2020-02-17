@@ -12,3 +12,6 @@ The purpose of this API is to provide programatic access to the data or models
 [stored and versioned using DVC](/doc/use-cases/versioning-data-and-model-files)
 from Python apps. Please choose a function from the navigation sidebar to the
 left, or click the `Next` button below to jump into the first one ↘
+
+> Please see also [dvcx](https://github.com/iterative/dvcx) for additional API
+> extensions.
