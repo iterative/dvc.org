@@ -1,17 +1,11 @@
 import React from 'react'
 import Head from 'next/head'
 
-import {
-  getLatestIssues,
-  getLatestTopics,
-  getLatestPosts
-} from '../src/utils/api'
-
 import Community from '../src/components/Community'
 
 import { META_BASE_TITLE } from '../src/consts'
 
-export default function CommunityPage(props) {
+export default function CommunityPage() {
   return (
     <>
       <Head>
@@ -28,19 +22,7 @@ export default function CommunityPage(props) {
         />
         <title>Community | {META_BASE_TITLE}</title>
       </Head>
-      <Community {...props} />
+      <Community />
     </>
   )
-}
-
-CommunityPage.getInitialProps = async ({ req }) => {
-  const issues = await getLatestIssues(req)
-  const posts = await getLatestPosts(req)
-  const topics = await getLatestTopics(req)
-
-  return {
-    issues,
-    posts,
-    topics
-  }
 }

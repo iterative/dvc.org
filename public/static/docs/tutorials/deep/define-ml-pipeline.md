@@ -28,10 +28,10 @@ browser to download `data.xml`. (Right-click
 
 </details>
 
-At this time, `data/Posts.xml.zip` is an untracked regular file. We can place it
-under DVC control using `dvc add` (see below). After executing the command you
-will see a new file `data/Posts.xml.zip.dvc` and a change in `data/.gitignore`.
-Both of these files have to be committed to the repository.
+At this time, `data/Posts.xml.zip` is a regular (untracked) file. We can track
+it with DVC using `dvc add` (see below). After executing the command you will
+see a new file `data/Posts.xml.zip.dvc` and a change in `data/.gitignore`. Both
+of these files have to be committed to the repository.
 
 ```dvc
 $ dvc add data/Posts.xml.zip
@@ -59,10 +59,10 @@ Refer to
 `dvc add`, and `dvc run` for more information on storing and versioning data
 files with DVC.
 
-Note that to modify or replace a data file that is under DVC control you may
-need to run `dvc unprotect` or `dvc remove` first (see the
-[Update Tracked File](/doc/user-guide/updating-tracked-files) guide). Use
-`dvc move` to rename or move a data file that is under DVC control.
+Note that to modify or replace a data file tracked by DVC, you may need to run
+`dvc unprotect` or `dvc remove` first (see the
+[Update Tracked File](/doc/user-guide/updating-tracked-files) guide). To rename
+or move it, you can use `dvc move`.
 
 ## Data file internals
 

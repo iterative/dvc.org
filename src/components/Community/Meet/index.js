@@ -8,6 +8,7 @@ import CommunitySection from '../Section'
 
 import { pluralizeComments } from '../../../utils/i18n'
 import { logEvent } from '../../../utils/ga'
+import { useIssues, useTopics } from '../../../utils/api'
 
 import data from '../data'
 
@@ -110,7 +111,10 @@ CommunityIssue.propTypes = {
   color: PropTypes.string
 }
 
-export default function CommunityMeet({ issues, theme, topics }) {
+export default function CommunityMeet({ theme }) {
+  const { erorr: issuesError, ready: issuesReady, result: issues } = useIssues()
+  const { erorr: topicsError, ready: topicsReady, result: topics } = useTopics()
+
   return (
     <Wrapper>
       <CommunitySection
@@ -177,7 +181,7 @@ export default function CommunityMeet({ issues, theme, topics }) {
                 </HeaderLink>
               }
               action={
-                topics.length && (
+                topics && (
                   <CommunityButton
                     theme={theme}
                     href="https://discuss.dvc.org"
@@ -191,17 +195,18 @@ export default function CommunityMeet({ issues, theme, topics }) {
               }
               icon="/static/img/community/discourse.svg"
             >
-              {topics.length ? (
+              {!topicsReady && <Placeholder>Loading...</Placeholder>}
+              {topicsError && (
+                <Placeholder>Forum unavailable right now</Placeholder>
+              )}
+              {topics &&
                 topics.map(topic => (
                   <CommunityTopic
                     {...topic}
                     key={topic.url}
                     color={theme.color}
                   />
-                ))
-              ) : (
-                <Placeholder>Forum is unavailable right now</Placeholder>
-              )}
+                ))}
             </CommunityBlock>
           </Item>
           <Item>
@@ -217,7 +222,7 @@ export default function CommunityMeet({ issues, theme, topics }) {
                 </HeaderLink>
               }
               action={
-                issues.length && (
+                issues && (
                   <CommunityButton
                     theme={theme}
                     href="https://github.com/iterative/dvc/issues"
@@ -231,17 +236,18 @@ export default function CommunityMeet({ issues, theme, topics }) {
               }
               icon="/static/img/community/github.svg"
             >
-              {issues.length ? (
+              {!issuesReady && <Placeholder>Loading...</Placeholder>}
+              {issuesError && (
+                <Placeholder>Github unavailable right now</Placeholder>
+              )}
+              {issues &&
                 issues.map(issue => (
                   <CommunityIssue
                     {...issue}
                     key={issue.url}
                     color={theme.color}
                   />
-                ))
-              ) : (
-                <Placeholder>Github is unavailable right now</Placeholder>
-              )}
+                ))}
             </CommunityBlock>
           </Item>
         </Items>
@@ -251,10 +257,8 @@ export default function CommunityMeet({ issues, theme, topics }) {
 }
 
 CommunityMeet.propTypes = {
-  issues: PropTypes.array,
   theme: PropTypes.shape({
     backgroundColor: PropTypes.string,
     color: PropTypes.string
-  }),
-  topics: PropTypes.array
+  })
 }

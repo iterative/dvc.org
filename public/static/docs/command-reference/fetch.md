@@ -1,6 +1,6 @@
 # fetch
 
-Get files that are under DVC control from
+Get files or directories tracked by DVC from
 [remote storage](/doc/command-reference/remote) into the <abbr>cache</abbr>.
 
 ## Synopsis
@@ -43,8 +43,8 @@ project's cache                  ++ | dvc pull |
 ```
 
 Fetching could be useful when first checking out a <abbr>DVC project</abbr>,
-since files under DVC control should already exist in remote storage, but won't
-be in the project's cache. (Refer to `dvc remote` for more information on DVC
+since files tracked by DVC should already exist in remote storage, but won't be
+in the project's cache. (Refer to `dvc remote` for more information on DVC
 remotes.) These necessary data or model files are listed as dependencies or
 outputs in a DVC-file (target [stage](/doc/command-reference/run)) so they are
 required to [reproduce](/doc/get-started/reproduce) the corresponding
@@ -64,7 +64,7 @@ for more information on how to configure different remote storage providers.
 `dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
 perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
-file hashes when these are [added](/doc/get-started/add-files) to DVC. File
+file hashes when these are [added](/doc/get-started/add-files) with DVC. File
 hashes are stored in the corresponding DVC-files (typically versioned with Git).
 Only the hashes specified in DVC-files currently in the workspace are considered
 by `dvc fetch` (unless the `-a` or `-T` options are used).
@@ -161,8 +161,8 @@ bigrams-experiment      <- use bigrams to improve the model
 
 This project comes with a predefined HTTP
 [remote storage](/doc/command-reference/remote). We can now just run `dvc fetch`
-to download the most recent `model.pkl`, `data.xml`, and other files that are
-under DVC control into our local <abbr>cache</abbr>.
+to download the most recent `model.pkl`, `data.xml`, and other DVC-tracked files
+into our local <abbr>cache</abbr>.
 
 ```dvc
 $ dvc status --cloud

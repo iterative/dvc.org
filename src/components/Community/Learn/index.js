@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import format from 'date-fns/format'
 
@@ -10,6 +10,7 @@ import CommunityBlock from '../Block'
 import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
+import { usePosts, useCommentsCount } from '../../../utils/api'
 import { pluralizeComments } from '../../../utils/i18n'
 
 import {
@@ -45,19 +46,10 @@ function CommunityBlogPost({
   commentsUrl,
   pictureUrl
 }) {
-  const [count, setCount] = useState()
-  const loaded = count !== undefined
   const logPost = useCallback(() => logEvent('community', 'blog', title), [
     title
   ])
-
-  useEffect(() => {
-    if (commentsUrl) {
-      fetch(`/api/comments?url=${commentsUrl}`)
-        .then(result => result.json())
-        .then(data => setCount(data.count))
-    }
-  }, [])
+  const { error, ready, result } = useCommentsCount(commentsUrl)
 
   return (
     <ImageLine key={url}>
@@ -82,14 +74,14 @@ function CommunityBlogPost({
           {title}
         </Link>
         <Meta>
-          {loaded && (
+          {ready && !error && (
             <>
               <Comments
                 href={commentsUrl}
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                {pluralizeComments(count)}
+                {pluralizeComments(result)}
               </Comments>
               {' • '}
             </>
@@ -185,7 +177,9 @@ CommunityDocumentation.propTypes = {
   url: PropTypes.string
 }
 
-export default function CommunityLearn({ posts, theme }) {
+export default function CommunityLearn({ theme }) {
+  const { error, ready, result: posts } = usePosts()
+
   return (
     <Wrapper>
       <CommunitySection
@@ -242,7 +236,7 @@ export default function CommunityLearn({ posts, theme }) {
                 </HeaderLink>
               }
               action={
-                posts.length && (
+                posts && (
                   <CommunityButton
                     theme={theme}
                     href="https://blog.dvc.org"
@@ -255,17 +249,16 @@ export default function CommunityLearn({ posts, theme }) {
                 )
               }
             >
-              {posts.length ? (
+              {!ready && <Placeholder>Loading...</Placeholder>}
+              {error && <Placeholder>Blog unavailable right now</Placeholder>}
+              {posts &&
                 posts.map(post => (
                   <CommunityBlogPost
                     {...post}
                     key={post.url}
                     color={theme.color}
                   />
-                ))
-              ) : (
-                <Placeholder>Blog is unavailable right now</Placeholder>
-              )}
+                ))}
             </CommunityBlock>
           </Item>
           <Item>
@@ -286,7 +279,6 @@ export default function CommunityLearn({ posts, theme }) {
 }
 
 CommunityLearn.propTypes = {
-  posts: PropTypes.array,
   theme: PropTypes.shape({
     backgroundColor: PropTypes.string,
     color: PropTypes.string

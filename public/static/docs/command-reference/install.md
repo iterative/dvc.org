@@ -40,7 +40,7 @@ This hook automates reminding the user to run either `dvc commit` or
 
 **Push**: While publishing changes to the Git remote with `git push`, its easy
 to forget that the `dvc push` command is necessary to upload new or updated data
-files and directories under DVC control to
+files and directories tracked by DVC to
 [remote storage](/doc/command-reference/remote).
 
 This hook automates `dvc push`.
@@ -52,7 +52,7 @@ This hook automates `dvc push`.
 - A `post-checkout` hook executes `dvc checkout` after `git checkout` to
   automatically synchronize the data files with the new workspace state.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and
-  directories under DVC control to remote storage.
+  directories tracked by DVC to remote storage.
 
 If a hook already exists, DVC will raise an exception. In such case, user should
 try to manually edit existing file or remove it and retry install.

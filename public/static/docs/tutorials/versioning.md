@@ -331,10 +331,10 @@ $ dvc run -f Dvcfile \
 
 Similar to `dvc add`, `dvc run` creates a
 [DVC-file](/doc/user-guide/dvc-file-format) named `Dvcfile` (specified using the
-`-f` option). It puts all outputs (`-o`) under DVC control the same way as
-`dvc add` does. Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and
-the command (`python train.py`) that was run to produce the result. We call such
-a DVC-file a "stage file".
+`-f` option). It tracks all outputs (`-o`) the same way as `dvc add` does.
+Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and the command
+(`python train.py`) that was run to produce the result. We call such a DVC-file
+a "stage file".
 
 > At this point you could run `git add .` and `git commit` to save the `Dvcfile`
 > stage file and its changed outputs to the repository.

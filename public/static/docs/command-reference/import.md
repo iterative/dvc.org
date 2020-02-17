@@ -50,10 +50,10 @@ actual data.
 > such as S3, SSH, HTTP, etc.
 
 After running this command successfully, the imported data is placed in the
-current working directory with its original file name e.g. `data.txt`. An
-_import stage_ (DVC-file) is then created, extending the full file or directory
-name of the imported data e.g. `data.txt.dvc` – similar to having used `dvc run`
-to generate the same output.
+current working directory (unless `-o` is used) with its original file name e.g.
+`data.txt`. An _import stage_ (DVC-file) is also created in the same location,
+extending the name of the imported data e.g. `data.txt.dvc` – similar to having
+used `dvc run` to generate the output.
 
 DVC-files support references to data in an external DVC repository (hosted on a
 Git server). In such a DVC-file, the `deps` section specifies the `repo`-`url`
@@ -72,10 +72,10 @@ data artifact from the source repo.
 ## Options
 
 - `-o`, `--out` - specify a path (directory and/or file name) to the desired
-  location to place the imported data in. The default value (when this option
-  isn't used) is the current working directory (`.`) and original file name. If
-  an existing directory is specified, then the output will be placed inside of
-  it.
+  location to place the imported data and import stage (DVC-file) in. The
+  default value (when this option isn't used) is the current working directory
+  (`.`) and original file name. If an existing directory is specified, then the
+  output will be placed inside of it.
 
 - `--rev` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to

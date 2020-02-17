@@ -150,10 +150,10 @@ learn the specific details about how they behave, and all of their options.
 
 </details>
 
-You don't need to run `dvc add` to place output files (`prepared/train.tsv` and
-`prepared/test.tsv`) under DVC control. `dvc run` takes care of this. You only
-need to run `dvc push` (usually along with `git commit`) to save them to the
-remote when you are done.
+You don't need to run `dvc add` to track output files (`prepared/train.tsv` and
+`prepared/test.tsv`) with DVC. `dvc run` takes care of this. You only need to
+run `dvc push` (usually along with `git commit`) to save them to the remote when
+you are done.
 
 Let's commit the changes to save the stage we built:
 
