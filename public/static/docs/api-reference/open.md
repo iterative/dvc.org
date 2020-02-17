@@ -136,7 +136,7 @@ import dvc.api
 
 with open(
         'activity.log',
-        repo='https://example.com/dvc/repo',
+        repo='location/of/dvc/project',
         remote='my-s3-bucket'
         ) as fd:
     for line in fd:

@@ -31,6 +31,7 @@ https://man.dvc.org/foo
 https://marketplace.visualstudio.com/items?itemName=stkb.rewrap
 https://myendpoint.com
 https://object-storage.example.com
+https://remote.dvc.org/dataset-registry
 https://remote.dvc.org/foo/bar
 https://remote.dvc.org/get-started
 https://s3-us-east-2.amazonaws.com/dvc-public/code/foo/bar
