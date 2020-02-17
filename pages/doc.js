@@ -36,10 +36,14 @@ DocumentationPage.propTypes = {
 }
 
 DocumentationPage.getInitialProps = async ({ asPath, req, res }) => {
+  if (res) {
+    res.setHeader('cache-control', 'public, max-age=3600')
+  }
+
   const item = getItemByPath(asPath.split(/[?#]/)[0])
 
   if (!item) {
-    res.statusCode = 404
+    if (res) res.statusCode = 404
     return {
       errorCode: 404
     }
@@ -49,9 +53,9 @@ DocumentationPage.getInitialProps = async ({ asPath, req, res }) => {
     const fetchRes = await fetch(makeAbsoluteURL(req, item.source))
 
     if (fetchRes.status !== 200) {
-      res.statusCode = 404
+      if (res) res.statusCode = 404
       return {
-        errorCode: res.status
+        errorCode: fetchRes.status
       }
     }
 
