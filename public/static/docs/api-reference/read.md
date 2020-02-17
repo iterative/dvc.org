@@ -1,6 +1,6 @@
 # dvc.api.read()
 
-Returns the contents of a DVC-tracked file <abbr>artifact</abbr> as a
+Returns the contents of a tracked file as a
 [bytes object](https://docs.python.org/3/glossary.html#term-bytes-like-object)
 or as a
 [string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
@@ -15,7 +15,8 @@ read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 
 This function wraps [`dvc.api.open()`](/doc/api-reference/open) for a simple and
 direct way to return the complete file contents of files tracked in <abbr>DVC
-projects</abbr> – no _context manager_ (`with` keyword) required.
+projects</abbr> (by DVC or Git) – no _context manager_ (`with` keyword)
+required.
 
 > Internally, it uses the _file object_'s
 > [`read()`](https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects)
