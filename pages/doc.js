@@ -35,25 +35,27 @@ DocumentationPage.propTypes = {
   errorCode: PropTypes.number
 }
 
-DocumentationPage.getInitialProps = async ({ asPath, req }) => {
+DocumentationPage.getInitialProps = async ({ asPath, req, res }) => {
   const item = getItemByPath(asPath.split(/[?#]/)[0])
 
   if (!item) {
+    res.statusCode = 404
     return {
       errorCode: 404
     }
   }
 
   try {
-    const res = await fetch(makeAbsoluteURL(req, item.source))
+    const fetchRes = await fetch(makeAbsoluteURL(req, item.source))
 
-    if (res.status !== 200) {
+    if (fetchRes.status !== 200) {
+      res.statusCode = 404
       return {
         errorCode: res.status
       }
     }
 
-    const markdown = await res.text()
+    const markdown = await fetchRes.text()
 
     return {
       item,

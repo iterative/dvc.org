@@ -4,7 +4,7 @@
   "description": "dvc.org – website source code",
   "main": "index.js",
   "scripts": {
-    "dev": "node server.js",
+    "dev": "next dev",
     "debug": "node --inspect-brk server.js",
     "build": "next build",
     "test": "jest",

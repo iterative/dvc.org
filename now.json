@@ -1,4 +1,14 @@
 {
   "name": "dvc-org",
-  "trailingSlash": false
+  "routes": [
+    {
+      "src": ".*",
+      "headers": {
+        "cache-control": "max-age=3600"
+      },
+      "continue": true
+    },
+    { "handle": "filesystem" },
+    { "src": "/doc/(.+)", "dest": "/doc" }
+  ]
 }
