@@ -11,13 +11,9 @@
 
 import fetch from 'isomorphic-fetch'
 import Cors from 'micro-cors'
-import NodeCache from 'node-cache'
+import cache from './utils/cache'
 
 import { BLOG_URL, FORUM_URL } from '../../src/consts'
-
-const cache = new NodeCache({ stdTTL: 900 })
-
-const dev = process.env.NODE_ENV === 'development'
 
 const cors = Cors({
   allowedMethods: ['GET', 'HEAD'],
@@ -25,6 +21,8 @@ const cors = Cors({
 })
 
 const getCommentCount = async (req, res) => {
+  cache(res)
+
   const {
     query: { url }
   } = req
@@ -33,16 +31,6 @@ const getCommentCount = async (req, res) => {
     res.status(400)
 
     return
-  }
-
-  if (cache.get(url) !== undefined) {
-    if (dev) console.log(`Using cache for ${url}`)
-
-    res.status(200).json({ count: cache.get(url) })
-
-    return
-  } else {
-    if (dev) console.log(`Not using cache for ${url}`)
   }
 
   try {
@@ -64,8 +52,6 @@ const getCommentCount = async (req, res) => {
 
     // post_count return all posts including topic itself
     const count = data.posts_count - 1
-
-    cache.set(url, count)
 
     res.status(200).json({ count })
   } catch {

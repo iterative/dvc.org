@@ -1,24 +1,12 @@
 /* eslint-env node */
 
 import fetch from 'isomorphic-fetch'
-import NodeCache from 'node-cache'
+import cache from './utils/cache'
 
 import { FORUM_URL } from '../../src/consts'
 
-const cache = new NodeCache({ stdTTL: 900 })
-
-const dev = process.env.NODE_ENV === 'development'
-
 export default async (_, res) => {
-  if (cache.get('topics')) {
-    if (dev) console.log('Using cache for "topics"')
-
-    res.status(200).json(cache.get('topics'))
-
-    return
-  } else {
-    if (dev) console.log('Not using cache for "topics"')
-  }
+  cache(res)
 
   try {
     const response = await fetch(`${FORUM_URL}/latest.json?order=created`)
@@ -41,8 +29,6 @@ export default async (_, res) => {
       date: item.last_posted_at,
       url: `${FORUM_URL}/t/${item.slug}/${item.id}`
     }))
-
-    cache.set('topics', { topics })
 
     res.status(200).json({ topics })
   } catch {

@@ -1,6 +1,8 @@
 import fetch from 'isomorphic-fetch'
+import cache from './utils/cache'
 
 export default async (_, res) => {
+  cache(res, 300)
   try {
     const response = await fetch(`https://blog.dvc.org/api/posts.json`)
 

@@ -1,24 +1,14 @@
 /* eslint-env node */
 
 import { graphql } from '@octokit/graphql'
-import NodeCache from 'node-cache'
-
-const cache = new NodeCache({ stdTTL: 900 })
-
-const dev = process.env.NODE_ENV === 'development'
+import cache from './utils/cache'
 
 export default async (_, res) => {
+  cache(res)
+
   if (!process.env.GITHUB_TOKEN) {
     res.status(200).json({ issues: [] })
   } else {
-    if (cache.get('issues')) {
-      if (dev) console.log('Using cache for "issues"')
-
-      res.status(200).json({ issues: cache.get('issues') })
-    } else {
-      console.log('Not using cache for "issues"')
-    }
-
     try {
       const { repository } = await graphql(
         `
@@ -56,8 +46,6 @@ export default async (_, res) => {
         comments: node.comments.totalCount,
         date: node.createdAt
       }))
-
-      cache.set('issues', issues)
 
       res.status(200).json({ issues })
     } catch (e) {
