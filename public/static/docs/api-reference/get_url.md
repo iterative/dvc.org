@@ -1,6 +1,6 @@
 # dvc.api.get_url()
 
-Return the URL
+Returns the URL
 ([string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)
 type)) to the storage location of a <abbr>data artifact</abbr> tracked by DVC.
 
