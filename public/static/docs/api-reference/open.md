@@ -17,7 +17,7 @@ All **parameter** types are
 [string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
 
 The **return** type is a
-[file object](https://docs.python.org/3/glossary.html#term-file-object)
+[file object](https://docs.python.org/3/glossary.html#term-file-object).
 
 No exceptions are thrown by this function directly.
 
