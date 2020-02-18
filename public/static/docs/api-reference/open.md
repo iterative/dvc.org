@@ -43,19 +43,19 @@ regularly into a temporary local path before the file object is made available.
 - **`path`** - specifies the location of the target data within the source
   project in `repo`, relative to the project's root.
 
-- `repo` - specifies the location of the source DVC project. Both HTTP and SSH
-  protocols are supported for online Git repository URLs (e.g.
-  `[user@]server:project.git`). `repo` can also be a local file system path to
-  an "offline" project. If not supplied, defaults to the current DVC project.
+- `repo` - specifies the location of the source DVC project. If not supplied,
+  defaults to the current DVC project. It can be a URL or a file system path.
+  Both HTTP and SSH protocols are supported for online Git repos (e.g.
+  `[user@]server:project.git`).
 
   A `dvc.api.UrlNotDvcRepoError` is thrown if `repo` is not a valid DVC project.
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
-  a branch or tag name, or a commit hash). It only has an effect when `repo` is
-  a Git repository. If not supplied, it uses the default Git revision, `HEAD`.
+  a branch or tag name, or a commit hash). If not supplied, it uses the default
+  Git revision, `HEAD`. If `repo` is a Git repo, this option is ignored.
 
 - `remote` - name of the [DVC remote](/doc/command-reference/remote) to look for
-  the target data. If not supplied, the default remote or `repo` is used (or the
+  the target data. If not supplied, the default remote of `repo` is used (or the
   cache directory for local projects).
 
   A `dvc.exceptions.NoRemoteError` is thrown if no `remote` is specified and the
