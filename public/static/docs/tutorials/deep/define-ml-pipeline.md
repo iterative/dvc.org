@@ -196,8 +196,8 @@ command and does some additional work if the command was successful:
 
 1. DVC transforms all the outputs (`-o` option) into tracked data files (similar
    to using `dvc add` for each of them). As a result, all the actual data
-   content goes to the <abbr>cache</abbr> directory `.dvc/cache`, and each of
-   the file names will be added to `.gitignore`.
+   contents go to the <abbr>cache</abbr> directory `.dvc/cache`, and each of the
+   file names will be added to `.gitignore`.
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
    file in the <abbr>project</abbr> with information about this pipeline stage.
@@ -370,7 +370,7 @@ into a [metric](/doc/command-reference/metrics) file in accordance with the `-M`
 option.
 
 The result of the last three `dvc run` commands execution is three stage files
-and a modified .gitignore file. All the changes should be committed to Git:
+and a modified .gitignore file. All the changes should be committed with Git:
 
 ```dvc
 $ git status -s

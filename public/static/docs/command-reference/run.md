@@ -97,8 +97,8 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 
 - `-O`, `--outs-no-cache` - the same as `-o` except that outputs are not tracked
   by DVC. It means that they are not cached, and it's up to a user to save and
-  version control them. This is useful if the outputs are small enough to be put
-  into Git control, or if these files are not of future interest.
+  version control them. This is useful if the outputs are small enough to be
+  tracked by Git directly, or if these files are not of future interest.
 
 - `-m`, `--metrics` - specify a metric type of output. This option behaves like
   `-o` but also adds `metric: true` in the output record of the resulting stage
@@ -109,7 +109,7 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 - `-M`, `--metrics-no-cache` - the same as `-m` except that files are not
   tracked by DVC. It means that they are not cached, and it's up to a user to
   save and version control them. This is typically desirable with metric files,
-  because they are small enough to be put into Git control. See also the
+  because they are small enough to be tracked by Git directly. See also the
   difference between `-o` and `-O`.
 
 - `-f`, `--file` - specify stage file name. By default the DVC-file name

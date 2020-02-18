@@ -116,10 +116,10 @@ Luigi, etc.
 - DVC is not fundamentally bound to Git, and users have the option of changing
   the repository format.
 
-- DVC does not add any hooks to Git by default. To checkout data files, the
-  `dvc checkout` command has to be run after each `git checkout` and `git clone`
-  command. It gives more granularity on managing data and code separately. Hooks
-  could be configured to make workflows simpler.
+- DVC does not add any hooks to the Git repo by default. To checkout data files,
+  the `dvc checkout` command has to be run after each `git checkout` and
+  `git clone` command. It gives more granularity on managing data and code
+  separately. Hooks could be configured to make workflows simpler.
 
 - DVC attempts to use reflinks\* and has other
   [file linking options](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).

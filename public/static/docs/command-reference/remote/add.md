@@ -246,7 +246,7 @@ $ dvc remote add myremote oss://my-bucket/path
 
 To set key id, key secret and endpoint (or any other OSS parameter), use
 `dvc remote modify`. Example usage is show below. Make sure to use the `--local`
-option to avoid committing your secrets into Git:
+option to avoid committing your secrets with Git:
 
 ```dvc
 $ dvc remote modify myremote --local oss_key_id my-key-id
