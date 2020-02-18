@@ -1,7 +1,7 @@
 # dvc.api.get_url()
 
-Returns the URL to the storage location of a <abbr>data artifact</abbr> tracked
-by DVC.
+Returns the URL to the storage location of a data file or directory tracked by
+DVC.
 
 ## Definition
 
@@ -21,12 +21,15 @@ Raises `UrlNotDvcRepoError` if `repo` is not a <abbr>DVC repository</abbr>.
 ## Description
 
 Returns the full URL to the physical location (in a
-[DVC remote](/doc/command-reference/remote)) where a target data artifact
-specified by its `path` in a `repo` (<abbr>DVC project</abbr>) is stored. The
-URL is formed by evaluating the corresponding
-[DVC-file](/doc/user-guide/dvc-file-format) (see [Examples](#examples) below) as
-well as the project's
+[DVC remote](/doc/command-reference/remote)) where a target data file or
+directory (<abbr>artifact</abbr>), specified by its `path` in a `repo`
+(<abbr>DVC project</abbr>), is stored. The URL is formed by reading the
+corresponding [DVC-file](/doc/user-guide/dvc-file-format) (see
+[Examples](#examples) below) as well as the project's
 [default remote](https://dvc.org/doc/command-reference/remote/default).
+
+The URL schema returned depends on the type of `remote`. Here's a full list of
+[supported remote types](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
 
 ⚠️ This function does not check for the actual existence of the file or
 directory in the remote storage.
@@ -42,9 +45,6 @@ stores a special JSON file with `.dir` extension that contains the mapping of
 files in the directory (as a JSON array), along with their hash values. Refer to
 [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 and `dvc add` to learn more about how DVC handles data directories.
-
-> For possible location protocols, refer to the
-> [supported remote types](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
 
 ## Parameters
 
@@ -85,8 +85,8 @@ The value of `resource_url` in this case would result in:
 
 `https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`
 
-This URL represents the physical location of the data, and is built by
-evaluating the corresponding DVC-file
+This URL represents the physical location of the data, and is built by reading
+the corresponding DVC-file
 ([`get-started/data.xml.dvc`](https://github.com/iterative/dataset-registry/blob/master/get-started/data.xml.dvc))
 where the `md5` file hash is stored,
 

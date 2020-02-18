@@ -25,9 +25,8 @@ No exceptions are thrown by this function directly.
 ## Description
 
 This function wraps [`dvc.api.open()`](/doc/api-reference/open) for a simple and
-direct way to return the complete file contents of files tracked in <abbr>DVC
-projects</abbr> (by DVC or Git) – no _context manager_ (`with` keyword)
-required.
+direct way to return the complete contents of files tracked in <abbr>DVC
+projects</abbr> (by DVC or Git) – no _context manager_ (`with` keyword) needed.
 
 > Internally, it uses the _file object_'s
 > [`read()`](https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects)
