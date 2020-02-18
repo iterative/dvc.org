@@ -126,7 +126,7 @@ $ dvc add data
 ```
 
 This command should be used instead of `git add` on files or directories that
-are too large to be put into Git: usually input datasets, models, some
+are too large to be tracked with Git: usually input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
 the <abbr>cache</abbr> (while keeping a
 [file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)

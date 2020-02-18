@@ -1,7 +1,7 @@
 # Add Files or Directories
 
 DVC allows storing and versioning data files, ML models, directories,
-intermediate results with Git, without checking the file contents into Git.
+intermediate results with Git, without tracking the file contents with Git.
 Let's get a dataset example to play with:
 
 ```dvc
@@ -26,7 +26,7 @@ $ dvc add data/data.xml
 
 DVC stores information about the added data in a special file called a
 **DVC-file**. DVC-files are small text files with a human-readable
-[format](/doc/user-guide/dvc-file-format) and they can be committed to Git:
+[format](/doc/user-guide/dvc-file-format) and they can be committed with Git:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc

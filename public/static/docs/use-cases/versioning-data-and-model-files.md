@@ -44,7 +44,8 @@ $ dvc init
 
 DVC creates a `.dvc/` directory that stores
 [internals](/doc/user-guide/dvc-files-and-directories), including the
-`.dvc/cache` directory (local data storage). These can safely be added to Git:
+`.dvc/cache` directory (local data storage). These can safely be tracked with
+Git:
 
 ```dvc
 $ git status

@@ -57,8 +57,8 @@ $ git status
 $ git commit -m "Init DVC"
 ```
 
-Note that the <abbr>cache</abbr> directory (among others) is not under Git
-control. It contains data and model files, and will be managed by DVC.
+Note that the <abbr>cache</abbr> directory (among others) is not tracked with
+Git. It contains data and model files, and will be managed by DVC.
 
 ```dvc
 $ cat .dvc/.gitignore

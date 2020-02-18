@@ -329,7 +329,7 @@ $ dvc metrics show
 > to run this pipeline, the exact metric number may vary.
 
 It's time to save our [pipeline](/doc/command-reference/pipeline). You can
-confirm that we do not save model files or raw datasets into Git using the
+confirm that we do not tack files or raw datasets with Git, by using the
 `git status` command. We are just saving a snapshot of the DVC-files that
 describe data, transformations (stages), and relationships between them.
 
