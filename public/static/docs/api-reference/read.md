@@ -1,15 +1,26 @@
 # dvc.api.read()
 
-Returns the contents of a tracked file as a
-[bytes object](https://docs.python.org/3/glossary.html#term-bytes-like-object)
-or as a
-[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
+Returns the contents of a tracked file.
 
-## Signature
+## Definition
+
+### Signature
 
 ```py
 read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 ```
+
+### Types
+
+All **parameter** types are
+[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
+
+The **return** type can be a
+[bytes object](https://docs.python.org/3/glossary.html#term-bytes-like-object)
+or a
+[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
+
+No exceptions are thrown by this function directly.
 
 ## Description
 

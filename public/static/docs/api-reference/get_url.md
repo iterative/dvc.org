@@ -1,14 +1,22 @@
 # dvc.api.get_url()
 
-Returns the URL
-([string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)
-type)) to the storage location of a <abbr>data artifact</abbr> tracked by DVC.
+Returns the URL to the storage location of a <abbr>data artifact</abbr> tracked
+by DVC.
 
-## Signature
+## Definition
+
+### Signature
 
 ```py
 get_url(path, repo=None, rev=None, remote=None)
 ```
+
+### Types
+
+All **parameter** types as well as the **return** type are
+[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
+
+Raises `UrlNotDvcRepoError` if `repo` is not a <abbr>DVC repository</abbr>.
 
 ## Description
 

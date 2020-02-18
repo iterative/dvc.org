@@ -1,14 +1,25 @@
 # dvc.api.open()
 
 [Context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
-to open a tracked file as a
-[file object](https://docs.python.org/3/glossary.html#term-file-object).
+to open a tracked file.
 
-## Signature
+## Definition
+
+### Signature
 
 ```py
 open(path, repo=None, rev=None, remote=None, mode="r", encoding=None)
 ```
+
+### Types
+
+All **parameter** types are
+[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
+
+The **return** type is a
+[file object](https://docs.python.org/3/glossary.html#term-file-object)
+
+No exceptions are thrown by this function directly.
 
 ## Description
 
