@@ -403,6 +403,51 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 
 </details>
 
+<details>
+
+### Click for HTTP
+
+- `basic_auth` - whether or not to use HTTP basic access authentication when
+  accessing a remote.
+
+  ```dvc
+  $ dvc remote modify myremote basic_auth true
+  ```
+
+- `digest_auth` - whether or not to use HTTP digest access authentication when
+  accessing a remote.
+
+  ```dvc
+  $ dvc remote modify myremote digest_auth true
+  ```
+
+  Note that `digest_auth` takes precedence over `basic_auth` if both options
+  are enabled.
+
+- `user` - username to use to access a remote. The order in which dvc searches
+  for username:
+
+  1. `user` specified in one of the dvc configs;
+  2. `user` specified in the url(e.g. `http://user@example.com/path`);
+
+  ```dvc
+  $ dvc remote modify myremote user myuser
+  ```
+
+- `password` - a password to use to use when accessing a remote.
+
+  ```dvc
+  $ dvc remote modify myremote password mypassword
+  ```
+
+- `ask_password` - ask for a password to use when accessing a remote.
+
+  ```dvc
+  $ dvc remote modify myremote ask_password true
+  ```
+
+</details>
+
 ## Example: Customize an S3 remote
 
 Let's first set up a _default_ S3 remote.

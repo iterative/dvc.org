@@ -326,11 +326,7 @@ $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 $ dvc remote add myremote https://example.com/path/to/dir
 ```
 
-⚠️ HTTP remotes only support downloads operations:
-
-- `pull` and `fetch`
-- `import-url` and `get-url`
-- As an [external dependency](/doc/user-guide/external-dependencies)
+> See also `dvc remote modify` for a full list of HTTP parameters.
 
 </details>
 
