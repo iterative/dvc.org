@@ -40,7 +40,7 @@ regularly into a temporary local path before the file object is made available.
 
 ## Parameters
 
-- **`path`** - specifies the location of the target artifact within the source
+- **`path`** - specifies the location of the target data within the source
   project in `repo`, relative to the project's root.
 
 - `repo` - specifies the location of the source DVC project. Both HTTP and SSH
@@ -50,15 +50,13 @@ regularly into a temporary local path before the file object is made available.
 
   A `dvc.api.UrlNotDvcRepoError` is thrown if `repo` is not a valid DVC project.
 
-- `rev` -
-  [Git-revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash). It only has an effect when
-  `repo` is a Git repository. If not supplied, it uses the default Git revision,
-  `HEAD`.
+- `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
+  a branch or tag name, or a commit hash). It only has an effect when `repo` is
+  a Git repository. If not supplied, it uses the default Git revision, `HEAD`.
 
-- `remote` - name of the [DVC remote](/doc/command-reference/remote) to fetch
-  the target artifact from. If not supplied, the default remote or `repo` is
-  used (or the cache directory for local projects).
+- `remote` - name of the [DVC remote](/doc/command-reference/remote) to look for
+  the target data. If not supplied, the default remote or `repo` is used (or the
+  cache directory for local projects).
 
   A `dvc.exceptions.NoRemoteError` is thrown if no `remote` is specified and the
   project has no default remote.
@@ -86,7 +84,7 @@ with dvc.api.open(
 ```
 
 > See also `dvc.api.read` for a more direct way to read the complete contents of
-> a file <abbr>artifact</abbr>.
+> a tracked file.
 
 ## Example: Use a file from the local cache
 
