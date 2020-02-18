@@ -56,18 +56,17 @@ and `dvc add` to learn more about how DVC handles data directories.
   Both HTTP and SSH protocols are supported for online Git repos (e.g.
   `[user@]server:project.git`).
 
-  A `dvc.api.UrlNotDvcRepoError` is thrown if `repo` is not a valid DVC project.
+  A `dvc.api.UrlNotDvcRepoError` is raised if `repo` is not a valid DVC project.
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
   a branch or tag name, or a commit hash). If not supplied, it uses the default
   Git revision, `HEAD`. If `repo` is a Git repo, this option is ignored.
 
 - `remote` - name of the [DVC remote](/doc/command-reference/remote) to look for
-  the target data. If not supplied, the default remote of `repo` is used (or the
-  cache directory for local projects).
+  the target data. If not supplied, the cache directory is tried first for local
+  projects; The default remote of `repo` is tried otherwise.
 
-  A `dvc.exceptions.NoRemoteError` is thrown if no `remote` is specified and the
-  project has no default remote.
+  A `dvc.exceptions.NoRemoteError` is raised if no `remote` is found.
 
 ## Examples
 
