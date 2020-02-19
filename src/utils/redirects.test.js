@@ -11,13 +11,13 @@ describe('processRedirectString', () => {
     expect(code).toEqual(308)
   })
 
-  it('defaults to 301 status code', () => {
+  it('defaults to 301 response code', () => {
     const { code } = processRedirectString('^/x /y')
 
     expect(code).toEqual(301)
   })
 
-  it('detects whether matching a full URL or just the path', () => {
+  it('detects whether redirecting a full URL or just a path', () => {
     const { matchPathname: matchPathnameFalse } = processRedirectString(
       '^https://example.com/foo /x'
     )
@@ -28,8 +28,8 @@ describe('processRedirectString', () => {
   })
 })
 
-describe('getRedirect', () => {
-  it('redirects to https:// while removing www', () => {
+describe('getRedirects', () => {
+  it('enforces HTTPS and removes www simultaneously', () => {
     const mockReq = {
       headers: {
         'x-forwarded-proto': 'http'
@@ -64,7 +64,7 @@ describe('getRedirect', () => {
     })
   }
 
-  describe('Subdomain-based redirects', () => {
+  describe('fromSubdomains', () => {
     // Remove www (when already HTTPS)
     itRedirects('https://www.dvc.org/foo', 'https://dvc.org/foo')
 
@@ -93,7 +93,7 @@ describe('getRedirect', () => {
     )
   })
 
-  describe('S3 redirects', () => {
+  describe('toS3', () => {
     itRedirects(
       'https://code.dvc.org/foo/bar',
       'https://s3-us-east-2.amazonaws.com/dvc-public/code/foo/bar',
@@ -125,13 +125,13 @@ describe('getRedirect', () => {
     )
   })
 
-  describe('Discord', () => {
+  describe('toDiscord', () => {
     itRedirects('/help', 'https://discordapp.com/invite/dvwXA2N', 303)
 
     itRedirects('/chat', 'https://discordapp.com/invite/dvwXA2N', 303)
   })
 
-  describe('Path redirects', () => {
+  describe('fromPaths', () => {
     itRedirects('/docs/x', '/doc/x')
 
     itRedirects('/documentation/x', '/doc/x')

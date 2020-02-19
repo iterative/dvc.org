@@ -33,9 +33,7 @@ app.prepare().then(() => {
       dev
     })
     if (redirectLocation) {
-      /*
-       * HTTP redirects
-       */
+      // HTTP redirects
 
       if (queryStr) {
         redirectLocation += '?' + queryStr
@@ -46,9 +44,7 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (/^\/doc(\/.*)?$/.test(pathname)) {
-      /*
-       * Docs Engine handler
-       */
+      // Docs Engine handler
 
       // Force 404 response code for any inexistent /doc item.
       if (!getItemByPath(pathname)) {
@@ -58,9 +54,7 @@ app.prepare().then(() => {
       // Custom route for all docs
       app.render(req, res, '/doc', parseQuery(queryStr))
     } else {
-      /*
-       * Regular Next.js handler
-       */
+      // Regular Next.js handler
 
       handle(req, res, parsedUrl)
     }
