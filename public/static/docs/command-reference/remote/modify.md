@@ -407,22 +407,28 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 
 ### Click for HTTP
 
-- `basic_auth` - whether or not to use HTTP basic access authentication when
-  accessing a remote.
+- `auth` - authentication method to use when accessing a remote. Accepted values
+  are:
+
+  - `basic` - use HTTP basic access authentication (`user` and `password`
+    options should also be provided).
+  - `digest` - use HTTP digest access authentication (`user` and `password`
+    options should also be provided).
+  - `custom` - use a custom HTTP header field and value when accessing a remote
+    (`custom_header` and `password` options should also be provided). When
+    `auth` is set to `custom`, an additional HTTP header field in the form of
+    `custom_header: password` will be set for all HTTP requests to a remote.
 
   ```dvc
-  $ dvc remote modify myremote basic_auth true
+  $ dvc remote modify myremote auth basic
   ```
 
-- `digest_auth` - whether or not to use HTTP digest access authentication when
-  accessing a remote.
+- `custom_header` - header field name to use to access a remote (only applicable
+  when `auth` is set to `custom`).
 
   ```dvc
-  $ dvc remote modify myremote digest_auth true
+  $ dvc remote modify myremote custom_header My-Header
   ```
-
-  > Note that `digest_auth` takes precedence over `basic_auth` if both options
-  > are enabled.
 
 - `user` - username to use to access a remote. The order in which DVC searches
   for username:
@@ -434,18 +440,20 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote user myuser
   ```
 
-- `password` - a password to use to use when accessing a remote.
+- `password` - a password or custom header value to use to use when accessing a
+  remote.
 
   ```dvc
   $ dvc remote modify myremote --local password mypassword
   ```
 
   > Note that the specified password will be inserted into the `.dvc/config`
-  > file. Therefore, it is recommened to add the password string with the
+  > file. Therefore, it is recommended to add the password string with the
   > `--local` option, enforcing it to be written to a Git-ignored config file
   > (or to use the `ask_password` option instead).
 
-- `ask_password` - ask for a password to use when accessing a remote.
+- `ask_password` - ask for a password or custom header value to use when
+  accessing a remote.
 
   ```dvc
   $ dvc remote modify myremote ask_password true
