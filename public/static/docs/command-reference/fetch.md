@@ -1,6 +1,6 @@
 # fetch
 
-Get files that are under DVC control from
+Get files or directories tracked by DVC from
 [remote storage](/doc/command-reference/remote) into the <abbr>cache</abbr>.
 
 ## Synopsis
@@ -11,8 +11,8 @@ usage: dvc fetch [-h] [-q | -v] [-j JOBS] [--show-checksums]
                  [targets [targets ...]]
 
 positional arguments:
-  targets   Limit command scope to these DVC-files. Using -R,
-            directories to search DVC-files in can also be given.
+  targets        Limit command scope to these DVC-files. Using -R,
+                 directories to search DVC-files in can also be given.
 ```
 
 ## Description
@@ -43,8 +43,8 @@ project's cache                  ++ | dvc pull |
 ```
 
 Fetching could be useful when first checking out a <abbr>DVC project</abbr>,
-since files under DVC control should already exist in remote storage, but won't
-be in the project's cache. (Refer to `dvc remote` for more information on DVC
+since files tracked by DVC should already exist in remote storage, but won't be
+in the project's cache. (Refer to `dvc remote` for more information on DVC
 remotes.) These necessary data or model files are listed as dependencies or
 outputs in a DVC-file (target [stage](/doc/command-reference/run)) so they are
 required to [reproduce](/doc/get-started/reproduce) the corresponding
@@ -64,11 +64,10 @@ for more information on how to configure different remote storage providers.
 `dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
 perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
-the checksums of the files in question, when these are
-[added](/doc/get-started/add-files) to DVC. File checksums are then stored in
-the corresponding DVC-files (usually saved in a Git branch). Only the checksums
-specified in DVC-files currently in the project are considered by `dvc fetch`
-(unless the `-a` or `-T` options are used).
+file hashes when these are [added](/doc/get-started/add-files) with DVC. File
+hashes are stored in the corresponding DVC-files (typically versioned with Git).
+Only the hashes specified in DVC-files currently in the workspace are considered
+by `dvc fetch` (unless the `-a` or `-T` options are used).
 
 ## Options
 
@@ -94,15 +93,16 @@ specified in DVC-files currently in the project are considered by `dvc fetch`
   fetched. The default value is `4 * cpu_count()`. For SSH remotes default is
   just 4.
 
-- `-a`, `--all-branches` - fetch cache for all Git branches, not just the active
-  one. This means DVC may download files needed to reproduce different versions
-  of a DVC-file ([experiments](/doc/get-started/experiments)), not just the
-  current one.
+- `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
+  current workspace. This means DVC may download files needed to reproduce
+  different versions of a DVC-file
+  ([experiments](/doc/get-started/experiments)), not just the ones currently in
+  the workspace.
 
 - `-T`, `--all-tags` - fetch cache for all Git tags. Similar to `-a` above. Note
   that both options can be combined, for example using the `-aT` flag.
 
-- `--show-checksums` - show checksums instead of file names when printing the
+- `--show-checksums` - show file hashes instead of file names when printing the
   download progress.
 
 * `-h`, `--help` - prints the usage/help message, and exit.
@@ -115,9 +115,9 @@ specified in DVC-files currently in the project are considered by `dvc fetch`
 ## Examples
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
-pipeline stages, as well as a few Git tags, such as our
-[get started example repo](https://github.com/iterative/example-get-started).
-Then we can see what happens with `dvc fetch` as we switch from tag to tag.
+pipeline stages, such as the <abbr>DVC project</abbr> created in our
+[Get Started](/doc/get-started) section. Then we can see what happens with
+`dvc fetch` as we switch from tag to tag.
 
 <details>
 
@@ -154,15 +154,15 @@ solving the problem:
 $ git tag
 
 baseline-experiment     <- first simple version of the model
-bigrams-experiment       <- use bigrams to improve the model
+bigrams-experiment      <- use bigrams to improve the model
 ```
 
 ## Example: Default behavior
 
 This project comes with a predefined HTTP
 [remote storage](/doc/command-reference/remote). We can now just run `dvc fetch`
-to download the most recent `model.pkl`, `data.xml`, and other files that are
-under DVC control into our local <abbr>cache</abbr>.
+to download the most recent `model.pkl`, `data.xml`, and other DVC-tracked files
+into our local <abbr>cache</abbr>.
 
 ```dvc
 $ dvc status --cloud
@@ -193,8 +193,8 @@ Note that the `.dvc/cache` directory was created and populated.
 > for more info.
 
 As seen above, used without arguments, `dvc fetch` downloads all assets needed
-by all DVC-files in the current branch, including for directories. The checksums
-`3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
+by all DVC-files in the current branch, including for directories. The hash
+values `3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
 correspond to the `model.pkl` file and `data/features/` directory, respectively.
 
 Let's now link files from the cache to the workspace with:
@@ -231,8 +231,8 @@ $ tree .dvc/cache
 > Note that `prepare.dvc` is the first stage in our example's pipeline.
 
 Cache entries for the necessary directories, as well as the actual
-`data/prepared/test.tsv` and `data/prepared/train.tsv` files were download,
-checksums shown above.
+`data/prepared/test.tsv` and `data/prepared/train.tsv` files were downloaded.
+Their hash values are shown above.
 
 ## Example: With dependencies
 

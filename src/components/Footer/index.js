@@ -63,9 +63,9 @@ export default function Footer(props) {
               <LocalLink href="/doc/get-started" as={Link}>
                 Get started
               </LocalLink>
-              <SocialLink src="/static/img/chat.png" href="/chat">
-                Chat
-              </SocialLink>
+              <LocalLink href="/community" as={Link}>
+                Community
+              </LocalLink>
               <LocalLink href="/doc" as={Link}>
                 Documentation
               </LocalLink>

@@ -74,13 +74,13 @@ Luigi, etc.
 
 - File tracking:
 
-  - DVC tracks files based on checksum (MD5) instead of file timestamps. This
-    helps avoid running into heavy processes like model retraining when you
-    checkout a previous, trained version of a model's code (Make would retrain
-    the model).
+  - DVC tracks files based on their hashes (MD5) instead of file timestamps.
+    This helps avoid running into heavy processes like model retraining when you
+    checkout a previously trained version of a model (Make would retrain the
+    model).
 
   - DVC uses file timestamps and inodes for optimization. This allows DVC to
-    avoid recomputing all dependency files' checksums, which would be highly
+    avoid recomputing all dependency file hashes, which would be highly
     problematic when working with large files (10 GB+).
 
 ### Git-annex
@@ -92,7 +92,7 @@ Luigi, etc.
 - DVC can use reflinks\* or hardlinks (depending on the system) instead of
   symlinks to improve performance and the user experience.
 
-- DVC optimizes checksum calculation.
+- DVC optimizes file hash calculation.
 
 - Git-annex is a datafile-centric system whereas DVC is focused on providing a
   workflow for machine learning and reproducible experiments. When a DVC or
@@ -116,10 +116,10 @@ Luigi, etc.
 - DVC is not fundamentally bound to Git, and users have the option of changing
   the repository format.
 
-- DVC does not add any hooks to Git by default. To checkout data files, the
-  `dvc checkout` command has to be run after each `git checkout` and `git clone`
-  command. It gives more granularity on managing data and code separately. Hooks
-  could be configured to make workflows simpler.
+- DVC does not add any hooks to the Git repo by default. To checkout data files,
+  the `dvc checkout` command has to be run after each `git checkout` and
+  `git clone` command. It gives more granularity on managing data and code
+  separately. Hooks could be configured to make workflows simpler.
 
 - DVC attempts to use reflinks\* and has other
   [file linking options](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache).

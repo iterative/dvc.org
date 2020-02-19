@@ -28,10 +28,10 @@ browser to download `data.xml`. (Right-click
 
 </details>
 
-At this time, `data/Posts.xml.zip` is an untracked regular file. We can place it
-under DVC control using `dvc add` (see below). After executing the command you
-will see a new file `data/Posts.xml.zip.dvc` and a change in `data/.gitignore`.
-Both of these files have to be committed to the repository.
+At this time, `data/Posts.xml.zip` is a regular (untracked) file. We can track
+it with DVC using `dvc add` (see below). After executing the command you will
+see a new file `data/Posts.xml.zip.dvc` and a change in `data/.gitignore`. Both
+of these files have to be committed to the repository.
 
 ```dvc
 $ dvc add data/Posts.xml.zip
@@ -59,17 +59,17 @@ Refer to
 `dvc add`, and `dvc run` for more information on storing and versioning data
 files with DVC.
 
-Note that to modify or replace a data file that is under DVC control you may
-need to run `dvc unprotect` or `dvc remove` first (see the
-[Update Tracked File](/doc/user-guide/updating-tracked-files) guide). Use
-`dvc move` to rename or move a data file that is under DVC control.
+Note that to modify or replace a data file tracked by DVC, you may need to run
+`dvc unprotect` or `dvc remove` first (see the
+[Update Tracked File](/doc/user-guide/updating-tracked-files) guide). To rename
+or move it, you can use `dvc move`.
 
 ## Data file internals
 
 If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
 `dvc add`, you will see that <abbr>outputs</abbr> are tracked in the `outs`
 field. In this file, only one output is specified. The output contains the data
-file path in the repository and its MD5 checksum. This checksum determines a
+file path in the repository and its MD5 hash. This hash value determines the
 location of the actual content file in the
 [cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory),
 `.dvc/cache`.
@@ -196,8 +196,8 @@ command and does some additional work if the command was successful:
 
 1. DVC transforms all the outputs (`-o` option) into tracked data files (similar
    to using `dvc add` for each of them). As a result, all the actual data
-   contents goes to the <abbr>cache</abbr> directory `.dvc/cache`, and each of
-   the file names will be added to `.gitignore`.
+   contents go to the <abbr>cache</abbr> directory `.dvc/cache`, and each of the
+   file names will be added to `.gitignore`.
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
    file in the <abbr>project</abbr> with information about this pipeline stage.
@@ -224,8 +224,8 @@ outs:
 Sections of the file above include:
 
 - `cmd`: The command to run
-- `deps`: Dependencies with MD5 checksums
-- `outs`: Outputs with MD5 checksums
+- `deps`: Dependencies with MD5 hashes
+- `outs`: Outputs with MD5 hashes
 
 And (as with the `dvc add` command) the `data/.gitignore` file was modified. Now
 it includes the unarchived command output file `Posts.xml`.
@@ -242,7 +242,7 @@ Posts.xml
 
 The output file `Posts.xml` was transformed by DVC into a data file in
 accordance with the `-o` option. You can find the corresponding cache file with
-the checksum, with a path starting in `c1/fa36d` as we can see below:
+the hash value, as a path starting in `c1/fa36d`:
 
 ```dvc
 $ ls .dvc/cache/
@@ -370,12 +370,13 @@ into a [metric](/doc/command-reference/metrics) file in accordance with the `-M`
 option.
 
 The result of the last three `dvc run` commands execution is three stage files
-and a modified .gitignore file. All the changes should be committed into Git:
+and a modified .gitignore file. All the changes should be committed with Git:
 
 ```dvc
 $ git status -s
  M data/.gitignore
 ?? Dvcfile
+?? data/eval.txt
 ?? matrix-train.p.dvc
 ?? model.p.dvc
 

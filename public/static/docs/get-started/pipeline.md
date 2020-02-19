@@ -36,8 +36,8 @@ $ dvc push
 ```
 
 This example is simplified just to show you a basic pipeline, see a more
-advanced [example](/doc/tutorials/pipelines) or complete
-[tutorial](/doc/tutorials/deep) to create a
+advanced [example](/doc/tutorials/pipelines) or
+[complete tutorial](/doc/tutorials/pipelines) to create an
 [NLP](https://en.wikipedia.org/wiki/Natural_language_processing) pipeline
 end-to-end.
 

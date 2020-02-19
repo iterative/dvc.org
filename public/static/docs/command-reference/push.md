@@ -1,6 +1,6 @@
 # push
 
-Uploads files and directories under DVC control to the
+Uploads files or directories tracked by DVC to
 [remote storage](/doc/command-reference/remote).
 
 ## Synopsis
@@ -35,8 +35,8 @@ save any changes in the code or DVC-files. Those should be saved by using
 Under the hood a few actions are taken:
 
 - The push command by default uses all
-  [DVC-files](/doc/user-guide/dvc-file-format in the <abbr>workspace</abbr>. The
-  command line options listed below will either limit or expand the set of
+  [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>.
+  The command line options listed below will either limit or expand the set of
   DVC-files to consult.
 
 - For each <abbr>output</abbr> referenced from each selected DVC-file, DVC finds
@@ -55,8 +55,8 @@ configure a remote.
 
 With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
 only the files (or directories) that are new in the local repository to remote
-storage. It will not upload files associated with earlier versions or branches
-of the <abbr>project</abbr> directory, nor will it upload files that have not
+storage. It will not upload files associated with earlier commits in the
+<abbr>repository</abbr> (if using Git), nor will it upload files that have not
 changed.
 
 The `dvc status -c` command can list files tracked by DVC that are new in the
@@ -77,8 +77,8 @@ to push.
   (configured with the `core.config` config option) is used.
 
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
-  in all Git branches of the project repository (if using Git). It's useful if
-  branches are used to track experiments or project checkpoints.
+  in all Git branches instead of just those present in the current workspace.
+  It's useful if branches are used to track experiments or project checkpoints.
 
 - `-T`, `--all-tags` - the same as `-a`, `--all-branches`, but Git tags are used
   to save different experiments or project checkpoints. Note that both options
@@ -90,8 +90,8 @@ to push.
   searches backward from the target stages in the corresponding pipelines. This
   means DVC will not push files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - determines the metric files to show by searching each
-  target directory and its subdirectories for DVC-files to inspect. `targets` is
+- `-R`, `--recursive` - determines the files to push by searching each target
+  directory and its subdirectories for DVC-files to inspect. `targets` is
   expected to contain one or more directories for this option to have effect.
 
 - `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously

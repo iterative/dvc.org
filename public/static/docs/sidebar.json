@@ -162,7 +162,7 @@
         "slug": "analytics"
       },
       {
-        "label": "Privacy Policy",
+        "label": "Privacy Policy (Google APIs)",
         "slug": "privacy"
       }
     ]
@@ -257,6 +257,10 @@
           {
             "label": "metrics modify",
             "slug": "modify"
+          },
+          {
+            "label": "metrics diff",
+            "slug": "diff"
           },
           {
             "label": "metrics remove",

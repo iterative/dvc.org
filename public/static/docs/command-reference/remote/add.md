@@ -24,7 +24,7 @@ positional arguments:
 ## Description
 
 `name` and `url` are required. `url` specifies a location to store your data. It
-can point to a cloud storage service, an SSH server, network-attached storage,
+can represent a cloud storage service, an SSH server, network-attached storage,
 or even a directory in the local file system. (See all the supported remote
 storage types in the examples below.) If `url` is a relative path, it will be
 resolved against the current working directory, but saved **relative to the
@@ -187,7 +187,7 @@ $ dvc remote add myremote "azure://"
   The connection string can be found in the "Access Keys" pane of your Storage
   Account resource in the Azure portal.
 
-  > 💡Make sure the value is quoted to prevent shell from misprocessing the
+  > 💡 Make sure the value is quoted to prevent shell from misprocessing the
   > command.
 
 - `container name` - this is the top-level container in your Azure Storage
@@ -213,9 +213,10 @@ $ dvc remote modify myremote gdrive_client_secret <client secret>
 
 Note that GDrive remotes are not "trusted" by default. This means that the
 [`verify`](/doc/command-reference/remote/modify#available-settings-for-all-remotes)
-option is enabled on this type of storage, so DVC recalculates the checksums of
-files upon download (e.g. `dvc pull`), to make sure that these haven't been
-modified.
+option is enabled on this type of storage, so DVC recalculates the file hashes
+upon download (e.g. `dvc pull`), to make sure that these haven't been modified.
+
+> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 </details>
 
@@ -245,7 +246,7 @@ $ dvc remote add myremote oss://my-bucket/path
 
 To set key id, key secret and endpoint (or any other OSS parameter), use
 `dvc remote modify`. Example usage is show below. Make sure to use the `--local`
-option to avoid committing your secrets into Git:
+option to avoid committing your secrets with Git:
 
 ```dvc
 $ dvc remote modify myremote --local oss_key_id my-key-id

@@ -1,7 +1,7 @@
 # import
 
-Download a file or directory from any <abbr>DVC repository</abbr> or plain Git
-repository into the <abbr>workspace</abbr>. It also creates a
+Download a file or directory tracked by DVC or by Git into the
+<abbr>workspace</abbr>. It also creates a
 [DVC-file](/doc/user-guide/dvc-file-format) with information about the data
 source, which can later be used to [update](/doc/command-reference/update) the
 import.
@@ -15,8 +15,8 @@ import.
 usage: dvc import [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url       Location of DVC or Git repository to download from.
-  path      Path to a file or directory within the repository.
+  url              Location of DVC or Git repository to download from.
+  path             Path to a file or directory within the repository.
 ```
 
 ## Description
@@ -35,21 +35,22 @@ to an "offline" repo (if it's a DVC repo without a default remote, instead of
 downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 
 The `path` argument of this command is used to specify the location of the
-target to be downloaded within the source repository at `url`. It can point to
-any file or directory in there, including <abbr>outputs</abbr> tracked by DVC,
-as well as files tracked by Git. Note that for DVC repos, the target should be
-found in one of the [DVC-files](/doc/user-guide/dvc-file-format) of the project.
-The project should also have a default
-[DVC remote](/doc/command-reference/remote), containing the actual data.
+target to be downloaded within the source repository at `url`. `path` can
+specify any file or directory in the source repo, including <abbr>outputs</abbr>
+tracked by DVC, as well as files tracked by Git. Note that for DVC repos, the
+target should be found in one of the
+[DVC-files](/doc/user-guide/dvc-file-format) of the project. The project should
+also have a default [DVC remote](/doc/command-reference/remote), containing the
+actual data.
 
 > See `dvc import-url` to download and track data from other supported locations
 > such as S3, SSH, HTTP, etc.
 
 After running this command successfully, the imported data is placed in the
-current working directory with its original file name e.g. `data.txt`. An
-_import stage_ (DVC-file) is then created, extending the full file or directory
-name of the imported data e.g. `data.txt.dvc` – similar to having used `dvc run`
-to generate the same output.
+current working directory (unless `-o` is used) with its original file name e.g.
+`data.txt`. An _import stage_ (DVC-file) is also created in the same location,
+extending the name of the imported data e.g. `data.txt.dvc` – similar to having
+used `dvc run` to generate the output.
 
 DVC-files support references to data in an external DVC repository (hosted on a
 Git server). In such a DVC-file, the `deps` section specifies the `repo`-`url`
@@ -68,16 +69,15 @@ data artifact from the source repo.
 ## Options
 
 - `-o`, `--out` - specify a path (directory and/or file name) to the desired
-  location to place the imported data in. The default value (when this option
-  isn't used) is the current working directory (`.`) and original file name. If
-  an existing directory is specified, then the output will be placed inside of
-  it.
+  location to place the imported data and import stage (DVC-file) in. The
+  default value (when this option isn't used) is the current working directory
+  (`.`) and original file name. If an existing directory is specified, then the
+  output will be placed inside of it.
 
-- `--rev` - specific
-  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the repository to download
-  the file or directory from. The tip of the default branch is used by default
-  when this option is not specified.
+- `--rev` - commit hash, branch or tag name, etc. (any
+  [Git revision](https://git-scm.com/docs/revisions)) of the repository to
+  download the file or directory from. The latest commit in `master` (tip of the
+  default branch) is used by default when this option is not specified.
 
   > Note that this adds a `rev` field in the import stage that fixes it to this
   > revision. This can impact the behavior of `dvc update`. (See
@@ -128,11 +128,11 @@ outs:
 Several of the values above are pulled from the original stage file
 `model.pkl.dvc` in the external DVC repository. The `url` and `rev_lock`
 subfields under `repo` are used to save the origin and version of the
-dependency.
+dependency, respectively.
 
 ## Example: Fixed revisions & re-importing
 
-To import a specific revision of a <abbr>data artifact</abbr>, we may use the
+To import a specific version of a <abbr>data artifact</abbr>, we may use the
 `--rev` option:
 
 ```dvc
@@ -157,12 +157,12 @@ deps:
       rev_lock: 0547f5883fb18e523e35578e2f0d19648c8f2d5c
 ```
 
-If `rev` is a Git branch or tag (where the commit it points to changes), the
-data source may have updates at a later time. To bring it up to date if so (and
+If `rev` is a Git branch or tag (where the underlying commit changes), the data
+source may have updates at a later time. To bring it up to date if so (and
 update `rev_lock` in the DVC-file), simply use `dvc update <stage>.dvc`. If
-`rev` is a specific commit (does not change), `dvc update` will never have an
-effect on the import stage. You may **re-import** a different commit instead, by
-using `dvc import` again with a different (or without) `--rev`. For example:
+`rev` is a specific commit hash (does not change), `dvc update` will never have
+an effect on the import stage. You may **re-import** a different commit instead,
+by using `dvc import` again with a different (or without) `--rev`. For example:
 
 ```dvc
 $ dvc import --rev master \

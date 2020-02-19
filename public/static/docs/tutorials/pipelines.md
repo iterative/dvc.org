@@ -5,7 +5,8 @@ Let's explore the natural language processing
 ([NLP](https://en.wikipedia.org/wiki/Natural_language_processing)) problem of
 predicting tags for a given StackOverflow question. For example, we want a
 classifier that can predict posts about the Python language by tagging them
-`python`. (This is a short version of the [Tutorial](/doc/tutorials/deep).)
+`python`. (This is a short version of the
+[Deep Dive Tutorial](/doc/tutorials/deep).)
 
 In this example, we will focus on building a simple ML
 [pipeline](/doc/command-reference/pipeline) that takes an archive with
@@ -148,7 +149,7 @@ CLI.
 
 The first stage is to extract XML from the archive. Note that we don't need to
 run `dvc add` on `Posts.xml` below, `dvc run` saves the data automatically
-(commits into the <abbr>cache</abbr>, takes the file under DVC control):
+(commits into the <abbr>cache</abbr>, tracks the file with DVC):
 
 ```dvc
 $ dvc run -d data/Posts.xml.zip \
@@ -182,8 +183,8 @@ outs:
 ```
 
 Just like the DVC-file we created earlier with `dvc add`, this stage file uses
-checksums that point to the cache to describe and version control dependencies
-and outputs. Output `data/Posts.xml` file is saved as
+`md5` hashes (that point to the cache) to describe and version control
+dependencies and outputs. Output `data/Posts.xml` file is saved as
 `.dvc/cache/a3/04afb96060aad90176268345e10355` and linked (or copied) to the
 workspace, as well as added to `.gitignore`.
 
@@ -193,8 +194,8 @@ stages) we need to apply. This is important when you run `dvc repro` to
 regenerate the final or intermediate result.
 
 Second, hopefully it's clear by now that the actual data is stored in the
-`.dvc/cache` directory, each file having a name based on an MD5 hash. This cache
-is similar to Git's
+`.dvc/cache` directory, each file having a name based on an `md5` hash. This
+cache is similar to Git's
 [objects database](https://git-scm.com/book/en/v2/Git-Internals-Git-Objects),
 but made specifically to handle large data files.
 
@@ -328,7 +329,7 @@ $ dvc metrics show
 > to run this pipeline, the exact metric number may vary.
 
 It's time to save our [pipeline](/doc/command-reference/pipeline). You can
-confirm that we do not save model files or raw datasets into Git using the
+confirm that we do not tack files or raw datasets with Git, by using the
 `git status` command. We are just saving a snapshot of the DVC-files that
 describe data, transformations (stages), and relationships between them.
 

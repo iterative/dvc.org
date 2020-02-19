@@ -53,7 +53,7 @@ Enable cache protected mode is enabled:
 $ dvc config cache.protected true
 ```
 
-Put a data file under DVC control:
+Track a data file with DVC:
 
 ```dvc
 $ ls -lh
