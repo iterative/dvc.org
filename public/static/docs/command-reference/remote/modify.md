@@ -415,19 +415,20 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   - `digest` - use HTTP digest access authentication (`user` and `password`
     options should also be provided).
   - `custom` - use a custom HTTP header field and value when accessing a remote
-    (`custom_header` and `password` options should also be provided). When
+    (`custom_auth_header` and `password` options should also be provided). When
     `auth` is set to `custom`, an additional HTTP header field in the form of
-    `custom_header: password` will be set for all HTTP requests to a remote.
+    `custom_auth_header: password` will be set for all HTTP requests to a
+    remote.
 
   ```dvc
   $ dvc remote modify myremote auth basic
   ```
 
-- `custom_header` - header field name to use to access a remote (only applicable
-  when `auth` is set to `custom`).
+- `custom_auth_header` - header field name to use to access a remote (only
+  applicable when `auth` is set to `custom`).
 
   ```dvc
-  $ dvc remote modify myremote custom_header My-Header
+  $ dvc remote modify myremote custom_auth_header My-Header
   ```
 
 - `user` - username to use to access a remote. The order in which DVC searches
