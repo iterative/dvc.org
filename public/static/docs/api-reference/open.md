@@ -29,6 +29,9 @@ builtin, but for files tracked in <abbr>DVC projects</abbr> (by DVC or Git).
 However, it may only be used as a _context manager_ (using the `with` keyword as
 shown in the **Examples** below). There is no `close()`.
 
+> See also `dvc.api.read()` for a shorthand way to read the complete contents of
+> a tracked file.
+
 💡 Note that `dvc.api.open()` is able to
 [stream](https://docs.python.org/3/library/io.html) the file directly from
 **most**
@@ -82,8 +85,8 @@ with dvc.api.open(
     # ... Process elements
 ```
 
-> See also `dvc.api.read` for a more direct way to read the complete contents of
-> a tracked file.
+> See `dvc.api.read()` for a shorthand way to read the contents of a tracked
+> file.
 
 ## Example: Use a file from the local cache
 
@@ -164,5 +167,5 @@ with dvc.api.open('model.pkl', repo='...') as fd:
     # ... Use model
 ```
 
-> For a faster shorthand way to perform a similar example, please see the
+> For a faster way to perform a similar example, please see the
 > [read() example](/doc/api-reference/read#examples).
