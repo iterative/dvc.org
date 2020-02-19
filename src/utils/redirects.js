@@ -17,7 +17,7 @@ const processRedirectString = redirectString => {
 
 exports.processRedirectString = processRedirectString
 
-// Parse redirects when starting up.
+// Parse redirects when starting up
 redirects = redirects.map(processRedirectString)
 
 const matchRedirectList = (host, pathname) => {

@@ -10,8 +10,7 @@
  */
 
 const { createServer } = require('http')
-const { parse: parseURL } = require('url')
-const { parse: parseQuery } = require('querystring')
+const { parse } = require('url')
 const next = require('next')
 
 const { getItemByPath } = require('./src/utils/sidebar')
@@ -24,19 +23,23 @@ const port = process.env.PORT || 3000
 
 app.prepare().then(() => {
   createServer((req, res) => {
-    const parsedUrl = parseURL(req.url)
-    const { pathname, queryStr } = parsedUrl
+    const parsedUrl = parse(req.url, true)
+    const { pathname, query } = parsedUrl
     const host = req.headers.host
 
+    /*
+     * HTTP redirects
+     */
     let [redirectCode, redirectLocation] = getRedirect(host, pathname, {
       req,
       dev
     })
-    if (redirectLocation) {
-      // HTTP redirects
 
-      if (queryStr) {
-        redirectLocation += '?' + queryStr
+    if (redirectLocation) {
+      // should be getting the query as a string
+      const { query } = parse(req.url)
+      if (query) {
+        redirectLocation += '?' + query
       }
       res.writeHead(redirectCode, {
         'Cache-control': 'no-cache',
@@ -44,7 +47,9 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (/^\/doc(\/.*)?$/.test(pathname)) {
-      // Docs Engine handler
+      /*
+       * Docs Engine handler
+       */
 
       // Force 404 response code for any inexistent /doc item.
       if (!getItemByPath(pathname)) {
@@ -52,10 +57,9 @@ app.prepare().then(() => {
       }
 
       // Custom route for all docs
-      app.render(req, res, '/doc', parseQuery(queryStr))
+      app.render(req, res, '/doc', query)
     } else {
       // Regular Next.js handler
-
       handle(req, res, parsedUrl)
     }
   }).listen(port, err => {

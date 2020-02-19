@@ -3,41 +3,41 @@ const { processRedirectString, getRedirect } = require('./redirects')
 
 describe('processRedirectString', () => {
   it('reads the regex, replacement and code', () => {
-    const { regex, replace, code } = processRedirectString('^/foo /bar 308')
+    const { regex, replace, code } = processRedirectString('^/foo /bar 418')
 
     expect(regex).toBeInstanceOf(RegExp)
     expect(regex.source).toEqual('^\\/foo')
     expect(replace).toEqual('/bar')
-    expect(code).toEqual(308)
+    expect(code).toEqual(418)
   })
 
-  it('defaults to 301 response code', () => {
-    const { code } = processRedirectString('^/x /y')
+  it('code defaults to 301', () => {
+    const { code } = processRedirectString('^/x /x')
 
     expect(code).toEqual(301)
   })
 
-  it('detects whether redirecting a full URL or just a path', () => {
+  it('detects whether we are matching a pathname or the whole url', () => {
+    const { matchPathname } = processRedirectString('^/pathname /x')
+    expect(matchPathname).toEqual(true)
+
     const { matchPathname: matchPathnameFalse } = processRedirectString(
       '^https://example.com/foo /x'
     )
     expect(matchPathnameFalse).toEqual(false)
-
-    const { matchPathname } = processRedirectString('^/path /y')
-    expect(matchPathname).toEqual(true)
   })
 })
 
-describe('getRedirects', () => {
-  it('enforces HTTPS and removes www simultaneously', () => {
-    const mockReq = {
+describe('getRedirect', () => {
+  it('redirects to https while removing www', () => {
+    const fakeReq = {
       headers: {
         'x-forwarded-proto': 'http'
       },
       url: '/foo/bar?baz'
     }
     expect(
-      getRedirect('www.example.com', '/not-used', { req: mockReq, dev: false })
+      getRedirect('www.example.com', '/not-used', { req: fakeReq, dev: false })
     ).toEqual([301, 'https://example.com/foo/bar?baz'])
   })
 
@@ -57,17 +57,18 @@ describe('getRedirects', () => {
       expect(rLocation).toEqual(target)
       expect(rCode).toEqual(code)
 
-      // Detect redirect loops.
+      // Detect redirect loops
       const secondUrl = url.parse(addHost(rLocation))
       const secondRedirect = getRedirect(secondUrl.hostname, secondUrl.pathname)
       expect(secondRedirect).toEqual([])
     })
   }
 
-  describe('fromSubdomains', () => {
-    // Remove www (when already HTTPS)
+  describe('host redirects', () => {
+    // remove the www (when already HTTPS)
     itRedirects('https://www.dvc.org/foo', 'https://dvc.org/foo')
 
+    // short and sweet hosts
     itRedirects(
       'https://man.dvc.org/',
       'https://dvc.org/doc/command-reference/',
@@ -93,7 +94,7 @@ describe('getRedirects', () => {
     )
   })
 
-  describe('toS3', () => {
+  describe('redirects to s3', () => {
     itRedirects(
       'https://code.dvc.org/foo/bar',
       'https://s3-us-east-2.amazonaws.com/dvc-public/code/foo/bar',
@@ -125,23 +126,22 @@ describe('getRedirects', () => {
     )
   })
 
-  describe('toDiscord', () => {
+  describe('discord', () => {
     itRedirects('/help', 'https://discordapp.com/invite/dvwXA2N', 303)
 
     itRedirects('/chat', 'https://discordapp.com/invite/dvwXA2N', 303)
   })
 
-  describe('fromPaths', () => {
+  describe('in-site moves', () => {
     itRedirects('/docs/x', '/doc/x')
 
     itRedirects('/documentation/x', '/doc/x')
 
-    itRedirects('/doc/commands-reference/foo', '/doc/command-reference/foo')
+    itRedirects('/doc/commands-reference/add', '/doc/command-reference/add')
 
-    itRedirects('/doc/tutorial', '/doc/tutorials')
     itRedirects('/doc/tutorial/', '/doc/tutorials')
 
-    itRedirects('/doc/tutorial/bar', '/doc/tutorials/deep/bar')
+    itRedirects('/doc/tutorial/subject', '/doc/tutorials/deep/subject')
 
     itRedirects(
       '/doc/use-cases/data-and-model-files-versioning',
