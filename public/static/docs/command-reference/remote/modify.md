@@ -421,13 +421,13 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote digest_auth true
   ```
 
-  Note that `digest_auth` takes precedence over `basic_auth` if both options
-  are enabled.
+  > Note that `digest_auth` takes precedence over `basic_auth` if both options
+  > are enabled.
 
-- `user` - username to use to access a remote. The order in which dvc searches
+- `user` - username to use to access a remote. The order in which DVC searches
   for username:
 
-  1. `user` specified in one of the dvc configs;
+  1. `user` specified in one of the DVC configs;
   2. `user` specified in the url(e.g. `http://user@example.com/path`);
 
   ```dvc
@@ -437,14 +437,23 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 - `password` - a password to use to use when accessing a remote.
 
   ```dvc
-  $ dvc remote modify myremote password mypassword
+  $ dvc remote modify myremote --local password mypassword
   ```
+
+  > Note that the specified password will be inserted into the `.dvc/config`
+  > file. Therefore, it is recommened to add the password string with the
+  > `--local` option, enforcing it to be written to a Git-ignored config file
+  > (or to use the `ask_password` option instead).
 
 - `ask_password` - ask for a password to use when accessing a remote.
 
   ```dvc
   $ dvc remote modify myremote ask_password true
   ```
+
+  > Note that the `password` option takes precedence over `ask_password`. If
+  > `password` is specified, DVC will not prompt the user to enter a password at
+  > runtime.
 
 </details>
 
