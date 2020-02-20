@@ -11,6 +11,7 @@
 
 const { createServer } = require('http')
 const { parse } = require('url')
+const { stringify } = require('querystring')
 const next = require('next')
 
 const { getItemByPath } = require('./src/utils/sidebar')
@@ -34,13 +35,10 @@ app.prepare().then(() => {
     if (redirectLocation) {
       // HTTP redirects
 
-      console.log(redirectLocation)
-      const { query: queryStr } = parse(req.url)
-      console.log(queryStr)
+      const queryStr = stringify(query)
       if (queryStr) {
         redirectLocation += '?' + queryStr
       }
-      console.log(redirectLocation)
       res.writeHead(redirectCode, {
         'Cache-control': 'no-cache',
         Location: redirectLocation
