@@ -25,7 +25,7 @@ const port = process.env.PORT || 3000
 app.prepare().then(() => {
   createServer((req, res) => {
     const parsedUrl = parseURL(req.url)
-    const { pathname, queryStr } = parsedUrl
+    const { pathname, query: queryStr } = parsedUrl
     const host = req.headers.host
 
     let [redirectCode, redirectLocation] = getRedirect(host, pathname, {
@@ -52,9 +52,7 @@ app.prepare().then(() => {
       }
 
       // Custom route for all docs
-      let queryObj = parseQuery(queryStr)
-      if (null === queryObj) queryObj = {}
-      app.render(req, res, '/doc', queryObj)
+      app.render(req, res, '/doc', parseQuery(queryStr))
     } else {
       // Regular Next.js handler
 
