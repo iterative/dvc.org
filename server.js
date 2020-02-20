@@ -10,8 +10,7 @@
  */
 
 const { createServer } = require('http')
-const { parse: parseURL } = require('url')
-const { parse: parseQuery } = require('querystring')
+const { parse } = require('url')
 const next = require('next')
 
 const { getItemByPath } = require('./src/utils/sidebar')
@@ -24,8 +23,8 @@ const port = process.env.PORT || 3000
 
 app.prepare().then(() => {
   createServer((req, res) => {
-    let parsedUrl = parseURL(req.url)
-    const { pathname, query: queryStr } = parsedUrl
+    const parsedUrl = parse(req.url, true)
+    const { pathname, query } = parsedUrl
     const host = req.headers.host
 
     let [redirectCode, redirectLocation] = getRedirect(host, pathname, {
@@ -35,9 +34,13 @@ app.prepare().then(() => {
     if (redirectLocation) {
       // HTTP redirects
 
+      console.log(redirectLocation)
+      const { query: queryStr } = parse(req.url)
+      console.log(queryStr)
       if (queryStr) {
         redirectLocation += '?' + queryStr
       }
+      console.log(redirectLocation)
       res.writeHead(redirectCode, {
         'Cache-control': 'no-cache',
         Location: redirectLocation
@@ -52,11 +55,10 @@ app.prepare().then(() => {
       }
 
       // Custom route for all docs
-      app.render(req, res, '/doc', parseQuery(queryStr))
+      app.render(req, res, '/doc', query)
     } else {
       // Regular Next.js handler
 
-      if (null === parsedUrl.query) parsedUrl.query = {}
       handle(req, res, parsedUrl)
     }
   }).listen(port, err => {
