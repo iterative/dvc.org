@@ -17,7 +17,7 @@ https://dvc.org/foo
 https://dvc.org/static/img/<filename>.gif
 https://example.com/data.txt
 https://example.com/foo
-https://example.com/foo/bar?baz
+https://dvc.org/foo/bar?baz
 https://example.com/path/to/data
 https://example.com/path/to/data.csv
 https://example.com/path/to/dir

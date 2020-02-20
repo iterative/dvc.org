@@ -37,8 +37,8 @@ describe('getRedirects', () => {
       url: '/foo/bar?baz'
     }
     expect(
-      getRedirect('www.example.com', '/not-used', { req: mockReq, dev: false })
-    ).toEqual([301, 'https://example.com/foo/bar?baz'])
+      getRedirect('www.dvc.org', '/not-used', { req: mockReq, dev: false })
+    ).toEqual([301, 'https://dvc.org/foo/bar?baz'])
   })
 
   const itRedirects = (source, target, code = 301) => {
