@@ -3,12 +3,12 @@ const { processRedirectString, getRedirect } = require('./redirects')
 
 describe('processRedirectString', () => {
   it('reads the regex, replacement and code', () => {
-    const { regex, replace, code } = processRedirectString('^/foo /bar 308')
+    const { regex, replace, code } = processRedirectString('^/foo /bar 418')
 
     expect(regex).toBeInstanceOf(RegExp)
     expect(regex.source).toEqual('^\\/foo')
     expect(replace).toEqual('/bar')
-    expect(code).toEqual(308)
+    expect(code).toEqual(418)
   })
 
   it('defaults to 301 response code', () => {
