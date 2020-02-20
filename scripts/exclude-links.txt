@@ -2,6 +2,7 @@ http://127.0.0.1:10000/devstoreaccount1;
 http://localhost:3000/
 http://millionsongdataset.com/pages/getting-dataset/
 http://ogp.me/ns
+http://user@example.com/path
 https://$
 https://accounts.google.com/o/oauth2/auth
 https://api.github.com/repos/$
