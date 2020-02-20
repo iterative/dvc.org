@@ -407,32 +407,34 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 
 ### Click for HTTP
 
-- `auth` - authentication method to use when accessing a remote. Accepted values
-  are:
+- `auth` - authentication method to use when accessing a remote. The accepted
+  values are:
 
-  - `basic` - use HTTP basic access authentication (`user` and `password`
-    options should also be provided).
-  - `digest` - use HTTP digest access authentication (`user` and `password`
-    options should also be provided).
-  - `custom` - use a custom HTTP header field and value when accessing a remote
-    (`custom_auth_header` and `password` options should also be provided). When
-    `auth` is set to `custom`, an additional HTTP header field in the form of
-    `custom_auth_header: password` will be set for all HTTP requests to a
-    remote.
+  - `basic` -
+    [Basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
+    and `password` (or `ask_password`) parameters should also be configured.
+  - `digest` -
+    [Digest Access Authentication Scheme](https://tools.ietf.org/html/rfc7616).
+    `user` and `password` (or `ask_password`) parameters should also be
+    configured.
+  - `custom` - An additional HTTP header field will be set for all HTTP requests
+    to the remote in the form: `custom_auth_header: password`.
+    `custom_auth_header` and `password` (or `ask_password`) parameters should
+    also be configured.
 
   ```dvc
   $ dvc remote modify myremote auth basic
   ```
 
-- `custom_auth_header` - header field name to use to access a remote (only
-  applicable when `auth` is set to `custom`).
+- `custom_auth_header` - HTTP header field name to use when the `auth` parameter
+  is set to `custom`.
 
   ```dvc
   $ dvc remote modify myremote custom_auth_header My-Header
   ```
 
-- `user` - username to use to access a remote. The order in which DVC searches
-  for username:
+- `user` - username to use when the `auth` parameter is set to `basic` or
+  `digest`. The order in which DVC searches for username:
 
   1. `user` specified in one of the DVC configs;
   2. `user` specified in the url(e.g. `http://user@example.com/path`);
@@ -441,28 +443,26 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote user myuser
   ```
 
-- `password` - a password or custom header value to use to use when accessing a
-  remote.
+- `password` - password to use for any `auth` method.
 
   ```dvc
   $ dvc remote modify myremote --local password mypassword
   ```
 
   > Note that the specified password will be inserted into the `.dvc/config`
-  > file. Therefore, it is recommended to add the password string with the
-  > `--local` option, enforcing it to be written to a Git-ignored config file
-  > (or to use the `ask_password` option instead).
+  > file. Therefore, it's recommended to configure it using the `--local`
+  > option, which writes it to a Git-ignored config file. (Or use the
+  > `ask_password` parameter instead.)
 
-- `ask_password` - ask for a password or custom header value to use when
-  accessing a remote.
+- `ask_password` - ask each time for the password to use for any `auth` method.
 
   ```dvc
   $ dvc remote modify myremote ask_password true
   ```
 
-  > Note that the `password` option takes precedence over `ask_password`. If
-  > `password` is specified, DVC will not prompt the user to enter a password at
-  > runtime.
+  > Note that the `password` parameter takes precedence over `ask_password`. If
+  > `password` is specified, DVC will not prompt the user to enter a password
+  > for this remote.
 
 </details>
 
