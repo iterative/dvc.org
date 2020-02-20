@@ -24,7 +24,7 @@ const port = process.env.PORT || 3000
 
 app.prepare().then(() => {
   createServer((req, res) => {
-    const parsedUrl = parseURL(req.url)
+    let parsedUrl = parseURL(req.url)
     const { pathname, query: queryStr } = parsedUrl
     const host = req.headers.host
 
@@ -56,6 +56,7 @@ app.prepare().then(() => {
     } else {
       // Regular Next.js handler
 
+      if (null === parsedUrl.query) parsedUrl.query = {}
       handle(req, res, parsedUrl)
     }
   }).listen(port, err => {
