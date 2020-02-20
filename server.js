@@ -52,7 +52,9 @@ app.prepare().then(() => {
       }
 
       // Custom route for all docs
-      app.render(req, res, '/doc', parseQuery(queryStr))
+      let queryObj = parseQuery(queryStr)
+      if (null === queryObj) queryObj = {}
+      app.render(req, res, '/doc', queryObj)
     } else {
       // Regular Next.js handler
 
