@@ -46,7 +46,8 @@ export default function CommunityContribute({ theme }) {
                 </CommunityButton>
               }
             >
-              Become DVC contributor and let us build something great together.
+              Let&apos;s build something great together. Become a DVC
+              contributor!.
             </CommunityBlock>
           </Item>
           <Item>
@@ -64,8 +65,8 @@ export default function CommunityContribute({ theme }) {
                 </CommunityButton>
               }
             >
-              Have something cool on your mind? Suggest a text and we&apos;ll
-              publish it in our blog.
+              We&apos;re always interested in guest writers for our blog. If you
+              have something to share, please reach out!
             </CommunityBlock>
           </Item>
           <Item>
@@ -103,8 +104,8 @@ export default function CommunityContribute({ theme }) {
                 </CommunityButton>
               }
             >
-              Get perks and benefits for significant contributions, creating
-              content or hosting meetups.
+              Get perks and benefits for contributing to the code base, writing
+              blog posts, or hosting meetups.
             </CommunityBlock>
           </Item>
         </Items>

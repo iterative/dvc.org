@@ -7,22 +7,22 @@
   "section": {
     "contribute": {
       "title": "Contribute",
-      "description": "DVC is 100% open-source and we welcome contributions of all sorts to our code and docs.",
+      "description": "DVC is 100% open source. We welcome contributions to our code and docs.",
       "mobileDescription": "PRs, Blog Posts, Talks, Ambassadors"
     },
     "events": {
       "title": "Events",
-      "description": "Conferences, meetups and talks to learn more about DVC or meet in person.",
+      "description": "Learn more about DVC and meet us in person! We're appearing at conferences, meetups, and talks around the world.",
       "mobileDescription": "Come to hear more about DVC"
     },
     "learn": {
       "title": "Learn",
-      "description": "Every month we are sharing here our news, findings, interesting reads, community takeaways, and everything along the way.",
+      "description": "There are many ways to learn about DVC: check out our documentation, our blogs and monthly Heartbeats, recommended reads, and more.",
       "mobileDescription": "Docs, Blog, User Content"
     },
     "meet": {
       "title": "Community",
-      "description": "Ask questions, find answers, share your ideas and connect with DVC community.",
+      "description": "Ask questions, find answers, and connect with the DVC community.",
       "mobileDescription": "Chat, Forum, Github"
     }
   },
@@ -30,17 +30,17 @@
     {
       "url": "/doc/get-started",
       "title": "Get started",
-      "description": "Learn how to set up your project"
+      "description": "Reproducible walkthroughs on advanced topics"
     },
     {
       "url": "/doc/tutorials",
       "title": "Tutorials",
-      "description": "Learn how to solve most typical tasks"
+      "description": "Step-by-step introduction to basic DVC features"
     },
     {
       "url": "/doc/changelog",
       "title": "Changelog",
-      "description": "See what's new in DVC core "
+      "description": "See what's new in DVC."
     }
   ],
   "userContent": [
