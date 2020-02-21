@@ -34,7 +34,7 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
 ## Options
 
 - `-a`, `--all-branches` - keep cached objects referenced in all Git branches.
-  Useful for keeping data for all the latest experiment versions. Its
+  Useful for keeping data for all the latest experiment versions. It's
   recommended to consider including this option when using `-c` i.e.
   `dvc gc -ac`.
 
