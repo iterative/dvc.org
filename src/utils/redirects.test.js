@@ -11,33 +11,33 @@ describe('processRedirectString', () => {
     expect(code).toEqual(418)
   })
 
-  it('code defaults to 301', () => {
-    const { code } = processRedirectString('^/x /x')
+  it('defaults to 301 response code', () => {
+    const { code } = processRedirectString('^/x /y')
 
     expect(code).toEqual(301)
   })
 
-  it('detects whether we are matching a pathname or the whole url', () => {
-    const { matchPathname } = processRedirectString('^/pathname /x')
-    expect(matchPathname).toEqual(true)
-
+  it('detects whether redirecting a full URL or just a path', () => {
     const { matchPathname: matchPathnameFalse } = processRedirectString(
       '^https://example.com/foo /x'
     )
     expect(matchPathnameFalse).toEqual(false)
+
+    const { matchPathname } = processRedirectString('^/path /y')
+    expect(matchPathname).toEqual(true)
   })
 })
 
-describe('getRedirect', () => {
-  it('redirects to https while removing www', () => {
-    const fakeReq = {
+describe('getRedirects', () => {
+  it('enforces HTTPS and removes www simultaneously', () => {
+    const mockReq = {
       headers: {
         'x-forwarded-proto': 'http'
       },
       url: '/foo/bar?baz'
     }
     expect(
-      getRedirect('www.dvc.org', '/not-used', { req: fakeReq, dev: false })
+      getRedirect('www.dvc.org', '/not-used', { req: mockReq, dev: false })
     ).toEqual([301, 'https://dvc.org/foo/bar?baz'])
   })
 
@@ -57,18 +57,17 @@ describe('getRedirect', () => {
       expect(rLocation).toEqual(target)
       expect(rCode).toEqual(code)
 
-      // Detect redirect loops
+      // Detect redirect loops.
       const secondUrl = url.parse(addHost(rLocation))
       const secondRedirect = getRedirect(secondUrl.hostname, secondUrl.pathname)
       expect(secondRedirect).toEqual([])
     })
   }
 
-  describe('host redirects', () => {
-    // remove the www (when already HTTPS)
+  describe('fromSubdomains', () => {
+    // Remove www (when already HTTPS)
     itRedirects('https://www.dvc.org/foo', 'https://dvc.org/foo')
 
-    // short and sweet hosts
     itRedirects(
       'https://man.dvc.org/',
       'https://dvc.org/doc/command-reference/',
@@ -94,7 +93,7 @@ describe('getRedirect', () => {
     )
   })
 
-  describe('redirects to s3', () => {
+  describe('toS3', () => {
     itRedirects(
       'https://code.dvc.org/foo/bar',
       'https://s3-us-east-2.amazonaws.com/dvc-public/code/foo/bar',
@@ -126,22 +125,23 @@ describe('getRedirect', () => {
     )
   })
 
-  describe('discord', () => {
+  describe('toDiscord', () => {
     itRedirects('/help', 'https://discordapp.com/invite/dvwXA2N', 303)
 
     itRedirects('/chat', 'https://discordapp.com/invite/dvwXA2N', 303)
   })
 
-  describe('in-site moves', () => {
+  describe('fromPaths', () => {
     itRedirects('/docs/x', '/doc/x')
 
     itRedirects('/documentation/x', '/doc/x')
 
-    itRedirects('/doc/commands-reference/add', '/doc/command-reference/add')
+    itRedirects('/doc/commands-reference/foo', '/doc/command-reference/foo')
 
+    itRedirects('/doc/tutorial', '/doc/tutorials')
     itRedirects('/doc/tutorial/', '/doc/tutorials')
 
-    itRedirects('/doc/tutorial/subject', '/doc/tutorials/deep/subject')
+    itRedirects('/doc/tutorial/bar', '/doc/tutorials/deep/bar')
 
     itRedirects(
       '/doc/use-cases/data-and-model-files-versioning',
