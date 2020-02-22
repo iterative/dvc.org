@@ -8,7 +8,7 @@ then links the downloaded files into the workspace.
 ## Synopsis
 
 ```usage
-usage: dvc pull [-h] [-q | -v] [-j JOBS] [--show-checksums]
+usage: dvc pull [-h] [-q | -v] [-j JOBS]
                 [-r REMOTE] [-a] [-T] [-d] [-f] [-R]
                 [targets [targets ...]]
 
