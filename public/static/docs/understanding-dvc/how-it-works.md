@@ -60,7 +60,7 @@
   any Git server, and allow for experiments to be easily reproduced:
 
   ```dvc
-  $ git clone https://github.com/dataversioncontrol/myrepo.git
+  $ git clone https://github.com/example/project.git
   $ cd myrepo
   # Reproduce data files
   $ dvc repro
@@ -80,7 +80,7 @@
   $ dvc push # push from the cache to remote storage
 
   # On a colleague's machine:
-  $ git clone https://github.com/dataversioncontrol/myrepo.git
+  $ git clone https://github.com/example/project.git
   $ cd myrepo
   $ git pull # download tracked data from remote storage
   $ dvc checkout # checkout data files

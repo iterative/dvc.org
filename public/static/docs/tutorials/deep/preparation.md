@@ -95,11 +95,11 @@ $ git commit -am "init DVC"
 ```
 
 The `.dvc/cache` directory is one of the most important parts of any <abbr>DVC
-repositories</abbr>. It will contain all the content of data files. (This is
+project</abbr>. It will contain all the content of data files. (This is
 explained in more detail in the next chapter.) Note that the <abbr>cache</abbr>
 directory is contained in `.dvc/.gitignore`, which means that it won't be under
-Git control — It's a local <abbr>project</abbr> directory and you cannot push it
-to any Git remote.
+Git control — It's a local-only directory, and you cannot push it to any Git
+remote.
 
 For more information refer to
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories).

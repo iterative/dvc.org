@@ -1,0 +1,13 @@
+[
+  "^https://(?:www\\.)dvc\\.org/(.+)?       https://dvc.org/$1",
+  "^https://man\\.dvc\\.org/(.+)?           https://dvc.org/doc/command-reference/$1 303",
+  "^https://error\\.dvc\\.org/(.+)?         https://dvc.org/doc/user-guide/troubleshooting#$1 303",
+  "^https://(code|data|remote)\\.dvc\\.org/(.+) https://s3-us-east-2.amazonaws.com/dvc-public/$1/$2 303",
+  "^/((?:deb|rpm)/.+)                       https://s3-us-east-2.amazonaws.com/dvc-s3-repo/$1 303",
+  "^/(?:help|chat)/?$                       https://discordapp.com/invite/dvwXA2N 303",
+  "^/(?:docs|documentation)(/.*)?$          /doc$1",
+  "^/doc/commands-reference(/.*)?$          /doc/command-reference$1",
+  "^/doc/tutorial/?$                        /doc/tutorials",
+  "^/doc/tutorial/(.*)?                     /doc/tutorials/deep/$1",
+  "^/doc/use-cases/data-and-model-files-versioning/?$ /doc/use-cases/versioning-data-and-model-files"
+]

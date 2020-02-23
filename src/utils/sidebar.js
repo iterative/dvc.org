@@ -12,7 +12,7 @@
     prev: "/doc/get-started/configure",
     next: "/doc/get-started/share-data",
     tutorials: {
-      katacoda: "https://www.katacoda.com/loodse/courses/docker/docker-02-install"
+      katacoda: "https://www.katacoda.com/dvc/courses/get-started/initialize"
     }
     children: []
   }

@@ -172,10 +172,9 @@ $ dvc status --cloud
 
 $ dvc fetch
 ...
-
 $ tree .dvc
 .dvc
-├── cache           <- dir .dvc/cache was created and populated
+├── cache
 │   ├── 38
 │   │   └── 63d0e317dee0a55c4e59d2ec0eef33
 │   ├── 42
@@ -185,8 +184,13 @@ $ tree .dvc
 ├── ...
 ```
 
-> `dvc status --cloud` (or `-c`) compares the cache contents vs. the default
-> remote.
+> `dvc status --cloud` compares the cache contents vs. the default remote.
+
+Note that the `.dvc/cache` directory was created and populated.
+
+> Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> for more info.
 
 As seen above, used without arguments, `dvc fetch` downloads all assets needed
 by all DVC-files in the current branch, including for directories. The checksums

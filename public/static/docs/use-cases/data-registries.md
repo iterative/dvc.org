@@ -5,8 +5,8 @@ One of the main uses of <abbr>DVC repositories</abbr> is the
 with commands such as `dvc add`. With the aim to enable reusability of these
 <abbr>data artifacts</abbr> between different projects, DVC also provides the
 `dvc import` and `dvc get` commands, among others. This means that a project can
-depend on data from an external <abbr>DVC project</abbr>, **similar to package
-management systems, but for data science projects**.
+depend on data from an external DVC repository, **similar to package management
+systems, but for data science projects**.
 
 ![](/static/img/data-registry.png) _Data and models as code_
 
@@ -21,7 +21,7 @@ projects and cloud storage.
 > Note that a single dedicated repository is just one possible pattern to create
 > data registries with DVC.
 
-Advantages of using a DVC **data registry** project:
+Advantages of using a DVC **data registry**:
 
 - Reusability: Reproduce and organize _feature stores_ with a simple CLI
   (`dvc get` and `dvc import` commands, similar to software package management
@@ -57,7 +57,7 @@ directory in question inside the <abbr>workspace</abbr>, and telling DVC to
 track it, with `dvc add`. For example:
 
 ```dvc
-$ mkdir -p music/Beatles
+$ mkdir -p music/songs
 $ cp ~/Downloads/millionsongsubset_full music/songs
 $ dvc add music/songs
 ```
@@ -123,14 +123,14 @@ $ dvc import https://github.com/example/registry \
 > Note that unlike `dvc get`, which can be used from any directory, `dvc import`
 > needs to run within an [initialized](/doc/command-reference/init) DVC project.
 
-Besides downloading, importing saves the dependency of the local project towards
-the data source (registry repository). This is achieved by creating a particular
-kind of [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_).
-This file can be used staged and committed with Git.
+Besides downloading, importing saves the dependency from the local project to
+the data source (registry repo). This is achieved by creating a particular kind
+of [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_). This
+file can be used staged and committed with Git.
 
 As an addition to the import workflow, and enabled the saved dependency, we can
-easily bring it up to date in our consumer project with `dvc update` whenever
-the the dataset changes in the source project (data registry):
+easily bring it up to date in our consumer project(s) with `dvc update` whenever
+the the dataset changes in the source repo (data registry):
 
 ```dvc
 $ dvc update dataset.dvc
@@ -184,8 +184,8 @@ $ git commit -am "Add 1,000 more songs to music/ dataset."
 ```
 
 Iterating on this process for several datasets can give shape to a robust
-registry, which are basically repositories that mainly version a bunch of
-DVC-files, as you can see in the hypothetical example below.
+registry. The result is basically a repo that mainly versions a set of
+DVC-files, as you can see in the hypothetical example below:
 
 ```dvc
 $ tree --filelimit=100
