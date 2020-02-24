@@ -1,6 +1,7 @@
 import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import format from 'date-fns/format'
+import fill from 'lodash.fill'
 
 import { logEvent } from '../../../utils/ga'
 
@@ -18,7 +19,7 @@ const { description, mobileDescription, title } = data.section.events
 const { events } = data
 
 const modifiedEvents = events.length > 3 ? events.slice(0, 3) : events
-const eventPlaceholders = new Array(3 - modifiedEvents.length).fill(Item)
+const eventPlaceholders = fill(new Array(3 - modifiedEvents.length), Item)
 
 function CommunityEvent({
   theme,
