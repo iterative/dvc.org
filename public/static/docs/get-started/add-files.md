@@ -1,7 +1,7 @@
 # Add Files or Directories
 
 DVC allows storing and versioning data files, ML models, directories,
-intermediate results with Git, without checking the file contents into Git.
+intermediate results with Git, without tracking the file contents with Git.
 Let's get a dataset example to play with:
 
 ```dvc
@@ -18,8 +18,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 > [Data Registries](/doc/use-cases/data-registries) for more info about this
 > setup.)
 
-To take a file (or a directory) under DVC control just run `dvc add` on it. For
-example:
+To track a file (or a directory) with DVC just run `dvc add` on it. For example:
 
 ```dvc
 $ dvc add data/data.xml
@@ -27,7 +26,7 @@ $ dvc add data/data.xml
 
 DVC stores information about the added data in a special file called a
 **DVC-file**. DVC-files are small text files with a human-readable
-[format](/doc/user-guide/dvc-file-format) and they can be committed to Git:
+[format](/doc/user-guide/dvc-file-format) and they can be committed with Git:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
@@ -35,7 +34,7 @@ $ git commit -m "Add raw data to project"
 ```
 
 Committing DVC-files with Git allows us to track different versions of the
-<abbr>project</abbr> data as it evolves with the source code under Git control.
+<abbr>project</abbr> data as it evolves with the source code tracked by Git.
 
 <details>
 
@@ -52,9 +51,9 @@ $ ls -R .dvc/cache
     04afb96060aad90176268345e10355
 ```
 
-`a304afb96060aad90176268345e10355` from above is an MD5 hash of the `data.xml`
-file we just added to DVC. And if you check the `data/data.xml.dvc` DVC-file you
-will see that it has this hash inside.
+`a304afb96060aad90176268345e10355` above is the hash value of the `data.xml`
+file we just added with DVC. If you check the `data/data.xml.dvc` DVC-file, you
+will see that it has this string inside.
 
 ### Important note on cache performance
 
@@ -80,9 +79,9 @@ See [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
 </details>
 
 If your workspace uses Git, without DVC you would have to manually put each data
-file or directory into `.gitignore`. DVC commands that take or make files that
-will go under its control automatically takes care of this for you! (You just
-have to add the changes with Git.)
+file or directory into `.gitignore`. DVC commands that track data files
+automatically takes care of this for you! (You just have to add the changes with
+Git.)
 
 Refer to
 [Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files),

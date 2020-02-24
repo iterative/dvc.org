@@ -22,7 +22,7 @@ export default function Tutorials({ compact, tutorials }) {
             href={value}
             key={value}
             target="_blank"
-            rel="noopener nofollow"
+            rel="noreferrer noopener"
             compact={compact}
           >
             {icons[k] && <i />}

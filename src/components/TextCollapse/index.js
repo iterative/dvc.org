@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Collapse from 'react-collapse'
-import { presets } from 'react-motion'
+import { Collapse } from 'react-collapse'
 
 import { MoreText, Wrapper } from './styles'
 
@@ -23,9 +22,7 @@ export default class TextCollapse extends Component {
     return (
       <Wrapper onClick={this.toggleCollapsed}>
         {header}
-        <Collapse isOpened={isOpened} springConfig={presets.gentle}>
-          {children}
-        </Collapse>
+        <Collapse isOpened={isOpened}>{children}</Collapse>
         {!isOpened && <MoreText>More...</MoreText>}
       </Wrapper>
     )

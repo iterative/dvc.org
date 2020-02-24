@@ -24,8 +24,8 @@ Its also possible to enjoy a full Linux terminal experience with the
 
 ## Disable short-file name generation
 
-With NTFS, user may want to disable `8dot3` as per
-[this reference](<https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2003/cc778996(v=ws.10)>)
+With NTFS, users may want to disable `8dot3` as per
+[this article](https://support.microsoft.com/en-us/help/121007/how-to-disable-8-3-file-name-creation-on-ntfs-partitions)
 to disable the short-file name generation. It is important to do so for better
 performance when the user has over 300K files in a single directory.
 
@@ -51,9 +51,8 @@ guide.
 ## Avoid directories with large number of files
 
 The performance of NTFS degrades while handling large volumes of files in a
-directory.
-[Here](https://stackoverflow.com/questions/197162/ntfs-performance-and-large-volumes-of-files-and-directories)
-is the resource for reference.
+directory, as explained in
+[this issue](https://stackoverflow.com/questions/197162/ntfs-performance-and-large-volumes-of-files-and-directories).
 
 ## Enabling paging with `less`
 

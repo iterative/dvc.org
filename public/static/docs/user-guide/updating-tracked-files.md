@@ -67,7 +67,7 @@ Edit the content of the file:
 $ echo "new data item" >> train.tsv
 ```
 
-Add a new version of the file back to DVC:
+Add the new version of the file back with DVC:
 
 ```dvc
 $ dvc add train.tsv

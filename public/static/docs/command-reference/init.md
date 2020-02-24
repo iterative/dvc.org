@@ -22,8 +22,8 @@ learn more.
 `.dvc/cache` is one of the most important
 [DVC directories](/doc/user-guide/dvc-files-and-directories). It will hold all
 the contents of tracked data files. Note that `.dvc/.gitignore` lists this
-directory, which means that the cache directory is not under Git control. This
-is a local cache and you cannot `git push` it.
+directory, which means that the cache directory is not tracked by Git. This is a
+local cache and you cannot `git push` it.
 
 ## Options
 
@@ -57,8 +57,8 @@ $ git status
 $ git commit -m "Init DVC"
 ```
 
-Note that the <abbr>cache</abbr> directory (among others) is not under Git
-control. It contains data and model files, and will be managed by DVC.
+Note that the <abbr>cache</abbr> directory (among others) is not tracked with
+Git. It contains data and model files, and will be managed by DVC.
 
 ```dvc
 $ cat .dvc/.gitignore

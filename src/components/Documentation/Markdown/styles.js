@@ -197,7 +197,6 @@ export const ExternalLink = styled.a`
     width: 12px;
     height: 12px;
     margin-left: 1px;
-    /* Icon source https://en.wikipedia.org/w/skins/Vector/images/external-link-ltr-icon.svg */
     content: url(/static/img/external-link.svg);
   }
 `

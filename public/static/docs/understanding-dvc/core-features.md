@@ -6,8 +6,9 @@
 - It makes data science projects **reproducible** by creating lightweight
   [pipelines](/doc/command-reference/pipeline) using implicit dependency graphs.
 
-- **Large data file versioning** works by creating pointers in your Git
-  repository to the <abbr>cache</abbr>, typically stored on a local hard drive.
+- **Large data file versioning** works by creating special files in your Git
+  repository that point to the <abbr>cache</abbr>, typically stored on a local
+  hard drive.
 
 - DVC is **Programming language agnostic**: Python, R, Julia, shell scripts,
   etc. as well as ML library agnostic: Keras, Tensorflow, PyTorch, Scipy, etc.

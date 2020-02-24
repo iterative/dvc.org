@@ -49,8 +49,8 @@ Let's take a look at what is happening in the fist scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
 <abbr>cache</abbr> after creating a DVC-file. What _commit_ means is that DVC:
 
-- Computes a checksum for the file/directory.
-- Enters the checksum and file name into the DVC-file.
+- Computes a hash for the file/directory.
+- Enters the hash value and file name into the DVC-file.
 - Tells Git to ignore the file/directory (adding an entry to `.gitignore`).
   (Note that if the <abbr>project</abbr> was initialized with no SCM support
   (`dvc init --no-scm`), this does not happen.)
@@ -59,10 +59,10 @@ DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
 There are many cases where the last step is not desirable (for example rapid
 iterations on an experiment). The `--no-commit` option prevents the last step
 from occurring (on the commands where it's available), saving time and space by
-not storing unwanted <abbr>data artifacts</abbr>. Checksums is still computed
-and added to the DVC-file, but the actual data file is not saved in the cache.
-This is where the `dvc commit` command comes into play. It performs that last
-step (saving the data in cache).
+not storing unwanted <abbr>data artifacts</abbr>. The file hash is still
+computed and added to the DVC-file, but the actual data file is not saved in the
+cache. This is where the `dvc commit` command comes into play. It performs that
+last step (saving the data in cache).
 
 Note that it's best to avoid the last two scenarios. They essentially
 force-update the [DVC-files](/doc/user-guide/dvc-file-format) and save data to
@@ -81,7 +81,7 @@ reproducibility in those cases.
   for this option to have effect. Determines the files to commit by searching
   each target directory and its subdirectories for DVC-files to inspect.
 
-- `-f`, `--force` - commit data even if checksums for dependencies or outputs
+- `-f`, `--force` - commit data even if hash values for dependencies or outputs
   did not change.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
@@ -196,7 +196,7 @@ wdir: .
 
 To verify this instance of `model.pkl` is not in the cache, we must know the
 path to the cached file. In the cache directory, the first two characters of the
-checksum are used as a subdirectory name, and the remaining characters are the
+hash value are used as a subdirectory name, and the remaining characters are the
 file name. Therefore, had the file been committed to the cache, it would appear
 in the directory `.dvc/cache/70`. Let's check:
 

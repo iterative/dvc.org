@@ -11,6 +11,7 @@
 
 const { createServer } = require('http')
 const { parse } = require('url')
+const { stringify } = require('querystring')
 const next = require('next')
 
 const { getItemByPath } = require('./src/utils/sidebar')
@@ -27,19 +28,16 @@ app.prepare().then(() => {
     const { pathname, query } = parsedUrl
     const host = req.headers.host
 
-    /*
-     * HTTP redirects
-     */
     let [redirectCode, redirectLocation] = getRedirect(host, pathname, {
       req,
       dev
     })
-
     if (redirectLocation) {
-      // should be getting the query as a string
-      const { query } = parse(req.url)
-      if (query) {
-        redirectLocation += '?' + query
+      // HTTP redirects
+
+      const queryStr = stringify(query)
+      if (queryStr) {
+        redirectLocation += '?' + queryStr
       }
       res.writeHead(redirectCode, {
         'Cache-control': 'no-cache',
@@ -47,9 +45,7 @@ app.prepare().then(() => {
       })
       res.end()
     } else if (/^\/doc(\/.*)?$/.test(pathname)) {
-      /*
-       * Docs Engine handler
-       */
+      // Docs Engine handler
 
       // Force 404 response code for any inexistent /doc item.
       if (!getItemByPath(pathname)) {
@@ -60,6 +56,7 @@ app.prepare().then(() => {
       app.render(req, res, '/doc', query)
     } else {
       // Regular Next.js handler
+
       handle(req, res, parsedUrl)
     }
   }).listen(port, err => {
