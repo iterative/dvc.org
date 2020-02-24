@@ -18,16 +18,17 @@ positional arguments:
 
 ## Description
 
-Output files and directories added, modified, deleted in a Git commit `b_rev` as
+Prints files and directories added, modified, deleted in a Git commit `b_rev` as
 compared to another Git commit `a_rev`. Both `a_rev` and `b_rev` accept any
-[Git revision]("https://git-scm.com/docs/gitrevisions") - branch or tag name,
-Git commit hash, etc.
+[Git revision](https://git-scm.com/docs/gitrevisions) - branch or tag name, Git
+commit hash, etc.
 
 It defaults to comparing the current workspace and the last commit (`HEAD`), if
 arguments `a_rev` and `b_rev` are not specified.
 
-Options `--show-hash` and `--show-json` can be used to modify format and details
-of the output produced. See the details and example below.
+Options `--show-json` and `--show-hash` can be used to modify format and details
+of the output produced. See the [Options](#options) and (Examples)(#examples)
+sections below for more details.
 
 `dvc diff` does not have an effect when the repository is not tracked by Git,
 for example when `dvc init` was used with the `--no-scm` option.
@@ -57,7 +58,7 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 ## Examples
 
-For these examples we can use the [Get Started](/doc/get-started) repository.
+For these examples we can use the [Get Started](/doc/get-started) project.
 
 <details>
 
@@ -79,24 +80,20 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 ```
 
 The `-T` flag passed to `dvc fetch` makes sure we have all the data files
-related to all existing tags in the repo. You take a look at the
-[available tags](https://github.com/iterative/example-get-started/tags) of our
-example repo.
+related to all existing tags in the repo. You may see the available tags of our
+example repo [here](https://github.com/iterative/example-get-started/tags).
 
 </details>
 
 ## Example: Checking workspace changes
 
-The minimal `dvc diff`, run without arguments, defaults to comparing DVC-tacked
-files between `HEAD` (current Git commit) and the current <abbr>workspace</abbr>
+The minimal `dvc diff`, run without arguments, defaults to comparing DVC-tracked
+files between `HEAD` (last Git commit) and the current <abbr>workspace</abbr>
 (uncommitted changes, if any):
 
 ```dvc
 $ dvc diff
 ```
-
-> It produces an empty result if there are no changes to any files or
-> directories in the current workspace.
 
 ## Example: Comparing workspace with arbitrary commits
 
@@ -133,16 +130,17 @@ files summary: 1 added, 0 deleted, 0 modified
 
 ### Click and expand to setup the example
 
-Our example repository has the `bigrams-experiment` and `baseline-experiment`
-[tags](https://github.com/iterative/example-get-started/tags) respectively to
-reference these experiments.
+Our example repository has the `baseline-experiment` and `bigrams-experiment`
+[tags](https://github.com/iterative/example-get-started/tags) tags, that
+reference two different modeling experiments.
 
-Having followed the previous example's setup, move into the
-`example-get-started/` directory. Then make sure that you have the latest code
-and data with the following commands.
+Having followed the example's setup, move into the `example-get-started/`
+directory. Then make sure that you have the latest code and data with the
+following commands:
 
 ```dvc
 $ git checkout master
+$ dvc checkout
 ```
 
 </details>
@@ -164,15 +162,15 @@ between the tags `baseline-experiment` and `bigrams-experiment`.
 
 ## Example: Using different output formats
 
-Same command as above but using JSON output and include hash values for files
-and directories:
+Let's use the same command as above, but with JSON output and including hash
+values:
 
 ```dvc
 $ dvc diff --show-json --show-hash \
            baseline-experiment bigrams-experiment
 ```
 
-outputs:
+It outputs:
 
 ```json
 {
