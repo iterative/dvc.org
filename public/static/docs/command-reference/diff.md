@@ -62,7 +62,7 @@ For these examples we can use the [Get Started](/doc/get-started) project.
 
 <details>
 
-### Click and expand to setup the examples project
+### Click and expand to setup the project to run examples
 
 Start by cloning our example repo if you don't already have it:
 
