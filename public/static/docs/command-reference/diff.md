@@ -18,10 +18,10 @@ positional arguments:
 
 ## Description
 
-Prints files and directories added, modified, deleted in a Git commit `b_rev` as
-compared to another Git commit `a_rev`. Both `a_rev` and `b_rev` accept any
-[Git revision](https://git-scm.com/docs/gitrevisions) - branch or tag name, Git
-commit hash, etc.
+Prints a list of files and directories added, modified, deleted in a Git commit
+`b_rev` as compared to another Git commit `a_rev`. Both `a_rev` and `b_rev`
+accept any [Git revision](https://git-scm.com/docs/gitrevisions) - branch or tag
+name, Git commit hash, etc.
 
 It defaults to comparing the current workspace and the last commit (`HEAD`), if
 arguments `a_rev` and `b_rev` are not specified.
