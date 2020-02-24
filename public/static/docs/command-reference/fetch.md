@@ -6,7 +6,7 @@ Get files or directories tracked by DVC from
 ## Synopsis
 
 ```usage
-usage: dvc fetch [-h] [-q | -v] [-j JOBS] [--show-checksums]
+usage: dvc fetch [-h] [-q | -v] [-j JOBS]
                  [-r REMOTE] [-a] [-T] [-d] [-R]
                  [targets [targets ...]]
 
@@ -102,15 +102,12 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
 - `-T`, `--all-tags` - fetch cache for all Git tags. Similar to `-a` above. Note
   that both options can be combined, for example using the `-aT` flag.
 
-- `--show-checksums` - show file hashes instead of file names when printing the
-  download progress.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
-
-* `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
   problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 
@@ -201,8 +198,6 @@ Let's now link files from the cache to the workspace with:
 
 ```dvc
 $ dvc checkout
-Checking out '{'scheme': 'local', 'path': '.../example-get-started/model.pkl'}' with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
-Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/...
 ```
 
 ## Example: Specific stages
