@@ -170,7 +170,7 @@ import pickle
 import dvc.api
 
 with dvc.api.open('model.pkl', repo='...') as fd:
-    pickle.load(fd)
+    model = pickle.load(fd)
     # ... Use model
 ```
 
