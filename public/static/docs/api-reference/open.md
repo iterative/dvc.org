@@ -145,14 +145,12 @@ with dvc.api.open(
 
 ## Example: Stream file from a specific remote
 
-Sometimes we may want to chose the [remote](/doc/command-reference/remote) data
+Sometimes we may want to choose the [remote](/doc/command-reference/remote) data
 source, for example to ensure that file streaming is enabled (as only certain
 remote storage types support streaming). This can be done by providing a
 `remote` argument:
 
 ```py
-import pandas as pd
-
 import dvc.api
 
 with open(
@@ -169,7 +167,6 @@ with open(
 
 ```py
 import pickle
-
 import dvc.api
 
 with dvc.api.open('model.pkl', repo='...') as fd:
