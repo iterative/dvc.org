@@ -19,7 +19,7 @@ All **parameter** types are
 The **return** type is a
 [file object](https://docs.python.org/3/glossary.html#term-file-object).
 
-No exceptions are raised by this function directly.
+No exceptions are raised by this function.
 
 ## Description
 

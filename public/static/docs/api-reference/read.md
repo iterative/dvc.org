@@ -20,7 +20,7 @@ The **return** type can be a
 or a
 [string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
 
-No exceptions are raised by this function directly.
+No exceptions are raised by this function.
 
 ## Description
 
