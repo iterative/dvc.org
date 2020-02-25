@@ -86,7 +86,8 @@ import dvc.api
 
 resource_url = dvc.api.get_url(
     'get-started/data.xml',
-    repo='https://github.com/iterative/dataset-registry')
+    repo='https://github.com/iterative/dataset-registry'
+    )
 ```
 
 The value of `resource_url` in this case would result in:

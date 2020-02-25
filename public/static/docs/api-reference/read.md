@@ -80,7 +80,9 @@ model = pickle.loads(
     dvc.api.read(
         'model.pkl',
         repo='https://github.com/example/project.git'
-        mode='rb')
+        mode='rb'
+        )
+    )
 ```
 
 > We're using `'rb'` mode here for compatibility with `pickle.loads()`.
