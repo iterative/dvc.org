@@ -1,3 +1,9 @@
+/* Prevent mobile browsers from changing font-size */
+* {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
 @font-face {
   font-family: BrandonGrotesque;
   src: url('/static/fonts/Brandon_reg.otf');

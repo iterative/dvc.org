@@ -403,6 +403,69 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 
 </details>
 
+<details>
+
+### Click for HTTP
+
+- `auth` - authentication method to use when accessing a remote. The accepted
+  values are:
+
+  - `basic` -
+    [Basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
+    and `password` (or `ask_password`) parameters should also be configured.
+  - `digest` -
+    [Digest Access Authentication Scheme](https://tools.ietf.org/html/rfc7616).
+    `user` and `password` (or `ask_password`) parameters should also be
+    configured.
+  - `custom` - An additional HTTP header field will be set for all HTTP requests
+    to the remote in the form: `custom_auth_header: password`.
+    `custom_auth_header` and `password` (or `ask_password`) parameters should
+    also be configured.
+
+  ```dvc
+  $ dvc remote modify myremote auth basic
+  ```
+
+- `custom_auth_header` - HTTP header field name to use when the `auth` parameter
+  is set to `custom`.
+
+  ```dvc
+  $ dvc remote modify myremote custom_auth_header My-Header
+  ```
+
+- `user` - username to use when the `auth` parameter is set to `basic` or
+  `digest`. The order in which DVC searches for username:
+
+  1. `user` specified in one of the DVC configs;
+  2. `user` specified in the url(e.g. `http://user@example.com/path`);
+
+  ```dvc
+  $ dvc remote modify myremote user myuser
+  ```
+
+- `password` - password to use for any `auth` method.
+
+  ```dvc
+  $ dvc remote modify myremote --local password mypassword
+  ```
+
+  > Note that the specified password will be inserted into the `.dvc/config`
+  > file. Therefore, it's recommended to configure it using the `--local`
+  > option, which writes it to a Git-ignored config file. (Or use the
+  > `ask_password` parameter instead.)
+
+- `ask_password` - ask each time for the password to use for any `auth` method.
+
+  ```dvc
+  $ dvc remote modify myremote ask_password true
+  ```
+
+  > Note that the `password` parameter takes precedence over `ask_password`. If
+  > `password` is specified, DVC will not prompt the user to enter a password
+  > for this remote.
+
+</details>
+
 ## Example: Customize an S3 remote
 
 Let's first set up a _default_ S3 remote.

@@ -8,7 +8,7 @@ and remote storage.
 ## Synopsis
 
 ```usage
-usage: dvc status [-h] [-v] [-j JOBS] [--show-checksums] [-q] [-c]
+usage: dvc status [-h] [-v] [-j JOBS] [-q] [-c]
                   [-r REMOTE] [-a] [-T] [-d] [targets [targets ...]]
 
 positional arguments:

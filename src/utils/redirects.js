@@ -17,7 +17,7 @@ const processRedirectString = redirectString => {
 
 exports.processRedirectString = processRedirectString
 
-// Parse redirects when starting up
+// Parse redirects when starting up.
 redirects = redirects.map(processRedirectString)
 
 const matchRedirectList = (host, pathname) => {
@@ -34,7 +34,8 @@ const matchRedirectList = (host, pathname) => {
 }
 
 const getRedirect = (host, pathname, { req, dev } = {}) => {
-  if (req != null && req.headers['x-forwarded-proto'] !== 'https' && !dev) {
+  const httpsRedirect = req != null && !dev && !/^localhost(:\d+)?$/.test(host)
+  if (httpsRedirect && req.headers['x-forwarded-proto'] !== 'https') {
     return [301, `https://${host.replace(/^www\./, '')}${req.url}`]
   }
 

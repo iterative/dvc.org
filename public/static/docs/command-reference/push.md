@@ -6,7 +6,7 @@ Uploads files or directories tracked by DVC to
 ## Synopsis
 
 ```usage
-usage: dvc push [-h] [-q | -v] [-j JOBS] [--show-checksums]
+usage: dvc push [-h] [-q | -v] [-j JOBS]
                 [-r REMOTE] [-a] [-T] [-d] [-R]
                 [targets [targets ...]]
 
