@@ -3,7 +3,17 @@
 [Context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
 to open a tracked file.
 
-## Definition
+## Usage
+
+```py
+import dvc.api
+
+with dvc.api.open(
+        'get-started/data.xml',
+        repo='https://github.com/iterative/dataset-registry'
+        ) as fd:
+    # ... Process data
+```
 
 ### Signature
 

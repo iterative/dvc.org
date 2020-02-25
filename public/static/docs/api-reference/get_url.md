@@ -3,7 +3,18 @@
 Returns the URL to the storage location of a data file or directory tracked by
 DVC.
 
-## Definition
+## Usage
+
+```py
+import dvc.api
+
+resource_url = dvc.api.get_url(
+    'get-started/data.xml',
+    repo='https://github.com/iterative/dataset-registry')
+
+# resource_url =
+# https://remote.dvc.org/dataset-registry/a3/04af...
+```
 
 ### Signature
 
