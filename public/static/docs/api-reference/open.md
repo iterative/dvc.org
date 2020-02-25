@@ -37,19 +37,19 @@ This function is analogous to the
 [`open()`](https://docs.python.org/3/library/functions.html#open) Python
 builtin, but for files tracked in <abbr>DVC projects</abbr> (by DVC or Git).
 However, it may only be used as a _context manager_ (using the `with` keyword as
-shown in the **Examples** below). There is no `close()`.
+shown in the [Examples](#examples) below). There is no `dvc.api.close()`.
 
 > See also `dvc.api.read()` for a shorthand way to read the complete contents of
 > a tracked file.
 
-💡 Note that `dvc.api.open()` is able to
-[stream](https://docs.python.org/3/library/io.html) the file directly from
-**most**
-[remote types](/doc/command-reference/remote/add#supported-storage-types)
-(local, S3, Azure, GCP, OSS, SSH, HDFS). Otherwise, the file is downloaded
-regularly into a temporary local path before the file object is made available.
+`dvc.api.open()` avoids downloading files from **most**
+[remote types](/doc/command-reference/remote/add#supported-storage-types). It
+returns an open connection to the storage, though which file can be used
+directly. Only Google Drive storage does not support this, requiring this
+function to completely download the file in `path` (into a temporary directory)
+before the file object is made available.
 
-> This has similar uses as the `dvc get` and `dvc import` CLI commands.
+> This has similar uses as the `dvc get` CLI command.
 
 ## Parameters
 
