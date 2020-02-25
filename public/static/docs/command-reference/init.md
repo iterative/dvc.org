@@ -3,12 +3,12 @@
 This command initializes a <abbr>DVC project</abbr> on a directory.
 
 Note that by default the current working directory is expected to contain a Git
-repository, unless the `--no-scm` option is used.
+repository, unless the `--no-scm` or `--subdir` option is used.
 
 ## Synopsis
 
 ```usage
-usage: dvc init [-h] [-q | -v] [--no-scm] [-f]
+usage: dvc init [-h] [-q | -v] [--no-scm] [-f] [--subdir]
 ```
 
 ## Description
@@ -29,6 +29,9 @@ local cache and you cannot `git push` it.
 
 - `--no-scm` - skip Git specific initialization, `.dvc/.gitignore` will not be
   written.
+
+- `--subdir` - initialize <abbr>DVC repository</abbr> in current directory and
+  allow to search for Git repository in parent directories
 
 - `-f`, `--force` - remove `.dvc/` if it exists before initialization. Will
   remove any existing local cache. Useful when a previous `dvc init` has been
@@ -66,4 +69,29 @@ $ cat .dvc/.gitignore
 /lock
 ...
 /cache
+```
+
+Create a new <abbr>DVC repository</abbr> in a subdirectory of Git repository:
+
+```dvc
+$ mkdir repo && cd repo
+
+$ git init
+$ mkdir subrepo && cd subrepo
+
+$ dvc init --subdir
+```
+
+In this case, Git repository is inside `repo` directory, while <abbr>DVC
+repository</abbr> is inside `repo/subrepo`.
+
+```dvc
+$ tree repo -a
+repo
+├── .git
+.
+.
+.
+└── subrepo
+    └── .dvc
 ```
