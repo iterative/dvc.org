@@ -81,7 +81,7 @@ export const SectionLink = styled.a`
     position: absolute;
     width: 8px;
     height: 5px;
-    background: url('/static/img/triangle_dark.svg') no-repeat center center;
+    background: url('/img/triangle_dark.svg') no-repeat center center;
     left: 0px;
     top: 10px;
 

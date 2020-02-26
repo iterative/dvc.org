@@ -1,0 +1,40 @@
+/* Prevent mobile browsers from changing font-size */
+* {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+@font-face {
+  font-family: BrandonGrotesque;
+  src: url('./Brandon_reg.otf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: BrandonGrotesqueBlack;
+  src: url('./Brandon_blk.otf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: BrandonGrotesqueBold;
+  src: url('./Brandon_bld.otf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: BrandonGrotesqueMed;
+  src: url('./Brandon_med.otf');
+  font-style: normal;
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: BrandonGrotesqueLight;
+  src: url('./Brandon_light.otf');
+  font-style: normal;
+  font-weight: normal;
+}

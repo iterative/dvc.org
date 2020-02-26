@@ -6,12 +6,11 @@ import fill from 'lodash.fill'
 import { logEvent } from '../../../utils/ga'
 
 import CommunityBlock from '../Block'
-import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
 import data from '../data'
 
-import { Item, Items, Line, Link, Wrapper } from '../styles'
+import { Button, Item, Items, Line, Link, Wrapper } from '../styles'
 
 import { Image, ImageWrapper, Meta } from './styles'
 
@@ -39,7 +38,7 @@ function CommunityEvent({
     <Item>
       <CommunityBlock
         action={
-          <CommunityButton
+          <Button
             href={url}
             theme={theme}
             target="_blank"
@@ -47,7 +46,7 @@ function CommunityEvent({
             onClick={logEventClick}
           >
             Event Info
-          </CommunityButton>
+          </Button>
         }
       >
         <ImageWrapper
@@ -57,7 +56,7 @@ function CommunityEvent({
           onClick={logEventClick}
         >
           <Image
-            src={pictureUrl || '/static/img/community/event-placeholder.svg'}
+            src={pictureUrl || '/img/community/event-placeholder.svg'}
             alt=""
           />
         </ImageWrapper>
@@ -101,7 +100,7 @@ export default function CommunityEvents({ theme }) {
         anchor="events"
         color={theme.color}
         description={description}
-        icon="/static/img/community/events.svg"
+        icon="/img/community/events.svg"
         mobileDescription={mobileDescription}
         title={title}
       >

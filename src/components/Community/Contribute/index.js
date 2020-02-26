@@ -3,13 +3,12 @@ import PropTypes from 'prop-types'
 
 import { logEvent } from '../../../utils/ga'
 
-import CommunityButton from '../Button'
 import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
 
 import data from '../data'
 
-import { Item, Items, Wrapper } from '../styles'
+import { Button, Item, Items, Wrapper } from '../styles'
 
 const { description, mobileDescription, title } = data.section.contribute
 
@@ -23,10 +22,10 @@ export default function CommunityContribute({ theme }) {
     <Wrapper>
       <CommunitySection
         anchor="contribute"
-        background="/static/img/community/contribute_bg.jpg"
+        background="/img/community/contribute_bg.jpg"
         color={theme.color}
         description={description}
-        icon="/static/img/community/contribute.svg"
+        icon="/img/community/contribute.svg"
         mobileDescription={mobileDescription}
         title={title}
       >
@@ -35,7 +34,7 @@ export default function CommunityContribute({ theme }) {
             <CommunityBlock
               title="Make a PR"
               action={
-                <CommunityButton
+                <Button
                   theme={theme}
                   href="https://github.com/iterative/dvc"
                   target="_blank"
@@ -43,7 +42,7 @@ export default function CommunityContribute({ theme }) {
                   onClick={logPR}
                 >
                   Go to Github
-                </CommunityButton>
+                </Button>
               }
             >
               Let&apos;s build something great together. Become a DVC
@@ -54,7 +53,7 @@ export default function CommunityContribute({ theme }) {
             <CommunityBlock
               title="Write a blogpost"
               action={
-                <CommunityButton
+                <Button
                   theme={theme}
                   href="mailto:info@dvc.org?subject=I want to write a blogpost!"
                   target="_blank"
@@ -62,7 +61,7 @@ export default function CommunityContribute({ theme }) {
                   onClick={logBlogpost}
                 >
                   Let’s talk!
-                </CommunityButton>
+                </Button>
               }
             >
               We&apos;re always interested in guest writers for our blog. If you
@@ -73,7 +72,7 @@ export default function CommunityContribute({ theme }) {
             <CommunityBlock
               title="Give a talk"
               action={
-                <CommunityButton
+                <Button
                   theme={theme}
                   href="mailto:info@dvc.org?subject=I want to give a talk!"
                   target="_blank"
@@ -81,7 +80,7 @@ export default function CommunityContribute({ theme }) {
                   onClick={logTalk}
                 >
                   Let’s talk!
-                </CommunityButton>
+                </Button>
               }
             >
               We support speakers all over the world and help with preparation,
@@ -92,7 +91,7 @@ export default function CommunityContribute({ theme }) {
             <CommunityBlock
               title="Be an Ambassador"
               action={
-                <CommunityButton
+                <Button
                   theme={theme}
                   // eslint-disable-next-line
                   href="mailto:info@dvc.org?subject=I want to become an Ambassador!"
@@ -101,7 +100,7 @@ export default function CommunityContribute({ theme }) {
                   onClick={logAmbassador}
                 >
                   Let’s talk!
-                </CommunityButton>
+                </Button>
               }
             >
               Get perks and benefits for contributing to the code base, writing

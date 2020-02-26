@@ -168,7 +168,7 @@ export default class DownloadButton extends Component {
         <Button open={open}>
           <Icon>
             <img
-              src="/static/img/download-arrow.svg"
+              src="/img/download-arrow.svg"
               alt="Download"
               width={14}
               height={20}
@@ -181,7 +181,7 @@ export default class DownloadButton extends Component {
             </div>
 
             <Triangle open={open}>
-              <img src="/static/img/triangle.svg" alt="" />
+              <img src="/img/triangle.svg" alt="" />
             </Triangle>
           </Inner>
         </Button>

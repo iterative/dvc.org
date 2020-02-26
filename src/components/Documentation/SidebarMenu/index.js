@@ -5,6 +5,8 @@ import scrollIntoView from 'dom-scroll-into-view'
 import PropTypes from 'prop-types'
 import includes from 'lodash.includes'
 
+import 'perfect-scrollbar/css/perfect-scrollbar.css'
+
 import DownloadButton from '../../DownloadButton'
 import LocalLink from '../../LocalLink'
 

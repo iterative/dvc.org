@@ -20,7 +20,7 @@ export default function LearnMore() {
   return (
     <Wrapper onClick={scrollToDiagram}>
       <Icon>
-        <img src="/static/img/learn-more.svg" alt="Learn More" />
+        <img src="/img/learn-more.svg" alt="Learn More" />
       </Icon>
       <Caption>Learn more</Caption>
     </Wrapper>

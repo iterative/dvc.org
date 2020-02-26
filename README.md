@@ -1,4 +1,4 @@
-![owl logo](https://dvc.org/static/img/logo-github-readme.png)
+![owl logo](https://dvc.org/img/logo-github-readme.png)
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/5872e0a572ec8b74bd8d/maintainability)](https://codeclimate.com/github/iterative/dvc.org/maintainability)
 [![CircleCI](https://circleci.com/gh/iterative/dvc.org.svg?style=svg)](https://circleci.com/gh/iterative/dvc.org)

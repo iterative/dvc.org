@@ -54,12 +54,7 @@ export default class TopMenu extends Component {
           wide={isDocPage}
         >
           <LocalLink href="/" as={Logo}>
-            <img
-              src="/static/img/logo.png"
-              alt="dvc.org"
-              width={36}
-              height={23}
-            />
+            <img src="/img/logo.png" alt="dvc.org" width={36} height={23} />
           </LocalLink>
           <Nav mobile={false} />
         </Container>

@@ -12,14 +12,14 @@ describe('SidebarMenu/helper', () => {
         {
           label: 'Item Name',
           path: '/doc/item-name',
-          source: '/static/docs/item-name.md',
+          source: '/docs/item-name.md',
           tutorials: {},
           prev: undefined,
           next: undefined
         }
       ]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -31,14 +31,14 @@ describe('SidebarMenu/helper', () => {
         {
           label: 'Item Name',
           path: '/doc/item-name',
-          source: '/static/docs/item-name.md',
+          source: '/docs/item-name.md',
           tutorials: {},
           prev: undefined,
           next: undefined
         }
       ]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -50,14 +50,14 @@ describe('SidebarMenu/helper', () => {
         {
           label: 'Custom Label',
           path: '/doc/item-name',
-          source: '/static/docs/item-name.md',
+          source: '/docs/item-name.md',
           tutorials: {},
           prev: undefined,
           next: undefined
         }
       ]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -69,14 +69,14 @@ describe('SidebarMenu/helper', () => {
         {
           label: 'Item Name',
           path: '/doc/item-name',
-          source: '/static/docs/item-name/index.md',
+          source: '/docs/item-name/index.md',
           tutorials: {},
           prev: undefined,
           next: undefined
         }
       ]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -96,7 +96,7 @@ describe('SidebarMenu/helper', () => {
         {
           label: 'Item Name',
           path: '/doc/item-name',
-          source: '/static/docs/item-name.md',
+          source: '/docs/item-name.md',
           tutorials: {
             katacoda:
               'https://www.katacoda.com/dvc/courses/get-started/initialize'
@@ -106,7 +106,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -123,7 +123,7 @@ describe('SidebarMenu/helper', () => {
         {
           label: 'Item Name',
           path: '/doc/item-name',
-          source: '/static/docs/item-name.md',
+          source: '/docs/item-name.md',
           tutorials: {},
           prev: undefined,
           next: '/doc/item-name/nested-item',
@@ -131,7 +131,7 @@ describe('SidebarMenu/helper', () => {
             {
               label: 'Nested Item',
               path: '/doc/item-name/nested-item',
-              source: '/static/docs/item-name/nested-item.md',
+              source: '/docs/item-name/nested-item.md',
               tutorials: {},
               prev: '/doc/item-name',
               next: '/doc/item-name/nested-item/subnested-item',
@@ -139,8 +139,7 @@ describe('SidebarMenu/helper', () => {
                 {
                   label: 'Subnested Item',
                   path: '/doc/item-name/nested-item/subnested-item',
-                  source:
-                    '/static/docs/item-name/nested-item/subnested-item.md',
+                  source: '/docs/item-name/nested-item/subnested-item.md',
                   tutorials: {},
                   prev: '/doc/item-name/nested-item',
                   next: undefined
@@ -151,7 +150,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../public/docs/sidebar.json', () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -166,7 +165,7 @@ describe('SidebarMenu/helper', () => {
         {
           label: 'First Item',
           path: '/doc/first-item',
-          source: '/static/docs/first-item.md',
+          source: '/docs/first-item.md',
           tutorials: {},
           prev: undefined,
           next: '/doc/first-item/nested-item',
@@ -174,7 +173,7 @@ describe('SidebarMenu/helper', () => {
             {
               label: 'Nested Item',
               path: '/doc/first-item/nested-item',
-              source: '/static/docs/first-item/nested-item.md',
+              source: '/docs/first-item/nested-item.md',
               tutorials: {},
               prev: '/doc/first-item',
               next: '/doc/second-item'
@@ -184,14 +183,14 @@ describe('SidebarMenu/helper', () => {
         {
           label: 'Second Item',
           path: '/doc/second-item',
-          source: '/static/docs/second-item.md',
+          source: '/docs/second-item.md',
           tutorials: {},
           prev: '/doc/first-item/nested-item',
           next: undefined
         }
       ]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../public/docs/sidebar.json', () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -206,7 +205,7 @@ describe('SidebarMenu/helper', () => {
         {
           label: 'First Item',
           path: '/doc/first-item',
-          source: '/static/docs/first-item.md',
+          source: '/docs/first-item.md',
           tutorials: {},
           prev: undefined,
           next: '/doc/second-item'
@@ -222,7 +221,7 @@ describe('SidebarMenu/helper', () => {
             {
               label: 'Nested Item',
               path: '/doc/second-item/nested-item',
-              source: '/static/docs/second-item/nested-item.md',
+              source: '/docs/second-item/nested-item.md',
               tutorials: {},
               prev: '/doc/first-item',
               next: undefined
@@ -231,7 +230,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -252,7 +251,7 @@ describe('SidebarMenu/helper', () => {
         {
           label: 'First Item',
           path: '/doc/first-item',
-          source: '/static/docs/first-item.md',
+          source: '/docs/first-item.md',
           tutorials: {},
           prev: undefined,
           next: '/doc/second-item'
@@ -276,8 +275,7 @@ describe('SidebarMenu/helper', () => {
                 {
                   label: 'Subnested Item',
                   path: '/doc/second-item/nested-item/subnested-item',
-                  source:
-                    '/static/docs/second-item/nested-item/subnested-item.md',
+                  source: '/docs/second-item/nested-item/subnested-item.md',
                   tutorials: {},
                   prev: '/doc/first-item',
                   next: undefined
@@ -288,7 +286,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -297,7 +295,7 @@ describe('SidebarMenu/helper', () => {
     it("Throws error if item didn't have slug field", () => {
       const rawData = [{}]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
 
       expect(() => require('./sidebar')).toThrow(
         new Error("'slug' field is required in objects in sidebar.json")
@@ -308,7 +306,7 @@ describe('SidebarMenu/helper', () => {
     it("Throws error if item has source: false and doesn't have children", () => {
       const rawData = [{ slug: 'item-name', source: false }]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
 
       expect(() => require('./sidebar')).toThrow(
         new Error(
@@ -324,13 +322,13 @@ describe('SidebarMenu/helper', () => {
       const result = {
         label: 'Item Name',
         path: '/doc/item-name',
-        source: '/static/docs/item-name.md',
+        source: '/docs/item-name.md',
         tutorials: {},
         prev: undefined,
         next: undefined
       }
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const { getItemByPath } = require('./sidebar')
 
       expect(getItemByPath('/doc')).toEqual(result)
@@ -360,13 +358,13 @@ describe('SidebarMenu/helper', () => {
       const result = {
         label: 'Leaf Item',
         path: '/doc/item/nested/subnested/leaf-item',
-        source: '/static/docs/item/nested/subnested/leaf-item.md',
+        source: '/docs/item/nested/subnested/leaf-item.md',
         tutorials: {},
         prev: undefined,
         next: undefined
       }
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const { getItemByPath } = require('./sidebar')
 
       expect(getItemByPath('/doc/item')).toEqual(result)
@@ -385,7 +383,7 @@ describe('SidebarMenu/helper', () => {
         '/doc/item-name/nested-item/subnested-item'
       ]
 
-      jest.doMock('../../public/static/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const { getParentsListFromPath } = require('./sidebar')
 
       expect(getParentsListFromPath(path)).toEqual(result)

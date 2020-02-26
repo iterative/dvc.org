@@ -95,10 +95,10 @@ export default function Nav({ mobile = false }) {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <Image src="/static/img/community/github.svg" />
+          <Image src="/img/community/github.svg" />
         </ImageLink>
         <ImageLink href="/chat" target="_blank" rel="noreferrer noopener">
-          <Image src="/static/img/community/discord.svg" />
+          <Image src="/img/community/discord.svg" />
         </ImageLink>
       </Links>
       <LocalLink

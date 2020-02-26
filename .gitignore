@@ -56,8 +56,11 @@ typings/
 
 # Next.js build output
 .idea
-.next/
 *.log
 
 # Mac finder artifacts
 .DS_Store
+
+# Gatsby cache
+.cache
+public

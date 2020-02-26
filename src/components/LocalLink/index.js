@@ -1,28 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import NextLink from 'next/link'
-
-import { PAGE_DOC } from '../../consts'
+import GatsbyLink from 'gatsby-link'
 
 export default function LocalLink({
   children,
-  as: Component,
-  href,
+  as: SC,
+  href: to,
   ...restProps
 }) {
-  const nextProps = href.match(/^\/doc/)
-    ? { href: PAGE_DOC, as: href }
-    : { href }
+  const Component = SC ? SC.withComponent(GatsbyLink) : GatsbyLink
 
   return (
-    <NextLink {...nextProps} passHref>
-      {Component ? (
-        <Component {...restProps}>{children}</Component>
-      ) : (
-        <a {...restProps}>{children}</a>
-      )}
-    </NextLink>
+    <Component to={to} {...restProps}>
+      {children}
+    </Component>
   )
 }
 

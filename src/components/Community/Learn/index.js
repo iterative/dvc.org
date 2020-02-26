@@ -7,13 +7,13 @@ import LocalLink from '../../LocalLink'
 import { logEvent } from '../../../utils/ga'
 
 import CommunityBlock from '../Block'
-import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
 import { usePosts, useCommentsCount } from '../../../utils/api'
 import { pluralizeComments } from '../../../utils/i18n'
 
 import {
+  Button,
   Comments,
   HeaderLink,
   ImageLine,
@@ -160,7 +160,7 @@ function CommunityDocumentation({ url, title, description, color }) {
         href={url}
         as={Link}
         color={color}
-        large
+        large="true"
         onClick={logDocumentation}
       >
         {title}
@@ -206,7 +206,7 @@ export default function CommunityLearn({ theme }) {
               action={
                 <LocalLink
                   href="/doc"
-                  as={CommunityButton}
+                  as={Button}
                   theme={theme}
                   onClick={logDocumentationAll}
                 >
@@ -237,7 +237,7 @@ export default function CommunityLearn({ theme }) {
               }
               action={
                 posts && (
-                  <CommunityButton
+                  <Button
                     theme={theme}
                     href="https://blog.dvc.org"
                     target="_blank"
@@ -245,7 +245,7 @@ export default function CommunityLearn({ theme }) {
                     onClick={logPostAll}
                   >
                     See all Posts
-                  </CommunityButton>
+                  </Button>
                 )
               }
             >

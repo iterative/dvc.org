@@ -8,7 +8,7 @@
   {
     label: "Add Files or Directories",
     path: "/doc/get-started/add-files",
-    source: "/static/docs/get-started/add-files.md",
+    source: "/docs/get-started/add-files.md",
     prev: "/doc/get-started/configure",
     next: "/doc/get-started/share-data",
     tutorials: {
@@ -19,10 +19,10 @@
 */
 
 const startCase = require('lodash.startcase')
-const sidebar = require('../../public/static/docs/sidebar.json')
+const sidebar = require('../../docs/sidebar.json.js')
 
 const PATH_ROOT = '/doc/'
-const FILE_ROOT = '/static/docs/'
+const FILE_ROOT = '/docs/'
 const FILE_EXTENSION = '.md'
 
 function validateRawItem({ slug, source, children }) {

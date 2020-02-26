@@ -52,7 +52,7 @@ export default function HamburgerMenu() {
       <Wrapper open={menu}>
         <Top>
           <LocalLink href="/" as={Logo}>
-            <img src="/static/img/logo_white.png" alt="dvc.org" width={34} />
+            <img src="/img/logo_white.png" alt="dvc.org" width={34} />
           </LocalLink>
         </Top>
         <Menu>
@@ -89,7 +89,7 @@ export default function HamburgerMenu() {
                 as={ImageLink}
                 onClick={itemClick('community')}
               >
-                <Image src="/static/img/community/icon-community.svg" />
+                <Image src="/img/community/icon-community.svg" />
                 <ImageComment>Meet Us</ImageComment>
               </LocalLink>
               <LocalLink
@@ -97,7 +97,7 @@ export default function HamburgerMenu() {
                 as={ImageLink}
                 onClick={itemClick('community')}
               >
-                <Image src="/static/img/community/icon-contribute.svg" />
+                <Image src="/img/community/icon-contribute.svg" />
                 <ImageComment>Contribute</ImageComment>
               </LocalLink>
               <LocalLink
@@ -105,7 +105,7 @@ export default function HamburgerMenu() {
                 as={ImageLink}
                 onClick={itemClick('community')}
               >
-                <Image src="/static/img/community/icon-learn.svg" />
+                <Image src="/img/community/icon-learn.svg" />
                 <ImageComment>Learn</ImageComment>
               </LocalLink>
               <LocalLink
@@ -113,7 +113,7 @@ export default function HamburgerMenu() {
                 as={ImageLink}
                 onClick={itemClick('community')}
               >
-                <Image src="/static/img/community/icon-events.svg" />
+                <Image src="/img/community/icon-events.svg" />
                 <ImageComment>Events</ImageComment>
               </LocalLink>
             </Subsection>
@@ -129,7 +129,7 @@ export default function HamburgerMenu() {
                 rel="noreferrer noopener"
                 click={itemClick('mail')}
               >
-                <Image src="/static/img/community/icon-mail.svg" />
+                <Image src="/img/community/icon-mail.svg" />
                 <ImageComment>E-Mail</ImageComment>
               </ImageLink>
               <ImageLink
@@ -138,7 +138,7 @@ export default function HamburgerMenu() {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <Image src="/static/img/community/icon-github.svg" />
+                <Image src="/img/community/icon-github.svg" />
                 <ImageComment>GitHub</ImageComment>
               </ImageLink>
               <ImageLink
@@ -147,7 +147,7 @@ export default function HamburgerMenu() {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <Image src="/static/img/community/icon-discord.svg" />
+                <Image src="/img/community/icon-discord.svg" />
                 <ImageComment>Discord</ImageComment>
               </ImageLink>
               <ImageLink
@@ -156,7 +156,7 @@ export default function HamburgerMenu() {
                 target="_blank"
                 rel="noreferrer noopener"
               >
-                <Image src="/static/img/community/icon-twitter.svg" />
+                <Image src="/img/community/icon-twitter.svg" />
                 <ImageComment>Twitter</ImageComment>
               </ImageLink>
             </Subsection>

@@ -1,30 +1,15 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import { useRouter } from 'next/router'
 
 import TopMenu from '../TopMenu'
 import Footer from '../Footer'
 import HamburgerMenu from '../HamburgerMenu'
 
-import { initGA, logPageView } from '../../utils/ga'
-
 import { Wrapper, Bodybag, ModalRoot } from './styles'
 
+import './fonts/fonts.css'
+
 export default function Layout({ children, enableSmoothScroll, isDocPage }) {
-  const router = useRouter()
-
-  useEffect(() => {
-    if (!window.GA_INITIALIZED) {
-      initGA()
-      window.GA_INITIALIZED = true
-    }
-
-    // Apperently next/head is using promises and because of that
-    // it updates after page is already rendered and useEffect is called,
-    // because of that we use rAF to place GA call after head update
-    requestAnimationFrame(() => logPageView())
-  }, [router.asPath])
-
   return (
     <Wrapper>
       <TopMenu isDocPage={isDocPage} />

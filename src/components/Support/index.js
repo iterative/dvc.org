@@ -35,7 +35,7 @@ export default function SupportPage() {
         <Features>
           <Feature>
             <FeatureHeading>
-              <Icon url="/static/img/support/chat.svg" color="#945dd6" />
+              <Icon url="/img/support/chat.svg" color="#945dd6" />
               <Name>Slack-like Chat</Name>
             </FeatureHeading>
             <Description>
@@ -70,7 +70,7 @@ export default function SupportPage() {
           </Feature>
           <Feature>
             <FeatureHeading>
-              <Icon url="/static/img/support/bug.svg" color="#13adc7" />
+              <Icon url="/img/support/bug.svg" color="#13adc7" />
               <Name>Bugs & Features</Name>
             </FeatureHeading>
             <Description>
@@ -89,7 +89,7 @@ export default function SupportPage() {
           </Feature>
           <Feature>
             <FeatureHeading>
-              <Icon url="/static/img/support/forum.svg" color="#f46837" />
+              <Icon url="/img/support/forum.svg" color="#f46837" />
               <Name>Forum</Name>
             </FeatureHeading>
             <Description>
@@ -105,7 +105,7 @@ export default function SupportPage() {
           </Feature>
           <Feature>
             <FeatureHeading>
-              <Icon url="/static/img/support/email.svg" color="#945dd6" />
+              <Icon url="/img/support/email.svg" color="#945dd6" />
               <Name>Email</Name>
             </FeatureHeading>
             <Description>

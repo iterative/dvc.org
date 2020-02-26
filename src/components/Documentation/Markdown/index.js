@@ -4,6 +4,8 @@ import ReactMarkdown from 'react-markdown'
 import Collapsible from 'react-collapsible'
 import kebabCase from 'lodash.kebabcase'
 
+import 'github-markdown-css/github-markdown.css'
+
 import Router from 'next/router'
 
 import LocalLink from '../../LocalLink'

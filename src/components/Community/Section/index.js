@@ -3,8 +3,6 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { Collapse } from 'react-collapse'
 import { useWindowSize } from 'react-use'
 
-import Router from 'next/router'
-
 import {
   DesktopDescription,
   Header,
@@ -47,12 +45,6 @@ export default function CommunitySection({
     }
 
     updateVisibility()
-
-    Router.events.on('hashChangeComplete', updateVisibility)
-
-    return () => {
-      Router.events.off('hashChangeComplete', updateVisibility)
-    }
   }, [])
 
   useEffect(() => setIsTablet(width <= sizes.tablet), [width])

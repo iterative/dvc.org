@@ -18,7 +18,7 @@ export default function FeaturesPage() {
           <Feature>
             <Icon>
               <img
-                src="/static/img/features/icons/git-icon.svg"
+                src="/img/features/icons/git-icon.svg"
                 alt="Git compatible"
               />
             </Icon>
@@ -35,7 +35,7 @@ export default function FeaturesPage() {
           <Feature>
             <Icon>
               <img
-                src="/static/img/features/icons/storage-icon.svg"
+                src="/img/features/icons/storage-icon.svg"
                 alt="Storage agnostic"
               />
             </Icon>
@@ -49,10 +49,7 @@ export default function FeaturesPage() {
           </Feature>
           <Feature>
             <Icon>
-              <img
-                src="/static/img/features/icons/repro.svg"
-                alt="Reproducibility"
-              />
+              <img src="/img/features/icons/repro.svg" alt="Reproducibility" />
             </Icon>
             <Name>Reproducible</Name>
             <Description>
@@ -65,7 +62,7 @@ export default function FeaturesPage() {
           <Feature>
             <Icon>
               <img
-                src="/static/img/features/icons/branching.svg"
+                src="/img/features/icons/branching.svg"
                 alt="Low-friction branching"
               />
             </Icon>
@@ -81,7 +78,7 @@ export default function FeaturesPage() {
           </Feature>
           <Feature>
             <Icon>
-              <img src="/static/img/features/icons/storage-icon.svg" alt="" />
+              <img src="/img/features/icons/storage-icon.svg" alt="" />
             </Icon>
             <Name>Metric tracking</Name>
             <Description>
@@ -93,7 +90,7 @@ export default function FeaturesPage() {
           <Feature>
             <Icon>
               <img
-                src="/static/img/features/icons/ml-pipe.svg"
+                src="/img/features/icons/ml-pipe.svg"
                 alt="ML pipelines framework"
               />
             </Icon>
@@ -108,7 +105,7 @@ export default function FeaturesPage() {
           <Feature>
             <Icon>
               <img
-                src="/static/img/features/icons/languages-icon.svg"
+                src="/img/features/icons/languages-icon.svg"
                 alt="Language & framework agnostic"
               />
             </Icon>
@@ -124,7 +121,7 @@ export default function FeaturesPage() {
           <Feature>
             <Icon>
               <img
-                src="/static/img/features/icons/cluster.svg"
+                src="/img/features/icons/cluster.svg"
                 alt="HDFS, Hive & Apache Spark"
               />
             </Icon>
@@ -140,7 +137,7 @@ export default function FeaturesPage() {
           <Feature>
             <Icon>
               <img
-                src="/static/img/features/icons/failures.svg"
+                src="/img/features/icons/failures.svg"
                 alt="Failure tracking"
               />
             </Icon>

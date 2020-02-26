@@ -1,8 +1,9 @@
-/* global docsearch:readonly */
-
 import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
+import docsearch from 'docsearch.js'
+
+import 'docsearch.js/dist/cdn/docsearch.css'
 
 import Page from '../Page'
 import Hamburger from '../Hamburger'
