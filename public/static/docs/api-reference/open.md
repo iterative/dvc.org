@@ -1,7 +1,6 @@
 ### `dvc.api.open(path, repo=None, rev=None, remote=None, mode="r", encoding=None)`
 
-[Context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
-to open a tracked file.
+Opens a tracked file.
 
 ```py
 import dvc.api
@@ -10,7 +9,7 @@ with dvc.api.open(
         'get-started/data.xml',
         repo='https://github.com/iterative/dataset-registry'
         ) as fd:
-    # ... Process data
+    # ... fd is a file descriptor that can be processed normally.
 ```
 
 All **parameter** types are
@@ -18,8 +17,8 @@ All **parameter** types are
 
 ## Description
 
-Open file tracked in a <abbr>DVC projects</abbr> (by DVC or Git), and return a
-corresponding
+Open file or model tracked in a <abbr>DVC projects</abbr> (by DVC or Git), and
+return a corresponding
 [file object](https://docs.python.org/3/glossary.html#term-file-object). If the
 file cannot be found, an `PathMissingError` is raised.
 
@@ -27,8 +26,9 @@ file cannot be found, an `PathMissingError` is raised.
 > [`open()`](https://docs.python.org/3/library/functions.html#open) Python
 > builtin.
 
-It may only be used as a _context manager_ (using the `with` keyword as shown in
-the [Examples](#examples) below). There is no `dvc.api.close()`.
+It may only be used as a
+[context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
+(using the `with` keyword, as shown in the [Examples](#examples) below).
 
 > See also `dvc.api.read()` for a shorthand way to read the complete contents of
 > a tracked file – no _context manager_ syntax needed.
