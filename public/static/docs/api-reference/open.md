@@ -123,7 +123,7 @@ with dvc.api.open('data/nlp/words.txt') as fd:
 ```
 
 DVC will look for the file contents of `data/nlp/words.txt` in the local
-<abbr>project</abbr>. (If it's not found there, the default
+<abbr>cache</abbr>. (If it's not found there, the default
 [remote](/doc/command-reference/remote) will be tried.)
 
 To specify the file encoding of a text file:
