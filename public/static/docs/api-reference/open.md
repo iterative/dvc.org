@@ -17,8 +17,8 @@ All **parameter** types are
 
 ## Description
 
-Open file or model tracked in a <abbr>DVC projects</abbr> (by DVC or Git), and
-return a corresponding
+Open file or model (`path`) tracked in a <abbr>DVC projects</abbr> (by DVC or
+Git), and return a corresponding
 [file object](https://docs.python.org/3/glossary.html#term-file-object). If the
 file cannot be found, an `PathMissingError` is raised.
 
@@ -30,17 +30,13 @@ It may only be used as a
 [context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
 (using the `with` keyword, as shown in the [Examples](#examples) below).
 
-> See also `dvc.api.read()` for a shorthand way to read the complete contents of
-> a tracked file – no _context manager_ syntax needed.
+> Use `dvc.api.read()` to get the file's contents directly – no _context
+> manager_ involved.
 
-`dvc.api.open()` avoids downloading files from **most**
-[remote types](/doc/command-reference/remote/add#supported-storage-types). It
-returns an open connection to the storage, though which file can be used
-directly. Only Google Drive storage does not support this, requiring this
-function to completely download the file in `path` (into a temporary directory)
-before the file object is made available.
-
-> This has similar uses as the `dvc get` CLI command.
+`dvc.api.open()` reads (streams) the file trough a direct connection to the
+storage whenever possible, so it does not require any space on the disc to save
+the file before making it accessible. The only exception is when using a Google
+Drive [remote type](/doc/command-reference/remote/add#supported-storage-types).
 
 ## Parameters
 

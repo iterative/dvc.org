@@ -25,9 +25,7 @@ The returned contents can be a
 or a
 [string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
 
-> Internally, it uses the _file object_'s
-> [`read()`](https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects)
-> method.
+> This is similar to the `dvc get` command in our CLI.
 
 ## Parameters
 
