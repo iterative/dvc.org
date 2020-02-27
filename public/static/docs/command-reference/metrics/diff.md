@@ -38,8 +38,8 @@ They're calculated between two commits (hash, branch, tag, or any
 - `--targets` - limit the comparison to these specific metric files.
 
 - `-R`, `--recursive` - determines the metric files to use by searching each
-  target directory and its subdirectories for DVC-files to inspect. `targets` is
-  expected to contain one or more directories for this option to have effect.
+  target directory and its subdirectories for DVC-files to inspect. If there are
+  no directories among the `targets`, this option is ignored.
 
 - `-t`, `--type` - specify a type of the metric file. Accepted values are: `raw`
   (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be used to determine

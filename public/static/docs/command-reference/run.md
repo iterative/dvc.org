@@ -35,15 +35,20 @@ instead of `"` to wrap the `command` if there are environment variables in it,
 that you want to be evaluated dynamically. E.g.
 `dvc run -d script.sh './myscript.sh $MYENVVAR'`
 
+Since `dvc run` provides a way to build a dependency graph using dependencies
+and outputs to connect different stages, it checks the graph's integrity before
+creating a new stage. For example, for every output there should be only one
+stage that explicitly specifies it. There should be no cycles, etc.
+
 Unless the `-f` options is used, the stage file (DVC-file) is generated in the
 current working directory and named `<file>.dvc`, where `<file>` is file name of
 the first output (`-o`, `-O`, `-m`, or `-M` option). If neither `-f` nor outputs
 are specified, the file name defaults to `Dvcfile`.
 
-Since `dvc run` provides a way to build a dependency graph using dependencies
-and outputs to connect different stages, it checks the graph's integrity before
-creating a new stage. For example, for every output there should be only one
-stage that explicitly specifies it. There should be no cycles, etc.
+Note that `dvc run` executes the given `command` in order to check it's validity
+and to write the defined outputs, unless an equivalent stage file exists (same
+dependencies, outputs, and `command` to execute) that has already been run and
+is up to date.
 
 Note that `dvc repro` provides an interface to check state and reproduce this
 graph (pipeline) later. This concept is similar to the one of the
@@ -139,12 +144,8 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   determined by the logic described in the `-f` option) without asking for
   confirmation.
 
-- `--ignore-build-cache` - has an effect if an equivalent stage file exists
-  (same dependencies, outputs, and `command` to execute), that has been already
-  executed, and is up to date. In this case, `dvc run` won't normally execute
-  the `command` again. The exception is when the existing stage is considered
-  always changed (see `--always-changed` option). This option gives a way to
-  forcefully execute the `command` anyway. Useful if the command's code is
+- `--ignore-build-cache` - forcefully execute the `command` again, even if an
+  equivalent stage file exists. Useful if the command's code is
   non-deterministic (meaning it produces different outputs from the same list of
   inputs).
 
@@ -162,8 +163,8 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   `dvc status` will report it as `always changed` and `dvc repro` will always
   execute it.
 
-  > Note that a DVC-file without dependencies is considered always changed, so
-  > this option has no effect in that case.
+  > Note that DVC-files without dependencies are automatically considered
+  > "always changed", so this option has no effect in those cases.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

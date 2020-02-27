@@ -62,8 +62,8 @@ name.
   default branch) is used by default when this option is not specified.
 
 - `--show-url` - instead of downloading the file or directory, just print the
-  storage location (URL) of the target data. `path` is expected to represent a
-  cached, DVC-tracked file for this option to have effect.
+  storage location (URL) of the target data. If `path` is a Git-tracked file,
+  this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

@@ -77,15 +77,15 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
   `dvc remote list`). The argument `REMOTE` is a remote name defined using
   `dvc remote`.
 
-- `-d`, `--with-deps` - one or more `targets` should be specified for this
-  option to have effect. Determines files to download by tracking dependencies
-  to the target DVC-files (stages). By traversing all stage dependencies, DVC
-  searches backward from the target stages in the corresponding pipelines. This
-  means DVC will not fetch files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - determines files to download by tracking dependencies to
+  the target DVC-files (stages). If no `targets` are provided, this option is
+  ignored. By traversing all stage dependencies, DVC searches backward from the
+  target stages in the corresponding pipelines. This means DVC will not fetch
+  files referenced in later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to fetch by searching each target
-  directory and its subdirectories for DVC-files to inspect. `targets` is
-  expected to contain one or more directories for this option to have effect.
+  directory and its subdirectories for DVC-files to inspect. If there are no
+  directories among the `targets`, this option is ignored.
 
 - `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
   the downloading of files from the remote. The default value is

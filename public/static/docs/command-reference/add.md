@@ -89,10 +89,9 @@ reproducible.
 ## Options
 
 - `-R`, `--recursive` - determines the files to add by searching each target
-  directory and its subdirectories for data files. For each file found, a new
+  directory and its subdirectories for data files. If there are no directories
+  among the `targets`, this option is ignored. For each file found, a new
   DVC-file is created using the process described in this command's description.
-  `targets` is expected to contain one or more directories for this option to
-  have effect.
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
   entry is added to `.dvc/state`, while nothing is added to the cache. (The
