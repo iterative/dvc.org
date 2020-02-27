@@ -1,9 +1,7 @@
-# dvc.api.get_url()
+### `dvc.api.get_url(path, repo=None, rev=None, remote=None)`
 
 Returns the URL to the storage location of a data file or directory tracked by
 DVC.
-
-## Usage
 
 ```py
 import dvc.api
@@ -16,15 +14,7 @@ resource_url = dvc.api.get_url(
 # https://remote.dvc.org/dataset-registry/a3/04af...
 ```
 
-### Signature
-
-```py
-get_url(path, repo=None, rev=None, remote=None)
-```
-
-### Types
-
-All **parameter** types as well as the **return** type are
+All **parameter** types, as well as the **return** type are
 [string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
 
 Raises `UrlNotDvcRepoError` if `repo` is not a <abbr>DVC repository</abbr>.
