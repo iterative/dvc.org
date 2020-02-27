@@ -60,12 +60,13 @@ Drive [remote type](/doc/command-reference/remote/add#supported-storage-types).
 
   A `dvc.exceptions.NoRemoteError` is raised if no `remote` is found.
 
-- `mode` - (optional) mirrors the namesake parameter in builtin
-  [`open()`](https://docs.python.org/3/library/functions.html#open). Defaults to
-  `"r"` (read).
+- `mode` - specifies the mode in which the file is opened. Defaults to `"r"`
+  (read). Mirrors the namesake parameter in builtin
+  [`open()`](https://docs.python.org/3/library/functions.html#open).
 
-- `encoding` - (optional) used to decode contents to a string. Mirrors the
-  namesake parameter in builtin `open()`. Defaults to `"utf-8"`.
+- `encoding` - used to decode the file contents to a string. This should only be
+  used in text mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in
+  builtin `open()`.
 
 ## Example: Use artifacts from online DVC repositories
 
