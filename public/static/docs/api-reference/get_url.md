@@ -46,10 +46,10 @@ The URL schema returned depends on the type of `remote`. Here's a full list of
 the remote storage.
 
 💡 Having the resource's URL, it should be possible to download it directly with
-an appropriate tool such as
-[`urlretrieve`](https://docs.python.org/3/library/urllib.request.html#urllib.request.urlretrieve)
-or `boto3`
-[download_fileobj](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Object.download_fileobj).
+an appropriate library, such as
+[`boto3`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Object.download_fileobj)
+or
+[`paramiko`](https://docs.paramiko.org/en/stable/api/sftp.html#paramiko.sftp_client.SFTPClient.get).
 
 Note that if the target is a directory, the URL will end in `.dir`, as DVC
 stores a special JSON file with `.dir` extension that contains the mapping of
