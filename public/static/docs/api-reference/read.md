@@ -20,6 +20,17 @@ This function wraps [`dvc.api.open()`](/doc/api-reference/open) for a simple and
 direct way to return the complete contents of files tracked in <abbr>DVC
 projects</abbr> (by DVC or Git).
 
+The current project is used by default (the current working directory tree is
+walked up to find it), unless a `repo` argument is supplied.
+
+Unless a `remote` argument is given, it first tries to find the file in the
+<abbr>cache</abbr> for local projects. If not found there or for online
+projects, the [default remote](/doc/command-reference/remote/default) of `repo`
+is tried. If the file cannot be found, a `PathMissingError` is raised.
+
+For Git-tracked <abbr>DVC repositories</abbr>, unless a `rev` argument is
+provided, the repo's `HEAD` version is used.
+
 The returned contents can be a
 [bytes object](https://docs.python.org/3/glossary.html#term-bytes-like-object)
 or a
@@ -32,20 +43,18 @@ or a
 - **`path`** - location and file name of the file in `repo`, relative to the
   project's root.
 
-- `repo` - specifies the location of the DVC project. If not supplied, defaults
-  to the current DVC project. It can be a URL or a file system path. Both HTTP
-  and SSH protocols are supported for online Git repos (e.g.
-  `[user@]server:project.git`).
+- `repo` - specifies the location of the DVC project. It can be a URL or a file
+  system path. Both HTTP and SSH protocols are supported for online Git repos
+  (e.g. `[user@]server:project.git`).
 
   A `dvc.api.UrlNotDvcRepoError` is raised if `repo` is not a valid DVC project.
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
-  a branch or tag name, or a commit hash). If not supplied, it uses the default
-  Git revision, `HEAD`. If `repo` is a Git repo, this option is ignored.
+  a branch or tag name, or a commit hash). If `repo` is not a Git repo, this
+  option is ignored.
 
 - `remote` - name of the [DVC remote](/doc/command-reference/remote) to look for
-  the target data. If not supplied, the cache directory is tried first for local
-  projects; The default remote of `repo` is tried otherwise.
+  the target data.
 
   A `dvc.exceptions.NoRemoteError` is raised if no `remote` is found.
 
@@ -53,9 +62,11 @@ or a
   (read). Mirrors the namesake parameter in builtin
   [`open()`](https://docs.python.org/3/library/functions.html#open).
 
-- `encoding` - used to decode the file contents to a string. This should only be
-  used in text mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in
-  builtin `open()`.
+- `encoding` -
+  [codec](https://docs.python.org/3/library/codecs.html#standard-encodings) used
+  to decode the file contents to a string. This should only be used in text
+  mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in builtin
+  `open()`.
 
 ## Examples
 

@@ -19,44 +19,52 @@ All **parameter** types are
 
 Open file or model (`path`) tracked in a <abbr>DVC projects</abbr> (by DVC or
 Git), and return a corresponding
-[file object](https://docs.python.org/3/glossary.html#term-file-object). If the
-file cannot be found, an `PathMissingError` is raised.
+[file object](https://docs.python.org/3/glossary.html#term-file-object).
+
+The current project is used by default (the current working directory tree is
+walked up to find it), unless a `repo` argument is supplied.
+
+Unless a `remote` argument is given, it first tries to find the file in the
+<abbr>cache</abbr> for local projects. If not found there or for online
+projects, the [default remote](/doc/command-reference/remote/default) of `repo`
+is tried. If the file cannot be found, a `PathMissingError` is raised.
+
+For Git-tracked <abbr>DVC repositories</abbr>, unless a `rev` argument is
+provided, the repo's `HEAD` version is used.
 
 > This function is analogous to the
 > [`open()`](https://docs.python.org/3/library/functions.html#open) Python
-> builtin.
+> built-in.
 
-It may only be used as a
+`dvc.api.open()` may only be used as a
 [context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
 (using the `with` keyword, as shown in the [Examples](#examples) below).
 
 > Use `dvc.api.read()` to get the file's contents directly – no _context
 > manager_ involved.
 
-`dvc.api.open()` reads (streams) the file trough a direct connection to the
-storage whenever possible, so it does not require any space on the disc to save
-the file before making it accessible. The only exception is when using a Google
-Drive [remote type](/doc/command-reference/remote/add#supported-storage-types).
+This function reads (streams) the file trough a direct connection to the storage
+whenever possible, so it does not require any space on the disc to save the file
+before making it accessible. The only exception is when using a Google Drive
+[remote type](/doc/command-reference/remote/add#supported-storage-types).
 
 ## Parameters
 
 - **`path`** - location and file name of the file in `repo`, relative to the
   project's root.
 
-- `repo` - specifies the location of the DVC project. If not supplied, defaults
-  to the current DVC project. It can be a URL or a file system path. Both HTTP
-  and SSH protocols are supported for online Git repos (e.g.
-  `[user@]server:project.git`).
+- `repo` - specifies the location of the DVC project. It can be a URL or a file
+  system path. Both HTTP and SSH protocols are supported for online Git repos
+  (e.g. `[user@]server:project.git`).
 
   A `dvc.api.UrlNotDvcRepoError` is raised if `repo` is not a valid DVC project.
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
-  a branch or tag name, or a commit hash). If not supplied, it uses the default
-  Git revision, `HEAD`. If `repo` is a Git repo, this option is ignored.
+  a branch or tag name, or a commit hash). If `repo` is not a Git repo, this
+  option is ignored.
 
 - `remote` - name of the [DVC remote](/doc/command-reference/remote) to look for
-  the target data. If not supplied, the cache directory is tried first for local
-  projects; The default remote of `repo` is tried otherwise.
+  the target data.
 
   A `dvc.exceptions.NoRemoteError` is raised if no `remote` is found.
 
@@ -64,9 +72,11 @@ Drive [remote type](/doc/command-reference/remote/add#supported-storage-types).
   (read). Mirrors the namesake parameter in builtin
   [`open()`](https://docs.python.org/3/library/functions.html#open).
 
-- `encoding` - used to decode the file contents to a string. This should only be
-  used in text mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in
-  builtin `open()`.
+- `encoding` -
+  [codec](https://docs.python.org/3/library/codecs.html#standard-encodings) used
+  to decode the file contents to a string. This should only be used in text
+  mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in builtin
+  `open()`.
 
 ## Example: Use artifacts from online DVC repositories
 
@@ -111,8 +121,8 @@ with dvc.api.open(
 
 ## Example: Use a file from the local cache
 
-In this case we don't supply a `repo` argument. DVC will walk up the current
-working directory tree to find the <abbr>DVC project</abbr>:
+In this case we don't supply a `repo` argument. DVC will attempt to find a
+current <abbr>DVC project</abbr> to use.
 
 ```py
 import dvc.api
@@ -129,7 +139,7 @@ DVC will look for the file contents of `data/nlp/words.txt` in the local
 To specify the file encoding of a text file:
 
 ```py
-with dvc.api.open('data/nlp/words.txt', encoding='utf-8') as fd:
+with dvc.api.open('data/nlp/words_ru.txt', encoding='koi8_r') as fd:
     # ...
 ```
 

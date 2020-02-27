@@ -27,11 +27,20 @@ project</abbr>), is stored. The URL is formed by reading the corresponding
 well as the project's
 [remote configuration](/doc/command-reference/config#remote).
 
-The URL schema returned depends on the type of `remote`. Here's a full list of
-[supported remote types](/doc/command-reference/remote/add#supported-storage-types).
+The current project is used by default (the current working directory tree is
+walked up to find it), unless a `repo` argument is supplied.
+
+Unless a `remote` argument is given, the
+[default remote](/doc/command-reference/remote/default) of `repo` is used. The
+URL schema returned depends on the
+[type](/doc/command-reference/remote/add#supported-storage-types) of the remote
+used.
 
 ⚠️ This function does not check for the actual existence of the target data in
 the remote storage.
+
+For Git-tracked <abbr>DVC repositories</abbr>, unless a `rev` argument is
+provided, the repo's `HEAD` version is used.
 
 💡 Having the resource's URL, it should be possible to download it directly with
 an appropriate library, such as
@@ -50,20 +59,18 @@ and `dvc add` to learn more about how DVC handles data directories.
 - **`path`** - location and file name of the file or directory in `repo`,
   relative to the project's root.
 
-- `repo` - specifies the location of the DVC project. If not supplied, defaults
-  to the current DVC project. It can be a URL or a file system path. Both HTTP
-  and SSH protocols are supported for online Git repos (e.g.
-  `[user@]server:project.git`).
+- `repo` - specifies the location of the DVC project. It can be a URL or a file
+  system path. Both HTTP and SSH protocols are supported for online Git repos
+  (e.g. `[user@]server:project.git`).
 
   A `dvc.api.UrlNotDvcRepoError` is raised if `repo` is not a valid DVC project.
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
-  a branch or tag name, or a commit hash). If not supplied, it uses the default
-  Git revision, `HEAD`. If `repo` is a Git repo, this option is ignored.
+  a branch or tag name, or a commit hash). If `repo` is not a Git repo, this
+  option is ignored.
 
-- `remote` - name of the [DVC remote](/doc/command-reference/remote) to look for
-  the target data. If not supplied, the cache directory is tried first for local
-  projects; The default remote of `repo` is tried otherwise.
+- `remote` - name of the [DVC remote](/doc/command-reference/remote) to use to
+  form the returned URL string.
 
   A `dvc.exceptions.NoRemoteError` is raised if no `remote` is found.
 
