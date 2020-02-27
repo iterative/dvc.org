@@ -80,7 +80,13 @@ before the file object is made available.
 - `encoding` - (optional) used to decode contents to a string. Mirrors the
   namesake parameter in builtin `open()`. Defaults to `"utf-8"`.
 
-## Example: Process XML file from an external DVC repository
+## Example: Use artifacts from online DVC repositories
+
+Any <abbr>data artifact</abbr> can be employed directly in your Python app by
+using this API.
+
+For example, an XML file from a public DVC repo online can be processed directly
+in your Python app with:
 
 ```py
 from xml.dom.minidom import parse
@@ -92,15 +98,32 @@ with dvc.api.open(
         repo='https://github.com/iterative/dataset-registry'
         ) as fd:
     xmldom = parse(fd)
-    # ... Process elements
+    # ... Process DOM
 ```
 
 > See `dvc.api.read()` for a shorthand way to read the contents of a tracked
 > file.
 
+Now let's imagine you want to unserialize and use a binary model from a private
+repo online. For a case like this, we can use a SSH URL instead (assuming the
+[credentials are configured](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
+locally):
+
+```py
+import pickle
+import dvc.api
+
+with dvc.api.open(
+        'model.pkl',
+        repo='git@server.com:path/to/repo.git'
+        ) as fd:
+    model = pickle.load(fd)
+    # ... Use instanciated model
+```
+
 ## Example: Use a file from the local cache
 
-In this case we don't supply a `repo` value. DVC will walk up the current
+In this case we don't supply a `repo` argument. DVC will walk up the current
 working directory tree to find the <abbr>DVC project</abbr>:
 
 ```py
@@ -111,7 +134,7 @@ with dvc.api.open('data/nlp/words.txt') as fd:
         # ... Process words
 ```
 
-DVC will look for `data/nlp/words.txt` in the local cache of the
+DVC will look for the file contents of `data/nlp/words.txt` in the local
 <abbr>project</abbr>. (If it's not found there, the default
 [remote](/doc/command-reference/remote) will be tried.)
 
@@ -122,33 +145,31 @@ with dvc.api.open('data/nlp/words.txt', encoding='utf-8') as fd:
     # ...
 ```
 
-## Example: Process CSV file from a private repository
+## Example: Use other versions of data or results
 
-For this we'll have to use the SSH URL to the Git repo (assuming the local
-[SSH credentials](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
-are configured locally):
+The `rev` argument lets you specify any Git commit to look for an artifact. This
+way any previous version, or alternative experiment can be accessed
+programmatically. For example, let's say your DVC repo has tagged releases of a
+CSV dataset:
 
 ```py
 import csv
 import dvc.api
 
 with dvc.api.open(
-        'sea_ice.csv',
-        repo='git@github.com:iterative/df_sea_ice_no_header.git'
+        'clean.csv',
+        rev='v1.1.0'
         ) as fd:
     reader = csv.reader(fd)
-    for row in reader:
-        # ... Process columns
+    # ... Read clean data from version 1.1.0
 ```
-
-> Note that we're using an SSH Git URL for the `repo` argument above.
 
 ## Example: Stream file from a specific remote
 
 Sometimes we may want to choose the [remote](/doc/command-reference/remote) data
-source, for example to ensure that file streaming is enabled (as only certain
-remote storage types support streaming). This can be done by providing a
-`remote` argument:
+source, for example to ensure that file streaming is enabled (as not all remote
+storage types support streaming). This can be done by providing a `remote`
+argument:
 
 ```py
 import dvc.api
@@ -162,17 +183,3 @@ with open(
         match = re.search(r'user=(\w+)', line)
         # ...
 ```
-
-## Example: Unserialize and employ a binary model
-
-```py
-import pickle
-import dvc.api
-
-with dvc.api.open('model.pkl', repo='...') as fd:
-    model = pickle.load(fd)
-    # ... Use model
-```
-
-> For a faster way to perform a similar example, please see the
-> [read() example](/doc/api-reference/read#examples).
