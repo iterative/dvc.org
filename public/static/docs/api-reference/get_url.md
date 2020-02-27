@@ -47,12 +47,12 @@ and `dvc add` to learn more about how DVC handles data directories.
 
 ## Parameters
 
-- **`path`** - specifies the location of the target data within the source
-  project in `repo`, relative to the project's root.
+- **`path`** - specifies the location of the target data within the project in
+  `repo`, relative to the project's root.
 
-- `repo` - specifies the location of the source DVC project. If not supplied,
-  defaults to the current DVC project. It can be a URL or a file system path.
-  Both HTTP and SSH protocols are supported for online Git repos (e.g.
+- `repo` - specifies the location of the DVC project. If not supplied, defaults
+  to the current DVC project. It can be a URL or a file system path. Both HTTP
+  and SSH protocols are supported for online Git repos (e.g.
   `[user@]server:project.git`).
 
   A `dvc.api.UrlNotDvcRepoError` is raised if `repo` is not a valid DVC project.
