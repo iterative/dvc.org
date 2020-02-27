@@ -58,8 +58,9 @@ specified, the set of data files to fetch is determined by analyzing all
 DVC-files in the current branch, unless `--all-branches` or `--all-tags` is
 specified.
 
-The default remote is used unless `--remote` is specified. See `dvc remote add`
-for more information on how to configure different remote storage providers.
+The default remote is used (see `dvc config core.remote`) unless the `--remote`
+option is used. See `dvc remote add` for more information on how to configure
+different remote storage.
 
 `dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
 perform data synchronization among local and remote storage. The specific way in
@@ -73,9 +74,8 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
 
 - `-r REMOTE`, `--remote REMOTE` - name of the
   [remote storage](/doc/command-reference/remote) to fetch from (see
-  `dvc remote list`). If not specified, the default remote is used (see
-  `dvc config core.remote`). The argument `REMOTE` is a remote name defined
-  using the `dvc remote` command.
+  `dvc remote list`). The argument `REMOTE` is a remote name defined using
+  `dvc remote`.
 
 - `-d`, `--with-deps` - one or more `targets` should be specified for this
   option to have effect. Determines files to download by tracking dependencies
@@ -88,10 +88,10 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
   expected to contain one or more directories for this option to have effect.
 
 - `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
-  the downloading of files from the remote. Using more jobs may improve the
-  total download speed if a combination of small and large files are being
-  fetched. The default value is `4 * cpu_count()`. For SSH remotes default is
-  just 4.
+  the downloading of files from the remote. The default value is
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  may improve the total download speed if a combination of small and large files
+  are being fetched.
 
 - `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
   current workspace. This means DVC may download files needed to reproduce

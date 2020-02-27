@@ -107,11 +107,11 @@ reproducible.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-- `-f`, `--file` - specify name of the DVC-file it generates. This option works
-  only if there is a single target. By default the name of the generated
-  DVC-file is `<target>.dvc`, where `<target>` is the file name of the given
-  target. This option allows to set the name and the path of the generated
-  DVC-file.
+- `-f`, `--file` - specify name of the DVC-file it generates. If more than a
+  single target are provided, this option is ignored. By default, the name of
+  the generated DVC-file is `<target>.dvc`, where `<target>` is the file name of
+  the given target. This option allows to set the name and the path of the
+  generated DVC-file.
 
 ## Example: Single file
 

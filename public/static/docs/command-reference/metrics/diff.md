@@ -35,9 +35,7 @@ They're calculated between two commits (hash, branch, tag, or any
 
 ## Options
 
-- `--targets` - specific metric files or directories to calculate metrics
-  differences for. If omitted (default), this command uses all metric files
-  found in both Git references.
+- `--targets` - limit the comparison to these specific metric files.
 
 - `-R`, `--recursive` - determines the metric files to use by searching each
   target directory and its subdirectories for DVC-files to inspect. `targets` is

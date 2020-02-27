@@ -108,12 +108,9 @@ up to date from the external data source.
 
 ## Options
 
-- `-f`, `--file` - specify name of the DVC-file it generates. By default the
-  DVC-file name generated is `<file>.dvc`, where `<file>` is file name of the
-  output (`out`). The stage file is placed in the same directory where
-  `dvc import-url` is run by default, but `-f` can be used to change this
-  location and file name, by including a path in the provided value (e.g.
-  `-f stages/stage.dvc`).
+- `-f`, `--file` - specify a path and/or file name for the DVC-file created by
+  this command (e.g. `-f stages/stage.dvc`). This overrides the default file
+  name: `<file>.dvc`, where `<file>` is the file name of the output (`out`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

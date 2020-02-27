@@ -65,11 +65,11 @@ This is the main section with the general config options:
 - `core.loglevel` - log level that the `dvc` command should use. Possible values
   are: `info`, `debug`, `warning`, `error`.
 
-- `core.remote` - name of the remote that should be used by default.
+- `core.remote` - name of the remote storage that should be used by default.
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
-  each [stage](/doc/command-reference/run) in `dvc repro`. By default this
-  behavior requires the use of option `-i` in that command. Accepts values
+  each [stage](/doc/command-reference/run) in `dvc repro`. (Normally, this
+  behavior requires the use of option `-i` in that command.) Accepts values
   `true` and `false`.
 
 - `core.analytics` - used to turn off
@@ -102,8 +102,8 @@ for more details.) This section contains the following options:
 
 - `cache.dir` - set/unset cache directory location. A correct value must be
   either an absolute path or a path **relative to the config file location**.
-  The default value is `cache` that, resolved relative to the default project
-  config location, results in `.dvc/cache`.
+  The default value is `cache`, that resolves to `.dvc/cache` (relative to the
+  project config file location).
 
   > See also helper command `dvc cache dir` to intuitively set this config
   > option, properly transforming paths relative to the current working
@@ -153,10 +153,10 @@ for more details.) This section contains the following options:
   > set.
 
 - `cache.shared` - permissions for newly created or downloaded cache files and
-  directories. The default permissions are `0o664`(rw-r--r--) for files and
-  `0o755`(rwxr-xr-x) for directories. The only accepted value right now is
-  `group`, which makes DVC use `0o664`(rw-rw-r--) for files and
-  `0o775`(rwxrwxr-x) for directories, which is useful when you are using a a
+  directories. The default is `0o664`(rw-r--r--) for files and `0o755`
+  (rwxr-xr-x) for directories. The only accepted value right now is `group`,
+  which makes DVC use `0o664` (rw-rw-r--) for files and `0o775` (rwxrwxr-x) for
+  directories, which is useful when you are using a a
   [shared development server](/doc/use-cases/shared-development-server).
 
 - `cache.local` - name of a local remote to use as cache directory. (Refer to
@@ -191,15 +191,15 @@ learn more about the state file (database) that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database, which
   affects the physical size of the state file itself, as well as the performance
-  of certain DVC operations. The bigger the limit, the longer the file hash
-  history that DVC can keep, in order to avoid sequential hash recalculations.
-  The default limit is set to 10,000,000 rows.
+  of certain DVC operations. The default is 10,000,000 rows. The bigger the
+  limit, the longer the file hash history that DVC can keep, in order to avoid
+  sequential hash recalculations.
 
 - `state.row_cleanup_quota` - percentage of the state database that is going to
-  be deleted when it hits the `state.row_limit`. When an entry in the database
-  is used (e.g. during the `dvc status`) dvc updates the timestamp on that entry
-  so that when it needs to cleanup the database it could sort them by the
-  timestamp and remove the oldest ones. Default quota is set to 50(percent).
+  be deleted when it hits the `state.row_limit`. Default quota is set to 50%.
+  When an entry in the database is used (e.g. during the `dvc status`), DVC
+  updates the timestamp on that entry. This way, when the database needs a
+  cleanup, DVC can sort entries chronologically, and remove the oldest ones.
 
 ## Example: Set the debug level
 

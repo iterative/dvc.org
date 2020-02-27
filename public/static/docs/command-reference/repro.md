@@ -85,8 +85,8 @@ and only execute the final stage.
 ## Options
 
 - `-f`, `--force` - reproduce a pipeline, regenerating its results, even if no
-  changes were found. By default this executes all of its stages but it can be
-  limited with the `targets` argument and `-s`, `-p`, or `-c` options.
+  changes were found. This executes all of the stages by default, but it can be
+  limited with the `targets` argument, or the `-s`, `-p`, `-c` options.
 
 - `-s`, `--single-item` - reproduce only a single stage by turning off the
   recursive search for changed dependencies. Multiple stages are executed

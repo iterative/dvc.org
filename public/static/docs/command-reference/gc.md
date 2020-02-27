@@ -57,8 +57,8 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
   if `-c` option is specified.
 
 - `-j`, `--jobs` - garbage collector parallelism level. The default value is
-  `4 * cpu_count()`. For SSH remotes default is 4. For now only some phases of
-  GC are parallel.
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. For now only some
+  phases of GC are parallel.
 
 - `-f`, `--force` - force garbage collection. Skip confirmation prompt.
 

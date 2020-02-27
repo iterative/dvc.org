@@ -71,10 +71,10 @@ to push.
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` specifies which remote to push from (see
-  `dvc remote list`). The value for `REMOTE` is a name defined using
-  `dvc remote`. If the option is not specified, then the default remote
-  (configured with the `core.config` config option) is used.
+- `-r REMOTE`, `--remote REMOTE` - name of the
+  [remote storage](/doc/command-reference/remote) to push from (see
+  `dvc remote list`). The argument `REMOTE` is a remote name defined using
+  `dvc remote`.
 
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
   in all Git branches instead of just those present in the current workspace.
@@ -94,11 +94,11 @@ to push.
   directory and its subdirectories for DVC-files to inspect. `targets` is
   expected to contain one or more directories for this option to have effect.
 
-- `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
-  while uploading files to the remote. The effect is to control the number of
-  files uploaded simultaneously. Default is `4 * cpu_count()`. For example with
-  `-j 1` DVC uploads one file at a time, with `-j 2` it uploads two at a time,
-  and so forth. For SSH remotes default is set to 4.
+- `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
+  the uploading of files from the remote. The default value is
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  may improve the total download speed if a combination of small and large files
+  are being fetched.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
