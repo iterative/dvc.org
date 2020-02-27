@@ -14,16 +14,16 @@ modelpkl = dvc.api.read(
 All **parameter** types are
 [string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
 
-The **return** type can be a
-[bytes object](https://docs.python.org/3/glossary.html#term-bytes-like-object)
-or a
-[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
-
 ## Description
 
 This function wraps [`dvc.api.open()`](/doc/api-reference/open) for a simple and
 direct way to return the complete contents of files tracked in <abbr>DVC
-projects</abbr> (by DVC or Git) – no _context manager_ (`with` keyword) needed.
+projects</abbr> (by DVC or Git).
+
+The returned contents can be a
+[bytes object](https://docs.python.org/3/glossary.html#term-bytes-like-object)
+or a
+[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
 
 > Internally, it uses the _file object_'s
 > [`read()`](https://docs.python.org/3/tutorial/inputoutput.html#methods-of-file-objects)

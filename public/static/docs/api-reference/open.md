@@ -16,19 +16,22 @@ with dvc.api.open(
 All **parameter** types are
 [string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
 
-The **return** type is a
-[file object](https://docs.python.org/3/glossary.html#term-file-object).
-
 ## Description
 
-This function is analogous to the
-[`open()`](https://docs.python.org/3/library/functions.html#open) Python
-builtin, but for files tracked in <abbr>DVC projects</abbr> (by DVC or Git).
-However, it may only be used as a _context manager_ (using the `with` keyword as
-shown in the [Examples](#examples) below). There is no `dvc.api.close()`.
+Open file tracked in a <abbr>DVC projects</abbr> (by DVC or Git), and return a
+corresponding
+[file object](https://docs.python.org/3/glossary.html#term-file-object). If the
+file cannot be found, an `PathMissingError` is raised.
+
+> This function is analogous to the
+> [`open()`](https://docs.python.org/3/library/functions.html#open) Python
+> builtin.
+
+It may only be used as a _context manager_ (using the `with` keyword as shown in
+the [Examples](#examples) below). There is no `dvc.api.close()`.
 
 > See also `dvc.api.read()` for a shorthand way to read the complete contents of
-> a tracked file.
+> a tracked file – no _context manager_ syntax needed.
 
 `dvc.api.open()` avoids downloading files from **most**
 [remote types](/doc/command-reference/remote/add#supported-storage-types). It

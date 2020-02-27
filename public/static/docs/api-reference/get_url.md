@@ -14,14 +14,12 @@ resource_url = dvc.api.get_url(
 # https://remote.dvc.org/dataset-registry/a3/04af...
 ```
 
-All **parameter** types, as well as the **return** type are
+All **parameter** types are
 [string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
-
-Raises `UrlNotDvcRepoError` if `repo` is not a <abbr>DVC repository</abbr>.
 
 ## Description
 
-Returns the full URL to the physical location (in a
+Returns the full URL string of the physical location (in a
 [DVC remote](/doc/command-reference/remote)) where a target file or directory
 (<abbr>artifact</abbr>), specified by its `path` in a `repo` (<abbr>DVC
 project</abbr>), is stored. The URL is formed by reading the corresponding
