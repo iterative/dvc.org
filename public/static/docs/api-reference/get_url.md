@@ -19,16 +19,16 @@ All **parameter** types are
 
 ## Description
 
-Returns the full URL string of the physical location (in a
+Returns the URL string of the physical location (in a
 [DVC remote](/doc/command-reference/remote)) where a target file or directory
 (<abbr>artifact</abbr>), specified by its `path` in a `repo` (<abbr>DVC
 project</abbr>), is stored. The URL is formed by reading the corresponding
 [DVC-file](/doc/user-guide/dvc-file-format) (see [Examples](#examples) below) as
 well as the project's
-[default remote](https://dvc.org/doc/command-reference/remote/default).
+[remote configuration](/doc/command-reference/config#remote).
 
 The URL schema returned depends on the type of `remote`. Here's a full list of
-[supported remote types](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
+[supported remote types](/doc/command-reference/remote/add#supported-storage-types).
 
 ⚠️ This function does not check for the actual existence of the target data in
 the remote storage.
@@ -76,14 +76,15 @@ resource_url = dvc.api.get_url(
     'get-started/data.xml',
     repo='https://github.com/iterative/dataset-registry'
     )
+print(resource_url)
 ```
 
-The value of `resource_url` in this case would result in:
+Outputs:
 
 `https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`
 
-This URL represents the physical location of the data, and is built by reading
-the corresponding DVC-file
+This URL represents the location where the data is stored, and is built by
+reading the corresponding DVC-file
 ([`get-started/data.xml.dvc`](https://github.com/iterative/dataset-registry/blob/master/get-started/data.xml.dvc))
 where the `md5` file hash is stored,
 
