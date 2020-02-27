@@ -88,7 +88,6 @@ in your Python app with:
 
 ```py
 from xml.dom.minidom import parse
-
 import dvc.api
 
 with dvc.api.open(
@@ -99,8 +98,14 @@ with dvc.api.open(
     # ... Process DOM
 ```
 
-> See `dvc.api.read()` for a shorthand way to read the contents of a tracked
-> file.
+> Notice that you could read the contents of a tracked file faster with
+> `dvc.api.read()`:
+>
+> ```py
+> xmldata = dvc.api.read('get-started/data.xml',
+>     repo='https://github.com/iterative/dataset-registry')
+> xmldom = parse(xmldata)
+> ```
 
 Now let's imagine you want to unserialize and use a binary model from a private
 repo online. For a case like this, we can use a SSH URL instead (assuming the
