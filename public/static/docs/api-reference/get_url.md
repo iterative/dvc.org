@@ -47,8 +47,8 @@ and `dvc add` to learn more about how DVC handles data directories.
 
 ## Parameters
 
-- **`path`** - specifies the location of the target data within the project in
-  `repo`, relative to the project's root.
+- **`path`** - location and file name of the file or directory in `repo`,
+  relative to the project's root.
 
 - `repo` - specifies the location of the DVC project. If not supplied, defaults
   to the current DVC project. It can be a URL or a file system path. Both HTTP
