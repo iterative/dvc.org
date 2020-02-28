@@ -69,10 +69,9 @@ data artifact from the source repo.
 ## Options
 
 - `-o`, `--out` - specify a path (directory and/or file name) to the desired
-  location to place the imported data and import stage (DVC-file) in. The
-  default value (when this option isn't used) is the current working directory
-  (`.`) and original file name. If an existing directory is specified, then the
-  output will be placed inside of it.
+  location to place the imported file in (instead of using the current working
+  directory). If an existing directory is specified, the output will be placed
+  inside of it.
 
 - `--rev` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to

@@ -71,15 +71,15 @@ reproducibility in those cases.
 
 ## Options
 
-- `-d`, `--with-deps` - one or more `targets` should be specified for this
-  option to have effect. Determines files to commit by tracking dependencies to
-  the target DVC-files (stages). By traversing all stage dependencies, DVC
-  searches backward from the target stages in the corresponding pipelines. This
-  means DVC will not commit files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - determines files to commit by tracking dependencies to
+  the target DVC-files (stages). If no `targets` are provided, this option is
+  ignored. By traversing all stage dependencies, DVC searches backward from the
+  target stages in the corresponding pipelines. This means DVC will not commit
+  files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain one or more directories
-  for this option to have effect. Determines the files to commit by searching
-  each target directory and its subdirectories for DVC-files to inspect.
+- `-R`, `--recursive` - determines the files to commit by searching each target
+  directory and its subdirectories for DVC-files to inspect. If there are no
+  directories among the `targets`, this option is ignored.
 
 - `-f`, `--force` - commit data even if hash values for dependencies or outputs
   did not change.

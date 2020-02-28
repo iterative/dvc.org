@@ -70,7 +70,7 @@ Use `dvc config` to unset/change the default remote as so:
   your config that you don't want to track and share through Git (credentials,
   private locations, etc).
 
-- `-d`, `-default` - commands that require a remote (such as `dvc pull`,
+- `-d`, `--default` - commands that require a remote (such as `dvc pull`,
   `dvc push`, `dvc fetch`) will be using this remote by default to upload or
   download data (unless their `-r` option is used).
 
