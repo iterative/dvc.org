@@ -6,12 +6,12 @@ formatting.
 ## Synopsis
 
 ```usage
-usage: dvc metrics show [-h] [-q | -v] [-t TYPE] [-x XPATH] [-a] [-T] [-R]
+usage: dvc metrics show [-h] [-q | -v]
+                        [-t TYPE] [-x XPATH] [-a] [-T] [-R]
                         [targets [targets ...]]
 
 positional arguments:
-  targets               Metric files or directories (see -R) to show (leave
-                        empty to display all)
+  targets               Metric files or directories (see -R) to show
 ```
 
 ## Description
