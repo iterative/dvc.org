@@ -46,9 +46,9 @@ the first output (`-o`, `-O`, `-m`, or `-M` option). If neither `-f` nor outputs
 are specified, the file name defaults to `Dvcfile`.
 
 Note that `dvc run` executes the given `command` in order to check it's validity
-and to write the defined outputs, unless an equivalent stage file exists (same
-dependencies, outputs, and `command` to execute) that has already been run and
-is up to date.
+and to write the defined outputs, unless the same `dvc run` command has already
+been run in this workspace (meaning an identical stage file already exists, and
+its outputs correspond to the stored file hash values).
 
 Note that `dvc repro` provides an interface to check state and reproduce this
 graph (pipeline) later. This concept is similar to the one of the
@@ -144,10 +144,10 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   determined by the logic described in the `-f` option) without asking for
   confirmation.
 
-- `--ignore-build-cache` - forcefully execute the `command` again, even if an
-  equivalent stage file exists. Useful if the command's code is
-  non-deterministic (meaning it produces different outputs from the same list of
-  inputs).
+- `--ignore-build-cache` - forcefully execute the `command` again, even if the
+  same `dvc run` command has already been run in this workspace. Useful if the
+  command's code is non-deterministic (meaning it produces different outputs
+  from the same list of inputs).
 
 - `--remove-outs` (_deprecated_) - remove stage outputs before executing the
   `command`. If `--no-exec` specified outputs are removed anyway. See
