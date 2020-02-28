@@ -317,7 +317,6 @@ When you have a script that takes some data as an input and produces other data
 > ```
 
 ```dvc
-$ dvc remove -pf model.h5.dvc
 $ dvc run -f Dvcfile \
           -d train.py -d data \
           -M metrics.csv \
