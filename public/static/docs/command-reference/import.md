@@ -161,7 +161,11 @@ source may have updates at a later time. To bring it up to date if so (and
 update `rev_lock` in the DVC-file), simply use `dvc update <stage>.dvc`. If
 `rev` is a specific commit (does not change), `dvc update` will never have an
 effect on the import stage. You may `dvc update` to a different commit, using
-`--rev`.
+`--rev`:
+
+```dvc
+$ dvc update --rev cats-dogs-v2
+```
 
 ## Example: Data registry
 

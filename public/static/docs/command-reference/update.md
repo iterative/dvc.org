@@ -106,17 +106,16 @@ There was no output at all, meaning, the `model.pkl` file was not updated. This
 is because, we tied the import stage with a `rev` that never changes (i.e. tag
 is tied to a specific commit). Therefore, it was not updated.
 
-Let's try to update the model to a different experiment `bigrams-experiment`.
+Let's try to update the model to a different experiment `bigrams-experiment`:
 
 ```dvc
 $ dvc update --rev bigrams-experiment model.pkl.dvc
-WARNING: DVC-file 'model.pkl.dvc' changed.
-WARNING: Stage 'model.pkl.dvc' changed.
-Importing 'model.pkl (git@github.com:iterative/example-get-started)' -> 'model.pkl'
+Importing 'model.pkl (git@github.com:iterative/example-get-started)'
+-> 'model.pkl'
 ```
 
 The import stage is overwritten, and will get updated from the latest changes in
-the given revision(i.e. `bigrams-experiment` tag).
+the given revision (i.e. `bigrams-experiment` tag).
 
 > In the above example, the value for `rev` in the new import stage will be
 > `bigrams-experiment`.

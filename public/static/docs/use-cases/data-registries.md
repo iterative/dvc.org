@@ -141,7 +141,7 @@ $ dvc update dataset.dvc
 `images/faces/`, based on the latest commit in the source repo. It also updates
 the project dependency metadata in the import stage (DVC-file).
 
-### Programatic reusability of DVC data
+### Programmatic reusability of DVC data
 
 Our Python API, included with the `dvc` package installed with DVC, includes the
 `open` function to load/stream data directly from external <abbr>DVC
