@@ -36,6 +36,7 @@
     "dom-scroll-into-view": "^2.0.1",
     "github-markdown-css": "^3.0.1",
     "isomorphic-fetch": "^2.2.1",
+    "lodash.fill": "^3.4.0",
     "lodash.includes": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
     "lodash.startcase": "^4.4.0",

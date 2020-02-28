@@ -229,10 +229,6 @@ $ python train.py
 $ dvc add model.h5
 ```
 
-> `dvc remove` is necessary here because `model.h5` was already added with
-> `dvc add` earlier, but we want to do so again. Later we'll see how `dvc run`
-> eliminates this extra step.
-
 Let's commit the second version:
 
 ```dvc
