@@ -31,10 +31,8 @@ The `dvc pull` command allows one to retrieve data from remote storage.
 `dvc pull` has the same effect as running `dvc fetch` and `dvc checkout`
 immediately after that.
 
-If the `--remote REMOTE` option is not specified, then the default remote,
-configured with the `core.config` config option, is used. See `dvc remote`,
-`dvc config` and this [example](/doc/get-started/configure) for more information
-on how to configure a remote.
+The default remote is used (see `dvc config core.remote`) unless the `--remote`
+option is used.
 
 With no arguments, just `dvc pull` or `dvc pull --remote REMOTE`, it downloads
 only the files (or directories) missing from the workspace by searching all
@@ -61,8 +59,7 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 - `-r REMOTE`, `--remote REMOTE` - name of the
   [remote storage](/doc/command-reference/remote) to pull from (see
-  `dvc remote list`). The argument `REMOTE` is a remote name defined using
-  `dvc remote`.
+  `dvc remote list`).
 
 - `-a`, `--all-branches` - determines the files to download by examining
   DVC-files in all Git branches instead of just those present in the current

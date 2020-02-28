@@ -108,9 +108,10 @@ up to date from the external data source.
 
 ## Options
 
-- `-f`, `--file` - specify a path and/or file name for the DVC-file created by
-  this command (e.g. `-f stages/stage.dvc`). This overrides the default file
-  name: `<file>.dvc`, where `<file>` is the file name of the output (`out`).
+- `-f FILE`, `--file FILE` - specify a path and/or file name for the DVC-file
+  created by this command (e.g. `-f stages/stage.dvc`). This overrides the
+  default file name: `<file>.dvc`, where `<file>` is the file name of the output
+  (`out`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

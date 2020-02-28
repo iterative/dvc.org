@@ -59,8 +59,7 @@ DVC-files in the current branch, unless `--all-branches` or `--all-tags` is
 specified.
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
-option is used. See `dvc remote add` for more information on how to configure
-different remote storage.
+option is used.
 
 `dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
 perform data synchronization among local and remote storage. The specific way in
@@ -74,8 +73,7 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
 
 - `-r REMOTE`, `--remote REMOTE` - name of the
   [remote storage](/doc/command-reference/remote) to fetch from (see
-  `dvc remote list`). The argument `REMOTE` is a remote name defined using
-  `dvc remote`.
+  `dvc remote list`).
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
   the target DVC-files (stages). If no `targets` are provided, this option is

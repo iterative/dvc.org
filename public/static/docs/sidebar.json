@@ -214,16 +214,16 @@
         }
       },
       {
+        "label": "gc",
+        "slug": "gc"
+      },
+      {
         "label": "get-url",
         "slug": "get-url"
       },
       {
         "label": "get",
         "slug": "get"
-      },
-      {
-        "label": "gc",
-        "slug": "gc"
       },
       {
         "label": "import-url",

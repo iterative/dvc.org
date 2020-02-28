@@ -47,11 +47,11 @@ Under the hood a few actions are taken:
 - Upload the cache files missing from remote storage, if any, to the remote.
 
 The DVC `push` command always works with a remote storage, and it is an error if
-none are specified on the command line nor in the configuration. If a
-`--remote REMOTE` option is not specified, then the default remote, configured
-with the `core.config` config option, is used. See `dvc remote`, `dvc config`
-and this [example](/doc/get-started/configure) for more information on how to
-configure a remote.
+none are specified on the command line nor in the configuration. The default
+remote is used (see `dvc config core.remote`) unless the `--remote` option is
+used. See `dvc remote`, `dvc config` and this
+[example](/doc/get-started/configure) for more information on how to configure a
+remote.
 
 With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
 only the files (or directories) that are new in the local repository to remote
@@ -73,8 +73,7 @@ to push.
 
 - `-r REMOTE`, `--remote REMOTE` - name of the
   [remote storage](/doc/command-reference/remote) to push from (see
-  `dvc remote list`). The argument `REMOTE` is a remote name defined using
-  `dvc remote`.
+  `dvc remote list`).
 
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
   in all Git branches instead of just those present in the current workspace.

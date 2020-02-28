@@ -108,8 +108,7 @@ workspace) is different from remote storage. Bringing the two into sync requires
   (specified in the `core.remote` config option).
 
 - `-r REMOTE`, `--remote REMOTE` - specifies which remote storage (see
-  `dvc remote list`) to compare against. The argument, `REMOTE`, is a remote
-  name defined using the `dvc remote` command. Implies `--cloud`.
+  `dvc remote list`) to compare against. Implies `--cloud`.
 
 - `-a`, `--all-branches` - compares cache content against all Git branches
   instead of just the current workspace. This basically runs the same status

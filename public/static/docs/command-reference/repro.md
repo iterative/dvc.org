@@ -92,7 +92,7 @@ and only execute the final stage.
   recursive search for changed dependencies. Multiple stages are executed
   (non-recursively) if multiple stage files are given as `targets`.
 
-- `-c`, `--cwd` - directory within the project to reproduce from. If no
+- `-c CWD`, `--cwd CWD` - directory within the project to reproduce from. If no
   `targets` are given, it attempts to use `Dvcfile` in the specified directory.
   Instead of using `--cwd`, one can alternately specify a target in a
   subdirectory as `path/to/target.dvc`. This option can be useful for example
