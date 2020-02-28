@@ -23,9 +23,8 @@ Returns the URL string of the physical location (in a
 [DVC remote](/doc/command-reference/remote)) where a target file or directory
 (<abbr>artifact</abbr>), specified by its `path` in a `repo` (<abbr>DVC
 project</abbr>), is stored. The URL is formed by reading the corresponding
-[DVC-file](/doc/user-guide/dvc-file-format) (see [Examples](#examples) below) as
-well as the project's
-[remote configuration](/doc/command-reference/config#remote).
+[DVC-file](/doc/user-guide/dvc-file-format) (see the **Examples** below) as well
+as the project's [remote configuration](/doc/command-reference/config#remote).
 
 The current project is used by default (the current working directory tree is
 walked up to find it), unless a `repo` argument is supplied.
@@ -74,7 +73,7 @@ and `dvc add` to learn more about how DVC handles data directories.
 
   A `dvc.exceptions.NoRemoteError` is raised if no `remote` is found.
 
-## Examples
+## Example: Get a remote storage URL to a data file
 
 ```py
 import dvc.api

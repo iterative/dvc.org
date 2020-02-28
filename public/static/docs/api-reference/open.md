@@ -38,7 +38,7 @@ provided, the repo's `HEAD` version is used.
 
 `dvc.api.open()` may only be used as a
 [context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
-(using the `with` keyword, as shown in the [Examples](#examples) below).
+(using the `with` keyword, as shown in the **Examples** below).
 
 > Use `dvc.api.read()` to get the file's contents directly – no _context
 > manager_ involved.

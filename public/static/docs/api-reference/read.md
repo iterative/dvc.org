@@ -68,9 +68,13 @@ or a
   mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in builtin
   `open()`.
 
-## Examples
+## Example: Use artifacts from online DVC repositories
 
-If you want to unserialize and use a binary model from an online repo:
+Any <abbr>data artifact</abbr> can be employed directly in your Python app by
+using this API.
+
+For example, let's say that you want to unserialize and use a binary model from
+an online repo:
 
 ```py
 import pickle
