@@ -70,6 +70,8 @@ or a
 
 ## Examples
 
+If you want to unserialize and use a binary model from an online repo:
+
 ```py
 import pickle
 import dvc.api
