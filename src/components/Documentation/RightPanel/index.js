@@ -91,7 +91,9 @@ export default class RightPanel extends React.PureComponent {
 
   updateHeadingsPosition = () => {
     const coordinates = this.props.headings.reduce((result, { slug }) => {
-      return { ...result, [document.getElementById(slug).offsetTop]: slug }
+      const headingElement = document.getElementById(slug)
+
+      return { ...result, [headingElement && headingElement.offsetTop]: slug }
     }, {})
 
     const height = this.root.offsetHeight

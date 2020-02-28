@@ -1,51 +1,26 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react'
-import PropTypes from 'prop-types'
-import Router from 'next/router'
-import docsearch from 'docsearch.js'
+/* global docsearch:readonly */
 
-import 'docsearch.js/dist/cdn/docsearch.css'
+import React, { useCallback, useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 
 import Page from '../Page'
 import Hamburger from '../Hamburger'
 import SearchForm from '../SearchForm'
 import SidebarMenu from './SidebarMenu'
-import Markdown, { extractSlugFromTitle } from './Markdown'
+import Markdown from './NewMarkdown'
 import RightPanel from './RightPanel'
 
-import { structure } from '../../utils/sidebar'
+import { structure, getItemByPath } from '../../utils/sidebar'
 
 import { Backdrop, Container, SearchArea, Side, SideToggle } from './styles'
 
 const ROOT_ELEMENT = 'bodybag'
 const SIDEBAR_MENU = 'sidebar-menu'
 
-const parseHeadings = text => {
-  const headingRegex = /\n(## \s*)(.*)/g
-  const matches = []
-  let match
-  do {
-    match = headingRegex.exec(text)
-    if (match) {
-      const [title, slug] = extractSlugFromTitle(match[2])
-      matches.push({
-        text: title,
-        slug: slug
-      })
-    }
-  } while (match)
+export default function Documentation({ html, path, headings }) {
+  const { source, prev, next, tutorials } = getItemByPath(path)
 
-  return matches
-}
-
-export default function Documentation({
-  source,
-  path,
-  next,
-  prev,
-  tutorials,
-  markdown
-}) {
-  const headings = useMemo(() => parseHeadings(markdown))
+  // const headings = useMemo(() => parseHeadings(markdown))
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSearchAvaible, setIsSearchAvaible] = useState(false)
 
@@ -69,19 +44,6 @@ export default function Documentation({
       // nothing there
     }
   }, [isSearchAvaible])
-
-  useEffect(() => {
-    const handleRouteChange = () => {
-      const rootElement = document.getElementById(ROOT_ELEMENT)
-      if (rootElement) {
-        rootElement.scrollTop = 0
-      }
-    }
-
-    Router.events.on('routeChangeComplete', handleRouteChange)
-
-    return () => Router.events.off('routeChangeComplete', handleRouteChange)
-  }, [])
 
   const githubLink = `https://github.com/iterative/dvc.org/blob/master/public${source}`
 
@@ -108,15 +70,13 @@ export default function Documentation({
             onClick={toggleMenu}
           />
         </Side>
-
         <Markdown
-          markdown={markdown}
-          githubLink={githubLink}
+          html={html}
           prev={prev}
           next={next}
+          githubLink={githubLink}
           tutorials={tutorials}
         />
-
         <RightPanel
           headings={headings}
           githubLink={githubLink}
@@ -128,11 +88,7 @@ export default function Documentation({
 }
 
 Documentation.propTypes = {
-  source: PropTypes.string,
   path: PropTypes.string,
-  next: PropTypes.string,
-  prev: PropTypes.string,
-  tutorials: PropTypes.object,
-  markdown: PropTypes.string,
-  errorCode: PropTypes.number
+  headings: PropTypes.array,
+  html: PropTypes.string
 }

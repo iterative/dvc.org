@@ -19,7 +19,7 @@
 */
 
 const startCase = require('lodash.startcase')
-const sidebar = require('../../docs/sidebar.json.js')
+const sidebar = require('../../content/docs/sidebar.json')
 
 const PATH_ROOT = '/doc/'
 const FILE_ROOT = '/docs/'
@@ -39,15 +39,15 @@ function validateRawItem({ slug, source, children }) {
   }
 }
 
-function findItem(data, targetPath) {
+function findItemByField(data, field, targetValue) {
   if (data.length) {
     for (let i = 0; i < data.length; i++) {
-      const { path, children } = data[i]
+      const { children } = data[i]
 
-      if (path === targetPath) {
+      if (data[i][field] === targetValue) {
         return data[i]
       } else if (children) {
-        const result = findItem(children, targetPath)
+        const result = findItemByField(children, field, targetValue)
         if (result) {
           return result
         }
@@ -60,7 +60,7 @@ function findPrevItemWithSource(data, item) {
   if (item && item.source) {
     return item
   } else if (item && item.prev) {
-    const prevItem = findItem(data, item.prev)
+    const prevItem = findItemByField(data, 'path', item.prev)
 
     return findPrevItemWithSource(data, prevItem)
   }
@@ -146,16 +146,26 @@ const normalizedSidebar = normalizeSidebar({
   parentPath: ''
 })
 
+function getFirstPage() {
+  return findChildWithSource(normalizedSidebar[0]).path
+}
+
 function getItemByPath(path) {
   const normalizedPath = path.replace(/\/$/, '')
   const isRoot = normalizedPath === PATH_ROOT.slice(0, -1)
   const item = isRoot
     ? normalizedSidebar[0]
-    : findItem(normalizedSidebar, normalizedPath)
+    : findItemByField(normalizedSidebar, 'path', normalizedPath)
 
   if (!item) return false
 
   return findChildWithSource(item)
+}
+
+function getItemBySource(source) {
+  const item = findItemByField(normalizedSidebar, 'source', source)
+
+  return item || false
 }
 
 function getParentsListFromPath(path) {
@@ -175,5 +185,7 @@ function getParentsListFromPath(path) {
 module.exports = {
   structure: normalizedSidebar,
   getItemByPath,
-  getParentsListFromPath
+  getItemBySource,
+  getParentsListFromPath,
+  getFirstPage
 }

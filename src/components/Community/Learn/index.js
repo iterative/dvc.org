@@ -5,6 +5,7 @@ import format from 'date-fns/format'
 import LocalLink from '../../LocalLink'
 
 import { logEvent } from '../../../utils/ga'
+import { getFirstPage } from '../../../utils/sidebar'
 
 import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
@@ -32,6 +33,7 @@ import { Image } from './styles'
 
 import data from '../data'
 
+const docsPage = getFirstPage()
 const { description, mobileDescription, title } = data.section.learn
 const { documentation, userContent } = data
 
@@ -196,7 +198,7 @@ export default function CommunityLearn({ theme }) {
             <CommunityBlock
               title={
                 <LocalLink
-                  href="/doc"
+                  href={docsPage}
                   as={HeaderLink}
                   onClick={logDocumentationAll}
                 >
@@ -205,7 +207,7 @@ export default function CommunityLearn({ theme }) {
               }
               action={
                 <LocalLink
-                  href="/doc"
+                  href={docsPage}
                   as={Button}
                   theme={theme}
                   onClick={logDocumentationAll}

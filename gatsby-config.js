@@ -1,5 +1,7 @@
 /* eslint-env node */
 
+const path = require('path')
+
 const title = 'Data Version Control · DVC'
 const description =
   'Open-source version control system for Data Science and Machine Learning ' +
@@ -13,6 +15,31 @@ const keywords = [
 ]
 
 const plugins = [
+  {
+    resolve: 'gatsby-source-filesystem',
+    options: {
+      name: 'blog',
+      path: path.join(__dirname, 'content', 'docs')
+    }
+  },
+  {
+    resolve: 'gatsby-transformer-remark',
+    options: {
+      plugins: [
+        'gatsby-remark-prismjs',
+        'gatsby-remark-copy-linked-files',
+        'gatsby-remark-smartypants',
+        {
+          resolve: 'gatsby-remark-autolink-headers',
+          options: {
+            enableCustomId: true,
+            isIconAfterHeader: true
+          }
+        }
+      ]
+    }
+  },
+  'gatsby-plugin-catch-links',
   /*{
     options: {
       background_color: '#eff4f8',

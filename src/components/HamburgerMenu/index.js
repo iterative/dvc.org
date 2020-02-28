@@ -5,6 +5,8 @@ import LocalLink from '../LocalLink'
 
 import { logEvent } from '../../utils/ga'
 
+import { getFirstPage } from '../../utils/sidebar'
+
 import {
   Button,
   Image,
@@ -19,6 +21,8 @@ import {
   Top,
   Wrapper
 } from './styles'
+
+const docsPage = getFirstPage()
 
 export default function HamburgerMenu() {
   const [menu, setMenu] = useState(false)
@@ -66,7 +70,7 @@ export default function HamburgerMenu() {
             </LocalLink>
           </Section>
           <Section>
-            <LocalLink href="/doc" as={Link} onClick={itemClick('doc')}>
+            <LocalLink href={docsPage} as={Link} onClick={itemClick('doc')}>
               Doc
             </LocalLink>
           </Section>

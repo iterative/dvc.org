@@ -4,6 +4,9 @@ import PropTypes from 'prop-types'
 import LocalLink from '../LocalLink'
 
 import { logEvent } from '../../utils/ga'
+import { getFirstPage } from '../../utils/sidebar'
+
+const docsPage = getFirstPage()
 
 import {
   Dropdown,
@@ -30,7 +33,7 @@ export default function Nav({ mobile = false }) {
           Features
         </LocalLink>
         <LocalLink
-          href="/doc"
+          href={docsPage}
           as={Link}
           onClick={() => logEvent('menu', 'doc')}
         >

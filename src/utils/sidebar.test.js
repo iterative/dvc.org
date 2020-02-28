@@ -150,7 +150,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../public/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)
@@ -190,7 +190,7 @@ describe('SidebarMenu/helper', () => {
         }
       ]
 
-      jest.doMock('../../public/docs/sidebar.json', () => rawData)
+      jest.doMock('../../content/docs/sidebar.json', () => rawData)
       const sidebarData = require('./sidebar').structure
 
       expect(sidebarData).toEqual(result)

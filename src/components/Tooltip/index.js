@@ -5,7 +5,7 @@ import includes from 'lodash.includes'
 import DesktopView from './DesktopView'
 import MobileView from './MobileView'
 
-import glossary from '../../../docs/glossary'
+import glossary from '../../../content/docs/glossary'
 
 import { OnlyDesktopInline, OnlyMobileInline } from '../../styles'
 

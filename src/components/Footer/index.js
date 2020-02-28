@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import LocalLink from '../LocalLink'
 
+import { getFirstPage } from '../../utils/sidebar'
+
 import {
   Column,
   Columns,
@@ -15,6 +17,8 @@ import {
   Top,
   Wrapper
 } from './styles'
+
+const docsPage = getFirstPage()
 
 const SocialLink = ({ src, href, children }) => (
   <Link src={src} href={href}>
@@ -66,7 +70,7 @@ export default function Footer(props) {
               <LocalLink href="/community" as={Link}>
                 Community
               </LocalLink>
-              <LocalLink href="/doc" as={Link}>
+              <LocalLink href={docsPage} as={Link}>
                 Documentation
               </LocalLink>
             </Links>

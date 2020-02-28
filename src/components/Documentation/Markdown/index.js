@@ -6,7 +6,7 @@ import kebabCase from 'lodash.kebabcase'
 
 import 'github-markdown-css/github-markdown.css'
 
-import Router from 'next/router'
+import { navigate } from '@reach/router'
 
 import LocalLink from '../../LocalLink'
 import Tooltip from '../../Tooltip'
@@ -49,22 +49,6 @@ function flatten(text, child) {
   return typeof child === 'string'
     ? text + child
     : React.Children.toArray(child.props.children).reduce(flatten, text)
-}
-
-const SLUG_REGEXP = /\s+{#([a-z0-9-]*[a-z0-9]+)}\s*$/
-
-function isTitleHasSlug(title) {
-  return typeof title === 'string' && SLUG_REGEXP.test(title)
-}
-
-export function extractSlugFromTitle(title) {
-  // extracts expressions like {#too-many-files} from the end of a title
-  const meta = title.match(SLUG_REGEXP)
-
-  if (meta) {
-    return [title.substring(0, meta.index), meta[1]]
-  }
-  return [title, kebabCase(title)]
 }
 
 const HeadingRenderer = ({ level, children }) => {
@@ -211,11 +195,11 @@ export default class Markdown extends React.PureComponent {
     const { prev, next } = this.props
 
     if (this.touchstartX - this.touchendX > 100) {
-      Router.push({ asPath: PAGE_DOC, pathname: next })
+      navigate(next)
     }
 
     if (this.touchendX - this.touchstartX > 100) {
-      Router.push({ asPath: PAGE_DOC, pathname: prev })
+      navigate(prev)
     }
   }
 
