@@ -297,7 +297,7 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote credentialpath /path/to/my/creds/[FILE_NAME].json
   ```
   
-  Google Cloud is migrating to allowing only Service Accounts for application logins. To ensure forward compatibility and better security - its best practice to set up a Goole Sevice account for your project. You can follow these steps:
+  For best practices and to ensure forward compatibility and better security - set up a Goole Sevice account for your project. You can follow these steps:
   
   - [Create a GCloud Service account for the `projectname` above](https://www.google.com/search?client=safari&rls=en&q=gcloud+service+account&ie=UTF-8&oe=UTF-8).
 
@@ -305,7 +305,7 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   
   - Download the JSON credentials for your newly created service account and store them somewhere safe.
   
-  - Ensure you habve the [gcloud command line tools installed.](https://cloud.google.com/sdk/docs/quickstarts)
+  - Ensure you have the [gcloud command line tools installed.](https://cloud.google.com/sdk/docs/quickstarts)
   
   - Run `gcloud auth login` to ensure you are logged in to your google project.
   
