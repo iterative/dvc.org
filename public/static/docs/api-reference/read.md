@@ -68,7 +68,7 @@ or a
   mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in builtin
   `open()`.
 
-## Example: Use artifacts from online DVC repositories
+## Example: Load data tracked in a DVC repository online
 
 Any <abbr>data artifact</abbr> can be employed directly in your Python app by
 using this API.

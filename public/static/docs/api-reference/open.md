@@ -124,7 +124,7 @@ with dvc.api.open(
     # ... Use instanciated model
 ```
 
-## Example: Use a file from the local cache
+## Example: Open a tracked file in the local file system
 
 In this case we don't supply a `repo` argument. DVC will attempt to find a
 current <abbr>DVC project</abbr> to use.
@@ -138,8 +138,9 @@ with dvc.api.open('data/nlp/words.txt') as fd:
 ```
 
 DVC will look for the file contents of `data/nlp/words.txt` in the local
-<abbr>cache</abbr>. (If it's not found there, the default
-[remote](/doc/command-reference/remote) will be tried.)
+<abbr>cache</abbr> first, so no download will happen if it's found. (Otherwise,
+the default [remote](/doc/command-reference/remote) will be tried. See the
+[Parameters](#parameters) section)
 
 To specify the file encoding of a text file:
 

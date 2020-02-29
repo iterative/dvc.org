@@ -73,7 +73,7 @@ and `dvc add` to learn more about how DVC handles data directories.
 
   A `dvc.exceptions.NoRemoteError` is raised if no `remote` is found.
 
-## Example: Get a remote storage URL to a data file
+## Example: Get the remote storage URL to a data file
 
 ```py
 import dvc.api
