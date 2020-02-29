@@ -47,8 +47,8 @@ before making it accessible. The only exception is when using a Google Drive
   system path. Both HTTP and SSH protocols are supported for online Git repos
   (e.g. `[user@]server:project.git`).
 
-  The current project is used by default (the current working directory tree is
-  walked up to find it) if a `repo` argument is not given.
+  The current project is used by default if a `repo` argument is not given (the
+  current working directory tree is walked up to find it).
 
   A `dvc.api.UrlNotDvcRepoError` is raised if `repo` is not a valid DVC project.
 

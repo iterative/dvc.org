@@ -19,10 +19,10 @@ All **parameter** types are
 
 ## Description
 
-Returns the URL string of the physical location (in a
-[DVC remote](/doc/command-reference/remote)) where a target file or directory
-(<abbr>artifact</abbr>), specified by its `path` in a `repo` (<abbr>DVC
-project</abbr>), is stored. The URL is formed by reading the corresponding
+Returns the URL string of the storage location (in a
+[DVC remote](/doc/command-reference/remote)) where a target file or directory,
+specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored. The
+URL is formed by reading the corresponding
 [DVC-file](/doc/user-guide/dvc-file-format) (see the **Examples** below) as well
 as the project's [remote configuration](/doc/command-reference/config#remote).
 
@@ -54,8 +54,8 @@ and `dvc add` to learn more about how DVC handles data directories.
   system path. Both HTTP and SSH protocols are supported for online Git repos
   (e.g. `[user@]server:project.git`).
 
-  The current project is used by default (the current working directory tree is
-  walked up to find it) if a `repo` argument is not given.
+  The current project is used by default if a `repo` argument is not given (the
+  current working directory tree is walked up to find it).
 
   A `dvc.api.UrlNotDvcRepoError` is raised if `repo` is not a valid DVC project.
 
