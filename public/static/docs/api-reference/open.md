@@ -107,7 +107,7 @@ with dvc.api.open(
 > xmldom = parse(xmldata)
 > ```
 
-Now let's imagine you want to unserialize and use a binary model from a private
+Now let's imagine you want to deserialize and use a binary model from a private
 repo online. For a case like this, we can use a SSH URL instead (assuming the
 [credentials are configured](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
 locally):
