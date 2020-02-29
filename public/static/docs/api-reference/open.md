@@ -160,12 +160,11 @@ with dvc.api.open(
     # ...
 ```
 
-## Example: Stream file from a specific remote
+## Example: Chose a specific remote as the data source
 
 Sometimes we may want to choose the [remote](/doc/command-reference/remote) data
-source, for example to ensure that file streaming is enabled (as not all remote
-storage types support streaming). This can be done by providing a `remote`
-argument:
+source, for example if the `repo` has no default remote set. This can be done by
+providing a `remote` argument:
 
 ```py
 import dvc.api
