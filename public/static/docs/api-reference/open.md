@@ -19,18 +19,8 @@ All **parameter** types are
 
 Open file or model (`path`) tracked in a <abbr>DVC projects</abbr> (by DVC or
 Git), and return a corresponding
-[file object](https://docs.python.org/3/glossary.html#term-file-object).
-
-The current project is used by default (the current working directory tree is
-walked up to find it), unless a `repo` argument is supplied.
-
-Unless a `remote` argument is given, it first tries to find the file in the
-<abbr>cache</abbr> for local projects. If not found there or for online
-projects, the [default remote](/doc/command-reference/remote/default) of `repo`
-is tried. If the file cannot be found, a `PathMissingError` is raised.
-
-For Git-tracked <abbr>DVC repositories</abbr>, unless a `rev` argument is
-provided, the repo's `HEAD` version is used.
+[file object](https://docs.python.org/3/glossary.html#term-file-object). If the
+file cannot be found, a `PathMissingError` is raised.
 
 > This function is analogous to the
 > [`open()`](https://docs.python.org/3/library/functions.html#open) Python
@@ -57,14 +47,24 @@ before making it accessible. The only exception is when using a Google Drive
   system path. Both HTTP and SSH protocols are supported for online Git repos
   (e.g. `[user@]server:project.git`).
 
+  The current project is used by default (the current working directory tree is
+  walked up to find it) if a `repo` argument is not given.
+
   A `dvc.api.UrlNotDvcRepoError` is raised if `repo` is not a valid DVC project.
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
   a branch or tag name, or a commit hash). If `repo` is not a Git repo, this
   option is ignored.
 
+  `HEAD` is used by default if a `rev` argument is not given.
+
 - `remote` - name of the [DVC remote](/doc/command-reference/remote) to look for
   the target data.
+
+  For online projects, the
+  [default remote](/doc/command-reference/remote/default) of `repo` is tried if
+  a `remote` argument is not given. For local projects, the default is to try
+  the <abbr>cache</abbr> before the default remote.
 
   A `dvc.exceptions.NoRemoteError` is raised if no `remote` is found.
 

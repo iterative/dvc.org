@@ -26,20 +26,12 @@ project</abbr>), is stored. The URL is formed by reading the corresponding
 [DVC-file](/doc/user-guide/dvc-file-format) (see the **Examples** below) as well
 as the project's [remote configuration](/doc/command-reference/config#remote).
 
-The current project is used by default (the current working directory tree is
-walked up to find it), unless a `repo` argument is supplied.
-
-Unless a `remote` argument is given, the
-[default remote](/doc/command-reference/remote/default) of `repo` is used. The
-URL schema returned depends on the
-[type](/doc/command-reference/remote/add#supported-storage-types) of the remote
-used.
+The URL schema returned depends on the
+[type](/doc/command-reference/remote/add#supported-storage-types) of the
+`remote` used (see the [Parameters](#parameters) section).
 
 ⚠️ This function does not check for the actual existence of the target data in
 the remote storage.
-
-For Git-tracked <abbr>DVC repositories</abbr>, unless a `rev` argument is
-provided, the repo's `HEAD` version is used.
 
 💡 Having the resource's URL, it should be possible to download it directly with
 an appropriate library, such as
@@ -62,14 +54,22 @@ and `dvc add` to learn more about how DVC handles data directories.
   system path. Both HTTP and SSH protocols are supported for online Git repos
   (e.g. `[user@]server:project.git`).
 
+  The current project is used by default (the current working directory tree is
+  walked up to find it) if a `repo` argument is not given.
+
   A `dvc.api.UrlNotDvcRepoError` is raised if `repo` is not a valid DVC project.
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
   a branch or tag name, or a commit hash). If `repo` is not a Git repo, this
   option is ignored.
 
+  `HEAD` is used by default if a `rev` argument is not given.
+
 - `remote` - name of the [DVC remote](/doc/command-reference/remote) to use to
   form the returned URL string.
+
+  The [default remote](/doc/command-reference/remote/default) of `repo` is used
+  if a `remote` argument is not given.
 
   A `dvc.exceptions.NoRemoteError` is raised if no `remote` is found.
 
