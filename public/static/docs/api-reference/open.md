@@ -1,6 +1,13 @@
-### `dvc.api.open(path, repo=None, rev=None, remote=None, mode="r", encoding=None)`
+# open()
 
 Opens a tracked file.
+
+```py
+dvc.api.open(path: str, repo: str = None, rev: str = None,
+    remote: str = None, mode: str = "r", encoding: str = None)
+```
+
+**Usage:**
 
 ```py
 import dvc.api
@@ -11,9 +18,6 @@ with dvc.api.open(
         ) as fd:
     # ... fd is a file descriptor that can be processed normally.
 ```
-
-All **parameter** types are
-[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
 
 ## Description
 

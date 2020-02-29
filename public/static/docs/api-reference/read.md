@@ -1,6 +1,13 @@
-### `dvc.api.read(path, repo=None, rev=None, remote=None, mode="r", encoding=None)`
+# read()
 
 Returns the contents of a tracked file.
+
+```py
+dvc.api.open(path: str, repo: str = None, rev: str = None,
+    remote: str = None, mode: str = "r", encoding: str = None)
+```
+
+**Usage:**
 
 ```py
 import dvc.api
@@ -10,9 +17,6 @@ modelpkl = dvc.api.read(
     repo='https://github.com/example/project.git'
     mode='rb')
 ```
-
-All **parameter** types are
-[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
 
 ## Description
 

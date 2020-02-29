@@ -1,7 +1,14 @@
-### `dvc.api.get_url(path, repo=None, rev=None, remote=None)`
+# get_url()
 
 Returns the URL to the storage location of a data file or directory tracked by
 DVC.
+
+```py
+dvc.api.get_url( path: str, repo: str = None,
+    rev: str = None, remote: str = None ) -> str
+```
+
+**Usage:**
 
 ```py
 import dvc.api
@@ -13,9 +20,6 @@ resource_url = dvc.api.get_url(
 # resource_url =
 # https://remote.dvc.org/dataset-registry/a3/04af...
 ```
-
-All **parameter** types are
-[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
 
 ## Description
 
