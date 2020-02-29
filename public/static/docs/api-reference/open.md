@@ -78,7 +78,7 @@ before making it accessible. The only exception is when using a Google Drive
   mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in builtin
   `open()`.
 
-## Example: Use artifacts from online DVC repositories
+## Example: Use data tracked in a DVC repository online
 
 Any <abbr>data artifact</abbr> can be employed directly in your Python app by
 using this API.
@@ -124,31 +124,6 @@ with dvc.api.open(
     # ... Use instanciated model
 ```
 
-## Example: Open a tracked file in the local file system
-
-In this case we don't supply a `repo` argument. DVC will attempt to find a
-current <abbr>DVC project</abbr> to use.
-
-```py
-import dvc.api
-
-with dvc.api.open('data/nlp/words.txt') as fd:
-    for word in fd:
-        # ... Process words
-```
-
-DVC will look for the file contents of `data/nlp/words.txt` in the local
-<abbr>cache</abbr> first, so no download will happen if it's found. (Otherwise,
-the default [remote](/doc/command-reference/remote) will be tried. See the
-[Parameters](#parameters) section)
-
-To specify the file encoding of a text file:
-
-```py
-with dvc.api.open('data/nlp/words_ru.txt', encoding='koi8_r') as fd:
-    # ...
-```
-
 ## Example: Use other versions of data or results
 
 The `rev` argument lets you specify any Git commit to look for an artifact. This
@@ -166,6 +141,23 @@ with dvc.api.open(
         ) as fd:
     reader = csv.reader(fd)
     # ... Read clean data from version 1.1.0
+```
+
+Also, notice that in this case we didn't supply a `repo` argument in this
+example. DVC will attempt to find a <abbr>DVC project</abbr> to use in the
+current working directory tree, and look for the file contents of `clean.csv` in
+its local <abbr>cache</abbr>; no download will happen if found. See the
+[Parameters](#parameters) section for more info.
+
+Note: to specify the file encoding of a text file, use:
+
+```py
+import dvc.api
+
+with dvc.api.open(
+        'data/nlp/words_ru.txt',
+        encoding='koi8_r') as fd:
+    # ...
 ```
 
 ## Example: Stream file from a specific remote
