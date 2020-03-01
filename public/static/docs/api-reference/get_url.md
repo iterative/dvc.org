@@ -16,9 +16,6 @@ import dvc.api
 resource_url = dvc.api.get_url(
     'get-started/data.xml',
     repo='https://github.com/iterative/dataset-registry')
-
-# resource_url =
-# https://remote.dvc.org/dataset-registry/a3/04af...
 ```
 
 ## Description
@@ -89,9 +86,12 @@ resource_url = dvc.api.get_url(
 print(resource_url)
 ```
 
-Outputs:
+---
 
-`https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`
+```dvc
+$ python script.py
+https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355
+```
 
 This URL represents the location where the data is stored, and is built by
 reading the corresponding DVC-file
