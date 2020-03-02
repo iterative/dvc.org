@@ -22,7 +22,8 @@ resource_url = dvc.api.get_url(
 
 Returns the URL string of the storage location (in a
 [DVC remote](/doc/command-reference/remote)) where a target file or directory,
-specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored.
+specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored. If
+`repo` is not a DVC project, a `dvc.api.UrlNotDvcRepoError` is raised.
 
 The URL is formed by reading the the project's
 [remote configuration](/doc/command-reference/config#remote) and the
@@ -57,8 +58,6 @@ and `dvc add` to learn more about how DVC handles data directories.
 
   The current project is used by default if a `repo` argument is not given (the
   current working directory tree is walked up to find it).
-
-  A `dvc.api.UrlNotDvcRepoError` is raised if `repo` is not a valid DVC project.
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
   a branch or tag name, or a commit hash). If `repo` is not a Git repo, this

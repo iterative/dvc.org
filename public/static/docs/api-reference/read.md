@@ -44,8 +44,6 @@ or a
   The current project is used by default if a `repo` argument is not given (the
   current working directory tree is walked up to find it).
 
-  A `dvc.api.UrlNotDvcRepoError` is raised if `repo` is not a valid DVC project.
-
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
   a branch or tag name, or a commit hash). If `repo` is not a Git repo, this
   option is ignored.
