@@ -3,18 +3,15 @@ import PropTypes from 'prop-types'
 
 import GatsbyLink from 'gatsby-link'
 
-export default function LocalLink({
-  children,
-  as: SC,
-  href: to,
-  ...restProps
-}) {
-  const Component = SC ? SC.withComponent(GatsbyLink) : GatsbyLink
-
-  return (
-    <Component to={to} {...restProps}>
+export default function LocalLink({ children, as: SC, href, ...restProps }) {
+  return SC ? (
+    <SC to={href} {...restProps} as={GatsbyLink}>
       {children}
-    </Component>
+    </SC>
+  ) : (
+    <GatsbyLink to={href} {...restProps}>
+      {children}
+    </GatsbyLink>
   )
 }
 
