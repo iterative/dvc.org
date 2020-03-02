@@ -21,7 +21,7 @@ with dvc.api.open(
 
 ## Description
 
-Open file or model (`path`) tracked in a <abbr>DVC projects</abbr> (by DVC or
+Open file or model (`path`) tracked in a <abbr>DVC project</abbr> (by DVC or
 Git), and return a corresponding
 [file object](https://docs.python.org/3/glossary.html#term-file-object). If the
 file cannot be found, a `PathMissingError` is raised.

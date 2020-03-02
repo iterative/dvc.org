@@ -1,7 +1,7 @@
 # get_url()
 
-Returns the URL to the storage location of a data file or directory tracked by
-DVC.
+Returns the URL to the storage location of a data file or directory tracked in a
+<abbr>DVC project</abbr>.
 
 ```py
 dvc.api.get_url( path: str, repo: str = None,
@@ -22,17 +22,17 @@ resource_url = dvc.api.get_url(
 
 Returns the URL string of the storage location (in a
 [DVC remote](/doc/command-reference/remote)) where a target file or directory,
-specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored. The
-URL is formed by reading the corresponding
-[DVC-file](/doc/user-guide/dvc-file-format) (see the **Examples** below) as well
-as the project's [remote configuration](/doc/command-reference/config#remote).
+specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored.
 
-The URL schema returned depends on the
+The URL is formed by reading the the project's
+[remote configuration](/doc/command-reference/config#remote) and the
+[DVC-file](/doc/user-guide/dvc-file-format) where the given `path` is an output
+(see the **Examples** below). The URL schema returned depends on the
 [type](/doc/command-reference/remote/add#supported-storage-types) of the
 `remote` used (see the [Parameters](#parameters) section).
 
-⚠️ This function does not check for the actual existence of the target data in
-the remote storage.
+⚠️ This function does not check for the actual existence of the file or
+directory in the remote storage.
 
 💡 Having the resource's URL, it should be possible to download it directly with
 an appropriate library, such as
