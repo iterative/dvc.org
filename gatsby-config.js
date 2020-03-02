@@ -2,6 +2,8 @@
 
 const path = require('path')
 
+require('./config/prismjs/dvc')
+
 const title = 'Data Version Control · DVC'
 const description =
   'Open-source version control system for Data Science and Machine Learning ' +
@@ -29,6 +31,7 @@ const plugins = [
         'gatsby-remark-prismjs',
         'gatsby-remark-copy-linked-files',
         'gatsby-remark-smartypants',
+        'gatsby-remark-external-links',
         {
           resolve: 'gatsby-remark-autolink-headers',
           options: {
