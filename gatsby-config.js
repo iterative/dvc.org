@@ -31,7 +31,9 @@ const plugins = [
         'gatsby-remark-prismjs',
         'gatsby-remark-copy-linked-files',
         'gatsby-remark-smartypants',
-        'gatsby-remark-external-links',
+        {
+          resolve: 'gatsby-remark-external-links'
+        },
         {
           resolve: 'gatsby-remark-autolink-headers',
           options: {

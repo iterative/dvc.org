@@ -32,6 +32,16 @@ export const Content = styled.article`
     animation-fill-mode: both;
     animation-name: fadeIn;
 
+    a[target='_blank']:after {
+      position: relative;
+      top: 1px;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      margin-left: 1px;
+      content: url(/img/external-link.svg);
+    }
+
     pre[class*='language-'] {
       background: #40354d;
       color: #ccc;
