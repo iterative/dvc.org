@@ -1,0 +1,7 @@
+{
+  "name": "gatsby-remark-dvc-linker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Ivan Shcheklein",
+  "license": "Apache-2.0"
+}

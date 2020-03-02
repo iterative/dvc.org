@@ -64,7 +64,7 @@ SidebarMenuItem.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object),
   label: PropTypes.string.isRequired,
   path: PropTypes.string.isRequired,
-  source: PropTypes.string.isRequired,
+  source: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
   onClick: PropTypes.func,
   activePaths: PropTypes.oneOfType([
     PropTypes.arrayOf(PropTypes.string),

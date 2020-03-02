@@ -1,10 +1,12 @@
+/* eslint-env node */
+
 // we require prism and load its bash module so we have
 // Prism.languages.bash to embed into our DVC language.
 
-const Prism = require('prismjs');
-require('prismjs/components/prism-bash');
-require('./dvc-hook');
-const { bash } = Prism.languages;
+const Prism = require('prismjs')
+require('prismjs/components/prism-bash')
+require('./dvc-hook')
+const { bash } = Prism.languages
 
 // Command arrays are intentionally reverse sorted
 // to prevent shorter matches before longer ones
@@ -26,7 +28,7 @@ const git = [
   'clone',
   'checkout',
   'add'
-];
+]
 
 const dvc = [
   'version',
@@ -75,9 +77,9 @@ const dvc = [
   'cache dir',
   'cache',
   'add'
-];
+]
 
-const beforeCommand = String.raw`(\$[\s(]+|;\s*)`;
+const beforeCommand = String.raw`(\$[\s(]+|;\s*)`
 
 /* tslint:disable object-literal-sort-keys */
 
@@ -108,4 +110,4 @@ Prism.languages.dvc = {
     }
   },
   comment: bash.comment
-};
+}

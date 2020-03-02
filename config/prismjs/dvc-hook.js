@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 const Prism = require('prismjs')
 
 // Make sure the $ part of the command prompt in shell

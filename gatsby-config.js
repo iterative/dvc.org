@@ -28,6 +28,7 @@ const plugins = [
     resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [
+        'gatsby-remark-dvc-linker',
         'gatsby-remark-prismjs',
         'gatsby-remark-copy-linked-files',
         'gatsby-remark-smartypants',
