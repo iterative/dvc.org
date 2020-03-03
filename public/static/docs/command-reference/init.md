@@ -31,7 +31,8 @@ local cache and you cannot `git push` it.
   written.
 
 - `--subdir` - initialize <abbr>DVC repository</abbr> in current directory and
-  allow to search for Git repository in parent directories
+  allow to search for Git repository in parent directories. If used in Git root
+  directory, this option is ignored.
 
 - `-f`, `--force` - remove `.dvc/` if it exists before initialization. Will
   remove any existing local cache. Useful when a previous `dvc init` has been

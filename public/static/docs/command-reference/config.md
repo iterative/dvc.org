@@ -85,6 +85,12 @@ This is the main section with the general config options:
   project is on a file system that doesn't properly support file locking (e.g.
   [NFS v3 and older](http://nfs.sourceforge.net/)).
 
+- `core.no_scm` - when set to `true`, prevents DVC from using scm (eg.
+  [Git](https://git-scm.com)), even if <abbr>DVC repository</abbr> lives inside
+  scm repository. This option is set when
+  [initializing](/doc/command-reference/init) <abbr>DVC repository</abbr> with
+  `--no-scm` flag.
+
 ### remote
 
 These are sections in the config file that describe particular remotes. These
