@@ -14,7 +14,6 @@ import { structure, getItemByPath } from '../../utils/sidebar'
 
 import { Backdrop, Container, SearchArea, Side, SideToggle } from './styles'
 
-const ROOT_ELEMENT = 'bodybag'
 const SIDEBAR_MENU = 'sidebar-menu'
 
 export default function Documentation({ html, path, headings }) {
