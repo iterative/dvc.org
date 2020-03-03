@@ -74,7 +74,7 @@ or
 
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
-## Example: Getting URL to a DVC-tracked file
+## Example: Getting the URL to a DVC-tracked file
 
 ```py
 import dvc.api
