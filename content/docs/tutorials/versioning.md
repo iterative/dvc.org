@@ -95,7 +95,7 @@ This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43
 MB dataset, with a directory structure like this:
 
-```sh
+```bash
 data
 ├── train
 │   ├── dogs
@@ -199,7 +199,7 @@ For simplicity's sake, we keep the validation subset the same. Now our dataset
 has 2000 images for training and 800 images for validation, with a total size of
 67 MB:
 
-```sh
+```bash
 data
 ├── train
 │   ├── dogs

@@ -3,6 +3,7 @@
 const path = require('path')
 
 require('./config/prismjs/dvc')
+require('./config/prismjs/usage')
 
 const title = 'Data Version Control · DVC'
 const description =

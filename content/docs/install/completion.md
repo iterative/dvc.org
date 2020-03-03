@@ -134,7 +134,7 @@ $ exec $SHELL -l
 This step is optional but will make the DVC output look much nicer, by adding
 more colors to it. Add the following to your `~/.zshrc`:
 
-```zsh
+```bash
 # Case insensitive match
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 

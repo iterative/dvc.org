@@ -8,6 +8,8 @@ require('prismjs/components/prism-bash')
 require('./dvc-hook')
 const { bash } = Prism.languages
 
+const dvc = require('./dvc-commands')
+
 // Command arrays are intentionally reverse sorted
 // to prevent shorter matches before longer ones
 
@@ -27,55 +29,6 @@ const git = [
   'commit',
   'clone',
   'checkout',
-  'add'
-]
-
-const dvc = [
-  'version',
-  'update',
-  'unprotect',
-  'unlock',
-  'tag',
-  'status',
-  'run',
-  'root',
-  'repro',
-  'remove',
-  'remote remove',
-  'remote modify',
-  'remote list',
-  'remote default',
-  'remote add',
-  'remote',
-  'push',
-  'pull',
-  'pkg',
-  'pipeline show',
-  'pipeline list',
-  'pipeline',
-  'move',
-  'metrics show',
-  'metrics remove',
-  'metrics modify',
-  'metrics add',
-  'metrics',
-  'lock',
-  'install',
-  'init',
-  'import-url',
-  'import',
-  'help',
-  'get-url',
-  'get',
-  'gc',
-  'fetch',
-  'diff',
-  'destroy',
-  'config',
-  'commit',
-  'checkout',
-  'cache dir',
-  'cache',
   'add'
 ]
 
