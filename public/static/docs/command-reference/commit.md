@@ -258,8 +258,8 @@ that both Git and DVC recognize a change was made.
 
 If we ran `dvc repro` at this point, this pipeline would be reproduced. But
 since the change was inconsequential, that would be a waste of time and CPU.
-That's especially critical if the corresponding stages take lots of resources
-to execute.
+That's especially critical if the corresponding stages take lots of resources to
+execute.
 
 ```dvc
 $ git add src/train.py
