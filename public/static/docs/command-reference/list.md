@@ -1,48 +1,55 @@
 # list
 
-List <abbr>repository</abbr> contents, including files and directories tracked
-by DVC (<abbr>data artifacts</abbr>) and by Git.
+List repository contents, including files and directories tracked by DVC
+(<abbr>data artifacts</abbr>) and by Git.
 
 ## Synopsis
 
 ```usage
-usage: dvc list [-h] [-q | -v] [-R] [--outs-only] [--rev [REV]] url [path]
+usage: dvc list [-h] [-q | -v] [-R] [--outs-only] [--rev [REV]]
+                url [target]
 
 positional arguments:
-  url              Location of DVC repository to list.
-  path             Path to a file or directory within the repository.
+  url            Location of DVC or Git repository to list from
+  target         Path to a file or directory within the repository
 ```
 
 ## Description
 
-List files, dirs and <abbr>data artifacts</abbr> for the pointed URL. The output
-is sorted lexicographically.
+Lists files and directories in the root of a <abbr>repository</abbr>, including
+<abbr>data artifacts</abbr> tracked by DVC (e.g. data, models), and Git-tracked
+files (e.g. source code). To list recursively, use the `-R` option.
 
-With the command you may list all <abbr>data artifacts</abbr> the repo contains.
-Also it works with remote repos and you can list files before trying to get it
-(with `dvc get` or `dvc import`).
+This command especially useful to browse a public repo in order to find the
+exact file or directory names to `dvc import` or `dvc get`. The list is sorted
+alphabetically.
 
-The `url` argument specifies the address of the DVC or Git repository containing
-the data source. Both HTTP and SSH protocols are supported for online repos
-(e.g. `[user@]server:project.git`). `url` can also be a local file system path.
-When the url is remote Git URL the content is checkout into temporary directory.
+Note that this command doesn't require an existing DVC project to run in. Also,
+it does not support listing <abbr>DVC projects</abbr> that aren't tracked by Git
+(see the `--no-scm` option of `dvc init`).
+
+The `url` argument specifies the address of the DVC or Git repository to list.
+Both HTTP and SSH protocols are supported for online repos (e.g.
+`[user@]server:project.git`). `url` can also be a local file system path to an
+"offline" repo.
+
+The `target` argument of this command is used to specify a path within the
+source repository at `url`. If the target is a file found in the repo, it's file
+name will be printed as a way to confirm its existence. If it's a Git-tracked
+directory, files and directories directly under it will be listed (use option
+`-R` to list recursively).
+
+Listing the contents of DVC-tracked directories is not supported at the time.
 
 `--outs-only` option allows to filter <abbr>data artifacts</abbr> into the repo,
 so only <abbr>data artifacts</abbr> will be printed.
 
-`path` argument is used for pointing relative path into the repo. So you may use
-it when need to list files for some specific path. With recursive option `-R` it
-allows to filter output by prefix.
-
-Also with `path` argument you may check existense of some file - if the file
-doesn't exist the error would be thrown.
-
 ## Options
 
-- `--outs-only` - show only <abbr>data artifacts</abbr>.
+- `-R`, `--recursive` - recursively prints the repository contents. (It can be
+  limited to a specific Git-tracked directory by supplying a `target` argument.)
 
-- `-R`, `--recursive` - recursively prints the directory. When `path` is not
-  specified the directory is the root of the repo.
+- `--outs-only` - show only DVC-tracked data (<abbr>outputs</abbr>).
 
 - `--rev` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to list
@@ -60,7 +67,7 @@ doesn't exist the error would be thrown.
 ## Example: List remote git repo
 
 We can use the command for getting information about remote repository with all
-files, dirs and <abbr>data artifacts</abbr>.
+files, directories and <abbr>data artifacts</abbr>.
 
 ```dvc
 $ dvc list -R https://github.com/iterative/dataset-registry

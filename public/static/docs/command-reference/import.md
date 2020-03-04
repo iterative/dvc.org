@@ -15,8 +15,8 @@ import.
 usage: dvc import [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
 
 positional arguments:
-  url              Location of DVC or Git repository to download from.
-  path             Path to a file or directory within the repository.
+  url              Location of DVC or Git repository to download from
+  path             Path to a file or directory within the repository
 ```
 
 ## Description
@@ -27,6 +27,9 @@ repository (e.g. source code, small image/other files). `dvc import` downloads
 the target file or directory (`url`/`path`) in a way so that it's tracked with
 DVC, becoming a local <abbr>data artifact</abbr>. This also permits updating the
 import later, if it has changed in its data source. (See `dvc update`.)
+
+> See `dvc list` for a way to browse repository contents to find files or
+> directories to import.
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported for online repos
