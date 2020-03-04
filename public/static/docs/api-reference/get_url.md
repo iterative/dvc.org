@@ -15,11 +15,11 @@ def get_url(path: str,
 ```py
 import dvc.api
 
-dvc.api.get_url(
+resource_url = dvc.api.get_url(
     'get-started/data.xml',
     repo='https://github.com/iterative/dataset-registry')
 
-# https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355
+# resource_url is now "https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355"
 ```
 
 ## Description
@@ -35,9 +35,7 @@ The URL is formed by reading the the project's
 [type](/doc/command-reference/remote/add#supported-storage-types) of the
 `remote` used (see the [Parameters](#parameters) section).
 
-If the target is a directory, the returned URL will point to a file that
-contains the mapping of files in the directory (as a JSON array), along with
-their hash values. Refer to
+If the target is a directory, the returned URL will end in `.dir`. Refer to
 [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 and `dvc add` to learn more about how DVC handles data directories.
 
@@ -87,14 +85,9 @@ resource_url = dvc.api.get_url(
 print(resource_url)
 ```
 
-It prints
-`https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355` if
-we run it:
+The script above prints
 
-```dvc
-$ python script.py
-https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355
-```
+`https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`
 
 This URL represents the location where the data is stored, and is built by
 reading the corresponding DVC-file
