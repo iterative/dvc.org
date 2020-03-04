@@ -7,11 +7,11 @@ List repository contents, including files and directories tracked by DVC
 
 ```usage
 usage: dvc list [-h] [-q | -v] [-R] [--outs-only] [--rev [REV]]
-                url [target]
+                url [path]
 
 positional arguments:
   url            Location of DVC or Git repository to list from
-  target         Path to a file or directory within the repository
+  path           Path to a file or directory within the repository
 ```
 
 ## Description
@@ -33,18 +33,18 @@ Both HTTP and SSH protocols are supported for online repos (e.g.
 `[user@]server:project.git`). `url` can also be a local file system path to an
 "offline" repo.
 
-The `target` argument of this command is used to specify a path within the
-source repository at `url`. If the target is a file and it's found in the repo,
-it's file name will be printed as a way to confirm its existence. If it's a
-Git-tracked directory, files and directories directly under it will be listed
-(use option `-R` to list recursively).
+The `path` argument of this command is used to specify a path within the source
+repository at `url`. If the path is a file and it's found in the repo, it will
+be printed back as a confirmation of its existence. If it's a Git-tracked
+directory, files and directories directly under it will be listed (use option
+`-R` to list recursively).
 
 > Listing the contents of DVC-tracked directories is not supported at the time.
 
 ## Options
 
 - `-R`, `--recursive` - recursively prints the repository contents. (It can be
-  limited to a specific Git-tracked directory by supplying a `target` argument.)
+  limited to a specific Git-tracked directory by supplying a `path` argument.)
 
 - `--outs-only` - show only DVC-tracked files and directories
   (<abbr>outputs</abbr>).
