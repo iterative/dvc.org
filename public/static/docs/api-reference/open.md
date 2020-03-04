@@ -3,11 +3,15 @@
 Opens a tracked file.
 
 ```py
-dvc.api.open(path: str, repo: str = None, rev: str = None,
-    remote: str = None, mode: str = "r", encoding: str = None)
+dvc.api.open(path: str,
+             repo: str = None,
+             rev: str = None,
+             remote: str = None,
+             mode: str = "r",
+             encoding: str = None)
 ```
 
-**Usage:**
+#### Usage:
 
 ```py
 import dvc.api
@@ -23,8 +27,7 @@ with dvc.api.open(
 
 Open file or model (`path`) tracked in a <abbr>DVC project</abbr> (by DVC or
 Git), and return a corresponding
-[file object](https://docs.python.org/3/glossary.html#term-file-object). If the
-file cannot be found, a `PathMissingError` is raised.
+[file object](https://docs.python.org/3/glossary.html#term-file-object).
 
 > This function is analogous to the
 > [`open()`](https://docs.python.org/3/library/functions.html#open) Python
@@ -49,26 +52,18 @@ before making it accessible. The only exception is when using a Google Drive
 
 - `repo` - specifies the location of the DVC project. It can be a URL or a file
   system path. Both HTTP and SSH protocols are supported for online Git repos
-  (e.g. `[user@]server:project.git`).
-
-  The current project is used by default if a `repo` argument is not given (the
-  current working directory tree is walked up to find it).
+  (e.g. `[user@]server:project.git`). _Default_: The current project is used
+  (the current working directory tree is walked up to find it).
 
 - `rev` - Git commit (any [revision](https://git-scm.com/docs/revisions) such as
   a branch or tag name, or a commit hash). If `repo` is not a Git repo, this
-  option is ignored.
-
-  `HEAD` is used by default if a `rev` argument is not given.
+  option is ignored. _Default_: `HEAD`.
 
 - `remote` - name of the [DVC remote](/doc/command-reference/remote) to look for
-  the target data.
-
-  For online projects, the
-  [default remote](/doc/command-reference/remote/default) of `repo` is tried if
-  a `remote` argument is not given. For local projects, the default is to try
-  the <abbr>cache</abbr> before the default remote.
-
-  A `dvc.exceptions.NoRemoteError` is raised if no `remote` is found.
+  the target data. _Default_: The
+  [default remote](/doc/command-reference/remote/default) of `repo` is used if a
+  `remote` argument is not given. For local projects, the <abbr>cache</abbr> is
+  tied before the default remote.
 
 - `mode` - specifies the mode in which the file is opened. Defaults to `"r"`
   (read). Mirrors the namesake parameter in builtin
@@ -79,6 +74,16 @@ before making it accessible. The only exception is when using a Google Drive
   to decode the file contents to a string. This should only be used in text
   mode. Defaults to `"utf-8"`. Mirrors the namesake parameter in builtin
   `open()`.
+
+## Exceptions
+
+- `dvc.exceptions.FileMissingError` - file in `path` is missing from `repo`.
+
+- `dvc.exceptions.PathMissingError` - `path` cannot be found in `repo`.
+
+- `dvc.api.UrlNotDvcRepoError` - `repo` is not a DVC project.
+
+- `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
 ## Example: Use data tracked in a DVC repository online
 
