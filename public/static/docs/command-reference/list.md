@@ -18,14 +18,14 @@ positional arguments:
 
 Lists files and directories in the root of a <abbr>repository</abbr>, including
 <abbr>data artifacts</abbr> tracked by DVC (e.g. data, models), and Git-tracked
-files (e.g. source code). To list recursively, use the `-R` option.
+files (e.g. source code). To list recursively, use the `-R` option. The list is
+sorted alphabetically.
 
-This command especially useful to browse a public repo in order to find the
-exact file or directory names to `dvc import` or `dvc get`. The list is sorted
-alphabetically.
+This command is especially useful to browse a public repo in order to find the
+exact file or directory names to `dvc import` or `dvc get`.
 
 Note that this command doesn't require an existing DVC project to run in. Also,
-it does not support listing <abbr>DVC projects</abbr> that aren't tracked by Git
+it doesn't support listing <abbr>DVC projects</abbr> that are not tracked by Git
 (see the `--no-scm` option of `dvc init`).
 
 The `url` argument specifies the address of the DVC or Git repository to list.
@@ -34,22 +34,20 @@ Both HTTP and SSH protocols are supported for online repos (e.g.
 "offline" repo.
 
 The `target` argument of this command is used to specify a path within the
-source repository at `url`. If the target is a file found in the repo, it's file
-name will be printed as a way to confirm its existence. If it's a Git-tracked
-directory, files and directories directly under it will be listed (use option
-`-R` to list recursively).
+source repository at `url`. If the target is a file and it's found in the repo,
+it's file name will be printed as a way to confirm its existence. If it's a
+Git-tracked directory, files and directories directly under it will be listed
+(use option `-R` to list recursively).
 
-Listing the contents of DVC-tracked directories is not supported at the time.
-
-`--outs-only` option allows to filter <abbr>data artifacts</abbr> into the repo,
-so only <abbr>data artifacts</abbr> will be printed.
+> Listing the contents of DVC-tracked directories is not supported at the time.
 
 ## Options
 
 - `-R`, `--recursive` - recursively prints the repository contents. (It can be
   limited to a specific Git-tracked directory by supplying a `target` argument.)
 
-- `--outs-only` - show only DVC-tracked data (<abbr>outputs</abbr>).
+- `--outs-only` - show only DVC-tracked files and directories
+  (<abbr>outputs</abbr>).
 
 - `--rev` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to list
