@@ -28,7 +28,7 @@ Returns the URL string of the storage location (in a
 [DVC remote](/doc/command-reference/remote)) where a target file or directory,
 specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored.
 
-The URL is formed by reading the the project's
+The URL is formed by reading the project's
 [remote configuration](/doc/command-reference/config#remote) and the
 [DVC-file](/doc/user-guide/dvc-file-format) where the given `path` is an
 <abbr>output</abbr> The URL schema returned depends on the
