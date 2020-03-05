@@ -30,9 +30,12 @@ projects</abbr> (by DVC or Git). If the file cannot be found, a
 `PathMissingError` is raised.
 
 The returned contents can be a
-[bytes object](https://docs.python.org/3/glossary.html#term-bytes-like-object)
-or a
-[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str).
+[string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)
+or a [bytearray](https://docs.python.org/3/library/stdtypes.html#bytearray).
+
+> The type returned depends on the `mode` used. For more details, please refer
+> to Python's [`open()`](https://docs.python.org/3/library/functions.html#open)
+> built-in, which is used under the hood.
 
 > This is similar to the `dvc get` command in our CLI.
 

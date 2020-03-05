@@ -26,12 +26,13 @@ with dvc.api.open(
 ## Description
 
 Open file or model (`path`) tracked in a <abbr>DVC project</abbr> (by DVC or
-Git), and return a corresponding
+Git), and generate a corresponding
 [file object](https://docs.python.org/3/glossary.html#term-file-object).
 
-> This function is analogous to the
-> [`open()`](https://docs.python.org/3/library/functions.html#open) Python
-> built-in.
+> The exact type of file object generated depends on the `mode` used. For more
+> details, please refer to Python's
+> [`open()`](https://docs.python.org/3/library/functions.html#open) built-in,
+> which is used under the hood.
 
 `dvc.api.open()` may only be used as a
 [context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
