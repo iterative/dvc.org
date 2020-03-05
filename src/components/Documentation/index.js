@@ -16,7 +16,7 @@ import { Backdrop, Container, SearchArea, Side, SideToggle } from './styles'
 
 const SIDEBAR_MENU = 'sidebar-menu'
 
-export default function Documentation({ html, path, headings }) {
+export default function Documentation({ htmlAst, path, headings }) {
   const { source, prev, next, tutorials } = getItemByPath(path)
 
   // const headings = useMemo(() => parseHeadings(markdown))
@@ -70,7 +70,7 @@ export default function Documentation({ html, path, headings }) {
           />
         </Side>
         <Markdown
-          html={html}
+          htmlAst={htmlAst}
           prev={prev}
           next={next}
           githubLink={githubLink}
@@ -89,5 +89,5 @@ export default function Documentation({ html, path, headings }) {
 Documentation.propTypes = {
   path: PropTypes.string,
   headings: PropTypes.array,
-  html: PropTypes.string
+  htmlAst: PropTypes.object
 }

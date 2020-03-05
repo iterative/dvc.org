@@ -1,11 +1,14 @@
 import React, { useCallback, useEffect, useRef } from 'react'
+import rehypeReact from 'rehype-react'
 import PropTypes from 'prop-types'
+import Collapsible from 'react-collapsible'
 
 import 'github-markdown-css/github-markdown.css'
 
 import { navigate } from '@reach/router'
 
 import LocalLink from '../../LocalLink'
+import Tooltip from '../../Tooltip'
 
 import Tutorials from '../Tutorials'
 
@@ -25,7 +28,41 @@ const isInsideCodeBlock = elem => {
   return false
 }
 
-export default function Markdown({ html, prev, next, tutorials, githubLink }) {
+function Details({ children }) {
+  const filteredChildren = children.filter(child => child !== '\n')
+
+  const text = filteredChildren[0].props.children[0]
+  return (
+    <Collapsible trigger={text} transitionTime={200}>
+      {filteredChildren.slice(1)}
+    </Collapsible>
+  )
+}
+
+Details.propTypes = {
+  children: PropTypes.node
+}
+
+function ABBR({ children }) {
+  return <Tooltip text={children[0]} />
+}
+
+ABBR.propTypes = {
+  children: PropTypes.node
+}
+
+const renderAst = new rehypeReact({
+  createElement: React.createElement,
+  components: { details: Details, abbr: ABBR }
+}).Compiler
+
+export default function Markdown({
+  htmlAst,
+  prev,
+  next,
+  tutorials,
+  githubLink
+}) {
   const touchstartXRef = useRef(0)
   const touchendXRef = useRef(0)
   const isCodeBlockRef = useRef(false)
@@ -72,10 +109,7 @@ export default function Markdown({ html, prev, next, tutorials, githubLink }) {
       <GithubLink href={githubLink} target="_blank" rel="noreferrer noopener">
         <i /> Edit on GitHub
       </GithubLink>
-      <div
-        className="markdown-body"
-        dangerouslySetInnerHTML={{ __html: html }}
-      />
+      <div className="markdown-body">{renderAst(htmlAst)}</div>
       <NavigationButtons>
         {prev ? (
           <LocalLink href={prev} as={Button}>
@@ -105,7 +139,7 @@ export default function Markdown({ html, prev, next, tutorials, githubLink }) {
 }
 
 Markdown.propTypes = {
-  html: PropTypes.string.isRequired,
+  htmlAst: PropTypes.object.isRequired,
   githubLink: PropTypes.string.isRequired,
   tutorials: PropTypes.object,
   prev: PropTypes.string,

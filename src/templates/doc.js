@@ -11,13 +11,13 @@ export default function DocumentationTemplate({
   pageContext: { slug, headings }
 }) {
   const {
-    markdownRemark: { html }
+    page: { htmlAst }
   } = data
 
   return (
     <>
       <SEO />
-      <Documentation html={html} path={slug} headings={headings} />
+      <Documentation htmlAst={htmlAst} path={slug} headings={headings} />
     </>
   )
 }
@@ -29,8 +29,8 @@ DocumentationTemplate.propTypes = {
 
 export const pageQuery = graphql`
   query DocPageBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
+    page: markdownRemark(fields: { slug: { eq: $slug } }) {
+      htmlAst
     }
   }
 `
