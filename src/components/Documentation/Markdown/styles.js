@@ -31,6 +31,131 @@ export const Content = styled.article`
     animation-duration: 1s;
     animation-fill-mode: both;
     animation-name: fadeIn;
+
+    a[target='_blank']:after {
+      position: relative;
+      top: 1px;
+      right: 0;
+      width: 12px;
+      height: 12px;
+      margin-left: 1px;
+      content: url(/img/external-link.svg);
+    }
+
+    pre[class*='language-'] {
+      background: #40354d;
+      color: #ccc;
+
+      .token.line {
+        font-weight: bold;
+        color: #a0a0a0;
+      }
+
+      .token.comment {
+        font-weight: normal;
+        color: #a0a0a0;
+      }
+
+      .token.input {
+        user-select: none;
+      }
+
+      .token.comment,
+      .token.block-comment,
+      .token.prolog,
+      .token.doctype,
+      .token.cdata {
+        color: #999;
+      }
+
+      .token.url,
+      .token.constant,
+      .token.operator,
+      .token.punctuation {
+        color: #a0a0a0;
+      }
+
+      .token.property,
+      .token.tag,
+      .token.boolean,
+      .token.function-name,
+      .token.symbol,
+      .token.deleted {
+        color: #4badd2;
+      }
+
+      .token.function {
+        color: #ae41bb;
+      }
+
+      .token.number,
+      .token.attr-name,
+      .token.string,
+      .token.char,
+      .token.builtin,
+      .token.inserted {
+        color: #219161;
+      }
+
+      .token.entity,
+      .token.variable {
+        color: #a67f59;
+      }
+
+      .token.class-name {
+        color: #0086b3;
+      }
+
+      .token.dvc {
+        color: #56b1d0;
+      }
+
+      .token.usage,
+      .token.git {
+        color: #e9836e;
+      }
+
+      .token.command,
+      .token.selector,
+      .token.atrule,
+      .token.attr-value,
+      .token.keyword {
+        color: #e4b872;
+      }
+
+      .token.regex,
+      .token.important {
+        color: #b68;
+      }
+
+      .token.parameter {
+        color: #a0a0a0;
+      }
+
+      .token.function-variable {
+        color: #7ece42;
+      }
+
+      .token.important {
+        font-weight: normal;
+      }
+
+      .token.bold {
+        font-weight: bold;
+      }
+
+      .token.italic {
+        font-style: italic;
+      }
+
+      .token.entity {
+        cursor: help;
+      }
+
+      .token.namespace {
+        opacity: 0.7;
+      }
+    }
   }
 
   .Collapsible {

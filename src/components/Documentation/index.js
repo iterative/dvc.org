@@ -7,7 +7,7 @@ import Page from '../Page'
 import Hamburger from '../Hamburger'
 import SearchForm from '../SearchForm'
 import SidebarMenu from './SidebarMenu'
-import Markdown from './NewMarkdown'
+import Markdown from './Markdown'
 import RightPanel from './RightPanel'
 
 import { structure, getItemByPath } from '../../utils/sidebar'
