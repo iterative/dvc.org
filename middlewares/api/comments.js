@@ -9,11 +9,11 @@
  * potential ability to cache comments count in the future.
  */
 
-import fetch from 'isomorphic-fetch'
-import Cors from 'micro-cors'
-import NodeCache from 'node-cache'
+const fetch = require('isomorphic-fetch')
+const Cors = require('micro-cors')
+const NodeCache = require('node-cache')
 
-import { BLOG_URL, FORUM_URL } from '../../src/consts'
+const { BLOG_URL, FORUM_URL } = require('../../src/consts')
 
 const cache = new NodeCache({ stdTTL: 900 })
 
@@ -73,4 +73,4 @@ const getCommentCount = async (req, res) => {
   }
 }
 
-export default cors(getCommentCount)
+module.exports = cors(getCommentCount)

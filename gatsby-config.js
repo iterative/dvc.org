@@ -5,6 +5,8 @@ const path = require('path')
 require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
 
+const apiMiddleware = require('./middlewares/api')
+
 const title = 'Data Version Control · DVC'
 const description =
   'Open-source version control system for Data Science and Machine Learning ' +
@@ -89,5 +91,8 @@ module.exports = {
     keywords,
     siteUrl: 'https://dvc.org',
     title
+  },
+  developMiddleware: app => {
+    app.use('/api', apiMiddleware)
   }
 }

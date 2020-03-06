@@ -35,6 +35,7 @@
     "date-fns": "^2.8.1",
     "docsearch.js": "^2.6.3",
     "dom-scroll-into-view": "^2.0.1",
+    "express": "^4.17.1",
     "gatsby": "^2.19.21",
     "gatsby-link": "^2.2.29",
     "github-markdown-css": "^3.0.1",

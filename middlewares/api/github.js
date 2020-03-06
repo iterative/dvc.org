@@ -1,13 +1,13 @@
 /* eslint-env node */
 
-import { graphql } from '@octokit/graphql'
-import NodeCache from 'node-cache'
+const { graphql } = require('@octokit/graphql')
+const NodeCache = require('node-cache')
 
 const cache = new NodeCache({ stdTTL: 900 })
 
 const dev = process.env.NODE_ENV === 'development'
 
-export default async (_, res) => {
+module.exports = async (_, res) => {
   if (!process.env.GITHUB_TOKEN) {
     res.status(200).json({ issues: [] })
   } else {

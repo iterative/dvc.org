@@ -1,8 +1,17 @@
-export const HEADER = 'header'
+/* eslint-env node */
+
+const HEADER = 'header'
 
 const WEBSITE_HOST = 'dvc.org'
 
-export const FORUM_URL = `https://discuss.${WEBSITE_HOST}`
-export const BLOG_URL = `https://blog.${WEBSITE_HOST}`
+const FORUM_URL = `https://discuss.${WEBSITE_HOST}`
+const BLOG_URL = `https://blog.${WEBSITE_HOST}`
 
-export const PAGE_DOC = '/doc'
+const PAGE_DOC = '/doc'
+
+module.exports = {
+  HEADER,
+  FORUM_URL,
+  BLOG_URL,
+  PAGE_DOC
+}

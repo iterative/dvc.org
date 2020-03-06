@@ -1,15 +1,15 @@
 /* eslint-env node */
 
-import fetch from 'isomorphic-fetch'
-import NodeCache from 'node-cache'
+const fetch = require('isomorphic-fetch')
+const NodeCache = require('node-cache')
 
-import { FORUM_URL } from '../../src/consts'
+const { FORUM_URL } = require('../../src/consts')
 
 const cache = new NodeCache({ stdTTL: 900 })
 
 const dev = process.env.NODE_ENV === 'development'
 
-export default async (_, res) => {
+module.exports = async (_, res) => {
   if (cache.get('topics')) {
     if (dev) console.log('Using cache for "topics"')
 

@@ -1,6 +1,8 @@
-import fetch from 'isomorphic-fetch'
+/* eslint-env node */
 
-export default async (_, res) => {
+const fetch = require('isomorphic-fetch')
+
+module.exports = async (_, res) => {
   try {
     const response = await fetch(`https://blog.dvc.org/api/posts.json`)
 
@@ -10,7 +12,7 @@ export default async (_, res) => {
       return
     }
 
-    const data = await response.text()
+    const data = await response.json()
 
     res.status(200).json(data)
   } catch {
