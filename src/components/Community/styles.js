@@ -130,8 +130,8 @@ export const Button = styled.a`
   line-height: 38px;
   text-decoration: none;
   text-align: center;
-  color: ${({ color }) => (color ? color : '#999')};
-  background-color: ${({ backgroundColor }) =>
+  color: ${({ theme: { color } }) => (color ? color : '#999')};
+  background-color: ${({ theme: { backgroundColor } }) =>
     backgroundColor ? backgroundColor : '#ddd'};
 
   &:hover {
