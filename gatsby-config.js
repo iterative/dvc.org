@@ -6,6 +6,7 @@ require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
 
 const apiMiddleware = require('./middlewares/api')
+const redirectsMiddleware = require('./middlewares/redirects')
 
 const title = 'Data Version Control · DVC'
 const description =
@@ -93,6 +94,7 @@ module.exports = {
     title
   },
   developMiddleware: app => {
+    app.use(redirectsMiddleware)
     app.use('/api', apiMiddleware)
   }
 }
