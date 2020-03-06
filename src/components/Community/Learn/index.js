@@ -186,10 +186,10 @@ export default function CommunityLearn({ theme }) {
     <Wrapper>
       <CommunitySection
         anchor="learn"
-        background="/static/img/community/learn_bg.jpg"
+        background="/img/community/learn_bg.jpg"
         color={theme.color}
         description={description}
-        icon="/static/img/community/learn.svg"
+        icon="/img/community/learn.svg"
         mobileDescription={mobileDescription}
         title={title}
       >
