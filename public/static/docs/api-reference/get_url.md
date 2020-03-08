@@ -1,4 +1,4 @@
-# get_url()
+# dvc.api.get_url()
 
 Returns the URL to the storage location of a data file or directory tracked in a
 <abbr>DVC project</abbr>.

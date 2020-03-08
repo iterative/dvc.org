@@ -1,14 +1,14 @@
-# read()
+# dvc.api.read()
 
 Returns the contents of a tracked file.
 
 ```py
-dvc.api.open(path: str,
-             repo: str = None,
-             rev: str = None,
-             remote: str = None,
-             mode: str = "r",
-             encoding: str = None)
+def open(path: str,
+         repo: str = None,
+         rev: str = None,
+         remote: str = None,
+         mode: str = "r",
+         encoding: str = None)
 ```
 
 #### Usage:
@@ -24,10 +24,9 @@ modelpkl = dvc.api.read(
 
 ## Description
 
-This function wraps [`dvc.api.open()`](/doc/api-reference/open) for a simple and
-direct way to return the complete contents of files tracked in <abbr>DVC
-projects</abbr> (by DVC or Git). If the file cannot be found, a
-`PathMissingError` is raised.
+This function wraps [`dvc.api.open()`](/doc/api-reference/open), for a simple
+way to return the complete contents of a file tracked in a <abbr>DVC
+project</abbr>. The file can be tracked by DVC or by Git.
 
 The returned contents can be a
 [string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)

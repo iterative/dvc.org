@@ -1,14 +1,14 @@
-# open()
+# dvc.api.open()
 
 Opens a tracked file.
 
 ```py
-dvc.api.open(path: str,
-             repo: str = None,
-             rev: str = None,
-             remote: str = None,
-             mode: str = "r",
-             encoding: str = None)
+def open(path: str,
+         repo: str = None,
+         rev: str = None,
+         remote: str = None,
+         mode: str = "r",
+         encoding: str = None)
 ```
 
 #### Usage:
@@ -25,9 +25,10 @@ with dvc.api.open(
 
 ## Description
 
-Open file or model (`path`) tracked in a <abbr>DVC project</abbr> (by DVC or
-Git), and generate a corresponding
-[file object](https://docs.python.org/3/glossary.html#term-file-object).
+Open a data or model file tracked in a <abbr>DVC project</abbr> and generate a
+corresponding
+[file object](https://docs.python.org/3/glossary.html#term-file-object). The
+file can be tracked by DVC or by Git.
 
 > The exact type of file object depends on the `mode` used. For more details,
 > please refer to Python's
@@ -38,12 +39,13 @@ Git), and generate a corresponding
 [context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
 (using the `with` keyword, as shown in the examples).
 
-> Use `dvc.api.read()` to get the file's contents directly – no _context
-> manager_ involved.
+> Use `dvc.api.read()` to get the complete file contents in a single function
+> call – no _context manager_ involved.
 
-This function reads (streams) the file trough a direct connection to the storage
-whenever possible, so it does not require any space on the disc to save the file
-before making it accessible. The only exception is when using a Google Drive
+This function makes a direct connection to the storage most of the times, so the
+file contents can be streamed as they are read (which requires an active network
+connection). This means it does not require space on the disc to save the file
+before making it accessible. The only exception is when using Google Drive as
 [remote type](/doc/command-reference/remote/add#supported-storage-types).
 
 ## Parameters
@@ -86,13 +88,11 @@ before making it accessible. The only exception is when using a Google Drive
 
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
-## Example: Use data tracked in a DVC repository online
+## Example: Use data or models from DVC repositories online
 
 Any <abbr>data artifact</abbr> can be employed directly in your Python app by
-using this API.
-
-For example, an XML file from a public DVC repo online can be processed directly
-in your Python app with:
+using this API. For example, an XML file tracked in a public DVC repo on Github
+can be processed directly in your Python app with:
 
 ```py
 from xml.dom.minidom import parse
@@ -106,8 +106,8 @@ with dvc.api.open(
     # ... Process DOM
 ```
 
-> Notice that you could read the contents of a tracked file faster with
-> `dvc.api.read()`:
+> Notice that if you just need to load the complete file contents to memory, you
+> can use `dvc.api.read()` instead:
 >
 > ```py
 > xmldata = dvc.api.read('get-started/data.xml',
@@ -116,7 +116,7 @@ with dvc.api.open(
 > ```
 
 Now let's imagine you want to deserialize and use a binary model from a private
-repo online. For a case like this, we can use a SSH URL instead (assuming the
+repo. For a case like this, we can use an SSH URL instead (assuming the
 [credentials are configured](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
 locally):
 
@@ -132,7 +132,7 @@ with dvc.api.open(
     # ... Use instanciated model
 ```
 
-## Example: Use other versions of data or results
+## Example: Use different versions of data
 
 The `rev` argument lets you specify any Git commit to look for an artifact. This
 way any previous version, or alternative experiment can be accessed
@@ -151,10 +151,10 @@ with dvc.api.open(
     # ... Read clean data from version 1.1.0
 ```
 
-Also, notice that in this case we didn't supply a `repo` argument in this
-example. DVC will attempt to find a <abbr>DVC project</abbr> to use in the
-current working directory tree, and look for the file contents of `clean.csv` in
-its local <abbr>cache</abbr>; no download will happen if found. See the
+Also, notice that we didn't supply a `repo` argument in this example. DVC will
+attempt to find a <abbr>DVC project</abbr> to use in the current working
+directory tree, and look for the file contents of `clean.csv` in its local
+<abbr>cache</abbr>; no download will happen if found. See the
 [Parameters](#parameters) section for more info.
 
 Note: to specify the file encoding of a text file, use:
