@@ -16,6 +16,7 @@ code, ML models, etc. It will conatain your DVC project.
       name: 'DVC Project',
       match: [
         'DVC project',
+        'DVC projects',
         'project',
         'projects',
         'DVC repository',
