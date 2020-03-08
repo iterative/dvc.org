@@ -89,8 +89,8 @@ compares them with a previous version.
   `-aT` flag.
 
 - `-R`, `--recursive` - determines the metric files to show by searching each
-  target directory and its subdirectories for DVC-files to inspect. `targets` is
-  expected to contain one or more directories for this option to have effect.
+  target directory and its subdirectories for DVC-files to inspect. If there are
+  no directories among the `targets`, this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

@@ -150,7 +150,7 @@ data.dvc:
 		modified:           data
 ```
 
-## Example: Ignore dvc controlled file
+## Example: Ignore DVC tracked file
 
 Let's analyze an example <abbr>workspace</abbr>:
 

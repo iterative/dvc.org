@@ -75,15 +75,14 @@ export default function SidebarMenu({ id, sidebar, currentPath, onClick }) {
 
     setIsScrollHidden(true)
 
-    setTimeout(() => {
-      if (psRef.current) {
-        psRef.current.update()
-        scrollIntoView(node, parent, { onlyScrollIfNeeded: true })
-        setIsScrollHidden(false)
-      }
+    const timeout = setTimeout(() => {
+      psRef.current.update()
+      scrollIntoView(node, parent, { onlyScrollIfNeeded: true })
+      setIsScrollHidden(false)
     }, 400)
 
     return () => {
+      clearTimeout(timeout)
       psRef.current.destroy()
       psRef.current = null
     }

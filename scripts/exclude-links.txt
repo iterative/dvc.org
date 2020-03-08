@@ -8,6 +8,7 @@ https://accounts.google.com/o/oauth2/auth
 https://api.github.com/repos/$
 https://blog.$
 https://circleci.com/gh/iterative/dvc.org
+https://api.cloudflare.com/client/v4/zones/$
 https://code.dvc.org/foo/bar
 https://data.dvc.org/foo/bar
 https://discuss.$

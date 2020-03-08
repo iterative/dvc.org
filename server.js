@@ -28,10 +28,13 @@ app.prepare().then(() => {
     const { pathname, query } = parsedUrl
     const host = req.headers.host
 
+    res.setHeader('Cache-Control', 'public, max-age=0, s-maxage=99999')
+
     let [redirectCode, redirectLocation] = getRedirect(host, pathname, {
       req,
       dev
     })
+
     if (redirectLocation) {
       // HTTP redirects
 
@@ -40,7 +43,6 @@ app.prepare().then(() => {
         redirectLocation += '?' + queryStr
       }
       res.writeHead(redirectCode, {
-        'Cache-control': 'no-cache',
         Location: redirectLocation
       })
       res.end()

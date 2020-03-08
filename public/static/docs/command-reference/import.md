@@ -65,17 +65,15 @@ To actually [track the data](https://dvc.org/doc/get-started/add-files),
 `git add` (and `git commit`) the import stage.
 
 Note that import stages are considered always locked, meaning that if you run
-`dvc repro`, they won't be updated. Use `dvc update` or
-[re-import](#example-fixed-revisions-re-importing) them to update the downloaded
+`dvc repro`, they won't be updated. Use `dvc update` to update the downloaded
 data artifact from the source repo.
 
 ## Options
 
 - `-o`, `--out` - specify a path (directory and/or file name) to the desired
-  location to place the imported data and import stage (DVC-file) in. The
-  default value (when this option isn't used) is the current working directory
-  (`.`) and original file name. If an existing directory is specified, then the
-  output will be placed inside of it.
+  location to place the imported file in (instead of using the current working
+  directory). If an existing directory is specified, the output will be placed
+  inside of it.
 
 - `--rev` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
@@ -133,7 +131,7 @@ Several of the values above are pulled from the original stage file
 subfields under `repo` are used to save the origin and version of the
 dependency, respectively.
 
-## Example: Fixed revisions & re-importing
+## Example: Fixed revisions and updating to different revision
 
 To import a specific version of a <abbr>data artifact</abbr>, we may use the
 `--rev` option:
@@ -163,22 +161,13 @@ deps:
 If `rev` is a Git branch or tag (where the underlying commit changes), the data
 source may have updates at a later time. To bring it up to date if so (and
 update `rev_lock` in the DVC-file), simply use `dvc update <stage>.dvc`. If
-`rev` is a specific commit hash (does not change), `dvc update` will never have
-an effect on the import stage. You may **re-import** a different commit instead,
-by using `dvc import` again with a different (or without) `--rev`. For example:
+`rev` is a specific commit (does not change), `dvc update` will never have an
+effect on the import stage. You may `dvc update` to a different commit, using
+`--rev`:
 
 ```dvc
-$ dvc import --rev master \
-             git@github.com:iterative/dataset-registry.git \
-             use-cases/cats-dogs
+$ dvc update --rev cats-dogs-v2
 ```
-
-The import stage is overwritten, and will now be able update normally with
-`dvc update`.
-
-> In the above example, the value for `rev` in the new import stage will be
-> `master` (default branch), so the command is equivalent to not using `--rev`
-> at all.
 
 ## Example: Data registry
 
