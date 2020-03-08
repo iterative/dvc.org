@@ -78,7 +78,7 @@ or a [bytearray](https://docs.python.org/3/library/stdtypes.html#bytearray).
 
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
-## Example: Load data tracked in a DVC repository online
+## Example: Load data from a DVC repository online
 
 Any <abbr>data artifact</abbr> can be employed directly in your Python app by
 using this API.
