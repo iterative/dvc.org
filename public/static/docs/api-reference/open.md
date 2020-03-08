@@ -42,10 +42,11 @@ file can be tracked by DVC or by Git.
 > Use `dvc.api.read()` to get the complete file contents in a single function
 > call – no _context manager_ involved.
 
-This function makes a direct connection to the storage most of the times, so the
-file contents can be streamed as they are read (which requires an active network
-connection). This means it does not require space on the disc to save the file
-before making it accessible. The only exception is when using Google Drive as
+This function makes a direct connection to the
+[remote storage](/doc/command-reference/remote/add#supported-storage-types)
+(except for Google Drive), so the file contents can be streamed as they are
+read. This means it does not require space on the disc to save the file before
+making it accessible. The only exception is when using Google Drive as
 [remote type](/doc/command-reference/remote/add#supported-storage-types).
 
 ## Parameters
@@ -88,7 +89,7 @@ before making it accessible. The only exception is when using Google Drive as
 
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
-## Example: Use data or models from DVC repositories online
+## Example: Use data or models from DVC repositories
 
 Any <abbr>data artifact</abbr> can be employed directly in your Python app by
 using this API. For example, an XML file tracked in a public DVC repo on Github
