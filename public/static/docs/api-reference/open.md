@@ -96,21 +96,28 @@ using this API. For example, an XML file tracked in a public DVC repo on Github
 can be processed directly in your Python app with:
 
 ```py
-from xml.dom.minidom import parse
+from xml.sax import parse
 import dvc.api
+from mymodule import mySAXHandler
 
 with dvc.api.open(
         'get-started/data.xml',
         repo='https://github.com/iterative/dataset-registry'
         ) as fd:
-    xmldom = parse(fd)
-    # ... Process DOM
+    parse(fd, mySAXHandler)
 ```
 
-> Notice that if you just need to load the complete file contents to memory, you
-> can use `dvc.api.read()` instead:
+Notice that we want to use a [SAX](http://www.saxproject.org/) XML parser here
+because `dvc.api.open()` is able to stream the file, the `mySAXHandler` object
+must handle the event-driven parsing of the document in this case.
+
+> If you just need to load the complete file contents to memory, you can use
+> `dvc.api.read()` instead:
 >
 > ```py
+> from xml.dom.minidom import parse
+> import dvc.api
+>
 > xmldata = dvc.api.read('get-started/data.xml',
 >     repo='https://github.com/iterative/dataset-registry')
 > xmldom = parse(xmldata)
