@@ -85,8 +85,8 @@ and only execute the final stage.
 ## Options
 
 - `-f`, `--force` - reproduce a pipeline, regenerating its results, even if no
-  changes were found. By default this executes all of its stages but it can be
-  limited with the `targets` argument and `-s`, `-p`, or `-c` options.
+  changes were found. This executes all of the stages by default, but it can be
+  limited with the `targets` argument, or the `-s`, `-p`, `-c` options.
 
 - `-s`, `--single-item` - reproduce only a single stage by turning off the
   recursive search for changed dependencies. Multiple stages are executed
@@ -101,8 +101,8 @@ and only execute the final stage.
   independent unit.
 
 - `-R`, `--recursive` - determines the stages to reproduce by searching each
-  target directory and its subdirectories for DVC-files to inspect. `targets` is
-  expected to contain one or more directories for this option to have effect.
+  target directory and its subdirectories for DVC-files to inspect. If there are
+  no directories among the `targets`, this option is ignored.
 
 - `--no-commit` - do not save outputs to cache. (See `dvc run`.) Useful when
   running different experiments and you don't want to fill up the cache with

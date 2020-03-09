@@ -1,5 +1,8 @@
 # Installation on MacOS
 
+> To use DVC [as a Python library](/doc/api-reference), please
+> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+
 ## Install with brew
 
 Recommended. Requires [Homebrew](https://brew.sh/).

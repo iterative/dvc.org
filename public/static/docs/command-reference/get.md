@@ -3,8 +3,7 @@
 Download a file or directory tracked by DVC or by Git into the current working
 directory.
 
-> Unlike `dvc import`, this command does not track the downloaded files (does
-> not create a DVC-file).
+> See also our `dvc.api.open()` Python API function.
 
 ## Synopsis
 
@@ -21,11 +20,12 @@ positional arguments:
 Provides an easy way to download files or directories tracked in any <abbr>DVC
 repository</abbr> (e.g. datasets, intermediate results, ML models), or Git
 repository (e.g. source code, small image/other files). `dvc get` copies the
-target file or directory (`url`/`path`) to the current working directory.
-(Analogous to `wget`, but for repos.)
+target file or directory (found at `path` in `url`) to the current working
+directory. (Analogous to `wget`, but for repos.)
 
-Note that this command doesn't require an existing DVC project to run in. It's a
-single-purpose command that can be used out of the box after installing DVC.
+> Note that unlike `dvc import`, this command does not track the downloaded
+> files (does not create a DVC-file). For that reason, this command doesn't
+> require an existing DVC project to run in.
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported for online repos
@@ -52,10 +52,9 @@ name.
 ## Options
 
 - `-o`, `--out` - specify a path (directory and/or file name) to the desired
-  location to place the download file in. The default value (when this option
-  isn't used) is the current working directory (`.`) and original file name. If
-  an existing directory is specified, then the output will be placed inside of
-  it.
+  location to place the downloaded file in (instead of using the current working
+  directory). If an existing directory is specified, the output will be placed
+  inside of it.
 
 - `--rev` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
@@ -63,8 +62,8 @@ name.
   default branch) is used by default when this option is not specified.
 
 - `--show-url` - instead of downloading the file or directory, just print the
-  storage location (URL) of the target data. `path` is expected to represent a
-  cached, DVC-tracked file for this option to have effect.
+  storage location (URL) of the target data. If `path` is a Git-tracked file,
+  this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -154,7 +153,7 @@ again, like in the previous example. But this time, clone it first to see
 `dvc get` in action inside a <abbr>DVC project</abbr>.
 
 ```dvc
-$ git clone git@github.com:iterative/example-get-started.git
+$ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
 

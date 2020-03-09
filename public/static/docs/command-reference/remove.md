@@ -27,8 +27,8 @@ how it can be used to replace or modify files that are tracked by DVC.
 
 ## Options
 
-- `-o`, `--outs` (default) - remove outputs described in the given `targets`,
-  keep the DVC-files.
+- `-o`, `--outs` - remove the outputs described in the given `targets`, keep the
+  DVC-files themselves. **This is the default behavior.**
 
 - `-p`, `--purge` - remove outputs and DVC-files.
 

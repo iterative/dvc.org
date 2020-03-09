@@ -59,10 +59,10 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` specifies which remote to pull from (see
-  `dvc remote list`). The value for `REMOTE` is a name defined using
-  `dvc remote`. If the option is not specified, then the default remote
-  (configured with the `core.config` config option) is used.
+- `-r REMOTE`, `--remote REMOTE` - name of the
+  [remote storage](/doc/command-reference/remote) to pull from (see
+  `dvc remote list`). The argument `REMOTE` is a remote name defined using
+  `dvc remote`.
 
 - `-a`, `--all-branches` - determines the files to download by examining
   DVC-files in all Git branches instead of just those present in the current
@@ -73,26 +73,26 @@ reflinks or hardlinks to put it in the workspace without copying. See
   to save different experiments or project checkpoints. Note that both options
   can be combined, for example using the `-aT` flag.
 
-- `-d`, `--with-deps` - one or more `targets` should be specified for this
-  option to have effect. Determines files to download by tracking dependencies
-  to the target DVC-files (stages). By traversing all stage dependencies, DVC
-  searches backward from the target stages in the corresponding pipelines. This
-  means DVC will not pull files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - determines files to download by tracking dependencies to
+  the target DVC-files (stages). If no `targets` are provided, this option is
+  ignored. By traversing all stage dependencies, DVC searches backward from the
+  target stages in the corresponding pipelines. This means DVC will not pull
+  files referenced in later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to pull by searching each target
-  directory and its subdirectories for DVC-files to inspect. `targets` is
-  expected to contain one or more directories for this option to have effect.
+  directory and its subdirectories for DVC-files to inspect. If there are no
+  directories among the `targets`, this option is ignored.
 
 - `-f`, `--force` - does not prompt when removing workspace files, which occurs
   when these file no longer match the current DVC-file references. This option
   surfaces behavior from the `dvc fetch` and `dvc checkout` commands because
   `dvc pull` in effect performs those 2 functions in a single command.
 
-- `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
-  while downloading files from the remote. The effect is to control the number
-  of files downloaded simultaneously. Default is `4 * cpu_count()`. For example
-  with `-j 1` DVC downloads one file at a time, with `-j 2` it downloads two at
-  a time, and so forth. For SSH remotes default is set to 4.
+- `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
+  the downloading of files from the remote. The default value is
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  may improve the total download speed if a combination of small and large files
+  are being fetched.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

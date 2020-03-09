@@ -4,8 +4,8 @@ Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track
 changes in the remote data source. Creates a DVC-file.
 
-> See also `dvc get-url`, that corresponds to the first half of what this
-> command does (downloading the <abbr>data artifact</abbr>).
+> See `dvc import` to download and tack data/model files or directories from
+> other <abbr>DVC repositories</abbr> (e.g. hosted on GitHub).
 
 ## Synopsis
 
@@ -27,6 +27,9 @@ external data source changes. Example scenarios:
   projects.
 - A batch process running regularly updates a data file to import.
 - A shared dataset on a remote storage that is managed and updated outside DVC.
+
+> Note that `dvc get-url` corresponds to the first step this command performs
+> (just download the file or directory).
 
 The `dvc import-url` command helps the user create such an external data
 dependency. The `url` argument specifies the external location of the data to be
@@ -103,17 +106,11 @@ Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` on them to bring the import
 up to date from the external data source.
 
-> See `dvc import` to download and tack data/model files or directories from
-> other <abbr>DVC repositories</abbr> (e.g. GitHub URLs).
-
 ## Options
 
-- `-f`, `--file` - specify name of the DVC-file it generates. By default the
-  DVC-file name generated is `<file>.dvc`, where `<file>` is file name of the
-  output (`out`). The stage file is placed in the same directory where
-  `dvc import-url` is run by default, but `-f` can be used to change this
-  location and file name, by including a path in the provided value (e.g.
-  `-f stages/stage.dvc`).
+- `-f`, `--file` - specify a path and/or file name for the DVC-file created by
+  this command (e.g. `-f stages/stage.dvc`). This overrides the default file
+  name: `<file>.dvc`, where `<file>` is the file name of the output (`out`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
