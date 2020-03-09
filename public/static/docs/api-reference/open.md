@@ -91,7 +91,7 @@ streamed, which optimizes memory usage.
 ## Example: Use data or models from DVC repositories
 
 Any <abbr>data artifact</abbr> hosted online can be processed directly in your
-Python app with this API. For example, an XML file tracked in a public DVC repo
+Python code with this API. For example, an XML file tracked in a public DVC repo
 on Github can be processed like this:
 
 ```py

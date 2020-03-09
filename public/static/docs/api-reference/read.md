@@ -82,7 +82,7 @@ These are loaded to memory directly (without using any disc space).
 ## Example: Load data from a DVC repository
 
 Any <abbr>data artifact</abbr> hosted online can be loaded directly in your
-Python app with this API. For example, let's say that you want to load and
+Python code with this API. For example, let's say that you want to load and
 unserialize a binary model from a repo on Github:
 
 ```py
