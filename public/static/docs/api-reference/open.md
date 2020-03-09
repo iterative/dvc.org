@@ -45,8 +45,8 @@ file can be tracked by DVC or by Git.
 This function makes a direct connection to the
 [remote storage](/doc/command-reference/remote/add#supported-storage-types)
 (except for Google Drive), so the file contents can be streamed as they are
-read. This means it does not require space on the disc to save the file before
-making it accessible. The only exception is when using Google Drive as
+read. This means it does not require disc space to save the file before making
+it accessible. The only exception is when using Google Drive as
 [remote type](/doc/command-reference/remote/add#supported-storage-types).
 
 ## Parameters
@@ -92,8 +92,8 @@ making it accessible. The only exception is when using Google Drive as
 ## Example: Use data or models from DVC repositories
 
 Any <abbr>data artifact</abbr> hosted online can be employed directly in your
-Python app (without requiring local file storage) with this API. For example, an
-XML file tracked in a public DVC repo on Github can be processed like this:
+Python app (no disc space needed) with this API. For example, an XML file
+tracked in a public DVC repo on Github can be processed like this:
 
 ```py
 from xml.sax import parse
@@ -107,11 +107,11 @@ with dvc.api.open(
     parse(fd, mySAXHandler)
 ```
 
-Notice that we want to use a [SAX](http://www.saxproject.org/) XML parser here
-because `dvc.api.open()` is able to stream the file. The `mySAXHandler` object
+Notice that we use a [SAX](http://www.saxproject.org/) XML parser here because
+`dvc.api.open()` is able to stream the data download. The `mySAXHandler` object
 should handle the event-driven parsing of the document in this case.
 
-> If you just need to load the complete file contents to memory, you can use
+> If you just needed to load the complete file contents into memory, you can use
 > `dvc.api.read()` instead:
 >
 > ```py
@@ -123,21 +123,21 @@ should handle the event-driven parsing of the document in this case.
 > xmldom = parse(xmldata)
 > ```
 
-Now let's imagine you want to deserialize and use a binary model from a private
-repo. For a case like this, we can use an SSH URL instead (assuming the
+## Example: Accessing private repos
+
+This is just a matter of using the right `repo` argument, for example an SSH URL
+(requires that the
 [credentials are configured](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
 locally):
 
 ```py
-import pickle
 import dvc.api
 
 with dvc.api.open(
-        'model.pkl',
+        'features.dat',
         repo='git@server.com:path/to/repo.git'
         ) as fd:
-    model = pickle.load(fd)
-    # ... Use instanciated model
+    # ... Process 'features'
 ```
 
 ## Example: Use different versions of data
@@ -156,7 +156,7 @@ with dvc.api.open(
         rev='v1.1.0'
         ) as fd:
     reader = csv.reader(fd)
-    # ... Read clean data from version 1.1.0
+    # ... Process 'clean' data from version 1.1.0
 ```
 
 Also, notice that we didn't supply a `repo` argument in this example. DVC will

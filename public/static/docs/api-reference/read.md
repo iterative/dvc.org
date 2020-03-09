@@ -81,9 +81,8 @@ or a [bytearray](https://docs.python.org/3/library/stdtypes.html#bytearray).
 ## Example: Load data from a DVC repository
 
 Any <abbr>data artifact</abbr> hosted online can be employed directly in your
-Python app (without requiring local file storage) with this API. For example,
-let's say that you want to load and unserialize a binary model from a repo on
-Github:
+Python app (no disc space needed) with this API. For example, let's say that you
+want to load and unserialize a binary model from a repo on Github:
 
 ```py
 import pickle
