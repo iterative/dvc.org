@@ -39,14 +39,14 @@ file can be tracked by DVC or by Git.
 [context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
 (using the `with` keyword, as shown in the examples).
 
-> Use `dvc.api.read()` to get the complete file contents in a single function
-> call – no _context manager_ involved.
-
 This function makes a direct connection to the
 [remote storage](/doc/command-reference/remote/add#supported-storage-types)
-(except for Google Drive), so the file contents can be streamed as they are
-downloaded. No disc space and very little memory are needed to save the file
-before making it accessible.
+(except for Google Drive), so the file contents can be streamed. Your code can
+process the data [buffer](https://docs.python.org/3/c-api/buffer.html) as it's
+streamed, which optimizes memory usage.
+
+> Use `dvc.api.read()` to load the complete file contents in a single function
+> call – no _context manager_ involved. Neither function utilizes disc space.
 
 ## Parameters
 
@@ -90,9 +90,9 @@ before making it accessible.
 
 ## Example: Use data or models from DVC repositories
 
-Any <abbr>data artifact</abbr> hosted online can be employed directly in your
-Python app (no disc space needed) with this API. For example, an XML file
-tracked in a public DVC repo on Github can be processed like this:
+Any <abbr>data artifact</abbr> hosted online can be processed directly in your
+Python app with this API. For example, an XML file tracked in a public DVC repo
+on Github can be processed like this:
 
 ```py
 from xml.sax import parse

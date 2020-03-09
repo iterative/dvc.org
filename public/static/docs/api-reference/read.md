@@ -28,18 +28,16 @@ This function wraps [`dvc.api.open()`](/doc/api-reference/open), for a simple
 way to return the complete contents of a file tracked in a <abbr>DVC
 project</abbr>. The file can be tracked by DVC or by Git.
 
+> This is similar to the `dvc get` command in our CLI.
+
 The returned contents can be a
 [string](https://docs.python.org/3/library/stdtypes.html#text-sequence-type-str)
 or a [bytearray](https://docs.python.org/3/library/stdtypes.html#bytearray).
+These are loaded to memory directly (without using any disc space).
 
 > The type returned depends on the `mode` used. For more details, please refer
 > to Python's [`open()`](https://docs.python.org/3/library/functions.html#open)
 > built-in, which is used under the hood.
-
-> This is similar to the `dvc get` command in our CLI.
-
-No disc space is needed to save the file before loading it to memory in order to
-make the file accessible.
 
 ## Parameters
 
@@ -83,9 +81,9 @@ make the file accessible.
 
 ## Example: Load data from a DVC repository
 
-Any <abbr>data artifact</abbr> hosted online can be employed directly in your
-Python app (no disc space needed) with this API. For example, let's say that you
-want to load and unserialize a binary model from a repo on Github:
+Any <abbr>data artifact</abbr> hosted online can be loaded directly in your
+Python app with this API. For example, let's say that you want to load and
+unserialize a binary model from a repo on Github:
 
 ```py
 import pickle
