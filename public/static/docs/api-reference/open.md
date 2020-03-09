@@ -109,8 +109,8 @@ with dvc.api.open(
 Notice that we use a [SAX](http://www.saxproject.org/) XML parser here because
 `dvc.api.open()` is able to stream the data download. (The `mySAXHandler` object
 should handle the event-driven parsing of the document in this case.) This
-increases the performance of the code, since very little memory is needed, and
-is typically faster than loading the whole data into memory.
+increases the performance of the code (minimizing memory usage), and is
+typically faster than loading the whole data into memory.
 
 > If you just needed to load the complete file contents into memory, you can use
 > `dvc.api.read()` instead:
