@@ -61,12 +61,11 @@ $ pip install -r code/requirements.txt
 DVC works on top of Git repositories. You run DVC initialization in a repository
 directory to create DVC meta files and directories.
 
-After DVC initialization, a new directory `.dvc/` will be created with the
-`config` and `.gitignore` files. These and other files and directories are
-hidden from user, as typically there's no need to interact with them directly.
-See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
-learn more. However, we describe some DVC internals below for a better
-understanding of how it works.
+At DVC initialization, a new `.dvc/` directory will be created with the
+`config`, `.gitignore`, among
+[other files and directories](/doc/user-guide/dvc-files-and-directories) that
+are hidden from the user. However, we describe some DVC internals below for a
+better understanding of how it works.
 
 ```dvc
 $ dvc init

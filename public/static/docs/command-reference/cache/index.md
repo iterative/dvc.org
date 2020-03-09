@@ -15,8 +15,9 @@ positional arguments:
 
 ## Description
 
-After DVC initialization, a hidden directory `.dvc/` is created to contain the
-[DVC files and directories](/doc/user-guide/dvc-files-and-directories),
+At DVC initialization, a new `.dvc/` directory will be created with the
+`config`, `.gitignore`, among
+[other files and directories](/doc/user-guide/dvc-files-and-directories),
 including the default cache directory.
 
 The cache is where your data files, models, etc (anything you want to version
