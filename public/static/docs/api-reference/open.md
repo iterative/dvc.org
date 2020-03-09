@@ -108,8 +108,8 @@ with dvc.api.open(
 ```
 
 Notice that we want to use a [SAX](http://www.saxproject.org/) XML parser here
-because `dvc.api.open()` is able to stream the file, the `mySAXHandler` object
-must handle the event-driven parsing of the document in this case.
+because `dvc.api.open()` is able to stream the file. The `mySAXHandler` object
+should handle the event-driven parsing of the document in this case.
 
 > If you just need to load the complete file contents to memory, you can use
 > `dvc.api.read()` instead:
