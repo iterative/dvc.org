@@ -38,6 +38,9 @@ or a [bytearray](https://docs.python.org/3/library/stdtypes.html#bytearray).
 
 > This is similar to the `dvc get` command in our CLI.
 
+No disc space is needed to save the file before loading it to memory in order to
+make the file accessible.
+
 ## Parameters
 
 - **`path`** - location and file name of the file in `repo`, relative to the

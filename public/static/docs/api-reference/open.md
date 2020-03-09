@@ -45,9 +45,8 @@ file can be tracked by DVC or by Git.
 This function makes a direct connection to the
 [remote storage](/doc/command-reference/remote/add#supported-storage-types)
 (except for Google Drive), so the file contents can be streamed as they are
-read. This means it does not require disc space to save the file before making
-it accessible. The only exception is when using Google Drive as
-[remote type](/doc/command-reference/remote/add#supported-storage-types).
+downloaded. No disc space and very little memory are needed to save the file
+before making it accessible.
 
 ## Parameters
 
@@ -108,8 +107,10 @@ with dvc.api.open(
 ```
 
 Notice that we use a [SAX](http://www.saxproject.org/) XML parser here because
-`dvc.api.open()` is able to stream the data download. The `mySAXHandler` object
-should handle the event-driven parsing of the document in this case.
+`dvc.api.open()` is able to stream the data download. (The `mySAXHandler` object
+should handle the event-driven parsing of the document in this case.) This
+increases the performance of the code, since very little memory is needed, and
+is typically faster than loading the whole data into memory.
 
 > If you just needed to load the complete file contents into memory, you can use
 > `dvc.api.read()` instead:
@@ -165,17 +166,6 @@ directory tree, and look for the file contents of `clean.csv` in its local
 <abbr>cache</abbr>; no download will happen if found. See the
 [Parameters](#parameters) section for more info.
 
-Note: to specify the file encoding of a text file, use:
-
-```py
-import dvc.api
-
-with dvc.api.open(
-        'data/nlp/words_ru.txt',
-        encoding='koi8_r') as fd:
-    # ...
-```
-
 ## Example: Chose a specific remote as the data source
 
 Sometimes we may want to choose the [remote](/doc/command-reference/remote) data
@@ -192,5 +182,18 @@ with open(
         ) as fd:
     for line in fd:
         match = re.search(r'user=(\w+)', line)
-        # ...
+        # ... Process users activity log
+```
+
+## Example: Specify the text encoding
+
+To chose which codec to open a text file with, send an `encoding` argument:
+
+```py
+import dvc.api
+
+with dvc.api.open(
+        'data/nlp/words_ru.txt',
+        encoding='koi8_r') as fd:
+    # ... Process Russian words
 ```
