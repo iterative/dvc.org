@@ -39,15 +39,14 @@ file can be tracked by DVC or by Git.
 [context manager](https://www.python.org/dev/peps/pep-0343/#context-managers-in-the-standard-library)
 (using the `with` keyword, as shown in the examples).
 
-> Use `dvc.api.read()` to get the complete file contents in a single function
-> call – no _context manager_ involved.
-
 This function makes a direct connection to the
 [remote storage](/doc/command-reference/remote/add#supported-storage-types)
-(except for Google Drive), so the file contents can be streamed as they are
-read. This means it does not require space on the disc to save the file before
-making it accessible. The only exception is when using Google Drive as
-[remote type](/doc/command-reference/remote/add#supported-storage-types).
+(except for Google Drive), so the file contents can be streamed. Your code can
+process the data [buffer](https://docs.python.org/3/c-api/buffer.html) as it's
+streamed, which optimizes memory usage.
+
+> Use `dvc.api.read()` to load the complete file contents in a single function
+> call – no _context manager_ involved. Neither function utilizes disc space.
 
 ## Parameters
 
@@ -91,46 +90,56 @@ making it accessible. The only exception is when using Google Drive as
 
 ## Example: Use data or models from DVC repositories
 
-Any <abbr>data artifact</abbr> can be employed directly in your Python app by
-using this API. For example, an XML file tracked in a public DVC repo on Github
-can be processed directly in your Python app with:
+Any <abbr>data artifact</abbr> hosted online can be processed directly in your
+Python code with this API. For example, an XML file tracked in a public DVC repo
+on Github can be processed like this:
 
 ```py
-from xml.dom.minidom import parse
+from xml.sax import parse
 import dvc.api
+from mymodule import mySAXHandler
 
 with dvc.api.open(
         'get-started/data.xml',
         repo='https://github.com/iterative/dataset-registry'
         ) as fd:
-    xmldom = parse(fd)
-    # ... Process DOM
+    parse(fd, mySAXHandler)
 ```
 
-> Notice that if you just need to load the complete file contents to memory, you
-> can use `dvc.api.read()` instead:
+Notice that we use a [SAX](http://www.saxproject.org/) XML parser here because
+`dvc.api.open()` is able to stream the data from
+[remote storage](/doc/command-reference/remote/add#supported-storage-types).
+(The `mySAXHandler` object should handle the event-driven parsing of the
+document in this case.) This increases the performance of the code (minimizing
+memory usage), and is typically faster than loading the whole data into memory.
+
+> If you just needed to load the complete file contents into memory, you can use
+> `dvc.api.read()` instead:
 >
 > ```py
+> from xml.dom.minidom import parse
+> import dvc.api
+>
 > xmldata = dvc.api.read('get-started/data.xml',
 >     repo='https://github.com/iterative/dataset-registry')
 > xmldom = parse(xmldata)
 > ```
 
-Now let's imagine you want to deserialize and use a binary model from a private
-repo. For a case like this, we can use an SSH URL instead (assuming the
+## Example: Accessing private repos
+
+This is just a matter of using the right `repo` argument, for example an SSH URL
+(requires that the
 [credentials are configured](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
 locally):
 
 ```py
-import pickle
 import dvc.api
 
 with dvc.api.open(
-        'model.pkl',
+        'features.dat',
         repo='git@server.com:path/to/repo.git'
         ) as fd:
-    model = pickle.load(fd)
-    # ... Use instanciated model
+    # ... Process 'features'
 ```
 
 ## Example: Use different versions of data
@@ -149,7 +158,7 @@ with dvc.api.open(
         rev='v1.1.0'
         ) as fd:
     reader = csv.reader(fd)
-    # ... Read clean data from version 1.1.0
+    # ... Process 'clean' data from version 1.1.0
 ```
 
 Also, notice that we didn't supply a `repo` argument in this example. DVC will
@@ -157,17 +166,6 @@ attempt to find a <abbr>DVC project</abbr> to use in the current working
 directory tree, and look for the file contents of `clean.csv` in its local
 <abbr>cache</abbr>; no download will happen if found. See the
 [Parameters](#parameters) section for more info.
-
-Note: to specify the file encoding of a text file, use:
-
-```py
-import dvc.api
-
-with dvc.api.open(
-        'data/nlp/words_ru.txt',
-        encoding='koi8_r') as fd:
-    # ...
-```
 
 ## Example: Chose a specific remote as the data source
 
@@ -185,5 +183,18 @@ with open(
         ) as fd:
     for line in fd:
         match = re.search(r'user=(\w+)', line)
-        # ...
+        # ... Process users activity log
+```
+
+## Example: Specify the text encoding
+
+To chose which codec to open a text file with, send an `encoding` argument:
+
+```py
+import dvc.api
+
+with dvc.api.open(
+        'data/nlp/words_ru.txt',
+        encoding='koi8_r') as fd:
+    # ... Process Russian words
 ```
