@@ -91,9 +91,9 @@ making it accessible. The only exception is when using Google Drive as
 
 ## Example: Use data or models from DVC repositories
 
-Any <abbr>data artifact</abbr> can be employed directly in your Python app by
-using this API. For example, an XML file tracked in a public DVC repo on Github
-can be processed directly in your Python app with:
+Any <abbr>data artifact</abbr> hosted online can be employed directly in your
+Python app (without requiring local file storage) with this API. For example, an
+XML file tracked in a public DVC repo on Github can be processed like this:
 
 ```py
 from xml.sax import parse
