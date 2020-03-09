@@ -1,6 +1,6 @@
 # init
 
-This command initializes a <abbr>DVC project</abbr> in a directory.
+Initialize a <abbr>DVC project</abbr> in the current working directory.
 
 ## Synopsis
 
@@ -10,26 +10,23 @@ usage: dvc init [-h] [-q | -v] [--no-scm] [-f] [--subdir]
 
 ## Description
 
-In its default mode, DVC works on top of a Git repository for all features to be
-available and to provide most of its value. It means that `dvc init` expects Git
-to be initialized (usually means that `.git` directory is present) in the
-directory you run `dvc init` in. Another way to put it, by default it expects to
-be run in the Git repository root.
+DVC works on top of a Git repository by default. This enables all features,
+providing the most value. It means that `dvc init` (without flags) expects to
+run in a Git repository root (a `.git/` directory should be present).
 
-One of the explicit options can be used to set an advanced workflow in cases
-like monorepo, automation or other relevant scenarios - see:
+The command options can be used to start an alternative workflow for advanced
+scenarios like monorepos, automation, etc:
 
 - [Initializing DVC in subdirectories](#initializing-dvc-in-subdirectories) -
-  e.g. to deal with monorepo and nested DVC projects, etc.
-- [Initializing DVC without Git](#how-does-it-affect-dvc-commands) - e.g. when
-  you need to use other than Git SCM, or some production automation case, etc.
+  support for monorepos, nested <abbr>DVC projects</abbr>, etc.
+- [Initializing DVC without Git](#how-does-it-affect-dvc-commands) - support for
+  SCM other than Git, deployment automation cases, etc.
 
 After DVC initialization, a new directory `.dvc/` will be created with the
-`.dvc/config`, `.dvc/.gitignore` and other files. These files and directories
-are hidden from the user (but committed with Git), as typically there's no need
-to interact with them directly. See
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
-more about the structure of the `.dvc/` directory.
+`config` and `.gitignore` files. These and other files and directories are
+hidden from user, as typically there's no need to interact with them directly.
+See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
+learn more.
 
 ### Initializing DVC in subdirectories
 
@@ -40,7 +37,7 @@ config files, `.dvc` directory is created the same way as in the default mode.
 This way multiple DVC projects (including nested ones) could be initialized in a
 single Git repository providing isolation and granular project management.
 
-#### When is it useful?
+#### When is this useful?
 
 This option is mostly used in the scenario of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo), but also can be used in
@@ -58,9 +55,10 @@ sub-projects to mitigate the issues of initializing in the Git repository root:
   different remote storages, for example, for different sub-projects, etc.
 
 - Not enough isolation/granularity - commands like `dvc pull`, `dvc checkout`,
-  and others analyze the whole repository to look for DVC-files to download
-  files and directories, to reproduce pipelines, etc. It can be expensive in the
-  large repositories with a lot of projects.
+  and others analyze the whole repository to look for
+  [DVC-files](/doc/user-guide/dvc-file-format) to download files and
+  directories, to reproduce <abbr>pipelines</abbr>, etc. It can be expensive in
+  the large repositories with a lot of projects.
 
 - Not enough isolation/granularity - commands like `dvc metrics diff`,
   `dvc pipeline show` and others by default dump all the metrics, all the
@@ -121,17 +119,19 @@ won't download or checkout data for the `data-B.dvc` file.
 
 ### Initializing DVC without Git
 
-In rare cases `--no-scm` option might be used to initialize DVC in a directory
-that is not part of a Git repository or make DVC ignore Git. Examples include:
+In rare cases, `--no-scm` option might be used to initialize DVC in a directory
+that is not part of a Git repository, or to make DVC ignore Git. Examples
+include:
 
 - SCM other than Git is being used. Even though there are DVC features that
   require DVC to be run in the Git repo, DVC can work well with other version
-  control systems. Since DVC relies on simple text DVC-files to manage
-  pipelines, data, etc, they can be added into any SCM thus providing large data
-  files and directories versioning.
+  control systems. Since DVC relies on simple text
+  [DVC-files](/doc/user-guide/dvc-file-format) to manage <abbr>pipelines</abbr>,
+  data, etc, they can be added into any SCM thus providing large data files and
+  directories versioning.
 
-- There is no need to keep the history at all, e.g some automation in
-  production, like running DVC pipeline using `cron`.
+- There is no need to keep the history at all, e.g. having a deployment
+  automation like running a data pipeline using `cron`.
 
 In this mode DVC features that depend on Git being present are not available -
 e.g. managing `.gitignore` files on `dvc add` or `dvc run` to avoid committing
@@ -145,21 +145,21 @@ it later, DVC keeps operating in the detached from Git mode.
 
 ## Options
 
-- `--no-scm` - initialize in the detached from Git mode. It means that DVC
-  doesn't try to find or use Git in the directory it's initialized in. Certain
-  functionality is not available in this mode. Please, see more details in the
-  [Initializing DVC without Git](#initializing-dvc-in-subdirectories). This is
-  an _advanced_ option and should be rarely used.
-
 - `-f`, `--force` - remove `.dvc/` if it exists before initialization. Will
   remove any existing local cache. Useful when a previous `dvc init` has been
   corrupted.
 
-- `--subdir` - initialize <abbr>DVC project</abbr> right in the directory you
-  run `dvc init --subdir` in, _even if it's not the Git repository root_ (by
-  default `dvc init` expects to be run in the Git repository root and throws an
-  exception otherwise). It affects how DVC commands work. Please see
-  [Initializing DVC in subdirectories](#initializing-dvc-without-git) for the
+- `--subdir` - initialize the DVC project in the current working directory,
+  _even if it's not the Git repository root_. (If run in a project root, this
+  option is ignored.) It affects how other DVC commands behave afterwards,
+  please see
+  [Initializing DVC in subdirectories](#initializing-dvc-in-subdirectories) for
+  more details.
+
+- `--no-scm` - initialize the DVC project detached from Git. It means that DVC
+  doesn't try to find or use Git in the directory it's initialized in. Certain
+  DVC features are not available in this mode, please see
+  [Initializing DVC without Git](#initializing-dvc-without-git) for more
   details.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
