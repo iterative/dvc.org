@@ -5,8 +5,8 @@ const path = require('path')
 require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
 
-const apiMiddleware = require('./middlewares/api')
-const redirectsMiddleware = require('./middlewares/redirects')
+const apiMiddleware = require('./middleware/api')
+const redirectsMiddleware = require('./middleware/redirects')
 
 const title = 'Data Version Control · DVC'
 const description =
