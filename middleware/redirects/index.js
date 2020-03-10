@@ -26,6 +26,8 @@ module.exports = (req, res, next) => {
     res.writeHead(redirectCode, {
       Location: redirectLocation
     })
+
+    res.end()
   }
 
   next()
