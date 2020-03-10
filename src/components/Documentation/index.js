@@ -19,7 +19,6 @@ const SIDEBAR_MENU = 'sidebar-menu'
 export default function Documentation({ htmlAst, path, headings }) {
   const { source, prev, next, tutorials } = getItemByPath(path)
 
-  // const headings = useMemo(() => parseHeadings(markdown))
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isSearchAvaible, setIsSearchAvaible] = useState(false)
 
