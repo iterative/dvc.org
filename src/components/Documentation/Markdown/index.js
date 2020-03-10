@@ -123,7 +123,7 @@ export default function Markdown({
           </Button>
         )}
         {next ? (
-          <LocalLink href={next} as={Button} disabled={!next}>
+          <LocalLink href={next} as={Button}>
             <span>Next</span>
             <i className="next" />
           </LocalLink>
