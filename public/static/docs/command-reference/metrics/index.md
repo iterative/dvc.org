@@ -16,7 +16,7 @@ positional arguments:
   COMMAND
     show                Output metric values.
     add                 Tag file as a metric file.
-    modify              Modify metric file options.
+    modify              Modify metric file values.
     remove              Remove files's metric tag.
 ```
 
