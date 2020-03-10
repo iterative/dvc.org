@@ -6,5 +6,5 @@ module.exports = {
   transform: {
     '^.+\\.js?$': 'babel-jest'
   },
-  testPathIgnorePatterns: ['/node_modules/', '/.cache']
+  testPathIgnorePatterns: ['/node_modules/', '/.cache', '/public/']
 }
