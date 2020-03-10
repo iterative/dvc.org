@@ -44,7 +44,7 @@ export default function Documentation({ htmlAst, path, headings }) {
     }
   }, [isSearchAvaible])
 
-  const githubLink = `https://github.com/iterative/dvc.org/blob/master/public${source}`
+  const githubLink = `https://github.com/iterative/dvc.org/blob/master/сontent${source}`
 
   return (
     <Page stickHeader={true} isDocPage={true}>
