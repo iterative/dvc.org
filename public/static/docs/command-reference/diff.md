@@ -79,9 +79,9 @@ Preparing to download data from 'https://remote.dvc.org/get-started'
 ...
 ```
 
-The `-T` flag passed to `dvc fetch` makes sure we have all the data files
-related to all existing tags in the repo. You may see the available tags of our
-example repo [here](https://github.com/iterative/example-get-started/tags).
+With the `-T` option, `dvc fetch` makes sure that we have all the data files
+related to all existing Git tags in the repo. You may see the available tags of
+our example repo [here](https://github.com/iterative/example-get-started/tags).
 
 </details>
 

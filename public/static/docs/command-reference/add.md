@@ -69,7 +69,7 @@ to work with directory hierarchies with `dvc add`:
 1. With `dvc add --recursive`, the hierarchy is traversed and every file is
    added individually as described above. This means every file has its own
    DVC-file, and a corresponding cached file is created (unless the
-   `--no-commit` flag is used).
+   `--no-commit` option is used).
 2. When not using `--recursive` a DVC-file is created for the top of the
    directory (with default name `dirname.dvc`). Every file in the hierarchy is
    added to the cache (unless the `--no-commit` option is used), but DVC does

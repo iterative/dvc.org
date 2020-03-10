@@ -38,7 +38,7 @@ for the config file.
   private locations, etc).
 
 - `-u`, `--unset` - remove the `cache.dir` config option from the config file.
-  Don't provide a `value` when using this flag.
+  Don't provide a `value` argument when employing this flag.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

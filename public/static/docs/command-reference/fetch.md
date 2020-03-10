@@ -246,7 +246,7 @@ $ dvc status -c
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
 to retrieve the data up to our third stage, `train.dvc`? We can use the
-`--with-deps` (or `-d`) flag:
+`--with-deps` (or `-d`) option:
 
 ```dvc
 $ dvc fetch --with-deps train.dvc

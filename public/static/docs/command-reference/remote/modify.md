@@ -26,9 +26,9 @@ positional arguments:
 
 ## Description
 
-Remote `name` and `option` name are required. Option names are remote type
-specific. See `dvc remote add` and
-[Available settings](#available-settings-per-storage-type) section below for a
+Remote `name` and `option` name are required. Option names are specific to the
+remote type. See `dvc remote add` and the
+[available settings](#available-settings-per-storage-type) section below for a
 list of remote storage types.
 
 This command modifies a `remote` section in the project's
@@ -37,8 +37,8 @@ manual editing could be used to change the configuration.
 
 ## Options
 
-- `-u`, `--unset` - delete configuration value for given `option`. Don't provide
-  a `value` when using this flag.
+- `-u`, `--unset` - delete configuration value for the given `option`. Don't
+  provide a `value` when employing this flag.
 
 - `--global` - save remote configuration to the global config (e.g.
   `~/.config/dvc/config`) instead of `.dvc/config`.

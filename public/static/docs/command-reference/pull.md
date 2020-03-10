@@ -1,9 +1,9 @@
 # pull
 
-Downloads missing files and directories from
-[remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr> based
-on [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>,
-then links the downloaded files into the workspace.
+Download missing files and directories from
+[remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr>, based
+on the [DVC-files](/doc/user-guide/dvc-file-format) in the
+<abbr>workspace</abbr>. And link the downloaded files into the workspace.
 
 ## Synopsis
 
@@ -137,8 +137,8 @@ default remote. The only files considered in this case are what is listed in the
 
 ## Example: With dependencies
 
-Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-[pipeline](/doc/command-reference/pipeline) has been setup with these
+Demonstrating the `--with-deps` option requires a larger example. First, assume
+a [pipeline](/doc/command-reference/pipeline) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
