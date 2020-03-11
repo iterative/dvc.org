@@ -45,7 +45,7 @@ needed after a `git commit`. See `dvc install` for more details.
   stages. `dvc commit` can help avoid having to reproduce a pipeline in these
   cases by forcing the update of the DVC-files.
 
-Let's take a look at what is happening in the fist scenario closely. Normally
+Let's take a look at what is happening in the first scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
 <abbr>cache</abbr> after creating a DVC-file. What _commit_ means is that DVC:
 
@@ -54,7 +54,7 @@ DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
 - Tells Git to ignore the file/directory (adding an entry to `.gitignore`).
   (Note that if the <abbr>project</abbr> was initialized with no SCM support
   (`dvc init --no-scm`), this does not happen.)
-- Adds the file/directory or to the cache.
+- Adds the file/directory to the cache.
 
 There are many cases where the last step is not desirable (for example rapid
 iterations on an experiment). The `--no-commit` option prevents the last step
@@ -258,7 +258,7 @@ that both Git and DVC recognize a change was made.
 
 If we ran `dvc repro` at this point, this pipeline would be reproduced. But
 since the change was inconsequential, that would be a waste of time and CPU.
-That's especially critical if the corresponding stages lots of resources to
+That's especially critical if the corresponding stages take lots of resources to
 execute.
 
 ```dvc

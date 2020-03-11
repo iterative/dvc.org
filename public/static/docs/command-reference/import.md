@@ -6,8 +6,7 @@ Download a file or directory tracked by DVC or by Git into the
 source, which can later be used to [update](/doc/command-reference/update) the
 import.
 
-> See also `dvc get`, that corresponds to the first step this command performs
-> (just download the data).
+> See also our `dvc.api.open()` Python API function.
 
 ## Synopsis
 
@@ -24,9 +23,13 @@ positional arguments:
 Provides an easy way to reuse files or directories tracked in any <abbr>DVC
 repository</abbr> (e.g. datasets, intermediate results, ML models) or Git
 repository (e.g. source code, small image/other files). `dvc import` downloads
-the target file or directory (`url`/`path`) in a way so that it's tracked with
-DVC, becoming a local <abbr>data artifact</abbr>. This also permits updating the
-import later, if it has changed in its data source. (See `dvc update`.)
+the target file or directory (found at `path` in `url`) in a way so that it's
+tracked with DVC, becoming a local <abbr>data artifact</abbr>. This also permits
+updating the import later, if it has changed in its data source. (See
+`dvc update`.)
+
+> Note that `dvc get` corresponds to the first step this command performs (just
+> download the data).
 
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported for online repos
@@ -62,8 +65,7 @@ To actually [track the data](https://dvc.org/doc/get-started/add-files),
 `git add` (and `git commit`) the import stage.
 
 Note that import stages are considered always locked, meaning that if you run
-`dvc repro`, they won't be updated. Use `dvc update` or
-[re-import](#example-fixed-revisions-re-importing) them to update the downloaded
+`dvc repro`, they won't be updated. Use `dvc update` to update the downloaded
 data artifact from the source repo.
 
 ## Options
@@ -129,7 +131,7 @@ Several of the values above are pulled from the original stage file
 subfields under `repo` are used to save the origin and version of the
 dependency, respectively.
 
-## Example: Fixed revisions & re-importing
+## Example: Fixed revisions and updating to different revision
 
 To import a specific version of a <abbr>data artifact</abbr>, we may use the
 `--rev` option:
@@ -159,22 +161,13 @@ deps:
 If `rev` is a Git branch or tag (where the underlying commit changes), the data
 source may have updates at a later time. To bring it up to date if so (and
 update `rev_lock` in the DVC-file), simply use `dvc update <stage>.dvc`. If
-`rev` is a specific commit hash (does not change), `dvc update` will never have
-an effect on the import stage. You may **re-import** a different commit instead,
-by using `dvc import` again with a different (or without) `--rev`. For example:
+`rev` is a specific commit (does not change), `dvc update` will never have an
+effect on the import stage. You may `dvc update` to a different commit, using
+`--rev`:
 
 ```dvc
-$ dvc import --rev master \
-             git@github.com:iterative/dataset-registry.git \
-             use-cases/cats-dogs
+$ dvc update --rev cats-dogs-v2
 ```
-
-The import stage is overwritten, and will now be able update normally with
-`dvc update`.
-
-> In the above example, the value for `rev` in the new import stage will be
-> `master` (default branch), so the command is equivalent to not using `--rev`
-> at all.
 
 ## Example: Data registry
 

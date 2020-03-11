@@ -62,14 +62,14 @@ file (in `.dvc/config` by default), and they support the options below:
 
 This is the main section with the general config options:
 
-- `core.loglevel` - log level that the `dvc` command should use. Possible values
-  are: `info`, `debug`, `warning`, `error`.
+- `core.loglevel` - log level that the `dvc` command should use. Accepts values
+  `info`, `debug`, `warning`, or `error`.
 
 - `core.remote` - name of the remote storage that should be used by default.
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
   each [stage](/doc/command-reference/run) in `dvc repro`. (Normally, this
-  behavior requires the use of option `-i` in that command.) Accepts values
+  behavior requires the use of option `-i` in that command.) Accepts values:
   `true` and `false`.
 
 - `core.analytics` - used to turn off
@@ -84,6 +84,11 @@ This is the main section with the general config options:
   `.dvc/lock`). Accepts values `true` and `false` (default). Useful when the DVC
   project is on a file system that doesn't properly support file locking (e.g.
   [NFS v3 and older](http://nfs.sourceforge.net/)).
+
+- `core.no_scm` - tells DVC to not expect or integrate with Git (even if the
+  <abbr>project</abbr> is initialized inside a Git repo). Accepts values `true`
+  and `false` (default). Set with the `--no-scm` option of `dvc init`
+  ([more details](/doc/command-reference/init#initializing-dvc-without-git)).
 
 ### remote
 

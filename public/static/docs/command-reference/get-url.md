@@ -3,8 +3,8 @@
 Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the local file system.
 
-> Unlike `dvc import-url`, this command does not track the downloaded data files
-> (does not create a DVC-file).
+> See `dvc get` to download data/model files or directories from other <abbr>DVC
+> repositories</abbr> (e.g. hosted on GitHub).
 
 ## Synopsis
 
@@ -22,14 +22,14 @@ In some cases it's convenient to get a <abbr>data artifact</abbr> from a remote
 location into the local file system. The `dvc get-url` command helps the user do
 just that.
 
+> Note that unlike `dvc import-url`, this command does not track the downloaded
+> data files (does not create a DVC-file). For that reason, this command doesn't
+> require an existing <abbr>DVC project</abbr> to run in.
+
 The `url` argument should provide the location of the data to be downloaded,
 while `out` can be used to specify the directory and/or file name desired for
 the downloaded data. If an existing directory is specified, then the output will
 be placed inside of it.
-
-Note that this command doesn't require an existing <abbr>DVC project</abbr> to
-run in. It's a single-purpose command that can be used out of the box after
-installing DVC.
 
 DVC supports several types of (local or) remote locations (protocols):
 
@@ -60,9 +60,6 @@ HTTP(S) it's possible to instead use:
 ```dvc
 $ wget https://example.com/path/to/data.csv
 ```
-
-> See `dvc get` to download data/model files or directories from other <abbr>DVC
-> repositories</abbr> (e.g. GitHub URLs).
 
 ## Options
 
