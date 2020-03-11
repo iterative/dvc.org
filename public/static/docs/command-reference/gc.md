@@ -5,8 +5,8 @@ Remove unused objects from <abbr>cache</abbr> or remote storage.
 ## Synopsis
 
 ```usage
-usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c] [-r REMOTE] [-f] [-j JOBS]
-              [-p [REPOS [REPOS ...]]]
+usage: dvc gc [-h] [-q | -v] [-a] [-T] [-c] [-r <name>]
+              [-f] [-j <number>] [-p [<path> [<path> ...]]]
 ```
 
 ## Description
@@ -45,7 +45,7 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
   useful if tags are used to track "checkpoints" of an experiment or project.
   Note that both options can be combined, for example using the `-aT` flag.
 
-- `-p REPOS`, `--projects REPOS` - if a single remote or a single cache is
+- `-p <paths>`, `--projects <paths>` - if a single remote or a single cache is
   shared among different projects (e.g. a configuration like the one described
   [here](/doc/use-cases/shared-development-server)), this option can be used to
   specify a list of them (each project is a path) to keep data that is currently
@@ -56,12 +56,12 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
   the current commit (unless `-a` or `-T` are also used). The default remote is
   used unless a specific one is given with `-r`.
 
-- `-r REMOTE`, `--remote REMOTE` - name of the
+- `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to collect unused objects from
   if `-c` option is specified (see `dvc remote list`).
 
-- `-j JOBS`, `--jobs JOBS` - garbage collector parallelism level. The default
-  `JOBS` argument is `4 * cpu_count()`. For SSH remotes default is 4.
+- `-j <number>`, `--jobs <number>` - garbage collector parallelism level. The
+  default `JOBS` argument is `4 * cpu_count()`. For SSH remotes default is 4.
 
   > For now only some phases of garbage collection are parallel.
 

@@ -8,8 +8,8 @@ then links the downloaded files into the workspace.
 ## Synopsis
 
 ```usage
-usage: dvc pull [-h] [-q | -v] [-j JOBS]
-                [-r REMOTE] [-a] [-T] [-d] [-f] [-R]
+usage: dvc pull [-h] [-q | -v] [-j <number>]
+                [-r <name>] [-a] [-T] [-d] [-f] [-R]
                 [targets [targets ...]]
 
 positional arguments:
@@ -57,10 +57,6 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` - name of the
-  [remote storage](/doc/command-reference/remote) to pull from (see
-  `dvc remote list`).
-
 - `-a`, `--all-branches` - determines the files to download by examining
   DVC-files in all Git branches instead of just those present in the current
   workspace. It's useful if branches are used to track experiments or project
@@ -85,8 +81,12 @@ reflinks or hardlinks to put it in the workspace without copying. See
   surfaces behavior from the `dvc fetch` and `dvc checkout` commands because
   `dvc pull` in effect performs those 2 functions in a single command.
 
-- `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
-  the downloading of files from the remote. The default value is
+- `-r <name>`, `--remote <name>` - name of the
+  [remote storage](/doc/command-reference/remote) to pull from (see
+  `dvc remote list`).
+
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the downloading of files from the remote. The default value is
   `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
   may improve the total download speed if a combination of small and large files
   are being fetched.

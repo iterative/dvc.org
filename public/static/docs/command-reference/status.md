@@ -8,8 +8,8 @@ and remote storage.
 ## Synopsis
 
 ```usage
-usage: dvc status [-h] [-v] [-j JOBS] [-q] [-c]
-                  [-r REMOTE] [-a] [-T] [-d] [targets [targets ...]]
+usage: dvc status [-h] [-v] [-j <number>] [-q] [-c]
+                  [-r <name>] [-a] [-T] [-d] [targets [targets ...]]
 
 positional arguments:
   targets        Limit command scope to these DVC-files. Using -R,
@@ -96,19 +96,9 @@ workspace) is different from remote storage. Bringing the two into sync requires
 
 ## Options
 
-- `-d`, `--with-deps` - determines files to check by tracking dependencies to
-  the target DVC-files (stages). If no `targets` are provided, this option is
-  ignored. By traversing all stage dependencies, DVC searches backward from the
-  target stages in the corresponding pipelines. This means DVC will not show
-  changes occurring in later stages than the `targets`. Applies whether or not
-  `--cloud` is specified.
-
 - `-c`, `--cloud` - enables comparison against a remote. (See `dvc remote`.). If
   no `--remote` option is provided, DVC will compare against the default remote
   (specified in the `core.remote` config option).
-
-- `-r REMOTE`, `--remote REMOTE` - specifies which remote storage (see
-  `dvc remote list`) to compare against. Implies `--cloud`.
 
 - `-a`, `--all-branches` - compares cache content against all Git branches
   instead of just the current workspace. This basically runs the same status
@@ -119,7 +109,17 @@ workspace) is different from remote storage. Bringing the two into sync requires
   checking just the current workspace. Similar to `-a` above. Note that both
   options can be combined, for example using the `-aT` flag.
 
-- `-j JOBS`, `--jobs JOBS` - specifies the number of jobs DVC can use to
+- `-d`, `--with-deps` - determines files to check by tracking dependencies to
+  the target DVC-files (stages). If no `targets` are provided, this option is
+  ignored. By traversing all stage dependencies, DVC searches backward from the
+  target stages in the corresponding pipelines. This means DVC will not show
+  changes occurring in later stages than the `targets`. Applies whether or not
+  `--cloud` is specified.
+
+- `-r <name>`, `--remote <name>` - specifies which remote storage (see
+  `dvc remote list`) to compare against. Implies `--cloud`.
+
+- `-j <number>`, `--jobs <number>` - specifies the number of jobs DVC can use to
   retrieve information from remote servers. This only applies when the `--cloud`
   option is used or a remote is given.
 

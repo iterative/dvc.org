@@ -7,7 +7,7 @@ Get files or directories tracked by DVC from
 
 ```usage
 usage: dvc fetch [-h] [-q | -v] [-j JOBS]
-                 [-r REMOTE] [-a] [-T] [-d] [-R]
+                 [-r <name>] [-a] [-T] [-d] [-R]
                  [targets [targets ...]]
 
 positional arguments:
@@ -71,7 +71,7 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` - name of the
+- `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to fetch from (see
   `dvc remote list`).
 
@@ -85,8 +85,8 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
   directory and its subdirectories for DVC-files to inspect. If there are no
   directories among the `targets`, this option is ignored.
 
-- `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
-  the downloading of files from the remote. The default value is
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the downloading of files from the remote. The default value is
   `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
   may improve the total download speed if a combination of small and large files
   are being fetched.
