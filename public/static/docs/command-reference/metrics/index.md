@@ -1,6 +1,6 @@
 # metrics
 
-A set of commands to collect and display project metrics:
+A set of commands to add, manage, collect, and display project metrics:
 [add](/doc/command-reference/metrics/add),
 [show](/doc/command-reference/metrics/show),
 [diff](/doc/command-reference/metrics/diff),
