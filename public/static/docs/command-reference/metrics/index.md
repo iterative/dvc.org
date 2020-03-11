@@ -23,8 +23,8 @@ positional arguments:
 ## Description
 
 DVC has the ability to mark a certain stage <abbr>outputs</abbr> as files
-containing metrics to track. (See `--metrics` option of `dvc run`.) Metrics are
-project-specific numeric values e.g. `AUC`, `ROC`, etc. DVC itself does not
+containing metrics to track. (See the `--metrics` option of `dvc run`.) Metrics
+are project-specific numeric values e.g. `AUC`, `ROC`, etc. DVC itself does not
 ascribe any specific meaning for these numbers. Usually these numbers are
 produced by the model evaluation script and serve as a way to compare and pick
 the best performing experiment.
@@ -54,10 +54,10 @@ $ dvc run -d code/evaluate.py -M data/eval.json \
       python code/evaluate.py
 ```
 
-> `-M|--metrics-no-cache` is telling DVC to mark `data/eval.json` as a metric
-> file. Using this option is equivalent to using `-O|--outs-no-cache` and then
-> running `dvc metrics add data/eval.json` to explicitly mark `data/eval.json`
-> as a metric file.
+> `-M` (`--metrics-no-cache`) is telling DVC to mark `data/eval.json` as a
+> metric file. Using this option is equivalent to using `-O` (`--outs-no-cache`)
+> and then running `dvc metrics add data/eval.json` to explicitly mark
+> `data/eval.json` as a metric file.
 
 Now let's print metric values that we are tracking in this <abbr>project</abbr>:
 

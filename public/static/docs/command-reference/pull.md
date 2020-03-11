@@ -31,8 +31,8 @@ The `dvc pull` command allows one to retrieve data from remote storage.
 `dvc pull` has the same effect as running `dvc fetch` and `dvc checkout`
 immediately after that.
 
-If the `--remote REMOTE` option is not specified, then the default remote,
-configured with the `core.config` config option, is used. See `dvc remote`,
+If the `--remote` option is not used, then the default remote is used
+(configured with the `core.config` config option). See `dvc remote`,
 `dvc config` and this [example](/doc/get-started/configure) for more information
 on how to configure a remote.
 
@@ -187,5 +187,5 @@ and searched backwards through the pipeline for data files to download. Because
 the `model.p.dvc` stage occurs later, its data was not pulled.
 
 Then we ran `dvc pull` specifying the last stage, `model.p.dvc`, and its data
-was downloaded. Finally, we ran `dvc pull` with no options to make sure that all
+was downloaded. Finally, we ran `dvc pull` with no flags to make sure that all
 data was already pulled with the previous commands.

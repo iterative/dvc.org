@@ -131,7 +131,7 @@ $ dvc pull --all-branches --all-tags
 ## Example: Rapid iterations
 
 Sometimes we want to iterate through multiple changes to configuration, code, or
-data, trying multiple options to improve the output of a stage. To avoid filling
+data, trying different ways to improve the output of a stage. To avoid filling
 the <abbr>cache</abbr> with undesired intermediate results, we can run a single
 stage with `dvc run --no-commit`, or reproduce an entire pipeline using
 `dvc repro --no-commit`. This prevents data from being pushed to cache. When
@@ -140,17 +140,18 @@ files in the cache.
 
 In the `featurize.dvc` stage, `src/featurize.py` is executed. A useful change to
 make is adjusting a parameter to `CountVectorizer` in that script. Namely,
-adjusting the `max_features` option in this line changes the resulting model:
+adjusting the `max_features` value in the line below changes the resulting
+model:
 
 ```python
 bag_of_words = CountVectorizer(stop_words='english',
             max_features=6000, ngram_range=(1, 2))
 ```
 
-This option not only changes the trained model, it also introduces a change that
-would cause the `featurize.dvc`, `train.dvc` and `evaluate.dvc` stages to
-execute if we ran `dvc repro`. But if we want to try several values for this
-option and save only the best result to the cache, we can execute as so:
+This edit introduces a change that would cause the `featurize.dvc`, `train.dvc`
+and `evaluate.dvc` stages to execute if we ran `dvc repro`. But if we want to
+try several values for `max_features` and save only the best result to the
+cache, we can run it like this:
 
 ```dvc
 $ dvc repro --no-commit evaluate.dvc

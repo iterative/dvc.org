@@ -23,15 +23,15 @@ This command reads and updates the DVC configuration files. By default (if none
 of `--local`, `--global`, or `--system` is provided) a project's config
 (`.dvc/config`) file is read or modified. This file is by default meant to be
 tracked by Git and should not contain sensitive and/or user-specific information
-(passwords, SSH keys, etc). Use `--local`, `--global`, or `--system` options
-instead to override project's settings, for sensitive, or user-specific
-settings.
+(passwords, SSH keys, etc). Use `--local`, `--global`, or `--system` command
+options (flags) instead to override project's settings, for sensitive, or
+user-specific settings.
 
-If the config option `value` is not provided and `--unset` option is not used,
-this command returns the current value of the config option, if found in the
-corresponding config file.
+If the config option `value` is not provided and the `--unset` command option is
+not used, this command returns the current value of the config option, if found
+in the corresponding config file.
 
-## Options
+## Command options (flags)
 
 - `-u`, `--unset` - remove a specified config option from a config file.
 
@@ -69,7 +69,7 @@ This is the main section with the general config options:
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
   each [stage](/doc/command-reference/run) in `dvc repro`. (Normally, this
-  behavior requires the use of option `-i` in that command.) Accepts values:
+  behavior requires using the `-i` option of that command.) Accepts values:
   `true` and `false`.
 
 - `core.analytics` - used to turn off
@@ -124,7 +124,7 @@ for more details.) This section contains the following options:
   option on forces you to run `dvc unprotect` before updating a file, providing
   an additional layer of security to your data.
 
-  We highly recommend enabling this option when `cache.type` is set to
+  We highly recommend enabling `cache.protected` when `cache.type` is set to
   `hardlink` or `symlink`.
 
 - `cache.type` - link type that DVC should use to link data files from cache to
@@ -137,16 +137,16 @@ for more details.) This section contains the following options:
 
   ⚠️ If you manually set `cache.type` to `hardlink` or `symlink`, **you will
   corrupt the cache** if you modify tracked data files in the workspace. See the
-  `cache.protected` config option above and corresponding `dvc unprotect`
-  command to modify files safely.
+  `cache.protected` option above, and corresponding `dvc unprotect` command to
+  modify files safely.
 
   There are pros and cons to different link types. Refer to
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
   for a full explanation of each one.
 
-  To apply changes to this option in the workspace, by restoring all file
-  links/copies from cache, please use `dvc checkout --relink`. See
-  [checkout options](/doc/command-reference/checkout#options) for more details.
+  To apply changes to this config option in the workspace, by restoring all file
+  links/copies from cache, please use `dvc checkout --relink`. See that
+  command's [options](/doc/command-reference/checkout#options) for more details.
 
 - `cache.slow_link_warning` - used to turn off the warnings about having a slow
   cache link type. These warnings are thrown by `dvc pull` and `dvc checkout`
@@ -223,7 +223,7 @@ $ dvc config core.remote myremote
 ```
 
 > Note that this is equivalent to using `dvc remote add` with the
-> `-d`/`--default` option.
+> `-d`/`--default` flag.
 
 ## Example: Default remotes
 

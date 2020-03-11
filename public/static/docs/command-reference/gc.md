@@ -53,8 +53,8 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
   the current commit (unless `-a` or `-T` are also used). The default remote is
   used unless a specific one is given with `-r`.
 
-- `-r`, `--remote` - name of the remote storage to collect unused objects from
-  if `-c` option is specified.
+- `-r`, `--remote` - name of the remote storage to collect unused objects from,
+  if the `-c` option is used.
 
 - `-j`, `--jobs` - garbage collector parallelism level. The default value is
   `4 * cpu_count()`. For SSH remotes, the default is just `4`. For now only some
