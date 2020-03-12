@@ -1,6 +1,6 @@
 # fetch
 
-Get files or directories tracked by DVC from
+Get tracked files or directories from
 [remote storage](/doc/command-reference/remote) into the <abbr>cache</abbr>.
 
 ## Synopsis
@@ -17,12 +17,11 @@ positional arguments:
 
 ## Description
 
-The `dvc fetch` command is a means to download files from remote storage into
-the cache of the project, but without placing them in the
-<abbr>workspace</abbr>. This makes the data files available for linking (or
-copying) into the workspace. (Refer to
-[dvc config cache.type](/doc/command-reference/config#cache).) Along with
-`dvc checkout`, it's performed automatically by `dvc pull` when the target
+The `dvc fetch` downloads DVC-tracked files from remote storage into the cache
+of the project, but without placing them in the <abbr>workspace</abbr>. This
+makes the data files available for linking (or copying) into the workspace.
+(Refer to [dvc config cache.type](/doc/command-reference/config#cache).) Along
+with `dvc checkout`, it's performed automatically by `dvc pull` when the target
 [DVC-files](/doc/user-guide/dvc-file-format) are not already in the cache:
 
 ```
@@ -44,10 +43,10 @@ project's cache                  ++ | dvc pull |
 
 Fetching could be useful when first checking out a <abbr>DVC project</abbr>,
 since files tracked by DVC should already exist in remote storage, but won't be
-in the project's cache. (Refer to `dvc remote` for more information on DVC
-remotes.) These necessary data or model files are listed as dependencies or
-outputs in a DVC-file (target [stage](/doc/command-reference/run)) so they are
-required to [reproduce](/doc/get-started/reproduce) the corresponding
+in the project's <abbr>cache</abbr>. (Refer to `dvc remote` for more information
+on DVC remotes.) These necessary data or model files are listed as dependencies
+or outputs in a DVC-file (target [stage](/doc/command-reference/run)) so they
+are required to [reproduce](/doc/get-started/reproduce) the corresponding
 [pipeline](/doc/command-reference/pipeline). (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)

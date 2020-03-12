@@ -1,6 +1,6 @@
 # root
 
-Returns relative path to the <abbr>DVC project</abbr>.
+Return the relative path to the <abbr>DVC project</abbr>.
 
 ## Synopsis
 

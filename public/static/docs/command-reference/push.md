@@ -1,6 +1,6 @@
 # push
 
-Uploads files or directories tracked by DVC to
+Upload tracked files or directories to
 [remote storage](/doc/command-reference/remote).
 
 ## Synopsis
@@ -17,9 +17,9 @@ positional arguments:
 
 ## Description
 
-The `dvc push` command is the twin pair to the `dvc pull` command, and together
-they are the means for uploading and downloading data to and from remote
-storage, respectively.
+The `dvc pull` and `dvc push` commands are the means for uploading and
+downloading data to and from remote storage. These commands are analogous to
+`git pull` and `git push`, respectively.
 [Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results, models,
 [metrics](/doc/command-reference/metrics), etc) remotely (S3, SSH, GCS, etc.)
