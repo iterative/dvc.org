@@ -101,11 +101,10 @@ When we run `dvc add` `Posts.xml.zip`, DVC creates a
 
 ### Expand to learn about DVC internals
 
-`dvc init` created a new directory `.dvc/`, with the `config` and `.gitignore`
-files. These and other files and directories are hidden from user, as typically
-there's no need to interact with them directly. See
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
-more.
+At DVC initialization, a new `.dvc/` directory will be created for internal
+configuration and cache
+[files and directories](/doc/user-guide/dvc-files-and-directories) that are
+hidden from the user.
 
 Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
 _orphan_ [stage file](/doc/command-reference/run):

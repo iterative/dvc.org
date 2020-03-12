@@ -1,7 +1,7 @@
 # repro
 
 Reproduce complete or partial [pipelines](/doc/command-reference/pipeline) by
-executing commands defined in their [stages](/doc/command-reference/run), in the
+executing commands defined in their [stages](/doc/command-reference/run) in the
 correct order. The commands to be executed are determined by recursively
 analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 
@@ -149,7 +149,7 @@ and only execute the final stage.
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
   stages are up to date or if all stages are successfully executed, otherwise
   exit with 1. The command defined in the stage is free to write output
-  irregardless of this flag.
+  regardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

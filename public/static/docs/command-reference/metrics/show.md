@@ -1,17 +1,17 @@
 # metrics show
 
-Find and print [project metrics](/doc/command-reference/metrics), with optional
+Print [project metrics](/doc/command-reference/metrics), with optional
 formatting.
 
 ## Synopsis
 
 ```usage
-usage: dvc metrics show [-h] [-q | -v] [-t TYPE] [-x XPATH] [-a] [-T] [-R]
+usage: dvc metrics show [-h] [-q | -v]
+                        [-t TYPE] [-x XPATH] [-a] [-T] [-R]
                         [targets [targets ...]]
 
 positional arguments:
-  targets               Metric files or directories (see -R) to show (leave
-                        empty to display all)
+  targets               Metric files or directories (see -R) to show
 ```
 
 ## Description
@@ -43,9 +43,9 @@ compares them with a previous version.
 
 ## Options
 
-- `-t`, `--type` - specify a type of the metric file. Accepted values are: `raw`
-  (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be used to determine
-  how to parse and format metics for display.
+- `-t`, `--type` - specify a type for the metric file. Accepted values are:
+  `raw` (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be used to
+  determine how to parse and format metics for display.
 
   `raw` means that no additional parsing is applied, and `--xpath` is ignored.
   `htsv`/`hcsv` are the same as `tsv`/`csv`, but the values in the first row of

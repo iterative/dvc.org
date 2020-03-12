@@ -1,6 +1,6 @@
 # metrics diff
 
-Show changes in [metrics](/doc/command-reference/metrics#description) between
+Show changes in [project metrics](/doc/command-reference/metrics), between
 commits in the <abbr>DVC repository</abbr>, or between a commit and the
 <abbr>workspace</abbr>.
 

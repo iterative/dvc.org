@@ -38,7 +38,7 @@ $ mv .dvc/cache/* /path/to/dvc-cache
 ```
 
 Now you need to ensure that cache files/directories have appropriate
-permissions, so that they could be accessed by your collegues that are members
+permissions, so that they could be accessed by your colleagues that are members
 of the same group:
 
 ```dvc

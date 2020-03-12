@@ -1,6 +1,6 @@
 # remote default
 
-Set/unset a default data remote.
+Set/unset the default data remote.
 
 > Depending on your remote storage type, you may also need `dvc remote modify`
 > to provide credentials and/or configure other remote parameters.
