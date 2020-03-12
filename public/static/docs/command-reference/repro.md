@@ -8,7 +8,7 @@ analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 ## Synopsis
 
 ```usage
-usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c CWD] [-m] [--dry] [-i]
+usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i]
                  [-p] [-P] [-R] [--ignore-build-cache] [--no-commit]
                  [--downstream] [targets [targets ...]]
 
@@ -92,9 +92,9 @@ and only execute the final stage.
   recursive search for changed dependencies. Multiple stages are executed
   (non-recursively) if multiple stage files are given as `targets`.
 
-- `-c`, `--cwd` - directory within the project to reproduce from. If no
-  `targets` are given, it attempts to use `Dvcfile` in the specified directory.
-  Instead of using `--cwd`, one can alternately specify a target in a
+- `-c <path>`, `--cwd <path>` - directory within the project to reproduce from.
+  If no `targets` are given, it attempts to use `Dvcfile` in the specified
+  directory. Instead of using `--cwd`, one can alternately specify a target in a
   subdirectory as `path/to/target.dvc`. This option can be useful for example
   with subdirectories containing a separate pipeline that can either be
   reproduced as part of the pipeline in the parent directory, or as an

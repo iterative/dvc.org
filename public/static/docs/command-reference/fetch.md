@@ -7,7 +7,7 @@ Get files or directories tracked by DVC from
 
 ```usage
 usage: dvc fetch [-h] [-q | -v] [-j JOBS]
-                 [-r REMOTE] [-a] [-T] [-d] [-R]
+                 [-r <name>] [-a] [-T] [-d] [-R]
                  [targets [targets ...]]
 
 positional arguments:
@@ -59,8 +59,7 @@ DVC-files in the current branch, unless `--all-branches` or `--all-tags` is
 specified.
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
-option is used. See `dvc remote add` for more information on how to configure
-different remote storage.
+option is used.
 
 `dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
 perform data synchronization among local and remote storage. The specific way in
@@ -72,10 +71,9 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` - name of the
+- `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to fetch from (see
-  `dvc remote list`). The argument `REMOTE` is a remote name defined using
-  `dvc remote`.
+  `dvc remote list`).
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
   the target DVC-files (stages). If no `targets` are provided, this option is
@@ -87,8 +85,8 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
   directory and its subdirectories for DVC-files to inspect. If there are no
   directories among the `targets`, this option is ignored.
 
-- `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
-  the downloading of files from the remote. The default value is
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the downloading of files from the remote. The default value is
   `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
   may improve the total download speed if a combination of small and large files
   are being fetched.

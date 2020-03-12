@@ -8,7 +8,7 @@ directory.
 ## Synopsis
 
 ```usage
-usage: dvc get [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
+usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>] url path
 
 positional arguments:
   url              Location of DVC or Git repository to download from.
@@ -51,12 +51,13 @@ name.
 
 ## Options
 
-- `-o`, `--out` - specify a path (directory and/or file name) to the desired
-  location to place the downloaded file in (instead of using the current working
-  directory). If an existing directory is specified, the output will be placed
-  inside of it.
+- `-o <path>`, `--out <path>` - specify a path (directory and/or file name) to
+  the desired location to place the download file in. The default value (when
+  this option isn't used) is the current working directory (`.`) and original
+  file name. If an existing directory is specified, then the output will be
+  placed inside of it.
 
-- `--rev` - commit hash, branch or tag name, etc. (any
+- `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
   download the file or directory from. The latest commit in `master` (tip of the
   default branch) is used by default when this option is not specified.
