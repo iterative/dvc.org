@@ -15,10 +15,10 @@ $ dvc init
 $ git commit -m "Initialize DVC project"
 ```
 
-At DVC initialization, a new `.dvc/` directory will be created with the
-`config`, `.gitignore`, among
-[other files and directories](/doc/user-guide/dvc-files-and-directories) that
-are hidden from the user.
+At DVC initialization, a new `.dvc/` directory will be created for internal
+configuration and cache
+[files and directories](/doc/user-guide/dvc-files-and-directories) that are
+hidden from the user.
 
 > See `dvc init` if you want to get more details about the initialization
 > process, and

@@ -1,6 +1,7 @@
 # metrics add
 
-Mark the file located at `path` as a metric file.
+Mark <abbr>output</abbr> file as a
+[project metric](/doc/command-reference/metrics).
 
 ## Synopsis
 
@@ -14,25 +15,25 @@ positional arguments:
 ## Description
 
 Sets the `metric` field in the [DVC-file](/doc/user-guide/dvc-file-format) that
-defines the given `path` as an <abbr>output</abbr>, marking `path` as a
-[project metric](/doc/command-reference/metrics) to track.
+defines the given `path` as an <abbr>output</abbr>, marking `path` as a metric
+file to track.
 
 Note that outputs can also be marked as metrics via the `-m` or `-M` options of
 `dvc run`.
 
 While any text file can be tracked as a metric file, we recommend using TSV,
 CSV, or JSON formats. DVC provides a way to parse those formats to get to a
-specific value, if the file contains multiple metrics. See `dvc metrics show`
-for more details.
+specific value, if the file contains multiple metrics. See the
+[options](#options) below and `dvc metrics show` for more info.
 
 > Note that [external output](/doc/user-guide/managing-external-data) cannot be
 > marked as project metrics.
 
 ## Options
 
-- `-t`, `--type` - specify a type of the metric file. Accepted values are: `raw`
-  (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be saved into the
-  corresponding DVC-file, and used by `dvc metrics show` to determine how to
+- `-t`, `--type` - specify a type for the metric file. Accepted values are:
+  `raw` (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be saved into
+  the corresponding DVC-file, and used by `dvc metrics show` to determine how to
   handle displaying metrics.
 
   `raw` means that no additional parsing is applied, and `--xpath` is ignored.

@@ -1,14 +1,14 @@
 # repro
 
 Reproduce complete or partial [pipelines](/doc/command-reference/pipeline) by
-executing commands defined in their [stages](/doc/command-reference/run), in the
+executing commands defined in their [stages](/doc/command-reference/run) in the
 correct order. The commands to be executed are determined by recursively
 analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 
 ## Synopsis
 
 ```usage
-usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c CWD] [-m] [--dry] [-i]
+usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i]
                  [-p] [-P] [-R] [--ignore-build-cache] [--no-commit]
                  [--downstream] [targets [targets ...]]
 
@@ -92,9 +92,9 @@ and only execute the final stage.
   recursive search for changed dependencies. Multiple stages are executed
   (non-recursively) if multiple stage files are given as `targets`.
 
-- `-c`, `--cwd` - directory within the project to reproduce from. If no
-  `targets` are given, it attempts to use `Dvcfile` in the specified directory.
-  Instead of using `--cwd`, one can alternately specify a target in a
+- `-c <path>`, `--cwd <path>` - directory within the project to reproduce from.
+  If no `targets` are given, it attempts to use `Dvcfile` in the specified
+  directory. Instead of using `--cwd`, one can alternately specify a target in a
   subdirectory as `path/to/target.dvc`. This option can be useful for example
   with subdirectories containing a separate pipeline that can either be
   reproduced as part of the pipeline in the parent directory, or as an
@@ -149,7 +149,7 @@ and only execute the final stage.
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if all
   stages are up to date or if all stages are successfully executed, otherwise
   exit with 1. The command defined in the stage is free to write output
-  irregardless of this option.
+  regardless of this flag.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 

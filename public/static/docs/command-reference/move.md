@@ -1,9 +1,9 @@
 # move
 
-Renames a file or a directory and modifies the corresponding
+Rename a file or a directory and modify the corresponding
 [DVC-file](/doc/user-guide/dvc-file-format) (see `dvc add`) to reflect the
 change. If the file or directory has the same name as the corresponding
-DVC-file, it would also rename the DVC-file.
+DVC-file, it also renames it.
 
 ## Synopsis
 

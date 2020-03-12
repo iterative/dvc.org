@@ -1,7 +1,7 @@
 # remote remove
 
-Remove a data remotes. This command affects DVC configuration files only, it
-does not physically remove data files stored remotely.
+Remove a data remote. This command affects DVC configuration files only, it does
+not physically remove data files stored remotely.
 
 See also [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),

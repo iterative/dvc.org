@@ -1,6 +1,6 @@
 # remote list
 
-Show all available data remotes.
+List all available data remotes.
 
 See also [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),

@@ -1,6 +1,6 @@
 # push
 
-Uploads files or directories tracked by DVC to
+Upload tracked files or directories to
 [remote storage](/doc/command-reference/remote).
 
 ## Synopsis
@@ -17,9 +17,9 @@ positional arguments:
 
 ## Description
 
-The `dvc push` command is the twin pair to the `dvc pull` command, and together
-they are the means for uploading and downloading data to and from remote
-storage, respectively.
+The `dvc pull` and `dvc push` commands are the means for uploading and
+downloading data to and from remote storage. These commands are analogous to
+`git pull` and `git push`, respectively.
 [Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results, models,
 [metrics](/doc/command-reference/metrics), etc) remotely (S3, SSH, GCS, etc.)
@@ -47,11 +47,9 @@ Under the hood a few actions are taken:
 - Upload the cache files missing from remote storage, if any, to the remote.
 
 The DVC `push` command always works with a remote storage, and it is an error if
-none are specified on the command line nor in the configuration. If the
-`--remote` option is not used, then the default remote, configured with the
-`core.config` config option, is used. See `dvc remote`, `dvc config` and this
-[example](/doc/get-started/configure) for more information on how to configure a
-remote.
+none are specified on the command line nor in the configuration. The default
+remote is used (see `dvc config core.remote`) unless the `--remote` option is
+used. See `dvc remote` for more information on how to configure a remote.
 
 With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
 only the files (or directories) that are new in the local repository to remote
@@ -71,11 +69,6 @@ to push.
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` - name of the
-  [remote storage](/doc/command-reference/remote) to push from (see
-  `dvc remote list`). The argument `REMOTE` is a remote name defined using
-  `dvc remote`.
-
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
   in all Git branches instead of just those present in the current workspace.
   It's useful if branches are used to track experiments or project checkpoints.
@@ -94,8 +87,12 @@ to push.
   directory and its subdirectories for DVC-files to inspect. If there are no
   directories among the `targets`, this option is ignored.
 
-- `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
-  the uploading of files from the remote. The default value is
+- `-r <name>`, `--remote <name>` - name of the
+  [remote storage](/doc/command-reference/remote) to push from (see
+  `dvc remote list`).
+
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the uploading of files from the remote. The default value is
   `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
   may improve the total download speed if a combination of small and large files
   are being fetched.

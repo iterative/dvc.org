@@ -6,7 +6,7 @@ Track data files or directories with DVC, by creating a corresponding
 ## Synopsis
 
 ```usage
-usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [-f FILE]
+usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [-f <filename>]
                targets [targets ...]
 
 positional arguments:
@@ -99,18 +99,18 @@ reproducible.
   analogous to using `git add` before `git commit`. Use `dvc commit` when ready
   to commit the results to cache.
 
+- `-f <filename>`, `--file <filename>` - specify name of the DVC-file it
+  generates. This option works only if there is a single target. By default the
+  name of the generated DVC-file is `<target>.dvc`, where `<target>` is the file
+  name of the given target. This option allows to set the name and the path of
+  the generated DVC-file.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-- `-f`, `--file` - specify name of the DVC-file it generates. If more than a
-  single target are provided, this option is ignored. By default, the name of
-  the generated DVC-file is `<target>.dvc`, where `<target>` is the file name of
-  the given target. This option allows to set the name and the path of the
-  generated DVC-file.
 
 ## Example: Single file
 

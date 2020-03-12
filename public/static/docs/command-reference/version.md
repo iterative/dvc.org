@@ -1,7 +1,6 @@
 # version
 
-This command shows the system/environment information along with the DVC
-version.
+Display the DVC version along with the system/environment information.
 
 ## Synopsis
 
@@ -11,8 +10,7 @@ usage: dvc version [-h] [-q | -v]
 
 ## Description
 
-Running the command `dvc version` outputs the following information about the
-system/environment:
+`dvc version` outputs the following information about the system/environment:
 
 | Line                                        | Detail                                                                                                                                                                |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
