@@ -7,7 +7,7 @@ const { getItemBySource } = require('./src/utils/sidebar')
 
 const slugger = new GithubSlugger()
 
-// Generate hedinga data from markdown
+// Generate hedings data from markdown
 
 const SLUG_REGEXP = /\s+{#([a-z0-9-]*[a-z0-9]+)}\s*$/
 
