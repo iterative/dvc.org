@@ -61,7 +61,6 @@
     "react-popover": "^0.5.10",
     "react-scroll": "^1.7.13",
     "react-slick": "^0.25.2",
-    "react-syntax-highlighter": "^11.0.2",
     "react-use": "^13.24.0",
     "rehype-react": "^4.0.1",
     "request": "^2.88.0",
