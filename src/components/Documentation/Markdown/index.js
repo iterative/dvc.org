@@ -7,6 +7,8 @@ import 'github-markdown-css/github-markdown.css'
 
 import { navigate } from '@reach/router'
 
+import { getPathWithSoruce } from '../../../utils/sidebar'
+
 import LocalLink from '../../LocalLink'
 import Tooltip from '../../Tooltip'
 
@@ -123,7 +125,7 @@ export default function Markdown({
           </Button>
         )}
         {next ? (
-          <LocalLink href={next} as={Button}>
+          <LocalLink href={getPathWithSoruce(next)} as={Button}>
             <span>Next</span>
             <i className="next" />
           </LocalLink>

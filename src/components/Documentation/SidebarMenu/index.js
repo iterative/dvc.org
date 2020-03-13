@@ -10,32 +10,24 @@ import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import DownloadButton from '../../DownloadButton'
 import LocalLink from '../../LocalLink'
 
-import { getParentsListFromPath, getItemByPath } from '../../../utils/sidebar'
+import {
+  getParentsListFromPath,
+  getPathWithSoruce
+} from '../../../utils/sidebar'
 
 import { OnlyDesktop } from '../../../styles'
 
 import { Menu, SectionLink, SectionLinks, Sections, SideFooter } from './styles'
 
-function SidebarMenuItem({
-  children,
-  label,
-  source,
-  path,
-  activePaths,
-  onClick
-}) {
+function SidebarMenuItem({ children, label, path, activePaths, onClick }) {
   const isActive = activePaths && includes(activePaths, path)
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
 
-  // ToDo: Dirty hack to make links with source=false work
-  // Need to rewrite sidebar.js to automatically set correct path
-  const href = source ? path : getItemByPath(path).path
-
   return (
     <>
       <LocalLink
-        href={href}
+        href={getPathWithSoruce(path)}
         as={SectionLink}
         id={path}
         isActive={isActive}

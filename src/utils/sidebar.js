@@ -168,6 +168,10 @@ function getItemBySource(source) {
   return item || false
 }
 
+function getPathWithSoruce(path) {
+  return getItemByPath(path).path
+}
+
 function getParentsListFromPath(path) {
   let currentPath = PATH_ROOT.slice(0, -1)
 
@@ -186,6 +190,7 @@ module.exports = {
   structure: normalizedSidebar,
   getItemByPath,
   getItemBySource,
+  getPathWithSoruce,
   getParentsListFromPath,
   getFirstPage
 }
