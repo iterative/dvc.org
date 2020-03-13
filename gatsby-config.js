@@ -50,18 +50,18 @@ const plugins = [
     }
   },
   'gatsby-plugin-catch-links',
-  /*{
+  {
+    resolve: 'gatsby-plugin-manifest',
     options: {
       background_color: '#eff4f8',
       display: 'minimal-ui',
-      //icon: 'static/512.png',
+      icon: 'static/favicon-512x512.png',
       name: 'dvc.org',
       short_name: 'dvc.org',
       start_url: '/',
       theme_color: '#eff4f8'
-    },
-    resolve: 'gatsby-plugin-manifest'
-  },*/
+    }
+  },
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-styled-components',
   'gatsby-plugin-sitemap',
