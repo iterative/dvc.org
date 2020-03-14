@@ -41,7 +41,7 @@ var _javascript = function(hljs) {
                 'help dvc init add checkout run pull push fetch status repro ' +
                 'remove move gc config remote metrics install root lock ' +
                 'unlock pipeline destroy unprotect commit cache diff tag pkg ' +
-                'version import-url get-url import get'
+                'version import-url get-url import get list'
             },
             className: 'strong'
           }
