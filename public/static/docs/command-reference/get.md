@@ -27,6 +27,9 @@ directory. (Analogous to `wget`, but for repos.)
 > files (does not create a DVC-file). For that reason, this command doesn't
 > require an existing DVC project to run in.
 
+> See `dvc list` for a way to browse repository contents to find files or
+> directories to download.
+
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported for online repos
 (e.g. `[user@]server:project.git`). `url` can also be a local file system path

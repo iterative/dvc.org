@@ -242,6 +242,10 @@
         "slug": "install"
       },
       {
+        "label": "list",
+        "slug": "list"
+      },
+      {
         "label": "lock",
         "slug": "lock"
       },
