@@ -26,11 +26,11 @@ yet tracked by DVC) and must be added again (with `dvc add`) or reproduced (with
 modes, _local_ and _cloud_ are triggered by using the `--cloud` or `--remote`
 options:
 
-| Mode   | CLI Option | Description                                                                                                                 |
-| ------ | ---------- | --------------------------------------------------------------------------------------------------------------------------- |
-| local  | _none_     | Comparisons are made between data files in the workspace and corresponding files in the cache directory (e.g. `.dvc/cache`) |
-| remote | `--remote` | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
-| remote | `--cloud`  | Comparisons are made between the cache, and the default remote, typically defined with `dvc remote --default`.              |
+| Mode   | Command option | Description                                                                                                                 |
+| ------ | -------------- | --------------------------------------------------------------------------------------------------------------------------- |
+| local  | _none_         | Comparisons are made between data files in the workspace and corresponding files in the cache directory (e.g. `.dvc/cache`) |
+| remote | `--remote`     | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
+| remote | `--cloud`      | Comparisons are made between the cache, and the default remote, typically defined with `dvc remote --default`.              |
 
 DVC determines which data and code files to compare by analyzing all
 [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr> (the
@@ -97,8 +97,8 @@ workspace) is different from remote storage. Bringing the two into sync requires
 
 ## Options
 
-- `-c`, `--cloud` - enables comparison against a remote. (See `dvc remote`.). If
-  no `--remote` option is provided, DVC will compare against the default remote
+- `-c`, `--cloud` - enables comparison against a remote (see `dvc remote`). If
+  the `--remote` option is not used, DVC will compare against the default remote
   (specified in the `core.remote` config option).
 
 - `-a`, `--all-branches` - compares cache content against all Git branches

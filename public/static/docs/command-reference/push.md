@@ -36,7 +36,7 @@ Under the hood a few actions are taken:
 
 - The push command by default uses all
   [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>.
-  The command line options listed below will either limit or expand the set of
+  The command options listed below will either limit or expand the set of
   DVC-files to consult.
 
 - For each <abbr>output</abbr> referenced from each selected DVC-file, DVC finds
@@ -49,9 +49,7 @@ Under the hood a few actions are taken:
 The DVC `push` command always works with a remote storage, and it is an error if
 none are specified on the command line nor in the configuration. The default
 remote is used (see `dvc config core.remote`) unless the `--remote` option is
-used. See `dvc remote`, `dvc config` and this
-[example](/doc/get-started/configure) for more information on how to configure a
-remote.
+used. See `dvc remote` for more information on how to configure a remote.
 
 With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
 only the files (or directories) that are new in the local repository to remote
@@ -136,8 +134,8 @@ $ dvc push data.zip.dvc
 
 ## Example: With dependencies
 
-Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-[pipeline](/doc/command-reference/pipeline) has been setup with these
+Demonstrating the `--with-deps` option requires a larger example. First, assume
+a [pipeline](/doc/command-reference/pipeline) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
@@ -190,7 +188,7 @@ and searched backwards through the pipeline for data files to upload. Because
 the `model.p.dvc` stage occurs later, its data was not pushed.
 
 Then we ran `dvc push` specifying the last stage, `model.p.dvc`, and its data
-was uploaded. Finally, we ran `dvc push` and `dvc status` with no options to
+was uploaded. Finally, we ran `dvc push` and `dvc status` with no flags to
 double check that all data had been uploaded.
 
 ## Example: What happens in the cache

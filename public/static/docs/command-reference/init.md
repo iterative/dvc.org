@@ -14,8 +14,8 @@ DVC works on top of a Git repository by default. This enables all features,
 providing the most value. It means that `dvc init` (without flags) expects to
 run in a Git repository root (a `.git/` directory should be present).
 
-The command options can be used to start an alternative workflow for advanced
-scenarios like monorepos, automation, etc:
+The command [options](#options) can be used to start an alternative workflow for
+advanced scenarios:
 
 - [Initializing DVC in subdirectories](#initializing-dvc-in-subdirectories) -
   support for monorepos, nested <abbr>DVC projects</abbr>, etc.
@@ -38,7 +38,7 @@ single Git repository providing isolation and granular project management.
 
 #### When is this useful?
 
-This option is mostly used in the scenario of a
+`--subdir` is mostly used in the scenario of a
 [monorepo](https://en.wikipedia.org/wiki/Monorepo), but also can be used in
 other workflows when such isolation and/or advanced granularity is needed.
 
@@ -118,8 +118,8 @@ won't download or checkout data for the `data-B.dvc` file.
 
 ### Initializing DVC without Git
 
-In rare cases, `--no-scm` option might be used to initialize DVC in a directory
-that is not part of a Git repository, or to make DVC ignore Git. Examples
+In rare cases, the `--no-scm` option might be desirable: to initialize DVC in a
+directory that is not part of a Git repo, or to make DVC ignore Git. Examples
 include:
 
 - SCM other than Git is being used. Even though there are DVC features that
@@ -137,7 +137,7 @@ e.g. managing `.gitignore` files on `dvc add` or `dvc run` to avoid committing
 DVC-tracked files into Git, or `dvc diff` and `dvc metrics diff` that accept
 Git-revisions to compare, etc.
 
-DVC sets the `core.no_scm` option value to `true` in the DVC
+DVC sets the `core.no_scm` config option value to `true` in the DVC
 [config](/doc/command-reference/config) when it is initialized this way. It
 means that even if the project was Git-tracked already or Git is initialized in
 it later, DVC keeps operating in the detached from Git mode.

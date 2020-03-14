@@ -19,7 +19,7 @@ defines the given `path` as an <abbr>output</abbr>, marking `path` as a metric
 file to track.
 
 Note that outputs can also be marked as metrics via the `-m` or `-M` options of
-the `dvc run` command.
+`dvc run`.
 
 While any text file can be tracked as a metric file, we recommend using TSV,
 CSV, or JSON formats. DVC provides a way to parse those formats to get to a

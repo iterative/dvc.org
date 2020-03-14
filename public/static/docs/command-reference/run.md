@@ -26,8 +26,8 @@ options) DVC can later connect each stage by building a dependency graph
 ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)). This graph is
 used by DVC to restore a full data [pipeline](/doc/command-reference/pipeline).
 
-The remaining terminal input provided to `dvc run` after the options (`-`/`--`
-arguments) will become the required `command` argument. Please wrap the
+The remaining terminal input provided to `dvc run` after the command options
+(`-`/`--` flags) will become the required `command` argument. Please wrap the
 `command` with `"` quotes if there are special characters in it like `|` (pipe)
 or `<`, `>` (redirection) that would otherwise apply to `dvc run` itself e.g.
 `dvc run -d script.sh "./script.sh > /dev/null 2>&1"`. Use single quotes `'`
@@ -178,8 +178,9 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 
 ## Examples
 
-A trivial example to play with, try different set of options to see how they
-work. You don't need any actual data or scripts to play with this example:
+A first example to play with is to try the different command options, to see
+what they do. No pre-existing data or source code is needed, as we can use
+placeholders and in-line commands directly in `dvc run`:
 
 ```dvc
 $ mkdir example && cd example
@@ -187,14 +188,13 @@ $ git init
 $ dvc init
 $ mkdir data
 $ dvc run -d data -o metric -f metric.dvc "echo '1' >> metric"
-
 Running command:
-  echo '1' >> metric
-Saving information to 'metric.dvc'.
+	echo '1' >> metric
+WARNING: 'data' is empty.
 
-To track the changes with git run:
+To track the changes with git, run:
 
-  git add .gitignore metric.dvc
+	git add .gitignore metric.dvc
 ```
 
 > See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the

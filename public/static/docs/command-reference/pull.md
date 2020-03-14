@@ -32,7 +32,8 @@ The `dvc pull` command allows one to retrieve data from remote storage.
 immediately after that.
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
-option is used.
+option is used. See `dvc remote` for more information on how to configure a
+remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote REMOTE`, it downloads
 only the files (or directories) missing from the workspace by searching all
@@ -134,8 +135,8 @@ default remote. The only files considered in this case are what is listed in the
 
 ## Example: With dependencies
 
-Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-[pipeline](/doc/command-reference/pipeline) has been setup with these
+Demonstrating the `--with-deps` option requires a larger example. First, assume
+a [pipeline](/doc/command-reference/pipeline) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
@@ -184,5 +185,5 @@ and searched backwards through the pipeline for data files to download. Because
 the `model.p.dvc` stage occurs later, its data was not pulled.
 
 Then we ran `dvc pull` specifying the last stage, `model.p.dvc`, and its data
-was downloaded. Finally, we ran `dvc pull` with no options to make sure that all
+was downloaded. Finally, we ran `dvc pull` with no flags to make sure that all
 data was already pulled with the previous commands.
