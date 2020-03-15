@@ -278,57 +278,50 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 
 ### Click for Google Cloud Storage
 
-- `projectname` - project name to use.
-
-  ```dvc
-  $ dvc remote modify myremote projectname myproject
-  ```
-
 - `url` - remote location URL.
 
   ```dvc
   $ dvc remote modify myremote url gs://bucket/remote
   ```
 
-- `credentailpath` -
-  [service account credentials](https://cloud.google.com/docs/authentication/production#obtaining_and_providing_service_account_credentials_manually).
+- `projectname` - override or provide a project name to use, if default one is
+  not set.
 
   ```dvc
-  $ dvc remote modify myremote credentialpath /path/to/my/creds/[FILE_NAME].json
+  $ dvc remote modify myremote projectname myproject
   ```
 
-  For best practices and to ensure forward compatibility and better security -
-  set up a Goole Sevice account for your project. You can follow these steps:
+- `credentailpath` - path of the JSON file that contains your service account
+  key. See also more details below, in the _Accessing data with a service
+  account_ section.
 
-  - [Create a GCloud Service account for the `projectname` above](https://www.google.com/search?client=safari&rls=en&q=gcloud+service+account&ie=UTF-8&oe=UTF-8).
+  ```dvc
+  $ dvc remote modify myremote credentailpath "/home/user/Downloads/[FILE_NAME].json"
+  ```
 
-  - Ensure the account has read and write access to any bucket resource hosting
-    the remote `url` you set up above. Best practice is to limit the access
-    credentials to only what the DVC service requires. You can check out the IAM
-    roles for `Storage Object Creator` and `Storage Object Viewer` which limit
-    an account to only create and view .. you guessed it - `Storage Objects`.
+**Accessing data with a service account:**
 
-  - Download the JSON credentials for your newly created service account and
-    store them somewhere safe.
+A
+[service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+is a Google account associated with your GCP project and not a specific user.
+Generally, it is intended for scenarios where your application needs to access
+data on its own, e.g. running inside a Compute Engine, CI system, etc.
 
-  - Ensure you have the
-    [gcloud command line tools installed.](https://cloud.google.com/sdk/docs/quickstarts)
+A service account can be used by providing a service account
+[key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+path to DVC via `credentailpath` above.
 
-  - Run `gcloud auth login` to ensure you are logged in to your google project.
+Alternatively, `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be set:
 
-  - Run `gcloud auth list` to verify you see both your own account and the
-    service accont you created above.
+```dvc
+$ export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/[FILE_NAME].json"
+```
 
-  - Set up your `GOOGLE_APPLICATION_CREDENTIALS` environmental variable. This is
-    used to associate credentials for a service account.
-
-  - `export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/[FILE_NAME].json"`
-
-  - Run DVC from the same terminal session.
-
-  - You may need to additionally run
-    `gcloud config set account my-service-account-name@my-project-id.iam.gserviceaccount.com`
-    to set the active gcloud auth.
+Ensure the account has read and write access to any bucket resource hosting the
+remote `url` you set up above. Best practice is to limit the access credentials
+to only what the DVC requires. You can check out the IAM roles for
+`Storage Object Creator` and `Storage Object Viewer` which limit an account to
+only create and view `Storage Objects`.
 
 </details>
 

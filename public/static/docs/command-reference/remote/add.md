@@ -228,7 +228,7 @@ upon download (e.g. `dvc pull`), to make sure that these haven't been modified.
 $ dvc remote add myremote gs://bucket/path
 ```
 
-> See also `dvc remote modify` for a full list of GC object storage parameters.
+> See also `dvc remote modify` for a full list of GC storage parameters.
 
 </details>
 
