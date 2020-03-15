@@ -321,8 +321,8 @@ Alternatively, `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be set:
 $ export GOOGLE_APPLICATION_CREDENTIALS="/home/.../project-XXXXXXX.json"
 ```
 
-Ensure the account has read (and write access, if you need to save data) the
-remote `url` you set up above.
+Ensure the account has read (and write access, if you need to save data) to the
+remote `url` (and data under it) you set up above.
 
 </details>
 
