@@ -149,14 +149,13 @@ const normalizedSidebar = normalizeSidebar({
 function getItemByPath(path) {
   const normalizedPath = path.replace(/\/$/, '')
   const isRoot = normalizedPath === PATH_ROOT.slice(0, -1)
-  // console.log('fCWS(nS0)', findChildWithSource(normalizedSidebar[0]))
   const item = isRoot
     ? {
         label: '',
-        next: '/doc/install',
         path: '/doc',
+        source: '/static/docs/index.md',
         prev: undefined,
-        source: '/static/docs/index.md'
+        next: '/doc/install'
       }
     : findItem(normalizedSidebar, normalizedPath)
 
