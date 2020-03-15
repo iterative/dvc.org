@@ -296,28 +296,39 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   ```dvc
   $ dvc remote modify myremote credentialpath /path/to/my/creds/[FILE_NAME].json
   ```
-  
-  For best practices and to ensure forward compatibility and better security - set up a Goole Sevice account for your project. You can follow these steps:
-  
+
+  For best practices and to ensure forward compatibility and better security -
+  set up a Goole Sevice account for your project. You can follow these steps:
+
   - [Create a GCloud Service account for the `projectname` above](https://www.google.com/search?client=safari&rls=en&q=gcloud+service+account&ie=UTF-8&oe=UTF-8).
 
-  - Ensure the account has read and write access to any bucket resource hosting the remote `url` you set up above. Best practice is to limit the access credentials to only what the DVC service requires. You can check out the IAM roles for `Storage Object Creator` and `Storage Object Viewer` which limit an account to only create and view .. you guessed it - `Storage Objects`.
-  
-  - Download the JSON credentials for your newly created service account and store them somewhere safe.
-  
-  - Ensure you have the [gcloud command line tools installed.](https://cloud.google.com/sdk/docs/quickstarts)
-  
+  - Ensure the account has read and write access to any bucket resource hosting
+    the remote `url` you set up above. Best practice is to limit the access
+    credentials to only what the DVC service requires. You can check out the IAM
+    roles for `Storage Object Creator` and `Storage Object Viewer` which limit
+    an account to only create and view .. you guessed it - `Storage Objects`.
+
+  - Download the JSON credentials for your newly created service account and
+    store them somewhere safe.
+
+  - Ensure you have the
+    [gcloud command line tools installed.](https://cloud.google.com/sdk/docs/quickstarts)
+
   - Run `gcloud auth login` to ensure you are logged in to your google project.
-  
-  - Run `gcloud auth list` to verify you see both your own account and the service accont you created above.
-  
-  - Set up your `GOOGLE_APPLICATION_CREDENTIALS` environmental variable. This is used to associate credentials for a service account.
-  
-  - `export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/[FILE_NAME].json"` 
-  
+
+  - Run `gcloud auth list` to verify you see both your own account and the
+    service accont you created above.
+
+  - Set up your `GOOGLE_APPLICATION_CREDENTIALS` environmental variable. This is
+    used to associate credentials for a service account.
+
+  - `export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/[FILE_NAME].json"`
+
   - Run DVC from the same terminal session.
-  
-  - You may need to additionally run `gcloud config set account my-service-account-name@my-project-id.iam.gserviceaccount.com` to set the active gcloud auth.
+
+  - You may need to additionally run
+    `gcloud config set account my-service-account-name@my-project-id.iam.gserviceaccount.com`
+    to set the active gcloud auth.
 
 </details>
 
