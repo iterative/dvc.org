@@ -88,35 +88,26 @@ train.dvc
 ```
 
 If you open the
-[example-get-started project's page](https://github.com/iterative/example-get-started)
-you will see something like:
+[example-get-started project's page](https://github.com/iterative/example-get-started),
+you will see a similar list, except that `model.pkl` will be missing. That's
+because its tracked by DVC and not visible to Git. You can find it specified as
+an output if you open
+[`train.dvc`](https://github.com/iterative/example-get-started/blob/master/train.dvc).
 
-```dvc
-.gitignore
-README.md
-auc.metric
-data
-evaluate.dvc
-featurize.dvc
-prepare.dvc
-src
-train.dvc
-```
-
-The difference is the `model.pkl` binary file that is DVC-tracked and is not
-visible in second listing (which is actually controlled by the `train.dvc`).
-
-We can now, for example, run:
+We can now, for example, run
 
 ```dvc
 $ dvc get https://github.com/iterative/example-get-started model.pkl
 ```
 
-to download the model file.
+to download the model file (see `dvc get`).
 
 ## Example: List all files and directories in a data registry
 
-We can do this recursively, using `-R` option:
+Let's imagine a DVC repo used as a
+[data registry](/doc/use-cases/data-registries#using-registries), structured
+with different datasets in separate directories. We can do this recursively,
+using `-R` option:
 
 ```dvc
 $ dvc list -R https://github.com/iterative/dataset-registry
@@ -129,7 +120,5 @@ images/.gitignore
 images/dvc-logo-outlines.png
 images/dvc-logo-outlines.png.dvc
 images/owl_sticker.png
-images/owl_sticker.png.dvc
-images/owl_sticker.svg
 ...
 ```
