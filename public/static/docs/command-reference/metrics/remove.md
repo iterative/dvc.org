@@ -1,8 +1,8 @@
 # metrics remove
 
-Stop tracking a [project metric](/doc/command-reference/metrics#description):
-Keeps file located at `path` an <abbr>output</abbr>, but removes its metric
-mark.
+Stop tracking a [project metric](/doc/command-reference/metrics): Keeps file
+located at `path` as an <abbr>output</abbr>, but removes its metric mark in the
+DVC-file.
 
 ## Synopsis
 
@@ -17,9 +17,8 @@ positional arguments:
 ## Description
 
 This command finds a corresponding [DVC-file](/doc/user-guide/dvc-file-format)
-for the provided metric file `path` – the one that defines `path` among its
-<abbr>outputs</abbr>, see `dvc metrics add` or the `-m` and `-M` options of
-`dvc run` – and resets the `metric` field for the provided output.
+for the provided metric file (`path` is defined among the <abbr>outputs</abbr>
+of the DVC-file), and resets the `metric` field for the file.
 
 This does not remove or delete the file in question. It only unmarks it as a
 metric file. It also keeps the file as an output of the corresponding DVC-file.

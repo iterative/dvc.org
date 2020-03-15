@@ -3,11 +3,13 @@
     "eslint:recommended",
     "plugin:prettier/recommended",
     "plugin:react/recommended",
-    "plugin:jsx-a11y/recommended"
+    "plugin:jsx-a11y/recommended",
+    "plugin:json/recommended"
   ],
   "parser": "babel-eslint",
   "env": {
-    "browser": true
+    "browser": true,
+    "jest": true
   },
   "settings": {
     "react": {

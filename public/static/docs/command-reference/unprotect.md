@@ -14,7 +14,7 @@ positional arguments:
 
 ## Description
 
-By default this command is not necessary, as DVC avoids hardlinks and symlinks
+By default, this command is not necessary, as DVC avoids hardlinks and symlinks
 to link tracked data files from the cache to the <abbr>workspace</abbr>.
 However, these types of file links can be enabled with `dvc config cache`
 (`cache.type` config option).
@@ -53,7 +53,7 @@ Enable cache protected mode is enabled:
 $ dvc config cache.protected true
 ```
 
-Put a data file under DVC control:
+Track a data file with DVC:
 
 ```dvc
 $ ls -lh

@@ -1,7 +1,6 @@
 # pipeline list
 
-Show connected groups (pipelines) of [stage](/doc/command-reference/run) that
-are independent of each other.
+List connected groups of [stages](/doc/command-reference/run) (pipelines).
 
 ## Synopsis
 

@@ -130,6 +130,7 @@
         }
       },
       "updating-tracked-files",
+      "setup-google-drive-remote",
       "large-dataset-optimization",
       "external-dependencies",
       {
@@ -159,6 +160,10 @@
       {
         "label": "Anonymized Usage Analytics",
         "slug": "analytics"
+      },
+      {
+        "label": "Privacy Policy (Google APIs)",
+        "slug": "privacy"
       }
     ]
   },
@@ -209,16 +214,16 @@
         }
       },
       {
+        "label": "gc",
+        "slug": "gc"
+      },
+      {
         "label": "get-url",
         "slug": "get-url"
       },
       {
         "label": "get",
         "slug": "get"
-      },
-      {
-        "label": "gc",
-        "slug": "gc"
       },
       {
         "label": "import-url",
@@ -237,6 +242,10 @@
         "slug": "install"
       },
       {
+        "label": "list",
+        "slug": "list"
+      },
+      {
         "label": "lock",
         "slug": "lock"
       },
@@ -252,6 +261,10 @@
           {
             "label": "metrics modify",
             "slug": "modify"
+          },
+          {
+            "label": "metrics diff",
+            "slug": "diff"
           },
           {
             "label": "metrics remove",
@@ -352,6 +365,25 @@
       {
         "label": "version",
         "slug": "version"
+      }
+    ]
+  },
+  {
+    "slug": "api-reference",
+    "label": "Python API Reference",
+    "source": "api-reference/index.md",
+    "children": [
+      {
+        "slug": "get_url",
+        "label": "get_url()"
+      },
+      {
+        "slug": "open",
+        "label": "open()"
+      },
+      {
+        "slug": "read",
+        "label": "read()"
       }
     ]
   },

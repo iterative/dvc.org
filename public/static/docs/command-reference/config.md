@@ -22,16 +22,16 @@ takes a config option `name` (a section and a key, separated by a dot) and its
 This command reads and updates the DVC configuration files. By default (if none
 of `--local`, `--global`, or `--system` is provided) a project's config
 (`.dvc/config`) file is read or modified. This file is by default meant to be
-under Git control and should not contain sensitive and/or user-specific
-information (passwords, SSH keys, etc). Use `--local`, `--global`, or `--system`
-options instead to override project's settings, for sensitive, or user-specific
-settings.
+tracked by Git and should not contain sensitive and/or user-specific information
+(passwords, SSH keys, etc). Use `--local`, `--global`, or `--system` command
+options (flags) instead to override project's settings, for sensitive, or
+user-specific settings.
 
-If the config option `value` is not provided and `--unset` option is not used,
-this command returns the current value of the config option, if found in the
-corresponding config file.
+If the config option `value` is not provided and the `--unset` command option is
+not used, this command returns the current value of the config option, if found
+in the corresponding config file.
 
-## Options
+## Command options (flags)
 
 - `-u`, `--unset` - remove a specified config option from a config file.
 
@@ -62,21 +62,21 @@ file (in `.dvc/config` by default), and they support the options below:
 
 This is the main section with the general config options:
 
-- `core.loglevel` - log level that the `dvc` command should use. Possible values
-  are: `info`, `debug`, `warning`, `error`.
+- `core.loglevel` - log level that the `dvc` command should use. Accepts values
+  `info`, `debug`, `warning`, or `error`.
 
-- `core.remote` - name of the remote that should be used by default.
+- `core.remote` - name of the remote storage that should be used by default.
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
-  each [stage](/doc/command-reference/run) in `dvc repro`. By default this
-  behavior requires the use of option `-i` in that command. Accepts values
+  each [stage](/doc/command-reference/run) in `dvc repro`. (Normally, this
+  behavior requires using the `-i` option of that command.) Accepts values:
   `true` and `false`.
 
 - `core.analytics` - used to turn off
   [anonymized usage statistics](/doc/user-guide/analytics). Accepts values
   `true` (default) and `false`.
 
-- `core.checksum_jobs` - number of threads for computing checksums. Accepts
+- `core.checksum_jobs` - number of threads for computing file hashes. Accepts
   positive integers. The default value is `max(1, min(4, cpu_count() // 2))`.
 
 - `core.hardlink_lock` - use hardlink file locks instead of the default ones,
@@ -84,6 +84,11 @@ This is the main section with the general config options:
   `.dvc/lock`). Accepts values `true` and `false` (default). Useful when the DVC
   project is on a file system that doesn't properly support file locking (e.g.
   [NFS v3 and older](http://nfs.sourceforge.net/)).
+
+- `core.no_scm` - tells DVC to not expect or integrate with Git (even if the
+  <abbr>project</abbr> is initialized inside a Git repo). Accepts values `true`
+  and `false` (default). Set with the `--no-scm` option of `dvc init`
+  ([more details](/doc/command-reference/init#initializing-dvc-without-git)).
 
 ### remote
 
@@ -95,31 +100,31 @@ remote. See `dvc remote` for more information.
 ### cache
 
 A DVC project <abbr>cache</abbr> is the hidden storage (by default located in
-the `.dvc/cache` directory) for files that are under DVC control, and their
+the `.dvc/cache` directory) for files that are tracked by DVC, and their
 different versions. (See `dvc cache` and
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 for more details.) This section contains the following options:
 
 - `cache.dir` - set/unset cache directory location. A correct value must be
   either an absolute path or a path **relative to the config file location**.
-  The default value is `cache` that, resolved relative to the default project
-  config location, results in `.dvc/cache`.
+  The default value is `cache`, that resolves to `.dvc/cache` (relative to the
+  project config file location).
 
   > See also helper command `dvc cache dir` to intuitively set this config
   > option, properly transforming paths relative to the current working
   > directory into paths relative to the config file location.
 
-- `cache.protected` - make files under DVC control read-only. Possible values
-  are `true` or `false` (default). Run `dvc checkout` after changing the value
-  of this option for the change to go into effect.
+- `cache.protected` - make DVC-tracked files read-only. Possible values are
+  `true` or `false` (default). Run `dvc checkout` after changing the value of
+  this option for the change to go into effect.
 
   Due to the way DVC handles linking between the data files in the cache and
   their counterparts in the <abbr>workspace</abbr>, it's easy to accidentally
-  corrupt the cached version of a file by editing or overwriting it. Turning
-  this config option on forces you to run `dvc unprotect` before updating a
-  file, providing an additional layer of security to your data.
+  corrupt the cached file by editing or overwriting it. Turning this config
+  option on forces you to run `dvc unprotect` before updating a file, providing
+  an additional layer of security to your data.
 
-  We highly recommend enabling this option when `cache.type` is set to
+  We highly recommend enabling `cache.protected` when `cache.type` is set to
   `hardlink` or `symlink`.
 
 - `cache.type` - link type that DVC should use to link data files from cache to
@@ -132,16 +137,16 @@ for more details.) This section contains the following options:
 
   ⚠️ If you manually set `cache.type` to `hardlink` or `symlink`, **you will
   corrupt the cache** if you modify tracked data files in the workspace. See the
-  `cache.protected` config option above and corresponding `dvc unprotect`
-  command to modify files safely.
+  `cache.protected` option above, and corresponding `dvc unprotect` command to
+  modify files safely.
 
   There are pros and cons to different link types. Refer to
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
   for a full explanation of each one.
 
-  To apply changes to this option in the workspace, by restoring all file
-  links/copies from cache, please use `dvc checkout --relink`. See
-  [checkout options](/doc/command-reference/checkout#options) for more details.
+  To apply changes to this config option in the workspace, by restoring all file
+  links/copies from cache, please use `dvc checkout --relink`. See that
+  command's [options](/doc/command-reference/checkout#options) for more details.
 
 - `cache.slow_link_warning` - used to turn off the warnings about having a slow
   cache link type. These warnings are thrown by `dvc pull` and `dvc checkout`
@@ -152,6 +157,13 @@ for more details.) This section contains the following options:
   > These warnings are automatically turned off when `cache.type` is manually
   > set.
 
+- `cache.shared` - permissions for newly created or downloaded cache files and
+  directories. The default is `0o664`(rw-r--r--) for files and `0o755`
+  (rwxr-xr-x) for directories. The only accepted value right now is `group`,
+  which makes DVC use `0o664` (rw-rw-r--) for files and `0o775` (rwxrwxr-x) for
+  directories, which is useful when you are using a a
+  [shared development server](/doc/use-cases/shared-development-server).
+
 - `cache.local` - name of a local remote to use as cache directory. (Refer to
   `dvc remote` for more information on "local remotes".) This will overwrite the
   value provided to `dvc config cache.dir` or `dvc cache dir`.
@@ -161,9 +173,9 @@ for more details.) This section contains the following options:
 
   > Avoid using the same remote location that you are using for `dvc push`,
   > `dvc pull`, `dvc fetch` as external cache for your external outputs, because
-  > it may cause possible checksum overlaps. Checksum for some data file on an
-  > external storage can potentially collide with checksum generated locally for
-  > a different file, with a different content.
+  > it may cause possible file hash overlaps: the hash of a data file in
+  > external storage could collide with a hash generated locally for another
+  > file with a different content.
 
 - `cache.s3` - name of an
   [Amazon S3 remote to use as external cache](/doc/user-guide/managing-external-data#amazon-s-3).
@@ -184,15 +196,15 @@ learn more about the state file (database) that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database, which
   affects the physical size of the state file itself, as well as the performance
-  of certain DVC operations. The bigger the limit the more checksum history DVC
-  can keep in order to avoid sequential checksum recalculations for the files.
-  Default limit is set to 10 000 000 rows.
+  of certain DVC operations. The default is 10,000,000 rows. The bigger the
+  limit, the longer the file hash history that DVC can keep, in order to avoid
+  sequential hash recalculations.
 
 - `state.row_cleanup_quota` - percentage of the state database that is going to
-  be deleted when it hits the `state.row_limit`. When an entry in the database
-  is used (e.g. during the `dvc status`) dvc updates the timestamp on that entry
-  so that when it needs to cleanup the database it could sort them by the
-  timestamp and remove the oldest ones. Default quota is set to 50(percent).
+  be deleted when it hits the `state.row_limit`. Default quota is set to 50%.
+  When an entry in the database is used (e.g. during the `dvc status`), DVC
+  updates the timestamp on that entry. This way, when the database needs a
+  cleanup, DVC can sort entries chronologically, and remove the oldest ones.
 
 ## Example: Set the debug level
 
@@ -211,7 +223,7 @@ $ dvc config core.remote myremote
 ```
 
 > Note that this is equivalent to using `dvc remote add` with the
-> `-d`/`--default` option.
+> `-d`/`--default` flag.
 
 ## Example: Default remotes
 
@@ -265,7 +277,7 @@ Set cache type: if `reflink` is not available, use `copy`:
 $ dvc config cache.type reflink,copy
 ```
 
-Protect data files under DVC control by making them read-only:
+Protect DVC-tracked data files by making them read-only:
 
 ```dvc
 $ dvc config cache.protected true

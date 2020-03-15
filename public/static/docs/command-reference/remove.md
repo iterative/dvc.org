@@ -23,12 +23,12 @@ Note that it does not remove files from the DVC cache or remote storage (see
 want to use or share in the future.
 
 Refer to [Updating Tracked Files](/doc/user-guide/updating-tracked-files) to see
-how it can be used to replace or modify files that are under DVC control.
+how it can be used to replace or modify files that are tracked by DVC.
 
 ## Options
 
-- `-o`, `--outs` (default) - remove outputs described in the given `targets`,
-  keep the DVC-files.
+- `-o`, `--outs` - remove the outputs described in the given `targets`, keep the
+  DVC-files themselves. **This is the default behavior.**
 
 - `-p`, `--purge` - remove outputs and DVC-files.
 
@@ -43,7 +43,7 @@ how it can be used to replace or modify files that are under DVC control.
 
 ## Examples
 
-Let's imagine we have a `data.csv` under DVC control:
+Let's imagine have a `data.csv` data file, and track it with DVC:
 
 ```dvc
 $ dvc add data.csv

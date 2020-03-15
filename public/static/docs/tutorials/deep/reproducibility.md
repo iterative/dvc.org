@@ -21,7 +21,7 @@ graph nodes (pipeline [stages](/doc/command-reference/run)).
 
 If you run `repro` on any [DVC-file](/doc/user-guide/dvc-file-format) from our
 repository, nothing happens because nothing was changed in the pipeline defined
-in the <abbr>project</abbr>. There's nothing to reproduce.
+in the <abbr>project</abbr>: There's nothing to reproduce.
 
 ```dvc
 $ dvc repro model.p.dvc
@@ -116,7 +116,7 @@ master:
 Let's keep the result in the repository. Later we can find out why bigrams don't
 add value to the current model and change that.
 
-Many DVC-files were changed. This happened due to MD5 checksum changes.
+Many DVC-files were changed. This happened due to file hash changes.
 
 ```dvc
 $ git status -s
@@ -148,13 +148,12 @@ original model from the master branch.
 ```dvc
 $ git checkout master
 $ dvc checkout
-# Nothing to reproduce since code was checked out by `git checkout`
-# and data files were checked out by `dvc checkout`
 $ dvc repro
+Data and pipelines are up to date.
 ```
 
 After proper checkout, there is nothing to reproduce because all the correct
-files were checked out by Git and all data files by DVC.
+files were checked out by Git, and all data files by DVC.
 
 In more detail — `git checkout master` checked out the code and DVC-files. The
 DVC-files from the master branch point to old (unigram based) dependencies and
@@ -233,9 +232,9 @@ CONFLICT (content): Merge conflict in Dvcfile
 Automatic merge failed; fix conflicts and then commit the result.
 ```
 
-The merge has a few conflicts. All of the conflicts are related to MD5 checksum
+The merge has a few conflicts. All of the conflicts are related to file hash
 mismatches in the branches. You can properly merge conflicts by prioritizing the
-checksums from the bigrams branch: that is, by removing all checksums of the
+file hashes from the bigrams branch: that is, by removing all hashes of the
 other branch.
 [Here](https://help.github.com/en/articles/resolving-a-merge-conflict-using-the-command-line)
 you can find a tutorial that clarifies how to do that. It is also important to
@@ -245,15 +244,15 @@ remove all automatically generated
 <code>&#61;&#61;&#61;&#61;&#61;&#61;&#61;</code>,
 <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;</code>) from `model.p.dvc` and `Dvcfile`.
 
-Another way to solve git merge conflicts is to simply replace all checksums with
-empty strings ''. The only disadvantage of this trick is that DVC will need to
-recompute the <abbr>outputs</abbr> checksums.
+Another way to solve git merge conflicts is to simply replace all file hashes
+with empty strings ''. The only disadvantage of this trick is that DVC will need
+to recompute the <abbr>output</abbr> hashes.
 
 After resolving the conflicts you need to checkout a proper version of the data
 files:
 
 ```dvc
-# Replace conflicting checksums to empty string ''
+# Replace conflicting hashes with empty string ''
 $ vi model.p.dvc
 $ vi Dvcfile
 $ dvc checkout
@@ -309,6 +308,6 @@ changes in the right place and reproduction is not needed.
 
 ```dvc
 $ dvc checkout
-# Nothing to reproduce:
 $ dvc repro
+Data and pipelines are up to date.
 ```

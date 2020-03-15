@@ -1,15 +1,15 @@
 # pull
 
-Downloads missing files and directories from
-[remote storage](/doc/command-reference/remote#description) to the
-<abbr>cache</abbr> based on [DVC-files](/doc/user-guide/dvc-file-format) in the
-<abbr>workspace</abbr>, then links the downloaded files into the workspace.
+Download tracked files or directories from
+[remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr> and
+<abbr>workspace</abbr>, based on the current
+[DVC-files](/doc/user-guide/dvc-file-format).
 
 ## Synopsis
 
 ```usage
-usage: dvc pull [-h] [-q | -v] [-j JOBS] [--show-checksums]
-                [-r REMOTE] [-a] [-T] [-d] [-f] [-R]
+usage: dvc pull [-h] [-q | -v] [-j <number>]
+                [-r <name>] [-a] [-T] [-d] [-f] [-R]
                 [targets [targets ...]]
 
 positional arguments:
@@ -20,8 +20,8 @@ positional arguments:
 ## Description
 
 The `dvc pull` and `dvc push` commands are the means for uploading and
-downloading data to and from remote storage. These commands are analogous to the
-`git pull` and `git push` commands.
+downloading data to and from remote storage. These commands are analogous to
+`git pull` and `git push`, respectively.
 [Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results, models,
 [metrics](/doc/command-reference/metrics#description), etc) remotely (S3, SSH,
@@ -31,17 +31,16 @@ The `dvc pull` command allows one to retrieve data from remote storage.
 `dvc pull` has the same effect as running `dvc fetch` and `dvc checkout`
 immediately after that.
 
-If the `--remote REMOTE` option is not specified, then the default remote,
-configured with the `core.config` config option, is used. See `dvc remote`,
-`dvc config` and this [example](/doc/get-started/configure) for more information
-on how to configure a remote.
+The default remote is used (see `dvc config core.remote`) unless the `--remote`
+option is used. See `dvc remote` for more information on how to configure a
+remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote REMOTE`, it downloads
 only the files (or directories) missing from the workspace by searching all
 [DVC-files](/doc/user-guide/dvc-file-format) currently in the
-<abbr>project</abbr>. It will not download files associated with earlier
-versions or branches of the repository if using Git, nor will it download files
-that have not changed.
+<abbr>project</abbr>. It will not download files associated with earlier commits
+in the <abbr>repository</abbr> (if using Git), nor will it download files that
+have not changed.
 
 The command `dvc status -c` can list files referenced in current DVC-files, but
 missing in the <abbr>cache</abbr>. It can be used to see what files `dvc pull`
@@ -59,39 +58,39 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` specifies which remote to pull from (see
-  `dvc remote list`). The value for `REMOTE` is a name defined using
-  `dvc remote`. If the option is not specified, then the default remote
-  (configured with the `core.config` config option) is used.
-
 - `-a`, `--all-branches` - determines the files to download by examining
-  DVC-files in all Git branches of the project repository (if using Git). It's
-  useful if branches are used to track experiments or project checkpoints.
+  DVC-files in all Git branches instead of just those present in the current
+  workspace. It's useful if branches are used to track experiments or project
+  checkpoints.
 
 - `-T`, `--all-tags` - the same as `-a`, `--all-branches` but Git tags are used
   to save different experiments or project checkpoints. Note that both options
   can be combined, for example using the `-aT` flag.
 
-- `-d`, `--with-deps` - one or more `targets` should be specified for this
-  option to have effect. Determines files to download by tracking dependencies
-  to the target DVC-files (stages). By traversing all stage dependencies, DVC
-  searches backward from the target stages in the corresponding pipelines. This
-  means DVC will not pull files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - determines files to download by tracking dependencies to
+  the target DVC-files (stages). If no `targets` are provided, this option is
+  ignored. By traversing all stage dependencies, DVC searches backward from the
+  target stages in the corresponding pipelines. This means DVC will not pull
+  files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain one or more directories
-  for this option to have effect. Determines the files to pull by searching each
-  target directory and its subdirectories for DVC-files to inspect.
+- `-R`, `--recursive` - determines the files to pull by searching each target
+  directory and its subdirectories for DVC-files to inspect. If there are no
+  directories among the `targets`, this option is ignored.
 
 - `-f`, `--force` - does not prompt when removing workspace files, which occurs
   when these file no longer match the current DVC-file references. This option
   surfaces behavior from the `dvc fetch` and `dvc checkout` commands because
   `dvc pull` in effect performs those 2 functions in a single command.
 
-- `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
-  while downloading files from the remote. The effect is to control the number
-  of files downloaded simultaneously. Default is `4 * cpu_count()`. For example
-  with `-j 1` DVC downloads one file at a time, with `-j 2` it downloads two at
-  a time, and so forth. For SSH remotes default is set to 4.
+- `-r <name>`, `--remote <name>` - name of the
+  [remote storage](/doc/command-reference/remote) to pull from (see
+  `dvc remote list`).
+
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the downloading of files from the remote. The default value is
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  may improve the total download speed if a combination of small and large files
+  are being fetched.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -136,8 +135,8 @@ default remote. The only files considered in this case are what is listed in the
 
 ## Example: With dependencies
 
-Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-[pipeline](/doc/command-reference/pipeline) has been setup with these
+Demonstrating the `--with-deps` option requires a larger example. First, assume
+a [pipeline](/doc/command-reference/pipeline) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
@@ -186,5 +185,5 @@ and searched backwards through the pipeline for data files to download. Because
 the `model.p.dvc` stage occurs later, its data was not pulled.
 
 Then we ran `dvc pull` specifying the last stage, `model.p.dvc`, and its data
-was downloaded. Finally, we ran `dvc pull` with no options to make sure that all
+was downloaded. Finally, we ran `dvc pull` with no flags to make sure that all
 data was already pulled with the previous commands.

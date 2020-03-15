@@ -1,9 +1,9 @@
 # move
 
-Renames a file or a directory and modifies the corresponding
+Rename a file or a directory and modify the corresponding
 [DVC-file](/doc/user-guide/dvc-file-format) (see `dvc add`) to reflect the
 change. If the file or directory has the same name as the corresponding
-DVC-file, it would also rename the DVC-file.
+DVC-file, it also renames it.
 
 ## Synopsis
 
@@ -81,31 +81,33 @@ outs:
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples
+## Example: change an output file name
 
-Here we use `dvc add`to put a file under DVC control. Then we change the name of
-it using `dvc move`.
+We first use `dvc add` to track file with DVC. Then, we change its name using
+`dvc move`.
 
 ```dvc
 $ dvc add data.csv
+...
 $ tree
 .
 ├── data.csv
 └── data.csv.dvc
 
-
 $ dvc move data.csv other.csv
+...
 $ tree
 .
 ├── other.csv
 └── other.csv.dvc
 ```
 
-Here we use `dvc add` to put a file under DVC control. Then we use `dvc move` to
-change its location. Note that the `data.csv.dvc`
-[DVC-file](/doc/user-guide/dvc-file-format) is also moved. If target path
-already exists and is a directory, data file is moved with unchanged name into
-this folder.
+## Example: change an output location
+
+We use `dvc add` to track a file with DVC, then we use `dvc move` to change its
+location. If target path already exists and is a directory, data file is moved
+with unchanged name into this folder. Note that the `data.csv.dvc`
+[DVC-file](/doc/user-guide/dvc-file-format) is also moved.
 
 ```dvc
 $ tree
@@ -116,6 +118,7 @@ $ tree
     └── subdir
 
 $  dvc add data/foo
+...
 $  tree
 .
 ├── data
@@ -125,6 +128,7 @@ $  tree
     └── subdir
 
 $ dvc move data/foo data2/subdir/
+...
 $ tree
 .
 ├── data
@@ -134,28 +138,24 @@ $ tree
         └── foo.dvc
 ```
 
-In this example we use `dvc add` to put a directory under DVC control. Then we
-use `dvc move` to move the whole directory. As in other cases, DVC-file is also
-moved.
+## Example: change an imported directory name and location
+
+Let's try the same with an entire directory imported from an external <abbd>DVC
+repository</abbd> with `dvc import`. Note that, as in the previous cases, the
+DVC-file is also moved.
 
 ```dvc
+$ dvc import ../another-repo data
+...
 $ tree
 .
 ├── data
 │   ├── bar
 │   └── foo
-└── data2
-
-$ dvc add data
-$ tree
-.
-├── data
-│   ├── bar
-│   └── foo
-├── data2
 └── data.dvc
 
 $ dvc move data data2/data3
+...
 $ tree
 .
 └── data2

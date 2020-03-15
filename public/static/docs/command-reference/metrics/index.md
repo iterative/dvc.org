@@ -1,8 +1,9 @@
 # metrics
 
-A set of commands to collect and display project metrics:
+A set of commands to add, manage, collect, and display project metrics:
 [add](/doc/command-reference/metrics/add),
 [show](/doc/command-reference/metrics/show),
+[diff](/doc/command-reference/metrics/diff),
 [modify](/doc/command-reference/metrics/modify), and
 [remove](/doc/command-reference/metrics/remove).
 
@@ -15,21 +16,22 @@ positional arguments:
   COMMAND
     show                Output metric values.
     add                 Tag file as a metric file.
-    modify              Modify metric file options.
+    modify              Modify metric file values.
     remove              Remove files's metric tag.
 ```
 
 ## Description
 
 DVC has the ability to mark a certain stage <abbr>outputs</abbr> as files
-containing metrics to track. (See `--metrics` option of `dvc run`.) Metrics are
-project-specific numeric values e.g. `AUC`, `ROC`, etc. DVC itself does not
+containing metrics to track. (See the `--metrics` option of `dvc run`.) Metrics
+are project-specific numeric values e.g. `AUC`, `ROC`, etc. DVC itself does not
 ascribe any specific meaning for these numbers. Usually these numbers are
 produced by the model evaluation script and serve as a way to compare and pick
 the best performing experiment.
 
 [Add](/doc/command-reference/metrics/add),
 [show](/doc/command-reference/metrics/show),
+[diff](/doc/command-reference/metrics/diff),
 [modify](/doc/command-reference/metrics/modify), and
 [remove](/doc/command-reference/metrics/remove) commands are available to set up
 and manage <abbr>DVC project</abbr> metrics.
@@ -52,10 +54,10 @@ $ dvc run -d code/evaluate.py -M data/eval.json \
       python code/evaluate.py
 ```
 
-> `-M|--metrics-no-cache` is telling DVC to mark `data/eval.json` as a metric
-> file. Using this option is equivalent to using `-O|--outs-no-cache` and then
-> running `dvc metrics add data/eval.json` to explicitly mark `data/eval.json`
-> as a metric file.
+> `-M` (`--metrics-no-cache`) is telling DVC to mark `data/eval.json` as a
+> metric file. Using this option is equivalent to using `-O` (`--outs-no-cache`)
+> and then running `dvc metrics add data/eval.json` to explicitly mark
+> `data/eval.json` as a metric file.
 
 Now let's print metric values that we are tracking in this <abbr>project</abbr>:
 

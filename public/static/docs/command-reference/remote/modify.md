@@ -1,6 +1,6 @@
 # remote modify
 
-Modify configuration of data remotes.
+Modify the configuration of a data remote.
 
 > This command is commonly needed after `dvc remote add` or
 > [default](/doc/command-reference/remote/default) to setup credentials or other
@@ -26,9 +26,9 @@ positional arguments:
 
 ## Description
 
-Remote `name` and `option` name are required. Option names are remote type
-specific. See `dvc remote add` and
-[Available settings](#available-settings-per-storage-type) section below for a
+Remote `name` and `option` name are required. Option names are specific to the
+remote type. See `dvc remote add` and the
+[available settings](#available-settings-per-storage-type) section below for a
 list of remote storage types.
 
 This command modifies a `remote` section in the project's
@@ -37,8 +37,8 @@ manual editing could be used to change the configuration.
 
 ## Options
 
-- `-u`, `--unset` - delete configuration value for given `option`. Don't provide
-  a `value` when using this flag.
+- `-u`, `--unset` - delete configuration value for the given `option`. Don't
+  provide a `value` when employing this flag.
 
 - `--global` - save remote configuration to the global config (e.g.
   `~/.config/dvc/config`) instead of `.dvc/config`.
@@ -59,16 +59,15 @@ manual editing could be used to change the configuration.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Available settings for all remotes
+## Available parameters for all remotes
 
 The following options are available for all remote types:
 
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
-  DVC will recalculate the checksums of files upon download (e.g. `dvc pull`) to
-  make sure that these haven't been modified, or corrupted during download. It
-  may slow down the aforementioned commands. The calculated checksum is compared
-  to the one saved in the corresponding
-  [DVC-file](/doc/user-guide/dvc-file-format).
+  DVC will recalculate the file hashes upon download (e.g. `dvc pull`) to make
+  sure that these haven't been modified, or corrupted during download. It may
+  slow down the aforementioned commands. The calculated hash is compared to the
+  value saved in the corresponding [DVC-file](/doc/user-guide/dvc-file-format).
 
   > Note that this option is enabled on **Google Drive** remotes by default.
 
@@ -76,13 +75,13 @@ The following options are available for all remote types:
   $ dvc remote modify myremote verify true
   ```
 
-## Available settings per storage type
+## Available parameters per storage type
 
-The following are the types of remote storage (protocols) supported:
+The following are the customizable types of remote storage (protocols):
 
 <details>
 
-### Click for Amazon S3 options
+### Click for Amazon S3
 
 By default DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
@@ -182,7 +181,7 @@ these settings, you could use the following options:
   > identifiable by `id` (AWS Canonical User ID), `emailAddress` or `uri`
   > (predefined group).
 
-  > **References**:
+  > **Sources**
   >
   > - [ACL Overview - Permissions](https://docs.aws.amazon.com/AmazonS3/latest/dev/acl-overview.html#permissions)
   > - [Put Object ACL](https://docs.aws.amazon.com/AmazonS3/latest/API/API_PutObjectAcl.html)
@@ -191,7 +190,7 @@ these settings, you could use the following options:
 
 <details>
 
-### Click for S3 API compatible storage options
+### Click for S3 API compatible storage
 
 To communicate with a remote object storage that supports an S3 compatible API
 (e.g. [Minio](https://min.io/),
@@ -221,7 +220,7 @@ For more information about the variables DVC supports, please visit
 
 <details>
 
-### Click for Microsoft Azure Blob Storage options
+### Click for Microsoft Azure Blob Storage
 
 - `url` - remote location URL.
 
@@ -232,7 +231,7 @@ For more information about the variables DVC supports, please visit
 - `connection_string` - connection string.
 
   ```dvc
-  $ dvc remote modify myremote connection_string my-connection-string --local
+  $ dvc remote modify myremote connection_string "my-connection-string" --local
   ```
 
 For more information on configuring Azure Storage connection strings, visit
@@ -246,37 +245,38 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for Google Drive options
+### Click for Google Drive
+
+Please check out
+[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
+a full guide on configuring Google Drives for use as DVC remote storage,
+including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 
 - `url` - remote location URL.
 
   ```dvc
-  $ dvc remote modify myremote url "gdrive://root/my-dvc-root"
+  $ dvc remote modify myremote url gdrive://root/path/to/folder
   ```
 
-- `gdrive_client_id` - Google Project's OAuth 2.0 client id.
+- `gdrive_client_id` - Google Project's OAuth 2.0 **client ID**.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_id my_gdrive_client_id
+  $ dvc remote modify myremote gdrive_client_id <client ID>
   ```
 
-- `gdrive_client_secret` - Google Project's OAuth 2.0 client secret.
+- `gdrive_client_secret` - Google Project's OAuth 2.0 **client secret**.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_client_secret gdrive_client_secret
+  $ dvc remote modify myremote gdrive_client_secret <client secret>
   ```
+
+> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 </details>
 
 <details>
 
-### Click for Google Cloud Storage options
-
-- `projectname` - project name to use.
-
-  ```dvc
-  $ dvc remote modify myremote projectname myproject
-  ```
+### Click for Google Cloud Storage
 
 - `url` - remote location URL.
 
@@ -284,18 +284,51 @@ For more information on configuring Azure Storage connection strings, visit
   $ dvc remote modify myremote url gs://bucket/remote
   ```
 
-- `credentailpath` -
-  [service account credentials](https://cloud.google.com/docs/authentication/production#obtaining_and_providing_service_account_credentials_manually).
+- `projectname` - override or provide a project name to use, if default one is
+  not set.
 
   ```dvc
-  $ dvc remote modify myremote credentialpath /path/to/my/creds/[FILE_NAME].json
+  $ dvc remote modify myremote projectname myproject
   ```
+
+- `credentailpath` - path of the file that contains
+  [service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+  key. See **Accessing data with a service account** section below.
+
+  ```dvc
+  $ dvc remote modify myremote credentailpath "/home/.../project-XXXXXXX.json"
+  ```
+
+**Accessing data with a service account:**
+
+A
+[service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+is a Google account associated with your GCP project and not a specific user.
+Generally, it is intended for scenarios where your application needs to access
+data on its own, e.g. running inside a Compute Engine, CI system, etc.
+
+A service account can be used by providing a service account
+[key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+path to DVC:
+
+```dvc
+$ dvc remote modify myremote credentailpath "/home/.../project-XXXXXXX.json"
+```
+
+Alternatively, `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be set:
+
+```dvc
+$ export GOOGLE_APPLICATION_CREDENTIALS="/home/.../project-XXXXXXX.json"
+```
+
+Ensure the account has read (and write access, if you need to save data) to the
+remote `url` (and data under it) you set up above.
 
 </details>
 
 <details>
 
-### Click for Aliyun OSS options
+### Click for Aliyun OSS
 
 - `oss_key_id` - OSS key id to use to access a remote.
 
@@ -319,7 +352,7 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for SSH options
+### Click for SSH
 
 - `url` - remote location URL.
 
@@ -387,13 +420,76 @@ For more information on configuring Azure Storage connection strings, visit
 
 <details>
 
-### Click for HDFS options
+### Click for HDFS
 
 - `user` - username to use to access a remote.
 
   ```dvc
   $ dvc remote modify myremote user myuser
   ```
+
+</details>
+
+<details>
+
+### Click for HTTP
+
+- `auth` - authentication method to use when accessing a remote. The accepted
+  values are:
+
+  - `basic` -
+    [Basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
+    and `password` (or `ask_password`) parameters should also be configured.
+  - `digest` -
+    [Digest Access Authentication Scheme](https://tools.ietf.org/html/rfc7616).
+    `user` and `password` (or `ask_password`) parameters should also be
+    configured.
+  - `custom` - An additional HTTP header field will be set for all HTTP requests
+    to the remote in the form: `custom_auth_header: password`.
+    `custom_auth_header` and `password` (or `ask_password`) parameters should
+    also be configured.
+
+  ```dvc
+  $ dvc remote modify myremote auth basic
+  ```
+
+- `custom_auth_header` - HTTP header field name to use when the `auth` parameter
+  is set to `custom`.
+
+  ```dvc
+  $ dvc remote modify myremote custom_auth_header My-Header
+  ```
+
+- `user` - username to use when the `auth` parameter is set to `basic` or
+  `digest`. The order in which DVC searches for username:
+
+  1. `user` specified in one of the DVC configs;
+  2. `user` specified in the url(e.g. `http://user@example.com/path`);
+
+  ```dvc
+  $ dvc remote modify myremote user myuser
+  ```
+
+- `password` - password to use for any `auth` method.
+
+  ```dvc
+  $ dvc remote modify myremote --local password mypassword
+  ```
+
+  > Note that the specified password will be inserted into the `.dvc/config`
+  > file. Therefore, it's recommended to configure it using the `--local`
+  > option, which writes it to a Git-ignored config file. (Or use the
+  > `ask_password` parameter instead.)
+
+- `ask_password` - ask each time for the password to use for any `auth` method.
+
+  ```dvc
+  $ dvc remote modify myremote ask_password true
+  ```
+
+  > Note that the `password` parameter takes precedence over `ask_password`. If
+  > `password` is specified, DVC will not prompt the user to enter a password
+  > for this remote.
 
 </details>
 

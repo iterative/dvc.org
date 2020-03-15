@@ -1,50 +1,52 @@
 # get
 
-Download a file or directory from any <abbr>DVC project</abbr> or Git repository
-into the current working directory.
+Download a file or directory tracked by DVC or by Git into the current working
+directory.
 
-> Unlike `dvc import`, this command does not track the downloaded files (does
-> not create a DVC-file).
+> See also our `dvc.api.open()` Python API function.
 
 ## Synopsis
 
 ```usage
-usage: dvc get [-h] [-q | -v] [-o [OUT]] [--rev [REV]] url path
+usage: dvc get [-h] [-q | -v] [-o <path>] [--rev <commit>] url path
 
 positional arguments:
-  url         Location of DVC project or Git repository to download from
-  path        Path to a file or directory within the project or repository
+  url              Location of DVC or Git repository to download from
+  path             Path to a file or directory within the repository
 ```
 
 ## Description
 
 Provides an easy way to download files or directories tracked in any <abbr>DVC
-project</abbr> (e.g. datasets, intermediate results, ML models), or Git
+repository</abbr> (e.g. datasets, intermediate results, ML models), or Git
 repository (e.g. source code, small image/other files). `dvc get` copies the
-target file or directory (`url`/`path`) to the current working directory. (For
-<abbr>DVC repositories</abbr>, it's analogous to `wget`.)
+target file or directory (found at `path` in `url`) to the current working
+directory. (Analogous to `wget`, but for repos.)
 
-Note that this command doesn't require an existing DVC project to run in. It's a
-single-purpose command that can be used out of the box after installing DVC.
+> Note that unlike `dvc import`, this command does not track the downloaded
+> files (does not create a DVC-file). For that reason, this command doesn't
+> require an existing DVC project to run in.
 
-The `url` argument specifies the address of the <abbr>DVC project</abbr> or Git
-repository containing the data source. Both HTTP and SSH protocols are supported
-for online repositories (e.g. `[user@]server:project.git`). `url` can also be a
-local file system path to an "offline" repository (in this case and if it
-doesn't have a default remote set up, instead of downloading, DVC will try to
-copy the target data from the external source project or its
-<abbr>cache</abbr>).
+> See `dvc list` for a way to browse repository contents to find files or
+> directories to download.
+
+The `url` argument specifies the address of the DVC or Git repository containing
+the data source. Both HTTP and SSH protocols are supported for online repos
+(e.g. `[user@]server:project.git`). `url` can also be a local file system path
+to an "offline" repo (if it's a DVC repo without a default remote, instead of
+downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 
 The `path` argument of this command is used to specify the location of the
-target(s) to be downloaded within the source project or repository at `url`. It
-can point to any file or directory in the source project, including
-<abbr>outputs </abbr> tracked by DVC as well as files tracked by Git. Note that
-for the former, data should be specified in one of the
-[DVC-files](/doc/user-guide/dvc-file-format) of the source repository. (In this
-case, a default [DVC remote](/doc/command-reference/remote#description) needs to
-be configured in the project, containing the actual data.)
+target to be downloaded within the source repository at `url`. `path` can
+specify any file or directory in the source repo, including <abbr>outputs</abbr>
+tracked by DVC, as well as files tracked by Git. Note that for DVC repos, the
+target should be found in one of the
+[DVC-files](/doc/user-guide/dvc-file-format) of the project. The project should
+also have a default [DVC remote](/doc/command-reference/remote), containing the
+actual data.
 
-> See `dvc get-url` to download data from other supported URLs.
+> See `dvc get-url` to download data from other supported locations such as S3,
+> SSH, HTTP, etc.
 
 After running this command successfully, the data found in the `url`, `path`
 combination is created in the current working directory, with its original file
@@ -52,18 +54,20 @@ name.
 
 ## Options
 
-- `-o`, `--out` - specify a path (directory and/or file name) to the desired
-  location to place the download file in. The default value (when this option
-  isn't used) is the current working directory (`.`) and original file name. If
-  an existing directory is specified, then the output will be placed inside of
-  it.
+- `-o <path>`, `--out <path>` - specify a path (directory and/or file name) to
+  the desired location to place the download file in. The default value (when
+  this option isn't used) is the current working directory (`.`) and original
+  file name. If an existing directory is specified, then the output will be
+  placed inside of it.
 
-- `--rev` - `url` is expected to represent a Git repository for this option to
-  have an effect. Specific
-  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the repository to download
-  the file or directory from. The tip of the default branch is used by default
-  when this option is not specified.
+- `--rev <commit>` - commit hash, branch or tag name, etc. (any
+  [Git revision](https://git-scm.com/docs/revisions)) of the repository to
+  download the file or directory from. The latest commit in `master` (tip of the
+  default branch) is used by default when this option is not specified.
+
+- `--show-url` - instead of downloading the file or directory, just print the
+  storage location (URL) of the target data. If `path` is a Git-tracked file,
+  this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -89,7 +93,7 @@ model.pkl
 
 Note that the `model.pkl` file doesn't actually exist in the
 [root directory](https://github.com/iterative/example-get-started/tree/master/)
-of the external Git repository. Instead, the corresponding DVC-file
+of the external Git repo. Instead, the corresponding DVC-file
 [train.dvc](https://github.com/iterative/example-get-started/blob/master/train.dvc)
 is found, that specifies `model.pkl` in its outputs (`outs`). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
@@ -119,15 +123,33 @@ $ ls
 install.sh
 ```
 
+## Example: Getting the storage URL of a DVC-tracked file
+
+We can use `dvc get --show-url` to get the actual location where the final model
+file from our
+[get started example repo](https://github.com/iterative/example-get-started) is
+stored:
+
+```dvc
+$ dvc get --show-url \
+          https://github.com/iterative/example-get-started model.pkl
+https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
+```
+
+`remote.dvc.org/get-started` is an HTTP
+[DVC remote](/doc/command-reference/remote), whereas
+`662eb7f64216d9c2c1088d0a5e2c6951` is the file hash.
+
 ## Example: Compare different versions of data or model
 
-`dvc get` has the `--rev` option, to specify which version of the repository to
-download a <abbr>data artifact</abbr> from. It also has the `--out` option to
-specify the location to place the artifact within the workspace. Combining these
-two options allows us to do something we can't achieve with the regular
-`git checkout` + `dvc checkout` process – see for example the
+`dvc get` provides the `--rev` option to specify which
+[commit](https://git-scm.com/docs/revisions) of the repository to download a
+<abbr>data artifact</abbr> from. It also has the `--out` option to specify the
+location to place the artifact within the workspace. Combining these two options
+allows us to do something we can't achieve with the regular `git checkout` +
+`dvc checkout` process – see for example the
 [Get Older Data Version](/doc/get-started/older-versions) chapter of our _Get
-Started_ section.
+Started_.
 
 Let's use the
 [get started example repo](https://github.com/iterative/example-get-started)
@@ -135,34 +157,32 @@ again, like in the previous example. But this time, clone it first to see
 `dvc get` in action inside a <abbr>DVC project</abbr>.
 
 ```dvc
-$ git clone git@github.com:iterative/example-get-started.git
+$ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
 
-If you are familiar with our [Get Started](/doc/get-started) example, you may
-know that each chapter has a corresponding
-[tag](https://github.com/iterative/example-get-started/tags). Tag `7-train` is
-where we train a first version of the example model, and tag `9-bigrams-model`
-has an improved model (trained using bigrams). What if we wanted to have both
-versions of the model "checked out" at the same time? `dvc get` provides an easy
-way to do this:
+If you are familiar with our [Get Started](/doc/get-started) project (used in
+these examples), you may remember that the chapter where we train a first
+version of the model corresponds to the the `baseline-experiment` tag in the
+repo. Similarly `bigrams-experiment` points to an improved model (trained using
+bigrams). What if we wanted to have both versions of the model "checked out" at
+the same time? `dvc get` provides an easy way to do this:
 
 ```dvc
-$ dvc get . model.pkl --rev 7-train --out model.monograms.pkl
+$ dvc get . model.pkl --rev baseline-experiment
+                      --out model.monograms.pkl
 ```
 
 > Notice that the `url` provided to `dvc get` above is `.`. `dvc get` accepts
-> file system paths as a "URL" to the repository to get the data from for edge
-> cases.
+> file system paths as the "URL" to the source repo, for edge cases.
 
 The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with
-
-`-o model.bigrams.pkl` and `--rev 9-bigrams-model` or even without `--rev`
-(since it's the latest version anyway). In fact, in this case using `dvc pull`
-with the corresponding [DVC-files](/doc/user-guide/dvc-file-format) should
-suffice, downloading the file as just `model.pkl`. We can then rename it to make
-its version explicit:
+`-o model.bigrams.pkl` and `--rev bigrams-experiment` (or even without `--rev`
+since that tag has the latest model version anyway). In fact, in this case using
+`dvc pull` with the corresponding [DVC-files](/doc/user-guide/dvc-file-format)
+should suffice, downloading the file as just `model.pkl`. We can then rename it
+to make its variant explicit:
 
 ```dvc
 $ dvc pull train.dvc

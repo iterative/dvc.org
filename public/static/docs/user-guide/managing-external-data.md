@@ -10,36 +10,35 @@ for DVC to control data externally.
 
 ## Description
 
-You can take under DVC control files on an external storage with `dvc add` or
-specify external files as outputs for
-[DVC-files](/doc/user-guide/dvc-file-format) created by `dvc run` (stage files)
-DVC will track changes in those files and will reflect so in your pipeline
-[status](/doc/command-reference/status). Currently, the following types
-(protocols) of external outputs (and cache) are supported:
+DVC can track files on an external storage with `dvc add` or specify external
+files as outputs for [DVC-files](/doc/user-guide/dvc-file-format) created by
+`dvc run` (stage files). External outputs are considered part of the <abbr>DVC
+project</abbr>. DVC will track changes in them and reflect this in the output of
+`dvc status`.
 
-- Local files and directories outside of your <abbr>workspace</abbr>;
-- SSH;
-- Amazon S3;
-- Google Cloud Storage;
+Currently, the following types (protocols) of external outputs (and cache) are
+supported:
+
+- Local files and directories outside of your <abbr>workspace</abbr>
+- SSH
+- Amazon S3
+- Google Cloud Storage
 - HDFS
 
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
 
-In order to specify an external output for a stage file use the usual `-o` and
-`-O` options with the `dvc run` command, but with the external path or URL
-pointing to your desired files. For cached external outputs (specified using
-`-o`) you will need to
-[setup an external cache](/doc/command-reference/config#cache) location that
-will be used by DVC to store versions of your external file. Non-cached external
-outputs (specified using `-O`) do not require an external <abbr>cache</abbr> to
-be setup.
+In order to specify an external output for a stage file, use the usual `-o` or
+`-O` options of the `dvc run` command, but with the external path or URL to the
+file in question. For <abbr>cached</abbr> external outputs (`-o`) you will need
+to [setup an external cache](/doc/command-reference/config#cache) in the same
+remote location. Non-cached external outputs (`-O`) do not require an external
+cache to be setup.
 
 > Avoid using the same remote location that you are using for `dvc push`,
 > `dvc pull`, `dvc fetch` as external cache for your external outputs, because
-> it may cause possible checksum overlaps. Checksum for some data file on an
-> external storage can potentially collide with checksum generated locally for a
-> different file, with a different content.
+> it may cause possible file hash overlaps: The hash value of a data file in
+> external storage could collide with that generated locally for another file.
 
 ## Examples
 

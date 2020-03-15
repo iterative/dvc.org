@@ -11,8 +11,8 @@ usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R]
                   [targets [targets ...]]
 
 positional arguments:
-  targets          DVC-files to commit. Optional. (Finds all
-                   DVC-files in the workspace by default.)
+  targets          DVC-files to commit. Optional. (Finds all DVC-files
+                   in the workspace by default.)
 ```
 
 ## Description
@@ -21,7 +21,10 @@ The `dvc commit` command is useful for several scenarios where a dataset is
 being changed: when a [stage](/doc/command-reference/run) or
 [pipeline](/doc/command-reference/pipeline) is in development, when one wishes
 to run commands outside the control of DVC, or to force DVC-file updates to save
-time tying stages or a pipeline.
+time tying stages or a pipeline. These scenarios are further detailed below.
+
+💡 For convenience, a Git hook is available to remind you to `dvc commit` when
+needed after a `git commit`. See `dvc install` for more details.
 
 - Code or data for a stage is under active development, with rapid iteration of
   code, configuration, or data. Run DVC commands (`dvc run`, `dvc repro`, and
@@ -42,24 +45,24 @@ time tying stages or a pipeline.
   stages. `dvc commit` can help avoid having to reproduce a pipeline in these
   cases by forcing the update of the DVC-files.
 
-Let's take a look at what is happening in the fist scenario closely. Normally
+Let's take a look at what is happening in the first scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
 <abbr>cache</abbr> after creating a DVC-file. What _commit_ means is that DVC:
 
-- Computes a checksum for the file/directory.
-- Enters the checksum and file name into the DVC-file.
+- Computes a hash for the file/directory.
+- Enters the hash value and file name into the DVC-file.
 - Tells Git to ignore the file/directory (adding an entry to `.gitignore`).
   (Note that if the <abbr>project</abbr> was initialized with no SCM support
   (`dvc init --no-scm`), this does not happen.)
-- Adds the file/directory or to the cache.
+- Adds the file/directory to the cache.
 
 There are many cases where the last step is not desirable (for example rapid
 iterations on an experiment). The `--no-commit` option prevents the last step
 from occurring (on the commands where it's available), saving time and space by
-not storing unwanted <abbr>data artifacts</abbr>. Checksums is still computed
-and added to the DVC-file, but the actual data file is not saved in the cache.
-This is where the `dvc commit` command comes into play. It performs that last
-step (saving the data in cache).
+not storing unwanted <abbr>data artifacts</abbr>. The file hash is still
+computed and added to the DVC-file, but the actual data file is not saved in the
+cache. This is where the `dvc commit` command comes into play. It performs that
+last step (saving the data in cache).
 
 Note that it's best to avoid the last two scenarios. They essentially
 force-update the [DVC-files](/doc/user-guide/dvc-file-format) and save data to
@@ -68,17 +71,17 @@ reproducibility in those cases.
 
 ## Options
 
-- `-d`, `--with-deps` - one or more `targets` should be specified for this
-  option to have effect. Determines files to commit by tracking dependencies to
-  the target DVC-files (stages). By traversing all stage dependencies, DVC
-  searches backward from the target stages in the corresponding pipelines. This
-  means DVC will not commit files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - determines files to commit by tracking dependencies to
+  the target DVC-files (stages). If no `targets` are provided, this option is
+  ignored. By traversing all stage dependencies, DVC searches backward from the
+  target stages in the corresponding pipelines. This means DVC will not commit
+  files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain one or more directories
-  for this option to have effect. Determines the files to commit by searching
-  each target directory and its subdirectories for DVC-files to inspect.
+- `-R`, `--recursive` - determines the files to commit by searching each target
+  directory and its subdirectories for DVC-files to inspect. If there are no
+  directories among the `targets`, this option is ignored.
 
-- `-f`, `--force` - commit data even if checksums for dependencies or outputs
+- `-f`, `--force` - commit data even if hash values for dependencies or outputs
   did not change.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
@@ -128,7 +131,7 @@ $ dvc pull --all-branches --all-tags
 ## Example: Rapid iterations
 
 Sometimes we want to iterate through multiple changes to configuration, code, or
-data, trying multiple options to improve the output of a stage. To avoid filling
+data, trying different ways to improve the output of a stage. To avoid filling
 the <abbr>cache</abbr> with undesired intermediate results, we can run a single
 stage with `dvc run --no-commit`, or reproduce an entire pipeline using
 `dvc repro --no-commit`. This prevents data from being pushed to cache. When
@@ -137,17 +140,18 @@ files in the cache.
 
 In the `featurize.dvc` stage, `src/featurize.py` is executed. A useful change to
 make is adjusting a parameter to `CountVectorizer` in that script. Namely,
-adjusting the `max_features` option in this line changes the resulting model:
+adjusting the `max_features` value in the line below changes the resulting
+model:
 
 ```python
 bag_of_words = CountVectorizer(stop_words='english',
             max_features=6000, ngram_range=(1, 2))
 ```
 
-This option not only changes the trained model, it also introduces a change that
-would cause the `featurize.dvc`, `train.dvc` and `evaluate.dvc` stages to
-execute if we ran `dvc repro`. But if we want to try several values for this
-option and save only the best result to the cache, we can execute as so:
+This edit introduces a change that would cause the `featurize.dvc`, `train.dvc`
+and `evaluate.dvc` stages to execute if we ran `dvc repro`. But if we want to
+try several values for `max_features` and save only the best result to the
+cache, we can run it like this:
 
 ```dvc
 $ dvc repro --no-commit evaluate.dvc
@@ -193,7 +197,7 @@ wdir: .
 
 To verify this instance of `model.pkl` is not in the cache, we must know the
 path to the cached file. In the cache directory, the first two characters of the
-checksum are used as a subdirectory name, and the remaining characters are the
+hash value are used as a subdirectory name, and the remaining characters are the
 file name. Therefore, had the file been committed to the cache, it would appear
 in the directory `.dvc/cache/70`. Let's check:
 
@@ -255,7 +259,7 @@ that both Git and DVC recognize a change was made.
 
 If we ran `dvc repro` at this point, this pipeline would be reproduced. But
 since the change was inconsequential, that would be a waste of time and CPU.
-That's especially critical if the corresponding stages lots of resources to
+That's especially critical if the corresponding stages take lots of resources to
 execute.
 
 ```dvc

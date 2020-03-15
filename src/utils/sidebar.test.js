@@ -88,7 +88,7 @@ describe('SidebarMenu/helper', () => {
           slug: 'item-name',
           tutorials: {
             katacoda:
-              'https://www.katacoda.com/loodse/courses/dvc/dvc-01-install'
+              'https://www.katacoda.com/dvc/courses/get-started/initialize'
           }
         }
       ]
@@ -99,7 +99,7 @@ describe('SidebarMenu/helper', () => {
           source: '/static/docs/item-name.md',
           tutorials: {
             katacoda:
-              'https://www.katacoda.com/loodse/courses/dvc/dvc-01-install'
+              'https://www.katacoda.com/dvc/courses/get-started/initialize'
           },
           prev: undefined,
           next: undefined

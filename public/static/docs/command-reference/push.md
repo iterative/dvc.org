@@ -1,12 +1,12 @@
 # push
 
-Uploads files and directories under DVC control to the
-[remote storage](/doc/command-reference/remote#description).
+Upload tracked files or directories to
+[remote storage](/doc/command-reference/remote).
 
 ## Synopsis
 
 ```usage
-usage: dvc push [-h] [-q | -v] [-j JOBS] [--show-checksums]
+usage: dvc push [-h] [-q | -v] [-j JOBS]
                 [-r REMOTE] [-a] [-T] [-d] [-R]
                 [targets [targets ...]]
 
@@ -17,9 +17,9 @@ positional arguments:
 
 ## Description
 
-The `dvc push` command is the twin pair to the `dvc pull` command, and together
-they are the means for uploading and downloading data to and from remote
-storage, respectively.
+The `dvc pull` and `dvc push` commands are the means for uploading and
+downloading data to and from remote storage. These commands are analogous to
+`git pull` and `git push`, respectively.
 [Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results, models,
 [metrics](/doc/command-reference/metrics#description), etc) remotely (S3, SSH,
@@ -29,31 +29,32 @@ The `dvc push` command allows one to upload data to remote storage. It doesn't
 save any changes in the code or DVC-files. Those should be saved by using
 `git commit` and `git push`.
 
+💡 For convenience, a Git hook is available to automate running `dvc push` after
+`git push`. See `dvc install` for more details.
+
 Under the hood a few actions are taken:
 
 - The push command by default uses all
-  [DVC-files](/doc/user-guide/dvc-file-format in the <abbr>workspace</abbr>. The
-  command line options listed below will either limit or expand the set of
+  [DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>.
+  The command options listed below will either limit or expand the set of
   DVC-files to consult.
 
 - For each <abbr>output</abbr> referenced from each selected DVC-file, DVC finds
-  a corresponding entry in the<abbr>cache</abbr>. DVC checks whether the entry
+  a corresponding entry in the <abbr>cache</abbr>. DVC checks whether the entry
   exists in the remote. From this DVC gathers a list of files missing from the
   remote storage.
 
 - Upload the cache files missing from remote storage, if any, to the remote.
 
 The DVC `push` command always works with a remote storage, and it is an error if
-none are specified on the command line nor in the configuration. If a
-`--remote REMOTE` option is not specified, then the default remote, configured
-with the `core.config` config option, is used. See `dvc remote`, `dvc config`
-and this [example](/doc/get-started/configure) for more information on how to
-configure a remote.
+none are specified on the command line nor in the configuration. The default
+remote is used (see `dvc config core.remote`) unless the `--remote` option is
+used. See `dvc remote` for more information on how to configure a remote.
 
 With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
 only the files (or directories) that are new in the local repository to remote
-storage. It will not upload files associated with earlier versions or branches
-of the <abbr>project</abbr> directory, nor will it upload files that have not
+storage. It will not upload files associated with earlier commits in the
+<abbr>repository</abbr> (if using Git), nor will it upload files that have not
 changed.
 
 The `dvc status -c` command can list files tracked by DVC that are new in the
@@ -68,34 +69,33 @@ to push.
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` specifies which remote to push from (see
-  `dvc remote list`). The value for `REMOTE` is a name defined using
-  `dvc remote`. If the option is not specified, then the default remote
-  (configured with the `core.config` config option) is used.
-
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
-  in all Git branches of the project repository (if using Git). It's useful if
-  branches are used to track experiments or project checkpoints.
+  in all Git branches instead of just those present in the current workspace.
+  It's useful if branches are used to track experiments or project checkpoints.
 
 - `-T`, `--all-tags` - the same as `-a`, `--all-branches`, but Git tags are used
   to save different experiments or project checkpoints. Note that both options
   can be combined, for example using the `-aT` flag.
 
-- `-d`, `--with-deps` - one or more `targets` should be specified for this
-  option to have effect. Determines files to upload by tracking dependencies to
-  the target DVC-files (stages). By traversing all stage dependencies, DVC
-  searches backward from the target stages in the corresponding pipelines. This
-  means DVC will not push files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - determines files to upload by tracking dependencies to
+  the target DVC-files (stages). If no `targets` are provided, this option is
+  ignored. By traversing all stage dependencies, DVC searches backward from the
+  target stages in the corresponding pipelines. This means DVC will not push
+  files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain one or more directories
-  for this option to have effect. Determines the files to push by searching each
-  target directory and its subdirectories for DVC-files to inspect.
+- `-R`, `--recursive` - determines the files to push by searching each target
+  directory and its subdirectories for DVC-files to inspect. If there are no
+  directories among the `targets`, this option is ignored.
 
-- `-j JOBS`, `--jobs JOBS` - specifies number of jobs to run simultaneously
-  while uploading files to the remote. The effect is to control the number of
-  files uploaded simultaneously. Default is `4 * cpu_count()`. For example with
-  `-j 1` DVC uploads one file at a time, with `-j 2` it uploads two at a time,
-  and so forth. For SSH remotes default is set to 4.
+- `-r <name>`, `--remote <name>` - name of the
+  [remote storage](/doc/command-reference/remote) to push from (see
+  `dvc remote list`).
+
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the uploading of files from the remote. The default value is
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  may improve the total download speed if a combination of small and large files
+  are being fetched.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -134,8 +134,8 @@ $ dvc push data.zip.dvc
 
 ## Example: With dependencies
 
-Demonstrating the `--with-deps` flag requires a larger example. First, assume a
-[pipeline](/doc/command-reference/pipeline) has been setup with these
+Demonstrating the `--with-deps` option requires a larger example. First, assume
+a [pipeline](/doc/command-reference/pipeline) has been setup with these
 [stages](/doc/command-reference/run):
 
 ```dvc
@@ -188,7 +188,7 @@ and searched backwards through the pipeline for data files to upload. Because
 the `model.p.dvc` stage occurs later, its data was not pushed.
 
 Then we ran `dvc push` specifying the last stage, `model.p.dvc`, and its data
-was uploaded. Finally, we ran `dvc push` and `dvc status` with no options to
+was uploaded. Finally, we ran `dvc push` and `dvc status` with no flags to
 double check that all data had been uploaded.
 
 ## Example: What happens in the cache
@@ -245,8 +245,13 @@ $ tree ../vault/recursive
 ```
 
 The directory `.dvc/cache` is the local cache, while `../vault/recursive` is the
-remote storage – a "local remote" in this case. This listing shows the cache
-having more files in it than the remote – which is what the `new` state means.
+[remote storage](/doc/command-reference/remote) – a "local remote" in this case.
+This listing shows the cache having more files in it than the remote – which is
+what the `new` state means.
+
+> Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> for more info.
 
 Next we can upload part of the data from the cache to the remote using the
 command `dvc push --with-deps <stage>.dvc`. Remember that `--with-deps` searches

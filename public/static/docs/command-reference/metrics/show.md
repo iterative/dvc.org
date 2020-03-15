@@ -1,17 +1,17 @@
 # metrics show
 
-Find and print [project metrics](/doc/command-reference/metrics#description),
-with optional formatting.
+Print [project metrics](/doc/command-reference/metrics), with optional
+formatting.
 
 ## Synopsis
 
 ```usage
-usage: dvc metrics show [-h] [-q | -v] [-t TYPE] [-x XPATH] [-a] [-T] [-R]
+usage: dvc metrics show [-h] [-q | -v]
+                        [-t TYPE] [-x XPATH] [-a] [-T] [-R]
                         [targets [targets ...]]
 
 positional arguments:
-  targets               Metric files or directories (see -R) to show (leave
-                        empty to display all)
+  targets               Metric files or directories (see -R) to show
 ```
 
 ## Description
@@ -22,47 +22,45 @@ show those specific metric files instead. With the `-a` or`-T` options, this
 command shows the different metrics values across all Git branches or tags,
 respectively.
 
-The optional `targets` argument can contain several metric files. With the `-R`
-option, a target can even be a directory, so that DVC recursively shows all
-metric files in it.
+The optional `targets` argument can contain one or more metric files. With the
+`-R` option, some of the target can even be directories, so that DVC recursively
+shows all metric files inside.
 
-Providing a `type` (`-t` option) overwrites the full metric specification (both
+Providing a `type` (`-t` option) overrides the full metric specification (both
 `type` and `xpath` fields) defined in the
-[DVC-file](/doc/user-guide/dvc-file-format) (usually set originally with the
-`dvc metrics modify` command).
+[DVC-file](/doc/user-guide/dvc-file-format) (with `dvc metrics modify`,
+typically).
 
 If `type` (via `-t`) is not specified and only `xpath` (`-x` option) is, only
-the `xpath` field is overwritten in its DVC-file. (DVC will first try to read
+the `xpath` field from the DVC-file is overridden. (DVC will first try to read
 `type` from the DVC-file, but it can be automatically detected by the file
 extension.)
 
-> Alternatively, see `dvc metrics modify` command to learn how to apply `-t` and
-> `-x` permanently.
+> See `dvc metrics modify` to learn how to apply `-t` and `-x` permanently.
+
+An alternative way to display metrics is the `dvc metrics diff` command, which
+compares them with a previous version.
 
 ## Options
 
-- `-t`, `--type` - specify a type of the metric file. Accepted values are:
-  `raw`, `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be saved into the
-  corresponding DVC-file, and used by `dvc metrics show` to determine how to
-  handle displaying metrics.
+- `-t`, `--type` - specify a type for the metric file. Accepted values are:
+  `raw` (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be used to
+  determine how to parse and format metics for display.
 
-  `raw` is the default when no type is provided. It means that no additional
-  parsing is applied, and `--xpath` is ignored. `htsv`/`hcsv` are the same as
-  `tsv`/`csv`, but the values in the first row of the file will be used as the
-  field names and should be used to address columns in the `--xpath` option.
+  `raw` means that no additional parsing is applied, and `--xpath` is ignored.
+  `htsv`/`hcsv` are the same as `tsv`/`csv`, but the values in the first row of
+  the file will be used as the field names and should be used to address columns
+  in the `--xpath` option.
 
-  This option along with `--xpath` below takes precedence over the `type` and
-  `xpath` specified in the corresponding DVC file. If this parameter is not
-  given, the type can be detected by the file extension automatically if the
-  type is supported. If any other value is specified, it is ignored and
-  defaulted back to `raw`.
+  This option will override `type` and `xpath` defined in the corresponding
+  DVC-file. If no `type` is provided or found in the DVC-file, DVC will try to
+  detect it based on file extension.
 
 - `-x`, `--xpath` - specify a path within a metric file to get a specific metric
   value. Should be used if the metric file contains multiple numbers and you
-  need to get a only one of them. Only a single path is allowed. It will be
-  saved into the corresponding DVC-file, and used by `dvc metrics show` to
-  determine how to handle displaying metrics. The accepted value depends on the
-  metric file type (`--type` option):
+  want to use only one of them. Only a single path is allowed. It will override
+  `xpath` defined in the corresponding DVC-file. The accepted value depends on
+  the metric file type (`--type` option):
 
   - For `json` - see [JSONPath spec](https://goessner.net/articles/JsonPath/) or
     [jsonpath-ng](https://github.com/h2non/jsonpath-ng) for available options.
@@ -82,17 +80,17 @@ extension.)
   overwrite it for the current command run only – It may fail to produce any
   results or parse files that are not in a corresponding format in this case.
 
-- `-a`, `--all-branches` - get and print metric file contents across all Git
-  branches. It can be used to compare different experiments.
+- `-a`, `--all-branches` - print metric file contents in all Git branches
+  instead of just those present in the current workspace. It can be used to
+  compare different experiments.
 
-- `-T`, `--all-tags` - get and print metric file contents across all Git tags.
-  Similar to `-a` above. Note that both options can be combined, for example
-  using the `-aT` flag.
+- `-T`, `--all-tags` - print metric file contents in all Git tags. Similar to
+  `-a` above. Note that both options can be combined, for example using the
+  `-aT` flag.
 
-- `-R`, `--recursive` - `targets` is expected to contain one or more directories
-  for this option to have effect. Determines the metric files to show by
-  searching each target directory and its subdirectories for DVC-files to
-  inspect.
+- `-R`, `--recursive` - determines the metric files to show by searching each
+  target directory and its subdirectories for DVC-files to inspect. If there are
+  no directories among the `targets`, this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

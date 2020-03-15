@@ -6,8 +6,8 @@ command and execute the command.
 ## Synopsis
 
 ```usage
-usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
-               [-m METRICS] [-M METRICS_NO_CACHE] [-f FILE] [-c CWD]
+usage: dvc run [-h] [-q | -v] [-d <path>] [-o <path>] [-O <path>]
+               [-m <path>] [-M <path>] [-f <filename>] [-c <path>]
                [-w WDIR] [--no-exec] [-y] [--overwrite-dvcfile]
                [--ignore-build-cache] [--remove-outs] [--no-commit]
                [--always-changed]
@@ -26,8 +26,8 @@ options) DVC can later connect each stage by building a dependency graph
 ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)). This graph is
 used by DVC to restore a full data [pipeline](/doc/command-reference/pipeline).
 
-The remaining terminal input provided to `dvc run` after the options (`-`/`--`
-arguments) will become the required `command` argument. Please wrap the
+The remaining terminal input provided to `dvc run` after the command options
+(`-`/`--` flags) will become the required `command` argument. Please wrap the
 `command` with `"` quotes if there are special characters in it like `|` (pipe)
 or `<`, `>` (redirection) that would otherwise apply to `dvc run` itself e.g.
 `dvc run -d script.sh "./script.sh > /dev/null 2>&1"`. Use single quotes `'`
@@ -35,15 +35,20 @@ instead of `"` to wrap the `command` if there are environment variables in it,
 that you want to be evaluated dynamically. E.g.
 `dvc run -d script.sh './myscript.sh $MYENVVAR'`
 
-Unless the `-f` options is used, by default the DVC-file name generated is
-`<file>.dvc`, where `<file>` is file name of the first output (`-o`, `-O`, `-m`,
-or `-M` option). If neither `-f`, nor outputs are specified, the stage name
-defaults to `Dvcfile`.
-
 Since `dvc run` provides a way to build a dependency graph using dependencies
 and outputs to connect different stages, it checks the graph's integrity before
 creating a new stage. For example, for every output there should be only one
 stage that explicitly specifies it. There should be no cycles, etc.
+
+Unless the `-f` options is used, the stage file (DVC-file) is generated in the
+current working directory and named `<file>.dvc`, where `<file>` is file name of
+the first output (`-o`, `-O`, `-m`, or `-M` option). If neither `-f` nor outputs
+are specified, the file name defaults to `Dvcfile`.
+
+Note that `dvc run` executes the given `command` in order to check its validity
+and to write the defined outputs, unless the same `dvc run` command has already
+been run in this workspace (meaning an identical stage file already exists, and
+its outputs correspond to the stored file hash values).
 
 Note that `dvc repro` provides an interface to check state and reproduce this
 graph (pipeline) later. This concept is similar to the one of the
@@ -74,10 +79,10 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 
 ## Options
 
-- `-d`, `--deps` - specify a file or a directory the stage depends on. Multiple
-  dependencies can be specified like this: `-d data.csv -d process.py`. Usually,
-  each dependency is a file or a directory with data, or a code file, or a
-  configuration file. DVC also supports certain
+- `-d <path>`, `--deps <path>` - specify a file or a directory the stage depends
+  on. Multiple dependencies can be specified like this:
+  `-d data.csv -d process.py`. Usually, each dependency is a file or a directory
+  with data, or a code file, or a configuration file. DVC also supports certain
   [external dependencies](/doc/user-guide/external-dependencies).
 
   DVC builds a dependency graph connecting different stages with each other.
@@ -88,40 +93,40 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   > Note that a DVC-file without dependencies is considered always changed, so
   > `dvc repro` always executes it.
 
-- `-o`, `--outs` - specify a file or directory that is the result of running the
-  `command`. Multiple outputs can be specified: `-o model.pkl -o output.log`.
-  DVC builds a dependency graph (pipeline) to connect different stages with each
-  other based on this list of outputs and dependencies (see `-d`). DVC takes all
-  output files and directories under its control and puts them into the cache
-  (this is similar to what's happening when you use `dvc add`).
+- `-o <path>`, `--outs <path>` - specify a file or directory that is the result
+  of running the `command`. Multiple outputs can be specified:
+  `-o model.pkl -o output.log`. DVC builds a dependency graph (pipeline) to
+  connect different stages with each other based on this list of outputs and
+  dependencies (see `-d`). DVC tracks all output files and directories and puts
+  them into the cache (this is similar to what's happening when you use
+  `dvc add`).
 
-- `-O`, `--outs-no-cache` - the same as `-o` except outputs are not put
-  automatically under DVC control. It means that they are not cached, and it's
-  up to a user to save and version control them. This is useful if the outputs
-  are small enough to be put into Git control, or if these files are not of
-  future interest.
+- `-O <path>`, `--outs-no-cache <path>` - the same as `-o` except that outputs
+  are not tracked by DVC. It means that they are not cached, and it's up to a
+  user to save and version control them. This is useful if the outputs are small
+  enough to be tracked by Git directly, or if these files are not of future
+  interest.
 
-- `-m`, `--metrics` - specify a metric type of output. This option behaves like
-  `-o` but also adds `metric: true` in the output record of the resulting stage
-  file. Metrics are usually small, human readable files (e.g. JSON or CSV) with
-  numeric values or other information that describes a model (or any other
-  regular output). See `dvc metrics` to learn more about using metrics.
+- `-m <path>`, `--metrics <path>` - specify a metric type of output. This option
+  behaves like `-o` but also adds `metric: true` in the output record of the
+  resulting stage file. Metrics are usually small, human readable files (e.g.
+  JSON or CSV) with numeric values or other information that describes a model
+  (or any other regular output). See `dvc metrics` to learn more about using
+  metrics.
 
-- `-M`, `--metrics-no-cache` - the same as `-m` except files are not put
-  automatically under DVC control. It means that they are not cached, and it's
-  up to a user to save and version control them. This is typically desirable
-  with metric files, because they are small enough to be put into Git control.
-  See also the difference between `-o` and `-O`.
+- `-M <path>`, `--metrics-no-cache <path>` - the same as `-m` except that files
+  are not tracked by DVC. It means that they are not cached, and it's up to a
+  user to save and version control them. This is typically desirable with metric
+  files, because they are small enough to be tracked by Git directly. See also
+  the difference between `-o` and `-O`.
 
-- `-f`, `--file` - specify stage file name. By default the DVC-file name
-  generated is `<file>.dvc`, where `<file>` is file name of the first output
-  (`-o`, `-O`, `-m`, or `-M` option). By default, The stage file is placed in
-  the same directory where `dvc run` is used, but `-f` can be used to change
-  this location, by including a path in the provided value (e.g.
-  `-f stages/stage.dvc`).
+- `-f <filename>`, `--file <filename>` - specify a path and/or file name for the
+  stage file generated by this command (e.g. `-f stages/stage.dvc`). This
+  overrides the default file name: `<file>.dvc`, where `<file>` is the file name
+  of the first output or metric.
 
-- `-c`, `--cwd` (_deprecated_) - Use `-f` and `-w` to change the name and
-  location (working directory) of a stage file.
+- `-c <path>`, `--cwd <path>` (_deprecated_) - Use `-f` and `-w` to change the
+  name and location (working directory) of a stage file.
 
 - `-w`, `--wdir` - specifies a working directory for the `command` to run in.
   `dvc run` expects that dependencies, outputs, metric files are specified
@@ -131,10 +136,10 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   `command`.
 
 - `--no-exec` - create a stage file, but do not execute the `command` defined in
-  it, nor take dependencies or outputs under DVC control. In the DVC-file
-  contents, the `md5` hash sums will be empty; They will be populated the next
-  time this stage is actually executed. This is useful if, for example, you need
-  to build a pipeline (dependency graph) first, and then run it all at once.
+  it, nor track dependencies or outputs with DVC. In the DVC-file contents, the
+  file hash values will be empty; They will be populated the next time this
+  stage is actually executed. This is useful if, for example, you need to build
+  a pipeline (dependency graph) first, and then run it all at once.
 
 - `-y`, `--yes` (_deprecated_) - See `--overwrite-dvcfile` below.
 
@@ -142,18 +147,14 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   determined by the logic described in the `-f` option) without asking for
   confirmation.
 
-- `--ignore-build-cache` - This options has an effect if an equivalent stage
-  file exists (same dependencies, outputs, and `command` to execute), that has
-  been already executed, and is up to date. In this case, `dvc run` won't
-  normally execute the `command` again. The exception is when the existing stage
-  is considered always changed (see `--always-changed` option). This option
-  gives a way to forcefully execute the `command` anyway. Useful if the
+- `--ignore-build-cache` - forcefully execute the `command` again, even if the
+  same `dvc run` command has already been run in this workspace. Useful if the
   command's code is non-deterministic (meaning it produces different outputs
   from the same list of inputs).
 
 - `--remove-outs` (_deprecated_) - remove stage outputs before executing the
   `command`. If `--no-exec` specified outputs are removed anyway. See
-  `dvc remove` as well for more details. This is the default behavior.
+  `dvc remove` as well for more details. **This is the default behavior.**
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
   entry is added to `.dvc/state`, while nothing is added to the cache.
@@ -165,8 +166,8 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   `dvc status` will report it as `always changed` and `dvc repro` will always
   execute it.
 
-  > Note that a DVC-file without dependencies is considered always changed, so
-  > this option has no effect in that case.
+  > Note that DVC-files without dependencies are automatically considered
+  > "always changed", so this option has no effect in those cases.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -177,8 +178,9 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 
 ## Examples
 
-A trivial example to play with, try different set of options to see how they
-work. You don't need any actual data or scripts to play with this example:
+A first example to play with is to try the different command options, to see
+what they do. No pre-existing data or source code is needed, as we can use
+placeholders and in-line commands directly in `dvc run`:
 
 ```dvc
 $ mkdir example && cd example
@@ -186,14 +188,13 @@ $ git init
 $ dvc init
 $ mkdir data
 $ dvc run -d data -o metric -f metric.dvc "echo '1' >> metric"
-
 Running command:
-  echo '1' >> metric
-Saving information to 'metric.dvc'.
+	echo '1' >> metric
+WARNING: 'data' is empty.
 
-To track the changes with git run:
+To track the changes with git, run:
 
-  git add .gitignore metric.dvc
+	git add .gitignore metric.dvc
 ```
 
 > See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the

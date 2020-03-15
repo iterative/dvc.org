@@ -37,8 +37,9 @@ Then, a simple command pushes files from your cache to the cloud:
 $ dvc push
 ```
 
-The command does not push all cached files, but only the ones that belong to the
-currently active Git repository and branch.
+The command does not push all cached files, but only the ones currently
+references in the <abbr>workspace</abbr> (in the _working tree_ of the Git
+repo).
 
 For example, in this tutorial 16 data files were created and only 9 will be
 pushed because the rest of the data files belong to different branches like
@@ -50,14 +51,17 @@ In order to reuse your data files, a colleague can pull data the same way from
 the master branch:
 
 ```dvc
-$ git clone https://github.com/dmpetrov/new_tag_classifier.git
-$ dvc pull
+$ git clone https://github.com/iterative/example-get-started.git
+$ cd example-get-started
+$ dvc pull data/data.xml.dvc prepare.dvc
 ```
 
-After executing this command, all the data files will be in the right place. You
-can confirm this by trying to reproduce the default goal:
+After running `dvc pull` above, all the data files related to the
+['prepare' stage](https://github.com/iterative/example-get-started/blob/master/prepare.dvc)
+in that repo should be in the right place. You can confirm this by trying to
+reproduce the default goal:
 
 ```dvc
-# Nothing to reproduce:
-$ dvc repro
+$ dvc repro prepare.dvc
+Data and pipelines are up to date.
 ```

@@ -77,7 +77,7 @@ Please use regular Git commands to download code and DVC-files from your Git
 servers. For example:
 
 ```dvc
-$ git clone https://github.com/myaccount/myproject.git
+$ git clone https://github.com/example/project.git
 $ cd myproject
 ```
 

@@ -1,47 +1,53 @@
 # diff
 
-Show changes between versions of the <abbr>DVC project</abbr>. It can be
-narrowed down to specific target files and directories under DVC control.
-
-> This command requires that the project is a [Git](https://git-scm.com/)
-> repository.
+Show added, modified, or deleted DVC-tracked files and directories between
+commits in the <abbr>DVC repository</abbr>, or between a commit and the
+workspace.
 
 ## Synopsis
 
 ```usage
-usage: dvc diff [-h] [-q | -v] [-t TARGET] a_ref [b_ref]
+usage: dvc diff [-h] [-q | -v]
+                [--show-json] [--show-hash]
+                [a_rev] [b_rev]
 
 positional arguments:
-  a_ref                 Git reference from which diff calculates
-  b_ref                 Git reference until which diff calculates, if
-                        omitted diff shows the difference between
-                        current HEAD and a_ref
+  a_rev      Old Git commit to compare (defaults to HEAD)
+  b_rev      New Git commit to compare (defaults to the current workspace)
 ```
 
 ## Description
 
-Given two Git commit references (commit hash, branch or tag name, etc) `a_ref`
-and `b_ref`, this command shows a a summary of basic statistics: how many files
-were deleted/changed, and the file size differences.
+Prints a list of files and directories added, modified, deleted in a Git commit
+`b_rev` as compared to another Git commit `a_rev`. Both `a_rev` and `b_rev`
+accept any [Git revision](https://git-scm.com/docs/gitrevisions) - branch or tag
+name, Git commit hash, etc.
 
-Note that `dvc diff` does not show the line-to-line comparison among the target
-files in each revision, like `git diff` does.
+It defaults to comparing the current workspace and the last commit (`HEAD`), if
+arguments `a_rev` and `b_rev` are not specified.
 
-> For an example on how to create line-to-line text file comparison, refer to
-> [issue #770](https://github.com/iterative/dvc/issues/770#issuecomment-512693256)
-> in our GitHub repository.
+Options `--show-json` and `--show-hash` can be used to modify format and details
+of the output produced. See the [Options](#options) and [Examples](#examples)
+sections below for more details.
 
-If the `-t` option is used, the diff is limited to the `TARGET` file or
-directory specified.
+`dvc diff` does not have an effect when the repository is not tracked by Git,
+for example when `dvc init` was used with the `--no-scm` option.
 
-Note that `dvc diff` does not have an effect when the repository is not tracked
-by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
+> Note that current `dvc diff` implementation does not show the line-to-line
+> comparison among the files in each revision, like `git diff` or
+> [GNU `diff`](https://www.gnu.org/software/diffutils/) can. This is because the
+> data data tracked by DVC can come in many possible formats e.g. structured
+> text, or binary blobs, etc. For an example on how to create line-to-line text
+> file comparison, refer to this
+> [comment](https://github.com/iterative/dvc/issues/770#issuecomment-512693256).
 
 ## Options
 
-- `-t TARGET`, `--target TARGET` - path to a data file or directory. If not
-  specified, compares all files and directories that are under DVC control in
-  the workspace.
+- `--show-json` - generate output in JSON format. Usually needed to integrate
+  DVC into scripts.
+
+- `--show-hash` - print file and directory hash values along with their path.
+  Useful for debug purposes.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -52,145 +58,139 @@ by the Git SCM, for example when `dvc init` was used with the `--no-scm` option.
 
 ## Examples
 
-For these examples we can use the chapters in our
-[Get Started](/doc/get-started) section, up to
-[Add Files](/doc/get-started/add-files).
+For these examples we can use the [Get Started](/doc/get-started) project.
 
 <details>
 
-### Click and expand to setup example
+### Click and expand to setup the project to run examples
 
-Start by cloning our example repo if you don't already have it. Then move into
-the repo and checkout the
-[version](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
-corresponding to the _Add Files_ chapter:
+Start by cloning our example repo if you don't already have it:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
-$ git checkout 3-add-file
 ```
 
-Download the precomputed data using:
+Download data using:
 
 ```dvc
-$ dvc pull
+$ dvc fetch -T
 Preparing to download data from 'https://remote.dvc.org/get-started'
 ...
 ```
 
+With the `-T` option, `dvc fetch` makes sure that we have all the data files
+related to all existing Git tags in the repo. You may see the available tags of
+our example repo [here](https://github.com/iterative/example-get-started/tags).
+
 </details>
 
-## Example: Previous version of the same branch
+## Example: Checking workspace changes
 
-The minimal `dvc diff` command only includes the A reference (`a_ref`) from
-which the difference is to be calculated. The B reference (`b_ref`) defaults to
-Git `HEAD` (the currently checked out version). To find the general differences
-with the very previous committed version of the project, we can use the `HEAD^`
-Git reference.
+The minimal `dvc diff`, run without arguments, defaults to comparing DVC-tracked
+files between `HEAD` (last Git commit) and the current <abbr>workspace</abbr>
+(uncommitted changes, if any):
 
 ```dvc
-$ dvc diff HEAD^
-dvc diff from df613bc to ed10968
-
-diff for 'data/data.xml'
-+data/data.xml with md5 a304afb96060aad90176268345e10355
-
-added file with size 37.9 MB
+$ dvc diff
 ```
 
-## Example: Specific targets across Git references
-
-We can base this example in the [Metrics](/doc/get-started/metrics) and
-[Compare Experiments](/doc/get-started/compare-experiments) chapters of our _Get
-Started_ section, that describe different experiments to produce the `model.pkl`
-file. Our example repository has the `bigrams-experiment` and
-`baseline-experiment`
-[tags](https://github.com/iterative/example-get-started/tags) respectively to
-reference these experiments.
+## Example: Comparing workspace with arbitrary commits
 
 <details>
 
-### Click and expand to setup example
+### Click and expand to setup the example
 
-Having followed the previous example's setup, move into the
-`example-get-started/` directory. Then make sure that you have the latest code
-and data with the following commands.
+Let's checkout the
+[3-add-file](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
+tag, corresponding to the [Add Files](/doc/get-started/add-files) _Get Started_
+chapter, right after we added `data.xml` file with DVC:
 
 ```dvc
-$ git checkout master
-$ dvc fetch -T
+$ git checkout 3-add-file
+$ dvc pull
 ```
-
-The `-T` flag passed to `dvc fetch` makes sure we have all the data files
-related to all existing tags in the repo. You take a look at the
-[available tags](https://github.com/iterative/example-get-started/tags) of our
-example repo.
 
 </details>
 
-To see the difference in `model.pkl` among these versions, we can run the
-following command.
+To see the difference between the very previous commit of the project and the
+workspace, we can use `HEAD^` as `a_ref`:
 
 ```dvc
-$ dvc diff -t model.pkl baseline-experiment bigrams-experiment
-dvc diff from bc1722d to 8c1169d
+$ dvc diff HEAD^
+Added:
+    data/data.xml
 
-diff for 'model.pkl'
--model.pkl with md5 a664896
-+model.pkl with md5 3863d0e
-    ...
+files summary: 1 added, 0 deleted, 0 modified
 ```
 
-The output from this command confirms that there's a difference in the
-`model.pkl` file between the 2 Git references we indicated.
+## Example: Comparing tags or branches
 
-### What about directories?
+<details>
 
-Unlike Git, DVC features controlling entire directories without having to add
-each individual file. See `dvc add` without `--recursive` for example. `dvc run`
-can also put whole directories under DVC control (when these are specified as
-command dependencies or <abbr>outputs</abbr>).
+### Click and expand to setup the example
 
-We can use `dvc diff` to check for changes in a directory by specifying the
-directory as the target (with option `-t`). Note that we skip the `b_ref`
-argument this time, that defaults to `HEAD`.
+Our example repository has the `baseline-experiment` and `bigrams-experiment`
+[tags](https://github.com/iterative/example-get-started/tags) tags, that
+reference two different modeling experiments.
+
+Having followed the example's setup, move into the `example-get-started/`
+directory. Then make sure that you have the latest code and data with the
+following commands:
 
 ```dvc
-$ dvc diff -t data/features baseline-experiment
-dvc diff from bc1722d to 8c1169d
-
-diff for 'data/features'
--data/features with md5 3338d2c.dir
-+data/features with md5 42c7025.dir
-
-0 files not changed, 0 files modified, 0 files added,
-0 files deleted, size was increased by 2.9 MB
+$ git checkout master
+$ dvc checkout
 ```
 
-## Example: Confirming that a target has not changed
-
-Let's use our example repo once again, that has several
-[available tags](https://github.com/iterative/example-get-started/tags) for
-conveniency. The `5-preparation` tag corresponds to the
-[Connect Code and Data](/doc/get-started/connect-code-and-data) chapter of our
-_Get Started_ section, where the `dvc run` command is used to create a
-`prepare.dvc` stage file. This DVC-file tracks the `data/prepared` directory
-<abbr>output</abbr>.
+</details>
 
 ```dvc
-$ dvc diff -t data/prepared 5-preparation
-dvc diff from 3deeec1 to 8c1169d
+$ dvc diff baseline-experiment bigrams-experiment
+Modified:
+    auc.metric
+    data/features/
+    data/features/test.pkl
+    data/features/train.pkl
+    model.pkl
 
-diff for 'data/prepared'
--data/prepared with md5 6836f79.dir
-+data/prepared with md5 6836f79.dir
-
-2 files not changed, 0 files modified, 0 files added,
-0 files deleted, size was not changed
+files summary: 0 added, 0 deleted, 4 modified
 ```
 
-The command above checks whether there have been any changes to the
-`data/prepared` directory after the `5-preparation` version (since the `b_ref`
-is the current version, `HEAD` by default). The output tells us that there have
-been no changes to that directory (or to any other file).
+The output from this command confirms that there's a difference in 4 files
+between the tags `baseline-experiment` and `bigrams-experiment`.
+
+## Example: Using different output formats
+
+Let's use the same command as above, but with JSON output and including hash
+values:
+
+```dvc
+$ dvc diff --show-json --show-hash \
+           baseline-experiment bigrams-experiment
+```
+
+It outputs:
+
+```json
+{
+  "added": [],
+  "deleted": [],
+  "modified": [
+    ...{
+      "path": "data/features/",
+      "hash": {
+        "old": "3338d2c21bdb521cda0ba4add89e1cb0.dir",
+        "new": "42c7025fc0edeb174069280d17add2d4.dir"
+      }
+    },
+    ...{
+      "path": "model.pkl",
+      "hash": {
+        "old": "43630cce66a2432dcecddc9dd006d0a7",
+        "new": "662eb7f64216d9c2c1088d0a5e2c6951"
+      }
+    }
+  ]
+}
+```

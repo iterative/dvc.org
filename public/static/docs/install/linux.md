@@ -1,5 +1,8 @@
 # Installation on Linux
 
+> To use DVC [as a Python library](/doc/api-reference), please
+> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+
 ## Install with pip
 
 > We **strongly** recommend creating a
@@ -43,7 +46,7 @@ In this case it installs `boto3` library as well, besides DVC.
 $ conda install -c conda-forge dvc
 ```
 
-> Currently, it supports only Python versions 2.7, 3.6, and 3.7.
+> Currently, it supports Python 3.5-3.7
 
 ## Install with snap
 

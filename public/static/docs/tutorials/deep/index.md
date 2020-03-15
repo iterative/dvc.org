@@ -1,4 +1,4 @@
-# Tutorial
+# Deep Dive Tutorial
 
 This tutorial shows you how to solve a text classification problem using the DVC
 tool.

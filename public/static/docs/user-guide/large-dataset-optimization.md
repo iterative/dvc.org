@@ -3,8 +3,8 @@
 In order to track the data files and directories added with `dvc add` or
 `dvc run`, DVC moves all these files to the <abbr>cache</abbr>. A
 <abbr>project</abbr>'s cache is the hidden storage (by default located in
-`.dvc/cache`) for files that are under DVC control, and their different
-versions. (See `dvc cache` and
+`.dvc/cache`) for files that are tracked by DVC, and their different versions.
+(See `dvc cache` and
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) for more
 details.)
 
@@ -16,17 +16,17 @@ will be duplicated between the workspace and the cache? **That would not be
 efficient!** Especially with large files (several Gigabytes or larger).
 
 In order to have the files present in both directories without duplication, DVC
-can automatically create **file links** in the workspace that "point" to the
-data in cache. In fact, by default it will attempt to use reflinks\* if
-supported by the file system.
+can automatically create **file links** to the cached data in the workspace. In
+fact, by default it will attempt to use reflinks\* if supported by the file
+system.
 
 ## File link types for the DVC cache
 
-File links are entries in the file system that don't necessarily hold the file
-contents, but point to where the file is actually stored. File links are more
-common in file systems used with UNIX-like operating systems and come in
-different kinds, that differ in how they connect file names to _inodes_ in the
-system.
+File links are lightweight entries in the file system that don't hold the file
+contents, but work as shortcuts to where the original data is actually stored.
+They're more common in file systems used with UNIX-like operating systems, and
+come in different kinds that differ in how they connect file names to _inodes_
+in the system.
 
 > **Inodes** are metadata file records to locate and store permissions to the
 > actual file contents. See **Linking files** in

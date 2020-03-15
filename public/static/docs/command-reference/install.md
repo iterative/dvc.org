@@ -11,37 +11,39 @@ usage: dvc install [-h] [-q | -v]
 
 ## Description
 
-DVC provides an intelligent data repository on top of a regular SCM repository
-like Git to store code and configuration files. With `dvc install`, the two are
-more tightly integrated in order to cause certain convenient actions to happen
-automatically.
+DVC provides an intelligent data repository on top of a regular Git repo to
+store code and configuration files. With `dvc install`, the two are more tightly
+integrated in order to cause certain convenient actions to happen automatically.
+
+Note that this command requires the <abbr>DVC project</abbr> to be a Git
+repository. But **the hooks won't activate** if the current branch (commit, tag,
+etc.) doesn't have DVC initialized (no `.dvc/` directory present).
 
 Namely:
 
-**Checkout**: For any given branch or tag, `git checkout` retrieves the
+**Checkout**: For any commit hash, branch or tag, `git checkout` retrieves the
 [DVC-files](/doc/user-guide/dvc-file-format) corresponding to that version. The
-<abbr>project</abbr>'s DVC-files in turn refer to data stored in
-<abbr>cache</abbr>, but not necessarily in the <abbr>workspace</abbr>. Normally,
-it would be necessary to run `dvc checkout` to synchronize workspace and
-DVC-files.
+project's DVC-files in turn refer to data stored in <abbr>cache</abbr>, but not
+necessarily in the <abbr>workspace</abbr>. Normally, it would be necessary to
+run `dvc checkout` to synchronize workspace and DVC-files.
 
-The installed Git hook automates running `dvc checkout`.
+This hook automates running `dvc checkout`.
 
-**Commit**: When committing a change to the Git repository, that change possibly
-requires reproducing the corresponding
-[pipeline](/doc/command-reference/pipeline) (using `dvc repro`) to regenerate
-the project results. Or there might be new data files not yet in cache, which
-requires running `dvc commit` to store them.
+**Commit/Reproduce**: When committing a change with Git, that change possibly
+produces new data files not yet in cache, which requires running `dvc commit` to
+store them. Or the change might require reproducing the corresponding
+[pipeline](/doc/command-reference/pipeline) (with `dvc repro`) to regenerate the
+project's results (which implicitly commits them to DVC as well).
 
-The installed Git hook automates reminding the user to run either `dvc repro` or
-`dvc commit`, as needed.
+This hook automates reminding the user to run either `dvc commit` or
+`dvc repro`, as needed.
 
-**Push**: While publishing changes to the Git remote repository with `git push`,
-it easy to forget that the `dvc push` command is necessary to upload new or
-updated data files and directories under DVC control to
-[remote storage](/doc/command-reference/remote#description).
+**Push**: While publishing changes to the Git remote with `git push`, its easy
+to forget that the `dvc push` command is necessary to upload new or updated data
+files and directories tracked by DVC to
+[remote storage](/doc/command-reference/remote).
 
-The installed Git hook automates executing `dvc push`.
+This hook automates `dvc push`.
 
 ## Installed Git hooks
 
@@ -50,7 +52,7 @@ The installed Git hook automates executing `dvc push`.
 - A `post-checkout` hook executes `dvc checkout` after `git checkout` to
   automatically synchronize the data files with the new workspace state.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and
-  directories under DVC control to remote storage.
+  directories tracked by DVC to remote storage.
 
 If a hook already exists, DVC will raise an exception. In such case, user should
 try to manually edit existing file or remove it and retry install.
@@ -118,20 +120,18 @@ $ dvc pull --all-branches --all-tags
 
 </details>
 
-## Example: Checkout both DVC and Git
+## Example: Checkout both Git and DVC
 
-Let's start our exploration with the impact of `dvc install` on the
-`dvc checkout` command. Remember that switching from one Git repository version
-to another (with `git checkout`) changes the set of
-[DVC-files](/doc/user-guide/dvc-file-format) in the project. This changes the
-set of data files that should be located in the workspace (which can be achieved
-with `dvc checkout`).
+Switching from one Git commit to another (with `git checkout`) may change the
+set of [DVC-files](/doc/user-guide/dvc-file-format) in the
+<abbr>workspace</abbr>. This would mean that the currently present data files
+and directories no longer matches project's version (which can be fixed with
+`dvc checkout`).
 
-Let's first list the available tags in the _Get Started_ project:
+Let's first list the available tags in the _Get Started_ repo:
 
 ```dvc
 $ git tag
-
 0-empty
 1-initialize
 2-remote
@@ -143,8 +143,7 @@ $ git tag
 8-evaluation
 9-bigrams-model
 10-bigrams-experiment
-baseline-experiment
-bigrams-experiment
+...
 ```
 
 These tags are used to mark points in the development of the project, and to
@@ -158,7 +157,6 @@ Note: checking out '6-featurization'.
 You are in 'detached HEAD' state...
 
 $ dvc status
-
 featurize.dvc:
     changed outs:
         modified:           data/features
@@ -166,7 +164,6 @@ featurize.dvc:
 $ dvc checkout
 
 $ dvc status
-
 Data and pipelines are up to date.
 ```
 
@@ -175,12 +172,13 @@ After running `git checkout` we are also shown a message saying _You are in
 running `git checkout master`.
 
 We also see that the first `dvc status` tells us about differences between the
-project <abbr>cache</abbr> and the data files currently in the workspace. Git
+project's <abbr>cache</abbr> and the data files currently in the workspace. Git
 changed the DVC-files in the workspace, which changed references to data files.
-What `dvc status` did is inform us the data files in the workspace no longer
-matched the checksums in the [DVC-files](/doc/user-guide/dvc-file-format).
-Running `dvc checkout` then checks out the corresponding data files, and a
-second `dvc status` now tells us the data files match the DVC-files.
+`dvc status` first informed us that the data files in the workspace no longer
+matched the hash values in the corresponding
+[DVC-files](/doc/user-guide/dvc-file-format). Running `dvc checkout` then brings
+them up to date, and a second `dvc status` tells us that the data files now do
+match the DVC-files.
 
 ```dvc
 $ git checkout master
@@ -229,19 +227,17 @@ Look carefully at this output and it is clear that the `dvc checkout` command
 has indeed been run. As a result the workspace is up to date with the data files
 matching what is referenced by the DVC-files.
 
-## Example: Showing DVC status on Git commit
+## Example: Showing DVC status when committing with Git
 
-The other hook installed by `dvc install` runs before `git commit` operation. To
-see see what that does, start with the same workspace, making sure it is not in
-the _detached HEAD_ state from the previous example by first running
-`git checkout master`.
+To follow this example, start with the same workspace as before, making sure it
+is not in a _detached HEAD_ state by running `git checkout master`.
 
 If we simply edit one of the code files:
 
 ```dvc
 $ vi src/featurization.py
 
-$ git commit -a -m "modified featurization"
+$ git commit -a -m "Modified featurization"
 
 featurize.dvc:
     changed deps:
@@ -278,7 +274,7 @@ Data and pipelines are up to date.
 ```
 
 After reproducing this pipeline up to the "evaluate" stage, the data files are
-in sync with the code/config files, but we must now commit the changes to the
-Git repository. Looking closely we see that `dvc status` is used again,
-informing us that the data files are synchronized with the
-`Data and pipelines are up to date.` message.
+in sync with the code/config files, but we must now commit the changes with Git.
+Looking closely we see that `dvc status` is used again, informing us that the
+data files are synchronized with the `Data and pipelines are up to date.`
+message.

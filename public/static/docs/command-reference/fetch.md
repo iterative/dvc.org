@@ -1,14 +1,13 @@
 # fetch
 
-Get files that are under DVC control from
-[remote storage](/doc/command-reference/remote#description) into the
-<abbr>cache</abbr>.
+Get tracked files or directories from
+[remote storage](/doc/command-reference/remote) into the <abbr>cache</abbr>.
 
 ## Synopsis
 
 ```usage
-usage: dvc fetch [-h] [-q | -v] [-j JOBS] [--show-checksums]
-                 [-r REMOTE] [-a] [-T] [-d] [-R]
+usage: dvc fetch [-h] [-q | -v] [-j JOBS]
+                 [-r <name>] [-a] [-T] [-d] [-R]
                  [targets [targets ...]]
 
 positional arguments:
@@ -18,12 +17,11 @@ positional arguments:
 
 ## Description
 
-The `dvc fetch` command is a means to download files from remote storage into
-the cache of the project, but without placing them in the
-<abbr>workspace</abbr>. This makes the data files available for linking (or
-copying) into the workspace. (Refer to
-[dvc config cache.type](/doc/command-reference/config#cache).) Along with
-`dvc checkout`, it's performed automatically by `dvc pull` when the target
+The `dvc fetch` downloads DVC-tracked files from remote storage into the cache
+of the project, but without placing them in the <abbr>workspace</abbr>. This
+makes the data files available for linking (or copying) into the workspace.
+(Refer to [dvc config cache.type](/doc/command-reference/config#cache).) Along
+with `dvc checkout`, it's performed automatically by `dvc pull` when the target
 [DVC-files](/doc/user-guide/dvc-file-format) are not already in the cache:
 
 ```
@@ -44,11 +42,11 @@ project's cache                  ++ | dvc pull |
 ```
 
 Fetching could be useful when first checking out a <abbr>DVC project</abbr>,
-since files under DVC control should already exist in remote storage, but won't
-be in the project's cache. (Refer to `dvc remote` for more information on DVC
-remotes.) These necessary data or model files are listed as dependencies or
-outputs in a DVC-file (target [stage](/doc/command-reference/run)) so they are
-required to [reproduce](/doc/get-started/reproduce) the corresponding
+since files tracked by DVC should already exist in remote storage, but won't be
+in the project's <abbr>cache</abbr>. (Refer to `dvc remote` for more information
+on DVC remotes.) These necessary data or model files are listed as dependencies
+or outputs in a DVC-file (target [stage](/doc/command-reference/run)) so they
+are required to [reproduce](/doc/get-started/reproduce) the corresponding
 [pipeline](/doc/command-reference/pipeline). (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
@@ -59,66 +57,61 @@ specified, the set of data files to fetch is determined by analyzing all
 DVC-files in the current branch, unless `--all-branches` or `--all-tags` is
 specified.
 
-The default remote is used unless `--remote` is specified. See `dvc remote add`
-for more information on how to configure different remote storage providers.
+The default remote is used (see `dvc config core.remote`) unless the `--remote`
+option is used.
 
 `dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
 perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
-the checksums of the files in question, when these are
-[added](/doc/get-started/add-files) to DVC. File checksums are then stored in
-the corresponding DVC-files (usually saved in a Git branch). Only the checksums
-specified in DVC-files currently in the project are considered by `dvc fetch`
-(unless the `-a` or `-T` options are used).
+file hashes when these are [added](/doc/get-started/add-files) with DVC. File
+hashes are stored in the corresponding DVC-files (typically versioned with Git).
+Only the hashes specified in DVC-files currently in the workspace are considered
+by `dvc fetch` (unless the `-a` or `-T` options are used).
 
 ## Options
 
-- `-r REMOTE`, `--remote REMOTE` - name of the
-  [remote storage](/doc/command-reference/remote#description) to fetch from (see
-  `dvc remote list`). If not specified, the default remote is used (see
-  `dvc config core.remote`). The argument `REMOTE` is a remote name defined
-  using the `dvc remote` command.
+- `-r <name>`, `--remote <name>` - name of the
+  [remote storage](/doc/command-reference/remote) to fetch from (see
+  `dvc remote list`).
 
-- `-d`, `--with-deps` - one or more `targets` should be specified for this
-  option to have effect. Determines files to download by tracking dependencies
-  to the target DVC-files (stages). By traversing all stage dependencies, DVC
-  searches backward from the target stages in the corresponding pipelines. This
-  means DVC will not fetch files referenced in later stages than the `targets`.
+- `-d`, `--with-deps` - determines files to download by tracking dependencies to
+  the target DVC-files (stages). If no `targets` are provided, this option is
+  ignored. By traversing all stage dependencies, DVC searches backward from the
+  target stages in the corresponding pipelines. This means DVC will not fetch
+  files referenced in later stages than the `targets`.
 
-- `-R`, `--recursive` - `targets` is expected to contain one or more directories
-  for this option to have effect. Determines the files to fetch by searching
-  each target directory and its subdirectories for DVC-files to inspect.
+- `-R`, `--recursive` - determines the files to fetch by searching each target
+  directory and its subdirectories for DVC-files to inspect. If there are no
+  directories among the `targets`, this option is ignored.
 
-- `-j JOBS`, `--jobs JOBS` - number of threads to run simultaneously to handle
-  the downloading of files from the remote. Using more jobs may improve the
-  total download speed if a combination of small and large files are being
-  fetched. The default value is `4 * cpu_count()`. For SSH remotes default is
-  just 4.
+- `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
+  handle the downloading of files from the remote. The default value is
+  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  may improve the total download speed if a combination of small and large files
+  are being fetched.
 
-- `-a`, `--all-branches` - fetch cache for all Git branches, not just the active
-  one. This means DVC may download files needed to reproduce different versions
-  of a DVC-file ([experiments](/doc/get-started/experiments)), not just the
-  current one.
+- `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
+  current workspace. This means DVC may download files needed to reproduce
+  different versions of a DVC-file
+  ([experiments](/doc/get-started/experiments)), not just the ones currently in
+  the workspace.
 
 - `-T`, `--all-tags` - fetch cache for all Git tags. Similar to `-a` above. Note
   that both options can be combined, for example using the `-aT` flag.
 
-- `--show-checksums` - show checksums instead of file names when printing the
-  download progress.
+- `-h`, `--help` - prints the usage/help message, and exit.
 
-* `-h`, `--help` - prints the usage/help message, and exit.
-
-* `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
+- `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
   problems arise, otherwise 1.
 
-* `-v`, `--verbose` - displays detailed tracing information.
+- `-v`, `--verbose` - displays detailed tracing information.
 
 ## Examples
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
-pipeline stages, as well as a few Git tags, such as our
-[get started example repo](https://github.com/iterative/example-get-started).
-Then we can see what happens with `dvc fetch` as we switch from tag to tag.
+pipeline stages, such as the <abbr>DVC project</abbr> created in our
+[Get Started](/doc/get-started) section. Then we can see what happens with
+`dvc fetch` as we switch from tag to tag.
 
 <details>
 
@@ -155,15 +148,15 @@ solving the problem:
 $ git tag
 
 baseline-experiment     <- first simple version of the model
-bigrams-experiment       <- use bigrams to improve the model
+bigrams-experiment      <- use bigrams to improve the model
 ```
 
 ## Example: Default behavior
 
 This project comes with a predefined HTTP
-[remote storage](/doc/command-reference/remote#description). We can now just run
-`dvc fetch` to download the most recent `model.pkl`, `data.xml`, and other files
-that are under DVC control into our local <abbr>cache</abbr>.
+[remote storage](/doc/command-reference/remote). We can now just run `dvc fetch`
+to download the most recent `model.pkl`, `data.xml`, and other DVC-tracked files
+into our local <abbr>cache</abbr>.
 
 ```dvc
 $ dvc status --cloud
@@ -173,10 +166,9 @@ $ dvc status --cloud
 
 $ dvc fetch
 ...
-
 $ tree .dvc
 .dvc
-├── cache           <- dir .dvc/cache was created and populated
+├── cache
 │   ├── 38
 │   │   └── 63d0e317dee0a55c4e59d2ec0eef33
 │   ├── 42
@@ -186,20 +178,23 @@ $ tree .dvc
 ├── ...
 ```
 
-> `dvc status --cloud` (or `-c`) compares the cache contents vs. the default
-> remote.
+> `dvc status --cloud` compares the cache contents vs. the default remote.
+
+Note that the `.dvc/cache` directory was created and populated.
+
+> Refer to
+> [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
+> for more info.
 
 As seen above, used without arguments, `dvc fetch` downloads all assets needed
-by all DVC-files in the current branch, including for directories. The checksums
-`3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
+by all DVC-files in the current branch, including for directories. The hash
+values `3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
 correspond to the `model.pkl` file and `data/features/` directory, respectively.
 
 Let's now link files from the cache to the workspace with:
 
 ```dvc
 $ dvc checkout
-Checking out '{'scheme': 'local', 'path': '.../example-get-started/model.pkl'}' with cache '3863d0e317dee0a55c4e59d2ec0eef33'.
-Checking out '{'scheme': 'local', 'path': '.../example-get-started/data/...
 ```
 
 ## Example: Specific stages
@@ -228,8 +223,8 @@ $ tree .dvc/cache
 > Note that `prepare.dvc` is the first stage in our example's pipeline.
 
 Cache entries for the necessary directories, as well as the actual
-`data/prepared/test.tsv` and `data/prepared/train.tsv` files were download,
-checksums shown above.
+`data/prepared/test.tsv` and `data/prepared/train.tsv` files were downloaded.
+Their hash values are shown above.
 
 ## Example: With dependencies
 
@@ -248,7 +243,7 @@ $ dvc status -c
 
 One could do a simple `dvc fetch` to get all the data, but what if you only want
 to retrieve the data up to our third stage, `train.dvc`? We can use the
-`--with-deps` (or `-d`) flag:
+`--with-deps` (or `-d`) option:
 
 ```dvc
 $ dvc fetch --with-deps train.dvc

@@ -15,8 +15,8 @@ to build a powerful image classifier using a pretty small dataset.
 
 We first train a classifier model using 1000 labeled images, then we double the
 number of images (2000) and retrain our model. We capture both datasets and
-classifier results and show how to use `dvc checkout` along with `git checkout`
-to switch between different versions.
+classifier results and show how to use `dvc checkout` to switch between
+<abbr>workspace</abbr> versions.
 
 The specific algorithm used to train and validate the classifier is not
 important, and no prior knowledge of Keras is required. We'll reuse the
@@ -83,13 +83,13 @@ $ unzip -q data.zip
 $ rm -f data.zip
 ```
 
-> `dvc get` can use any <abbr>DVC project</abbr> to find the appropriate
-> [remote storage](/doc/command-reference/remote#description) and download
-> <abbr>data artifacts</abbr> from it. (It's analogous to `wget`, but for
-> <abbr>DVC repositories</abbr>.) In this case we use
-> [dataset-registry](https://github.com/iterative/dataset-registry)) as the
-> source project. (Refer to [Data Registries](/doc/use-cases/data-registries)
-> for more info about this setup.)
+> `dvc get` can use any <abbr>DVC repository</abbr> to find the appropriate
+> [remote storage](/doc/command-reference/remote) and download <abbr>data
+> artifacts</abbr> from it (analogous to `wget`, but for repositories). In this
+> case we use [dataset-registry](https://github.com/iterative/dataset-registry))
+> as the source repo. (Refer to
+> [Data Registries](/doc/use-cases/data-registries) for more info about this
+> setup.)
 
 This command downloads and extracts our raw dataset, consisting of 1000 labeled
 images for training and 800 labeled images for validation. In total, it's a 43
@@ -126,7 +126,7 @@ $ dvc add data
 ```
 
 This command should be used instead of `git add` on files or directories that
-are too large to be put into Git: usually input datasets, models, some
+are too large to be tracked with Git: usually input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
 the <abbr>cache</abbr> (while keeping a
 [file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
@@ -166,7 +166,7 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 As we mentioned briefly, DVC does not commit the `data/` directory and
 `model.h5` file with Git. Instead, `dvc add` stores them in the cache (usually
 in `.dvc/cache`) and adds them to `.gitignore`. We then `git commit` DVC-files
-that contain pointers to the cached data.
+that contain file hashes that point to cached data.
 
 In this case we created `data.dvc` and `model.h5.dvc`. Refer to
 [DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
@@ -230,10 +230,6 @@ $ python train.py
 $ dvc add model.h5
 ```
 
-> `dvc remove` is necessary here because `model.h5` was already added with
-> `dvc add` earlier, but we want to do so again. Later we'll see how `dvc run`
-> eliminates this extra step.
-
 Let's commit the second version:
 
 ```dvc
@@ -242,11 +238,11 @@ $ git commit -m "Second model, trained with 2000 images"
 $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
-That's it! We have a second model and dataset saved and pointers to them
-committed with Git. Let's now look at how DVC can help us go back to the
-previous version if we need to.
+That's it! We have tracked a second dataset, model, and metrics versioned DVC,
+and the DVC-files that point to them committed with Git. Let's now look at how
+DVC can help us go back to the previous version if we need to.
 
-## Switching between versions
+## Switching between workspace versions
 
 The DVC command that helps get a specific committed version of data is designed
 to be similar to `git checkout`. All we need to do in our case is to
@@ -264,14 +260,13 @@ $ git checkout v1.0
 $ dvc checkout
 ```
 
-These commands will restore the working tree to the first snapshot we made:
-code, data files, model, all of it. DVC optimizes this operation to avoid
-copying data or model files each time. So `dvc checkout` is quick even if you
-have large datasets, data files, or models.
+These commands will restore the workspace to the first snapshot we made: code,
+data files, model, all of it. DVC optimizes this operation to avoid copying data
+or model files each time. So `dvc checkout` is quick even if you have large
+datasets, data files, or models.
 
-On the other hand, if we want to keep the current version of the code and go
-back to the previous dataset only, we can do something like this (make sure that
-you don't have uncommitted changes in `data.dvc`):
+On the other hand, if we want to keep the current code, but go back to the
+previous dataset version, we can do something like this:
 
 ```dvc
 $ git checkout v1.0 data.dvc
@@ -279,8 +274,8 @@ $ dvc checkout data.dvc
 ```
 
 If you run `git status` you'll see that `data.dvc` is modified and currently
-points to the `v1.0` of the dataset, while code and model files are from the
-`v2.0` version.
+points to the `v1.0` version of the dataset, while code and model files are from
+the `v2.0` tag.
 
 <details>
 
@@ -289,11 +284,12 @@ points to the `v1.0` of the dataset, while code and model files are from the
 As we have learned already, DVC keeps data files out of Git (by adjusting
 `.gitignore`) and puts them into the cache (usually it's a `.dvc/cache`
 directory inside the repository). Instead, DVC creates
-[DVC-files](/doc/user-guide/dvc-file-format). These text files serve as pointers
-(MD5 hash) to the cache and are version controlled by Git.
+[DVC-files](/doc/user-guide/dvc-file-format). These text files serve as data
+placeholders that point to the cached files, and they can be easily version
+controlled with Git.
 
-When we run `git checkout` we restore pointers (DVC-files) first, then when we
-run `dvc checkout` we use these pointers to put the right data in the right
+When we run `git checkout` we restore pointers (DVC-files) first. Then, when we
+run `dvc checkout`, we use these pointers to put the right data in the right
 place.
 
 </details>
@@ -313,8 +309,8 @@ When you have a script that takes some data as an input and produces other data
 <abbr>outputs</abbr>, a better way to capture them is to use `dvc run`:
 
 > If you tried the commands in the
-> [Switching between versions](#switching-between-versions) section, go back to
-> the master branch code and data with:
+> [Switching between workspace versions](#switching-between-workspace-versions)
+> section, go back to the master branch code and data with:
 >
 > ```dvc
 > $ git checkout master
@@ -322,7 +318,6 @@ When you have a script that takes some data as an input and produces other data
 > ```
 
 ```dvc
-$ dvc remove -pf model.h5.dvc
 $ dvc run -f Dvcfile \
           -d train.py -d data \
           -M metrics.csv \
@@ -332,10 +327,10 @@ $ dvc run -f Dvcfile \
 
 Similar to `dvc add`, `dvc run` creates a
 [DVC-file](/doc/user-guide/dvc-file-format) named `Dvcfile` (specified using the
-`-f` option). It puts all outputs (`-o`) under DVC control the same way as
-`dvc add` does. Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and
-the command (`python train.py`) that was run to produce the result. We call such
-a DVC-file a "stage file".
+`-f` option). It tracks all outputs (`-o`) the same way as `dvc add` does.
+Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and the command
+(`python train.py`) that was run to produce the result. We call such a DVC-file
+a "stage file".
 
 > At this point you could run `git add .` and `git commit` to save the `Dvcfile`
 > stage file and its changed outputs to the repository.
@@ -375,7 +370,7 @@ hands-on experience with pipelines, and try to apply it here. Don't hesitate to
 join our [community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
-`metrics.csv` metrics file with the `-M` option of `dvc run`. Marking this
+`metrics.csv` metric file with the `-M` option of `dvc run`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See `dvc metrics`
 and [Compare Experiments](/doc/get-started/compare-experiments) to learn more

@@ -1,7 +1,6 @@
 # version
 
-This command shows the system/environment information along with the DVC
-version.
+Display the DVC version along with the system/environment information.
 
 ## Synopsis
 
@@ -11,13 +10,12 @@ usage: dvc version [-h] [-q | -v]
 
 ## Description
 
-Running the command `dvc version` outputs the following information about the
-system/environment:
+`dvc version` outputs the following information about the system/environment:
 
 | Line                                        | Detail                                                                                                                                                                |
 | ------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [`DVC version`](#components-of-dvc-version) | Version of DVC (along with a Git commit hash in case of a development version)                                                                                        |
-| `Python version`                            | Version of the Python being used on the environment in which DVC is initialized                                                                                       |
+| `Python version`                            | Version of Python used in the environment where DVC is initialized                                                                                                    |
 | `Platform`                                  | Information about the operating system of the machine                                                                                                                 |
 | [`Binary`](#what-we-mean-by-binary)         | Shows whether DVC was installed from a package or from a binary release                                                                                               |
 | `Package manager`                           | Name of the package manager used to install DVC if any (`pip`, `conda`, etc)                                                                                          |
@@ -53,10 +51,10 @@ The detail of DVC version depends upon the way of installing DVC.
   that might not be ready to publish yet. Therefore installing using the above
   command might have issues regarding its usage. So to trace any error reported
   with this setup, we need to know exactly which version is being used. For this
-  we rely on a git commit hash that is displayed in this command's output like
+  we rely on a Git commit hash, that is displayed in this command's output like
   this: `0.40.2+292cab.mod`. The part before `+` is the `_BASE_VERSION`, and the
-  following part is the latest `master` branch commit hash. The optional suffix
-  `.mod` means that code is modified.
+  following part is the SHA of the tip of the `master` branch. The optional
+  suffix `.mod` means that code is modified.
 
 ### What we mean by "Binary"
 

@@ -4,12 +4,20 @@
 > [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
 > tips to improve your experience using DVC on Windows.
 
+<!-- Separate MD quote: -->
+
+> To use DVC [as a Python library](/doc/api-reference), please
+> [install with pip](#install-with-pip) or [with conda](#install-with-conda).
+
 ## Windows installer
 
 The easiest way is to use the self-contained, executable installer (binary),
 which is available from the big "Download" button on the [home page](/). You can
 also get it from the [release page](https://github.com/iterative/dvc/releases/)
 on GitHub.
+
+> You may use Windows Uninstaller to
+> [remove the program](https://support.microsoft.com/en-us/help/4028054/windows-10-repair-or-remove-programs).
 
 ## Install with conda
 
@@ -24,7 +32,7 @@ which is a POSIX-like command line terminal in Windows.
 $ conda install -c conda-forge dvc
 ```
 
-> Currently, it supports only Python versions 2.7, 3.6, and 3.7.
+> Currently, it supports Python 3.5-3.7
 
 ## Install with pip
 

@@ -10,24 +10,26 @@ DVC to control data externally.
 
 ## Description
 
-With DVC you can specify external files as dependencies for your pipeline
-stages. DVC will track changes in those files and will reflect that in your
-pipeline state. Currently, the following types (protocols) of external
-dependencies are supported:
+With DVC, you can specify external files as dependencies for your pipeline
+stages. DVC will track changes in them and reflect this in the output of
+`dvc status`.
 
-- Local files and directories outside of your <abbr>workspace</abbr>;
-- SSH;
-- Amazon S3;
-- Google Cloud Storage;
-- HDFS;
+Currently, the following types (protocols) of external dependencies are
+supported:
+
+- Local files and directories outside of your <abbr>workspace</abbr>
+- SSH
+- Amazon S3
+- Google Cloud Storage
+- HDFS
 - HTTP
 
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
 
 In order to specify an external dependency for your stage, use the usual '-d'
-option in `dvc run` with the external path or URL pointing to your desired file
-or directory.
+option in `dvc run` with the external path or URL to your desired file or
+directory.
 
 ## Examples
 
@@ -183,6 +185,6 @@ outs:
 ```
 
 The `url` and `rev_lock` subfields under `repo` are used to save the origin and
-version of the dependency.
+[version](https://git-scm.com/docs/revisions) of the dependency, respectively.
 
 </details>
