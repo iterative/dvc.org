@@ -92,14 +92,12 @@ The main methods to consume <abbr>data artifacts</abbr> from a **data registry**
 are the `dvc import` and `dvc get` commands, as well as the
 [`dvc.api`](/doc/api-reference) Python API.
 
-But before, it's very handy to being able to navigate the registry to see what
-files and directories.
+But first, you may want to explore the contents of a data DVC repo.
 
 ### Listing data (list)
 
-You may want to explore the contents of a data DVC repo before trying to reuse
-its artifacts. The `dvc list` command is analogous to `ls`, or 3rd party tools
-like `aws s3 ls`:
+The `dvc list` command is analogous to `ls`, or 3rd party tools like
+`aws s3 ls`:
 
 ```dvc
 $ dvc list -R https://github.com/iterative/dataset-registry
@@ -112,8 +110,6 @@ images/.gitignore
 images/dvc-logo-outlines.png
 ...
 ```
-
-> Note that both Git-tracked files and DVC-tracked data/models are listed.
 
 ### Simple download (get)
 
