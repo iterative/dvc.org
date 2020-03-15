@@ -1,7 +1,7 @@
 # list
 
-List repository contents, including files and directories tracked by DVC
-(<abbr>data artifacts</abbr>) and by Git.
+List repository contents, including files, models, and directories tracked by
+DVC (<abbr>data artifacts</abbr>) and by Git.
 
 ## Synopsis
 
@@ -16,35 +16,41 @@ positional arguments:
 
 ## Description
 
-Lists files and directories in the root of a <abbr>repository</abbr>, including
-<abbr>data artifacts</abbr> tracked by DVC (e.g. data, models), and Git-tracked
-files (e.g. source code). To list recursively, use the `-R` option. The list is
-sorted alphabetically.
+DVC, by effectively replacing data files, models, directories with DVC-files
+(`.dvc`), hides actual locations and names. It means that you don't see actual
+data when you view a <abbr>DVC repository</abbr> with Github/Gitlab UI (you see
+`.dvc` files instead). It makes it hard to navigate the project, makes it hard
+to use `dvc get`, `dvc import`, [`dvc.api`](/doc/api-reference) - they all deal
+with actual path to a data file or directory.
 
-This command is especially useful to browse a public repo in order to find the
-exact file or directory names to `dvc import` or `dvc get`.
+This command prints a virtual view of a DVC repository, the way it would have
+looked like if files and directories that are DVC-tracked were actually regular
+Git-tracked files.
 
-Note that this command doesn't require an existing DVC project to run in. Also,
-it doesn't support listing <abbr>DVC projects</abbr> that are not tracked by Git
-(see the `--no-scm` option of `dvc init`).
+Another way to explain this - it prints the result similar to:
 
-The `url` argument specifies the address of the DVC or Git repository to list.
-Both HTTP and SSH protocols are supported for online repos (e.g.
-`[user@]server:project.git`). `url` can also be a local file system path to an
-"offline" repo.
+```dvc
+$ git clone <url> example
+$ cd example
+$ dvc pull
+$ ls <path>
+```
+
+The `url` argument is a Git repository address to list. Command works for any
+Git repository - either it has DVC project in it, or not. Both HTTP and SSH
+protocols are supported for online repositories (e.g.
+`https://github.com/iterative/example-get-started` or
+`git@github.com:iterative/example-get-started.git`). `url` can also be a local
+file system path to a valid Git repository.
 
 The `path` argument of this command is used to specify a path within the source
-repository at `url`. If the path is a file and it's found in the repo, it will
-be printed back as a confirmation of its existence. If it's a Git-tracked
-directory, files and directories directly under it will be listed (use option
-`-R` to list recursively).
-
-> Listing the contents of DVC-tracked directories is not supported at the time.
+repository at `url`. It's similar to providing a path to list to the commands
+like `ls` or `aws s3 ls`. And similar to the, `-R` option might be used to list
+files recursively.
 
 ## Options
 
-- `-R`, `--recursive` - recursively prints the repository contents. (It can be
-  limited to a specific Git-tracked directory by supplying a `path` argument.)
+- `-R`, `--recursive` - recursively prints the repository contents.
 
 - `--outs-only` - show only DVC-tracked files and directories
   (<abbr>outputs</abbr>).
@@ -62,14 +68,58 @@ directory, files and directories directly under it will be listed (use option
 - `-v`, `--verbose` - displays detailed tracing information. when this option is
   not specified.
 
-## Example: List remote git repo
+## Example: List files and directories in a DVC repository
 
 We can use the command for getting information about remote repository with all
-files, directories and <abbr>data artifacts</abbr>.
+files, directories and <abbr>data artifacts</abbr>, including DVC-tracked ones:
+
+```dvc
+$ dvc list https://github.com/iterative/example-get-started
+.gitignore
+README.md
+auc.metric
+data
+evaluate.dvc
+featurize.dvc
+model.pkl
+prepare.dvc
+src
+train.dvc
+```
+
+If you open the
+[example-get-started project's page](https://github.com/iterative/example-get-started)
+you will see something like:
+
+```dvc
+.gitignore
+README.md
+auc.metric
+data
+evaluate.dvc
+featurize.dvc
+prepare.dvc
+src
+train.dvc
+```
+
+The difference is the `model.pkl` binary file that is DVC-tracked and is not
+visible in second listing (which is actually controlled by the `train.dvc`).
+
+We can now, for example, run:
+
+```dvc
+$ dvc get https://github.com/iterative/example-get-started model.pkl
+```
+
+to download the model file.
+
+## Example: List all files and directories in a data registry
+
+We can do this recursively, using `-R` option:
 
 ```dvc
 $ dvc list -R https://github.com/iterative/dataset-registry
-
 .gitignore
 README.md
 get-started/.gitignore
@@ -82,62 +132,4 @@ images/owl_sticker.png
 images/owl_sticker.png.dvc
 images/owl_sticker.svg
 ...
-```
-
-Or
-
-```dvc
-$ dvc list https://github.com/iterative/dataset-registry
-
-.gitignore
-README.md
-get-started
-images
-tutorial
-use-cases
-```
-
-for getting flat information about the repo
-
-## Example: List the repo with the rev
-
-Another useful case is checking the files for the **specific revision**
-
-```dvc
-$ dvc list -R --rev 7476a858f6200864b5755863c729bff41d0fb045 \
-        https://github.com/iterative/dataset-registry
-
-.gitignore
-README.md
-get-started/.gitignore
-get-started/data.xml
-get-started/data.xml.dvc
-tutorial/nlp/.gitignore
-tutorial/nlp/Posts.xml.zip
-tutorial/nlp/Posts.xml.zip.dvc
-tutorial/nlp/pipeline.zip
-tutorial/nlp/pipeline.zip.dvc
-tutorial/ver/.gitignore
-tutorial/ver/data.zip
-tutorial/ver/data.zip.dvc
-tutorial/ver/new-labels.zip
-```
-
-## Example: Check the path
-
-Before trying to get or import some <abbr>data artifacts</abbr> with `dvc get`
-or `dvc import` we can check their existence with
-
-```dvc
-$ dvc list --outs-only \
-         https://github.com/iterative/dataset-registry \
-         tutorial/nlp/pipeline.zip
-```
-
-Or everything under the prefix
-
-```dvc
-$ dvc list -R --outs-only \
-         https://github.com/iterative/dataset-registry \
-         tutorial
 ```
