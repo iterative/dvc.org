@@ -296,7 +296,7 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   key. See **Accessing data with a service account** section below.
 
   ```dvc
-  $ dvc remote modify myremote credentailpath "/home/user/Downloads/project-XXXXXXX.json"
+  $ dvc remote modify myremote credentailpath "/home/.../project-XXXXXXX.json"
   ```
 
 **Accessing data with a service account:**
@@ -312,13 +312,13 @@ A service account can be used by providing a service account
 path to DVC:
 
 ```dvc
-$ dvc remote modify myremote credentailpath "/home/user/Downloads/project-XXXXXXX.json"
+$ dvc remote modify myremote credentailpath "/home/.../project-XXXXXXX.json"
 ```
 
 Alternatively, `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be set:
 
 ```dvc
-$ export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/project-XXXXXXX.json"
+$ export GOOGLE_APPLICATION_CREDENTIALS="/home/.../project-XXXXXXX.json"
 ```
 
 Ensure the account has read (and write access, if you need to save data) the
