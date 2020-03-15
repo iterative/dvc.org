@@ -18,7 +18,7 @@ import dvc.api
 
 modelpkl = dvc.api.read(
     'model.pkl',
-    repo='https://github.com/example/project.git'
+    repo='https://github.com/example/project.git',
     mode='rb')
 ```
 

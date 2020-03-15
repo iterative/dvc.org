@@ -278,24 +278,51 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 
 ### Click for Google Cloud Storage
 
-- `projectname` - project name to use.
-
-  ```dvc
-  $ dvc remote modify myremote projectname myproject
-  ```
-
 - `url` - remote location URL.
 
   ```dvc
   $ dvc remote modify myremote url gs://bucket/remote
   ```
 
-- `credentailpath` -
-  [service account credentials](https://cloud.google.com/docs/authentication/production#obtaining_and_providing_service_account_credentials_manually).
+- `projectname` - override or provide a project name to use, if default one is
+  not set.
 
   ```dvc
-  $ dvc remote modify myremote credentialpath /path/to/my/creds/[FILE_NAME].json
+  $ dvc remote modify myremote projectname myproject
   ```
+
+- `credentailpath` - path of the file that contains
+  [service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+  key. See **Accessing data with a service account** section below.
+
+  ```dvc
+  $ dvc remote modify myremote credentailpath "/home/.../project-XXXXXXX.json"
+  ```
+
+**Accessing data with a service account:**
+
+A
+[service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+is a Google account associated with your GCP project and not a specific user.
+Generally, it is intended for scenarios where your application needs to access
+data on its own, e.g. running inside a Compute Engine, CI system, etc.
+
+A service account can be used by providing a service account
+[key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+path to DVC:
+
+```dvc
+$ dvc remote modify myremote credentailpath "/home/.../project-XXXXXXX.json"
+```
+
+Alternatively, `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be set:
+
+```dvc
+$ export GOOGLE_APPLICATION_CREDENTIALS="/home/.../project-XXXXXXX.json"
+```
+
+Ensure the account has read (and write access, if you need to save data) to the
+remote `url` (and data under it) you set up above.
 
 </details>
 

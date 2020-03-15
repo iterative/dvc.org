@@ -31,6 +31,9 @@ updating the import later, if it has changed in its data source. (See
 > Note that `dvc get` corresponds to the first step this command performs (just
 > download the data).
 
+> See `dvc list` for a way to browse repository contents to find files or
+> directories to import.
+
 The `url` argument specifies the address of the DVC or Git repository containing
 the data source. Both HTTP and SSH protocols are supported for online repos
 (e.g. `[user@]server:project.git`). `url` can also be a local file system path

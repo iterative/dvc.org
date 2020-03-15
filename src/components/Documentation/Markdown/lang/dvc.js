@@ -71,7 +71,7 @@ let _javascript = function(hljs) {
                     'fetch status repro remove move gc config remote metrics ' +
                     'install root lock unlock pipeline destroy unprotect ' +
                     'commit cache pkg tag diff version get get-url import ' +
-                    'update'
+                    'update list'
                 },
                 className: 'strong'
               }
