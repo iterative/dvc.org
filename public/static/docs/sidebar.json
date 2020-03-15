@@ -1,10 +1,5 @@
 [
   {
-    "slug": "docs",
-    "source": "index.md",
-    "label": "Docs"
-  },
-  {
     "slug": "install",
     "source": "install/index.md",
     "children": [
