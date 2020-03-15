@@ -1,5 +1,31 @@
 [
   {
+    "slug": "docs",
+    "source": "index.md",
+    "label": "Docs"
+  },
+  {
+    "slug": "install",
+    "source": "install/index.md",
+    "children": [
+      {
+        "label": "Mac OS",
+        "slug": "macos"
+      },
+      "windows",
+      "linux",
+      {
+        "label": "Pre-release Version",
+        "slug": "pre-release"
+      },
+      {
+        "label": "Shell Completion",
+        "slug": "completion"
+      },
+      "plugins"
+    ]
+  },
+  {
     "slug": "get-started",
     "source": "get-started/index.md",
     "tutorials": {
@@ -27,27 +53,6 @@
         "label": "Get Older Files",
         "slug": "older-versions"
       }
-    ]
-  },
-  {
-    "slug": "install",
-    "source": "install/index.md",
-    "children": [
-      {
-        "label": "Mac OS",
-        "slug": "macos"
-      },
-      "windows",
-      "linux",
-      {
-        "label": "Pre-release Version",
-        "slug": "pre-release"
-      },
-      {
-        "label": "Shell Completion",
-        "slug": "completion"
-      },
-      "plugins"
     ]
   },
   {
