@@ -97,18 +97,23 @@ files and directories.
 
 ### Listing data (list)
 
-`dvc list` is analogous to using `aws s3 ls` or `ls`:
+You may want to explore the contents of a data DVC repo before trying to reuse
+its artifacts. The `dvc list` command is analogous to `ls`, or 3rd party tools
+like `aws s3 ls`:
 
 ```dvc
 $ dvc list -R https://github.com/iterative/dataset-registry
-...
+.gitignore
 README.md
-train.dvc
-model.pkl
-images/faces/
-images/songs/
+get-started/.gitignore
+get-started/data.xml
+get-started/data.xml.dvc
+images/.gitignore
+images/dvc-logo-outlines.png
 ...
 ```
+
+> Note that both Git-tracked files and DVC-tracked data/models are listed.
 
 ### Simple download (get)
 

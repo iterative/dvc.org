@@ -6,7 +6,7 @@ Get tracked files or directories from
 ## Synopsis
 
 ```usage
-usage: dvc fetch [-h] [-q | -v] [-j JOBS]
+usage: dvc fetch [-h] [-q | -v] [-j <number>]
                  [-r <name>] [-a] [-T] [-d] [-R]
                  [targets [targets ...]]
 

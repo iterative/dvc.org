@@ -187,8 +187,7 @@ $ dvc remote add myremote "azure://"
   The connection string can be found in the "Access Keys" pane of your Storage
   Account resource in the Azure portal.
 
-  > 💡 Make sure the value is quoted to prevent shell from misprocessing the
-  > command.
+  > 💡 Make sure the value is quoted so its processed correctly by the console.
 
 - `container name` - this is the top-level container in your Azure Storage
   Account under which all the files for this remote will be uploaded. If the
@@ -213,8 +212,9 @@ $ dvc remote modify myremote gdrive_client_secret <client secret>
 
 Note that GDrive remotes are not "trusted" by default. This means that the
 [`verify`](/doc/command-reference/remote/modify#available-settings-for-all-remotes)
-option is enabled on this type of storage, so DVC recalculates the file hashes
-upon download (e.g. `dvc pull`), to make sure that these haven't been modified.
+parameter is enabled on this type of storage, so DVC recalculates the file
+hashes upon download (e.g. `dvc pull`), to make sure that these haven't been
+modified.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
@@ -298,8 +298,8 @@ check that you are able to connect both ways to the remote location, with tools
 like `ssh` and `sftp` (GNU/Linux).
 
 > Note that your server's SFTP root might differ from its physical root (`/`).
-> (On Linux, see the `ChrootDirectory` config option in `/etc/ssh/sshd_config`.)
-> In these cases, the path component in the SSH URL (e.g. `/path/to/dir` above)
+> (On Linux, see the `ChrootDirectory` setting in `/etc/ssh/sshd_config`.) In
+> these cases, the path component in the SSH URL (e.g. `/path/to/dir` above)
 > should be specified relative to the SFTP root instead. For example, on some
 > Sinology NAS drives, the SFTP root might be in directory `/volume1`, in which
 > case you should use path `/path/to/dir` instead of `/volume1/path/to/dir`.
@@ -372,7 +372,7 @@ $ cat .dvc/config
 
 ## Example: Customize an S3 remote
 
-Add an Amazon S3 remote as the _default_ (via `-d` option), and modify its
+Add an Amazon S3 remote as the _default_ (via the `-d` option), and modify its
 region.
 
 > 💡 Before adding an S3 remote, be sure to

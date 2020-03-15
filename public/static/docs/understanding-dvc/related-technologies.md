@@ -103,8 +103,8 @@ Luigi, etc.
   workflow, are always included in the Git repository. Hence, they can be
   executed locally with minimal effort.
 
-- DVC is not fundamentally bound to Git, and users have the option of changing
-  the repository format.
+- DVC is not fundamentally bound to Git, and users have the option of using DVC
+  without SCM.
 
 ### Git-LFS (Large File Storage)
 
@@ -113,8 +113,8 @@ Luigi, etc.
   for datasets and models. No additional databases, servers, or infrastructure
   are required.
 
-- DVC is not fundamentally bound to Git, and users have the option of changing
-  the repository format.
+- DVC is not fundamentally bound to Git, and users have the option of using DVC
+  without SCM.
 
 - DVC does not add any hooks to the Git repo by default. To checkout data files,
   the `dvc checkout` command has to be run after each `git checkout` and

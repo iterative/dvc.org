@@ -6,8 +6,8 @@ Upload tracked files or directories to
 ## Synopsis
 
 ```usage
-usage: dvc push [-h] [-q | -v] [-j JOBS]
-                [-r REMOTE] [-a] [-T] [-d] [-R]
+usage: dvc push [-h] [-q | -v] [-j <number>]
+                [-r <name>] [-a] [-T] [-d] [-R]
                 [targets [targets ...]]
 
 positional arguments:

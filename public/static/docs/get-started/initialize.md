@@ -2,7 +2,7 @@
 
 There are a few recommended ways to install DVC: OS-specific package/installer,
 `pip`, `conda`, and Homebrew. See [Installation](/doc/install) for all the
-options and details.
+alternatives and details.
 
 Let's start by creating a <abbr>workspace</abbr> we can version with Git. Then
 run `dvc init` inside to create the DVC <abbr>project</abbr>:

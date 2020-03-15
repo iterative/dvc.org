@@ -8,8 +8,8 @@ commits in the <abbr>DVC repository</abbr>, or between a commit and the
 
 ```usage
 usage: dvc metrics diff [-h] [-q | -v]
-                        [--targets [TARGETS [TARGETS ...]]]
-                        [-t TYPE] [-x XPATH] [-R] [--show-json]
+                        [--targets [<path> [<path> ...]]]
+                        [-t <type>] [-x <path>] [-R] [--show-json]
                         [a_ref] [b_ref]
 
 positional arguments:
@@ -35,26 +35,26 @@ They're calculated between two commits (hash, branch, tag, or any
 
 ## Options
 
-- `--targets` - limit the comparison to these specific metric files.
+- `--targets <paths>` - limit the comparison to these specific metric files.
 
 - `-R`, `--recursive` - determines the metric files to use by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are
   no directories among the `targets`, this option is ignored.
 
-- `-t`, `--type` - specify a type of the metric file. Accepted values are: `raw`
-  (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be used to determine
-  how to parse and format metics for display. See `dvc metrics show` for more
-  details.
+- `-t <type>`, `--type <type>` - specify a type of the metric file. Accepted
+  values are: `raw` (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be
+  used to determine how to parse and format metics for display. See
+  `dvc metrics show` for more details.
 
   This option will override `type` and `xpath` defined in the corresponding
   DVC-file. If no `type` is provided or found in the DVC-file, DVC will try to
   detect it based on file extension.
 
-- `-x`, `--xpath` - specify a path within a metric file to show changes for a
-  specific metric value only. Should be used if the metric file contains
-  multiple numbers and you want to use only one of them. Only a single path is
-  allowed. It will override `xpath` defined in the corresponding DVC-file. See
-  `dvc metrics show` for more details.
+- `-x <path>`, `--xpath <path>` - specify a path within a metric file to show
+  changes for a specific metric value only. Should be used if the metric file
+  contains multiple numbers and you want to use only one of them. Only a single
+  path is allowed. It will override `xpath` defined in the corresponding
+  DVC-file. See `dvc metrics show` for more details.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.

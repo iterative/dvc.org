@@ -124,8 +124,8 @@ wdir: .
 > [pipeline](/doc/get-started/pipeline), or in other words, instructions on how
 > to build a ML model (data file) from previous data files (or directories).
 
-Let's briefly mention what the options used above mean for this particular
-example:
+Let's briefly mention what the command options used above mean for this
+particular example:
 
 `-f prepare.dvc` specifies a name for the DVC-file (pipeline stage). It's
 optional but we recommend using it to make your project structure more readable.
@@ -145,8 +145,8 @@ to run. This command is saved to the generated DVC-file, and used later by
 `dvc repro`.
 
 Hopefully, `dvc run` (and `dvc repro`) will become intuitive after a few more
-Get Started chapters. You can always refer to the their command references to
-learn the specific details about how they behave, and all of their options.
+Get Started chapters. You can always refer to the the command references for
+more details on their behavior and options.
 
 </details>
 
