@@ -291,12 +291,12 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote projectname myproject
   ```
 
-- `credentailpath` - path of the JSON file that contains your service account
-  key. See also more details below, in the _Accessing data with a service
-  account_ section.
+- `credentailpath` - path of the file that contains
+  [service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+  key. See **Accessing data with a service account** section below.
 
   ```dvc
-  $ dvc remote modify myremote credentailpath "/home/user/Downloads/[FILE_NAME].json"
+  $ dvc remote modify myremote credentailpath "/home/user/Downloads/project-XXXXXXX.json"
   ```
 
 **Accessing data with a service account:**
@@ -309,19 +309,20 @@ data on its own, e.g. running inside a Compute Engine, CI system, etc.
 
 A service account can be used by providing a service account
 [key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
-path to DVC via `credentailpath` above.
+path to DVC:
+
+```dvc
+$ dvc remote modify myremote credentailpath "/home/user/Downloads/project-XXXXXXX.json"
+```
 
 Alternatively, `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be set:
 
 ```dvc
-$ export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/[FILE_NAME].json"
+$ export GOOGLE_APPLICATION_CREDENTIALS="/home/user/Downloads/project-XXXXXXX.json"
 ```
 
-Ensure the account has read and write access to any bucket resource hosting the
-remote `url` you set up above. Best practice is to limit the access credentials
-to only what the DVC requires. You can check out the IAM roles for
-`Storage Object Creator` and `Storage Object Viewer` which limit an account to
-only create and view `Storage Objects`.
+Ensure the account has read (and write access, if you need to save data) the
+remote `url` you set up above.
 
 </details>
 
