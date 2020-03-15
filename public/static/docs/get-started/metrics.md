@@ -22,8 +22,7 @@ from the `features/test.pkl` file and produces a
 numeric value) can be marked as a metric, for example by using the `-M` option
 of `dvc run`.
 
-> Please, refer to the `dvc metrics` command documentation to see more available
-> options and details.
+> Please, refer to the `dvc metrics` command documentation to see more details.
 
 Let's save the updated results:
 

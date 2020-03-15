@@ -41,7 +41,7 @@ system, but may break your workflow since updating hard/sym-linked files tracked
 by DVC in the <abbr>workspace</abbr> causes <abbr>cache</abbr> corruption. These
 2 link types thus require using cache **protected mode** (see the
 `cache.protected` config option in `dvc config cache`). Finally, a 4th "linking"
-option is to actually copy files from/to the cache, which is safe but
+alternative is to actually copy files from/to the cache, which is safe but
 inefficient – especially for large files (several GBs or more).
 
 > Some versions of Windows (e.g. Windows Server 2012+ and Windows 10 Enterprise)
@@ -60,7 +60,7 @@ File link type benefits summary:
 | `symlink`    | x     | x     |                   |
 | `copy`       |       |       | x                 |
 
-Each file linking option is further detailed below, in function of their
+Each file linking method is further detailed below, in function of their
 efficiency:
 
 1. **`reflink`**: Copy-on-write\* links or "reflinks" are the best possible link
@@ -113,7 +113,7 @@ $ dvc config cache.type hardlink,symlink
 $ dvc config cache.protected true
 ```
 
-> Refer to `dvc config cache` for more options.
+> Refer to `dvc config cache` for more details.
 
 Setting `cache.protected` is important with `hardlink` and/or `symlink` cache
 file link types. Please refer to the
@@ -121,8 +121,8 @@ file link types. Please refer to the
 tracked files under these cache configurations.
 
 To make sure that the data files in the workspace are consistent with the
-<abbr>project</abbr>'s `cache.type` option, you may use `dvc checkout --relink`.
-See `dvc checkout` for more information.
+<abbr>project</abbr>'s `cache.type` config value, you may use
+`dvc checkout --relink`. See `dvc checkout` for more information.
 
 ---
 

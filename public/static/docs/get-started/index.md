@@ -9,7 +9,7 @@ so.
 
 Before you start ...
 
-✅ Please, join our [community](/chat) or see these [support](/support) options
+✅ Please, join our [community](/chat) or see these [support](/support) channels
 if you have any questions or need any help. We are very responsive ⚡.
 
 ✅ Check out our [GitHub repository](https://github.com/iterative/dvc) and give

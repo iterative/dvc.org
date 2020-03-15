@@ -6,9 +6,8 @@ formatting.
 ## Synopsis
 
 ```usage
-usage: dvc metrics show [-h] [-q | -v]
-                        [-t TYPE] [-x XPATH] [-a] [-T] [-R]
-                        [targets [targets ...]]
+usage: dvc metrics show [-h] [-q | -v] [-t <type>] [-x <path>]
+                        [-a] [-T] [-R] [targets [targets ...]]
 
 positional arguments:
   targets               Metric files or directories (see -R) to show
@@ -43,9 +42,9 @@ compares them with a previous version.
 
 ## Options
 
-- `-t`, `--type` - specify a type for the metric file. Accepted values are:
-  `raw` (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be used to
-  determine how to parse and format metics for display.
+- `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
+  values are: `raw` (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be
+  used to determine how to parse and format metics for display.
 
   `raw` means that no additional parsing is applied, and `--xpath` is ignored.
   `htsv`/`hcsv` are the same as `tsv`/`csv`, but the values in the first row of
@@ -56,19 +55,19 @@ compares them with a previous version.
   DVC-file. If no `type` is provided or found in the DVC-file, DVC will try to
   detect it based on file extension.
 
-- `-x`, `--xpath` - specify a path within a metric file to get a specific metric
-  value. Should be used if the metric file contains multiple numbers and you
-  want to use only one of them. Only a single path is allowed. It will override
-  `xpath` defined in the corresponding DVC-file. The accepted value depends on
-  the metric file type (`--type` option):
+- `-x <path>`, `--xpath <path>` - specify a path within a metric file to get a
+  specific metric value. Should be used if the metric file contains multiple
+  numbers and you want to use only one of them. Only a single path is allowed.
+  It will override `xpath` defined in the corresponding DVC-file. The accepted
+  value depends on the metric file type (`--type` option):
 
-  - For `json` - see [JSONPath spec](https://goessner.net/articles/JsonPath/) or
-    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) for available options.
-    For example, `"AUC"` extracts the value from the following JSON-formatted
-    metric file: `{"AUC": "0.624652"}`. You can also filter on certain values,
-    for example `"$.metrics[?(@.deviation_mse<0.30) & (@.value_mse>0.4)]"`
-    extracts only the values for model versions if they meet the given
-    conditions from the metric file:
+  - For `json` - see [JSONPath](https://goessner.net/articles/JsonPath/) or
+    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) to know the syntax. For
+    example, `"AUC"` extracts the value from the following JSON-formatted metric
+    file: `{"AUC": "0.624652"}`. You can also filter on certain values, for
+    example `"$.metrics[?(@.deviation_mse<0.30) & (@.value_mse>0.4)]"` extracts
+    only the values for model versions if they meet the given conditions from
+    the metric file:
     `{"metrics": [{"dataset": "train", "deviation_mse": 0.173461, "value_mse": 0.421601}]}`
   - For `tsv`/`csv` - `row,column` e.g. `1,2`. Indices are 0-based.
   - For `htsv`/`hcsv` - `row,column name` e.g. `0,Name`. Row index is 0-based.

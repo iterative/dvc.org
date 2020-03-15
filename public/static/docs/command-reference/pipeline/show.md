@@ -28,11 +28,11 @@ instead of stages.
 
 ## Options
 
-- `-c`, `--commands` - show pipeline as a list (graph, if `--ascii` or `--dot`
-  option is specified) of commands instead of paths to DVC-files.
+- `-c`, `--commands` - show pipeline as a list (diagram if `--ascii` or `--dot`
+  is used) of commands instead of paths to DVC-files.
 
-- `-o`, `--outs` - show pipeline as a list (graph, if `--ascii` or `--dot`
-  option is specified) of stage outputs instead of paths to DVC-files.
+- `-o`, `--outs` - show pipeline as a list (diagram if `--ascii` or `--dot` is
+  used) of stage outputs instead of paths to DVC-files.
 
 - `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
   list of path to DVC-files. (`less` pager may be used, see

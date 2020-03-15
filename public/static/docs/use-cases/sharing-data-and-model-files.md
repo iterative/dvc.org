@@ -48,8 +48,7 @@ url = s3://mybucket/myproject
 remote = myremote
 ```
 
-`dvc remote` provides a wide variety of options to configure S3 bucket. For more
-information see `dvc remote modify`.
+`dvc remote modify` provides a wide variety of options to configure S3 buckets.
 
 Let's commit your changes and push your code:
 

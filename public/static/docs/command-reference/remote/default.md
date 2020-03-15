@@ -22,9 +22,9 @@ positional arguments:
 
 ## Description
 
-You can query/set/replace/unset default remote using options of this command. If
-the `name` of the remote is not provided and `--unset` is not specified, this
-command returns the name of the default remote.
+You can query/set/replace/unset default remote using the options of this
+command. If the `name` of the remote is not provided and `--unset` is not
+specified, this command returns the name of the default remote.
 
 ```dvc
 $ dvc remote default myremote

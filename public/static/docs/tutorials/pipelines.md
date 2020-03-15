@@ -201,7 +201,7 @@ but made specifically to handle large data files.
 > Note that for performance with large datasets, DVC can use file links from the
 > cache to the workspace. This avoids copying actual file contents. Refer to
 > [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-> to learn which options exist and how to enable them.
+> to learn which alternatives exist and how to enable them.
 
 </details>
 
@@ -267,8 +267,8 @@ By analyzing dependencies and outputs in DVC-files, we can generate a dependency
 graph: a series of commands DVC needs to execute. `dvc repro` does this in order
 to restore a pipeline and reproduce its intermediate or final results.
 
-`dvc pipeline show` helps to visualize pipelines (run it with `-c` option to see
-actual commands instead of DVC-files):
+`dvc pipeline show` helps to visualize pipelines (run it with the `-c` option to
+see actual commands instead of DVC-files):
 
 ```dvc
 $ dvc pipeline show --ascii evaluate.dvc

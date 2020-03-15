@@ -6,7 +6,7 @@ options such as `type` or `xpath`. See full [options](#options) info below.
 ## Synopsis
 
 ```usage
-usage: dvc metrics modify [-h] [-q | -v] [-t TYPE] [-x XPATH] path
+usage: dvc metrics modify [-h] [-q | -v] [-t <type>] [-x <path>] path
 
 positional arguments:
   path                  Path to a metric file.
@@ -32,27 +32,27 @@ ERROR: failed to modify metric file settings -
 
 ## Options
 
-- `-t`, `--type` - specify a type for the metric file. Accepted values are:
-  `raw` (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be saved into
-  the corresponding DVC-file, and used by `dvc metrics show` to determine how to
-  handle displaying metrics.
+- `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
+  values are: `raw` (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be
+  saved into the corresponding DVC-file, and used by `dvc metrics show` to
+  determine how to handle displaying metrics.
 
   `raw` means that no additional parsing is applied, and `--xpath` is ignored.
   `htsv`/`hcsv` are the same as `tsv`/`csv`, but the values in the first row of
   the file will be used as the field names and should be used to address columns
   in the `--xpath` option.
 
-- `-x`, `--xpath` - specify a path within a metric file to get a specific metric
-  value. Should be used if the metric file contains multiple numbers and you
-  want to use only one of them. Only a single path is allowed. It will be saved
-  into the corresponding DVC-file, and used by `dvc metrics show` to determine
-  how to display metrics. The accepted value depends on the metric file type
-  (`--type` option):
+- `-x <path>`, `--xpath <path>` - specify a path within a metric file to get a
+  specific metric value. Should be used if the metric file contains multiple
+  numbers and you want to use only one of them. Only a single path is allowed.
+  It will be saved into the corresponding DVC-file, and used by
+  `dvc metrics show` to determine how to display metrics. The accepted value
+  depends on the metric file type (`--type` option):
 
-  - For `json` - see [JSONPath spec](https://goessner.net/articles/JsonPath/) or
-    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) for available options.
-    For example, `"AUC"` extracts the value from the following JSON-formatted
-    metric file: `{"AUC": "0.624652"}`.
+  - For `json` - see [JSONPath](https://goessner.net/articles/JsonPath/) or
+    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) to know the syntax. For
+    example, `"AUC"` extracts the value from the following JSON-formatted metric
+    file: `{"AUC": "0.624652"}`.
   - For `tsv`/`csv` - `row,column` e.g. `1,2`. Indices are 0-based.
   - For `htsv`/`hcsv` - `row,column name` e.g. `0,Name`. Row index is 0-based.
     First row is used to specify column names and is not included into index.

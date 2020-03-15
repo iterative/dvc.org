@@ -11,7 +11,7 @@ instructions below for other DVC installation methods.
 ## How it works
 
 Command completion is usually requested by pressing the `tab` key on your shell,
-it will then present the possible options that could follow that command call.
+it will then present the possible arguments that can follow that command name.
 For example:
 
 ```dvc
@@ -27,11 +27,11 @@ run     -- Generate a stage file from a command and execute the command.
 Depending on what you typed on the command line so far, it completes:
 
 - Available DVC commands.
-- Options that are available for a particular command.
+- Options (flags) that are available for a particular command.
 - File names that make sense in a given context, such as using them as a target
   for some commands.
-- Arguments for selected options. For example, `dvc repro` completes with stage
-  files to reproduce.
+- Values for certain command arguments. For example, `dvc repro` completes with
+  stage files to reproduce.
 
 ## What shell do you have?
 

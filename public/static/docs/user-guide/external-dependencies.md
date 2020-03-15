@@ -27,7 +27,7 @@ supported:
 > Note that these are a subset of the remote storage types supported by
 > `dvc remote`.
 
-In order to specify an external dependency for your stage, use the usual '-d'
+In order to specify an external dependency for your stage, use the usual `-d`
 option in `dvc run` with the external path or URL to your desired file or
 directory.
 

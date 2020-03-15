@@ -8,7 +8,7 @@ command and execute the command.
 ```usage
 usage: dvc run [-h] [-q | -v] [-d <path>] [-o <path>] [-O <path>]
                [-m <path>] [-M <path>] [-f <filename>] [-c <path>]
-               [-w WDIR] [--no-exec] [-y] [--overwrite-dvcfile]
+               [-w <path>] [--no-exec] [-y] [--overwrite-dvcfile]
                [--ignore-build-cache] [--remove-outs] [--no-commit]
                [--always-changed]
                command
@@ -128,12 +128,12 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 - `-c <path>`, `--cwd <path>` (_deprecated_) - Use `-f` and `-w` to change the
   name and location (working directory) of a stage file.
 
-- `-w`, `--wdir` - specifies a working directory for the `command` to run in.
-  `dvc run` expects that dependencies, outputs, metric files are specified
-  relative to this directory. This value is saved in the `wdir` field of the
-  stage file generated (as a relative path to the location of the DVC-file) and
-  is used by `dvc repro` to change the working directory before executing the
-  `command`.
+- `-w <path>`, `--wdir <path>` - specifies a working directory for the `command`
+  to run in. `dvc run` expects that dependencies, outputs, metric files are
+  specified relative to this directory. This value is saved in the `wdir` field
+  of the stage file generated (as a relative path to the location of the
+  DVC-file) and is used by `dvc repro` to change the working directory before
+  executing the `command`.
 
 - `--no-exec` - create a stage file, but do not execute the `command` defined in
   it, nor track dependencies or outputs with DVC. In the DVC-file contents, the

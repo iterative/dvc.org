@@ -26,8 +26,8 @@ positional arguments:
 
 ## Description
 
-Remote `name` and `option` name are required. Option names are specific to the
-remote type. See `dvc remote add` and the
+Remote `name` and `option` name are required. Config option names are specific
+to the remote type. See `dvc remote add` and the
 [available settings](#available-settings-per-storage-type) section below for a
 list of remote storage types.
 
@@ -35,10 +35,10 @@ This command modifies a `remote` section in the project's
 [config file](/doc/command-reference/config). Alternatively, `dvc config` or
 manual editing could be used to change the configuration.
 
-## Options
+## Command options (flags)
 
-- `-u`, `--unset` - delete configuration value for the given `option`. Don't
-  provide a `value` when employing this flag.
+- `-u`, `--unset` - delete configuration value for the given config `option`.
+  Don't provide a `value` when employing this flag.
 
 - `--global` - save remote configuration to the global config (e.g.
   `~/.config/dvc/config`) instead of `.dvc/config`.
@@ -61,7 +61,7 @@ manual editing could be used to change the configuration.
 
 ## Available parameters for all remotes
 
-The following options are available for all remote types:
+The following config options are available for all remote types:
 
 - `verify` - upon downloading <abbr>cache</abbr> files (`dvc pull`, `dvc fetch`)
   DVC will recalculate the file hashes upon download (e.g. `dvc pull`) to make
@@ -175,7 +175,7 @@ these settings, you could use the following options:
   ```
 
   > \* - `grant_read`, `grant_read_acp`, `grant_write_acp` and
-  > `grant_full_control` options are mutually exclusive with `acl` option.
+  > `grant_full_control` params are mutually exclusive with `acl`.
   >
   > \*\* - default ACL grantees are overwritten. Grantees are AWS accounts
   > identifiable by `id` (AWS Canonical User ID), `emailAddress` or `uri`
@@ -239,7 +239,8 @@ For more information on configuring Azure Storage connection strings, visit
 
 > The connection string contains access to data and is inserted into the
 > `.dvc/config file.` Therefore, it is safer to add the connection string with
-> the `--local` option, enforcing it to be written to a Git-ignored config file.
+> the `--local` command option, enforcing it to be written to a Git-ignored
+> config file.
 
 </details>
 
@@ -407,7 +408,7 @@ remote `url` (and data under it) you set up above.
 - `gss_auth` - use Generic Security Services authentication if available on host
   (for example,
   [with kerberos](https://en.wikipedia.org/wiki/Generic_Security_Services_Application_Program_Interface#Relationship_to_Kerberos)).
-  Using this option requires `paramiko[gssapi]`, which is currently only
+  Using this param requires `paramiko[gssapi]`, which is currently only
   supported by our pip package, and could be installed with
   `pip install 'dvc[ssh_gssapi]'`. Other packages (Conda, Windows, and MacOS
   PKG) do not support it.
@@ -478,7 +479,7 @@ remote `url` (and data under it) you set up above.
 
   > Note that the specified password will be inserted into the `.dvc/config`
   > file. Therefore, it's recommended to configure it using the `--local`
-  > option, which writes it to a Git-ignored config file. (Or use the
+  > command option, which writes it to a Git-ignored config file. (Or use the
   > `ask_password` parameter instead.)
 
 - `ask_password` - ask each time for the password to use for any `auth` method.

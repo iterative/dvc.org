@@ -35,7 +35,7 @@ The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used. See `dvc remote` for more information on how to configure a
 remote.
 
-With no arguments, just `dvc pull` or `dvc pull --remote REMOTE`, it downloads
+With no arguments, just `dvc pull` or `dvc pull --remote <name>`, it downloads
 only the files (or directories) missing from the workspace by searching all
 [DVC-files](/doc/user-guide/dvc-file-format) currently in the
 <abbr>project</abbr>. It will not download files associated with earlier commits
