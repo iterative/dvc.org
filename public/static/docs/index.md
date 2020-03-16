@@ -16,7 +16,14 @@ us a ⭐ if you like the project!
 ✅ Contribute to DVC [on GitHub](https://github.com/iterative/dvc) or help us
 improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
 
----
+## Main topics
+
+- Learn how to [install](/doc/install) and [use](/doc/learn) DVC in the first
+  couple sections.
+- Explore the main [reasons](/doc/use-cases) to adopt DVC.
+- Study the detailed [inner-workings](/doc/user-guide) of DVC, as well as each
+  one of its [commands](/doc/command-reference) and Python
+  [functions](/doc/api-reference).
 
 Please choose a topic from the sidebar to the left, or click the `Next` button
 below to start from the beginning ↘
