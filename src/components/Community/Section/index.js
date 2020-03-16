@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import React, { useCallback, useEffect, useState } from 'react'
+import { useLocation } from '@reach/router'
 import { Collapse } from 'react-collapse'
 import { useWindowSize } from 'react-use'
 
@@ -34,18 +35,13 @@ export default function CommunitySection({
   )
 
   const { width } = useWindowSize()
+  const location = useLocation()
 
   useEffect(() => {
-    const updateVisibility = () => {
-      const { hash } = window.location
-
-      if (anchor && hash === `#${anchor}`) {
-        setIsContentVisible(true)
-      }
+    if (anchor && location.hash === `#${anchor}`) {
+      setIsContentVisible(true)
     }
-
-    updateVisibility()
-  }, [])
+  }, [location.hash])
 
   useEffect(() => setIsTablet(width <= sizes.tablet), [width])
 
