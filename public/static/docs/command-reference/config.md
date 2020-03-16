@@ -114,9 +114,9 @@ for more details.) This section contains the following options:
   > option, properly transforming paths relative to the current working
   > directory into paths relative to the config file location.
 
-- `cache.protected` - obsoleted. When using `hardlink` or `symlink` as
-  `cache.type`, they will automatically be read-only. Use `dvc unprotect`
-  before updating a file.
+- `cache.protected` (_deprecated_) - when using `hardlink` or `symlink` as
+  `cache.type`, the file links will automatically be protected (read-only). Use
+  `dvc unprotect` if you need to update them.
 
 - `cache.type` - link type that DVC should use to link data files from cache to
   the workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
