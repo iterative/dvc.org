@@ -1,7 +1,7 @@
 import React from 'react'
 
 import Page404 from '../components/404'
-import SEO from '../components/seo'
+import SEO from '../components/SEO'
 
 function NotFoundPage() {
   return (
