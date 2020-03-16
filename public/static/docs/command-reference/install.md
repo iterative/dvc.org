@@ -83,29 +83,28 @@ DVC provides support for [pre-commit](https://pre-commit.com/) users. To adjust
 
 ```yaml
 repos:
-- hooks:
-  - id: dvc-pre-commit
-    language_version: python3
-    stages:
-    - commit
-  - id: dvc-pre-push
-    language_version: python3
-    stages:
-    - push
-  - always_run: true
-    id: dvc-post-checkout
-    language_version: python3
-    stages:
-    - post-checkout
-  repo: https://github.com/iterative/dvc
-  rev: master
+  - hooks:
+      - id: dvc-pre-commit
+        language_version: python3
+        stages:
+          - commit
+      - id: dvc-pre-push
+        language_version: python3
+        stages:
+          - push
+      - always_run: true
+        id: dvc-post-checkout
+        language_version: python3
+        stages:
+          - post-checkout
+    repo: https://github.com/iterative/dvc
+    rev: master
 ```
 
 ## Options
 
-- `--use-pre-commit-tool` - install pre-commit/pre-push/post-checkout hooks
-  into the [pre-commit](https://pre-commit.com/) config
-  (`.pre-commit-config.yaml`).
+- `--use-pre-commit-tool` - install pre-commit/pre-push/post-checkout hooks into
+  the [pre-commit](https://pre-commit.com/) config (`.pre-commit-config.yaml`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
