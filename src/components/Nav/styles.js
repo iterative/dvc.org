@@ -19,7 +19,7 @@ export const Dropdown = styled.div`
   border-image-width: 19px 10px 11px 37.5px;
   border-image-repeat: repeat repeat;
 
-  ${DropdownWrapper}:hover & {
+  &:hover {
     display: block;
   }
 `
@@ -75,6 +75,12 @@ export const Link = styled.a`
 
   ${DropdownWrapper} &:hover {
     border-color: #fff;
+  }
+`
+
+export const DropdownRootLink = styled(Link)`
+  &:hover + ${Dropdown} {
+    display: block;
   }
 `
 

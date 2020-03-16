@@ -11,6 +11,7 @@ const docsPage = getFirstPage()
 import {
   Dropdown,
   DropdownInset,
+  DropdownRootLink,
   DropdownLink,
   DropdownWrapper,
   GetStartedButton,
@@ -48,7 +49,7 @@ export default function Nav({ mobile = false }) {
         <DropdownWrapper>
           <LocalLink
             href="/community"
-            as={Link}
+            as={DropdownRootLink}
             onClick={() => logEvent('menu', 'community')}
           >
             Community
