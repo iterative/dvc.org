@@ -6,7 +6,7 @@ common actions.
 ## Synopsis
 
 ```usage
-usage: dvc install [-h] [-q | -v]
+usage: dvc install [-h] [-q | -v] [--use-pre-commit-tool]
 ```
 
 ## Description
@@ -75,7 +75,37 @@ directory:
 To disable them, you need to **remove** or **edit** those files (i.e.
 `rm .git/hooks/post-checkout`, `vim .git/hooks/pre-commit`).
 
+## Using Pre-Commit tool
+
+DVC provides support for [pre-commit](https://pre-commit.com/) users. To adjust
+`.pre-commit-config.yaml` you could either use
+`dvc install --use-pre-commit-tool`, or add these entries by hand:
+
+```yaml
+repos:
+- hooks:
+  - id: dvc-pre-commit
+    language_version: python3
+    stages:
+    - commit
+  - id: dvc-pre-push
+    language_version: python3
+    stages:
+    - push
+  - always_run: true
+    id: dvc-post-checkout
+    language_version: python3
+    stages:
+    - post-checkout
+  repo: https://github.com/iterative/dvc
+  rev: master
+```
+
 ## Options
+
+- `--use-pre-commit-tool` - install pre-commit/pre-push/post-checkout hooks
+  into the [pre-commit](https://pre-commit.com/) config
+  (`.pre-commit-config.yaml`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
