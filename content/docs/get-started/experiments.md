@@ -37,7 +37,7 @@ $ git commit -am "Reproduce model using bigrams"
 Now, we have a new `model.pkl` captured and saved. To get back to the initial
 version, we run `git checkout` along with `dvc checkout` command:
 
-```
+```dvc
 $ git checkout baseline-experiment
 $ dvc checkout
 ```
