@@ -1,5 +1,9 @@
 [
   {
+    "slug": "Home",
+    "source": "index.md"
+  },
+  {
     "slug": "install",
     "source": "install/index.md",
     "children": [

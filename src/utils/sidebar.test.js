@@ -322,11 +322,12 @@ describe('SidebarMenu/helper', () => {
     it('Returns first child for the /doc path', () => {
       const rawData = ['item-name']
       const result = {
-        label: '',
-        path: '/doc',
-        source: '/static/docs/index.md',
+        label: 'Item Name',
+        path: '/doc/item-name',
+        source: '/static/docs/item-name.md',
+        tutorials: {},
         prev: undefined,
-        next: '/doc/install'
+        next: undefined
       }
 
       jest.doMock('../../public/static/docs/sidebar.json', () => rawData)

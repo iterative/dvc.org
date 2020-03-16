@@ -150,13 +150,7 @@ function getItemByPath(path) {
   const normalizedPath = path.replace(/\/$/, '')
   const isRoot = normalizedPath === PATH_ROOT.slice(0, -1)
   const item = isRoot
-    ? {
-        label: '',
-        path: '/doc',
-        source: '/static/docs/index.md',
-        prev: undefined,
-        next: '/doc/install'
-      }
+    ? normalizedSidebar[0]
     : findItem(normalizedSidebar, normalizedPath)
 
   if (!item) return false
