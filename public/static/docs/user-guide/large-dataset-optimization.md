@@ -40,9 +40,10 @@ platforms yet. Hard/soft links optimize **speed** and **space** in the file
 system, but may break your workflow since updating hard/sym-linked files tracked
 by DVC in the <abbr>workspace</abbr> causes <abbr>cache</abbr> corruption. These
 2 link types thus require using cache **protected mode** (see the
-`cache.protected` config option in `dvc config cache`). Finally, a 4th "linking"
-alternative is to actually copy files from/to the cache, which is safe but
-inefficient – especially for large files (several GBs or more).
+`cache.protected` config option in `dvc config cache`), which is enabled
+by-default and makes your files read-only. Finally, a 4th "linking" alternative
+is to actually copy files from/to the cache, which is safe but inefficient –
+especially for large files (several GBs or more).
 
 > Some versions of Windows (e.g. Windows Server 2012+ and Windows 10 Enterprise)
 > support hard or soft links on the
@@ -110,13 +111,12 @@ configure DVC like this:
 
 ```dvc
 $ dvc config cache.type hardlink,symlink
-$ dvc config cache.protected true
 ```
 
 > Refer to `dvc config cache` for more details.
 
-Setting `cache.protected` is important with `hardlink` and/or `symlink` cache
-file link types. Please refer to the
+Note that your workspace files will be in read-only mode because of the efforts
+to protect cache from corruption. Please refer to the
 [Update a Tracked File](/doc/user-guide/updating-tracked-files) on how to manage
 tracked files under these cache configurations.
 
