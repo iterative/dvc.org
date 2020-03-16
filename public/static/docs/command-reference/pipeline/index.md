@@ -1,6 +1,6 @@
 # pipeline
 
-A set of commands to manage [pipelines](/doc/get-started/pipeline):
+A set of commands to manage [pipelines](/doc/learn/get-started/pipeline):
 [show](/doc/command-reference/pipeline/show) and
 [list](/doc/command-reference/pipeline/list).
 

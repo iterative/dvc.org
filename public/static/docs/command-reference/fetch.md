@@ -46,13 +46,13 @@ since files tracked by DVC should already exist in remote storage, but won't be
 in the project's <abbr>cache</abbr>. (Refer to `dvc remote` for more information
 on DVC remotes.) These necessary data or model files are listed as dependencies
 or outputs in a DVC-file (target [stage](/doc/command-reference/run)) so they
-are required to [reproduce](/doc/get-started/reproduce) the corresponding
+are required to [reproduce](/learn/get-started/reproduce) the corresponding
 [pipeline](/doc/command-reference/pipeline). (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
 
 `dvc fetch` ensures that the files needed for a DVC-file to be
-[reproduced](/doc/get-started/reproduce) exist in cache. If no `targets` are
+[reproduced](/learn/get-started/reproduce) exist in cache. If no `targets` are
 specified, the set of data files to fetch is determined by analyzing all
 DVC-files in the current branch, unless `--all-branches` or `--all-tags` is
 specified.
@@ -63,7 +63,7 @@ option is used.
 `dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
 perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
-file hashes when these are [added](/doc/get-started/add-files) with DVC. File
+file hashes when these are [added](/learn/get-started/add-files) with DVC. File
 hashes are stored in the corresponding DVC-files (typically versioned with Git).
 Only the hashes specified in DVC-files currently in the workspace are considered
 by `dvc fetch` (unless the `-a` or `-T` options are used).
@@ -93,8 +93,8 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
 - `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
   current workspace. This means DVC may download files needed to reproduce
   different versions of a DVC-file
-  ([experiments](/doc/get-started/experiments)), not just the ones currently in
-  the workspace.
+  ([experiments](/learn/get-started/experiments)), not just the ones currently
+  in the workspace.
 
 - `-T`, `--all-tags` - fetch cache for all Git tags. Similar to `-a` above. Note
   that both options can be combined, for example using the `-aT` flag.
@@ -110,7 +110,7 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
 pipeline stages, such as the <abbr>DVC project</abbr> created in our
-[Get Started](/doc/get-started) section. Then we can see what happens with
+[Get Started](/learn/get-started) section. Then we can see what happens with
 `dvc fetch` as we switch from tag to tag.
 
 <details>
@@ -126,8 +126,7 @@ $ cd example-get-started
 
 </details>
 
-The workspace looks almost like in this
-[pipeline setup](/doc/tutorials/pipelines):
+The workspace looks almost like in this [pipeline setup](/doc/learn/pipelines):
 
 ```dvc
 .

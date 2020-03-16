@@ -25,39 +25,39 @@
     ]
   },
   {
-    "slug": "get-started",
-    "source": "get-started/index.md",
-    "tutorials": {
-      "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
-    },
+    "slug": "learn",
+    "source": "learn/index.md",
     "children": [
-      "agenda",
-      "initialize",
-      "configure",
-      "add-files",
-      "store-data",
-      "retrieve-data",
-      "import-data",
       {
-        "label": "Connect with Code",
-        "slug": "connect-code-and-data"
+        "slug": "get-started",
+        "source": false,
+        "tutorials": {
+          "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
+        },
+        "children": [
+          "agenda",
+          "initialize",
+          "configure",
+          "add-files",
+          "store-data",
+          "retrieve-data",
+          "import-data",
+          {
+            "label": "Connect with Code",
+            "slug": "connect-code-and-data"
+          },
+          "pipeline",
+          "visualize",
+          "reproduce",
+          "metrics",
+          "experiments",
+          "compare-experiments",
+          {
+            "label": "Get Older Files",
+            "slug": "older-versions"
+          }
+        ]
       },
-      "pipeline",
-      "visualize",
-      "reproduce",
-      "metrics",
-      "experiments",
-      "compare-experiments",
-      {
-        "label": "Get Older Files",
-        "slug": "older-versions"
-      }
-    ]
-  },
-  {
-    "slug": "tutorials",
-    "source": "tutorials/index.md",
-    "children": [
       {
         "slug": "interactive",
         "label": "Interactive Tutorials"

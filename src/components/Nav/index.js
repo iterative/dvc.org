@@ -103,7 +103,7 @@ export default function Nav({ mobile = false }) {
       </Links>
       <LocalLink
         as={GetStartedButton}
-        href="/doc/get-started"
+        href="/doc/learn/get-started"
         onClick={() => logEvent('menu', 'get-started')}
       >
         Get Started

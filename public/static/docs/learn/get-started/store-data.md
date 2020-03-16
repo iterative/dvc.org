@@ -1,8 +1,8 @@
 # Store and Share Data
 
 Now, that your data files are managed by DVC (see
-[Add Files](/doc/get-started/add-files)), you can push them from your repository
-to the default [remote](/doc/command-reference/remote) storage\*:
+[Add Files](/doc/learn/get-started/add-files)), you can push them from your
+repository to the default [remote](/doc/command-reference/remote) storage\*:
 
 ```dvc
 $ dvc push
@@ -19,15 +19,16 @@ The `dvc push` command allows one to upload data to remote storage. It doesn't
 save any changes in the code or DVC-files. Those should be saved by using
 `git commit` and `git push`.
 
-> \*As noted in the DVC [configuration](/doc/get-started/configure) chapter, we
-> are using a **local remote** in this section for illustrative purposes.
+> \*As noted in the DVC [configuration](/doc/learn/get-started/configure)
+> chapter, we are using a **local remote** in this section for illustrative
+> purposes.
 
 <details>
 
 ### Expand to learn more about DVC internals
 
 You can check now that actual data file has been copied to the remote we created
-in the [configuration](/doc/get-started/configure) chapter:
+in the [configuration](/doc/learn/get-started/configure) chapter:
 
 ```dvc
 $ ls -R /tmp/dvc-storage

@@ -16,7 +16,7 @@ export default function PromoSection() {
         <Title>For data scientists, by data scientists</Title>
         <Buttons>
           <LocalLink
-            href="/doc/get-started"
+            href="/doc/learn/get-started"
             as={Button}
             first
             onClick={goToDocGetStarted}

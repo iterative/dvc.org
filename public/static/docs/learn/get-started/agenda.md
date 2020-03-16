@@ -1,5 +1,9 @@
 # Agenda
 
+You'll need [Git](https://git-scm.com) to run the commands in this guide. Also,
+if DVC is not installed, please follow these [instructions](/doc/install) to do
+so.
+
 In the next few sections we'll build a simple natural language processing (NLP)
 project from scratch. If you'd like to get the final result or have any issues
 along the way, you can download the fully reproducible
@@ -13,10 +17,9 @@ Otherwise, bear with us and we'll introduce some basic DVC concepts to get the
 same results together!
 
 The idea for this project is a simplified version of our
-[Deep Dive Tutorial](/doc/tutorials/deep). It explores the NLP problem of
-predicting tags for a given StackOverflow question. For example, we might want a
-classifier that can classify (or predict) posts about Python by tagging them
-with `python`.
+[Deep Dive Tutorial](/doc/learn/deep). It explores the NLP problem of predicting
+tags for a given StackOverflow question. For example, we might want a classifier
+that can classify (or predict) posts about Python by tagging them with `python`.
 
 ![](/static/img/example-flow-2x.png)
 

@@ -123,7 +123,7 @@ up to date from the external data source.
 ## Examples
 
 To illustrate these examples we will be using the <abbr>project</abbr> explained
-in the [Get Started](/doc/get-started) section.
+in the [Get Started](/doc/learn/get-started) section.
 
 <details>
 
@@ -132,8 +132,8 @@ in the [Get Started](/doc/get-started) section.
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
 [2-remote](https://github.com/iterative/example-get-started/releases/tag/2-remote)
-tag, corresponding to the [Configure](/doc/get-started/configure) _Get Started_
-chapter:
+tag, corresponding to the [Configure](/doc/learn/get-started/configure) _Get
+Started_ chapter:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -143,14 +143,14 @@ $ mkdir data
 ```
 
 You should now have a blank workspace, just before the
-[Add Files](/doc/get-started/add-files) chapter.
+[Add Files](/doc/learn/get-started/add-files) chapter.
 
 </details>
 
 ## Example: Tracking a remote file
 
-An advanced alternate to [Add Files](/doc/get-started/add-files) chapter of the
-_Get Started_ section is to use `dvc import-url`:
+An advanced alternate to [Add Files](/doc/learn/get-started/add-files) chapter
+of the _Get Started_ section is to use `dvc import-url`:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml \
@@ -196,7 +196,7 @@ regenerating a <abbr>data artifact</abbr> based on the updated data source.
 [Pipeline](/doc/command-reference/pipeline) reproduction can be triggered based
 on a changed external dependency.
 
-Let's use the [Get Started](/doc/get-started) project again, simulating an
+Let's use the [Get Started](/doc/learn/get-started) project again, simulating an
 updated external data source. (Remember to prepare the <abbr>workspace</abbr>,
 as explained in [Examples](#examples))
 
@@ -243,7 +243,7 @@ And instead of an `etag` we have an `md5` hash value. We did this so its easy to
 edit the data file.
 
 Let's now manually reproduce a
-[processing chapter](/doc/get-started/connect-code-and-data) from the _Get
+[processing chapter](/doc/learn/get-started/connect-code-and-data) from the _Get
 Started_ project. Download the example source code archive and unzip it:
 
 ```dvc

@@ -17,7 +17,7 @@ $ dvc repro evaluate.dvc
 
 `git checkout master` and `dvc checkout` commands ensure that we have the latest
 experiment code and data respectively. And `dvc repro`, as we discussed in the
-[Reproduce](/doc/get-started/reproduce) chapter, is a way to run all the
+[Reproduce](/doc/learn/get-started/reproduce) chapter, is a way to run all the
 necessary commands to build the model and measure its performance.
 
 ```dvc
