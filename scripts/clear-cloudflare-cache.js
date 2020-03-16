@@ -15,9 +15,9 @@
 // - CLOUDFLARE_ZONE_ID: The zone ID to purge. You can find it in the
 // sidebar of the "overview" tab for dvc.org
 
-const fetch = require('isomorphic-fetch');
+const fetch = require('isomorphic-fetch')
 
-const { CLOUDFLARE_TOKEN, CLOUDFLARE_ZONE_ID } = process.env;
+const { CLOUDFLARE_TOKEN, CLOUDFLARE_ZONE_ID, CONTEXT } = process.env
 
 async function main() {
   const res = await fetch(
@@ -30,20 +30,28 @@ async function main() {
       },
       body: JSON.stringify({ purge_everything: true })
     }
-  );
+  )
 
-  const body = await res.text();
+  const body = await res.text()
 
   if (!res.ok) {
-    throw new Error('Error response received from CloudFlare: ' + body);
+    throw new Error('Error response received from CloudFlare: ' + body)
   }
 
-  console.log('Cleared cache successfully');
+  console.log('Cleared cache successfully')
 }
 
-if (CLOUDFLARE_TOKEN) {
+if (CONTEXT === 'production') {
+  if (!(CLOUDFLARE_TOKEN && CLOUDFLARE_ZONE_ID)) {
+    console.error(
+      'scripts/clear-cloudflare-cache.js: ' +
+        'need CLOUDFLARE_TOKEN and CLOUDFLARE_ZONE_ID environment variables.'
+    )
+    process.exit(1)
+  }
+
   main().catch(e => {
-    console.error(e);
-    process.exit(1);
-  });
+    console.error(e)
+    process.exit(1)
+  })
 }
