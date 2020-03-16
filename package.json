@@ -11,7 +11,7 @@
     "start": "./scripts/clear-cloudflare-cache.js; NODE_ENV=production node server.js",
     "format-staged": "pretty-quick --staged --no-restage --bail",
     "format-check": "prettier --check '{.,pages/**,content/docs/**,src/**}/*.{js,md,json}'",
-    "lint-check": "eslint --ext .json,.js src pages",
+    "lint-check": "eslint --ext .json,.js src middleware",
     "format-all": "prettier --write '{.,pages/**,content/docs/**,src/**}/*.{js,md,json}'",
     "format": "prettier --write",
     "link-check": "scripts/link-check-git-all.sh",
