@@ -20,7 +20,7 @@ However, these types of file links can be enabled with `dvc config cache`
 (`cache.type` config option).
 
 Enabling hardlinks or symlinks makes the tracked data files in the workspace
-read-only. (This prevent users from accidentally corrupting the cache by
+read-only. (This prevents users from accidentally corrupting the cache by
 modifying file links.)
 
 Running `dvc unprotect` guarantees that the target files or directories
