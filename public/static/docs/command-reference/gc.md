@@ -19,21 +19,13 @@ currently in the <abbr>workspace</abbr>. To avoid accidentally deleting data,
 this command requires the explicit use of [option](#options) flags to determine
 it's behavior (i.e. what "garbage" to collect).
 
-By default, this command won't delete anything at all to make it safe and
-explicit. However, you can use different flags to change the behavior.
-
-Using the `--workspace` or `-w` option, it will only clean up the local cache,
-which is typically located on the same machine as the <abbr>DVC project</abbr>
-in question. This is an aggessive behavior that usually helps to free up disk
-space.
-
 There are important things to note when using Git to version the project:
 
 - If the cache/remote holds several versions of the same data, all except the
   current one will be deleted.
-- Use the `--all-branches`/`--all-tags`/`--all-commits` options to avoid
-  collecting data referenced in the tips of all branches or all tags,
-  respectively.
+- Use the `--workspace/--all-branches`/`--all-tags`/`--all-commits` options to
+  avoid collecting data referenced in the workspace, tips of all branches or all
+  tags or all of the commits, respectively.
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used.
@@ -44,6 +36,10 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
 `dvc push`.
 
 ## Options
+
+- `-w`, `--workspace` - keep cached objects referenced in the current workspace
+  This option is enabled automatically if
+  `--all-tags`/`--all-branches`/`--all-commits` are used.
 
 - `-a`, `--all-branches` - keep cached objects referenced in all Git branches as
   well as in the workspace (implies `-w`). Useful for keeping data for all the
@@ -59,20 +55,17 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
   as well as in the workspace (implies `-w`). Useful for keeping data for all
   experiment versions ever used in the history of the project.
 
-- `-w`, `--workspace` - remove files in local cache that are not referenced in
-  the workspace. **This behavior is dangerous.** This option is enabled
-  automatically if `--all-tags` or `--all-branches` are used.
-
 - `-p <paths>`, `--projects <paths>` - if a single remote or a single cache is
   shared among different projects (e.g. a configuration like the one described
   [here](/doc/use-cases/shared-development-server)), this option can be used to
   specify a list of them (each project is a path) to keep data that is currently
   referenced from them.
 
-- `-c`, `--cloud` - remove files in remote storage in addition to local cache.
-  **This behavior is dangerous.** It removes datasets, models or other files
-  that are not linked in the current commit (unless `-a` or `-T` are also used).
-  The default remote is used unless a specific one is given with `-r`.
+- `-c`, `--cloud` - remove files in remote storage in addition to the local
+  cache. **This behavior is dangerous.** It removes datasets, models or other
+  files that are not referenced in the current workspace (unless
+  `-a`/`-T`/`--all-commits` are also used). The default remote is used unless a
+  specific one is given with `-r`.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to collect unused objects from
