@@ -55,7 +55,7 @@ especially for large files (several GBs or more).
 
 File link type benefits summary:
 
-| `cache.type` | speed | space | no read-only links |
+| `cache.type` | speed | space | editable |
 | ------------ | ----- | ----- | ------------------ |
 | `reflink`    | x     | x     | x                  |
 | `hardlink`   | x     | x     |                    |
