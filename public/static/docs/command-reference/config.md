@@ -114,18 +114,9 @@ for more details.) This section contains the following options:
   > option, properly transforming paths relative to the current working
   > directory into paths relative to the config file location.
 
-- `cache.protected` - make DVC-tracked files read-only. Possible values are
-  `true` or `false` (default). Run `dvc checkout` after changing the value of
-  this option for the change to go into effect.
-
-  Due to the way DVC handles linking between the data files in the cache and
-  their counterparts in the <abbr>workspace</abbr>, it's easy to accidentally
-  corrupt the cached file by editing or overwriting it. Turning this config
-  option on forces you to run `dvc unprotect` before updating a file, providing
-  an additional layer of security to your data.
-
-  We highly recommend enabling `cache.protected` when `cache.type` is set to
-  `hardlink` or `symlink`.
+- `cache.protected` (_deprecated_) - when using `hardlink` or `symlink` as
+  `cache.type`, the file links will automatically be protected (read-only). Use
+  `dvc unprotect` if you need to update them.
 
 - `cache.type` - link type that DVC should use to link data files from cache to
   the workspace. Possible values: `reflink`, `symlink`, `hardlink`, `copy` or a
@@ -136,9 +127,9 @@ for more details.) This section contains the following options:
   to protect user from accidental cache and repository corruption.
 
   ⚠️ If you manually set `cache.type` to `hardlink` or `symlink`, **you will
-  corrupt the cache** if you modify tracked data files in the workspace. See the
-  `cache.protected` option above, and corresponding `dvc unprotect` command to
-  modify files safely.
+  corrupt the cache** if you modify tracked data files in the workspace. In an
+  attempt to prevent that, DVC will automatically protect those file links (make
+  them read-only). Use `dvc unprotect` to be able to modify them safely.
 
   There are pros and cons to different link types. Refer to
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
@@ -275,10 +266,4 @@ Set cache type: if `reflink` is not available, use `copy`:
 
 ```dvc
 $ dvc config cache.type reflink,copy
-```
-
-Protect DVC-tracked data files by making them read-only:
-
-```dvc
-$ dvc config cache.protected true
 ```
