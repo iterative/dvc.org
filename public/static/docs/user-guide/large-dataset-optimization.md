@@ -39,12 +39,12 @@ the benefits and none of the worries, they're not commonly supported in most
 platforms yet. Hard/soft links optimize **speed** and **space** in the file
 system, but may break your workflow since updating hard/sym-linked files tracked
 by DVC in the <abbr>workspace</abbr> causes <abbr>cache</abbr> corruption. To
-protect against that, DVC makes hardlinks and symlinks links read-only, which requires the user to
-use `dvc unprotect` before modifying them.
+protect against that, DVC makes hardlinks and symlinks links read-only, which
+requires the user to use `dvc unprotect` before modifying them.
 
-Finally, a 4th "linking" alternative
-is to actually copy files from/to the cache, which is safe but inefficient –
-especially for large files (several GBs or more).
+Finally, a 4th "linking" alternative is to actually copy files from/to the
+cache, which is safe but inefficient – especially for large files (several GBs
+or more).
 
 > Some versions of Windows (e.g. Windows Server 2012+ and Windows 10 Enterprise)
 > support hard or soft links on the
@@ -56,11 +56,11 @@ especially for large files (several GBs or more).
 File link type benefits summary:
 
 | `cache.type` | speed | space | editable |
-| ------------ | ----- | ----- | ------------------ |
-| `reflink`    | x     | x     | x                  |
-| `hardlink`   | x     | x     |                    |
-| `symlink`    | x     | x     |                    |
-| `copy`       |       |       | x                  |
+| ------------ | ----- | ----- | -------- |
+| `reflink`    | x     | x     | x        |
+| `hardlink`   | x     | x     |          |
+| `symlink`    | x     | x     |          |
+| `copy`       |       |       | x        |
 
 Each file linking method is further detailed below, in function of their
 efficiency:
