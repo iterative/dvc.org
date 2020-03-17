@@ -127,9 +127,9 @@ for more details.) This section contains the following options:
   to protect user from accidental cache and repository corruption.
 
   ⚠️ If you manually set `cache.type` to `hardlink` or `symlink`, **you will
-  corrupt the cache** if you modify tracked data files in the workspace. In
-  an attempt to prevent that, DVC will automatically protect those file links
-  (make them read-only). Use `dvc unprotect` to be able to modify them safely.
+  corrupt the cache** if you modify tracked data files in the workspace. In an
+  attempt to prevent that, DVC will automatically protect those file links (make
+  them read-only). Use `dvc unprotect` to be able to modify them safely.
 
   There are pros and cons to different link types. Refer to
   [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
