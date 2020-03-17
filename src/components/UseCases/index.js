@@ -24,7 +24,7 @@ import {
 const Heading1 = () => (
   <Top>
     <Icon>
-      <img src="/static/img/save-reprro.svg" width={30} height={30} alt="" />
+      <img src="/img/save-reprro.svg" width={30} height={30} alt="" />
     </Icon>
     <Title>Save and reproduce your experiments</Title>
   </Top>
@@ -33,7 +33,7 @@ const Heading1 = () => (
 const Heading2 = () => (
   <Top>
     <Icon>
-      <img src="/static/img/git-icon.svg" width={30} height={30} alt="" />
+      <img src="/img/git-icon.svg" width={30} height={30} alt="" />
     </Icon>
     <Title>Version control models and data</Title>
   </Top>
@@ -42,7 +42,7 @@ const Heading2 = () => (
 const Heading3 = () => (
   <Top>
     <Icon>
-      <img src="/static/img/share.svg" width={30} height={31} alt="" />
+      <img src="/img/share.svg" width={30} height={31} alt="" />
     </Icon>
     <Title>Establish workflow for deployment & collaboration</Title>
   </Top>

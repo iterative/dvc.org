@@ -4,10 +4,14 @@ import PropTypes from 'prop-types'
 import LocalLink from '../LocalLink'
 
 import { logEvent } from '../../utils/ga'
+import { getFirstPage } from '../../utils/sidebar'
+
+const docsPage = getFirstPage()
 
 import {
   Dropdown,
   DropdownInset,
+  DropdownRootLink,
   DropdownLink,
   DropdownWrapper,
   GetStartedButton,
@@ -30,7 +34,7 @@ export default function Nav({ mobile = false }) {
           Features
         </LocalLink>
         <LocalLink
-          href="/doc"
+          href={docsPage}
           as={Link}
           onClick={() => logEvent('menu', 'doc')}
         >
@@ -45,7 +49,7 @@ export default function Nav({ mobile = false }) {
         <DropdownWrapper>
           <LocalLink
             href="/community"
-            as={Link}
+            as={DropdownRootLink}
             onClick={() => logEvent('menu', 'community')}
           >
             Community
@@ -95,10 +99,10 @@ export default function Nav({ mobile = false }) {
           target="_blank"
           rel="noreferrer noopener"
         >
-          <Image src="/static/img/community/github.svg" />
+          <Image src="/img/community/github.svg" />
         </ImageLink>
         <ImageLink href="/chat" target="_blank" rel="noreferrer noopener">
-          <Image src="/static/img/community/discord.svg" />
+          <Image src="/img/community/discord.svg" />
         </ImageLink>
       </Links>
       <LocalLink

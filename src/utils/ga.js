@@ -1,24 +1,22 @@
-import ReactGA from 'react-ga'
+export const logEvent = (eventCategory, eventAction, eventLabel) => {
+  if (!window.ga) return
 
-export const initGA = () => {
-  ReactGA.initialize(`UA-120072346-1`)
+  window.ga('send', {
+    hitType: 'event',
+    eventCategory,
+    eventAction,
+    eventLabel
+  })
 }
 
-export const logPageView = () => {
-  ReactGA.set({ page: window.location.pathname })
-  ReactGA.pageview(window.location.pathname)
-}
+export const logException = (exDescription = '', exFatal = false) => {
+  if (!window.ga) return
 
-export const logEvent = (category, action, label) => {
-  if (category && action && label) {
-    ReactGA.event({ category, action, label })
-  } else if (category && action) {
-    ReactGA.event({ category, action })
-  }
-}
-
-export const logException = (description = '', fatal = false) => {
-  if (description) {
-    ReactGA.exception({ description, fatal })
+  if (exDescription) {
+    window.ga('send', {
+      hitType: 'exception',
+      exDescription,
+      exFatal
+    })
   }
 }
