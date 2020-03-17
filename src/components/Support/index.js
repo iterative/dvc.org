@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Page from '../Page'
 import Hero from '../Hero'
 import TrySection from '../TrySection'
 import Popover from '../Popover'
@@ -25,7 +24,7 @@ import {
 
 export default function SupportPage() {
   return (
-    <Page stickHeader>
+    <>
       <Hero>
         <SupportHero>
           <Heading>Questions, feedback, or just need to get in touch?</Heading>
@@ -124,6 +123,6 @@ export default function SupportPage() {
         </Features>
       </Container>
       <TrySection title="Don't know where to start?" buttonText="Get Started" />
-    </Page>
+    </>
   )
 }

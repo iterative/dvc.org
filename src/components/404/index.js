@@ -1,12 +1,11 @@
 import React from 'react'
-import Page from '../Page'
 import Subscribe from '../Subscribe'
 
 import { Wrapper, Title, Content } from './styles'
 
 function Page404() {
   return (
-    <Page stickHeader={true}>
+    <>
       <Wrapper>
         <Title>Not Found</Title>
         <Content>
@@ -14,7 +13,7 @@ function Page404() {
         </Content>
       </Wrapper>
       <Subscribe />
-    </Page>
+    </>
   )
 }
 

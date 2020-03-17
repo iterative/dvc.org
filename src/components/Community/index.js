@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Page from '../Page'
 import Subscribe from '../Subscribe'
 
 import CommunityContribute from './Contribute'
@@ -19,7 +18,7 @@ const themes = {
 
 export default function Community() {
   return (
-    <Page stickHeader={true}>
+    <>
       <PageWrapper>
         <CommunityHero />
         <CommunityMeet theme={themes.purple} />
@@ -28,6 +27,6 @@ export default function Community() {
         <CommunityEvents theme={themes.purple} />
         <Subscribe />
       </PageWrapper>
-    </Page>
+    </>
   )
 }

@@ -1,6 +1,5 @@
 import React from 'react'
 
-import Page from '../Page'
 import Hero from '../Hero'
 import FeaturesHero from '../FeaturesHero'
 import TrySection from '../TrySection'
@@ -9,7 +8,7 @@ import { Container, Description, Feature, Features, Icon, Name } from './styles'
 
 export default function FeaturesPage() {
   return (
-    <Page stickHeader={true}>
+    <>
       <Hero>
         <FeaturesHero />
       </Hero>
@@ -152,6 +151,6 @@ export default function FeaturesPage() {
         </Features>
       </Container>
       <TrySection title="Ready to give it a try?" />
-    </Page>
+    </>
   )
 }
