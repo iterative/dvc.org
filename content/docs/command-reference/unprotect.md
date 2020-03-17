@@ -1,7 +1,7 @@
 # unprotect
 
-Unprotect tracked files or directories (when the <abbr>cache</abbr> protected
-mode has been enabled with `dvc config cache`).
+Unprotect tracked files or directories (when hardlinks or symlinks have been
+enabled with `dvc config cache.type`).
 
 ## Synopsis
 
@@ -19,9 +19,9 @@ to link tracked data files from the cache to the <abbr>workspace</abbr>.
 However, these types of file links can be enabled with `dvc config cache`
 (`cache.type` config option).
 
-Enabling hardlinks or symlinks also requires the `cache.protected` mode to be
-turned on, which makes the tracked data files in the workspace read-only. (This
-prevent users from accidentally corrupting the cache by modifying file links.)
+Enabling hardlinks or symlinks makes the tracked data files in the workspace
+read-only. (This prevents users from accidentally corrupting the cache by
+modifying file links.)
 
 Running `dvc unprotect` guarantees that the target files or directories
 (`targets`) in the workspace are physically "unlinked" from the cache and can be
@@ -30,8 +30,7 @@ safely updated. Read the
 more on this process.
 
 `dvc unprotect` can be an expensive operation (involves copying data). Check
-first whether your task matches one of the cases that are considered safe, even
-when cache protected mode is enabled:
+first whether your task matches one of the cases that are considered safe:
 
 - Adding more files to a directory input dataset (say, images or videos)
 - Deleting files from a directory dataset
@@ -47,10 +46,10 @@ when cache protected mode is enabled:
 
 ## Examples
 
-Enable cache protected mode is enabled:
+Enable symlinks:
 
 ```dvc
-$ dvc config cache.protected true
+$ dvc config cache.type symlink
 ```
 
 Track a data file with DVC:
