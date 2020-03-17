@@ -31,7 +31,7 @@ export default function Layout(props) {
 
   useAnchorNavigation()
 
-  if (/^\/doc/.test(props.location.pathname)) {
+  if (!props.pageContext.is404 && /^\/doc/.test(props.location.pathname)) {
     LayoutComponent = DocLayout
   }
 
@@ -46,5 +46,8 @@ export default function Layout(props) {
 Layout.propTypes = {
   location: PropTypes.shape({
     pathname: PropTypes.string.isRequired
+  }),
+  pageContext: PropTypes.shape({
+    is404: PropTypes.bool
   })
 }

@@ -104,3 +104,12 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   })
 }
+
+exports.onCreatePage = ({ page, actions }) => {
+  if (/^\/404/.test(page.path)) {
+    const newPage = { ...page, context: { ...page.context, is404: true } }
+
+    actions.deletePage(page)
+    actions.createPage(newPage)
+  }
+}
