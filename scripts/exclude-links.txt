@@ -27,7 +27,7 @@ https://example.com/path/to/file
 https://github.com/$
 https://github.com/example/project.git
 https://github.com/example/registry
-https://github.com/iterative/dvc.org/blob/master/сontent$
+https://github.com/iterative/dvc.org/blob/master/content$
 https://github.com/iterative/dvc/releases/download/$
 https://man.dvc.org/foo
 https://marketplace.visualstudio.com/items?itemName=stkb.rewrap

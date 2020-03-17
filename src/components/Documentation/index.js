@@ -8,7 +8,7 @@ import { getItemByPath } from '../../utils/sidebar'
 
 export default function Documentation({ htmlAst, path, headings }) {
   const { source, prev, next, tutorials } = getItemByPath(path)
-  const githubLink = `https://github.com/iterative/dvc.org/blob/master/сontent${source}`
+  const githubLink = `https://github.com/iterative/dvc.org/blob/master/content${source}`
 
   return (
     <>
