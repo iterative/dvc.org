@@ -9,14 +9,14 @@ export default function TrySection({ title, buttonText = 'Get Started' }) {
   return (
     <Wrapper>
       <Container>
-        <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
+        <Glyph src="/img/glyph-3.svg" gid={'topleft'} />
         <Title>{title}</Title>
         <Buttons>
-          <LocalLink href="/doc/get-started" as={Button} first>
+          <LocalLink href="/doc/get-started" as={Button} first="true">
             {buttonText}
           </LocalLink>
         </Buttons>
-        <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
+        <Glyph src="/img/glyph-4.svg" gid={'rigthbottom'} />
       </Container>
     </Wrapper>
   )

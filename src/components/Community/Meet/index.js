@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 import CommunityBlock from '../Block'
-import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
 import { pluralizeComments } from '../../../utils/i18n'
@@ -17,6 +16,7 @@ const { description, mobileDescription, title } = data.section.meet
 import { Stats, StatLabel, StatLine, StatValue } from './styles'
 
 import {
+  Button,
   Comments,
   HeaderLink,
   Item,
@@ -119,11 +119,11 @@ export default function CommunityMeet({ theme }) {
     <Wrapper>
       <CommunitySection
         anchor="meet"
-        background="/static/img/community/meet_bg.jpg"
+        background="/img/community/meet_bg.jpg"
         color={theme.color}
         contentVisible={true}
         description={description}
-        icon="/static/img/community/meet.svg"
+        icon="/img/community/meet.svg"
         mobileDescription={mobileDescription}
         title={title}
       >
@@ -141,7 +141,7 @@ export default function CommunityMeet({ theme }) {
                 </HeaderLink>
               }
               action={
-                <CommunityButton
+                <Button
                   theme={theme}
                   href="/chat"
                   target="_black"
@@ -149,9 +149,9 @@ export default function CommunityMeet({ theme }) {
                   onClick={logDiscord}
                 >
                   Open Chat
-                </CommunityButton>
+                </Button>
               }
-              icon="/static/img/community/discord.svg"
+              icon="/img/community/discord.svg"
             >
               <Meta>
                 Need urgent help? Ask advice from experienced developers online
@@ -182,7 +182,7 @@ export default function CommunityMeet({ theme }) {
               }
               action={
                 topics && (
-                  <CommunityButton
+                  <Button
                     theme={theme}
                     href="https://discuss.dvc.org"
                     target="_black"
@@ -190,10 +190,10 @@ export default function CommunityMeet({ theme }) {
                     onClick={logTopicAll}
                   >
                     Read All Topics
-                  </CommunityButton>
+                  </Button>
                 )
               }
-              icon="/static/img/community/discourse.svg"
+              icon="/img/community/discourse.svg"
             >
               {!topicsReady && <Placeholder>Loading...</Placeholder>}
               {topicsError && (
@@ -223,7 +223,7 @@ export default function CommunityMeet({ theme }) {
               }
               action={
                 issues && (
-                  <CommunityButton
+                  <Button
                     theme={theme}
                     href="https://github.com/iterative/dvc/issues"
                     target="_black"
@@ -231,10 +231,10 @@ export default function CommunityMeet({ theme }) {
                     onClick={logIssueAll}
                   >
                     Read All Issues
-                  </CommunityButton>
+                  </Button>
                 )
               }
-              icon="/static/img/community/github.svg"
+              icon="/img/community/github.svg"
             >
               {!issuesReady && <Placeholder>Loading...</Placeholder>}
               {issuesError && (

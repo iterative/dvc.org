@@ -5,7 +5,7 @@ import includes from 'lodash.includes'
 import DesktopView from './DesktopView'
 import MobileView from './MobileView'
 
-import glossary from '../../../public/static/docs/glossary'
+import glossary from '../../../content/docs/glossary'
 
 import { OnlyDesktopInline, OnlyMobileInline } from '../../styles'
 
@@ -21,9 +21,7 @@ class Tooltip extends Component {
       if (
         includes(
           glossaryItem.match.map(word => word.toLowerCase()),
-          // In v4 text field in a React.Node,
-          // so to get string we need to use it's children
-          this.props.text.props.children.replace(/\n/g, ' ').toLowerCase()
+          this.props.text.replace(/\n/g, ' ').toLowerCase()
         )
       ) {
         this.setState({
@@ -43,7 +41,7 @@ class Tooltip extends Component {
             <DesktopView
               description={this.state.description}
               header={this.state.header}
-              id={this.props.id}
+              id={this.props.text}
               text={this.props.text}
             />
           </OnlyDesktopInline>
@@ -63,7 +61,6 @@ class Tooltip extends Component {
 }
 
 Tooltip.propTypes = {
-  id: PropTypes.string.isRequired,
   text: PropTypes.node.isRequired
 }
 

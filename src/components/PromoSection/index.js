@@ -12,7 +12,7 @@ export default function PromoSection() {
   return (
     <Wrapper>
       <Container id="video">
-        <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
+        <Glyph src="/img/glyph-3.svg" gid={'topleft'} />
         <Title>For data scientists, by data scientists</Title>
         <Buttons>
           <LocalLink
@@ -27,7 +27,7 @@ export default function PromoSection() {
             Full Features
           </LocalLink>
         </Buttons>
-        <Glyph src="/static/img/glyph-4.svg" gid={'rigthbottom'} />
+        <Glyph src="/img/glyph-4.svg" gid={'rigthbottom'} />
       </Container>
     </Wrapper>
   )

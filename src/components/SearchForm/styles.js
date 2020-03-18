@@ -15,7 +15,7 @@ export const Input = styled.input`
   border: solid 1px #dbe4ea;
   padding-left: 48px;
   padding-right: 24px;
-  background-image: url('/static/img/search.svg');
+  background-image: url('/img/search.svg');
   background-repeat: no-repeat;
   background-position: 15px center;
   font-size: 16px;

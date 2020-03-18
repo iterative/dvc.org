@@ -16,7 +16,7 @@ https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA
 https://dvc.org$
 https://dvc.org/doc/command-reference/foo
 https://dvc.org/foo
-https://dvc.org/static/img/<filename>.gif
+https://dvc.org/img/<filename>.gif
 https://example.com/data.txt
 https://example.com/foo
 https://dvc.org/foo/bar?baz
@@ -27,7 +27,7 @@ https://example.com/path/to/file
 https://github.com/$
 https://github.com/example/project.git
 https://github.com/example/registry
-https://github.com/iterative/dvc.org/blob/master/public$
+https://github.com/iterative/dvc.org/blob/master/content$
 https://github.com/iterative/dvc/releases/download/$
 https://man.dvc.org/foo
 https://marketplace.visualstudio.com/items?itemName=stkb.rewrap

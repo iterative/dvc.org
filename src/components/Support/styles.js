@@ -126,7 +126,7 @@ export const DiscrodWidget = styled.img`
   width: 50px;
   height: 50px;
   cursor: pointer;
-  mask-image: url('/static/img/support/discord.svg');
+  mask-image: url('/img/support/discord.svg');
   mask-repeat: no-repeat;
   mask-position: center;
   background-color: #b88eeb;

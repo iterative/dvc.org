@@ -5,6 +5,9 @@ import PropTypes from 'prop-types'
 import { Element } from 'react-scroll'
 import Slider from 'react-slick'
 
+import 'slick-carousel/slick/slick.css'
+import 'slick-carousel/slick/slick-theme.css'
+
 import LocalLink from '../LocalLink'
 
 import { OnlyDesktop, OnlyMobile } from '../../styles'
@@ -29,12 +32,7 @@ const LearnMore = ({ href }) => (
   <LearnMoreArea>
     <LocalLink href={href}>
       <span>Learn&nbsp;more</span>
-      <img
-        src="/static/img/learn_more_arrow.svg"
-        width={18}
-        height={18}
-        alt=""
-      />
+      <img src="/img/learn_more_arrow.svg" width={18} height={18} alt="" />
     </LocalLink>
   </LearnMoreArea>
 )
@@ -130,7 +128,7 @@ export default class DiagramSection extends Component {
 
           <OnlyDesktop>
             <Graphic>
-              <img src="/static/img/graphic.png" alt="" />
+              <img src="/img/graphic.png" alt="" />
             </Graphic>
             <Columns>
               <ColumnOne />
@@ -144,23 +142,17 @@ export default class DiagramSection extends Component {
               <Slider {...imagesSliderProps}>
                 <Slide>
                   <img
-                    src="/static/img/experiments.png"
+                    src="/img/experiments.png"
                     alt="ML project version control"
                   />
                   <ColumnOne fullWidth />
                 </Slide>
                 <Slide>
-                  <img
-                    src="/static/img/graph.png"
-                    alt="ML experiment management"
-                  />
+                  <img src="/img/graph.png" alt="ML experiment management" />
                   <ColumnTwo fullWidth />
                 </Slide>
                 <Slide>
-                  <img
-                    src="/static/img/result.png"
-                    alt="Deployment & Collaboration"
-                  />
+                  <img src="/img/result.png" alt="Deployment & Collaboration" />
                   <ColumnThree fullWidth />
                 </Slide>
               </Slider>
