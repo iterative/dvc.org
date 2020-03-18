@@ -1,7 +1,10 @@
 /* eslint jsx-a11y/html-has-lang:0 */
 
 import React from 'react'
+import rejectionTracking from 'promise/lib/rejection-tracking'
 import PropTypes from 'prop-types'
+
+rejectionTracking.enable()
 
 export default function HTML(props) {
   return (
@@ -12,14 +15,6 @@ export default function HTML(props) {
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
-        />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.css"
-        />
-        <script
-          type="text/javascript"
-          src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.js"
         />
         {props.headComponents}
       </head>
