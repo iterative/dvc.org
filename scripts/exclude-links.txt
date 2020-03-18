@@ -16,7 +16,6 @@ https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA
 https://dvc.org$
 https://dvc.org/doc/command-reference/foo
 https://dvc.org/foo
-https://dvc.org/img/<filename>.gif
 https://example.com/data.txt
 https://example.com/foo
 https://dvc.org/foo/bar?baz
