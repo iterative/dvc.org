@@ -49,8 +49,9 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   `--all-branches`, or `--all-commits` are used.
 
 - `-a`, `--all-branches` - keep cached objects referenced in all Git branches as
-  well as in the workspace (implies `-w`). Useful for keeping data for all the
-  latest experiment versions if branches are used to track those.
+  well as in the workspace (implies `-w`). Useful if branches are used to
+  track
+  different experiments.
 
 - `-T`, `--all-tags` - the same as `-a` above, but applies to Git tags as well
   as in the workspace (implies `-w`). Useful if tags are used to track
