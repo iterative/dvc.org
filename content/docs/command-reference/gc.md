@@ -54,7 +54,7 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   different experiments.
 
 - `-T`, `--all-tags` - the same as `-a` above, but applies to Git tags as well
-  as in the workspace (implies `-w`). Useful if tags are used to track
+  as the workspace (implies `-w`). Useful if tags are used to track
   "checkpoints" of an experiment or project. Note that both options can be
   combined, for example using the `-aT` flag.
 
