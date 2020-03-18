@@ -1,4 +1,5 @@
 import React from 'react'
+import Promise from 'promise'
 import PropTypes from 'prop-types'
 import throttle from 'lodash.throttle'
 
@@ -17,39 +18,24 @@ import {
 const ROOT_ELEMENT = 'bodybag'
 const MARKDOWN_ROOT = '#markdown-root'
 
-const imageChecker = (images, callback) => {
-  // IE can't use forEach on array-likes
-  const imagesArray = Array.prototype.slice.call(images)
+const imageLoaded = url =>
+  new Promise(resolve => {
+    let img = new Image()
 
-  if (imagesArray.length) {
-    let counter = imagesArray.length
-
-    const unsubscribe = () => {
-      imagesArray.forEach(img => {
-        img.removeEventListener('load', decrement)
-        img.removeEventListener('error', decrement)
-      })
-    }
-
-    const decrement = () => {
-      counter -= 1
-
-      if (!counter) {
-        callback()
-        unsubscribe()
-      }
-    }
-
-    imagesArray.forEach(img => {
-      img.addEventListener('load', decrement)
-      img.addEventListener('error', decrement)
+    img.addEventListener('load', function onLoad() {
+      resolve()
+      img.removeEventListener('load', onLoad)
+      img = null
     })
+    img.addEventListener('error', function onError() {
+      resolve()
+      img.removeEventListener('error', onError)
+      img = null
+    })
+    img.src = url
+  })
 
-    setTimeout(() => {
-      if (counter) unsubscribe()
-    }, 5000)
-  }
-}
+const allImagesLoaded = urls => Promise.all(urls.map(imageLoaded))
 
 export default class RightPanel extends React.PureComponent {
   state = {
@@ -80,10 +66,12 @@ export default class RightPanel extends React.PureComponent {
   }
 
   initHeadingsPosition = () => {
-    const images = document.querySelectorAll(`${MARKDOWN_ROOT} img`)
+    const imagesUrls = Array.from(
+      document.querySelectorAll(`${MARKDOWN_ROOT} img`)
+    ).map(img => img.src)
 
-    if (images.length) {
-      imageChecker(images, this.updateHeadingsPosition)
+    if (imagesUrls.length) {
+      allImagesLoaded(imagesUrls).then(this.updateHeadingsPosition)
     } else {
       this.updateHeadingsPosition()
     }
