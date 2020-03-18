@@ -19,7 +19,7 @@ const WatchButton = ({ onClick, disabled }) => (
   <Button onClick={onClick} disabled={disabled}>
     <ButtonIcon>
       <img
-        src="/static/img/watch_white.svg"
+        src="/img/watch_white.svg"
         alt="Watch video"
         width={20}
         height={20}

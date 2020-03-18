@@ -1,7 +1,7 @@
 {
   "hero": {
-    "pictureDesktop": "/static/img/community/banner.png",
-    "pictureMobile": "/static/img/community/banner-mobile.png",
+    "pictureDesktop": "/img/community/banner.png",
+    "pictureMobile": "/img/community/banner-mobile.png",
     "url": "https://www.mlprague.com/#schedule-saturday"
   },
   "section": {
@@ -49,21 +49,21 @@
       "title": "Remote training with GitLab-CI and DVC",
       "author": "Marcel Mikl and Bert Besser",
       "date": "2020-01-28",
-      "pictureUrl": "/static/img/community/ugc/codecentric.png"
+      "pictureUrl": "/img/community/ugc/codecentric.png"
     },
     {
       "url": "https://martinfowler.com/articles/cd4ml.html",
       "title": "Continuous Delivery for Machine Learning",
       "author": "Danilo Sato, Arif Wider and Christoph Windheuser",
       "date": "2019-09-20",
-      "pictureUrl": "/static/img/community/ugc/fowler_icon.ico"
+      "pictureUrl": "/img/community/ugc/fowler_icon.ico"
     },
     {
       "url": "https://towardsdatascience.com/mlops-reducing-the-technical-debt-of-machine-learning-dac528ef39de",
       "title": "MLOps: Reducing the Technical Debt of Machine Learning",
       "author": "Saurav Chakravorty",
       "date": "2019-12-21",
-      "pictureUrl": "/static/img/community/ugc/tds_logo.png"
+      "pictureUrl": "/img/community/ugc/tds_logo.png"
     }
   ],
   "events": [
@@ -80,7 +80,7 @@
       "description": "Paweł Redzyński will talk about open source tools for versioning machine learning projects",
       "city": "Prague",
       "date": "2020-03-20",
-      "pictureUrl": "/static/img/community/events/mlprague.jpg"
+      "pictureUrl": "/img/community/events/mlprague.jpg"
     },
     {
       "url": "https://divops.org",
@@ -88,7 +88,7 @@
       "description": "Elle O'Brien is talking about open source software in the growing field of MLOps.",
       "city": "Remote",
       "date": "2020-03-25",
-      "pictureUrl": "/static/img/community/events/divops.jpg"
+      "pictureUrl": "/img/community/events/divops.jpg"
     }
   ],
   "stats": {

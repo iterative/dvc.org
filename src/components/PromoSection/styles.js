@@ -59,7 +59,7 @@ export const Button = styled.a`
   color: #ffffff;
 
   background-color: #945dd6;
-  background: url('/static/img/arrow_right_white.svg') right center no-repeat;
+  background: url('/img/arrow_right_white.svg') right center no-repeat;
   background-position-x: 147px;
   transition: 0.2s background-color ease-out;
 
@@ -76,7 +76,7 @@ export const Button = styled.a`
     background-color: #ffffff;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
 
-    background-image: url('/static/img/arrow_right_dark.svg');
+    background-image: url('/img/arrow_right_dark.svg');
     transition: 0.2s background-color ease-out;
 
     &:hover {

@@ -14,12 +14,12 @@ export const Dropdown = styled.div`
   left: 23px;
   border-style: solid;
   border-width: 19px 10px 11px 37.5px;
-  border-image-source: url(/static/img/community/menu.png);
+  border-image-source: url(/img/community/menu.png);
   border-image-slice: 38 20 22 75;
   border-image-width: 19px 10px 11px 37.5px;
   border-image-repeat: repeat repeat;
 
-  ${DropdownWrapper}:hover & {
+  &:hover {
     display: block;
   }
 `
@@ -75,6 +75,12 @@ export const Link = styled.a`
 
   ${DropdownWrapper} &:hover {
     border-color: #fff;
+  }
+`
+
+export const DropdownRootLink = styled(Link)`
+  &:hover + ${Dropdown} {
+    display: block;
   }
 `
 

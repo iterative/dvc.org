@@ -1,45 +1,53 @@
 import React, { useEffect } from 'react'
+import { useLocation } from '@reach/router'
 import PropTypes from 'prop-types'
-import { useRouter } from 'next/router'
+import { GlobalStyle } from '../../styles'
 
-import TopMenu from '../TopMenu'
-import Footer from '../Footer'
-import HamburgerMenu from '../HamburgerMenu'
+import MainLayout from '../MainLayout'
+import DocLayout from '../DocLayout'
 
-import { initGA, logPageView } from '../../utils/ga'
+import './fonts/fonts.css'
 
-import { Wrapper, Bodybag, ModalRoot } from './styles'
-
-export default function Layout({ children, enableSmoothScroll, isDocPage }) {
-  const router = useRouter()
+const useAnchorNavigation = () => {
+  const location = useLocation()
 
   useEffect(() => {
-    if (!window.GA_INITIALIZED) {
-      initGA()
-      window.GA_INITIALIZED = true
-    }
+    if (location.hash) {
+      const node = document.querySelector(location.hash)
 
-    // Apperently next/head is using promises and because of that
-    // it updates after page is already rendered and useEffect is called,
-    // because of that we use rAF to place GA call after head update
-    requestAnimationFrame(() => logPageView())
-  }, [router.asPath])
+      if (node) {
+        node.scrollIntoView()
+      }
+    } else {
+      document
+        .getElementById('bodybag')
+        .scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [location.href])
+}
+
+export default function Layout(props) {
+  let LayoutComponent = MainLayout
+
+  useAnchorNavigation()
+
+  if (!props.pageContext.is404 && /^\/doc/.test(props.location.pathname)) {
+    LayoutComponent = DocLayout
+  }
 
   return (
-    <Wrapper>
-      <TopMenu isDocPage={isDocPage} />
-      <HamburgerMenu />
-      <Bodybag id="bodybag" enableSmoothScroll={enableSmoothScroll}>
-        {children}
-        <Footer isDocPage={isDocPage} />
-      </Bodybag>
-      <ModalRoot id="modal-root"></ModalRoot>
-    </Wrapper>
+    <>
+      <GlobalStyle />
+      <LayoutComponent {...props} />
+    </>
   )
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-  enableSmoothScroll: PropTypes.bool,
-  isDocPage: PropTypes.bool
+  location: PropTypes.shape({
+    pathname: PropTypes.string.isRequired
+  }),
+  pageContext: PropTypes.shape({
+    is404: PropTypes.bool
+  })
 }

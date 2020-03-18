@@ -3,6 +3,8 @@ import PropTypes from 'prop-types'
 
 import LocalLink from '../LocalLink'
 
+import { getFirstPage } from '../../utils/sidebar'
+
 import {
   Column,
   Columns,
@@ -15,6 +17,8 @@ import {
   Top,
   Wrapper
 } from './styles'
+
+const docsPage = getFirstPage()
 
 const SocialLink = ({ src, href, children }) => (
   <Link src={src} href={href}>
@@ -35,7 +39,7 @@ export default function Footer(props) {
         <Top>
           <LocalLink href="/" as={Logo}>
             <img
-              src="/static/img/logo_white.png"
+              src="/img/logo_white.png"
               alt="site logo"
               width={36}
               height={23}
@@ -66,7 +70,7 @@ export default function Footer(props) {
               <LocalLink href="/community" as={Link}>
                 Community
               </LocalLink>
-              <LocalLink href="/doc" as={Link}>
+              <LocalLink href={docsPage} as={Link}>
                 Documentation
               </LocalLink>
             </Links>
@@ -75,10 +79,7 @@ export default function Footer(props) {
             <Heading>Company</Heading>
             <Links>
               <Link href="https://blog.dvc.org/">Blog</Link>
-              <SocialLink
-                src="/static/img/iterative.png"
-                href="https://iterative.ai/"
-              >
+              <SocialLink src="/img/iterative.png" href="https://iterative.ai/">
                 Iterative.ai
               </SocialLink>
               <Link href="/doc/user-guide/privacy">Privacy Policy</Link>
@@ -88,18 +89,18 @@ export default function Footer(props) {
             <Heading>Social</Heading>
             <Links>
               <SocialLink
-                src="/static/img/twitter.png"
+                src="/img/twitter.png"
                 href="https://twitter.com/DVCorg"
               >
                 Twitter
               </SocialLink>
               <SocialLink
-                src="/static/img/github.png"
+                src="/img/github.png"
                 href="https://github.com/iterative/dvc"
               >
                 GitHub
               </SocialLink>
-              <SocialLink src="/static/img/discord.png" href="/chat">
+              <SocialLink src="/img/discord.png" href="/chat">
                 Discord
               </SocialLink>
             </Links>

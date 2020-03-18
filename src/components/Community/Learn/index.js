@@ -5,15 +5,16 @@ import format from 'date-fns/format'
 import LocalLink from '../../LocalLink'
 
 import { logEvent } from '../../../utils/ga'
+import { getFirstPage } from '../../../utils/sidebar'
 
 import CommunityBlock from '../Block'
-import CommunityButton from '../Button'
 import CommunitySection from '../Section'
 
 import { usePosts, useCommentsCount } from '../../../utils/api'
 import { pluralizeComments } from '../../../utils/i18n'
 
 import {
+  Button,
   Comments,
   HeaderLink,
   ImageLine,
@@ -32,6 +33,7 @@ import { Image } from './styles'
 
 import data from '../data'
 
+const docsPage = getFirstPage()
 const { description, mobileDescription, title } = data.section.learn
 const { documentation, userContent } = data
 
@@ -160,7 +162,7 @@ function CommunityDocumentation({ url, title, description, color }) {
         href={url}
         as={Link}
         color={color}
-        large
+        large="true"
         onClick={logDocumentation}
       >
         {title}
@@ -184,10 +186,10 @@ export default function CommunityLearn({ theme }) {
     <Wrapper>
       <CommunitySection
         anchor="learn"
-        background="/static/img/community/learn_bg.jpg"
+        background="/img/community/learn_bg.jpg"
         color={theme.color}
         description={description}
-        icon="/static/img/community/learn.svg"
+        icon="/img/community/learn.svg"
         mobileDescription={mobileDescription}
         title={title}
       >
@@ -196,7 +198,7 @@ export default function CommunityLearn({ theme }) {
             <CommunityBlock
               title={
                 <LocalLink
-                  href="/doc"
+                  href={docsPage}
                   as={HeaderLink}
                   onClick={logDocumentationAll}
                 >
@@ -205,8 +207,8 @@ export default function CommunityLearn({ theme }) {
               }
               action={
                 <LocalLink
-                  href="/doc"
-                  as={CommunityButton}
+                  href={docsPage}
+                  as={Button}
                   theme={theme}
                   onClick={logDocumentationAll}
                 >
@@ -237,7 +239,7 @@ export default function CommunityLearn({ theme }) {
               }
               action={
                 posts && (
-                  <CommunityButton
+                  <Button
                     theme={theme}
                     href="https://blog.dvc.org"
                     target="_blank"
@@ -245,7 +247,7 @@ export default function CommunityLearn({ theme }) {
                     onClick={logPostAll}
                   >
                     See all Posts
-                  </CommunityButton>
+                  </Button>
                 )
               }
             >

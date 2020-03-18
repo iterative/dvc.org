@@ -16,9 +16,9 @@ finder(){  # expects list of files
   # explicit links in markdown
   pcregrep -o '(?<=\])\(https?://[^[\]\s]+\)' "$@" | pcregrep -o '\((?:[^)(]*(?R)?)*+\)' | pcregrep -o '(?<=\().*(?=\))'
   # relative links in markdown
-  sed -nr 's/.*]\((\/[^)[:space:]]+).*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
+  sed -nE 's/.*]\((\/[^)[:space:]]+).*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
   # relative links in html
-  sed -nr 's/.*href=["'"'"'](\/[^"'"'"']+?)["'"'"'].*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
+  sed -nE 's/.*href=["'"'"'](\/[^"'"'"']+?)["'"'"'].*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
 }
 checker(){  # expects list of urls
   errors=0
