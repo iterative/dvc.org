@@ -1,9 +1,10 @@
 import React from 'react'
-import Promise from 'promise'
 import PropTypes from 'prop-types'
 import throttle from 'lodash.throttle'
 
 import Tutorials from '../Tutorials'
+
+import { allImagesLoadedInContainer } from '../../../utils/images'
 
 import {
   Description,
@@ -17,25 +18,6 @@ import {
 
 const ROOT_ELEMENT = 'bodybag'
 const MARKDOWN_ROOT = '#markdown-root'
-
-const imageLoaded = url =>
-  new Promise(resolve => {
-    let img = new Image()
-
-    img.addEventListener('load', function onLoad() {
-      resolve()
-      img.removeEventListener('load', onLoad)
-      img = null
-    })
-    img.addEventListener('error', function onError() {
-      resolve()
-      img.removeEventListener('error', onError)
-      img = null
-    })
-    img.src = url
-  })
-
-const allImagesLoaded = urls => Promise.all(urls.map(imageLoaded))
 
 export default class RightPanel extends React.PureComponent {
   state = {
@@ -65,17 +47,10 @@ export default class RightPanel extends React.PureComponent {
     window.removeEventListener('resize', this.updateHeadingsPosition)
   }
 
-  initHeadingsPosition = () => {
-    const imagesUrls = Array.from(
-      document.querySelectorAll(`${MARKDOWN_ROOT} img`)
-    ).map(img => img.src)
-
-    if (imagesUrls.length) {
-      allImagesLoaded(imagesUrls).then(this.updateHeadingsPosition)
-    } else {
-      this.updateHeadingsPosition()
-    }
-  }
+  initHeadingsPosition = () =>
+    allImagesLoadedInContainer(document.querySelector(MARKDOWN_ROOT)).then(
+      this.updateHeadingsPosition
+    )
 
   updateHeadingsPosition = () => {
     const coordinates = this.props.headings.reduce((result, { slug }) => {

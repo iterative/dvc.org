@@ -6,22 +6,24 @@ import { GlobalStyle } from '../../styles'
 import MainLayout from '../MainLayout'
 import DocLayout from '../DocLayout'
 
+import { allImagesLoadedInContainer } from '../../utils/images'
+
 import './fonts/fonts.css'
 
 const useAnchorNavigation = () => {
   const location = useLocation()
 
   useEffect(() => {
+    const bodybag = document.getElementById('bodybag')
+
     if (location.hash) {
       const node = document.querySelector(location.hash)
 
       if (node) {
-        node.scrollIntoView()
+        allImagesLoadedInContainer(bodybag).then(() => node.scrollIntoView())
       }
     } else {
-      document
-        .getElementById('bodybag')
-        .scrollTo({ top: 0, behavior: 'smooth' })
+      bodybag.scrollTo({ top: 0 })
     }
   }, [location.href])
 }
