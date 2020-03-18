@@ -1,4 +1,4 @@
-# Learn DVC
+# DVC Tutorials
 
 The material in this section is designed to help new and intermediate users
 learn about DVC interactively.
