@@ -47,7 +47,6 @@ export const Content = styled.article`
       color: #ccc;
 
       .token.line {
-        font-weight: bold;
         color: #a0a0a0;
       }
 
@@ -108,6 +107,7 @@ export const Content = styled.article`
 
       .token.dvc {
         color: #56b1d0;
+        font-weight: bold;
       }
 
       .token.usage,
