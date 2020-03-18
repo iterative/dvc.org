@@ -65,6 +65,7 @@
     "react-use": "^13.24.0",
     "rehype-react": "^4.0.1",
     "request": "^2.88.0",
+    "serve-handler": "^6.1.2",
     "slick-carousel": "^1.8.1",
     "styled-components": "^4.4.1",
     "styled-reset": "^4.0.8",
