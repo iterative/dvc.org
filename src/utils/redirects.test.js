@@ -138,10 +138,10 @@ describe('getRedirects', () => {
 
     itRedirects('/doc/commands-reference/foo', '/doc/command-reference/foo')
 
-    itRedirects('/doc/tutorial', '/doc/learn')
-    itRedirects('/doc/tutorial/', '/doc/learn')
+    itRedirects('/doc/tutorial', '/doc/tutorials')
+    itRedirects('/doc/tutorial/', '/doc/tutorials')
 
-    itRedirects('/doc/tutorial/bar', '/doc/learn/deep/bar')
+    itRedirects('/doc/tutorial/bar', '/doc/tutorials/deep/bar')
 
     itRedirects(
       '/doc/use-cases/data-and-model-files-versioning',

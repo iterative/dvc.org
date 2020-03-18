@@ -64,8 +64,9 @@ and data `path` fields, and the `outs` section contains the corresponding local
 workspace `path` field. This is enough data about the imported data, to enable
 DVC efficiently determining whether the local copy is out of date.
 
-To actually [track the data](https://dvc.org/doc/learn/get-started/add-files),
-`git add` (and `git commit`) the import stage.
+To actually
+[track the data](https://dvc.org/doc/tutorials/get-started/add-files), `git add`
+(and `git commit`) the import stage.
 
 Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` to update the downloaded
@@ -187,7 +188,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
           tutorial/ver/data.zip
 ```
 
-> Used in our [versioning tutorial](/doc/learn/versioning)
+> Used in our [versioning tutorial](/doc/tutorials/versioning)
 
 Or
 

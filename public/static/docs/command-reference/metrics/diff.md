@@ -70,8 +70,8 @@ They're calculated between two commits (hash, branch, tag, or any
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
 pipeline stages, such as the <abbr>DVC project</abbr> created in our
-[Get Started](/doc/learn/get-started) section. Then we can see what happens with
-`dvc install` in different situations.
+[Get Started](/doc/tutorials/get-started) section. Then we can see what happens
+with `dvc install` in different situations.
 
 <details>
 

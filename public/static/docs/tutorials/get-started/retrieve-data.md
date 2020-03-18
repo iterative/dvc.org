@@ -1,9 +1,9 @@
 # Retrieve Data
 
 > You'll need to complete the
-> [initialization](/doc/learn/get-started/initialize) and
-> [configuration](/doc/learn/get-started/configure) chapters before being able
-> to run the commands explained here.
+> [initialization](/doc/tutorials/get-started/initialize) and
+> [configuration](/doc/tutorials/get-started/configure) chapters before being
+> able to run the commands explained here.
 
 To retrieve data files into the <abbr>workspace</abbr> in your local machine,
 run:

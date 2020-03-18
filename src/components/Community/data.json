@@ -28,12 +28,12 @@
   },
   "documentation": [
     {
-      "url": "/doc/learn/get-started",
+      "url": "/doc/tutorials/get-started",
       "title": "Get started",
       "description": "Reproducible walkthroughs on advanced topics"
     },
     {
-      "url": "/doc/learn",
+      "url": "/doc/tutorials",
       "title": "Learn DVC",
       "description": "Step-by-step introduction to basic DVC features"
     },

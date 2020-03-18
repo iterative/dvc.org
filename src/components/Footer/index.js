@@ -60,7 +60,7 @@ export default function Footer(props) {
               <LocalLink href="/support" as={Link}>
                 Support
               </LocalLink>
-              <LocalLink href="/doc/learn/get-started" as={Link}>
+              <LocalLink href="/doc/tutorials/get-started" as={Link}>
                 Get started
               </LocalLink>
               <LocalLink href="/community" as={Link}>

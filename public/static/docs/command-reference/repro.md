@@ -157,7 +157,7 @@ and only execute the final stage.
 
 For simplicity, let's build a pipeline defined below. (If you want get your
 hands-on something more real, see this shot
-[pipeline tutorial](/doc/learn/pipelines)). It takes this `text.txt` file:
+[pipeline tutorial](/doc/tutorials/pipelines)). It takes this `text.txt` file:
 
 ```
 dvc

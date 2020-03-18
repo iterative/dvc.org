@@ -364,13 +364,13 @@ Here's where the [pipelines](/doc/command-reference/pipeline) feature of DVC
 comes in handy. We touched on it briefly when we described `dvc run` and
 
 `dvc repro`. The next step would be splitting the script into two parts and
-utilizing pipelines. See [this example](/doc/learn/pipelines) to get hands-on
-experience with pipelines, and try to apply it here. Don't hesitate to join our
-[community](/chat) and ask any questions!
+utilizing pipelines. See [this example](/doc/tutorials/pipelines) to get
+hands-on experience with pipelines, and try to apply it here. Don't hesitate to
+join our [community](/chat) and ask any questions!
 
 Another detail we only brushed upon here is the way we captured the
 `metrics.csv` metric file with the `-M` option of `dvc run`. Marking this
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See `dvc metrics`
-and [Compare Experiments](/doc/learn/get-started/compare-experiments) to learn
-more about managing metrics with DVC.
+and [Compare Experiments](/doc/tutorials/get-started/compare-experiments) to
+learn more about managing metrics with DVC.

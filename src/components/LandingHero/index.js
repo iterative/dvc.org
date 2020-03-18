@@ -42,7 +42,7 @@ export default class LandingHero extends Component {
   }
 
   getStarted = () => {
-    window.location = '/doc/learn/get-started'
+    window.location = '/doc/tutorials/get-started'
   }
 
   scrollToVideo = () => {

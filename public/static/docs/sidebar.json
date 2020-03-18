@@ -25,8 +25,8 @@
     ]
   },
   {
-    "slug": "learn",
-    "source": "learn/index.md",
+    "slug": "tutorials",
+    "source": "tutorials/index.md",
     "children": [
       {
         "slug": "get-started",

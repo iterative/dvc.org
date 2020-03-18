@@ -12,7 +12,7 @@ export default function TrySection({ title, buttonText = 'Get Started' }) {
         <Glyph src="/static/img/glyph-3.svg" gid={'topleft'} />
         <Title>{title}</Title>
         <Buttons>
-          <LocalLink href="/doc/learn/get-started" as={Button} first>
+          <LocalLink href="/doc/tutorials/get-started" as={Button} first>
             {buttonText}
           </LocalLink>
         </Buttons>

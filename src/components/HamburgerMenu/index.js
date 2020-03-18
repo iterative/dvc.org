@@ -163,7 +163,7 @@ export default function HamburgerMenu() {
           </Section>
         </Menu>
         <LocalLink
-          href="/doc/learn/get-started"
+          href="/doc/tutorials/get-started"
           as={LinkButton}
           onClick={itemClick('get-started')}
         >
