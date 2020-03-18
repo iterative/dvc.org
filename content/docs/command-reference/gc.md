@@ -1,6 +1,7 @@
 # gc
 
-Remove unused objects from <abbr>cache</abbr> or remote storage.
+Remove unused files and directories from <abbr>cache</abbr> or
+[remote storage](/doc/command-reference/remote).
 
 ## Synopsis
 
@@ -12,39 +13,44 @@ usage: dvc gc [-h] [-q | -v]
 
 ## Description
 
-This command deletes (garbage collects) data files or directories that may exist
-in the cache (or [remote storage](/doc/command-reference/remote) if `-c` is
-used) but no longer referenced in [DVC-files](/doc/user-guide/dvc-file-format)
-currently in the <abbr>workspace</abbr>. To avoid accidentally deleting data,
-this command requires the explicit use of [option](#options) flags to determine
-it's behavior (i.e. what "garbage" to collect).
+This command deletes (garbage collects) data files or directories that exist in
+DVC cache but are no longer needed. With `--cloud` it also removes data in
+[remote storage](/doc/command-reference/remote).
 
-There are important things to note when using Git to version the project:
+To avoid accidentally deleting data, it raises an error and doesn't touch any
+files if no scope options are provided. It means it's user's responsibility to
+explicitly provide the right set of options to specify what data is still in-use
+(so that DVC can figure out what fils can be safely deleted).
 
-- If the cache/remote holds several versions of the same data, all except the
-  current one will be deleted.
-- Use the `--workspace/--all-branches`/`--all-tags`/`--all-commits` options to
-  avoid collecting data referenced in the workspace, tips of all branches or all
-  tags or all of the commits, respectively.
+One of the scope options - `--workspace`, `--all-branches`, `--all-tags`, or
+`--all-commits`, or any combination of them must be provided. Each of them
+corresponds to the current workspace _and_ a set of commits to analyze what
+files, directories and what versions are still needed and should be kept (by
+analyzing DVC-files in those commits).
 
-The default remote is used (see `dvc config core.remote`) unless the `--remote`
-option is used.
-
-Unless the `--cloud` (`-c`) option is used, `dvc gc` does not remove data files
-from any remote. This means that any files collected from the local cache can be
+Unless the `--cloud` option is used, `dvc gc` does not remove data files from
+any remote. This means that any files collected from the local cache can be
 restored using `dvc fetch`, as long as they have previously been uploaded with
 `dvc push`.
 
+### Removing data in remote storage
+
+If `--cloud` option is provided, command deletes unused data not only in local
+DVC cache, but also in remote storage. It means it can be dangerous since in
+most cases removing data locally and in remote storage is irreversible.
+
+The default remote is cleaned (see `dvc config core.remote`) unless the
+`--remote` option is used.
+
 ## Options
 
-- `-w`, `--workspace` - keep cached objects referenced in the current workspace
-  This option is enabled automatically if
-  `--all-tags`/`--all-branches`/`--all-commits` are used.
+- `-w`, `--workspace` - keep cached objects _only_ referenced in the current
+  workspace This option is enabled automatically if `--all-tags`,
+  `--all-branches`, or `--all-commits` are used.
 
 - `-a`, `--all-branches` - keep cached objects referenced in all Git branches as
   well as in the workspace (implies `-w`). Useful for keeping data for all the
-  latest experiment versions. It's recommended to consider including this option
-  when using `-c` i.e. `dvc gc -ac`.
+  latest experiment versions if branches are used to track those.
 
 - `-T`, `--all-tags` - the same as `-a` above, but applies to Git tags as well
   as in the workspace (implies `-w`). Useful if tags are used to track
@@ -61,11 +67,9 @@ restored using `dvc fetch`, as long as they have previously been uploaded with
   specify a list of them (each project is a path) to keep data that is currently
   referenced from them.
 
-- `-c`, `--cloud` - remove files in remote storage in addition to the local
-  cache. **This behavior is dangerous.** It removes datasets, models or other
-  files that are not referenced in the current workspace (unless
-  `-a`/`-T`/`--all-commits` are also used). The default remote is used unless a
-  specific one is given with `-r`.
+- `-c`, `--cloud` - remove files in remote storage in addition to local cache.
+  **This option is dangerous.** The default remote is used unless a specific one
+  is given with `-r`.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to collect unused objects from
