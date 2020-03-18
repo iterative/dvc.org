@@ -47,10 +47,11 @@ export const Content = styled.article`
       color: #ccc;
 
       .token.line {
-        color: #a0a0a0;
+        color: #ddd;
       }
 
-      .token.comment {
+      .token.comment,
+      .token.block-comment {
         font-weight: normal;
         color: #a0a0a0;
       }
@@ -59,8 +60,6 @@ export const Content = styled.article`
         user-select: none;
       }
 
-      .token.comment,
-      .token.block-comment,
       .token.prolog,
       .token.doctype,
       .token.cdata {
