@@ -22,7 +22,7 @@ files if no scope options are provided. It means it's user's responsibility to
 explicitly provide the right set of options to specify what data is still in-use
 (so that DVC can figure out what fils can be safely deleted).
 
-One of the scope options - `--workspace`, `--all-branches`, `--all-tags`, or
+One of the scope options, `--workspace`, `--all-branches`, `--all-tags`,
 `--all-commits`, or any combination of them must be provided. Each of them
 corresponds to the current workspace _and_ a set of commits to analyze what
 files, directories and what versions are still needed and should be kept (by
