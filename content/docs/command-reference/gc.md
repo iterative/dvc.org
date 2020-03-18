@@ -59,8 +59,8 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   combined, for example using the `-aT` flag.
 
 - `--all-commits` - the same as `-a` or `-T` above, but applies to Git commits
-  as well as in the workspace (implies `-w`). Useful for keeping data for all
-  experiment versions ever used in the history of the project.
+  as well as the workspace (implies `-w`). Useful for keeping all the data
+  used in the entire existing commit history of the project.
 
 - `-p <paths>`, `--projects <paths>` - if a single remote or a single cache is
   shared among different projects (e.g. a configuration like the one described
