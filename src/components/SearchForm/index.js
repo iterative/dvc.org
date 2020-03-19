@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Promise from 'promise'
+import Promise from 'promise-polyfill'
 import { loadResource } from '../../utils/resources'
 
 import { SearchArea, Input, Wrapper } from './styles'

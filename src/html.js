@@ -1,10 +1,7 @@
 /* eslint jsx-a11y/html-has-lang:0 */
 
 import React from 'react'
-import rejectionTracking from 'promise/lib/rejection-tracking'
 import PropTypes from 'prop-types'
-
-rejectionTracking.enable()
 
 export default function HTML(props) {
   return (

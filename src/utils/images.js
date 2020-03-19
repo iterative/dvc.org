@@ -1,4 +1,4 @@
-import Promise from 'promise'
+import Promise from 'promise-polyfill'
 
 export const getImagesUrls = node =>
   Array.from(node.querySelectorAll('img')).map(img => img.src)
