@@ -55,6 +55,7 @@ ABBR.propTypes = {
 
 const renderAst = new rehypeReact({
   createElement: React.createElement,
+  Fragment: React.Fragment,
   components: { details: Details, abbr: ABBR }
 }).Compiler
 

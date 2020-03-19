@@ -105,10 +105,24 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 }
 
-exports.onCreatePage = ({ page, actions }) => {
-  if (/^\/404/.test(page.path)) {
-    const newPage = { ...page, context: { ...page.context, is404: true } }
+const notFoundRegexp = /^\/404/
+const trailingSlashRegexp = /\/$/
 
+exports.onCreatePage = ({ page, actions }) => {
+  let newPage = page
+
+  if (notFoundRegexp.test(newPage.path)) {
+    newPage = { ...newPage, context: { ...newPage.context, is404: true } }
+  }
+
+  if (page.path !== '/' && trailingSlashRegexp.test(newPage.path)) {
+    newPage = {
+      ...newPage,
+      path: newPage.path.replace(trailingSlashRegexp, '')
+    }
+  }
+
+  if (newPage !== page) {
     actions.deletePage(page)
     actions.createPage(newPage)
   }

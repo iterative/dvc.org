@@ -1,5 +1,26 @@
 import styled from 'styled-components'
 
+import { media } from '../../styles'
+
+export const SearchArea = styled.div`
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background-color: #eef4f8;
+  z-index: 10;
+  position: sticky;
+  top: 0;
+
+  ${media.phablet`
+    position: relative;
+    padding: 0 20px;
+  `};
+
+  form {
+    height: 40px;
+  }
+`
+
 export const Wrapper = styled.form`
   width: 100%;
   height: 100%;
