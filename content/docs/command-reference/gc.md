@@ -22,11 +22,11 @@ files if no scope options are provided. It means it's user's responsibility to
 explicitly provide the right set of options to specify what data is still needed
 (so that DVC can figure out what fils can be safely deleted).
 
-One of the scope options, `--workspace`, `--all-branches`, `--all-tags`,
-`--all-commits`, or any combination of them must be provided. Each of them
-corresponds to the current workspace _and_ a set of commits to analyze what
-files, directories and what versions are still needed and should be kept (by
-analyzing DVC-files in those commits).
+One of the scope options (`--workspace`, `--all-branches`, `--all-tags`,
+`--all-commits`) or a combination of them must be provided. Each of them
+corresponds to keeping the data for the current workspace, and for a certain set
+of commits (determined by reading the DVC-files in them). See the
+[Options](#options) section for more details.
 
 Unless the `--cloud` option is used, `dvc gc` does not remove data files from
 any remote. This means that any files collected from the local cache can be
