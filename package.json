@@ -22,7 +22,7 @@
     "url": "git+https://github.com/iterative/dvc.org.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/iterative/dvc.org/issues"
   },
