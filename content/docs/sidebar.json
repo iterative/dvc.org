@@ -1,6 +1,7 @@
 [
   {
-    "slug": "home",
+    "slug": "",
+    "label": "Home",
     "source": "index.md"
   },
   {
