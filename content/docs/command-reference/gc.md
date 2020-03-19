@@ -19,7 +19,7 @@ DVC cache but are no longer needed. With `--cloud` it also removes data in
 
 To avoid accidentally deleting data, it raises an error and doesn't touch any
 files if no scope options are provided. It means it's user's responsibility to
-explicitly provide the right set of options to specify what data is still in-use
+explicitly provide the right set of options to specify what data is still needed
 (so that DVC can figure out what fils can be safely deleted).
 
 One of the scope options, `--workspace`, `--all-branches`, `--all-tags`,
@@ -44,13 +44,12 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
 
 ## Options
 
-- `-w`, `--workspace` - keep cached objects _only_ referenced in the current
-  workspace This option is enabled automatically if `--all-tags`,
+- `-w`, `--workspace` - keep files and directories _only_ referenced in the
+  current workspace This option is enabled automatically if `--all-tags`,
   `--all-branches`, or `--all-commits` are used.
 
 - `-a`, `--all-branches` - keep cached objects referenced in all Git branches as
-  well as in the workspace (implies `-w`). Useful if branches are used to
-  track
+  well as in the workspace (implies `-w`). Useful if branches are used to track
   different experiments.
 
 - `-T`, `--all-tags` - the same as `-a` above, but applies to Git tags as well
@@ -58,9 +57,14 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   "checkpoints" of an experiment or project. Note that both options can be
   combined, for example using the `-aT` flag.
 
-- `--all-commits` - the same as `-a` or `-T` above, but applies to Git commits
-  as well as the workspace (implies `-w`). Useful for keeping all the data
-  used in the entire existing commit history of the project.
+- `--all-commits` - the same as `-a` or `-T` above, but applies to _all_ Git
+  commits as well as the workspace (implies `-w`). Useful for keeping all the
+  data used in the entire existing commit history of the project.
+
+  One of the use cases for this option is to safely delete all temporary data
+  DVC cached when `dvc run` and/or `dvc repro` were run without committing
+  changes to DVC-files (thus potentially caching data that is not referenced
+  from workspace or Git commits).
 
 - `-p <paths>`, `--projects <paths>` - if a single remote or a single cache is
   shared among different projects (e.g. a configuration like the one described
