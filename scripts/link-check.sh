@@ -28,6 +28,9 @@ checker(){  # expects list of urls
       2??)
         # success
         ;;
+      429)
+        # too many requests: treat as success
+        ;;
       [45]??)
         echo
         echo " ERROR:$status:$url" >&2
