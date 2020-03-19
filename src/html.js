@@ -1,5 +1,9 @@
 /* eslint jsx-a11y/html-has-lang:0 */
 
+// polyfills
+import 'promise-polyfill/src/polyfill'
+import 'isomorphic-fetch'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
