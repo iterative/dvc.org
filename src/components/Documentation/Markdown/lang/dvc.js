@@ -1,17 +1,16 @@
 /* global exports:readonly */
-
 'use strict'
 
 Object.defineProperty(exports, '__esModule', {
   value: true
 })
 
-let _javascript = function(hljs) {
-  let VAR = {
+const lang = function(hljs) {
+  const VAR = {
     className: 'variable',
     variants: [{ begin: /\$[\w\d#@][\w\d_]*/ }, { begin: /\$\{(.*?)}/ }]
   }
-  let QUOTE_STRING = {
+  const QUOTE_STRING = {
     className: 'string',
     begin: /"/,
     end: /"/,
@@ -26,7 +25,7 @@ let _javascript = function(hljs) {
       }
     ]
   }
-  let APOS_STRING = {
+  const APOS_STRING = {
     className: 'string',
     begin: /'/,
     end: /'/
@@ -66,6 +65,7 @@ let _javascript = function(hljs) {
                 begin: /dvc [a-z-]+/,
                 lexemes: '[a-z-]+',
                 keywords: {
+                  // eslint-disable-next-line @typescript-eslint/camelcase
                   built_in:
                     'help dvc init add import-url checkout run pull push ' +
                     'fetch status repro remove move gc config remote metrics ' +
@@ -100,10 +100,8 @@ let _javascript = function(hljs) {
   }
 }
 
-let _javascript2 = _interopRequireDefault(_javascript)
-
-function _interopRequireDefault(obj) {
+function interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj }
 }
 
-exports.default = _javascript2.default
+exports.default = interopRequireDefault(lang).default

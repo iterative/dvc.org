@@ -6,8 +6,8 @@ Object.defineProperty(exports, '__esModule', {
   value: true
 })
 
-var _javascript = function(hljs) {
-  var QUOTE_STRING = {
+const lang = function(hljs) {
+  const QUOTE_STRING = {
     className: 'string',
     begin: /"/,
     end: /"/,
@@ -37,6 +37,7 @@ var _javascript = function(hljs) {
             begin: / dvc [a-z-]+/,
             lexemes: '[a-z-]+',
             keywords: {
+              // eslint-disable-next-line @typescript-eslint/camelcase
               built_in:
                 'help dvc init add checkout run pull push fetch status repro ' +
                 'remove move gc config remote metrics install root lock ' +
@@ -54,10 +55,8 @@ var _javascript = function(hljs) {
   }
 }
 
-var _javascript2 = _interopRequireDefault(_javascript)
-
-function _interopRequireDefault(obj) {
+function interopRequireDefault(obj) {
   return obj && obj.__esModule ? obj : { default: obj }
 }
 
-exports.default = _javascript2.default
+exports.default = interopRequireDefault(lang).default

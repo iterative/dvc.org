@@ -1,12 +1,18 @@
 {
   "extends": [
-    "eslint:recommended",
-    "plugin:prettier/recommended",
     "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier/@typescript-eslint",
+    "plugin:prettier/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:json/recommended"
   ],
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true // Allows for the parsing of JSX
+    }
+  },
   "env": {
     "browser": true,
     "jest": true
@@ -21,6 +27,13 @@
       "error",
       { "code": 80, "ignoreTemplateLiterals": true, "ignoreUrls": true }
     ],
-    "no-tabs": "error"
+    "@typescript-eslint/interface-name-prefix": [
+      "error",
+      { "prefixWithI": "always" }
+    ],
+    "no-tabs": "error",
+    // TODO: remove after rewriting code to TS
+    "@typescript-eslint/explicit-function-return-type": "warn",
+    "@typescript-eslint/no-var-requires": "warn"
   }
 }

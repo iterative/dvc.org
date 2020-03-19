@@ -22,6 +22,13 @@ const keywords = [
 
 const plugins = [
   {
+    resolve: `gatsby-plugin-typescript`,
+    options: {
+      isTSX: true,
+      allExtensions: true
+    }
+  },
+  {
     resolve: 'gatsby-source-filesystem',
     options: {
       name: 'blog',
@@ -58,6 +65,7 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
+      /* eslint-disable @typescript-eslint/camelcase */
       background_color: '#eff4f8',
       display: 'minimal-ui',
       icon: 'static/favicon-512x512.png',
@@ -65,6 +73,7 @@ const plugins = [
       short_name: 'dvc.org',
       start_url: '/',
       theme_color: '#eff4f8'
+      /* eslint-enable @typescript-eslint/camelcase */
     }
   },
   'gatsby-plugin-react-helmet',

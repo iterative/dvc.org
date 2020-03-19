@@ -11,7 +11,7 @@
     "start": "./scripts/clear-cloudflare-cache.js; NODE_ENV=production node server.js",
     "format-staged": "pretty-quick --staged --no-restage --bail",
     "format-check": "prettier --check '{.,pages/**,content/docs/**,src/**}/*.{js,md,json}'",
-    "lint-check": "eslint --ext .json,.js src middleware",
+    "lint-check": "tsc --noEmit && eslint --ext .json,.js,.ts,.tsx src middleware --quiet",
     "format-all": "prettier --write '{.,pages/**,content/docs/**,src/**}/*.{js,md,json}'",
     "format": "prettier --write",
     "link-check": "scripts/link-check-git-all.sh",
@@ -31,6 +31,7 @@
     "@octokit/graphql": "^4.3.1",
     "@reach/router": "^1.3.1",
     "@sentry/browser": "^5.12.1",
+    "@types/styled-components": "^5.0.1",
     "color": "^3.1.2",
     "compression": "^1.7.4",
     "date-fns": "^2.8.1",
@@ -39,6 +40,7 @@
     "express": "^4.17.1",
     "gatsby": "^2.20.2",
     "gatsby-link": "^2.3.0",
+    "gatsby-plugin-typescript": "^2.2.5",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "github-markdown-css": "^3.0.1",
     "isomorphic-fetch": "^2.2.1",
@@ -56,7 +58,7 @@
     "prop-types": "^15.7.2",
     "react": "^16.12.0",
     "react-collapse": "^5.0.1",
-    "react-collapsible": "^2.6.2",
+    "react-collapsible": "^2.7.0",
     "react-dom": "^16.12.0",
     "react-ga": "^2.7.0",
     "react-helmet": "^5.2.1",
@@ -71,10 +73,13 @@
     "slick-carousel": "^1.8.1",
     "styled-components": "^4.4.1",
     "styled-reset": "^4.0.8",
-    "unist-util-visit": "2.0.1"
+    "unist-util-visit": "2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.7.7",
+    "@types/vfile-message": "^1.0.1",
+    "@typescript-eslint/eslint-plugin": "^2.24.0",
+    "@typescript-eslint/parser": "^2.24.0",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "babel-plugin-styled-components": "^1.10.7",
@@ -99,19 +104,23 @@
     "gatsby-remark-prismjs": "^3.3.31",
     "gatsby-remark-smartypants": "^2.1.21",
     "gatsby-source-filesystem": "^2.1.48",
-    "gatsby-transformer-remark": "^2.6.53",
+    "gatsby-transformer-remark": "^2.6.59",
     "husky": "^4.0.10",
     "jest": "^24.9.0",
     "lint-staged": "^10.0.0",
     "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1"
+    "pretty-quick": "^2.0.1",
+    "typescript": "^3.8.3"
+  },
+  "resolutions": {
+    "@types/react-native": "link:./.tmp-empty-package"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format-staged && yarn lint-staged"
+      "pre-commit": "yarn format-staged && tsc --noEmit && yarn lint-staged"
     }
   },
   "lint-staged": {
-    "*.{js,json}": "eslint"
+    "*.{js,json,ts,tsx}": "eslint --quiet"
   }
 }

@@ -32,10 +32,10 @@ module.exports = async (_, res) => {
     const data = await response.text()
 
     const {
-      topic_list: { topics: original_topics }
+      topic_list: { topics: originalTopics }
     } = JSON.parse(data)
 
-    const topics = original_topics.slice(0, 3).map(item => ({
+    const topics = originalTopics.slice(0, 3).map(item => ({
       title: item.title,
       comments: item.posts_count - 1,
       date: item.last_posted_at,

@@ -24,7 +24,7 @@ export const bounce = keyframes`
   }
 `
 
-export const bounce_mobile = keyframes`
+export const bounceMobile = keyframes`
   0%, 30%, 50%, 70%, 100% {
     transform: translateY(0);
   }
@@ -44,8 +44,8 @@ export const Icon = styled.div`
   will-change: transform;
   animation: ${bounce} 3s infinite;
 
-  ${media.phone`animation: ${bounce_mobile} 3s infinite;`};
-  ${media.phablet`animation: ${bounce_mobile} 3s infinite;`};
+  ${media.phone`animation: ${bounceMobile} 3s infinite;`};
+  ${media.phablet`animation: ${bounceMobile} 3s infinite;`};
 `
 
 export const Caption = styled.p`

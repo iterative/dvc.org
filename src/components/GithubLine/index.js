@@ -11,7 +11,7 @@ export default function GithubLine() {
 
   useEffect(() => {
     fetch(api).then(res => {
-      res.json().then(({ stargazers_count }) => setCount(stargazers_count))
+      res.json().then(data => setCount(data.stargazers_count))
     })
   }, [count, setCount])
 
