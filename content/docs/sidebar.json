@@ -30,14 +30,11 @@
     "children": [
       {
         "slug": "get-started",
-        "source": false,
+        "source": "get-started/index.md",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
         },
         "children": [
-          "agenda",
-          "initialize",
-          "configure",
           "add-files",
           "store-data",
           "retrieve-data",
