@@ -16,6 +16,10 @@ const useAnchorNavigation = () => {
   useEffect(() => {
     const bodybag = document.getElementById('bodybag')
 
+    if (!bodybag) {
+      return
+    }
+
     if (location.hash) {
       const node = document.querySelector(location.hash)
 
@@ -23,7 +27,7 @@ const useAnchorNavigation = () => {
         allImagesLoadedInContainer(bodybag).then(() => node.scrollIntoView())
       }
     } else {
-      bodybag.scrollTo({ top: 0 })
+      bodybag.scrollTop = 0
     }
   }, [location.href])
 }
