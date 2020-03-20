@@ -35,7 +35,12 @@ const plugins = [
         'gatsby-remark-dvc-linker',
         'gatsby-remark-prismjs',
         'gatsby-remark-copy-linked-files',
-        'gatsby-remark-smartypants',
+        {
+          resolve: 'gatsby-remark-smartypants',
+          options: {
+            quotes: false
+          }
+        },
         {
           resolve: 'gatsby-remark-external-links'
         },
