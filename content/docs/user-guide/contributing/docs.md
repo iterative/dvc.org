@@ -62,8 +62,8 @@ $ git clone git@github.com:<username>/dvc.org.git
 $ cd dvc.org
 ```
 
-Make sure you have the latest version of [Node.js](https://nodejs.org/en/), and
-install [Yarn](https://yarnpkg.com/):
+Make sure you have a **recent** version of [Node.js](https://nodejs.org/en/),
+and install [Yarn](https://yarnpkg.com/):
 
 ```dvc
 $ npm install -g yarn
