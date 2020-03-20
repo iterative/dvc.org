@@ -1,9 +1,9 @@
 # Import Data
 
-We've seen how to [push](/doc/get-started/store-data) and
-[pull](/doc/get-started/retrieve-data) data from/to a <abbr>DVC project</abbr>'s
-[remote](/doc/command-reference/remote). But what if we wanted to integrate a
-dataset or ML model produced in one project into another one?
+We've seen how to [push](/doc/tutorials/get-started/store-data) and
+[pull](/doc/tutorials/get-started/retrieve-data) data from/to a <abbr>DVC
+project</abbr>'s [remote](/doc/command-reference/remote). But what if we wanted
+to integrate a dataset or ML model produced in one project into another one?
 
 One way is to manually download the data (with `wget` or `dvc get`, for example)
 and use `dvc add` to track it, but the connection between the projects would be
@@ -11,7 +11,7 @@ lost. We wouldn't be able to tell where the data came from or whether there are
 new versions available. A better alternative is the `dvc import` command:
 
 <!--
-In the [Add Files](/doc/get-started/add-files) chapter, for example, we download
+In the [Add Files](/doc/tutorials/get-started/add-files) chapter, for example, we download
 raw data using the `dvc get` command, and then track it with `dvc add`. Let's
 replace this previous step with an _import stage_:
 
@@ -32,8 +32,9 @@ This downloads `data.xml` from our
 the current working directory, adds it to `.gitignore`, and creates the
 `data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format) to track changes in
 the source data. With _imports_, we can use `dvc update` to bring in changes in
-the external data source before [reproducing](/doc/get-started/reproduce) any
-<abbr>pipeline</abbr> that depends on this data.
+the external data source before
+[reproducing](/doc/tutorials/get-started/reproduce) any <abbr>pipeline</abbr>
+that depends on this data.
 
 <details>
 

@@ -58,7 +58,8 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 ## Examples
 
-For these examples we can use the [Get Started](/doc/get-started) project.
+For these examples we can use the [Get Started](/doc/tutorials/get-started)
+project.
 
 <details>
 
@@ -103,8 +104,8 @@ $ dvc diff
 
 Let's checkout the
 [3-add-file](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
-tag, corresponding to the [Add Files](/doc/get-started/add-files) _Get Started_
-chapter, right after we added `data.xml` file with DVC:
+tag, corresponding to the [Add Files](/doc/tutorials/get-started/add-files) _Get
+Started_ chapter, right after we added `data.xml` file with DVC:
 
 ```dvc
 $ git checkout 3-add-file

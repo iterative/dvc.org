@@ -226,8 +226,8 @@ $ dvc run -f train.dvc \
           python train.py
 ```
 
-> To follow the full example, see
-> [Tutorial: Versioning](/doc/tutorials/versioning).
+> To follow the full example, see the [Versioning](/doc/tutorials/versioning)
+> tutorial.
 
 If instead we use the `--recursive` (`-R`) option, the output looks like this:
 

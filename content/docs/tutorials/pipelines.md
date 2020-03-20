@@ -11,9 +11,10 @@ classifier that can predict posts about the Python language by tagging them
 In this example, we will focus on building a simple ML
 [pipeline](/doc/command-reference/pipeline) that takes an archive with
 StackOverflow posts and trains the prediction model and saves it as an
-<abbr>output</abbr>. See [Get Started](/doc/get-started) to see links to other
-examples, tutorials, use cases if you want to cover other aspects of the DVC.
-The pipeline itself is a sequence of transformation we apply to the data file:
+<abbr>output</abbr>. See [Get Started](/doc/tutorials/get-started) to see links
+to other examples, tutorials, use cases if you want to cover other aspects of
+the DVC. The pipeline itself is a sequence of transformation we apply to the
+data file:
 
 ![](/img/example-flow-2x.png)
 
@@ -70,7 +71,7 @@ $ pip install -r code/requirements.txt
 
 Next, we will create a [pipeline](/doc/command-reference/pipeline) step-by-step,
 utilizing the same set of commands that are described in earlier
-[Get Started](/doc/get-started) chapters.
+[Get Started](/doc/tutorials/get-started) chapters.
 
 > Note that its possible to define more than one pipeline in each DVC project.
 > This will be determined by the interdependencies between DVC-files, mentioned

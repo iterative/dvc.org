@@ -78,7 +78,7 @@ $ yarn
 Launch the server locally with:
 
 ```dvc
-$ yarn dev
+$ yarn develop
 ```
 
 This will start the server on the default port, `3000`. Visit

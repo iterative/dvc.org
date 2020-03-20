@@ -74,10 +74,10 @@ $ dvc run -f prepare.dvc \
 
 `dvc run` generates the `prepare.dvc` DVC-file. It has the same
 [format](/doc/user-guide/dvc-file-format) as the file we created in the
-[previous section](/doc/get-started/add-files) to track `data.xml`, except in
-this case it has additional information about the `data/prepared` output (a
-directory where two files, `train.tsv` and `test.tsv`, will be written to), and
-about the Python command that is required to build it.
+[previous section](/doc/tutorials/get-started/add-files) to track `data.xml`,
+except in this case it has additional information about the `data/prepared`
+output (a directory where two files, `train.tsv` and `test.tsv`, will be written
+to), and about the Python command that is required to build it.
 
 <details>
 
@@ -121,8 +121,9 @@ wdir: .
 ```
 
 > `dvc run` is just the first of a set of DVC command required to generate a
-> [pipeline](/doc/get-started/pipeline), or in other words, instructions on how
-> to build a ML model (data file) from previous data files (or directories).
+> [pipeline](/doc/tutorials/get-started/pipeline), or in other words,
+> instructions on how to build a ML model (data file) from previous data files
+> (or directories).
 
 Let's briefly mention what the command options used above mean for this
 particular example:
