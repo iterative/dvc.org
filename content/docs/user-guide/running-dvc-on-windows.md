@@ -15,10 +15,11 @@ Common Windows terminal alternatives are
 [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
 – but they may not support all the POSIX features (e.g. `\` line continuation).
 
-💡 We recommend the full [Cmder](https://cmder.net/) console emulator (which
-already includes _Git for Windows_).
+💡 We recommend the new
+[Windows Terminal](https://devblogs.microsoft.com/commandline/) for a better
+terminal app experience.
 
-Its also possible to enjoy a full Linux terminal experience with the
+Its also possible to enjoy a full Linux console experience with the
 [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
 – but it may not be possible to access GPUs from this subsystem.
 
