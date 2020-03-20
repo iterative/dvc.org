@@ -20,6 +20,7 @@ finder(){  # expects list of files
   # relative links in html
   sed -nE 's/.*href=["'"'"'](\/[^"'"'"']+?)["'"'"'].*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
 }
+
 checker(){  # expects list of urls
   errors=0
   for url in "$@"; do
@@ -52,5 +53,6 @@ for file in "$@"; do
   checker $(finder "$file" | sed 's/#.*//g' | sort -u | comm -23 - <(echo "$exclude" | sort -u)) || fails=$(($fails + 1))
   [ $prev -eq $fails ] && echo OK
 done
+
 [ $fails -eq 0 ] || echo -e "ERROR:$fails failures\n---" >&2
 exit $fails
