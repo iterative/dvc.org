@@ -76,7 +76,7 @@ export default function SidebarMenu({ id, sidebar, currentPath, onClick }) {
       })
     }
 
-    const node = document.getElementById(currentPath.replace(/\/$/, ''))
+    const node = document.getElementById(currentPath)
     const parent = document.getElementById(id)
 
     setIsScrollHidden(true)

@@ -32,7 +32,8 @@ const global = `
     outline: 0;
   }
 
-  img + em {
+  img + em,
+  .gatsby-highlight + p > em:only-child {
     color: #6a737d;
     font-size: 0.9em;
     display: block;

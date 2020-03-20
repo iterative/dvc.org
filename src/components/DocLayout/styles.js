@@ -78,25 +78,6 @@ export const Side = styled.div`
   `};
 `
 
-export const SearchArea = styled.div`
-  height: 60px;
-  display: flex;
-  align-items: center;
-  background-color: #eef4f8;
-  z-index: 10;
-  position: sticky;
-  top: 0;
-
-  ${media.phablet`
-    position: relative;
-    padding: 0 20px;
-  `};
-
-  form {
-    height: 40px;
-  }
-`
-
 export const SideToggle = styled.div`
   display: none;
   position: fixed;
