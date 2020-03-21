@@ -30,7 +30,7 @@
     "children": [
       {
         "slug": "get-started",
-        "source": "get-started/index.md",
+        "source": false,
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
         },
