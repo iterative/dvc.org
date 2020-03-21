@@ -36,24 +36,9 @@
           "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
         },
         "children": [
-          "add-files",
-          "store-data",
-          "retrieve-data",
-          "import-data",
-          {
-            "label": "Connect with Code",
-            "slug": "connect-code-and-data"
-          },
-          "pipeline",
-          "visualize",
-          "reproduce",
-          "metrics",
-          "experiments",
-          "compare-experiments",
-          {
-            "label": "Get Older Files",
-            "slug": "older-versions"
-          }
+          "versioning-basics",
+          "data-pipelines",
+          "experiment-management"
         ]
       },
       {
