@@ -35,7 +35,12 @@ const plugins = [
         'gatsby-remark-dvc-linker',
         'gatsby-remark-prismjs',
         'gatsby-remark-copy-linked-files',
-        'gatsby-remark-smartypants',
+        {
+          resolve: 'gatsby-remark-smartypants',
+          options: {
+            quotes: false
+          }
+        },
         {
           resolve: 'gatsby-remark-external-links'
         },
@@ -82,6 +87,16 @@ if (process.env.CONTEXT === 'production') {
       trackingId: process.env.GA_ID
     },
     resolve: 'gatsby-plugin-google-analytics'
+  })
+}
+
+if (process.env.ANALYZE) {
+  plugins.push({
+    resolve: 'gatsby-plugin-webpack-bundle-analyzer',
+    options: {
+      analyzerPort: 4000,
+      production: process.env.NODE_ENV === 'production'
+    }
   })
 }
 

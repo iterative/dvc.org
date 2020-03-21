@@ -1,5 +1,9 @@
 /* eslint jsx-a11y/html-has-lang:0 */
 
+// polyfills
+import 'promise-polyfill/src/polyfill'
+import 'isomorphic-fetch'
+
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -13,14 +17,6 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <link
-          rel="stylesheet"
-          href="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.css"
-        />
-        <script
-          type="text/javascript"
-          src="https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.js"
-        />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
@@ -31,7 +27,6 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
         {props.postBodyComponents}
-        <div id="modal-root"></div>
         <script
           type="text/javascript"
           src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js"

@@ -42,6 +42,14 @@ export const Content = styled.article`
       content: url(/img/external-link.svg);
     }
 
+    .anchor {
+      margin-left: -24px;
+    }
+
+    li {
+      margin: 16px 0;
+    }
+
     pre[class*='language-'] {
       background: #40354d;
       color: #ccc;

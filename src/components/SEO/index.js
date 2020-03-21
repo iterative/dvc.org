@@ -37,11 +37,11 @@ function SEO({
 
   const defaultMeta = [
     {
-      property: 'description',
+      name: 'description',
       content: metaDescription
     },
     {
-      property: 'keywords',
+      name: 'keywords',
       content: metaKeywords
     },
     {
