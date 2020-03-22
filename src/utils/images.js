@@ -1,26 +1,25 @@
 import Promise from 'promise-polyfill'
 
-export const getImagesUrls = node =>
-  Array.from(node.querySelectorAll('img')).map(img => img.src)
+export const getImages = node => Array.from(node.querySelectorAll('img'))
 
-export const imageLoaded = url =>
-  new Promise(resolve => {
-    let img = new Image()
+export const imageLoaded = imgNode => {
+  if (imgNode.complete && imgNode.naturalWidth !== 0) {
+    return Promise.resolve()
+  }
 
-    img.addEventListener('load', function onLoad() {
+  return new Promise(resolve => {
+    imgNode.addEventListener('load', function onLoad() {
       resolve()
-      img.removeEventListener('load', onLoad)
-      img = null
+      imgNode.removeEventListener('load', onLoad)
     })
-    img.addEventListener('error', function onError() {
+    imgNode.addEventListener('error', function onError() {
       resolve()
-      img.removeEventListener('error', onError)
-      img = null
+      imgNode.removeEventListener('error', onError)
     })
-    img.src = url
   })
+}
 
 export const allImagesLoaded = urls => Promise.all(urls.map(imageLoaded))
 
 export const allImagesLoadedInContainer = node =>
-  allImagesLoaded(getImagesUrls(node))
+  allImagesLoaded(getImages(node))
