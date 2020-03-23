@@ -42,7 +42,7 @@ initialize the <abbr>DVC project</abbr> on top of the existing repository:
 $ dvc init
 ```
 
-At DVC initialization, a new `.dvc/` directory will be created for internal
+At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and cache
 [files and directories](/doc/user-guide/dvc-files-and-directories) that are
 hidden from the user. These can safely be tracked with Git:

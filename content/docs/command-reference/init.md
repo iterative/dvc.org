@@ -22,7 +22,7 @@ advanced scenarios:
 - [Initializing DVC without Git](#how-does-it-affect-dvc-commands) - support for
   SCM other than Git, deployment automation cases, etc.
 
-At DVC initialization, a new `.dvc/` directory will be created for internal
+At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and cache
 [files and directories](/doc/user-guide/dvc-files-and-directories) that are
 hidden from the user.

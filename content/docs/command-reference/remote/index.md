@@ -74,9 +74,9 @@ For the typical process to share the <abbr>project</abbr> via remote, see
 ### What is a "local remote" ?
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the machine where the project is stored, so it can be any directory
-accessible to the same system. The "remote" part refers specifically to the
-project/repository itself. Read "local, but external" storage.
+refers to the location of the storage relative to the project, so it can be any
+directory in the file system. "Remote" is the term that refers to the storage.
+Read "local cache backup".
 
 </details>
 
