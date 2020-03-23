@@ -5,12 +5,14 @@ Also, if DVC is not installed, please follow these [instructions](/doc/install)
 first.
 
 In the next few pages we'll build a simple natural language processing (NLP)
-project from scratch. If you'd like to get the complete project or have any
-issues along the way, you can clone the fully reproducible
-[GitHub project](https://github.com/iterative/example-get-started):
+project from scratch. In case you'd like to get the complete code base and
+results, or have any issues along the way, here's a fully reproducible
+[repo on GitHub](https://github.com/iterative/example-get-started):
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
+$ cd example-get-started
+$ dvc pull
 ```
 
 This project explores the NLP problem of predicting tags for a given
@@ -35,7 +37,7 @@ $ cd example-get-started
 $ git init
 $ dvc init
 ...
-$ git commit -m "Initialize DVC project"
+$ git commit -m "Initialize DVC repo"
 ```
 
 At DVC initialization, a new `.dvc/` directory is created for internal
@@ -51,12 +53,10 @@ DVC internal files with Git.
 
 ## Configure
 
-Remote storage for the <abbr>project</abbr> (see `dvc remote`) should be set up
-if you need to share data or models outside of the local context, for example
-with other collaborators or even for yourself to access from a different
-computing environment.
-
-For simplicity, let's set up a _local remote_.
+Because we'll want to share data and models outside of the local context later
+(for example with other collaborators or for access from a different computing
+environment), we're going to set up remote storage for the <abbr>DVC
+project</abbr>. For simplicity, let's set up a _local remote_.
 
 <details>
 
@@ -65,7 +65,7 @@ For simplicity, let's set up a _local remote_.
 While the term may seem contradictory, it doesn't have to be. The "local" part
 refers to the location of the storage relative to the project, so it can be any
 directory in the file system. "Remote" is the term that refers to the storage.
-Read "local cache backup".
+Read "local <abbr>cache</abbr> backup".
 
 </details>
 
@@ -74,28 +74,32 @@ $ dvc remote add -d myremote /tmp/dvc-storage
 $ git commit .dvc/config -m "Configure local remote"
 ```
 
-> We only use a local remote in this tutorial for simplicity's sake.. For most
+> We only use a local remote in this tutorial for simplicity's sake. For most
 > cases, other "more remote" types of remotes will be required.
 
-[Adding a remote](/doc/command-reference/remote/add) requires specifying both
-its type and its path. DVC currently supports these protocols:
+[Adding a remote](/doc/command-reference/remote/add) requires providing a
+location which includes both a type (protocol) and its path. DVC currently
+supports these types:
 
-- `s3`: Amazon Simple Storage Service
-- `azure`: Microsoft Azure Blob Storage
-- `gdrive`: Google Drive
-- `gs`: Google Cloud Storage
-- `ssh`: Secure Shell (requires SFTP)
-- `hdfs`: Hadoop Distributed File System
-- `http`: HTTP and HTTPS protocols
-- `local`: Directory in the local file system
+- Amazon **S3** (Simple Storage Service)
+- Microsoft **Azure** Blob Storage
+- **Google Drive**
+- **Google Cloud** Storage
+- Aliyun **OSS** (Object Storage Service)
+- **SSH** (Secure Shell) — requires SFTP
+- HDFS (Hadoop Distributed File System)
+- **HTTP** (and HTTPS) — read-only
+- Directory in the **local** file system
 
 > Refer to `dvc remote` for more details and examples.
 
-There are several more things that can be optionally configured in <abbr>DVC
-projects</abbr>, please see `dvc config` for more information.
+DVC doesn't require installing any databases, servers, or warehouses. It can
+simply use cloud services, local or network file systems to store data,
+intermediate results, and ML models.
 
-## Ready to go!
+There are other features and options that can optionally be configured in DVC.
+Please see `dvc config` for more information.
 
-You can see that DVC doesn't require installing any databases, servers, or
-warehouses. It can use simple S3 or SSH to store data, intermediate results, and
-ML models. Please go to the next page of this tutorial to continue ↘
+---
+
+Go to the next page to continue ↘
