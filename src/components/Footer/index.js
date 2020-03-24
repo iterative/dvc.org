@@ -21,7 +21,7 @@ import {
 const docsPage = getFirstPage()
 
 const SocialLink = ({ src, href, children }) => (
-  <Link src={src} href={href}>
+  <Link src={src} href={href} target="_blank" rel="noreferrer noopener">
     {children}
   </Link>
 )
