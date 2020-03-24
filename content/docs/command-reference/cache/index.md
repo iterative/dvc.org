@@ -16,8 +16,8 @@ positional arguments:
 ## Description
 
 At DVC initialization, a new `.dvc/` directory is created for internal
-configuration and cache
-[files and directories](/doc/user-guide/dvc-files-and-directories) that are
+configuration and <abbr>cache</abbr>
+[files and directories](/doc/user-guide/dvc-files-and-directories), that are
 hidden from the user.
 
 The cache is where your data files, models, etc (anything you want to version

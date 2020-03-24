@@ -43,8 +43,8 @@ $ dvc init
 ```
 
 At DVC initialization, a new `.dvc/` directory is created for internal
-configuration and cache
-[files and directories](/doc/user-guide/dvc-files-and-directories) that are
+configuration and <abbr>cache</abbr>
+[files and directories](/doc/user-guide/dvc-files-and-directories), that are
 hidden from the user. These can safely be tracked with Git:
 
 ```dvc

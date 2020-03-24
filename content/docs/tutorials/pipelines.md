@@ -50,13 +50,13 @@ $ git add code/
 $ git commit -m "Download and add code to new Git repo"
 ```
 
-> `dvc get` can use any <abbr>DVC repository</abbr> to find the appropriate
-> [remote storage](/doc/command-reference/remote) and download <abbr>data
-> artifacts</abbr> from it (analogous to `wget`, but for repositories). In this
-> case we use [dataset-registry](https://github.com/iterative/dataset-registry))
-> as the source repo. (Refer to
-> [Data Registries](/doc/use-cases/data-registries) for more info about this
-> setup.)
+> `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
+> repository</abbr>, using the appropriate
+> [remote storage](/doc/command-reference/remote) (analogous to `wget`, but for
+> DVC/Git repos). In this case we use our
+> [dataset-registry](https://github.com/iterative/dataset-registry)) as the
+> source repository (refer to [Data Registries](/doc/use-cases/data-registries)
+> for more info.)
 
 Now let's install the requirements. But before we do that, we **strongly**
 recommend creating a
@@ -103,8 +103,8 @@ When we run `dvc add` `Posts.xml.zip`, DVC creates a
 ### Expand to learn about DVC internals
 
 At DVC initialization, a new `.dvc/` directory is created for internal
-configuration and cache
-[files and directories](/doc/user-guide/dvc-files-and-directories) that are
+configuration and <abbr>cache</abbr>
+[files and directories](/doc/user-guide/dvc-files-and-directories), that are
 hidden from the user.
 
 Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
