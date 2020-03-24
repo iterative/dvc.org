@@ -6,7 +6,7 @@ DVC-files.
 ## Synopsis
 
 ```usage
-usage: dvc checkout [-h] [-q | -v] [-d] [-R] [-f] [--relink]
+usage: dvc checkout [-h] [-q | -v] [--summary] [-d] [-R] [-f] [--relink]
                     [targets [targets ...]]
 
 positional arguments:
@@ -58,9 +58,8 @@ restoring any file size will be almost instantaneous.
 > `cache.slow_link_warning` config option to `false` with `dvc config cache`.
 
 This command will fail to checkout files that are missing from the cache. In
-such a case, `dvc checkout` prints a warning message. It also lists removed
-files. Any files that can be checked out without error will be restored without
-being reported individually.
+such a case, `dvc checkout` prints a warning message. It also displays a list of
+changes made by the `checkout`.
 
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
@@ -68,6 +67,8 @@ regenerate its outputs. (See also `dvc pipeline`.) In other cases the cache can
 be pulled from remote storage using `dvc pull`.
 
 ## Options
+
+- `--summary` - displays summary of the changes.
 
 - `-d`, `--with-deps` - determines files to update by tracking dependencies to
   the target DVC-files (stages). If no `targets` are provided, this option is
