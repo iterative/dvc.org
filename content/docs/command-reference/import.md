@@ -135,7 +135,7 @@ Several of the values above are pulled from the original stage file
 subfields under `repo` are used to save the origin and version of the
 dependency, respectively.
 
-## Example: Fixed revisions and updating to different revision
+## Example: Importing and updating fixed revisions
 
 To import a specific version of a <abbr>data artifact</abbr>, we may use the
 `--rev` option:
@@ -165,9 +165,9 @@ deps:
 If `rev` is a Git branch or tag (where the underlying commit changes), the data
 source may have updates at a later time. To bring it up to date if so (and
 update `rev_lock` in the DVC-file), simply use `dvc update <stage>.dvc`. If
-`rev` is a specific commit (does not change), `dvc update` will never have an
-effect on the import stage. You may `dvc update` to a different commit, using
-`--rev`:
+`rev` is a specific commit hash (does not change), `dvc update` without options
+will not have an effect on the import stage. You may force-update it to a
+different commit with `dvc update --rev`:
 
 ```dvc
 $ dvc update --rev cats-dogs-v2

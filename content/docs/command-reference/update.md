@@ -26,9 +26,9 @@ Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. `dvc update` is the only command that can
 update them.
 
-`dvc update` will not have an effect on import stages that are fixed to a commit
-hash (`rev` field in the DVC-file). To update the imported artifacts to a
-certain revision, `--rev` with specified revision can be used.
+`dvc update` without flags will not have an effect on import stages that are
+fixed to a commit hash (`rev` field in the DVC-file). Use the `--rev` option to
+update an imported artifact to a different revision.
 
 ```dvc
 dvc update --rev master
@@ -52,7 +52,7 @@ dvc update --rev master
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: Updating imported artifacts
+## Example:
 
 Let's first import a data artifact from our
 [get started example repo](https://github.com/iterative/example-get-started):
@@ -84,29 +84,30 @@ stable.
 
 ## Example: Updating imported artifacts to a specified revision
 
-Let's import a data artifact from an older commit from our
-[get started example repo](https://github.com/iterative/example-get-started) at
+Let's import a model from an older version of our
+[get started example repo](https://github.com/iterative/example-get-started)
 first:
 
 ```dvc
-$ dvc import --rev baseline-experiment git@github.com:iterative/example-get-started model.pkl
+$ dvc import --rev baseline-experiment \
+            git@github.com:iterative/example-get-started model.pkl
 Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 -> 'model.pkl'
 ```
 
-After this, the import stage (DVC-file) `model.pkl.dvc` is created.
-
-Let's try to run `dvc update` on the given stage file, and see what happens.
+After this, the import stage (DVC-file) `model.pkl.dvc` is created. Let's try to
+run `dvc update` on the given stage file, and see what happens.
 
 ```dvc
 $ dvc update model.pkl.dvc
 ```
 
 There was no output at all, meaning, the `model.pkl` file was not updated. This
-is because, we tied the import stage with a `rev` that never changes (i.e. tag
-is tied to a specific commit). Therefore, it was not updated.
+is because we tied the import stage to a `rev` that hasn't changed
+(i.e.`baseline-experiment` tag points to a specific Git commit). Therefore, it
+was not updated.
 
-Let's try to update the model to a different experiment `bigrams-experiment`:
+Let's try to update the model to a different version:
 
 ```dvc
 $ dvc update --rev bigrams-experiment model.pkl.dvc
@@ -116,6 +117,3 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 
 The import stage is overwritten, and will get updated from the latest changes in
 the given revision (i.e. `bigrams-experiment` tag).
-
-> In the above example, the value for `rev` in the new import stage will be
-> `bigrams-experiment`.
