@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Page404 from '../components/404'
+import NotFound from '../components/NotFound'
 import SEO from '../components/SEO'
 
 function NotFoundPage() {
@@ -10,7 +10,7 @@ function NotFoundPage() {
         title="404 | This page could not be found"
         description="404 | This page could not be found"
       />
-      <Page404 />
+      <NotFound />
     </>
   )
 }

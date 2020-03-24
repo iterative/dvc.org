@@ -1,0 +1,187 @@
+.wrapper {
+  position: relative;
+  width: 300px;
+  height: 500px;
+  margin: 0 50px 50px 0;
+  background-color: var(--color-light-blue);
+
+  @media (--md-scr) {
+    &.big {
+      width: 650px;
+      height: auto;
+    }
+  }
+
+  @media (--sm-scr) {
+    width: auto;
+    height: auto;
+    margin: 0;
+
+    &.big {
+      width: auto;
+    }
+
+    & + & {
+      margin-top: 10px;
+    }
+  }
+
+  @media (--lg-scr) {
+    &.big {
+      width: 1005px;
+      height: 450px;
+    }
+  }
+}
+
+.pictureLink {
+  @mixin active;
+
+  display: block;
+
+  &:hover,
+  &:focus {
+    outline: none;
+    opacity: 0.7;
+  }
+}
+
+.picture {
+  display: block;
+  width: 300px;
+  height: 250px;
+  background-color: #dee8ed;
+
+  @media (--md-scr) {
+    .big & {
+      width: 650px;
+      height: 450px;
+    }
+  }
+
+  @media (--sm-scr) {
+    width: auto;
+    height: auto;
+
+    .big & {
+      width: auto;
+      height: auto;
+    }
+
+    .placeholder & {
+      display: none;
+    }
+  }
+
+  @media (--lg-scr) {
+    .big & {
+      float: left;
+      width: 650px;
+      height: 450px;
+      margin-right: 50px;
+    }
+  }
+}
+
+.body {
+  position: relative;
+  overflow: hidden;
+  padding: 10px 20px;
+  max-height: 166px;
+
+  &.overflown::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    height: 30px;
+    background: linear-gradient(
+      0deg,
+      rgba(238, 244, 248, 1) 0%,
+      rgba(238, 244, 248, 0) 100%
+    );
+  }
+
+  @media (--md-scr) {
+    .big & {
+      padding-top: 30px;
+    }
+  }
+
+  @media (--sm-scr) {
+    .placeholder & {
+      padding-top: 30px;
+    }
+  }
+
+  @media (--lg-scr) {
+    .big & {
+      max-height: 314px;
+      padding: 30px;
+    }
+  }
+}
+
+.title {
+  @mixin h3-desktop;
+  @mixin active;
+  @mixin focus;
+  @mixin hover;
+
+  display: block;
+  text-decoration: none;
+  color: var(--color-black);
+
+  @media (--sm-scr) {
+    @mixin h3-mobile;
+  }
+
+  @media (--lg-scr) {
+    .big & {
+      @mixin h2-desktop;
+    }
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.description {
+  @mixin text-secondary;
+
+  margin-top: 10px;
+  color: var(--color-gray);
+
+  @media (--lg-scr) {
+    .big & {
+      margin-top: 40px;
+    }
+  }
+}
+
+.meta {
+  position: absolute;
+  right: 20px;
+  bottom: 15px;
+  left: 20px;
+
+  @media (--md-scr) {
+    .big & {
+      position: static;
+      padding: 0 30px 15px;
+    }
+  }
+
+  @media (--sm-scr) {
+    position: static;
+    padding: 0 30px 15px;
+  }
+
+  @media (--lg-scr) {
+    .big & {
+      left: 700px;
+    }
+  }
+}

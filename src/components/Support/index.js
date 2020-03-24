@@ -3,6 +3,7 @@ import React from 'react'
 import Hero from '../Hero'
 import TrySection from '../TrySection'
 import Popover from '../Popover'
+import Link from '../Link'
 
 import { Mark, OnlyDesktop } from '../../styles'
 
@@ -17,7 +18,7 @@ import {
   FlexRow,
   Heading,
   Icon,
-  Link,
+  Link as LinkSC,
   Name,
   SupportHero
 } from './styles'
@@ -80,6 +81,7 @@ export default function SupportPage() {
               to see if there is already a fix or report a new one.
             </Description>
             <Link
+              as={LinkSC}
               href="https://github.com/iterative/dvc/issues"
               target="_blank"
             >
@@ -98,7 +100,7 @@ export default function SupportPage() {
               </Mark>{' '}
               in the DVC forum.
             </Description>
-            <Link href="https://discuss.dvc.org" target="_blank">
+            <Link as={LinkSC} href="https://discuss.dvc.org" target="_blank">
               <Button color="#f46837">Go To Forum</Button>
             </Link>
           </Feature>
@@ -109,14 +111,14 @@ export default function SupportPage() {
             </FeatureHeading>
             <Description>
               Don’t hesitate to shoot us an email at{' '}
-              <Link href="mailto:support@dvc.org">
+              <Link as={LinkSC} href="mailto:support@dvc.org">
                 <Mark text={'#945dd6'} bg={'#FFFFFF'}>
                   support@dvc.org
                 </Mark>
               </Link>{' '}
               with any questions.
             </Description>
-            <Link href="mailto:support@dvc.org">
+            <Link as={LinkSC} href="mailto:support@dvc.org">
               <Button color="#945dd6">Drop Us a Line</Button>
             </Link>
           </Feature>

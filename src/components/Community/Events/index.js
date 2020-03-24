@@ -7,10 +7,11 @@ import { logEvent } from '../../../utils/ga'
 
 import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
+import Link from '../../Link'
 
 import data from '../data'
 
-import { Button, Item, Items, Line, Link, Wrapper } from '../styles'
+import { Button, Item, Items, Line, Link as LinkSC, Wrapper } from '../styles'
 
 import { Image, ImageWrapper, Meta } from './styles'
 
@@ -38,23 +39,18 @@ function CommunityEvent({
     <Item>
       <CommunityBlock
         action={
-          <Button
+          <Link
+            as={Button}
             href={url}
             theme={theme}
             target="_blank"
-            rel="noreferrer noopener"
             onClick={logEventClick}
           >
             Event Info
-          </Button>
+          </Link>
         }
       >
-        <ImageWrapper
-          href={url}
-          target="_blank"
-          rel="noreferrer noopener"
-          onClick={logEventClick}
-        >
+        <ImageWrapper href={url} target="_blank" onClick={logEventClick}>
           <Image
             src={pictureUrl || '/img/community/event-placeholder.svg'}
             alt=""
@@ -63,9 +59,9 @@ function CommunityEvent({
 
         <Link
           color={theme.color}
+          as={LinkSC}
           href={url}
           target="_blank"
-          rel="noreferrer noopener"
           onClick={logEventClick}
         >
           {title}

@@ -23,17 +23,14 @@
     }
   },
   "rules": {
-    "max-len": [
-      "error",
-      { "code": 80, "ignoreTemplateLiterals": true, "ignoreUrls": true }
-    ],
     "@typescript-eslint/interface-name-prefix": [
       "error",
       { "prefixWithI": "always" }
     ],
     "no-tabs": "error",
+    "react/prop-types": "off", // Props should be described as TS types
+    "@typescript-eslint/explicit-function-return-type": "off",
     // TODO: remove after rewriting code to TS
-    "@typescript-eslint/explicit-function-return-type": "warn",
     "@typescript-eslint/no-var-requires": "warn"
   }
 }

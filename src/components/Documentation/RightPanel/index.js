@@ -16,7 +16,6 @@ import {
   Wrapper
 } from './styles'
 
-const ROOT_ELEMENT = 'bodybag'
 const MARKDOWN_ROOT = '#markdown-root'
 
 export default class RightPanel extends React.PureComponent {
@@ -26,13 +25,13 @@ export default class RightPanel extends React.PureComponent {
     current: undefined
   }
   componentDidMount() {
-    this.root = document.getElementById(ROOT_ELEMENT)
+    this.root = document.body
 
     if (this.props.headings.length) {
       this.initHeadingsPosition()
     }
 
-    this.root.addEventListener('scroll', this.setCurrentHeader)
+    document.addEventListener('scroll', this.setCurrentHeader)
     window.addEventListener('resize', this.updateHeadingsPosition)
   }
 
@@ -43,7 +42,7 @@ export default class RightPanel extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.root.removeEventListener('scroll', this.setCurrentHeader)
+    document.removeEventListener('scroll', this.setCurrentHeader)
     window.removeEventListener('resize', this.updateHeadingsPosition)
   }
 

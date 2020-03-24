@@ -7,6 +7,7 @@ require('./config/prismjs/usage')
 
 const apiMiddleware = require('./middleware/api')
 const redirectsMiddleware = require('./middleware/redirects')
+const { BLOG } = require('./src/consts')
 
 const title = 'Data Version Control · DVC'
 const description =
@@ -28,19 +29,37 @@ const plugins = [
       allExtensions: true
     }
   },
+  'gatsby-plugin-postcss',
+  'gatsby-plugin-styled-components',
+  'gatsby-plugin-react-helmet',
+  'gatsby-plugin-sitemap',
+  'gatsby-plugin-twitter',
   {
     resolve: 'gatsby-source-filesystem',
     options: {
-      name: 'blog',
-      path: path.join(__dirname, 'content', 'docs')
+      name: 'content',
+      path: path.join(__dirname, 'content')
     }
+  },
+  {
+    options: {
+      name: 'images',
+      path: path.join(__dirname, 'static', 'uploads')
+    },
+    resolve: 'gatsby-source-filesystem'
   },
   {
     resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [
+        'gatsby-remark-embedder',
         'gatsby-remark-dvc-linker',
-        'gatsby-remark-prismjs',
+        {
+          options: {
+            noInlineHighlight: true
+          },
+          resolve: 'gatsby-remark-prismjs'
+        },
         'gatsby-remark-copy-linked-files',
         {
           resolve: 'gatsby-remark-smartypants',
@@ -48,6 +67,13 @@ const plugins = [
             quotes: false
           }
         },
+        {
+          resolve: 'gatsby-remark-embed-gist',
+          options: {
+            includeDefaultCss: true
+          }
+        },
+        'gatsby-remark-relative-images',
         {
           resolve: 'gatsby-remark-external-links'
         },
@@ -57,10 +83,28 @@ const plugins = [
             enableCustomId: true,
             isIconAfterHeader: true
           }
-        }
+        },
+        {
+          resolve: 'gatsby-remark-images',
+          options: {
+            maxWidth: BLOG.imageMaxWidth,
+            withWebp: true
+          }
+        },
+        'gatsby-remark-responsive-iframe',
+        'resize-image-plugin',
+        'external-link-plugin'
       ]
     }
   },
+  {
+    resolve: 'gatsby-plugin-svgr',
+    options: {
+      ref: true
+    }
+  },
+  'gatsby-transformer-sharp',
+  'gatsby-plugin-sharp',
   'gatsby-plugin-catch-links',
   {
     resolve: 'gatsby-plugin-manifest',
@@ -76,9 +120,64 @@ const plugins = [
       /* eslint-enable @typescript-eslint/camelcase */
     }
   },
-  'gatsby-plugin-react-helmet',
-  'gatsby-plugin-styled-components',
-  'gatsby-plugin-sitemap',
+  {
+    options: {
+      feeds: [
+        {
+          description,
+          output: '/rss.xml',
+          query: `
+              {
+                allMarkdownRemark(
+                  sort: { fields: [frontmatter___date], order: DESC }
+                  filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+                ) {
+                  edges {
+                    node {
+                      html
+                      fields {
+                        slug
+                      }
+                      frontmatter {
+                        title
+                        date
+                        description
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+          serialize: ({ query: { site, allMarkdownRemark } }) => {
+            return allMarkdownRemark.edges.map(edge => {
+              return Object.assign({}, edge.node.frontmatter, {
+                /* eslint-disable-next-line @typescript-eslint/camelcase */
+                custom_elements: [{ 'content:encoded': edge.node.html }],
+                date: edge.node.frontmatter.date,
+                description: edge.node.description,
+                guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                url: site.siteMetadata.siteUrl + edge.node.fields.slug
+              })
+            })
+          },
+          title
+        }
+      ],
+      query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `
+    },
+    resolve: `gatsby-plugin-feed`
+  },
   {
     resolve: 'gatsby-plugin-sentry',
     options: {

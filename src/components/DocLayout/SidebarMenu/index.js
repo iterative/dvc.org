@@ -8,7 +8,7 @@ import includes from 'lodash.includes'
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 
 import DownloadButton from '../../DownloadButton'
-import LocalLink from '../../LocalLink'
+import Link from '../../Link'
 
 import {
   getParentsListFromPath,
@@ -26,7 +26,7 @@ function SidebarMenuItem({ children, label, path, activePaths, onClick }) {
 
   return (
     <>
-      <LocalLink
+      <Link
         href={getPathWithSoruce(path)}
         as={SectionLink}
         id={path}
@@ -35,7 +35,7 @@ function SidebarMenuItem({ children, label, path, activePaths, onClick }) {
         className={isRootParent ? 'docSearch-lvl0' : ''}
       >
         {label}
-      </LocalLink>
+      </Link>
       {children && (
         <Collapse isOpened={isActive}>
           {children.map(item => (

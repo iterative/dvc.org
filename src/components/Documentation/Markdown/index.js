@@ -9,7 +9,7 @@ import { navigate } from '@reach/router'
 
 import { getPathWithSoruce } from '../../../utils/sidebar'
 
-import LocalLink from '../../LocalLink'
+import Link from '../../Link'
 import Tooltip from '../../Tooltip'
 
 import Tutorials from '../Tutorials'
@@ -115,10 +115,10 @@ export default function Markdown({
       <div className="markdown-body">{renderAst(htmlAst)}</div>
       <NavigationButtons>
         {prev ? (
-          <LocalLink href={prev} as={Button}>
+          <Link href={prev} as={Button}>
             <i className="prev" />
             <span>Prev</span>
-          </LocalLink>
+          </Link>
         ) : (
           <Button disabled={true}>
             <i className="prev" />
@@ -126,10 +126,10 @@ export default function Markdown({
           </Button>
         )}
         {next ? (
-          <LocalLink href={getPathWithSoruce(next)} as={Button}>
+          <Link href={getPathWithSoruce(next)} as={Button}>
             <span>Next</span>
             <i className="next" />
-          </LocalLink>
+          </Link>
         ) : (
           <Button disabled={true}>
             <span>Next</span>
