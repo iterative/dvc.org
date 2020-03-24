@@ -18,8 +18,8 @@ positional arguments:
 ## Description
 
 The `dvc pull` and `dvc push` commands are the means for uploading and
-downloading data to and from remote storage. These commands are analogous to
-`git pull` and `git push`, respectively.
+downloading data to and from remote storage. These commands are similar to
+`git pull` and `git push`, respectively (not exact analogs, see details below).
 [Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
 and preserving data versions (input datasets, intermediate results, models,
 [metrics](/doc/command-reference/metrics), etc) remotely (S3, SSH, GCS, etc.)
