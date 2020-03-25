@@ -25,12 +25,6 @@ perfect solution, bu here are some ideas:
 - Install an actual Linux distro (e.g. Ubuntu) on a virtual machine, or in a HD
   partition (dual boot).
 
-> \* Please consult this [solution](https://stackoverflow.com/a/1257613/761963)
-> if you have strange file permission issues with Git for Windows. Also, Running
-> Node apps on WSL may produce
-> [`EACCESS`](https://github.com/microsoft/WSL/issues/3395) file permission
-> issues.
-
 ## Disable short-file name generation
 
 With NTFS, users may want to disable `8dot3` as per
