@@ -10,18 +10,19 @@ workarounds that can help avoid these potential problems:
 Many of the DVC commands have POSIX-style options that are given with a double
 dash `--`. This isn't supported by the simple Windows command prompt `cmd`.
 
-Common Windows terminal alternatives are
-[Git Bash](https://gitforwindows.org/#bash) or
+💡 We recommend the full [Cmder](https://cmder.net/) console emulator (which
+already includes _Git for Windows_).
+
+Other common terminal alternatives for Windows are
+[Git Bash](https://gitforwindows.org/#bash) and
 [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
-– but they may not support all the POSIX features (e.g. `\` line continuation).
+– but they may not support all the desired CLI features (e.g. `\` line
+continuation).
 
-💡 We recommend the new
-[Windows Terminal](https://devblogs.microsoft.com/commandline/) for a better
-terminal app experience.
-
-Its also possible to enjoy a full Linux console experience with the
-[WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
-– but it may not be possible to access GPUs from this subsystem.
+> You can also try a full Linux console experience enabling
+> [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
+> ([WT](https://devblogs.microsoft.com/commandline/) is also recommended in this
+> case). But it may be slow and unable to access GPUs from this subsystem.
 
 ## Disable short-file name generation
 
