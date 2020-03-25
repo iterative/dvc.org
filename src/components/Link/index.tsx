@@ -15,11 +15,12 @@ const Link: React.SFC<ILinkProps> = ({
   children,
   as: SC,
   href,
+  target,
   ...restProps
 }) => {
-  if (!href?.startsWith('/')) {
+  if (!href?.startsWith('/') || target) {
     return (
-      <a href={href} rel="noopener noreferrer" {...restProps}>
+      <a href={href} rel="noopener noreferrer" target={target} {...restProps}>
         {children}
       </a>
     )
