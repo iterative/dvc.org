@@ -52,7 +52,7 @@ dvc update --rev master
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example:
+## Example
 
 Let's first import a data artifact from our
 [get started example repo](https://github.com/iterative/example-get-started):
