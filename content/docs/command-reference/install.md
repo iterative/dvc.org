@@ -75,7 +75,7 @@ directory:
 To disable them, you need to **remove** or **edit** those files (i.e.
 `rm .git/hooks/post-checkout`, `vim .git/hooks/pre-commit`).
 
-## Using the **pre-commit** tool
+## Using the Pre-commit tool
 
 DVC provides support to manage Git hooks with
 [pre-commit](https://pre-commit.com/). To adjust `.pre-commit-config.yaml`, you
