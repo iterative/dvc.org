@@ -5,24 +5,31 @@ involving system performance. Some, for example, have to do with NTFS file
 system characteristics and Windows built-in security mechanisms. Below are some
 workarounds that can help avoid these potential problems:
 
-## POSIX-like command line shell
+## POSIX-like command line experience
 
-Many of the DVC commands have POSIX-style options that are given with a double
-dash `--`. This isn't supported by the simple Windows command prompt `cmd`.
+The regular Command Prompt (`cmd`) in Windows will most likely not help you use
+DVC effectively, or follow the examples in our docs. Please avoid it. There's no
+perfect solution, bu here are some ideas:
 
-💡 We recommend the full [Cmder](https://cmder.net/) console emulator (which
-already includes _Git for Windows_).
+- The full [Cmder](https://cmder.net/) console emulator combines several useful
+  tools like [ConEmu](https://conemu.github.io/), and
+  [Git for Windows](https://gitforwindows.org/)\* (Git Bash) among other
+  [shell options](https://github.com/cmderdev/cmder/blob/master/README.md#access-to-multiple-shells-in-one-window-using-tabs).
+- [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
+  is another recommendation, but it may not support all the desired CLI features
+  (e.g. `\` line continuation).
+- Consider enabling and using
+  [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
+  ([Windows Terminal](https://devblogs.microsoft.com/commandline/) also
+  recommended). But it may be slow and unable to access GPUs, et al.\*
+- Install an actual Linux distro (e.g. Ubuntu) on a virtual machine, or in a HD
+  partition (dual boot).
 
-Other common terminal alternatives for Windows are
-[Git Bash](https://gitforwindows.org/#bash) and
-[Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
-– but they may not support all the desired CLI features (e.g. `\` line
-continuation).
-
-> You can also try a full Linux console experience enabling
-> [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
-> ([WT](https://devblogs.microsoft.com/commandline/) is also recommended in this
-> case). But it may be slow and unable to access GPUs from this subsystem.
+> \* Please consult this [solution](https://stackoverflow.com/a/1257613/761963)
+> if you have strange file permission issues with Git for Windows. Also, Running
+> Node apps on WSL may produce
+> [`EACCESS`](https://github.com/microsoft/WSL/issues/3395) file permission
+> issues.
 
 ## Disable short-file name generation
 
@@ -67,6 +74,6 @@ via [Chocolatey](https://chocolatey.org/) (please install the tool first):
 $ choco install less
 ```
 
-`less` can be installed in other ways, just make sure it's available in
-`cmd`/PowerShell, where you run `dvc`. (This usually means adding the directory
-where `less` is installed to the `PATH` environment variable.)
+`less` can be installed in other ways, just make sure it's available in the
+command line environment where you run `dvc`. (This usually means adding the
+directory where `less` is installed to the `PATH` environment variable.)
