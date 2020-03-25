@@ -1,6 +1,10 @@
 .placeholder {
   height: var(--layout-header-height);
 
+  &.scrolled {
+    height: var(--layout-header-height-scrolled);
+  }
+
   @media (--xs-scr) {
     height: var(--layout-header-height-scrolled);
   }

@@ -3,13 +3,19 @@ import styled from 'styled-components'
 import { media } from '../../styles'
 
 export const SearchArea = styled.div`
-  height: 60px;
+  height: 70px;
   display: flex;
   align-items: center;
-  background-color: #eef4f8;
+  background: rgb(238, 244, 248);
+  background: linear-gradient(
+    180deg,
+    rgba(238, 244, 248, 1) 0%,
+    rgba(238, 244, 248, 1) 85%,
+    rgba(238, 244, 248, 0) 100%
+  );
   z-index: 10;
   position: sticky;
-  top: 0;
+  top: var(--layout-header-height-scrolled);
 
   ${media.phablet`
     position: relative;

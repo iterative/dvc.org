@@ -13,14 +13,26 @@ import styles from './styles.module.css'
 const LayoutHeader: React.SFC<Required<ILayoutModifiable>> = ({
   modifiers
 }) => {
-  const { y } = useWindowScroll()
+  const hasScrolledModifier = modifiers.includes(LayoutModifiers.Scrolled)
+  const scrolled =
+    hasScrolledModifier ||
+    (() => {
+      const { y } = useWindowScroll()
+
+      return y > 25
+    })()
 
   return (
     <header className={styles.wrapper} id="header">
-      <div className={styles.placeholder} />
+      <div
+        className={cn(
+          styles.placeholder,
+          hasScrolledModifier && styles.scrolled
+        )}
+      />
       <div className={styles.header}>
         <LayoutWidthContainer
-          className={cn(styles.container, y > 25 && styles.scrolled)}
+          className={cn(styles.container, scrolled && styles.scrolled)}
           wide={modifiers.includes(LayoutModifiers.Wide)}
         >
           <Link href="/" className={styles.logoLink} title="DVC">

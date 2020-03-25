@@ -6,7 +6,8 @@ import HamburgerMenu from '../HamburgerMenu'
 import LayoutFooter from '../LayoutFooter'
 
 export enum LayoutModifiers {
-  Wide
+  Wide,
+  Scrolled
 }
 
 export interface ILayoutModifiable {

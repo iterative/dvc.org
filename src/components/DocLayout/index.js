@@ -17,7 +17,10 @@ function DocLayout({ children, ...restProps }) {
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
 
   return (
-    <MainLayout {...restProps} modifiers={[LayoutModifiers.Wide]}>
+    <MainLayout
+      {...restProps}
+      modifiers={[LayoutModifiers.Wide, LayoutModifiers.Scrolled]}
+    >
       <Container>
         <Backdrop onClick={toggleMenu} visible={isMenuOpen} />
 
