@@ -14,8 +14,21 @@
   --color-orange-opaque: rgba(22, 112, 70, 0.5);
   --font-brandon: 'Brandon Grotesque', Tahoma, Arial, sans-serif;
   --font-mono: Inconsolata, monospace;
-  --header-height: 98px;
-  --header-height-scrolled: calc(var(--header-height) - 20px);
+  --layout-width: 1005px;
+  --layout-width-wide: 1200px;
+  --layout-header-height: 98px;
+  --layout-header-height-scrolled: calc(var(--layout-header-height) - 20px);
+}
+
+:global {
+  .bodySmoothScrolling {
+    scroll-behavior: smooth;
+    will-change: scroll-position;
+  }
+
+  .noScroll {
+    overflow-y: hidden;
+  }
 }
 
 html {

@@ -1,5 +1,7 @@
 import React from 'react'
+import cn from 'classnames'
 
+import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 import Link from '../Link'
 import IconSet from '../IconSet'
 
@@ -10,9 +12,16 @@ import styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 
-const Footer: React.SFC = () => (
-  <div className={styles.wrapper}>
-    <div className={styles.container}>
+const LayoutFooter: React.SFC<Required<ILayoutModifiable>> = ({
+  modifiers
+}) => (
+  <footer className={styles.wrapper}>
+    <div
+      className={cn(
+        styles.container,
+        modifiers.includes(LayoutModifiers.Wide) && styles.wide
+      )}
+    >
       <div className={styles.top}>
         <a className={styles.logo} href="/" title="dvc.org">
           <LogoSVG />
@@ -117,7 +126,7 @@ const Footer: React.SFC = () => (
         </div>
       </div>
     </div>
-  </div>
+  </footer>
 )
 
-export default Footer
+export default LayoutFooter

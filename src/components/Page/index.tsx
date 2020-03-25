@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { useLocation } from '@reach/router'
 import { GlobalStyle } from '../../styles'
 
-import MainLayout from '../MainLayout'
+import MainLayout, { LayoutComponent } from '../MainLayout'
 import DocLayout from '../DocLayout'
 import BlogLayout from '../BlogLayout'
 
@@ -10,8 +10,9 @@ import { allImagesLoadedInContainer } from '../../utils/images'
 
 import './base.css'
 import './fonts/fonts.css'
+import styles from './styles.module.css'
 
-interface ILayoutProps {
+export interface IPageProps {
   location: {
     pathname: string
   }
@@ -20,9 +21,9 @@ interface ILayoutProps {
     isDocs: boolean
     isBlog: boolean
   }
+  children: React.ReactNode
+  enableSmoothScroll: boolean
 }
-
-export type LayoutComponent = React.SFC<ILayoutProps>
 
 const useAnchorNavigation = () => {
   const location = useLocation()
@@ -42,25 +43,33 @@ const useAnchorNavigation = () => {
   }, [location.href])
 }
 
-const Layout: LayoutComponent = props => {
-  let LC: LayoutComponent = MainLayout as LayoutComponent // TODO: remove type cast
+const enableSmoothScroll = (enable: boolean) => {
+  useEffect(() => {
+    document.body.classList.toggle('bodySmoothScrolling', enable)
+  }, [enable])
+}
+
+const Page: React.SFC<IPageProps> = props => {
+  let LayoutComponent = MainLayout as LayoutComponent // TODO: remove type cast
 
   useAnchorNavigation()
+  enableSmoothScroll(props.enableSmoothScroll)
 
   if (!props.pageContext.is404) {
     if (props.pageContext.isDocs) {
-      LC = DocLayout as LayoutComponent // TODO: remove type cast
+      LayoutComponent = DocLayout as LayoutComponent // TODO: remove type cast
     } else if (props.pageContext.isBlog) {
-      LC = BlogLayout
+      LayoutComponent = BlogLayout
     }
   }
 
   return (
     <>
       <GlobalStyle />
-      <LC {...props} />
+      <LayoutComponent {...props} />
+      <div id="modal-root" className={styles.modalRoot} />
     </>
   )
 }
 
-export default Layout
+export default Page

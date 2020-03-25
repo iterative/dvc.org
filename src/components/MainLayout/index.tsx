@@ -1,33 +1,29 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
-import Header from '../Header'
+import { IPageProps } from '../Page'
+import LayoutHeader from '../LayoutHeader'
 import HamburgerMenu from '../HamburgerMenu'
-import Footer from '../Footer'
+import LayoutFooter from '../LayoutFooter'
 
-import styles from './styles.module.css'
-
-interface ILayoutProps {
-  children: React.ReactNode
-  enableSmoothScroll?: boolean
+export enum LayoutModifiers {
+  Wide
 }
 
-const Layout: React.SFC<ILayoutProps> = ({
-  children,
-  enableSmoothScroll = false
-}) => {
-  useEffect(() => {
-    document.body.classList.toggle('bodySmoothScrolling', enableSmoothScroll)
-  }, [enableSmoothScroll])
+export interface ILayoutModifiable {
+  modifiers?: Array<LayoutModifiers>
+}
 
+export type LayoutComponent = React.SFC<IPageProps & ILayoutModifiable>
+
+const MainLayout: LayoutComponent = ({ children, modifiers = [] }) => {
   return (
-    <div className={styles.layout}>
-      <Header />
+    <>
+      <LayoutHeader modifiers={modifiers} />
       <HamburgerMenu />
       {children}
-      <Footer />
-      <div id="modal-root" className={styles.modalRoot} />
-    </div>
+      <LayoutFooter modifiers={modifiers} />
+    </>
   )
 }
 
-export default Layout
+export default MainLayout

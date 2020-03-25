@@ -5,12 +5,16 @@
 }
 
 .container {
-  max-width: 1000px;
+  max-width: var(--layout-width);
   margin: 0 auto;
   padding: 60px 0 40px;
 
   @media (--md-scr) {
     padding: 27px 15px;
+  }
+
+  &.wide {
+    max-width: var(--layout-width-wide);
   }
 }
 

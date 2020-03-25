@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
+import MainLayout, { LayoutModifiers } from '../MainLayout'
 import Hamburger from '../Hamburger'
 import SearchForm from '../SearchForm'
-import MainLayout from '../MainLayout'
 import SidebarMenu from './SidebarMenu'
 
 import { Container, Backdrop, Side, SideToggle } from './styles'
@@ -17,7 +17,7 @@ function DocLayout({ children, ...restProps }) {
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
 
   return (
-    <MainLayout {...restProps} isDocPage>
+    <MainLayout {...restProps} modifiers={[LayoutModifiers.Wide]}>
       <Container>
         <Backdrop onClick={toggleMenu} visible={isMenuOpen} />
 

@@ -1,3 +1,11 @@
+.placeholder {
+  height: var(--layout-header-height);
+
+  @media (--xs-scr) {
+    height: var(--layout-header-height-scrolled);
+  }
+}
+
 .header {
   position: fixed;
   z-index: 11;
@@ -10,8 +18,8 @@
 
 .container {
   margin: 0 auto;
-  max-width: 1005px;
-  height: var(--header-height);
+  max-width: var(--layout-width);
+  height: var(--layout-header-height);
   width: auto;
   z-index: 3;
   position: relative;
@@ -24,7 +32,11 @@
   will-change: height;
 
   &.scrolled {
-    height: var(--header-height-scrolled);
+    height: var(--layout-header-height-scrolled);
+  }
+
+  &.wide {
+    max-width: var(--layout-width-wide);
   }
 
   @media (--md-scr) {
@@ -32,7 +44,7 @@
   }
 
   @media (--xs-scr) {
-    height: var(--header-height-scrolled);
+    height: var(--layout-header-height-scrolled);
   }
 }
 

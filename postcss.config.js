@@ -13,7 +13,7 @@ module.exports = function postcssConfig() {
       mixins(mixinsConfig),
       customMedia({ importFrom: mediaConfig }),
       customProperties({
-        importFrom: ['src/components/Layout/base.css']
+        importFrom: ['src/components/Page/base.css']
       }),
       nested,
       autoprefixer

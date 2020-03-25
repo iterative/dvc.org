@@ -1,7 +1,6 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
-import { LayoutComponent } from '../Layout'
-import MainLayout from '../MainLayout'
+import MainLayout, { LayoutComponent } from '../MainLayout'
 
 const keywords =
   'git, data, version control, machine learning models management, datasets'
