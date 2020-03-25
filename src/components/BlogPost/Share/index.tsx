@@ -1,6 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React, { useCallback } from 'react'
 
+import Link from '../../Link'
 import Tooltip from '../Tooltip'
 
 import { ReactComponent as Facebook } from './icons/facebook.svg'
@@ -59,33 +60,31 @@ function Share({ className, text, slug }: IShareProps) {
 
   return (
     <div className={className}>
-      <a
+      <Link
         href={facebookHref}
         onClick={onClickFacebook}
         target="_blank"
-        rel="noopener noreferrer"
         className={styles.link}
       >
         <Tooltip label="Share on Facebook">
           <Facebook />
         </Tooltip>
-      </a>
-      <a
+      </Link>
+      <Link
         href={twitterHref}
         onClick={onClickTwitter}
         target="_blank"
-        rel="noopener noreferrer"
         className={styles.link}
       >
         <Tooltip label="Share on Twitter">
           <Twitter />
         </Tooltip>
-      </a>
-      <a href={`#subscribe`} className={styles.link}>
+      </Link>
+      <Link href={`#subscribe`} className={styles.link}>
         <Tooltip label="Subscribe to maillist">
           <Subscribe />
         </Tooltip>
-      </a>
+      </Link>
     </div>
   )
 }

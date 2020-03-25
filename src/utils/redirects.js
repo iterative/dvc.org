@@ -42,4 +42,21 @@ const getRedirect = (host, pathname, { req, dev } = {}) => {
   return matchRedirectList(host, pathname)
 }
 
+const handleFrontRedirect = (host, pathname, clickEvent) => {
+  let [, redirectUrl] = getRedirect(host, pathname)
+
+  if (redirectUrl) {
+    if (clickEvent) {
+      clickEvent.preventDefault()
+    }
+
+    if (redirectUrl.startsWith('/')) {
+      redirectUrl = redirectUrl + location.search
+    }
+
+    window.location = redirectUrl
+  }
+}
+
 exports.getRedirect = getRedirect
+exports.handleFrontRedirect = handleFrontRedirect

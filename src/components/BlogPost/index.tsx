@@ -113,13 +113,13 @@ const BlogPost: React.SFC<IBlogPostData> = ({
           {tags && (
             <div className={styles.tags}>
               {tags.map(tag => (
-                <a
+                <Link
                   href={`/tags/${tagToSlug(tag)}`}
                   className={styles.tag}
                   key={tag}
                 >
                   {tag}
-                </a>
+                </Link>
               ))}
             </div>
           )}

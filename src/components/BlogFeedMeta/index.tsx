@@ -1,6 +1,7 @@
 import Image, { FixedObject } from 'gatsby-image'
 import React from 'react'
 
+import Link from '../Link'
 import { pluralizeComments } from '../../utils/i18n'
 
 import styles from './styles.module.css'
@@ -36,14 +37,9 @@ const BlogFeedMeta: React.SFC<IBlogFeedMetaProps> = ({
         </li>
         {commentsUrl && typeof commentsCount === 'number' && (
           <li className={styles.item}>
-            <a
-              href={commentsUrl}
-              className={styles.link}
-              target="_blank"
-              rel="noopener nofollow noreferrer"
-            >
+            <Link href={commentsUrl} className={styles.link} target="_blank">
               {pluralizeComments(commentsCount)}
-            </a>
+            </Link>
           </li>
         )}
       </ul>

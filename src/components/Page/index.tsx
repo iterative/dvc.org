@@ -6,6 +6,8 @@ import MainLayout, { LayoutComponent } from '../MainLayout'
 import DocLayout from '../DocLayout'
 import BlogLayout from '../BlogLayout'
 
+import { handleFrontRedirect } from '../../utils/redirects'
+
 import { allImagesLoadedInContainer } from '../../utils/images'
 
 import './base.css'
@@ -43,6 +45,14 @@ const useAnchorNavigation = () => {
   }, [location.href])
 }
 
+const useRedirects = () => {
+  const location = useLocation()
+
+  useEffect(() => {
+    handleFrontRedirect(location.host, location.pathname)
+  }, [location.href])
+}
+
 const enableSmoothScroll = (enable: boolean) => {
   useEffect(() => {
     document.body.classList.toggle('bodySmoothScrolling', enable)
@@ -52,6 +62,7 @@ const enableSmoothScroll = (enable: boolean) => {
 const Page: React.SFC<IPageProps> = props => {
   let LayoutComponent = MainLayout as LayoutComponent // TODO: remove type cast
 
+  useRedirects()
   useAnchorNavigation()
   enableSmoothScroll(props.enableSmoothScroll)
 

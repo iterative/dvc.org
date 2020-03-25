@@ -23,9 +23,9 @@ const LayoutFooter: React.SFC<Required<ILayoutModifiable>> = ({
       )}
     >
       <div className={styles.top}>
-        <a className={styles.logo} href="/" title="dvc.org">
+        <Link className={styles.logo} href="/" title="dvc.org">
           <LogoSVG />
-        </a>
+        </Link>
       </div>
       <div className={styles.columns}>
         <div className={styles.column}>
@@ -117,7 +117,7 @@ const LayoutFooter: React.SFC<Required<ILayoutModifiable>> = ({
               </Link>
             </li>
             <li className={styles.linkItem}>
-              <Link href="/chat" className={styles.link} target="_blank">
+              <Link href="/chat" className={styles.link}>
                 <IconSet className={styles.icon} name="discord" />
                 Discord
               </Link>

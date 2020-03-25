@@ -56,14 +56,9 @@ function CommunityBlogPost({
   return (
     <ImageLine key={url}>
       {pictureUrl && (
-        <a
-          href={url}
-          target="_blank"
-          rel="noreferrer noopener"
-          onClick={logPost}
-        >
+        <Link href={url} target="_blank" onClick={logPost}>
           <Image src={pictureUrl} alt="" />
-        </a>
+        </Link>
       )}
       <TextWrapper>
         <Link

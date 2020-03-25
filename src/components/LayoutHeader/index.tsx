@@ -3,6 +3,7 @@ import React from 'react'
 import { useWindowScroll } from 'react-use'
 
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
+import Link from '../Link'
 import Nav from '../Nav'
 
 import { ReactComponent as LogoSVG } from './logo.svg'
@@ -24,9 +25,9 @@ const LayoutHeader: React.SFC<Required<ILayoutModifiable>> = ({
             modifiers.includes(LayoutModifiers.Wide) && styles.wide
           )}
         >
-          <a href="/" className={styles.logoLink} title="DVC">
+          <Link href="/" className={styles.logoLink} title="DVC">
             <LogoSVG className={styles.logo} />
-          </a>
+          </Link>
           <Nav />
         </div>
       </div>
