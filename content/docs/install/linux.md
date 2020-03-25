@@ -29,7 +29,7 @@ plan to use, you might need to install optional dependencies: `[s3]`, `[azure]`,
 ### Example: How to install DVC with support for Amazon S3 storage
 
 ```dvc
-$ pip install 'dvc[s3]'
+$ pip install "dvc[s3]"
 ```
 
 In this case it installs `boto3` library as well, besides DVC.
