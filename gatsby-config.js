@@ -75,7 +75,7 @@ const plugins = [
     options: {
       dsn: process.env.SENTRY_DSN,
       environment: process.env.NODE_ENV,
-      release: process.env.CIRCLE_SHA1,
+      release: process.env.SOURCE_VERSION,
       enabled: process.env.NODE_ENV === 'production',
       ignoreErrors: [
         /* When we deploy new version we delete assets which were generated for
