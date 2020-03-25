@@ -3,6 +3,7 @@ import React from 'react'
 import { useWindowScroll } from 'react-use'
 
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
+import LayoutWidthContainer from '../LayoutWidthContainer'
 import Link from '../Link'
 import Nav from '../Nav'
 
@@ -18,18 +19,15 @@ const LayoutHeader: React.SFC<Required<ILayoutModifiable>> = ({
     <header className={styles.wrapper} id="header">
       <div className={styles.placeholder} />
       <div className={styles.header}>
-        <div
-          className={cn(
-            styles.container,
-            y > 25 && styles.scrolled,
-            modifiers.includes(LayoutModifiers.Wide) && styles.wide
-          )}
+        <LayoutWidthContainer
+          className={cn(styles.container, y > 25 && styles.scrolled)}
+          wide={modifiers.includes(LayoutModifiers.Wide)}
         >
           <Link href="/" className={styles.logoLink} title="DVC">
             <LogoSVG className={styles.logo} />
           </Link>
           <Nav />
-        </div>
+        </LayoutWidthContainer>
       </div>
     </header>
   )

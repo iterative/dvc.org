@@ -17,8 +17,6 @@
 }
 
 .container {
-  margin: 0 auto;
-  max-width: var(--layout-width);
   height: var(--layout-header-height);
   width: auto;
   z-index: 3;
@@ -33,10 +31,6 @@
 
   &.scrolled {
     height: var(--layout-header-height-scrolled);
-  }
-
-  &.wide {
-    max-width: var(--layout-width-wide);
   }
 
   @media (--md-scr) {
