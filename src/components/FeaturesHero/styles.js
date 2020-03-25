@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
 `
 
 export const Heading = styled.h1`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   margin: 0px auto;
   max-width: 610px;
   min-height: 185px;

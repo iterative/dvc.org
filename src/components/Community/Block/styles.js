@@ -18,8 +18,9 @@ export const Header = styled.div`
   margin-bottom: 15px;
   padding-bottom: 10px;
   border-bottom: 1px solid #d8dfe3;
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   font-size: 24px;
+  font-weight: 500;
   line-height: 34px;
   color: #24292e;
 

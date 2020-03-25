@@ -49,7 +49,7 @@ export const Icon = styled.div`
 `
 
 export const Caption = styled.p`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   line-height: 23px;
   font-size: 16px;
   font-weight: 500;

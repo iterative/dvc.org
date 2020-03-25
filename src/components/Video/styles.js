@@ -97,7 +97,7 @@ export const ButtonIcon = styled.div`
 export const ButtonInner = styled.div``
 
 export const Action = styled.h6`
-  font-family: BrandonGrotesqueMed, Tahoma, Arial;
+  font-family: BrandonGrotesque, Tahoma, Arial;
   font-size: 20px;
   font-weight: 500;
   line-height: 0.9;

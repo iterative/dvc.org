@@ -36,7 +36,8 @@ export const StatValue = styled.div`
   flex: 0 0 124px;
   margin-right: 20px;
   font-size: 40px;
-  font-family: BrandonGrotesqueBlack;
+  font-family: BrandonGrotesque;
+  font-weight: 900;
   text-align: right;
   line-height: 50px;
   color: #24292e;

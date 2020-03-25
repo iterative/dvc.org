@@ -174,7 +174,8 @@ export const Content = styled.article`
   }
 
   .Collapsible__trigger {
-    font-family: BrandonGrotesqueMed;
+    font-family: BrandonGrotesque;
+    font-weight: 500;
     display: block;
     position: relative;
     opacity: 0.9;

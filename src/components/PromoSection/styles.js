@@ -17,7 +17,7 @@ export const Container = styled.div`
 `
 
 export const Title = styled.h3`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   max-width: 438px;
   min-height: 44px;
   font-size: 30px;
@@ -50,7 +50,7 @@ export const Button = styled.a`
   border-radius: 4px;
   border: solid 2px rgba(255, 255, 255, 0.3);
 
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   font-size: 20px;
   font-weight: 500;
   line-height: 0.9;

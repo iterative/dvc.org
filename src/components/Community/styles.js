@@ -57,7 +57,8 @@ export const ImageLine = styled(Line)`
 
 export const Link = styled.a`
   font-size: ${({ large }) => (large ? '24px' : '16px')};
-  font-family: BrandonGrotesqueBold;
+  font-family: BrandonGrotesque;
+  font-weight: 600;
   line-height: ${({ large }) => (large ? '34px' : '18px')};
   text-decoration: none;
   word-break: break-word;
@@ -100,8 +101,9 @@ export const NbspWrapper = styled.span`
 `
 
 export const HeaderLink = styled.a`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   font-size: 24px;
+  font-weight: 500;
   line-height: 34px;
   color: #24292e;
   text-decoration: none;
@@ -126,7 +128,8 @@ export const Button = styled.a`
   height: 38px;
   border-radius: 4px;
   font-size: 16px;
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
+  font-weight: 500;
   line-height: 38px;
   text-decoration: none;
   text-align: center;

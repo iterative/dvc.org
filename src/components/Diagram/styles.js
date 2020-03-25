@@ -12,7 +12,7 @@ export const Container = styled.div`
 `
 
 export const Title = styled.div`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   max-width: 550px;
   min-height: 44px;
   font-size: 30px;
@@ -85,7 +85,7 @@ export const Column = styled.div`
 `
 
 export const Caption = styled.h3`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   margin-bottom: 12px;
   font-size: 20px;
   font-weight: 500;
@@ -107,7 +107,7 @@ export const Description = styled.div`
 `
 
 export const LearnMoreArea = styled.div`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   line-height: 28px;
   font-size: 20px;
   font-weight: 500;

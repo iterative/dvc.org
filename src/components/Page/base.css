@@ -12,8 +12,8 @@
   --color-purple-hover: #745cb7;
   --color-orange: #e37046;
   --color-orange-opaque: rgba(22, 112, 70, 0.5);
-  --font-brandon: 'Brandon Grotesque', Tahoma, Arial, sans-serif;
-  --font-mono: Inconsolata, monospace;
+  --font-brandon: 'BrandonGrotesque', 'Tahoma', 'Arial', sans-serif;
+  --font-mono: 'Inconsolata', monospace;
   --layout-width: 1005px;
   --layout-width-wide: 1200px;
   --layout-header-height: 98px;
