@@ -170,7 +170,7 @@ CommunityDocumentation.propTypes = {
 }
 
 export default function CommunityLearn({ theme }) {
-  const { error, ready, result: posts } = usePosts()
+  const posts = usePosts()
 
   return (
     <Wrapper>
@@ -230,16 +230,13 @@ export default function CommunityLearn({ theme }) {
                 )
               }
             >
-              {!ready && <Placeholder>Loading...</Placeholder>}
-              {error && <Placeholder>Blog unavailable right now</Placeholder>}
-              {posts &&
-                posts.map(post => (
-                  <CommunityBlogPost
-                    {...post}
-                    key={post.url}
-                    color={theme.color}
-                  />
-                ))}
+              {posts.map(post => (
+                <CommunityBlogPost
+                  {...post}
+                  key={post.url}
+                  color={theme.color}
+                />
+              ))}
             </CommunityBlock>
           </Item>
           <Item>
