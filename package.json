@@ -27,6 +27,9 @@
     "url": "https://github.com/iterative/dvc.org/issues"
   },
   "homepage": "https://github.com/iterative/dvc.org#readme",
+  "engines": {
+    "node": "^12.0.0"
+  },
   "dependencies": {
     "@octokit/graphql": "^4.3.1",
     "@reach/portal": "^0.9.0",
