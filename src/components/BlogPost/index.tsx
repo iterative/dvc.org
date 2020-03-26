@@ -1,11 +1,11 @@
 import cn from 'classnames'
 
-import React, { useEffect, useMemo, useRef, useState } from 'react'
+import React, { useMemo, useRef } from 'react'
 import { useWindowScroll, useWindowSize } from 'react-use'
 
 import { IBlogPostData } from '../../templates/blog-post'
 
-import { getCommentsCount } from '../../api'
+import { useCommentsCount } from '../../utils/api'
 import { pluralizeComments } from '../../utils/i18n'
 import tagToSlug from '../../utils/tagToSlug'
 
@@ -55,22 +55,7 @@ const BlogPost: React.SFC<IBlogPostData> = ({
 
     return bottom > height
   }, [wrapperRef, width, height, y])
-
-  const [counterLoaded, setCounterLoaded] = useState(false)
-  const [commentsCount, setCommentsCount] = useState(0)
-
-  useEffect(() => {
-    if (!commentsUrl || counterLoaded) {
-      return
-    }
-
-    getCommentsCount(commentsUrl).then(response =>
-      response.json().then(json => {
-        setCommentsCount(json.count)
-        setCounterLoaded(true)
-      })
-    )
-  }, [counterLoaded, setCounterLoaded, setCommentsCount, commentsUrl])
+  const { error, ready, result } = useCommentsCount(commentsUrl)
 
   return (
     <>
@@ -93,7 +78,7 @@ const BlogPost: React.SFC<IBlogPostData> = ({
                 <div className={styles.description}>{description}</div>
               )}
               <BlogFeedMeta
-                commentsCount={commentsCount}
+                commentsCount={result}
                 commentsUrl={commentsUrl}
                 name={name}
                 avatar={avatar}
@@ -123,13 +108,13 @@ const BlogPost: React.SFC<IBlogPostData> = ({
               ))}
             </div>
           )}
-          {commentsUrl && counterLoaded && (
+          {commentsUrl && ready && !error && (
             <div className={styles.comments}>
               <PseudoButton size="big" href={commentsUrl} target="_blank">
                 Discuss this post
               </PseudoButton>
               <Link href={commentsUrl} className={styles.count} target="_blank">
-                {pluralizeComments(commentsCount)}
+                {pluralizeComments(result)}
               </Link>
             </div>
           )}

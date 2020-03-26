@@ -12,7 +12,7 @@ export function makeAbsoluteURL(req, uri) {
 const useAPICall = url => {
   const [ready, setReady] = useState(false)
   const [error, setError] = useState(false)
-  const [result, setResult] = useState(null)
+  const [result, setResult] = useState(undefined)
 
   useEffect(() => {
     let cancelled = false
