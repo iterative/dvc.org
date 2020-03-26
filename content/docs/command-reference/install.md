@@ -75,11 +75,11 @@ directory:
 To disable them, you need to **remove** or **edit** those files (i.e.
 `rm .git/hooks/post-checkout`, `vim .git/hooks/pre-commit`).
 
-## Using Pre-Commit tool
+## Using the Pre-commit tool
 
-DVC provides support for [pre-commit](https://pre-commit.com/) users. To adjust
-`.pre-commit-config.yaml` you could either use
-`dvc install --use-pre-commit-tool`, or add these entries by hand:
+DVC provides support to manage Git hooks with
+[pre-commit](https://pre-commit.com/). To adjust `.pre-commit-config.yaml`, you
+can either use `dvc install --use-pre-commit-tool` or add these entries by hand:
 
 ```yaml
 repos:
@@ -103,8 +103,9 @@ repos:
 
 ## Options
 
-- `--use-pre-commit-tool` - install pre-commit/pre-push/post-checkout hooks into
-  the [pre-commit](https://pre-commit.com/) config (`.pre-commit-config.yaml`).
+- `--use-pre-commit-tool` - installs pre-commit, pre-push, post-checkout Git
+  hooks into the [pre-commit](https://pre-commit.com/) config file
+  (`.pre-commit-config.yaml`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

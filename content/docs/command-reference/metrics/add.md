@@ -1,7 +1,6 @@
 # metrics add
 
-Mark <abbr>output</abbr> file as a
-[project metric](/doc/command-reference/metrics).
+Mark a DVC-tracked file as a [project metric](/doc/command-reference/metrics).
 
 ## Synopsis
 

@@ -22,11 +22,11 @@ files if no scope options are provided. It means it's user's responsibility to
 explicitly provide the right set of options to specify what data is still needed
 (so that DVC can figure out what fils can be safely deleted).
 
-One of the scope options, `--workspace`, `--all-branches`, `--all-tags`,
-`--all-commits`, or any combination of them must be provided. Each of them
-corresponds to the current workspace _and_ a set of commits to analyze what
-files, directories and what versions are still needed and should be kept (by
-analyzing DVC-files in those commits).
+One of the scope options (`--workspace`, `--all-branches`, `--all-tags`,
+`--all-commits`) or a combination of them must be provided. Each of them
+corresponds to keeping the data for the current workspace, and for a certain set
+of commits (determined by reading the DVC-files in them). See the
+[Options](#options) section for more details.
 
 Unless the `--cloud` option is used, `dvc gc` does not remove data files from
 any remote. This means that any files collected from the local cache can be
@@ -61,10 +61,11 @@ The default remote is cleaned (see `dvc config core.remote`) unless the
   commits as well as the workspace (implies `-w`). Useful for keeping all the
   data used in the entire existing commit history of the project.
 
-  One of the use cases for this option is to safely delete all temporary data
-  DVC cached when `dvc run` and/or `dvc repro` were run without committing
-  changes to DVC-files (thus potentially caching data that is not referenced
-  from workspace or Git commits).
+  A use case for this option is to safely delete all temporary data `dvc run`
+  and/or `dvc repro` cache when used without committing changes (see the `-O` or
+  `-M`, and `--no-commit` options in those commands). In that scenario, data
+  that is never referenced from the workspace or from any Git commit can still
+  be stored in the project's cache).
 
 - `-p <paths>`, `--projects <paths>` - if a single remote or a single cache is
   shared among different projects (e.g. a configuration like the one described

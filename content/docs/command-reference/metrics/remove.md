@@ -1,8 +1,8 @@
 # metrics remove
 
-Stop tracking a [project metric](/doc/command-reference/metrics): Keeps file
-located at `path` as an <abbr>output</abbr>, but removes its metric mark in the
-DVC-file.
+Remove metric mark on a DVC-tracked file: Keeps file located at `path` as an
+<abbr>output</abbr>, but removes its mark as a
+[project metric](/doc/command-reference/metrics) in the DVC-file.
 
 ## Synopsis
 
