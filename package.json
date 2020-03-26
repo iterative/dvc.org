@@ -11,9 +11,9 @@
     "start": "./scripts/clear-cloudflare-cache.js; NODE_ENV=production node server.js",
     "format-staged": "pretty-quick --staged --no-restage --bail",
     "format-check": "prettier --check '{.,pages/**,content/docs/**,src/**}/*.{js,md,json}'",
-    "lint-check": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx src middleware",
-    "format-all": "prettier --write '{.,pages/**,content/docs/**,src/**}/*.{js,md,json}'",
-    "format": "prettier --write",
+    "format-all": "prettier --write './**/*.{js,jsx,md,tsx,ts,json}'",
+    "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx src middleware",
+    "lint-css": "stylelint \"src/**/*.css\"",
     "link-check": "scripts/link-check-git-all.sh",
     "link-check-diff": "scripts/link-check-git-diff.sh"
   },
@@ -139,7 +139,6 @@
     "postcss-mixins": "^6.2.3",
     "postcss-nested": "^4.2.1",
     "prettier": "^1.19.1",
-    "pretty-quick": "^2.0.1",
     "rehype-parse": "^6.0.2",
     "rehype-stringify": "^6.0.1",
     "remark": "^11.0.2",
@@ -153,10 +152,26 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn format-staged && tsc --noEmit && yarn lint-staged"
+      "pre-commit": "yarn lint-staged"
     }
   },
   "lint-staged": {
-    "*.{js,json,ts,tsx}": "eslint"
-  }
+    "*.{js,ts,tsx}": [
+      "yarn prettier --write",
+      "yarn lint-ts"
+    ],
+    "*.md": [
+      "yarn prettier --write"
+    ],
+    "*.json": [
+      "yarn prettier --write"
+    ],
+    "*.css": [
+      "yarn stylelint --fix"
+    ]
+  },
+  "cacheDirectories": [
+    "node_modules",
+    ".cache"
+  ]
 }
