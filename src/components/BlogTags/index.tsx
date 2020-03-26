@@ -1,13 +1,13 @@
 import React from 'react'
 
-import { IPageInfo } from '../Paginator'
+import { IPaginatorPageInfo } from '../Paginator'
 import PageContent from '../PageContent'
 import BlogFeed, { IBlogFeedPostList } from '../BlogFeed'
 import Subscribe from '../Subscribe'
 
 interface IBlogTagsProps {
   posts: IBlogFeedPostList
-  pageInfo: IPageInfo
+  pageInfo: IPaginatorPageInfo
   header: string
 }
 

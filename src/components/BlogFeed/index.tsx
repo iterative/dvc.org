@@ -4,7 +4,7 @@ import React from 'react'
 
 import cn from 'classnames'
 
-import Paginator, { IPageInfo } from '../Paginator'
+import Paginator, { IPaginatorPageInfo } from '../Paginator'
 import BlogFeedItem, { IBlogFeedPostData } from './Item'
 
 import styles from './styles.module.css'
@@ -20,7 +20,7 @@ interface IBlogFeedProps {
   bigFirst?: boolean
   header: React.ReactNode
   leadParagraph?: React.ReactNode
-  pageInfo: IPageInfo
+  pageInfo: IPaginatorPageInfo
 }
 
 const BlogFeed: React.SFC<IBlogFeedProps> = ({

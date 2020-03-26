@@ -13,14 +13,14 @@ import { ReactComponent as ArrowSVG } from './arrow.svg'
 
 import styles from './styles.module.css'
 
-export interface IPageInfo {
+export interface IPaginatorPageInfo {
   currentPage: number
   nextPage?: string
   previousPage?: string
 }
 
 export interface IPaginatorProps {
-  pageInfo: IPageInfo
+  pageInfo: IPaginatorPageInfo
 }
 
 // Enables a smooth scroll behavior between pages.

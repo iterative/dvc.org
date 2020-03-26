@@ -5,16 +5,15 @@ import {
   IPaginatorLocationContextValue,
   PaginatorLocationContext
 } from '../components/Paginator/LocationContext'
-import SEO from '../components/SEO'
 import BlogHome from '../components/BlogHome'
-import { IPageInfo } from '../components/Paginator'
+import { IPaginatorPageInfo } from '../components/Paginator'
 import { IBlogFeedPostList } from '../components/BlogFeed'
 
 interface IBlogHomePageProps {
   data: { posts: IBlogFeedPostList }
   location: IPaginatorLocationContextValue
   pageContext: {
-    pageInfo: IPageInfo
+    pageInfo: IPaginatorPageInfo
   }
 }
 
@@ -25,11 +24,6 @@ const BlogHomePage: React.SFC<IBlogHomePageProps> = ({
 }) => {
   return (
     <PaginatorLocationContext.Provider value={location}>
-      <SEO
-        title="Blog"
-        defaultMetaTitle={true}
-        pageInfo={pageContext.pageInfo}
-      />
       <BlogHome posts={data.posts} pageInfo={pageContext.pageInfo} />
     </PaginatorLocationContext.Provider>
   )

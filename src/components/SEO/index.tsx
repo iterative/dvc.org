@@ -1,19 +1,20 @@
-import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import Helmet from 'react-helmet'
-import { IPageInfo } from '../Paginator'
 
-type MetaProps = JSX.IntrinsicElements['meta']
+import { IPaginatorPageInfo } from '../Paginator'
+import getSiteMeta from '../../queries/siteMeta'
+
+export type MetaProps = JSX.IntrinsicElements['meta']
 
 interface ISEOProps {
-  title: string
+  title?: string
   defaultMetaTitle?: boolean
   description?: string
   keywords?: string
   image?: string
-  lang?: string
   meta?: MetaProps[]
-  pageInfo?: IPageInfo
+  pageInfo?: IPaginatorPageInfo
+  children?: React.ReactNode
 }
 
 const SEO: React.SFC<ISEOProps> = ({
@@ -22,117 +23,75 @@ const SEO: React.SFC<ISEOProps> = ({
   description,
   keywords,
   image,
-  lang = 'en',
   meta = [],
-  pageInfo
+  pageInfo,
+  children
 }) => {
-  if (pageInfo && pageInfo.currentPage > 1 && title) {
-    title = `${title} page ${pageInfo.currentPage}`
+  const siteMeta = getSiteMeta()
+  const prebuildMeta: MetaProps[] = []
+
+  if (pageInfo && pageInfo.currentPage > 1) {
+    title = `${title || siteMeta.title} page ${pageInfo.currentPage}`
   }
 
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            keywords
-            siteUrl
-          }
-        }
+  if (title && !defaultMetaTitle) {
+    prebuildMeta.push(
+      {
+        property: 'og:title',
+        content: title
+      },
+      {
+        name: 'twitter:title',
+        content: title
       }
-    `
-  )
+    )
+  }
 
-  const metaDescription = description || site.siteMetadata.description
+  if (description) {
+    prebuildMeta.push(
+      {
+        name: 'description',
+        content: description
+      },
+      {
+        property: 'og:description',
+        content: description
+      },
+      {
+        name: 'twitter:description',
+        content: description
+      }
+    )
+  }
 
-  const metaKeywords = keywords || site.siteMetadata.keywords
-
-  const metaTitle = title && !defaultMetaTitle ? title : site.siteMetadata.title
-
-  const metaImage = image || '/social-share.png'
-
-  const defaultMeta: MetaProps[] = [
-    {
-      name: 'description',
-      content: metaDescription
-    },
-    {
+  if (keywords) {
+    prebuildMeta.push({
       name: 'keywords',
-      content: metaKeywords
-    },
-    {
-      property: 'og:title',
-      content: metaTitle
-    },
-    {
-      property: 'og:description',
-      content: metaDescription
-    },
-    {
-      property: 'og:type',
-      content: 'website'
-    },
-    {
-      property: 'og:image',
-      content: metaImage
-    },
-    {
-      property: 'og:image:secure_url',
-      content: metaImage
-    },
-    {
-      name: 'twitter:card',
-      content: `summary`
-    },
-    {
-      name: 'twitter:title',
-      content: metaTitle
-    },
-    {
-      name: 'twitter:description',
-      content: metaDescription
-    },
-    {
-      name: 'twitter:image',
-      content: encodeURI(`${site.siteMetadata.siteUrl}${metaImage}`)
-    }
-  ]
+      content: keywords
+    })
+  }
+
+  if (image) {
+    prebuildMeta.push(
+      {
+        property: 'og:image',
+        content: image
+      },
+      {
+        property: 'og:image:secure_url',
+        content: image
+      },
+      {
+        name: 'twitter:image',
+        content: encodeURI(`${siteMeta.siteUrl}${image}`)
+      }
+    )
+  }
 
   return (
-    <Helmet
-      htmlAttributes={{
-        lang
-      }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
-      meta={[...defaultMeta, ...meta]}
-      link={[
-        {
-          rel: 'shortcut icon',
-          type: 'image/x-icon',
-          href: '/favicon.ico'
-        },
-        {
-          rel: 'shortcut icon',
-          type: 'image/vnd.microsoft.icon',
-          href: '/favicon.ico'
-        },
-        {
-          rel: 'icon',
-          type: 'image/png',
-          href: '/favicon-32x32.png',
-          sizes: '32x32'
-        },
-        {
-          rel: 'icon',
-          type: 'image/png',
-          href: '/favicon-16x16.png',
-          sizes: '16x16'
-        }
-      ]}
-    />
+    <Helmet title={title} meta={[...prebuildMeta, ...meta]}>
+      {children}
+    </Helmet>
   )
 }
 

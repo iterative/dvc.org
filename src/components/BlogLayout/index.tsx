@@ -1,5 +1,5 @@
 import React from 'react'
-import { Helmet } from 'react-helmet'
+import SEO from '../SEO'
 import MainLayout, { LayoutComponent } from '../MainLayout'
 
 const keywords =
@@ -9,20 +9,15 @@ const description =
 
 const BlogLayout: LayoutComponent = ({ children, ...restProps }) => (
   <MainLayout {...restProps}>
-    <Helmet
-      meta={[
-        {
-          name: 'description',
-          content: description
-        },
-        {
-          name: 'keywords',
-          content: keywords
-        }
-      ]}
+    <SEO
+      title="Blog"
+      defaultMetaTitle
+      description={description}
+      keywords={keywords}
+      pageInfo={restProps.pageContext.pageInfo}
     >
       <script async src="//embed.redditmedia.com/widgets/platform.js" />
-    </Helmet>
+    </SEO>
     {children}
   </MainLayout>
 )

@@ -7,7 +7,7 @@ import {
   PaginatorLocationContext
 } from '../components/Paginator/LocationContext'
 import SEO from '../components/SEO'
-import { IPageInfo } from '../components/Paginator'
+import { IPaginatorPageInfo } from '../components/Paginator'
 import BlogTags from '../components/BlogTags'
 import { IBlogFeedPostList } from '../components/BlogFeed'
 
@@ -16,7 +16,7 @@ interface IBlogTagsPageData {
   location: IPaginatorLocationContextValue
   pageContext: {
     tag: string
-    pageInfo: IPageInfo
+    pageInfo: IPaginatorPageInfo
   }
 }
 

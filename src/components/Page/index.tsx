@@ -3,11 +3,11 @@ import { useLocation } from '@reach/router'
 import { GlobalStyle } from '../../styles'
 
 import MainLayout, { LayoutComponent } from '../MainLayout'
+import DefaultSEO from './DefaultSEO'
 import DocLayout from '../DocLayout'
 import BlogLayout from '../BlogLayout'
 
 import { handleFrontRedirect } from '../../utils/redirects'
-
 import { allImagesLoadedInContainer } from '../../utils/images'
 
 import './base.css'
@@ -22,6 +22,10 @@ export interface IPageProps {
     is404: boolean
     isDocs: boolean
     isBlog: boolean
+    pageInfo?: {
+      currentPage: number
+      nextPage?: string
+    }
   }
   children: React.ReactNode
   enableSmoothScroll: boolean
@@ -77,6 +81,7 @@ const Page: React.SFC<IPageProps> = props => {
   return (
     <>
       <GlobalStyle />
+      <DefaultSEO />
       <LayoutComponent {...props} />
       <div id="modal-root" className={styles.modalRoot} />
     </>
