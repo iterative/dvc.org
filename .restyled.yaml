@@ -4,7 +4,7 @@ restylers:
     include:
       - './*.{js,md}'
       - 'pages/**/*.js'
-      - 'content/**/*.{js,md}'
+      - 'content/**/*.md'
       - 'src/**/*.js'
   - name: stylelint
     include:
