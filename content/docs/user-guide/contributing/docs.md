@@ -62,8 +62,8 @@ $ git clone git@github.com:<username>/dvc.org.git
 $ cd dvc.org
 ```
 
-Make sure you have a **recent** version of [Node.js](https://nodejs.org/en/),
-and install [Yarn](https://yarnpkg.com/):
+Make sure you have a recent version of [Node.js](https://nodejs.org/en/)
+(`^12.0.0`), and install [Yarn](https://yarnpkg.com/):
 
 ```dvc
 $ npm install -g yarn
@@ -118,7 +118,7 @@ The first few of the rules below should be enforced automatically by a Git
 pre-commit hook that is integrated when `yarn` installs the project dependencies
 (explained above).
 
-- No trailing whitespaces are allowed.
+- No trailing white spaces are allowed.
 
 - Content must be properly formatted at 80 symbols width.
 
