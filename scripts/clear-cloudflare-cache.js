@@ -28,7 +28,9 @@ async function main() {
         authorization: `Bearer ${CLOUDFLARE_TOKEN}`,
         'content-type': 'application/json'
       },
+      /* eslint-disable @typescript-eslint/camelcase */
       body: JSON.stringify({ purge_everything: true })
+      /* eslint-enable @typescript-eslint/camelcase */
     }
   )
 

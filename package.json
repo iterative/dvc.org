@@ -12,7 +12,7 @@
     "format-staged": "pretty-quick --staged --no-restage --bail",
     "format-check": "prettier --check '{.,pages/**,content/docs/**,src/**}/*.{js,md,json}'",
     "format-all": "prettier --write './**/*.{js,jsx,md,tsx,ts,json}'",
-    "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx src middleware",
+    "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx src middleware scripts",
     "lint-css": "stylelint \"src/**/*.css\"",
     "link-check": "scripts/link-check-git-all.sh",
     "link-check-diff": "scripts/link-check-git-diff.sh"
