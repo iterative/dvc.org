@@ -10,7 +10,8 @@ import { getFirstPage } from '../../../utils/sidebar'
 import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
 
-import { usePosts, useCommentsCount } from '../../../utils/api'
+import { useCommentsCount } from '../../../utils/api'
+import getPosts from '../../../queries/posts'
 import { pluralizeComments } from '../../../utils/i18n'
 
 import {
@@ -169,7 +170,7 @@ CommunityDocumentation.propTypes = {
 }
 
 export default function CommunityLearn({ theme }) {
-  const posts = usePosts()
+  const posts = getPosts()
 
   return (
     <Wrapper>

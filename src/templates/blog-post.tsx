@@ -33,6 +33,9 @@ export interface IBlogPostFrontmatter {
   picture?: {
     childImageSharp: {
       fluid: IFluidObject
+      resize: {
+        src: string
+      }
     }
   }
   pictureComment?: string

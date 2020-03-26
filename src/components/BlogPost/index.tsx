@@ -55,7 +55,10 @@ const BlogPost: React.SFC<IBlogPostData> = ({
 
     return bottom > height
   }, [wrapperRef, width, height, y])
-  const { error, ready, result } = useCommentsCount(commentsUrl)
+
+  const { error, ready, result } = commentsUrl
+    ? useCommentsCount(commentsUrl)
+    : { error: null, ready: false, result: 0 }
 
   return (
     <>
