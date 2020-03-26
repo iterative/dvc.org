@@ -24,7 +24,6 @@ import {
   Link as LinkSC,
   Meta,
   NbspWrapper,
-  Placeholder,
   TextWrapper,
   Wrapper
 } from '../styles'

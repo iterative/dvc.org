@@ -1,5 +1,5 @@
 /* eslint-env node */
-const { BLOG } = require('../../consts')
+const { BLOG } = require('../consts')
 
 function pageUrl(basePath, page) {
   if (page > 1) {

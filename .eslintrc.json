@@ -32,5 +32,13 @@
     "@typescript-eslint/explicit-function-return-type": "off",
     // TODO: remove after rewriting code to TS
     "@typescript-eslint/no-var-requires": "warn"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["src/utils/**/*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    }
+  ]
 }
