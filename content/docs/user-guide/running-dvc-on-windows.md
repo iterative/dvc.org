@@ -21,7 +21,10 @@ perfect solution, bu here are some ideas:
 - Consider enabling and using
   [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
   ([Windows Terminal](https://devblogs.microsoft.com/commandline/) also
-  recommended). But it may be slow and unable to access GPUs, et al.\*
+  recommended). But it has major
+  [I/O performance issues](https://www.phoronix.com/scan.php?page=article&item=windows10-okt-wsl&num=2)
+  and is [unable to access GPUs](https://github.com/Microsoft/WSL/issues/829),
+  et al.\*
 - Install an actual Linux distro (e.g. Ubuntu) on a virtual machine, or in a HD
   partition (dual boot).
 
