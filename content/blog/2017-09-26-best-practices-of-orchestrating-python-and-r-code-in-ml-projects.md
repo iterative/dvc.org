@@ -153,7 +153,7 @@ model development. In that phase DVC creates dependencies that will be used in
 the reproducibility phase:
 
 ```dvc
-$ dvc import https://s3-us-west-2.amazonaws.com/dvc-share/so/25K/Posts.xml.tgz \
+$ dvc import https://s3-us-west-2.amazonaws.com/dvc-public/data/tutorial/nlp/25K/Posts.xml.zip \
             data/
 
 $ dvc run tar zxf data/Posts.xml.tgz -C data/

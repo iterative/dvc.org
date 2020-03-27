@@ -124,7 +124,7 @@ splitting ratio etc). It is important to use `dvc run` — with this command R
 script are entering pipeline (DAG graph).
 
 ```dvc
-$ dvc import https://s3-us-west-2.amazonaws.com/dvc-share/so/25K/Posts.xml.tgz \
+$ dvc import https://s3-us-west-2.amazonaws.com/dvc-public/data/tutorial/nlp/25K/Posts.xml.zip \
              data/
 
 # Extract XML from the archive.
