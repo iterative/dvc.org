@@ -37,14 +37,16 @@ const useAnchorNavigation = () => {
   useEffect(() => {
     if (location.hash) {
       const node = document.querySelector(location.hash)
+      const headerHeight = document.getElementById('header')?.clientHeight || 0
 
       if (node) {
-        allImagesLoadedInContainer(document.body).then(() =>
+        allImagesLoadedInContainer(document.body).then(() => {
           node.scrollIntoView()
-        )
+          document.documentElement.scrollBy(0, -headerHeight)
+        })
       }
     } else {
-      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
     }
   }, [location.href])
 }

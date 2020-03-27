@@ -25,7 +25,7 @@ export default class RightPanel extends React.PureComponent {
     current: undefined
   }
   componentDidMount() {
-    this.root = document.body
+    this.root = document.documentElement
 
     if (this.props.headings.length) {
       this.initHeadingsPosition()
@@ -58,7 +58,7 @@ export default class RightPanel extends React.PureComponent {
       return { ...result, [headingElement && headingElement.offsetTop]: slug }
     }, {})
 
-    const height = this.root.offsetHeight
+    const height = this.root.clientHeight
 
     this.setState({ coordinates, height }, this.setCurrentHeader)
   }
