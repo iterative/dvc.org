@@ -35,7 +35,10 @@
   },
   "overrides": [
     {
-      "files": ["src/utils/**/*.js"],
+      "files": [
+        "src/utils/**/*.?(js|ts)",
+        "+(middleware|scripts)/**/*.+(js|ts)"
+      ],
       "rules": {
         "@typescript-eslint/no-var-requires": "off"
       }
