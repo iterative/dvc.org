@@ -6,6 +6,7 @@ import Link from '../Link'
 
 import { logEvent } from '../../utils/ga'
 import { getFirstPage } from '../../utils/sidebar'
+import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
 
 import styles from './styles.module.css'
 
@@ -47,7 +48,7 @@ function HamburgerMenu() {
       <div className={cn(styles.wrapper, isOpened && styles.opened)}>
         <div className={styles.logoRow}>
           <Link href="/" className={styles.logo}>
-            <img src="/img/logo_white.png" alt="dvc.org" width={34} />
+            <LogoSVG />
           </Link>
         </div>
         <ul className={styles.sections}>

@@ -8,7 +8,7 @@ import IconSet from '../IconSet'
 
 import { getFirstPage } from '../../utils/sidebar'
 
-import { ReactComponent as LogoSVG } from './logo.svg'
+import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
 import styles from './styles.module.css'
 
 const docsPage = getFirstPage()

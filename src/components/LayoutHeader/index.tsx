@@ -7,7 +7,7 @@ import LayoutWidthContainer from '../LayoutWidthContainer'
 import Link from '../Link'
 import Nav from '../Nav'
 
-import { ReactComponent as LogoSVG } from './logo.svg'
+import { ReactComponent as LogoSVG } from '../../../static/img/logo.svg'
 import styles from './styles.module.css'
 
 const LayoutHeader: React.SFC<Required<ILayoutModifiable>> = ({
