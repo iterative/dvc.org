@@ -35,6 +35,10 @@
     }
   }
 
+  :global(.gatsby-highlight) pre {
+    font-family: var(--font-mono);
+  }
+
   p {
     margin: 25px 0;
 
@@ -245,6 +249,10 @@
     background: var(--color-light-blue);
   }
 
+  code {
+    font-family: var(--font-mono);
+  }
+
   table {
     @mixin text-diminished;
 
@@ -330,13 +338,15 @@
         font-weight: normal;
 
         .token.line {
+          color: rgb(204, 204, 204);
+        }
+
+        .token.dvc {
           font-weight: bold;
-          color: #a0a0a0;
         }
 
         .token.comment {
-          font-weight: normal;
-          color: #a0a0a0;
+          color: rgb(204, 204, 204);
         }
       }
 

@@ -13,7 +13,8 @@
   --color-orange: #e37046;
   --color-orange-opaque: rgba(22, 112, 70, 0.5);
   --font-brandon: 'BrandonGrotesque', 'Tahoma', 'Arial', sans-serif;
-  --font-mono: 'Inconsolata', monospace;
+  --font-mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo',
+    'Courier', monospace;
   --layout-width: 1005px;
   --layout-width-wide: 1200px;
   --layout-header-height: 98px;
