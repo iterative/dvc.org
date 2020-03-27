@@ -1,17 +1,28 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import PropTypes from 'prop-types'
-
+import { Node } from 'unist'
 import { getItemByPath } from '../utils/sidebar'
 
 import SEO from '../components/SEO'
 
 import Documentation from '../components/Documentation'
 
-export default function DocumentationTemplate({
+interface IDocHomePageProps {
+  data: {
+    page: {
+      htmlAst: Node
+    }
+  }
+  pageContext: {
+    slug: string
+    headings: []
+  }
+}
+
+const DocHomePage: React.SFC<IDocHomePageProps> = ({
   data,
   pageContext: { slug, headings }
-}) {
+}) => {
   const {
     page: { htmlAst }
   } = data
@@ -26,10 +37,7 @@ export default function DocumentationTemplate({
   )
 }
 
-DocumentationTemplate.propTypes = {
-  data: PropTypes.object,
-  pageContext: PropTypes.object
-}
+export default DocHomePage
 
 export const pageQuery = graphql`
   query DocPageBySlug($slug: String!) {

@@ -119,7 +119,7 @@ exports.createPages = async ({ graphql, actions }) => {
     throw docsResponse.errors
   }
 
-  const docComponent = path.resolve('./src/templates/doc.js')
+  const docComponent = path.resolve('./src/templates/doc-home.tsx')
 
   docsResponse.data.docs.edges.forEach(doc => {
     const headings = parseHeadings(doc.node.rawMarkdownBody)
