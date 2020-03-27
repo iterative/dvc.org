@@ -19,7 +19,7 @@ import {
   Triangle
 } from './styles'
 
-const VERSION = `0.90.2`
+const VERSION = `0.91.1`
 const OSX = `osx`
 const WINDOWS = `win`
 const LINUX = `linux`
