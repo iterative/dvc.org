@@ -206,6 +206,11 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
 
 ```dvc
 $ dvc remote add -d myremote gdrive://root/path/to/folder
+```
+
+To configure with your own **client ID** and **client secret**:
+
+```dvc
 $ dvc remote modify myremote gdrive_client_id <client ID>
 $ dvc remote modify myremote gdrive_client_secret <client secret>
 ```
