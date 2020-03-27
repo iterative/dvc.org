@@ -238,7 +238,7 @@
 
   pre {
     box-sizing: border-box;
-    overflow: scroll;
+    overflow: auto;
     max-width: 100%;
     padding: 15px;
     border-radius: 4px;
