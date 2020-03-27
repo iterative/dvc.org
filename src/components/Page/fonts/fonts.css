@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata&display=swap');
+
 /* Prevent mobile browsers from changing font-size */
 * {
   -webkit-text-size-adjust: none;
