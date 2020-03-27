@@ -52,7 +52,7 @@ If you have any questions, please join the [community](https://dvc.org/chat) and
 use the `#dev-docs` channel to discuss any issues in our website or docs. We are
 very responsive and happy to help.
 
-# Writing posts
+# Writing blog posts
 
 Create `.md` file in the `content/blog` folder. File name will be used as
 `slug`.
