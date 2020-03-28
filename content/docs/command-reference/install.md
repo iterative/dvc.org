@@ -25,32 +25,32 @@ Namely:
 [DVC-files](/doc/user-guide/dvc-file-format) corresponding to that version. The
 project's DVC-files in turn refer to data stored in <abbr>cache</abbr>, but not
 necessarily in the <abbr>workspace</abbr>. Normally, it would be necessary to
-run `dvc checkout` to synchronize workspace and DVC-files.
+use `dvc checkout` to synchronize workspace and DVC-files.
 
-This hook automates running `dvc checkout`.
+This hook automates `dvc checkout` after `git checkout`.
 
-**Commit/Reproduce**: When committing a change with Git, that change possibly
-produces new data files not yet in cache, which requires running `dvc commit` to
-store them. Or the change might require reproducing the corresponding
+**Commit/Reproduce**: Before committing DVC changes with Git, it may be
+necessary using `dvc commit` to store new data files not yet in cache. Or the
+changes might require reproducing the corresponding
 [pipeline](/doc/command-reference/pipeline) (with `dvc repro`) to regenerate the
 project's results (which implicitly commits them to DVC as well).
 
-This hook automates reminding the user to run either `dvc commit` or
-`dvc repro`, as needed.
+This hook automates `dvc status` before `git commit` when needed, to remind the
+user to employ either `dvc commit` or `dvc repro`.
 
 **Push**: While publishing changes to the Git remote with `git push`, its easy
 to forget that the `dvc push` command is necessary to upload new or updated data
 files and directories tracked by DVC to
 [remote storage](/doc/command-reference/remote).
 
-This hook automates `dvc push`.
+This hook automates `dvc push` after `git push`.
 
 ## Installed Git hooks
 
-- A `pre-commit` hook executes `dvc status` before `git commit` to inform the
-  user about the differences between cache and workspace.
 - A `post-checkout` hook executes `dvc checkout` after `git checkout` to
   automatically synchronize the data files with the new workspace state.
+- A `pre-commit` hook executes `dvc status` before `git commit` to inform the
+  user about the differences between cache and workspace.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and
   directories tracked by DVC to remote storage.
 
@@ -62,7 +62,7 @@ For more information about git hooks, refer to the
 
 ## Disable Git hooks
 
-When you run `dvc install`, it creates three files under the `.git/hooks`
+When you use `dvc install`, it creates three files under the `.git/hooks`
 directory:
 
 ```
