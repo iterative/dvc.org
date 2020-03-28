@@ -10,14 +10,22 @@ A set of commands to add, manage, collect, and display project metrics:
 ## Synopsis
 
 ```usage
-usage: dvc metrics [-h] [-q | -v] {show,add,modify,remove} ...
+usage: dvc metrics [-h] [-q | -v] {show,add,modify,remove,diff} ...
 
 positional arguments:
-  COMMAND
-    show                Output metric values.
-    add                 Tag file as a metric file.
-    modify              Modify metric file values.
-    remove              Remove files's metric tag.
+  {show,add,modify,remove,diff}
+                        Use `dvc metrics CMD --help` to display command-
+                        specific help.
+    show                Print metrics, with optional formatting.
+    add                 Mark a DVC-tracked file as a metric.
+    modify              Modify metric default formatting.
+    remove              Remove metric mark on a DVC-tracked file.
+    diff                Show changes in metrics between commits
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q, --quiet           Be quiet.
+  -v, --verbose         Be verbose
 ```
 
 ## Description
