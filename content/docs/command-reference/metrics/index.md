@@ -22,12 +22,17 @@ positional arguments:
 
 ## Description
 
-DVC has the ability to mark a certain stage <abbr>outputs</abbr> as files
-containing metrics to track. (See the `--metrics` option of `dvc run`.) Metrics
-are project-specific numeric values e.g. `AUC`, `ROC`, etc. DVC itself does not
-ascribe any specific meaning for these numbers. Usually these numbers are
-produced by the model evaluation script and serve as a way to compare and pick
-the best performing experiment.
+In order to track metrics associated to machie learning experiments DVC has the
+ability to mark a certain stage <abbr>outputs</abbr> as files containing metrics
+to track. (See the `--metrics` option of `dvc run`.) Metrics are
+project-specific floating-point values e.g. `AUC`, `ROC`, etc.
+
+Supported file formats: JSON. Metrics can be organized in a tree hierarchy in a
+JSON file. DVC addresses the metrics by the tree path.
+
+DVC itself does not ascribe any specific meaning for these numbers. Usually
+these numbers are produced by the model training or model evaluation code and
+serve as a way to compare and pick the best performing experiment.
 
 [Add](/doc/command-reference/metrics/add),
 [show](/doc/command-reference/metrics/show),
@@ -65,7 +70,12 @@ Now let's print metric values that we are tracking in this <abbr>project</abbr>:
 $ dvc metrics show -a
 
   master:
-      data/eval.json: {"AUC": "0.624652"}
+      data/eval.json:
+		{
+		    "AUC": 0.65115,
+		    "error": 0.17304,
+		    "TP": 528
+		}
 ```
 
 We can also tell DVC an `xpath` for the metric file, so that it can output only
@@ -74,11 +84,16 @@ the value of AUC. In the case of JSON, use
 selectively extract data out of metric files:
 
 ```dvc
-$ dvc metrics modify data/eval.json --type json --xpath AUC
-$ dvc metrics show
+$ dvc metrics show --xpath AUC data/eval.json
+      data/eval.json: {'AUC': 0.65115}
+```
 
-  master:
-      data/eval.json: 0.624652
+The xpath filter can be saved for a metrics file:
+
+```dvc
+$ dvc metrics modify data/eval.json --xpath AUC
+$ dvc metrics show
+      data/eval.json: {'AUC': 0.65115}
 ```
 
 And finally let's remove `data/eval.json` from the project metrics:
