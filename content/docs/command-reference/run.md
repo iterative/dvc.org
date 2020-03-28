@@ -159,7 +159,7 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 - `--no-commit` - do not save outputs to cache. A DVC-file is created and an
   entry is added to `.dvc/state`, while nothing is added to the cache.
   (`dvc status` will report that the file is `not in cache`.) Use `dvc commit`
-  when ready to commit the results to cache. Useful to avoid caching unnecessary
+  when ready to commit outputs with DVC. Useful to avoid caching unnecessary
   data repeatedly when running multiple experiments.
 
 - `--always-changed` - always consider this DVC-file as changed. As a result
