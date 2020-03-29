@@ -299,11 +299,15 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote gdrive_service_account_user_email <user account email>
   ```
 
-- `gdrive_trash_only` - configures DVC to move a remote file to the trash or to
-  delete it permanently. By default, is `False`.
+- `gdrive_trash_only` - configures DVC to move remote files to
+  [trash](https://developers.google.com/drive/api/v2/reference/files/trash)
+  instead of
+  [deleting](https://developers.google.com/drive/api/v2/reference/files/delete)
+  them permanently. `false` by default, meaning "delete". Useful for shared
+  drives, where delete permissions may not be given.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_trash_only <True|False>
+  $ dvc remote modify myremote gdrive_trash_only true
   ```
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
