@@ -271,31 +271,29 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote gdrive_client_secret <client secret>
   ```
 
-- `gdrive_use_service_account` - instructs DVC to auth with a
-  [service account](/doc/user-guide/setup-google-drive-remote#configure-the-gdrive-remote-with-a-service-account).
+- `gdrive_use_service_account` - instructs DVC to authenticate using a
+  [service account](/doc/user-guide/setup-google-drive-remote#configure-the-google-drive-remote-with-a-service-account).
 
   ```dvc
-  $ dvc remote modify myremote gdrive_use_service_account <True|False>
+  $ dvc remote modify myremote gdrive_use_service_account true
   ```
 
-- `gdrive_service_account_email` - Google Project's
-  [service account](/doc/user-guide/setup-google-drive-remote#configure-the-gdrive-remote-with-a-service-account)
-  email address.
+- `gdrive_service_account_email` - email address of the Google Project's service
+  account.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_service_account_email <service account email>
+  $ dvc remote modify myremote gdrive_service_account_email <service acct email>
   ```
 
-- `gdrive_service_account_p12_file_path` - Google Project's
-  [service account](/doc/user-guide/setup-google-drive-remote#configure-the-gdrive-remote-with-a-service-account)
+- `gdrive_service_account_p12_file_path` - Google Project's service account
   `.p12` file path.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_service_account_p12_file_path <file_path.p12>
+  $ dvc remote modify myremote gdrive_service_account_p12_file_path path/to/file.p12
   ```
 
-- `gdrive_service_account_user_email` - user email to be impersonated by
-  [service account](/doc/user-guide/setup-google-drive-remote#configure-the-gdrive-remote-with-a-service-account).
+- `gdrive_service_account_user_email` - email of the service account to
+  impersonate.
 
   ```dvc
   $ dvc remote modify myremote gdrive_service_account_user_email <user account email>

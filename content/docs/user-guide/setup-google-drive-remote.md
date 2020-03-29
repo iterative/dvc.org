@@ -3,11 +3,13 @@
 Follow this guide to setup Google Drive as your <abbr>DVC project</abbr>'s
 [remote storage](/doc/command-reference/remote).
 
-## Configure a Google Cloud project (Highly recommended optional step)
+## Configure a Google Cloud project (highly recommended)
 
-We highly recommend to follow this guide and complete setup of your own Google
-Cloud project and
+Optionally, follow this guide to setup your own Google Cloud project and
 [OAuth](https://developers.google.com/identity/protocols/OAuth2) credentials.
+Doing so avoids sharing the default DVC project for this. A dedicated project
+gives you full control over Google API usage and rate limits, and ensures
+optimal performance to access your GDrive remote.
 
 DVC uses the [Google Drive API](https://developers.google.com/drive) to connect
 to your Google Drive. This requires a Google Cloud _project_ that allows Drive
@@ -57,7 +59,7 @@ connect to the Google Drive.
 
 ## URL format for Google Drive remotes
 
-A GDrive DVC remote URLs is needed for the `dvc remote add` command. It can be
+A GDrive remote URLs is needed for the `dvc remote add` command. It can be
 constructed with a _base_, and an **optional** _path_ to a folder i.e.
 `gdrive://<base>/path/to/folder`. The base can be one of:
 
@@ -91,7 +93,7 @@ should be referenced by _Folder ID_ in the same way.
 $ dvc remote add mygdappata gdrive://appDataFolder
 ```
 
-## Configure the GDrive remote
+## Configure Google Drive remote with user credentials
 
 Use the `dvc remote modify` command to set the credentials for each `gdrive://`
 remote, for example:
@@ -102,18 +104,20 @@ $ dvc remote modify mygdfolder gdrive_client_id <client ID>
 $ dvc remote modify mygdfolder gdrive_client_secret <client secret>
 ```
 
-## Configure the GDrive remote with a service account
+## Configure Google Drive remote with a service account
 
 A
-[service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
+[service account](https://cloud.google.com/iam/docs/understanding-service-accounts)
 can be used to configure the GDrive remote.
 
 1. You should already have a configured
-   [Google Cloud Project](#configure-a-google-cloud-project-highly-recommended-optional-step)
+   [Google Cloud Project](#configure-a-google-cloud-project-highly-recommended)
 
-2. Navigate to **IAM & Admin** in the left sidebar, and select **Service
+2. To
+   [create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),
+   navigate to **IAM & Admin** in the left sidebar, and select **Service
    Accounts**. Click **+ CREATE SERVICE ACCOUNT**, on the next screen, enter
-   **Service account name** e.g. "DVC project", and click **Create**. Select
+   **Service account name** e.g. "My DVC project", and click **Create**. Select
    **Continue** at the next **Service account permissions** page, click at **+
    CREATE KEY**, select **P12** and **Create**. Save generated `.p12` key file
    at your local disk.
@@ -121,9 +125,9 @@ can be used to configure the GDrive remote.
 3. Copy a downloaded `.p12` file to your DVC project root directory.
 
 ```dvc
-$ dvc remote modify mygdremote gdrive_use_service_account True
-$ dvc remote modify mygdremote gdrive_service_account_email <service account email>
-$ dvc remote modify mygdremote gdrive_service_account_p12_file_path <file_path.p12>
+$ dvc remote modify myremote gdrive_use_service_account True
+$ dvc remote modify myremote gdrive_service_account_email <service acct email>
+$ dvc remote modify myremote gdrive_service_account_p12_file_path path/to/file.p12
 ```
 
 ## Authorization
