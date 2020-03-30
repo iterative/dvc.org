@@ -32,7 +32,9 @@ function HamburgerMenu() {
   )
 
   useEffect(() => {
-    document.body.classList.toggle('noScroll', isOpened)
+    const method = isOpened ? 'add' : 'remove'
+
+    document.body.classList[method]('noScroll')
   }, [isOpened])
 
   return (

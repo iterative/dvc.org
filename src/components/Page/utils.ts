@@ -34,6 +34,8 @@ export const useRedirects = () => {
 
 export const useSmoothScroll = (enable: boolean) => {
   useEffect(() => {
-    document.body.classList.toggle('bodySmoothScrolling', enable)
+    const method = enable ? 'add' : 'remove'
+
+    document.body.classList[method]('bodySmoothScrolling')
   }, [enable])
 }

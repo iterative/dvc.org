@@ -84,9 +84,10 @@ export default function SidebarMenu({ id, sidebar, currentPath, onClick }) {
       psRef.current.update()
 
       if (node && parent) {
-        parent.scrollTo({
-          top: node.offsetTop - parent.clientHeight + node.clientHeight
-        })
+        const scrollOffset =
+          node.offsetTop - parent.clientHeight + node.clientHeight
+
+        parent.scrollTop = scrollOffset
       }
 
       setIsScrollHidden(false)

@@ -268,6 +268,14 @@ exports.onCreatePage = ({ page, actions }) => {
 exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   if (stage === 'build-javascript') {
     const config = getConfig()
+
+    // Add polyfills
+    config.entry.app = [
+      'promise-polyfill/src/polyfill',
+      'isomorphic-fetch',
+      config.entry.app
+    ]
+
     const miniCssExtractPlugin = config.plugins.find(
       plugin => plugin.constructor.name === 'MiniCssExtractPlugin'
     )
