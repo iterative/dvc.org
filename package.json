@@ -172,6 +172,7 @@
   },
   "cacheDirectories": [
     "node_modules",
-    ".cache"
+    ".cache",
+    "public"
   ]
 }
