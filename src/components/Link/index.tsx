@@ -3,6 +3,7 @@ import { useLocation } from '@reach/router'
 import GatsbyLink from 'gatsby-link'
 import { StyledComponentBase } from 'styled-components'
 import { handleFrontRedirect } from '../../utils/redirects'
+import { scrollIntoLayout } from '../../utils/scroll'
 
 export type ILinkProps = {
   children: React.ReactNode
@@ -57,6 +58,12 @@ const Link: React.SFC<ILinkProps> = ({
     // Disable browser default behavior for hash links
     if (currentLocation.href === location.href) {
       e.preventDefault()
+
+      if (location.hash) {
+        const node = document.querySelector(location.hash)
+
+        scrollIntoLayout(node)
+      }
     }
 
     // Handle front redirects
