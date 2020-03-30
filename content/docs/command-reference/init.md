@@ -76,7 +76,7 @@ that all DVC-file under the root path are being analyzed.
 
 If there are multiple DVC sub-projects but they _are not_ nested, e.g.:
 
-```sh
+```
 .
 ├── .git
 |
@@ -95,7 +95,7 @@ require DVC project will raise an error.
 
 On the other hand, if there _are_ nested DVC projects, e.g.:
 
-```sh
+```
 project-A
 ├── .dvc
 ├── data-A.dvc
