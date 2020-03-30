@@ -249,10 +249,6 @@
     background: var(--color-light-blue);
   }
 
-  code {
-    font-family: var(--font-mono);
-  }
-
   table {
     @mixin text-diminished;
 
