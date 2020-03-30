@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Collapse } from 'react-collapse'
 import PerfectScrollbar from 'perfect-scrollbar'
-import scrollIntoView from 'dom-scroll-into-view'
 import PropTypes from 'prop-types'
 import includes from 'lodash.includes'
 
@@ -85,7 +84,9 @@ export default function SidebarMenu({ id, sidebar, currentPath, onClick }) {
       psRef.current.update()
 
       if (node && parent) {
-        scrollIntoView(node, parent, { onlyScrollIfNeeded: true })
+        parent.scrollTo({
+          top: node.offsetTop - parent.clientHeight + node.clientHeight
+        })
       }
 
       setIsScrollHidden(false)

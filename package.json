@@ -42,7 +42,6 @@
     "compression": "^1.7.4",
     "date-fns": "^2.8.1",
     "docsearch.js": "^2.6.3",
-    "dom-scroll-into-view": "^2.0.1",
     "express": "^4.17.1",
     "gatsby": "^2.20.2",
     "gatsby-image": "^2.3.0",
