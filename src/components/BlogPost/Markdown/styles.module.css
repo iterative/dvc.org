@@ -240,6 +240,10 @@
     }
   }
 
+  code {
+    font-family: monospace;
+  }
+
   pre {
     box-sizing: border-box;
     overflow: auto;
