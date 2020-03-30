@@ -3,7 +3,7 @@ import { GlobalStyle } from '../../styles'
 
 import MainLayout, { LayoutComponent } from '../MainLayout'
 import DefaultSEO from './DefaultSEO'
-import DocLayout from '../DocLayout'
+import DocumentationLayout from '../Documentation/Layout'
 import BlogLayout from '../BlogLayout'
 
 import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
@@ -38,7 +38,7 @@ const Page: React.SFC<IPageProps> = props => {
 
   if (!props.pageContext.is404) {
     if (props.pageContext.isDocs) {
-      LayoutComponent = DocLayout as LayoutComponent // TODO: remove type cast
+      LayoutComponent = DocumentationLayout as LayoutComponent // TODO: remove type cast
     } else if (props.pageContext.isBlog) {
       LayoutComponent = BlogLayout
     }

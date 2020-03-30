@@ -6,15 +6,15 @@ import includes from 'lodash.includes'
 
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 
-import DownloadButton from '../../DownloadButton'
-import Link from '../../Link'
+import DownloadButton from '../../../DownloadButton'
+import Link from '../../../Link'
 
 import {
   getParentsListFromPath,
   getPathWithSoruce
-} from '../../../utils/sidebar'
+} from '../../../../utils/sidebar'
 
-import { OnlyDesktop } from '../../../styles'
+import { OnlyDesktop } from '../../../../styles'
 
 import { Menu, SectionLink, SectionLinks, Sections, SideFooter } from './styles'
 
