@@ -84,10 +84,18 @@ export default function SidebarMenu({ id, sidebar, currentPath, onClick }) {
       psRef.current.update()
 
       if (node && parent) {
-        const scrollOffset =
-          node.offsetTop - parent.clientHeight + node.clientHeight
+        const parentHeight = parent.clientHeight
+        const parentScroll = parent.scrollTop
+        const nodeOffset = node.offsetTop
+        const nodeHeight = node.clientHeight
+        const scrollOffset = nodeOffset - parentHeight + nodeHeight
 
-        parent.scrollTop = scrollOffset
+        if (
+          parentScroll > nodeOffset + nodeHeight ||
+          parentScroll + parentHeight < nodeOffset
+        ) {
+          parent.scrollTop = scrollOffset
+        }
       }
 
       setIsScrollHidden(false)
