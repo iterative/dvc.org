@@ -49,8 +49,7 @@
 .logoLink {
   @mixin active;
 
-  &:hover,
-  &:focus {
+  &:hover {
     outline: none;
     opacity: 0.5;
   }
