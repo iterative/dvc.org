@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  padding-top: 90px;
+  padding-top: 70px;
   padding-bottom: 80px;
   overflow: hidden;
 `

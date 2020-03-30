@@ -4,7 +4,7 @@ import color from 'color'
 import { container, media } from '../../styles'
 
 export const SupportHero = styled.div`
-  padding-top: 90px;
+  padding-top: 70px;
   padding-bottom: 80px;
   overflow: hidden;
 `
