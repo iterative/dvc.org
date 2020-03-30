@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import throttle from 'lodash.throttle'
 
+import Link from '../../Link'
+
 import Tutorials from '../Tutorials'
 
 import { allImagesLoadedInContainer } from '../../../utils/images'
@@ -93,14 +95,15 @@ export default class RightPanel extends React.PureComponent {
             <Header>Content</Header>
             <hr />
             {headings.map(({ slug, text }) => (
-              <HeadingLink
+              <Link
+                as={HeadingLink}
                 isCurrent={current === slug}
                 level={3}
                 key={`link-${slug}`}
                 href={`#${slug}`}
               >
                 {text}
-              </HeadingLink>
+              </Link>
             ))}
             <br />
           </>
