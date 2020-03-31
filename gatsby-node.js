@@ -1,10 +1,19 @@
 /* eslint-env node */
 
+const fs = require('fs')
 const path = require('path')
 const GithubSlugger = require('github-slugger')
+const { createFilePath } = require('gatsby-source-filesystem')
+const tagToSlug = require('./src/utils/tagToSlug')
+const paginatablePageGenerator = require('./src/utils/paginatablePageGenerator')
+const { siteMetadata } = require('./gatsby-config')
 
 const { getItemBySource } = require('./src/utils/sidebar')
 
+const remark = require('remark')
+const remarkHTML = require('remark-html')
+
+const markdownToHtml = remark().use(remarkHTML).processSync
 const slugger = new GithubSlugger()
 
 // Generate hedings data from markdown
@@ -40,15 +49,41 @@ const parseHeadings = text => {
   return matches
 }
 
-exports.onCreateNode = ({ node, actions }) => {
+exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'MarkdownRemark') {
-    const docsPath = path.join(__dirname, 'content')
+    const contentPath = path.join(__dirname, 'content')
+    const source = node.fileAbsolutePath.replace(contentPath, '')
+    let value
 
-    const source = node.fileAbsolutePath.replace(docsPath, '')
+    if (source.startsWith('/blog')) {
+      value = createFilePath({
+        getNode,
+        node,
+        trailingSlash: false
+      }).replace(/^\/blog\/[0-9\-]*/, '/blog/')
 
-    const { path: value } = getItemBySource(source)
+      // Convert fields in frontmatter from markdown to html
+      const {
+        frontmatter: { descriptionLong, pictureComment }
+      } = node
+
+      if (descriptionLong) {
+        node.frontmatter.descriptionLong = markdownToHtml(
+          descriptionLong
+        ).contents
+      }
+
+      if (pictureComment) {
+        node.frontmatter.pictureComment = markdownToHtml(
+          pictureComment
+        ).contents
+      }
+      // end Convert fields
+    } else {
+      value = getItemBySource(source).path
+    }
 
     createNodeField({
       name: 'slug',
@@ -59,11 +94,8 @@ exports.onCreateNode = ({ node, actions }) => {
 }
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-
-  const docPage = path.resolve('./src/templates/doc.js')
-
-  const result = await graphql(
+  // DOCS
+  const docsResponse = await graphql(
     `
       {
         docs: allMarkdownRemark(
@@ -83,47 +115,173 @@ exports.createPages = async ({ graphql, actions }) => {
     `
   )
 
-  if (result.errors) {
-    throw result.errors
+  if (docsResponse.errors) {
+    throw docsResponse.errors
   }
 
-  const docs = result.data.docs.edges
+  const docComponent = path.resolve('./src/templates/doc-home.tsx')
 
-  docs.forEach(doc => {
+  docsResponse.data.docs.edges.forEach(doc => {
     const headings = parseHeadings(doc.node.rawMarkdownBody)
 
     if (doc.node.fields.slug) {
-      createPage({
-        component: docPage,
+      actions.createPage({
+        component: docComponent,
         path: doc.node.fields.slug,
         context: {
+          isDocs: true,
           slug: doc.node.fields.slug,
           headings
         }
       })
     }
   })
+
+  // Blog
+  const blogResponse = await graphql(
+    `
+      {
+        allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+          limit: 9999
+        ) {
+          edges {
+            node {
+              fields {
+                slug
+              }
+              frontmatter {
+                title
+              }
+            }
+          }
+        }
+        home: allMarkdownRemark(
+          sort: { fields: [frontmatter___date], order: DESC }
+          filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+          limit: 9999
+        ) {
+          pageInfo {
+            itemCount
+          }
+        }
+        tags: allMarkdownRemark(limit: 9999) {
+          group(field: frontmatter___tags) {
+            fieldValue
+            pageInfo {
+              itemCount
+            }
+          }
+        }
+      }
+    `
+  )
+
+  if (blogResponse.errors) {
+    throw blogResponse.errors
+  }
+
+  // Create home blog pages (with pagination)
+  const blogHomeTemplate = path.resolve('./src/templates/blog-home.tsx')
+
+  for (const page of paginatablePageGenerator({
+    basePath: '/blog',
+    hasHeroItem: true,
+    itemCount: blogResponse.data.home.pageInfo.itemCount
+  })) {
+    actions.createPage({
+      component: blogHomeTemplate,
+      path: page.path,
+      context: {
+        isBlog: true,
+        ...page.context
+      }
+    })
+  }
+
+  // Create blog posts pages
+  const blogPostTemplate = path.resolve('./src/templates/blog-post.tsx')
+  const posts = blogResponse.data.allMarkdownRemark.edges
+
+  posts.forEach((post, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1].node
+    const next = index === 0 ? null : posts[index - 1].node
+
+    actions.createPage({
+      component: blogPostTemplate,
+      context: {
+        isBlog: true,
+        currentPage: index + 1,
+        next,
+        previous,
+        slug: post.node.fields.slug
+      },
+      path: post.node.fields.slug
+    })
+  })
+
+  // Create tags pages (with pagination)
+  const blogTagsTemplate = path.resolve('./src/templates/blog-tags.tsx')
+
+  blogResponse.data.tags.group.forEach(
+    ({ fieldValue: tag, pageInfo: { itemCount } }) => {
+      const basePath = `/tags/${tagToSlug(tag)}`
+
+      for (const page of paginatablePageGenerator({ basePath, itemCount })) {
+        actions.createPage({
+          component: blogTagsTemplate,
+          path: page.path,
+          context: { tag, ...page.context }
+        })
+      }
+    }
+  )
 }
 
-const notFoundRegexp = /^\/404/
+const is404Regexp = /^\/404/
 const trailingSlashRegexp = /\/$/
 
 exports.onCreatePage = ({ page, actions }) => {
-  let newPage = page
-
-  if (notFoundRegexp.test(newPage.path)) {
-    newPage = { ...newPage, context: { ...newPage.context, is404: true } }
+  // Set necessary flags for pageContext
+  const newPage = {
+    ...page,
+    context: {
+      ...page.context,
+      is404: is404Regexp.test(page.path)
+    }
   }
 
+  // Remove trailing slash
   if (page.path !== '/' && trailingSlashRegexp.test(newPage.path)) {
-    newPage = {
-      ...newPage,
-      path: newPage.path.replace(trailingSlashRegexp, '')
-    }
+    newPage.path = newPage.path.replace(trailingSlashRegexp, '')
   }
 
   if (newPage !== page) {
     actions.deletePage(page)
     actions.createPage(newPage)
+  }
+}
+
+// Ignore warnings about CSS inclusion order, because we use CSS modules.
+// https://spectrum.chat/gatsby-js/general/having-issue-related-to-chunk-commons-mini-css-extract-plugin~0ee9c456-a37e-472a-a1a0-cc36f8ae6033?m=MTU3MjYyNDQ5OTAyNQ==
+exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
+  if (stage === 'build-javascript') {
+    const config = getConfig()
+
+    // Add polyfills
+    config.entry.app = [
+      'promise-polyfill/src/polyfill',
+      'isomorphic-fetch',
+      config.entry.app
+    ]
+
+    const miniCssExtractPlugin = config.plugins.find(
+      plugin => plugin.constructor.name === 'MiniCssExtractPlugin'
+    )
+    if (miniCssExtractPlugin) {
+      miniCssExtractPlugin.options.ignoreOrder = true
+    }
+    actions.replaceWebpackConfig(config)
   }
 }

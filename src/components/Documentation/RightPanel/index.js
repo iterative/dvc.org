@@ -2,6 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import throttle from 'lodash.throttle'
 
+import Link from '../../Link'
+
 import Tutorials from '../Tutorials'
 
 import { allImagesLoadedInContainer } from '../../../utils/images'
@@ -16,7 +18,6 @@ import {
   Wrapper
 } from './styles'
 
-const ROOT_ELEMENT = 'bodybag'
 const MARKDOWN_ROOT = '#markdown-root'
 
 export default class RightPanel extends React.PureComponent {
@@ -26,13 +27,13 @@ export default class RightPanel extends React.PureComponent {
     current: undefined
   }
   componentDidMount() {
-    this.root = document.getElementById(ROOT_ELEMENT)
+    this.root = document.documentElement
 
     if (this.props.headings.length) {
       this.initHeadingsPosition()
     }
 
-    this.root.addEventListener('scroll', this.setCurrentHeader)
+    document.addEventListener('scroll', this.setCurrentHeader)
     window.addEventListener('resize', this.updateHeadingsPosition)
   }
 
@@ -43,7 +44,7 @@ export default class RightPanel extends React.PureComponent {
   }
 
   componentWillUnmount() {
-    this.root.removeEventListener('scroll', this.setCurrentHeader)
+    document.removeEventListener('scroll', this.setCurrentHeader)
     window.removeEventListener('resize', this.updateHeadingsPosition)
   }
 
@@ -59,7 +60,7 @@ export default class RightPanel extends React.PureComponent {
       return { ...result, [headingElement && headingElement.offsetTop]: slug }
     }, {})
 
-    const height = this.root.offsetHeight
+    const height = this.root.clientHeight
 
     this.setState({ coordinates, height }, this.setCurrentHeader)
   }
@@ -94,14 +95,15 @@ export default class RightPanel extends React.PureComponent {
             <Header>Content</Header>
             <hr />
             {headings.map(({ slug, text }) => (
-              <HeadingLink
+              <Link
+                as={HeadingLink}
                 isCurrent={current === slug}
                 level={3}
                 key={`link-${slug}`}
                 href={`#${slug}`}
               >
                 {text}
-              </HeadingLink>
+              </Link>
             ))}
             <br />
           </>

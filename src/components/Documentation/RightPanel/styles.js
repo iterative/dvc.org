@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   font-size: 16px;
   height: calc(100vh - 78px);
   position: sticky;
-  top: 0;
+  top: var(--layout-header-height-scrolled);
 
   @media only screen and (max-width: 1200px) {
     display: none;

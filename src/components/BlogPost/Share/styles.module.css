@@ -1,0 +1,18 @@
+.link {
+  @mixin active;
+
+  position: relative;
+  display: block;
+  width: 40px;
+  height: 40px;
+  margin: 5px;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  &:focus {
+    outline: none;
+    opacity: 0.7;
+  }
+}

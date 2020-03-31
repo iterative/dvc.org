@@ -35,7 +35,7 @@ export const Icon = styled.div`
 `
 
 export const Name = styled.h3`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   margin-top: 10px;
   margin-bottom: 10px;
 

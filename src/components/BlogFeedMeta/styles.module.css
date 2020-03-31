@@ -1,0 +1,43 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  min-height: 44px;
+  padding-left: 40px;
+}
+
+.avatar {
+  position: absolute !important;
+  top: 50%;
+  left: 0;
+  margin-top: -20px;
+  border-radius: 20px;
+}
+
+.list {
+  overflow: hidden;
+  margin: 0 0 0 10px;
+  padding: 0;
+}
+
+.item {
+  @mixin text-secondary;
+
+  position: relative;
+  display: inline-block;
+  margin-right: 14px;
+  white-space: nowrap;
+  line-height: 20px;
+  color: var(--color-gray);
+
+  &::before {
+    content: '• ';
+    position: absolute;
+    right: 100%;
+  }
+}
+
+.link {
+  @mixin link;
+}

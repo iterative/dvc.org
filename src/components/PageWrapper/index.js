@@ -1,8 +1,6 @@
-/* eslint-disable react/prop-types */
-
 import React from 'react'
-import Layout from '../Layout'
+import Page from '../Page'
 
 export default function PageWrapper({ element, props }) {
-  return <Layout {...props}>{element}</Layout>
+  return <Page {...props}>{element}</Page>
 }

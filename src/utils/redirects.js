@@ -1,17 +1,18 @@
 /* eslint-env node */
 
+const { navigate } = require('@reach/router')
 let redirects = require('../../redirects-list.json')
 
 const processRedirectString = redirectString => {
-  let [regex, replace, code = 301] = redirectString.split(/\s+/g)
-  const matchPathname = /^\^?\//.test(regex)
-  regex = new RegExp(regex)
-  code = Number(code)
+  const redirectParts = redirectString.split(/\s+/g)
+  const matchPathname = /^\^?\//.test(redirectParts[0])
+  const regex = new RegExp(redirectParts[0])
+
   return {
     regex,
     matchPathname,
-    replace,
-    code
+    replace: redirectParts[1],
+    code: Number(redirectParts[2] || 301)
   }
 }
 
@@ -42,4 +43,21 @@ const getRedirect = (host, pathname, { req, dev } = {}) => {
   return matchRedirectList(host, pathname)
 }
 
+const handleFrontRedirect = (host, pathname, clickEvent) => {
+  let [, redirectUrl] = getRedirect(host, pathname)
+
+  if (redirectUrl) {
+    if (clickEvent) {
+      clickEvent.preventDefault()
+    }
+
+    if (redirectUrl.startsWith('/')) {
+      redirectUrl = redirectUrl + location.search
+    }
+
+    navigate(redirectUrl)
+  }
+}
+
 exports.getRedirect = getRedirect
+exports.handleFrontRedirect = handleFrontRedirect

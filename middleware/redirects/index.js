@@ -11,19 +11,20 @@ module.exports = (req, res, next) => {
   const { pathname, query } = parsedUrl
   const host = req.headers.host
 
-  let [redirectCode, redirectLocation] = getRedirect(host, pathname, {
+  const [code, location] = getRedirect(host, pathname, {
     req,
     dev
   })
 
-  if (redirectLocation) {
+  if (location) {
     // HTTP redirects
+    let redirectLocation = location
 
     const queryStr = stringify(query)
     if (queryStr) {
       redirectLocation += '?' + queryStr
     }
-    res.writeHead(redirectCode, {
+    res.writeHead(code, {
       Location: redirectLocation
     })
 

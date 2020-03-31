@@ -48,7 +48,8 @@ export const Inner = styled.div`
 `
 
 export const Action = styled.h6`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
+  font-weight: 500;
   font-size: 20px;
   line-height: 0.9;
 `
