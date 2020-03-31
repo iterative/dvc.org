@@ -1,8 +1,13 @@
 # Setup a Google Drive DVC Remote
 
-I this guide we explain the existing alternatives to setup Google Drive
+In this guide we explain the existing alternatives to setup Google Drive
 [remote storage](/doc/command-reference/remote) for your <abbr>DVC
 project</abbr>, along with the different benefits each one brings.
+
+Note that to start using a GDrive remote, you only need to add it with a valid
+URL (or clone a <abbr>DVC repository</abbr> with one previously configured), and
+use any DVC command that requires the remote (see `dvc pull`, `dvc fetch`,
+`dvc push`).
 
 ## URL format for Google Drive remotes
 
@@ -134,7 +139,7 @@ $ dvc remote modify myremote gdrive_service_account_p12_file_path path/to/file.p
 
 ## Authorization
 
-On the first usage of a GDrive [DVC remote](/doc/command-reference/remote), for
+On the first usage of a GDrive [remote](/doc/command-reference/remote), for
 example when trying to `dvc push` for the first time after adding a GDrive
 remote, DVC will prompt you to visit a special Google authorization web page to
 generate. This will require you to sign into the corresponding Google account.
