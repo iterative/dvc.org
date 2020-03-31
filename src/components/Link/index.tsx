@@ -55,8 +55,11 @@ const Link: React.SFC<ILinkProps> = ({
 
     const location = getLocation(href)
 
-    // Disable browser default behavior for hash links
-    if (currentLocation.href === location.href) {
+    // Do not navigate to the same page. Handle hash scrolling manually
+    if (
+      currentLocation.host === location.host &&
+      currentLocation.pathname === location.pathname
+    ) {
       e.preventDefault()
 
       if (location.hash) {
