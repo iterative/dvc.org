@@ -274,8 +274,9 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   ```
 
 - `gdrive_use_service_account` - instructs DVC to authenticate using a
-  [service account](/doc/user-guide/setup-google-drive-remote#configure-the-google-drive-remote-with-a-service-account)
-  instead of OAuth.
+  [service account](/doc/user-guide/setup-google-drive-remote#access-google-drive-remote-with-a-service-account)
+  instead of OAuth. Make sure that the service account has read/write access (as
+  needed) to the file structure in the remote `url`.
 
   ```dvc
   $ dvc remote modify myremote gdrive_use_service_account true
@@ -295,8 +296,9 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote gdrive_service_account_p12_file_path path/to/file.p12
   ```
 
-- `gdrive_service_account_user_email` - email of a service account to
-  impersonate with `gdrive_service_account_email`.
+- `gdrive_service_account_user_email` - email of a user account to
+  [impersonate](https://developers.google.com/admin-sdk/directory/v1/guides/delegation)
+  with the service account.
 
   ```dvc
   $ dvc remote modify myremote gdrive_service_account_user_email <user account email>
@@ -334,38 +336,22 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote projectname myproject
   ```
 
-- `credentailpath` - path of the file that contains
-  [service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
-  key. See **Accessing data with a service account** section below.
+- `credentailpath` - path to the file that contains the
+  [service account key](/doc/user-guide/setup-google-drive-remote#access-google-drive-remote-with-a-service-account).
+  Make sure that the service account has read/write access (as needed) to the
+  file structure in the remote `url`.
 
   ```dvc
-  $ dvc remote modify myremote credentailpath "/home/.../project-XXXXXXX.json"
+  $ dvc remote modify \
+        myremote credentailpath "/home/.../project-XXXXXXX.json"
   ```
 
-**Accessing data with a service account:**
-
-A
-[service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
-is a Google account associated with your GCP project and not a specific user.
-Generally, it is intended for scenarios where your application needs to access
-data on its own, e.g. running inside a Compute Engine, CI system, etc.
-
-A service account can be used by providing a service account
-[key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
-path to DVC:
-
-```dvc
-$ dvc remote modify myremote credentailpath "/home/.../project-XXXXXXX.json"
-```
-
-Alternatively, `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be set:
-
-```dvc
-$ export GOOGLE_APPLICATION_CREDENTIALS="/home/.../project-XXXXXXX.json"
-```
-
-Ensure the account has read (and write access, if you need to save data) to the
-remote `url` (and data under it) you set up above.
+  > Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` environment variable can
+  > be set:
+  >
+  > ```dvc
+  > $ export GOOGLE_APPLICATION_CREDENTIALS=".../project-XXXXXXX.json"
+  > ```
 
 </details>
 

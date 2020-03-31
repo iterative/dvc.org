@@ -111,9 +111,10 @@ $ dvc remote modify mygdfolder gdrive_client_secret <client secret>
 
 ### Access Google Drive remote with a service account
 
-A
-[service account](https://cloud.google.com/iam/docs/understanding-service-accounts)
-can be used to configure the GDrive remote.
+A [service account](https://cloud.google.com/iam/docs/service-accounts) is a
+Google account associated with your GCP project, and not a specific user.
+Generally, it is intended for scenarios where your application needs to access
+data on its own, e.g. running inside a Compute Engine, CI system, etc.
 
 1. [Create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),
    navigate to **IAM & Admin** in the left sidebar, and select **Service
