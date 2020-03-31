@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import { IPageProps } from '../Page'
 import LayoutHeader from '../LayoutHeader'
@@ -14,9 +14,29 @@ export interface ILayoutModifiable {
   modifiers?: Array<LayoutModifiers>
 }
 
-export type LayoutComponent = React.SFC<IPageProps & ILayoutModifiable>
+interface IMainLayoutProps {
+  className?: string
+}
 
-const MainLayout: LayoutComponent = ({ children, modifiers = [] }) => {
+export type LayoutComponent = React.SFC<
+  IMainLayoutProps & IPageProps & ILayoutModifiable
+>
+
+const MainLayout: LayoutComponent = ({
+  className,
+  children,
+  modifiers = []
+}) => {
+  useEffect(() => {
+    if (className) {
+      document.body.classList.add(className)
+
+      return () => {
+        document.body.classList.remove(className)
+      }
+    }
+  }, [className])
+
   return (
     <>
       <LayoutHeader modifiers={modifiers} />
