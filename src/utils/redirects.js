@@ -1,5 +1,6 @@
 /* eslint-env node */
 
+const { navigate } = require('@reach/router')
 let redirects = require('../../redirects-list.json')
 
 const processRedirectString = redirectString => {
@@ -54,7 +55,7 @@ const handleFrontRedirect = (host, pathname, clickEvent) => {
       redirectUrl = redirectUrl + location.search
     }
 
-    window.location = redirectUrl
+    navigate(redirectUrl)
   }
 }
 
