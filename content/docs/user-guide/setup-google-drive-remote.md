@@ -3,13 +3,50 @@
 Follow this guide to setup Google Drive as your <abbr>DVC project</abbr>'s
 [remote storage](/doc/command-reference/remote).
 
+## URL format for Google Drive remotes
+
+A GDrive remote URLs is needed for the `dvc remote add` command. It can be
+constructed with a _base_, and an **optional** _path_ to a folder i.e.
+`gdrive://<base>/path/to/folder`. The base can be one of:
+
+1. `root` - indicates your topmost Google Drive directory.
+
+```dvc
+$ dvc remote add -d mygdroot gdrive://root
+$ dvc remote add mygdfolder gdrive://root/path/to/folder
+```
+
+2. Google Drive _Folder ID_
+
+To obtain the unique _Folder ID_ in question, navigate into that folder in your
+web browser, and find it in the address bar. For example, for
+`https://drive.google.com/drive/u/0/folders/0AIac4JZqHhKmUk9PDA`:
+
+```dvc
+$ dvc remote add mygdfolder gdrive://0AIac4JZqHhKmUk9PDA
+$ dvc remote add mygdsubfolder \
+                 gdrive://0AIac4JZqHhKmUk9PDA/sub/path
+```
+
+Note that
+[Shared drives](https://developers.google.com/drive/api/v2/about-shareddrives)
+can only be referenced by _Folder ID_.
+
+3. `appDataFolder` - special
+   [application-specific data](https://developers.google.com/drive/api/v2/appdata)
+   folder only accessible by your application and hidden from the user.
+
+```dvc
+$ dvc remote add mygdappata gdrive://appDataFolder
+```
+
 ## Configure a Google Cloud project (highly recommended)
 
-Optionally, follow this guide to setup your own Google Cloud project and
-[OAuth](https://developers.google.com/identity/protocols/OAuth2) credentials.
-Doing so avoids sharing the default DVC project for this. A dedicated project
-gives you full control over Google API usage and rate limits, and ensures
-optimal performance to access your GDrive remote.
+Optionally, follow this guide to setup your own Google Cloud project and OAuth
+credentials. Doing so avoids sharing the default DVC project with every other
+user without a dedicated project. Having your own gives you full control over
+Google API usage and rate limits, and ensures optimal performance to access your
+GDrive remote.
 
 DVC uses the [Google Drive API](https://developers.google.com/drive) to connect
 to your Google Drive. This requires a Google Cloud _project_ that allows Drive
@@ -51,49 +88,13 @@ team. These credentials are only used to generate the
 [authorization](#authorization) URL DVC will later prompt to visit in order to
 connect to the Google Drive.
 
-> Note that Google Drive API has usage limits/quotas per credentials in a
-> _project_ (which you can review in the
+> Note that the Google Drive API has usage limits/quotas per _project_ client
+> (which you can review in the
 > [OAuth consent screen](https://console.developers.google.com/apis/credentials/consent)).
 > Please keep this in mind when sharing them, or you may
 > [exceed the limits](https://developers.google.com/drive/api/v2/handle-errors?hl=ro#resolve_a_403_error_usage_limit_exceeded).
 
-## URL format for Google Drive remotes
-
-A GDrive remote URLs is needed for the `dvc remote add` command. It can be
-constructed with a _base_, and an **optional** _path_ to a folder i.e.
-`gdrive://<base>/path/to/folder`. The base can be one of:
-
-1. `root` - indicates your topmost Google Drive directory.
-
-```dvc
-$ dvc remote add -d mygdroot gdrive://root
-$ dvc remote add mygdfolder gdrive://root/path/to/folder
-```
-
-2. Google Drive _Folder ID_
-
-To obtain the unique _Folder ID_ in question, navigate into that folder in your
-web browser, and find it in the address bar. For example, for
-`https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`:
-
-```dvc
-$ dvc remote add mygdfolder gdrive://0AIac4JZqHhKmUk9PDA
-$ dvc remote add mygdsubfolder \
-                 gdrive://0AIac4JZqHhKmUk9PDA/sub/path
-```
-
-[Shared drives](https://developers.google.com/drive/api/v2/about-shareddrives)
-should be referenced by _Folder ID_ in the same way.
-
-3. `appDataFolder` - special
-   [application-specific data](https://developers.google.com/drive/api/v2/appdata)
-   folder only accessible by your application and hidden from the user.
-
-```dvc
-$ dvc remote add mygdappata gdrive://appDataFolder
-```
-
-## Configure Google Drive remote with user credentials
+## Access Google Drive remote with OAuth credentials
 
 Use the `dvc remote modify` command to set the credentials for each `gdrive://`
 remote, for example:
@@ -104,17 +105,13 @@ $ dvc remote modify mygdfolder gdrive_client_id <client ID>
 $ dvc remote modify mygdfolder gdrive_client_secret <client secret>
 ```
 
-## Configure Google Drive remote with a service account
+## Access Google Drive remote with a service account
 
 A
 [service account](https://cloud.google.com/iam/docs/understanding-service-accounts)
 can be used to configure the GDrive remote.
 
-1. You should already have a configured
-   [Google Cloud Project](#configure-a-google-cloud-project-highly-recommended)
-
-2. To
-   [create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),
+1. [Create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),
    navigate to **IAM & Admin** in the left sidebar, and select **Service
    Accounts**. Click **+ CREATE SERVICE ACCOUNT**, on the next screen, enter
    **Service account name** e.g. "My DVC project", and click **Create**. Select
@@ -122,7 +119,7 @@ can be used to configure the GDrive remote.
    CREATE KEY**, select **P12** and **Create**. Save generated `.p12` key file
    at your local disk.
 
-3. Copy a downloaded `.p12` file to your DVC project root directory.
+1. Copy a downloaded `.p12` file to your DVC project root directory.
 
 ```dvc
 $ dvc remote modify myremote gdrive_use_service_account True

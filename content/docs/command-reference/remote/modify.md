@@ -259,20 +259,23 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote url gdrive://root/path/to/folder
   ```
 
-- `gdrive_client_id` - Google Project's OAuth 2.0 **client ID**.
+- `gdrive_client_id` - Google Project's **client ID** for authentication with
+  OAuth 2.0.
 
   ```dvc
   $ dvc remote modify myremote gdrive_client_id <client ID>
   ```
 
-- `gdrive_client_secret` - Google Project's OAuth 2.0 **client secret**.
+- `gdrive_client_secret` - Google Project's **client secret** for authentication
+  with OAuth 2.0.
 
   ```dvc
   $ dvc remote modify myremote gdrive_client_secret <client secret>
   ```
 
 - `gdrive_use_service_account` - instructs DVC to authenticate using a
-  [service account](/doc/user-guide/setup-google-drive-remote#configure-the-google-drive-remote-with-a-service-account).
+  [service account](/doc/user-guide/setup-google-drive-remote#configure-the-google-drive-remote-with-a-service-account)
+  instead of OAuth.
 
   ```dvc
   $ dvc remote modify myremote gdrive_use_service_account true
@@ -292,8 +295,8 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote gdrive_service_account_p12_file_path path/to/file.p12
   ```
 
-- `gdrive_service_account_user_email` - email of the service account to
-  impersonate.
+- `gdrive_service_account_user_email` - email of a service account to
+  impersonate with `gdrive_service_account_email`.
 
   ```dvc
   $ dvc remote modify myremote gdrive_service_account_user_email <user account email>
