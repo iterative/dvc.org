@@ -43,9 +43,9 @@ more details.
 > include them all. The command should look like this: `pip install "dvc[s3]"`.
 > (This example installs `boto3` library along with DVC to support S3 storage.)
 
-Using DVC with a remote data storage is optional. By default, DVC is configured
-to use a local data storage only (usually the `.dvc/cache` directory). This
-enables basic DVC usage scenarios out of the box.
+Using DVC with remote storage is optional. Most DVC commands use the local cache
+(usually in dir `.dvc/cache`) as data storage only. This enables basic DVC usage
+scenarios out of the box.
 
 [Add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
