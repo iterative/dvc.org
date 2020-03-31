@@ -217,8 +217,7 @@ $ dvc push -r myremote
 ...
 Go to the following link in your browser:
 
-    https://accounts.google.com/o/oauth2/auth?...
-    # ^ copy and paste into browser address bar, follow instructions.
+    https://accounts.google.com/o/oauth2/auth # ... long query
 
 Enter verification code: # <- enter resulting token
 ```
