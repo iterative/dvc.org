@@ -11,7 +11,7 @@ https://circleci.com/gh/iterative/dvc.org
 https://code.dvc.org/foo/bar
 https://data.dvc.org/foo/bar
 https://discuss.$
-https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA
+https://drive.google.com/drive/u/0/folders/0AIac4JZqHhKmUk9PDA
 https://dvc.org$
 https://dvc.org/doc/command-reference/foo
 https://dvc.org/foo
