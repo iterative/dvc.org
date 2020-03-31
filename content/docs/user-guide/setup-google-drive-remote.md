@@ -1,7 +1,8 @@
 # Setup a Google Drive DVC Remote
 
-Follow this guide to setup Google Drive as your <abbr>DVC project</abbr>'s
-[remote storage](/doc/command-reference/remote).
+I this guide we explain the existing alternatives to setup Google Drive
+[remote storage](/doc/command-reference/remote) for your <abbr>DVC
+project</abbr>, along with the different benefits each one brings.
 
 ## URL format for Google Drive remotes
 
@@ -34,19 +35,20 @@ can only be referenced by _Folder ID_.
 
 3. `appDataFolder` -
    [special hidden folder](https://developers.google.com/drive/api/v2/appdata)
-   that your app can use to store application-specific data.
+   that can be used to store application-specific data.
 
 ```dvc
 $ dvc remote add mygdappata gdrive://appDataFolder
 ```
 
-## Configure a Google Cloud project (highly recommended)
+## Configure custom Google Cloud project & app (recommended)
 
-Optionally, follow this guide to setup your own Google Cloud project and OAuth
-credentials. Doing so avoids sharing the default DVC project with every other
-user without a dedicated project. Having your own gives you full control over
+Optionally, follow this guide to setup your own Google Cloud project and
+generate OAuth credentials for your <abbr>DVC projects<abbr> to connect to
+Google Drive. Doing so avoids sharing our default GCP project/app with every
+other casual user of GDrive remotes out there. This gives you full control over
 Google API usage and rate limits, and ensures optimal performance to access your
-GDrive remote.
+Google Drive with DVC. This is highly recommended for heavy and enterprise use.
 
 > Please jump to [Authorization](#authorization) to skip this setup.
 
