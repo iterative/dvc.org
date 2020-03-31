@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   padding-top: 70px;
-  padding-bottom: 80px;
+  padding-bottom: 70px;
   overflow: hidden;
 `
 

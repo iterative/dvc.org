@@ -5,6 +5,8 @@ import LayoutHeader from '../LayoutHeader'
 import HamburgerMenu from '../HamburgerMenu'
 import LayoutFooter from '../LayoutFooter'
 
+import styles from './styles.module.css'
+
 export enum LayoutModifiers {
   Wide,
   Scrolled
@@ -27,6 +29,9 @@ const MainLayout: LayoutComponent = ({
   children,
   modifiers = []
 }) => {
+  useEffect(() => {
+    document.body.classList.add(styles.mainLayout)
+  }, [])
   useEffect(() => {
     if (className) {
       document.body.classList.add(className)
