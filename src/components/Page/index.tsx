@@ -30,7 +30,7 @@ export interface IPageProps {
 }
 
 const Page: React.SFC<IPageProps> = props => {
-  let LayoutComponent = MainLayout as LayoutComponent // TODO: remove type cast
+  let LayoutComponent = MainLayout
 
   useRedirects()
   useAnchorNavigation()
@@ -38,7 +38,7 @@ const Page: React.SFC<IPageProps> = props => {
 
   if (!props.pageContext.is404) {
     if (props.pageContext.isDocs) {
-      LayoutComponent = DocumentationLayout as LayoutComponent // TODO: remove type cast
+      LayoutComponent = DocumentationLayout as LayoutComponent
     } else if (props.pageContext.isBlog) {
       LayoutComponent = BlogLayout
     }
