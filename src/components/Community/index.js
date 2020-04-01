@@ -1,6 +1,6 @@
 import React from 'react'
 
-import Subscribe from '../Subscribe'
+import SubscribeSection from '../SubscribeSection'
 
 import CommunityContribute from './Contribute'
 import CommunityEvents from './Events'
@@ -25,7 +25,7 @@ export default function Community() {
         <CommunityContribute theme={themes.orange} />
         <CommunityLearn theme={themes.green} />
         <CommunityEvents theme={themes.purple} />
-        <Subscribe />
+        <SubscribeSection />
       </PageWrapper>
     </>
   )

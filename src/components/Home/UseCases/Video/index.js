@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 
-import { logEvent } from '../../utils/ga'
+import { logEvent } from '../../../../utils/ga'
 
 import {
   Button,

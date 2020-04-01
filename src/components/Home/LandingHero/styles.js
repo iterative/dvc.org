@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components'
 
-import { media } from '../../styles'
+import { media } from '../../../styles'
 
 export const Wrapper = styled.div`
   padding-top: 136px;

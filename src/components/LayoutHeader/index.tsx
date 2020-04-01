@@ -5,7 +5,7 @@ import { useWindowScroll } from 'react-use'
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 import LayoutWidthContainer from '../LayoutWidthContainer'
 import Link from '../Link'
-import Nav from '../Nav'
+import Nav from './Nav'
 
 import { ReactComponent as LogoSVG } from '../../../static/img/logo.svg'
 import styles from './styles.module.css'

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import Hero from '../Hero'
-import FeaturesHero from '../FeaturesHero'
+import HeroSection from '../HeroSection'
+import FeaturesHero from './FeaturesHero'
 import TrySection from '../TrySection'
 
 import { Container, Description, Feature, Features, Icon, Name } from './styles'
@@ -9,9 +9,9 @@ import { Container, Description, Feature, Features, Icon, Name } from './styles'
 export default function FeaturesPage() {
   return (
     <>
-      <Hero>
+      <HeroSection>
         <FeaturesHero />
-      </Hero>
+      </HeroSection>
       <Container>
         <Features>
           <Feature>

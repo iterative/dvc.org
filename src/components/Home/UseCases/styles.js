@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { container, media } from '../../styles'
+import { container, media } from '../../../styles'
 
 export const Wrapper = styled.section`
   padding-top: 80px;

@@ -7,7 +7,7 @@ interface IHamburgetProps {
   opened: boolean
 }
 
-export default function Hamburger({ opened }: IHamburgetProps) {
+export default function HamburgerIcon({ opened }: IHamburgetProps) {
   return (
     <div className={cn(styles.wrapper, opened && styles.opened)}>
       <div className={cn(styles.line, styles.first)} />

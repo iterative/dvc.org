@@ -1,6 +1,6 @@
 import styled, { keyframes } from 'styled-components'
 
-import { media } from '../../styles'
+import { media } from '../../../styles'
 
 export const Wrapper = styled.a`
   display: flex;

@@ -1,10 +1,10 @@
 import React from 'react'
 import { Element } from 'react-scroll'
 
-import { default as YoutubeVideo } from '../Video'
-import TextCollapse from '../TextCollapse'
+import { default as YoutubeVideo } from './Video'
+import TextCollapse from './TextCollapse'
 
-import { OnlyDesktop, OnlyMobile } from '../../styles'
+import { OnlyDesktop, OnlyMobile } from '../../../styles'
 
 import {
   Case,

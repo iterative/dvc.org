@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { scroller } from 'react-scroll'
 
-import DownloadButton from '../DownloadButton'
-import GithubLine from '../GithubLine'
+import DownloadButton from '../../DownloadButton'
+import GithubLine from './GithubLine'
 
-import { logEvent } from '../../utils/ga'
+import { logEvent } from '../../../utils/ga'
 
-import { OnlyDesktop, OnlyMobile } from '../../styles'
+import { OnlyDesktop, OnlyMobile } from '../../../styles'
 import {
   Wrapper,
   About,

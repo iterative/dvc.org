@@ -6,9 +6,9 @@ import styles from './styles.module.css'
 import { default as Glyph1Src } from './glyph-1.svg'
 import { default as Glyph2Src } from './glyph-2.svg'
 
-import SubscribeForm from './form'
+import SubscribeForm from './Form'
 
-export default function Subscribe() {
+export default function SubscribeSection() {
   return (
     <div className={styles.wrapper} id="subscribe">
       <img

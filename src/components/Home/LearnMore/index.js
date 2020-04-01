@@ -1,7 +1,7 @@
 import React from 'react'
 import { scroller } from 'react-scroll'
 
-import { logEvent } from '../../utils/ga'
+import { logEvent } from '../../../utils/ga'
 
 import { Wrapper, Icon, Caption } from './styles'
 

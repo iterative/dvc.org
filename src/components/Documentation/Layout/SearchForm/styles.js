@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { media } from '../../styles'
+import { media } from '../../../../styles'
 
 export const SearchArea = styled.div`
   box-sizing: border-box;

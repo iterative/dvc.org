@@ -16,7 +16,7 @@ import PseudoButton from '../../PseudoButton'
 import HeroPic from './HeroPic'
 import Share from './Share'
 import PageContent from '../../PageContent'
-import Subscribe from '../../Subscribe'
+import SubscribeSection from '../../SubscribeSection'
 
 import styles from './styles.module.css'
 
@@ -123,7 +123,7 @@ const Post: React.SFC<IBlogPostData> = ({
           )}
         </div>
       </PageContent>
-      <Subscribe />
+      <SubscribeSection />
     </>
   )
 }

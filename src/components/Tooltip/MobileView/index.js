@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import ReactMarkdown from 'react-markdown'
 import PropTypes from 'prop-types'
 
-import Modal from '../../Modal'
+import Modal from './Modal'
 
 import {
   CloseContainer,

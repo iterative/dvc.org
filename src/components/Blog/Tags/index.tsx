@@ -3,7 +3,7 @@ import React from 'react'
 import { IPaginatorPageInfo } from '../../Paginator'
 import PageContent from '../../PageContent'
 import Feed, { IBlogFeedPostList } from '../Feed'
-import Subscribe from '../../Subscribe'
+import SubscribeSection from '../../SubscribeSection'
 
 interface IBlogTagsProps {
   posts: IBlogFeedPostList
@@ -22,7 +22,7 @@ const Tags: React.SFC<IBlogTagsProps> = ({ posts, pageInfo, header }) => {
           header={header}
         />
       </PageContent>
-      <Subscribe />
+      <SubscribeSection />
     </>
   )
 }

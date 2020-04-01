@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Hero from '../Hero'
+import HeroSection from '../HeroSection'
 import TrySection from '../TrySection'
-import Popover from '../Popover'
+import Popover from './Popover'
 import Link from '../Link'
 
 import { Mark, OnlyDesktop } from '../../styles'
@@ -26,11 +26,11 @@ import {
 export default function SupportPage() {
   return (
     <>
-      <Hero>
+      <HeroSection>
         <SupportHero>
           <Heading>Questions, feedback, or just need to get in touch?</Heading>
         </SupportHero>
-      </Hero>
+      </HeroSection>
       <Container>
         <Features>
           <Feature>

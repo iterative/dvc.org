@@ -1,7 +1,7 @@
 import React from 'react'
-import Link from '../Link'
+import Link from '../../Link'
 
-import { logEvent } from '../../utils/ga'
+import { logEvent } from '../../../utils/ga'
 
 import { Button, Buttons, Container, Glyph, Title, Wrapper } from './styles'
 

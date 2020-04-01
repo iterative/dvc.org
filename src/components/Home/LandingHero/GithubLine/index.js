@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Link from '../Link'
+import Link from '../../../Link'
 
 import { Count, Github, Link as LinkSC, Star, Wrapper } from './styles'
 

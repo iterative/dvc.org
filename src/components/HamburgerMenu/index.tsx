@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import React, { useCallback, useState, useEffect } from 'react'
 
-import Hamburger from '../Hamburger'
+import HamburgerIcon from '../HamburgerIcon'
 import Link from '../Link'
 
 import { logEvent } from '../../utils/ga'
@@ -44,7 +44,7 @@ function HamburgerMenu() {
         onClick={toggleMobileMenu}
         onKeyDown={openOnEnterKey}
       >
-        <Hamburger opened={isOpened} />
+        <HamburgerIcon opened={isOpened} />
       </button>
 
       <div className={cn(styles.wrapper, isOpened && styles.opened)}>

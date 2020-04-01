@@ -1,6 +1,6 @@
 import styled from 'styled-components'
 
-import { column, columns, container, media } from '../../styles'
+import { column, columns, container, media } from '../../../styles'
 
 export const Diagram = styled.section`
   padding-top: 80px;

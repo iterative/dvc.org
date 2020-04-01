@@ -1,8 +1,8 @@
 import React, { useCallback, useState } from 'react'
 import PropTypes from 'prop-types'
 import MainLayout, { LayoutModifiers } from '../../MainLayout'
-import Hamburger from '../../Hamburger'
-import SearchForm from '../../SearchForm'
+import HamburgerIcon from '../../HamburgerIcon'
+import SearchForm from './SearchForm'
 import SidebarMenu from './SidebarMenu'
 
 import { Container, Backdrop, Side, SideToggle } from './styles'
@@ -25,7 +25,7 @@ function Layout({ children, ...restProps }) {
         <Backdrop onClick={toggleMenu} visible={isMenuOpen} />
 
         <SideToggle onClick={toggleMenu} isMenuOpen={isMenuOpen}>
-          <Hamburger />
+          <HamburgerIcon />
         </SideToggle>
 
         <Side isOpen={isMenuOpen}>

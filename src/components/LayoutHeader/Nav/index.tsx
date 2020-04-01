@@ -1,11 +1,11 @@
 import React from 'react'
 import cn from 'classnames'
 
-import Link from '../Link'
-import PseudoButton from '../PseudoButton'
+import Link from '../../Link'
+import PseudoButton from '../../PseudoButton'
 
-import { logEvent } from '../../utils/ga'
-import { getFirstPage } from '../../utils/sidebar'
+import { logEvent } from '../../../utils/ga'
+import { getFirstPage } from '../../../utils/sidebar'
 
 const docsPage = getFirstPage()
 
