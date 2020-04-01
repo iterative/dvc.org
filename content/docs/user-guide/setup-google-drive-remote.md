@@ -34,13 +34,15 @@ $ dvc remote add mygdsubfolder \
                  gdrive://0AIac4JZqHhKmUk9PDA/sub/path
 ```
 
-Note that
-[Shared drives](https://developers.google.com/drive/api/v2/about-shareddrives)
-can only be referenced by _Folder ID_.
+Note that [shared folders](https://support.google.com/drive/answer/7166529) and
+[shared drives](https://support.google.com/a/users/answer/9310351) can only be
+referenced by _Folder ID_.
 
 3. `appDataFolder` -
    [special hidden folder](https://developers.google.com/drive/api/v2/appdata)
-   that can be used to store application-specific data.
+   (unique per user) meant to store application-specific data. This is a good
+   choice to prevent accidentally deleting remote storage data from the Google
+   Drive web UI.
 
 ```dvc
 $ dvc remote add mygdappata gdrive://appDataFolder
