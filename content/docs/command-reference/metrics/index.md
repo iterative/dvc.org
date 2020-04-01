@@ -30,7 +30,7 @@ optional arguments:
 
 ## Description
 
-In order to track metrics associated to machie learning experiments DVC has the
+In order to track metrics associated to machie learning experiments, DVC has the
 ability to mark a certain stage <abbr>outputs</abbr> as files containing metrics
 to track. (See the `--metrics` option of `dvc run`.) Metrics are
 project-specific floating-point values e.g. `AUC`, `ROC`, etc.
