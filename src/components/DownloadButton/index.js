@@ -21,7 +21,7 @@ import {
   Triangle
 } from './styles'
 
-const VERSION = `0.91.2`
+const VERSION = `0.91.3`
 const OSX = `osx`
 const WINDOWS = `win`
 const LINUX = `linux`
