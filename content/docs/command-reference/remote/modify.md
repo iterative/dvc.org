@@ -251,7 +251,7 @@ For more information on configuring Azure Storage connection strings, visit
 Please check out
 [Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
 a full guide on using Google Drive as DVC remote storage, including how to form
-`gdrive://` URLs, and high-performance/enterprise setups.
+`gdrive://` URLs, and high-performance/advanced setups.
 
 - `url` - remote location URL.
 

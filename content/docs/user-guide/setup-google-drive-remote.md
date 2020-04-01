@@ -64,10 +64,13 @@ $ dvc remote add mygdappata gdrive://appDataFolder
 
 Optionally, follow this guide to setup your own Google Cloud project and
 generate OAuth credentials for your <abbr>DVC projects<abbr> to connect to
-Google Drive. Doing so avoids sharing our default GCP project/app with every
-other casual user of GDrive remotes out there. This gives you full control over
-Google API usage and rate limits, and ensures optimal performance to access your
-Google Drive with DVC. This is highly recommended for heavy and enterprise use.
+Google Drive. We highly recommend this for heavy and advanced use because:
+
+- you control your Google API usage and rate limits, being able to request an
+  increase to Google if needed.
+- it ensures optimal data transfer performance when you need it.
+- using a [service account](https://cloud.google.com/iam/docs/service-accounts)
+  for automation tasks (e.g. CI/CD) is only possible this way.
 
 > Please jump to [Authorization](#authorization) to skip this setup.
 
