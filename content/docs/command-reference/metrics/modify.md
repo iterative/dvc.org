@@ -90,7 +90,7 @@ $ dvc metrics show metrics.json
 ```
 
 Okay. Let's now imagine we are interested only in a single value of true
-posivives - TP. We can specify the `JSON` type (`-t`) and an `xpath` (`-x`) to
+posivives (TP). We can specify the `JSON` type (`-t`) and an `xpath` (`-x`) to
 extract the TP value:
 
 ```dvc
