@@ -70,8 +70,8 @@ Google Drive. We highly recommend this for heavy and advanced use because:
 - you control your Google API usage and rate limits, being able to request an
   increase to Google if needed.
 - it ensures optimal data transfer performance when you need it.
-- using a [service account](https://cloud.google.com/iam/docs/service-accounts)
-  for automation tasks (e.g. CI/CD) is only possible this way.
+- [using a service account](#using-service-accounts) for automation tasks (e.g.
+  CI/CD) is only possible this way.
 
 > Please jump to [Authorization](#authorization) to skip this setup.
 
@@ -121,7 +121,7 @@ connect to the Google Drive.
 > Please keep this in mind when sharing them, or you may
 > [exceed the limits](https://developers.google.com/drive/api/v2/handle-errors?hl=ro#resolve_a_403_error_usage_limit_exceeded).
 
-### Access Google Drive remote with OAuth credentials
+### Enabling your GC project with OAuth credentials
 
 Use the `dvc remote modify` command to set the credentials for each `gdrive://`
 remote, for example:
@@ -132,12 +132,17 @@ $ dvc remote modify mygdfolder gdrive_client_id <client ID>
 $ dvc remote modify mygdfolder gdrive_client_secret <client secret>
 ```
 
-### Access Google Drive remote with a service account
+## Using service accounts
 
 A [service account](https://cloud.google.com/iam/docs/service-accounts) is a
-Google account associated with your GCP project, and not a specific user.
-Generally, it is intended for scenarios where your application needs to access
-data on its own, e.g. running inside a Compute Engine, CI system, etc.
+Google account associated with your GCP project, and not a specific user. They
+are intended for scenarios where your application needs to access data on its
+own, e.g. running inside a Compute Engine, automatic CI/CD, etc. No interactive
+user OAuth authentication is needed.
+
+> This requires having your own
+> [GC project](/doc/user-guide/setup-google-drive-remote#configure-custom-google-cloud-project--app-recommended)
+> as explained above.
 
 1. [Create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),
    navigate to **IAM & Admin** in the left sidebar, and select **Service
