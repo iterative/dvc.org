@@ -17,5 +17,6 @@
   "^/doc/use-cases/data-and-model-files-versioning/?$ /doc/use-cases/versioning-data-and-model-files",
   "^/doc/user-guide/contributing/?$         /doc/user-guide/contributing/core 307",
   "^/doc/understanding-dvc/?$               /doc/understanding-dvc/collaboration-issues 307",
-  "^/doc/changelog/?$                       /doc/changelog/0.18 307"
+  "^/doc/changelog/?$                       /doc/changelog/0.18 307",
+  "^/(.+)/$                                 /$1 301"
 ]
