@@ -205,7 +205,7 @@ a full guide on using Google Drive as DVC remote storage, including how to form
 `gdrive://` URLs, and high-performance/enterprise setups.
 
 ```dvc
-$ dvc remote add -d myremote gdrive://root/path/to/folder
+$ dvc remote add -d myremote gdrive://root/dvc/dvcstore
 ```
 
 To start using a GDrive remote, just use another command that needs it and
@@ -217,7 +217,7 @@ $ dvc push -r myremote
 ...
 Go to the following link in your browser:
 
-    https://accounts.google.com/o/oauth2/auth # ... long query
+    https://accounts.google.com/o/oauth2/auth # ... copy this link
 
 Enter verification code: # <- enter resulting token
 ```
