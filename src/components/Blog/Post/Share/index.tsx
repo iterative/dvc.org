@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import React, { useCallback } from 'react'
 
-import Link from '../../Link'
+import Link from '../../../Link'
 import Tooltip from '../Tooltip'
 
 import { ReactComponent as Facebook } from './icons/facebook.svg'

@@ -1,8 +1,8 @@
 import Image, { FixedObject } from 'gatsby-image'
 import React from 'react'
 
-import Link from '../Link'
-import { pluralizeComments } from '../../utils/i18n'
+import Link from '../../Link'
+import { pluralizeComments } from '../../../utils/i18n'
 
 import styles from './styles.module.css'
 
@@ -19,7 +19,7 @@ interface IBlogFeedMetaProps {
   timeToRead: string
 }
 
-const BlogFeedMeta: React.SFC<IBlogFeedMetaProps> = ({
+const FeedMeta: React.SFC<IBlogFeedMetaProps> = ({
   avatar,
   commentsUrl,
   commentsCount,
@@ -47,4 +47,4 @@ const BlogFeedMeta: React.SFC<IBlogFeedMetaProps> = ({
   )
 }
 
-export default BlogFeedMeta
+export default FeedMeta

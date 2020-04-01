@@ -4,14 +4,14 @@ import React from 'react'
 
 import cn from 'classnames'
 
-import Paginator, { IPaginatorPageInfo } from '../Paginator'
-import BlogFeedItem, { IBlogFeedPostData } from './Item'
+import Paginator, { IPaginatorPageInfo } from '../../Paginator'
+import Item, { IBlogPostData } from './Item'
 
 import styles from './styles.module.css'
 
 export interface IBlogFeedPostList {
   edges: Array<{
-    node: IBlogFeedPostData
+    node: IBlogPostData
   }>
 }
 
@@ -23,7 +23,7 @@ interface IBlogFeedProps {
   pageInfo: IPaginatorPageInfo
 }
 
-const BlogFeed: React.SFC<IBlogFeedProps> = ({
+const Feed: React.SFC<IBlogFeedProps> = ({
   feedPostList: { edges },
   pageInfo,
   bigFirst = true,
@@ -42,7 +42,7 @@ const BlogFeed: React.SFC<IBlogFeedProps> = ({
       </div>
       <div className={styles.posts}>
         {edges.map(({ node }, index) => (
-          <BlogFeedItem
+          <Item
             feedPost={node}
             key={node.id}
             big={bigFirst && index === 0 && pageInfo.currentPage === 1}
@@ -64,4 +64,4 @@ export const query = graphql`
   }
 `
 
-export default BlogFeed
+export default Feed

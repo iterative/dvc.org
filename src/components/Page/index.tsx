@@ -4,7 +4,7 @@ import { GlobalStyle } from '../../styles'
 import MainLayout, { LayoutComponent } from '../MainLayout'
 import DefaultSEO from './DefaultSEO'
 import DocumentationLayout from '../Documentation/Layout'
-import BlogLayout from '../BlogLayout'
+import Layout from '../Blog/Layout'
 
 import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
 
@@ -40,7 +40,7 @@ const Page: React.SFC<IPageProps> = props => {
     if (props.pageContext.isDocs) {
       LayoutComponent = DocumentationLayout as LayoutComponent
     } else if (props.pageContext.isBlog) {
-      LayoutComponent = BlogLayout
+      LayoutComponent = Layout
     }
   }
 

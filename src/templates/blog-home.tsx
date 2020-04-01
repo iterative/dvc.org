@@ -5,9 +5,9 @@ import {
   IPaginatorLocationContextValue,
   PaginatorLocationContext
 } from '../components/Paginator/LocationContext'
-import BlogHome from '../components/BlogHome'
+import BlogHome from '../components/Blog/Home'
 import { IPaginatorPageInfo } from '../components/Paginator'
-import { IBlogFeedPostList } from '../components/BlogFeed'
+import { IBlogFeedPostList } from '../components/Blog/Feed'
 
 interface IBlogHomePageProps {
   data: { posts: IBlogFeedPostList }

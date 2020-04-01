@@ -1,20 +1,20 @@
 import React from 'react'
 
-import { IPaginatorPageInfo } from '../Paginator'
-import PageContent from '../PageContent'
-import BlogFeed, { IBlogFeedPostList } from '../BlogFeed'
-import Subscribe from '../Subscribe'
+import { IPaginatorPageInfo } from '../../Paginator'
+import PageContent from '../../PageContent'
+import Feed, { IBlogFeedPostList } from '../Feed'
+import Subscribe from '../../Subscribe'
 
 interface IBlogHomeProps {
   posts: IBlogFeedPostList
   pageInfo: IPaginatorPageInfo
 }
 
-const BlogHome: React.SFC<IBlogHomeProps> = ({ posts, pageInfo }) => {
+const Home: React.SFC<IBlogHomeProps> = ({ posts, pageInfo }) => {
   return (
     <>
       <PageContent>
-        <BlogFeed
+        <Feed
           feedPostList={posts}
           pageInfo={pageInfo}
           header="Data Version Control in Real Life"
@@ -32,4 +32,4 @@ const BlogHome: React.SFC<IBlogHomeProps> = ({ posts, pageInfo }) => {
   )
 }
 
-export default BlogHome
+export default Home

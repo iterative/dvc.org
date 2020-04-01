@@ -1,6 +1,6 @@
 import React from 'react'
-import SEO from '../SEO'
-import MainLayout, { LayoutComponent } from '../MainLayout'
+import SEO from '../../SEO'
+import MainLayout, { LayoutComponent } from '../../MainLayout'
 
 import styles from './styles.module.css'
 
@@ -9,7 +9,7 @@ const keywords =
 const description =
   'Data Version Control Blog. We write about machine learning workflow. From data versioning and processing to model productionization. We share our news, findings, interesting reads, community takeaways.'
 
-const BlogLayout: LayoutComponent = ({ children, ...restProps }) => (
+const Layout: LayoutComponent = ({ children, ...restProps }) => (
   <MainLayout {...restProps} className={styles.layoutBlog}>
     <SEO
       title="Blog"
@@ -24,4 +24,4 @@ const BlogLayout: LayoutComponent = ({ children, ...restProps }) => (
   </MainLayout>
 )
 
-export default BlogLayout
+export default Layout

@@ -1,17 +1,17 @@
 import React, { useEffect, useRef } from 'react'
 import { useRafState, useWindowSize } from 'react-use'
 import { graphql } from 'gatsby'
-import Link from '../../Link'
+import Link from '../../../Link'
 import Image, { FixedObject, FluidObject } from 'gatsby-image'
 import cn from 'classnames'
 
-import BlogFeedMeta from '../../BlogFeedMeta'
+import FeedMeta from '../../FeedMeta'
 
 import styles from './styles.module.css'
 
 import { ReactComponent as Placeholder } from './placeholder.svg'
 
-export interface IBlogFeedPostData {
+export interface IBlogPostData {
   id: string
   timeToRead: string
   fields: {
@@ -45,10 +45,10 @@ export interface IBlogFeedPostData {
 
 interface IBlogFeedItemProps {
   big?: boolean
-  feedPost: IBlogFeedPostData
+  feedPost: IBlogPostData
 }
 
-const BlogFeedItem: React.SFC<IBlogFeedItemProps> = ({
+const Item: React.SFC<IBlogFeedItemProps> = ({
   big,
   feedPost: { fields, frontmatter, timeToRead }
 }) => {
@@ -97,7 +97,7 @@ const BlogFeedItem: React.SFC<IBlogFeedItemProps> = ({
         <div className={styles.description}>{description}</div>
       </div>
       <div className={styles.meta}>
-        <BlogFeedMeta
+        <FeedMeta
           name={name}
           avatar={avatar}
           date={date}
@@ -158,4 +158,4 @@ export const query = graphql`
   }
 `
 
-export default BlogFeedItem
+export default Item

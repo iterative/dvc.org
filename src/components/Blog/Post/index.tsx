@@ -3,24 +3,24 @@ import cn from 'classnames'
 import React, { useMemo, useRef } from 'react'
 import { useWindowScroll, useWindowSize } from 'react-use'
 
-import { IBlogPostData } from '../../templates/blog-post'
+import { IBlogPostData } from '../../../templates/blog-post'
 
-import { useCommentsCount } from '../../utils/api'
-import { pluralizeComments } from '../../utils/i18n'
-import tagToSlug from '../../utils/tagToSlug'
+import { useCommentsCount } from '../../../utils/api'
+import { pluralizeComments } from '../../../utils/i18n'
+import tagToSlug from '../../../utils/tagToSlug'
 
 import Markdown from './Markdown'
-import BlogFeedMeta from '../BlogFeedMeta'
-import Link from '../Link'
-import PseudoButton from '../PseudoButton'
+import FeedMeta from '../FeedMeta'
+import Link from '../../Link'
+import PseudoButton from '../../PseudoButton'
 import HeroPic from './HeroPic'
 import Share from './Share'
-import PageContent from '../PageContent'
-import Subscribe from '../Subscribe'
+import PageContent from '../../PageContent'
+import Subscribe from '../../Subscribe'
 
 import styles from './styles.module.css'
 
-const BlogPost: React.SFC<IBlogPostData> = ({
+const Post: React.SFC<IBlogPostData> = ({
   html,
   timeToRead,
   frontmatter,
@@ -80,7 +80,7 @@ const BlogPost: React.SFC<IBlogPostData> = ({
               ) : (
                 <div className={styles.description}>{description}</div>
               )}
-              <BlogFeedMeta
+              <FeedMeta
                 commentsCount={result}
                 commentsUrl={commentsUrl}
                 name={name}
@@ -128,4 +128,4 @@ const BlogPost: React.SFC<IBlogPostData> = ({
   )
 }
 
-export default BlogPost
+export default Post

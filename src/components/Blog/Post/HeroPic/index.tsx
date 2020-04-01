@@ -1,11 +1,11 @@
 import Image from 'gatsby-image'
 import React from 'react'
 
-import { BLOG } from '../../../consts'
+import { BLOG } from '../../../../consts'
 import {
   IBlogPostHeroPic,
   IGatsbyImageProps
-} from '../../../templates/blog-post'
+} from '../../../../templates/blog-post'
 
 import styles from './styles.module.css'
 

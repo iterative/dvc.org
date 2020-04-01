@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { IPaginatorPageInfo } from '../Paginator'
-import PageContent from '../PageContent'
-import BlogFeed, { IBlogFeedPostList } from '../BlogFeed'
-import Subscribe from '../Subscribe'
+import { IPaginatorPageInfo } from '../../Paginator'
+import PageContent from '../../PageContent'
+import Feed, { IBlogFeedPostList } from '../Feed'
+import Subscribe from '../../Subscribe'
 
 interface IBlogTagsProps {
   posts: IBlogFeedPostList
@@ -11,11 +11,11 @@ interface IBlogTagsProps {
   header: string
 }
 
-const BlogTags: React.SFC<IBlogTagsProps> = ({ posts, pageInfo, header }) => {
+const Tags: React.SFC<IBlogTagsProps> = ({ posts, pageInfo, header }) => {
   return (
     <>
       <PageContent>
-        <BlogFeed
+        <Feed
           feedPostList={posts}
           pageInfo={pageInfo}
           bigFirst={false}
@@ -27,4 +27,4 @@ const BlogTags: React.SFC<IBlogTagsProps> = ({ posts, pageInfo, header }) => {
   )
 }
 
-export default BlogTags
+export default Tags
