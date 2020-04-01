@@ -21,3 +21,27 @@ declare module '*.svg' {
   const svg: IReactSVGR
   export = svg
 }
+
+declare module 'scroll' {
+  type ScrollTo = (
+    node: HTMLElement,
+    position: number,
+    options: {},
+    cb?: (err: Error | null, position: number) => void
+  ) => () => void
+  type ScrollModule = {
+    left: ScrollTo
+    top: ScrollTo
+  }
+  const scroll: ScrollModule
+  export = scroll
+}
+
+declare module 'ease-component' {
+  type EaseFunction = (value: number) => number
+  type EaseModule = {
+    [key: string]: EaseFunction
+  }
+  const ease: EaseModule
+  export = ease
+}
