@@ -34,7 +34,7 @@ function HamburgerMenu() {
   useEffect(() => {
     const method = isOpened ? 'add' : 'remove'
 
-    document.body.classList[method]('noScroll')
+    document.body.classList[method](styles.hiddenScrollbar)
   }, [isOpened])
 
   return (

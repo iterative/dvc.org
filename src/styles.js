@@ -1,51 +1,5 @@
-import styled, { css, createGlobalStyle } from 'styled-components'
-import reset from 'styled-reset'
+import styled, { css } from 'styled-components'
 
-const global = `
-  html {
-    -moz-osx-font-smoothing: grayscale;
-    -webkit-font-smoothing: antialiased !important;
-    font-smoothing: antialiased;
-    font-weight: 400;
-    text-rendering: optimizeLegibility !important;
-  }
-
-  @-moz-document url-prefix() {
-    body {
-      font-weight: lighter !important;
-    }
-  }
-
-  body {
-    padding: 0px;
-    font-family: BrandonGrotesque, Tahoma, Arial;
-    font-weight: normal;
-    -webkit-font-smoothing: antialiased;
-    line-height: 1.5;
-
-    // IE flex min-height fix https://stackoverflow.com/a/40491316
-    display: flex;
-    flex-direction: column;
-  }
-
-  *:focus {
-    outline: 0;
-  }
-
-  img + em,
-  .gatsby-highlight + p > em:only-child {
-    color: #6a737d;
-    font-size: 0.9em;
-    display: block;
-    margin-top: -6px;
-    text-align: center;
-  }
-`
-
-export const GlobalStyle = createGlobalStyle`
-  ${reset}
-  ${global}
-`
 const maxWidth = 1005
 
 export const sizes = {

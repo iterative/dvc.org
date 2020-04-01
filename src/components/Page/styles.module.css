@@ -4,3 +4,8 @@
   top: 0;
   left: 0;
 }
+
+.smoothScrolling {
+  scroll-behavior: smooth;
+  will-change: scroll-position;
+}

@@ -21,26 +21,16 @@
   --layout-header-height-scrolled: calc(var(--layout-header-height) - 20px);
 }
 
-:global {
-  .bodySmoothScrolling {
-    scroll-behavior: smooth;
-    will-change: scroll-position;
-  }
-
-  .noScroll {
-    overflow-y: hidden;
-  }
-}
-
 html {
-  text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
 }
 
 body {
-  margin: 0;
   font-family: var(--font-brandon);
+  font-weight: 400;
+  line-height: 1.5;
   color: var(--color-black);
 }
 
@@ -48,4 +38,18 @@ body {
 * {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+/* TODO: check it later */
+img + em,
+.gatsby-highlight + p > em:only-child {
+  color: #6a737d;
+  font-size: 0.9em;
+  display: block;
+  margin-top: -6px;
+  text-align: center;
 }

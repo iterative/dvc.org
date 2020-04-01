@@ -1,5 +1,4 @@
 import React from 'react'
-import { GlobalStyle } from '../../styles'
 
 import MainLayout, { LayoutComponent } from '../MainLayout'
 import DefaultSEO from './DefaultSEO'
@@ -8,6 +7,7 @@ import Layout from '../Blog/Layout'
 
 import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
 
+import 'reset-css'
 import './base.css'
 import './fonts/fonts.css'
 import styles from './styles.module.css'
@@ -46,7 +46,6 @@ const Page: React.SFC<IPageProps> = props => {
 
   return (
     <>
-      <GlobalStyle />
       <DefaultSEO />
       <LayoutComponent {...props} />
       <div id="modal-root" className={styles.modalRoot} />

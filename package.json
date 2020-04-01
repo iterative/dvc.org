@@ -80,11 +80,11 @@
     "rehype-react": "^4.0.1",
     "request": "^2.88.0",
     "s3-client": "^4.4.2",
+    "reset-css": "^5.0.1",
     "scroll": "^3.0.1",
     "serve-handler": "^6.1.2",
     "slick-carousel": "^1.8.1",
     "styled-components": "^4.4.1",
-    "styled-reset": "^4.0.8",
     "unist-util-visit": "2.0.2"
   },
   "devDependencies": {

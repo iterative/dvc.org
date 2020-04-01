@@ -5,6 +5,8 @@ import { handleFrontRedirect } from '../../utils/redirects'
 import { allImagesLoadedInContainer } from '../../utils/images'
 import { scrollIntoLayout } from '../../utils/scroll'
 
+import styles from './styles.module.css'
+
 export const useAnchorNavigation = () => {
   const location = useLocation()
 
@@ -35,6 +37,6 @@ export const useSmoothScroll = (enable: boolean) => {
   useEffect(() => {
     const method = enable ? 'add' : 'remove'
 
-    document.body.classList[method]('bodySmoothScrolling')
+    document.body.classList[method](styles.smoothScrolling)
   }, [enable])
 }
