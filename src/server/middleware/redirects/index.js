@@ -1,10 +1,7 @@
-/* eslint-env node */
-
-const { getRedirect } = require('../../src/utils/redirects')
+const { getRedirect } = require('../../../../src/utils/redirects')
 const { parse } = require('url')
 const { stringify } = require('querystring')
-
-const dev = process.env.NODE_ENV !== 'production'
+const { isProduction } = require('../../utils')
 
 module.exports = (req, res, next) => {
   const parsedUrl = parse(req.url, true)
@@ -13,7 +10,7 @@ module.exports = (req, res, next) => {
 
   const [code, location] = getRedirect(host, pathname, {
     req,
-    dev
+    dev: !isProduction
   })
 
   if (location) {

@@ -1,5 +1,3 @@
-/* eslint-env node */
-
 const routes = require('express').Router()
 
 const comments = require('./comments')

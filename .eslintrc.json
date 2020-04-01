@@ -36,7 +36,9 @@
     {
       "files": [
         "src/utils/**/*.?(js|ts)",
-        "+(middleware|scripts)/**/*.+(js|ts)"
+        "scripts/**/*.js",
+        "src/server/**/*.js",
+        "gatsby-*.js"
       ],
       "rules": {
         "@typescript-eslint/no-var-requires": "off"
