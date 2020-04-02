@@ -1,34 +1,29 @@
-import cn from 'classnames'
 import React from 'react'
+import cn from 'classnames'
 
-import styles from './styles.module.css'
-
+import SubscribeForm from './Form'
 import { default as Glyph1Src } from './glyph-1.svg'
 import { default as Glyph2Src } from './glyph-2.svg'
 
-import SubscribeForm from './Form'
+import styles from './styles.module.css'
 
-export default function SubscribeSection() {
-  return (
-    <div className={styles.wrapper} id="subscribe">
-      <img
-        src={Glyph1Src}
-        className={cn(styles.glyph, styles.topleft)}
-        alt=""
-      />
-      <div className={styles.container}>
-        <div className={styles.title}>
-          Subscribe for updates. We won&#39;t spam you.
-        </div>
-        <div className={styles.subscribeContainer}>
-          <SubscribeForm />
-        </div>
+const SubscribeSection: React.SFC = () => (
+  <div className={styles.wrapper} id="subscribe">
+    <img src={Glyph1Src} className={cn(styles.glyph, styles.topleft)} alt="" />
+    <div className={styles.container}>
+      <div className={styles.title}>
+        Subscribe for updates. We won&#39;t spam you.
       </div>
-      <img
-        src={Glyph2Src}
-        className={cn(styles.glyph, styles.rigthbottom)}
-        alt=""
-      />
+      <div className={styles.subscribeContainer}>
+        <SubscribeForm />
+      </div>
     </div>
-  )
-}
+    <img
+      src={Glyph2Src}
+      className={cn(styles.glyph, styles.rigthbottom)}
+      alt=""
+    />
+  </div>
+)
+
+export default SubscribeSection

@@ -1,26 +1,24 @@
-import React, { FormEvent } from 'react'
+import React, { useCallback, useRef } from 'react'
+import { nanoid } from 'nanoid'
 
 import { logEvent } from '../../../utils/ga'
 
 import styles from './styles.module.css'
 
-const honeyPot = 'b_a08bf93caae4063c4e6a351f6_24c0ecc49a'
+const Form: React.SFC = () => {
+  const hiddenInputRef = useRef<HTMLInputElement>(null)
+  const honeypotNameRef = useRef(nanoid())
+  const sendGAEvent = useCallback(
+    e => {
+      if (hiddenInputRef.current?.value) {
+        // It's a bot.
+        return e.preventDefault()
+      }
 
-interface IFormElements {
-  [honeyPot]: HTMLFormElement
-}
-
-const sendGAEvent = ({ target: form }: FormEvent<HTMLFormElement>) => {
-  const formElements: IFormElements = (form as any).elements
-  if (formElements[honeyPot].value) {
-    // It's a bot.
-    return
-  }
-
-  logEvent('subscribe-form', 'subscribe')
-}
-
-export default function Form() {
+      logEvent('subscribe-form', 'subscribe')
+    },
+    [hiddenInputRef?.current]
+  )
   return (
     <form
       className={styles.form}
@@ -42,7 +40,12 @@ export default function Form() {
 
       {/*real people should not fill this in and expect good things - do not remove this or risk form bot signups*/}
       <div style={{ position: 'absolute', left: '-5000px' }} aria-hidden="true">
-        <input type="text" name={honeyPot} tabIndex={-1} />
+        <input
+          type="text"
+          name={honeypotNameRef.current}
+          ref={hiddenInputRef}
+          tabIndex={-1}
+        />
       </div>
 
       <button
@@ -56,3 +59,5 @@ export default function Form() {
     </form>
   )
 }
+
+export default Form
