@@ -4,9 +4,9 @@ In this guide we explain the existing ways to setup Google Drive
 [remote storage](/doc/command-reference/remote) for your <abbr>DVC
 projects</abbr>, along with the different benefits each one brings.
 
-Note that to start using a GDrive remote, you only need to add it with a valid
-URL (see next section), and use any DVC command that needs it (e.g. `dvc pull`,
-`dvc fetch`, `dvc push`). For example:
+Note that to start using a GDrive remote, you only need to add it with a
+[valid URL format](#url-format-for-google-drive-remotes). Then use any DVC
+command that needs it (e.g. `dvc pull`, `dvc fetch`, `dvc push`). For example:
 
 ```dvc
 $ dvc remote add -d myremote gdrive://root/dvcstore
@@ -23,14 +23,15 @@ See the [Authorization](#authorization) section for more details.
 
 ## URL format for Google Drive remotes
 
-A GDrive remote URLs is needed for the `dvc remote add` command. It can be
-constructed with a _base_, and an **optional** _path_ to a folder i.e.
-`gdrive://<base>/path/to/folder`. The base can be one of:
+There's a few alternatives to construct a GDrive remote URL for different uses,
+such as a folder or subfolder in root, shared folders not owned by your account,
+etc. The URL is formed with a _base_, and an optional _path_ to an **existing**
+folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
 
 1. `root` - indicates your topmost Google Drive directory.
 
 ```dvc
-$ dvc remote add mygdfolder gdrive://root/path/to/folder
+$ dvc remote add mygdfolder gdrive://root/dvcstore
 ```
 
 2. Google Drive _Folder ID_
@@ -42,7 +43,7 @@ web browser, and find it in the address bar. For example, for
 ```dvc
 $ dvc remote add mygdfolder gdrive://0AIac4JZqHhKmUk9PDA
 $ dvc remote add mygdsubfolder \
-                 gdrive://0AIac4JZqHhKmUk9PDA/sub/path
+                 gdrive://0AIac4JZqHhKmUk9PDA/Data/text
 ```
 
 Note that [shared folders](https://support.google.com/drive/answer/7166529) and
