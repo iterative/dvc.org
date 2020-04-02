@@ -112,6 +112,12 @@ describe('getRedirects', () => {
       'https://dvc.org/blog/september-19-dvc-heartbeat',
       301
     )
+
+    itRedirects(
+      'https://blog.dvc.org/september-19-dvc-heartbeat',
+      'https://dvc.org/blog/september-19-dvc-heartbeat',
+      301
+    )
   })
 
   describe('toS3', () => {
