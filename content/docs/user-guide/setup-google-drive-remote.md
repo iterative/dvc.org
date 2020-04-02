@@ -16,7 +16,7 @@ Go to the following link in your browser:
 
     https://accounts.google.com/o/oauth2/auth # ... copy this link
 
-Enter verification code: # <- enter resulting token
+Enter verification code: # <- enter resulting code
 ```
 
 See the [Authorization](#authorization) section for more details.
@@ -59,6 +59,24 @@ referenced by _Folder ID_.
 ```dvc
 $ dvc remote add mygdappata gdrive://appDataFolder
 ```
+
+## Authorization
+
+On the first usage of a GDrive [remote](/doc/command-reference/remote), for
+example when trying to `dvc push` for the first time after adding the remote
+with a [valid URL](#url-format-for-google-drive-remotes), DVC will prompt you to
+visit a special Google authorization web page. There you'll need to sign into
+your Google account. The
+[auth process](https://developers.google.com/drive/api/v2/about-auth) will ask
+you to grant DVC the necessary permissions, and produce a verification code
+needed for DVC to complete the connection. On success, this code will be cached
+in a Git-ignored directory located in `.dvc/tmp/gdrive-user-credentials.json`.
+
+⚠️ In order to prevent unauthorized access to your Google Drive, **do not share
+your verification code with others**. Each team member should go through this
+process individually.
+
+> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 ## Configure custom Google Cloud project & app (recommended)
 
@@ -158,20 +176,3 @@ $ dvc remote modify myremote gdrive_use_service_account True
 $ dvc remote modify myremote gdrive_service_account_email <service acct email>
 $ dvc remote modify myremote gdrive_service_account_p12_file_path path/to/file.p12
 ```
-
-## Authorization
-
-On the first usage of a GDrive [remote](/doc/command-reference/remote), for
-example when trying to `dvc push` for the first time after adding a GDrive
-remote, DVC will prompt you to visit a special Google authorization web page to
-generate. This will require you to sign into the corresponding Google account.
-Google's [auth process](https://developers.google.com/drive/api/v2/about-auth)
-will ask you to grant DVC the necessary access permissions, and produce a token.
-On success, the token data will be cached in a Git-ignored directory located in
-`.dvc/tmp/gdrive-user-credentials.json`.
-
-⚠️ In order to prevent unauthorized access to your Google Drive, **do not share
-access token data with others**. Each team member should generate their own
-tokens.
-
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).

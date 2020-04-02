@@ -216,7 +216,7 @@ Go to the following link in your browser:
 
     https://accounts.google.com/o/oauth2/auth # ... copy this link
 
-Enter verification code: # <- enter resulting token
+Enter verification code: # <- enter resulting code
 ```
 
 Note that GDrive remotes are not "trusted" by default. This means that the
