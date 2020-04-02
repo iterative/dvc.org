@@ -1,7 +1,7 @@
 import React from 'react'
 
 import HeroSection from '../HeroSection'
-import TrySection from '../TrySection'
+import PromoSection from '../PromoSection'
 import Popover from './Popover'
 import Link from '../Link'
 
@@ -124,7 +124,14 @@ export default function SupportPage() {
           </Feature>
         </Features>
       </Container>
-      <TrySection title="Don't know where to start?" buttonText="Get Started" />
+      <PromoSection
+        title="Don't know where to start?"
+        buttons={[
+          <Link href="/doc/tutorials/get-started" key="get-started">
+            Get Started
+          </Link>
+        ]}
+      />
     </>
   )
 }

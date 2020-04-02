@@ -2,7 +2,8 @@ import React from 'react'
 
 import HeroSection from '../HeroSection'
 import FeaturesHero from './FeaturesHero'
-import TrySection from '../TrySection'
+import Link from '../Link'
+import PromoSection from '../PromoSection'
 
 import { Container, Description, Feature, Features, Icon, Name } from './styles'
 
@@ -150,7 +151,14 @@ export default function FeaturesPage() {
           </Feature>
         </Features>
       </Container>
-      <TrySection title="Ready to give it a try?" />
+      <PromoSection
+        title="Ready to give it a try?"
+        buttons={[
+          <Link href="/doc/tutorials/get-started" key="get-started">
+            Get Started
+          </Link>
+        ]}
+      />
     </>
   )
 }
