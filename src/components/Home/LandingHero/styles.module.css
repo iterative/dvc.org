@@ -56,74 +56,25 @@
 }
 
 .actionButton {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   min-width: 186px;
-  padding: 0;
-  border-radius: 4px;
-  border: none;
-  cursor: pointer;
 
   &.actionButton {
     @media (--xs-scr) {
-      max-width: none;
+      /* max-width: none;
       min-height: 60px;
       margin: 0;
-      margin-bottom: 12px;
+      margin-bottom: 12px; */
     }
   }
 }
 
 .actionButtonIcon {
-  flex-basis: 48px;
-  text-align: center;
+  width: 20px;
+  height: 20px;
 }
 
-.actionButtonMainText {
-  display: block;
-  font-family: var(--font-brandon);
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 0.9;
-}
-
-.actionButtonDescription {
-  display: block;
-  font-family: var(--font-brandon);
-  font-weight: normal;
-  font-size: 14px;
-  text-align: left;
-}
-
-.watchVideoButton {
-  text-decoration: none;
-  color: var(--color-gray-hover);
-  background-color: var(--color-light-blue);
+.watchVideo {
   margin-left: 15px;
-  border: solid 2px rgba(176, 184, 197, 0.47);
-  transition: 0.2s background-color ease-out;
-
-  &:hover {
-    background-color: var(--color-light-blue-hover);
-  }
-}
-
-.getStartedButton {
-  display: flex;
-  border: solid 2px transparent;
-  padding: 0 0 0 20px;
-  background-color: var(--color-azure);
-  text-decoration: none;
-  font-size: 20px;
-  line-height: 0.9;
-  font-weight: 500;
-  color: #fff;
-  transition: 0.2s background-color ease-out;
-
-  &:hover {
-    background-color: var(--color-azure-hover);
-  }
 }
 
 .commands {
@@ -180,7 +131,7 @@
   margin-top: 51px;
   font-size: 14px;
   font-weight: 500;
-  color: #b0b8c5;
+  color: var(--color-gray-light);
 
   @media (--sm-scr) {
     align-items: center;

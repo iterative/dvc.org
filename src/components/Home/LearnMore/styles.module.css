@@ -65,7 +65,7 @@
   font-size: 16px;
   line-height: 23px;
   font-weight: 500;
-  color: #b0b8c5;
+  color: var(--color-gray-light);
   display: initial;
 
   @media (--xs-scr) {

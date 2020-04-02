@@ -1,5 +1,6 @@
 import React, { useState, useCallback } from 'react'
 
+import TwoRowsButton from '../../../TwoRowsButton'
 import { logEvent } from '../../../../utils/ga'
 
 import styles from './styles.module.css'
@@ -17,19 +18,19 @@ const Video: React.SFC<{ id: string }> = ({ id }) => {
       <div className={styles.handler}>
         {!isWatching && (
           <div className={styles.overlay}>
-            <button className={styles.button} onClick={watchVideo}>
-              <img
-                className={styles.buttonIcon}
-                src="/img/watch_white.svg"
-                alt="Watch video"
-                width={20}
-                height={20}
-              />
-              <span>
-                <span className={styles.buttonText}>Watch video</span>
-                <span className={styles.buttonDescription}>How it works</span>
-              </span>
-            </button>
+            <TwoRowsButton
+              mode="azure"
+              title="Watch video"
+              description="How it works"
+              icon={
+                <img
+                  className={styles.buttonIcon}
+                  src="/img/watch_white.svg"
+                  alt="Watch video"
+                />
+              }
+              onClick={watchVideo}
+            />
           </div>
         )}
         <iframe

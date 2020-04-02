@@ -4,6 +4,7 @@ import cn from 'classnames'
 import ShowOnly from '../../ShowOnly'
 import Link from '../../Link'
 import DownloadButton from '../../DownloadButton'
+import TwoRowsButton from '../../TwoRowsButton'
 import GithubLine from './GithubLine'
 import { scrollIntoLayout, ease } from '../../../utils/scroll'
 import { logEvent } from '../../../utils/ga'
@@ -57,24 +58,20 @@ const LandingHero: React.SFC<ILandingHeroProps> = ({ scrollToRef }) => {
           <ShowOnly on="desktop">
             <DownloadButton />
           </ShowOnly>
-          <button
-            className={cn(styles.actionButton, styles.watchVideoButton)}
+          <TwoRowsButton
+            mode="outline"
+            className={cn(styles.actionButton, styles.watchVideo)}
+            title="Watch video"
+            description="How it works"
+            icon={
+              <img
+                className={styles.actionButtonIcon}
+                src="/img/play-icon.svg"
+                alt="Watch video"
+              />
+            }
             onClick={scrollToUseCases}
-          >
-            <img
-              className={styles.actionButtonIcon}
-              src="/img/play-icon.svg"
-              alt="Watch video"
-              width={20}
-              height={20}
-            />
-            <span>
-              <span className={styles.actionButtonMainText}>Watch video</span>
-              <span className={styles.actionButtonDescription}>
-                How it works
-              </span>
-            </span>
-          </button>
+          />
         </div>
 
         <div className={styles.github}>
