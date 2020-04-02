@@ -1,0 +1,16 @@
+.container {
+  border: none;
+  background: none;
+  font-family: var(--font-brandon);
+  text-align: left;
+  appearance: none;
+
+  :global(.ReactCollapse--collapse) {
+    transition: height 500ms;
+  }
+}
+
+.moreText {
+  color: var(--color-azure);
+  font-size: 16px;
+}

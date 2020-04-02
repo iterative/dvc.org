@@ -1951,6 +1951,13 @@
     "@types/history" "*"
     "@types/react" "*"
 
+"@types/react-collapse@^5.0.0":
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/@types/react-collapse/-/react-collapse-5.0.0.tgz#ffe6173db457b4b147319e1bd522b5b9d3d68fac"
+  integrity sha512-iM5QPtS0JVbL5TWm8vilaG4iYiQIFSSqXDHcRUA50qBLSgC0GURk7VZYmgo6u4YF0LnpvKBQYRhPv1ut9DukIg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-helmet@^5.0.15":
   version "5.0.15"
   resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-5.0.15.tgz#af0370617307e9f062c6aee0f1f5588224ce646e"
@@ -1965,6 +1972,13 @@
 "@types/react-native@link:./.tmp-empty-package":
   version "0.0.0"
   uid ""
+
+"@types/react-slick@^0.23.4":
+  version "0.23.4"
+  resolved "https://registry.yarnpkg.com/@types/react-slick/-/react-slick-0.23.4.tgz#c97e2a9e7e3d1933c68593b8e82752fab1e8ce53"
+  integrity sha512-vXoIy4GUfB7/YgqubR4H7RALo+pRdMYCeLgWwV3MPwl5pggTlEkFBTF19R7u+LJc85uMqC7RfsbkqPLMQ4ab+A==
+  dependencies:
+    "@types/react" "*"
 
 "@types/react@*":
   version "16.9.25"
@@ -12941,7 +12955,7 @@ prompts@^2.0.1, prompts@^2.3.1:
     kleur "^3.0.3"
     sisteransi "^1.0.4"
 
-prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.5.8, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
+prop-types@^15.5.10, prop-types@^15.5.4, prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.7.2:
   version "15.7.2"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.7.2.tgz#52c41e75b8c87e72b9d9360e0206b99dcbffa6c5"
   integrity sha512-8QQikdH7//R2vurIJSutZ1smHYTcLpRWEOlHnzcWHmBYrOGUysKwSsrC89BCiFj3CbrfJ/nXFdJepOVrY1GCHQ==
@@ -13342,14 +13356,6 @@ react-refresh@^0.7.0:
   version "0.7.2"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.7.2.tgz#f30978d21eb8cac6e2f2fde056a7d04f6844dd50"
   integrity sha512-u5l7fhAJXecWUJzVxzMRU2Zvw8m4QmDNHlTrT5uo3KBlYBhmChd7syAakBoay1yIiVhx/8Fi7a6v6kQZfsw81Q==
-
-react-scroll@^1.7.13:
-  version "1.7.16"
-  resolved "https://registry.yarnpkg.com/react-scroll/-/react-scroll-1.7.16.tgz#814f0b97ed171aad1f27e45dad16a8444817fec8"
-  integrity sha512-f4M5AdL+3cw3MJ7c/T0hPMY2iHCeQLDXV13lRanAFQ6JIt9xyAdHCpTH9mLUQt9SQh4pRarD+Qc7KhU6qMx3Yg==
-  dependencies:
-    lodash.throttle "^4.1.1"
-    prop-types "^15.5.8"
 
 react-side-effect@^1.1.0:
   version "1.2.0"

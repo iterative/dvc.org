@@ -1,3 +1,5 @@
+const { customMedia } = require('./media')
+
 const focus = {
   '&:focus': {
     color: 'var(--color-orange)',
@@ -74,6 +76,31 @@ module.exports = {
     'button-small': {
       'font-size': '16px',
       'line-height': '25px'
+    },
+    columns: {
+      display: 'flex',
+      'flex-direction': 'row',
+      'flex-flow': 'wrap',
+      'justify-content': 'space-between',
+
+      [`@media ${customMedia['--sm-scr']}`]: {
+        'flex-direction': 'row'
+      },
+
+      [`@media ${customMedia['--xs-scr']}`]: {
+        'justify-content': 'center'
+      }
+    },
+    column: {
+      'flex-basis': '33.3%',
+
+      [`@media ${customMedia['--sm-scr']}`]: {
+        'flex-basis': '50%'
+      },
+
+      [`@media ${customMedia['--xs-scr']}`]: {
+        'flex-basis': '100%'
+      }
     },
     link: {
       'text-decoration': 'none',

@@ -1,0 +1,101 @@
+.container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 278px;
+  background-color: var(--color-purple);
+}
+
+.bgGlyph {
+  position: absolute;
+  z-index: 0;
+  width: 158px;
+  height: auto;
+  object-fit: contain;
+
+  &.topLeft {
+    top: -25px;
+    left: 40px;
+  }
+
+  &.rightBottom {
+    bottom: -60px;
+    right: 30px;
+  }
+
+  @media (--sm-scr) {
+    width: 110px;
+  }
+
+  @media (--xs-scr) {
+    display: none;
+  }
+}
+
+.title {
+  font-family: var(--font-brandon);
+  max-width: 438px;
+  min-height: 44px;
+  margin: 0 auto;
+  font-size: 30px;
+  font-weight: 500;
+  text-align: center;
+  color: #fff;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 0;
+
+  @media (--xs-scr) {
+    flex-direction: column;
+  }
+}
+
+.button {
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  min-width: 186px;
+  height: 60px;
+  padding: 0 21px;
+  border-radius: 4px;
+  border: solid 2px rgba(255, 255, 255, 0.3);
+  font-family: var(--font-brandon);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 0.9;
+  text-decoration: none;
+  text-align: left;
+  color: #fff;
+  background: var(--color-purple) url('/img/arrow_right_white.svg') right center
+    no-repeat;
+  background-position-x: 147px;
+  transition: 0.2s background-color ease-out;
+
+  & + & {
+    margin-left: 14px;
+  }
+
+  &.first {
+    color: var(--color-purple);
+    border-radius: 4px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
+    background-image: url('/img/arrow_right_dark.svg');
+    transition: 0.2s background-color ease-out;
+
+    &:hover {
+      background-color: #f5f5f5;
+    }
+  }
+
+  @media (--xs-scr) {
+    margin-bottom: 12px;
+    margin-right: 0 !important;
+  }
+}

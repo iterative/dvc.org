@@ -1,17 +1,20 @@
 :root {
   --color-black: #24292e;
   --color-gray: #838d93;
+  --color-gray-dark: #5f6c72;
   --color-gray-opaque: rgba(131, 141, 147, 0.5);
   --color-gray-hover: #40364d;
   --color-light-gray: #d9e2e8;
   --color-azure: #13adc7;
+  --color-azure-hover: #13a3bd;
   --color-blue: #0366d6;
   --color-lighter-blue: #dde7ee;
   --color-light-blue: #eef4f8;
+  --color-light-blue-hover: #e4eaee;
   --color-purple: #945dd6;
   --color-purple-hover: #745cb7;
   --color-orange: #e37046;
-  --color-orange-opaque: rgba(22, 112, 70, 0.5);
+  --color-orange-bright: #f46837;
   --font-brandon: 'BrandonGrotesque', 'Tahoma', 'Arial', sans-serif;
   --font-mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo',
     'Courier', monospace;
@@ -24,7 +27,7 @@
 html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizelegibility;
+  text-rendering: optimizeLegibility;
 }
 
 body {
