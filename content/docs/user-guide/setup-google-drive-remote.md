@@ -5,7 +5,7 @@ In this guide we explain the existing ways to setup Google Drive
 projects</abbr>, along with the different benefits each one brings.
 
 Note that to start using a GDrive remote, you only need to add it with a
-[valid URL format](#url-format-for-google-drive-remotes). Then use any DVC
+[valid URL format](#url-format-to-specify-folder-location). Then use any DVC
 command that needs it (e.g. `dvc pull`, `dvc fetch`, `dvc push`). For example:
 
 ```dvc
@@ -21,7 +21,7 @@ Enter verification code: # <- enter resulting code
 
 See the [Authorization](#authorization) section for more details.
 
-## URL format for Google Drive remotes
+## URL formats to specify folder location
 
 There's a few alternatives to construct a GDrive remote URL for different uses,
 such as a folder or subfolder in root, shared folders not owned by your account,
@@ -64,8 +64,8 @@ $ dvc remote add mygdappata gdrive://appDataFolder
 
 On the first usage of a GDrive [remote](/doc/command-reference/remote), for
 example when trying to `dvc push` for the first time after adding the remote
-with a [valid URL](#url-format-for-google-drive-remotes), DVC will prompt you to
-visit a special Google authorization web page. There you'll need to sign into
+with a [valid URL](#url-format-to-specify-folder-location), DVC will prompt you
+to visit a special Google authorization web page. There you'll need to sign into
 your Google account. The
 [auth process](https://developers.google.com/drive/api/v2/about-auth) will ask
 you to grant DVC the necessary permissions, and produce a verification code

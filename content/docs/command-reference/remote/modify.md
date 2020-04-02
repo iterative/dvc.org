@@ -253,7 +253,7 @@ Please check out
 a full guide on using Google Drive as DVC remote storage.
 
 - `url` - remote location URL. See the
-  [possible formats](/doc/user-guide/setup-google-drive-remote#url-format-for-google-drive-remotes).
+  [possible formats](/doc/user-guide/setup-google-drive-remote#url-format-to-specify-folder-location).
 
   ```dvc
   $ dvc remote modify myremote url gdrive://root/dvcstore

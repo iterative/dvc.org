@@ -200,7 +200,7 @@ $ dvc remote add myremote "azure://"
 ### Click for Google Drive
 
 To start using a GDrive remote, fist add it with a
-[valid URL format](/doc/user-guide/setup-google-drive-remote#url-format-for-google-drive-remotes).
+[valid URL format](/doc/user-guide/setup-google-drive-remote#url-format-to-specify-folder-location).
 Then simply use any DVC command that needs it (e.g. `dvc pull`, `dvc fetch`,
 `dvc push`), and follow the instructions to connect your Google Drive with DVC.
 For example:
