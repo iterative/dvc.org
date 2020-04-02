@@ -1,4 +1,6 @@
 [
+  "^https://blog\\.dvc\\.org/blog/(.*?)/?$  https://dvc.org/blog/$1",
+  "^https://blog\\.dvc\\.org/(.*?)/?$       https://dvc.org/blog/$1",
   "^https://(?:www\\.)dvc\\.org/(.+)?       https://dvc.org/$1",
   "^https://man\\.dvc\\.org/(.+)?           https://dvc.org/doc/command-reference/$1 303",
   "^https://error\\.dvc\\.org/(.+)?         https://dvc.org/doc/user-guide/troubleshooting#$1 303",
