@@ -84,8 +84,8 @@ Optionally, follow this guide to setup your own Google Cloud project and
 generate OAuth credentials for your <abbr>DVC projects<abbr> to connect to
 Google Drive. We highly recommend this for heavy and advanced use because:
 
-- you control your Google API usage and rate limits, being able to request an
-  increase to Google if needed.
+- you control your Google API usage and rate limits, being able to request
+  Google for an increase if needed.
 - it ensures optimal data transfer performance when you need it.
 - [using a service account](#using-service-accounts) for automation tasks (e.g.
   CI/CD) is only possible this way.
