@@ -250,24 +250,27 @@ For more information on configuring Azure Storage connection strings, visit
 
 Please check out
 [Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
-a full guide on using Google Drive as DVC remote storage, including how to form
-`gdrive://` URLs, and setups for advanced use cases.
+a full guide on using Google Drive as DVC remote storage.
 
-- `url` - remote location URL.
+- `url` - remote location URL. See the
+  [possible formats](/doc/user-guide/setup-google-drive-remote#url-format-for-google-drive-remotes).
 
   ```dvc
-  $ dvc remote modify myremote url gdrive://root/path/to/folder
+  $ dvc remote modify myremote url root/dvc/dvcstore
   ```
 
-- `gdrive_client_id` - Google Project's **client ID** for authentication with
-  OAuth 2.0.
+- `gdrive_client_id` - **Client ID** for authentication with OAuth 2.0 when
+  using a
+  [custom Google Client project](/doc/user-guide/setup-google-drive-remote#configure-custom-google-cloud-project--app-recommended).
+  Also requires using `gdrive_client_secret`.
 
   ```dvc
   $ dvc remote modify myremote gdrive_client_id <client ID>
   ```
 
-- `gdrive_client_secret` - Google Project's **client secret** for authentication
-  with OAuth 2.0.
+- `gdrive_client_secret` - **Client secret** for authentication with OAuth 2.0
+  when using a custom Google Client project. Also requires using
+  `gdrive_client_id`.
 
   ```dvc
   $ dvc remote modify myremote gdrive_client_secret <client secret>
@@ -286,14 +289,17 @@ a full guide on using Google Drive as DVC remote storage, including how to form
   account.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_service_account_email <service acct email>
+  $ dvc remote modify myremote \
+                      gdrive_service_account_email <service acct email>
   ```
 
 - `gdrive_service_account_p12_file_path` - Google Project's service account
   `.p12` file path.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_service_account_p12_file_path path/to/file.p12
+  $ dvc remote modify myremote \
+                      gdrive_service_account_p12_file_path \
+                      path/to/file.p12
   ```
 
 - `gdrive_service_account_user_email` - email of a user account to
@@ -301,7 +307,8 @@ a full guide on using Google Drive as DVC remote storage, including how to form
   with the service account.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_service_account_user_email <user account email>
+  $ dvc remote modify myremote \
+                      gdrive_service_account_user_email <user email>
   ```
 
 - `gdrive_trash_only` - configures DVC to move remote files to

@@ -5,13 +5,12 @@ In this guide we explain the existing ways to setup Google Drive
 projects</abbr>, along with the different benefits each one brings.
 
 Note that to start using a GDrive remote, you only need to add it with a valid
-URL (see next section), and use any DVC command that requires it (see
-`dvc pull`, `dvc fetch`, `dvc push`). For example:
+URL (see next section), and use any DVC command that needs it (e.g. `dvc pull`,
+`dvc fetch`, `dvc push`). For example:
 
 ```dvc
 $ dvc remote add -d myremote gdrive://root/dvc/dvcstore
-$ dvc add file.dat
-$ dvc push -r myremote
+$ dvc push
 ...
 Go to the following link in your browser:
 
