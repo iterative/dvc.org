@@ -286,7 +286,8 @@ a full guide on using Google Drive as DVC remote storage.
   ```
 
 - `gdrive_service_account_email` - email address of the Google Project's service
-  account.
+  account when `gdrive_use_service_account` is on. Also requires using
+  `gdrive_service_account_p12_file_path`.
 
   ```dvc
   $ dvc remote modify myremote \
@@ -294,7 +295,8 @@ a full guide on using Google Drive as DVC remote storage.
   ```
 
 - `gdrive_service_account_p12_file_path` - Google Project's service account
-  `.p12` file path.
+  `.p12` file path when `gdrive_use_service_account` is on. Also requires using
+  `gdrive_service_account_email`.
 
   ```dvc
   $ dvc remote modify myremote \
@@ -304,7 +306,7 @@ a full guide on using Google Drive as DVC remote storage.
 
 - `gdrive_service_account_user_email` - email of a user account to
   [impersonate](https://developers.google.com/admin-sdk/directory/v1/guides/delegation)
-  with the service account.
+  with the service account. Optional when `gdrive_use_service_account` is on.
 
   ```dvc
   $ dvc remote modify myremote \
@@ -316,7 +318,7 @@ a full guide on using Google Drive as DVC remote storage.
   instead of
   [deleting](https://developers.google.com/drive/api/v2/reference/files/delete)
   them permanently. `false` by default, meaning "delete". Useful for shared
-  drives, where delete permissions may not be given.
+  drives/folders, where delete permissions may not be given.
 
   ```dvc
   $ dvc remote modify myremote gdrive_trash_only true
