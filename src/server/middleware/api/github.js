@@ -1,18 +1,16 @@
-/* eslint-env node */
-
 const { graphql } = require('@octokit/graphql')
 const NodeCache = require('node-cache')
 
-const cache = new NodeCache({ stdTTL: 900 })
+const { isProduction } = require('../../utils')
 
-const dev = process.env.NODE_ENV === 'development'
+const cache = new NodeCache({ stdTTL: 900 })
 
 module.exports = async (_, res) => {
   if (!process.env.GITHUB_TOKEN) {
     res.status(200).json({ issues: [] })
   } else {
     if (cache.get('issues')) {
-      if (dev) console.log('Using cache for "issues"')
+      if (!isProduction) console.log('Using cache for "issues"')
 
       res.status(200).json({ issues: cache.get('issues') })
     } else {

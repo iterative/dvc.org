@@ -1,21 +1,6 @@
-/* eslint-env node */
-
-const express = require('express')
-const compression = require('compression')
 const serveHandler = require('serve-handler')
 
-const app = express()
-
-const apiMiddleware = require('./middleware/api')
-const redirectsMiddleware = require('./middleware/redirects')
-
-const port = process.env.PORT || 3000
-
-app.use(compression())
-app.use(redirectsMiddleware)
-app.use('/api', apiMiddleware)
-
-app.use((req, res) => {
+module.exports = (req, res) => {
   serveHandler(req, res, {
     public: 'public',
     cleanUrls: true,
@@ -42,6 +27,4 @@ app.use((req, res) => {
       }
     ]
   })
-})
-
-app.listen(port, () => console.log(`Ready on localhost:${port}!`))
+}

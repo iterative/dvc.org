@@ -60,7 +60,16 @@ describe('getRedirects', () => {
       // Detect redirect loops.
       const secondUrl = url.parse(addHost(rLocation))
       const secondRedirect = getRedirect(secondUrl.hostname, secondUrl.pathname)
-      expect(secondRedirect).toEqual([])
+
+      // allow second redirect only if it removes trailing slash
+      if (secondRedirect.length) {
+        const thirdUrl = url.parse(addHost(secondRedirect[1]))
+        expect(secondUrl.host).toEqual(thirdUrl.host)
+        expect(secondUrl.pathname.replace(/\/$/, '')).toEqual(secondRedirect[1])
+
+        const thirdRedirect = getRedirect(thirdUrl.hostname, thirdUrl.pathname)
+        expect(thirdRedirect).toEqual([])
+      }
     })
   }
 
@@ -90,6 +99,24 @@ describe('getRedirects', () => {
       'https://error.dvc.org/foo',
       'https://dvc.org/doc/user-guide/troubleshooting#foo',
       303
+    )
+
+    itRedirects(
+      'https://www.dataversioncontrol.com/some-random',
+      'https://dataversioncontrol.com/some-random',
+      301
+    )
+
+    itRedirects(
+      'https://blog.dataversioncontrol.com/september-19-dvc-heartbeat-0123456789ab',
+      'https://dvc.org/blog/september-19-dvc-heartbeat',
+      301
+    )
+
+    itRedirects(
+      'https://blog.dvc.org/september-19-dvc-heartbeat',
+      'https://dvc.org/blog/september-19-dvc-heartbeat',
+      301
     )
   })
 

@@ -12,5 +12,5 @@
     "allowSyntheticDefaultImports": true,
     "allowJs": true
   },
-  "include": ["./src/**/*", "./middleware/**/*", "./*.js"]
+  "include": ["./src/**/*", "./*.js"]
 }

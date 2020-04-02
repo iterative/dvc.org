@@ -1,23 +1,20 @@
-/* eslint-env node */
-
 const fetch = require('isomorphic-fetch')
 const NodeCache = require('node-cache')
 
-const { FORUM_URL } = require('../../src/consts')
+const { isProduction } = require('../../utils')
+const { FORUM_URL } = require('../../../../src/consts')
 
 const cache = new NodeCache({ stdTTL: 900 })
 
-const dev = process.env.NODE_ENV === 'development'
-
 module.exports = async (_, res) => {
   if (cache.get('topics')) {
-    if (dev) console.log('Using cache for "topics"')
+    if (!isProduction) console.log('Using cache for "topics"')
 
     res.status(200).json(cache.get('topics'))
 
     return
   } else {
-    if (dev) console.log('Not using cache for "topics"')
+    if (!isProduction) console.log('Not using cache for "topics"')
   }
 
   try {
