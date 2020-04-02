@@ -19,7 +19,7 @@ function Layout({ children, ...restProps }) {
   return (
     <MainLayout
       {...restProps}
-      modifiers={[LayoutModifiers.Wide, LayoutModifiers.Scrolled]}
+      modifiers={[LayoutModifiers.Wide, LayoutModifiers.Collapsed]}
     >
       <Container>
         <Backdrop onClick={toggleMenu} visible={isMenuOpen} />

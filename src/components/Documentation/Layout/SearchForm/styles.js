@@ -15,7 +15,7 @@ export const SearchArea = styled.div`
   );
   z-index: 10;
   position: sticky;
-  top: var(--layout-header-height-scrolled);
+  top: var(--layout-header-height-collapsed);
 
   ${media.phablet`
     position: relative;

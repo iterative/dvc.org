@@ -21,7 +21,7 @@
   --layout-width: 1005px;
   --layout-width-wide: 1200px;
   --layout-header-height: 98px;
-  --layout-header-height-scrolled: calc(var(--layout-header-height) - 20px);
+  --layout-header-height-collapsed: 78px;
 }
 
 html {

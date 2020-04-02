@@ -4,8 +4,8 @@ import { media } from '../../../../styles'
 
 export const Menu = styled.div`
   position: sticky;
-  top: calc(var(--layout-header-height-scrolled) + 60px);
-  height: calc(100vh - var(--layout-header-height-scrolled) - 60px);
+  top: calc(var(--layout-header-height-collapsed) + 60px);
+  height: calc(100vh - var(--layout-header-height-collapsed) - 60px);
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
 

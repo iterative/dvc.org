@@ -15,7 +15,6 @@ const LearnMore: React.SFC<ILearnMoreProps> = ({ scrollToRef }) => {
     scrollIntoLayout(scrollToRef?.current, {
       smooth: true,
       duration: 800,
-      offset: 20,
       ease: ease.inOutCube
     })
   }, [scrollToRef?.current])

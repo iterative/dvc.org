@@ -15,6 +15,7 @@ export const useAnchorNavigation = () => {
       const node = document.querySelector(location.hash)
 
       if (node) {
+        scrollIntoLayout(node)
         allImagesLoadedInContainer(document.body).then(() =>
           scrollIntoLayout(node)
         )

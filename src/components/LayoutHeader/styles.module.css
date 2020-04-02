@@ -1,12 +1,12 @@
 .placeholder {
   height: var(--layout-header-height);
 
-  &.scrolled {
-    height: var(--layout-header-height-scrolled);
+  &.collapsed {
+    height: var(--layout-header-height-collapsed);
   }
 
   @media (--xs-scr) {
-    height: var(--layout-header-height-scrolled);
+    height: var(--layout-header-height-collapsed);
   }
 }
 
@@ -33,8 +33,8 @@
   transition: height 0.2s linear;
   will-change: height;
 
-  &.scrolled {
-    height: var(--layout-header-height-scrolled);
+  &.collapsed {
+    height: var(--layout-header-height-collapsed);
   }
 
   @media (--md-scr) {
@@ -42,7 +42,7 @@
   }
 
   @media (--xs-scr) {
-    height: var(--layout-header-height-scrolled);
+    height: var(--layout-header-height-collapsed);
   }
 }
 
