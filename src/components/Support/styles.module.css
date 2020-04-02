@@ -1,0 +1,214 @@
+.supportHero {
+  padding-top: 70px;
+  padding-bottom: 70px;
+  overflow: hidden;
+}
+
+.heading {
+  max-width: 610px;
+  margin: 0 auto;
+  font-family: var(--font-brandon);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.4;
+  text-align: center;
+  color: var(--color-gray-hover);
+}
+
+.features {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  max-width: 800px;
+  margin: 0 auto;
+  padding-top: 80px;
+
+  @media (--sm-scr) {
+    padding-top: 70px;
+  }
+
+  @media (--xs-scr) {
+    padding-top: 50px;
+  }
+}
+
+.feature {
+  box-sizing: border-box;
+  flex: 1 0 calc(50% - 40px);
+  margin: 0 20px 60px;
+  padding: 10px;
+
+  @media (--sm-scr) {
+    flex-basis: 100%;
+    margin: 0 0 40px;
+    padding: 10px 0;
+  }
+
+  &.chat,
+  &.email {
+    .featureIcon {
+      background-color: color-mod(var(--color-purple) a(15%));
+
+      &::after {
+        background-color: var(--color-purple);
+      }
+    }
+
+    .accent {
+      color: var(--color-purple);
+    }
+
+    .featureButton {
+      border-color: var(--color-purple);
+      color: var(--color-purple);
+
+      &:hover {
+        background-color: var(--color-purple);
+      }
+    }
+  }
+
+  &.chat .featureIcon::after {
+    mask-image: url('/img/support/chat.svg');
+  }
+
+  &.email .featureIcon::after {
+    mask-image: url('/img/support/email.svg');
+  }
+
+  &.bugs {
+    .featureIcon {
+      background-color: color-mod(var(--color-azure) a(15%));
+
+      &::after {
+        background-color: var(--color-azure);
+        mask-image: url('/img/support/bug.svg');
+      }
+    }
+
+    .accent {
+      color: var(--color-azure);
+    }
+
+    .featureButton {
+      border-color: var(--color-azure);
+      color: var(--color-azure);
+
+      &:hover {
+        background-color: var(--color-azure);
+      }
+    }
+  }
+
+  &.forum {
+    .featureIcon {
+      background-color: color-mod(var(--color-orange-bright) a(15%));
+
+      &::after {
+        background-color: var(--color-orange-bright);
+        mask-image: url('/img/support/forum.svg');
+      }
+    }
+
+    .accent {
+      color: var(--color-orange-bright);
+    }
+
+    .featureButton {
+      border-color: var(--color-orange-bright);
+      color: var(--color-orange-bright);
+
+      &:hover {
+        background-color: var(--color-orange-bright);
+      }
+    }
+  }
+}
+
+.featureHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.featureIcon {
+  height: 50px;
+  width: 50px;
+  margin-right: 10px;
+  border-radius: 50%;
+
+  &::after {
+    content: ' ';
+    display: block;
+    width: 50px;
+    height: 50px;
+    opacity: 1;
+    mask-repeat: no-repeat;
+    mask-position: center;
+    transform: translate(-10px, 0);
+  }
+}
+
+.featureName {
+  min-height: 28px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-family: var(--font-brandon);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--color-gray-hover);
+}
+
+.featureDescription {
+  font-size: 20px;
+  color: var(--color-gray-dark);
+}
+
+.accent {
+  padding-left: 2px;
+  padding-right: 2px;
+  text-decoration: none;
+}
+
+.featureFooter {
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.featureButton {
+  box-sizing: border-box;
+  padding: 0 20px;
+  border: 2px solid;
+  border-radius: 4px;
+  font-family: var(--font-brandon);
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 38px;
+  background-color: white;
+  text-decoration: none;
+  transition: 0.2s background-color ease-out;
+  cursor: pointer;
+
+  &.featureButton:hover {
+    color: #fff;
+  }
+}
+
+.discordWidget {
+  position: relative;
+  top: 2px;
+  display: block;
+  margin-left: 20px;
+  width: 50px;
+  height: 50px;
+  cursor: pointer;
+  mask-image: url('/img/support/discord.svg');
+  mask-repeat: no-repeat;
+  mask-position: center;
+  background-color: #b88eeb;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
