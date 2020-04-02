@@ -9,7 +9,7 @@ URL (see next section), and use any DVC command that needs it (e.g. `dvc pull`,
 `dvc fetch`, `dvc push`). For example:
 
 ```dvc
-$ dvc remote add -d myremote gdrive://root/dvc/dvcstore
+$ dvc remote add -d myremote gdrive://root/dvcstore
 $ dvc push
 ...
 Go to the following link in your browser:
@@ -30,7 +30,6 @@ constructed with a _base_, and an **optional** _path_ to a folder i.e.
 1. `root` - indicates your topmost Google Drive directory.
 
 ```dvc
-$ dvc remote add -d mygdroot gdrive://root
 $ dvc remote add mygdfolder gdrive://root/path/to/folder
 ```
 
@@ -161,7 +160,8 @@ user OAuth authentication is needed.
 > [GC project](/doc/user-guide/setup-google-drive-remote#configure-custom-google-cloud-project--app-recommended)
 > as explained above.
 
-1. [Create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),
+1. To
+   [create a service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account),
    navigate to **IAM & Admin** in the left sidebar, and select **Service
    Accounts**. Click **+ CREATE SERVICE ACCOUNT**, on the next screen, enter
    **Service account name** e.g. "My DVC project", and click **Create**. Select
