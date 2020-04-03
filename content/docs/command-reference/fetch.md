@@ -7,7 +7,7 @@ Get tracked files or directories from
 
 ```usage
 usage: dvc fetch [-h] [-q | -v] [-j <number>]
-                 [-r <name>] [-a] [-T] [-d] [-R]
+                 [-r <name>] [-a] [-T] [-d] [-R] [--all-commits]
                  [targets [targets ...]]
 
 positional arguments:
@@ -98,6 +98,10 @@ considered by `dvc fetch` (unless the `-a` or `-T` options are used).
 
 - `-T`, `--all-tags` - fetch cache for all Git tags. Similar to `-a` above. Note
   that both options can be combined, for example using the `-aT` flag.
+
+- `--all-commits` - the same as `-a` or `-T` above, but applies to _all_ Git  
+  commits as well as the workspace. Useful for downloading all the data used in
+  the entire existing commit history of the project.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

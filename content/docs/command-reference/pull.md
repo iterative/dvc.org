@@ -9,7 +9,7 @@ Download tracked files or directories from
 
 ```usage
 usage: dvc pull [-h] [-q | -v] [-j <number>]
-                [-r <name>] [-a] [-T] [-d] [-f] [-R]
+                [-r <name>] [-a] [-T] [-d] [-f] [-R] [--all-commits]
                 [targets [targets ...]]
 
 positional arguments:
@@ -66,6 +66,10 @@ reflinks or hardlinks to put it in the workspace without copying. See
 - `-T`, `--all-tags` - the same as `-a`, `--all-branches` but Git tags are used
   to save different experiments or project checkpoints. Note that both options
   can be combined, for example using the `-aT` flag.
+
+- `--all-commits` - the same as `-a` or `-T` above, but applies to _all_ Git
+  commits as well as the workspace. Useful for downloading all the data used in
+  the entire existing commit history of the project.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
   the target DVC-files (stages). If no `targets` are provided, this option is

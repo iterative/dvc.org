@@ -7,7 +7,7 @@ Upload tracked files or directories to
 
 ```usage
 usage: dvc push [-h] [-q | -v] [-j <number>]
-                [-r <name>] [-a] [-T] [-d] [-R]
+                [-r <name>] [-a] [-T] [-d] [-R] [--all-commits]
                 [targets [targets ...]]
 
 positional arguments:
@@ -76,6 +76,10 @@ to push.
 - `-T`, `--all-tags` - the same as `-a`, `--all-branches`, but Git tags are used
   to save different experiments or project checkpoints. Note that both options
   can be combined, for example using the `-aT` flag.
+
+- `--all-commits` - the same as `-a` or `-T` above, but applies to _all_ Git  
+  commits as well as the workspace. Useful for uploading all the data used in
+  the entire existing commit history of the project.
 
 - `-d`, `--with-deps` - determines files to upload by tracking dependencies to
   the target DVC-files (stages). If no `targets` are provided, this option is
