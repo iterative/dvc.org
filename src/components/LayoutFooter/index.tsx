@@ -1,5 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
+import includes from 'lodash.includes'
 
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 import LayoutWidthContainer from '../LayoutWidthContainer'
@@ -19,7 +20,7 @@ const LayoutFooter: React.SFC<Required<ILayoutModifiable>> = ({
   <footer className={styles.wrapper}>
     <LayoutWidthContainer
       className={cn(styles.container)}
-      wide={modifiers.includes(LayoutModifiers.Wide)}
+      wide={includes(modifiers, LayoutModifiers.Wide)}
     >
       <div className={styles.top}>
         <Link className={styles.logo} href="/" title="dvc.org">

@@ -1,5 +1,6 @@
 import cn from 'classnames'
 import React from 'react'
+import includes from 'lodash.includes'
 
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 import LayoutWidthContainer from '../LayoutWidthContainer'
@@ -13,7 +14,7 @@ import styles from './styles.module.css'
 const LayoutHeader: React.SFC<Required<ILayoutModifiable>> = ({
   modifiers
 }) => {
-  const hasCollapsedModifier = modifiers.includes(LayoutModifiers.Collapsed)
+  const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
   const collapsed = hasCollapsedModifier || useHeaderIsScrolled()
 
   return (
@@ -31,7 +32,7 @@ const LayoutHeader: React.SFC<Required<ILayoutModifiable>> = ({
       <div className={styles.header}>
         <LayoutWidthContainer
           className={cn(styles.container, collapsed && styles.collapsed)}
-          wide={modifiers.includes(LayoutModifiers.Wide)}
+          wide={includes(modifiers, LayoutModifiers.Wide)}
         >
           <Link href="/" className={styles.logoLink} title="DVC">
             <LogoSVG className={styles.logo} />

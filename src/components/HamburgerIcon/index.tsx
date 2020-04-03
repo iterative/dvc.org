@@ -4,7 +4,7 @@ import React from 'react'
 import styles from './styles.module.css'
 
 interface IHamburgetProps {
-  opened: boolean
+  opened?: boolean
 }
 
 export default function HamburgerIcon({ opened }: IHamburgetProps) {

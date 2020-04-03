@@ -1,6 +1,6 @@
 import React from 'react'
 
-import MainLayout, { LayoutComponent } from '../MainLayout'
+import MainLayout from '../MainLayout'
 import DefaultSEO from './DefaultSEO'
 import DocumentationLayout from '../Documentation/Layout'
 import Layout from '../Blog/Layout'
@@ -38,7 +38,7 @@ const Page: React.SFC<IPageProps> = props => {
 
   if (!props.pageContext.is404) {
     if (props.pageContext.isDocs) {
-      LayoutComponent = DocumentationLayout as LayoutComponent
+      LayoutComponent = DocumentationLayout
     } else if (props.pageContext.isBlog) {
       LayoutComponent = Layout
     }

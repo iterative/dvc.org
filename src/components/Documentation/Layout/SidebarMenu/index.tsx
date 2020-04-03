@@ -1,24 +1,38 @@
 import React, { useEffect, useRef, useState } from 'react'
+import cn from 'classnames'
 import { Collapse } from 'react-collapse'
 import PerfectScrollbar from 'perfect-scrollbar'
-import PropTypes from 'prop-types'
 import includes from 'lodash.includes'
 
-import 'perfect-scrollbar/css/perfect-scrollbar.css'
-
+import ShowOnly from '../../../ShowOnly'
 import DownloadButton from '../../../DownloadButton'
 import Link from '../../../Link'
 
 import {
+  structure,
   getParentsListFromPath,
   getPathWithSoruce
 } from '../../../../utils/sidebar'
 
-import { OnlyDesktop } from '../../../../styles'
+import 'perfect-scrollbar/css/perfect-scrollbar.css'
+import styles from './styles.module.css'
 
-import { Menu, SectionLink, SectionLinks, Sections, SideFooter } from './styles'
+interface ISidebarMenuItemProps {
+  children?: Array<{ label: string; path: string; source: boolean | string }>
+  label: string
+  path: string
+  source: boolean | string
+  onClick: (e: React.MouseEvent) => void
+  activePaths?: Array<string>
+}
 
-function SidebarMenuItem({ children, label, path, activePaths, onClick }) {
+const SidebarMenuItem: React.SFC<ISidebarMenuItemProps> = ({
+  children,
+  label,
+  path,
+  activePaths,
+  onClick
+}) => {
   const isActive = activePaths && includes(activePaths, path)
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
@@ -27,16 +41,18 @@ function SidebarMenuItem({ children, label, path, activePaths, onClick }) {
     <>
       <Link
         href={getPathWithSoruce(path)}
-        as={SectionLink}
         id={path}
-        isActive={isActive}
+        className={cn(
+          styles.sectionLink,
+          isActive && styles.active,
+          isRootParent && 'docSearch-lvl0'
+        )}
         onClick={onClick}
-        className={isRootParent ? 'docSearch-lvl0' : ''}
       >
         {label}
       </Link>
       {children && (
-        <Collapse isOpened={isActive}>
+        <Collapse isOpened={!!isActive}>
           {children.map(item => (
             <SidebarMenuItem
               key={item.path}
@@ -51,37 +67,34 @@ function SidebarMenuItem({ children, label, path, activePaths, onClick }) {
   )
 }
 
-SidebarMenuItem.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.object),
-  label: PropTypes.string.isRequired,
-  path: PropTypes.string.isRequired,
-  source: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]).isRequired,
-  onClick: PropTypes.func,
-  activePaths: PropTypes.oneOfType([
-    PropTypes.arrayOf(PropTypes.string),
-    PropTypes.bool
-  ]).isRequired
+interface ISidebarMenuProps {
+  currentPath: string
+  onClick: (e: React.MouseEvent) => void
 }
 
-export default function SidebarMenu({ id, sidebar, currentPath, onClick }) {
-  const psRef = useRef()
+const SidebarMenu: React.SFC<ISidebarMenuProps> = ({
+  currentPath,
+  onClick
+}) => {
+  const rootRef = useRef<HTMLDivElement>(null)
+  const psRef = useRef<PerfectScrollbar | undefined>(undefined)
   const [isScrollHidden, setIsScrollHidden] = useState(false)
   const activePaths = currentPath && getParentsListFromPath(currentPath)
 
   useEffect(() => {
-    if (!psRef.current) {
-      psRef.current = new PerfectScrollbar(`#${id}`, {
+    if (!psRef.current && rootRef.current) {
+      psRef.current = new PerfectScrollbar(rootRef.current, {
         wheelPropagation: true
       })
     }
 
     const node = document.getElementById(currentPath)
-    const parent = document.getElementById(id)
+    const parent = rootRef.current
 
     setIsScrollHidden(true)
 
     const timeout = setTimeout(() => {
-      psRef.current.update()
+      psRef.current?.update()
 
       if (node && parent) {
         const parentHeight = parent.clientHeight
@@ -103,37 +116,37 @@ export default function SidebarMenu({ id, sidebar, currentPath, onClick }) {
 
     return () => {
       clearTimeout(timeout)
-      psRef.current.destroy()
-      psRef.current = null
+      psRef.current?.destroy()
+      psRef.current = undefined
     }
-  }, [currentPath])
+  }, [])
 
   return (
-    <Menu id={id} isScrollHidden={isScrollHidden}>
-      <Sections>
-        <SectionLinks>
-          {sidebar.map(item => (
+    <div
+      className={cn(styles.menu, isScrollHidden && styles.isScrollHidden)}
+      ref={rootRef}
+    >
+      <div className={styles.sections}>
+        <div className={styles.sectionLinks}>
+          {structure.map(item => (
             <SidebarMenuItem
               key={item.path}
-              activePaths={includes(activePaths, item.path) && activePaths}
+              activePaths={
+                includes(activePaths, item.path) ? activePaths : undefined
+              }
               onClick={onClick}
               {...item}
             />
           ))}
-        </SectionLinks>
-      </Sections>
-      <OnlyDesktop>
-        <SideFooter>
+        </div>
+      </div>
+      <ShowOnly on="desktop">
+        <div className={styles.footer}>
           <DownloadButton openTop />
-        </SideFooter>
-      </OnlyDesktop>
-    </Menu>
+        </div>
+      </ShowOnly>
+    </div>
   )
 }
 
-SidebarMenu.propTypes = {
-  id: PropTypes.string.isRequired,
-  sidebar: PropTypes.arrayOf(PropTypes.object).isRequired,
-  currentPath: PropTypes.string,
-  onClick: PropTypes.func
-}
+export default SidebarMenu

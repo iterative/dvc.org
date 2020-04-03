@@ -2,9 +2,17 @@ import React, { useEffect, useState } from 'react'
 import Promise from 'promise-polyfill'
 import { loadResource } from '../../../../utils/resources'
 
-import { SearchArea, Input, Wrapper } from './styles'
+import styles from './styles.module.css'
 
-export default function SearchForm(props) {
+declare global {
+  // eslint-disable-next-line @typescript-eslint/interface-name-prefix
+  interface Window {
+    define?: { amd: boolean }
+    docsearch?: (opts: object) => void
+  }
+}
+
+const SearchForm: React.SFC = props => {
   const [isLoaded, setLoaded] = useState(false)
 
   useEffect(() => {
@@ -41,15 +49,18 @@ export default function SearchForm(props) {
   }
 
   return (
-    <SearchArea>
-      <Wrapper novalidate>
-        <Input
+    <div className={styles.searchArea}>
+      <div className={styles.container}>
+        <input
+          className={styles.input}
           type="text"
           id="doc-search"
-          placeholder={`Search docs`}
+          placeholder="Search docs"
           {...props}
         />
-      </Wrapper>
-    </SearchArea>
+      </div>
+    </div>
   )
 }
+
+export default SearchForm

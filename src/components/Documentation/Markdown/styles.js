@@ -8,9 +8,10 @@ export const Content = styled.article`
   min-width: 200px;
   margin: 30px;
   flex: 1;
+  background-color: #fff;
 
   ${media.phablet`
-    margin: 20px;
+    margin: 15px 0;
   `};
 
   ul {
