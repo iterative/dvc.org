@@ -206,7 +206,7 @@ Then simply use any DVC command that needs it (e.g. `dvc pull`, `dvc fetch`,
 For example:
 
 ```dvc
-$ dvc remote add -d myremote gdrive://root/dvcstore
+$ dvc remote add -d myremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
 $ dvc push
 ...
 Go to the following link in your browser:

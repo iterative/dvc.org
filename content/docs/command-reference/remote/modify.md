@@ -256,7 +256,8 @@ a full guide on using Google Drive as DVC remote storage.
   [possible formats](/doc/user-guide/setup-google-drive-remote#url-format-to-specify-folder-location).
 
   ```dvc
-  $ dvc remote modify myremote url gdrive://root/dvcstore
+  $ dvc remote modify myremote \
+                      url gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
   ```
 
 - `gdrive_client_id` - **Client ID** for authentication with OAuth 2.0 when

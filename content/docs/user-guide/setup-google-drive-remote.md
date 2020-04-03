@@ -9,7 +9,7 @@ Note that to start using a GDrive remote, you only need to add it with a
 command that needs it (e.g. `dvc pull`, `dvc fetch`, `dvc push`). For example:
 
 ```dvc
-$ dvc remote add -d myremote gdrive://root/dvcstore
+$ dvc remote add -d gdremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
 $ dvc push
 ...
 Go to the following link in your browser:
@@ -40,27 +40,35 @@ such as a folder or subfolder in root, shared folders not owned by your account,
 etc. The URL is formed with a _base_, and an optional _path_ to an **existing**
 folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
 
-1. `root` - indicates your topmost Google Drive directory.
+1. _Folder ID_
 
-```dvc
-$ dvc remote add mygdfolder gdrive://root/dvcstore
-```
+   To obtain the unique ID of any Google Drive folder, navigate to that folder
+   in your web browser, and find it in the address bar. For example, for
+   `https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`:
 
-2. Google Drive _Folder ID_
+   ```dvc
+   $ dvc remote add gdfolder gdrive://0AIac4JZqHhKmUk9PDA
+   $ dvc remote add gdsubfolder \
+                  gdrive://0AIac4JZqHhKmUk9PDA/Data/text
+   ```
 
-To obtain the unique _Folder ID_ in question, navigate into that folder in your
-web browser, and find it in the address bar. For example, for
-`https://drive.google.com/drive/u/0/folders/0AIac4JZqHhKmUk9PDA`:
+   Note that [shared folders](https://support.google.com/drive/answer/7166529)
+   and [shared drives](https://support.google.com/a/users/answer/9310351) can
+   only be referenced this way.
 
-```dvc
-$ dvc remote add mygdfolder gdrive://0AIac4JZqHhKmUk9PDA
-$ dvc remote add mygdsubfolder \
-                 gdrive://0AIac4JZqHhKmUk9PDA/Data/text
-```
+2. `root` - indicates your topmost Google Drive directory.
 
-Note that [shared folders](https://support.google.com/drive/answer/7166529) and
-[shared drives](https://support.google.com/a/users/answer/9310351) can only be
-referenced by _Folder ID_.
+   ⚠️ Only suitable for personal use, as sharing a remote configured this way
+   would cause DVC to try synchronizing data to/from different Google Drives for
+   every user.
+
+   ```dvc
+   $ dvc remote add mygdfolder gdrive://root/dvcstore
+   ```
+
+   > Although valid, we don't recommend using just `gdrive://root`, as it's not
+   > possible for more than one Google account to access a GDrive root ("My
+   > Drive").
 
 3. `appDataFolder` -
    [special hidden folder](https://developers.google.com/drive/api/v2/appdata)
@@ -68,9 +76,9 @@ referenced by _Folder ID_.
    choice to prevent accidentally deleting remote storage data from the Google
    Drive web UI.
 
-```dvc
-$ dvc remote add mygdappata gdrive://appDataFolder
-```
+   ```dvc
+   $ dvc remote add gdappata gdrive://appDataFolder
+   ```
 
 ## Authorization
 
@@ -152,9 +160,9 @@ Finally, use the `dvc remote modify` command to set the credentials (for each
 GDrive remote), for example:
 
 ```dvc
-$ dvc remote add -d mygdfolder gdrive://root/path/to/folder
-$ dvc remote modify mygdfolder gdrive_client_id <client ID>
-$ dvc remote modify mygdfolder gdrive_client_secret <client secret>
+$ dvc remote add gdfolder gdrive://0AIac4JZqHhKmUk9PDA
+$ dvc remote modify gdfolder gdrive_client_id <client ID>
+$ dvc remote modify gdfolder gdrive_client_secret <client secret>
 ```
 
 > Note that Google Drive API usage limits/quotas apply per _project_ client and
@@ -187,7 +195,7 @@ authentication is needed.
 1. Copy a downloaded `.p12` file to your DVC project root directory.
 
 ```dvc
-$ dvc remote modify myremote gdrive_use_service_account True
-$ dvc remote modify myremote gdrive_service_account_email <service acct email>
-$ dvc remote modify myremote gdrive_service_account_p12_file_path path/to/file.p12
+$ dvc remote modify gdremote gdrive_use_service_account True
+$ dvc remote modify gdremote gdrive_service_account_email <service acct email>
+$ dvc remote modify gdremote gdrive_service_account_p12_file_path path/to/file.p12
 ```
