@@ -1,14 +1,14 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
-import { logEvent } from '../../../utils/ga'
-
+import { ICommunitySectionTheme } from '../'
+import LayoutWidthContainer from '../../LayoutWidthContainer'
+import Link from '../../Link'
 import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
+import { logEvent } from '../../../utils/ga'
 
-import data from '../data'
-
-import { Button, Item, Items, Wrapper } from '../styles'
+import data from '../data.json'
+import sharedStyles from '../styles.module.css'
 
 const { description, mobileDescription, title } = data.section.contribute
 
@@ -17,9 +17,11 @@ const logBlogpost = () => logEvent('community', 'contribute-blogpost')
 const logTalk = () => logEvent('community', 'contribute-talk')
 const logAmbassador = () => logEvent('community', 'contribute-ambassador')
 
-export default function CommunityContribute({ theme }) {
+const Contribute: React.SFC<{ theme: ICommunitySectionTheme }> = ({
+  theme
+}) => {
   return (
-    <Wrapper>
+    <LayoutWidthContainer className={sharedStyles.wrapper}>
       <CommunitySection
         anchor="contribute"
         background="/img/community/contribute_bg.jpg"
@@ -29,93 +31,87 @@ export default function CommunityContribute({ theme }) {
         mobileDescription={mobileDescription}
         title={title}
       >
-        <Items>
-          <Item>
+        <div className={sharedStyles.items}>
+          <div className={sharedStyles.item}>
             <CommunityBlock
               title="Make a PR"
               action={
-                <Button
-                  theme={theme}
+                <Link
+                  className={sharedStyles.button}
+                  style={theme}
                   href="https://github.com/iterative/dvc"
                   target="_blank"
-                  rel="noreferrer noopener"
                   onClick={logPR}
                 >
                   Go to Github
-                </Button>
+                </Link>
               }
             >
               Let&apos;s build something great together. Become a DVC
               contributor!.
             </CommunityBlock>
-          </Item>
-          <Item>
+          </div>
+          <div className={sharedStyles.item}>
             <CommunityBlock
               title="Write a blogpost"
               action={
-                <Button
-                  theme={theme}
+                <Link
+                  className={sharedStyles.button}
+                  style={theme}
                   href="mailto:info@dvc.org?subject=I want to write a blogpost!"
                   target="_blank"
-                  rel="noreferrer noopener"
                   onClick={logBlogpost}
                 >
                   Let’s talk!
-                </Button>
+                </Link>
               }
             >
               We&apos;re always interested in guest writers for our blog. If you
               have something to share, please reach out!
             </CommunityBlock>
-          </Item>
-          <Item>
+          </div>
+          <div className={sharedStyles.item}>
             <CommunityBlock
               title="Give a talk"
               action={
-                <Button
-                  theme={theme}
+                <Link
+                  className={sharedStyles.button}
+                  style={theme}
                   href="mailto:info@dvc.org?subject=I want to give a talk!"
                   target="_blank"
-                  rel="noreferrer noopener"
                   onClick={logTalk}
                 >
                   Let’s talk!
-                </Button>
+                </Link>
               }
             >
               We support speakers all over the world and help with preparation,
               speaker training and expenses.
             </CommunityBlock>
-          </Item>
-          <Item>
+          </div>
+          <div className={sharedStyles.item}>
             <CommunityBlock
               title="Be an Ambassador"
               action={
-                <Button
-                  theme={theme}
-                  // eslint-disable-next-line
+                <Link
+                  className={sharedStyles.button}
+                  style={theme}
                   href="mailto:info@dvc.org?subject=I want to become an Ambassador!"
                   target="_blank"
-                  rel="noreferrer noopener"
                   onClick={logAmbassador}
                 >
                   Let’s talk!
-                </Button>
+                </Link>
               }
             >
               Get perks and benefits for contributing to the code base, writing
               blog posts, or hosting meetups.
             </CommunityBlock>
-          </Item>
-        </Items>
+          </div>
+        </div>
       </CommunitySection>
-    </Wrapper>
+    </LayoutWidthContainer>
   )
 }
 
-CommunityContribute.propTypes = {
-  theme: PropTypes.shape({
-    backgroundColor: PropTypes.string,
-    color: PropTypes.string
-  })
-}
+export default Contribute

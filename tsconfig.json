@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "resolveJsonModule": true,
     "lib": ["dom", "es2015", "es2017"],
     "jsx": "react",
     "sourceMap": true,

@@ -9,7 +9,6 @@
 
   @media (--md-scr) {
     max-width: 100%;
-    padding: 0 61px 0 67px;
   }
 
   @media (--xs-scr) {

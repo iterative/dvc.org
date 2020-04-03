@@ -37,14 +37,14 @@ const useAPICall = <R>(url: string) => {
   return { error, ready, result }
 }
 
-interface IGithubIssue {
+export interface IGithubIssue {
   title: string
   url: string
   comments: number
   date: string
 }
 
-interface IGithubIssuesResponse {
+export interface IGithubIssuesResponse {
   issues: Array<IGithubIssue>
 }
 
@@ -54,14 +54,14 @@ export function useIssues() {
   return { ...response, result: response.result?.issues }
 }
 
-interface IDiscussTopic {
+export interface IDiscussTopic {
   title: string
   comments: number
   date: string
   url: string
 }
 
-interface IDiscussTopicsResponse {
+export interface IDiscussTopicsResponse {
   topics: Array<IDiscussTopic>
 }
 
@@ -71,7 +71,7 @@ export function useTopics() {
   return { ...response, result: response.result?.topics }
 }
 
-interface IDiscussCommentsCountResponse {
+export interface IDiscussCommentsCountResponse {
   count: number
 }
 
