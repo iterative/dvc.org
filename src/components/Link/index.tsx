@@ -62,12 +62,12 @@ const Link: React.SFC<ILinkProps> = ({
     ) {
       e.preventDefault()
 
-      if (location.hash) {
-        if (currentLocation.hash !== location.hash) {
-          navigate(href)
-        } else {
-          scrollIntoLayout(document.querySelector(location.hash))
-        }
+      if (currentLocation.hash !== location.hash) {
+        navigate(href)
+      } else if (location.hash) {
+        scrollIntoLayout(document.querySelector(location.hash))
+      } else {
+        document.documentElement.scrollTop = 0
       }
     }
 
