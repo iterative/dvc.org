@@ -144,22 +144,20 @@ team. These credentials are only used to generate the
 [authorization](#authorization) URL DVC will later prompt to visit in order to
 connect to the Google Drive.
 
-> Note that Google Drive API usage limits/quotas apply per _project_ client and
-> can be reviewed in the
-> [OAuth consent screen](https://console.developers.google.com/apis/credentials/consent).
-> Please keep this in mind when sharing them, or you may
-> [exceed the limits](https://developers.google.com/drive/api/v2/handle-errors?hl=ro#resolve_a_403_error_usage_limit_exceeded).
-
-### Enabling your GC project with OAuth credentials
-
-Use the `dvc remote modify` command to set the credentials for each `gdrive://`
-remote, for example:
+Finally, use the `dvc remote modify` command to set the credentials (for each
+GDrive remote), for example:
 
 ```dvc
 $ dvc remote add -d mygdfolder gdrive://root/path/to/folder
 $ dvc remote modify mygdfolder gdrive_client_id <client ID>
 $ dvc remote modify mygdfolder gdrive_client_secret <client secret>
 ```
+
+> Note that Google Drive API usage limits/quotas apply per _project_ client and
+> can be reviewed in the
+> [OAuth consent screen](https://console.developers.google.com/apis/credentials/consent).
+> Please keep this in mind when sharing them, or you may
+> [exceed the limits](https://developers.google.com/drive/api/v2/handle-errors?hl=ro#resolve_a_403_error_usage_limit_exceeded).
 
 ## Using service accounts
 
