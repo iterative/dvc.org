@@ -82,10 +82,11 @@ compares them with a previous version.
 
 - `-a`, `--all-branches` - print metric file contents in all Git branches
   instead of just those present in the current workspace. It can be used to
-  compare different experiments.
+  compare different experiments. Note that this can be combined with `-T` below,
+  for example using the `-aT` flag.
 
-- `-T`, `--all-tags` - print metric file contents in all Git tags. Similar to
-  `-a` above. Note that both options can be combined, for example using the
+- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
+  the workspace. Note that both options can be combined, for example using the
   `-aT` flag.
 
 - `--all-commits` - the same as `-a` or `-T` above, but applies to _all_ Git  

@@ -75,12 +75,15 @@ to push.
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
   in all Git branches instead of just those present in the current workspace.
   It's useful if branches are used to track experiments or project checkpoints.
+  Note that this can be combined with `-T` below, for example using the `-aT`
+  flag.
 
-- `-T`, `--all-tags` - the same as `-a`, `--all-branches`, but Git tags are used
-  to save different experiments or project checkpoints. Note that both options
-  can be combined, for example using the `-aT` flag.
+- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
+  the workspace. Useful if tags are used to track "checkpoints" of an experiment
+  or project. Note that both options can be combined, for example using the
+  `-aT` flag.
 
-- `--all-commits` - the same as `-a` or `-T` above, but applies to _all_ Git  
+- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git  
   commits as well as the workspace. Useful for uploading all the data used in
   the entire existing commit history of the project.
 
