@@ -276,10 +276,29 @@ a full guide on using Google Drive as DVC remote storage.
   $ dvc remote modify myremote gdrive_client_secret <client secret>
   ```
 
-- `gdrive_use_service_account` - instructs DVC to authenticate using a
-  [service account](/doc/user-guide/setup-google-drive-remote#access-google-drive-remote-with-a-service-account)
-  instead of OAuth. Make sure that the service account has read/write access (as
-  needed) to the file structure in the remote `url`.
+- `gdrive_trash_only` - configures `dvc gc` to move remote files to
+  [trash](https://developers.google.com/drive/api/v2/reference/files/trash)
+  instead of
+  [deleting](https://developers.google.com/drive/api/v2/reference/files/delete)
+  them permanently. `false` by default, meaning "delete". Useful for shared
+  drives/folders, where delete permissions may not be given.
+
+  ```dvc
+  $ dvc remote modify myremote gdrive_trash_only true
+  ```
+
+> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+
+**For service accounts:**
+
+A service account is a Google account associated with your GCP project, and not
+a specific user. Please refer to
+[Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
+more information.
+
+- `gdrive_use_service_account` - instructs DVC to authenticate using a service
+  account instead of OAuth. Make sure that the service account has read/write
+  access (as needed) to the file structure in the remote `url`.
 
   ```dvc
   $ dvc remote modify myremote gdrive_use_service_account true
@@ -313,19 +332,6 @@ a full guide on using Google Drive as DVC remote storage.
                       gdrive_service_account_user_email <user email>
   ```
 
-- `gdrive_trash_only` - configures DVC to move remote files to
-  [trash](https://developers.google.com/drive/api/v2/reference/files/trash)
-  instead of
-  [deleting](https://developers.google.com/drive/api/v2/reference/files/delete)
-  them permanently. `false` by default, meaning "delete". Useful for shared
-  drives/folders, where delete permissions may not be given.
-
-  ```dvc
-  $ dvc remote modify myremote gdrive_trash_only true
-  ```
-
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
-
 </details>
 
 <details>
@@ -338,15 +344,22 @@ a full guide on using Google Drive as DVC remote storage.
   $ dvc remote modify myremote url gs://bucket/remote
   ```
 
-- `projectname` - override or provide a project name to use, if default one is
+- `projectname` - override or provide a project name to use, if a default one is
   not set.
 
   ```dvc
   $ dvc remote modify myremote projectname myproject
   ```
 
+**For service accounts:**
+
+A service account is a Google account associated with your GCP project, and not
+a specific user. Please refer to
+[Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
+more information.
+
 - `credentailpath` - path to the file that contains the
-  [service account key](/doc/user-guide/setup-google-drive-remote#access-google-drive-remote-with-a-service-account).
+  [service account key](/doc/user-guide/setup-google-drive-remote#using-service-accounts).
   Make sure that the service account has read/write access (as needed) to the
   file structure in the remote `url`.
 
@@ -355,12 +368,11 @@ a full guide on using Google Drive as DVC remote storage.
         myremote credentailpath "/home/.../project-XXXXXXX.json"
   ```
 
-  > Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` environment variable can
-  > be set:
-  >
-  > ```dvc
-  > $ export GOOGLE_APPLICATION_CREDENTIALS=".../project-XXXXXXX.json"
-  > ```
+  Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` env var can be set:
+
+  ```dvc
+  $ export GOOGLE_APPLICATION_CREDENTIALS=".../project-XXXXXXX.json"
+  ```
 
 </details>
 
