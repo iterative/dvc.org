@@ -19,7 +19,19 @@ Go to the following link in your browser:
 Enter verification code: # <- enter resulting code
 ```
 
-See the [Authorization](#authorization) section for more details.
+See the [Authorization](#authorization) section for more details on connecting
+DVC with Google Drive.
+
+DVC uses the Google Drive API to synchronize your <abbr>DVC project<abbr> data
+with this type of remote storage, so it's subject to certain usage limits and
+quotas, which by default are shared with other GDrive remote storage users. For
+heavy use, it's highly recommended to
+[connect using a custom Google Cloud project](#connect-using-a-custom-google-cloud-project),
+which puts you in control of these limits.
+
+Having your own GC project, it's also possible to
+[use a service account](#using-service-accounts) for automating tasks that need
+to establish GDrive remote connections (e.g. CI/CD).
 
 ## URL formats to specify folder location
 
@@ -78,14 +90,14 @@ process individually.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
-## Configure custom Google Cloud project & app (recommended)
+## Connect using a custom Google Cloud project (recommended)
 
-Optionally, follow this guide to setup your own Google Cloud project and
+Optionally, follow this guide to create your own Google Cloud project and
 generate OAuth credentials for your <abbr>DVC projects<abbr> to connect to
-Google Drive. We highly recommend this for heavy and advanced use because:
+Google Drive. We highly recommend this for heavy use and advanced needs because:
 
-- you control your Google API usage and rate limits, being able to request
-  Google for an increase if needed.
+- you control your Google API usage limits, being able to request Google for an
+  increase if needed.
 - it ensures optimal data transfer performance when you need it.
 - [using a service account](#using-service-accounts) for automation tasks (e.g.
   CI/CD) is only possible this way.
@@ -132,9 +144,9 @@ team. These credentials are only used to generate the
 [authorization](#authorization) URL DVC will later prompt to visit in order to
 connect to the Google Drive.
 
-> Note that the Google Drive API has usage limits/quotas per _project_ client
-> (which you can review in the
-> [OAuth consent screen](https://console.developers.google.com/apis/credentials/consent)).
+> Note that Google Drive API usage limits/quotas apply per _project_ client and
+> can be reviewed in the
+> [OAuth consent screen](https://console.developers.google.com/apis/credentials/consent).
 > Please keep this in mind when sharing them, or you may
 > [exceed the limits](https://developers.google.com/drive/api/v2/handle-errors?hl=ro#resolve_a_403_error_usage_limit_exceeded).
 
@@ -153,12 +165,12 @@ $ dvc remote modify mygdfolder gdrive_client_secret <client secret>
 
 A [service account](https://cloud.google.com/iam/docs/service-accounts) is a
 Google account associated with your GCP project, and not a specific user. They
-are intended for scenarios where your application needs to access data on its
-own, e.g. running inside a Compute Engine, automatic CI/CD, etc. No interactive
-user OAuth authentication is needed.
+are intended for scenarios where your code needs to access data on its own, e.g.
+running inside a Compute Engine, automatic CI/CD, etc. No interactive user OAuth
+authentication is needed.
 
 > This requires having your own
-> [GC project](/doc/user-guide/setup-google-drive-remote#configure-custom-google-cloud-project--app-recommended)
+> [GC project](/doc/user-guide/setup-google-drive-remote#connect-using-a-custom-google-cloud-project)
 > as explained above.
 
 1. To

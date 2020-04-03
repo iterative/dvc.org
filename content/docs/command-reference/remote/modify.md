@@ -261,7 +261,7 @@ a full guide on using Google Drive as DVC remote storage.
 
 - `gdrive_client_id` - **Client ID** for authentication with OAuth 2.0 when
   using a
-  [custom Google Client project](/doc/user-guide/setup-google-drive-remote#configure-custom-google-cloud-project--app-recommended).
+  [custom Google Client project](/doc/user-guide/setup-google-drive-remote#connect-using-a-custom-google-cloud-project).
   Also requires using `gdrive_client_secret`.
 
   ```dvc
