@@ -22,7 +22,7 @@ Enter verification code: # <- enter resulting code
 See the [Authorization](#authorization) section for more details on connecting
 DVC with Google Drive.
 
-DVC uses the Google Drive API to synchronize your <abbr>DVC project<abbr> data
+DVC uses the Google Drive API to synchronize your <abbr>DVC project</abbr> data
 with this type of remote storage, so it's subject to certain usage limits and
 quotas, which by default are shared with other GDrive remote storage users. For
 heavy use, it's highly recommended to
@@ -93,7 +93,7 @@ process individually.
 ## Connect using a custom Google Cloud project (recommended)
 
 Optionally, follow this guide to create your own Google Cloud project and
-generate OAuth credentials for your <abbr>DVC projects<abbr> to connect to
+generate OAuth credentials for your <abbr>DVC projects</abbr> to connect to
 Google Drive. We highly recommend this for heavy use and advanced needs because:
 
 - you control your Google API usage limits, being able to request Google for an
