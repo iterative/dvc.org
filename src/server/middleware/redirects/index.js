@@ -20,6 +20,17 @@ module.exports = (req, res, next) => {
     dev: !isProduction
   })
 
+  // Disable trailing slash redirect for development mode.
+  // Because it leads to infinite loops as Gatsby in dev mode redirects to urls with trailing slashes
+  if (
+    !isProduction &&
+    location &&
+    location.startsWith('/') &&
+    parsedUrl.pathname === `${location}/`
+  ) {
+    return next()
+  }
+
   if (location) {
     // HTTP redirects
     let redirectLocation = location
