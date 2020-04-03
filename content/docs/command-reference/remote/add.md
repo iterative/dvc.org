@@ -234,11 +234,17 @@ modified.
 
 ### Click for Google Cloud Storage
 
+> 💡 Before adding a GC Storage remote, be sure to
+> [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
+
 ```dvc
 $ dvc remote add myremote gs://bucket/path
 ```
 
-> See also `dvc remote modify` for a full list of GC storage parameters.
+By default DVC expects your AWS CLI is already
+[configured](https://cloud.google.com/sdk/docs/authorizing). DVC will be using
+default GCP key file to access Google Cloud Storage. To override some of these
+settings, use the parameters described in `dvc remote modify`.
 
 </details>
 
