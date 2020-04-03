@@ -1,0 +1,42 @@
+.paginator {
+  display: flex;
+  justify-content: center;
+
+  @media (--sm-scr) {
+    margin-top: 50px;
+  }
+}
+
+.link {
+  flex-grow: 1;
+  width: 50%;
+  text-decoration: none;
+  font-size: 1.3em;
+  font-weight: 500;
+  color: var(--color-purple);
+
+  svg path {
+    fill: currentColor;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--color-purple-hover);
+  }
+}
+
+.linkNext {
+  text-align: right;
+
+  svg {
+    margin-left: 19px;
+  }
+}
+
+.linkPrevious {
+  svg {
+    margin-right: 19px;
+    transform: rotate(180deg);
+  }
+}

@@ -1,0 +1,67 @@
+.wrapper {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 300px;
+  padding: 20px 15px 30px;
+  background-color: #13adc7;
+
+  @media (--xs-scr) {
+    min-height: auto;
+  }
+}
+
+.container {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+}
+
+.glyph {
+  position: absolute;
+  z-index: 0;
+  width: 158px;
+  height: auto;
+  object-fit: contain;
+
+  @media (--md-scr) {
+    width: 110px;
+  }
+
+  @media (--xs-scr) {
+    display: none;
+  }
+
+  &.topleft {
+    top: -32px;
+    left: 28px;
+  }
+
+  &.rigthbottom {
+    bottom: -60px;
+    right: 28px;
+  }
+}
+
+.title {
+  @mixin h2-desktop;
+
+  color: #fff;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.subscribeContainer {
+  margin: 15px auto 0;
+  max-width: 510px;
+  border-radius: 8px;
+  background-color: #fff;
+
+  @media (--xs-scr) {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 20px;
+    min-height: auto;
+  }
+}

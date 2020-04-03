@@ -1,0 +1,63 @@
+.button {
+  @mixin active;
+
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid;
+  padding: 1px 19px 2px;
+  text-decoration: none;
+  font-weight: 700;
+  transition: 0.2s background-color ease-out;
+
+  &:focus {
+    outline: none;
+  }
+
+  &.small {
+    @mixin button-small;
+
+    height: 38px;
+    border-radius: 4px;
+  }
+
+  &.big {
+    @mixin button-big;
+
+    height: 60px;
+    border-radius: 8px;
+  }
+
+  &.primary {
+    border-color: var(--color-azure);
+    color: #fff;
+    background-color: var(--color-azure);
+
+    &:hover {
+      background-color: #13a3bd;
+    }
+
+    &:focus {
+      border-color: var(--color-orange);
+      background: var(--color-orange);
+      color: #fff;
+    }
+  }
+
+  &.secondary {
+    border-color: var(--color-gray-opaque);
+    color: var(--color-gray);
+    background-color: transparent;
+
+    &:hover {
+      border-color: var(--color-gray);
+      color: var(--color-gray-hover);
+    }
+
+    &:focus {
+      border-color: var(--color-orange);
+      color: var(--color-orange);
+    }
+  }
+}

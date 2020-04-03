@@ -1,0 +1,30 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 100px auto;
+}
+
+.title {
+  @media (--md-scr) {
+    @mixin h1-mobile;
+  }
+
+  @media (--lg-scr) {
+    @mixin h1-desktop;
+  }
+}
+
+.content {
+  @media (--md-scr) {
+    @mixin text-mobile;
+
+    padding: 0 15px;
+    text-align: center;
+  }
+
+  @media (--lg-scr) {
+    @mixin text-desktop;
+  }
+}

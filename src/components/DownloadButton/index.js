@@ -4,6 +4,8 @@ import PropTypes from 'prop-types'
 import isClient from '../../utils/isClient'
 import { logEvent } from '../../utils/ga'
 
+import Link from '../Link'
+
 import {
   Action,
   Button,
@@ -19,7 +21,7 @@ import {
   Triangle
 } from './styles'
 
-const VERSION = `0.91.1`
+const VERSION = `0.92.0`
 const OSX = `osx`
 const WINDOWS = `win`
 const LINUX = `linux`
@@ -144,15 +146,16 @@ export default class DownloadButton extends Component {
         }
 
         return (
-          <DownloadLink
+          <Link
             download={link.download}
             key={id}
+            as={DownloadLink}
             href={link.url}
             onClick={() => this.download(id)}
             active={id === this.state.os}
           >
             {link.title}
-          </DownloadLink>
+          </Link>
         )
       })}
     </Links>

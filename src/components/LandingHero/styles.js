@@ -28,7 +28,7 @@ export const Title = styled.h1`
   font-size: 40px;
   font-weight: 500;
   color: #40364d;
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   padding-right: 2em;
 
   ${media.tablet`
@@ -88,7 +88,8 @@ export const ActionIcon = styled.div`
 export const ActionInner = styled.div``
 
 export const Action = styled.h6`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
+  font-weight: 500;
   font-size: 20px;
   line-height: 0.9;
 `

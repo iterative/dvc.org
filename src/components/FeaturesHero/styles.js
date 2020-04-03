@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  padding-top: 87px;
-  padding-bottom: 58px;
+  padding-top: 70px;
+  padding-bottom: 70px;
   overflow: hidden;
 `
 
 export const Heading = styled.h1`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   margin: 0px auto;
   max-width: 610px;
   min-height: 185px;

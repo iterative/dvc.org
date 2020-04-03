@@ -9,7 +9,8 @@ and remote storage.
 
 ```usage
 usage: dvc status [-h] [-v] [-j <number>] [-q] [-c]
-                  [-r <name>] [-a] [-T] [-d] [targets [targets ...]]
+                  [-r <name>] [-a] [-T] [-d] [--all-commits]
+                  [targets [targets ...]]
 
 positional arguments:
   targets        Limit command scope to these DVC-files. Using -R,
@@ -109,6 +110,10 @@ workspace) is different from remote storage. Bringing the two into sync requires
 - `-T`, `--all-tags` - compares cache content against all Git tags instead of
   checking just the current workspace. Similar to `-a` above. Note that both
   options can be combined, for example using the `-aT` flag.
+
+- `--all-commits` - the same as `-a` or `-T` above, but applies to _all_ Git  
+  commits as well as the workspace. Useful for comparing cache content for the
+  entire existing commit history of the project.
 
 - `-d`, `--with-deps` - determines files to check by tracking dependencies to
   the target DVC-files (stages). If no `targets` are provided, this option is

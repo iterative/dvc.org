@@ -1,0 +1,68 @@
+/* Prevent mobile browsers from changing font-size */
+* {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+@font-face {
+  font-family: 'BrandonGrotesque';
+  src: url('./brandon_light.woff2') format('woff2'),
+    url('./brandon_light.woff') format('woff');
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BrandonGrotesque';
+  src: url('./brandon_light_it.woff2') format('woff2'),
+    url('./brandon_light_it.woff') format('woff');
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BrandonGrotesque';
+  src: url('./brandon_reg.woff2') format('woff2'),
+    url('./brandon_reg.woff') format('woff');
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BrandonGrotesque';
+  src: url('./brandon_reg_it.woff2') format('woff2'),
+    url('./brandon_reg_it.woff') format('woff');
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BrandonGrotesque';
+  src: url('./brandon_med.woff2') format('woff2'),
+    url('./brandon_med.woff') format('woff');
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BrandonGrotesque';
+  src: url('./brandon_med_it.woff2') format('woff2'),
+    url('./brandon_med_it.woff') format('woff');
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'BrandonGrotesque';
+  src: url('./brandon_bld.woff2') format('woff2'),
+    url('./brandon_bld.woff') format('woff');
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
