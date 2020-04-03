@@ -88,6 +88,10 @@ in a Git-ignored directory located in `.dvc/tmp/gdrive-user-credentials.json`.
 your verification code with others**. Each team member should go through this
 process individually.
 
+If you wish to change the user you have authenticated with, or for
+troubleshooting misc. token errors, simply remove the user credentials JSON file
+and authorize again.
+
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
 
 ## Connect using a custom Google Cloud project (recommended)
