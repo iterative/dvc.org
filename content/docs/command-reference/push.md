@@ -19,15 +19,18 @@ positional arguments:
 
 The `dvc pull` and `dvc push` commands are the means for uploading and
 downloading data to and from remote storage. These commands are similar to
-`git pull` and `git push`, respectively (not exact analogs, see details below).
-[Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments
-and preserving data versions (input datasets, intermediate results, models,
-[metrics](/doc/command-reference/metrics), etc) remotely (S3, SSH, GCS, etc.)
-are the most common use cases for these commands.
+`git pull` and `git push`, respectively (with some key differences given the
+nature of DVC, see details below).
 
-The `dvc push` command allows one to upload data to remote storage. It doesn't
-save any changes in the code or DVC-files. Those should be saved by using
-`git commit` and `git push`.
+[Data sharing](/doc/use-cases/sharing-data-and-model-files) across environments,
+and preserving data versions (input datasets, intermediate results, models,
+[metrics](/doc/command-reference/metrics), etc.)
+[remotely](/doc/command-reference/remote) are the two most common use cases for
+these commands.
+
+The `dvc push` command allows us to upload data to remote storage. It doesn't
+save any changes in the code or DVC-files. (Those should be saved by using
+`git commit` and `git push`).
 
 💡 For convenience, a Git hook is available to automate running `dvc push` after
 `git push`. See `dvc install` for more details.
@@ -72,12 +75,15 @@ to push.
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
   in all Git branches instead of just those present in the current workspace.
   It's useful if branches are used to track experiments or project checkpoints.
+  Note that this can be combined with `-T` below, for example using the `-aT`
+  flag.
 
-- `-T`, `--all-tags` - the same as `-a`, `--all-branches`, but Git tags are used
-  to save different experiments or project checkpoints. Note that both options
-  can be combined, for example using the `-aT` flag.
+- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
+  the workspace. Useful if tags are used to track "checkpoints" of an experiment
+  or project. Note that both options can be combined, for example using the
+  `-aT` flag.
 
-- `--all-commits` - the same as `-a` or `-T` above, but applies to _all_ Git  
+- `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git  
   commits as well as the workspace. Useful for uploading all the data used in
   the entire existing commit history of the project.
 

@@ -46,9 +46,9 @@ They're calculated between two commits (hash, branch, tag, or any
   used to determine how to parse and format metics for display. See
   `dvc metrics show` for more details.
 
-  This option will override `type` and `xpath` defined in the corresponding
-  DVC-file. If no `type` is provided or found in the DVC-file, DVC will try to
-  detect it based on file extension.
+  This option will override any `type` and `xpath` values defined in the
+  corresponding DVC-file. If no `type` is provided or found in the DVC-file, DVC
+  will try to detect it based on file extension.
 
 - `-x <path>`, `--xpath <path>` - specify a path within a metric file to show
   changes for a specific metric value only. Should be used if the metric file
