@@ -128,6 +128,18 @@ describe('getRedirects', () => {
     )
 
     itRedirects(
+      'https://blog.dataversioncontrol.com/some-random',
+      'https://dvc.org/blog/some-random',
+      301
+    )
+
+    itRedirects(
+      'https://blog.dataversioncontrol.com',
+      'https://dvc.org/blog/',
+      301
+    )
+
+    itRedirects(
       'https://blog.dvc.org/september-19-dvc-heartbeat',
       'https://dvc.org/blog/september-19-dvc-heartbeat',
       301
