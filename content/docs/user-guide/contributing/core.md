@@ -45,9 +45,7 @@ $ git clone git@github.com:<username>/dvc.git
 Make sure that you have Python 3 installed. Version 3.6 or higher is required to
 run style checkers on pre-commit. On MacOS, we recommend using `brew` to install
 Python. For Windows, we recommend an official
-[python.org release](https://www.python.org/downloads/windows/) (not from the
-Microsoft Store), and to remove the default
-[app execution aliases](https://superuser.com/a/1461471/290071).
+[python.org release](https://www.python.org/downloads/windows/).
 
 Install DVC in editable mode with `pip install -e ".[all,tests]"`. But before we
 do that, we **strongly** recommend creating a
