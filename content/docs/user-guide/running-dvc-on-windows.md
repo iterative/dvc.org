@@ -56,7 +56,7 @@ guide.
 
 ## Fix or disable Search Indexing
 
-Search Indexing can also slow down file I/O operations slow on Windows. Try
+Search Indexing can also slow down file I/O operations on Windows. Try
 [fixing](https://www.groovypost.com/howto/fix-windows-10-search-index/) or
 [disabling](https://winaero.com/blog/disable-search-indexing-windows-10/) this
 feature if you don't need it.
