@@ -34,8 +34,8 @@ ERROR: failed to modify metric file settings -
 
 - `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
   values are: `raw` (default), `json`. It will be saved into the corresponding
-  DVC-file, and used by `dvc metrics show` to determine how to handle displaying
-  metrics.
+  DVC-file, and used by `dvc metrics show` and `dvc metrics diff` to determine
+  how to handle displaying metrics.
 
   `raw` means that no additional parsing is applied, and `--xpath` is ignored.
 
@@ -64,20 +64,20 @@ Let's first imagine we have a [stage](/doc/command-reference/run) with a generic
 metric file initially. The dummy command below simulates this imaginary setup:
 
 ```dvc
-$ dvc run -o metrics.json \
+$ dvc run -M metrics.json \
         'echo {\"AUC\": 0.9643, \"TP\": 527} > metrics.json'
 ```
 
 The resulting stage file `metrics.json.dvc` should look like this:
 
 ```yaml
-md5: 906ea9489e432c85d085b248c712567b
-cmd: echo {\"AUC\":0.9643, \"TP\":527} > metrics.json
+md5: c607baf8e350957c2a6db134cfe1c2e2
+cmd: 'echo {\"AUC\": 0.9643, \"TP\": 527} > metrics.json'
 outs:
-  - md5: 0f0e67dc927aa69cd3fc37435ee1304f
+  - md5: 2d975ad7af38fe0511163e60b80cb1b4
     path: metrics.json
-    cache: true
-    metric: false
+    cache: false
+    metric: true
     persist: false
 ```
 

@@ -43,8 +43,8 @@ compares them with a previous version.
 ## Options
 
 - `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
-  values are: `raw` (default), `json`. It will be used to determine how to parse
-  and format metics for display.
+  values are: `raw` (default), `json`. It will be saved into the corresponding
+  DVC-file, and used to determine how to handle displaying metrics.
 
   `raw` means that no additional parsing is applied, and `--xpath` is ignored.
 

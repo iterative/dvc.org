@@ -33,9 +33,8 @@ the file contains multiple metrics. See the [options](#options) below and
 - `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
   values are: `raw` (default), `json`. It will be saved into the corresponding
   DVC-file, and used by `dvc metrics show` to determine how to handle displaying
-  metrics.
-
-  `raw` means that no additional parsing is applied, and `--xpath` is ignored.
+  metrics. `raw` means that no additional parsing is applied, and `--xpath` is
+  ignored.
 
 - `-x <path>`, `--xpath <path>` - specify a path within a metric file to get a
   specific metric value. Should be used if the metric file contains multiple
@@ -58,11 +57,11 @@ the file contains multiple metrics. See the [options](#options) below and
 
 ## Examples
 
-Let's first create a regular <abbr>output</abbr> with the `-o` option of
+Let's first create a regular <abbr>output</abbr> with the `-O` option of
 `dvc run`:
 
 ```dvc
-$ dvc run -o metrics.json \
+$ dvc run -O metrics.json \
         'echo {\"AUC\": 0.9643, \"TP\": 527} > metrics.json'
 ```
 

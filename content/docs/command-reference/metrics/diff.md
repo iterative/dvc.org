@@ -42,8 +42,9 @@ They're calculated between two commits (hash, branch, tag, or any
   no directories among the `targets`, this option is ignored.
 
 - `-t <type>`, `--type <type>` - specify a type of the metric file. Accepted
-  values are: `raw` (default), `json`. It will be used to determine how to parse
-  and format metics for display. See `dvc metrics show` for more details.
+  values are: `raw` (default), `json`. It will be saved into the corresponding
+  DVC-file, and used to determine how to handle displaying metrics. See
+  `dvc metrics show` for more details.
 
   This option will override `type` and `xpath` defined in the corresponding
   DVC-file. If no `type` is provided or found in the DVC-file, DVC will try to
