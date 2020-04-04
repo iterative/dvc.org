@@ -4,9 +4,9 @@ date: 2020-03-31
 description: |
   A talk about CI/CD with fuzzy animals.
 descriptionLong: |
-  As machine learning matures, we need to find better ways to 
+  As machine learning matures, we need to find better ways to
   integrate data science with software development. In this talk
-  for DivOps, a conference about the future of DevOps, DVC data 
+  for DivOps, a conference about the future of DevOps, DVC data
   scientist Elle O'Brien discusses how CI/CD can adapt to
   machine learning. This is MLOps, explained with fuzzy animals.
 picture: ../../static/uploads/images/2020-03-31/cover_image.png
