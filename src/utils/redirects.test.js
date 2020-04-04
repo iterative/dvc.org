@@ -103,7 +103,21 @@ describe('getRedirects', () => {
 
     itRedirects(
       'https://www.dataversioncontrol.com/some-random',
+      'https://dvc.org/some-random',
+      301
+    )
+
+    itRedirects('https://www.dataversioncontrol.com', 'https://dvc.org/', 301)
+
+    itRedirects(
       'https://dataversioncontrol.com/some-random',
+      'https://dvc.org/some-random',
+      301
+    )
+
+    itRedirects(
+      'https://discuss.dataversioncontrol.com/some-random',
+      'https://discuss.dvc.org/some-random',
       301
     )
 
@@ -118,6 +132,8 @@ describe('getRedirects', () => {
       'https://dvc.org/blog/september-19-dvc-heartbeat',
       301
     )
+
+    itRedirects('https://blog.dvc.org', 'https://dvc.org/blog/', 301)
   })
 
   describe('toS3', () => {
