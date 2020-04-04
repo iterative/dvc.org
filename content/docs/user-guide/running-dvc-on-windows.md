@@ -54,6 +54,13 @@ characters. If required, the user can explicitly enable long paths by following
 [this](https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/)
 guide.
 
+## Fix or disable Search Indexing
+
+Search Indexing can also slow down file I/O operations slow on Windows. Try
+[fixing](https://www.groovypost.com/howto/fix-windows-10-search-index/) or
+[disabling](https://winaero.com/blog/disable-search-indexing-windows-10/) this
+feature if you don't need it.
+
 ## Avoid directories with large number of files
 
 The performance of NTFS degrades while handling large volumes of files in a
