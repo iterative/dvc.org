@@ -41,21 +41,25 @@ such as a folder or subfolder in root, shared folders not owned by your account,
 etc. The URL is formed with a _base_, and an optional _path_ to an **existing**
 folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
 
-1. _Folder ID_ - unique identifier for each Google Drive folder
-
-   To obtain it, navigate to that folder in your web browser, and find it in the
-   address bar. For example, for
-   `https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`:
+1. _Folder ID_ - unique identifier for every Google Drive folder, including
+   [shared folders](https://support.google.com/drive/answer/7166529) and
+   [shared drives](https://support.google.com/a/users/answer/9310351) (these two
+   can only be referenced by ID).
 
    ```dvc
    $ dvc remote add gdfolder gdrive://0AIac4JZqHhKmUk9PDA
+   ```
+
+   or
+
+   ```dvc
    $ dvc remote add gdsubfolder \
                   gdrive://0AIac4JZqHhKmUk9PDA/Data/text
    ```
 
-   Note that [shared folders](https://support.google.com/drive/answer/7166529)
-   and [shared drives](https://support.google.com/a/users/answer/9310351) can
-   only be referenced this way.
+   `0AIac4JZqHhKmUk9PDA` above is the folder ID, and it can be found in the web
+   browser address bar, for example
+   `https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`.
 
 2. `root` - indicates your topmost Google Drive directory.
 
