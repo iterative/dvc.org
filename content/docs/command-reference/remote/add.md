@@ -208,7 +208,7 @@ For example:
 ```dvc
 $ dvc remote add -d myremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
 $ dvc push
-...
+
 Go to the following link in your browser:
 
     https://accounts.google.com/o/oauth2/auth # ... copy this link

@@ -11,7 +11,7 @@ command that needs it (e.g. `dvc pull`, `dvc fetch`, `dvc push`). For example:
 ```dvc
 $ dvc remote add -d gdremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
 $ dvc push
-...
+
 Go to the following link in your browser:
 
     https://accounts.google.com/o/oauth2/auth # ... copy this link
