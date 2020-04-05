@@ -4,7 +4,20 @@ In this guide we explain the existing ways to setup Google Drive
 [remote storage](/doc/command-reference/remote) for your <abbr>DVC
 projects</abbr>, along with the different benefits each one brings.
 
-Note that to start using a GDrive remote, you only need to add it with a
+DVC uses the Google Drive API to synchronize your <abbr>DVC project</abbr> data
+with this type of remote storage, so it's subject to certain usage limits and
+quotas, which by default are shared with other GDrive remote storage users. For
+heavy use, it's highly recommended to
+[connect using a custom Google Cloud project](#connect-using-a-custom-google-cloud-project),
+which puts you in control of these limits.
+
+Having your own GC project, it's also possible to
+[use a service account](#using-service-accounts) for automating tasks that need
+to establish GDrive remote connections (e.g. CI/CD).
+
+## Quick start
+
+To start using a Google Drive remote, you only need to add it with a
 [valid URL format](#url-format-to-specify-folder-location). Then use any DVC
 command that needs it (e.g. `dvc pull`, `dvc fetch`, `dvc push`). For example:
 
@@ -19,19 +32,7 @@ Go to the following link in your browser:
 Enter verification code: # <- enter resulting code
 ```
 
-See the [Authorization](#authorization) section for more details on connecting
-DVC with Google Drive.
-
-DVC uses the Google Drive API to synchronize your <abbr>DVC project</abbr> data
-with this type of remote storage, so it's subject to certain usage limits and
-quotas, which by default are shared with other GDrive remote storage users. For
-heavy use, it's highly recommended to
-[connect using a custom Google Cloud project](#connect-using-a-custom-google-cloud-project),
-which puts you in control of these limits.
-
-Having your own GC project, it's also possible to
-[use a service account](#using-service-accounts) for automating tasks that need
-to establish GDrive remote connections (e.g. CI/CD).
+See [Authorization](#authorization) for more details.
 
 ## URL formats to specify folder location
 
@@ -82,28 +83,6 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    $ dvc remote add gdappata gdrive://appDataFolder
    ```
 
-## Authorization
-
-On the first usage of a GDrive [remote](/doc/command-reference/remote), for
-example when trying to `dvc push` for the first time after adding the remote
-with a [valid URL](#url-format-to-specify-folder-location), DVC will prompt you
-to visit a special Google authorization web page. There you'll need to sign into
-your Google account. The
-[auth process](https://developers.google.com/drive/api/v2/about-auth) will ask
-you to grant DVC the necessary permissions, and produce a verification code
-needed for DVC to complete the connection. On success, this code will be cached
-in a Git-ignored directory located in `.dvc/tmp/gdrive-user-credentials.json`.
-
-⚠️ In order to prevent unauthorized access to your Google Drive, **do not share
-your verification code with others**. Each team member should go through this
-process individually.
-
-If you wish to change the user you have authenticated with, or for
-troubleshooting misc. token errors, simply remove the user credentials JSON file
-and authorize again.
-
-> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
-
 ## Connect using a custom Google Cloud project (recommended)
 
 Optionally, follow this guide to create your own Google Cloud project and
@@ -115,8 +94,6 @@ Google Drive. We highly recommend this for heavy use and advanced needs because:
 - it ensures optimal data transfer performance when you need it.
 - [using a service account](#using-service-accounts) for automation tasks (e.g.
   CI/CD) is only possible this way.
-
-> Please jump to [Authorization](#authorization) to skip this setup.
 
 DVC uses the [Google Drive API](https://developers.google.com/drive) to connect
 to your Google Drive. This requires a Google Cloud _project_ that allows Drive
@@ -155,7 +132,7 @@ API connections, and its
 
 ⚠️ It should be safe to share **client ID** and **client secret** among your
 team. These credentials are only used to generate the
-[authorization](#authorization) URL DVC will later prompt to visit in order to
+[authorization](#authorization) URL you'll need to visit later in order to
 connect to the Google Drive.
 
 Finally, use the `dvc remote modify` command to set the credentials (for each
@@ -201,3 +178,25 @@ $ dvc remote modify gdremote gdrive_use_service_account True
 $ dvc remote modify gdremote gdrive_service_account_email <service acct email>
 $ dvc remote modify gdremote gdrive_service_account_p12_file_path path/to/file.p12
 ```
+
+## Authorization
+
+On the first usage of a GDrive [remote](/doc/command-reference/remote), for
+example when trying to `dvc push` for the first time after adding the remote
+with a [valid URL](#url-format-to-specify-folder-location), DVC will prompt you
+to visit a special Google authorization web page. There you'll need to sign into
+your Google account. The
+[auth process](https://developers.google.com/drive/api/v2/about-auth) will ask
+you to grant DVC the necessary permissions, and produce a verification code
+needed for DVC to complete the connection. On success, this code will be cached
+in a Git-ignored directory located in `.dvc/tmp/gdrive-user-credentials.json`.
+
+⚠️ In order to prevent unauthorized access to your Google Drive, **do not share
+your verification code with others**. Each team member should go through this
+process individually.
+
+If you wish to change the user you have authenticated with, or for
+troubleshooting misc. token errors, simply remove the user credentials JSON file
+and authorize again.
+
+> Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
