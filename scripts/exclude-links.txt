@@ -16,7 +16,9 @@ https://code.dvc.org/foo/bar
 https://data.dvc.org/foo/bar
 https://dataversioncontrol.com/some-random
 https://discuss.$
-https://drive.google.com/drive/u/0/folders/0AIac4JZqHhKmUk9PDA
+https://discuss.dvc.org/some-random
+https://discuss.dataversioncontrol.com/some-random
+https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA
 https://dvc.org$
 https://dvc.org/blog/some-random
 https://dvc.org/doc/command-reference/foo
@@ -54,6 +56,7 @@ https://s3-us-east-2.amazonaws.com/dvc-s3-repo/deb/foo
 https://s3-us-east-2.amazonaws.com/dvc-s3-repo/rpm/foo
 https://s3.eu.cloud-object-storage.appdomain.cloud
 https://sweedom.us10.list-manage.com/subscribe/post?u=a08bf93caae4063c4e6a351f6&amp;id=24c0ecc49a
+https://www.dataversioncontrol.com/some-random
 https://www.dvc.org/foo
 https://www.kaggle.com/rtatman/kerneld4769833fe
 https://www.meetup.com/San-Francisco-Machine-Learning-Meetup/events/264846847/
