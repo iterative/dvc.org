@@ -55,11 +55,11 @@ $ dvc run -d code/evaluate.py -M data/eval.json \
 ```
 
 > `-M` (`--metrics-no-cache`) is telling DVC to mark `data/eval.json` as a
-> metric file. Using this option is equivalent to using `-O` (`--outs-no-cache`)
-> and then running `dvc metrics add data/eval.json` to explicitly mark
-> `data/eval.json` as a metric file.
+> metric file, without tracking it directly (You can track it with Git). See
+> `dvc run` for more info.
 
-Now let's print metric values that we are tracking in this <abbr>project</abbr>:
+Now let's print metric values that we are tracking in this <abbr>project</abbr>,
+using `dvc metrics show`:
 
 ```dvc
 $ dvc metrics show -a
@@ -68,10 +68,10 @@ $ dvc metrics show -a
       data/eval.json: {"AUC": "0.624652"}
 ```
 
-We can also tell DVC an `xpath` for the metric file, so that it can output only
-the value of AUC. In the case of JSON, use
-[JSONPath expressions](https://goessner.net/articles/JsonPath/index.html) to
-selectively extract data out of metric files:
+We can also give DVC an `xpath` for the metric file, so that it outputs only the
+AUC value. For JSON metrics, we use
+[JSONPath](https://goessner.net/articles/JsonPath/index.html) expressions to
+filter data out of metric files:
 
 ```dvc
 $ dvc metrics modify data/eval.json --type json --xpath AUC

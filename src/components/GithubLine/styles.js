@@ -1,7 +1,8 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
+  font-weight: 500;
   line-height: 20px;
   height: 20px;
   display: flex;
@@ -9,7 +10,8 @@ export const Wrapper = styled.div`
 `
 
 export const Link = styled.a`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
+  font-weight: 500;
   color: #40364d;
   margin-left: 0.3em;
 
@@ -21,7 +23,8 @@ export const Link = styled.a`
 `
 
 export const Github = styled.img`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
+  font-weight: 500;
   margin-right: 9px;
 `
 
@@ -30,6 +33,7 @@ export const Star = styled.img`
 `
 
 export const Count = styled.span`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
+  font-weight: 500;
   margin-left: 6.3px;
 `

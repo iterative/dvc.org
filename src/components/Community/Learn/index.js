@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import format from 'date-fns/format'
 
-import LocalLink from '../../LocalLink'
+import Link from '../../Link'
 
 import { logEvent } from '../../../utils/ga'
 import { getFirstPage } from '../../../utils/sidebar'
@@ -10,7 +10,8 @@ import { getFirstPage } from '../../../utils/sidebar'
 import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
 
-import { usePosts, useCommentsCount } from '../../../utils/api'
+import { useCommentsCount } from '../../../utils/api'
+import getPosts from '../../../queries/posts'
 import { pluralizeComments } from '../../../utils/i18n'
 
 import {
@@ -21,10 +22,9 @@ import {
   Item,
   Items,
   Line,
-  Link,
+  Link as LinkSC,
   Meta,
   NbspWrapper,
-  Placeholder,
   TextWrapper,
   Wrapper
 } from '../styles'
@@ -56,21 +56,16 @@ function CommunityBlogPost({
   return (
     <ImageLine key={url}>
       {pictureUrl && (
-        <a
-          href={url}
-          target="_blank"
-          rel="noreferrer noopener"
-          onClick={logPost}
-        >
+        <Link href={url} target="_blank" onClick={logPost}>
           <Image src={pictureUrl} alt="" />
-        </a>
+        </Link>
       )}
       <TextWrapper>
         <Link
+          as={LinkSC}
           color={color}
           href={url}
           target="_blank"
-          rel="noreferrer noopener"
           onClick={logPost}
         >
           {title}
@@ -113,21 +108,16 @@ function CommunityUserContent({ url, title, author, date, color, pictureUrl }) {
   return (
     <ImageLine key={url}>
       {pictureUrl && (
-        <a
-          href={url}
-          target="_blank"
-          rel="noreferrer noopener"
-          onClick={logUserContent}
-        >
+        <Link href={url} as={LinkSC} target="_blank" onClick={logUserContent}>
           <Image src={pictureUrl} alt="" />
-        </a>
+        </Link>
       )}
       <TextWrapper>
         <Link
           color={color}
           href={url}
+          as={LinkSC}
           target="_blank"
-          rel="noreferrer noopener"
           onClick={logUserContent}
         >
           {title}
@@ -158,15 +148,15 @@ function CommunityDocumentation({ url, title, description, color }) {
 
   return (
     <Line key={url}>
-      <LocalLink
+      <Link
         href={url}
-        as={Link}
+        as={LinkSC}
         color={color}
         large="true"
         onClick={logDocumentation}
       >
         {title}
-      </LocalLink>
+      </Link>
       <Meta>{description}</Meta>
     </Line>
   )
@@ -180,7 +170,7 @@ CommunityDocumentation.propTypes = {
 }
 
 export default function CommunityLearn({ theme }) {
-  const { error, ready, result: posts } = usePosts()
+  const posts = getPosts()
 
   return (
     <Wrapper>
@@ -197,23 +187,23 @@ export default function CommunityLearn({ theme }) {
           <Item>
             <CommunityBlock
               title={
-                <LocalLink
+                <Link
                   href={docsPage}
                   as={HeaderLink}
                   onClick={logDocumentationAll}
                 >
                   Documentation
-                </LocalLink>
+                </Link>
               }
               action={
-                <LocalLink
+                <Link
                   href={docsPage}
                   as={Button}
                   theme={theme}
                   onClick={logDocumentationAll}
                 >
                   See all docs
-                </LocalLink>
+                </Link>
               }
             >
               {documentation.map(documentation => (
@@ -228,39 +218,25 @@ export default function CommunityLearn({ theme }) {
           <Item>
             <CommunityBlock
               title={
-                <HeaderLink
-                  href="https://blog.dvc.org"
-                  target="_blank"
-                  rel="noreferrer noopener"
-                  onClick={logPostAll}
-                >
+                <HeaderLink href="/blog" onClick={logPostAll}>
                   DVC Blog
                 </HeaderLink>
               }
               action={
                 posts && (
-                  <Button
-                    theme={theme}
-                    href="https://blog.dvc.org"
-                    target="_blank"
-                    rel="noreferrer noopener"
-                    onClick={logPostAll}
-                  >
+                  <Button theme={theme} href="/blog" onClick={logPostAll}>
                     See all Posts
                   </Button>
                 )
               }
             >
-              {!ready && <Placeholder>Loading...</Placeholder>}
-              {error && <Placeholder>Blog unavailable right now</Placeholder>}
-              {posts &&
-                posts.map(post => (
-                  <CommunityBlogPost
-                    {...post}
-                    key={post.url}
-                    color={theme.color}
-                  />
-                ))}
+              {posts.map(post => (
+                <CommunityBlogPost
+                  {...post}
+                  key={post.url}
+                  color={theme.color}
+                />
+              ))}
             </CommunityBlock>
           </Item>
           <Item>

@@ -3,17 +3,24 @@ import styled from 'styled-components'
 import { media } from '../../styles'
 
 export const SearchArea = styled.div`
+  box-sizing: border-box;
   height: 60px;
-  display: flex;
-  align-items: center;
-  background-color: #eef4f8;
+  padding-top: 10px;
+  background: rgb(238, 244, 248);
+  background: linear-gradient(
+    180deg,
+    rgba(238, 244, 248, 1) 0%,
+    rgba(238, 244, 248, 1) 86%,
+    rgba(238, 244, 248, 0) 100%
+  );
   z-index: 10;
   position: sticky;
-  top: 0;
+  top: var(--layout-header-height-scrolled);
 
   ${media.phablet`
     position: relative;
-    padding: 0 20px;
+    padding: 10px 20px 0;
+    top: 0;
   `};
 
   form {

@@ -4,13 +4,13 @@ import color from 'color'
 import { container, media } from '../../styles'
 
 export const SupportHero = styled.div`
-  padding-top: 90px;
-  padding-bottom: 80px;
+  padding-top: 70px;
+  padding-bottom: 70px;
   overflow: hidden;
 `
 
 export const Heading = styled.h1`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   margin: 0px auto;
   max-width: 610px;
   font-size: 40px;
@@ -76,7 +76,7 @@ export const Icon = styled.div`
 `
 
 export const Name = styled.h3`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   margin-top: 10px;
   margin-bottom: 10px;
   font-size: 22px;
@@ -106,8 +106,9 @@ export const Button = styled.button`
   background-color: white;
   border: 2px solid ${props => props.color};
   color: ${props => props.color};
-  font-family: BrandonGrotesqueMed, Tahoma, Arial;
+  font-family: BrandonGrotesque, Tahoma, Arial;
   height: 42px;
+  font-weight: 500;
   font-size: 18px;
   cursor: pointer;
   transition: 0.2s background-color ease-out;

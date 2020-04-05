@@ -54,9 +54,10 @@ typings/
 # dotenv environment variables file
 .env
 
-# Next.js build output
-.idea
+# Editors & logs
 *.log
+.idea
+.vscode
 
 # Mac finder artifacts
 .DS_Store
@@ -64,3 +65,4 @@ typings/
 # Gatsby cache
 .cache
 public
+tmp

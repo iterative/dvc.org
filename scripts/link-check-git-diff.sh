@@ -3,7 +3,7 @@ set -euo pipefail
 
 exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname $0)/exclude-links.txt}"
 differ="git diff $(git merge-base HEAD origin/master)"
-changed="$($differ --name-only)"
+changed="$differ --name-only :^redirects-list.json"
 
 [ -z "$changed" ] && exit 0
 

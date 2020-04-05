@@ -52,10 +52,7 @@ export default class Video extends Component {
   watch = () => {
     logEvent('button', 'video')
     this.setState({ watching: true })
-    this.play()
   }
-
-  play = () => {}
 
   onPause = () => {
     this.setState({ watching: false })

@@ -1,5 +1,5 @@
 import React from 'react'
-import LocalLink from '../LocalLink'
+import Link from '../Link'
 
 import { logEvent } from '../../utils/ga'
 
@@ -15,17 +15,17 @@ export default function PromoSection() {
         <Glyph src="/img/glyph-3.svg" gid={'topleft'} />
         <Title>For data scientists, by data scientists</Title>
         <Buttons>
-          <LocalLink
+          <Link
             href="/doc/tutorials/get-started"
             as={Button}
             first
             onClick={goToDocGetStarted}
           >
             Get Started
-          </LocalLink>
-          <LocalLink as={Button} href="/features" onClick={goToFeatures}>
+          </Link>
+          <Link as={Button} href="/features" onClick={goToFeatures}>
             Full Features
-          </LocalLink>
+          </Link>
         </Buttons>
         <Glyph src="/img/glyph-4.svg" gid={'rigthbottom'} />
       </Container>

@@ -8,7 +8,7 @@ import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 
-import LocalLink from '../LocalLink'
+import Link from '../Link'
 
 import { OnlyDesktop, OnlyMobile } from '../../styles'
 
@@ -30,10 +30,10 @@ import {
 
 const LearnMore = ({ href }) => (
   <LearnMoreArea>
-    <LocalLink href={href}>
+    <Link href={href}>
       <span>Learn&nbsp;more</span>
       <img src="/img/learn_more_arrow.svg" width={18} height={18} alt="" />
-    </LocalLink>
+    </Link>
   </LearnMoreArea>
 )
 

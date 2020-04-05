@@ -56,7 +56,7 @@ export const Right = styled.div`
 `
 
 export const Heading = styled.div`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   min-height: 50px;
   font-size: 30px;
   font-weight: 500;
@@ -88,7 +88,7 @@ export const Icon = styled.div`
 `
 
 export const Title = styled.h3`
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
   font-size: 16px;
   font-weight: 500;
   color: #40364d;

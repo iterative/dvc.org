@@ -8,7 +8,7 @@ defaults: &defaults
   working_directory: ~/repo
   docker:
     # Specify the version you desire here.
-    - image: circleci/node:10.16.3
+    - image: circleci/node:12
 
     # Specify service dependencies here if necessary.
     # CircleCI maintains a library of pre-built images,
@@ -28,6 +28,12 @@ commands:
             git reset --hard origin/master
             git checkout -
 
+      - run:
+          name: apt dependencies
+          command: |
+            sudo apt-get update
+            sudo apt-get install pcregrep
+
       # Download cached dependencies.
       - restore_cache:
           keys:
@@ -35,43 +41,34 @@ commands:
             # Fallback to using the latest cache if no exact match is found.
             - v1-dependencies-
 
-      - run:
-          name: apt dependencies
-          command: |
-            sudo apt-get update
-            sudo apt-get install pcregrep
+      - run: yarn
 
-  cache:
-    steps:
       # Upload dependencies cache.
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "yarn.lock" }}
+
 jobs:
   test:
     <<: *defaults
     steps:
       - install
-      - run: yarn
-      - run: yarn build
       - run: yarn test
+      - run: yarn lint-css
+      - run: yarn lint-ts
       - run: yarn format-check
-      - run: yarn lint-check
       - run: yarn link-check-diff
-      - cache
 
   test_full:
     <<: *defaults
     steps:
       - install
-      - run: yarn
-      - run: yarn build
       - run: yarn test
+      - run: yarn lint-css
+      - run: yarn lint-ts
       - run: yarn format-check
-      - run: yarn lint-check
       - run: yarn link-check
-      - cache
 
 workflows:
   version: 2

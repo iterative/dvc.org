@@ -1,0 +1,13 @@
+.layoutBlog {
+  h4 {
+    font-weight: 700;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+
+  em {
+    font-style: italic;
+  }
+}

@@ -4,6 +4,7 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 
 import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
+import Link from '../../Link'
 
 import { pluralizeComments } from '../../../utils/i18n'
 import { logEvent } from '../../../utils/ga'
@@ -22,7 +23,7 @@ import {
   Item,
   Items,
   Line,
-  Link,
+  Link as LinkSC,
   Meta,
   Placeholder,
   Wrapper
@@ -40,21 +41,16 @@ function CommunityTopic({ url, title, date, comments, color }) {
   return (
     <Line>
       <Link
+        as={LinkSC}
         color={color}
         href={url}
         target="_blank"
-        rel="noreferrer noopener"
         onClick={logTopic}
       >
         {title}
       </Link>
       <Meta>
-        <Comments
-          href={url}
-          target="_blank"
-          rel="noreferrer noopener"
-          onClick={logTopic}
-        >
+        <Comments href={url} target="_blank" onClick={logTopic}>
           {pluralizeComments(comments)}
         </Comments>{' '}
         • last activity {formatDistanceToNow(new Date(date), 'MMM, d') + ' '}
@@ -80,23 +76,18 @@ function CommunityIssue({ url, title, date, comments, color }) {
   return (
     <Line>
       <Link
+        as={LinkSC}
         color={color}
         href={url}
         target="_black"
-        rel="noreferrer noopener"
         onClick={logIssue}
       >
         {title}
       </Link>
       <Meta>
-        <Comments
-          href={url}
-          target="_black"
-          rel="noreferrer noopener"
-          onClick={logIssue}
-        >
+        <Link href={url} target="_black" as={Comments} onClick={logIssue}>
           {pluralizeComments(comments)}
-        </Comments>
+        </Link>
         {' •'} opened {formatDistanceToNow(new Date(date), 'MMM, d')} ago
       </Meta>
     </Line>
@@ -131,25 +122,25 @@ export default function CommunityMeet({ theme }) {
           <Item>
             <CommunityBlock
               title={
-                <HeaderLink
+                <Link
                   href="/chat"
                   target="_black"
-                  rel="noreferrer noopener"
+                  as={HeaderLink}
                   onClick={logDiscord}
                 >
                   Join the Dev Chat
-                </HeaderLink>
+                </Link>
               }
               action={
-                <Button
+                <Link
                   theme={theme}
                   href="/chat"
                   target="_black"
-                  rel="noreferrer noopener"
+                  as={Button}
                   onClick={logDiscord}
                 >
                   Open Chat
-                </Button>
+                </Link>
               }
               icon="/img/community/discord.svg"
             >
@@ -171,26 +162,26 @@ export default function CommunityMeet({ theme }) {
           <Item>
             <CommunityBlock
               title={
-                <HeaderLink
+                <Link
                   href="https://discuss.dvc.org"
                   target="_black"
-                  rel="noreferrer noopener"
+                  as={HeaderLink}
                   onClick={logTopicAll}
                 >
                   Ask a Question
-                </HeaderLink>
+                </Link>
               }
               action={
                 topics && (
-                  <Button
+                  <Link
                     theme={theme}
+                    as={Button}
                     href="https://discuss.dvc.org"
                     target="_black"
-                    rel="noreferrer noopener"
                     onClick={logTopicAll}
                   >
                     Read All Topics
-                  </Button>
+                  </Link>
                 )
               }
               icon="/img/community/discourse.svg"
@@ -212,26 +203,26 @@ export default function CommunityMeet({ theme }) {
           <Item>
             <CommunityBlock
               title={
-                <HeaderLink
+                <Link
                   href="https://github.com/iterative/dvc/issues"
                   target="_black"
-                  rel="noreferrer noopener"
+                  as={HeaderLink}
                   onClick={logIssueAll}
                 >
                   Post an Issue
-                </HeaderLink>
+                </Link>
               }
               action={
                 issues && (
-                  <Button
+                  <Link
                     theme={theme}
                     href="https://github.com/iterative/dvc/issues"
                     target="_black"
-                    rel="noreferrer noopener"
+                    as={Button}
                     onClick={logIssueAll}
                   >
                     Read All Issues
-                  </Button>
+                  </Link>
                 )
               }
               icon="/img/community/github.svg"

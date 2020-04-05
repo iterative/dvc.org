@@ -32,6 +32,15 @@ export const Content = styled.article`
     animation-fill-mode: both;
     animation-name: fadeIn;
 
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 500;
+    }
+
     a[target='_blank']:after {
       position: relative;
       top: 1px;
@@ -174,7 +183,8 @@ export const Content = styled.article`
   }
 
   .Collapsible__trigger {
-    font-family: BrandonGrotesqueMed;
+    font-family: BrandonGrotesque;
+    font-weight: 500;
     display: block;
     position: relative;
     opacity: 0.9;

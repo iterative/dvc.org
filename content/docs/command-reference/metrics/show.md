@@ -7,7 +7,8 @@ formatting.
 
 ```usage
 usage: dvc metrics show [-h] [-q | -v] [-t <type>] [-x <path>]
-                        [-a] [-T] [-R] [targets [targets ...]]
+                        [-a] [-T] [-R] [--all-commits]
+                        [targets [targets ...]]
 
 positional arguments:
   targets               Metric files or directories (see -R) to show
@@ -81,11 +82,16 @@ compares them with a previous version.
 
 - `-a`, `--all-branches` - print metric file contents in all Git branches
   instead of just those present in the current workspace. It can be used to
-  compare different experiments.
+  compare different experiments. Note that this can be combined with `-T` below,
+  for example using the `-aT` flag.
 
-- `-T`, `--all-tags` - print metric file contents in all Git tags. Similar to
-  `-a` above. Note that both options can be combined, for example using the
+- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
+  the workspace. Note that both options can be combined, for example using the
   `-aT` flag.
+
+- `--all-commits` - the same as `-a` or `-T` above, but applies to _all_ Git  
+  commits as well as the workspace. Useful for printing metric file contents for
+  the entire existing commit history of the project.
 
 - `-R`, `--recursive` - determines the metric files to show by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are

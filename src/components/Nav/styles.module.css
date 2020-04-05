@@ -1,0 +1,131 @@
+.wrapper {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: row;
+  align-items: center;
+
+  @media (--xs-scr) {
+    display: none;
+  }
+}
+
+.linksList {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.linkItem {
+  position: relative;
+  margin: 0 15px;
+
+  & + &.icon {
+    margin-left: 15px;
+  }
+
+  &.icon {
+    margin: 0 5px;
+
+    &:first-of-type {
+      margin-left: 15px;
+    }
+  }
+}
+
+.link {
+  @mixin active;
+
+  display: block;
+  padding: 10px 0 3px;
+  border-bottom: 1.5px solid #fff;
+  font-family: var(--font-brandon);
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: var(--color-gray);
+
+  &:hover {
+    color: var(--color-gray-hover);
+    border-color: currentColor;
+  }
+
+  &:focus {
+    outline: none;
+    color: var(--color-orange);
+    border-color: currentColor;
+  }
+
+  &:hover + .dropdown {
+    display: block;
+  }
+}
+
+.dropdown {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  top: 30px;
+  left: -8px;
+  border-style: solid;
+  border-width: 19px 10px 11px 37.5px;
+  border-image-source: url(/img/community/menu.png);
+  border-image-slice: 38 20 22 75;
+  border-image-width: 19px 10px 11px 37.5px;
+  border-image-repeat: repeat repeat;
+
+  &:hover {
+    display: block;
+  }
+}
+
+.dropdownInset {
+  margin: -5px 0 -5px -9.5px;
+  padding: 0 16px 0 0;
+  background: #fff;
+}
+
+.dropdownLink {
+  display: block;
+  padding: 9px 0 13px;
+  font-size: 18px;
+  line-height: 27px;
+  font-family: var(--font-brandon);
+  white-space: nowrap;
+  text-decoration: none;
+  color: #838d93;
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  & + & {
+    border-top: 1px solid #e7e9ea;
+  }
+}
+
+.imageLink {
+  display: block;
+  padding-top: 10px;
+
+  & + & {
+    margin-left: 10px;
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.getStartedButton {
+  margin-left: 25px;
+  font-weight: 500;
+}
