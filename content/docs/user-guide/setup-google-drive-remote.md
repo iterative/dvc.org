@@ -66,15 +66,17 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    $ dvc remote add mygdfolder gdrive://root/dvcstore
    ```
 
-   > Although valid, we don't recommend using just `gdrive://root`, as it's not
-   > possible for more than one Google account to access a GDrive root ("My
-   > Drive").
+   > Although valid, we don't recommend using just `gdrive://root`, as the
+   > account's Google Drive home ("My Drive") could fill with cache directories,
+   > complicating managing non-DVC files and folders.
 
 3. `appDataFolder` -
    [special hidden folder](https://developers.google.com/drive/api/v2/appdata)
    (unique per user) meant to store application-specific data. This is a good
    choice to prevent accidentally deleting remote storage data from the Google
    Drive web UI.
+
+   ⚠️ Only suitable for personal use.
 
    ```dvc
    $ dvc remote add gdappata gdrive://appDataFolder
