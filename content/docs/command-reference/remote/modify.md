@@ -253,7 +253,7 @@ Please check out
 a full guide on using Google Drive as DVC remote storage.
 
 - `url` - remote location URL. See the
-  [possible formats](/doc/user-guide/setup-google-drive-remote#url-format-to-specify-folder-location).
+  [possible formats](/doc/user-guide/setup-google-drive-remote#url-format).
 
   ```dvc
   $ dvc remote modify myremote \
@@ -262,7 +262,7 @@ a full guide on using Google Drive as DVC remote storage.
 
 - `gdrive_client_id` - **Client ID** for authentication with OAuth 2.0 when
   using a
-  [custom Google Client project](/doc/user-guide/setup-google-drive-remote#connect-using-a-custom-google-cloud-project).
+  [custom Google Client project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project).
   Also requires using `gdrive_client_secret`.
 
   ```dvc
