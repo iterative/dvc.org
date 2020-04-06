@@ -22,7 +22,7 @@ To start using a Google Drive remote, you only need to add it with a
 `dvc pull`, `dvc fetch`, `dvc push`). For example:
 
 ```dvc
-$ dvc remote add -d gdremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
+$ dvc remote add -d myremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
 $ dvc push
 
 Go to the following link in your browser:
@@ -47,14 +47,14 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    two can only be referenced by ID).
 
    ```dvc
-   $ dvc remote add gdfolder gdrive://0AIac4JZqHhKmUk9PDA
+   $ dvc remote myremote gdfolder gdrive://0AIac4JZqHhKmUk9PDA
    ```
 
    or
 
    ```dvc
-   $ dvc remote add gdsubfolder \
-                  gdrive://0AIac4JZqHhKmUk9PDA/Data/text
+   $ dvc remote myremote gdsubfolder \
+                         gdrive://0AIac4JZqHhKmUk9PDA/Data/text
    ```
 
    `0AIac4JZqHhKmUk9PDA` above is the folder ID, and it can be found in the web
@@ -71,7 +71,7 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    every user.
 
    ```dvc
-   $ dvc remote add mygdfolder gdrive://root/dvcstore
+   $ dvc remote add myremote gdrive://root/dvcstore
    ```
 
    > We don't recommend using `gdrive://root` itself, as it's likely used for
@@ -86,7 +86,7 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    ⚠️ Only suitable for personal use.
 
    ```dvc
-   $ dvc remote add gdappata gdrive://appDataFolder
+   $ dvc remote add myremote gdrive://appDataFolder
    ```
 
 ## Using a custom Google Cloud project (recommended)
@@ -145,9 +145,8 @@ Finally, use the `dvc remote modify` command to set the credentials (for each
 GDrive remote), for example:
 
 ```dvc
-$ dvc remote add gdfolder gdrive://0AIac4JZqHhKmUk9PDA
-$ dvc remote modify gdfolder gdrive_client_id <client ID>
-$ dvc remote modify gdfolder gdrive_client_secret <client secret>
+$ dvc remote modify myremote gdrive_client_id <client ID>
+$ dvc remote modify myremote gdrive_client_secret <client secret>
 ```
 
 > Note that Google Drive API usage limits/quotas apply per _project_ client and
@@ -183,9 +182,9 @@ authentication is needed.
    key file:
 
    ```dvc
-   $ dvc remote modify gdremote gdrive_use_service_account true
-   $ dvc remote modify gdremote gdrive_service_account_email <service acct email>
-   $ dvc remote modify gdremote gdrive_service_account_p12_file_path path/to/file.p12
+   $ dvc remote modify myremote gdrive_use_service_account true
+   $ dvc remote modify myremote gdrive_service_account_email <service acct email>
+   $ dvc remote modify myremote gdrive_service_account_p12_file_path path/to/file.p12
    ```
 
 ## Authorization
