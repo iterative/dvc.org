@@ -41,19 +41,19 @@ such as a folder or subfolder in root, shared folders not owned by your account,
 etc. The URL is formed with a _base_, and an optional _path_ to an **existing**
 folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
 
-1. _Folder ID_ - unique identifier for every Google Drive folder, including
-   [shared folders](https://support.google.com/drive/answer/7166529) and
-   [shared drives](https://support.google.com/a/users/answer/9310351)\* (these
-   two can only be referenced by ID).
+1. _Folder ID_ (recommended) - unique identifier for every Google Drive folder,
+   including [shared folders](https://support.google.com/drive/answer/7166529)
+   and [shared drives](https://support.google.com/a/users/answer/9310351)\*
+   (these two can only be referenced by ID).
 
    ```dvc
-   $ dvc remote myremote gdfolder gdrive://0AIac4JZqHhKmUk9PDA
+   $ dvc remote add myremote myremote gdrive://0AIac4JZqHhKmUk9PDA
    ```
 
    or
 
    ```dvc
-   $ dvc remote myremote gdsubfolder \
+   $ dvc remote add myremote myremote \
                          gdrive://0AIac4JZqHhKmUk9PDA/Data/text
    ```
 
