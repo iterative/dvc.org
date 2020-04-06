@@ -1,6 +1,6 @@
 # version
 
-Display the DVC version along with the system/environment information.
+Display the DVC version and system/environment information.
 
 ## Synopsis
 
