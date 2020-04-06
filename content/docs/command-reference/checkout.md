@@ -68,7 +68,8 @@ be pulled from remote storage using `dvc pull`.
 
 ## Options
 
-- `--summary` - displays summary of the changes.
+- `--summary` - displays summary of the changes done by this command in the
+  workspace.
 
 - `-d`, `--with-deps` - determines files to update by tracking dependencies to
   the target DVC-files (stages). If no `targets` are provided, this option is
