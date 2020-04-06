@@ -61,7 +61,7 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    browser address bar, for example
    `https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`.
 
-2. `root` - indicates your topmost Google Drive directory.
+2. `root` - indicates your topmost Google Drive folder ("My Drive").
 
    ⚠️ Only suitable for personal use, as sharing a remote configured this way
    would cause DVC to try synchronizing data to/from different Google Drives for
@@ -71,9 +71,8 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    $ dvc remote add mygdfolder gdrive://root/dvcstore
    ```
 
-   > Although valid, we don't recommend using just `gdrive://root`, as the
-   > account's Google Drive home ("My Drive") could fill with cache directories,
-   > complicating managing non-DVC files and folders.
+   > We don't recommend using `gdrive://root` itself, as it's likely used for
+   > many other reasons, and pushing data with DVC here can make it seem messy.
 
 3. `appDataFolder` -
    [special hidden folder](https://developers.google.com/drive/api/v2/appdata)
@@ -134,7 +133,7 @@ API connections, and its
 6. The newly generated **client ID** and **client secret** should be shown to
    you now, and you can always come back to **Credentials** to fetch them.
 
-⚠️ It should be safe to share **client ID** and **client secret** among your
+✅ It should be safe to share **client ID** and **client secret** among your
 team. These credentials are only used to generate the
 [authorization](#authorization) URL you'll need to visit later in order to
 connect to the Google Drive.
@@ -172,16 +171,19 @@ authentication is needed.
    Accounts**. Click **+ CREATE SERVICE ACCOUNT**, on the next screen, enter
    **Service account name** e.g. "My DVC project", and click **Create**. Select
    **Continue** at the next **Service account permissions** page, click at **+
-   CREATE KEY**, select **P12** and **Create**. Save generated `.p12` key file
-   at your local disk.
+   CREATE KEY**, select **P12** and **Create**. Download the generated `.p12`
+   key file to a safe location.
 
-1. Copy a downloaded `.p12` file to your DVC project root directory.
+   ⚠️ Be careful about sharing the key file with others.
 
-```dvc
-$ dvc remote modify gdremote gdrive_use_service_account True
-$ dvc remote modify gdremote gdrive_service_account_email <service acct email>
-$ dvc remote modify gdremote gdrive_service_account_p12_file_path path/to/file.p12
-```
+2. Configure the remote to use the service account and tell if where to find the
+   key file:
+
+   ```dvc
+   $ dvc remote modify gdremote gdrive_use_service_account True
+   $ dvc remote modify gdremote gdrive_service_account_email <service acct email>
+   $ dvc remote modify gdremote gdrive_service_account_p12_file_path path/to/file.p12
+   ```
 
 ## Authorization
 
@@ -191,12 +193,13 @@ with a [valid URL](#url-format), DVC will prompt you to visit a special Google
 authorization web page. There you'll need to sign into your Google account. The
 [auth process](https://developers.google.com/drive/api/v2/about-auth) will ask
 you to grant DVC the necessary permissions, and produce a verification code
-needed for DVC to complete the connection. On success, this code will be cached
-in a Git-ignored directory located in `.dvc/tmp/gdrive-user-credentials.json`.
+needed for DVC to complete the connection. On success, the necessary credentials
+will be saved in a Git-ignored file, located in
+`.dvc/tmp/gdrive-user-credentials.json`.
 
 ⚠️ In order to prevent unauthorized access to your Google Drive, **do not share
-your verification code with others**. Each team member should go through this
-process individually.
+these credentials with others**. Each team member should go through this process
+individually.
 
 If you wish to change the user you have authenticated with, or for
 troubleshooting misc. token errors, simply remove the user credentials JSON file
