@@ -62,7 +62,7 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    `https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`.
 
    > \* Please note the different
-   > [Shared drive limits](https://support.google.com/a/answer/7338880?hl=en).
+   > [Shared drive limits](https://support.google.com/a/answer/7338880).
 
 2. `root` - indicates your topmost Google Drive folder ("My Drive").
 
@@ -183,7 +183,7 @@ authentication is needed.
    key file:
 
    ```dvc
-   $ dvc remote modify gdremote gdrive_use_service_account True
+   $ dvc remote modify gdremote gdrive_use_service_account true
    $ dvc remote modify gdremote gdrive_service_account_email <service acct email>
    $ dvc remote modify gdremote gdrive_service_account_p12_file_path path/to/file.p12
    ```
