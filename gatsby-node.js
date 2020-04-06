@@ -53,7 +53,8 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'MarkdownRemark') {
-    const contentPath = path.join(__dirname, 'content')
+    // We need replace to fix paths on Windows and Git-bash
+    const contentPath = path.join(__dirname, 'content').replace(/\\/g, '/')
     const source = node.fileAbsolutePath.replace(contentPath, '')
     let value
 
