@@ -58,8 +58,8 @@ restoring any file size will be almost instantaneous.
 > `cache.slow_link_warning` config option to `false` with `dvc config cache`.
 
 This command will fail to checkout files that are missing from the cache. In
-such a case, `dvc checkout` prints a warning message. It also displays a list of
-changes made by the `checkout`.
+such a case, `dvc checkout` prints a warning message. It also lists the
+partial progress made by the checkout.
 
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
