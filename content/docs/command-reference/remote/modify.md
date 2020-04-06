@@ -250,28 +250,88 @@ For more information on configuring Azure Storage connection strings, visit
 
 Please check out
 [Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
-a full guide on configuring Google Drives for use as DVC remote storage,
-including obtaining the necessary credentials, and how to form `gdrive://` URLs.
+a full guide on using Google Drive as DVC remote storage.
 
-- `url` - remote location URL.
+- `url` - remote location URL. See the
+  [possible formats](/doc/user-guide/setup-google-drive-remote#url-format).
 
   ```dvc
-  $ dvc remote modify myremote url gdrive://root/path/to/folder
+  $ dvc remote modify myremote \
+                      url gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
   ```
 
-- `gdrive_client_id` - Google Project's OAuth 2.0 **client ID**.
+- `gdrive_client_id` - **Client ID** for authentication with OAuth 2.0 when
+  using a
+  [custom Google Client project](/doc/user-guide/setup-google-drive-remote#using-a-custom-google-cloud-project).
+  Also requires using `gdrive_client_secret`.
 
   ```dvc
   $ dvc remote modify myremote gdrive_client_id <client ID>
   ```
 
-- `gdrive_client_secret` - Google Project's OAuth 2.0 **client secret**.
+- `gdrive_client_secret` - **Client secret** for authentication with OAuth 2.0
+  when using a custom Google Client project. Also requires using
+  `gdrive_client_id`.
 
   ```dvc
   $ dvc remote modify myremote gdrive_client_secret <client secret>
   ```
 
+- `gdrive_trash_only` - configures `dvc gc` to move remote files to
+  [trash](https://developers.google.com/drive/api/v2/reference/files/trash)
+  instead of
+  [deleting](https://developers.google.com/drive/api/v2/reference/files/delete)
+  them permanently. `false` by default, meaning "delete". Useful for shared
+  drives/folders, where delete permissions may not be given.
+
+  ```dvc
+  $ dvc remote modify myremote gdrive_trash_only true
+  ```
+
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).
+
+**For service accounts:**
+
+A service account is a Google account associated with your GCP project, and not
+a specific user. Please refer to
+[Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
+more information.
+
+- `gdrive_use_service_account` - instructs DVC to authenticate using a service
+  account instead of OAuth. Make sure that the service account has read/write
+  access (as needed) to the file structure in the remote `url`.
+
+  ```dvc
+  $ dvc remote modify myremote gdrive_use_service_account true
+  ```
+
+- `gdrive_service_account_email` - email address of the Google Project's service
+  account when `gdrive_use_service_account` is on. Also requires using
+  `gdrive_service_account_p12_file_path`.
+
+  ```dvc
+  $ dvc remote modify myremote \
+                      gdrive_service_account_email <service acct email>
+  ```
+
+- `gdrive_service_account_p12_file_path` - Google Project's service account
+  `.p12` file path when `gdrive_use_service_account` is on. Also requires using
+  `gdrive_service_account_email`.
+
+  ```dvc
+  $ dvc remote modify myremote \
+                      gdrive_service_account_p12_file_path \
+                      path/to/file.p12
+  ```
+
+- `gdrive_service_account_user_email` - email of a user account to
+  [impersonate](https://developers.google.com/admin-sdk/directory/v1/guides/delegation)
+  with the service account. Optional when `gdrive_use_service_account` is on.
+
+  ```dvc
+  $ dvc remote modify myremote \
+                      gdrive_service_account_user_email <user email>
+  ```
 
 </details>
 
@@ -285,45 +345,35 @@ including obtaining the necessary credentials, and how to form `gdrive://` URLs.
   $ dvc remote modify myremote url gs://bucket/remote
   ```
 
-- `projectname` - override or provide a project name to use, if default one is
+- `projectname` - override or provide a project name to use, if a default one is
   not set.
 
   ```dvc
   $ dvc remote modify myremote projectname myproject
   ```
 
-- `credentailpath` - path of the file that contains
-  [service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
-  key. See **Accessing data with a service account** section below.
+**For service accounts:**
+
+A service account is a Google account associated with your GCP project, and not
+a specific user. Please refer to
+[Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
+more information.
+
+- `credentailpath` - path to the file that contains the
+  [service account key](/doc/user-guide/setup-google-drive-remote#using-service-accounts).
+  Make sure that the service account has read/write access (as needed) to the
+  file structure in the remote `url`.
 
   ```dvc
-  $ dvc remote modify myremote credentailpath "/home/.../project-XXXXXXX.json"
+  $ dvc remote modify \
+        myremote credentailpath "/home/.../project-XXXXXXX.json"
   ```
 
-**Accessing data with a service account:**
+  Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` env var can be set:
 
-A
-[service account](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
-is a Google account associated with your GCP project and not a specific user.
-Generally, it is intended for scenarios where your application needs to access
-data on its own, e.g. running inside a Compute Engine, CI system, etc.
-
-A service account can be used by providing a service account
-[key file](https://cloud.google.com/docs/authentication/getting-started#creating_a_service_account)
-path to DVC:
-
-```dvc
-$ dvc remote modify myremote credentailpath "/home/.../project-XXXXXXX.json"
-```
-
-Alternatively, `GOOGLE_APPLICATION_CREDENTIALS` environment variable can be set:
-
-```dvc
-$ export GOOGLE_APPLICATION_CREDENTIALS="/home/.../project-XXXXXXX.json"
-```
-
-Ensure the account has read (and write access, if you need to save data) to the
-remote `url` (and data under it) you set up above.
+  ```dvc
+  $ export GOOGLE_APPLICATION_CREDENTIALS=".../project-XXXXXXX.json"
+  ```
 
 </details>
 

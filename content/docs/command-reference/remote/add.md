@@ -199,16 +199,26 @@ $ dvc remote add myremote "azure://"
 
 ### Click for Google Drive
 
-Please check out
-[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
-a full guide on configuring Google Drives for use as DVC remote storage,
-including obtaining the necessary credentials, and how to form `gdrive://` URLs.
+To start using a GDrive remote, fist add it with a
+[valid URL format](/doc/user-guide/setup-google-drive-remote#url-format). Then
+simply use any DVC command that needs it (e.g. `dvc pull`, `dvc fetch`,
+`dvc push`), and follow the instructions to connect your Google Drive with DVC.
+For example:
 
 ```dvc
-$ dvc remote add -d myremote gdrive://root/path/to/folder
-$ dvc remote modify myremote gdrive_client_id <client ID>
-$ dvc remote modify myremote gdrive_client_secret <client secret>
+$ dvc remote add -d myremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
+$ dvc push
+
+Go to the following link in your browser:
+
+    https://accounts.google.com/o/oauth2/auth # ... copy this link
+
+Enter verification code: # <- enter resulting code
 ```
+
+Please see `dvc remote modify` for a list of other GDrive parameters, or
+[Setup a Google Drive DVC Remote](/doc/user-guide/setup-google-drive-remote) for
+a full guide on using Google Drive as DVC remote storage.
 
 Note that GDrive remotes are not "trusted" by default. This means that the
 [`verify`](/doc/command-reference/remote/modify#available-settings-for-all-remotes)
@@ -224,11 +234,17 @@ modified.
 
 ### Click for Google Cloud Storage
 
+> 💡 Before adding a GC Storage remote, be sure to
+> [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
+
 ```dvc
 $ dvc remote add myremote gs://bucket/path
 ```
 
-> See also `dvc remote modify` for a full list of GC storage parameters.
+By default DVC expects your AWS CLI is already
+[configured](https://cloud.google.com/sdk/docs/authorizing). DVC will be using
+default GCP key file to access Google Cloud Storage. To override some of these
+settings, use the parameters described in `dvc remote modify`.
 
 </details>
 
