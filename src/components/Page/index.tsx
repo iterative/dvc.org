@@ -48,7 +48,7 @@ const Page: React.SFC<IPageProps> = props => {
     <>
       <DefaultSEO />
       <LayoutComponent {...props} />
-      <div id="modal-root" className={styles.modalRoot} />
+      <div id="portal" className={styles.portal} />
     </>
   )
 }

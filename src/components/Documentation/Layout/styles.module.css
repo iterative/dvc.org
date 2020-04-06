@@ -50,6 +50,7 @@
 }
 
 .side {
+  flex-shrink: 0;
   width: 280px;
   background-color: var(--color-light-blue);
 
@@ -103,5 +104,10 @@
 .content {
   display: flex;
   flex-direction: row;
+  max-width: calc(100% - 280px);
   background-color: #fff;
+
+  @media (--xs-scr) {
+    max-width: 100%;
+  }
 }

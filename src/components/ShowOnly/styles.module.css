@@ -1,15 +1,15 @@
 .mobile {
-  display: none;
+  display: none !important;
 
   @media (--xs-scr) {
-    display: initial;
+    display: initial !important;
   }
 }
 
 .desktop {
-  display: initial;
+  display: initial !important;
 
   @media (--xs-scr) {
-    display: none;
+    display: none !important;
   }
 }

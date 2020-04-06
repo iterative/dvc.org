@@ -1,0 +1,68 @@
+.highlightedText {
+  border-bottom: 1px black dotted;
+}
+
+.tooltip {
+  position: absolute;
+  display: none;
+  width: 400px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-lighter-blue);
+  border-radius: 3px;
+  color: var(--color-black);
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+
+  &.calculated {
+    display: block;
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    display: block;
+    height: 10px;
+    width: 10px;
+    border: none;
+    border-top: 1px solid var(--color-lighter-blue);
+    border-left: 2px solid var(--color-lighter-blue);
+    transform: rotate(90deg);
+    background-color: #fff;
+  }
+
+  &.lt::after,
+  &.rt::after {
+    top: -7px;
+    border-top-width: 2px;
+    border-left-width: 1px;
+    transform: rotate(45deg);
+  }
+
+  &.lt::after {
+    left: 27px;
+  }
+
+  &.rt::after {
+    right: 27px;
+  }
+
+  &.lb::after,
+  &.rb::after {
+    top: 100%;
+    margin-top: -4px;
+    transform: rotate(-135deg);
+  }
+
+  &.lb::after {
+    left: 27px;
+  }
+
+  &.rb::after {
+    right: 27px;
+  }
+}
+
+.tooltipHeader {
+  font-size: 1.3em;
+  font-weight: bold;
+}

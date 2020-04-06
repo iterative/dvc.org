@@ -1896,6 +1896,27 @@
   dependencies:
     "@types/lodash" "*"
 
+"@types/lodash.startcase@^4.4.6":
+  version "4.4.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash.startcase/-/lodash.startcase-4.4.6.tgz#0e91c90004c87f738ae495a24e7b858cdecf0e2f"
+  integrity sha512-wtUyl30SWGQY08prEd5zdflQKbl/lwKXwLfWaQbTLwnGPFAFkAWOOOI/WYVfK8p61CtfmCbxNHvnTK4vW2idxg==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash.throttle@^4.1.6":
+  version "4.1.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash.throttle/-/lodash.throttle-4.1.6.tgz#f5ba2c22244ee42ff6c2c49e614401a870c1009c"
+  integrity sha512-/UIH96i/sIRYGC60NoY72jGkCJtFN5KVPhEMMMTjol65effe1gPn0tycJqV5tlSwMTzX8FqzB5yAj0rfGHTPNg==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash.topairs@^4.3.6":
+  version "4.3.6"
+  resolved "https://registry.yarnpkg.com/@types/lodash.topairs/-/lodash.topairs-4.3.6.tgz#6b972d1dfda3646166f1cd659ba085bd3e3770a3"
+  integrity sha512-0nrOtPvP6BUEUpCqPKdtnaPK6z4rcBOIf3rBBPnWhxuYujAToErBiakFKWWWWdosdqI/W/kpaiegxpeheXTNxA==
+  dependencies:
+    "@types/lodash" "*"
+
 "@types/lodash@*", "@types/lodash@^4.14.92":
   version "4.14.149"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.149.tgz#1342d63d948c6062838fbf961012f74d4e638440"
@@ -1975,6 +1996,13 @@
   dependencies:
     "@types/react" "*"
 
+"@types/react-dom@^16.9.6":
+  version "16.9.6"
+  resolved "https://registry.yarnpkg.com/@types/react-dom/-/react-dom-16.9.6.tgz#9e7f83d90566521cc2083be2277c6712dcaf754c"
+  integrity sha512-S6ihtlPMDotrlCJE9ST1fRmYrQNNwfgL61UB4I1W7M6kPulUKx9fXAleW5zpdIjUQ4fTaaog8uERezjsGUj9HQ==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-helmet@^5.0.15":
   version "5.0.15"
   resolved "https://registry.yarnpkg.com/@types/react-helmet/-/react-helmet-5.0.15.tgz#af0370617307e9f062c6aee0f1f5588224ce646e"
@@ -2019,6 +2047,13 @@
   dependencies:
     "@types/prop-types" "*"
     csstype "^2.2.0"
+
+"@types/rehype-react@^4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@types/rehype-react/-/rehype-react-4.0.0.tgz#55b71cc7329b6effb8f66b8ea08c2d016680db97"
+  integrity sha512-t4fsoAYXRGGUTWesgb+eLdTEjGdFy4d5Cmz9ct2XwgUkmsAns6si9jkQ/FOrxMB/SUQ9ax0ZkKgXmHeIM7XkKg==
+  dependencies:
+    "@types/react" "*"
 
 "@types/rimraf@^2.0.2":
   version "2.0.4"

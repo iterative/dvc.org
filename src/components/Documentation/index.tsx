@@ -1,12 +1,26 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 
 import Markdown from './Markdown'
 import RightPanel from './RightPanel'
 
 import { getItemByPath } from '../../utils/sidebar'
 
-export default function Documentation({ htmlAst, path, headings }) {
+export interface IHeading {
+  slug: string
+  text: string
+}
+
+interface IDocumentationProps {
+  path: string
+  headings: Array<IHeading>
+  htmlAst: object
+}
+
+const Documentation: React.SFC<IDocumentationProps> = ({
+  htmlAst,
+  path,
+  headings
+}) => {
   const { source, prev, next, tutorials } = getItemByPath(path)
   const githubLink = `https://github.com/iterative/dvc.org/blob/master/content${source}`
 
@@ -28,8 +42,4 @@ export default function Documentation({ htmlAst, path, headings }) {
   )
 }
 
-Documentation.propTypes = {
-  path: PropTypes.string,
-  headings: PropTypes.array,
-  htmlAst: PropTypes.object
-}
+export default Documentation

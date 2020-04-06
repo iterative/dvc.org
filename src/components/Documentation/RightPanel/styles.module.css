@@ -1,0 +1,85 @@
+.container {
+  position: sticky;
+  top: var(--layout-header-height-collapsed);
+  flex-shrink: 0;
+  width: 170px;
+  height: calc(100vh - 78px);
+  font-size: 16px;
+  overflow-y: auto;
+
+  @media only screen and (max-width: 1200px) {
+    display: none;
+  }
+}
+
+.separator {
+  border: none;
+  border-top: 1px solid var(--color-lighter-blue);
+}
+
+.list {
+  margin-top: 57px;
+  margin-bottom: 25px;
+}
+
+.header {
+  font-size: 14px;
+  text-transform: uppercase;
+  color: var(--color-black);
+}
+
+.headingLink {
+  position: relative;
+  display: block;
+  min-height: 26px;
+  margin-bottom: 3px;
+  color: var(--color-gray);
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26px;
+  cursor: pointer;
+
+  &.current {
+    color: var(--color-black);
+  }
+
+  &:hover {
+    color: var(--color-black);
+  }
+}
+
+.buttonSection {
+  & + & {
+    margin-top: 25px;
+  }
+}
+
+.buttonSectionIcon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 5px;
+}
+
+.buttonSectionDescription {
+  margin-bottom: 5px;
+  color: var(--color-black);
+}
+
+.button {
+  width: 100%;
+  justify-content: flex-start;
+
+  &.tutorials {
+    white-space: nowrap;
+  }
+}
+
+.githubIcon {
+  background-image: url(/img/github_icon.svg);
+}
+
+.discordIcon {
+  background-image: url(/img/discord.svg);
+}
