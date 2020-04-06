@@ -22,7 +22,8 @@ To start using a Google Drive remote, you only need to add it with a
 `dvc pull`, `dvc fetch`, `dvc push`). For example:
 
 ```dvc
-$ dvc remote add -d myremote gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
+$ dvc remote add --default myremote \
+                           gdrive://0AIac4JZqHhKmUk9PDA/dvcstore
 $ dvc push
 
 Go to the following link in your browser:
@@ -61,8 +62,9 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    browser address bar, for example
    `https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA`.
 
-   > \* Please note the different
-   > [Shared drive limits](https://support.google.com/a/answer/7338880).
+   > \* Please note the
+   > [Shared drive limits](https://support.google.com/a/answer/7338880) on
+   > storage and uploads.
 
 2. `root` - indicates your topmost Google Drive folder ("My Drive").
 
@@ -74,8 +76,8 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    $ dvc remote add myremote gdrive://root/dvcstore
    ```
 
-   > We don't recommend using `gdrive://root` itself, as it's likely used for
-   > many other reasons, and pushing data with DVC here can make it seem messy.
+   > We don't recommend using `gdrive://root` by itself, as it's likely used for
+   > many other reasons, and pushing data with DVC here can make it messy.
 
 3. `appDataFolder` -
    [special hidden folder](https://developers.google.com/drive/api/v2/appdata)
