@@ -96,7 +96,7 @@ $ dvc metrics show --xpath AUC data/eval.json
       data/eval.json: {'AUC': 0.65115}
 ```
 
-The `xpath` filter can be saved for a metrics file:
+The `xpath` filter can be saved as the default way to display a metrics file:
 
 ```dvc
 $ dvc metrics modify data/eval.json --xpath AUC
