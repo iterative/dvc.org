@@ -46,43 +46,39 @@ Let's first create a dummy non-cached metric <abbr>output</abbr> with the `-M`
 option of `dvc run`:
 
 ```dvc
-$ dvc run -M metrics.tsv \
-          "echo -e 'time\tauc\n2019-02-13\t0.9643' > metrics.tsv"
-...
-Saving information to 'metrics.tsv.dvc'.
-$ cat metrics.tsv
-time	auc
-2019-02-13	0.9643
+$ dvc run -M metrics.json \
+        'echo {\"AUC\": 0.9643, \"TP\": 527} > metrics.json'
+$ cat metrics.json
+{"AUC":0.9671, "TP":531}
 ```
 
-To extract the AUC value out of `metrics.tsv`, we can use the `-t` and `-x`
+To extract the AUC value out of `metrics.json`, we can use the `-t` and `-x`
 options that `dvc metrics show` command supports:
 
 ```dvc
-$ dvc metrics show -t htsv -x 0,auc metrics.tsv
-	metrics.tsv: ['0.9643']
+$ dvc metrics show -t json -x AUC metrics.json
+        metrics.json: {'AUC': 0.9671}
 ```
 
-If you check the `metrics.tsv.dvc` file, you should see that `metric: true` is
+If you check the `metrics.json.dvc` file, you should see that `metric: true` is
 set:
 
 ```yaml
-md5: 6f910c9000bb03492d1e66035ba8faf6
-cmd: echo -e 'time\tauc\n2019-02-13\t0.9643' > metrics.tsv
-wdir: .
+ndex 7ad71f8..e7f94e9 100644
+md5: 1443725f6d0bd5b77aa8d5fc36e886ef
+cmd: echo {\"AUC\":0.9643, \"TP\":527} > metrics.json
 outs:
-  - md5: 7ce0bc12da7f88c1493763cdd4c3f684
-    path: metrics.tsv
-    cache: false
-    metric: true
-    persist: false
+- md5: 0f0e67dc927aa69cd3fc37435ee1304f
+  path: metrics.json
+  cache: false
+  metric: true
+  persist: false
 ```
 
 Now, let's reset the `metric` field with the `dvc metrics remove` command:
 
 ```dvc
-$ dvc metrics remove metrics.tsv
-Saving information to 'metrics.tsv.dvc'.
+$ dvc metrics remove metrics.json
 ```
 
 Let's check the outputs section (`outs`) of same
@@ -90,8 +86,8 @@ Let's check the outputs section (`outs`) of same
 
 ```yaml
 outs:
-  - md5: 7ce0bc12da7f88c1493763cdd4c3f684
-    path: metrics.tsv
+  - md5: 0f0e67dc927aa69cd3fc37435ee1304f
+    path: metrics.json
     cache: false
     metric:
     persist: false
@@ -101,10 +97,6 @@ As you can see, nothing has changed, except the `metric` field. And both files
 are still here:
 
 ```dvc
-$ tree
-.
-├── metrics.tsv
-└── metrics.tsv.dvc
-
-0 directories, 2 files
+$ ls metrics.json metrics.json.dvc
+metrics.json     metrics.json.dvc
 ```

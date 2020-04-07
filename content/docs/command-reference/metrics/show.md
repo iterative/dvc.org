@@ -44,13 +44,10 @@ compares them with a previous version.
 ## Options
 
 - `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
-  values are: `raw` (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be
-  used to determine how to parse and format metics for display.
+  values are: `raw` (default), `json`. It will be saved into the corresponding
+  DVC-file, and used to determine how to handle displaying metrics.
 
   `raw` means that no additional parsing is applied, and `--xpath` is ignored.
-  `htsv`/`hcsv` are the same as `tsv`/`csv`, but the values in the first row of
-  the file will be used as the field names and should be used to address columns
-  in the `--xpath` option.
 
   This option will override `type` and `xpath` defined in the corresponding
   DVC-file. If no `type` is provided or found in the DVC-file, DVC will try to
@@ -70,9 +67,6 @@ compares them with a previous version.
     only the values for model versions if they meet the given conditions from
     the metric file:
     `{"metrics": [{"dataset": "train", "deviation_mse": 0.173461, "value_mse": 0.421601}]}`
-  - For `tsv`/`csv` - `row,column` e.g. `1,2`. Indices are 0-based.
-  - For `htsv`/`hcsv` - `row,column name` e.g. `0,Name`. Row index is 0-based.
-    First row is used to specify column names and is not included into index.
 
   If multiple metric files exist in the <abbr>project</abbr>, the same parser
   and path will be applied to all of them. If `xpath` for a particular metric
