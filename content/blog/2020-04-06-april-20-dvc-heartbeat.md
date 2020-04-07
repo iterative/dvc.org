@@ -17,6 +17,11 @@ author: ../authors/elle_obrien.md
 commentsUrl: https://discuss.dvc.org/t/march-20-heartbeat/335
 tags:
   - Heartbeat
+  - Google Drive
+  - MLOps
+  - CI/CD
+  - Podcast
+  - DivOps
 ---
 
 Welcome to the April Heartbeat, our monthly roundup of cool happenings, good
@@ -61,7 +66,20 @@ description="Ever wonder if it's possible to train a model to discover whether y
 link="spotify.com"
 image="/uploads/images/2020-04-06/data_stream.png"/>
 
-**New releases.** Some new features in DVC!
+**New releases.** This month, DVC has released some new features and updates:
+
+- Did you know you can use Google Drive for remote storate with DVC? We've been
+  hard at work delivering the best performance with Google Drive and are
+  thrilled to invite users to try it out. Brand new
+  [docs](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
+  explain how to get started.
+- We're introducing the `metrics diff` functionality, which lets you compare
+  metrics from different commits side-by-side
+  ([check out the docs](https://dvc.org/doc/command-reference/metrics/diff) to
+  learn more)
+- Windows users, we are here for you. Contributor
+  [Cyarles Baynham](https://github.com/charlesbaynham) helped us get better
+  performance on copy operations in Windows.
 
 ## From the community
 
