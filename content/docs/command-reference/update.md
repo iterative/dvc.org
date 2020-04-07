@@ -81,7 +81,7 @@ stable.
 > [DVC-file](/doc/user-guide/dvc-file-format) (when there are changes to bring
 > in).
 
-## Example: Updating fixed-revision imports to a different version
+## Example: Updating fixed revisions to a different version
 
 > See also
 > [Importing and updating fixed revisions](/doc/command-reference/import#example-importing-and-updating-fixed-revisions).

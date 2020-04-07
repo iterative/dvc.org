@@ -18,9 +18,6 @@ shared <abbr>cache</abbr> location for everyone's projects:
 $ mkdir -p /home/shared/dvc-cache
 ```
 
-> The `/home/shared` directory used as example above is typical in Linux
-> distributions.
-
 Make sure that the directory has proper permissions, so that all your colleagues
 can write to it, and can read cached files written by others. The most
 straightforward way to do this is to make all users members of the same group,
