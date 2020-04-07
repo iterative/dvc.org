@@ -4,6 +4,7 @@ import { useLocation } from '@reach/router'
 import { Collapse } from 'react-collapse'
 import { useWindowSize } from 'react-use'
 
+import { isTriggeredFromKB } from '../../../utils/keyboard'
 import { screens } from '../../../../config/postcss/media'
 
 import styles from './styles.module.css'
@@ -39,7 +40,7 @@ const Section: React.SFC<ICommunitySection> = ({
   )
   const toggleFromKeyboard = useCallback(
     (e: React.KeyboardEvent) => {
-      if (e.which === 13 || e.which === 32) {
+      if (isTriggeredFromKB(e)) {
         toggleVisibility()
       }
     },

@@ -3,6 +3,7 @@ import cn from 'classnames'
 import ReactMarkdown from 'react-markdown'
 
 import Portal from '../Portal'
+import { isTriggeredFromKB } from '../../../../../utils/keyboard'
 
 import styles from './styles.module.css'
 
@@ -23,7 +24,7 @@ const MobileView: React.SFC<IMobileViewProps> = ({
     setVisible(true)
   }
   const onOpenKeyDown = (e: React.KeyboardEvent) => {
-    if (e.which === 13 || e.which === 32) {
+    if (isTriggeredFromKB(e)) {
       setVisible(true)
     }
   }
@@ -32,7 +33,7 @@ const MobileView: React.SFC<IMobileViewProps> = ({
     setVisible(false)
   }
   const onCloseKeyDown = (e: React.KeyboardEvent) => {
-    if (e.which === 13 || e.which === 32) {
+    if (isTriggeredFromKB(e)) {
       setVisible(false)
     }
   }

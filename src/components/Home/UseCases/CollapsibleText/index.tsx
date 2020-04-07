@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Collapse } from 'react-collapse'
 
+import { isTriggeredFromKB } from '../../../../utils/keyboard'
+
 import styles from './styles.module.css'
 
 interface ICollapsibleTextProps {
@@ -15,7 +17,7 @@ const CollapsibleText: React.SFC<ICollapsibleTextProps> = ({
   const [isOpened, setOpened] = useState(false)
   const toggle = () => setOpened(prev => !prev)
   const toggleFromKB = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.which === 13 || e.which === 32) {
+    if (isTriggeredFromKB(e)) {
       toggle()
     }
   }

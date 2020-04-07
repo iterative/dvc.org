@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import ReactPopover, { PopoverProps } from 'react-popover'
 
+import { isTriggeredFromKB } from '../../../utils/keyboard'
+
 import './styles.module.css'
 
 type IPopoverProps = {
@@ -11,7 +13,7 @@ const Popover: React.SFC<IPopoverProps> = ({ children, ...restProps }) => {
   const [isOpened, setOpened] = useState(false)
   const toggle = () => setOpened(prev => !prev)
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
-    if (e.which === 13 || e.which === 32) {
+    if (isTriggeredFromKB(e)) {
       toggle()
     }
   }
