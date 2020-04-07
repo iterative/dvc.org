@@ -13,7 +13,7 @@ A set of commands to add, manage, collect, and display project metrics:
 usage: dvc metrics [-h] [-q | -v] {show,add,modify,remove,diff} ...
 
 positional arguments:
-  {show,add,modify,remove,diff}
+COMMAND
                         Use `dvc metrics CMD --help` to display command-
                         specific help.
     show                Print metrics, with optional formatting.
