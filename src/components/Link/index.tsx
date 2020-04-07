@@ -1,14 +1,12 @@
 import React from 'react'
 import { useLocation, navigate } from '@reach/router'
 import GatsbyLink from 'gatsby-link'
-import { StyledComponentBase } from 'styled-components'
 import { handleFrontRedirect } from '../../utils/redirects'
 import { scrollIntoLayout } from '../../utils/scroll'
 
 export type ILinkProps = {
   children: React.ReactNode
   className?: string
-  as?: StyledComponentBase<React.ComponentClass, {}>
   href: string
   target?: undefined | '_blank'
   state?: unknown
@@ -26,7 +24,6 @@ const getLocation = (href: string) => {
 
 const Link: React.SFC<ILinkProps> = ({
   children,
-  as: SC,
   href,
   target,
   ...restProps
@@ -34,7 +31,6 @@ const Link: React.SFC<ILinkProps> = ({
   const currentLocation = useLocation()
 
   if (!isRelative(href) || target) {
-    const LinkComponent = SC ? SC : 'a'
     let rel = 'noopener noreferrer'
 
     if (restProps.rel) {
@@ -42,9 +38,9 @@ const Link: React.SFC<ILinkProps> = ({
     }
 
     return (
-      <LinkComponent href={href} rel={rel} target={target} {...restProps}>
+      <a href={href} rel={rel} target={target} {...restProps}>
         {children}
-      </LinkComponent>
+      </a>
     )
   }
 
@@ -80,11 +76,7 @@ const Link: React.SFC<ILinkProps> = ({
     href = currentLocation.pathname + href
   }
 
-  return SC ? (
-    <SC to={href} {...restProps} as={GatsbyLink} onClick={onClick}>
-      {children}
-    </SC>
-  ) : (
+  return (
     <GatsbyLink to={href} {...restProps} onClick={onClick}>
       {children}
     </GatsbyLink>

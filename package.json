@@ -81,7 +81,6 @@
     "scroll": "^3.0.1",
     "serve-handler": "^6.1.2",
     "slick-carousel": "^1.8.1",
-    "styled-components": "^4.4.1",
     "unist-util-visit": "2.0.2"
   },
   "devDependencies": {
@@ -101,14 +100,12 @@
     "@types/react-popover": "^0.5.3",
     "@types/react-slick": "^0.23.4",
     "@types/rehype-react": "^4.0.0",
-    "@types/styled-components": "^5.0.1",
     "@types/vfile-message": "^1.0.1",
     "@typescript-eslint/eslint-plugin": "^2.24.0",
     "@typescript-eslint/parser": "^2.24.0",
     "autoprefixer": "^9.7.4",
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
-    "babel-plugin-styled-components": "^1.10.7",
     "babel-plugin-transform-define": "^2.0.0",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "eslint": "^6.7.2",
@@ -125,7 +122,6 @@
     "gatsby-plugin-sentry": "^1.0.1",
     "gatsby-plugin-sharp": "^2.5.2",
     "gatsby-plugin-sitemap": "^2.2.27",
-    "gatsby-plugin-styled-components": "^3.1.19",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-plugin-twitter": "^2.2.0",
     "gatsby-plugin-typescript": "^2.2.5",
@@ -160,9 +156,6 @@
     "stylelint": "^13.2.1",
     "stylelint-config-standard": "^20.0.0",
     "typescript": "^3.8.3"
-  },
-  "resolutions": {
-    "@types/react-native": "link:./.tmp-empty-package"
   },
   "husky": {
     "hooks": {
