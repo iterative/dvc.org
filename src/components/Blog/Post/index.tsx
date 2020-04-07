@@ -111,7 +111,7 @@ const Post: React.SFC<IBlogPostData> = ({
               ))}
             </div>
           )}
-          {commentsUrl && ready && !error && (
+          {commentsUrl && ready && !error && result && (
             <div className={styles.comments}>
               <PseudoButton size="big" href={commentsUrl} target="_blank">
                 Discuss this post

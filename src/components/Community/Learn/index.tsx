@@ -70,7 +70,7 @@ const BlogPost: React.SFC<ICommunityBlogPost> = ({
           {title}
         </Link>
         <div className={sharedStyles.meta}>
-          {ready && !error && (
+          {ready && !error && result && (
             <>
               <Link
                 className={sharedStyles.commentsLink}

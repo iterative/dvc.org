@@ -67,10 +67,11 @@ const RightPanel: React.SFC<IRightPanelProps> = ({
     requestAnimationFrame(setCurrentHeader)
   }
 
-  const initHeadingsPosition = () =>
-    allImagesLoadedInContainer(document.querySelector('#markdown-root')).then(
-      updateHeadingsPosition
-    )
+  const initHeadingsPosition = () => {
+    const root = document.querySelector('#markdown-root')
+
+    root && allImagesLoadedInContainer(root).then(updateHeadingsPosition)
+  }
 
   useEffect(() => {
     const throttledSetCurrentHeader = throttle(setCurrentHeader, 100)
