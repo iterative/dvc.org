@@ -43,7 +43,7 @@ function Share({ className, text, slug }: IShareProps) {
     `
   )
 
-  const encodedURL = encodeURI(`${siteUrl}/${slug}`)
+  const encodedURL = encodeURI(`${siteUrl}${slug}`)
 
   const facebookHref = `https://www.facebook.com/sharer/sharer.php?u=${encodedURL}`
   const twitterHref = `https://twitter.com/share?url=${encodedURL}&via=DVCorg&text=${text}`
