@@ -15,10 +15,13 @@ export const useAnchorNavigation = () => {
       const node = document.querySelector(location.hash)
 
       if (node) {
-        scrollIntoLayout(node)
-        allImagesLoadedInContainer(document.body).then(() =>
-          scrollIntoLayout(node)
-        )
+        const contentRoot = document.getElementById('layoutContent')
+
+        if (contentRoot) {
+          allImagesLoadedInContainer(contentRoot).then(() =>
+            scrollIntoLayout(node)
+          )
+        }
       }
     } else {
       document.documentElement.scrollTop = 0

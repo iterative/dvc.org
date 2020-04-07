@@ -47,10 +47,10 @@ export const scrollIntoLayout = (
   const nodeOffset = node.getBoundingClientRect()
   const position = htmlNode.scrollTop + nodeOffset.top + (opts?.offset || 0)
   const headerHeight = getHeaderHeightAt(position)
-  const scrollTo = position - headerHeight
+  const scrollTo = Math.floor(position - headerHeight)
 
   if (!opts?.smooth) {
-    htmlNode.scrollTop = scrollTo
+    requestAnimationFrame(() => (htmlNode.scrollTop = scrollTo))
     return
   }
 

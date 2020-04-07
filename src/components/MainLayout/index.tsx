@@ -46,7 +46,9 @@ const MainLayout: LayoutComponent = ({
     <>
       <LayoutHeader modifiers={modifiers} />
       <HamburgerMenu />
-      {children}
+      <div id="layoutContent" className={styles.pageContent}>
+        {children}
+      </div>
       <LayoutFooter modifiers={modifiers} />
     </>
   )

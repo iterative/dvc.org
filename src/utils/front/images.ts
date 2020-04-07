@@ -1,7 +1,7 @@
 import Promise from 'promise-polyfill'
 
 export const getImages = (node: Element) =>
-  Array.from(node.querySelectorAll('img'))
+  Array.from(node.querySelectorAll('img')).filter((imgNode) => !!imgNode.src)
 
 export const imageLoaded = (imgNode: HTMLImageElement) => {
   if (imgNode.complete && imgNode.naturalWidth !== 0) {
