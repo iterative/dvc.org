@@ -4,8 +4,8 @@ import cn from 'classnames'
 import Link from '../../Link'
 import PseudoButton from '../../PseudoButton'
 
-import { logEvent } from '../../../utils/ga'
-import { getFirstPage } from '../../../utils/sidebar'
+import { logEvent } from '../../../utils/front/ga'
+import { getFirstPage } from '../../../utils/shared/sidebar'
 
 const docsPage = getFirstPage()
 

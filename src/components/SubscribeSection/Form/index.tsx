@@ -1,7 +1,7 @@
 import React, { useCallback, useRef } from 'react'
 import { nanoid } from 'nanoid'
 
-import { logEvent } from '../../../utils/ga'
+import { logEvent } from '../../../utils/front/ga'
 
 import styles from './styles.module.css'
 

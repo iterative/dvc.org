@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Collapse } from 'react-collapse'
 
-import { isTriggeredFromKB } from '../../../../utils/keyboard'
+import { isTriggeredFromKB } from '../../../../utils/front/keyboard'
 
 import styles from './styles.module.css'
 

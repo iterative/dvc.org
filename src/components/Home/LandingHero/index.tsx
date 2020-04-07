@@ -6,8 +6,8 @@ import Link from '../../Link'
 import DownloadButton from '../../DownloadButton'
 import TwoRowsButton from '../../TwoRowsButton'
 import GithubLine from './GithubLine'
-import { scrollIntoLayout, ease } from '../../../utils/scroll'
-import { logEvent } from '../../../utils/ga'
+import { scrollIntoLayout, ease } from '../../../utils/front/scroll'
+import { logEvent } from '../../../utils/front/ga'
 
 import styles from './styles.module.css'
 

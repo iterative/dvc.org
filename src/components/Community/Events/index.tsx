@@ -7,7 +7,7 @@ import LayoutWidthContainer from '../../LayoutWidthContainer'
 import Link from '../../Link'
 import Block from '../Block'
 import Section from '../Section'
-import { logEvent } from '../../../utils/ga'
+import { logEvent } from '../../../utils/front/ga'
 
 import data from '../data.json'
 import sharedStyles from '../styles.module.css'

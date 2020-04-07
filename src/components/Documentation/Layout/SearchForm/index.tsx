@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import Promise from 'promise-polyfill'
-import { loadResource } from '../../../../utils/resources'
+import { loadResource } from '../../../../utils/front/resources'
 
 import styles from './styles.module.css'
 

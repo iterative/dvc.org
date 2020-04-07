@@ -1,7 +1,7 @@
 /* eslint-env node */
 
 const visit = require('unist-util-visit')
-const { getItemByPath } = require('../../src/utils/sidebar')
+const { getItemByPath } = require('../../src/utils/shared/sidebar')
 
 const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*/
 const COMMAND_REGEXP = /^[a-z][a-z-]*$/

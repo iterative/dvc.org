@@ -1,4 +1,4 @@
-const { getRedirect } = require('../../../../src/utils/redirects')
+const { getRedirect } = require('../../../utils/shared/redirects')
 const { parse } = require('url')
 const { stringify } = require('querystring')
 const { isProduction } = require('../../utils')

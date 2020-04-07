@@ -12,7 +12,7 @@ import {
   structure,
   getParentsListFromPath,
   getPathWithSoruce
-} from '../../../../utils/sidebar'
+} from '../../../../utils/shared/sidebar'
 
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import styles from './styles.module.css'

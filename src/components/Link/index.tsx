@@ -2,8 +2,8 @@ import React, { useCallback } from 'react'
 import { URL } from 'iso-url'
 import { useLocation, navigate } from '@reach/router'
 import GatsbyLink from 'gatsby-link'
-import { getRedirect, handleFrontRedirect } from '../../utils/redirects'
-import { scrollIntoLayout } from '../../utils/scroll'
+import { getRedirect, handleFrontRedirect } from '../../utils/shared/redirects'
+import { scrollIntoLayout } from '../../utils/front/scroll'
 
 export type ILinkProps = {
   children: React.ReactNode

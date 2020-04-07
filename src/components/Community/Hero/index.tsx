@@ -3,7 +3,7 @@ import React from 'react'
 import LayoutWidthContainer from '../../LayoutWidthContainer'
 import ShowOnly from '../../ShowOnly'
 import Link from '../../Link'
-import { logEvent } from '../../../utils/ga'
+import { logEvent } from '../../../utils/front/ga'
 
 import data from '../data.json'
 import styles from './styles.module.css'

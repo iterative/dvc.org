@@ -7,7 +7,7 @@ import LayoutWidthContainer from '../LayoutWidthContainer'
 import Link from '../Link'
 import Nav from './Nav'
 
-import { useHeaderIsScrolled } from '../../utils/scroll'
+import { useHeaderIsScrolled } from '../../utils/front/scroll'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo.svg'
 import styles from './styles.module.css'
 

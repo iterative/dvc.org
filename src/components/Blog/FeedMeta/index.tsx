@@ -2,7 +2,7 @@ import Image, { FixedObject } from 'gatsby-image'
 import React from 'react'
 
 import Link from '../../Link'
-import { pluralizeComments } from '../../../utils/i18n'
+import { pluralizeComments } from '../../../utils/front/i18n'
 
 import styles from './styles.module.css'
 

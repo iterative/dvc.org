@@ -4,8 +4,8 @@ import cn from 'classnames'
 import TwoRowsButton from '../TwoRowsButton'
 import Link from '../Link'
 
-import isClient from '../../utils/isClient'
-import { logEvent } from '../../utils/ga'
+import isClient from '../../utils/front/isClient'
+import { logEvent } from '../../utils/front/ga'
 
 import styles from './styles.module.css'
 

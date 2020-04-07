@@ -7,7 +7,7 @@ import Collapsible from 'react-collapsible'
 import Link from '../../Link'
 import Tooltip from './Tooltip'
 import Tutorials from '../TutorialsLinks'
-import { getPathWithSoruce } from '../../../utils/sidebar'
+import { getPathWithSoruce } from '../../../utils/shared/sidebar'
 
 import 'github-markdown-css/github-markdown.css'
 import sharedStyles from '../styles.module.css'

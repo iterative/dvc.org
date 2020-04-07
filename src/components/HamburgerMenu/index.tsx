@@ -4,8 +4,8 @@ import React, { useCallback, useState, useEffect } from 'react'
 import HamburgerIcon from '../HamburgerIcon'
 import Link from '../Link'
 
-import { logEvent } from '../../utils/ga'
-import { getFirstPage } from '../../utils/sidebar'
+import { logEvent } from '../../utils/front/ga'
+import { getFirstPage } from '../../utils/shared/sidebar'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
 
 import styles from './styles.module.css'

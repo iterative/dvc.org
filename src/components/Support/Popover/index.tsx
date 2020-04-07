@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import ReactPopover, { PopoverProps } from 'react-popover'
 
-import { isTriggeredFromKB } from '../../../utils/keyboard'
+import { isTriggeredFromKB } from '../../../utils/front/keyboard'
 
 import './styles.module.css'
 

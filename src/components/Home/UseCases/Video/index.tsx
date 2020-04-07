@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react'
 
 import TwoRowsButton from '../../../TwoRowsButton'
-import { logEvent } from '../../../../utils/ga'
+import { logEvent } from '../../../../utils/front/ga'
 
 import styles from './styles.module.css'
 

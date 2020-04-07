@@ -4,11 +4,11 @@ const fs = require('fs')
 const path = require('path')
 const GithubSlugger = require('github-slugger')
 const { createFilePath } = require('gatsby-source-filesystem')
-const tagToSlug = require('./src/utils/tagToSlug')
-const paginatablePageGenerator = require('./src/utils/paginatablePageGenerator')
+const tagToSlug = require('./src/utils/shared/tagToSlug')
+const pagesGenerator = require('./src/utils/node/paginatable')
 const { siteMetadata } = require('./gatsby-config')
 
-const { getItemBySource } = require('./src/utils/sidebar')
+const { getItemBySource } = require('./src/utils/shared/sidebar')
 
 const remark = require('remark')
 const remarkHTML = require('remark-html')
@@ -186,7 +186,7 @@ exports.createPages = async ({ graphql, actions }) => {
   // Create home blog pages (with pagination)
   const blogHomeTemplate = path.resolve('./src/templates/blog-home.tsx')
 
-  for (const page of paginatablePageGenerator({
+  for (const page of pagesGenerator({
     basePath: '/blog',
     hasHeroItem: true,
     itemCount: blogResponse.data.home.pageInfo.itemCount
@@ -229,7 +229,7 @@ exports.createPages = async ({ graphql, actions }) => {
     ({ fieldValue: tag, pageInfo: { itemCount } }) => {
       const basePath = `/tags/${tagToSlug(tag)}`
 
-      for (const page of paginatablePageGenerator({ basePath, itemCount })) {
+      for (const page of pagesGenerator({ basePath, itemCount })) {
         actions.createPage({
           component: blogTagsTemplate,
           path: page.path,

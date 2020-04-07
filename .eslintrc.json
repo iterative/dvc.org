@@ -37,6 +37,7 @@
         "src/utils/**/*.?(js|ts)",
         "scripts/**/*.js",
         "src/server/**/*.js",
+        "plugins/**/*.js",
         "gatsby-*.js"
       ],
       "rules": {

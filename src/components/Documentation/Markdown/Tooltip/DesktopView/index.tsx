@@ -4,7 +4,7 @@ import ReactMarkdown from 'react-markdown'
 import throttle from 'lodash.throttle'
 
 import Portal from '../Portal'
-import { getHeaderHeight } from '../../../../../utils/scroll'
+import { getHeaderHeight } from '../../../../../utils/front/scroll'
 import styles from './styles.module.css'
 
 interface IDesktopViewProps {

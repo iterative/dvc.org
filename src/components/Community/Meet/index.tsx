@@ -6,14 +6,14 @@ import LayoutWidthContainer from '../../LayoutWidthContainer'
 import Block from '../Block'
 import Section from '../Section'
 import Link from '../../Link'
-import { pluralizeComments } from '../../../utils/i18n'
-import { logEvent } from '../../../utils/ga'
+import { pluralizeComments } from '../../../utils/front/i18n'
+import { logEvent } from '../../../utils/front/ga'
 import {
   useIssues,
   useTopics,
   IGithubIssue,
   IDiscussTopic
-} from '../../../utils/api'
+} from '../../../utils/front/api'
 
 import data from '../data.json'
 import sharedStyles from '../styles.module.css'

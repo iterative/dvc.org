@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 
-import { logEvent } from '../../../utils/ga'
-import { scrollIntoLayout, ease } from '../../../utils/scroll'
+import { logEvent } from '../../../utils/front/ga'
+import { scrollIntoLayout, ease } from '../../../utils/front/scroll'
 
 import styles from './styles.module.css'
 

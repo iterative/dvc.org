@@ -7,7 +7,7 @@ import LayoutWidthContainer from '../LayoutWidthContainer'
 import Link from '../Link'
 import IconSet from '../IconSet'
 
-import { getFirstPage } from '../../utils/sidebar'
+import { getFirstPage } from '../../utils/shared/sidebar'
 
 import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
 import styles from './styles.module.css'

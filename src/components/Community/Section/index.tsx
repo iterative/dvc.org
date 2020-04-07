@@ -4,7 +4,7 @@ import { useLocation } from '@reach/router'
 import { Collapse } from 'react-collapse'
 import { useWindowSize } from 'react-use'
 
-import { isTriggeredFromKB } from '../../../utils/keyboard'
+import { isTriggeredFromKB } from '../../../utils/front/keyboard'
 import { screens } from '../../../../config/postcss/media'
 
 import styles from './styles.module.css'

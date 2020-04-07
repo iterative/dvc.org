@@ -6,7 +6,7 @@ import { IHeading } from '../'
 import Link from '../../Link'
 import Tutorials from '../TutorialsLinks'
 
-import { allImagesLoadedInContainer } from '../../../utils/images'
+import { allImagesLoadedInContainer } from '../../../utils/front/images'
 
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'

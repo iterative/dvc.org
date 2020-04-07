@@ -3,7 +3,7 @@ import cn from 'classnames'
 import ReactMarkdown from 'react-markdown'
 
 import Portal from '../Portal'
-import { isTriggeredFromKB } from '../../../../../utils/keyboard'
+import { isTriggeredFromKB } from '../../../../../utils/front/keyboard'
 
 import styles from './styles.module.css'
 

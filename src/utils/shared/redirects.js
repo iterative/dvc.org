@@ -1,7 +1,7 @@
 /* eslint-env node */
 
 const { navigate } = require('@reach/router')
-let redirects = require('../../redirects-list.json')
+let redirects = require('../../../redirects-list.json')
 
 const processRedirectString = redirectString => {
   const redirectParts = redirectString.split(/\s+/g)

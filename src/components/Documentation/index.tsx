@@ -3,7 +3,7 @@ import React from 'react'
 import Markdown from './Markdown'
 import RightPanel from './RightPanel'
 
-import { getItemByPath } from '../../utils/sidebar'
+import { getItemByPath } from '../../utils/shared/sidebar'
 
 export interface IHeading {
   slug: string
