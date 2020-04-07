@@ -52,6 +52,7 @@
     "gatsby-plugin-typescript": "^2.2.5",
     "gatsby-plugin-webpack-bundle-analyzer": "^1.0.5",
     "github-markdown-css": "^3.0.1",
+    "iso-url": "^0.4.7",
     "isomorphic-fetch": "^2.2.1",
     "lodash.includes": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",

@@ -1985,10 +1985,6 @@
   dependencies:
     "@types/react" "*"
 
-"@types/react-native@link:./.tmp-empty-package":
-  version "0.0.0"
-  uid ""
-
 "@types/react-popover@^0.5.3":
   version "0.5.3"
   resolved "https://registry.yarnpkg.com/@types/react-popover/-/react-popover-0.5.3.tgz#5bee27490d2fd81f891b87799c39dbc520e5d1b7"
@@ -9220,6 +9216,11 @@ isexe@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/isexe/-/isexe-2.0.0.tgz#e8fbf374dc556ff8947a10dcb0572d633f2cfa10"
   integrity sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
+
+iso-url@^0.4.7:
+  version "0.4.7"
+  resolved "https://registry.yarnpkg.com/iso-url/-/iso-url-0.4.7.tgz#de7e48120dae46921079fe78f325ac9e9217a385"
+  integrity sha512-27fFRDnPAMnHGLq36bWTpKET+eiXct3ENlCcdcMdk+mjXrb2kw3mhBUg1B7ewAC0kVzlOPhADzQgz1SE6Tglog==
 
 isobject@^2.0.0:
   version "2.1.0"

@@ -53,6 +53,11 @@ const handleFrontRedirect = (host, pathname, clickEvent) => {
 
     if (redirectUrl.startsWith('/')) {
       redirectUrl = redirectUrl + location.search
+
+      // If it's trailing slash redirect we should save hash in the url
+      if (pathname === `${redirectUrl}/`) {
+        redirectUrl = redirectUrl + location.hash
+      }
     }
 
     navigate(redirectUrl)

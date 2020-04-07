@@ -45,3 +45,7 @@ declare module 'ease-component' {
   const ease: EaseModule
   export = ease
 }
+
+declare module 'iso-url' {
+  export const URL: typeof window.URL
+}
