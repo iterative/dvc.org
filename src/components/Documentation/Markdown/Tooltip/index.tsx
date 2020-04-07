@@ -6,7 +6,6 @@ import DesktopView from './DesktopView'
 import MobileView from './MobileView'
 
 import glossary from '../../../../../content/docs/glossary'
-import styles from './styles.module.css'
 
 const Tooltip: React.SFC<{ text: string }> = ({ text }) => {
   const [state, setState] = useState({
@@ -38,14 +37,14 @@ const Tooltip: React.SFC<{ text: string }> = ({ text }) => {
 
   return (
     <>
-      <ShowOnly on="desktop" className={styles.inline}>
+      <ShowOnly on="desktop" as="span">
         <DesktopView
           description={state.description}
           header={state.header}
           text={text}
         />
       </ShowOnly>
-      <ShowOnly on="mobile">
+      <ShowOnly on="mobile" as="span">
         <MobileView
           description={state.description}
           header={state.header}

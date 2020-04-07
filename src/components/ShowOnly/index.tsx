@@ -5,12 +5,16 @@ import styles from './styles.module.css'
 
 interface IShowOnlyProps {
   on: 'mobile' | 'desktop'
+  as?: 'div' | 'span'
   className?: string
   children: React.ReactNode
 }
 
-const ShowOnly: React.SFC<IShowOnlyProps> = ({ on, className, children }) => (
-  <div className={cn(styles[on], className)}>{children}</div>
-)
+const ShowOnly: React.SFC<IShowOnlyProps> = ({
+  on,
+  as: AS = 'div',
+  className,
+  children
+}) => <AS className={cn(styles[on], className)}>{children}</AS>
 
 export default ShowOnly
