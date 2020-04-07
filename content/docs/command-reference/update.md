@@ -36,14 +36,13 @@ dvc update --rev master
 
 ## Options
 
-- `--rev` - specific
-  [Git revision](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
-  (such as a branch name, a tag, or a commit hash) of the repository to update
-  the file or directory from (also starts tracking the given revision).
+- `--rev` - commit hash, branch or tag name, etc. (any
+  [Git revision](https://git-scm.com/docs/revisions)) of the repository to
+  update the file or directory from. The latest commit in `master` (tip of the
+  default branch) is used by default when this option is not specified.
 
-  > Note that this adds or updates a `rev` field in the DVC-file that fixes it
-  > to this revision (and updates `rev_lock` in the DVC-file). This can have an
-  > impact on the behavior of `dvc update` later.
+  > Note that this changes the `rev` field in the import stage, fixing it to the
+  > revision.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -82,15 +81,19 @@ stable.
 > [DVC-file](/doc/user-guide/dvc-file-format) (when there are changes to bring
 > in).
 
-## Example: Updating imported artifacts to a specified revision
+## Example: Updating fixed revisions to a different version
 
-Let's import a model from an older version of our
+> See also
+> [Importing and updating fixed revisions](/doc/command-reference/import#example-importing-and-updating-fixed-revisions).
+
+Let's import a model from a specific version of our
 [get started example repo](https://github.com/iterative/example-get-started)
 first:
 
 ```dvc
 $ dvc import --rev baseline-experiment \
-            git@github.com:iterative/example-get-started model.pkl
+            git@github.com:iterative/example-get-started \
+            model.pkl
 Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 -> 'model.pkl'
 ```
@@ -116,4 +119,4 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 ```
 
 The import stage is overwritten, and will get updated from the latest changes in
-the given revision (i.e. `bigrams-experiment` tag).
+the given commit (tag `bigrams-experiment`).

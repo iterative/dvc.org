@@ -116,27 +116,31 @@ to push.
 
 ## Examples
 
-For using the `dvc push` command, a remote storage must be defined. (See
-`dvc remote add`.) For an existing <abbr>project</abbr>, remotes are usually
-already set up and you can use `dvc remote list` to check them. To remember how
-it's done, and set a context for the example, let's define a default SSH remote:
+To use `dvc push` (without options), a default
+[remote storage](/doc/command-reference/remote) must be defined (see option
+`--default` of `dvc remote add`). Let's see an SSH remote example:
 
 ```dvc
-$ dvc remote add r1 ssh://_username_@_host_/path/to/dvc/cache/directory
-$ dvc remote list
-r1	ssh://_username_@_host_/path/to/dvc/cache/directory
+$ dvc remote add --default r1 \
+                 ssh://_username_@_host_/path/to/dvc/cache/directory
 ```
 
-> DVC supports several
-> [remote types](/doc/command-reference/remote/add#supported-storage-types).
+> For existing <abbr>projects</abbr>, remotes are usually already set up. You
+> can use `dvc remote list` to check them:
+>
+> ```dvc
+> $ dvc remote list
+> r1	ssh://_username_@_host_/path/to/dvc/cache/directory
+> ```
 
-Push all data file caches from the current Git branch to the default remote:
+Push entire data <abbr>cache</abbr> from the current <abbr>workspace</abbr> to
+the default remote:
 
 ```dvc
 $ dvc push
 ```
 
-Push <abbr>outputs</abbr> of a specific DVC-file:
+Push <abbr>outputs</abbr> of a specific DVC-file only:
 
 ```dvc
 $ dvc push data.zip.dvc
@@ -160,8 +164,9 @@ model.p.dvc
 Dvcfile
 ```
 
-Imagine the project has been modified such that the <abbr>outputs</abbr> of some
-of these stages should be uploaded to remote storage.
+Imagine the <abbr>projects</abbr> has been modified such that the
+<abbr>outputs</abbr> of some of these stages should be uploaded to
+[remote storage](/doc/command-reference/remote).
 
 ```dvc
 $ dvc status --cloud
@@ -175,33 +180,30 @@ One could do a simple `dvc push` to share all the data, but what if you only
 want to upload part of the data?
 
 ```dvc
-$ dvc push --remote r1 --with-deps matrix-train.p.dvc
+$ dvc push --with-deps matrix-train.p.dvc
 
 ... Do some work based on the partial update
 
-$ dvc push --remote r1 --with-deps model.p.dvc
+$ dvc push --with-deps model.p.dvc
 
 ... Push the rest of the data
-
-$ dvc push --remote r1
-
-Everything is up to date.
 
 $ dvc status --cloud
 
 Data and pipelines are up to date.
 ```
 
-With the first `dvc push` we specified a stage in the middle of this pipeline
-(`matrix-train.p.dvc`) while using `--with-deps`. DVC started with that DVC-file
-and searched backwards through the pipeline for data files to upload. Because
-the `model.p.dvc` stage occurs later, its data was not pushed.
+We specified a stage in the middle of this pipeline (`matrix-train.p.dvc`) with
+the first push. `--with-deps` caused DVC to start with that DVC-file, and search
+backwards through the pipeline for data files to upload.
 
-Then we ran `dvc push` specifying the last stage, `model.p.dvc`, and its data
-was uploaded. Finally, we ran `dvc push` and `dvc status` with no flags to
-double check that all data had been uploaded.
+Because the `model.p.dvc` stage occurs later (it's the last one), its data was
+not pushed. However, we then specified it in the second push, so all remaining
+data was uploaded.
 
-## Example: What happens in the cache
+Finally, we used `dvc status` to double check that all data had been uploaded.
+
+## Example: What happens in the cache?
 
 Let's take a detailed look at what happens to the
 [cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
@@ -210,9 +212,9 @@ example consider having created a <abbr>workspace</abbr> that contains some code
 and data, and having set up a remote.
 
 Some work has been performed in the workspace, and it contains new data to
-upload to the shared remote. When running `dvc status --cloud` the report will
-list several files in `new` state. We can see exactly what that means by looking
-in the project's <abbr>cache</abbr>:
+upload onto the [remote](/doc/command-reference/remote). `dvc status --cloud`
+will list several files in `new` state. We can see exactly what that means by
+looking in the project's <abbr>cache</abbr>:
 
 ```dvc
 $ tree .dvc/cache
@@ -223,107 +225,58 @@ $ tree .dvc/cache
 │   └── d48000c6a4e359f4b81285abf059b5
 ├── 38
 │   └── 64e70211d3bdb367ad1432bfc14c1f.dir
-├── 3f
-│   └── 957fa0f1bb46534d07f4fc2116d73d
 ├── 4a
 │   └── 8c47036c79c01522e79ac0f518d0f7
-├── 5e
-│   └── 4a7d0cbe26eda55624439661db925d
 ├── 6c
 │   └── 3074754e3a9b563b62c8f1a38670dc
 ├── 77
 │   └── bea77463abe2b7c6b4d13f00d2c7b4
-├── 88
-│   └── c3db1c257136090dbb4a7ddf31e678.dir
-└── f4
+└── 88
+    └── c3db1c257136090dbb4a7ddf31e678.dir
 
 10 directories, 9 files
-$ tree ../vault/recursive
-../vault/recursive
+
+$ tree ~/vault/recursive
+~/vault/recursive
 ├── 0b
 │   └── d48000c6a4e359f4b81285abf059b5
 ├── 4a
 │   └── 8c47036c79c01522e79ac0f518d0f7
-├── 6c
-│   └── 3074754e3a9b563b62c8f1a38670dc
-├── 88
-│   └── c3db1c257136090dbb4a7ddf31e678.dir
-└── f4
-    └── 7482b18ecca728ba4ae931e5d568fb
+└── 88
+    └── c3db1c257136090dbb4a7ddf31e678.dir
 
 5 directories, 5 files
 ```
 
-The directory `.dvc/cache` is the local cache, while `../vault/recursive` is the
-[remote storage](/doc/command-reference/remote) – a "local remote" in this case.
-This listing shows the cache having more files in it than the remote – which is
-what the `new` state means.
+The directory `.dvc/cache` is the local cache, while `~/vault/recursive` is a
+"local remote" (another directory in the local file system). This listing shows
+the cache having more files in it than the remote – which is what the `new`
+state means.
 
 > Refer to
 > [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
 > for more info.
 
-Next we can upload part of the data from the cache to the remote using the
-command `dvc push --with-deps <stage>.dvc`. Remember that `--with-deps` searches
-backwards from the DVC-file `targets` to locate files to upload, and does not
-upload files in subsequent stages.
-
-After doing that we can inspect the remote storage again:
+Next we can copy the remaining data from the cache to the remote using
+`dvc push`:
 
 ```dvc
-$ tree ../vault/recursive
-../vault/recursive
-├── 0b
-│   └── d48000c6a4e359f4b81285abf059b5
-├── 38
-│   └── 64e70211d3bdb367ad1432bfc14c1f.dir
-├── 4a
-│   └── 8c47036c79c01522e79ac0f518d0f7
-├── 5e
-│   └── 4a7d0cbe26eda55624439661db925d
-├── 6c
-│   └── 3074754e3a9b563b62c8f1a38670dc
-├── 77
-│   └── bea77463abe2b7c6b4d13f00d2c7b4
-├── 88
-│   └── c3db1c257136090dbb4a7ddf31e678.dir
-└── f4
-    └── 7482b18ecca728ba4ae931e5d568fb
-
-8 directories, 8 files
-```
-
-The remote storage now has some of the files which had been missing, but not all
-of them. Indeed `dvc status --cloud` still lists a couple files as `new`. We can
-clearly see this above, since a couple files are in the cache, but not in the
-remote.
-
-After running `dvc push` to cause all files to be uploaded, the remote storage
-now contains all of them:
-
-```dvc
-$ tree ../vault/recursive
-../vault/recursive
+$ tree ~/vault/recursive
+~/vault/recursive
 ├── 02
 │   └── 423d88d184649a7157a64f28af5a73
 ├── 0b
 │   └── d48000c6a4e359f4b81285abf059b5
 ├── 38
 │   └── 64e70211d3bdb367ad1432bfc14c1f.dir
-├── 3f
-│   └── 957fa0f1bb46534d07f4fc2116d73d
 ├── 4a
 │   └── 8c47036c79c01522e79ac0f518d0f7
-├── 5e
-│   └── 4a7d0cbe26eda55624439661db925d
 ├── 6c
 │   └── 3074754e3a9b563b62c8f1a38670dc
 ├── 77
 │   └── bea77463abe2b7c6b4d13f00d2c7b4
-├── 88
-│   └── c3db1c257136090dbb4a7ddf31e678.dir
-└── f4
-    └── 7482b18ecca728ba4ae931e5d568fb
+└── 88
+    └── c3db1c257136090dbb4a7ddf31e678.dir
 
 10 directories, 10 files
 

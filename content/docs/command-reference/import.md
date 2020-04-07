@@ -84,9 +84,10 @@ data artifact from the source repo.
   download the file or directory from. The latest commit in `master` (tip of the
   default branch) is used by default when this option is not specified.
 
-  > Note that this adds a `rev` field in the import stage that fixes it to this
-  > revision. This can impact the behavior of `dvc update`. (See
-  > **re-importing** example below.)
+  > Note that this adds a `rev` field in the import stage that fixes it to the
+  > revision. This can impact the behavior of `dvc update`. (See the
+  > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
+  > example below.)
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -172,6 +173,9 @@ different commit with `dvc update --rev`:
 ```dvc
 $ dvc update --rev cats-dogs-v2
 ```
+
+> In the above example, the value for `rev` in the new import stage will be
+> `master` (a branch) so it will be able update normally going forward.
 
 ## Example: Data registry
 
