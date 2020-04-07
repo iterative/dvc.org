@@ -1,8 +1,16 @@
 /* eslint jsx-a11y/html-has-lang:0 */
 import React from 'react'
-import PropTypes from 'prop-types'
 
-export default function HTML(props) {
+interface IHTMLProps {
+  htmlAttributes: object
+  headComponents: Array<React.ReactNode>
+  bodyAttributes: object
+  preBodyComponents: Array<React.ReactNode>
+  body: string
+  postBodyComponents: Array<React.ReactNode>
+}
+
+const HTML: React.SFC<IHTMLProps> = props => {
   return (
     <html {...props.htmlAttributes}>
       <head>
@@ -27,11 +35,4 @@ export default function HTML(props) {
   )
 }
 
-HTML.propTypes = {
-  htmlAttributes: PropTypes.object,
-  headComponents: PropTypes.array,
-  bodyAttributes: PropTypes.object,
-  preBodyComponents: PropTypes.array,
-  body: PropTypes.string,
-  postBodyComponents: PropTypes.array
-}
+export default HTML
