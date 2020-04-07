@@ -46,9 +46,6 @@ For the examples, let's take a look at a [stage](/doc/command-reference/run)
 that simply moves local file to an external location, producing a `data.txt.dvc`
 DVC-file.
 
-> Note that some of these commands use the `/home/shared` directory, typical in
-> Linux distributions.
-
 ### Local file system path
 
 The default local cache location is `.dvc/cache`, so there is no need to specify
