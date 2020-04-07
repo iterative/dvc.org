@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import cn from 'classnames'
+import Portal from '@reach/portal'
 import ReactMarkdown from 'react-markdown'
 
-import Portal from '../Portal'
 import { isTriggeredFromKB } from '../../../../../utils/front/keyboard'
 
 import styles from './styles.module.css'

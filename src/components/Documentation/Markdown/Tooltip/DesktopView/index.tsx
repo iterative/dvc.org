@@ -1,9 +1,9 @@
 import React, { useRef, useState, useEffect } from 'react'
 import cn from 'classnames'
 import ReactMarkdown from 'react-markdown'
+import Portal from '@reach/portal'
 import throttle from 'lodash.throttle'
 
-import Portal from '../Portal'
 import { getHeaderHeight } from '../../../../../utils/front/scroll'
 import styles from './styles.module.css'
 
@@ -87,12 +87,10 @@ const DesktopView: React.SFC<IDesktopViewProps> = ({
     }
   }, [])
   useEffect(() => {
-    if (!tooltipRef.current) {
-      return
+    if (isVisible) {
+      requestAnimationFrame(calcPosition)
     }
-
-    calcPosition()
-  }, [isVisible, tooltipRef.current])
+  }, [isVisible])
 
   return (
     <>

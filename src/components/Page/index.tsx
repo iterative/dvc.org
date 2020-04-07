@@ -10,7 +10,6 @@ import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
 import 'reset-css'
 import './base.css'
 import './fonts/fonts.css'
-import styles from './styles.module.css'
 
 export interface IPageProps {
   location: {
@@ -48,7 +47,6 @@ const Page: React.SFC<IPageProps> = props => {
     <>
       <DefaultSEO />
       <LayoutComponent {...props} />
-      <div id="portal" className={styles.portal} />
     </>
   )
 }
