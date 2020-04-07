@@ -29,8 +29,7 @@
     ],
     "no-tabs": "error",
     "react/prop-types": "off", // Props should be described as TS types
-    "@typescript-eslint/explicit-function-return-type": "off",
-    "@typescript-eslint/no-var-requires": "warn"
+    "@typescript-eslint/explicit-function-return-type": "off"
   },
   "overrides": [
     {
