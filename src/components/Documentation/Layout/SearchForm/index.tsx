@@ -7,7 +7,6 @@ import styles from './styles.module.css'
 declare global {
   // eslint-disable-next-line @typescript-eslint/interface-name-prefix
   interface Window {
-    define?: { amd: boolean }
     docsearch?: (opts: object) => void
   }
 }
@@ -16,12 +15,6 @@ const SearchForm: React.SFC = props => {
   const [isLoaded, setLoaded] = useState(false)
 
   useEffect(() => {
-    // When mailchimp loads it adds AMD support and docsearch define new AMD
-    // unnamed(!) modules instead of global variable
-    if (window.define) {
-      window.define.amd = false
-    }
-
     Promise.all([
       loadResource(
         'https://cdn.jsdelivr.net/npm/docsearch.js@2.6.2/dist/cdn/docsearch.min.css'
