@@ -2,7 +2,15 @@ import { useStaticQuery, graphql } from 'gatsby'
 
 import { IBlogPostData } from '../templates/blog-post'
 
-export default function posts() {
+interface IResultBlogPostData {
+  commentsUrl?: string
+  date: string
+  pictureUrl: string | null
+  title: string
+  url: string
+}
+
+export default function posts(): Array<IResultBlogPostData> {
   const { allMarkdownRemark } = useStaticQuery(graphql`
     query Posts {
       allMarkdownRemark(

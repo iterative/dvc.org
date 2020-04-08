@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-brandon);
+  font-weight: 500;
+  line-height: 20px;
+}
+
+.link {
+  margin-left: 0.3em;
+  font-family: var(--font-brandon);
+  font-weight: 500;
+  color: var(--color-gray-hover);
+
+  &:focus,
+  &:hover,
+  &:visited {
+    color: var(--color-gray-hover);
+  }
+}
+
+.githubLogo {
+  width: 20px;
+  height: 20px;
+  margin-right: 9px;
+  font-family: var(--font-brandon);
+  font-weight: 500;
+}
+
+.starIcon {
+  width: 11px;
+  height: 11px;
+  margin-top: -1px;
+  margin-left: 7px;
+}
+
+.count {
+  margin-left: 7px;
+  font-family: var(--font-brandon);
+  font-weight: 500;
+}

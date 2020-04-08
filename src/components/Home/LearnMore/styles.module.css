@@ -1,0 +1,74 @@
+@keyframes bounce {
+  0%,
+  30%,
+  45%,
+  65%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-13px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes bounceMobile {
+  0%,
+  30%,
+  50%,
+  70%,
+  100% {
+    transform: translateY(0);
+  }
+
+  40% {
+    transform: translateY(-13px);
+  }
+
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+.button {
+  position: absolute;
+  z-index: 2;
+  transform: translate(-50%, 0%);
+  left: 50%;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.icon {
+  width: 11px;
+  height: 19px;
+  will-change: transform;
+  animation: bounce 3s infinite;
+
+  @media (--xs-scr) {
+    animation-name: bounceMobile;
+  }
+}
+
+.caption {
+  font-family: var(--font-brandon);
+  font-size: 16px;
+  line-height: 23px;
+  font-weight: 500;
+  color: var(--color-gray-light);
+  display: initial;
+
+  @media (--xs-scr) {
+    display: none;
+  }
+}

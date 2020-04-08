@@ -1,7 +1,5 @@
 /* eslint-env node */
 
-const HEADER = 'header'
-
 const WEBSITE_HOST = 'dvc.org'
 
 const FORUM_URL = `https://discuss.${WEBSITE_HOST}`
@@ -21,7 +19,6 @@ const BLOG = {
 }
 
 module.exports = {
-  HEADER,
   FORUM_URL,
   BLOG,
   PAGE_DOC

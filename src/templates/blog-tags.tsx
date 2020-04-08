@@ -8,8 +8,8 @@ import {
 } from '../components/Paginator/LocationContext'
 import SEO from '../components/SEO'
 import { IPaginatorPageInfo } from '../components/Paginator'
-import BlogTags from '../components/BlogTags'
-import { IBlogFeedPostList } from '../components/BlogFeed'
+import BlogTags from '../components/Blog/Tags'
+import { IBlogFeedPostList } from '../components/Blog/Feed'
 
 interface IBlogTagsPageData {
   data: { posts: IBlogFeedPostList }

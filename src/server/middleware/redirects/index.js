@@ -1,4 +1,4 @@
-const { getRedirect } = require('../../../../src/utils/redirects')
+const { getRedirect } = require('../../../utils/shared/redirects')
 const { parse } = require('url')
 const { stringify } = require('querystring')
 const { isProduction } = require('../../utils')
@@ -19,6 +19,17 @@ module.exports = (req, res, next) => {
     req,
     dev: !isProduction
   })
+
+  // Disable trailing slash redirect for development mode.
+  // Because it leads to infinite loops as Gatsby in dev mode redirects to urls with trailing slashes
+  if (
+    !isProduction &&
+    location &&
+    location.startsWith('/') &&
+    parsedUrl.pathname === `${location}/`
+  ) {
+    return next()
+  }
 
   if (location) {
     // HTTP redirects

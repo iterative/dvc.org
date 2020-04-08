@@ -1,0 +1,16 @@
+.container {
+  padding: 40px 0 20px;
+}
+
+.link {
+  display: block;
+
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+.picture {
+  max-width: 100%;
+  width: 100%;
+}

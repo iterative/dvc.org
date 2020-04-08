@@ -1,0 +1,15 @@
+.mobile {
+  display: none;
+
+  @media (--xs-scr) {
+    display: initial;
+  }
+}
+
+.desktop {
+  display: initial;
+
+  @media (--xs-scr) {
+    display: none;
+  }
+}

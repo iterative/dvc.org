@@ -1,0 +1,165 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 136px;
+  padding-bottom: 146px;
+
+  @media (--sm-scr) {
+    flex-direction: column;
+    padding-top: 46px;
+    padding-bottom: 86px;
+  }
+}
+
+.about {
+  @media (--sm-scr) {
+    max-width: 412px;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+.title {
+  padding-right: 2em;
+  font-family: var(--font-brandon);
+  font-size: 40px;
+  font-weight: 500;
+  color: var(--color-gray-hover);
+
+  @media (--sm-scr) {
+    padding-right: 0;
+    font-size: 36px;
+  }
+
+  @media (--xs-scr) {
+    padding: 0;
+    font-size: 32px;
+  }
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    padding: 0;
+    font-size: 34px;
+  }
+}
+
+.buttonsContainer {
+  display: flex;
+  margin-top: 28px;
+
+  @media (--xs-scr) {
+    flex-direction: column;
+  }
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    justify-content: flex-start;
+  }
+}
+
+.actionButton {
+  min-width: 186px;
+  text-decoration: none;
+
+  &.actionButton {
+    @media (--xs-scr) {
+      min-height: 60px;
+      margin: 0;
+      margin-bottom: 12px;
+    }
+  }
+}
+
+.getStartedButton {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 0.9;
+  border: solid 2px transparent;
+  border-radius: 4px;
+  color: #fff;
+  background-color: var(--color-azure);
+  transition: 0.2s background-color ease-out;
+
+  &:hover {
+    background-color: var(--color-azure-hover);
+  }
+}
+
+.actionButtonIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.watchVideo {
+  margin-left: 15px;
+}
+
+.commands {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  max-width: 412px;
+  padding-top: 10px;
+  margin-left: 20px;
+  font-family: monospace;
+
+  @media (--sm-scr) {
+    align-items: center;
+    margin: 30px auto 0;
+    padding-top: 24px;
+  }
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    align-items: center;
+    padding-top: 24px;
+  }
+}
+
+.command {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 57px;
+  margin-bottom: 13px;
+  border-radius: 8px;
+  border: solid 1px transparent;
+  background-color: #fff;
+  color: #b4b9c4;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.08);
+  transform: translateZ(0);
+  opacity: 0.3;
+  transition: opacity 3s, border 0.5s, color 1s;
+
+  &.active {
+    border-color: var(--color-purple);
+    color: var(--color-gray-hover);
+    opacity: 1;
+  }
+}
+
+.line {
+  padding: 0 10px 0 12px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.github {
+  margin-top: 51px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-light);
+
+  @media (--sm-scr) {
+    align-items: center;
+    margin-top: 24px;
+    font-size: 18px;
+  }
+
+  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+    align-items: center;
+    margin-top: 24px;
+    font-size: 18px;
+  }
+}

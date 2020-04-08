@@ -1,11 +1,13 @@
 import { useEffect } from 'react'
 import { useLocation } from '@reach/router'
 
-import { handleFrontRedirect } from '../../utils/redirects'
-import { allImagesLoadedInContainer } from '../../utils/images'
-import { scrollIntoLayout } from '../../utils/scroll'
+import { handleFrontRedirect } from '../../utils/shared/redirects'
+import { allImagesLoadedInContainer } from '../../utils/front/images'
+import { scrollIntoLayout } from '../../utils/front/scroll'
 
-export const useAnchorNavigation = () => {
+import styles from './styles.module.css'
+
+export const useAnchorNavigation = (): void => {
   const location = useLocation()
 
   useEffect(() => {
@@ -13,9 +15,13 @@ export const useAnchorNavigation = () => {
       const node = document.querySelector(location.hash)
 
       if (node) {
-        allImagesLoadedInContainer(document.body).then(() =>
-          scrollIntoLayout(node)
-        )
+        const contentRoot = document.getElementById('layoutContent')
+
+        if (contentRoot) {
+          allImagesLoadedInContainer(contentRoot).then(() =>
+            scrollIntoLayout(node)
+          )
+        }
       }
     } else {
       document.documentElement.scrollTop = 0
@@ -23,7 +29,7 @@ export const useAnchorNavigation = () => {
   }, [location.href])
 }
 
-export const useRedirects = () => {
+export const useRedirects = (): void => {
   const location = useLocation()
 
   useEffect(() => {
@@ -31,10 +37,10 @@ export const useRedirects = () => {
   }, [location.href])
 }
 
-export const useSmoothScroll = (enable: boolean) => {
+export const useSmoothScroll = (enable: boolean): void => {
   useEffect(() => {
     const method = enable ? 'add' : 'remove'
 
-    document.body.classList[method]('bodySmoothScrolling')
+    document.body.classList[method](styles.smoothScrolling)
   }, [enable])
 }

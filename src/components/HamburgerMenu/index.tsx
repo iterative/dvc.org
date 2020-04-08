@@ -1,18 +1,18 @@
 import cn from 'classnames'
 import React, { useCallback, useState, useEffect } from 'react'
 
-import Hamburger from '../Hamburger'
+import HamburgerIcon from '../HamburgerIcon'
 import Link from '../Link'
 
-import { logEvent } from '../../utils/ga'
-import { getFirstPage } from '../../utils/sidebar'
+import { logEvent } from '../../utils/front/ga'
+import { getFirstPage } from '../../utils/shared/sidebar'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
 
 import styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 
-function HamburgerMenu() {
+const HamburgerMenu: React.SFC = () => {
   const [isOpened, setOpened] = useState(false)
 
   const toggleMobileMenu = useCallback(() => setOpened(!isOpened), [isOpened])
@@ -24,7 +24,7 @@ function HamburgerMenu() {
 
   const close = useCallback(() => setOpened(false), [isOpened])
   const itemClick = useCallback(
-    item => () => {
+    item => (): void => {
       close()
       logEvent('hamburger', item)
     },
@@ -34,7 +34,7 @@ function HamburgerMenu() {
   useEffect(() => {
     const method = isOpened ? 'add' : 'remove'
 
-    document.body.classList[method]('noScroll')
+    document.body.classList[method](styles.hiddenScrollbar)
   }, [isOpened])
 
   return (
@@ -44,7 +44,7 @@ function HamburgerMenu() {
         onClick={toggleMobileMenu}
         onKeyDown={openOnEnterKey}
       >
-        <Hamburger opened={isOpened} />
+        <HamburgerIcon opened={isOpened} />
       </button>
 
       <div className={cn(styles.wrapper, isOpened && styles.opened)}>
