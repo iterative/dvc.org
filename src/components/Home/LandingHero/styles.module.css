@@ -103,7 +103,7 @@
   max-width: 412px;
   padding-top: 10px;
   margin-left: 20px;
-  font-family: var(--font-mono);
+  font-family: monospace;
 
   @media (--sm-scr) {
     align-items: center;
