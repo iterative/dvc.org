@@ -11,7 +11,7 @@ code.
 Make sure you have the latest LTS version of [Node.js](https://nodejs.org) and
 [Yarn](https://yarnpkg.com) installed.
 
-Run `yarn command`.
+Run `yarn`.
 
 ## Commands
 

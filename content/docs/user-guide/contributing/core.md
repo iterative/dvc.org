@@ -164,8 +164,8 @@ created a template for you:
 $ cp tests/remotes_env.sample tests/remotes_env
 ```
 
-Then uncomment lines you need and fill in needed values, the details are
-explained in remote specific subsections. To activate these environment
+Then uncomment the lines you need and fill in the values, the details are
+explained in remote-specific subsections. To activate these environment
 variables, use:
 
 ```dvc

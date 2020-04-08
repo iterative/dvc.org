@@ -59,10 +59,10 @@ extending the name of the imported data e.g. `data.txt.dvc` – similar to havin
 used `dvc run` to generate the output.
 
 DVC-files support references to data in an external DVC repository (hosted on a
-Git server). In such a DVC-file, the `deps` section specifies the `repo`-`url`
-and data `path` fields, and the `outs` section contains the corresponding local
-workspace `path` field. This is enough data about the imported data, to enable
-DVC efficiently determining whether the local copy is out of date.
+Git server). In such a DVC-file, the `deps` field specifies the `repo`-`url` and
+data `path` sufields, and the `outs` field contains the corresponding local
+workspace `path` subfield. This is enough data about the imported data, to
+enable DVC efficiently determining whether the local copy is out of date.
 
 To actually
 [track the data](https://dvc.org/doc/tutorials/get-started/add-files), `git add`

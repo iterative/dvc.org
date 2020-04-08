@@ -40,9 +40,9 @@ desired for the downloaded data. If an existing directory is specified, the
 DVC supports [DVC-files](/doc/user-guide/dvc-file-format) that refer to data in
 external locations, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such a
-DVC-file, the `deps` section stores the remote URL, and the `outs` section
-contains the corresponding local path in the workspace. It records metadata from
-the external file or directory, allowing DVC to efficiently check it later and
+DVC-file, the `deps` field stores the remote URL, and the `outs` field contains
+the corresponding local path in the workspace. It records metadata from the
+external file or directory, allowing DVC to efficiently check it later and
 determine whether the local copy is out of date.
 
 DVC supports several types of (local or) remote locations (protocols):
@@ -123,7 +123,7 @@ up to date from the external data source.
 ## Examples
 
 To illustrate these examples we will be using the <abbr>project</abbr> explained
-in the [Get Started](/doc/tutorials/get-started) section.
+in the [Get Started](/doc/tutorials/get-started).
 
 <details>
 
@@ -150,7 +150,7 @@ You should now have a blank workspace, just before the
 ## Example: Tracking a remote file
 
 An advanced alternate to [Add Files](/doc/tutorials/get-started/add-files)
-chapter of the _Get Started_ section is to use `dvc import-url`:
+chapter of the _Get Started_ is to use `dvc import-url`:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml \

@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "develop": "gatsby develop",
-    "debug": "node --inspect-brk server.js",
     "build": "gatsby build",
     "heroku-postbuild": "./scripts/deploy-with-s3.js",
     "test": "jest",
@@ -15,8 +14,8 @@
     "format-all": "prettier --write './**/*.{js,jsx,md,tsx,ts,json}'",
     "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx src scripts",
     "lint-css": "stylelint \"src/**/*.css\"",
-    "link-check": "scripts/link-check-git-all.sh",
-    "link-check-diff": "scripts/link-check-git-diff.sh"
+    "link-check": "./scripts/link-check-git-all.sh",
+    "link-check-diff": "./scripts/link-check-git-diff.sh"
   },
   "repository": {
     "type": "git",
