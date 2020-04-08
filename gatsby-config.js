@@ -59,7 +59,6 @@ const plugins = [
           },
           resolve: 'gatsby-remark-prismjs'
         },
-        'gatsby-remark-copy-linked-files',
         {
           resolve: 'gatsby-remark-smartypants',
           options: {
@@ -73,6 +72,7 @@ const plugins = [
           }
         },
         'gatsby-remark-relative-images',
+        'gatsby-remark-copy-linked-files',
         {
           resolve: 'gatsby-remark-external-links'
         },
