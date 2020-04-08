@@ -6,6 +6,7 @@ import LayoutWidthContainer from '../../LayoutWidthContainer'
 import HamburgerIcon from '../../HamburgerIcon'
 import SearchForm from './SearchForm'
 import SidebarMenu from './SidebarMenu'
+import { matchMedia } from '../../../utils/front/breakpoints'
 
 import styles from './styles.module.css'
 
@@ -40,7 +41,9 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
           <SearchForm />
           <SidebarMenu
             currentPath={restProps.location.pathname}
-            onClick={toggleMenu}
+            onClick={(): void =>
+              matchMedia('--xs-scr') ? toggleMenu() : undefined
+            }
           />
         </div>
         <div className={styles.content}>{children}</div>
