@@ -79,6 +79,10 @@
 
   & + & {
     margin-left: 14px;
+
+    @media (--xs-scr) {
+      margin-left: 0;
+    }
   }
 
   &.first {
