@@ -111,13 +111,13 @@ const Post: React.SFC<IBlogPostData> = ({
               ))}
             </div>
           )}
-          {commentsUrl && ready && !error && result && (
+          {commentsUrl && ready && !error && (
             <div className={styles.comments}>
               <PseudoButton size="big" href={commentsUrl} target="_blank">
                 Discuss this post
               </PseudoButton>
               <Link href={commentsUrl} className={styles.count} target="_blank">
-                {pluralizeComments(result)}
+                {pluralizeComments(result || 0)}
               </Link>
             </div>
           )}

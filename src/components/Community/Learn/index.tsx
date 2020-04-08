@@ -71,14 +71,14 @@ const BlogPost: React.SFC<ICommunityBlogPost> = ({
           {title}
         </Link>
         <div className={sharedStyles.meta}>
-          {ready && !error && result && (
+          {ready && !error && (
             <>
               <Link
                 className={sharedStyles.commentsLink}
                 href={commentsUrl}
                 target="_blank"
               >
-                {pluralizeComments(result)}
+                {pluralizeComments(result || 0)}
               </Link>
               {' • '}
             </>
