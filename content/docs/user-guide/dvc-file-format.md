@@ -96,8 +96,8 @@ can have any valid YAML structure containing any number of attributes.
 (a.k.a. dictionary) always.
 
 Comments can be added to the DVC-file using `# comment` syntax. Comments and
-meta values are preserved between multiple executions of `dvc repro` and
-`dvc commit` commands.
+meta values are preserved among executions of the `dvc repro` and `dvc commit`
+commands.
 
 > Note that comments and meta values are not preserved when a DVC-file is
 > overwritten with the `dvc run`,`dvc add`,`dvc import`, and `dvc import-url`

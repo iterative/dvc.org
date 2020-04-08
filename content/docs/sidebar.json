@@ -250,16 +250,16 @@
             "slug": "modify"
           },
           {
+            "label": "metrics show",
+            "slug": "show"
+          },
+          {
             "label": "metrics diff",
             "slug": "diff"
           },
           {
             "label": "metrics remove",
             "slug": "remove"
-          },
-          {
-            "label": "metrics show",
-            "slug": "show"
           }
         ]
       },
@@ -304,12 +304,12 @@
             "slug": "default"
           },
           {
-            "label": "remote list",
-            "slug": "list"
-          },
-          {
             "label": "remote modify",
             "slug": "modify"
+          },
+          {
+            "label": "remote list",
+            "slug": "list"
           },
           {
             "label": "remote remove",

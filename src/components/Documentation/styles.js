@@ -8,7 +8,7 @@ export const LightButton = styled.a`
   background-color: white;
   border: 1px solid #575e64;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 30px;
   padding: 2px 16px;
   border-radius: 3px;

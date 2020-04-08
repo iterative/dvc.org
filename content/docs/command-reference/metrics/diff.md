@@ -42,13 +42,13 @@ They're calculated between two commits (hash, branch, tag, or any
   no directories among the `targets`, this option is ignored.
 
 - `-t <type>`, `--type <type>` - specify a type of the metric file. Accepted
-  values are: `raw` (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be
-  used to determine how to parse and format metics for display. See
+  values are: `raw` (default), `json`. It will be saved into the corresponding
+  DVC-file, and used to determine how to handle displaying metrics. See
   `dvc metrics show` for more details.
 
-  This option will override `type` and `xpath` defined in the corresponding
-  DVC-file. If no `type` is provided or found in the DVC-file, DVC will try to
-  detect it based on file extension.
+  This option will override any `type` and `xpath` values defined in the
+  corresponding DVC-file. If no `type` is provided or found in the DVC-file, DVC
+  will try to detect it based on file extension.
 
 - `-x <path>`, `--xpath <path>` - specify a path within a metric file to show
   changes for a specific metric value only. Should be used if the metric file
@@ -68,35 +68,31 @@ They're calculated between two commits (hash, branch, tag, or any
 
 ## Examples
 
-Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
-pipeline stages, such as the <abbr>DVC project</abbr> created in our
-[Get Started](/doc/tutorials/get-started) section. Then we can see what happens
-with `dvc install` in different situations.
-
-<details>
-
-### Click and expand to setup the project
-
-Start by cloning our example repo if you don't already have it:
+Start by creating a simple metrics file and commit it:
 
 ```dvc
-$ git clone https://github.com/iterative/example-get-started
-$ cd example-get-started
+$ dvc run -M metrics.json \
+        'echo {\"AUC\": 0.9643, \"TP\": 527} > metrics.json'
+$ git add metrics.json metrics.json.dvc
+$ git commit -m "Add metrics file"
 ```
 
-</details>
-
-Notice that we have an `auc.metric` metric file:
-
 ```
-$ cat auc.metric
-0.602818
+$ cat metrics.json
+{"AUC":0.9643, "TP":527}
 ```
 
 Now let's mock a change in our AUC metric:
 
 ```
-$ echo '0.5' > auc.metric
+$ echo {\"AUC\":0.9671, \"TP\":531} > metrics.json
+
+$ git diff
+--- a/metrics.json
++++ b/metrics.json
+@@ -1 +1 @@
+-{"AUC":0.9643, "TP":527}
++{"AUC":0.9671, "TP":531}
 ```
 
 To see the change, let's run `dvc metrics diff`. This compares our current
@@ -104,17 +100,8 @@ To see the change, let's run `dvc metrics diff`. This compares our current
 had in the previous commit:
 
 ```
-$ git diff
---- a/auc.metric
-+++ b/auc.metric
-@@ -1 +1 @@
--0.602818
-+0.5
-
 $ dvc metrics diff
-   Path      Metric   Value   Change
-auc.metric            0.500   -0.103
+    Path       Metric   Value   Change
+metrics.json   TP       531     4
+metrics.json   AUC      0.967   0.003
 ```
-
-> Note that metric files are typically versioned with Git, so we can use both
-> `git diff` and `dvc metrics diff` to understand their changes, as seen above.

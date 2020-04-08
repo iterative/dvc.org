@@ -20,7 +20,7 @@ configuration and <abbr>cache</abbr>
 [files and directories](/doc/user-guide/dvc-files-and-directories), that are
 hidden from the user.
 
-The cache is where your data files, models, etc (anything you want to version
+The cache is where your data files, models, etc. (anything you want to version
 with DVC) are actually stored. The corresponding files you see in the
 <abbr>workspace</abbr> can simply link to the ones in cache. (Refer to
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)

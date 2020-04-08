@@ -1,0 +1,51 @@
+:root {
+  --color-black: #24292e;
+  --color-gray: #838d93;
+  --color-gray-opaque: rgba(131, 141, 147, 0.5);
+  --color-gray-hover: #40364d;
+  --color-light-gray: #d9e2e8;
+  --color-azure: #13adc7;
+  --color-blue: #0366d6;
+  --color-lighter-blue: #dde7ee;
+  --color-light-blue: #eef4f8;
+  --color-purple: #945dd6;
+  --color-purple-hover: #745cb7;
+  --color-orange: #e37046;
+  --color-orange-opaque: rgba(22, 112, 70, 0.5);
+  --font-brandon: 'BrandonGrotesque', 'Tahoma', 'Arial', sans-serif;
+  --font-mono: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo',
+    'Courier', monospace;
+  --layout-width: 1005px;
+  --layout-width-wide: 1200px;
+  --layout-header-height: 98px;
+  --layout-header-height-scrolled: calc(var(--layout-header-height) - 20px);
+}
+
+:global {
+  .bodySmoothScrolling {
+    scroll-behavior: smooth;
+    will-change: scroll-position;
+  }
+
+  .noScroll {
+    overflow-y: hidden;
+  }
+}
+
+html {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-brandon);
+  color: var(--color-black);
+}
+
+/* Prevent mobile browsers from changing font-size */
+* {
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}

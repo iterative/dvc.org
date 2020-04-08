@@ -1,6 +1,6 @@
 # remove
 
-Remove data files or directories tracked by DVC.
+Remove DVC-tracked files or directories from the <abbr>workspace</abbr>.
 
 ## Synopsis
 

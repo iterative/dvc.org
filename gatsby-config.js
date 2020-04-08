@@ -5,8 +5,9 @@ const path = require('path')
 require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
 
-const apiMiddleware = require('./middleware/api')
-const redirectsMiddleware = require('./middleware/redirects')
+const apiMiddleware = require('./src/server/middleware/api')
+const redirectsMiddleware = require('./src/server/middleware/redirects')
+const { BLOG } = require('./src/consts')
 
 const title = 'Data Version Control · DVC'
 const description =
@@ -22,18 +23,43 @@ const keywords = [
 
 const plugins = [
   {
+    resolve: `gatsby-plugin-typescript`,
+    options: {
+      isTSX: true,
+      allExtensions: true
+    }
+  },
+  'gatsby-plugin-postcss',
+  'gatsby-plugin-styled-components',
+  'gatsby-plugin-react-helmet',
+  'gatsby-plugin-sitemap',
+  'gatsby-plugin-twitter',
+  {
     resolve: 'gatsby-source-filesystem',
     options: {
-      name: 'blog',
-      path: path.join(__dirname, 'content', 'docs')
+      name: 'content',
+      path: path.join(__dirname, 'content')
     }
+  },
+  {
+    options: {
+      name: 'images',
+      path: path.join(__dirname, 'static', 'uploads')
+    },
+    resolve: 'gatsby-source-filesystem'
   },
   {
     resolve: 'gatsby-transformer-remark',
     options: {
       plugins: [
+        'gatsby-remark-embedder',
         'gatsby-remark-dvc-linker',
-        'gatsby-remark-prismjs',
+        {
+          options: {
+            noInlineHighlight: true
+          },
+          resolve: 'gatsby-remark-prismjs'
+        },
         'gatsby-remark-copy-linked-files',
         {
           resolve: 'gatsby-remark-smartypants',
@@ -41,6 +67,13 @@ const plugins = [
             quotes: false
           }
         },
+        {
+          resolve: 'gatsby-remark-embed-gist',
+          options: {
+            includeDefaultCss: true
+          }
+        },
+        'gatsby-remark-relative-images',
         {
           resolve: 'gatsby-remark-external-links'
         },
@@ -50,14 +83,33 @@ const plugins = [
             enableCustomId: true,
             isIconAfterHeader: true
           }
-        }
+        },
+        {
+          resolve: 'gatsby-remark-images',
+          options: {
+            maxWidth: BLOG.imageMaxWidth,
+            withWebp: true
+          }
+        },
+        'gatsby-remark-responsive-iframe',
+        'resize-image-plugin',
+        'external-link-plugin'
       ]
     }
   },
+  {
+    resolve: 'gatsby-plugin-svgr',
+    options: {
+      ref: true
+    }
+  },
+  'gatsby-transformer-sharp',
+  'gatsby-plugin-sharp',
   'gatsby-plugin-catch-links',
   {
     resolve: 'gatsby-plugin-manifest',
     options: {
+      /* eslint-disable @typescript-eslint/camelcase */
       background_color: '#eff4f8',
       display: 'minimal-ui',
       icon: 'static/favicon-512x512.png',
@@ -65,17 +117,88 @@ const plugins = [
       short_name: 'dvc.org',
       start_url: '/',
       theme_color: '#eff4f8'
+      /* eslint-enable @typescript-eslint/camelcase */
     }
   },
-  'gatsby-plugin-react-helmet',
-  'gatsby-plugin-styled-components',
-  'gatsby-plugin-sitemap',
+  {
+    options: {
+      feeds: [
+        {
+          description,
+          output: '/rss.xml',
+          query: `
+              {
+                allMarkdownRemark(
+                  sort: { fields: [frontmatter___date], order: DESC }
+                  filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+                ) {
+                  edges {
+                    node {
+                      html
+                      fields {
+                        slug
+                      }
+                      frontmatter {
+                        title
+                        date
+                        description
+                      }
+                    }
+                  }
+                }
+              }
+            `,
+          serialize: ({ query: { site, allMarkdownRemark } }) => {
+            return allMarkdownRemark.edges.map(edge => {
+              return Object.assign({}, edge.node.frontmatter, {
+                /* eslint-disable-next-line @typescript-eslint/camelcase */
+                custom_elements: [{ 'content:encoded': edge.node.html }],
+                date: edge.node.frontmatter.date,
+                description: edge.node.description,
+                guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
+                url: site.siteMetadata.siteUrl + edge.node.fields.slug
+              })
+            })
+          },
+          title
+        }
+      ],
+      query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+        `
+    },
+    resolve: `gatsby-plugin-feed`
+  },
   {
     resolve: 'gatsby-plugin-sentry',
     options: {
       dsn: process.env.SENTRY_DSN,
       environment: process.env.NODE_ENV,
-      enabled: process.env.NODE_ENV === 'production'
+      release: process.env.SOURCE_VERSION,
+      enabled: process.env.NODE_ENV === 'production',
+      ignoreErrors: [
+        /* When we deploy new version we delete assets which were generated for
+        the previous deployed version, but users can have opened old version in 
+        their browsers. If they hover some link on the page Gatsby.js will try
+        fetch old chunks and will get ChunkLoadError, but then will load static
+        page from the new deployed version and all will be ok. So we can just
+        ignore these type of errors */
+        'ChunkLoadError'
+      ],
+      /* There are some common urls which recomment to ignore. It's even 
+      mentioned in the official documentation: https://docs.sentry.io/platforms/javascript/#decluttering-sentry
+      In our case we just ignore all errors from the browser's extensions,
+      because we can't influence on then somehow. */
+      blacklistUrls: [/extensions\//i, /^chrome:\/\//i]
     }
   }
 ]

@@ -7,7 +7,8 @@ formatting.
 
 ```usage
 usage: dvc metrics show [-h] [-q | -v] [-t <type>] [-x <path>]
-                        [-a] [-T] [-R] [targets [targets ...]]
+                        [-a] [-T] [-R] [--all-commits]
+                        [targets [targets ...]]
 
 positional arguments:
   targets               Metric files or directories (see -R) to show
@@ -43,13 +44,10 @@ compares them with a previous version.
 ## Options
 
 - `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
-  values are: `raw` (default), `json`, `tsv`, `htsv`, `csv`, `hcsv`. It will be
-  used to determine how to parse and format metics for display.
+  values are: `raw` (default), `json`. It will be saved into the corresponding
+  DVC-file, and used to determine how to handle displaying metrics.
 
   `raw` means that no additional parsing is applied, and `--xpath` is ignored.
-  `htsv`/`hcsv` are the same as `tsv`/`csv`, but the values in the first row of
-  the file will be used as the field names and should be used to address columns
-  in the `--xpath` option.
 
   This option will override `type` and `xpath` defined in the corresponding
   DVC-file. If no `type` is provided or found in the DVC-file, DVC will try to
@@ -69,9 +67,6 @@ compares them with a previous version.
     only the values for model versions if they meet the given conditions from
     the metric file:
     `{"metrics": [{"dataset": "train", "deviation_mse": 0.173461, "value_mse": 0.421601}]}`
-  - For `tsv`/`csv` - `row,column` e.g. `1,2`. Indices are 0-based.
-  - For `htsv`/`hcsv` - `row,column name` e.g. `0,Name`. Row index is 0-based.
-    First row is used to specify column names and is not included into index.
 
   If multiple metric files exist in the <abbr>project</abbr>, the same parser
   and path will be applied to all of them. If `xpath` for a particular metric
@@ -81,11 +76,16 @@ compares them with a previous version.
 
 - `-a`, `--all-branches` - print metric file contents in all Git branches
   instead of just those present in the current workspace. It can be used to
-  compare different experiments.
+  compare different experiments. Note that this can be combined with `-T` below,
+  for example using the `-aT` flag.
 
-- `-T`, `--all-tags` - print metric file contents in all Git tags. Similar to
-  `-a` above. Note that both options can be combined, for example using the
+- `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
+  the workspace. Note that both options can be combined, for example using the
   `-aT` flag.
+
+- `--all-commits` - the same as `-a` or `-T` above, but applies to _all_ Git  
+  commits as well as the workspace. Useful for printing metric file contents for
+  the entire existing commit history of the project.
 
 - `-R`, `--recursive` - determines the metric files to show by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are

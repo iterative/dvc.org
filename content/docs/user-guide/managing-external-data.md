@@ -4,20 +4,20 @@ There are cases when data is so large, or its processing is organized in a way
 that you would like to avoid moving it out of its external/remote location. For
 example from a network attached storage (NAS) drive, processing data on HDFS,
 running [Dask](https://dask.org/) via SSH, or having a script that streams data
-from S3 to process it. A mechanism for external outputs and
-[external dependencies](/doc/user-guide/external-dependencies) provides a way
-for DVC to control data externally.
+from S3 to process it. External outputs and
+[external dependencies](/doc/user-guide/external-dependencies) provide a way for
+DVC to control data outside of the <abbr>project</abbr> directory.
 
 ## Description
 
 DVC can track files on an external storage with `dvc add` or specify external
-files as outputs for [DVC-files](/doc/user-guide/dvc-file-format) created by
-`dvc run` (stage files). External outputs are considered part of the <abbr>DVC
-project</abbr>. DVC will track changes in them and reflect this in the output of
+files as <abbr>outputs</abbr> for [DVC-files](/doc/user-guide/dvc-file-format)
+created by `dvc run` (stage files). External outputs are considered part of the
+DVC project. DVC will track changes in them and reflect this in the output of
 `dvc status`.
 
-Currently, the following types (protocols) of external outputs (and cache) are
-supported:
+Currently, the following types (protocols) of external outputs (and
+<abbr>cache</abbr>) are supported:
 
 - Local files and directories outside of your <abbr>workspace</abbr>
 - SSH
@@ -29,25 +29,22 @@ supported:
 > `dvc remote`.
 
 In order to specify an external output for a stage file, use the usual `-o` or
-`-O` options of the `dvc run` command, but with the external path or URL to the
-file in question. For <abbr>cached</abbr> external outputs (`-o`) you will need
-to [setup an external cache](/doc/command-reference/config#cache) in the same
-remote location. Non-cached external outputs (`-O`) do not require an external
-cache to be setup.
+`-O` options of `dvc run`, but with the external path or URL to the file in
+question. For <abbr>cached</abbr> external outputs (`-o`) you will need to
+[setup an external cache](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+in the same external/remote file system first.
 
-> Avoid using the same remote location that you are using for `dvc push`,
-> `dvc pull`, `dvc fetch` as external cache for your external outputs, because
-> it may cause possible file hash overlaps: The hash value of a data file in
-> external storage could collide with that generated locally for another file.
+> Avoid using the same location of the
+> [remote storage](/doc/command-reference/remote) that you have for `dvc push`
+> and `dvc pull` for external outputs or as external cache, because it may cause
+> file hash overlaps: The hash value of a data file in external storage could
+> collide with the one generated locally for another file.
 
 ## Examples
 
 For the examples, let's take a look at a [stage](/doc/command-reference/run)
 that simply moves local file to an external location, producing a `data.txt.dvc`
-stage file (DVC-file).
-
-> Note that some of these commands use the `/home/shared` directory, typical in
-> Linux distributions.
+DVC-file.
 
 ### Local file system path
 

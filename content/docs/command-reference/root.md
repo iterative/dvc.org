@@ -1,6 +1,6 @@
 # root
 
-Return the relative path to the <abbr>DVC project</abbr>.
+Return the relative path to the root of the <abbr>DVC project</abbr>.
 
 ## Synopsis
 
@@ -11,9 +11,10 @@ usage: dvc root [-h] [-q | -v]
 ## Description
 
 While in sub-directories of the project, sometimes developers may want to refer
-some file belonging to another directory. This command returns relative path to
-the project root from the current working directory. So this command can be used
-to build a path to a dependency file, command, or output.
+some file belonging to another directory. This command returns the path to the
+root directory of the current <abbr>DVC project</abbr>, relative to the current
+working directory. This command can be used to build a path to a dependency
+file, command, or output.
 
 ## Options
 

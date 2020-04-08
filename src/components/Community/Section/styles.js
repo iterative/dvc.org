@@ -27,7 +27,8 @@ export const Header = styled.div`
 
 export const Title = styled.div`
   font-size: 40px;
-  font-family: BrandonGrotesqueMed;
+  font-family: BrandonGrotesque;
+  font-weight: 500;
   line-height: 60px;
 
   ${media.tablet`

@@ -10,24 +10,37 @@ A set of commands to add, manage, collect, and display project metrics:
 ## Synopsis
 
 ```usage
-usage: dvc metrics [-h] [-q | -v] {show,add,modify,remove} ...
+usage: dvc metrics [-h] [-q | -v] {show,add,modify,remove,diff} ...
 
 positional arguments:
-  COMMAND
-    show                Output metric values.
-    add                 Tag file as a metric file.
-    modify              Modify metric file values.
-    remove              Remove files's metric tag.
+COMMAND
+                        Use `dvc metrics CMD --help` to display command-
+                        specific help.
+    show                Print metrics, with optional formatting.
+    add                 Mark a DVC-tracked file as a metric.
+    modify              Modify metric default formatting.
+    remove              Remove metric mark on a DVC-tracked file.
+    diff                Show changes in metrics between commits
+
+optional arguments:
+  -h, --help            show this help message and exit
+  -q, --quiet           Be quiet.
+  -v, --verbose         Be verbose
 ```
 
 ## Description
 
-DVC has the ability to mark a certain stage <abbr>outputs</abbr> as files
-containing metrics to track. (See the `--metrics` option of `dvc run`.) Metrics
-are project-specific numeric values e.g. `AUC`, `ROC`, etc. DVC itself does not
-ascribe any specific meaning for these numbers. Usually these numbers are
-produced by the model evaluation script and serve as a way to compare and pick
-the best performing experiment.
+In order to track metrics associated to machie learning experiments, DVC has the
+ability to mark a certain stage <abbr>outputs</abbr> as files containing metrics
+to track. (See the `--metrics` option of `dvc run`.) Metrics are
+project-specific floating-point values e.g. `AUC`, `ROC`, etc.
+
+Supported file formats: JSON. Metrics can be organized in a tree hierarchy in a
+JSON file. DVC addresses the metrics by the tree path.
+
+DVC itself does not ascribe any specific meaning for these numbers. Usually
+these numbers are produced by the model training or model evaluation code and
+serve as a way to compare and pick the best performing experiment.
 
 [Add](/doc/command-reference/metrics/add),
 [show](/doc/command-reference/metrics/show),
@@ -55,30 +68,40 @@ $ dvc run -d code/evaluate.py -M data/eval.json \
 ```
 
 > `-M` (`--metrics-no-cache`) is telling DVC to mark `data/eval.json` as a
-> metric file. Using this option is equivalent to using `-O` (`--outs-no-cache`)
-> and then running `dvc metrics add data/eval.json` to explicitly mark
-> `data/eval.json` as a metric file.
+> metric file, without tracking it directly (You can track it with Git). See
+> `dvc run` for more info.
 
-Now let's print metric values that we are tracking in this <abbr>project</abbr>:
+Now let's print metric values that we are tracking in this <abbr>project</abbr>,
+using `dvc metrics show`:
 
 ```dvc
 $ dvc metrics show -a
 
   master:
-      data/eval.json: {"AUC": "0.624652"}
+      data/eval.json:
+		{
+		    "AUC": 0.65115,
+		    "error": 0.17304,
+		    "TP": 528
+		}
 ```
 
-We can also tell DVC an `xpath` for the metric file, so that it can output only
-the value of AUC. In the case of JSON, use
-[JSONPath expressions](https://goessner.net/articles/JsonPath/index.html) to
-selectively extract data out of metric files:
+We can also give DVC an `xpath` for the metric file, so that it outputs only the
+AUC value. For JSON metrics, we use
+[JSONPath](https://goessner.net/articles/JsonPath/index.html) expressions to
+filter data out of metric files:
 
 ```dvc
-$ dvc metrics modify data/eval.json --type json --xpath AUC
-$ dvc metrics show
+$ dvc metrics show --xpath AUC data/eval.json
+      data/eval.json: {'AUC': 0.65115}
+```
 
-  master:
-      data/eval.json: 0.624652
+The `xpath` filter can be saved as the default way to display a metrics file:
+
+```dvc
+$ dvc metrics modify data/eval.json --xpath AUC
+$ dvc metrics show
+      data/eval.json: {'AUC': 0.65115}
 ```
 
 And finally let's remove `data/eval.json` from the project metrics:
