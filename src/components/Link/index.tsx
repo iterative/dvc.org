@@ -3,7 +3,7 @@ import { URL } from 'iso-url'
 import { useLocation, navigate } from '@reach/router'
 import GatsbyLink from 'gatsby-link'
 import { getRedirect, handleFrontRedirect } from '../../utils/shared/redirects'
-import { scrollIntoLayout } from '../../utils/front/scroll'
+import { scrollIntoLayout, getScrollNode } from '../../utils/front/scroll'
 
 export type ILinkProps = {
   children: React.ReactNode
@@ -64,7 +64,7 @@ const Link: React.SFC<ILinkProps> = ({ href, ...restProps }) => {
         } else if (location.hash) {
           scrollIntoLayout(document.querySelector(location.hash))
         } else {
-          document.documentElement.scrollTop = 0
+          getScrollNode().scrollTop = 0
         }
       }
 
