@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import React from 'react'
 
 import SEO from '../components/SEO'
-import BlogPost from '../components/BlogPost'
+import Post from '../components/Blog/Post'
 
 interface IFluidObject extends FluidObject {
   presentationWidth?: number
@@ -86,7 +86,7 @@ const BlogPostPage: React.SFC<IBlogPostPageProps> = ({ data }) => {
           post.frontmatter.picture.childImageSharp.fluid.src
         }
       />
-      <BlogPost {...post} />
+      <Post {...post} />
     </>
   )
 }

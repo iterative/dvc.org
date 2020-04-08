@@ -16,8 +16,8 @@ positional arguments:
 ## Description
 
 You can query/set/replace/unset DVC configuration options with this command. It
-takes a config option `name` (a section and a key, separated by a dot) and its
-`value` (any valid alpha-numeric string generally).
+takes a config option `name` (a config section and a key, separated by a dot)
+and its `value` (any valid alpha-numeric string generally).
 
 This command reads and updates the DVC configuration files. By default (if none
 of `--local`, `--global`, or `--system` is provided) a project's config
@@ -92,8 +92,8 @@ This is the main section with the general config options:
 
 ### remote
 
-These are sections in the config file that describe particular remotes. These
-sections contain a `url` value, and can also specify `user`, `port`, `keyfile`,
+These are sections in the config file that describe particular remotes. They
+contain a `url` value, and can also specify `user`, `port`, `keyfile`,
 `timeout`, `ask_password`, and other cloud-specific key/value pairs for each
 remote. See `dvc remote` for more information.
 

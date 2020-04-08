@@ -9,16 +9,18 @@ interface IIconSetProps {
   name: string
 }
 
-function IconSet({ className, name, ...iconProps }: IIconSetProps) {
-  return (
-    <div
-      style={{
-        backgroundImage: `url(${icons[name as keyof typeof icons]})`
-      }}
-      className={cn(styles.icon, className)}
-      {...iconProps}
-    />
-  )
-}
+const IconSet: React.SFC<IIconSetProps> = ({
+  className,
+  name,
+  ...iconProps
+}) => (
+  <div
+    style={{
+      backgroundImage: `url(${icons[name as keyof typeof icons]})`
+    }}
+    className={cn(styles.icon, className)}
+    {...iconProps}
+  />
+)
 
 export default IconSet

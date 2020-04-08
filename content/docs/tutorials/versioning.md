@@ -301,7 +301,7 @@ above (with cats and dogs images) is a good example.
 
 On the other hand, there are files that are the result of running some code. In
 our example, `train.py` produces binary files (e.g.
-`bottlneck_features_train.npy`), the model file `model.h5`, and the
+`bottleneck_features_train.npy`), the model file `model.h5`, and the
 [metrics](/doc/command-reference/metrics) file `metrics.csv`.
 
 When you have a script that takes some data as an input and produces other data

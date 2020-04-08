@@ -1,7 +1,7 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import { Node } from 'unist'
-import { getItemByPath } from '../utils/sidebar'
+import { getItemByPath } from '../utils/shared/sidebar'
 
 import SEO from '../components/SEO'
 

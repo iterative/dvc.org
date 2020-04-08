@@ -1,0 +1,87 @@
+.button {
+  box-sizing: border-box;
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  border: solid 2px;
+  padding: 8px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: 0.2s background-color ease-out;
+
+  &:disabled {
+    background-color: var(--color-gray-light);
+
+    &:hover {
+      background-color: var(--color-gray-light);
+    }
+  }
+
+  &.withIcon {
+    padding-right: 40px;
+  }
+
+  &.azure {
+    background-color: var(--color-azure);
+    border-color: var(--color-azure);
+    color: #fff;
+
+    &.active,
+    &:hover {
+      background-color: var(--color-azure-hover);
+      border-color: var(--color-azure-hover);
+    }
+  }
+
+  &.purple {
+    background-color: var(--color-purple);
+    border-color: var(--color-purple);
+    color: #fff;
+
+    &.active,
+    &:hover {
+      background-color: var(--color-purple-hover);
+      border-color: var(--color-purple-hover);
+    }
+  }
+
+  &.outline {
+    border-color: rgba(176, 184, 197, 0.47);
+    color: var(--color-gray-hover);
+    background-color: var(--color-light-blue);
+
+    &.active,
+    &:hover {
+      background-color: var(--color-light-blue-hover);
+    }
+  }
+}
+
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 17px;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-family: var(--font-brandon);
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 0.9;
+  white-space: nowrap;
+}
+
+.description {
+  font-size: 14px;
+  line-height: 21px;
+  white-space: nowrap;
+}

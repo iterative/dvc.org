@@ -9,7 +9,7 @@
       "ignoreProperties": ["composes"]
     }],
     "selector-pseudo-class-no-unknown": [true, {
-      "ignorePseudoClasses": ["global"]
+      "ignorePseudoClasses": ["global", "local"]
     }],
     "at-rule-no-unknown": [true, {
       "ignoreAtRules": ["mixin"]

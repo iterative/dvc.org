@@ -7,6 +7,7 @@ const screens = {
 }
 
 module.exports = {
+  screens,
   customMedia: {
     '--xxs-scr': `(max-width: ${screens.phone}px)`,
     '--xs-scr': `(max-width: ${screens.phablet}px)`,

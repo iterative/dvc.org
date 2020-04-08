@@ -1,3 +1,7 @@
+.hiddenScrollbar {
+  overflow-y: hidden;
+}
+
 .wrapper {
   display: block;
   padding: 25px 15px 15px;

@@ -38,8 +38,8 @@ Setting 'myremote' as a default remote.
 > The `-d` (`--default`) option sets `myremote` as the default remote storage
 > for this project.
 
-This will add `myremote` to your `.dvc/config`. The `config` file now have a
-section like this:
+This will add `myremote` to your `.dvc/config`. The `config` file now has a
+remote section for it:
 
 ```dvc
 ['remote "myremote"']

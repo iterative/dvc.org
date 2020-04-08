@@ -1,40 +1,27 @@
-import React from 'react'
+import React, { useCallback } from 'react'
+import { URL } from 'iso-url'
 import { useLocation, navigate } from '@reach/router'
 import GatsbyLink from 'gatsby-link'
-import { StyledComponentBase } from 'styled-components'
-import { handleFrontRedirect } from '../../utils/redirects'
-import { scrollIntoLayout } from '../../utils/scroll'
+import { getRedirect, handleFrontRedirect } from '../../utils/shared/redirects'
+import { scrollIntoLayout } from '../../utils/front/scroll'
 
 export type ILinkProps = {
   children: React.ReactNode
   className?: string
-  as?: StyledComponentBase<React.ComponentClass, {}>
   href: string
   target?: undefined | '_blank'
   state?: unknown
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 const PROTOCOL_REGEXP = /^https?:\/\//
-const isRelative = (url: string) => !PROTOCOL_REGEXP.test(url)
-const getLocation = (href: string) => {
-  const location = document.createElement('a')
+const isRelative = (url: string): boolean => !PROTOCOL_REGEXP.test(url)
 
-  location.href = href
-
-  return location
-}
-
-const Link: React.SFC<ILinkProps> = ({
-  children,
-  as: SC,
+const ResultLinkComponent: React.SFC<ILinkProps> = ({
   href,
-  target,
+  children,
   ...restProps
 }) => {
-  const currentLocation = useLocation()
-
-  if (!isRelative(href) || target) {
-    const LinkComponent = SC ? SC : 'a'
+  if (!isRelative(href) || restProps.target) {
     let rel = 'noopener noreferrer'
 
     if (restProps.rel) {
@@ -42,53 +29,66 @@ const Link: React.SFC<ILinkProps> = ({
     }
 
     return (
-      <LinkComponent href={href} rel={rel} target={target} {...restProps}>
+      <a href={href} rel={rel} {...restProps}>
         {children}
-      </LinkComponent>
+      </a>
     )
   }
 
-  const onClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    if (restProps.onClick) {
-      restProps.onClick(e)
-    }
+  return (
+    <GatsbyLink to={href} {...restProps}>
+      {children}
+    </GatsbyLink>
+  )
+}
 
-    const location = getLocation(href)
+const Link: React.SFC<ILinkProps> = ({ href, ...restProps }) => {
+  const currentLocation = useLocation()
+  const onClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (restProps.onClick) {
+        restProps.onClick(e)
+      }
 
-    // Do not navigate to the same page. Handle hash scrolling manually
-    if (
-      currentLocation.host === location.host &&
-      currentLocation.pathname === location.pathname
-    ) {
-      e.preventDefault()
+      const location = new URL(href)
 
-      if (location.hash) {
+      // Do not navigate to the same page. Handle hash scrolling manually
+      if (
+        currentLocation.host === location.host &&
+        currentLocation.pathname === location.pathname
+      ) {
+        e.preventDefault()
+
         if (currentLocation.hash !== location.hash) {
           navigate(href)
-        } else {
+        } else if (location.hash) {
           scrollIntoLayout(document.querySelector(location.hash))
+        } else {
+          document.documentElement.scrollTop = 0
         }
       }
-    }
 
-    // Handle front redirects
-    handleFrontRedirect(location.host, location.pathname, e)
-  }
+      // Handle front redirects
+      handleFrontRedirect(location.host, location.pathname, e)
+    },
+    [restProps.onClick, currentLocation]
+  )
 
+  const location = new URL(href)
   // Navigate from @reach/router handles hash links incorrectly. Fix it
   if (href.startsWith('#')) {
     href = currentLocation.pathname + href
   }
 
-  return SC ? (
-    <SC to={href} {...restProps} as={GatsbyLink} onClick={onClick}>
-      {children}
-    </SC>
-  ) : (
-    <GatsbyLink to={href} {...restProps} onClick={onClick}>
-      {children}
-    </GatsbyLink>
-  )
+  // Replace link href with redirect if it exists
+  const [, redirectUrl] = getRedirect(location.host, location.pathname)
+  if (redirectUrl) {
+    href = isRelative(redirectUrl)
+      ? redirectUrl + currentLocation.search
+      : redirectUrl
+  }
+
+  return <ResultLinkComponent href={href} {...restProps} onClick={onClick} />
 }
 
 export default Link

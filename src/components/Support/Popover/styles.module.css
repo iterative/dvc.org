@@ -1,0 +1,14 @@
+:global {
+  .Popover {
+    .Popover-body {
+      box-shadow: rgba(0, 0, 0, 0.14) 0 0 4px, rgba(0, 0, 0, 0.28) 0 4px 8px;
+      padding: 5px 15px;
+      background: white;
+      color: black;
+    }
+
+    .Popover-tip {
+      display: none;
+    }
+  }
+}

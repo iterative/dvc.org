@@ -30,7 +30,6 @@ const plugins = [
     }
   },
   'gatsby-plugin-postcss',
-  'gatsby-plugin-styled-components',
   'gatsby-plugin-react-helmet',
   'gatsby-plugin-sitemap',
   'gatsby-plugin-twitter',
@@ -60,7 +59,6 @@ const plugins = [
           },
           resolve: 'gatsby-remark-prismjs'
         },
-        'gatsby-remark-copy-linked-files',
         {
           resolve: 'gatsby-remark-smartypants',
           options: {
@@ -74,6 +72,7 @@ const plugins = [
           }
         },
         'gatsby-remark-relative-images',
+        'gatsby-remark-copy-linked-files',
         {
           resolve: 'gatsby-remark-external-links'
         },

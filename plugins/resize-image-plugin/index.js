@@ -92,8 +92,9 @@ module.exports = ({ markdownAST }) => {
 
       if (wrap) {
         const { className, style } = wrapperImage.properties
-        wrapperImage.properties.className = `${className ||
-          ''} ${imageWrapClassPrefix}${wrap}`
+        wrapperImage.properties.className = `${
+          className || ''
+        } ${imageWrapClassPrefix}${wrap}`
 
         // Prevent us from using an !important in the CSS
         wrapperImage.properties.style = style.replace(

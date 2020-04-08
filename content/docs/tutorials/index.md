@@ -1,7 +1,7 @@
 # Tutorials
 
-The material in this section is designed to help new and intermediate users
-learn about DVC interactively.
+Our tutorials designed to help new and intermediate users learn about DVC
+interactively.
 
 - [Get Started](/doc/tutorials/get-started) is a step-by-step introduction into
   basic DVC features. It doesn't go into much detail, but it provides links and

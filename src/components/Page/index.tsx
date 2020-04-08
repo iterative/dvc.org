@@ -1,16 +1,15 @@
 import React from 'react'
-import { GlobalStyle } from '../../styles'
 
-import MainLayout, { LayoutComponent } from '../MainLayout'
+import MainLayout from '../MainLayout'
 import DefaultSEO from './DefaultSEO'
 import DocumentationLayout from '../Documentation/Layout'
-import BlogLayout from '../BlogLayout'
+import Layout from '../Blog/Layout'
 
 import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
 
+import 'reset-css'
 import './base.css'
 import './fonts/fonts.css'
-import styles from './styles.module.css'
 
 export interface IPageProps {
   location: {
@@ -38,18 +37,16 @@ const Page: React.SFC<IPageProps> = props => {
 
   if (!props.pageContext.is404) {
     if (props.pageContext.isDocs) {
-      LayoutComponent = DocumentationLayout as LayoutComponent
+      LayoutComponent = DocumentationLayout
     } else if (props.pageContext.isBlog) {
-      LayoutComponent = BlogLayout
+      LayoutComponent = Layout
     }
   }
 
   return (
     <>
-      <GlobalStyle />
       <DefaultSEO />
       <LayoutComponent {...props} />
-      <div id="modal-root" className={styles.modalRoot} />
     </>
   )
 }

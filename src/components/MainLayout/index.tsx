@@ -9,7 +9,7 @@ import styles from './styles.module.css'
 
 export enum LayoutModifiers {
   Wide,
-  Scrolled
+  Collapsed
 }
 
 export interface ILayoutModifiable {
@@ -36,7 +36,7 @@ const MainLayout: LayoutComponent = ({
     if (className) {
       document.body.classList.add(className)
 
-      return () => {
+      return (): void => {
         document.body.classList.remove(className)
       }
     }
@@ -46,7 +46,9 @@ const MainLayout: LayoutComponent = ({
     <>
       <LayoutHeader modifiers={modifiers} />
       <HamburgerMenu />
-      {children}
+      <div id="layoutContent" className={styles.pageContent}>
+        {children}
+      </div>
       <LayoutFooter modifiers={modifiers} />
     </>
   )
