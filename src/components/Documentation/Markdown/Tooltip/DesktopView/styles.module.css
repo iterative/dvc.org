@@ -3,13 +3,14 @@
 }
 
 .tooltip {
+  box-sizing: border-box;
   position: fixed;
   top: 0;
   left: 0;
   display: block;
   opacity: 0;
   width: 400px;
-  padding: 8px 10px;
+  padding: 10px 10px 16px;
   border: 1px solid var(--color-lighter-blue);
   border-radius: 3px;
   color: var(--color-black);
@@ -24,8 +25,8 @@
     position: absolute;
     content: '';
     display: block;
-    height: 10px;
-    width: 10px;
+    height: 12px;
+    width: 12px;
     border: none;
     border-top: 1px solid var(--color-lighter-blue);
     border-left: 2px solid var(--color-lighter-blue);
@@ -35,7 +36,7 @@
 
   &.lt::after,
   &.rt::after {
-    top: -7px;
+    top: -8px;
     border-top-width: 2px;
     border-left-width: 1px;
     transform: rotate(45deg);
@@ -52,7 +53,7 @@
   &.lb::after,
   &.rb::after {
     top: 100%;
-    margin-top: -4px;
+    margin-top: -5px;
     transform: rotate(-135deg);
   }
 
