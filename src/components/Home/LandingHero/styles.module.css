@@ -57,14 +57,32 @@
 
 .actionButton {
   min-width: 186px;
+  text-decoration: none;
 
   &.actionButton {
     @media (--xs-scr) {
-      /* max-width: none;
       min-height: 60px;
       margin: 0;
-      margin-bottom: 12px; */
+      margin-bottom: 12px;
     }
+  }
+}
+
+.getStartedButton {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 0.9;
+  border: solid 2px transparent;
+  border-radius: 4px;
+  color: #fff;
+  background-color: var(--color-azure);
+  transition: 0.2s background-color ease-out;
+
+  &:hover {
+    background-color: var(--color-azure-hover);
   }
 }
 
