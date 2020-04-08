@@ -12,5 +12,21 @@ first.
 > in the community. Please, [contact us](/support) if you need help or have
 > suggestions!
 
-Our use cases range from basic to more advanced. Please choose from the
+## Basic uses
+
+If you store and process data files or datasets to produce other data or machine
+learning models, and you want to
+
+- capture and save <abbr>data artifacts</abbr> the same way you capture code;
+- track and switch between different versions of data or models easily;
+- understand how data or models were built in the first place;
+- be able to compare models and metrics to each other;
+- bring software engineering best practices to your data science team;
+- among other [use cases](/doc/use-cases)
+
+DVC is for you!
+
+---
+
+Our use case pages range from basic to more advanced. Please choose from the
 navigation sidebar to the left, or click the `Next` button below ↘

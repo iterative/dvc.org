@@ -1,27 +1,12 @@
 # DVC Documentation
 
-Welcome! In here you may find all the material and technical details needed to
-learn about DVC: how to use it, how it works, and where to go for additional
-resources.
-
-## What is DVC?
-
 Data Version Control, or DVC, is **a new type of experiment management
 software** built on top of the existing engineering toolset that you're already
-used to, particularly [Git](https://git-scm.com) source code management. DVC
-reduces the gap between existing tools and data science needs.
+familiar with.
 
-If you store and process data files or datasets to produce other data or machine
-learning models, and you want to
-
-- capture and save <abbr>data artifacts</abbr> the same way you capture code;
-- track and switch between different versions of data or models easily;
-- understand how data or models were built in the first place;
-- be able to compare models and metrics to each other;
-- bring software engineering best practices to your data science team;
-- among other [use cases](/doc/use-cases)
-
-DVC is for you!
+you can find all the material and technical details needed to learn about DVC
+here. This includes how to use it, how it works, and where to go for additional
+resources.
 
 ## Before you start
 
@@ -38,7 +23,7 @@ improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
 ## Main topics
 
 - Learn how to [install](/doc/install) and
-  [get started](/doc/tutorials/get-started) with DVC in the first sections.
+  [get started](/doc/tutorials/get-started) with DVC in the first few docs.
 - Explore the main [reasons](/doc/use-cases) to adopt DVC.
 - Study the detailed [inner-workings](/doc/user-guide) of DVC, as well as each
   one of its [commands](/doc/command-reference) and Python

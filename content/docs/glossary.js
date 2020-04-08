@@ -44,8 +44,8 @@ For more details, please refer to this [document]
       name: 'Output',
       match: ['output', 'outputs'],
       desc: `
-A file or directory that is under DVC control, recorded in the \`outs\` section
-of a DVC-file. See \`dvc add\` \`dvc run\`, \`dvc import\`, \`dvc import-url\`
+A file or directory that is under DVC control, recorded in the \`outs\` field of
+a DVC-file. See \`dvc add\` \`dvc run\`, \`dvc import\`, \`dvc import-url\`
 commands. A.k.a. **data artifact*.
       `
     },
@@ -54,7 +54,7 @@ commands. A.k.a. **data artifact*.
       match: ['dependency', 'dependencies'],
       desc: `
 A file or directory (possibly under DVC control) recorded in the \`deps\`
-section of a DVC-file. See \`dvc run\`.
+field of a DVC-file. See \`dvc run\`.
       `
     },
     {
