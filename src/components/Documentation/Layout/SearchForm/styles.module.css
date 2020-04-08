@@ -22,6 +22,10 @@
   input {
     height: 40px;
   }
+
+  :global(.algolia-autocomplete .ds-dropdown-menu) {
+    margin-top: -5px;
+  }
 }
 
 .container {
