@@ -13,6 +13,7 @@
   padding: 10px 10px 16px;
   border: 1px solid var(--color-lighter-blue);
   border-radius: 3px;
+  font-family: var(--font-brandon);
   color: var(--color-black);
   background-color: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
@@ -67,6 +68,10 @@
 }
 
 .tooltipHeader {
-  font-size: 1.3em;
+  font-size: 1.5em;
   font-weight: bold;
+}
+
+.tooltipBody {
+  font-size: 1.1em;
 }

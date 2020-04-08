@@ -110,7 +110,10 @@ const DesktopView: React.SFC<IDesktopViewProps> = ({
             onBlur={hide}
           >
             <div className={styles.tooltipHeader}>{header}</div>
-            <ReactMarkdown className="markdown-body" source={description} />
+            <ReactMarkdown
+              className={cn('markdown-body', styles.tooltipBody)}
+              source={description}
+            />
           </div>
         </Portal>
       )}
