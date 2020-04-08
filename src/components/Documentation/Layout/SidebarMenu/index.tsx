@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useLocation } from '@reach/router'
 import cn from 'classnames'
 import { Collapse } from 'react-collapse'
 import PerfectScrollbar from 'perfect-scrollbar'
@@ -76,24 +77,18 @@ const SidebarMenu: React.SFC<ISidebarMenuProps> = ({
   currentPath,
   onClick
 }) => {
+  const location = useLocation()
   const rootRef = useRef<HTMLDivElement>(null)
   const psRef = useRef<PerfectScrollbar | undefined>(undefined)
   const [isScrollHidden, setIsScrollHidden] = useState(false)
   const activePaths = currentPath && getParentsListFromPath(currentPath)
 
-  useEffect(() => {
-    if (!psRef.current && rootRef.current) {
-      psRef.current = new PerfectScrollbar(rootRef.current, {
-        wheelPropagation: true
-      })
-    }
-
+  const scrollToActiveItem = (): void => {
     const node = document.getElementById(currentPath)
     const parent = rootRef.current
 
     setIsScrollHidden(true)
-
-    const timeout = setTimeout(() => {
+    setTimeout(() => {
       psRef.current?.update()
 
       if (node && parent) {
@@ -113,13 +108,23 @@ const SidebarMenu: React.SFC<ISidebarMenuProps> = ({
 
       setIsScrollHidden(false)
     }, 400)
+  }
+
+  useEffect(() => {
+    if (!psRef.current && rootRef.current) {
+      psRef.current = new PerfectScrollbar(rootRef.current, {
+        wheelPropagation: true
+      })
+    }
+
+    scrollToActiveItem()
 
     return (): void => {
-      clearTimeout(timeout)
       psRef.current?.destroy()
       psRef.current = undefined
     }
   }, [])
+  useEffect(scrollToActiveItem, [location.pathname])
 
   return (
     <div
