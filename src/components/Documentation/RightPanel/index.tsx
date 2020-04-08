@@ -6,6 +6,7 @@ import { IHeading } from '../'
 import Link from '../../Link'
 import Tutorials from '../TutorialsLinks'
 
+import { getHeaderHeight } from '../../../utils/front/scroll'
 import { allImagesLoadedInContainer } from '../../../utils/front/images'
 
 import sharedStyles from '../styles.module.css'
@@ -37,8 +38,10 @@ const RightPanel: React.SFC<IRightPanelProps> = ({
 
     if (!coordinateKeys.length) return
 
+    const headerHeight = getHeaderHeight()
     const filteredKeys = coordinateKeys.filter(
-      offsetTop => parseInt(offsetTop, 10) <= scrollTop + height / 2
+      offsetTop =>
+        parseInt(offsetTop, 10) <= scrollTop + (height - headerHeight) / 2
     )
 
     const newCurrent = filteredKeys.length
@@ -61,10 +64,8 @@ const RightPanel: React.SFC<IRightPanelProps> = ({
       },
       {}
     )
-
     setHeadingsOffsets(offsets)
     setHeight(document.documentElement.clientHeight)
-    requestAnimationFrame(setCurrentHeader)
   }
 
   const initHeadingsPosition = (): void => {
@@ -85,6 +86,7 @@ const RightPanel: React.SFC<IRightPanelProps> = ({
     }
   }, [setCurrentHeader])
   useEffect(initHeadingsPosition, [headings])
+  useEffect(setCurrentHeader, [headingsOffsets, height])
 
   return (
     <div className={styles.container}>

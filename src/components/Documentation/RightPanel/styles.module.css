@@ -41,11 +41,11 @@
   cursor: pointer;
 
   &.current {
-    color: #a0a8a5;
+    color: #000;
   }
 
   &:hover {
-    color: #a0a8a5;
+    color: #3c3937;
   }
 }
 
