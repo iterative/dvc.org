@@ -10,6 +10,7 @@
   min-height: 44px;
   margin: 0 auto;
   font-family: var(--font-brandon);
+  line-height: 45px;
   text-align: center;
   color: var(--color-gray-hover);
 }
