@@ -19,7 +19,7 @@
 
 .list {
   margin-top: 57px;
-  margin-bottom: 25px;
+  margin-bottom: 27px;
 }
 
 .header {
@@ -33,7 +33,7 @@
   display: block;
   min-height: 26px;
   margin-bottom: 3px;
-  color: var(--color-gray);
+  color: #a0a8a5;
   text-decoration: none;
   font-size: 16px;
   font-weight: 400;
@@ -41,11 +41,11 @@
   cursor: pointer;
 
   &.current {
-    color: var(--color-black);
+    color: #a0a8a5;
   }
 
   &:hover {
-    color: var(--color-black);
+    color: #a0a8a5;
   }
 }
 
@@ -63,13 +63,12 @@
 }
 
 .buttonSectionDescription {
-  margin-bottom: 5px;
   color: var(--color-black);
 }
 
 .button {
   width: 100%;
-  justify-content: flex-start;
+  margin: 10px 0;
 
   &.tutorials {
     white-space: nowrap;
@@ -81,5 +80,7 @@
 }
 
 .discordIcon {
+  width: 1.2em;
+  height: 1.2em;
   background-image: url(/img/discord.svg);
 }
