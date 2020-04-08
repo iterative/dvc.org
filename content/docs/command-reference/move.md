@@ -140,8 +140,8 @@ $ tree
 
 ## Example: change an imported directory name and location
 
-Let's try the same with an entire directory imported from an external <abbd>DVC
-repository</abbd> with `dvc import`. Note that, as in the previous cases, the
+Let's try the same with an entire directory imported from an external <abbr>DVC
+repository</abbr> with `dvc import`. Note that, as in the previous cases, the
 DVC-file is also moved.
 
 ```dvc
