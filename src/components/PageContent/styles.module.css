@@ -1,7 +1,3 @@
 .pageContent {
   padding-bottom: 50px;
-
-  @media (--xs-scr) {
-    padding-bottom: 0;
-  }
 }
