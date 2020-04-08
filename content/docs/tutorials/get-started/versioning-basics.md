@@ -181,7 +181,7 @@ A better alternative is the `dvc import` command! Let's go back to the
 from the same source:
 
 ```dvc
-$ cd ~/sotag-predictions
+$ cd ~/so-tag-predict
 $ dvc import https://github.com/iterative/dataset-registry \
              get-started/data.xml -o data/data.xml
 ```

@@ -10,9 +10,9 @@ usage: dvc init [-h] [-q | -v] [--no-scm] [-f] [--subdir]
 
 ## Description
 
-DVC works on top of a Git repository by default. This enables all features,
-providing the most value. It means that `dvc init` (without flags) expects to
-run in a Git repository root (a `.git/` directory should be present).
+DVC works best in a Git repository. This enables all features, providing the
+most value. For this reason, `dvc init` (without flags) expects to run in a Git
+repository root (a `.git/` directory should be present).
 
 The command [options](#options) can be used to start an alternative workflow for
 advanced scenarios:
@@ -25,7 +25,7 @@ advanced scenarios:
 At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and <abbr>cache</abbr>
 [files and directories](/doc/user-guide/dvc-files-and-directories), that are
-hidden from the user.
+hidden from the user. This directory can be committed with Git.
 
 ### Initializing DVC in subdirectories
 

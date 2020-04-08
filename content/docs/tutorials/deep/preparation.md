@@ -58,8 +58,8 @@ $ pip install -r code/requirements.txt
 
 ## Initialize
 
-DVC works on top of Git repositories. You run DVC initialization in a repository
-directory to create DVC meta files and directories.
+DVC works best inside Git repositories. You run DVC initialization in a the
+directory of a Git repo to create DVC meta files and directories.
 
 At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and <abbr>cache</abbr>
