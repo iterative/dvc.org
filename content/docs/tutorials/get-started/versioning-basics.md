@@ -92,8 +92,7 @@ Now that your raw data is tracked by DVC, you can push it from your repository
 to the default [remote storage](/doc/command-reference/remote).
 
 > As seen in the intro's [Configure](/doc/tutorials/get-started#configure)
-> section, we are using a **local remote** in this section for illustrative
-> purposes.
+> section, we are using a _local remote_ for illustrative purposes.
 
 ```dvc
 $ dvc push

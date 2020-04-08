@@ -1,8 +1,8 @@
 # Connect Code and Data
 
 Even in its basic scenarios, commands like `dvc add`, `dvc push`, `dvc pull`
-described in the previous sections could be used independently and provide a
-basic useful framework to track, save and share models and large data files. To
+described in the previous page could be used independently and provide a basic
+useful framework to track, save and share models and large data files. To
 achieve full reproducibility though, we'll have to connect code and
 configuration with the data it processes to produce the result.
 
@@ -10,7 +10,7 @@ configuration with the data it processes to produce the result.
 
 ### Expand to prepare example code
 
-If you've followed this _Get Started_ section from the beginning, run these
+If you've followed this _Get Started_ tutorial from the beginning, run these
 commands to get the example code:
 
 ```dvc
