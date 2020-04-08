@@ -22,11 +22,24 @@
     }
 
     .markdown-body {
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+
+        to {
+          opacity: 1;
+        }
+      }
+
       font-family: inherit;
       font-size: 18px;
       animation-duration: 1s;
       animation-fill-mode: both;
-      animation-name: fadeIn;
+
+      :local {
+        animation-name: fadeIn;
+      }
 
       h1,
       h2,
@@ -209,16 +222,6 @@
       border-radius: 15px;
       -moz-border-radius: 15px;
       padding: 10px;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-
-      to {
-        opacity: 1;
-      }
     }
 
     details p {
