@@ -9,7 +9,7 @@ import {
 
 import styles from './styles.module.css'
 
-function NonStretchedImage(props: IGatsbyImageProps) {
+const NonStretchedImage: React.SFC<IGatsbyImageProps> = props => {
   let normalizedProps = props
   if (props.fluid && props.fluid.presentationWidth) {
     const presetantionWidth = props.fluid?.presentationWidth
@@ -29,7 +29,7 @@ function NonStretchedImage(props: IGatsbyImageProps) {
   return <Image {...normalizedProps} />
 }
 
-function HeroPic({ pictureComment, picture }: IBlogPostHeroPic) {
+const HeroPic: React.SFC<IBlogPostHeroPic> = ({ pictureComment, picture }) => {
   return (
     <div className={styles.pictureWrapper}>
       <div className={styles.picture}>

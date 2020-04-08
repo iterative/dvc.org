@@ -12,10 +12,10 @@ import sharedStyles from '../styles.module.css'
 
 const { description, mobileDescription, title } = data.section.contribute
 
-const logPR = () => logEvent('community', 'contribute-pr')
-const logBlogpost = () => logEvent('community', 'contribute-blogpost')
-const logTalk = () => logEvent('community', 'contribute-talk')
-const logAmbassador = () => logEvent('community', 'contribute-ambassador')
+const logPR = (): void => logEvent('community', 'contribute-pr')
+const logBlogpost = (): void => logEvent('community', 'contribute-blogpost')
+const logTalk = (): void => logEvent('community', 'contribute-talk')
+const logAmbassador = (): void => logEvent('community', 'contribute-ambassador')
 
 const Contribute: React.SFC<{ theme: ICommunitySectionTheme }> = ({
   theme

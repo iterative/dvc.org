@@ -64,7 +64,8 @@ interface IDownloadButtonProps {
   openTop?: boolean
 }
 
-const userAgentIs = (value: string) => navigator.userAgent.indexOf(value) !== -1
+const userAgentIs = (value: string): boolean =>
+  navigator.userAgent.indexOf(value) !== -1
 
 const getUserOS = (): OS => {
   let OSName = OS.UNKNOWN
@@ -101,7 +102,7 @@ const DownloadButtonDropdownItems: React.SFC<IDownloadButtonDropdownItemsProps> 
             key={os}
             className={cn(styles.dropdownItem, os === userOS && styles.active)}
             href={item.url}
-            onClick={() => onClick(os)}
+            onClick={(): void => onClick(os)}
           >
             {item.title}
           </Link>
@@ -129,13 +130,13 @@ const DownloadButton: React.SFC<IDownloadButtonProps> = ({ openTop }) => {
       }),
     [isOpened, isClicked]
   )
-  const download = (os: OS) => {
+  const download = (os: OS): void => {
     setOpened(false)
     logEvent('download', os)
   }
 
   useEffect(() => {
-    const onOutsideClick = (e: MouseEvent) => {
+    const onOutsideClick = (e: MouseEvent): void => {
       if (isOpened && !containerRef.current?.contains(e.target as Node)) {
         setOpened(false)
       }
@@ -143,7 +144,7 @@ const DownloadButton: React.SFC<IDownloadButtonProps> = ({ openTop }) => {
 
     document.addEventListener('mousedown', onOutsideClick)
 
-    return () => document.removeEventListener('mousedown', onOutsideClick)
+    return (): void => document.removeEventListener('mousedown', onOutsideClick)
   }, [isOpened, containerRef.current])
 
   return (

@@ -10,7 +10,7 @@ import { ReactComponent as Twitter } from './icons/twitter.svg'
 
 import styles from './styles.module.css'
 
-function openWindow(e: React.MouseEvent, href: string) {
+function openWindow(e: React.MouseEvent, href: string): void {
   e.preventDefault()
 
   window.open(
@@ -26,7 +26,7 @@ interface IShareProps {
   slug: string
 }
 
-function Share({ className, text, slug }: IShareProps) {
+const Share: React.SFC<IShareProps> = ({ className, text, slug }) => {
   const {
     site: {
       siteMetadata: { siteUrl }

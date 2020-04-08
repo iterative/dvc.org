@@ -7,7 +7,7 @@ import { scrollIntoLayout } from '../../utils/front/scroll'
 
 import styles from './styles.module.css'
 
-export const useAnchorNavigation = () => {
+export const useAnchorNavigation = (): void => {
   const location = useLocation()
 
   useEffect(() => {
@@ -29,7 +29,7 @@ export const useAnchorNavigation = () => {
   }, [location.href])
 }
 
-export const useRedirects = () => {
+export const useRedirects = (): void => {
   const location = useLocation()
 
   useEffect(() => {
@@ -37,7 +37,7 @@ export const useRedirects = () => {
   }, [location.href])
 }
 
-export const useSmoothScroll = (enable: boolean) => {
+export const useSmoothScroll = (enable: boolean): void => {
   useEffect(() => {
     const method = enable ? 'add' : 'remove'
 

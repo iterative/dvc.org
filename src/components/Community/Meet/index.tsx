@@ -20,9 +20,9 @@ import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
 
 const { description, mobileDescription, title } = data.section.meet
-const logIssueAll = () => logEvent('community', 'issue', 'all')
-const logTopicAll = () => logEvent('community', 'topic', 'all')
-const logDiscord = () => logEvent('community', 'discord')
+const logIssueAll = (): void => logEvent('community', 'issue', 'all')
+const logTopicAll = (): void => logEvent('community', 'topic', 'all')
+const logDiscord = (): void => logEvent('community', 'discord')
 
 const Topic: React.SFC<{ color: string } & IDiscussTopic> = ({
   url,

@@ -1,4 +1,4 @@
-const IS_CLIENT = (() => {
+const IS_CLIENT = ((): boolean => {
   let isDefined = false
   try {
     window

@@ -114,7 +114,7 @@ const SidebarMenu: React.SFC<ISidebarMenuProps> = ({
       setIsScrollHidden(false)
     }, 400)
 
-    return () => {
+    return (): void => {
       clearTimeout(timeout)
       psRef.current?.destroy()
       psRef.current = undefined

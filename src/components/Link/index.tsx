@@ -14,7 +14,7 @@ export type ILinkProps = {
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 const PROTOCOL_REGEXP = /^https?:\/\//
-const isRelative = (url: string) => !PROTOCOL_REGEXP.test(url)
+const isRelative = (url: string): boolean => !PROTOCOL_REGEXP.test(url)
 
 const ResultLinkComponent: React.SFC<ILinkProps> = ({
   href,

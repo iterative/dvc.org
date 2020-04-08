@@ -57,7 +57,7 @@ const DesktopView: React.SFC<IDesktopViewProps> = ({
     ITooltipPosition | undefined
   >()
   const [isVisible, setVisible] = useState(false)
-  const calcPosition = () => {
+  const calcPosition = (): void => {
     if (!tooltipRef.current || !toggleRef.current) {
       return
     }
@@ -65,7 +65,7 @@ const DesktopView: React.SFC<IDesktopViewProps> = ({
     setPosition(getPosition(toggleRef.current, tooltipRef.current))
   }
   const throttledCalcPosition = throttle(calcPosition, 50)
-  const show = () => {
+  const show = (): void => {
     if (timeoutRef.current) {
       clearTimeout(timeoutRef.current)
       timeoutRef.current = undefined
@@ -73,7 +73,7 @@ const DesktopView: React.SFC<IDesktopViewProps> = ({
 
     setVisible(true)
   }
-  const hide = () => {
+  const hide = (): void => {
     timeoutRef.current = window.setTimeout(() => setVisible(false), 100)
   }
 
@@ -81,7 +81,7 @@ const DesktopView: React.SFC<IDesktopViewProps> = ({
     document.addEventListener('scroll', throttledCalcPosition)
     window.addEventListener('resize', throttledCalcPosition)
 
-    return () => {
+    return (): void => {
       document.removeEventListener('scroll', throttledCalcPosition)
       window.removeEventListener('resize', throttledCalcPosition)
     }

@@ -1,9 +1,9 @@
 import Promise from 'promise-polyfill'
 
-export const getImages = (node: Element) =>
-  Array.from(node.querySelectorAll('img')).filter((imgNode) => !!imgNode.src)
+export const getImages = (node: Element): Array<HTMLImageElement> =>
+  Array.from(node.querySelectorAll('img')).filter(imgNode => !!imgNode.src)
 
-export const imageLoaded = (imgNode: HTMLImageElement) => {
+export const imageLoaded = (imgNode: HTMLImageElement): Promise<void> => {
   if (imgNode.complete && imgNode.naturalWidth !== 0) {
     return Promise.resolve()
   }
@@ -20,8 +20,9 @@ export const imageLoaded = (imgNode: HTMLImageElement) => {
   })
 }
 
-export const allImagesLoaded = (nodes: Array<HTMLImageElement>) =>
-  Promise.all(nodes.map(imageLoaded))
+export const allImagesLoaded = (
+  nodes: Array<HTMLImageElement>
+): Promise<void[]> => Promise.all(nodes.map(imageLoaded))
 
-export const allImagesLoadedInContainer = (node: Element) =>
+export const allImagesLoadedInContainer = (node: Element): Promise<void[]> =>
   allImagesLoaded(getImages(node))

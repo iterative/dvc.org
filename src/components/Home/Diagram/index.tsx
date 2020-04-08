@@ -23,7 +23,7 @@ const LearnMore: React.SFC<{ href: string }> = ({ href }) => (
   </div>
 )
 
-const ColumnOne = () => (
+const ColumnOne: React.SFC = () => (
   <div className={styles.column}>
     <h3 className={cn(styles.columnCaption, styles.purple)}>
       ML project version control
@@ -45,7 +45,7 @@ const ColumnOne = () => (
   </div>
 )
 
-const ColumnTwo = () => (
+const ColumnTwo: React.SFC = () => (
   <div className={styles.column}>
     <h3 className={cn(styles.columnCaption, styles.azure)}>
       ML experiment management
@@ -68,7 +68,7 @@ const ColumnTwo = () => (
   </div>
 )
 
-const ColumnThree = () => (
+const ColumnThree: React.SFC = () => (
   <div className={styles.column}>
     <h3 className={cn(styles.columnCaption, styles.orange)}>
       Deployment & Collaboration
@@ -123,7 +123,9 @@ const DiagramSection: React.ForwardRefRenderFunction<HTMLElement> = (
             infinite
             speed={600}
             dots
-            appendDots={dots => <ul className={styles.sliderDots}>{dots}</ul>}
+            appendDots={(dots): JSX.Element => (
+              <ul className={styles.sliderDots}>{dots}</ul>
+            )}
           >
             <div className={styles.slide}>
               <img

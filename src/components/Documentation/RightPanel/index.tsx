@@ -31,7 +31,7 @@ const RightPanel: React.SFC<IRightPanelProps> = ({
     {}
   )
   const [current, setCurrent] = useState<string | null>(null)
-  const setCurrentHeader = () => {
+  const setCurrentHeader = (): void => {
     const { scrollTop } = document.documentElement
     const coordinateKeys = Object.keys(headingsOffsets)
 
@@ -48,7 +48,7 @@ const RightPanel: React.SFC<IRightPanelProps> = ({
     setCurrent(newCurrent)
   }
 
-  const updateHeadingsPosition = () => {
+  const updateHeadingsPosition = (): void => {
     const offsets = headings.reduce(
       (result: IHeadingsCoordinates, heading: IHeading) => {
         const headingElement = document.getElementById(heading.slug)
@@ -67,7 +67,7 @@ const RightPanel: React.SFC<IRightPanelProps> = ({
     requestAnimationFrame(setCurrentHeader)
   }
 
-  const initHeadingsPosition = () => {
+  const initHeadingsPosition = (): void => {
     const root = document.querySelector('#markdown-root')
 
     root && allImagesLoadedInContainer(root).then(updateHeadingsPosition)
@@ -79,7 +79,7 @@ const RightPanel: React.SFC<IRightPanelProps> = ({
     document.addEventListener('scroll', throttledSetCurrentHeader)
     window.addEventListener('resize', updateHeadingsPosition)
 
-    return () => {
+    return (): void => {
       document.removeEventListener('scroll', throttledSetCurrentHeader)
       window.removeEventListener('resize', updateHeadingsPosition)
     }

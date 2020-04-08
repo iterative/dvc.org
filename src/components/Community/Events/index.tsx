@@ -25,7 +25,7 @@ interface IEvent {
 
 const { description, mobileDescription, title } = data.section.events
 const { events } = data
-const eventsItems = (() => {
+const eventsItems = ((): Array<IEvent | null> => {
   const items: Array<IEvent | null> = events.slice(0, 3) as Array<IEvent>
   const itemLength = items.length
 

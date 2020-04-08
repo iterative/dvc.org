@@ -22,7 +22,7 @@ export const logEvent = (
   eventCategory: string,
   eventAction: string,
   eventLabel?: string
-) => {
+): void => {
   if (!window.ga) return
 
   window.ga('send', {
@@ -33,7 +33,7 @@ export const logEvent = (
   })
 }
 
-export const logException = (exDescription = '', exFatal = false) => {
+export const logException = (exDescription = '', exFatal = false): void => {
   if (!window.ga) return
 
   if (exDescription) {

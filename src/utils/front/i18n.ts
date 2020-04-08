@@ -1,7 +1,7 @@
 export function pluralize(
   entry: { zero: string; one: string; other: string },
   count: number
-) {
+): string {
   let selectedEntry
 
   if (count === 0 && entry.zero) {
@@ -15,7 +15,7 @@ export function pluralize(
   return selectedEntry.replace('{count}', count.toString())
 }
 
-export function pluralizeComments(count: number) {
+export function pluralizeComments(count: number): string {
   return pluralize(
     { zero: 'No comments', one: '{count} comment', other: '{count} comments' },
     count

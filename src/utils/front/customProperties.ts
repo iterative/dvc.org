@@ -1,7 +1,7 @@
-const getCustomProperties = (() => {
+const getCustomProperties = ((): (() => CSSStyleDeclaration) => {
   let cssDecl: CSSStyleDeclaration
 
-  return () => {
+  return (): CSSStyleDeclaration => {
     if (!cssDecl) {
       cssDecl = getComputedStyle(document.documentElement, null)
     }
@@ -10,11 +10,11 @@ const getCustomProperties = (() => {
   }
 })()
 
-export const getCustomProperty = (() => {
+export const getCustomProperty = ((): ((name: string) => number | string) => {
   const IS_PX_VALUE = /px$/
   const cachedValues: { [key: string]: number | string } = {}
 
-  return (name: string) => {
+  return (name: string): number | string => {
     if (!cachedValues[name]) {
       const all = getCustomProperties()
       const value = all.getPropertyValue(name).trim()

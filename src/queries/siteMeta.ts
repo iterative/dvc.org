@@ -1,6 +1,13 @@
 import { useStaticQuery, graphql } from 'gatsby'
 
-export default function siteMeta() {
+interface ISiteMeta {
+  title: string
+  description: string
+  keywords: string
+  siteUrl: string
+}
+
+export default function siteMeta(): ISiteMeta {
   const {
     site: { siteMetadata }
   } = useStaticQuery(

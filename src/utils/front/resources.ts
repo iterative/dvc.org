@@ -1,6 +1,10 @@
 import Promise from 'promise-polyfill'
 
-const createScript = (src: string, onload: () => void, onerror: () => void) => {
+const createScript = (
+  src: string,
+  onload: () => void,
+  onerror: () => void
+): HTMLScriptElement => {
   const node = document.createElement('script')
 
   node.onload = onload
@@ -15,7 +19,7 @@ const createStylesheet = (
   href: string,
   onload: () => void,
   onerror: () => void
-) => {
+): HTMLLinkElement => {
   const node = document.createElement('link')
 
   node.onload = onload
@@ -36,7 +40,7 @@ const resourceNodeCreators: {
   '\\.css$': createStylesheet
 }
 
-export const loadResource = (url: string) => {
+export const loadResource = (url: string): Promise<void> => {
   if (!resourcesCache[url]) {
     resourcesCache[url] = new Promise((resolve, reject) => {
       const howToHandle = Object.keys(resourceNodeCreators).find(regExp =>

@@ -19,20 +19,20 @@ const MobileView: React.SFC<IMobileViewProps> = ({
   text
 }) => {
   const [isVisible, setVisible] = useState(false)
-  const openTooltip = (e: React.MouseEvent<HTMLSpanElement>) => {
+  const openTooltip = (e: React.MouseEvent<HTMLSpanElement>): void => {
     e.stopPropagation()
     setVisible(true)
   }
-  const onOpenKeyDown = (e: React.KeyboardEvent) => {
+  const onOpenKeyDown = (e: React.KeyboardEvent): void => {
     if (isTriggeredFromKB(e)) {
       setVisible(true)
     }
   }
-  const closeTooltip = (e: React.MouseEvent<HTMLDivElement>) => {
+  const closeTooltip = (e: React.MouseEvent<HTMLDivElement>): void => {
     e.stopPropagation()
     setVisible(false)
   }
-  const onCloseKeyDown = (e: React.KeyboardEvent) => {
+  const onCloseKeyDown = (e: React.KeyboardEvent): void => {
     if (isTriggeredFromKB(e)) {
       setVisible(false)
     }

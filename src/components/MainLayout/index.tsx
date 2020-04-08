@@ -36,7 +36,7 @@ const MainLayout: LayoutComponent = ({
     if (className) {
       document.body.classList.add(className)
 
-      return () => {
+      return (): void => {
         document.body.classList.remove(className)
       }
     }

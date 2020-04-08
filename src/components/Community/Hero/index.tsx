@@ -8,7 +8,7 @@ import { logEvent } from '../../../utils/front/ga'
 import data from '../data.json'
 import styles from './styles.module.css'
 
-const logHero = () => logEvent('community', 'hero')
+const logHero = (): void => logEvent('community', 'hero')
 
 const Hero: React.SFC = () => {
   if (!data.hero) {

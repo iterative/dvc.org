@@ -7,12 +7,12 @@ interface IHamburgetProps {
   opened?: boolean
 }
 
-export default function HamburgerIcon({ opened }: IHamburgetProps) {
-  return (
-    <div className={cn(styles.wrapper, opened && styles.opened)}>
-      <div className={cn(styles.line, styles.first)} />
-      <div className={cn(styles.line, styles.second)} />
-      <div className={cn(styles.line, styles.third)} />
-    </div>
-  )
-}
+const HamburgerIcon: React.SFC<IHamburgetProps> = ({ opened }) => (
+  <div className={cn(styles.wrapper, opened && styles.opened)}>
+    <div className={cn(styles.line, styles.first)} />
+    <div className={cn(styles.line, styles.second)} />
+    <div className={cn(styles.line, styles.third)} />
+  </div>
+)
+
+export default HamburgerIcon

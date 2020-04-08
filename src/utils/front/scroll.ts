@@ -6,10 +6,10 @@ import { getCustomProperty } from './customProperties'
 
 const COLLAPSE_HEADER_AFTER = 25
 
-const headerIsCollapsedAt = (scrollPosition: number) =>
+const headerIsCollapsedAt = (scrollPosition: number): boolean =>
   scrollPosition > COLLAPSE_HEADER_AFTER
 
-export const getHeaderHeightAt = (scrollPosition?: number) => {
+export const getHeaderHeightAt = (scrollPosition?: number): number => {
   let header = getCustomProperty('--layout-header-height')
 
   if (
@@ -22,9 +22,9 @@ export const getHeaderHeightAt = (scrollPosition?: number) => {
   return header as number
 }
 
-export const getHeaderHeight = () => getHeaderHeightAt()
+export const getHeaderHeight = (): number => getHeaderHeightAt()
 
-export const useHeaderIsScrolled = () => {
+export const useHeaderIsScrolled = (): boolean => {
   const { y } = useWindowScroll()
 
   return headerIsCollapsedAt(y)
@@ -38,7 +38,7 @@ export const scrollIntoLayout = (
     duration?: number
     ease?: (value: number) => number
   }
-) => {
+): void => {
   if (!node) {
     return
   }

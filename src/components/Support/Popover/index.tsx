@@ -11,13 +11,13 @@ type IPopoverProps = {
 
 const Popover: React.SFC<IPopoverProps> = ({ children, ...restProps }) => {
   const [isOpened, setOpened] = useState(false)
-  const toggle = () => setOpened(prev => !prev)
-  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const toggle = (): void => setOpened(prev => !prev)
+  const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {
     if (isTriggeredFromKB(e)) {
       toggle()
     }
   }
-  const close = () => setOpened(false)
+  const close = (): void => setOpened(false)
 
   return (
     <ReactPopover isOpen={isOpened} onOuterAction={close} {...restProps}>

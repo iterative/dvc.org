@@ -7,7 +7,7 @@ import ShowOnly from '../../ShowOnly'
 
 import styles from './styles.module.css'
 
-const Heading1 = () => (
+const Heading1: React.SFC = () => (
   <div className={styles.caseHeader}>
     <img
       className={styles.caseIcon}
@@ -20,7 +20,7 @@ const Heading1 = () => (
   </div>
 )
 
-const Heading2 = () => (
+const Heading2: React.SFC = () => (
   <div className={styles.caseHeader}>
     <img
       className={styles.caseIcon}
@@ -33,7 +33,7 @@ const Heading2 = () => (
   </div>
 )
 
-const Heading3 = () => (
+const Heading3: React.SFC = () => (
   <div className={styles.caseHeader}>
     <img
       className={styles.caseIcon}
@@ -48,7 +48,7 @@ const Heading3 = () => (
   </div>
 )
 
-const Description1 = () => (
+const Description1: React.SFC = () => (
   <div className={styles.caseDescription}>
     At any time, fetch the full context about any experiment you or your
     colleagues have run. DVC guarantees that all files and metrics will be
@@ -57,7 +57,7 @@ const Description1 = () => (
   </div>
 )
 
-const Description2 = () => (
+const Description2: React.SFC = () => (
   <div className={styles.caseDescription}>
     DVC keeps metafiles in Git instead of Google Docs to describe and version
     control your data sets and models. DVC supports a variety of external
@@ -65,7 +65,7 @@ const Description2 = () => (
   </div>
 )
 
-const Description3 = () => (
+const Description3: React.SFC = () => (
   <div className={styles.caseDescription}>
     DVC defines rules and processes for working effectively and consistently as
     a team. It serves as a protocol for collaboration, sharing results, and

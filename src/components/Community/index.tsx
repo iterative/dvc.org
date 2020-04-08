@@ -22,17 +22,17 @@ export interface ICommunitySectionTheme {
   color: string
 }
 
-export default function Community() {
-  return (
-    <>
-      <PageContent className={styles.content}>
-        <Hero />
-        <Meet theme={themes.purple} />
-        <Contribute theme={themes.orange} />
-        <Learn theme={themes.green} />
-        <Events theme={themes.purple} />
-      </PageContent>
-      <SubscribeSection />
-    </>
-  )
-}
+const Community: React.SFC = () => (
+  <>
+    <PageContent className={styles.content}>
+      <Hero />
+      <Meet theme={themes.purple} />
+      <Contribute theme={themes.orange} />
+      <Learn theme={themes.green} />
+      <Events theme={themes.purple} />
+    </PageContent>
+    <SubscribeSection />
+  </>
+)
+
+export default Community

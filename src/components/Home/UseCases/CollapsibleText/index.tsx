@@ -15,8 +15,8 @@ const CollapsibleText: React.SFC<ICollapsibleTextProps> = ({
   children
 }) => {
   const [isOpened, setOpened] = useState(false)
-  const toggle = () => setOpened(prev => !prev)
-  const toggleFromKB = (e: React.KeyboardEvent<HTMLDivElement>) => {
+  const toggle = (): void => setOpened(prev => !prev)
+  const toggleFromKB = (e: React.KeyboardEvent<HTMLDivElement>): void => {
     if (isTriggeredFromKB(e)) {
       toggle()
     }

@@ -22,8 +22,9 @@ const docsPage = getFirstPage()
 const { description, mobileDescription, title } = data.section.learn
 const { documentation, userContent } = data
 
-const logPostAll = () => logEvent('community', 'blog', 'all')
-const logDocumentationAll = () => logEvent('community', 'documentation', 'all')
+const logPostAll = (): void => logEvent('community', 'blog', 'all')
+const logDocumentationAll = (): void =>
+  logEvent('community', 'documentation', 'all')
 
 interface ICommunityBlogPost {
   color: string

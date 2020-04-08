@@ -28,20 +28,21 @@
       { "prefixWithI": "always" }
     ],
     "no-tabs": "error",
-    "react/prop-types": "off", // Props should be described as TS types
-    "@typescript-eslint/explicit-function-return-type": "off"
+    "react/prop-types": "off" // Props should be described as TS types
   },
   "overrides": [
     {
       "files": [
-        "src/utils/**/*.?(js|ts)",
+        "src/utils/?(node|shared)/*.?(js|ts)",
+        "src/components/PageWrapper/index.js",
         "scripts/**/*.js",
         "src/server/**/*.js",
         "plugins/**/*.js",
         "gatsby-*.js"
       ],
       "rules": {
-        "@typescript-eslint/no-var-requires": "off"
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/explicit-function-return-type": "off"
       }
     }
   ]

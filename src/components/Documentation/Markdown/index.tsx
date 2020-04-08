@@ -99,7 +99,7 @@ const Markdown: React.SFC<IMarkdownProps> = ({
     document.addEventListener('touchstart', onTouchStart, false)
     document.addEventListener('touchend', onTouchEnd, false)
 
-    return () => {
+    return (): void => {
       document.removeEventListener('touchstart', onTouchStart)
       document.removeEventListener('touchend', onTouchEnd)
     }

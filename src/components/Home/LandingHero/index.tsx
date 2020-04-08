@@ -24,7 +24,7 @@ const LandingHero: React.SFC<ILandingHeroProps> = ({ scrollToRef }) => {
       3000
     )
 
-    return () => clearInterval(interval)
+    return (): void => clearInterval(interval)
   }, [])
 
   const scrollToUseCases = useCallback(() => {

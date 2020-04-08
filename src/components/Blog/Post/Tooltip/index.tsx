@@ -29,7 +29,9 @@ const centered: Position = (triggerRect, tooltipRect) => {
   return result
 }
 
-const portalStyle = (triggerRect: DOMRect | null) => {
+const portalStyle = (
+  triggerRect: DOMRect | null
+): { left?: number; top?: number } => {
   if (!triggerRect) {
     return { left: 0, top: 0 }
   }
@@ -42,7 +44,11 @@ const portalStyle = (triggerRect: DOMRect | null) => {
   }
 }
 
-function ModifiedTooltip({ children, label, ariaLabel }: TooltipProps) {
+const ModifiedTooltip: React.SFC<TooltipProps> = ({
+  children,
+  label,
+  ariaLabel
+}) => {
   const [trigger, tooltip] = useTooltip()
 
   const { isVisible, triggerRect } = tooltip

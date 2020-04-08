@@ -1,7 +1,17 @@
 import { useEffect, useState } from 'react'
 import fetch from 'isomorphic-fetch'
 
-const useAPICall = <R>(url: string) => {
+type IApiCallResult<T> = {
+  error: string | null
+  ready: boolean
+  result?: T
+}
+
+type UseApiResult<T, R> = Omit<IApiCallResult<T>, 'result'> & {
+  result?: R
+}
+
+const useAPICall = <R>(url: string): IApiCallResult<R> => {
   const [ready, setReady] = useState(false)
   const [error, setError] = useState<string | null>(null)
   const [result, setResult] = useState<R | undefined>(undefined)
@@ -9,7 +19,7 @@ const useAPICall = <R>(url: string) => {
   useEffect(() => {
     let cancelled = false
 
-    const fetchData = async () => {
+    const fetchData = async (): Promise<void> => {
       try {
         const res = await fetch(url)
 
@@ -29,7 +39,7 @@ const useAPICall = <R>(url: string) => {
 
     fetchData()
 
-    return () => {
+    return (): void => {
       cancelled = true
     }
   }, [])
@@ -48,7 +58,10 @@ export interface IGithubIssuesResponse {
   issues: Array<IGithubIssue>
 }
 
-export function useIssues() {
+export function useIssues(): UseApiResult<
+  IGithubIssuesResponse,
+  IGithubIssue[]
+> {
   const response = useAPICall<IGithubIssuesResponse>('/api/github')
 
   return { ...response, result: response.result?.issues }
@@ -65,7 +78,10 @@ export interface IDiscussTopicsResponse {
   topics: Array<IDiscussTopic>
 }
 
-export function useTopics() {
+export function useTopics(): UseApiResult<
+  IDiscussTopicsResponse,
+  IDiscussTopic[]
+> {
   const response = useAPICall<IDiscussTopicsResponse>('/api/discourse')
 
   return { ...response, result: response.result?.topics }
@@ -75,7 +91,9 @@ export interface IDiscussCommentsCountResponse {
   count: number
 }
 
-export function useCommentsCount(commentsUrl: string) {
+export function useCommentsCount(
+  commentsUrl: string
+): UseApiResult<IDiscussCommentsCountResponse, number> {
   const response = useAPICall<IDiscussCommentsCountResponse>(
     `/api/comments?url=${commentsUrl}`
   )

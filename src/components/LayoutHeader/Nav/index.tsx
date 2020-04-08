@@ -18,7 +18,7 @@ const Nav: React.SFC = () => (
         <Link
           href="/features"
           className={styles.link}
-          onClick={() => logEvent('menu', 'features')}
+          onClick={(): void => logEvent('menu', 'features')}
         >
           Features
         </Link>
@@ -27,7 +27,7 @@ const Nav: React.SFC = () => (
         <Link
           href={docsPage}
           className={styles.link}
-          onClick={() => logEvent('menu', 'doc')}
+          onClick={(): void => logEvent('menu', 'doc')}
         >
           Doc
         </Link>
@@ -36,7 +36,7 @@ const Nav: React.SFC = () => (
         <Link
           href="/blog"
           className={styles.link}
-          onClick={() => logEvent('menu', 'blog')}
+          onClick={(): void => logEvent('menu', 'blog')}
         >
           Blog
         </Link>
@@ -45,7 +45,7 @@ const Nav: React.SFC = () => (
         <Link
           href="/community"
           className={styles.link}
-          onClick={() => logEvent('menu', 'community')}
+          onClick={(): void => logEvent('menu', 'community')}
         >
           Community
         </Link>
@@ -54,28 +54,28 @@ const Nav: React.SFC = () => (
             <Link
               href="/community#meet"
               className={styles.dropdownLink}
-              onClick={() => logEvent('menu', 'community')}
+              onClick={(): void => logEvent('menu', 'community')}
             >
               Meet the Community
             </Link>
             <Link
               href="/community#contribute"
               className={styles.dropdownLink}
-              onClick={() => logEvent('menu', 'community')}
+              onClick={(): void => logEvent('menu', 'community')}
             >
               Contribute
             </Link>
             <Link
               href="/community#learn"
               className={styles.dropdownLink}
-              onClick={() => logEvent('menu', 'community')}
+              onClick={(): void => logEvent('menu', 'community')}
             >
               Learn
             </Link>
             <Link
               href="/community#events"
               className={styles.dropdownLink}
-              onClick={() => logEvent('menu', 'community')}
+              onClick={(): void => logEvent('menu', 'community')}
             >
               Events
             </Link>
@@ -86,7 +86,7 @@ const Nav: React.SFC = () => (
         <Link
           href="/support"
           className={styles.link}
-          onClick={() => logEvent('menu', 'support')}
+          onClick={(): void => logEvent('menu', 'support')}
         >
           Support
         </Link>
@@ -116,7 +116,7 @@ const Nav: React.SFC = () => (
     <PseudoButton
       className={styles.getStartedButton}
       href="/doc/tutorials/get-started"
-      onClick={() => logEvent('menu', 'get-started')}
+      onClick={(): void => logEvent('menu', 'get-started')}
     >
       Get Started
     </PseudoButton>
