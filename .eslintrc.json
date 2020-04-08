@@ -33,7 +33,8 @@
   "overrides": [
     {
       "files": [
-        "src/utils/?(node|shared)/*.?(js|ts)",
+        "src/utils/shared/*.?(js|ts)",
+        "src/gatsby/**/*.js",
         "src/components/PageWrapper/index.js",
         "scripts/**/*.js",
         "src/server/**/*.js",

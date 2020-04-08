@@ -2,9 +2,9 @@ const {
   getNodeSlug,
   setPageContext,
   removePageTrailingSlash
-} = require('./src/utils/node/common')
-const { createPages: createDocPages } = require('./src/utils/node/doc')
-const { createPages: createBlogPages } = require('./src/utils/node/blog')
+} = require('./src/gatsby/common')
+const { createPages: createDocPages } = require('./src/gatsby/doc')
+const { createPages: createBlogPages } = require('./src/gatsby/blog')
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions

@@ -1,6 +1,6 @@
 const path = require('path')
-const tagToSlug = require('../shared/tagToSlug')
-const { BLOG } = require('../../consts')
+const tagToSlug = require('../utils/shared/tagToSlug')
+const { BLOG } = require('../consts')
 
 const pageUrl = (basePath, page) => {
   if (page > 1) {
