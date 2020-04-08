@@ -115,9 +115,9 @@ considered by `dvc fetch` (unless the `-a` or `-T` options are used).
 ## Examples
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
-pipeline stages, such as the <abbr>DVC project</abbr> created in our
-[Get Started](/doc/tutorials/get-started) section. Then we can see what happens
-with `dvc fetch` as we switch from tag to tag.
+pipeline stages, such as the <abbr>DVC project</abbr> created for the
+[Get Started](/doc/tutorials/get-started). Then we can see what happens with
+`dvc fetch` as we switch from tag to tag.
 
 <details>
 

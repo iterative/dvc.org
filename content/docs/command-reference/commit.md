@@ -96,9 +96,9 @@ reproducibility in those cases.
 ## Examples
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
-pipeline stages, such as the <abbr>DVC project</abbr> created in our
-[Get Started](/doc/tutorials/get-started) section. Then we can see what happens
-with `git commit` and `dvc commit` in different situations.
+pipeline stages, such as the <abbr>DVC project</abbr> created for the
+[Get Started](/doc/tutorials/get-started). Then we can see what happens with
+`git commit` and `dvc commit` in different situations.
 
 <details>
 

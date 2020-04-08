@@ -137,7 +137,7 @@ $ dvc pull data.zip.dvc
 
 In this case we left off the `--remote` option, so it will have pulled from the
 default remote. The only files considered in this case are what is listed in the
-`out` section of the DVC-file `targets`.
+`out` field of the DVC-file `targets`.
 
 ## Example: With dependencies
 

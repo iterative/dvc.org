@@ -81,7 +81,7 @@ Now, let's reset the `metric` field with the `dvc metrics remove` command:
 $ dvc metrics remove metrics.json
 ```
 
-Let's check the outputs section (`outs`) of same
+Let's check the outputs field (`outs`) of same
 [DVC-file](/doc/user-guide/dvc-file-format) again:
 
 ```yaml

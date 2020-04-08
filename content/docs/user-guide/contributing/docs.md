@@ -15,9 +15,9 @@ To contribute documentation, these are the relevant locations:
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
   (`img/`): Add new images (png, svg, etc.) here. Use them in Markdown files
   like this: `![](/img/<filename>.gif)`.
-- [Sections](https://github.com/iterative/dvc.org/tree/master/content/docs/sidebar.json)
-  (`docs/sidebar.json`): Edit it to register a new section for the navigation
-  menu.
+- [Navigation](https://github.com/iterative/dvc.org/tree/master/content/docs/sidebar.json)
+  (`docs/sidebar.json`): Edit it to add or change entries in the navigation
+  sidebar.
 
 Merging the appropriate changes to these files into the master branch is enough
 to update the docs and redeploy the website.
