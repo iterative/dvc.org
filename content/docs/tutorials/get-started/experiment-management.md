@@ -1,11 +1,11 @@
 # Experiment Metrics
 
 Finally, we'd like to add an evaluation stage to our
-[pipeline](/doc/command-reference/pipeline). Data science is a metric-driven
-R&D-like process and `dvc metrics` commands along with DVC metric files provide
-a framework to capture and compare experiments performance. It doesn't require
-installing any databases or instrumenting your code to use some API, all is
-tracked by Git and is stored in Git or DVC remote storage:
+[pipeline](/doc/tutorials/get-started/data-pipelines). Data science is a
+metric-driven R&D-like process and `dvc metrics` commands along with DVC metric
+files provide a framework to capture and compare experiments performance. It
+doesn't require installing any databases or instrumenting your code to use some
+API, all is tracked by Git and is stored in Git or DVC remote storage:
 
 ```dvc
 $ dvc run -f evaluate.dvc \
@@ -44,7 +44,7 @@ The `dvc metrics show` command provides a way to compare different experiments,
 by analyzing metric files across different branches, tags, etc. But first we
 need to create a new experiment to compare the baseline with.
 
-# Experiments
+## Experiments
 
 Data science process is inherently iterative and R&D like. Data scientist may
 try many different approaches, different hyper-parameter values, and "fail" many
@@ -94,7 +94,7 @@ systems with file links. See
 [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) for
 more information.
 
-# Compare Experiments
+## Compare Experiments
 
 DVC makes it easy to iterate on your project using Git commits with tags or Git
 branches. It provides a way to try different ideas, keep track of them, switch
@@ -113,8 +113,9 @@ $ dvc repro evaluate.dvc
 
 `git checkout master` and `dvc checkout` commands ensure that we have the latest
 experiment code and data respectively. And `dvc repro`, as we discussed in the
-[Reproduce](/doc/tutorials/get-started/reproduce) chapter, is a way to run all
-the necessary commands to build the model and measure its performance.
+[Reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) chapter, is a
+way to run all the necessary commands to build the model and measure its
+performance.
 
 ```dvc
 $ git commit -am "Evaluate bigrams model"
@@ -137,7 +138,7 @@ DVC provides built-in support to track and navigate `JSON`, `TSV` or `CSV`
 metric files if you want to track additional information. See `dvc metrics` to
 learn more.
 
-# Get Older Data Version
+## Get Older Data Version
 
 Now that we have multiple experiments, models, processed datasets, the question
 is how do we revert back to an older version of a model file? Or how can we get
@@ -145,8 +146,8 @@ the previous version of the dataset if it was changed at some point?
 
 The answer is the `dvc checkout` command, and we already touched briefly the
 process of switching between different data versions in the
-[Experiments](/doc/tutorials/get-started/experiments) chapter of this _Get
-Started_ tutorial.
+[Experiments](/doc/tutorials/get-started/experiment-management) chapter of this
+_Get Started_ tutorial.
 
 Let's say we want to get the previous `model.pkl` file. The short answer is:
 

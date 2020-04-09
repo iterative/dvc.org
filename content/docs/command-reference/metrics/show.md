@@ -105,6 +105,7 @@ Examples in [add](/doc/command-reference/metrics/add),
 [remove](/doc/command-reference/metrics/remove) cover most of the basic cases
 for the `dvc metrics show`.
 
-The [Compare Experiments](/doc/tutorials/get-started/compare-experiments)
+The
+[Compare Experiments](/doc/tutorials/get-started/experiment-management#compare-experiments)
 chapter of our _Get Started_ covers the `-a` option to collect and print a
 metric file value across all Git branches.

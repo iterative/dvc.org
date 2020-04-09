@@ -132,8 +132,8 @@ in the [Get Started](/doc/tutorials/get-started).
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
 [2-remote](https://github.com/iterative/example-get-started/releases/tag/2-remote)
-tag, corresponding to the [Configure](/doc/tutorials/get-started/configure) _Get
-Started_ chapter:
+tag, corresponding to the [Configure](/doc/tutorials/get-started#configure)
+section of the _Get Started_:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -142,15 +142,16 @@ $ git checkout 2-remote
 $ mkdir data
 ```
 
-You should now have a blank workspace, just before the
-[Add Files](/doc/tutorials/get-started/add-files) chapter.
+You should now have a blank workspace, just before
+[Versioning Basics](/doc/tutorials/get-started/versioning-basics).
 
 </details>
 
 ## Example: Tracking a remote file
 
-An advanced alternate to [Add Files](/doc/tutorials/get-started/add-files)
-chapter of the _Get Started_ is to use `dvc import-url`:
+An advanced alternate to the intro of the
+[Versioning Basics](/doc/tutorials/get-started/versioning-basics) part of the
+_Get Started_ is to use `dvc import-url`:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml \
@@ -242,9 +243,9 @@ directory we created previously. (Its `path` has the URL for the data store.)
 And instead of an `etag` we have an `md5` hash value. We did this so its easy to
 edit the data file.
 
-Let's now manually reproduce a
-[processing chapter](/doc/tutorials/get-started/connect-code-and-data) from the
-_Get Started_ project. Download the example source code archive and unzip it:
+Let's now manually reproduce the
+[data processing part](/doc/tutorials/get-started/data-pipelines) of the _Get
+Started_ project. Download the example source code archive and unzip it:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip

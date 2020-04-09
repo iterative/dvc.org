@@ -74,10 +74,10 @@ $ dvc run -f prepare.dvc \
 
 `dvc run` generates the `prepare.dvc` DVC-file. It has the same
 [format](/doc/user-guide/dvc-file-format) as the file we created in the
-[previous section](/doc/tutorials/get-started/add-files) to track `data.xml`,
-except in this case it has additional information about the `data/prepared`
-output (a directory where two files, `train.tsv` and `test.tsv`, will be written
-to), and about the Python command that is required to build it.
+[previous section](/doc/tutorials/get-started/versioning-basics) to track
+`data.xml`, except in this case it has additional information about the
+`data/prepared` output (a directory where two files, `train.tsv` and `test.tsv`,
+will be written to), and about the Python command that is required to build it.
 
 <details>
 
@@ -121,9 +121,9 @@ wdir: .
 ```
 
 > `dvc run` is just the first of a set of DVC command required to generate a
-> [pipeline](/doc/tutorials/get-started/pipeline), or in other words,
-> instructions on how to build a ML model (data file) from previous data files
-> (or directories).
+> [pipeline](/doc/command-reference/pipeline), or in other words, instructions
+> on how to build a ML model (data file) from previous data files (or
+> directories).
 
 Let's briefly mention what the command options used above mean for this
 particular example:
@@ -164,7 +164,7 @@ $ git commit -m "Create data preparation stage"
 $ dvc push
 ```
 
-# Pipeline
+## Pipeline
 
 Support for [pipelines](/doc/command-reference/pipeline) is the biggest
 difference between DVC and other version control tools that can handle large
@@ -209,7 +209,7 @@ end-to-end.
 
 > See also the `dvc pipeline` command.
 
-# Visualize
+## Visualize
 
 Now that we have built our pipeline, we need a good way to visualize it to be
 able to wrap our heads around it. Luckily, DVC allows us to do that without
@@ -219,7 +219,7 @@ We are using the `--ascii` option below to better illustrate this pipeline.
 Please, refer to `dvc pipeline show` to explore other options this command
 supports (e.g. `.dot` files that can be used then in other tools).
 
-## Stages
+### Stages
 
 ```dvc
 $ dvc pipeline show --ascii train.dvc
@@ -246,7 +246,7 @@ $ dvc pipeline show --ascii train.dvc
          +-----------+
 ```
 
-## Commands
+### Commands
 
 ```dvc
 $ dvc pipeline show --ascii train.dvc --commands
@@ -267,7 +267,7 @@ $ dvc pipeline show --ascii train.dvc --commands
           +---------------------------------------------+
 ```
 
-## Outputs
+### Outputs
 
 ```dvc
 $ dvc pipeline show --ascii train.dvc --outs
@@ -294,7 +294,7 @@ $ dvc pipeline show --ascii train.dvc --outs
             +-----------+
 ```
 
-# Reproduce
+## Reproduce
 
 In the previous chapters, we described our first
 [pipeline](/doc/command-reference/pipeline). Basically, we generated a number of
