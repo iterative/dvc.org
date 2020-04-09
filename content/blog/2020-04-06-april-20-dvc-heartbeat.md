@@ -2,8 +2,10 @@
 title: April '20 DVC❤️Heartbeat
 date: 2020-04-06
 description: |
-  DVC discussions around the web,
-  our growing team, and recommended reading from the open source community.
+  Catch up on new DVC releases, talks, and projects in our community. 
+  This month, learn what we're up to in MLOps, CI/CD, and the 
+  intersection of data science and software engineering.
+
 descriptionLong: |
   Every month we share news, findings, interesting reads, community takeaways,
   and everything else along the way.
@@ -13,8 +15,11 @@ descriptionLong: |
   science.
 picture: ../../static/uploads/images/2020-04-06/april_header.png
 pictureComment:
+  A view from [Barrancas del
+  Cobre](https://en.wikipedia.org/wiki/Copper_Canyon), shot by Jorge Orpinel
+  Pérez. Jorge has mastered the art of working on DVC remotely.
 author: ../authors/elle_obrien.md
-commentsUrl: https://discuss.dvc.org/t/march-20-heartbeat/335
+commentsUrl: https://discuss.dvc.org/t/april-20-heartbeat/347
 tags:
   - Heartbeat
   - Google Drive
@@ -41,7 +46,8 @@ remote work relatively well.
 
 ![](/static/uploads/images/2020-04-06/laptop_on_boat.jpeg)_Before social
 distancing started, DVC technical writer Jorge Orpinel Pérez has worked from a
-canoe._
+canoe. Check out more photos from his workations
+[on Instagram](https://www.instagram.com/workationer/)._
 
 **DVC sponsors DivOps.** In a time when many conferences are going remote out of
 necessity, we were fortunate to be part of an _intentionally_ remote conference
