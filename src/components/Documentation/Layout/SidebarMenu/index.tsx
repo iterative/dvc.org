@@ -3,7 +3,7 @@ import { useLocation } from '@reach/router'
 import cn from 'classnames'
 import { Collapse } from 'react-collapse'
 import PerfectScrollbar from 'perfect-scrollbar'
-import includes from 'lodash.includes'
+import includes from 'lodash/includes'
 
 import ShowOnly from '../../../ShowOnly'
 import DownloadButton from '../../../DownloadButton'

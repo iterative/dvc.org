@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import cn from 'classnames'
-import throttle from 'lodash.throttle'
+import throttle from 'lodash/throttle'
 
 import { IHeading } from '../'
 import Link from '../../Link'

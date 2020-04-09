@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import includes from 'lodash.includes'
+import includes from 'lodash/includes'
 
 import ShowOnly from '../../../ShowOnly'
 import DesktopView from './DesktopView'

@@ -18,7 +18,7 @@
   }
 */
 
-const startCase = require('lodash.startcase')
+const startCase = require('lodash/startCase')
 const sidebar = require('../../../content/docs/sidebar.json')
 
 const PATH_ROOT = '/doc/'
