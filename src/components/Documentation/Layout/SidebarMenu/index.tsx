@@ -89,9 +89,9 @@ const SidebarMenu: React.SFC<ISidebarMenuProps> = ({
 
     setIsScrollHidden(true)
     setTimeout(() => {
-      psRef.current?.update()
-
       if (node && parent) {
+        psRef.current?.update()
+
         const parentHeight = parent.clientHeight
         const parentScroll = parent.scrollTop
         const nodeOffset = node.offsetTop
