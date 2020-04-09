@@ -58,8 +58,8 @@ restoring any file size will be almost instantaneous.
 > `cache.slow_link_warning` config option to `false` with `dvc config cache`.
 
 This command will fail to checkout files that are missing from the cache. In
-such a case, `dvc checkout` prints a warning message. It also lists the
-partial progress made by the checkout.
+such a case, `dvc checkout` prints a warning message. It also lists the partial
+progress made by the checkout.
 
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
@@ -149,7 +149,7 @@ This project comes with a predefined HTTP
 [remote storage](/doc/command-reference/remote). We can now just run `dvc pull`
 that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
 files that are tracked by DVC. The model file hash
-`3863d0e317dee0a55c4e59d2ec0eef33` will be used in the `train.dvc`
+`662eb7f64216d9c2c1088d0a5e2c6951` will be used in the `train.dvc`
 [stage file](/doc/command-reference/run):
 
 ```dvc
@@ -190,6 +190,8 @@ doesn't track those files; DVC does, so we must do this:
 ```dvc
 $ dvc fetch
 $ dvc checkout
+M       model.pkl
+M       data\features\
 
 $ md5 model.pkl
 MD5 (model.pkl) = 43630cce66a2432dcecddc9dd006d0a7
