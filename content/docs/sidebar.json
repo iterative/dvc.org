@@ -285,6 +285,17 @@
         "slug": "move"
       },
       {
+        "label": "param",
+        "slug": "params",
+        "source": "params/index.md",
+        "children": [
+          {
+            "label": "params diff",
+            "slug": "diff"
+          }
+        ]
+      },
+      {
         "label": "pipeline",
         "slug": "pipeline",
         "source": "pipeline/index.md",

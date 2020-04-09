@@ -6,10 +6,12 @@ command and execute the command.
 ## Synopsis
 
 ```usage
-usage: dvc run [-h] [-q | -v] [-d <path>] [-o <path>] [-O <path>]
-               [-m <path>] [-M <path>] [-f <filename>] [-c <path>]
-               [-w <path>] [--no-exec] [-y] [--overwrite-dvcfile]
+usage: dvc run [-h] [-q | -v] [-d DEPS] [-o OUTS] [-O OUTS_NO_CACHE]
+               [-p PARAMS] [-m METRICS] [-M METRICS_NO_CACHE] [-f FILE]
+               [-c CWD] [-w WDIR] [--no-exec] [-y] [--overwrite-dvcfile]
                [--ignore-build-cache] [--remove-outs] [--no-commit]
+               [--outs-persist OUTS_PERSIST]
+               [--outs-persist-no-cache OUTS_PERSIST_NO_CACHE]
                [--always-changed]
                command
 
@@ -21,10 +23,11 @@ positional arguments:
 
 `dvc run` provides an interface to describe stages: individual commands and the
 data input and output that go into creating a result. By specifying a list of
-dependencies (`-d` option) and <abbr>outputs</abbr> (`-o`, `-O`, `-m`, or `-M`
-options) DVC can later connect each stage by building a dependency graph
-([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)). This graph is
-used by DVC to restore a full data [pipeline](/doc/command-reference/pipeline).
+dependencies (`-d` option), params (`-p` option) and <abbr>outputs</abbr> (`-o`,
+`-O`, `-m`, or `-M` options) DVC can later connect each stage by building a
+dependency graph ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)).
+This graph is used by DVC to restore a full data
+[pipeline](/doc/command-reference/pipeline).
 
 The remaining terminal input provided to `dvc run` after the command options
 (`-`/`--` flags) will become the required `command` argument. Please wrap the
@@ -92,6 +95,14 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 
   > Note that a DVC-file without dependencies is considered always changed, so
   > `dvc repro` always executes it.
+
+- `-p [<filename>:]<params_list>`, `--params [<filename>:]<params_list>` -
+  specify a subset of parameters from a parameter file the stage depends on. The
+  params subset can be specified by coma separated params list:
+  `-p learning_rate,epochs`. By default, the params file is `params.yaml` but
+  this value can be redefined with params prefix:
+  `-p parse_params.yaml:threshold` See `dvc params` to learn more about using
+  parameters.
 
 - `-o <path>`, `--outs <path>` - specify a file or directory that is the result
   of running the `command`. Multiple outputs can be specified:
@@ -187,9 +198,10 @@ $ mkdir example && cd example
 $ git init
 $ dvc init
 $ mkdir data
-$ dvc run -d data -o metric -f metric.dvc "echo '1' >> metric"
+$ dvc run -d data -o metric -f metric.dvc \
+    "echo '{ \"AUC\": 0.86252 }' >> metric"
 Running command:
-	echo '1' >> metric
+    echo '{ "AUC": 0.86252 }' >> metric
 WARNING: 'data' is empty.
 
 To track the changes with git, run:
@@ -216,6 +228,28 @@ Execute an R script as s DVC pipeline stage:
 $ dvc run -d parsingxml.R -d Posts.xml \
           -o Posts.csv \
           Rscript parsingxml.R Posts.xml Posts.csv
+```
+
+Use a subset of hyperparameters from the default params file `params.yaml`. The
+parameters should be readed from user's code. DVC can granulary track
+dependencies for the defined subset of parameters for `dvc repro`:
+
+```dvc
+$ cat params.yaml
+seed: 20180226
+
+train:
+    lr: 0.0041
+    epochs: 75
+    layers: 9
+
+processing:
+    threshold: 0.98
+    bow_size: 15000
+
+$ dvc run -d matrix-train.p -d train_model.py -o model.p \
+          -p seed,train.lr,train.epochs
+          python train_model.py matrix-train.p model.p
 ```
 
 Extract an XML file from an archive to the `data/` folder:
