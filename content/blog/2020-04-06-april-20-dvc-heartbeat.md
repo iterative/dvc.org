@@ -24,8 +24,9 @@ tags:
   - DivOps
 ---
 
-Welcome to the April Heartbeat, our monthly roundup of cool happenings, good
-reads and other bright spots in our community.
+Welcome to the April Heartbeat, our
+[monthly roundup of cool happenings](https://dvc-landing-april-heart-6d0onb.herokuapp.com/tags/heartbeat),
+good reads and other bright spots in our community.
 
 ## News
 
@@ -49,7 +50,8 @@ led by women in DevOps. The DivOps lineup included speakers from GitHub,
 DropBox, Gremlin and more. DVC data scientist Elle (that's me!) gave a
 ten-minute talk about MLOps and CI/CD, so
 [please check out the video](https://dvc.org/blog/reimagining-devops-video).
-Another very relevant talk was from Anna Petrovichiva, CEO of Xperience AI; Anna
+Another very relevant talk was from Anna Petrovicheva, CEO of
+[Xperience AI](http://xperience.ai/); Anna
 [spoke about her team's development workflow for deep learning projects](https://youtu.be/8nwpCQufeE0)
 and gave a clear overivew of how they use DVC.
 
@@ -66,9 +68,9 @@ description="Ever wonder if it's possible to train a model to discover whether y
 link="spotify.com"
 image="/uploads/images/2020-04-06/data_stream.png"/>
 
-**New releases.** This month, DVC has released some new features and updates:
+## New releases. This month, DVC has released some new features and updates:
 
-- Did you know you can use Google Drive for remote storate with DVC? We've been
+- Did you know you can use Google Drive for remote storage with DVC? We've been
   hard at work delivering the best performance with Google Drive and are
   thrilled to invite users to try it out. Brand new
   [docs](https://dvc.org/doc/user-guide/setup-google-drive-remote#setup-a-google-drive-dvc-remote)
@@ -96,7 +98,7 @@ see
 <external-link
 href="https://mribeirodantas.xyz/blog/index.php/2020/03/05/r-dvc-and-rmarkdown/"
 title="Manage your Data Science Project in R"
-description=""
+description="A simple project tutorial with R/RMarkdown, Packrat, Git, and DVC."
 link="mribeirodantas.xyz"
 image="/uploads/images/2020-04-06/marcel.jpeg"/>
 
@@ -152,7 +154,7 @@ our attention.
 
 ![](/static/uploads/images/2020-04-06/monolith.jpeg)_From Juan Juan López
 López's
-[blog](https://medium.com/packlinkeng/a-complete-guide-about-how-to-break-the-data-monolith-caa2ab2d01f6)_.
+[blog](https://medium.com/packlinkeng/a-complete-guide-about-how-to-break-the-data-monolith-caa2ab2d01f6)._
 
 Thanks for reading. As always, let us know what you're making with DVC and what
 links are catching your interest in the blog comments, on
