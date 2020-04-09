@@ -13299,6 +13299,11 @@ quick-lru@^4.0.1:
   resolved "https://registry.yarnpkg.com/quick-lru/-/quick-lru-4.0.1.tgz#5b8878f113a58217848c6482026c73e1ba57727f"
   integrity sha512-ARhCpm70fzdcvNQfPoy49IaanKkTlRWF2JMzqhcJbhSFRZv7nPTvZJdcY7301IPmvW+/p0RgIWnQDLJxifsQ7g==
 
+raf-polyfill@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/raf-polyfill/-/raf-polyfill-1.0.0.tgz#cc6019be5bbb7112b8eeaae0ea8b5077100802e2"
+  integrity sha512-WwyjuX5kZFOslF+8mGjVrMvDYmOwlN50Eqoc876td1abMaesf1sK4uiOZor3bvJfBRCwCHuJNR3TN4KztC/IhA==
+
 ramda@^0.26:
   version "0.26.1"
   resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.26.1.tgz#8d41351eb8111c55353617fc3bbffad8e4d35d06"

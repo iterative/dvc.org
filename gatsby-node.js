@@ -38,6 +38,7 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
     config.entry.app = [
       'promise-polyfill/src/polyfill',
       'isomorphic-fetch',
+      'raf-polyfill',
       config.entry.app
     ]
 
