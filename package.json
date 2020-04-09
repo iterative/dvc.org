@@ -10,7 +10,7 @@
     "test": "jest",
     "start": "./scripts/clear-cloudflare-cache.js; node ./src/server/index.js",
     "format-staged": "pretty-quick --staged --no-restage --bail",
-    "format-check": "prettier --check '{.,pages/**,content/docs/**,src/**}/*.{js,md,json}'",
+    "format-check": "prettier --check '{.,content/docs/**,src/**}/*.{js,md,json}'",
     "format-all": "prettier --write './**/*.{js,jsx,md,tsx,ts,json}'",
     "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx src scripts",
     "lint-css": "stylelint \"src/**/*.css\"",
