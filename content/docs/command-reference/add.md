@@ -18,7 +18,7 @@ positional arguments:
 The `dvc add` command is analogous to `git add`, in that it makes DVC aware of
 the target data, as a first step to version it. Data added with DVC is also
 committed to the <abbr>cache</abbr> (use the `--no-commit` option to avoid this,
-and `dvc commit` as a separate step when needed).
+and `dvc commit` to finish the process when needed).
 
 The `targets` are files or directories to be track with DVC. These are turned
 into <abbr>outputs<abbr> (`outs` field) in a resulting
@@ -93,11 +93,11 @@ reproducible.
   among the `targets`, this option is ignored. For each file found, a new
   DVC-file is created using the process described in this command's description.
 
-- `--no-commit` - do not save outputs to cache. A DVC-file is created, and an
-  entry is added to `.dvc/state`, while nothing is added to the cache. (The
-  `dvc status` command will report that the file is `not in cache`.) This is
-  analogous to using `git add` before `git commit`. Use `dvc commit` when ready
-  to commit the results to cache.
+- `--no-commit` - do not save outputs to cache. A DVC-file is created and an
+  entry is added to `.dvc/state`, while nothing is added to the cache.
+  (`dvc status` will report that the file is `not in cache`.) Use `dvc commit`
+  when ready to commit outputs with DVC. This is analogous to using `git add`
+  before `git commit`.
 
 - `-f <filename>`, `--file <filename>` - specify name of the DVC-file it
   generates. This option works only if there is a single target. By default the
@@ -226,8 +226,8 @@ $ dvc run -f train.dvc \
           python train.py
 ```
 
-> To follow the full example, see
-> [Tutorial: Versioning](/doc/tutorials/versioning).
+> To follow the full example, see the [Versioning](/doc/tutorials/versioning)
+> tutorial.
 
 If instead we use the `--recursive` (`-R`) option, the output looks like this:
 

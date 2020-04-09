@@ -221,7 +221,7 @@ outs:
   path: data/Posts.xml
 ```
 
-Sections of the file above include:
+Parent fields in the file above include:
 
 - `cmd`: The command to run
 - `deps`: Dependencies with MD5 hashes

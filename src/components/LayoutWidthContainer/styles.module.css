@@ -1,0 +1,17 @@
+.container {
+  margin: 0 auto;
+  padding: 0 15px;
+  max-width: var(--layout-width);
+
+  &.wide {
+    max-width: var(--layout-width-wide);
+  }
+
+  @media (--md-scr) {
+    max-width: 100%;
+  }
+
+  @media (--xs-scr) {
+    padding: 0 31px 0 31px;
+  }
+}

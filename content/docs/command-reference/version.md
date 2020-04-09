@@ -1,6 +1,6 @@
 # version
 
-Display the DVC version along with the system/environment information.
+Display the DVC version and system/environment information.
 
 ## Synopsis
 
@@ -18,9 +18,11 @@ usage: dvc version [-h] [-q | -v]
 | `Python version`                            | Version of Python used in the environment where DVC is initialized                                                                                                    |
 | `Platform`                                  | Information about the operating system of the machine                                                                                                                 |
 | [`Binary`](#what-we-mean-by-binary)         | Shows whether DVC was installed from a package or from a binary release                                                                                               |
-| `Package manager`                           | Name of the package manager used to install DVC if any (`pip`, `conda`, etc)                                                                                          |
+| `Package`                                   | Name of the package manager used to install DVC if any (`pip`, `conda`, etc)                                                                                          |
+| `Supported remotes`                         | Remote types that have all needed dependencies installed for                                                                                                          |
 | `Cache`                                     | [Type of links](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache) supported between the <abbr>workspace</abbr> and the <abbr>cache</abbr> |
 | `Filesystem type`                           | Shows the filesystem type (eg. ext4, FAT, etc.) and mount point of the cache and <abbr>workspace</abbr> directories                                                   |
+| `Repo`                                      | Shows whether we are in a DVC repo and/or Git repo                                                                                                                    |
 
 > If `dvc version` is executed outside a DVC project, no `Cache` is output and
 > the `Filesystem type` output is of the current working directory.
@@ -114,7 +116,9 @@ Python version: 3.7.1
 Platform: Linux-4.15.0-50-generic-x86_64-with-debian-buster-sid
 Binary: False
 Cache: reflink - False, hardlink - True, symlink - True
+Supported remotes: azure, gdrive, gs, hdfs, http, https, s3, ssh, oss
 Filesystem type (cache directory): ('ext4', '/dev/sdb3')
+Repo: dvc, git
 Filesystem type (workspace): ('ext4', '/dev/sdb3')
 ```
 
@@ -127,5 +131,6 @@ DVC version: 0.41.3+f36162
 Python version: 3.7.1
 Platform: Linux-4.15.0-50-generic-x86_64-with-debian-buster-sid
 Binary: False
+Supported remotes: azure, gdrive, gs, hdfs, http, https, s3, ssh, oss
 Filesystem type (workspace): ('ext4', '/dev/sdb3')
 ```

@@ -1,0 +1,196 @@
+.diagramSection {
+  padding-top: 80px;
+  padding-bottom: 91px;
+}
+
+.title {
+  @mixin h2-desktop;
+
+  max-width: 550px;
+  min-height: 44px;
+  margin: 0 auto;
+  font-family: var(--font-brandon);
+  line-height: 45px;
+  text-align: center;
+  color: var(--color-gray-hover);
+}
+
+.description {
+  @mixin text-secondary;
+
+  max-width: 590px;
+  min-height: 50px;
+  margin: 0 auto;
+  padding-top: 10px;
+  text-align: center;
+  color: var(--color-gray-dark);
+}
+
+.desktopChartContainer {
+  width: 100%;
+  margin-top: 49px;
+
+  @media (--md-scr) {
+    overflow-x: scroll;
+    overflow-y: hidden;
+  }
+}
+
+.desktopChart {
+  width: 100%;
+  max-width: 900px;
+  max-height: 445px;
+}
+
+.columns {
+  @mixin columns;
+
+  margin-top: 10px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+
+  @media (--sm-scr) {
+    flex-direction: column;
+  }
+}
+
+.column {
+  @mixin column;
+
+  box-sizing: border-box;
+  display: block;
+  max-width: 33.3%;
+  margin-top: 49px;
+  padding: 0 10px;
+
+  @media (--sm-scr) {
+    margin-right: 0;
+    flex-basis: auto;
+    max-width: 100%;
+  }
+
+  @media (--xs-scr) {
+    margin-top: 20px;
+    flex-basis: auto;
+    max-width: 100%;
+  }
+}
+
+.columnCaption {
+  margin-bottom: 12px;
+  font-family: var(--font-brandon);
+  font-size: 20px;
+  font-weight: 500;
+
+  &.purple {
+    color: var(--color-purple);
+  }
+
+  &.azure {
+    color: var(--color-azure);
+  }
+
+  &.orange {
+    color: var(--color-orange-bright);
+  }
+}
+
+.columnDescriptionContainer {
+  max-width: 100%;
+  font-size: 16px;
+  color: var(--color-gray-dark);
+}
+
+.columnDescription {
+  margin-bottom: 24px;
+
+  @media (--sm-scr) {
+    margin-bottom: 12px;
+  }
+}
+
+.learnMoreContainer {
+  font-family: var(--font-brandon);
+  line-height: 28px;
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--color-purple);
+}
+
+.learnMoreLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--color-purple);
+
+  &:hover {
+    color: var(--color-purple-hover);
+  }
+
+  &:visited {
+    color: var(--color-purple);
+  }
+
+  &:visited:hover {
+    color: var(--color-purple-hover);
+  }
+}
+
+.learnMoreLinkIcon {
+  width: 18px;
+  height: 18px;
+  margin-left: 19px;
+  margin-top: 3px;
+}
+
+.sliderContainer {
+  :global {
+    .slick-next,
+    .slick-prev {
+      height: 30px;
+      width: 30px;
+      z-index: 3;
+    }
+
+    .slick-next {
+      right: -25px;
+    }
+
+    .slick-prev {
+      left: -25px;
+    }
+
+    .slick-next::before,
+    .slick-prev::before {
+      font-size: 30px;
+      line-height: 1;
+      opacity: 0.35;
+      color: #40364d;
+    }
+
+    img {
+      pointer-events: none;
+    }
+  }
+}
+
+.slide {
+  width: 100%;
+}
+
+.slideImage {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  width: 100%;
+  max-width: 380px;
+  margin: 0 auto;
+}
+
+.sliderDots {
+  margin-bottom: -20px;
+
+  li button::before {
+    font-size: 8px;
+  }
+}

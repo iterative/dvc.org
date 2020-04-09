@@ -28,7 +28,7 @@
   },
   "documentation": [
     {
-      "url": "/doc/get-started",
+      "url": "/doc/tutorials/get-started",
       "title": "Get started",
       "description": "Reproducible walkthroughs on advanced topics"
     },

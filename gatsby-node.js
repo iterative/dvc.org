@@ -1,115 +1,52 @@
-/* eslint-env node */
+const {
+  getNodeSlug,
+  setPageContext,
+  removePageTrailingSlash
+} = require('./src/gatsby/common')
+const { createPages: createDocPages } = require('./src/gatsby/doc')
+const { createPages: createBlogPages } = require('./src/gatsby/blog')
 
-const path = require('path')
-const GithubSlugger = require('github-slugger')
-
-const { getItemBySource } = require('./src/utils/sidebar')
-
-const slugger = new GithubSlugger()
-
-// Generate hedings data from markdown
-
-const SLUG_REGEXP = /\s+{#([a-z0-9-]*[a-z0-9]+)}\s*$/
-
-function extractSlugFromTitle(title) {
-  // extracts expressions like {#too-many-files} from the end of a title
-  const meta = title.match(SLUG_REGEXP)
-
-  if (meta) {
-    return [title.substring(0, meta.index), meta[1]]
-  }
-  return [title, slugger.slug(title)]
-}
-
-const parseHeadings = text => {
-  const headingRegex = /\n(## \s*)(.*)/g
-  const matches = []
-  let match
-  do {
-    match = headingRegex.exec(text)
-    if (match) {
-      const [title, slug] = extractSlugFromTitle(match[2])
-      matches.push({
-        text: title,
-        slug: slug
-      })
-    }
-  } while (match)
-
-  slugger.reset()
-  return matches
-}
-
-exports.onCreateNode = ({ node, actions }) => {
+exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
 
   if (node.internal.type === 'MarkdownRemark') {
-    const docsPath = path.join(__dirname, 'content')
-
-    const source = node.fileAbsolutePath.replace(docsPath, '')
-
-    const { path: value } = getItemBySource(source)
-
     createNodeField({
       name: 'slug',
       node,
-      value
+      value: getNodeSlug(node, getNode)
     })
   }
 }
 
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
-
-  const docPage = path.resolve('./src/templates/doc.js')
-
-  const result = await graphql(
-    `
-      {
-        docs: allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/content/docs/" } }
-          limit: 9999
-        ) {
-          edges {
-            node {
-              rawMarkdownBody
-              fields {
-                slug
-              }
-            }
-          }
-        }
-      }
-    `
-  )
-
-  if (result.errors) {
-    throw result.errors
-  }
-
-  const docs = result.data.docs.edges
-
-  docs.forEach(doc => {
-    const headings = parseHeadings(doc.node.rawMarkdownBody)
-
-    if (doc.node.fields.slug) {
-      createPage({
-        component: docPage,
-        path: doc.node.fields.slug,
-        context: {
-          slug: doc.node.fields.slug,
-          headings
-        }
-      })
-    }
-  })
+  createDocPages({ graphql, actions })
+  createBlogPages({ graphql, actions })
 }
 
 exports.onCreatePage = ({ page, actions }) => {
-  if (/^\/404/.test(page.path)) {
-    const newPage = { ...page, context: { ...page.context, is404: true } }
+  setPageContext(page, actions)
+  removePageTrailingSlash(page, actions)
+}
 
-    actions.deletePage(page)
-    actions.createPage(newPage)
+// Ignore warnings about CSS inclusion order, because we use CSS modules.
+// https://spectrum.chat/gatsby-js/general/having-issue-related-to-chunk-commons-mini-css-extract-plugin~0ee9c456-a37e-472a-a1a0-cc36f8ae6033?m=MTU3MjYyNDQ5OTAyNQ==
+exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
+  if (stage === 'build-javascript') {
+    const config = getConfig()
+
+    // Add polyfills
+    config.entry.app = [
+      'promise-polyfill/src/polyfill',
+      'isomorphic-fetch',
+      config.entry.app
+    ]
+
+    const miniCssExtractPlugin = config.plugins.find(
+      plugin => plugin.constructor.name === 'MiniCssExtractPlugin'
+    )
+    if (miniCssExtractPlugin) {
+      miniCssExtractPlugin.options.ignoreOrder = true
+    }
+    actions.replaceWebpackConfig(config)
   }
 }

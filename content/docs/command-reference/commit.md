@@ -1,6 +1,6 @@
 # commit
 
-Record changes to the repository by updating
+Record changes to DVC-tracked files in the <abbr>project</abbr>, by updating
 [DVC-files](/doc/user-guide/dvc-file-format) and saving <abbr>outputs<abbr> to
 the <abbr>cache</abbr>.
 
@@ -17,33 +17,34 @@ positional arguments:
 
 ## Description
 
-The `dvc commit` command is useful for several scenarios where a dataset is
-being changed: when a [stage](/doc/command-reference/run) or
-[pipeline](/doc/command-reference/pipeline) is in development, when one wishes
-to run commands outside the control of DVC, or to force DVC-file updates to save
-time tying stages or a pipeline. These scenarios are further detailed below.
+The `dvc commit` command is useful for several scenarios, when data already
+tracked by DVC changes: when a [stage](/doc/command-reference/run) or
+[pipeline](/doc/command-reference/pipeline) is in development/experimentation;
+when manually editing or generating DVC <abbr>outputs<abbr>; or to force
+DVC-file updates without reproducing stages or pipelines. These scenarios are
+further detailed below.
 
-💡 For convenience, a Git hook is available to remind you to `dvc commit` when
-needed after a `git commit`. See `dvc install` for more details.
+- Code or data for a stage is under active development, with multiple iterations
+  (experiments) in code, configuration, or data. Use the `--no-commit` option of
+  DVC commands (`dvc add`, `dvc run`, `dvc repro`) to avoid caching unnecessary
+  data repeatedly. Use `dvc commit` when the DVC-tracked data is final.
 
-- Code or data for a stage is under active development, with rapid iteration of
-  code, configuration, or data. Run DVC commands (`dvc run`, `dvc repro`, and
-  even `dvc add`) using the `--no-commit` option to avoid caching unnecessary
-  data over and over again. Use `dvc commit` when the files are finalized.
+  💡 For convenience, a pre-commit Git hook is available to remind you to
+  `dvc commit` when needed. See `dvc install` for more details.
 
-- One can always execute the code used in a stage without using DVC (keep in
-  mind that output files or directories in certain cases must first be
-  unprotected or removed, see `dvc unprotect`). Or one could be developing code
-  or data, repeatedly manually executing the code until it is working. Once it
-  is finished, use `dvc add`, `dvc commit`, or `dvc run` when appropriate to
-  update DVC-files and to store data to the cache.
+- It's always possible to manually execute the source code used in a stage
+  without DVC (outputs should be unprotected or removed first in certain cases,
+  see `dvc unprotect`). Once a desirable result is reached, use `dvc add` or
+  `dvc commit` as appropriate to update DVC-files and store changed data to the
+  cache.
 
-- Sometimes we want to clean up a code or configuration file in a way that
-  doesn't cause a change in its results. We might write in-line documentation
-  with comments, change indentation, remove some debugging printouts, or any
-  other change that doesn't produce different <abbr>outputs<abbr> of pipeline
-  stages. `dvc commit` can help avoid having to reproduce a pipeline in these
-  cases by forcing the update of the DVC-files.
+- Sometimes we want to edit source code, config, or data files in a way that
+  doesn't cause changes in the results of their data pipeline. We might write
+  add code comments, change indentation, remove some debugging printouts, or any
+  other change that doesn't cause changed stage outputs. However, DVC will
+  notice that some <abbr>dependencies</abbr> and have changed, and expect you to
+  reproduce the whole pipeline. If you're sure no pipeline results would change,
+  just use `dvc commit` to force update the related DVC-files and cache.
 
 Let's take a look at what is happening in the first scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
@@ -95,8 +96,8 @@ reproducibility in those cases.
 ## Examples
 
 Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
-pipeline stages, such as the <abbr>DVC project</abbr> created in our
-[Get Started](/doc/get-started) section. Then we can see what happens with
+pipeline stages, such as the <abbr>DVC project</abbr> created for the
+[Get Started](/doc/tutorials/get-started). Then we can see what happens with
 `git commit` and `dvc commit` in different situations.
 
 <details>

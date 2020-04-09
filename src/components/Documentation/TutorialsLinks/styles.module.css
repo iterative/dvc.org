@@ -1,0 +1,21 @@
+.button {
+  &:not(.compact) {
+    & + & {
+      margin-top: 10px;
+    }
+  }
+
+  &.compact {
+    margin-left: 5px;
+
+    .katacodaIcon {
+      margin-right: 0;
+    }
+  }
+}
+
+.katacodaIcon {
+  width: 24px;
+  height: 24px;
+  background-image: url(/img/katacoda_grey_small.png);
+}

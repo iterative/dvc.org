@@ -1,0 +1,28 @@
+.wrapper {
+  display: inline-block;
+  cursor: pointer;
+}
+
+.line {
+  width: 30px;
+  height: 3px;
+  background-color: #173042;
+  margin: 5px 0;
+  transition: 0.4s;
+
+  .opened & {
+    background-color: #fff;
+
+    &.first {
+      transform: rotate(-45deg) translate(-7px, 6px);
+    }
+
+    &.second {
+      opacity: 0;
+    }
+
+    &.third {
+      transform: rotate(45deg) translate(-5px, -5px);
+    }
+  }
+}

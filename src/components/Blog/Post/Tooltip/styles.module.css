@@ -1,0 +1,22 @@
+.wrapper {
+  @mixin text-secondary;
+
+  position: absolute;
+  z-index: 1;
+  padding: 2px 12px;
+  border-radius: 4px;
+  text-align: center;
+  white-space: nowrap;
+  color: #fff;
+  background: #000;
+  pointer-events: none;
+}
+
+.triangle {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #000;
+}

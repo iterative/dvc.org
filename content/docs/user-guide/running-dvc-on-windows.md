@@ -5,22 +5,28 @@ involving system performance. Some, for example, have to do with NTFS file
 system characteristics and Windows built-in security mechanisms. Below are some
 workarounds that can help avoid these potential problems:
 
-## POSIX-like command line shell
+## POSIX-like command line experience
 
-Many of the DVC commands have POSIX-style options that are given with a double
-dash `--`. This isn't supported by the simple Windows command prompt `cmd`.
+The regular Command Prompt (`cmd`) in Windows will most likely not help you use
+DVC effectively, or follow the examples in our docs. Please avoid it. There's no
+perfect solution, bu here are some ideas:
 
-Common Windows terminal alternatives are
-[Git Bash](https://gitforwindows.org/#bash) or
-[Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
-– but they may not support all the POSIX features (e.g. `\` line continuation).
-
-💡 We recommend the full [Cmder](https://cmder.net/) console emulator (which
-already includes _Git for Windows_).
-
-Its also possible to enjoy a full Linux terminal experience with the
-[WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
-– but it may not be possible to access GPUs from this subsystem.
+- The full [Cmder](https://cmder.net/) console emulator combines several useful
+  tools like [ConEmu](https://conemu.github.io/), and
+  [Git for Windows](https://gitforwindows.org/)\* (Git Bash) among other
+  [shell options](https://github.com/cmderdev/cmder/blob/master/README.md#access-to-multiple-shells-in-one-window-using-tabs).
+- [Anaconda Prompt](https://docs.anaconda.com/anaconda/user-guide/getting-started/#open-prompt-win)
+  is another recommendation, but it may not support all the desired CLI features
+  (e.g. `\` line continuation).
+- Consider enabling and using
+  [WSL](https://blogs.windows.com/windowsdeveloper/2016/03/30/run-bash-on-ubuntu-on-windows/)
+  ([Windows Terminal](https://devblogs.microsoft.com/commandline/) also
+  recommended). But it has major
+  [I/O performance issues](https://www.phoronix.com/scan.php?page=article&item=windows10-okt-wsl&num=2)
+  and is [unable to access GPUs](https://github.com/Microsoft/WSL/issues/829),
+  et al.\*
+- Install an actual Linux distro (e.g. Ubuntu) on a virtual machine, or in a HD
+  partition (dual boot).
 
 ## Disable short-file name generation
 
@@ -48,6 +54,13 @@ characters. If required, the user can explicitly enable long paths by following
 [this](https://blogs.msdn.microsoft.com/jeremykuhne/2016/07/30/net-4-6-2-and-long-paths-on-windows-10/)
 guide.
 
+## Fix or disable Search Indexing
+
+Search Indexing can also slow down file I/O operations on Windows. Try
+[fixing](https://www.groovypost.com/howto/fix-windows-10-search-index/) or
+[disabling](https://winaero.com/blog/disable-search-indexing-windows-10/) this
+feature if you don't need it.
+
 ## Avoid directories with large number of files
 
 The performance of NTFS degrades while handling large volumes of files in a
@@ -65,6 +78,6 @@ via [Chocolatey](https://chocolatey.org/) (please install the tool first):
 $ choco install less
 ```
 
-`less` can be installed in other ways, just make sure it's available in
-`cmd`/PowerShell, where you run `dvc`. (This usually means adding the directory
-where `less` is installed to the `PATH` environment variable.)
+`less` can be installed in other ways, just make sure it's available in the
+command line environment where you run `dvc`. (This usually means adding the
+directory where `less` is installed to the `PATH` environment variable.)

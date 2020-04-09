@@ -16,7 +16,7 @@ DVC is a command line tool. The typical DVC workflow goes as follows:
 - Use `dvc repro` to automatically reproduce your full pipeline, iteratively as
   input data or source code change.
 
-The command references under this section provide a precise specification,
-complete description, and isolated usage examples for the `dvc` CLI tool. These
-are our most technical documentation pages, similar to
+These command references provide a precise specification, complete description,
+and isolated usage examples for the `dvc` CLI tool. These are our most technical
+documentation pages, similar to
 [man-pages](https://www.kernel.org/doc/man-pages/) in Linux.

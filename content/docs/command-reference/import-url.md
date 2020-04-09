@@ -40,9 +40,9 @@ desired for the downloaded data. If an existing directory is specified, the
 DVC supports [DVC-files](/doc/user-guide/dvc-file-format) that refer to data in
 external locations, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such a
-DVC-file, the `deps` section stores the remote URL, and the `outs` section
-contains the corresponding local path in the workspace. It records metadata from
-the external file or directory, allowing DVC to efficiently check it later and
+DVC-file, the `deps` field stores the remote URL, and the `outs` field contains
+the corresponding local path in the workspace. It records metadata from the
+external file or directory, allowing DVC to efficiently check it later and
 determine whether the local copy is out of date.
 
 DVC supports several types of (local or) remote locations (protocols):
@@ -123,7 +123,7 @@ up to date from the external data source.
 ## Examples
 
 To illustrate these examples we will be using the <abbr>project</abbr> explained
-in the [Get Started](/doc/get-started) section.
+in the [Get Started](/doc/tutorials/get-started).
 
 <details>
 
@@ -132,8 +132,8 @@ in the [Get Started](/doc/get-started) section.
 Start by cloning our example repo if you don't already have it. Then move into
 the repo and checkout the
 [2-remote](https://github.com/iterative/example-get-started/releases/tag/2-remote)
-tag, corresponding to the [Configure](/doc/get-started/configure) _Get Started_
-chapter:
+tag, corresponding to the [Configure](/doc/tutorials/get-started/configure) _Get
+Started_ chapter:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -143,14 +143,14 @@ $ mkdir data
 ```
 
 You should now have a blank workspace, just before the
-[Add Files](/doc/get-started/add-files) chapter.
+[Add Files](/doc/tutorials/get-started/add-files) chapter.
 
 </details>
 
 ## Example: Tracking a remote file
 
-An advanced alternate to [Add Files](/doc/get-started/add-files) chapter of the
-_Get Started_ section is to use `dvc import-url`:
+An advanced alternate to [Add Files](/doc/tutorials/get-started/add-files)
+chapter of the _Get Started_ is to use `dvc import-url`:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml \
@@ -196,9 +196,9 @@ regenerating a <abbr>data artifact</abbr> based on the updated data source.
 [Pipeline](/doc/command-reference/pipeline) reproduction can be triggered based
 on a changed external dependency.
 
-Let's use the [Get Started](/doc/get-started) project again, simulating an
-updated external data source. (Remember to prepare the <abbr>workspace</abbr>,
-as explained in [Examples](#examples))
+Let's use the [Get Started](/doc/tutorials/get-started) project again,
+simulating an updated external data source. (Remember to prepare the
+<abbr>workspace</abbr>, as explained in [Examples](#examples))
 
 To illustrate this scenario, let's use a local file system directory (external
 to the workspace) to simulate a remote data source location. (In real life, the
@@ -243,8 +243,8 @@ And instead of an `etag` we have an `md5` hash value. We did this so its easy to
 edit the data file.
 
 Let's now manually reproduce a
-[processing chapter](/doc/get-started/connect-code-and-data) from the _Get
-Started_ project. Download the example source code archive and unzip it:
+[processing chapter](/doc/tutorials/get-started/connect-code-and-data) from the
+_Get Started_ project. Download the example source code archive and unzip it:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip

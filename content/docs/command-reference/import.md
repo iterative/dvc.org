@@ -59,13 +59,14 @@ extending the name of the imported data e.g. `data.txt.dvc` – similar to havin
 used `dvc run` to generate the output.
 
 DVC-files support references to data in an external DVC repository (hosted on a
-Git server). In such a DVC-file, the `deps` section specifies the `repo`-`url`
-and data `path` fields, and the `outs` section contains the corresponding local
-workspace `path` field. This is enough data about the imported data, to enable
-DVC efficiently determining whether the local copy is out of date.
+Git server). In such a DVC-file, the `deps` field specifies the `repo`-`url` and
+data `path` sufields, and the `outs` field contains the corresponding local
+workspace `path` subfield. This is enough data about the imported data, to
+enable DVC efficiently determining whether the local copy is out of date.
 
-To actually [track the data](https://dvc.org/doc/get-started/add-files),
-`git add` (and `git commit`) the import stage.
+To actually
+[track the data](https://dvc.org/doc/tutorials/get-started/add-files), `git add`
+(and `git commit`) the import stage.
 
 Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` to update the downloaded
@@ -83,9 +84,10 @@ data artifact from the source repo.
   download the file or directory from. The latest commit in `master` (tip of the
   default branch) is used by default when this option is not specified.
 
-  > Note that this adds a `rev` field in the import stage that fixes it to this
-  > revision. This can impact the behavior of `dvc update`. (See
-  > **re-importing** example below.)
+  > Note that this adds a `rev` field in the import stage that fixes it to the
+  > revision. This can impact the behavior of `dvc update`. (See the
+  > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
+  > example below.)
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -134,7 +136,7 @@ Several of the values above are pulled from the original stage file
 subfields under `repo` are used to save the origin and version of the
 dependency, respectively.
 
-## Example: Fixed revisions and updating to different revision
+## Example: Importing and updating fixed revisions
 
 To import a specific version of a <abbr>data artifact</abbr>, we may use the
 `--rev` option:
@@ -164,13 +166,16 @@ deps:
 If `rev` is a Git branch or tag (where the underlying commit changes), the data
 source may have updates at a later time. To bring it up to date if so (and
 update `rev_lock` in the DVC-file), simply use `dvc update <stage>.dvc`. If
-`rev` is a specific commit (does not change), `dvc update` will never have an
-effect on the import stage. You may `dvc update` to a different commit, using
-`--rev`:
+`rev` is a specific commit hash (does not change), `dvc update` without options
+will not have an effect on the import stage. You may force-update it to a
+different commit with `dvc update --rev`:
 
 ```dvc
 $ dvc update --rev cats-dogs-v2
 ```
+
+> In the above example, the value for `rev` in the new import stage will be
+> `master` (a branch) so it will be able update normally going forward.
 
 ## Example: Data registry
 

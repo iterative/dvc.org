@@ -1,0 +1,18 @@
+{
+  "extends": "stylelint-config-standard",
+  "rules": {
+    "no-descending-specificity": null,
+    "no-duplicate-selectors": null,
+    "declaration-colon-newline-after": null,
+    "value-list-comma-newline-after": null,
+    "property-no-unknown": [true, {
+      "ignoreProperties": ["composes"]
+    }],
+    "selector-pseudo-class-no-unknown": [true, {
+      "ignorePseudoClasses": ["global", "local"]
+    }],
+    "at-rule-no-unknown": [true, {
+      "ignoreAtRules": ["mixin"]
+    }]
+  },
+}
