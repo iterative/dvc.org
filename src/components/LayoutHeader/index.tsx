@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import React from 'react'
-import includes from 'lodash.includes'
+import includes from 'lodash/includes'
 
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 import LayoutWidthContainer from '../LayoutWidthContainer'

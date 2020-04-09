@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from 'react'
 import cn from 'classnames'
 import ReactMarkdown from 'react-markdown'
 import Portal from '@reach/portal'
-import throttle from 'lodash.throttle'
+import throttle from 'lodash/throttle'
 
 import { getHeaderHeight } from '../../../../../utils/front/scroll'
 import styles from './styles.module.css'

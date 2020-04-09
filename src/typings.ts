@@ -24,7 +24,7 @@ declare module '*.svg' {
 
 declare module 'scroll' {
   type ScrollTo = (
-    node: HTMLElement,
+    node: Element,
     position: number,
     options: {},
     cb?: (err: Error | null, position: number) => void

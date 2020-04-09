@@ -3,7 +3,7 @@ import { useLocation } from '@reach/router'
 import cn from 'classnames'
 import { Collapse } from 'react-collapse'
 import PerfectScrollbar from 'perfect-scrollbar'
-import includes from 'lodash.includes'
+import includes from 'lodash/includes'
 
 import ShowOnly from '../../../ShowOnly'
 import DownloadButton from '../../../DownloadButton'
@@ -89,9 +89,9 @@ const SidebarMenu: React.SFC<ISidebarMenuProps> = ({
 
     setIsScrollHidden(true)
     setTimeout(() => {
-      psRef.current?.update()
-
       if (node && parent) {
+        psRef.current?.update()
+
         const parentHeight = parent.clientHeight
         const parentScroll = parent.scrollTop
         const nodeOffset = node.offsetTop
