@@ -24,8 +24,12 @@ const { remove, move, ensureDir } = require('fs-extra')
 const { s3Prefix, s3Bucket, s3Client } = require('./s3-utils')
 
 const rootDir = path.join(__dirname, '..')
-const cacheDir = path.join(rootDir, '.cache')
-const publicDir = path.join(rootDir, 'public')
+const cacheDirName = '.cache'
+const publicDirName = 'public'
+
+function localPath(dirName) {
+  return path.join(rootDir, dirName)
+}
 
 function run(command) {
   execSync(command, {
@@ -46,7 +50,7 @@ async function prefixIsEmpty(prefix) {
     await s3Client.s3
       .headObject({
         Bucket: s3Bucket,
-        Prefix: prefix + '/index.html'
+        Prefix: `${prefix}/${publicDirName}/index.html`
       })
       .promise()
     return false
@@ -55,42 +59,56 @@ async function prefixIsEmpty(prefix) {
   }
 }
 
-async function downloadFromS3(prefix) {
+async function downloadFromS3(prefix, dir) {
   try {
-    const staticDir = path.join(publicDir, 'static')
-    const staticPrefix = prefix + '/static'
-    await ensureDir(staticDir)
+    const localDirPath = localPath(dir)
+    const staticPrefix = prefix + '/' + dir
+    await ensureDir(localDirPath)
 
-    console.log(
-      `downloading public/static from s3://${s3Bucket}/${staticPrefix}`
-    )
-    console.time('download from s3')
+    console.time(`downloading "${dir}" from s3://${s3Bucket}/${staticPrefix}`)
     await syncCall('downloadDir', {
-      localDir: staticDir,
+      localDir: localDirPath,
       s3Params: {
         Bucket: s3Bucket,
         Prefix: staticPrefix
       }
     })
-    console.timeEnd('download from s3')
+    console.timeEnd(
+      `downloading "${dir}" from s3://${s3Bucket}/${staticPrefix}`
+    )
   } catch (downloadError) {
     console.error('Error downloading initial data', downloadError)
     // Don't propagate. It's just a cache warming step
   }
 }
 
-async function uploadToS3() {
+async function downloadAllFromS3(prefix) {
+  await downloadFromS3(prefix, publicDirName)
+  await downloadFromS3(prefix, cacheDirName)
+}
+
+async function uploadToS3(dir) {
   console.log(`Uploading public/ to s3://${s3Bucket}/${s3Prefix}`)
-  console.time('upload to s3')
+  console.time(`upload to s3 "${dir}" directory`)
   await syncCall('uploadDir', {
-    localDir: publicDir,
+    localDir: localPath(dir),
     deleteRemoved: true,
     s3Params: {
       Bucket: s3Bucket,
       Prefix: s3Prefix
     }
   })
-  console.timeEnd('upload to s3')
+  console.timeEnd(`upload to s3 "${dir}" directory`)
+}
+
+async function uploadAllToS3() {
+  await uploadToS3(publicDirName)
+  await uploadToS3(cacheDirName)
+}
+
+async function clean() {
+  await remove(localPath(cacheDirName))
+  await remove(localPath(cacheDirName))
 }
 
 async function main() {
@@ -100,7 +118,7 @@ async function main() {
   // But we can download from prod to warm cache up.
   const cacheWarmPrefix = emptyPrefix ? 'dvc-org-prod' : s3Prefix
 
-  await downloadFromS3(cacheWarmPrefix)
+  await downloadAllFromS3(cacheWarmPrefix)
 
   try {
     run('yarn build')
@@ -112,16 +130,19 @@ async function main() {
     console.error(buildError)
     console.error('\nAssuming bad cache and retrying:\n')
 
-    await remove(cacheDir)
-    await remove(publicDir)
+    await clean()
     run('yarn build')
   }
 
-  await move(path.join(publicDir, '404.html'), path.join(rootDir, '404.html'), {
-    overwrite: true
-  })
-  await uploadToS3()
-  await remove(publicDir)
+  await move(
+    path.join(localPath(publicDirName), '404.html'),
+    path.join(rootDir, '404.html'),
+    {
+      overwrite: true
+    }
+  )
+  await uploadAllToS3()
+  await clean()
 }
 
 main().catch(e => {
