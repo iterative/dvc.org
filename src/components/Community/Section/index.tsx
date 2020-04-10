@@ -21,7 +21,7 @@ interface ICommunitySection {
   title: string
 }
 
-const Section: React.SFC<ICommunitySection> = ({
+const Section: React.FC<ICommunitySection> = ({
   anchor,
   background,
   color,

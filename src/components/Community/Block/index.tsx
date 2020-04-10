@@ -9,7 +9,7 @@ interface ICommunityBlockProps {
   icon?: string
 }
 
-const Block: React.SFC<ICommunityBlockProps> = ({
+const Block: React.FC<ICommunityBlockProps> = ({
   title,
   children,
   action,

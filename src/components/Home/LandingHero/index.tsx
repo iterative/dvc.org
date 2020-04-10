@@ -15,7 +15,7 @@ interface ILandingHeroProps {
   scrollToRef: React.RefObject<HTMLElement>
 }
 
-const LandingHero: React.SFC<ILandingHeroProps> = ({ scrollToRef }) => {
+const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
   const [activeCommand, setActiveCommand] = useState(0)
 
   useEffect(() => {

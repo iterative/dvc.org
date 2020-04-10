@@ -14,9 +14,7 @@ import styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 
-const LayoutFooter: React.SFC<Required<ILayoutModifiable>> = ({
-  modifiers
-}) => (
+const LayoutFooter: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => (
   <footer className={styles.wrapper}>
     <LayoutWidthContainer
       className={cn(styles.container)}

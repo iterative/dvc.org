@@ -11,9 +11,7 @@ import { useHeaderIsScrolled } from '../../utils/front/scroll'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo.svg'
 import styles from './styles.module.css'
 
-const LayoutHeader: React.SFC<Required<ILayoutModifiable>> = ({
-  modifiers
-}) => {
+const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
   const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
   const collapsed = hasCollapsedModifier || useHeaderIsScrolled()
 

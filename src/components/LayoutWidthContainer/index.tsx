@@ -9,7 +9,7 @@ interface ILayoutWidthContainerProps {
   wide?: boolean
 }
 
-const LayoutWidthContainer: React.SFC<ILayoutWidthContainerProps> = ({
+const LayoutWidthContainer: React.FC<ILayoutWidthContainerProps> = ({
   className,
   children,
   wide = false

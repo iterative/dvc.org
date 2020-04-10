@@ -27,7 +27,7 @@ interface ISidebarMenuItemProps {
   activePaths?: Array<string>
 }
 
-const SidebarMenuItem: React.SFC<ISidebarMenuItemProps> = ({
+const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   children,
   label,
   path,
@@ -73,10 +73,7 @@ interface ISidebarMenuProps {
   onClick: (e: React.MouseEvent) => void
 }
 
-const SidebarMenu: React.SFC<ISidebarMenuProps> = ({
-  currentPath,
-  onClick
-}) => {
+const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
   const location = useLocation()
   const rootRef = useRef<HTMLDivElement>(null)
   const psRef = useRef<PerfectScrollbar | undefined>(undefined)

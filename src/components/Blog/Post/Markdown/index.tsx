@@ -6,7 +6,7 @@ interface IMarkdownProps {
   html: string
 }
 
-const Markdown: React.SFC<IMarkdownProps> = ({ html }) => (
+const Markdown: React.FC<IMarkdownProps> = ({ html }) => (
   <div className={styles.wrapper} dangerouslySetInnerHTML={{ __html: html }} />
 )
 

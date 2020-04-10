@@ -45,7 +45,7 @@ const getPosition = (toggle: Element, tooltip: Element): ITooltipPosition => {
   return result
 }
 
-const DesktopView: React.SFC<IDesktopViewProps> = ({
+const DesktopView: React.FC<IDesktopViewProps> = ({
   description,
   header,
   text

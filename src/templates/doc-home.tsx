@@ -19,7 +19,7 @@ interface IDocHomePageProps {
   }
 }
 
-const DocHomePage: React.SFC<IDocHomePageProps> = ({
+const DocHomePage: React.FC<IDocHomePageProps> = ({
   data,
   pageContext: { slug, headings }
 }) => {

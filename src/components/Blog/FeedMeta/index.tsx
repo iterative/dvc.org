@@ -19,7 +19,7 @@ interface IBlogFeedMetaProps {
   timeToRead: string
 }
 
-const FeedMeta: React.SFC<IBlogFeedMetaProps> = ({
+const FeedMeta: React.FC<IBlogFeedMetaProps> = ({
   avatar,
   commentsUrl,
   commentsCount,
