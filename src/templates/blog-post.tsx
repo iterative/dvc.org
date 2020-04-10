@@ -7,7 +7,8 @@ import SEO from '../components/SEO'
 import Post from '../components/Blog/Post'
 
 interface IFluidObject extends FluidObject {
-  presentationWidth?: number
+  presentationWidth: number
+  presentationHeight: number
 }
 
 export interface IGatsbyImageProps extends GatsbyImageProps {
@@ -67,13 +68,9 @@ interface IBlogPostPageProps {
   data: {
     markdownRemark: IBlogPostData
   }
-  pageContext: {
-    next: IBlogPostData
-    previous: IBlogPostData
-  }
 }
 
-const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
+const BlogPostPage: React.SFC<IBlogPostPageProps> = ({ data }) => {
   const post = data.markdownRemark
 
   return (
@@ -81,10 +78,7 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
       <SEO
         title={post.frontmatter.title}
         description={post.frontmatter.description}
-        image={
-          post.frontmatter.picture &&
-          post.frontmatter.picture.childImageSharp.fluid.src
-        }
+        image={post.frontmatter.picture?.childImageSharp?.fluid}
       />
       <Post {...post} />
     </>
@@ -128,7 +122,9 @@ export const pageQuery = graphql`
           childImageSharp {
             fluid(maxWidth: 850) {
               ...GatsbyImageSharpFluid_withWebp
+              src
               presentationWidth
+              presentationHeight
             }
           }
         }
