@@ -1,7 +1,23 @@
 /* eslint-env node */
 
 const { navigate } = require('@reach/router')
-let redirects = require('../../../redirects-list.json')
+const { structure, findChildWithSource } = require('./sidebar')
+
+const buildSidebarRedirects = (list, redirects = []) => {
+  list.forEach(item => {
+    if (!item.source && item.children) {
+      const redirectToChild = findChildWithSource(item)
+
+      redirects.push(`^${item.path}/?$ ${redirectToChild.path} 307`)
+    }
+
+    if (Array.isArray(item.children)) {
+      buildSidebarRedirects(item.children, redirects)
+    }
+  })
+
+  return redirects
+}
 
 const processRedirectString = redirectString => {
   const redirectParts = redirectString.split(/\s+/g)
@@ -16,15 +32,25 @@ const processRedirectString = redirectString => {
   }
 }
 
-exports.processRedirectString = processRedirectString
+const getRedirects = (() => {
+  let allRedirects
 
-// Parse redirects when starting up.
-redirects = redirects.map(processRedirectString)
+  return () => {
+    if (!allRedirects) {
+      allRedirects = [
+        ...require('../../../redirects-list.json'),
+        ...buildSidebarRedirects(structure)
+      ].map(processRedirectString)
+    }
+
+    return allRedirects
+  }
+})()
 
 const matchRedirectList = (host, pathname) => {
   const wholeUrl = `https://${host}${pathname}`
 
-  for (const { matchPathname, regex, replace, code } of redirects) {
+  for (const { matchPathname, regex, replace, code } of getRedirects()) {
     const matchTarget = matchPathname ? pathname : wholeUrl
     if (regex.test(matchTarget)) {
       return [code, matchTarget.replace(regex, replace)]
@@ -64,5 +90,7 @@ const handleFrontRedirect = (host, pathname, clickEvent) => {
   }
 }
 
+exports.buildSidebarRedirects = buildSidebarRedirects
+exports.processRedirectString = processRedirectString
 exports.getRedirect = getRedirect
 exports.handleFrontRedirect = handleFrontRedirect
