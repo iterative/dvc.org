@@ -97,8 +97,7 @@ You can find that each parameter and it's value were saved in the dvc-file.
 These values will be compared to the values from the parameter files during the
 next `dvc repro` to define if dependency to the parameter file is invalidated:
 
-```dvc
-$ head -n 10 model.pkl.dvc
+```yaml
 md5: 05d178cfa0d1474b6c5800aa1e1b34ac
 cmd: python train.py
 deps:
