@@ -19,11 +19,14 @@ positional arguments:
 
 This command means to provide a quick way to compare parameters from your
 previous experiments with the current ones of your pipeline, as long as you're
-using params that DVC is aware of (see `--params` in `dvc run`). Run without
-arguments, this command compares all existing parameters currently present in
-the <abbr>workspace</abbr> (uncommitted changes) with the latest committed
-version. The command shows only parameters that were used in any of stages and
-ignores parameters that were not used.
+using params that DVC is aware of. The dependencies to parameters can be defined
+by `--params` or `-p` option in `dvc run`. To lern more about parameters see
+[project parameters](/doc/command-reference/params).
+
+Run without arguments, this command compares all existing parameters currently
+present in the <abbr>workspace</abbr> (uncommitted changes) with the latest
+committed version. The command shows only parameters that were used in any of
+stages and ignores parameters that were not used.
 
 ## Options
 

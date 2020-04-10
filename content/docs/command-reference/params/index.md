@@ -1,7 +1,7 @@
 # params
 
-A set of commands to manage and display experiment parameters:
-[diff](/doc/command-reference/params/diff).
+Contains a command to show changes in parameters defined with the `-p` option of
+`dvc run`: [diff](/doc/command-reference/params/diff).
 
 ## Synopsis
 
