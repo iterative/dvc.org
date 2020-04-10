@@ -15,11 +15,6 @@ positional arguments:
     diff         Show changes in params between commits
                  in the DVC repository, or between a commit
                  and the workspace.
-
-optional arguments:
-  -h, --help     show this help message and exit
-  -q, --quiet    Be quiet.
-  -v, --verbose  Be verbose.
 ```
 
 ## Description
