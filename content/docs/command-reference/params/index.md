@@ -10,8 +10,6 @@ usage: dvc params [-h] [-q | -v] {diff} ...
 
 positional arguments:
   COMMAND
-                 Use `dvc params CMD --help` to display
-                 command-specific help.
     diff         Show changes in params between commits
                  in the DVC repository, or between a commit
                  and the workspace.
