@@ -32,7 +32,7 @@ file. DVC addresses the parameters by the tree path.
 
 The parameters concept helps to define stage dependencies more granularly when
 not only a file change invalidate a stage and requires the stage execution but a
-particular parameter or a set of parameters chenge is required for the stage
+particular parameter or a set of parameters change is required for the stage
 invalidation. As a result, it prevents situations when many pipeline stages
 depends on a single file and any change in the file invalidates all of these
 stages.
