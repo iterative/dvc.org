@@ -133,10 +133,6 @@ function normalizeSidebar({
   return currentResult
 }
 
-function findChildWithSource(item) {
-  return item.source ? item : findChildWithSource(item.children[0])
-}
-
 /*
  * Exports
  */
@@ -145,6 +141,10 @@ const normalizedSidebar = normalizeSidebar({
   data: sidebar,
   parentPath: ''
 })
+
+function findChildWithSource(item) {
+  return item.source ? item : findChildWithSource(item.children[0])
+}
 
 function getFirstPage() {
   return findChildWithSource(normalizedSidebar[0]).path
@@ -188,6 +188,7 @@ function getParentsListFromPath(path) {
 
 module.exports = {
   structure: normalizedSidebar,
+  findChildWithSource,
   getItemByPath,
   getItemBySource,
   getPathWithSource,
