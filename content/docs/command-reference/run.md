@@ -230,9 +230,7 @@ $ dvc run -d parsingxml.R -d Posts.xml \
           Rscript parsingxml.R Posts.xml Posts.csv
 ```
 
-Use a subset of hyperparameters from the default params file `params.yaml`. The
-parameters should be readed from user's code. DVC can granulary track
-dependencies for the defined subset of parameters for `dvc repro`:
+Dependency to hyperparameters from the default params file `params.yaml`:
 
 ```dvc
 $ cat params.yaml

@@ -285,7 +285,7 @@
         "slug": "move"
       },
       {
-        "label": "param",
+        "label": "params",
         "slug": "params",
         "source": "params/index.md",
         "children": [
