@@ -10,9 +10,8 @@ usage: dvc params [-h] [-q | -v] {diff} ...
 
 positional arguments:
   COMMAND
-    diff         Show changes in params between commits
-                 in the DVC repository, or between a commit
-                 and the workspace.
+    diff         Show changes in params between commits in the
+                 DVC repository, or between a commit and the workspace.
 ```
 
 ## Description
