@@ -16,8 +16,8 @@ positional arguments:
 
 This command finds a corresponding [DVC-file](/doc/user-guide/dvc-file-format)
 for the provided metric file (`path` is defined among the <abbr>outputs</abbr>
-of the DVC-file), and updates the default formatting of the metric. (See the
-[options](#options) below and `dvc metrics show` for more info.)
+of the DVC-file), and updates the default formatting of the metric. See the
+[options](#options) below and `dvc metrics show` for more info.
 
 If `path` isn't tracked by DVC (described in one of the <abbr>workspace</abbr>
 DVC-files), the following error will be raised:
