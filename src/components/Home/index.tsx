@@ -12,7 +12,7 @@ import { logEvent } from '../../utils/front/ga'
 
 import styles from './styles.module.css'
 
-const Home: React.SFC = () => {
+const Home: React.FC = () => {
   const diagramSectionRef = useRef<HTMLElement>(null)
   const useCasesSectionRef = useRef<HTMLElement>(null)
   const goToDocGetStarted = useCallback(

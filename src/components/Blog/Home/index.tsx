@@ -10,7 +10,7 @@ interface IBlogHomeProps {
   pageInfo: IPaginatorPageInfo
 }
 
-const Home: React.SFC<IBlogHomeProps> = ({ posts, pageInfo }) => {
+const Home: React.FC<IBlogHomeProps> = ({ posts, pageInfo }) => {
   return (
     <>
       <PageContent>

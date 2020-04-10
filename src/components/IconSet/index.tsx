@@ -9,7 +9,7 @@ interface IIconSetProps {
   name: string
 }
 
-const IconSet: React.SFC<IIconSetProps> = ({
+const IconSet: React.FC<IIconSetProps> = ({
   className,
   name,
   ...iconProps

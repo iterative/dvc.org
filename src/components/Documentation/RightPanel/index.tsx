@@ -22,7 +22,7 @@ interface IHeadingsCoordinates {
   [offset: string]: string
 }
 
-const RightPanel: React.SFC<IRightPanelProps> = ({
+const RightPanel: React.FC<IRightPanelProps> = ({
   headings,
   tutorials,
   githubLink

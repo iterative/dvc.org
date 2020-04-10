@@ -13,7 +13,7 @@ type ITwoRowsButtonProps = {
   active?: boolean
 } & React.ButtonHTMLAttributes<HTMLButtonElement>
 
-const TwoRowsButton: React.SFC<ITwoRowsButtonProps> = ({
+const TwoRowsButton: React.FC<ITwoRowsButtonProps> = ({
   className,
   icon,
   title,

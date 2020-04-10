@@ -5,7 +5,7 @@ import { logEvent } from '../../../utils/front/ga'
 
 import styles from './styles.module.css'
 
-const Form: React.SFC = () => {
+const Form: React.FC = () => {
   const hiddenInputRef = useRef<HTMLInputElement>(null)
   const honeypotNameRef = useRef(nanoid())
   const sendGAEvent = useCallback(

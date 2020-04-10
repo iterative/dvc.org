@@ -12,7 +12,7 @@ import styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 
-const HamburgerMenu: React.SFC = () => {
+const HamburgerMenu: React.FC = () => {
   const [isOpened, setOpened] = useState(false)
 
   const toggleMobileMenu = useCallback(() => setOpened(!isOpened), [isOpened])

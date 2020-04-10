@@ -10,7 +10,7 @@ interface IPromoSectionProps {
   buttons: Array<React.ReactElement>
 }
 
-const PromoSection: React.SFC<IPromoSectionProps> = ({ title, buttons }) => (
+const PromoSection: React.FC<IPromoSectionProps> = ({ title, buttons }) => (
   <section className={styles.container}>
     <LayoutWidthContainer>
       <img

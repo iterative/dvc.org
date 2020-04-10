@@ -16,7 +16,7 @@ interface IDocumentationProps {
   htmlAst: object
 }
 
-const Documentation: React.SFC<IDocumentationProps> = ({
+const Documentation: React.FC<IDocumentationProps> = ({
   htmlAst,
   path,
   headings

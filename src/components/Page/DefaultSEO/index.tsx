@@ -9,7 +9,7 @@ interface IDefaultSEOProps {
   pageInfo?: IPaginatorPageInfo
 }
 
-const DefaultSEO: React.SFC<IDefaultSEOProps> = ({ pageInfo }) => {
+const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pageInfo }) => {
   const siteMeta = getSiteMeta()
   const metaTitle =
     pageInfo && pageInfo.currentPage > 1

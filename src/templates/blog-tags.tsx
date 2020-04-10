@@ -20,7 +20,7 @@ interface IBlogTagsPageData {
   }
 }
 
-const BlogTagsPage: React.SFC<IBlogTagsPageData> = ({
+const BlogTagsPage: React.FC<IBlogTagsPageData> = ({
   data,
   pageContext,
   location

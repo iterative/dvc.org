@@ -14,7 +14,7 @@ interface ITutorialsLinksProps {
   tutorials: { [type: string]: string }
 }
 
-const TutorialsLinks: React.SFC<ITutorialsLinksProps> = ({
+const TutorialsLinks: React.FC<ITutorialsLinksProps> = ({
   compact = false,
   buttonClassName,
   tutorials

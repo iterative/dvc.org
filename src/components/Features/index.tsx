@@ -8,7 +8,7 @@ import PromoSection from '../PromoSection'
 
 import styles from './styles.module.css'
 
-const FeaturesPage: React.SFC = () => (
+const FeaturesPage: React.FC = () => (
   <>
     <PageContent>
       <HeroSection className={styles.heroContainer}>

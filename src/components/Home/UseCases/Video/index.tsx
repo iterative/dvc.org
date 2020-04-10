@@ -5,7 +5,7 @@ import { logEvent } from '../../../../utils/front/ga'
 
 import styles from './styles.module.css'
 
-const Video: React.SFC<{ id: string }> = ({ id }) => {
+const Video: React.FC<{ id: string }> = ({ id }) => {
   const [isWatching, setWatching] = useState(false)
 
   const watchVideo = useCallback(() => {
