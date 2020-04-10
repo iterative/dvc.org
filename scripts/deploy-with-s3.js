@@ -22,6 +22,7 @@ const path = require('path')
 const { execSync } = require('child_process')
 const { remove, move, ensureDir } = require('fs-extra')
 const { s3Prefix, s3Bucket, s3Client } = require('./s3-utils')
+const { cleanUpPageData } = require('./page-data-utils')
 
 const rootDir = path.join(__dirname, '..')
 const cacheDirName = '.cache'
@@ -50,7 +51,7 @@ async function prefixIsEmpty(prefix) {
     await s3Client.s3
       .headObject({
         Bucket: s3Bucket,
-        Prefix: `${prefix}/${publicDirName}/index.html`
+        Key: `${prefix}/${publicDirName}/index.html`
       })
       .promise()
     return false
@@ -65,7 +66,8 @@ async function downloadFromS3(prefix, dir) {
     const staticPrefix = prefix + '/' + dir
     await ensureDir(localDirPath)
 
-    console.time(`downloading "${dir}" from s3://${s3Bucket}/${staticPrefix}`)
+    console.log(`Downloading "${dir}" from s3://${s3Bucket}/${staticPrefix}`)
+    console.time(`"${dir}" downloaded for`)
     await syncCall('downloadDir', {
       localDir: localDirPath,
       s3Params: {
@@ -73,9 +75,7 @@ async function downloadFromS3(prefix, dir) {
         Prefix: staticPrefix
       }
     })
-    console.timeEnd(
-      `downloading "${dir}" from s3://${s3Bucket}/${staticPrefix}`
-    )
+    console.timeEnd(`"${dir}" downloaded for`)
   } catch (downloadError) {
     console.error('Error downloading initial data', downloadError)
     // Don't propagate. It's just a cache warming step
@@ -88,17 +88,17 @@ async function downloadAllFromS3(prefix) {
 }
 
 async function uploadToS3(dir) {
-  console.log(`Uploading public/ to s3://${s3Bucket}/${s3Prefix}`)
-  console.time(`upload to s3 "${dir}" directory`)
+  console.log(`Uploading "${dir}" to s3://${s3Bucket}/${s3Prefix}/${dir}`)
+  console.time(`"${dir}" uploaded for`)
   await syncCall('uploadDir', {
     localDir: localPath(dir),
     deleteRemoved: true,
     s3Params: {
       Bucket: s3Bucket,
-      Prefix: s3Prefix
+      Prefix: `${s3Prefix}/${dir}`
     }
   })
-  console.timeEnd(`upload to s3 "${dir}" directory`)
+  console.timeEnd(`"${dir}" uploaded for`)
 }
 
 async function uploadAllToS3() {
@@ -107,7 +107,7 @@ async function uploadAllToS3() {
 }
 
 async function clean() {
-  await remove(localPath(cacheDirName))
+  await remove(localPath(publicDirName))
   await remove(localPath(cacheDirName))
 }
 
@@ -133,6 +133,10 @@ async function main() {
     await clean()
     run('yarn build')
   }
+
+  console.time('Cleaned up outdated page data files for')
+  cleanUpPageData()
+  console.timeEnd('Cleaned up outdated page data files for')
 
   await move(
     path.join(localPath(publicDirName), '404.html'),
