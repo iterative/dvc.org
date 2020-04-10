@@ -168,7 +168,7 @@ function getItemBySource(source) {
   return item || false
 }
 
-function getPathWithSoruce(path) {
+function getPathWithSource(path) {
   return getItemByPath(path).path
 }
 
@@ -190,7 +190,7 @@ module.exports = {
   structure: normalizedSidebar,
   getItemByPath,
   getItemBySource,
-  getPathWithSoruce,
+  getPathWithSource,
   getParentsListFromPath,
   getFirstPage
 }

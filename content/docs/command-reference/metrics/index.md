@@ -10,7 +10,8 @@ A set of commands to add, manage, collect, and display project metrics:
 ## Synopsis
 
 ```usage
-usage: dvc metrics [-h] [-q | -v] {show,add,modify,remove,diff} ...
+usage: dvc metrics [-h] [-q | -v]
+                   {show,add,modify,remove,diff} ...
 
 positional arguments:
 COMMAND
@@ -21,11 +22,6 @@ COMMAND
     modify              Modify metric default formatting.
     remove              Remove metric mark on a DVC-tracked file.
     diff                Show changes in metrics between commits
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -q, --quiet           Be quiet.
-  -v, --verbose         Be verbose
 ```
 
 ## Description

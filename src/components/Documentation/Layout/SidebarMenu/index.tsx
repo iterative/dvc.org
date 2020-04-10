@@ -12,7 +12,7 @@ import Link from '../../../Link'
 import {
   structure,
   getParentsListFromPath,
-  getPathWithSoruce
+  getPathWithSource
 } from '../../../../utils/shared/sidebar'
 
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
@@ -41,7 +41,7 @@ const SidebarMenuItem: React.SFC<ISidebarMenuItemProps> = ({
   return (
     <>
       <Link
-        href={getPathWithSoruce(path)}
+        href={getPathWithSource(path)}
         id={path}
         className={cn(
           styles.sectionLink,

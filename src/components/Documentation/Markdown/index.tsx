@@ -7,7 +7,7 @@ import Collapsible from 'react-collapsible'
 import Link from '../../Link'
 import Tooltip from './Tooltip'
 import Tutorials from '../TutorialsLinks'
-import { getPathWithSoruce } from '../../../utils/shared/sidebar'
+import { getPathWithSource } from '../../../utils/shared/sidebar'
 
 import 'github-markdown-css/github-markdown.css'
 import sharedStyles from '../styles.module.css'
@@ -128,7 +128,7 @@ const Markdown: React.SFC<IMarkdownProps> = ({
         </Link>
         <Link
           className={styles.navButton}
-          href={next ? getPathWithSoruce(next) : '#'}
+          href={next ? getPathWithSource(next) : '#'}
         >
           <span>Next</span>
           <i className={cn(styles.navButtonIcon, styles.next)} />
