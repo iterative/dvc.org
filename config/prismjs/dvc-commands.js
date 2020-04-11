@@ -30,6 +30,8 @@ module.exports = [
   'metrics diff',
   'metrics add',
   'metrics',
+  'params diff',
+  'params',
   'lock',
   'list',
   'install',
