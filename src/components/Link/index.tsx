@@ -1,9 +1,9 @@
 import React, { useCallback } from 'react'
 import { URL } from 'iso-url'
-import { useLocation, navigate } from '@reach/router'
+import { useLocation } from '@reach/router'
 import GatsbyLink from 'gatsby-link'
 import { getRedirect, handleFrontRedirect } from '../../utils/shared/redirects'
-import { scrollIntoLayout } from '../../utils/front/scroll'
+import { scrollIntoLayout, getScrollNode } from '../../utils/front/scroll'
 
 export type ILinkProps = {
   children: React.ReactNode
@@ -16,7 +16,7 @@ export type ILinkProps = {
 const PROTOCOL_REGEXP = /^https?:\/\//
 const isRelative = (url: string): boolean => !PROTOCOL_REGEXP.test(url)
 
-const ResultLinkComponent: React.SFC<ILinkProps> = ({
+const ResultLinkComponent: React.FC<ILinkProps> = ({
   href,
   children,
   ...restProps
@@ -42,7 +42,13 @@ const ResultLinkComponent: React.SFC<ILinkProps> = ({
   )
 }
 
-const Link: React.SFC<ILinkProps> = ({ href, ...restProps }) => {
+const scrollToHash = (hash: string): void => {
+  if (hash) {
+    scrollIntoLayout(document.querySelector(hash), { waitImages: true })
+  }
+}
+
+const Link: React.FC<ILinkProps> = ({ href, ...restProps }) => {
   const currentLocation = useLocation()
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -59,12 +65,15 @@ const Link: React.SFC<ILinkProps> = ({ href, ...restProps }) => {
       ) {
         e.preventDefault()
 
-        if (currentLocation.hash !== location.hash) {
-          navigate(href)
-        } else if (location.hash) {
-          scrollIntoLayout(document.querySelector(location.hash))
+        // We can't navigate by direct usage of @reach/router#navigate because
+        // gatsby-react-router-scroll will package intercept scroll in this
+        // case and we will see undesired jump
+        window.history.pushState(null, '', href)
+
+        if (location.hash) {
+          scrollToHash(location.hash)
         } else {
-          document.documentElement.scrollTop = 0
+          getScrollNode().scrollTop = 0
         }
       }
 

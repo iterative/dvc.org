@@ -8,7 +8,7 @@ const repo = `iterative/dvc`
 const gh = `https://github.com/${repo}`
 const api = `https://api.github.com/repos/${repo}`
 
-const GithubLine: React.SFC = () => {
+const GithubLine: React.FC = () => {
   const [count, setCount] = useState('–––')
 
   useEffect(() => {

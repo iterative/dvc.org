@@ -35,7 +35,7 @@ interface ICommunityBlogPost {
   url: string
 }
 
-const BlogPost: React.SFC<ICommunityBlogPost> = ({
+const BlogPost: React.FC<ICommunityBlogPost> = ({
   url,
   title,
   date,
@@ -101,7 +101,7 @@ interface ICommunityUserContentProps {
   url: string
 }
 
-const UserContent: React.SFC<ICommunityUserContentProps> = ({
+const UserContent: React.FC<ICommunityUserContentProps> = ({
   url,
   title,
   author,
@@ -154,7 +154,7 @@ interface ICommunityDocumentationProps {
   url: string
 }
 
-const Documentation: React.SFC<ICommunityDocumentationProps> = ({
+const Documentation: React.FC<ICommunityDocumentationProps> = ({
   url,
   title,
   description,
@@ -180,7 +180,7 @@ const Documentation: React.SFC<ICommunityDocumentationProps> = ({
   )
 }
 
-const Learn: React.SFC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
+const Learn: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
   const posts = getPosts()
 
   return (

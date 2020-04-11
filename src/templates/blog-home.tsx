@@ -17,7 +17,7 @@ interface IBlogHomePageProps {
   }
 }
 
-const BlogHomePage: React.SFC<IBlogHomePageProps> = ({
+const BlogHomePage: React.FC<IBlogHomePageProps> = ({
   data,
   location,
   pageContext

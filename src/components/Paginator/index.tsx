@@ -33,7 +33,7 @@ const smoothScrollTag = (
   />
 )
 
-const Paginator: React.SFC<IPaginatorProps> = ({
+const Paginator: React.FC<IPaginatorProps> = ({
   pageInfo: { nextPage, previousPage }
 }) => {
   if (!previousPage && !nextPage) {

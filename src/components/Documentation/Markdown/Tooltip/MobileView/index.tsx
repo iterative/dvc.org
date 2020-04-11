@@ -13,7 +13,7 @@ interface IMobileViewProps {
   text: React.ReactNode
 }
 
-const MobileView: React.SFC<IMobileViewProps> = ({
+const MobileView: React.FC<IMobileViewProps> = ({
   description,
   header,
   text

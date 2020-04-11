@@ -2,8 +2,7 @@ import { useEffect } from 'react'
 import { useLocation } from '@reach/router'
 
 import { handleFrontRedirect } from '../../utils/shared/redirects'
-import { allImagesLoadedInContainer } from '../../utils/front/images'
-import { scrollIntoLayout } from '../../utils/front/scroll'
+import { scrollIntoLayout, getScrollNode } from '../../utils/front/scroll'
 
 import styles from './styles.module.css'
 
@@ -15,16 +14,10 @@ export const useAnchorNavigation = (): void => {
       const node = document.querySelector(location.hash)
 
       if (node) {
-        const contentRoot = document.getElementById('layoutContent')
-
-        if (contentRoot) {
-          allImagesLoadedInContainer(contentRoot).then(() =>
-            scrollIntoLayout(node)
-          )
-        }
+        scrollIntoLayout(node, { waitImages: true })
       }
     } else {
-      document.documentElement.scrollTop = 0
+      getScrollNode().scrollTop = 0
     }
   }, [location.href])
 }

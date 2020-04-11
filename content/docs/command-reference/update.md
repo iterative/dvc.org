@@ -6,7 +6,7 @@ projects</abbr>, and corresponding [DVC-files](/doc/user-guide/dvc-file-format).
 ## Synopsis
 
 ```usage
-usage: dvc update [-h] [-q | -v] [--rev [REV]] targets [targets ...]
+usage: dvc update [-h] [-q | -v] [--rev <commit>] targets [targets ...]
 
 positional arguments:
   targets        DVC-files to update.
@@ -36,7 +36,7 @@ dvc update --rev master
 
 ## Options
 
-- `--rev` - commit hash, branch or tag name, etc. (any
+- `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
   update the file or directory from. The latest commit in `master` (tip of the
   default branch) is used by default when this option is not specified.

@@ -26,7 +26,7 @@ interface IShareProps {
   slug: string
 }
 
-const Share: React.SFC<IShareProps> = ({ className, text, slug }) => {
+const Share: React.FC<IShareProps> = ({ className, text, slug }) => {
   const {
     site: {
       siteMetadata: { siteUrl }

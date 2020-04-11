@@ -10,7 +10,7 @@ interface ICollapsibleTextProps {
   header: React.ReactNode
 }
 
-const CollapsibleText: React.SFC<ICollapsibleTextProps> = ({
+const CollapsibleText: React.FC<ICollapsibleTextProps> = ({
   header,
   children
 }) => {
