@@ -26,9 +26,9 @@ COMMAND
 
 ## Description
 
-In order to track metrics associated to machie learning experiments, DVC has the
-ability to mark a certain stage <abbr>outputs</abbr> as files containing metrics
-to track. (See the `--metrics` option of `dvc run`.) Metrics are
+In order to track metrics associated to machine learning experiments, DVC has
+the ability to mark a certain stage <abbr>outputs</abbr> as files containing
+metrics to track. (See the `--metrics` option of `dvc run`.) Metrics are
 project-specific floating-point values e.g. `AUC`, `ROC`, etc.
 
 Supported file formats: JSON. Metrics can be organized in a tree hierarchy in a

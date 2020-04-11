@@ -44,17 +44,18 @@ For more details, please refer to this [document]
       name: 'Output',
       match: ['output', 'outputs'],
       desc: `
-A file or directory that is under DVC control, recorded in the \`outs\` section
-of a DVC-file. See \`dvc add\` \`dvc run\`, \`dvc import\`, \`dvc import-url\`
-commands. A.k.a. **data artifact*.
+A file or directory tracked by DVC, recorded in the \`outs\` section of a
+DVC-file. Outputs are usually the result of stages. A.k.a. **data artifact*.
+See \`dvc add\`, \`dvc run\`, \`dvc import\`, et al.
       `
     },
     {
       name: 'Dependency',
       match: ['dependency', 'dependencies'],
       desc: `
-A file or directory (possibly under DVC control) recorded in the \`deps\`
-section of a DVC-file. See \`dvc run\`.
+A file or directory (possibly tracked by DVC) recorded in the \`deps\` section
+of a DVC-file (stage file). See \`dvc run\`. Stages are invalidated when any of
+their dependencies change.
       `
     },
     {
