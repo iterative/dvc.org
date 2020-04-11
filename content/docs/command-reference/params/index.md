@@ -1,7 +1,7 @@
 # params
 
-Contains a command to show changes in parameters defined with the `-p` option of
-`dvc run`: [diff](/doc/command-reference/params/diff).
+Contains a command to show changes in parameters:
+[diff](/doc/command-reference/params/diff).
 
 ## Synopsis
 
@@ -17,40 +17,49 @@ positional arguments:
 ## Description
 
 In order to track parameters and hyperparameters associated to machine learning
-experiments, DVC provides a special type of <abbr>dependencies</abbr>:
-_parameters_ (see the `--params` option of `dvc run`). Parameters are
-<abbr>project</abbr> version-specific string or array values e.g. `epochs`,
-`learning-rate`, `batch_size`, `num_classes` etc.
+experiments in <abbr>DVC projects</abbr>, DVC provides a special type of
+<abbr>dependencies</abbr>: _parameters_. Parameter values are specific to a
+version of the project, and defined (using `dvc run`) with simple names like
+`epochs`, `learning-rate`, `batch_size`, etc.
 
-In contrast to a regular file dependency, a parameter consists of a parameter
-_file_ (the file dependency itself) and a parameter _name_ to look for inside
-the file. User can specify dependencies to many parameters from a single
-parameters file as well as many dependencies from different parameters files.
-
-Users manualy write parameters file, store them in Git and specify parameter
-dependencies for DVC stages. DVC saves the dependent parameters and their values
-in the [DVC-file](/doc/user-guide/dvc-file-format) corresponded to the stage.
-These values will be compared to the ones in the parameter files whenever
-`dvc repro` is used, to determine if dependency to the parameter is invalidated.
+In contrast to a regular text file dependency, a parameter dependency consists
+of a parameters _file_ (the file dependency itself) and a parameter _name_ (to
+find inside the text file). Multiple parameter dependencies can be specified
+from one or more parameters files.
 
 The default parameters file name is `params.yaml`. Parameters should be
-organized as a tree hierarchy in the params file. DVC addresses the parameters
-by the tree path. Supported file formats for parameter file are: YAML and JSON.
+organized as a tree hierarchy in it, as DVC will locate param names by their  
+tree path. Supported file formats for params files are: YAML and JSON.
 
-The parameters concept helps to define stage dependencies more granularly when
-not only a file change invalidate a stage and requires the stage execution but a
-particular parameter or a set of parameters change is required for the stage
-invalidation. As a result, it prevents situations when many pipeline stages
-depends on a single file and any change in the file invalidates all of these
-stages.
+Supported parameter _value_ types are: string, integer, float, and arrays. DVC
+itself does not ascribe any specific meaning for these values. They are
+user-defined, and serve as a way to generalize and parametrize an machine
+learning algorithms or data processing code.
 
-Supported parameter value types are: string, integer, float values and arrays.
-DVC itself does not ascribe any specific meaning for these parameter values.
-Usually these values are defined by users and serve as a way to generalize and
-parametrize an machine learning algorithm or data processing code.
+### Benefits and workflow
 
-`dvc run` is used to define parameters, and `dvc params diff` is available to
-manage them.
+The parameters concept helps to define [stage](/doc/command-reference/run)
+<abbr>dependencies</abbr> more granularly. A particular parameter or set of
+parameters will be required for the stage invalidation (see `dvc status` and
+`dvc repro`). Changes to other parts of the dependency file will not affect the
+stage.
+
+Using parameter dependencies prevents situations where several
+[pipeline](/doc/command-reference/pipeline) stages depend on the same file, and
+any change in the file invalidates causes the reproduction all those stages
+unnecessarily.
+
+You should manually write or generate the YAML or JSON parameters files needed
+for the project, which can be versioned directly with Git. You can then use
+`dvc run` with the `-p` (`--params`) option to specify parameter dependencies
+for your pipeline's stages (instead of or in addition to regular `-d` deps.) DVC
+saves the param names and values in the stage file (see
+[DVC-file format](/doc/user-guide/dvc-file-format)). These values will be
+compared to the ones in the params files to determine if the stage is
+invalidated upon pipeline [reproduction](/doc/command-reference/repro).
+
+`dvc params diff` is available to show changes in parameters, displaying the
+param names as well as their current and previous values.
 
 ## Options
 
@@ -78,8 +87,8 @@ processing:
 ```
 
 Define a [stage](/doc/command-reference/run) that depends on params `lr`,
-`layers`, and `epochs` from the parameters file above. Full paths should be used
-to specify `layers` and `epochs` from the `train` group:
+`layers`, and `epochs` from the params file above. Full paths should be used to
+specify `layers` and `epochs` from the `train` group:
 
 ```dvc
 $ dvc run -d users.csv -o model.pkl \
@@ -87,7 +96,7 @@ $ dvc run -d users.csv -o model.pkl \
         python train.py
 ```
 
-> Note that we could use the same parameters addressation with JSON parameters
+> Note that we could use the same parameter addressing with JSON parameters
 > files.
 
 Alternatively, the entire group of parameters `train` can be referenced, instead
@@ -101,8 +110,8 @@ $ dvc run -d users.csv -o model.pkl \
 
 You can find that each parameter and it's value were saved in the
 [DVC-file](/doc/user-guide/dvc-file-format). These values will be compared to
-the ones in the parameter files whenever `dvc repro` is used, to determine if
-dependency to the parameter file is invalidated:
+the ones in the parameters files whenever `dvc repro` is used, to determine if
+dependency to the params file is invalidated:
 
 ```yaml
 md5: 05d178cfa0d1474b6c5800aa1e1b34ac
@@ -117,17 +126,14 @@ deps:
       train.layers: 9
 ```
 
-In the examples above, the default parameters file `params.yaml` was used. The
-parameter file name can be redefined with a prefix in the `-p` argument:
+In the examples above, the default parameters file name `params.yaml` was used.
+This file name can be redefined with a prefix in the `-p` argument:
 
 ```dvc
 $ dvc run -d logs/ -o users.csv \
         -p parse_params.yaml:threshold,classes_num \
         python train.py
 ```
-
-Now let's print parameter values that we are tracking in this
-<abbr>project</abbr>:
 
 ## Examples: Print all parameter values in the workspace
 

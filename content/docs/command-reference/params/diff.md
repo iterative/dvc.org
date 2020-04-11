@@ -1,6 +1,6 @@
 # params diff
 
-Show changes in [project parameters](/doc/command-reference/params), between
+Show changes in [parameter dependencies](/doc/command-reference/params) between
 commits in the <abbr>DVC repository</abbr>, or between a commit and the
 <abbr>workspace</abbr>.
 
@@ -17,16 +17,21 @@ positional arguments:
 
 ## Description
 
-This command means to provide a quick way to compare parameters from your
-previous experiments with the current ones of your pipeline, as long as you're
-using params that DVC is aware of. The dependencies to parameters can be defined
-by `--params` or `-p` option in `dvc run`. To learn more about parameters see
-[project parameters](/doc/command-reference/params).
+This command provides a quick way to compare parameter values from your previous
+experiments with the current one(s) in your <abbr>workspace</abbr>.
 
-Run without arguments, this command compares all existing parameters currently
-present in the <abbr>workspace</abbr> (uncommitted changes) with the latest
-committed version. The command shows only parameters that were used in any of
-stages and ignores parameters that were not used.
+> Parameter dependencies are defined with the `-p` option in `dvc run`. See also
+> `dvc params`.
+
+Run without arguments, this command compares parameters currently present in the
+<abbr>workspace</abbr> (including uncommitted changes) with the latest committed
+version.
+
+❗ It only shows parameters used in any of the currently present
+[stage files](/doc/command-reference/run) (DVC-files).
+
+Supported parameter _value_ types are: string, integer, float, and arrays. DVC
+itself does not ascribe any specific meaning for these values.
 
 ## Options
 
@@ -42,23 +47,23 @@ stages and ignores parameters that were not used.
 
 ## Examples
 
-Let's create a simple parameters file and a stage with params dependency (See
-`dvc params` and `dvc run` to learn more):
+Let's create a simple YAML parameters file named `params.yaml` (default params
+file name, see `dvc params` to learn more):
 
-```dvc
-$ cat params.yaml
+```yaml
 lr: 0.0041
 
 train:
-    epochs: 70
-    layers: 9
+  epochs: 70
+  layers: 9
 
 processing:
-    threshold: 0.98
-    bow_size: 15000
+  threshold: 0.98
+  bow_size: 15000
 ```
 
-Define a pipeline stage with dependencies to parameters:
+Define a pipeline [stage](/doc/command-reference/run) with parameter
+dependencies:
 
 ```dvc
 $ dvc run -d users.csv -o model.pkl \
@@ -66,7 +71,8 @@ $ dvc run -d users.csv -o model.pkl \
         python train.py
 ```
 
-Let's print parameter values that we are tracking in this <abbr>project</abbr>:
+Let's now print parameter values that we are tracking in this
+<abbr>project</abbr>:
 
 ```dvc
 $ dvc params diff
@@ -76,16 +82,16 @@ params.yaml   train.layers   None   9
 params.yaml   train.epochs   None   70
 ```
 
-The command showed the difference between the workspace and the last commited
-version of the `params.yaml` file which does not exist yet. This is why all
-`Old` values are `None`.
+The command above shows the difference in parameters between the workspace and
+the last committed version of the params file `params.yaml`. Since it did not
+exist before, all `Old` values are `None`.
 
-Note, not all the parameter were printed. `dvc params diff` prints only changed
-parameters that were used in one of the stages and ignors parameters from the
-group `processing` that were not used.
+❗ Note that not all the parameter were printed. `dvc params diff` prints only
+changed parameters that were used in one of the stages and ignores parameters
+from the group `processing` that were not used.
 
-In a project with parameter file history you will see both `Old` and `New`
-values:
+In a project with parameters file history (params present in various Git
+commits), you will see both `Old` and `New` values:
 
 ```dvc
 $ dvc params diff
@@ -95,8 +101,9 @@ params.yaml   train.layers   9      7
 params.yaml   train.epochs   70     110
 ```
 
-To compare parameters with a specific commit, tag or revision it should be
-specified as an additional command line parameter:
+To compare parameters with a specific commit, a tag or any
+[revision](https://git-scm.com/docs/revisions) should be specified as an
+additional command line parameter:
 
 ```dvc
 $ dvc params diff e12b167
@@ -105,8 +112,9 @@ params.yaml   lr             0.0038 0.0043
 params.yaml   train.epochs   70     110
 ```
 
-Note, the `train.layers` parameter dissapeared because its value was not changed
-between the current version in the workspace and the defined one.
+Note that the `train.layers` parameter disappeared because its value was not
+changed between the current version in the workspace and the given one
+(`e12b167`).
 
 To see the difference between two specific commits, both need to be specified:
 

@@ -22,12 +22,13 @@ positional arguments:
 ## Description
 
 `dvc run` provides an interface to describe stages: individual commands and the
-data input and output that go into creating a result. By specifying a list of
-dependencies (`-d` option), params (`-p` option) and <abbr>outputs</abbr> (`-o`,
-`-O`, `-m`, or `-M` options) DVC can later connect each stage by building a
-dependency graph ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)).
-This graph is used by DVC to restore a full data
-[pipeline](/doc/command-reference/pipeline).
+data input and output that go into creating a result. By specifying lists of
+<abbr>dependencies</abbr> (`-d` option),
+[parameters](/doc/command-reference/params) (`-p` option), <abbr>outputs</abbr>
+(`-o`, `-O` options), and/or [metrics](/doc/command-reference/metrics) (`-m`,
+`-M` options), DVC can later connect each stage by building a dependency graph
+([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)). This graph is
+used by DVC to restore a full data [pipeline](/doc/command-reference/pipeline).
 
 The remaining terminal input provided to `dvc run` after the command options
 (`-`/`--` flags) will become the required `command` argument. Please wrap the
@@ -73,8 +74,8 @@ commands, they should ideally follow these rules:
   at `dvc repro`).
 - Stop reading and writing files when the `command` exits.
 
-Keep in mind that if the pipeline's reproducibility goals include consistent
-output data, its code should be as
+Keep in mind that if the [pipeline](/doc/command-reference/pipeline)'s
+reproducibility goals include consistent output data, its code should be as
 [deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) as
 possible (produce the same output for a given input). In this case, avoid code
 that brings [entropy](https://en.wikipedia.org/wiki/Software_entropy) into your
@@ -88,21 +89,22 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   with data, or a code file, or a configuration file. DVC also supports certain
   [external dependencies](/doc/user-guide/external-dependencies).
 
-  DVC builds a dependency graph connecting different stages with each other.
-  When you use `dvc repro`, the list of dependencies helps DVC analyze whether
-  any dependencies have changed and thus executing stages as required to
-  regenerate their output. A special case is when no dependencies are specified.
+  DVC builds a dependency graph ([pipeline](/doc/command-reference/pipeline))
+  connecting different stages with each other. When you use `dvc repro`, the
+  list of dependencies helps DVC analyze whether any dependencies have changed
+  and thus executing stages as required to regenerate their output. A special
+  case is when no dependencies are specified.
 
   > Note that a DVC-file without dependencies is considered always changed, so
   > `dvc repro` always executes it.
 
 - `-p [<filename>:]<params_list>`, `--params [<filename>:]<params_list>` -
-  specify a subset of parameters from a parameter file the stage depends on. The
-  params subset can be specified by coma separated params list:
-  `-p learning_rate,epochs`. By default, the params file is `params.yaml` but
-  this value can be redefined with params prefix:
-  `-p parse_params.yaml:threshold` See `dvc params` to learn more about using
-  parameters.
+  specify a set of [parameter dependencies](/doc/command-reference/params) the
+  stage depends on, from a parameters file. This is done by sending a coma
+  separated list as argument, e.g. `-p learning_rate,epochs`. The default
+  parameters file name is `params.yaml`, but this can be redefined with a prefix
+  in the argument sent to this option, e.g. `-p parse_params.yaml:threshold`.
+  See `dvc params` to learn more about parameters.
 
 - `-o <path>`, `--outs <path>` - specify a file or directory that is the result
   of running the `command`. Multiple outputs can be specified:
@@ -212,8 +214,9 @@ To track the changes with git, run:
 > See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
 > text format above.
 
-Execute a Python script as a DVC pipeline stage. The stage file name is not
-specified, so a `model.p.dvc` DVC-file is created:
+Execute a Python script as a DVC [pipeline](/doc/command-reference/pipeline)
+stage. The stage file name is not specified, so a `model.p.dvc` DVC-file is
+created by default based on the registered output (`-o):
 
 ```dvc
 # Train ML model on the training dataset. 20180226 is a seed value.
@@ -222,45 +225,7 @@ $ dvc run -d matrix-train.p -d train_model.py \
           python train_model.py matrix-train.p 20180226 model.p
 ```
 
-Execute an R script as s DVC pipeline stage:
-
-```dvc
-$ dvc run -d parsingxml.R -d Posts.xml \
-          -o Posts.csv \
-          Rscript parsingxml.R Posts.xml Posts.csv
-```
-
-Dependency to hyperparameters from the default params file `params.yaml`:
-
-```dvc
-$ cat params.yaml
-seed: 20180226
-
-train:
-    lr: 0.0041
-    epochs: 75
-    layers: 9
-
-processing:
-    threshold: 0.98
-    bow_size: 15000
-
-$ dvc run -d matrix-train.p -d train_model.py -o model.p \
-          -p seed,train.lr,train.epochs
-          python train_model.py matrix-train.p model.p
-```
-
-Extract an XML file from an archive to the `data/` folder:
-
-```dvc
-$ mkdir data
-$ dvc run -d Posts.xml.zip \
-          -o data/Posts.xml \
-          -f extract.dvc \
-          unzip Posts.xml.zip -d data/
-```
-
-Place the generated stage file (DVC-file) into a subdirectory:
+Place the stage file in a subdirectory:
 
 ```dvc
 $ dvc run -d test.txt -f stages/test.dvc -o result.out \
@@ -273,4 +238,54 @@ $ tree .
 ├── stages
 │   └── test.dvc
 └── test.txt
+```
+
+## Example: Using specific hyperparameter dependencies
+
+To use granular [parameter dependencies](/doc/command-reference/params), create
+a simple YAML parameters file named `params.yaml` (default params file name, see
+`dvc params` to learn more):
+
+```yaml
+seed: 20180226
+
+train:
+  lr: 0.0041
+  epochs: 75
+  layers: 9
+
+processing:
+  threshold: 0.98
+  bow_size: 15000
+```
+
+Define a pipeline stage with both regular and parameter dependencies:
+
+```dvc
+$ dvc run -d matrix-train.p -d train_model.py -o model.p \
+          -p seed,train.lr,train.epochs
+          python train_model.py matrix-train.p model.p
+```
+
+## Example: chaining stages (build a pipeline)
+
+DVC [pipelines](/doc/command-reference/pipeline) are constructed by connecting
+one stage outputs to the next's dependencies:
+
+Extract an XML file from an archive to the `data/` folder:
+
+```dvc
+$ mkdir data
+$ dvc run -d Posts.xml.zip \
+          -o data/Posts.xml \
+          -f extract.dvc \
+          unzip Posts.xml.zip -d data/
+```
+
+Execute an R script:
+
+```dvc
+$ dvc run -d parsingxml.R -d data/Posts.xml \
+          -o data/Posts.csv \
+          Rscript parsingxml.R data/Posts.xml data/Posts.csv
 ```

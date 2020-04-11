@@ -44,23 +44,25 @@ meta: # Special field to contain arbitary user data
 
 ## Structure
 
-On the top level, `.dvc` file consists of these fields:
+On the top level, `.dvc` file consists of these possible fields:
 
 - `cmd`: Executable command defined in this stage
+- `wdir`: Directory to run command in (default `.`)
+- `md5`: MD5 hash for this DVC-file
 - `deps`: List of dependencies for this stage
 - `outs`: List of <abbr>outputs</abbr> for this stage
-- `md5`: MD5 hash for this DVC-file
 - `locked`: Whether or not this stage is locked from reproduction
-- `wdir`: Directory to run command in (default `.`)
 - `always_changed`: Whether or not this stage should always be considered as
   changed by commands such as `dvc status` and `dvc repro` (default `false`)
 
-A dependency entry consists of a pair of fields:
+A dependency entry consists of a these possible fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
 - `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
 - `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
+- `params`: If this is a [parameter dependency](/doc/command-reference/params)
+  file, contains a list of the parameter names and their current values.
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
@@ -81,14 +83,12 @@ An output entry consists of these fields:
 - `path`: Path to the output, relative to the `wdir` path
 - `md5`: MD5 hash for the output
 - `cache`: Whether or not dvc should cache the output
-- `metric`: Whether or not this file is a
-  [metric](/doc/command-reference/metrics) file
+- `metric`: If this file is a [metric](/doc/command-reference/metrics), contains
+  the following fields:
 
-A metric entry consists of these fields:
-
-- `type`: Type of the metric file (e.g. raw/json/tsv/htsv/csv/hcsv)
-- `xpath`: Path within the metric file to the metrics data(e.g. `AUC.value` for
-  `{"AUC": {"value": 0.624321}}`)
+  - `type`: Type of the metric file (`json`)
+  - `xpath`: Path within the metric file to the metrics data(e.g. `AUC.value`
+    for `{"AUC": {"value": 0.624321}}`)
 
 A `meta` entry consists of `key: value` pairs such as `name: John`. A meta entry
 can have any valid YAML structure containing any number of attributes.
