@@ -20,7 +20,7 @@ import SubscribeSection from '../../SubscribeSection'
 
 import styles from './styles.module.css'
 
-const Post: React.SFC<IBlogPostData> = ({
+const Post: React.FC<IBlogPostData> = ({
   html,
   timeToRead,
   frontmatter,

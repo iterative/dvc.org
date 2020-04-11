@@ -29,7 +29,7 @@ const isInsideCodeBlock = (node: Element): boolean => {
   return false
 }
 
-const Details: React.SFC<{
+const Details: React.FC<{
   children: Array<{ props: { children: Array<string> } } | string>
 }> = ({ children }) => {
   const filteredChildren = children.filter(child => child !== '\n')
@@ -46,7 +46,7 @@ const Details: React.SFC<{
   )
 }
 
-const Abbr: React.SFC<{ children: [string] }> = ({ children }) => {
+const Abbr: React.FC<{ children: [string] }> = ({ children }) => {
   return <Tooltip text={children[0]} />
 }
 
@@ -65,7 +65,7 @@ interface IMarkdownProps {
   next?: string
 }
 
-const Markdown: React.SFC<IMarkdownProps> = ({
+const Markdown: React.FC<IMarkdownProps> = ({
   htmlAst,
   prev,
   next,

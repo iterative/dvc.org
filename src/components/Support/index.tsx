@@ -11,7 +11,7 @@ import Popover from './Popover'
 
 import styles from './styles.module.css'
 
-const SupportPage: React.SFC = () => (
+const SupportPage: React.FC = () => (
   <>
     <PageContent>
       <HeroSection className={styles.supportHero}>

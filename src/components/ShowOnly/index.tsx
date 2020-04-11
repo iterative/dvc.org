@@ -10,7 +10,7 @@ interface IShowOnlyProps {
   children: React.ReactNode
 }
 
-const ShowOnly: React.SFC<IShowOnlyProps> = ({
+const ShowOnly: React.FC<IShowOnlyProps> = ({
   on,
   as: AS = 'div',
   className,

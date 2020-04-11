@@ -16,7 +16,7 @@ export type ILinkProps = {
 const PROTOCOL_REGEXP = /^https?:\/\//
 const isRelative = (url: string): boolean => !PROTOCOL_REGEXP.test(url)
 
-const ResultLinkComponent: React.SFC<ILinkProps> = ({
+const ResultLinkComponent: React.FC<ILinkProps> = ({
   href,
   children,
   ...restProps
@@ -48,7 +48,7 @@ const scrollToHash = (hash: string): void => {
   }
 }
 
-const Link: React.SFC<ILinkProps> = ({ href, ...restProps }) => {
+const Link: React.FC<ILinkProps> = ({ href, ...restProps }) => {
   const currentLocation = useLocation()
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {

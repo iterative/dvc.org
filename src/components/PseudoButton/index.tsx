@@ -12,7 +12,7 @@ type IPseudoButtonProps = {
   size?: 'small' | 'big'
 } & ILinkProps
 
-const PseudoButton: React.SFC<IPseudoButtonProps> = ({
+const PseudoButton: React.FC<IPseudoButtonProps> = ({
   children,
   className,
   type = 'primary',

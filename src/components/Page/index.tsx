@@ -28,7 +28,7 @@ export interface IPageProps {
   enableSmoothScroll: boolean
 }
 
-const Page: React.SFC<IPageProps> = props => {
+const Page: React.FC<IPageProps> = props => {
   let LayoutComponent = MainLayout
 
   useRedirects()

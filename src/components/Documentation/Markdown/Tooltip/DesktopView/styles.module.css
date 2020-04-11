@@ -1,5 +1,6 @@
 .highlightedText {
   border-bottom: 1px black dotted;
+  white-space: nowrap;
 }
 
 .tooltip {

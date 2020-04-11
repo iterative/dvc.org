@@ -10,7 +10,7 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import styles from './styles.module.css'
 
-const LearnMore: React.SFC<{ href: string }> = ({ href }) => (
+const LearnMore: React.FC<{ href: string }> = ({ href }) => (
   <div className={styles.learnMoreContainer}>
     <Link className={styles.learnMoreLink} href={href}>
       <span>Learn&nbsp;more</span>
@@ -23,7 +23,7 @@ const LearnMore: React.SFC<{ href: string }> = ({ href }) => (
   </div>
 )
 
-const ColumnOne: React.SFC = () => (
+const ColumnOne: React.FC = () => (
   <div className={styles.column}>
     <h3 className={cn(styles.columnCaption, styles.purple)}>
       ML project version control
@@ -45,7 +45,7 @@ const ColumnOne: React.SFC = () => (
   </div>
 )
 
-const ColumnTwo: React.SFC = () => (
+const ColumnTwo: React.FC = () => (
   <div className={styles.column}>
     <h3 className={cn(styles.columnCaption, styles.azure)}>
       ML experiment management
@@ -68,7 +68,7 @@ const ColumnTwo: React.SFC = () => (
   </div>
 )
 
-const ColumnThree: React.SFC = () => (
+const ColumnThree: React.FC = () => (
   <div className={styles.column}>
     <h3 className={cn(styles.columnCaption, styles.orange)}>
       Deployment & Collaboration

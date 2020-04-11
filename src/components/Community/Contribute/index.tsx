@@ -17,9 +17,7 @@ const logBlogpost = (): void => logEvent('community', 'contribute-blogpost')
 const logTalk = (): void => logEvent('community', 'contribute-talk')
 const logAmbassador = (): void => logEvent('community', 'contribute-ambassador')
 
-const Contribute: React.SFC<{ theme: ICommunitySectionTheme }> = ({
-  theme
-}) => {
+const Contribute: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
   return (
     <LayoutWidthContainer className={sharedStyles.wrapper}>
       <CommunitySection

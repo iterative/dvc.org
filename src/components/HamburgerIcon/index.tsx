@@ -7,7 +7,7 @@ interface IHamburgetProps {
   opened?: boolean
 }
 
-const HamburgerIcon: React.SFC<IHamburgetProps> = ({ opened }) => (
+const HamburgerIcon: React.FC<IHamburgetProps> = ({ opened }) => (
   <div className={cn(styles.wrapper, opened && styles.opened)}>
     <div className={cn(styles.line, styles.first)} />
     <div className={cn(styles.line, styles.second)} />

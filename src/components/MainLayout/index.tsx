@@ -20,7 +20,7 @@ interface IMainLayoutProps {
   className?: string
 }
 
-export type LayoutComponent = React.SFC<
+export type LayoutComponent = React.FC<
   IMainLayoutProps & IPageProps & ILayoutModifiable
 >
 

@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-const SearchForm: React.SFC = props => {
+const SearchForm: React.FC = props => {
   const [isLoaded, setLoaded] = useState(false)
 
   useEffect(() => {

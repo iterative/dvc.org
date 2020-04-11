@@ -9,7 +9,7 @@ type IPopoverProps = {
   children: React.ReactNode
 } & PopoverProps
 
-const Popover: React.SFC<IPopoverProps> = ({ children, ...restProps }) => {
+const Popover: React.FC<IPopoverProps> = ({ children, ...restProps }) => {
   const [isOpened, setOpened] = useState(false)
   const toggle = (): void => setOpened(prev => !prev)
   const onKeyDown = (e: React.KeyboardEvent<HTMLDivElement>): void => {

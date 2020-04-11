@@ -39,13 +39,8 @@ module.exports = (req, res, next) => {
     if (queryStr) {
       redirectLocation += '?' + queryStr
     }
-    res.writeHead(code, {
-      Location: redirectLocation
-    })
 
-    res.end()
-
-    return
+    return res.redirect(code, redirectLocation)
   }
 
   next()

@@ -48,7 +48,7 @@ interface IBlogFeedItemProps {
   feedPost: IBlogPostData
 }
 
-const Item: React.SFC<IBlogFeedItemProps> = ({
+const Item: React.FC<IBlogFeedItemProps> = ({
   big,
   feedPost: { fields, frontmatter, timeToRead }
 }) => {

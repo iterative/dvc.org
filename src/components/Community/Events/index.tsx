@@ -36,7 +36,7 @@ const eventsItems = ((): Array<IEvent | null> => {
   return items
 })()
 
-const Event: React.SFC<IEvent> = ({
+const Event: React.FC<IEvent> = ({
   theme,
   city,
   date,
@@ -96,7 +96,7 @@ const Event: React.SFC<IEvent> = ({
   )
 }
 
-const Events: React.SFC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
+const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
   if (!events.length) {
     return null
   }
