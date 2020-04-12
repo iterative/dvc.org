@@ -10,7 +10,7 @@ interface IHeroSectionProps {
   children: React.ReactNode
 }
 
-const HeroSection: React.SFC<IHeroSectionProps> = ({ className, children }) => (
+const HeroSection: React.FC<IHeroSectionProps> = ({ className, children }) => (
   <div className={cn(styles.heroSection, className)}>
     <LayoutWidthContainer>{children}</LayoutWidthContainer>
   </div>

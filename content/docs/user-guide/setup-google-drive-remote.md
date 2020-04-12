@@ -48,13 +48,13 @@ folder i.e. `gdrive://<base>/path/to/folder`. The base can be one of:
    (these two can only be referenced by ID).
 
    ```dvc
-   $ dvc remote add myremote myremote gdrive://0AIac4JZqHhKmUk9PDA
+   $ dvc remote add myremote gdrive://0AIac4JZqHhKmUk9PDA
    ```
 
    or
 
    ```dvc
-   $ dvc remote add myremote myremote \
+   $ dvc remote add myremote \
                          gdrive://0AIac4JZqHhKmUk9PDA/Data/text
    ```
 

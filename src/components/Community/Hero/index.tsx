@@ -10,7 +10,7 @@ import styles from './styles.module.css'
 
 const logHero = (): void => logEvent('community', 'hero')
 
-const Hero: React.SFC = () => {
+const Hero: React.FC = () => {
   if (!data.hero) {
     return null
   }

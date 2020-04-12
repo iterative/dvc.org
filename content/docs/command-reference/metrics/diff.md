@@ -22,9 +22,11 @@ positional arguments:
 
 This command means to provide a quick way to compare results from your previous
 experiments with the current results of your pipeline, as long as you're using
-metrics that DVC is aware of (see `dvc metrics add`). Run without arguments,
-this command compares all existing metric files currently present in the
-<abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
+metrics that DVC is aware of (see `dvc metrics add`).
+
+Run without arguments, this command compares all existing metric files currently
+present in the <abbr>workspace</abbr> (including uncommitted changes) with the
+latest committed version.
 
 The differences shown by this command include the new value, and numeric
 difference (delta) from the previous value of metrics (with 3-digit accuracy).

@@ -22,7 +22,7 @@ export interface ICommunitySectionTheme {
   color: string
 }
 
-const Community: React.SFC = () => (
+const Community: React.FC = () => (
   <>
     <PageContent className={styles.content}>
       <Hero />

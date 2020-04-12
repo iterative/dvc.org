@@ -1,6 +1,6 @@
 import cn from 'classnames'
 import React from 'react'
-import includes from 'lodash.includes'
+import includes from 'lodash/includes'
 
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 import LayoutWidthContainer from '../LayoutWidthContainer'
@@ -11,9 +11,7 @@ import { useHeaderIsScrolled } from '../../utils/front/scroll'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo.svg'
 import styles from './styles.module.css'
 
-const LayoutHeader: React.SFC<Required<ILayoutModifiable>> = ({
-  modifiers
-}) => {
+const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
   const hasCollapsedModifier = includes(modifiers, LayoutModifiers.Collapsed)
   const collapsed = hasCollapsedModifier || useHeaderIsScrolled()
 

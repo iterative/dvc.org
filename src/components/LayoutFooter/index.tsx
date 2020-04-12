@@ -1,6 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
-import includes from 'lodash.includes'
+import includes from 'lodash/includes'
 
 import { LayoutModifiers, ILayoutModifiable } from '../MainLayout'
 import LayoutWidthContainer from '../LayoutWidthContainer'
@@ -14,9 +14,7 @@ import styles from './styles.module.css'
 
 const docsPage = getFirstPage()
 
-const LayoutFooter: React.SFC<Required<ILayoutModifiable>> = ({
-  modifiers
-}) => (
+const LayoutFooter: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => (
   <footer className={styles.wrapper}>
     <LayoutWidthContainer
       className={cn(styles.container)}

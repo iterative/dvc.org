@@ -10,7 +10,7 @@ interface IHTMLProps {
   postBodyComponents: Array<React.ReactNode>
 }
 
-const HTML: React.SFC<IHTMLProps> = props => {
+const HTML: React.FC<IHTMLProps> = props => {
   return (
     <html {...props.htmlAttributes}>
       <head>

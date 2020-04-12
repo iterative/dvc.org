@@ -24,7 +24,7 @@ const logIssueAll = (): void => logEvent('community', 'issue', 'all')
 const logTopicAll = (): void => logEvent('community', 'topic', 'all')
 const logDiscord = (): void => logEvent('community', 'discord')
 
-const Topic: React.SFC<{ color: string } & IDiscussTopic> = ({
+const Topic: React.FC<{ color: string } & IDiscussTopic> = ({
   url,
   title,
   date,
@@ -61,7 +61,7 @@ const Topic: React.SFC<{ color: string } & IDiscussTopic> = ({
   )
 }
 
-const Issue: React.SFC<{ color: string } & IGithubIssue> = ({
+const Issue: React.FC<{ color: string } & IGithubIssue> = ({
   url,
   title,
   date,
@@ -98,7 +98,7 @@ const Issue: React.SFC<{ color: string } & IGithubIssue> = ({
   )
 }
 
-const Meet: React.SFC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
+const Meet: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
   const { error: issuesError, ready: issuesReady, result: issues } = useIssues()
   const { error: topicsError, ready: topicsReady, result: topics } = useTopics()
 

@@ -17,7 +17,7 @@ interface ISEOProps {
   children?: React.ReactNode
 }
 
-const SEO: React.SFC<ISEOProps> = ({
+const SEO: React.FC<ISEOProps> = ({
   title,
   defaultMetaTitle,
   description,

@@ -3,7 +3,7 @@ import React from 'react'
 import NotFound from '../components/NotFound'
 import SEO from '../components/SEO'
 
-const NotFoundPage: React.SFC = () => (
+const NotFoundPage: React.FC = () => (
   <>
     <SEO
       title="404 | This page could not be found"

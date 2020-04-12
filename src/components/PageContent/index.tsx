@@ -8,7 +8,7 @@ interface IPageContentProps {
   children: React.ReactNode
 }
 
-const PageContent: React.SFC<IPageContentProps> = ({ className, children }) => (
+const PageContent: React.FC<IPageContentProps> = ({ className, children }) => (
   <div className={cn(styles.pageContent, className)}>{children}</div>
 )
 

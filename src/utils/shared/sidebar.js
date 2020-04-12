@@ -18,7 +18,7 @@
   }
 */
 
-const startCase = require('lodash.startcase')
+const startCase = require('lodash/startCase')
 const sidebar = require('../../../content/docs/sidebar.json')
 
 const PATH_ROOT = '/doc'
@@ -133,10 +133,6 @@ function normalizeSidebar({
   return currentResult
 }
 
-function findChildWithSource(item) {
-  return item.source ? item : findChildWithSource(item.children[0])
-}
-
 /*
  * Exports
  */
@@ -145,6 +141,10 @@ const normalizedSidebar = normalizeSidebar({
   data: sidebar,
   parentPath: ''
 })
+
+function findChildWithSource(item) {
+  return item.source ? item : findChildWithSource(item.children[0])
+}
 
 function getFirstPage() {
   return findChildWithSource(normalizedSidebar[0]).path
@@ -168,7 +168,7 @@ function getItemBySource(source) {
   return item || false
 }
 
-function getPathWithSoruce(path) {
+function getPathWithSource(path) {
   return getItemByPath(path).path
 }
 
@@ -192,9 +192,10 @@ function getParentsListFromPath(path) {
 
 module.exports = {
   structure: normalizedSidebar,
+  findChildWithSource,
   getItemByPath,
   getItemBySource,
-  getPathWithSoruce,
+  getPathWithSource,
   getParentsListFromPath,
   getFirstPage
 }
