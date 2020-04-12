@@ -4,16 +4,17 @@
 [![CircleCI](https://circleci.com/gh/iterative/dvc.org.svg?style=svg)](https://circleci.com/gh/iterative/dvc.org)
 
 [DVC](https://github.com/iterative/dvc) project website's source code.
-[documentation](https://dvc.org/doc) and [blog](https://dvc.org/blog) content.
+[Documentation](https://dvc.org/doc) and [blog](https://dvc.org/blog) content.
 
 # Contributing
 
-We welcome contributions to the DVC [docs](https://dvc.org/doc) and
-[blog](https://dvc.org/blog) by the community!
+Contributions to the documentation and blog are welcome!
 
-You can refer to our
+## Docs
+
+Please see our
 [Contributing guide](https://dvc.org/doc/user-guide/contributing/docs) for more
-details. Thank you!
+details.
 
 [![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/0)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/0)
 [![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/1)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/1)
@@ -24,6 +25,15 @@ details. Thank you!
 [![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/6)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/6)
 [![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/7)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/7)
 
+## Writing a blog post
+
+Please, [contact us](mailto:support@dvc.org) if you'd like to write something
+cool together or publish your content on our [blog](https://dvc.org/blog).
+
+Please see our
+[Writing a Blog Post guide](https://dvc.org/doc/user-guide/contributing/blog)
+for more details on how to write and submit a new blog post.
+
 # Getting help
 
 If you have any questions, please join the [community](https://dvc.org/chat) and
@@ -32,10 +42,13 @@ very responsive and happy to help.
 
 # Copyright
 
-This project is distributed under the Apache license version 2.0 (see the
-LICENSE file in the project root).
+Source code of this project is distributed under the Apache license version 2.0
+(see the LICENSE file in the project root).
+
+Except where otherwise noted, documentation, blog content, images are licensed
+under a [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) license.
 
 By submitting a pull request for this project, you agree to license your
-contribution under the Apache license version 2.0 to this project.
-
-If you use images, please make a reference to the original site.
+contribution under the Apache license 2.0 (source code) or CC BY 4.0
+(documentation). Exceptions could be made to content and any other materials
+that are published on our [blog](https://dvc.org/blog).
