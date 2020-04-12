@@ -46,6 +46,29 @@ Otherwise, please refer to the following procedure:
 
 We will review your PR as soon as possible. Thank you for contributing!
 
+## Installation
+
+Make sure you have the latest LTS version of [Node.js](https://nodejs.org) and
+[Yarn](https://yarnpkg.com) installed.
+
+Run `yarn`.
+
+## Commands
+
+- `yarn develop` - run dev server with hot reload.
+- `yarn build` - build static assets to `public` folder.
+- `yarn serve` - run static server over the `public` folder content to check
+  build results.
+- `yarn lint-ts` - lint `.ts` and `.tsx` for compilance with code style and
+  check its for type errors.
+- `yarn lint-css` - lint `.css` files for compilance with code style.
+
+## ENV variables
+
+- `GA_ID` – id of the Google Analytics counter.
+- `ANALYZE` - boolean prop to run webpack-analyzer
+- `SENTRY_DSN` - sentry dsn url for tracking errors
+
 ## Development environment
 
 We highly recommend running this web app locally to check documentation changes

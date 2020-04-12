@@ -153,6 +153,10 @@
           {
             "label": "Docs and Website",
             "slug": "docs"
+          },
+          {
+            "label": "Writing a Blog Post",
+            "slug": "blog"
           }
         ]
       },
