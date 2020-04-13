@@ -43,7 +43,8 @@ tags:
 ```
 
 - `title` - **Required.** Title of the post.
-- `date` - **Required.** Post date. Will be used to sort posts and in RSS.
+- `date` - **Required.** Publication date in the `YYYY-MM-DD` format. Will be
+  used to sort posts and in RSS.
 - `description` - **Required.** Short description to show in the feed.
 - `descriptionLong` - Optional long description to show before the image on the
   post page. If not set, `description` will be used instead. Supports basic
@@ -66,7 +67,13 @@ It's recommended to follow all the relevant recommendations from the
 
 ### Adding images
 
-To add images, put them into `static/uploads` and reference like this:
+> 🙏 Please, be sensible about image size you are about to commit, run some
+> online image optimizer. Huge images pollute Git index, slow down `git clone`,
+> deployment, and other operations with the repository.
+
+The original image should be 2x height and width of the one you want to see on
+the screen to look sharp. To add images, put them into `static/uploads` and
+reference like this:
 
 ```md
 ![](/uploads/images/2020-02-10/image.png)
@@ -90,25 +97,23 @@ To set the image size and text wrap:
 
 ### Embedding links
 
-For those supported by the
-[`gatsby-remark-embedder`](https://www.gatsbyjs.org/packages/gatsby-remark-embedder/)
-plugin, just put a link like described on its home page, e.g.
-[Twitter](https://github.com/MichaelDeBoey/gatsby-remark-embedder#twitter) or
-[YouTube](https://github.com/MichaelDeBoey/gatsby-remark-embedder#youtube):
+Any URLs
+[supported by `gatsby-remark-embedder`](https://github.com/MichaelDeBoey/gatsby-remark-embedder#supported-services)
+such as Youtube and Twitter share links will be embedded automatically. You just
+need to paste them in the post Markdown, for example:
 
 ```md
-Your regular markdown paragraph ...
+... Check out this great video right here:
 
 https://youtu.be/4h6I9_xeYA4
 
-... another regular markdown paragraph.
+And now lets move onto ...
 ```
 
-For any other external link you can embed it with a custom HTML markup like
-this:
+For any other external link you can embed it with a custom HTML-like markup:
 
 ```md
-Your regular markdown paragraph ...
+... Check out this great project:
 
 <external-link
 href="https://dvc.org/doc"
@@ -117,7 +122,7 @@ description="AI and ML are becoming an essential part of the engineering..."
 link="dvc.org"
 image="/uploads/images/image.png" />
 
-... another regular markdown paragraph.
+And now lets move onto ...
 ```
 
 ## Adding authors
@@ -136,4 +141,5 @@ avatar: /uploads/avatar.jpeg
   the blog post. Should be equal to the path from the blog post to the author's
   `.md` file.
 - `name` – **Required.** Author's name.
-- `avatar` - **Required.** Relative path to the author's avatar.
+- `avatar` - **Required.** Relative path to the author's avatar (1024x1024 is
+  recommended).

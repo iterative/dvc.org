@@ -82,50 +82,55 @@ This will start the server on the default port, `8000`. Visit
 enable the Git pre-commit hook that will be formatting and linting your code and
 documentation files automatically.
 
-### All available commands
+### All commands
+
+Please, check the project's `package.json` file to see the complete list. For
+the tools we provide wrappers for your convenience, you can always call them
+directly (e.g. `yarn eslint <file>` or `yarn prettier --check <file>`).
+
+> All the style, linter, test checks below will be enforced automatically upon
+> [submitting PRs](#submitting-changes).
 
 To build the project and run it:
 
-- `yarn build` - build assets in the `public` directory (`gatsby build`).
-- `yarn develop` - run development server with hot reload (`gatsby develop`).
+- `yarn build` - build assets in the `public` directory.
+- `yarn develop` - run development server with hot reload.
 - `yarn start` - run production static server over the `public` directory.
 
 If you change source code files, run tests:
 
 - `yarn test` - run tests.
 
-We use [`prettier`](https://prettier.io/) to format our source code, below is a
-set of pre-built commands for your convenience. All of these checks will be
-enforced automatically upon [submitting PRs](#submitting-changes).
+We use [Prettier](https://prettier.io/) to format our source code, below is a
+set of wrapper commands for your convenience:
 
 - `yarn format-check` - check all source and content files that they are
   properly formatted. This command does not fix any found issue, only reports
   them.
 - `yarn format-all` - fix all found problems.
 - `yarn format-staged` - same, but only on staged files.
-- `yarn format` - run this command `yarn format <file-name>` to format a
+- `yarn format <file>` - run this command `yarn format <file-name>` to format a
   specific file.
 
-We use `tsc`, `eslint`, and other linters to check source code style and find
-different errors. All of these checks will be enforced automatically upon
-[submitting PRs](#submitting-changes).
+We use linters (e.g. [ESLint](https://eslint.org/)) to check source code style
+and detect different errors:
 
 - `yarn lint-ts` - lint source code files (`.ts`, `.js`, `tsx`, etc).
 - `yarn lint-css` - lint `.css` files.
 
-Other commands:
+Other checks:
 
 - `yarn link-check` - runs script to detect broken URLs (e.g. those that return
   404 - Not Found) in the content.
 
 ### ENV variables
 
-There are environment variables production code depends on (e.g. to deploy
-itself properly), or those that can be used to debug the project. Please, check
-the production system settings to see all variables that production and
-deployment system depend on.
+Some environment variables are required to deploy this project to production,
+others can be used to debug the project. Please check the production system
+settings to see all the variables that production and deployment system depend
+on.
 
-Some useful variables:
+Some available variables:
 
 - `GA_ID` – ID of the Google Analytics counter.
 - `ANALYZE` - boolean property to run
