@@ -90,7 +90,7 @@ updates:
   ([check out the docs](https://dvc.org/doc/command-reference/metrics/diff) to
   learn more)
 - Windows users, we are here for you. Contributor
-  [Cyarles Baynham](https://github.com/charlesbaynham) helped us get better
+  [Charles Baynham](https://github.com/charlesbaynham) helped us get better
   performance on copy operations in Windows.
 
 ## From the community
