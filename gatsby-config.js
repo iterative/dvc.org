@@ -124,7 +124,7 @@ const plugins = [
       feeds: [
         {
           description,
-          output: '/rss.xml',
+          output: '/blog/rss.xml',
           query: `
               {
                 allMarkdownRemark(
