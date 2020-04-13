@@ -41,4 +41,4 @@
 
 ## Slides
 
-- [From ML experiments to production: Versioning and Reproducibility with MLV-too](https://peopledoc.github.io/mlv-tools-tutorial/talks/pyData/presentation.html#/)
+- [From ML experiments to production: Versioning and Reproducibility with MLV-too](https://peopledoc.github.io/mlvtools-tutorial/talks/pyData/presentation.html#/)
