@@ -16,6 +16,7 @@ tags:
   - CI/CD
   - DevOps
   - MLOps
+  - DivOps
 ---
 
 Last week, DVC was part of [DivOps](https://divops.org/), a fully remote
