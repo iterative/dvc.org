@@ -10,9 +10,10 @@
     "test": "jest",
     "start": "./scripts/clear-cloudflare-cache.js; node ./src/server/index.js",
     "format-staged": "pretty-quick --staged --no-restage --bail",
-    "format-check": "prettier --check '{.,content/docs/**,src/**}/*.{js,md,json}'",
-    "format-all": "prettier --write './**/*.{js,jsx,md,tsx,ts,json}'",
-    "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx src scripts",
+    "format-check": "prettier --check '**/*.{js,jsx,md,tsx,ts,json}'",
+    "format-all": "prettier --write '**/*.{js,jsx,md,tsx,ts,json}'",
+    "format": "prettier --write",
+    "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx .",
     "lint-css": "stylelint \"src/**/*.css\"",
     "link-check": "./scripts/link-check-git-all.sh",
     "link-check-diff": "./scripts/link-check-git-diff.sh"
@@ -153,8 +154,8 @@
     }
   },
   "lint-staged": {
-    "*.{js,ts,tsx}": [
-      "yarn lint-ts"
+    "*.{js,ts,tsx,json}": [
+      "eslint"
     ],
     "*.css": [
       "yarn stylelint --fix"

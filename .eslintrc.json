@@ -37,9 +37,11 @@
         "src/gatsby/**/*.js",
         "src/components/PageWrapper/index.js",
         "scripts/**/*.js",
+        "config/**/*.js",
         "src/server/**/*.js",
         "plugins/**/*.js",
-        "gatsby-*.js"
+        "gatsby-*.js",
+        "postcss.config.js"
       ],
       "rules": {
         "@typescript-eslint/no-var-requires": "off",

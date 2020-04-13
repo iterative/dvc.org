@@ -5,12 +5,9 @@
 
 [DVC](https://github.com/iterative/dvc) project website's source code.
 [Documentation](https://dvc.org/doc) and [blog](https://dvc.org/blog) content.
+Contributions to are welcome!
 
-# Contributing
-
-Contributions to the documentation and blog are welcome!
-
-## Docs
+# Contributing Docs
 
 Please see our
 [Contributing guide](https://dvc.org/doc/user-guide/contributing/docs) for more
@@ -25,7 +22,7 @@ details.
 [![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/6)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/6)
 [![](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/images/7)](https://sourcerer.io/fame/shcheklein/iterative/dvc.org/links/7)
 
-## Writing a blog post
+# Writing a blog post
 
 Please, [contact us](mailto:support@dvc.org) if you'd like to write something
 cool together or publish your content on our [blog](https://dvc.org/blog).
