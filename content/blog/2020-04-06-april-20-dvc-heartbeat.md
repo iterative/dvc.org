@@ -74,7 +74,11 @@ description="Ever wonder if it's possible to train a model to discover whether y
 link="spotify.com"
 image="/uploads/images/2020-04-06/data_stream.png"/>
 
-## New releases. This month, DVC has released some new features and updates:
+## New releases
+
+This month, DVC has
+[released some new features](https://github.com/iterative/dvc/releases) and
+updates:
 
 - Did you know you can use Google Drive for remote storage with DVC? We've been
   hard at work delivering the best performance with Google Drive and are
