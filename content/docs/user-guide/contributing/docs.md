@@ -5,6 +5,10 @@ We welcome any contributions to our documentation repository,
 the documentation content, or (rare) changes to the JS engine we use to run the
 website.
 
+Please see our
+[Writing a Blog Post guide](https://dvc.org/doc/user-guide/contributing/blog)
+for more details on how to write and submit a new blog post.
+
 ## Structure of the project
 
 To contribute documentation, these are the relevant locations:
@@ -14,8 +18,8 @@ To contribute documentation, these are the relevant locations:
   [Markdown](https://guides.github.com/features/mastering-markdown/) files. One
   file - one page of the documentation.
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
-  (`img/`): Add new images (png, svg, etc.) here. Use them in Markdown files
-  like this: `![](/img/<filename>.gif)`.
+  (`static/img/`): Add new images (`.png`, `.svg`, etc.) here. Use them in
+  Markdown files like this: `![](/img/<filename>.gif)`.
 - [Navigation](https://github.com/iterative/dvc.org/tree/master/content/docs/sidebar.json)
   (`content/docs/sidebar.json`): Edit it to add or change entries in the
   navigation sidebar.
@@ -47,18 +51,12 @@ Otherwise, please refer to the following procedure:
 
 We will review your PR as soon as possible. Thank you for contributing!
 
-## ENV variables
-
-- `GA_ID` – id of the Google Analytics counter.
-- `ANALYZE` - boolean prop to run webpack-analyzer
-- `SENTRY_DSN` - sentry dsn url for tracking errors
-
 ## Development environment
 
 We highly recommend running this web app locally to check documentation or blog
 changes before submitting them, and it's quite necessary when making changes to
 the website engine itself. Source code and content files need to be properly
-formatted as well, which is also ensured by the full setup below.
+formatted and linted as well, which is also ensured by the full setup below.
 
 Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
 (`>=12.0.0`), and install [Yarn](https://yarnpkg.com/):
@@ -81,7 +79,7 @@ $ yarn develop
 
 This will start the server on the default port, `8000`. Visit
 `http://localhost:8000/` and navigate to the page in question. This will also
-enable the Git pre-commit hook that will be formatting your code and
+enable the Git pre-commit hook that will be formatting and linting your code and
 documentation files automatically.
 
 ### All available commands
@@ -119,6 +117,20 @@ Other commands:
 
 - `yarn link-check` - runs script to detect broken URLs (e.g. those that return
   404 - Not Found) in the content.
+
+### ENV variables
+
+There are environment variables production code depends on (e.g. to deploy
+itself properly), or those that can be used to debug the project. Please, check
+the production system settings to see all variables that production and
+deployment system depend on.
+
+Some useful variables:
+
+- `GA_ID` – ID of the Google Analytics counter.
+- `ANALYZE` - boolean property to run
+  [webpack-analyzer](https://www.gatsbyjs.org/packages/gatsby-plugin-webpack-bundle-analyzer/).
+- `SENTRY_DSN` - [Sentry](https://sentry.io/) URL for errors tracking.
 
 ## Doc style guidelines (JavaScript and Markdown)
 
