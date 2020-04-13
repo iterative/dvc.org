@@ -13,29 +13,27 @@ import { ReactComponent as Placeholder } from './placeholder.svg'
 
 export interface IBlogPostData {
   id: string
-  timeToRead: string
-  fields: {
-    slug: string
+  parent: {
+    timeToRead: string
   }
-  frontmatter: {
-    title: string
-    date: string
-    description: string
-    descriptionLong: string
-    picture?: {
-      childImageSharp: {
-        big: FluidObject
-        small: FluidObject
-      }
+  slug: string
+  title: string
+  date: string
+  description: string
+  descriptionLong: string
+  picture?: {
+    childImageSharp: {
+      big: FluidObject
+      small: FluidObject
     }
-    author: {
-      childMarkdownRemark: {
-        frontmatter: {
-          name: string
-          avatar: {
-            childImageSharp: {
-              fixed: FixedObject
-            }
+  }
+  author: {
+    childMarkdownRemark: {
+      frontmatter: {
+        name: string
+        avatar: {
+          childImageSharp: {
+            fixed: FixedObject
           }
         }
       }
@@ -50,9 +48,16 @@ interface IBlogFeedItemProps {
 
 const Item: React.FC<IBlogFeedItemProps> = ({
   big,
-  feedPost: { fields, frontmatter, timeToRead }
+  feedPost: {
+    title,
+    description,
+    date,
+    picture,
+    author,
+    slug,
+    parent: { timeToRead }
+  }
 }) => {
-  const { title, description, date, picture, author } = frontmatter
   const { avatar, name } = author.childMarkdownRemark.frontmatter
   const bodyRef = useRef<HTMLDivElement>(null)
   const { width } = useWindowSize()
@@ -80,7 +85,7 @@ const Item: React.FC<IBlogFeedItemProps> = ({
         !picture && styles.placeholder
       )}
     >
-      <Link href={fields.slug} className={styles.pictureLink}>
+      <Link href={slug} className={styles.pictureLink}>
         {picture ? (
           <Image fluid={image} className={styles.picture} />
         ) : (
@@ -91,7 +96,7 @@ const Item: React.FC<IBlogFeedItemProps> = ({
         className={cn(styles.body, !isOverflown && styles.overflown)}
         ref={bodyRef}
       >
-        <Link href={fields.slug} className={styles.title}>
+        <Link href={slug} className={styles.title}>
           {title}
         </Link>
         <div className={styles.description}>{description}</div>
@@ -109,46 +114,46 @@ const Item: React.FC<IBlogFeedItemProps> = ({
 }
 
 export const query = graphql`
-  fragment FeedPost on MarkdownRemark {
-    id
-    timeToRead
-    fields {
-      slug
+  fragment FeedPost on BlogPost {
+    parent {
+      ... on MarkdownRemark {
+        timeToRead
+      }
     }
-    frontmatter {
-      date(formatString: "MMM DD, YYYY")
-      title
-      description
-      descriptionLong
-      picture {
-        childImageSharp {
-          big: fluid(
-            maxWidth: 650
-            maxHeight: 450
-            cropFocus: CENTER
-            quality: 90
-          ) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-          small: fluid(
-            maxWidth: 300
-            maxHeight: 250
-            cropFocus: CENTER
-            quality: 90
-          ) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+    id
+    slug
+    date(formatString: "MMM DD, YYYY")
+    title
+    description
+    descriptionLong
+    picture {
+      childImageSharp {
+        big: fluid(
+          maxWidth: 650
+          maxHeight: 450
+          cropFocus: CENTER
+          quality: 90
+        ) {
+          ...GatsbyImageSharpFluid_withWebp
+        }
+        small: fluid(
+          maxWidth: 300
+          maxHeight: 250
+          cropFocus: CENTER
+          quality: 90
+        ) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
-      author {
-        childMarkdownRemark {
-          frontmatter {
-            name
-            avatar {
-              childImageSharp {
-                fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp
-                }
+    }
+    author {
+      childMarkdownRemark {
+        frontmatter {
+          name
+          avatar {
+            childImageSharp {
+              fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
+                ...GatsbyImageSharpFixed_withWebp
               }
             }
           }

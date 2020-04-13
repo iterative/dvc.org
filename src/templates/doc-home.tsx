@@ -10,7 +10,9 @@ import Documentation from '../components/Documentation'
 interface IDocHomePageProps {
   data: {
     page: {
-      htmlAst: Node
+      parent: {
+        htmlAst: Node
+      }
     }
   }
   pageContext: {
@@ -24,7 +26,9 @@ const DocHomePage: React.FC<IDocHomePageProps> = ({
   pageContext: { slug, headings }
 }) => {
   const {
-    page: { htmlAst }
+    page: {
+      parent: { htmlAst }
+    }
   } = data
 
   const { label } = getItemByPath(slug)
@@ -40,9 +44,13 @@ const DocHomePage: React.FC<IDocHomePageProps> = ({
 export default DocHomePage
 
 export const pageQuery = graphql`
-  query DocPageBySlug($slug: String!) {
-    page: markdownRemark(fields: { slug: { eq: $slug } }) {
-      htmlAst
+  query DocPage($id: String!) {
+    page: docsPage(id: { eq: $id }) {
+      parent {
+        ... on MarkdownRemark {
+          htmlAst
+        }
+      }
     }
   }
 `

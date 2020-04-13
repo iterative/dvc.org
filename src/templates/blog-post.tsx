@@ -23,7 +23,13 @@ export interface IBlogPostHeroPic {
   pictureComment?: string
 }
 
-export interface IBlogPostFrontmatter {
+export interface IBlogPostData {
+  id: string
+  parent: {
+    html: string
+    timeToRead: string
+  }
+  slug: string
   title: string
   date: string
   description: string
@@ -53,19 +59,9 @@ export interface IBlogPostFrontmatter {
   }
 }
 
-export interface IBlogPostData {
-  id: string
-  html: string
-  timeToRead: string
-  fields: {
-    slug: string
-  }
-  frontmatter: IBlogPostFrontmatter
-}
-
 interface IBlogPostPageProps {
   data: {
-    markdownRemark: IBlogPostData
+    blogPost: IBlogPostData
   }
   pageContext: {
     next: IBlogPostData
@@ -74,17 +70,15 @@ interface IBlogPostPageProps {
 }
 
 const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
-  const post = data.markdownRemark
+  const post = data.blogPost
+  const { title, description, picture } = post
 
   return (
     <>
       <SEO
-        title={post.frontmatter.title}
-        description={post.frontmatter.description}
-        image={
-          post.frontmatter.picture &&
-          post.frontmatter.picture.childImageSharp.fluid.src
-        }
+        title={title}
+        description={description}
+        image={picture && picture.childImageSharp.fluid.src}
       />
       <Post {...post} />
     </>
@@ -94,46 +88,43 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
 export default BlogPostPage
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+  query BlogPostPage($id: String!) {
+    blogPost(id: { eq: $id }) {
       id
-      excerpt(format: HTML)
-      html
-      timeToRead
-      fields {
-        slug
+      parent {
+        ... on MarkdownRemark {
+          html
+          timeToRead
+        }
       }
-      frontmatter {
-        title
-        date(formatString: "MMMM DD, YYYY")
-        description
-        descriptionLong
-        tags
-        commentsUrl
-        author {
-          childMarkdownRemark {
-            frontmatter {
-              name
-              avatar {
-                childImageSharp {
-                  fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
-                    ...GatsbyImageSharpFixed_withWebp
-                  }
+      title
+      date(formatString: "MMMM DD, YYYY")
+      description
+      descriptionLong
+      tags
+      commentsUrl
+      author {
+        childMarkdownRemark {
+          frontmatter {
+            name
+            avatar {
+              childImageSharp {
+                fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
+                  ...GatsbyImageSharpFixed_withWebp
                 }
               }
             }
           }
         }
-        picture {
-          childImageSharp {
-            fluid(maxWidth: 850) {
-              ...GatsbyImageSharpFluid_withWebp
-              presentationWidth
-            }
+      }
+      picture {
+        childImageSharp {
+          fluid(maxWidth: 850) {
+            ...GatsbyImageSharpFluid_withWebp
           }
         }
-        pictureComment
       }
+      pictureComment
     }
   }
 `

@@ -38,16 +38,12 @@ const createPages = async ({ graphql, actions }) => {
   const docsResponse = await graphql(
     `
       {
-        docs: allMarkdownRemark(
-          filter: { fileAbsolutePath: { regex: "/content/docs/" } }
-          limit: 9999
-        ) {
+        docs: allDocsPage(limit: 9999) {
           edges {
             node {
+              id
               rawMarkdownBody
-              fields {
-                slug
-              }
+              slug
             }
           }
         }
@@ -59,18 +55,22 @@ const createPages = async ({ graphql, actions }) => {
     throw docsResponse.errors
   }
 
-  const docComponent = path.resolve('./src/templates/doc-home.tsx')
+  const docComponent = require.resolve('../../../templates/doc-home.tsx')
 
   docsResponse.data.docs.edges.forEach(doc => {
+    const {
+      node: { id, slug, rawMarkdownBody }
+    } = doc
     const headings = parseHeadings(doc.node.rawMarkdownBody)
 
-    if (doc.node.fields.slug) {
+    if (slug) {
       actions.createPage({
         component: docComponent,
-        path: doc.node.fields.slug,
+        path: slug,
         context: {
+          id,
+          slug,
           isDocs: true,
-          slug: doc.node.fields.slug,
           headings
         }
       })
@@ -78,4 +78,4 @@ const createPages = async ({ graphql, actions }) => {
   })
 }
 
-exports.createPages = createPages
+module.exports = createPages

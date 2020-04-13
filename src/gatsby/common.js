@@ -9,41 +9,6 @@ const markdownToHtml = remark().use(remarkHTML).processSync
 const is404Regexp = /^\/404/
 const trailingSlashRegexp = /\/$/
 
-const getNodeSlug = (node, getNode) => {
-  // We need replace to fix paths for Windows
-  const contentPath = path.join(process.cwd(), 'content').replace(/\\/g, '/')
-  const source = node.fileAbsolutePath.replace(contentPath, '')
-  let value
-
-  if (source.startsWith('/blog')) {
-    value = createFilePath({
-      getNode,
-      node,
-      trailingSlash: false
-    }).replace(/^\/blog\/[0-9\-]*/, '/blog/')
-
-    // Convert fields in frontmatter from markdown to html
-    const {
-      frontmatter: { descriptionLong, pictureComment }
-    } = node
-
-    if (descriptionLong) {
-      node.frontmatter.descriptionLong = markdownToHtml(
-        descriptionLong
-      ).contents
-    }
-
-    if (pictureComment) {
-      node.frontmatter.pictureComment = markdownToHtml(pictureComment).contents
-    }
-    // end Convert fields
-  } else {
-    value = getItemBySource(source).path
-  }
-
-  return value
-}
-
 const setPageContext = (page, actions) => {
   actions.deletePage(page)
   actions.createPage({
@@ -65,6 +30,5 @@ const removePageTrailingSlash = (page, actions) => {
   }
 }
 
-exports.getNodeSlug = getNodeSlug
 exports.setPageContext = setPageContext
 exports.removePageTrailingSlash = removePageTrailingSlash

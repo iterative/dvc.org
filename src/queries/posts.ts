@@ -11,33 +11,18 @@ interface IResultBlogPostData {
 }
 
 export default function posts(): Array<IResultBlogPostData> {
-  const { allMarkdownRemark } = useStaticQuery(graphql`
+  const { allBlogPost } = useStaticQuery(graphql`
     query Posts {
-      allMarkdownRemark(
-        sort: { fields: [frontmatter___date], order: DESC }
-        filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-        limit: 3
-      ) {
-        edges {
-          node {
-            fields {
-              slug
-            }
-            frontmatter {
-              title
-              date
-              commentsUrl
-              picture {
-                childImageSharp {
-                  resize(
-                    width: 160
-                    height: 160
-                    fit: COVER
-                    cropFocus: CENTER
-                  ) {
-                    src
-                  }
-                }
+      allBlogPost(sort: { fields: [date], order: DESC }, limit: 3) {
+        nodes {
+          slug
+          title
+          date
+          commentsUrl
+          picture {
+            childImageSharp {
+              resize(width: 160, height: 160, fit: COVER, cropFocus: CENTER) {
+                src
               }
             }
           }
@@ -45,36 +30,27 @@ export default function posts(): Array<IResultBlogPostData> {
       }
     }
   `)
-  const edges: Array<{
-    node: IBlogPostData
-  }> = allMarkdownRemark.edges
+  const nodes: Array<IBlogPostData> = allBlogPost.nodes
 
-  return edges.map(
-    ({
-      node: {
-        fields: { slug },
-        frontmatter: { title, date, commentsUrl, picture }
-      }
-    }) => {
-      let pictureUrl = null
+  return nodes.map(({ slug, title, date, commentsUrl, picture }) => {
+    let pictureUrl = null
 
-      if (picture) {
-        const {
-          childImageSharp: {
-            resize: { src }
-          }
-        } = picture
+    if (picture) {
+      const {
+        childImageSharp: {
+          resize: { src }
+        }
+      } = picture
 
-        pictureUrl = src
-      }
-
-      return {
-        commentsUrl,
-        date,
-        pictureUrl,
-        title,
-        url: slug
-      }
+      pictureUrl = src
     }
-  )
+
+    return {
+      commentsUrl,
+      date,
+      pictureUrl,
+      title,
+      url: slug
+    }
+  })
 }

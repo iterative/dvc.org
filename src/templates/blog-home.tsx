@@ -33,9 +33,8 @@ export default BlogHomePage
 
 export const pageQuery = graphql`
   query($skip: Int, $limit: Int) {
-    posts: allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+    posts: allBlogPost(
+      sort: { fields: [date], order: DESC }
       skip: $skip
       limit: $limit
     ) {

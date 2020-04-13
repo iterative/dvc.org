@@ -1,6 +1,6 @@
 const path = require('path')
-const tagToSlug = require('../utils/shared/tagToSlug')
-const { BLOG } = require('../consts')
+const tagToSlug = require('../../../utils/shared/tagToSlug')
+const { BLOG } = require('../../../consts')
 
 const pageUrl = (basePath, page) => {
   if (page > 1) {
@@ -47,40 +47,24 @@ function* pagesGenerator({ itemCount, hasHeroItem = false, basePath }) {
 }
 
 const createPages = async ({ graphql, actions }) => {
+  const isDevMode = process.env.NODE_ENV === 'development'
+
   const blogResponse = await graphql(
     `
       {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-          limit: 9999
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
-          }
-        }
-        home: allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-          limit: 9999
-        ) {
+        allBlogPost(sort: { fields: [date], order: DESC }, limit: 9999) {
           pageInfo {
             itemCount
           }
-        }
-        tags: allMarkdownRemark(limit: 9999) {
-          group(field: frontmatter___tags) {
+          tags: group(field: tags) {
             fieldValue
             pageInfo {
               itemCount
             }
+          }
+          nodes {
+            slug
+            id
           }
         }
       }
@@ -91,13 +75,19 @@ const createPages = async ({ graphql, actions }) => {
     throw blogResponse.errors
   }
 
+  const {
+    pageInfo: { itemCount },
+    tags,
+    nodes: posts
+  } = blogResponse.data.allBlogPost
+
   // Create home blog pages (with pagination)
   const blogHomeTemplate = path.resolve('./src/templates/blog-home.tsx')
 
   for (const page of pagesGenerator({
     basePath: '/blog',
     hasHeroItem: true,
-    itemCount: blogResponse.data.home.pageInfo.itemCount
+    itemCount: isDevMode ? 1 : itemCount
   })) {
     actions.createPage({
       component: blogHomeTemplate,
@@ -111,11 +101,11 @@ const createPages = async ({ graphql, actions }) => {
 
   // Create blog posts pages
   const blogPostTemplate = path.resolve('./src/templates/blog-post.tsx')
-  const posts = blogResponse.data.allMarkdownRemark.edges
 
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
+  const _posts = isDevMode ? posts.slice(0, 1) : posts
+  _posts.forEach(({ id, slug }, index) => {
+    const previous = index === posts.length - 1 ? null : posts[index + 1]
+    const next = index === 0 ? null : posts[index - 1]
 
     actions.createPage({
       component: blogPostTemplate,
@@ -124,28 +114,27 @@ const createPages = async ({ graphql, actions }) => {
         currentPage: index + 1,
         next,
         previous,
-        slug: post.node.fields.slug
+        id
       },
-      path: post.node.fields.slug
+      path: slug
     })
   })
 
   // Create tags pages (with pagination)
   const blogTagsTemplate = path.resolve('./src/templates/blog-tags.tsx')
 
-  blogResponse.data.tags.group.forEach(
-    ({ fieldValue: tag, pageInfo: { itemCount } }) => {
-      const basePath = `/tags/${tagToSlug(tag)}`
+  const _tags = isDevMode ? tags.slice(0, 1) : tags
+  _tags.forEach(({ fieldValue: tag, pageInfo: { itemCount } }) => {
+    const basePath = `/tags/${tagToSlug(tag)}`
 
-      for (const page of pagesGenerator({ basePath, itemCount })) {
-        actions.createPage({
-          component: blogTagsTemplate,
-          path: page.path,
-          context: { tag, ...page.context }
-        })
-      }
+    for (const page of pagesGenerator({ basePath, itemCount })) {
+      actions.createPage({
+        component: blogTagsTemplate,
+        path: page.path,
+        context: { tag, ...page.context }
+      })
     }
-  )
+  })
 }
 
-exports.createPages = createPages
+module.exports = createPages
