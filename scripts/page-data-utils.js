@@ -62,7 +62,7 @@ const checkPageDataPath = (dir, pagesTree) => {
     if (itemStat.isDirectory()) {
       if (!pagesTree[item]) {
         console.warn(
-          `delete page-data folder for unexisted page at ${itemPath}`
+          `deleting page-data folder for outdated page at ${itemPath}`
         )
         return deleteDir(itemPath)
       } else {
