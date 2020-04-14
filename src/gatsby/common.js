@@ -1,6 +1,3 @@
-const remark = require('remark')
-const remarkHTML = require('remark-html')
-
 const is404Regexp = /^\/404/
 const trailingSlashRegexp = /\/$/
 
