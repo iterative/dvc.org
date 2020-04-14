@@ -93,8 +93,8 @@ directly (e.g. `yarn eslint <file>` or `yarn prettier --check <file>`).
 
 To build the project and run it:
 
-- `yarn build` - build assets in the `public` directory.
 - `yarn develop` - run development server with hot reload.
+- `yarn build` - build assets in the `public` directory.
 - `yarn start` - run production static server over the `public` directory.
 
 If you change source code files, run tests:

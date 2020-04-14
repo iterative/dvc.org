@@ -110,7 +110,7 @@ https://youtu.be/4h6I9_xeYA4
 And now lets move onto ...
 ```
 
-For any other external link you can embed it with a custom HTML-like markup:
+You can ember a preview of any other website using `<external-link>` tag:
 
 ```md
 ... Check out this great project:
