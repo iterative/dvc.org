@@ -19,7 +19,7 @@ DVC is designed to be agnostic of frameworks, programming languages, etc.
 > In case you'd like to get the complete code base and results, or have any
 > issues along the way, please note that we have a fully reproducible
 > [**example-get-started**](https://github.com/iterative/example-get-started)
-> repo on GitHub:
+> repo on Github:
 >
 > ```dvc
 > $ git clone https://github.com/iterative/example-get-started

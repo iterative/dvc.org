@@ -2,7 +2,26 @@
 
 DVC allows storing and versioning data files or directories, ML models, and
 intermediate results with a regular Git workflow, without actually tracking the
-file contents with Git. Let's get a dataset example to play with:
+file contents with Git. In this page we'll explore the basic framework provided
+by DVC for tracking, backing up, and sharing these or other kind of large files.
+
+<details>
+
+### Expand to prepare the project
+
+If you just followed the [intro](/doc/tutorials/get-started/) of this tutorial,
+you're all set. Otherwise, run these commands to get the project from Github:
+
+```dvc
+$ git clone https://github.com/iterative/example-get-started
+$ cd example-get-started
+$ git checkout 3-add-data
+$ dvc pull
+```
+
+</details>
+
+Let's get an example dataset to play with:
 
 ```dvc
 $ mkdir data
@@ -82,9 +101,8 @@ See [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
 </details>
 
 Refer to
-[Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files),
-`dvc add`, and `dvc run` for more information on storing and versioning data
-files with DVC.
+[Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
+and `dvc add` for more information on versioning data with DVC.
 
 ## Store and share data
 
@@ -124,7 +142,7 @@ $ ls -R /tmp/dvc-storage
 
 Imagine you're just cloning the Git repo that has been created so far in another
 computer. This can be simulated by cloning our **example-get-started** repo from
-GitHub, and checking out the
+Github, and checking out the
 [`3-add-file`](https://github.com/iterative/example-get-started/tree/3-add-file)
 tag:
 

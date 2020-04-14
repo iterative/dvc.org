@@ -1,17 +1,50 @@
-# Connect Code and Data
+# Data Pipelines
 
-Even in its basic scenarios, commands like `dvc add`, `dvc push`, `dvc pull`
-described in the previous page could be used independently and provide a basic
-useful framework to track, save and share models and large data files. To
-achieve full reproducibility though, we'll have to connect code and
-configuration with the data it processes to produce the result.
+Support for **pipelines** is one of the key benefits of using DVC over simpler
+large file version control tools. _Data pipelines_ are well-defined series of
+data processing stages that produce some result.
+
+> Machine learning (ML) pipelines typically start a with large raw datasets,
+> include intermediate featurization and training stages, and produce a final
+> model, as well as accuracy [metrics](/doc/command-reference/metrics).
 
 <details>
 
-### Expand to prepare example code
+### Expand to prepare the project
 
-If you've followed this _Get Started_ tutorial from the beginning, run these
-commands to get the example code:
+If you just followed through the
+[versioning](/doc/tutorials/get-started/versioning-basics) page of this
+tutorial, you're all set. Otherwise, run these commands to get the project from
+Github:
+
+```dvc
+$ git clone https://github.com/iterative/example-get-started
+$ cd example-get-started
+$ git checkout 4-import-data
+$ dvc pull
+```
+
+</details>
+
+## Stages
+
+Data processing _stages_ are the nodes in the graph that forms our pipelines.
+They're computational units, for example machine learning scripts, that can take
+an input (dependency) and produce some result (output). Stage source code can be
+versioned with a regular Git workflow; We will then add a layer of metadata on
+top of it with DVC, to actually define each stage formally.
+
+### Connect code and data
+
+To go beyond versioning and sharing data, and achieve full reproducibility of
+our stages and pipelines, we'll need a way to connect code with the data it
+relates to.
+
+<details>
+
+### Expand to download example code
+
+Let's first get some code to work with:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
@@ -22,9 +55,9 @@ $ rm -f code.zip
 Windows doesn't include the `wget` utility by default, but you can use the
 browser to download `code.zip`. (Right-click
 [this link](https://code.dvc.org/get-started/code.zip) and select
-`Save Link As...` (Chrome). Save it into the project directory.
+`Save Link As...` (Chrome). Save it into the <abbr>workspace</abbr>.
 
-The workspace should now look like this:
+Your working directory should now look like this:
 
 ```dvc
 $ tree
@@ -60,10 +93,9 @@ $ git commit -m "Add source code files to repo"
 
 </details>
 
-Having installed the `src/prepare.py` script in your repo, the following command
+Having the `src/prepare.py` script in your repo, the following command
 transforms it into a reproducible [stage](/doc/command-reference/run) for the ML
-pipeline we're building (described in the
-[next chapter](/doc/tutorials/pipelines)).
+pipeline we're building:
 
 ```dvc
 $ dvc run -f prepare.dvc \
@@ -72,16 +104,16 @@ $ dvc run -f prepare.dvc \
           python src/prepare.py data/data.xml
 ```
 
-`dvc run` generates the `prepare.dvc` DVC-file. It has the same
-[format](/doc/user-guide/dvc-file-format) as the file we created in the
-[previous section](/doc/tutorials/get-started/versioning-basics) to track
-`data.xml`, except in this case it has additional information about the
-`data/prepared` output (a directory where two files, `train.tsv` and `test.tsv`,
-will be written to), and about the Python command that is required to build it.
+`dvc run` generates the `prepare.dvc` _stage file_. It has the same
+[format](/doc/user-guide/dvc-file-format) as the DVC-file we
+[previously created](/doc/tutorials/get-started/versioning-basics#start-tracking-data)
+to track `data.xml`, except that in this case it has additional information
+about the command we're executing, it's <abbr>dependencies</abbr>, and
+<abbr>outputs</abbr>.
 
 <details>
 
-### Expand to learn more about what has just happened
+### Expand to learn more about what just happened
 
 This is how the result should look like now:
 
@@ -120,43 +152,34 @@ outs:
 wdir: .
 ```
 
-> `dvc run` is just the first of a set of DVC command required to generate a
-> [pipeline](/doc/command-reference/pipeline), or in other words, instructions
-> on how to build a ML model (data file) from previous data files (or
-> directories).
+The command options used above mean the following, for this particular example:
 
-Let's briefly mention what the command options used above mean for this
-particular example:
+`-f prepare.dvc` specifies a name for the stage file (DVC-file). It's optional
+but we recommend using it to make your project structure more readable.
 
-`-f prepare.dvc` specifies a name for the DVC-file (pipeline stage). It's
-optional but we recommend using it to make your project structure more readable.
+`-d src/prepare.py` and `-d data/data.xml` mean that the stage depends on these
+files to produce a result. When you run `dvc repro` next time (see
+[Reproduce](#reproduce) section below) DVC will check these dependencies to
+decide whether this stage is up to date or whether it should be executed again,
+to regenerate its outputs.
 
-`-d src/prepare.py` and `-d data/data.xml` mean that the `prepare.dvc` stage
-file depends on them to produce the result. When you run `dvc repro` next time
-(see next chapter) DVC will automatically check these dependencies and decide
-whether this stage is up to date or whether it should be executed to regenerate
-its outputs.
+`-o data/prepared` specifies an output directory, where the processed data will
+be put in. The script creates two files in it – that will be used later to
+generate features, train and evaluate the model.
 
-`-o data/prepared` specifies the output directory processed data will be put
-into. The script creates two files in it – that will be used later to generate
-features, train and evaluate the model.
+The last line, `python src/prepare.py data/data.xml`, is the command to run in
+this stage, and it's saved to the stage file as shown above.
 
-And, the last line, `python src/prepare.py data/data.xml`, specifies a command
-to run. This command is saved to the generated DVC-file, and used later by
-`dvc repro`.
-
-Hopefully, `dvc run` (and `dvc repro`) will become intuitive after a few more
-Get Started chapters. You can always refer to the the command references for
-more details on their behavior and options.
+Hopefully, `dvc run` (and `dvc repro`) will become intuitive after completing
+this part of the tutorial! You can always refer to the the command references
+for more details on their behavior and options.
 
 </details>
 
-You don't need to run `dvc add` to track output files (`prepared/train.tsv` and
-`prepared/test.tsv`) with DVC. `dvc run` takes care of this. You only need to
-run `dvc push` (usually along with `git commit`) to save them to the remote when
-you are done.
-
-Let's commit the changes to save the stage we built:
+You don't need to run `dvc add` to tell DVC to track output files
+(`prepared/train.tsv` and `prepared/test.tsv`). `dvc run` takes care of this
+already. You only need to run `dvc push` to save them to remote storage, usually
+along with `git commit` to version the stage itself. Let's do just that:
 
 ```dvc
 $ git add data/.gitignore prepare.dvc
@@ -164,17 +187,14 @@ $ git commit -m "Create data preparation stage"
 $ dvc push
 ```
 
-## Pipeline
+## Pipelines
 
-Support for [pipelines](/doc/command-reference/pipeline) is the biggest
-difference between DVC and other version control tools that can handle large
-data files (e.g. `git lfs`). By using `dvc run` multiple times, and specifying
-outputs of a command (stage) as dependencies in another one, we can describe a
-sequence of commands that gets to a desired result. This is what we call a
-**data pipeline** or dependency graph.
+By using `dvc run` multiple times, and specifying outputs of a command (stage)
+as dependencies in another one, we can describe a sequence of commands that gets
+to a desired result. This is what we call a _data pipeline_ or dependency graph.
 
-Let's create a second stage (after `prepare.dvc`, created in the previous
-chapter) to perform feature extraction:
+Let's create a second stage (after `prepare.dvc`, created in the
+[Stages](#stages) section above) to perform feature extraction:
 
 ```dvc
 $ dvc run -f featurize.dvc \
@@ -296,16 +316,11 @@ $ dvc pipeline show --ascii train.dvc --outs
 
 ## Reproduce
 
-In the previous chapters, we described our first
-[pipeline](/doc/command-reference/pipeline). Basically, we generated a number of
-[stage files](/doc/command-reference/run)
+In previous sections, we described our first pipeline. Basically, we generated a
+number of [stage files](/doc/command-reference/run)
 ([DVC-files](/doc/user-guide/dvc-file-format)). These stages define individual
 commands to execute towards a final result. Each depends on some data (either
 raw data files or intermediate results from previous stages) and code files.
-
-If you just cloned the
-[project](https://github.com/iterative/example-get-started), make sure you first
-fetch the input data from DVC by calling `dvc pull`.
 
 It's now extremely easy for you or your colleagues to reproduce the result
 end-to-end:
@@ -313,12 +328,6 @@ end-to-end:
 ```dvc
 $ dvc repro train.dvc
 ```
-
-> If you've just followed the previous chapters, the command above will have
-> nothing to reproduce since you've recently executed all the pipeline stages.
-> To easily try this command, clone this example
-> [GitHub project](https://github.com/iterative/example-get-started) and run it
-> from there.
 
 `train.dvc` describes which source code and data files to use, and how to run
 the command in order to get the resulting model file. For each data file it
@@ -332,4 +341,4 @@ dependencies or missing outputs and recursively executes commands (nodes in this
 graph or pipeline) starting from the first stage with changes.
 
 Thus, `dvc run` and `dvc repro` provide a powerful framework for _reproducible
-experiments_ and _reproducible projects_.
+experiments_ and **reproducible <abbr>projects</abbr>**.

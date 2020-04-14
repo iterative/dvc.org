@@ -1,4 +1,24 @@
-# Experiment Metrics
+# Experiment Management
+
+<details>
+
+### Expand to prepare the project
+
+If you followed the [intro](/doc/tutorials/get-started/) of this tutorial,
+you're all set. Otherwise, run these commands to get the project from Github:
+
+```dvc
+$ git clone https://github.com/iterative/example-get-started
+$ cd example-get-started
+$ git checkout 4-import-data
+$ dvc pull
+```
+
+You should now be able to continue with this page's instructions.
+
+</details>
+
+## Experiment Metrics
 
 Finally, we'd like to add an evaluation stage to our
 [pipeline](/doc/tutorials/get-started/data-pipelines). Data science is a
@@ -100,10 +120,10 @@ DVC makes it easy to iterate on your project using Git commits with tags or Git
 branches. It provides a way to try different ideas, keep track of them, switch
 back and forth. To find the best performing experiment or track the progress,
 [project metrics](/doc/command-reference/metrics) are supported in DVC (as
-described in one of the previous chapters).
+described in one of the previous sections).
 
-Let's run evaluate for the latest `bigrams` experiment we created in previous
-chapters. It mostly takes just running the `dvc repro`:
+Let's run evaluate for the latest `bigrams` experiment we created earlier. It
+mostly takes just running the `dvc repro`:
 
 ```dvc
 $ git checkout master
@@ -113,7 +133,7 @@ $ dvc repro evaluate.dvc
 
 `git checkout master` and `dvc checkout` commands ensure that we have the latest
 experiment code and data respectively. And `dvc repro`, as we discussed in the
-[Reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) chapter, is a
+[Reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) section, is a
 way to run all the necessary commands to build the model and measure its
 performance.
 
@@ -146,8 +166,8 @@ the previous version of the dataset if it was changed at some point?
 
 The answer is the `dvc checkout` command, and we already touched briefly the
 process of switching between different data versions in the
-[Experiments](/doc/tutorials/get-started/experiment-management) chapter of this
-_Get Started_ tutorial.
+[Experiments](/doc/tutorials/get-started/experiment-management) page of this
+tutorial.
 
 Let's say we want to get the previous `model.pkl` file. The short answer is:
 

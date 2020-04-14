@@ -1,7 +1,7 @@
 # Install Pre-release Version
 
 If you want to test the latest stable version of DVC, ahead of official
-releases, you can install it from our code repository GitHub.
+releases, you can install it from our code repository Github.
 
 > We **strongly** recommend creating a
 > [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)

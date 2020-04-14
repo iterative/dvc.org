@@ -70,8 +70,9 @@ $ pip install -r code/requirements.txt
 ```
 
 Next, we will create a [pipeline](/doc/command-reference/pipeline) step-by-step,
-utilizing the same set of commands that are described in earlier
-[Get Started](/doc/tutorials/get-started) chapters.
+utilizing the same set of commands that are described in the
+[Data Pipelines](/doc/tutorials/get-started/data-pipelines) page of the _Get
+Started_.
 
 > Note that its possible to define more than one pipeline in each DVC project.
 > This will be determined by the interdependencies between DVC-files, mentioned

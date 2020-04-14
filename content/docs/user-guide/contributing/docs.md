@@ -26,7 +26,7 @@ to update the docs and redeploy the website.
 
 In case of a minor change, you can use the **Edit on GitHub** button (found to
 the right of each page) to fork the repository, edit it in place (with the
-source code file **Edit** button in GitHub), and create a pull request (PR).
+source code file **Edit** button in Github), and create a pull request (PR).
 
 Otherwise, please refer to the following procedure:
 
@@ -55,7 +55,7 @@ be properly formatted as well, which is also ensured by the full setup below.
 
 Get the latest development version by
 [forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
-repository from GitHub:
+repository from Github:
 
 ```dvc
 $ git clone git@github.com:<username>/dvc.org.git
