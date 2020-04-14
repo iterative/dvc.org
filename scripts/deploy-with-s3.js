@@ -32,6 +32,8 @@ function localPath(dirName) {
   return path.join(rootDir, dirName)
 }
 
+const cacheDirs = [cacheDirName, publicDirName]
+
 function run(command) {
   execSync(command, {
     stdio: ['pipe', process.stdout, process.stderr]
@@ -83,8 +85,7 @@ async function downloadFromS3(prefix, dir) {
 }
 
 async function downloadAllFromS3(prefix) {
-  await downloadFromS3(prefix, publicDirName)
-  await downloadFromS3(prefix, cacheDirName)
+  return Promise.all(cacheDirs.map(dir => downloadFromS3(prefix, dir)))
 }
 
 async function uploadToS3(dir) {
@@ -102,13 +103,11 @@ async function uploadToS3(dir) {
 }
 
 async function uploadAllToS3() {
-  await uploadToS3(publicDirName)
-  await uploadToS3(cacheDirName)
+  return Promise.all(cacheDirs.map(uploadToS3))
 }
 
 async function clean() {
-  await remove(localPath(publicDirName))
-  await remove(localPath(cacheDirName))
+  return Promise.all(cacheDirs.map(dir => remove(localPath(dir))))
 }
 
 async function main() {
