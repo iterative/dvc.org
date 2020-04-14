@@ -5,9 +5,9 @@ function createMarkdownDocsNode(api, options, { parentNode }) {
   if (splitDir[0] !== 'docs') return
   // Make a special exemption for the root doc.
 
-  const { node, getNode, actions, createNodeId, createContentDigest } = api
+  const { node, actions, createNodeId, createContentDigest } = api
   const { createNode, createParentChildLink } = actions
-  const { name } = parentNode
+  const { name, relativePath } = parentNode
   splitDir[0] = 'doc'
 
   const pagePath =
@@ -17,7 +17,8 @@ function createMarkdownDocsNode(api, options, { parentNode }) {
 
   const fieldData = {
     slug: pagePath,
-    rawMarkdownBody: node.rawMarkdownBody
+    rawMarkdownBody: node.rawMarkdownBody,
+    sourcePath: relativePath
   }
 
   const docNode = {

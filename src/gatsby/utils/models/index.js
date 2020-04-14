@@ -1,12 +1,3 @@
-function runModelApi(models, name, api, options) {
-  return Promise.all(
-    models.map(
-      model =>
-        typeof model[name] === 'function' && model[name](api, options, models)
-    )
-  )
-}
-
 /** Model API builder
     (models:Array<Model>, childApi:Any?) => (name:String) => (api, options) => Promise
 

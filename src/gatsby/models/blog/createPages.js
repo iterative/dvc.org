@@ -103,38 +103,45 @@ const createPages = async ({ graphql, actions }) => {
   const blogPostTemplate = path.resolve('./src/templates/blog-post.tsx')
 
   const _posts = isDevMode ? posts.slice(0, 1) : posts
-  _posts.forEach(({ id, slug }, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1]
-    const next = index === 0 ? null : posts[index - 1]
 
-    actions.createPage({
-      component: blogPostTemplate,
-      context: {
-        isBlog: true,
-        currentPage: index + 1,
-        next,
-        previous,
-        id
-      },
-      path: slug
+  const blogPagesPromise = Promise.all(
+    _posts.map(({ id, slug }, index) => {
+      const previous = index === posts.length - 1 ? null : posts[index + 1]
+      const next = index === 0 ? null : posts[index - 1]
+
+      actions.createPage({
+        component: blogPostTemplate,
+        context: {
+          isBlog: true,
+          currentPage: index + 1,
+          next,
+          previous,
+          id
+        },
+        path: slug
+      })
     })
-  })
+  )
 
   // Create tags pages (with pagination)
   const blogTagsTemplate = path.resolve('./src/templates/blog-tags.tsx')
 
   const _tags = isDevMode ? tags.slice(0, 1) : tags
-  _tags.forEach(({ fieldValue: tag, pageInfo: { itemCount } }) => {
-    const basePath = `/tags/${tagToSlug(tag)}`
+  const tagPagesPromise = Promise.all(
+    _tags.map(({ fieldValue: tag, pageInfo: { itemCount } }) => {
+      const basePath = `/tags/${tagToSlug(tag)}`
 
-    for (const page of pagesGenerator({ basePath, itemCount })) {
-      actions.createPage({
-        component: blogTagsTemplate,
-        path: page.path,
-        context: { tag, ...page.context }
-      })
-    }
-  })
+      for (const page of pagesGenerator({ basePath, itemCount })) {
+        actions.createPage({
+          component: blogTagsTemplate,
+          path: page.path,
+          context: { tag, ...page.context }
+        })
+      }
+    })
+  )
+
+  return Promise.all([tagPagesPromise, blogPagesPromise])
 }
 
 module.exports = createPages

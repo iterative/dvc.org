@@ -21,7 +21,8 @@ import SubscribeSection from '../../SubscribeSection'
 import styles from './styles.module.css'
 
 const Post: React.FC<IBlogPostData> = ({
-  parent: { html, timeToRead },
+  html,
+  timeToRead,
   title,
   date,
   picture,
@@ -30,11 +31,7 @@ const Post: React.FC<IBlogPostData> = ({
   descriptionLong,
   commentsUrl,
   tags,
-  author: {
-    childMarkdownRemark: {
-      frontmatter: { name, avatar }
-    }
-  },
+  author: { name, avatar },
   slug
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null)

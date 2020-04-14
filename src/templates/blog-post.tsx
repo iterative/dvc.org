@@ -16,19 +16,15 @@ export interface IGatsbyImageProps extends GatsbyImageProps {
 
 export interface IBlogPostHeroPic {
   picture?: {
-    childImageSharp: {
-      fluid: IFluidObject
-    }
+    fluid: IFluidObject
   }
   pictureComment?: string
 }
 
 export interface IBlogPostData {
   id: string
-  parent: {
-    html: string
-    timeToRead: string
-  }
+  html: string
+  timeToRead: string
   slug: string
   title: string
   date: string
@@ -37,24 +33,16 @@ export interface IBlogPostData {
   commentsUrl?: string
   tags?: string[]
   picture?: {
-    childImageSharp: {
-      fluid: IFluidObject
-      resize: {
-        src: string
-      }
+    fluid: IFluidObject
+    resize: {
+      src: string
     }
   }
   pictureComment?: string
   author: {
-    childMarkdownRemark: {
-      frontmatter: {
-        name: string
-        avatar: {
-          childImageSharp: {
-            fixed: FixedObject
-          }
-        }
-      }
+    name: string
+    avatar: {
+      fixed: FixedObject
     }
   }
 }
@@ -78,7 +66,7 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
       <SEO
         title={title}
         description={description}
-        image={picture && picture.childImageSharp.fluid.src}
+        image={picture && picture.fluid.src}
       />
       <Post {...post} />
     </>
@@ -91,12 +79,8 @@ export const pageQuery = graphql`
   query BlogPostPage($id: String!) {
     blogPost(id: { eq: $id }) {
       id
-      parent {
-        ... on MarkdownRemark {
-          html
-          timeToRead
-        }
-      }
+      html
+      timeToRead
       title
       date(formatString: "MMMM DD, YYYY")
       description
@@ -104,24 +88,16 @@ export const pageQuery = graphql`
       tags
       commentsUrl
       author {
-        childMarkdownRemark {
-          frontmatter {
-            name
-            avatar {
-              childImageSharp {
-                fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
-                  ...GatsbyImageSharpFixed_withWebp
-                }
-              }
-            }
+        name
+        avatar {
+          fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
+            ...GatsbyImageSharpFixed_withWebp
           }
         }
       }
       picture {
-        childImageSharp {
-          fluid(maxWidth: 850) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
+        fluid(maxWidth: 850) {
+          ...GatsbyImageSharpFluid_withWebp
         }
       }
       pictureComment

@@ -1,11 +1,6 @@
-const path = require('path')
-const process = require('process')
-const { createFilePath } = require('gatsby-source-filesystem')
 const remark = require('remark')
 const remarkHTML = require('remark-html')
-const { getItemBySource } = require('../utils/shared/sidebar')
 
-const markdownToHtml = remark().use(remarkHTML).processSync
 const is404Regexp = /^\/404/
 const trailingSlashRegexp = /\/$/
 

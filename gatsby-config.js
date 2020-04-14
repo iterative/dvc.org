@@ -131,11 +131,7 @@ const plugins = [
                   sort: { fields: [date], order: DESC }
                 ) {
                   nodes {
-                    parent {
-                      ... on MarkdownRemark {
-                        html
-                      }
-                    }
+                    html
                     slug
                     title
                     date
@@ -148,7 +144,7 @@ const plugins = [
             return allBlogPost.nodes.map(node => {
               return Object.assign({}, node.frontmatter, {
                 /* eslint-disable-next-line @typescript-eslint/camelcase */
-                custom_elements: [{ 'content:encoded': node.parent.html }],
+                custom_elements: [{ 'content:encoded': node.html }],
                 date: node.date,
                 description: node.description,
                 guid: site.siteMetadata.siteUrl + node.slug,

@@ -20,10 +20,8 @@ export default function posts(): Array<IResultBlogPostData> {
           date
           commentsUrl
           picture {
-            childImageSharp {
-              resize(width: 160, height: 160, fit: COVER, cropFocus: CENTER) {
-                src
-              }
+            resize(width: 160, height: 160, fit: COVER, cropFocus: CENTER) {
+              src
             }
           }
         }
@@ -37,9 +35,7 @@ export default function posts(): Array<IResultBlogPostData> {
 
     if (picture) {
       const {
-        childImageSharp: {
-          resize: { src }
-        }
+        resize: { src }
       } = picture
 
       pictureUrl = src

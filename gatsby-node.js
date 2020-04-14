@@ -3,7 +3,7 @@ const {
   removePageTrailingSlash
 } = require('./src/gatsby/common')
 
-const buildModelApi = require('./src/utils/models')
+const buildModelApi = require('./src/gatsby/utils/models')
 const models = require('./src/gatsby/models')
 const modelApiRunner = buildModelApi(models)
 

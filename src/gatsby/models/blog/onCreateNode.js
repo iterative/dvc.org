@@ -1,8 +1,8 @@
 function createMarkdownBlogNode(api, options, { parentNode }) {
   if (parentNode.relativeDirectory.split('/')[0] !== 'blog') return
-  const { node, getNode, actions, createNodeId, createContentDigest } = api
+  const { node, actions, createNodeId, createContentDigest } = api
   const { createNode, createParentChildLink } = actions
-  const { frontmatter, rawMarkdownBody, excerpt, html, timeToRead } = node
+  const { frontmatter, rawMarkdownBody } = node
   const {
     date,
     tags,
@@ -14,7 +14,7 @@ function createMarkdownBlogNode(api, options, { parentNode }) {
     picture,
     pictureComment
   } = frontmatter
-  const { name } = parentNode
+  const { name, relativePath } = parentNode
 
   const slug = name === 'index' ? '' : /[-\d]*(.*)/.exec(name)[1]
 
@@ -30,7 +30,8 @@ function createMarkdownBlogNode(api, options, { parentNode }) {
     descriptionLong,
     commentsUrl,
     picture,
-    pictureComment
+    pictureComment,
+    sourcePath: relativePath
   }
   const postNode = {
     ...fieldData,

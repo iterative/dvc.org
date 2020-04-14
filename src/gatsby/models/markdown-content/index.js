@@ -1,4 +1,4 @@
-const buildApi = require('../../../utils/models')
+const buildApi = require('../../utils/models')
 
 /*
   Markdown Content model.

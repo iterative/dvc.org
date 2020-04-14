@@ -1,4 +1,3 @@
-const path = require('path')
 const GithubSlugger = require('github-slugger')
 
 const slugger = new GithubSlugger()
@@ -61,7 +60,7 @@ const createPages = async ({ graphql, actions }) => {
     const {
       node: { id, slug, rawMarkdownBody }
     } = doc
-    const headings = parseHeadings(doc.node.rawMarkdownBody)
+    const headings = parseHeadings(rawMarkdownBody)
 
     if (slug) {
       actions.createPage({
