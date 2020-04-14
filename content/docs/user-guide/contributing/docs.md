@@ -5,19 +5,24 @@ We welcome any contributions to our documentation repository,
 the documentation content, or (rare) changes to the JS engine we use to run the
 website.
 
+Please see our
+[Writing a Blog Post guide](https://dvc.org/doc/user-guide/contributing/blog)
+for more details on how to write and submit a new blog post.
+
 ## Structure of the project
 
 To contribute documentation, these are the relevant locations:
 
 - [Content](https://github.com/iterative/dvc.org/tree/master/content/docs)
-  (`docs/`): [Markdown](https://guides.github.com/features/mastering-markdown/)
-  files of the different pages to render dynamically in the browser.
+  (`content/docs/`):
+  [Markdown](https://guides.github.com/features/mastering-markdown/) files. One
+  file - one page of the documentation.
 - [Images](https://github.com/iterative/dvc.org/tree/master/static/img)
-  (`img/`): Add new images (png, svg, etc.) here. Use them in Markdown files
-  like this: `![](/img/<filename>.gif)`.
+  (`static/img/`): Add new images (`.png`, `.svg`, etc.) here. Use them in
+  Markdown files like this: `![](/img/<filename>.gif)`.
 - [Navigation](https://github.com/iterative/dvc.org/tree/master/content/docs/sidebar.json)
-  (`docs/sidebar.json`): Edit it to add or change entries in the navigation
-  sidebar.
+  (`content/docs/sidebar.json`): Edit it to add or change entries in the
+  navigation sidebar.
 
 Merging the appropriate changes to these files into the master branch is enough
 to update the docs and redeploy the website.
@@ -48,22 +53,13 @@ We will review your PR as soon as possible. Thank you for contributing!
 
 ## Development environment
 
-We highly recommend running this web app locally to check documentation changes
-before submitting them, and it's quite necessary when making changes to the
-[Next.js](https://nextjs.org/) engine itself (rare). Source code files need to
-be properly formatted as well, which is also ensured by the full setup below.
+We highly recommend running this web app locally to check documentation or blog
+changes before submitting them, and it's quite necessary when making changes to
+the website engine itself. Source code and content files need to be properly
+formatted and linted as well, which is also ensured by the full setup below.
 
-Get the latest development version by
-[forking](https://help.github.com/en/articles/fork-a-repo) and cloning the
-repository from Github:
-
-```dvc
-$ git clone git@github.com:<username>/dvc.org.git
-$ cd dvc.org
-```
-
-Make sure you have a recent version of [Node.js](https://nodejs.org/en/)
-(`^12.0.0`), and install [Yarn](https://yarnpkg.com/):
+Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
+(`>=12.0.0`), and install [Yarn](https://yarnpkg.com/):
 
 ```dvc
 $ npm install -g yarn
@@ -81,36 +77,65 @@ Launch the server locally with:
 $ yarn develop
 ```
 
-This will start the server on the default port, `3000`. Visit
-`http://localhost:3000/` and navigate to the docs in question. This will also
-enable the Git pre-commit hook that will be formatting your code and
+This will start the server on the default port, `8000`. Visit
+`http://localhost:8000/` and navigate to the page in question. This will also
+enable the Git pre-commit hook that will be formatting and linting your code and
 documentation files automatically.
 
-### Debugging
+### All commands
 
-The `yarn debug` script runs the local development server with `node`'s
-[`--inspect-brk` option](https://nodejs.org/en/docs/guides/debugging-getting-started/#command-line-options)
-in order for debuggers to connect to it (on the default port, 9229).
+Please, check the project's `package.json` file to see the complete list. For
+the tools we provide wrappers for your convenience, you can always call them
+directly (e.g. `yarn eslint <file>` or `yarn prettier --check <file>`).
 
-> For example, use this launch configuration in **Visual Studio Code**:
->
-> ```json
-> {
->   "type": "node",
->   "request": "launch",
->   "name": "Launch via Yarn",
->   "runtimeExecutable": "yarn",
->   "runtimeArgs": ["debug"],
->   "port": 9229
-> }
-> ```
+> All the style, linter, test checks below will be enforced automatically upon
+> [submitting PRs](#submitting-changes).
 
-### Running tests
+To build the project and run it:
 
-If you intend to change JavaScript (Node) files, test the changes with
-`yarn test` command before committing them. For code formatting and styling, try
-`yarn format-staged` and `yarn lint`. (All of these checks will be enforced
-automatically upon [submitting PRs](#submitting-changes).)
+- `yarn develop` - run development server with hot reload.
+- `yarn build` - build assets in the `public` directory.
+- `yarn start` - run production static server over the `public` directory.
+
+If you change source code files, run tests:
+
+- `yarn test` - run tests.
+
+We use [Prettier](https://prettier.io/) to format our source code, below is a
+set of wrapper commands for your convenience:
+
+- `yarn format-check` - check all source and content files that they are
+  properly formatted. This command does not fix any found issue, only reports
+  them.
+- `yarn format-all` - fix all found problems.
+- `yarn format-staged` - same, but only on staged files.
+- `yarn format <file>` - run this command `yarn format <file-name>` to format a
+  specific file.
+
+We use linters (e.g. [ESLint](https://eslint.org/)) to check source code style
+and detect different errors:
+
+- `yarn lint-ts` - lint source code files (`.ts`, `.js`, `tsx`, etc).
+- `yarn lint-css` - lint `.css` files.
+
+Other checks:
+
+- `yarn link-check` - runs script to detect broken URLs (e.g. those that return
+  404 - Not Found) in the content.
+
+### ENV variables
+
+Some environment variables are required to deploy this project to production,
+others can be used to debug the project. Please check the production system
+settings to see all the variables that production and deployment system depend
+on.
+
+Some available variables:
+
+- `GA_ID` – ID of the Google Analytics counter.
+- `ANALYZE` - boolean property to run
+  [webpack-analyzer](https://www.gatsbyjs.org/packages/gatsby-plugin-webpack-bundle-analyzer/).
+- `SENTRY_DSN` - [Sentry](https://sentry.io/) URL for errors tracking.
 
 ## Doc style guidelines (JavaScript and Markdown)
 
@@ -130,8 +155,8 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
   [its configuration](https://github.com/iterative/dvc.org/blob/master/.prettierrc)).
   The formatting of staged files will automatically be done by a Git pre-commit
   hook. You may also run `yarn format <file>` (format specific file/pattern),
-  `yarn format-staged` (all staged files), or `yarn format-all` (all .md, .js
-  files) before committing changes if needed.
+  `yarn format-staged` (all staged files), or `yarn format-all` (all `.md`,
+  `.js` and other source files) before committing changes if needed.
   ([Advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
   available through `yarn prettier ...`)
 
