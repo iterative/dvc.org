@@ -153,7 +153,7 @@ const plugins = [
                 /* eslint-disable-next-line @typescript-eslint/camelcase */
                 custom_elements: [{ 'content:encoded': edge.node.html }],
                 date: edge.node.frontmatter.date,
-                description: edge.node.description,
+                description: edge.node.frontmatter.description,
                 guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
                 url: site.siteMetadata.siteUrl + edge.node.fields.slug
               })
