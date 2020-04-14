@@ -1,3 +1,5 @@
+const { markdownToHtml } = require('../../common.js')
+
 function createMarkdownBlogNode(api, options, { parentNode }) {
   if (parentNode.relativeDirectory.split('/')[0] !== 'blog') return
   const { node, actions, createNodeId, createContentDigest } = api
@@ -27,10 +29,10 @@ function createMarkdownBlogNode(api, options, { parentNode }) {
     title,
     author,
     description,
-    descriptionLong,
+    descriptionLong: markdownToHtml(descriptionLong),
     commentsUrl,
     picture,
-    pictureComment,
+    pictureComment: markdownToHtml(pictureComment),
     sourcePath: relativePath
   }
   const postNode = {
