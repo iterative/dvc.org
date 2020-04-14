@@ -1,6 +1,6 @@
 /* eslint-env node */
 
-https: const path = require('path')
+const path = require('path')
 
 require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
