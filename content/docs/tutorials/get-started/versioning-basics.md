@@ -182,6 +182,13 @@ a basic collaboration workflow, the same way as Git remotes, `git push` and
 [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files) for
 more information.
 
+Feel fee to remove the cloned example repo for now:
+
+```dvc
+$ cd ..
+$ rm -rf example-get-started
+```
+
 ## Import data
 
 We've seen how to [push](#store-and-share-date) and [pull](#retrieve-data) data

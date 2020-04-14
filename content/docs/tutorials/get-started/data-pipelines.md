@@ -193,8 +193,8 @@ By using `dvc run` multiple times, and specifying outputs of a command (stage)
 as dependencies in another one, we can describe a sequence of commands that gets
 to a desired result. This is what we call a _data pipeline_ or dependency graph.
 
-Let's create a second stage (after `prepare.dvc`, created in the
-[Stages](#stages) section above) to perform feature extraction:
+Let's create a second stage chained to the outputs of `prepare.dvc`, to perform
+feature extraction:
 
 ```dvc
 $ dvc run -f featurize.dvc \
@@ -204,7 +204,7 @@ $ dvc run -f featurize.dvc \
                  data/prepared data/features
 ```
 
-And a third stage for training:
+And a third chained stage for training:
 
 ```dvc
 $ dvc run -f train.dvc \
@@ -213,7 +213,8 @@ $ dvc run -f train.dvc \
           python src/train.py data/features model.pkl
 ```
 
-Let's commit DVC-files that describe our pipeline so far:
+Let's commit the changes, including the stage files (DVC-file) that describe our
+pipeline so far:
 
 ```dvc
 $ git add data/.gitignore .gitignore featurize.dvc train.dvc
@@ -232,12 +233,12 @@ end-to-end.
 ## Visualize
 
 Now that we have built our pipeline, we need a good way to visualize it to be
-able to wrap our heads around it. Luckily, DVC allows us to do that without
-leaving the terminal, making the experience distraction-less.
+able to wrap our heads around it. DVC allows us to do that without leaving the
+terminal, making the experience distraction-less.
 
-We are using the `--ascii` option below to better illustrate this pipeline.
-Please, refer to `dvc pipeline show` to explore other options this command
-supports (e.g. `.dot` files that can be used then in other tools).
+> We are using the `--ascii` option below to better illustrate this pipeline.
+> Please, refer to `dvc pipeline show` to explore other options this command
+> supports (e.g. `.dot` files that can be used then in other tools).
 
 ### Stages
 
@@ -316,29 +317,33 @@ $ dvc pipeline show --ascii train.dvc --outs
 
 ## Reproduce
 
-In previous sections, we described our first pipeline. Basically, we generated a
-number of [stage files](/doc/command-reference/run)
-([DVC-files](/doc/user-guide/dvc-file-format)). These stages define individual
-commands to execute towards a final result. Each depends on some data (either
-raw data files or intermediate results from previous stages) and code files.
-
-It's now extremely easy for you or your colleagues to reproduce the result
-end-to-end:
+Imagine a colleague just cloned the Git repo that has been created so far in
+another computer. This can be simulated by cloning our example-get-started repo
+from Github, and checking out the `7-train` tag:
 
 ```dvc
-$ dvc repro train.dvc
+$ cd ~
+$ git clone https://github.com/iterative/example-get-started
+$ cd example-get-started
+$ git checkout 7-train
 ```
 
-`train.dvc` describes which source code and data files to use, and how to run
-the command in order to get the resulting model file. For each data file it
-depends on, we can in turn do the same analysis: find a corresponding DVC-file
-that includes the data file in its outputs, get dependencies and commands, and
-so on. It means that DVC can recursively build a complete sequence of commands
-it needs to execute to get the model file.
+It's now extremely easy for anyone to reproduce the result end-to-end:
+
+```dvc
+$ dvc pull data/data.xml  # Get the initial raw data.
+$ dvc repro train.dvc     # Regenerate everything else.
+```
+
+`train.dvc` is the last stage file in the pipeline. It describes which source
+code and data files to use, and what command to run to get the resulting model
+file. For each data file or directory it depends on, we can in turn do the same
+analysis: find the stage that includes the data among its outputs, get
+dependencies and commands, etc.
 
 `dvc repro` essentially builds a dependency graph, detects stages with modified
-dependencies or missing outputs and recursively executes commands (nodes in this
-graph or pipeline) starting from the first stage with changes.
+dependencies or missing outputs and recursively executes stage commands (nodes
+in this graph or pipeline).
 
 Thus, `dvc run` and `dvc repro` provide a powerful framework for _reproducible
 experiments_ and **reproducible <abbr>projects</abbr>**.
