@@ -133,9 +133,9 @@ async function main() {
     run('yarn build')
   }
 
-  console.time('Cleaned up outdated page data files for')
+  console.time('Cleaned up outdated page data files in')
   cleanUpPageData()
-  console.timeEnd('Cleaned up outdated page data files for')
+  console.timeEnd('Cleaned up outdated page data files in')
 
   await move(
     path.join(localPath(publicDirName), '404.html'),
