@@ -65,7 +65,6 @@ const checkPageDataPath = (dir, pagesTree) => {
           `delete page-data folder for unexisted page at ${itemPath}`
         )
         return deleteDir(itemPath)
-        return
       } else {
         checkPageDataPath(itemPath, pagesTree[item])
       }
