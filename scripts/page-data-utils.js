@@ -41,7 +41,7 @@ const buildTree = pages => {
 const deleteDir = dir => {
   if (fs.existsSync(dir)) {
     fs.readdirSync(dir).forEach(item => {
-      const currentPath = path.join(path, item)
+      const currentPath = path.join(dir, item)
       if (fs.lstatSync(currentPath).isDirectory()) {
         deleteFolderRecursive(currentPath)
       } else {
