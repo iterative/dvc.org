@@ -8,6 +8,13 @@ async function createAuthorSchemaCustomization(api) {
   } = api
   const typeDefs = [
     buildObjectType({
+      name: 'AuthorPosts',
+      fields: {
+        totalCount: 'Int!',
+        nodes: '[BlogPost]'
+      }
+    }),
+    buildObjectType({
       name: 'Author',
       interfaces: ['Node'],
       fields: {
@@ -15,6 +22,39 @@ async function createAuthorSchemaCustomization(api) {
         avatar: {
           type: 'ImageSharp',
           resolve: resolveRelativeImage()
+        },
+        posts: {
+          type: 'AuthorPosts',
+          args: {
+            limit: {
+              type: 'Int'
+            }
+          },
+          async resolve(source, args, context) {
+            const query = await context.nodeModel.runQuery({
+              query: {
+                filter: {
+                  author: {
+                    sourcePath: {
+                      eq: source.sourcePath
+                    }
+                  }
+                },
+                sort: {
+                  fields: ['date'],
+                  order: ['DESC']
+                }
+              },
+              type: 'BlogPost'
+            })
+
+            const nodes = args.limit ? query.slice(0, args.limit) : query
+
+            return {
+              totalCount: query.length,
+              nodes
+            }
+          }
         }
       }
     })
