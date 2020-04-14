@@ -24,10 +24,10 @@ const { remove, move, ensureDir } = require('fs-extra')
 const { s3Prefix, s3Bucket, s3Client } = require('./s3-utils')
 const { cleanUpPageData } = require('./page-data-utils')
 
-const rootDir = path.join(__dirname, '..')
 const cacheDirName = '.cache'
 const publicDirName = 'public'
 
+const rootDir = process.cwd()
 function localPath(dirName) {
   return path.join(rootDir, dirName)
 }
