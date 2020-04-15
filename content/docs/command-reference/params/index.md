@@ -45,9 +45,9 @@ parameters will be required for the stage invalidation (see `dvc status` and
 stage.
 
 Using parameter dependencies prevents situations where several
-[pipeline](/doc/command-reference/pipeline) stages depend on the same file, and
-any change in the file invalidates causes the reproduction all those stages
-unnecessarily.
+[pipeline](/doc/command-reference/pipeline) stages depend on the same
+configuration file, and any change in the file invalidates causes the
+reproduction all those stages unnecessarily.
 
 You should manually write or generate the YAML or JSON parameters files needed
 for the project, which can be versioned directly with Git. You can then use
@@ -81,9 +81,9 @@ train:
   epochs: 70
   layers: 9
 
-processing:
-  threshold: 0.98
-  bow_size: 15000
+process:
+  thresh: 0.98
+  bow: 15000
 ```
 
 Define a [stage](/doc/command-reference/run) that depends on params `lr`,
@@ -138,12 +138,14 @@ $ dvc run -d logs/ -o users.csv \
 ## Examples: Print all parameter values in the workspace
 
 Following the previous example, we can use `dvc params diff` to list all of the
-available param values associated to DVC-files in the <abbr>workspace</abbr>:
+available param values:
 
 ```dvc
 $ dvc params diff
    Path          Param       Old     New
 params.yaml   lr             None   0.0041
+params.yaml   process.bow    None   15000
+params.yaml   process.thresh None   0.98
 params.yaml   train.layers   None   9
 params.yaml   train.epochs   None   70
 ```
