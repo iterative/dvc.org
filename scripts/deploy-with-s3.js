@@ -69,7 +69,7 @@ async function downloadFromS3(prefix, dir) {
     await ensureDir(localDirPath)
 
     console.log(`Downloading "${dir}" from s3://${s3Bucket}/${staticPrefix}`)
-    console.time(`"${dir}" downloaded for`)
+    console.time(`"${dir}" downloaded in`)
     await syncCall('downloadDir', {
       localDir: localDirPath,
       s3Params: {
@@ -77,7 +77,7 @@ async function downloadFromS3(prefix, dir) {
         Prefix: staticPrefix
       }
     })
-    console.timeEnd(`"${dir}" downloaded for`)
+    console.timeEnd(`"${dir}" downloaded in`)
   } catch (downloadError) {
     console.error('Error downloading initial data', downloadError)
     // Don't propagate. It's just a cache warming step
@@ -90,7 +90,7 @@ async function downloadAllFromS3(prefix) {
 
 async function uploadToS3(dir) {
   console.log(`Uploading "${dir}" to s3://${s3Bucket}/${s3Prefix}/${dir}`)
-  console.time(`"${dir}" uploaded for`)
+  console.time(`"${dir}" uploaded in`)
   await syncCall('uploadDir', {
     localDir: localPath(dir),
     deleteRemoved: true,
@@ -99,7 +99,7 @@ async function uploadToS3(dir) {
       Prefix: `${s3Prefix}/${dir}`
     }
   })
-  console.timeEnd(`"${dir}" uploaded for`)
+  console.timeEnd(`"${dir}" uploaded in`)
 }
 
 async function uploadAllToS3() {
