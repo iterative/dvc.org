@@ -21,19 +21,19 @@ $ dvc pull
 
 </details>
 
-## Experiment Parameters
+## Parameter dependencies
 
 DVC parameters allow us to define
 [stage](/doc/tutorials/get-started/data-pipelines#stages)
 <abbr>dependencies</abbr> more granularly. A particular parameter or set of
-parameters inside a dependency file will be required for the stage invalidation
-(see `dvc status` and `dvc repro`). Changes to other parts of the dependency
-file will not affect the stage.
+hyperparameters inside a dependency file will be required for the stage
+invalidation (see `dvc status` and `dvc repro`). Changes to other parts of the
+dependency file will not affect the stage.
 
 They are defined using the `-p` (`--params`) option of `dvc run`. Please refer
 to `dvc params` for more details.
 
-## Experiment Metrics
+## Project metrics
 
 DVC metrics allow us to mark stage <abbr>outputs</abbr> as files containing
 metrics to track. They are defined using the `-m` (`--metrics`) option of
@@ -48,14 +48,14 @@ $ dvc run -f evaluate.dvc \
                  data/features auc.metric
 ```
 
-`evaluate.py` calculates the model's
+Stage `evaluate.py` reads features from the `features/test.pkl` file and
+calculates the model's
 [AUC](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
-value. It reads features from the `features/test.pkl` file and produces a metric
-file, `auc.metric` (a plain text file containing a single numeric value). We use
-the `-M` option in this example to mark the output as a metric, without tracking
-it with DVC because we want to version this small file directly with Git.
+value. This metric is written to the `auc.metric` file (inn JSON format). We use
+the `-M` option in the command above to mark the file as a metric (instead of a
+regular output) in the stage file.
 
-> Please, refer to the `dvc metrics` command documentation for more details.
+> Please, refer to `dvc run` and `dvc metrics` documentation for more details.
 
 Let's save the updates:
 
@@ -64,6 +64,8 @@ $ git add evaluate.dvc auc.metric
 $ git commit -m "Create evaluation stage"
 $ dvc push
 ```
+
+> Notice that we are versioning `auc.metric` with Git directly.
 
 Let's also assign a Git tag. It will serve as a checkpoint for us to compare
 experiments later:
@@ -74,20 +76,20 @@ $ git tag -a "baseline-experiment" -m "Baseline experiment evaluation"
 
 ## Experiments
 
-Data science process is inherently iterative and R&D like. Data scientist may
-try many different approaches, different hyper-parameter values, and "fail" many
-times before the required level of a metric is achieved.
+Data scientist may try many different approaches or hyperparameter values,
+having multiple failed attempts before the desired result (monitored via
+metrics) is achieved. DVC is built to provide a way to capture these experiments
+and navigate between them easily.
 
-DVC is built to provide a way to capture different experiments and navigate
-easily between them. Let's say we want to try a modified feature extraction:
+Let's say we want to try a modified feature extraction:
 
 <details>
 
 ### Expand to see code modifications
 
 Edit `src/featurization.py` to enable bigrams and increase the number of
-features. Find and change the `CountVectorizer` arguments, specify `ngram_range`
-and increase number of features:
+features. Find and change the arguments sent to `CountVectorizer()`, increasing
+the number of features and adding a `ngram_range`:
 
 ```python
 bag_of_words = CountVectorizer(stop_words='english',
