@@ -68,7 +68,6 @@ async function downloadFromS3([dir, childPrefix], basePrefix = s3Prefix) {
     const localDirPath = localPath(dir)
     await ensureDir(localDirPath)
 
-    console.log(basePrefix)
     console.log(`Downloading "${dir}" from s3://${s3Bucket}/${prefix}`)
     console.time(`"${dir}" downloaded in`)
     await syncCall('downloadDir', {
