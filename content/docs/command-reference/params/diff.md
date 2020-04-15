@@ -7,7 +7,8 @@ commits in the <abbr>DVC repository</abbr>, or between a commit and the
 ## Synopsis
 
 ```usage
-usage: dvc params diff [-h] [-q | -v] [--all] [--show-json] [a_rev] [b_rev]
+usage: dvc params diff [-h] [-q | -v] [--all] [--show-json]
+                       [a_rev] [b_rev]
 
 positional arguments:
   a_rev          Old Git commit to compare (defaults to HEAD)
