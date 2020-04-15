@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 'use strict'
+const PRODUCTION_PREFIX = 'dvc-org-prod'
 
 /**
  * Build gatsby site and deploy public/ to s3.
@@ -18,21 +19,18 @@
  *  - HEROKU_APP_NAME: (optional) app name to specify the ID of the PR if any.
  **/
 
-const path = require('path')
 const { execSync } = require('child_process')
-const { remove, move, ensureDir } = require('fs-extra')
-const { s3Prefix, s3Bucket, s3Client } = require('./s3-utils')
 
 const publicDirName = 'public'
-const publicDirEntry = [publicDirName, '/']
-const cacheDirEntry = ['.cache', '-cache/']
+const cacheDirs = [
+  [publicDirName, '/'],
+  ['.cache', '-cache/']
+]
 
-const rootDir = process.cwd()
-function localPath(dirName) {
-  return path.join(rootDir, dirName)
-}
-
-const cacheDirs = [cacheDirEntry, publicDirEntry]
+const { s3Prefix, withEntries, prefixIsEmpty } = require('./s3-utils')
+const { downloadAllFromS3, uploadAllToS3, cleanAllLocal } = withEntries(
+  cacheDirs
+)
 
 function run(command) {
   execSync(command, {
@@ -40,85 +38,20 @@ function run(command) {
   })
 }
 
-function syncCall(method, ...args) {
-  return new Promise((resolve, reject) => {
-    const synchroniser = s3Client[method](...args)
-    synchroniser.on('error', reject)
-    synchroniser.on('end', resolve)
-  })
-}
-
-async function prefixIsEmpty(prefix) {
-  try {
-    await s3Client.s3
-      .headObject({
-        Bucket: s3Bucket,
-        Key: `${prefix}/index.html`
-      })
-      .promise()
-    return false
-  } catch (e) {
-    return true
-  }
-}
-
-async function downloadFromS3([dir, childPrefix], basePrefix = s3Prefix) {
-  try {
-    const prefix = basePrefix + childPrefix
-    const localDirPath = localPath(dir)
-    await ensureDir(localDirPath)
-
-    console.log(`Downloading "${dir}" from s3://${s3Bucket}/${prefix}`)
-    console.time(`"${dir}" downloaded in`)
-    await syncCall('downloadDir', {
-      localDir: localDirPath,
-      s3Params: {
-        Bucket: s3Bucket,
-        Prefix: prefix
-      }
-    })
-    console.timeEnd(`"${dir}" downloaded in`)
-  } catch (downloadError) {
-    console.error('Error downloading initial data', downloadError)
-    // Don't propagate. It's just a cache warming step
-  }
-}
-
-async function uploadToS3([dir, childPrefix], basePrefix = s3Prefix) {
-  const prefix = basePrefix + childPrefix
-  console.log(`Uploading "${dir}" to s3://${s3Bucket}/${prefix}`)
-  console.time(`"${dir}" uploaded in`)
-  await syncCall('uploadDir', {
-    localDir: localPath(dir),
-    deleteRemoved: true,
-    s3Params: {
-      Bucket: s3Bucket,
-      Prefix: prefix
-    }
-  })
-  console.timeEnd(`"${dir}" uploaded in`)
-}
-
-async function downloadAllFromS3(basePrefix) {
-  return Promise.all(cacheDirs.map(dir => downloadFromS3(dir, basePrefix)))
-}
-
-async function uploadAllToS3(basePrefix) {
-  return Promise.all(cacheDirs.map(dir => uploadToS3(dir, basePrefix)))
-}
-
-async function clean() {
-  return Promise.all(cacheDirs.map(([dir]) => remove(localPath(dir))))
-}
-
 async function main() {
-  const emptyPrefix = await prefixIsEmpty(s3Prefix)
+  // Check if the prefix we're working with has a build in it.
+  const emptyPrefix = await prefixIsEmpty()
+  // If not, we download production's cache.
+  // This greatly speeds up PR initial build time.
 
-  // First build of a PR is slow because it can't reuse cache.
-  // But we can download from prod to warm cache up.
-  const cacheWarmPrefix = emptyPrefix ? 'dvc-org-prod' : s3Prefix
-
-  await downloadAllFromS3(cacheWarmPrefix)
+  if (emptyPrefix) {
+    console.warn(
+      `The current prefix "${s3Prefix}" is empty! Attempting to fall back on production cache.`
+    )
+    await downloadAllFromS3(PRODUCTION_PREFIX)
+  } else {
+    await downloadAllFromS3(s3Prefix)
+  }
 
   try {
     run('yarn build')
@@ -127,22 +60,16 @@ async function main() {
     // Clear it and try again.
 
     console.error('------------------------\n\n')
+    console.error('The first Gatsby build attempt failed!\n')
     console.error(buildError)
-    console.error('\nAssuming bad cache and retrying:\n')
+    console.error('\nRetrying with a cleared cache:\n')
 
-    await clean()
+    await cleanAllLocal()
     run('yarn build')
   }
 
-  await move(
-    path.join(localPath(publicDirName), '404.html'),
-    path.join(rootDir, '404.html'),
-    {
-      overwrite: true
-    }
-  )
-  await uploadAllToS3()
-  await clean()
+  await uploadAllToS3(s3Prefix)
+  await cleanAllLocal()
 }
 
 main().catch(e => {
