@@ -1,27 +1,14 @@
 # Data Versioning Basics
 
-DVC allows storing and versioning data files or directories, ML models, and
-intermediate results with a regular Git workflow, without actually tracking the
-file contents with Git. In this page we'll explore the basic framework provided
-by DVC for tracking, backing up, and sharing these or other kind of large files.
+The first layer of DVC provides a basic framework for versioning, storing, and
+sharing data files or directories, ML models, and intermediate results. This can
+be done on a regular Git workflow, but without actually tracking the file
+contents with Git.
 
-<details>
+👉 Please follow the [intro](/doc/tutorials/get-started/) of this tutorial
+before continuing.
 
-### Expand to prepare the project
-
-If you just followed the [intro](/doc/tutorials/get-started/) of this tutorial,
-you're all set. Otherwise, run these commands to get the project from Github:
-
-```dvc
-$ git clone https://github.com/iterative/example-get-started
-$ cd example-get-started
-$ git checkout 3-add-data
-$ dvc pull
-```
-
-</details>
-
-Let's get an example dataset to play with:
+To get started, let's get an example dataset:
 
 ```dvc
 $ mkdir data
@@ -31,11 +18,14 @@ $ dvc get https://github.com/iterative/dataset-registry \
 
 > `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
 > repository</abbr>, using the appropriate
-> [remote storage](/doc/command-reference/remote) (analogous to `wget`, but for
-> DVC/Git repos). In this case we use our
+> [remote storage](/doc/command-reference/remote). It's like `wget`, but for
+> DVC/Git repos. In this case we use our
 > [dataset-registry](https://github.com/iterative/dataset-registry)) as the
 > source repository (refer to [Data Registries](/doc/use-cases/data-registries)
 > for more info.)
+
+This data will be used later in the tutorial to train a simple natural language
+processing (NLP) model that predicts tags for a given Stack Overflow question.
 
 ## Start tracking data
 

@@ -1,31 +1,29 @@
 # Get Started with DVC!
 
+The next few pages explore the mail layers of features in DVC, from basic to
+advanced. This will be done in a hands-on way, working with source code and
+command line.
+
 You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
-Also, if DVC is not installed, please follow these [instructions](/doc/install)
+Also, if DVC is not installed, please follow [these instructions](/doc/install)
 first.
 
-In the next few pages we'll build a simple natural language processing (NLP)
-project from scratch. It explores the problem of predicting tags for a given
-StackOverflow question. For example, we might want a classifier that can
-classify (or predict) posts about Python by tagging them with `python`.
+<details>
 
-![](/img/example-flow-2x.png) _Data modeling overview_
+### Expand to get the complete project
 
-> This is a simplified version of our [Deep Dive Tutorial](/doc/tutorials/deep).
+In case you'd like to get the complete code base and results, or have any issues
+along the way, please note that we have a fully reproducible
+[**example-get-started**](https://github.com/iterative/example-get-started) repo
+on Github:
 
-Keep in mind that NLP is not the only area of data science where DVC can help.
-DVC is designed to be agnostic of frameworks, programming languages, etc.
+```dvc
+$ git clone https://github.com/iterative/example-get-started
+$ cd example-get-started
+$ dvc pull
+```
 
-> In case you'd like to get the complete code base and results, or have any
-> issues along the way, please note that we have a fully reproducible
-> [**example-get-started**](https://github.com/iterative/example-get-started)
-> repo on Github:
->
-> ```dvc
-> $ git clone https://github.com/iterative/example-get-started
-> $ cd example-get-started
-> $ dvc pull
-> ```
+</details>
 
 ## Initialize
 

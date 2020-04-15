@@ -1,31 +1,44 @@
 # Experiment Management
 
+Data science is a metric-driven process of experimentation, similar to any R&D.
+DVC provides a built-in framework to capture and compare experiment performance
+through _parameters_ and _metrics_.
+
 <details>
 
 ### Expand to prepare the project
 
-If you followed the [intro](/doc/tutorials/get-started/) of this tutorial,
+If you just followed through the
+[pipelines](/doc/tutorials/get-started/data-pipelines) page of this tutorial,
 you're all set. Otherwise, run these commands to get the project from Github:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
-$ git checkout 4-import-data
+$ git checkout 7-train
 $ dvc pull
 ```
 
-You should now be able to continue with this page's instructions.
-
 </details>
+
+## Experiment Parameters
+
+DVC parameters allow us to define
+[stage](/doc/tutorials/get-started/data-pipelines#stages)
+<abbr>dependencies</abbr> more granularly. A particular parameter or set of
+parameters inside a dependency file will be required for the stage invalidation
+(see `dvc status` and `dvc repro`). Changes to other parts of the dependency
+file will not affect the stage.
+
+They are defined using the `-p` (`--params`) option of `dvc run`. Please refer
+to `dvc params` for more details.
 
 ## Experiment Metrics
 
-Finally, we'd like to add an evaluation stage to our
-[pipeline](/doc/tutorials/get-started/data-pipelines). Data science is a
-metric-driven R&D-like process and `dvc metrics` commands along with DVC metric
-files provide a framework to capture and compare experiments performance. It
-doesn't require installing any databases or instrumenting your code to use some
-API, all is tracked by Git and is stored in Git or DVC remote storage:
+DVC metrics allow us to mark stage <abbr>outputs</abbr> as files containing
+metrics to track. They are defined using the `-m` (`--metrics`) option of
+`dvc run`. Let's add a final evaluation stage to our
+[pipeline](/doc/tutorials/get-started/data-pipelines#pipelines), for example:
 
 ```dvc
 $ dvc run -f evaluate.dvc \
@@ -35,16 +48,16 @@ $ dvc run -f evaluate.dvc \
                  data/features auc.metric
 ```
 
-`evaluate.py` calculates AUC value using the test dataset. It reads features
-from the `features/test.pkl` file and produces a
-[metric](/doc/command-reference/metrics) file (`auc.metric`). Any
-<abbr>output</abbr> (in this case just a plain text file containing a single
-numeric value) can be marked as a metric, for example by using the `-M` option
-of `dvc run`.
+`evaluate.py` calculates the model's
+[AUC](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
+value. It reads features from the `features/test.pkl` file and produces a metric
+file, `auc.metric` (a plain text file containing a single numeric value). We use
+the `-M` option in this example to mark the output as a metric, without tracking
+it with DVC because we want to version this small file directly with Git.
 
-> Please, refer to the `dvc metrics` command documentation to see more details.
+> Please, refer to the `dvc metrics` command documentation for more details.
 
-Let's save the updated results:
+Let's save the updates:
 
 ```dvc
 $ git add evaluate.dvc auc.metric
@@ -52,17 +65,12 @@ $ git commit -m "Create evaluation stage"
 $ dvc push
 ```
 
-Let's also assign a Git tag, it will serve as a checkpoint for us to compare
-experiments in the future, or if we need to go back and checkout it and the
-corresponding data:
+Let's also assign a Git tag. It will serve as a checkpoint for us to compare
+experiments later:
 
 ```dvc
 $ git tag -a "baseline-experiment" -m "Baseline experiment evaluation"
 ```
-
-The `dvc metrics show` command provides a way to compare different experiments,
-by analyzing metric files across different branches, tags, etc. But first we
-need to create a new experiment to compare the baseline with.
 
 ## Experiments
 

@@ -4,9 +4,8 @@ Data Version Control, or DVC, is **a new type of experiment management
 software** built on top of the existing engineering toolset that you're already
 familiar with.
 
-you can find all the material and technical details needed to learn about DVC
-here. This includes how to use it, how it works, and where to go for additional
-resources.
+You can find all the material and technical details needed to learn about DVC
+here: how to use it, how it works, and where to go for additional resources.
 
 ## Before you start
 

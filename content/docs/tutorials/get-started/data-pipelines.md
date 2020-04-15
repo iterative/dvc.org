@@ -4,9 +4,13 @@ Support for **pipelines** is one of the key benefits of using DVC over simpler
 large file version control tools. _Data pipelines_ are well-defined series of
 data processing stages that produce some result.
 
-> Machine learning (ML) pipelines typically start a with large raw datasets,
-> include intermediate featurization and training stages, and produce a final
-> model, as well as accuracy [metrics](/doc/command-reference/metrics).
+The pipeline in this tutorial explores a simple natural language processing
+(NLP) problem: to predict tags for a given Stack Overflow question. This is done
+in several stages, as shown in the figure below.
+
+![](/img/example-flow-2x.png) _Data modeling overview_
+
+> This is a simplified version of our [Deep Dive Tutorial](/doc/tutorials/deep).
 
 <details>
 
@@ -335,10 +339,10 @@ $ dvc pull data/data.xml  # Get the initial raw data.
 $ dvc repro train.dvc     # Regenerate everything else.
 ```
 
-`train.dvc` is the last stage file in the pipeline. It describes which source
-code and data files to use, and what command to run to get the resulting model
-file. For each data file or directory it depends on, we can in turn do the same
-analysis: find the stage that includes the data among its outputs, get
+`train.dvc` is the last stage file in the pipeline so far. It describes which
+source code and data files to use, and what command to run to get the resulting
+model file. For each data file or directory it depends on, we can in turn do the
+same analysis: find the stage that includes the data among its outputs, get
 dependencies and commands, etc.
 
 `dvc repro` essentially builds a dependency graph, detects stages with modified

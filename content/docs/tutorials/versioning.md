@@ -85,8 +85,8 @@ $ rm -f data.zip
 
 > `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
 > repository</abbr>, using the appropriate
-> [remote storage](/doc/command-reference/remote) (analogous to `wget`, but for
-> DVC/Git repos). In this case we use our
+> [remote storage](/doc/command-reference/remote). It's like `wget`, but for
+> DVC/Git repos. In this case we use our
 > [dataset-registry](https://github.com/iterative/dataset-registry)) as the
 > source repository (refer to [Data Registries](/doc/use-cases/data-registries)
 > for more info.)
