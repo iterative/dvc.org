@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { URL } from 'iso-url'
 import { useLocation } from '@reach/router'
 import GatsbyLink from 'gatsby-link'
-import { getRedirect, handleFrontRedirect } from '../../utils/shared/redirects'
+import { getRedirect } from '../../utils/shared/redirects'
 import { scrollIntoLayout, getScrollNode } from '../../utils/front/scroll'
 
 export type ILinkProps = {
@@ -76,9 +76,6 @@ const Link: React.FC<ILinkProps> = ({ href, ...restProps }) => {
           getScrollNode().scrollTop = 0
         }
       }
-
-      // Handle front redirects
-      handleFrontRedirect(location.host, location.pathname, e)
     },
     [restProps.onClick, currentLocation]
   )
