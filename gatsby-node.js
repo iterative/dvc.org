@@ -1,3 +1,5 @@
+const pruneCache = require('./src/gatsby/prune-cache')
+
 const {
   getNodeSlug,
   setPageContext,
@@ -51,3 +53,5 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
     actions.replaceWebpackConfig(config)
   }
 }
+
+exports.onPostBuild = pruneCache

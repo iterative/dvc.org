@@ -22,17 +22,17 @@ const path = require('path')
 const { execSync } = require('child_process')
 const { remove, move, ensureDir } = require('fs-extra')
 const { s3Prefix, s3Bucket, s3Client } = require('./s3-utils')
-const { cleanUpPageData } = require('./page-data-utils')
 
-const cacheDirName = '.cache'
 const publicDirName = 'public'
+const publicDirEntry = [publicDirName, '/']
+const cacheDirEntry = ['.cache', '-cache/']
 
 const rootDir = process.cwd()
 function localPath(dirName) {
   return path.join(rootDir, dirName)
 }
 
-const cacheDirs = [cacheDirName, publicDirName]
+const cacheDirs = [cacheDirEntry, publicDirEntry]
 
 function run(command) {
   execSync(command, {
@@ -53,7 +53,7 @@ async function prefixIsEmpty(prefix) {
     await s3Client.s3
       .headObject({
         Bucket: s3Bucket,
-        Key: `${prefix}/${publicDirName}/index.html`
+        Key: `${prefix}/index.html`
       })
       .promise()
     return false
@@ -62,19 +62,20 @@ async function prefixIsEmpty(prefix) {
   }
 }
 
-async function downloadFromS3(prefix, dir) {
+async function downloadFromS3([dir, childPrefix], basePrefix = s3Prefix) {
   try {
+    const prefix = basePrefix + childPrefix
     const localDirPath = localPath(dir)
-    const staticPrefix = prefix + '/' + dir
     await ensureDir(localDirPath)
 
-    console.log(`Downloading "${dir}" from s3://${s3Bucket}/${staticPrefix}`)
+    console.log(basePrefix)
+    console.log(`Downloading "${dir}" from s3://${s3Bucket}/${prefix}`)
     console.time(`"${dir}" downloaded in`)
     await syncCall('downloadDir', {
       localDir: localDirPath,
       s3Params: {
         Bucket: s3Bucket,
-        Prefix: staticPrefix
+        Prefix: prefix
       }
     })
     console.timeEnd(`"${dir}" downloaded in`)
@@ -84,30 +85,31 @@ async function downloadFromS3(prefix, dir) {
   }
 }
 
-async function downloadAllFromS3(prefix) {
-  return Promise.all(cacheDirs.map(dir => downloadFromS3(prefix, dir)))
-}
-
-async function uploadToS3(dir) {
-  console.log(`Uploading "${dir}" to s3://${s3Bucket}/${s3Prefix}/${dir}`)
+async function uploadToS3([dir, childPrefix], basePrefix = s3Prefix) {
+  const prefix = basePrefix + childPrefix
+  console.log(`Uploading "${dir}" to s3://${s3Bucket}/${prefix}`)
   console.time(`"${dir}" uploaded in`)
   await syncCall('uploadDir', {
     localDir: localPath(dir),
     deleteRemoved: true,
     s3Params: {
       Bucket: s3Bucket,
-      Prefix: `${s3Prefix}/${dir}`
+      Prefix: prefix
     }
   })
   console.timeEnd(`"${dir}" uploaded in`)
 }
 
-async function uploadAllToS3() {
-  return Promise.all(cacheDirs.map(uploadToS3))
+async function downloadAllFromS3(basePrefix) {
+  return Promise.all(cacheDirs.map(dir => downloadFromS3(dir, basePrefix)))
+}
+
+async function uploadAllToS3(basePrefix) {
+  return Promise.all(cacheDirs.map(dir => uploadToS3(dir, basePrefix)))
 }
 
 async function clean() {
-  return Promise.all(cacheDirs.map(dir => remove(localPath(dir))))
+  return Promise.all(cacheDirs.map(([dir]) => remove(localPath(dir))))
 }
 
 async function main() {
@@ -132,10 +134,6 @@ async function main() {
     await clean()
     run('yarn build')
   }
-
-  console.time('Cleaned up outdated page data files in')
-  cleanUpPageData()
-  console.timeEnd('Cleaned up outdated page data files in')
 
   await move(
     path.join(localPath(publicDirName), '404.html'),
