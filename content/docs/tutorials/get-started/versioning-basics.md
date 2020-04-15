@@ -190,9 +190,9 @@ the beginning of this page. But the connection between the projects is only
 known by the person doing this. Others wouldn't be able to tell where the data
 came from or whether there are new versions available.
 
-A better alternative is the `dvc import` command! Let's go back to the
-<abbr>project</abbr> we're building, and replace `data/data.xml` by importing it
-from the same source:
+A better alternative is the `dvc import` command! Let's go back to the project
+we're building, and replace `data/data.xml` by importing it from the same
+source:
 
 ```dvc
 $ cd ~/so-tag-predict
@@ -248,3 +248,7 @@ $ git add data/data.xml.dvc
 $ git commit -m "Import raw data (overwrite)"
 $ dvc push  # so others can pull the imported data in their repo copies
 ```
+
+> For programmatic functions to access data tracked by <abbr>DVC
+> repositories</abbr>, please refer to the
+> [Python API Reference](/doc/api-reference).
