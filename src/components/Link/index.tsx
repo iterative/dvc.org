@@ -89,12 +89,15 @@ const Link: React.FC<ILinkProps> = ({ href, ...restProps }) => {
     href = currentLocation.pathname + href
   }
 
-  // Replace link href with redirect if it exists
-  const [, redirectUrl] = getRedirect(location.host, location.pathname)
-  if (redirectUrl) {
-    href = isRelative(redirectUrl)
-      ? redirectUrl + currentLocation.search
-      : redirectUrl
+  if (location.host === currentLocation.host) {
+    // Replace link href with redirect if it exists
+    const [, redirectUrl] = getRedirect(location.host, location.pathname)
+
+    if (redirectUrl) {
+      href = isRelative(redirectUrl)
+        ? redirectUrl + currentLocation.search
+        : redirectUrl
+    }
   }
 
   return <ResultLinkComponent href={href} {...restProps} onClick={onClick} />
