@@ -122,8 +122,8 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 - `--outs-persist <path>` - declare output file or directory that will not be
   removed upon `dvc repro`.
 
-- `--outs-persist-no-cache <path>` - declare output file or directory that will
-  not be removed upon `dvc repro` (do not put into DVC cache).
+- `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
+  outputs are not tracked by DVC.
 
 - `-m <path>`, `--metrics <path>` - specify a metric type of output. This option
   behaves like `-o` but also adds `metric: true` in the output record of the
