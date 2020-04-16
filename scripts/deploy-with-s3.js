@@ -71,6 +71,7 @@ async function main() {
     run('yarn build')
   }
 
+  // Move the 404 HTML file from public into the root dir for Heroku
   await move(
     path.join(rootDir, publicDirName, '404.html'),
     path.join(rootDir, '404.html'),
