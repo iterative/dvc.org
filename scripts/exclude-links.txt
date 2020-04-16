@@ -26,6 +26,7 @@ https://dvc.org/foo
 https://dvc.org/foo/bar?baz
 https://dvc.org/img/<filename>.gif
 https://dvc.org/some-random
+https://dvc.org/uploads/images/2020-02-10/image.png
 https://example.com/data.txt
 https://example.com/file.csv
 https://example.com/foo
