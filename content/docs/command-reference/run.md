@@ -9,7 +9,7 @@ command and execute the command.
 usage: dvc run [-h] [-q | -v] [-d <path>] [-o <path>] [-O <path>]
                [-p <params>] [-m <path>] [-M <path>] [-f <filename>]
                [-w <path>] [--no-exec] [-y] [--overwrite-dvcfile]
-               [--ignore-build-cache] [--remove-outs] [--no-commit]
+               [--ignore-build-cache] [--no-commit]
                [--outs-persist <path>] [--outs-persist-no-cache <path>]
                [--always-changed]
                command
@@ -166,10 +166,6 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   same `dvc run` command has already been run in this workspace. Useful if the
   command's code is non-deterministic (meaning it produces different outputs
   from the same list of inputs).
-
-- `--remove-outs` (_deprecated_) - remove stage outputs before executing the
-  `command`. If `--no-exec` specified outputs are removed anyway. See
-  `dvc remove` as well for more details. **This is the default behavior.**
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created and an
   entry is added to `.dvc/state`, while nothing is added to the cache.

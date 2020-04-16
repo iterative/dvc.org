@@ -104,10 +104,10 @@ image="/uploads/images/2019-06-26/first-impressions-of-data-science-version-cont
 > this mix offering a cleaner solution, specifically targeting Data Science
 > challenges.
 
-- **[Versioning and Reproducibility with MLV-tools and DVC](https://github.com/peopledoc/mlv-tools-tutorial):
-  [Talk](https://peopledoc.github.io/mlv-tools-tutorial/talks/pyData/presentation.html#/)
+- **[Versioning and Reproducibility with MLV-tools and DVC](https://github.com/peopledoc/mlvtools-tutorial):
+  [Talk](https://peopledoc.github.io/mlvtools-tutorial/talks/pyData/presentation.html#/)
   and
-  [Tutorial](https://peopledoc.github.io/mlv-tools-tutorial/talks/workshop/presentation.html#/)
+  [Tutorial](https://peopledoc.github.io/mlvtools-tutorial/talks/workshop/presentation.html#/)
   by [Stéphanie Bracaloni](https://github.com/sbracaloni) and
   [Sarah Diot-Girard](https://github.com/SdgJlbl).**
 
