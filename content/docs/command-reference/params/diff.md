@@ -7,7 +7,8 @@ commits in the <abbr>DVC repository</abbr>, or between a commit and the
 ## Synopsis
 
 ```usage
-usage: dvc params diff [-h] [-q | -v] [--all] [--show-json] [a_rev] [b_rev]
+usage: dvc params diff [-h] [-q | -v] [--all] [--show-json]
+                       [a_rev] [b_rev]
 
 positional arguments:
   a_rev          Old Git commit to compare (defaults to HEAD)
@@ -17,8 +18,9 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to compare parameter values from your
-experiments in the repository history.
+This command provides a quick way to compare parameter values among experiments
+in the repository history. Requires that Git is being used to version the
+project params.
 
 > Parameter dependencies are defined with the `-p` option in `dvc run`. See also
 > `dvc params`.
