@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 'use strict'
+const path = require('path')
 const PRODUCTION_PREFIX = 'dvc-org-prod'
 
 /**
@@ -21,6 +22,7 @@ const PRODUCTION_PREFIX = 'dvc-org-prod'
 
 const { execSync } = require('child_process')
 
+const rootDir = process.cwd()
 const publicDirName = 'public'
 const cacheDirs = [
   [publicDirName, '/'],
@@ -28,6 +30,7 @@ const cacheDirs = [
 ]
 
 const { s3Prefix, withEntries, prefixIsEmpty } = require('./s3-utils')
+const { move } = require('fs-extra')
 const { downloadAllFromS3, uploadAllToS3, cleanAllLocal } = withEntries(
   cacheDirs
 )
@@ -67,6 +70,14 @@ async function main() {
     await cleanAllLocal()
     run('yarn build')
   }
+
+  await move(
+    path.join(rootDir, publicDirName, '404.html'),
+    path.join(rootDir, '404.html'),
+    {
+      overwrite: true
+    }
+  )
 
   await uploadAllToS3(s3Prefix)
   await cleanAllLocal()
