@@ -75,11 +75,11 @@
     height: 5px;
     width: 8px;
     background: url('/img/triangle_dark.svg') no-repeat center center;
-
-    &.active {
-      transform: rotate(-90deg);
-    }
   }
+}
+
+.active::before {
+  transform: rotate(-90deg);
 }
 
 .footer {
