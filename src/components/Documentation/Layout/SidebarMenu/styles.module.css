@@ -78,8 +78,14 @@
   }
 }
 
+@keyframes rotateIcon {
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
 .active::before {
-  transform: rotate(-90deg);
+  animation: rotateIcon 0.5s forwards;
 }
 
 .footer {
