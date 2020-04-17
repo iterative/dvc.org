@@ -56,10 +56,14 @@ $ unzip code.zip
 $ rm -f code.zip
 ```
 
-Windows doesn't include the `wget` utility by default, but you can use the
-browser to download `code.zip`. (Right-click
-[this link](https://code.dvc.org/get-started/code.zip) and select
-`Save Link As...` (Chrome). Save it into the <abbr>workspace</abbr>.
+> Windows doesn't include the `wget` utility by default, but you can use the
+> browser to download `code.zip`. (Right-click
+> [this link](https://code.dvc.org/get-started/code.zip) and select
+> `Save Link As...` (Chrome). Save it into the <abbr>workspace</abbr>.
+
+> Please also review
+> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
+> tips to improve your experience using DVC on Windows.
 
 Your working directory should now look like this:
 

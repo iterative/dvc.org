@@ -33,6 +33,10 @@ browser to download `code.zip`. (Right-click
 [this link](https://code.dvc.org/tutorial/nlp/code.zip) and select
 `Save Link As...` (Chrome). Save it into the project directory.
 
+> Please also review
+> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
+> tips to improve your experience using DVC on Windows.
+
 </details>
 
 ```dvc
