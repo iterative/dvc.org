@@ -124,6 +124,11 @@ workspace) is different from remote storage. Bringing the two into sync requires
   retrieve information from remote servers. This only applies when the `--cloud`
   option is used or a remote is given.
 
+- `--clear-index` - clear index for a remote. In order to improve performance,
+  DVC keeps a local index of files which are available in a remote. This option
+  can be used to clear this index, and force a full re-indexing of the remote.
+  This only applies when the `--cloud` option is used or a remote is given.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if

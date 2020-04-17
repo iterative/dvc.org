@@ -92,6 +92,10 @@ reflinks or hardlinks to put it in the workspace without copying. See
   may improve the total download speed if a combination of small and large files
   are being fetched.
 
+- `--clear-index` - clear index for a remote. In order to improve performance,
+  DVC keeps a local index of files which are available in a remote. This option
+  can be used to clear this index, and force a full re-indexing of the remote.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
