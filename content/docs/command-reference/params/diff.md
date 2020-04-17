@@ -7,7 +7,8 @@ commits in the <abbr>DVC repository</abbr>, or between a commit and the
 ## Synopsis
 
 ```usage
-usage: dvc params diff [-h] [-q | -v] [--show-json] [a_rev] [b_rev]
+usage: dvc params diff [-h] [-q | -v] [--all] [--show-json]
+                       [a_rev] [b_rev]
 
 positional arguments:
   a_rev          Old Git commit to compare (defaults to HEAD)
@@ -17,23 +18,24 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to compare parameter values from your previous
-experiments with the current one(s) in your <abbr>workspace</abbr>.
+This command provides a quick way to compare parameter values among experiments
+in the repository history. Requires that Git is being used to version the
+project params.
 
 > Parameter dependencies are defined with the `-p` option in `dvc run`. See also
 > `dvc params`.
 
 Run without arguments, this command compares parameters currently present in the
-<abbr>workspace</abbr> (including uncommitted changes) with the latest committed
-version.
-
-❗ It only shows parameters used in any of the currently present
-[stage files](/doc/command-reference/run) (DVC-files).
+<abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
 
 Supported parameter _value_ types are: string, integer, float, and arrays. DVC
 itself does not ascribe any specific meaning for these values.
 
+❗ By default it only shows parameters that were changed.
+
 ## Options
+
+- `--all` - prints all parameters including not changed.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
@@ -57,9 +59,9 @@ train:
   epochs: 70
   layers: 9
 
-processing:
-  threshold: 0.98
-  bow_size: 15000
+process:
+  thresh: 0.98
+  bow: 15000
 ```
 
 Define a pipeline [stage](/doc/command-reference/run) with parameter
@@ -78,25 +80,36 @@ Let's now print parameter values that we are tracking in this
 $ dvc params diff
    Path          Param       Old     New
 params.yaml   lr             None   0.0041
-params.yaml   train.layers   None   9
+params.yaml   process.bow    None   15000
+params.yaml   process.thresh None   0.98
 params.yaml   train.epochs   None   70
+params.yaml   train.layers   None   9
 ```
 
 The command above shows the difference in parameters between the workspace and
 the last committed version of the params file `params.yaml`. Since it did not
 exist before, all `Old` values are `None`.
 
-❗ Note that not all the parameter were printed. `dvc params diff` prints only
-changed parameters that were used in one of the stages and ignores parameters
-from the group `processing` that were not used.
-
 In a project with parameters file history (params present in various Git
-commits), you will see both `Old` and `New` values:
+commits), you will see both `Old` and `New` values. However, the parameters
+won't be shown if there are no changes:
 
 ```dvc
 $ dvc params diff
    Path          Param       Old     New
 params.yaml   lr             0.0041 0.0043
+params.yaml   train.layers   9      7
+params.yaml   train.epochs   70     110
+```
+
+Specify `--all` option to see all the parameters including not changed ones:
+
+```dvc
+$ dvc params diff --all
+   Path          Param       Old     New
+params.yaml   lr             0.0041 0.0043
+params.yaml   process.bow    15000   15000
+params.yaml   process.thresh 0.98    0.98
 params.yaml   train.layers   9      7
 params.yaml   train.epochs   70     110
 ```
