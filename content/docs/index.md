@@ -21,12 +21,38 @@ improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
 
 ## Main topics
 
-- Learn how to [install](/doc/install) and
-  [get started](/doc/tutorials/get-started) with DVC in the first few docs.
-- Explore the main [reasons](/doc/use-cases) to adopt DVC.
-- Study the detailed [inner-workings](/doc/user-guide) of DVC, as well as each
-  one of its [commands](/doc/command-reference) and Python
-  [functions](/doc/api-reference).
+<style>
+.tile {
+  width: calc(100% / 3 - 1em);
+  min-height: 10em;
+  float: left;
+
+  display: table;
+
+  padding: 1em;
+  border: 1px solid gray;
+  margin: 0 1em 1em 0;
+}
+.tile > div {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+</style>
+<div class="tile"><div>
+  <b>Learn</b> how to <a href="/doc/install">install</a> and <a
+  href="/doc/tutorials/get-started">get started</a> with DVC in the first few
+  docs.
+</div></div>
+<div class="tile"><div>
+  <b>Explore<b> the main <a href="/doc/use-cases">reasons</a> to adopt DVC.
+</div></div>
+<div class="tile"><div>
+  <b>Study</b> the detailed <a href="/doc/user-guide">inner-workings</a> of DVC, as
+  well as each one of its <a href="/doc/command-reference">commands</a> and
+  Python <a href="/doc/api-reference">functions</a>.
+</div></div>
+<div style="clear: both;"></div>
 
 Please choose a topic from the sidebar to the left, or click the `Next` button
 below to start from the beginning ↘
