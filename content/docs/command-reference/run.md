@@ -10,8 +10,7 @@ usage: dvc run [-h] [-q | -v] [-d <path>] [-o <path>] [-O <path>]
                [-p <params>] [-m <path>] [-M <path>] [-f <filename>]
                [-w <path>] [--no-exec] [-y] [--overwrite-dvcfile]
                [--ignore-build-cache] [--no-commit]
-               [--outs-persist OUTS_PERSIST]
-               [--outs-persist-no-cache OUTS_PERSIST_NO_CACHE]
+               [--outs-persist <path>] [--outs-persist-no-cache <path>]
                [--always-changed]
                command
 
@@ -119,6 +118,12 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   user to save and version control them. This is useful if the outputs are small
   enough to be tracked by Git directly, or if these files are not of future
   interest.
+
+- `--outs-persist <path>` - declare output file or directory that will not be
+  removed upon `dvc repro`.
+
+- `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
+  outputs are not tracked by DVC.
 
 - `-m <path>`, `--metrics <path>` - specify a metric type of output. This option
   behaves like `-o` but also adds `metric: true` in the output record of the

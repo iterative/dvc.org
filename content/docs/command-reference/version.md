@@ -89,7 +89,7 @@ The detail of `Binary` depends on the way DVC was downloaded and
     systems) - source code is stored as Python package
 
   This method of installation involves downloading DVC source code, and
-  following certain setup instructions (See the
+  following certain setup instructions (see the
   [development](/doc/install/pre-release) guide) to build the application before
   being able to it.
 
