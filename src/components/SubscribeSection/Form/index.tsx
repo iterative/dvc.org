@@ -36,6 +36,7 @@ const Form: React.FC = () => {
         id="mce-EMAIL"
         placeholder="email address"
         required={true}
+        aria-label="Enter your email"
       />
 
       {/*real people should not fill this in and expect good things - do not remove this or risk form bot signups*/}
