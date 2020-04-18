@@ -12,6 +12,8 @@ import { getPathWithSource } from '../../../utils/shared/sidebar'
 import 'github-markdown-css/github-markdown.css'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
+import { getDetails, setDetails } from '../../../utils/shared/localStorage'
+import { getText } from '../../../utils/front/dom'
 
 const isInsideCodeBlock = (node: Element): boolean => {
   while (node?.parentNode) {
@@ -37,10 +39,24 @@ const Details: React.FC<{
   if (!filteredChildren.length) return null
   if (typeof filteredChildren[0] === 'string') return null
 
-  const text = filteredChildren[0].props.children[0]
+  let details = getDetails()
+  const detailTitle = filteredChildren[0].props.children[0]
+  const detailText = getText(filteredChildren.slice(1))
+  let isOpen = false
+
+  details.forEach(({ text }: { text: string }) => {
+    if (text === detailText) {
+      isOpen = true
+    }
+  })
+
+  details = details.filter(
+    ({ text }: { text: string }) => !(text === detailText)
+  )
+  setDetails(details)
 
   return (
-    <Collapsible trigger={text} transitionTime={200}>
+    <Collapsible trigger={detailTitle} open={isOpen} transitionTime={200}>
       {filteredChildren.slice(1)}
     </Collapsible>
   )

@@ -4,6 +4,7 @@ import throttle from 'lodash/throttle'
 
 import { IHeading } from '../'
 import Link from '../../Link'
+import { Link as GatsbyLink } from 'gatsby'
 import Tutorials from '../TutorialsLinks'
 
 import { getScrollPosition, getHeaderHeight } from '../../../utils/front/scroll'
@@ -87,6 +88,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   }, [setCurrentHeader])
   useEffect(initHeadingsPosition, [headings])
   useEffect(setCurrentHeader, [headingsOffsets, height])
+  const isABrowser = typeof window !== 'undefined'
 
   return (
     <div className={styles.container}>
@@ -97,19 +99,21 @@ const RightPanel: React.FC<IRightPanelProps> = ({
             <hr className={styles.separator} />
           </>
         )}
-        {headings.map(({ slug, text }) => (
-          <Link
-            className={cn(
-              styles.headingLink,
-              current === slug && styles.current,
-              'link-with-focus'
-            )}
-            key={`link-${slug}`}
-            href={`#${slug}`}
-          >
-            {text}
-          </Link>
-        ))}
+        {isABrowser
+          ? headings.map(({ slug, text }) => (
+              <GatsbyLink
+                className={cn(
+                  styles.headingLink,
+                  current === slug && styles.current,
+                  'link-with-focus'
+                )}
+                key={`link-${slug}`}
+                to={`${location.pathname}#${slug}`}
+              >
+                {text}
+              </GatsbyLink>
+            ))
+          : null}
       </div>
       {Object.keys(tutorials || {}).length > 0 && (
         <div className={styles.buttonSection}>
