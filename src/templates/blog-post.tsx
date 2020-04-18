@@ -73,7 +73,7 @@ interface IBlogPostPageProps {
   }
 }
 
-const BlogPostPage: React.SFC<IBlogPostPageProps> = ({ data }) => {
+const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
   const post = data.markdownRemark
 
   return (

@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react'
 import cn from 'classnames'
-import throttle from 'lodash.throttle'
+import throttle from 'lodash/throttle'
 
 import { IHeading } from '../'
 import Link from '../../Link'
 import Tutorials from '../TutorialsLinks'
 
-import { getHeaderHeight } from '../../../utils/front/scroll'
+import { getScrollPosition, getHeaderHeight } from '../../../utils/front/scroll'
 import { allImagesLoadedInContainer } from '../../../utils/front/images'
 
 import sharedStyles from '../styles.module.css'
@@ -22,7 +22,7 @@ interface IHeadingsCoordinates {
   [offset: string]: string
 }
 
-const RightPanel: React.SFC<IRightPanelProps> = ({
+const RightPanel: React.FC<IRightPanelProps> = ({
   headings,
   tutorials,
   githubLink
@@ -33,7 +33,7 @@ const RightPanel: React.SFC<IRightPanelProps> = ({
   )
   const [current, setCurrent] = useState<string | null>(null)
   const setCurrentHeader = (): void => {
-    const { scrollTop } = document.documentElement
+    const currentScroll = getScrollPosition()
     const coordinateKeys = Object.keys(headingsOffsets)
 
     if (!coordinateKeys.length) return
@@ -41,7 +41,7 @@ const RightPanel: React.SFC<IRightPanelProps> = ({
     const headerHeight = getHeaderHeight()
     const filteredKeys = coordinateKeys.filter(
       offsetTop =>
-        parseInt(offsetTop, 10) <= scrollTop + (height - headerHeight) / 2
+        parseInt(offsetTop, 10) <= currentScroll + (height - headerHeight) / 2
     )
 
     const newCurrent = filteredKeys.length

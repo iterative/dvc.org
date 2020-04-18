@@ -80,7 +80,7 @@ The actual data is stored in the project's <abbr>cache</abbr> and should be
 [remote storage](/doc/command-reference/remote) locations, so the registry can
 be accessed from other locations or by other people:
 
-```
+```dvc
 $ dvc remote add -d myremote s3://bucket/path
 $ dvc push
 ```

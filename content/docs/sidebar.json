@@ -153,6 +153,10 @@
           {
             "label": "Docs and Website",
             "slug": "docs"
+          },
+          {
+            "label": "Writing Blog Posts",
+            "slug": "blog"
           }
         ]
       },
@@ -283,6 +287,17 @@
       {
         "label": "move",
         "slug": "move"
+      },
+      {
+        "label": "params",
+        "slug": "params",
+        "source": "params/index.md",
+        "children": [
+          {
+            "label": "params diff",
+            "slug": "diff"
+          }
+        ]
       },
       {
         "label": "pipeline",

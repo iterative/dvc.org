@@ -9,7 +9,7 @@ import { logEvent } from '../../utils/front/ga'
 
 import styles from './styles.module.css'
 
-const VERSION = `0.92.0`
+const VERSION = `0.93.0`
 
 enum OS {
   UNKNOWN = '...',
@@ -78,7 +78,7 @@ const getUserOS = (): OS => {
   return OSName
 }
 
-const DownloadButtonDropdownItems: React.SFC<IDownloadButtonDropdownItemsProps> = ({
+const DownloadButtonDropdownItems: React.FC<IDownloadButtonDropdownItemsProps> = ({
   onClick,
   userOS
 }) => {
@@ -112,7 +112,7 @@ const DownloadButtonDropdownItems: React.SFC<IDownloadButtonDropdownItemsProps> 
   )
 }
 
-const DownloadButton: React.SFC<IDownloadButtonProps> = ({ openTop }) => {
+const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
   const userOS = useRef(getUserOS())
   const containerRef = useRef<HTMLDivElement>(null)
   const [isOpened, setOpened] = useState(false)

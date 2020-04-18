@@ -10,7 +10,8 @@ A set of commands to add, manage, collect, and display project metrics:
 ## Synopsis
 
 ```usage
-usage: dvc metrics [-h] [-q | -v] {show,add,modify,remove,diff} ...
+usage: dvc metrics [-h] [-q | -v]
+                   {show,add,modify,remove,diff} ...
 
 positional arguments:
 COMMAND
@@ -21,18 +22,13 @@ COMMAND
     modify              Modify metric default formatting.
     remove              Remove metric mark on a DVC-tracked file.
     diff                Show changes in metrics between commits
-
-optional arguments:
-  -h, --help            show this help message and exit
-  -q, --quiet           Be quiet.
-  -v, --verbose         Be verbose
 ```
 
 ## Description
 
-In order to track metrics associated to machie learning experiments, DVC has the
-ability to mark a certain stage <abbr>outputs</abbr> as files containing metrics
-to track. (See the `--metrics` option of `dvc run`.) Metrics are
+In order to track metrics associated to machine learning experiments, DVC has
+the ability to mark a certain stage <abbr>outputs</abbr> as files containing
+metrics to track (see the `--metrics` option of `dvc run`). Metrics are
 project-specific floating-point values e.g. `AUC`, `ROC`, etc.
 
 Supported file formats: JSON. Metrics can be organized in a tree hierarchy in a

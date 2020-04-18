@@ -9,6 +9,8 @@ set -euo pipefail
 base_url="${CHECK_LINKS_RELATIVE_URL:-https://dvc.org}"
 exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname $0)/exclude-links.txt}"
 [ -f "$exclude" ] && exclude="$(cat $exclude)"
+user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:74.0) Gecko/20100101 Firefox/74.0"
+
 
 finder(){  # expects list of files
   # explicit links not in markdown
@@ -24,13 +26,16 @@ finder(){  # expects list of files
 checker(){  # expects list of urls
   errors=0
   for url in "$@"; do
-    status="$(curl -IL -w '%{http_code}' -so /dev/null "$url")"
+    status="$(curl -IL -A "$user_agent" -w '%{http_code}' -so /dev/null "$url")"
     case "$status" in
       2??)
         # success
         ;;
       429)
         # too many requests: treat as success
+        ;;
+      999)
+        # linkedin denied code: treat as success
         ;;
       [45]??)
         echo

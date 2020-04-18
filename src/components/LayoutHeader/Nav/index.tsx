@@ -11,7 +11,7 @@ const docsPage = getFirstPage()
 
 import styles from './styles.module.css'
 
-const Nav: React.SFC = () => (
+const Nav: React.FC = () => (
   <div className={styles.wrapper}>
     <ul className={styles.linksList}>
       <li className={styles.linkItem}>

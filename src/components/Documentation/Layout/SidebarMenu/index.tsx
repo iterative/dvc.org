@@ -3,7 +3,7 @@ import { useLocation } from '@reach/router'
 import cn from 'classnames'
 import { Collapse } from 'react-collapse'
 import PerfectScrollbar from 'perfect-scrollbar'
-import includes from 'lodash.includes'
+import includes from 'lodash/includes'
 
 import ShowOnly from '../../../ShowOnly'
 import DownloadButton from '../../../DownloadButton'
@@ -12,7 +12,7 @@ import Link from '../../../Link'
 import {
   structure,
   getParentsListFromPath,
-  getPathWithSoruce
+  getPathWithSource
 } from '../../../../utils/shared/sidebar'
 
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
@@ -27,7 +27,7 @@ interface ISidebarMenuItemProps {
   activePaths?: Array<string>
 }
 
-const SidebarMenuItem: React.SFC<ISidebarMenuItemProps> = ({
+const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   children,
   label,
   path,
@@ -41,7 +41,7 @@ const SidebarMenuItem: React.SFC<ISidebarMenuItemProps> = ({
   return (
     <>
       <Link
-        href={getPathWithSoruce(path)}
+        href={getPathWithSource(path)}
         id={path}
         className={cn(
           styles.sectionLink,
@@ -73,10 +73,7 @@ interface ISidebarMenuProps {
   onClick: (e: React.MouseEvent) => void
 }
 
-const SidebarMenu: React.SFC<ISidebarMenuProps> = ({
-  currentPath,
-  onClick
-}) => {
+const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
   const location = useLocation()
   const rootRef = useRef<HTMLDivElement>(null)
   const psRef = useRef<PerfectScrollbar | undefined>(undefined)
@@ -89,9 +86,9 @@ const SidebarMenu: React.SFC<ISidebarMenuProps> = ({
 
     setIsScrollHidden(true)
     setTimeout(() => {
-      psRef.current?.update()
-
       if (node && parent) {
+        psRef.current?.update()
+
         const parentHeight = parent.clientHeight
         const parentScroll = parent.scrollTop
         const nodeOffset = node.offsetTop

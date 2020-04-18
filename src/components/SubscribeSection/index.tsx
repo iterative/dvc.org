@@ -7,7 +7,7 @@ import { default as Glyph2Src } from './glyph-2.svg'
 
 import styles from './styles.module.css'
 
-const SubscribeSection: React.SFC = () => (
+const SubscribeSection: React.FC = () => (
   <div className={styles.wrapper} id="subscribe">
     <img src={Glyph1Src} className={cn(styles.glyph, styles.topleft)} alt="" />
     <div className={styles.container}>

@@ -9,7 +9,7 @@ interface ILearnMoreProps {
   scrollToRef: React.RefObject<HTMLElement>
 }
 
-const LearnMore: React.SFC<ILearnMoreProps> = ({ scrollToRef }) => {
+const LearnMore: React.FC<ILearnMoreProps> = ({ scrollToRef }) => {
   const onClick = useCallback(() => {
     logEvent('hero', 'learn-more')
     scrollIntoLayout(scrollToRef?.current, {

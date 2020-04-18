@@ -6,6 +6,3 @@ restylers:
       - 'pages/**/*.js'
       - 'content/**/*.md'
       - 'src/**/*.js'
-  - name: stylelint
-    include:
-      - 'src/**/*.css'

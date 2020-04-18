@@ -11,7 +11,7 @@ interface IBlogTagsProps {
   header: string
 }
 
-const Tags: React.SFC<IBlogTagsProps> = ({ posts, pageInfo, header }) => {
+const Tags: React.FC<IBlogTagsProps> = ({ posts, pageInfo, header }) => {
   return (
     <>
       <PageContent>

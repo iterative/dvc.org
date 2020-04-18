@@ -1,7 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
-import topairs from 'lodash.topairs'
-import startCase from 'lodash.startcase'
+import topairs from 'lodash/toPairs'
+import startCase from 'lodash/startCase'
 
 import Link from '../../Link'
 
@@ -14,7 +14,7 @@ interface ITutorialsLinksProps {
   tutorials: { [type: string]: string }
 }
 
-const TutorialsLinks: React.SFC<ITutorialsLinksProps> = ({
+const TutorialsLinks: React.FC<ITutorialsLinksProps> = ({
   compact = false,
   buttonClassName,
   tutorials

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import includes from 'lodash.includes'
+import includes from 'lodash/includes'
 
 import ShowOnly from '../../../ShowOnly'
 import DesktopView from './DesktopView'
@@ -7,7 +7,7 @@ import MobileView from './MobileView'
 
 import glossary from '../../../../../content/docs/glossary'
 
-const Tooltip: React.SFC<{ text: string }> = ({ text }) => {
+const Tooltip: React.FC<{ text: string }> = ({ text }) => {
   const [state, setState] = useState({
     description: '',
     header: '',

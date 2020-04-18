@@ -23,7 +23,7 @@ interface IBlogFeedProps {
   pageInfo: IPaginatorPageInfo
 }
 
-const Feed: React.SFC<IBlogFeedProps> = ({
+const Feed: React.FC<IBlogFeedProps> = ({
   feedPostList: { edges },
   pageInfo,
   bigFirst = true,

@@ -1,5 +1,28 @@
 const url = require('url')
-const { processRedirectString, getRedirect } = require('./redirects')
+const {
+  buildSidebarRedirects,
+  processRedirectString,
+  getRedirect
+} = require('./redirects')
+
+describe('buildRedirectsList', () => {
+  it('builds correct redirects list', () => {
+    const list = [
+      {
+        source: false,
+        path: '/a',
+        children: [
+          {
+            path: '/a/b',
+            source: 'some-file'
+          }
+        ]
+      }
+    ]
+
+    expect(buildSidebarRedirects(list)).toEqual(['^/a/?$ /a/b 307'])
+  })
+})
 
 describe('processRedirectString', () => {
   it('reads the regex, replacement and code', () => {

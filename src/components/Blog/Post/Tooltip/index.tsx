@@ -44,7 +44,7 @@ const portalStyle = (
   }
 }
 
-const ModifiedTooltip: React.SFC<TooltipProps> = ({
+const ModifiedTooltip: React.FC<TooltipProps> = ({
   children,
   label,
   ariaLabel
