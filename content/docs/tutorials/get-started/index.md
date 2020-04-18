@@ -14,8 +14,8 @@ first.
 
 In case you'd like to get the complete code base and results, or have any issues
 along the way, please note that we have a fully reproducible
-[**example-get-started**](https://github.com/iterative/example-get-started) repo
-on Github:
+[example-get-started](https://github.com/iterative/example-get-started) repo on
+Github:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -52,7 +52,7 @@ hidden from the user. This directory can be committed with Git.
 
 Because we'll want to share data and models outside of the local context later
 (for example with other collaborators or for access from a different computing
-environment), we're going to set up a
+environment), we're going to set up a default
 [remote storage](/doc/command-reference/remote/add) for the <abbr>DVC
 project</abbr>. For simplicity, let's set up a _local remote_:
 

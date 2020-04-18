@@ -325,8 +325,9 @@ $ dvc pipeline show --ascii train.dvc --outs
 
 ## Reproduce
 
-Imagine a colleague just cloned the Git repo that has been created so far in
-another computer. This can be simulated by cloning our example-get-started repo
+Imagine you're just cloning the <abbr>repository</abbr> created so far, in
+another computer. This can be simulated by cloning our
+[example-get-started](https://github.com/iterative/example-get-started) repo
 from Github, and checking out the `7-train` tag:
 
 ```dvc

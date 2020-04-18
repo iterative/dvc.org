@@ -29,7 +29,7 @@ processing (NLP) model that predicts tags for a given Stack Overflow question.
 
 ## Start tracking data
 
-To track a file with DVC, just run `dvc add` on it:
+To track a file in your <abbr>DVC project</abbr>, just run `dvc add` on it:
 
 ```dvc
 $ dvc add data/data.xml
@@ -94,10 +94,11 @@ Refer to
 [Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
 and `dvc add` for more information on versioning data with DVC.
 
-## Store and share data
+## Store and retrieve shared data
 
-Now that your raw data is tracked by DVC, you can push it from your repository
-to the default [remote storage](/doc/command-reference/remote).
+Now that your raw data is tracked by DVC, you can push it from your
+<abbr>project</abbr> to the default
+[remote storage](/doc/command-reference/remote).
 
 > As seen in the intro's [Configure](/doc/tutorials/get-started#configure)
 > section, we are using a _local remote_ for illustrative purposes.
@@ -105,12 +106,6 @@ to the default [remote storage](/doc/command-reference/remote).
 ```dvc
 $ dvc push
 ```
-
-Similar to pushing source code to a _Git remote_, `dvc push` ensures that your
-data files and models are safely backed up remotely. This means that the data
-can be pulled by yourself or by colleagues when and where needed. Usually, we
-also want to `git commit` and `git push`, to save the new (or changed versions
-of) [DVC-files](/doc/user-guide/dvc-file-format).
 
 <details>
 
@@ -126,64 +121,51 @@ $ ls -R /tmp/dvc-storage
 04afb96060aad90176268345e10355
 ```
 
+Similar to pushing source code to a _Git remote_, `dvc push` ensures that your
+data files and models are safely backed up remotely. Usually, we also want to
+`git commit` and `git push`, to save the new (or changed versions of)
+[DVC-files](/doc/user-guide/dvc-file-format).
+
 </details>
 
-## Retrieve data
-
-Imagine you're just cloning the Git repo that has been created so far in another
-computer. This can be simulated by cloning our **example-get-started** repo from
-Github, and checking out the
-[`3-add-file`](https://github.com/iterative/example-get-started/tree/3-add-file)
-tag:
+Having pushed data to remote storage means that it can be pulled by yourself or
+by colleagues when and where needed. Let's imagine you're just cloning the
+<abbr>repository</abbr> created so far, in another computer. This can be
+simulated by completely removing the data file from the <abbr>project</abbr>:
 
 ```dvc
-$ cd ~
-$ git clone https://github.com/iterative/example-get-started
-$ cd example-get-started
-$ git checkout 3-add-file
+$ rm -f data/data.xml
+$ rm -f .dvc/cache/a3/04afb96060aad90176268345e10355
+$ dvc status
+data\data.xml.dvc:
+        changed outs:
+                deleted:            data\data.xml
 ```
 
-If you list the files in this fresh <abbr>workspace</abbr>, or even in the
-cache, you'll notice that the `data/data.xml` file is not there yet. This is
-because it's not stored by Git! To get it, simply run:
+> Notice that we're also removing the data from <abbr>cache</abbr>.
+
+This is the same as cloning the repository created so far because
+`data/data.xml` is **not stored by Git**.
+
+To restore the data backup now, simply run:
 
 ```dvc
 $ dvc pull
 ```
 
 `dvc pull` downloads data files that are referenced in all present
-[DVC-files](/doc/user-guide/dvc-file-format) from the <abbr>project</abbr>'s
-remote storage, so usually we run it after `git clone`, `git pull`, or
-`git checkout`.
+[DVC-files](/doc/user-guide/dvc-file-format) from the default DVC remote, so
+usually we run it after `git clone`, `git pull`, or `git checkout`.
 
-Alternatively, if you want to retrieve a single file or directory, you can
-specify the target like this:
-
-```dvc
-$ dvc pull data/data.xml.dvc
-```
-
-> In this case, both commands have the same result, as there's currently just
-> one DVC-tracked file in the repo.
-
-[DVC remotes](/doc/command-reference/remote), `dvc push`, and `dvc pull` provide
-a basic collaboration workflow, the same way as Git remotes, `git push` and
-`git pull`. See
-[Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files) for
-more information.
-
-Feel fee to remove the cloned example repo for now:
-
-```dvc
-$ cd ..
-$ rm -rf example-get-started
-```
+> See also `dvc fetch`, and
+> [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
+> for more information on basic collaboration workflows.
 
 ## Import data
 
-We've seen how to [push](#store-and-share-date) and [pull](#retrieve-data) data
-from/to a remote storage. But what if we wanted to integrate a dataset or ML
-model produced in one project into another one?
+We've seen how to [push and pull](#store-and-retrieve-shared-date) data from/to
+a remote storage. But what if we wanted to integrate a dataset or ML model
+produced in one project into another one?
 
 One way is to manually download the data and use `dvc add` to track it, like in
 the beginning of this page. But the connection between the projects is only
