@@ -4,11 +4,6 @@ Data Version Control, or DVC, is **a new type of experiment management
 software** built on top of the existing engineering toolset that you're already
 familiar with.
 
-You can find all the material and technical details needed to learn about DVC
-here: how to use it, how it works, and where to go for additional resources.
-
-## Before you start
-
 ✅ Please join our [community](/community) or use the [support](/support)
 channels if you have any questions or need specific help. We are very responsive
 ⚡.
@@ -18,8 +13,6 @@ us a ⭐ if you like the project!
 
 ✅ Contribute to DVC [on GitHub](https://github.com/iterative/dvc) or help us
 improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
-
-## Main topics
 
 <style>
 .tile {

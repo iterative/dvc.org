@@ -37,7 +37,7 @@ repository). It will contain the
       match: ['DVC cache', 'cache', 'caches', 'cached'],
       desc: `
 The DVC cache is a hidden storage (by default located in the \`.dvc/cache\`
-directory) for files that are under DVC control, and their different versions.
+directory) for files that are tracked by DVC, and their different versions.
 For more details, please refer to this [document]
 (/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).
       `
@@ -65,7 +65,7 @@ their dependencies change.
       match: ['data artifact', 'data artifacts'],
       desc: `
 Any data file or directory, as well as intermediate or final result (such as
-extracted features or a ML model file) that is under DVC control. Refer to
+extracted features or a ML model file) that is tracked by DVC. Refer to
 [Versioning Data and Model Files]
 (/doc/use-cases/versioning-data-and-model-files) for more details. A.k.a
 **output*.

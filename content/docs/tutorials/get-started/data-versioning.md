@@ -17,12 +17,9 @@ $ dvc get https://github.com/iterative/dataset-registry \
 ```
 
 > `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
-> repository</abbr>, using the appropriate
-> [remote storage](/doc/command-reference/remote). It's like `wget`, but for
-> DVC/Git repos. In this case we use our
-> [dataset-registry](https://github.com/iterative/dataset-registry)) as the
-> source repository (refer to [Data Registries](/doc/use-cases/data-registries)
-> for more info.)
+> repository</abbr>. It's like `wget`, but for DVC/Git repos. In this case we
+> use our [dataset-registry](https://github.com/iterative/dataset-registry)) as
+> the source repository.
 
 This data will be used later in the tutorial to train a simple NLP model.
 
@@ -34,11 +31,11 @@ To track a file in your <abbr>DVC project</abbr>, just run `dvc add` on it:
 $ dvc add data/data.xml
 ```
 
-DVC stores information about the added data in a special **DVC-file** named
-`data/data.xml.dvc`, a small text file with a human-readable
-[format](/doc/user-guide/dvc-file-format). The above command also tells Git to
-ignore the actual data contents, so that this version of the data can be safely
-committed to the <abbr>repository</abbr>, using Git:
+DVC <abbr>caches</abbr> `data/data.xml` locally and stores information about the
+added data in a special **DVC-file** named `data/data.xml.dvc`, a small text
+file with a human-readable [format](/doc/user-guide/dvc-file-format). It also
+tells Git to ignore the added file, so that this version of the repository can
+be safely committed with Git:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
@@ -49,7 +46,7 @@ $ git commit -m "Add raw data"
 
 ### Expand to learn about DVC internals
 
-`dvc add` moves the data file to the project's <abbr>cache</abbr> (see
+`dvc add` moves the data file to the project's cache (see
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)), and
 makes file links (or copies) with the original file names back in the
 <abbr>workspace</abbr>, which is what you see inside the project.
@@ -68,11 +65,11 @@ will see that it has this string inside.
 
 ### Important note on cache performance
 
-DVC tries to use reflinks\* by default to link your data files from the DVC
-cache to the workspace, optimizing speed and storage space. However, reflinks
-are not widely supported yet and DVC falls back to actually copying data files
-to/from the cache. **Copying can be very slow with large files**, and duplicates
-storage requirements.
+DVC tries to use reflinks\* by default to link your data files from the
+<abbr>DVC cache</abbr> to the workspace, optimizing speed and storage space.
+However, reflinks are not widely supported yet and DVC falls back to actually
+copying data files to/from the cache. **Copying can be very slow with large
+files**, and duplicates storage requirements.
 
 Hardlinks and symlinks are also available for optimized cache linking but,
 (unlike reflinks) they carry the risk of accidentally corrupting the cache if
@@ -93,6 +90,40 @@ See [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
 > [Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
 > for more information on versioning data with DVC.
 
+## Configure remote storage
+
+Because we'll want to share data and models outside of the local context where
+the data tracked by DVC is <abbr>cached</abbr>, we're going to set up a default
+[remote storage](/doc/command-reference/remote) for the <abbr>DVC
+project</abbr>. For simplicity, let's set up a _local remote_:
+
+<details>
+
+### What is a "local remote" ?
+
+While the term may seem contradictory, it doesn't have to be. The "local" part
+refers to the type of location where the storage is: another directory in the
+same file system. "Remote" is how we call storage for DVC projects. It's
+essentially a local storage backup.
+
+</details>
+
+```dvc
+$ dvc remote add -d myremote /tmp/dvc-storage
+$ git commit .dvc/config -m "Configure local remote"
+```
+
+That's it! DVC doesn't require installing databases, storage servers, or
+warehouses. It can simply use cloud services or local/network file systems to
+store data, intermediate results, ML models, etc.
+
+💡 Note that **DVC supports many other remote storage types**: Google Drive,
+Amazon S3, Azure Blob Storage, Google Cloud Storage, Aliyun OSS, SSH, HDFS, and
+HTTP. Please refer to `dvc remote add` for more details and examples.
+
+> There are many other configuration options that can be tweaked in DVC. Please
+> see `dvc config` for more information.
+
 ## Store and retrieve shared data
 
 Having some data tracked by DVC, you can push it from your <abbr>project</abbr>
@@ -101,9 +132,6 @@ to [remote storage](/doc/command-reference/remote) with:
 ```dvc
 $ dvc push
 ```
-
-> As seen in the intro's [Configure](/doc/tutorials/get-started#configure)
-> section, we are using a default _local remote_ for simplicity.
 
 <details>
 
@@ -118,6 +146,9 @@ $ ls -R /tmp/dvc-storage
 /tmp/dvc-storage/a3:
 04afb96060aad90176268345e10355
 ```
+
+> Note that the remote storage should mirror your local <abbr>cache</abbr> (by
+> default in `.dvc/cache`) at this point.
 
 Similar to pushing source code to a _Git remote_, `dvc push` ensures that your
 data files and models are safely backed up remotely. Usually, we also want to
@@ -251,7 +282,7 @@ repository doesn't actually contain a `get-started/data.xml` file. Like with
 
 </details>
 
-Let's wrap up by committing the import stage with Git:
+Let's wrap up by committing the import stage changes with Git:
 
 ```dvc
 $ git add data/data.xml.dvc
