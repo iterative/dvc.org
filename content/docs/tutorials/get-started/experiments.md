@@ -1,4 +1,4 @@
-# Experiment Management
+# Experiments
 
 Data science is a metric-driven process of experimentation, similar to any R&D.
 DVC provides a built-in framework to capture and compare experiment performance
@@ -74,7 +74,7 @@ experiments later:
 $ git tag -a "baseline-experiment" -m "Baseline experiment evaluation"
 ```
 
-## Experiments
+## Produce experiments
 
 Data scientist may try many different approaches or hyperparameter values,
 having multiple failed attempts before the desired result (monitored via
@@ -124,7 +124,7 @@ systems with file links. See
 [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) for
 more information.
 
-## Compare Experiments
+## Compare experiments
 
 DVC makes it easy to iterate on your project using Git commits with tags or Git
 branches. It provides a way to try different ideas, keep track of them, switch
@@ -168,7 +168,7 @@ DVC provides built-in support to track and navigate `JSON`, `TSV` or `CSV`
 metric files if you want to track additional information. See `dvc metrics` to
 learn more.
 
-## Get Older Data Version
+## Get older data version
 
 Now that we have multiple experiments, models, processed datasets, the question
 is how do we revert back to an older version of a model file? Or how can we get
@@ -176,8 +176,7 @@ the previous version of the dataset if it was changed at some point?
 
 The answer is the `dvc checkout` command, and we already touched briefly the
 process of switching between different data versions in the
-[Experiments](/doc/tutorials/get-started/experiment-management) page of this
-tutorial.
+[Experiments](/doc/tutorials/get-started/experiments) page of this tutorial.
 
 Let's say we want to get the previous `model.pkl` file. The short answer is:
 

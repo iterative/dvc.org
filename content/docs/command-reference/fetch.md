@@ -93,9 +93,9 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
 - `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
   current workspace. This means DVC may download files needed to reproduce
   different versions of a DVC-file
-  ([experiments](/doc/tutorials/get-started/experiment-management)), not just
-  the ones currently in the workspace. Note that this can be combined with `-T`
-  below, for example using the `-aT` flag.
+  ([experiments](/doc/tutorials/get-started/experiments)), not just the ones
+  currently in the workspace. Note that this can be combined with `-T` below,
+  for example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Note that both options can be combined, for example using the

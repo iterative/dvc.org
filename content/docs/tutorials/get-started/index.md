@@ -48,6 +48,24 @@ hidden from the user. This directory can be committed with Git.
 > See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
 > learn more about the DVC internal file and directory structure.
 
----
+## What's ahead?
 
-Go to the next page to continue ↘
+The following pages of this tutorial go over the multiple layers of
+functionality provided by DVC. We call them _layers_ because each one builds on
+top of the previous ones:
+
+- [Data Versioning](/doc/tutorials/get-started/data-versioning) leverages Git
+  SCM to version and share large files (e.g. raw data, prepared features,
+  machine learning models, etc.) without storing them with Git.
+
+- [Data Pipelines](/doc/tutorials/get-started/data-pipelines) let you build a
+  dependency graph between your data processing stages, while versioning their
+  input and output. Stages an pipelines can be managed and reproduced easily by
+  you or others in the future.
+
+- [Experiments](/doc/tutorials/get-started/experiments) of data and processes
+  are a normal part of the data science process. DVC provides special tools to
+  define and track experiments for anyone to compare within your project.
+
+Please choose a topic from the sidebar to the left, or click the `Next` button
+below to start from the beginning ↘

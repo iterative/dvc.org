@@ -373,5 +373,5 @@ Another detail we only brushed upon here is the way we captured the
 <abbr>output</abbr> as a metric enables us to compare its values across Git tags
 or branches (for example, representing different experiments). See `dvc metrics`
 and
-[Compare Experiments](/doc/tutorials/get-started/experiment-management#compare-experiments)
+[Compare Experiments](/doc/tutorials/get-started/experiment#compare-experiments)
 to learn more about managing metrics with DVC.

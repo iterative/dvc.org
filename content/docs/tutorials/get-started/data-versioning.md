@@ -307,7 +307,3 @@ with dvc.api.open(
 ```
 
 Please refer to the [DVC Python API](/doc/api-reference) for many more details.
-
----
-
-Go to the next page to continue ↘
