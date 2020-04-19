@@ -13,14 +13,15 @@ user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:74.0) Gecko/2010010
 
 
 finder(){  # expects list of files
+  content="$(cat "$@")"  # read once (could be file descriptors)
   # explicit links not in markdown
-  pcregrep -o '(?<!\]\()https?://[^\s<>{}"'"'"'`]+' "$@"
+  echo "$content" | pcregrep -o '(?<!\]\()https?://[^\s<>{}"'"'"'`]+'
   # explicit links in markdown
-  pcregrep -o '(?<=\])\(https?://[^[\]\s]+\)' "$@" | pcregrep -o '\((?:[^)(]*(?R)?)*+\)' | pcregrep -o '(?<=\().*(?=\))'
+  echo "$content" | pcregrep -o '(?<=\])\(https?://[^[\]\s]+\)' | pcregrep -o '\((?:[^)(]*(?R)?)*+\)' | pcregrep -o '(?<=\().*(?=\))'
   # relative links in markdown
-  sed -nE 's/.*]\((\/[^)[:space:]]+).*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
+  echo "$content" | sed -nE 's/.*]\((\/[^)[:space:]]+).*/\1/p' | xargs -n1 -II echo ${base_url}I
   # relative links in html
-  sed -nE 's/.*href=["'"'"'](\/[^"'"'"']+?)["'"'"'].*/\1/p' "$@" | xargs -n1 -II echo ${base_url}I
+  echo "$content" | sed -nE 's/.*href=["'"'"'](\/[^"'"'"']+?)["'"'"'].*/\1/p' | xargs -n1 -II echo ${base_url}I
 }
 
 checker(){  # expects list of urls
