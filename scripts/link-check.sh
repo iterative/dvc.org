@@ -21,7 +21,7 @@ finder(){  # expects list of files
   # relative links in markdown
   echo "$content" | sed -nE 's/.*]\((\/[^)[:space:]]+).*/\1/p' | xargs -n1 -II echo ${base_url}I
   # relative links in html
-  echo "$content" | sed -nE 's/.*href=["'"'"'](\/[^"'"'"']+?)["'"'"'].*/\1/p' | xargs -n1 -II echo ${base_url}I
+  echo "$content" | sed -nE 's/.*href=["'"'"'](\/[^"'"'"']+)["'"'"'].*/\1/p' | xargs -n1 -II echo ${base_url}I
 }
 
 checker(){  # expects list of urls
