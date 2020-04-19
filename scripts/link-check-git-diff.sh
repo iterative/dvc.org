@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname $0)/exclude-links.txt}"
+repo="$(dirname "$(realpath "$(dirname "$0")")")"
+pushd "$repo"
+
+exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname "$0")/exclude-links.txt}"
 differ="git diff $(git merge-base HEAD origin/master)"
 changed="$($differ --name-only -- . ':!'"$exclude" ':!redirects-list.json')"
 
@@ -14,3 +17,5 @@ echo "$changed" | while read -r file ; do
   echo -n "$file:"
   "$(dirname "$0")"/link-check.sh <($differ -U0 -- "$file" | grep '^\+')
 done
+
+popd

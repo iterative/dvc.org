@@ -7,7 +7,7 @@
 set -euo pipefail
 
 base_url="${CHECK_LINKS_RELATIVE_URL:-https://dvc.org}"
-exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname $0)/exclude-links.txt}"
+exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname "$0")/exclude-links.txt}"
 [ -f "$exclude" ] && exclude="$(cat "$exclude")"
 user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:74.0) Gecko/20100101 Firefox/74.0"
 
