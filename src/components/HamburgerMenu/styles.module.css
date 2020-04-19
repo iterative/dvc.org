@@ -4,6 +4,7 @@
 
 .wrapper {
   display: block;
+  visibility: hidden;
   padding: 25px 15px 15px;
   position: fixed;
   z-index: 11;
@@ -18,6 +19,10 @@
   color: #fff;
   overflow-y: auto;
 
+  @media (--xs-scr) {
+    visibility: visible;
+  }
+
   &.opened {
     transform: translateX(0);
   }
@@ -26,6 +31,7 @@
 .toggleButton {
   position: fixed;
   display: none;
+  visibility: hidden;
   z-index: 999;
   right: 15px;
   top: 25px;
@@ -35,6 +41,7 @@
 
   @media (--xs-scr) {
     display: block;
+    visibility: visible;
   }
 }
 
