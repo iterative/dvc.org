@@ -8,6 +8,9 @@ changed="$($differ --name-only)"
 [ -z "$changed" ] && exit 0
 
 echo "$changed" | grep -v "$(basename "$exclude")" | while read -r file ; do
+  # check whole file
+  # "$(dirname "$0")"/link-check.sh "$file"
+  # check just changed lines
   echo -n "$file:"
-  $(dirname "$0")/link-check.sh <($differ -U0 -- "$file" | grep '^\+')
+  "$(dirname "$0")"/link-check.sh <($differ -U0 -- "$file" | grep '^\+')
 done
