@@ -1,6 +1,6 @@
 # Get Started with DVC!
 
-The next few pages explore the mail layers of features in DVC, from basic to
+The next few pages explore the main layers of features in DVC, from basic to
 advanced. This will be done in a hands-on way, working with source code and
 command line.
 
@@ -27,9 +27,9 @@ $ dvc pull
 
 ## Initialize
 
-Start by creating a <abbr>workspace</abbr> in the home directory, that you can
-version with Git. Then run `dvc init` inside to create a DVC
-<abbr>repository</abbr>:
+Let's start by creating a <abbr>workspace</abbr>, and initialize `git` in it as
+an underlying versioning layer. Then run `dvc init` inside to create a <abbr>DVC
+repository</abbr>:
 
 ```dvc
 $ cd ~
@@ -53,7 +53,7 @@ hidden from the user. This directory can be committed with Git.
 Because we'll want to share data and models outside of the local context later
 (for example with other collaborators or for access from a different computing
 environment), we're going to set up a default
-[remote storage](/doc/command-reference/remote/add) for the <abbr>DVC
+[remote storage](/doc/command-reference/remote) for the <abbr>DVC
 project</abbr>. For simplicity, let's set up a _local remote_:
 
 <details>
@@ -61,9 +61,9 @@ project</abbr>. For simplicity, let's set up a _local remote_:
 ### What is a "local remote" ?
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the type of location where the storage is, and it means another
-directory in the same file system. "Remote" is the term that refers to the
-storage itself. It's essentially a local storage backup.
+refers to the type of location where the storage is: another directory in the
+same file system. "Remote" is how we call storage for DVC projects. It's
+essentially a local storage backup.
 
 </details>
 
@@ -76,21 +76,10 @@ That's it! DVC doesn't require installing any databases, servers, or warehouses.
 It can simply use cloud services or local/network file systems to store all your
 data, intermediate results, and ML models.
 
-Note that we only use a local remote in this tutorial for simplicity's sake. For
-most cases, other "more remote" types of storage will be required. The following
-are currently supported:
-
-- Amazon **S3** (Simple Storage Service)
-- Microsoft **Azure** Blob Storage
-- **Google Drive**
-- **Google Cloud** Storage
-- Aliyun **OSS** (Object Storage Service)
-- **SSH** (Secure Shell) — requires SFTP
-- **HDFS** (Hadoop Distributed File System)
-- **HTTP** (and HTTPS) — read-only
-- Directory in the **local** file system
-
-> Refer to `dvc remote` for more details and examples.
+Note that for most real-life cases, **DVC supports many other remote storage
+types**: Google Drive, Amazon S3, Azure Blob Storage, Google Cloud Storage,
+Aliyun OSS, SSH, HDFS, and HTTP. Please refer to `dvc remote add` for more
+details and examples.
 
 There are many other configuration options that can be tweaked in DVC. Please
 see `dvc config` for more information.

@@ -36,7 +36,7 @@
           "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
         },
         "children": [
-          "versioning-basics",
+          "data-versioning",
           "data-pipelines",
           "experiment-management"
         ]

@@ -1,4 +1,4 @@
-# Data Versioning Basics
+# Data Versioning
 
 The first layer of DVC provides a basic framework for versioning, storing, and
 sharing data files or directories, ML models, and intermediate results. This can
@@ -24,8 +24,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 > source repository (refer to [Data Registries](/doc/use-cases/data-registries)
 > for more info.)
 
-This data will be used later in the tutorial to train a simple natural language
-processing (NLP) model that predicts tags for a given Stack Overflow question.
+This data will be used later in the tutorial to train a simple NLP model.
 
 ## Start tracking data
 
@@ -35,8 +34,8 @@ To track a file in your <abbr>DVC project</abbr>, just run `dvc add` on it:
 $ dvc add data/data.xml
 ```
 
-DVC stores information about the added data in a special **DVC-file**
-(`data/data.xml.dvc`), a small text file with a human-readable
+DVC stores information about the added data in a special **DVC-file** named
+`data/data.xml.dvc`, a small text file with a human-readable
 [format](/doc/user-guide/dvc-file-format). The above command also tells Git to
 ignore the actual data contents, so that this version of the data can be safely
 committed to the <abbr>repository</abbr>, using Git:
@@ -90,29 +89,28 @@ See [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
 
 </details>
 
-Refer to
-[Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
-and `dvc add` for more information on versioning data with DVC.
+> Refer to
+> [Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
+> for more information on versioning data with DVC.
 
 ## Store and retrieve shared data
 
-Now that your raw data is tracked by DVC, you can push it from your
-<abbr>project</abbr> to the default
-[remote storage](/doc/command-reference/remote).
-
-> As seen in the intro's [Configure](/doc/tutorials/get-started#configure)
-> section, we are using a _local remote_ for illustrative purposes.
+Having some data tracked by DVC, you can push it from your <abbr>project</abbr>
+to [remote storage](/doc/command-reference/remote) with:
 
 ```dvc
 $ dvc push
 ```
 
+> As seen in the intro's [Configure](/doc/tutorials/get-started#configure)
+> section, we are using a default _local remote_ for simplicity.
+
 <details>
 
 ### Expand to learn more about DVC internals
 
-You can check that the data has been backed up to the remote (`/tmp/dvc-storage`
-local directory) with:
+You can check that the data has been backed up to the DVC remote
+(`/tmp/dvc-storage` local directory) with:
 
 ```dvc
 $ ls -R /tmp/dvc-storage
@@ -123,15 +121,23 @@ $ ls -R /tmp/dvc-storage
 
 Similar to pushing source code to a _Git remote_, `dvc push` ensures that your
 data files and models are safely backed up remotely. Usually, we also want to
-`git commit` and `git push`, to save the new (or changed versions of)
-[DVC-files](/doc/user-guide/dvc-file-format).
+`git push` to share or back up the corresponding
+[DVC-files](/doc/user-guide/dvc-file-format), which should be committed with
+Git.
 
 </details>
 
-Having pushed data to remote storage means that it can be pulled by yourself or
-by colleagues when and where needed. Let's imagine you're just cloning the
-<abbr>repository</abbr> created so far, in another computer. This can be
-simulated by completely removing the data file from the <abbr>project</abbr>:
+Now that `dvc push` uploaded the data to a DVC remote, it can be pulled by
+yourself or colleagues when needed in other copies of this project.
+
+<details>
+
+### Expand to simulate a fresh clone of this repo
+
+The difference between a working <abbr>DVC repository</abbr> and its underlying
+Git repo is that the data tracked by DVC is **not stored by Git**. So let's
+remove the data file added so far, both from <abbr>workspace</abbr> and
+<abbr>cache</abbr>:
 
 ```dvc
 $ rm -f data/data.xml
@@ -142,39 +148,65 @@ data\data.xml.dvc:
                 deleted:            data\data.xml
 ```
 
-> Notice that we're also removing the data from <abbr>cache</abbr>.
+`dvc status` detects when DVC-tracked data is missing, among other
+<abbr>project</abbr> states.
 
-This is the same as cloning the repository created so far because
-`data/data.xml` is **not stored by Git**.
+</details>
 
-To restore the data backup now, simply run:
+To restore data from remote storage, use:
 
 ```dvc
 $ dvc pull
 ```
 
-`dvc pull` downloads data files that are referenced in all present
-[DVC-files](/doc/user-guide/dvc-file-format) from the default DVC remote, so
-usually we run it after `git clone`, `git pull`, or `git checkout`.
+`dvc pull` downloads the data files and directories referenced in all present
+[DVC-files](/doc/user-guide/dvc-file-format) from remote storage. Usually, we
+run it after `git clone` and `git pull`.
 
-> See also `dvc fetch`, and
+> Other related commands are `dvc fetch` and `dvc checkout`. See also
 > [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
-> for more information on basic collaboration workflows.
+> for more on basic collaboration workflows.
 
-## Import data
+## Accessing data
 
-We've seen how to [push and pull](#store-and-retrieve-shared-date) data from/to
-a remote storage. But what if we wanted to integrate a dataset or ML model
-produced in one project into another one?
+We've seen how to share data among team members or environments of the same
+<abbr>DVC project</abbr>. But what if we wanted to reuse a dataset or ML model
+from a different DVC repository?
 
-One way is to manually download the data and use `dvc add` to track it, like in
-the beginning of this page. But the connection between the projects is only
-known by the person doing this. Others wouldn't be able to tell where the data
-came from or whether there are new versions available.
+One way is to manually download the data and use `dvc add` to track it, like we
+did in the beginning of this page, but the connection between the projects is
+lost this way. Others won't be able to tell where the data came from or whether
+there's a new version available.
 
-A better alternative is the `dvc import` command! Let's go back to the project
-we're building, and replace `data/data.xml` by importing it from the same
-source:
+Fortunately DVC provides better alternatives! But first let's learn how to
+browse DVC repos without cloning them.
+
+### Find a dataset
+
+You can use `dvc list` to explore a <abbr>DVC repository</abbr> hosted on any
+Git server. For example:
+
+```dvc
+$ dvc list https://github.com/iterative/dataset-registry
+.gitignore
+README.md
+get-started
+images
+tutorial
+use-cases
+$ dvc list https://github.com/iterative/dataset-registry get-started
+.gitignore
+data.xml        # <-- Bingo!
+data.xml.dvc
+```
+
+Another benefit of this command over browsing a Git hosting website is that the
+list generated by DVC includes files and directories tracked by both Git and
+DVC.
+
+### Import the dataset
+
+Let's replace `data/data.xml` by importing it directly from the same source:
 
 ```dvc
 $ cd ~/so-tag-predict
@@ -182,12 +214,11 @@ $ dvc import https://github.com/iterative/dataset-registry \
              get-started/data.xml -o data/data.xml
 ```
 
-This downloads and overwrites the same `data/data.xml`, checks that it's in
-`data/.gitignore`, and creates the `data/data.xml.dvc`
-[DVC-file](/doc/user-guide/dvc-file-format). So far this seems identical to our
-previous strategy, except that this time `data.xml.dvc` has additional metadata
-that allows DVC to track changes in the source data. This allows `dvc update` to
-bring in changes from the data source.
+`dvc import` downloads and overwrites the same `data/data.xml`, tracking it with
+DVC in the same step, so you don't have to use `dvc add` separately.
+Additionally, `data.xml.dvc` now has special metadata that allows DVC to track
+changes in the source data. This allows you to bring in changes from the data
+source later, using `dvc update`.
 
 <details>
 
@@ -213,11 +244,8 @@ $ git diff
 The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 [version](https://git-scm.com/docs/revisions) of the dependency, respectively.
 
-> `dvc update` updates the `rev_lock` field of the corresponding DVC-file (when
-> there are changes to bring in).
-
 Note that the [dataset-registry](https://github.com/iterative/dataset-registry)
-repository doesn't actually contain a `get-started/data.xml` file. Like,
+repository doesn't actually contain a `get-started/data.xml` file. Like with
 `dvc get`, importing also downloads the data from the appropriate
 [remote storage](/doc/command-reference/remote).
 
@@ -228,9 +256,27 @@ Let's wrap up by committing the import stage with Git:
 ```dvc
 $ git add data/data.xml.dvc
 $ git commit -m "Import raw data (overwrite)"
-$ dvc push  # so others can pull the imported data in their repo copies
+$ dvc push
 ```
 
-> For programmatic functions to access data tracked by <abbr>DVC
-> repositories</abbr>, please refer to the
-> [Python API Reference](/doc/api-reference).
+### Python API
+
+Besides command line access to data files tracked in remote <abbr>DVC
+repositories</abbr>, you can also use DVC's _Python API_ to **access the data
+contents directly** from your code. For example:
+
+```py
+import dvc.api
+
+with dvc.api.open(
+        'get-started/data.xml',
+        repo='https://github.com/iterative/dataset-registry'
+        ) as fd:
+    # ... fd is a file descriptor that can be processed normally.
+```
+
+Please refer to the [DVC Python API](/doc/api-reference) for many more details.
+
+---
+
+Go to the next page to continue ↘

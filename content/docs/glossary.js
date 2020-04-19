@@ -20,7 +20,9 @@ code, ML models, etc. It will conatain your DVC project.
         'project',
         'projects',
         'DVC repository',
-        'DVC repositories'
+        'DVC repositories',
+        'repository',
+        'repositories'
       ],
       desc: `
 Initialized by running \`dvc init\` in the **workspace** (typically in a Git

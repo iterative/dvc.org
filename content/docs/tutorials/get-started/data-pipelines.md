@@ -335,13 +335,13 @@ $ cd ~
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 $ git checkout 7-train
+$ dvc unlock data/data.xml.dvc
 ```
 
 It's now extremely easy for anyone to reproduce the result end-to-end:
 
 ```dvc
-$ dvc pull data/data.xml  # Get the initial raw data.
-$ dvc repro train.dvc     # Regenerate everything else.
+$ dvc repro train.dvc
 ```
 
 `train.dvc` is the last stage file in the pipeline so far. It describes which
