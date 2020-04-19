@@ -4,9 +4,8 @@ set -euo pipefail
 repo="$(dirname "$(realpath "$(dirname "$0")")")"
 pushd "$repo"
 
-exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname "$0")/exclude-links.txt}"
 differ="git diff $(git merge-base HEAD origin/master)"
-changed="$($differ --name-only -- . ':!'"$exclude" ':!redirects-list.json')"
+changed="$($differ --name-only -- '*.md' '*.js')"
 
 [ -z "$changed" ] && exit 0
 
