@@ -143,15 +143,15 @@ $ mkdir data
 ```
 
 You should now have a blank workspace, just before
-[Versioning Basics](/doc/tutorials/get-started/versioning-basics).
+[Versioning Basics](/doc/tutorials/get-started/data-versioning).
 
 </details>
 
 ## Example: Tracking a remote file
 
 An advanced alternate to the intro of the
-[Versioning Basics](/doc/tutorials/get-started/versioning-basics) part of the
-_Get Started_ is to use `dvc import-url`:
+[Versioning Basics](/doc/tutorials/get-started/data-versioning) part of the _Get
+Started_ is to use `dvc import-url`:
 
 ```dvc
 $ dvc import-url https://data.dvc.org/get-started/data.xml \

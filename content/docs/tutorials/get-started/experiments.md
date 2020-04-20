@@ -9,7 +9,7 @@ through _parameters_ and _metrics_.
 ### Expand to prepare the project
 
 If you just followed through the
-[pipelines](/doc/tutorials/get-started/data-pipelines) page of this tutorial,
+[pipelines](/doc/tutorials/get-started/data-pipelines) part of this tutorial,
 you're all set. Otherwise, run these commands to get the project from Github:
 
 ```dvc
@@ -175,8 +175,7 @@ is how do we revert back to an older version of a model file? Or how can we get
 the previous version of the dataset if it was changed at some point?
 
 The answer is the `dvc checkout` command, and we already touched briefly the
-process of switching between different data versions in the
-[Experiments](/doc/tutorials/get-started/experiments) page of this tutorial.
+process of switching between different data versions in previous sections.
 
 Let's say we want to get the previous `model.pkl` file. The short answer is:
 

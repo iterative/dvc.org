@@ -58,14 +58,13 @@ top of the previous ones:
   SCM to version and share large files (e.g. raw data, prepared features,
   machine learning models, etc.) without storing them with Git.
 
-- [Data Pipelines](/doc/tutorials/get-started/data-pipelines) let you build a
-  dependency graph between your data processing stages, while versioning their
-  input and output. Stages an pipelines can be managed and reproduced easily by
-  you or others in the future.
+- [Data Pipelines](/doc/tutorials/get-started/data-pipelines) let you register
+  data workflows, while versioning the inputs and outputs of all of stages.
+  Registered pipelines can be managed and reproduced easily by you or others.
 
 - [Experiments](/doc/tutorials/get-started/experiments) of data and processes
   are a normal part of the data science process. DVC provides special tools to
-  define and track experiments for anyone to compare within your project.
+  define and track experiments for anyone to tweak and compare.
 
 Please choose a topic from the sidebar to the left, or click the `Next` button
 below to start from the beginning ↘

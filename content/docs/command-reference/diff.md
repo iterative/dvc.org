@@ -105,7 +105,7 @@ $ dvc diff
 Let's checkout the
 [3-add-file](https://github.com/iterative/example-get-started/releases/tag/3-add-file)
 tag, corresponding to the
-[tracking data](/doc/tutorials/get-started/versioning-basics#start-tracking-data)
+[tracking data](/doc/tutorials/get-started/data-versioning#start-tracking-data)
 _Get Started_ chapter, right after we added `data.xml` file with DVC:
 
 ```dvc

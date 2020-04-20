@@ -2,7 +2,7 @@
 
 The first layer of DVC provides a basic framework for versioning, storing, and
 sharing data files or directories, ML models, and intermediate results. This can
-be done on a regular Git workflow, but without actually tracking the file
+be done on a regular Git workflow, but without actually storing the file
 contents with Git.
 
 👉 Please follow the [intro](/doc/tutorials/get-started/) of this tutorial
@@ -93,8 +93,8 @@ See [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
 ## Configure remote storage
 
 Because we'll want to share data and models outside of the local context where
-the data tracked by DVC is <abbr>cached</abbr>, we're going to set up a default
-[remote storage](/doc/command-reference/remote) for the <abbr>DVC
+the data tracked with DVC is <abbr>cached</abbr>, we're going to set up a
+default [remote storage](/doc/command-reference/remote) for the <abbr>DVC
 project</abbr>. For simplicity, let's set up a _local remote_:
 
 <details>
@@ -124,10 +124,10 @@ HTTP. Please refer to `dvc remote add` for more details and examples.
 > There are many other configuration options that can be tweaked in DVC. Please
 > see `dvc config` for more information.
 
-## Store and retrieve shared data
+## Store and retrieve data
 
-Having some data tracked by DVC, you can push it from your <abbr>project</abbr>
-to [remote storage](/doc/command-reference/remote) with:
+To share data tracked with DVC, you can push it from your <abbr>project</abbr>
+to [remote storage](/doc/command-reference/remote):
 
 ```dvc
 $ dvc push
@@ -153,8 +153,8 @@ $ ls -R /tmp/dvc-storage
 Similar to pushing source code to a _Git remote_, `dvc push` ensures that your
 data files and models are safely backed up remotely. Usually, we also want to
 `git push` to share or back up the corresponding
-[DVC-files](/doc/user-guide/dvc-file-format), which should be committed with
-Git.
+[DVC-files](/doc/user-guide/dvc-file-format) (which should be committed with
+Git).
 
 </details>
 
@@ -166,7 +166,7 @@ yourself or colleagues when needed in other copies of this project.
 ### Expand to simulate a fresh clone of this repo
 
 The difference between a working <abbr>DVC repository</abbr> and its underlying
-Git repo is that the data tracked by DVC is **not stored by Git**. So let's
+Git repo is that the data tracked with DVC is **not stored by Git**. So let's
 remove the data file added so far, both from <abbr>workspace</abbr> and
 <abbr>cache</abbr>:
 
