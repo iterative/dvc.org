@@ -238,91 +238,6 @@ end-to-end.
 
 > See also the `dvc pipeline` command.
 
-## Visualize
-
-Now that we have built our pipeline, we need a good way to visualize it to be
-able to wrap our heads around it. DVC allows us to do that without leaving the
-terminal, making the experience distraction-less.
-
-> We are using the `--ascii` option below to better illustrate this pipeline.
-> Please, refer to `dvc pipeline show` to explore other options this command
-> supports (e.g. `.dot` files that can be used then in other tools).
-
-### Stages
-
-```dvc
-$ dvc pipeline show --ascii train.dvc
-     +-------------------+
-     | data/data.xml.dvc |
-     +-------------------+
-               *
-               *
-               *
-        +-------------+
-        | prepare.dvc |
-        +-------------+
-               *
-               *
-               *
-       +---------------+
-       | featurize.dvc |
-       +---------------+
-               *
-               *
-               *
-         +-----------+
-         | train.dvc |
-         +-----------+
-```
-
-### Commands
-
-```dvc
-$ dvc pipeline show --ascii train.dvc --commands
-          +-------------------------------------+
-          | python src/prepare.py data/data.xml |
-          +-------------------------------------+
-                          *
-                          *
-                          *
-   +---------------------------------------------------------+
-   | python src/featurization.py data/prepared data/features |
-   +---------------------------------------------------------+
-                          *
-                          *
-                          *
-          +---------------------------------------------+
-          | python src/train.py data/features model.pkl |
-          +---------------------------------------------+
-```
-
-### Outputs
-
-```dvc
-$ dvc pipeline show --ascii train.dvc --outs
-          +---------------+
-          | data/data.xml |
-          +---------------+
-                  *
-                  *
-                  *
-          +---------------+
-          | data/prepared |
-          +---------------+
-                  *
-                  *
-                  *
-          +---------------+
-          | data/features |
-          +---------------+
-                  *
-                  *
-                  *
-            +-----------+
-            | model.pkl |
-            +-----------+
-```
-
 ## Reproduce
 
 Imagine you're just cloning the <abbr>repository</abbr> created so far, in
@@ -356,3 +271,38 @@ in this graph or pipeline).
 
 Thus, `dvc run` and `dvc repro` provide a powerful framework for _reproducible
 experiments_ and **reproducible <abbr>projects</abbr>**.
+
+## Visualize
+
+Now that we have built our pipeline, we need a good way to visualize it. Seeing
+the graph of connected stages would help wrap our minds around it. DVC allows us
+to do that without leaving the terminal, making the experience distraction-less.
+
+> We are using the `--ascii` option below to better illustrate this pipeline.
+> Please, refer to `dvc pipeline show` to explore other options this command
+> supports (e.g. `.dot` files that can be used then in other tools).
+
+```dvc
+$ dvc pipeline show --ascii train.dvc
+     +-------------------+
+     | data/data.xml.dvc |
+     +-------------------+
+               *
+               *
+               *
+        +-------------+
+        | prepare.dvc |
+        +-------------+
+               *
+               *
+               *
+       +---------------+
+       | featurize.dvc |
+       +---------------+
+               *
+               *
+               *
+         +-----------+
+         | train.dvc |
+         +-----------+
+```
