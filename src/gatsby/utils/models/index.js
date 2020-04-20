@@ -20,7 +20,7 @@
     within a regular gatsby-node function.
 */
 
-async function asyncCallOnAll(models, apiName, ...childArgs) {
+async function asyncCallOnAll(models, name, ...childArgs) {
   return Promise.all(
     models.map(
       model => typeof model[name] === 'function' && model[name](...childArgs)
