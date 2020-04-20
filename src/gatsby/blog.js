@@ -53,7 +53,7 @@ const createPages = async ({ graphql, actions }) => {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-          limit: 9999
+          limit: 1
         ) {
           edges {
             node {
@@ -69,13 +69,13 @@ const createPages = async ({ graphql, actions }) => {
         home: allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-          limit: 9999
+          limit: 1
         ) {
           pageInfo {
             itemCount
           }
         }
-        tags: allMarkdownRemark(limit: 9999) {
+        tags: allMarkdownRemark(limit: 1) {
           group(field: frontmatter___tags) {
             fieldValue
             pageInfo {
