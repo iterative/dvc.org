@@ -1,5 +1,6 @@
 #!/usr/bin/env node
 'use strict'
+require('dotenv').config()
 const path = require('path')
 const PRODUCTION_PREFIX = 'dvc-org-prod'
 
@@ -81,7 +82,7 @@ async function main() {
   )
 
   await uploadAllToS3(s3Prefix)
-  await cleanAllLocal()
+  if (process.env.CLEAN_GATSBY_BUILD_CACHE) await cleanAllLocal()
 }
 
 main().catch(e => {
