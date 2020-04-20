@@ -99,19 +99,15 @@ async function cleanAllLocal(entries) {
 }
 
 async function downloadAllFromS3(entries, basePrefix) {
-  return Promise.all(
-    entries.map(([dir, childPrefix]) =>
-      downloadFromS3(dir, childPrefix, basePrefix)
-    )
-  )
+  entries.forEach(async ([dir, childPrefix]) => {
+    await downloadFromS3(dir, childPrefix, basePrefix)
+  })
 }
 
 async function uploadAllToS3(entries, basePrefix) {
-  return Promise.all(
-    entries.map(([dir, childPrefix]) =>
-      uploadToS3(dir, childPrefix, basePrefix)
-    )
-  )
+  entries.forEach(async ([dir, childPrefix]) => {
+    await uploadToS3(dir, childPrefix, basePrefix)
+  })
 }
 
 // Some syntax sugar that generates versions of the entry-based
