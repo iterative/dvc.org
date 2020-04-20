@@ -30,6 +30,8 @@ const cacheDirs = [
   ['.cache', '-cache/']
 ]
 
+const fs = require('fs')
+
 const { s3Prefix, withEntries, prefixIsEmpty } = require('./s3-utils')
 const { move } = require('fs-extra')
 const { downloadAllFromS3, uploadAllToS3, cleanAllLocal } = withEntries(
@@ -57,6 +59,8 @@ async function main() {
     await downloadAllFromS3(s3Prefix)
   }
 
+  console.log(rootDir, fs.readdirSync(rootDir))
+
   try {
     run('yarn build')
   } catch (buildError) {
@@ -72,6 +76,8 @@ async function main() {
     run('yarn build')
   }
 
+  await uploadAllToS3(s3Prefix)
+
   // Move the 404 HTML file from public into the root dir for Heroku
   await move(
     path.join(rootDir, publicDirName, '404.html'),
@@ -80,8 +86,6 @@ async function main() {
       overwrite: true
     }
   )
-
-  await uploadAllToS3(s3Prefix)
   if (process.env.CLEAN_GATSBY_BUILD_CACHE) await cleanAllLocal()
 }
 
