@@ -59,7 +59,11 @@ async function main() {
     await downloadAllFromS3(s3Prefix)
   }
 
-  console.log(rootDir, fs.readdirSync(rootDir))
+  const imageCacheDir = fs.readdirSync(rootDir + '/public/static')
+  console.log(
+    imageCacheDir.length + ' items in ' + rootDir + '/public/static',
+    imageCacheDir
+  )
 
   try {
     run('yarn build')
