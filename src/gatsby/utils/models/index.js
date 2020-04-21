@@ -18,7 +18,7 @@
     In a Gatsby API, this mimics the original Gatsby call on all Models:
 
     exports.onCreateNode = (api) =>
-      asyncCallOnAll(models, "onCreateNode", api)
+      callOnModels(models, "onCreateNode", api)
 
     You can also call this within another function if you want to use Models
     within a regular gatsby-node function.

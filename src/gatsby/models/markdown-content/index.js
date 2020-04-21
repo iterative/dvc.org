@@ -1,4 +1,4 @@
-const runOnModels = require('../../utils/models')
+const callOnModels = require('../../utils/models')
 
 /*
   Markdown Content Model.
@@ -63,7 +63,7 @@ module.exports = {
         }
 
         // Run our custom API hook on all models.
-        return runOnModels(
+        return callOnModels(
           models,
           'onCreateMarkdownContentNode',
           api,

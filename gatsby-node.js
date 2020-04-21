@@ -5,12 +5,12 @@ const {
 } = require('./src/gatsby/common')
 
 const models = require('./src/gatsby/models.js')
-const runOnModels = require('./src/gatsby/utils/models')
+const callOnModels = require('./src/gatsby/utils/models')
 
 exports.createSchemaCustomization = api =>
-  runOnModels(models, 'createSchemaCustomization', api)
-exports.onCreateNode = api => runOnModels(models, 'onCreateNode', api)
-exports.createPages = api => runOnModels(models, 'createPages', api)
+  callOnModels(models, 'createSchemaCustomization', api)
+exports.onCreateNode = api => callOnModels(models, 'onCreateNode', api)
+exports.createPages = api => callOnModels(models, 'createPages', api)
 
 exports.onCreatePage = ({ page, actions }) => {
   setPageContext(page, actions)
