@@ -48,8 +48,6 @@ DVC supports several types of (local or) remote locations (protocols):
 > include them all. The command should look like this: `pip install "dvc[s3]"`.
 > (This example installs `boto3` library along with DVC to support S3 storage.)
 
-<!-- Separate MD quote: -->
-
 \* HDFS and HTTP **do not** support downloading entire directories, only single
 files.
 
