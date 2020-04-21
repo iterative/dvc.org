@@ -9,8 +9,8 @@ descriptionLong: |
   for DivOps, a conference about the future of DevOps, DVC data
   scientist Elle O'Brien discusses how CI/CD can adapt to
   machine learning. This is MLOps, explained with fuzzy animals.
-picture: ../../static/uploads/images/2020-03-31/cover_image.png
-author: ../authors/elle_obrien.md
+picture: 2020-03-31/cover_image.png
+author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/new-video-reimagining-devops-for-machine-learning/341
 tags:
   - CI/CD

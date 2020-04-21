@@ -13,12 +13,12 @@ descriptionLong: |
   Look here for updates about [DVC](https://dvc.org), our journey as a startup,
   projects by our users and big ideas about best practices in ML and data
   science.
-picture: ../../static/uploads/images/2020-04-06/april_header.png
+picture: 2020-04-06/april_header.png
 pictureComment:
   A view from [Barrancas del
   Cobre](https://en.wikipedia.org/wiki/Copper_Canyon), shot by Jorge Orpinel
   Pérez. Jorge has mastered the art of working on DVC remotely.
-author: ../authors/elle_obrien.md
+author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/april-20-heartbeat/347
 tags:
   - Heartbeat
@@ -90,8 +90,8 @@ updates:
   ([check out the docs](https://dvc.org/doc/command-reference/metrics/diff) to
   learn more)
 - Windows users, we are here for you. Contributor
-  [Charles Baynham](https://github.com/charlesbaynham) helped us get better
-  performance on copy operations in Windows.
+  [rxxg](https://github.com/rxxg) helped us get better performance on copy
+  operations in Windows.
 
 ## From the community
 

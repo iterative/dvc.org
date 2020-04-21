@@ -13,9 +13,9 @@ descriptionLong: |
   There are a lot of example on how to use Data Version Control (DVC) with a
   Python project. In this document I would like to see how it can be used with a
   project in R.
-picture: ../../static/uploads/images/2017-07-24/post-image.png
+picture: 2017-07-24/post-image.png
 pictureComment: DAG on R example
-author: ../authors/marija_ilic.md
+author: marija_ilic
 commentsUrl: https://discuss.dvc.org/t/r-code-and-reproducible-model-development-with-dvc/298
 tags:
   - RStats

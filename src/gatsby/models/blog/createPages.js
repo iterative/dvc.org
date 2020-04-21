@@ -1,6 +1,12 @@
 const path = require('path')
-const tagToSlug = require('../utils/shared/tagToSlug')
-const { BLOG } = require('../consts')
+const tagToSlug = require('../../../utils/shared/tagToSlug')
+const { BLOG } = require('../../../consts')
+// Since blog pages and their indexes require a ton of image resizes, it's
+// useful to have an option to only generate a minimal set of these pages when
+// developing. Set LIMIT_BLOG_PAGES to anything truthy and this module will
+// attempt to generate as few blog pages as possible while still having a bit of
+// everything to look at.
+const LIMIT_BLOG_PAGES = Boolean(process.env.LIMIT_BLOG_PAGES)
 
 const pageUrl = (basePath, page) => {
   if (page > 1) {
@@ -49,47 +55,31 @@ function* pagesGenerator({ itemCount, hasHeroItem = false, basePath }) {
 const createPages = async ({ graphql, actions }) => {
   const blogResponse = await graphql(
     `
-      {
-        allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-          limit: 1
-        ) {
-          edges {
-            node {
-              fields {
-                slug
-              }
-              frontmatter {
-                title
-              }
-            }
-          }
-        }
-        home: allMarkdownRemark(
-          sort: { fields: [frontmatter___date], order: DESC }
-          filter: { fileAbsolutePath: { regex: "/content/blog/" } }
-          limit: 1
-        ) {
-          pageInfo {
-            itemCount
-          }
-        }
-        tags: allMarkdownRemark(limit: 1) {
-          group(field: frontmatter___tags) {
+      query BlogPageBuilderQuery($limit: Int) {
+        allBlogPost(sort: { fields: [date], order: DESC }, limit: $limit) {
+          tags: group(field: tags) {
             fieldValue
             pageInfo {
               itemCount
             }
           }
+          nodes {
+            slug
+            id
+          }
         }
       }
-    `
+    `,
+    {
+      limit: LIMIT_BLOG_PAGES ? 1 : 9999
+    }
   )
 
   if (blogResponse.errors) {
     throw blogResponse.errors
   }
+
+  const { tags, nodes: posts } = blogResponse.data.allBlogPost
 
   // Create home blog pages (with pagination)
   const blogHomeTemplate = path.resolve('./src/templates/blog-home.tsx')
@@ -97,7 +87,7 @@ const createPages = async ({ graphql, actions }) => {
   for (const page of pagesGenerator({
     basePath: '/blog',
     hasHeroItem: true,
-    itemCount: blogResponse.data.home.pageInfo.itemCount
+    itemCount: posts.length
   })) {
     actions.createPage({
       component: blogHomeTemplate,
@@ -111,30 +101,36 @@ const createPages = async ({ graphql, actions }) => {
 
   // Create blog posts pages
   const blogPostTemplate = path.resolve('./src/templates/blog-post.tsx')
-  const posts = blogResponse.data.allMarkdownRemark.edges
 
-  posts.forEach((post, index) => {
-    const previous = index === posts.length - 1 ? null : posts[index + 1].node
-    const next = index === 0 ? null : posts[index - 1].node
+  const blogPagesPromise = Promise.all(
+    posts.map(({ id, slug }, index) => {
+      const previous = index === posts.length - 1 ? null : posts[index + 1]
+      const next = index === 0 ? null : posts[index - 1]
 
-    actions.createPage({
-      component: blogPostTemplate,
-      context: {
-        isBlog: true,
-        currentPage: index + 1,
-        next,
-        previous,
-        slug: post.node.fields.slug
-      },
-      path: post.node.fields.slug
+      actions.createPage({
+        component: blogPostTemplate,
+        context: {
+          isBlog: true,
+          currentPage: index + 1,
+          next,
+          previous,
+          id
+        },
+        path: slug
+      })
     })
-  })
+  )
 
   // Create tags pages (with pagination)
   const blogTagsTemplate = path.resolve('./src/templates/blog-tags.tsx')
 
-  blogResponse.data.tags.group.forEach(
-    ({ fieldValue: tag, pageInfo: { itemCount } }) => {
+  // We have to explicitly limit tag pages here, otherwise we get one for
+  // every tag on the example post that makes images for a few children.
+  // That can easily add hundreds of images because of the blog index template.
+  const _tags = LIMIT_BLOG_PAGES ? tags.slice(0, 1) : tags
+
+  const tagPagesPromise = Promise.all(
+    _tags.map(({ fieldValue: tag, pageInfo: { itemCount } }) => {
       const basePath = `/tags/${tagToSlug(tag)}`
 
       for (const page of pagesGenerator({ basePath, itemCount })) {
@@ -144,8 +140,10 @@ const createPages = async ({ graphql, actions }) => {
           context: { tag, ...page.context }
         })
       }
-    }
+    })
   )
+
+  return Promise.all([tagPagesPromise, blogPagesPromise])
 }
 
-exports.createPages = createPages
+module.exports = createPages

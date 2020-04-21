@@ -8,9 +8,7 @@ import styles from './styles.module.css'
 
 interface IBlogFeedMetaProps {
   avatar: {
-    childImageSharp: {
-      fixed: FixedObject
-    }
+    fixed: FixedObject
   }
   commentsUrl?: string
   commentsCount?: number
@@ -29,7 +27,7 @@ const FeedMeta: React.FC<IBlogFeedMetaProps> = ({
 }) => {
   return (
     <div className={styles.wrapper}>
-      <Image fixed={avatar.childImageSharp.fixed} className={styles.avatar} />
+      <Image fixed={avatar.fixed} className={styles.avatar} />
       <ul className={styles.list}>
         <li className={styles.item}>{name}</li>
         <li className={styles.item}>
