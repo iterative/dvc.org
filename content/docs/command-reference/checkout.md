@@ -6,8 +6,8 @@ DVC-files.
 ## Synopsis
 
 ```usage
-usage: dvc checkout [-h] [-q | -v] [-d] [-R] [-f] [--relink]
-                    [targets [targets ...]]
+usage: dvc checkout [-h] [-q | -v] [--summary] [-d] [-R] [-f]
+                    [--relink] [targets [targets ...]]
 
 positional arguments:
   targets          DVC-files to checkout. Optional. (Finds all
@@ -69,15 +69,17 @@ be pulled from remote storage using `dvc pull`.
 
 ## Options
 
+- `--summary` - show summary of the changes.
+
+- `-R`, `--recursive` - determines the files to checkout by searching each
+  target directory and its subdirectories for DVC-files to inspect. If there are
+  no directories among the `targets`, this option is ignored.
+
 - `-d`, `--with-deps` - determines files to update by tracking dependencies to
   the target DVC-files (stages). If no `targets` are provided, this option is
   ignored. By traversing all stage dependencies, DVC searches backward from the
   target stages in the corresponding pipelines. This means DVC will not checkout
   files referenced in later stages than the `targets`.
-
-- `-R`, `--recursive` - determines the files to checkout by searching each
-  target directory and its subdirectories for DVC-files to inspect. If there are
-  no directories among the `targets`, this option is ignored.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
   current set of DVC-files with `git checkout` can result in the need for DVC to
