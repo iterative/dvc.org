@@ -1,18 +1,18 @@
 const runOnModels = require('../../utils/models')
 
 /*
-  Markdown Content model.
+  Markdown Content Model.
 
   This is a special Model that handles any Markdown node that's transformed into
   a site page (for us, the Blog and Docs). When present, this Model will call
-  all other models with a function named "onCreateMarkdownContentNode" exposed.
+  all other Models with a function named "onCreateMarkdownContentNode" exposed.
 
   onCreateMarkdownContentNode is a modified version of onCreateNode, but it only
   runs on MarkdownRemark nodes that come from a gatsby-source-filesystem
   instance named "content" and also passes down the parent File node that it
   already had to fetch.
 
-  To implement a Model that uses this model, just export
+  To implement a Model that uses this Model, just export
   "onCreateMarkdownContentNode" where you would otherwise export "onCreateNode".
   You can access everything passed down by this Model through the third
   positional argument.
