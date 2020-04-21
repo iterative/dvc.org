@@ -1,9 +1,6 @@
 module.exports = {
-  async onCreateNode(
-    { node, getNode, actions: { createNodeField } },
-    options,
-    { parentNode = getNode(node.parent) }
-  ) {
+  async onCreateNode({ node, getNode, actions: { createNodeField } }) {
+    const parentNode = getNode(node.parent)
     if (node.internal.type === 'ImageSharp') {
       createNodeField({
         node,

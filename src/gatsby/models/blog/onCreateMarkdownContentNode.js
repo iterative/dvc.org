@@ -1,6 +1,6 @@
 const { markdownToHtml } = require('../../common.js')
 
-function createMarkdownBlogNode(api, options, { parentNode }) {
+function createMarkdownBlogNode(api, { parentNode }) {
   if (parentNode.relativeDirectory.split('/')[0] !== 'blog') return
   const { node, actions, createNodeId, createContentDigest } = api
   const { createNode, createParentChildLink } = actions

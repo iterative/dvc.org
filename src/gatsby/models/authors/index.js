@@ -1,4 +1,4 @@
 module.exports = {
-  onCreateMarkdownContentNode: require('./onCreateNode.js'),
+  onCreateMarkdownContentNode: require('./onCreateMarkdownContentNode.js'),
   createSchemaCustomization: require('./createSchemaCustomization.js')
 }

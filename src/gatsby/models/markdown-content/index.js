@@ -48,7 +48,7 @@ const runOnModels = require('../../utils/models')
 */
 
 module.exports = {
-  async onCreateNode(api, options, { models }) {
+  async onCreateNode(api, { models }) {
     const { node, getNode } = api
     if (node.internal.type === 'MarkdownRemark') {
       const parentNode = getNode(node.parent)
@@ -59,7 +59,6 @@ module.exports = {
 
         // Any data that isn't the Gatsby API should be passed through this object.
         const markdownContentApi = {
-          models,
           parentNode
         }
 

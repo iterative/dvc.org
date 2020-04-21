@@ -3,13 +3,14 @@ const {
   removePageTrailingSlash
 } = require('./src/gatsby/common')
 
-const buildModelApi = require('./src/gatsby/utils/models')
-const models = require('./src/gatsby/models')
-const modelApiRunner = buildModelApi(models)
+const models = require('./src/gatsby/models.js')
+const runOnModels = require('./src/gatsby/utils/models')
 
-exports.onCreateNode = modelApiRunner('onCreateNode')
-exports.createPages = modelApiRunner('createPages')
-exports.createSchemaCustomization = modelApiRunner('createSchemaCustomization')
+exports.createSchemaCustomization = api =>
+  runOnModels(models, 'createSchemaCustomization', api)
+exports.onCreateNode = api =>
+  runOnModels(models, 'onCreateNode', api, { models })
+exports.createPages = api => runOnModels(models, 'createPages', api)
 
 exports.onCreatePage = ({ page, actions }) => {
   setPageContext(page, actions)

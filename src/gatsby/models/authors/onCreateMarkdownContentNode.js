@@ -1,4 +1,4 @@
-function createMarkdownAuthorNode(api, options, { parentNode }) {
+function createMarkdownAuthorNode(api, { parentNode }) {
   if (parentNode.relativeDirectory.split('/')[0] !== 'authors') return
   const { node, actions, createNodeId, createContentDigest } = api
   const { createNode, createParentChildLink } = actions

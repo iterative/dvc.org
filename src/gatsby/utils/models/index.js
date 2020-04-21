@@ -4,10 +4,14 @@
       The array of models to run the action on.
     name: string
       If any model has a function under under this key, that function will be run.
-    ...childArgs
-      All arguments passed after models and name are forwarded to the child calls.
-      Generally, you'd put the Gatsby API object here and then any other data to
-      pass along.
+    api: Object<GatsbyAPI>
+      The api object provided by Gatsby in whichever lifecycle method or Model this
+      function is being called in.
+    modelOptions
+      This fourth positional parameter is meant to pass data through to the Models.
+      If this isn't provided, it defaults to an object including all the models
+      currently being run as an injected dependency: this allows for sharing
+      Gatsby build code via models that call custom hooks on other models.
   )
 
   Standard usage:
@@ -20,10 +24,11 @@
     within a regular gatsby-node function.
 */
 
-async function asyncCallOnAll(models, name, ...childArgs) {
+async function asyncCallOnAll(models, name, api, modelOptions = { models }) {
   return Promise.all(
     models.map(
-      model => typeof model[name] === 'function' && model[name](...childArgs)
+      model =>
+        typeof model[name] === 'function' && model[name](api, modelOptions)
     )
   )
 }
