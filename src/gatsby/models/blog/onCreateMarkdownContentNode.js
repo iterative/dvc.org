@@ -18,7 +18,7 @@ function createMarkdownBlogNode(api, { parentNode }) {
   } = frontmatter
   const { name, relativePath } = parentNode
 
-  const slug = name === 'index' ? '' : /[-\d]*(.*)/.exec(name)[1]
+  const slug = /[-\d]*(.*)/.exec(name)[1]
 
   const pagePath = '/blog/' + slug
   const fieldData = {
