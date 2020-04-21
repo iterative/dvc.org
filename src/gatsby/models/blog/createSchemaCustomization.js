@@ -1,7 +1,7 @@
 const markdownParentFields = require('../markdown-content/fields.js')
 const {
-  resolveNodeFromRelativeFile,
-  resolveRelativeImage
+  resolvePostAuthor,
+  resolvePostPicture
 } = require('../../utils/resolvers')
 
 async function createSchemaCustomization(api) {
@@ -17,11 +17,11 @@ async function createSchemaCustomization(api) {
         ...markdownParentFields,
         author: {
           type: 'Author',
-          resolve: resolveNodeFromRelativeFile('Author')
+          resolve: resolvePostAuthor
         },
         picture: {
           type: 'ImageSharp',
-          resolve: resolveRelativeImage()
+          resolve: resolvePostPicture
         }
       }
     })

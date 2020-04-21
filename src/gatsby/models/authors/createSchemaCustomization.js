@@ -1,5 +1,5 @@
 const markdownParentFields = require('../markdown-content/fields.js')
-const { resolveRelativeImage } = require('../../utils/resolvers')
+const { resolveAuthorAvatar } = require('../../utils/resolvers')
 
 async function createAuthorSchemaCustomization(api) {
   const {
@@ -21,7 +21,7 @@ async function createAuthorSchemaCustomization(api) {
         ...markdownParentFields,
         avatar: {
           type: 'ImageSharp',
-          resolve: resolveRelativeImage()
+          resolve: resolveAuthorAvatar
         },
         posts: {
           type: 'AuthorPosts',
