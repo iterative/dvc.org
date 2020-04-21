@@ -9,8 +9,7 @@ const runOnModels = require('./src/gatsby/utils/models')
 
 exports.createSchemaCustomization = api =>
   runOnModels(models, 'createSchemaCustomization', api)
-exports.onCreateNode = api =>
-  runOnModels(models, 'onCreateNode', api, { models })
+exports.onCreateNode = api => runOnModels(models, 'onCreateNode', api)
 exports.createPages = api => runOnModels(models, 'createPages', api)
 
 exports.onCreatePage = ({ page, actions }) => {
