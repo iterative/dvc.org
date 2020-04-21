@@ -8,8 +8,8 @@ descriptionLong: |
   Delve into an open natural language dataset of posts about moral dilemmas from
   [r/AmItheAsshole](https://www.reddit.com/r/AmItheAsshole/). Use this dataset
   for whatever you want- here's how to get it and start playing.
-picture: ../../static/uploads/images/2020-02-17/post_header_gmoji.png
-author: ../authors/elle_obrien.md
+picture: 2020-02-17/post_header_gmoji.png
+author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/aita-for-making-this-a-public-dataset-of-reddit-posts-about-moral-dilemmas/323
 tags:
   - Project
