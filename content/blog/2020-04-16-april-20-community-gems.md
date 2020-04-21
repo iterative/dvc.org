@@ -61,7 +61,9 @@ wrong hands- it'll remove any unused files in your remote (for more info,
 from having this power, setting your bucket policy to block object deletions
 should do the trick. How to do this will depend on your cloud storage provider-
 we found some relevant docs for
-[GCP](https://cloud.google.com/iam/docs/understanding-roles#cloud_storage_roles), [S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html), and
+[GCP](https://cloud.google.com/iam/docs/understanding-roles#cloud_storage_roles),
+[S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html),
+and
 [Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-auth-aad).
 For the full list of supported remote storage types,
 [see here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
