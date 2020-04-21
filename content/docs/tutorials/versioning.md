@@ -87,7 +87,7 @@ $ rm -f data.zip
 > repository</abbr>, using the appropriate
 > [remote storage](/doc/command-reference/remote). It's like `wget`, but for
 > DVC/Git repos. In this case we use our
-> [dataset-registry](https://github.com/iterative/dataset-registry)) as the
+> [dataset-registry](https://github.com/iterative/dataset-registry) as the
 > source repository (refer to [Data Registries](/doc/use-cases/data-registries)
 > for more info.)
 

@@ -1,8 +1,7 @@
 # Get Started with DVC!
 
-The next few pages explore the main layers of features in DVC, from basic to
-advanced. This will be done in a hands-on way, working with source code and
-command line.
+The next few pages explore the main layers of features in DVC. This will be done
+in a hands-on way, working with source code and command line.
 
 You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
 Also, if DVC is not installed, please follow [these instructions](/doc/install)
@@ -45,14 +44,14 @@ configuration and <abbr>cache</abbr>
 [files and directories](/doc/user-guide/dvc-files-and-directories), that are
 hidden from the user. This directory can be committed with Git.
 
-> See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to
-> learn more about the DVC internal file and directory structure.
+> 📖 See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
+> to learn more about DVC internals.
 
 ## What's ahead?
 
-The following pages of this tutorial go over the multiple layers of
-functionality provided by DVC. We call them _layers_ because each one builds on
-top of the previous ones:
+The following pages of this tutorial go over the several _layers_ of
+functionality provided by DVC. Each builds on top of the previous ones, but they
+can be used independently:
 
 - [Data Versioning](/doc/tutorials/get-started/data-versioning) leverages Git
   SCM to version and share large files (e.g. raw data, prepared features,

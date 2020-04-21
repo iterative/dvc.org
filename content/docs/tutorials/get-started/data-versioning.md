@@ -5,10 +5,8 @@ sharing data files or directories, ML models, and intermediate results. This can
 be done on a regular Git workflow, but without actually storing the file
 contents with Git.
 
-👉 Please follow the [intro](/doc/tutorials/get-started/) of this tutorial
-before continuing.
-
-To get started, let's get an example dataset:
+👉 Having [initialized](/doc/tutorials/get-started#initialize) DVC, let's get an
+example dataset:
 
 ```dvc
 $ mkdir data
@@ -18,24 +16,27 @@ $ dvc get https://github.com/iterative/dataset-registry \
 
 > `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
 > repository</abbr>. It's like `wget`, but for DVC/Git repos. In this case we
-> use our [dataset-registry](https://github.com/iterative/dataset-registry)) as
+> use our [dataset-registry](https://github.com/iterative/dataset-registry) as
 > the source repository.
 
-This data will be used later in the tutorial to train a simple NLP model.
+We'll use this data in the
+[next page](/doc/tutorials/get-started/data-pipelines) to train a simple NLP
+model.
 
 ## Start tracking data
 
-To track a file in your <abbr>DVC project</abbr>, just run `dvc add` on it:
+To track a file or directory that is too large for Git, just run `dvc add` on
+it:
 
 ```dvc
 $ dvc add data/data.xml
 ```
 
-DVC <abbr>caches</abbr> `data/data.xml` locally and stores information about the
-added data in a special **DVC-file** named `data/data.xml.dvc`, a small text
-file with a human-readable [format](/doc/user-guide/dvc-file-format). It also
-tells Git to ignore the added file, so that this version of the repository can
-be safely committed with Git:
+DVC <abbr>caches</abbr> `data/data.xml` and stores information about the added
+data in a special **DVC-file** named `data/data.xml.dvc`, a small text file with
+a human-readable [format](/doc/user-guide/dvc-file-format). It also tells Git to
+ignore the added file, so that this version of the repository can be safely
+committed with Git:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
@@ -86,7 +87,7 @@ See [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
 
 </details>
 
-> Refer to
+> 📖 Refer to
 > [Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
 > for more information on versioning data with DVC.
 
@@ -194,7 +195,9 @@ $ dvc pull
 [DVC-files](/doc/user-guide/dvc-file-format) from remote storage. Usually, we
 run it after `git clone` and `git pull`.
 
-> Other related commands are `dvc fetch` and `dvc checkout`. See also
+> Other related commands are `dvc fetch` and `dvc checkout`.
+
+> 📖 See also
 > [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
 > for more on basic collaboration workflows.
 
@@ -306,4 +309,4 @@ with dvc.api.open(
     # ... fd is a file descriptor that can be processed normally.
 ```
 
-Please refer to the [DVC Python API](/doc/api-reference) for many more details.
+📖 Please refer to the [DVC Python API](/doc/api-reference) for more details.

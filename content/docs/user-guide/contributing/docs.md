@@ -200,8 +200,10 @@ We use **bold** text for emphasis, and _italics_ for special terms.
 
 We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 
+- 📖 For notes that link to other related documentation
 - ⚠️ Warnings about possible problems related to DVC usage (similar to **Note!**
   and "Note that..." notes)
 - 💡 Useful tips related to external tools/integrations
 
-> Some other emojis currently in use here and there: ⚡🙏🐛⭐❗ (among others).
+> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐❗ (among
+> others).

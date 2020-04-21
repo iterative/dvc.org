@@ -6,7 +6,7 @@ through _parameters_ and _metrics_.
 
 <details>
 
-### Expand to prepare the project
+### 👉 Expand to prepare the project
 
 If you just followed through the
 [pipelines](/doc/tutorials/get-started/data-pipelines) part of this tutorial,

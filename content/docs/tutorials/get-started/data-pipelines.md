@@ -7,7 +7,7 @@ workflows or _pipelines_ that can be easily managed and reproduced later.
 
 <details>
 
-### Expand to prepare the project
+### 👉 Expand to prepare the project
 
 If you just followed through the
 [versioning](/doc/tutorials/get-started/data-versioning) part of this tutorial,
