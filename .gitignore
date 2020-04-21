@@ -66,3 +66,6 @@ typings/
 .cache
 public
 tmp
+
+# Copied 404 for Heroku
+404.html
