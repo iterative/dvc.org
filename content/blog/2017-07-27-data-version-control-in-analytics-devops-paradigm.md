@@ -13,8 +13,8 @@ descriptionLong: |
   bringing models to production. That's where good DevOps practices and skills
   are essential and will certainly be beneficial for industrial Data Scientists
   as they can address the above-mentioned challenges in a self-service manner.
-picture: ../../static/uploads/images/2017-07-27/post-image.jpeg
-author: ../authors/george_vyshnya.md
+picture: 2017-07-27/post-image.jpeg
+author: george_vyshnya
 commentsUrl: https://discuss.dvc.org/t/data-version-control-in-analytics-devops-paradigm/297
 tags:
   - DevOps

@@ -47,9 +47,9 @@ export default BlogTagsPage
 
 export const pageQuery = graphql`
   query($tag: String, $skip: Int, $limit: Int) {
-    posts: allMarkdownRemark(
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+    posts: allBlogPost(
+      sort: { fields: [date], order: DESC }
+      filter: { tags: { in: [$tag] } }
       skip: $skip
       limit: $limit
     ) {

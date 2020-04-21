@@ -10,9 +10,7 @@ import Item, { IBlogPostData } from './Item'
 import styles from './styles.module.css'
 
 export interface IBlogFeedPostList {
-  edges: Array<{
-    node: IBlogPostData
-  }>
+  nodes: Array<IBlogPostData>
 }
 
 interface IBlogFeedProps {
@@ -24,7 +22,7 @@ interface IBlogFeedProps {
 }
 
 const Feed: React.FC<IBlogFeedProps> = ({
-  feedPostList: { edges },
+  feedPostList: { nodes },
   pageInfo,
   bigFirst = true,
   header,
@@ -41,7 +39,7 @@ const Feed: React.FC<IBlogFeedProps> = ({
         {leadParagraph && <div className={styles.lead}>{leadParagraph}</div>}
       </div>
       <div className={styles.posts}>
-        {edges.map(({ node }, index) => (
+        {nodes.map((node, index) => (
           <Item
             feedPost={node}
             key={node.id}
@@ -55,11 +53,9 @@ const Feed: React.FC<IBlogFeedProps> = ({
 }
 
 export const query = graphql`
-  fragment FeedPostList on MarkdownRemarkConnection {
-    edges {
-      node {
-        ...FeedPost
-      }
+  fragment FeedPostList on BlogPostConnection {
+    nodes {
+      ...FeedPost
     }
   }
 `
