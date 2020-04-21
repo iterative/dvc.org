@@ -2,7 +2,8 @@
 title: April '20 Community Gems
 date: 2020-04-16
 description: |
-  Great discussions and technical Q&A's from our users.
+  A roundup of technical Q&A's from the DVC community. This month, we discuss 
+  the DVC cache, pipelines, cloud storage options and concurrency.
 descriptionLong: |
   A roundup of technical Q&A's from the DVC community. This month, we discuss 
   the DVC cache, cloud storage options and concurrency.
@@ -11,10 +12,8 @@ author: ../authors/elle_obrien.md
 commentsUrl: https://discuss.dvc.org/t/march-20-community-gems/336
 tags:
   - Discord
-  - cache
-  - concurrency
-  - cloud
-  - GitHub
+  - Gems
+  - Pipelines
 ---
 
 ## Discord gems
@@ -54,7 +53,7 @@ For more examples and information,
 [see the documents](https://dvc.org/doc/command-reference/list#list) for
 `dvc list` and for [`dvc get`](https://dvc.org/doc/command-reference/get).
 
-### Q: [I'm setting up cloud remote storage for DVC and I'd like to forbid `dvc gc --cloud` so users can't accidently delete files in the remote. Will it be sufficient to restrict deletion in S3 settings?](https://discordapp.com/channels/485586884165107732/563406153334128681/698116671298076672)
+### Q: [I'm setting up cloud remote storage for DVC and I'd like to forbid `dvc gc --cloud` so users can't accidently delete files in the remote. Will it be sufficient to restrict deletion in the remote's settings?](https://discordapp.com/channels/485586884165107732/563406153334128681/698116671298076672)
 
 You're right to be careful, because `dvc gc --cloud` can be dangerous in the
 wrong hands- it'll remove any unused files in your remote (for more info,
@@ -62,8 +61,7 @@ wrong hands- it'll remove any unused files in your remote (for more info,
 from having this power, setting your bucket policy to block object deletions
 should do the trick. How to do this will depend on your cloud storage provider-
 we found some relevant docs for
-[GCP](https://cloud.google.com/iam/docs/understanding-roles#cloud_storage_roles),[S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html),
-and
+[GCP](https://cloud.google.com/iam/docs/understanding-roles#cloud_storage_roles), [S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html), and
 [Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-auth-aad).
 For the full list of supported remote storage types,
 [see here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
