@@ -6,6 +6,8 @@ const PRODUCTION_PREFIX = 'dvc-org-prod'
 
 const crypto = require('crypto')
 
+const { dirTree, md5 } = require('./s3-testing-utils')
+
 console.log(process.env.KEEP_GATSBY_DEPLOY_CACHE)
 
 /**
@@ -58,28 +60,26 @@ async function main() {
     console.warn(
       `The current prefix "${s3Prefix}" is empty! Attempting to fall back on production cache.`
     )
+    // Temporarily skip prod cache download, as it'll just waste time until this hits master.
     //await downloadAllFromS3(PRODUCTION_PREFIX)
   } else {
     await downloadAllFromS3(s3Prefix)
   }
 
   /** Temporary debug cache logging */
-  let imageCacheDir
-  ;['/public', '/.cache'].forEach(x => {
+  for (const x of ['/public', '/.cache']) {
     const localDir = rootDir + x
     try {
-      const files = fs.readdirSync(localDir)
-      // TODO Make this recurse
-      const fileCount = files.length
-      const md5 = crypto
-        .createHash('md5')
-        .update(JSON.stringify(files))
-        .digest('hex')
-      console.log(`${fileCount} files in ${localDir}\nHash: ${md5}`)
+      const tree = await dirTree(localDir)
+      const hash = await md5(tree)
+      console.log(JSON.stringify(tree, null, 2))
+      console.log(`Hash for ${localDir}: ${hash}`)
     } catch (e) {
       console.error("Couldn't list " + localDir)
+      console.log(e)
     }
-  })
+  }
+
   /** End debug cache logging */
 
   try {
