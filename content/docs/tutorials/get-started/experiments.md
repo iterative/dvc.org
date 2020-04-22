@@ -10,7 +10,13 @@ through _parameters_ and _metrics_.
 
 If you just followed through the
 [pipelines](/doc/tutorials/get-started/data-pipelines) page of this tutorial,
-you're all set. Otherwise, run these commands to get the project from Github:
+just make sure you're back in the <abbr>project</abbr> we're working on:
+
+```dvc
+cd ~/so-tag-predict
+```
+
+Otherwise, run these commands to get the project from Github:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
@@ -62,22 +68,13 @@ experiments later:
 $ git tag -a "baseline-experiment" -m "Baseline experiment evaluation"
 ```
 
-## Experiment parameters
+## Experimenting
 
-Parameters allow us to define
-[stage](/doc/tutorials/get-started/data-pipelines#stages)
-<abbr>dependencies</abbr> more granularly. A specific parameter or set of
-hyperparameters inside a dependency file will have to change for the stage
-invalidation (see `dvc status` and `dvc repro`). Changes to other parts of the
-dependency file will not affect the stage.
-
-They are defined using the `-p` (`--params`) option of `dvc run`. Please refer
-to `dvc params` for more details.
-
-Data scientist may try many different approaches or hyperparameter values,
-having multiple failed attempts before the desired result (monitored via
-metrics) is achieved. DVC is built to provide a way to capture these experiments
-and navigate between them easily.
+Data scientist may try many different approaches or
+[hyperparameters](/doc/tutorials/get-started/data-pipelines#parameters), having
+multiple failed attempts before the desired result (monitored via metrics) is
+achieved. DVC is built to provide a way to capture these experiments and
+navigate between them easily.
 
 Let's say we want to try a modified feature extraction:
 

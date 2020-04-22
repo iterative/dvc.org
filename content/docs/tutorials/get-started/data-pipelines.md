@@ -116,7 +116,8 @@ The command options used above mean the following:
 
 - `-d src/prepare.py` and `-d data/data.xml` mean that the stage depends on
   these files to work. Notice that the source code itself is marked as a stage
-  dependency.
+  dependency. If any of these files change later, DVC will know that this stage
+  needs to be [reproduced](#reproduce).
 
 - `-o data/prepared` specifies the output directory where this script writes to.
   It creates two files in it (that will be used later down the
@@ -162,7 +163,7 @@ outs:
 
 There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
 directory in this case); `dvc run` already took care of this. You only need to
-run `dvc push` to save them to
+run `dvc push` if you want to save them to
 [remote-storage](/doc/tutorials/get-started/data-versioning#configure-remote-storage),
 usually along with `git commit` to version the stage file itself:
 
@@ -172,11 +173,32 @@ $ git commit -m "Create data preparation stage"
 $ dvc push
 ```
 
+## Parameters
+
+Let's prepare a special YAML file that contains a numeric value to tune our next
+stage:
+
+```dvc
+$ echo "max_features: 5000" > params.yaml
+$ git add params.yaml
+```
+
+`max_features` will be defined as a stage parameter with the `-p` (`--params`)
+option of `dvc run` in the following section. `params.yaml` is the default
+parameters file name in DVC, so there's no need to specify this.
+
+> Please refer to `dvc params` for more information.
+
+Notice that we're versioning our parameters file with Git, in case we want to
+change its contents for future <abbr>project</abbr> versions, as will be seen
+later on 😉
+
 ## Pipelines
 
-By using `dvc run` multiple times, and specifying outputs of a stage as
-dependencies in another one, we can describe a sequence of commands that gets to
-a desired result. This is what we call a _data pipeline_ or dependency graph.
+By using `dvc run` multiple times, and specifying <abbr>outputs</abbr> of a
+stage as <abbr>dependencies</abbr> of another one, we can describe a sequence of
+commands that gets to a desired result. This is what we call a _data pipeline_
+or _dependency graph_.
 
 Let's create a second stage chained to the outputs of `prepare.dvc`, to perform
 feature extraction:
@@ -184,12 +206,13 @@ feature extraction:
 ```dvc
 $ dvc run -f featurize.dvc \
           -d src/featurization.py -d data/prepared \
+          -p max_features \
           -o data/features \
           python src/featurization.py \
-                 data/prepared data/features
+                 params.yaml data/prepared data/features
 ```
 
-And a third chained stage for training:
+And a third stage for training an ML model based on the features:
 
 ```dvc
 $ dvc run -f train.dvc \
@@ -276,4 +299,13 @@ $ dvc pipeline show --ascii train.dvc
          +-----------+
          | train.dvc |
          +-----------+
+```
+
+---
+
+Before continuing to the next page, go back to the <abbr>project</abbr> we're
+working on:
+
+```dvc
+cd ~/so-tag-predict
 ```
