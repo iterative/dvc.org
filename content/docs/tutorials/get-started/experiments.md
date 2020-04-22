@@ -9,7 +9,7 @@ through _parameters_ and _metrics_.
 ### 👉 Expand to prepare the project
 
 If you just followed through the
-[pipelines](/doc/tutorials/get-started/data-pipelines) part of this tutorial,
+[pipelines](/doc/tutorials/get-started/data-pipelines) page of this tutorial,
 you're all set. Otherwise, run these commands to get the project from Github:
 
 ```dvc
@@ -20,18 +20,6 @@ $ dvc pull
 ```
 
 </details>
-
-## Parameter dependencies
-
-DVC parameters allow us to define
-[stage](/doc/tutorials/get-started/data-pipelines#stages)
-<abbr>dependencies</abbr> more granularly. A particular parameter or set of
-hyperparameters inside a dependency file will be required for the stage
-invalidation (see `dvc status` and `dvc repro`). Changes to other parts of the
-dependency file will not affect the stage.
-
-They are defined using the `-p` (`--params`) option of `dvc run`. Please refer
-to `dvc params` for more details.
 
 ## Project metrics
 
@@ -74,7 +62,17 @@ experiments later:
 $ git tag -a "baseline-experiment" -m "Baseline experiment evaluation"
 ```
 
-## Produce experiments
+## Experiment parameters
+
+Parameters allow us to define
+[stage](/doc/tutorials/get-started/data-pipelines#stages)
+<abbr>dependencies</abbr> more granularly. A specific parameter or set of
+hyperparameters inside a dependency file will have to change for the stage
+invalidation (see `dvc status` and `dvc repro`). Changes to other parts of the
+dependency file will not affect the stage.
+
+They are defined using the `-p` (`--params`) option of `dvc run`. Please refer
+to `dvc params` for more details.
 
 Data scientist may try many different approaches or hyperparameter values,
 having multiple failed attempts before the desired result (monitored via

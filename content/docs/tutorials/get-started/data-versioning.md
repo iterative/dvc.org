@@ -110,6 +110,7 @@ essentially a local storage backup.
 </details>
 
 ```dvc
+$ mkdir -p /tmp/dvc-storage
 $ dvc remote add -d myremote /tmp/dvc-storage
 $ git commit .dvc/config -m "Configure local remote"
 ```
@@ -243,7 +244,6 @@ DVC.
 Let's replace `data/data.xml` by importing it directly from the same source:
 
 ```dvc
-$ cd ~/so-tag-predict
 $ dvc import https://github.com/iterative/dataset-registry \
              get-started/data.xml -o data/data.xml
 ```
@@ -290,7 +290,6 @@ Let's wrap up by committing the import stage changes with Git:
 ```dvc
 $ git add data/data.xml.dvc
 $ git commit -m "Import raw data (overwrite)"
-$ dvc push
 ```
 
 ### Python API

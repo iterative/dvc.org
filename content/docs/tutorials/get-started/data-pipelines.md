@@ -10,7 +10,7 @@ workflows or _pipelines_ that can be easily managed and reproduced later.
 ### 👉 Expand to prepare the project
 
 If you just followed through the
-[versioning](/doc/tutorials/get-started/data-versioning) part of this tutorial,
+[versioning](/doc/tutorials/get-started/data-versioning) page of this tutorial,
 you're all set. Otherwise, run these commands to get the project from Github:
 
 ```dvc
