@@ -1,27 +1,16 @@
+require('dotenv').config()
 const {
-  getNodeSlug,
   setPageContext,
   removePageTrailingSlash
 } = require('./src/gatsby/common')
-const { createPages: createDocPages } = require('./src/gatsby/doc')
-const { createPages: createBlogPages } = require('./src/gatsby/blog')
 
-exports.onCreateNode = ({ node, actions, getNode }) => {
-  const { createNodeField } = actions
+const models = require('./src/gatsby/models.js')
+const callOnModels = require('./src/gatsby/utils/models')
 
-  if (node.internal.type === 'MarkdownRemark') {
-    createNodeField({
-      name: 'slug',
-      node,
-      value: getNodeSlug(node, getNode)
-    })
-  }
-}
-
-exports.createPages = async ({ graphql, actions }) => {
-  createDocPages({ graphql, actions })
-  createBlogPages({ graphql, actions })
-}
+exports.createSchemaCustomization = api =>
+  callOnModels(models, 'createSchemaCustomization', api)
+exports.onCreateNode = api => callOnModels(models, 'onCreateNode', api)
+exports.createPages = api => callOnModels(models, 'createPages', api)
 
 exports.onCreatePage = ({ page, actions }) => {
   setPageContext(page, actions)

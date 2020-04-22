@@ -118,11 +118,6 @@ and detect different errors:
 - `yarn lint-ts` - lint source code files (`.ts`, `.js`, `tsx`, etc).
 - `yarn lint-css` - lint `.css` files.
 
-Other checks:
-
-- `yarn link-check` - runs script to detect broken URLs (e.g. those that return
-  404 - Not Found) in the content.
-
 ### ENV variables
 
 Some environment variables are required to deploy this project to production,

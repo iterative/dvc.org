@@ -33,11 +33,9 @@ ERROR: failed to modify metric file settings -
 ## Options
 
 - `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
-  values are: `raw` (default), `json`. It will be saved into the corresponding
-  DVC-file, and used by `dvc metrics show` and `dvc metrics diff` to determine
-  how to handle displaying metrics.
-
-  `raw` means that no additional parsing is applied, and `--xpath` is ignored.
+  values are: `json`. It will be saved into the corresponding DVC-file, and used
+  by `dvc metrics show` and `dvc metrics diff` to determine how to handle
+  displaying metrics.
 
 - `-x <path>`, `--xpath <path>` - specify a path within a metric file to get a
   specific metric value. Should be used if the metric file contains multiple

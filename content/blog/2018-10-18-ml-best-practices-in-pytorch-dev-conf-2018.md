@@ -10,11 +10,11 @@ descriptionLong: |
   several speakers including **Jerome Pesenti, VP of AI from Facebook** and
   **Andrej Karpathy, Director of Tesla AI** spoke about best practices for
   machine learning development.
-picture: ../../static/uploads/images/2018-10-18/post-image.jpeg
+picture: 2018-10-18/post-image.jpeg
 pictureComment: |
   The image source:
   [link](https://blog.hubspot.com/customers/bid/109553/5-Homepage-Design-Best-Practices)
-author: ../authors/dmitry_petrov.md
+author: dmitry_petrov
 commentsUrl: https://discuss.dvc.org/t/ml-best-practices-in-pytorch-dev-conf-2018/294
 tags:
   - Machine Learning

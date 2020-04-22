@@ -8,8 +8,8 @@ descriptionLong: |
   Our favorite month of the year
   [Hacktoberfest](https://hacktoberfest.digitalocean.com/) is already in full
   swing and we at [DVC.org](https://dvc.org) are so excited to be a part of it!
-picture: ../../static/uploads/images/2019-10-08/post-image.png
-author: ../authors/svetlana_grinchenko.md
+picture: 2019-10-08/post-image.png
+author: svetlana_grinchenko
 commentsUrl: https://discuss.dvc.org/t/dvc-org-for-hacktoberfest-2019/286
 tags:
   - Hacktoberfest
