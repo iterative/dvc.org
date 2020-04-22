@@ -7,7 +7,7 @@ description: |
 descriptionLong: |
   A roundup of technical Q&A's from the DVC community. This month, we discuss 
   the DVC cache, cloud storage options and concurrency.
-picture: ../../static/uploads/images/2020-04-16/DVC_Gems_April_20.png
+picture: 2020-04-16/DVC_Gems_April_20.png
 author: ../authors/elle_obrien.md
 commentsUrl: https://discuss.dvc.org/t/march-20-community-gems/336
 tags:
@@ -61,9 +61,7 @@ wrong hands- it'll remove any unused files in your remote (for more info,
 from having this power, setting your bucket policy to block object deletions
 should do the trick. How to do this will depend on your cloud storage provider-
 we found some relevant docs for
-[GCP](https://cloud.google.com/iam/docs/understanding-roles#cloud_storage_roles),
-[S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html),
-and
+[GCP](https://cloud.google.com/iam/docs/understanding-roles#cloud_storage_roles), [S3](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html), and
 [Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-auth-aad).
 For the full list of supported remote storage types,
 [see here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types).
@@ -146,6 +144,5 @@ cache files on your remote. So looking inside your remote won't be particularly
 enlightening if you're looking for human-readable filenames- the file names will
 look like hashes (because, well, they are). Luckily, DVC handles all the
 conversions between the filenames in your local workspace and these hashes. To
-get some more intuition about this, check out some of our
-[docs](https://dvc.org/doc/command-reference/import#examples) about `dvc import`
-and `dvc get`.
+get some more intuition about this, check out some of our [docs](https://dvc.org/doc/user-guide/dvc-files-and-directories)
+about how DVC organizes files. 
