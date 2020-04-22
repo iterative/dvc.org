@@ -92,6 +92,8 @@ file. Let's consider the full checkout first. It's quite straightforward:
 ```dvc
 $ git checkout v1.0
 $ dvc checkout
+M       images
+M       model.pkl
 ```
 
 These commands will restore the workspace to the first snapshot we made - code,
@@ -105,8 +107,9 @@ the previous dataset only, we can do something like this (make sure that you
 don't have uncommitted changes in the `data.dvc`):
 
 ```dvc
-$ git checkout v1.0 data.dvc
-$ dvc checkout data.dvc
+$ git checkout v1.0 images.dvc
+$ dvc checkout images.dvc
+M       images
 ```
 
 If you run `git status` you will see that `data.dvc` is modified and currently
