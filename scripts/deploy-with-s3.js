@@ -4,6 +4,10 @@ require('dotenv').config()
 const path = require('path')
 const PRODUCTION_PREFIX = 'dvc-org-prod'
 
+const crypto = require('crypto')
+
+console.log(process.env.KEEP_GATSBY_DEPLOY_CACHE)
+
 /**
  * Build gatsby site and deploy public/ to s3.
  *
@@ -54,16 +58,29 @@ async function main() {
     console.warn(
       `The current prefix "${s3Prefix}" is empty! Attempting to fall back on production cache.`
     )
-    await downloadAllFromS3(PRODUCTION_PREFIX)
+    //await downloadAllFromS3(PRODUCTION_PREFIX)
   } else {
     await downloadAllFromS3(s3Prefix)
   }
 
-  const imageCacheDir = fs.readdirSync(rootDir + '/public/static')
-  console.log(
-    imageCacheDir.length + ' items in ' + rootDir + '/public/static',
-    imageCacheDir
-  )
+  /** Temporary debug cache logging */
+  let imageCacheDir
+  ;['/public', '/.cache'].forEach(x => {
+    const localDir = rootDir + x
+    try {
+      const files = fs.readdirSync(localDir)
+      // TODO Make this recurse
+      const fileCount = files.length
+      const md5 = crypto
+        .createHash('md5')
+        .update(JSON.stringify(files))
+        .digest('hex')
+      console.log(`${fileCount} files in ${localDir}\nHash: ${md5}`)
+    } catch (e) {
+      console.error("Couldn't list " + localDir)
+    }
+  })
+  /** End debug cache logging */
 
   try {
     run('yarn build')
@@ -90,7 +107,10 @@ async function main() {
       overwrite: true
     }
   )
-  if (process.env.CLEAN_GATSBY_BUILD_CACHE) await cleanAllLocal()
+  if (!process.env.KEEP_GATSBY_DEPLOY_CACHE) {
+    console.log('Cleaning all local cache!')
+    await cleanAllLocal()
+  }
 }
 
 main().catch(e => {
