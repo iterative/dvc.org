@@ -21,7 +21,7 @@ Otherwise, run these commands to get the project from Github:
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
-$ git checkout 7-train
+$ git checkout 7-ml-pipeline
 $ dvc pull
 ```
 
@@ -56,7 +56,6 @@ Let's save the updates:
 ```dvc
 $ git add evaluate.dvc auc.metric
 $ git commit -m "Create evaluation stage"
-$ dvc push
 ```
 
 > Notice that we are versioning `auc.metric` with Git directly.
@@ -76,27 +75,49 @@ multiple failed attempts before the desired result (monitored via metrics) is
 achieved. DVC is built to provide a way to capture these experiments and
 navigate between them easily.
 
-Let's say we want to try a modified feature extraction:
+### Tune parameters
 
-<details>
-
-### Expand to see code modifications
-
-Edit `src/featurization.py` to enable bigrams and increase the number of
-features. Find and change the arguments sent to `CountVectorizer()`, increasing
-the number of features and adding a `ngram_range`:
-
-```python
-bag_of_words = CountVectorizer(stop_words='english',
-                               max_features=6000,
-                               ngram_range=(1, 2))
-```
-
-</details>
+Let's say we want to try a modified feature extraction. The
+`src/featurization.py` script used to
+[create the pipeline](/doc/tutorials/get-started/data-pipelines#pipelines)
+actually accepts an optional third argument with the path to a YAML _parameters
+file_ to load values to tune its vectorization. Let's generate it:
 
 ```dvc
-$ vi src/featurization.py    # edit to use bigrams (see above)
-$ dvc repro train.dvc        # regenerate the new model.pkl
+$ echo "max_features: 6000" > params.yaml
+$ echo "ngram_range:" >> params.yaml
+$ echo "  lo: 1" >> params.yaml
+$ echo "  hi: 2" >> params.yaml
+$ git add params.yaml
+```
+
+> Notice that we're versioning our parameters file with Git, in case we want to
+> change its contents for further experiments.
+
+Let's now redefine the featurization stage so that DVC knows that it depends on
+the specific values of `max_features` and `ngram_range`. For this we use the
+`-p` (`--params`) option of `dvc run`. `params.yaml` is the default parameters
+file name in DVC, so there's no need to specify this:
+
+```dvc
+$ dvc run -y -f featurize.dvc \
+          -d src/featurization.py -d data/prepared \
+          -p max_features,ngram_range.lo,ngram_range.hi \
+          -o data/features \
+          python src/featurization.py data/prepared data/features
+
+$ git add featurize.dvc
+$ git commit -m "Update featurization stage"
+```
+
+> Please refer to `dvc params` for more information.
+
+### Run the experiment
+
+Let's reproduce our pipeline up to the model training now:
+
+```dvc
+$ dvc repro train.dvc
 $ git commit -am "Reproduce model using bigrams"
 ```
 
@@ -104,6 +125,8 @@ $ git commit -am "Reproduce model using bigrams"
 > before committing them with Git. Refer to the
 > [command reference](https://git-scm.com/docs/git-commit#Documentation/git-commit.txt--a)
 > for more details.
+
+---
 
 Now, we have a new `model.pkl` captured and saved. To get back to the initial
 version, we run `git checkout` along with `dvc checkout` command:

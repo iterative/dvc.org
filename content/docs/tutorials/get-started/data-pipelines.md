@@ -165,33 +165,13 @@ There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
 directory in this case); `dvc run` already took care of this. You only need to
 run `dvc push` if you want to save them to
 [remote-storage](/doc/tutorials/get-started/data-versioning#configure-remote-storage),
-usually along with `git commit` to version the stage file itself:
+usually along with `git commit` to version the stage file itself (optional):
 
 ```dvc
 $ git add data/.gitignore prepare.dvc
 $ git commit -m "Create data preparation stage"
 $ dvc push
 ```
-
-## Parameters
-
-Let's prepare a special YAML file that contains a numeric value to tune our next
-stage:
-
-```dvc
-$ echo "max_features: 5000" > params.yaml
-$ git add params.yaml
-```
-
-`max_features` will be defined as a stage parameter with the `-p` (`--params`)
-option of `dvc run` in the following section. `params.yaml` is the default
-parameters file name in DVC, so there's no need to specify this.
-
-> Please refer to `dvc params` for more information.
-
-Notice that we're versioning our parameters file with Git, in case we want to
-change its contents for future <abbr>project</abbr> versions, as will be seen
-later on 😉
 
 ## Pipelines
 
@@ -206,10 +186,8 @@ feature extraction:
 ```dvc
 $ dvc run -f featurize.dvc \
           -d src/featurization.py -d data/prepared \
-          -p max_features \
           -o data/features \
-          python src/featurization.py \
-                 params.yaml data/prepared data/features
+          python src/featurization.py data/prepared data/features
 ```
 
 And a third stage for training an ML model based on the features:
@@ -226,8 +204,7 @@ pipeline so far:
 
 ```dvc
 $ git add data/.gitignore .gitignore featurize.dvc train.dvc
-$ git commit -m "Create featurization and training stages"
-$ dvc push
+$ git commit -m "Create featurization and training stages (full ML pipeline)"
 ```
 
 > See also the `dvc pipeline` command.
