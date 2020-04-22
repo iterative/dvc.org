@@ -79,6 +79,7 @@ export const pageQuery = graphql`
   query BlogPostPage($id: String!) {
     blogPost(id: { eq: $id }) {
       id
+      slug
       html
       timeToRead
       title
