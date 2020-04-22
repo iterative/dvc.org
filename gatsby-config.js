@@ -142,14 +142,18 @@ const plugins = [
             `,
           serialize: ({ query: { site, allBlogPost } }) => {
             return allBlogPost.nodes.map(node => {
-              return Object.assign({}, node.frontmatter, {
-                /* eslint-disable-next-line @typescript-eslint/camelcase */
-                custom_elements: [{ 'content:encoded': node.html }],
-                date: node.date,
-                description: node.description,
-                guid: site.siteMetadata.siteUrl + node.slug,
-                url: site.siteMetadata.siteUrl + node.slug
-              })
+              return Object.assign(
+                {},
+                {
+                  /* eslint-disable-next-line @typescript-eslint/camelcase */
+                  custom_elements: [{ 'content:encoded': node.html }],
+                  title: node.title,
+                  date: node.date,
+                  description: node.description,
+                  guid: site.siteMetadata.siteUrl + node.slug,
+                  url: site.siteMetadata.siteUrl + node.slug
+                }
+              )
             })
           },
           title
