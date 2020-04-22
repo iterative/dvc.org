@@ -69,7 +69,7 @@ be pulled from remote storage using `dvc pull`.
 ## Options
 
 - `--summary` - display a short summary of the changes done by this command in
-  the workspace, instead of a full list of change.
+  the workspace, instead of a full list of changes.
 
 - `-R`, `--recursive` - determines the files to checkout by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are
