@@ -8,7 +8,46 @@ const crypto = require('crypto')
 
 const { dirTree, md5 } = require('./s3-testing-utils')
 
-console.log(process.env.KEEP_GATSBY_DEPLOY_CACHE)
+// TODO Consolidate these into one DEPLOY_OPTIONS var
+// logHash,logTree,download,upload,build,clean
+const { DEPLOY_OPTIONS } = process.env
+
+// Generate deploy options from a comma separated string in the DEPLOY_OPTIONS
+// env var. If it's not provided, use a default that takes all actions with no
+// logging.
+const deployOptions = DEPLOY_OPTIONS
+  ? DEPLOY_OPTIONS.split(',').reduce(
+      (acc, cur) => ({
+        ...acc,
+        [cur]: true
+      }),
+      {}
+    )
+  : {
+      download: true,
+      build: true,
+      upload: true,
+      clean: true
+    }
+
+if (deployOptions.logSteps) {
+  // Log enabled steps in order.
+  console.log(
+    '---\nDeploy options: [' +
+      [
+        'download',
+        'logTrees',
+        'logHashes',
+        'bailAfterLogs',
+        'build',
+        'upload',
+        'clean'
+      ]
+        .filter(step => deployOptions[step])
+        .join(', ') +
+      ']\n---'
+  )
+}
 
 /**
  * Build gatsby site and deploy public/ to s3.
@@ -56,58 +95,89 @@ async function main() {
   // If not, we download production's cache.
   // This greatly speeds up PR initial build time.
 
-  if (emptyPrefix) {
-    console.warn(
-      `The current prefix "${s3Prefix}" is empty! Attempting to fall back on production cache.`
-    )
-    // Temporarily skip prod cache download, as it'll just waste time until this hits master.
-    //await downloadAllFromS3(PRODUCTION_PREFIX)
-  } else {
-    await downloadAllFromS3(s3Prefix)
+  if (deployOptions.download) {
+    if (emptyPrefix) {
+      console.warn(
+        `The current prefix "${s3Prefix}" is empty! Attempting to fall back on production cache.`
+      )
+      // Temporarily skip prod cache download, as it'll just waste time until this hits master.
+      //await downloadAllFromS3(PRODUCTION_PREFIX)
+    } else {
+      await downloadAllFromS3(s3Prefix)
+    }
   }
 
   /** Temporary debug cache logging */
-  for (const x of ['/public', '/.cache']) {
-    const localDir = rootDir + x
-    try {
-      const tree = await dirTree(localDir)
-      const hash = await md5(tree)
-      console.log(JSON.stringify(tree, null, 2))
-      console.log(`Hash for ${localDir}: ${hash}`)
-    } catch (e) {
-      console.error("Couldn't list " + localDir)
-      console.log(e)
+  const treeEntries = []
+  if (deployOptions.logHashes || deployOptions.logTrees) {
+    for (const cacheEntryLocal of cacheDirs.map(x => x[0])) {
+      const localDir = path.join(rootDir, cacheEntryLocal)
+      try {
+        const tree = await dirTree(localDir)
+        const hash = await md5(tree)
+        treeEntries.push({ localDir, tree, hash })
+      } catch (e) {
+        console.error("Couldn't list " + localDir)
+        console.log(e)
+      }
+    }
+    if (deployOptions.logTrees) {
+      console.log(`
+--- Full cache trees
+${treeEntries
+  .map(
+    ({ localDir, tree }) =>
+      `\n* Tree for ${localDir}\n\n` + JSON.stringify(tree, null, 2)
+  )
+  .join('\n')}
+---
+    `)
+    }
+    if (deployOptions.logHashes) {
+      for (const { localDir, hash } of treeEntries) {
+        console.log(`Hash for ${localDir}: ${hash}`)
+      }
     }
   }
 
+  if (deployOptions.bailAfterLogs) {
+    console.log(
+      'Bailing after logging cache because of deployOptions.bailAfterLogs!'
+    )
+    return
+  }
   /** End debug cache logging */
 
-  try {
-    run('yarn build')
-  } catch (buildError) {
-    // Sometimes gatsby build fails because of bad cache.
-    // Clear it and try again.
+  if (deployOptions.build) {
+    try {
+      run('yarn build')
+    } catch (buildError) {
+      // Sometimes gatsby build fails because of bad cache.
+      // Clear it and try again.
 
-    console.error('------------------------\n\n')
-    console.error('The first Gatsby build attempt failed!\n')
-    console.error(buildError)
-    console.error('\nRetrying with a cleared cache:\n')
+      console.error('------------------------\n\n')
+      console.error('The first Gatsby build attempt failed!\n')
+      console.error(buildError)
+      console.error('\nRetrying with a cleared cache:\n')
 
-    await cleanAllLocal()
-    run('yarn build')
+      await cleanAllLocal()
+      run('yarn build')
+    }
   }
 
-  await uploadAllToS3(s3Prefix)
+  if (deployOptions.upload) {
+    await uploadAllToS3(s3Prefix)
+    // Move the 404 HTML file from public into the root dir for Heroku
+    await move(
+      path.join(rootDir, publicDirName, '404.html'),
+      path.join(rootDir, '404.html'),
+      {
+        overwrite: true
+      }
+    )
+  }
 
-  // Move the 404 HTML file from public into the root dir for Heroku
-  await move(
-    path.join(rootDir, publicDirName, '404.html'),
-    path.join(rootDir, '404.html'),
-    {
-      overwrite: true
-    }
-  )
-  if (!process.env.KEEP_GATSBY_DEPLOY_CACHE) {
+  if (deployOptions.clean) {
     console.log('Cleaning all local cache!')
     await cleanAllLocal()
   }
