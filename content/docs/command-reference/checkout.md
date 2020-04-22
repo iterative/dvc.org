@@ -37,9 +37,9 @@ The execution of `dvc checkout` does the following:
   DVC-files. Scanning is limited to the given `targets` (if any). See also
   options `--with-deps` and `--recursive` below.
 
-- Missing data files or directories, or those that don't match with any
-  DVC-file, are restored from the <abbr>cache</abbr>. See options `--force` and
-  `--relink`.
+- Missing data files or directories are restored from the <abbr>cache</abbr>.
+  Those that don't match with any DVC-file are removed. See options `--force`
+  and `--relink`. A list of the changes done is printed.
 
 By default, this command tries not make copies of cached files in the workspace,
 using reflinks instead when supported by the file system (refer to
@@ -63,14 +63,13 @@ progress made by the checkout.
 
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
-regenerate its outputs. (See also `dvc pipeline`.) In other cases the cache can
+regenerate its outputs (see also `dvc pipeline`). In other cases the cache can
 be pulled from remote storage using `dvc pull`.
 
 ## Options
 
-- `--summary` - in addition to checking out DVC-tracked data, display a short
-  summary of the changes done by this command in the workspace, for example how
-  many files were added or deleted.
+- `--summary` - display a short summary of the changes done by this command in
+  the workspace, instead of a full list of change.
 
 - `-d`, `--with-deps` - determines files to update by tracking dependencies to
   the target DVC-files (stages). If no `targets` are provided, this option is
