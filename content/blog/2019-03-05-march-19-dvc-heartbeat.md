@@ -11,8 +11,8 @@ descriptionLong: |
   Some of those are related to our brainchild [DVC](https://dvc.org) and its
   journey. The others are a collection of exciting stories and ideas centered
   around ML best practices and workflow.
-picture: ../../static/uploads/images/2019-03-05/post-image.jpeg
-author: ../authors/svetlana_grinchenko.md
+picture: 2019-03-05/post-image.jpeg
+author: svetlana_grinchenko
 commentsUrl: https://discuss.dvc.org/t/march-19-dvc-heartbeat/293
 tags:
   - Heartbeat

@@ -9,8 +9,8 @@ descriptionLong: |
   quicker you iterate, the more you can check ideas and build a better model.
   The productivity of data scientists can be improved by speeding up iteration
   processes and the DVC tool takes care of this.
-picture: ../../static/uploads/images/2017-05-15/post-image.jpg
-author: ../authors/dmitry_petrov.md
+picture: 2017-05-15/post-image.jpg
+author: dmitry_petrov
 commentsUrl: https://discuss.dvc.org/t/how-a-data-scientist-can-improve-their-productivity/301
 tags:
   - Productivity
