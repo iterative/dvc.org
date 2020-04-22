@@ -9,7 +9,7 @@ descriptionLong: |
   the DVC cache, cloud storage options and concurrency.
 picture: 2020-04-16/DVC_Gems_April_20.png
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/march-20-community-gems/336
+commentsUrl: https://discuss.dvc.org/t/april-20-community-gems/356
 tags:
   - Discord
   - Gems
@@ -145,7 +145,7 @@ Effectively, DVC uses your Git repository to store DVC files, which are keys for
 cache files on your remote. So looking inside your remote won't be particularly
 enlightening if you're looking for human-readable filenames- the file names will
 look like hashes (because, well, they are). Luckily, DVC handles all the
-conversions between the filenames in your local workspace and these hashes. 
+conversions between the filenames in your local workspace and these hashes.
 
 To get some more intuition about this, check out some of our
 [docs](https://dvc.org/doc/user-guide/dvc-files-and-directories) about how DVC
