@@ -1,7 +1,6 @@
 ---
-path: ../authors/dmitry_petrov.md
 name: Dmitry Petrov
-avatar: ../../static/uploads/avatars/dmitry_petrov.png
+avatar: dmitry_petrov.png
 ---
 
 Creator of [http://dvc.org](http://dvc.org) — Git for ML. Ex-Data Scientist

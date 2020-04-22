@@ -8,9 +8,9 @@ descriptionLong: |
   and everything else along the way. Some of those are related to our brainchild
   [DVC](https://dvc.org) and its journey. The others are a collection of
   exciting stories and ideas centered around ML best practices and workflow.
-picture: ../../static/uploads/images/2020-01-17/DVC_chalk_donuts.png
+picture: 2020-01-17/DVC_chalk_donuts.png
 pictureComment: We spread the joys of version control and donuts at PyData LA.
-author: ../authors/elle_obrien.md
+author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/january-20-dvc-heartbeat/314
 tags:
   - Heartbeat

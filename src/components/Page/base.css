@@ -47,13 +47,3 @@ body {
     outline: 0;
   }
 }
-
-/* TODO: check it later */
-img + em,
-.gatsby-highlight + p > em:only-child {
-  color: #6a737d;
-  font-size: 0.9em;
-  display: block;
-  margin-top: -6px;
-  text-align: center;
-}

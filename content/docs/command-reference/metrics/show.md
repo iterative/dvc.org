@@ -44,10 +44,8 @@ compares them with a previous version.
 ## Options
 
 - `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
-  values are: `raw` (default), `json`. It will be saved into the corresponding
-  DVC-file, and used to determine how to handle displaying metrics.
-
-  `raw` means that no additional parsing is applied, and `--xpath` is ignored.
+  values are: `json`. It will be saved into the corresponding DVC-file, and used
+  to determine how to handle displaying metrics.
 
   This option will override `type` and `xpath` defined in the corresponding
   DVC-file. If no `type` is provided or found in the DVC-file, DVC will try to
