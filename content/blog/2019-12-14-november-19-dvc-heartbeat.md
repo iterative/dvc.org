@@ -12,10 +12,10 @@ descriptionLong: |
   Some of those are related to our brainchild [DVC](https://dvc.org) and its
   journey. The others are a collection of exciting stories and ideas centered
   around ML best practices and workflow.
-picture: ../../static/uploads/images/2019-12-14/post-image.jpeg
+picture: 2019-12-14/post-image.jpeg
 pictureComment:
   How cool is this handmade swag from our community? We were in tears!
-author: ../authors/svetlana_grinchenko.md
+author: svetlana_grinchenko
 commentsUrl: https://discuss.dvc.org/t/november-19-dvc-heartbeat/284
 tags:
   - Meetup

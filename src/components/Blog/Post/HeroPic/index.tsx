@@ -33,7 +33,7 @@ const HeroPic: React.FC<IBlogPostHeroPic> = ({ pictureComment, picture }) => {
   return (
     <div className={styles.pictureWrapper}>
       <div className={styles.picture}>
-        <NonStretchedImage fluid={picture?.childImageSharp.fluid} />
+        <NonStretchedImage fluid={picture?.fluid} />
       </div>
       {pictureComment && (
         <div

@@ -8,9 +8,9 @@ descriptionLong: |
   and everything else along the way. Some of those are related to our brainchild
   [DVC](https://dvc.org) and its journey. The others are a collection of
   exciting stories and ideas centered around ML best practices and workflow.
-picture: ../../static/uploads/images/2020-01-20/Community_Gems.png
+picture: 2020-01-20/Community_Gems.png
 pictureComment:
-author: ../authors/elle_obrien.md
+author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/january-20-community-gems/315
 tags:
   - Discord

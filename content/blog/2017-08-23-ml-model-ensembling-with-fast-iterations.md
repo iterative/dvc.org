@@ -9,8 +9,8 @@ descriptionLong: |
   complex models as well as maintain pipelines. As we will demonstrate, DVC is a
   good tool that helps tackling common technical challenges of building
   pipelines for the ensemble learning.
-picture: ../../static/uploads/images/2017-08-23/post-image.png
-author: ../authors/george_vyshnya.md
+picture: 2017-08-23/post-image.png
+author: george_vyshnya
 commentsUrl: https://discuss.dvc.org/t/ml-model-ensembling-with-fast-iterations/296
 tags:
   - Best Practices

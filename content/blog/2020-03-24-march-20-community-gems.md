@@ -6,8 +6,8 @@ description: |
 descriptionLong: |
   Look here every month for great discussions and technical Q&A's from our users 
   and core development team.
-picture: ../../static/uploads/images/2020-03-12/march_20_header.png
-author: ../authors/elle_obrien.md
+picture: 2020-03-12/march_20_header.png
+author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/march-20-community-gems/336
 tags:
   - Discord
