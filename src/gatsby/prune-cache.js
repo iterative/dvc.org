@@ -1,5 +1,4 @@
 const fs = require('fs').promises
-const path = require('path')
 const crawlPageData = require('../utils/shared/crawlPageData')
 
 async function removeFile(filePath) {
@@ -30,7 +29,14 @@ module.exports = async function pruneStalePageCache({ graphql }) {
       errors: query.errors
     })
 
-  const pagePathSet = new Set(query.data.allSitePage.nodes.map(x => x.path))
+  // Remove trailing slashes that find their way into the page data.
+  // This is a little weird, but useful to truly make the pages slash-agnostic
+  const pagePathSet = new Set(
+    query.data.allSitePage.nodes.map(({ path }) => {
+      const lastIndex = path.length - 1
+      return path[lastIndex] === '/' ? path.slice(0, lastIndex) : path
+    })
+  )
 
   return crawlPageData('./public/page-data', pageDataPath => {
     const cachedPagePath = /public\/page-data(.*)\/page-data.json/.exec(
@@ -42,6 +48,7 @@ module.exports = async function pruneStalePageCache({ graphql }) {
       ? null
       : cachedPagePath === '/index'
       ? null
-      : removeFile(pageDataPath)
+      : console.log(`Removing file at ${pageDataPath}=${cachedPagePath}`) &&
+        removeFile(pageDataPath)
   })
 }
