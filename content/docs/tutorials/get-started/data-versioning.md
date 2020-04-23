@@ -87,7 +87,7 @@ See [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
 
 </details>
 
-> 📖 Refer to
+> 📖 See
 > [Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
 > for more information on versioning data with DVC.
 

@@ -10,12 +10,7 @@ through _parameters_ and _metrics_.
 
 If you just followed through the
 [pipelines](/doc/tutorials/get-started/data-pipelines) page of this tutorial,
-just make sure you're back in the <abbr>project</abbr> we're working on:
-
-```dvc
-$ cd ~/so-tag-predict
-```
-
+just make sure you're located in the <abbr>project</abbr> we're building.
 Otherwise, run these commands to get the project from Github:
 
 ```dvc
@@ -76,6 +71,8 @@ achieved. DVC is built to provide a way to capture these experiments and
 navigate between them easily.
 
 ### Tune parameters
+
+It's usual to have params in ML. This is how it's done: ...
 
 Let's say we want to try a modified feature extraction. The
 `src/featurization.py` script used to

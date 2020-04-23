@@ -1,69 +1,45 @@
 # Get Started with DVC!
 
-The next few pages explore the main layers of features in DVC. This will be done
-in a hands-on way, working with source code and command line.
+The next pages explore the different layers of DVC hands-on, working with source
+code and command line.
 
-You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
-Also, if DVC is not installed, please follow [these instructions](/doc/install)
-first.
-
-<details>
-
-### Expand to get the complete project
-
-In case you'd like to get the complete code base and results, or have any issues
-along the way, please note that we have a fully reproducible
-[example-get-started](https://github.com/iterative/example-get-started) repo on
-Github:
-
-```dvc
-$ git clone https://github.com/iterative/example-get-started
-$ cd example-get-started
-$ dvc pull
-```
-
-</details>
+You'll need [Git](https://git-scm.com) to follow this tutorial. Also, if DVC is
+not installed, please follow [these instructions](/doc/install) first.
 
 ## Initialize
 
-Let's start by creating a <abbr>workspace</abbr>, and initialize `git` in it as
-an underlying versioning layer. Then run `dvc init` inside to create a <abbr>DVC
-repository</abbr>:
+Start by creating a <abbr>workspace</abbr> and initialize Git in it, as the
+underlying versioning layer. Then use `dvc init` to create a <abbr>DVC
+repository</abbr>. For example:
 
 ```dvc
-$ cd ~
-$ mkdir so-tag-predict
-$ cd so-tag-predict
+$ mkdir dvc-get-started
+$ cd dvc-get-started
 $ git init
 $ dvc init
 $ git commit -m "Initialize DVC repository"
 ```
-
-At DVC initialization, a new `.dvc/` directory is created for internal
-configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/dvc-files-and-directories), that are
-hidden from the user. This directory can be committed with Git.
 
 > 📖 See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
 > to learn more about DVC internals.
 
 ## What's ahead?
 
-The following pages of this tutorial go over the several _layers_ of
-functionality provided by DVC. Each builds on top of the previous ones, but they
-can be used independently:
+These are the layers of DVC that we will cover; Each one is designed to work on
+top of the previous ones, but they can be used independently:
 
-- [Data Versioning](/doc/tutorials/get-started/data-versioning) leverages Git
-  SCM to version and share large files (e.g. raw data, prepared features,
-  machine learning models, etc.) without storing them with Git.
+- [Data **versioning**](/doc/tutorials/get-started/data-versioning) leverages
+  Git SCM to track and share large files (e.g. raw data, prepared features,
+  machine learning models) while storing them separately.
 
-- [Data Pipelines](/doc/tutorials/get-started/data-pipelines) let you register
-  data workflows, while versioning the inputs and outputs of all of stages.
-  Registered pipelines can be managed and reproduced easily by you or others.
+- [Data **pipelines**](/doc/tutorials/get-started/data-pipelines) let you
+  register data workflows, automatically versioning inputs and outputs of all
+  stages. Registered pipelines can be managed and reproduced easily by you or
+  others.
 
-- [Experiments](/doc/tutorials/get-started/experiments) of data and processes
-  are a normal part of the data science process. DVC provides special tools to
-  define and track experiments for anyone to tweak and compare.
+- [**Experiments**](/doc/tutorials/get-started/experiments) of data and
+  processes are a normal part of the data science process. DVC provides special
+  tools to define and track experiments that can be tuned and compared.
 
-Please choose a topic from the sidebar to the left, or click the `Next` button
-below to start from the beginning ↘
+Please choose a topic, or click the `Next` button below to start from the
+beginning ↘

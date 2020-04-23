@@ -1,7 +1,7 @@
 # Data Pipelines
 
 This layer of DVC provides the ability to register data processing or modeling
-workflows or _pipelines_ that can be easily managed and reproduced later.
+workflows or _pipelines_ that can be easily managed and reproduced.
 
 ![](/img/example-flow-2x.png) _Data modeling overview_
 
@@ -276,13 +276,4 @@ $ dvc pipeline show --ascii train.dvc
          +-----------+
          | train.dvc |
          +-----------+
-```
-
----
-
-Before continuing to the next page, go back to the <abbr>project</abbr> we're
-working on:
-
-```dvc
-$ cd ~/so-tag-predict
 ```
