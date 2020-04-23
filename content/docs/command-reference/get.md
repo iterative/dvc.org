@@ -36,14 +36,13 @@ the data source. Both HTTP and SSH protocols are supported for online repos
 to an "offline" repo (if it's a DVC repo without a default remote, instead of
 downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 
-The `path` argument of this command is used to specify the location of the
-target to be downloaded within the source repository at `url`. `path` can
-specify any file or directory in the source repo, including <abbr>outputs</abbr>
-tracked by DVC, as well as files tracked by Git. Note that for DVC repos, the
-target should be found in one of the
-[DVC-files](/doc/user-guide/dvc-file-format) of the project. The project should
-also have a default [DVC remote](/doc/command-reference/remote), containing the
-actual data.
+The `path` argument is used to specify the location of the target to be
+downloaded within the source repository at `url`. `path` can specify any file or
+directory in the source repo, including <abbr>outputs</abbr> tracked by DVC, as
+well as files tracked by Git. Note that for DVC repos, the target should be
+found in one of the [DVC-files](/doc/user-guide/dvc-file-format) of the project.
+The project should also have a default
+[DVC remote](/doc/command-reference/remote), containing the actual data.
 
 > See `dvc get-url` to download data from other supported locations such as S3,
 > SSH, HTTP, etc.
