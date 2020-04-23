@@ -284,5 +284,5 @@ Before continuing to the next page, go back to the <abbr>project</abbr> we're
 working on:
 
 ```dvc
-cd ~/so-tag-predict
+$ cd ~/so-tag-predict
 ```

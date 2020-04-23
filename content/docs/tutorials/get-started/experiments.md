@@ -13,7 +13,7 @@ If you just followed through the
 just make sure you're back in the <abbr>project</abbr> we're working on:
 
 ```dvc
-cd ~/so-tag-predict
+$ cd ~/so-tag-predict
 ```
 
 Otherwise, run these commands to get the project from Github:
@@ -104,7 +104,8 @@ $ dvc run -y -f featurize.dvc \
           -d src/featurization.py -d data/prepared \
           -p max_features,ngram_range.lo,ngram_range.hi \
           -o data/features \
-          python src/featurization.py data/prepared data/features
+          python src/featurization.py \
+                 data/prepared data/features params.yaml
 
 $ git add featurize.dvc
 $ git commit -m "Update featurization stage"
@@ -182,9 +183,9 @@ bigrams-experiment:
     auc.metric: 0.602818
 ```
 
-DVC provides built-in support to track and navigate `JSON`, `TSV` or `CSV`
-metric files if you want to track additional information. See `dvc metrics` to
-learn more.
+DVC provides built-in support to track and navigate `JSON` or `YAML` metric
+files if you want to track additional information. See `dvc metrics` to learn
+more.
 
 ## Get older data version
 
