@@ -40,8 +40,8 @@ const DocHomePage: React.FC<IDocHomePageProps> = ({
 export default DocHomePage
 
 export const pageQuery = graphql`
-  query DocPageBySlug($slug: String!) {
-    page: markdownRemark(fields: { slug: { eq: $slug } }) {
+  query DocPage($id: String!) {
+    page: docsPage(id: { eq: $id }) {
       htmlAst
     }
   }

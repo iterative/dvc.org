@@ -16,8 +16,8 @@ positional arguments:
 
 This command finds a corresponding [DVC-file](/doc/user-guide/dvc-file-format)
 for the provided metric file (`path` is defined among the <abbr>outputs</abbr>
-of the DVC-file), and updates the default formatting of the metric. (See the
-[options](#options) below and `dvc metrics show` for more info.)
+of the DVC-file), and updates the default formatting of the metric. See the
+[options](#options) below and `dvc metrics show` for more info.
 
 If `path` isn't tracked by DVC (described in one of the <abbr>workspace</abbr>
 DVC-files), the following error will be raised:
@@ -33,11 +33,9 @@ ERROR: failed to modify metric file settings -
 ## Options
 
 - `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
-  values are: `raw` (default), `json`. It will be saved into the corresponding
-  DVC-file, and used by `dvc metrics show` and `dvc metrics diff` to determine
-  how to handle displaying metrics.
-
-  `raw` means that no additional parsing is applied, and `--xpath` is ignored.
+  values are: `json`. It will be saved into the corresponding DVC-file, and used
+  by `dvc metrics show` and `dvc metrics diff` to determine how to handle
+  displaying metrics.
 
 - `-x <path>`, `--xpath <path>` - specify a path within a metric file to get a
   specific metric value. Should be used if the metric file contains multiple
@@ -90,7 +88,7 @@ $ dvc metrics show metrics.json
 ```
 
 Okay. Let's now imagine we are interested only in a single value of true
-posivives (TP). We can specify the `JSON` type (`-t`) and an `xpath` (`-x`) to
+positives (TP). We can specify the `JSON` type (`-t`) and an `xpath` (`-x`) to
 extract the TP value:
 
 ```dvc

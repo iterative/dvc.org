@@ -75,11 +75,17 @@
     height: 5px;
     width: 8px;
     background: url('/img/triangle_dark.svg') no-repeat center center;
-
-    &.active {
-      transform: rotate(-90deg);
-    }
   }
+}
+
+@keyframes rotateIcon {
+  100% {
+    transform: rotate(-90deg);
+  }
+}
+
+.active::before {
+  animation: rotateIcon 0.5s forwards;
 }
 
 .footer {

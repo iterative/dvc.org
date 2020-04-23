@@ -11,9 +11,9 @@ descriptionLong: |
   Look here for updates about [DVC](https://dvc.org), our journey as a startup,
   projects by our users and big ideas about best practices in ML and data
   science.
-picture: ../../static/uploads/images/2020-03-11/March_20_HB_header.png
+picture: 2020-03-11/March_20_HB_header.png
 pictureComment:
-author: ../authors/elle_obrien.md
+author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/march-20-heartbeat/335
 tags:
   - Heartbeat

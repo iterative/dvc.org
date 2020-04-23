@@ -85,9 +85,9 @@ data artifact from the source repo.
   default branch) is used by default when this option is not specified.
 
   > Note that this adds a `rev` field in the import stage that fixes it to the
-  > revision. This can impact the behavior of `dvc update`. (See the
+  > revision. This can impact the behavior of `dvc update` (see the
   > [Importing and updating fixed revisions](#example-importing-and-updating-fixed-revisions)
-  > example below.)
+  > example below).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

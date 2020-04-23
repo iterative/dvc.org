@@ -6,7 +6,7 @@ DVC (<abbr>data artifacts</abbr>) and by Git.
 ## Synopsis
 
 ```usage
-usage: dvc list [-h] [-q | -v] [-R] [--outs-only] [--rev [REV]]
+usage: dvc list [-h] [-q | -v] [-R] [--outs-only] [--rev <commit>]
                 url [path]
 
 positional arguments:
@@ -55,7 +55,7 @@ files recursively.
 - `--outs-only` - show only DVC-tracked files and directories
   (<abbr>outputs</abbr>).
 
-- `--rev` - commit hash, branch or tag name, etc. (any
+- `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to list
   content for. The latest commit in `master` (tip of the default branch) is used
   by default when this option is not specified.

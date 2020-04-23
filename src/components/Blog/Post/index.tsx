@@ -23,25 +23,17 @@ import styles from './styles.module.css'
 const Post: React.FC<IBlogPostData> = ({
   html,
   timeToRead,
-  frontmatter,
-  fields
+  title,
+  date,
+  picture,
+  pictureComment,
+  description,
+  descriptionLong,
+  commentsUrl,
+  tags,
+  author: { name, avatar },
+  slug
 }) => {
-  const {
-    title,
-    date,
-    picture,
-    pictureComment,
-    description,
-    descriptionLong,
-    commentsUrl,
-    tags,
-    author: {
-      childMarkdownRemark: {
-        frontmatter: { name, avatar }
-      }
-    }
-  } = frontmatter
-
   const wrapperRef = useRef<HTMLDivElement>(null)
   const { width, height } = useWindowSize()
   const { y } = useWindowScroll()
@@ -67,7 +59,7 @@ const Post: React.FC<IBlogPostData> = ({
           <Share
             className={cn(styles.share, isFixed && styles.fixed)}
             text={description}
-            slug={fields.slug}
+            slug={slug}
           />
           <div className={styles.head}>
             <div className={styles.headContent}>

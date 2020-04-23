@@ -124,39 +124,36 @@ const plugins = [
       feeds: [
         {
           description,
-          output: '/rss.xml',
+          output: '/blog/rss.xml',
           query: `
               {
-                allMarkdownRemark(
-                  sort: { fields: [frontmatter___date], order: DESC }
-                  filter: { fileAbsolutePath: { regex: "/content/blog/" } }
+                allBlogPost(
+                  sort: { fields: [date], order: DESC }
                 ) {
-                  edges {
-                    node {
-                      html
-                      fields {
-                        slug
-                      }
-                      frontmatter {
-                        title
-                        date
-                        description
-                      }
-                    }
+                  nodes {
+                    html
+                    slug
+                    title
+                    date
+                    description
                   }
                 }
               }
             `,
-          serialize: ({ query: { site, allMarkdownRemark } }) => {
-            return allMarkdownRemark.edges.map(edge => {
-              return Object.assign({}, edge.node.frontmatter, {
-                /* eslint-disable-next-line @typescript-eslint/camelcase */
-                custom_elements: [{ 'content:encoded': edge.node.html }],
-                date: edge.node.frontmatter.date,
-                description: edge.node.description,
-                guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                url: site.siteMetadata.siteUrl + edge.node.fields.slug
-              })
+          serialize: ({ query: { site, allBlogPost } }) => {
+            return allBlogPost.nodes.map(node => {
+              return Object.assign(
+                {},
+                {
+                  /* eslint-disable-next-line @typescript-eslint/camelcase */
+                  custom_elements: [{ 'content:encoded': node.html }],
+                  title: node.title,
+                  date: node.date,
+                  description: node.description,
+                  guid: site.siteMetadata.siteUrl + node.slug,
+                  url: site.siteMetadata.siteUrl + node.slug
+                }
+              )
             })
           },
           title

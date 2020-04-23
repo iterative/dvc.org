@@ -11,12 +11,12 @@ descriptionLong: |
   Some of those are related to our brainchild [DVC](https://dvc.org) and its
   journey. The others are a collection of exciting stories and ideas centered
   around ML best practices and workflow.
-picture: ../../static/uploads/images/2019-06-26/post-image.png
+picture: 2019-06-26/post-image.png
 pictureComment: |
   Thanks to the amazing [Signaturit Tech](https://twitter.com/SignaturitTech)
   team for this
   [photo](https://twitter.com/SignaturitTech/status/1127927520140120065?s=20)!
-author: ../authors/svetlana_grinchenko.md
+author: svetlana_grinchenko
 commentsUrl: https://discuss.dvc.org/t/june-19-dvc-heartbeat/289
 tags:
   - PyCon
@@ -104,10 +104,10 @@ image="/uploads/images/2019-06-26/first-impressions-of-data-science-version-cont
 > this mix offering a cleaner solution, specifically targeting Data Science
 > challenges.
 
-- **[Versioning and Reproducibility with MLV-tools and DVC](https://github.com/peopledoc/mlv-tools-tutorial):
-  [Talk](https://peopledoc.github.io/mlv-tools-tutorial/talks/pyData/presentation.html#/)
+- **[Versioning and Reproducibility with MLV-tools and DVC](https://github.com/peopledoc/mlvtools-tutorial):
+  [Talk](https://peopledoc.github.io/mlvtools-tutorial/talks/pyData/presentation.html#/)
   and
-  [Tutorial](https://peopledoc.github.io/mlv-tools-tutorial/talks/workshop/presentation.html#/)
+  [Tutorial](https://peopledoc.github.io/mlvtools-tutorial/talks/workshop/presentation.html#/)
   by [Stéphanie Bracaloni](https://github.com/sbracaloni) and
   [Sarah Diot-Girard](https://github.com/SdgJlbl).**
 

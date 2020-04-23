@@ -14,7 +14,7 @@ const metaImage = {
   height: '630'
 }
 
-const DefaultSEO: React.SFC<IDefaultSEOProps> = ({ pathname }) => {
+const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
   const siteMeta = getSiteMeta()
   const metaTitle = siteMeta.title
   const metaDescription = siteMeta.description
