@@ -74,9 +74,9 @@ For the typical process to share the <abbr>project</abbr> via remote, see
 ### What is a "local remote" ?
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the location of the storage relative to the project, so it can be any
-directory in the file system. "Remote" is the term that refers to the storage.
-Read "local cache backup".
+refers to the type of location where the storage is: another directory in the
+same file system. "Remote" is how we call storage for <abbr>DVC projects</abbr>.
+It's essentially a local backup for data tracked by DVC.
 
 </details>
 

@@ -5,6 +5,23 @@ sharing data files or directories, ML models, and intermediate results. This can
 be done on a regular Git workflow, but without actually storing the file
 contents with Git.
 
+<details>
+
+### TLDR: Get the complete project
+
+In case you'd like to get the complete code base and final results, or have any
+issues along the way, please note that we have a fully reproducible
+[example-get-started](https://github.com/iterative/example-get-started) repo on
+Github:
+
+```dvc
+$ git clone https://github.com/iterative/example-get-started
+$ cd example-get-started
+$ dvc pull
+```
+
+</details>
+
 👉 Having [initialized](/doc/tutorials/get-started#initialize) DVC, let's get an
 example dataset:
 
@@ -16,12 +33,8 @@ $ dvc get https://github.com/iterative/dataset-registry \
 
 > `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
 > repository</abbr>. It's like `wget`, but for DVC/Git repos. In this case we
-> use our [dataset-registry](https://github.com/iterative/dataset-registry) as
-> the source repository.
-
-We'll use this data in the
-[next page](/doc/tutorials/get-started/data-pipelines) to train a simple NLP
-model.
+> use our [dataset registry](https://github.com/iterative/dataset-registry) repo
+> as the data source.
 
 ## Start tracking data
 
@@ -32,11 +45,11 @@ it:
 $ dvc add data/data.xml
 ```
 
-DVC <abbr>caches</abbr> `data/data.xml` and stores information about the added
-data in a special **DVC-file** named `data/data.xml.dvc`, a small text file with
-a human-readable [format](/doc/user-guide/dvc-file-format). It also tells Git to
-ignore the added file, so that this version of the repository can be safely
-committed with Git:
+DVC stores information about the added file in a special _DVC-file_ named
+`data/data.xml.dvc`, a small text file with a human-readable
+[format](/doc/user-guide/dvc-file-format). This also tells Git to ignore the
+added file, so that this version of the repository can be safely committed with
+Git:
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc
@@ -45,45 +58,26 @@ $ git commit -m "Add raw data"
 
 <details>
 
-### Expand to learn about DVC internals
+### Expand to see what happened internally
 
-`dvc add` moves the data file to the project's cache (see
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)), and
-makes file links (or copies) with the original file names back in the
-<abbr>workspace</abbr>, which is what you see inside the project.
+`dvc add` moves the data to the <abbr>cache</abbr>, and links\* it back to the
+<abbr>workspace</abbr>.
 
 ```dvc
 $ ls -R .dvc/cache
 ...
-    .dvc/cache/a3:
-    04afb96060aad90176268345e10355
+.dvc/cache/a3:
+04afb96060aad90176268345e10355
 ```
 
 The hash value of the `data/data.xml` file we just added,
-`a304afb96060aad90176268345e10355` determines the path and file name shown
-above. And if you check the `data/data.xml.dvc` DVC-file created by DVC, you
-will see that it has this string inside.
+`a304afb96060aad90176268345e10355`, determines the path and file name shown
+above. And if you check `data/data.xml.dvc`, you will see that it stores this
+value.
 
-### Important note on cache performance
-
-DVC tries to use reflinks\* by default to link your data files from the
-<abbr>DVC cache</abbr> to the workspace, optimizing speed and storage space.
-However, reflinks are not widely supported yet and DVC falls back to actually
-copying data files to/from the cache. **Copying can be very slow with large
-files**, and duplicates storage requirements.
-
-Hardlinks and symlinks are also available for optimized cache linking but,
-(unlike reflinks) they carry the risk of accidentally corrupting the cache if
-tracked data files are modified in the workspace.
-
-See [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
-`dvc config cache` for more information.
-
-> \***copy-on-write links or "reflinks"** are a relatively new way to link files
-> in UNIX-style file systems. Unlike hardlinks or symlinks, they support
-> transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
-> means that editing a reflinked file is always safe as all the other links to
-> the file will reflect the changes.
+> \* See
+> [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
+> `dvc config cache` for more information on file linking.
 
 </details>
 
@@ -93,21 +87,10 @@ See [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
 
 ## Configure remote storage
 
-Because we'll want to share data and models outside of the local context where
-the data tracked with DVC is <abbr>cached</abbr>, we're going to set up a
-default [remote storage](/doc/command-reference/remote) for the <abbr>DVC
-project</abbr>. For simplicity, let's set up a _local remote_:
-
-<details>
-
-### What is a "local remote" ?
-
-While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the type of location where the storage is: another directory in the
-same file system. "Remote" is how we call storage for DVC projects. It's
-essentially a local storage backup.
-
-</details>
+Because we'll want to share data, models, etc. outside of the local context
+where it's <abbr>cached</abbr>, we're going to set up a default
+[remote storage](/doc/command-reference/remote). As a simple example, let's set
+up a _local remote_:
 
 ```dvc
 $ mkdir -p /tmp/dvc-storage
@@ -115,16 +98,26 @@ $ dvc remote add -d myremote /tmp/dvc-storage
 $ git commit .dvc/config -m "Configure local remote"
 ```
 
+<details>
+
+### What is a "local remote" ?
+
+While the term may seem contradictory, it doesn't have to be. The "local" part
+refers to the type of location where the storage is: another directory in the
+same file system. "Remote" is how we call storage for <abbr>DVC projects</abbr>.
+It's essentially a local backup for data tracked by DVC.
+
+</details>
+
 That's it! DVC doesn't require installing databases, storage servers, or
 warehouses. It can simply use cloud services or local/network file systems to
 store data, intermediate results, ML models, etc.
 
-💡 Note that **DVC supports many other remote storage types**: Google Drive,
-Amazon S3, Azure Blob Storage, Google Cloud Storage, Aliyun OSS, SSH, HDFS, and
-HTTP. Please refer to `dvc remote add` for more details and examples.
+💡 Note that DVC supports many remote storage types: Google Drive, Amazon S3,
+Azure Blob Storage, Google Cloud Storage, Aliyun OSS, SSH, HDFS, and HTTP.
+Please refer to `dvc remote add` for more details and examples.
 
-> There are many other configuration options that can be tweaked in DVC. Please
-> see `dvc config` for more information.
+> Refer to `dvc config` for other configuration information.
 
 ## Store and retrieve data
 
@@ -137,7 +130,7 @@ $ dvc push
 
 <details>
 
-### Expand to learn more about DVC internals
+### Expand to see what happened internally
 
 You can check that the data has been backed up to the DVC remote
 (`/tmp/dvc-storage` local directory) with:
@@ -202,6 +195,58 @@ run it after `git clone` and `git pull`.
 > [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
 > for more on basic collaboration workflows.
 
+## Get older data version
+
+Now that we have multiple experiments, models, processed datasets, the question
+is how do we revert back to an older version of a model file? Or how can we get
+the previous version of the dataset if it was changed at some point?
+
+The answer is the `dvc checkout` command, and we already touched briefly the
+process of switching between different data versions in previous sections.
+
+Let's say we want to get the previous `model.pkl` file. The short answer is:
+
+```dvc
+$ git checkout baseline-experiment train.dvc
+$ dvc checkout train.dvc
+```
+
+These two commands will bring the previous model file to its place in the
+<abbr>workspace</abbr>.
+
+<details>
+
+### Expand to see what happened internally
+
+DVC uses special [DVC-files](/doc/user-guide/dvc-file-format) to track data
+files, directories, end results. In this case, `train.dvc` among other things
+describes the `model.pkl` file this way:
+
+```yaml
+outs:
+md5: a66489653d1b6a8ba989799367b32c43
+path: model.pkl
+```
+
+`a664...2c43` is the "address" of the file in the local or remote DVC storage.
+
+It means that if we want to get to the previous version, we need to restore the
+DVC-file first with the `git checkout` command. Only after that can DVC restore
+the model file using the new "address" from the DVC-file.
+
+</details>
+
+To fully restore the previous experiment we just run `git checkout` and
+`dvc checkout` without specifying a target:
+
+```dvc
+$ git checkout baseline-experiment
+$ dvc checkout
+```
+
+Read the `dvc checkout` command reference and a dedicated data versioning
+[example](/doc/tutorials/versioning) for more information.
+
 ## Accessing data
 
 We've seen how to share data among team members or environments of the same
@@ -256,7 +301,7 @@ source later, using `dvc update`.
 
 <details>
 
-### Expand to learn more about DVC internals
+### Expand to see what happened internally
 
 DVC-files created by `dvc import` are called _import stages_. If we check the
 difference against the regular DVC-file we previously had, we can see that the

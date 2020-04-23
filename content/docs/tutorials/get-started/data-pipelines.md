@@ -107,7 +107,7 @@ above), it's <abbr>dependencies</abbr> (`-d`), and <abbr>outputs</abbr> (`-o`).
 
 <details>
 
-### Expand to learn more about what just happened
+### Expand to see what happened internally
 
 The command options used above mean the following:
 
