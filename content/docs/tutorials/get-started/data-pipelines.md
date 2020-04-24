@@ -155,8 +155,6 @@ outs:
   - md5: 6836f797f3924fb46fcfd6b9f6aa6416.dir
     path: data/prepared
     cache: true
-    metric: false
-    persist: false
 ```
 
 </details>

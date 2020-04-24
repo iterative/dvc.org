@@ -79,8 +79,6 @@ outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
     cache: true
-    metric: false
-    persist: false
 ```
 
 > \* See
@@ -239,7 +237,6 @@ Use `git diff` to show the change in `data/data.xml.dvc`:
 +- md5: 558a00881d4a6815ba625c13e27c5b7e
    path: data.xml
    cache: true
-   metric: false
 ```
 
 Since `data/data.xml` changed, its hash value is updated to `558a008...` (under

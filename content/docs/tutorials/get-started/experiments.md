@@ -32,28 +32,28 @@ metrics to track. They are defined using the `-m` (`--metrics`) option of
 ```dvc
 $ dvc run -f evaluate.dvc \
           -d src/evaluate.py -d model.pkl -d data/features \
-          -M auc.metric \
+          -M auc.json \
           python src/evaluate.py model.pkl \
-                 data/features auc.metric
+                 data/features auc.json
 ```
 
 Stage `evaluate.py` reads features from the `features/test.pkl` file and
 calculates the model's
 [AUC](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
-value. This metric is written to the `auc.metric` file (inn JSON format). We use
-the `-M` option in the command above to mark the file as a metric (instead of a
-regular output) in the stage file.
+value. This metric is written to the `auc.json` file. We use the `-M` option in
+the command above to mark the file as a metric (instead of a regular output) in
+the stage file.
 
 > Please, refer to `dvc run` and `dvc metrics` documentation for more details.
 
 Let's save the updates:
 
 ```dvc
-$ git add evaluate.dvc auc.metric
+$ git add evaluate.dvc auc.json
 $ git commit -m "Create evaluation stage"
 ```
 
-> Notice that we are versioning `auc.metric` with Git directly.
+> Notice that we are versioning `auc.json` with Git directly.
 
 Let's also assign a Git tag. It will serve as a checkpoint for us to compare
 experiments later:
@@ -175,9 +175,9 @@ difference between the `baseline` and `bigrams` experiments:
 $ dvc metrics show -T
 
 baseline-experiment:
-    auc.metric: 0.588426
+      auc.json: {"AUC": 0.588426}
 bigrams-experiment:
-    auc.metric: 0.602818
+      auc.json: {"AUC": 0.602818}
 ```
 
 DVC provides built-in support to track and navigate `JSON` or `YAML` metric
