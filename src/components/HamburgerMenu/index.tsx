@@ -43,13 +43,14 @@ const HamburgerMenu: React.FC = () => {
         className={styles.toggleButton}
         onClick={toggleMobileMenu}
         onKeyDown={openOnEnterKey}
+        aria-label="Toggle Mobile Menu"
       >
         <HamburgerIcon opened={isOpened} />
       </button>
 
       <div className={cn(styles.wrapper, isOpened && styles.opened)}>
         <div className={styles.logoRow}>
-          <Link href="/" className={styles.logo}>
+          <Link href="/" className={styles.logo} aria-label="Home">
             <LogoSVG />
           </Link>
         </div>
