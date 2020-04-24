@@ -96,12 +96,12 @@ The following command transforms the `src/prepare.py` script into a
 $ dvc run -f prepare.dvc \
           -d src/prepare.py -d data/data.xml \
           -o data/prepared \
-          python src/prepare.py data/data.xml
+          python src/prepare.py data/data.xml data/prepared
 ```
 
 `dvc run` generates the `prepare.dvc` _stage file_. It has the same
 [format](/doc/user-guide/dvc-file-format) as the `data/data.xml.dvc` DVC-file we
-[created previously](/doc/tutorials/get-started/data-versioning#start-tracking-data),
+[created previously](/doc/tutorials/get-started/data-versioning#tracking-data),
 but it includes additional information about the command we ran (last line
 above), it's <abbr>dependencies</abbr> (`-d`), and <abbr>outputs</abbr> (`-o`).
 
@@ -164,7 +164,7 @@ outs:
 There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
 directory in this case); `dvc run` already took care of this. You only need to
 run `dvc push` if you want to save them to
-[remote-storage](/doc/tutorials/get-started/data-versioning#configure-remote-storage),
+[remote storage](/doc/tutorials/get-started/data-versioning#remote-storage),
 usually along with `git commit` to version the stage file itself (optional):
 
 ```dvc

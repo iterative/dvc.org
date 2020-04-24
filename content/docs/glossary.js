@@ -68,7 +68,7 @@ Any data file or directory, as well as intermediate or final result (such as
 extracted features or a ML model file) that is tracked by DVC. Refer to
 [Versioning Data and Model Files]
 (/doc/use-cases/versioning-data-and-model-files) for more details. A.k.a
-**output*.
+_output_.
       `
     },
     {

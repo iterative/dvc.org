@@ -26,17 +26,16 @@ $ dvc pull
 example dataset:
 
 ```dvc
-$ mkdir data
 $ dvc get https://github.com/iterative/dataset-registry \
           get-started/data.xml -o data/data.xml
 ```
 
 > `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
-> repository</abbr>. It's like `wget`, but for DVC/Git repos. In this case we
+> repository</abbr>. It's like `wget`, but for DVC or Git repos. In this case we
 > use our [dataset registry](https://github.com/iterative/dataset-registry) repo
 > as the data source.
 
-## Start tracking data
+## Tracking data
 
 To track a file or directory that is too large for Git, just run `dvc add` on
 it:
@@ -47,8 +46,8 @@ $ dvc add data/data.xml
 
 DVC stores information about the added file in a special _DVC-file_ named
 `data/data.xml.dvc`, a small text file with a human-readable
-[format](/doc/user-guide/dvc-file-format). This also tells Git to ignore the
-added file, so that this version of the repository can be safely committed with
+[format](/doc/user-guide/dvc-file-format). This also causes Git to ignore the
+added data, so that this version of the repository can be safely committed with
 Git:
 
 ```dvc
@@ -70,10 +69,9 @@ $ ls -R .dvc/cache
 04afb96060aad90176268345e10355
 ```
 
-The hash value of the `data/data.xml` file we just added,
-`a304afb96060aad90176268345e10355`, determines the path and file name shown
-above. And if you check `data/data.xml.dvc`, you will see that it stores this
-value.
+The hash value of the `data/data.xml` file we just added, `a304afb...`,
+determines the path and file name shown above. And if you check
+`data/data.xml.dvc`, you will see that it stores this value.
 
 > \* See
 > [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
@@ -85,12 +83,70 @@ value.
 > [Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
 > for more information on versioning data with DVC.
 
-## Configure remote storage
+## Data versions
 
-Because we'll want to share data, models, etc. outside of the local context
-where it's <abbr>cached</abbr>, we're going to set up a default
-[remote storage](/doc/command-reference/remote). As a simple example, let's set
-up a _local remote_:
+Tracking data means that DVC is aware of it, so it can notice when the data
+changes. To register a new version of the data, just use `dvc add` again!
+
+<details>
+
+### Expand to update the data
+
+Let's clean up our raw dataset by using the `src/cleanup.py` script:
+
+```dvc
+$ python src/cleanup.py data/data.xml
+$ dvc status
+data\data.xml.dvc:
+        changed outs:
+                modified:           data\data.xml
+```
+
+`dvc status` detects when DVC-tracked data is modified (among other
+<abbr>project</abbr> states).
+
+</details>
+
+```dvc
+$ dvc add data/data.xml
+```
+
+<details>
+
+### Expand to see what happened internally
+
+Use `git diff` to show the change in `data/data.xml.dvc`:
+
+```diff
+-md5: 301598c8348f8ac0c95abc6fc19da952
++md5: a7aed3f683025c61e0f8e120279ed854
+ outs:
+-- md5: a304afb96060aad90176268345e10355
++- md5: 558a00881d4a6815ba625c13e27c5b7e
+   path: data.xml
+   cache: true
+   metric: false
+```
+
+Since `data/data.xml` changed, its hash value is updated (under `outs`). And
+given this change inside the DVC-file, it's own hash value is updated.
+
+</details>
+
+DVC updates the `data/data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format)
+to record the change, as shown above. Let's commit this new version with Git:
+
+```dvc
+$ git add data/data.xml.dvc
+$ git commit -m "Clean up data"
+```
+
+## Remote storage
+
+Because we'll want to share data and models outside of the local context where
+they're <abbr>cached</abbr>, we're going to set up a default
+[DVC remote](/doc/command-reference/remote). As a simple example, let's set up a
+_local remote_:
 
 ```dvc
 $ mkdir -p /tmp/dvc-storage
@@ -113,16 +169,14 @@ That's it! DVC doesn't require installing databases, storage servers, or
 warehouses. It can simply use cloud services or local/network file systems to
 store data, intermediate results, ML models, etc.
 
-💡 Note that DVC supports many remote storage types: Google Drive, Amazon S3,
+💡 DVC supports the following remote storage types: Google Drive, Amazon S3,
 Azure Blob Storage, Google Cloud Storage, Aliyun OSS, SSH, HDFS, and HTTP.
 Please refer to `dvc remote add` for more details and examples.
 
-> Refer to `dvc config` for other configuration information.
+## Backup and share data
 
-## Store and retrieve data
-
-To share data tracked with DVC, you can push it from your <abbr>project</abbr>
-to [remote storage](/doc/command-reference/remote):
+To upload tracked data by DVC to
+[remote storage](/doc/command-reference/remote), use `dvc push`:
 
 ```dvc
 $ dvc push
@@ -132,7 +186,9 @@ $ dvc push
 
 ### Expand to see what happened internally
 
-You can check that the data has been backed up to the DVC remote
+`dvc push` copied the data we [added](#tracking-data) earlier from the
+<abbr>cache</abbr> to the default remote storage we [set up](#remote-storage)
+before. You can check that the data has been backed up to the DVC remote
 (`/tmp/dvc-storage` local directory) with:
 
 ```dvc
@@ -142,28 +198,23 @@ $ ls -R /tmp/dvc-storage
 04afb96060aad90176268345e10355
 ```
 
-> Note that the remote storage should mirror your local <abbr>cache</abbr> (by
-> default in `.dvc/cache`) at this point.
-
-Similar to pushing source code to a _Git remote_, `dvc push` ensures that your
-data files and models are safely backed up remotely. Usually, we also want to
-`git push` to share or back up the corresponding
-[DVC-files](/doc/user-guide/dvc-file-format) (which should be committed with
-Git).
-
 </details>
 
-Now that `dvc push` uploaded the data to a DVC remote, it can be pulled by
-yourself or colleagues when needed in other copies of this project.
+Pushing data or models ensures they're safely backed up remotely for yourself or
+others to access from other environments. Usually, we also want to `git commit`
+and `git push` the corresponding [DVC-files](/doc/user-guide/dvc-file-format).
+
+## Retrieve data
+
+Now that there's data stored remotely, it can be downloaded when needed to other
+copies of this project with `dvc pull`:
 
 <details>
 
 ### Expand to simulate a fresh clone of this repo
 
-The difference between a working <abbr>DVC repository</abbr> and its underlying
-Git repo is that the data tracked with DVC is **not stored by Git**. So let's
-remove the data file added so far, both from <abbr>workspace</abbr> and
-<abbr>cache</abbr>:
+Let's just remove the data file added so far, both from <abbr>workspace</abbr>
+and <abbr>cache</abbr>:
 
 ```dvc
 $ rm -f data/data.xml
@@ -174,78 +225,52 @@ data\data.xml.dvc:
                 deleted:            data\data.xml
 ```
 
-`dvc status` detects when DVC-tracked data is missing, among other
-<abbr>project</abbr> states.
+`dvc status` detects when DVC-tracked data is missing (among other
+<abbr>project</abbr> states).
 
 </details>
-
-To restore data from remote storage, use:
 
 ```dvc
 $ dvc pull
 ```
 
-`dvc pull` downloads the data files and directories referenced in all present
-[DVC-files](/doc/user-guide/dvc-file-format) from remote storage. Usually, we
-run it after `git clone` and `git pull`.
-
-> Other related commands are `dvc fetch` and `dvc checkout`.
+This pulls the data files and directories referenced in all present
+[DVC-files](/doc/user-guide/dvc-file-format). Usually, we run it after
+`git clone` and `git pull`.
 
 > 📖 See also
 > [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
 > for more on basic collaboration workflows.
 
-## Get older data version
+## Restore different versions
 
-Now that we have multiple experiments, models, processed datasets, the question
-is how do we revert back to an older version of a model file? Or how can we get
-the previous version of the dataset if it was changed at some point?
-
-The answer is the `dvc checkout` command, and we already touched briefly the
-process of switching between different data versions in previous sections.
-
-Let's say we want to get the previous `model.pkl` file. The short answer is:
+Since we have multiple [data versions](#data-versions), we may want to revert
+back to an older one. For this, there's the `dvc checkout` command. Let's say we
+want to get the raw `data/data.xml` before it was cleaned up:
 
 ```dvc
-$ git checkout baseline-experiment train.dvc
-$ dvc checkout train.dvc
+$ git checkout HEAD^ data/data.xml.dvc
+$ dvc checkout data/data.xml.dvc
 ```
-
-These two commands will bring the previous model file to its place in the
-<abbr>workspace</abbr>.
 
 <details>
 
 ### Expand to see what happened internally
 
-DVC uses special [DVC-files](/doc/user-guide/dvc-file-format) to track data
-files, directories, end results. In this case, `train.dvc` among other things
-describes the `model.pkl` file this way:
+The `data/data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format) describes
+the `data/data.xml` file like this:
 
 ```yaml
 outs:
-md5: a66489653d1b6a8ba989799367b32c43
-path: model.pkl
+  md5: a304afb96060aad90176268345e10355
+  path: data.xml
 ```
 
-`a664...2c43` is the "address" of the file in the local or remote DVC storage.
-
-It means that if we want to get to the previous version, we need to restore the
-DVC-file first with the `git checkout` command. Only after that can DVC restore
-the model file using the new "address" from the DVC-file.
+The hash value of the data is back at its previous version after `git checkout`.
+All `dvc checkout` does is linking the corresponding file from the
+<abbr>cache</abbr> to the <abbr>workspace</abbr> again.
 
 </details>
-
-To fully restore the previous experiment we just run `git checkout` and
-`dvc checkout` without specifying a target:
-
-```dvc
-$ git checkout baseline-experiment
-$ dvc checkout
-```
-
-Read the `dvc checkout` command reference and a dedicated data versioning
-[example](/doc/tutorials/versioning) for more information.
 
 ## Accessing data
 
@@ -303,9 +328,10 @@ source later, using `dvc update`.
 
 ### Expand to see what happened internally
 
-DVC-files created by `dvc import` are called _import stages_. If we check the
-difference against the regular DVC-file we previously had, we can see that the
-latter has more fields, such as the data source `repo`, and `path` within it:
+[DVC-file](/doc/user-guide/dvc-file-format) created by `dvc import` are called
+_import stages_. If we check the difference against the regular DVC-file we
+previously had, we can see that the latter has more fields, such as the data
+source `repo`, and `path` within it:
 
 ```dvc
 $ git diff
