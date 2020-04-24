@@ -70,8 +70,18 @@ $ ls -R .dvc/cache
 ```
 
 The hash value of the `data/data.xml` file we just added, `a304afb...`,
-determines the path and file name shown above. And if you check
-`data/data.xml.dvc`, you will see that it stores this value.
+determines the path and file name shown above. If you check `data/data.xml.dvc`,
+you will find it there too:
+
+```yaml
+md5: 301598c8348f8ac0c95abc6fc19da952
+outs:
+  - md5: a304afb96060aad90176268345e10355
+    path: data.xml
+    cache: true
+    metric: false
+    persist: false
+```
 
 > \* See
 > [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) and
@@ -82,64 +92,6 @@ determines the path and file name shown above. And if you check
 > 📖 See
 > [Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
 > for more information on versioning data with DVC.
-
-## Data versions
-
-Tracking data means that DVC is aware of it, so it can notice when the data
-changes. To register a new version of the data, just use `dvc add` again!
-
-<details>
-
-### Expand to update the data
-
-Let's clean up our raw dataset by using the `src/cleanup.py` script:
-
-```dvc
-$ python src/cleanup.py data/data.xml
-$ dvc status
-data\data.xml.dvc:
-        changed outs:
-                modified:           data\data.xml
-```
-
-`dvc status` detects when DVC-tracked data is modified (among other
-<abbr>project</abbr> states).
-
-</details>
-
-```dvc
-$ dvc add data/data.xml
-```
-
-<details>
-
-### Expand to see what happened internally
-
-Use `git diff` to show the change in `data/data.xml.dvc`:
-
-```diff
--md5: 301598c8348f8ac0c95abc6fc19da952
-+md5: a7aed3f683025c61e0f8e120279ed854
- outs:
--- md5: a304afb96060aad90176268345e10355
-+- md5: 558a00881d4a6815ba625c13e27c5b7e
-   path: data.xml
-   cache: true
-   metric: false
-```
-
-Since `data/data.xml` changed, its hash value is updated (under `outs`). And
-given this change inside the DVC-file, it's own hash value is updated.
-
-</details>
-
-DVC updates the `data/data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format)
-to record the change, as shown above. Let's commit this new version with Git:
-
-```dvc
-$ git add data/data.xml.dvc
-$ git commit -m "Clean up data"
-```
 
 ## Remote storage
 
@@ -169,13 +121,13 @@ That's it! DVC doesn't require installing databases, storage servers, or
 warehouses. It can simply use cloud services or local/network file systems to
 store data, intermediate results, ML models, etc.
 
-💡 DVC supports the following remote storage types: Google Drive, Amazon S3,
+💡 DVC supports the following **remote storage types**: Google Drive, Amazon S3,
 Azure Blob Storage, Google Cloud Storage, Aliyun OSS, SSH, HDFS, and HTTP.
 Please refer to `dvc remote add` for more details and examples.
 
 ## Backup and share data
 
-To upload tracked data by DVC to
+To **upload** tracked data by DVC to
 [remote storage](/doc/command-reference/remote), use `dvc push`:
 
 ```dvc
@@ -206,19 +158,18 @@ and `git push` the corresponding [DVC-files](/doc/user-guide/dvc-file-format).
 
 ## Retrieve data
 
-Now that there's data stored remotely, it can be downloaded when needed to other
-copies of this project with `dvc pull`:
+Now that there's data stored remotely, it can be **downloaded** when needed to
+other copies of this project with `dvc pull`:
 
 <details>
 
-### Expand to simulate a fresh clone of this repo
+### 👉 Expand to simulate a fresh clone of this repo
 
 Let's just remove the data file added so far, both from <abbr>workspace</abbr>
 and <abbr>cache</abbr>:
 
 ```dvc
-$ rm -f data/data.xml
-$ rm -f .dvc/cache/a3/04afb96060aad90176268345e10355
+$ rm -f data/data.xml .dvc/cache/a3/04afb96060aad90176268345e10355
 $ dvc status
 data\data.xml.dvc:
         changed outs:
@@ -242,11 +193,71 @@ This pulls the data files and directories referenced in all present
 > [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
 > for more on basic collaboration workflows.
 
+## Data versions
+
+[Tracking](#tracking-data) files or directories means that DVC becomes aware of
+them, and it can notice when they change. To register a new version of the data,
+just use `dvc add` again:
+
+<details>
+
+### 👉 Expand to update the data
+
+Let's clean up our raw dataset in-place, by using the `src/cleanup.py` script:
+
+```dvc
+$ python src/cleanup.py data/data.xml
+$ dvc status
+data\data.xml.dvc:
+        changed outs:
+                modified:           data\data.xml
+```
+
+`dvc status` detects when DVC-tracked data is modified (among other
+<abbr>project</abbr> states).
+
+</details>
+
+```dvc
+$ dvc add data/data.xml
+```
+
+DVC updates the `data/data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format)
+to match the updated data. Let's commit this new version with Git:
+
+<details>
+
+### Expand to see what happened internally
+
+Use `git diff` to show the change in `data/data.xml.dvc`:
+
+```diff
+-md5: 301598c8348f8ac0c95abc6fc19da952
++md5: a7aed3f683025c61e0f8e120279ed854
+ outs:
+-- md5: a304afb96060aad90176268345e10355
++- md5: 558a00881d4a6815ba625c13e27c5b7e
+   path: data.xml
+   cache: true
+   metric: false
+```
+
+Since `data/data.xml` changed, its hash value is updated to `558a008...` (under
+`outs`). And given this change inside the DVC-file, it's own hash value is
+updated to `a7aed3f...`.
+
+</details>
+
+```dvc
+$ git add data/data.xml.dvc
+$ git commit -m "Clean up data"
+```
+
 ## Restore different versions
 
-Since we have multiple [data versions](#data-versions), we may want to revert
-back to an older one. For this, there's the `dvc checkout` command. Let's say we
-want to get the raw `data/data.xml` before it was cleaned up:
+Since we have multiple [data versions](#data-versions), we may want to switch
+between them. We can use `dvc checkout` for this. Let's say we want to revert to
+the raw `data/data.xml` (before cleaning):
 
 ```dvc
 $ git checkout HEAD^ data/data.xml.dvc
@@ -278,13 +289,10 @@ We've seen how to share data among team members or environments of the same
 <abbr>DVC project</abbr>. But what if we wanted to reuse a dataset or ML model
 from a different DVC repository?
 
-One way is to manually download the data and use `dvc add` to track it, like we
-did in the beginning of this page, but the connection between the projects is
-lost this way. Others won't be able to tell where the data came from or whether
-there's a new version available.
-
-Fortunately DVC provides better alternatives! But first let's learn how to
-browse DVC repos without cloning them.
+One way is to manually download the data and use `dvc add` to track it (as done
+in the beginning of this page). But the connection between the projects is lost
+this way: others won't know where the data came from or whether new versions are
+available. Let's see better alternatives:
 
 ### Find a dataset
 
@@ -295,73 +303,58 @@ Git server. For example:
 $ dvc list https://github.com/iterative/dataset-registry
 .gitignore
 README.md
-get-started
+get-started     # <- Let's see what's in this directory.
 images
 tutorial
 use-cases
 $ dvc list https://github.com/iterative/dataset-registry get-started
 .gitignore
-data.xml        # <-- Bingo!
+data.xml        # <- Bingo!
 data.xml.dvc
 ```
 
-Another benefit of this command over browsing a Git hosting website is that the
-list generated by DVC includes files and directories tracked by both Git and
-DVC.
+The benefit of this command over browsing a Git hosting website is that the list
+shown includes files and directories tracked by **both Git and DVC**.
 
 ### Import the dataset
 
-Let's replace `data/data.xml` by importing it directly from the same source:
+Let's replace `data/data.xml` by importing it directly from its original source.
+`dvc import` downloads the dataset, and tracks **it the same step**, so you
+don't have to use `dvc add` separately:
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
              get-started/data.xml -o data/data.xml
 ```
 
-`dvc import` downloads and overwrites the same `data/data.xml`, tracking it with
-DVC in the same step, so you don't have to use `dvc add` separately.
-Additionally, `data.xml.dvc` now has special metadata that allows DVC to track
-changes in the source data. This allows you to bring in changes from the data
-source later, using `dvc update`.
-
 <details>
 
-### Expand to see what happened internally
+#### Expand to see what happened internally
 
-[DVC-file](/doc/user-guide/dvc-file-format) created by `dvc import` are called
-_import stages_. If we check the difference against the regular DVC-file we
-previously had, we can see that the latter has more fields, such as the data
-source `repo`, and `path` within it:
+DVC-files created by `dvc import` are called _import stages_. These have fields,
+such as the data source `repo`, and `path` (under `deps`):
 
-```dvc
-$ git diff
-...
---- a/data/data.xml.dvc
-+++ b/data/data.xml.dvc
-...
-+deps:
-+- path: get-started/data.xml
-+  repo:
-+    url: https://github.com/iterative/dataset-registry
-+    rev_lock: f31f5c4cdae787b4bdeb97a717687d44667d9e62
+```yaml
+deps:
+  path: get-started/data.xml
+  repo:
+    url: https://github.com/iterative/dataset-registry
+    rev_lock: f31f5c4cdae787b4bdeb97a717687d44667d9e62
 ```
 
 The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 [version](https://git-scm.com/docs/revisions) of the dependency, respectively.
 
-Note that the [dataset-registry](https://github.com/iterative/dataset-registry)
-repository doesn't actually contain a `get-started/data.xml` file. Like with
-`dvc get`, importing also downloads the data from the appropriate
-[remote storage](/doc/command-reference/remote).
+> Note that the
+> [dataset registry](https://github.com/iterative/dataset-registry) repository
+> doesn't actually contain a `get-started/data.xml` file. Like `dvc get`,
+> importing downloads from [remote storage](/doc/command-reference/remote).
 
 </details>
 
-Let's wrap up by committing the import stage changes with Git:
-
-```dvc
-$ git add data/data.xml.dvc
-$ git commit -m "Import raw data (overwrite)"
-```
+Additionally, the `data/data.xml` [DVC-file](/doc/user-guide/dvc-file-format)
+now includes metadata to track changes in the source data. This allows you to
+bring in changes from the data source later, using `dvc update`.
 
 ### Python API
 
