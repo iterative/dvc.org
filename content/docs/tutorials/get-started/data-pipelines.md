@@ -3,6 +3,8 @@
 This layer of DVC provides the ability to register data processing or modeling
 workflows or _pipelines_ that can be easily managed and reproduced.
 
+- You'll need [Python](https://www.python.org/) to follow this tutorial.
+
 ![](/img/example-flow-2x.png) _Data modeling overview_
 
 <details>
@@ -10,31 +12,34 @@ workflows or _pipelines_ that can be easily managed and reproduced.
 ### 👉 Expand to prepare the project
 
 If you just followed through the
-[versioning](/doc/tutorials/get-started/data-versioning) page of this tutorial,
-you're all set. Otherwise, run these commands to get the project from Github:
+[versioning](/doc/tutorials/get-started/data-versioning) page, cleanup any
+uncommitted changes with:
+
+```dvc
+$ git reset --hard
+$ dvc checkout
+```
+
+Otherwise, get the project from Github with:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
-$ git checkout 4-import-data
+$ git checkout 4-update-data
 $ dvc pull
 ```
 
 </details>
 
-> The pipeline in this tutorial explores a simple
-> [NLP](https://en.wikipedia.org/wiki/Natural_language_processing) problem: to
-> predict tags for a given Stack Overflow question. It's a simplified version of
-> our [Deep Dive Tutorial](/doc/tutorials/deep).
-
 ## Stages
 
-The steps that form a pipeline are called _stages_. They record the connection
-between data (tracked with DVC) and code (tracked directly with Git).
+The _stages_ that form a pipeline can help us connect the data tracked with DVC
+and the project's source code (tracked directly with Git). Let's transform a
+Python script into a [stage](/doc/command-reference/run):
 
 <details>
 
-### Expand to download example code
+### 👉 Expand to download example code
 
 Let's first get some code to work with:
 
@@ -42,55 +47,23 @@ Let's first get some code to work with:
 $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
+$ ls src
+evaluate.py  featurization.py  prepare.py  requirements.txt  train.py
 ```
 
-> Windows doesn't include the `wget` utility by default, but you can use the
-> browser to download `code.zip`. (Right-click
-> [this link](https://code.dvc.org/get-started/code.zip) and select
-> `Save Link As...` (Chrome). Save it into the <abbr>workspace</abbr>.
+Now let's install the requirements:
 
-> 💡 Please also review
-> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
-> tips to improve your experience using DVC on Windows.
-
-Your workspace should now look like this:
+> We **strongly** recommend creating a
+> [virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments)
+> first.
 
 ```dvc
-$ tree
-.
-├── data
-│   ├── data.xml
-│   └── data.xml.dvc
-└── src
-    ├── evaluate.py
-    ├── featurization.py
-    ├── prepare.py
-    ├── requirements.txt
-    └── train.py
-```
-
-Now let's install the requirements. But before we do that, we **strongly**
-recommend creating a
-[virtual environment](https://packaging.python.org/tutorials/installing-packages/#creating-virtual-environments):
-
-```dvc
-$ virtualenv -p python3 .env
-$ echo ".env/" >> .gitignore
-$ source .env/bin/activate
 $ pip install -r src/requirements.txt
 ```
 
-Optionally, save the progress with Git:
-
-```dvc
-$ git add .
-$ git commit -m "Add source code files to repo"
-```
+Optionally, commit the progress with Git.
 
 </details>
-
-The following command transforms the `src/prepare.py` script into a
-[stage](/doc/command-reference/run):
 
 ```dvc
 $ dvc run -f prepare.dvc \
@@ -100,10 +73,11 @@ $ dvc run -f prepare.dvc \
 ```
 
 `dvc run` generates the `prepare.dvc` _stage file_. It has the same
-[format](/doc/user-guide/dvc-file-format) as the `data/data.xml.dvc` DVC-file we
-[created previously](/doc/tutorials/get-started/data-versioning#tracking-data),
-but it includes additional information about the command we ran (last line
-above), it's <abbr>dependencies</abbr> (`-d`), and <abbr>outputs</abbr> (`-o`).
+[format](/doc/user-guide/dvc-file-format) as the DVC-file we created previously
+to [tack data](/doc/tutorials/get-started/data-versioning#tracking-data), but it
+includes additional information about the command we ran
+(`python src/prepare.py`), it's <abbr>dependencies</abbr>, and
+<abbr>outputs</abbr>.
 
 <details>
 
@@ -115,37 +89,33 @@ The command options used above mean the following:
   recommend using it to make your project structure more readable.
 
 - `-d src/prepare.py` and `-d data/data.xml` mean that the stage depends on
-  these files to work. Notice that the source code itself is marked as a stage
+  these files to work. Notice that the source code itself is marked as a
   dependency. If any of these files change later, DVC will know that this stage
   needs to be [reproduced](#reproduce).
 
-- `-o data/prepared` specifies the output directory where this script writes to.
-  It creates two files in it (that will be used later down the
-  [pipeline](#pipelines)), as shown below.
+- `-o data/prepared` specifies an output directory for this script, which writes
+  two files in it. This is how the <abbr>workspace</abbr> should look like now:
 
-- The last line, `python src/prepare.py data/data.xml`, is the command to run in
-  this stage, and it's saved to the stage file (`cmd` field) as shown below.
+  ```diff
+      .
+      ├── data
+      │   ├── data.xml
+      │   ├── data.xml.dvc
+  +   │   └── prepared
+  +   │       ├── test.tsv
+  +   │       └── train.tsv
+  +   ├── prepare.dvc
+      └── src
+          ├── ...
+  ```
 
-This is how the changes in your <abbr>workspace</abbr> should look like now:
+- The last line, `python src/prepare.py ...`, is the command to run in this
+  stage, and it's saved to the stage file, as shown below.
 
-```diff
-    .
-    ├── data
-    │   ├── data.xml
-    │   ├── data.xml.dvc
-+   │   └── prepared
-+   │       ├── test.tsv
-+   │       └── train.tsv
-+   ├── prepare.dvc
-    └── src
-        ├── ...
-```
-
-These are the contents of `prepare.dvc`:
+The resulting import stage `prepare.dvc` contains all of the information above:
 
 ```yaml
-md5: 645d5baf13fb4404e17d77a2cf7461c4
-cmd: python src/prepare.py data/data.xml
+cmd: python src/prepare.py data/data.xml data/prepared
 deps:
   - md5: 1a18704abffac804adf2d5c4549f00f7
     path: src/prepare.py
@@ -160,16 +130,10 @@ outs:
 </details>
 
 There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
-directory in this case); `dvc run` already took care of this. You only need to
-run `dvc push` if you want to save them to
+in this case); `dvc run` already took care of this. You only need to run
+`dvc push` if you want to save them to
 [remote storage](/doc/tutorials/get-started/data-versioning#remote-storage),
-usually along with `git commit` to version the stage file itself (optional):
-
-```dvc
-$ git add data/.gitignore prepare.dvc
-$ git commit -m "Create data preparation stage"
-$ dvc push
-```
+(usually along with `git commit` to version the stage file itself).
 
 ## Pipelines
 

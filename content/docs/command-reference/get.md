@@ -148,7 +148,7 @@ https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 location to place the artifact within the workspace. Combining these two options
 allows us to do something we can't achieve with the regular `git checkout` +
 `dvc checkout` process – see for example the
-[Get Older Data Version](/doc/tutorials/get-started/data-versioning#restore-different-versions)
+[Get Older Data Version](/doc/tutorials/get-started/data-versioning#navigate-versions)
 section of our _Get Started_.
 
 Let's use the

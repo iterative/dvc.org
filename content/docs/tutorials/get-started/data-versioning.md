@@ -5,6 +5,8 @@ sharing data files or directories, ML models, and intermediate results. This can
 be done on a regular Git workflow, but without actually storing the file
 contents with Git.
 
+- You'll need [Python](https://www.python.org/) to follow this tutorial.
+
 <details>
 
 ### TLDR: Get the complete project
@@ -191,7 +193,7 @@ This pulls the data files and directories referenced in all present
 > [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
 > for more on basic collaboration workflows.
 
-## Data versions
+## Navigate versions
 
 [Tracking](#tracking-data) files or directories means that DVC becomes aware of
 them, and it can notice when they change. To register a new version of the data,
@@ -250,11 +252,9 @@ $ git add data/data.xml.dvc
 $ git commit -m "Clean up data"
 ```
 
-## Restore different versions
-
-Since we have multiple [data versions](#data-versions), we may want to switch
-between them. We can use `dvc checkout` for this. Let's say we want to revert to
-the raw `data/data.xml` (before cleaning):
+Since we have multiple [data versions](#navigate-versions), we may want to
+switch between them. We can use `dvc checkout` for this. Let's say we want to
+revert to the raw `data/data.xml` (before cleaning):
 
 ```dvc
 $ git checkout HEAD^ data/data.xml.dvc
@@ -265,8 +265,9 @@ $ dvc checkout data/data.xml.dvc
 
 ### Expand to see what happened internally
 
-The `data/data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format) describes
-the `data/data.xml` file like this:
+`git checkout` brought the `data/data.xml.dvc`
+[DVC-file](/doc/user-guide/dvc-file-format) back to the version with the
+previous hash value of the data, `a304afb...`:
 
 ```yaml
 outs:
@@ -274,13 +275,12 @@ outs:
   path: data.xml
 ```
 
-The hash value of the data is back at its previous version after `git checkout`.
 All `dvc checkout` does is linking the corresponding file from the
-<abbr>cache</abbr> to the <abbr>workspace</abbr> again.
+<abbr>cache</abbr> to the <abbr>workspace</abbr>.
 
 </details>
 
-## Accessing data
+## Advanced data access
 
 We've seen how to share data among team members or environments of the same
 <abbr>DVC project</abbr>. But what if we wanted to reuse a dataset or ML model

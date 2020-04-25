@@ -11,7 +11,7 @@ modifying some of the code during this tutorial to improve the model.
 > We have tested our tutorials and examples with Python 3. We don't recommend
 > using earlier versions.
 
-You'll need [Git](https://git-scm.com) to run the commands in this tutorial.
+You'll need [Git](https://git-scm.com/) to run the commands in this tutorial.
 Also, if DVC is not installed, please follow these [instructions](/doc/install)
 to do so.
 

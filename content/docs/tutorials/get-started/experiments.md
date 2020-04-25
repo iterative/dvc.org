@@ -9,9 +9,9 @@ through _parameters_ and _metrics_.
 ### 👉 Expand to prepare the project
 
 If you just followed through the
-[pipelines](/doc/tutorials/get-started/data-pipelines) page of this tutorial,
-just make sure you're located in the <abbr>project</abbr> we're building.
-Otherwise, run these commands to get the project from Github:
+[pipelines](/doc/tutorials/get-started/data-pipelines) page, make sure you're
+located in the <abbr>project</abbr> we're building. Otherwise, get the project
+from Github with:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started

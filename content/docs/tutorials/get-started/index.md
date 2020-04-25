@@ -3,8 +3,9 @@
 The next pages explore the different layers of DVC hands-on, working with source
 code and command line.
 
-You'll need [Git](https://git-scm.com) to follow this tutorial. Also, if DVC is
-not installed, please follow [these instructions](/doc/install) first.
+- You'll need [Git](https://git-scm.com/) to follow this tutorial.
+- Also, if DVC is not installed, please follow
+  [these instructions](/doc/install) first.
 
 ## Initialize
 
