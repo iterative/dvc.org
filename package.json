@@ -16,7 +16,8 @@
     "lint-ts": "tsc --noEmit --skipLibCheck && eslint --ext .json,.js,.ts,.tsx .",
     "lint-css": "stylelint \"src/**/*.css\"",
     "link-check": "./scripts/link-check-git-all.sh",
-    "link-check-diff": "./scripts/link-check-git-diff.sh"
+    "link-check-diff": "./scripts/link-check-git-diff.sh",
+    "link-check-exclude": "./scripts/exclude-links-check.sh"
   },
   "repository": {
     "type": "git",
