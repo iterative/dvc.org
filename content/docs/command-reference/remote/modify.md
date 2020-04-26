@@ -548,7 +548,8 @@ more information.
 
 ### Click for WebDav
 
-He is extension for HTTP protocol. For him, the same settings apply as for HTTP. See section for [HTTP](#section-http).
+He is extension for HTTP protocol. For him, the same settings apply as for HTTP.
+See section for [HTTP](#section-http).
 
 </details>
 
