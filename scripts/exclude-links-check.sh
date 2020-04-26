@@ -7,7 +7,7 @@ exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname "$0")/exclude-links.txt}"
 [ -f "$exclude" ] && exclude="$(cat "$exclude")"
 
 missing="$(
-  urlfinder $(git ls-files '*.js' '*.jsx' '*.md' '*.tsx' '*.ts' '*.json') \
+  urlfinder $(git ls-files '*.css' '*.js' '*.jsx' '*.md' '*.tsx' '*.ts' '*.json' ':!redirects-list.json' ':!*.test.js') \
   | sed 's/#.*//g' | sort -u \
   | comm -13 - <(echo "$exclude" | sort -u)
 )"
