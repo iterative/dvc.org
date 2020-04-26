@@ -483,7 +483,7 @@ more information.
 
 <details>
 
-### <a id="section-http"></a>Click for HTTP
+### Click for HTTP
 
 - `auth` - authentication method to use when accessing a remote. The accepted
   values are:
@@ -548,8 +548,8 @@ more information.
 
 ### Click for WebDav
 
-He is extension for HTTP protocol. For him, the same settings apply as for HTTP.
-See section for [HTTP](#section-http).
+Since it's an extension for the HTTP protocol the same settings apply as for
+HTTP. See above for the HTTP.
 
 </details>
 
