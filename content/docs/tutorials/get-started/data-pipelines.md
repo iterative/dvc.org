@@ -1,8 +1,5 @@
 # Data Pipelines
 
-This layer of DVC provides you with the ability to register data processing or
-modeling workflows or _pipelines_ that can be easily managed and reproduced.
-
 ![](/img/example-flow-2x.png) _Data modeling overview_
 
 <details>

@@ -1,9 +1,5 @@
 # Experiments
 
-Data science is a metric-driven process of experimentation, similar to any R&D.
-This layer of DVC enables you to capture and compare experiment performance
-through _parameters_ and _metrics_.
-
 <details>
 
 ### 👉 Expand to prepare the project

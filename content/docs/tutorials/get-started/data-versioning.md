@@ -1,29 +1,13 @@
 # Data Versioning
 
-The first layer of DVC provides a basic foundation for versioning, storing, and
-sharing data files or directories, ML models, and intermediate results. This can
-be done on a regular Git workflow, but without actually storing the file
-contents with Git.
+To track a large file or directory, use `dvc add`:
 
 <details>
 
-### TLDR: Get the complete project
+### 👉 Expand to get an example dataset
 
-In case you'd like to get the complete code base and final results, or have any
-issues along the way, please note that we have a fully reproducible
-[example-get-started](https://github.com/iterative/example-get-started) repo on
-Github:
-
-```dvc
-$ git clone https://github.com/iterative/example-get-started
-$ cd example-get-started
-$ dvc pull
-```
-
-</details>
-
-👉 Having [initialized](/doc/tutorials/get-started#initialize) DVC, let's get an
-example dataset:
+Having [initialized](/doc/tutorials/get-started#initialize) the project, do
+this:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
@@ -35,10 +19,7 @@ $ dvc get https://github.com/iterative/dataset-registry \
 > use our [dataset registry](https://github.com/iterative/dataset-registry) repo
 > as the data source.
 
-## Tracking data
-
-To track a file or directory that is too large for Git, just run `dvc add` on
-it:
+</details>
 
 ```dvc
 $ dvc add data/data.xml

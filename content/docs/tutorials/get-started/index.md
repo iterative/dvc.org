@@ -2,6 +2,23 @@
 
 This tutorial explores DVC hands-on, working with source code and command line.
 
+<details>
+
+### TLDR: Get the complete project
+
+In case you'd like to get the complete code base and final results, or have any
+issues along the way, please note that we have a fully reproducible
+[example-get-started](https://github.com/iterative/example-get-started) repo on
+Github:
+
+```dvc
+$ git clone https://github.com/iterative/example-get-started
+$ cd example-get-started
+$ dvc pull
+```
+
+</details>
+
 ## Initialize
 
 Start by creating a <abbr>workspace</abbr> and initialize Git in it, as the
@@ -30,18 +47,14 @@ DVC functionality can be split into layers. Each one can be used independently,
 but together they form a robust framework to capture and navigate machine
 learning development.
 
-- [Data **versioning**](/doc/tutorials/get-started/data-versioning) leverages
-  Git SCM to track and share large files (e.g. raw data, prepared features,
-  machine learning models) while storing them separately.
+- [Data **versioning**](/doc/tutorials/get-started/data-versioning) is the basic
+  foundation for storing and sharing **evolving datasets** and ML models. We
+  work on a regular Git workflow, without storing **large files** with Git.
 
 - [Data **pipelines**](/doc/tutorials/get-started/data-pipelines) let you
-  register data workflows, automatically versioning inputs and outputs of all
-  stages. Registered pipelines can be managed and reproduced easily by you or
-  others.
+  register data modeling **workflows** that can be managed and **reproduced**
+  easily by you or others.
 
-- [**Experiments**](/doc/tutorials/get-started/experiments) of data and
-  processes are a natural part of the data science process. DVC provides special
-  tools to define and track experiments that can be tuned and compared.
-
-Please choose a topic, or click the `Next` button below to start from the
-beginning ↘
+- [**Experiments**](/doc/tutorials/get-started/experiments) are a natural part
+  of data science, or any R&D process. DVC provides special tools to define,
+  manage, tune, and **compare them** through _parameters_ and _metrics_.
