@@ -6,23 +6,11 @@
 #     link-check.sh [<files>]
 set -euo pipefail
 
+source "$(dirname "$0")"/utils.sh
 base_url="${CHECK_LINKS_RELATIVE_URL:-https://dvc.org}"
 exclude="${CHECK_LINKS_EXCLUDE_LIST:-$(dirname "$0")/exclude-links.txt}"
 [ -f "$exclude" ] && exclude="$(cat "$exclude")"
 user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10.14; rv:74.0) Gecko/20100101 Firefox/74.0"
-
-
-finder(){  # expects list of files
-  content="$(cat "$@")"  # read once (could be file descriptors)
-  # explicit links not in markdown
-  echo "$content" | pcregrep -o '(?<!\]\()https?://[^\s<>{}"'"'"'`]+'
-  # explicit links in markdown
-  echo "$content" | pcregrep -o '(?<=\])\(https?://[^[\]\s]+\)' | pcregrep -o '\((?:[^)(]*(?R)?)*+\)' | pcregrep -o '(?<=\().*(?=\))'
-  # relative links in markdown
-  echo "$content" | sed -nE 's/.*]\((\/[^)[:space:]]+).*/\1/p' | xargs -n1 -II echo ${base_url}I
-  # relative links in html
-  echo "$content" | sed -nE 's/.*href=["'"'"'](\/[^"'"'"']+)["'"'"'].*/\1/p' | xargs -n1 -II echo ${base_url}I
-}
 
 checker(){  # expects list of urls
   errors=0
@@ -56,7 +44,9 @@ fails=0
 for file in "$@"; do
   echo -n "$file:"
   prev=$fails
-  checker $(finder "$file" | sed 's/#.*//g' | sort -u | comm -23 - <(echo "$exclude" | sort -u)) || fails=$(($fails + 1))
+  checker $(urlfinder "$base_url" "$file" | sed 's/#.*//g' | sort -u \
+            | comm -23 - <(echo "$exclude" | sort -u)) \
+    || fails=$(($fails + 1))
   [ $prev -eq $fails ] && echo OK
 done
 
