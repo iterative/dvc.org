@@ -100,7 +100,11 @@ const DownloadButtonDropdownItems: React.FC<IDownloadButtonDropdownItemsProps> =
           <Link
             download={item.download}
             key={os}
-            className={cn(styles.dropdownItem, os === userOS && styles.active)}
+            className={cn(
+              styles.dropdownItem,
+              os === userOS && styles.active,
+              'link-with-focus'
+            )}
             href={item.url}
             onClick={(): void => onClick(os)}
           >
@@ -151,7 +155,10 @@ const DownloadButton: React.FC<IDownloadButtonProps> = ({ openTop }) => {
     <span className={styles.container} ref={containerRef}>
       <TwoRowsButton
         mode="purple"
-        className={cn(styles.button, isOpened && styles.opened)}
+        className={`${cn(
+          styles.button,
+          isOpened && styles.opened
+        )} btn-with-focus`}
         title="Download"
         active={isOpened}
         description={`(${currentOS.title})`}

@@ -17,7 +17,9 @@
   cursor: pointer;
   transition: 0.2s background-color ease-out;
 
-  &:hover {
+  &:hover,
+  &:focus {
+    outline: none;
     background-color: var(--color-light-blue);
   }
 }

@@ -60,7 +60,10 @@ const LandingHero: React.FC<ILandingHeroProps> = ({ scrollToRef }) => {
           </ShowOnly>
           <TwoRowsButton
             mode="outline"
-            className={cn(styles.actionButton, styles.watchVideo)}
+            className={`${cn(
+              styles.actionButton,
+              styles.watchVideo
+            )} btn-with-focus btn-with-focus--white`}
             title="Watch video"
             description="How it works"
             icon={

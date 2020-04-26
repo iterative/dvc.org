@@ -20,7 +20,7 @@ const LearnMore: React.FC<ILearnMoreProps> = ({ scrollToRef }) => {
   }, [scrollToRef?.current])
 
   return (
-    <button className={styles.button} onClick={onClick}>
+    <button className={`${styles.button} link-with-focus`} onClick={onClick}>
       <span className={styles.icon}>
         <img src="/img/learn-more.svg" alt="Learn More" />
       </span>

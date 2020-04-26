@@ -62,7 +62,8 @@
       border-color: var(--color-purple);
       color: var(--color-purple);
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--color-purple);
       }
     }
@@ -94,7 +95,8 @@
       border-color: var(--color-azure);
       color: var(--color-azure);
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--color-azure);
       }
     }
@@ -118,7 +120,8 @@
       border-color: var(--color-orange-bright);
       color: var(--color-orange-bright);
 
-      &:hover {
+      &:hover,
+      &:focus {
         background-color: var(--color-orange-bright);
       }
     }
@@ -190,8 +193,10 @@
   transition: 0.2s background-color ease-out;
   cursor: pointer;
 
-  &.featureButton:hover {
+  &.featureButton:hover,
+  &.featureButton:focus {
     color: #fff;
+    outline: none;
   }
 }
 
