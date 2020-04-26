@@ -5,7 +5,7 @@ repo="$(dirname "$(realpath "$(dirname "$0")")")"
 pushd "$repo"
 
 differ="git diff $(git merge-base HEAD origin/master)"
-changed="$($differ --name-only -- '*.css' '*.js' '*.jsx' '*.md' '*.tsx' '*.ts' '*.json')"
+changed="$($differ --name-only -- '*.css' '*.js' '*.jsx' '*.md' '*.tsx' '*.ts' '*.json' ':!redirects-list.json')"
 
 [ -z "$changed" ] && exit 0
 
