@@ -315,6 +315,21 @@
         ]
       },
       {
+        "label": "plot",
+        "slug": "plot",
+        "source": "plot/index.md",
+        "children": [
+          {
+            "label": "plot show",
+            "slug": "show"
+          },
+          {
+            "label": "plot diff",
+            "slug": "diff"
+          }
+        ]
+      },
+      {
         "label": "pull",
         "slug": "pull"
       },
