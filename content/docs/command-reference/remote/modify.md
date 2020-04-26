@@ -483,7 +483,7 @@ more information.
 
 <details>
 
-### Click for HTTP
+### <a id="section-http"></a>Click for HTTP
 
 - `auth` - authentication method to use when accessing a remote. The accepted
   values are:
@@ -541,6 +541,14 @@ more information.
   > Note that the `password` parameter takes precedence over `ask_password`. If
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
+
+</details>
+
+<details>
+
+### Click for WebDav
+
+He is extension for HTTP protocol. For him, the same settings apply as for HTTP. See section for [HTTP](#section-http).
 
 </details>
 
