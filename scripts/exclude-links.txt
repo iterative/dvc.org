@@ -9,6 +9,8 @@ https://api.github.com/repos/$
 https://circleci.com/gh/iterative/dvc.org
 https://discuss.$
 https://drive.google.com/drive/folders/0AIac4JZqHhKmUk9PDA
+https://dvc.org/img/<filename>.gif
+https://dvc.org/uploads/images/2020-02-10/image.png
 https://example.com/data.txt
 https://example.com/file.csv
 https://example.com/path/to/data.csv
