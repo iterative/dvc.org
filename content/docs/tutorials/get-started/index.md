@@ -1,11 +1,6 @@
 # Get Started with DVC!
 
-The next pages explore the different layers of DVC hands-on, working with source
-code and command line.
-
-- You'll need [Git](https://git-scm.com/) to follow this tutorial.
-- Also, if DVC is not installed, please follow
-  [these instructions](/doc/install) first.
+This tutorial explores DVC hands-on, working with source code and command line.
 
 ## Initialize
 
@@ -18,16 +13,22 @@ $ mkdir dvc-get-started
 $ cd dvc-get-started
 $ git init
 $ dvc init
+$ git status
+Changes to be committed:
+        new file:   .dvc/.gitignore
+        new file:   .dvc/config
 $ git commit -m "Initialize DVC repository"
 ```
 
-> 📖 See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
-> to learn more about DVC internals.
+At DVC initialization, a new `.dvc/` directory is created for internal
+[files and directories 📖](/doc/user-guide/dvc-files-and-directories). This
+directory is automatically staged with Git, so it can be committed right away.
 
 ## What's ahead?
 
-These are the layers of DVC that we will cover; Each one is designed to work on
-top of the previous ones, but they can be used independently:
+DVC functionality can be split into layers. Each one can be used independently,
+but together they form a robust framework to capture and navigate machine
+learning development.
 
 - [Data **versioning**](/doc/tutorials/get-started/data-versioning) leverages
   Git SCM to track and share large files (e.g. raw data, prepared features,
@@ -39,7 +40,7 @@ top of the previous ones, but they can be used independently:
   others.
 
 - [**Experiments**](/doc/tutorials/get-started/experiments) of data and
-  processes are a normal part of the data science process. DVC provides special
+  processes are a natural part of the data science process. DVC provides special
   tools to define and track experiments that can be tuned and compared.
 
 Please choose a topic, or click the `Next` button below to start from the

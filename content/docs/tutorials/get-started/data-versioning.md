@@ -1,11 +1,9 @@
 # Data Versioning
 
-The first layer of DVC provides a basic framework for versioning, storing, and
+The first layer of DVC provides a basic foundation for versioning, storing, and
 sharing data files or directories, ML models, and intermediate results. This can
 be done on a regular Git workflow, but without actually storing the file
 contents with Git.
-
-- You'll need [Python](https://www.python.org/) to follow this tutorial.
 
 <details>
 

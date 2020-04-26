@@ -1,9 +1,7 @@
 # Data Pipelines
 
-This layer of DVC provides the ability to register data processing or modeling
-workflows or _pipelines_ that can be easily managed and reproduced.
-
-- You'll need [Python](https://www.python.org/) to follow this tutorial.
+This layer of DVC provides you with the ability to register data processing or
+modeling workflows or _pipelines_ that can be easily managed and reproduced.
 
 ![](/img/example-flow-2x.png) _Data modeling overview_
 
@@ -200,10 +198,8 @@ dependencies and commands, etc.
 
 `dvc repro` essentially builds a dependency graph, detects stages with modified
 dependencies or missing outputs and recursively executes stage commands (nodes
-in this graph or pipeline).
-
-Thus, `dvc run` and `dvc repro` provide a powerful framework for _reproducible
-experiments_ and **reproducible <abbr>projects</abbr>**.
+in this graph or pipeline). Thus, `dvc run` and `dvc repro` provide the ability
+to reproduce experiments and entire <abbr>projects</abbr> with ease.
 
 ## Visualize
 
