@@ -81,7 +81,7 @@ outs:
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: change an output file name
+## Example: change the file name
 
 We first use `dvc add` to track file with DVC. Then, we change its name using
 `dvc move`.
@@ -102,7 +102,7 @@ $ tree
 └── other.csv.dvc
 ```
 
-## Example: change an output location
+## Example: change the location
 
 We use `dvc add` to track a file with DVC, then we use `dvc move` to change its
 location. If target path already exists and is a directory, data file is moved
