@@ -61,14 +61,15 @@ $ pip install -r code/requirements.txt
 DVC works best inside Git repositories like the one we're in. Initialize DVC
 with:
 
-```dvc
-$ dvc init
-...
-
 At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and <abbr>cache</abbr>
 [files and directories](/doc/user-guide/dvc-files-and-directories), that are
-hidden from the user. This directory is automatically staged with `git add`, so it can be easily committed with Git:
+hidden from the user. This directory is automatically staged with `git add`, so
+it can be easily committed with Git:
+
+```dvc
+$ dvc init
+...
 
 $ ls -a .dvc
 .          ..         .gitignore config     tmp
@@ -78,26 +79,13 @@ A  .dvc/.gitignore
 A  .dvc/config
 ?? .gitignore
 
-$ cat .dvc/.gitignore
-/config.local
-/updater
-/state-journal
-/state-wal
-/state
-/lock
-/tmp
-/updater.lock
-/cache
-
 $ git commit -am "init DVC"
 ```
 
-The `.dvc/cache` directory is one of the most important parts of any <abbr>DVC
-project</abbr>. It will contain all the content of data files. (This is
-explained in more detail in the next chapter.) Note that the <abbr>cache</abbr>
-directory is contained in `.dvc/.gitignore`, which means that it won't be
-tracked by Git — It's a local-only directory, and you cannot push it to any Git
-remote.
+The <abbr>cache directory</abbr>, one of the most important parts of any
+<abbr>DVC project</abbr>, will store the content of all data files. (This is
+explained in more detail in the next chapter.) Note that it won't be tracked by
+Git — It's a local-only directory, and you cannot push it to a Git remote.
 
 For more information refer to
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories).
