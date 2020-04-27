@@ -95,19 +95,21 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
       meta={meta}
       link={[
         {
-          rel: 'icon',
+          rel: 'shortcut icon',
           type: 'image/vnd.microsoft.icon',
-          href: siteUrl + '/favicon.ico'
+          href: '/favicon.ico'
         },
         {
           rel: 'icon',
           type: 'image/png',
-          href: siteUrl + '/favicon-32x32.png'
+          href: '/favicon-32x32.png',
+          sizes: '32x32'
         },
         {
           rel: 'icon',
           type: 'image/png',
-          href: siteUrl + '/favicon-32x32.png'
+          href: '/favicon-16x16.png',
+          sizes: '16x16'
         },
         {
           rel: 'canonical',
