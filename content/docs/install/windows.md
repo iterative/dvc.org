@@ -4,8 +4,6 @@
 > [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
 > tips to improve your experience using DVC on Windows.
 
-<!-- Separate MD quote: -->
-
 > To use DVC [as a Python library](/doc/api-reference), please
 > [install with pip](#install-with-pip) or [with conda](#install-with-conda).
 

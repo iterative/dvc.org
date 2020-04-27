@@ -23,40 +23,25 @@ doesn't require installing a dedicated server; It can be used on-premises (e.g.
 SSH, NAS) or with any major cloud storage provider (Amazon S3, Microsoft Azure
 Blob Storage, Google Drive, Google Cloud Storage, etc).
 
-Let's say you already have a Git repository that uses a bunch of images stored
-in the `images/` directory and has a `model.pkl` file – a model file deployed to
-production.
+Let's say you already have a Git repository and put a bunch of images in the
+`images/` directory, and build a `model.pkl` ML model file using them.
 
 ```dvc
 $ ls images
 0001.jpg 0002.jpg 0003.jpg 0004.jpg ...
 
 $ ls
-model.pkl ...
+model.pkl
 ```
 
-To start using dvc and keeping track of a model and images we need first to
-initialize the <abbr>DVC project</abbr> on top of the existing repository:
+To start using DVC we need to [initialize](/doc/command-reference/init) a
+<abbr>DVC project</abbr> on top of the existing Git repo:
 
 ```dvc
 $ dvc init
 ```
 
-At DVC initialization, a new `.dvc/` directory will be created for internal
-configuration and cache
-[files and directories](/doc/user-guide/dvc-files-and-directories) that are
-hidden from the user. These can safely be tracked with Git:
-
-```dvc
-$ git status
-...
-    new file:   .dvc/.gitignore
-    new file:   .dvc/config
-
-$ git commit -am "Initialize DVC"
-```
-
-Start tracking images and models with `dvc add`:
+Start tracking the models and images directory with `dvc add`:
 
 ```dvc
 $ dvc add images

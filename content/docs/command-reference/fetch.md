@@ -44,10 +44,11 @@ project's cache                  ++ | dvc pull |
 Fetching could be useful when first checking out a <abbr>DVC project</abbr>,
 since files tracked by DVC should already exist in remote storage, but won't be
 in the project's <abbr>cache</abbr>. (Refer to `dvc remote` for more information
-on DVC remotes.) These necessary data or model files are listed as dependencies
-or outputs in a DVC-file (target [stage](/doc/command-reference/run)) so they
-are required to [reproduce](/doc/tutorials/get-started/reproduce) the
-corresponding [pipeline](/doc/command-reference/pipeline). (See
+on DVC remotes.) These necessary data or model files are listed as
+<abbr>dependencies</abbr> or <abbr>outputs</abbr> in a DVC-file (target
+[stage](/doc/command-reference/run)) so they are required to
+[reproduce](/doc/tutorials/get-started/reproduce) the corresponding
+[pipeline](/doc/command-reference/pipeline). (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
 

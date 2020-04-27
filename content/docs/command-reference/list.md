@@ -17,17 +17,17 @@ positional arguments:
 ## Description
 
 DVC, by effectively replacing data files, models, directories with DVC-files
-(`.dvc`), hides actual locations and names. It means that you don't see actual
-data when you view a <abbr>DVC repository</abbr> with Github/Gitlab UI (you see
-`.dvc` files instead). It makes it hard to navigate the project, makes it hard
-to use `dvc get`, `dvc import`, [`dvc.api`](/doc/api-reference) - they all deal
-with actual path to a data file or directory.
+(`.dvc`), hides actual locations and names. This means that you don't see data
+files when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
+Github), you just see the DVC-files. This makes it hard to navigate the project
+to find <abbr>data artifacts</abbr> for use with `dvc get`, `dvc import`, or
+[`dvc.api`](/doc/api-reference).
 
-This command prints a virtual view of a DVC repository, the way it would have
-looked like if files and directories that are DVC-tracked were actually regular
-Git-tracked files.
-
-Another way to explain this - it prints the result similar to:
+`dvc list` prints a virtual view of a DVC repository, as if files and
+directories [tracked by DVC](/doc/use-cases/versioning-data-and-model-files)
+were found directly in the remote Git repo. Only the root directory is listed by
+default. The output of this command is equivalent to actually cloning the repo
+and [pulling](/doc/command-reference/pull) its data like this:
 
 ```dvc
 $ git clone <url> example
@@ -36,21 +36,23 @@ $ dvc pull
 $ ls <path>
 ```
 
-The `url` argument is a Git repository address to list. Command works for any
-Git repository - either it has DVC project in it, or not. Both HTTP and SSH
-protocols are supported for online repositories (e.g.
-`https://github.com/iterative/example-get-started` or
-`git@github.com:iterative/example-get-started.git`). `url` can also be a local
-file system path to a valid Git repository.
+The `url` argument specifies the address of the Git repository containing the
+data source. Both HTTP and SSH protocols are supported for online repos (e.g.
+`[user@]server:project.git`). `url` can also be a local file system path to an
+"offline" Git repo.
 
-The `path` argument of this command is used to specify a path within the source
-repository at `url`. It's similar to providing a path to list to the commands
-like `ls` or `aws s3 ls`. And similar to the, `-R` option might be used to list
-files recursively.
+The optional `path` argument is used to specify directory to list within the
+source repository at `url`. It's similar to providing a path to list to commands
+such as `ls` or `aws s3 ls`. And similar to the, `-R` option might be used to
+list files recursively.
+
+Please note that `dvc list` doesn't check whether the listed data (tracked by
+DVC) actually exists in remote storage, so it's not guaranteed whether it can be
+accessed with `dvc get`, `dvc import`, or [`dvc.api`](/doc/api-reference)
 
 ## Options
 
-- `-R`, `--recursive` - recursively prints the repository contents.
+- `-R`, `--recursive` - recursively prints contents of all subdirectories.
 
 - `--outs-only` - show only DVC-tracked files and directories
   (<abbr>outputs</abbr>).
@@ -68,10 +70,12 @@ files recursively.
 - `-v`, `--verbose` - displays detailed tracing information. when this option is
   not specified.
 
-## Example: List files and directories in a DVC repository
+## Example: Find files to download from a repository
 
-We can use the command for getting information about remote repository with all
-files, directories and <abbr>data artifacts</abbr>, including DVC-tracked ones:
+We can use this command for getting information about a repository before using
+other commands like `dvc get` or `dvc import` to reuse any file or directory
+found in it. This includes files tracked by Git as well as <abbr>data
+artifacts</abbr> tracked by DVC-tracked:
 
 ```dvc
 $ dvc list https://github.com/iterative/example-get-started
@@ -88,19 +92,18 @@ train.dvc
 ```
 
 If you open the
-[example-get-started project's page](https://github.com/iterative/example-get-started),
-you will see a similar list, except that `model.pkl` will be missing. That's
-because its tracked by DVC and not visible to Git. You can find it specified as
-an output if you open
-[`train.dvc`](https://github.com/iterative/example-get-started/blob/master/train.dvc).
+[example-get-started](https://github.com/iterative/example-get-started)
+project's page, you will see a similar list, except that `model.pkl` will be
+missing. That's because its tracked by DVC and not visible to Git. You can find
+it in the
+[`train.dvc`](https://github.com/iterative/example-get-started/blob/master/train.dvc)
+DVC-file (`outs` field).
 
-We can now, for example, run
+We can now, for example, download the model file with:
 
 ```dvc
 $ dvc get https://github.com/iterative/example-get-started model.pkl
 ```
-
-to download the model file (see `dvc get`).
 
 ## Example: List all files and directories in a data registry
 

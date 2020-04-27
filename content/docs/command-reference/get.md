@@ -36,14 +36,15 @@ the data source. Both HTTP and SSH protocols are supported for online repos
 to an "offline" repo (if it's a DVC repo without a default remote, instead of
 downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 
-The `path` argument of this command is used to specify the location of the
-target to be downloaded within the source repository at `url`. `path` can
-specify any file or directory in the source repo, including <abbr>outputs</abbr>
-tracked by DVC, as well as files tracked by Git. Note that for DVC repos, the
-target should be found in one of the
-[DVC-files](/doc/user-guide/dvc-file-format) of the project. The project should
-also have a default [DVC remote](/doc/command-reference/remote), containing the
-actual data.
+The `path` argument is used to specify the location of the target to be
+downloaded within the source repository at `url`. `path` can specify any file or
+directory in the source repo, including those tracked by DVC, or by Git. Note
+that DVC-tracked targets should be found in a
+[DVC-file](/doc/user-guide/dvc-file-format) of the project.
+
+⚠️ The project should have a default
+[DVC remote](/doc/command-reference/remote), containing the actual data for this
+command to work.
 
 > See `dvc get-url` to download data from other supported locations such as S3,
 > SSH, HTTP, etc.
@@ -57,8 +58,8 @@ name.
 - `-o <path>`, `--out <path>` - specify a path (directory and/or file name) to
   the desired location to place the download file in. The default value (when
   this option isn't used) is the current working directory (`.`) and original
-  file name. If an existing directory is specified, then the output will be
-  placed inside of it.
+  file name. If an existing directory is specified, then the target data will be
+  placed inside.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
@@ -76,7 +77,7 @@ name.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: Get a DVC-tracked model file
+## Example: Get a DVC-tracked model
 
 > Note that `dvc get` can be used from anywhere in the file system, as long as
 > DVC is [installed](/doc/install).
@@ -95,7 +96,7 @@ Note that the `model.pkl` file doesn't actually exist in the
 [root directory](https://github.com/iterative/example-get-started/tree/master/)
 of the external Git repo. Instead, the corresponding DVC-file
 [train.dvc](https://github.com/iterative/example-get-started/blob/master/train.dvc)
-is found, that specifies `model.pkl` in its outputs (`outs`). DVC then
+is found, that contains `model.pkl` (in the `outs` field). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
 [remote](/doc/command-reference/remote) of the external DVC project (found in
 its
@@ -109,8 +110,7 @@ its
 > [CI/CD](https://en.wikipedia.org/wiki/CI/CD) tools.
 
 The same example applies to raw or intermediate <abbr>data artifacts</abbr> as
-well, of course, for cases where we want to download those files or directories
-and perform some analysis on them.
+well, of course.
 
 ## Examples: Get a misc. Git-tracked file
 
@@ -145,9 +145,9 @@ https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 `dvc get` provides the `--rev` option to specify which
 [commit](https://git-scm.com/docs/revisions) of the repository to download a
 <abbr>data artifact</abbr> from. It also has the `--out` option to specify the
-location to place the artifact within the workspace. Combining these two options
-allows us to do something we can't achieve with the regular `git checkout` +
-`dvc checkout` process – see for example the
+location to place the target data within the workspace. Combining these two
+options allows us to do something we can't achieve with the regular
+`git checkout` + `dvc checkout` process – see for example the
 [Get Older Data Version](/doc/tutorials/get-started/older-versions) chapter of
 our _Get Started_.
 
