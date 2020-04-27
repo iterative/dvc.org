@@ -24,10 +24,10 @@ to find <abbr>data artifacts</abbr> for use with `dvc get`, `dvc import`, or
 [`dvc.api`](/doc/api-reference).
 
 `dvc list` prints a virtual view of a DVC repository, as if files and
-directories tracked by DVC were found directly in the remote Git repo. Only the
-root directory is listed by default. The output of this command is equivalent to
-actually cloning the repo and [pulling](/doc/command-reference/pull) its data
-like this:
+directories [tracked by DVC](/doc/use-cases/versioning-data-and-model-files)
+were found directly in the remote Git repo. Only the root directory is listed by
+default. The output of this command is equivalent to actually cloning the repo
+and [pulling](/doc/command-reference/pull) its data like this:
 
 ```dvc
 $ git clone <url> example
@@ -95,8 +95,9 @@ If you open the
 [example-get-started](https://github.com/iterative/example-get-started)
 project's page, you will see a similar list, except that `model.pkl` will be
 missing. That's because its tracked by DVC and not visible to Git. You can find
-it specified as an output if you open
-[`train.dvc`](https://github.com/iterative/example-get-started/blob/master/train.dvc).
+it in the
+[`train.dvc`](https://github.com/iterative/example-get-started/blob/master/train.dvc)
+DVC-file (`outs` field).
 
 We can now, for example, download the model file with:
 
