@@ -16,10 +16,11 @@ const metaImage = {
 
 const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
   const siteMeta = getSiteMeta()
+  const siteUrl = siteMeta.siteUrl
   const metaTitle = siteMeta.title
   const metaDescription = siteMeta.description
   const metaKeywords = siteMeta.keywords
-  const fullUrl = siteMeta.siteUrl + pathname
+  const fullUrl = siteUrl + pathname
 
   const meta: MetaProps[] = [
     {
@@ -48,7 +49,7 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
     },
     {
       property: 'og:image',
-      content: metaImage.src
+      content: siteUrl + metaImage.src
     },
     {
       property: 'og:image:width',
@@ -60,7 +61,7 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
     },
     {
       property: 'og:image:secure_url',
-      content: metaImage.src
+      content: siteUrl + metaImage.src
     },
     {
       name: 'twitter:site',
@@ -80,7 +81,7 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
     },
     {
       name: 'twitter:image',
-      content: encodeURI(`${siteMeta.siteUrl}${metaImage.src}`)
+      content: encodeURI(`${siteUrl}${metaImage.src}`)
     }
   ]
 
@@ -96,7 +97,17 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
         {
           rel: 'icon',
           type: 'image/vnd.microsoft.icon',
-          href: '/favicon.ico'
+          href: siteUrl + '/favicon.ico'
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: siteUrl + '/favicon-32x32.png'
+        },
+        {
+          rel: 'icon',
+          type: 'image/png',
+          href: siteUrl + '/favicon-32x32.png'
         },
         {
           rel: 'canonical',
