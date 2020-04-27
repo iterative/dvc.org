@@ -63,7 +63,7 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
       <SEO
         title={title}
         description={description}
-        image={picture && picture.fluid.src}
+        image={picture && picture.fluid}
       />
       <Post {...post} />
     </>
