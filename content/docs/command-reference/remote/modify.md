@@ -277,12 +277,12 @@ a full guide on using Google Drive as DVC remote storage.
   $ dvc remote modify myremote gdrive_client_secret <client secret>
   ```
 
-- `gdrive_user_credentials_file` - override default path
-  (`.dvc/tmp/gdrive-user-credentials.json`) where DVC reads and saves OAuth
-  credentials to access Google Drive data.
+- `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
+  access Google Drive data. `.dvc/tmp/gdrive-user-credentials.json` by default.
 
   ```dvc
-  $ dvc remote modify myremote gdrive_user_credentials_file tmp/myremote-credentials.json
+  $ dvc remote modify myremote gdrive_user_credentials_file \
+                      tmp/myremote-credentials.json
   ```
 
   See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization)
