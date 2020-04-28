@@ -23,10 +23,10 @@ This command visualize difference between continuous metrics among experiments
 in the repository history. Requires that Git is being used to version the
 metrics files.
 
-The metrics file needs to be specified through `--datafile` option. Also, a plot
-can be customized by [Vega](https://vega.github.io/) templates through option
-`--template`. To learn more about the file formats and templates please see
-`dvc plot`.
+The metrics file needs to be specified through `-d`/`--datafile` option. Also, a
+plot can be customized by [Vega](https://vega.github.io/) templates through
+option `--template`. To learn more about the file formats and templates please
+see `dvc plot`.
 
 Run without any revision specified, this command compares metrics currently
 presented in the workspace (uncommitted changes) with the latest committed
@@ -77,9 +77,11 @@ $ dvc plot diff -d logs.csv
 file:///Users/dmitry/src/plot/logs.html
 ```
 
+A new file `logs.html` was generated. User can open it in a web browser.
+
 ![](/img/plot_diff_workspace.svg)
 
-The difference betweeb two specified commits:
+The difference between two specified commits:
 
 ```dvc
 $ dvc plot diff -d logs.csv HEAD 11c0bf1
