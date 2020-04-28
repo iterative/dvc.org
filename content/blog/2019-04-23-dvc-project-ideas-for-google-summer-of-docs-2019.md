@@ -95,7 +95,7 @@ is built with Node.js + React, including the documentation engine (built
 in-house).
 
 Each documentation page is a static Markdown file in the repository, e.g.
-[example here](https://github.com/iterative/dvc.org/blob/master/static/docs/get-started/example-versioning.md.).
+[example here](https://github.com/iterative/dvc.org/blob/master/content/docs/command-reference/index.md).
 It is rendered dynamically in the browser, no preprocessing is required. It
 means that tech writers or contributors need to write/edit a Markdown file,
 create a pull request and merge it into the master branch of the
