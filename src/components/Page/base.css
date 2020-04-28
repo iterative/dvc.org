@@ -38,12 +38,57 @@ body {
   color: var(--color-black);
 }
 
+/* Focus state styles for interactive elements */
+
+button:focus,
+input:focus,
+select:focus,
+textarea:focus,
+a:focus {
+  outline: 2px dotted var(--color-gray-hover);
+  outline-offset: 5px;
+}
+
+*::-moz-focus-inner {
+  border: 0;
+}
+
+body:not(.user-is-tabbing) button:focus,
+body:not(.user-is-tabbing) input:focus,
+body:not(.user-is-tabbing) select:focus,
+body:not(.user-is-tabbing) textarea:focus,
+body:not(.user-is-tabbing) a:focus {
+  outline: none;
+}
+
+body.user-is-tabbing .btn-with-focus {
+  &:focus {
+    color: #fff;
+    background-color: var(--color-orange);
+    border-color: var(--color-orange);
+    outline: none;
+  }
+
+  &--white:focus {
+    color: var(--color-black);
+    background: #fff;
+    border-color: #fff;
+  }
+}
+
+.link-with-focus {
+  border: 2px dotted transparent;
+}
+
+body.user-is-tabbing .link-with-focus {
+  &:focus {
+    outline: none;
+    border: 2px dotted;
+  }
+}
+
 /* Prevent mobile browsers from changing font-size */
 * {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-
-  &:focus {
-    outline: 0;
-  }
 }

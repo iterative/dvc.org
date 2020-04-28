@@ -45,7 +45,7 @@ const Page: React.FC<IPageProps> = props => {
 
   return (
     <>
-      <DefaultSEO />
+      <DefaultSEO pathname={props.location.pathname} />
       <LayoutComponent {...props} />
     </>
   )

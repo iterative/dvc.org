@@ -2,8 +2,7 @@ const { customMedia } = require('./media')
 
 const focus = {
   '&:focus': {
-    color: 'var(--color-orange)',
-    outline: 'none'
+    color: 'var(--color-orange)'
   }
 }
 

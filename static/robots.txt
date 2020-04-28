@@ -1,2 +1,4 @@
+Sitemap: https://blog.dvc.org/sitemap.xml
+
 User-agent: *
 Disallow:

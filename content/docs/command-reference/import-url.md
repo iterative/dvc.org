@@ -14,7 +14,7 @@ usage: dvc import-url [-h] [-q | -v] [-f <filename>] url [out]
 
 positional arguments:
   url                   (See supported URLs in the description.)
-  out                   Destination path to put files to.
+  out                   Destination path to put files in.
 ```
 
 ## Description
@@ -32,18 +32,22 @@ external data source changes. Example scenarios:
 > (just download the file or directory).
 
 The `dvc import-url` command helps the user create such an external data
-dependency. The `url` argument specifies the external location of the data to be
-imported, while `out` can be used to specify the directory and/or file name
-desired for the downloaded data. If an existing directory is specified, the
-<abbr>output</abbr> will be created inside of it.
+dependency without having to manually copying files from the supported remote
+locations (listed below), which may require installing a different tool for each
+type.
 
-DVC supports [DVC-files](/doc/user-guide/dvc-file-format) that refer to data in
-external locations, see
+The `url` argument specifies the external location of the data to be imported,
+while `out` can be used to specify the directory and/or file name desired for
+the downloaded data. If an existing directory is specified, the file or
+directory will be placed inside.
+
+[DVC-files](/doc/user-guide/dvc-file-format) support references to data in an
+external location, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such a
 DVC-file, the `deps` field stores the remote URL, and the `outs` field contains
-the corresponding local path in the workspace. It records metadata from the
-external file or directory, allowing DVC to efficiently check it later and
-determine whether the local copy is out of date.
+the corresponding local path in the <abbr>workspace</abbr>. It records enough
+metadata about the imported data to enable DVC efficiently determining whether
+the local copy is out of date.
 
 DVC supports several types of (local or) remote locations (protocols):
 
@@ -97,10 +101,9 @@ $ dvc run -d https://example.com/path/to/data.csv \
           wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate an equivalent [stage file](/doc/command-reference/run)
-(DVC-file) with an external dependency. The `dvc import-url` command saves the
-user from having to manually copy files from each of the remote storage schemes,
-and from having to install CLI tools for each service.
+Both methods generate a [DVC-files](/doc/user-guide/dvc-file-format) with an
+external dependency, but the one created by `dvc import-url` preserves the
+connection to the data source. We call this an _import stage_.
 
 Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` on them to bring the import
@@ -110,8 +113,8 @@ up to date from the external data source.
 
 - `-f <filename>`, `--file <filename>` - specify a path and/or file name for the
   DVC-file created by this command (e.g. `-f stages/stage.dvc`). This overrides
-  the default file name: `<file>.dvc`, where `<file>` is the file name of the
-  output (`out`).
+  the default file name: `<file>.dvc`, where `<file>` is the desired file name
+  of the imported data (`out`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -192,7 +195,7 @@ trying this example (especially if trying out the following one).
 ## Example: Detecting remote file changes
 
 What if that remote file is updated regularly? The project goals might include
-regenerating a <abbr>data artifact</abbr> based on the updated data source.
+regenerating some results based on the updated data source.
 [Pipeline](/doc/command-reference/pipeline) reproduction can be triggered based
 on a changed external dependency.
 

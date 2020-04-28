@@ -11,10 +11,6 @@
   font-weight: 700;
   transition: 0.2s background-color ease-out;
 
-  &:focus {
-    outline: none;
-  }
-
   &.small {
     @mixin button-small;
 
@@ -37,12 +33,6 @@
     &:hover {
       background-color: #13a3bd;
     }
-
-    &:focus {
-      border-color: var(--color-orange);
-      background: var(--color-orange);
-      color: #fff;
-    }
   }
 
   &.secondary {
@@ -53,11 +43,6 @@
     &:hover {
       border-color: var(--color-gray);
       color: var(--color-gray-hover);
-    }
-
-    &:focus {
-      border-color: var(--color-orange);
-      color: var(--color-orange);
     }
   }
 }

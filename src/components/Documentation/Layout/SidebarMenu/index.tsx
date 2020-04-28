@@ -46,7 +46,8 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         className={cn(
           styles.sectionLink,
           isActive && styles.active,
-          isRootParent && 'docSearch-lvl0'
+          isRootParent && 'docSearch-lvl0',
+          'link-with-focus'
         )}
         onClick={onClick}
       >

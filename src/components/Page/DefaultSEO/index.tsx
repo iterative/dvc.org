@@ -1,23 +1,26 @@
 import React from 'react'
-import ReactHelmet from 'react-helmet'
+import Helmet from 'react-helmet'
 
 import { MetaProps } from '../../SEO'
-import { IPaginatorPageInfo } from '../../Paginator'
 import getSiteMeta from '../../../queries/siteMeta'
 
 interface IDefaultSEOProps {
-  pageInfo?: IPaginatorPageInfo
+  pathname: string
 }
 
-const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pageInfo }) => {
+const metaImage = {
+  src: '/social-share.png',
+  width: '1200',
+  height: '630'
+}
+
+const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
   const siteMeta = getSiteMeta()
-  const metaTitle =
-    pageInfo && pageInfo.currentPage > 1
-      ? `${siteMeta.title} page ${pageInfo.currentPage}`
-      : siteMeta.title
+  const siteUrl = siteMeta.siteUrl
+  const metaTitle = siteMeta.title
   const metaDescription = siteMeta.description
   const metaKeywords = siteMeta.keywords
-  const metaImage = '/social-share.png'
+  const fullUrl = siteUrl + pathname
 
   const meta: MetaProps[] = [
     {
@@ -27,6 +30,10 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pageInfo }) => {
     {
       name: 'keywords',
       content: metaKeywords
+    },
+    {
+      property: 'og:url',
+      content: fullUrl
     },
     {
       property: 'og:title',
@@ -42,11 +49,23 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pageInfo }) => {
     },
     {
       property: 'og:image',
-      content: metaImage
+      content: siteUrl + metaImage.src
+    },
+    {
+      property: 'og:image:width',
+      content: metaImage.width
+    },
+    {
+      property: 'og:image:height',
+      content: metaImage.height
     },
     {
       property: 'og:image:secure_url',
-      content: metaImage
+      content: siteUrl + metaImage.src
+    },
+    {
+      name: 'twitter:site',
+      content: '@dvcORG'
     },
     {
       name: 'twitter:card',
@@ -62,12 +81,12 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pageInfo }) => {
     },
     {
       name: 'twitter:image',
-      content: encodeURI(`${siteMeta.siteUrl}${metaImage}`)
+      content: encodeURI(`${siteUrl}${metaImage.src}`)
     }
   ]
 
   return (
-    <ReactHelmet
+    <Helmet
       htmlAttributes={{
         lang: 'en'
       }}
@@ -91,6 +110,10 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pageInfo }) => {
           type: 'image/png',
           href: '/favicon-16x16.png',
           sizes: '16x16'
+        },
+        {
+          rel: 'canonical',
+          href: fullUrl
         }
       ]}
     />

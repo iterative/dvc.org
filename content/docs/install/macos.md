@@ -21,8 +21,6 @@ from the [release page](https://github.com/iterative/dvc/releases/) on GitHub.
 > [secondary click](https://support.apple.com/en-us/HT207700) on it, then select
 > "Open With" > **Installer.app**, and choose the **Open** button.
 
-<!-- Separate MD quote: -->
-
 > You may try [these instructions](https://stackoverflow.com/a/42120328/761963)
 > to uninstall the MacOS package.
 

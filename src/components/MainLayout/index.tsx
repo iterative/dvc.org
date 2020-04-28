@@ -4,6 +4,7 @@ import { IPageProps } from '../Page'
 import LayoutHeader from '../LayoutHeader'
 import HamburgerMenu from '../HamburgerMenu'
 import LayoutFooter from '../LayoutFooter'
+import { handleFirstTab } from '../../utils/front/accessibility'
 
 import styles from './styles.module.css'
 
@@ -30,9 +31,6 @@ const MainLayout: LayoutComponent = ({
   modifiers = []
 }) => {
   useEffect(() => {
-    document.body.classList.add(styles.mainLayout)
-  }, [])
-  useEffect(() => {
     if (className) {
       document.body.classList.add(className)
 
@@ -41,6 +39,15 @@ const MainLayout: LayoutComponent = ({
       }
     }
   }, [className])
+
+  useEffect(() => {
+    document.body.classList.add(styles.mainLayout)
+    window.addEventListener('keydown', handleFirstTab)
+
+    return (): void => {
+      window.removeEventListener('keydown', handleFirstTab)
+    }
+  }, [])
 
   return (
     <>

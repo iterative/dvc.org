@@ -13,14 +13,14 @@ usage: dvc get-url [-h] [-q | -v] url [out]
 
 positional arguments:
   url            (See supported URLs in the description.)
-  out            Destination path to put data to.
+  out            Destination path to put files in.
 ```
 
 ## Description
 
-In some cases it's convenient to get a <abbr>data artifact</abbr> from a remote
-location into the local file system. The `dvc get-url` command helps the user do
-just that.
+In some cases it's convenient to get a file or directory from a remote location
+into the local file system. The `dvc get-url` command helps the user do just
+that.
 
 > Note that unlike `dvc import-url`, this command does not track the downloaded
 > data files (does not create a DVC-file). For that reason, this command doesn't
@@ -28,8 +28,8 @@ just that.
 
 The `url` argument should provide the location of the data to be downloaded,
 while `out` can be used to specify the directory and/or file name desired for
-the downloaded data. If an existing directory is specified, then the output will
-be placed inside of it.
+the downloaded data. If an existing directory is specified, then the file or
+directory will be placed inside.
 
 DVC supports several types of (local or) remote locations (protocols):
 
@@ -47,8 +47,6 @@ DVC supports several types of (local or) remote locations (protocols):
 > `[azure]`, `[gdrive]`, `[gs]`, `[oss]`, `[ssh]`. Alternatively, use `[all]` to
 > include them all. The command should look like this: `pip install "dvc[s3]"`.
 > (This example installs `boto3` library along with DVC to support S3 storage.)
-
-<!-- Separate MD quote: -->
 
 \* HDFS and HTTP **do not** support downloading entire directories, only single
 files.

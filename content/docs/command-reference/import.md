@@ -40,14 +40,15 @@ the data source. Both HTTP and SSH protocols are supported for online repos
 to an "offline" repo (if it's a DVC repo without a default remote, instead of
 downloading, DVC will try to copy the target data from its <abbr>cache</abbr>).
 
-The `path` argument of this command is used to specify the location of the
-target to be downloaded within the source repository at `url`. `path` can
-specify any file or directory in the source repo, including <abbr>outputs</abbr>
-tracked by DVC, as well as files tracked by Git. Note that for DVC repos, the
-target should be found in one of the
-[DVC-files](/doc/user-guide/dvc-file-format) of the project. The project should
-also have a default [DVC remote](/doc/command-reference/remote), containing the
-actual data.
+The `path` argument is used to specify the location of the target to be
+downloaded within the source repository at `url`. `path` can specify any file or
+directory in the source repo, including those tracked by DVC, or by Git. Note
+that DVC-tracked targets should be found in a
+[DVC-file](/doc/user-guide/dvc-file-format) of the project.
+
+⚠️ The project should have a default
+[DVC remote](/doc/command-reference/remote), containing the actual data for this
+command to work.
 
 > See `dvc import-url` to download and track data from other supported locations
 > such as S3, SSH, HTTP, etc.
@@ -56,12 +57,12 @@ After running this command successfully, the imported data is placed in the
 current working directory (unless `-o` is used) with its original file name e.g.
 `data.txt`. An _import stage_ (DVC-file) is also created in the same location,
 extending the name of the imported data e.g. `data.txt.dvc` – similar to having
-used `dvc run` to generate the output.
+used `dvc run` to generate the data as a stage <abbr>output</abbr>.
 
 DVC-files support references to data in an external DVC repository (hosted on a
-Git server). In such a DVC-file, the `deps` field specifies the `repo`-`url` and
-data `path` sufields, and the `outs` field contains the corresponding local
-workspace `path` subfield. This is enough data about the imported data, to
+Git server). In such a DVC-file, the `deps` field specifies the remote `url` and
+data `path`, and the `outs` field contains the corresponding local path in the
+<abbr>workspace</abbr>. It records enough metadata about the imported data to
 enable DVC efficiently determining whether the local copy is out of date.
 
 To actually
@@ -76,8 +77,8 @@ data artifact from the source repo.
 
 - `-o <path>`, `--out <path>` - specify a path (directory and/or file name) to
   the desired location to place the imported file in (instead of using the
-  current working directory). If an existing directory is specified, the output
-  will be placed inside of it.
+  current working directory). If an existing directory is specified, the target
+  data will be placed inside.
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
   [Git revision](https://git-scm.com/docs/revisions)) of the repository to
