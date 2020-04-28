@@ -17,7 +17,7 @@ positional arguments:
 ## Description
 
 This command provides a quick way to visualize countinuous metrics such as loss
-functions, AUC curves, confusion matrixes etc. Please read `dvc params` for more
+functions, AUC curves, confusion matrixes etc. Please read `dvc plot` for more
 information.
 
 ## Options
