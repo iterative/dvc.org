@@ -212,7 +212,8 @@ with the `gdrive_user_credentials_file` config setting (a correct value must be
 either an absolute path or a path **relative to the config file location**):
 
 ```dvc
-$ dvc remote modify myremote gdrive_user_credentials_file tmp/myremote-credentials.json
+$ dvc remote modify myremote gdrive_user_credentials_file \
+                    tmp/myremote-credentials.json
 ```
 
 ⚠️ In order to prevent unauthorized access to your Google Drive, **never
