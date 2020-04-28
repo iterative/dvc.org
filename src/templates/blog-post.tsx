@@ -7,7 +7,8 @@ import SEO from '../components/SEO'
 import Post from '../components/Blog/Post'
 
 interface IFluidObject extends FluidObject {
-  presentationWidth?: number
+  presentationWidth: number
+  presentationHeight: number
 }
 
 export interface IGatsbyImageProps extends GatsbyImageProps {
@@ -51,10 +52,6 @@ interface IBlogPostPageProps {
   data: {
     blogPost: IBlogPostData
   }
-  pageContext: {
-    next: IBlogPostData
-    previous: IBlogPostData
-  }
 }
 
 const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
@@ -66,7 +63,7 @@ const BlogPostPage: React.FC<IBlogPostPageProps> = ({ data }) => {
       <SEO
         title={title}
         description={description}
-        image={picture && picture.fluid.src}
+        image={picture && picture.fluid}
       />
       <Post {...post} />
     </>
