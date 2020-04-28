@@ -282,7 +282,7 @@ a full guide on using Google Drive as DVC remote storage.
 
   ```dvc
   $ dvc remote modify myremote gdrive_user_credentials_file \
-                      tmp/myremote-credentials.json
+                      .dvc/tmp/myremote-credentials.json
   ```
 
   See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization)
