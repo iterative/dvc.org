@@ -62,9 +62,6 @@ file (in `.dvc/config` by default), and they support the options below:
 
 This is the main section with the general config options:
 
-- `core.loglevel` - log level that the `dvc` command should use. Accepts values
-  `info`, `debug`, `warning`, or `error`.
-
 - `core.remote` - name of the remote storage that should be used by default.
 
 - `core.interactive` - whether to always ask for confirmation before reproducing
@@ -196,12 +193,6 @@ learn more about the state file (database) that is used for optimization.
   When an entry in the database is used (e.g. during the `dvc status`), DVC
   updates the timestamp on that entry. This way, when the database needs a
   cleanup, DVC can sort entries chronologically, and remove the oldest ones.
-
-## Example: Set the debug level
-
-```dvc
-$ dvc config core.loglevel debug
-```
 
 ## Example: Add an S3 remote, and set it as default
 
