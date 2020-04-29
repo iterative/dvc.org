@@ -44,9 +44,9 @@ If you are not in SF on this date and happen to be in Europe — don’t miss th
 PyCon DE & PyData Berlin 2019 joint event on October 9–11. We cannot make it to
 Berlin this year, but we were thrilled to discover 2 independent talks featuring
 DVC by
-[Alessia Marcolini](https://de.pycon.org/program/pydata-ppgwxl-version-control-for-data-science-alessia-marcolini/)
+[Alessia Marcolini](https://pyvideo.org/pydata-berlin-2019/version-control-for-data-science.html)
 and
-[Katharina Rasch](https://de.pycon.org/program/pydata-cwmae7-tools-that-help-you-get-your-experiments-under-control-katharina-rasch/).
+[Katharina Rasch](https://pyvideo.org/pydata-berlin-2019/tools-that-help-you-get-your-experiments-under-control.html).
 
 Some other highlights of the end of summer:
 
