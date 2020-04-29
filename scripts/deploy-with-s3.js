@@ -100,53 +100,11 @@ async function main() {
       console.warn(
         `The current prefix "${s3Prefix}" is empty! Attempting to fall back on production cache.`
       )
-      // Temporarily skip prod cache download, as it'll just waste time until this hits master.
-      //await downloadAllFromS3(PRODUCTION_PREFIX)
+      await downloadAllFromS3(PRODUCTION_PREFIX)
     } else {
       await downloadAllFromS3(s3Prefix)
     }
   }
-
-  /** Temporary debug cache logging */
-  const treeEntries = []
-  if (deployOptions.logHashes || deployOptions.logTrees) {
-    for (const cacheEntryLocal of cacheDirs.map(x => x[0])) {
-      const localDir = path.join(rootDir, cacheEntryLocal)
-      try {
-        const tree = await dirTree(localDir)
-        const hash = await md5(tree)
-        treeEntries.push({ localDir, tree, hash })
-      } catch (e) {
-        console.error("Couldn't list " + localDir)
-        console.log(e)
-      }
-    }
-    if (deployOptions.logTrees) {
-      console.log(`
---- Full cache trees
-${treeEntries
-  .map(
-    ({ localDir, tree }) =>
-      `\n* Tree for ${localDir}\n\n` + JSON.stringify(tree, null, 2)
-  )
-  .join('\n')}
----
-    `)
-    }
-    if (deployOptions.logHashes) {
-      for (const { localDir, hash } of treeEntries) {
-        console.log(`Hash for ${localDir}: ${hash}`)
-      }
-    }
-  }
-
-  if (deployOptions.bailAfterLogs) {
-    console.log(
-      'Bailing after logging cache because of deployOptions.bailAfterLogs!'
-    )
-    return
-  }
-  /** End debug cache logging */
 
   if (deployOptions.build) {
     try {
