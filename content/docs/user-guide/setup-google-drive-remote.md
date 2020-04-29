@@ -194,19 +194,43 @@ authentication is needed.
 On the first usage of a GDrive [remote](/doc/command-reference/remote), for
 example when trying to `dvc push` for the first time after adding the remote
 with a [valid URL](#url-format), DVC will prompt you to visit a special Google
-authorization web page. There you'll need to sign into your Google account. The
+authentication web page. There you'll need to sign into your Google account. The
 [auth process](https://developers.google.com/drive/api/v2/about-auth) will ask
 you to grant DVC the necessary permissions, and produce a verification code
 needed for DVC to complete the connection. On success, the necessary credentials
 will be saved in a Git-ignored file, located in
-`.dvc/tmp/gdrive-user-credentials.json`.
+`.dvc/tmp/gdrive-user-credentials.json` and they will be used automatically next
+time you run DVC.
 
 ⚠️ In order to prevent unauthorized access to your Google Drive, **do not share
 these credentials with others**. Each team member should go through this process
 individually.
 
+If you use multiple GDrive remotes, by default they will be sharing the same
+`.dvc/tmp/gdrive-user-credentials.json` credentials file. It can be overridden
+with the `gdrive_user_credentials_file` setting:
+
+```dvc
+$ dvc remote modify myremote gdrive_user_credentials_file \
+                    .dvc/tmp/myremote-credentials.json
+```
+
+> If you edit the config file manually, value must be either an absolute path or
+> a path **relative to the config file location**.
+
+⚠️ In order to prevent unauthorized access to your Google Drive, **never
+commit** this file with Git. Instead, add it into `.gitignore` and never share
+it with other people.
+
 If you wish to change the user you have authenticated with, or for
 troubleshooting misc. token errors, simply remove the user credentials JSON file
 and authorize again.
+
+Alternatively, a `GDRIVE_CREDENTIALS_DATA` can be set to pass user credentials
+in CI/CD systems, production setup, read-only file systems, etc. Content of this
+variable should be a string with JSON that has the same format as in the
+credentials files described above and usually you get it going through the same
+authentication process. DVC reads this variable first, before the credentials
+file.
 
 > Please note our [Privacy Policy (Google APIs)](/doc/user-guide/privacy).

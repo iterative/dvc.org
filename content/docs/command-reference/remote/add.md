@@ -241,7 +241,7 @@ modified.
 $ dvc remote add myremote gs://bucket/path
 ```
 
-By default DVC expects your AWS CLI is already
+By default DVC expects your GCP CLI is already
 [configured](https://cloud.google.com/sdk/docs/authorizing). DVC will be using
 default GCP key file to access Google Cloud Storage. To override some of these
 settings, use the parameters described in `dvc remote modify`.
