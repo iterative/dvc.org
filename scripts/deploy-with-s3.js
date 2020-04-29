@@ -2,19 +2,14 @@
 'use strict'
 require('dotenv').config()
 const path = require('path')
+const crypto = require('crypto')
+const { dirTree, md5 } = require('./s3-testing-utils')
 const PRODUCTION_PREFIX = 'dvc-org-prod'
 
-const crypto = require('crypto')
-
-const { dirTree, md5 } = require('./s3-testing-utils')
-
-// TODO Consolidate these into one DEPLOY_OPTIONS var
-// logHash,logTree,download,upload,build,clean
 const { DEPLOY_OPTIONS } = process.env
 
 // Generate deploy options from a comma separated string in the DEPLOY_OPTIONS
-// env var. If it's not provided, use a default that takes all actions with no
-// logging.
+// env var. If DEPLOY_OPTIONS isn't set, use a default setting.
 const deployOptions = DEPLOY_OPTIONS
   ? DEPLOY_OPTIONS.split(',').reduce(
       (acc, cur) => ({
@@ -34,15 +29,7 @@ if (deployOptions.logSteps) {
   // Log enabled steps in order.
   console.log(
     '---\nDeploy options: [' +
-      [
-        'download',
-        'logTrees',
-        'logHashes',
-        'bailAfterLogs',
-        'build',
-        'upload',
-        'clean'
-      ]
+      ['download', 'build', 'upload', 'clean']
         .filter(step => deployOptions[step])
         .join(', ') +
       ']\n---'
