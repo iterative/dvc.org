@@ -1,7 +1,7 @@
 # plot show
 
-Generate a [plot](/doc/command-reference/plot) from a file with
-[continuous metrics](/doc/command-reference/plot#continous-metrics).
+Generate a plot image from from a
+[continuous metrics](/doc/command-reference/plot#continous-metrics) file.
 
 ## Synopsis
 

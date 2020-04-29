@@ -1,9 +1,8 @@
 # plot diff
 
-Show difference in
+Show multiple versions of
 [continuous metrics](/doc/command-reference/plot#continous-metrics) by plotting
-on a single [plot](/doc/command-reference/plot) different versions of metrics
-from the <abbr>DVC repository</abbr> or workspace.
+them in a single image.
 
 ## Synopsis
 
@@ -47,7 +46,7 @@ an output.
 
 - `-t [TEMPLATE], --template [TEMPLATE]` - File to be injected with data.
 
-- `-d [DATAFILE], --datafile [DATAFILE]` - Data to be visualized.
+- `-d [DATAFILE], --datafile [DATAFILE]` - Continuous metrics file to visualize.
 
 - `-r RESULT, --result RESULT` - Name of the generated file.
 
