@@ -69,7 +69,7 @@ $ dvc run -f prepare.dvc \
 
 `dvc run` generates the `prepare.dvc` _stage file_. It has the same
 [format](/doc/user-guide/dvc-file-format) as the DVC-file we created previously
-to [tack data](/doc/tutorials/get-started/data-versioning#tracking-data), but it
+to [tack data](/doc/tutorials/get-started/data-versioning#changes), but it
 includes additional information about the command we ran
 (`python src/prepare.py`), it's <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
@@ -127,7 +127,7 @@ outs:
 There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
 in this case); `dvc run` already took care of this. You only need to run
 `dvc push` if you want to save them to
-[remote storage](/doc/tutorials/get-started/data-versioning#remote-storage),
+[remote storage](/doc/tutorials/get-started/data-versioning#backing-up--sharing),
 (usually along with `git commit` to version the stage file itself).
 
 ## Pipelines
