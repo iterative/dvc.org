@@ -43,7 +43,4 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   }
 }
 
-exports.onPostBuild = async api => {
-  await pruneCache(api)
-  console.log('BRANCH ENV VAR: ', process.env.BRANCH)
-}
+exports.onPostBuild = pruneCache
