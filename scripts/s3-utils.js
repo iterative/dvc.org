@@ -100,9 +100,9 @@ async function cleanAllLocal(entries) {
 
 async function downloadAllFromS3(entries, basePrefix) {
   return Promise.all(
-    entries.map(([dir, childPrefix]) => {
+    entries.map(([dir, childPrefix]) =>
       downloadFromS3(dir, childPrefix, basePrefix)
-    })
+    )
   )
 }
 
