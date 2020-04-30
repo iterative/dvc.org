@@ -113,7 +113,7 @@ interesting takeaways.
 
 - It depends on a few Python libraries that it installs as dependencies (they
   are specified in the
-  [`requirements.txt`](https://github.com/iterative/dvc/blob/master/requirements.txt)).
+  [`setup.py`](https://github.com/iterative/dvc/blob/master/setup.py)).
 
 - It does not depend on Git and theoretically could be run without any SCM.
   Running it on top of a Git repository however is recommended and gives you an
