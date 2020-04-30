@@ -143,10 +143,10 @@ Every time you run `dvc add` to start tracking some data artifact, its path is
 automatically added to the `.gitignore` file, as a result it is hard to commit
 it to git by mistake — you would need to explicitly modify the `.gitignore`
 first. The feature to track some external data is called
-[external outputs](https://dvc.org/doc/user-guide/external-outputs) (if all you
-need is to track some data artifacts). Usually it is used when you have some
-data on S3 or SSH and don’t want to pull it into your working space, but it’s
-working even when your data is located on the same machine outside of the
+[external outputs](https://dvc.org/doc/user-guide/managing-external-data) (if
+all you need is to track some data artifacts). Usually it is used when you have
+some data on S3 or SSH and don’t want to pull it into your working space, but
+it’s working even when your data is located on the same machine outside of the
 repository.
 
 ### Q: [How do I wrap a step that downloads a file/directory into a DVC stage?](https://discordapp.com/channels/485586884165107732/485596304961962003/571342592508428289) I want to ensure that it runs only if file has no been downloaded yet
