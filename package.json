@@ -164,6 +164,7 @@
     ]
   },
   "cacheDirectories": [
-    "node_modules"
+    ".cache",
+    "public"
   ]
 }
