@@ -109,11 +109,11 @@
     "gatsby-plugin-catch-links": "^2.2.1",
     "gatsby-plugin-feed": "^2.4.1",
     "gatsby-plugin-google-analytics": "^2.2.2",
-    "gatsby-plugin-manifest": "^2.3.3",
+    "gatsby-plugin-manifest": "2.2.23",
     "gatsby-plugin-postcss": "^2.2.1",
     "gatsby-plugin-react-helmet": "^3.2.1",
     "gatsby-plugin-sentry": "^1.0.1",
-    "gatsby-plugin-sharp": "^2.5.4",
+    "gatsby-plugin-sharp": "2.2.32",
     "gatsby-plugin-sitemap": "^2.3.1",
     "gatsby-plugin-svgr": "^2.0.2",
     "gatsby-plugin-twitter": "^2.2.2",
@@ -131,7 +131,7 @@
     "gatsby-remark-smartypants": "^2.2.1",
     "gatsby-source-filesystem": "^2.2.2",
     "gatsby-transformer-remark": "^2.7.1",
-    "gatsby-transformer-sharp": "^2.4.4",
+    "gatsby-transformer-sharp": "2.2.23",
     "hast-util-select": "^4.0.0",
     "husky": "^4.2.3",
     "jest": "^25.2.7",
@@ -162,10 +162,5 @@
     "*.css": [
       "yarn stylelint --fix"
     ]
-  },
-  "cacheDirectories": [
-    "node_modules",
-    ".cache",
-    "public"
-  ]
+  }
 }

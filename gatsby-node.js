@@ -1,4 +1,6 @@
 require('dotenv').config()
+const pruneCache = require('./src/gatsby/prune-cache')
+
 const {
   setPageContext,
   removePageTrailingSlash
@@ -40,3 +42,5 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
     actions.replaceWebpackConfig(config)
   }
 }
+
+exports.onPostBuild = pruneCache
