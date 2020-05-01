@@ -15,13 +15,14 @@ export type ILinkProps = {
 
 const PROTOCOL_REGEXP = /^https?:\/\//
 const isRelative = (url: string): boolean => !PROTOCOL_REGEXP.test(url)
+const isMailto = (url: string): boolean => url.startsWith('mailto:')
 
 const ResultLinkComponent: React.FC<ILinkProps> = ({
   href,
   children,
   ...restProps
 }) => {
-  if (!isRelative(href) || restProps.target) {
+  if (!isRelative(href) || isMailto(href) || restProps.target) {
     let rel = 'noopener noreferrer'
 
     if (restProps.rel) {
