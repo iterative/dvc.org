@@ -163,5 +163,8 @@
     "*.css": [
       "yarn stylelint --fix"
     ]
-  }
+  },
+  "cacheDirectories": [
+    "node_modules"
+  ]
 }
