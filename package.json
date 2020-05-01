@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "develop": "gatsby develop",
+    "dev": "gatsby develop",
     "build": "gatsby build",
     "start": "./scripts/clear-cloudflare-cache.js; node ./src/server/index.js",
     "heroku-postbuild": "./scripts/deploy-with-s3.js",
