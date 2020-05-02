@@ -1,15 +1,15 @@
-const fs = require('fs').promises
-const path = require('path')
+const fs = require('fs')
+const path = require('upath')
 
 async function crawlPageData(dataPath, onPageData) {
-  const stat = await fs.stat(dataPath)
+  const stat = fs.statSync(dataPath)
   if (stat.isDirectory()) {
-    const paths = await fs.readdir(dataPath)
+    const paths = fs.readdirSync(dataPath)
     return Promise.all(
       paths.map(name => crawlPageData(path.join(dataPath, name), onPageData))
     )
   } else if (path.basename(dataPath) === 'page-data.json') {
-    return onPageData(dataPath)
+    return await onPageData(dataPath)
   }
 }
 
