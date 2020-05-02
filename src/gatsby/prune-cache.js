@@ -1,9 +1,18 @@
-const fs = require('fs').promises
+const fs = require('fs')
 const crawlPageData = require('../utils/shared/crawlPageData')
 
 async function removeFile(filePath) {
-  console.log(`Removing stale page-data at "${filePath}"`)
-  return fs.unlink(filePath)
+  return new Promise((resolve, reject) =>
+    fs.unlink(filePath, err => {
+      if (err) {
+        console.error(`Couldn't remove stale page data at "${filePath}"!`)
+        reject(err)
+      } else {
+        console.log(`Removed stale page data at "${filePath}"`)
+        resolve()
+      }
+    })
+  )
 }
 
 module.exports = async function pruneStalePageCache({ graphql }) {
@@ -48,7 +57,6 @@ module.exports = async function pruneStalePageCache({ graphql }) {
       ? null
       : cachedPagePath === '/index'
       ? null
-      : console.log(`Removing file at ${pageDataPath}=${cachedPagePath}`) &&
-        removeFile(pageDataPath)
+      : removeFile(pageDataPath)
   })
 }
