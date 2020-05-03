@@ -39,8 +39,9 @@ operation:
 
 - `.dvc/tmp/state-wal`: Another SQLite temporary file
 
-- `.dvc/tmp/updater`: This file is used store the latest available version of DVC.
-  It's used to remind the user to upgrade when the installed version is behind.
+- `.dvc/tmp/updater`: This file is used store the latest available version of
+  DVC. It's used to remind the user to upgrade when the installed version is
+  behind.
 
 - `.dvc/tmp/updater.lock`: Lock file for `.dvc/tmp/updater`
 
