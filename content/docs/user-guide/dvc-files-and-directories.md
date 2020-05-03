@@ -27,7 +27,8 @@ operation:
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 
 - `.dvc/tmp/index`: Directory for remote index files that are used for
-  optimizing `dvc push/pull/fetch/status -c` operations.
+  optimizing `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c`
+  operations.
 
 - `.dvc/tmp/state`: This file is used for optimization. It is a SQLite database,
   that contains hash values for files tracked in a DVC project, with respective
