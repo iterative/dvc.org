@@ -47,7 +47,9 @@ Without bringing any code into the picture, it’s intuitive to think of each ne
 post as a classification task for the subreddit. Formally, we could think of the
 subreddit as executing a function _f_ such that
 
-![](/uploads/images/2020-02-17/aita_formula.png '=500')
+$$
+f: post \rightarrow \left\{ Asshole, Not\ the\ Asshole \right\}
+$$
 
 Of course, finding f won’t be trivial. To be frank, I’m not positive how well we
 could hope to forecast the rulings of the subreddit. A lot of posts are not easy
