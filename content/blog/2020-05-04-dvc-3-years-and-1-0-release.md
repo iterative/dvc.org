@@ -1,5 +1,5 @@
 ---
-title: DVC 3 years anniversary and 1.0 pre-release
+title: DVC 3 Years Anniversary and 1.0 Pre-release
 date: 2020-05-04
 description: |
   Today, we’ve got three big things to announce: 🎉 3rd-year anniversary of DVC,
@@ -17,7 +17,7 @@ descriptionLong: |
 picture: 2020-05-04/5k_stars.png
 pictureComment: 5000 GitHub stars
 author: dmitry_petrov
-commentsUrl: https://discuss.dvc.org/t/april-20-heartbeat/347
+commentsUrl: https://discuss.dvc.org/t/dvc-3-years-anniversary-and-1-0-pre-release/374
 tags:
   - Release
   - MLOps
