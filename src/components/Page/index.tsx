@@ -10,6 +10,7 @@ import { useRedirects, useAnchorNavigation, useSmoothScroll } from './utils'
 import 'reset-css'
 import './base.css'
 import './fonts/fonts.css'
+import(`gatsby-remark-mathjax-ssr/mathjax.css`)
 
 export interface IPageProps {
   location: {
