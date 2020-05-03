@@ -13,7 +13,7 @@ descriptionLong: |
 
   We are sharing our learnings from this journey and how they affected the new
   DVC 1.0 release.
-picture: /static/uploads/images/2020-05-04/5k_stars.png
+picture: 2020-05-04/5k_stars.png
 pictureComment: 5000 GitHub stars
 author: dmitry_petrov
 commentsUrl: https://discuss.dvc.org/t/april-20-heartbeat/347
