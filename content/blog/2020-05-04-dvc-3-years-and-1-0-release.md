@@ -9,9 +9,9 @@ descriptionLong: |
   Today, we’ve got three big things to announce.
 
   🎉 3rd-year anniversary of DVC
-  
+
   🚀 DVC 1.0 pre-release is ready
-  
+
   ⭐ DVC has reached 5K GitHub starts (coincidently on the same day)
 
   We are sharing our learnings from this journey and how they affected the new
