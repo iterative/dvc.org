@@ -7,9 +7,10 @@ description: |
 
 descriptionLong: |
   Today, we’ve got three big things to announce.
-    - 🎉 3rd-year anniversary of DVC
-    - 🚀 DVC 1.0 pre-release is ready
-    - ⭐ DVC has reached 5K GitHub starts (coincidently on the same day)
+  
+  🎉 3rd-year anniversary of DVC
+  🚀 DVC 1.0 pre-release is ready
+  ⭐ DVC has reached 5K GitHub starts (coincidently on the same day)
 
   We are sharing our learnings from this journey and how they affected the new
   DVC 1.0 release.
@@ -18,8 +19,7 @@ pictureComment: 5000 GitHub stars
 author: dmitry_petrov
 commentsUrl: https://discuss.dvc.org/t/april-20-heartbeat/347
 tags:
-  - release
-  - users
+  - Release
   - MLOps
   - DataOps
   - CI/CD
@@ -132,7 +132,7 @@ Git history in a single chart so you can compare results across commits. Users
 can visualize how, for example, their model accuracy in the latest commit
 differs from another commit (or even multiple commits).
 
-```
+```dvc
 $ dvc plot diff -d logs.csv HEAD HEAD^ d1e4d848 baseline_march
 file:///Users/dmitry/src/plot/logs.html
 $ open logs.html
@@ -140,7 +140,7 @@ $ open logs.html
 
 ![](/uploads/images/2020-05-04/dvc-plot.png)
 
-```
+```dvc
 $ dvc plot diff -d logs.csv HEAD HEAD^ d1e4d848 baseline_march \
         -x loss --template scatter
 file:///Users/dmitry/src/plot/logs.html
