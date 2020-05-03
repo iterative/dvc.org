@@ -10,7 +10,9 @@ descriptionLong: |
     - 🎉 3rd-year anniversary of DVC
     - 🚀 DVC 1.0 pre-release is ready
     - ⭐ DVC has reached 5K GitHub starts (coincidently on the same day)
-picture: /static/uploads/images/2020-05-04/5k_stars.png
+We are sharing our learnings from this journey and how they affected the new DVC
+1.0 release.
+picture: ../../static/uploads/images/2020-05-04/5k_stars.png
 pictureComment: 5000 GitHub stars
 author: dmitry_petrov
 commentsUrl: https://discuss.dvc.org/t/april-20-heartbeat/347
@@ -63,8 +65,9 @@ and generosity.
 
 **Documentation contributors.** Another
 [124 people contributed](https://github.com/iterative/dvc.org/graphs/contributors)
-to the DVC documentation and website https://dvc.org/doc. Every time a new
-person tries out DVC, they benefit from the hard work that's gone into our docs.
+to the [DVC documentation](https://dvc.org/doc) and
+[the website](https://dvc.org/). Every time a new person tries out DVC, they
+benefit from the hard work that's gone into our docs.
 
 **Active community members.** Active DVC users help our team understand and
 better anticipate their needs and identify priorities for development. They
@@ -90,14 +93,20 @@ Here are the most significant features we’re excited to be rolling out soon:
 
 ### [Run cache](https://github.com/iterative/dvc/issues/1234)
 
+_Learnings:_ Forcing users to make Git commits for each ML experiment creates
+too much overhead.
+
 DVC 1.0 has a "long memory" of DVC commands runs. This means it can identify if
 a `dvc repro` has already been run and save compute time by returning the cached
-result - even if you didn't Git commit that past run.
+result - _even if you didn't Git commit that past run_.
 
-We added the run-cache with CI/CD systems and other MLOps automation tools in
-mind. No more auto-commits needed after `dvc repro` in the CI/CD system side.
+We added the run-cache with CI/CD systems and other MLOps and DataOps automation
+tools in mind. No more auto-commits needed after `dvc repro` in the CI/CD system
+side.
 
 ### [Multi-stage DVC files](https://github.com/iterative/dvc/issues/1871)
+
+_Learnings:_ ML pipelines evolve much faster than data engineering pipelines.
 
 We redesigned the DVC-metafile format to make saved pipelines more interpretable
 and editable. Pipeline stages are now saved in a single metafile, with all
@@ -108,16 +117,19 @@ This improves its human-readability.
 
 ### [Plots](https://github.com/iterative/dvc/issues/3409)
 
+_Learnings:_ Versioning metrics and plots are no less important than data
+versioning.
+
 Countless users asked us when we'd support metrics visualizations. Now it's
 here: DVC 1.0 introduces a metrics file visualization command,
-`dvc metrics diff`.
+`dvc metrics diff`. DVC plots are powered by the
+[Vega-Lite](https://vega.github.io/vega-lite/) graphic library.
 
-DVC plots are powered by the [Vega-Lite](https://vega.github.io/vega-lite/)
-graphic library. This function is designed not only for showing visualizations
-based on the current state of your project, but it can also combine multiple
-plots from your Git history in a single chart so you can compare results across
-commits. Users can visualize how, for example, their model accuracy in the
-latest commit differs from another commit (or even multiple commits).
+This function is designed not only for showing visualizations based on the
+current state of your project, but it can also combine multiple plots from your
+Git history in a single chart so you can compare results across commits. Users
+can visualize how, for example, their model accuracy in the latest commit
+differs from another commit (or even multiple commits).
 
 ```
 $ dvc plot diff -d logs.csv HEAD HEAD^ d1e4d848 baseline_march
@@ -138,15 +150,22 @@ $ open logs.html
 
 ### [Data transfer optimizations](https://github.com/iterative/dvc/issues/3488)
 
+_Learnings:_ In ML projects, data transfer optimization is still the king.
+
 We've done substantial work on optimizing data management commands, such as
 `dvc pull \ push \ status -c \ gc -c`. Now, based on the amount of data, DVC can
-choose an optimal data remote traversing strategy. We've introduced mini-indexes
-to help DVC instantly check data directories instead of iterating over millions
-of files. This also speeds up file adding\removing to large directories. More
-optimizations are included in the release based on performance bottlenecks we
-profiled.
+choose an optimal data remote traversing strategy.
+
+[Wini-indexes](https://github.com/iterative/dvc/issues/2147) were introduced to
+help DVC instantly check data directories instead of iterating over millions of
+files. This also speeds up file adding\removing to large directories.
+
+More optimizations are included in the release based on performance bottlenecks
+we profiled.
 
 ### [Hyperparameter tracking](https://github.com/iterative/dvc/issues/3393)
+
+_Learnings:_ ML pipeline steps depends only on a subset of config file.
 
 This feature was actually released in the last DVC 0.93 version (see
 [params docs](https://dvc.org/doc/command-reference/params). However, it is an
