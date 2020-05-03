@@ -153,8 +153,9 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 - `--no-exec` - create a stage file, but do not execute the `command` defined in
   it, nor track dependencies or outputs with DVC. In the DVC-file contents, the
   file hash values will be empty; They will be populated the next time this
-  stage is actually executed. This is useful if, for example, you need to build
-  a pipeline (dependency graph) first, and then run it all at once.
+  stage is actually executed. DVC will add your outputs to `.gitignore` to
+  prevent possible future conflicts. This is useful if, for example, you need to
+  build a pipeline (dependency graph) first, and then run it all at once.
 
 - `-y`, `--yes` (_deprecated_) - See `--overwrite-dvcfile` below.
 
