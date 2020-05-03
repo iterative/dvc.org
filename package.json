@@ -75,6 +75,7 @@
     "react-slick": "^0.25.2",
     "react-use": "^14.0.0",
     "rehype-react": "^5.0.1",
+    "remark-parse": "^6.0.3",
     "reset-css": "^5.0.1",
     "s3-client": "^4.4.2",
     "scroll": "^3.0.1",
