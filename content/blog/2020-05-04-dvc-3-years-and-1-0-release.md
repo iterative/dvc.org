@@ -138,7 +138,7 @@ file:///Users/dmitry/src/plot/logs.html
 $ open logs.html
 ```
 
-![](/static/uploads/images/2020-05-04/dvc-plot.png)
+![](/uploads/images/2020-05-04/dvc-plot.png)
 
 ```
 $ dvc plot diff -d logs.csv HEAD HEAD^ d1e4d848 baseline_march \
@@ -147,7 +147,7 @@ file:///Users/dmitry/src/plot/logs.html
 $ open logs.html
 ```
 
-![](/static/uploads/images/2020-05-04/dvc-plot-scatter.png)
+![](/uploads/images/2020-05-04/dvc-plot-scatter.png)
 
 ### [Data transfer optimizations](https://github.com/iterative/dvc/issues/3488)
 
@@ -183,7 +183,7 @@ Activity on our GitHub page has grown organically since the DVC repo went public
 on May 4th, 2017. Coincidently, today, in the 3rd year anniversary we have
 reached 5000 starts:
 
-![](/static/uploads/images/2020-05-04/5k_github.png)
+![](/uploads/images/2020-05-04/5k_github.png)
 
 ## Thank you!
 
