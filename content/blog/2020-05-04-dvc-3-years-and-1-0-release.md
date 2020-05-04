@@ -96,7 +96,7 @@ You can install the pre-release version from the development branch (instruction
 on [our website](https://dvc.org/doc/install/pre-release)) or through pip:
 
 ```dvc
-pip install --pre dvc
+$ pip install --pre dvc
 ```
 
 The new DVC is inspired by discussions and contributions from our community -
