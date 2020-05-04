@@ -125,7 +125,7 @@ We redesigned the DVC-metafile format to make saved pipelines more interpretable
 and editable. Pipeline stages are now saved in a single metafile, with all
 stages stored together instead of in separate files.
 
-The checksums are no longer stored in the pipeline metafile which improves
+Data hash values are no longer stored in the pipeline metafile. This improves
 human-readability.
 
 ```yaml
