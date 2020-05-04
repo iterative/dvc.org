@@ -1,6 +1,8 @@
 /* eslint-env node */
 
 const path = require('path')
+const rehype = require('rehype')
+const urls = require('rehype-urls')
 
 require('./config/prismjs/dvc')
 require('./config/prismjs/usage')
@@ -20,6 +22,71 @@ const keywords = [
   'machine learning',
   'models management'
 ]
+
+const processor = rehype()
+  .use(urls, url => {
+    if (url.href.startsWith('/')) {
+      return 'http://localhost:9000' + url.href
+    }
+  })
+  .freeze()
+
+const feedPlugin = {
+  options: {
+    feeds: [
+      {
+        description,
+        output: '/blog/rss.xml',
+        query: `
+              {
+                allBlogPost(
+                  sort: { fields: [date], order: DESC }
+                ) {
+                  nodes {
+                    htmlAst
+                    slug
+                    title
+                    date
+                    description
+                  }
+                }
+              }
+        `,
+        serialize: ({ query: { site, allBlogPost } }) => {
+          return allBlogPost.nodes.map(node => {
+            const html = processor.stringify(processor.runSync(node.htmlAst))
+            return Object.assign(
+              {},
+              {
+                /* eslint-disable-next-line @typescript-eslint/camelcase */
+                custom_elements: [{ 'content:encoded': html }],
+                title: node.title,
+                date: node.date,
+                description: node.description,
+                guid: site.siteMetadata.siteUrl + node.slug,
+                url: site.siteMetadata.siteUrl + node.slug
+              }
+            )
+          })
+        },
+        title
+      }
+    ],
+    query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+    `
+  },
+  resolve: `gatsby-plugin-feed`
+}
 
 const plugins = [
   {
@@ -119,61 +186,7 @@ const plugins = [
       /* eslint-enable @typescript-eslint/camelcase */
     }
   },
-  {
-    options: {
-      feeds: [
-        {
-          description,
-          output: '/blog/rss.xml',
-          query: `
-              {
-                allBlogPost(
-                  sort: { fields: [date], order: DESC }
-                ) {
-                  nodes {
-                    html
-                    slug
-                    title
-                    date
-                    description
-                  }
-                }
-              }
-            `,
-          serialize: ({ query: { site, allBlogPost } }) => {
-            return allBlogPost.nodes.map(node => {
-              return Object.assign(
-                {},
-                {
-                  /* eslint-disable-next-line @typescript-eslint/camelcase */
-                  custom_elements: [{ 'content:encoded': node.html }],
-                  title: node.title,
-                  date: node.date,
-                  description: node.description,
-                  guid: site.siteMetadata.siteUrl + node.slug,
-                  url: site.siteMetadata.siteUrl + node.slug
-                }
-              )
-            })
-          },
-          title
-        }
-      ],
-      query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `
-    },
-    resolve: `gatsby-plugin-feed`
-  },
+  feedPlugin,
   {
     resolve: 'gatsby-plugin-sentry',
     options: {
