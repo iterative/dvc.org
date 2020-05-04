@@ -193,7 +193,7 @@ $ open logs.csv.html
 _Learnings:_ In ML projects, data transfer optimization is still the king.
 
 We've done substantial work on optimizing data management commands, such as
-`dvc pull \ push \ status -c \ gc -c`. Now, based on the amount of data, DVC can
+`dvc pull / push / status -c / gc -c`. Now, based on the amount of data, DVC can
 choose an optimal data remote traversing strategy.
 
 [Mini-indexes](https://github.com/iterative/dvc/issues/2147) were introduced to
