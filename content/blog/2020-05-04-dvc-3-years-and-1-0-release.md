@@ -86,11 +86,15 @@ is growing every week. Our [Discord channel](http://dvc.org/chat) has almost two
 thousand users. Hundreds more connect with us through email and Twitter. To
 everyone willing to try out DVC, thank you for the opportunity.
 
-## DVC 1.0. is the result of 3 years of learning
+## DVC 1.0 is the result of 3 years of learning
 
 All these contributions, big and small, have a collective impact on DVC's
 development. I'm happy (and a bit nervous) to announce that a pre-release of a
 brand new DVC 1.0 is ready for public beta testing.
+
+```dvc
+pip install --pre dvc
+```
 
 The new DVC is inspired by discussions and contributions from our community -
 both fresh ideas and bug reports 😅.
