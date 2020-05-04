@@ -86,11 +86,18 @@ is growing every week. Our [Discord channel](http://dvc.org/chat) has almost two
 thousand users. Hundreds more connect with us through email and Twitter. To
 everyone willing to try out DVC, thank you for the opportunity.
 
-## DVC 1.0. is the result of 3 years of learning
+## DVC 1.0 is the result of 3 years of learning
 
 All these contributions, big and small, have a collective impact on DVC's
 development. I'm happy (and a bit nervous) to announce that a pre-release of a
 brand new DVC 1.0 is ready for public beta testing.
+
+You can install the pre-release version from the development branch (instruction
+on [our website](https://dvc.org/doc/install/pre-release)) or through pip:
+
+```dvc
+$ pip install --pre dvc
+```
 
 The new DVC is inspired by discussions and contributions from our community -
 both fresh ideas and bug reports 😅.
@@ -118,7 +125,7 @@ We redesigned the DVC-metafile format to make saved pipelines more interpretable
 and editable. Pipeline stages are now saved in a single metafile, with all
 stages stored together instead of in separate files.
 
-The checksums are no longer stored in the pipeline metafile which improves
+Data hash values are no longer stored in the pipeline metafile. This improves
 human-readability.
 
 ```yaml
@@ -186,7 +193,7 @@ $ open logs.csv.html
 _Learnings:_ In ML projects, data transfer optimization is still the king.
 
 We've done substantial work on optimizing data management commands, such as
-`dvc pull \ push \ status -c \ gc -c`. Now, based on the amount of data, DVC can
+`dvc pull / push / status -c / gc -c`. Now, based on the amount of data, DVC can
 choose an optimal data remote traversing strategy.
 
 [Mini-indexes](https://github.com/iterative/dvc/issues/2147) were introduced to
@@ -215,7 +222,7 @@ holistic way.
 Each of the big new features and improvements deserve a separate blog post. We
 will be posting more - please stay in touch.
 
-I hope our the most active users will find time to check the DVC pre release
+I hope our the most active users will find time to check the DVC pre-release
 version and provide their feeback. The installation instruction is
 [on our website](https://dvc.org/doc/install/pre-release).
 
