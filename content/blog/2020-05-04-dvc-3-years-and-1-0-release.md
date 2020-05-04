@@ -16,7 +16,7 @@ descriptionLong: |
 
   We'll share what we've learned from our journey, how users helped for the new
   release and how DVC is growing.
-picture: 2020-05-04/5k_stars.png
+picture: 2020-05-04/owl.png
 pictureComment: DVC 3rd-year anniversary
 author: dmitry_petrov
 commentsUrl: https://discuss.dvc.org/t/dvc-3-years-anniversary-and-1-0-pre-release/374
@@ -118,8 +118,35 @@ We redesigned the DVC-metafile format to make saved pipelines more interpretable
 and editable. Pipeline stages are now saved in a single metafile, with all
 stages stored together instead of in separate files.
 
-Another significan step was the removed checksums from the pipeline metafile.
-This improves its human-readability.
+The checksums are no longer stored in the pipeline metafile which improves
+human-readability.
+
+```yaml
+stages:
+  process:
+    cmd: ./process_raw_data raw_data.log users.csv
+    deps:
+      - raw_data.log
+    params:
+      - process_file
+      - click_threshold
+    outs:
+      - users.csv
+  train:
+    cmd: python train.py
+    deps:
+      - users.csv
+    params:
+      - epochs
+      - log_file
+      - dropout
+    metrics_no_cache:
+      - summary.json
+    metrics:
+      - logs.csv
+    outs:
+      - model.pkl
+```
 
 ### [Plots](https://github.com/iterative/dvc/issues/3409)
 
@@ -202,7 +229,7 @@ reached 5000 starts:
 
 ## Thank you!
 
-Thank you again for all DVC contributions, community members, and users. Every
+Thank you again for all DVC contributors, community members, and users. Every
 piece of your help is highly appreciated and will bring huge benefits to the
 entire ecosystem of data and ML projects.
 
