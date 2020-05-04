@@ -92,6 +92,9 @@ All these contributions, big and small, have a collective impact on DVC's
 development. I'm happy (and a bit nervous) to announce that a pre-release of a
 brand new DVC 1.0 is ready for public beta testing.
 
+You can install the pre-release version from the development branch (instruction
+on [our website](https://dvc.org/doc/install/pre-release)) or through pip:
+
 ```dvc
 pip install --pre dvc
 ```
