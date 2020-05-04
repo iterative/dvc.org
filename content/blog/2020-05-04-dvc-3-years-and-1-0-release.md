@@ -222,7 +222,7 @@ holistic way.
 Each of the big new features and improvements deserve a separate blog post. We
 will be posting more - please stay in touch.
 
-I hope our the most active users will find time to check the DVC pre release
+I hope our the most active users will find time to check the DVC pre-release
 version and provide their feeback. The installation instruction is
 [on our website](https://dvc.org/doc/install/pre-release).
 
