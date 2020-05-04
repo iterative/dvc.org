@@ -23,6 +23,8 @@ module.exports = [
   'pipeline show',
   'pipeline list',
   'pipeline',
+  'plot',
+  'plot diff',
   'move',
   'metrics show',
   'metrics remove',
