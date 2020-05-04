@@ -1,12 +1,12 @@
 ---
-title: DVC 3 Years Anniversary and 1.0 Pre-release
+title: DVC 3 Years 🎉 and 1.0 Pre-release 🚀
 date: 2020-05-04
 description: |
-  Today, we’ve got three big things to announce: 🎉 3rd-year anniversary of DVC,
+  Today, we've got three big announcements: 🎉 3rd-year anniversary of DVC,
   🚀 DVC 1.0 pre-release is ready and ⭐ 5000 GitHub starts.
 
 descriptionLong: |
-  Today, we’ve got three big things to announce.
+  Today, we've got three big announcements.
 
   🎉 3rd-year anniversary of DVC
 
@@ -14,10 +14,10 @@ descriptionLong: |
 
   ⭐ DVC has reached 5K GitHub starts (coincidently on the same day)
 
-  We are sharing our learnings from this journey and how they affected the new
-  DVC 1.0 release.
+  We'll share what we've learned from our journey, how users helped for the new
+  release and how DVC is growing.
 picture: 2020-05-04/5k_stars.png
-pictureComment: 5000 GitHub stars
+pictureComment: DVC 3rd-year anniversary
 author: dmitry_petrov
 commentsUrl: https://discuss.dvc.org/t/dvc-3-years-anniversary-and-1-0-pre-release/374
 tags:
@@ -29,13 +29,12 @@ tags:
 
 ## 3 years anniversary!
 
-3 years ago on **May 4th, 2017** the first DVC blog post was published
-[Data Version Control beta release: iterative machine learning](https://blog.dataversioncontrol.com/data-version-control-beta-release-iterative-machine-learning-a7faf7c8be67).
-It was the first DVC tutorial and later we made a redirect to the new tutorial
-page to not to confuse users.
+Three years ago on **May 4th, 2017**, I published the
+[first blog post about DVC](https://www.kdnuggets.com/2017/05/data-version-control-iterative-machine-learning.html).
 [The first DVC discussion on Reddit](https://www.reddit.com/r/Python/comments/698ian/dvc_data_scientists_collaboration_and_iterative/).
-A few days later it was
-[republished on other sources](https://www.kdnuggets.com/2017/05/data-version-control-iterative-machine-learning.html)
+Until that point, DVC was a private project between
+[myself](https://github.com/dmpetrov) and [Ruslan](https://github.com/efiop).
+Today, things look very different.
 
 Today, DVC gets recognized at professional conferences: people spot our logo,
 and sometimes even our faces, and want to chat. There's much more content about
@@ -55,16 +54,20 @@ under the hood.
 I can confidently say that DVC wouldn't have been possible without a lot of help
 from our community. Thank you to everyone who has supported us:
 
-**DVC core team.** The core team of the project takes the majority of the
-development activities, constantly brings new ideas, documents the product and
-always on the first line of user's support. Many users knows that great user
-support if one of the "killing features" of DVC. Today the core team consists of
-6 brave engineers.
+**DVC core team.** The DVC team has been the force driving our project's
+evolution - we've grown from 2 to 12 full-time engineers, developers, and data
+scientists. Half of the team is purely focus on DVC while the other half on
+related to DVC new projects. We often get feedback about how fast our team
+answers user questions - we've been told our user support is one of DVC's
+"killer features". It's all thanks to this amazing team.
 
 **DVC contributors.** As of today, the DVC code base has
 [126 individual contributors](https://github.com/iterative/dvc/graphs/contributors).
-Many of these folks put hours into their PRs. We're grateful for their tenacity
-and generosity.
+Many of these folks put hours into their code contributios. We're grateful for
+their tenacity and generosity.
+
+![](/static/uploads/images/2020-05-04/vera-sativa.png)_Vera - 100th DVC
+contibutor [on GitHub](https://github.com/verasativa/)._
 
 **Documentation contributors.** Another
 [124 people contributed](https://github.com/iterative/dvc.org/graphs/contributors)
@@ -136,20 +139,20 @@ differs from another commit (or even multiple commits).
 
 ```dvc
 $ dvc plot diff -d logs.csv HEAD HEAD^ d1e4d848 baseline_march
-file:///Users/dmitry/src/plot/logs.html
-$ open logs.html
+file:///Users/dmitry/src/plot/logs.csv.html
+$ open logs.csv.html
 ```
 
-![](/uploads/images/2020-05-04/dvc-plot.png)
+![](/uploads/images/2020-05-04/dvc-plot.svg)
 
 ```dvc
 $ dvc plot diff -d logs.csv HEAD HEAD^ d1e4d848 baseline_march \
         -x loss --template scatter
-file:///Users/dmitry/src/plot/logs.html
-$ open logs.html
+file:///Users/dmitry/src/plot/logs.csv.html
+$ open logs.csv.html
 ```
 
-![](/uploads/images/2020-05-04/dvc-plot-scatter.png)
+![](/uploads/images/2020-05-04/dvc-plot-scatter.svg)
 
 ### [Data transfer optimizations](https://github.com/iterative/dvc/issues/3488)
 
@@ -159,12 +162,17 @@ We've done substantial work on optimizing data management commands, such as
 `dvc pull \ push \ status -c \ gc -c`. Now, based on the amount of data, DVC can
 choose an optimal data remote traversing strategy.
 
-[Wini-indexes](https://github.com/iterative/dvc/issues/2147) were introduced to
+[Mini-indexes](https://github.com/iterative/dvc/issues/2147) were introduced to
 help DVC instantly check data directories instead of iterating over millions of
 files. This also speeds up file adding\removing to large directories.
 
 More optimizations are included in the release based on performance bottlenecks
-we profiled.
+we profiled. More detailed
+[benchmark report](https://gist.github.com/pmrowla/338d9645bd05df966f8aba8366cab308)
+that shows how many second it takes to run a specific commands on 2M images
+directory.
+
+![](/uploads/images/2020-05-04/benchmarks.svg)
 
 ### [Hyperparameter tracking](https://github.com/iterative/dvc/issues/3393)
 
@@ -174,6 +182,11 @@ This feature was actually released in the last DVC 0.93 version (see
 [params docs](https://dvc.org/doc/command-reference/params). However, it is an
 important step to support configuration files and ML experiments in a more
 holistic way.
+
+### New features summary
+
+Each of the big new features and improvements deserve a separate blog post. We
+will be posting more - please stay in touch.
 
 I hope our the most active users will find time to check the DVC pre release
 version and provide their feeback. The installation instruction is
@@ -193,6 +206,6 @@ Thank you again for all DVC contributions, community members, and users. Every
 piece of your help is highly appreciated and will bring huge benefits to the
 entire ecosystem of data and ML projects.
 
-Stay healthy and safe over in your neck of the woods and be in touch on
+Stay healthy and safe, wherever you are in the world. And be in touch on
 [Twitter](https://twitter.com/DVCorg), and our
 [Discord channel](https://dvc.org/chat).
