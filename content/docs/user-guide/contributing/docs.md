@@ -58,6 +58,15 @@ before submitting them, and it's quite necessary when making changes to the
 website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
 
+> ⚡ You can contribute online, using Gitpod (a fully featured online
+> development environment), it'll automatically clone the repo, install the
+> dependencies, run `yarn build`, and start the webserver so that you can start
+> straight away:
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
+
+To run the app locally:
+
 Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
 (`>=12.0.0`), and install [Yarn](https://yarnpkg.com/):
 
@@ -81,13 +90,6 @@ This will start the server on the default port, `8000`. Visit
 `http://localhost:8000/` and navigate to the page in question. This will also
 enable the Git pre-commit hook that will be formatting and linting your code and
 documentation files automatically.
-
-Alternatively you can contribute to dvc.org using Gitpod(a fully featured online
-development environment), with a single click it will launch a workspace and
-automatically: clone the repo, install the dependencies, run `yarn build` and
-start the webserver so that you can start straight away.
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
 ### All commands
 
