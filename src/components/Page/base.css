@@ -92,3 +92,8 @@ body.user-is-tabbing .link-with-focus {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
 }
+
+.mjx-chtml {
+  margin: 2em 0 !important;
+  font-size: 1.2em !important;
+}
