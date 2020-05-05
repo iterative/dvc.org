@@ -29,7 +29,7 @@ descriptionLong: |
   Some long
   multiline
   text (supports _basic_ [Markdown](link))
-picture: image.jpeg
+picture: 2015-05-01/post-image.jpeg
 pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
 author: author_filename
 tags:
