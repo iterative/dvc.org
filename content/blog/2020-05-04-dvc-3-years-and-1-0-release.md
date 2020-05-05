@@ -12,7 +12,7 @@ descriptionLong: |
 
   🚀 DVC 1.0 pre-release is ready
 
-  ⭐ DVC has reached 5K GitHub starts (coincidently on the same day)
+  ⭐ DVC has reached 5K GitHub starts (coincidentally on the same day)
 
   We'll share what we've learned from our journey, how users helped for the new
   release and how DVC is growing.
@@ -63,11 +63,11 @@ answers user questions - we've been told our user support is one of DVC's
 
 **DVC contributors.** As of today, the DVC code base has
 [126 individual contributors](https://github.com/iterative/dvc/graphs/contributors).
-Many of these folks put hours into their code contributios. We're grateful for
+Many of these folks put hours into their code contribution. We're grateful for
 their tenacity and generosity.
 
 ![](/static/uploads/images/2020-05-04/vera-sativa.png)_Vera - 100th DVC
-contibutor [on GitHub](https://github.com/verasativa/)._
+contributor [on GitHub](https://github.com/verasativa/)._
 
 **Documentation contributors.** Another
 [124 people contributed](https://github.com/iterative/dvc.org/graphs/contributors)
@@ -223,20 +223,20 @@ Each of the big new features and improvements deserve a separate blog post. We
 will be posting more - please stay in touch.
 
 I hope our the most active users will find time to check the DVC pre-release
-version and provide their feeback. The installation instruction is
+version and provide their feedback. The installation instruction is
 [on our website](https://dvc.org/doc/install/pre-release).
 
 ## 5000 GitHub stars
 
 Activity on our GitHub page has grown organically since the DVC repo went public
-on May 4th, 2017. Coincidently, today, in the 3rd year anniversary we have
+on May 4th, 2017. Coincidentally, today, in the 3rd year anniversary we have
 reached 5000 starts:
 
 ![](/uploads/images/2020-05-04/5k_github.png)
 
 ## Thank you!
 
-Thank you again for all DVC contributors, community members, and users. Every
+Thank you again to all DVC contributors, community members, and users. Every
 piece of your help is highly appreciated and will bring huge benefits to the
 entire ecosystem of data and ML projects.
 
