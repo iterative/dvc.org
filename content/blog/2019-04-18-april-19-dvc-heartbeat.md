@@ -173,7 +173,7 @@ Use `--global` when you specify the remote settings. Then remote will be visible
 for all projects on the same machine. `--global` — saves remote configuration to
 the global config (e.g. `~/.config/dvc/config`) instead of a per project one —
 `.dvc/config`. See more details
-[here](https://dvc.org/doc/commands-reference/remote-add).
+[here](https://dvc.org/doc/commands-reference/remote/add).
 
 ### Q: [How do I version a large dataset in S3 or any other storage?](https://discordapp.com/channels/485586884165107732/485596304961962003/554679392823934977)
 

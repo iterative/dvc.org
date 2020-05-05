@@ -144,6 +144,4 @@ Here are a few more stories on our radar:
   [Elvie](https://www.elvie.com/en-us/), a maker of tech for women's health
   (pretty neat mission). The decorations on the job posting are ours 😎
 
-![](/uploads/images/2020-02-10/elvie.png)_A
-[job advertisement](https://www.jobstoday.co.uk/job/40530810/data-engineer/?TrackID=8)
-featuring DVC._
+![](/uploads/images/2020-02-10/elvie.png)_A job advertisement featuring DVC._

@@ -53,10 +53,17 @@ We will review your PR as soon as possible. Thank you for contributing!
 
 ## Development environment
 
-We highly recommend running this web app locally to check documentation or blog
-changes before submitting them, and it's quite necessary when making changes to
-the website engine itself. Source code and content files need to be properly
+We highly recommend running this web app to check documentation or blog changes
+before submitting them, and it's quite necessary when making changes to the
+website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
+
+> ⚡ You can contribute online, using Gitpod (a fully featured online
+> development environment), it'll automatically clone the repo, install the
+> dependencies, run `yarn build`, and start the webserver so that you can start
+> straight away:
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/from-referrer/)
 
 Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
 (`>=12.0.0`), and install [Yarn](https://yarnpkg.com/):

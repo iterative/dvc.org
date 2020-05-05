@@ -8,7 +8,7 @@ command and execute the command.
 ```usage
 usage: dvc run [-h] [-q | -v] [-d <path>] [-o <path>] [-O <path>]
                [-p <params>] [-m <path>] [-M <path>] [-f <filename>]
-               [-w <path>] [--no-exec] [-y] [--overwrite-dvcfile]
+               [-w <path>] [--no-exec] [--overwrite-dvcfile]
                [--ignore-build-cache] [--no-commit]
                [--outs-persist <path>] [--outs-persist-no-cache <path>]
                [--always-changed]
@@ -153,10 +153,10 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 - `--no-exec` - create a stage file, but do not execute the `command` defined in
   it, nor track dependencies or outputs with DVC. In the DVC-file contents, the
   file hash values will be empty; They will be populated the next time this
-  stage is actually executed. This is useful if, for example, you need to build
-  a pipeline (dependency graph) first, and then run it all at once.
-
-- `-y`, `--yes` (_deprecated_) - See `--overwrite-dvcfile` below.
+  stage is actually executed. DVC will also add your outputs to `.gitignore`,
+  same as it would do without `--no-exec`. This is useful if, for example, you
+  need to build a pipeline (dependency graph) first, and then run it all at
+  once.
 
 - `--overwrite-dvcfile` - overwrite an existing DVC-file (with file name
   determined by the logic described in the `-f` option) without asking for
