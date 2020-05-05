@@ -1,5 +1,7 @@
 /* eslint-env node */
 
+const { select, selectAll } = require('hast-util-select')
+
 const path = require('path')
 const rehype = require('rehype')
 const urls = require('rehype-urls')
@@ -23,14 +25,6 @@ const keywords = [
   'models management'
 ]
 
-const processor = rehype()
-  .use(urls, url => {
-    if (url.href.startsWith('/')) {
-      return 'http://localhost:9000' + url.href
-    }
-  })
-  .freeze()
-
 const feedPlugin = {
   options: {
     feeds: [
@@ -53,6 +47,37 @@ const feedPlugin = {
               }
         `,
         serialize: ({ query: { site, allBlogPost } }) => {
+          /* This processor works on Rehype ASTs, doing two things:
+
+          1: All root-relative links are prepended with the site URL, making
+             them absolute. This uses data from siteMetadata, hence why it is
+             defined within this scope.
+
+          2: All images processed by Gatsby to be responsive are "unwrapped"
+             into their fallback 'img' nodes, as RSS doesn't work with the
+             tricks that true HTML does.
+           */
+          const processor = rehype()
+            .use(urls, url =>
+              url.href.startsWith('/')
+                ? site.siteMetadata.site_url + url.href
+                : undefined
+            )
+            .use(() => tree => {
+              // Unwrap all gatsby-resp-image-wrapper elements into plain images.
+              selectAll('.gatsby-resp-image-wrapper', tree).forEach(node => {
+                const fallbackImg = select('img', node)
+                delete node.children
+                Object.assign(node, fallbackImg)
+                node.properties = {
+                  ...node.properties,
+                  style: 'max-width: 100%'
+                }
+              })
+              return tree
+            })
+            .freeze()
+
           return allBlogPost.nodes.map(node => {
             const html = processor.stringify(processor.runSync(node.htmlAst))
             return Object.assign(
