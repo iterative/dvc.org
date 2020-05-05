@@ -25,94 +25,6 @@ const keywords = [
   'models management'
 ]
 
-const feedPlugin = {
-  options: {
-    feeds: [
-      {
-        description,
-        output: '/blog/rss.xml',
-        query: `
-              {
-                allBlogPost(
-                  sort: { fields: [date], order: DESC }
-                ) {
-                  nodes {
-                    htmlAst
-                    slug
-                    title
-                    date
-                    description
-                  }
-                }
-              }
-        `,
-        serialize: ({ query: { site, allBlogPost } }) => {
-          /* This processor works on Rehype ASTs, doing two things:
-
-          1: All root-relative links are prepended with the site URL, making
-             them absolute. This uses data from siteMetadata, hence why it is
-             defined within this scope.
-
-          2: All images processed by Gatsby to be responsive are "unwrapped"
-             into their fallback 'img' nodes, as RSS doesn't work with the
-             tricks that true HTML does.
-           */
-          const processor = rehype()
-            .use(urls, url =>
-              url.href.startsWith('/')
-                ? site.siteMetadata.site_url + url.href
-                : undefined
-            )
-            .use(() => tree => {
-              // Unwrap all gatsby-resp-image-wrapper elements into plain images.
-              selectAll('.gatsby-resp-image-wrapper', tree).forEach(node => {
-                const fallbackImg = select('img', node)
-                delete node.children
-                Object.assign(node, fallbackImg)
-                node.properties = {
-                  ...node.properties,
-                  style: 'max-width: 100%'
-                }
-              })
-              return tree
-            })
-            .freeze()
-
-          return allBlogPost.nodes.map(node => {
-            const html = processor.stringify(processor.runSync(node.htmlAst))
-            return Object.assign(
-              {},
-              {
-                /* eslint-disable-next-line @typescript-eslint/camelcase */
-                custom_elements: [{ 'content:encoded': html }],
-                title: node.title,
-                date: node.date,
-                description: node.description,
-                guid: site.siteMetadata.siteUrl + node.slug,
-                url: site.siteMetadata.siteUrl + node.slug
-              }
-            )
-          })
-        },
-        title
-      }
-    ],
-    query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-    `
-  },
-  resolve: `gatsby-plugin-feed`
-}
-
 const plugins = [
   {
     resolve: `gatsby-plugin-typescript`,
@@ -211,7 +123,93 @@ const plugins = [
       /* eslint-enable @typescript-eslint/camelcase */
     }
   },
-  feedPlugin,
+  {
+    options: {
+      feeds: [
+        {
+          description,
+          output: '/blog/rss.xml',
+          query: `
+              {
+                allBlogPost(
+                  sort: { fields: [date], order: DESC }
+                ) {
+                  nodes {
+                    htmlAst
+                    slug
+                    title
+                    date
+                    description
+                  }
+                }
+              }
+        `,
+          serialize: ({ query: { site, allBlogPost } }) => {
+            /* This processor works on Rehype ASTs, doing two things:
+
+          1: All root-relative links are prepended with the site URL, making
+             them absolute. This uses data from siteMetadata, hence why it is
+             defined within this scope.
+
+          2: All images processed by Gatsby to be responsive are "unwrapped"
+             into their fallback 'img' nodes, as RSS doesn't work with the
+             tricks that true HTML does.
+           */
+            const processor = rehype()
+              .use(urls, url =>
+                url.href.startsWith('/')
+                  ? site.siteMetadata.site_url + url.href
+                  : undefined
+              )
+              .use(() => tree => {
+                // Unwrap all gatsby-resp-image-wrapper elements into plain images.
+                selectAll('.gatsby-resp-image-wrapper', tree).forEach(node => {
+                  const fallbackImg = select('img', node)
+                  delete node.children
+                  Object.assign(node, fallbackImg)
+                  node.properties = {
+                    ...node.properties,
+                    style: 'max-width: 100%'
+                  }
+                })
+                return tree
+              })
+              .freeze()
+
+            return allBlogPost.nodes.map(node => {
+              const html = processor.stringify(processor.runSync(node.htmlAst))
+              return Object.assign(
+                {},
+                {
+                  /* eslint-disable-next-line @typescript-eslint/camelcase */
+                  custom_elements: [{ 'content:encoded': html }],
+                  title: node.title,
+                  date: node.date,
+                  description: node.description,
+                  guid: site.siteMetadata.siteUrl + node.slug,
+                  url: site.siteMetadata.siteUrl + node.slug
+                }
+              )
+            })
+          },
+          title
+        }
+      ],
+      query: `
+          {
+            site {
+              siteMetadata {
+                title
+                description
+                siteUrl
+                site_url: siteUrl
+              }
+            }
+          }
+    `
+    },
+    resolve: `gatsby-plugin-feed`
+  },
   {
     resolve: 'gatsby-plugin-sentry',
     options: {
