@@ -121,9 +121,9 @@ side.
 
 _Learnings:_ ML pipelines evolve much faster than data engineering pipelines.
 
-We redesigned the DVC-metafile format to make saved pipelines more interpretable
-and editable. Pipeline stages are now saved in a single metafile, with all
-stages stored together instead of in separate files.
+We redesigned the way DVC records data processing stages with metafiles, to make
+pipelines more interpretable and editable. All pipeline stages are now saved in
+a single metafile, with all stages stored together instead of in separate files.
 
 Data hash values are no longer stored in the pipeline metafile. This improves
 human-readability.
@@ -161,8 +161,8 @@ _Learnings:_ Versioning metrics and plots are no less important than data
 versioning.
 
 Countless users asked us when we'd support metrics visualizations. Now it's
-here: DVC 1.0 introduces a metrics file visualization command,
-`dvc metrics diff`. DVC plots are powered by the
+here: DVC 1.0 introduces scalar and continuous metrics file visualization
+commands, `dvc metrics diff` and `dvc plots show`. DVC plots are powered by the
 [Vega-Lite](https://vega.github.io/vega-lite/) graphic library.
 
 This function is designed not only for showing visualizations based on the
@@ -198,7 +198,7 @@ choose an optimal data remote traversing strategy.
 
 [Mini-indexes](https://github.com/iterative/dvc/issues/2147) were introduced to
 help DVC instantly check data directories instead of iterating over millions of
-files. This also speeds up file adding\removing to large directories.
+files. This also speeds up file adding/removing to large directories.
 
 More optimizations are included in the release based on performance bottlenecks
 we profiled. More detailed
@@ -217,7 +217,7 @@ This feature was actually released in the last DVC 0.93 version (see
 important step to support configuration files and ML experiments in a more
 holistic way.
 
-### New features summary
+### For more information on the new features...
 
 Each of the big new features and improvements deserve a separate blog post. We
 will be posting more - please stay in touch.
