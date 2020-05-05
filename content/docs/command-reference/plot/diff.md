@@ -7,10 +7,9 @@ them in a single image.
 ## Synopsis
 
 ```usage
-usage: dvc plot diff [-h] [-q | -v] [-t [TEMPLATE]] [-d [DATAFILE]]
-                     [-r RESULT] [--no-html] [-f FIELDS] [-o]
-                     [--no-csv-header]
-                     [revisions [revisions ...]]
+usage: dvc plot diff [-h] [-q | -v] [-t [TEMPLATE]] [-d [DATAFILE]] [-f FILE]
+                     [-s SELECT] [-x X] [-y Y] [--stdout] [--no-csv-header]
+                     [--no-html] [--title TITLE] [--xlab XLAB] [--ylab YLAB]
 
 positional arguments:
   revisions             Git revisions to plot from
@@ -44,20 +43,36 @@ an output.
 
 ## Options
 
-- `-t [TEMPLATE], --template [TEMPLATE]` - File to be injected with data.
-
 - `-d [DATAFILE], --datafile [DATAFILE]` - Continuous metrics file to visualize.
 
-- `-r RESULT, --result RESULT` - Name of the generated file.
+- `-t [TEMPLATE], --template [TEMPLATE]` - File to be injected with data. The
+  default temlpate is `.dvc/plot/default.json`. See more details in `dvc plot`.
 
-- `--no-html` - Do not wrap vega plot json with HTML.
+- `-f FILE, --file FILE` - Name of the generated file. By default, the output
+  file name is equal to the input filename with additional `.html` suffix or
+  `.json` suffix for `--no-html` mode.
 
-- `-f FIELDS, --fields FIELDS` - Choose which fileds or jsonpath to put into
-  plot.
+- `--no-html` - Do not wrap output vega plot json with HTML.
 
-- `--no-csv-header` - Provided CSV or TSV datafile does not have a header.
+- `-s SELECT, --select SELECT` - Select which fileds or jsonpath to put into
+  plot. All the fields will be included by default with DVC generated `index`
+  field - see `dvc plot`.
+
+- `-x X` - Field name for x axis. `index` is the default field for X.
+
+- `-y Y` - Field name for y axis. The dafult field is the last field found in
+  the input file: the last column in CSV file or the last field in the JSON
+  array object (the first object).
+
+- `--xlab XLAB` - X axis title. The X column name is the default title.
+
+- `--ylab YLAB` - Y axis title. The Y column name is the default title.
+
+- `--title TITLE` - Plot title.
 
 - `-o, --stdout` - Print plot content to stdout.
+
+- `--no-csv-header` - Provided CSV or TSV datafile does not have a header.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -73,18 +88,19 @@ one:
 
 ```dvc
 $ dvc plot diff -d logs.csv
-file:///Users/dmitry/src/plot/logs.html
+file:///Users/dmitry/src/plot/logs.csv.html
 ```
 
-A new file `logs.html` was generated. User can open it in a web browser.
+A new file `logs.csv.html` was generated. User can open it in a web browser.
 
 ![](/img/plot_diff_workspace.svg)
 
-The difference between two specified commits:
+The difference between two specified commits (multiple commits, tag or branches
+can be specified):
 
 ```dvc
 $ dvc plot diff -d logs.csv HEAD 11c0bf1
-file:///Users/dmitry/src/plot/logs.html
+file:///Users/dmitry/src/plot/logs.csv.html
 ```
 
 ![](/img/plot_diff.svg)
@@ -107,8 +123,8 @@ turtle,cat
 ```
 
 ```dvc
-$ dvc plot diff -d classes.csv -t confusion_matrix
-file:///Users/dmitry/src/test/plot_old/classes.html
+$ dvc plot diff -d classes.csv -t confusion
+file:///Users/dmitry/src/test/plot_old/classes.csv.html
 ```
 
 ![](/img/plot_diff_confusion.svg)

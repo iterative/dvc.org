@@ -6,9 +6,9 @@ Generate a plot image from from a
 ## Synopsis
 
 ```usage
-usage: dvc plot show [-h] [-q | -v] [-t [TEMPLATE]] [-r RESULT] [--show-json]
-                     [-f FIELDS]
-                     [datafile]
+usage: dvc plot show [-h] [-q | -v] [-t [TEMPLATE]] [-f FILE] [-s SELECT]
+                     [-x X] [-y Y] [--stdout] [--no-csv-header] [--no-html]
+                     [--title TITLE] [--xlab XLAB] [--ylab YLAB]
 
 positional arguments:
   datafile              Data to be visualized.
@@ -22,14 +22,30 @@ information.
 
 ## Options
 
-- `-t [TEMPLATE], --template [TEMPLATE]` - File to be injected with data.
+- `-t [TEMPLATE], --template [TEMPLATE]` - File to be injected with data. The
+  default temlpate is `.dvc/plot/default.json`. See more details in `dvc plot`.
 
-- `-r RESULT, --result RESULT` - Name of the generated file.
+- `-f FILE, --file FILE` - Name of the generated file. By default, the output
+  file name is equal to the input filename with additional `.html` suffix or
+  `.json` suffix for `--no-html` mode.
 
-- `--no-html` - Do not wrap vega plot json with HTML.
+- `--no-html` - Do not wrap output vega plot json with HTML.
 
-- `-f FIELDS, --fields FIELDS` - Choose which fileds or jsonpath to put into
-  plot.
+- `-s SELECT, --select SELECT` - Select which fileds or jsonpath to put into
+  plot. All the fields will be included by default with DVC generated `index`
+  field - see `dvc plot`.
+
+- `-x X` - Field name for x axis. `index` is the default field for X.
+
+- `-y Y` - Field name for y axis. The dafult field is the last field found in
+  the input file: the last column in CSV file or the last field in the JSON
+  array object (the first object).
+
+- `--xlab XLAB` - X axis title. The X column name is the default title.
+
+- `--ylab YLAB` - Y axis title. The Y column name is the default title.
+
+- `--title TITLE` - Plot title.
 
 - `-o, --stdout` - Print plot content to stdout.
 
@@ -58,30 +74,41 @@ epoch,accuracy,loss,val_accuracy,val_loss
 7,0.9954,0.01396906608727198,0.9802,0.07247738889862157
 ```
 
-By default, the command plots the last column of the tabular file.
+By default, the command plots the last column of the tabular file. Please look
+at the default behaviour of `-y` option.
 
 ```dvc
 $ dvc plot show logs.csv
-file:///Users/dmitry/src/plot/logs.html
+file:///Users/dmitry/src/plot/logs.csv.html
 ```
 
 ![](/img/plot_show.svg)
 
-Use `--field` option to changing column to visualize:
+Use `-y` option to change column to visualize:
 
 ```dvc
-$ dvc plot show --field loss logs.csv
-file:///Users/dmitry/src/plot/logs.html
+$ dvc plot show -y loss logs.csv
+file:///Users/dmitry/src/plot/logs.csv.html
 ```
 
 ![](/img/plot_show_field.svg)
+
+In the previous examlpe all the columns (or fields) were included into the
+output file. You can select only specified subset ot the columns by `--select`
+option which might be important for reducing the output file size. In this case
+the default `index` column will be still included.
+
+```dvc
+$ dvc plot show -y loss --select loss logs.csv
+file:///Users/dmitry/src/plot/logs.csv.html
+```
 
 A tabular file without header can be plotted with `--no-csv-header` option. A
 field can be specified through column number (starting with 0):
 
 ```dvc
 $ dvc plot show --no-csv-header --field 2 logs.csv
-file:///Users/dmitry/src/plot/logs.html
+file:///Users/dmitry/src/plot/logs.csv.html
 ```
 
 In many automation scenarios (like CI/CD for ML), it is convinient to have Vega
@@ -92,7 +119,7 @@ Note, the result file extension changes to JSON:
 
 ```
 $ dvc plot show --no-html logs.csv
-file:///Users/dmitry/src/plot/logs.json
+file:///Users/dmitry/src/plot/logs.csv.json
 ```
 
 JSON file plotting example:
@@ -116,15 +143,15 @@ find.
 
 ```dvc
 $ dvc plot show train.json
-file:///Users/dmitry/src/plot/train.html
+file:///Users/dmitry/src/plot/train.json.html
 ```
 
 ![](/img/plot_show.svg)
 
-The field name can be specified with the same `--field` option. The signal from
-the first JSON array with the specified name will be showned:
+The field name can be specified with the same `-y` option. The signal from the
+first JSON array with the specified name will be showned:
 
 ```dvc
-$ dvc plot show --field accuracy logs.json
-file:///Users/dmitry/src/plot/logs.html
+$ dvc plot show -y accuracy logs.json
+file:///Users/dmitry/src/plot/logs.json.html
 ```
