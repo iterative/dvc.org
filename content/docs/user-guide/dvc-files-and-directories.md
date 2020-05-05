@@ -24,24 +24,28 @@ operation:
   > repository, only [DVC-files](/doc/user-guide/dvc-file-format) that are
   > needed to download or reproduce them.
 
-- `.dvc/state`: This file is used for optimization. It is a SQLite database,
+- `.dvc/tmp`: Directory for miscellaneous temporary files
+
+- `.dvc/tmp/index`: Directory for remote index files that are used for
+  optimizing `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c` operations.
+
+- `.dvc/tmp/state`: This file is used for optimization. It is a SQLite database,
   that contains hash values for files tracked in a DVC project, with respective
   timestamps and inodes to avoid unnecessary file hash computations. It also
   contains a list of links (from cache to <abbr>workspace</abbr>) created by DVC
   and is used to cleanup your workspace when calling `dvc checkout`.
 
-- `.dvc/state-journal`: Temporary file for SQLite operations
+- `.dvc/tmp/state-journal`: Temporary file for SQLite operations
 
-- `.dvc/state-wal`: Another SQLite temporary file
+- `.dvc/tmp/state-wal`: Another SQLite temporary file
 
-- `.dvc/updater`: This file is used store the latest available version of DVC.
-  It's used to remind the user to upgrade when the installed version is behind.
+- `.dvc/tmp/updater`: This file is used store the latest available version of
+  DVC. It's used to remind the user to upgrade when the installed version is
+  behind.
 
-- `.dvc/updater.lock`: Lock file for `.dvc/updater`
+- `.dvc/tmp/updater.lock`: Lock file for `.dvc/tmp/updater`
 
-- `.dvc/lock`: Lock file for the entire DVC project
-
-- `.dvc/tmp`: Directory for miscellaneous temporary files
+- `.dvc/tmp/lock`: Lock file for the entire DVC project
 
 - `.dvc/tmp/rwlock`: JSON file that contains read and write locks for specific
   dependencies and outputs, to allow safely running multiple DVC commands in

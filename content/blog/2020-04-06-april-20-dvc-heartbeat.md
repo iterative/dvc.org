@@ -30,8 +30,8 @@ tags:
 ---
 
 Welcome to the April Heartbeat, our
-[monthly roundup of cool happenings](https://dvc-landing-april-heart-6d0onb.herokuapp.com/tags/heartbeat),
-good reads and other bright spots in our community.
+[monthly roundup of cool happenings](https://dvc.org/tags/heartbeat), good reads
+and other bright spots in our community.
 
 ## News
 

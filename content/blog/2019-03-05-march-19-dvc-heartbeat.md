@@ -133,7 +133,7 @@ $ dvc remote modify upstream endpointurl <url>
 ```
 
 Find and click the `S3 API compatible storage` on
-[this page](https://dvc.org/doc/commands-reference/remote-add)
+[this page](https://dvc.org/doc/commands-reference/remote/add)
 
 ### Q: [Why DVC creates and updates `.gitignore` file?](https://discordapp.com/channels/485586884165107732/485596304961962003/543914550173368332)
 

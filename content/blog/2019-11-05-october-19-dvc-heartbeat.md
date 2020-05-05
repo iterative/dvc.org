@@ -43,7 +43,7 @@ it this year. Here are some of the highlights:
   over the world: check
   [this blogpost in French](https://blog.octo.com/mise-en-application-de-dvc-sur-un-projet-de-machine-learning/)
   or
-  [this tutorial in German](https://jupyter-tutorial.readthedocs.io/de/latest/reproduce/dvc/init.html)!
+  [this tutorial in German](https://jupyter-tutorial.readthedocs.io/de/latest/productive/dvc/)!
 
 - Having great time working with a [tech writer](https://github.com/dashohoxha)
   brought to us by the

@@ -78,7 +78,8 @@
     "scroll": "^3.0.1",
     "serve-handler": "^6.1.2",
     "slick-carousel": "^1.8.1",
-    "unist-util-visit": "2.0.2"
+    "unist-util-visit": "2.0.2",
+    "upath": "^1.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
