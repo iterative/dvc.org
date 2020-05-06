@@ -127,20 +127,20 @@ const plugins = [
           description,
           output: '/blog/rss.xml',
           query: `
-              {
-                allBlogPost(
-                  sort: { fields: [date], order: DESC }
-                ) {
-                  nodes {
-                    htmlAst
-                    slug
-                    title
-                    date
-                    description
-                  }
+            {
+              allBlogPost(
+                sort: { fields: [date], order: DESC }
+              ) {
+                nodes {
+                  htmlAst
+                  slug
+                  title
+                  date
+                  description
                 }
               }
-        `,
+            }
+          `,
           serialize: ({ query: { site, allBlogPost } }) => {
             return allBlogPost.nodes.map(node => {
               const html = makeFeedHtml(node.htmlAst, site.siteMetadata.siteUrl)
