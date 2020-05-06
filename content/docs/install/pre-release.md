@@ -10,9 +10,15 @@ releases, you can install it from our code repository GitHub.
 > (on Python 3.6+) to encapsulate your local environment.
 
 ```dvc
-$ pip install --upgrade --pre dvc
+$ pip install gitpython
+$ pip install git+https://github.com/iterative/dvc
 ```
 
-To install a development version for contributing to the project, please refer
-to
+> `gitpython` allows the installation process to generate a DVC version using
+> the current Git commit hash. This lets us to distinguish official DVC releases
+> (e.g. `0.64.3`) from a development version (e.g. `0.64.3-9c7381`). For more
+> information on our versioning convention, refer to
+> [Components of DVC version](/doc/command-reference/version#components-of-dvc-version).
+
+To install a development version, for contributing to the project, please see
 [Development environment](/doc/user-guide/contributing/core#development-environment).
