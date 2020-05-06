@@ -1,3 +1,4 @@
+const { imageWrapperClass } = require('gatsby-remark-images/constants')
 const unified = require('unified')
 const { convertHastToHtml } = require('./convertHast.js')
 const { select, selectAll } = require('hast-util-select')
@@ -17,7 +18,7 @@ const rootToAbsolute = siteUrl => tree => {
 }
 
 const unwrapImages = () => tree => {
-  selectAll('.gatsby-resp-image-wrapper', tree).forEach(node => {
+  selectAll(`.${imageWrapperClass}`, tree).forEach(node => {
     // Set the fallback image as the wrapper's only child, and then
     // give that image the wrapper's original style.
     const fallbackImg = select('img', node)
