@@ -26,13 +26,10 @@ const unwrapImages = () => tree => {
         ...fallbackImg,
         properties: {
           ...fallbackImg.properties,
-          style: node.properties.style
+          style: 'max-width: 100%; margin: auto;'
         }
       }
     ]
-
-    // Change the wrapper's style
-    node.properties.style = 'max-width: 100%'
   })
   return tree
 }
