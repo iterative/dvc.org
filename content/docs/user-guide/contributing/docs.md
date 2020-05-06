@@ -58,10 +58,9 @@ before submitting them, and it's quite necessary when making changes to the
 website engine itself. Source code and content files need to be properly
 formatted and linted as well, which is also ensured by the full setup below.
 
-> ⚡ You can contribute online, using Gitpod (a fully featured online
-> development environment), it'll automatically clone the repo, install the
-> dependencies, run `yarn build`, and start the webserver so that you can start
-> straight away:
+> ⚡ You can create a dev env online using Gitpod (a fully featured online IDE),
+> it'll automatically clone the repo, install the dependencies, and run the app
+> (takes a few minutes), so that you can start straight away.
 >
 > <a href="https://gitpod.io/#https://github.com/iterative/dvc.org">
 >   <img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod">
