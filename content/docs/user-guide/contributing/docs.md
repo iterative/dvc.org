@@ -156,9 +156,7 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
 - We use [Prettier](https://prettier.io/) to format our source code (see
   [its configuration](https://github.com/iterative/dvc.org/blob/master/.prettierrc)).
   The formatting of staged files will automatically be done by a Git pre-commit
-  hook. You may also run `yarn format <file>` (format specific file/pattern),
-  `yarn format-staged` (all staged files), or `yarn format-all` (all `.md`,
-  `.js` and other source files) before committing changes if needed.
+  hook. You may also run the formatting [commands](#all-commands) manually.
   ([Advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
   available through `yarn prettier ...`)
 
