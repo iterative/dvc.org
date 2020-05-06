@@ -62,10 +62,10 @@ formatted and linted as well, which is also ensured by the full setup below.
 > development environment), it'll automatically clone the repo, install the
 > dependencies, run `yarn build`, and start the webserver so that you can start
 > straight away:
-
-<a href="https://gitpod.io/#https://github.com/iterative/dvc.org">
-  <img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod">
-</a>
+>
+> <a href="https://gitpod.io/#https://github.com/iterative/dvc.org">
+>   <img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod">
+> </a>
 
 Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
 (`>=12.0.0`), and install [Yarn](https://yarnpkg.com/):
