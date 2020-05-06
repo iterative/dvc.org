@@ -143,11 +143,10 @@ Every time you run `dvc add` to start tracking some data artifact, its path is
 automatically added to the `.gitignore` file, as a result it is hard to commit
 it to git by mistake — you would need to explicitly modify the `.gitignore`
 first. The feature to track some external data is called
-[external outputs](https://dvc.org/doc/user-guide/external-outputs) (if all you
-need is to track some data artifacts). Usually it is used when you have some
-data on S3 or SSH and don’t want to pull it into your working space, but it’s
-working even when your data is located on the same machine outside of the
-repository.
+[external outputs](/doc/user-guide/managing-external-data) (if all you need is
+to track some data artifacts). Usually it is used when you have some data on S3
+or SSH and don’t want to pull it into your working space, but it’s working even
+when your data is located on the same machine outside of the repository.
 
 ### Q: [How do I wrap a step that downloads a file/directory into a DVC stage?](https://discordapp.com/channels/485586884165107732/485596304961962003/571342592508428289) I want to ensure that it runs only if file has no been downloaded yet
 
@@ -192,7 +191,7 @@ $ dvc config cache.protected true
 
 The last one is highly recommended to make links in your working space read-only
 to avoid corrupting the cache. Read more about different link types
-[here](https://dvc.org/doc/user-guide/large-dataset-optimization).
+[here](/doc/user-guide/large-dataset-optimization).
 
 To add your data first time to the DVC cache, do a clone of the repository on a
 big partition and run `dvc add` to add your data. Then you can do `git pull`,
@@ -222,8 +221,7 @@ flexibility (e.g. you need to use different credentials for different projects,
 etc) check out
 [this guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
 to configure custom aws profiles and then you could use them with DVC using
-these
-[remote options](https://dvc.org/doc/commands-reference/remote-add#options).
+these [remote options](/doc/commands-reference/remote-add#options).
 
 ### Q: [How can I output multiple metrics from a single file?](https://discordapp.com/channels/485586884165107732/485596304961962003/566000729505136661)
 
@@ -288,13 +286,12 @@ re-running your commands.
 ### Q: [I have projects that use data that’s stored in S3. I never have data locally to use `dvc push`, but I would like to have this data version controlled.](https://discordapp.com/channels/485586884165107732/485596304961962003/563352000281182218) Is there a way to use the features of DVC in this use case?
 
 Yes! This DVC features is called
-[external outputs](https://dvc.org/doc/user-guide/external-outputs) and
-[external dependencies](https://dvc.org/doc/user-guide/external-dependencies).
-You can use one of them or both to track, process, and version your data on a
-cloud storage without downloading it locally.
+[external outputs](/doc/user-guide/large-dataset-optimization) and
+[external dependencies](/doc/user-guide/external-dependencies). You can use one
+of them or both to track, process, and version your data on a cloud storage
+without downloading it locally.
 
 <hr />
 
-If you have any questions, concerns or ideas, let us know
-[here](https://dvc.org/support) and our stellar team will get back to you in no
-time!
+If you have any questions, concerns or ideas, let us know [here](/support) and
+our stellar team will get back to you in no time!

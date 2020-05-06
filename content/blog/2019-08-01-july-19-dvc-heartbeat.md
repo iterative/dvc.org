@@ -108,7 +108,7 @@ interesting takeaways.
 ### Q: I have within one git repository different folders with very different content (basically different projects, or content I want to have different permissions to), and I thought about using different buckets in AWS as remotes. [I’m not sure if it’s possible with DVC to store some files in some remote, and some other files in some other remote, is it?](https://discordapp.com/channels/485586884165107732/485596304961962003/575718048330416158)
 
 You can definitely add more than one remote (see
-[dvc remote add](https://dvc.org/doc/commands-reference/remote-add)) and then
+[dvc remote add](https://dvc.org/doc/commands-reference/remote/add)) and then
 [dvc push](https://dvc.org/doc/commands-reference/push) has a `-R` option to
 pick which one to send the cached data files (deps, outs, etc) to. We would not
 recommend doing this though. It complicates the commands you have to run — you

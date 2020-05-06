@@ -13,7 +13,7 @@ const { isProduction } = require('../../utils')
 
 const { FORUM_URL } = require('../../../../src/consts')
 
-const cache = new NodeCache({ stdTTL: 900 })
+const cache = new NodeCache({ stdTTL: 60 })
 
 const getCommentCount = async (req, res) => {
   const {

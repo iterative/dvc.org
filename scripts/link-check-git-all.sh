@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-repo="$(dirname "$(realpath "$(dirname "$0")")")"
+source "$(dirname "$0")"/utils.sh
 pushd "$repo"
 
 # can't do git ls-files since some may be untracked

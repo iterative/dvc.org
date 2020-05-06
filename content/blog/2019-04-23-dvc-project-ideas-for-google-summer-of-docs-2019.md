@@ -70,21 +70,21 @@ the transcript
 
 DVC is a pretty young project, developed and maintained solely by engineers. As
 many OS projects we started from the bottom and for a long time our
-[documentation](https://dvc.org/doc) was a bunch of bits and pieces. Nowadays
-improving documentation is one of our top priorities. We moved to the new
-in-house built documentation engine and started working with several technical
-writers. Certain parts have been tremendously improved recently, e.g.
-[Get Started](https://dvc.org/doc/get-started) and
-[certain parts of Commands Reference](https://dvc.org/doc/commands-reference/fetch)
-. So far most of our documentation has been written majorly by the engineering
-team and there is need for improving the overall structure and making some parts
-more friendly from a new user perspective. We have mostly complete
-[reference documentation](https://dvc.org/doc/commands-reference) for each
-command, although some functions are missing good actionable examples. We also
-have a [User Guide](https://dvc.org/doc/user-guide/dvc-files-and-directories),
-however it is not in very good shape. We strive for making our documentation
-clear and comprehensive for users of various backgrounds and proficiency levels
-and this is where we do need some fresh perspective.
+[documentation](/doc) was a bunch of bits and pieces. Nowadays improving
+documentation is one of our top priorities. We moved to the new in-house built
+documentation engine and started working with several technical writers. Certain
+parts have been tremendously improved recently, e.g.
+[Get Started](/doc/get-started) and
+[certain parts of Commands Reference](/doc/commands-reference/fetch) . So far
+most of our documentation has been written majorly by the engineering team and
+there is need for improving the overall structure and making some parts more
+friendly from a new user perspective. We have mostly complete
+[reference documentation](/doc/commands-reference) for each command, although
+some functions are missing good actionable examples. We also have a
+[User Guide](/doc/user-guide/dvc-files-and-directories), however it is not in
+very good shape. We strive for making our documentation clear and comprehensive
+for users of various backgrounds and proficiency levels and this is where we do
+need some fresh perspective.
 
 ### How DVC documentation is built
 
@@ -95,7 +95,7 @@ is built with Node.js + React, including the documentation engine (built
 in-house).
 
 Each documentation page is a static Markdown file in the repository, e.g.
-[example here](https://github.com/iterative/dvc.org/blob/master/static/docs/get-started/example-versioning.md.).
+[example here](https://github.com/iterative/dvc.org/blob/master/content/docs/command-reference/index.md).
 It is rendered dynamically in the browser, no preprocessing is required. It
 means that tech writers or contributors need to write/edit a Markdown file,
 create a pull request and merge it into the master branch of the
@@ -132,18 +132,16 @@ First of all, we want to bring more structure and logic to our documentation to
 improve user onboarding experience. The goal is for a new user to have a clear
 path they can follow and understand what takeaways each part of the
 documentation provides. In particular, improving how
-[Get Started](https://dvc.org/doc/get-started),
-[Tutorials](https://dvc.org/doc/tutorial) and
-[Examples](https://dvc.org/doc/get-started/example-versioning) relate to each
-other, restructuring the existing [User Guide](https://dvc.org/doc/user-guide)
-to explain basic concepts, and writing more use cases that resonate with ML
-engineers and data scientists.
+[Get Started](/doc/get-started), [Tutorials](/doc/tutorial) and
+[Examples](/doc/tutorials/versioning) relate to each other, restructuring the
+existing [User Guide](https://dvc.org/doc/user-guide) to explain basic concepts,
+and writing more use cases that resonate with ML engineers and data scientists.
 
 The other issue we would like to tackle is improving and expanding the existing
 reference docs — commands descriptions, examples, etc. It involves filling in
 the gaps and developing new sections, similar to
-[this one](https://dvc.org/doc/commands-reference/fetch). We would also love to
-see more illustrative materials.
+[this one](/doc/commands-reference/fetch). We would also love to see more
+illustrative materials.
 
 ### Project 1: Improving and expanding User Guide
 
@@ -169,14 +167,13 @@ preferably some basic ML or data science experience.
 ### Project 3: Improving new user onboarding
 
 **Description and details:** Analyze and restructure user walkthrough across
-[Get started](https://dvc.org/doc/get-started),
-[Tutorials](https://dvc.org/doc/tutorial) and
-[Examples](https://dvc.org/doc/get-started/example-versioning). These three have
-one thing in common — hands-on experience with DVC. If you choose this project,
-we will work together to come up with a better location for the Examples (to
-move them out of the Get Started shadow), and a better location for the
-Tutorials (to reference external tutorials that were developed by our community
-members and published on different platforms).
+[Get started](/doc/get-started), [Tutorials](/doc/tutorial) and
+[Examples](/doc/tutorials/versioning). These three have one thing in common —
+hands-on experience with DVC. If you choose this project, we will work together
+to come up with a better location for the Examples (to move them out of the Get
+Started shadow), and a better location for the Tutorials (to reference external
+tutorials that were developed by our community members and published on
+different platforms).
 
 **Mentors**: [@shcheklein](https://github.com/shcheklein) and
 [@dmpetrov](https://github.com/dmpetrov)
@@ -184,12 +181,12 @@ members and published on different platforms).
 ### Project 4: Improving commands reference
 
 **Description and details:** We will work on improving our
-[Commands reference](https://dvc.org/doc/commands-reference) section. This
-includes expanding and filling in the gaps. One of the biggest pain points right
-now are Examples. Users want them to be
+[Commands reference](/doc/commands-reference) section. This includes expanding
+and filling in the gaps. One of the biggest pain points right now are Examples.
+Users want them to be
 [easy to run and try](https://github.com/iterative/dvc.org/issues/198) and here
 is a lot to be done in terms of improvement. We have a good example of how is
-should be done [here](https://dvc.org/doc/commands-reference/fetch).
+should be done [here](/doc/commands-reference/fetch).
 
 **Mentors**: [@shcheklein](https://github.com/shcheklein) and
 [@dmpetrov](https://github.com/dmpetrov)

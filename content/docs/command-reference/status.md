@@ -9,7 +9,7 @@ and remote storage.
 
 ```usage
 usage: dvc status [-h] [-v] [-j <number>] [-q] [-c]
-                  [-r <name>] [-a] [-T] [-d] [--all-commits]
+                  [-r <name>] [-a] [-T] [-d] [-R] [--all-commits]
                   [targets [targets ...]]
 
 positional arguments:
@@ -112,6 +112,10 @@ workspace) is different from remote storage. Bringing the two into sync requires
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Note that both options can be combined, for example using the
   `-aT` flag.
+
+- `-R`, `--recursive` - determines the files to check status for by searching
+  each target directory and its subdirectories for DVC-files to inspect. If
+  there are no directories among the targets, this option is ignored.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git  
   commits as well as the workspace. Useful for comparing cache content for the
