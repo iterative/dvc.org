@@ -161,8 +161,8 @@ _Learnings:_ Versioning metrics and plots are no less important than data
 versioning.
 
 Countless users asked us when we'd support metrics visualizations. Now it's
-here: DVC 1.0 introduces scalar and continuous metrics file visualization
-commands, `dvc metrics diff` and `dvc plots show`. DVC plots are powered by the
+here: DVC 1.0 introduces metrics file visualization commands, `dvc metrics diff`
+and `dvc plots show`. DVC plots are powered by the
 [Vega-Lite](https://vega.github.io/vega-lite/) graphic library.
 
 This function is designed not only for showing visualizations based on the
