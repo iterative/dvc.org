@@ -42,11 +42,11 @@ const plugins = [
     }
   },
   {
+    resolve: 'gatsby-source-filesystem',
     options: {
       name: 'images',
       path: path.join(__dirname, 'static', 'uploads')
-    },
-    resolve: 'gatsby-source-filesystem'
+    }
   },
   {
     resolve: 'gatsby-transformer-remark',
@@ -55,10 +55,10 @@ const plugins = [
         'gatsby-remark-embedder',
         'gatsby-remark-dvc-linker',
         {
+          resolve: 'gatsby-remark-prismjs',
           options: {
             noInlineHighlight: true
-          },
-          resolve: 'gatsby-remark-prismjs'
+          }
         },
         {
           resolve: 'gatsby-remark-smartypants',
@@ -74,9 +74,7 @@ const plugins = [
         },
         'gatsby-remark-relative-images',
         'gatsby-remark-copy-linked-files',
-        {
-          resolve: 'gatsby-remark-external-links'
-        },
+        'gatsby-remark-external-links',
         {
           resolve: 'gatsby-remark-autolink-headers',
           options: {
@@ -121,6 +119,7 @@ const plugins = [
     }
   },
   {
+    resolve: `gatsby-plugin-feed`,
     options: {
       feeds: [
         {
@@ -173,8 +172,7 @@ const plugins = [
             }
           }
     `
-    },
-    resolve: `gatsby-plugin-feed`
+    }
   },
   {
     resolve: 'gatsby-plugin-sentry',
@@ -203,11 +201,11 @@ const plugins = [
 
 if (process.env.CONTEXT === 'production') {
   plugins.push({
+    resolve: 'gatsby-plugin-google-analytics',
     options: {
       respectDNT: true,
       trackingId: process.env.GA_ID
-    },
-    resolve: 'gatsby-plugin-google-analytics'
+    }
   })
 }
 
