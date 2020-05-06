@@ -45,8 +45,8 @@ it this year. Here are some of the highlights:
   or
   [this tutorial in German](https://jupyter-tutorial.readthedocs.io/de/latest/productive/dvc/)!
 
-- Having great time working with a [tech writer](https://github.com/dashohoxha)
-  brought to us by the
+- Having a great time working with a
+  [tech writer](https://github.com/dashohoxha) brought to us by the
   [Google Season of Docs](https://developers.google.com/season-of-docs) program.
   Check out these
   [interactive tutorials](https://dvc.org/doc/tutorials/interactive) we’ve

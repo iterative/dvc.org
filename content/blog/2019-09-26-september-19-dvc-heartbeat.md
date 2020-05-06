@@ -59,7 +59,7 @@ Some other highlights of the end of summer:
   [DVC documentation](https://github.com/iterative/dvc.org) (and have something
   special in mind to celebrate our 100th contributors).
 
-- we enjoyed working with all the talented
+- We enjoyed working with all the talented
   [Google Season of docs](https://developers.google.com/season-of-docs/)
   applicants and now moving to the next stage with our chosen tech writer
   [Dashamir Hoxha](http://dashohoxha.fs.al/).

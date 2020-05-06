@@ -12,7 +12,7 @@ descriptionLong: |
 
   🚀 DVC 1.0 pre-release is ready
 
-  ⭐ DVC has reached 5K GitHub starts (coincidently on the same day)
+  ⭐ DVC has reached 5K GitHub starts (coincidentally on the same day)
 
   We'll share what we've learned from our journey, how users helped for the new
   release and how DVC is growing.
@@ -63,11 +63,11 @@ answers user questions - we've been told our user support is one of DVC's
 
 **DVC contributors.** As of today, the DVC code base has
 [126 individual contributors](https://github.com/iterative/dvc/graphs/contributors).
-Many of these folks put hours into their code contributios. We're grateful for
+Many of these folks put hours into their code contribution. We're grateful for
 their tenacity and generosity.
 
 ![](/static/uploads/images/2020-05-04/vera-sativa.png)_Vera - 100th DVC
-contibutor [on GitHub](https://github.com/verasativa/)._
+contributor [on GitHub](https://github.com/verasativa/)._
 
 **Documentation contributors.** Another
 [124 people contributed](https://github.com/iterative/dvc.org/graphs/contributors)
@@ -96,7 +96,7 @@ You can install the pre-release version from the development branch (instruction
 on [our website](https://dvc.org/doc/install/pre-release)) or through pip:
 
 ```dvc
-$ pip install --pre dvc
+$ pip install --upgrade --pre dvc
 ```
 
 The new DVC is inspired by discussions and contributions from our community -
@@ -121,9 +121,9 @@ side.
 
 _Learnings:_ ML pipelines evolve much faster than data engineering pipelines.
 
-We redesigned the DVC-metafile format to make saved pipelines more interpretable
-and editable. Pipeline stages are now saved in a single metafile, with all
-stages stored together instead of in separate files.
+We redesigned the way DVC records data processing stages with metafiles, to make
+pipelines more interpretable and editable. All pipeline stages are now saved in
+a single metafile, with all stages stored together instead of in separate files.
 
 Data hash values are no longer stored in the pipeline metafile. This improves
 human-readability.
@@ -161,8 +161,8 @@ _Learnings:_ Versioning metrics and plots are no less important than data
 versioning.
 
 Countless users asked us when we'd support metrics visualizations. Now it's
-here: DVC 1.0 introduces a metrics file visualization command,
-`dvc metrics diff`. DVC plots are powered by the
+here: DVC 1.0 introduces metrics file visualization commands, `dvc metrics diff`
+and `dvc plots show`. DVC plots are powered by the
 [Vega-Lite](https://vega.github.io/vega-lite/) graphic library.
 
 This function is designed not only for showing visualizations based on the
@@ -198,7 +198,7 @@ choose an optimal data remote traversing strategy.
 
 [Mini-indexes](https://github.com/iterative/dvc/issues/2147) were introduced to
 help DVC instantly check data directories instead of iterating over millions of
-files. This also speeds up file adding\removing to large directories.
+files. This also speeds up file adding/removing to large directories.
 
 More optimizations are included in the release based on performance bottlenecks
 we profiled. More detailed
@@ -217,26 +217,26 @@ This feature was actually released in the last DVC 0.93 version (see
 important step to support configuration files and ML experiments in a more
 holistic way.
 
-### New features summary
+### For more information on the new features...
 
 Each of the big new features and improvements deserve a separate blog post. We
 will be posting more - please stay in touch.
 
 I hope our the most active users will find time to check the DVC pre-release
-version and provide their feeback. The installation instruction is
+version and provide their feedback. The installation instruction is
 [on our website](https://dvc.org/doc/install/pre-release).
 
 ## 5000 GitHub stars
 
 Activity on our GitHub page has grown organically since the DVC repo went public
-on May 4th, 2017. Coincidently, today, in the 3rd year anniversary we have
+on May 4th, 2017. Coincidentally, today, in the 3rd year anniversary we have
 reached 5000 starts:
 
 ![](/uploads/images/2020-05-04/5k_github.png)
 
 ## Thank you!
 
-Thank you again for all DVC contributors, community members, and users. Every
+Thank you again to all DVC contributors, community members, and users. Every
 piece of your help is highly appreciated and will bring huge benefits to the
 entire ecosystem of data and ML projects.
 
