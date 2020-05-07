@@ -28,7 +28,7 @@ const FILE_EXTENSION = '.md'
 function validateRawItem({ slug, source, children }) {
   const isSourceDisabled = source === false
 
-  if (!slug) {
+  if (typeof slug !== 'string') {
     throw Error("'slug' field is required in objects in sidebar.json")
   }
 

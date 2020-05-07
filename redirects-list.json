@@ -19,7 +19,7 @@
   "^/((?:deb|rpm)/.+)                                                                     https://s3-us-east-2.amazonaws.com/dvc-s3-repo/$1 303",
   "^/(?:help|chat)/?$                                                                     https://discordapp.com/invite/dvwXA2N 303",
   "^/(?:docs|documentation)(/.*)?$                                                        /doc$1",
-  "^/doc/?$                                                                               /doc/home 307",
+  "^/doc/home/?$                                                                          /doc",
   "^/doc/get-started(/.*)?$                                                               /doc/tutorials/get-started$1",
   "^/doc/tutorial/?$                                                                      /doc/tutorials",
   "^/doc/tutorial/(.*)?                                                                   /doc/tutorials/deep/$1",
