@@ -20,13 +20,29 @@ const isMailto = (url: string): boolean => url.startsWith('mailto:')
 const ResultLinkComponent: React.FC<ILinkProps> = ({
   href,
   children,
+  rel,
   ...restProps
 }) => {
-  if (!isRelative(href) || isMailto(href) || restProps.target) {
-    let rel = 'noopener noreferrer'
+  // Handle all situations where a basic `a` must be used over Gatsby Link
+  const hrefIsRelative = isRelative(href)
+  const hrefIsMailto = isMailto(href)
+  const hrefHasTarget = restProps.target
+  // Fragments within the page should be `a`, but links to other pages
+  // that have anchors should be okay.
+  const hrefIsRelativeFragment = href.startsWith('#')
 
-    if (restProps.rel) {
-      rel = `${rel} ${restProps.rel}`
+  if (
+    !hrefIsRelative ||
+    hrefIsMailto ||
+    hrefHasTarget ||
+    hrefIsRelativeFragment
+  ) {
+    /*
+       Change external links without an explicit rel to have 'noopener
+       noreferrer', but leave explicitly defined rels alone.
+    */
+    if (!hrefIsRelative && typeof rel !== 'string') {
+      rel = 'noopener noreferrer'
     }
 
     return (
@@ -82,10 +98,6 @@ const Link: React.FC<ILinkProps> = ({ href, ...restProps }) => {
   )
 
   const location = new URL(href)
-  // Navigate from @reach/router handles hash links incorrectly. Fix it
-  if (href.startsWith('#')) {
-    href = currentLocation.pathname + href
-  }
 
   if (location.host === currentLocation.host) {
     // Replace link href with redirect if it exists
