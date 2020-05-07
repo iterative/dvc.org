@@ -29,9 +29,9 @@ descriptionLong: |
   Some long
   multiline
   text (supports _basic_ [Markdown](link))
-picture: /uploads/image.jpeg
+picture: 2015-05-01/post-image.jpeg
 pictureComment: Some _Comment_ (supports _basic_ [Markdown](link))
-author: ../authors/author_name.md
+author: author_filename
 tags:
   - Open Source
   - Machine Learning
@@ -49,11 +49,11 @@ tags:
 - `descriptionLong` - Optional long description to show before the image on the
   post page. If not set, `description` will be used instead. Supports basic
   Markdown markup.
-- `picture` - Optional cover image.
+- `picture` - Optional cover image, relative to `static/uploads/images`
 - `pictureComment` - Optional cover image comment. Supports basic Markdown
   markup.
-- `author` - **Required.** Relative path to `.md` file with information about
-  the author. See
+- `author` - **Required.** The name of the file in `content/authors`
+  representing this post's author. See
   [Adding authors](/doc/user-guide/contributing/blog#adding-authors) to add a
   new author.
 - `commentsUrl` - Optional link to the [DVC forum](https://discuss.dvc.org)
@@ -132,14 +132,10 @@ Create `.md` file in the `content/authors` folder.
 Write front matter in the following format:
 
 ```yml
-path: ../authors/relative_path_to_file.md
-name: Author's Name
-avatar: /uploads/avatar.jpeg
+name: John Doe
+avatar: avatar.jpeg
 ```
 
-- `path` - **Required.** String that the CMS will insert to the author field in
-  the blog post. Should be equal to the path from the blog post to the author's
-  `.md` file.
 - `name` – **Required.** Author's name.
-- `avatar` - **Required.** Relative path to the author's avatar (1024x1024 is
-  recommended).
+- `avatar` - **Required.** Path to the author's avatar, relative to
+  `static/uploads/avatars` (1024x1024 is recommended).

@@ -6,7 +6,7 @@
 
 [DVC](https://github.com/iterative/dvc) project website's source code.
 [Documentation](https://dvc.org/doc) and [blog](https://dvc.org/blog) content.
-Contributions to are welcome!
+Contributions are welcome!
 
 # Contributing Docs
 
