@@ -131,7 +131,7 @@ const createPages = async ({ graphql, actions }) => {
 
   const tagPagesPromise = Promise.all(
     _tags.map(({ fieldValue: tag, pageInfo: { itemCount } }) => {
-      const basePath = `/tags/${tagToSlug(tag)}`
+      const basePath = `/blog/tags/${tagToSlug(tag)}`
 
       for (const page of pagesGenerator({ basePath, itemCount })) {
         actions.createPage({
