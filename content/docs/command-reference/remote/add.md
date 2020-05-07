@@ -159,7 +159,7 @@ For more information about the variables DVC supports, please visit
 ### Click for Microsoft Azure Blob Storage
 
 ```dvc
-$ dvc remote add myremote azure://my-container-name/path
+$ dvc remote add --local myremote azure://my-container-name/path
 $ dvc remote modify --local myremote connection_string "my-connection-string"
 ```
 
