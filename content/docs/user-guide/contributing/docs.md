@@ -66,6 +66,32 @@ formatted and linted as well, which is also ensured by the full setup below.
 >   <img src="https://gitpod.io/button/open-in-gitpod.svg" alt="Open in Gitpod">
 > </a>
 
+<details>
+
+### How to make a Pull Request with Gitpod?
+
+- Fork the repo by selecting Find Command from View in the top menu and then
+  type fork and press enter:
+
+  ![image](https://user-images.githubusercontent.com/46004116/76392493-75727880-6393-11ea-8939-41e6c36477de.png)
+
+- You can commit your changes either using a the `git` cli or using the GUI in
+  the top left tab under search as shown below:
+
+  ![image](https://user-images.githubusercontent.com/46004116/76298550-6fb95c00-62db-11ea-9fda-f4e8c0840e69.png)
+
+- Once you are done commiting your changes you can push the code via using push
+  button from the GitHub tab in the top right corner as shown:
+
+  ![image](https://user-images.githubusercontent.com/46004116/76299985-c9228a80-62dd-11ea-930c-00eb22156c9e.png)
+
+- Once you have made all the changes and pushed them to your fork. You can make
+  PR from the same GitHub tab in top right corner as shown:
+
+  ![image](https://user-images.githubusercontent.com/46004116/76300458-9036e580-62de-11ea-8f24-ebaa664204ce.png)
+
+</details>
+
 Make sure you have a recent LTS version of [Node.js](https://nodejs.org/en/)
 (`>=12.0.0`), and install [Yarn](https://yarnpkg.com/):
 
