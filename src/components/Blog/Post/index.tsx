@@ -94,7 +94,7 @@ const Post: React.FC<IBlogPostData> = ({
             <div className={styles.tags}>
               {tags.map(tag => (
                 <Link
-                  href={`/tags/${tagToSlug(tag)}`}
+                  href={`/blog/tags/${tagToSlug(tag)}`}
                   className={styles.tag}
                   key={tag}
                 >
