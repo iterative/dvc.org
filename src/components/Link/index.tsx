@@ -15,7 +15,7 @@ export type ILinkProps = {
 
 const PROTOCOL_REGEXP = /^https?:\/\//
 const isRelative = (url: string): boolean => !PROTOCOL_REGEXP.test(url)
-const isMailto = (url: string): boolean => url && url.startsWith('mailto:')
+const isMailto = (url: string): boolean => url.startsWith('mailto:')
 
 const ResultLinkComponent: React.FC<ILinkProps> = ({
   href,
@@ -83,7 +83,7 @@ const Link: React.FC<ILinkProps> = ({ href, ...restProps }) => {
 
   const location = new URL(href)
   // Navigate from @reach/router handles hash links incorrectly. Fix it
-  if (href && href.startsWith('#')) {
+  if (href.startsWith('#')) {
     href = currentLocation.pathname + href
   }
 
