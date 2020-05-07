@@ -20,7 +20,6 @@
   "^/(?:help|chat)/?$                                                                     https://discordapp.com/invite/dvwXA2N 303",
   "^/(?:documentation)/?$                                                                 /doc",
   "^/(?:documentation)/(.*)?/?$                                                           /doc/$1",
-  "^/doc/home/?$                                                                          /doc 307",
   "^/doc/get-started(/.*)?$                                                               /doc/tutorials/get-started$1",
   "^/doc/tutorial/?$                                                                      /doc/tutorials",
   "^/doc/tutorial/(.*)?                                                                   /doc/tutorials/deep/$1",
