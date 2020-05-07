@@ -11,7 +11,7 @@ usage: dvc plot show [-h] [-q | -v] [-t [TEMPLATE]] [-f FILE] [-s SELECT]
                      [--title TITLE] [--xlab XLAB] [--ylab YLAB]
 
 positional arguments:
-  datafile              Data to be visualized.
+  datafile              Metrics file to visualize
 ```
 
 ## Description
