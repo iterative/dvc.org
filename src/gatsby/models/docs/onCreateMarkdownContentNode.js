@@ -9,7 +9,7 @@ function createMarkdownDocsNode(api, { parentNode }) {
   const { name, relativePath } = parentNode
   splitDir[0] = 'doc'
 
-  const slug = path.posix.join('/', ...splitDir, name === 'index' ? '/' : name)
+  const slug = path.posix.join('/', ...splitDir, name === 'index' ? '' : name)
 
   const fieldData = {
     slug,
