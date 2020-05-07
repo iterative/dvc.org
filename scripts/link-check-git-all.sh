@@ -6,7 +6,7 @@ pushd "$repo"
 
 # can't do git ls-files since some may be untracked
 (
-  find .github/ content/docs/ src/ \
+  find .github/ content/docs/ content/blog src/ \
     -name '*.css' -o -name '*.js' -o -name '*.jsx' -o -name '*.md' -o -name '*.tsx' -o \
     -name '*.ts' -o -name '*.json'
   ls *.css *.js *.jsx *.md *.tsx *.ts *.json 2>/dev/null || :

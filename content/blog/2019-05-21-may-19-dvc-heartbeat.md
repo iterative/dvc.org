@@ -221,7 +221,7 @@ flexibility (e.g. you need to use different credentials for different projects,
 etc) check out
 [this guide](https://docs.aws.amazon.com/cli/latest/userguide/cli-configure-profiles.html)
 to configure custom aws profiles and then you could use them with DVC using
-these [remote options](/doc/commands-reference/remote-add#options).
+these [remote options](/doc/commands-reference/remote/add#options).
 
 ### Q: [How can I output multiple metrics from a single file?](https://discordapp.com/channels/485586884165107732/485596304961962003/566000729505136661)
 
