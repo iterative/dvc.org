@@ -39,7 +39,7 @@ file:///Users/dmitry/src/plot/logs.html
 
 ![](/img/plot_auc.svg)
 
-### Difference between continuous and scolar metrics
+### Difference between continuous and scalar metrics
 
 DVC has two concepts for metrics for representing result of machine learning
 training or data processing:
