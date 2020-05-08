@@ -47,8 +47,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
           target: '_blank'
         }
       : {
-          finalPath: getPathWithSource(path),
-          target: null
+          finalPath: getPathWithSource(path)
         }
 
   return (
