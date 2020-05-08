@@ -59,13 +59,13 @@ core values of the project, a great relationship lies ahead :).
 ## About Iterative and DVC
 
 DVC got started in 2017 as a personal project by Dmitry Petrov (on May 4,
-[we celebrated its 3rd birthday](https://dvc.org/blog/dvc-3-years-and-1-0-release)).
+[we celebrated our 3rd birthday](https://dvc.org/blog/dvc-3-years-and-1-0-release)).
 In 2018, Dmitry teamed up with his co-founder Ivan Shchenklein to incorporate
 Iterative.ai and grow the project. Currently, Iterative.ai’s flagship project is
 Data Version Control (DVC), an open source version control system for managing
 complex workflows, datasets, and models. Development is ongoing in the core DVC
 project as well as new ventures into
-M[LOps and Continuous Integration & Delivery (CI/CD)](https://dvc.org/blog/reimagining-devops-video)
+[MLOps and Continuous Integration & Delivery (CI/CD)](https://dvc.org/blog/reimagining-devops-video)
 for data science. The team is small-and-mighty, with developers, engineers, and
 data scientists on four continents. The open source community is a huge part of
 all Iterative.ai projects; currently, DVC has more than
