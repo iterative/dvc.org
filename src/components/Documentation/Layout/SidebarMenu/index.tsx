@@ -40,32 +40,38 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
 
-  const { finalPath, target } =
-    type === 'external'
-      ? {
-          finalPath: path,
-          target: '_blank'
-        }
-      : {
-          finalPath: getPathWithSource(path)
-        }
+  const className = cn(
+    styles.sectionLink,
+    isActive && styles.active,
+    isRootParent && 'docSearch-lvl0',
+    'link-with-focus'
+  )
 
-  return (
-    <>
+  const parentElement =
+    type === 'external' ? (
       <Link
-        href={finalPath}
+        href={path}
         id={path}
-        target={target}
-        className={cn(
-          styles.sectionLink,
-          isActive && styles.active,
-          isRootParent && 'docSearch-lvl0',
-          'link-with-focus'
-        )}
+        className={className}
+        onClick={onClick}
+        target="_blank"
+      >
+        {label}
+      </Link>
+    ) : (
+      <Link
+        href={getPathWithSource(path)}
+        id={path}
+        className={className}
         onClick={onClick}
       >
         {label}
       </Link>
+    )
+
+  return (
+    <>
+      {parentElement}
       {children && (
         <Collapse isOpened={!!isActive}>
           {children.map(item => (
