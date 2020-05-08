@@ -8,7 +8,7 @@ import includes from 'lodash/includes'
 import ShowOnly from '../../../ShowOnly'
 import DownloadButton from '../../../DownloadButton'
 import Link from '../../../Link'
-import externalLinkImage from '../../../../../static/img/external-link.svg'
+import { ReactComponent as ExternalLinkIcon } from '../../../../../static/img/external-link.svg'
 
 import {
   structure,
@@ -57,7 +57,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         onClick={onClick}
         target="_blank"
       >
-        {label} <img src={externalLinkImage} alt="" />
+        {label} <ExternalLinkIcon />
       </Link>
     ) : (
       <Link
