@@ -8,7 +8,7 @@ workspace.
 
 ```usage
 usage: dvc diff [-h] [-q | -v]
-                [--show-json] [--show-hash]
+                [--show-json] [--show-hash] [--show-md]
                 [a_rev] [b_rev]
 
 positional arguments:
@@ -48,6 +48,9 @@ for example when `dvc init` was used with the `--no-scm` option.
 
 - `--show-hash` - print file and directory hash values along with their path.
   Useful for debug purposes.
+
+- `--show-md` - print the list of files and directories with their status in the
+  Markdown table format.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
