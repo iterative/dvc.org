@@ -1,7 +1,6 @@
 # plot show
 
-Generate a plot image from from a
-[continuous metrics](/doc/command-reference/plot#continous-metrics) file.
+Generate a plot image from from a [metrics](/doc/command-reference/plot) file.
 
 ## Synopsis
 
@@ -16,14 +15,14 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to visualize countinuous metrics such as loss
+This command provides a quick way to visualize continuous metrics such as loss
 functions, AUC curves, confusion matrixes etc. Please read `dvc plot` for more
 information.
 
 ## Options
 
 - `-t [TEMPLATE], --template [TEMPLATE]` - File to be injected with data. The
-  default temlpate is `.dvc/plot/default.json`. See more details in `dvc plot`.
+  default template is `.dvc/plot/default.json`. See more details in `dvc plot`.
 
 - `-f FILE, --file FILE` - Name of the generated file. By default, the output
   file name is equal to the input filename with additional `.html` suffix or
@@ -31,13 +30,13 @@ information.
 
 - `--no-html` - Do not wrap output vega plot json with HTML.
 
-- `-s SELECT, --select SELECT` - Select which fileds or jsonpath to put into
+- `-s SELECT, --select SELECT` - Select which fields or jsonpath to put into
   plot. All the fields will be included by default with DVC generated `index`
   field - see `dvc plot`.
 
 - `-x X` - Field name for x axis. `index` is the default field for X.
 
-- `-y Y` - Field name for y axis. The dafult field is the last field found in
+- `-y Y` - Field name for y axis. The default field is the last field found in
   the input file: the last column in CSV file or the last field in the JSON
   array object (the first object).
 
@@ -75,7 +74,7 @@ epoch,accuracy,loss,val_accuracy,val_loss
 ```
 
 By default, the command plots the last column of the tabular file. Please look
-at the default behaviour of `-y` option.
+at the default behavior of `-y` option.
 
 ```dvc
 $ dvc plot show logs.csv
@@ -93,7 +92,7 @@ file:///Users/dmitry/src/plot/logs.csv.html
 
 ![](/img/plot_show_field.svg)
 
-In the previous examlpe all the columns (or fields) were included into the
+In the previous example all the columns (or fields) were included into the
 output file. You can select only specified subset ot the columns by `--select`
 option which might be important for reducing the output file size. In this case
 the default `index` column will be still included.
@@ -111,7 +110,7 @@ $ dvc plot show --no-csv-header --field 2 logs.csv
 file:///Users/dmitry/src/plot/logs.csv.html
 ```
 
-In many automation scenarios (like CI/CD for ML), it is convinient to have Vega
+In many automation scenarios (like CI/CD for ML), it is convenient to have Vega
 specification instead of a whole HTML file because it might be used for
 generating another image format like PNG or JPEG or just included to some web
 page. `--no-html` option prevents adding HTML header and footer to the file.
@@ -149,7 +148,7 @@ file:///Users/dmitry/src/plot/train.json.html
 ![](/img/plot_show.svg)
 
 The field name can be specified with the same `-y` option. The signal from the
-first JSON array with the specified name will be showned:
+first JSON array with the specified name will be shown:
 
 ```dvc
 $ dvc plot show -y accuracy logs.json

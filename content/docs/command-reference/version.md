@@ -47,8 +47,8 @@ The detail of DVC version depends upon the way of installing DVC.
 - **Development version**: `pip install git+git://github.com/iterative/dvc` will
   install DVC using the `master` branch of DVC's repository. Another way of
   setting up the development version is to clone the repository and run
-  `pip install .`. The master branch is continuously being updated with changes
-  that might not be ready to publish yet. Therefore installing using the above
+  `pip install .`. The master branch is constantly updated with changes that
+  might not be ready to publish yet. Therefore installing using the above
   command might have issues regarding its usage. So to trace any error reported
   with this setup, we need to know exactly which version is being used. For this
   we rely on a Git commit hash, that is displayed in this command's output like

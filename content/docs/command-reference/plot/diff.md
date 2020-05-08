@@ -1,8 +1,7 @@
 # plot diff
 
-Show multiple versions of
-[continuous metrics](/doc/command-reference/plot#continous-metrics) by plotting
-them in a single image.
+Show multiple versions of [continuous metrics](/doc/command-reference/plot) by
+plotting them in a single image.
 
 ## Synopsis
 
@@ -17,9 +16,9 @@ positional arguments:
 
 ## Description
 
-This command visualize difference between continuous metrics among experiments
-in the repository history. Requires that Git is being used to version the
-metrics files.
+This command visualize difference between metrics among experiments in the
+repository history. Requires that Git is being used to version the metrics
+files.
 
 The metrics file needs to be specified through `-d`/`--datafile` option. Also, a
 plot can be customized by [Vega](https://vega.github.io/) templates through
@@ -36,17 +35,18 @@ In contrast to many commands such as `git diff`, `dvc metrics diff` and
 and does not limited by two versions. A user can specify as many revisions as
 needed.
 
-The files with metrics can be files commited in Git as well as data files under
+The files with metrics can be files committed in Git as well as data files under
 DVC control. In the case of data files, the file revision is corresponded to Git
 revision of [DVC-files](/doc/user-guide/dvc-file-format) that has this file as
 an output.
 
 ## Options
 
-- `-d [DATAFILE], --datafile [DATAFILE]` - Continuous metrics file to visualize.
+- `-d [DATAFILE], --datafile [DATAFILE]` - Metrics file to visualize.
 
 - `-t [TEMPLATE], --template [TEMPLATE]` - File to be injected with data. The
-  default temlpate is `.dvc/plot/default.json`. See more details in `dvc plot`.
+  default template is `.dvc/plot/default.json`. See
+  [Plot templates](/doc/command-reference/plot#plot-templates).
 
 - `-f FILE, --file FILE` - Name of the generated file. By default, the output
   file name is equal to the input filename with additional `.html` suffix or
@@ -54,13 +54,13 @@ an output.
 
 - `--no-html` - Do not wrap output vega plot json with HTML.
 
-- `-s SELECT, --select SELECT` - Select which fileds or jsonpath to put into
+- `-s SELECT, --select SELECT` - Select which fields or jsonpath to put into
   plot. All the fields will be included by default with DVC generated `index`
   field - see `dvc plot`.
 
 - `-x X` - Field name for x axis. `index` is the default field for X.
 
-- `-y Y` - Field name for y axis. The dafult field is the last field found in
+- `-y Y` - Field name for y axis. The default field is the last field found in
   the input file: the last column in CSV file or the last field in the JSON
   array object (the first object).
 
@@ -83,8 +83,8 @@ an output.
 
 ## Examples
 
-The difference between a not commited version of the file and the last commited
-one:
+The difference between a not committed version of the file and the last
+committed one:
 
 ```dvc
 $ dvc plot diff -d logs.csv
@@ -105,8 +105,9 @@ file:///Users/dmitry/src/plot/logs.csv.html
 
 ![](/img/plot_diff.svg)
 
-The predefined confusion matrix template shows how continuous metrics difference
-can be faceted by separate plots:
+The predefined confusion matrix (`.dvc/plot/confusion_matrix.json`)
+[template](/doc/command-reference/plot#plot-templates) shows how metric
+differences can be faceted by separate plots:
 
 ```csv
 actual,predicted

@@ -18,7 +18,7 @@ to be left wanting more.
 
 This new type of software was created to solve data science collaboration
 issues. Experiment management software aims to cover the gap between data
-scientist needs and the existing toolsets from software engineering.
+scientist needs and the existing toolset from software engineering.
 
 Experiment management software is usually **graphical user interface** (GUI)
 based, in contrast to existing command line engineering tools. The GUI is a
