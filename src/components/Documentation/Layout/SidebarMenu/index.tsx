@@ -25,7 +25,7 @@ interface ISidebarMenuItemProps {
   source: boolean | string
   onClick: (e: React.MouseEvent) => void
   activePaths?: Array<string>
-  type: string
+  type?: string
 }
 
 const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
