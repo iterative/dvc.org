@@ -1,3 +1,7 @@
+---
+template: 'doc-home'
+---
+
 # DVC Documentation
 
 Welcome! In here you may find all the guiding material and technical documents
