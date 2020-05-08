@@ -154,7 +154,7 @@ function getFirstPage() {
 
 function getItemByPath(path) {
   const normalizedPath = path.replace(/\/$/, '')
-  const isRoot = normalizedPath === PATH_ROOT.slice(0, -1)
+  const isRoot = normalizedPath === PATH_ROOT
   const item = isRoot
     ? normalizedSidebar[0]
     : findItemByField(normalizedSidebar, 'path', normalizedPath)
@@ -173,12 +173,11 @@ function getItemBySource(source) {
 function getPathWithSource(path) {
   return getItemByPath(path).path
 }
-
 function getParentsListFromPath(path) {
-  let currentPath = PATH_ROOT.slice(0, -1)
+  let currentPath = PATH_ROOT
 
   return path
-    .replace(PATH_ROOT, '')
+    .replace(PATH_ROOT + '/', '')
     .split('/')
     .map(part => {
       const path = `${currentPath}/${part}`
