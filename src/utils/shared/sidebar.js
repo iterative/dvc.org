@@ -69,26 +69,35 @@ function findPrevItemWithSource(data, item) {
 function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
   validateRawItem(rawItem)
 
-  const { label, slug, source, tutorials } = rawItem
+  const { label, slug, source, tutorials, type } = rawItem
 
-  // If prev item doesn't have source we need to search for it
-  const prevItemWithSource =
-    prevRef && findPrevItemWithSource(resultRef, prevRef)
+  switch (type) {
+    case 'external':
+      return {
+        type,
+        path: slug,
+        label
+      }
+    default:
+      // If prev item doesn't have source we need to search for it
+      const prevItemWithSource =
+        prevRef && findPrevItemWithSource(resultRef, prevRef)
 
-  const prev = prevItemWithSource && prevItemWithSource.path
+      const prev = prevItemWithSource && prevItemWithSource.path
 
-  const sourceFileName = source ? source : slug + FILE_EXTENSION
-  const sourcePath = FILE_ROOT + parentPath + sourceFileName
+      const sourceFileName = source ? source : slug + FILE_EXTENSION
+      const sourcePath = FILE_ROOT + parentPath + sourceFileName
 
-  const relativePath = parentPath + slug
+      const relativePath = parentPath + slug
 
-  return {
-    path: relativePath ? `${PATH_ROOT}/${relativePath}` : PATH_ROOT,
-    source: source === false ? false : sourcePath,
-    label: label ? label : startCase(slug),
-    tutorials: tutorials || {},
-    prev,
-    next: undefined
+      return {
+        path: relativePath ? `${PATH_ROOT}/${relativePath}` : PATH_ROOT,
+        source: source === false ? false : sourcePath,
+        label: label ? label : startCase(slug),
+        tutorials: tutorials || {},
+        prev,
+        next: undefined
+      }
   }
 }
 
