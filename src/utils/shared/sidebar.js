@@ -21,7 +21,7 @@
 const startCase = require('lodash/startCase')
 const sidebar = require('../../../content/docs/sidebar.json')
 
-const PATH_ROOT = '/doc/'
+const PATH_ROOT = '/doc'
 const FILE_ROOT = '/docs/'
 const FILE_EXTENSION = '.md'
 
@@ -80,8 +80,10 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
   const sourceFileName = source ? source : slug + FILE_EXTENSION
   const sourcePath = FILE_ROOT + parentPath + sourceFileName
 
+  const relativePath = parentPath + slug
+
   return {
-    path: PATH_ROOT + parentPath + slug,
+    path: relativePath ? `${PATH_ROOT}/${relativePath}` : PATH_ROOT,
     source: source === false ? false : sourcePath,
     label: label ? label : startCase(slug),
     tutorials: tutorials || {},
