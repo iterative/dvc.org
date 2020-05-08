@@ -118,8 +118,8 @@ visibility to the author _and_ new ways to use DVC, so it's a win-win.
   by Gabriel dos Santos Goncalves
 - [Continuous Delivery for Machine Learning](https://martinfowler.com/articles/cd4ml.html),
   by Danilo Sato, Arif Wider, and Christoph Windheuser
-- [Manage your Data Science Project in R](https://mribeirodantas.xyz/blog/index.php/2020/03/05/r-dvc-and-rmarkdown/#more-2952)
-  was my first blog about using DVC in an R project!
+- [Manage your Data Science Project in R](https://mribeirodantas.xyz/blog/index.php/2020/03/05/r-dvc-and-rmarkdown/)
+  was my first blog post about using DVC in an R project!
 
 ### Talks
 
