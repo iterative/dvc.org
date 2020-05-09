@@ -154,7 +154,11 @@ const normalizedSidebar = normalizeSidebar({
 })
 
 function findChildWithSource(item) {
-  return item.source ? item : findChildWithSource(item.children[0])
+  // Return item unchanged if isn't root-relative
+  if (!item.path.startsWith('/')) return item
+  return item.source
+    ? item
+    : findChildWithSource(item.children && item.children[0])
 }
 
 function getFirstPage() {
