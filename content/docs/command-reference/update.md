@@ -45,9 +45,9 @@ dvc update --rev master
   > Note that this changes the `rev` field in the import stage, fixing it to the
   > revision.
 
-- `-R`, `--recursive` - determines the files to update by searching
-  each target directory and its subdirectories for DVC-files to inspect. If
-  there are no directories among the targets, this option is ignored.
+- `-R`, `--recursive` - determines the files to update by searching each target
+  directory and its subdirectories for DVC-files to inspect. If there are no
+  directories among the targets, this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
