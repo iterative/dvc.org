@@ -49,11 +49,11 @@ Using parameter dependencies prevents situations where several
 as a common dependency, and any change in this dependency invalidates all the
 stages and causes the reproduction those stages unnecessarily.
 
-You should manually write or generate the YAML or JSON parameters files needed
-for the project, which can be versioned directly with Git. You can then use
-`dvc run` with the `-p` (`--params`) option to specify parameter dependencies
-for your pipeline's stages (instead of or in addition to regular `-d` deps.) DVC
-saves the param names and values in the stage file (see
+The YAML or JSON parameters files needed for the project have to be manually
+written, or generated, and these can be versioned directly with Git. You can
+then use `dvc run` with the `-p` (`--params`) option to specify parameter
+dependencies for your pipeline's stages (instead of or in addition to regular
+`-d` deps.) DVC saves the param names and values in the stage file (see
 [DVC-file format](/doc/user-guide/dvc-file-format)). These values will be
 compared to the ones in the params files to determine if the stage is
 invalidated upon pipeline [reproduction](/doc/command-reference/repro).

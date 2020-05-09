@@ -71,7 +71,7 @@ describing the changes (described below).
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs tracked by the <abbr>DVC-file</abbr>. Depending on the use case,
-  commands like `dvc commit`, `dvc repro`, or `dvc run` should be used to update
+  commands like `dvc commit`, `dvc repro`, or `dvc run` can be used to update
   the file. Possible states are:
 
   - _new_: An <abbr>output</abbr> is found in the workspace, but there is no

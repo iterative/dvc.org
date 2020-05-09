@@ -41,7 +41,7 @@ that you want to be evaluated dynamically. E.g.
 Since `dvc run` provides a way to build a dependency graph using dependencies
 and outputs to connect different stages, it checks the graph's integrity before
 creating a new stage. For example, for every output there should be only one
-stage that explicitly specifies it. There should be no cycles, etc.
+stage that explicitly specifies it, there should be no cycles, etc.
 
 Unless the `-f` options is used, the stage file (DVC-file) is generated in the
 current working directory and named `<file>.dvc`, where `<file>` is file name of

@@ -95,7 +95,7 @@ extract the TP value:
 $ dvc metrics modify -t json -x TP metrics.json
 ```
 
-After this change `dvc metrics show` should always select only the specified
+After this change, `dvc metrics show` should always select only the specified
 value:
 
 ```dvc

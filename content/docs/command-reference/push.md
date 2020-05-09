@@ -29,7 +29,7 @@ and preserving data versions (input datasets, intermediate results, models,
 these commands.
 
 The `dvc push` command allows us to upload data to remote storage. It doesn't
-save any changes in the code or DVC-files. (Those should be saved by using
+save any changes in the code or DVC-files (those should be saved by using
 `git commit` and `git push`).
 
 💡 For convenience, a Git hook is available to automate running `dvc push` after
@@ -165,7 +165,7 @@ Dvcfile
 ```
 
 Imagine the <abbr>projects</abbr> has been modified such that the
-<abbr>outputs</abbr> of some of these stages should be uploaded to
+<abbr>outputs</abbr> of some of these stages need to be uploaded to
 [remote storage](/doc/command-reference/remote).
 
 ```dvc

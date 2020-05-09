@@ -26,9 +26,9 @@ command instead.
 
 ## Setup DVC remote
 
-To actually configure a S3 remote in the <abbr>project</abbr>, supply the URL to
-the bucket where the data should be stored to the `dvc remote add` command. For
-example:
+To actually configure an S3 remote in the <abbr>project</abbr>, supply the URL
+to the bucket where the data should be stored to the `dvc remote add` command.
+For example:
 
 ```dvc
 $ dvc remote add -d myremote s3://mybucket/myproject
@@ -60,15 +60,15 @@ $ git push
 ## Upload data and code
 
 After adding data to the <abbr>project</abbr> with `dvc run` or other commands,
-it should be stored in your local <abbr>cache</abbr>. Upload it to remote
-storage with the `dvc push` command:
+it'll be stored in your local <abbr>cache</abbr>. Upload it to remote storage
+with the `dvc push` command:
 
 ```dvc
 $ dvc push
 ```
 
-Code and [DVC-files](/doc/user-guide/dvc-file-format) should be committed and
-pushed with Git.
+Code and [DVC-files](/doc/user-guide/dvc-file-format) can be safely committed
+and pushed with Git.
 
 ## Download code
 

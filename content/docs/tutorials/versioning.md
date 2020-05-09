@@ -61,10 +61,10 @@ $ pip install -r requirements.txt
 
 ### Expand to learn about DVC internals
 
-The repository you cloned is already DVC-initialized. There should be a `.dvc/`
-directory with the `config` and `.gitignore` files. These and other files and
-directories are hidden from user, as typically there's no need to interact with
-them directly. See
+The repository you cloned is already DVC-initialized. It already contains a
+`.dvc/` directory with the `config` and `.gitignore` files. These and other
+files and directories are hidden from user, as typically there's no need to
+interact with them directly. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -125,8 +125,8 @@ Let's capture the current state of this dataset with `dvc add`:
 $ dvc add data
 ```
 
-This command should be used instead of `git add` on files or directories that
-are too large to be tracked with Git: usually input datasets, models, some
+You can use this command instead of `git add` on files or directories that are
+too large to be tracked with Git: usually input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
 the <abbr>cache</abbr> (while keeping a
 [file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)

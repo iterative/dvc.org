@@ -54,8 +54,8 @@ This hook automates `dvc push` after `git push`.
 - A `pre-push` hook executes `dvc push` before `git push` to upload files and
   directories tracked by DVC to remote storage.
 
-If a hook already exists, DVC will raise an exception. In such case, user should
-try to manually edit existing file or remove it and retry install.
+If a hook already exists, DVC will raise an exception. In that case, please try
+to manually edit the existing file or remove it and retry install.
 
 For more information about git hooks, refer to the
 [git-scm documentation](https://git-scm.com/docs/githooks).
@@ -278,8 +278,8 @@ featurize.dvc:
 
 We see that the output of `dvc status` has appeared in the `git commit`
 interaction. This new behavior corresponds to the Git hook installed, and it
-helpfully informs us the workspace is out of sync. We should therefore run the
-`dvc repro` command.
+informs us that the workspace is out of sync. Therefore, we can conclude that
+the `dvc repro` command is needed now:
 
 ```dvc
 $ dvc repro evaluate.dvc

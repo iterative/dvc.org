@@ -3,7 +3,7 @@
 ## Existing engineering tools
 
 There is one thing that data scientists seem to agree on around tooling: as
-engineers, we should use the same best practices and collaboration software
+engineers, we'd like to use the same best practices and collaboration software
 that's standard in software engineering. A source code version control system
 (Git), continuous integration services (CI), and unit test frameworks are all
 expected to be utilized in data science

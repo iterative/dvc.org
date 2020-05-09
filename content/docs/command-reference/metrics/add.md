@@ -108,7 +108,7 @@ outs:
     persist: false
 ```
 
-And if you run `dvc metrics show` you should now see a report like this:
+And if you run `dvc metrics show`, you should now see a report like this:
 
 ```dvc
 	metrics.json: {"AUC":0.9643, "TP":527}
