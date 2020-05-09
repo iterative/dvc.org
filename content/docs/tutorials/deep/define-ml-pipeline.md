@@ -47,9 +47,9 @@ $ git add .
 $ git commit -m "add raw dataset"
 ```
 
-You have probably already noticed that the actual data file was not committed to
-the repository. The reason is that DVC included the file into `data/.gitignore`,
-so Git ignores this data file from now on.
+You may have noticed that the actual data file was not committed to the Git
+repo. The reason is that DVC included it in `data/.gitignore`, so that Git
+ignores this data file from now on.
 
 > DVC will always exclude data files from the Git repository by listing them in
 > `.gitignore`.
@@ -399,9 +399,9 @@ $ dvc metrics show
 data/eval.txt:AUC: 0.624652
 ```
 
-This is probably not the best AUC that you have seen. In this document, our
-focus is DVC, not ML modeling and we use a relatively small dataset without any
-advanced ML techniques.
+> We get that this is probably not the best AUC that you have seen! In this
+> document, our focus is DVC, not ML modeling, so we use a relatively small
+> dataset without any advanced ML techniques.
 
 In the next chapter we will try to improve the metrics by changing our modeling
 code and using reproducibility in our pipeline.

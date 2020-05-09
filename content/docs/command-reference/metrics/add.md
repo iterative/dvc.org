@@ -42,7 +42,7 @@ the file contains multiple metrics. See the [options](#options) below and
   The accepted value depends on the metric file type (`--type` option):
 
   - For `json` - see [JSONPath](https://goessner.net/articles/JsonPath/) or
-    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) to know the syntax. For
+    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) for syntax details. For
     example, `"AUC"` extracts the value from the following JSON-formatted metric
     file: `{"AUC": "0.624652"}`.
 

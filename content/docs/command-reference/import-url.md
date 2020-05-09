@@ -316,26 +316,21 @@ $ dvc update data.xml.dvc
 Importing '.../tmp/dvc-import-url-example/data.xml' -> 'data/data.xml'
 ```
 
-DVC has noticed the "external" data source has changed, and updated the import
-stage (reproduced it). In this case it's also necessary to run `dvc repro` so
-that the rest of the pipeline results are also regenerated. We can confirm so
-with:
+DVC notices the "external" data source has changed, and updates the import stage
+(reproduces it). In this case it's also necessary to run `dvc repro` so that the
+remaining pipeline results are also regenerated:
 
 ```dvc
 $ dvc status
 prepare.dvc:
 	changed deps:
 		modified:           data/data.xml
-```
 
-Since we know the "prepare" stage is all that's left, let's just reproduce that
-stage specifically:
-
-```dvc
 $ dvc repro prepare.dvc
 ...
 Reproducing 'prepare.dvc'
 ...
+
 $ dvc status
 Data and pipelines are up to date.
 ```

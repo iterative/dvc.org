@@ -196,7 +196,7 @@ $ dvc add music/songs
 ```
 
 DVC then modifies the corresponding DVC-file to reflect the changes in the data,
-and this will be noticed by Git:
+and this will be picked up by Git:
 
 ```dvc
 $ git status
@@ -207,8 +207,8 @@ $ git commit -am "Add 1,000 more songs to music/ dataset."
 ```
 
 Iterating on this process for several datasets can give shape to a robust
-registry. The result is basically a repo that mainly versions a set of
-DVC-files, as you can see in the hypothetical example below:
+registry. The result is basically a repo that versions a set of DVC-files. Let's
+see a hypothetical example:
 
 ```dvc
 $ tree --filelimit=100

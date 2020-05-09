@@ -175,8 +175,8 @@ is installed when `yarn` runs (explained above).
 ## General language guidelines
 
 We try to use a casual and fun tone in our docs. We also avoid authoritative
-language such as "As you can see, clearly this is what happened..." which while
-good-intentioned, may scare off readers.
+language such as "As you can see, clearly this is what happened, of course" etc.
+which while good-intentioned, may scare readers off.
 
 We prefer human-friendly language than exact jargon, as long as it's correct,
 even if using general terminology. Example: avoid Git jargon such as _revision_

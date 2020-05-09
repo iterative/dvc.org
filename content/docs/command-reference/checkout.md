@@ -207,7 +207,7 @@ this once to download missing data from the remote storage to the
 
 We want the data files or directories (managed by DVC) to match with the other
 files (managed by Git e.g. source code). This requires us to remember running
-`dvc checkout` when needed after a `git checkout`, and of course we won't always
+`dvc checkout` when needed after a `git checkout`, and we may not always
 remember to do so. Wouldn't it be nice to automate this?
 
 ```dvc

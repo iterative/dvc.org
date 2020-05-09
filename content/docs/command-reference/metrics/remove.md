@@ -92,7 +92,7 @@ outs:
     persist: false
 ```
 
-As you can see, nothing has changed, except the `metric` field. And both files
+As shown above, nothing has changed, except the `metric` field. And both files
 are still here:
 
 ```dvc

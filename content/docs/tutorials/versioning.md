@@ -355,14 +355,12 @@ managing ML projects simpler.
 First, you may have noticed that the script that trains the model is written in
 a monolithic way. It uses the `save_bottleneck_feature` function to
 pre-calculate the bottom, "frozen" part of the net every time it is run.
-Features are written into files, and the intention was probably that the
-`save_bottleneck_feature` can be commented out after the first run. It's not
-very convenient to remember to comment/uncomment it every time dataset is
-changed.
+Features are written into files. The intention was probably that the
+`save_bottleneck_feature` can be commented out after the first run, but it's not
+very convenient having to remember to do si it every time the dataset changes.
 
 Here's where the [pipelines](/doc/command-reference/pipeline) feature of DVC
 comes in handy. We touched on it briefly when we described `dvc run` and
-
 `dvc repro`. The next step would be splitting the script into two parts and
 utilizing pipelines. See [this example](/doc/tutorials/pipelines) to get
 hands-on experience with pipelines, and try to apply it here. Don't hesitate to
