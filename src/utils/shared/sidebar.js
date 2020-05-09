@@ -25,17 +25,25 @@ const PATH_ROOT = '/doc'
 const FILE_ROOT = '/docs/'
 const FILE_EXTENSION = '.md'
 
-function validateRawItem({ slug, source, children }) {
+function validateRawItem({ slug, source, children, type, url }) {
   const isSourceDisabled = source === false
 
-  if (typeof slug !== 'string') {
-    throw Error("'slug' field is required in objects in sidebar.json")
-  }
+  switch (type) {
+    case 'external':
+      if (typeof url !== 'string') {
+        throw Error("'url' field is required in external sidebar.json entries")
+      }
+      break
+    default:
+      if (typeof slug !== 'string') {
+        throw Error("'slug' field is required in local sidebar.json entries")
+      }
 
-  if (isSourceDisabled && (!children || !children.length)) {
-    throw Error(
-      "If you set 'source' to false, you had to add at least one child"
-    )
+      if (isSourceDisabled && (!children || !children.length)) {
+        throw Error(
+          'Local sidebar.json entries with no source must have children'
+        )
+      }
   }
 }
 
@@ -69,26 +77,35 @@ function findPrevItemWithSource(data, item) {
 function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
   validateRawItem(rawItem)
 
-  const { label, slug, source, tutorials } = rawItem
+  const { label, slug, source, tutorials, type, url } = rawItem
 
-  // If prev item doesn't have source we need to search for it
-  const prevItemWithSource =
-    prevRef && findPrevItemWithSource(resultRef, prevRef)
+  switch (type) {
+    case 'external':
+      return {
+        type,
+        path: url,
+        label
+      }
+    default:
+      // If prev item doesn't have source we need to search for it
+      const prevItemWithSource =
+        prevRef && findPrevItemWithSource(resultRef, prevRef)
 
-  const prev = prevItemWithSource && prevItemWithSource.path
+      const prev = prevItemWithSource && prevItemWithSource.path
 
-  const sourceFileName = source ? source : slug + FILE_EXTENSION
-  const sourcePath = FILE_ROOT + parentPath + sourceFileName
+      const sourceFileName = source ? source : slug + FILE_EXTENSION
+      const sourcePath = FILE_ROOT + parentPath + sourceFileName
 
-  const relativePath = parentPath + slug
+      const relativePath = parentPath + slug
 
-  return {
-    path: relativePath ? `${PATH_ROOT}/${relativePath}` : PATH_ROOT,
-    source: source === false ? false : sourcePath,
-    label: label ? label : startCase(slug),
-    tutorials: tutorials || {},
-    prev,
-    next: undefined
+      return {
+        path: relativePath ? `${PATH_ROOT}/${relativePath}` : PATH_ROOT,
+        source: source === false ? false : sourcePath,
+        label: label ? label : startCase(slug),
+        tutorials: tutorials || {},
+        prev,
+        next: undefined
+      }
   }
 }
 
@@ -145,7 +162,11 @@ const normalizedSidebar = normalizeSidebar({
 })
 
 function findChildWithSource(item) {
-  return item.source ? item : findChildWithSource(item.children[0])
+  // Return item unchanged if isn't root-relative
+  if (!item.path.startsWith('/')) return item
+  return item.source
+    ? item
+    : findChildWithSource(item.children && item.children[0])
 }
 
 function getFirstPage() {

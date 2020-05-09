@@ -38,7 +38,7 @@
       "description": "Step-by-step introduction to basic DVC features"
     },
     {
-      "url": "/doc/changelog",
+      "url": "https://github.com/iterative/dvc/releases",
       "title": "Changelog",
       "description": "See what's new in DVC."
     }

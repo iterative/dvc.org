@@ -8,6 +8,7 @@ import includes from 'lodash/includes'
 import ShowOnly from '../../../ShowOnly'
 import DownloadButton from '../../../DownloadButton'
 import Link from '../../../Link'
+import { ReactComponent as ExternalLinkIcon } from './external-link-icon.svg'
 
 import {
   structure,
@@ -25,6 +26,7 @@ interface ISidebarMenuItemProps {
   source: boolean | string
   onClick: (e: React.MouseEvent) => void
   activePaths?: Array<string>
+  type?: string
 }
 
 const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
@@ -32,27 +34,45 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   label,
   path,
   activePaths,
-  onClick
+  onClick,
+  type
 }) => {
   const isActive = activePaths && includes(activePaths, path)
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
 
-  return (
-    <>
+  const className = cn(
+    styles.sectionLink,
+    isActive && styles.active,
+    isRootParent && 'docSearch-lvl0',
+    'link-with-focus'
+  )
+
+  const parentElement =
+    type === 'external' ? (
+      <Link
+        href={path}
+        id={path}
+        className={className}
+        onClick={onClick}
+        target="_blank"
+      >
+        {label} <ExternalLinkIcon />
+      </Link>
+    ) : (
       <Link
         href={getPathWithSource(path)}
         id={path}
-        className={cn(
-          styles.sectionLink,
-          isActive && styles.active,
-          isRootParent && 'docSearch-lvl0',
-          'link-with-focus'
-        )}
+        className={className}
         onClick={onClick}
       >
         {label}
       </Link>
+    )
+
+  return (
+    <>
+      {parentElement}
       {children && (
         <Collapse isOpened={!!isActive}>
           {children.map(item => (
