@@ -43,9 +43,9 @@ Under the hood a few actions are taken:
   DVC-files to consult.
 
 - For each <abbr>output</abbr> referenced from each selected DVC-file, DVC finds
-  a corresponding entry in the <abbr>cache</abbr>. DVC checks whether the entry
-  exists in the remote. From this DVC gathers a list of files missing from the
-  remote storage.
+  a corresponding file or directory in the <abbr>cache</abbr>. DVC then checks
+  whether it exists in the remote. From this, DVC gathers a list of files
+  missing from the remote storage.
 
 - Upload the cache files missing from remote storage, if any, to the remote.
 

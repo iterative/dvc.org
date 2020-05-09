@@ -82,7 +82,7 @@ describing the changes (described below).
     not exist in the workspace.
   - _not in cache_: An output exists in workspace and the corresponding file
     hash in the DVC-file is up to date, but there is no corresponding
-    <abbr>cache</abbr> entry.
+    <abbr>cache</abbr> file or directory.
 
 **For comparison against remote storage:**
 

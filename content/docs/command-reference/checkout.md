@@ -168,7 +168,7 @@ deleting files as necessary.
 $ git checkout baseline-experiment  # Stage where model is first created
 ```
 
-Let's check the `model.pkl` entry in `train.dvc` now:
+Let's check the hash value of `model.pkl` in `train.dvc` now:
 
 ```yaml
 outs:
