@@ -441,7 +441,7 @@
   },
   {
     "label": "Changelog",
-    "slug": "https://github.com/iterative/dvc/releases",
+    "url": "https://github.com/iterative/dvc/releases",
     "type": "external"
   }
 ]

@@ -25,17 +25,25 @@ const PATH_ROOT = '/doc'
 const FILE_ROOT = '/docs/'
 const FILE_EXTENSION = '.md'
 
-function validateRawItem({ slug, source, children }) {
+function validateRawItem({ slug, source, children, type, url }) {
   const isSourceDisabled = source === false
 
-  if (typeof slug !== 'string') {
-    throw Error("'slug' field is required in objects in sidebar.json")
-  }
+  switch (type) {
+    case 'external':
+      if (typeof url !== 'string') {
+        throw Error("'url' field is required in external sidebar.json entries")
+      }
+      break
+    default:
+      if (typeof slug !== 'string') {
+        throw Error("'slug' field is required in local sidebar.json entries")
+      }
 
-  if (isSourceDisabled && (!children || !children.length)) {
-    throw Error(
-      "If you set 'source' to false, you had to add at least one child"
-    )
+      if (isSourceDisabled && (!children || !children.length)) {
+        throw Error(
+          'Local sidebar.json entries with no source must have children'
+        )
+      }
   }
 }
 
@@ -69,13 +77,13 @@ function findPrevItemWithSource(data, item) {
 function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
   validateRawItem(rawItem)
 
-  const { label, slug, source, tutorials, type } = rawItem
+  const { label, slug, source, tutorials, type, url } = rawItem
 
   switch (type) {
     case 'external':
       return {
         type,
-        path: slug,
+        path: url,
         label
       }
     default:
