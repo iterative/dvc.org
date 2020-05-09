@@ -6,7 +6,8 @@ projects</abbr>, and corresponding [DVC-files](/doc/user-guide/dvc-file-format).
 ## Synopsis
 
 ```usage
-usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R] targets [targets ...]
+usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R]
+                  targets [targets ...]
 
 positional arguments:
   targets        DVC-files to update.
