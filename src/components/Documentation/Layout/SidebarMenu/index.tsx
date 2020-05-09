@@ -8,7 +8,7 @@ import includes from 'lodash/includes'
 import ShowOnly from '../../../ShowOnly'
 import DownloadButton from '../../../DownloadButton'
 import Link from '../../../Link'
-import { ReactComponent as ExternalLinkIcon } from '../../../../../static/img/external-link.svg'
+import { ReactComponent as ExternalLinkIcon } from '../../../../../static/img/external-link-minimal.svg'
 
 import {
   structure,
