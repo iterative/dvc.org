@@ -69,8 +69,8 @@ There are two ways to get to the previous version of the dataset or model: a
 full <abbr>workspace</abbr> checkout, or checkout of a specific data or model
 file. Let's consider the full checkout first. It's quite straightforward:
 
-> `v1.0` below is a Git tag that should be created in advance to identify the
-> dataset version you are interested in. Any
+> `v1.0` below is a Git tag that identifies the dataset version you are
+> interested in. Any
 > [Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 > (for example `HEAD^` or a commit hash) can be used instead.
 

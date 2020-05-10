@@ -42,8 +42,8 @@ and `dvc add` to learn more about how DVC handles data directories.
 ⚠️ This function does not check for the actual existence of the file or
 directory in the remote storage.
 
-💡 Having the resource's URL, it should be possible to download it directly with
-an appropriate library, such as
+💡 Having the resource's URL, you can attempt to download it directly with an
+appropriate library, such as
 [`boto3`](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/s3.html#S3.Object.download_fileobj)
 or
 [`paramiko`](https://docs.paramiko.org/en/stable/api/sftp.html#paramiko.sftp_client.SFTPClient.get).

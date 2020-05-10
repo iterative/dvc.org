@@ -88,7 +88,7 @@ The process started with the feature creation stage because one of its
 parameters was changed — the edited source code file `code/featurization.py`.
 All dependent stages were executed as well.
 
-Let's take a look at the metric's change. The improvement is close to zero
+Let's take a look at the metrics change. The improvement is close to zero
 (+0.0075% to be precise):
 
 ```dvc
@@ -162,8 +162,8 @@ restored the data files based on them.
 
 ## Tune the model
 
-You should create a new branch for this new experiment. It will help you to
-organize all the experiments in a repository and checkout them when needed.
+Let's create a new branch for this new experiment. It will help you to organize
+all the experiments in a repository and checkout them when needed.
 
 ```dvc
 $ git checkout -b tuning
@@ -280,7 +280,7 @@ AUC: 0.640389
 ```
 
 The bigrams increased the target metric by 0.28% and the last change looks like
-a reasonable improvement to the ML model. So, the result should be committed:
+a reasonable improvement to the ML model. So let's commit the result:
 
 ```dvc
 $ git add .

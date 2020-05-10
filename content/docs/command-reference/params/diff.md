@@ -115,7 +115,7 @@ params.yaml   train.epochs   70     110
 ```
 
 To compare parameters with a specific commit, a tag or any
-[revision](https://git-scm.com/docs/revisions) should be specified as an
+[revision](https://git-scm.com/docs/revisions) can be specified, as an
 additional command line parameter:
 
 ```dvc
