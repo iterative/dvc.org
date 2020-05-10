@@ -133,12 +133,11 @@ combined together into a single array for the injection to a template file.
 
 There are two important additional fields that DVC adds:
 
-- `index` - is a ordering number in the file. In many cases it corresponds to
-  machine learning training epoch or step number.
+- `index` - self-incrementing, zero-based counter for the data rows/values. In
+  many cases it corresponds to a machine learning training epoch or step number.
 
-- `rev` - specified revision, tag or branch of input file. This option helps to
-  distinguish between different revisions of the file in `dvc plot diff`
-  command.
+- `rev` - Git commit hash, tag, or branch of the plot file. This helps
+  distinguish between different versions when using the `dvc plot diff` command.
 
 DVC applies the same logic to all input CSV/TSV files but first transforms all
 CSV data into JSON. DVC uses column names from a header for JSON conversion into

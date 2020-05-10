@@ -12,7 +12,7 @@ usage: dvc plot diff [-h] [-q | -v] [-t [TEMPLATE]] [-d [DATAFILE]] [-f FILE]
                      [revisions [revisions ...]]
 
 positional arguments:
-  revisions             Git revisions to plot from
+  revisions             Git commits to plot from
 ```
 
 ## Description
@@ -27,19 +27,20 @@ plot can be customized with
 `--template` option. To learn more about the file formats and templates please
 see `dvc plot`.
 
-If no `revisions` are specified, this command compares metrics currently present
-in the <abbr>workspace</abbr> (uncommitted changes) with the latest committed
-version. A single specified revision shows the difference between the workspace
-and that version.
+`revisions` are Git commit hashes, tag, or branch names. If none are specified,
+`dvc plot diff` compares metrics currently present in the <abbr>workspace</abbr>
+(uncommitted changes) with the latest committed version. A single specified
+revision results in plotting the difference in metrics between the workspace and
+that version.
 
 In contrast to commands such as `git diff`, `dvc metrics diff` and
-`dvc params diff`, **any number of revisions can be provided**, and the
+`dvc params diff`, **any number of `revisions` can be provided**, and the
 resulting plot shows all of them in a single output.
 
 This command can work with metric files that are committed to a repository
 history, data files controlled by DVC, or any other file in the workspace. In
-the case of DVC-tracked `datafile`, the `revision` is used to find the
-corresponding [DVC-file](/doc/user-guide/dvc-file-format).
+the case of DVC-tracked `datafile`, the `revisions` are used to find the
+corresponding [DVC-files](/doc/user-guide/dvc-file-format).
 
 ## Options
 
