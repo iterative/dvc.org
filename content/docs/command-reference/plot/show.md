@@ -5,9 +5,10 @@ Generate a plot image from from a [metrics](/doc/command-reference/plot) file.
 ## Synopsis
 
 ```usage
-usage: dvc plot show [-h] [-q | -v] [-t [TEMPLATE]] [-f FILE] [-s SELECT]
-                     [-x X] [-y Y] [--stdout] [--no-csv-header] [--no-html]
-                     [--title TITLE] [--xlab XLAB] [--ylab YLAB]
+usage: dvc plot show [-h] [-q | -v] [-t [TEMPLATE]] [-f FILE]
+                     [-s SELECT] [-x X] [-y Y] [--stdout]
+                     [--no-csv-header] [--no-html] [--title TITLE]
+                     [--xlab XLAB] [--ylab YLAB] [datafile]
 
 positional arguments:
   datafile              Metrics file to visualize
@@ -15,9 +16,10 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to visualize continuous metrics such as loss
-functions, AUC curves, confusion matrixes etc. Please read `dvc plot` for more
-information.
+This command provides a quick way to visualize
+[continuous metrics](/doc/command-reference/plot) such as loss functions, AUC
+curves, confusion matrices, etc. Please see `dvc plot` for information on the
+supported data formats and other relevant details about DVC plots.
 
 ## Options
 
@@ -28,21 +30,21 @@ information.
   file name is equal to the input filename with additional `.html` suffix or
   `.json` suffix for `--no-html` mode.
 
-- `--no-html` - Do not wrap output vega plot json with HTML.
+- `--no-html` - Do not wrap output Vega specification (JSON) with HTML.
 
-- `-s SELECT, --select SELECT` - Select which fields or jsonpath to put into
-  plot. All the fields will be included by default with DVC generated `index`
-  field - see `dvc plot`.
+- `-x X` - Field name for X axis. An auto-generated `index` field is used by
+  default.
 
-- `-x X` - Field name for x axis. `index` is the default field for X.
+- `-y Y` - Field name for Y axis. The last column or field found in the
+  `datafile` is used by default.
 
-- `-y Y` - Field name for y axis. The default field is the last field found in
-  the input file: the last column in CSV file or the last field in the JSON
-  array object (the first object).
+- `-s SELECT, --select SELECT` - Select which fields or JSONPath to store in the
+  plot file [metadata](https://vega.github.io/vega/docs/data/). The
+  auto-generated, zero-based `index` column is always included.
 
-- `--xlab XLAB` - X axis title. The X column name is the default title.
+- `--xlab XLAB` - X axis title. The X field name is the default title.
 
-- `--ylab YLAB` - Y axis title. The Y column name is the default title.
+- `--ylab YLAB` - Y axis title. The Y field name is the default title.
 
 - `--title TITLE` - Plot title.
 
@@ -59,7 +61,7 @@ information.
 
 ## Examples
 
-Tabular file `logs.csv` visualization:
+We'll use tabular metrics file `logs.csv` for these examples:
 
 ```csv
 epoch,accuracy,loss,val_accuracy,val_loss
@@ -73,55 +75,86 @@ epoch,accuracy,loss,val_accuracy,val_loss
 7,0.9954,0.01396906608727198,0.9802,0.07247738889862157
 ```
 
-By default, the command plots the last column of the tabular file. Please look
-at the default behavior of `-y` option.
+By default, this command plots the last column of the table (see `-y` option):
 
 ```dvc
 $ dvc plot show logs.csv
-file:///Users/dmitry/src/plot/logs.csv.html
+file:///Users/usr/src/plot/logs.csv.html
 ```
 
 ![](/img/plot_show.svg)
 
-Use `-y` option to change column to visualize:
+Use the `-y` option to change the column to plot:
 
 ```dvc
 $ dvc plot show -y loss logs.csv
-file:///Users/dmitry/src/plot/logs.csv.html
+file:///Users/usr/src/plot/logs.csv.html
 ```
 
 ![](/img/plot_show_field.svg)
 
-In the previous example all the columns (or fields) were included into the
-output file. You can select only specified subset ot the columns by `--select`
-option which might be important for reducing the output file size. In this case
-the default `index` column will be still included.
+### Plot file size
+
+Note that by default, all the columns (or fields) are embedded in the plot file
+metadata. You can select a subset of the columns using the `--select` option,
+which can help reduce the file size:
 
 ```dvc
+$ ls -lh /Users/usr/src/plot/logs.csv.html
+-rw-r--r-- 1 usr grp 2.8K May  9 19:39 /Users/usr/src/plot/logs.csv.html
+
 $ dvc plot show -y loss --select loss logs.csv
-file:///Users/dmitry/src/plot/logs.csv.html
+file:///Users/usr/src/plot/logs.csv.html
+
+$ ls -lh /Users/usr/src/plot/logs.csv.html
+-rw-r--r-- 1 usr grp 1.8K May  9 19:43 /Users/usr/src/plot/logs.csv.html
 ```
 
-A tabular file without header can be plotted with `--no-csv-header` option. A
-field can be specified through column number (starting with 0):
+### Headerless tables
+
+A tabular data file without headers can be plotted with `--no-csv-header`
+option. A field or column can be specified with `--select` by it's numeric
+position (starting with `0`):
 
 ```dvc
-$ dvc plot show --no-csv-header --field 2 logs.csv
-file:///Users/dmitry/src/plot/logs.csv.html
+$ dvc plot show --no-csv-header --select 2 logs.csv
+file:///Users/usr/src/plot/logs.csv.html
 ```
 
-In many automation scenarios (like CI/CD for ML), it is convenient to have Vega
-specification instead of a whole HTML file because it might be used for
-generating another image format like PNG or JPEG or just included to some web
-page. `--no-html` option prevents adding HTML header and footer to the file.
-Note, the result file extension changes to JSON:
+### Vega specification
 
-```
-$ dvc plot show --no-html logs.csv
-file:///Users/dmitry/src/plot/logs.csv.json
+In many automation scenarios (like CI/CD for ML), it is convenient to have the
+[Vega-Lite](https://vega.github.io/vega-lite/) specification instead of the
+entire HTML plot file. For example to generating another image format like PNG
+or JPEG, or to include differently into a web app. The `--no-html` option
+prevents wrapping the plot in HTML. Note that the resulting file is JSON:
+
+```dvc
+$ dvc plot show --select accuracy --no-html logs.csv
+file:///Users/usr/src/plot/logs.csv.json
 ```
 
-JSON file plotting example:
+```json
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "data": {
+        "values": [
+    {
+        "accuracy": "0.9418667",
+        "index": 0,
+        "rev": "workspace"
+    },
+    {
+        "accuracy": "0.9763333",
+        "index": 1,
+        "rev": "workspace"
+    },
+    ...
+```
+
+## Example: Hierarchical data (JSON)
+
+We'll use tabular metrics file `train.json` for this example:
 
 ```json
 {
@@ -137,20 +170,21 @@ JSON file plotting example:
 }
 ```
 
-DVC identifies and plots JSON-objects from the first JSON array it was able to
-find.
+DVC identifies and plots JSON objects from the first JSON array found in the
+file:
 
 ```dvc
 $ dvc plot show train.json
-file:///Users/dmitry/src/plot/train.json.html
+file:///Users/usr/src/plot/train.json.html
 ```
 
-![](/img/plot_show.svg)
+![](/img/plot_show_json.svg)
 
-The field name can be specified with the same `-y` option. The signal from the
-first JSON array with the specified name will be shown:
+Same as with tabular data, use the `-y` option to change the field to plot:
 
 ```dvc
-$ dvc plot show -y accuracy logs.json
-file:///Users/dmitry/src/plot/logs.json.html
+$ dvc plot show -y accuracy train.json
+file:///Users/usr/src/plot/logs.json.html
 ```
+
+![](/img/plot_show_json_field.svg)

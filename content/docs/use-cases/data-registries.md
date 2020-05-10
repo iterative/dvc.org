@@ -208,7 +208,7 @@ $ git commit -am "Add 1,000 more songs to music/ dataset."
 
 Iterating on this process for several datasets can give shape to a robust
 registry. The result is basically a repo that versions a set of DVC-files. Let's
-see a hypothetical example:
+see an example:
 
 ```dvc
 $ tree --filelimit=100

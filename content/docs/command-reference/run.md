@@ -125,12 +125,11 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC.
 
-- `-m <path>`, `--metrics <path>` - specify a metric type of output. This option
-  behaves like `-o` but also adds `metric: true` in the output record of the
-  resulting stage file. Metrics are usually small, human readable files (e.g.
-  JSON or CSV) with numeric values or other information that describes a model
-  (or any other regular output). See `dvc metrics` to learn more about using
-  metrics.
+- `-m <path>`, `--metrics <path>` - specify a metric file. This option behaves
+  like `-o` but also adds `metric: true` in the output record of the resulting
+  stage file. Metrics are usually small, human readable files (e.g. JSON or CSV)
+  with numeric values or other information that describes a model (or any other
+  regular output). See `dvc metrics` to learn more about using metrics.
 
 - `-M <path>`, `--metrics-no-cache <path>` - the same as `-m` except that files
   are not tracked by DVC. It means that they are not cached, and it's up to a

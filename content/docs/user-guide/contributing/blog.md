@@ -71,9 +71,9 @@ It's recommended to follow all the relevant recommendations from the
 > online image optimizer. Huge images pollute Git index, slow down `git clone`,
 > deployment, and other operations with the repository.
 
-The original image should be 2 x the height and width of the size you want to
-see on the screen, to look sharp. To add images, put them into `static/uploads`
-and reference them like this:
+The original image should be 2x the height and width of the size you want to see
+on the screen, to look sharp. To add images, put them into `static/uploads` and
+reference them like this:
 
 ```md
 ![](/uploads/images/2020-02-10/image.png)
