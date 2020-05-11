@@ -60,7 +60,7 @@ For the first case, we calculate the file hash, a 32 characters long string
 (usually MD5). The first two characters are used to name the directory inside
 `.dvc/cache`, and the rest become the file name of the cached file. For example,
 if a data file `Posts.xml.zip` has a hash value of
-`ec1d2935f811b77cc49b031b999cbf17`, its local cache entry will be
+`ec1d2935f811b77cc49b031b999cbf17`, its path in the cache will be
 `.dvc/cache/ec/1d2935f811b77cc49b031b999cbf17`.
 
 > Note that file hashes are calculated from file contents only. 2 or more files

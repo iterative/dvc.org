@@ -232,7 +232,7 @@ print('Number of lines:')
 print(num_lines)
 ```
 
-If we now run `dvc repro`, that's what we should see:
+If we now run `dvc repro`, we should see this:
 
 ```dvc
 $ dvc repro
