@@ -6,16 +6,16 @@ description: |
   the DVC community.
 descriptionLong: |
   We're launching our ambassador program for people all around the world to get involved in 
-  the DVC community.
+  the DVC community. Our first ambassador, Marcel Ribeiro Dantas, shares a guest blog about 
+  how ambassadors support open source projects through blog writing, public outreach, and code.
 picture: 2020-05-08/Ambassador_Header.png
 author: marcel_rd
-commentsUrl: https://discuss.dvc.org/t/new-video-reimagining-devops-for-machine-learning/341
+commentsUrl: https://discuss.dvc.org/t/join-the-dvc-ambassador-program/383
 tags:
   - Ambassador
   - Volunteer
-  - Talks
   - Meetup
-  - Outreach
+  - Blogging
 ---
 
 Software can be everywhere, but developers can’t - that’s why ambassadors, folks
@@ -59,13 +59,13 @@ core values of the project, a great relationship lies ahead :).
 ## About Iterative and DVC
 
 DVC got started in 2017 as a personal project by Dmitry Petrov (on May 4,
-[we celebrated its 3rd birthday](https://dvc.org/blog/dvc-3-years-and-1-0-release)).
-In 2018, Dmitry teamed up with his co-founder Ivan Shchenklein to incorporate
+[we celebrated our 3rd birthday](https://dvc.org/blog/dvc-3-years-and-1-0-release)).
+In 2018, Dmitry teamed up with his co-founder Ivan Shcheklein to incorporate
 Iterative.ai and grow the project. Currently, Iterative.ai’s flagship project is
 Data Version Control (DVC), an open source version control system for managing
 complex workflows, datasets, and models. Development is ongoing in the core DVC
 project as well as new ventures into
-M[LOps and Continuous Integration & Delivery (CI/CD)](https://dvc.org/blog/reimagining-devops-video)
+[MLOps and Continuous Integration & Delivery (CI/CD)](https://dvc.org/blog/reimagining-devops-video)
 for data science. The team is small-and-mighty, with developers, engineers, and
 data scientists on four continents. The open source community is a huge part of
 all Iterative.ai projects; currently, DVC has more than
@@ -118,8 +118,8 @@ visibility to the author _and_ new ways to use DVC, so it's a win-win.
   by Gabriel dos Santos Goncalves
 - [Continuous Delivery for Machine Learning](https://martinfowler.com/articles/cd4ml.html),
   by Danilo Sato, Arif Wider, and Christoph Windheuser
-- [Manage your Data Science Project in R](https://mribeirodantas.xyz/blog/index.php/2020/03/05/r-dvc-and-rmarkdown/#more-2952)
-  was my first blog about using DVC in an R project!
+- [Manage your Data Science Project in R](https://mribeirodantas.xyz/blog/index.php/2020/03/05/r-dvc-and-rmarkdown/)
+  was my first blog post about using DVC in an R project!
 
 ### Talks
 
