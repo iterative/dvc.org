@@ -3,6 +3,7 @@ import React from 'react'
 import LayoutWidthContainer from '../../LayoutWidthContainer'
 import ShowOnly from '../../ShowOnly'
 import Link from '../../Link'
+import { isExpired } from '../../../utils/shared/expiration.js'
 import { logEvent } from '../../../utils/front/ga'
 
 import data from '../data.json'
@@ -15,7 +16,7 @@ const Hero: React.FC = () => {
     return null
   }
 
-  return (
+  return isExpired(data.hero) ? null : (
     <LayoutWidthContainer className={styles.container}>
       <Link
         className={styles.link}

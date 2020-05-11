@@ -8,6 +8,7 @@ import Link from '../../Link'
 import Block from '../Block'
 import Section from '../Section'
 import { logEvent } from '../../../utils/front/ga'
+import { isExpired } from '../../../utils/shared/expiration.js'
 
 import data from '../data.json'
 import sharedStyles from '../styles.module.css'
@@ -26,21 +27,7 @@ interface IEvent {
 const { description, mobileDescription, title } = data.section.events
 const { events } = data
 const eventsItems = ((): Array<IEvent | null> => {
-  const items: Array<IEvent | null> = events.slice(0, 3) as Array<IEvent>
-  const itemLength = items.length
-
-  // Test if any event's date is in the future
-  // If any event is in the future, show the most recent three
-  // If every event is in the past, signal to skip events
-  if (!items.some(item => new Date(item.date) > new Date())) {
-    return null
-  }
-
-  for (let i = itemLength; i < 3; i++) {
-    items.push(null)
-  }
-
-  return items
+  return events.filter(event => !isExpired(event))
 })()
 
 const Event: React.FC<IEvent> = ({
