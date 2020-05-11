@@ -29,6 +29,13 @@ const eventsItems = ((): Array<IEvent | null> => {
   const items: Array<IEvent | null> = events.slice(0, 3) as Array<IEvent>
   const itemLength = items.length
 
+  // Test if any event's date is in the future
+  // If any event is in the future, show the most recent three
+  // If every event is in the past, signal to skip events
+  if (!items.some(item => new Date(item.date) > new Date())) {
+    return null
+  }
+
   for (let i = itemLength; i < 3; i++) {
     items.push(null)
   }
@@ -97,7 +104,7 @@ const Event: React.FC<IEvent> = ({
 }
 
 const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
-  if (!events.length) {
+  if (!events.length || !eventsItems) {
     return null
   }
 
