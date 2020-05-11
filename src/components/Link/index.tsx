@@ -21,12 +21,13 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   href,
   children,
   rel,
+  target,
   ...restProps
 }) => {
   // Handle all situations where a basic `a` must be used over Gatsby Link
   const hrefIsRelative = isRelative(href)
   const hrefIsMailto = isMailto(href)
-  const hrefHasTarget = restProps.target
+  const hrefHasTarget = typeof target === 'string'
   // Fragments within the page should be `a`, but links to other pages
   // that have anchors should be okay.
   const hrefIsRelativeFragment = href.startsWith('#')
@@ -40,13 +41,19 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
     /*
        Change external links without an explicit rel to have 'noopener
        noreferrer', but leave explicitly defined rels alone.
+       Do the same with `target=_blank`
     */
-    if (!hrefIsRelative && typeof rel !== 'string') {
-      rel = 'noopener noreferrer'
+    if (!hrefIsRelative) {
+      if (typeof rel !== 'string') {
+        rel = 'noopener noreferrer'
+      }
+      if (!hrefHasTarget) {
+        target = '_blank'
+      }
     }
 
     return (
-      <a href={href} rel={rel} {...restProps}>
+      <a href={href} rel={rel} target={target} {...restProps}>
         {children}
       </a>
     )

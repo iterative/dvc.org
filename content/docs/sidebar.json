@@ -440,17 +440,8 @@
     ]
   },
   {
-    "slug": "changelog",
-    "source": false,
-    "children": [
-      {
-        "label": "v0.12 - v0.18",
-        "slug": "0.18"
-      },
-      {
-        "label": "v0.19 - v0.35",
-        "slug": "0.35"
-      }
-    ]
+    "label": "Changelog",
+    "url": "https://github.com/iterative/dvc/releases",
+    "type": "external"
   }
 ]
