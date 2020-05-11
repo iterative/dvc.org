@@ -6,7 +6,7 @@ description: |
   the DVC community.
 descriptionLong: |
   We're launching our ambassador program for people all around the world to get involved in 
-  the DVC community. Our first ambassador, Marcel Ribeiro Dantas, shares a guest blog about 
+  the DVC community. Our first ambassador, Marcel Ribeiro-Dantas, shares a guest blog about 
   how ambassadors support open source projects through blog writing, public outreach, and code.
 picture: 2020-05-08/Ambassador_Header.png
 author: marcel_rd
