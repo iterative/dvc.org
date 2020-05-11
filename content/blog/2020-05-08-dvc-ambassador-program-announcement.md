@@ -18,13 +18,21 @@ tags:
   - Blogging
 ---
 
-Software can be everywhere, but developers can’t - that’s why ambassadors, folks
-who do outreach and community building around projects they love, are a key part
-of the open-source community. DVC is starting an ambassador program to help
-people who are passionate about our mission get involved.
+DVC's software can be everywhere, but its developers can’t - that’s why
+ambassadors, folks who do outreach and community building around projects they
+love, are a key part of the open source community. DVC is starting an ambassador
+program to help people who are passionate about our mission get involved.
 
-What is that mission, exactly? DVC is founded on the principle of engineering
-solutions for making data science and machine learning rigorous and
+As the first DVC ambassador, and a
+[Fedora ambassador](https://fedoraproject.org/wiki/User:Mribeirodantas) before
+that, I can tell you a bit about the role. As a representative of open source
+projects, I've participated in lots of events, made friends, and traveled. Every
+single time I’ve contributed, I got this nice feeling that it was all worth it.
+I believe that if you agree with the core values of the project, a great
+relationship lies ahead :).
+
+So what are the core values of DVC, exactly? DVC is founded on the principle of
+engineering solutions for making data science and machine learning rigorous and
 reproducible. If this matters to you, too, you might be a good fit for our
 ambassador program!
 
@@ -34,7 +42,7 @@ are lots of ways to do this, big and small. For example:
 - Write a blog post talking about how you use DVC in your projects
 - What about creating a network of DVC users and data scientists in your town?
   Even though we’re self-isolating now, you can still organize online meetups.
-  [We already did one!](https://tulu.la/events/dvc-virtual-meetup-2020-00032c).
+  [We already did one!](https://tulu.la/events/dvc-virtual-meetup-2020-00032c)
   We help cover costs to organize meetups.
 - Do you want to talk about DVC at your office, or at a conference? We help
   speakers develop talks, and we have some discretionary funds for travel on a
@@ -48,23 +56,20 @@ including people who don’t know about DVC yet, people who need some help getti
 started, and people who are already excited about our mission and want to find
 meaningful ways to pitch in.
 
-It’s challenging, no doubt, but being an ambassador can be an amazing
-experience! Before becoming DVC’s first official ambassador, I served as a
-[Fedora ambassador](https://fedoraproject.org/wiki/User:Mribeirodantas) for
-several years. I got a lot out of it: I participated in lots of events, made
-friends, and traveled. Every single time I’ve contributed to an open source
-project, I got this nice feeling that it was all worth it. If you agree with the
-core values of the project, a great relationship lies ahead :).
-
 ## About Iterative and DVC
 
-DVC got started in 2017 as a personal project by Dmitry Petrov (on May 4,
-[we celebrated our 3rd birthday](https://dvc.org/blog/dvc-3-years-and-1-0-release)).
-In 2018, Dmitry teamed up with his co-founder Ivan Shcheklein to incorporate
-Iterative.ai and grow the project. Currently, Iterative.ai’s flagship project is
-Data Version Control (DVC), an open source version control system for managing
-complex workflows, datasets, and models. Development is ongoing in the core DVC
-project as well as new ventures into
+DVC got started in 2017 as a personal project by Dmitry Petrov (
+[we just celebrated our 3rd birthday](https://dvc.org/blog/dvc-3-years-and-1-0-release)).
+Previously, Dmitry worked at Microsoft as a data scientist and did a PhD in
+Computer Science. In 2018, Dmitry teamed up with his co-founder Ivan Shcheklein
+(co-founder of [The Tweeted Times](https://tweetedtimes.com/) and
+[Sedna](https://www.sedna.org/) contributor) to incorporate Iterative.ai and
+grow the project. Iterative.ai is building enterprise tools for collaboration on
+ML projects. Currently, Iterative.ai's open source flagship project is Data
+Version Control (DVC), an open source version control system for managing
+complex workflows, datasets, and models.
+
+Development is ongoing in the core DVC project as well as new ventures into
 [MLOps and Continuous Integration & Delivery (CI/CD)](https://dvc.org/blog/reimagining-devops-video)
 for data science. The team is small-and-mighty, with developers, engineers, and
 data scientists on four continents. The open source community is a huge part of
@@ -81,8 +86,9 @@ exact pipeline of commands you ran in that experiment!
 
 ## How to become an ambassador
 
-If you’re interested in becoming an ambassador, send us an email at info@dvc.org
-with the subject line “I want to be an ambassador!” Please tell us:
+If you’re interested in becoming an ambassador, send us an email at
+[info@dvc.org](mailto:info@dvc.org) with the subject line “I want to be an
+ambassador!” Please tell us:
 
 - A little about yourself and your professional background
 - Any outreach work you’ve done before
@@ -93,9 +99,9 @@ The program is structured to provide a lot of flexibility, so each ambassador
 can do outreach in ways that are personally motivating and enjoyable. There are
 a few guidelines:
 
-- We ask for a one-year commitment
-- We ask ambassadors to contribute four activities per year, about once every
-  three months.
+- We ask for at least one-year commitment
+- We ask ambassadors to contribute at least four activities per year, about once
+  every three months. There's no upper limit to how much you can do!
 - For your first contribution, we ask for a blog post- this way, we can
   collaborate with you to help get all the technical details right. After that,
   it’s up to you!
@@ -144,8 +150,14 @@ a goldmine for ways to pitch in. For example:
 
 - [Vera Sativa](https://github.com/verasativa/) added directory support to the
   `dvc import-url` function- and she was our 100th contributor, so she won her
-  own
-  [DeeVee the Owl](https://dvc.org/static/78b685e283d679c8ebe518ea17520f6d/75999/odd_with_deevee.png).
+  own DeeVee the owl.
 
-If any of this sounds fun to you, please be in touch. We look forward to
+![](/uploads/images/2020-01-17/odd_with_deevee.png 'Img Title =500')_Vera
+(center, flashing a peace sign) thanked us with this lovely picture of DeeVee
+and her team, [Odd Industries](https://odd.co/en/)._
+
+If any of this sounds fun to you, please be in touch over
+[email](mailto:info@dvc.org) (and you can also reach us on
+[Twitter](https://twitter.com/dvcorg) and our
+[Discord Channel](https://discordapp.com/invite/dvwXA2N)). We look forward to
 connecting with you!
