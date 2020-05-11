@@ -152,7 +152,7 @@ a goldmine for ways to pitch in. For example:
   `dvc import-url` function- and she was our 100th contributor, so she won her
   own DeeVee the owl.
 
-![](/uploads/images/2020-01-17/odd_with_deevee.png 'Img Title =500')_Vera
+![](/uploads/images/2020-01-17/odd_with_deevee.png 'Vera and team =500')_Vera
 (center, flashing a peace sign) thanked us with this lovely picture of DeeVee
 and her team, [Odd Industries](https://odd.co/en/)._
 
