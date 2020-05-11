@@ -24,7 +24,7 @@ interface ISidebarMenuItemProps {
   label: string
   path: string
   source: boolean | string
-  onClick: (e: React.MouseEvent) => void
+  onClick: (isLeafItemClicked: boolean) => void
   activePaths?: Array<string>
   type?: string
 }
@@ -40,6 +40,8 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   const isActive = activePaths && includes(activePaths, path)
   const isRootParent =
     activePaths && activePaths.length > 1 && activePaths[0] === path
+  const isLeafItem = children === undefined || children.length === 0
+  const currentLevelOnClick = (): void => onClick(isLeafItem)
 
   const className = cn(
     styles.sectionLink,
@@ -54,7 +56,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         href={path}
         id={path}
         className={className}
-        onClick={onClick}
+        onClick={currentLevelOnClick}
         target="_blank"
       >
         {label} <ExternalLinkIcon />
@@ -64,7 +66,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         href={getPathWithSource(path)}
         id={path}
         className={className}
-        onClick={onClick}
+        onClick={currentLevelOnClick}
       >
         {label}
       </Link>
@@ -91,7 +93,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
 
 interface ISidebarMenuProps {
   currentPath: string
-  onClick: (e: React.MouseEvent) => void
+  onClick: (isLeafItemClicked: boolean) => void
 }
 
 const SidebarMenu: React.FC<ISidebarMenuProps> = ({ currentPath, onClick }) => {
