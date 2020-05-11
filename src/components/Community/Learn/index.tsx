@@ -14,7 +14,7 @@ import { useCommentsCount } from '../../../utils/front/api'
 import getPosts from '../../../queries/posts'
 import { pluralizeComments } from '../../../utils/front/i18n'
 
-import data from '../data.json'
+import data from '../../../../content/community.json'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
 

@@ -15,7 +15,7 @@ import {
   IDiscussTopic
 } from '../../../utils/front/api'
 
-import data from '../data.json'
+import data from '../../../../content/community.json'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
 

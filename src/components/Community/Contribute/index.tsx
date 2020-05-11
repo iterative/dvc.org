@@ -7,7 +7,7 @@ import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
 import { logEvent } from '../../../utils/front/ga'
 
-import data from '../data.json'
+import data from '../../../../content/community.json'
 import sharedStyles from '../styles.module.css'
 
 const { description, mobileDescription, title } = data.section.contribute

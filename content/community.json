@@ -1,10 +1,12 @@
 {
-  "hero": {
-    "pictureDesktop": "/img/community/banner.png",
-    "pictureMobile": "/img/community/banner-mobile.png",
-    "url": "https://www.mlprague.com/#schedule-saturday",
-    "expires": "2020-05-10"
-  },
+  "hero": [
+    {
+      "pictureDesktop": "/img/community/banner.png",
+      "pictureMobile": "/img/community/banner-mobile.png",
+      "url": "https://www.mlprague.com/#schedule-saturday",
+      "expires": "2020-05-10"
+    }
+  ],
   "section": {
     "contribute": {
       "title": "Contribute",
@@ -81,7 +83,8 @@
       "description": "Paweł Redzyński will talk about open source tools for versioning machine learning projects",
       "city": "Prague",
       "date": "2020-03-20",
-      "pictureUrl": "/img/community/events/mlprague.jpg"
+      "pictureUrl": "/img/community/events/mlprague.jpg",
+      "expires": false
     },
     {
       "url": "https://divops.org",

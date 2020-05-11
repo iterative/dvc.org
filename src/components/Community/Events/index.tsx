@@ -10,7 +10,7 @@ import Section from '../Section'
 import { logEvent } from '../../../utils/front/ga'
 import { isExpired } from '../../../utils/shared/expiration.js'
 
-import data from '../data.json'
+import data from '../../../../content/community.json'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
 

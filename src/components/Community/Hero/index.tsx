@@ -6,7 +6,7 @@ import Link from '../../Link'
 import { isExpired } from '../../../utils/shared/expiration.js'
 import { logEvent } from '../../../utils/front/ga'
 
-import data from '../data.json'
+import data from '../../../../content/community.json'
 import styles from './styles.module.css'
 
 const logHero = (): void => logEvent('community', 'hero')
