@@ -90,7 +90,7 @@ const BlogPost: React.FC<ICommunityBlogPost> = ({
   )
 }
 
-interface ICommunityUserContentProps {
+export interface ICommunityUserContentProps {
   author: string
   color: string
   date: string
@@ -145,7 +145,7 @@ const UserContent: React.FC<ICommunityUserContentProps> = ({
   )
 }
 
-interface ICommunityDocumentationProps {
+export interface ICommunityDocumentationProps {
   color: string
   description: string
   title: string

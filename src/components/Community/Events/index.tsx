@@ -13,7 +13,7 @@ import { useCommunityData } from '../../../utils/front/community'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
 
-interface IEvent {
+export interface IEvent {
   theme: ICommunitySectionTheme
   city: string
   date: string

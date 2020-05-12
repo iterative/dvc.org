@@ -10,6 +10,12 @@ import styles from './styles.module.css'
 
 const logHero = (): void => logEvent('community', 'hero')
 
+export interface IHero {
+  url: string
+  pictureDesktop: string
+  pictureMobile: string
+}
+
 const Hero: React.FC = () => {
   const { hero } = useCommunityData()
 

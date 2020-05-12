@@ -1,10 +1,33 @@
 import { useMemo } from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-interface ICommunityData {
-  rest: object
-  hero: object
-  events: Array<object>
+import { ICommunitySection } from '../../components/Community/Section'
+import { IEvent } from '../../components/Community/Events'
+import { IHero } from '../../components/Community/Hero'
+import {
+  ICommunityUserContentProps,
+  ICommunityDocumentationProps
+} from '../../components/Community/Learn'
+
+export interface ICommunityData {
+  rest: {
+    documentation: Array<ICommunityDocumentationProps>
+    userContent: Array<ICommunityUserContentProps>
+    stats: {
+      users: string
+      messages: string
+    }
+    section: {
+      contribute: ICommunitySection
+      events: ICommunitySection
+      documentation: ICommunitySection
+      userContent: ICommunitySection
+      learn: ICommunitySection
+      meet: ICommunitySection
+    }
+  }
+  hero: IHero
+  events: Array<IEvent | null>
 }
 
 export function useCommunityData(): ICommunityData {

@@ -9,7 +9,7 @@ import { screens } from '../../../../config/postcss/media'
 
 import styles from './styles.module.css'
 
-interface ICommunitySection {
+export interface ICommunitySection {
   anchor: string
   background?: string
   color: string
