@@ -11,10 +11,10 @@ usage: dvc plot [-h] [-q | -v] {show,diff} ...
 
 positional arguments:
   COMMAND
-    show         Generate a plot image file from a continuous metrics
-                 file.
-    diff         Plot continuous metrics differences between commits in the
-                 DVC repository, or between the last commit and the workspace.
+    show         Generate a plot image file from a metrics file.
+    diff         Plot differences in metrics between commits in the
+                 DVC repository, or between the last commit and the
+                 workspace.
 ```
 
 ## Description
