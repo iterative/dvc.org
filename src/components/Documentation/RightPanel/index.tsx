@@ -90,29 +90,29 @@ const RightPanel: React.FC<IRightPanelProps> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.contentBlock}>
-        <div className={styles.list}>
-          {headings.length > 0 && (
-            <>
-              <h5 className={styles.header}>Content</h5>
-              <hr className={styles.separator} />
-            </>
-          )}
-          {headings.map(({ slug, text }) => (
-            <Link
-              className={cn(
-                styles.headingLink,
-                current === slug && styles.current,
-                'link-with-focus'
-              )}
-              key={`link-${slug}`}
-              href={`#${slug}`}
-            >
-              {text}
-            </Link>
-          ))}
-        </div>
-      </div>
+      {headings.length > 0 && (
+        <>
+          <div>
+            <h5 className={styles.header}>Content</h5>
+            <hr className={styles.separator} />
+          </div>
+          <div className={styles.contentBlock}>
+            {headings.map(({ slug, text }) => (
+              <Link
+                className={cn(
+                  styles.headingLink,
+                  current === slug && styles.current,
+                  'link-with-focus'
+                )}
+                key={`link-${slug}`}
+                href={`#${slug}`}
+              >
+                {text}
+              </Link>
+            ))}
+          </div>
+        </>
+      )}
       <div className={styles.buttonsBlock}>
         {Object.keys(tutorials || {}).length > 0 && (
           <div className={styles.buttonSection}>

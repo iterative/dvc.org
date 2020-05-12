@@ -2,8 +2,10 @@
   position: sticky;
   top: var(--layout-header-height-collapsed);
   flex-shrink: 0;
+  box-sizing: border-box;
   width: 170px;
   height: calc(100vh - 78px);
+  padding-top: 57px;
   font-size: 16px;
   display: flex;
   flex-direction: column;
@@ -15,6 +17,7 @@
 
 .contentBlock {
   overflow-y: auto;
+  margin-bottom: 27px;
 }
 
 .separator {
@@ -22,12 +25,7 @@
   border-top: 1px solid var(--color-lighter-blue);
 }
 
-.list {
-  margin-bottom: 27px;
-}
-
 .header {
-  margin-top: 57px;
   font-size: 14px;
   text-transform: uppercase;
   color: var(--color-black);
