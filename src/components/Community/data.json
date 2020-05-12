@@ -1,8 +1,8 @@
 {
   "hero": {
     "pictureDesktop": "/img/community/header_mailing_list_skinny.png",
-    "pictureMobile": "/img/community/mobile_header_mailing_list_skinny.png",
-    "url": "https://www.mlprague.com/#schedule-saturday"
+    "pictureMobile": "/img/community/mobile_header_mailing_list.png",
+    "url": "#subscribe"
   },
   "section": {
     "contribute": {
