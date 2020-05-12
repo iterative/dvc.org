@@ -17,12 +17,7 @@ const Hero: React.FC = () => {
 
   return (
     <LayoutWidthContainer className={styles.container}>
-      <Link
-        className={styles.link}
-        href={data.hero.url}
-        target="_blank"
-        onClick={logHero}
-      >
+      <Link className={styles.link} href={data.hero.url} onClick={logHero}>
         <ShowOnly on="desktop">
           <img
             className={styles.picture}
