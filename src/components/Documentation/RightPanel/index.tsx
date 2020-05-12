@@ -112,6 +112,8 @@ const RightPanel: React.FC<IRightPanelProps> = ({
             </Link>
           ))}
         </div>
+      </div>
+      <div className={styles.buttonsBlock}>
         {Object.keys(tutorials || {}).length > 0 && (
           <div className={styles.buttonSection}>
             <p className={styles.buttonSectionDescription}>
@@ -130,8 +132,6 @@ const RightPanel: React.FC<IRightPanelProps> = ({
             />
           </div>
         )}
-      </div>
-      <div className={styles.buttonsBlock}>
         <div className={styles.buttonSection}>
           <p className={styles.buttonSectionDescription}>
             <span
