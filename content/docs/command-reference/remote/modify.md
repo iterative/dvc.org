@@ -138,6 +138,15 @@ these settings, you could use the following options:
   $ dvc remote modify myremote sse AES256
   ```
 
+- `sse_kms_key_id` - SSE-KMS key to use to encrypt data uploaded to S3, normally
+  specified when the `sse` parameter is set to `aws:kms`. This parameter will be
+  passed directly to AWS's S3 functions, so DVC supports any value that AWS
+  supports, including both KMS key ids and aliases.
+
+  ```dvc
+  $ dvc remote modify myremote sse_kms_key_id alias/testkey
+  ```
+
 - `acl` - set object level access control list (ACL) such as `private`,
   `public-read`, etc. By default, no ACL is specified.
 
