@@ -5,11 +5,16 @@
   width: 170px;
   height: calc(100vh - 78px);
   font-size: 16px;
-  overflow-y: auto;
 
   @media only screen and (max-width: 1200px) {
     display: none;
   }
+}
+
+.contentBlock {
+  height: calc(100% - 340px);
+  overflow-y: auto;
+  margin-top: 57px;
 }
 
 .separator {
@@ -18,7 +23,6 @@
 }
 
 .list {
-  margin-top: 57px;
   margin-bottom: 27px;
 }
 
@@ -47,6 +51,11 @@
   &:hover {
     color: #3c3937;
   }
+}
+
+.buttonsBlock {
+  position: absolute;
+  bottom: 20px;
 }
 
 .buttonSection {

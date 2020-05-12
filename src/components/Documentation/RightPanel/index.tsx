@@ -90,87 +90,91 @@ const RightPanel: React.FC<IRightPanelProps> = ({
 
   return (
     <div className={styles.container}>
-      <div className={styles.list}>
-        {headings.length > 0 && (
-          <>
-            <h5 className={styles.header}>Content</h5>
-            <hr className={styles.separator} />
-          </>
+      <div className={styles.contentBlock}>
+        <div className={styles.list}>
+          {headings.length > 0 && (
+            <>
+              <h5 className={styles.header}>Content</h5>
+              <hr className={styles.separator} />
+            </>
+          )}
+          {headings.map(({ slug, text }) => (
+            <Link
+              className={cn(
+                styles.headingLink,
+                current === slug && styles.current,
+                'link-with-focus'
+              )}
+              key={`link-${slug}`}
+              href={`#${slug}`}
+            >
+              {text}
+            </Link>
+          ))}
+        </div>
+        {Object.keys(tutorials || {}).length > 0 && (
+          <div className={styles.buttonSection}>
+            <p className={styles.buttonSectionDescription}>
+              <span
+                className={styles.buttonSectionIcon}
+                role="img"
+                aria-label="run"
+              >
+                ▶️
+              </span>{' '}
+              It can be run online:
+            </p>
+            <Tutorials
+              buttonClassName={cn(styles.button, styles.tutorials)}
+              tutorials={tutorials}
+            />
+          </div>
         )}
-        {headings.map(({ slug, text }) => (
-          <Link
-            className={cn(
-              styles.headingLink,
-              current === slug && styles.current,
-              'link-with-focus'
-            )}
-            key={`link-${slug}`}
-            href={`#${slug}`}
-          >
-            {text}
-          </Link>
-        ))}
       </div>
-      {Object.keys(tutorials || {}).length > 0 && (
+      <div className={styles.buttonsBlock}>
         <div className={styles.buttonSection}>
           <p className={styles.buttonSectionDescription}>
             <span
               className={styles.buttonSectionIcon}
               role="img"
-              aria-label="run"
+              aria-label="bug"
             >
-              ▶️
+              🐛
             </span>{' '}
-            It can be run online:
+            Found an issue? Let us know! Or fix it:
           </p>
-          <Tutorials
-            buttonClassName={cn(styles.button, styles.tutorials)}
-            tutorials={tutorials}
-          />
+
+          <Link
+            className={cn(sharedStyles.button, styles.button)}
+            href={githubLink}
+            target="_blank"
+          >
+            <i className={cn(sharedStyles.buttonIcon, styles.githubIcon)} />
+            Edit on GitHub
+          </Link>
         </div>
-      )}
-      <div className={styles.buttonSection}>
-        <p className={styles.buttonSectionDescription}>
-          <span
-            className={styles.buttonSectionIcon}
-            role="img"
-            aria-label="bug"
+
+        <div className={styles.buttonSection}>
+          <p className={styles.buttonSectionDescription}>
+            <span
+              className={styles.buttonSectionIcon}
+              role="img"
+              aria-label="question"
+            >
+              ❓
+            </span>{' '}
+            Have a question? Join our chat, we will help you:
+          </p>
+
+          <Link
+            className={cn(sharedStyles.button, styles.button)}
+            href="/chat"
+            target="_blank"
           >
-            🐛
-          </span>{' '}
-          Found an issue? Let us know! Or fix it:
-        </p>
-
-        <Link
-          className={cn(sharedStyles.button, styles.button)}
-          href={githubLink}
-          target="_blank"
-        >
-          <i className={cn(sharedStyles.buttonIcon, styles.githubIcon)} />
-          Edit on GitHub
-        </Link>
-      </div>
-
-      <div className={styles.buttonSection}>
-        <p className={styles.buttonSectionDescription}>
-          <span
-            className={styles.buttonSectionIcon}
-            role="img"
-            aria-label="question"
-          >
-            ❓
-          </span>{' '}
-          Have a question? Join our chat, we will help you:
-        </p>
-
-        <Link
-          className={cn(sharedStyles.button, styles.button)}
-          href="/chat"
-          target="_blank"
-        >
-          <i className={cn(sharedStyles.buttonIcon, styles.discordIcon)} />
-          Discord Chat
-        </Link>
+            <i className={cn(sharedStyles.buttonIcon, styles.discordIcon)} />
+            Discord Chat
+          </Link>
+        </div>
       </div>
     </div>
   )
