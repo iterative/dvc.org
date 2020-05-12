@@ -1,7 +1,7 @@
 {
   "hero": {
     "pictureDesktop": "/img/community/header_mailing_list_skinny.png",
-    "pictureMobile": "/img/community/mobile_header_mailing_list.png",
+    "pictureMobile": "/img/community/mobile_header_mailing_list_skinny.png",
     "url": "#subscribe"
   },
   "section": {
