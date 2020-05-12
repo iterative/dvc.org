@@ -5,6 +5,8 @@
   width: 170px;
   height: calc(100vh - 78px);
   font-size: 16px;
+  display: flex;
+  flex-direction: column;
 
   @media only screen and (max-width: 1200px) {
     display: none;
@@ -12,9 +14,7 @@
 }
 
 .contentBlock {
-  height: calc(100% - 340px);
   overflow-y: auto;
-  margin-top: 57px;
 }
 
 .separator {
@@ -27,6 +27,7 @@
 }
 
 .header {
+  margin-top: 57px;
   font-size: 14px;
   text-transform: uppercase;
   color: var(--color-black);
@@ -54,13 +55,13 @@
 }
 
 .buttonsBlock {
-  position: absolute;
-  bottom: 20px;
+  margin-bottom: 20px;
+  flex-shrink: 0;
 }
 
 .buttonSection {
   & + & {
-    margin-top: 25px;
+    margin-top: 15px;
   }
 }
 
