@@ -1,8 +1,21 @@
 const moment = require('moment')
-const {
-  getExpirationDate,
-  isExpired
-} = require('../../../utils/shared/expiration.js')
+const { getExpirationFields } = require('../../../utils/shared/expiration.js')
+
+function childNodeCreator({
+  node,
+  actions: { createNode, createParentChildLink }
+}) {
+  return async function ({ children = [], ...rest }) {
+    const newNode = {
+      parent: node.id,
+      children,
+      ...rest
+    }
+
+    await createNode(newNode)
+    await createParentChildLink({ parent: node, child: newNode })
+  }
+}
 
 module.exports = {
   async createSchemaCustomization({
@@ -24,50 +37,88 @@ module.exports = {
           city: 'String',
           pictureUrl: 'String'
         }
+      }),
+      buildObjectType({
+        name: 'CommunityRest',
+        interfaces: ['Node'],
+        fields: {
+          content: 'JSON'
+        }
       })
     ])
   },
-  async onParseJsonFile(
-    {
+  async onParseJsonFile(api, { content }) {
+    const createChildNode = childNodeCreator(api)
+    const {
       node,
       createNodeId,
       createContentDigest,
       actions: { createNode, createParentChildLink }
-    },
-    { content }
-  ) {
+    } = api
     // Only operate on the File node for data.json
     if (node.relativePath !== 'community.json') return null
-    const { events } = content
+    const { events, hero, ...rest } = content
+
+    const heroesPromise =
+      hero &&
+      Promise.all(
+        hero.map(async (hero, sourceIndex) => {
+          const { expires, expired } = getExpirationFields(hero)
+          const fields = {
+            ...hero,
+            expires,
+            expired,
+            sourceIndex
+          }
+          await createChildNode({
+            id: createNodeId(`CommunityHero >>> ${sourceIndex}`),
+            ...fields,
+            internal: {
+              type: 'CommunityHero',
+              contentDigest: createContentDigest(fields)
+            }
+          })
+        })
+      )
 
     const eventsPromise =
       events &&
       Promise.all(
         events.map(async (event, sourceIndex) => {
           const { title, date } = event
-          const expires = getExpirationDate(event)
+          const { expires, expired } = getExpirationFields(event)
           const fields = {
             ...event,
             sourceIndex,
             date: moment(date).toDate(),
-            expires: expires ? expires.toDate() : null,
-            expired: isExpired(expires)
+            expires,
+            expired
           }
-          const child = {
+          await createChildNode({
             id: createNodeId(`Event >>> ${date} >>> ${title}`),
             ...fields,
-            parent: node.id,
-            children: [],
             internal: {
               type: 'CommunityEvent',
               contentDigest: createContentDigest(fields)
             }
-          }
-          await createNode(child)
-          await createParentChildLink({ parent: node, child })
+          })
         })
       )
 
-    return Promise.all([eventsPromise])
+    /*
+       Create a catch-all node with the rest of the data from community.json
+       accessible as a JSON field. This way, we don't have to duplicate imported
+       data before updating all Community components.
+    */
+    const restPromise = createChildNode({
+      id: createNodeId(`DVCCommunityRest`),
+      content: rest,
+      internal: {
+        type: 'CommunityRest',
+        contentDigest: createContentDigest(rest)
+      }
+    })
+
+    return Promise.all([heroesPromise, eventsPromise, restPromise])
   }
 }

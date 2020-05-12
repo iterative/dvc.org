@@ -8,9 +8,8 @@ import Link from '../../Link'
 import Block from '../Block'
 import Section from '../Section'
 import { logEvent } from '../../../utils/front/ga'
-import { isExpired } from '../../../utils/shared/expiration.js'
+import { useCommunityData } from '../../../utils/front/community'
 
-import data from '../../../../content/community.json'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
 
@@ -23,12 +22,6 @@ interface IEvent {
   title: string
   url: string
 }
-
-const { description, mobileDescription, title } = data.section.events
-const { events } = data
-const eventsItems = ((): Array<IEvent | null> => {
-  return events.filter(event => !isExpired(event))
-})()
 
 const Event: React.FC<IEvent> = ({
   theme,
@@ -91,7 +84,16 @@ const Event: React.FC<IEvent> = ({
 }
 
 const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
-  if (!events.length || !eventsItems) {
+  const {
+    events,
+    rest: {
+      section: {
+        events: { description, mobileDescription, title }
+      }
+    }
+  } = useCommunityData()
+
+  if (!events) {
     return null
   }
 
@@ -106,7 +108,7 @@ const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
         title={title}
       >
         <div className={sharedStyles.items}>
-          {eventsItems.map((event, key) => (
+          {events.map((event, key) => (
             <div className={sharedStyles.item} key={key}>
               {event && <Event {...event} theme={theme} key={event.url} />}
             </div>

@@ -11,16 +11,14 @@ import Section from '../Section'
 import { logEvent } from '../../../utils/front/ga'
 import { getFirstPage } from '../../../utils/shared/sidebar'
 import { useCommentsCount } from '../../../utils/front/api'
+import { useCommunityData } from '../../../utils/front/community'
 import getPosts from '../../../queries/posts'
 import { pluralizeComments } from '../../../utils/front/i18n'
 
-import data from '../../../../content/community.json'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
 
 const docsPage = getFirstPage()
-const { description, mobileDescription, title } = data.section.learn
-const { documentation, userContent } = data
 
 const logPostAll = (): void => logEvent('community', 'blog', 'all')
 const logDocumentationAll = (): void =>
@@ -182,6 +180,15 @@ const Documentation: React.FC<ICommunityDocumentationProps> = ({
 
 const Learn: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
   const posts = getPosts()
+  const {
+    rest: {
+      documentation,
+      userContent,
+      section: {
+        learn: { description, mobileDescription, title }
+      }
+    }
+  } = useCommunityData()
 
   return (
     <LayoutWidthContainer className={sharedStyles.wrapper}>
