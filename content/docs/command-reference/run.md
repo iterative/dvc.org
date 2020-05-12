@@ -161,8 +161,8 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   determined by the logic described in the `-f` option) without asking for
   confirmation.
 
-- `--no-run-cache` - forcefully execute the `command` again, even if the
-  same `dvc run` command has already been run in this workspace. Useful if the
+- `--no-run-cache` - forcefully execute the `command` again, even if the same
+  `dvc run` command has already been run in this workspace. Useful if the
   command's code is non-deterministic (meaning it produces different outputs
   from the same list of inputs).
 
