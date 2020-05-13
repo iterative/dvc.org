@@ -1,16 +1,10 @@
 {
   "hero": [
     {
-      "pictureDesktop": "/img/community/banner.png",
-      "pictureMobile": "/img/community/banner-mobile.png",
-      "url": "https://www.mlprague.com/#schedule-saturday",
-      "expires": "2020-05-10"
-    },
-    {
       "pictureDesktop": "/img/community/header_mailing_list_skinny.png",
-      "pictureMobile": "/img/community/mobile_header_mailing_list.png",
+      "pictureMobile": "/img/community/mobile_header_mailing_list_skinny.png",
       "url": "#subscribe",
-      "expires": false
+      "expires": "false"
     }
   ],
   "section": {
@@ -54,25 +48,25 @@
   ],
   "userContent": [
     {
+      "url": "https://medium.com/acing-ai/ml-ops-data-science-version-control-5935c49d1b76",
+      "title": "ML Ops: Data Science Version Control",
+      "author": "Vimarsh Karbhari",
+      "date": "2020-04-23",
+      "pictureUrl": "/img/community/ugc/medium_logo.png"
+    },
+    {
+      "url": "https://blog.codecentric.de/en/2020/01/remote-training-gitlab-ci-dvc/",
+      "title": "Manage your Data Science Project in R",
+      "author": "Marcel Ribeiro-Dantas",
+      "date": "2020-03-05",
+      "pictureUrl": "/uploads/avatars/marcel.jpg"
+    },
+    {
       "url": "https://blog.codecentric.de/en/2020/01/remote-training-gitlab-ci-dvc/",
       "title": "Remote training with GitLab-CI and DVC",
       "author": "Marcel Mikl and Bert Besser",
       "date": "2020-01-28",
       "pictureUrl": "/img/community/ugc/codecentric.png"
-    },
-    {
-      "url": "https://martinfowler.com/articles/cd4ml.html",
-      "title": "Continuous Delivery for Machine Learning",
-      "author": "Danilo Sato, Arif Wider and Christoph Windheuser",
-      "date": "2019-09-20",
-      "pictureUrl": "/img/community/ugc/fowler_icon.ico"
-    },
-    {
-      "url": "https://towardsdatascience.com/mlops-reducing-the-technical-debt-of-machine-learning-dac528ef39de",
-      "title": "MLOps: Reducing the Technical Debt of Machine Learning",
-      "author": "Saurav Chakravorty",
-      "date": "2019-12-21",
-      "pictureUrl": "/img/community/ugc/tds_logo.png"
     }
   ],
   "events": [
