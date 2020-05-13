@@ -61,12 +61,7 @@ module.exports = {
   },
   async onParseJsonFile(api, { content }) {
     const createChildNode = childNodeCreator(api)
-    const {
-      node,
-      createNodeId,
-      createContentDigest,
-      actions: { createNode, createParentChildLink }
-    } = api
+    const { node, createNodeId, createContentDigest } = api
     // Only operate on the File node for data.json
     if (node.relativePath !== 'community.json') return null
     const { events, hero, ...rest } = content
