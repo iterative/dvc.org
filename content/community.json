@@ -83,8 +83,7 @@
       "description": "Paweł Redzyński will talk about open source tools for versioning machine learning projects",
       "city": "Prague",
       "date": "2020-03-20",
-      "pictureUrl": "/img/community/events/mlprague.jpg",
-      "expires": false
+      "pictureUrl": "/img/community/events/mlprague.jpg"
     },
     {
       "url": "https://divops.org",

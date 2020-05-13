@@ -44,7 +44,7 @@ function dateIsExpired(expires) {
 function getExpirationFields(input) {
   const expires = getExpirationDate(input)
   return {
-    expires,
+    expires: expires && expires.toDate(),
     expired: dateIsExpired(expires)
   }
 }

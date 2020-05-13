@@ -67,9 +67,13 @@ export function useCommunityData(): ICommunityData {
     () => ({
       rest: data.rest.content,
       hero: data.hero.nodes[0],
-      // Pad arrays shorter than 3 items with null
+      // Return null if there are no items
+      // Otherwise, pad arrays shorter than 3 items with null
       // TODO change Events component so it doesn't require this
-      events: [0, 1, 2].map(i => data.events.nodes[i] || null)
+      events:
+        data.events.nodes.length > 0
+          ? [0, 1, 2].map(i => data.events.nodes[i] || null)
+          : null
     }),
     [data]
   )
