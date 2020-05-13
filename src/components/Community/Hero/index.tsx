@@ -2,7 +2,7 @@ import React from 'react'
 
 import LayoutWidthContainer from '../../LayoutWidthContainer'
 import ShowOnly from '../../ShowOnly'
-import Link from '../../Link'
+import Link, { ILinkProps } from '../../Link'
 import { logEvent } from '../../../utils/front/ga'
 import { scrollIntoLayout } from '../../../utils/front/scroll'
 
@@ -12,7 +12,7 @@ import styles from './styles.module.css'
 const logHero = (): void => logEvent('community', 'hero')
 
 // This special link component will smooth-scroll on local fragment links
-function MaybeSmoothLink(props): React.FC {
+const MaybeSmoothLink: React.FC<ILinkProps> = props => {
   const { href, children } = props
   if (href.startsWith('#')) {
     // Intercept local fragment links and turn them into a special
@@ -20,7 +20,7 @@ function MaybeSmoothLink(props): React.FC {
     return (
       <Link
         {...props}
-        onClick={() => {
+        onClick={(): void => {
           logHero()
           scrollIntoLayout(document.getElementById(href.slice(1)), {
             smooth: true,
