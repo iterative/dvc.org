@@ -2,10 +2,9 @@ import React from 'react'
 
 import LayoutWidthContainer from '../../LayoutWidthContainer'
 import ShowOnly from '../../ShowOnly'
-import Link, { ILinkProps } from '../../Link'
+import Link from '../../Link'
 import { useCommunityData } from '../../../utils/front/community'
 import { logEvent } from '../../../utils/front/ga'
-import { scrollIntoLayout } from '../../../utils/front/scroll'
 
 import styles from './styles.module.css'
 
@@ -17,31 +16,6 @@ export interface IHero {
   pictureMobile: string
 }
 
-// This special link component will smooth-scroll on local fragment links
-const MaybeSmoothLink: React.FC<ILinkProps> = props => {
-  const { href, children } = props
-  if (href.startsWith('#')) {
-    // Intercept local fragment links and turn them into a special
-    // smooth-scrolling `a` element
-    return (
-      <Link
-        {...props}
-        onClick={(): void => {
-          logHero()
-          scrollIntoLayout(document.getElementById(href.slice(1)), {
-            smooth: true
-          })
-        }}
-      >
-        {children}
-      </Link>
-    )
-  } else {
-    // Pass through all props to a normal link otherwise
-    return <Link {...props} />
-  }
-}
-
 const Hero: React.FC = () => {
   const { hero } = useCommunityData()
 
@@ -51,10 +25,13 @@ const Hero: React.FC = () => {
 
   return (
     <LayoutWidthContainer className={styles.container}>
-      <MaybeSmoothLink
+      <Link
         className={styles.link}
-        href={data.hero.url}
+        href={hero.url}
         onClick={logHero}
+        scrollOptions={{
+          smooth: true
+        }}
       >
         <ShowOnly on="desktop">
           <img className={styles.picture} src={hero.pictureDesktop} alt="" />
@@ -62,7 +39,7 @@ const Hero: React.FC = () => {
         <ShowOnly on="mobile">
           <img className={styles.picture} src={hero.pictureMobile} alt="" />
         </ShowOnly>
-      </MaybeSmoothLink>
+      </Link>
     </LayoutWidthContainer>
   )
 }
