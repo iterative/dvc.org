@@ -41,9 +41,11 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
           <SearchForm />
           <SidebarMenu
             currentPath={restProps.location.pathname}
-            onClick={(): void =>
-              matchMedia('--xs-scr') ? toggleMenu() : undefined
-            }
+            onClick={(isLeafItemClicked: boolean): void => {
+              if (matchMedia('--xs-scr') && isLeafItemClicked) {
+                toggleMenu()
+              }
+            }}
           />
         </div>
         <div className={styles.content}>{children}</div>
