@@ -30,7 +30,7 @@ a POSIX-like command line terminal in Windows.
 $ conda install -c conda-forge dvc
 ```
 
-> Currently, it supports Python 3.5-3.7
+> Currently, it supports Python 3.6-3.8
 
 ## Install with pip
 
