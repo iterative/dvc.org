@@ -27,7 +27,7 @@ export interface ICommunityData {
     }
   }
   hero: IHero
-  events: Array<IEvent | null>
+  events: Array<IEvent | null> | null
 }
 
 export function useCommunityData(): ICommunityData {
@@ -64,7 +64,7 @@ export function useCommunityData(): ICommunityData {
     }
   `)
   return useMemo(
-    () => ({
+    (): ICommunityData => ({
       rest: data.rest.content,
       hero: data.hero.nodes[0],
       // Return null if there are no items
