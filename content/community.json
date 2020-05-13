@@ -1,8 +1,8 @@
 {
   "hero": [
     {
-      "pictureDesktop": "/img/community/header_mailing_list_skinny.png",
-      "pictureMobile": "/img/community/mobile_header_mailing_list_skinny.png",
+      "pictureDesktop": "/img/community/default-banner.png",
+      "pictureMobile": "/img/community/default-mobile-banner.png",
       "url": "#subscribe",
       "expires": false
     }
