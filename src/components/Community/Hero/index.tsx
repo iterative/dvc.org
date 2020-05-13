@@ -23,8 +23,7 @@ const MaybeSmoothLink: React.FC<ILinkProps> = props => {
         onClick={(): void => {
           logHero()
           scrollIntoLayout(document.getElementById(href.slice(1)), {
-            smooth: true,
-            duration: 1.5
+            smooth: true
           })
         }}
       >
