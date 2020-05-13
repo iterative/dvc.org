@@ -4,11 +4,38 @@ import LayoutWidthContainer from '../../LayoutWidthContainer'
 import ShowOnly from '../../ShowOnly'
 import Link from '../../Link'
 import { logEvent } from '../../../utils/front/ga'
+import { scrollIntoLayout } from '../../../utils/front/scroll'
 
 import data from '../data.json'
 import styles from './styles.module.css'
 
 const logHero = (): void => logEvent('community', 'hero')
+
+// This special link component will smooth-scroll on local fragment links
+function MaybeSmoothLink(props): React.FC {
+  const { href, children } = props
+  if (href.startsWith('#')) {
+    // Intercept local fragment links and turn them into a special
+    // smooth-scrolling `a` element
+    return (
+      <Link
+        {...props}
+        onClick={() => {
+          logHero()
+          scrollIntoLayout(document.getElementById(href.slice(1)), {
+            smooth: true,
+            duration: 1.5
+          })
+        }}
+      >
+        {children}
+      </Link>
+    )
+  } else {
+    // Pass through all props to a normal link otherwise
+    return <Link {...props} />
+  }
+}
 
 const Hero: React.FC = () => {
   if (!data.hero) {
@@ -17,7 +44,7 @@ const Hero: React.FC = () => {
 
   return (
     <LayoutWidthContainer className={styles.container}>
-      <Link className={styles.link} href={data.hero.url} onClick={logHero}>
+      <MaybeSmoothLink className={styles.link} href={data.hero.url}>
         <ShowOnly on="desktop">
           <img
             className={styles.picture}
@@ -32,7 +59,7 @@ const Hero: React.FC = () => {
             alt=""
           />
         </ShowOnly>
-      </Link>
+      </MaybeSmoothLink>
     </LayoutWidthContainer>
   )
 }
