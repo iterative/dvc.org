@@ -94,8 +94,7 @@ const Contribute: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                 <Link
                   className={sharedStyles.button}
                   style={theme}
-                  href="https://dvc.org/blog/dvc-ambassador-program-announcement"
-                  target="_blank"
+                  href="/blog/dvc-ambassador-program-announcement"
                   onClick={logAmbassador}
                 >
                   Learn more!
