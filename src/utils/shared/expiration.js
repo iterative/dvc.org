@@ -10,12 +10,13 @@ const DEFAULT_EXPIRATION_OFFSET = { days: 7 }
 */
 function getExpirationDate({ date, expires }) {
   if (!expires) {
+    // When expires is false, ignore the given date.
     if (expires === false) {
-      return false
+      return null
     } else if (date) {
       return moment(date).add(DEFAULT_EXPIRATION_OFFSET)
     } else {
-      return false
+      return null
     }
   } else {
     return moment(expires)
@@ -30,20 +31,20 @@ function getExpirationDate({ date, expires }) {
    information.
 */
 function dateIsExpired(expires) {
-  return expires && expires.isBefore(moment())
+  return Boolean(expires && expires.isBefore(moment()))
 }
 
 /*
    This convenience function provides both the expiration date as a JS Date as
-   well as a boolean telling if it has already passed.
+   well as a boolean telling if that date is expired.
 
    The returned expiration date is formatted from a moment to a JS Date for Gatsby
-   The fields from this function are ready to add to any node as-is
+   The fields from this function are ready to add to a node as-is
 */
 function getExpirationFields(input) {
   const expires = getExpirationDate(input)
   return {
-    expires: expires ? expires.toDate() : null,
+    expires,
     expired: dateIsExpired(expires)
   }
 }

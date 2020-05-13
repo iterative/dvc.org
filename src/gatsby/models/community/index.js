@@ -24,6 +24,18 @@ module.exports = {
   }) {
     createTypes([
       buildObjectType({
+        name: 'CommunityHero',
+        interfaces: ['Node'],
+        fields: {
+          date: 'Date',
+          expires: 'Date',
+          expired: 'Boolean',
+          url: 'String',
+          pictureDesktop: 'String',
+          pictureMobile: 'String'
+        }
+      }),
+      buildObjectType({
         name: 'CommunityEvent',
         interfaces: ['Node'],
         fields: {
@@ -90,7 +102,7 @@ module.exports = {
           const fields = {
             ...event,
             sourceIndex,
-            date: moment(date).toDate(),
+            date: date ? moment(date).toDate() : null,
             expires,
             expired
           }
