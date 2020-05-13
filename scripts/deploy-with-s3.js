@@ -2,7 +2,6 @@
 'use strict'
 require('dotenv').config()
 const path = require('path')
-const crypto = require('crypto')
 const PRODUCTION_PREFIX = 'dvc-org-prod'
 
 const { DEPLOY_OPTIONS } = process.env
@@ -60,8 +59,6 @@ const cacheDirs = [
   [publicDirName, '/'],
   ['.cache', '-cache/']
 ]
-
-const fs = require('fs')
 
 const { s3Prefix, withEntries, prefixIsEmpty } = require('./s3-utils')
 const { move } = require('fs-extra')
