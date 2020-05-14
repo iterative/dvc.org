@@ -82,7 +82,7 @@ $ dvc plots show logs.csv
 file:///Users/usr/src/plot/logs.csv.html
 ```
 
-![](/img/plot_show.svg)
+![](/img/plots_show.svg)
 
 Use the `-y` option to change the column to plot:
 
@@ -91,7 +91,7 @@ $ dvc plots show -y loss logs.csv
 file:///Users/usr/src/plot/logs.csv.html
 ```
 
-![](/img/plot_show_field.svg)
+![](/img/plots_show_field.svg)
 
 ### Plot file size
 
@@ -178,7 +178,7 @@ $ dvc plots show train.json
 file:///Users/usr/src/plot/train.json.html
 ```
 
-![](/img/plot_show_json.svg)
+![](/img/plots_show_json.svg)
 
 Same as with tabular data, use the `-y` option to change the field to plot:
 
@@ -187,4 +187,4 @@ $ dvc plots show -y accuracy train.json
 file:///Users/usr/src/plot/logs.json.html
 ```
 
-![](/img/plot_show_json_field.svg)
+![](/img/plots_show_json_field.svg)

@@ -93,7 +93,7 @@ $ dvc plots diff -d logs.csv
 file:///Users/usr/src/plot/logs.csv.html
 ```
 
-![](/img/plot_diff_workspace.svg)
+![](/img/plots_diff_workspace.svg)
 
 The difference between two versions (commit hashes, tags, or branches can be
 provided):
@@ -103,7 +103,7 @@ $ dvc plots diff -d logs.csv HEAD 0135527
 file:///Users/usr/src/plot/logs.csv.html
 ```
 
-![](/img/plot_diff.svg)
+![](/img/plots_diff.svg)
 
 ## Example: Confusion matrix
 
@@ -133,4 +133,4 @@ $ dvc plots diff -t confusion -x predicted -d classes.csv
 file:///Users/usr/src/test/plot_old/classes.csv.html
 ```
 
-![](/img/plot_diff_confusion.svg)
+![](/img/plots_diff_confusion.svg)

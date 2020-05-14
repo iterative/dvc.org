@@ -37,7 +37,7 @@ $ dvc plots diff -d logs.csv
 file:///Users/dmitry/src/plot/logs.html
 ```
 
-![](/img/plot_auc.svg)
+![](/img/plots_auc.svg)
 
 DVC generates plots as HTML files that can be open with a web browser. These
 HTML files use [Vega-Lite](https://vega.github.io/vega-lite/). Vega is a
@@ -195,7 +195,7 @@ $ dvc plots show logs.csv
 file:///Users/usr/src/plot/logs.csv.html
 ```
 
-![](/img/plot_show.svg)
+![](/img/plots_show.svg)
 
 Difference in this metric between the current project version and the previous
 commit:
@@ -205,7 +205,7 @@ $ dvc plots diff -d logs.csv HEAD^
 file:///Users/usr/src/plot/logs.csv.html
 ```
 
-![](/img/plot_diff.svg)
+![](/img/plots_diff.svg)
 
 Visualize a specific field:
 
@@ -214,7 +214,7 @@ $ dvc plots show -y loss logs.csv
 file:///Users/usr/src/plot/logs.html
 ```
 
-![](/img/plot_show_field.svg)
+![](/img/plots_show_field.svg)
 
 ## Example: Confusion matrix
 
@@ -241,7 +241,7 @@ $ dvc plots show classes.csv --template confusion -x actual -y predicted
 file:///Users/usr/src/plot/classes.csv.html
 ```
 
-![](/img/plot_show_confusion.svg)
+![](/img/plots_show_confusion.svg)
 
 > A confusion matrix [template](/doc/command-reference/plots#plot-templates) is
 > predefined in DVC (found in `.dvc/plot/confusion.json`).
