@@ -24,6 +24,9 @@ operation:
   > repository, only [DVC-files](/doc/user-guide/dvc-file-format) that are
   > needed to download or reproduce them.
 
+- `.dvc/plots`: Directory for
+  [Plot templates](/doc/command-reference/plots#plot-templates).
+
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 
 - `.dvc/tmp/index`: Directory for remote index files that are used for
