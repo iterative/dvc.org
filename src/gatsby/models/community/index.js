@@ -31,6 +31,7 @@ module.exports = {
           expires: 'Date',
           expired: 'Boolean',
           url: 'String',
+          sourceIndex: 'Int',
           pictureDesktop: 'String',
           pictureMobile: 'String'
         }
