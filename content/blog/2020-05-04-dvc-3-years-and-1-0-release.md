@@ -172,7 +172,7 @@ can visualize how, for example, their model accuracy in the latest commit
 differs from another commit (or even multiple commits).
 
 ```dvc
-$ dvc plot diff -d logs.csv HEAD HEAD^ d1e4d848 baseline_march
+$ dvc plots diff -d logs.csv HEAD HEAD^ d1e4d848 baseline_march
 file:///Users/dmitry/src/plot/logs.csv.html
 $ open logs.csv.html
 ```
@@ -180,7 +180,7 @@ $ open logs.csv.html
 ![](/uploads/images/2020-05-04/dvc-plot.svg)
 
 ```dvc
-$ dvc plot diff -d logs.csv HEAD HEAD^ d1e4d848 baseline_march \
+$ dvc plots diff -d logs.csv HEAD HEAD^ d1e4d848 baseline_march \
         -x loss --template scatter
 file:///Users/dmitry/src/plot/logs.csv.html
 $ open logs.csv.html

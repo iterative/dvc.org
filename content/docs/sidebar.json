@@ -316,16 +316,16 @@
         ]
       },
       {
-        "label": "plot",
-        "slug": "plot",
-        "source": "plot/index.md",
+        "label": "plots",
+        "slug": "plots",
+        "source": "plots/index.md",
         "children": [
           {
-            "label": "plot show",
+            "label": "plots show",
             "slug": "show"
           },
           {
-            "label": "plot diff",
+            "label": "plots diff",
             "slug": "diff"
           }
         ]

@@ -1,11 +1,11 @@
-# plot show
+# plots show
 
-Generate a plot image from from a [metrics](/doc/command-reference/plot) file.
+Generate a plot image from from a [metrics](/doc/command-reference/plots) file.
 
 ## Synopsis
 
 ```usage
-usage: dvc plot show [-h] [-q | -v] [-t [TEMPLATE]] [-f FILE]
+usage: dvc plots show [-h] [-q | -v] [-t [TEMPLATE]] [-f FILE]
                      [-s SELECT] [-x X] [-y Y] [--stdout]
                      [--no-csv-header] [--no-html] [--title TITLE]
                      [--xlab XLAB] [--ylab YLAB] [datafile]
@@ -17,14 +17,14 @@ positional arguments:
 ## Description
 
 This command provides a quick way to visualize
-[continuous metrics](/doc/command-reference/plot) such as loss functions, AUC
-curves, confusion matrices, etc. Please see `dvc plot` for information on the
+[continuous metrics](/doc/command-reference/plots) such as loss functions, AUC
+curves, confusion matrices, etc. Please see `dvc plots` for information on the
 supported data formats and other relevant details about DVC plots.
 
 ## Options
 
 - `-t [TEMPLATE], --template [TEMPLATE]` - File to be injected with data. The
-  default template is `.dvc/plot/default.json`. See more details in `dvc plot`.
+  default template is `.dvc/plot/default.json`. See more details in `dvc plots`.
 
 - `-f FILE, --file FILE` - Name of the generated file. By default, the output
   file name is equal to the input filename with additional `.html` suffix or
@@ -78,7 +78,7 @@ epoch,accuracy,loss,val_accuracy,val_loss
 By default, this command plots the last column of the table (see `-y` option):
 
 ```dvc
-$ dvc plot show logs.csv
+$ dvc plots show logs.csv
 file:///Users/usr/src/plot/logs.csv.html
 ```
 
@@ -87,7 +87,7 @@ file:///Users/usr/src/plot/logs.csv.html
 Use the `-y` option to change the column to plot:
 
 ```dvc
-$ dvc plot show -y loss logs.csv
+$ dvc plots show -y loss logs.csv
 file:///Users/usr/src/plot/logs.csv.html
 ```
 
@@ -103,7 +103,7 @@ which can help reduce the file size:
 $ ls -lh /Users/usr/src/plot/logs.csv.html
 -rw-r--r-- 1 usr grp 2.8K May  9 19:39 /Users/usr/src/plot/logs.csv.html
 
-$ dvc plot show -y loss --select loss logs.csv
+$ dvc plots show -y loss --select loss logs.csv
 file:///Users/usr/src/plot/logs.csv.html
 
 $ ls -lh /Users/usr/src/plot/logs.csv.html
@@ -117,7 +117,7 @@ option. A field or column can be specified with `--select` by it's numeric
 position (starting with `0`):
 
 ```dvc
-$ dvc plot show --no-csv-header --select 2 logs.csv
+$ dvc plots show --no-csv-header --select 2 logs.csv
 file:///Users/usr/src/plot/logs.csv.html
 ```
 
@@ -130,7 +130,7 @@ or JPEG, or to include differently into a web app. The `--no-html` option
 prevents wrapping the plot in HTML. Note that the resulting file is JSON:
 
 ```dvc
-$ dvc plot show --select accuracy --no-html logs.csv
+$ dvc plots show --select accuracy --no-html logs.csv
 file:///Users/usr/src/plot/logs.csv.json
 ```
 
@@ -174,7 +174,7 @@ DVC identifies and plots JSON objects from the first JSON array found in the
 file:
 
 ```dvc
-$ dvc plot show train.json
+$ dvc plots show train.json
 file:///Users/usr/src/plot/train.json.html
 ```
 
@@ -183,7 +183,7 @@ file:///Users/usr/src/plot/train.json.html
 Same as with tabular data, use the `-y` option to change the field to plot:
 
 ```dvc
-$ dvc plot show -y accuracy train.json
+$ dvc plots show -y accuracy train.json
 file:///Users/usr/src/plot/logs.json.html
 ```
 

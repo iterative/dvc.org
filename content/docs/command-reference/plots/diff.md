@@ -1,12 +1,12 @@
-# plot diff
+# plots diff
 
-Show multiple versions of [continuous metrics](/doc/command-reference/plot) by
+Show multiple versions of [continuous metrics](/doc/command-reference/plots) by
 plotting them in a single image.
 
 ## Synopsis
 
 ```usage
-usage: dvc plot diff [-h] [-q | -v] [-t [TEMPLATE]] [-d [DATAFILE]] [-f FILE]
+usage: dvc plots diff [-h] [-q | -v] [-t [TEMPLATE]] [-d [DATAFILE]] [-f FILE]
                      [-s SELECT] [-x X] [-y Y] [--stdout] [--no-csv-header]
                      [--no-html] [--title TITLE] [--xlab XLAB] [--ylab YLAB]
                      [revisions [revisions ...]]
@@ -23,15 +23,15 @@ files.
 
 The metrics file needs to be specified through `-d`/`--datafile` option. Also, a
 plot can be customized with
-[plot templates](/doc/command-reference/plot#plot-templates) using the
+[plot templates](/doc/command-reference/plots#plot-templates) using the
 `--template` option. To learn more about the file formats and templates please
-see `dvc plot`.
+see `dvc plots`.
 
 `revisions` are Git commit hashes, tag, or branch names. If none are specified,
-`dvc plot diff` compares metrics currently present in the <abbr>workspace</abbr>
-(uncommitted changes) with the latest committed version. A single specified
-revision results in plotting the difference in metrics between the workspace and
-that version.
+`dvc plots diff` compares metrics currently present in the
+<abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
+A single specified revision results in plotting the difference in metrics
+between the workspace and that version.
 
 In contrast to commands such as `git diff`, `dvc metrics diff` and
 `dvc params diff`, **any number of `revisions` can be provided**, and the
@@ -48,7 +48,7 @@ corresponding [DVC-files](/doc/user-guide/dvc-file-format).
 
 - `-t [TEMPLATE], --template [TEMPLATE]` - File to be injected with data. The
   default template is `.dvc/plot/default.json`. See
-  [Plot templates](/doc/command-reference/plot#plot-templates).
+  [Plot templates](/doc/command-reference/plots#plot-templates).
 
 - `-f FILE, --file FILE` - Name of the generated file. By default, the output
   file name is equal to the input filename with additional `.html` suffix or
@@ -89,7 +89,7 @@ To visualize the difference between uncommitted changes of a metrics file and
 the last commit:
 
 ```dvc
-$ dvc plot diff -d logs.csv
+$ dvc plots diff -d logs.csv
 file:///Users/usr/src/plot/logs.csv.html
 ```
 
@@ -99,7 +99,7 @@ The difference between two versions (commit hashes, tags, or branches can be
 provided):
 
 ```dvc
-$ dvc plot diff -d logs.csv HEAD 0135527
+$ dvc plots diff -d logs.csv HEAD 0135527
 file:///Users/usr/src/plot/logs.csv.html
 ```
 
@@ -124,12 +124,12 @@ cat,turtle
 ```
 
 A predefined confusion matrix
-[template](/doc/command-reference/plot#plot-templates) (in
-`.dvc/plot/confusion.json`) shows how metric differences can be faceted by
+[template](/doc/command-reference/plots#plot-templates) (in
+`.dvc/plots/confusion.json`) shows how metric differences can be faceted by
 separate plots:
 
 ```dvc
-$ dvc plot diff -t confusion -x predicted -d classes.csv
+$ dvc plots diff -t confusion -x predicted -d classes.csv
 file:///Users/usr/src/test/plot_old/classes.csv.html
 ```
 
