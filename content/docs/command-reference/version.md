@@ -47,14 +47,16 @@ The detail of DVC version depends upon the way of installing DVC.
 - **Development version**: `pip install git+git://github.com/iterative/dvc` will
   install DVC using the `master` branch of DVC's repository. Another way of
   setting up the development version is to clone the repository and run
-  `pip install .`. The master branch is continuously being updated with changes
-  that might not be ready to publish yet. Therefore installing using the above
-  command might have issues regarding its usage. So to trace any error reported
-  with this setup, we need to know exactly which version is being used. For this
-  we rely on a Git commit hash, that is displayed in this command's output like
-  this: `0.40.2+292cab.mod`. The part before `+` is the `_BASE_VERSION`, and the
-  following part is the SHA of the tip of the `master` branch. The optional
-  suffix `.mod` means that code is modified.
+  `pip install .`.
+
+  The master branch is constantly updated with changes that might not be ready
+  to publish yet. Therefore, installing with this method might result in usage
+  issues. To trace any error reported with this setup, we need to know exactly
+  which version is being used. For this we rely on a Git commit hash that is
+  displayed in the output of `dvc version` like this: `0.40.2+292cab.mod`. The
+  part before `+` is the `_BASE_VERSION`, and the following part is the commit
+  hash of the tip of the `master` branch. The optional suffix `.mod` means that
+  code is modified.
 
 ### What we mean by "Binary"
 

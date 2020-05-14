@@ -6,7 +6,8 @@ projects</abbr>, and corresponding [DVC-files](/doc/user-guide/dvc-file-format).
 ## Synopsis
 
 ```usage
-usage: dvc update [-h] [-q | -v] [--rev <commit>] targets [targets ...]
+usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R]
+                  targets [targets ...]
 
 positional arguments:
   targets        DVC-files to update.
@@ -43,6 +44,10 @@ dvc update --rev master
 
   > Note that this changes the `rev` field in the import stage, fixing it to the
   > revision.
+
+- `-R`, `--recursive` - determines the files to update by searching each target
+  directory and its subdirectories for DVC-files to inspect. If there are no
+  directories among the targets, this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

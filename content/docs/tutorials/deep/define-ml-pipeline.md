@@ -47,9 +47,9 @@ $ git add .
 $ git commit -m "add raw dataset"
 ```
 
-You have probably already noticed that the actual data file was not committed to
-the repository. The reason is that DVC included the file into `data/.gitignore`,
-so Git ignores this data file from now on.
+You may have noticed that the actual data file was not committed to the Git
+repo. The reason is that DVC included it in `data/.gitignore`, so that Git
+ignores this data file from now on.
 
 > DVC will always exclude data files from the Git repository by listing them in
 > `.gitignore`.
@@ -149,16 +149,16 @@ larger data pipeline, so we'll need to specify its <abbr>dependencies</abbr> and
 include input files or directories, and the actual command to run. Outputs are
 files written to by the command, if any.
 
-- Option `-d file.tsv` should be used to specify a dependency file or directory.
-  The dependency can be a regular file from a repository or a data file.
+- Option `-d in.tsv` specifies a dependency file or directory. The dependency
+  can be a regular file from a repository or a data file.
 
-- `-o file.tsv` (lower case o) specifies an output data file. DVC will track
-  this data file by creating a corresponding
-  [DVC-file](/doc/user-guide/dvc-file-format) (as if running `dvc add file.tsv`
+- `-o out.dat` (lower case o) specifies an output data file. DVC will track this
+  data file by creating a corresponding
+  [DVC-file](/doc/user-guide/dvc-file-format) (as if running `dvc add out.dat`
   after `dvc run` instead).
 
-- `-O file.tsv` (upper case O) specifies a simple output file (not to be added
-  to DVC).
+- `-O tmp.dat` (upper case O) specifies a simple output file (not to be added to
+  DVC).
 
 It's important to specify dependencies and outputs before the command to run
 itself.
@@ -228,7 +228,7 @@ Parent fields in the file above include:
 - `outs`: Outputs with MD5 hashes
 
 And (as with the `dvc add` command) the `data/.gitignore` file was modified. Now
-it includes the unarchived command output file `Posts.xml`.
+it includes the command output file, `Posts.xml`.
 
 ```dvc
 $ git status -s
@@ -294,8 +294,8 @@ Positive size 2049, negative size 97951
 The result of the commands above are two
 [stage files](/doc/command-reference/run) corresponding to each of the commands,
 `Posts-test.tsv.dvc` and `Posts.tsv.dvc`. Also, a `code/conf.pyc` file was
-created. This type of file should not be tracked by Git. Let's manually include
-this type of file into `.gitignore`.
+created by the command itself. There's no need track this output file with Git.
+Let's manually include this type of file into `.gitignore`.
 
 ```dvc
 $ git status -s
@@ -316,7 +316,7 @@ $ git commit -m "Process to TSV and separate test and train"
 ```
 
 Let's run and save the following commands for our pipeline. First, define the
-feature extraction stage, that takes `train` and `test` TSVs and generates
+feature extraction stage, that takes `train` and `test` TSV files and generates
 corresponding matrix files:
 
 ```dvc
@@ -370,7 +370,7 @@ into a [metric](/doc/command-reference/metrics) file in accordance with the `-M`
 option.
 
 The result of the last three `dvc run` commands execution is three stage files
-and a modified .gitignore file. All the changes should be committed with Git:
+and a modified .gitignore file. Let's commit all the changes with Git:
 
 ```dvc
 $ git status -s
@@ -399,9 +399,9 @@ $ dvc metrics show
 data/eval.txt:AUC: 0.624652
 ```
 
-This is probably not the best AUC that you have seen. In this document, our
-focus is DVC, not ML modeling and we use a relatively small dataset without any
-advanced ML techniques.
+> We get that this is probably not the best AUC that you have seen! In this
+> document, our focus is DVC, not ML modeling, so we use a relatively small
+> dataset without any advanced ML techniques.
 
 In the next chapter we will try to improve the metrics by changing our modeling
 code and using reproducibility in our pipeline.

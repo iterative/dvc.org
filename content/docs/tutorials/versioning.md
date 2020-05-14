@@ -61,10 +61,10 @@ $ pip install -r requirements.txt
 
 ### Expand to learn about DVC internals
 
-The repository you cloned is already DVC-initialized. There should be a `.dvc/`
-directory with the `config` and `.gitignore` files. These and other files and
-directories are hidden from user, as typically there's no need to interact with
-them directly. See
+The repository you cloned is already DVC-initialized. It already contains a
+`.dvc/` directory with the `config` and `.gitignore` files. These and other
+files and directories are hidden from user, as typically there's no need to
+interact with them directly. See
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
 more.
 
@@ -125,8 +125,8 @@ Let's capture the current state of this dataset with `dvc add`:
 $ dvc add data
 ```
 
-This command should be used instead of `git add` on files or directories that
-are too large to be tracked with Git: usually input datasets, models, some
+You can use this command instead of `git add` on files or directories that are
+too large to be tracked with Git: usually input datasets, models, some
 intermediate results, etc. It tells Git to ignore the directory and puts it into
 the <abbr>cache</abbr> (while keeping a
 [file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
@@ -355,14 +355,12 @@ managing ML projects simpler.
 First, you may have noticed that the script that trains the model is written in
 a monolithic way. It uses the `save_bottleneck_feature` function to
 pre-calculate the bottom, "frozen" part of the net every time it is run.
-Features are written into files, and the intention was probably that the
-`save_bottleneck_feature` can be commented out after the first run. It's not
-very convenient to remember to comment/uncomment it every time dataset is
-changed.
+Features are written into files. The intention was probably that the
+`save_bottleneck_feature` can be commented out after the first run, but it's not
+very convenient having to remember to do si it every time the dataset changes.
 
 Here's where the [pipelines](/doc/command-reference/pipeline) feature of DVC
 comes in handy. We touched on it briefly when we described `dvc run` and
-
 `dvc repro`. The next step would be splitting the script into two parts and
 utilizing pipelines. See [this example](/doc/tutorials/pipelines) to get
 hands-on experience with pipelines, and try to apply it here. Don't hesitate to

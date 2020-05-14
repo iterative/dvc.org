@@ -110,7 +110,7 @@ its
 > [CI/CD](https://en.wikipedia.org/wiki/CI/CD) tools.
 
 The same example applies to raw or intermediate <abbr>data artifacts</abbr> as
-well, of course.
+well.
 
 ## Examples: Get a misc. Git-tracked file
 

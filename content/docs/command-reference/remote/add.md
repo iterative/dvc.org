@@ -159,16 +159,17 @@ For more information about the variables DVC supports, please visit
 ### Click for Microsoft Azure Blob Storage
 
 ```dvc
-$ dvc remote add myremote azure://my-container-name/path
-$ dvc remote modify --local myremote connection_string "my-connection-string"
+$ dvc remote add --local myremote azure://my-container-name/path
+$ dvc remote modify --local myremote connection_string \
+                            "my-connection-string"
 ```
 
 > The connection string contains access to data and is inserted into the
-> `.dvc/config` file. Therefore, it is safer to add the connection string with
-> the `--local` option, enforcing it to be written to a Git-ignored config file.
-> See `dvc remote modify` for a full list of Azure storage parameters.
+> `.dvc/config` file. Therefore, it is safer to add the remote with the
+> `--local` option, enforcing it to be written to a Git-ignored config file. See
+> `dvc remote modify` for a full list of Azure storage parameters.
 
-The Azure Blob Storage remote can also be configured entirely via environment
+The Azure Blob Storage remote can also be configured globally via environment
 variables:
 
 ```dvc
@@ -427,7 +428,6 @@ The list of remotes should now be:
 
 ```dvc
 $ dvc remote list
-
 myremote	s3://mybucket/myproject
 ```
 

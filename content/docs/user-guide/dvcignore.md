@@ -36,9 +36,9 @@ Keep in mind, that when you add to `.dvcignore` entries that affect one of the
 existing <abbr>outputs</abbr>, its status will change and DVC will behave as if
 that affected files were deleted.
 
-If DVC finds a `.dvcignore` file inside a dependency or in an output directory,
-it raises an error. Ignoring files inside such directory should be handled from
-`.dvcignore` files in upper levels of the project tree.
+If DVC finds a `.dvcignore` file inside a dependency or output directory, it
+raises an error. Ignoring files inside such directories should be handled from a
+`.dvcignore` in higher levels of the project tree.
 
 ## Syntax
 

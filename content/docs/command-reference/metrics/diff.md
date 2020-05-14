@@ -9,7 +9,8 @@ commits in the <abbr>DVC repository</abbr>, or between a commit and the
 ```usage
 usage: dvc metrics diff [-h] [-q | -v]
                         [--targets [<path> [<path> ...]]]
-                        [-t <type>] [-x <path>] [-R] [--show-json]
+                        [-t <type>] [-x <path>] [-R]
+                        [--show-json] [--show-md]
                         [a_ref] [b_ref]
 
 positional arguments:
@@ -63,6 +64,8 @@ They're calculated between two commits (hash, branch, tag, or any
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
+- `--show-md` - prints the command's output in Markdown table format.
+
 - `-h`, `--help` - prints the usage/help message, and exit.
 
 - `-q`, `--quiet` - do not write anything to standard output. Exit with 0 if no
@@ -105,7 +108,7 @@ had in the previous commit:
 
 ```
 $ dvc metrics diff
-    Path       Metric   Value   Change
-metrics.json   TP       531     4
-metrics.json   AUC      0.967   0.003
+Path          Metric    Value    Change
+metrics.json  TP        531      4
+metrics.json  AUC       0.967    0.003
 ```

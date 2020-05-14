@@ -149,8 +149,8 @@ meta: # Special field to contain arbitary user data
   email: john@xyz.com
 ```
 
-This is a standard DVC-file with only an `outs` entry. The hash value should
-correspond to an entry in the <abbr>cache</abbr>.
+This is a standard DVC-file with only one output (in the `outs` field). The hash
+value should correspond to a file path in the <abbr>cache</abbr>.
 
 > Note that the `meta` values above were entered manually for this example. Meta
 > values and `#` comments are not preserved when a DVC-file is overwritten with

@@ -1,6 +1,7 @@
 [
   {
-    "slug": "home",
+    "slug": "",
+    "label": "Home",
     "source": "index.md"
   },
   {
@@ -315,6 +316,21 @@
         ]
       },
       {
+        "label": "plot",
+        "slug": "plot",
+        "source": "plot/index.md",
+        "children": [
+          {
+            "label": "plot show",
+            "slug": "show"
+          },
+          {
+            "label": "plot diff",
+            "slug": "diff"
+          }
+        ]
+      },
+      {
         "label": "pull",
         "slug": "pull"
       },
@@ -424,17 +440,8 @@
     ]
   },
   {
-    "slug": "changelog",
-    "source": false,
-    "children": [
-      {
-        "label": "v0.12 - v0.18",
-        "slug": "0.18"
-      },
-      {
-        "label": "v0.19 - v0.35",
-        "slug": "0.35"
-      }
-    ]
+    "label": "Changelog",
+    "url": "https://github.com/iterative/dvc/releases",
+    "type": "external"
   }
 ]

@@ -54,16 +54,16 @@
   text-decoration: none;
   color: var(--color-gray-light);
 
-  &.active {
-    color: var(--color-gray-hover);
-  }
-
   &:hover {
     color: #3c3937;
 
     @media (--xs-scr) {
       color: var(--color-gray-light);
     }
+  }
+
+  &.active {
+    color: var(--color-gray-hover);
   }
 
   &::before {
