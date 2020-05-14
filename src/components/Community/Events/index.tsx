@@ -93,10 +93,6 @@ const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
     }
   } = useCommunityData()
 
-  if (!events) {
-    return null
-  }
-
   return (
     <LayoutWidthContainer className={sharedStyles.wrapper}>
       <Section
@@ -108,11 +104,20 @@ const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
         title={title}
       >
         <div className={sharedStyles.items}>
-          {events.map((event, key) => (
-            <div className={sharedStyles.item} key={key}>
-              {event && <Event {...event} theme={theme} key={event.url} />}
+          {events ? (
+            events.map((event, key) => (
+              <div className={sharedStyles.item} key={key}>
+                {event && <Event {...event} theme={theme} key={event.url} />}
+              </div>
+            ))
+          ) : (
+            <div className={styles.eventsPlaceholder}>
+              No upcoming events. Subscribe to be up to date!{' '}
+              <span role="img" aria-label="Subscribe below">
+                👇
+              </span>
             </div>
-          ))}
+          )}
         </div>
       </Section>
     </LayoutWidthContainer>
