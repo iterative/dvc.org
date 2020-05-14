@@ -6,7 +6,7 @@ DVC (<abbr>data artifacts</abbr>) and by Git.
 ## Synopsis
 
 ```usage
-usage: dvc list [-h] [-q | -v] [-R] [--outs-only] [--rev <commit>]
+usage: dvc list [-h] [-q | -v] [-R] [--dvc-only] [--rev <commit>]
                 url [path]
 
 positional arguments:
@@ -54,7 +54,7 @@ accessed with `dvc get`, `dvc import`, or [`dvc.api`](/doc/api-reference)
 
 - `-R`, `--recursive` - recursively prints contents of all subdirectories.
 
-- `--outs-only` - show only DVC-tracked files and directories
+- `--dvc-only` - show only DVC-tracked files and directories
   (<abbr>outputs</abbr>).
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any
