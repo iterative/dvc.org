@@ -9,18 +9,10 @@ const DEFAULT_EXPIRATION_OFFSET = { days: 7 }
    If expires is false, return false, as the item never expires.
 */
 function getExpirationDate({ date, expires }) {
-  if (!expires) {
-    // When expires is false, ignore the given date.
-    if (expires === false) {
-      return null
-    } else if (date) {
-      return moment(date).add(DEFAULT_EXPIRATION_OFFSET)
-    } else {
-      return null
-    }
-  } else {
-    return moment(expires)
-  }
+  if (expires === false) return null
+  if (expires) return moment(expires)
+  if (date) return moment(date).add(DEFAULT_EXPIRATION_OFFSET)
+  return null
 }
 
 /*
