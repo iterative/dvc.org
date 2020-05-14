@@ -16,8 +16,18 @@
 }
 
 .contentBlock {
-  overflow-y: auto;
+  overflow-y: scroll;
   margin-bottom: 27px;
+
+  &::-webkit-scrollbar {
+    -webkit-appearance: none;
+    width: 7px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #7e7e7e;
+  }
 }
 
 .separator {
