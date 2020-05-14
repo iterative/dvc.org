@@ -23,40 +23,25 @@ doesn't require installing a dedicated server; It can be used on-premises (e.g.
 SSH, NAS) or with any major cloud storage provider (Amazon S3, Microsoft Azure
 Blob Storage, Google Drive, Google Cloud Storage, etc).
 
-Let's say you already have a Git repository that uses a bunch of images stored
-in the `images/` directory and has a `model.pkl` file – a model file deployed to
-production.
+Let's say you already have a Git repository and put a bunch of images in the
+`images/` directory, and build a `model.pkl` ML model file using them.
 
 ```dvc
 $ ls images
 0001.jpg 0002.jpg 0003.jpg 0004.jpg ...
 
 $ ls
-model.pkl ...
+model.pkl
 ```
 
-To start using dvc and keeping track of a model and images we need first to
-initialize the <abbr>DVC project</abbr> on top of the existing repository:
+To start using DVC we need to [initialize](/doc/command-reference/init) a
+<abbr>DVC project</abbr> on top of the existing Git repo:
 
 ```dvc
 $ dvc init
 ```
 
-At DVC initialization, a new `.dvc/` directory is created for internal
-configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/dvc-files-and-directories), that are
-hidden from the user. This directory can be committed with Git:
-
-```dvc
-$ git status
-...
-    new file:   .dvc/.gitignore
-    new file:   .dvc/config
-
-$ git commit -am "Initialize DVC"
-```
-
-Start tracking images and models with `dvc add`:
+Start tracking the models and images directory with `dvc add`:
 
 ```dvc
 $ dvc add images
@@ -84,14 +69,16 @@ There are two ways to get to the previous version of the dataset or model: a
 full <abbr>workspace</abbr> checkout, or checkout of a specific data or model
 file. Let's consider the full checkout first. It's quite straightforward:
 
-> `v1.0` below is a Git tag that should be created in advance to identify the
-> dataset version you are interested in. Any
+> `v1.0` below is a Git tag that identifies the dataset version you are
+> interested in. Any
 > [Git reference](https://git-scm.com/book/en/v2/Git-Internals-Git-References)
 > (for example `HEAD^` or a commit hash) can be used instead.
 
 ```dvc
 $ git checkout v1.0
 $ dvc checkout
+M       images
+M       model.pkl
 ```
 
 These commands will restore the workspace to the first snapshot we made - code,
@@ -105,8 +92,9 @@ the previous dataset only, we can do something like this (make sure that you
 don't have uncommitted changes in the `data.dvc`):
 
 ```dvc
-$ git checkout v1.0 data.dvc
-$ dvc checkout data.dvc
+$ git checkout v1.0 images.dvc
+$ dvc checkout images.dvc
+M       images
 ```
 
 If you run `git status` you will see that `data.dvc` is modified and currently

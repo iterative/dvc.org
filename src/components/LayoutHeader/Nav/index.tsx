@@ -114,7 +114,7 @@ const Nav: React.FC = () => (
       </li>
     </ul>
     <PseudoButton
-      className={styles.getStartedButton}
+      className={`${styles.getStartedButton} btn-with-focus`}
       href="/doc/tutorials/get-started"
       onClick={(): void => logEvent('menu', 'get-started')}
     >

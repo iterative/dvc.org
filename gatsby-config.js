@@ -7,6 +7,7 @@ require('./config/prismjs/usage')
 
 const apiMiddleware = require('./src/server/middleware/api')
 const redirectsMiddleware = require('./src/server/middleware/redirects')
+const makeFeedHtml = require('./plugins/utils/makeFeedHtml')
 const { BLOG } = require('./src/consts')
 
 const title = 'Data Version Control · DVC'
@@ -41,11 +42,11 @@ const plugins = [
     }
   },
   {
+    resolve: 'gatsby-source-filesystem',
     options: {
       name: 'images',
       path: path.join(__dirname, 'static', 'uploads')
-    },
-    resolve: 'gatsby-source-filesystem'
+    }
   },
   {
     resolve: 'gatsby-transformer-remark',
@@ -54,10 +55,10 @@ const plugins = [
         'gatsby-remark-embedder',
         'gatsby-remark-dvc-linker',
         {
+          resolve: 'gatsby-remark-prismjs',
           options: {
             noInlineHighlight: true
-          },
-          resolve: 'gatsby-remark-prismjs'
+          }
         },
         {
           resolve: 'gatsby-remark-smartypants',
@@ -73,9 +74,7 @@ const plugins = [
         },
         'gatsby-remark-relative-images',
         'gatsby-remark-copy-linked-files',
-        {
-          resolve: 'gatsby-remark-external-links'
-        },
+        'gatsby-remark-external-links',
         {
           resolve: 'gatsby-remark-autolink-headers',
           options: {
@@ -120,36 +119,42 @@ const plugins = [
     }
   },
   {
+    resolve: `gatsby-plugin-feed`,
     options: {
       feeds: [
         {
           description,
           output: '/blog/rss.xml',
           query: `
-              {
-                allBlogPost(
-                  sort: { fields: [date], order: DESC }
-                ) {
-                  nodes {
-                    html
-                    slug
-                    title
-                    date
-                    description
-                  }
+            {
+              allBlogPost(
+                sort: { fields: [date], order: DESC }
+              ) {
+                nodes {
+                  htmlAst
+                  slug
+                  title
+                  date
+                  description
                 }
               }
-            `,
+            }
+          `,
           serialize: ({ query: { site, allBlogPost } }) => {
             return allBlogPost.nodes.map(node => {
-              return Object.assign({}, node.frontmatter, {
-                /* eslint-disable-next-line @typescript-eslint/camelcase */
-                custom_elements: [{ 'content:encoded': node.html }],
-                date: node.date,
-                description: node.description,
-                guid: site.siteMetadata.siteUrl + node.slug,
-                url: site.siteMetadata.siteUrl + node.slug
-              })
+              const html = makeFeedHtml(node.htmlAst, site.siteMetadata.siteUrl)
+              return Object.assign(
+                {},
+                {
+                  /* eslint-disable-next-line @typescript-eslint/camelcase */
+                  custom_elements: [{ 'content:encoded': html }],
+                  title: node.title,
+                  date: node.date,
+                  description: node.description,
+                  guid: site.siteMetadata.siteUrl + node.slug,
+                  url: site.siteMetadata.siteUrl + node.slug
+                }
+              )
             })
           },
           title
@@ -166,9 +171,8 @@ const plugins = [
               }
             }
           }
-        `
-    },
-    resolve: `gatsby-plugin-feed`
+    `
+    }
   },
   {
     resolve: 'gatsby-plugin-sentry',
@@ -197,11 +201,11 @@ const plugins = [
 
 if (process.env.CONTEXT === 'production') {
   plugins.push({
+    resolve: 'gatsby-plugin-google-analytics',
     options: {
       respectDNT: true,
       trackingId: process.env.GA_ID
-    },
-    resolve: 'gatsby-plugin-google-analytics'
+    }
   })
 }
 

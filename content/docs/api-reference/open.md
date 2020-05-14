@@ -88,7 +88,7 @@ streamed, which optimizes memory usage.
 
 - `dvc.exceptions.NoRemoteError` - no `remote` is found.
 
-## Example: Use data or models from DVC repositories
+## Example: Use data or models from DVC repos
 
 Any <abbr>data artifact</abbr> hosted online can be processed directly in your
 Python code with this API. For example, an XML file tracked in a public DVC repo
@@ -167,7 +167,7 @@ directory tree, and look for the file contents of `clean.csv` in its local
 <abbr>cache</abbr>; no download will happen if found. See the
 [Parameters](#parameters) section for more info.
 
-## Example: Chose a specific remote as the data source
+## Example: Choose a specific remote as the data source
 
 Sometimes we may want to choose the [remote](/doc/command-reference/remote) data
 source, for example if the `repo` has no default remote set. This can be done by

@@ -21,7 +21,6 @@
   font-weight: 500;
 
   &:focus {
-    outline: none;
     background: var(--color-light-blue);
   }
 
@@ -40,11 +39,6 @@
   font-weight: 500;
   color: #13adc7;
   cursor: pointer;
-
-  &:focus {
-    outline: none;
-    background-color: #daf1f5;
-  }
 
   &:hover {
     background-color: #daf1f5;

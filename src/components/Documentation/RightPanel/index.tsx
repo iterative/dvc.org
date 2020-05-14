@@ -101,7 +101,8 @@ const RightPanel: React.FC<IRightPanelProps> = ({
           <Link
             className={cn(
               styles.headingLink,
-              current === slug && styles.current
+              current === slug && styles.current,
+              'link-with-focus'
             )}
             key={`link-${slug}`}
             href={`#${slug}`}

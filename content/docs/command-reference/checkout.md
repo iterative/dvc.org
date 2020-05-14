@@ -37,9 +37,9 @@ The execution of `dvc checkout` does the following:
   DVC-files. Scanning is limited to the given `targets` (if any). See also
   options `--with-deps` and `--recursive` below.
 
-- Missing data files or directories, or those that don't match with any
-  DVC-file, are restored from the <abbr>cache</abbr>. See options `--force` and
-  `--relink`.
+- Missing data files or directories are restored from the <abbr>cache</abbr>.
+  Those that don't match with any DVC-file are removed. See options `--force`
+  and `--relink`. A list of the changes done is printed.
 
 By default, this command tries not make copies of cached files in the workspace,
 using reflinks instead when supported by the file system (refer to
@@ -58,18 +58,18 @@ restoring any file size will be almost instantaneous.
 > `cache.slow_link_warning` config option to `false` with `dvc config cache`.
 
 This command will fail to checkout files that are missing from the cache. In
-such a case, `dvc checkout` prints a warning message. It also lists removed
-files. Any files that can be checked out without error will be restored without
-being reported individually.
+such a case, `dvc checkout` prints a warning message. It also lists the partial
+progress made by the checkout.
 
 There are two methods to restore a file missing from the cache, depending on the
 situation. In some cases a pipeline must be reproduced (using `dvc repro`) to
-regenerate its outputs. (See also `dvc pipeline`.) In other cases the cache can
+regenerate its outputs (see also `dvc pipeline`). In other cases the cache can
 be pulled from remote storage using `dvc pull`.
 
 ## Options
 
-- `--summary` - show summary of the changes.
+- `--summary` - display a short summary of the changes done by this command in
+  the workspace, instead of a full list of changes.
 
 - `-R`, `--recursive` - determines the files to checkout by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are
@@ -149,7 +149,7 @@ This project comes with a predefined HTTP
 [remote storage](/doc/command-reference/remote). We can now just run `dvc pull`
 that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
 files that are tracked by DVC. The model file hash
-`3863d0e317dee0a55c4e59d2ec0eef33` will be used in the `train.dvc`
+`662eb7f64216d9c2c1088d0a5e2c6951` will be used in the `train.dvc`
 [stage file](/doc/command-reference/run):
 
 ```dvc
@@ -168,7 +168,7 @@ deleting files as necessary.
 $ git checkout baseline-experiment  # Stage where model is first created
 ```
 
-Let's check the `model.pkl` entry in `train.dvc` now:
+Let's check the hash value of `model.pkl` in `train.dvc` now:
 
 ```yaml
 outs:
@@ -190,6 +190,8 @@ doesn't track those files; DVC does, so we must do this:
 ```dvc
 $ dvc fetch
 $ dvc checkout
+M       model.pkl
+M       data\features\
 
 $ md5 model.pkl
 MD5 (model.pkl) = 43630cce66a2432dcecddc9dd006d0a7
@@ -205,7 +207,7 @@ this once to download missing data from the remote storage to the
 
 We want the data files or directories (managed by DVC) to match with the other
 files (managed by Git e.g. source code). This requires us to remember running
-`dvc checkout` when needed after a `git checkout`, and of course we won't always
+`dvc checkout` when needed after a `git checkout`, and we may not always
 remember to do so. Wouldn't it be nice to automate this?
 
 ```dvc

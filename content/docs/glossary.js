@@ -9,7 +9,7 @@ export default {
       match: ['workspace'],
       desc: `
 Directory containing all your project files, for example raw datasets, source
-code, ML models, etc. It will conatain your DVC project.
+code, ML models, etc. It will contain your DVC project.
       `
     },
     {
@@ -43,12 +43,12 @@ For more details, please refer to this [document]
       `
     },
     {
-      name: 'Output',
-      match: ['output', 'outputs'],
+      name: 'Data Artifact',
+      match: ['data artifact', 'data artifacts'],
       desc: `
-A file or directory tracked by DVC, recorded in the \`outs\` section of a
-DVC-file. Outputs are usually the result of stages. A.k.a. **data artifact*.
-See \`dvc add\`, \`dvc run\`, \`dvc import\`, et al.
+Any data file or directory, as well as intermediate or final result that is
+tracked by DVC, for example by using \`dvc add\`. See
+[Versioning Data and Models](/doc/use-cases/versioning-data-and-model-files).
       `
     },
     {
@@ -61,14 +61,12 @@ their dependencies change.
       `
     },
     {
-      name: 'Data Artifact',
-      match: ['data artifact', 'data artifacts'],
+      name: 'Output',
+      match: ['output', 'outputs'],
       desc: `
-Any data file or directory, as well as intermediate or final result (such as
-extracted features or a ML model file) that is tracked by DVC. Refer to
-[Versioning Data and Model Files]
-(/doc/use-cases/versioning-data-and-model-files) for more details. A.k.a
-_output_.
+A file or directory tracked by DVC, recorded in the \`outs\` section of a
+DVC-file. Outputs are usually the result of stages. See \`dvc add\`,
+\`dvc run\`, \`dvc import\`, et al. A.k.a. _data artifact_
       `
     },
     {

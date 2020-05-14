@@ -32,7 +32,12 @@ const LayoutHeader: React.FC<Required<ILayoutModifiable>> = ({ modifiers }) => {
           className={cn(styles.container, collapsed && styles.collapsed)}
           wide={includes(modifiers, LayoutModifiers.Wide)}
         >
-          <Link href="/" className={styles.logoLink} title="DVC">
+          <Link
+            href="/"
+            className={styles.logoLink}
+            title="DVC"
+            aria-label="DVC"
+          >
             <LogoSVG className={styles.logo} />
           </Link>
           <Nav />

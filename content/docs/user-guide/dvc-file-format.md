@@ -52,8 +52,8 @@ On the top level, `.dvc` file consists of these possible fields:
 - `deps`: List of dependencies for this stage
 - `outs`: List of <abbr>outputs</abbr> for this stage
 - `locked`: Whether or not this stage is locked from reproduction
-- `always_changed`: Whether or not this stage should always be considered as
-  changed by commands such as `dvc status` and `dvc repro` (default `false`)
+- `always_changed`: Whether or not this stage is considered as changed by
+  commands such as `dvc status` and `dvc repro` (default `false`)
 
 A dependency entry consists of a these possible fields:
 
@@ -82,7 +82,7 @@ An output entry consists of these fields:
 
 - `path`: Path to the output, relative to the `wdir` path
 - `md5`: MD5 hash for the output
-- `cache`: Whether or not dvc should cache the output
+- `cache`: Whether or not DVC should cache the output
 - `metric`: If this file is a [metric](/doc/command-reference/metrics), contains
   the following fields:
 

@@ -5,8 +5,8 @@ tool.
 
 Today the data science community is still lacking good practices for organizing
 their projects and effectively collaborating. ML algorithms and methods are no
-longer simple _tribal knowledge_ but are still difficult to implement, manage
-and reuse.
+longer simple tribal knowledge but are still difficult to implement, manage and
+reuse.
 
 > One of the biggest challenges in reusing, and hence the managing of ML
 > projects, is its reproducibility.
@@ -15,8 +15,8 @@ DVC has been built to address the reproducibility.
 
 ![](/img/reproducibility.png)
 
-Git branches should beautifully reflect the non-linear structure common to the
-ML process, where each hypothesis can be presented as a Git branch. However,
+Repository branches can beautifully reflect the non-linear structure common to
+the ML process: each hypothesis presented as a Git branch. However, the
 inability to store data in a repository and the discrepancy between code and
 data make it extremely difficult to manage a data science project with Git.
 

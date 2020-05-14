@@ -106,7 +106,8 @@ When we run `dvc add` `Posts.xml.zip`, DVC creates a
 At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and <abbr>cache</abbr>
 [files and directories](/doc/user-guide/dvc-files-and-directories), that are
-hidden from the user.
+hidden from the user. This directory is automatically staged with `git add`, so
+it can be easily committed with Git.
 
 Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
 _orphan_ [stage file](/doc/command-reference/run):
@@ -122,8 +123,7 @@ outs:
     persist: false
 ```
 
-This is the file that should be committed into a version control system instead
-of the data file itself.
+This file can be committed with Git instead of the data file itself.
 
 The data file `Posts.xml.zip` is linked (or copied) from
 `.dvc/cache/ce/68b98d82545628782c66192c96f2d2`, and added to `.gitignore`. Even

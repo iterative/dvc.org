@@ -37,9 +37,9 @@ commands:
       # Download cached dependencies.
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "yarn.lock" }}
+            - v2-dependencies-{{ checksum "yarn.lock" }}
             # Fallback to using the latest cache if no exact match is found.
-            - v1-dependencies-
+            - v2-dependencies-
 
       - run: yarn
 
@@ -47,7 +47,7 @@ commands:
       - save_cache:
           paths:
             - node_modules
-          key: v1-dependencies-{{ checksum "yarn.lock" }}
+          key: v2-dependencies-{{ checksum "yarn.lock" }}
 
 jobs:
   test:
@@ -59,6 +59,7 @@ jobs:
       - run: yarn lint-ts
       - run: yarn format-check
       - run: yarn link-check-diff
+      - run: yarn link-check-exclude
 
   test_full:
     <<: *defaults
@@ -69,6 +70,7 @@ jobs:
       - run: yarn lint-ts
       - run: yarn format-check
       - run: yarn link-check
+      - run: yarn link-check-exclude
 
 workflows:
   version: 2

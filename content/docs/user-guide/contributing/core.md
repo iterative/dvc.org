@@ -65,8 +65,8 @@ $ pip install pre-commit
 $ pre-commit install
 ```
 
-That should be it. You should be ready to make changes, run tests, and make
-commits! If you experience any problems, please don't hesitate to ping us in our
+That's it. You should be ready to make changes, run tests, and make commits! If
+you experience any problems, please don't hesitate to ping us in our
 [chat](/chat).
 
 ## Writing tests
@@ -105,10 +105,7 @@ Otherwise, for each failed test you should see the following output, to help you
 identify the problem:
 
 ```
-$ python -m tests
-
 ...
-
 [gw2] [ 84%] FAILED tests/unit/test_progress.py::TestProgressAware::test
 tests/unit/test_prompt.py::TestConfirm::test_eof
 tests/test_updater.py::TestUpdater::test
@@ -243,8 +240,8 @@ $ export GDRIVE_USER_CREDENTIALS_DATA='CONTENT_of_gdrive-user-credentials.json'
 ### Click for Google Cloud Storage instructions
 
 Go through the [quick start](https://cloud.google.com/sdk/docs/quickstarts) for
-your OS. After that you should have `gcloud` command line tool available and
-authenticated with your google account.
+your OS. After that, you should have the `gcloud` command line tool available,
+and be authenticated with your Google account.
 
 You then need to create a bucket, a service account and get its credentials. You
 can do this via web UI or terminal. Then you need to put your keys to

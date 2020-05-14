@@ -59,7 +59,7 @@ const Paginator: React.FC<IPaginatorProps> = ({
       {previousPage && (
         <>
           <Link
-            className={cn(styles.link, styles.linkPrevious)}
+            className={cn(styles.link, styles.linkPrevious, 'link-with-focus')}
             href={previousPage}
             state={{ fromPaginator: true }}
           >
@@ -74,7 +74,7 @@ const Paginator: React.FC<IPaginatorProps> = ({
       {nextPage && (
         <>
           <Link
-            className={cn(styles.link, styles.linkNext)}
+            className={cn(styles.link, styles.linkNext, 'link-with-focus')}
             href={nextPage}
             state={{ fromPaginator: true }}
           >

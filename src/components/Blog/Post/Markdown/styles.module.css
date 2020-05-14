@@ -70,8 +70,8 @@
 
     &:hover,
     &:focus {
-      outline: none;
       opacity: 0.7;
+      color: var(--color-blue);
     }
   }
 

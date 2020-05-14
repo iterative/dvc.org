@@ -3,11 +3,11 @@ import React from 'react'
 
 import styles from './styles.module.css'
 
-interface IHamburgetProps {
+interface IHamburgerProps {
   opened?: boolean
 }
 
-const HamburgerIcon: React.FC<IHamburgetProps> = ({ opened }) => (
+const HamburgerIcon: React.FC<IHamburgerProps> = ({ opened }) => (
   <div className={cn(styles.wrapper, opened && styles.opened)}>
     <div className={cn(styles.line, styles.first)} />
     <div className={cn(styles.line, styles.second)} />

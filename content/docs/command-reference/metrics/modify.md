@@ -45,7 +45,7 @@ ERROR: failed to modify metric file settings -
   depends on the metric file type (`--type` option):
 
   - For `json` - see [JSONPath](https://goessner.net/articles/JsonPath/) or
-    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) to know the syntax. For
+    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) for syntax details. For
     example, `"AUC"` extracts the value from the following JSON-formatted metric
     file: `{"AUC": "0.624652"}`.
 
@@ -95,7 +95,7 @@ extract the TP value:
 $ dvc metrics modify -t json -x TP metrics.json
 ```
 
-After this change `dvc metrics show` should always select only the specified
+After this change, `dvc metrics show` should always select only the specified
 value:
 
 ```dvc

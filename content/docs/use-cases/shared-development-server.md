@@ -96,7 +96,7 @@ manually. After this, they could decide to continue building this
 ```dvc
 $ git pull
 $ dvc checkout
-  # Data is linked from cache to workspace.
+A       raw  # Data is linked from cache to workspace.
 $ dvc run -d clean -o processed ./process.py clean process
 $ git add processed.dvc
 $ git commit -m "process clean data"
@@ -108,4 +108,5 @@ And now you can just as easily make their work appear in your workspace with:
 ```dvc
 $ git pull
 $ dvc checkout
+A       processed
 ```

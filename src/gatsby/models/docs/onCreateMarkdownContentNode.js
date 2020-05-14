@@ -9,11 +9,7 @@ function createMarkdownDocsNode(api, { parentNode }) {
   const { name, relativePath } = parentNode
   splitDir[0] = 'doc'
 
-  // Make a special exemption for the root doc.
-  const slug =
-    parentNode.relativePath === 'docs/index.md'
-      ? '/doc/home'
-      : path.posix.join('/', ...splitDir, name === 'index' ? '/' : name)
+  const slug = path.posix.join('/', ...splitDir, name === 'index' ? '' : name)
 
   const fieldData = {
     slug,

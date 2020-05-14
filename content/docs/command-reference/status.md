@@ -9,7 +9,7 @@ and remote storage.
 
 ```usage
 usage: dvc status [-h] [-v] [-j <number>] [-q] [-c]
-                  [-r <name>] [-a] [-T] [-d] [--all-commits]
+                  [-r <name>] [-a] [-T] [-d] [-R] [--all-commits]
                   [targets [targets ...]]
 
 positional arguments:
@@ -71,7 +71,7 @@ describing the changes (described below).
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs tracked by the <abbr>DVC-file</abbr>. Depending on the use case,
-  commands like `dvc commit`, `dvc repro`, or `dvc run` should be used to update
+  commands like `dvc commit`, `dvc repro`, or `dvc run` can be used to update
   the file. Possible states are:
 
   - _new_: An <abbr>output</abbr> is found in the workspace, but there is no
@@ -82,7 +82,7 @@ describing the changes (described below).
     not exist in the workspace.
   - _not in cache_: An output exists in workspace and the corresponding file
     hash in the DVC-file is up to date, but there is no corresponding
-    <abbr>cache</abbr> entry.
+    <abbr>cache</abbr> file or directory.
 
 **For comparison against remote storage:**
 
@@ -112,6 +112,10 @@ workspace) is different from remote storage. Bringing the two into sync requires
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Note that both options can be combined, for example using the
   `-aT` flag.
+
+- `-R`, `--recursive` - determines the files to check status for by searching
+  each target directory and its subdirectories for DVC-files to inspect. If
+  there are no directories among the targets, this option is ignored.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git  
   commits as well as the workspace. Useful for comparing cache content for the

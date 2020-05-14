@@ -32,7 +32,7 @@ DVC hit **100 individual contributors** on Github! To celebrate our
 100<sup>th</sup> contributor, [Vera Sativa](https://github.com/verasativa/), we
 sent her \$500 to use on any educational opportunity and her own DeeVee (that's
 our rainbow owl). We also awarded educational mini-grants to two of DVC's
-biggest contributors, [Vít Novotný](https://twitter.com/tweetiko), and
+biggest contributors, [Vít Novotný](https://github.com/witiko), and
 [David Příhoda](https://twitter.com/david_prihoda).
 
 ![](/uploads/images/2020-01-17/odd_with_deevee.png)_Vera (center, flashing a

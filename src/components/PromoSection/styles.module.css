@@ -77,6 +77,13 @@
   background-position-x: 147px;
   transition: 0.2s background-color ease-out;
 
+  &:focus {
+    background-color: var(--color-orange);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
+    color: #fff;
+    outline: none;
+  }
+
   & + & {
     margin-left: 14px;
 
@@ -95,6 +102,14 @@
 
     &:hover {
       background-color: #f5f5f5;
+    }
+
+    &:focus {
+      background: var(--color-orange) url('/img/arrow_right_white.svg') right
+        center no-repeat;
+      background-position-x: 147px;
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
+      color: #fff;
     }
   }
 

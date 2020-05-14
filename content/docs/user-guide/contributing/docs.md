@@ -134,9 +134,8 @@ Some available variables:
 
 ## Doc style guidelines (JavaScript and Markdown)
 
-The first few of the rules below should be enforced automatically by a Git
-pre-commit hook that is integrated when `yarn` installs the project dependencies
-(explained above).
+Some the rules below are be enforced automatically by a Git pre-commit hook that
+is installed when `yarn` runs (explained above).
 
 - No trailing white spaces are allowed.
 
@@ -149,9 +148,7 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
 - We use [Prettier](https://prettier.io/) to format our source code (see
   [its configuration](https://github.com/iterative/dvc.org/blob/master/.prettierrc)).
   The formatting of staged files will automatically be done by a Git pre-commit
-  hook. You may also run `yarn format <file>` (format specific file/pattern),
-  `yarn format-staged` (all staged files), or `yarn format-all` (all `.md`,
-  `.js` and other source files) before committing changes if needed.
+  hook. You may also run the formatting [commands](#all-commands) manually.
   ([Advanced usage](https://prettier.io/docs/en/cli.html) of Prettier is
   available through `yarn prettier ...`)
 
@@ -162,13 +159,14 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
   paragraphs max.) Full sentence bullets should begin with a capital letter and
   end in period `.` otherwise they can be all lower case and have no ending
   punctuation. Bullets can be separated by an empty line if they contain several
-  paragraphs, but this is discouraged, to keep each item short.
+  paragraphs, but this is discouraged: try to keep items short.
 
 - Markdown: Syntax highlighting in fenced code blocks should use the `usage`
-  `dvc`, and `yaml` custom languages. `usage` is employed to show the
+  `dvc`, `yaml`, or `diff` custom languages. `usage` is employed to show the
   `dvc --help` output for each command reference. `dvc` can be used to show
   examples of commands and their output in a terminal session. `yaml` is used to
-  show [DVC-file](/doc/user-guide/dvc-file-format) contents.
+  show [DVC-file](/doc/user-guide/dvc-file-format) contents or other YAML data.
+  `diff` is used mainly for examples of `git diff` output.
 
 > Check out the `.md` source code of any command reference to get a better idea,
 > for example in
@@ -177,8 +175,8 @@ pre-commit hook that is integrated when `yarn` installs the project dependencies
 ## General language guidelines
 
 We try to use a casual and fun tone in our docs. We also avoid authoritative
-language such as "As you can see, clearly this is what happened..." which while
-good-intentioned, may scare off readers.
+language such as "As you can see, clearly this is what happened, of course" etc.
+which while good-intentioned, may scare readers off.
 
 We prefer human-friendly language than exact jargon, as long as it's correct,
 even if using general terminology. Example: avoid Git jargon such as _revision_

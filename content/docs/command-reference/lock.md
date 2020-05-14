@@ -3,10 +3,6 @@
 Lock a [DVC-file](/doc/user-guide/dvc-file-format)
 ([stage](/doc/command-reference/run)). Use `dvc unlock` to unlock the file.
 
-If a DVC-file is locked, the stage is considered unchanged. `dvc repro` will not
-execute commands to regenerate outputs of locked stages, even if some
-dependencies have changed and even if `--force` is provided.
-
 ## Synopsis
 
 ```usage
@@ -19,14 +15,18 @@ positional arguments:
 ## Description
 
 `dvc lock` causes any DVC-file to be considered _not changed_ by `dvc status`
-and `dvc repro`.
+and `dvc repro`. Stage reproduction will not execute regenerate
+<abbr>outputs</abbr> of locked stages, even if some dependencies have changed,
+and even if `--force` is provided.
 
-Locking a stage is useful to avoid syncing data from the top of its pipeline,
-and keep iterating on the last (unlocked) stages only.
+Locking a stage is useful to avoid syncing data from the top of its
+[pipeline](/doc/command-reference/pipeline), and keep iterating on the last
+(unlocked) stages only.
 
-Note that <abbr>import stages</abbr> are considered always locked. They can not
-be unlocked. Use `dvc update` on them to update the file, directory, or
-<abbr>data artifact</abbr> from its external data source.
+Note that <abbr>import stages</abbr> are considered always locked. Use
+`dvc update` to update the corresponding <abbr>data artifacts</abbr> from the
+external data source. [Unlock](/doc/command-reference/unlock) them before using
+`dvc repro` on a pipeline that needs their outputs.
 
 ## Options
 

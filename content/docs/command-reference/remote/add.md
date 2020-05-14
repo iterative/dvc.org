@@ -159,16 +159,17 @@ For more information about the variables DVC supports, please visit
 ### Click for Microsoft Azure Blob Storage
 
 ```dvc
-$ dvc remote add myremote azure://my-container-name/path
-$ dvc remote modify --local myremote connection_string "my-connection-string"
+$ dvc remote add --local myremote azure://my-container-name/path
+$ dvc remote modify --local myremote connection_string \
+                            "my-connection-string"
 ```
 
 > The connection string contains access to data and is inserted into the
-> `.dvc/config` file. Therefore, it is safer to add the connection string with
-> the `--local` option, enforcing it to be written to a Git-ignored config file.
-> See `dvc remote modify` for a full list of Azure storage parameters.
+> `.dvc/config` file. Therefore, it is safer to add the remote with the
+> `--local` option, enforcing it to be written to a Git-ignored config file. See
+> `dvc remote modify` for a full list of Azure storage parameters.
 
-The Azure Blob Storage remote can also be configured entirely via environment
+The Azure Blob Storage remote can also be configured globally via environment
 variables:
 
 ```dvc
@@ -241,7 +242,7 @@ modified.
 $ dvc remote add myremote gs://bucket/path
 ```
 
-By default DVC expects your AWS CLI is already
+By default DVC expects your GCP CLI is already
 [configured](https://cloud.google.com/sdk/docs/authorizing). DVC will be using
 default GCP key file to access Google Cloud Storage. To override some of these
 settings, use the parameters described in `dvc remote modify`.
@@ -348,6 +349,18 @@ $ dvc remote add myremote https://example.com/path/to/dir
 
 <details>
 
+### Click for WebDav
+
+```dvc
+$ dvc remote add myremote webdavs://example.com/path/to/dir
+```
+
+> See also `dvc remote modify` for a full list of WebDav parameters.
+
+</details>
+
+<details>
+
 ### Click for local remote
 
 A "local remote" is a directory in the machine's file system.
@@ -415,7 +428,6 @@ The list of remotes should now be:
 
 ```dvc
 $ dvc remote list
-
 myremote	s3://mybucket/myproject
 ```
 

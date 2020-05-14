@@ -25,7 +25,8 @@ advanced scenarios:
 At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and <abbr>cache</abbr>
 [files and directories](/doc/user-guide/dvc-files-and-directories), that are
-hidden from the user. This directory can be committed with Git.
+hidden from the user. This directory is automatically staged with `git add`, so
+it can be easily committed with Git.
 
 ### Initializing DVC in subdirectories
 

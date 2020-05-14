@@ -31,7 +31,7 @@ your data files.
 
 ## Replacing file
 
-If you want to replace the file you should take the following steps.
+If you want to replace the file, you can take the following steps.
 
 First, un-track the file. This will remove `train.tsv` from the workspace:
 

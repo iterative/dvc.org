@@ -14,9 +14,7 @@ usage: dvc metrics [-h] [-q | -v]
                    {show,add,modify,remove,diff} ...
 
 positional arguments:
-COMMAND
-                        Use `dvc metrics CMD --help` to display command-
-                        specific help.
+  COMMAND
     show                Print metrics, with optional formatting.
     add                 Mark a DVC-tracked file as a metric.
     modify              Modify metric default formatting.

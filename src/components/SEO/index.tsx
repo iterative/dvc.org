@@ -11,7 +11,11 @@ interface ISEOProps {
   defaultMetaTitle?: boolean
   description?: string
   keywords?: string
-  image?: string
+  image?: {
+    src: string
+    presentationWidth: number
+    presentationHeight: number
+  }
   meta?: MetaProps[]
   pageInfo?: IPaginatorPageInfo
   children?: React.ReactNode
@@ -72,18 +76,28 @@ const SEO: React.FC<ISEOProps> = ({
   }
 
   if (image) {
+    const imageUrl = siteMeta.siteUrl + image.src
+
     prebuildMeta.push(
       {
         property: 'og:image',
-        content: image
+        content: imageUrl
       },
       {
         property: 'og:image:secure_url',
-        content: image
+        content: imageUrl
+      },
+      {
+        property: 'og:image:width',
+        content: String(image.presentationWidth)
+      },
+      {
+        property: 'og:image:height',
+        content: String(image.presentationHeight)
       },
       {
         name: 'twitter:image',
-        content: encodeURI(`${siteMeta.siteUrl}${image}`)
+        content: imageUrl
       }
     )
   }

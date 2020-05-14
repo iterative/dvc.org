@@ -30,8 +30,8 @@ specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored.
 
 The URL is formed by reading the project's
 [remote configuration](/doc/command-reference/config#remote) and the
-[DVC-file](/doc/user-guide/dvc-file-format) where the given `path` is an
-<abbr>output</abbr>. The URL schema returned depends on the
+[DVC-file](/doc/user-guide/dvc-file-format) where the given `path` is found
+(`outs` field). The URL schema returned depends on the
 [type](/doc/command-reference/remote/add#supported-storage-types) of the
 `remote` used (see the [Parameters](#parameters) section).
 

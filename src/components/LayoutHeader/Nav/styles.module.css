@@ -54,7 +54,6 @@
   }
 
   &:focus {
-    outline: none;
     color: var(--color-orange);
     border-color: currentColor;
   }

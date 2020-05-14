@@ -58,7 +58,7 @@ compares them with a previous version.
   value depends on the metric file type (`--type` option):
 
   - For `json` - see [JSONPath](https://goessner.net/articles/JsonPath/) or
-    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) to know the syntax. For
+    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) for syntax details. For
     example, `"AUC"` extracts the value from the following JSON-formatted metric
     file: `{"AUC": "0.624652"}`. You can also filter on certain values, for
     example `"$.metrics[?(@.deviation_mse<0.30) & (@.value_mse>0.4)]"` extracts

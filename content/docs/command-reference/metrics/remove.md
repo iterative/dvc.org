@@ -64,15 +64,14 @@ If you check the `metrics.json.dvc` file, you should see that `metric: true` is
 set:
 
 ```yaml
-ndex 7ad71f8..e7f94e9 100644
 md5: 1443725f6d0bd5b77aa8d5fc36e886ef
 cmd: echo {\"AUC\":0.9643, \"TP\":527} > metrics.json
 outs:
-- md5: 0f0e67dc927aa69cd3fc37435ee1304f
-  path: metrics.json
-  cache: false
-  metric: true
-  persist: false
+  - md5: 0f0e67dc927aa69cd3fc37435ee1304f
+    path: metrics.json
+    cache: false
+    metric: true
+    persist: false
 ```
 
 Now, let's reset the `metric` field with the `dvc metrics remove` command:
@@ -93,7 +92,7 @@ outs:
     persist: false
 ```
 
-As you can see, nothing has changed, except the `metric` field. And both files
+As shown above, nothing has changed, except the `metric` field. And both files
 are still here:
 
 ```dvc

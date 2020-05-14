@@ -7,7 +7,7 @@ commits in the <abbr>DVC repository</abbr>, or between a commit and the
 ## Synopsis
 
 ```usage
-usage: dvc params diff [-h] [-q | -v] [--all] [--show-json]
+usage: dvc params diff [-h] [-q | -v] [--all] [--show-json] [--show-md]
                        [a_rev] [b_rev]
 
 positional arguments:
@@ -39,6 +39,8 @@ itself does not ascribe any specific meaning for these values.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
+
+- `--show-md` - prints the command's output in the Markdown table format.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -78,12 +80,12 @@ Let's now print parameter values that we are tracking in this
 
 ```dvc
 $ dvc params diff
-   Path          Param       Old     New
-params.yaml   lr             None   0.0041
-params.yaml   process.bow    None   15000
-params.yaml   process.thresh None   0.98
-params.yaml   train.epochs   None   70
-params.yaml   train.layers   None   9
+Path         Param           Old   New
+params.yaml  lr              None  0.0041
+params.yaml  process.bow     None  15000
+params.yaml  process.thresh  None  0.98
+params.yaml  train.epochs    None  70
+params.yaml  train.layers    None  9
 ```
 
 The command above shows the difference in parameters between the workspace and
@@ -96,33 +98,33 @@ won't be shown if there are no changes:
 
 ```dvc
 $ dvc params diff
-   Path          Param       Old     New
-params.yaml   lr             0.0041 0.0043
-params.yaml   train.layers   9      7
-params.yaml   train.epochs   70     110
+Path         Param         Old     New
+params.yaml  lr            0.0041  0.0043
+params.yaml  train.layers  9       7
+params.yaml  train.epochs  70      110
 ```
 
 Specify `--all` option to see all the parameters including not changed ones:
 
 ```dvc
 $ dvc params diff --all
-   Path          Param       Old     New
-params.yaml   lr             0.0041 0.0043
-params.yaml   process.bow    15000   15000
-params.yaml   process.thresh 0.98    0.98
-params.yaml   train.layers   9      7
-params.yaml   train.epochs   70     110
+Path         Param           Old     New
+params.yaml  lr              0.0041  0.0043
+params.yaml  process.bow     15000   15000
+params.yaml  process.thresh  0.98    0.98
+params.yaml  train.layers    9       7
+params.yaml  train.epochs    70      110
 ```
 
 To compare parameters with a specific commit, a tag or any
-[revision](https://git-scm.com/docs/revisions) should be specified as an
+[revision](https://git-scm.com/docs/revisions) can be specified, as an
 additional command line parameter:
 
 ```dvc
 $ dvc params diff e12b167
-   Path          Param       Old     New
-params.yaml   lr             0.0038 0.0043
-params.yaml   train.epochs   70     110
+Path         Param         Old     New
+params.yaml  lr            0.0038  0.0043
+params.yaml  train.epochs  70      110
 ```
 
 Note that the `train.layers` parameter disappeared because its value was not
@@ -133,8 +135,8 @@ To see the difference between two specific commits, both need to be specified:
 
 ```dvc
 $ dvc params diff e12b167 HEAD^
-   Path          Param       Old     New
-params.yaml   lr             0.0038 0.0041
-params.yaml   train.layers   10     9
-params.yaml   train.epochs   50     70
+Path         Param         Old     New
+params.yaml  lr            0.0038  0.0041
+params.yaml  train.layers  10      9
+params.yaml  train.epochs  50      70
 ```

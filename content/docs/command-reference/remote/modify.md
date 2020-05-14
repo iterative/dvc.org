@@ -138,6 +138,15 @@ these settings, you could use the following options:
   $ dvc remote modify myremote sse AES256
   ```
 
+- `sse_kms_key_id` - SSE-KMS key to use to encrypt data uploaded to S3, normally
+  specified when the `sse` parameter is set to `aws:kms`. This parameter will be
+  passed directly to AWS's S3 functions, so DVC supports any value that AWS
+  supports, including both KMS key ids and aliases.
+
+  ```dvc
+  $ dvc remote modify myremote sse_kms_key_id alias/testkey
+  ```
+
 - `acl` - set object level access control list (ACL) such as `private`,
   `public-read`, etc. By default, no ACL is specified.
 
@@ -225,7 +234,7 @@ For more information about the variables DVC supports, please visit
 - `url` - remote location URL.
 
   ```dvc
-  $ dvc remote modify myremote url "azure://ContainerName=remote;"
+  $ dvc remote modify myremote url "azure://my-container-name/path"
   ```
 
 - `connection_string` - connection string.
@@ -276,6 +285,17 @@ a full guide on using Google Drive as DVC remote storage.
   ```dvc
   $ dvc remote modify myremote gdrive_client_secret <client secret>
   ```
+
+- `gdrive_user_credentials_file` - path where DVC stores OAuth credentials to
+  access Google Drive data. `.dvc/tmp/gdrive-user-credentials.json` by default.
+
+  ```dvc
+  $ dvc remote modify myremote gdrive_user_credentials_file \
+                      .dvc/tmp/myremote-credentials.json
+  ```
+
+  See [Authorization](/doc/user-guide/setup-google-drive-remote#authorization)
+  for more details.
 
 - `gdrive_trash_only` - configures `dvc gc` to move remote files to
   [trash](https://developers.google.com/drive/api/v2/reference/files/trash)
@@ -541,6 +561,15 @@ more information.
   > Note that the `password` parameter takes precedence over `ask_password`. If
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
+
+</details>
+
+<details>
+
+### Click for WebDav
+
+Since it's an extension for the HTTP protocol the same settings apply as for
+HTTP. See above for the HTTP.
 
 </details>
 

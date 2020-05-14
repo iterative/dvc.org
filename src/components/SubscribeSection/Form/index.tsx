@@ -50,7 +50,7 @@ const Form: React.FC = () => {
       </div>
 
       <button
-        className={styles.button}
+        className={`${styles.button} btn-with-focus`}
         type="submit"
         name="subscribe"
         id="mc-embedded-subscribe"

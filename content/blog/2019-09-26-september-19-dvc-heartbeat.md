@@ -44,9 +44,9 @@ If you are not in SF on this date and happen to be in Europe — don’t miss th
 PyCon DE & PyData Berlin 2019 joint event on October 9–11. We cannot make it to
 Berlin this year, but we were thrilled to discover 2 independent talks featuring
 DVC by
-[Alessia Marcolini](https://de.pycon.org/program/pydata-ppgwxl-version-control-for-data-science-alessia-marcolini/)
+[Alessia Marcolini](https://pyvideo.org/pydata-berlin-2019/version-control-for-data-science.html)
 and
-[Katharina Rasch](https://de.pycon.org/program/pydata-cwmae7-tools-that-help-you-get-your-experiments-under-control-katharina-rasch/).
+[Katharina Rasch](https://pyvideo.org/pydata-berlin-2019/tools-that-help-you-get-your-experiments-under-control.html).
 
 Some other highlights of the end of summer:
 
@@ -59,7 +59,7 @@ Some other highlights of the end of summer:
   [DVC documentation](https://github.com/iterative/dvc.org) (and have something
   special in mind to celebrate our 100th contributors).
 
-- we enjoyed working with all the talented
+- We enjoyed working with all the talented
   [Google Season of docs](https://developers.google.com/season-of-docs/)
   applicants and now moving to the next stage with our chosen tech writer
   [Dashamir Hoxha](http://dashohoxha.fs.al/).
@@ -295,7 +295,7 @@ reproduced and saved or not).
 
 ### Q: [What kind of files can you put into `dvc metrics`?](https://discordapp.com/channels/485586884165107732/563406153334128681/608701494035873792)
 
-The file could be in any format, `dvc metric` show will try to interpret the
+The file could be in any format, `dvc metrics` show will try to interpret the
 format and output it in the best possible way. Also, if you are using `csv` or
 `json`, you can use the `--xpath` flag to query specific measurements. **In
 general, you can make any file a metric file and put any content into it, DVC is

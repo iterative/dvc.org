@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('upath')
 
 /** Source Path Resolver Builder
    This function makes Gatsby resolvers that connect a node to another node via

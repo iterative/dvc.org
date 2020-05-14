@@ -4,20 +4,18 @@
 > [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
 > tips to improve your experience using DVC on Windows.
 
-<!-- Separate MD quote: -->
-
 > To use DVC [as a Python library](/doc/api-reference), please
 > [install with pip](#install-with-pip) or [with conda](#install-with-conda).
 
-## Windows installer
+## Install with choco
 
-The easiest way is to use the self-contained, executable installer (binary),
-which is available from the big "Download" button on the [home page](/). You can
-also get it from the [release page](https://github.com/iterative/dvc/releases/)
-on GitHub.
+The easiest way to install from command line for most cases is to install
+[Chocolatey](https://chocolatey.org/) on your machine, and use the `choco`
+command:
 
-> You may use Windows Uninstaller to
-> [remove the program](https://support.microsoft.com/en-us/help/4028054/windows-10-repair-or-remove-programs).
+```dvc
+$ choco install dvc
+```
 
 ## Install with conda
 
@@ -32,7 +30,7 @@ a POSIX-like command line terminal in Windows.
 $ conda install -c conda-forge dvc
 ```
 
-> Currently, it supports Python 3.5-3.7
+> Currently, it supports Python 3.6-3.8
 
 ## Install with pip
 
@@ -58,3 +56,15 @@ $ pip install "dvc[s3]"
 In this case it installs `boto3` library as well, besides DVC.
 
 </details>
+
+## Windows installer
+
+An easy way is to use the self-contained, executable installer (binary), which
+is available from the big "Download" button on the [home page](/). You can also
+get it from the [release page](https://github.com/iterative/dvc/releases/) on
+GitHub.
+
+> You'll need to download the installer each time to update DVC.
+
+> You may use Windows Uninstaller to
+> [remove the program](https://support.microsoft.com/en-us/help/4028054/windows-10-repair-or-remove-programs).
