@@ -50,11 +50,47 @@ const Abbr: React.FC<{ children: [string] }> = ({ children }) => {
   return <Tooltip text={children[0]} />
 }
 
+const Cards: React.FC = ({ children }) => {
+  return (
+    <div className={styles.cards}>
+      {children.map(child => typeof child !== 'string' && <div>{child}</div>)}
+    </div>
+  )
+}
+
+const Card: React.FC = ({
+  children,
+  icon,
+  heading,
+  headingtag: Heading = 'h3'
+}) => {
+  if (icon) {
+    const firstRealItemIndex = children.findIndex(x => x !== '\n')
+    icon = children[firstRealItemIndex]
+    children = children.slice(firstRealItemIndex + 1)
+  }
+  return (
+    <div className={styles.card}>
+      {icon && <div className={styles.cardIcon}>{icon}</div>}
+      <div className={styles.cardContent}>
+        {heading && <Heading className={styles.cardHeading}>{heading}</Heading>}
+        {children}
+      </div>
+    </div>
+  )
+}
+
 const renderAst = new rehypeReact({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   createElement: React.createElement as any,
   Fragment: React.Fragment,
-  components: { details: Details, abbr: Abbr, a: Link }
+  components: {
+    details: Details,
+    abbr: Abbr,
+    a: Link,
+    card: Card,
+    cards: Cards
+  }
 }).Compiler
 
 interface IMarkdownProps {
