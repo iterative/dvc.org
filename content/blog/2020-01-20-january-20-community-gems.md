@@ -143,7 +143,7 @@ Here's why this works: the `-d` flag sets the default remote, and the `--local`
 flag creates a set of configuration preferences that will override the global
 settings when DVC commands are run locally and won't be shared through Git (you
 can read more about this
-[in our docs](https://dvc.org/doc/command-reference/remote/add#remote-add)).
+[in our docs](https://dvc.org/doc/command-reference/remote/add)).
 
 This means that even though you and users from the public are accessing the
 stored dataset by different protocols (S3 and HTTPS), you'll all run the same
