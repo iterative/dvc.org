@@ -17,6 +17,16 @@ function childNodeCreator({
   }
 }
 
+const expirationFields = {
+  expires: {
+    type: 'Date',
+    extensions: {
+      dateformat: {}
+    }
+  },
+  expired: 'Boolean'
+}
+
 module.exports = {
   async createSchemaCustomization({
     actions: { createTypes },
@@ -28,12 +38,11 @@ module.exports = {
         interfaces: ['Node'],
         fields: {
           date: 'Date',
-          expires: 'Date',
-          expired: 'Boolean',
           url: 'String',
           sourceIndex: 'Int',
           pictureDesktop: 'String',
-          pictureMobile: 'String'
+          pictureMobile: 'String',
+          ...expirationFields
         }
       }),
       buildObjectType({
@@ -41,14 +50,13 @@ module.exports = {
         interfaces: ['Node'],
         fields: {
           date: 'Date',
-          expires: 'Date',
-          expired: 'Boolean',
           title: 'String',
           url: 'String',
           description: 'String',
           sourceIndex: 'Int',
           city: 'String',
-          pictureUrl: 'String'
+          pictureUrl: 'String',
+          ...expirationFields
         }
       }),
       buildObjectType({
@@ -158,7 +166,5 @@ module.exports = {
           .join('\n')}`
       )
     }
-
-    return undefined
   }
 }
