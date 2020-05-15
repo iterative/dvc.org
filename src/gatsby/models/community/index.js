@@ -128,5 +128,37 @@ module.exports = {
     })
 
     return Promise.all([heroesPromise, eventsPromise, restPromise])
+  },
+  async onPostBuild({ graphql }) {
+    const query = await graphql(`
+      query ExpiredItemQuery {
+        allCommunityEvent(filter: { expired: { eq: true } }) {
+          nodes {
+            title
+            sourceIndex
+            expires(formatString: "YYYY-MM-DD")
+          }
+        }
+      }
+    `)
+
+    const {
+      data: {
+        allCommunityEvent: { nodes }
+      }
+    } = query
+
+    if (nodes.length >= 0) {
+      console.log(
+        `\n${nodes.length} Events in community.json are expired!\n${nodes
+          .map(
+            ({ title, sourceIndex, expires }) =>
+              `#${sourceIndex}: ${title} expired on ${expires}`
+          )
+          .join('\n')}`
+      )
+    }
+
+    return undefined
   }
 }
