@@ -1,9 +1,12 @@
 {
-  "hero": {
-    "pictureDesktop": "/img/community/header_mailing_list_skinny.png",
-    "pictureMobile": "/img/community/mobile_header_mailing_list_skinny.png",
-    "url": "#subscribe"
-  },
+  "hero": [
+    {
+      "pictureDesktop": "/img/community/default-banner.png",
+      "pictureMobile": "/img/community/default-mobile-banner.png",
+      "url": "#subscribe",
+      "expires": false
+    }
+  ],
   "section": {
     "contribute": {
       "title": "Contribute",
@@ -52,7 +55,7 @@
       "pictureUrl": "/img/community/ugc/medium_logo.png"
     },
     {
-      "url": "https://blog.codecentric.de/en/2020/01/remote-training-gitlab-ci-dvc/",
+      "url": "https://mribeirodantas.xyz/blog/index.php/2020/03/05/r-dvc-and-rmarkdown/",
       "title": "Manage your Data Science Project in R",
       "author": "Marcel Ribeiro-Dantas",
       "date": "2020-03-05",
@@ -72,7 +75,7 @@
       "title": "Women in Data Science San Diego",
       "description": "Elle O'Brien is talking about data catalogs and feature stores.",
       "city": "San Diego",
-      "date": "2020-05-10"
+      "date": "2020-03-27"
     },
     {
       "url": "https://www.mlprague.com/#schedule-saturday",
