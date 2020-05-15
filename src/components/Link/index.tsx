@@ -11,6 +11,7 @@ export type ILinkProps = {
   href: string
   target?: undefined | '_blank'
   state?: unknown
+  scrollOptions?: object
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 const PROTOCOL_REGEXP = /^https?:\/\//
@@ -21,12 +22,13 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   href,
   children,
   rel,
+  target,
   ...restProps
 }) => {
   // Handle all situations where a basic `a` must be used over Gatsby Link
   const hrefIsRelative = isRelative(href)
   const hrefIsMailto = isMailto(href)
-  const hrefHasTarget = restProps.target
+  const hrefHasTarget = typeof target === 'string'
   // Fragments within the page should be `a`, but links to other pages
   // that have anchors should be okay.
   const hrefIsRelativeFragment = href.startsWith('#')
@@ -40,13 +42,19 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
     /*
        Change external links without an explicit rel to have 'noopener
        noreferrer', but leave explicitly defined rels alone.
+       Do the same with `target=_blank`
     */
-    if (!hrefIsRelative && typeof rel !== 'string') {
-      rel = 'noopener noreferrer'
+    if (!hrefIsRelative) {
+      if (typeof rel !== 'string') {
+        rel = 'noopener noreferrer'
+      }
+      if (!hrefHasTarget) {
+        target = '_blank'
+      }
     }
 
     return (
-      <a href={href} rel={rel} {...restProps}>
+      <a href={href} rel={rel} target={target} {...restProps}>
         {children}
       </a>
     )
@@ -59,13 +67,16 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   )
 }
 
-const scrollToHash = (hash: string): void => {
+const scrollToHash = (hash: string, scrollOptions = {}): void => {
   if (hash) {
-    scrollIntoLayout(document.querySelector(hash), { waitImages: true })
+    scrollIntoLayout(document.querySelector(hash), {
+      waitImages: true,
+      ...scrollOptions
+    })
   }
 }
 
-const Link: React.FC<ILinkProps> = ({ href, ...restProps }) => {
+const Link: React.FC<ILinkProps> = ({ href, scrollOptions, ...restProps }) => {
   const currentLocation = useLocation()
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -73,25 +84,18 @@ const Link: React.FC<ILinkProps> = ({ href, ...restProps }) => {
         restProps.onClick(e)
       }
 
-      const location = new URL(href)
-
-      // Do not navigate to the same page. Handle hash scrolling manually
-      if (
-        currentLocation.host === location.host &&
-        currentLocation.pathname === location.pathname
-      ) {
+      // Handle local fragments manually, allowing for more control than
+      // native HTML fragment navigation.
+      if (href === '#') {
+        getScrollNode().scrollTop = 0
+      } else if (href.startsWith('#')) {
         e.preventDefault()
 
         // We can't navigate by direct usage of @reach/router#navigate because
         // gatsby-react-router-scroll will package intercept scroll in this
         // case and we will see undesired jump
         window.history.pushState(null, '', href)
-
-        if (location.hash) {
-          scrollToHash(location.hash)
-        } else {
-          getScrollNode().scrollTop = 0
-        }
+        scrollToHash(href, scrollOptions)
       }
     },
     [restProps.onClick, currentLocation]

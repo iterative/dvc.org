@@ -45,7 +45,7 @@ Luigi, etc.
 ### Git workflows/methodologies such as Gitflow
 
 - DVC supports a new experimentation methodology that integrates easily with a
-  Git workflow. A separate branch should be created for each experiment, with a
+  Git workflow. A separate branch can be created for each experiment, with a
   subsequent merge of the branch if the experiment was successful.
 
 - DVC innovates by giving experimenters the ability to easily navigate through

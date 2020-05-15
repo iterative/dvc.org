@@ -8,12 +8,12 @@ import Link from '../../Link'
 import Block from '../Block'
 import Section from '../Section'
 import { logEvent } from '../../../utils/front/ga'
+import { useCommunityData } from '../../../utils/front/community'
 
-import data from '../data.json'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
 
-interface IEvent {
+export interface IEvent {
   theme: ICommunitySectionTheme
   city: string
   date: string
@@ -22,19 +22,6 @@ interface IEvent {
   title: string
   url: string
 }
-
-const { description, mobileDescription, title } = data.section.events
-const { events } = data
-const eventsItems = ((): Array<IEvent | null> => {
-  const items: Array<IEvent | null> = events.slice(0, 3) as Array<IEvent>
-  const itemLength = items.length
-
-  for (let i = itemLength; i < 3; i++) {
-    items.push(null)
-  }
-
-  return items
-})()
 
 const Event: React.FC<IEvent> = ({
   theme,
@@ -97,9 +84,14 @@ const Event: React.FC<IEvent> = ({
 }
 
 const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
-  if (!events.length) {
-    return null
-  }
+  const {
+    events,
+    rest: {
+      section: {
+        events: { description, mobileDescription, title }
+      }
+    }
+  } = useCommunityData()
 
   return (
     <LayoutWidthContainer className={sharedStyles.wrapper}>
@@ -112,11 +104,20 @@ const Events: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
         title={title}
       >
         <div className={sharedStyles.items}>
-          {eventsItems.map((event, key) => (
-            <div className={sharedStyles.item} key={key}>
-              {event && <Event {...event} theme={theme} key={event.url} />}
+          {events ? (
+            events.map((event, key) => (
+              <div className={sharedStyles.item} key={key}>
+                {event && <Event {...event} theme={theme} key={event.url} />}
+              </div>
+            ))
+          ) : (
+            <div className={styles.eventsPlaceholder}>
+              No upcoming events. Subscribe to be up to date!{' '}
+              <span role="img" aria-label="Subscribe below">
+                👇
+              </span>
             </div>
-          ))}
+          )}
         </div>
       </Section>
     </LayoutWidthContainer>

@@ -292,13 +292,23 @@ describe('SidebarMenu/helper', () => {
       expect(sidebarData).toEqual(result)
     })
 
-    it("Throws error if item didn't have slug field", () => {
+    it("Throws error if external item doesn't have a url field", () => {
+      const rawData = [{ type: 'external' }]
+
+      jest.doMock('../../../content/docs/sidebar.json', () => rawData)
+
+      expect(() => require('./sidebar')).toThrow(
+        new Error("'url' field is required in external sidebar.json entries")
+      )
+    })
+
+    it("Throws error if local item doesn't have slug field", () => {
       const rawData = [{}]
 
       jest.doMock('../../../content/docs/sidebar.json', () => rawData)
 
       expect(() => require('./sidebar')).toThrow(
-        new Error("'slug' field is required in objects in sidebar.json")
+        new Error("'slug' field is required in local sidebar.json entries")
       )
     })
 
@@ -310,7 +320,7 @@ describe('SidebarMenu/helper', () => {
 
       expect(() => require('./sidebar')).toThrow(
         new Error(
-          "If you set 'source' to false, you had to add at least one child"
+          'Local sidebar.json entries with no source must have children'
         )
       )
     })

@@ -428,7 +428,6 @@ The list of remotes should now be:
 
 ```dvc
 $ dvc remote list
-
 myremote	s3://mybucket/myproject
 ```
 

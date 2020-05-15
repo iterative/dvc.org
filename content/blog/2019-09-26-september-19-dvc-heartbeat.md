@@ -295,7 +295,7 @@ reproduced and saved or not).
 
 ### Q: [What kind of files can you put into `dvc metrics`?](https://discordapp.com/channels/485586884165107732/563406153334128681/608701494035873792)
 
-The file could be in any format, `dvc metric` show will try to interpret the
+The file could be in any format, `dvc metrics` show will try to interpret the
 format and output it in the best possible way. Also, if you are using `csv` or
 `json`, you can use the `--xpath` flag to query specific measurements. **In
 general, you can make any file a metric file and put any content into it, DVC is

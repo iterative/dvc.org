@@ -5,7 +5,7 @@ specifically deep learning and its applications in business, the data science
 community still lacks good practices for organizing their projects and
 effectively collaborating across their varied ML projects. This is a critical
 challenge: we need to evolve towards ML algorithms and methods no longer being
-"tribal knowledge" and making them easy to implement, reuse, and manage.
+tribal knowledge and making them easy to implement, reuse, and manage.
 
 To make progress, many areas of the ML experimentation process need to be
 formalized. Common questions need to be answered in an unified, principled way.
@@ -47,7 +47,7 @@ formalized. Common questions need to be answered in an unified, principled way.
 - How do you share the entire 147 GB of your ML project, with all of its data
   sources, intermediate data files, and models?
 
-Some of these questions are easy to answer individually. Any data scientist,
-engineer, or manager knows or could easily find answers to some of them.
-However, the variety of answers and approaches makes data science collaboration
-a nightmare. **A systematic approach is required.**
+Some of these questions are easy to answer individually. Data scientists,
+engineers, or managers may already knows or can easily find answers to some of
+them. However, the variety of answers and approaches makes data science
+collaboration a nightmare. **A systematic approach is required.**

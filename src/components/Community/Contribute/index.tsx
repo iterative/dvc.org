@@ -7,10 +7,8 @@ import CommunityBlock from '../Block'
 import CommunitySection from '../Section'
 import { logEvent } from '../../../utils/front/ga'
 
-import data from '../data.json'
+import { useCommunityData } from '../../../utils/front/community'
 import sharedStyles from '../styles.module.css'
-
-const { description, mobileDescription, title } = data.section.contribute
 
 const logPR = (): void => logEvent('community', 'contribute-pr')
 const logBlogpost = (): void => logEvent('community', 'contribute-blogpost')
@@ -18,6 +16,14 @@ const logTalk = (): void => logEvent('community', 'contribute-talk')
 const logAmbassador = (): void => logEvent('community', 'contribute-ambassador')
 
 const Contribute: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
+  const {
+    rest: {
+      section: {
+        contribute: { description, mobileDescription, title }
+      }
+    }
+  } = useCommunityData()
+
   return (
     <LayoutWidthContainer className={sharedStyles.wrapper}>
       <CommunitySection
@@ -94,11 +100,10 @@ const Contribute: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
                 <Link
                   className={sharedStyles.button}
                   style={theme}
-                  href="mailto:info@dvc.org?subject=I want to become an Ambassador!"
-                  target="_blank"
+                  href="/blog/dvc-ambassador-program-announcement"
                   onClick={logAmbassador}
                 >
-                  Let’s talk!
+                  Learn more!
                 </Link>
               }
             >

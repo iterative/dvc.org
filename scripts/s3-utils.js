@@ -3,7 +3,7 @@
 const path = require('path')
 const s3 = require('s3-client')
 const { s3Prefix, s3Bucket } = require('../src/server/config')
-const { remove, move, ensureDir } = require('fs-extra')
+const { remove, ensureDir } = require('fs-extra')
 
 const {
   AWS_REGION,

@@ -9,7 +9,7 @@ command and execute the command.
 usage: dvc run [-h] [-q | -v] [-d <path>] [-o <path>] [-O <path>]
                [-p <params>] [-m <path>] [-M <path>] [-f <filename>]
                [-w <path>] [--no-exec] [--overwrite-dvcfile]
-               [--ignore-build-cache] [--no-commit]
+               [--no-run-cache] [--no-commit]
                [--outs-persist <path>] [--outs-persist-no-cache <path>]
                [--always-changed]
                command
@@ -41,7 +41,7 @@ that you want to be evaluated dynamically. E.g.
 Since `dvc run` provides a way to build a dependency graph using dependencies
 and outputs to connect different stages, it checks the graph's integrity before
 creating a new stage. For example, for every output there should be only one
-stage that explicitly specifies it. There should be no cycles, etc.
+stage that explicitly specifies it, there should be no cycles, etc.
 
 Unless the `-f` options is used, the stage file (DVC-file) is generated in the
 current working directory and named `<file>.dvc`, where `<file>` is file name of
@@ -125,12 +125,11 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 - `--outs-persist-no-cache <path>` - the same as `-outs-persist` except that
   outputs are not tracked by DVC.
 
-- `-m <path>`, `--metrics <path>` - specify a metric type of output. This option
-  behaves like `-o` but also adds `metric: true` in the output record of the
-  resulting stage file. Metrics are usually small, human readable files (e.g.
-  JSON or CSV) with numeric values or other information that describes a model
-  (or any other regular output). See `dvc metrics` to learn more about using
-  metrics.
+- `-m <path>`, `--metrics <path>` - specify a metric file. This option behaves
+  like `-o` but also adds `metric: true` in the output record of the resulting
+  stage file. Metrics are usually small, human readable files (e.g. JSON or CSV)
+  with numeric values or other information that describes a model (or any other
+  regular output). See `dvc metrics` to learn more about using metrics.
 
 - `-M <path>`, `--metrics-no-cache <path>` - the same as `-m` except that files
   are not tracked by DVC. It means that they are not cached, and it's up to a
@@ -162,8 +161,8 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   determined by the logic described in the `-f` option) without asking for
   confirmation.
 
-- `--ignore-build-cache` - forcefully execute the `command` again, even if the
-  same `dvc run` command has already been run in this workspace. Useful if the
+- `--no-run-cache` - forcefully execute the `command` again, even if the same
+  `dvc run` command has already been run in this workspace. Useful if the
   command's code is non-deterministic (meaning it produces different outputs
   from the same list of inputs).
 

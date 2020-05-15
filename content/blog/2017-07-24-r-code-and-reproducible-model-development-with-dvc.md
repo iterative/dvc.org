@@ -144,7 +144,7 @@ $ dvc run Rscript code/train_test_spliting.R \
                   data/test_post.csv
 
 # Extract features from text data.
-# Two TSV inputs and two pickle matrixes outputs.
+# Two TSV inputs and two pickle matrices outputs.
 $ dvc run Rscript code/featurization.R \
                   data/train_post.csv \
                   data/test_post.csv \

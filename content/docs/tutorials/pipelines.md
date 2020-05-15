@@ -122,8 +122,7 @@ outs:
     persist: false
 ```
 
-This is the file that should be committed into a version control system instead
-of the data file itself.
+This file can be committed with Git instead of the data file itself.
 
 The data file `Posts.xml.zip` is linked (or copied) from
 `.dvc/cache/ce/68b98d82545628782c66192c96f2d2`, and added to `.gitignore`. Even

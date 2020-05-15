@@ -9,8 +9,8 @@ analyzing dependencies and <abbr>outputs</abbr> of the target stages.
 
 ```usage
 usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i]
-                 [-p] [-P] [-R] [--ignore-build-cache] [--no-commit]
-                 [--downstream] [targets [targets ...]]
+                 [-p] [-P] [-R] [--no-run-cache] [--force-downstream]
+                 [--no-commit] [--downstream] [targets [targets ...]]
 
 positional arguments:
   targets               DVC-file to reproduce. 'Dvcfile' by default.
@@ -127,7 +127,10 @@ and only execute the final stage.
 - `-P`, `--all-pipelines` - reproduce all pipelines, for all the stage files
   present in `DVC` repository.
 
-- `--ignore-build-cache` - in cases like `... -> A (changed) -> B -> C` it will
+- `--no-run-cache` - execute stage commands even if they have already been run
+  with the same command/dependencies/outputs/etc before.
+
+- `--force-downstream` - in cases like `... -> A (changed) -> B -> C` it will
   reproduce `A` first and then `B`, even if `B` was previously executed with the
   same inputs from `A` (cached). To be precise, it reproduces all descendants of
   a changed stage or the stages following the changed stage, even if their
@@ -232,7 +235,7 @@ print('Number of lines:')
 print(num_lines)
 ```
 
-If we now run `dvc repro`, that's what we should see:
+If we now run `dvc repro`, we should see this:
 
 ```dvc
 $ dvc repro

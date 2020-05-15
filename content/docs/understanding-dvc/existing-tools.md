@@ -3,7 +3,7 @@
 ## Existing engineering tools
 
 There is one thing that data scientists seem to agree on around tooling: as
-engineers, we should use the same best practices and collaboration software
+engineers, we'd like to use the same best practices and collaboration software
 that's standard in software engineering. A source code version control system
 (Git), continuous integration services (CI), and unit test frameworks are all
 expected to be utilized in data science
@@ -18,7 +18,7 @@ to be left wanting more.
 
 This new type of software was created to solve data science collaboration
 issues. Experiment management software aims to cover the gap between data
-scientist needs and the existing toolsets from software engineering.
+scientist needs and the existing toolset from software engineering.
 
 Experiment management software is usually **graphical user interface** (GUI)
 based, in contrast to existing command line engineering tools. The GUI is a
