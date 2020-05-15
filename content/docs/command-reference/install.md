@@ -43,7 +43,7 @@ to forget that the `dvc push` command is necessary to upload new or updated data
 files and directories tracked by DVC to
 [remote storage](/doc/command-reference/remote).
 
-This hook automates `dvc push` after `git push`.
+This hook automates `dvc push` before `git push`.
 
 ## Installed Git hooks
 
