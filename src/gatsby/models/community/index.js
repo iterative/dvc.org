@@ -1,6 +1,14 @@
 const moment = require('moment')
 const { getExpirationFields } = require('../../../utils/shared/expiration.js')
 
+function expiredNodesLog(typeName, nodes) {
+  if (nodes.length > 0) {
+    return `${nodes.length} ${typeName}:\n${nodes
+      .map(({ sourceIndex, expires }) => `- #${sourceIndex} expired ${expires}`)
+      .join('\n')}\n`
+  }
+}
+
 function childNodeCreator({
   node,
   actions: { createNode, createParentChildLink }
@@ -140,9 +148,20 @@ module.exports = {
   async onPostBuild({ graphql }) {
     const query = await graphql(`
       query ExpiredItemQuery {
-        allCommunityEvent(filter: { expired: { eq: true } }) {
+        events: allCommunityEvent(
+          filter: { expired: { eq: true } }
+          sort: { fields: [sourceIndex] }
+        ) {
           nodes {
-            title
+            expires(formatString: "YYYY-MM-DD")
+            sourceIndex
+          }
+        }
+        heroes: allCommunityHero(
+          filter: { expired: { eq: true } }
+          sort: { fields: [sourceIndex] }
+        ) {
+          nodes {
             sourceIndex
             expires(formatString: "YYYY-MM-DD")
           }
@@ -150,20 +169,17 @@ module.exports = {
       }
     `)
 
-    const {
-      data: {
-        allCommunityEvent: { nodes }
-      }
-    } = query
+    // Only log anything if there's an expired node of any type
+    const typeLogs = []
+    for (const [name, { nodes }] of Object.entries(query.data)) {
+      if (nodes.length === 0) continue
+      typeLogs.push(expiredNodesLog(name, nodes))
+    }
 
-    if (nodes.length >= 0) {
-      console.log(
-        `\n${nodes.length} Events in community.json are expired!\n${nodes
-          .map(
-            ({ title, sourceIndex, expires }) =>
-              `#${sourceIndex}: ${title} expired on ${expires}`
-          )
-          .join('\n')}`
+    if (typeLogs.length > 0) {
+      const typeLogsString = typeLogs.join('\n')
+      console.warn(
+        `There are expired Nodes in community.json!\n${typeLogsString}`
       )
     }
   }
