@@ -1,6 +1,14 @@
 const moment = require('moment')
 const { getExpirationFields } = require('../../../utils/shared/expiration.js')
 
+function expiredNodesLog(typeName, nodes) {
+  if (nodes.length > 0) {
+    return `${nodes.length} ${typeName}:\n${nodes
+      .map(({ sourceIndex, expires }) => `- #${sourceIndex} expired ${expires}`)
+      .join('\n')}\n`
+  }
+}
+
 function childNodeCreator({
   node,
   actions: { createNode, createParentChildLink }
@@ -17,6 +25,16 @@ function childNodeCreator({
   }
 }
 
+const expirationFields = {
+  expires: {
+    type: 'Date',
+    extensions: {
+      dateformat: {}
+    }
+  },
+  expired: 'Boolean'
+}
+
 module.exports = {
   async createSchemaCustomization({
     actions: { createTypes },
@@ -28,12 +46,11 @@ module.exports = {
         interfaces: ['Node'],
         fields: {
           date: 'Date',
-          expires: 'Date',
-          expired: 'Boolean',
           url: 'String',
           sourceIndex: 'Int',
           pictureDesktop: 'String',
-          pictureMobile: 'String'
+          pictureMobile: 'String',
+          ...expirationFields
         }
       }),
       buildObjectType({
@@ -41,14 +58,13 @@ module.exports = {
         interfaces: ['Node'],
         fields: {
           date: 'Date',
-          expires: 'Date',
-          expired: 'Boolean',
           title: 'String',
           url: 'String',
           description: 'String',
           sourceIndex: 'Int',
           city: 'String',
-          pictureUrl: 'String'
+          pictureUrl: 'String',
+          ...expirationFields
         }
       }),
       buildObjectType({
@@ -128,5 +144,43 @@ module.exports = {
     })
 
     return Promise.all([heroesPromise, eventsPromise, restPromise])
+  },
+  async onPostBuild({ graphql }) {
+    const query = await graphql(`
+      query ExpiredItemQuery {
+        events: allCommunityEvent(
+          filter: { expired: { eq: true } }
+          sort: { fields: [sourceIndex] }
+        ) {
+          nodes {
+            expires(formatString: "YYYY-MM-DD")
+            sourceIndex
+          }
+        }
+        heroes: allCommunityHero(
+          filter: { expired: { eq: true } }
+          sort: { fields: [sourceIndex] }
+        ) {
+          nodes {
+            sourceIndex
+            expires(formatString: "YYYY-MM-DD")
+          }
+        }
+      }
+    `)
+
+    // Only log anything if there's an expired node of any type
+    const typeLogs = []
+    for (const [name, { nodes }] of Object.entries(query.data)) {
+      if (nodes.length === 0) continue
+      typeLogs.push(expiredNodesLog(name, nodes))
+    }
+
+    if (typeLogs.length > 0) {
+      const typeLogsString = typeLogs.join('\n')
+      console.warn(
+        `There are expired Nodes in community.json!\n${typeLogsString}`
+      )
+    }
   }
 }
