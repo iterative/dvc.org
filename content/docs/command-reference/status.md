@@ -84,6 +84,9 @@ describing the changes (described below).
     hash in the DVC-file is up to date, but there is no corresponding
     <abbr>cache</abbr> file or directory.
 
+- _update available_ means that <abbr>import stages</abbr> are moved to the new 
+  version after running `dvc update`.
+
 **For comparison against remote storage:**
 
 - _new_ means that the file/directory exists in the cache but not in remote
