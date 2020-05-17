@@ -38,7 +38,7 @@ command: by specifying stage file `targets`, or by using the `--single-item`,
 If specific [DVC-files](/doc/user-guide/dvc-file-format) (`targets`) are
 omitted, `Dvcfile` will be assumed.
 
->Here, user script should be able to make directories.
+Here, user script should be able to make directories.
 
 `dvc repro` does not run `dvc fetch`, `dvc pull` or `dvc checkout` to get data
 files, intermediate or final results.
