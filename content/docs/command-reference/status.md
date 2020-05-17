@@ -84,9 +84,10 @@ describing the changes (described below).
     hash in the DVC-file is up to date, but there is no corresponding
     <abbr>cache</abbr> file or directory.
 
-- _update available_ means that <abbr>import stages</abbr> are not updated to latest
-  version. The orginal file or directory from where the import was done is changed.
-  The imported file can me moved to latest version by running `dvc update`.
+- _update available_ means that <abbr>import stages</abbr> are not updated to
+  latest version. The orginal file or directory from where the import was done
+  is changed. The imported file can me moved to latest version by running
+  `dvc update`.
 
 **For comparison against remote storage:**
 
@@ -216,8 +217,8 @@ differences between the <abbr>cache</abbr> and `storage` remote.
 
 ## Example: Import Stage
 
-Let us import a file `data.csv` from a <abbr>DVC repository</abbr> stored locally
-to our current repository using `dvc import`.
+Let us import a file `data.csv` from a <abbr>DVC repository</abbr> stored
+locally to our current repository using `dvc import`.
 
 ```dvc
 $ dvc import /home/user/path/ data.csv
