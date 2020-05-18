@@ -3,7 +3,7 @@ title: May '20 DVC❤️Heartbeat
 date: 2020-05-14
 description: |
   Catch up on new DVC releases, talks, and projects in our community. 
-  This month, learn what we're up to in MLOps, CI/CD, and the 
+  This month, learn about new features in the momentous DVC 1.0 release, virtual ways to get involved, and more from the 
   intersection of data science and software engineering.
 
 descriptionLong: |
@@ -22,13 +22,13 @@ tags:
   - Plots
   - MLOps
   - Meetup
-  - Season of Docs
+  - Google Season of Docs
   - Ambassador
 ---
 
-Welcome to the May Heartbeat, our
-[monthly roundup of cool happenings](https://dvc.org/blog/tags/heartbeat), good
-reads and other bright spots in our community.
+Welcome to the May Heartbeat, our [monthly roundup of cool happenings](#news),
+[new releases](#new-releases), [good reads](#from-the-community) and other
+noteworthy developments the DVC community.
 
 ## News
 
@@ -64,7 +64,7 @@ Right now, we're accepting proposals from interested writers.
 **5000 GitHub Stars.** It finally happened- we passed 5,000 stars
 [on our GitHub repo!](https://github.com/iterative/dvc)
 
-<iframe src="https://giphy.com/embed/igWE67cPgTrWwXq4Nz" width="194" height="240" frameBorder="0" class="giphy-embed"></iframe><p><a href="https://giphy.com/gifs/igWE67cPgTrWwXq4Nz">via GIPHY</a></p>
+https://media.giphy.com/media/igWE67cPgTrWwXq4Nz/giphy.gif
 
 ## New releases
 
