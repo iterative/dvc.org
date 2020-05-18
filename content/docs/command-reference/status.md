@@ -84,10 +84,9 @@ describing the changes (described below).
     hash in the DVC-file is up to date, but there is no corresponding
     <abbr>cache</abbr> file or directory.
 
-- _update available_ means that <abbr>import stages</abbr> are not updated to
-  latest version. The orginal file or directory from where the import was done
-  is changed. The imported file can me moved to latest version by running
-  `dvc update`.
+- _update available_ means that <abbr>import stages</abbr> are outdated. The
+  original file or directory has changed. The imported data can be moved to its
+  latest version by using `dvc update`.
 
 **For comparison against remote storage:**
 
@@ -217,24 +216,22 @@ differences between the <abbr>cache</abbr> and `storage` remote.
 
 ## Example: Import stage
 
-Let us import a file `data.csv` from a <abbr>DVC repository</abbr> stored
-locally to our current repository using `dvc import`.
+Let's import a data file (`data.csv`) from a different <abbr>DVC repository
+</abbr> into our current project using `dvc import`.
 
 ```dvc
-$ dvc import /home/user/path/ data.csv
-Importing 'data.csv (/home/user/path/)'
--> 'data.csv'
+$ dvc import different/repo/location data.csv
 ```
 
-This is called a <abbr>import stage</abbr>. If the orginal file or directory is
-changed then running `dvc status` will show `update available` as output.
+The resulting `data.csv.dvc` file is called an <abbr>import stage</abbr>. If
+the original file or directory changes later, `dvc status` will show `update
+available` as output:
 
 ```dvc
 $ dvc status
 data.csv.dvc:
 	changed deps:
-		update available:   data.csv (/home/user/path/)
+		update available:   data.csv (different/repo/location)
 ```
 
-This shows that orginal file or directory is changed. The import stage can be
-brought to lates version by using `dvc update`.
+The imported data can be brought to its latest version by using `dvc update`.
