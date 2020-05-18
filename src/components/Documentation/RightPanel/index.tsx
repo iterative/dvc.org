@@ -27,12 +27,14 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   tutorials,
   githubLink
 }) => {
-  const [height, setHeight] = useState(0)
+  const [documentHeight, setDocumentHeight] = useState(0)
   const [headingsOffsets, setHeadingsOffsets] = useState<IHeadingsCoordinates>(
     {}
   )
-  const [current, setCurrent] = useState<string | null>(null)
-  const setCurrentHeader = (): void => {
+  const [currentHeadingSlug, setCurrentHeadingSlug] = useState<string | null>(
+    null
+  )
+  const updateCurrentHeader = (): void => {
     const currentScroll = getScrollPosition()
     const coordinateKeys = Object.keys(headingsOffsets)
 
@@ -41,14 +43,15 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     const headerHeight = getHeaderHeight()
     const filteredKeys = coordinateKeys.filter(
       offsetTop =>
-        parseInt(offsetTop, 10) <= currentScroll + (height - headerHeight) / 2
+        parseInt(offsetTop, 10) <=
+        currentScroll + (documentHeight - headerHeight) / 2
     )
 
     const newCurrent = filteredKeys.length
       ? headingsOffsets[filteredKeys[filteredKeys.length - 1]]
       : null
 
-    setCurrent(newCurrent)
+    setCurrentHeadingSlug(newCurrent)
   }
 
   const updateHeadingsPosition = (): void => {
@@ -65,7 +68,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       {}
     )
     setHeadingsOffsets(offsets)
-    setHeight(document.documentElement.clientHeight)
+    setDocumentHeight(document.documentElement.clientHeight)
   }
 
   const initHeadingsPosition = (): void => {
@@ -75,7 +78,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   }
 
   useEffect(() => {
-    const throttledSetCurrentHeader = throttle(setCurrentHeader, 100)
+    const throttledSetCurrentHeader = throttle(updateCurrentHeader, 100)
 
     document.addEventListener('scroll', throttledSetCurrentHeader)
     window.addEventListener('resize', updateHeadingsPosition)
@@ -84,9 +87,9 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       document.removeEventListener('scroll', throttledSetCurrentHeader)
       window.removeEventListener('resize', updateHeadingsPosition)
     }
-  }, [setCurrentHeader])
+  }, [updateCurrentHeader])
   useEffect(initHeadingsPosition, [headings])
-  useEffect(setCurrentHeader, [headingsOffsets, height])
+  useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
 
   return (
     <div className={styles.container}>
@@ -101,7 +104,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
               <Link
                 className={cn(
                   styles.headingLink,
-                  current === slug && styles.current,
+                  currentHeadingSlug === slug && styles.current,
                   'link-with-focus'
                 )}
                 key={`link-${slug}`}
