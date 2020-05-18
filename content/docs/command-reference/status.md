@@ -215,7 +215,7 @@ Preparing to collect status from s3://dvc-remote
 The output shows where the location of the remote storage is, as well as any
 differences between the <abbr>cache</abbr> and `storage` remote.
 
-## Example: Import Stage
+## Example: Import stage
 
 Let us import a file `data.csv` from a <abbr>DVC repository</abbr> stored
 locally to our current repository using `dvc import`.
