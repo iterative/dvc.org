@@ -1,5 +1,6 @@
 /* eslint-env node */
 
+const { createLinkNode } = require('./helpers')
 const { getItemByPath } = require('../../src/utils/shared/sidebar')
 
 const DVC_REGEXP = /dvc\s+[a-z][a-z-.]*/
@@ -29,13 +30,7 @@ module.exports = astNode => {
     }
 
     if (url) {
-      parent.children[index] = {
-        type: 'link',
-        url: url,
-        title: null,
-        children: [node],
-        position: node.position
-      }
+      createLinkNode(url, index, parent, node)
     }
   }
 
