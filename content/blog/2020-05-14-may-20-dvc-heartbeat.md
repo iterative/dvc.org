@@ -3,8 +3,9 @@ title: May '20 DVC❤️Heartbeat
 date: 2020-05-14
 description: |
   Catch up on new DVC releases, talks, and projects in our community. 
-  This month, learn about new features in the momentous DVC 1.0 release, virtual ways to get involved, and more from the 
-  intersection of data science and software engineering.
+  This month, learn about new features in the DVC 1.0 release, ways 
+  to get involved, and more from the intersection of data science 
+  and software engineering.
 
 descriptionLong: |
   Every month we share news, findings, interesting reads, community takeaways,
@@ -16,7 +17,7 @@ descriptionLong: |
 picture: 2020-05-14/May_20_Heartbeat.png
 pictureComment: A big hello from DVC mascot DeeVee.
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/april-20-heartbeat/347
+commentsUrl: https://discuss.dvc.org/t/dvc-heartbeat-may-20/391
 tags:
   - Heartbeat
   - Plots
@@ -172,7 +173,7 @@ https://twitter.com/tcgarvin/status/1258855168436813826
 
 _Thank you, thank you very much._
 
-<iframe src="https://giphy.com/embed/gJ2sDSKAQHUCIYUFhx" width="480" height="270" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/TheWiggles-wiggles-the-thewiggles-gJ2sDSKAQHUCIYUFhx">via GIPHY</a></p>
+https://media.giphy.com/media/gJ2sDSKAQHUCIYUFhx/giphy.gif
 
 As always, we want to hear what you're making with DVC and what you're reading.
 Tell us in the blog comments, and be in touch on
