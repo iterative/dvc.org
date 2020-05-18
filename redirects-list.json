@@ -24,6 +24,7 @@
   "^/doc/tutorial/(.*)?                                                                   /doc/tutorials/deep/$1",
   "^/doc/commands-reference(/.*)?$                                                        /doc/command-reference$1",
   "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
+  "^/doc/command-reference/plot$                                                          /doc/command-reference/plots",
 
   "^/(.+)/$                                                                               /$1"
 ]
