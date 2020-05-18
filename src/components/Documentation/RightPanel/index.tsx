@@ -47,11 +47,11 @@ const RightPanel: React.FC<IRightPanelProps> = ({
         currentScroll + (documentHeight - headerHeight) / 2
     )
 
-    const newCurrent = filteredKeys.length
+    const newCurrentHeadingSlug = filteredKeys.length
       ? headingsOffsets[filteredKeys[filteredKeys.length - 1]]
       : null
 
-    setCurrentHeadingSlug(newCurrent)
+    setCurrentHeadingSlug(newCurrentHeadingSlug)
   }
 
   const updateHeadingsPosition = (): void => {
@@ -91,6 +91,18 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   useEffect(initHeadingsPosition, [headings])
   useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
 
+  const [
+    isScrollToCurrentHeadingHappened,
+    setIsScrollToCurrentHeadingHappened
+  ] = useState(false)
+  useEffect(() => {
+    if (currentHeadingSlug && !isScrollToCurrentHeadingHappened) {
+      const el = document.getElementById(`link-${currentHeadingSlug}`)
+      el?.scrollIntoView()
+      setIsScrollToCurrentHeadingHappened(true)
+    }
+  })
+
   return (
     <div className={styles.container}>
       {headings.length > 0 && (
@@ -101,17 +113,18 @@ const RightPanel: React.FC<IRightPanelProps> = ({
           </div>
           <div className={styles.contentBlock}>
             {headings.map(({ slug, text }) => (
-              <Link
-                className={cn(
-                  styles.headingLink,
-                  currentHeadingSlug === slug && styles.current,
-                  'link-with-focus'
-                )}
-                key={`link-${slug}`}
-                href={`#${slug}`}
-              >
-                {text}
-              </Link>
+              <div id={`link-${slug}`} key={`link-${slug}`}>
+                <Link
+                  className={cn(
+                    styles.headingLink,
+                    currentHeadingSlug === slug && styles.current,
+                    'link-with-focus'
+                  )}
+                  href={`#${slug}`}
+                >
+                  {text}
+                </Link>
+              </div>
             ))}
           </div>
         </>
