@@ -3,6 +3,7 @@ const createLinkNode = (url, index, parent, node) =>
   (parent.children[index] = {
     type: 'link',
     url,
+    title: null,
     children: [node],
     position: node.position
   })
