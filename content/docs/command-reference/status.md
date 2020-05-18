@@ -223,9 +223,9 @@ Let's import a data file (`data.csv`) from a different <abbr>DVC repository
 $ dvc import different/repo/location data.csv
 ```
 
-The resulting `data.csv.dvc` file is called an <abbr>import stage</abbr>. If
-the original file or directory changes later, `dvc status` will show `update
-available` as output:
+The resulting `data.csv.dvc` file is called an <abbr>import stage</abbr>. If the
+original file or directory changes later, `dvc status` will show
+`update available` as output:
 
 ```dvc
 $ dvc status
