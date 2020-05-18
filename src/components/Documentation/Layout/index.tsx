@@ -10,8 +10,17 @@ import { matchMedia } from '../../../utils/front/breakpoints'
 
 import styles from './styles.module.css'
 
-const Layout: LayoutComponent = ({ children, ...restProps }) => {
+const Layout: LayoutComponent = ({
+  children,
+  location: { pathname },
+  ...restProps
+}) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
+  // Remove trailing slash from location for normalized usage all throughout the app
+  pathname = pathname.endsWith('/')
+    ? pathname.slice(0, pathname.length - 1)
+    : pathname
 
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
 
@@ -40,7 +49,7 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
         <div className={cn(styles.side, isMenuOpen && styles.opened)}>
           <SearchForm />
           <SidebarMenu
-            currentPath={restProps.location.pathname}
+            currentPath={pathname}
             onClick={(isLeafItemClicked: boolean): void => {
               if (matchMedia('--xs-scr') && isLeafItemClicked) {
                 toggleMenu()
