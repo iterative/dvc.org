@@ -88,8 +88,8 @@ $ dvc push
 ## Using registries
 
 The main methods to consume <abbr>data artifacts</abbr> from a **data registry**
-are the `dvc import` and `dvc get` commands, as well as the
-[`dvc.api`](/doc/api-reference) Python API.
+are the `dvc import` and `dvc get` commands, as well as the `dvc.api` Python
+API.
 
 But first, you may want to explore the contents of a data DVC repo.
 
@@ -139,7 +139,7 @@ current working directory (anywhere in the file system with user write access).
 
 ```dvc
 $ dvc import https://github.com/example/registry \
-             images/faces/
+            images/faces/
 ```
 
 > Note that unlike `dvc get`, which can be used from any directory, `dvc import`
@@ -182,7 +182,7 @@ with dvc.api.open(model_path, repo_url) as fd:
 This opens `model.pkl` as a file descriptor. The example above tries to
 illustrate a hardcoded ML model **deployment** method.
 
-> Notice that the `dvc.api.get_url` and `dvc.api.read` functions are also
+> Notice that the `dvc.api.get_url()` and `dvc.api.read()` functions are also
 > available.
 
 ## Updating registries
@@ -202,7 +202,7 @@ and this will be picked up by Git:
 $ git status
 Changes not staged for commit:
 ...
-	modified:   music/songs.dvc
+  modified:   music/songs.dvc
 $ git commit -am "Add 1,000 more songs to music/ dataset."
 ```
 
