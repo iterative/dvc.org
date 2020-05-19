@@ -12,9 +12,7 @@ import './base.css'
 import './fonts/fonts.css'
 
 export interface IPageProps {
-  location: {
-    pathname: string
-  }
+  path: string
   pageContext: {
     is404: boolean
     isDocs: boolean
@@ -45,7 +43,7 @@ const Page: React.FC<IPageProps> = props => {
 
   return (
     <>
-      <DefaultSEO pathname={props.location.pathname} />
+      <DefaultSEO pathname={props.path} />
       <LayoutComponent {...props} />
     </>
   )

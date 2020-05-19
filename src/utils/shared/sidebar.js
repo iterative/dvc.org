@@ -195,6 +195,10 @@ function getPathWithSource(path) {
   return getItemByPath(path).path
 }
 function getParentsListFromPath(path) {
+  // If path is the homepage, indicate that it's the only one active.
+  // This will have to change if we add children under home, but we don't currently.
+  if (path === PATH_ROOT) return [PATH_ROOT]
+
   let currentPath = PATH_ROOT
 
   return path
