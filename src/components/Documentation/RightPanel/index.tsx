@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import cn from 'classnames'
 import throttle from 'lodash/throttle'
 
@@ -91,15 +91,28 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   useEffect(initHeadingsPosition, [headings])
   useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
 
+  const contentBlockRef = useRef<HTMLDivElement>(null)
   const [
     isScrollToCurrentHeadingHappened,
     setIsScrollToCurrentHeadingHappened
   ] = useState(false)
   useEffect(() => {
     if (currentHeadingSlug && !isScrollToCurrentHeadingHappened) {
-      const el = document.getElementById(`link-${currentHeadingSlug}`)
-      el?.scrollIntoView()
       setIsScrollToCurrentHeadingHappened(true)
+      const currentHeadingSlugElem = document.getElementById(
+        `link-${currentHeadingSlug}`
+      )
+      const contentBlockElem = contentBlockRef.current
+      if (currentHeadingSlugElem && contentBlockElem) {
+        const hasVerticalScrollbar =
+          contentBlockElem.scrollHeight > contentBlockElem.clientHeight
+        if (hasVerticalScrollbar) {
+          currentHeadingSlugElem.scrollIntoView({
+            block: 'start',
+            inline: 'nearest'
+          })
+        }
+      }
     }
   })
 
@@ -111,7 +124,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
             <h5 className={styles.header}>Content</h5>
             <hr className={styles.separator} />
           </div>
-          <div className={styles.contentBlock}>
+          <div className={styles.contentBlock} ref={contentBlockRef}>
             {headings.map(({ slug, text }) => (
               <div id={`link-${slug}`} key={`link-${slug}`}>
                 <Link
