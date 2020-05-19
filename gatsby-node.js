@@ -43,4 +43,6 @@ exports.onCreateWebpackConfig = ({ stage, actions, getConfig }) => {
   }
 }
 
-exports.onPostBuild = pruneCache
+exports.onPostBuild = api => {
+  return Promise.all([callOnModels(models, 'onPostBuild', api), pruneCache])
+}

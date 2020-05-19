@@ -4,6 +4,6 @@
 
 🐛 Please make sure to mention `Fix #issue` (if applicable) in the description of the PR. This causes GitHub to close it automatically when the PR is merged.
 
-Please chose to [allow us](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) to edit your branch when creating the PR.
+Please choose to [allow us](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/allowing-changes-to-a-pull-request-branch-created-from-a-fork) to edit your branch when creating the PR.
 
 Thank you for the contribution - we'll try to review it as soon as possible. 🙏

@@ -11,6 +11,7 @@ export type ILinkProps = {
   href: string
   target?: undefined | '_blank'
   state?: unknown
+  scrollOptions?: object
 } & React.AnchorHTMLAttributes<HTMLAnchorElement>
 
 const PROTOCOL_REGEXP = /^https?:\/\//
@@ -66,13 +67,16 @@ const ResultLinkComponent: React.FC<ILinkProps> = ({
   )
 }
 
-const scrollToHash = (hash: string): void => {
+const scrollToHash = (hash: string, scrollOptions = {}): void => {
   if (hash) {
-    scrollIntoLayout(document.querySelector(hash), { waitImages: true })
+    scrollIntoLayout(document.querySelector(hash), {
+      waitImages: true,
+      ...scrollOptions
+    })
   }
 }
 
-const Link: React.FC<ILinkProps> = ({ href, ...restProps }) => {
+const Link: React.FC<ILinkProps> = ({ href, scrollOptions, ...restProps }) => {
   const currentLocation = useLocation()
   const onClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -80,25 +84,18 @@ const Link: React.FC<ILinkProps> = ({ href, ...restProps }) => {
         restProps.onClick(e)
       }
 
-      const location = new URL(href)
-
-      // Do not navigate to the same page. Handle hash scrolling manually
-      if (
-        currentLocation.host === location.host &&
-        currentLocation.pathname === location.pathname
-      ) {
+      // Handle local fragments manually, allowing for more control than
+      // native HTML fragment navigation.
+      if (href === '#') {
+        getScrollNode().scrollTop = 0
+      } else if (href.startsWith('#')) {
         e.preventDefault()
 
         // We can't navigate by direct usage of @reach/router#navigate because
         // gatsby-react-router-scroll will package intercept scroll in this
         // case and we will see undesired jump
         window.history.pushState(null, '', href)
-
-        if (location.hash) {
-          scrollToHash(location.hash)
-        } else {
-          getScrollNode().scrollTop = 0
-        }
+        scrollToHash(href, scrollOptions)
       }
     },
     [restProps.onClick, currentLocation]

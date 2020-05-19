@@ -1,0 +1,101 @@
+{
+  "hero": [
+    {
+      "pictureDesktop": "/img/community/default-banner.png",
+      "pictureMobile": "/img/community/default-mobile-banner.png",
+      "url": "#subscribe",
+      "expires": false
+    }
+  ],
+  "section": {
+    "contribute": {
+      "title": "Contribute",
+      "description": "DVC is 100% open source. We welcome contributions to our code and docs.",
+      "mobileDescription": "PRs, Blog Posts, Talks, Ambassadors"
+    },
+    "events": {
+      "title": "Events",
+      "description": "Learn more about DVC and meet us in person! We're appearing at conferences, meetups, and talks around the world.",
+      "mobileDescription": "Come to hear more about DVC"
+    },
+    "learn": {
+      "title": "Learn",
+      "description": "There are many ways to learn about DVC: check out our documentation, our blogs and monthly Heartbeats, recommended reads, and more.",
+      "mobileDescription": "Docs, Blog, User Content"
+    },
+    "meet": {
+      "title": "Community",
+      "description": "Ask questions, find answers, and connect with the DVC community.",
+      "mobileDescription": "Chat, Forum, Github"
+    }
+  },
+  "documentation": [
+    {
+      "url": "/doc/tutorials/get-started",
+      "title": "Get started",
+      "description": "Reproducible walkthroughs on advanced topics"
+    },
+    {
+      "url": "/doc/tutorials",
+      "title": "Tutorials",
+      "description": "Step-by-step introduction to basic DVC features"
+    },
+    {
+      "url": "https://github.com/iterative/dvc/releases",
+      "title": "Changelog",
+      "description": "See what's new in DVC."
+    }
+  ],
+  "userContent": [
+    {
+      "url": "https://medium.com/acing-ai/ml-ops-data-science-version-control-5935c49d1b76",
+      "title": "ML Ops: Data Science Version Control",
+      "author": "Vimarsh Karbhari",
+      "date": "2020-04-23",
+      "pictureUrl": "/img/community/ugc/medium_logo.png"
+    },
+    {
+      "url": "https://mribeirodantas.xyz/blog/index.php/2020/03/05/r-dvc-and-rmarkdown/",
+      "title": "Manage your Data Science Project in R",
+      "author": "Marcel Ribeiro-Dantas",
+      "date": "2020-03-05",
+      "pictureUrl": "/img/community/ugc/marcel.jpg"
+    },
+    {
+      "url": "https://blog.codecentric.de/en/2020/01/remote-training-gitlab-ci-dvc/",
+      "title": "Remote training with GitLab-CI and DVC",
+      "author": "Marcel Mikl and Bert Besser",
+      "date": "2020-01-28",
+      "pictureUrl": "/img/community/ugc/codecentric.png"
+    }
+  ],
+  "events": [
+    {
+      "url": "https://www.widsconference.org/",
+      "title": "Women in Data Science San Diego",
+      "description": "Elle O'Brien is talking about data catalogs and feature stores.",
+      "city": "San Diego",
+      "date": "2020-03-27"
+    },
+    {
+      "url": "https://www.mlprague.com/#schedule-saturday",
+      "title": "Machine Learning Prague 2020",
+      "description": "Paweł Redzyński will talk about open source tools for versioning machine learning projects",
+      "city": "Prague",
+      "date": "2020-03-20",
+      "pictureUrl": "/img/community/events/mlprague.jpg"
+    },
+    {
+      "url": "https://divops.org",
+      "title": "DivOps",
+      "description": "Elle O'Brien is talking about open source software in the growing field of MLOps.",
+      "city": "Remote",
+      "date": "2020-03-25",
+      "pictureUrl": "/img/community/events/divops.jpg"
+    }
+  ],
+  "stats": {
+    "users": "1800+",
+    "messages": "50K+"
+  }
+}

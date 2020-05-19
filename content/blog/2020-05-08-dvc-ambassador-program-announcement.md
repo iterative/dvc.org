@@ -84,6 +84,31 @@ check out any commit, you’ll see the source code as it was when you made the
 commit- as expected. But, you’ll also see your datasets as they were and the
 exact pipeline of commands you ran in that experiment!
 
+## Why become an ambassador?
+
+Like any volunteer position, the main benefit is getting to be involved in a
+project you believe in. But there are some perks:
+
+- Establishing a formal relationship with DVC that can go on your CV/resume.
+  We'll boost your content on our social channels, too.
+- Access to support from the DVC team, such as financial resources to organize
+  your own meetup for local data scientists and ML enthusiasts
+- Mentorship about crafting blogs and talks, if desired. DVC team members
+  regularly help people in the community develop their presentations and blogs
+  for accuracy and clarity
+- Closer relationships with the DVC team means more chances to participate in
+  conversations that guide our product decisions.
+
+For students and early career professionals, you can learn a lot by interacting
+with us! While you can certainly write a blog post or organize a meetup without
+being an ambassador, the program is a way to fast-track your learning- you'll
+have the creators of DVC helping you understand it well, and helping you
+discover features and best practices you might not have known about.
+
+If you're already active in the open source or MLOps community, then becoming an
+ambassador is a solid way to cement your relationship with DVC. We'd love to
+recognize you for the amazing stuff you already do.
+
 ## How to become an ambassador
 
 If you’re interested in becoming an ambassador, send us an email at

@@ -1,3 +1,8 @@
+.gray {
+  color: #838d93;
+  color: var(--color-gray);
+}
+
 .content {
   @media (--xs-scr) {
     padding-bottom: 0;

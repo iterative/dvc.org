@@ -84,6 +84,10 @@ describing the changes (described below).
     hash in the DVC-file is up to date, but there is no corresponding
     <abbr>cache</abbr> file or directory.
 
+- _update available_ means that <abbr>import stages</abbr> are outdated. The
+  original file or directory has changed. The imported data can be moved to its
+  latest version by using `dvc update`.
+
 **For comparison against remote storage:**
 
 - _new_ means that the file/directory exists in the cache but not in remote
@@ -209,3 +213,25 @@ Preparing to collect status from s3://dvc-remote
 
 The output shows where the location of the remote storage is, as well as any
 differences between the <abbr>cache</abbr> and `storage` remote.
+
+## Example: Import stage
+
+Let's import a data file (`data.csv`) from a different <abbr>DVC repository
+</abbr> into our current project using `dvc import`.
+
+```dvc
+$ dvc import different/repo/location data.csv
+```
+
+The resulting `data.csv.dvc` file is called an <abbr>import stage</abbr>. If the
+original file or directory changes later, `dvc status` will show
+`update available` as output:
+
+```dvc
+$ dvc status
+data.csv.dvc:
+	changed deps:
+		update available:   data.csv (different/repo/location)
+```
+
+The imported data can be brought to its latest version by using `dvc update`.
