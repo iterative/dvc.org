@@ -8,7 +8,8 @@ const METHOD_REGEXP = /^[a-z-._]*\(\)$/
 const API_ROOT = '/doc/api-reference/'
 
 module.exports = astNode => {
-  const [node, index, parent] = astNode
+  const node = astNode[0]
+  const parent = astNode[2]
 
   if (parent.type !== 'link' && DVC_API_REGEXP.test(node.value)) {
     const parts = node.value.split('.')
@@ -26,7 +27,7 @@ module.exports = astNode => {
 
     const isMethodPageExists = getItemByPath(url)
     if (isMethodPageExists) {
-      createLinkNode(url, index, parent, node)
+      createLinkNode(url, astNode)
     }
   }
 

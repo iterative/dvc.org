@@ -1,24 +1,22 @@
 const flow = require('lodash/flow')
 const constant = require('lodash/constant')
-
-const unified = require('unified')
-const remarkHtml = require('remark-html')
-const remarkParse = require('remark-parse')
 const visit = require('unist-util-visit')
-const removePosition = require('unist-util-remove-position')
 
+const gatsbyRemarkDvcLinker = require('.')
 const apiLinker = require('./apiLinker')
 const commandLinker = require('./commandLinker')
-const gatsbyRemarkDvcLinker = require('.')
 
-// We do not need to consider the position of the AST nodes
-const buildAst = mdToBuild =>
-  removePosition(unified().use(remarkHtml).use(remarkParse).parse(mdToBuild))
+const { buildAst } = require('./helpers')
 
 describe('gatsby-remark-dvc-linker', () => {
   api = {
     inlineCode: '`dvc.api.get_url()`',
     url: '[`dvc.api.get_url()`](/doc/api-reference/get_url)'
+  }
+
+  apiRoot = {
+    inlineCode: '`dvc.api`',
+    url: '[`dvc.api`](/doc/api-reference/)'
   }
 
   command = {
@@ -40,9 +38,9 @@ describe('gatsby-remark-dvc-linker', () => {
     })
 
     it('transforms root API reference to a link', () => {
-      const ast = buildAst('`dvc.api`')
+      const ast = buildAst(apiRoot.inlineCode)
       visit(ast, 'inlineCode', flow([Array, apiLinker, constant(undefined)]))
-      expect(ast).toEqual(buildAst('[`dvc.api`](/doc/api-reference/)'))
+      expect(ast).toEqual(buildAst(apiRoot.url))
     })
   })
 

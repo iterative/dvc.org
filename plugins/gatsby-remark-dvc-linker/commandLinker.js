@@ -8,7 +8,8 @@ const COMMAND_REGEXP = /^[a-z][a-z-]*$/
 const COMMAND_ROOT = '/doc/command-reference/'
 
 module.exports = astNode => {
-  const [node, index, parent] = astNode
+  const node = astNode[0]
+  const parent = astNode[2]
 
   if (parent.type !== 'link' && DVC_REGEXP.test(node.value)) {
     const parts = node.value.split(/\s+/)
@@ -29,9 +30,7 @@ module.exports = astNode => {
       url = `${COMMAND_ROOT}${parts[1]}`
     }
 
-    if (url) {
-      createLinkNode(url, index, parent, node)
-    }
+    createLinkNode(url, astNode)
   }
 
   return astNode
