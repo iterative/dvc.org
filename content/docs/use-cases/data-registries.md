@@ -164,9 +164,9 @@ the project dependency metadata in the import stage (DVC-file).
 
 ### Programmatic reusability of DVC data
 
-Our Python API, included with the `dvc` package installed with DVC, includes the
-`open` function to load/stream data directly from external <abbr>DVC
-projects</abbr>:
+Our Python API (`dvc.api`), included with the `dvc` package installed with DVC,
+includes the `open` function to load/stream data directly from external
+<abbr>DVC projects</abbr>:
 
 ```python
 import dvc.api.open
@@ -202,7 +202,7 @@ and this will be picked up by Git:
 $ git status
 Changes not staged for commit:
 ...
-      modified:   music/songs.dvc
+	modified:   music/songs.dvc
 $ git commit -am "Add 1,000 more songs to music/ dataset."
 ```
 
