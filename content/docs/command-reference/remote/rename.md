@@ -1,6 +1,6 @@
 # remote rename
 
-Rename a data remote. This command affects DVC configuration files only, it does
+Rename a DVC remote. This command affects DVC configuration files only, it does
 not physically remove data files stored remotely.
 
 See also [add](/doc/command-reference/remote/add),
