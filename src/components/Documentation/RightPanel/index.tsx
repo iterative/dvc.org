@@ -97,7 +97,14 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     setIsScrollToCurrentHeadingHappened
   ] = useState(false)
   useEffect(() => {
-    if (currentHeadingSlug && !isScrollToCurrentHeadingHappened) {
+    if (isScrollToCurrentHeadingHappened) {
+      return
+    }
+    if (!document.location.hash) {
+      setIsScrollToCurrentHeadingHappened(true)
+      return
+    }
+    if (currentHeadingSlug) {
       setIsScrollToCurrentHeadingHappened(true)
       const currentHeadingSlugElem = document.getElementById(
         `link-${currentHeadingSlug}`
