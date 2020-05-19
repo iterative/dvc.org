@@ -51,20 +51,12 @@ $ sudo chown -R myuser:ourgroup /home/shared/dvc-cache/
 Tell DVC to use the directory we've set up above as the <abbr>cache</abbr> for
 your <abbr>project</abbr>:
 
-```dvc
-$ dvc config cache.dir /home/shared/dvc-cache
-```
-
 You could also use a dedicated command to specify the cache directory to use a
 path relative to your project.
 
 ```dvc
 $ dvc cache dir /home/shared/dvc-cache
 ```
-
-You could choose both of this interchangeably at times but it's more advisable
-to use `dvc config cache.dir` for using an external cache, as the use of
-absolute path is much easier than a path relative to your project.
 
 And tell DVC to set group permissions on newly created or downloaded cache
 files:
@@ -73,8 +65,7 @@ files:
 $ dvc config cache.shared group
 ```
 
-> See `dvc config cache` and `dvc cache dir` for more information on these
-> config options.
+> See `dvc config cache` and `dvc cache dir` for more information.
 
 If you're using Git, commit changes to your project's config file (`.dvc/config`
 by default):
