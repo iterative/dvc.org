@@ -15,11 +15,10 @@ import {
   IDiscussTopic
 } from '../../../utils/front/api'
 
-import data from '../data.json'
+import { useCommunityData } from '../../../utils/front/community'
 import sharedStyles from '../styles.module.css'
 import styles from './styles.module.css'
 
-const { description, mobileDescription, title } = data.section.meet
 const logIssueAll = (): void => logEvent('community', 'issue', 'all')
 const logTopicAll = (): void => logEvent('community', 'topic', 'all')
 const logDiscord = (): void => logEvent('community', 'discord')
@@ -99,6 +98,8 @@ const Issue: React.FC<{ color: string } & IGithubIssue> = ({
 }
 
 const Meet: React.FC<{ theme: ICommunitySectionTheme }> = ({ theme }) => {
+  const data = useCommunityData().rest
+  const { description, mobileDescription, title } = data.section.meet
   const { error: issuesError, ready: issuesReady, result: issues } = useIssues()
   const { error: topicsError, ready: topicsReady, result: topics } = useTopics()
 
