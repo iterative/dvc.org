@@ -10,17 +10,16 @@ import { matchMedia } from '../../../utils/front/breakpoints'
 
 import styles from './styles.module.css'
 
-const Layout: LayoutComponent = ({
-  children,
-  location: { pathname },
-  ...restProps
-}) => {
+const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   // Remove trailing slash from location for normalized usage all throughout the app
-  pathname = pathname.endsWith('/')
-    ? pathname.slice(0, pathname.length - 1)
-    : pathname
+  const pathname: string = location.pathname.endsWith('/')
+    ? restProps.location.pathname.slice(
+        0,
+        restProps.location.pathname.length - 1
+      )
+    : restProps.location.pathname
 
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
 
