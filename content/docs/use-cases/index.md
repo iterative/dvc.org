@@ -1,5 +1,14 @@
 # Use Cases
 
+# Collaboration Issues in Data Science
+
+Even with all the success we've seen today in machine learning (ML),
+specifically deep learning and its applications in business, the data science
+community still lacks good practices for organizing their projects and
+effectively collaborating across their varied ML projects. This is a critical
+challenge: we need to evolve towards ML algorithms and methods no longer being
+tribal knowledge and making them easy to implement, reuse, and manage.
+
 We provide short articles on common ML workflow or data management scenarios
 that DVC can help with or improve. These include the motivating context (usually
 extracted from real-life cases); And the approaches to solving them can combine
