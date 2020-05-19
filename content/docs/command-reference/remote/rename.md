@@ -57,5 +57,5 @@ $ dvc remote add myremote s3://mybucket/myproject
 Rename it:
 
 ```dvc
-$ dvc remote rename myremote mys3remote 
+$ dvc remote rename myremote mys3remote
 ```
