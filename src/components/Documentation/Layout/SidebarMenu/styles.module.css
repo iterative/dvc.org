@@ -82,6 +82,14 @@
   &.active::before {
     animation: rotateIcon 0.5s forwards;
   }
+
+  &.leafItem {
+    &::before {
+      background-image: url('/img/circle_dark.svg');
+      width: 6px;
+      height: 6px;
+    }
+  }
 }
 
 @keyframes rotateIcon {
