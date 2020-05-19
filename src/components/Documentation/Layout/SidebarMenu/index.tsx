@@ -22,7 +22,7 @@ import styles from './styles.module.css'
 
 // A map for optional special icons that can be used in menu items
 // Use the key string here as the "icon" field in sidebar.json
-const ICONS = {
+const ICONS: { [key: string]: React.FC<{ className?: string }> } = {
   house: HouseIcon
 }
 
@@ -55,7 +55,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   const currentLevelOnClick = (): void => onClick(isLeafItem)
 
   // Fetch a special icon if one is defined
-  const IconComponent = ICONS[icon]
+  const IconComponent = icon && ICONS[icon]
   const iconElement = IconComponent ? (
     <IconComponent className={styles.specialIcon} />
   ) : null
