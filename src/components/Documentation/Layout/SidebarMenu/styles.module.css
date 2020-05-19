@@ -86,6 +86,8 @@
   &.leafItem {
     &::before {
       background-image: url('/img/circle_dark.svg');
+      left: 1px;
+      top: 9px;
       width: 6px;
       height: 6px;
     }
