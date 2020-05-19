@@ -12,14 +12,7 @@ import styles from './styles.module.css'
 
 const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-
-  // Remove trailing slash from location for normalized usage all throughout the app
-  const pathname: string = restProps.location.pathname.endsWith('/')
-    ? restProps.location.pathname.slice(
-        0,
-        restProps.location.pathname.length - 1
-      )
-    : restProps.location.pathname
+  const { path } = restProps
 
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
 
@@ -48,7 +41,7 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
         <div className={cn(styles.side, isMenuOpen && styles.opened)}>
           <SearchForm />
           <SidebarMenu
-            currentPath={pathname}
+            currentPath={path}
             onClick={(isLeafItemClicked: boolean): void => {
               if (matchMedia('--xs-scr') && isLeafItemClicked) {
                 toggleMenu()
