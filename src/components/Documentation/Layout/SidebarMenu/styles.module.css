@@ -65,7 +65,9 @@
   &.active {
     color: var(--color-gray-hover);
   }
+}
 
+.defaultBullet {
   &::before {
     content: '';
     position: absolute;
@@ -76,6 +78,10 @@
     width: 8px;
     background: url('/img/triangle_dark.svg') no-repeat center center;
   }
+
+  &.active::before {
+    animation: rotateIcon 0.5s forwards;
+  }
 }
 
 @keyframes rotateIcon {
@@ -84,11 +90,23 @@
   }
 }
 
-.active::before {
-  animation: rotateIcon 0.5s forwards;
+.docHome {
+  font-weight: 600;
 }
 
 .footer {
   margin-top: 30px;
   padding-bottom: 30px;
+}
+
+.specialIcon {
+  position: absolute;
+  width: 0.75rem;
+  height: 0.75rem;
+  top: 0.3rem;
+  left: -0.1rem;
+
+  .active& {
+    animation: unset;
+  }
 }

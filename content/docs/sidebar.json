@@ -2,7 +2,9 @@
   {
     "slug": "",
     "label": "Home",
-    "source": "index.md"
+    "source": "index.md",
+    "style": "docHome",
+    "icon": "house"
   },
   {
     "slug": "install",
