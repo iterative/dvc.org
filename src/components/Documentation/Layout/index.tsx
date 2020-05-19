@@ -14,7 +14,7 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   // Remove trailing slash from location for normalized usage all throughout the app
-  const pathname: string = location.pathname.endsWith('/')
+  const pathname: string = restProps.location.pathname.endsWith('/')
     ? restProps.location.pathname.slice(
         0,
         restProps.location.pathname.length - 1
