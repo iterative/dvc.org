@@ -12,7 +12,7 @@
 DVC can be used as a Python library, simply install it with a package manager
 like `pip` or `conda`, and as a Python
 [project requirement](https://pip.pypa.io/en/latest/user_guide/#requirements-files)
-if needed. The [Python API](/doc/api-reference) module is `dvc.api`.
+if needed. The Python API module is `dvc.api`.
 
 ## Advanced options
 
