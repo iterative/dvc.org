@@ -1,6 +1,6 @@
 # Use Cases
 
-# Collaboration Issues in Data Science
+## Collaboration Issues in Data Science
 
 Even with all the success we've seen today in machine learning (ML),
 specifically deep learning and its applications in business, the data science
