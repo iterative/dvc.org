@@ -139,7 +139,7 @@ current working directory (anywhere in the file system with user write access).
 
 ```dvc
 $ dvc import https://github.com/example/registry \
-            images/faces/
+             images/faces/
 ```
 
 > Note that unlike `dvc get`, which can be used from any directory, `dvc import`
@@ -202,7 +202,7 @@ and this will be picked up by Git:
 $ git status
 Changes not staged for commit:
 ...
-  modified:   music/songs.dvc
+      modified:   music/songs.dvc
 $ git commit -am "Add 1,000 more songs to music/ dataset."
 ```
 

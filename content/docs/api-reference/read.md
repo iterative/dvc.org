@@ -4,11 +4,11 @@ Returns the contents of a tracked file.
 
 ```py
 def open(path: str,
-        repo: str = None,
-        rev: str = None,
-        remote: str = None,
-        mode: str = "r",
-        encoding: str = None)
+         repo: str = None,
+         rev: str = None,
+         remote: str = None,
+         mode: str = "r",
+         encoding: str = None)
 ```
 
 #### Usage:
