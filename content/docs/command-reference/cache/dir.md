@@ -10,7 +10,8 @@ usage: dvc cache dir [-h] [--global] [--system] [--local] [-u] value
 
 positional arguments:
   value        Path to cache directory. Relative paths are resolved
-               relative to the current directory and saved to config# cache dir
+               relative to the current directory and saved to config
+               relative to the config file location.
                
 ```
 
