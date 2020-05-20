@@ -65,9 +65,9 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
     isActive && styles.active,
     isRootParent && 'docSearch-lvl0',
     'link-with-focus',
-    icon || styles.defaultBullet,
-    isLeafItem && styles.leafItem,
-    style ? styles[style] : styles.sidebarDefault
+    style ? styles[style] : styles.sidebarDefault,
+    // Limit the default bullet to items with children and no special icon
+    icon ? styles.withBullet : isLeafItem ? false : styles.withDefaultBullet
   )
 
   const parentElement =

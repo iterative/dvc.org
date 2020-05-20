@@ -20,8 +20,8 @@
   }
 
   :global(.ReactCollapse--collapse) {
-    padding-left: 20px;
     transition: height 250ms;
+    padding-left: 10px;
   }
 }
 
@@ -45,9 +45,8 @@
   display: block;
   position: relative;
   min-height: 26px;
-  margin: 0 0 0 5px;
-  padding-left: 15px;
-  padding-bottom: 5px;
+  margin: 0;
+  padding: 0 0 5px 15px;
   font-size: 18px;
   line-height: 26px;
   font-weight: 400;
@@ -67,7 +66,7 @@
   }
 }
 
-.defaultBullet {
+.withDefaultBullet {
   &::before {
     content: '';
     position: absolute;
@@ -82,26 +81,12 @@
   &.active::before {
     animation: rotateIcon 0.5s forwards;
   }
-
-  &.leafItem {
-    &::before {
-      background-image: url('/img/circle_dark.svg');
-      left: 1px;
-      top: 9px;
-      width: 6px;
-      height: 6px;
-    }
-  }
 }
 
 @keyframes rotateIcon {
   100% {
     transform: rotate(-90deg);
   }
-}
-
-.docHome {
-  font-weight: 600;
 }
 
 .footer {
