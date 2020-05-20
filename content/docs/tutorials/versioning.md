@@ -276,6 +276,9 @@ If you run `git status` you'll see that `data.dvc` is modified and currently
 points to the `v1.0` version of the dataset, while code and model files are from
 the `v2.0` tag.
 
+Note that the contents under `.dvcgnore` file won't get affected when switching between versions concluding that the files that are untracked in one version will also remain untracked in other versions.
+See [.dvcignore](docs/user-guide/.dvcignore) for more details.
+
 <details>
 
 ### Expand to learn more about DVC internals
@@ -342,7 +345,8 @@ was a dependency change. It also updates outputs and puts them into the
 To make things a little simpler: if `dvc add` and `dvc checkout` provide a basic
 mechanism to version control large data files or models, `dvc run` and
 `dvc repro` provide a build system for ML models, which is similar to
-[Make](https://www.gnu.org/software/make/) in software build automation.
+[Make](https://www.gnu.org/software/make/) in software build automation. 
+
 
 ## What's next?
 
