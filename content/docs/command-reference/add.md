@@ -243,3 +243,5 @@ In this case, a DVC-file is generated for each file in the `pics/` directory
 tree. No top-level DVC-file is generated, which is typically less convenient.
 For example, we cannot use the directory structure as one unit with `dvc run` or
 other commands.
+
+We can also add [patterns](https://git-scm.com/docs/gitignore) to `.dvcignore` which untracks files and directories currently being tracked by dvc as a result of commands like `dvc add`.
