@@ -71,22 +71,21 @@
     content: '';
     position: absolute;
     left: 0;
-    top: 10px;
+    top: 9px;
     display: block;
-    height: 5px;
+    height: 8px;
     width: 8px;
     background: url('/img/triangle_dark.svg') no-repeat center center;
-    animation: rotateIcon 0.5s forwards;
   }
 
   &.active::before {
-    animation: unset;
+    animation: rotateIcon 0.5s forwards;
   }
 }
 
 @keyframes rotateIcon {
   100% {
-    transform: rotate(-90deg);
+    transform: rotate(90deg);
   }
 }
 
@@ -101,8 +100,4 @@
   height: 0.75rem;
   top: 0.3rem;
   left: -0.1rem;
-
-  .active& {
-    animation: unset;
-  }
 }
