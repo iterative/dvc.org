@@ -76,6 +76,8 @@ The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 
 </details>
 
+Suppose we want only a subset of files imported from a particular source to work on and need remaining files later on in the project. Meanwhile we also don't want dvc to track those files (as files as automatically by dvc when imported) so we can just add them to `.dvcignore`. See [.dvcignore](docs/user-guide/.dvcignore) for more details. 
+
 Since this is not an official part of this _Get Started_, bring everything back
 to normal with:
 
