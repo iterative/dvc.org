@@ -35,8 +35,7 @@ interconnected by their dependencies and outputs later. (See `dvc repro`.)
 `dvc pipeline` commands help users display the existing project pipelines in
 different ways.
 
-If we reproduce a pipeline, the files and directories listed under `.dvcignore` may get deleted permanently. 
-See [.dvcignore](docs/user-guide/.dvcignore).
+DVC might remove ignored files(files listed in `.dvcignore`) upon `dvc run` or `dvc repro`. If they are not produced by a pipeline stage, they can be deleted permanently.
 ## Options
 
 - `-h`, `--help` - prints the usage/help message, and exit.
