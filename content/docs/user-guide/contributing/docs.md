@@ -155,6 +155,10 @@ is installed when `yarn` runs (explained above).
 - Markdown: Using `dvc <command>`, the docs engine will create a link to that
   command automatically. (No need to use `[]()` explicitly to create them.)
 
+- Markdown: Using `dvc.api.<api_method>()` or `dvc.api`, the docs engine will
+  create a link to that API method automatically. (No need to use `[]()`
+  explicitly to create them.)
+
 - Markdown: Neither bullet lists nor each item's should be too long (3 sentence
   paragraphs max.) Full sentence bullets should begin with a capital letter and
   end in period `.` otherwise they can be all lower case and have no ending

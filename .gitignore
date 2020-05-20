@@ -58,6 +58,7 @@ typings/
 *.log
 .idea
 .vscode
+.history
 
 # Mac finder artifacts
 .DS_Store
