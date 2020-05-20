@@ -43,7 +43,7 @@ const Page: React.FC<IPageProps> = props => {
 
   return (
     <>
-      <DefaultSEO pathname={props.path} />
+      <DefaultSEO pathname={props.location.pathname} />
       <LayoutComponent {...props} />
     </>
   )
