@@ -230,3 +230,5 @@ MD5 (model.pkl) = 662eb7f64216d9c2c1088d0a5e2c6951
 Previously this took two commands, `git checkout` followed by `dvc checkout`. We
 can now skip the second one, which is automatically run for us. The workspace is
 automatically synchronized accordingly.
+
+One thing to note here is when we are using `dvc checkout`, it does not affect state of files and directories listed under `.dvcignore` as these are currently untracked by dvc and `dvc checkout` synchronizes only tracked files and directories with the versions specified in the current DVC-files. 
