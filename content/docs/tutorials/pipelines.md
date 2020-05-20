@@ -396,3 +396,5 @@ DVC streamlines all of your experiments into a single, reproducible
 <abbr>project</abbr>, and it makes it easy to share it with Git, including
 dependencies. This collaboration feature provides the ability to review data
 science research.
+
+See also [.dvcignore](docs/user-guide/.dvcignore) to untrack specific files in a pipeline. 
