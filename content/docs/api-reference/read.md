@@ -24,9 +24,9 @@ modelpkl = dvc.api.read(
 
 ## Description
 
-This function wraps [`dvc.api.open()`](/doc/api-reference/open), for a simple
-way to return the complete contents of a file tracked in a <abbr>DVC
-project</abbr>. The file can be tracked by DVC or by Git.
+This function wraps `dvc.api.open()`, for a simple way to return the complete
+contents of a file tracked in a <abbr>DVC project</abbr>. The file can be
+tracked by DVC or by Git.
 
 > This is similar to the `dvc get` command in our CLI.
 
