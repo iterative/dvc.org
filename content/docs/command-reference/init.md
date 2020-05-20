@@ -223,3 +223,6 @@ repo
 └── project-a
     └── .dvc
 ```
+
+Its quite intutive to add `.dvcignore` at the time of project intialization for management of tracking of files throughout the project. 
+For further reference see [.dvcignore](docs/user-guide/.dvcignore). 
