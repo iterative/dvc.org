@@ -81,6 +81,10 @@
   &.active::before {
     animation: rotateIcon 0.5s forwards;
   }
+
+  &.leafItem::before {
+    background: url('/img/default_bullet_dark.svg') no-repeat center center;
+  }
 }
 
 @keyframes rotateIcon {
@@ -95,9 +99,10 @@
 }
 
 .specialIcon {
+  color: var(--color-gray-light);
   position: absolute;
-  width: 0.75rem;
-  height: 0.75rem;
-  top: 0.3rem;
-  left: -0.1rem;
+  width: 0.65rem;
+  height: 0.65rem;
+  top: 0.5rem;
+  left: -0.08rem;
 }
