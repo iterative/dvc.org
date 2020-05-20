@@ -76,10 +76,11 @@
     height: 5px;
     width: 8px;
     background: url('/img/triangle_dark.svg') no-repeat center center;
+    animation: rotateIcon 0.5s forwards;
   }
 
   &.active::before {
-    animation: rotateIcon 0.5s forwards;
+    animation: unset;
   }
 }
 
