@@ -21,6 +21,8 @@ directory.) If you were using
 cache, DVC will replace them with copies, so that your data is intact after the
 project's destruction.
 
+Note that `.dvcignore` will not get deleted as a result of `dvc destroy`. See [.dvcignore](docs/user-guide/.dvcignore).
+
 ## Options
 
 - `-f`, `--force` - do not prompt when destroying this project.
