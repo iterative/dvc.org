@@ -88,8 +88,8 @@ $ dvc push
 ## Using registries
 
 The main methods to consume <abbr>data artifacts</abbr> from a **data registry**
-are the `dvc import` and `dvc get` commands, as well as the
-[`dvc.api`](/doc/api-reference) Python API.
+are the `dvc import` and `dvc get` commands, as well as the `dvc.api` Python
+API.
 
 But first, you may want to explore the contents of a data DVC repo.
 
@@ -164,9 +164,9 @@ the project dependency metadata in the import stage (DVC-file).
 
 ### Programmatic reusability of DVC data
 
-Our Python API, included with the `dvc` package installed with DVC, includes the
-`open` function to load/stream data directly from external <abbr>DVC
-projects</abbr>:
+Our Python API (`dvc.api`), included with the `dvc` package installed with DVC,
+includes the `open` function to load/stream data directly from external
+<abbr>DVC projects</abbr>:
 
 ```python
 import dvc.api.open
@@ -182,7 +182,7 @@ with dvc.api.open(model_path, repo_url) as fd:
 This opens `model.pkl` as a file descriptor. The example above tries to
 illustrate a hardcoded ML model **deployment** method.
 
-> Notice that the `dvc.api.get_url` and `dvc.api.read` functions are also
+> Notice that the `dvc.api.get_url()` and `dvc.api.read()` functions are also
 > available.
 
 ## Updating registries
