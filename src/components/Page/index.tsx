@@ -12,7 +12,9 @@ import './base.css'
 import './fonts/fonts.css'
 
 export interface IPageProps {
-  path: string
+  location: {
+    pathname: string
+  }
   pageContext: {
     is404: boolean
     isDocs: boolean
