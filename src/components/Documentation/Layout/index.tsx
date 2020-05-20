@@ -12,7 +12,9 @@ import styles from './styles.module.css'
 
 const Layout: LayoutComponent = ({ children, ...restProps }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const { path } = restProps
+  const {
+    location: { pathname }
+  } = restProps
 
   const toggleMenu = useCallback(() => setIsMenuOpen(!isMenuOpen), [isMenuOpen])
 
@@ -41,7 +43,7 @@ const Layout: LayoutComponent = ({ children, ...restProps }) => {
         <div className={cn(styles.side, isMenuOpen && styles.opened)}>
           <SearchForm />
           <SidebarMenu
-            currentPath={path}
+            currentPath={pathname}
             onClick={(isLeafItemClicked: boolean): void => {
               if (matchMedia('--xs-scr') && isLeafItemClicked) {
                 toggleMenu()
