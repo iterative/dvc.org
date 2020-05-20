@@ -2,7 +2,8 @@
   {
     "slug": "",
     "label": "Home",
-    "source": "index.md"
+    "source": "index.md",
+    "icon": "house"
   },
   {
     "slug": "install",
