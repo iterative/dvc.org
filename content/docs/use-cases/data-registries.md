@@ -150,6 +150,8 @@ the data source (registry repo). This is achieved by creating a particular kind
 of [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_). This
 file can be used staged and committed with Git.
 
+> See `.dvcignore` for untracking unecessary files which were automatically tracked by DVC on running `dvc import`.  
+
 As an addition to the import workflow, and enabled the saved dependency, we can
 easily bring it up to date in our consumer project(s) with `dvc update` whenever
 the the dataset changes in the source repo (data registry):
