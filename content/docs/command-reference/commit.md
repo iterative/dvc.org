@@ -53,8 +53,8 @@ DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
 - Computes a hash for the file/directory.
 - Enters the hash value and file name into the DVC-file.
 - Tells Git to ignore the file/directory (adding them to `.gitignore`). (Note
-  that if the <abbr>project</abbr> was initialized with no SCM support
-  (`dvc init --no-scm`), this does not happen.)
+  that if the <abbr>project</abbr> was initialized with no Git support
+  (`dvc init --no-git`), this does not happen.)
 - Adds the file/directory to the cache.
 
 There are many cases where the last step is not desirable (for example rapid
@@ -279,5 +279,5 @@ $ dvc status
 Data and pipelines are up to date.
 ```
 
-Nothing special is required, we simply `commit` to both the SCM and DVC. Since
+Nothing special is required, we simply `commit` to both the Git and DVC. Since
 this pipeline is up to date, `dvc repro` will not do anything.

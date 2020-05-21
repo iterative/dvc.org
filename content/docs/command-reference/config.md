@@ -84,7 +84,7 @@ This is the main section with the general config options:
 
 - `core.no_scm` - tells DVC to not expect or integrate with Git (even if the
   <abbr>project</abbr> is initialized inside a Git repo). Accepts values `true`
-  and `false` (default). Set with the `--no-scm` option of `dvc init`
+  and `false` (default). Set with the `--no-git` option of `dvc init`
   ([more details](/doc/command-reference/init#initializing-dvc-without-git)).
 
 ### remote

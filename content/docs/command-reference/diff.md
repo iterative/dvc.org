@@ -31,7 +31,7 @@ of the output produced. See the [Options](#options) and [Examples](#examples)
 sections below for more details.
 
 `dvc diff` does not have an effect when the repository is not tracked by Git,
-for example when `dvc init` was used with the `--no-scm` option.
+for example when `dvc init` was used with the `--no-git` option.
 
 > Note that current `dvc diff` implementation does not show the line-to-line
 > comparison among the files in each revision, like `git diff` or
