@@ -1,7 +1,3 @@
----
-template: 'doc-home'
----
-
 # DVC Documentation
 
 Welcome! In here you may find all the guiding material and technical documents
@@ -31,9 +27,7 @@ Learn how to [install](/doc/install) and
 
 </card>
 
-<card icon="true">
-
-![](/img/home_placeholder.svg)
+<card>
 
 Explore the main [reasons](/doc/use-cases) to adopt DVC
 
@@ -45,11 +39,9 @@ Study the detailed [inner-workings](/doc/user-guide) of DVC in its user guide
 
 </card>
 
-<card icon="true" heading="With heading and image">
+<card>
 
-![](/img/home_placeholder.svg)
-
-View the [CLI](/doc/command-reference) and [Python](/doc/api-reference) APIs
+View the [commands](/doc/command-reference) and [Python](/doc/api-reference) API
 
 </card>
 
