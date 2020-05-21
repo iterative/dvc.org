@@ -36,7 +36,8 @@ $ git commit -m "Add raw data to project"
 Committing DVC-files with Git allows us to track different versions of the
 <abbr>project</abbr> data as it evolves with the source code tracked by Git.
 
-When we don't want to dvc to track specific files and directories, we use `.dvcignore`.<br>
+When we don't want DVC to track specific files and directories, we list them under `.dvcignore`.
+
 See [.dvcignore](docs/user-guide/.dvcignore) for more details.
 <details>
 
