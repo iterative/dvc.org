@@ -346,7 +346,7 @@
   flex-flow: column nowrap;
   margin: 1rem 0;
 
-  > div {
+  & > div {
     padding: 0.5rem 0.1rem;
   }
 
@@ -354,10 +354,10 @@
     margin: 2rem -0.5rem;
     flex-flow: row wrap;
 
-    > div {
+    .cardWrapper {
       flex: 1 0 50%;
       padding: 0.5rem;
-      height: 7rem;
+      min-height: 7rem;
     }
 
     .card {
@@ -369,8 +369,10 @@
 .card {
   border: 1px solid gray;
   border-radius: 10px;
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   display: flex;
+  width: 100%;
+  height: 100%;
   flex-flow: row nowrap;
   align-items: center;
   box-sizing: border-box;
@@ -401,5 +403,16 @@
 
   .cardContent {
     flex: 1;
+  }
+}
+
+a.card {
+  color: inherit;
+  text-decoration: inherit;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    text-decoration: inherit;
+    transform: scale(1.02);
   }
 }
