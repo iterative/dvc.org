@@ -71,7 +71,7 @@ outs:
     md5: c8263e8422925b0872ee1fb7c953742a
     path: other.csv
 ```
-Note that when we try to use `dvc move` over a file whose pattern matches one of the patterns listed in `.dvcignore`, it would raise an error.
+Note that when we try to use `dvc move` over a file whose pattern matches one of the patterns listed in `.dvcignore`, it would raise an error because that DVC-file was not tracked by DVC.
 
 ```dvc
 $ dvc add data.csv
@@ -81,7 +81,7 @@ ERROR: failed to move 'data.csv' -> 'other.csv' - Unable to find DVC-file with o
 
 Having any troubles? Hit us up at https://dvc.org/support, we are always happy to help!
 ```
-
+See [.dvcignore](docs/user-guide/.dvcignore) for more details.
 
 ## Options
 
