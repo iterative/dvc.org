@@ -70,6 +70,8 @@ backward from the target [stage files](/doc/command-reference/run), through the
 corresponding [pipelines](/doc/command-reference/pipeline), to find data files
 to push.
 
+Note that as `dvc push` uploads tracked files and directories to remote storage, it won't upload files and directories listed under `.dvcignore`. See [.dvcignore](docs/user-guide/.dvcignore) for more details.
+
 ## Options
 
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
