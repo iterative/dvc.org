@@ -224,5 +224,6 @@ repo
     └── .dvc
 ```
 
-Its quite intutive to add `.dvcignore` at the time of project intialization for management of tracking of files throughout the project.<br> 
-See [.dvcignore](docs/user-guide/.dvcignore) for more details. 
+Its quite intutive to add `.dvcignore` at the time of project intialization for
+management of tracking of files throughout the project.<br> See
+[.dvcignore](docs/user-guide/.dvcignore) for more details.

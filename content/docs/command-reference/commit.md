@@ -70,7 +70,9 @@ force-update the [DVC-files](/doc/user-guide/dvc-file-format) and save data to
 cache. They are still useful, but keep in mind that DVC can't guarantee
 reproducibility in those cases.
 
-Note that [patterns](https://git-scm.com/docs/gitignore) listed in `.dvcignore` are not updated as a result of `dvc commit` as they are not currently tracked by DVC. See [.dvcignore](docs/user-guide/.dvcignore) for more details.
+Note that [patterns](https://git-scm.com/docs/gitignore) listed in `.dvcignore`
+are not updated as a result of `dvc commit` as they are not currently tracked by
+DVC. See [.dvcignore](docs/user-guide/.dvcignore) for more details.
 
 ## Options
 

@@ -58,7 +58,8 @@ be used or these files could be edited manually.
 For the typical process to share the <abbr>project</abbr> via remote, see
 [Sharing Data And Model Files](/doc/use-cases/sharing-data-and-model-files).
 
-Only those files will be present in remote storage which are not listed in `.dvcignore`.<br> See [.dvcignore](docs/user-guide/.dvcignore) for more details.  
+Only those files will be present in remote storage which are not listed in
+`.dvcignore`.<br> See [.dvcignore](docs/user-guide/.dvcignore) for more details.
 
 ## Options
 

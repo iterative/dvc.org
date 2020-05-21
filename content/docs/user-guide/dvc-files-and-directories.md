@@ -122,5 +122,6 @@ $ cat .dvc/cache/19/6a322c107c2572335158503c64bfba.dir
 ```
 
 See also `dvc cache dir` to set the location of the cache directory.
- 
- Refer to `.dvcignore` to add [patterns](https://git-scm.com/docs/gitignore) which DVC ignores as if they are non-existent to it.
+
+Refer to `.dvcignore` to add [patterns](https://git-scm.com/docs/gitignore)
+which DVC ignores as if they are non-existent to it.

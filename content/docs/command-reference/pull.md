@@ -56,8 +56,10 @@ After a data file is in cache, `dvc pull` can use OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace without copying. See
 `dvc checkout` for more details.
 
-Note that when you do `dvc pull` then the missing files whose corresponding DVC-files matches with the DVC-files in remote storage will be downloaded. But if a DVC-file is listed under `.dvcignore` then its corresponding file won't be downloaded.<br>
-See [.dvcignore](docs/user-guide/.dvcignore) for more details.
+Note that when you do `dvc pull` then the missing files whose corresponding
+DVC-files matches with the DVC-files in remote storage will be downloaded. But
+if a DVC-file is listed under `.dvcignore` then its corresponding file won't be
+downloaded.<br> See [.dvcignore](docs/user-guide/.dvcignore) for more details.
 
 ## Options
 

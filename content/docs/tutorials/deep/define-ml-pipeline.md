@@ -403,8 +403,9 @@ data/eval.txt:AUC: 0.624652
 > document, our focus is DVC, not ML modeling, so we use a relatively small
 > dataset without any advanced ML techniques.
 
-Note that if a file is not produced by a pipeline stage and listed under `.dvcignore` then DVC might remove them upon `dvc run`<br> 
-See [.dvcignore](docs/user-guide/.dvcignore) for more details.
+Note that if a file is not produced by a pipeline stage and listed under
+`.dvcignore` then DVC might remove them upon `dvc run`<br> See
+[.dvcignore](docs/user-guide/.dvcignore) for more details.
 
 In the next chapter we will try to improve the metrics by changing our modeling
 code and using reproducibility in our pipeline.

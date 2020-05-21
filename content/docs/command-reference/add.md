@@ -244,5 +244,7 @@ tree. No top-level DVC-file is generated, which is typically less convenient.
 For example, we cannot use the directory structure as one unit with `dvc run` or
 other commands.
 
-To untrack a file or directory just add [patterns](https://git-scm.com/docs/gitignore) (corresponding to the location of file or directory) under `.dvcignore` file.<br> 
-See [.dvcignore](docs/user-guide/.dvcignore) for more details. 
+To untrack a file or directory just add
+[patterns](https://git-scm.com/docs/gitignore) (corresponding to the location of
+file or directory) under `.dvcignore` file.<br> See
+[.dvcignore](docs/user-guide/.dvcignore) for more details.
