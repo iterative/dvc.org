@@ -60,7 +60,7 @@ They're calculated between two commits (hash, branch, tag, or any
   path is allowed. It will override `xpath` defined in the corresponding
   DVC-file. See `dvc metrics show` for more details.
 
-- `--all` - list all metrics in the comparison, even those without changes.
+- `--all` - list all metrics, even those without changes.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.

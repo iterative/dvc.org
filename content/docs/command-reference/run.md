@@ -269,7 +269,7 @@ program (`train_model.py` in this case) will have to open and parse
 `params.yaml` by itself and use the params specified above
 (`seed,train.lr,train.epochs`). DVC will keep an eye on these param values (as
 well as on the regular dependency files) and know that the stage should be
-reproduced if/when they change.ee `dvc params` for more details.
+reproduced if/when they change. See `dvc params` for more details.
 
 ## Example: chaining stages (build a pipeline)
 

@@ -139,7 +139,7 @@ these settings, you could use the following options:
   ```
 
 - `sse_kms_key_id` - identifier of the key to encrypt data uploaded when using
-  SSE-KMS.. Required when the `sse` parameter (above) is set to `aws:kms`. This
+  SSE-KMS. Required when the `sse` parameter (above) is set to `aws:kms`. This
   parameter will be passed directly to AWS S3 functions, so DVC supports any
   value that S3 supports, including both key ids and aliases.
 
