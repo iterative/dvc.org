@@ -115,7 +115,7 @@ For example:
 
 ```dvc
 $ sudo wget \
-    -O /usr/share/zsh/site-functions/_dvc \
+    -O /usr/local/share/zsh/site-functions/_dvc \
     https://raw.githubusercontent.com/iterative/dvc/master/scripts/completion/dvc.zsh
 ```
 
