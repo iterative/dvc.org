@@ -150,7 +150,8 @@ the data source (registry repo). This is achieved by creating a particular kind
 of [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_). This
 file can be used staged and committed with Git.
 
-As DVC automatically tracks the files downloaded via `dvc import`, we can list files which we don't want DVC to track under `.dvcignore`.<br> See [.dvcignore](docs/user-guide/.dvcignore) for more details.  
+As DVC automatically tracks the files downloaded via `dvc import`, we can list files which we don't want DVC to track under `.dvcignore`.<br> 
+See [.dvcignore](docs/user-guide/.dvcignore) for more details.  
 
 As an addition to the import workflow, and enabled the saved dependency, we can
 easily bring it up to date in our consumer project(s) with `dvc update` whenever
