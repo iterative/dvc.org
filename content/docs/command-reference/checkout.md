@@ -231,4 +231,4 @@ Previously this took two commands, `git checkout` followed by `dvc checkout`. We
 can now skip the second one, which is automatically run for us. The workspace is
 automatically synchronized accordingly.
 
-One thing to note here is when we are using `dvc checkout`, it does not affect state of files and directories listed under `.dvcignore` as these are currently untracked by DVC and `dvc checkout` synchronizes only tracked files and directories with the versions specified in the current DVC-files. 
+One thing to note here is when we are using `dvc checkout`, it does not affect state of files and directories listed under `.dvcignore` as these are currently untracked by DVC and `dvc checkout` synchronizes only tracked files and directories with the versions specified in the current DVC-files. <br> See [.dvcignore](docs/user-guide/.dvcignore) for more details.
