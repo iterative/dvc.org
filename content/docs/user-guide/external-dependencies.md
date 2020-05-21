@@ -165,7 +165,7 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 The command above creates `model.pkl.dvc`, where the external dependency is
 specified (with the `repo` field).
 
-See `.dvcignore` for untracking unecessary files which were automatically tracked by DVC on running `dvc import`.
+See `.dvcignore` for untracking unecessary files which were automatically tracked by DVC on running `dvc import` or `dvc import-url`.
 
 <details>
 
