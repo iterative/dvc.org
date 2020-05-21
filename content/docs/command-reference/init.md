@@ -19,7 +19,7 @@ advanced scenarios:
 
 - [Initializing DVC in subdirectories](#initializing-dvc-in-subdirectories) -
   support for monorepos, nested <abbr>DVC projects</abbr>, etc.
-- [Initializing DVC without Git](#how-does-it-affect-dvc-commands) - support for
+- [Initializing DVC without Git](#initializing-dvc-without-git) - support for
   SCM other than Git, deployment automation cases, etc.
 
 At DVC initialization, a new `.dvc/` directory is created for internal

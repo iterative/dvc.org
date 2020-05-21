@@ -77,14 +77,20 @@ function findPrevItemWithSource(data, item) {
 function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
   validateRawItem(rawItem)
 
-  const { label, slug, source, tutorials, type, url } = rawItem
+  const { label, slug, source, tutorials, type, url, style, icon } = rawItem
+
+  const sharedFields = {
+    style,
+    icon
+  }
 
   switch (type) {
     case 'external':
       return {
         type,
         path: url,
-        label
+        label,
+        ...sharedFields
       }
     default:
       // If prev item doesn't have source we need to search for it
@@ -104,7 +110,8 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
         label: label ? label : startCase(slug),
         tutorials: tutorials || {},
         prev,
-        next: undefined
+        next: undefined,
+        ...sharedFields
       }
   }
 }
