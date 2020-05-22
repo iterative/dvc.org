@@ -137,6 +137,39 @@ Several of the values above are pulled from the original stage file
 subfields under `repo` are used to save the origin and version of the
 dependency, respectively.
 
+### Importing from non-DVC repositories
+
+You can even import files (datasets) from Git repositories that are not
+specifically <abbr>DVC repositories</abbr>. Here's an example importing a
+dataset from [GSA's data repo](https://github.com/GSA/data).
+
+```dvc
+$ dvc import git@github.com:GSA/data \
+           enterprise-architecture/it-standards.csv
+Importing 'enterprise-architecture/it-standards.csv
+(git@github.com:GSA/data)' -> 'it-standards.csv'
+```
+
+The file is imported, and along with it, an import stage
+([DVC-file](/doc/user-guide/dvc-file-format)) file is created. Check  
+`it-standards.csv.dvc`:
+
+```yaml
+md5: adb33573716b6ef1218946cd457714e1
+locked: true
+deps:
+  - path: enterprise-architecture/it-standards.csv
+    repo:
+      url: git@github.com:GSA/data
+      rev_lock: af6a1feb542dc05b4d3e9c80deb50e6596876e5f
+outs:
+  - md5: 7e6de779a1ab286745c808f291d2d671
+    path: it-standards.csv
+    cache: true
+    metric: false
+    persist: false
+```
+
 ## Example: Importing and updating fixed revisions
 
 To import a specific version of a <abbr>data artifact</abbr>, we may use the
