@@ -55,6 +55,7 @@ DVC supports several types of (local or) remote locations (protocols):
 | -------- | --------------------------------------------------- | ------------------------------------------ |
 | `local`  | Local path                                          | `/path/to/local/data`                      |
 | `s3`     | Amazon S3                                           | `s3://mybucket/data`                       |
+| `azure`  | Microsoft Azure Blob Storage                        | `azure://my-container-name/path/to/data`   |
 | `gs`     | Google Storage                                      | `gs://mybucket/data`                       |
 | `ssh`    | SSH server                                          | `ssh://user@example.com:/path/to/data`     |
 | `hdfs`   | HDFS to file (explanation below)                    | `hdfs://user@example.com/path/to/data.csv` |
@@ -68,7 +69,6 @@ DVC supports several types of (local or) remote locations (protocols):
 > (This example installs `boto3` library along with DVC to support S3 storage.)
 
 Specific explanations:
-
 - HDFS and HTTP **do not** support downloading entire directories, only single
   files.
 
