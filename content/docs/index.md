@@ -8,8 +8,7 @@ additional resources.
 
 <card href="/doc/tutorials/get-started" heading="Get Started">
 
-Learn how to get started with DVC - a step-by-step introduction into basic DVC
-features
+A step-by-step introduction into basic DVC features
 
 </card>
 
@@ -21,7 +20,7 @@ Study the detailed inner-workings of DVC in its user guide
 
 <card href="/doc/use-cases" heading="Use Cases">
 
-Not exhaustive list on where DVC can be used
+Non-exhaustive list of scenarios DVC can help with
 
 </card>
 
