@@ -399,6 +399,7 @@
     margin: 0;
     margin-bottom: 0.25em;
     font-weight: bold;
+    color: var(--color-gray-dark);
   }
 
   .cardContent {
