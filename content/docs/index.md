@@ -19,10 +19,9 @@ Study the detailed inner-workings of DVC in its user guide
 
 </card>
 
-<card href="/doc/use-cases" heading="Python API Reference">
+<card href="/doc/use-cases" heading="Use Cases">
 
-The purpose of this API is to provide programatic access to the data or models
-stored with DVC
+Not exhaustive list on where DVC can be used
 
 </card>
 
