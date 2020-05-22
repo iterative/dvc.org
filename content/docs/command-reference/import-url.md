@@ -69,6 +69,7 @@ DVC supports several types of (local or) remote locations (protocols):
 > (This example installs `boto3` library along with DVC to support S3 storage.)
 
 Specific explanations:
+
 - HDFS and HTTP **do not** support downloading entire directories, only single
   files.
 
