@@ -14,17 +14,14 @@ positional arguments:
                relative to the config file location.
 ```
 
-Set/unset the <abbr>cache</abbr> directory location intuitively (compared to
-using `dvc config cache`).
-
 ## Description
 
 Helper to set the `cache.dir` configuration option. (See
 [cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).)
 Unlike doing so with `dvc config cache`, this command transform paths (`value`)
 that are provided relative to the current working directory into paths
-**relative to the config file location** of your own project. They are required
-in the latter form for the config file.
+**relative to the config file location**. However, if the `value` provided is an
+absolute path, then the path to the cache directory is preserved as it is.
 
 ## Options
 
@@ -53,9 +50,11 @@ in the latter form for the config file.
 ## Example: Using relative path
 
 ```dvc
-$ dvc cache dir ../dir $ cat .dvc/config
+$ dvc cache dir ../dir
+$ cat .dvc/config
 ...
-[cache] dir = ../../dir
+[cache]
+    dir = ../../dir
 ...
 ```
 
@@ -75,3 +74,5 @@ $ cat .dvc/config
     dir = /path/to/dir
 ...
 ```
+
+Absolute path `/path/to/dir` saved as is.
