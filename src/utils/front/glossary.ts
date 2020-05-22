@@ -1,6 +1,19 @@
 import { useStaticQuery, graphql } from 'gatsby'
 
-const useGlossary = (): object =>
+interface IGlossaryCommon {
+  name: string
+  desc: string
+}
+interface IGlossaryEntry extends IGlossaryCommon {
+  match: Array<string>
+}
+interface IGlossary extends IGlossaryCommon {
+  name: string
+  desc: string
+  contents: Array<IGlossaryEntry>
+}
+
+const useGlossary = (): IGlossary =>
   useStaticQuery(graphql`
     query DVCGlossaryQuery {
       dvcGlossary {
