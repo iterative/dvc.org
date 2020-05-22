@@ -279,5 +279,6 @@ $ dvc status
 Data and pipelines are up to date.
 ```
 
-Optimization of resources can be easily maintained. Use `commit` to both Git and DVC, when ready. Since
-this pipeline is up to date, `dvc repro` will not do anything.
+Optimization of resources can be easily maintained. Use `commit` to both Git and
+DVC, when ready. Since this pipeline is up to date, `dvc repro` will not do
+anything.
