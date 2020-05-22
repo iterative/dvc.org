@@ -10,7 +10,8 @@ async function createSchemaCustomization(api) {
       name: 'DocsPage',
       interfaces: ['Node'],
       fields: {
-        ...markdownParentFields
+        ...markdownParentFields,
+        template: 'String'
       }
     })
   ]

@@ -14,7 +14,8 @@ function createMarkdownDocsNode(api, { parentNode }) {
   const fieldData = {
     slug,
     rawMarkdownBody: node.rawMarkdownBody,
-    sourcePath: relativePath
+    sourcePath: relativePath,
+    template: node.frontmatter.template
   }
 
   const docNode = {
