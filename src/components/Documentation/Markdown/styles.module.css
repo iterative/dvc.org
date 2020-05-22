@@ -409,10 +409,11 @@
 a.card {
   color: inherit;
   text-decoration: inherit;
-  transition: all 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out;
+  background-color: #fff;
 
   &:hover {
     text-decoration: inherit;
-    transform: scale(1.02);
+    background-color: var(--color-light-blue);
   }
 }
