@@ -5,7 +5,7 @@ Initialize a <abbr>DVC project</abbr> in the current working directory.
 ## Synopsis
 
 ```usage
-usage: dvc init [-h] [-q | -v] [--no-git] [-f] [--subdir]
+usage: dvc init [-h] [-q | -v] [--no-scm] [-f] [--subdir]
 ```
 
 ## Description
@@ -119,7 +119,7 @@ won't download or checkout data for the `data-B.dvc` file.
 
 ### Initializing DVC without Git
 
-In rare cases, the `--no-git` option might be desirable: to initialize DVC in a
+In rare cases, the `--no-scm` option might be desirable: to initialize DVC in a
 directory that is not part of a Git repo, or to make DVC ignore Git. Examples
 include:
 
@@ -156,7 +156,7 @@ it later, DVC keeps operating in the detached from Git mode.
   [Initializing DVC in subdirectories](#initializing-dvc-in-subdirectories) for
   more details.
 
-- `--no-git` - initialize the DVC project detached from Git. It means that DVC
+- `--no-scm` - initialize the DVC project detached from Git. It means that DVC
   doesn't try to find or use Git in the directory it's initialized in. Certain
   DVC features are not available in this mode, please see
   [Initializing DVC without Git](#initializing-dvc-without-git) for more
