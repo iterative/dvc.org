@@ -76,11 +76,11 @@ module.exports = {
       })
     ])
   },
-  async onParseJsonFile(api, { content }) {
-    const createChildNode = childNodeCreator(api)
+  async onParseDataFile(api, { content }) {
     const { node, createNodeId, createContentDigest } = api
     // Only operate on the File node for data.json
     if (node.relativePath !== 'community.json') return null
+    const createChildNode = childNodeCreator(api)
     const { events, hero, ...rest } = content
 
     const heroesPromise =
