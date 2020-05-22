@@ -367,7 +367,7 @@
 }
 
 .card {
-  border: 1px solid gray;
+  border: 1px solid #d6d6d6;
   border-radius: 10px;
   padding: 0.75rem 1rem;
   display: flex;
