@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   name: 'Glossary',
   desc:
     'This document is aimed to provide definitions for relevant DVC ' +
