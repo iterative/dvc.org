@@ -146,8 +146,7 @@ dataset from [GSA's data repo](https://github.com/GSA/data).
 ```dvc
 $ dvc import git@github.com:GSA/data \
            enterprise-architecture/it-standards.csv
-Importing 'enterprise-architecture/it-standards.csv
-(git@github.com:GSA/data)' -> 'it-standards.csv'
+Importing 'enterprise-architecture/it-standards.csv (git@github.com:GSA/data)' -> 'it-standards.csv'
 ```
 
 The file is imported, and along with it, an import stage
