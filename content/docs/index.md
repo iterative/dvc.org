@@ -16,7 +16,7 @@ improve this [documentation](https://github.com/iterative/dvc.org) 🙏.
 
 <cards>
 
-<card href="/tutorials/get-started" heading="Get Started">
+<card href="/doc/tutorials/get-started" heading="Get Started">
 
 Learn how to get started with DVC - a step-by-step introduction into basic DVC
 features
