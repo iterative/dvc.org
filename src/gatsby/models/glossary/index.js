@@ -3,8 +3,6 @@ const markdown = require('remark-parse')
 const remark2rehype = require('remark-rehype')
 const html = require('rehype-stringify')
 
-const rawGlossary = require('../../../../content/docs/glossary')
-
 const processTooltipMarkdown = async input =>
   unified()
     .use(markdown)
@@ -37,22 +35,29 @@ module.exports = {
     ]
     createTypes(typeDefs)
   },
-  async sourceNodes({
-    actions: { createNode },
-    createNodeId,
-    createContentDigest
-  }) {
-    const glossary = await processGlossary(rawGlossary)
+  async onParseDataFile(
+    { actions: { createNode, createParentChildLink }, node, createNodeId },
+    { content }
+  ) {
+    if (node.relativePath !== 'docs/glossary.yml') return null
+    const glossary = await processGlossary(content)
     const fields = {
       content: glossary
     }
-    createNode({
+
+    const glossaryNode = {
       ...fields,
       id: createNodeId(`DVC Glossary JSON`),
+      parent: node.id,
       internal: {
         type: 'DVCGlossary',
-        contentDigest: createContentDigest(fields)
+        contentDigest: node.internal.contentDigest
       }
-    })
+    }
+
+    return Promise.all([
+      createNode(glossaryNode),
+      createParentChildLink({ parent: node, child: glossaryNode })
+    ])
   }
 }
