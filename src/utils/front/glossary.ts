@@ -1,25 +1,25 @@
 import { useStaticQuery, graphql } from 'gatsby'
 
-interface IGlossaryCommon {
+interface IGlossaryEntry extends IGlossaryCommon {
   name: string
   desc: string
-}
-interface IGlossaryEntry extends IGlossaryCommon {
   match: Array<string>
 }
-interface IGlossary extends IGlossaryCommon {
-  name: string
-  desc: string
+interface IGlossary {
   contents: Array<IGlossaryEntry>
 }
 
 const useGlossary = (): IGlossary =>
   useStaticQuery(graphql`
-    query DVCGlossaryQuery {
-      dvcGlossary {
-        content
+    query GlossaryEntries {
+      allGlossaryEntry {
+        contents: nodes {
+          desc: html
+          name
+          match
+        }
       }
     }
-  `).dvcGlossary.content
+  `).allGlossaryEntry
 
 export default useGlossary

@@ -2,6 +2,7 @@ const unified = require('unified')
 const markdown = require('remark-parse')
 const remark2rehype = require('remark-rehype')
 const html = require('rehype-stringify')
+const { parentResolverPassthrough } = require('gatsby-plugin-parent-resolvers')
 
 const processTooltipMarkdown = async input =>
   unified()
@@ -26,38 +27,53 @@ module.exports = {
   }) {
     const typeDefs = [
       buildObjectType({
-        name: 'DVCGlossary',
+        name: 'GlossaryEntry',
         interfaces: ['Node'],
         fields: {
-          content: 'JSON'
+          html: {
+            type: 'String!',
+            resolve: parentResolverPassthrough()
+          },
+          name: 'String!',
+          match: '[String]'
         }
       })
     ]
     createTypes(typeDefs)
   },
-  async onParseDataFile(
-    { actions: { createNode, createParentChildLink }, node, createNodeId },
-    { content }
-  ) {
-    if (node.relativePath !== 'docs/glossary.yml') return null
-    const glossary = await processGlossary(content)
-    const fields = {
-      content: glossary
+  async onCreateMarkdownContentNode(api, { parentNode }) {
+    // Only operate on nodes within the docs/glossary folder.
+    if (parentNode.relativeDirectory !== 'docs/user-guide/basic-concepts')
+      return
+
+    const {
+      node,
+      actions: { createNode, createParentChildLink },
+      createNodeId,
+      createContentDigest
+    } = api
+
+    const {
+      frontmatter: { name, match }
+    } = node
+
+    const fieldData = {
+      name,
+      match
     }
 
-    const glossaryNode = {
-      ...fields,
-      id: createNodeId(`DVC Glossary JSON`),
+    const entryNode = {
+      ...fieldData,
+      id: createNodeId(`DVCGlossaryEntry >>> ${node.id}`),
       parent: node.id,
+      children: [],
       internal: {
-        type: 'DVCGlossary',
-        contentDigest: node.internal.contentDigest
+        type: `GlossaryEntry`,
+        contentDigest: createContentDigest(fieldData)
       }
     }
 
-    return Promise.all([
-      createNode(glossaryNode),
-      createParentChildLink({ parent: node, child: glossaryNode })
-    ])
+    await createNode(entryNode)
+    await createParentChildLink({ parent: node, child: entryNode })
   }
 }
