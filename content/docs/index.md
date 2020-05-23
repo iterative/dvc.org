@@ -14,7 +14,7 @@ A step-by-step introduction into basic DVC features
 
 <card href="/doc/user-guide" heading="User Guide">
 
-Study the detailed inner-workings of DVC in its user guide
+Study the detailed inner-workings of DVC in its user guide.
 
 </card>
 
@@ -26,7 +26,7 @@ Non-exhaustive list of scenarios DVC can help with
 
 <card href="/doc/command-reference" heading="Command Reference">
 
-See all of DVC's commands
+See all of DVC's commands.
 
 </card>
 
