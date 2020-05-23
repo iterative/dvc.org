@@ -1,6 +1,6 @@
 import { useStaticQuery, graphql } from 'gatsby'
 
-interface IGlossaryEntry extends IGlossaryCommon {
+interface IGlossaryEntry {
   name: string
   desc: string
   match: Array<string>

@@ -1,24 +1,4 @@
-const unified = require('unified')
-const markdown = require('remark-parse')
-const remark2rehype = require('remark-rehype')
-const html = require('rehype-stringify')
 const { parentResolverPassthrough } = require('gatsby-plugin-parent-resolvers')
-
-const processTooltipMarkdown = async input =>
-  unified()
-    .use(markdown)
-    .use(remark2rehype)
-    .use(html)
-    .process(input)
-    .then(result => result.toString())
-
-const processGlossary = async ({ desc, contents, ...rest }) => ({
-  desc: await processTooltipMarkdown(desc),
-  contents: contents
-    ? await Promise.all(contents.map(processGlossary))
-    : undefined,
-  ...rest
-})
 
 module.exports = {
   createSchemaCustomization({
