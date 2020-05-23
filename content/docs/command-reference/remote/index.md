@@ -127,8 +127,17 @@ myremote	/path/to/remote
 newremote	s3://mybucket/myproject
 ```
 
+## Example: Change the name of a remote
+
+Notice that `dvc remote modify` doesn't provide a way to change the name of a
+DVC remote, but there's a specific subcommand for this:
+
+```dvc
+$ dvc remote rename newremote oldremote
+```
+
 ## Example: Remove a remote
 
 ```dvc
-$ dvc remote remove newremote
+$ dvc remote remove oldremote
 ```

@@ -8,8 +8,9 @@ Modify the configuration of a data remote.
 
 See also [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list), and
-[remove](/doc/command-reference/remote/remove) commands to manage data remotes.
+[list](/doc/command-reference/remote/list),
+[remove](/doc/command-reference/remote/remove), and
+[rename](/doc/command-reference/remote/rename) commands to manage data remotes.
 
 ## Synopsis
 
