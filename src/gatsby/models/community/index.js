@@ -76,7 +76,7 @@ module.exports = {
       })
     ])
   },
-  async onParseDataFile(api, { content }) {
+  async onParseJsonFile(api, { content }) {
     const { node, createNodeId, createContentDigest } = api
     // Only operate on the File node for data.json
     if (node.relativePath !== 'community.json') return null
