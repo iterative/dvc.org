@@ -1,5 +1,8 @@
 # Experiment management software
 
+Before finally looking at what DVC is and how it is used, we need 
+to understand one last thing. What an Experiment Management Software is.
+
 This new type of software was created to solve data science 
 collaboration issues. Experiment management software aims to 
 cover the gap between data scientist needs and the existing 
