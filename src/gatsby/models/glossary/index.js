@@ -21,17 +21,12 @@ module.exports = {
     ]
     createTypes(typeDefs)
   },
-  async onCreateMarkdownContentNode(api, { parentNode }) {
+  async onCreateMarkdownContentNode(api, { parentNode, createChildNode }) {
     // Only operate on nodes within the docs/glossary folder.
     if (parentNode.relativeDirectory !== 'docs/user-guide/basic-concepts')
       return
 
-    const {
-      node,
-      actions: { createNode, createParentChildLink },
-      createNodeId,
-      createContentDigest
-    } = api
+    const { node, createNodeId, createContentDigest } = api
 
     const {
       frontmatter: { name, match }
@@ -53,7 +48,6 @@ module.exports = {
       }
     }
 
-    await createNode(entryNode)
-    await createParentChildLink({ parent: node, child: entryNode })
+    return createChildNode(entryNode)
   }
 }

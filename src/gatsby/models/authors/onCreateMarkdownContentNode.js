@@ -1,7 +1,6 @@
-function createMarkdownAuthorNode(api, { parentNode }) {
+async function createMarkdownAuthorNode(api, { parentNode, createChildNode }) {
   if (parentNode.relativeDirectory.split('/')[0] !== 'authors') return
   const { node, actions, createNodeId, createContentDigest } = api
-  const { createNode, createParentChildLink } = actions
   const { frontmatter, rawMarkdownBody } = node
   const { path, name, avatar } = frontmatter
   const { relativePath } = parentNode
@@ -24,8 +23,7 @@ function createMarkdownAuthorNode(api, { parentNode }) {
       contentDigest: createContentDigest(fieldData)
     }
   }
-  createNode(authorNode)
-  createParentChildLink({ parent: node, child: authorNode })
+  return createChildNode(authorNode)
 }
 
 module.exports = createMarkdownAuthorNode
