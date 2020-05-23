@@ -1,12 +1,25 @@
 # Asking The Right Questions
 
+"To ask the right question is already half the solution to a problem" -**CG Jung**
+
+When the Kaggle competitions were first introduced back in 2010, everybody quickly 
+launched theirt computers and got busy building the most complex architectures of Deep 
+Learning models they could think of, only a few took the time to stand back, clean and
+study the data provided. And as it was likely to happen that it was these people who in the 
+end were proclaimed the winners of the competitions. 
+
+What set these people apart from the majority of the crowd at that point of time was that 
+they asked the set of right questions in a time when everyone asked a similar but smaller one. Yes, it is 
+an extremely crucial part of design, picking the right model, the right architecture but however, 
+these people realized that these weren't the only questions that needed answering.
+
 There is one thing that data scientists seem to agree on around tooling: as engineers,
 we'd like to use the same best practices and collaboration software that's standard in 
 software engineering. A source code version control system (Git), continuous integration 
 services (CI), and unit test frameworks are all expected to be utilized in data science 
 pipelines.
 
-However, as with every new technological progress we make, we need to ask a different 
+And therefore, as with every new technological progress we make, we need to ask a different 
 set of questions to account for the introduction of these new methods.
 
 ## Questions
@@ -47,5 +60,5 @@ set of questions to account for the introduction of these new methods.
   sources, intermediate data files, and models?
 
 Although the answer to some of these quesions have already been answered 
-(some of these questions are even part ofactive research), it is clearly 
+(some of these questions are even part of active research), it is
 evident that Data Science as its stands right now, is on shaky grounds. 
