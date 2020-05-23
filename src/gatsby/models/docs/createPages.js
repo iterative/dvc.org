@@ -1,3 +1,4 @@
+const path = require('path')
 const GithubSlugger = require('github-slugger')
 
 const slugger = new GithubSlugger()
@@ -43,6 +44,7 @@ const createPages = async ({ graphql, actions }) => {
               id
               rawMarkdownBody
               slug
+              template
             }
           }
         }
@@ -54,17 +56,19 @@ const createPages = async ({ graphql, actions }) => {
     throw docsResponse.errors
   }
 
-  const docComponent = require.resolve('../../../templates/doc-home.tsx')
+  const docComponent = require.resolve('../../../templates/doc.tsx')
 
   docsResponse.data.docs.edges.forEach(doc => {
     const {
-      node: { id, slug, rawMarkdownBody }
+      node: { id, slug, rawMarkdownBody, template }
     } = doc
     const headings = parseHeadings(rawMarkdownBody)
 
     if (slug) {
       actions.createPage({
-        component: docComponent,
+        component: template
+          ? require.resolve(path.resolve('src', 'templates', template + '.tsx'))
+          : docComponent,
         path: slug,
         context: {
           id,

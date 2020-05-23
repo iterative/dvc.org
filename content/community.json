@@ -73,25 +73,18 @@
     {
       "url": "https://www.widsconference.org/",
       "title": "Women in Data Science San Diego",
-      "description": "Elle O'Brien is talking about data catalogs and feature stores.",
-      "city": "San Diego",
-      "date": "2020-03-27"
+      "description": "Elle O'Brien is talking about how to share data science projects.",
+      "city": "Virtual event",
+      "date": "2020-06-09",
+      "pictureUrl": "/img/community/events/WiDS_logo.jpg"
     },
     {
-      "url": "https://www.mlprague.com/#schedule-saturday",
-      "title": "Machine Learning Prague 2020",
-      "description": "Paweł Redzyński will talk about open source tools for versioning machine learning projects",
-      "city": "Prague",
-      "date": "2020-03-20",
-      "pictureUrl": "/img/community/events/mlprague.jpg"
-    },
-    {
-      "url": "https://divops.org",
-      "title": "DivOps",
-      "description": "Elle O'Brien is talking about open source software in the growing field of MLOps.",
-      "city": "Remote",
-      "date": "2020-03-25",
-      "pictureUrl": "/img/community/events/divops.jpg"
+      "url": "https://mlopsworld.com/",
+      "title": "MLOps: Production and Engineering World",
+      "description": "Elle O'Brien is speaking about adapting CI/CD to ML.",
+      "city": "Virtual event",
+      "date": "2020-06-17",
+      "pictureUrl": "/img/community/events/toronto_ml.jpg"
     }
   ],
   "stats": {
