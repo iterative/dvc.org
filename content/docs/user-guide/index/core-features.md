@@ -1,11 +1,11 @@
 # Core Features
 
-Albeit being developed as an uncovential apprach to what is already present. 
-It is simple to understand DVC by recognising certain features it offers, 
+Albeit being developed as an uncovential approach to what is already present, 
+it is simple to understand DVC by recognising certain features it offers, 
 based of the core concepts discussed previously:
 
 - Git repositories lie at the heart of DVC, and hence share a similar command 
-  line interface nad workflow.
+  line interface and workflow.
 
 - It creates lightweight pipelines, which is used to make your data science 
   projects reproducible. 
