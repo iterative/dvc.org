@@ -11,7 +11,8 @@ async function createAuthorSchemaCustomization(api) {
       name: 'AuthorPosts',
       fields: {
         totalCount: 'Int!',
-        nodes: '[BlogPost]'
+        nodes: '[BlogPost]',
+        link: 'String'
       }
     }),
     buildObjectType({

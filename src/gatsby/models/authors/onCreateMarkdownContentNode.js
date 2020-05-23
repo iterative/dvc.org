@@ -3,7 +3,7 @@ function createMarkdownAuthorNode(api, { parentNode }) {
   const { node, actions, createNodeId, createContentDigest } = api
   const { createNode, createParentChildLink } = actions
   const { frontmatter, rawMarkdownBody } = node
-  const { path, name, avatar } = frontmatter
+  const { path, name, avatar, link } = frontmatter
   const { relativePath } = parentNode
 
   const fieldData = {
@@ -11,6 +11,7 @@ function createMarkdownAuthorNode(api, { parentNode }) {
     rawMarkdownBody,
     path,
     name,
+    link,
     avatar
   }
 

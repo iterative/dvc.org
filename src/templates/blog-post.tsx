@@ -42,6 +42,7 @@ export interface IBlogPostData {
   pictureComment?: string
   author: {
     name: string
+    link?: string
     avatar: {
       fixed: FixedObject
     }
@@ -87,6 +88,7 @@ export const pageQuery = graphql`
       commentsUrl
       author {
         name
+        link
         avatar {
           fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
             ...GatsbyImageSharpFixed_withWebp
