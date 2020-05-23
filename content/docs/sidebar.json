@@ -363,6 +363,10 @@
           {
             "label": "remote remove",
             "slug": "remove"
+          },
+          {
+            "label": "remote rename",
+            "slug": "rename"
           }
         ]
       },

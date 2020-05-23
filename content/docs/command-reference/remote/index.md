@@ -4,8 +4,9 @@ A set of commands to set up and manage data remotes:
 [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
 [list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify), and
-[remove](/doc/command-reference/remote/remove).
+[modify](/doc/command-reference/remote/modify),
+[remove](/doc/command-reference/remote/remove), and
+[rename](/doc/command-reference/remote/rename).
 
 ## Synopsis
 
@@ -50,8 +51,9 @@ scenarios out of the box.
 [Add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
 [list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify), and
-[remove](/doc/command-reference/remote/remove) commands read or modify DVC
+[modify](/doc/command-reference/remote/modify),
+[remove](/doc/command-reference/remote/remove), and
+[rename](/doc/command-reference/remote/rename) commands read or modify DVC
 [config files](/doc/command-reference/config). Alternatively, `dvc config` can
 be used or these files could be edited manually.
 
