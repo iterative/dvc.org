@@ -11,8 +11,7 @@ async function createAuthorSchemaCustomization(api) {
       name: 'AuthorPosts',
       fields: {
         totalCount: 'Int!',
-        nodes: '[BlogPost]',
-        link: 'String'
+        nodes: '[BlogPost]'
       }
     }),
     buildObjectType({
@@ -20,6 +19,7 @@ async function createAuthorSchemaCustomization(api) {
       interfaces: ['Node'],
       fields: {
         ...markdownParentFields,
+        link: 'String',
         avatar: {
           type: 'ImageSharp',
           resolve: resolveAuthorAvatar
