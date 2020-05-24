@@ -1,12 +1,12 @@
 # remote rename
 
-Rename a DVC remote. This command affects DVC configuration files only, it does
-not physically remove data files stored remotely.
+Rename a data remote. The remote's URL is not changed by this command.
 
 See also [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list), and
-[modify](/doc/command-reference/remote/modify) commands to manage data remotes.
+[list](/doc/command-reference/remote/list),
+[modify](/doc/command-reference/remote/modify), and
+[remove](/doc/command-reference/remote/remove) commands to manage data remotes.
 
 ## Synopsis
 
@@ -21,11 +21,15 @@ positional arguments:
 
 ## Description
 
-Both Remote `name` and `new` are required.
-
 This command modify a section in the DVC
 [config file](/doc/command-reference/config). Alternatively, it is possible to
 edit config files manually.
+
+See also `dvc remote modify` to change other aspects of remote configuration,
+such as the URL or access credentials.
+
+Both `name` and `new` arguments are required, with the old and new names for the
+DVC remote, respectively.
 
 ## Options
 
@@ -57,5 +61,5 @@ $ dvc remote add myremote s3://mybucket/myproject
 Rename it:
 
 ```dvc
-$ dvc remote rename myremote mys3remote 
+$ dvc remote rename myremote s3remote
 ```

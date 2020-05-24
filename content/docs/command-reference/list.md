@@ -6,7 +6,7 @@ DVC (<abbr>data artifacts</abbr>) and by Git.
 ## Synopsis
 
 ```usage
-usage: dvc list [-h] [-q | -v] [-R] [--outs-only] [--rev <commit>]
+usage: dvc list [-h] [-q | -v] [-R] [--dvc-only] [--rev <commit>]
                 url [path]
 
 positional arguments:
@@ -21,7 +21,7 @@ DVC, by effectively replacing data files, models, directories with DVC-files
 files when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
 Github), you just see the DVC-files. This makes it hard to navigate the project
 to find <abbr>data artifacts</abbr> for use with `dvc get`, `dvc import`, or
-[`dvc.api`](/doc/api-reference).
+`dvc.api`.
 
 `dvc list` prints a virtual view of a DVC repository, as if files and
 directories [tracked by DVC](/doc/use-cases/versioning-data-and-model-files)
@@ -48,13 +48,13 @@ list files recursively.
 
 Please note that `dvc list` doesn't check whether the listed data (tracked by
 DVC) actually exists in remote storage, so it's not guaranteed whether it can be
-accessed with `dvc get`, `dvc import`, or [`dvc.api`](/doc/api-reference)
+accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 ## Options
 
 - `-R`, `--recursive` - recursively prints contents of all subdirectories.
 
-- `--outs-only` - show only DVC-tracked files and directories
+- `--dvc-only` - show only DVC-tracked files and directories
   (<abbr>outputs</abbr>).
 
 - `--rev <commit>` - commit hash, branch or tag name, etc. (any

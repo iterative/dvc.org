@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import cn from 'classnames'
 import throttle from 'lodash/throttle'
 
@@ -27,12 +27,14 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   tutorials,
   githubLink
 }) => {
-  const [height, setHeight] = useState(0)
+  const [documentHeight, setDocumentHeight] = useState(0)
   const [headingsOffsets, setHeadingsOffsets] = useState<IHeadingsCoordinates>(
     {}
   )
-  const [current, setCurrent] = useState<string | null>(null)
-  const setCurrentHeader = (): void => {
+  const [currentHeadingSlug, setCurrentHeadingSlug] = useState<string | null>(
+    null
+  )
+  const updateCurrentHeader = (): void => {
     const currentScroll = getScrollPosition()
     const coordinateKeys = Object.keys(headingsOffsets)
 
@@ -41,14 +43,15 @@ const RightPanel: React.FC<IRightPanelProps> = ({
     const headerHeight = getHeaderHeight()
     const filteredKeys = coordinateKeys.filter(
       offsetTop =>
-        parseInt(offsetTop, 10) <= currentScroll + (height - headerHeight) / 2
+        parseInt(offsetTop, 10) <=
+        currentScroll + (documentHeight - headerHeight) / 2
     )
 
-    const newCurrent = filteredKeys.length
+    const newCurrentHeadingSlug = filteredKeys.length
       ? headingsOffsets[filteredKeys[filteredKeys.length - 1]]
       : null
 
-    setCurrent(newCurrent)
+    setCurrentHeadingSlug(newCurrentHeadingSlug)
   }
 
   const updateHeadingsPosition = (): void => {
@@ -65,7 +68,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       {}
     )
     setHeadingsOffsets(offsets)
-    setHeight(document.documentElement.clientHeight)
+    setDocumentHeight(document.documentElement.clientHeight)
   }
 
   const initHeadingsPosition = (): void => {
@@ -75,7 +78,7 @@ const RightPanel: React.FC<IRightPanelProps> = ({
   }
 
   useEffect(() => {
-    const throttledSetCurrentHeader = throttle(setCurrentHeader, 100)
+    const throttledSetCurrentHeader = throttle(updateCurrentHeader, 100)
 
     document.addEventListener('scroll', throttledSetCurrentHeader)
     window.addEventListener('resize', updateHeadingsPosition)
@@ -84,93 +87,130 @@ const RightPanel: React.FC<IRightPanelProps> = ({
       document.removeEventListener('scroll', throttledSetCurrentHeader)
       window.removeEventListener('resize', updateHeadingsPosition)
     }
-  }, [setCurrentHeader])
+  }, [updateCurrentHeader])
   useEffect(initHeadingsPosition, [headings])
-  useEffect(setCurrentHeader, [headingsOffsets, height])
+  useEffect(updateCurrentHeader, [headingsOffsets, documentHeight])
+
+  const contentBlockRef = useRef<HTMLDivElement>(null)
+  const [
+    isScrollToCurrentHeadingHappened,
+    setIsScrollToCurrentHeadingHappened
+  ] = useState(false)
+  useEffect(() => {
+    if (isScrollToCurrentHeadingHappened) {
+      return
+    }
+    if (!document.location.hash) {
+      setIsScrollToCurrentHeadingHappened(true)
+      return
+    }
+    if (currentHeadingSlug) {
+      setIsScrollToCurrentHeadingHappened(true)
+      const currentHeadingSlugElem = document.getElementById(
+        `link-${currentHeadingSlug}`
+      )
+      const contentBlockElem = contentBlockRef.current
+      if (currentHeadingSlugElem && contentBlockElem) {
+        const hasVerticalScrollbar =
+          contentBlockElem.scrollHeight > contentBlockElem.clientHeight
+        if (hasVerticalScrollbar) {
+          currentHeadingSlugElem.scrollIntoView({
+            block: 'start',
+            inline: 'nearest'
+          })
+        }
+      }
+    }
+  })
 
   return (
     <div className={styles.container}>
-      <div className={styles.list}>
-        {headings.length > 0 && (
-          <>
+      {headings.length > 0 && (
+        <>
+          <div>
             <h5 className={styles.header}>Content</h5>
             <hr className={styles.separator} />
-          </>
+          </div>
+          <div className={styles.contentBlock} ref={contentBlockRef}>
+            {headings.map(({ slug, text }) => (
+              <div id={`link-${slug}`} key={`link-${slug}`}>
+                <Link
+                  className={cn(
+                    styles.headingLink,
+                    currentHeadingSlug === slug && styles.current,
+                    'link-with-focus'
+                  )}
+                  href={`#${slug}`}
+                >
+                  {text}
+                </Link>
+              </div>
+            ))}
+          </div>
+        </>
+      )}
+      <div className={styles.buttonsBlock}>
+        {Object.keys(tutorials || {}).length > 0 && (
+          <div className={styles.buttonSection}>
+            <p className={styles.buttonSectionDescription}>
+              <span
+                className={styles.buttonSectionIcon}
+                role="img"
+                aria-label="run"
+              >
+                ▶️
+              </span>{' '}
+              It can be run online:
+            </p>
+            <Tutorials
+              buttonClassName={cn(styles.button, styles.tutorials)}
+              tutorials={tutorials}
+            />
+          </div>
         )}
-        {headings.map(({ slug, text }) => (
-          <Link
-            className={cn(
-              styles.headingLink,
-              current === slug && styles.current,
-              'link-with-focus'
-            )}
-            key={`link-${slug}`}
-            href={`#${slug}`}
-          >
-            {text}
-          </Link>
-        ))}
-      </div>
-      {Object.keys(tutorials || {}).length > 0 && (
         <div className={styles.buttonSection}>
           <p className={styles.buttonSectionDescription}>
             <span
               className={styles.buttonSectionIcon}
               role="img"
-              aria-label="run"
+              aria-label="bug"
             >
-              ▶️
+              🐛
             </span>{' '}
-            It can be run online:
+            Found an issue? Let us know! Or fix it:
           </p>
-          <Tutorials
-            buttonClassName={cn(styles.button, styles.tutorials)}
-            tutorials={tutorials}
-          />
+
+          <Link
+            className={cn(sharedStyles.button, styles.button)}
+            href={githubLink}
+            target="_blank"
+          >
+            <i className={cn(sharedStyles.buttonIcon, styles.githubIcon)} />
+            Edit on GitHub
+          </Link>
         </div>
-      )}
-      <div className={styles.buttonSection}>
-        <p className={styles.buttonSectionDescription}>
-          <span
-            className={styles.buttonSectionIcon}
-            role="img"
-            aria-label="bug"
+
+        <div className={styles.buttonSection}>
+          <p className={styles.buttonSectionDescription}>
+            <span
+              className={styles.buttonSectionIcon}
+              role="img"
+              aria-label="question"
+            >
+              ❓
+            </span>{' '}
+            Have a question? Join our chat, we will help you:
+          </p>
+
+          <Link
+            className={cn(sharedStyles.button, styles.button)}
+            href="/chat"
+            target="_blank"
           >
-            🐛
-          </span>{' '}
-          Found an issue? Let us know! Or fix it:
-        </p>
-
-        <Link
-          className={cn(sharedStyles.button, styles.button)}
-          href={githubLink}
-          target="_blank"
-        >
-          <i className={cn(sharedStyles.buttonIcon, styles.githubIcon)} />
-          Edit on GitHub
-        </Link>
-      </div>
-
-      <div className={styles.buttonSection}>
-        <p className={styles.buttonSectionDescription}>
-          <span
-            className={styles.buttonSectionIcon}
-            role="img"
-            aria-label="question"
-          >
-            ❓
-          </span>{' '}
-          Have a question? Join our chat, we will help you:
-        </p>
-
-        <Link
-          className={cn(sharedStyles.button, styles.button)}
-          href="/chat"
-          target="_blank"
-        >
-          <i className={cn(sharedStyles.buttonIcon, styles.discordIcon)} />
-          Discord Chat
-        </Link>
+            <i className={cn(sharedStyles.buttonIcon, styles.discordIcon)} />
+            Discord Chat
+          </Link>
+        </div>
       </div>
     </div>
   )

@@ -11,6 +11,8 @@
     source: "/docs/tutorials/get-started/add-files.md",
     prev: "/doc/tutorials/get-started/configure",
     next: "/doc/tutorials/get-started/share-data",
+    icon: "house",
+    style: "customClass",
     tutorials: {
       katacoda: "https://www.katacoda.com/dvc/courses/get-started/initialize"
     }
@@ -77,14 +79,20 @@ function findPrevItemWithSource(data, item) {
 function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
   validateRawItem(rawItem)
 
-  const { label, slug, source, tutorials, type, url } = rawItem
+  const { label, slug, source, tutorials, type, url, style, icon } = rawItem
+
+  const sharedFields = {
+    style,
+    icon
+  }
 
   switch (type) {
     case 'external':
       return {
         type,
         path: url,
-        label
+        label,
+        ...sharedFields
       }
     default:
       // If prev item doesn't have source we need to search for it
@@ -104,7 +112,8 @@ function normalizeItem({ rawItem, parentPath, resultRef, prevRef }) {
         label: label ? label : startCase(slug),
         tutorials: tutorials || {},
         prev,
-        next: undefined
+        next: undefined,
+        ...sharedFields
       }
   }
 }
@@ -195,6 +204,10 @@ function getPathWithSource(path) {
   return getItemByPath(path).path
 }
 function getParentsListFromPath(path) {
+  // If path is the homepage, indicate that it's the only one active.
+  // This will have to change if we add children under home, but we don't currently.
+  if (path === PATH_ROOT) return [PATH_ROOT]
+
   let currentPath = PATH_ROOT
 
   return path

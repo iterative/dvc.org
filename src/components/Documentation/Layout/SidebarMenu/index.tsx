@@ -9,6 +9,7 @@ import ShowOnly from '../../../ShowOnly'
 import DownloadButton from '../../../DownloadButton'
 import Link from '../../../Link'
 import { ReactComponent as ExternalLinkIcon } from './external-link-icon.svg'
+import { ReactComponent as HouseIcon } from './house.svg'
 
 import {
   structure,
@@ -19,6 +20,12 @@ import {
 import 'perfect-scrollbar/css/perfect-scrollbar.css'
 import styles from './styles.module.css'
 
+// A map for optional special icons that can be used in menu items
+// Use the key string here as the "icon" field in sidebar.json
+const ICONS: { [key: string]: React.FC<{ className?: string }> } = {
+  house: HouseIcon
+}
+
 interface ISidebarMenuItemProps {
   children?: Array<{ label: string; path: string; source: boolean | string }>
   label: string
@@ -27,6 +34,8 @@ interface ISidebarMenuItemProps {
   onClick: (isLeafItemClicked: boolean) => void
   activePaths?: Array<string>
   type?: string
+  style?: string
+  icon?: string
 }
 
 const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
@@ -35,6 +44,8 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   path,
   activePaths,
   onClick,
+  style,
+  icon,
   type
 }) => {
   const isActive = activePaths && includes(activePaths, path)
@@ -43,11 +54,21 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
   const isLeafItem = children === undefined || children.length === 0
   const currentLevelOnClick = (): void => onClick(isLeafItem)
 
+  // Fetch a special icon if one is defined
+  const IconComponent = icon && ICONS[icon]
+  const iconElement = IconComponent ? (
+    <IconComponent className={styles.specialIcon} />
+  ) : null
+
   const className = cn(
     styles.sectionLink,
     isActive && styles.active,
     isRootParent && 'docSearch-lvl0',
-    'link-with-focus'
+    'link-with-focus',
+    style ? styles[style] : styles.sidebarDefault,
+    isLeafItem && styles.leafItem,
+    // Limit the default bullet to items with no special icon
+    icon ? undefined : styles.withDefaultBullet
   )
 
   const parentElement =
@@ -59,6 +80,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         onClick={currentLevelOnClick}
         target="_blank"
       >
+        {iconElement}
         {label} <ExternalLinkIcon />
       </Link>
     ) : (
@@ -68,6 +90,7 @@ const SidebarMenuItem: React.FC<ISidebarMenuItemProps> = ({
         className={className}
         onClick={currentLevelOnClick}
       >
+        {iconElement}
         {label}
       </Link>
     )

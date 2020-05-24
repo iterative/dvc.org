@@ -8,8 +8,9 @@ Modify the configuration of a data remote.
 
 See also [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list), and
-[remove](/doc/command-reference/remote/remove) commands to manage data remotes.
+[list](/doc/command-reference/remote/list),
+[remove](/doc/command-reference/remote/remove), and
+[rename](/doc/command-reference/remote/rename) commands to manage data remotes.
 
 ## Synopsis
 
@@ -125,7 +126,7 @@ these settings, you could use the following options:
   ```
 
 - `listobjects` - whether or not to use `list_objects`. By default,
-  `list_objects_v2` is used. Useful for ceph and other s3 emulators.
+  `list_objects_v2` is used. Useful for ceph and other S3 emulators.
 
   ```dvc
   $ dvc remote modify myremote listobjects true
@@ -138,13 +139,13 @@ these settings, you could use the following options:
   $ dvc remote modify myremote sse AES256
   ```
 
-- `sse_kms_key_id` - SSE-KMS key to use to encrypt data uploaded to S3, normally
-  specified when the `sse` parameter is set to `aws:kms`. This parameter will be
-  passed directly to AWS's S3 functions, so DVC supports any value that AWS
-  supports, including both KMS key ids and aliases.
+- `sse_kms_key_id` - identifier of the key to encrypt data uploaded when using
+  SSE-KMS. Required when the `sse` parameter (above) is set to `aws:kms`. This
+  parameter will be passed directly to AWS S3 functions, so DVC supports any
+  value that S3 supports, including both key ids and aliases.
 
   ```dvc
-  $ dvc remote modify myremote sse_kms_key_id alias/testkey
+  $ dvc remote modify myremote sse_kms_key_id mykeyid_or_alias
   ```
 
 - `acl` - set object level access control list (ACL) such as `private`,

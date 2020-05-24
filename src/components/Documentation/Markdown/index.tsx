@@ -50,11 +50,66 @@ const Abbr: React.FC<{ children: [string] }> = ({ children }) => {
   return <Tooltip text={children[0]} />
 }
 
+const Cards: React.FC = ({ children }) => {
+  return <div className={styles.cards}>{children}</div>
+}
+
+const InnerCard: React.FC<{
+  href?: string
+  className?: string
+}> = ({ href, children, className }) =>
+  href ? (
+    <Link href={href} className={className}>
+      {children}
+    </Link>
+  ) : (
+    <div className={className}>{children}</div>
+  )
+
+const Card: React.FC<{
+  icon?: string
+  heading?: string
+  href?: string
+  headingtag:
+    | string
+    | React.FC<{
+        className: string
+      }>
+}> = ({ children, icon, heading, headingtag: Heading = 'h3', href }) => {
+  let iconElement
+
+  if (Array.isArray(children) && icon) {
+    const firstRealItemIndex = children.findIndex(x => x !== '\n')
+    iconElement = children[firstRealItemIndex]
+    children = children.slice(firstRealItemIndex + 1)
+  }
+
+  return (
+    <div className={styles.cardWrapper}>
+      <InnerCard href={href} className={styles.card}>
+        {iconElement && <div className={styles.cardIcon}>{iconElement}</div>}
+        <div className={styles.cardContent}>
+          {heading && (
+            <Heading className={styles.cardHeading}>{heading}</Heading>
+          )}
+          {children}
+        </div>
+      </InnerCard>
+    </div>
+  )
+}
+
 const renderAst = new rehypeReact({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   createElement: React.createElement as any,
   Fragment: React.Fragment,
-  components: { details: Details, abbr: Abbr, a: Link }
+  components: {
+    details: Details,
+    abbr: Abbr,
+    a: Link,
+    card: Card,
+    cards: Cards
+  }
 }).Compiler
 
 interface IMarkdownProps {

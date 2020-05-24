@@ -6,7 +6,8 @@ not physically remove data files stored remotely.
 See also [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
 [list](/doc/command-reference/remote/list), and
-[modify](/doc/command-reference/remote/modify) commands to manage data remotes.
+[modify](/doc/command-reference/remote/modify), and
+[remove](/doc/command-reference/remote/remove) commands to manage data remotes.
 
 ## Synopsis
 
@@ -20,11 +21,11 @@ positional arguments:
 
 ## Description
 
-Remote `name` is required.
-
 This command removes a section in the DVC
 [config file](/doc/command-reference/config). Alternatively, it is possible to
 edit config files manually.
+
+The `name` argument is required.
 
 ## Options
 

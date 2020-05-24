@@ -2,7 +2,8 @@
   {
     "slug": "",
     "label": "Home",
-    "source": "index.md"
+    "source": "index.md",
+    "icon": "house"
   },
   {
     "slug": "install",
@@ -362,6 +363,10 @@
           {
             "label": "remote remove",
             "slug": "remove"
+          },
+          {
+            "label": "remote rename",
+            "slug": "rename"
           }
         ]
       },

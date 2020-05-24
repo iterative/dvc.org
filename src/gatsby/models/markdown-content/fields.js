@@ -12,5 +12,6 @@ module.exports = {
   timeToRead: {
     type: 'String!',
     resolve: parentResolverPassthrough()
-  }
+  },
+  template: 'String'
 }
