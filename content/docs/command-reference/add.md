@@ -243,3 +243,33 @@ In this case, a DVC-file is generated for each file in the `pics/` directory
 tree. No top-level DVC-file is generated, which is typically less convenient.
 For example, we cannot use the directory structure as one unit with `dvc run` or
 other commands.
+
+To untrack a file or directory just add [patterns](https://git-scm.com/docs/gitignore)
+(corresponding to the location of file or directory) under `.dvcignore` file.
+
+Let's create a sample script to understand this fact.
+```dvc
+$ echo test_v1 >> test1.txt
+$ echo test_v1_1 >> test2.txt
+
+$ dvc add test* 
+
+100% Add|████████████████████████████████████████████|2/2 [00:04,  2.21s/file]
+
+To track the changes with git, run:
+
+        git add .gitignore test1.txt.dvc test.txt.dvc
+
+$ echo test_v2 >> test1.txt
+$ echo test_v2_2 >> test2.txt
+$ echo test1.txt.dvc >> .dvcignore
+
+$ dvc status
+test2.txt.dvc:
+        changed outs:
+                modified:           test2.txt
+```
+Here we can see that it is only showing change in the file associated with `test2.txt.dvc`
+and has untracked `test1.txt.dvc` sucessfully.
+
+See [.dvcignore](docs/user-guide/.dvcignore) for more details. 
