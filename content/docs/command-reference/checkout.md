@@ -116,15 +116,11 @@ Start by cloning our example repo if you don't already have it:
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
-```
-
-This project comes with a predefined HTTP
-[remote storage](/doc/command-reference/remote). We use `dvc fetch` to get data
-from remote storage:
-
-```dvc
 $ dvc fetch -aT
 ```
+
+We run `dvc fetch -aT` to get data for all Git branches and tags from
+[remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr>.
 
 </details>
 
@@ -153,13 +149,13 @@ baseline-experiment     <- First simple version of the model
 bigrams-experiment      <- Uses bigrams to improve the model
 ```
 
-We can now just run `dvc pull` that will fetch and checkout the most recent
-`model.pkl`, `data.xml`, and other files that are tracked by DVC. The model file
-hash `662eb7f64216d9c2c1088d0a5e2c6951` will be used in the `train.dvc`
+We can now just run `dvc checkout` that will update the most recent `model.pkl`,
+`data.xml`, and other files that are tracked by DVC. The model file hash
+`662eb7f64216d9c2c1088d0a5e2c6951` will be used in the `train.dvc`
 [stage file](/doc/command-reference/run):
 
 ```dvc
-$ dvc pull
+$ dvc checkout
 
 $ md5 model.pkl
 MD5 (model.pkl) = 662eb7f64216d9c2c1088d0a5e2c6951
