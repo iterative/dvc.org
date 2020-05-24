@@ -134,8 +134,10 @@ Write front matter in the following format:
 ```yml
 name: John Doe
 avatar: avatar.jpeg
+link: https://www.twitter.com/johndoe
 ```
 
 - `name` – **Required.** Author's name.
 - `avatar` - **Required.** Path to the author's avatar, relative to
   `static/uploads/avatars` (1024x1024 is recommended).
+- `link` - Optional location that the author's name will link to.
