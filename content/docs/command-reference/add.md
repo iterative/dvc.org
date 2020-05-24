@@ -255,16 +255,11 @@ $ echo test_v1 >> test1.txt
 $ echo test_v1_1 >> test2.txt
 
 $ dvc add test*
-
-100% Add|████████████████████████████████████████████|2/2 [00:04,  2.21s/file]
-
-To track the changes with git, run:
-
-        git add .gitignore test1.txt.dvc test.txt.dvc
 ```
 
-Now let's modify both of these files and add one of the tracked file to
-`.dvcignore` file.
+With the above command DVC is now tracking `test1.txt` and `test2.txt`. Now
+let's modify both of these files and add one of the tracked file to `.dvcignore`
+file.
 
 ```dvc
 $ echo test_v2 >> test1.txt
