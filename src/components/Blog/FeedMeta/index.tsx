@@ -15,6 +15,7 @@ interface IBlogFeedMetaProps {
   date: string
   name: string
   timeToRead: string
+  link?: string
 }
 
 const FeedMeta: React.FC<IBlogFeedMetaProps> = ({
@@ -23,13 +24,22 @@ const FeedMeta: React.FC<IBlogFeedMetaProps> = ({
   commentsCount,
   date,
   name,
-  timeToRead
+  timeToRead,
+  link
 }) => {
   return (
     <div className={styles.wrapper}>
       <Image fixed={avatar.fixed} className={styles.avatar} />
       <ul className={styles.list}>
-        <li className={styles.item}>{name}</li>
+        <li className={styles.item}>
+          {link ? (
+            <Link href={link} className={styles.link}>
+              {name}
+            </Link>
+          ) : (
+            name
+          )}
+        </li>
         <li className={styles.item}>
           {date} • {timeToRead} min read
         </li>
