@@ -7,8 +7,9 @@ Set/unset the default data remote.
 
 See also [add](/doc/command-reference/remote/add),
 [list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify), and
-[remove](/doc/command-reference/remote/remove) commands to manage data remotes.
+[modify](/doc/command-reference/remote/modify),
+[remove](/doc/command-reference/remote/remove), and
+[rename](/doc/command-reference/remote/rename) commands to manage data remotes.
 
 ## Synopsis
 
