@@ -259,7 +259,11 @@ $ dvc add test*
 To track the changes with git, run:
 
         git add .gitignore test1.txt.dvc test.txt.dvc
+```
+Now let's modify both of these files and add one of the tracked file
+to `.dvcignore` file.
 
+```dvc
 $ echo test_v2 >> test1.txt
 $ echo test_v2_2 >> test2.txt
 $ echo test1.txt.dvc >> .dvcignore
@@ -272,4 +276,4 @@ test2.txt.dvc:
 Here we can see that it is only showing change in the file associated with `test2.txt.dvc`
 and has untracked `test1.txt.dvc` sucessfully.
 
-See [.dvcignore](docs/user-guide/.dvcignore) for more details. 
+See [.dvcignore](docs/user-guide/.dvcignore) for more details.
