@@ -5,9 +5,10 @@ import ShowOnly from '../../../ShowOnly'
 import DesktopView from './DesktopView'
 import MobileView from './MobileView'
 
-import glossary from '../../../../../content/docs/glossary'
+import useGlossary from '../../../../utils/front/glossary'
 
 const Tooltip: React.FC<{ text: string }> = ({ text }) => {
+  const glossary = useGlossary()
   const [state, setState] = useState({
     description: '',
     header: '',

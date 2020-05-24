@@ -5,6 +5,7 @@ const authors = require('./models/authors')
 const imageSourcePaths = require('./models/image-source-paths')
 const jsonFiles = require('./models/json-files')
 const communityPage = require('./models/community')
+const glossary = require('./models/glossary')
 
 const models = [
   markdownContent,
@@ -13,7 +14,8 @@ const models = [
   authors,
   imageSourcePaths,
   jsonFiles,
-  communityPage
+  communityPage,
+  glossary
 ]
 
 module.exports = models

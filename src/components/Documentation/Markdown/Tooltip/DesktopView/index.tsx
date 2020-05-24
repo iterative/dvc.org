@@ -1,6 +1,5 @@
 import React, { useRef, useState, useEffect } from 'react'
 import cn from 'classnames'
-import ReactMarkdown from 'react-markdown'
 import Portal from '@reach/portal'
 import throttle from 'lodash/throttle'
 
@@ -110,9 +109,9 @@ const DesktopView: React.FC<IDesktopViewProps> = ({
             onBlur={hide}
           >
             <div className={styles.tooltipHeader}>{header}</div>
-            <ReactMarkdown
+            <div
               className={cn('markdown-body', styles.tooltipBody)}
-              source={description}
+              dangerouslySetInnerHTML={{ __html: description }}
             />
           </div>
         </Portal>

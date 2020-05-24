@@ -1,4 +1,5 @@
 const callOnModels = require('../../utils/models')
+const { childNodeCreator } = require('../../utils/models/nodes.js')
 
 /*
   Markdown Content Model.
@@ -50,6 +51,7 @@ const callOnModels = require('../../utils/models')
 module.exports = {
   async onCreateNode(api, { models }) {
     const { node, getNode } = api
+    const createChildNode = childNodeCreator(api)
     if (node.internal.type === 'MarkdownRemark') {
       const parentNode = getNode(node.parent)
       const { sourceInstanceName } = parentNode
@@ -59,7 +61,8 @@ module.exports = {
 
         // Any data that isn't the Gatsby API should be passed through this object.
         const markdownContentApi = {
-          parentNode
+          parentNode,
+          createChildNode
         }
 
         // Run our custom API hook on all models.
