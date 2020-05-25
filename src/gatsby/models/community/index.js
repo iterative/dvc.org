@@ -1,27 +1,12 @@
 const moment = require('moment')
 const { getExpirationFields } = require('../../../utils/shared/expiration.js')
+const { childNodeCreator } = require('../../utils/models/nodes.js')
 
 function expiredNodesLog(typeName, nodes) {
   if (nodes.length > 0) {
     return `${nodes.length} ${typeName}:\n${nodes
       .map(({ sourceIndex, expires }) => `- #${sourceIndex} expired ${expires}`)
       .join('\n')}\n`
-  }
-}
-
-function childNodeCreator({
-  node,
-  actions: { createNode, createParentChildLink }
-}) {
-  return async function ({ children = [], ...rest }) {
-    const newNode = {
-      parent: node.id,
-      children,
-      ...rest
-    }
-
-    await createNode(newNode)
-    await createParentChildLink({ parent: node, child: newNode })
   }
 }
 
@@ -77,10 +62,10 @@ module.exports = {
     ])
   },
   async onParseJsonFile(api, { content }) {
-    const createChildNode = childNodeCreator(api)
     const { node, createNodeId, createContentDigest } = api
     // Only operate on the File node for data.json
     if (node.relativePath !== 'community.json') return null
+    const createChildNode = childNodeCreator(api)
     const { events, hero, ...rest } = content
 
     const heroesPromise =

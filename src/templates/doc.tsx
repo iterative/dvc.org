@@ -7,7 +7,7 @@ import SEO from '../components/SEO'
 
 import Documentation from '../components/Documentation'
 
-interface IDocHomePageProps {
+interface IDocPageProps {
   data: {
     page: {
       htmlAst: Node
@@ -19,7 +19,7 @@ interface IDocHomePageProps {
   }
 }
 
-const DocHomePage: React.FC<IDocHomePageProps> = ({
+const DocPage: React.FC<IDocPageProps> = ({
   data,
   pageContext: { slug, headings }
 }) => {
@@ -37,7 +37,7 @@ const DocHomePage: React.FC<IDocHomePageProps> = ({
   )
 }
 
-export default DocHomePage
+export default DocPage
 
 export const pageQuery = graphql`
   query DocPage($id: String!) {

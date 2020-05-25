@@ -20,6 +20,7 @@ supported:
 - Local files and directories outside of your <abbr>workspace</abbr>
 - SSH
 - Amazon S3
+- Microsoft Azure Blob Storage
 - Google Cloud Storage
 - HDFS
 - HTTP
@@ -64,6 +65,18 @@ $ dvc run -d s3://mybucket/data.txt \
           aws s3 cp s3://mybucket/data.txt data.txt
 ```
 
+### Microsoft Azure Blob Storage
+
+```dvc
+$ dvc run -d azure://my-container-name/data.txt \
+          -o data.txt \
+          az storage copy \
+                     -d data.json \
+                     --source-account-name my-account \
+                     --source-container my-container-name \
+                     --source-blob data.txt
+```
+
 ### Google Cloud Storage
 
 ```dvc
@@ -77,9 +90,9 @@ $ dvc run -d gs://mybucket/data.txt \
 ```dvc
 $ dvc run -d hdfs://user@example.com/home/shared/data.txt \
           -o data.txt \
-           hdfs fs -copyToLocal \
-                            hdfs://user@example.com/home/shared/data.txt \
-                            data.txt
+          hdfs fs -copyToLocal \
+                  hdfs://user@example.com/home/shared/data.txt \
+                  data.txt
 ```
 
 ### HTTP

@@ -11,6 +11,8 @@
     source: "/docs/tutorials/get-started/add-files.md",
     prev: "/doc/tutorials/get-started/configure",
     next: "/doc/tutorials/get-started/share-data",
+    icon: "house",
+    style: "customClass",
     tutorials: {
       katacoda: "https://www.katacoda.com/dvc/courses/get-started/initialize"
     }

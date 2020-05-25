@@ -1,9 +1,8 @@
 const { markdownToHtml } = require('../../common.js')
 
-function createMarkdownBlogNode(api, { parentNode }) {
+async function createMarkdownBlogNode(api, { parentNode, createChildNode }) {
   if (parentNode.relativeDirectory.split('/')[0] !== 'blog') return
-  const { node, actions, createNodeId, createContentDigest } = api
-  const { createNode, createParentChildLink } = actions
+  const { node, createNodeId, createContentDigest } = api
   const { frontmatter, rawMarkdownBody } = node
   const {
     date,
@@ -45,8 +44,7 @@ function createMarkdownBlogNode(api, { parentNode }) {
       contentDigest: createContentDigest(fieldData)
     }
   }
-  createNode(postNode)
-  createParentChildLink({ parent: node, child: postNode })
+  return createChildNode(postNode)
 }
 
 module.exports = createMarkdownBlogNode

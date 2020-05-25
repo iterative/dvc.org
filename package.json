@@ -70,7 +70,6 @@
     "react-dom": "^16.13.1",
     "react-ga": "^2.7.0",
     "react-helmet": "^5.2.1",
-    "react-markdown": "^4.3.1",
     "react-popover": "^0.5.10",
     "react-slick": "^0.25.2",
     "react-use": "^14.0.0",

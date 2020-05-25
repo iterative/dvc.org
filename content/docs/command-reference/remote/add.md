@@ -7,8 +7,9 @@ Add a new data remote.
 
 See also [default](/doc/command-reference/remote/default),
 [list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify), and
-[remove](/doc/command-reference/remote/remove) commands to manage data remotes.
+[modify](/doc/command-reference/remote/modify),
+[remove](/doc/command-reference/remote/remove), and
+[rename](/doc/command-reference/remote/rename) commands to manage data remotes.
 
 ## Synopsis
 
@@ -344,18 +345,6 @@ $ dvc remote add myremote https://example.com/path/to/dir
 ```
 
 > See also `dvc remote modify` for a full list of HTTP parameters.
-
-</details>
-
-<details>
-
-### Click for WebDav
-
-```dvc
-$ dvc remote add myremote webdavs://example.com/path/to/dir
-```
-
-> See also `dvc remote modify` for a full list of WebDav parameters.
 
 </details>
 

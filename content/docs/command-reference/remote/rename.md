@@ -1,38 +1,42 @@
-# remote remove
+# remote rename
 
-Remove a data remote. This command affects DVC configuration files only, it does
-not physically remove data files stored remotely.
+Rename a data remote. The remote's URL is not changed by this command.
 
 See also [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list), and
+[list](/doc/command-reference/remote/list),
 [modify](/doc/command-reference/remote/modify), and
 [remove](/doc/command-reference/remote/remove) commands to manage data remotes.
 
 ## Synopsis
 
 ```usage
-usage: dvc remote remove [-h] [--global] [--system] [--local]
-                         [-q | -v] name
+usage: dvc remote rename [-h] [--global] [--system] [--local]
+                         [-q | -v] name new
 
 positional arguments:
-  name           Name of the remote to remove
+  name           Remote to be renamed
+  new            New name of the remote
 ```
 
 ## Description
 
-This command removes a section in the DVC
+This command modify a section in the DVC
 [config file](/doc/command-reference/config). Alternatively, it is possible to
 edit config files manually.
 
-The `name` argument is required.
+See also `dvc remote modify` to change other aspects of remote configuration,
+such as the URL or access credentials.
+
+Both `name` and `new` arguments are required, with the old and new names for the
+DVC remote, respectively.
 
 ## Options
 
-- `--global` - save remote configuration to the global config (e.g.
+- `--global` - modify remote configuration to the global config (e.g.
   `~/.config/dvc/config`) instead of `.dvc/config`.
 
-- `--system` - save remote configuration to the system config (e.g.
+- `--system` - modify remote configuration to the system config (e.g.
   `/etc/dvc.config`) instead of `.dvc/config`.
 
 - `--local` - modify a local [config file](/doc/command-reference/config)
@@ -54,8 +58,8 @@ Add Amazon S3 remote:
 $ dvc remote add myremote s3://mybucket/myproject
 ```
 
-Remove it:
+Rename it:
 
 ```dvc
-$ dvc remote remove myremote
+$ dvc remote rename myremote s3remote
 ```

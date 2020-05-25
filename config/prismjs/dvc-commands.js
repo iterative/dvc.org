@@ -11,6 +11,7 @@ module.exports = [
   'root',
   'repro',
   'remove',
+  'remote rename',
   'remote remove',
   'remote modify',
   'remote list',
