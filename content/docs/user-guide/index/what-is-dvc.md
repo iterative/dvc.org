@@ -1,17 +1,18 @@
 # What Is DVC?
 
-It is is time we formally introduce what DVC is. Data Version Control, or DVC, 
-is a new type of experiment management software that has been built on top of 
-the existing engineering toolset that you're already used to, and particularly 
+It is is time we formally introduce what DVC is. Data Version Control, or DVC,
+is a new type of experiment management software that has been built on top of
+the existing engineering toolset that you're already used to, and particularly
 on a source code version control system (currently Git).
 
-The underlying source code control system eliminates the need to use external 
-services. Data science experiment sharing and collaboration can be done through 
-regular Git tools (commit messages, merges, pull requests, etc) the same way it works
-for software engineers.
+The underlying source code control system eliminates the need to use external
+services. Data science experiment sharing and collaboration can be done through
+regular Git tools (commit messages, merges, pull requests, etc) the same way it
+works for software engineers.
 
-DVC implements a Git experimentation methodology where each experiment exists 
-with its code as well as data, and can be represented as a separate Git branch or commit.
+DVC implements a Git experimentation methodology where each experiment exists
+with its code as well as data, and can be represented as a separate Git branch
+or commit.
 
 DVC uses a few core concepts:
 
@@ -53,9 +54,10 @@ DVC uses a few core concepts:
   is how a data scientist transfers large data files or shares a GPU-trained
   model with those without GPUs available.
 
-- **DVC File**: The DVC File (Stage file) contains information that is utizied 
-  by the sytem in order to track your data and reproduce pipeline stages. The 
-  file itself contains a simple YAML format that could be easily written or altered 
-  manually.
+- **DVC File**: The DVC File (Stage file) contains information that is utizied
+  by the sytem in order to track your data and reproduce pipeline stages. The
+  file itself contains a simple YAML format that could be easily written or
+  altered manually.
 
-- **remote**: These are a set of commands used to setup and manage data resources.
+- **remote**: These are a set of commands used to setup and manage data
+  resources.

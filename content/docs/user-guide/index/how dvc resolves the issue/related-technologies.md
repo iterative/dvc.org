@@ -1,15 +1,14 @@
 # Comparison to Existing Technologies
 
-It would be too easy to assume that these questions were unanswered 
-until this point of time, and naturally it required that we look
-upon the existing technologies that help us in answering similar questions. 
+It would be too easy to assume that these questions were unanswered until this
+point of time, and naturally it required that we look upon the existing
+technologies that help us in answering similar questions.
 
-DVC takes a novel approach, by combining several exisiting ideas 
-into one single product. 
+DVC takes a novel approach, by combining several exisiting ideas into one single
+product.
 
-It built on the intentions of bringing the best possible practices 
-from the field of software engineering, into the Data Science 
-community. 
+It built on the intentions of bringing the best possible practices from the
+field of software engineering, into the Data Science community.
 
 ## Differences with related tools
 
