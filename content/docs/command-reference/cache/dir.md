@@ -21,7 +21,7 @@ Helper to set the `cache.dir` configuration option. (See
 Unlike doing so with `dvc config cache`, this command transform paths (`value`)
 that are provided relative to the current working directory into paths
 **relative to the config file location**. However, if the `value` provided is an
-absolute path, then the path to the cache directory is preserved as it is.
+absolute path, then it's preserved as it is.
 
 ## Options
 
@@ -60,9 +60,6 @@ $ cat .dvc/config
 
 `../dir` has been resolved relative to the `.dvc/` dir, resulting in
 `../../dir`.
-
-The command `dvc cache dir` resolves your relative paths so that they work with
-the location of the config file in your project.
 
 ## Example: Using absolute path
 
