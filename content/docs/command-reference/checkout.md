@@ -119,9 +119,10 @@ $ cd example-get-started
 $ dvc fetch -aT
 ```
 
-We run `dvc fetch -aT` to get data for all Git branches and tags from
-[remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr>.
-This way it's all available for the `checkout` examples below.
+We run `dvc fetch` with the `-aT` flags to get the DVC-tracked data from all Git
+branches and tags from [remote storage](/doc/command-reference/remote) to the
+<abbr>cache</abbr>. This way it's all available for the `checkout` examples
+below.
 
 </details>
 
