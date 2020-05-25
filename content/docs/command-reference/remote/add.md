@@ -350,19 +350,6 @@ $ dvc remote add myremote https://example.com/path/to/dir
 
 <details>
 
-### Click for WebDAV
-
-```dvc
-$ dvc remote add myremote webdav://example.com/path/to/dir
-```
-
-> Note that WebDAV is an extension of HTTP. See also `dvc remote modify` for a
-> full list of HTTP parameters.
-
-</details>
-
-<details>
-
 ### Click for local remote
 
 A "local remote" is a directory in the machine's file system.

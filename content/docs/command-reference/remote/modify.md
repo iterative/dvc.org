@@ -504,9 +504,7 @@ more information.
 
 <details>
 
-### Click for HTTP & WebDAV
-
-> Note that WebDAV is an extension of HTTP so the same parameters apply.
+### Click for HTTP
 
 - `auth` - authentication method to use when accessing a remote. The accepted
   values are:
