@@ -504,7 +504,9 @@ more information.
 
 <details>
 
-### Click for HTTP
+### Click for HTTP & WebDAV
+
+> Note that WebDAV is an extension of HTTP so the same parameters apply.
 
 - `auth` - authentication method to use when accessing a remote. The accepted
   values are:
@@ -562,15 +564,6 @@ more information.
   > Note that the `password` parameter takes precedence over `ask_password`. If
   > `password` is specified, DVC will not prompt the user to enter a password
   > for this remote.
-
-</details>
-
-<details>
-
-### Click for WebDav
-
-Since it's an extension for the HTTP protocol the same settings apply as for
-HTTP. See above for the HTTP.
 
 </details>
 

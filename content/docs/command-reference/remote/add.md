@@ -350,13 +350,14 @@ $ dvc remote add myremote https://example.com/path/to/dir
 
 <details>
 
-### Click for WebDav
+### Click for WebDAV
 
 ```dvc
-$ dvc remote add myremote webdavs://example.com/path/to/dir
+$ dvc remote add myremote webdav://example.com/path/to/dir
 ```
 
-> See also `dvc remote modify` for a full list of WebDav parameters.
+> Note that WebDAV is an extension of HTTP. See also `dvc remote modify` for a
+> full list of HTTP parameters.
 
 </details>
 
