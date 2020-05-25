@@ -126,9 +126,9 @@ This file can be committed with Git instead of the data file itself.
 
 The data file `Posts.xml.zip` is linked (or copied) from
 `.dvc/cache/ce/68b98d82545628782c66192c96f2d2`, and added to `.gitignore`. Even
-if you remove it from the workspace, or `git checkout` a different commit, the
-data is not lost if a corresponding DVC-file is committed. It's enough to run
-`dvc checkout` or `dvc pull` to restore data files.
+if you remove it from the <abbr>workspace</abbr>, or `git checkout` a different
+commit, the data is not lost if a corresponding DVC-file is committed. It's
+enough to run `dvc checkout` or `dvc pull` to restore data files.
 
 </details>
 
@@ -183,10 +183,10 @@ outs:
 ```
 
 Just like the DVC-file we created earlier with `dvc add`, this stage file uses
-`md5` hashes (that point to the cache) to describe and version control
-dependencies and outputs. Output `data/Posts.xml` file is saved as
+`md5` hashes (that point to the <abbr>cache</abbr>) to describe and version
+control dependencies and outputs. Output `data/Posts.xml` file is saved as
 `.dvc/cache/a3/04afb96060aad90176268345e10355` and linked (or copied) to the
-workspace, as well as added to `.gitignore`.
+<abbr>workspace</abbr>, as well as added to `.gitignore`.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
 that DVC-files describe, we can restore the full series of commands (pipeline
