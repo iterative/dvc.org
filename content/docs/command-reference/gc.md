@@ -42,6 +42,9 @@ most cases removing data locally and in remote storage is irreversible.
 The default remote is cleaned (see `dvc config core.remote`) unless the
 `--remote` option is used.
 
+> Note that this command may pull data files or directories from remote storage
+> that are missing in DVC cache.
+
 ## Options
 
 - `-w`, `--workspace` - keep files and directories _only_ referenced in the
