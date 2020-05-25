@@ -137,7 +137,7 @@ Several of the values above are pulled from the original stage file
 subfields under `repo` are used to save the origin and version of the
 dependency, respectively.
 
-### Importing from non-DVC repositories
+### Example: Importing from any Git repository
 
 You can even import files (datasets) from Git repositories that are not
 specifically <abbr>DVC repositories</abbr>. Here's an example importing a
