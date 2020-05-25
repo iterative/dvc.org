@@ -255,5 +255,7 @@ outs:
   - md5: 7e6de779a1ab286745c808f291d2d671
     path: it-standards.csv
 ```
-Notice in this snippet that the path and the url you specified earlier are saved in the `it-standards.csv.dvc` file, 
-which means the imported file can later be updated using [`dvc update`](https://dvc.org/doc/command-reference/update) from the upstream repository.
+Notice in this snippet that the path and the url you specified earlier are saved
+in the `it-standards.csv.dvc` file, which means the imported file can later be
+updated using [`dvc update`](/doc/command-reference/update) from the upstream 
+repository.
