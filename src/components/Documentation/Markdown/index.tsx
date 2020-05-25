@@ -146,7 +146,9 @@ const Markdown: React.FC<IMarkdownProps> = ({
     touchstartXRef.current = e.changedTouches[0].screenX
   }, [])
   const onTouchEnd = useCallback(e => {
-    touchendXRef.current = e.changedTouches[0].screenX
+    const changedTouch = e.changedTouches[0]
+    if (!changedTouch) return
+    touchendXRef.current = changedTouch.screenX
     handleSwipeGesture()
   }, [])
 
