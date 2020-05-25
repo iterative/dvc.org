@@ -565,15 +565,6 @@ more information.
 
 </details>
 
-<details>
-
-### Click for WebDav
-
-Since it's an extension for the HTTP protocol the same settings apply as for
-HTTP. See above for the HTTP.
-
-</details>
-
 ## Example: Customize an S3 remote
 
 Let's first set up a _default_ S3 remote.
