@@ -281,8 +281,8 @@ the `v2.0` tag.
 ### Expand to learn more about DVC internals
 
 As we have learned already, DVC keeps data files out of Git (by adjusting
-`.gitignore`) and puts them into the cache (usually it's a `.dvc/cache`
-directory inside the repository). Instead, DVC creates
+`.gitignore`) and puts them into the <abbr>cache</abbr> (usually it's a
+`.dvc/cache` directory inside the repository). Instead, DVC creates
 [DVC-files](/doc/user-guide/dvc-file-format). These text files serve as data
 placeholders that point to the cached files, and they can be easily version
 controlled with Git.
