@@ -231,9 +231,11 @@ use case.
 
 ## Example: Importing from any Git repository
 
-You can even import files from plain Git repos that are not <abbr>DVC repositories</abbr>. 
-For example, let's import a
-dataset from [GSA's data repo](https://github.com/GSA/data). 
+You can even import files from plain Git repos that are not <abbr>DVC
+  repositories</abbr>. For example, let's import a dataset from
+[GSA's data repo](https://github.com/GSA/data).
+
+> Note that Git-tracked files can be imported from DVC repos as well.
 
 ```dvc
 $ dvc import git@github.com:GSA/data \
@@ -242,7 +244,7 @@ Importing ...
 ```
 
 The file is imported, and along with it, an import stage
-([DVC-file](/doc/user-guide/dvc-file-format)) file is created. Check  
+([DVC-file](/doc/user-guide/dvc-file-format)) file is created. Check
 `it-standards.csv.dvc`:
 
 ```yaml
@@ -255,7 +257,6 @@ outs:
   - md5: 7e6de779a1ab286745c808f291d2d671
     path: it-standards.csv
 ```
-Notice in this snippet that the path and the url you specified earlier are saved
-in the `it-standards.csv.dvc` file, which means the imported file can later be
-updated using [`dvc update`](/doc/command-reference/update) from the upstream 
-repository.
+
+The `url` and `rev_lock` subfields under `repo` are used to save the origin and
+[version](https://git-scm.com/docs/revisions) of the dependency, respectively.
