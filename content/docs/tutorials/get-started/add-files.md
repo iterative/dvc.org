@@ -40,7 +40,7 @@ Committing DVC-files with Git allows us to track different versions of the
 
 ### Expand to learn about DVC internals
 
-`dvc add` moves the actual data file to the cache directory (see
+`dvc add` moves the actual data file to the <abbr>cache directory</abbr> (see
 [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)), while
 the entries in the workspace may be file links to the actual files in the DVC
 cache.
