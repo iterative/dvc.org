@@ -26,34 +26,68 @@ Here are some Q&A's from our Discord channel that we think are worth sharing.
 
 ### Q: [How do I completely delete a file from DVC?](https://discord.com/channels/485586884165107732/563406153334128681/710546561498873886)
 
-You can simply delete a `.dvc` file to remove its target from DVC tracking, and then run `dvc gc` to [clear your DVC cache](https://dvc.org/doc/command-reference/gc#gc). If you want to remove a single `.dvc` file without doing a cache cleanup, look into the `.dvc` file and note the `md5` field inside. Then use this value to identify the corresponding file in your DVC cache and delete it. For example: if your target file has `md5: 123456`, the corresponding file in your cache will be `.dvc/cache/12/3456`. 
+You can simply delete a `.dvc` file to remove its target from DVC tracking, and
+then run `dvc gc` to
+[clear your DVC cache](https://dvc.org/doc/command-reference/gc#gc). If you want
+to remove a single `.dvc` file without doing a cache cleanup, look into the
+`.dvc` file and note the `md5` field inside. Then use this value to identify the
+corresponding file in your DVC cache and delete it. For example: if your target
+file has `md5: 123456`, the corresponding file in your cache will be
+`.dvc/cache/12/3456`.
 
-In the future, we plan to support a function like `git rm` that will allow for more granular delete options. 
+In the future, we plan to support a function like `git rm` that will allow for
+more granular delete options.
 
 ### Q: [I'm using an S3 bucket as a DVC remote; the bucket is shared with several coworkers, who have projects in other folders in the bucket. Will it disrupt DVC if I manually add a README inside the folder being used for remote storage, to let my coworkers know what the directory is used for?](https://discord.com/channels/485586884165107732/563406153334128681/707551737745244230https://discord.com/channels/485586884165107732/563406153334128681/707551737745244230)
 
-That will be fine! Having an additional file in the remote that isn't part of DVC tracking won't pose any issues. You would only encounter problems if you were manually modifying or deleting contents of the remote managed by DVC.
-
+That will be fine! Having an additional file in the remote that isn't part of
+DVC tracking won't pose any issues. You would only encounter problems if you
+were manually modifying or deleting contents of the remote managed by DVC.
 
 ### Q: [Are there limits to how many files DVC can handle? My dataset contains ~100,000 files.](https://discord.com/channels/485586884165107732/563406153334128681/706538115048669274)
-We ourselves have stored datasets containing up to 2 million files, so 100,000 is certainly feasible. Of course, the larger your dataset, the more time data transfer operations will take. Luckily, we have a [DVC 1.0 contains several data transfer optimizations](https://dvc.org/blog/dvc-3-years-and-1-0-release#data-transfer-optimizations) to substantially reduce the time needed to `dvc pull / push / status -c / gc -c` for very large datasets. 
+
+We ourselves have stored datasets containing up to 2 million files, so 100,000
+is certainly feasible. Of course, the larger your dataset, the more time data
+transfer operations will take. Luckily, we have a
+[DVC 1.0 contains several data transfer optimizations](https://dvc.org/blog/dvc-3-years-and-1-0-release#data-transfer-optimizations)
+to substantially reduce the time needed to `dvc pull / push / status -c / gc -c`
+for very large datasets.
 
 ### Q: [Two developers on my team are doing `dvc push` to the same remote. Should they `dvc pull` first?](https://discord.com/channels/485586884165107732/563406153334128681/704211629075857468)
-We encourage users to think of a DVC project like using Git- the same workflow applies, except that certain files are pushed to a DVC remote instead of a Git remote. In a typical Git flow, developers would `git pull` before `git commit & push`. Likewise, `dvc pull` before `dvc push` is a good idea to make sure a developer's local workspace is synced with the master branch of a project before pushing changes. 
 
-With that said, because DVC remotes stores files indexed by `md5`s, there's usually a very low probability of a collision (if two developers have two different versions of a file, they'll be stored as two separate files in the DVC remote- so no merge conflicts). Still, being in the habit of frequent pulling is a good practice. 
+We encourage users to think of a DVC project like using Git- the same workflow
+applies, except that certain files are pushed to a DVC remote instead of a Git
+remote. In a typical Git flow, developers would `git pull` before
+`git commit & push`. Likewise, `dvc pull` before `dvc push` is a good idea to
+make sure a developer's local workspace is synced with the master branch of a
+project before pushing changes.
+
+With that said, because DVC remotes stores files indexed by `md5`s, there's
+usually a very low probability of a collision (if two developers have two
+different versions of a file, they'll be stored as two separate files in the DVC
+remote- so no merge conflicts). Still, being in the habit of frequent pulling is
+a good practice.
 
 ### Q: [What are `*.tmp` files in my DVC remote?](https://discord.com/channels/485586884165107732/563406153334128681/698163554095857745)
-Inside your DVC remote, you might see `.tmp` files from incomplete uploads. This can happen if a user killed a process like `dvc push`. You can safely remove them; for example, if you're using an S3 bucket, `aws s3 rm ... *.tmp` will do the trick. 
 
-### Q: [I'm using Google Cloud Storage as a DVC remote. I'm getting an error: ` ERROR: unexpected error - ('invalid_grant: Bad Request', '{\n  "error": "invalid_grant",\n  "error_description": "Bad Request"\n}')`. Any ideas?](https://discord.com/channels/485586884165107732/485596304961962003/705131622537756702)
+Inside your DVC remote, you might see `.tmp` files from incomplete uploads. This
+can happen if a user killed a process like `dvc push`. You can safely remove
+them; for example, if you're using an S3 bucket, `aws s3 rm ... *.tmp` will do
+the trick.
 
-This is a permissions error for sure! This can happen if DVC can't find `.json` credentials file for your GCP bucket. Try authenticating using `gcloud beta auth application-default login`. 
+### Q: [I'm using Google Cloud Storage as a DVC remote. I'm getting an error: `ERROR: unexpected error - ('invalid_grant: Bad Request', '{\n "error": "invalid_grant",\n "error_description": "Bad Request"\n}')`. Any ideas?](https://discord.com/channels/485586884165107732/485596304961962003/705131622537756702)
+
+This is a permissions error for sure! This can happen if DVC can't find `.json`
+credentials file for your GCP bucket. Try authenticating using
+`gcloud beta auth application-default login`.
 
 ### Q: [I'm working on several projects that all need involve the same saved model. One project trains a model and pushes it to cloud storage with `dvc push`, and another takes the model out of cloud storage for use. What's the best practice for doing this with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/708318821253120040)
 
- One of DVC's goals is to make it easy to move models and datasets in and out of cloud storage. We had this in mind when we designed the function `dvc import` - it lets you reuse artifacts from one project to another. And you can quickly synchronize an artifact, like a model or dataset, with its latest version using `dvc update`. Check out our [docs about `import`](https://dvc.org/doc/command-reference/import), and also our [data registry use case](https://dvc.org/doc/use-cases/data-registries) for an example of sharing artifacts across projects. 
-
-
-
-
+One of DVC's goals is to make it easy to move models and datasets in and out of
+cloud storage. We had this in mind when we designed the function `dvc import` -
+it lets you reuse artifacts from one project to another. And you can quickly
+synchronize an artifact, like a model or dataset, with its latest version using
+`dvc update`. Check out our
+[docs about `import`](https://dvc.org/doc/command-reference/import), and also
+our [data registry use case](https://dvc.org/doc/use-cases/data-registries) for
+an example of sharing artifacts across projects.
