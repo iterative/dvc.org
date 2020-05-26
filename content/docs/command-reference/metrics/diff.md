@@ -7,10 +7,10 @@ commits in the <abbr>DVC repository</abbr>, or between a commit and the
 ## Synopsis
 
 ```usage
-usage: dvc metrics diff [-h] [-q | -v]
-                        [--targets [<path> [<path> ...]]]
-                        [-t <type>] [-x <path>] [-R] [--all]
-                        [--show-json] [--show-md] [a_ref] [b_ref]
+usage: dvc metrics diff [-h] [-q | -v] [--targets [<paths> [<paths> ...]]]
+                        [-R] [--all] [--show-json] [--show-md] [--no-path]
+                        [--old]
+                        [a_rev] [b_rev]
 
 positional arguments:
   a_rev                 Old Git commit to compare (defaults to HEAD)
@@ -45,27 +45,18 @@ They're calculated between two commits (hash, branch, tag, or any
   target directory and its subdirectories for DVC-files to inspect. If there are
   no directories among the `targets`, this option is ignored.
 
-- `-t <type>`, `--type <type>` - specify a type of the metric file. Accepted
-  values are: `json`. It will be saved into the corresponding DVC-file, and used
-  to determine how to handle displaying metrics. See `dvc metrics show` for more
-  details.
-
-  This option will override any `type` and `xpath` values defined in the
-  corresponding DVC-file. If no `type` is provided or found in the DVC-file, DVC
-  will try to detect it based on file extension.
-
-- `-x <path>`, `--xpath <path>` - specify a path within a metric file to show
-  changes for a specific metric value only. Should be used if the metric file
-  contains multiple numbers and you want to use only one of them. Only a single
-  path is allowed. It will override `xpath` defined in the corresponding
-  DVC-file. See `dvc metrics show` for more details.
-
 - `--all` - list all metrics, even those without changes.
 
 - `--show-json` - prints the command's output in easily parsable JSON format,
   instead of a human-readable table.
 
 - `--show-md` - prints the command's output in Markdown table format.
+
+- `--old` - Show old metric value in addition to the new value.
+
+- `--no-path` - Don't show metric path in the result table. This option is
+  useful when only one metrics file is in use or there is no intersection
+  between the metrics names.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

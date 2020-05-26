@@ -6,8 +6,8 @@ formatting.
 ## Synopsis
 
 ```usage
-usage: dvc metrics show [-h] [-q | -v] [-t <type>] [-x <path>]
-                        [-a] [-T] [-R] [--all-commits]
+usage: dvc metrics show [-h] [-q | -v] [-a] [-T] [--all-commits] [-R]
+                        [--show-json]
                         [targets [targets ...]]
 
 positional arguments:
@@ -26,51 +26,10 @@ The optional `targets` argument can contain one or more metric files. With the
 `-R` option, some of the target can even be directories, so that DVC recursively
 shows all metric files inside.
 
-Providing a `type` (`-t` option) overrides the full metric specification (both
-`type` and `xpath` fields) defined in the
-[DVC-file](/doc/user-guide/dvc-file-format) (with `dvc metrics modify`,
-typically).
-
-If `type` (via `-t`) is not specified and only `xpath` (`-x` option) is, only
-the `xpath` field from the DVC-file is overridden. (DVC will first try to read
-`type` from the DVC-file, but it can be automatically detected by the file
-extension.)
-
-> See `dvc metrics modify` to learn how to apply `-t` and `-x` permanently.
-
 An alternative way to display metrics is the `dvc metrics diff` command, which
 compares them with a previous version.
 
 ## Options
-
-- `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
-  values are: `json`. It will be saved into the corresponding DVC-file, and used
-  to determine how to handle displaying metrics.
-
-  This option will override `type` and `xpath` defined in the corresponding
-  DVC-file. If no `type` is provided or found in the DVC-file, DVC will try to
-  detect it based on file extension.
-
-- `-x <path>`, `--xpath <path>` - specify a path within a metric file to get a
-  specific metric value. Should be used if the metric file contains multiple
-  numbers and you want to use only one of them. Only a single path is allowed.
-  It will override `xpath` defined in the corresponding DVC-file. The accepted
-  value depends on the metric file type (`--type` option):
-
-  - For `json` - see [JSONPath](https://goessner.net/articles/JsonPath/) or
-    [jsonpath-ng](https://github.com/h2non/jsonpath-ng) for syntax details. For
-    example, `"AUC"` extracts the value from the following JSON-formatted metric
-    file: `{"AUC": "0.624652"}`. You can also filter on certain values, for
-    example `"$.metrics[?(@.deviation_mse<0.30) & (@.value_mse>0.4)]"` extracts
-    only the values for model versions if they meet the given conditions from
-    the metric file:
-    `{"metrics": [{"dataset": "train", "deviation_mse": 0.173461, "value_mse": 0.421601}]}`
-
-  If multiple metric files exist in the <abbr>project</abbr>, the same parser
-  and path will be applied to all of them. If `xpath` for a particular metric
-  has been set using `dvc metrics modify`, the path passed with this option will
-  overwrite it for the current command run only – It may fail to produce any
-  results or parse files that are not in a corresponding format in this case.
 
 - `-a`, `--all-branches` - print metric file contents in all Git branches
   instead of just those present in the current workspace. It can be used to
@@ -98,10 +57,59 @@ compares them with a previous version.
 
 ## Examples
 
-Examples in [add](/doc/command-reference/metrics/add),
-[modify](/doc/command-reference/metrics/modify), and
-[remove](/doc/command-reference/metrics/remove) cover most of the basic cases
-for the `dvc metrics show`.
+The basic use case shows the values in the current workspace:
+
+```dvc
+$ dvc metrics show
+      data/eval.json:
+		{
+		    AUC: 0.66729,
+		    error: 0.16982,
+		    TP: 516
+		}
+```
+
+To see the history of the metrics starting with the workspace and down the Git
+history use `--all-commits` option:
+
+```dvc
+$ dvc metrics show --all-commits
+working tree:
+	eval.json:
+        AUC: 0.66729,
+        error: 0.16982,
+        TP: 516
+cf5e7f87b72028e42e7ea05f17915b68645e93dc:
+	eval.json:
+        AUC: 0.65115,
+        error: 0.17304,
+        TP: 528
+c7bef5524541dabf8556ed504fd02f55231f875e:
+        AUC: 0.65115,
+        error: 0.17304,
+        TP: 528
+```
+
+Metrics from different branches can be shown by `--all-branches` (`-a`) option:
+
+```dvc
+$ dvc metrics show -a
+working tree:
+	eval.json:
+        AUC: 0.66729,
+        error: 0.16982,
+        TP: 516
+master:
+	eval.json:
+        AUC: 0.65115,
+        error: 0.17304,
+        TP: 528
+increase_bow:
+	eval.json:
+        AUC: 0.66524,
+        error: 0.17074,
+        TP: 521
+```
 
 The [Compare Experiments](/doc/tutorials/get-started/compare-experiments)
 chapter of our _Get Started_ covers the `-a` option to collect and print a
