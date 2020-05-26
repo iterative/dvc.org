@@ -163,9 +163,9 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 ### Expand to learn more about DVC internals
 
 As we mentioned briefly, DVC does not commit the `data/` directory and
-`model.h5` file with Git. Instead, `dvc add` stores them in the cache (usually
-in `.dvc/cache`) and adds them to `.gitignore`. We then `git commit` DVC-files
-that contain file hashes that point to cached data.
+`model.h5` file with Git. Instead, `dvc add` stores them in the
+<abbr>cache</abbr> (usually in `.dvc/cache`) and adds them to `.gitignore`. We
+then `git commit` DVC-files that contain file hashes that point to cached data.
 
 In this case we created `data.dvc` and `model.h5.dvc`. Refer to
 [DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
@@ -281,8 +281,8 @@ the `v2.0` tag.
 ### Expand to learn more about DVC internals
 
 As we have learned already, DVC keeps data files out of Git (by adjusting
-`.gitignore`) and puts them into the cache (usually it's a `.dvc/cache`
-directory inside the repository). Instead, DVC creates
+`.gitignore`) and puts them into the <abbr>cache</abbr> (usually it's a
+`.dvc/cache` directory inside the repository). Instead, DVC creates
 [DVC-files](/doc/user-guide/dvc-file-format). These text files serve as data
 placeholders that point to the cached files, and they can be easily version
 controlled with Git.
