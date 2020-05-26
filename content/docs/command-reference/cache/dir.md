@@ -20,8 +20,8 @@ Helper to set the `cache.dir` configuration option. (See
 [cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory).)
 Unlike doing so with `dvc config cache`, this command transform paths (`value`)
 that are provided relative to the current working directory into paths
-**relative to the config file location**. They are required in the latter form
-for the config file.
+**relative to the config file location**. However, if the `value` provided is an
+absolute path, then it's preserved as it is.
 
 ## Options
 
