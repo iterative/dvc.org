@@ -232,7 +232,7 @@ use case.
 ## Example: Importing from any Git repository
 
 You can even import files from plain Git repos that are not <abbr>DVC
-  repositories</abbr>. For example, let's import a dataset from
+repositories</abbr>. For example, let's import a dataset from
 [GSA's data repo](https://github.com/GSA/data).
 
 > Note that Git-tracked files can be imported from DVC repos as well.
