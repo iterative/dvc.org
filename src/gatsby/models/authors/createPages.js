@@ -1,23 +1,16 @@
 const path = require('path')
-const tagToSlug = require('../../../utils/shared/tagToSlug')
-const { BLOG } = require('../../../consts')
-// Since blog pages and their indexes require a ton of image resizes, it's
-// useful to have an option to only generate a minimal set of these pages when
-// developing. Set LIMIT_BLOG_PAGES to anything truthy and this module will
-// attempt to generate as few blog pages as possible while still having a bit of
-// everything to look at.
 const LIMIT_BLOG_PAGES = Boolean(process.env.LIMIT_BLOG_PAGES)
 
 const createPages = async ({ graphql, actions }) => {
   const blogResponse = await graphql(
     `
-      query AllAuthorBuilderQuery {
-        allAuthor {
+      query AllAuthorBuilderQuery($limit: Int!) {
+        allAuthor(limit: $limit) {
           nodes {
             id
             name
             link
-            sourcePath
+            slug
           }
         }
       }
@@ -36,7 +29,7 @@ const createPages = async ({ graphql, actions }) => {
   const authorTemplate = path.resolve('./src/templates/blog-author.tsx')
 
   const authorPagesPromise = Promise.all(
-    authors.map(({ id, sourcePath }, index) => {
+    authors.map(({ id, slug }, index) => {
       const previous = index === authors.length - 1 ? null : authors[index + 1]
       const next = index === 0 ? null : authors[index - 1]
 
@@ -49,7 +42,7 @@ const createPages = async ({ graphql, actions }) => {
           previous,
           id
         },
-        path: sourcePath.slice(0, sourcePath.indexOf('.'))
+        path: slug
       })
     })
   )

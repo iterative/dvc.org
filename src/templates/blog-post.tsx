@@ -46,7 +46,7 @@ export interface IBlogPostData {
     avatar: {
       fixed: FixedObject
     }
-    sourcePath: string
+    slug: string
   }
 }
 
@@ -95,7 +95,7 @@ export const pageQuery = graphql`
             ...GatsbyImageSharpFixed_withWebp
           }
         }
-        sourcePath
+        slug
       }
       picture {
         fluid(maxWidth: 850) {

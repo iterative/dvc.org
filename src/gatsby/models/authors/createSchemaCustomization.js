@@ -20,6 +20,7 @@ async function createAuthorSchemaCustomization(api) {
       fields: {
         ...markdownParentFields,
         link: 'String',
+        slug: 'String',
         avatar: {
           type: 'ImageSharp',
           resolve: resolveAuthorAvatar
