@@ -25,14 +25,27 @@ project-specific floating-point or integer values e.g. `AUC`, `ROC`,
 `False-Positives` etc.
 
 [Show](/doc/command-reference/metrics/show), and
-[diff](/doc/command-reference/metrics/diff), commands are available to set up
-and manage <abbr>DVC project</abbr> metrics.
+[diff](/doc/command-reference/metrics/diff), commands are available to manage
+<abbr>DVC project</abbr> metrics.
 
 ## Formats and metrics types
 
 Supported file formats: JSON and YAML. Metrics can be organized in a tree
 hierarchy in a JSON file or a YAML file. DVC addresses the metrics by the tree
-path.
+path. In the example below five metrics are presented: `train.accuracy`,
+`train.loss`, `train.TN`, `train.FP` and `time_real`.
+
+```json
+{
+  "train": {
+    "accuracy": 0.9886999726295471,
+    "loss": 0.041855331510305405,
+    "TN": 473,
+    "FP": 845
+  },
+  "time_real": 344.61309599876404
+}
+```
 
 DVC itself does not ascribe any specific meaning for these numbers. Usually
 these numbers are produced by the model training or model evaluation code and
