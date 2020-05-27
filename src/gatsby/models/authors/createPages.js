@@ -28,7 +28,7 @@ const createPages = async ({ graphql, actions }) => {
 
   const authorTemplate = path.resolve('./src/templates/blog-author.tsx')
 
-  const authorPagesPromise = Promise.all(
+  return Promise.all(
     authors.map(({ id, slug }, index) => {
       const previous = index === authors.length - 1 ? null : authors[index + 1]
       const next = index === 0 ? null : authors[index - 1]
@@ -46,8 +46,6 @@ const createPages = async ({ graphql, actions }) => {
       })
     })
   )
-
-  return Promise.all([authorPagesPromise])
 }
 
 module.exports = createPages
