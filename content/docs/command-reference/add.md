@@ -244,35 +244,38 @@ tree. No top-level DVC-file is generated, which is typically less convenient.
 For example, we cannot use the directory structure as one unit with `dvc run` or
 other commands.
 
+## Example: Dvcignore
+
 To untrack a file or directory just add
-[patterns](https://git-scm.com/docs/gitignore) (corresponding to the location of
-file or directory) under `.dvcignore` file.
+[patterns](https://git-scm.com/docs/gitignore) associated with that file or
+directory under `.dvcignore` file.
 
-Let's create a sample script to understand this fact.
+Let's take an example to illustrate this.
 
 ```dvc
-$ echo test_v1 >> test1.txt
-$ echo test_v1_1 >> test2.txt
-
-$ dvc add test*
+$ mkdir Dir
+$ echo file_one > Dir/file1
+$ echo file_two > Dir/file2
 ```
 
-With the above command DVC is now tracking `test1.txt` and `test2.txt`. Now
-let's modify both of these files and add one of the tracked file to `.dvcignore`
-file.
+Now add `file1` to `.dvcignore` and track `Dir` directory with `dvc add`.
 
 ```dvc
-$ echo test_v2 >> test1.txt
-$ echo test_v2_2 >> test2.txt
-$ echo test1.txt.dvc >> .dvcignore
+$ echo Dir/file1 > .dvcignore
+$ dvc add Dir
+$ cat .dvcignore
+Dir/file1
+```
 
+Let's now modify the file which we added to `.dvcignore` and run `dvc status`.
+
+```dvc
+$ echo file_one_changed > Dir/file1
 $ dvc status
-test2.txt.dvc:
-        changed outs:
-                modified:           test2.txt
+Data and pipelines are up to date.
 ```
 
-Here we can see that it is only showing change in the file associated with
-`test2.txt.dvc` and has untracked `test1.txt.dvc` sucessfully.
+No change has been detected by `dvc status` and hence we can say that it has
+untracked `file1` sucessfully.
 
-See [.dvcignore](docs/user-guide/.dvcignore) for more details.
+See [Dvcignore](/doc/user-guide/dvcignore) for more details.
