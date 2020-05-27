@@ -31,7 +31,7 @@ const Post: React.FC<IBlogPostData> = ({
   descriptionLong,
   commentsUrl,
   tags,
-  author: { name, avatar, link },
+  author: { name, avatar, sourcePath },
   slug
 }) => {
   const wrapperRef = useRef<HTMLDivElement>(null)
@@ -79,7 +79,7 @@ const Post: React.FC<IBlogPostData> = ({
                 avatar={avatar}
                 date={date}
                 timeToRead={timeToRead}
-                link={link}
+                link={sourcePath.slice(0, sourcePath.indexOf('.'))}
               />
             </div>
           </div>
