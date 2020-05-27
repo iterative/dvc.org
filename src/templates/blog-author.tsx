@@ -7,11 +7,16 @@ import {
 } from '../components/Paginator/LocationContext'
 import AuthorPage from '../components/Blog/Author'
 import { IBlogFeedPostList } from '../components/Blog/Feed'
+import { FixedObject } from 'gatsby-image'
 
 interface IAuthorData {
   posts: IBlogFeedPostList
   name: string
   link: string
+  html: string
+  avatar: {
+    fixed: FixedObject
+  }
 }
 
 interface IBlogAuthorPageProps {
@@ -22,11 +27,17 @@ interface IBlogAuthorPageProps {
 }
 
 const BlogAuthorPage: React.FC<IBlogAuthorPageProps> = ({ data, location }) => {
-  const { posts, name, link } = data.author
+  const { posts, name, link, html, avatar } = data.author
 
   return (
     <PaginatorLocationContext.Provider value={location}>
-      <AuthorPage posts={posts} header={name} leadParagraph={link} />
+      <AuthorPage
+        posts={posts}
+        name={name}
+        body={html}
+        link={link}
+        avatar={avatar}
+      />
     </PaginatorLocationContext.Provider>
   )
 }
@@ -34,10 +45,16 @@ const BlogAuthorPage: React.FC<IBlogAuthorPageProps> = ({ data, location }) => {
 export default BlogAuthorPage
 
 export const pageQuery = graphql`
-  query AllAuthorBuilderQuery($id: String!) {
+  query AuthorPage($id: String!) {
     author(id: { eq: $id }) {
       name
       link
+      html
+      avatar {
+        fixed(width: 100, height: 100) {
+          ...GatsbyImageSharpFixed
+        }
+      }
       posts {
         nodes {
           ...FeedPost

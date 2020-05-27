@@ -1,0 +1,17 @@
+.header {
+  margin: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+}
+
+.avatar {
+  margin-right: 1rem;
+  border-radius: 50%;
+}
+
+.links {
+  margin-top: 1rem;
+}
