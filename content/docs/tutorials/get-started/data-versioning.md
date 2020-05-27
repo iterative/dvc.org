@@ -81,11 +81,24 @@ To record a new version of the data, just use `dvc add` again:
 
 ### 👉 Expand to clean up the data !
 
+Let's first get some code to work with:
+
+```dvc
+$ wget https://code.dvc.org/get-started/code.zip
+$ unzip code.zip
+$ rm -f code.zip
+$ ls src
+cleanup.py  evaluate.py  featurization.py
+prepare.py  requirements.txt  train.py
+```
+
 Let's clean up our raw dataset in-place, by using the `src/cleanup.py` script:
 
 ```dvc
 $ python src/cleanup.py data/data.xml
 ```
+
+Please stage or commit `src/cleanup.py` with Git at this point.
 
 </details>
 

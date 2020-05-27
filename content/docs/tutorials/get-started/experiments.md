@@ -23,7 +23,8 @@ $ dvc pull
 DVC metrics allow us to mark stage <abbr>outputs</abbr> as files containing
 metrics to track. They are defined using the `-m` (`--metrics`) option of
 `dvc run`. Let's add a final evaluation stage to our
-[pipeline](/doc/tutorials/get-started/data-pipelines#pipelines), for example:
+[pipeline](/doc/tutorials/get-started/data-pipelines#dependency-graphs-dags),
+for example:
 
 ```dvc
 $ dvc run -f evaluate.dvc \
@@ -72,7 +73,7 @@ It's usual to have params in ML. This is how it's done: ...
 
 Let's say we want to try a modified feature extraction. The
 `src/featurization.py` script used to
-[create the pipeline](/doc/tutorials/get-started/data-pipelines#pipelines)
+[create the pipeline](/doc/tutorials/get-started/data-pipelines#dependency-graphs-dags)
 actually accepts an optional third argument with the path to a YAML _parameters
 file_ to load values to tune its vectorization. Let's generate it:
 

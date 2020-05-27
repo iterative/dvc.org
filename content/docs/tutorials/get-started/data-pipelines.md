@@ -26,24 +26,25 @@ $ dvc pull
 
 </details>
 
-## Stages
+## Pipeline stages
 
-The _stages_ that form a pipeline can help us connect the data tracked with DVC
-and the project's source code (tracked directly with Git). Let's transform a
-Python script into a [stage](/doc/command-reference/run):
+Use `dvc run` to create _stages_. These can connect DVC-tracked data with the
+project's source code (tracked with Git). Let's transform a Python script into a
+[stage](/doc/command-reference/run):
 
 <details>
 
 ### 👉 Expand to download example code
 
-Let's first get some code to work with:
+Get the sample code like this, if you haven't:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
 $ unzip code.zip
 $ rm -f code.zip
 $ ls src
-evaluate.py  featurization.py  prepare.py  requirements.txt  train.py
+cleanup.py  evaluate.py  featurization.py
+prepare.py  requirements.txt  train.py
 ```
 
 Now let's install the requirements:
@@ -56,7 +57,7 @@ Now let's install the requirements:
 $ pip install -r src/requirements.txt
 ```
 
-Optionally, commit the progress with Git.
+Please also stage or commit the source code directory with Git at this point.
 
 </details>
 
@@ -67,11 +68,11 @@ $ dvc run -f prepare.dvc \
           python src/prepare.py data/data.xml data/prepared
 ```
 
-`dvc run` generates the `prepare.dvc` _stage file_. It has the same
+The `prepare.dvc` _stage file_ is generated. It has the same
 [format](/doc/user-guide/dvc-file-format) as the DVC-file we created previously
 to [tack data](/doc/tutorials/get-started/data-versioning#changes), but it
-includes additional information about the command we ran
-(`python src/prepare.py`), it's <abbr>dependencies</abbr>, and
+additionally includes information about the command we ran
+(`python src/prepare.py`), the <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
 
 <details>
@@ -130,26 +131,23 @@ in this case); `dvc run` already took care of this. You only need to run
 [remote storage](/doc/tutorials/get-started/data-versioning#backing-up--sharing),
 (usually along with `git commit` to version the stage file itself).
 
-## Pipelines
+## Dependency graphs (DAGs)
 
 By using `dvc run` multiple times, and specifying <abbr>outputs</abbr> of a
 stage as <abbr>dependencies</abbr> of another one, we can describe a sequence of
 commands that gets to a desired result. This is what we call a _data pipeline_
-or _dependency graph_.
+or [_dependency graph_](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
 Let's create a second stage chained to the outputs of `prepare.dvc`, to perform
-feature extraction:
+feature extraction. And a third one (chained to the outputs of `featurize.dvc`)
+for training an ML model based on the features:
 
 ```dvc
 $ dvc run -f featurize.dvc \
           -d src/featurization.py -d data/prepared \
           -o data/features \
           python src/featurization.py data/prepared data/features
-```
 
-And a third stage for training an ML model based on the features:
-
-```dvc
 $ dvc run -f train.dvc \
           -d src/train.py -d data/features \
           -o model.pkl \
@@ -161,7 +159,7 @@ pipeline so far:
 
 ```dvc
 $ git add data/.gitignore .gitignore featurize.dvc train.dvc
-$ git commit -m "Create featurization and training stages (full ML pipeline)"
+$ git commit -m "Create featurization & training stages (full ML pipeline)"
 ```
 
 > See also the `dvc pipeline` command.
@@ -169,9 +167,8 @@ $ git commit -m "Create featurization and training stages (full ML pipeline)"
 ## Reproduce
 
 Imagine you're just cloning the <abbr>repository</abbr> created so far, in
-another computer. This can be simulated by cloning our
-[example-get-started](https://github.com/iterative/example-get-started) repo
-from Github, and checking out the `7-train` tag:
+another computer. This can be simulated by checking out the `7-train` tag of our
+[example-get-started](https://github.com/iterative/example-get-started) repo:
 
 ```dvc
 $ cd ~
