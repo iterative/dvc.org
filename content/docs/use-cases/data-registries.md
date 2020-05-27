@@ -164,9 +164,9 @@ the project dependency metadata in the import stage (DVC-file).
 
 ### Programmatic reusability of DVC data
 
-Our Python API (`dvc.api`), included with the `dvc` package installed with DVC,
-includes the `open` function to load/stream data directly from external
-<abbr>DVC projects</abbr>:
+Our [Python API](/doc/api-reference), included with the `dvc` package installed
+with DVC, includes the `open` function to load/stream data directly from
+external <abbr>DVC projects</abbr>:
 
 ```python
 import dvc.api.open

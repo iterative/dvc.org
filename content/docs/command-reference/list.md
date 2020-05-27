@@ -48,7 +48,7 @@ list files recursively.
 
 Please note that `dvc list` doesn't check whether the listed data (tracked by
 DVC) actually exists in remote storage, so it's not guaranteed whether it can be
-accessed with `dvc get`, `dvc import`, or `dvc.api`
+accessed with `dvc get`, `dvc import`, or `dvc.api`.
 
 ## Options
 

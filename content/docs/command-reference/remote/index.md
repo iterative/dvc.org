@@ -4,8 +4,9 @@ A set of commands to set up and manage data remotes:
 [add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
 [list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify), and
-[remove](/doc/command-reference/remote/remove).
+[modify](/doc/command-reference/remote/modify),
+[remove](/doc/command-reference/remote/remove), and
+[rename](/doc/command-reference/remote/rename).
 
 ## Synopsis
 
@@ -50,8 +51,9 @@ scenarios out of the box.
 [Add](/doc/command-reference/remote/add),
 [default](/doc/command-reference/remote/default),
 [list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify), and
-[remove](/doc/command-reference/remote/remove) commands read or modify DVC
+[modify](/doc/command-reference/remote/modify),
+[remove](/doc/command-reference/remote/remove), and
+[rename](/doc/command-reference/remote/rename) commands read or modify DVC
 [config files](/doc/command-reference/config). Alternatively, `dvc config` can
 be used or these files could be edited manually.
 
@@ -74,9 +76,9 @@ For the typical process to share the <abbr>project</abbr> via remote, see
 ### What is a "local remote" ?
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the machine where the project is stored, so it can be any directory
-accessible to the same system. The "remote" part refers specifically to the
-project/repository itself. Read "local, but external" storage.
+refers to the machine where the <abbr>project</abbr> is stored, so it can be any
+directory accessible to the same system. The "remote" part refers specifically
+to the project/repository itself. Read "local, but external" storage.
 
 </details>
 
@@ -125,8 +127,17 @@ myremote	/path/to/remote
 newremote	s3://mybucket/myproject
 ```
 
+## Example: Change the name of a remote
+
+Notice that `dvc remote modify` doesn't provide a way to change the name of a
+DVC remote, but there's a specific subcommand for this:
+
+```dvc
+$ dvc remote rename newremote oldremote
+```
+
 ## Example: Remove a remote
 
 ```dvc
-$ dvc remote remove newremote
+$ dvc remote remove oldremote
 ```

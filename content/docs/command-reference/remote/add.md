@@ -7,8 +7,9 @@ Add a new data remote.
 
 See also [default](/doc/command-reference/remote/default),
 [list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify), and
-[remove](/doc/command-reference/remote/remove) commands to manage data remotes.
+[modify](/doc/command-reference/remote/modify),
+[remove](/doc/command-reference/remote/remove), and
+[rename](/doc/command-reference/remote/rename) commands to manage data remotes.
 
 ## Synopsis
 
@@ -349,26 +350,15 @@ $ dvc remote add myremote https://example.com/path/to/dir
 
 <details>
 
-### Click for WebDav
-
-```dvc
-$ dvc remote add myremote webdavs://example.com/path/to/dir
-```
-
-> See also `dvc remote modify` for a full list of WebDav parameters.
-
-</details>
-
-<details>
-
 ### Click for local remote
 
 A "local remote" is a directory in the machine's file system.
 
 > While the term may seem contradictory, it doesn't have to be. The "local" part
-> refers to the machine where the project is stored, so it can be any directory
-> accessible to the same system. The "remote" part refers specifically to the
-> project/repository itself. Read "local, but external" storage.
+> refers to the machine where the <abbr>project</abbr> is stored, so it can be
+> any directory accessible to the same system. The "remote" part refers
+> specifically to the project/repository itself. Read "local, but external"
+> storage.
 
 Using an absolute path (recommended):
 

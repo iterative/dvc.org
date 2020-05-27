@@ -116,7 +116,13 @@ Start by cloning our example repo if you don't already have it:
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
+$ dvc fetch -aT
 ```
+
+We run `dvc fetch` with the `-aT` flags to get the DVC-tracked data from all Git
+branches and tags from [remote storage](/doc/command-reference/remote) to the
+<abbr>cache</abbr>. This way it's all available for the `checkout` examples
+below.
 
 </details>
 
@@ -145,15 +151,13 @@ baseline-experiment     <- First simple version of the model
 bigrams-experiment      <- Uses bigrams to improve the model
 ```
 
-This project comes with a predefined HTTP
-[remote storage](/doc/command-reference/remote). We can now just run `dvc pull`
-that will fetch and checkout the most recent `model.pkl`, `data.xml`, and other
-files that are tracked by DVC. The model file hash
+We can now just run `dvc checkout` that will update the most recent `model.pkl`,
+`data.xml`, and other files that are tracked by DVC. The model file hash
 `662eb7f64216d9c2c1088d0a5e2c6951` will be used in the `train.dvc`
 [stage file](/doc/command-reference/run):
 
 ```dvc
-$ dvc pull
+$ dvc checkout
 
 $ md5 model.pkl
 MD5 (model.pkl) = 662eb7f64216d9c2c1088d0a5e2c6951
@@ -188,7 +192,6 @@ DVC-files. But it did nothing with the `model.pkl` and `matrix.pkl` files. Git
 doesn't track those files; DVC does, so we must do this:
 
 ```dvc
-$ dvc fetch
 $ dvc checkout
 M       model.pkl
 M       data\features\
@@ -198,10 +201,7 @@ MD5 (model.pkl) = 43630cce66a2432dcecddc9dd006d0a7
 ```
 
 What happened is that DVC went through the DVC-files and adjusted the current
-set of <abbr>output</abbr> files to match the `outs` in them. `dvc fetch` is run
-this once to download missing data from the remote storage to the
-<abbr>cache</abbr>. (Alternatively, we could have just run `dvc pull` to do
-`dvc fetch` + `dvc checkout` in one step.)
+set of <abbr>output</abbr> files to match the `outs` in them.
 
 ## Example: Automating DVC checkout
 

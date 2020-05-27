@@ -237,11 +237,11 @@ $ tree .
 └── test.txt
 ```
 
-## Example: Using specific hyperparameter dependencies
+## Example: Using granular hyperparameter dependencies
 
-To use granular [parameter dependencies](/doc/command-reference/params), create
-a simple YAML parameters file named `params.yaml` (default params file name, see
-`dvc params` to learn more):
+To use specific values inside a parameters file as dependencies, create a simple
+YAML file named `params.yaml` (default params file name, see `dvc params` to
+learn more):
 
 ```yaml
 seed: 20180226
@@ -256,13 +256,20 @@ processing:
   bow_size: 15000
 ```
 
-Define a pipeline stage with both regular and parameter dependencies:
+Define a stage with both regular and parameter dependencies:
 
 ```dvc
 $ dvc run -d matrix-train.p -d train_model.py -o model.p \
           -p seed,train.lr,train.epochs
           python train_model.py matrix-train.p model.p
 ```
+
+Note that DVC doesn't pass the parameter values to the command being run. The
+program (`train_model.py` in this case) will have to open and parse
+`params.yaml` by itself and use the params specified above
+(`seed,train.lr,train.epochs`). DVC will keep an eye on these param values (as
+well as on the regular dependency files) and know that the stage should be
+reproduced if/when they change. See `dvc params` for more details.
 
 ## Example: chaining stages (build a pipeline)
 
