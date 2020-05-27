@@ -1,5 +1,6 @@
 .header {
-  margin: 1rem;
+  max-width: 1000px;
+  margin: 1rem auto;
   padding: 1rem;
   border-bottom: 1px solid #ddd;
   display: flex;
