@@ -146,7 +146,7 @@ $ git checkout 2-remote
 $ mkdir data
 ```
 
-You should now have a blank workspace, just before
+You should now have a blank <abbr>workspace</abbr>, just before
 [Versioning Basics](/doc/tutorials/get-started/data-versioning).
 
 </details>

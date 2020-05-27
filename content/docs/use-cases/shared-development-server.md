@@ -52,7 +52,7 @@ Tell DVC to use the directory we've set up above as the <abbr>cache</abbr> for
 your <abbr>project</abbr>:
 
 ```dvc
-$ dvc config cache.dir /home/shared/dvc-cache
+$ dvc cache dir /home/shared/dvc-cache
 ```
 
 And tell DVC to set group permissions on newly created or downloaded cache
@@ -62,7 +62,7 @@ files:
 $ dvc config cache.shared group
 ```
 
-> See `dvc config cache` for more information on these config options.
+> See `dvc cache dir` and `dvc config cache` for more information.
 
 If you're using Git, commit changes to your project's config file (`.dvc/config`
 by default):
