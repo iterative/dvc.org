@@ -8,52 +8,7 @@ const { BLOG } = require('../../../consts')
 // everything to look at.
 const LIMIT_BLOG_PAGES = Boolean(process.env.LIMIT_BLOG_PAGES)
 
-const pageUrl = (basePath, page) => {
-  if (page > 1) {
-    const basePrefix = basePath === '/' ? '' : `${basePath}/`
-
-    return `${basePrefix}page/${page}`
-  }
-
-  return basePath
-}
-
-function* pagesGenerator({ itemCount, hasHeroItem = false, basePath }) {
-  let currentPage = 1
-  let skip = 0
-
-  while (skip < itemCount) {
-    const limit =
-      hasHeroItem && currentPage === 1
-        ? BLOG.postsPerPage - BLOG.postsPerRow + 1
-        : BLOG.postsPerPage
-
-    let nextPage
-    let previousPage
-
-    if (skip + limit < itemCount) {
-      nextPage = pageUrl(basePath, currentPage + 1)
-    }
-
-    if (skip > 0) {
-      previousPage = pageUrl(basePath, currentPage - 1)
-    }
-
-    // For the Paginator component
-    const pageInfo = { currentPage, nextPage, previousPage }
-
-    yield {
-      path: pageUrl(basePath, currentPage),
-      context: { limit, pageInfo, skip }
-    }
-
-    currentPage++
-    skip += limit
-  }
-}
-
 const createPages = async ({ graphql, actions }) => {
-  console.log('Author Create Pages working')
   const blogResponse = await graphql(
     `
       query AllAuthorBuilderQuery {
@@ -78,25 +33,6 @@ const createPages = async ({ graphql, actions }) => {
 
   const { nodes: authors } = blogResponse.data.allAuthor
 
-  // Create home blog pages (with pagination)
-  // const blogHomeTemplate = path.resolve('./src/templates/blog-author.tsx')
-
-  // for (const page of pagesGenerator({
-  //     basePath: '/author',
-  //     hasHeroItem: true,
-  //     itemCount: authors.length
-  // })) {
-  //     actions.createPage({
-  //         component: blogHomeTemplate,
-  //         path: page.path,
-  //         context: {
-  //             isBlog: true,
-  //             ...page.context
-  //         }
-  //     })
-  // }
-
-  // Create blog posts pages
   const authorTemplate = path.resolve('./src/templates/blog-author.tsx')
 
   const authorPagesPromise = Promise.all(
@@ -117,28 +53,6 @@ const createPages = async ({ graphql, actions }) => {
       })
     })
   )
-
-  // Create tags pages (with pagination)
-  // const blogTagsTemplate = path.resolve('./src/templates/blog-tags.tsx')
-
-  // // We have to explicitly limit tag pages here, otherwise we get one for
-  // // every tag on the example post that makes images for a few children.
-  // // That can easily add hundreds of images because of the blog index template.
-  // const _tags = LIMIT_BLOG_PAGES ? tags.slice(0, 1) : tags
-
-  // const tagPagesPromise = Promise.all(
-  //     _tags.map(({ fieldValue: tag, pageInfo: { itemCount } }) => {
-  //         const basePath = `/blog/tags/${tagToSlug(tag)}`
-
-  //         for (const page of pagesGenerator({ basePath, itemCount })) {
-  //             actions.createPage({
-  //                 component: blogTagsTemplate,
-  //                 path: page.path,
-  //                 context: { tag, ...page.context }
-  //             })
-  //         }
-  //     })
-  // )
 
   return Promise.all([authorPagesPromise])
 }
