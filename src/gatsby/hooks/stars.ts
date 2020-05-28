@@ -6,17 +6,11 @@ export default function useStars(): number {
   // Get the amount of stars from build time
   const staticStars = useStaticQuery(graphql`
     query GithubStarsQuery {
-      githubData {
-        data {
-          repository {
-            stargazers {
-              totalCount
-            }
-          }
-        }
+      staticGithubData {
+        stars
       }
     }
-  `).githubData.data.repository.stargazers.totalCount
+  `).staticGithubData.stars
 
   // Maintain an updatable state so we can update stars on delivery
   const [stars, setStars] = useState(staticStars)

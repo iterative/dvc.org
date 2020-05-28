@@ -60,9 +60,7 @@ async function getFreshGithubData() {
 
 async function issues(_, res) {
   if (!process.env.GITHUB_TOKEN) {
-    res
-      .status(200)
-      .json({ issues: [], error: 'No GITHUB_TOKEN specified on the server!' })
+    res.status(403)
   } else {
     if (cache.get('issues')) {
       if (!isProduction) console.log('Using cache for "issues"')
@@ -94,7 +92,7 @@ async function getStars() {
 
 async function stars(req, res) {
   if (!process.env.GITHUB_TOKEN) {
-    res.status(403).json({ error: 'No GITHUB_TOKEN specified on the server!' })
+    res.status(403)
   } else {
     const stars = await getStars()
     if (stars) {
