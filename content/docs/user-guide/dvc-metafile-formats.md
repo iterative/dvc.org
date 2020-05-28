@@ -1,16 +1,52 @@
-# DVC-File Format
+# DVC Metafile Formats
 
-When you add a file (with `dvc add`) or a command (with `dvc run`) to a
-[pipeline](/doc/command-reference/pipeline), DVC creates a special text metafile
-with the `.dvc` file extension (e.g. `process.dvc`), or with the default name
-`Dvcfile`. These **DVC-files** (a.k.a. stage files) contain all the needed
-information to track your data and reproduce pipeline stages. The file itself
-contains a simple YAML format that could be easily written or altered manually.
+There are two special metafiles created by DVC commands:
+
+- Files ending with the `.dvc` extension are basic placeholders to version data
+  files and directories. A <abbr>project</abbr> can have multiple `.dvc` files.
+- The `dvc.yaml` file or _pipeline(s) file_ specifies stages that form the
+  pipeline(s) of a project, and their connections (_dependency graph_ or DAG).
+
+Both use human-friendly YAML schemas, described below. We encourage you to get
+familiar with them so you may edit them freely, as needed.
+
+Both type of files should be versioned with Git (for Git-enabled
+<abbr>repositories</abbr>).
+
+## .dvc files
+
+When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add`, a
+`.dvc` file is created based on the data file name (e.g. `data.txt.dvc`). These
+files contain all the needed information to track your data with DVC. They use a
+simple YAML format that can be easily written or altered manually.
 
 See the [Syntax Highlighting](/doc/install/plugins) to learn how to enable the
 highlighting for your editor.
 
-Here is a sample DVC-file:
+Here is a sample `.dvc` file:
+
+```yaml
+outs:
+  - md5: a304afb96060aad90176268345e10355
+    path: data.xml
+# Comments like this line persist through multiple executions of
+# dvc repro/commit but not through dvc run/add/import-url/get-url commands.
+```
+
+On the top level, `.dvc` file consists of these possible fields:
+
+- `outs`: List of <abbr>outputs</abbr> for this stage
+
+An output entry consists of these fields:
+
+- `md5`: MD5 hash for the output
+- `path`: Path to the output, relative to the `wdir` path
+- `cache`: Whether or not DVC should cache the output
+
+## dvc.yaml file
+
+When you add commands to a pipeline with `dvc run`, the `dvc.yaml` file is
+created or updated. Here's a simple example:
 
 ```yaml
 always_changed: true
@@ -37,12 +73,10 @@ outs:
 # Comments like this line persist through multiple executions of
 # dvc repro/commit but not through dvc run/add/import-url/get-url commands.
 
-meta: # Special field to contain arbitary user data
+meta: # Special field to contain arbitrary user data
   name: John
   email: john@xyz.com
 ```
-
-## Structure
 
 On the top level, `.dvc` file consists of these possible fields:
 

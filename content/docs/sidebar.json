@@ -104,8 +104,8 @@
         "slug": "dvc-files-and-directories"
       },
       {
-        "label": "File Format (.dvc)",
-        "slug": "dvc-file-format"
+        "label": "DVC Metafile Formats",
+        "slug": "dvc-metafile-formats"
       },
       {
         "slug": "dvcignore",
