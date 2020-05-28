@@ -34,6 +34,7 @@ $ git status
 Changes to be committed:
         new file:   .dvc/.gitignore
         new file:   .dvc/config
+        ...
 $ git commit -m "Initialize DVC repository"
 ```
 
