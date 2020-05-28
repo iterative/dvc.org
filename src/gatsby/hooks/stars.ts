@@ -22,6 +22,10 @@ export default function useStars(): number {
       if (res.status === 200) {
         const json = await res.json()
         setStars(json.stars)
+      } else {
+        console.log(
+          `Stars update response status was ${res.status}! Skipping update.`
+        )
       }
     })()
   }, [])
