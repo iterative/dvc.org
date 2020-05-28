@@ -56,18 +56,12 @@ for very large datasets.
 
 ### Q: [Two developers on my team are doing `dvc push` to the same remote. Should they `dvc pull` first?](https://discord.com/channels/485586884165107732/563406153334128681/704211629075857468)
 
-We encourage users to think of a DVC project like using Git- the same workflow
-applies, except that certain files are pushed to a DVC remote instead of a Git
-remote. In a typical Git flow, developers would `git pull` before
-`git commit & push`. Likewise, `dvc pull` before `dvc push` is a good idea to
-make sure a developer's local workspace is synced with the master branch of a
-project before pushing changes.
-
-With that said, because DVC remotes stores files indexed by `md5`s, there's
+It's safe to push simultaneously, no `dvc pull` needed. While some teams might be in the habit
+of frequently pulling, like in Git flow, there are less risks of "merge conflicts" in DVC. 
+That's because DVC remotes stores files indexed by `md5`s, so there's
 usually a very low probability of a collision (if two developers have two
 different versions of a file, they'll be stored as two separate files in the DVC
-remote- so no merge conflicts). Still, being in the habit of frequent pulling is
-a good practice.
+remote- so no merge conflicts). 
 
 ### Q: [What are `*.tmp` files in my DVC remote?](https://discord.com/channels/485586884165107732/563406153334128681/698163554095857745)
 
@@ -78,11 +72,17 @@ the trick.
 
 One caveat: before you delete, make sure no one is actively running `dvc push`. 
 
-### Q: [I'm using Google Cloud Storage as a DVC remote. I'm getting an error: `ERROR: unexpected error - ('invalid_grant: Bad Request', '{\n "error": "invalid_grant",\n "error_description": "Bad Request"\n}')`. Any ideas?](https://discord.com/channels/485586884165107732/485596304961962003/705131622537756702)
+### Q: [I'm using a Google Cloud Platform (GCP) bucket as a DVC remote and getting an error. Any ideas?](https://discord.com/channels/485586884165107732/485596304961962003/705131622537756702)
 
-This is a permissions error for sure! This can happen if DVC can't find `.json`
-credentials file for your GCP bucket. Try authenticating using
-`gcloud beta auth application-default login`.
+If you're getting the error,
+```
+: `ERROR: unexpected error - ('invalid_grant: Bad Request', '{\n "error": "invalid_grant",\n "error_description": "Bad Request"\n}')`
+```
+
+something is going wrong with your GCP authentication! A few things to check: first, [check out our docs](https://dvc.org/doc/command-reference/remote/add#supported-storage-types) to `dvc remote add` a Google Cloud bucket as your remote. Note that before DVC can use this type of remote, you have to configure your credentials through the GCP CLI ([see docs here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)).
+
+If you're still getting an error, DVC probably can't find the `.json` credentials file for your GCP bucket. Try authenticating using
+`gcloud beta auth application-default login`. This command obtains your access credentials and places them in a `.json` in your local workspace. 
 
 ### Q: [I'm working on several projects that all need involve the same saved model. One project trains a model and pushes it to cloud storage with `dvc push`, and another takes the model out of cloud storage for use. What's the best practice for doing this with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/708318821253120040)
 
