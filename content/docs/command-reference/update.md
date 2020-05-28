@@ -1,7 +1,8 @@
 # update
 
 Update <abbr>data artifacts</abbr> imported from external <abbr>DVC
-projects</abbr>, and corresponding [`.dvc` files](/doc/user-guide/dvc-file-format).
+projects</abbr>, and corresponding
+[`.dvc` files](/doc/user-guide/dvc-file-format).
 
 ## Synopsis
 
@@ -28,8 +29,8 @@ Note that import stages are considered always locked, meaning that if you run
 update them.
 
 `dvc update` without flags will not have an effect on import stages that are
-fixed to a commit hash (`rev` field in the `.dvc` file). Use the `--rev` option to
-update an imported artifact to a different revision.
+fixed to a commit hash (`rev` field in the `.dvc` file). Use the `--rev` option
+to update an imported artifact to a different revision.
 
 ```dvc
 dvc update --rev master
@@ -83,8 +84,8 @@ This time nothing has changed, since the source <abbr>project</abbr> is rather
 stable.
 
 > Note that `dvc update` updates the `rev_lock` field of the corresponding
-> [`.dvc` file](/doc/user-guide/dvc-file-format) (when there are changes to bring
-> in).
+> [`.dvc` file](/doc/user-guide/dvc-file-format) (when there are changes to
+> bring in).
 
 ## Example: Updating fixed revisions to a different version
 
@@ -103,8 +104,8 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 -> 'model.pkl'
 ```
 
-After this, the import stage (`.dvc` file) `model.pkl.dvc` is created. Let's try to
-run `dvc update` on the given stage file, and see what happens.
+After this, the import stage (`.dvc` file) `model.pkl.dvc` is created. Let's try
+to run `dvc update` on the given stage file, and see what happens.
 
 ```dvc
 $ dvc update model.pkl.dvc

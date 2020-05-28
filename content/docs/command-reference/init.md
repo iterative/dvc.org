@@ -126,9 +126,9 @@ include:
 - SCM other than Git is being used. Even though there are DVC features that
   require DVC to be run in the Git repo, DVC can work well with other version
   control systems. Since DVC relies on simple text
-  [`.dvc` files](/doc/user-guide/dvc-file-format) to manage <abbr>pipelines</abbr>,
-  data, etc, they can be added into any SCM thus providing large data files and
-  directories versioning.
+  [`.dvc` files](/doc/user-guide/dvc-file-format) to manage
+  <abbr>pipelines</abbr>, data, etc, they can be added into any SCM thus
+  providing large data files and directories versioning.
 
 - There is no need to keep the history at all, e.g. having a deployment
   automation like running a data pipeline using `cron`.

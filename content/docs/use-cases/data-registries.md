@@ -36,8 +36,9 @@ Advantages of using a DVC **data registry**:
   copies on other remotes). This simplifies data management and optimizes space
   requirements.
 - Security: Registries can be setup to have read-only remote storage (e.g. an
-  HTTP location). Git versioning of [`.dvc` files](/doc/user-guide/dvc-file-format)
-  allows us to track and audit data changes.
+  HTTP location). Git versioning of
+  [`.dvc` files](/doc/user-guide/dvc-file-format) allows us to track and audit
+  data changes.
 - Data as code: Leverage Git workflow such as commits, branching, pull requests,
   reviews, and even CI/CD for your data and models lifecycle. Think Git for
   cloud storage, but without ad-hoc conventions.
@@ -195,8 +196,8 @@ $ cp /path/to/1000/image/dir music/songs
 $ dvc add music/songs
 ```
 
-DVC then modifies the corresponding `.dvc` file to reflect the changes in the data,
-and this will be picked up by Git:
+DVC then modifies the corresponding `.dvc` file to reflect the changes in the
+data, and this will be picked up by Git:
 
 ```dvc
 $ git status
@@ -207,8 +208,8 @@ $ git commit -am "Add 1,000 more songs to music/ dataset."
 ```
 
 Iterating on this process for several datasets can give shape to a robust
-registry. The result is basically a repo that versions a set of `.dvc` files. Let's
-see an example:
+registry. The result is basically a repo that versions a set of `.dvc` files.
+Let's see an example:
 
 ```dvc
 $ tree --filelimit=100

@@ -55,15 +55,16 @@ command to work.
 
 After running this command successfully, the imported data is placed in the
 current working directory (unless `-o` is used) with its original file name e.g.
-`data.txt`. An _import stage_ (`.dvc` file) is also created in the same location,
-extending the name of the imported data e.g. `data.txt.dvc` – similar to having
-used `dvc run` to generate the data as a stage <abbr>output</abbr>.
+`data.txt`. An _import stage_ (`.dvc` file) is also created in the same
+location, extending the name of the imported data e.g. `data.txt.dvc` – similar
+to having used `dvc run` to generate the data as a stage <abbr>output</abbr>.
 
-`.dvc` files support references to data in an external DVC repository (hosted on a
-Git server). In such a `.dvc` file, the `deps` field specifies the remote `url` and
-data `path`, and the `outs` field contains the corresponding local path in the
-<abbr>workspace</abbr>. It records enough metadata about the imported data to
-enable DVC efficiently determining whether the local copy is out of date.
+`.dvc` files support references to data in an external DVC repository (hosted on
+a Git server). In such a `.dvc` file, the `deps` field specifies the remote
+`url` and data `path`, and the `outs` field contains the corresponding local
+path in the <abbr>workspace</abbr>. It records enough metadata about the
+imported data to enable DVC efficiently determining whether the local copy is
+out of date.
 
 To actually
 [track the data](https://dvc.org/doc/tutorials/get-started/add-files), `git add`
@@ -112,8 +113,8 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 
 In contrast with `dvc get`, this command doesn't just download the data file,
 but it also creates an import stage
-([`.dvc` file](/doc/user-guide/dvc-file-format)) with a link to the data source (as
-explained in the description above). (This import stage can later be used to
+([`.dvc` file](/doc/user-guide/dvc-file-format)) with a link to the data source
+(as explained in the description above). (This import stage can later be used to
 [update](/doc/command-reference/update) the import.) Check `data.xml.dvc`:
 
 ```yaml

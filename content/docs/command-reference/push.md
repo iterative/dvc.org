@@ -39,12 +39,12 @@ Under the hood a few actions are taken:
 
 - The push command by default uses all
   [`.dvc` files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>.
-  The command options listed below will either limit or expand the set of
-  `.dvc` files to consult.
+  The command options listed below will either limit or expand the set of `.dvc`
+  files to consult.
 
-- For each <abbr>output</abbr> referenced from each selected `.dvc` file, DVC finds
-  a corresponding file or directory in the <abbr>cache</abbr>. DVC then checks
-  whether it exists in the remote. From this, DVC gathers a list of files
+- For each <abbr>output</abbr> referenced from each selected `.dvc` file, DVC
+  finds a corresponding file or directory in the <abbr>cache</abbr>. DVC then
+  checks whether it exists in the remote. From this, DVC gathers a list of files
   missing from the remote storage.
 
 - Upload the cache files missing from remote storage, if any, to the remote.
@@ -72,11 +72,11 @@ to push.
 
 ## Options
 
-- `-a`, `--all-branches` - determines the files to upload by examining `.dvc` files
-  in all Git branches instead of just those present in the current workspace.
-  It's useful if branches are used to track experiments or project checkpoints.
-  Note that this can be combined with `-T` below, for example using the `-aT`
-  flag.
+- `-a`, `--all-branches` - determines the files to upload by examining `.dvc`
+  files in all Git branches instead of just those present in the current
+  workspace. It's useful if branches are used to track experiments or project
+  checkpoints. Note that this can be combined with `-T` below, for example using
+  the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Useful if tags are used to track "checkpoints" of an experiment
@@ -194,8 +194,8 @@ Data and pipelines are up to date.
 ```
 
 We specified a stage in the middle of this pipeline (`matrix-train.p.dvc`) with
-the first push. `--with-deps` caused DVC to start with that `.dvc` file, and search
-backwards through the pipeline for data files to upload.
+the first push. `--with-deps` caused DVC to start with that `.dvc` file, and
+search backwards through the pipeline for data files to upload.
 
 Because the `model.p.dvc` stage occurs later (it's the last one), its data was
 not pushed. However, we then specified it in the second push, so all remaining

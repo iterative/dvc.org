@@ -34,8 +34,9 @@ options:
 | remote | `--cloud`      | Comparisons are made between the cache, and the default remote, typically defined with `dvc remote --default`.              |
 
 DVC determines which data and code files to compare by analyzing all
-[`.dvc` files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr> (the
-`--all-branches` and `--all-tags` options compare multiple workspace versions).
+[`.dvc` files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>
+(the `--all-branches` and `--all-tags` options compare multiple workspace
+versions).
 
 The comparison can be limited to certain `.dvc` files only, by listing them as
 `targets`. (Changes are reported only against these.) When this is combined with
@@ -43,8 +44,8 @@ the `--with-deps` option, a search is made for changes in other stages that
 affect each target.
 
 In the `local` mode, changes are detected through the hash value of every file
-listed in every `.dvc` file in question against the corresponding file in the file
-system. The command output indicates the detected changes, if any. If no
+listed in every `.dvc` file in question against the corresponding file in the
+file system. The command output indicates the detected changes, if any. If no
 differences are detected, `dvc status` prints this message:
 
 ```dvc
@@ -61,8 +62,8 @@ and/or <abbr>outputs</abbr> that differ are listed. For each item listed, either
 the file name or hash is shown, and additionally a status word is shown
 describing the changes (described below).
 
-- _changed checksum_ means that the <abbr>`.dvc` file</abbr> hash has changed (e.g.
-  someone manually edited the file).
+- _changed checksum_ means that the <abbr>`.dvc` file</abbr> hash has changed
+  (e.g. someone manually edited the file).
 
 - _always changed_ means that this is a `.dvc` file with no dependencies (an
   _orphan_ stage file) or that it has the `always_changed: true` value set (see

@@ -2,8 +2,8 @@
 
 Rename a file or a directory and modify the corresponding
 [`.dvc` file](/doc/user-guide/dvc-file-format) (see `dvc add`) to reflect the
-change. If the file or directory has the same name as the corresponding
-`.dvc` file, it also renames it.
+change. If the file or directory has the same name as the corresponding `.dvc`
+file, it also renames it.
 
 ## Synopsis
 
@@ -37,8 +37,8 @@ Let's imagine the following scenario:
 $ dvc add data.csv
 ```
 
-The `dvc add` command would create a `data.csv.dvc` `.dvc` file with the following
-content:
+The `dvc add` command would create a `data.csv.dvc` `.dvc` file with the
+following content:
 
 ```yaml
 md5: 3d1a3e5a5b662490e198d6a6ae84984b

@@ -17,9 +17,9 @@ positional arguments:
 ## Description
 
 Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
-[`.dvc` files](/doc/user-guide/dvc-file-format). If `targets` are provided, it will
-show those specific metric files instead. With the `-a` or`-T` options, this
-command shows the different metrics values across all Git branches or tags,
+[`.dvc` files](/doc/user-guide/dvc-file-format). If `targets` are provided, it
+will show those specific metric files instead. With the `-a` or`-T` options,
+this command shows the different metrics values across all Git branches or tags,
 respectively.
 
 The optional `targets` argument can contain one or more metric files. With the
@@ -32,9 +32,9 @@ Providing a `type` (`-t` option) overrides the full metric specification (both
 typically).
 
 If `type` (via `-t`) is not specified and only `xpath` (`-x` option) is, only
-the `xpath` field from the `.dvc` file is overridden. (DVC will first try to read
-`type` from the `.dvc` file, but it can be automatically detected by the file
-extension.)
+the `xpath` field from the `.dvc` file is overridden. (DVC will first try to
+read `type` from the `.dvc` file, but it can be automatically detected by the
+file extension.)
 
 > See `dvc metrics modify` to learn how to apply `-t` and `-x` permanently.
 
@@ -44,18 +44,18 @@ compares them with a previous version.
 ## Options
 
 - `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
-  values are: `json`. It will be saved into the corresponding `.dvc` file, and used
-  to determine how to handle displaying metrics.
+  values are: `json`. It will be saved into the corresponding `.dvc` file, and
+  used to determine how to handle displaying metrics.
 
   This option will override `type` and `xpath` defined in the corresponding
-  `.dvc` file. If no `type` is provided or found in the `.dvc` file, DVC will try to
-  detect it based on file extension.
+  `.dvc` file. If no `type` is provided or found in the `.dvc` file, DVC will
+  try to detect it based on file extension.
 
 - `-x <path>`, `--xpath <path>` - specify a path within a metric file to get a
   specific metric value. Should be used if the metric file contains multiple
   numbers and you want to use only one of them. Only a single path is allowed.
-  It will override `xpath` defined in the corresponding `.dvc` file. The accepted
-  value depends on the metric file type (`--type` option):
+  It will override `xpath` defined in the corresponding `.dvc` file. The
+  accepted value depends on the metric file type (`--type` option):
 
   - For `json` - see [JSONPath](https://goessner.net/articles/JsonPath/) or
     [jsonpath-ng](https://github.com/h2non/jsonpath-ng) for syntax details. For
@@ -86,8 +86,8 @@ compares them with a previous version.
   the entire existing commit history of the project.
 
 - `-R`, `--recursive` - determines the metric files to show by searching each
-  target directory and its subdirectories for `.dvc` files to inspect. If there are
-  no directories among the `targets`, this option is ignored.
+  target directory and its subdirectories for `.dvc` files to inspect. If there
+  are no directories among the `targets`, this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

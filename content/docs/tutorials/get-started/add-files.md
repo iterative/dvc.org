@@ -24,8 +24,8 @@ To track a file (or a directory) with DVC just run `dvc add` on it. For example:
 $ dvc add data/data.xml
 ```
 
-DVC stores information about the added data in a special file called a
-**`.dvc` file**. `.dvc` files are small text files with a human-readable
+DVC stores information about the added data in a special file called a **`.dvc`
+file**. `.dvc` files are small text files with a human-readable
 [format](/doc/user-guide/dvc-file-format) and they can be committed with Git:
 
 ```dvc
@@ -52,8 +52,8 @@ $ ls -R .dvc/cache
 ```
 
 `a304afb96060aad90176268345e10355` above is the hash value of the `data.xml`
-file we just added with DVC. If you check the `data/data.xml.dvc` `.dvc` file, you
-will see that it has this string inside.
+file we just added with DVC. If you check the `data/data.xml.dvc` `.dvc` file,
+you will see that it has this string inside.
 
 ### Important note on cache performance
 

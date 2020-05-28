@@ -43,9 +43,9 @@ directory will be placed inside.
 
 [`.dvc` files](/doc/user-guide/dvc-file-format) support references to data in an
 external location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such a
-`.dvc` file, the `deps` field stores the remote URL, and the `outs` field contains
-the corresponding local path in the <abbr>workspace</abbr>. It records enough
+[External Dependencies](/doc/user-guide/external-dependencies). In such a `.dvc`
+file, the `deps` field stores the remote URL, and the `outs` field contains the
+corresponding local path in the <abbr>workspace</abbr>. It records enough
 metadata about the imported data to enable DVC efficiently determining whether
 the local copy is out of date.
 
@@ -113,9 +113,9 @@ up to date from the external data source.
 ## Options
 
 - `-f <filename>`, `--file <filename>` - specify a path and/or file name for the
-  `.dvc` file created by this command (e.g. `-f stages/stage.dvc`). This overrides
-  the default file name: `<file>.dvc`, where `<file>` is the desired file name
-  of the imported data (`out`).
+  `.dvc` file created by this command (e.g. `-f stages/stage.dvc`). This
+  overrides the default file name: `<file>.dvc`, where `<file>` is the desired
+  file name of the imported data (`out`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -308,8 +308,8 @@ Data and pipelines are up to date.
 
 In the data store directory, edit `data.xml`. It doesn't matter what you change,
 as long as it remains a valid XML file, because any change will result in a
-different dependency file hash (`md5`) in the import stage `.dvc` file. Once we do
-so, we can run `dvc update` to make sure the import stage is up to date:
+different dependency file hash (`md5`) in the import stage `.dvc` file. Once we
+do so, we can run `dvc update` to make sure the import stage is up to date:
 
 ```dvc
 $ dvc update data.xml.dvc

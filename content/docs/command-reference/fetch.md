@@ -65,9 +65,10 @@ option is used.
 perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
 file hashes when these are [added](/doc/tutorials/get-started/add-files) with
-DVC. File hashes are stored in the corresponding `.dvc` files (typically versioned
-with Git). Only the hashes specified in `.dvc` files currently in the workspace are
-considered by `dvc fetch` (unless the `-a` or `-T` options are used).
+DVC. File hashes are stored in the corresponding `.dvc` files (typically
+versioned with Git). Only the hashes specified in `.dvc` files currently in the
+workspace are considered by `dvc fetch` (unless the `-a` or `-T` options are
+used).
 
 ## Options
 
@@ -194,8 +195,8 @@ Note that the `.dvc/cache` directory was created and populated.
 > for more info.
 
 Used without arguments (as above), `dvc fetch` downloads all assets needed by
-all `.dvc` files in the current branch, including for directories. The hash values
-`3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
+all `.dvc` files in the current branch, including for directories. The hash
+values `3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
 correspond to the `model.pkl` file and `data/features/` directory, respectively.
 
 Let's now link files from the cache to the workspace with:

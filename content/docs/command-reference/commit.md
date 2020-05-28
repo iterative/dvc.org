@@ -1,8 +1,8 @@
 # commit
 
 Record changes to DVC-tracked files in the <abbr>project</abbr>, by updating
-[`.dvc` files](/doc/user-guide/dvc-file-format) and saving <abbr>outputs<abbr> to
-the <abbr>cache</abbr>.
+[`.dvc` files](/doc/user-guide/dvc-file-format) and saving <abbr>outputs<abbr>
+to the <abbr>cache</abbr>.
 
 ## Synopsis
 
@@ -20,8 +20,8 @@ positional arguments:
 The `dvc commit` command is useful for several scenarios, when data already
 tracked by DVC changes: when a [stage](/doc/command-reference/run) or
 [pipeline](/doc/command-reference/pipeline) is in development/experimentation;
-when manually editing or generating DVC <abbr>outputs<abbr>; or to force
-`.dvc` file updates without reproducing stages or pipelines. These scenarios are
+when manually editing or generating DVC <abbr>outputs<abbr>; or to force `.dvc`
+file updates without reproducing stages or pipelines. These scenarios are
 further detailed below.
 
 - Code or data for a stage is under active development, with multiple iterations
@@ -35,8 +35,8 @@ further detailed below.
 - It's always possible to manually execute the source code used in a stage
   without DVC (outputs should be unprotected or removed first in certain cases,
   see `dvc unprotect`). Once a desirable result is reached, use `dvc add` or
-  `dvc commit` as appropriate to update `.dvc` files and store changed data to the
-  cache.
+  `dvc commit` as appropriate to update `.dvc` files and store changed data to
+  the cache.
 
 - Sometimes we want to edit source code, config, or data files in a way that
   doesn't cause changes in the results of their data pipeline. We might write
@@ -48,7 +48,8 @@ further detailed below.
 
 Let's take a look at what is happening in the first scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
-<abbr>cache</abbr> after creating a `.dvc` file. What _commit_ means is that DVC:
+<abbr>cache</abbr> after creating a `.dvc` file. What _commit_ means is that
+DVC:
 
 - Computes a hash for the file/directory.
 - Enters the hash value and file name into the `.dvc` file.
@@ -61,13 +62,13 @@ There are many cases where the last step is not desirable (for example rapid
 iterations on an experiment). The `--no-commit` option prevents the last step
 from occurring (on the commands where it's available), saving time and space by
 not storing unwanted <abbr>data artifacts</abbr>. The file hash is still
-computed and added to the `.dvc` file, but the actual data file is not saved in the
-cache. This is where the `dvc commit` command comes into play. It performs that
-last step (saving the data in cache).
+computed and added to the `.dvc` file, but the actual data file is not saved in
+the cache. This is where the `dvc commit` command comes into play. It performs
+that last step (saving the data in cache).
 
 Note that it's best to avoid the last two scenarios. They essentially
-force-update the [`.dvc` files](/doc/user-guide/dvc-file-format) and save data to
-cache. They are still useful, but keep in mind that DVC can't guarantee
+force-update the [`.dvc` files](/doc/user-guide/dvc-file-format) and save data
+to cache. They are still useful, but keep in mind that DVC can't guarantee
 reproducibility in those cases.
 
 ## Options
