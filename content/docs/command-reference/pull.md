@@ -136,7 +136,8 @@ The workspace looks almost like in this
 └── train.dvc
 ```
 
-We can now just run `dvc pull` to download the most recent `data/data.xml`, `model.pkl`, and other DVC-tracked files into the <abbr>workspace</abbr> and
+We can now just run `dvc pull` to download the most recent `data/data.xml`,
+`model.pkl`, and other DVC-tracked files into the <abbr>workspace</abbr> and
 <abbr>cache</abbr>:
 
 ```dvc
@@ -151,7 +152,7 @@ example-get-started/
 ...
 ├── model.pkl
 └── train.dvc
- 
+
 ```
 
 We can download specific <abbr>outputs</abbr> of a single DVC-file:
@@ -163,8 +164,8 @@ $ dvc pull train.dvc
 ## Example: With dependencies
 
 > If you followed previous example then delete the .dvc/cache directory with
-> `rm -Rf .dvc/cache`. Else `dvc status -c` would output `Data and pipelines are
-> up to date.`
+> `rm -Rf .dvc/cache`. Else `dvc status -c` would output
+> `Data and pipelines are up to date.`
 
 Our [pipeline](/doc/command-reference/pipeline) has been setup with these
 [stages](/doc/command-reference/run):
