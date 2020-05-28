@@ -225,7 +225,7 @@ data was already pulled with the previous commands.
 > `Data and pipelines are up to date.` The last stage file `evaluate.dvc`
 > doesn't add any more data files than those form previous stages
 
-## Example: Remote storage
+## Example: Download from specific remote storage
 
 For using the `dvc pull` command, a remote storage must be defined. (See
 `dvc remote add`.) For an existing <abbr>project</abbr>, remotes are usually
