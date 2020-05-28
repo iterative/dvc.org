@@ -14,8 +14,12 @@ const GithubLine: React.FC = () => {
       <Link href="https://github.com/iterative/dvc" className={styles.link}>
         GitHub
       </Link>
-      <img className={styles.starIcon} src="/img/star_small.svg" alt="" />
-      <span className={styles.count}>{stars || '---'}</span>
+      {stars && (
+        <span className={styles.starCount}>
+          <img className={styles.starIcon} src="/img/star_small.svg" alt="" />
+          <span className={styles.count}>{stars}</span>
+        </span>
+      )}
     </div>
   )
 }
