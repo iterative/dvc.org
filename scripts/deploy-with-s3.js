@@ -60,7 +60,12 @@ const cacheDirs = [
   ['.cache', '-cache/']
 ]
 
-const { s3Prefix, withEntries, prefixIsEmpty } = require('./s3-utils')
+const {
+  s3Prefix,
+  withEntries,
+  prefixIsEmpty,
+  cleanEntry
+} = require('./s3-utils')
 const { move } = require('fs-extra')
 const { downloadAllFromS3, uploadAllToS3, cleanAllLocal } = withEntries(
   cacheDirs
@@ -101,7 +106,9 @@ async function main() {
       console.error(buildError)
       console.error('\nRetrying with a cleared cache:\n')
 
-      await cleanAllLocal()
+      // Clear only .cache so we re-use images
+      await cleanEntry(cacheDirs[1])
+
       run('yarn build')
     }
   }
