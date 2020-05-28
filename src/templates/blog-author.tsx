@@ -12,7 +12,7 @@ import { FixedObject } from 'gatsby-image'
 interface IAuthorData {
   posts: IBlogFeedPostList
   name: string
-  link: string
+  links: Array<string>
   html: string
   avatar: {
     fixed: FixedObject
@@ -27,7 +27,7 @@ interface IBlogAuthorPageProps {
 }
 
 const BlogAuthorPage: React.FC<IBlogAuthorPageProps> = ({ data, location }) => {
-  const { posts, name, link, html, avatar } = data.author
+  const { posts, name, links, html, avatar } = data.author
 
   return (
     <PaginatorLocationContext.Provider value={location}>
@@ -35,7 +35,7 @@ const BlogAuthorPage: React.FC<IBlogAuthorPageProps> = ({ data, location }) => {
         posts={posts}
         name={name}
         body={html}
-        link={link}
+        link={links[0]}
         avatar={avatar}
       />
     </PaginatorLocationContext.Provider>
@@ -48,7 +48,7 @@ export const pageQuery = graphql`
   query AuthorPage($id: String!) {
     author(id: { eq: $id }) {
       name
-      link
+      links
       html
       avatar {
         fixed(width: 100, height: 100) {

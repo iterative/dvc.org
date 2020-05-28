@@ -19,7 +19,7 @@ async function createAuthorSchemaCustomization(api) {
       interfaces: ['Node'],
       fields: {
         ...markdownParentFields,
-        link: 'String',
+        links: '[String]',
         slug: 'String',
         avatar: {
           type: 'ImageSharp',

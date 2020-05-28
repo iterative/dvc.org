@@ -8,8 +8,6 @@ const createPages = async ({ graphql, actions }) => {
         allAuthor(limit: $limit) {
           nodes {
             id
-            name
-            link
             slug
           }
         }
