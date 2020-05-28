@@ -150,12 +150,13 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   executing the `command`.
 
 - `--no-exec` - create a stage file, but do not execute the `command` defined in
-  it, nor commit dependencies or outputs to DVC. In the DVC-file contents, the
-  file hash values will be empty (like with `--no-commit`, explained below);
-  They will be populated the next time this stage is actually executed or with
-  `dvc commit`. DVC will also add your outputs to `.gitignore`, same as it would
-  do without `--no-exec`. This is useful if, for example, you need to build a
-  pipeline (dependency graph) first, and then run it all at once.
+  it, nor cache dependencies or outputs (like with `--no-commit`, explained
+  below). DVC will also add your outputs to `.gitignore`, same as it would do
+  without `--no-exec`. Use `dvc commit` to force committing existing output file
+  versions to cache.
+
+  This is useful if, for example, you need to build a pipeline quickly first,
+  and run it all at once later.
 
 - `--overwrite-dvcfile` - overwrite an existing DVC-file (with file name
   determined by the logic described in the `-f` option) without asking for
@@ -167,10 +168,13 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   from the same list of inputs).
 
 - `--no-commit` - do not save outputs to cache. A DVC-file is created and an
-  entry is added to `.dvc/state`, while nothing is added to the cache.
-  (`dvc status` will report that the file is `not in cache`.) Use `dvc commit`
-  when ready to commit outputs with DVC. Useful to avoid caching unnecessary
-  data repeatedly when running multiple experiments.
+  entry is added to `.dvc/state`, while nothing is added to the cache. In the
+  stage file, the file hash values will be empty; They will be populated the
+  next time this stage is actually executed, or `dvc commit` can be used to
+  force committing existing output file versions to cache.
+
+  This is useful to avoid caching unnecessary data repeatedly when running
+  multiple experiments.
 
 - `--always-changed` - always consider this DVC-file as changed. As a result
   `dvc status` will report it as `always changed` and `dvc repro` will always
