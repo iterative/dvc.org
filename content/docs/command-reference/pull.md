@@ -162,8 +162,7 @@ example-get-started/
 ├── ...
 ```
 
-We can download specific files that are <abbr>outputs</abbr> of a specific
-DVC-file:
+We can download specific <abbr>outputs</abbr> of a single DVC-file:
 
 ```dvc
 $ dvc pull prepare.dvc
