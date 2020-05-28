@@ -6,7 +6,7 @@ const { issues, stars } = require('./github')
 
 routes.get('/comments', comments)
 routes.get('/discourse', discourse)
-routes.get('/github', issues)
+routes.get('/github/issues', issues)
 routes.get('/github/stars', stars)
 
 module.exports = routes
