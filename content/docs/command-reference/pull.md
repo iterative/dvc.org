@@ -241,8 +241,8 @@ r1	ssh://_username_@_host_/path/to/dvc/remote/storage
 > DVC supports several
 > [remote types](/doc/command-reference/remote/add#supported-storage-types).
 
-Having some images and other files in remote storage, we can pull all changed
-files from the current Git branch:
+To download DVC-tracked data from a specific DVC remote, use the `--remote`
+(`-r`) option of `dvc pull`:
 
 ```dvc
 $ dvc pull --remote r1
