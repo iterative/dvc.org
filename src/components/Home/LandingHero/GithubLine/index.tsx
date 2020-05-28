@@ -5,7 +5,7 @@ import useStars from '../../../../gatsby/hooks/stars'
 import styles from './styles.module.css'
 
 const GithubLine: React.FC = () => {
-  const count = useStars()
+  const stars = useStars()
 
   return (
     <div className={styles.container}>
@@ -15,7 +15,7 @@ const GithubLine: React.FC = () => {
         GitHub
       </Link>
       <img className={styles.starIcon} src="/img/star_small.svg" alt="" />
-      <span className={styles.count}>{count}</span>
+      <span className={styles.count}>{stars || '---'}</span>
     </div>
   )
 }
