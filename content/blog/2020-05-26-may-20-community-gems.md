@@ -40,10 +40,11 @@ more granular delete options.
 
 ### Q: [Is it safe to add a custom file to my DVC remote?](https://discord.com/channels/485586884165107732/563406153334128681/707551737745244230https://discord.com/channels/485586884165107732/563406153334128681/707551737745244230)
 
-Definitely. Some people add additional files to their DVC remote, like a README to explain to teammates what the folder is being used for. 
-Having an additional file in the remote that isn't part of
-DVC tracking won't pose any issues. You would only encounter problems if you
-were manually modifying or deleting contents of the remote managed by DVC.
+Definitely. Some people add additional files to their DVC remote, like a README
+to explain to teammates what the folder is being used for. Having an additional
+file in the remote that isn't part of DVC tracking won't pose any issues. You
+would only encounter problems if you were manually modifying or deleting
+contents of the remote managed by DVC.
 
 ### Q: [Are there limits to how many files DVC can handle? My dataset contains ~100,000 files.](https://discord.com/channels/485586884165107732/563406153334128681/706538115048669274)
 
@@ -56,12 +57,12 @@ for very large datasets.
 
 ### Q: [Two developers on my team are doing `dvc push` to the same remote. Should they `dvc pull` first?](https://discord.com/channels/485586884165107732/563406153334128681/704211629075857468)
 
-It's safe to push simultaneously, no `dvc pull` needed. While some teams might be in the habit
-of frequently pulling, like in Git flow, there are less risks of "merge conflicts" in DVC. 
-That's because DVC remotes stores files indexed by `md5`s, so there's
-usually a very low probability of a collision (if two developers have two
-different versions of a file, they'll be stored as two separate files in the DVC
-remote- so no merge conflicts). 
+It's safe to push simultaneously, no `dvc pull` needed. While some teams might
+be in the habit of frequently pulling, like in Git flow, there are less risks of
+"merge conflicts" in DVC. That's because DVC remotes stores files indexed by
+`md5`s, so there's usually a very low probability of a collision (if two
+developers have two different versions of a file, they'll be stored as two
+separate files in the DVC remote- so no merge conflicts).
 
 ### Q: [What are `*.tmp` files in my DVC remote?](https://discord.com/channels/485586884165107732/563406153334128681/698163554095857745)
 
@@ -70,19 +71,28 @@ can happen if a user killed a process like `dvc push`. You can safely remove
 them; for example, if you're using an S3 bucket, `aws s3 rm ... *.tmp` will do
 the trick.
 
-One caveat: before you delete, make sure no one is actively running `dvc push`. 
+One caveat: before you delete, make sure no one is actively running `dvc push`.
 
 ### Q: [I'm using a Google Cloud Platform (GCP) bucket as a DVC remote and getting an error. Any ideas?](https://discord.com/channels/485586884165107732/485596304961962003/705131622537756702)
 
 If you're getting the error,
+
 ```
 : `ERROR: unexpected error - ('invalid_grant: Bad Request', '{\n "error": "invalid_grant",\n "error_description": "Bad Request"\n}')`
 ```
 
-something is going wrong with your GCP authentication! A few things to check: first, [check out our docs](https://dvc.org/doc/command-reference/remote/add#supported-storage-types) to `dvc remote add` a Google Cloud bucket as your remote. Note that before DVC can use this type of remote, you have to configure your credentials through the GCP CLI ([see docs here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)).
+something is going wrong with your GCP authentication! A few things to check:
+first,
+[check out our docs](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)
+to `dvc remote add` a Google Cloud bucket as your remote. Note that before DVC
+can use this type of remote, you have to configure your credentials through the
+GCP CLI
+([see docs here](https://dvc.org/doc/command-reference/remote/add#supported-storage-types)).
 
-If you're still getting an error, DVC probably can't find the `.json` credentials file for your GCP bucket. Try authenticating using
-`gcloud beta auth application-default login`. This command obtains your access credentials and places them in a `.json` in your local workspace. 
+If you're still getting an error, DVC probably can't find the `.json`
+credentials file for your GCP bucket. Try authenticating using
+`gcloud beta auth application-default login`. This command obtains your access
+credentials and places them in a `.json` in your local workspace.
 
 ### Q: [I'm working on several projects that all need involve the same saved model. One project trains a model and pushes it to cloud storage with `dvc push`, and another takes the model out of cloud storage for use. What's the best practice for doing this with DVC?](https://discord.com/channels/485586884165107732/485596304961962003/708318821253120040)
 
@@ -95,5 +105,5 @@ synchronize an artifact, like a model or dataset, with its latest version using
 our [data registry use case](https://dvc.org/doc/use-cases/data-registries) for
 an example of sharing artifacts across projects.
 
-![](/uploads/images/2020-05-26/data-registry.png)
-_Using DVC for sharing artifacts like datasets and models across projects and teammates._
+![](/uploads/images/2020-05-26/data-registry.png) _Using DVC for sharing
+artifacts like datasets and models across projects and teammates._
