@@ -228,3 +228,35 @@ outs:
 
 See a full explanation in our [Data Registries](/doc/use-cases/data-registries)
 use case.
+
+## Example: Importing from any Git repository
+
+You can even import files from plain Git repos that are not <abbr>DVC
+repositories</abbr>. For example, let's import a dataset from
+[GSA's data repo](https://github.com/GSA/data):
+
+```dvc
+$ dvc import git@github.com:GSA/data \
+           enterprise-architecture/it-standards.csv
+Importing ...
+```
+
+> Note that Git-tracked files can be imported from DVC repos as well.
+
+The file is imported, and along with it, an import stage
+([DVC-file](/doc/user-guide/dvc-file-format)) file is created. Check
+`it-standards.csv.dvc`:
+
+```yaml
+deps:
+  - path: enterprise-architecture/it-standards.csv
+    repo:
+      url: git@github.com:GSA/data
+      rev_lock: af6a1feb542dc05b4d3e9c80deb50e6596876e5f
+outs:
+  - md5: 7e6de779a1ab286745c808f291d2d671
+    path: it-standards.csv
+```
+
+The `url` and `rev_lock` subfields under `repo` are used to save the origin and
+[version](https://git-scm.com/docs/revisions) of the dependency, respectively.
