@@ -92,18 +92,15 @@ async function getStars() {
 
 async function stars(req, res) {
   if (!process.env.GITHUB_TOKEN) {
+    // We have no GitHub key, so reject as unauthorized
     res.status(403)
   } else {
     const stars = await getStars()
     if (stars) {
-      // If the data in unchanged, return a minimal response indicating so.
-      if (Number(req.query.current) === stars) {
-        console.log(`GitHub stars not changed from ${stars}`)
-        res.status(304)
-      } else {
-        res.status(200).json({ stars })
-      }
+      // If we got stars, successfully return a data payload with them
+      res.status(200).json({ stars })
     } else {
+      // Stars are missing for some reason, return 404
       res.status(404)
     }
   }
