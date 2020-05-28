@@ -35,30 +35,30 @@ difference (delta) from the previous value of metrics (with 3-digit accuracy).
 They're calculated between two commits (hash, branch, tag, or any
 [Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
 <abbr>project</abbr>, found by examining all of the
-[DVC-files](/doc/user-guide/dvc-file-format) in both references.
+[`.dvc` files](/doc/user-guide/dvc-file-format) in both references.
 
 ## Options
 
 - `--targets <paths>` - limit the comparison to these specific metric files.
 
 - `-R`, `--recursive` - determines the metric files to use by searching each
-  target directory and its subdirectories for DVC-files to inspect. If there are
+  target directory and its subdirectories for `.dvc` files to inspect. If there are
   no directories among the `targets`, this option is ignored.
 
 - `-t <type>`, `--type <type>` - specify a type of the metric file. Accepted
-  values are: `json`. It will be saved into the corresponding DVC-file, and used
+  values are: `json`. It will be saved into the corresponding `.dvc` file, and used
   to determine how to handle displaying metrics. See `dvc metrics show` for more
   details.
 
   This option will override any `type` and `xpath` values defined in the
-  corresponding DVC-file. If no `type` is provided or found in the DVC-file, DVC
+  corresponding `.dvc` file. If no `type` is provided or found in the `.dvc` file, DVC
   will try to detect it based on file extension.
 
 - `-x <path>`, `--xpath <path>` - specify a path within a metric file to show
   changes for a specific metric value only. Should be used if the metric file
   contains multiple numbers and you want to use only one of them. Only a single
   path is allowed. It will override `xpath` defined in the corresponding
-  DVC-file. See `dvc metrics show` for more details.
+  `.dvc` file. See `dvc metrics show` for more details.
 
 - `--all` - list all metrics, even those without changes.
 

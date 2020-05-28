@@ -23,7 +23,7 @@ into the local file system. The `dvc get-url` command helps the user do just
 that.
 
 > Note that unlike `dvc import-url`, this command does not track the downloaded
-> data files (does not create a DVC-file). For that reason, this command doesn't
+> data files (does not create a `.dvc` file). For that reason, this command doesn't
 > require an existing <abbr>DVC project</abbr> to run in.
 
 The `url` argument should provide the location of the data to be downloaded,

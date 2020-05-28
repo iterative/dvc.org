@@ -66,7 +66,7 @@ or move it, you can use `dvc move`.
 
 ## Data file internals
 
-If you take a look at the [DVC-file](/doc/user-guide/dvc-file-format) created by
+If you take a look at the [`.dvc` file](/doc/user-guide/dvc-file-format) created by
 `dvc add`, you will see that <abbr>outputs</abbr> are tracked in the `outs`
 field. In this file, only one output is specified. The output contains the data
 file path in the repository and its MD5 hash. This hash value determines the
@@ -86,7 +86,7 @@ $ du -sh .dvc/cache/ec/*
  41M .dvc/cache/ec/1d2935f811b77cc49b031b999cbf17
 ```
 
-> Outputs from DVC-files define the relationship between the data file path in a
+> Outputs from `.dvc` files define the relationship between the data file path in a
 > repository and the path in the cache directory.
 
 Keeping actual file contents in the <abbr>cache</abbr>, and a copy of the cached
@@ -154,7 +154,7 @@ files written to by the command, if any.
 
 - `-o out.dat` (lower case o) specifies an output data file. DVC will track this
   data file by creating a corresponding
-  [DVC-file](/doc/user-guide/dvc-file-format) (as if running `dvc add out.dat`
+  [`.dvc` file](/doc/user-guide/dvc-file-format) (as if running `dvc add out.dat`
   after `dvc run` instead).
 
 - `-O tmp.dat` (upper case O) specifies a simple output file (not to be added to

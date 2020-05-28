@@ -14,7 +14,7 @@ $ dvc pull
 ```
 
 This command downloads data files that are referenced in all
-[DVC-files](/doc/user-guide/dvc-file-format) in the <abbr>project</abbr>. So,
+[`.dvc` files](/doc/user-guide/dvc-file-format) in the <abbr>project</abbr>. So,
 you usually run it after `git clone`, `git pull`, or `git checkout`.
 
 Alternatively, if you want to retrieve a single dataset or a file you can use:

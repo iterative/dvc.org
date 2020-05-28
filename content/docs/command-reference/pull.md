@@ -3,7 +3,7 @@
 Download tracked files or directories from
 [remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr> and
 <abbr>workspace</abbr>, based on the current
-[DVC-files](/doc/user-guide/dvc-file-format).
+[`.dvc` files](/doc/user-guide/dvc-file-format).
 
 ## Synopsis
 
@@ -13,8 +13,8 @@ usage: dvc pull [-h] [-q | -v] [-j <number>]
                 [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these DVC-files. Using -R,
-                 directories to search DVC-files in can also be given.
+  targets        Limit command scope to these `.dvc` files. Using -R,
+                 directories to search `.dvc` files in can also be given.
 ```
 
 ## Description
@@ -37,17 +37,17 @@ remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote <name>`, it downloads
 only the files (or directories) missing from the workspace by searching all
-[DVC-files](/doc/user-guide/dvc-file-format) currently in the
+[`.dvc` files](/doc/user-guide/dvc-file-format) currently in the
 <abbr>project</abbr>. It will not download files associated with earlier commits
 in the <abbr>repository</abbr> (if using Git), nor will it download files that
 have not changed.
 
-The command `dvc status -c` can list files referenced in current DVC-files, but
+The command `dvc status -c` can list files referenced in current `.dvc` files, but
 missing in the <abbr>cache</abbr>. It can be used to see what files `dvc pull`
 would download.
 
 If one or more `targets` are specified, DVC only considers the files associated
-with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
+with those `.dvc` files. Using the `--with-deps` option, DVC tracks dependencies
 backward from the target [stage files](/doc/command-reference/run), through the
 corresponding [pipelines](/doc/command-reference/pipeline), to find data files
 to pull.
@@ -59,7 +59,7 @@ reflinks or hardlinks to put it in the workspace without copying. See
 ## Options
 
 - `-a`, `--all-branches` - determines the files to download by examining
-  DVC-files in all Git branches instead of just those present in the current
+  `.dvc` files in all Git branches instead of just those present in the current
   workspace. It's useful if branches are used to track experiments or project
   checkpoints. Note that this can be combined with `-T` below, for example using
   the `-aT` flag.
@@ -74,17 +74,17 @@ reflinks or hardlinks to put it in the workspace without copying. See
   entire existing commit history of the project.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
-  the target DVC-files (stages). If no `targets` are provided, this option is
+  the target `.dvc` files (stages). If no `targets` are provided, this option is
   ignored. By traversing all stage dependencies, DVC searches backward from the
   target stages in the corresponding pipelines. This means DVC will not pull
   files referenced in later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to pull by searching each target
-  directory and its subdirectories for DVC-files to inspect. If there are no
+  directory and its subdirectories for `.dvc` files to inspect. If there are no
   directories among the `targets`, this option is ignored.
 
 - `-f`, `--force` - does not prompt when removing workspace files, which occurs
-  when these file no longer match the current DVC-file references. This option
+  when these file no longer match the current `.dvc` file references. This option
   surfaces behavior from the `dvc fetch` and `dvc checkout` commands because
   `dvc pull` in effect performs those 2 functions in a single command.
 
@@ -129,7 +129,7 @@ $ dvc pull --remote r1
 ```
 
 We can download specific files that are <abbr>outputs</abbr> of a specific
-DVC-file:
+`.dvc` file:
 
 ```dvc
 $ dvc pull data.zip.dvc
@@ -137,7 +137,7 @@ $ dvc pull data.zip.dvc
 
 In this case we left off the `--remote` option, so it will have pulled from the
 default remote. The only files considered in this case are what is listed in the
-`out` field of the DVC-file `targets`.
+`out` field of the `.dvc` file `targets`.
 
 ## Example: With dependencies
 
@@ -186,7 +186,7 @@ Everything is up to date.
 ```
 
 With the first `dvc pull` we specified a stage in the middle of this pipeline
-(`matrix-train.p.dvc`) while using `--with-deps`. DVC started with that DVC-file
+(`matrix-train.p.dvc`) while using `--with-deps`. DVC started with that `.dvc` file
 and searched backwards through the pipeline for data files to download. Because
 the `model.p.dvc` stage occurs later, its data was not pulled.
 

@@ -13,10 +13,10 @@ are safely stored remotely and are shareable. This means that the data can be
 pulled by yourself or your colleagues whenever you need it.
 
 Usually, you run it along with `git commit` and `git push` to save the changed
-[DVC-files](/doc/user-guide/dvc-file-format).
+[`.dvc` files](/doc/user-guide/dvc-file-format).
 
 The `dvc push` command allows one to upload data to remote storage. It doesn't
-save any changes in the code or DVC-files. Those should be saved by using
+save any changes in the code or `.dvc` files. Those should be saved by using
 `git commit` and `git push`.
 
 > \*As noted in the DVC [configuration](/doc/tutorials/get-started/configure)
@@ -38,7 +38,7 @@ $ ls -R /tmp/dvc-storage
 
 `a304afb96060aad90176268345e10355` above is the hash value of the `data.xml`
 file. If you check the `data.xml.dvc`
-[DVC-file](/doc/user-guide/dvc-file-format), you will see that it has this
+[`.dvc` file](/doc/user-guide/dvc-file-format), you will see that it has this
 string inside.
 
 </details>

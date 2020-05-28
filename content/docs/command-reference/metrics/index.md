@@ -54,7 +54,7 @@ and manage <abbr>DVC project</abbr> metrics.
 
 ## Examples
 
-First, let's create a simple DVC-file:
+First, let's create a simple `.dvc` file:
 
 ```dvc
 $ dvc run -d code/evaluate.py -M data/eval.json \

@@ -10,7 +10,7 @@ The most exciting part of DVC is reproducibility.
 DVC tracks all the dependencies. This helps you iterate on ML models faster
 without thinking what was affected by your last change.
 
-In order to track all the dependencies, DVC finds and reads all the DVC-files in
+In order to track all the dependencies, DVC finds and reads all the `.dvc` files in
 a repository and builds a dependency graph
 ([pipeline](/doc/command-reference/pipeline)) based on these files.
 
@@ -19,7 +19,7 @@ automation tools ([Make](https://www.gnu.org/software/make/), Maven, Ant,
 Rakefile etc). It was designed in such a way to localize specification of the
 graph nodes (pipeline [stages](/doc/command-reference/run)).
 
-If you run `repro` on any [DVC-file](/doc/user-guide/dvc-file-format) from our
+If you run `repro` on any [`.dvc` file](/doc/user-guide/dvc-file-format) from our
 repository, nothing happens because nothing was changed in the pipeline defined
 in the <abbr>project</abbr>: There's nothing to reproduce.
 
@@ -27,7 +27,7 @@ in the <abbr>project</abbr>: There's nothing to reproduce.
 $ dvc repro model.p.dvc
 ```
 
-> By default, `dvc repro` tries to read the DVC-file with name `Dvcfile`, like
+> By default, `dvc repro` tries to read the `.dvc` file with name `Dvcfile`, like
 > the one we define in the previous chapter.
 
 ```dvc
@@ -116,7 +116,7 @@ master:
 Let's keep the result in the repository. Later we can find out why bigrams don't
 add value to the current model and change that.
 
-Many DVC-files were changed. This happened due to file hash changes.
+Many `.dvc` files were changed. This happened due to file hash changes.
 
 ```dvc
 $ git status -s
@@ -142,7 +142,7 @@ Let's try to improve the model by changing the hyperparameters.
 There is no good reason to improve the last bigrams model. Let's checkout the
 original model from the master branch.
 
-> Note that after checking out code and DVC-files from Git, data files have to
+> Note that after checking out code and `.dvc` files from Git, data files have to
 > be checked out as well using the `dvc checkout` command.
 
 ```dvc
@@ -155,9 +155,9 @@ Data and pipelines are up to date.
 After proper checkout, there is nothing to reproduce because all the correct
 files were checked out by Git, and all data files by DVC.
 
-In more detail — `git checkout master` checked out the code and DVC-files. The
-DVC-files from the master branch point to old (unigram based) dependencies and
-<abbr>outputs</abbr>. `dvc checkout` command found all the DVC-files and
+In more detail — `git checkout master` checked out the code and `.dvc` files. The
+`.dvc` files from the master branch point to old (unigram based) dependencies and
+<abbr>outputs</abbr>. `dvc checkout` command found all the `.dvc` files and
 restored the data files based on them.
 
 ## Tune the model

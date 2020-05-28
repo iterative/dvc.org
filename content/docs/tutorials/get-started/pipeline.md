@@ -27,7 +27,7 @@ $ dvc run -f train.dvc \
           python src/train.py data/features model.pkl
 ```
 
-Let's commit DVC-files that describe our pipeline so far:
+Let's commit `.dvc` files that describe our pipeline so far:
 
 ```dvc
 $ git add data/.gitignore .gitignore featurize.dvc train.dvc

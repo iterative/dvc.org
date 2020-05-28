@@ -40,7 +40,7 @@ resulting plot shows all of them in a single output.
 This command can work with metric files that are committed to a repository
 history, data files controlled by DVC, or any other file in the workspace. In
 the case of DVC-tracked `datafile`, the `revisions` are used to find the
-corresponding [DVC-files](/doc/user-guide/dvc-file-format).
+corresponding [`.dvc` files](/doc/user-guide/dvc-file-format).
 
 ## Options
 

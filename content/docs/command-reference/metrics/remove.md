@@ -2,7 +2,7 @@
 
 Remove metric mark on a DVC-tracked file: Keeps file located at `path` as an
 <abbr>output</abbr>, but removes its mark as a
-[project metric](/doc/command-reference/metrics) in the DVC-file.
+[project metric](/doc/command-reference/metrics) in the `.dvc` file.
 
 ## Synopsis
 
@@ -16,19 +16,19 @@ positional arguments:
 
 ## Description
 
-This command finds a corresponding [DVC-file](/doc/user-guide/dvc-file-format)
+This command finds a corresponding [`.dvc` file](/doc/user-guide/dvc-file-format)
 for the provided metric file (`path` is defined among the <abbr>outputs</abbr>
-of the DVC-file), and resets the `metric` field for the file.
+of the `.dvc` file), and resets the `metric` field for the file.
 
 This does not remove or delete the file in question. It only unmarks it as a
-metric file. It also keeps the file as an output of the corresponding DVC-file.
+metric file. It also keeps the file as an output of the corresponding `.dvc` file.
 
 If `path` isn't tracked by DVC (described in one of the <abbr>workspace</abbr>
-DVC-files), the following error will be raised:
+`.dvc` files), the following error will be raised:
 
 ```dvc
 ERROR: failed to remove metric file '<path>' -
-       unable to find DVC-file with output '<path>'
+       unable to find `.dvc` file with output '<path>'
 ```
 
 ## Options
@@ -81,7 +81,7 @@ $ dvc metrics remove metrics.json
 ```
 
 Let's check the outputs field (`outs`) of same
-[DVC-file](/doc/user-guide/dvc-file-format) again:
+[`.dvc` file](/doc/user-guide/dvc-file-format) again:
 
 ```yaml
 outs:

@@ -25,7 +25,7 @@ $ dvc add data/data.xml
 ```
 
 DVC stores information about the added data in a special file called a
-**DVC-file**. DVC-files are small text files with a human-readable
+**`.dvc` file**. `.dvc` files are small text files with a human-readable
 [format](/doc/user-guide/dvc-file-format) and they can be committed with Git:
 
 ```dvc
@@ -33,7 +33,7 @@ $ git add data/.gitignore data/data.xml.dvc
 $ git commit -m "Add raw data to project"
 ```
 
-Committing DVC-files with Git allows us to track different versions of the
+Committing `.dvc` files with Git allows us to track different versions of the
 <abbr>project</abbr> data as it evolves with the source code tracked by Git.
 
 <details>
@@ -52,7 +52,7 @@ $ ls -R .dvc/cache
 ```
 
 `a304afb96060aad90176268345e10355` above is the hash value of the `data.xml`
-file we just added with DVC. If you check the `data/data.xml.dvc` DVC-file, you
+file we just added with DVC. If you check the `data/data.xml.dvc` `.dvc` file, you
 will see that it has this string inside.
 
 ### Important note on cache performance

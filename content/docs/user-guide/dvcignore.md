@@ -205,4 +205,4 @@ dir2/data2.dvc:
 ```
 
 Only the second file is displayed because DVC ignores `data1.dvc` and `data1`
-when collecting DVC-files.
+when collecting `.dvc` files.

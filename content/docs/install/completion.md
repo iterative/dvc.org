@@ -18,8 +18,8 @@ For example:
 $ dvc r # Press [tab] key
  -- dvc commands --
 remote  -- Manage remote storage configuration.
-remove  -- Remove outputs of DVC-file.
-repro   -- Check for changes and reproduce DVC-file and dependencies.
+remove  -- Remove outputs of `.dvc` file.
+repro   -- Check for changes and reproduce `.dvc` file and dependencies.
 root    -- Relative path to project's directory.
 run     -- Generate a stage file from a command and execute the command.
 ```

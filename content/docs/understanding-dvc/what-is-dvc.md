@@ -46,7 +46,7 @@ DVC uses a few core concepts:
 
 - **Data files**: Cached files (for large files). Data files are stored outside
   of the Git repository on a local/shared hard drive or remote storage, but
-  [DVC-files](/doc/user-guide/dvc-file-format) describing that data are stored
+  [`.dvc` files](/doc/user-guide/dvc-file-format) describing that data are stored
   in Git for DVC needs (to maintain pipelines and reproducibility).
 
 - **Cache directory**: Directory with all data files on a local hard drive or in

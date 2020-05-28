@@ -1,7 +1,7 @@
 # commit
 
 Record changes to DVC-tracked files in the <abbr>project</abbr>, by updating
-[DVC-files](/doc/user-guide/dvc-file-format) and saving <abbr>outputs<abbr> to
+[`.dvc` files](/doc/user-guide/dvc-file-format) and saving <abbr>outputs<abbr> to
 the <abbr>cache</abbr>.
 
 ## Synopsis
@@ -11,7 +11,7 @@ usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R]
                   [targets [targets ...]]
 
 positional arguments:
-  targets          DVC-files to commit. Optional. (Finds all DVC-files
+  targets          `.dvc` files to commit. Optional. (Finds all `.dvc` files
                    in the workspace by default.)
 ```
 
@@ -21,7 +21,7 @@ The `dvc commit` command is useful for several scenarios, when data already
 tracked by DVC changes: when a [stage](/doc/command-reference/run) or
 [pipeline](/doc/command-reference/pipeline) is in development/experimentation;
 when manually editing or generating DVC <abbr>outputs<abbr>; or to force
-DVC-file updates without reproducing stages or pipelines. These scenarios are
+`.dvc` file updates without reproducing stages or pipelines. These scenarios are
 further detailed below.
 
 - Code or data for a stage is under active development, with multiple iterations
@@ -35,7 +35,7 @@ further detailed below.
 - It's always possible to manually execute the source code used in a stage
   without DVC (outputs should be unprotected or removed first in certain cases,
   see `dvc unprotect`). Once a desirable result is reached, use `dvc add` or
-  `dvc commit` as appropriate to update DVC-files and store changed data to the
+  `dvc commit` as appropriate to update `.dvc` files and store changed data to the
   cache.
 
 - Sometimes we want to edit source code, config, or data files in a way that
@@ -44,14 +44,14 @@ further detailed below.
   other change that doesn't cause changed stage outputs. However, DVC will
   notice that some <abbr>dependencies</abbr> and have changed, and expect you to
   reproduce the whole pipeline. If you're sure no pipeline results would change,
-  just use `dvc commit` to force update the related DVC-files and cache.
+  just use `dvc commit` to force update the related `.dvc` files and cache.
 
 Let's take a look at what is happening in the first scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
-<abbr>cache</abbr> after creating a DVC-file. What _commit_ means is that DVC:
+<abbr>cache</abbr> after creating a `.dvc` file. What _commit_ means is that DVC:
 
 - Computes a hash for the file/directory.
-- Enters the hash value and file name into the DVC-file.
+- Enters the hash value and file name into the `.dvc` file.
 - Tells Git to ignore the file/directory (adding them to `.gitignore`). (Note
   that if the <abbr>project</abbr> was initialized with no SCM support
   (`dvc init --no-scm`), this does not happen.)
@@ -61,25 +61,25 @@ There are many cases where the last step is not desirable (for example rapid
 iterations on an experiment). The `--no-commit` option prevents the last step
 from occurring (on the commands where it's available), saving time and space by
 not storing unwanted <abbr>data artifacts</abbr>. The file hash is still
-computed and added to the DVC-file, but the actual data file is not saved in the
+computed and added to the `.dvc` file, but the actual data file is not saved in the
 cache. This is where the `dvc commit` command comes into play. It performs that
 last step (saving the data in cache).
 
 Note that it's best to avoid the last two scenarios. They essentially
-force-update the [DVC-files](/doc/user-guide/dvc-file-format) and save data to
+force-update the [`.dvc` files](/doc/user-guide/dvc-file-format) and save data to
 cache. They are still useful, but keep in mind that DVC can't guarantee
 reproducibility in those cases.
 
 ## Options
 
 - `-d`, `--with-deps` - determines files to commit by tracking dependencies to
-  the target DVC-files (stages). If no `targets` are provided, this option is
+  the target `.dvc` files (stages). If no `targets` are provided, this option is
   ignored. By traversing all stage dependencies, DVC searches backward from the
   target stages in the corresponding pipelines. This means DVC will not commit
   files referenced in later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to commit by searching each target
-  directory and its subdirectories for DVC-files to inspect. If there are no
+  directory and its subdirectories for `.dvc` files to inspect. If there are no
   directories among the `targets`, this option is ignored.
 
 - `-f`, `--force` - commit data even if hash values for dependencies or outputs
@@ -226,7 +226,7 @@ the new instance of `model.pkl` is there.
 It is also possible to execute the commands that are executed by `dvc repro` by
 hand. You won't have DVC helping you, but you have the freedom to run any
 command you like, even ones not defined in a
-[DVC-file](/doc/user-guide/dvc-file-format). For example:
+[`.dvc` file](/doc/user-guide/dvc-file-format). For example:
 
 ```dvc
 $ python src/featurization.py data/prepared data/features

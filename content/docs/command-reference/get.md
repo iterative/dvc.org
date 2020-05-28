@@ -24,7 +24,7 @@ target file or directory (found at `path` in `url`) to the current working
 directory. (Analogous to `wget`, but for repos.)
 
 > Note that unlike `dvc import`, this command does not track the downloaded
-> files (does not create a DVC-file). For that reason, this command doesn't
+> files (does not create a `.dvc` file). For that reason, this command doesn't
 > require an existing DVC project to run in.
 
 > See `dvc list` for a way to browse repository contents to find files or
@@ -40,7 +40,7 @@ The `path` argument is used to specify the location of the target to be
 downloaded within the source repository at `url`. `path` can specify any file or
 directory in the source repo, including those tracked by DVC, or by Git. Note
 that DVC-tracked targets should be found in a
-[DVC-file](/doc/user-guide/dvc-file-format) of the project.
+[`.dvc` file](/doc/user-guide/dvc-file-format) of the project.
 
 ⚠️ The project should have a default
 [DVC remote](/doc/command-reference/remote), containing the actual data for this
@@ -94,7 +94,7 @@ model.pkl
 
 Note that the `model.pkl` file doesn't actually exist in the
 [root directory](https://github.com/iterative/example-get-started/tree/master/)
-of the external Git repo. Instead, the corresponding DVC-file
+of the external Git repo. Instead, the corresponding `.dvc` file
 [train.dvc](https://github.com/iterative/example-get-started/blob/master/train.dvc)
 is found, that contains `model.pkl` (in the `outs` field). DVC then
 [pulls](/doc/command-reference/pull) the file from the default
@@ -180,7 +180,7 @@ The `model.monograms.pkl` file now contains the older version of the model. To
 get the most recent one, we use a similar command, but with
 `-o model.bigrams.pkl` and `--rev bigrams-experiment` (or even without `--rev`
 since that tag has the latest model version anyway). In fact, in this case using
-`dvc pull` with the corresponding [DVC-files](/doc/user-guide/dvc-file-format)
+`dvc pull` with the corresponding [`.dvc` files](/doc/user-guide/dvc-file-format)
 should suffice, downloading the file as just `model.pkl`. We can then rename it
 to make its variant explicit:
 

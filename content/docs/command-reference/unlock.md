@@ -1,6 +1,6 @@
 # unlock
 
-Unlock [DVC-file](/doc/user-guide/dvc-file-format)
+Unlock [`.dvc` file](/doc/user-guide/dvc-file-format)
 ([stage](/doc/command-reference/run)). See `dvc lock` for more information.
 
 ## Synopsis
@@ -9,7 +9,7 @@ Unlock [DVC-file](/doc/user-guide/dvc-file-format)
 usage: dvc unlock [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-  targets        DVC-files to unlock.
+  targets        `.dvc` files to unlock.
 ```
 
 ## Description
@@ -35,7 +35,7 @@ be unlocked. Use `dvc update` on them to update the file, directory, or
 
 ## Examples
 
-First, let's create a simple DVC-file:
+First, let's create a simple `.dvc` file:
 
 ```dvc
 $ echo foo > foo

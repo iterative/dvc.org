@@ -23,7 +23,7 @@ These two commands will bring the previous model file to its place in the
 
 ### Expand to learn about DVC internals
 
-DVC uses special [DVC-files](/doc/user-guide/dvc-file-format) to track data
+DVC uses special [`.dvc` files](/doc/user-guide/dvc-file-format) to track data
 files, directories, end results. In this case, `train.dvc` among other things
 describes the `model.pkl` file this way:
 
@@ -36,8 +36,8 @@ path: model.pkl
 `a664...2c43` is the "address" of the file in the local or remote DVC storage.
 
 It means that if we want to get to the previous version, we need to restore the
-DVC-file first with the `git checkout` command. Only after that can DVC restore
-the model file using the new "address" from the DVC-file.
+`.dvc` file first with the `git checkout` command. Only after that can DVC restore
+the model file using the new "address" from the `.dvc` file.
 
 </details>
 

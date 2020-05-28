@@ -12,7 +12,7 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 
 ## Description
 
-`dvc destroy` removes DVC-files, and the entire `.dvc/` meta directory from the
+`dvc destroy` removes `.dvc` files, and the entire `.dvc/` meta directory from the
 <abbr>workspace</abbr>. Note that the <abbr>cache directory</abbr> will normally
 be removed as well, unless it's set to an external location with
 `dvc cache dir`. (By default a local cache is located in the `.dvc/cache`
@@ -94,7 +94,7 @@ $ ls -a
 .git code.py foo
 ```
 
-`dvc destroy` command removed DVC-files, and the entire `.dvc/` meta directory
+`dvc destroy` command removed `.dvc` files, and the entire `.dvc/` meta directory
 from the <abbr>workspace</abbr>. But the cache files that are present in the
 `/mnt/cache` directory still persist:
 

@@ -30,7 +30,7 @@ $ dvc import https://github.com/iterative/dataset-registry \
 This downloads `data.xml` from our
 [dataset-registry](https://github.com/iterative/dataset-registry) project into
 the current working directory, adds it to `.gitignore`, and creates the
-`data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format) to track changes in
+`data.xml.dvc` [`.dvc` file](/doc/user-guide/dvc-file-format) to track changes in
 the source data. With _imports_, we can use `dvc update` to bring in changes in
 the external data source before
 [reproducing](/doc/tutorials/get-started/reproduce) any <abbr>pipeline</abbr>
@@ -47,7 +47,7 @@ inspects
 and tries to retrieve the file using the project's default remote (configured
 [here](https://github.com/iterative/dataset-registry/blob/master/.dvc/config)).
 
-DVC-files created by `dvc import` are called _import stages_. They use the
+`.dvc` files created by `dvc import` are called _import stages_. They use the
 `repo` field in the dependencies section (`deps`) in order to track source data
 changes (as an [external dependency](/doc/user-guide/external-dependencies)),
 enabling the reusability of data artifacts. For example:
@@ -72,7 +72,7 @@ The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 [version](https://git-scm.com/docs/revisions) of the dependency, respectively.
 
 > Note that `dvc update` updates the `rev_lock` field of the corresponding
-> DVC-file (when there are changes to bring in).
+> `.dvc` file (when there are changes to bring in).
 
 </details>
 

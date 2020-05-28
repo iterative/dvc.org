@@ -36,7 +36,7 @@ Advantages of using a DVC **data registry**:
   copies on other remotes). This simplifies data management and optimizes space
   requirements.
 - Security: Registries can be setup to have read-only remote storage (e.g. an
-  HTTP location). Git versioning of [DVC-files](/doc/user-guide/dvc-file-format)
+  HTTP location). Git versioning of [`.dvc` files](/doc/user-guide/dvc-file-format)
   allows us to track and audit data changes.
 - Data as code: Leverage Git workflow such as commits, branching, pull requests,
   reviews, and even CI/CD for your data and models lifecycle. Think Git for
@@ -65,7 +65,7 @@ $ dvc add music/songs
 > [MillionSongSubset](http://millionsongdataset.com/pages/getting-dataset/#subset).
 
 A regular Git workflow can be followed with the tiny
-[DVC-files](/doc/user-guide/dvc-file-format) that substitute the actual data
+[`.dvc` files](/doc/user-guide/dvc-file-format) that substitute the actual data
 (`music/songs.dvc` in this example). This enables team collaboration on data at
 the same level as with source code (commit history, branching, pull requests,
 reviews, etc.):
@@ -147,7 +147,7 @@ $ dvc import https://github.com/example/registry \
 
 Besides downloading, importing saves the dependency from the local project to
 the data source (registry repo). This is achieved by creating a particular kind
-of [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_). This
+of [`.dvc` file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_). This
 file can be used staged and committed with Git.
 
 As an addition to the import workflow, and enabled the saved dependency, we can
@@ -160,7 +160,7 @@ $ dvc update dataset.dvc
 
 `dvc update` downloads new and changed files, or removes deleted ones, from
 `images/faces/`, based on the latest commit in the source repo. It also updates
-the project dependency metadata in the import stage (DVC-file).
+the project dependency metadata in the import stage (`.dvc` file).
 
 ### Programmatic reusability of DVC data
 
@@ -195,7 +195,7 @@ $ cp /path/to/1000/image/dir music/songs
 $ dvc add music/songs
 ```
 
-DVC then modifies the corresponding DVC-file to reflect the changes in the data,
+DVC then modifies the corresponding `.dvc` file to reflect the changes in the data,
 and this will be picked up by Git:
 
 ```dvc
@@ -207,7 +207,7 @@ $ git commit -am "Add 1,000 more songs to music/ dataset."
 ```
 
 Iterating on this process for several datasets can give shape to a robust
-registry. The result is basically a repo that versions a set of DVC-files. Let's
+registry. The result is basically a repo that versions a set of `.dvc` files. Let's
 see an example:
 
 ```dvc

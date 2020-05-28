@@ -2,7 +2,7 @@
 
 ## Pushing data to the cloud
 
-We've gone over how source code and [DVC-files](/doc/user-guide/dvc-file-format)
+We've gone over how source code and [`.dvc` files](/doc/user-guide/dvc-file-format)
 can be shared using a Git repository. These <abbr>DVC repositories</abbr> will
 contain all the information needed for reproducibility, so it might be a good
 idea to share them with your team using Git hosting services (such as

@@ -72,7 +72,7 @@ $ dvc run -f prepare.dvc \
           python src/prepare.py data/data.xml
 ```
 
-`dvc run` generates the `prepare.dvc` DVC-file. It has the same
+`dvc run` generates the `prepare.dvc` `.dvc` file. It has the same
 [format](/doc/user-guide/dvc-file-format) as the file we created in the
 [previous section](/doc/tutorials/get-started/add-files) to track `data.xml`,
 except in this case it has additional information about the `data/prepared`
@@ -128,7 +128,7 @@ wdir: .
 Let's briefly mention what the command options used above mean for this
 particular example:
 
-`-f prepare.dvc` specifies a name for the DVC-file (pipeline stage). It's
+`-f prepare.dvc` specifies a name for the `.dvc` file (pipeline stage). It's
 optional but we recommend using it to make your project structure more readable.
 
 `-d src/prepare.py` and `-d data/data.xml` mean that the `prepare.dvc` stage
@@ -142,7 +142,7 @@ into. The script creates two files in it – that will be used later to generate
 features, train and evaluate the model.
 
 And, the last line, `python src/prepare.py data/data.xml`, specifies a command
-to run. This command is saved to the generated DVC-file, and used later by
+to run. This command is saved to the generated `.dvc` file, and used later by
 `dvc repro`.
 
 Hopefully, `dvc run` (and `dvc repro`) will become intuitive after a few more

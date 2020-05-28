@@ -44,10 +44,10 @@
 
 - DVC introduces the concept of data files for Git repositories. DVC keeps data
   files outside of the repository, replacing them with special
-  [DVC-files](/doc/user-guide/dvc-file-format) in the Git repo:
+  [`.dvc` files](/doc/user-guide/dvc-file-format) in the Git repo:
 
   ```dvc
-  $ git checkout a03_normbatch_vgg16 # checkout code and DVC-files
+  $ git checkout a03_normbatch_vgg16 # checkout code and `.dvc` files
   $ dvc checkout # checkout data files from the cache
   $ ls -l data/ # These LARGE files came from the cache, not from Git
 
@@ -56,7 +56,7 @@
   -r--------  2 501  staff    12G Jan 27 03:48 Posts-train.tsv
   ```
 
-- DVC makes repositories reproducible. DVC-files can be easily shared through
+- DVC makes repositories reproducible. `.dvc` files can be easily shared through
   any Git server, and allow for experiments to be easily reproduced:
 
   ```dvc

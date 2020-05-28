@@ -11,7 +11,7 @@ DVC to control data outside of the <abbr>project</abbr> directory.
 ## Description
 
 DVC can track files on an external storage with `dvc add` or specify external
-files as <abbr>outputs</abbr> for [DVC-files](/doc/user-guide/dvc-file-format)
+files as <abbr>outputs</abbr> for [`.dvc` files](/doc/user-guide/dvc-file-format)
 created by `dvc run` (stage files). External outputs are considered part of the
 DVC project. DVC will track changes in them and reflect this in the output of
 `dvc status`.
@@ -44,7 +44,7 @@ in the same external/remote file system first.
 
 For the examples, let's take a look at a [stage](/doc/command-reference/run)
 that simply moves local file to an external location, producing a `data.txt.dvc`
-DVC-file.
+`.dvc` file.
 
 ### Local file system path
 

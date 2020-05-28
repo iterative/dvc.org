@@ -13,7 +13,7 @@ positional arguments:
 
 ## Description
 
-Sets the `metric` field in the [DVC-file](/doc/user-guide/dvc-file-format) that
+Sets the `metric` field in the [`.dvc` file](/doc/user-guide/dvc-file-format) that
 defines the given `path` as an <abbr>output</abbr>, marking `path` as a metric
 file to track.
 
@@ -31,13 +31,13 @@ the file contains multiple metrics. See the [options](#options) below and
 ## Options
 
 - `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
-  values are: `json`. It will be saved into the corresponding DVC-file, and used
+  values are: `json`. It will be saved into the corresponding `.dvc` file, and used
   by `dvc metrics show` to determine how to handle displaying metrics.
 
 - `-x <path>`, `--xpath <path>` - specify a path within a metric file to get a
   specific metric value. Should be used if the metric file contains multiple
   numbers and you want to use only one of them. Only a single path is allowed.
-  It will be saved into the corresponding DVC-file, and used by
+  It will be saved into the corresponding `.dvc` file, and used by
   `dvc metrics show` and `dvc metrics diff` to determine how to display metrics.
   The accepted value depends on the metric file type (`--type` option):
 
@@ -65,7 +65,7 @@ $ dvc run -O metrics.json \
 
 Even when we named this output file `metrics.json`, DVC won't know that it's a
 metric if we don't specify so. The content of stage file `metrics.json.dvc` (a
-[DVC-file](/doc/user-guide/dvc-file-format)) should look like this: (Notice the
+[`.dvc` file](/doc/user-guide/dvc-file-format)) should look like this: (Notice the
 `metric: false` field.)
 
 ```yaml

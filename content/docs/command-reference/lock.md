@@ -1,6 +1,6 @@
 # lock
 
-Lock a [DVC-file](/doc/user-guide/dvc-file-format)
+Lock a [`.dvc` file](/doc/user-guide/dvc-file-format)
 ([stage](/doc/command-reference/run)). Use `dvc unlock` to unlock the file.
 
 ## Synopsis
@@ -9,12 +9,12 @@ Lock a [DVC-file](/doc/user-guide/dvc-file-format)
 usage: dvc lock [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-  targets        DVC-files to lock.
+  targets        `.dvc` files to lock.
 ```
 
 ## Description
 
-`dvc lock` causes any DVC-file to be considered _not changed_ by `dvc status`
+`dvc lock` causes any `.dvc` file to be considered _not changed_ by `dvc status`
 and `dvc repro`. Stage reproduction will not execute regenerate
 <abbr>outputs</abbr> of locked stages, even if some dependencies have changed,
 and even if `--force` is provided.
@@ -39,7 +39,7 @@ external data source. [Unlock](/doc/command-reference/unlock) them before using
 
 ## Examples
 
-First, let's create a simple DVC-file:
+First, let's create a simple `.dvc` file:
 
 ```dvc
 $ echo foo > foo
