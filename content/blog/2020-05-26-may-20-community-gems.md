@@ -78,7 +78,7 @@ One caveat: before you delete, make sure no one is actively running `dvc push`.
 If you're getting the error,
 
 ```
-: `ERROR: unexpected error - ('invalid_grant: Bad Request', '{\n "error": "invalid_grant",\n "error_description": "Bad Request"\n}')`
+ERROR: unexpected error - ('invalid_grant: Bad Request', '{\n "error": "invalid_grant",\n "error_description": "Bad Request"\n}')
 ```
 
 something is going wrong with your GCP authentication! A few things to check:
@@ -105,5 +105,5 @@ synchronize an artifact, like a model or dataset, with its latest version using
 our [data registry use case](https://dvc.org/doc/use-cases/data-registries) for
 an example of sharing artifacts across projects.
 
-![](/uploads/images/2020-05-26/data-registry.png) _Using DVC for sharing
+![](/static/uploads/images/2020-05-26/data-registry.png) _Using DVC for sharing
 artifacts like datasets and models across projects and teammates._
