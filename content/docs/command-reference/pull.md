@@ -132,18 +132,12 @@ The workspace looks almost like in this
 .
 ├── data
 │   └── data.xml.dvc
-├── evaluate.dvc
-├── featurize.dvc
-├── prepare.dvc
-├── train.dvc
-└── src
-│   └── ...
+...
 └── train.dvc
 ```
 
-We can now just run `dvc pull` to download the most recent `model.pkl`,
-`data.xml`, and other DVC-tracked files into our local <abbr>cache</abbr> and
-<abbr>workspace</abbr>:
+We can now just run `dvc pull` to download the most recent `data/data.xml`, `model.pkl`, and other DVC-tracked files into the <abbr>workspace</abbr> and
+<abbr>cache</abbr>:
 
 ```dvc
 $ dvc pull
@@ -153,22 +147,24 @@ example-get-started/
 ├── data
 │   ├── data.xml
 │   ├── data.xml.dvc
-│   ├── features
-│   │   ├── test.pkl
-│   │   └── train.pkl
-│   └── prepared
-│       ├── test.tsv
-│       └── train.tsv
-├── ...
+│   └── ...
+...
+├── model.pkl
+└── train.dvc
+ 
 ```
 
 We can download specific <abbr>outputs</abbr> of a single DVC-file:
 
 ```dvc
-$ dvc pull prepare.dvc
+$ dvc pull train.dvc
 ```
 
 ## Example: With dependencies
+
+> If you followed previous example then delete the .dvc/cache directory with
+> `rm -Rf .dvc/cache`. Else `dvc status -c` would output `Data and pipelines are
+> up to date.`
 
 Our [pipeline](/doc/command-reference/pipeline) has been setup with these
 [stages](/doc/command-reference/run):
@@ -182,17 +178,16 @@ train.dvc
 evaluate.dvc
 ```
 
-Imagine the remote storage has been modified such that the data in some of these
-stages should be updated in the <abbr>workspace</abbr>.
+Imagine the [remote storage](/doc/command-reference/remote) has been modified
+such that the data in some of these stages should be updated in the
+<abbr>workspace</abbr>.
 
 ```dvc
 $ dvc status -c
     deleted:            data/features/test.pkl
     deleted:            data/features/train.pkl
     deleted:            model.pkl
-    deleted:            data/prepared/test.tsv
-    deleted:            data/prepared/train.tsv
-    deleted:            data/data.xml
+    ...
 ```
 
 One could do a simple `dvc pull` to get all the data, but what if you only want
@@ -201,29 +196,17 @@ to retrieve part of the data?
 ```dvc
 $ dvc pull --with-deps featurize.dvc
 
-... Do some work based on the partial update
-
-$ dvc pull --with-deps evaluate.dvc
-
-... Pull the rest of the data
+... Use the partial update, then pull the remaining data:
 
 $ dvc pull
-
 Everything is up to date.
 ```
 
 With the first `dvc pull` we specified a stage in the middle of this pipeline
 (`featurize.dvc`) while using `--with-deps`. DVC started with that DVC-file and
-searched backwards through the pipeline for data files to download. Because the
-`evaluate.dvc` stage occurs later, its data was not pulled.
+searched backwards through the pipeline for data files to download.
 
-Then we ran `dvc pull` specifying the last stage, `evaluate.dvc`, and its data
-was downloaded. Finally, we ran `dvc pull` with no flags to make sure that all
-data was already pulled with the previous commands.
-
-> Note that if you followed previous example, then `dvc status -c` would output
-> `Data and pipelines are up to date.` The last stage file `evaluate.dvc`
-> doesn't add any more data files than those form previous stages
+Then we ran `dvc pull` to download all the remaining data files.
 
 ## Example: Download from specific remote storage
 
