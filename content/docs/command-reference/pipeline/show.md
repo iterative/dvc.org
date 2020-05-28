@@ -2,7 +2,7 @@
 
 Show [stages](/doc/command-reference/run) in a pipeline that lead to the
 specified stage. By default it lists
-[DVC-files](/doc/user-guide/dvc-file-format).
+[DVC-files](/doc/user-guide/dvc-metafile-formats).
 
 ## Synopsis
 

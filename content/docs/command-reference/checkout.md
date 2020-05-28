@@ -16,9 +16,9 @@ positional arguments:
 
 ## Description
 
-[DVC-files](/doc/user-guide/dvc-file-format) act as pointers to specific version
-of data files or directories tracked by DVC. This command synchronizes the
-workspace data with the versions specified in the current DVC-files.
+[DVC-files](/doc/user-guide/dvc-metafile-formats) act as pointers to specific
+version of data files or directories tracked by DVC. This command synchronizes
+the workspace data with the versions specified in the current DVC-files.
 
 `dvc checkout` is useful, for example, when using Git in the
 <abbr>project</abbr>, after `git clone`, `git checkout`, or any other operation

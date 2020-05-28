@@ -21,7 +21,7 @@ operation:
 
   > Note that DVC includes the cache directory in `.gitignore` during
   > initialization. No data tracked by DVC will ever be pushed to the Git
-  > repository, only [DVC-files](/doc/user-guide/dvc-file-format) that are
+  > repository, only [DVC-files](/doc/user-guide/dvc-metafile-formats) that are
   > needed to download or reproduce them.
 
 - `.dvc/plots`: Directory for
@@ -84,7 +84,7 @@ $ dvc add data/images
 ```
 
 When running `dvc add` on this directory of images, a `data/images.dvc`
-[DVC-file](/doc/user-guide/dvc-file-format) is created, containing the hash
+[DVC-file](/doc/user-guide/dvc-metafile-formats) is created, containing the hash
 value of the directory:
 
 ```yaml

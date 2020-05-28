@@ -13,9 +13,9 @@ positional arguments:
 
 ## Description
 
-Sets the `metric` field in the [DVC-file](/doc/user-guide/dvc-file-format) that
-defines the given `path` as an <abbr>output</abbr>, marking `path` as a metric
-file to track.
+Sets the `metric` field in the [DVC-file](/doc/user-guide/dvc-metafile-formats)
+that defines the given `path` as an <abbr>output</abbr>, marking `path` as a
+metric file to track.
 
 Note that outputs can also be marked as metrics via the `-m` or `-M` options of
 `dvc run`. We recommend using `-M` option to keep metrics in Git history.
@@ -65,8 +65,8 @@ $ dvc run -O metrics.json \
 
 Even when we named this output file `metrics.json`, DVC won't know that it's a
 metric if we don't specify so. The content of stage file `metrics.json.dvc` (a
-[DVC-file](/doc/user-guide/dvc-file-format)) should look like this: (Notice the
-`metric: false` field.)
+[DVC-file](/doc/user-guide/dvc-metafile-formats)) should look like this: (Notice
+the `metric: false` field.)
 
 ```yaml
 md5: 906ea9489e432c85d085b248c712567b

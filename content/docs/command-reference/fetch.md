@@ -22,7 +22,7 @@ of the project, but without placing them in the <abbr>workspace</abbr>. This
 makes the data files available for linking (or copying) into the workspace.
 (Refer to [dvc config cache.type](/doc/command-reference/config#cache).) Along
 with `dvc checkout`, it's performed automatically by `dvc pull` when the target
-[DVC-files](/doc/user-guide/dvc-file-format) are not already in the cache:
+[DVC-files](/doc/user-guide/dvc-metafile-formats) are not already in the cache:
 
 ```
 Controlled files             Commands
@@ -49,7 +49,7 @@ on DVC remotes.) These necessary data or model files are listed as
 [stage](/doc/command-reference/run)) so they are required to
 [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
 corresponding [pipeline](/doc/command-reference/pipeline). (See
-[DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
+[DVC-File Format](/doc/user-guide/dvc-metafile-formats) for more information on
 dependencies and outputs.)
 
 `dvc fetch` ensures that the files needed for a DVC-file to be
@@ -276,12 +276,12 @@ $ tree .dvc/cache
 ```
 
 Fetching using `--with-deps` starts with the target
-[DVC-file](/doc/user-guide/dvc-file-format) (`train.dvc` stage) and searches
-backwards through its pipeline for data to download into the project's cache.
-All the data for the second and third stages ("featurize" and "train") has now
-been downloaded to the cache. We could now use `dvc checkout` to get the data
-files needed to reproduce this pipeline up to the third stage into the workspace
-(with `dvc repro train.dvc`).
+[DVC-file](/doc/user-guide/dvc-metafile-formats) (`train.dvc` stage) and
+searches backwards through its pipeline for data to download into the project's
+cache. All the data for the second and third stages ("featurize" and "train")
+has now been downloaded to the cache. We could now use `dvc checkout` to get the
+data files needed to reproduce this pipeline up to the third stage into the
+workspace (with `dvc repro train.dvc`).
 
 > Note that in this example project, the last stage file `evaluate.dvc` doesn't
 > add any more data files than those form previous stages, so at this point all

@@ -67,8 +67,8 @@ with the `dvc push` command:
 $ dvc push
 ```
 
-Code and [DVC-files](/doc/user-guide/dvc-file-format) can be safely committed
-and pushed with Git.
+Code and [DVC-files](/doc/user-guide/dvc-metafile-formats) can be safely
+committed and pushed with Git.
 
 ## Download code
 

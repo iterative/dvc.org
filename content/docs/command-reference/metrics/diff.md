@@ -35,7 +35,7 @@ difference (delta) from the previous value of metrics (with 3-digit accuracy).
 They're calculated between two commits (hash, branch, tag, or any
 [Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
 <abbr>project</abbr>, found by examining all of the
-[DVC-files](/doc/user-guide/dvc-file-format) in both references.
+[DVC-files](/doc/user-guide/dvc-metafile-formats) in both references.
 
 ## Options
 

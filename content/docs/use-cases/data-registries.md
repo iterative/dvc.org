@@ -36,8 +36,9 @@ Advantages of using a DVC **data registry**:
   copies on other remotes). This simplifies data management and optimizes space
   requirements.
 - Security: Registries can be setup to have read-only remote storage (e.g. an
-  HTTP location). Git versioning of [DVC-files](/doc/user-guide/dvc-file-format)
-  allows us to track and audit data changes.
+  HTTP location). Git versioning of
+  [DVC-files](/doc/user-guide/dvc-metafile-formats) allows us to track and audit
+  data changes.
 - Data as code: Leverage Git workflow such as commits, branching, pull requests,
   reviews, and even CI/CD for your data and models lifecycle. Think Git for
   cloud storage, but without ad-hoc conventions.
@@ -65,10 +66,10 @@ $ dvc add music/songs
 > [MillionSongSubset](http://millionsongdataset.com/pages/getting-dataset/#subset).
 
 A regular Git workflow can be followed with the tiny
-[DVC-files](/doc/user-guide/dvc-file-format) that substitute the actual data
-(`music/songs.dvc` in this example). This enables team collaboration on data at
-the same level as with source code (commit history, branching, pull requests,
-reviews, etc.):
+[DVC-files](/doc/user-guide/dvc-metafile-formats) that substitute the actual
+data (`music/songs.dvc` in this example). This enables team collaboration on
+data at the same level as with source code (commit history, branching, pull
+requests, reviews, etc.):
 
 ```dvc
 $ git add music/songs.dvc music/.gitignore
@@ -147,8 +148,8 @@ $ dvc import https://github.com/example/registry \
 
 Besides downloading, importing saves the dependency from the local project to
 the data source (registry repo). This is achieved by creating a particular kind
-of [DVC-file](/doc/user-guide/dvc-file-format) (a.k.a. _import stage_). This
-file can be used staged and committed with Git.
+of [DVC-file](/doc/user-guide/dvc-metafile-formats) (a.k.a. _import stage_).
+This file can be used staged and committed with Git.
 
 As an addition to the import workflow, and enabled the saved dependency, we can
 easily bring it up to date in our consumer project(s) with `dvc update` whenever

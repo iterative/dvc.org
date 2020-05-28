@@ -1,6 +1,6 @@
 # lock
 
-Lock a [DVC-file](/doc/user-guide/dvc-file-format)
+Lock a [DVC-file](/doc/user-guide/dvc-metafile-formats)
 ([stage](/doc/command-reference/run)). Use `dvc unlock` to unlock the file.
 
 ## Synopsis

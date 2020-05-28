@@ -69,9 +69,9 @@ $ dvc run -f prepare.dvc \
 ```
 
 The `prepare.dvc` _stage file_ is generated. It has the same
-[format](/doc/user-guide/dvc-file-format) as the DVC-file we created previously
-to [tack data](/doc/tutorials/get-started/data-versioning#changes), but it
-additionally includes information about the command we ran
+[format](/doc/user-guide/dvc-metafile-formats) as the DVC-file we created
+previously to [tack data](/doc/tutorials/get-started/data-versioning#changes),
+but it additionally includes information about the command we ran
 (`python src/prepare.py`), the <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
 

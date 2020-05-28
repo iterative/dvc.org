@@ -17,9 +17,9 @@ positional arguments:
 ## Description
 
 Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
-[DVC-files](/doc/user-guide/dvc-file-format). If `targets` are provided, it will
-show those specific metric files instead. With the `-a` or`-T` options, this
-command shows the different metrics values across all Git branches or tags,
+[DVC-files](/doc/user-guide/dvc-metafile-formats). If `targets` are provided, it
+will show those specific metric files instead. With the `-a` or`-T` options,
+this command shows the different metrics values across all Git branches or tags,
 respectively.
 
 The optional `targets` argument can contain one or more metric files. With the
@@ -28,7 +28,7 @@ shows all metric files inside.
 
 Providing a `type` (`-t` option) overrides the full metric specification (both
 `type` and `xpath` fields) defined in the
-[DVC-file](/doc/user-guide/dvc-file-format) (with `dvc metrics modify`,
+[DVC-file](/doc/user-guide/dvc-metafile-formats) (with `dvc metrics modify`,
 typically).
 
 If `type` (via `-t`) is not specified and only `xpath` (`-x` option) is, only

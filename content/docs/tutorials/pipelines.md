@@ -97,7 +97,7 @@ $ dvc add data/Posts.xml.zip
 ```
 
 When we run `dvc add` `Posts.xml.zip`, DVC creates a
-[DVC-file](/doc/user-guide/dvc-file-format).
+[DVC-file](/doc/user-guide/dvc-metafile-formats).
 
 <details>
 

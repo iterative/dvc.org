@@ -28,8 +28,8 @@ $ dvc add data/data.xml
 
 DVC stores information about the added file in a special _DVC-file_ named
 `data/data.xml.dvc`, a small text file with a human-readable
-[format](/doc/user-guide/dvc-file-format). This metafile can committed with Git
-instead, as a placeholder for the original data (which is added to
+[format](/doc/user-guide/dvc-metafile-formats). This metafile can committed with
+Git instead, as a placeholder for the original data (which is added to
 `.gitignore`):
 
 ```dvc
@@ -110,8 +110,9 @@ data\data.xml.dvc:
 $ dvc add data/data.xml
 ```
 
-DVC updates the `data/data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format)
-to match the updated data. Let's commit this new version with Git:
+DVC updates the `data/data.xml.dvc`
+[DVC-file](/doc/user-guide/dvc-metafile-formats) to match the updated data.
+Let's commit this new version with Git:
 
 <details>
 
@@ -201,7 +202,7 @@ $ dvc push
 ```
 
 > Usually, we also want to `git commit` and `git push` the corresponding
-> [DVC-files](/doc/user-guide/dvc-file-format).
+> [DVC-files](/doc/user-guide/dvc-metafile-formats).
 
 Pushing data or models ensures they're safely backed up remotely. This also
 means they can be retrieved from other environments.
@@ -330,9 +331,10 @@ The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 
 </details>
 
-Additionally, the `data/data.xml` [DVC-file](/doc/user-guide/dvc-file-format)
-now includes metadata to track changes in the source data. This allows you to
-bring in changes from the data source later, using `dvc update`.
+Additionally, the `data/data.xml`
+[DVC-file](/doc/user-guide/dvc-metafile-formats) now includes metadata to track
+changes in the source data. This allows you to bring in changes from the data
+source later, using `dvc update`.
 
 ### Python API
 

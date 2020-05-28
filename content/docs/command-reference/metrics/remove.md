@@ -16,9 +16,10 @@ positional arguments:
 
 ## Description
 
-This command finds a corresponding [DVC-file](/doc/user-guide/dvc-file-format)
-for the provided metric file (`path` is defined among the <abbr>outputs</abbr>
-of the DVC-file), and resets the `metric` field for the file.
+This command finds a corresponding
+[DVC-file](/doc/user-guide/dvc-metafile-formats) for the provided metric file
+(`path` is defined among the <abbr>outputs</abbr> of the DVC-file), and resets
+the `metric` field for the file.
 
 This does not remove or delete the file in question. It only unmarks it as a
 metric file. It also keeps the file as an output of the corresponding DVC-file.
@@ -81,7 +82,7 @@ $ dvc metrics remove metrics.json
 ```
 
 Let's check the outputs field (`outs`) of same
-[DVC-file](/doc/user-guide/dvc-file-format) again:
+[DVC-file](/doc/user-guide/dvc-metafile-formats) again:
 
 ```yaml
 outs:
