@@ -1,47 +1,56 @@
 # DVC Metafile Formats
 
-There are two special metafiles created by DVC commands:
+There are two special metafiles created by certain
+[DVC commands](/doc/command-reference):
 
 - Files ending with the `.dvc` extension are basic placeholders to version data
-  files and directories. A <abbr>project</abbr> can have multiple `.dvc` files.
-- The `dvc.yaml` file or _pipeline(s) file_ specifies stages that form the
-  pipeline(s) of a project, and their connections (_dependency graph_ or DAG).
+  files and directories. A <abbr>DVC project</abbr> can have multiple
+  [`.dvc` files](#dvc-files).
+- The [`dvc.yaml` file](#dvcyaml-file) or _pipeline(s) file_ specifies stages
+  that form the pipeline(s) of a project, and their connections (_dependency
+  graph_ or DAG).
 
 Both use human-friendly YAML schemas, described below. We encourage you to get
-familiar with them so you may edit them freely, as needed.
+familiar with them so you may edit them freely, as needed. Both type of files
+should be versioned with Git (for Git-enabled <abbr>repositories</abbr>).
 
-Both type of files should be versioned with Git (for Git-enabled
-<abbr>repositories</abbr>).
+> See the [Syntax Highlighting](/doc/install/plugins) to learn how to enable the
+> highlighting for your editor.
 
 ## .dvc files
 
-When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add`, a
-`.dvc` file is created based on the data file name (e.g. `data.txt.dvc`). These
-files contain all the needed information to track your data with DVC. They use a
-simple YAML format that can be easily written or altered manually.
+When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add` or
+`dvc import`, a `.dvc` file is created based on the data file name (e.g.
+`data.xml.dvc`). These files contain the basic information needed to track the
+data with DVC.
 
-See the [Syntax Highlighting](/doc/install/plugins) to learn how to enable the
-highlighting for your editor.
-
-Here is a sample `.dvc` file:
+They use a simple YAML format that can be easily written or altered manually.
+Here is a sample:
 
 ```yaml
 outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
-# Comments like this line persist through multiple executions of
-# dvc repro/commit but not through dvc run/add/import-url/get-url commands.
+# Manual comments can be added in.
 ```
 
-On the top level, `.dvc` file consists of these possible fields:
+`.dvc` files contain a single top field:
 
-- `outs`: List of <abbr>outputs</abbr> for this stage
+- `outs` - list of <abbr>outputs</abbr> for this `.dvc` file
 
-An output entry consists of these fields:
+An output entry can consist of these fields:
 
-- `md5`: MD5 hash for the output
-- `path`: Path to the output, relative to the `wdir` path
-- `cache`: Whether or not DVC should cache the output
+- `md5` - hash value for the output file
+- `path` - path to the output in the <abbr>workspace</abbr>, relative to the
+  location of the `.dvc` file
+- `cache` - (optional) whether or not DVC should cache the output. `true` by
+  default
+
+Note that comments can be added to DVC metafiles using the `# comment` syntax.
+
+> `.dvc` file comments are preserved among executions of the `dvc repro` and
+> `dvc commit` commands, but not when a `.dvc` file is overwritten by
+> `dvc add`,`dvc import`, or `dvc import-url`.
 
 ## dvc.yaml file
 
@@ -49,45 +58,34 @@ When you add commands to a pipeline with `dvc run`, the `dvc.yaml` file is
 created or updated. Here's a simple example:
 
 ```yaml
-always_changed: true
-locked: true
-cmd: python cmd.py input.data output.data metrics.json
-deps:
-  - md5: da2259ee7c12ace6db43644aef2b754c
-    path: cmd.py
-  - md5: e309de87b02312e746ec5a500844ce77
-    path: input.data
-md5: 521ac615cfc7323604059d81d052ce00
-outs:
-  - cache: true
-    md5: 70f3c9157e3b92a6d2c93eb51439f822
-    metric: false
-    path: output.data
-  - cache: false
-    md5: d7a82c3cdfd45c4ace13484a931fc526
-    metric:
-      type: json
-      xpath: AUC
-    path: metrics.json
-
-# Comments like this line persist through multiple executions of
-# dvc repro/commit but not through dvc run/add/import-url/get-url commands.
-
-meta: # Special field to contain arbitrary user data
-  name: John
-  email: john@xyz.com
+stages:
+  firstone:
+    cmd: python cmd.py input.data output.data metrics.json
+    deps:
+    - cmd.py
+    - input.data
+    outs:
+    - output.data
+    metrics:
+    - metrics.json
+  nextone:
+    cmd: python ...
+    ...
 ```
 
-On the top level, `.dvc` file consists of these possible fields:
+`dvc.yaml` files consists of a group of `stages` with names provided explicitly
+by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
+the following fields:
 
-- `cmd`: Executable command defined in this stage
-- `wdir`: Directory to run command in (default `.`)
-- `md5`: MD5 hash for this DVC-file
-- `deps`: List of dependencies for this stage
-- `outs`: List of <abbr>outputs</abbr> for this stage
-- `locked`: Whether or not this stage is locked from reproduction
-- `always_changed`: Whether or not this stage is considered as changed by
-  commands such as `dvc status` and `dvc repro` (default `false`)
+- `cmd` - executable command defined in this stage
+- `deps` - list of <abbr>dependencies</abbr> for this stage
+- `params` - (optional) list of the [parameter](/doc/command-reference/params)
+  names and their current values
+- `outs` - list of <abbr>outputs</abbr> for this stage
+- `metric` - (optional) list of [metric](/doc/command-reference/metrics) files
+- `locked` - (optional) whether or not this stage is locked from reproduction
+- `always_changed` (optional) - whether or not this stage is considered as
+  changed by commands such as `dvc status` and `dvc repro`. `false` by default
 
 A dependency entry consists of a these possible fields:
 
@@ -95,8 +93,6 @@ A dependency entry consists of a these possible fields:
 - `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
 - `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
-- `params`: If this is a [parameter dependency](/doc/command-reference/params)
-  file, contains a list of the parameter names and their current values.
 - `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
@@ -114,25 +110,19 @@ A dependency entry consists of a these possible fields:
 
 An output entry consists of these fields:
 
-- `path`: Path to the output, relative to the `wdir` path
-- `md5`: MD5 hash for the output
-- `cache`: Whether or not DVC should cache the output
-- `metric`: If this file is a [metric](/doc/command-reference/metrics), contains
-  the following fields:
+- `md5` - hash value for the output file
+- `path` - path to the output in the <abbr>workspace</abbr>, relative to the
+  location of the `.dvc` file
+- `cache` - (optional) whether or not DVC should cache the output. `true` by
+  default
 
-  - `type`: Type of the metric file (`json`)
-  - `xpath`: Path within the metric file to the metrics data(e.g. `AUC.value`
-    for `{"AUC": {"value": 0.624321}}`)
+Metrics entries can contain these fields:
 
-A `meta` entry consists of `key: value` pairs such as `name: John`. A meta entry
-can have any valid YAML structure containing any number of attributes.
-`"meta: string"` is also possible, it doesn't need to contain a _hash_ structure
-(a.k.a. dictionary) always.
+- `type`: Type of the metric file (`json`)
+- `xpath`: Path within the metric file to the metrics data(e.g. `AUC.value` for
+  `{"AUC": {"value": 0.624321}}`)
 
-Comments can be added to the DVC-file using `# comment` syntax. Comments and
-meta values are preserved among executions of the `dvc repro` and `dvc commit`
-commands.
+`dvc.yaml` files also support `# comments`.
 
-> Note that comments and meta values are not preserved when a DVC-file is
-> overwritten with the `dvc run`,`dvc add`,`dvc import`, and `dvc import-url`
-> commands.
+> `dvc.yaml` comments are preserved among executions of `dvc run`, `dvc repro`,
+> and `dvc commit`.
