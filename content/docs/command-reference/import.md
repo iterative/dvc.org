@@ -233,15 +233,15 @@ use case.
 
 You can even import files from plain Git repos that are not <abbr>DVC
 repositories</abbr>. For example, let's import a dataset from
-[GSA's data repo](https://github.com/GSA/data).
-
-> Note that Git-tracked files can be imported from DVC repos as well.
+[GSA's data repo](https://github.com/GSA/data):
 
 ```dvc
 $ dvc import git@github.com:GSA/data \
            enterprise-architecture/it-standards.csv
 Importing ...
 ```
+
+> Note that Git-tracked files can be imported from DVC repos as well.
 
 The file is imported, and along with it, an import stage
 ([DVC-file](/doc/user-guide/dvc-file-format)) file is created. Check
