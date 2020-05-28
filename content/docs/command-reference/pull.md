@@ -247,6 +247,3 @@ To download DVC-tracked data from a specific DVC remote, use the `--remote`
 ```dvc
 $ dvc pull --remote r1
 ```
-
-This downloads all DVC-tracked files into our local <abbr>cache</abbr> and
-<abbr>workspace</abbr>.
