@@ -6,5 +6,5 @@ links:
 ---
 
 Creator of [http://dvc.org](http://dvc.org) — Git for ML. Ex-Data Scientist
-[http://twitter.com/Microsoft](@Microsoft). PhD in CS. Making jokes with a
+[@Microsoft](http://twitter.com/Microsoft). PhD in CS. Making jokes with a
 serious face.
