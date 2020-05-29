@@ -8,6 +8,14 @@ async function createAuthorSchemaCustomization(api) {
   } = api
   const typeDefs = [
     buildObjectType({
+      name: 'AuthorLink',
+      fields: {
+        url: 'String!',
+        site: 'String',
+        username: 'String'
+      }
+    }),
+    buildObjectType({
       name: 'AuthorPosts',
       fields: {
         totalCount: 'Int!',
@@ -19,7 +27,7 @@ async function createAuthorSchemaCustomization(api) {
       interfaces: ['Node'],
       fields: {
         ...markdownParentFields,
-        links: '[String]',
+        links: '[AuthorLink]',
         slug: 'String',
         avatar: {
           type: 'ImageSharp',

@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Link from '../../../Link'
 import Image, { FixedObject, FluidObject } from 'gatsby-image'
 import cn from 'classnames'
+import { ISocialIcon } from '../../../SocialIcon'
 
 import FeedMeta from '../../FeedMeta'
 
@@ -28,6 +29,7 @@ export interface IBlogPostData {
     avatar: {
       fixed: FixedObject
     }
+    links: Array<ISocialIcon>
   }
 }
 
@@ -40,7 +42,7 @@ const Item: React.FC<IBlogFeedItemProps> = ({
   big,
   feedPost: { title, description, date, picture, author, slug, timeToRead }
 }) => {
-  const { avatar, name } = author
+  const { avatar, name, links } = author
   const bodyRef = useRef<HTMLDivElement>(null)
   const { width } = useWindowSize()
   const [isOverflown, setIsOverflown] = useRafState(true)
@@ -84,6 +86,7 @@ const Item: React.FC<IBlogFeedItemProps> = ({
           name={name}
           avatar={avatar}
           date={date}
+          links={links}
           timeToRead={timeToRead}
         />
       </div>
@@ -120,6 +123,10 @@ export const query = graphql`
     }
     author {
       name
+      links {
+        url
+        site
+      }
       avatar {
         fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
           ...GatsbyImageSharpFixed_withWebp

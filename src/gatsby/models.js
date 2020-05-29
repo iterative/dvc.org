@@ -6,6 +6,7 @@ const imageSourcePaths = require('./models/image-source-paths')
 const jsonFiles = require('./models/json-files')
 const communityPage = require('./models/community')
 const glossary = require('./models/glossary')
+const github = require('./models/github')
 
 const models = [
   markdownContent,
@@ -15,7 +16,8 @@ const models = [
   imageSourcePaths,
   jsonFiles,
   communityPage,
-  glossary
+  glossary,
+  github
 ]
 
 module.exports = models
