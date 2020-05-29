@@ -1,6 +1,7 @@
 # plots show
 
-Generate a plot image from from a [metrics](/doc/command-reference/plots) file.
+Generate a plot image from from a
+[continuous metrics](/doc/command-reference/plots) file.
 
 ## Synopsis
 
