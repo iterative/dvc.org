@@ -1,7 +1,7 @@
 # run
 
-Generate a stage file ([`.dvc` file](/doc/user-guide/dvc-file-format)) from a given
-command and execute the command.
+Generate a stage file ([`.dvc` file](/doc/user-guide/dvc-file-format)) from a
+given command and execute the command.
 
 ## Synopsis
 
@@ -43,10 +43,10 @@ and outputs to connect different stages, it checks the graph's integrity before
 creating a new stage. For example, for every output there should be only one
 stage that explicitly specifies it, there should be no cycles, etc.
 
-Unless the `-f` options is used, the stage file (`.dvc` file) is generated in the
-current working directory and named `<file>.dvc`, where `<file>` is file name of
-the first output (`-o`, `-O`, `-m`, or `-M` option). If neither `-f` nor outputs
-are specified, the file name defaults to `Dvcfile`.
+Unless the `-f` options is used, the stage file (`.dvc` file) is generated in
+the current working directory and named `<file>.dvc`, where `<file>` is file
+name of the first output (`-o`, `-O`, `-m`, or `-M` option). If neither `-f` nor
+outputs are specified, the file name defaults to `Dvcfile`.
 
 Note that `dvc run` executes the given `command` in order to check its validity
 and to write the defined outputs, unless the same `dvc run` command has already
@@ -94,8 +94,8 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
   and thus executing stages as required to regenerate their output. A special
   case is when no dependencies are specified.
 
-  > Note that a `.dvc` file without dependencies is considered always changed, so
-  > `dvc repro` always executes it.
+  > Note that a `.dvc` file without dependencies is considered always changed,
+  > so `dvc repro` always executes it.
 
 - `-p [<filename>:]<params_list>`, `--params [<filename>:]<params_list>` -
   specify a set of [parameter dependencies](/doc/command-reference/params) the
@@ -145,13 +145,13 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 - `-w <path>`, `--wdir <path>` - specifies a working directory for the `command`
   to run in. `dvc run` expects that dependencies, outputs, metric files are
   specified relative to this directory. This value is saved in the `wdir` field
-  of the stage file generated (as a relative path to the location of the
-  `.dvc` file) and is used by `dvc repro` to change the working directory before
+  of the stage file generated (as a relative path to the location of the `.dvc`
+  file) and is used by `dvc repro` to change the working directory before
   executing the `command`.
 
 - `--no-exec` - create a stage file, but do not execute the `command` defined in
-  it, nor track dependencies or outputs with DVC. In the `.dvc` file contents, the
-  file hash values will be empty; They will be populated the next time this
+  it, nor track dependencies or outputs with DVC. In the `.dvc` file contents,
+  the file hash values will be empty; They will be populated the next time this
   stage is actually executed. DVC will also add your outputs to `.gitignore`,
   same as it would do without `--no-exec`. This is useful if, for example, you
   need to build a pipeline (dependency graph) first, and then run it all at

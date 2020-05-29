@@ -16,9 +16,9 @@ positional arguments:
 
 ## Description
 
-[`.dvc` files](/doc/user-guide/dvc-file-format) act as pointers to specific version
-of data files or directories tracked by DVC. This command synchronizes the
-workspace data with the versions specified in the current `.dvc` files.
+[`.dvc` files](/doc/user-guide/dvc-file-format) act as pointers to specific
+version of data files or directories tracked by DVC. This command synchronizes
+the workspace data with the versions specified in the current `.dvc` files.
 
 `dvc checkout` is useful, for example, when using Git in the
 <abbr>project</abbr>, after `git clone`, `git checkout`, or any other operation
@@ -72,8 +72,8 @@ be pulled from remote storage using `dvc pull`.
   the workspace, instead of a full list of changes.
 
 - `-R`, `--recursive` - determines the files to checkout by searching each
-  target directory and its subdirectories for `.dvc` files to inspect. If there are
-  no directories among the `targets`, this option is ignored.
+  target directory and its subdirectories for `.dvc` files to inspect. If there
+  are no directories among the `targets`, this option is ignored.
 
 - `-d`, `--with-deps` - determines files to update by tracking dependencies to
   the target `.dvc` files (stages). If no `targets` are provided, this option is
@@ -82,9 +82,9 @@ be pulled from remote storage using `dvc pull`.
   files referenced in later stages than the `targets`.
 
 - `-f`, `--force` - does not prompt when removing workspace files. Changing the
-  current set of `.dvc` files with `git checkout` can result in the need for DVC to
-  remove files that don't match those `.dvc` file references or are missing from
-  cache. (They are not "committed", in DVC terms.)
+  current set of `.dvc` files with `git checkout` can result in the need for DVC
+  to remove files that don't match those `.dvc` file references or are missing
+  from cache. (They are not "committed", in DVC terms.)
 
 - `--relink` - ensures the file linking strategy (`reflink`, `hardlink`,
   `symlink`, or `copy`) for all data in the workspace is consistent with the
@@ -188,8 +188,8 @@ MD5 (model.pkl) = 662eb7f64216d9c2c1088d0a5e2c6951
 ```
 
 This is because `git checkout` changed `featurize.dvc`, `train.dvc`, and other
-`.dvc` files. But it did nothing with the `model.pkl` and `matrix.pkl` files. Git
-doesn't track those files; DVC does, so we must do this:
+`.dvc` files. But it did nothing with the `model.pkl` and `matrix.pkl` files.
+Git doesn't track those files; DVC does, so we must do this:
 
 ```dvc
 $ dvc checkout

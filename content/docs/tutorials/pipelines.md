@@ -74,8 +74,8 @@ utilizing the same set of commands that are described in earlier
 [Get Started](/doc/tutorials/get-started) chapters.
 
 > Note that its possible to define more than one pipeline in each DVC project.
-> This will be determined by the interdependencies between `.dvc` files, mentioned
-> below.
+> This will be determined by the interdependencies between `.dvc` files,
+> mentioned below.
 
 Initialize <abbr>DVC repository</abbr> (run it inside your Git repo):
 
@@ -182,8 +182,8 @@ outs:
     persist: false
 ```
 
-Just like the `.dvc` file we created earlier with `dvc add`, this stage file uses
-`md5` hashes (that point to the <abbr>cache</abbr>) to describe and version
+Just like the `.dvc` file we created earlier with `dvc add`, this stage file
+uses `md5` hashes (that point to the <abbr>cache</abbr>) to describe and version
 control dependencies and outputs. Output `data/Posts.xml` file is saved as
 `.dvc/cache/a3/04afb96060aad90176268345e10355` and linked (or copied) to the
 <abbr>workspace</abbr>, as well as added to `.gitignore`.
@@ -264,9 +264,10 @@ $ dvc run -d code/evaluate.py -d data/model.pkl \
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and outputs in `.dvc` files, we can generate a dependency
-graph: a series of commands DVC needs to execute. `dvc repro` does this in order
-to restore a pipeline and reproduce its intermediate or final results.
+By analyzing dependencies and outputs in `.dvc` files, we can generate a
+dependency graph: a series of commands DVC needs to execute. `dvc repro` does
+this in order to restore a pipeline and reproduce its intermediate or final
+results.
 
 `dvc pipeline show` helps to visualize pipelines (run it with the `-c` option to
 see actual commands instead of `.dvc` files):

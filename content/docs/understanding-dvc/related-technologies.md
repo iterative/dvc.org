@@ -60,16 +60,17 @@ Luigi, etc.
   (DAG):
 
   - The DAG or dependency graph is defined implicitly by the connections between
-    [`.dvc` files](/doc/user-guide/dvc-file-format) (with file names `<file>.dvc`
-    or `Dvcfile`), based on their dependencies and <abbr>outputs</abbr>.
+    [`.dvc` files](/doc/user-guide/dvc-file-format) (with file names
+    `<file>.dvc` or `Dvcfile`), based on their dependencies and
+    <abbr>outputs</abbr>.
 
-  - Each `.dvc` file defines one node in the DAG. All `.dvc` files in a repository
-    make up a single pipeline (think a single Makefile). All `.dvc` files (and
-    corresponding pipeline commands) are implicitly combined through their
-    inputs and outputs, simplifying conflict resolution during merges.
+  - Each `.dvc` file defines one node in the DAG. All `.dvc` files in a
+    repository make up a single pipeline (think a single Makefile). All `.dvc`
+    files (and corresponding pipeline commands) are implicitly combined through
+    their inputs and outputs, simplifying conflict resolution during merges.
 
-  - DVC provides a simple command – `dvc run` – to generate a `.dvc` file or "stage
-    file" automatically, based on the provided command, dependencies, and
+  - DVC provides a simple command – `dvc run` – to generate a `.dvc` file or
+    "stage file" automatically, based on the provided command, dependencies, and
     outputs.
 
 - File tracking:
@@ -99,9 +100,9 @@ Luigi, etc.
   Git-annex repository is cloned via `git clone`, data files won't be copied to
   the local machine, as file contents are stored in separate
   [remotes](/doc/command-reference/remote). With DVC,
-  [`.dvc` files](/doc/user-guide/dvc-file-format), which provide the reproducible
-  workflow, are always included in the Git repository. Hence, they can be
-  executed locally with minimal effort.
+  [`.dvc` files](/doc/user-guide/dvc-file-format), which provide the
+  reproducible workflow, are always included in the Git repository. Hence, they
+  can be executed locally with minimal effort.
 
 - DVC is not fundamentally bound to Git, and users have the option of using DVC
   without SCM.

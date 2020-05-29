@@ -47,9 +47,9 @@ Under the hood, a few actions are taken for each file (or directory) in
 6. Instructions are printed showing `git` commands for adding the files, if
    appropriate.
 
-Summarizing, the result is that the target data is replaced small `.dvc` files can
-be tracked with Git. See [DVC-File Format](/doc/user-guide/dvc-file-format) for
-more details.
+Summarizing, the result is that the target data is replaced small `.dvc` files
+can be tracked with Git. See [DVC-File Format](/doc/user-guide/dvc-file-format)
+for more details.
 
 > Note that `.dvc` files created by this command are considered _orphan stage
 > files_ because they have no _dependencies_, only outputs. These are always
@@ -58,8 +58,8 @@ more details.
 
 By default DVC tries to use reflinks (see
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
-to avoid copying any file contents and to optimize `.dvc` file operations for large
-files. DVC also supports other link types for use on file systems without
+to avoid copying any file contents and to optimize `.dvc` file operations for
+large files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
 `cache.type` config option in `dvc config cache` for more information.
 
@@ -89,8 +89,8 @@ This way you bring data provenance and make your project
 
 - `-R`, `--recursive` - determines the files to add by searching each target
   directory and its subdirectories for data files. If there are no directories
-  among the `targets`, this option is ignored. For each file found, a new
-  `.dvc` file is created using the process described in this command's description.
+  among the `targets`, this option is ignored. For each file found, a new `.dvc`
+  file is created using the process described in this command's description.
 
 - `--no-commit` - do not save outputs to cache. A `.dvc` file is created and an
   entry is added to `.dvc/state`, while nothing is added to the cache.
@@ -100,9 +100,9 @@ This way you bring data provenance and make your project
 
 - `-f <filename>`, `--file <filename>` - specify name of the `.dvc` file it
   generates. This option works only if there is a single target. By default the
-  name of the generated `.dvc` file is `<target>.dvc`, where `<target>` is the file
-  name of the given target. This option allows to set the name and the path of
-  the generated `.dvc` file.
+  name of the generated `.dvc` file is `<target>.dvc`, where `<target>` is the
+  file name of the given target. This option allows to set the name and the path
+  of the generated `.dvc` file.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -125,8 +125,8 @@ To track the changes with git run:
 	git add .gitignore data.xml.dvc
 ```
 
-As shown above, a [`.dvc` file](/doc/user-guide/dvc-file-format) has been created
-for `data.xml`. Let's explore the result:
+As shown above, a [`.dvc` file](/doc/user-guide/dvc-file-format) has been
+created for `data.xml`. Let's explore the result:
 
 ```dvc
 $ tree
@@ -149,12 +149,12 @@ meta: # Special field to contain arbitary user data
   email: john@xyz.com
 ```
 
-This is a standard `.dvc` file with only one output (in the `outs` field). The hash
-value should correspond to a file path in the <abbr>cache</abbr>.
+This is a standard `.dvc` file with only one output (in the `outs` field). The
+hash value should correspond to a file path in the <abbr>cache</abbr>.
 
 > Note that the `meta` values above were entered manually for this example. Meta
-> values and `#` comments are not preserved when a `.dvc` file is overwritten with
-> the `dvc add`, `dvc run`, `dvc import`, or `dvc import-url` commands.
+> values and `#` comments are not preserved when a `.dvc` file is overwritten
+> with the `dvc add`, `dvc run`, `dvc import`, or `dvc import-url` commands.
 
 ```dvc
 $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
@@ -194,11 +194,11 @@ Saving information to 'pics.dvc'.
 ...
 ```
 
-There are no [`.dvc` files](/doc/user-guide/dvc-file-format) generated within this
-directory structure, but the images are all added to the <abbr>cache</abbr>. DVC
-prints a message mentioning that MD5 hash values are computed for each file. A
-single `pics.dvc` `.dvc` file is generated for the top-level directory, and it
-contains:
+There are no [`.dvc` files](/doc/user-guide/dvc-file-format) generated within
+this directory structure, but the images are all added to the
+<abbr>cache</abbr>. DVC prints a message mentioning that MD5 hash values are
+computed for each file. A single `pics.dvc` `.dvc` file is generated for the
+top-level directory, and it contains:
 
 ```yaml
 md5: df06d8d51e6483ed5a74d3979f8fe42e

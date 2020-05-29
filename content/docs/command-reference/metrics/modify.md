@@ -14,10 +14,11 @@ positional arguments:
 
 ## Description
 
-This command finds a corresponding [`.dvc` file](/doc/user-guide/dvc-file-format)
-for the provided metric file (`path` is defined among the <abbr>outputs</abbr>
-of the `.dvc` file), and updates the default formatting of the metric. See the
-[options](#options) below and `dvc metrics show` for more info.
+This command finds a corresponding
+[`.dvc` file](/doc/user-guide/dvc-file-format) for the provided metric file
+(`path` is defined among the <abbr>outputs</abbr> of the `.dvc` file), and
+updates the default formatting of the metric. See the [options](#options) below
+and `dvc metrics show` for more info.
 
 If `path` isn't tracked by DVC (described in one of the <abbr>workspace</abbr>
 `.dvc` files), the following error will be raised:
@@ -33,8 +34,8 @@ ERROR: failed to modify metric file settings -
 ## Options
 
 - `-t <type>`, `--type <type>` - specify a type for the metric file. Accepted
-  values are: `json`. It will be saved into the corresponding `.dvc` file, and used
-  by `dvc metrics show` and `dvc metrics diff` to determine how to handle
+  values are: `json`. It will be saved into the corresponding `.dvc` file, and
+  used by `dvc metrics show` and `dvc metrics diff` to determine how to handle
   displaying metrics.
 
 - `-x <path>`, `--xpath <path>` - specify a path within a metric file to get a

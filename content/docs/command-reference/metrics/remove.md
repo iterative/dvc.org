@@ -16,12 +16,14 @@ positional arguments:
 
 ## Description
 
-This command finds a corresponding [`.dvc` file](/doc/user-guide/dvc-file-format)
-for the provided metric file (`path` is defined among the <abbr>outputs</abbr>
-of the `.dvc` file), and resets the `metric` field for the file.
+This command finds a corresponding
+[`.dvc` file](/doc/user-guide/dvc-file-format) for the provided metric file
+(`path` is defined among the <abbr>outputs</abbr> of the `.dvc` file), and
+resets the `metric` field for the file.
 
 This does not remove or delete the file in question. It only unmarks it as a
-metric file. It also keeps the file as an output of the corresponding `.dvc` file.
+metric file. It also keeps the file as an output of the corresponding `.dvc`
+file.
 
 If `path` isn't tracked by DVC (described in one of the <abbr>workspace</abbr>
 `.dvc` files), the following error will be raised:

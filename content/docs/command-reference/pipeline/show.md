@@ -18,10 +18,10 @@ positional arguments:
 
 ## Description
 
-`dvc show` displays the stages of a pipeline up to one or more target `.dvc` files
-(stage files). If specific `targets` are omitted, `Dvcfile` will be assumed. The
-`-c` and `-o` options allow to list the corresponding commands or data file flow
-instead of stages.
+`dvc show` displays the stages of a pipeline up to one or more target `.dvc`
+files (stage files). If specific `targets` are omitted, `Dvcfile` will be
+assumed. The `-c` and `-o` options allow to list the corresponding commands or
+data file flow instead of stages.
 
 > Note that the stages in these lists are in descending order, that is, from
 > first to last.

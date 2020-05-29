@@ -42,9 +42,9 @@ only the files (or directories) missing from the workspace by searching all
 in the <abbr>repository</abbr> (if using Git), nor will it download files that
 have not changed.
 
-The command `dvc status -c` can list files referenced in current `.dvc` files, but
-missing in the <abbr>cache</abbr>. It can be used to see what files `dvc pull`
-would download.
+The command `dvc status -c` can list files referenced in current `.dvc` files,
+but missing in the <abbr>cache</abbr>. It can be used to see what files
+`dvc pull` would download.
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those `.dvc` files. Using the `--with-deps` option, DVC tracks dependencies
@@ -58,8 +58,8 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 ## Options
 
-- `-a`, `--all-branches` - determines the files to download by examining
-  `.dvc` files in all Git branches instead of just those present in the current
+- `-a`, `--all-branches` - determines the files to download by examining `.dvc`
+  files in all Git branches instead of just those present in the current
   workspace. It's useful if branches are used to track experiments or project
   checkpoints. Note that this can be combined with `-T` below, for example using
   the `-aT` flag.
@@ -84,9 +84,9 @@ reflinks or hardlinks to put it in the workspace without copying. See
   directories among the `targets`, this option is ignored.
 
 - `-f`, `--force` - does not prompt when removing workspace files, which occurs
-  when these file no longer match the current `.dvc` file references. This option
-  surfaces behavior from the `dvc fetch` and `dvc checkout` commands because
-  `dvc pull` in effect performs those 2 functions in a single command.
+  when these file no longer match the current `.dvc` file references. This
+  option surfaces behavior from the `dvc fetch` and `dvc checkout` commands
+  because `dvc pull` in effect performs those 2 functions in a single command.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to pull from (see
@@ -186,9 +186,9 @@ Everything is up to date.
 ```
 
 With the first `dvc pull` we specified a stage in the middle of this pipeline
-(`matrix-train.p.dvc`) while using `--with-deps`. DVC started with that `.dvc` file
-and searched backwards through the pipeline for data files to download. Because
-the `model.p.dvc` stage occurs later, its data was not pulled.
+(`matrix-train.p.dvc`) while using `--with-deps`. DVC started with that `.dvc`
+file and searched backwards through the pipeline for data files to download.
+Because the `model.p.dvc` stage occurs later, its data was not pulled.
 
 Then we ran `dvc pull` specifying the last stage, `model.p.dvc`, and its data
 was downloaded. Finally, we ran `dvc pull` with no flags to make sure that all
