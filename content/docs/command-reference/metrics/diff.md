@@ -20,10 +20,9 @@ positional arguments:
 ## Description
 
 This command provides a quick way to compare metrics among experiments in the
-repository history. Requires that Git is being used to version the project
-metrics.
+repository history. It requires that Git is being used to version the metrics.
 
-> Metrics can be defined with `dvc metrics add`, ot the `-m` and `-M` options of
+> Metrics can be defined with the `-m` (`--metrics`) and `-M` options of
 > `dvc run`.
 
 Run without arguments, this command compares metrics currently present in the
@@ -35,6 +34,9 @@ They're calculated between two commits (hash, branch, tag, or any
 [Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
 <abbr>project</abbr>, found by examining all of the
 [DVC-files](/doc/user-guide/dvc-file-format) in both references.
+
+Another way to display metrics is the `dvc metrics show` command, which just
+lists all the current metrics without comparisons.
 
 ## Options
 
@@ -70,7 +72,7 @@ Start by creating a simple metrics file and commit it:
 
 ```dvc
 $ dvc run -M metrics.json \
-        'echo {\"AUC\": 0.9643, \"TP\": 527} > metrics.json'
+          'echo {\"AUC\": 0.9643, \"TP\": 527} > metrics.json'
 $ git add metrics.json metrics.json.dvc
 $ git commit -m "Add metrics file"
 ```

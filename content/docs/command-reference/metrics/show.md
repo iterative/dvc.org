@@ -16,14 +16,16 @@ positional arguments:
 ## Description
 
 Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
-[DVC-files](/doc/user-guide/dvc-file-format). If `targets` are provided, it will
-show those specific metric files instead. With the `-a` or`-T` options, this
-command shows the different metrics values across all Git branches or tags,
-respectively.
+[DVC-files](/doc/user-guide/dvc-file-format).
 
-The optional `targets` argument can contain one or more metric files. With the
-`-R` option, some of the target can even be directories, so that DVC recursively
-shows all metric files inside.
+> Metrics can be defined with the `-m` (`--metrics`) and `-M` options of
+> `dvc run`.
+
+If `targets` are provided, it will show those specific metric files instead.
+With the `-a` or`-T` options, this command shows the different metrics values
+across all Git branches or tags, respectively. With the `-R` option, some of the
+target can even be directories, so that DVC recursively shows all metric files
+inside.
 
 An alternative way to display metrics is the `dvc metrics diff` command, which
 compares them with a previous version.
@@ -84,6 +86,7 @@ cf5e7f87b72028e42e7ea05f17915b68645e93dc:
         error: 0.17304,
         TP: 528
 c7bef5524541dabf8556ed504fd02f55231f875e:
+	eval.json:
         AUC: 0.65115,
         error: 0.17304,
         TP: 528

@@ -20,9 +20,11 @@ positional arguments:
 
 In order to track metrics associated to machine learning experiments, DVC has
 the ability to mark a certain stage <abbr>outputs</abbr> as files containing
-metrics to track (see the `--metrics` option of `dvc run`). Metrics are
-project-specific floating-point or integer values e.g. AUC, ROC, _false
-positives_, etc.
+metrics to track.
+
+Metrics are project-specific floating-point or integer values e.g. AUC, ROC,
+_false positives_, etc. They can be defined with the `-m` (`--metrics`) and `-M`
+options of `dvc run`.
 
 ### Types of metrics
 
