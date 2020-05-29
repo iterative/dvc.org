@@ -26,17 +26,25 @@ Here are some Q&A's from our Discord channel that we think are worth sharing.
 
 ### Q: [How do I completely delete a file from DVC?](https://discord.com/channels/485586884165107732/563406153334128681/710546561498873886)
 
-You can simply delete a `.dvc` file to remove its target from DVC tracking, and
-then run `dvc gc` to
-[clear your DVC cache](https://dvc.org/doc/command-reference/gc#gc). If you want
-to remove a single `.dvc` file without doing a cache cleanup, look into the
-`.dvc` file and note the `md5` field inside. Then use this value to identify the
-corresponding file in your DVC cache and delete it. For example: if your target
-file has `md5: 123456`, the corresponding file in your cache will be
-`.dvc/cache/12/3456`.
+To stop tracking a file with DVC, you can simply delete the file and its corresponding `.dvc` file (if there is one) from your project. But, what if you want to entirely erase a file from DVC? 
 
-In the future, we plan to support a function like `git rm` that will allow for
-more granular delete options.
+After deleting the `.dvc` file, you'll usually want to [clear your DVC cache](https://dvc.org/doc/command-reference/gc#gc). Ordinarily, that's done with 
+`dvc gc`. However, if there's any chance the file you wish to remove might be referenced by another commit (even under a different name), be sure to use the right flag: `dvc gc --all-commits`. 
+
+If you want to remove a single `.dvc` file without doing a cache cleanup, look into the `.dvc` file and note the `md5` field inside. Then use this value to identify the corresponding file in your `.dvc/cache` and delete it. For example: if your target file has `md5`: 123456, the corresponding file in your cache will be `.dvc/cache/12/3456`.
+
+
+There's one last case worth mentioning: what if you're deleting a file inside a DVC-tracked folder? For example, say you've previously run
+
+```dvc
+dvc add data_dir
+```
+
+and now want to remove a single file (say, `image_1.png`) from `data_dir`. When DVC starts tracking a directory, it creates a corresponding `.dir` file inside `.dvc/cache` that lists every file and subfolder, as well as an `md5` for each, in a JSON format. You'll want to locate this `.dir` file in the cache, and then remove the entry corresponding to `image_1.png`. For detailed instructions about how to find `.dir` files, [see our docs about the structure of the cache](https://dvc.org/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory). 
+
+
+Having said all this... please know that in the future, we plan to support a function like `git rm` that will allow
+easier deletes from DVC! 
 
 ### Q: [Is it safe to add a custom file to my DVC remote?](https://discord.com/channels/485586884165107732/563406153334128681/707551737745244230https://discord.com/channels/485586884165107732/563406153334128681/707551737745244230)
 
