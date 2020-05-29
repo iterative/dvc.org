@@ -1,16 +1,10 @@
 # remote modify
 
-Modify the configuration of a data remote.
+Modify the configuration of a [data remote](/doc/command-reference/remote).
 
 > This command is commonly needed after `dvc remote add` or
 > [default](/doc/command-reference/remote/default) to setup credentials or other
 > customizations to each remote storage type.
-
-See also [add](/doc/command-reference/remote/add),
-[default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list),
-[remove](/doc/command-reference/remote/remove), and
-[rename](/doc/command-reference/remote/rename) commands to manage data remotes.
 
 ## Synopsis
 

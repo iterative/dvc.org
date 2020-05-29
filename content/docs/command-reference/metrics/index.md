@@ -1,6 +1,6 @@
 # metrics
 
-A set of commands to manage, collect, and display project metrics:
+A set of commands to manage, collect, and display _project metrics_:
 [show](/doc/command-reference/metrics/show), and
 [diff](/doc/command-reference/metrics/diff).
 
@@ -21,19 +21,37 @@ positional arguments:
 In order to track metrics associated to machine learning experiments, DVC has
 the ability to mark a certain stage <abbr>outputs</abbr> as files containing
 metrics to track (see the `--metrics` option of `dvc run`). Metrics are
-project-specific floating-point or integer values e.g. `AUC`, `ROC`,
-`False-Positives` etc.
+project-specific floating-point or integer values e.g. AUC, ROC, _false
+positives_, etc.
 
-[Show](/doc/command-reference/metrics/show), and
-[diff](/doc/command-reference/metrics/diff), commands are available to manage
-<abbr>DVC project</abbr> metrics.
+### Types of metrics
 
-## Formats and metrics types
+DVC has two concepts for metrics, that represent different results of machine
+learning training or data processing:
 
-Supported file formats: JSON and YAML. Metrics can be organized in a tree
-hierarchy in a JSON file or a YAML file. DVC addresses the metrics by the tree
-path. In the example below five metrics are presented: `train.accuracy`,
-`train.loss`, `train.TN`, `train.FP` and `time_real`.
+1. `dvc metrics` represent **scalar numbers** such as AUC, _true positive rate_,
+   etc.
+2. `dvc plots` can be used to visualize **continuous metrics** such as AUC
+   curves, loss functions, confusion matrices, etc.
+
+In contrast to continuous metrics,
+[scalar metrics](/doc/command-reference/metrics) should be stored in a
+hierarchical files. Unlike its `dvc plot` counterpart, `dvc metrics diff` can
+report the numeric difference between the metrics in different experiments, for
+example an `AUC` metrics that is `0.801807` and gets increase by `+0.037826`:
+
+```dvc
+$ dvc metrics diff
+    Path       Metric    Value      Change
+summary.json   AUC      0.801807   0.037826
+```
+
+### Supported file formats
+
+Metrics can be organized as tree hierarchies in JSON or YAML files. DVC
+addresses specific metrics by the tree path. In the JSON example below, five
+metrics are presented: `train.accuracy`, `train.loss`, `train.TN`, `train.FP`
+and `time_real`.
 
 ```json
 {
@@ -47,17 +65,17 @@ path. In the example below five metrics are presented: `train.accuracy`,
 }
 ```
 
-DVC itself does not ascribe any specific meaning for these numbers. Usually
-these numbers are produced by the model training or model evaluation code and
-serve as a way to compare and pick the best performing experiment.
+DVC itself does not ascribe any specific meaning for these numbers. Usually they
+are produced by the model training or model evaluation code and serve as a way
+to compare and pick the best performing experiment.
 
-## Default metrics files
+### Default metrics files
 
-`dvc metrics show` and `dvc metrics diff` commands by default use all metrics
-files that are specified in `dvc.yaml`. So, there no need to specify metrics
-file name to see the deault metrics. The metrics files can be added to
-`dvc.yaml` by options `--metrics` (`-m`) or `--metrics-no-cache` (`-M`) of
-`dvc run` command or manualy to `metrics` section of a stage:
+`dvc metrics` subcommands use all metric files that are specified in `dvc.yaml`
+by default. There's no need to specify metric file names to see these metrics.
+Metric files can be added to `dvc.yaml` with the `--metrics` (`-m`) or
+`--metrics-no-cache` (`-M`) options of `dvc run`, or manually to the `metrics`
+section of a stage in `dvc.yaml`:
 
 ```yaml
 stages:
@@ -76,21 +94,9 @@ stages:
           cache: false
 ```
 
-`False` value of the additional `cache` option specifies that this is not data
-file, it should not be moved to DVC cache and it should be commited to Git
-history instead.
-
-### Difference between continuous and scalar metrics
-
-DVC has two concepts for metrics for representing result of machine learning
-training or data processing:
-
-1. `dvc metrics` to represent scalar numbers such as AUC, true positive rate and
-   others.
-2. `dvc plots` to visualize continuous metrics such as AUC curves, loss
-   functions, confusion matrices, and others.
-
-In this section, only scalar metrics are covered.
+`cache: false` above specifies that `summary.json is not a data file: it will
+not be <abbr>cached</abbr> by DVC. Metric files are normally committed with Git
+instead.
 
 ## Options
 
@@ -103,11 +109,11 @@ In this section, only scalar metrics are covered.
 
 ## Examples
 
-First, let's create a simple DVC pipeline stage:
+First, let's create a simple [stage](/doc/command-reference/run):
 
 ```dvc
 $ dvc run -d code/evaluate.py -M data/eval.json \
-      python code/evaluate.py
+          python code/evaluate.py
 ```
 
 > `-M` (`--metrics-no-cache`) is telling DVC to mark `data/eval.json` as a
@@ -127,8 +133,8 @@ $ dvc metrics show
 		}
 ```
 
-When metrics file changes in the user workspace witout commiting it to the Git,
-the `dvc metrics diff` command show the difference between metrics values:
+When there are metric file changes (before committing them with Git), the
+`dvc metrics diff` command shows the difference between metrics values:
 
 ```dvc
 $ dvc metrics diff
@@ -138,8 +144,8 @@ eval.json  error     0.16982  0.00322
 eval.json  TP        516      -12
 ```
 
-Metrics commited to the Git history can be shown by referencing the commit name
-or any aliase:
+Metric files committed with Git can be shown by referencing the commit (any
+[revision](https://git-scm.com/docs/revisions)):
 
 ```dvc
 $ dvc metrics diff HEAD c7bef55

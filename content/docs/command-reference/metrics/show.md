@@ -7,8 +7,7 @@ formatting.
 
 ```usage
 usage: dvc metrics show [-h] [-q | -v] [-a] [-T] [--all-commits] [-R]
-                        [--show-json]
-                        [targets [targets ...]]
+                        [--show-json] [targets [targets ...]]
 
 positional arguments:
   targets               Metric files or directories (see -R) to show

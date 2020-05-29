@@ -9,8 +9,7 @@ commits in the <abbr>DVC repository</abbr>, or between a commit and the
 ```usage
 usage: dvc metrics diff [-h] [-q | -v] [--targets [<paths> [<paths> ...]]]
                         [-R] [--all] [--show-json] [--show-md] [--no-path]
-                        [--old]
-                        [a_rev] [b_rev]
+                        [--old] [a_rev] [b_rev]
 
 positional arguments:
   a_rev                 Old Git commit to compare (defaults to HEAD)
