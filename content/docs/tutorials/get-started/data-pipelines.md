@@ -70,8 +70,8 @@ $ dvc run -f prepare.dvc \
 
 The `prepare.dvc` _stage file_ is generated. It has the same
 [format](/doc/user-guide/dvc-file-format) as the DVC-file we created previously
-to [tack data](/doc/tutorials/get-started/data-versioning#changes), but it
-additionally includes information about the command we ran
+to [tack data](/doc/tutorials/get-started/data-versioning#tracking-changes), but
+it additionally includes information about the command we ran
 (`python src/prepare.py`), the <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
 
@@ -139,8 +139,8 @@ commands that gets to a desired result. This is what we call a _data pipeline_
 or [_dependency graph_](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
 Let's create a second stage chained to the outputs of `prepare.dvc`, to perform
-feature extraction. And a third one (chained to the outputs of `featurize.dvc`)
-for training an ML model based on the features:
+feature extraction. And a third one for training a machine learning model, based
+on the features:
 
 ```dvc
 $ dvc run -f featurize.dvc \
@@ -154,56 +154,50 @@ $ dvc run -f train.dvc \
           python src/train.py data/features model.pkl
 ```
 
-Let's commit the changes, including the stage files (DVC-file) that describe our
-pipeline so far:
+This would be a good point to commit the changes with Git. This includes any
+`.gitignore` files, and all the stage files that describe our pipeline so far.
 
-```dvc
-$ git add data/.gitignore .gitignore featurize.dvc train.dvc
-$ git commit -m "Create featurization & training stages (full ML pipeline)"
-```
-
-> See also the `dvc pipeline` command.
+> 📖 See also the `dvc pipeline` command.
 
 ## Reproduce
 
 Imagine you're just cloning the <abbr>repository</abbr> created so far, in
-another computer. This can be simulated by checking out the `7-train` tag of our
-[example-get-started](https://github.com/iterative/example-get-started) repo:
+another computer. It's extremely easy for anyone to reproduce the result
+end-to-end, by using `dvc repro`.
+
+<details>
+
+### 👉 Expand to simulate a fresh clone of this repo
+
+Move to another location in your file system and do this:
 
 ```dvc
-$ cd ~
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 $ git checkout 7-train
 $ dvc unlock data/data.xml.dvc
 ```
 
-It's now extremely easy for anyone to reproduce the result end-to-end:
+</details>
 
 ```dvc
 $ dvc repro train.dvc
 ```
 
-`train.dvc` is the last stage file in the pipeline so far. It describes which
-source code and data files to use, and what command to run to get the resulting
-model file. For each data file or directory it depends on, we can in turn do the
-same analysis: find the stage that includes the data among its outputs, get
-dependencies and commands, etc.
+`train.dvc` is used because it's the last stage file so far; It describes what
+code and data to use to regenerate a final result (ML model). For stages that
+<abbr>output</abbr> any of its <abbr>dependencies</abbr>, we can in turn get the
+same info, and so on.
 
-`dvc repro` essentially builds a dependency graph, detects stages with modified
-dependencies or missing outputs and recursively executes stage commands (nodes
-in this graph or pipeline). Thus, `dvc run` and `dvc repro` provide the ability
-to reproduce experiments and entire <abbr>projects</abbr> with ease.
+`dvc repro` rebuilds this [dependency graph](#dependency-graphs-dags) and
+executes the necessary commands to rebuild all the pipeline
+<abbr>artifacts</abbr>.
 
 ## Visualize
 
-Now that we have built our pipeline, we need a good way to visualize it. Seeing
-the graph of connected stages would help wrap our minds around it. DVC allows us
-to do that without leaving the terminal, making the experience distraction-less.
-
-> We are using the `--ascii` option below to better illustrate this pipeline.
-> Please, refer to `dvc pipeline show` to explore other options this command
-> supports (e.g. `.dot` files that can be used then in other tools).
+Having built our pipeline, we need a good way to understand its structure.
+Seeing a graph of connected stage files would help. DVC lets you do just that,
+without leaving the terminal!
 
 ```dvc
 $ dvc pipeline show --ascii train.dvc
@@ -229,3 +223,7 @@ $ dvc pipeline show --ascii train.dvc
          | train.dvc |
          +-----------+
 ```
+
+> We are using the `--ascii` option above to better illustrate this pipeline.
+> Please, refer to `dvc pipeline show` to explore other options this command
+> supports.
