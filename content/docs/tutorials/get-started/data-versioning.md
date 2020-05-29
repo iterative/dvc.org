@@ -68,10 +68,6 @@ outs:
 
 </details>
 
-> 📖 See
-> [Versioning Data and Model Files](/doc/use-cases/versioning-data-and-model-files)
-> for more information on versioning data with DVC.
-
 ## Tracking changes
 
 `dvc status` can notice when tracked data has changed (among other situations).
@@ -171,8 +167,9 @@ DVC-tracked data up to date with the current Git commit.
 
 ## Backing up & sharing
 
-To **upload** data tracked by DVC to
-[remote storage](/doc/command-reference/remote), use `dvc push`:
+You can **upload** DVC-tracked data or models with `dvc push`, so they're safely
+backed up on [remote storage](/doc/command-reference/remote). This also means
+they can be retrieved on other environments later.
 
 <details>
 
@@ -203,8 +200,8 @@ Please refer to `dvc remote add` for more details and examples.
 $ dvc push
 ```
 
-Pushing data or models ensures they're safely backed up remotely. This also
-means they can be retrieved from other environments.
+Usually, we also want to `git commit` and `git push` the corresponding
+[DVC-files](/doc/user-guide/dvc-file-format).
 
 <details>
 
@@ -228,10 +225,7 @@ Note that both versions of the data file are stored. (This should match
 
 </details>
 
-> Usually, we also want to `git commit` and `git push` the corresponding
-> [DVC-files](/doc/user-guide/dvc-file-format).
-
-## Restoring
+## Retrieving
 
 Having DVC-tracked data stored remotely, it can be **downloaded** when needed in
 other copies of this <abbr>project</abbr> with `dvc pull`. Usually, we run it

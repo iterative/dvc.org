@@ -1,5 +1,11 @@
 # Experiments
 
+Data scientist may try many different approaches and
+[parameters](/doc/command-reference/params), having multiple attempts before the
+desired result is achieved — monitored with [metrics](#project-metrics)
+(explained further down). DVC is built to provide a way to capture these
+experiments and navigate between them easily.
+
 <details>
 
 ### 👉 Expand to prepare the project
@@ -18,58 +24,7 @@ $ dvc pull
 
 </details>
 
-## Project metrics
-
-DVC metrics allow us to mark stage <abbr>outputs</abbr> as files containing
-metrics to track. They are defined using the `-m` (`--metrics`) option of
-`dvc run`. Let's add a final evaluation stage to our
-[pipeline](/doc/tutorials/get-started/data-pipelines#dependency-graphs-dags),
-for example:
-
-```dvc
-$ dvc run -f evaluate.dvc \
-          -d src/evaluate.py -d model.pkl -d data/features \
-          -M auc.json \
-          python src/evaluate.py model.pkl \
-                 data/features auc.json
-```
-
-Stage `evaluate.py` reads features from the `features/test.pkl` file and
-calculates the model's
-[AUC](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
-value. This metric is written to the `auc.json` file. We use the `-M` option in
-the command above to mark the file as a metric (instead of a regular output) in
-the stage file.
-
-> Please, refer to `dvc run` and `dvc metrics` documentation for more details.
-
-Let's save the updates:
-
-```dvc
-$ git add evaluate.dvc auc.json
-$ git commit -m "Create evaluation stage"
-```
-
-> Notice that we are versioning `auc.json` with Git directly.
-
-Let's also assign a Git tag. It will serve as a checkpoint for us to compare
-experiments later:
-
-```dvc
-$ git tag -a "baseline-experiment" -m "Baseline experiment evaluation"
-```
-
-## Experimenting
-
-Data scientist may try many different approaches or
-[hyperparameters](/doc/tutorials/get-started/data-pipelines#parameters), having
-multiple failed attempts before the desired result (monitored via metrics) is
-achieved. DVC is built to provide a way to capture these experiments and
-navigate between them easily.
-
-### Tune parameters
-
-It's usual to have params in ML. This is how it's done: ...
+## Tuning parameters
 
 Let's say we want to try a modified feature extraction. The
 `src/featurization.py` script used to
@@ -109,7 +64,8 @@ $ git commit -m "Update featurization stage"
 
 ### Run the experiment
 
-Let's reproduce our pipeline up to the model training now:
+Let's [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) our
+pipeline up to the model training now:
 
 ```dvc
 $ dvc repro train.dvc
@@ -137,11 +93,51 @@ systems with file links. See
 [Large Dataset Optimization](/doc/user-guide/large-dataset-optimization) for
 more information.
 
+## Project metrics
+
+DVC metrics allow us to mark process outputs as files containing metrics to
+track. They are defined using the `-m` (`--metrics`) option of `dvc run`.
+
+Let's add a final evaluation stage to our
+[pipeline](/doc/tutorials/get-started/data-pipelines#dependency-graphs-dags):
+
+```dvc
+$ dvc run -f evaluate.dvc \
+          -d src/evaluate.py -d model.pkl -d data/features \
+          -M auc.json \
+          python src/evaluate.py model.pkl \
+                 data/features auc.json
+```
+
+`evaluate.py` reads features from the `features/test.pkl` file and calculates
+the model's
+[AUC](https://towardsdatascience.com/understanding-auc-roc-curve-68b2303cc9c5)
+value. This metric is written to the `auc.json` file. We use the `-M` option in
+the command above to mark the file as a metric in the stage file.
+
+> Please, refer to `dvc run` and `dvc metrics` documentation for more details.
+
+Let's save the updates:
+
+```dvc
+$ git add evaluate.dvc auc.json
+$ git commit -m "Model evaluation stage"
+```
+
+> Notice that we are versioning `auc.json` with Git directly.
+
+Let's also assign a Git tag. It will serve as a checkpoint for us to compare
+experiments later:
+
+```dvc
+$ git tag -a "baseline-experiment" -m "Baseline experiment evaluation"
+```
+
 ## Compare experiments
 
 DVC makes it easy to iterate on your project using Git commits with tags or Git
 branches. It provides a way to try different ideas, keep track of them, switch
-back and forth. To find the best performing experiment or track the progress,
+back and forth. To find the best-performing experiment or track the progress,
 [project metrics](/doc/command-reference/metrics) are supported in DVC (as
 described in one of the previous sections).
 
@@ -155,10 +151,8 @@ $ dvc repro evaluate.dvc
 ```
 
 `git checkout master` and `dvc checkout` commands ensure that we have the latest
-experiment code and data respectively. And `dvc repro`, as we discussed in the
-[Reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) section, is a
-way to run all the necessary commands to build the model and measure its
-performance.
+experiment code and data respectively. And `dvc repro` is a way to run all the
+necessary commands to build the model and measure its performance.
 
 ```dvc
 $ git commit -am "Evaluate bigrams model"
