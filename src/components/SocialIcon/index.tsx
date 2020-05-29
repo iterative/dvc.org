@@ -1,5 +1,6 @@
 import React from 'react'
 import Link from '../Link'
+import styles from './styles.module.css'
 import { ReactComponent as TwitterIcon } from '../../../static/img/community/icon-twitter.svg'
 import { ReactComponent as GithubIcon } from '../../../static/img/community/icon-github.svg'
 import { ReactComponent as LinkedInIcon } from './linkedin.svg'
@@ -29,7 +30,7 @@ export interface ISocialIconProps extends ISocialIcon {
 const SocialIcon: React.FC<ISocialIconProps> = ({
   site,
   url,
-  className
+  className = styles.default
 }): JSX.Element | null => {
   if (!site) return null
   const icon: JSX.Element = icons[site]
@@ -40,5 +41,14 @@ const SocialIcon: React.FC<ISocialIconProps> = ({
     </Link>
   )
 }
+
+// A simple wrapper to render multiple icons from an array
+export const SocialIcons: React.FC<{
+  className?: string
+  links: Array<ISocialIconProps>
+}> = ({ links, className }) =>
+  links.map(({ site, url }, i) => (
+    <SocialIcon className={className} site={site} url={url} key={i} />
+  ))
 
 export default SocialIcon

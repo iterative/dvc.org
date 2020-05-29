@@ -8,6 +8,10 @@
   align-items: center;
 }
 
+.headerSocial {
+  margin-left: 0.1em;
+}
+
 .avatar {
   margin-right: 1rem;
   border-radius: 50%;

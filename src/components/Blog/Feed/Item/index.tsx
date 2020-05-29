@@ -26,6 +26,7 @@ export interface IBlogPostData {
   }
   author: {
     name: string
+    slug: string
     avatar: {
       fixed: FixedObject
     }
@@ -88,6 +89,7 @@ const Item: React.FC<IBlogFeedItemProps> = ({
           date={date}
           links={links}
           timeToRead={timeToRead}
+          slug={author.slug}
         />
       </div>
     </div>

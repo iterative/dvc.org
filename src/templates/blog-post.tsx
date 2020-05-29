@@ -44,6 +44,7 @@ export interface IBlogPostData {
   pictureComment?: string
   author: {
     name: string
+    slug: string
     avatar: {
       fixed: FixedObject
     }
@@ -90,6 +91,7 @@ export const pageQuery = graphql`
       commentsUrl
       author {
         name
+        slug
         links {
           url
           site
@@ -99,7 +101,6 @@ export const pageQuery = graphql`
             ...GatsbyImageSharpFixed_withWebp
           }
         }
-        slug
       }
       picture {
         fluid(maxWidth: 850) {

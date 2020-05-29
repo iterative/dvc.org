@@ -9,10 +9,12 @@ import AuthorPage from '../components/Blog/Author'
 import { IBlogFeedPostList } from '../components/Blog/Feed'
 import { FixedObject } from 'gatsby-image'
 
+import { ISocialIcon } from '../components/SocialIcon'
+
 interface IAuthorData {
   posts: IBlogFeedPostList
   name: string
-  links: Array<string>
+  links: Array<ISocialIcon>
   html: string
   avatar: {
     fixed: FixedObject
@@ -35,7 +37,7 @@ const BlogAuthorPage: React.FC<IBlogAuthorPageProps> = ({ data, location }) => {
         posts={posts}
         name={name}
         body={html}
-        link={links[0]}
+        links={links}
         avatar={avatar}
       />
     </PaginatorLocationContext.Provider>
@@ -48,12 +50,15 @@ export const pageQuery = graphql`
   query AuthorPage($id: String!) {
     author(id: { eq: $id }) {
       name
-      links
       html
       avatar {
         fixed(width: 100, height: 100) {
           ...GatsbyImageSharpFixed
         }
+      }
+      links {
+        url
+        site
       }
       posts {
         nodes {

@@ -80,6 +80,7 @@ const Post: React.FC<IBlogPostData> = ({
                 date={date}
                 timeToRead={timeToRead}
                 links={links}
+                slug={authorSlug}
               />
             </div>
           </div>

@@ -1,0 +1,17 @@
+.core {
+  box-sizing: border-box;
+  display: inline-block;
+
+  > svg {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.default {
+  composes: core;
+  color: inherit;
+  width: 1em;
+  height: 1em;
+  padding: 0.1em;
+}
