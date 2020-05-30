@@ -58,16 +58,18 @@ compares them with a previous version.
 
 ## Examples
 
+> This example is based on the `evaluate.dvc` stage file of our
+> [Get Started](/doc/tutorials/get-started/metrics), where you can find the
+> actual source code.
+
 The basic use case shows the values in the current workspace:
 
 ```dvc
 $ dvc metrics show
-      data/eval.json:
-		{
-		    AUC: 0.66729,
-		    error: 0.16982,
-		    TP: 516
-		}
+        eval.json:
+                AUC: 0.66729
+                error: 0.16982
+                TP: 516
 ```
 
 To see the history of the metrics starting with the workspace and down the Git
@@ -76,20 +78,20 @@ history use `--all-commits` option:
 ```dvc
 $ dvc metrics show --all-commits
 working tree:
-	eval.json:
-        AUC: 0.66729,
-        error: 0.16982,
-        TP: 516
+        eval.json:
+                AUC: 0.66729
+                error: 0.16982
+                TP: 516
 cf5e7f87b72028e42e7ea05f17915b68645e93dc:
-	eval.json:
-        AUC: 0.65115,
-        error: 0.17304,
-        TP: 528
+        eval.json:
+                AUC: 0.65115
+                error: 0.17304
+                TP: 528
 c7bef5524541dabf8556ed504fd02f55231f875e:
-	eval.json:
-        AUC: 0.65115,
-        error: 0.17304,
-        TP: 528
+        eval.json:
+                AUC: 0.65115
+                error: 0.17304
+                TP: 528
 ```
 
 Metrics from different branches can be shown by `--all-branches` (`-a`) option:
@@ -97,20 +99,20 @@ Metrics from different branches can be shown by `--all-branches` (`-a`) option:
 ```dvc
 $ dvc metrics show -a
 working tree:
-	eval.json:
-        AUC: 0.66729,
-        error: 0.16982,
-        TP: 516
+        eval.json:
+                AUC: 0.66729
+                error: 0.16982
+                TP: 516
 master:
-	eval.json:
-        AUC: 0.65115,
-        error: 0.17304,
-        TP: 528
+        eval.json:
+                AUC: 0.65115
+                error: 0.17304
+                TP: 528
 increase_bow:
-	eval.json:
-        AUC: 0.66524,
-        error: 0.17074,
-        TP: 521
+        eval.json:
+                AUC: 0.66524
+                error: 0.17074
+                TP: 521
 ```
 
 The [Compare Experiments](/doc/tutorials/get-started/compare-experiments)

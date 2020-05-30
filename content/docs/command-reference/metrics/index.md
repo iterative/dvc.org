@@ -71,7 +71,7 @@ DVC itself does not ascribe any specific meaning for these numbers. Usually they
 are produced by the model training or model evaluation code and serve as a way
 to compare and pick the best performing experiment.
 
-### Default metrics files
+### Default metric files
 
 `dvc metrics` subcommands use all metric files that are specified in `dvc.yaml`
 by default. There's no need to specify metric file names to see these metrics.
@@ -111,28 +111,31 @@ instead.
 
 ## Examples
 
-First, let's create a simple [stage](/doc/command-reference/run):
+> This example is based on our
+> [Get Started](/doc/tutorials/get-started/metrics), where you can find the
+> actual source code.
+
+First, let's imagine we have a simple [stage](/doc/command-reference/run) that
+produces a `eval.json` metrics file:
 
 ```dvc
-$ dvc run -d code/evaluate.py -M data/eval.json \
+$ dvc run -d code/evaluate.py -M eval.json \
           python code/evaluate.py
 ```
 
-> `-M` (`--metrics-no-cache`) is telling DVC to mark `data/eval.json` as a
-> metric file, without tracking it directly (You can track it with Git). See
-> `dvc run` for more info.
+> `-M` (`--metrics-no-cache`) tells DVC to mark `eval.json` as a metric file,
+> without tracking it directly (You can track it with Git). See `dvc run` for
+> more info.
 
 Now let's print metric values that we are tracking in this <abbr>project</abbr>,
 using `dvc metrics show`:
 
 ```dvc
 $ dvc metrics show
-      data/eval.json:
-		{
-		    "AUC": 0.65115,
-		    "error": 0.17304,
-		    "TP": 528
-		}
+        eval.json:
+                AUC: 0.66729
+                error: 0.16982
+                TP: 516
 ```
 
 When there are metric file changes (before committing them with Git), the
@@ -140,17 +143,6 @@ When there are metric file changes (before committing them with Git), the
 
 ```dvc
 $ dvc metrics diff
-Path       Metric    Value    Change
-eval.json  ACU       0.66729  0.01614
-eval.json  error     0.16982  0.00322
-eval.json  TP        516      -12
-```
-
-Metric files committed with Git can be shown by referencing the commit (any
-[revision](https://git-scm.com/docs/revisions)):
-
-```dvc
-$ dvc metrics diff HEAD c7bef55
 Path       Metric    Value    Change
 eval.json  ACU       0.66729  0.01614
 eval.json  error     0.16982  0.00322

@@ -68,29 +68,27 @@ lists all the current metrics without comparisons.
 
 ## Examples
 
-Start by creating a simple metrics file and commit it:
+Start by creating a metrics file and commit it (see the `-M` option of `dvc run`
+for more details):
 
 ```dvc
-$ dvc run -M metrics.json \
-          'echo {\"AUC\": 0.9643, \"TP\": 527} > metrics.json'
-$ git add metrics.json metrics.json.dvc
+$ dvc run -n eval -M metrics.json \
+          'echo {"AUC": 0.9643, "TP": 527} > metrics.json'
+
+$ cat metrics.json
+{"AUC": 0.9643, "TP": 527}
+
+$ git add dvc.* metrics.json
 $ git commit -m "Add metrics file"
 ```
 
-```
-$ cat metrics.json
-{"AUC":0.9643, "TP":527}
-```
+Now let's simulate a change in our AUC metric:
 
-Now let's mock a change in our AUC metric:
-
-```
-$ echo {\"AUC\":0.9671, \"TP\":531} > metrics.json
+```dvc
+$ echo '{"AUC":0.9671, "TP":531}' > metrics.json
 
 $ git diff
---- a/metrics.json
-+++ b/metrics.json
-@@ -1 +1 @@
+...
 -{"AUC":0.9643, "TP":527}
 +{"AUC":0.9671, "TP":531}
 ```
@@ -99,9 +97,21 @@ To see the change, let's run `dvc metrics diff`. This compares our current
 <abbr>workspace</abbr> (including uncommitted local changes) metrics to what we
 had in the previous commit:
 
-```
+```dvc
 $ dvc metrics diff
 Path          Metric    Value    Change
+metrics.json  AUC       0.9671   0.0028
 metrics.json  TP        531      4
-metrics.json  AUC       0.967    0.003
+```
+
+## Example: compare metrics among specific versions
+
+Metric files committed with Git can be compared by referencing the commits (any
+two [revisions](https://git-scm.com/docs/revisions)):
+
+```dvc
+$ dvc metrics diff HEAD c7bef55
+Path       Metric    Value    Change
+eval.json  ACU       0.66729  0.01614
+eval.json  TP        516      -12
 ```
