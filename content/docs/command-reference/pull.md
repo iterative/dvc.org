@@ -137,8 +137,7 @@ The workspace looks almost like in this
 ```
 
 We can now just run `dvc pull` to download the most recent `data/data.xml`,
-`model.pkl`, and other DVC-tracked files into the <abbr>workspace</abbr> and
-<abbr>cache</abbr>:
+`model.pkl`, and other DVC-tracked files into the <abbr>workspace</abbr>:
 
 ```dvc
 $ dvc pull
