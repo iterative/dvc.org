@@ -147,7 +147,6 @@ example-get-started/
 ├── data
 │   ├── data.xml
 │   ├── data.xml.dvc
-│   └── ...
 ...
 ├── model.pkl
 └── train.dvc
