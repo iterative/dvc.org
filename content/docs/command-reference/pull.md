@@ -204,7 +204,8 @@ Everything is up to date.
 
 With the first `dvc pull` we specified a stage in the middle of this pipeline
 (`featurize.dvc`) while using `--with-deps`. DVC started with that DVC-file and
-searched backwards through the pipeline for data files to download.
+searched backwards through the pipeline for data files to download. Later we
+ran `dvc pull` to download all the remaining data files.
 
 Then we ran `dvc pull` to download all the remaining data files.
 
