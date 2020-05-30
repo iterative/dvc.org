@@ -1,7 +1,7 @@
 import React from 'react'
 import Link from '../Link'
-import { ReactComponent as TwitterIcon } from '../../../static/img/community/icon-twitter.svg'
-import { ReactComponent as GithubIcon } from '../../../static/img/community/icon-github.svg'
+import { ReactComponent as TwitterIcon } from './twitter.svg'
+import { ReactComponent as GithubIcon } from './github.svg'
 import { ReactComponent as LinkedInIcon } from './linkedin.svg'
 
 const icons: { [site: string]: JSX.Element } = {
@@ -31,14 +31,13 @@ const SocialIcon: React.FC<ISocialIconProps> = ({
   url,
   className
 }): JSX.Element | null => {
-  if (!site) return null
-  const icon: JSX.Element = icons[site]
-  if (!icon) return null
-  return (
+  /* eslint-disable-next-line */
+  const icon: JSX.Element = icons[site!]
+  return icon ? (
     <Link href={url} className={className} aria-label={site}>
       {icon}
     </Link>
-  )
+  ) : null
 }
 
 export default SocialIcon
