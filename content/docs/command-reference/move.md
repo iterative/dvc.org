@@ -164,3 +164,48 @@ $ tree
     │   └── foo
     └── data3.dvc
 ```
+
+## Example: Moving ignored files
+
+`dvc move` raises an error if it finds a file with pattern available in
+`.dvcignore` file.
+
+Let's imagine it with following scenerio:
+
+```dvc
+$ mkdir dir1 dir2
+$ echo data1 > dir1/data1
+$ echo data2 > dir2/data2
+```
+
+Create a `.dvcignore` file and insert pattern matching one of the files:
+
+```dvc
+$ echo dir1/* >> .dvcignore
+```
+
+Now lets try to move the files with `dvc move`.
+
+```dvc
+$ dvc move dir2/data2 dir3/data3
+$ dvc move dir1/data1 dir4/data4
+```
+
+The second command that we executed above will raise an error and the transfer
+of that file won't happen. The final structure would look like this:
+
+```dvc
+$ tree .
+.
+├── dir1
+│   ├── data1
+│   └── data1.dvc
+├── dir2
+└── dir3
+    ├── data3
+    └── data3.dvc
+```
+
+Here we see that `data2` file from `dir2` directory got transferred to
+`dir3/data3` and `dir1` remained unchanged. See
+[Dvcignore](/doc/user-guide/dvcignore) for more details.
