@@ -53,11 +53,11 @@ lists all the current metrics without comparisons.
 
 - `--show-md` - prints the command's output in Markdown table format.
 
-- `--old` - Show old metric value in addition to the new value.
+- `--old` - show old metric value in addition to the new value.
 
 - `--no-path` - Don't show metric path in the result table. This option is
   useful when only one metrics file is in use or there is no intersection
-  between the metrics names.
+  between the metric names.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

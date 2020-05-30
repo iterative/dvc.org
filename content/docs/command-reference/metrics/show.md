@@ -45,6 +45,9 @@ compares them with a previous version.
   commits as well as the workspace. Useful for printing metric file contents for
   the entire existing commit history of the project.
 
+- `--show-json` - prints the command's output in easily parsable JSON format,
+  instead of a human-readable table.
+
 - `-R`, `--recursive` - determines the metric files to show by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are
   no directories among the `targets`, this option is ignored.

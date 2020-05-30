@@ -18,13 +18,13 @@ positional arguments:
 
 ## Description
 
-In order to track metrics associated to machine learning experiments, DVC has
-the ability to mark a certain stage <abbr>outputs</abbr> as files containing
-metrics to track.
+In order to track the basic performance of machine learning experiments, DVC has
+the ability to mark a certain stage <abbr>outputs</abbr> _scalar metrics_ to
+track.
 
-Metrics are project-specific floating-point or integer values e.g. AUC, ROC,
-_false positives_, etc. They can be defined with the `-m` (`--metrics`) and `-M`
-options of `dvc run`.
+These metrics are project-specific floating-point or integer values e.g. AUC,
+ROC, _false positives_, etc. They can be defined with the `-m` (`--metrics`) and
+`-M` (`--metrics-no-cache`) options of `dvc run`.
 
 ### Types of metrics
 
@@ -38,7 +38,7 @@ learning training or data processing:
 
 In contrast to continuous metrics,
 [scalar metrics](/doc/command-reference/metrics) should be stored in a
-hierarchical files. Unlike its `dvc plot` counterpart, `dvc metrics diff` can
+hierarchical files. Unlike its `dvc plots` counterpart, `dvc metrics diff` can
 report the numeric difference between the metrics in different experiments, for
 example an `AUC` metrics that is `0.801807` and gets increase by `+0.037826`:
 
