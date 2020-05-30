@@ -256,8 +256,8 @@
         "slug": "list"
       },
       {
-        "label": "lock",
-        "slug": "lock"
+        "label": "freeze",
+        "slug": "freeze"
       },
       {
         "label": "metrics",
@@ -391,8 +391,8 @@
         "slug": "status"
       },
       {
-        "label": "unlock",
-        "slug": "unlock"
+        "label": "unfreeze",
+        "slug": "unfreeze"
       },
       {
         "label": "unprotect",
