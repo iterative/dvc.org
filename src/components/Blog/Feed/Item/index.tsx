@@ -129,6 +129,7 @@ export const query = graphql`
         url
         site
       }
+      slug
       avatar {
         fixed(width: 40, height: 40, quality: 50, cropFocus: CENTER) {
           ...GatsbyImageSharpFixed_withWebp
