@@ -161,8 +161,8 @@ $ dvc pull train.dvc
 ## Example: With dependencies
 
 > If you followed previous example then delete the .dvc/cache directory with
-> `rm -Rf .dvc/cache`. Else `dvc status -c` would output
-> `Data and pipelines are up to date.`
+> `rm -Rf .dvc/cache`. Else in the later step `dvc status -c` will show
+> `Data and pipelines are up to date.` as the output.
 
 Our [pipeline](/doc/command-reference/pipeline) has been setup with these
 [stages](/doc/command-reference/run):
