@@ -205,8 +205,6 @@ With the first `dvc pull` we specified a stage in the middle of this pipeline
 searched backwards through the pipeline for data files to download. Later we
 ran `dvc pull` to download all the remaining data files.
 
-Then we ran `dvc pull` to download all the remaining data files.
-
 ## Example: Download from specific remote storage
 
 For using the `dvc pull` command, a remote storage must be defined. (See
