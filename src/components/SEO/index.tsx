@@ -25,6 +25,7 @@ const SEO: React.FC<ISEOProps> = ({
   title,
   defaultMetaTitle,
   description,
+  site_name,
   keywords,
   image,
   meta = [],
@@ -64,6 +65,22 @@ const SEO: React.FC<ISEOProps> = ({
       {
         name: 'twitter:description',
         content: description
+      }
+    )
+  }
+  if (site_name) {
+    prebuildMeta.push(
+      {
+        name: 'site_name',
+        content: site_name
+      },
+      {
+        property: 'og:site_name',
+        content: site_name
+      },
+      {
+        name: 'twitter:site_name',
+        content: site_name
       }
     )
   }
