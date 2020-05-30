@@ -7,6 +7,7 @@ import Link from '../Link'
 import { logEvent } from '../../utils/front/ga'
 import { getFirstPage } from '../../utils/shared/sidebar'
 import { ReactComponent as LogoSVG } from '../../../static/img/logo-white.svg'
+import { ReactComponent as TwitterIcon } from '../../../static/img/community/icon-twitter.svg'
 
 import styles from './styles.module.css'
 
@@ -210,11 +211,7 @@ const HamburgerMenu: React.FC = () => {
                   onClick={itemClick('twitter')}
                   target="_blank"
                 >
-                  <img
-                    className={styles.subSectionLinkImage}
-                    src="/img/community/icon-twitter.svg"
-                    alt=""
-                  />
+                  <TwitterIcon className={styles.subSectionLinkImage} />
                   <span className={styles.subSectionLinkTitle}>Twitter</span>
                 </Link>
               </li>

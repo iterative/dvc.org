@@ -6,36 +6,60 @@ import PageContent from '../../PageContent'
 import { IBlogFeedPostList } from '../Feed'
 import SubscribeSection from '../../SubscribeSection'
 import Item from '../Feed/Item'
-import styles from '../Feed/styles.module.css'
+import feedStyles from '../Feed/styles.module.css'
+import styles from './styles.module.css'
+import { SocialIcons, ISocialIcon } from '../../SocialIcon'
+import Image, { FixedObject } from 'gatsby-image'
 
-interface IAuthorPageProps {
+interface IAuthorHeaderProps {
+  name: string
+  links: Array<ISocialIcon>
+  body: string
+  avatar: {
+    fixed: FixedObject
+  }
+}
+
+interface IAuthorPageProps extends IAuthorHeaderProps {
   posts: IBlogFeedPostList
   bigFirst?: boolean
-  header: React.ReactNode
-  leadParagraph?: React.ReactNode
+  body: string
 }
+
+const AuthorHeader: React.FC<IAuthorHeaderProps> = ({
+  name,
+  body,
+  avatar,
+  links
+}) => (
+  <div className={cn(feedStyles.meta, styles.header)}>
+    <Image fixed={avatar.fixed} className={styles.avatar} />
+    <div>
+      <h2 className={feedStyles.header}>
+        {name}
+        <span className={styles.headerSocial}>
+          <SocialIcons links={links} />
+        </span>
+      </h2>
+      <div dangerouslySetInnerHTML={{ __html: body }} />
+    </div>
+  </div>
+)
 
 const AuthorPage: React.FC<IAuthorPageProps> = ({
   posts,
   bigFirst = true,
-  header,
-  leadParagraph
+  name,
+  links,
+  body,
+  avatar
 }) => {
   return (
     <>
+      <AuthorHeader name={name} links={links} body={body} avatar={avatar} />
       <PageContent>
-        <div className={styles.wrapper}>
-          <div
-            className={cn(styles.meta, {
-              [styles.metaSlim]: bigFirst
-            })}
-          >
-            <h2 className={styles.header}>{header}</h2>
-            {leadParagraph && (
-              <div className={styles.lead}>{leadParagraph}</div>
-            )}
-          </div>
-          <div className={styles.posts}>
+        <div className={feedStyles.wrapper}>
+          <div className={feedStyles.posts}>
             {posts.nodes.map((node, index) => (
               <Item
                 feedPost={node}
