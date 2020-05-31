@@ -50,14 +50,13 @@ const urlDefault = ({ scheme, host, pathname }, input) => ({
 const processors = {
   'twitter.com': processor(asSite('twitter'), urlHTTPS, pathnameAsUsername),
   'github.com': processor(asSite('github'), urlHTTPS, pathnameAsUsername),
-  'linkedin.com': processor(
-    // Handle LinkedIn as a special case
-    ({ pathname }) => ({
-      site: 'linkedin',
-      username: /^\/in\/(.*)/.exec(pathname)[1]
-    }),
-    urlHTTPS
-  )
+  // Handle LinkedIn as a special case
+  'linkedin.com': ({ pathname }) => ({
+    site: 'linkedin',
+    username: /^\/in\/(.*)/.exec(pathname)[1],
+    // LinkedIn's canonical includes www.
+    url: 'https://www.linkedin.com' + pathname
+  })
 }
 
 const defaultProcessor = processor(asSite(null), urlDefault)
