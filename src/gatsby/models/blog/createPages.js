@@ -46,6 +46,7 @@ const createPages = async ({ graphql, actions: { createPage } }) => {
   paginate({
     createPage,
     itemsPerPage: postsPerPage,
+    itemsPerFirstPage: 10,
     pathPrefix: '/blog',
     items: posts,
 

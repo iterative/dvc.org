@@ -7,7 +7,7 @@ import {
   PaginatorLocationContext
 } from '../components/Paginator/LocationContext'
 import SEO from '../components/SEO'
-import { IPaginatorPageInfo } from '../components/Paginator'
+import { IPaginatorContext } from '../components/Paginator'
 import BlogTags from '../components/Blog/Tags'
 import { IBlogFeedPostList } from '../components/Blog/Feed'
 
@@ -16,28 +16,29 @@ interface IBlogTagsPageData {
   location: IPaginatorLocationContextValue
   pageContext: {
     tag: string
-    pageInfo: IPaginatorPageInfo
-  }
+  } & IPaginatorContext
 }
 
 const BlogTagsPage: React.FC<IBlogTagsPageData> = ({
   data,
-  pageContext,
-  location
+  location,
+  pageContext: { tag, humanPageNumber, nextPagePath, previousPagePath }
 }) => {
-  const title = `Posts tagged with "${pageContext.tag}"`
+  const title = `Posts tagged with "${tag}"`
 
   return (
     <PaginatorLocationContext.Provider value={location}>
       <SEO
         title={title}
         defaultMetaTitle={true}
-        pageInfo={pageContext.pageInfo}
+        pageInfo={{ currentPage: humanPageNumber }}
       />
       <BlogTags
-        pageInfo={pageContext.pageInfo}
         posts={data.posts}
         header={title}
+        nextPage={nextPagePath}
+        previousPage={previousPagePath}
+        currentPage={humanPageNumber}
       />
     </PaginatorLocationContext.Provider>
   )

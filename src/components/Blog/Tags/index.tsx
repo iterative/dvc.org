@@ -5,19 +5,24 @@ import PageContent from '../../PageContent'
 import Feed, { IBlogFeedPostList } from '../Feed'
 import SubscribeSection from '../../SubscribeSection'
 
-interface IBlogTagsProps {
+interface IBlogTagsProps extends IPaginatorPageInfo {
   posts: IBlogFeedPostList
-  pageInfo: IPaginatorPageInfo
   header: string
 }
 
-const Tags: React.FC<IBlogTagsProps> = ({ posts, pageInfo, header }) => {
+const Tags: React.FC<IBlogTagsProps> = ({
+  posts,
+  header,
+  nextPage,
+  previousPage,
+  currentPage
+}) => {
   return (
     <>
       <PageContent>
         <Feed
           feedPostList={posts}
-          pageInfo={pageInfo}
+          pageInfo={{ nextPage, previousPage, currentPage }}
           bigFirst={false}
           header={header}
         />

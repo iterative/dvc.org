@@ -10,7 +10,7 @@ import feedStyles from '../Feed/styles.module.css'
 import styles from './styles.module.css'
 import { SocialIcons, ISocialIcon } from '../../SocialIcon'
 import Image, { FixedObject } from 'gatsby-image'
-import Paginator from '../../Paginator'
+import Paginator, { IPaginatorPageInfo } from '../../Paginator'
 
 interface IAuthorHeaderProps {
   name: string
@@ -21,13 +21,8 @@ interface IAuthorHeaderProps {
   }
 }
 
-interface IAuthorPageProps extends IAuthorHeaderProps {
+interface IAuthorPageProps extends IAuthorHeaderProps, IPaginatorPageInfo {
   posts: IBlogFeedPostList
-  bigFirst?: boolean
-  body: string
-  nextPage: string
-  previousPage: string
-  currentPage: number
 }
 
 const AuthorHeader: React.FC<IAuthorHeaderProps> = ({
