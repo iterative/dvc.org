@@ -24,15 +24,22 @@ into <abbr>data artifacts</abbr> of the <abbr>project</abbr>. By default, these
 are committed to the <abbr>cache</abbr> (use the `--no-commit` option to avoid
 this, and `dvc commit` to finish the process when needed).
 
-Note that [external data](/doc/user-guide/managing-external-data) (targets
+`dvc add` is typically used to version control raw data or initial datasets from
+which data processing [pipelines](/doc/command-reference/pipeline) are built,
+but it can be used to track any large file or directory. We recommend using
+`dvc run` to version control intermediate and final results (like ML models).
+This way you bring data provenance and make your project
+[reproducible](/doc/command-reference/repro).
+
+💡 Note that [external data](/doc/user-guide/managing-external-data) (targets
 outside the <abbr>workspace</abbr>) is supported.
 
 Under the hood, a few actions are taken for each file (or directory) in
 `targets`:
 
 1. Calculate the file hash.
-2. Move the file contents to the cache directory (by default in `.dvc/cache`),
-   using the file hash to form the cached file names. (See
+2. Move the file contents to the cache (by default in `.dvc/cache`), using the
+   file hash to form the cached file names. (See
    [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
    for more details.)
 3. Attempt to replace the file with a link to the cached data (more details
@@ -56,12 +63,14 @@ more details.
 > treated as _changed_ by `dvc repro`, which always executes them. See `dvc run`
 > to learn more about stage files.
 
-By default DVC tries to use reflinks (see
+By default, DVC tries to use reflinks (see
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to avoid copying any file contents and to optimize DVC-file operations for large
 files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
 `cache.type` config option in `dvc config cache` for more information.
+
+### Tracking directories
 
 A `dvc add` target can be an individual file or a directory. There are two ways
 to work with directory hierarchies with `dvc add`:
@@ -77,13 +86,6 @@ to work with directory hierarchies with `dvc add`:
    Instead, the single DVC-file references a special JSON file in the cache
    (with `.dir` extension), that in turn points to the files added from the
    hierarchy.
-
-`dvc add` is typically used to version control raw data or initial datasets from
-which data processing [pipelines](/doc/command-reference/pipeline) are built,
-but it can be used to track any large file or directory. We recommend using
-`dvc run` to version control intermediate and final results (like ML models).
-This way you bring data provenance and make your project
-[reproducible](/doc/command-reference/repro).
 
 ## Options
 
