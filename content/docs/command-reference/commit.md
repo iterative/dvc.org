@@ -280,5 +280,4 @@ Data and pipelines are up to date.
 ```
 
 Instead of reproducing the pipeline for changes that do not produce a different
-output of pipeline stages, use `commit` to both git and DVC. Since this pipeline
-is up to date, `dvc repro` will not do anything.
+results, just use `commit` on both Git and DVC.
