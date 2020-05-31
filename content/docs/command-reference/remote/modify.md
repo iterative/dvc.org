@@ -84,7 +84,7 @@ The following are the customizable types of remote storage (protocols):
 
 ### Click for Amazon S3
 
-By default DVC expects your AWS CLI is already
+By default, DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could use the following options:
