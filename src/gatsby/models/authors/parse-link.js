@@ -45,10 +45,6 @@ const urlDefault = ({ scheme, host, pathname }, input) => ({
   url: (scheme || 'https://') + host + pathname
 })
 
-function WrongTypeError(type) {
-  return new Error(`A ${type} cannot be used as input for parseLink!`)
-}
-
 // Building processors for recognized sites
 
 const processors = {
@@ -63,21 +59,25 @@ const processors = {
     urlHTTPS
   )
 }
+
 const defaultProcessor = processor(asSite(null), urlDefault)
 
-const processStringLink = groups =>
-  (processors[groups.host] || defaultProcessor)(groups)
+function WrongTypeError(type) {
+  return new Error(`A ${type} cannot be used as input for parseLink!`)
+}
 
 function parseLink(input) {
   switch (typeof input) {
     // Handle shorthand string links
     case 'string':
-      const result = /^(?<scheme>.*?\/\/)?(?:www\.)?(?<host>[^\/]*)(?<pathname>.*?)\/?$/.exec(
+      const {
+        groups
+      } = /^(?<scheme>.*?\/\/)?(?:www\.)?(?<host>[^\/]*)(?<pathname>.*?)\/?$/.exec(
         input
       )
 
       // Extract groups into variables and assign defaults to non-matches
-      return processStringLink(result.groups)
+      return (processors[groups.host] || defaultProcessor)(groups)
 
     // Pass object links through
     case 'object':
