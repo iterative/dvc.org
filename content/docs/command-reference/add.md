@@ -248,6 +248,7 @@ For example, we cannot use the directory structure as one unit with `dvc run` or
 other commands.
 
 ## Example: Dvcignore
+
 Let's take an example to illustrate how `.dvcignore` interacts with `dvc add`.
 
 ```dvc
@@ -255,13 +256,15 @@ $ mkdir dir
 $ echo file_one > dir/file1
 $ echo file_two > dir/file2
 ```
-Now add `file1` to `.dvcignore` and track the entire `Dir` directory with `dvc
-add`.
+
+Now add `file1` to `.dvcignore` and track the entire `Dir` directory with
+`dvc add`.
 
 ```dvc
 $ echo Dir/file1 > .dvcignore
 $ dvc add Dir
 ```
+
 Let's now modify `file1`(which is listed in `.dvcignore`) and run `dvc status`.
 
 ```dvc
@@ -269,15 +272,18 @@ $ echo file_one_changed > dir/file1
 $ dvc status
 Data and pipelines are up to date.
 ```
-`dvc status` ignores changes to files listed in `.dvcignore`.
-Let's have a look at cache directory.
+
+`dvc status` ignores changes to files listed in `.dvcignore`. Let's have a look
+at cache directory.
+
 ```dvc
 $ tree .dvc/cache
 .dvc/cache
 ├── 0a
-│   └── ec3a687bd65c3e6a13e3cf20f3a6b2.dir 
+│   └── ec3a687bd65c3e6a13e3cf20f3a6b2.dir
 └── 52
     └── 4bcc8502a70ac49bf441db350eafc2
 ```
+
 Only checksums of directory(`Dir/`) and `file2` have been cached. See
 [Dvcignore](/doc/user-guide/dvcignore) for more details.
