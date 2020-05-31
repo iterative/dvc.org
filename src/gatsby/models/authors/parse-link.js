@@ -1,31 +1,77 @@
-const processStringLink = require('./string-link-processor.js')
+/*
+   Processor builder: makes a function that turns a string into processed Link metadata
+
+   Takes "Mod functions" as parameters, returns a function that starts with {} and pipes
+   that through each function, then returns the result.
+
+   signature: ({ scheme: string, host: string, pathname: string}, input)
+   example:      ^ https://      ^ mysite.com  ^ /rest/of/the/url ^ an object
+
+   The second parameter will be the current state of the input, and usually will
+   have to be spread into your return result.
+ */
+function processor(...mods) {
+  return function process(groups) {
+    return mods.reduce(
+      (currentResult, _, i) => mods[i](groups, currentResult),
+      {}
+    )
+  }
+}
+
+// Processor helpers
+
+function trimSlashes(input) {
+  return /^\/?(.*?)\/?$/.exec(input)[1]
+}
+
+const asSite = site => (groups, input) => ({
+  ...input,
+  site
+})
+
+const pathnameAsUsername = ({ pathname }, input) => ({
+  ...input,
+  username: trimSlashes(pathname)
+})
+
+const urlHTTPS = ({ host, pathname }, input) => ({
+  ...input,
+  url: 'https://' + host + pathname
+})
+
+const urlDefault = ({ scheme, host, pathname }, input) => ({
+  ...input,
+  url: (scheme || 'https://') + host + pathname
+})
 
 function WrongTypeError(type) {
   return new Error(`A ${type} cannot be used as input for parseLink!`)
 }
 
+// Building processors for recognized sites
+
+const processors = {
+  'twitter.com': processor(asSite('twitter'), urlHTTPS, pathnameAsUsername),
+  'github.com': processor(asSite('github'), urlHTTPS, pathnameAsUsername),
+  'linkedin.com': processor(
+    // Handle LinkedIn as a special case
+    ({ pathname }) => ({
+      site: 'linkedin',
+      username: /^\/in\/(.*)/.exec(pathname)[1]
+    }),
+    urlHTTPS
+  )
+}
+const defaultProcessor = processor(asSite(null), urlDefault)
+
+const processStringLink = groups =>
+  (processors[groups.host] || defaultProcessor)(groups)
+
 function parseLink(input) {
   switch (typeof input) {
     // Handle shorthand string links
     case 'string':
-      // Slice the 'www.' and trailing slash off of given hostnames to normalize them.
-      // This regex matches every string, so we can be sure it matches every time.
-
-      /*
-         An explanation of the regex:
-
-         1. Capture leading scheme (usually http/s) and :// in named group "scheme"
-
-         2. Group but don't capture "www.", such that it is treated as if and
-            equivalent to no provided subdomain. Other subdomains will be
-            included in "host"
-
-         3. Capture everything between here and the next / as "host"
-            This technically includes a port if we ever include one.
-
-         4. Capture the rest of the string, excluding leading and trailing
-            slash, as "pathname"
-      */
       const result = /^(?<scheme>.*?\/\/)?(?:www\.)?(?<host>[^\/]*)(?<pathname>.*?)\/?$/.exec(
         input
       )
@@ -35,6 +81,7 @@ function parseLink(input) {
 
     // Pass object links through
     case 'object':
+      // typeof null is object, so handle that
       if (input === null) throw WrongTypeError('null')
       return input
 
