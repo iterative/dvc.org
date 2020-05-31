@@ -11,8 +11,9 @@ usage: dvc push [-h] [-q | -v] [-j <number>]
                 [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these DVC-files. Using -R,
-                 directories to search DVC-files in can also be given.
+  targets        Limit command scope to these DVC-files or ifles/directories
+                 tracked by DVC. Using -R, directories to search DVC-files in
+                 can also be given.
 ```
 
 ## Description
@@ -69,6 +70,9 @@ with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
 backward from the target [stage files](/doc/command-reference/run), through the
 corresponding [pipelines](/doc/command-reference/pipeline), to find data files
 to push.
+
+If `targets` are files/directories tracked by DVC, DVC will download cache for
+them skipping the rest.
 
 ## Options
 

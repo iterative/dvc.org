@@ -13,8 +13,9 @@ usage: dvc status [-h] [-v] [-j <number>] [-q] [-c]
                   [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these DVC-files. Using -R,
-                 directories to search DVC-files in can also be given.
+  targets        Limit command scope to these DVC-files or files/directories
+                 tracked by DVC.Using -R, directories to search DVC-files in
+                 can also be given.
 ```
 
 ## Description
@@ -41,6 +42,9 @@ The comparison can be limited to certain DVC-files only, by listing them as
 `targets`. (Changes are reported only against these.) When this is combined with
 the `--with-deps` option, a search is made for changes in other stages that
 affect each target.
+
+In he `remote` mode, if `targets` are files/directories tracked by DVC, DVC will
+only compare the cache for them, skipping the rest.
 
 In the `local` mode, changes are detected through the hash value of every file
 listed in every DVC-file in question against the corresponding file in the file
