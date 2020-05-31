@@ -1,10 +1,7 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 
-import {
-  IPaginatorLocationContextValue,
-  PaginatorLocationContext
-} from '../components/Paginator/LocationContext'
+import { PaginatorLocationContext } from '../components/Paginator/LocationContext'
 import AuthorPage from '../components/Blog/Author'
 import { IBlogFeedPostList } from '../components/Blog/Feed'
 import { FixedObject } from 'gatsby-image'
@@ -25,11 +22,17 @@ interface IBlogAuthorPageProps {
   data: {
     author: IAuthorData
   }
-  location: IPaginatorLocationContextValue
 }
 
-const BlogAuthorPage: React.FC<IBlogAuthorPageProps> = ({ data, location }) => {
-  const { posts, name, links, html, avatar } = data.author
+const BlogAuthorPage: React.FC<IBlogAuthorPageProps> = ({
+  data,
+  location,
+  pageContext: { previousPagePath, nextPagePath }
+}) => {
+  const {
+    author: { name, links, html, avatar },
+    posts
+  } = data
 
   return (
     <PaginatorLocationContext.Provider value={location}>
@@ -39,6 +42,8 @@ const BlogAuthorPage: React.FC<IBlogAuthorPageProps> = ({ data, location }) => {
         body={html}
         links={links}
         avatar={avatar}
+        previousPage={previousPagePath}
+        nextPage={nextPagePath}
       />
     </PaginatorLocationContext.Provider>
   )
@@ -47,7 +52,7 @@ const BlogAuthorPage: React.FC<IBlogAuthorPageProps> = ({ data, location }) => {
 export default BlogAuthorPage
 
 export const pageQuery = graphql`
-  query AuthorPage($id: String!) {
+  query AuthorPage($id: String!, $limit: Int!, $skip: Int!) {
     author(id: { eq: $id }) {
       name
       html
@@ -60,10 +65,16 @@ export const pageQuery = graphql`
         url
         site
       }
-      posts {
-        nodes {
-          ...FeedPost
-        }
+    }
+    posts: allBlogPost(
+      filter: { author: { id: { eq: $id } } }
+      limit: $limit
+      skip: $skip
+      sort: { fields: date, order: DESC }
+    ) {
+      totalCount
+      nodes {
+        ...FeedPost
       }
     }
   }

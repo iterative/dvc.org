@@ -48,6 +48,7 @@
     "express": "^4.17.1",
     "fs-extra": "^9.0.0",
     "gatsby": "^2.20.13",
+    "gatsby-awesome-pagination": "^0.3.6",
     "gatsby-image": "^2.3.1",
     "gatsby-link": "^2.3.2",
     "gatsby-plugin-parent-resolvers": "^1.0.1",

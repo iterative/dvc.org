@@ -1,7 +1,11 @@
 const path = require('path')
 const LIMIT_BLOG_PAGES = Boolean(process.env.LIMIT_BLOG_PAGES)
+const { paginate } = require('gatsby-awesome-pagination')
+const {
+  BLOG: { postsPerPage }
+} = require('../../../consts.js')
 
-const createPages = async ({ graphql, actions }) => {
+const createPages = async ({ graphql, actions: { createPage } }) => {
   const blogResponse = await graphql(
     `
       query AllAuthorBuilderQuery($limit: Int!) {
@@ -9,6 +13,9 @@ const createPages = async ({ graphql, actions }) => {
           nodes {
             id
             slug
+            posts {
+              totalCount
+            }
           }
         }
       }
@@ -27,20 +34,23 @@ const createPages = async ({ graphql, actions }) => {
   const authorTemplate = path.resolve('./src/templates/blog-author.tsx')
 
   return Promise.all(
-    authors.map(({ id, slug }, index) => {
+    authors.map(({ id, slug, posts: { totalCount } }, index) => {
       const previous = index === authors.length - 1 ? null : authors[index + 1]
       const next = index === 0 ? null : authors[index - 1]
 
-      actions.createPage({
+      paginate({
+        createPage,
+        itemsPerPage: postsPerPage,
+        pathPrefix: slug,
+        items: { length: totalCount },
+
         component: authorTemplate,
         context: {
-          isBlog: true,
-          currentPage: index + 1,
+          id,
           next,
           previous,
-          id
-        },
-        path: slug
+          isBlog: true
+        }
       })
     })
   )
