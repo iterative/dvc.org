@@ -45,7 +45,7 @@ describe('Different sites', () => {
       {
         site: 'linkedin',
         username: 'testman123',
-        url: 'https://linkedin.com/in/testman123'
+        url: 'https://www.linkedin.com/in/testman123'
       },
       withTrailingSlashesAlso([
         'https://www.linkedin.com/in/testman123',
