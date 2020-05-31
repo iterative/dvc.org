@@ -209,6 +209,10 @@
         "slug": "config"
       },
       {
+        "label": "dag",
+        "slug": "dag"
+      },
+      {
         "label": "destroy",
         "slug": "destroy"
       },
@@ -298,21 +302,6 @@
           {
             "label": "params diff",
             "slug": "diff"
-          }
-        ]
-      },
-      {
-        "label": "pipeline",
-        "slug": "pipeline",
-        "source": "pipeline/index.md",
-        "children": [
-          {
-            "label": "pipeline list",
-            "slug": "list"
-          },
-          {
-            "label": "pipeline show",
-            "slug": "show"
           }
         ]
       },
