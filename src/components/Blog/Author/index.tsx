@@ -25,7 +25,9 @@ interface IAuthorPageProps extends IAuthorHeaderProps {
   posts: IBlogFeedPostList
   bigFirst?: boolean
   body: string
-  pageInfo: IPaginatorLocationContextValue
+  nextPage: string
+  previousPage: string
+  currentPage: number
 }
 
 const AuthorHeader: React.FC<IAuthorHeaderProps> = ({
@@ -56,7 +58,8 @@ const AuthorPage: React.FC<IAuthorPageProps> = ({
   body,
   avatar,
   nextPage,
-  previousPage
+  previousPage,
+  currentPage
 }) => {
   return (
     <>
@@ -72,7 +75,7 @@ const AuthorPage: React.FC<IAuthorPageProps> = ({
               />
             ))}
           </div>
-          <Paginator pageInfo={{ nextPage, previousPage }} />
+          <Paginator pageInfo={{ nextPage, previousPage, currentPage }} />
         </div>
       </PageContent>
       <SubscribeSection />

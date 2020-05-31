@@ -1,15 +1,23 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 
-import { PaginatorLocationContext } from '../components/Paginator/LocationContext'
+import {
+  IPaginatorLocationContextValue,
+  PaginatorLocationContext
+} from '../components/Paginator/LocationContext'
 import AuthorPage from '../components/Blog/Author'
 import { IBlogFeedPostList } from '../components/Blog/Feed'
 import { FixedObject } from 'gatsby-image'
 
 import { ISocialIcon } from '../components/SocialIcon'
 
+interface IPaginatorContext {
+  nextPagePath: string
+  previousPagePath: string
+  humanPageNumber: number
+}
+
 interface IAuthorData {
-  posts: IBlogFeedPostList
   name: string
   links: Array<ISocialIcon>
   html: string
@@ -21,13 +29,16 @@ interface IAuthorData {
 interface IBlogAuthorPageProps {
   data: {
     author: IAuthorData
+    posts: IBlogFeedPostList
   }
+  location: IPaginatorLocationContextValue
+  pageContext: IPaginatorContext
 }
 
 const BlogAuthorPage: React.FC<IBlogAuthorPageProps> = ({
   data,
   location,
-  pageContext: { previousPagePath, nextPagePath }
+  pageContext: { previousPagePath, nextPagePath, humanPageNumber }
 }) => {
   const {
     author: { name, links, html, avatar },
@@ -44,6 +55,7 @@ const BlogAuthorPage: React.FC<IBlogAuthorPageProps> = ({
         avatar={avatar}
         previousPage={previousPagePath}
         nextPage={nextPagePath}
+        currentPage={humanPageNumber}
       />
     </PaginatorLocationContext.Provider>
   )
