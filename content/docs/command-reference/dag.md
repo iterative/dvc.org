@@ -1,4 +1,4 @@
-# pipeline show
+# dag
 
 Show [stages](/doc/command-reference/run) in a pipeline that lead to the
 specified stage. By default it lists
@@ -7,43 +7,25 @@ specified stage. By default it lists
 ## Synopsis
 
 ```usage
-usage: dvc pipeline show [-h] [-q | -v] [-c | -o] [-l] [--ascii]
-                         [--dot] [--tree]
-                         [targets [targets ...]]
+usage: dvc dag [-h] [-q | -v] [--dot] [--full] [target]
 
 positional arguments:
-  targets         DVC-files to show pipeline for. Optional.
-                  (Finds all DVC-files in the workspace by default.)
+  targets         Stage or output to show pipeline for.
+                  Optional. (Finds all stages in the workspace by default.)
 ```
 
 ## Description
 
-`dvc show` displays the stages of a pipeline up to one or more target DVC-files
-(stage files). All stages are shown unless specific `targets` are specified. The
-`-c` and `-o` options allow to list the corresponding commands or data file flow
-instead of stages.
-
-> Note that the stages in these lists are in descending order, that is, from
-> first to last.
+`dvc dag` displays the stages of a pipeline up to the target stage. If `target`
+is omitted, it will show the full project DAG.
 
 ## Options
 
-- `-c`, `--commands` - show pipeline as a list (diagram if `--ascii` or `--dot`
-  is used) of commands instead of paths to DVC-files.
+- `--dot` - show DAG in `DOT` format. It can be passed to third party
+  visualization utilities.
 
-- `-o`, `--outs` - show pipeline as a list (diagram if `--ascii` or `--dot` is
-  used) of stage outputs instead of paths to DVC-files.
-
-- `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
-  list of path to DVC-files. (`less` pager may be used, see
-  [Paging the output](#paging-the-output) below for details).
-
-- `--dot` - show contents of `.dot` files with a DVC pipeline graph. It can be
-  passed to third party visualization utilities.
-
-- `--tree` - list dependencies tree like recursive directory listing.
-
-- `-l`, `--locked` - print frozen stages only. See `dvc freeze`.
+- `--full` - show full DAG that the target belongs too, instead of show DAG
+  consisting only of ancestors.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -69,7 +51,7 @@ variable. For example, the following command will replace the default pager with
 [`more`](<https://en.wikipedia.org/wiki/More_(command)>), for a single run:
 
 ```bash
-$ DVC_PAGER=more dvc pipeline show --ascii my-pipeline.dvc
+$ DVC_PAGER=more dvc dag my-pipeline.dvc
 ```
 
 For a persistent change, define `DVC_PAGER` in the shell configuration. For
@@ -81,28 +63,10 @@ export DVC_PAGER=more
 
 ## Examples
 
-Default mode: show stage files that `output.dvc` recursively depends on:
-
-```dvc
-$ dvc pipeline show output.dvc
-raw.dvc
-data.dvc
-output.dvc
-```
-
-The same as previous, but show commands instead of DVC-files:
-
-```dvc
-$ dvc pipeline show output.dvc --commands
-download.py s3://mybucket/myrawdata raw
-cleanup.py raw data
-process.py data output
-```
-
 Visualize DVC pipeline:
 
 ```dvc
-$ dvc pipeline show eval.txt.dvc --ascii
+$ dvc dag eval.txt.dvc
           .------------------------.
           | data/Posts.xml.zip.dvc |
           `------------------------'
@@ -142,15 +106,4 @@ $ dvc pipeline show eval.txt.dvc --ascii
               .--------------.
               | eval.txt.dvc |
               `--------------'
-```
-
-List dependencies recursively if the graph has a tree structure:
-
-```dvc
-$ dvc pipeline show e.file.dvc --tree
-e.file.dvc
-├── c.file.dvc
-│   └── b.file.dvc
-│       └── a.file.dvc
-└── d.file.dvc
 ```

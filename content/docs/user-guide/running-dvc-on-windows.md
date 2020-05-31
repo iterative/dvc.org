@@ -70,8 +70,8 @@ directory, as explained in
 ## Enabling paging with `less`
 
 By default, DVC tries to use [Less](<https://en.wikipedia.org/wiki/Less_(Unix)>)
-as pager for the output of `dvc pipeline show`. Windows doesn't have the `less`
-command available however. Fortunately, there is a easy way of installing it via
+as pager for the output of `dvc dag`. Windows doesn't have the less command
+available however. Fortunately, there is a easy way of installing `less` via
 [Chocolatey](https://chocolatey.org/) (please install the tool first):
 
 ```dvc
