@@ -5,17 +5,12 @@ import {
   IPaginatorLocationContextValue,
   PaginatorLocationContext
 } from '../components/Paginator/LocationContext'
+import { IPaginatorContext } from '../components/Paginator'
 import AuthorPage from '../components/Blog/Author'
 import { IBlogFeedPostList } from '../components/Blog/Feed'
 import { FixedObject } from 'gatsby-image'
 
 import { ISocialIcon } from '../components/SocialIcon'
-
-interface IPaginatorContext {
-  nextPagePath: string
-  previousPagePath: string
-  humanPageNumber: number
-}
 
 interface IAuthorData {
   name: string

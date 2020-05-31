@@ -1,6 +1,9 @@
 const path = require('path')
 const tagToSlug = require('../../../utils/shared/tagToSlug')
-const { BLOG } = require('../../../consts')
+const {
+  BLOG: { postsPerPage }
+} = require('../../../consts')
+const { paginate } = require('gatsby-awesome-pagination')
 // Since blog pages and their indexes require a ton of image resizes, it's
 // useful to have an option to only generate a minimal set of these pages when
 // developing. Set LIMIT_BLOG_PAGES to anything truthy and this module will
@@ -8,51 +11,7 @@ const { BLOG } = require('../../../consts')
 // everything to look at.
 const LIMIT_BLOG_PAGES = Boolean(process.env.LIMIT_BLOG_PAGES)
 
-const pageUrl = (basePath, page) => {
-  if (page > 1) {
-    const basePrefix = basePath === '/' ? '' : `${basePath}/`
-
-    return `${basePrefix}page/${page}`
-  }
-
-  return basePath
-}
-
-function* pagesGenerator({ itemCount, hasHeroItem = false, basePath }) {
-  let currentPage = 1
-  let skip = 0
-
-  while (skip < itemCount) {
-    const limit =
-      hasHeroItem && currentPage === 1
-        ? BLOG.postsPerPage - BLOG.postsPerRow + 1
-        : BLOG.postsPerPage
-
-    let nextPage
-    let previousPage
-
-    if (skip + limit < itemCount) {
-      nextPage = pageUrl(basePath, currentPage + 1)
-    }
-
-    if (skip > 0) {
-      previousPage = pageUrl(basePath, currentPage - 1)
-    }
-
-    // For the Paginator component
-    const pageInfo = { currentPage, nextPage, previousPage }
-
-    yield {
-      path: pageUrl(basePath, currentPage),
-      context: { limit, pageInfo, skip }
-    }
-
-    currentPage++
-    skip += limit
-  }
-}
-
-const createPages = async ({ graphql, actions }) => {
+const createPages = async ({ graphql, actions: { createPage } }) => {
   const blogResponse = await graphql(
     `
       query BlogPageBuilderQuery($limit: Int) {
@@ -84,20 +43,17 @@ const createPages = async ({ graphql, actions }) => {
   // Create home blog pages (with pagination)
   const blogHomeTemplate = path.resolve('./src/templates/blog-home.tsx')
 
-  for (const page of pagesGenerator({
-    basePath: '/blog',
-    hasHeroItem: true,
-    itemCount: posts.length
-  })) {
-    actions.createPage({
-      component: blogHomeTemplate,
-      path: page.path,
-      context: {
-        isBlog: true,
-        ...page.context
-      }
-    })
-  }
+  paginate({
+    createPage,
+    itemsPerPage: postsPerPage,
+    pathPrefix: '/blog',
+    items: posts,
+
+    component: blogHomeTemplate,
+    context: {
+      isBlog: true
+    }
+  })
 
   // Create blog posts pages
   const blogPostTemplate = path.resolve('./src/templates/blog-post.tsx')
@@ -107,7 +63,7 @@ const createPages = async ({ graphql, actions }) => {
       const previous = index === posts.length - 1 ? null : posts[index + 1]
       const next = index === 0 ? null : posts[index - 1]
 
-      actions.createPage({
+      createPage({
         component: blogPostTemplate,
         context: {
           isBlog: true,
@@ -133,13 +89,14 @@ const createPages = async ({ graphql, actions }) => {
     _tags.map(({ fieldValue: tag, pageInfo: { itemCount } }) => {
       const basePath = `/blog/tags/${tagToSlug(tag)}`
 
-      for (const page of pagesGenerator({ basePath, itemCount })) {
-        actions.createPage({
-          component: blogTagsTemplate,
-          path: page.path,
-          context: { tag, ...page.context }
-        })
-      }
+      paginate({
+        createPage,
+        itemsPerPage: postsPerPage,
+        component: blogTagsTemplate,
+        items: { length: itemCount },
+        pathPrefix: basePath,
+        context: { tag }
+      })
     })
   )
 

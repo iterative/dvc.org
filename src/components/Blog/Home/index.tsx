@@ -5,18 +5,22 @@ import PageContent from '../../PageContent'
 import Feed, { IBlogFeedPostList } from '../Feed'
 import SubscribeSection from '../../SubscribeSection'
 
-interface IBlogHomeProps {
+interface IBlogHomeProps extends IPaginatorPageInfo {
   posts: IBlogFeedPostList
-  pageInfo: IPaginatorPageInfo
 }
 
-const Home: React.FC<IBlogHomeProps> = ({ posts, pageInfo }) => {
+const Home: React.FC<IBlogHomeProps> = ({
+  posts,
+  previousPage,
+  nextPage,
+  currentPage
+}) => {
   return (
     <>
       <PageContent>
         <Feed
           feedPostList={posts}
-          pageInfo={pageInfo}
+          pageInfo={{ previousPage, nextPage, currentPage }}
           header="Data Version Control in Real Life"
           leadParagraph={
             <>

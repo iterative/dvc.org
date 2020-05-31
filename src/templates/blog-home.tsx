@@ -6,25 +6,28 @@ import {
   PaginatorLocationContext
 } from '../components/Paginator/LocationContext'
 import BlogHome from '../components/Blog/Home'
-import { IPaginatorPageInfo } from '../components/Paginator'
 import { IBlogFeedPostList } from '../components/Blog/Feed'
+import { IPaginatorContext } from '../components/Paginator'
 
 interface IBlogHomePageProps {
   data: { posts: IBlogFeedPostList }
   location: IPaginatorLocationContextValue
-  pageContext: {
-    pageInfo: IPaginatorPageInfo
-  }
+  pageContext: IPaginatorContext
 }
 
 const BlogHomePage: React.FC<IBlogHomePageProps> = ({
   data,
   location,
-  pageContext
+  pageContext: { nextPagePath, previousPagePath, humanPageNumber }
 }) => {
   return (
     <PaginatorLocationContext.Provider value={location}>
-      <BlogHome posts={data.posts} pageInfo={pageContext.pageInfo} />
+      <BlogHome
+        posts={data.posts}
+        nextPage={nextPagePath}
+        previousPage={previousPagePath}
+        currentPage={humanPageNumber}
+      />
     </PaginatorLocationContext.Provider>
   )
 }

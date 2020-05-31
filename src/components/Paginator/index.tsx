@@ -23,6 +23,12 @@ export interface IPaginatorProps {
   pageInfo: IPaginatorPageInfo
 }
 
+export interface IPaginatorContext {
+  nextPagePath: string
+  previousPagePath: string
+  humanPageNumber: number
+}
+
 // Enables a smooth scroll behavior between pages.
 // Doesn't smooth scroll into posts because the paginator isn't mounted in both :)
 const smoothScrollTag = (
