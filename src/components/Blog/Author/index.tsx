@@ -52,7 +52,6 @@ const AuthorHeader: React.FC<IAuthorHeaderProps> = ({
 
 const AuthorPage: React.FC<IAuthorPageProps> = ({
   posts,
-  bigFirst = true,
   name,
   links,
   body,
@@ -61,6 +60,7 @@ const AuthorPage: React.FC<IAuthorPageProps> = ({
   previousPage,
   currentPage
 }) => {
+  const firstPage = currentPage === 1
   return (
     <>
       <AuthorHeader name={name} links={links} body={body} avatar={avatar} />
@@ -71,7 +71,7 @@ const AuthorPage: React.FC<IAuthorPageProps> = ({
               <Item
                 feedPost={node}
                 key={node.id}
-                big={bigFirst && index === 0}
+                big={firstPage && index === 0}
               />
             ))}
           </div>
