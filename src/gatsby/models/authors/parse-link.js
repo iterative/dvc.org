@@ -21,10 +21,6 @@ function processor(...mods) {
 
 // Processor helpers
 
-function trimSlashes(input) {
-  return /^\/?(.*?)\/?$/.exec(input)[1]
-}
-
 const asSite = site => (groups, input) => ({
   ...input,
   site
@@ -32,7 +28,7 @@ const asSite = site => (groups, input) => ({
 
 const pathnameAsUsername = ({ pathname }, input) => ({
   ...input,
-  username: trimSlashes(pathname)
+  username: /^\/?(.*)$/.exec(pathname)[1]
 })
 
 const urlHTTPS = ({ host, pathname }, input) => ({
