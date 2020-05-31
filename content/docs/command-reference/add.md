@@ -251,9 +251,9 @@ other commands.
 Let's take an example to illustrate how `.dvcignore` interacts with `dvc add`.
 
 ```dvc
-$ mkdir Dir
-$ echo file_one > Dir/file1
-$ echo file_two > Dir/file2
+$ mkdir dir
+$ echo file_one > dir/file1
+$ echo file_two > dir/file2
 ```
 Now add `file1` to `.dvcignore` and track the entire `Dir` directory with `dvc
 add`.
@@ -265,7 +265,7 @@ $ dvc add Dir
 Let's now modify `file1`(which is listed in `.dvcignore`) and run `dvc status`.
 
 ```dvc
-$ echo file_one_changed > Dir/file1
+$ echo file_one_changed > dir/file1
 $ dvc status
 Data and pipelines are up to date.
 ```
