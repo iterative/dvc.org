@@ -85,6 +85,9 @@ but it can be used to track any large file or directory. We recommend using
 This way you bring data provenance and make your project
 [reproducible](/doc/command-reference/repro).
 
+To avoid tracking a file or directory, just add the corresponding
+[patterns](https://git-scm.com/docs/gitignore) in a `.dvcignore` file.
+
 ## Options
 
 - `-R`, `--recursive` - determines the files to add by searching each target
@@ -245,37 +248,36 @@ For example, we cannot use the directory structure as one unit with `dvc run` or
 other commands.
 
 ## Example: Dvcignore
-
-To untrack a file or directory just add
-[patterns](https://git-scm.com/docs/gitignore) associated with that file or
-directory under `.dvcignore` file.
-
-Let's take an example to illustrate this.
+Let's take an example to illustrate how `.dvcignore` interacts with `dvc add`.
 
 ```dvc
 $ mkdir Dir
 $ echo file_one > Dir/file1
 $ echo file_two > Dir/file2
 ```
-
-Now add `file1` to `.dvcignore` and track `Dir` directory with `dvc add`.
+Now add `file1` to `.dvcignore` and track the entire `Dir` directory with `dvc
+add`.
 
 ```dvc
 $ echo Dir/file1 > .dvcignore
 $ dvc add Dir
-$ cat .dvcignore
-Dir/file1
 ```
-
-Let's now modify the file which we added to `.dvcignore` and run `dvc status`.
+Let's now modify `file1`(which is listed in `.dvcignore`) and run `dvc status`.
 
 ```dvc
 $ echo file_one_changed > Dir/file1
 $ dvc status
 Data and pipelines are up to date.
 ```
-
-No change has been detected by `dvc status` and hence we can say that it has
-untracked `file1` sucessfully.
-
-See [Dvcignore](/doc/user-guide/dvcignore) for more details.
+`dvc status` ignores changes to files listed in `.dvcignore`.
+Let's have a look at cache directory.
+```dvc
+$ tree .dvc/cache
+.dvc/cache
+├── 0a
+│   └── ec3a687bd65c3e6a13e3cf20f3a6b2.dir 
+└── 52
+    └── 4bcc8502a70ac49bf441db350eafc2
+```
+Only checksums of directory(`Dir/`) and `file2` have been cached. See
+[Dvcignore](/doc/user-guide/dvcignore) for more details.
