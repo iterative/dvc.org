@@ -55,7 +55,7 @@ lists all the current metrics without comparisons.
 
 - `--old` - show old metric value in addition to the new value.
 
-- `--no-path` - Don't show metric path in the result table. This option is
+- `--no-path` - don't show metric path in the result table. This option is
   useful when only one metrics file is in use or there is no intersection
   between the metric names.
 

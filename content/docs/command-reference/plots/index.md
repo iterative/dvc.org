@@ -124,11 +124,11 @@ into JSON. DVC uses column names from a header for JSON conversion into fields.
 
 DVC template anchors:
 
-- `<DVC_METRIC_DATA>` - Plotting command input data from either CSV or JSON
+- `<DVC_METRIC_DATA>` - plotting command input data from either CSV or JSON
   files is converted to JSON array and injected instead of this anchor. Two
   additional fields will be added: `index` and `rev` (explained above).
 
-- `<DVC_METRIC_TITLE>` - A title for the plot, that can be defined by `--title`
+- `<DVC_METRIC_TITLE>` - a title for the plot, that can be defined by `--title`
   option.
 
 - `<DVC_METRIC_Y>` - a field name for Y axis of the plot. It can be defined by

@@ -504,13 +504,13 @@ more information.
   values are:
 
   - `basic` -
-    [Basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
+    [basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
     and `password` (or `ask_password`) parameters should also be configured.
   - `digest` -
-    [Digest Access Authentication Scheme](https://tools.ietf.org/html/rfc7616).
+    [digest Access Authentication Scheme](https://tools.ietf.org/html/rfc7616).
     `user` and `password` (or `ask_password`) parameters should also be
     configured.
-  - `custom` - An additional HTTP header field will be set for all HTTP requests
+  - `custom` - an additional HTTP header field will be set for all HTTP requests
     to the remote in the form: `custom_auth_header: password`.
     `custom_auth_header` and `password` (or `ask_password`) parameters should
     also be configured.
