@@ -71,11 +71,8 @@ to compare and pick the best performing experiment.
 
 ### Default metric files
 
-`dvc metrics` subcommands use all metric files that are specified in `dvc.yaml`
-by default. There's no need to specify metric file names to see these metrics.
-Metric files can be added to `dvc.yaml` with the `--metrics` (`-m`) or
-`--metrics-no-cache` (`-M`) options of `dvc run`, or manually to the `metrics`
-section of a stage in `dvc.yaml`:
+`dvc metrics` subcommands by default use the metric files specified in
+`dvc.yaml` (if any), for example `summary.json` below:
 
 ```yaml
 stages:
@@ -83,10 +80,6 @@ stages:
     cmd: python train.py
     deps:
       - users.csv
-    params:
-      - epochs
-      - dropout
-      - lr
     outs:
       - model.pkl
     metrics:
