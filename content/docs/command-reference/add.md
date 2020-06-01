@@ -265,7 +265,7 @@ $ echo Dir/file1 > .dvcignore
 $ dvc add Dir
 ```
 
-Let's now modify `file1`(which is listed in `.dvcignore`) and run `dvc status`.
+Let's now modify `file1` (which is listed in `.dvcignore`) and run `dvc status`:
 
 ```dvc
 $ echo file_one_changed > dir/file1
