@@ -1,6 +1,6 @@
 # plots diff
 
-Show multiple versions of [continuous metrics](/doc/command-reference/plots) by
+Show multiple versions of [plot metrics](/doc/command-reference/plots) by
 plotting them in a single image.
 
 ## Synopsis
@@ -44,37 +44,38 @@ corresponding [DVC-files](/doc/user-guide/dvc-file-format).
 
 ## Options
 
-- `-d [DATAFILE], --datafile [DATAFILE]` - Metrics file to visualize.
+- `-d [DATAFILE], --datafile [DATAFILE]` - metrics file to visualize.
 
-- `-t [TEMPLATE], --template [TEMPLATE]` - File to be injected with data. The
-  default template is `.dvc/plot/default.json`. See
-  [Plot templates](/doc/command-reference/plots#plot-templates).
+- `-t [TEMPLATE], --template [TEMPLATE]` -
+  [plot template](/doc/command-reference/plots#plot-templates) to be injected
+  with data. The default template is `.dvc/plots/default.json`. See more details
+  in `dvc plots`.
 
-- `-f FILE, --file FILE` - Name of the generated file. By default, the output
+- `-f FILE, --file FILE` - name of the generated file. By default, the output
   file name is equal to the input filename with additional `.html` suffix or
   `.json` suffix for `--no-html` mode.
 
-- `--no-html` - Do not wrap output Vega specification (JSON) with HTML.
+- `--no-html` - do not wrap output Vega specification (JSON) with HTML.
 
-- `-x X` - Field name for X axis. An auto-generated `index` field is used by
+- `-x X` - field name for X axis. An auto-generated `index` field is used by
   default.
 
-- `-y Y` - Field name for Y axis. The last column or field found in the
+- `-y Y` - field name for Y axis. The last column or field found in the
   `datafile` is used by default.
 
-- `-s SELECT, --select SELECT` - Select which fields or JSONPath to store in the
-  plot file [metadata](https://vega.github.io/vega/docs/data/). The
+- `-s SELECT, --select SELECT` - select which fields or JSONPath to store in the
+  metrics file [metadata](https://vega.github.io/vega/docs/data/). The
   auto-generated, zero-based `index` column is always included.
 
 - `--xlab XLAB` - X axis title. The X field name is the default title.
 
 - `--ylab YLAB` - Y axis title. The Y field name is the default title.
 
-- `--title TITLE` - Plot title.
+- `--title TITLE` - plot title.
 
-- `-o, --stdout` - Print plot content to stdout.
+- `-o, --stdout` - print plot content to stdout.
 
-- `--no-csv-header` - Provided CSV or TSV datafile does not have a header.
+- `--no-csv-header` - provided CSV or TSV datafile does not have a header.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -90,17 +91,17 @@ the last commit:
 
 ```dvc
 $ dvc plots diff -d logs.csv
-file:///Users/usr/src/plot/logs.csv.html
+file:///Users/dmitry/src/plots/logs.html
 ```
 
-![](/img/plots_diff_workspace.svg)
+![](/img/plots_auc.svg)
 
 The difference between two versions (commit hashes, tags, or branches can be
 provided):
 
 ```dvc
 $ dvc plots diff -d logs.csv HEAD 0135527
-file:///Users/usr/src/plot/logs.csv.html
+file:///Users/usr/src/plots/logs.csv.html
 ```
 
 ![](/img/plots_diff.svg)

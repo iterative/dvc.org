@@ -265,24 +265,12 @@
         "source": "metrics/index.md",
         "children": [
           {
-            "label": "metrics add",
-            "slug": "add"
-          },
-          {
-            "label": "metrics modify",
-            "slug": "modify"
-          },
-          {
             "label": "metrics show",
             "slug": "show"
           },
           {
             "label": "metrics diff",
             "slug": "diff"
-          },
-          {
-            "label": "metrics remove",
-            "slug": "remove"
           }
         ]
       },
