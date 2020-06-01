@@ -1,7 +1,7 @@
 # metrics diff
 
-Show changes in [project metrics](/doc/command-reference/metrics), between
-commits in the <abbr>DVC repository</abbr>, or between a commit and the
+Show changes in [metrics](/doc/command-reference/metrics), between commits in
+the <abbr>DVC repository</abbr>, or between a commit and the
 <abbr>workspace</abbr>.
 
 ## Synopsis
@@ -22,8 +22,8 @@ positional arguments:
 This command provides a quick way to compare metrics among experiments in the
 repository history. It requires that Git is being used to version the metrics.
 
-> Metrics can be defined with the `-m` (`--metrics`) and `-M` options of
-> `dvc run`.
+> This kind of metrics can be defined with the `-m` (`--metrics`) and `-M`
+> (`--metrics-no-cache`) options of `dvc run`.
 
 Run without arguments, this command compares metrics currently present in the
 <abbr>workspace</abbr> uncommitted changes) with the latest committed version.

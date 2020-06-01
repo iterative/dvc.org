@@ -1,6 +1,6 @@
 # plots diff
 
-Show multiple versions of [continuous metrics](/doc/command-reference/plots) by
+Show multiple versions of [plot metrics](/doc/command-reference/plots) by
 plotting them in a single image.
 
 ## Synopsis

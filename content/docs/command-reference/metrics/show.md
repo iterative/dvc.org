@@ -1,7 +1,6 @@
 # metrics show
 
-Print [project metrics](/doc/command-reference/metrics), with optional
-formatting.
+Print [metrics](/doc/command-reference/metrics), with optional formatting.
 
 ## Synopsis
 
@@ -18,8 +17,8 @@ positional arguments:
 Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
 [DVC-files](/doc/user-guide/dvc-file-format).
 
-> Metrics can be defined with the `-m` (`--metrics`) and `-M` options of
-> `dvc run`.
+> This kind of metrics can be defined with the `-m` (`--metrics`) and `-M`
+> (`--metrics-no-cache`) options of `dvc run`.
 
 If `targets` are provided, it will show those specific metric files instead.
 With the `-a` or`-T` options, this command shows the different metrics values

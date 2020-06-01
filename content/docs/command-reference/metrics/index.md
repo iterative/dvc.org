@@ -1,6 +1,6 @@
 # metrics
 
-A set of commands to manage, collect, and display _project metrics_:
+A set of commands to manage, collect, and display _metrics_:
 [show](/doc/command-reference/metrics/show), and
 [diff](/doc/command-reference/metrics/diff).
 
@@ -16,31 +16,30 @@ positional arguments:
     diff                Show changes in metrics between commits
 ```
 
-## Description
-
-In order to track the basic performance of machine learning experiments, DVC has
-the ability to mark a certain stage <abbr>outputs</abbr> _scalar metrics_ to
-track.
-
-These metrics are project-specific floating-point or integer values e.g. AUC,
-ROC, _false positives_, etc. They can be defined with the `-m` (`--metrics`) and
-`-M` (`--metrics-no-cache`) options of `dvc run`.
-
-### Types of metrics
+## Types of metrics
 
 DVC has two concepts for metrics, that represent different results of machine
 learning training or data processing:
 
 1. `dvc metrics` represent **scalar numbers** such as AUC, _true positive rate_,
    etc.
-2. `dvc plots` can be used to visualize **continuous metrics** such as AUC
-   curves, loss functions, confusion matrices, etc.
+2. `dvc plots` can be used to visualize **data series** such as AUC curves, loss
+   functions, confusion matrices, etc.
 
-In contrast to continuous metrics,
-[scalar metrics](/doc/command-reference/metrics) should be stored in a
-hierarchical files. Unlike its `dvc plots` counterpart, `dvc metrics diff` can
-report the numeric difference between the metrics in different experiments, for
-example an `AUC` metrics that is `0.801807` and gets increase by `+0.037826`:
+## Description
+
+In order to track the basic performance of machine learning experiments, DVC has
+the ability to mark a certain stage <abbr>outputs</abbr> as metrics. These
+metrics are project-specific floating-point or integer values e.g. AUC, ROC,
+false positives, etc.
+
+This kind of metrics can be defined with the `-m` (`--metrics`) and `-M`
+(`--metrics-no-cache`) options of `dvc run`.
+
+In contrast to `dvc plots`, these metrics should be stored in hierarchical
+files. Unlike its `dvc plots` counterpart, `dvc metrics diff` can report the
+numeric difference between the metrics in different experiments, for example an
+`AUC` metrics that is `0.801807` and gets increase by `+0.037826`:
 
 ```dvc
 $ dvc metrics diff

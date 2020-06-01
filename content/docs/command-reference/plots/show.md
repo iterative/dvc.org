@@ -1,7 +1,7 @@
 # plots show
 
-Generate a plot image from from a
-[continuous metrics](/doc/command-reference/plots) file.
+Generate a plot image from from a [plot metrics](/doc/command-reference/plots)
+file.
 
 ## Synopsis
 
@@ -17,10 +17,9 @@ positional arguments:
 
 ## Description
 
-This command provides a quick way to visualize
-[continuous metrics](/doc/command-reference/plots) such as loss functions, AUC
-curves, confusion matrices, etc. Please see `dvc plots` for information on the
-supported data formats and other relevant details about DVC plots.
+This command provides a quick way to visualize metrics such as loss functions,
+AUC curves, confusion matrices, etc. Please see `dvc plots` for information on
+the supported data formats and other relevant details about DVC plots.
 
 ## Options
 
