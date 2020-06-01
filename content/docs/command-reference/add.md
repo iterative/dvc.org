@@ -56,9 +56,8 @@ more details.
 > treated as _changed_ by `dvc repro`, which always executes them. See `dvc run`
 > to learn more about stage files.
 
-To avoid a file inside a directory being added accidentally, just add the 
-corresponding [patterns](/doc/user-guide/dvcignore) in a 
-`.dvcignore` file.
+To avoid a file inside a directory being added accidentally, just add the
+corresponding [patterns](/doc/user-guide/dvcignore) in a `.dvcignore` file.
 
 By default DVC tries to use reflinks (see
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
@@ -274,7 +273,7 @@ $ dvc status
 Data and pipelines are up to date.
 ```
 
-`dvc status` ignores changes to files listed in `.dvcignore`. 
+`dvc status` ignores changes to files listed in `.dvcignore`.
 
 Let's have a look at cache directory:
 
@@ -289,5 +288,4 @@ $ tree .dvc/cache
 
 Only the hash values of directory (`dir/`) and `file2` have been cached.
 
-See
-[Dvcignore](/doc/user-guide/dvcignore) for more details.
+See [Dvcignore](/doc/user-guide/dvcignore) for more details.
