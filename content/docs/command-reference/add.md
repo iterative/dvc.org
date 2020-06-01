@@ -56,6 +56,10 @@ more details.
 > treated as _changed_ by `dvc repro`, which always executes them. See `dvc run`
 > to learn more about stage files.
 
+To avoid a file inside a directory being added accidentally, just add the 
+corresponding [patterns](/doc/user-guide/dvcignore) in a 
+`.dvcignore` file.
+
 By default DVC tries to use reflinks (see
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to avoid copying any file contents and to optimize DVC-file operations for large
@@ -84,9 +88,6 @@ but it can be used to track any large file or directory. We recommend using
 `dvc run` to version control intermediate and final results (like ML models).
 This way you bring data provenance and make your project
 [reproducible](/doc/command-reference/repro).
-
-To avoid tracking a file or directory, just add the corresponding
-[patterns](https://git-scm.com/docs/gitignore) in a `.dvcignore` file.
 
 ## Options
 
@@ -257,12 +258,12 @@ $ echo file_one > dir/file1
 $ echo file_two > dir/file2
 ```
 
-Now add `file1` to `.dvcignore` and track the entire `Dir` directory with
+Now add `file1` to `.dvcignore` and track the entire `dir` directory with
 `dvc add`.
 
 ```dvc
-$ echo Dir/file1 > .dvcignore
-$ dvc add Dir
+$ echo dir/file1 > .dvcignore
+$ dvc add dir
 ```
 
 Let's now modify `file1` (which is listed in `.dvcignore`) and run `dvc status`:
@@ -273,8 +274,9 @@ $ dvc status
 Data and pipelines are up to date.
 ```
 
-`dvc status` ignores changes to files listed in `.dvcignore`. Let's have a look
-at cache directory.
+`dvc status` ignores changes to files listed in `.dvcignore`. 
+
+Let's have a look at cache directory:
 
 ```dvc
 $ tree .dvc/cache
@@ -285,5 +287,7 @@ $ tree .dvc/cache
     └── 4bcc8502a70ac49bf441db350eafc2
 ```
 
-Only checksums of directory(`Dir/`) and `file2` have been cached. See
+Only the hash values of directory (`dir/`) and `file2` have been cached.
+
+See
 [Dvcignore](/doc/user-guide/dvcignore) for more details.
