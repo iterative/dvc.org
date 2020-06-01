@@ -10,6 +10,7 @@ interface ISEOProps {
   title?: string
   defaultMetaTitle?: boolean
   description?: string
+  siteName?: string
   keywords?: string
   image?: {
     src: string
@@ -25,7 +26,7 @@ const SEO: React.FC<ISEOProps> = ({
   title,
   defaultMetaTitle,
   description,
-  site_name,
+  siteName,
   keywords,
   image,
   meta = [],
@@ -68,19 +69,19 @@ const SEO: React.FC<ISEOProps> = ({
       }
     )
   }
-  if (site_name) {
+  if (siteName) {
     prebuildMeta.push(
       {
-        name: 'site_name',
-        content: site_name
+        name: 'siteName',
+        content: siteName
       },
       {
-        property: 'og:site_name',
-        content: site_name
+        property: 'og:siteName',
+        content: siteName
       },
       {
-        name: 'twitter:site_name',
-        content: site_name
+        name: 'twitter:siteName',
+        content: siteName
       }
     )
   }
