@@ -18,9 +18,11 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
   const siteMeta = getSiteMeta()
   const siteUrl = siteMeta.siteUrl
   const metaTitle = siteMeta.title
+  const siteName = siteMeta.siteName
   const metaDescription = siteMeta.description
   const metaKeywords = siteMeta.keywords
   const fullUrl = siteUrl + pathname
+   
 
   const meta: MetaProps[] = [
     {
@@ -38,6 +40,10 @@ const DefaultSEO: React.FC<IDefaultSEOProps> = ({ pathname }) => {
     {
       property: 'og:title',
       content: metaTitle
+    },
+    {
+      property: 'og:siteName',
+      content: siteName
     },
     {
       property: 'og:description',
