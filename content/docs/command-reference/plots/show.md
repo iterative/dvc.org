@@ -1,58 +1,55 @@
 # plots show
 
-Generate a plot image from from a [plot metrics](/doc/command-reference/plots)
-file.
+Generate [plot](/doc/command-reference/plots) from a metrics file.
 
 ## Synopsis
 
 ```usage
-usage: dvc plots show [-h] [-q | -v] [-t [TEMPLATE]] [-f FILE]
-                     [-s SELECT] [-x X] [-y Y] [--stdout]
-                     [--no-csv-header] [--no-html] [--title TITLE]
-                     [--xlab XLAB] [--ylab YLAB] [datafile]
+usage: dvc plots show [-h] [-q | -v] [-t <path>] [-o <path>]
+                      [-x <field>] [-y <field>] [--no-csv-header]
+                      [--show-json] [--title <text>] [--xlab <text>]
+                      [--ylab <text>] targets [targets ...]
 
 positional arguments:
-  datafile              Metrics file to visualize
+  targets               Metrics files to visualize.
 ```
 
 ## Description
 
 This command provides a quick way to visualize metrics such as loss functions,
-AUC curves, confusion matrices, etc. Please see `dvc plots` for information on
-the supported data formats and other relevant details about DVC plots.
+AUC curves, confusion matrices, etc. One of more `targets` are required by this
+command as argument.
+
+Please see `dvc plots` for information on the supported data formats and other
+relevant details about DVC plots.
 
 ## Options
 
-- `-t [TEMPLATE], --template [TEMPLATE]` -
+- `-t <path>, --template <path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
   with data. The default template is `.dvc/plots/default.json`. See more details
   in `dvc plots`.
 
-- `-f FILE, --file FILE` - name of the generated file. By default, the output
+- `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with additional `.html` suffix or
-  `.json` suffix for `--no-html` mode.
+  `.json` suffix for `--show-json` mode.
 
-- `--no-html` - do not wrap output Vega specification (JSON) with HTML.
+- `-x <field>` - field name for X axis. An auto-generated `index` field is used
+  by default.
 
-- `-x X` - field name for X axis. An auto-generated `index` field is used by
-  default.
+- `-y <field>` - field name for Y axis. The last column or field found in the
+  `targets` is used by default.
 
-- `-y Y` - field name for Y axis. The last column or field found in the
-  `datafile` is used by default.
+- `--xlab <text>` - X axis title. The X field name is the default title.
 
-- `-s SELECT, --select SELECT` - select which fields or JSONPath to store in the
-  metrics file [metadata](https://vega.github.io/vega/docs/data/). The
-  auto-generated, zero-based `index` column is always included.
+- `--ylab <text>` - Y axis title. The Y field name is the default title.
 
-- `--xlab XLAB` - X axis title. The X field name is the default title.
+- `--title <text>` - plot title.
 
-- `--ylab YLAB` - Y axis title. The Y field name is the default title.
+- `--show-json` - show output in JSON format.
 
-- `--title TITLE` - plot title.
-
-- `-o, --stdout` - print plot content to stdout.
-
-- `--no-csv-header` - provided CSV or TSV datafile does not have a header.
+- `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
+  header.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -128,11 +125,11 @@ file:///Users/usr/src/plots/logs.csv.html
 In many automation scenarios (like CI/CD for ML), it is convenient to have the
 [Vega-Lite](https://vega.github.io/vega-lite/) specification instead of the
 entire HTML plot file. For example to generating another image format like PNG
-or JPEG, or to include differently into a web app. The `--no-html` option
+or JPEG, or to include differently into a web app. The `--show-json` option
 prevents wrapping the plot in HTML. Note that the resulting file is JSON:
 
 ```dvc
-$ dvc plots show --select accuracy --no-html logs.csv
+$ dvc plots show --select accuracy --show-json logs.csv
 file:///Users/usr/src/plots/logs.csv.json
 ```
 

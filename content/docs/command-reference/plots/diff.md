@@ -6,13 +6,14 @@ plotting them in a single image.
 ## Synopsis
 
 ```usage
-usage: dvc plots diff [-h] [-q | -v] [-t [TEMPLATE]] [-d [DATAFILE]] [-f FILE]
-                     [-s SELECT] [-x X] [-y Y] [--stdout] [--no-csv-header]
-                     [--no-html] [--title TITLE] [--xlab XLAB] [--ylab YLAB]
-                     [revisions [revisions ...]]
+usage: dvc plots diff [-h] [-q | -v] [-t <path>]
+                      [--targets [<path> [<path> ...]]] [-o <path>]
+                      [-x <field>] [-y <field>] [--no-csv-header]
+                      [--show-json] [--title <text>] [--xlab <text>]
+                      [--ylab <text>] [revisions [revisions ...]]
 
 positional arguments:
-  revisions             Git commits to plot from
+  revisions             Git commits to plot from/to
 ```
 
 ## Description
@@ -21,8 +22,8 @@ This command visualize difference between metrics among experiments in the
 repository history. Requires that Git is being used to version the metrics
 files.
 
-The metrics file needs to be specified through `-d`/`--datafile` option. Also, a
-plot can be customized with
+The metrics file needs to be specified through `--targets` option. Also, a plot
+can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates) using the
 `--template` option. To learn more about the file formats and templates please
 see `dvc plots`.
@@ -39,43 +40,38 @@ resulting plot shows all of them in a single output.
 
 This command can work with metric files that are committed to a repository
 history, data files controlled by DVC, or any other file in the workspace. In
-the case of DVC-tracked `datafile`, the `revisions` are used to find the
+the case of DVC-tracked `targets`, the `revisions` are used to find the
 corresponding [DVC-files](/doc/user-guide/dvc-file-format).
 
 ## Options
 
-- `-d [DATAFILE], --datafile [DATAFILE]` - metrics file to visualize.
+- `--targets [TARGETS]` (**required**) - metrics file to visualize.
 
-- `-t [TEMPLATE], --template [TEMPLATE]` -
+- `-t <path>, --template <path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
   with data. The default template is `.dvc/plots/default.json`. See more details
   in `dvc plots`.
 
-- `-f FILE, --file FILE` - name of the generated file. By default, the output
+- `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with additional `.html` suffix or
-  `.json` suffix for `--no-html` mode.
+  `.json` suffix for `--show-json` mode.
 
-- `--no-html` - do not wrap output Vega specification (JSON) with HTML.
+- `-x <field>` - field name for X axis. An auto-generated `index` field is used
+  by default.
 
-- `-x X` - field name for X axis. An auto-generated `index` field is used by
-  default.
+- `-y <field>` - field name for Y axis. The last column or field found in the
+  `targets` is used by default.
 
-- `-y Y` - field name for Y axis. The last column or field found in the
-  `datafile` is used by default.
+- `--xlab <text>` - X axis title. The X field name is the default title.
 
-- `-s SELECT, --select SELECT` - select which fields or JSONPath to store in the
-  metrics file [metadata](https://vega.github.io/vega/docs/data/). The
-  auto-generated, zero-based `index` column is always included.
+- `--ylab <text>` - Y axis title. The Y field name is the default title.
 
-- `--xlab XLAB` - X axis title. The X field name is the default title.
+- `--title <text>` - plot title.
 
-- `--ylab YLAB` - Y axis title. The Y field name is the default title.
+- `--show-json` - show output in JSON format.
 
-- `--title TITLE` - plot title.
-
-- `-o, --stdout` - print plot content to stdout.
-
-- `--no-csv-header` - provided CSV or TSV datafile does not have a header.
+- `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
+  header.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -90,7 +86,7 @@ To visualize the difference between uncommitted changes of a metrics file and
 the last commit:
 
 ```dvc
-$ dvc plots diff -d logs.csv
+$ dvc plots diff --targets logs.csv
 file:///Users/dmitry/src/plots/logs.html
 ```
 
@@ -100,7 +96,7 @@ The difference between two versions (commit hashes, tags, or branches can be
 provided):
 
 ```dvc
-$ dvc plots diff -d logs.csv HEAD 0135527
+$ dvc plots diff --targets logs.csv HEAD 0135527
 file:///Users/usr/src/plots/logs.csv.html
 ```
 
@@ -130,7 +126,7 @@ A predefined confusion matrix
 separate plots:
 
 ```dvc
-$ dvc plots diff -t confusion -x predicted -d classes.csv
+$ dvc plots diff -t confusion -x predicted --targets classes.csv
 file:///Users/usr/src/test/plot_old/classes.csv.html
 ```
 
