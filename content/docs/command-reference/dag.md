@@ -50,7 +50,7 @@ It's possible to override the default pager via the `DVC_PAGER` environment
 variable. For example, the following command will replace the default pager with
 [`more`](<https://en.wikipedia.org/wiki/More_(command)>), for a single run:
 
-```bash
+```dvc
 $ DVC_PAGER=more dvc dag my-pipeline.dvc
 ```
 
