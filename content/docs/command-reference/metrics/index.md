@@ -1,19 +1,18 @@
 # metrics
 
-A set of commands to manage, collect, and display _metrics_:
+A set of commands to display and compare _metrics_:
 [show](/doc/command-reference/metrics/show), and
 [diff](/doc/command-reference/metrics/diff).
 
 ## Synopsis
 
 ```usage
-usage: dvc metrics [-h] [-q | -v]
-                   {show,diff} ...
+usage: dvc metrics [-h] [-q | -v] {show,diff} ...
 
 positional arguments:
   COMMAND
-    show                Print metrics, with optional formatting.
-    diff                Show changes in metrics between commits
+    show                Print metrics, with optional formatting
+    diff                Show changes in metrics between commits.
 ```
 
 ## Types of metrics
