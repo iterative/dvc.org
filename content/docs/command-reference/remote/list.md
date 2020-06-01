@@ -1,12 +1,6 @@
 # remote list
 
-List all available data remotes.
-
-See also [add](/doc/command-reference/remote/add),
-[default](/doc/command-reference/remote/default),
-[modify](/doc/command-reference/remote/modify),
-[remove](/doc/command-reference/remote/remove), and
-[rename](/doc/command-reference/remote/rename) commands to manage data remotes.
+List all available [data remotes](/doc/command-reference/remote).
 
 ## Synopsis
 
