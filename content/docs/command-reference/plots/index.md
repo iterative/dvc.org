@@ -2,17 +2,19 @@
 
 A set of commands to visualize and compare _plot metrics_ in structured files
 (JSON, CSV, or TSV): [show](/doc/command-reference/plots/show),
-[diff](/doc/command-reference/plots/diff).
+[diff](/doc/command-reference/plots/diff), and
+[modify](/doc/command-reference/plots/modify).
 
 ## Synopsis
 
 ```usage
-usage: dvc plots [-h] [-q | -v] {show,diff} ...
+usage: dvc plots [-h] [-q | -v] {show,diff,modify} ...
 
 positional arguments:
   COMMAND
     show         Generate plot from a metrics file.
     diff         Plot differences in metrics between commits.
+    modify       Modify plot props associated with a target file.
 ```
 
 ## Types of metrics
