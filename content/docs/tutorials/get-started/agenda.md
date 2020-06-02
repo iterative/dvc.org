@@ -26,9 +26,10 @@ with `python`.
 ![](/img/example-flow-2x.png)
 
 This is a natural language processing context, but NLP isn't the only area of
-data science where DVC can help. DVC is designed to be agnostic of frameworks,
-languages, etc. If you have data files or datasets and/or you produce data
-files, models, or datasets and you want to:
+data science where DVC can help. DVC is designed to be **Programming language 
+agnostic**: Python, R, Julia, shell scripts, etc. as well as **ML library agnostic**: 
+Keras, Tensorflow, PyTorch, Scipy, etc.. If you have data files or datasets and/or 
+you produce data files, models, or datasets and you want to:
 
 - Capture and save those <abbr>data artifacts</abbr> the same way you capture
   code
