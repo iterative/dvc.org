@@ -1,7 +1,8 @@
 ---
 name: Marcel Ribeiro-Dantas
 avatar: marcel.jpg
-link: https://twitter.com/mribeirodantas
+links:
+  - https://twitter.com/mribeirodantas
 ---
 
 Early Stage Researcher at [Institut Curie](https://intstitut-curie.org) with

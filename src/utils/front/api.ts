@@ -62,7 +62,7 @@ export function useIssues(): UseApiResult<
   IGithubIssuesResponse,
   IGithubIssue[]
 > {
-  const response = useAPICall<IGithubIssuesResponse>('/api/github')
+  const response = useAPICall<IGithubIssuesResponse>('/api/github/issues')
 
   return { ...response, result: response.result?.issues }
 }

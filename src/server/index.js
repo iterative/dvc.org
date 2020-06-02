@@ -19,6 +19,7 @@ const express = require('express')
 const compression = require('compression')
 const { s3Url } = require('./config')
 const { isProduction } = require('./utils')
+require('dotenv').config()
 
 const port = process.env.PORT || 3000
 const app = express()

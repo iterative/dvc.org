@@ -107,6 +107,105 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 ## Examples
 
+Let's employ a simple <abbr>workspace</abbr> with some data, code, ML models,
+pipeline stages, such as the <abbr>DVC project</abbr> created for the
+[Get Started](/doc/tutorials/get-started). Then we can see what happens with
+`dvc pull`.
+
+<details>
+
+### Click and expand to setup the project
+
+Start by cloning our example repo if you don't already have it:
+
+```dvc
+$ git clone https://github.com/iterative/example-get-started
+$ cd example-get-started
+```
+
+</details>
+
+The workspace looks almost like in this
+[pipeline setup](/doc/tutorials/pipelines):
+
+```dvc
+.
+├── data
+│   └── data.xml.dvc
+...
+└── train.dvc
+```
+
+We can now just run `dvc pull` to download the most recent `data/data.xml`,
+`model.pkl`, and other DVC-tracked files into the <abbr>workspace</abbr>:
+
+```dvc
+$ dvc pull
+
+$ tree example-get-started/
+example-get-started/
+├── data
+│   ├── data.xml
+│   ├── data.xml.dvc
+...
+├── model.pkl
+└── train.dvc
+```
+
+We can download specific <abbr>outputs</abbr> of a single DVC-file:
+
+```dvc
+$ dvc pull train.dvc
+```
+
+## Example: With dependencies
+
+> Please delete the `.dvc/cache` directory first (with `rm -Rf .dvc/cache`) to
+> follow this example if you tried the previous ones.
+
+Our [pipeline](/doc/command-reference/pipeline) has been setup with these
+[stages](/doc/command-reference/run):
+
+```dvc
+$ dvc pipeline show evaluate.dvc
+data/data.xml.dvc
+prepare.dvc
+featurize.dvc
+train.dvc
+evaluate.dvc
+```
+
+Imagine the [remote storage](/doc/command-reference/remote) has been modified
+such that the data in some of these stages should be updated in the
+<abbr>workspace</abbr>.
+
+```dvc
+$ dvc status -c
+    deleted:            data/features/test.pkl
+    deleted:            data/features/train.pkl
+    deleted:            model.pkl
+    ...
+```
+
+One could do a simple `dvc pull` to get all the data, but what if you only want
+to retrieve part of the data?
+
+```dvc
+$ dvc pull --with-deps featurize.dvc
+
+... Use the partial update, then pull the remaining data:
+
+$ dvc pull
+Everything is up to date.
+```
+
+With the first `dvc pull` we specified a stage in the middle of this pipeline
+(`featurize.dvc`) while using `--with-deps`. DVC started with that DVC-file and
+searched backwards through the pipeline for data files to download. Later we ran
+`dvc pull` to download all the remaining data files.
+
+## Example: Download from specific remote storage
+
 For using the `dvc pull` command, a remote storage must be defined. (See
 `dvc remote add`.) For an existing <abbr>project</abbr>, remotes are usually
 already set up and you can use `dvc remote list` to check them. To remember how
@@ -121,75 +220,9 @@ r1	ssh://_username_@_host_/path/to/dvc/remote/storage
 > DVC supports several
 > [remote types](/doc/command-reference/remote/add#supported-storage-types).
 
-Having some images and other files in remote storage, we can pull all changed
-files from the current Git branch:
+To download DVC-tracked data from a specific DVC remote, use the `--remote`
+(`-r`) option of `dvc pull`:
 
 ```dvc
 $ dvc pull --remote r1
 ```
-
-We can download specific files that are <abbr>outputs</abbr> of a specific
-DVC-file:
-
-```dvc
-$ dvc pull data.zip.dvc
-```
-
-In this case we left off the `--remote` option, so it will have pulled from the
-default remote. The only files considered in this case are what is listed in the
-`out` field of the DVC-file `targets`.
-
-## Example: With dependencies
-
-Demonstrating the `--with-deps` option requires a larger example. First, assume
-a [pipeline](/doc/command-reference/pipeline) has been setup with these
-[stages](/doc/command-reference/run):
-
-```dvc
-$ dvc pipeline show
-
-data/Posts.xml.zip.dvc
-Posts.xml.dvc
-Posts.tsv.dvc
-Posts-test.tsv.dvc
-matrix-train.p.dvc
-model.p.dvc
-Dvcfile
-```
-
-Imagine the remote storage has been modified such that the data in some of these
-stages should be updated in the <abbr>workspace</abbr>.
-
-```dvc
-$ dvc status --cloud
-
-  deleted:            data/model.p
-  deleted:            data/matrix-test.p
-  deleted:            data/matrix-train.p
-```
-
-One could do a simple `dvc pull` to get all the data, but what if you only want
-to retrieve part of the data?
-
-```dvc
-$ dvc pull --remote r1 --with-deps matrix-train.p.dvc
-
-... Do some work based on the partial update
-
-$ dvc pull --remote r1 --with-deps model.p.dvc
-
-... Pull the rest of the data
-
-$ dvc pull --remote r1
-
-Everything is up to date.
-```
-
-With the first `dvc pull` we specified a stage in the middle of this pipeline
-(`matrix-train.p.dvc`) while using `--with-deps`. DVC started with that DVC-file
-and searched backwards through the pipeline for data files to download. Because
-the `model.p.dvc` stage occurs later, its data was not pulled.
-
-Then we ran `dvc pull` specifying the last stage, `model.p.dvc`, and its data
-was downloaded. Finally, we ran `dvc pull` with no flags to make sure that all
-data was already pulled with the previous commands.
