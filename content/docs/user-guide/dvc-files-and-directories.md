@@ -19,9 +19,6 @@ Both use human-friendly YAML schemas, described below. We encourage you to get
 familiar with them so you may edit them freely, as needed. Both type of files
 should be versioned with Git (for Git-enabled <abbr>repositories</abbr>).
 
-> See the [Syntax Highlighting](/doc/install/plugins) to learn how to enable >
-> the highlighting for your editor.
-
 ## .dvc files
 
 When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add` or
