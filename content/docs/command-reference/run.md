@@ -11,7 +11,7 @@ usage: dvc run [-h] [-q | -v] [-d <path>] [-o <path>] [-O <path>]
                [-w <path>] [--no-exec] [--overwrite-dvcfile]
                [--no-run-cache] [--no-commit]
                [--outs-persist <path>] [--outs-persist-no-cache <path>]
-               [--always-changed]
+               [--always-changed] [--external]
                command
 
 positional arguments:
@@ -182,6 +182,9 @@ data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
 
   > Note that DVC-files without dependencies are automatically considered
   > "always changed", so this option has no effect in those cases.
+
+- `--external` - allow outputs that are outside of the DVC repository. See
+  [Managing External Data](/doc/user-guide/managing-external-data).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
