@@ -1,9 +1,9 @@
 # Agenda
 
-DVC works **on top of Git repositories** and has a similar command line interface 
-and Git workflow. You'll need [Git](https://git-scm.com) to run the commands in 
-this guide. Also, if DVC is not installed, please follow these [instructions](/doc/install) 
-to do so.
+DVC works **on top of Git repositories** and has a similar command line
+interface and Git workflow. You'll need [Git](https://git-scm.com) to run the
+commands in this guide. Also, if DVC is not installed, please follow these
+[instructions](/doc/install) to do so.
 
 In the next few sections we'll build a simple natural language processing (NLP)
 project from scratch. If you'd like to get the final result or have any issues
@@ -26,10 +26,10 @@ with `python`.
 ![](/img/example-flow-2x.png)
 
 This is a natural language processing context, but NLP isn't the only area of
-data science where DVC can help. DVC is designed to be **Programming language 
-agnostic**: Python, R, Julia, shell scripts, etc. as well as **ML library agnostic**: 
-Keras, Tensorflow, PyTorch, Scipy, etc.. If you have data files or datasets and/or 
-you produce data files, models, or datasets and you want to:
+data science where DVC can help. DVC is designed to be **Programming language
+agnostic**: Python, R, Julia, shell scripts, etc. as well as **ML library
+agnostic**: Keras, Tensorflow, PyTorch, Scipy, etc.. If you have data files or
+datasets and/or you produce data files, models, or datasets and you want to:
 
 - Capture and save those <abbr>data artifacts</abbr> the same way you capture
   code
