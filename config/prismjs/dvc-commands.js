@@ -21,6 +21,7 @@ module.exports = [
   'push',
   'pull',
   'pkg',
+  'plots modify',
   'plots show',
   'plots diff',
   'plots',
