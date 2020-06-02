@@ -7,6 +7,9 @@ outputs of a command (stage) as dependencies in another one, we can describe a
 sequence of commands that gets to a desired result. This is what we call a
 **data pipeline** or dependency graph.
 
+The support for pipelines is what enables DVC to makes data science projects 
+**reproducible** using implicit dependency graphs.
+
 Let's create a second stage (after `prepare.dvc`, created in the previous
 chapter) to perform feature extraction:
 
