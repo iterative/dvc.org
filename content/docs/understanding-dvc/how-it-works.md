@@ -7,7 +7,8 @@
   $ dvc init
   ```
 
-  > See [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories)
+  > See
+  > [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files).
 
 - DVC helps define command pipelines, and keeps each command
   [stage](/doc/command-reference/run) and dependencies in a Git repository:
@@ -44,7 +45,7 @@
 
 - DVC introduces the concept of data files for Git repositories. DVC keeps data
   files outside of the repository, replacing them with special
-  [DVC-files](/doc/user-guide/dvc-metafile-formats) in the Git repo:
+  [DVC-files](/doc/user-guide/dvc-files-and-directories) in the Git repo:
 
   ```dvc
   $ git checkout a03_normbatch_vgg16 # checkout code and DVC-files

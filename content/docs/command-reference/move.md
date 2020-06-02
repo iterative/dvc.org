@@ -1,8 +1,8 @@
 # move
 
 Rename a file or a directory and modify the corresponding
-[DVC-file](/doc/user-guide/dvc-metafile-formats) (see `dvc add`) to reflect the
-change. If the file or directory has the same name as the corresponding
+[DVC-file](/doc/user-guide/dvc-files-and-directories) (see `dvc add`) to reflect
+the change. If the file or directory has the same name as the corresponding
 DVC-file, it also renames it.
 
 ## Synopsis
@@ -19,9 +19,10 @@ positional arguments:
 
 `dvc move` is useful when a `src` file or directory has previously been added to
 the <abbr>project</abbr> with `dvc add`, creating a
-[DVC-file](/doc/user-guide/dvc-metafile-formats) (with `src` as a dependency).
-`dvc move` behaves like `mv src dst`, moving `src` to the given `dst` path, but
-it also renames and updates the corresponding DVC-file appropriately.
+[DVC-file](/doc/user-guide/dvc-files-and-directories) (with `src` as a
+dependency). `dvc move` behaves like `mv src dst`, moving `src` to the given
+`dst` path, but it also renames and updates the corresponding DVC-file
+appropriately.
 
 > Note that `src` may be a copy or a
 > [link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
@@ -107,7 +108,7 @@ $ tree
 We use `dvc add` to track a file with DVC, then we use `dvc move` to change its
 location. If target path already exists and is a directory, data file is moved
 with unchanged name into this folder. Note that the `data.csv.dvc`
-[DVC-file](/doc/user-guide/dvc-metafile-formats) is also moved.
+[DVC-file](/doc/user-guide/dvc-files-and-directories) is also moved.
 
 ```dvc
 $ tree

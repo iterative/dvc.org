@@ -38,7 +38,7 @@ save any changes in the code or DVC-files (those should be saved by using
 Under the hood a few actions are taken:
 
 - The push command by default uses all
-  [DVC-files](/doc/user-guide/dvc-metafile-formats) in the
+  [DVC-files](/doc/user-guide/dvc-files-and-directories) in the
   <abbr>workspace</abbr>. The command options listed below will either limit or
   expand the set of DVC-files to consult.
 

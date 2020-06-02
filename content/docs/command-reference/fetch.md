@@ -22,7 +22,8 @@ of the project, but without placing them in the <abbr>workspace</abbr>. This
 makes the data files available for linking (or copying) into the workspace.
 (Refer to [dvc config cache.type](/doc/command-reference/config#cache).) Along
 with `dvc checkout`, it's performed automatically by `dvc pull` when the target
-[DVC-files](/doc/user-guide/dvc-metafile-formats) are not already in the cache:
+[DVC-files](/doc/user-guide/dvc-files-and-directories) are not already in the
+cache:
 
 ```
 Controlled files             Commands
@@ -49,8 +50,8 @@ on DVC remotes.) These necessary data or model files are listed as
 [stage](/doc/command-reference/run)) so they are required to
 [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
 corresponding [pipeline](/doc/command-reference/pipeline). (See
-[DVC-File Format](/doc/user-guide/dvc-metafile-formats) for more information on
-dependencies and outputs.)
+[DVC-File Format](/doc/user-guide/dvc-files-and-directories) for more
+information on dependencies and outputs.)
 
 `dvc fetch` ensures that the files needed for a DVC-file to be
 [reproduced](/doc/tutorials/get-started/data-pipelines#reproduce) exist in
@@ -276,7 +277,7 @@ $ tree .dvc/cache
 ```
 
 Fetching using `--with-deps` starts with the target
-[DVC-file](/doc/user-guide/dvc-metafile-formats) (`train.dvc` stage) and
+[DVC-file](/doc/user-guide/dvc-files-and-directories) (`train.dvc` stage) and
 searches backwards through its pipeline for data to download into the project's
 cache. All the data for the second and third stages ("featurize" and "train")
 has now been downloaded to the cache. We could now use `dvc checkout` to get the

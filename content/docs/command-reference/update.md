@@ -2,7 +2,7 @@
 
 Update <abbr>data artifacts</abbr> imported from external <abbr>DVC
 projects</abbr>, and corresponding
-[DVC-files](/doc/user-guide/dvc-metafile-formats).
+[DVC-files](/doc/user-guide/dvc-files-and-directories).
 
 ## Synopsis
 
@@ -17,7 +17,7 @@ positional arguments:
 ## Description
 
 After creating <abbr>import stages</abbr>
-([DVC-files](/doc/user-guide/dvc-metafile-formats)) with `dvc import` or
+([DVC-files](/doc/user-guide/dvc-files-and-directories)) with `dvc import` or
 `dvc import-url`, the data source can change. Use `dvc update` to bring these
 imported file, directory, or <abbr>data artifact</abbr> up to date.
 
@@ -84,8 +84,8 @@ This time nothing has changed, since the source <abbr>project</abbr> is rather
 stable.
 
 > Note that `dvc update` updates the `rev_lock` field of the corresponding
-> [DVC-file](/doc/user-guide/dvc-metafile-formats) (when there are changes to
-> bring in).
+> [DVC-file](/doc/user-guide/dvc-files-and-directories) (when there are changes
+> to bring in).
 
 ## Example: Updating fixed revisions to a different version
 

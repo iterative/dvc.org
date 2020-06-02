@@ -24,9 +24,9 @@ advanced scenarios:
 
 At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/dvc-files-and-directories), that are
-hidden from the user. This directory is automatically staged with `git add`, so
-it can be easily committed with Git.
+[files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files),
+that are hidden from the user. This directory is automatically staged with
+`git add`, so it can be easily committed with Git.
 
 ### Initializing DVC in subdirectories
 
@@ -56,7 +56,7 @@ sub-projects to mitigate the issues of initializing in the Git repository root:
 
 - Not enough isolation/granularity - commands like `dvc pull`, `dvc checkout`,
   and others analyze the whole repository to look for
-  [DVC-files](/doc/user-guide/dvc-metafile-formats) to download files and
+  [DVC-files](/doc/user-guide/dvc-files-and-directories) to download files and
   directories, to reproduce <abbr>pipelines</abbr>, etc. It can be expensive in
   the large repositories with a lot of projects.
 
@@ -126,7 +126,7 @@ include:
 - SCM other than Git is being used. Even though there are DVC features that
   require DVC to be run in the Git repo, DVC can work well with other version
   control systems. Since DVC relies on simple text
-  [DVC-files](/doc/user-guide/dvc-metafile-formats) to manage
+  [DVC-files](/doc/user-guide/dvc-files-and-directories) to manage
   <abbr>pipelines</abbr>, data, etc, they can be added into any SCM thus
   providing large data files and directories versioning.
 

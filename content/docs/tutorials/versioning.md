@@ -65,8 +65,8 @@ The repository you cloned is already DVC-initialized. It already contains a
 `.dvc/` directory with the `config` and `.gitignore` files. These and other
 files and directories are hidden from user, as typically there's no need to
 interact with them directly. See
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
-more.
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
+to learn more.
 
 </details>
 
@@ -132,8 +132,8 @@ the <abbr>cache</abbr> (while keeping a
 [file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to it in the <abbr>workspace</abbr>, so you can continue working the same way as
 before). This is achieved by creating a simple human-readable
-[DVC-file](/doc/user-guide/dvc-metafile-formats) that serves as a pointer to the
-cache.
+[DVC-file](/doc/user-guide/dvc-files-and-directories) that serves as a pointer
+to the cache.
 
 Next, we train our first model with `train.py`. Because of the small dataset,
 this training process should be small enough to run on most computers in a
@@ -168,8 +168,8 @@ As we mentioned briefly, DVC does not commit the `data/` directory and
 then `git commit` DVC-files that contain file hashes that point to cached data.
 
 In this case we created `data.dvc` and `model.h5.dvc`. Refer to
-[DVC-File Format](/doc/user-guide/dvc-metafile-formats) to learn more about how
-these files work.
+[DVC-File Format](/doc/user-guide/dvc-files-and-directories) to learn more about
+how these files work.
 
 </details>
 
@@ -283,9 +283,9 @@ the `v2.0` tag.
 As we have learned already, DVC keeps data files out of Git (by adjusting
 `.gitignore`) and puts them into the <abbr>cache</abbr> (usually it's a
 `.dvc/cache` directory inside the repository). Instead, DVC creates
-[DVC-files](/doc/user-guide/dvc-metafile-formats). These text files serve as
-data placeholders that point to the cached files, and they can be easily version
-controlled with Git.
+[DVC-files](/doc/user-guide/dvc-files-and-directories). These text files serve
+as data placeholders that point to the cached files, and they can be easily
+version controlled with Git.
 
 When we run `git checkout` we restore pointers (DVC-files) first. Then, when we
 run `dvc checkout`, we use these pointers to put the right data in the right
@@ -325,7 +325,7 @@ $ dvc run -f Dvcfile \
 ```
 
 Similar to `dvc add`, `dvc run` creates a
-[DVC-file](/doc/user-guide/dvc-metafile-formats) named `Dvcfile` (specified
+[DVC-file](/doc/user-guide/dvc-files-and-directories) named `Dvcfile` (specified
 using the `-f` option). It tracks all outputs (`-o`) the same way as `dvc add`
 does. Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and the
 command (`python train.py`) that was run to produce the result. We call such a

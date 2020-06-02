@@ -51,7 +51,7 @@ or move it, you can use `dvc move`.
 
 ## Data file internals
 
-If you take a look at the [DVC-file](/doc/user-guide/dvc-metafile-formats)
+If you take a look at the [DVC-file](/doc/user-guide/dvc-files-and-directories)
 created by `dvc add`, you will see that <abbr>outputs</abbr> are tracked in the
 `outs` field. In this file, only one output is specified. The output contains
 the data file path in the repository and its MD5 hash. This hash value
@@ -139,7 +139,7 @@ files written to by the command, if any.
 
 - `-o out.dat` (lower case o) specifies an output data file. DVC will track this
   data file by creating a corresponding
-  [DVC-file](/doc/user-guide/dvc-metafile-formats) (as if running
+  [DVC-file](/doc/user-guide/dvc-files-and-directories) (as if running
   `dvc add out.dat` after `dvc run` instead).
 
 - `-O tmp.dat` (upper case O) specifies a simple output file (not to be added to
@@ -186,9 +186,9 @@ command and does some additional work if the command was successful:
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
    file in the <abbr>project</abbr> with information about this pipeline stage.
-   (See [DVC-File Format](/doc/user-guide/dvc-metafile-formats)). Note that the
-   name of this file could be specified by using the `-f` option, for example
-   `-f extract.dvc`.
+   (See [DVC-File Format](/doc/user-guide/dvc-files-and-directories)). Note that
+   the name of this file could be specified by using the `-f` option, for
+   example `-f extract.dvc`.
 
 Let's take a look at the resulting stage file created by `dvc run` above:
 

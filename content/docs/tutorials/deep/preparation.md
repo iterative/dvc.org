@@ -67,9 +67,9 @@ with:
 
 At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/dvc-files-and-directories), that are
-hidden from the user. This directory is automatically staged with `git add`, so
-it can be easily committed with Git:
+[files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files),
+that are hidden from the user. This directory is automatically staged with
+`git add`, so it can be easily committed with Git:
 
 ```dvc
 $ dvc init
@@ -92,4 +92,4 @@ explained in more detail in the next chapter.) Note that it won't be tracked by
 Git — It's a local-only directory, and you cannot push it to a Git remote.
 
 For more information refer to
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories).
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files).

@@ -54,8 +54,8 @@ written, or generated, and these can be versioned directly with Git. You can
 then use `dvc run` with the `-p` (`--params`) option to specify parameter
 dependencies for your pipeline's stages (instead of or in addition to regular
 `-d` deps.) DVC saves the param names and values in the stage file (see
-[DVC-file format](/doc/user-guide/dvc-metafile-formats)). These values will be
-compared to the ones in the params files to determine if the stage is
+[DVC-file format](/doc/user-guide/dvc-files-and-directories)). These values will
+be compared to the ones in the params files to determine if the stage is
 invalidated upon pipeline [reproduction](/doc/command-reference/repro).
 
 `dvc params diff` is available to show changes in parameters, displaying the
@@ -109,9 +109,9 @@ $ dvc run -d users.csv -o model.pkl \
 ```
 
 You can find that each parameter and it's value were saved in the
-[DVC-file](/doc/user-guide/dvc-metafile-formats). These values will be compared
-to the ones in the parameters files whenever `dvc repro` is used, to determine
-if dependency to the params file is invalidated:
+[DVC-file](/doc/user-guide/dvc-files-and-directories). These values will be
+compared to the ones in the parameters files whenever `dvc repro` is used, to
+determine if dependency to the params file is invalidated:
 
 ```yaml
 md5: 05d178cfa0d1474b6c5800aa1e1b34ac

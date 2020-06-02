@@ -15,7 +15,7 @@ positional arguments:
 ## Description
 
 Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
-[DVC-files](/doc/user-guide/dvc-metafile-formats).
+[DVC-files](/doc/user-guide/dvc-files-and-directories).
 
 > This kind of metrics can be defined with the `-m` (`--metrics`) and `-M`
 > (`--metrics-no-cache`) options of `dvc run`.

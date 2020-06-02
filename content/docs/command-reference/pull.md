@@ -3,7 +3,7 @@
 Download tracked files or directories from
 [remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr> and
 <abbr>workspace</abbr>, based on the current
-[DVC-files](/doc/user-guide/dvc-metafile-formats).
+[DVC-files](/doc/user-guide/dvc-files-and-directories).
 
 ## Synopsis
 
@@ -37,7 +37,7 @@ remote.
 
 With no arguments, just `dvc pull` or `dvc pull --remote <name>`, it downloads
 only the files (or directories) missing from the workspace by searching all
-[DVC-files](/doc/user-guide/dvc-metafile-formats) currently in the
+[DVC-files](/doc/user-guide/dvc-files-and-directories) currently in the
 <abbr>project</abbr>. It will not download files associated with earlier commits
 in the <abbr>repository</abbr> (if using Git), nor will it download files that
 have not changed.

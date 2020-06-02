@@ -39,8 +39,9 @@ $ git commit -m "Initialize DVC repository"
 ```
 
 At DVC initialization, a new `.dvc/` directory is created for internal
-[files and directories 📖](/doc/user-guide/dvc-files-and-directories). This
-directory is automatically staged with Git, so it can be committed right away.
+[files and directories 📖](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files).
+This directory is automatically staged with Git, so it can be committed right
+away.
 
 ## What's ahead?
 

@@ -3,7 +3,7 @@
 ## Pushing data to the cloud
 
 We've gone over how source code and
-[DVC-files](/doc/user-guide/dvc-metafile-formats) can be shared using a Git
+[DVC-files](/doc/user-guide/dvc-files-and-directories) can be shared using a Git
 repository. These <abbr>DVC repositories</abbr> will contain all the information
 needed for reproducibility, so it might be a good idea to share them with your
 team using Git hosting services (such as [GitHub](https://github.com/)).
@@ -15,8 +15,8 @@ DVC is able to push the <abbr>cache</abbr> to cloud storage.
 
 First, you need to setup remote storage for the <abbr>project</abbr>, that will
 be stored in the project's
-[config file](https://dvc.org/doc/user-guide/dvc-files-and-directories). This
-can be done using the CLI as shown below.
+[config file](https://dvc.org/doc/user-guide/dvc-files-and-directories#internal-directories-and-files).
+This can be done using the CLI as shown below.
 
 > Note that we are using the `dvc-public` S3 bucket as an example and you don't
 > have write access to it, so in order to follow the tutorial you will need to

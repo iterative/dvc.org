@@ -63,7 +63,7 @@ The following config options are available for all remote types:
   sure that these haven't been modified, or corrupted during download. It may
   slow down the aforementioned commands. The calculated hash is compared to the
   value saved in the corresponding
-  [DVC-file](/doc/user-guide/dvc-metafile-formats).
+  [DVC-file](/doc/user-guide/dvc-files-and-directories).
 
   > Note that this option is enabled on **Google Drive** remotes by default.
 

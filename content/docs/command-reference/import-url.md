@@ -41,8 +41,8 @@ while `out` can be used to specify the directory and/or file name desired for
 the downloaded data. If an existing directory is specified, the file or
 directory will be placed inside.
 
-[DVC-files](/doc/user-guide/dvc-metafile-formats) support references to data in
-an external location, see
+[DVC-files](/doc/user-guide/dvc-files-and-directories) support references to
+data in an external location, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such a
 DVC-file, the `deps` field stores the remote URL, and the `outs` field contains
 the corresponding local path in the <abbr>workspace</abbr>. It records enough
@@ -102,9 +102,9 @@ $ dvc run -d https://example.com/path/to/data.csv \
           wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a [DVC-files](/doc/user-guide/dvc-metafile-formats) with
-an external dependency, but the one created by `dvc import-url` preserves the
-connection to the data source. We call this an _import stage_.
+Both methods generate a [DVC-files](/doc/user-guide/dvc-files-and-directories)
+with an external dependency, but the one created by `dvc import-url` preserves
+the connection to the data source. We call this an _import stage_.
 
 Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` on them to bring the import
@@ -188,8 +188,8 @@ The `etag` field in the DVC-file contains the
 If the remote file changes, its ETag will be different. This metadata allows DVC
 to determine whether its necessary to download it again.
 
-> See [DVC-File Format](/doc/user-guide/dvc-metafile-formats) for more details
-> on the text format above.
+> See [DVC-File Format](/doc/user-guide/dvc-files-and-directories) for more
+> details on the text format above.
 
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).

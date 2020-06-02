@@ -2,9 +2,9 @@
 
 Download a file or directory tracked by DVC or by Git into the
 <abbr>workspace</abbr>. It also creates a
-[DVC-file](/doc/user-guide/dvc-metafile-formats) with information about the data
-source, which can later be used to [update](/doc/command-reference/update) the
-import.
+[DVC-file](/doc/user-guide/dvc-files-and-directories) with information about the
+data source, which can later be used to [update](/doc/command-reference/update)
+the import.
 
 > See also our `dvc.api.open()` Python API function.
 
@@ -44,7 +44,7 @@ The `path` argument is used to specify the location of the target to be
 downloaded within the source repository at `url`. `path` can specify any file or
 directory in the source repo, including those tracked by DVC, or by Git. Note
 that DVC-tracked targets should be found in a
-[DVC-file](/doc/user-guide/dvc-metafile-formats) of the project.
+[DVC-file](/doc/user-guide/dvc-files-and-directories) of the project.
 
 ⚠️ The project should have a default
 [DVC remote](/doc/command-reference/remote), containing the actual data for this
@@ -112,7 +112,7 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 
 In contrast with `dvc get`, this command doesn't just download the data file,
 but it also creates an import stage
-([DVC-file](/doc/user-guide/dvc-metafile-formats)) with a link to the data
+([DVC-file](/doc/user-guide/dvc-files-and-directories)) with a link to the data
 source (as explained in the description above). (This import stage can later be
 used to [update](/doc/command-reference/update) the import.) Check
 `data.xml.dvc`:
@@ -153,7 +153,7 @@ Importing
 ```
 
 When using this option, the import stage
-([DVC-file](/doc/user-guide/dvc-metafile-formats)) will also have a `rev`
+([DVC-file](/doc/user-guide/dvc-files-and-directories)) will also have a `rev`
 subfield under `repo`:
 
 ```yaml
@@ -185,9 +185,9 @@ If you take a look at our
 [dataset registry](https://github.com/iterative/dataset-registry)
 <abbr>project</abbr>, you'll see that it's organized into different directories
 such as `tutorial/ver` and `use-cases/`, and these contain
-[DVC-files](/doc/user-guide/dvc-metafile-formats) that track different datasets.
-Given this simple structure, its data files can be easily shared among several
-other projects using `dvc get` and `dvc import`. For example:
+[DVC-files](/doc/user-guide/dvc-files-and-directories) that track different
+datasets. Given this simple structure, its data files can be easily shared among
+several other projects using `dvc get` and `dvc import`. For example:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \

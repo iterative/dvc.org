@@ -38,7 +38,7 @@ Luigi, etc.
   result, but we expect some GUI services will be created on top of DVC.
 
 - DVC has transparent design. Its
-  [internal files and directories](/doc/user-guide/dvc-files-and-directories)
+  [internal files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
   (including the <abbr>cache</abbr> directory) have a human-readable format and
   can be easily reused by external tools.
 
@@ -60,7 +60,7 @@ Luigi, etc.
   (DAG):
 
   - The DAG or dependency graph is defined implicitly by the connections between
-    [DVC-files](/doc/user-guide/dvc-metafile-formats) (with file names
+    [DVC-files](/doc/user-guide/dvc-files-and-directories) (with file names
     `<file>.dvc` or `Dvcfile`), based on their dependencies and
     <abbr>outputs</abbr>.
 
@@ -100,7 +100,7 @@ Luigi, etc.
   Git-annex repository is cloned via `git clone`, data files won't be copied to
   the local machine, as file contents are stored in separate
   [remotes](/doc/command-reference/remote). With DVC,
-  [DVC-files](/doc/user-guide/dvc-metafile-formats), which provide the
+  [DVC-files](/doc/user-guide/dvc-files-and-directories), which provide the
   reproducible workflow, are always included in the Git repository. Hence, they
   can be executed locally with minimal effort.
 

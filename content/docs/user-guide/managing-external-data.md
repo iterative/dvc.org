@@ -12,9 +12,9 @@ DVC to control data outside of the <abbr>project</abbr> directory.
 
 DVC can track files on an external storage with `dvc add` or specify external
 files as <abbr>outputs</abbr> for
-[DVC-files](/doc/user-guide/dvc-metafile-formats) created by `dvc run` (stage
-files). External outputs are considered part of the DVC project. DVC will track
-changes in them and reflect this in the output of `dvc status`.
+[DVC-files](/doc/user-guide/dvc-files-and-directories) created by `dvc run`
+(stage files). External outputs are considered part of the DVC project. DVC will
+track changes in them and reflect this in the output of `dvc status`.
 
 Currently, the following types (protocols) of external outputs (and
 <abbr>cache</abbr>) are supported:

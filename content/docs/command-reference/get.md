@@ -40,7 +40,7 @@ The `path` argument is used to specify the location of the target to be
 downloaded within the source repository at `url`. `path` can specify any file or
 directory in the source repo, including those tracked by DVC, or by Git. Note
 that DVC-tracked targets should be found in a
-[DVC-file](/doc/user-guide/dvc-metafile-formats) of the project.
+[DVC-file](/doc/user-guide/dvc-files-and-directories) of the project.
 
 ⚠️ The project should have a default
 [DVC remote](/doc/command-reference/remote), containing the actual data for this
@@ -182,9 +182,9 @@ get the most recent one, we use a similar command, but with
 `-o model.bigrams.pkl` and `--rev bigrams-experiment` (or even without `--rev`
 since that tag has the latest model version anyway). In fact, in this case using
 `dvc pull` with the corresponding
-[DVC-files](/doc/user-guide/dvc-metafile-formats) should suffice, downloading
-the file as just `model.pkl`. We can then rename it to make its variant
-explicit:
+[DVC-files](/doc/user-guide/dvc-files-and-directories) should suffice,
+downloading the file as just `model.pkl`. We can then rename it to make its
+variant explicit:
 
 ```dvc
 $ dvc pull train.dvc

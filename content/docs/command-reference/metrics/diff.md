@@ -32,7 +32,7 @@ difference (delta) from the previous value of metrics (with 3-digit accuracy).
 They're calculated between two commits (hash, branch, tag, or any
 [Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
 <abbr>project</abbr>, found by examining all of the
-[DVC-files](/doc/user-guide/dvc-metafile-formats) in both references.
+[DVC-files](/doc/user-guide/dvc-files-and-directories) in both references.
 
 Another way to display metrics is the `dvc metrics show` command, which just
 lists all the current metrics without comparisons.

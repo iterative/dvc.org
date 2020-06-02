@@ -97,7 +97,7 @@ $ dvc add data/Posts.xml.zip
 ```
 
 When we run `dvc add` `Posts.xml.zip`, DVC creates a
-[DVC-file](/doc/user-guide/dvc-metafile-formats).
+[DVC-file](/doc/user-guide/dvc-files-and-directories).
 
 <details>
 
@@ -105,9 +105,9 @@ When we run `dvc add` `Posts.xml.zip`, DVC creates a
 
 At DVC initialization, a new `.dvc/` directory is created for internal
 configuration and <abbr>cache</abbr>
-[files and directories](/doc/user-guide/dvc-files-and-directories) that are
-hidden from the user. This directory is automatically staged with `git add`, so
-it can be easily committed with Git.
+[files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
+that are hidden from the user. This directory is automatically staged with
+`git add`, so it can be easily committed with Git.
 
 Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
 _orphan_ [stage file](/doc/command-reference/run):

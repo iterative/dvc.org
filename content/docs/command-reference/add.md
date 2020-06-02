@@ -1,7 +1,7 @@
 # add
 
 Track data files or directories with DVC, by creating a corresponding
-[DVC-file](/doc/user-guide/dvc-metafile-formats).
+[DVC-file](/doc/user-guide/dvc-files-and-directories).
 
 ## Synopsis
 
@@ -17,7 +17,7 @@ positional arguments:
 
 The `dvc add` command is analogous to `git add`, in that it makes DVC aware of
 the target data, as a first step to version it. It creates a
-[DVC-file](/doc/user-guide/dvc-metafile-formats) to track the added data.
+[DVC-file](/doc/user-guide/dvc-files-and-directories) to track the added data.
 
 The `targets` are files or directories to add with this command, that are turned
 into <abbr>data artifacts</abbr> of the <abbr>project</abbr>. By default, these
@@ -48,8 +48,8 @@ Under the hood, a few actions are taken for each file (or directory) in
    appropriate.
 
 Summarizing, the result is that the target data is replaced small DVC-files can
-be tracked with Git. See [DVC-File Format](/doc/user-guide/dvc-metafile-formats)
-for more details.
+be tracked with Git. See
+[DVC-File Format](/doc/user-guide/dvc-files-and-directories) for more details.
 
 > Note that DVC-files created by this command are considered _orphan stage
 > files_ because they have no _dependencies_, only outputs. These are always
@@ -125,7 +125,7 @@ To track the changes with git run:
 	git add .gitignore data.xml.dvc
 ```
 
-As shown above, a [DVC-file](/doc/user-guide/dvc-metafile-formats) has been
+As shown above, a [DVC-file](/doc/user-guide/dvc-files-and-directories) has been
 created for `data.xml`. Let's explore the result:
 
 ```dvc
@@ -188,8 +188,8 @@ Saving information to 'pics.dvc'.
 ...
 ```
 
-There are no [DVC-files](/doc/user-guide/dvc-metafile-formats) generated within
-this directory structure, but the images are all added to the
+There are no [DVC-files](/doc/user-guide/dvc-files-and-directories) generated
+within this directory structure, but the images are all added to the
 <abbr>cache</abbr>. DVC prints a message mentioning that MD5 hash values are
 computed for each file. A single `pics.dvc` DVC-file is generated for the
 top-level directory, and it contains:

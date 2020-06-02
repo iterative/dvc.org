@@ -1,7 +1,7 @@
 # run
 
-Generate a stage file ([DVC-file](/doc/user-guide/dvc-metafile-formats)) from a
-given command and execute the command.
+Generate a stage file ([DVC-file](/doc/user-guide/dvc-files-and-directories))
+from a given command and execute the command.
 
 ## Synopsis
 
@@ -212,8 +212,8 @@ To track the changes with git, run:
 	git add .gitignore metric.dvc
 ```
 
-> See [DVC-File Format](/doc/user-guide/dvc-metafile-formats) for more details
-> on the text format above.
+> See [DVC-File Format](/doc/user-guide/dvc-files-and-directories) for more
+> details on the text format above.
 
 Execute a Python script as a DVC [pipeline](/doc/command-reference/pipeline)
 stage. The stage file name is not specified, so a `model.p.dvc` DVC-file is
