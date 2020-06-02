@@ -138,22 +138,16 @@ $ tree
 Let's check the `data.xml.dvc` file inside:
 
 ```yaml
-md5: aae37d74224b05178153acd94e15956b
 outs:
   - cache: true
-    md5: d8acabbfd4ee51c95da5d7628c7ef74b
-    metric: false
-    path: data.xml
-meta: # Special field to contain arbitary user data
-  name: John
-  email: john@xyz.com
+    md5: d8acabbfd4ee51c95da5d7628c7ef74b # file hash value
+    path: data.xml # file name
 ```
 
 This is a standard DVC-file with only one output (in the `outs` field). The hash
 value should correspond to a file path in the <abbr>cache</abbr>.
 
-> Note that the `meta` values above were entered manually for this example. Meta
-> values and `#` comments are not preserved when a DVC-file is overwritten with
+> Note that `#` comments are not preserved when a DVC-file is overwritten with
 > the `dvc add`, `dvc run`, `dvc import`, or `dvc import-url` commands.
 
 ```dvc
