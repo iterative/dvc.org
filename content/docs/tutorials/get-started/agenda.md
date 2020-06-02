@@ -1,8 +1,9 @@
 # Agenda
 
-You'll need [Git](https://git-scm.com) to run the commands in this guide. Also,
-if DVC is not installed, please follow these [instructions](/doc/install) to do
-so.
+DVC works **on top of Git repositories** and has a similar command line interface 
+and Git workflow. You'll need [Git](https://git-scm.com) to run the commands in 
+this guide. Also, if DVC is not installed, please follow these [instructions](/doc/install) 
+to do so.
 
 In the next few sections we'll build a simple natural language processing (NLP)
 project from scratch. If you'd like to get the final result or have any issues
