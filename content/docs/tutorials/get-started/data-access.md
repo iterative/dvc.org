@@ -3,25 +3,16 @@
 We've seen how to
 [version and share](/doc/tutorials/get-started/data-versioning) data among team
 members or environments of the same <abbr>DVC project</abbr>. But what if we
-wanted to reuse a dataset or ML model from an existing DVC repository?
-
-## Just download it
-
-An easy way is to simply download the data with `dvc get`:
-
-```dvc
-$ dvc get https://github.com/iterative/dataset-registry \
-          use-cases/cats-dogs
-```
-
-This is useful when working outside of a DVC project. But otherwise, the
-connection between the projects is lost this way — others won't know where the
-data came from or whether new versions are available. Let's see better ways:
+wanted to reuse a dataset or machine learning model from an existing DVC
+repository? For example to leverage a
+[dataset registry](/doc/use-cases/data-registries) in another DVC project, or as
+a way to implement DevOps for data.
 
 ## Find a dataset
 
 You can use `dvc list` to explore a <abbr>DVC repository</abbr> hosted on any
-Git server. For example:
+Git server. For example, let's see what's in the `use-cases/` directory of out
+[dataset-registry](https://github.com/iterative/dataset-registry) repo:
 
 ```dvc
 $ dvc list https://github.com/iterative/dataset-registry use-cases
@@ -32,6 +23,21 @@ cats-dogs.dvc
 
 The benefit of this command over browsing a Git hosting website is that the list
 includes files and directories tracked by **both Git and DVC**.
+
+## Just download it
+
+An easy way is to simply download the data, by using `dvc get`. This is useful
+when working outside of a DVC project, for example in an automated ML model
+deployment task:
+
+```dvc
+$ dvc get https://github.com/iterative/dataset-registry \
+          use-cases/cats-dogs
+```
+
+When working inside another DVC project though, this is not the best strategy,
+because the connection between the projects is lost — others won't know where
+the data came from or whether new versions are available. Let's see better ways:
 
 ## Import the dataset
 
