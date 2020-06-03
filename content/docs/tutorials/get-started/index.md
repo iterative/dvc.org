@@ -21,13 +21,10 @@ $ dvc pull
 
 ## Initialize
 
-Start by creating a <abbr>workspace</abbr> and initialize Git in it, as the
-underlying versioning layer. Then use `dvc init` to create a <abbr>DVC
-repository</abbr>. For example:
+Start by creating a directory to use as <abbr>workspace</abbr>, and use
+`dvc init` inside to create a <abbr>DVC project</abbr>:
 
 ```dvc
-$ mkdir dvc-get-started
-$ cd dvc-get-started
 $ git init
 $ dvc init
 $ git status
@@ -36,6 +33,9 @@ Changes to be committed:
         new file:   .dvc/config
 $ git commit -m "Initialize DVC repository"
 ```
+
+> Note that Git is used as the underlying versioning layer of <abbr>DVC
+> repositories</abbr>.
 
 At DVC initialization, a new `.dvc/` directory is created for internal
 [files and directories 📖](/doc/user-guide/dvc-files-and-directories). This

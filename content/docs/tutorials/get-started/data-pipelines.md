@@ -57,7 +57,7 @@ Now let's install the requirements:
 $ pip install -r src/requirements.txt
 ```
 
-Please also stage or commit the source code directory with Git at this point.
+Please also add or commit the source code directory with Git at this point.
 
 </details>
 
