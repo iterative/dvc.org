@@ -15,9 +15,9 @@ positional arguments:
 ## Description
 
 `dvc freeze` causes any stage to be considered _not changed_ by `dvc status` and
-`dvc repro`. Stage reproduction will not regenerate <abbr>outputs</abbr>
-of frozen stages, even if some dependencies have changed, and even if
-`--force` is provided.
+`dvc repro`. Stage reproduction will not regenerate <abbr>outputs</abbr> of
+frozen stages, even if some dependencies have changed, and even if `--force` is
+provided.
 
 Freezing a stage is useful to avoid syncing data from the top of its
 [pipeline](/doc/command-reference/pipeline), and keep iterating on the last
