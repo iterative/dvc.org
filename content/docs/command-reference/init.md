@@ -72,7 +72,7 @@ directory determines the root of the DVC project. (In case of `--subdir` it
 might happen that Git repository root is located at different path than the DVC
 project root.)
 
-DVC project root defines the scope for the most DVC commands. Mostly meaning
+DVC project root defines the scope for most DVC commands. Mostly meaning
 that all `.dvc` file under the root path are being analyzed.
 
 If there are multiple DVC sub-projects but they _are not_ nested, e.g.:
