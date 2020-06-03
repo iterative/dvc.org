@@ -1,7 +1,6 @@
 # plots modify
 
-Modify [plot metrics](/doc/command-reference/plots) by specifying and saving
-plot display properties.
+Modify display properties of [plot metrics](/doc/command-reference/plots) files.
 
 ## Synopsis
 
@@ -18,17 +17,15 @@ positional arguments:
 
 It might be not convenient for users or automation systems to specify all the
 _visualization properties_ (such as `y-axis`, `template`, `title`, etc.) each
-time plots are generated.
-
-The `dvc plots modify` command sets (or unsets) default visualization props for
-specific plot files. These properties affect all the visualization commands:
-`dvc plots show` and `dvc plots diff`.
+time plots are generated. This command sets (or unsets) default visualization
+props for specific plot files. These properties affect the remaining
+subcommands: `dvc plots show` and `dvc plots diff`.
 
 The `target` plot file should be a plot output of one of the
 [DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots` option
 of `dvc run`) listed in the
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file. This command adds
-the options to `dvc.yaml`.
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file. `dvc plots modify`
+adds the options to `dvc.yaml`.
 
 ## Options
 

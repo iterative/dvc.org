@@ -316,6 +316,10 @@
           {
             "label": "plots diff",
             "slug": "diff"
+          },
+          {
+            "label": "plots modify",
+            "slug": "modify"
           }
         ]
       },
