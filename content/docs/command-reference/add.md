@@ -7,8 +7,7 @@ Track data files or directories with DVC, by creating a corresponding
 
 ```usage
 usage: dvc add [-h] [-q | -v] [-R] [--no-commit] [--external]
-               [-f <filename>]
-               targets [targets ...]
+               [-f <filename>] targets [targets ...]
 
 positional arguments:
   targets               Input files/directories to add.
