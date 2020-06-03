@@ -16,7 +16,7 @@ positional arguments:
 ## Description
 
 The `dvc add` command is analogous to `git add`, in that it makes DVC aware of
-the target data, as a first step to version it. It creates a
+the target data, as a simple step to version it. It creates a
 [DVC-file](/doc/user-guide/dvc-file-format) to track the added data.
 
 The `targets` are files or directories to add with this command, that are turned
@@ -24,12 +24,12 @@ into <abbr>data artifacts</abbr> of the <abbr>project</abbr>. By default, these
 are committed to the <abbr>cache</abbr> (use the `--no-commit` option to avoid
 this, and `dvc commit` to finish the process when needed).
 
-`dvc add` is typically used to version control raw data or initial datasets from
+`dvc add` can be used to version control initial data files and directories from
 which data processing [pipelines](/doc/command-reference/pipeline) are built,
-but it can be used to track any large file or directory. We recommend using
-`dvc run` to version control intermediate and final results (like ML models).
-This way you bring data provenance and make your project
-[reproducible](/doc/command-reference/repro).
+but it can be used to track any large file or directory along the way.
+
+> See also `dvc run` for more advanced ways to version intermediate and final
+> results (like ML models).
 
 💡 Note that [external data](/doc/user-guide/managing-external-data) (targets
 outside the <abbr>workspace</abbr>) is supported.
@@ -75,17 +75,16 @@ files. DVC also supports other link types for use on file systems without
 A `dvc add` target can be an individual file or a directory. There are two ways
 to work with directory hierarchies with `dvc add`:
 
-1. With `dvc add --recursive`, the hierarchy is traversed and every file is
+1. Without command options, a DVC-file is created for the top of the directory
+   (with default name `<dir_name>.dvc`). Every file in the hierarchy is added to
+   the cache (unless the `--no-commit` option is used), but DVC does not produce
+   individual DVC-files for each file in the directory tree. Instead, the single
+   DVC-file references a special JSON file in the cache (with `.dir` extension),
+   that in turn points to the files added from the hierarchy.
+2. Using the `--recursive` option, the hierarchy is traversed and every file is
    added individually as described above. This means every file has its own
    DVC-file, and a corresponding cached file is created (unless the
    `--no-commit` option is used).
-2. When not using `--recursive` a DVC-file is created for the top of the
-   directory (with default name `dirname.dvc`). Every file in the hierarchy is
-   added to the cache (unless the `--no-commit` option is used), but DVC does
-   not produce individual DVC-files for each file in the directory tree.
-   Instead, the single DVC-file references a special JSON file in the cache
-   (with `.dir` extension), that in turn points to the files added from the
-   hierarchy.
 
 ## Options
 
