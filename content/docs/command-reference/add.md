@@ -98,7 +98,7 @@ This way you bring data provenance and make your project
   when ready to commit outputs with DVC. This is analogous to using `git add`
   before `git commit`.
 
-- `--external` - allow targets that are outside of the DVC repository. See
+- `--external` - allow `targets` that are outside of the DVC repository. See
   [Managing External Data](/doc/user-guide/managing-external-data).
 
 - `-f <filename>`, `--file <filename>` - specify name of the DVC-file it
