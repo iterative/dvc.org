@@ -11,29 +11,33 @@ Having [initialized](/doc/tutorials/get-started#initialize) the project, do
 this:
 
 ```dvc
-$ dvc get https://github.com/iterative/dataset-registry \
-          get-started/data.xml -o data/data.xml
+$ dvc get --rev cats-dogs-v1 \
+          https://github.com/iterative/dataset-registry \
+          use-cases/cats-dogs -o datadir
 ```
 
 > `dvc get` can download any <abbr>data artifact</abbr> tracked in a <abbr>DVC
 > repository</abbr>. It's like `wget`, but for DVC or Git repos. In this case we
-> use our [dataset registry](https://github.com/iterative/dataset-registry) repo
-> as the data source.
+> use a specific version (`cats-dogs-v1` tag) of our
+> [dataset registry](https://github.com/iterative/dataset-registry) repo as the
+> data source.
+
+Note that while the source data directory was called `cats-dogs/`, we are able
+to rename it locally to `datadir/`.
 
 </details>
 
 ```dvc
-$ dvc add data/data.xml
+$ dvc add datadir
 ```
 
-DVC stores information about the added file in a special _DVC-file_ named
-`data/data.xml.dvc`, a small text file with a human-readable
-[format](/doc/user-guide/dvc-file-format). This metafile can committed with Git
-instead, as a placeholder for the original data (which is added to
-`.gitignore`):
+DVC stores information about the added directory in a special _DVC-file_ named
+`datadir.dvc`, a small text file with a human-readable
+[format](/doc/user-guide/dvc-file-format). This file can be committed with Git,
+as a placeholder for the original data (which is listed in `.gitignore`):
 
 ```dvc
-$ git add data/.gitignore data/data.xml.dvc
+$ git add .gitignore datadir.dvc
 $ git commit -m "Add raw data"
 ```
 
@@ -48,17 +52,17 @@ back to the <abbr>workspace</abbr>.
 $ ls -R .dvc/cache
 ...
 .dvc/cache/a3:
-04afb96060aad90176268345e10355
+04afb96060aad90176268345e10355.dir
 ```
 
-The hash value of the `data/data.xml` file we just added (`a304afb...`)
-determines the cache path shown above. And if you check `data/data.xml.dvc`, you
-will find it there too:
+The hash value of the `datadir/` directory we just added (`a304afb...`)
+determines the cache path shown above. And if you check `datadir.dvc`, you will
+find it there too:
 
 ```yaml
 outs:
   - md5: a304afb96060aad90176268345e10355
-    path: data.xml
+    path: datadir
     cache: true
 ```
 
@@ -75,88 +79,77 @@ To record a new version of the data, just use `dvc add` again:
 
 <details>
 
-### 👉 Expand to clean up the data
-
-Let's first get some code to work with:
+### 👉 Expand to get an updated dataset
 
 ```dvc
-$ wget https://code.dvc.org/get-started/code.zip
-$ unzip code.zip
-$ rm -f code.zip
-$ ls src
-cleanup.py  evaluate.py  featurization.py
-prepare.py  requirements.txt  train.py
+$ dvc get --rev cats-dogs-v2 \
+          https://github.com/iterative/dataset-registry \
+          use-cases/cats-dogs -o datadir
 ```
-
-Let's clean up our raw dataset in-place, by using the `src/cleanup.py` script:
-
-```dvc
-$ python src/cleanup.py data/data.xml
-```
-
-Please stage or commit `src/cleanup.py` with Git at this point.
 
 </details>
 
 ```dvc
 $ dvc status
-data\data.xml.dvc:
+datadir.dvc:
         changed outs:
-                modified:           data\data.xml
-$ dvc add data/data.xml
+                modified:           datadir
+$ dvc add datadir
 ```
 
-DVC updates the `data/data.xml.dvc` [DVC-file](/doc/user-guide/dvc-file-format)
-to match the updated data. Let's commit this new version with Git:
+DVC caches the changes to the `datadir/` directory, and updates the
+`datadir.dvc` [DVC-file](/doc/user-guide/dvc-file-format) to match the changes.
+Let's commit this new version with Git:
 
 <details>
 
 ### Expand to see what happened internally
 
-Use `git diff` to show the change in `data/data.xml.dvc`:
+Use `git diff` to show the change in `datadir.dvc`:
 
 ```diff
  outs:
 -- md5: a304afb96060aad90176268345e10355
 +- md5: 558a00881d4a6815ba625c13e27c5b7e
-   path: data.xml
+   path: datadir
    cache: true
 ```
 
-Since `data/data.xml` changed, its hash value is updated (to `558a008...`).
+Since the contents of `datadir/` changed, its hash value is updated (to
+`558a008...`).
 
 </details>
 
 ```dvc
-$ git add data/data.xml.dvc
-$ git commit -m "Clean up data"
+$ git add datadir.dvc
+$ git commit -m "Change data"
 ```
 
 ## Switching versions
 
 When we have more than one data version, we may want to switch between them. We
-can use `dvc checkout` for this. Let's say we want to revert back to the raw
-`data/data.xml`:
+can use `dvc checkout` for this. Let's say we want to revert back to the first
+`datadir/`:
 
 ```dvc
-$ git checkout HEAD^ data/data.xml.dvc
-$ dvc checkout data/data.xml.dvc
+$ git checkout HEAD^ datadir.dvc
+$ dvc checkout datadir.dvc
 ```
 
 <details>
 
 ### Expand to see what happened internally
 
-`git checkout` brought the `data/data.xml.dvc` DVC-file back to the version,
-with the previous hash value of the data (`a304afb...`):
+`git checkout` brought the `datadir.dvc` DVC-file back to the version, with the
+previous hash value of the data (`a304afb...`):
 
 ```yaml
 outs:
   md5: a304afb96060aad90176268345e10355
-  path: data.xml
+  path: datadir
 ```
 
-All `dvc checkout` does is putting the corresponding file, stored in the
+All `dvc checkout` does is putting the corresponding files, stored in the
 <abbr>cache</abbr>, back into the <abbr>workspace</abbr>. This brings
 DVC-tracked data up to date with the current Git commit.
 
@@ -220,7 +213,7 @@ $ ls -R /tmp/dvc-storage
 04afb96060aad90176268345e10355
 ```
 
-Note that both versions of the data file are stored. (This should match
+Note that both versions of the data are stored. (This should match
 `.dvc/cache`.)
 
 </details>
@@ -235,15 +228,15 @@ after `git clone` and `git pull`.
 
 ### 👉 Expand to simulate a fresh clone of this repo
 
-Let's just remove the data file added so far, both from <abbr>workspace</abbr>
+Let's just remove the directory added so far, both from <abbr>workspace</abbr>
 and <abbr>cache</abbr>:
 
 ```dvc
-$ rm -f data/data.xml .dvc/cache/a3/04afb96060aad90176268345e10355
+$ rm -f datadir .dvc/cache/a3/04afb96060aad90176268345e10355
 $ dvc status
-data\data.xml.dvc:
+datadir.dvc:
         changed outs:
-                deleted:            data\data.xml
+                deleted:            datadir
 ```
 
 `dvc status` detects when DVC-tracked data is missing (among other situations).
@@ -267,7 +260,7 @@ from a different DVC repository?
 One way is to download the data with `dvc get` and use `dvc add` to track it (as
 done in the beginning of this page). But the connection between the projects is
 lost this way: others won't know where the data came from or whether new
-versions are available. Let's see better alternatives:
+versions are available. Let's see better ways:
 
 ### Find a dataset
 
@@ -282,10 +275,10 @@ get-started     # <- Let's see what's in this directory.
 images
 tutorial
 use-cases
-$ dvc list https://github.com/iterative/dataset-registry get-started
+$ dvc list https://github.com/iterative/dataset-registry use-cases
 .gitignore
-data.xml        # <- Bingo!
-data.xml.dvc
+datadir        # <- Bingo!
+datadir.dvc
 ```
 
 The benefit of this command over browsing a Git hosting website is that the list
@@ -293,13 +286,13 @@ shown includes files and directories tracked by **both Git and DVC**.
 
 ### Import the dataset
 
-Let's replace `data/data.xml` by importing it directly from its original source.
+Let's replace `datadir/` by importing it directly from its original source.
 `dvc import` downloads the dataset, and tracks **it the same step**, so you
 don't have to use `dvc add` separately:
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
-             get-started/data.xml -o data/data.xml
+             use-cases/cats-dogs -o datadir
 ```
 
 <details>
@@ -311,7 +304,7 @@ such as the data source `repo`, and `path` (under `deps`):
 
 ```yaml
 deps:
-  path: get-started/data.xml
+  path: use-cases/cats-dogs
   repo:
     url: https://github.com/iterative/dataset-registry
     rev_lock: f31f5c4cdae787b4bdeb97a717687d44667d9e62
@@ -322,14 +315,14 @@ The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 
 > Note that the
 > [dataset registry](https://github.com/iterative/dataset-registry) repository
-> doesn't actually contain a `get-started/data.xml` file. Like `dvc get` and
-> `dvc import` download from [remote storage](/doc/command-reference/remote).
+> doesn't actually contain a `datadir/` directory. Like `dvc get`, `dvc import`
+> downloads from [remote storage](/doc/command-reference/remote).
 
 </details>
 
-Additionally, the `data/data.xml` [DVC-file](/doc/user-guide/dvc-file-format)
-now includes metadata to track changes in the source data. This allows you to
-bring in changes from the data source later, using `dvc update`.
+Additionally, the `datadir.dvc` [DVC-file](/doc/user-guide/dvc-file-format) now
+includes metadata to track changes in the source data. This allows you to bring
+in changes from the data source later, using `dvc update`.
 
 ### Python API
 
@@ -341,7 +334,7 @@ contents directly** from your code. For example:
 import dvc.api
 
 with dvc.api.open(
-        'get-started/data.xml',
+        'use-cases/cats-dogs',
         repo='https://github.com/iterative/dataset-registry'
         ) as fd:
     # ... fd is a file descriptor that can be processed normally.

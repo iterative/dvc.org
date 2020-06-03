@@ -31,7 +31,7 @@ $ git status
 Changes to be committed:
         new file:   .dvc/.gitignore
         new file:   .dvc/config
-$ git commit -m "Initialize DVC repository"
+$ git commit -m "Initialize DVC repo"
 ```
 
 > Note that Git is used as the underlying versioning layer of <abbr>DVC
