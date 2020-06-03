@@ -24,8 +24,8 @@ is omitted, it will show the full project DAG.
 - `--dot` - show DAG in `DOT` format. It can be passed to third party
   visualization utilities.
 
-- `--full` - show full DAG that the `target` belongs too, instead of showing
-  the part that consists only of the target ancestors.
+- `--full` - show full DAG that the `target` belongs too, instead of showing the
+  part that consists only of the target ancestors.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
