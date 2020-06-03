@@ -58,7 +58,7 @@ modification command adds the options to `dvc.yaml file`.
 The initial plot was showing the last column of CSV file by default which is
 _loss_ metrics while _accuracy_ is expected as Y axis:
 
-```CSV
+```csv
 epoch,accuracy,loss
 0,0.9403833150863647,0.2019129991531372
 1,0.9733833074569702,0.08973673731088638
