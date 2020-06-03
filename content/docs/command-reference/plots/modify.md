@@ -1,14 +1,14 @@
 # plots modify
 
 Modify [plot metrics](/doc/command-reference/plots) by specifying and saving
-plotting options.
+plot display properties.
 
 ## Synopsis
 
 ```usage
-usage: dvc plots modify [-h] [-q | -v] [-t [TEMPLATE]] [-x X] [-y Y]
-                        [--no-csv-header] [--title TITLE] [--xlab XLAB]
-                        [--ylab YLAB] [--unset [UNSET [UNSET ...]]]
+usage: dvc plots modify [-h] [-q | -v] [-t <path>] [-x X] [-y Y]
+                        [--no-csv-header] [--title <text>] [--xlab <text>]
+                        [--ylab <text>] [--unset [<prop> [<prop> ...]]]
 
 positional arguments:
   target                Plot file to set props to.
@@ -16,19 +16,23 @@ positional arguments:
 
 ## Description
 
-It might be not convinient for users as well as automation systems to specify
-all the visualization parameters (such as `y-axis`, `template`, `title` and
-others) each time when plots are generated. The `dvc plots modify` command sets
-(and unsets) default visualization options for plot files. The options affect
-all the visualization commands: `dvc plots show` and `dvc plots diff`.
+It might be not convenient for users or automation systems to specify all the
+_visualization properties_ (such as `y-axis`, `template`, `title`, etc.) each
+time plots are generated.
 
-Target plot file needs to be a plot output (see `dvc run`) of one of the DVC
-pipeline stages and it needs to be stored in `dvc.yaml file`. The plot
-modification command adds the options to `dvc.yaml file`.
+The `dvc plots modify` command sets (or unsets) default visualization props for
+specific plot files. These properties affect all the visualization commands:
+`dvc plots show` and `dvc plots diff`.
+
+The `target` plot file should be a plot output of one of the
+[DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots` option
+of `dvc run`) listed in the
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file. This command adds
+the options to `dvc.yaml`.
 
 ## Options
 
-- `-t [TEMPLATE], --template [TEMPLATE]` - set a
+- `-t <path>, --template <path>` - set a
   [plot template](/doc/command-reference/plots#plot-templates).
 
 - `-x X` - set name of the X axis of the plot from the plot file.
@@ -38,11 +42,11 @@ modification command adds the options to `dvc.yaml file`.
 - `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
   header.
 
-- `--title TITLE` - plot title for visualization.
+- `--title <text>` - plot title for visualization.
 
-- `--xlab XLAB` - title of X axis.
+- `--xlab <text>` - title of X axis.
 
-- `--ylab YLAB` - title of Y axis.
+- `--ylab <text>` - title of Y axis.
 
 - `--unset [UNSET [UNSET ...]]` - unset an option or option list.
 
@@ -116,8 +120,8 @@ plots:
 
 ## Example: Template change
 
-_dvc run --plots file.csv ..._ command assigne the default template that needs
-to be changed in many cases. A simple command changes the template:
+_dvc run --plots file.csv ..._ command assign the default template that needs to
+be changed in many cases. A simple command changes the template:
 
 ```dvc
 $ dvc plots modify --template confusion classes.csv
