@@ -224,6 +224,10 @@
         }
       },
       {
+        "label": "freeze",
+        "slug": "freeze"
+      },
+      {
         "label": "gc",
         "slug": "gc"
       },
@@ -254,10 +258,6 @@
       {
         "label": "list",
         "slug": "list"
-      },
-      {
-        "label": "freeze",
-        "slug": "freeze"
       },
       {
         "label": "metrics",
