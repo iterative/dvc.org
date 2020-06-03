@@ -7,7 +7,7 @@ Generate [plot](/doc/command-reference/plots) from a metrics file.
 ```usage
 usage: dvc plots show [-h] [-q | -v] [-t <path>] [-o <path>]
                       [-x <field>] [-y <field>] [--no-csv-header]
-                      [--show-json] [--title <text>] [--xlab <text>]
+                      [--show-vega] [--title <text>] [--xlab <text>]
                       [--ylab <text>] targets [targets ...]
 
 positional arguments:
@@ -32,7 +32,7 @@ relevant details about DVC plots.
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with additional `.html` suffix or
-  `.json` suffix for `--show-json` mode.
+  `.json` suffix for `--show-vega` mode.
 
 - `-x <field>` - field name for X axis. An auto-generated `index` field is used
   by default.
@@ -46,7 +46,7 @@ relevant details about DVC plots.
 
 - `--title <text>` - plot title.
 
-- `--show-json` - show output in JSON format.
+- `--show-vega` - show output in Vega format. See `dvc plots` for more info.
 
 - `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
   header.
@@ -125,11 +125,11 @@ file:///Users/usr/src/plots/logs.csv.html
 In many automation scenarios (like CI/CD for ML), it is convenient to have the
 [Vega-Lite](https://vega.github.io/vega-lite/) specification instead of the
 entire HTML plot file. For example to generating another image format like PNG
-or JPEG, or to include differently into a web app. The `--show-json` option
+or JPEG, or to include differently into a web app. The `--show-vega` option
 prevents wrapping the plot in HTML. Note that the resulting file is JSON:
 
 ```dvc
-$ dvc plots show --select accuracy --show-json logs.csv
+$ dvc plots show --select accuracy --show-vega logs.csv
 file:///Users/usr/src/plots/logs.csv.json
 ```
 

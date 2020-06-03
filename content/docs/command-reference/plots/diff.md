@@ -9,7 +9,7 @@ plotting them in a single image.
 usage: dvc plots diff [-h] [-q | -v] [-t <path>]
                       [--targets [<path> [<path> ...]]] [-o <path>]
                       [-x <field>] [-y <field>] [--no-csv-header]
-                      [--show-json] [--title <text>] [--xlab <text>]
+                      [--show-vega] [--title <text>] [--xlab <text>]
                       [--ylab <text>] [revisions [revisions ...]]
 
 positional arguments:
@@ -54,7 +54,7 @@ corresponding [DVC-files](/doc/user-guide/dvc-file-format).
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with additional `.html` suffix or
-  `.json` suffix for `--show-json` mode.
+  `.json` suffix for `--show-vega` mode.
 
 - `-x <field>` - field name for X axis. An auto-generated `index` field is used
   by default.
@@ -68,7 +68,7 @@ corresponding [DVC-files](/doc/user-guide/dvc-file-format).
 
 - `--title <text>` - plot title.
 
-- `--show-json` - show output in JSON format.
+- `--show-vega` - show output in Vega format. See `dvc plots` for more info.
 
 - `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
   header.
