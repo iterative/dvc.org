@@ -279,5 +279,5 @@ $ dvc status
 Data and pipelines are up to date.
 ```
 
-Instead of reproducing the pipeline for changes that do not produce a different
+Instead of reproducing the pipeline for changes that do not produce different
 results, just use `commit` on both Git and DVC.
