@@ -28,9 +28,9 @@ $ dvc add data/data.xml
 
 DVC stores information about the added file in a special _DVC-file_ named
 `data/data.xml.dvc`, a small text file with a human-readable
-[format](/doc/user-guide/dvc-files-and-directories). This metafile can committed
-with Git instead, as a placeholder for the original data (which is added to
-`.gitignore`):
+[format](/doc/user-guide/dvc-files-and-directories). This `.dvc` file can
+committed with Git instead, as a placeholder for the original data (which is
+added to `.gitignore`):
 
 ```dvc
 $ git add data/.gitignore data/data.xml.dvc

@@ -5,7 +5,7 @@ directory (`.dvc/`) with the
 [internal directories and files](#internal-directories-and-files) needed for DVC
 operation.
 
-Additionally, there are two special metafiles created by certain
+Additionally, there are two special files created by certain
 [DVC commands](/doc/command-reference):
 
 - Files ending with the `.dvc` extension are basic placeholders to version data
@@ -48,7 +48,8 @@ An output entry can consist of these fields:
 - `cache` - (optional) whether or not DVC should cache the output. `true` by
   default
 
-Note that comments can be added to DVC metafiles using the `# comment` syntax.
+Note that comments can be added to `.dvc` files and `dvc.yaml` using the
+`# comment` syntax.
 
 > `.dvc` file comments are preserved among executions of the `dvc repro` and
 > `dvc commit` commands, but not when a `.dvc` file is overwritten by
@@ -223,8 +224,8 @@ outs:
     # ...
 ```
 
-The directory in cache is stored as a JSON metafile describing it's contents,
-along with the files it contains in cache, like this:
+The directory in cache is stored as a JSON file (with `.dir` file extension)
+describing it's contents, along with the files it contains in cache, like this:
 
 ```dvc
 $ tree .dvc/cache
