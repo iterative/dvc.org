@@ -68,5 +68,5 @@
 .link {
   @mixin link;
 
-  text-decoration: none;
+  color: inherit;
 }
