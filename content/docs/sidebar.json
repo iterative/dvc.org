@@ -36,7 +36,12 @@
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
         },
-        "children": ["data-versioning", "data-pipelines", "experiments"]
+        "children": [
+          "data-versioning",
+          "data-access",
+          "data-pipelines",
+          "experiments"
+        ]
       },
       {
         "slug": "interactive",
