@@ -68,12 +68,11 @@ $ dvc run -f prepare.dvc \
           python src/prepare.py data/data.xml data/prepared
 ```
 
-The `prepare.dvc` _stage file_ is generated. It has the same
-[format](/doc/user-guide/dvc-files-and-directories) as the DVC-file we created
-previously to [tack data](/doc/tutorials/get-started/data-versioning#changes),
-but it additionally includes information about the command we ran
+The `prepare.dvc`
+[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) is
+generated. It includes information about the command we ran
 (`python src/prepare.py`), the <abbr>dependencies</abbr>, and
-<abbr>outputs</abbr>.
+<abbr>outputs</abbr> of this stage.
 
 <details>
 
@@ -154,11 +153,11 @@ $ dvc run -f train.dvc \
           python src/train.py data/features model.pkl
 ```
 
-Let's commit the changes, including the stage files (DVC-file) that describe our
-pipeline so far:
+Let's commit the changes, including to `dvc.yaml`, that describe our pipeline so
+far:
 
 ```dvc
-$ git add data/.gitignore .gitignore featurize.dvc train.dvc
+$ git add data/.gitignore .gitignore dvc.yaml
 $ git commit -m "Create featurization & training stages (full ML pipeline)"
 ```
 
