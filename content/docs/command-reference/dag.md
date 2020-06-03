@@ -10,8 +10,8 @@ specified stage. By default it lists
 usage: dvc dag [-h] [-q | -v] [--dot] [--full] [target]
 
 positional arguments:
-  targets         Stage or output to show pipeline for.
-                  Optional. (Finds all stages in the workspace by default.)
+  targets         Stage or output to show pipeline for (optional)
+                  Finds all stages in the workspace by default.
 ```
 
 ## Description
