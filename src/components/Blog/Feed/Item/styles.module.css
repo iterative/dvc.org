@@ -34,10 +34,11 @@
   }
 }
 
-.pictureLink {
+.blogLink {
   @mixin active;
 
   display: block;
+  text-decoration: none;
 
   &:hover,
   &:focus {
@@ -129,7 +130,6 @@
   @mixin hover;
 
   display: block;
-  text-decoration: none;
   color: var(--color-black);
 
   @media (--sm-scr) {

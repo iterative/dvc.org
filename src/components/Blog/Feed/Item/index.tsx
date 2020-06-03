@@ -66,22 +66,20 @@ const Item: React.FC<IBlogFeedItemProps> = ({
         !picture && styles.placeholder
       )}
     >
-      <Link href={slug} className={styles.pictureLink}>
+      <Link href={slug} className={styles.blogLink}>
         {picture ? (
           <Image fluid={image} className={styles.picture} />
         ) : (
           <Placeholder className={styles.picture} />
         )}
+        <div
+          className={cn(styles.body, !isOverflown && styles.overflown)}
+          ref={bodyRef}
+        >
+          <div className={styles.title}> {title}</div>
+          <div className={styles.description}>{description}</div>
+        </div>
       </Link>
-      <div
-        className={cn(styles.body, !isOverflown && styles.overflown)}
-        ref={bodyRef}
-      >
-        <Link href={slug} className={styles.title}>
-          {title}
-        </Link>
-        <div className={styles.description}>{description}</div>
-      </div>
       <div className={styles.meta}>
         <FeedMeta
           name={name}
