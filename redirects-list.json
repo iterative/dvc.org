@@ -25,6 +25,8 @@
   "^/doc/commands-reference(/.*)?$                                                        /doc/command-reference$1",
   "^/doc/use-cases/data-and-model-files-versioning/?$                                     /doc/use-cases/versioning-data-and-model-files",
   "^/doc/command-reference/plot$                                                          /doc/command-reference/plots",
+  "^/doc/command-reference/lock$                                                          /doc/command-reference/freeze",
+  "^/doc/command-reference/unlock$                                                        /doc/command-reference/unfreeze",
 
   "^/(.+)/$                                                                               /$1"
 ]

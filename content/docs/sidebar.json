@@ -224,6 +224,10 @@
         }
       },
       {
+        "label": "freeze",
+        "slug": "freeze"
+      },
+      {
         "label": "gc",
         "slug": "gc"
       },
@@ -254,10 +258,6 @@
       {
         "label": "list",
         "slug": "list"
-      },
-      {
-        "label": "lock",
-        "slug": "lock"
       },
       {
         "label": "metrics",
@@ -379,8 +379,8 @@
         "slug": "status"
       },
       {
-        "label": "unlock",
-        "slug": "unlock"
+        "label": "unfreeze",
+        "slug": "unfreeze"
       },
       {
         "label": "unprotect",
