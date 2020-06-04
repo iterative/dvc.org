@@ -1,26 +1,9 @@
 # Get Started with DVC!
 
-Data Version Control is **a new type of experiment management software** built
-on top of the existing engineering toolset you're already used to, particularly
-Git. And like `git`, `dvc` is also a command-line tool. In this guide we will
-show the basic features of DVC step by step.
-
-<details>
-
-### TLDR: Get the complete project
-
-In case you'd like to get the complete code base and final results, or have any
-issues along the way, please note that we have a fully reproducible
-[example-get-started](https://github.com/iterative/example-get-started) repo on
-Github:
-
-```dvc
-$ git clone https://github.com/iterative/example-get-started
-$ cd example-get-started
-$ dvc pull
-```
-
-</details>
+Data Version Control is a data version control, data pipelining, and experiment
+management command-line tool built on top of existing engineering toolset ans
+practices, particularly Git. In this guide we will show the basic features of
+DVC step by step.
 
 ## Initialize
 
@@ -35,10 +18,8 @@ $ ls .dvc/
 config  plots/  tmp/
 ```
 
-### Not a replacement for Git
-
-<abbr>DVC repositories</abbr> work **on top of Git**, which serves as the
-underlying versioning layer. This is optional, but needed for the
+<abbr>DVC repositories</abbr> work on top of Git, which serves as the underlying
+versioning layer. This is optional, but needed for the
 [data versioning](/doc/tutorials/get-started/data-versioning) features of DVC.
 The `.dvc/` directory is automatically staged with Git, so it can be committed
 right away:

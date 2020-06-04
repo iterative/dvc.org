@@ -1,12 +1,13 @@
 # Data Pipelines
 
 Versioning large data files and directories for data science is great, but not
-enough. How is it filtered, transformed, or used for training ML models?
+enough. How is data filtered, transformed, or used to train ML models? DVC
+introduces a mechanism to capture _data pipelines_ — **series of data
+processes** that produce a final result.
 
-DVC introduces a mechanism to capture _data pipelines_ — **series of data
-processes** that produce a final result. As with data, DVC pipelines can also be
-easily versioned (using Git). Furthermore, this allows you to reproduce them
-later exactly as they were built originally!
+DVC pipelines and their data can also be easily versioned (using Git). This
+allows you to better organize your project, and reproduce your workflow and
+results later exactly as they were built originally!
 
 <details>
 
