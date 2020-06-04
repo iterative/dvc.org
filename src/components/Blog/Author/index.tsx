@@ -33,15 +33,16 @@ const AuthorHeader: React.FC<IAuthorHeaderProps> = ({
 }) => (
   <div className={cn(feedStyles.meta, styles.header)}>
     <Image fixed={avatar.fixed} className={styles.avatar} />
-    <div>
-      <h2 className={feedStyles.header}>
-        {name}
-        <span className={styles.headerSocial}>
-          <SocialIcons links={links} />
-        </span>
-      </h2>
-      <div dangerouslySetInnerHTML={{ __html: body }} />
-    </div>
+    <h2 className={feedStyles.header}>{name}</h2>
+    <h3 className={styles.info}>
+      <div
+        className={styles.description}
+        dangerouslySetInnerHTML={{ __html: body }}
+      />
+      <span className={styles.headerSocial}>
+        <SocialIcons links={links} />
+      </span>
+    </h3>
   </div>
 )
 

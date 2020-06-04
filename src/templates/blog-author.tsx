@@ -71,6 +71,7 @@ export const pageQuery = graphql`
       links {
         url
         site
+        username
       }
     }
     posts: allBlogPost(

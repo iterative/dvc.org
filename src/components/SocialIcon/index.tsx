@@ -13,6 +13,7 @@ const icons: { [site: string]: ReactElement } = {
 
 export interface ISocialIcon {
   url: string
+  username: string
   site?: string
 }
 
@@ -30,13 +31,15 @@ export interface ISocialIconProps extends ISocialIcon {
 const SocialIcon: React.FC<ISocialIconProps> = ({
   site,
   url,
+  username,
   className = styles.default
 }) => {
   /* eslint-disable-next-line */
   const icon: JSX.Element = icons[site!]
   return icon ? (
-    <Link href={url} className={className} aria-label={site}>
-      {icon}
+    <Link href={url} aria-label={site} className={styles.link}>
+      <p>{username}</p>
+      <div className={className}>{icon}</div>
     </Link>
   ) : null
 }
@@ -47,8 +50,14 @@ export const SocialIcons: React.FC<{
   links: Array<ISocialIconProps>
 }> = ({ links, className }) => (
   <>
-    {links.map(({ site, url }, i) => (
-      <SocialIcon className={className} site={site} url={url} key={i} />
+    {links.map(({ site, url, username }, i) => (
+      <SocialIcon
+        className={className}
+        site={site}
+        username={username}
+        url={url}
+        key={i}
+      />
     ))}
   </>
 )

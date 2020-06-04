@@ -15,3 +15,10 @@
   height: 1em;
   padding: 0.1em;
 }
+
+.link {
+  justify-content: right;
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+}
