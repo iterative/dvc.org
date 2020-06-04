@@ -56,7 +56,7 @@ sub-projects to mitigate the issues of initializing in the Git repository root:
 
 - Not enough isolation/granularity - commands like `dvc pull`, `dvc checkout`,
   and others analyze the whole repository to look for
-  [`.dvc` files or `dvc.yaml`](/doc/user-guide/dvc-file-format) to download
+  [`.dvc` files](/doc/user-guide/dvc-file-format) or [`dvc.yaml`](/doc/user-guide/dvc-file-format) to download
   files and directories, to reproduce <abbr>pipelines</abbr>, etc. It can be
   expensive in the large repositories with a lot of projects.
 
@@ -73,7 +73,7 @@ might happen that Git repository root is located at different path than the DVC
 project root.)
 
 DVC project root defines the scope for most DVC commands. Mostly meaning that
-all `.dvc` file under the root path are being analyzed.
+`dvc.yaml` and all `.dvc` files under the root path are being analyzed.
 
 If there are multiple DVC sub-projects but they _are not_ nested, e.g.:
 
@@ -126,7 +126,7 @@ include:
 - SCM other than Git is being used. Even though there are DVC features that
   require DVC to be run in the Git repo, DVC can work well with other version
   control systems. Since DVC relies on simple text
-  [`.dvc` files](/doc/user-guide/dvc-file-format) to manage
+  [`dvc.yaml`](/doc/user-guide/dvc-file-format) to manage
   <abbr>pipelines</abbr>, data, etc, they can be added into any SCM thus
   providing large data files and directories versioning.
 
