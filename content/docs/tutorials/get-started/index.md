@@ -18,11 +18,10 @@ $ ls .dvc/
 config  plots/  tmp/
 ```
 
-DVC can work on top of Git, which serves as the underlying versioning layer.
-This is optional, but needed for
-[data versioning](/doc/tutorials/get-started/data-versioning). The `.dvc/`
-directory is automatically staged with Git, so it can be committed right after
-initialization:
+DVC is typically initialized on top of Git, which is needed for the
+[versioning](/doc/tutorials/get-started/data-versioning) features. The `.dvc/`
+directory is automatically staged with Git by `dvc init`, so it can be committed
+right away:
 
 ```dvc
 $ git status
