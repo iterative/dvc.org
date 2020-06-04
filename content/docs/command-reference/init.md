@@ -56,9 +56,10 @@ sub-projects to mitigate the issues of initializing in the Git repository root:
 
 - Not enough isolation/granularity - commands like `dvc pull`, `dvc checkout`,
   and others analyze the whole repository to look for
-  [`.dvc` files](/doc/user-guide/dvc-file-format) or [`dvc.yaml`](/doc/user-guide/dvc-file-format) to download
-  files and directories, to reproduce <abbr>pipelines</abbr>, etc. It can be
-  expensive in the large repositories with a lot of projects.
+  [`.dvc` files](/doc/user-guide/dvc-file-format) or
+  [`dvc.yaml`](/doc/user-guide/dvc-file-format) to download files and
+  directories, to reproduce <abbr>pipelines</abbr>, etc. It can be expensive in
+  the large repositories with a lot of projects.
 
 - Not enough isolation/granularity - commands like `dvc metrics diff`,
   `dvc pipeline show` and others by default dump all the metrics, all the

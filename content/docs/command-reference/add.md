@@ -197,8 +197,8 @@ Saving information to 'pics.dvc'.
 There are no [`.dvc` files](/doc/user-guide/dvc-file-format) generated within
 this directory structure, but the images are all added to the
 <abbr>cache</abbr>. DVC prints a message mentioning that MD5 hash values are
-computed for each file. A single `pics.dvc` file is generated for the
-top-level directory, and it contains:
+computed for each file. A single `pics.dvc` file is generated for the top-level
+directory, and it contains:
 
 ```yaml
 md5: df06d8d51e6483ed5a74d3979f8fe42e
