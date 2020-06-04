@@ -1,13 +1,13 @@
 # Data Access
 
 We've seen how to [version data](/doc/tutorials/get-started/data-versioning) for
-sharing among team members or environments of the same <abbr>DVC project</abbr>.
-But what about reusing your data and models from an existing DVC project in
-other projects, or on a production deployment?
+sharing among team members or environments of the same project. But what about
+reusing your data and models from an existing DVC project in other projects, or
+on a production deployment?
 
-Git-enabled <abbr>DVC repositories</abbr> serve as an entry point for your data.
-DVC provides commands and an API to access any version of your data files and
-directories.
+<abbr>DVC repositories</abbr> serve as an entry point for your data. The
+following CLI commands and an API are available to access any version of it,
+from any machine where DVC is installed.
 
 ## Find a dataset
 
@@ -66,7 +66,7 @@ source later, using `dvc update`.
 > doesn't actually contain a `cats-dogs/` directory. Like `dvc get`,
 > `dvc import` downloads from [remote storage](/doc/command-reference/remote).
 
-DVC-files created by `dvc import` are called _import stages_. These have speicl
+DVC-files created by `dvc import` are called _import stages_. These have special
 fields, such as the data source `repo`, and `path` (under `deps`):
 
 ```yaml
