@@ -1,14 +1,13 @@
 # Data Versioning
 
-To **track** a large file or directory, put it in the <abbr>workspace</abbr>,
+To **track** a large file or directory, place it in the <abbr>workspace</abbr>,
 and use `dvc add`:
 
 <details>
 
 ### 👉 Expand to get an example dataset
 
-Having [initialized](/doc/tutorials/get-started#initialize) the project, do
-this:
+Having [initialized](/doc/tutorials/get-started#initialize) a project, do this:
 
 ```dvc
 $ dvc get --rev cats-dogs-v1 \

@@ -1,26 +1,19 @@
 # Data Pipelines
 
-![](/img/example-flow-2x.png) _Data modeling overview_
+Another independent feature of DVC is the capturing of data pipelines — series
+of data processes to produce a final result, such as an ML model. DVC pipelines
+can also be easily versioned like source code, when using Git.
 
 <details>
 
 ### 👉 Expand to prepare the project
 
-If you just followed through the
-[versioning](/doc/tutorials/get-started/data-versioning) page, cleanup any
-uncommitted changes with:
-
-```dvc
-$ git reset --hard
-$ dvc checkout
-```
-
-Otherwise, get the project from Github with:
+Get a sample project from Github with:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
-$ git checkout 4-update-data
+$ git checkout '4-update-data'
 $ dvc pull
 ```
 
@@ -28,9 +21,10 @@ $ dvc pull
 
 ## Pipeline stages
 
-Use `dvc run` to create _stages_. These can connect DVC-tracked data with the
-project's source code (tracked with Git). Let's transform a Python script into a
-[stage](/doc/command-reference/run):
+Use `dvc run` to create _stages_. These represent the processes in question
+(source code tracked with Git), and connect them to their data input and output.
+Processes are expressed as CLI commands. Let's transform a Python script into a
+[stage](/doc/command-reference/run), for example:
 
 <details>
 
@@ -68,11 +62,12 @@ $ dvc run -f prepare.dvc \
           python src/prepare.py data/data.xml data/prepared
 ```
 
-The `prepare.dvc` _stage file_ is generated. It has the same
+The `prepare.dvc` _stage file_ is generated with the same
 [format](/doc/user-guide/dvc-file-format) as the DVC-file we created previously
-to [tack data](/doc/tutorials/get-started/data-versioning#tracking-changes), but
-it additionally includes information about the command we ran
-(`python src/prepare.py`), the <abbr>dependencies</abbr>, and
+to
+[tack existing data](/doc/tutorials/get-started/data-versioning#tracking-changes).
+Additionally, it includes information about the command we ran
+(`python src/prepare.py`), its <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
 
 <details>
@@ -124,6 +119,8 @@ outs:
 ```
 
 </details>
+
+### Tracking and versioning stages
 
 There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
 in this case); `dvc run` already took care of this. You only need to run

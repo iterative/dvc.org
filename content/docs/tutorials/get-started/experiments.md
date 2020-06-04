@@ -11,14 +11,15 @@ experiments and navigate between them easily.
 ### 👉 Expand to prepare the project
 
 If you just followed through the
-[pipelines](/doc/tutorials/get-started/data-pipelines) page, make sure you're
-located in the <abbr>project</abbr> we're building. Otherwise, get the project
-from Github with:
+[Pipelines](/doc/tutorials/get-started/data-pipelines) page, just make sure that
+you're located in the main <abbr>project</abbr> we're working on.
+
+Otherwise, get the project from Github with:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
-$ git checkout 7-ml-pipeline
+$ git checkout '7-ml-pipeline'
 $ dvc pull
 ```
 
@@ -83,7 +84,7 @@ Now, we have a new `model.pkl` captured and saved. To get back to the initial
 version, we run `git checkout` along with `dvc checkout` command:
 
 ```dvc
-$ git checkout baseline-experiment
+$ git checkout 'baseline-experiment'
 $ dvc checkout
 ```
 

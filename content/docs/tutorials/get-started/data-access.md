@@ -29,8 +29,8 @@ includes files and directories tracked by **both Git and DVC**.
 ## Just download it
 
 One way is to simply download the data with `dvc get`. This is useful when
-working outside of a DVC project environment, for example in an automated ML
-model deployment task:
+working outside of a <abbr>DVC project</abbr> environment, for example in an
+automated ML model deployment task:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
@@ -42,6 +42,9 @@ because the connection between the projects is lost — others won't know where
 the data came from or whether new versions are available.
 
 ## Import the dataset
+
+> Requires an [initialized](/doc/tutorials/get-started#initialize) <abbr>DVC
+> project</abbr>.
 
 `dvc import` downloads a dataset, while also tracking it **in the same step**:
 
