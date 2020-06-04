@@ -2,11 +2,13 @@
 
 We've seen how to
 [version and share](/doc/tutorials/get-started/data-versioning) data among team
-members or environments of the same <abbr>DVC project</abbr>. But what if we
-wanted to reuse a dataset or machine learning model from an existing DVC
-repository? For example to leverage a
-[dataset registry](/doc/use-cases/data-registries) in another DVC project, or as
-a way to implement DevOps for data.
+members or environments of the same <abbr>DVC project</abbr>. But what about
+reusing your data and models from an existing DVC repository in another project
+or on a production server?
+
+Git-enabled <abbr>DVC repositories</abbr> serve as an entry point for your data
+into a CI/CD process. DVC provides commands and an API to access any version of
+your data files and directories.
 
 ## Find a dataset
 
@@ -26,32 +28,32 @@ includes files and directories tracked by **both Git and DVC**.
 
 ## Just download it
 
-An easy way is to simply download the data, by using `dvc get`. This is useful
-when working outside of a DVC project, for example in an automated ML model
-deployment task:
+One way is to simply download the data with `dvc get`. This is useful when
+working outside of a DVC project environment, for example in an automated ML
+model deployment task:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
           use-cases/cats-dogs
 ```
 
-When working inside another DVC project though, this is not the best strategy,
+When working inside another DVC project though, this is not the best strategy
 because the connection between the projects is lost — others won't know where
-the data came from or whether new versions are available. Let's see better ways:
+the data came from or whether new versions are available.
 
 ## Import the dataset
 
-`dvc import` also downloads the dataset, while also tracking it (like `dvc add`)
-**in the same step**:
+`dvc import` downloads a dataset, while also tracking it **in the same step**:
 
 ```dvc
 $ dvc import https://github.com/iterative/dataset-registry \
              use-cases/cats-dogs
 ```
 
-The `cats-dogs.dvc` [DVC-file](/doc/user-guide/dvc-file-format) includes
-metadata to track changes in the source data. This allows you to bring in
-changes from the data source later, using `dvc update`.
+This is similar to `dvc get`+`dvc add`, but the resulting
+[DVC-file](/doc/user-guide/dvc-file-format) includes metadata to track changes
+in the source repository. This allows you to bring in changes from the data
+source later, using `dvc update`.
 
 <details>
 

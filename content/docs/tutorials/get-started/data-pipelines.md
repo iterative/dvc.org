@@ -128,7 +128,7 @@ outs:
 There's no need to use `dvc add` for DVC to track stage outputs (`data/prepared`
 in this case); `dvc run` already took care of this. You only need to run
 `dvc push` if you want to save them to
-[remote storage](/doc/tutorials/get-started/data-versioning#backing-up--sharing),
+[remote storage](/doc/tutorials/get-started/data-versioning#storing-and-sharing),
 (usually along with `git commit` to version the stage file itself).
 
 ## Dependency graphs (DAGs)

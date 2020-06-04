@@ -159,11 +159,11 @@ DVC-tracked data up to date with the current Git commit.
 > Note that you can use `dvc install` to set up a Git hooks that automate common
 > actions, like checking out DVC-tracked data after every Git checkout.
 
-## Backing up & sharing
+## Storing and sharing
 
 You can **upload** DVC-tracked data or models with `dvc push`, so they're safely
-backed up on [remote storage](/doc/command-reference/remote). This also means
-they can be retrieved on other environments later.
+stored [remotely](/doc/command-reference/remote). This also means they can be
+retrieved on other environments later.
 
 <details>
 
@@ -202,7 +202,7 @@ Usually, we also want to `git commit` and `git push` the corresponding
 ### Expand to see what happened internally
 
 `dvc push` copied the data <abbr>cached</abbr> locally to the remote storage we
-set up earlier. You can check that the data has been backed up to the DVC remote
+set up earlier. You can check that the data has been stored in the DVC remote
 with:
 
 ```dvc
