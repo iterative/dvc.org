@@ -25,8 +25,8 @@ $ dvc pull
 ## Initialize
 
 Create a directory to use as <abbr>workspace</abbr>, and use `dvc init` inside
-to create a <abbr>DVC project</abbr>. At DVC initialization, a new `.dvc/`
-directory is created for internal
+to create a <abbr>DVC project</abbr>. At initialization, a new `.dvc/` directory
+is created for the internal
 [files and directories](/doc/user-guide/dvc-files-and-directories):
 
 ```dvc
@@ -35,8 +35,10 @@ $ ls .dvc/
 config  plots/  tmp/
 ```
 
-DVC can work on top of Git, which serves as the underlying versioning layer of
-<abbr>DVC repositories</abbr>. This is optional, but needed for the
+### Not a replacement for Git
+
+<abbr>DVC repositories</abbr> work **on top of Git**, which serves as the
+underlying versioning layer. This is optional, but needed for the
 [data versioning](/doc/tutorials/get-started/data-versioning) features of DVC.
 The `.dvc/` directory is automatically staged with Git, so it can be committed
 right away:

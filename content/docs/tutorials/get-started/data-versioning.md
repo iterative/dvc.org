@@ -1,7 +1,7 @@
 # Data Versioning
 
-To **track** a large file or directory in a <abbr>DVC project</abbr>, use
-`dvc add`:
+To **track** a large file or directory, put it in the <abbr>workspace</abbr>,
+and use `dvc add`:
 
 <details>
 
@@ -33,8 +33,9 @@ $ dvc add datadir
 
 DVC stores information about the added directory in a special _DVC-file_ named
 `datadir.dvc`, a small text file with a human-readable
-[format](/doc/user-guide/dvc-file-format). This file can be committed with Git,
-as a placeholder for the original data (which is listed in `.gitignore`):
+[format](/doc/user-guide/dvc-file-format). This file can be easily **versioned
+like source code** with Git, as a placeholder for the original data (which is
+listed in `.gitignore`):
 
 ```dvc
 $ git add .gitignore datadir.dvc
