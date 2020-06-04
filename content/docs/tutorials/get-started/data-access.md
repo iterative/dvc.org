@@ -84,9 +84,9 @@ The `url` and `rev_lock` subfields under `repo` are used to save the origin and
 
 ## Python API
 
-Besides command line access to data files tracked in remote <abbr>DVC
-repositories</abbr>, you can also use DVC's _Python API_ to **access the data
-contents directly** from your code. For example:
+It's also possible to integrate your data or models directly in source code with
+DVC's _Python API_. This lets you **access the data contents directly** from
+within an application at runtime. For example:
 
 ```py
 import dvc.api

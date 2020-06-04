@@ -1,20 +1,16 @@
 # Experiments
 
-Data scientist may try many different approaches and
-[parameters](/doc/command-reference/params), having multiple attempts before the
-desired result is achieved — monitored with [metrics](#project-metrics)
-(explained further down). DVC is built to provide a way to capture these
-experiments and navigate between them easily.
+Each stage in a pipeline is like a specialized machine in a production line.
+Data scientists tend to tweak and configure them along the way, to improve the
+final results. DVC provide ways to control these experiments with
+[parameters](/doc/command-reference/params), compare their performance with
+[metrics](#project-metrics), and switch between them easily with Git.
 
 <details>
 
 ### 👉 Expand to prepare the project
 
-If you just followed through the
-[Pipelines](/doc/tutorials/get-started/data-pipelines) page, just make sure that
-you're located in the main <abbr>project</abbr> we're working on.
-
-Otherwise, get the project from Github with:
+Get the sample project from Github with:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started

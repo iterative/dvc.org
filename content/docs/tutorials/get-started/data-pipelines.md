@@ -13,7 +13,7 @@ results later exactly as they were built originally!
 
 ### 👉 Expand to prepare the project
 
-Get a sample project from Github with:
+Get the sample project from Github with:
 
 ```dvc
 $ git clone https://github.com/iterative/example-get-started
