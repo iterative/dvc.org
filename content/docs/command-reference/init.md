@@ -56,7 +56,7 @@ sub-projects to mitigate the issues of initializing in the Git repository root:
 
 - Not enough isolation/granularity - commands like `dvc pull`, `dvc checkout`,
   and others analyze the whole repository to look for
-  [`.dvc` files](/doc/user-guide/dvc-file-format) to download files and
+  [`.dvc` files or `dvc.yaml`](/doc/user-guide/dvc-file-format) to download files and
   directories, to reproduce <abbr>pipelines</abbr>, etc. It can be expensive in
   the large repositories with a lot of projects.
 
@@ -72,7 +72,7 @@ directory determines the root of the DVC project. (In case of `--subdir` it
 might happen that Git repository root is located at different path than the DVC
 project root.)
 
-DVC project root defines the scope for the most DVC commands. Mostly meaning
+DVC project root defines the scope for most DVC commands. Mostly meaning
 that all `.dvc` file under the root path are being analyzed.
 
 If there are multiple DVC sub-projects but they _are not_ nested, e.g.:
