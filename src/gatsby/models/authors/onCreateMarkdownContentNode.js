@@ -1,8 +1,10 @@
+const parseLink = require('./parse-link.js')
+
 async function createMarkdownAuthorNode(api, { parentNode, createChildNode }) {
   if (parentNode.relativeDirectory.split('/')[0] !== 'authors') return
   const { node, createNodeId, createContentDigest } = api
   const { frontmatter, rawMarkdownBody } = node
-  const { path, name, avatar, link } = frontmatter
+  const { path, name, avatar, links } = frontmatter
   const { relativePath } = parentNode
 
   const fieldData = {
@@ -10,7 +12,7 @@ async function createMarkdownAuthorNode(api, { parentNode, createChildNode }) {
     rawMarkdownBody,
     path,
     name,
-    link,
+    links: links.map(parseLink),
     avatar
   }
 

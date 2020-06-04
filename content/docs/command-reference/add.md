@@ -47,9 +47,9 @@ Under the hood, a few actions are taken for each file (or directory) in
 6. Instructions are printed showing `git` commands for adding the files, if
    appropriate.
 
-Summarizing, the result is that the target data is replaced small `.dvc` files
-can be tracked with Git. See [DVC-File Format](/doc/user-guide/dvc-file-format)
-for more details.
+Summarizing, the result is that the target data is replaced by small `.dvc`
+files that can be tracked with Git. See
+[DVC-File Format](/doc/user-guide/dvc-file-format) for more details.
 
 > Note that `.dvc` files created by this command are considered _orphan stage
 > files_ because they have no _dependencies_, only outputs. These are always

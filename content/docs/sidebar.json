@@ -224,6 +224,10 @@
         }
       },
       {
+        "label": "freeze",
+        "slug": "freeze"
+      },
+      {
         "label": "gc",
         "slug": "gc"
       },
@@ -256,22 +260,10 @@
         "slug": "list"
       },
       {
-        "label": "lock",
-        "slug": "lock"
-      },
-      {
         "label": "metrics",
         "slug": "metrics",
         "source": "metrics/index.md",
         "children": [
-          {
-            "label": "metrics add",
-            "slug": "add"
-          },
-          {
-            "label": "metrics modify",
-            "slug": "modify"
-          },
           {
             "label": "metrics show",
             "slug": "show"
@@ -279,10 +271,6 @@
           {
             "label": "metrics diff",
             "slug": "diff"
-          },
-          {
-            "label": "metrics remove",
-            "slug": "remove"
           }
         ]
       },
@@ -391,8 +379,8 @@
         "slug": "status"
       },
       {
-        "label": "unlock",
-        "slug": "unlock"
+        "label": "unfreeze",
+        "slug": "unfreeze"
       },
       {
         "label": "unprotect",

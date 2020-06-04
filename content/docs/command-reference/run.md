@@ -212,8 +212,8 @@ To track the changes with git, run:
 	git add .gitignore metric.dvc
 ```
 
-> See [`.dvc` file format](/doc/user-guide/dvc-file-format) for more details on the
-> text format above.
+> See [`.dvc` file format](/doc/user-guide/dvc-file-format) for more details on
+> the text format above.
 
 Execute a Python script as a DVC [pipeline](/doc/command-reference/pipeline)
 stage. The stage file name is not specified, so a `model.p.dvc` `.dvc` file is
