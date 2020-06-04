@@ -6,8 +6,8 @@ Modify display properties of [plot metrics](/doc/command-reference/plots) files.
 
 ```usage
 usage: dvc plots modify [-h] [-q | -v] [-t <path>] [-x X] [-y Y]
-                        [--no-csv-header] [--title <text>] [--xlab <text>]
-                        [--ylab <text>] [--unset [<prop> [<prop> ...]]]
+                        [--no-csv-header] [--title <text>] [--x-label <text>]
+                        [--y-label <text>] [--unset [<prop> [<prop> ...]]]
 
 positional arguments:
   target                Plot file to set props to.
@@ -41,9 +41,9 @@ adds the options to `dvc.yaml`.
 
 - `--title <text>` - plot title for visualization.
 
-- `--xlab <text>` - title of X axis.
+- `--x-label <text>` - title of X axis.
 
-- `--ylab <text>` - title of Y axis.
+- `--y-label <text>` - title of Y axis.
 
 - `--unset [UNSET [UNSET ...]]` - unset an option or option list.
 
@@ -97,21 +97,21 @@ forget to commit the change in Git if the modification needs to be preserved.
 Changing the plot _title_ and _y title_:
 
 ```dvc
-$ dvc plots modify --title Accuracy --xlab epoch logs.csv
+$ dvc plots modify --title Accuracy --x-label epoch logs.csv
 $ dvc plots show logs.csv
 file:///Users/dmitry/src/myclassifier/logs.html
 ```
 
 ![](/img/plots_mod_acc_titles.svg)
 
-Two new fields were added to `dvc.yaml` - _xlab_ and _title_:
+Two new fields were added to `dvc.yaml` - _x-label_ and _title_:
 
 ```yaml
 plots:
   - plots.csv:
       cache: false
       y: accuracy
-      xlab: epoch
+      x_label: epoch
       title: Accuracy
 ```
 
