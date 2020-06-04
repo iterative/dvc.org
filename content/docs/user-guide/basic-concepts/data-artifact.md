@@ -1,6 +1,6 @@
 ---
 name: 'Data Artifact'
-match: ['data artifact', 'data artifacts', 'artifacts']
+match: ['data artifact', 'data artifacts', 'artifact', 'artifacts']
 ---
 
 Any data file or directory, as well as intermediate or final result that is

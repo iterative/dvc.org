@@ -1,10 +1,9 @@
 # Data Access
 
-We've seen how to
-[version and share](/doc/tutorials/get-started/data-versioning) data among team
-members or environments of the same <abbr>DVC project</abbr>. But what about
-reusing your data and models from an existing DVC repository in another project
-or on a production server?
+We've seen how to [version data](/doc/tutorials/get-started/data-versioning) for
+sharing among team members or environments of the same <abbr>DVC project</abbr>.
+But what about reusing your data and models from an existing DVC project in
+other projects, or on a production deployment?
 
 Git-enabled <abbr>DVC repositories</abbr> serve as an entry point for your data
 into a CI/CD process. DVC provides commands and an API to access any version of

@@ -250,3 +250,11 @@ $ dvc pull
 > 📖 See also
 > [Sharing Data and Model Files](/doc/use-cases/sharing-data-and-model-files)
 > for more on basic collaboration workflows.
+
+## Other ways to track data
+
+In the [Pipelines](/doc/tutorials/get-started/data-pipelines) and
+[Access](/doc/tutorials/get-started/data-access) pages you'll learn more
+advanced ways to track data. Mainly, `dvc run` can track the intermediate and
+final results of complex data processes, and `dvc import` which brings in an
+<abbr>artifact</abbr> from an external <abbr>DVC repository</abbr>.
