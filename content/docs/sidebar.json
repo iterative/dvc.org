@@ -32,32 +32,15 @@
     "children": [
       {
         "slug": "get-started",
-        "source": false,
+        "source": "get-started/index.md",
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
         },
         "children": [
-          "agenda",
-          "initialize",
-          "configure",
-          "add-files",
-          "store-data",
-          "retrieve-data",
-          "import-data",
-          {
-            "label": "Connect with Code",
-            "slug": "connect-code-and-data"
-          },
-          "pipeline",
-          "visualize",
-          "reproduce",
-          "metrics",
-          "experiments",
-          "compare-experiments",
-          {
-            "label": "Get Older Files",
-            "slug": "older-versions"
-          }
+          "data-versioning",
+          "data-pipelines",
+          "data-access",
+          "experiments"
         ]
       },
       {

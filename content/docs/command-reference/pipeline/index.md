@@ -1,6 +1,7 @@
 # pipeline
 
-A set of commands to manage [pipelines](/doc/tutorials/get-started/pipeline):
+A set of commands to manage
+[pipelines](/doc/tutorials/get-started/data-pipelines):
 [show](/doc/command-reference/pipeline/show) and
 [list](/doc/command-reference/pipeline/list).
 
@@ -17,12 +18,13 @@ positional arguments:
 
 ## Description
 
-A data pipeline, in general, is a series of data processes (for example console
-commands that take an input and produce an <abbr>output</abbr>). A pipeline may
-produce intermediate data, and has a final result. Machine Learning (ML)
-pipelines typically start a with large raw datasets, include intermediate
-featurization and training stages, and produce a final model, as well as
-accuracy [metrics](/doc/command-reference/metrics).
+A data pipeline, in general, is a series of data processing
+[stages](/doc/command-reference/run) (for example console commands that take an
+input and produce an <abbr>output</abbr>). A pipeline may produce intermediate
+data, and has a final result. Machine learning (ML) pipelines typically start a
+with large raw datasets, include intermediate featurization and training stages,
+and produce a final model, as well as accuracy
+[metrics](/doc/command-reference/metrics).
 
 In DVC, pipeline stages and commands, their data I/O, interdependencies, and
 results (intermediate or final) are specified with `dvc add` and `dvc run`,

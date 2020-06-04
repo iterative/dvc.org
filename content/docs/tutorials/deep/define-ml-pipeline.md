@@ -13,21 +13,6 @@ $ du -sh data/*
  41M data/Posts.xml.zip
 ```
 
-<details>
-
-### Expand to learn how to download on Windows
-
-Windows doesn't include the `wget` utility by default, but you can use the
-browser to download `data.xml`. (Right-click
-[this link](https://data.dvc.org/tutorial/ver/data.zip) and select
-`Save Link As...` (Chrome). Save it into the `data/` subdirectory.
-
-> Please also review
-> [Running DVC on Windows](/doc/user-guide/running-dvc-on-windows) for important
-> tips to improve your experience using DVC on Windows.
-
-</details>
-
 At this time, `data/Posts.xml.zip` is a regular (untracked) file. We can track
 it with DVC using `dvc add` (see below). After executing the command you will
 see a new file `data/Posts.xml.zip.dvc` and a change in `data/.gitignore`. Both

@@ -178,10 +178,10 @@ these settings, you could use the following options:
   $ dvc remote modify myremote grant_full_control id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
 
-  > \* - `grant_read`, `grant_read_acp`, `grant_write_acp` and
+  > \* `grant_read`, `grant_read_acp`, `grant_write_acp` and
   > `grant_full_control` params are mutually exclusive with `acl`.
   >
-  > \*\* - default ACL grantees are overwritten. Grantees are AWS accounts
+  > \*\* default ACL grantees are overwritten. Grantees are AWS accounts
   > identifiable by `id` (AWS Canonical User ID), `emailAddress` or `uri`
   > (predefined group).
 

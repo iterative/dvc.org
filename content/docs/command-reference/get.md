@@ -148,8 +148,8 @@ https://remote.dvc.org/get-started/66/2eb7f64216d9c2c1088d0a5e2c6951
 location to place the target data within the workspace. Combining these two
 options allows us to do something we can't achieve with the regular
 `git checkout` + `dvc checkout` process – see for example the
-[Get Older Data Version](/doc/tutorials/get-started/older-versions) chapter of
-our _Get Started_.
+[Get Older Data Version](/doc/tutorials/get-started/data-versioning#navigate-versions)
+chapter of our _Get Started_.
 
 Let's use the
 [get started example repo](https://github.com/iterative/example-get-started)
@@ -161,12 +161,13 @@ $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 ```
 
-If you are familiar with our [Get Started](/doc/tutorials/get-started) project
-(used in these examples), you may remember that the chapter where we train a
-first version of the model corresponds to the the `baseline-experiment` tag in
-the repo. Similarly `bigrams-experiment` points to an improved model (trained
-using bigrams). What if we wanted to have both versions of the model "checked
-out" at the same time? `dvc get` provides an easy way to do this:
+If you are familiar with the project in our
+[Get Started](/doc/tutorials/get-started) (used in these examples), you may
+remember that the chapter where we train a first version of the model
+corresponds to the the `baseline-experiment` tag in the repo. Similarly
+`bigrams-experiment` points to an improved model (trained using bigrams). What
+if we wanted to have both versions of the model "checked out" at the same time?
+`dvc get` provides an easy way to do this:
 
 ```dvc
 $ dvc get . model.pkl --rev baseline-experiment

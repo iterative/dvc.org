@@ -129,13 +129,13 @@ Luigi, etc.
 
 - `git-lfs` was not made with data science scenarios in mind, so it does not
   provide related features (e.g. pipelines,
-  [metrics](/doc/command-reference/metrics)), and thus GitHub has a limit of 2
+  [metrics](/doc/command-reference/metrics)), and thus Github has a limit of 2
   GB per repository.
 
 ---
 
-> \***copy-on-write links or "reflinks"** are a relatively new way to link files
-> in UNIX-style file systems. Unlike hardlinks or symlinks, they support
+> \* **copy-on-write links or "reflinks"** are a relatively new way to link
+> files in UNIX-style file systems. Unlike hardlinks or symlinks, they support
 > transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
 > means that editing a reflinked file is always safe as all the other links to
 > the file will reflect the changes.
