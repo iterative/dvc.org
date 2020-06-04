@@ -7,10 +7,10 @@ DVC step by step.
 
 ## Initialize
 
-Create a directory to use as <abbr>workspace</abbr>, and use `dvc init` inside
-to create a <abbr>DVC project</abbr>. At initialization, a new `.dvc/` directory
-is created for the internal
-[files and directories](/doc/user-guide/dvc-files-and-directories):
+Move into the directory you want to use as <abbr>workspace</abbr>, and use
+`dvc init` inside to create a <abbr>DVC project</abbr>. It can contain existing
+project files. At initialization, a new `.dvc/` directory is created for the
+internal [files and directories](/doc/user-guide/dvc-files-and-directories):
 
 ```dvc
 $ dvc init
@@ -18,11 +18,11 @@ $ ls .dvc/
 config  plots/  tmp/
 ```
 
-<abbr>DVC repositories</abbr> work on top of Git, which serves as the underlying
-versioning layer. This is optional, but needed for the
-[data versioning](/doc/tutorials/get-started/data-versioning) features of DVC.
-The `.dvc/` directory is automatically staged with Git, so it can be committed
-right away:
+DVC can work on top of Git, which serves as the underlying versioning layer.
+This is optional, but needed for
+[data versioning](/doc/tutorials/get-started/data-versioning). The `.dvc/`
+directory is automatically staged with Git, so it can be committed right after
+initialization:
 
 ```dvc
 $ git status
