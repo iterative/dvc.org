@@ -5,9 +5,9 @@ sharing among team members or environments of the same <abbr>DVC project</abbr>.
 But what about reusing your data and models from an existing DVC project in
 other projects, or on a production deployment?
 
-Git-enabled <abbr>DVC repositories</abbr> serve as an entry point for your data
-into a CI/CD process. DVC provides commands and an API to access any version of
-your data files and directories.
+Git-enabled <abbr>DVC repositories</abbr> serve as an entry point for your data.
+DVC provides commands and an API to access any version of your data files and
+directories.
 
 ## Find a dataset
 

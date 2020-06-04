@@ -1,8 +1,12 @@
 # Data Pipelines
 
-Another independent feature of DVC is the capturing of data pipelines — series
-of data processes to produce a final result, such as an ML model. DVC pipelines
-can also be easily versioned like source code, when using Git.
+Versioning large data files and directories for data science is great, but not
+enough. How is it filtered, transformed, or used for training ML models?
+
+DVC introduces a mechanism to capture _data pipelines_ — **series of data
+processes** that produce a final result. As with data, DVC pipelines can also be
+easily versioned (using Git). Furthermore, this allows you to reproduce them
+later exactly as they were built originally!
 
 <details>
 
@@ -21,16 +25,16 @@ $ dvc pull
 
 ## Pipeline stages
 
-Use `dvc run` to create _stages_. These represent the processes in question
-(source code tracked with Git), and connect them to their data input and output.
-Processes are expressed as CLI commands. Let's transform a Python script into a
-[stage](/doc/command-reference/run), for example:
+Use `dvc run` to create _stages_. These represent processes (source code tracked
+with Git) that form the **steps of a pipeline**. Staged also connect such code
+to its data input and output. Let's transform a Python script into a
+[stage](/doc/command-reference/run):
 
 <details>
 
 ### 👉 Expand to download example code
 
-Get the sample code like this, if you haven't:
+Get the sample code like this:
 
 ```dvc
 $ wget https://code.dvc.org/get-started/code.zip
@@ -62,7 +66,7 @@ $ dvc run -f prepare.dvc \
           python src/prepare.py data/data.xml data/prepared
 ```
 
-The `prepare.dvc` _stage file_ is generated with the same
+A `prepare.dvc` _stage file_ is generated with the same
 [format](/doc/user-guide/dvc-file-format) as the DVC-file we created previously
 to
 [tack existing data](/doc/tutorials/get-started/data-versioning#tracking-changes).
