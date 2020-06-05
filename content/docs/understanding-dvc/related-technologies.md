@@ -104,7 +104,7 @@ Luigi, etc.
   executed locally with minimal effort.
 
 - DVC is not fundamentally bound to Git, and users have the option of using DVC
-  without SCM.
+  without Git.
 
 ### Git-LFS (Large File Storage)
 
@@ -114,7 +114,7 @@ Luigi, etc.
   are required.
 
 - DVC is not fundamentally bound to Git, and users have the option of using DVC
-  without SCM.
+  without Git.
 
 - DVC does not add any hooks to the Git repo by default. To checkout data files,
   the `dvc checkout` command has to be run after each `git checkout` and
