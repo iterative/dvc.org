@@ -74,7 +74,7 @@ might happen that Git repository root is located at different path than the DVC
 project root.)
 
 DVC project root defines the scope for most DVC commands. Mostly meaning that
-`dvc.yaml` and all `.dvc` files under the root path are being analyzed.
+all `dvc.yaml` and `.dvc` files under the root path are being analyzed.
 
 If there are multiple DVC sub-projects but they _are not_ nested, e.g.:
 
