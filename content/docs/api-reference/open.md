@@ -113,7 +113,7 @@ should handle the event-driven parsing of the document in this case.) This
 increases the performance of the code (minimizing memory usage), and is
 typically faster than loading the whole data into memory.
 
-> If you just needed to load the complete file contents into memory, you can use
+> If you want to load the complete file contents into memory, you can use
 > `dvc.api.read()` instead:
 >
 > ```py
@@ -127,7 +127,7 @@ typically faster than loading the whole data into memory.
 
 ## Example: Accessing private repos
 
-This is just a matter of using the right `repo` argument, for example an SSH URL
+This is a matter of using the right `repo` argument, for example an SSH URL
 (requires that the
 [credentials are configured](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
 locally):

@@ -183,7 +183,7 @@ outs:
     persist: false
 ```
 
-Just like the DVC-file we created earlier with `dvc add`, this stage file uses
+Like the DVC-file we created earlier with `dvc add`, this stage file uses
 `md5` hashes (that point to the <abbr>cache</abbr>) to describe and version
 control dependencies and outputs. Output `data/Posts.xml` file is saved as
 `.dvc/cache/a3/04afb96060aad90176268345e10355` and linked (or copied) to the
@@ -331,7 +331,7 @@ $ dvc metrics show
 
 It's time to save our [pipeline](/doc/command-reference/pipeline). You can
 confirm that we do not tack files or raw datasets with Git, by using the
-`git status` command. We are just saving a snapshot of the DVC-files that
+`git status` command. We are saving a snapshot of the DVC-files that
 describe data, transformations (stages), and relationships between them.
 
 ```dvc

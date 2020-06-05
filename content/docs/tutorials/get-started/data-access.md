@@ -25,7 +25,7 @@ cats-dogs.dvc
 The benefit of this command over browsing a Git hosting website is that the list
 includes files and directories tracked by **both Git and DVC**.
 
-## Just download it
+## Download it
 
 One way is to download the data with `dvc get`. This is useful when
 working outside of a <abbr>DVC project</abbr> environment, for example in an

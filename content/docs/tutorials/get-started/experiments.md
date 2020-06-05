@@ -139,7 +139,7 @@ back and forth. To find the best-performing experiment or track the progress,
 described in one of the previous sections).
 
 Let's run evaluate for the latest `bigrams` experiment we created earlier. It
-mostly takes just running the `dvc repro`:
+mostly takes running the `dvc repro`:
 
 ```dvc
 $ git checkout master

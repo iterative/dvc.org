@@ -29,7 +29,7 @@ external data source changes. Example scenarios:
 - A shared dataset on a remote storage that is managed and updated outside DVC.
 
 > Note that `dvc get-url` corresponds to the first step this command performs
-> (just download the file or directory).
+> (downloads the file or directory).
 
 The `dvc import-url` command helps the user create such an external data
 dependency without having to manually copying files from the supported remote
@@ -78,7 +78,7 @@ Specific explanations:
   is necessary to track if the specified remote file (URL) changed to download
   it again.
 
-- `remote://myremote/path/to/file` notation just means that a DVC
+- `remote://myremote/path/to/file` notation means that a DVC
   [remote](/doc/command-reference/remote) `myremote` is defined and when DVC is
   running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
   URL by appending `/path/to/file` to the `myremote`'s configured base path.
@@ -146,7 +146,7 @@ $ git checkout 2-remote
 $ mkdir data
 ```
 
-You should now have a blank <abbr>workspace</abbr>, just before
+You should now have a blank <abbr>workspace</abbr>, before
 [Versioning Basics](/doc/tutorials/get-started/data-versioning).
 
 </details>

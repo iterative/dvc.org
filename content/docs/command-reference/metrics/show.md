@@ -32,7 +32,7 @@ compares them with a previous version.
 ## Options
 
 - `-a`, `--all-branches` - print metric file contents in all Git branches
-  instead of just those present in the current workspace. It can be used to
+  instead of using those present in the current workspace. It can be used to
   compare different experiments. Note that this can be combined with `-T` below,
   for example using the `-aT` flag.
 

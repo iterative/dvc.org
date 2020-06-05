@@ -54,7 +54,7 @@ none are specified on the command line nor in the configuration. The default
 remote is used (see `dvc config core.remote`) unless the `--remote` option is
 used. See `dvc remote` for more information on how to configure a remote.
 
-With no arguments, just `dvc push` or `dvc push --remote REMOTE`, it uploads
+With no arguments, `dvc push` or `dvc push --remote REMOTE`, it uploads
 only the files (or directories) that are new in the local repository to remote
 storage. It will not upload files associated with earlier commits in the
 <abbr>repository</abbr> (if using Git), nor will it upload files that have not
@@ -73,7 +73,7 @@ to push.
 ## Options
 
 - `-a`, `--all-branches` - determines the files to upload by examining DVC-files
-  in all Git branches instead of just those present in the current workspace.
+  in all Git branches instead of using files present in the current workspace.
   It's useful if branches are used to track experiments or project checkpoints.
   Note that this can be combined with `-T` below, for example using the `-aT`
   flag.
@@ -103,7 +103,7 @@ to push.
 
 - `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
   handle the uploading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  `4 * cpu_count()`. For SSH remotes, the default value is `4`. Using more jobs
   may improve the total download speed if a combination of small and large files
   are being fetched.
 

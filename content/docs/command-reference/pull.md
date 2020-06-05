@@ -35,7 +35,7 @@ The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used. See `dvc remote` for more information on how to configure a
 remote.
 
-With no arguments, just `dvc pull` or `dvc pull --remote <name>`, it downloads
+With no arguments, use `dvc pull` or `dvc pull --remote <name>`, it downloads
 only the files (or directories) missing from the workspace by searching all
 [DVC-files](/doc/user-guide/dvc-file-format) currently in the
 <abbr>project</abbr>. It will not download files associated with earlier commits
@@ -59,7 +59,7 @@ reflinks or hardlinks to put it in the workspace without copying. See
 ## Options
 
 - `-a`, `--all-branches` - determines the files to download by examining
-  DVC-files in all Git branches instead of just those present in the current
+  DVC-files in all Git branches instead of those present in the current
   workspace. It's useful if branches are used to track experiments or project
   checkpoints. Note that this can be combined with `-T` below, for example using
   the `-aT` flag.
@@ -94,7 +94,7 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 - `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
   handle the downloading of files from the remote. The default value is
-  `4 * cpu_count()`. For SSH remotes, the default is just `4`. Using more jobs
+  `4 * cpu_count()`. For SSH remotes, the default value is `4`. Using more jobs
   may improve the total download speed if a combination of small and large files
   are being fetched.
 
@@ -136,7 +136,7 @@ The workspace looks almost like in this
 └── train.dvc
 ```
 
-We can now just run `dvc pull` to download the most recent `data/data.xml`,
+We can now run `dvc pull` to download the most recent `data/data.xml`,
 `model.pkl`, and other DVC-tracked files into the <abbr>workspace</abbr>:
 
 ```dvc

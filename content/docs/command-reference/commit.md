@@ -44,7 +44,7 @@ further detailed below.
   other change that doesn't cause changed stage outputs. However, DVC will
   notice that some <abbr>dependencies</abbr> and have changed, and expect you to
   reproduce the whole pipeline. If you're sure no pipeline results would change,
-  just use `dvc commit` to force update the related DVC-files and cache.
+  use `dvc commit` to force update the related DVC-files and cache.
 
 Let's take a look at what is happening in the first scenario closely. Normally
 DVC commands like `dvc add`, `dvc repro` or `dvc run` commit the data to the
@@ -280,4 +280,4 @@ Data and pipelines are up to date.
 ```
 
 Instead of reproducing the pipeline for changes that do not produce different
-results, just use `commit` on both Git and DVC.
+results, use `commit` on both Git and DVC.

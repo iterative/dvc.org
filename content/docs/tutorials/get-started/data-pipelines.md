@@ -163,7 +163,7 @@ This would be a good point to commit the changes with Git. This includes any
 
 ## Reproduce
 
-Imagine you're just cloning the <abbr>repository</abbr> created so far, in
+Imagine you're cloning the <abbr>repository</abbr> created so far, in
 another computer. It's extremely easy for anyone to reproduce the result
 end-to-end, by using `dvc repro`.
 
@@ -198,7 +198,7 @@ executes the necessary commands to rebuild all the pipeline
 ## Visualize
 
 Having built our pipeline, we need a good way to understand its structure.
-Seeing a graph of connected stage files would help. DVC lets you do just that,
+Seeing a graph of connected stage files would help. DVC lets you do that,
 without leaving the terminal!
 
 ```dvc

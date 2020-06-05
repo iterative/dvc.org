@@ -228,7 +228,7 @@ after `git clone` and `git pull`.
 
 ### 👉 Expand to simulate a fresh clone of this repo
 
-Let's just remove the directory added so far, both from <abbr>workspace</abbr>
+Let's remove the directory added so far, both from <abbr>workspace</abbr>
 and <abbr>cache</abbr>:
 
 ```dvc
