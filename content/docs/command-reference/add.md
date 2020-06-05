@@ -56,7 +56,7 @@ more details.
 > treated as _changed_ by `dvc repro`, which always executes them. See `dvc run`
 > to learn more about stage files.
 
-To avoid a file inside a directory being added accidentally, just add the
+To avoid adding files inside a directory accidentally, you can add the
 corresponding [patterns](/doc/user-guide/dvcignore) in a `.dvcignore` file.
 
 By default DVC tries to use reflinks (see
