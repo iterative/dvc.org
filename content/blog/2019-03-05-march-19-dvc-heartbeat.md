@@ -144,7 +144,7 @@ liking and see your data files listed there.
 ### Q: [Managing data and pipelines with DVC on HDFS](https://discordapp.com/channels/485586884165107732/485596304961962003/545562334983356426)
 
 With DVC, you could connect your data sources from HDFS with your pipeline in
-your local project, by simply specifying it as an external dependency. For
+your local project, by specifying it as an external dependency. For
 example let’s say your script `process.cmd` works on an input file on HDFS and
 then downloads a result to your local workspace, then with DVC it could look
 something like:

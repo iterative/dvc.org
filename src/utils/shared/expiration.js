@@ -17,7 +17,7 @@ function getExpirationDate({ date, expires }) {
 
 /*
    This is the primary logic to check if a date is expired,
-   It simply uses Moment to parse a date input and comparse that to the current
+   It uses Moment to parse a date input and comparse that to the current
    time.
    Use this on the result of getExpirationDate to get both pieces of
    information.

@@ -35,7 +35,7 @@ directory.
 ## Examples
 
 As examples, let's take a look at a [stage](/doc/command-reference/run) that
-simply moves a local file from an external location, producing a `data.txt.dvc`
+moves a local file from an external location, producing a `data.txt.dvc`
 stage file (DVC-file).
 
 > Note that some of these commands use the `/home/shared` directory, typical in

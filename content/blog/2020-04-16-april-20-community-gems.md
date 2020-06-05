@@ -106,7 +106,7 @@ $ dvc pull process_data_stage.dvc
 You can also use `dvc pull` at the level of individual files. This might be
 needed if your DVC pipeline file creates 10 outputs, for example, and you only
 want to pull one (say, `model.pkl`, your trained model) from remote DVC storage.
-You'd simply run
+You'd just run
 
 ```dvc
 $ dvc pull model.pkl

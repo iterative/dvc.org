@@ -27,7 +27,7 @@ includes files and directories tracked by **both Git and DVC**.
 
 ## Just download it
 
-One way is to simply download the data with `dvc get`. This is useful when
+One way is to download the data with `dvc get`. This is useful when
 working outside of a <abbr>DVC project</abbr> environment, for example in an
 automated ML model deployment task:
 

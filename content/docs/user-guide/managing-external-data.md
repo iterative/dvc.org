@@ -43,7 +43,7 @@ in the same external/remote file system first.
 ## Examples
 
 For the examples, let's take a look at a [stage](/doc/command-reference/run)
-that simply moves local file to an external location, producing a `data.txt.dvc`
+that moves local file to an external location, producing a `data.txt.dvc`
 DVC-file.
 
 ### Local file system path

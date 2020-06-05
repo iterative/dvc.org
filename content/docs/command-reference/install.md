@@ -262,7 +262,7 @@ matching what is referenced by the DVC-files.
 To follow this example, start with the same workspace as before, making sure it
 is not in a _detached HEAD_ state by running `git checkout master`.
 
-If we simply edit one of the code files:
+We can edit one of the code files:
 
 ```dvc
 $ vi src/featurization.py

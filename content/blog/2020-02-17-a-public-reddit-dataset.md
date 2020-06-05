@@ -110,7 +110,7 @@ you'll need to [install DVC](https://dvc.org/doc/install); one of the simplest
 ways is `pip install dvc`.
 
 Say you have a directory on your local machine where you plan to build some
-analysis scripts. Simply run
+analysis scripts. You can run the command:
 
 ```dvc
 $ dvc get https://github.com/iterative/aita_dataset \
@@ -225,7 +225,7 @@ $ dvc import https://github.com/iterative/aita_dataset \
 ```
 
 Then, because the dataset in your workspace is linked to our dataset repository,
-you can update it by simply running:
+you can update it by running:
 
 ```dvc
 $ dvc update aita_clean.csv

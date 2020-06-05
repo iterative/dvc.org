@@ -197,7 +197,7 @@ process for this project
 `gist:gvyshnya/7f1b8262e3eb7a8b3c16dbfd8cf98644#dvc.bat`
 
 If you then further edit ensemble configuration setup in `code/config.R`, you
-can simply leverage the power of DVC as for automatic dependencies resolving and
+can leverage the power of DVC as for automatic dependencies resolving and
 tracking to rebuild the new ensemble prediction as follows
 
 `gist:gvyshnya/9d80e51ba3d7aa5bd37d100ed82376ee`
