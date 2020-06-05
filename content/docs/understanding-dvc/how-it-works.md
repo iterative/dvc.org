@@ -84,7 +84,7 @@
   $ cd myrepo
   $ git pull # download tracked data from remote storage
   $ dvc checkout # checkout data files
-  $ ls -l data/ # You just got gigabytes of data through Git and DVC:
+  $ ls -l data/ # You downloaded gigabytes of data through Git and DVC:
 
   total 1017488
   -r--------  2 501  staff   273M Jan 27 03:48 Posts-test.tsv

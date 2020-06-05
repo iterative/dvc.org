@@ -103,7 +103,7 @@ $ git commit -m "process clean data"
 $ git push
 ```
 
-And now you can just as easily make their work appear in your workspace with:
+And now you can make their previous work appear in your workspace with:
 
 ```dvc
 $ git pull
