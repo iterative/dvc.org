@@ -181,7 +181,7 @@ $ dvc update --rev cats-dogs-v2
 ## Example: Data registry
 
 If you take a look at our
-[dataset-registry](https://github.com/iterative/dataset-registry)
+[dataset registry](https://github.com/iterative/dataset-registry)
 <abbr>project</abbr>, you'll see that it's organized into different directories
 such as `tutorial/ver` and `use-cases/`, and these contain
 [DVC-files](/doc/user-guide/dvc-file-format) that track different datasets.

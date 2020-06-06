@@ -1,16 +1,10 @@
 # remote modify
 
-Modify the configuration of a data remote.
+Modify the configuration of a [data remote](/doc/command-reference/remote).
 
 > This command is commonly needed after `dvc remote add` or
 > [default](/doc/command-reference/remote/default) to setup credentials or other
 > customizations to each remote storage type.
-
-See also [add](/doc/command-reference/remote/add),
-[default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list),
-[remove](/doc/command-reference/remote/remove), and
-[rename](/doc/command-reference/remote/rename) commands to manage data remotes.
 
 ## Synopsis
 
@@ -184,10 +178,10 @@ these settings, you could use the following options:
   $ dvc remote modify myremote grant_full_control id=aws-canonical-user-id,id=another-aws-canonical-user-id
   ```
 
-  > \* - `grant_read`, `grant_read_acp`, `grant_write_acp` and
+  > \* `grant_read`, `grant_read_acp`, `grant_write_acp` and
   > `grant_full_control` params are mutually exclusive with `acl`.
   >
-  > \*\* - default ACL grantees are overwritten. Grantees are AWS accounts
+  > \*\* default ACL grantees are overwritten. Grantees are AWS accounts
   > identifiable by `id` (AWS Canonical User ID), `emailAddress` or `uri`
   > (predefined group).
 
@@ -380,14 +374,14 @@ a specific user. Please refer to
 [Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
 more information.
 
-- `credentailpath` - path to the file that contains the
+- `credentialpath` - path to the file that contains the
   [service account key](/doc/user-guide/setup-google-drive-remote#using-service-accounts).
   Make sure that the service account has read/write access (as needed) to the
   file structure in the remote `url`.
 
   ```dvc
   $ dvc remote modify \
-        myremote credentailpath "/home/.../project-XXXXXXX.json"
+        myremote credentialpath "/home/.../project-XXXXXXX.json"
   ```
 
   Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` env var can be set:
@@ -510,13 +504,13 @@ more information.
   values are:
 
   - `basic` -
-    [Basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
+    [basic authentication scheme](https://tools.ietf.org/html/rfc7617). `user`
     and `password` (or `ask_password`) parameters should also be configured.
   - `digest` -
-    [Digest Access Authentication Scheme](https://tools.ietf.org/html/rfc7616).
+    [digest Access Authentication Scheme](https://tools.ietf.org/html/rfc7616).
     `user` and `password` (or `ask_password`) parameters should also be
     configured.
-  - `custom` - An additional HTTP header field will be set for all HTTP requests
+  - `custom` - an additional HTTP header field will be set for all HTTP requests
     to the remote in the form: `custom_auth_header: password`.
     `custom_auth_header` and `password` (or `ask_password`) parameters should
     also be configured.

@@ -9,11 +9,11 @@ In order to track the data files and directories added with `dvc add` or
 details.)
 
 However, the versions of the tracked files that
-[match the current code](/doc/tutorials/get-started/connect-code-and-data) are
-also needed in the <abbr>workspace</abbr>, so a subset of the cached files must
-be kept in the working directory (using `dvc checkout`). Does this mean that
-some files will be duplicated between the workspace and the cache? **That would
-not be efficient!** Especially with large files (several Gigabytes or larger).
+[match the current code](/doc/tutorials/get-started/data-pipelines) are also
+needed in the <abbr>workspace</abbr>, so a subset of the cached files must be
+kept in the working directory (using `dvc checkout`). Does this mean that some
+files will be duplicated between the workspace and the cache? **That would not
+be efficient!** Especially with large files (several Gigabytes or larger).
 
 In order to have the files present in both directories without duplication, DVC
 can automatically create **file links** to the cached data in the workspace. In
@@ -127,8 +127,8 @@ To make sure that the data files in the workspace are consistent with the
 
 ---
 
-> \***copy-on-write links or "reflinks"** are a relatively new way to link files
-> in UNIX-style file systems. Unlike hardlinks or symlinks, they support
+> \* **copy-on-write links or "reflinks"** are a relatively new way to link
+> files in UNIX-style file systems. Unlike hardlinks or symlinks, they support
 > transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
 > means that editing a reflinked file is always safe as all the other links to
 > the file will reflect the changes.

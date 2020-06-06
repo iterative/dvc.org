@@ -1,15 +1,9 @@
 # remote add
 
-Add a new data remote.
+Add a new [data remote](/doc/command-reference/remote).
 
 > Depending on your storage type, you may also need `dvc remote modify` to
 > provide credentials and/or configure other remote parameters.
-
-See also [default](/doc/command-reference/remote/default),
-[list](/doc/command-reference/remote/list),
-[modify](/doc/command-reference/remote/modify),
-[remove](/doc/command-reference/remote/remove), and
-[rename](/doc/command-reference/remote/rename) commands to manage data remotes.
 
 ## Synopsis
 
@@ -96,7 +90,7 @@ The following are the types of remote storage (protocols) supported:
 > [Create a Bucket](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html).
 
 ```dvc
-$ dvc remote add myremote s3://bucket/path
+$ dvc remote add -d myremote s3://bucket/path
 ```
 
 By default DVC expects your AWS CLI is already
@@ -136,7 +130,7 @@ must explicitly set the `endpointurl` in the configuration:
 For example:
 
 ```dvc
-$ dvc remote add myremote s3://mybucket/path/to/dir
+$ dvc remote add -d myremote s3://mybucket/path/to/dir
 $ dvc remote modify myremote endpointurl https://object-storage.example.com
 ```
 
@@ -147,7 +141,7 @@ S3 remotes can also be configured entirely via environment variables:
 ```dvc
 $ export AWS_ACCESS_KEY_ID="<my-access-key>"
 $ export AWS_SECRET_ACCESS_KEY="<my-secret-key>"
-$ dvc remote add myremote "s3://bucket/myremote"
+$ dvc remote add -d myremote "s3://bucket/myremote"
 ```
 
 For more information about the variables DVC supports, please visit
@@ -176,7 +170,7 @@ variables:
 ```dvc
 $ export AZURE_STORAGE_CONNECTION_STRING="<my-connection-string>"
 $ export AZURE_STORAGE_CONTAINER_NAME="my-container-name"
-$ dvc remote add myremote "azure://"
+$ dvc remote add -d myremote "azure://"
 ```
 
 > For more information on configuring Azure Storage connection strings, visit
@@ -240,7 +234,7 @@ modified.
 > [Create a storage bucket](https://cloud.google.com/storage/docs/creating-buckets).
 
 ```dvc
-$ dvc remote add myremote gs://bucket/path
+$ dvc remote add -d myremote gs://bucket/path
 ```
 
 By default DVC expects your GCP CLI is already
@@ -259,7 +253,7 @@ for OSS storage and make the endpoint value configurable. An example is shown
 below:
 
 ```dvc
-$ dvc remote add myremote oss://my-bucket/path
+$ dvc remote add -d myremote oss://my-bucket/path
 ```
 
 To set key id, key secret and endpoint (or any other OSS parameter), use
@@ -306,7 +300,7 @@ $ export OSS_ACCESS_KEY_SECRET='AccessKeySecret'
 ### Click for SSH
 
 ```dvc
-$ dvc remote add myremote ssh://user@example.com/path/to/dir
+$ dvc remote add -d myremote ssh://user@example.com/path/to/dir
 ```
 
 > See also `dvc remote modify` for a full list of SSH parameters.
@@ -329,7 +323,7 @@ like `ssh` and `sftp` (GNU/Linux).
 ### Click for HDFS
 
 ```dvc
-$ dvc remote add myremote hdfs://user@example.com/path/to/dir
+$ dvc remote add -d myremote hdfs://user@example.com/path/to/dir
 ```
 
 > See also `dvc remote modify` for a full list of HDFS parameters.
@@ -341,7 +335,7 @@ $ dvc remote add myremote hdfs://user@example.com/path/to/dir
 ### Click for HTTP
 
 ```dvc
-$ dvc remote add myremote https://example.com/path/to/dir
+$ dvc remote add -d myremote https://example.com/path/to/dir
 ```
 
 > See also `dvc remote modify` for a full list of HTTP parameters.
@@ -355,15 +349,14 @@ $ dvc remote add myremote https://example.com/path/to/dir
 A "local remote" is a directory in the machine's file system.
 
 > While the term may seem contradictory, it doesn't have to be. The "local" part
-> refers to the machine where the <abbr>project</abbr> is stored, so it can be
-> any directory accessible to the same system. The "remote" part refers
-> specifically to the project/repository itself. Read "local, but external"
-> storage.
+> refers to the type of location where the storage is: another directory in the
+> same file system. "Remote" is how we call storage for <abbr>DVC
+> projects</abbr>. It's essentially a local backup for data tracked by DVC.
 
 Using an absolute path (recommended):
 
 ```dvc
-$ dvc remote add myremote /tmp/my-dvc-storage
+$ dvc remote add -d myremote /tmp/my-dvc-storage
 $ cat .dvc/config
   ...
   ['remote "myremote"']

@@ -1,12 +1,6 @@
 # remote list
 
-List all available data remotes.
-
-See also [add](/doc/command-reference/remote/add),
-[default](/doc/command-reference/remote/default),
-[modify](/doc/command-reference/remote/modify),
-[remove](/doc/command-reference/remote/remove), and
-[rename](/doc/command-reference/remote/rename) commands to manage data remotes.
+List all available [data remotes](/doc/command-reference/remote).
 
 ## Synopsis
 
@@ -39,16 +33,16 @@ including names and URLs.
 
 ## Examples
 
-Let's for simplicity add a _default_ local remote:
+For simplicity, let's add a default local remote:
 
 <details>
 
 ### What is a "local remote" ?
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the machine where the <abbr>project</abbr> is stored, so it can be any
-directory accessible to the same system. The "remote" part refers specifically
-to the project/repository itself. Read "local, but external" storage.
+refers to the type of location where the storage is: another directory in the
+same file system. "Remote" is how we call storage for <abbr>DVC projects</abbr>.
+It's essentially a local backup for data tracked by DVC.
 
 </details>
 

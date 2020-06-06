@@ -108,10 +108,10 @@ with dvc.api.open(
 
 Notice that we use a [SAX](http://www.saxproject.org/) XML parser here because
 `dvc.api.open()` is able to stream the data from
-[remote storage](/doc/command-reference/remote/add#supported-storage-types).
-(The `mySAXHandler` object should handle the event-driven parsing of the
-document in this case.) This increases the performance of the code (minimizing
-memory usage), and is typically faster than loading the whole data into memory.
+[remote storage](/doc/command-reference/remote/add). (The `mySAXHandler` object
+should handle the event-driven parsing of the document in this case.) This
+increases the performance of the code (minimizing memory usage), and is
+typically faster than loading the whole data into memory.
 
 > If you just needed to load the complete file contents into memory, you can use
 > `dvc.api.read()` instead:
