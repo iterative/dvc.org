@@ -32,7 +32,13 @@ const FeedMeta: React.FC<IBlogFeedMetaProps> = ({
 }) => {
   return (
     <div className={styles.wrapper}>
-      <Image fixed={avatar.fixed} className={styles.avatar} />
+      {slug ? (
+        <Link href={slug}>
+          <Image fixed={avatar.fixed} className={styles.avatar} />
+        </Link>
+      ) : (
+        <Image fixed={avatar.fixed} className={styles.avatar} />
+      )}
       <ul className={styles.list}>
         <li className={styles.segment}>
           {slug ? (
