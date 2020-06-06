@@ -7,8 +7,9 @@ Generate [plot](/doc/command-reference/plots) from a metrics file.
 ```usage
 usage: dvc plots show [-h] [-q | -v] [-t <path>] [-o <path>]
                       [-x <field>] [-y <field>] [--no-csv-header]
-                      [--show-vega] [--title <text>] [--xlab <text>]
-                      [--ylab <text>] targets [targets ...]
+                      [--show-vega] [--title <text>]
+                      [--x-label <text>] [--y-label <text>]
+                      targets [targets ...]
 
 positional arguments:
   targets               Metrics files to visualize.
@@ -36,18 +37,20 @@ please see `dvc plots`.
   in `dvc plots`.
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
-  file name is equal to the input filename with additional `.html` suffix or
-  `.json` suffix for `--show-vega` mode.
+  file name is equal to the input filename with a `.html` file extension (or
+  `.json` when using `--show-vega`).
 
-- `-x <field>` - field name for X axis. An auto-generated `index` field is used
-  by default.
+- `-x <field>` - field name for the X axis data. An auto-generated `index` field
+  is used by default. See
+  [Custom templates](/doc/command-reference/plots#custom-templates) for more
+  information on this `index` field.
 
-- `-y <field>` - field name for Y axis. The last column or field found in the
-  `targets` is used by default.
+- `-y <field>` - field name for the Y axis data. The last column or field found
+  in the `targets` is used by default.
 
-- `--xlab <text>` - X axis title. The X field name is the default title.
+- `--x-label <text>` - X axis title. The X field name is the default.
 
-- `--ylab <text>` - Y axis title. The Y field name is the default title.
+- `--y-label <text>` - Y axis title. The Y field name is the default.
 
 - `--title <text>` - plot title.
 

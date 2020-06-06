@@ -131,17 +131,18 @@ the field names.
 - `<DVC_METRIC_TITLE>` - a title for the plot, that can be defined with the
   `--title` option of the `dvc plot` subcommands.
 
+- `<DVC_METRIC_X>` - field name of the data for the X axis. It can be defined
+  with the `-x` option of the `dvc plot` subcommands. The auto-generated `index`
+  field (explained above) is the default.
+
 - `<DVC_METRIC_Y>` - field name of the data for the Y axis. It can be defined
   with the `-y` option of the `dvc plot` subcommands. The default is the last
   one found in the metrics file: the last column for CSV, or the last field for
   JSON.
 
-- `<DVC_METRIC_X>` - field name of the data for the X axis. It can be defined
-  with the `-x` option of the `dvc plot` subcommands. `index` is the default.
+- `<DVC_METRIC_X_TITLE>` - field name to display as the X axis label
 
 - `<DVC_METRIC_Y_TITLE>` - field name to display as the X axis label
-
-- `<DVC_METRIC_X_TITLE>` - field name to display as the X axis label
 
 ## Options
 
