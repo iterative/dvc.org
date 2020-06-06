@@ -167,10 +167,8 @@ $ tree
 
 ## Example: Moving ignored files
 
-`dvc move` raises an error if it finds a file with pattern available in
-`.dvcignore` file.
-
-Let's imagine it with following scenerio:
+`dvc move` raises an error if it finds a file or directory listed in
+`.dvcignore`:
 
 ```dvc
 $ mkdir dir1 dir2
