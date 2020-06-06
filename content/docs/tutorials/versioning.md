@@ -132,7 +132,7 @@ the <abbr>cache</abbr> (while keeping a
 [file link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to it in the <abbr>workspace</abbr>, so you can continue working the same way as
 before). This is achieved by creating a simple human-readable
-[DVC-file](/doc/user-guide/dvc-file-format) that serves as a pointer to the
+[`.dvc` file](/doc/user-guide/dvc-file-format) that serves as a pointer to the
 cache.
 
 Next, we train our first model with `train.py`. Because of the small dataset,
@@ -165,7 +165,8 @@ $ git tag -a "v1.0" -m "model v1.0, 1000 images"
 As we mentioned briefly, DVC does not commit the `data/` directory and
 `model.h5` file with Git. Instead, `dvc add` stores them in the
 <abbr>cache</abbr> (usually in `.dvc/cache`) and adds them to `.gitignore`. We
-then `git commit` DVC-files that contain file hashes that point to cached data.
+then `git commit` `.dvc` files that contain file hashes that point to cached
+data.
 
 In this case we created `data.dvc` and `model.h5.dvc`. Refer to
 [DVC-File Format](/doc/user-guide/dvc-file-format) to learn more about how these
@@ -238,8 +239,8 @@ $ git tag -a "v2.0" -m "model v2.0, 2000 images"
 ```
 
 That's it! We have tracked a second dataset, model, and metrics versioned DVC,
-and the DVC-files that point to them committed with Git. Let's now look at how
-DVC can help us go back to the previous version if we need to.
+and the `.dvc` files that point to them committed with Git. Let's now look at
+how DVC can help us go back to the previous version if we need to.
 
 ## Switching between workspace versions
 
@@ -283,12 +284,12 @@ the `v2.0` tag.
 As we have learned already, DVC keeps data files out of Git (by adjusting
 `.gitignore`) and puts them into the <abbr>cache</abbr> (usually it's a
 `.dvc/cache` directory inside the repository). Instead, DVC creates
-[DVC-files](/doc/user-guide/dvc-file-format). These text files serve as data
+[`.dvc` files](/doc/user-guide/dvc-file-format). These text files serve as data
 placeholders that point to the cached files, and they can be easily version
 controlled with Git.
 
-When we run `git checkout` we restore pointers (DVC-files) first. Then, when we
-run `dvc checkout`, we use these pointers to put the right data in the right
+When we run `git checkout` we restore pointers (`.dvc` files) first. Then, when
+we run `dvc checkout`, we use these pointers to put the right data in the right
 place.
 
 </details>
@@ -325,11 +326,11 @@ $ dvc run -f Dvcfile \
 ```
 
 Similar to `dvc add`, `dvc run` creates a
-[DVC-file](/doc/user-guide/dvc-file-format) named `Dvcfile` (specified using the
-`-f` option). It tracks all outputs (`-o`) the same way as `dvc add` does.
+[`.dvc` file](/doc/user-guide/dvc-file-format) named `Dvcfile` (specified using
+the `-f` option). It tracks all outputs (`-o`) the same way as `dvc add` does.
 Unlike `dvc add`, `dvc run` also tracks dependencies (`-d`) and the command
-(`python train.py`) that was run to produce the result. We call such a DVC-file
-a "stage file".
+(`python train.py`) that was run to produce the result. We call such a `.dvc`
+file a "stage file".
 
 > At this point you could run `git add .` and `git commit` to save the `Dvcfile`
 > stage file and its changed outputs to the repository.

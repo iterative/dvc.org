@@ -1,7 +1,8 @@
 # update
 
 Update <abbr>data artifacts</abbr> imported from external <abbr>DVC
-projects</abbr>, and corresponding [DVC-files](/doc/user-guide/dvc-file-format).
+projects</abbr>, and corresponding
+[`.dvc` files](/doc/user-guide/dvc-file-format).
 
 ## Synopsis
 
@@ -10,26 +11,26 @@ usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R]
                   targets [targets ...]
 
 positional arguments:
-  targets        DVC-files to update.
+  targets        `.dvc` files to update.
 ```
 
 ## Description
 
 After creating <abbr>import stages</abbr>
-([DVC-files](/doc/user-guide/dvc-file-format)) with `dvc import` or
+([`.dvc` files](/doc/user-guide/dvc-file-format)) with `dvc import` or
 `dvc import-url`, the data source can change. Use `dvc update` to bring these
 imported file, directory, or <abbr>data artifact</abbr> up to date.
 
 To indicate which import stages to update, we must specify the corresponding
-DVC-file `targets` as command arguments.
+`.dvc` file `targets` as command arguments.
 
 Note that import stages are considered always frozen, meaning that if you run
 `dvc repro`, they won't be updated. `dvc update` is the only command that can
 update them.
 
 `dvc update` without flags will not have an effect on import stages that are
-fixed to a commit hash (`rev` field in the DVC-file). Use the `--rev` option to
-update an imported artifact to a different revision.
+fixed to a commit hash (`rev` field in the `.dvc` file). Use the `--rev` option
+to update an imported artifact to a different revision.
 
 ```dvc
 dvc update --rev master
@@ -46,7 +47,7 @@ dvc update --rev master
   > revision.
 
 - `-R`, `--recursive` - determines the files to update by searching each target
-  directory and its subdirectories for DVC-files to inspect. If there are no
+  directory and its subdirectories for `.dvc` files to inspect. If there are no
   directories among the targets, this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
@@ -67,7 +68,7 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 -> 'model.pkl'
 ```
 
-As DVC mentions, the import stage (DVC-file) `model.pkl.dvc` is created. This
+As DVC mentions, the import stage (`.dvc` file) `model.pkl.dvc` is created. This
 [stage file](/doc/command-reference/run) is frozen by default though, so to
 [reproduce](/doc/command-reference/repro) it, we would need to run
 `dvc unfreeze` on it first, then `dvc repro` (and `dvc freeze` again). Let's
@@ -83,8 +84,8 @@ This time nothing has changed, since the source <abbr>project</abbr> is rather
 stable.
 
 > Note that `dvc update` updates the `rev_lock` field of the corresponding
-> [DVC-file](/doc/user-guide/dvc-file-format) (when there are changes to bring
-> in).
+> [`.dvc` file](/doc/user-guide/dvc-file-format) (when there are changes to
+> bring in).
 
 ## Example: Updating fixed revisions to a different version
 
@@ -103,8 +104,8 @@ Importing 'model.pkl (git@github.com:iterative/example-get-started)'
 -> 'model.pkl'
 ```
 
-After this, the import stage (DVC-file) `model.pkl.dvc` is created. Let's try to
-run `dvc update` on the given stage file, and see what happens.
+After this, the import stage (`.dvc` file) `model.pkl.dvc` is created. Let's try
+to run `dvc update` on the given stage file, and see what happens.
 
 ```dvc
 $ dvc update model.pkl.dvc

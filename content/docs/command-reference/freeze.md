@@ -39,7 +39,7 @@ using `dvc repro` on a pipeline that needs their outputs.
 
 ## Examples
 
-First, let's create a simple DVC-file:
+First, let's create a simple `.dvc` file:
 
 ```dvc
 $ echo foo > foo

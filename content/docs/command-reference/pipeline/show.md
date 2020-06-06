@@ -2,7 +2,7 @@
 
 Show [stages](/doc/command-reference/run) in a pipeline that lead to the
 specified stage. By default it lists
-[DVC-files](/doc/user-guide/dvc-file-format).
+[`.dvc` files](/doc/user-guide/dvc-file-format).
 
 ## Synopsis
 
@@ -12,16 +12,16 @@ usage: dvc pipeline show [-h] [-q | -v] [-c | -o] [-l] [--ascii]
                          [targets [targets ...]]
 
 positional arguments:
-  targets         DVC-files to show pipeline for. Optional.
-                  (Finds all DVC-files in the workspace by default.)
+  targets         `.dvc` files to show pipeline for. Optional.
+                  (Finds all `.dvc` files in the workspace by default.)
 ```
 
 ## Description
 
-`dvc show` displays the stages of a pipeline up to one or more target DVC-files
-(stage files). If specific `targets` are omitted, `Dvcfile` will be assumed. The
-`-c` and `-o` options allow to list the corresponding commands or data file flow
-instead of stages.
+`dvc show` displays the stages of a pipeline up to one or more target `.dvc`
+files (stage files). If specific `targets` are omitted, `Dvcfile` will be
+assumed. The `-c` and `-o` options allow to list the corresponding commands or
+data file flow instead of stages.
 
 > Note that the stages in these lists are in descending order, that is, from
 > first to last.
@@ -29,13 +29,13 @@ instead of stages.
 ## Options
 
 - `-c`, `--commands` - show pipeline as a list (diagram if `--ascii` or `--dot`
-  is used) of commands instead of paths to DVC-files.
+  is used) of commands instead of paths to `.dvc` files.
 
 - `-o`, `--outs` - show pipeline as a list (diagram if `--ascii` or `--dot` is
-  used) of stage outputs instead of paths to DVC-files.
+  used) of stage outputs instead of paths to `.dvc` files.
 
 - `--ascii` - visualize pipeline. It will print a graph (ASCII) instead of a
-  list of path to DVC-files. (`less` pager may be used, see
+  list of path to `.dvc` files. (`less` pager may be used, see
   [Paging the output](#paging-the-output) below for details).
 
 - `--dot` - show contents of `.dot` files with a DVC pipeline graph. It can be
@@ -90,7 +90,7 @@ data.dvc
 output.dvc
 ```
 
-The same as previous, but show commands instead of DVC-files:
+The same as previous, but show commands instead of `.dvc` files:
 
 ```dvc
 $ dvc pipeline show output.dvc --commands

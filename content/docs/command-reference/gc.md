@@ -25,7 +25,7 @@ explicitly provide the right set of options to specify what data is still needed
 One of the scope options (`--workspace`, `--all-branches`, `--all-tags`,
 `--all-commits`) or a combination of them must be provided. Each of them
 corresponds to keeping the data for the current workspace, and for a certain set
-of commits (determined by reading the DVC-files in them). See the
+of commits (determined by reading the `.dvc` files in them). See the
 [Options](#options) section for more details.
 
 Unless the `--cloud` option is used, `dvc gc` does not remove data files from
@@ -107,7 +107,7 @@ $ du -sh .dvc/cache/
 
 When you run `dvc gc --workspace`, DVC removes all objects from cache that are
 not referenced in the <abbr>workspace</abbr> (by collecting hash values from the
-DVC-files):
+`.dvc` files):
 
 ```dvc
 $ dvc gc --workspace

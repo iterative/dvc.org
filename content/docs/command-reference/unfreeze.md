@@ -35,7 +35,7 @@ be unfrozen. Use `dvc update` on them to update the file, directory, or
 
 ## Examples
 
-First, let's create a simple DVC-file:
+First, let's create a simple `.dvc` file:
 
 ```dvc
 $ echo foo > foo

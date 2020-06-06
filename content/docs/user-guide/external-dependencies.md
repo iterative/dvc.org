@@ -36,7 +36,7 @@ directory.
 
 As examples, let's take a look at a [stage](/doc/command-reference/run) that
 simply moves a local file from an external location, producing a `data.txt.dvc`
-stage file (DVC-file).
+stage file (`.dvc` file).
 
 > Note that some of these commands use the `/home/shared` directory, typical in
 > Linux distributions.
@@ -136,12 +136,12 @@ $ dvc import-url https://data.dvc.org/get-started/data.xml
 Importing 'https://data.dvc.org/get-started/data.xml' -> 'data.xml'
 ```
 
-The command above creates the <abbr>import stage</abbr> (DVC-file)
+The command above creates the <abbr>import stage</abbr> (`.dvc` file)
 `data.xml.dvc`, that uses an external dependency (in this case an HTTPs URL).
 
 <details>
 
-### Expand to see resulting DVC-file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...
@@ -167,7 +167,7 @@ determine whether the source has changed and we need to download the file again.
 
 `dvc import` can download a <abbr>data artifact</abbr> from any <abbr>DVC
 project</abbr> or Git repository. It also creates an external dependency in its
-<abbr>import stage</abbr> (DVC-file).
+<abbr>import stage</abbr> (`.dvc` file).
 
 ```dvc
 $ dvc import git@github.com:iterative/example-get-started model.pkl
@@ -180,7 +180,7 @@ specified (with the `repo` field).
 
 <details>
 
-### Expand to see resulting DVC-file
+### Expand to see resulting `.dvc` file
 
 ```yaml
 # ...

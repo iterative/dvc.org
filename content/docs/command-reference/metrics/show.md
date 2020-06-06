@@ -48,8 +48,8 @@ compares them with a previous version.
   instead of a human-readable table.
 
 - `-R`, `--recursive` - determines the metric files to show by searching each
-  target directory and its subdirectories for DVC-files to inspect. If there are
-  no directories among the `targets`, this option is ignored.
+  target directory and its subdirectories for `.dvc` files to inspect. If there
+  are no directories among the `targets`, this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

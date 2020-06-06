@@ -3,14 +3,14 @@
 When you add a file (with `dvc add`) or a command (with `dvc run`) to a
 [pipeline](/doc/command-reference/pipeline), DVC creates a special text metafile
 with the `.dvc` file extension (e.g. `process.dvc`), or with the default name
-`Dvcfile`. These **DVC-files** (a.k.a. stage files) contain all the needed
+`Dvcfile`. These **`.dvc` files** (a.k.a. stage files) contain all the needed
 information to track your data and reproduce pipeline stages. The file itself
 contains a simple YAML format that could be easily written or altered manually.
 
 See the [Syntax Highlighting](/doc/install/plugins) to learn how to enable the
 highlighting for your editor.
 
-Here is a sample DVC-file:
+Here is a sample `.dvc` file:
 
 ```yaml
 always_changed: true
@@ -48,7 +48,7 @@ On the top level, `.dvc` file consists of these possible fields:
 
 - `cmd`: Executable command defined in this stage
 - `wdir`: Directory to run command in (default `.`)
-- `md5`: MD5 hash for this DVC-file
+- `md5`: MD5 hash for this `.dvc` file
 - `deps`: List of dependencies for this stage
 - `outs`: List of <abbr>outputs</abbr> for this stage
 - `locked`: Whether or not this stage is locked from reproduction
@@ -95,10 +95,10 @@ can have any valid YAML structure containing any number of attributes.
 `"meta: string"` is also possible, it doesn't need to contain a _hash_ structure
 (a.k.a. dictionary) always.
 
-Comments can be added to the DVC-file using `# comment` syntax. Comments and
+Comments can be added to the `.dvc` file using `# comment` syntax. Comments and
 meta values are preserved among executions of the `dvc repro` and `dvc commit`
 commands.
 
-> Note that comments and meta values are not preserved when a DVC-file is
+> Note that comments and meta values are not preserved when a `.dvc` file is
 > overwritten with the `dvc run`,`dvc add`,`dvc import`, and `dvc import-url`
 > commands.

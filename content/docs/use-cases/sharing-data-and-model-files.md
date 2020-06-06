@@ -67,12 +67,12 @@ with the `dvc push` command:
 $ dvc push
 ```
 
-Code and [DVC-files](/doc/user-guide/dvc-file-format) can be safely committed
+Code and [`.dvc` files](/doc/user-guide/dvc-file-format) can be safely committed
 and pushed with Git.
 
 ## Download code
 
-Please use regular Git commands to download code and DVC-files from your Git
+Please use regular Git commands to download code and `.dvc` files from your Git
 servers. For example:
 
 ```dvc

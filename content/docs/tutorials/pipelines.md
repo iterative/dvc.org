@@ -75,8 +75,8 @@ utilizing the same set of commands that are described in the
 Started_.
 
 > Note that its possible to define more than one pipeline in each DVC project.
-> This will be determined by the interdependencies between DVC-files, mentioned
-> below.
+> This will be determined by the interdependencies between `.dvc` files,
+> mentioned below.
 
 Initialize <abbr>DVC repository</abbr> (run it inside your Git repo):
 
@@ -97,7 +97,7 @@ $ dvc add data/Posts.xml.zip
 ```
 
 When we run `dvc add` `Posts.xml.zip`, DVC creates a
-[DVC-file](/doc/user-guide/dvc-file-format).
+[`.dvc` file](/doc/user-guide/dvc-file-format).
 
 <details>
 
@@ -109,7 +109,7 @@ configuration and <abbr>cache</abbr>
 hidden from the user. This directory is automatically staged with `git add`, so
 it can be easily committed with Git.
 
-Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
+Note that the `.dvc` file created by `dvc add` has no dependencies, a.k.a. an
 _orphan_ [stage file](/doc/command-reference/run):
 
 ```yaml
@@ -128,7 +128,7 @@ This file can be committed with Git instead of the data file itself.
 The data file `Posts.xml.zip` is linked (or copied) from
 `.dvc/cache/ce/68b98d82545628782c66192c96f2d2`, and added to `.gitignore`. Even
 if you remove it from the <abbr>workspace</abbr>, or `git checkout` a different
-commit, the data is not lost if a corresponding DVC-file is committed. It's
+commit, the data is not lost if a corresponding `.dvc` file is committed. It's
 enough to run `dvc checkout` or `dvc pull` to restore data files.
 
 </details>
@@ -159,7 +159,7 @@ $ dvc run -d data/Posts.xml.zip \
           unzip data/Posts.xml.zip -d data
 ```
 
-Similarly to `dvc add`, `dvc run` creates a stage file (a DVC-file with
+Similarly to `dvc add`, `dvc run` creates a stage file (a `.dvc` file with
 dependencies).
 
 <details>
@@ -183,14 +183,14 @@ outs:
     persist: false
 ```
 
-Just like the DVC-file we created earlier with `dvc add`, this stage file uses
-`md5` hashes (that point to the <abbr>cache</abbr>) to describe and version
+Just like the `.dvc` file we created earlier with `dvc add`, this stage file
+uses `md5` hashes (that point to the <abbr>cache</abbr>) to describe and version
 control dependencies and outputs. Output `data/Posts.xml` file is saved as
 `.dvc/cache/a3/04afb96060aad90176268345e10355` and linked (or copied) to the
 <abbr>workspace</abbr>, as well as added to `.gitignore`.
 
 Two things are worth noticing here. First, by analyzing dependencies and outputs
-that DVC-files describe, we can restore the full series of commands (pipeline
+that `.dvc` files describe, we can restore the full series of commands (pipeline
 stages) we need to apply. This is important when you run `dvc repro` to
 regenerate the final or intermediate result.
 
@@ -265,12 +265,13 @@ $ dvc run -d code/evaluate.py -d data/model.pkl \
 
 ### Expand to learn more about DVC internals
 
-By analyzing dependencies and outputs in DVC-files, we can generate a dependency
-graph: a series of commands DVC needs to execute. `dvc repro` does this in order
-to restore a pipeline and reproduce its intermediate or final results.
+By analyzing dependencies and outputs in `.dvc` files, we can generate a
+dependency graph: a series of commands DVC needs to execute. `dvc repro` does
+this in order to restore a pipeline and reproduce its intermediate or final
+results.
 
 `dvc pipeline show` helps to visualize pipelines (run it with the `-c` option to
-see actual commands instead of DVC-files):
+see actual commands instead of `.dvc` files):
 
 ```dvc
 $ dvc pipeline show --ascii evaluate.dvc
@@ -331,7 +332,7 @@ $ dvc metrics show
 
 It's time to save our [pipeline](/doc/command-reference/pipeline). You can
 confirm that we do not tack files or raw datasets with Git, by using the
-`git status` command. We are just saving a snapshot of the DVC-files that
+`git status` command. We are just saving a snapshot of the `.dvc` files that
 describe data, transformations (stages), and relationships between them.
 
 ```dvc

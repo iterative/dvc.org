@@ -32,7 +32,7 @@ difference (delta) from the previous value of metrics (with 3-digit accuracy).
 They're calculated between two commits (hash, branch, tag, or any
 [Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
 <abbr>project</abbr>, found by examining all of the
-[DVC-files](/doc/user-guide/dvc-file-format) in both references.
+[`.dvc` files](/doc/user-guide/dvc-file-format) in both references.
 
 Another way to display metrics is the `dvc metrics show` command, which just
 lists all the current metrics without comparisons.
@@ -42,8 +42,8 @@ lists all the current metrics without comparisons.
 - `--targets <paths>` - limit the comparison to these specific metric files.
 
 - `-R`, `--recursive` - determines the metric files to use by searching each
-  target directory and its subdirectories for DVC-files to inspect. If there are
-  no directories among the `targets`, this option is ignored.
+  target directory and its subdirectories for `.dvc` files to inspect. If there
+  are no directories among the `targets`, this option is ignored.
 
 - `--all` - list all metrics, even those without changes.
 
