@@ -19,14 +19,16 @@ The `dvc add` command is analogous to `git add`, in that it makes DVC aware of
 the target data, as a simple step to version it. It creates a
 [DVC-file](/doc/user-guide/dvc-file-format) to track the added data.
 
-The `targets` are files or directories to add with this command, that are turned
-into <abbr>data artifacts</abbr> of the <abbr>project</abbr>. By default, these
-are committed to the <abbr>cache</abbr> (use the `--no-commit` option to avoid
-this, and `dvc commit` to finish the process when needed).
+The `targets` are files or directories to add, which are turned into <abbr>data
+artifacts</abbr> of the <abbr>project</abbr>. By default, these are stored in
+the <abbr>cache</abbr> (use the `--no-commit` option to avoid this, and
+`dvc commit` to finish the process when needed).
 
-`dvc add` can be used to version control initial data files and directories from
-which data processing [pipelines](/doc/command-reference/pipeline) are built,
-but it can be used to track any large file or directory along the way.
+This command can be used to
+[version control](/doc/use-cases/versioning-data-and-model-files) any large file
+or directory that's too big for Git. Usually, these comprise the initial data
+from which data processing [pipelines](/doc/command-reference/pipeline) are
+later built.
 
 > See also `dvc run` for more advanced ways to version intermediate and final
 > results (like ML models).
