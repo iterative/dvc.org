@@ -65,9 +65,9 @@ please see `dvc plots`.
 - `-y <field>` - field name for the Y axis data. The last column or field found
   in the `targets` is used by default.
 
-- `--x-label <text>` - X axis title. The X field name is the default.
+- `--x-label <text>` - X axis label. The X field name is the default.
 
-- `--y-label <text>` - Y axis title. The Y field name is the default.
+- `--y-label <text>` - Y axis label. The Y field name is the default.
 
 - `--title <text>` - plot title.
 
