@@ -1,32 +1,32 @@
-# lock
+# freeze
 
-Lock a [DVC-file](/doc/user-guide/dvc-file-format)
-([stage](/doc/command-reference/run)). Use `dvc unlock` to unlock the file.
+Freeze a [stage](/doc/command-reference/run). Use `dvc unfreeze` to unfreeze the
+stage.
 
 ## Synopsis
 
 ```usage
-usage: dvc lock [-h] [-q | -v] targets [targets ...]
+usage: dvc freeze [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-  targets        DVC-files to lock.
+  targets        stages to freeze.
 ```
 
 ## Description
 
-`dvc lock` causes any DVC-file to be considered _not changed_ by `dvc status`
-and `dvc repro`. Stage reproduction will not execute regenerate
-<abbr>outputs</abbr> of locked stages, even if some dependencies have changed,
-and even if `--force` is provided.
+`dvc freeze` causes any stage to be considered _not changed_ by `dvc status` and
+`dvc repro`. Stage reproduction will not regenerate <abbr>outputs</abbr> of
+frozen stages, even if some dependencies have changed, and even if `--force` is
+provided.
 
-Locking a stage is useful to avoid syncing data from the top of its
+Freezing a stage is useful to avoid syncing data from the top of its
 [pipeline](/doc/command-reference/pipeline), and keep iterating on the last
-(unlocked) stages only.
+(unfrozen) stages only.
 
-Note that <abbr>import stages</abbr> are considered always locked. Use
+Note that <abbr>import stages</abbr> are considered always frozen. Use
 `dvc update` to update the corresponding <abbr>data artifacts</abbr> from the
-external data source. [Unlock](/doc/command-reference/unlock) them before using
-`dvc repro` on a pipeline that needs their outputs.
+external data source. [Unfreeze](/doc/command-reference/unfreeze) them before
+using `dvc repro` on a pipeline that needs their outputs.
 
 ## Options
 
@@ -68,10 +68,10 @@ foo.dvc
                 changed:  foo
 ```
 
-Now, let's lock the `bar` stage:
+Now, let's freeze the `bar` stage:
 
 ```dvc
-$ dvc lock bar.dvc
+$ dvc freeze bar.dvc
 $ dvc status
 
   foo.dvc
@@ -79,10 +79,10 @@ $ dvc status
                   changed:  foo
 ```
 
-Run `dvc unlock` to unlock it back:
+Run `dvc unfreeze` to unfreeze it back:
 
 ```dvc
-$ dvc unlock bar.dvc
+$ dvc unfreeze bar.dvc
 $ dvc status
 
   bar.dvc

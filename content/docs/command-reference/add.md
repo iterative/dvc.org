@@ -63,6 +63,9 @@ more details.
 > treated as _changed_ by `dvc repro`, which always executes them. See `dvc run`
 > to learn more about stage files.
 
+To avoid adding files inside a directory accidentally, you can add the
+corresponding [patterns](/doc/user-guide/dvcignore) in a `.dvcignore` file.
+
 By default, DVC tries to use reflinks (see
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to avoid copying any file contents and to optimize DVC-file operations for large
@@ -244,3 +247,46 @@ In this case, a DVC-file is generated for each file in the `pics/` directory
 tree. No top-level DVC-file is generated, which is typically less convenient.
 For example, we cannot use the directory structure as one unit with `dvc run` or
 other commands.
+
+## Example: Dvcignore
+
+Let's take an example to illustrate how `.dvcignore` interacts with `dvc add`.
+
+```dvc
+$ mkdir dir
+$ echo file_one > dir/file1
+$ echo file_two > dir/file2
+```
+
+Now add `file1` to `.dvcignore` and track the entire `dir` directory with
+`dvc add`.
+
+```dvc
+$ echo dir/file1 > .dvcignore
+$ dvc add dir
+```
+
+Let's now modify `file1` (which is listed in `.dvcignore`) and run `dvc status`:
+
+```dvc
+$ echo file_one_changed > dir/file1
+$ dvc status
+Data and pipelines are up to date.
+```
+
+`dvc status` ignores changes to files listed in `.dvcignore`.
+
+Let's have a look at cache directory:
+
+```dvc
+$ tree .dvc/cache
+.dvc/cache
+├── 0a
+│   └── ec3a687bd65c3e6a13e3cf20f3a6b2.dir
+└── 52
+    └── 4bcc8502a70ac49bf441db350eafc2
+```
+
+Only the hash values of directory (`dir/`) and `file2` have been cached.
+
+See [Dvcignore](/doc/user-guide/dvcignore) for more details.

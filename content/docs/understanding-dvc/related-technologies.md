@@ -104,7 +104,7 @@ Luigi, etc.
   executed locally with minimal effort.
 
 - DVC is not fundamentally bound to Git, and users have the option of using DVC
-  without SCM.
+  without Git.
 
 ### Git-LFS (Large File Storage)
 
@@ -114,7 +114,7 @@ Luigi, etc.
   are required.
 
 - DVC is not fundamentally bound to Git, and users have the option of using DVC
-  without SCM.
+  without Git.
 
 - DVC does not add any hooks to the Git repo by default. To checkout data files,
   the `dvc checkout` command has to be run after each `git checkout` and
@@ -129,13 +129,13 @@ Luigi, etc.
 
 - `git-lfs` was not made with data science scenarios in mind, so it does not
   provide related features (e.g. pipelines,
-  [metrics](/doc/command-reference/metrics)), and thus GitHub has a limit of 2
+  [metrics](/doc/command-reference/metrics)), and thus Github has a limit of 2
   GB per repository.
 
 ---
 
-> \***copy-on-write links or "reflinks"** are a relatively new way to link files
-> in UNIX-style file systems. Unlike hardlinks or symlinks, they support
+> \* **copy-on-write links or "reflinks"** are a relatively new way to link
+> files in UNIX-style file systems. Unlike hardlinks or symlinks, they support
 > transparent [copy on write](https://en.wikipedia.org/wiki/Copy-on-write). This
 > means that editing a reflinked file is always safe as all the other links to
 > the file will reflect the changes.

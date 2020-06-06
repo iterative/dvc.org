@@ -26,7 +26,7 @@ positional arguments:
 
 What is data remote?
 
-The same way as GitHub provides storage hosting for Git repositories, DVC
+The same way as Github provides storage hosting for Git repositories, DVC
 remotes provide a central place to keep and share data and model files. With
 this remote storage, you can pull models and data files created by colleagues
 without spending time and resources to build or process them locally. It also
@@ -76,9 +76,9 @@ For the typical process to share the <abbr>project</abbr> via remote, see
 ### What is a "local remote" ?
 
 While the term may seem contradictory, it doesn't have to be. The "local" part
-refers to the machine where the <abbr>project</abbr> is stored, so it can be any
-directory accessible to the same system. The "remote" part refers specifically
-to the project/repository itself. Read "local, but external" storage.
+refers to the type of location where the storage is: another directory in the
+same file system. "Remote" is how we call storage for <abbr>DVC projects</abbr>.
+It's essentially a local backup for data tracked by DVC.
 
 </details>
 
