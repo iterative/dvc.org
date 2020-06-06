@@ -174,11 +174,6 @@ $ tree
 $ mkdir dir1 dir2
 $ echo data1 > dir1/data1
 $ echo data2 > dir2/data2
-```
-
-Create a `.dvcignore` file and insert pattern matching one of the files:
-
-```dvc
 $ echo dir1/* >> .dvcignore
 ```
 
