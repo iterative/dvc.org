@@ -18,30 +18,30 @@ positional arguments:
 
 ## Description
 
-This command visualize difference between metrics among experiments in the
-repository history. Requires that Git is being used to version the metrics
-files.
-
-The metrics file needs to be specified through `--targets` option. Also, a plot
-can be customized with
-[plot templates](/doc/command-reference/plots#plot-templates) using the
-`--template` option. To learn more about the file formats and templates please
-see `dvc plots`.
+This command is a way to visualize the difference between metrics among
+experiments in the <abbr>repository</abbr> history. Requires that the target
+metric files are versioned with Git. These should specified with the `--targets`
+option.
 
 `revisions` are Git commit hashes, tag, or branch names. If none are specified,
-`dvc plots diff` compares metrics currently present in the
-<abbr>workspace</abbr> (uncommitted changes) with the latest committed version.
-A single specified revision results in plotting the difference in metrics
-between the workspace and that version.
+`dvc plots diff` compares targets currently present in the
+<abbr>workspace</abbr> (uncommitted changes) with their latest committed
+versions (required). A single specified revision results in plotting the
+difference between the workspace and that version.
 
-In contrast to commands such as `git diff`, `dvc metrics diff` and
-`dvc params diff`, **any number of `revisions` can be provided**, and the
+This command can work with target metric files that are versioned directly with
+Git, data files controlled by DVC, or untracked files in the workspace. In the
+case of DVC-tracked targets, the revisions are used to find the corresponding
+[DVC-files](/doc/user-guide/dvc-file-format).
+
+In contrast to commands such as `git diff`, `dvc metrics diff`, and
+`dvc params diff`, **any number of revisions can be provided**, and the
 resulting plot shows all of them in a single output.
 
-This command can work with metric files that are committed to a repository
-history, data files controlled by DVC, or any other file in the workspace. In
-the case of DVC-tracked `targets`, the `revisions` are used to find the
-corresponding [DVC-files](/doc/user-guide/dvc-file-format).
+The plot style can be customized with
+[plot templates](/doc/command-reference/plots#plot-templates), using the
+`--template` option. To learn more about metric file formats and templates
+please see `dvc plots`.
 
 ## Options
 
@@ -68,7 +68,9 @@ corresponding [DVC-files](/doc/user-guide/dvc-file-format).
 
 - `--title <text>` - plot title.
 
-- `--show-vega` - show output in Vega format. See `dvc plots` for more info.
+- `--show-vega` - produce a
+  [Vega specification](https://vega.github.io/vega/docs/specification/) file
+  instead of HTML. See `dvc plots` for more info.
 
 - `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
   header.

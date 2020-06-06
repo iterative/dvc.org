@@ -17,11 +17,16 @@ positional arguments:
 ## Description
 
 This command provides a quick way to visualize metrics such as loss functions,
-AUC curves, confusion matrices, etc. One of more `targets` are required by this
-command as argument.
+AUC curves, confusion matrices, etc. One of more `targets` are required as
+argument to this command.
 
-Please see `dvc plots` for information on the supported data formats and other
-relevant details about DVC plots.
+This command can work with target metric files that are versioned directly with
+Git, data files controlled by DVC, or untracked files in the workspace.
+
+The plot style can be customized with
+[plot templates](/doc/command-reference/plots#plot-templates), using the
+`--template` option. To learn more about metric file formats and templates
+please see `dvc plots`.
 
 ## Options
 
@@ -46,7 +51,9 @@ relevant details about DVC plots.
 
 - `--title <text>` - plot title.
 
-- `--show-vega` - show output in Vega format. See `dvc plots` for more info.
+- `--show-vega` - produce a
+  [Vega specification](https://vega.github.io/vega/docs/specification/) file
+  instead of HTML. See `dvc plots` for more info.
 
 - `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
   header.
@@ -57,99 +64,6 @@ relevant details about DVC plots.
   problems arise, otherwise 1.
 
 - `-v`, `--verbose` - displays detailed tracing information.
-
-## Examples
-
-We'll use tabular metrics file `logs.csv` for these examples:
-
-```csv
-epoch,accuracy,loss,val_accuracy,val_loss
-0,0.9418667,0.19958884770199656,0.9679,0.10217399864746257
-1,0.9763333,0.07896138601688048,0.9768,0.07310650711813942
-2,0.98375,0.05241111190887168,0.9788,0.06665669009438716
-3,0.98801666,0.03681169906261687,0.9781,0.06697812260198989
-4,0.99111664,0.027362171787042946,0.978,0.07385754839298315
-5,0.9932333,0.02069501801203781,0.9771,0.08009233058886166
-6,0.9945,0.017702101902437668,0.9803,0.07830339228538505
-7,0.9954,0.01396906608727198,0.9802,0.07247738889862157
-```
-
-By default, this command plots the last column of the table (see `-y` option):
-
-```dvc
-$ dvc plots show logs.csv
-file:///Users/usr/src/plots/logs.csv.html
-```
-
-![](/img/plots_show.svg)
-
-Use the `-y` option to change the column to plot:
-
-```dvc
-$ dvc plots show -y loss logs.csv
-file:///Users/usr/src/plots/logs.csv.html
-```
-
-![](/img/plots_show_field.svg)
-
-### Plot file size
-
-Note that by default, all the columns (or fields) are embedded in the plot file
-metadata. You can select a subset of the columns using the `--select` option,
-which can help reduce the file size:
-
-```dvc
-$ ls -lh /Users/usr/src/plots/logs.csv.html
--rw-r--r-- 1 usr grp 2.8K  ... /Users/usr/src/plot/logs.csv.html
-
-$ dvc plots show -y loss --select loss logs.csv
-file:///Users/usr/src/plots/logs.csv.html
-
-$ ls -lh /Users/usr/src/plots/logs.csv.html
--rw-r--r-- 1 usr grp 1.8K  ... /Users/usr/src/plots/logs.csv.html
-```
-
-### Headerless tables
-
-A tabular data file without headers can be plotted with `--no-csv-header`
-option. A field or column can be specified with `--select` by it's numeric
-position (starting with `0`):
-
-```dvc
-$ dvc plots show --no-csv-header --select 2 logs.csv
-file:///Users/usr/src/plots/logs.csv.html
-```
-
-### Vega specification
-
-In many automation scenarios (like CI/CD for ML), it is convenient to have the
-[Vega-Lite](https://vega.github.io/vega-lite/) specification instead of the
-entire HTML plot file. For example to generating another image format like PNG
-or JPEG, or to include differently into a web app. The `--show-vega` option
-prevents wrapping the plot in HTML. Note that the resulting file is JSON:
-
-```dvc
-$ dvc plots show --select accuracy --show-vega logs.csv
-file:///Users/usr/src/plots/logs.csv.json
-```
-
-```json
-{
-    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
-    "data": {
-        "values": [
-    {
-        "accuracy": "0.9418667",
-        "index": 0,
-        "rev": "workspace"
-    },
-    {
-        "accuracy": "0.9763333",
-        "index": 1,
-        "rev": "workspace"
-    },
-    ...
-```
 
 ## Example: Hierarchical data (JSON)
 
@@ -187,3 +101,97 @@ file:///Users/usr/src/plots/logs.json.html
 ```
 
 ![](/img/plots_show_json_field.svg)
+
+## Example: Tabular data
+
+We'll use tabular metrics file `logs.csv` for these examples:
+
+```csv
+epoch,accuracy,loss,val_accuracy,val_loss
+0,0.9418667,0.19958884770199656,0.9679,0.10217399864746257
+1,0.9763333,0.07896138601688048,0.9768,0.07310650711813942
+2,0.98375,0.05241111190887168,0.9788,0.06665669009438716
+3,0.98801666,0.03681169906261687,0.9781,0.06697812260198989
+4,0.99111664,0.027362171787042946,0.978,0.07385754839298315
+5,0.9932333,0.02069501801203781,0.9771,0.08009233058886166
+6,0.9945,0.017702101902437668,0.9803,0.07830339228538505
+7,0.9954,0.01396906608727198,0.9802,0.07247738889862157
+```
+
+By default, this command plots the last column of the table (see `-y` option):
+
+```dvc
+$ dvc plots show logs.csv
+file:///Users/usr/src/plots/logs.csv.html
+```
+
+![](/img/plots_show.svg)
+
+Use the `-y` option to change the column to plot:
+
+```dvc
+$ dvc plots show -y loss logs.csv
+file:///Users/usr/src/plots/logs.csv.html
+```
+
+![](/img/plots_show_field.svg)
+
+### Headerless tables
+
+A tabular data file without headers can be plotted with `--no-csv-header`
+option. A field or column can be specified with `--select` by it's numeric
+position (starting with `0`):
+
+```dvc
+$ dvc plots show --no-csv-header --select 2 logs.csv
+file:///Users/usr/src/plots/logs.csv.html
+```
+
+## Example: Plot file size
+
+Note that by default, all the columns (or fields) are embedded in the plot file
+metadata. You can select a subset of the columns using the `--select` option,
+which can help reduce the file size:
+
+```dvc
+$ ls -lh /Users/usr/src/plots/logs.csv.html
+-rw-r--r-- 1 usr grp 2.8K  ... /Users/usr/src/plot/logs.csv.html
+
+$ dvc plots show -y loss --select loss logs.csv
+file:///Users/usr/src/plots/logs.csv.html
+
+$ ls -lh /Users/usr/src/plots/logs.csv.html
+-rw-r--r-- 1 usr grp 1.8K  ... /Users/usr/src/plots/logs.csv.html
+```
+
+## Example: Vega specification file
+
+In many automation scenarios (like CI/CD for ML), it is convenient to have the
+[Vega specification](https://vega.github.io/vega/docs/specification/) file
+instead of a rendered HTML plot file. For example, to generating another image
+format like PNG or JPEG, or to include it differently into a web/mobile app. The
+`--show-vega` option prevents wrapping this plot spec in HTML. Note that the
+resulting file is JSON:
+
+```dvc
+$ dvc plots show --select accuracy --show-vega logs.csv
+file:///Users/usr/src/plots/logs.csv.json
+```
+
+```json
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v4.json",
+    "data": {
+        "values": [
+    {
+        "accuracy": "0.9418667",
+        "index": 0,
+        "rev": "workspace"
+    },
+    {
+        "accuracy": "0.9763333",
+        "index": 1,
+        "rev": "workspace"
+    },
+    ...
+```
