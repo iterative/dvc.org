@@ -13,7 +13,7 @@ match:
   ]
 ---
 
-Initialized by running `dvc init` in the **workspace** (typically in a Git
+Initialized by running `dvc init` in the **workspace** (typically a Git
 repository). It will contain the
 [`.dvc/` directory](/doc/user-guide/dvc-files-and-directories) and
 [`.dvc` files](/doc/user-guide/dvc-file-format) created with commands such as

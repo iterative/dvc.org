@@ -49,7 +49,7 @@ Data registries can be created like any other <abbr>DVC repository</abbr> with
 `git init` and `dvc init`. A good way to organize them is with different
 directories, to group the data into separate uses, such as `images/`,
 `natural-language/`, etc. For example, our
-[dataset-registry](https://github.com/iterative/dataset-registry) uses a
+[dataset registry](https://github.com/iterative/dataset-registry) uses a
 directory for each part in our docs, like `get-started/`, `use-cases/`, etc.
 
 Adding datasets to a registry can be as simple as placing the data file or

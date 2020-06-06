@@ -31,7 +31,7 @@ to update the docs and redeploy the website.
 
 In case of a minor change, you can use the **Edit on GitHub** button (found to
 the right of each page) to fork the repository, edit it in place (with the
-source code file **Edit** button in GitHub), and create a pull request (PR).
+source code file **Edit** button in Github), and create a pull request (PR).
 
 Otherwise, please refer to the following procedure:
 
@@ -197,9 +197,10 @@ We use **bold** text for emphasis, and _italics_ for special terms.
 
 We also use "emoji" symbols sparingly for visibility on certain notes. Mainly:
 
+- 📖 For notes that link to other related documentation
 - ⚠️ Warnings about possible problems related to DVC usage (similar to **Note!**
   and "Note that..." notes)
 - 💡 Useful tips related to external tools/integrations
 
-> Some other emojis currently in use here and there: ⚡🙏🐛⭐❗✅ (We're not
-> limited to these.)
+> Some other emojis currently in use here and there: ⚡✅🙏🐛⭐❗ (among
+> others).

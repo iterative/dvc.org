@@ -47,16 +47,16 @@ in the project's <abbr>cache</abbr>. (Refer to `dvc remote` for more information
 on DVC remotes.) These necessary data or model files are listed as
 <abbr>dependencies</abbr> or <abbr>outputs</abbr> in a `.dvc` file (target
 [stage](/doc/command-reference/run)) so they are required to
-[reproduce](/doc/tutorials/get-started/reproduce) the corresponding
-[pipeline](/doc/command-reference/pipeline). (See
+[reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
+corresponding [pipeline](/doc/command-reference/pipeline). (See
 [DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
 
 `dvc fetch` ensures that the files needed for a `.dvc` file to be
-[reproduced](/doc/tutorials/get-started/reproduce) exist in cache. If no
-`targets` are specified, the set of data files to fetch is determined by
-analyzing all `.dvc` files in the current branch, unless `--all-branches` or
-`--all-tags` is specified.
+[reproduced](/doc/tutorials/get-started/data-pipelines#reproduce) exist in
+cache. If no `targets` are specified, the set of data files to fetch is
+determined by analyzing all `.dvc` files in the current branch, unless
+`--all-branches` or `--all-tags` is specified.
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used.
@@ -64,11 +64,10 @@ option is used.
 `dvc fetch`, `dvc pull`, and `dvc push` are related in that these 3 commands
 perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
-file hashes when these are [added](/doc/tutorials/get-started/add-files) with
-DVC. File hashes are stored in the corresponding `.dvc` files (typically
-versioned with Git). Only the hashes specified in `.dvc` files currently in the
-workspace are considered by `dvc fetch` (unless the `-a` or `-T` options are
-used).
+file hashes when these are [added](/doc/command-reference/add) with DVC. File
+hashes are stored in the corresponding `.dvc` files (typically versioned with
+Git). Only the hashes specified in `.dvc` files currently in the workspace are
+considered by `dvc fetch` (unless the `-a` or `-T` options are used).
 
 ## Options
 
