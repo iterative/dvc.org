@@ -174,7 +174,7 @@ $ tree
 $ mkdir dir1 dir2
 $ echo data1 > dir1/data1
 $ echo data2 > dir2/data2
-$ echo dir1/* >> .dvcignore
+$ echo "dir1/*" >> .dvcignore
 ```
 
 Now lets try to move the files with `dvc move`.
@@ -182,12 +182,9 @@ Now lets try to move the files with `dvc move`.
 ```dvc
 $ dvc move dir2/data2 dir3/data3
 $ dvc move dir1/data1 dir4/data4
-```
+ERROR: failed to move 'dir1/data1' -> 'dir4/data4'
+- Unable to find DVC-file with output 'dir1/data1'
 
-The second command that we executed above will raise an error and the transfer
-of that file won't happen. The final structure would look like this:
-
-```dvc
 $ tree .
 .
 ├── dir1
@@ -200,5 +197,8 @@ $ tree .
 ```
 
 Here we see that `data2` file from `dir2` directory got transferred to
-`dir3/data3` and `dir1` remained unchanged. See
-[Dvcignore](/doc/user-guide/dvcignore) for more details.
+`dir3/data3` and `dir1` remained unchanged.
+
+Note that if ignored files are to be moved then `.dvcignore` file must be
+updated accordingly. See [Dvcignore](/doc/user-guide/dvcignore) for more
+details.
