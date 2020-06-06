@@ -8,6 +8,7 @@ Modify display properties of [plot metrics](/doc/command-reference/plots) files.
 usage: dvc plots modify [-h] [-q | -v] [-t <path>] [-x X] [-y Y]
                         [--no-csv-header] [--title <text>] [--x-label <text>]
                         [--y-label <text>] [--unset [<prop> [<prop> ...]]]
+                        target
 
 positional arguments:
   target                Plot file to set props to.
@@ -16,14 +17,19 @@ positional arguments:
 ## Description
 
 It might be not convenient for users or automation systems to specify all the
-_visualization properties_ (such as `y-axis`, `template`, `title`, etc.) each
-time plots are generated. This command sets (or unsets) default visualization
-props for specific plot files. These properties affect the remaining
-subcommands: `dvc plots show` and `dvc plots diff`.
+_display properties_ (such as `y-label`, `template`, `title`, etc.) each time
+plots are generated with `dvc plot show` or `dvc plot diff`. This command sets
+(or unsets) default display props for specific plot files.
 
-The `target` plot file should be a plot output of one of the
+The available display properties are expressed as the [options](#options) of
+this command (prefixed with `--`).
+
+> Display props are based on the
+> [Vega specification](https://vega.github.io/vega/docs/specification/)
+
+The `target` metrics file should be an <abbd>output</abbr> of one of the
 [DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots` option
-of `dvc run`) listed in the
+of `dvc run`), listed in a
 [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file. `dvc plots modify`
 adds the options to `dvc.yaml`.
 
