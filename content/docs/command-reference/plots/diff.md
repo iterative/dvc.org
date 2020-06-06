@@ -57,13 +57,13 @@ please see `dvc plots`.
   file name is equal to the input filename with a `.html` file extension (or
   `.json` when using `--show-vega`).
 
-- `-x <field>` - field name for the X axis data. An auto-generated `index` field
-  is used by default. See
+- `-x <field>` - field name from which the X axis data comes from. An
+  auto-generated `index` field is used by default. See
   [Custom templates](/doc/command-reference/plots#custom-templates) for more
   information on this `index` field.
 
-- `-y <field>` - field name for the Y axis data. The last column or field found
-  in the `targets` is used by default.
+- `-y <field>` - field name from which the Y axis data comes from. The last
+  column or field found in the `targets` is used by default.
 
 - `--x-label <text>` - X axis label. The X field name is the default.
 

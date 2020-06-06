@@ -35,23 +35,24 @@ adds the options to `dvc.yaml`.
 
 ## Options
 
-- `-t <path>, --template <path>` - set a
+- `-t <path>, --template <path>` - set a default
   [plot template](/doc/command-reference/plots#plot-templates).
 
-- `-x X` - set name of the X axis of the plot from the plot file.
+- `-x <field>` - set a default field name from which the X axis data comes from.
 
-- `-y Y` - set name of the Y axis of the plot from the plot file.
+- `-y <field>` - set a default field name from which the Y axis data comes from.
+
+- `--x-label <text>` - set a default title for the X axis.
+
+- `--y-label <text>` - set a default title for the Y axis.
+
+- `--title <text>` - set a default plot title.
+
+- `--unset [<prop> [<prop> ...]]` - unset one or more display properties. Use
+  the prop name(s) without `--` in the argument sent to this option.
 
 - `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
   header.
-
-- `--title <text>` - plot title for visualization.
-
-- `--x-label <text>` - title of X axis.
-
-- `--y-label <text>` - title of Y axis.
-
-- `--unset [UNSET [UNSET ...]]` - unset an option or option list.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -100,7 +101,7 @@ forget to commit the change in Git if the modification needs to be preserved.
     y: accuracy
 ```
 
-Changing the plot _title_ and _y title_:
+Changing the plot `title` and `x-label`:
 
 ```dvc
 $ dvc plots modify --title Accuracy --x-label epoch logs.csv
@@ -110,7 +111,7 @@ file:///Users/dmitry/src/myclassifier/logs.html
 
 ![](/img/plots_mod_acc_titles.svg)
 
-Two new fields were added to `dvc.yaml` - _x-label_ and _title_:
+Two new fields were added to `dvc.yaml`: `x-label` and `title`:
 
 ```yaml
 plots:
