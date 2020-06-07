@@ -110,8 +110,8 @@ instead.
 ## Examples
 
 > This example is based on our
-> [Get Started](/doc/tutorials/get-started/metrics), where you can find the
-> actual source code.
+> [Get Started](/doc/tutorials/get-started/experiments#project-metrics), where
+> you can find the actual source code.
 
 First, let's imagine we have a simple [stage](/doc/command-reference/run) that
 produces a `eval.json` metrics file:

@@ -66,8 +66,8 @@ data `path`, and the `outs` field contains the corresponding local path in the
 enable DVC efficiently determining whether the local copy is out of date.
 
 To actually
-[track the data](https://dvc.org/doc/tutorials/get-started/add-files), `git add`
-(and `git commit`) the import stage.
+[track the data](https://dvc.org/doc/tutorials/get-started/data-versioning),
+`git add` (and `git commit`) the import stage.
 
 Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` to update the downloaded
