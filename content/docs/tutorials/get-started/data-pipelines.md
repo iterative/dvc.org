@@ -174,7 +174,6 @@ Move to another location in your file system and do this:
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 $ git checkout 7-train
-$ dvc unlock data/data.xml.dvc
 ```
 
 </details>
