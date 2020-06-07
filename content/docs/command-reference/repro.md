@@ -56,31 +56,31 @@ Currently, `dvc repro` is not able to parallelize stage execution automatically.
 If you need to do this, you can launch `dvc repro` multiple times manually. For
 example, let's say a <abbr>pipeline</abbr> graph looks something like this:
 
-```
-$ dvc pipeline show --ascii result.py
+```dvc
+$ dvc dag
 +--------+          +--------+
-| A1.dvc |          | B1.dvc |
+|   A1   |          |   B1   |
 +--------+          +--------+
      *                   *
      *                   *
      *                   *
 +--------+          +--------+
-| A2.dvc |          | B2.dvc |
+|   A2   |          |   B2   |
 +--------+          +--------+
           *         *
            **     **
              *   *
         +------------+
-        | result.dvc |
+        |    train   |
         +------------+
 ```
 
 This pipeline consists of two parallel branches (`A` and `B`), and the final
 "result" stage, where the branches merge. To reproduce both branches at the same
-time, you could run `dvc repro A2.dvc` and `dvc repro B2.dvc` at the same time
-(e.g. in separate terminals). After both finish successfully, you can then run
-`dvc repro result.dvc`: DVC will know that both branches are already up-to-date
-and only execute the final stage.
+time, you could run `dvc repro A2` and `dvc repro B2` at the same time (e.g. in
+separate terminals). After both finish successfully, you can then run `dvc repro
+train`: DVC will know that both branches are already up-to-date and only execute
+the final stage.
 
 ## Options
 
@@ -279,10 +279,10 @@ The reason being that the `text.txt` file is a dependency in the target
 pipeline (shown in the following figure):
 
 ```dvc
-$ dvc pipeline show --ascii
+$ dvc dag
 
     .------------.
-    | filter.dvc |
+    |   filter   |
     `------------'
            *
            *
