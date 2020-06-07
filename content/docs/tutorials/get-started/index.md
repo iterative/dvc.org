@@ -1,47 +1,37 @@
 # Get Started with DVC!
 
-This tutorial explores DVC hands-on, working with source code and command line.
-
-<details>
-
-### TLDR: Get the complete project
-
-In case you'd like to get the complete code base and final results, or have any
-issues along the way, please note that we have a fully reproducible
-[example-get-started](https://github.com/iterative/example-get-started) repo on
-Github:
-
-```dvc
-$ git clone https://github.com/iterative/example-get-started
-$ cd example-get-started
-$ dvc pull
-```
-
-</details>
+Data Version Control is a data version control, data pipelining, and experiment
+management command-line tool built on top of existing engineering toolset ans
+practices, particularly Git. In this guide we will show the basic features of
+DVC step by step.
 
 ## Initialize
 
-Start by creating a <abbr>workspace</abbr> and initialize Git in it, as the
-underlying versioning layer. Then use `dvc init` to create a <abbr>DVC
-repository</abbr>. For example:
+Move into the directory you want to use as <abbr>workspace</abbr>, and use
+`dvc init` inside to create a <abbr>DVC project</abbr>. It can contain existing
+project files. At initialization, a new `.dvc/` directory is created for the
+internal
+[files and directories](/dvc-files-and-directories#internal-directories-and-files):
 
 ```dvc
-$ mkdir dvc-get-started
-$ cd dvc-get-started
-$ git init
 $ dvc init
+$ ls .dvc/
+config  plots/  tmp/
+```
+
+DVC is typically initialized on top of Git, which is needed for the
+[versioning](/doc/tutorials/get-started/data-versioning) features. The `.dvc/`
+directory is automatically staged with Git by `dvc init`, so it can be committed
+right away:
+
+```dvc
 $ git status
 Changes to be committed:
         new file:   .dvc/.gitignore
         new file:   .dvc/config
         ...
-$ git commit -m "Initialize DVC repository"
+$ git commit -m "Initialize DVC repo"
 ```
-
-At DVC initialization, a new `.dvc/` directory is created for internal
-[files and directories 📖](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files).
-This directory is automatically staged with Git, so it can be committed right
-away.
 
 ## What's ahead?
 

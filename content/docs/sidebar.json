@@ -36,7 +36,12 @@
         "tutorials": {
           "katacoda": "https://katacoda.com/dvc/courses/get-started/initialize"
         },
-        "children": ["data-versioning", "data-pipelines", "experiments"]
+        "children": [
+          "data-versioning",
+          "data-pipelines",
+          "data-access",
+          "experiments"
+        ]
       },
       {
         "slug": "interactive",
@@ -198,6 +203,10 @@
         }
       },
       {
+        "label": "freeze",
+        "slug": "freeze"
+      },
+      {
         "label": "gc",
         "slug": "gc"
       },
@@ -228,10 +237,6 @@
       {
         "label": "list",
         "slug": "list"
-      },
-      {
-        "label": "lock",
-        "slug": "lock"
       },
       {
         "label": "metrics",
@@ -353,8 +358,8 @@
         "slug": "status"
       },
       {
-        "label": "unlock",
-        "slug": "unlock"
+        "label": "unfreeze",
+        "slug": "unfreeze"
       },
       {
         "label": "unprotect",

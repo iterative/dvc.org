@@ -1,27 +1,27 @@
-# unlock
+# unfreeze
 
-Unlock [DVC-file](/doc/user-guide/dvc-files-and-directories)
-([stage](/doc/command-reference/run)). See `dvc lock` for more information.
+Unfreeze [stage](/doc/command-reference/run). See `dvc freeze` for more
+information.
 
 ## Synopsis
 
 ```usage
-usage: dvc unlock [-h] [-q | -v] targets [targets ...]
+usage: dvc unfreeze [-h] [-q | -v] targets [targets ...]
 
 positional arguments:
-  targets        DVC-files to unlock.
+  targets        stages to unfreeze.
 ```
 
 ## Description
 
-There are several reasons that can produce data files to be locked in a DVC
-project, `dvc lock` being the most obvious one.
+There are several reasons that can produce data files to be frozen in a DVC
+project, `dvc freeze` being the most obvious one.
 
-If `dvc unlock` is used on locked stages, they will start to be checked by
+If `dvc unfreeze` is used on frozen stages, they will start to be checked by
 `dvc status`, and updated by `dvc repro`.
 
-Note that <abbr>import stages</abbr> are considered always locked. They can not
-be unlocked. Use `dvc update` on them to update the file, directory, or
+Note that <abbr>import stages</abbr> are considered always frozen. They can not
+be unfrozen. Use `dvc update` on them to update the file, directory, or
 <abbr>data artifact</abbr> from its external data source.
 
 ## Options
@@ -64,10 +64,10 @@ foo.dvc
                 changed:  foo
 ```
 
-Now, let's lock the `bar` stage:
+Now, let's freeze the `bar` stage:
 
 ```dvc
-$ dvc lock bar.dvc
+$ dvc freeze bar.dvc
 $ dvc status
 
   foo.dvc
@@ -75,10 +75,10 @@ $ dvc status
                   changed:  foo
 ```
 
-Run `dvc unlock` to unlock it back:
+Run `dvc unfreeze` to unfreeze it back:
 
 ```dvc
-$ dvc unlock bar.dvc
+$ dvc unfreeze bar.dvc
 $ dvc status
 
   bar.dvc

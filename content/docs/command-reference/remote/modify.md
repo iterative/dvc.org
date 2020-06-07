@@ -375,14 +375,14 @@ a specific user. Please refer to
 [Using service accounts](https://cloud.google.com/iam/docs/service-accounts) for
 more information.
 
-- `credentailpath` - path to the file that contains the
+- `credentialpath` - path to the file that contains the
   [service account key](/doc/user-guide/setup-google-drive-remote#using-service-accounts).
   Make sure that the service account has read/write access (as needed) to the
   file structure in the remote `url`.
 
   ```dvc
   $ dvc remote modify \
-        myremote credentailpath "/home/.../project-XXXXXXX.json"
+        myremote credentialpath "/home/.../project-XXXXXXX.json"
   ```
 
   Alternatively, the `GOOGLE_APPLICATION_CREDENTIALS` env var can be set:

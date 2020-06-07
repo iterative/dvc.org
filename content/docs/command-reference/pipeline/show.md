@@ -43,7 +43,7 @@ instead of stages.
 
 - `--tree` - list dependencies tree like recursive directory listing.
 
-- `-l`, `--locked` - print locked stages only. See `dvc lock`.
+- `-l`, `--locked` - print frozen stages only. See `dvc freeze`.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
