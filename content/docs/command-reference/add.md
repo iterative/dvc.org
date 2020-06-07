@@ -24,11 +24,12 @@ into <abbr>data artifacts</abbr> of the <abbr>project</abbr>. By default, these
 are committed to the <abbr>cache</abbr> (use the `--no-commit` option to avoid
 this, and `dvc commit` to finish the process when needed).
 
-Note that [external data](/doc/user-guide/managing-external-data) (targets
-outside the <abbr>workspace</abbr>) is supported.
+Note that [external data](/doc/user-guide/managing-external-data) is supported
+(targets outside the <abbr>workspace</abbr>).
 
-Under the hood, a few actions are taken for each file (or directory) in
-`targets`:
+After checking that each `target` file (or directory) hasn't been added before
+(or tracked with other DVC commands), a few actions are taken under the hood for
+each one:
 
 1. Calculate the file hash.
 2. Move the file contents to the cache directory (by default in `.dvc/cache`),
