@@ -3,6 +3,7 @@
 Download tracked files or directories from
 [remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr> and
 <abbr>workspace</abbr>, based on the current
+[`dvc.yaml`](/doc/user-guide/dvc-file-format) and
 [`.dvc` files](/doc/user-guide/dvc-file-format).
 
 ## Synopsis
@@ -217,16 +218,13 @@ $ dvc remote list
 r1	ssh://_username_@_host_/path/to/dvc/remote/storage
 ```
 
-<<<<<<< HEAD With the first `dvc pull` we specified a stage in the middle of
-this pipeline (`matrix-train.p.dvc`) while using `--with-deps`. DVC started with
-that `.dvc` file and searched backwards through the pipeline for data files to
-download. Because the `model.p.dvc` stage occurs later, its data was not pulled.
-=======
+With the first `dvc pull` we specified a stage in the middle of this pipeline
+(`matrix-train.p.dvc`) while using `--with-deps`. DVC started with that `.dvc`
+file and searched backwards through the pipeline for data files to download.
+Because the `model.p.dvc` stage occurs later, its data was not pulled.
 
 > DVC supports several
 > [remote types](/doc/command-reference/remote/add#supported-storage-types).
->
-> > > > > > > c8b720a9017ca9db2caae7fc9f521f6192fc4f4c
 
 To download DVC-tracked data from a specific DVC remote, use the `--remote`
 (`-r`) option of `dvc pull`:

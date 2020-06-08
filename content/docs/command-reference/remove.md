@@ -8,15 +8,16 @@ Remove DVC-tracked files or directories from the <abbr>workspace</abbr>.
 usage: dvc remove [-h] [-q | -v] [-o | -p] [-f] targets [targets ...]
 
 positional arguments:
-  targets        `.dvc` files to remove.
+  targets        stages (found in `dvc.yaml`) or `.dvc` files to remove.
 ```
 
 ## Description
 
 This command safely removes data files or directories that are tracked by DVC
-from the <abbr>workspace</abbr>. It takes a
-[DVC-File](/doc/user-guide/dvc-file-format) as input, removes all of its outputs
-(`outs`), and optionally removes the `.dvc` file itself.
+from the <abbr>workspace</abbr>. It takes a stage name (see -n option of dvc
+run) or a .dvc file as target, removes all of its outputs (outs field), and
+optionally removes the stage entry in [dvc.yaml(/doc/user-guide/dvc-file-format)
+or the .dvc file itself.
 
 Note that it does not remove files from the DVC cache or remote storage (see
 `dvc gc`). However, remember to run `dvc push` to save the files you actually
