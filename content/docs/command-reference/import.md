@@ -69,9 +69,10 @@ To actually
 [track the data](https://dvc.org/doc/tutorials/get-started/data-versioning),
 `git add` (and `git commit`) the import stage.
 
-Note that import stages are considered always locked, meaning that if you run
-`dvc repro`, they won't be updated. Use `dvc update` to update the downloaded
-data artifact from the source repo.
+Note that import stages are considered always
+[frozen](/doc/command-reference/freeze), meaning that if you run `dvc repro`,
+they won't be updated. Use `dvc update` to update the downloaded data artifact
+from the source repo.
 
 ## Options
 
