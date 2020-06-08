@@ -107,11 +107,10 @@ workspace) is different from remote storage. Bringing the two into sync requires
   (specified in the `core.remote` config option).
 
 - `-a`, `--all-branches` - compares cache content against all Git branches
-  instead of the current workspace. This basically runs the same status
-  command in every branch of this repo. The corresponding branches are shown in
-  the status output. Applies only if `--cloud` or a `-r` remote is specified.
-  Note that this can be combined with `-T` below, for example using the `-aT`
-  flag.
+  instead of the current workspace. This basically runs the same status command
+  in every branch of this repo. The corresponding branches are shown in the
+  status output. Applies only if `--cloud` or a `-r` remote is specified. Note
+  that this can be combined with `-T` below, for example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Note that both options can be combined, for example using the

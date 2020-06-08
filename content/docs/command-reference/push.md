@@ -54,9 +54,9 @@ none are specified on the command line nor in the configuration. The default
 remote is used (see `dvc config core.remote`) unless the `--remote` option is
 used. See `dvc remote` for more information on how to configure a remote.
 
-With no arguments, `dvc push` or `dvc push --remote REMOTE`, it uploads
-only the files (or directories) that are new in the local repository to remote
-storage. It will not upload files associated with earlier commits in the
+With no arguments, `dvc push` or `dvc push --remote REMOTE`, it uploads only the
+files (or directories) that are new in the local repository to remote storage.
+It will not upload files associated with earlier commits in the
 <abbr>repository</abbr> (if using Git), nor will it upload files that have not
 changed.
 

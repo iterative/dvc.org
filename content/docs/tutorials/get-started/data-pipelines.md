@@ -163,9 +163,9 @@ This would be a good point to commit the changes with Git. This includes any
 
 ## Reproduce
 
-Imagine you're cloning the <abbr>repository</abbr> created so far, in
-another computer. It's extremely easy for anyone to reproduce the result
-end-to-end, by using `dvc repro`.
+Imagine you're cloning the <abbr>repository</abbr> created so far, in another
+computer. It's extremely easy for anyone to reproduce the result end-to-end, by
+using `dvc repro`.
 
 <details>
 

@@ -228,8 +228,8 @@ after `git clone` and `git pull`.
 
 ### 👉 Expand to simulate a fresh clone of this repo
 
-Let's remove the directory added so far, both from <abbr>workspace</abbr>
-and <abbr>cache</abbr>:
+Let's remove the directory added so far, both from <abbr>workspace</abbr> and
+<abbr>cache</abbr>:
 
 ```dvc
 $ rm -f datadir .dvc/cache/a3/04afb96060aad90176268345e10355
