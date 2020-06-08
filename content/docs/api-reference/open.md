@@ -127,7 +127,7 @@ typically faster than loading the whole data into memory.
 
 ## Example: Accessing private repos
 
-This is a matter of using the right `repo` argument, for example an SSH URL
+The key for this is to use the right `repo` argument, for example an SSH URL
 (requires that the
 [credentials are configured](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh)
 locally):
