@@ -30,7 +30,7 @@ path, but it also renames and updates the corresponding DVC-file appropriately.
 If the destination path (`dst`) already exists and is a directory, the source
 code file or directory (`src`) is moved unchanged into this folder along with
 the corresponding DVC-file. Otherwise, any directories in `dst` are created,
-similar to `mkdir -P`.
+similar to `mkdir -p`.
 
 Let's imagine the following scenario:
 

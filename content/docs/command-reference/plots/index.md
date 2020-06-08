@@ -99,13 +99,13 @@ can specify only the base name e.g. `--template scatter`.
 
 ### Custom templates
 
-Plot template files are just
+Plot template files are
 [Vega specification](https://vega.github.io/vega/docs/specification/) files that
 use predefined DVC anchors as placeholders for DVC to inject the plot values.
 You can create a custom template from scratch, or modify an existing one from
 `.dvc/plots/`.
 
-> Note that custom templates can be added to the template directory safely.
+💡 Note that custom templates can be safely added to the template directory.
 
 All metric files given to `dvc plots show` and `dvc plots diff` as input are
 combined together into a single data array for injection into a template file.
