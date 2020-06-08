@@ -27,9 +27,9 @@ this command (prefixed with `--`).
 > Display props are based on the
 > [Vega specification](https://vega.github.io/vega/docs/specification/)
 
-The `target` metrics file should be an <abbd>output</abbr> of one of the
-[DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots` option
-of `dvc run`), listed in a
+The required `target` metrics file should be an <abbd>output</abbr> of one of
+the [DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots`
+option of `dvc run`), listed in a
 [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file. `dvc plots modify`
 adds the options to `dvc.yaml`.
 

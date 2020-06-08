@@ -18,11 +18,12 @@ positional arguments:
 ## Description
 
 This command provides a quick way to visualize metrics such as loss functions,
-AUC curves, confusion matrices, etc. One of more `targets` are required as
-argument to this command.
+AUC curves, confusion matrices, etc.
 
-This command can work with target metric files that are versioned directly with
-Git, data files controlled by DVC, or untracked files in the workspace.
+The required metric file `targets` should be <abbd>outputs</abbr> of one of the
+[DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots` option
+of `dvc run`), listed in a
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file.
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the

@@ -22,18 +22,18 @@ positional arguments:
 This command is a way to visualize the difference between metrics among
 experiments in the <abbr>repository</abbr> history. Requires that the target
 metric files are versioned with Git. These should specified with the `--targets`
-option.
+(`-t`) option.
+
+The required metric file `targets` should be <abbd>outputs</abbr> of one of the
+[DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots` option
+of `dvc run`), listed in a
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file.
 
 `revisions` are Git commit hashes, tag, or branch names. If none are specified,
 `dvc plots diff` compares targets currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with their latest committed
 versions (required). A single specified revision results in plotting the
 difference between the workspace and that version.
-
-This command can work with target metric files that are versioned directly with
-Git, data files controlled by DVC, or untracked files in the workspace. In the
-case of DVC-tracked targets, the revisions are used to find the corresponding
-[DVC-files](/doc/user-guide/dvc-file-format).
 
 In contrast to commands such as `git diff`, `dvc metrics diff`, and
 `dvc params diff`, **any number of revisions can be provided**, and the
