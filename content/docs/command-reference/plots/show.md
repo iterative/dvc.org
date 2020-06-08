@@ -134,7 +134,7 @@ file:///Users/usr/src/plots/logs.csv.html
 Use the `-y` option to change the column to plot:
 
 ```dvc
-$ dvc plots show -y loss logs.csv
+$ dvc plots show logs.csv -y loss
 file:///Users/usr/src/plots/logs.csv.html
 ```
 
@@ -143,11 +143,11 @@ file:///Users/usr/src/plots/logs.csv.html
 ### Headerless tables
 
 A tabular data file without headers can be plotted with `--no-csv-header`
-option. A field or column can be specified with `--select` by it's numeric
-position (starting with `0`):
+option. A field or column can be specified with `-y` by it's numeric position
+(starting with `0`):
 
 ```dvc
-$ dvc plots show --no-csv-header --select 2 logs.csv
+$ dvc plots show --no-csv-header logs.csv -y 2
 file:///Users/usr/src/plots/logs.csv.html
 ```
 
@@ -178,7 +178,7 @@ format like PNG or JPEG, or to include it differently into a web/mobile app. The
 resulting file is JSON:
 
 ```dvc
-$ dvc plots show --select accuracy --show-vega logs.csv
+$ dvc plots show --show-vega logs.csv -y accuracy
 file:///Users/usr/src/plots/logs.csv.json
 ```
 

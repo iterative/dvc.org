@@ -91,11 +91,13 @@ To visualize the difference between uncommitted changes of a metrics file and
 the last commit:
 
 ```dvc
-$ dvc plots diff --targets logs.csv
+$ dvc plots diff --targets logs.csv --x-label x
 file:///Users/dmitry/src/plots/logs.html
 ```
 
 ![](/img/plots_auc.svg)
+
+> Note that we renamed the X axis label with option `--x-label x`.
 
 The difference between two versions (commit hashes, tags, or branches can be
 provided):
@@ -125,13 +127,13 @@ cat,turtle
 ...
 ```
 
-A predefined confusion matrix
+The predefined confusion matrix
 [template](/doc/command-reference/plots#plot-templates) (in
 `.dvc/plots/confusion.json`) shows how metric differences can be faceted by
-separate plots:
+separate plots. It can be enabled with `-t` (`--template`):
 
 ```dvc
-$ dvc plots diff -t confusion -x predicted --targets classes.csv
+$ dvc plots diff -t confusion --targets classes.csv -x predicted
 file:///Users/usr/src/test/plot_old/classes.csv.html
 ```
 
