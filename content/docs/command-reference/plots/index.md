@@ -107,9 +107,9 @@ You can create a custom template from scratch, or modify an existing one from
 
 > Note that custom templates can be added to the template directory safely.
 
-All JSON metric files given to `dvc plots show` and `dvc plots diff` as input
-are combined together into a single data array for the injection to a template
-file. There are two important fields that DVC adds to the plot data:
+All metric files given to `dvc plots show` and `dvc plots diff` as input are
+combined together into a single data array for injection into a template file.
+There are two important fields that DVC adds to the plot data:
 
 - `index` - self-incrementing, zero-based counter for the data rows/values. In
   many cases it corresponds to a machine learning training epoch or step number.
@@ -118,9 +118,8 @@ file. There are two important fields that DVC adds to the plot data:
   distinguish between different versions when using the `dvc plots diff`
   command.
 
-DVC applies the same logic to all CSV/TSV metric files, but first converts the
-data into JSON format, using column names from the table header (first row) as
-the field names.
+Note that in the case of CSV/TSV metric files, column names from the table
+header (first row) are considered the field names.
 
 #### DVC template anchors
 
