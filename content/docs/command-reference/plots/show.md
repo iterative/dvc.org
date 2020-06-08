@@ -151,23 +151,6 @@ $ dvc plots show --no-csv-header logs.csv -y 2
 file:///Users/usr/src/plots/logs.csv.html
 ```
 
-## Example: Plot file size
-
-Note that by default, all the columns (or fields) are embedded in the plot file
-metadata. You can select a subset of the columns using the `--select` option,
-which can help reduce the file size:
-
-```dvc
-$ ls -lh /Users/usr/src/plots/logs.csv.html
--rw-r--r-- 1 usr grp 2.8K  ... /Users/usr/src/plot/logs.csv.html
-
-$ dvc plots show -y loss --select loss logs.csv
-file:///Users/usr/src/plots/logs.csv.html
-
-$ ls -lh /Users/usr/src/plots/logs.csv.html
--rw-r--r-- 1 usr grp 1.8K  ... /Users/usr/src/plots/logs.csv.html
-```
-
 ## Example: Vega specification file
 
 In many automation scenarios (like CI/CD for ML), it is convenient to have the
@@ -189,13 +172,5 @@ file:///Users/usr/src/plots/logs.csv.json
         "values": [
     {
         "accuracy": "0.9418667",
-        "index": 0,
-        "rev": "workspace"
-    },
-    {
-        "accuracy": "0.9763333",
-        "index": 1,
-        "rev": "workspace"
-    },
     ...
 ```
