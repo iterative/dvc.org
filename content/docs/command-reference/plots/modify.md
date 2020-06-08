@@ -77,7 +77,7 @@ epoch,accuracy,loss
 
 ```dvc
 $ dvc plots show logs.csv
-file:///Users/dmitry/src/myclassifier/logs.html
+file:///Users/usr/src/myclassifier/logs.html
 ```
 
 ![](/img/plots_mod_loss.svg)
@@ -85,9 +85,9 @@ file:///Users/dmitry/src/myclassifier/logs.html
 Changing the y-axis to _accuracy_:
 
 ```dvc
-$ dvc plots modify -y accuracy logs.csv
+$ dvc plots modify logs.csv -y accuracy
 $ dvc plots show logs.csv
-file:///Users/dmitry/src/myclassifier/logs.html
+file:///Users/usr/src/myclassifier/logs.html
 ```
 
 ![](/img/plots_mod_acc.svg)
@@ -104,9 +104,9 @@ forget to commit the change in Git if the modification needs to be preserved.
 Changing the plot `title` and `x-label`:
 
 ```dvc
-$ dvc plots modify --title Accuracy --x-label epoch logs.csv
+$ dvc plots modify logs.csv --title Accuracy -x epoch --x-label Epoch
 $ dvc plots show logs.csv
-file:///Users/dmitry/src/myclassifier/logs.html
+file:///Users/usr/src/myclassifier/logs.html
 ```
 
 ![](/img/plots_mod_acc_titles.svg)
@@ -128,5 +128,5 @@ _dvc run --plots file.csv ..._ command assign the default template that needs to
 be changed in many cases. A simple command changes the template:
 
 ```dvc
-$ dvc plots modify --template confusion classes.csv
+$ dvc plots modify classes.csv --template confusion
 ```
