@@ -135,7 +135,6 @@ The workspace looks something like this:
 ├── evaluate.dvc
 ├── featurize.dvc
 ├── prepare.dvc
-├── train.dvc
 ├── src
 │   └── ...
 └── train.dvc
