@@ -20,11 +20,10 @@ positional arguments:
 ## Description
 
 This command is a way to visualize the difference between metrics among
-experiments in the <abbr>repository</abbr> history. Requires that the target
-metric files are versioned with Git. These should specified with the `--targets`
-(`-t`) option.
+experiments in the <abbr>repository</abbr> history. The target metric files
+(required) should specified with the `--targets` (`-t`) option.
 
-The required metric file `targets` should be <abbd>outputs</abbr> of one of the
+The `targets` should be <abbd>outputs</abbr> of one of the
 [DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots` option
 of `dvc run`), listed in a
 [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file.
