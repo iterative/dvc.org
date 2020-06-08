@@ -61,8 +61,8 @@ compares them with a previous version.
 ## Examples
 
 > This example is based on the `evaluate.dvc` stage file of our
-> [Get Started](/doc/tutorials/get-started/metrics), where you can find the
-> actual source code.
+> [Get Started](/doc/tutorials/get-started/experiments#project-metrics), where
+> you can find the actual source code.
 
 The basic use case shows the values in the current workspace:
 
