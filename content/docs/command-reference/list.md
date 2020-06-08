@@ -16,12 +16,12 @@ positional arguments:
 
 ## Description
 
-DVC, by effectively replacing data files, models, directories with DVC-files
+DVC, by effectively replacing data files, models, directories with `.dvc` files
 (`.dvc`), hides actual locations and names. This means that you don't see data
 files when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
-Github), you just see the DVC-files. This makes it hard to navigate the project
-to find <abbr>data artifacts</abbr> for use with `dvc get`, `dvc import`, or
-`dvc.api`.
+Github), you just see the `.dvc` files. This makes it hard to navigate the
+project to find <abbr>data artifacts</abbr> for use with `dvc get`,
+`dvc import`, or `dvc.api`.
 
 `dvc list` prints a virtual view of a DVC repository, as if files and
 directories [tracked by DVC](/doc/use-cases/versioning-data-and-model-files)
@@ -97,7 +97,7 @@ project's page, you will see a similar list, except that `model.pkl` will be
 missing. That's because its tracked by DVC and not visible to Git. You can find
 it in the
 [`train.dvc`](https://github.com/iterative/example-get-started/blob/master/train.dvc)
-DVC-file (`outs` field).
+`.dvc` file (`outs` field).
 
 We can now, for example, download the model file with:
 
