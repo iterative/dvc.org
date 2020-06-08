@@ -199,7 +199,7 @@ file:///Users/usr/src/plots/logs.html
 
 We'll use `classes.csv` for this example:
 
-```csv
+```
 actual,predicted
 cat,cat
 cat,cat

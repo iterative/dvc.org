@@ -12,7 +12,7 @@ usage: dvc plots show [-h] [-q | -v] [-t <path>] [-o <path>]
                       targets [targets ...]
 
 positional arguments:
-  targets               Metrics files to visualize.
+  targets               Metric files to visualize.
 ```
 
 ## Description
@@ -110,7 +110,7 @@ file:///Users/usr/src/plots/logs.json.html
 
 We'll use tabular metrics file `logs.csv` for these examples:
 
-```csv
+```
 epoch,accuracy,loss,val_accuracy,val_loss
 0,0.9418667,0.19958884770199656,0.9679,0.10217399864746257
 1,0.9763333,0.07896138601688048,0.9768,0.07310650711813942

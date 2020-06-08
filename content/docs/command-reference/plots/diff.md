@@ -112,7 +112,7 @@ file:///Users/usr/src/plots/logs.csv.html
 
 We'll use tabular metrics file `classes.csv` for this example:
 
-```csv
+```
 predicted,actual
 cat,cat
 cat,cat
