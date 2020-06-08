@@ -1,9 +1,9 @@
 # Get Started with DVC!
 
-Data Version Control is a data version control, data pipelining, and experiment
-management command-line tool built on top of existing engineering toolset ans
-practices, particularly Git. In this guide we will show the basic features of
-DVC step by step.
+DVC is a **data version control**, pipeline management, and experiment
+management tool that brings existing engineering toolset and practices to data
+science and machine learning. In this guide we will introduce the basic features
+and concepts of DVC step by step.
 
 ## Initialize
 
