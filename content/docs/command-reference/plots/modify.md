@@ -11,7 +11,7 @@ usage: dvc plots modify [-h] [-q | -v] [-t <path>] [-x X] [-y Y]
                         target
 
 positional arguments:
-  target                Plot file to set props to.
+  target                Metric file to set props to
 ```
 
 ## Description
