@@ -51,9 +51,8 @@ adds the options to `dvc.yaml`.
 - `--unset [<prop> [<prop> ...]]` - unset one or more display properties. Use
   the prop name(s) without `--` in the argument sent to this option.
 
-- `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
-  header. A 0-based numeric index can be used to identify each column instead of
-  names.
+- `--no-csv-header` - lets DVC know that the `target` CSV or TSV does not have a
+  header.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
