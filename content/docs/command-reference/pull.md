@@ -220,11 +220,6 @@ $ dvc remote list
 r1	ssh://_username_@_host_/path/to/dvc/remote/storage
 ```
 
-With the first `dvc pull` we specified a stage in the middle of this pipeline
-(`matrix-train.p.dvc`) while using `--with-deps`. DVC started with that `.dvc`
-file and searched backwards through the pipeline for data files to download.
-Because the `model.p.dvc` stage occurs later, its data was not pulled.
-
 > DVC supports several
 > [remote types](/doc/command-reference/remote/add#supported-storage-types).
 
