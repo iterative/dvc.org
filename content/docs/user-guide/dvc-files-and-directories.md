@@ -86,7 +86,7 @@ the following fields:
   names and their current values
 - `outs` - list of <abbr>outputs</abbr> for this stage
 - `metric` - (optional) list of [metric](/doc/command-reference/metrics) files
-- `locked` - (optional) whether or not this stage is locked from reproduction
+- `frozen` - (optional) whether or not this stage is frozen from reproduction
 - `always_changed` (optional) - whether or not this stage is considered as
   changed by commands such as `dvc status` and `dvc repro`. `false` by default
 

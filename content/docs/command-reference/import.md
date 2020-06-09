@@ -212,8 +212,7 @@ in the future, where and when needed. This is achieved with the `repo` field,
 for example (matching the import command above):
 
 ```yaml
-md5: 96fd8e791b0ee4824fc1ceffd13b1b49
-locked: true
+frozen: true
 deps:
   - path: use-cases/cats-dogs
     repo:
@@ -223,8 +222,6 @@ outs:
   - md5: b6923e1e4ad16ea1a7e2b328842d56a2.dir
     path: cats-dogs
     cache: true
-    metric: false
-    persist: false
 ```
 
 See a full explanation in our [Data Registries](/doc/use-cases/data-registries)
