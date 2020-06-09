@@ -46,7 +46,7 @@ please see `dvc plots`.
 
 ## Options
 
-- `--targets <path>` - metrics file to visualize. Shows all plots by default.
+- `--targets <path>` - metric files to visualize. Shows all plots by default.
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with a `.html` file extension (or
