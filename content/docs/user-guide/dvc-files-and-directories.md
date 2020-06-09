@@ -36,17 +36,38 @@ outs:
 # Manual comments can be added in.
 ```
 
-`.dvc` files contain a single top field:
+`.dvc` files can contain the following two fields:
 
-- `outs` - list of <abbr>outputs</abbr> for this `.dvc` file
+- `outs`: List of <abbr>outputs</abbr> for this `.dvc` file
+- `deps` (optional): List of <abbr>dependencies</abbr> for this stage, only
+  present when `dvc import` and `dvc import-url` are used.
 
 An output entry can consist of these fields:
 
-- `md5` - hash value for the output file
-- `path` - path to the output in the <abbr>workspace</abbr>, relative to the
+- `md5`: Hash value for the output file
+- `path`: Path to the output in the <abbr>workspace</abbr>, relative to the
   location of the `.dvc` file
-- `cache` - (optional) whether or not DVC should cache the output. `true` by
+- `cache` (optional): Whether or not DVC should cache the output. `true` by
   default
+
+A `.dvc` file dependency entry consists of a these possible fields:
+
+- `path`: Path to the dependency, relative to the `wdir` path (always present)
+- `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
+- `repo`: This entry is only for external dependencies created with
+  `dvc import`, and can contains the following fields:
+
+  - `url`: URL of Git repository with source DVC project
+  - `rev`: Only present when the `--rev` option of `dvc import` is used.
+    Specific commit hash, branch or tag name, etc. (a
+    [Git revision](https://git-scm.com/docs/revisions)) used to import the
+    dependency from.
+  - `rev_lock`: Git commit hash of the external <abbr>DVC repository</abbr> at
+    the time of importing or updating (with `dvc update`) the dependency.
+
+  > See the examples in
+  > [External Dependencies](/doc/user-guide/external-dependencies) for more
+  > info.
 
 Note that comments can be added to `.dvc` files and `dvc.yaml` using the
 `# comment` syntax.
@@ -77,49 +98,40 @@ stages:
 ```
 
 `dvc.yaml` files consists of a group of `stages` with names provided explicitly
-by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
-the following fields:
+by the user with the `--name` (`-n`) option of `dvc run`.
 
-- `cmd` - executable command defined in this stage
-- `deps` - list of <abbr>dependencies</abbr> for this stage
-- `params` - (optional) list of the [parameter](/doc/command-reference/params)
+Each stage can contain the following fields:
+
+- `cmd`: Executable command defined in this stage
+- `deps`: List of <abbr>dependencies</abbr> for this stage
+- `outs`: List of <abbr>outputs</abbr> for this stage
+- `params` (optional): List of the [parameter](/doc/command-reference/params)
   names and their current values
-- `outs` - list of <abbr>outputs</abbr> for this stage
-- `metric` - (optional) list of [metric](/doc/command-reference/metrics) files
-- `frozen` - (optional) whether or not this stage is frozen from reproduction
-- `always_changed` (optional) - whether or not this stage is considered as
+- `metric` (optional): List of [metric](/doc/command-reference/metrics) files
+- `frozen` (optional): Whether or not this stage is frozen from reproduction
+- `always_changed` (optional) : Whether or not this stage is considered as
   changed by commands such as `dvc status` and `dvc repro`. `false` by default
 
-A dependency entry consists of a these possible fields:
+An output entry consists of these fields:
+
+- `md5`: Hash value for the output file
+- `path`: Path to the output in the <abbr>workspace</abbr>, relative to the
+  location of the `.dvc` file
+- `cache` (optional): Whether or not DVC should cache the output. `true` by
+  default
+
+A `dvc.yaml` dependency entry consists of a these possible fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
 - `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
 - `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
-- `repo`: This entry is only for external dependencies created with
-  `dvc import`, and can contains the following fields:
-
-  - `url`: URL of Git repository with source DVC project
-  - `rev`: Only present when the `--rev` option of `dvc import` is used.
-    Specific commit hash, branch or tag name, etc. (a
-    [Git revision](https://git-scm.com/docs/revisions)) used to import the
-    dependency from.
-  - `rev_lock`: Git commit hash of the external <abbr>DVC repository</abbr> at
-    the time of importing or updating (with `dvc update`) the dependency.
 
   > See the examples in
   > [External Dependencies](/doc/user-guide/external-dependencies) for more
   > info.
 
-An output entry consists of these fields:
-
-- `md5` - hash value for the output file
-- `path` - path to the output in the <abbr>workspace</abbr>, relative to the
-  location of the `.dvc` file
-- `cache` - (optional) whether or not DVC should cache the output. `true` by
-  default
-
-Metrics entries can contain these fields:
+Metric entries can contain these fields:
 
 - `type`: Type of the metric file (`json`)
 - `xpath`: Path within the metric file to the metrics data(e.g. `AUC.value` for
