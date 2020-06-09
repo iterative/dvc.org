@@ -1,8 +1,8 @@
 # destroy
 
 Remove all
-[DVC files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
-from a <abbr>DVC project</abbr>.
+[DVC files and directories](/doc/user-guide/dvc-files-and-directories) from a
+<abbr>DVC project</abbr>.
 
 ## Synopsis
 
@@ -12,14 +12,19 @@ usage: dvc destroy [-h] [-q | -v] [-f]
 
 ## Description
 
-`dvc destroy` removes DVC-files, and the internal `.dvc/` directory from the
-<abbr>workspace</abbr>. Note that the <abbr>cache directory</abbr> will normally
-be removed as well, unless it's set to an external location with
-`dvc cache dir`. (By default a local cache is located in the `.dvc/cache`
-directory.) If you were using
+`dvc destroy` removes `dvc.yaml`, `.dvc` files, and the internal `.dvc/`
+directory from the <abbr>workspace</abbr>.
+
+Note that the <abbr>cache directory</abbr> will be removed as well, unless it's
+[set to an external location](/doc/use-cases/shared-development-server#configure-the-external-shared-cache)
+(by default a local cache is located in `.dvc/cache`). If you were using
 [symlinks for linking](/doc/user-guide/large-dataset-optimization) data from the
-cache, DVC will replace them with copies, so that your data is intact after the
-project's destruction.
+cache, DVC will replace them with the latest versions of the actual files and
+directories first, so that your data is intact after the project's destruction.
+
+> Refer to
+> [DVC files and directories](/doc/user-guide/dvc-files-and-directories) for
+> more details on the directories and files deleted by this command.
 
 ## Options
 
