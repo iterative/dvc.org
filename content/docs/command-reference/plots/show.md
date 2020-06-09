@@ -5,14 +5,15 @@ Generate [plot](/doc/command-reference/plots) from a metrics file.
 ## Synopsis
 
 ```usage
-usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-o <path>]
-                      [-x <field>] [-y <field>] [--no-csv-header]
-                      [--show-vega] [--title <text>]
-                      [--x-label <text>] [--y-label <text>]
-                      targets [targets ...]
+usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
+                      [-y <field>] [--no-csv-header] [--title <text>]
+                      [--x-label <text>] [--y-label <text>] [-o <path>]
+                      [--show-vega]
+                      [targets [targets ...]]
 
 positional arguments:
   targets               Metric files to visualize.
+                        Shows all plots by default.
 ```
 
 ## Description
@@ -35,14 +36,14 @@ please see `dvc plots`.
 
 ## Options
 
+- `-o <path>, --out <path>` - name of the generated file. By default, the output
+  file name is equal to the input filename with a `.html` file extension (or
+  `.json` when using `--show-vega`).
+
 - `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
   with data. The default template is `.dvc/plots/default.json`. See more details
   in `dvc plots`.
-
-- `-o <path>, --out <path>` - name of the generated file. By default, the output
-  file name is equal to the input filename with a `.html` file extension (or
-  `.json` when using `--show-vega`).
 
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See

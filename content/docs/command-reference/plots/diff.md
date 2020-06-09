@@ -6,11 +6,11 @@ plotting them in a single image.
 ## Synopsis
 
 ```usage
-usage: dvc plots diff [-h] [-q | -v] [-t <name_or_path>]
-                      [--targets [<path> [<path> ...]]] [-o <path>]
-                      [-x <field>] [-y <field>] [--no-csv-header]
-                      [--show-vega] [--title <text>]
-                      [--x-label <text>] [--y-label <text>]
+usage: dvc plots diff [-h] [-q | -v] [--targets [<path> [<path> ...]]]
+                      [-t <name_or_path>] [-x <field>] [-y <field>]
+                      [--no-csv-header] [--title <text>]
+                      [--x-label <text>] [--y-label <text>] [-o <path>]
+                      [--show-vega]
                       [revisions [revisions ...]]
 
 positional arguments:
@@ -20,12 +20,11 @@ positional arguments:
 ## Description
 
 This command is a way to visualize the difference between metrics among
-experiments in the <abbr>repository</abbr> history. The target metric files
-(required) should specified with the `--targets` (`-t`) option.
+experiments in the <abbr>repository</abbr> history.
 
-The `targets` should be <abbd>outputs</abbr> of one of the
-[DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots` option
-of `dvc run`), listed in a
+Target metric files can be specified with the `--targets` (`-t`) option. These
+should be <abbd>outputs</abbr> of one of the project stages (see the `--plots`
+option of `dvc run`), listed in a
 [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file.
 
 `revisions` are Git commit hashes, tag, or branch names. If none are specified,
@@ -48,16 +47,16 @@ please see `dvc plots`.
 
 ## Options
 
-- `--targets [TARGETS]` (**required**) - metrics file to visualize.
+- `--targets <path>` (**required**) - metrics file to visualize.
+
+- `-o <path>, --out <path>` - name of the generated file. By default, the output
+  file name is equal to the input filename with a `.html` file extension (or
+  `.json` when using `--show-vega`).
 
 - `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
   with data. The default template is `.dvc/plots/default.json`. See more details
   in `dvc plots`.
-
-- `-o <path>, --out <path>` - name of the generated file. By default, the output
-  file name is equal to the input filename with a `.html` file extension (or
-  `.json` when using `--show-vega`).
 
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See
