@@ -17,8 +17,8 @@ positional arguments:
 
 The `dvc add` command is analogous to `git add`, in that it makes DVC aware of
 the target data, as a first step to version it. It creates a
-[`.dvc` file](/doc/user-guide/dvc-files-and-directories) to track the added
-data.
+[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) to track the
+added data.
 
 The `targets` are files or directories to add with this command, that are turned
 into <abbr>data artifacts</abbr> of the <abbr>project</abbr>. By default, these
@@ -51,7 +51,7 @@ each one:
 
 Summarizing, the result is that the target data is replaced by small `.dvc`
 files that can be tracked with Git. See
-[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvcfiles) for more
+[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) for more
 details.
 
 > Note that `.dvc` files created by this command are considered _orphan stage

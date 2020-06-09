@@ -65,8 +65,8 @@ The repository you cloned is already DVC-initialized. It already contains a
 `.dvc/` directory with the `config` and `.gitignore` files. These and other
 files and directories are hidden from user, as typically there's no need to
 interact with them directly. See
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
-to learn more.
+[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories) to learn
+more.
 
 </details>
 

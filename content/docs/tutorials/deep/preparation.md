@@ -91,5 +91,4 @@ The <abbr>cache directory</abbr>, one of the most important parts of any
 explained in more detail in the next chapter.) Note that it won't be tracked by
 Git — It's a local-only directory, and you cannot push it to a Git remote.
 
-For more information refer to
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files).
+For more information refer to `dvc init`.

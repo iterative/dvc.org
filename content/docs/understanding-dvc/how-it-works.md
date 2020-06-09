@@ -7,8 +7,7 @@
   $ dvc init
   ```
 
-  > See
-  > [DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files).
+  > See `dvc init` for more info.
 
 - DVC helps define command pipelines, and keeps each command
   [stage](/doc/command-reference/run) and dependencies in a Git repository:
