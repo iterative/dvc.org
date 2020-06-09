@@ -5,7 +5,7 @@ Get or set <abbr>project</abbr>-level (or global) DVC configuration options.
 ## Synopsis
 
 ```usage
-usage: dvc config [-h] [--global] [--system] [--local] [-q | -v] [-u]
+usage: dvc config [-h] [--global | --system | --local] [-q | -v] [-u]
                   name [value]
 
 positional arguments:
