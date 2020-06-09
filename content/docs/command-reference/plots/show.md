@@ -30,6 +30,9 @@ The plot style can be customized with
 `--template` option. To learn more about metric file formats and templates
 please see `dvc plots`.
 
+> Note that the default behavior of this command can be modified per metrics
+> file with `dvc plots modify`.
+
 ## Options
 
 - `-t <name_or_path>, --template <name_or_path>` -
