@@ -78,7 +78,7 @@ describing the changes (described below).
     corresponding file hash saved in a DVC-file yet.
   - _modified_: An output or <abbr>dependency</abbr> is found in the workspace,
     but the corresponding file hash the DVC-file is not up to date.
-  - _deleted_: The output or dependency is references in a DVC-file, but does
+  - _deleted_: The output or dependency is referenced in a DVC-file, but does
     not exist in the workspace.
   - _not in cache_: An output exists in workspace and the corresponding file
     hash in the DVC-file is up to date, but there is no corresponding

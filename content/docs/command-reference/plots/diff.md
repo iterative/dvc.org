@@ -33,9 +33,8 @@ option of `dvc run`), listed in a
 versions (required). A single specified revision results in plotting the
 difference between the workspace and that version.
 
-In contrast to commands such as `git diff`, `dvc metrics diff`, and
-`dvc params diff`, **any number of revisions can be provided**, and the
-resulting plot shows all of them in a single output.
+Note that any number of `revisions` can be provided, and the resulting plot
+shows all of them in a single output.
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the
@@ -47,7 +46,7 @@ please see `dvc plots`.
 
 ## Options
 
-- `--targets <path>` (**required**) - metrics file to visualize.
+- `--targets <path>` - metrics file to visualize. Shows all plots by default.
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with a `.html` file extension (or
@@ -64,7 +63,7 @@ please see `dvc plots`.
   information on this `index` field.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
-  column or field found in the `targets` is used by default.
+  column or field found in the `--targets` is used by default.
 
 - `--x-label <text>` - X axis label. The X field name is the default.
 
@@ -76,7 +75,7 @@ please see `dvc plots`.
   [Vega specification](https://vega.github.io/vega/docs/specification/) file
   instead of HTML. See `dvc plots` for more info.
 
-- `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
+- `--no-csv-header` - lets DVC know that CSV or TSV `--targets` do not have a
   header. A 0-based numeric index can be used to identify each column instead of
   names.
 
