@@ -4,7 +4,6 @@ Download tracked files or directories from
 [remote storage](/doc/command-reference/remote) to the <abbr>cache</abbr> and
 <abbr>workspace</abbr>, based on the current
 [`dvc.yaml`](/doc/user-guide/dvc-file-format) and
-[`dvc.yaml`](/doc/user-guide/dvc-file-format) and
 [`.dvc`](/doc/user-guide/dvc-file-format) files.
 
 ## Synopsis
