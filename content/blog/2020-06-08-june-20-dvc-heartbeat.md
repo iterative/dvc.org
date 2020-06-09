@@ -9,21 +9,20 @@ descriptionLong: |
   Catch up on new DVC releases, talks, and projects in our community. 
   This month, learn about finishing touches on DVC 1.0, DVC in biomedical
   research, recommended reading and upcoming MLOps talks.
-picture: 2020-05-14/May_20_Heartbeat.png
+picture: 2020-06-08/June_20_Heartbeat.png
 author: elle_obrien
-commentsUrl: https://discuss.dvc.org/t/may-20-community-gems/398
+commentsUrl: https://discuss.dvc.org/t/june-20-heartbeat/404
 tags:
   - Heartbeat
-  - Udemy course
-  - DVC 1.0
+  - Udemy Course
   - Pipelines
   - Plots
   - MLOps
 ---
 
-Welcome to the June Heartbeat, our [monthly roundup of cool happenings](#news),
-[good reads](#from-the-community) and other noteworthy developments the DVC
-community.
+Welcome to the June Heartbeat, our monthly roundup of cool happenings,
+[good reads](#from-the-community) and
+[up-and-coming developments](#coming-up-soon) in the DVC community.
 
 ## News
 
@@ -140,8 +139,10 @@ image="/uploads/images/2020-06-08/data_in_brief_logo.jpeg"/>
 
 Also just released is a scientific paper by Christoph Jansen et al. about a
 framework for computational reproducibility in the life sciences that integrates
-DVC. The framework is called Curious Containers- definitely worth checking out
-for biomedical researchers interested in deep learning.
+DVC. The framework is called
+[Curious Containers](https://github.com/curious-containers/curious-containers)-
+definitely worth checking out for biomedical researchers interested in deep
+learning.
 
 <external-link
 href="https://www.sciencedirect.com/science/article/abs/pii/S0167739X19318096"
