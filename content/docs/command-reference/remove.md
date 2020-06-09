@@ -14,10 +14,10 @@ positional arguments:
 ## Description
 
 This command safely removes data files or directories that are tracked by DVC
-from the <abbr>workspace</abbr>. It takes a stage name (see -n option of dvc
-run) or a .dvc file as target, removes all of its outputs (outs field), and
+from the <abbr>workspace</abbr>. It takes a stage name (see -n option of
+`dvc run`) or a .dvc file as target, removes all of its outputs (outs field), and
 optionally removes the stage entry in [dvc.yaml(/doc/user-guide/dvc-file-format)
-or the .dvc file itself.
+or the `.dvc` file itself.
 
 Note that it does not remove files from the DVC cache or remote storage (see
 `dvc gc`). However, remember to run `dvc push` to save the files you actually
