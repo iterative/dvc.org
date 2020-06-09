@@ -75,7 +75,8 @@ please see `dvc plots`.
   instead of HTML. See `dvc plots` for more info.
 
 - `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
-  header.
+  header. A 0-based numeric index can be used to identify each column instead of
+  names.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

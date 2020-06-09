@@ -60,7 +60,8 @@ please see `dvc plots`.
   instead of HTML. See `dvc plots` for more info.
 
 - `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
-  header.
+  header. A 0-based numeric index can be used to identify each column instead of
+  names.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -143,8 +144,8 @@ file:///Users/usr/src/plots/logs.csv.html
 ### Headerless tables
 
 A tabular data file without headers can be plotted with `--no-csv-header`
-option. A field or column can be specified with `-y` by it's numeric position
-(starting with `0`):
+option. A column can be specified with `-y` by it's numeric position (starting
+with `0`):
 
 ```dvc
 $ dvc plots show --no-csv-header logs.csv -y 2

@@ -52,7 +52,8 @@ adds the options to `dvc.yaml`.
   the prop name(s) without `--` in the argument sent to this option.
 
 - `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
-  header.
+  header. A 0-based numeric index can be used to identify each column instead of
+  names.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

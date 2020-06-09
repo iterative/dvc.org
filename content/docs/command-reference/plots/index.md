@@ -52,9 +52,9 @@ Continuous metrics can be organized as data series in JSON, CSV, or TSV files.
 DVC expects to see an array (or multiple arrays) of objects (usually _float
 numbers_) in the file.
 
-In tabular file formats such as CSV and TSV, each column (or field) is an array.
-`dvc plots show` can generate visuals for a specified column or a set of
-columns. Like `AUC` column:
+In tabular file formats such as CSV and TSV, each column is an array.
+`dvc plots` subcommands can produce plots for a specified column or a set of
+them. For example, `epoch`, `AUC`, and `loss` are the column names below:
 
 ```
 epoch, AUC, loss
@@ -64,10 +64,10 @@ epoch, AUC, loss
 37, 0.92302, 0.0299015
 ```
 
-In hierarchical file formats such as JSON, an array of JSON objects is expected.
-`dvc plots show` command can generate visuals for a specified field name or a
-set of fields from the array's object. Like `val_loss` field in the `train`
-array in this example:
+In hierarchical file formats such as JSON, an array of consistent JSON objects
+is expected. `dvc plots` subcommands can produce plots for a specified field or
+a set of them, from the array's objects. For example, `val_loss` is one of the
+field names in the `train` array below:
 
 ```
 {
@@ -119,7 +119,7 @@ There are two important fields that DVC adds to the plot data:
   command.
 
 Note that in the case of CSV/TSV metric files, column names from the table
-header (first row) are considered the field names.
+header (first row) are equivalent to field names.
 
 #### DVC template anchors
 
