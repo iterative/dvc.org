@@ -70,7 +70,7 @@ please see `dvc plots`.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Example: Hierarchical data (JSON)
+## Example: Hierarchical data
 
 We'll use tabular metrics file `train.json` for this example:
 
@@ -89,7 +89,7 @@ We'll use tabular metrics file `train.json` for this example:
 ```
 
 DVC identifies and plots JSON objects from the first JSON array found in the
-file:
+file (`train`):
 
 ```dvc
 $ dvc plots show train.json
@@ -98,7 +98,9 @@ file:///Users/usr/src/plots/train.json.html
 
 ![](/img/plots_show_json.svg)
 
-Same as with tabular data, use the `-y` option to change the field to plot:
+> Note that only the last field name (`loss`) is used for the plot by default.
+
+Use the `-y` option to change the field to plot:
 
 ```dvc
 $ dvc plots show -y accuracy train.json
