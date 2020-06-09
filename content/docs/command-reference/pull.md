@@ -45,15 +45,15 @@ stages in [`dvc.yaml`](/doc/user-guide/dvc-file-format) or
 in the <abbr>repository</abbr> (if using Git), nor will it download files that
 have not changed.
 
-The command `dvc status -c` can list files referenced in current `.dvc` files,
-but missing in the <abbr>cache</abbr>. It can be used to see what files
-`dvc pull` would download.
+The command `dvc status -c` can list files referenced in current stages (in
+`dvc.yaml`) or `.dvc` files, but missing in the <abbr>cache</abbr>. It can be
+used to see what files `dvc pull` would download.
 
 If one or more `targets` are specified, DVC only considers the files associated
-with those `.dvc` files. Using the `--with-deps` option, DVC tracks dependencies
-backward from the target [stage files](/doc/command-reference/run), through the
-corresponding [pipelines](/doc/command-reference/pipeline), to find data files
-to pull.
+with those stages or `.dvc` files. Using the `--with-deps` option, DVC tracks
+dependencies backward from the target [stage files](/doc/command-reference/run),
+through the corresponding [pipelines](/doc/command-reference/pipeline), to find
+data files to pull.
 
 After a data file is in cache, `dvc pull` can use OS-specific mechanisms like
 reflinks or hardlinks to put it in the workspace without copying. See
@@ -61,11 +61,11 @@ reflinks or hardlinks to put it in the workspace without copying. See
 
 ## Options
 
-- `-a`, `--all-branches` - determines the files to download by examining `.dvc`
-  files in all Git branches instead of just those present in the current
-  workspace. It's useful if branches are used to track experiments or project
-  checkpoints. Note that this can be combined with `-T` below, for example using
-  the `-aT` flag.
+- `-a`, `--all-branches` - determines the files to download by examining
+  `dvc.yaml` and `.dvc` files in all Git branches instead of just those present
+  in the current workspace. It's useful if branches are used to track
+  experiments or project checkpoints. Note that this can be combined with `-T`
+  below, for example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Useful if tags are used to track "checkpoints" of an experiment
@@ -77,17 +77,17 @@ reflinks or hardlinks to put it in the workspace without copying. See
   entire existing commit history of the project.
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
-  the target `.dvc` files (stages). If no `targets` are provided, this option is
-  ignored. By traversing all stage dependencies, DVC searches backward from the
-  target stages in the corresponding pipelines. This means DVC will not pull
-  files referenced in later stages than the `targets`.
+  the `targets`. If none are provided, this option is ignored. By traversing all
+  stage dependencies, DVC searches backward from the target stages in the
+  corresponding pipelines. This means DVC will not pull files referenced in
+  later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to pull by searching each target
-  directory and its subdirectories for `.dvc` files to inspect. If there are no
-  directories among the `targets`, this option is ignored.
+  directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
+  If there are no directories among the `targets`, this option is ignored.
 
 - `-f`, `--force` - does not prompt when removing workspace files, which occurs
-  when these file no longer match the current `.dvc` file references. This
+  when these file no longer match the current stages or `.dvc` files. This
   option surfaces behavior from the `dvc fetch` and `dvc checkout` commands
   because `dvc pull` in effect performs those 2 functions in a single command.
 
