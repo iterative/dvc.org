@@ -38,9 +38,9 @@ Luigi, etc.
   result, but we expect some GUI services will be created on top of DVC.
 
 - DVC has transparent design. Its
-  [internal files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
-  (including the <abbr>cache</abbr> directory) have a human-readable format and
-  can be easily reused by external tools.
+  [files and directories](/doc/user-guide/dvc-files-and-directories) (including
+  the <abbr>cache</abbr> directory) have a human-readable format and can be
+  easily reused by external tools.
 
 ### Git workflows/methodologies such as Gitflow
 

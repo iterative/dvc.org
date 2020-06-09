@@ -180,7 +180,7 @@ for more details.) This section contains the following options:
 ### state
 
 See
-[DVC Files and Directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
+[Internal directories and files](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files)
 to learn more about the state file (database) that is used for optimization.
 
 - `state.row_limit` - maximum number of entries in the state database, which
