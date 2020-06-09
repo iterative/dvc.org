@@ -5,7 +5,7 @@ Modify display properties of [plot metrics](/doc/command-reference/plots) files.
 ## Synopsis
 
 ```usage
-usage: dvc plots modify [-h] [-q | -v] [-t <template>] [-x X] [-y Y]
+usage: dvc plots modify [-h] [-q | -v] [-t <name_or_path>] [-x X] [-y Y]
                         [--no-csv-header] [--title <text>]
                         [--x-label <text>] [--y-label <text>]
                         [--unset [<prop> [<prop> ...]]] target
@@ -35,7 +35,7 @@ adds the options to `dvc.yaml`.
 
 ## Options
 
-- `-t <template>, --template <template>` - set a default
+- `-t <name_or_path>, --template <name_or_path>` - set a default
   [plot template](/doc/command-reference/plots#plot-templates).
 
 - `-x <field>` - set a default field name from which the X axis data comes from.

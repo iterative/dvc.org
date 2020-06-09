@@ -6,7 +6,7 @@ plotting them in a single image.
 ## Synopsis
 
 ```usage
-usage: dvc plots diff [-h] [-q | -v] [-t <template>]
+usage: dvc plots diff [-h] [-q | -v] [-t <name_or_path>]
                       [--targets [<path> [<path> ...]]] [-o <path>]
                       [-x <field>] [-y <field>] [--no-csv-header]
                       [--show-vega] [--title <text>]
@@ -47,7 +47,7 @@ please see `dvc plots`.
 
 - `--targets [TARGETS]` (**required**) - metrics file to visualize.
 
-- `-t <template>, --template <template>` -
+- `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
   with data. The default template is `.dvc/plots/default.json`. See more details
   in `dvc plots`.

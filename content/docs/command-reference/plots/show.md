@@ -5,7 +5,7 @@ Generate [plot](/doc/command-reference/plots) from a metrics file.
 ## Synopsis
 
 ```usage
-usage: dvc plots show [-h] [-q | -v] [-t <template>] [-o <path>]
+usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-o <path>]
                       [-x <field>] [-y <field>] [--no-csv-header]
                       [--show-vega] [--title <text>]
                       [--x-label <text>] [--y-label <text>]
@@ -32,7 +32,7 @@ please see `dvc plots`.
 
 ## Options
 
-- `-t <template>, --template <template>` -
+- `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
   with data. The default template is `.dvc/plots/default.json`. See more details
   in `dvc plots`.
