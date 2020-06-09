@@ -69,9 +69,10 @@ To actually
 [track the data](https://dvc.org/doc/tutorials/get-started/data-versioning),
 `git add` (and `git commit`) the import stage.
 
-Note that import stages are considered always locked, meaning that if you run
-`dvc repro`, they won't be updated. Use `dvc update` to update the downloaded
-data artifact from the source repo.
+Note that import stages are considered always
+[frozen](/doc/command-reference/freeze), meaning that if you run `dvc repro`,
+they won't be updated. Use `dvc update` to update the downloaded data artifact
+from the source repo.
 
 ## Options
 
@@ -245,8 +246,8 @@ Importing ...
 > Note that Git-tracked files can be imported from DVC repos as well.
 
 The file is imported, and along with it, an import stage
-([DVC-file](/doc/user-guide/dvc-file-format)) file is created. Check
-`it-standards.csv.dvc`:
+([`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files)) is created.
+Check `it-standards.csv.dvc`:
 
 ```yaml
 deps:

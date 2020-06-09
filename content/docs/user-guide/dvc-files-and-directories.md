@@ -55,7 +55,7 @@ Note that comments can be added to `.dvc` files and `dvc.yaml` using the
 > `dvc commit` commands, but not when a `.dvc` file is overwritten by
 > `dvc add`,`dvc import`, or `dvc import-url`.
 
-## dvc.yaml file
+## dvc.yaml files
 
 When you add commands to a pipeline with `dvc run`, the `dvc.yaml` file is
 created or updated. Here's a simple example:

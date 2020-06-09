@@ -30,9 +30,10 @@ specified by its `path` in a `repo` (<abbr>DVC project</abbr>), is stored.
 
 The URL is formed by reading the project's
 [remote configuration](/doc/command-reference/config#remote) and the
-[DVC-file](/doc/user-guide/dvc-files-and-directories) where the given `path` is
-found (`outs` field). The URL schema returned depends on the
-[type](/doc/command-reference/remote/add#supported-storage-types) of the
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) or
+[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) where the
+given `path` is found (`outs` field). The schema of the URL returned depends on
+the [type](/doc/command-reference/remote/add#supported-storage-types) of the
 `remote` used (see the [Parameters](#parameters) section).
 
 If the target is a directory, the returned URL will end in `.dir`. Refer to
@@ -90,7 +91,7 @@ The script above prints
 `https://remote.dvc.org/dataset-registry/a3/04afb96060aad90176268345e10355`
 
 This URL represents the location where the data is stored, and is built by
-reading the corresponding DVC-file
+reading the corresponding `.dvc` file
 ([`get-started/data.xml.dvc`](https://github.com/iterative/dataset-registry/blob/master/get-started/data.xml.dvc))
 where the `md5` file hash is stored,
 
