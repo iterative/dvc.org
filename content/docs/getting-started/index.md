@@ -14,7 +14,8 @@ and concepts of DVC step by step.
 Most of our commands are meant to be used inside a <abbr>DVC project</abbr>. To
 create one, move into a new or existing <abbr>workspace</abbr> and use
 `dvc init`. At initialization, the `.dvc/` directory is created for DVC's
-internal [files and directories](/doc/user-guide/dvc-files-and-directories):
+internal
+[files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files):
 
 ```dvc
 $ dvc init --no-scm
