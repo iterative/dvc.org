@@ -123,15 +123,14 @@ Track a file with DVC:
 
 ```dvc
 $ dvc add data.xml
+...
 
-Saving information to 'data.xml.dvc'.
+To track the changes with git, run:
 
-To track the changes with git run:
-
-	git add .gitignore data.xml.dvc
+        git add .gitignore data.xml.dvc
 ```
 
-As shown above, a [`.dvc` file](/doc/user-guide/dvc-file-format) has been
+As indicated above, a [`.dvc` file](/doc/user-guide/dvc-file-format) has been
 created for `data.xml`. Let's explore the result:
 
 ```dvc
@@ -144,32 +143,24 @@ $ tree
 Let's check the `data.xml.dvc` file inside:
 
 ```yaml
-md5: aae37d74224b05178153acd94e15956b
 outs:
-  - cache: true
-    md5: d8acabbfd4ee51c95da5d7628c7ef74b
-    metric: false
-    path: data.xml
-meta: # Special field to contain arbitary user data
-  name: John
-  email: john@xyz.com
+  - md5: 6137cde4893c59f76f005a8123d8e8e6
+    path: data.xml # .dvc files support comments :)
 ```
 
-This is a standard `.dvc` file with only one output (in the `outs` field). The
-hash value should correspond to a file path in the <abbr>cache</abbr>.
+This is a standard `.dvc` file with only one output (`outs` field). The hash
+value (`md5` field) corresponds to a file path in the <abbr>cache</abbr>.
 
-> Note that the `meta` values above were entered manually for this example. Meta
-> values and `#` comments are not preserved when a `.dvc` file is overwritten
+> Note that `#` comments are not preserved when a `.dvc` file is overwritten
 > with the `dvc add`, `dvc run`, `dvc import`, or `dvc import-url` commands.
 
 ```dvc
 $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
-
-.dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b: ASCII text
+.dvc/cache/61/37cde4893c59f76f005a8123d8e8e6: ASCII text
 ```
 
-Note that tracking compressed files (e.g. ZIP or TAR archives) is not
-recommended, as `dvc add` supports tracking directories. (Details below.)
+⚠️ Note that tracking compressed files (e.g. ZIP or TAR archives) is not
+recommended, as `dvc add` supports tracking directories (details below).
 
 ## Example: Directory
 
@@ -192,28 +183,17 @@ Tracking a directory with DVC as simple as with a single file:
 
 ```dvc
 $ dvc add pics
-Computing md5 for a large number of files. This is only done once.
-...
-Linking directory 'pics'.
-
-Saving information to 'pics.dvc'.
-...
 ```
 
 There are no [`.dvc` files](/doc/user-guide/dvc-file-format) generated within
-this directory structure, but the images are all added to the
-<abbr>cache</abbr>. DVC prints a message mentioning that MD5 hash values are
-computed for each file. A single `pics.dvc` file is generated for the top-level
+this directory structure to match each images, but the image files are all
+<abbr>cached</abbr>. A single `pics.dvc` file is generated for the top-level
 directory, and it contains:
 
 ```yaml
-md5: df06d8d51e6483ed5a74d3979f8fe42e
 outs:
-  - cache: true
-    md5: b8f4d5a78e55e88906d5f4aeaf43802e.dir
-    metric: false
+  - md5: ce57450aa92ab8f2b957c24b0df73edc.dir
     path: pics
-wdir: .
 ```
 
 > Refer to
@@ -221,34 +201,46 @@ wdir: .
 > for more info.
 
 This allows us to treat the entire directory structure as a single <abbr>data
-artifact</abbr>. This lets you pass the whole directory tree as a
+artifact</abbr>. For example, you can pass the whole directory tree as a
 <abbr>dependency</abbr> to a `dvc run` stage definition:
 
 ```dvc
-$ dvc run -f train.dvc \
+$ dvc run -n train \
           -d train.py -d pics \
           -M metrics.json -o model.h5 \
           python train.py
 ```
 
-> To follow the full example, see the [Versioning](/doc/tutorials/versioning)
-> tutorial.
+> To try this example, see the [Versioning](/doc/tutorials/versioning) tutorial.
 
 If instead we use the `--recursive` (`-R`) option, the output looks like this:
 
 ```dvc
 $ dvc add -R pics
-Saving information to 'pics/cat1.jpg.dvc'.
-Saving information to 'pics/cat3.jpg.dvc'.
-Saving information to 'pics/cat2.jpg.dvc'.
-Saving information to 'pics/cat4.jpg.dvc'.
-...
 ```
 
 In this case, a `.dvc` file is generated for each file in the `pics/` directory
-tree. No top-level `.dvc` file is generated, which is typically less convenient.
-For example, we cannot use the directory structure as one unit with `dvc run` or
-other commands.
+tree:
+
+```dvc
+$ tree pics
+pics
+├── train
+|   ├── cats
+|   |   ├── img1.jpg
+|   |   ├── img1.jpg.dvc
+|   |   ├── img2.jpg
+|   |   ├── img2.jpg.dvc
+|   |   ├── ...
+|   └── dogs
+|       ├── img1.jpg
+|       ├── img1.jpg.dvc
+|       ...
+```
+
+Note that no top-level `.dvc` file is generated, which is typically less
+convenient. For example, we cannot use the directory structure as one unit with
+`dvc run` or other commands.
 
 ## Example: Dvcignore
 
@@ -289,6 +281,7 @@ $ tree .dvc/cache
     └── 4bcc8502a70ac49bf441db350eafc2
 ```
 
-Only the hash values of directory (`dir/`) and `file2` have been cached.
+Only the hash values of the `dir/` directory (with `.dir` file extension) and
+`file2` have been cached.
 
 See [Dvcignore](/doc/user-guide/dvcignore) for more details.
