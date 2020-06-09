@@ -27,6 +27,11 @@
     ]
   },
   {
+    "slug": "getting-started",
+    "source": "getting-started/index.md",
+    "children": ["WIP"]
+  },
+  {
     "slug": "tutorials",
     "source": "tutorials/index.md",
     "children": [
