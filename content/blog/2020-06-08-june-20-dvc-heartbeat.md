@@ -9,7 +9,7 @@ descriptionLong: |
   Catch up on new DVC releases, talks, and projects in our community. 
   This month, learn about finishing touches on DVC 1.0, DVC in biomedical
   research, recommended reading and upcoming MLOps talks.
-picture: 2020-06-08/June_20_Heartbeat.png
+picture: 2020-06-08/June_20_Heartbeat_small.png
 author: elle_obrien
 commentsUrl: https://discuss.dvc.org/t/june-20-heartbeat/404
 tags:
