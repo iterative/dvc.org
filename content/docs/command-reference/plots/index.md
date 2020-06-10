@@ -14,7 +14,7 @@ positional arguments:
   COMMAND
     show         Generate plot from a metrics file.
     diff         Plot differences in metrics between commits.
-    modify       Modify plot props associated with a target file.
+    modify       Modify plot properties associated with a target file.
 ```
 
 ## Types of metrics

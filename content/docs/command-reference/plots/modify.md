@@ -8,11 +8,11 @@ Modify display properties of [plot metrics](/doc/command-reference/plots) files.
 usage: dvc plots modify [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
                         [-y <field>] [--no-header] [--title <text>]
                         [--x-label <text>] [--y-label <text>]
-                        [--unset [<prop> [<prop> ...]]]
+                        [--unset [<property> [<property> ...]]]
                         target
 
 positional arguments:
-  target                Metric file to set props to
+  target                Metric file to set properties to
 ```
 
 ## Description
@@ -20,7 +20,7 @@ positional arguments:
 It might be not convenient for users or automation systems to specify all the
 _display properties_ (such as `y-label`, `template`, `title`, etc.) each time
 plots are generated with `dvc plot show` or `dvc plot diff`. This command sets
-(or unsets) default display props for a specific metrics file.
+(or unsets) default display properties for a specific metrics file.
 
 The path to the metrics file `target` is required. It must be listed in a
 [`dvc.yaml`](/doc/user-guide/dvc-file-format) file (see the `--plots` option of
@@ -29,7 +29,7 @@ The path to the metrics file `target` is required. It must be listed in a
 The available display properties are expressed as the [options](#options) of
 this command (prefixed with `--`).
 
-> Display props are based on the
+> Display properties are based on the
 > [Vega specification](https://vega.github.io/vega/docs/specification/)
 
 ## Options
@@ -49,8 +49,9 @@ this command (prefixed with `--`).
 
 - `--title <text>` - set a default plot title.
 
-- `--unset [<prop> [<prop> ...]]` - unset one or more display properties. Use
-  the prop name(s) without `--` in the argument sent to this option.
+- `--unset [<property> [<property> ...]]` - unset one or more display
+  properties. Use the property name(s) without `--` in the argument sent to this
+  option.
 
 - `--no-header` - lets DVC know that the `target` CSV or TSV does not have a
   header. A 0-based numeric index can be used to identify each column instead of
