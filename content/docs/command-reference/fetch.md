@@ -23,6 +23,7 @@ of the project, but without placing them in the <abbr>workspace</abbr>. This
 makes the data files available for linking (or copying) into the workspace.
 (Refer to [dvc config cache.type](/doc/command-reference/config#cache).) Along
 with `dvc checkout`, it's performed automatically by `dvc pull` when the target
+[`dvc.yaml`](/doc/user-guide/dvc-file-format) or
 [`.dvc` files](/doc/user-guide/dvc-file-format) are not already in the cache:
 
 ```
@@ -50,7 +51,7 @@ on DVC remotes.) These necessary data or model files are listed as
 [stage](/doc/command-reference/run)) so they are required to
 [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
 corresponding [pipeline](/doc/command-reference/pipeline). (See
-[DVC-File Format](/doc/user-guide/dvc-file-format) for more information on
+[`.dvc` File Format](/doc/user-guide/dvc-file-format) for more information on
 dependencies and outputs.)
 
 `dvc fetch` ensures that the files needed for a `.dvc` file to be
@@ -77,14 +78,14 @@ considered by `dvc fetch` (unless the `-a` or `-T` options are used).
   `dvc remote list`).
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
-  the target `.dvc` files (stages). If no `targets` are provided, this option is
-  ignored. By traversing all stage dependencies, DVC searches backward from the
-  target stages in the corresponding pipelines. This means DVC will not fetch
-  files referenced in later stages than the `targets`.
+  the `targets`. If none are provided, this option is ignored. By traversing all
+  stage dependencies, DVC searches backward from the target stages in the
+  corresponding pipelines. This means DVC will not fetch files referenced in
+  later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to fetch by searching each target
-  directory and its subdirectories for `.dvc` files to inspect. If there are no
-  directories among the `targets`, this option is ignored.
+  directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
+  If there are no directories among the `targets`, this option is ignored.
 
 - `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
   handle the downloading of files from the remote. The default value is

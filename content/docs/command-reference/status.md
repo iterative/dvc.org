@@ -34,15 +34,16 @@ options:
 | remote | `--remote`     | Comparisons are made between the cache, and the given remote. Remote storage is defined using the `dvc remote` command.     |
 | remote | `--cloud`      | Comparisons are made between the cache, and the default remote, typically defined with `dvc remote --default`.              |
 
-DVC determines which data and code files to compare by analyzing all
+DVC determines which data and code files to compare by analyzing all stages (in
+[`dvc.yaml`](/doc/user-guide/dvc-file-format)) and
 [`.dvc` files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>
 (the `--all-branches` and `--all-tags` options compare multiple workspace
 versions).
 
-The comparison can be limited to certain `.dvc` files only, by listing them as
-`targets`. (Changes are reported only against these.) When this is combined with
-the `--with-deps` option, a search is made for changes in other stages that
-affect each target.
+The comparison can be limited to certain stages (in `dvc.yaml`) and `.dvc` files
+only, by listing them as `targets`. (Changes are reported only against these.)
+When this is combined with the `--with-deps` option, a search is made for
+changes in other stages that affect each target.
 
 In the `local` mode, changes are detected through the hash value of every file
 listed in every `.dvc` file in question against the corresponding file in the
@@ -120,19 +121,20 @@ workspace) is different from remote storage. Bringing the two into sync requires
   `-aT` flag.
 
 - `-R`, `--recursive` - determines the files to check status for by searching
-  each target directory and its subdirectories for `.dvc` files to inspect. If
-  there are no directories among the targets, this option is ignored.
+  each target directory and its subdirectories for stages (in `dvc.yaml`) and
+  `.dvc` files to inspect. If there are no directories among the targets, this
+  option is ignored.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git  
   commits as well as the workspace. Useful for comparing cache content for the
   entire existing commit history of the project.
 
 - `-d`, `--with-deps` - determines files to check by tracking dependencies to
-  the target `.dvc` files (stages). If no `targets` are provided, this option is
-  ignored. By traversing all stage dependencies, DVC searches backward from the
-  target stages in the corresponding pipelines. This means DVC will not show
-  changes occurring in later stages than the `targets`. Applies whether or not
-  `--cloud` is specified.
+  the `targets`. If none are provided, this option is ignored. By traversing all
+  stage dependencies, DVC searches backward from the target stages in the
+  corresponding pipelines. This means DVC will not show changes occurring in
+  later stages than the `targets`. Applies whether or not `--cloud` is
+  specified.
 
 - `-r <name>`, `--remote <name>` - specifies which remote storage (see
   `dvc remote list`) to compare against. Implies `--cloud`.

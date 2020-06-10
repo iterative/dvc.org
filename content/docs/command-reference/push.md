@@ -89,14 +89,14 @@ the target [stage files](/doc/command-reference/run), through the corresponding
   the entire existing commit history of the project.
 
 - `-d`, `--with-deps` - determines files to upload by tracking dependencies to
-  the target `.dvc` files (stages). If no `targets` are provided, this option is
-  ignored. By traversing all stage dependencies, DVC searches backward from the
-  target stages in the corresponding pipelines. This means DVC will not push
-  files referenced in later stages than the `targets`.
+  the `targets`. If none are provided, this option is ignored. By traversing all
+  stage dependencies, DVC searches backward from the target stages in the
+  corresponding pipelines. This means DVC will not push files referenced in
+  later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to push by searching each target
-  directory and its subdirectories for `.dvc` files to inspect. If there are no
-  directories among the `targets`, this option is ignored.
+  directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
+  If there are no directories among the `targets`, this option is ignored.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to push from (see
