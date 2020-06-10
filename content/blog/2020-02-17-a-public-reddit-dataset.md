@@ -110,7 +110,7 @@ you'll need to [install DVC](https://dvc.org/doc/install); one of the simplest
 ways is `pip install dvc`.
 
 Say you have a directory on your local machine where you plan to build some
-analysis scripts. You can run the command:
+analysis scripts. You run:
 
 ```dvc
 $ dvc get https://github.com/iterative/aita_dataset \
@@ -317,10 +317,10 @@ refine these existing methods. And there’s almost certainly room to push the
 state of the art in asshole detection!
 
 If you're interested in learning more about using Reddit data, check out
-[pushshift.io](https://pushshift.io/), a database that contains basically all of
-Reddit's content (so why make this dataset? I wanted to remove some of the
-barriers to analyzing text from r/AmItheAsshole by providing an
-already-processed and cleaned version of the data that can be downloaded with a
-line of code; pushshift takes some work). You might use pushshift's API and/or
-praw to augment this dataset in some way- perhaps to compare activity in this
-subreddit with another, or broader patterns on Reddit.
+[pushshift.io](https://pushshift.io/), a database that contains all of Reddit's
+content (so why make this dataset? I wanted to remove some of the barriers to
+analyzing text from r/AmItheAsshole by providing an already-processed and
+cleaned version of the data that can be downloaded with a line of code;
+pushshift takes some work). You might use pushshift's API and/or praw to augment
+this dataset in some way- perhaps to compare activity in this subreddit with
+another, or broader patterns on Reddit.
