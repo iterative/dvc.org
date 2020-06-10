@@ -8,7 +8,7 @@ Remove DVC-tracked files or directories from the <abbr>workspace</abbr>.
 usage: dvc remove [-h] [-q | -v] [-o | -p] [-f] targets [targets ...]
 
 positional arguments:
-  targets        stages (found in `dvc.yaml`) or `.dvc` files to remove.
+  targets        stages (found in dvc.yaml) or .dvc files to remove.
 ```
 
 ## Description
