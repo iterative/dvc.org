@@ -43,9 +43,9 @@ here are some of the big features coming:
 - **Human readable and writeable pipelines.** We're reworking pipelines so you
   can modify dependencies, outputs, metrics, plots, and entire stages easily:
   via manual edits to a `.yaml` pipeline fines. This redesign will consolidate
-  pipline `.dvc` files into a single file (yay, simpler working directory).
-  We're also making helper scripts to ease the transition from classic DVC
-  pipelines to 1.0- pipeline enthusiasts, we have your back.
+  pipline `.dvc` files into a single file (yay, simpler working directory). 
+  No worries for pipeline enthusiasts- DVC 1.0 is backwards compatible, so 
+  your existing projects won't be interrupted.
 
 - **Run cache.** One of the most exciting features is the run-cache, a local
   record of pipeline versions that have previously been run and the outputs of
