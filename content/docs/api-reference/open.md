@@ -113,7 +113,7 @@ should handle the event-driven parsing of the document in this case.) This
 increases the performance of the code (minimizing memory usage), and is
 typically faster than loading the whole data into memory.
 
-> If you want to load the complete file contents into memory, you can use
+> If you wanted to load the complete file contents into memory, you can use
 > `dvc.api.read()` instead:
 >
 > ```py
