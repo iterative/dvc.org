@@ -1,7 +1,7 @@
 # plots diff
 
 Show multiple versions of [plot metrics](/doc/command-reference/plots) by
-plotting them in a single image.
+plotting them in a single image. This allows to easily compare them.
 
 ## Synopsis
 
@@ -14,7 +14,7 @@ usage: dvc plots diff [-h] [-q | -v] [--targets [<path> [<path> ...]]]
                       [revisions [revisions ...]]
 
 positional arguments:
-  revisions             Git commits to plot from/to
+  revisions             Git commits to find metrics to compare
 ```
 
 ## Description
