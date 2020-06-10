@@ -21,7 +21,7 @@ positional arguments:
 
 This command is a way to visualize the "difference" between metrics among
 experiments in the <abbr>repository</abbr> history, by plotting multiple
-versions of the metrics.
+versions of the metrics. All plots defined in `dvc.yaml` are used by default.
 
 > Note that unlike `dvc metrics diff`, this command does not calculate numeric
 > differences between metric file values.
@@ -47,7 +47,7 @@ please see `dvc plots`.
 
 - `--targets <path>` - specific metric files to visualize. These must be listed
   in a [`dvc.yaml`](/doc/user-guide/dvc-file-format) file (see the `--plots`
-  option of `dvc run`). All plots are shown by default.
+  option of `dvc run`).
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with a `.html` file extension (or
