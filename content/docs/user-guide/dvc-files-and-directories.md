@@ -117,7 +117,8 @@ fields:
 - `outs`: List of <abbr>outputs</abbr> for this stage
 - `params` (optional): List of the [parameter](/doc/command-reference/params)
   names and their current values
-- `metric` (optional): List of [metric](/doc/command-reference/metrics) files
+- `metrics` (optional): List of [metrics](/doc/command-reference/metrics)
+- `plots` (optional): List of [plot metrics](/doc/command-reference/plots)
 - `frozen` (optional): Whether or not this stage is frozen from reproduction
 - `always_changed` (optional) : Whether or not this stage is considered as
   changed by commands such as `dvc status` and `dvc repro`. `false` by default
@@ -144,9 +145,9 @@ A `dvc.yaml` dependency entry consists of a these possible fields:
   > [External Dependencies](/doc/user-guide/external-dependencies) for more
   > info.
 
-Metric entries can contain these fields:
+Metrics entries can contain these fields:
 
-- `type`: Type of the metric file (`json`)
+- `type`: Type of the metrics file (`json`)
 - `xpath`: Path within the metric file to the metrics data(e.g. `AUC.value` for
   `{"AUC": {"value": 0.624321}}`)
 
