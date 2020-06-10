@@ -14,9 +14,9 @@ usage: dvc pull [-h] [-q | -v] [-j <number>]
                 [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these stages or `.dvc` files.
+  targets        Limit command scope to these stages or .dvc files.
                  Using -R, directories can also be given, to search
-                 `.dvc` files in.
+                 .dvc files in.
 ```
 
 ## Description
