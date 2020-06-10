@@ -13,9 +13,9 @@ usage: dvc status [-h] [-v] [-j <number>] [-q] [-c]
                   [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these stages or `.dvc` files.
+  targets        Limit command scope to these stages or .dvc files.
                  Using -R, directories can also be given, to search
-                 `.dvc` files in.
+                 .dvc files in.
 ```
 
 ## Description
