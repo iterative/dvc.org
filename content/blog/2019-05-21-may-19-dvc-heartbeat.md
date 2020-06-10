@@ -256,9 +256,9 @@ $ dvc metrics show metrics.json \
 
 There are a few options to add a new dependency:
 
-- opening a file with your favorite editor and adding a dependency there
-  without md5. DVC will understand that that stage is changed and will re-run
-  and re-calculate md5 checksums during the next DVC repro;
+- opening a file with your favorite editor and adding a dependency there without
+  md5. DVC will understand that that stage is changed and will re-run and
+  re-calculate md5 checksums during the next DVC repro;
 
 - use `dvc run --no-exec` is another option. It will rewrite the existing file
   for you with new parameters.
