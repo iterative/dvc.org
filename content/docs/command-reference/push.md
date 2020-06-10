@@ -44,7 +44,7 @@ Under the hood a few actions are taken:
   The command options listed below will either limit or expand the set of stages
   (in dvc.yaml) or `.dvc` files to consult.
 
-- For each <abbr>output</abbr> referenced from each selected stage of `.dvc`
+- For each <abbr>output</abbr> referenced in every selected stage or `.dvc`
   file, DVC finds a corresponding file or directory in the <abbr>cache</abbr>.
   DVC then checks whether it exists in the remote. From this, DVC gathers a list
   of files missing from the remote storage.
