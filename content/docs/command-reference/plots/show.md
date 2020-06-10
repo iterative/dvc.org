@@ -6,7 +6,7 @@ Generate [plot](/doc/command-reference/plots) from a metrics file.
 
 ```usage
 usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
-                      [-y <field>] [--no-csv-header] [--title <text>]
+                      [-y <field>] [--no-header] [--title <text>]
                       [--x-label <text>] [--y-label <text>] [-o <path>]
                       [--show-vega]
                       [targets [targets ...]]
@@ -65,9 +65,8 @@ please see `dvc plots`.
   [Vega specification](https://vega.github.io/vega/docs/specification/) file
   instead of HTML. See `dvc plots` for more info.
 
-- `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
-  header. A 0-based numeric index can be used to identify each column instead of
-  names.
+- `--no-header` - lets DVC know that CSV or TSV `targets` do not have a header.
+  A 0-based numeric index can be used to identify each column instead of names.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -151,12 +150,11 @@ file:///Users/usr/src/plots/logs.csv.html
 
 ### Headerless tables
 
-A tabular data file without headers can be plotted with `--no-csv-header`
-option. A column can be specified with `-y` by it's numeric position (starting
-with `0`):
+A tabular data file without headers can be plotted with `--no-header` option. A
+column can be specified with `-y` by it's numeric position (starting with `0`):
 
 ```dvc
-$ dvc plots show --no-csv-header logs.csv -y 2
+$ dvc plots show --no-header logs.csv -y 2
 file:///Users/usr/src/plots/logs.csv.html
 ```
 

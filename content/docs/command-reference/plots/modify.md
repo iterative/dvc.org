@@ -6,7 +6,7 @@ Modify display properties of [plot metrics](/doc/command-reference/plots) files.
 
 ```usage
 usage: dvc plots modify [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
-                        [-y <field>] [--no-csv-header] [--title <text>]
+                        [-y <field>] [--no-header] [--title <text>]
                         [--x-label <text>] [--y-label <text>]
                         [--unset [<prop> [<prop> ...]]]
                         target
@@ -52,7 +52,7 @@ this command (prefixed with `--`).
 - `--unset [<prop> [<prop> ...]]` - unset one or more display properties. Use
   the prop name(s) without `--` in the argument sent to this option.
 
-- `--no-csv-header` - lets DVC know that the `target` CSV or TSV does not have a
+- `--no-header` - lets DVC know that the `target` CSV or TSV does not have a
   header. A 0-based numeric index can be used to identify each column instead of
   names.
 

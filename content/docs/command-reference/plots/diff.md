@@ -8,7 +8,7 @@ plotting them in a single image. This allows to easily compare them.
 ```usage
 usage: dvc plots diff [-h] [-q | -v] [--targets [<path> [<path> ...]]]
                       [-t <name_or_path>] [-x <field>] [-y <field>]
-                      [--no-csv-header] [--title <text>]
+                      [--no-header] [--title <text>]
                       [--x-label <text>] [--y-label <text>] [-o <path>]
                       [--show-vega]
                       [revisions [revisions ...]]
@@ -78,7 +78,7 @@ please see `dvc plots`.
   [Vega specification](https://vega.github.io/vega/docs/specification/) file
   instead of HTML. See `dvc plots` for more info.
 
-- `--no-csv-header` - lets DVC know that CSV or TSV `--targets` do not have a
+- `--no-header` - lets DVC know that CSV or TSV `--targets` do not have a
   header. A 0-based numeric index can be used to identify each column instead of
   names.
 
