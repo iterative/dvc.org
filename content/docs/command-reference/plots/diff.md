@@ -22,11 +22,6 @@ positional arguments:
 This command is a way to visualize the difference between metrics among
 experiments in the <abbr>repository</abbr> history.
 
-Target metric files can be specified with the `--targets` (`-t`) option. These
-should be <abbd>outputs</abbr> of one of the project stages (see the `--plots`
-option of `dvc run`), listed in a
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file.
-
 `revisions` are Git commit hashes, tag, or branch names. If none are specified,
 `dvc plots diff` compares targets currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with their latest committed
@@ -47,6 +42,8 @@ please see `dvc plots`.
 ## Options
 
 - `--targets <path>` - metric files to visualize. Shows all plots by default.
+  These should be <abbd>outputs</abbr> of one of the project stages (see the
+  `--plots` option of `dvc run`)
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with a `.html` file extension (or
@@ -60,10 +57,12 @@ please see `dvc plots`.
 - `-x <field>` - field name from which the X axis data comes from. An
   auto-generated `index` field is used by default. See
   [Custom templates](/doc/command-reference/plots#custom-templates) for more
-  information on this `index` field.
+  information on this `index` field. Column names or numbers are expected for
+  tabular metric files.
 
 - `-y <field>` - field name from which the Y axis data comes from. The last
-  column or field found in the `--targets` is used by default.
+  field found in the `--targets` is used by default. Column names or numbers are
+  expected for tabular metric files.
 
 - `--x-label <text>` - X axis label. The X field name is the default.
 
