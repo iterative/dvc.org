@@ -46,8 +46,8 @@ in the <abbr>repository</abbr> (if using Git), nor will it download files that
 have not changed.
 
 The command `dvc status -c` can list files referenced in current stages (in
-`dvc.yaml`) or `.dvc` files, but missing from the <abbr>cache</abbr>. It can
-be used to see what files `dvc pull` would download.
+`dvc.yaml`) or `.dvc` files, but missing from the <abbr>cache</abbr>. It can be
+used to see what files `dvc pull` would download.
 
 If one or more `targets` are specified, DVC only considers the files associated
 with those stages or `.dvc` files. Using the `--with-deps` option, DVC tracks
