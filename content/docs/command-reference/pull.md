@@ -87,7 +87,7 @@ reflinks or hardlinks to put it in the workspace without copying. See
   If there are no directories among the `targets`, this option is ignored.
 
 - `-f`, `--force` - does not prompt when removing workspace files, which occurs
-  when these file no longer match the current stages or `.dvc` files. This
+  when these files no longer match the current stages or `.dvc` files. This
   option surfaces behavior from the `dvc fetch` and `dvc checkout` commands
   because `dvc pull` in effect performs those 2 functions in a single command.
 
