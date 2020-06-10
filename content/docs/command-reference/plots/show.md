@@ -21,11 +21,9 @@ positional arguments:
 This command provides a quick way to visualize metrics such as loss functions,
 AUC curves, confusion matrices, etc.
 
-Target metric files can be specified with the `targets` argument. These should
-be <abbd>outputs</abbr> of one of the
-[DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots` option
-of `dvc run`), listed in a
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file.
+Optional metric file `targets` are accepted. These must be listed in a
+[`dvc.yaml`](/doc/user-guide/dvc-file-format) file (see the `--plots` option of
+`dvc run`).
 
 The plot style can be customized with
 [plot templates](/doc/command-reference/plots#plot-templates), using the

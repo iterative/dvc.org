@@ -45,9 +45,9 @@ please see `dvc plots`.
 
 ## Options
 
-- `--targets <path>` - metric files to visualize. Shows all plots by default.
-  These should be <abbd>outputs</abbr> of one of the project stages (see the
-  `--plots` option of `dvc run`)
+- `--targets <path>` - specific metric files to visualize. These must be listed
+  in a [`dvc.yaml`](/doc/user-guide/dvc-file-format) file (see the `--plots`
+  option of `dvc run`). All plots are shown by default.
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with a `.html` file extension (or

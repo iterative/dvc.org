@@ -20,13 +20,11 @@ positional arguments:
 It might be not convenient for users or automation systems to specify all the
 _display properties_ (such as `y-label`, `template`, `title`, etc.) each time
 plots are generated with `dvc plot show` or `dvc plot diff`. This command sets
-(or unsets) default display props for specific plot files.
+(or unsets) default display props for a specific metrics file.
 
-The required `target` metrics file should be an <abbd>output</abbr> of one of
-the [DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots`
-option of `dvc run`), listed in a
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file. `dvc plots modify`
-adds the options to `dvc.yaml`.
+The path to the metrics file `target` is required. It must be listed in a
+[`dvc.yaml`](/doc/user-guide/dvc-file-format) file (see the `--plots` option of
+`dvc run`). `dvc plots modify` adds the display properties to `dvc.yaml`.
 
 The available display properties are expressed as the [options](#options) of
 this command (prefixed with `--`).
