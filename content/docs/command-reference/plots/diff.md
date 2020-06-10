@@ -19,14 +19,18 @@ positional arguments:
 
 ## Description
 
-This command is a way to visualize the difference between metrics among
-experiments in the <abbr>repository</abbr> history.
+This command is a way to visualize the "difference" between metrics among
+experiments in the <abbr>repository</abbr> history, by plotting multiple
+versions of the metrics.
+
+> Note that unlike `dvc metrics diff`, this command does not calculate numeric
+> differences between metric file values.
 
 `revisions` are Git commit hashes, tag, or branch names. If none are specified,
 `dvc plots diff` compares targets currently present in the
 <abbr>workspace</abbr> (uncommitted changes) with their latest committed
-versions (required). A single specified revision results in plotting the
-difference between the workspace and that version.
+versions (required). A single specified revision results in comparing the
+workspace and that version.
 
 Note that any number of `revisions` can be provided, and the resulting plot
 shows all of them in a single output.
@@ -87,8 +91,7 @@ please see `dvc plots`.
 
 ## Examples
 
-To visualize the difference between uncommitted changes of a metrics file and
-the last commit:
+To compare uncommitted changes of a metrics file and its last committed version:
 
 ```dvc
 $ dvc plots diff --targets logs.csv --x-label x
@@ -99,8 +102,8 @@ file:///Users/dmitry/src/plots/logs.html
 
 > Note that we renamed the X axis label with option `--x-label x`.
 
-The difference between two versions (commit hashes, tags, or branches can be
-provided):
+Compare two specific versions (commit hashes, tags, or branches can be provided,
+for example):
 
 ```dvc
 $ dvc plots diff --targets logs.csv HEAD 0135527
@@ -129,7 +132,7 @@ cat,turtle
 
 The predefined confusion matrix
 [template](/doc/command-reference/plots#plot-templates) (in
-`.dvc/plots/confusion.json`) shows how metric differences can be faceted by
+`.dvc/plots/confusion.json`) shows how metric comparisons can be faceted by
 separate plots. It can be enabled with `-t` (`--template`):
 
 ```dvc
