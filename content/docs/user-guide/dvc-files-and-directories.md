@@ -27,13 +27,17 @@ When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add` or
 data with DVC.
 
 They use a simple YAML format that can be easily written or altered manually.
-Here is a sample:
+Here is a full sample:
 
 ```yaml
 outs:
   - md5: a304afb96060aad90176268345e10355
     path: data.xml
-# Manual comments can be added in.
+
+# Comments and user metadata are supported.
+meta:
+  name: 'John Doe'
+  email: john@doe.com
 ```
 
 `.dvc` files can contain the following two fields:
@@ -41,6 +45,9 @@ outs:
 - `outs`: List of <abbr>outputs</abbr> for this `.dvc` file
 - `deps` (optional): List of <abbr>dependencies</abbr> for this stage, only
   present when `dvc import` and `dvc import-url` are used.
+- `meta` (optional): Arbitrary information can be added here manually. Any YAML
+  contents can be added. `meta` contents are ignored by DVC, but they can be
+  useful for user processes that read `.dvc` files.
 
 An output entry can consist of these fields:
 
@@ -72,9 +79,9 @@ A `.dvc` file dependency entry consists of a these possible fields:
 Note that comments can be added to `.dvc` files and `dvc.yaml` using the
 `# comment` syntax.
 
-> `.dvc` file comments are preserved among executions of the `dvc repro` and
-> `dvc commit` commands, but not when a `.dvc` file is overwritten by
-> `dvc add`,`dvc import`, or `dvc import-url`.
+> `meta` fields and `#` comments are preserved among executions of the
+> `dvc repro` and `dvc commit` commands, but not when a `.dvc` file is
+> overwritten by `dvc add`,`dvc import`, or `dvc import-url`.
 
 ## dvc.yaml files
 
@@ -86,21 +93,24 @@ stages:
   stageone:
     cmd: python cmd.py input.data output.data metrics.json
     deps:
-    - cmd.py
-    - input.data
+      - cmd.py
+      - input.data
     outs:
-    - output.data
+      - output.data
     metrics:
-    - metrics.json
+      - metrics.json
   stagetwo:
     cmd: python ...
-    ...
+    meta: '2nd stage' # User metadata and comments are supported.
+    deps: ...
 ```
 
 `dvc.yaml` files consists of a group of `stages` with names provided explicitly
 by the user with the `--name` (`-n`) option of `dvc run`.
 
-Each stage can contain the following fields:
+Each stage's contents are similar to individual [`dvc` files](#dvcfiles) but
+they can contain more information in `dvc.yaml` These are the possible following
+fields:
 
 - `cmd`: Executable command defined in this stage
 - `deps`: List of <abbr>dependencies</abbr> for this stage
@@ -111,6 +121,9 @@ Each stage can contain the following fields:
 - `frozen` (optional): Whether or not this stage is frozen from reproduction
 - `always_changed` (optional) : Whether or not this stage is considered as
   changed by commands such as `dvc status` and `dvc repro`. `false` by default
+- `meta` (optional): Arbitrary information can be added here manually. Any YAML
+  contents can be added. `meta` contents are ignored by DVC, but they can be
+  useful for user processes that read `.dvc` files.
 
 An output entry consists of these fields:
 
@@ -139,8 +152,8 @@ Metric entries can contain these fields:
 
 `dvc.yaml` files also support `# comments`.
 
-> `dvc.yaml` comments are preserved among executions of `dvc run`, `dvc repro`,
-> and `dvc commit`.
+> `meta` fields and `#` comments are preserved among executions of `dvc run`,
+> `dvc repro`, and `dvc commit`.
 
 ## Internal directories and files
 
