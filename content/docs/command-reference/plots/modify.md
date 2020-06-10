@@ -53,7 +53,8 @@ this command (prefixed with `--`).
   the prop name(s) without `--` in the argument sent to this option.
 
 - `--no-csv-header` - lets DVC know that the `target` CSV or TSV does not have a
-  header.
+  header. A 0-based numeric index can be used to identify each column instead of
+  names.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
