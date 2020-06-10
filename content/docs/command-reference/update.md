@@ -11,7 +11,7 @@ usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R]
                   targets [targets ...]
 
 positional arguments:
-  targets        `.dvc` files to update.
+  targets        .dvc files to update.
 ```
 
 ## Description
