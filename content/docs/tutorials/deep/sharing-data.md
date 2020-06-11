@@ -38,8 +38,7 @@ $ dvc push
 ```
 
 The command does not push all cached files, but only the ones currently
-references in the <abbr>workspace</abbr> (in the _working tree_ of the Git
-repo).
+referenced in the <abbr>workspace</abbr>.
 
 For example, in this tutorial 16 data files were created and only 9 will be
 pushed because the rest of the data files belong to different branches like

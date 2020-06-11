@@ -368,7 +368,7 @@ Once that's done, check the AUC metric again for an improvement:
 
 ```dvc
 $ dvc metrics show -a
-working tree:
+workspace:
 	auc.metric: AUC: 0.648462
 master:
 	auc.metric: AUC: 0.587951

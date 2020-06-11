@@ -105,7 +105,7 @@ efficiency:
 
 ## Configuring DVC cache file link type
 
-By default DVC tries to use reflinks for the <abbr>cache</abbr> if available on
+By default, DVC tries to use reflinks for the <abbr>cache</abbr> if available on
 your system, however this is not the most common case at this time, so it falls
 back to the copying strategy. If you wish to enable hard or soft links, you can
 configure DVC like this:

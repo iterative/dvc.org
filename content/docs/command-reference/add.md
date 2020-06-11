@@ -16,23 +16,27 @@ positional arguments:
 ## Description
 
 The `dvc add` command is analogous to `git add`, in that it makes DVC aware of
-the target data, as a first step to version it. It creates a
+the target data, in order to start versioning it. It creates a
 [`.dvc` file](/doc/user-guide/dvc-file-format) to track the added data.
 
-The `targets` are files or directories to add with this command, that are turned
-into <abbr>data artifacts</abbr> of the <abbr>project</abbr>. By default, these
-are committed to the <abbr>cache</abbr> (use the `--no-commit` option to avoid
-this, and `dvc commit` to finish the process when needed).
+This command can be used to
+[version control](/doc/use-cases/versioning-data-and-model-files) large files,
+models, dataset directories, etc. that are too big for Git.
 
-Note that [external data](/doc/user-guide/managing-external-data) (targets
-outside the <abbr>workspace</abbr>) is supported.
+The `targets` are the files or directories to add, which are turned into
+<abbr>data artifacts</abbr> of the <abbr>project</abbr>. These are stored in the
+<abbr>cache</abbr> by default (use the `--no-commit` option to avoid this, and
+`dvc commit` to finish the process when needed).
+
+> See also `dvc run` for more advanced ways to version intermediate and final
+> results (like ML models).
 
 Under the hood, a few actions are taken for each file (or directory) in
 `targets`:
 
 1. Calculate the file hash.
-2. Move the file contents to the cache directory (by default in `.dvc/cache`),
-   using the file hash to form the cached file names. (See
+2. Move the file contents to the cache (by default in `.dvc/cache`), using the
+   file hash to form the cached file names. (See
    [Structure of cache directory](/doc/user-guide/dvc-files-and-directories#structure-of-cache-directory)
    for more details.)
 3. Attempt to replace the file with a link to the cached data (more details
@@ -59,34 +63,34 @@ files that can be tracked with Git. See
 To avoid adding files inside a directory accidentally, you can add the
 corresponding [patterns](/doc/user-guide/dvcignore) in a `.dvcignore` file.
 
-By default DVC tries to use reflinks (see
+By default, DVC tries to use reflinks (see
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to avoid copying any file contents and to optimize `.dvc` file operations for
 large files. DVC also supports other link types for use on file systems without
 `reflink` support, but they have to be specified manually. Refer to the
 `cache.type` config option in `dvc config cache` for more information.
 
-A `dvc add` target can be an individual file or a directory. There are two ways
-to work with directory hierarchies with `dvc add`:
+### Tracking directories
 
-1. With `dvc add --recursive`, the hierarchy is traversed and every file is
-   added individually as described above. This means every file has its own
-   `.dvc` file, and a corresponding cached file is created (unless the
-   `--no-commit` option is used).
-2. When not using `--recursive` a `.dvc` file is created for the top of the
-   directory (with default name `dirname.dvc`). Every file in the hierarchy is
-   added to the cache (unless the `--no-commit` option is used), but DVC does
-   not produce individual `.dvc` files for each file in the directory tree.
-   Instead, the single `.dvc` file references a special JSON file in the cache
-   (with `.dir` extension), that in turn points to the files added from the
-   hierarchy.
+A `dvc add` target can be an individual file or a directory. In the latter case,
+a [`.dvc` file](/doc/user-guide/dvc-file-format) is created for the top of the
+directory (with default name `<dir_name>.dvc`).
 
-`dvc add` is typically used to version control raw data or initial datasets from
-which data processing [pipelines](/doc/command-reference/pipeline) are built,
-but it can be used to track any large file or directory. We recommend using
-`dvc run` to version control intermediate and final results (like ML models).
-This way you bring data provenance and make your project
-[reproducible](/doc/command-reference/repro).
+Every file in the hierarchy is added to the cache (unless the `--no-commit`
+option is used), but DVC does not produce individual `.dvc` files for each file
+in the directory tree. Instead, the single `.dvc` file references a special JSON
+file in the cache (with `.dir` extension), that in turn points to the added
+files.
+
+Note that DVC commands that use tracked files support granular targeting of
+files, even when the directory is added as a whole. Examples: `dvc push`,
+`dvc pull`, `dvc get`, `dvc import`, etc.
+
+As a rarely needed alternative, the `--recursive` option causes every file in
+the hierarchy to be added individually. A corresponding `.dvc` file will be
+generated for each file in he same location. This may be helpful to save time
+adding several data files grouped in a structural directory, but it's
+undesirable for data directories with a large number of files.
 
 ## Options
 
