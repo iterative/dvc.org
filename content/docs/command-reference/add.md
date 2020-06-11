@@ -145,14 +145,11 @@ Let's check the `data.xml.dvc` file inside:
 ```yaml
 outs:
   - md5: 6137cde4893c59f76f005a8123d8e8e6
-    path: data.xml # .dvc files support comments :)
+    path: data.xml
 ```
 
 This is a standard `.dvc` file with only one output (`outs` field). The hash
 value (`md5` field) corresponds to a file path in the <abbr>cache</abbr>.
-
-> Note that `#` comments are not preserved when a `.dvc` file is overwritten
-> with the `dvc add`, `dvc run`, `dvc import`, or `dvc import-url` commands.
 
 ```dvc
 $ file .dvc/cache/d8/acabbfd4ee51c95da5d7628c7ef74b
