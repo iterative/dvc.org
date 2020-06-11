@@ -40,7 +40,7 @@ DVC determines which data and code files to compare by analyzing all stages (in
 (the `--all-branches` and `--all-tags` options compare multiple workspace
 versions).
 
-The comparison can be limited to certain stages (in `dvc.yaml`) and `.dvc` files
+The comparison can be limited to certain stages (in `dvc.yaml`) or `.dvc` files
 only, by listing them as `targets`. (Changes are reported only against these.)
 When this is combined with the `--with-deps` option, a search is made for
 changes in other stages that affect each target.
