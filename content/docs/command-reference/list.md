@@ -19,8 +19,9 @@ positional arguments:
 DVC, by effectively replacing data files, models, directories with `.dvc` files
 (`.dvc`), hides actual locations and names. This means that you don't see data
 files when you browse a <abbr>DVC repository</abbr> on Git hosting (e.g.
-Github), you just see the `.dvc` files. This makes it hard to navigate the
-project to find <abbr>data artifacts</abbr> for use with `dvc get`,
+Github), you just see the [`dvc.yaml`](/doc/user-guide/dvc-file-format) and
+[`.dvc`](/doc/user-guide/dvc-file-format) files. This makes it hard to navigate
+the project to find <abbr>data artifacts</abbr> for use with `dvc get`,
 `dvc import`, or `dvc.api`.
 
 `dvc list` prints a virtual view of a DVC repository, as if files and
