@@ -2,7 +2,8 @@
 
 Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track
-changes in the remote data source. Creates a `.dvc` file.
+changes in the remote data source. Creates a
+[`.dvc` file](/doc/user-guide/dvc-file-format).
 
 > See `dvc import` to download and tack data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on Github).
@@ -102,9 +103,11 @@ $ dvc run -d https://example.com/path/to/data.csv \
           wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a [`.dvc` files](/doc/user-guide/dvc-file-format) with an
-external dependency, but the one created by `dvc import-url` preserves the
-connection to the data source. We call this an _import stage_.
+`dvc import-url` generates an import stage
+[`.dvc` file](/doc/user-guide/dvc-file-format) and `dvc run` a regular stage (in
+[`dvc.yaml`](/doc/user-guide/dvc-file-format)). Both have an external
+dependency, but the one created by `dvc import-url` preserves the connection to
+the data source. We call this an _import stage_.
 
 Note that import stages are considered always locked, meaning that if you run
 `dvc repro`, they won't be updated. Use `dvc update` on them to bring the import
