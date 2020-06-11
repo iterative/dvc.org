@@ -8,8 +8,8 @@ and remote storage.
 ## Synopsis
 
 ```usage
-usage: dvc status [-h] [-v] [-j <number>] [-q] [-c]
-                  [-r <name>] [-a] [-T] [-d] [-R] [--all-commits]
+usage: dvc status [-h] [-v] [-j <number>] [-q] [-c] [-r <name>] [-a] [-T]
+                  [--all-commits] [-d] [-R] [--show-json]
                   [targets [targets ...]]
 
 positional arguments:
@@ -120,6 +120,9 @@ workspace) is different from remote storage. Bringing the two into sync requires
 - `-R`, `--recursive` - determines the files to check status for by searching
   each target directory and its subdirectories for DVC-files to inspect. If
   there are no directories among the targets, this option is ignored.
+
+- `--show-json` - prints the command's output in easily parsable JSON format,
+  instead of a human-readable table.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git  
   commits as well as the workspace. Useful for comparing cache content for the
