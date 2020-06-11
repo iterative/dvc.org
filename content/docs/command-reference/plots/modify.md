@@ -26,11 +26,9 @@ The path to the metrics file `target` is required. It must be listed in a
 [`dvc.yaml`](/doc/user-guide/dvc-file-format) file (see the `--plots` option of
 `dvc run`). `dvc plots modify` adds the display properties to `dvc.yaml`.
 
-The available display properties are expressed as the [options](#options) of
-this command (prefixed with `--`).
-
-> Display properties are based on the
-> [Vega specification](https://vega.github.io/vega/docs/specification/)
+Property names are passed as [options](#options) to this command (prefixed with
+`--`). These are based on the full
+[Vega specification](https://vega.github.io/vega/docs/specification/).
 
 ## Options
 
