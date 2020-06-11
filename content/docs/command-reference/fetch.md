@@ -24,7 +24,7 @@ makes the data files available for linking (or copying) into the workspace.
 (Refer to [dvc config cache.type](/doc/command-reference/config#cache).) Along
 with `dvc checkout`, it's performed automatically by `dvc pull` when the target
 [`dvc.yaml`](/doc/user-guide/dvc-file-format) or
-[`.dvc` files](/doc/user-guide/dvc-file-format) are not already in the cache:
+[`.dvc`](/doc/user-guide/dvc-file-format) files are not already in the cache:
 
 ```
 Controlled files             Commands
@@ -47,18 +47,17 @@ Fetching could be useful when first checking out a <abbr>DVC project</abbr>,
 since files tracked by DVC should already exist in remote storage, but won't be
 in the project's <abbr>cache</abbr>. (Refer to `dvc remote` for more information
 on DVC remotes.) These necessary data or model files are listed as
-<abbr>dependencies</abbr> or <abbr>outputs</abbr> in a `.dvc` file (target
-[stage](/doc/command-reference/run)) so they are required to
-[reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
-corresponding [pipeline](/doc/command-reference/pipeline). (See
-[`.dvc` File Format](/doc/user-guide/dvc-file-format) for more information on
-dependencies and outputs.)
+<abbr>dependencies</abbr> or <abbr>outputs</abbr> in a target
+[stage](/doc/command-reference/run) (in `dvc.yaml`) or `.dvc` file, so they are
+required to [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
+corresponding [pipeline](/doc/command-reference/pipeline).
 
-`dvc fetch` ensures that the files needed for a `.dvc` file to be
+`dvc fetch` ensures that the files needed for a
+[stage](/doc/command-reference/run) or `.dvc` file to be
 [reproduced](/doc/tutorials/get-started/data-pipelines#reproduce) exist in
 cache. If no `targets` are specified, the set of data files to fetch is
-determined by analyzing all `.dvc` files in the current branch, unless
-`--all-branches` or `--all-tags` is specified.
+determined by analyzing all `dvc.yaml` and `.dvc` files in the current branch,
+unless `--all-branches` or `--all-tags` is specified.
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used.
@@ -67,9 +66,10 @@ option is used.
 perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
 file hashes when these are [added](/doc/command-reference/add) with DVC. File
-hashes are stored in the corresponding `.dvc` files (typically versioned with
-Git). Only the hashes specified in `.dvc` files currently in the workspace are
-considered by `dvc fetch` (unless the `-a` or `-T` options are used).
+hash values are stored in the corresponding `dvc.yaml` or `.dvc` files
+(typically versioned with Git). Only the hash specified in `dvc.yaml` or `.dvc`
+files currently in the workspace are considered by `dvc fetch` (unless the `-a`
+or `-T` options are used).
 
 ## Options
 
@@ -196,9 +196,11 @@ Note that the `.dvc/cache` directory was created and populated.
 > for more info.
 
 Used without arguments (as above), `dvc fetch` downloads all assets needed by
-all `.dvc` files in the current branch, including for directories. The hash
-values `3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
-correspond to the `model.pkl` file and `data/features/` directory, respectively.
+all [`dvc.yaml`](/doc/user-guide/dvc-file-format) and
+[`.dvc`](/doc/user-guide/dvc-file-format) files in the current branch, including
+for directories. The hash values `3863d0e317dee0a55c4e59d2ec0eef33` and
+`42c7025fc0edeb174069280d17add2d4` correspond to the `model.pkl` file and
+`data/features/` directory, respectively.
 
 Let's now link files from the cache to the workspace with:
 
