@@ -5,13 +5,14 @@ Modify display properties of [plot metrics](/doc/command-reference/plots) files.
 ## Synopsis
 
 ```usage
-usage: dvc plots modify [-h] [-q | -v] [-t <path>] [-x X] [-y Y]
-                        [--no-csv-header] [--title <text>] [--x-label <text>]
-                        [--y-label <text>] [--unset [<prop> [<prop> ...]]]
+usage: dvc plots modify [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
+                        [-y <field>] [--no-header] [--title <text>]
+                        [--x-label <text>] [--y-label <text>]
+                        [--unset [<property> [<property> ...]]]
                         target
 
 positional arguments:
-  target                Metric file to set props to
+  target                Metric file to set properties to
 ```
 
 ## Description
@@ -19,28 +20,26 @@ positional arguments:
 It might be not convenient for users or automation systems to specify all the
 _display properties_ (such as `y-label`, `template`, `title`, etc.) each time
 plots are generated with `dvc plot show` or `dvc plot diff`. This command sets
-(or unsets) default display props for specific plot files.
+(or unsets) default display properties for a specific metrics file.
 
-The available display properties are expressed as the [options](#options) of
-this command (prefixed with `--`).
+The path to the metrics file `target` is required. It must be listed in a
+[`dvc.yaml`](/doc/user-guide/dvc-file-format) file (see the `--plots` option of
+`dvc run`). `dvc plots modify` adds the display properties to `dvc.yaml`.
 
-> Display props are based on the
-> [Vega specification](https://vega.github.io/vega/docs/specification/)
-
-The required `target` metrics file should be an <abbd>output</abbr> of one of
-the [DVC pipeline](/doc/command-reference/pipeline) stages (see the `--plots`
-option of `dvc run`), listed in a
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) file. `dvc plots modify`
-adds the options to `dvc.yaml`.
+Property names are passed as [options](#options) to this command (prefixed with
+`--`). These are based on the full
+[Vega specification](https://vega.github.io/vega/docs/specification/).
 
 ## Options
 
-- `-t <path>, --template <path>` - set a default
+- `-t <name_or_path>, --template <name_or_path>` - set a default
   [plot template](/doc/command-reference/plots#plot-templates).
 
-- `-x <field>` - set a default field name from which the X axis data comes from.
+- `-x <field>` - set a default field or column name (or number) from which the X
+  axis data comes from.
 
-- `-y <field>` - set a default field name from which the Y axis data comes from.
+- `-y <field>` - set a default field or column name (or number) from which the Y
+  axis data comes from.
 
 - `--x-label <text>` - set a default title for the X axis.
 
@@ -48,11 +47,13 @@ adds the options to `dvc.yaml`.
 
 - `--title <text>` - set a default plot title.
 
-- `--unset [<prop> [<prop> ...]]` - unset one or more display properties. Use
-  the prop name(s) without `--` in the argument sent to this option.
+- `--unset [<property> [<property> ...]]` - unset one or more display
+  properties. Use the property name(s) without `--` in the argument sent to this
+  option.
 
-- `--no-csv-header` - lets DVC know that CSV or TSV `targets` do not have a
-  header.
+- `--no-header` - lets DVC know that the `target` CSV or TSV does not have a
+  header. A 0-based numeric index can be used to identify each column instead of
+  names.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

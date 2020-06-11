@@ -46,6 +46,28 @@ $ dvc metrics diff
 summary.json   AUC      0.801807   0.037826
 ```
 
+`dvc metrics` subcommands by default use the metric files specified in
+`dvc.yaml` (if any), for example `summary.json` below:
+
+```yaml
+stages:
+  train:
+    cmd: python train.py
+    deps:
+      - users.csv
+    outs:
+      - model.pkl
+    metrics:
+      - summary.json:
+          cache: false
+```
+
+> `cache: false` above specifies that `summary.json` is not tracked or
+> <abbr>cached</abbr> by DVC (`-M` option of `dvc run`). These metric files are
+> normally committed with Git instead. See
+> [`dvc.yaml`](/doc/user-guide/dvc-file-format) for more information on the file
+> format above.
+
 ### Supported file formats
 
 Metrics can be organized as tree hierarchies in JSON or YAML files. DVC
@@ -68,28 +90,6 @@ and `time_real`.
 DVC itself does not ascribe any specific meaning for these numbers. Usually they
 are produced by the model training or model evaluation code and serve as a way
 to compare and pick the best performing experiment.
-
-### Default metric files
-
-`dvc metrics` subcommands by default use the metric files specified in
-`dvc.yaml` (if any), for example `summary.json` below:
-
-```yaml
-stages:
-  train:
-    cmd: python train.py
-    deps:
-      - users.csv
-    outs:
-      - model.pkl
-    metrics:
-      - summary.json:
-          cache: false
-```
-
-`cache: false` above specifies that `summary.json is not a data file: it will
-not be <abbr>cached</abbr> by DVC. Metric files are normally committed with Git
-instead.
 
 ## Options
 

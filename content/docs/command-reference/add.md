@@ -67,26 +67,31 @@ corresponding [patterns](/doc/user-guide/dvcignore) in a `.dvcignore` file.
 By default, DVC tries to use reflinks (see
 [File link types](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)
 to avoid copying any file contents and to optimize `.dvc` file operations for
-large files and directories. DVC also supports other link types for use on file
-systems without `reflink` support, but they have to be specified manually. Refer
-to the `cache.type` config option in `dvc config cache` for more information.
+large files. DVC also supports other link types for use on file systems without
+`reflink` support, but they have to be specified manually. Refer to the
+`cache.type` config option in `dvc config cache` for more information.
 
 ### Tracking directories
 
 A `dvc add` target can be an individual file or a directory. In the latter case,
-a DVC-file is created for the top of the directory (with default name
-`<dir_name>.dvc`).
+a [`.dvc` file](/doc/user-guide/dvc-file-format) is created for the top of the
+directory (with default name `<dir_name>.dvc`).
 
 Every file in the hierarchy is added to the cache (unless the `--no-commit`
-option is used), but DVC does not produce individual `.dvc` file for each file
+option is used), but DVC does not produce individual `.dvc` files for each file
 in the directory tree. Instead, the single `.dvc` file references a special JSON
 file in the cache (with `.dir` extension), that in turn points to the added
 files.
 
-As an alternative, using the `--recursive` option every file is added
-individually. This means that each file will have a corresponding `.dvc` file in
-the same hierarchy, so it may not be desirable for directories with a large
-number of files.
+Note that DVC commands that use tracked files support granular targeting of
+files, even when the directory is added as a whole. Examples: `dvc push`,
+`dvc pull`, `dvc get`, `dvc import`, etc.
+
+As a rarely needed alternative, the `--recursive` option causes every file in
+the hierarchy to be added individually. A corresponding `.dvc` file will be
+generated for each file in he same location. This may be helpful to save time
+adding several data files grouped in a structural directory, but it's
+undesirable for data directories with a large number of files.
 
 ## Options
 
