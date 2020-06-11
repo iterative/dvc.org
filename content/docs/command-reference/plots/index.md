@@ -48,9 +48,9 @@ differences between the metrics in different experiments.
 
 ### Supported file formats
 
-Continuous metrics can be organized as data series in JSON, YAML, CSV, or TSV
-files. DVC expects to see an array (or multiple arrays) of objects (usually
-_float numbers_) in the file.
+Plot metrics can be organized as data series in JSON, YAML, CSV, or TSV files.
+DVC expects to see an array (or multiple arrays) of objects (usually _float
+numbers_) in the file.
 
 In tabular file formats such as CSV and TSV, each column is an array.
 `dvc plots` subcommands can produce plots for a specified column or a set of
@@ -65,9 +65,11 @@ epoch, AUC, loss
 ```
 
 In hierarchical file formats (JSON or YAML), an array of consistent objects is
-expected. `dvc plots` subcommands can produce plots for a specified field or a
-set of them, from the array's objects. For example, `val_loss` is one of the
-field names in the `train` array below:
+expected: every object should have the same structure.
+
+`dvc plots` subcommands can produce plots for a specified field or a set of
+them, from the array's objects. For example, `val_loss` is one of the field
+names in the `train` array below:
 
 ```
 {
