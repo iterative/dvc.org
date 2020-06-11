@@ -52,16 +52,21 @@ summary.json   AUC      0.801807   0.037826
 ```yaml
 stages:
   train:
-    ...
+    cmd: python train.py
+    deps:
+      - users.csv
+    outs:
+      - model.pkl
     metrics:
       - summary.json:
           cache: false
 ```
 
 > `cache: false` above specifies that `summary.json` is not tracked or
-> <abbr>cached</abbr> by DVC. These metric files are normally committed with Git
-> instead. See [`dvc.yaml`](/doc/user-guide/dvc-file-format) for more
-> information on the file format above.
+> <abbr>cached</abbr> by DVC (`-M` option of `dvc run`). These metric files are
+> normally committed with Git instead. See
+> [`dvc.yaml`](/doc/user-guide/dvc-file-format) for more information on the file
+> format above.
 
 ### Supported file formats
 
