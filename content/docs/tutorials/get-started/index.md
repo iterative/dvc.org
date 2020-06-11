@@ -1,7 +1,7 @@
 # Get Started with DVC!
 
 DVC is a **data version control**, pipeline management, and experiment
-management tool that brings existing engineering toolset and practices to data
+management tool that brings existing engineering toolsets and practices to data
 science and machine learning. In this guide we will introduce the basic features
 and concepts of DVC step by step.
 

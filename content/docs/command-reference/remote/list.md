@@ -5,7 +5,7 @@ List all available [data remotes](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote list [-h] [--global] [--system] [--local] [-q | -v]
+usage: dvc remote list [-h] [--global | --system | --local] [-q | -v]
 ```
 
 ## Description
