@@ -65,9 +65,9 @@ describing the changes (described below).
   someone manually edited the file).
 
 - _always changed_ means that this is a DVC-file with no dependencies (an
-  _orphan_ stage file) or that it has the `always_changed: true` value set (see
-  `--always-changed` option in `dvc run`), so its considered always changed, and
-  thus is always executed by `dvc repro`.
+  _orphan stage_ (see `dvc add`) or that it has the `always_changed: true` value
+  set (see `--always-changed` option in `dvc run`), so its considered always
+  changed, and thus is always executed by `dvc repro`.
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs tracked by the <abbr>DVC-file</abbr>. Depending on the use case,

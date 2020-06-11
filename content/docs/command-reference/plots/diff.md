@@ -102,8 +102,7 @@ file:///Users/dmitry/src/plots/logs.html
 
 > Note that we renamed the X axis label with option `--x-label x`.
 
-Compare two specific versions (commit hashes, tags, or branches can be provided,
-for example):
+Compare two specific versions (commit hashes, tags, or branches):
 
 ```dvc
 $ dvc plots diff --targets logs.csv HEAD 0135527
