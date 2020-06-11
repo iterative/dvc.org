@@ -10,7 +10,8 @@ usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R]
                   targets [targets ...]
 
 positional arguments:
-  targets        DVC-files to update.
+  targets      import stage .dvc files to update. Using -R, directories
+               to search for .dvc files can also be given.
 ```
 
 ## Description
@@ -21,7 +22,7 @@ After creating <abbr>import stages</abbr>
 imported file, directory, or <abbr>data artifact</abbr> up to date.
 
 To indicate which import stages to update, we must specify the corresponding
-DVC-file `targets` as command arguments.
+`targets` as command arguments.
 
 Note that import stages are considered always frozen, meaning that if you run
 `dvc repro`, they won't be updated. `dvc update` is the only command that can
@@ -46,8 +47,8 @@ dvc update --rev master
   > revision.
 
 - `-R`, `--recursive` - determines the files to update by searching each target
-  directory and its subdirectories for DVC-files to inspect. If there are no
-  directories among the targets, this option is ignored.
+  directory and its subdirectories for import stage DVC-files to inspect. If
+  there are no directories among the targets, this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
