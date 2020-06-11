@@ -126,6 +126,8 @@ fields:
   contents can be added. `meta` contents are ignored by DVC, but they can be
   useful for user processes that read `.dvc` files.
 
+> `meta` fields and `#` comments are always preserved in `dvc.yaml` files.
+
 An output entry (`outs`, `metrics`, or `plots`) consists of these fields:
 
 - `md5`: Hash value for the output file
@@ -146,9 +148,6 @@ A `dvc.yaml` dependency entry consists of a these possible fields:
   > info.
 
 `dvc.yaml` files also support `# comments`.
-
-> `meta` fields and `#` comments are preserved among executions of `dvc run`,
-> `dvc repro`, and `dvc commit`.
 
 ## Internal directories and files
 
