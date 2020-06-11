@@ -45,7 +45,7 @@ only, by listing them as `targets`. (Changes are reported only against these.)
 When this is combined with the `--with-deps` option, a search is made for
 changes in other stages that affect each target.
 
-In the `local` mode, changes are detected through the hash value of every file
+In the local mode, changes are detected through the hash value of every file
 listed in every `.dvc` file in question against the corresponding file in the
 file system. The command output indicates the detected changes, if any. If no
 differences are detected, `dvc status` prints this message:
