@@ -45,7 +45,7 @@ meta:
 - `outs`: List of <abbr>outputs</abbr> for this `.dvc` file
 - `deps` (optional): List of <abbr>dependencies</abbr> for this stage, only
   present when `dvc import` and `dvc import-url` are used.
-- `meta` (optional): Arbitrary information can be added here manually. Any YAML
+- `meta` (manual): Arbitrary information can be added here manually. Any YAML
   contents can be added. `meta` contents are ignored by DVC, but they can be
   useful for user processes that read `.dvc` files.
 
@@ -61,7 +61,7 @@ A `.dvc` file dependency entry consists of a these possible fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
 - `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
-- `repo`: This entry is only for external dependencies created with
+- `repo` (optional): This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
   - `url`: URL of Git repository with source DVC project
@@ -113,16 +113,16 @@ they can contain more information in `dvc.yaml` These are the possible following
 fields:
 
 - `cmd`: Executable command defined in this stage
-- `deps`: List of <abbr>dependencies</abbr> for this stage
-- `outs`: List of <abbr>outputs</abbr> for this stage
+- `deps` (optional): List of <abbr>dependencies</abbr> for this stage
+- `outs` (optional): List of <abbr>outputs</abbr> for this stage
 - `params` (optional): List of the [parameter](/doc/command-reference/params)
   names and their current values
 - `metrics` (optional): List of [metrics](/doc/command-reference/metrics)
 - `plots` (optional): List of [plot metrics](/doc/command-reference/plots)
 - `frozen` (optional): Whether or not this stage is frozen from reproduction
-- `always_changed` (optional) : Whether or not this stage is considered as
+- `always_changed` (optional): Whether or not this stage is considered as
   changed by commands such as `dvc status` and `dvc repro`. `false` by default
-- `meta` (optional): Arbitrary information can be added here manually. Any YAML
+- `meta` (manual): Arbitrary information can be added here manually. Any YAML
   contents can be added. `meta` contents are ignored by DVC, but they can be
   useful for user processes that read `.dvc` files.
 
@@ -138,7 +138,7 @@ A `dvc.yaml` dependency entry consists of a these possible fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
 - `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
-- `etag`: Strong ETag response header (only HTTP <abbr>external
+- `etag` (optional): Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
 
   > See the examples in
