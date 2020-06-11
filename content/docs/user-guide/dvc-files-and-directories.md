@@ -126,7 +126,7 @@ fields:
   contents can be added. `meta` contents are ignored by DVC, but they can be
   useful for user processes that read `.dvc` files.
 
-An output entry consists of these fields:
+An output entry (`outs`, `metrics`, or `plots`) consists of these fields:
 
 - `md5`: Hash value for the output file
 - `path`: Path to the output in the <abbr>workspace</abbr>, relative to the
@@ -144,12 +144,6 @@ A `dvc.yaml` dependency entry consists of a these possible fields:
   > See the examples in
   > [External Dependencies](/doc/user-guide/external-dependencies) for more
   > info.
-
-Metrics entries can contain these fields:
-
-- `type`: Type of the metrics file (`json`)
-- `xpath`: Path within the metric file to the metrics data(e.g. `AUC.value` for
-  `{"AUC": {"value": 0.624321}}`)
 
 `dvc.yaml` files also support `# comments`.
 
