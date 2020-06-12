@@ -34,7 +34,7 @@ bugs 🐛, and responding to feedback from intrepid users
 here are some of the big features coming:
 
 - **Plots powered by Vega-Lite** We're building
-  [functions for vizualizing metrics](<(https://dvc.org/doc/command-reference/plots#plots)>)
+  [functions for visualizing metrics](https://dvc.org/doc/command-reference/plots#plots)
   in your project, as well as comparing metrics across commits. We chose
   [Vega-Lite plots](https://github.com/vega/vega-lite) because they're
   high-level, compatible with ML projects written in any language, and beautiful
