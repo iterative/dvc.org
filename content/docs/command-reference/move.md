@@ -20,8 +20,9 @@ positional arguments:
 `dvc move` is useful when a `src` file or directory has previously been added to
 the <abbr>project</abbr> with `dvc add`, creating a
 [`.dvc` file](/doc/user-guide/dvc-file-format) (with `src` as a dependency).
-`dvc move` behaves like `mv src dst`, moving `src` to the given `dst` path, but
-it also renames and updates the corresponding `.dvc` file appropriately.
+`dvc move` behaves similar to `mv src dst`, moving `src` to the given `dst`
+path, but it also renames and updates the corresponding `.dvc` file
+appropriately.
 
 > Note that `src` may be a copy or a
 > [link](/doc/user-guide/large-dataset-optimization#file-link-types-for-the-dvc-cache)

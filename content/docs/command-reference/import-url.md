@@ -2,7 +2,8 @@
 
 Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track
-changes in the remote data source. Creates a DVC-file.
+changes in the remote data source. Creates a
+[`.dvc` file](/doc/user-guide/dvc-file-format).
 
 > See `dvc import` to download and tack data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on Github).
@@ -41,11 +42,11 @@ while `out` can be used to specify the directory and/or file name desired for
 the downloaded data. If an existing directory is specified, the file or
 directory will be placed inside.
 
-[DVC-files](/doc/user-guide/dvc-file-format) support references to data in an
+[`.dvc` files](/doc/user-guide/dvc-file-format) support references to data in an
 external location, see
-[External Dependencies](/doc/user-guide/external-dependencies). In such a
-DVC-file, the `deps` field stores the remote URL, and the `outs` field contains
-the corresponding local path in the <abbr>workspace</abbr>. It records enough
+[External Dependencies](/doc/user-guide/external-dependencies). In such a `.dvc`
+file, the `deps` field stores the remote URL, and the `outs` field contains the
+corresponding local path in the <abbr>workspace</abbr>. It records enough
 metadata about the imported data to enable DVC efficiently determining whether
 the local copy is out of date.
 
@@ -102,9 +103,11 @@ $ dvc run -d https://example.com/path/to/data.csv \
           wget https://example.com/path/to/data.csv -O data.csv
 ```
 
-Both methods generate a [DVC-files](/doc/user-guide/dvc-file-format) with an
-external dependency, but the one created by `dvc import-url` preserves the
-connection to the data source. We call this an _import stage_.
+`dvc import-url` generates an import stage
+[`.dvc` file](/doc/user-guide/dvc-file-format) and `dvc run` a regular stage (in
+[`dvc.yaml`](/doc/user-guide/dvc-file-format)). Both have an external
+dependency, but the one created by `dvc import-url` preserves the connection to
+the data source. We call this an _import stage_.
 
 Note that import stages are considered always
 [frozen](/doc/command-reference/freeze), meaning that if you run `dvc repro`,
@@ -114,9 +117,9 @@ from the external data source.
 ## Options
 
 - `-f <filename>`, `--file <filename>` - specify a path and/or file name for the
-  DVC-file created by this command (e.g. `-f stages/stage.dvc`). This overrides
-  the default file name: `<file>.dvc`, where `<file>` is the desired file name
-  of the imported data (`out`).
+  `.dvc` file created by this command (e.g. `-f stages/stage.dvc`). This
+  overrides the default file name: `<file>.dvc`, where `<file>` is the desired
+  file name of the imported data (`out`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -168,7 +171,7 @@ To track the changes with git, run:
 	git add data.xml.dvc data/.gitignore
 ```
 
-Let's take a look at the resulting stage file (DVC-file) `data.xml.dvc`:
+Let's take a look at the resulting stage file (`.dvc` file) `data.xml.dvc`:
 
 ```yaml
 md5: 61e80c38c1ce04ed2e11e331258e6d0d
@@ -184,7 +187,7 @@ outs:
     persist: false
 ```
 
-The `etag` field in the DVC-file contains the
+The `etag` field in the `.dvc` file contains the
 [ETag](https://en.wikipedia.org/wiki/HTTP_ETag) recorded from the HTTP request.
 If the remote file changes, its ETag will be different. This metadata allows DVC
 to determine whether its necessary to download it again.
@@ -242,7 +245,7 @@ outs:
     persist: false
 ```
 
-The DVC-file is nearly the same as in the previous example. The difference is
+The `.dvc` file is nearly the same as in the previous example. The difference is
 that the dependency (`deps`) now references the local file in the data store
 directory we created previously. (Its `path` has the URL for the data store.)
 And instead of an `etag` we have an `md5` hash value. We did this so its easy to
@@ -310,8 +313,8 @@ Data and pipelines are up to date.
 
 In the data store directory, edit `data.xml`. It doesn't matter what you change,
 as long as it remains a valid XML file, because any change will result in a
-different dependency file hash (`md5`) in the import stage DVC-file. Once we do
-so, we can run `dvc update` to make sure the import stage is up to date:
+different dependency file hash (`md5`) in the import stage `.dvc` file. Once we
+do so, we can run `dvc update` to make sure the import stage is up to date:
 
 ```dvc
 $ dvc update data.xml.dvc

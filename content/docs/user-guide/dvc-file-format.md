@@ -59,8 +59,9 @@ A dependency entry consists of a these possible fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
 - `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
-- `etag`: Strong ETag response header (only HTTP <abbr>external
-  dependencies</abbr> created with `dvc import-url`)
+- `etag`: Strong ETag response header (only HTTP
+  [external dependencies](/doc/user-guide/external-dependencies) created with
+  `dvc import-url`)
 - `params`: If this is a [parameter dependency](/doc/command-reference/params)
   file, contains a list of the parameter names and their current values.
 - `repo`: This entry is only for external dependencies created with

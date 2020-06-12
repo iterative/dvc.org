@@ -79,7 +79,7 @@ history use `--all-commits` option:
 
 ```dvc
 $ dvc metrics show --all-commits
-working tree:
+workspace:
         eval.json:
                 AUC: 0.66729
                 error: 0.16982
@@ -100,7 +100,7 @@ Metrics from different branches can be shown by `--all-branches` (`-a`) option:
 
 ```dvc
 $ dvc metrics show -a
-working tree:
+workspace:
         eval.json:
                 AUC: 0.66729
                 error: 0.16982

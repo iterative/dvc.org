@@ -1,58 +1,72 @@
 # plots show
 
-Generate a plot image from from a [plot metrics](/doc/command-reference/plots)
-file.
+Generate [plot](/doc/command-reference/plots) from a metrics file.
 
 ## Synopsis
 
 ```usage
-usage: dvc plots show [-h] [-q | -v] [-t [TEMPLATE]] [-f FILE]
-                     [-s SELECT] [-x X] [-y Y] [--stdout]
-                     [--no-csv-header] [--no-html] [--title TITLE]
-                     [--xlab XLAB] [--ylab YLAB] [datafile]
+usage: dvc plots show [-h] [-q | -v] [-t <name_or_path>] [-x <field>]
+                      [-y <field>] [--no-header] [--title <text>]
+                      [--x-label <text>] [--y-label <text>] [-o <path>]
+                      [--show-vega]
+                      [targets [targets ...]]
 
 positional arguments:
-  datafile              Metrics file to visualize
+  targets               Metric files to visualize.
+                        Shows all plots by default.
 ```
 
 ## Description
 
 This command provides a quick way to visualize metrics such as loss functions,
-AUC curves, confusion matrices, etc. Please see `dvc plots` for information on
-the supported data formats and other relevant details about DVC plots.
+AUC curves, confusion matrices, etc. All plots defined in `dvc.yaml` are used by
+default.
+
+Optionally, specific metric file `targets` to show are accepted. These must be
+listed in a [`dvc.yaml`](/doc/user-guide/dvc-file-format) file (see the
+`--plots` option of `dvc run`).
+
+The plot style can be customized with
+[plot templates](/doc/command-reference/plots#plot-templates), using the
+`--template` option. To learn more about metric file formats and templates
+please see `dvc plots`.
+
+> Note that the default behavior of this command can be modified per metrics
+> file with `dvc plots modify`.
 
 ## Options
 
-- `-t [TEMPLATE], --template [TEMPLATE]` -
+- `-o <path>, --out <path>` - name of the generated file. By default, the output
+  file name is equal to the input filename with a `.html` file extension (or
+  `.json` when using `--show-vega`).
+
+- `-t <name_or_path>, --template <name_or_path>` -
   [plot template](/doc/command-reference/plots#plot-templates) to be injected
   with data. The default template is `.dvc/plots/default.json`. See more details
   in `dvc plots`.
 
-- `-f FILE, --file FILE` - name of the generated file. By default, the output
-  file name is equal to the input filename with additional `.html` suffix or
-  `.json` suffix for `--no-html` mode.
+- `-x <field>` - field name from which the X axis data comes from. An
+  auto-generated `index` field is used by default. See
+  [Custom templates](/doc/command-reference/plots#custom-templates) for more
+  information on this `index` field. Column names or numbers are expected for
+  tabular metric files.
 
-- `--no-html` - do not wrap output Vega specification (JSON) with HTML.
+- `-y <field>` - field name from which the Y axis data comes from. The last
+  field found in the `targets` is used by default. Column names or numbers are
+  expected for tabular metric files.
 
-- `-x X` - field name for X axis. An auto-generated `index` field is used by
-  default.
+- `--x-label <text>` - X axis label. The X field name is the default.
 
-- `-y Y` - field name for Y axis. The last column or field found in the
-  `datafile` is used by default.
+- `--y-label <text>` - Y axis label. The Y field name is the default.
 
-- `-s SELECT, --select SELECT` - select which fields or JSONPath to store in the
-  metrics file [metadata](https://vega.github.io/vega/docs/data/). The
-  auto-generated, zero-based `index` column is always included.
+- `--title <text>` - plot title.
 
-- `--xlab XLAB` - X axis title. The X field name is the default title.
+- `--show-vega` - produce a
+  [Vega specification](https://vega.github.io/vega/docs/specification/) file
+  instead of HTML. See `dvc plots` for more info.
 
-- `--ylab YLAB` - Y axis title. The Y field name is the default title.
-
-- `--title TITLE` - plot title.
-
-- `-o, --stdout` - print plot content to stdout.
-
-- `--no-csv-header` - provided CSV or TSV datafile does not have a header.
+- `--no-header` - lets DVC know that CSV or TSV `targets` do not have a header.
+  A 0-based numeric index can be used to identify each column instead of names.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -61,11 +75,50 @@ the supported data formats and other relevant details about DVC plots.
 
 - `-v`, `--verbose` - displays detailed tracing information.
 
-## Examples
+## Example: Hierarchical data
+
+We'll use tabular metrics file `train.json` for this example:
+
+```json
+{
+  "train": [
+    { "accuracy": 0.96658, "loss": 0.10757 },
+    { "accuracy": 0.97641, "loss": 0.07324 },
+    { "accuracy": 0.87707, "loss": 0.08136 },
+    { "accuracy": 0.87402, "loss": 0.09026 },
+    { "accuracy": 0.8795, "loss": 0.0764 },
+    { "accuracy": 0.88038, "loss": 0.07608 },
+    { "accuracy": 0.89872, "loss": 0.08455 }
+  ]
+}
+```
+
+DVC identifies and plots JSON objects from the first JSON array found in the
+file (`train`):
+
+```dvc
+$ dvc plots show train.json
+file:///Users/usr/src/plots/train.json.html
+```
+
+![](/img/plots_show_json.svg)
+
+> Note that only the last field name (`loss`) is used for the plot by default.
+
+Use the `-y` option to change the field to plot:
+
+```dvc
+$ dvc plots show -y accuracy train.json
+file:///Users/usr/src/plots/logs.json.html
+```
+
+![](/img/plots_show_json_field.svg)
+
+## Example: Tabular data
 
 We'll use tabular metrics file `logs.csv` for these examples:
 
-```csv
+```
 epoch,accuracy,loss,val_accuracy,val_loss
 0,0.9418667,0.19958884770199656,0.9679,0.10217399864746257
 1,0.9763333,0.07896138601688048,0.9768,0.07310650711813942
@@ -89,50 +142,33 @@ file:///Users/usr/src/plots/logs.csv.html
 Use the `-y` option to change the column to plot:
 
 ```dvc
-$ dvc plots show -y loss logs.csv
+$ dvc plots show logs.csv -y loss
 file:///Users/usr/src/plots/logs.csv.html
 ```
 
 ![](/img/plots_show_field.svg)
 
-### Plot file size
-
-Note that by default, all the columns (or fields) are embedded in the plot file
-metadata. You can select a subset of the columns using the `--select` option,
-which can help reduce the file size:
-
-```dvc
-$ ls -lh /Users/usr/src/plots/logs.csv.html
--rw-r--r-- 1 usr grp 2.8K  ... /Users/usr/src/plot/logs.csv.html
-
-$ dvc plots show -y loss --select loss logs.csv
-file:///Users/usr/src/plots/logs.csv.html
-
-$ ls -lh /Users/usr/src/plots/logs.csv.html
--rw-r--r-- 1 usr grp 1.8K  ... /Users/usr/src/plots/logs.csv.html
-```
-
 ### Headerless tables
 
-A tabular data file without headers can be plotted with `--no-csv-header`
-option. A field or column can be specified with `--select` by it's numeric
-position (starting with `0`):
+A tabular data file without headers can be plotted with `--no-header` option. A
+column can be specified with `-y` by it's numeric position (starting with `0`):
 
 ```dvc
-$ dvc plots show --no-csv-header --select 2 logs.csv
+$ dvc plots show --no-header logs.csv -y 2
 file:///Users/usr/src/plots/logs.csv.html
 ```
 
-### Vega specification
+## Example: Vega specification file
 
 In many automation scenarios (like CI/CD for ML), it is convenient to have the
-[Vega-Lite](https://vega.github.io/vega-lite/) specification instead of the
-entire HTML plot file. For example to generating another image format like PNG
-or JPEG, or to include differently into a web app. The `--no-html` option
-prevents wrapping the plot in HTML. Note that the resulting file is JSON:
+[Vega specification](https://vega.github.io/vega/docs/specification/) file
+instead of a rendered HTML plot file. For example, to generating another image
+format like PNG or JPEG, or to include it differently into a web/mobile app. The
+`--show-vega` option prevents wrapping this plot spec in HTML. Note that the
+resulting file is JSON:
 
 ```dvc
-$ dvc plots show --select accuracy --no-html logs.csv
+$ dvc plots show --show-vega logs.csv -y accuracy
 file:///Users/usr/src/plots/logs.csv.json
 ```
 
@@ -143,50 +179,5 @@ file:///Users/usr/src/plots/logs.csv.json
         "values": [
     {
         "accuracy": "0.9418667",
-        "index": 0,
-        "rev": "workspace"
-    },
-    {
-        "accuracy": "0.9763333",
-        "index": 1,
-        "rev": "workspace"
-    },
     ...
 ```
-
-## Example: Hierarchical data (JSON)
-
-We'll use tabular metrics file `train.json` for this example:
-
-```json
-{
-  "train": [
-    { "accuracy": 0.96658, "loss": 0.10757 },
-    { "accuracy": 0.97641, "loss": 0.07324 },
-    { "accuracy": 0.87707, "loss": 0.08136 },
-    { "accuracy": 0.87402, "loss": 0.09026 },
-    { "accuracy": 0.8795, "loss": 0.0764 },
-    { "accuracy": 0.88038, "loss": 0.07608 },
-    { "accuracy": 0.89872, "loss": 0.08455 }
-  ]
-}
-```
-
-DVC identifies and plots JSON objects from the first JSON array found in the
-file:
-
-```dvc
-$ dvc plots show train.json
-file:///Users/usr/src/plots/train.json.html
-```
-
-![](/img/plots_show_json.svg)
-
-Same as with tabular data, use the `-y` option to change the field to plot:
-
-```dvc
-$ dvc plots show -y accuracy train.json
-file:///Users/usr/src/plots/logs.json.html
-```
-
-![](/img/plots_show_json_field.svg)
