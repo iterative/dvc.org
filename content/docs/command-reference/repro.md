@@ -13,7 +13,7 @@ usage: dvc repro [-h] [-q | -v] [-f] [-s] [-c <path>] [-m] [--dry] [-i]
                  [--no-commit] [--downstream] [targets [targets ...]]
 
 positional arguments:
-  targets               DVC-file to reproduce. 'Dvcfile' by default.
+  targets        Stage or .dvc file to reproduce. 'Dvcfile' by default.
 ```
 
 ## Description

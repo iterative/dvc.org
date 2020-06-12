@@ -6,9 +6,10 @@ Show changes in [metrics](/doc/command-reference/metrics) between commits in the
 ## Synopsis
 
 ```usage
-usage: dvc metrics diff [-h] [-q | -v] [--targets [<paths> [<paths> ...]]]
-                        [-R] [--all] [--show-json] [--show-md] [--no-path]
-                        [--old] [a_rev] [b_rev]
+usage: dvc metrics diff [-h] [-q | -v] [--targets [<paths> [<paths> ...]]] [-R]
+                        [--all] [--show-json] [--show-md] [--no-path] [--old]
+                        [--precision <n>]
+                        [a_rev] [b_rev]
 
 positional arguments:
   a_rev                 Old Git commit to compare (defaults to HEAD)
@@ -28,10 +29,11 @@ Run without arguments, this command compares metrics currently present in the
 <abbr>workspace</abbr> uncommitted changes) with the latest committed version.
 
 The differences shown by this command include the new value, and numeric
-difference (delta) from the previous value of metrics (with 3-digit accuracy).
-They're calculated between two commits (hash, branch, tag, or any
-[Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
-<abbr>project</abbr>, found by examining all of the
+difference (delta) from the previous value of metrics. All values and the delta
+are [round](https://docs.python.org/3/library/functions.html#round)ed to 5
+digits precision after the decimal point. They're calculated between two commits
+(hash, branch, tag, or any [Git revision](https://git-scm.com/docs/revisions))
+for all metrics in the <abbr>project</abbr>, found by examining all of the
 [DVC-files](/doc/user-guide/dvc-files-and-directories) in both references.
 
 Another way to display metrics is the `dvc metrics show` command, which just
@@ -57,6 +59,10 @@ lists all the current metrics without comparisons.
 - `--no-path` - don't show metric path in the result table. This option is
   useful when only one metrics file is in use or there is no intersection
   between the metric names.
+
+- `--precision <n>` -
+  [round](https://docs.python.org/3/library/functions.html#round) metrics to `n`
+  digits precision after the decimal point. Rounds to 5 digits by default.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 

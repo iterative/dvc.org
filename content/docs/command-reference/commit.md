@@ -11,8 +11,9 @@ usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R]
                   [targets [targets ...]]
 
 positional arguments:
-  targets          DVC-files to commit. Optional. (Finds all DVC-files
-                   in the workspace by default.)
+  targets        Limit command scope to these stages or .dvc files.
+                 Using -R, directories to search for stages or .dvc
+                 files can also be given.
 ```
 
 ## Description
