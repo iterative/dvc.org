@@ -109,9 +109,10 @@ $ dvc run -d https://example.com/path/to/data.csv \
 dependency, but the one created by `dvc import-url` preserves the connection to
 the data source. We call this an _import stage_.
 
-Note that import stages are considered always locked, meaning that if you run
-`dvc repro`, they won't be updated. Use `dvc update` on them to bring the import
-up to date from the external data source.
+Note that import stages are considered always
+[frozen](/doc/command-reference/freeze), meaning that if you run `dvc repro`,
+they won't be updated. Use `dvc update` on them to bring the import up to date
+from the external data source.
 
 ## Options
 

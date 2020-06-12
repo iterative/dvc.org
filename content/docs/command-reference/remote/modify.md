@@ -9,7 +9,7 @@ Modify the configuration of a [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote modify [-h] [--global] [--system] [--local]
+usage: dvc remote modify [-h] [--global | --system | --local]
                          [-q | -v] [-u]
                          name option [value]
 
@@ -78,7 +78,7 @@ The following are the customizable types of remote storage (protocols):
 
 ### Click for Amazon S3
 
-By default DVC expects your AWS CLI is already
+By default, DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could use the following options:

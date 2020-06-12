@@ -42,23 +42,23 @@ tags:
 
 ```
 
-- `title` - **Required.** Title of the post.
-- `date` - **Required.** Publication date in the `YYYY-MM-DD` format. Will be
+- `title` (**required**) - title of the post.
+- `date` (**required**) - publication date in the `YYYY-MM-DD` format. Will be
   used to sort posts and in RSS.
-- `description` - **Required.** Short description to show in the feed.
-- `descriptionLong` - Optional long description to show before the image on the
-  post page. If not set, `description` will be used instead. Supports basic
+- `description` (**required**) - short description to show in the feed.
+- `descriptionLong` (optional) - long description to show before the image on
+  the post page. If not set, `description` will be used instead. Supports basic
   Markdown markup.
-- `picture` - Optional cover image, relative to `static/uploads/images`
-- `pictureComment` - Optional cover image comment. Supports basic Markdown
+- `picture` (optional) - cover image, relative to `static/uploads/images`
+- `pictureComment` (optional) - cover image comment. Supports basic Markdown
   markup.
-- `author` - **Required.** The name of the file in `content/authors`
+- `author` (**required**) - base name of the file in `content/authors`
   representing this post's author. See
   [Adding authors](/doc/user-guide/contributing/blog#adding-authors) to add a
   new author.
-- `commentsUrl` - Optional link to the [DVC forum](https://discuss.dvc.org)
+- `commentsUrl` (optional) - link to the [DVC forum](https://discuss.dvc.org)
   topic. It will contain comments for the post.
-- `tags` - Optional list of tags.
+- `tags` (optional) - list of tags.
 
 ## Content guidelines
 
@@ -137,7 +137,7 @@ avatar: avatar.jpeg
 link: https://www.twitter.com/johndoe
 ```
 
-- `name` – **Required.** Author's name.
-- `avatar` - **Required.** Path to the author's avatar, relative to
+- `name` (**required**) – author's name.
+- `avatar` (**required**) - path to the author's avatar, relative to
   `static/uploads/avatars` (1024x1024 is recommended).
-- `link` - Optional location that the author's name will link to.
+- `link` (optional) - location that the author's name will link to.

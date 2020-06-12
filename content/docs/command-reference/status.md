@@ -8,8 +8,8 @@ and remote storage.
 ## Synopsis
 
 ```usage
-usage: dvc status [-h] [-v] [-j <number>] [-q] [-c]
-                  [-r <name>] [-a] [-T] [-d] [-R] [--all-commits]
+usage: dvc status [-h] [-v] [-j <number>] [-q] [-c] [-r <name>] [-a] [-T]
+                  [--all-commits] [-d] [-R] [--show-json]
                   [targets [targets ...]]
 
 positional arguments:
@@ -69,9 +69,10 @@ the changes (described below).
   has changed (e.g. someone manually edited the file).
 
 - _always changed_ means that this is a `.dvc` file with no dependencies (an
-  _orphan_ stage file) or that the stage in `dvc.yaml` has the
-  `always_changed: true` value set (see `--always-changed` option in `dvc run`),
-  so its considered always changed, and thus is always executed by `dvc repro`.
+  _orphan stage_ (see [`dvc add`](/doc/command-reference/add)) or that the stage
+  in `dvc.yaml` has the `always_changed: true` value set (see `--always-changed`
+  option in `dvc run`), so its considered always changed, and thus is always
+  executed by `dvc repro`.
 
 - _changed deps_ or _changed outs_ means that there are changes in dependencies
   or outputs tracked by the stage in `dvc.yaml` or `.dvc` file. Depending on the
@@ -128,6 +129,9 @@ workspace) is different from remote storage. Bringing the two into sync requires
   each target directory and its subdirectories for stages (in `dvc.yaml`) and
   `.dvc` files to inspect. If there are no directories among the targets, this
   option is ignored.
+
+- `--show-json` - prints the command's output in easily parsable JSON format,
+  instead of a human-readable table.
 
 - `--all-commits` - same as `-a` or `-T` above, but applies to _all_ Git  
   commits as well as the workspace. Useful for comparing cache content for the

@@ -8,7 +8,7 @@ Add a new [data remote](/doc/command-reference/remote).
 ## Synopsis
 
 ```usage
-usage: dvc remote add [-h] [--global] [--system] [--local] [-q | -v]
+usage: dvc remote add [-h] [--global | --system | --local] [-q | -v]
                       [-d] [-f] name url
 
 positional arguments:
@@ -93,7 +93,7 @@ The following are the types of remote storage (protocols) supported:
 $ dvc remote add -d myremote s3://bucket/path
 ```
 
-By default DVC expects your AWS CLI is already
+By default, DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, use the parameters described in `dvc remote modify`.
@@ -237,7 +237,7 @@ modified.
 $ dvc remote add -d myremote gs://bucket/path
 ```
 
-By default DVC expects your GCP CLI is already
+By default, DVC expects your GCP CLI is already
 [configured](https://cloud.google.com/sdk/docs/authorizing). DVC will be using
 default GCP key file to access Google Cloud Storage. To override some of these
 settings, use the parameters described in `dvc remote modify`.
