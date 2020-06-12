@@ -168,8 +168,8 @@ As we mentioned briefly, DVC does not commit the `data/` directory and
 then `git commit` DVC-files that contain file hashes that point to cached data.
 
 In this case we created `data.dvc` and `model.h5.dvc`. Refer to
-[DVC-File Format](/doc/user-guide/dvc-files-and-directories) to learn more about
-how these files work.
+[DVC Files](/doc/user-guide/dvc-files-and-directories) to learn more about how
+these files work.
 
 </details>
 

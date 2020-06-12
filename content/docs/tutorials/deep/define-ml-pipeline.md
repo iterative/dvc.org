@@ -186,9 +186,9 @@ command and does some additional work if the command was successful:
 
 2. For reproducibility purposes, `dvc run` creates the `Posts.xml.dvc` stage
    file in the <abbr>project</abbr> with information about this pipeline stage.
-   (See [DVC-File Format](/doc/user-guide/dvc-files-and-directories)). Note that
-   the name of this file could be specified by using the `-f` option, for
-   example `-f extract.dvc`.
+   (See [DVC Files](/doc/user-guide/dvc-files-and-directories)). Note that the
+   name of this file could be specified by using the `-f` option, for example
+   `-f extract.dvc`.
 
 Let's take a look at the resulting stage file created by `dvc run` above:
 

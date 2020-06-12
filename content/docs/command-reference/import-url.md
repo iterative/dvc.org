@@ -193,8 +193,8 @@ The `etag` field in the `.dvc` file contains the
 If the remote file changes, its ETag will be different. This metadata allows DVC
 to determine whether its necessary to download it again.
 
-> See [DVC-File Format](/doc/user-guide/dvc-files-and-directories) for more
-> details on the text format above.
+> See [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) for
+> more details on the format above.
 
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).
