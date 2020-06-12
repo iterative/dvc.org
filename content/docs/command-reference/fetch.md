@@ -11,8 +11,9 @@ usage: dvc fetch [-h] [-q | -v] [-j <number>]
                  [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these DVC-files. Using -R,
-                 directories to search DVC-files in can also be given.
+  targets        Limit command scope to these stages or .dvc files.
+                 Using -R, directories can also be given, to search
+                 .dvc files in.
 ```
 
 ## Description
@@ -22,8 +23,9 @@ of the project, but without placing them in the <abbr>workspace</abbr>. This
 makes the data files available for linking (or copying) into the workspace.
 (Refer to [dvc config cache.type](/doc/command-reference/config#cache).) Along
 with `dvc checkout`, it's performed automatically by `dvc pull` when the target
-[DVC-files](/doc/user-guide/dvc-files-and-directories) are not already in the
-cache:
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) or
+[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files are not
+already in the cache:
 
 ```
 Controlled files             Commands
@@ -46,18 +48,16 @@ Fetching could be useful when first checking out a <abbr>DVC project</abbr>,
 since files tracked by DVC should already exist in remote storage, but won't be
 in the project's <abbr>cache</abbr>. (Refer to `dvc remote` for more information
 on DVC remotes.) These necessary data or model files are listed as
-<abbr>dependencies</abbr> or <abbr>outputs</abbr> in a DVC-file (target
-[stage](/doc/command-reference/run)) so they are required to
-[reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
-corresponding [pipeline](/doc/command-reference/pipeline). (See
-[DVC-File Format](/doc/user-guide/dvc-files-and-directories) for more
-information on dependencies and outputs.)
+<abbr>dependencies</abbr> or <abbr>outputs</abbr> in a target
+[stage](/doc/command-reference/run) (in `dvc.yaml`) or `.dvc` file, so they are
+required to [reproduce](/doc/tutorials/get-started/data-pipelines#reproduce) the
+corresponding [pipeline](/doc/command-reference/pipeline).
 
-`dvc fetch` ensures that the files needed for a DVC-file to be
+`dvc fetch` ensures that the files needed for a stage or `.dvc` file to be
 [reproduced](/doc/tutorials/get-started/data-pipelines#reproduce) exist in
 cache. If no `targets` are specified, the set of data files to fetch is
-determined by analyzing all DVC-files in the current branch, unless
-`--all-branches` or `--all-tags` is specified.
+determined by analyzing all `dvc.yaml` and `.dvc` files in the current branch,
+unless `--all-branches` or `--all-tags` is specified.
 
 The default remote is used (see `dvc config core.remote`) unless the `--remote`
 option is used.
@@ -66,9 +66,10 @@ option is used.
 perform data synchronization among local and remote storage. The specific way in
 which the set of files to push/fetch/pull is determined begins with calculating
 file hashes when these are [added](/doc/command-reference/add) with DVC. File
-hashes are stored in the corresponding DVC-files (typically versioned with Git).
-Only the hashes specified in DVC-files currently in the workspace are considered
-by `dvc fetch` (unless the `-a` or `-T` options are used).
+hash values are stored in the corresponding `dvc.yaml` or `.dvc` files
+(typically versioned with Git). Only the hash specified in `dvc.yaml` or `.dvc`
+files currently in the workspace are considered by `dvc fetch` (unless the `-a`
+or `-T` options are used).
 
 ## Options
 
@@ -77,14 +78,14 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
   `dvc remote list`).
 
 - `-d`, `--with-deps` - determines files to download by tracking dependencies to
-  the target DVC-files (stages). If no `targets` are provided, this option is
-  ignored. By traversing all stage dependencies, DVC searches backward from the
-  target stages in the corresponding pipelines. This means DVC will not fetch
-  files referenced in later stages than the `targets`.
+  the `targets`. If none are provided, this option is ignored. By traversing all
+  stage dependencies, DVC searches backward from the target stages in the
+  corresponding pipelines. This means DVC will not fetch files referenced in
+  later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to fetch by searching each target
-  directory and its subdirectories for DVC-files to inspect. If there are no
-  directories among the `targets`, this option is ignored.
+  directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
+  If there are no directories among the `targets`, this option is ignored.
 
 - `-j <number>`, `--jobs <number>` - number of threads to run simultaneously to
   handle the downloading of files from the remote. The default value is
@@ -94,7 +95,7 @@ by `dvc fetch` (unless the `-a` or `-T` options are used).
 
 - `-a`, `--all-branches` - fetch cache for all Git branches instead of just the
   current workspace. This means DVC may download files needed to reproduce
-  different versions of a DVC-file
+  different versions of a `.dvc` file
   ([experiments](/doc/tutorials/get-started/experiments)), not just the ones
   currently in the workspace. Note that this can be combined with `-T` below,
   for example using the `-aT` flag.
@@ -195,9 +196,11 @@ Note that the `.dvc/cache` directory was created and populated.
 > for more info.
 
 Used without arguments (as above), `dvc fetch` downloads all assets needed by
-all DVC-files in the current branch, including for directories. The hash values
-`3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
-correspond to the `model.pkl` file and `data/features/` directory, respectively.
+all [`dvc.yaml`](/doc/user-guide/dvc-file-format) and
+[`.dvc`](/doc/user-guide/dvc-file-format) files in the current branch, including
+for directories. The hash values `3863d0e317dee0a55c4e59d2ec0eef33` and
+`42c7025fc0edeb174069280d17add2d4` correspond to the `model.pkl` file and
+`data/features/` directory, respectively.
 
 Let's now link files from the cache to the workspace with:
 
@@ -211,7 +214,8 @@ $ dvc checkout
 > follow this example if you tried the previous one (**Default behavior**).
 
 `dvc fetch` only downloads the data files of a specific stage when the
-corresponding DVC-file (command target) is specified:
+corresponding [`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files)
+(command target) is specified:
 
 ```dvc
 $ dvc fetch prepare.dvc
@@ -277,12 +281,12 @@ $ tree .dvc/cache
 ```
 
 Fetching using `--with-deps` starts with the target
-[DVC-file](/doc/user-guide/dvc-files-and-directories) (`train.dvc` stage) and
-searches backwards through its pipeline for data to download into the project's
-cache. All the data for the second and third stages ("featurize" and "train")
-has now been downloaded to the cache. We could now use `dvc checkout` to get the
-data files needed to reproduce this pipeline up to the third stage into the
-workspace (with `dvc repro train.dvc`).
+[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) (`train.dvc`)
+and searches backwards through its pipeline for data to download into the
+project's cache. All the data for the second and third stages ("featurize" and
+"train") has now been downloaded to the cache. We could now use `dvc checkout`
+to get the data files needed to reproduce this pipeline up to the third stage
+into the workspace (with `dvc repro train.dvc`).
 
 > Note that in this example project, the last stage file `evaluate.dvc` doesn't
 > add any more data files than those form previous stages, so at this point all

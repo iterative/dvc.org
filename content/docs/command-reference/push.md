@@ -11,8 +11,9 @@ usage: dvc push [-h] [-q | -v] [-j <number>]
                 [targets [targets ...]]
 
 positional arguments:
-  targets        Limit command scope to these DVC-files. Using -R,
-                 directories to search DVC-files in can also be given.
+  targets        Limit command scope to these stages or .dvc files.
+                 Using -R, directories can also be given, to search
+                 .dvc files in.
 ```
 
 ## Description
@@ -29,8 +30,8 @@ and preserving data versions (input datasets, intermediate results, models,
 these commands.
 
 The `dvc push` command allows us to upload data to remote storage. It doesn't
-save any changes in the code or DVC-files (those should be saved by using
-`git commit` and `git push`).
+save any changes to the code, `dvc.yaml`, or `.dvc` files (those should be saved
+with `git commit` and `git push`).
 
 💡 For convenience, a Git hook is available to automate running `dvc push` after
 `git push`. See `dvc install` for more details.
@@ -38,14 +39,15 @@ save any changes in the code or DVC-files (those should be saved by using
 Under the hood a few actions are taken:
 
 - The push command by default uses all
-  [DVC-files](/doc/user-guide/dvc-files-and-directories) in the
+  [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) and
+  [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) in the
   <abbr>workspace</abbr>. The command options listed below will either limit or
-  expand the set of DVC-files to consult.
+  expand the set of stages (in dvc.yaml) or `.dvc` files to consult.
 
-- For each <abbr>output</abbr> referenced from each selected DVC-file, DVC finds
-  a corresponding file or directory in the <abbr>cache</abbr>. DVC then checks
-  whether it exists in the remote. From this, DVC gathers a list of files
-  missing from the remote storage.
+- For each <abbr>output</abbr> referenced in every selected stage or `.dvc`
+  file, DVC finds a corresponding file or directory in the <abbr>cache</abbr>.
+  DVC then checks whether it exists in the remote. From this, DVC gathers a list
+  of files missing from the remote storage.
 
 - Upload the cache files missing from remote storage, if any, to the remote.
 
@@ -65,18 +67,17 @@ cache (compared to the default remote.) It can be used to see what files
 `dvc push` would upload.
 
 If one or more `targets` are specified, DVC only considers the files associated
-with those DVC-files. Using the `--with-deps` option, DVC tracks dependencies
-backward from the target [stage files](/doc/command-reference/run), through the
-corresponding [pipelines](/doc/command-reference/pipeline), to find data files
-to push.
+with them. Using the `--with-deps` option, DVC tracks dependencies backward from
+the target [stage files](/doc/command-reference/run), through the corresponding
+[pipelines](/doc/command-reference/pipeline), to find data files to push.
 
 ## Options
 
-- `-a`, `--all-branches` - determines the files to upload by examining DVC-files
-  in all Git branches instead of just those present in the current workspace.
-  It's useful if branches are used to track experiments or project checkpoints.
-  Note that this can be combined with `-T` below, for example using the `-aT`
-  flag.
+- `-a`, `--all-branches` - determines the files to upload by examining
+  `dvc.yaml` and `.dvc` files in all Git branches instead of just those present
+  in the current workspace. It's useful if branches are used to track
+  experiments or project checkpoints. Note that this can be combined with `-T`
+  below, for example using the `-aT` flag.
 
 - `-T`, `--all-tags` - same as `-a` above, but applies to Git tags as well as
   the workspace. Useful if tags are used to track "checkpoints" of an experiment
@@ -88,14 +89,14 @@ to push.
   the entire existing commit history of the project.
 
 - `-d`, `--with-deps` - determines files to upload by tracking dependencies to
-  the target DVC-files (stages). If no `targets` are provided, this option is
-  ignored. By traversing all stage dependencies, DVC searches backward from the
-  target stages in the corresponding pipelines. This means DVC will not push
-  files referenced in later stages than the `targets`.
+  the `targets`. If none are provided, this option is ignored. By traversing all
+  stage dependencies, DVC searches backward from the target stages in the
+  corresponding pipelines. This means DVC will not push files referenced in
+  later stages than the `targets`.
 
 - `-R`, `--recursive` - determines the files to push by searching each target
-  directory and its subdirectories for DVC-files to inspect. If there are no
-  directories among the `targets`, this option is ignored.
+  directory and its subdirectories for `dvc.yaml` and `.dvc` files to inspect.
+  If there are no directories among the `targets`, this option is ignored.
 
 - `-r <name>`, `--remote <name>` - name of the
   [remote storage](/doc/command-reference/remote) to push from (see
@@ -140,7 +141,7 @@ the default remote:
 $ dvc push
 ```
 
-Push <abbr>outputs</abbr> of a specific DVC-file only:
+Push <abbr>outputs</abbr> of a specific `.dvc` file only:
 
 ```dvc
 $ dvc push data.zip.dvc
@@ -194,8 +195,8 @@ Data and pipelines are up to date.
 ```
 
 We specified a stage in the middle of this pipeline (`matrix-train.p.dvc`) with
-the first push. `--with-deps` caused DVC to start with that DVC-file, and search
-backwards through the pipeline for data files to upload.
+the first push. `--with-deps` caused DVC to start with that `.dvc` file, and
+search backwards through the pipeline for data files to upload.
 
 Because the `model.p.dvc` stage occurs later (it's the last one), its data was
 not pushed. However, we then specified it in the second push, so all remaining

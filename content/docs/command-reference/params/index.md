@@ -28,7 +28,7 @@ find inside the text file). Multiple parameter dependencies can be specified
 from one or more parameters files.
 
 The default parameters file name is `params.yaml`. Parameters should be
-organized as a tree hierarchy in it, as DVC will locate param names by their  
+organized as a tree hierarchy in it, as DVC will locate param names by their
 tree path. The supported formats for params files are YAML and JSON.
 
 Supported parameter _value_ types are: string, integer, float, and arrays. DVC

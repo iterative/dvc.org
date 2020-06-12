@@ -4,5 +4,7 @@ match: [dependency, dependencies]
 ---
 
 A file or directory (possibly tracked by DVC) recorded in the `deps` section of
-a DVC metafile (stage file). See `dvc run`. Stages are invalidated when any of
-their dependencies change.
+a stage (in
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files)) or
+[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) file. See
+`dvc run`. Stages are invalidated when any of their dependencies change.

@@ -110,7 +110,7 @@ that are hidden from the user. This directory is automatically staged with
 `git add`, so it can be easily committed with Git.
 
 Note that the DVC-file created by `dvc add` has no dependencies, a.k.a. an
-_orphan_ [stage file](/doc/command-reference/run):
+_orphan stage_ (see `dvc add`):
 
 ```yaml
 md5: c183f094869ef359e87e68d2264b6cdd
@@ -368,7 +368,7 @@ Once that's done, check the AUC metric again for an improvement:
 
 ```dvc
 $ dvc metrics show -a
-working tree:
+workspace:
 	auc.metric: AUC: 0.648462
 master:
 	auc.metric: AUC: 0.587951

@@ -2,9 +2,9 @@
 
 Download a file or directory tracked by DVC or by Git into the
 <abbr>workspace</abbr>. It also creates a
-[DVC-file](/doc/user-guide/dvc-files-and-directories) with information about the
-data source, which can later be used to [update](/doc/command-reference/update)
-the import.
+[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) with
+information about the data source, which can later be used to
+[update](/doc/command-reference/update) the import.
 
 > See also our `dvc.api.open()` Python API function.
 
@@ -44,7 +44,9 @@ The `path` argument is used to specify the location of the target to be
 downloaded within the source repository at `url`. `path` can specify any file or
 directory in the source repo, including those tracked by DVC, or by Git. Note
 that DVC-tracked targets should be found in a
-[DVC-file](/doc/user-guide/dvc-files-and-directories) of the project.
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) or
+[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) file of the
+project.
 
 ⚠️ The project should have a default
 [DVC remote](/doc/command-reference/remote), containing the actual data for this
@@ -55,15 +57,16 @@ command to work.
 
 After running this command successfully, the imported data is placed in the
 current working directory (unless `-o` is used) with its original file name e.g.
-`data.txt`. An _import stage_ (DVC-file) is also created in the same location,
-extending the name of the imported data e.g. `data.txt.dvc` – similar to having
-used `dvc run` to generate the data as a stage <abbr>output</abbr>.
+`data.txt`. An _import stage_ (`.dvc` file) is also created in the same
+location, extending the name of the imported data e.g. `data.txt.dvc` – similar
+to having used `dvc run` to generate the data as a stage <abbr>output</abbr>.
 
-DVC-files support references to data in an external DVC repository (hosted on a
-Git server). In such a DVC-file, the `deps` field specifies the remote `url` and
-data `path`, and the `outs` field contains the corresponding local path in the
-<abbr>workspace</abbr>. It records enough metadata about the imported data to
-enable DVC efficiently determining whether the local copy is out of date.
+`.dvc` files support references to data in an external DVC repository (hosted on
+a Git server). In such a `.dvc` file, the `deps` field specifies the remote
+`url` and data `path`, and the `outs` field contains the corresponding local
+path in the <abbr>workspace</abbr>. It records enough metadata about the
+imported data to enable DVC efficiently determining whether the local copy is
+out of date.
 
 To actually [track the data](/doc/tutorials/get-started/data-versioning),
 `git add` (and `git commit`) the import stage.
@@ -112,9 +115,9 @@ Importing 'data/data.xml (git@github.com:iterative/example-get-started)'
 
 In contrast with `dvc get`, this command doesn't just download the data file,
 but it also creates an import stage
-([DVC-file](/doc/user-guide/dvc-files-and-directories)) with a link to the data
-source (as explained in the description above). (This import stage can later be
-used to [update](/doc/command-reference/update) the import.) Check
+([`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files)) with a link
+to the data source (as explained in the description above). (This import stage
+can later be used to [update](/doc/command-reference/update) the import.) Check
 `data.xml.dvc`:
 
 ```yaml
@@ -153,8 +156,8 @@ Importing
 ```
 
 When using this option, the import stage
-([DVC-file](/doc/user-guide/dvc-files-and-directories)) will also have a `rev`
-subfield under `repo`:
+([`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files)) will also
+have a `rev` subfield under `repo`:
 
 ```yaml
 deps:
@@ -167,7 +170,7 @@ deps:
 
 If `rev` is a Git branch or tag (where the underlying commit changes), the data
 source may have updates at a later time. To bring it up to date if so (and
-update `rev_lock` in the DVC-file), simply use `dvc update <stage>.dvc`. If
+update `rev_lock` in the `.dvc` file), simply use `dvc update <stage>.dvc`. If
 `rev` is a specific commit hash (does not change), `dvc update` without options
 will not have an effect on the import stage. You may force-update it to a
 different commit with `dvc update --rev`:
@@ -185,9 +188,10 @@ If you take a look at our
 [dataset registry](https://github.com/iterative/dataset-registry)
 <abbr>project</abbr>, you'll see that it's organized into different directories
 such as `tutorial/ver` and `use-cases/`, and these contain
-[DVC-files](/doc/user-guide/dvc-files-and-directories) that track different
-datasets. Given this simple structure, its data files can be easily shared among
-several other projects using `dvc get` and `dvc import`. For example:
+[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) that track
+different datasets. Given this simple structure, its data files can be easily
+shared among several other projects using `dvc get` and `dvc import`. For
+example:
 
 ```dvc
 $ dvc get https://github.com/iterative/dataset-registry \
@@ -206,7 +210,7 @@ $ dvc import git@github.com:iterative/dataset-registry.git \
 `dvc import` provides a better way to incorporate data files tracked in external
 <abbr>DVC repositories</abbr> because it saves the connection between the
 current project and the source repo. This means that enough information is
-recorded in an import stage (DVC-file) in order to
+recorded in an import stage (`.dvc` file) in order to
 [reproduce](/doc/command-reference/repro) downloading of this same data version
 in the future, where and when needed. This is achieved with the `repo` field,
 for example (matching the import command above):
