@@ -65,8 +65,8 @@ stages:
 > `cache: false` above specifies that `summary.json` is not tracked or
 > <abbr>cached</abbr> by DVC (`-M` option of `dvc run`). These metric files are
 > normally committed with Git instead. See
-> [`dvc.yaml`](/doc/user-guide/dvc-file-format) for more information on the file
-> format above.
+> [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) for more
+> information on the file format above.
 
 ### Supported file formats
 

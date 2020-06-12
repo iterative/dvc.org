@@ -3,7 +3,7 @@
 Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track
 changes in the remote data source. Creates a
-[`.dvc` file](/doc/user-guide/dvc-file-format).
+[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files).
 
 > See `dvc import` to download and tack data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on Github).

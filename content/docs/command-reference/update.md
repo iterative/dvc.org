@@ -2,7 +2,7 @@
 
 Update <abbr>data artifacts</abbr> imported from external <abbr>DVC
 projects</abbr>, and corresponding import stage
-[`.dvc` files](/doc/user-guide/dvc-file-format).
+[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files).
 
 ## Synopsis
 

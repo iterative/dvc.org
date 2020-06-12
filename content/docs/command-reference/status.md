@@ -80,8 +80,8 @@ the changes (described below).
 
   - _new_: An <abbr>output</abbr> is found in the workspace, but there is no
     corresponding file hash saved in the
-    [`dvc.lock`](/doc/user-guide/dvc-file-format) or
-    [`.dvc`](/doc/user-guide/dvc-file-format) file yet.
+    [`dvc.lock`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) or
+    [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) file yet.
   - _modified_: An output or <abbr>dependency</abbr> is found in the workspace,
     but the corresponding file hash in the `dvc.lock` or `.dvc` file is not up
     to date.

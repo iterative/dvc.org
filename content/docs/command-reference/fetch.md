@@ -196,11 +196,11 @@ Note that the `.dvc/cache` directory was created and populated.
 > for more info.
 
 Used without arguments (as above), `dvc fetch` downloads all assets needed by
-all [`dvc.yaml`](/doc/user-guide/dvc-file-format) and
-[`.dvc`](/doc/user-guide/dvc-file-format) files in the current branch, including
-for directories. The hash values `3863d0e317dee0a55c4e59d2ec0eef33` and
-`42c7025fc0edeb174069280d17add2d4` correspond to the `model.pkl` file and
-`data/features/` directory, respectively.
+all [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) and
+[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files in the
+current branch, including for directories. The hash values
+`3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
+correspond to the `model.pkl` file and `data/features/` directory, respectively.
 
 Let's now link files from the cache to the workspace with:
 
