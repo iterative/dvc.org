@@ -83,8 +83,8 @@ the changes (described below).
     [`dvc.lock`](/doc/user-guide/dvc-file-format) or
     [`.dvc`](/doc/user-guide/dvc-file-format) file yet.
   - _modified_: An output or <abbr>dependency</abbr> is found in the workspace,
-    but the corresponding file hash in the `dvc.lock` or `.dvc` file is not up to
-    date.
+    but the corresponding file hash in the `dvc.lock` or `.dvc` file is not up
+    to date.
   - _deleted_: The output or dependency is referenced in a `dvc.yaml` or `.dvc`
     file, but does not exist in the workspace.
   - _not in cache_: An output exists in the workspace, and the corresponding
