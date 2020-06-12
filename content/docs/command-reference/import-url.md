@@ -84,7 +84,7 @@ Specific explanations:
   running. DVC automatically expands this URL into a regular S3, SSH, GS, etc
   URL by appending `/path/to/file` to the `myremote`'s configured base path.
 
-Another way to understand the `dvc import-url` command is as a short-cut for a
+Another way to understand the `dvc import-url` command is as a shortcut for a
 more verbose `dvc run` command. This is discussed in the
 [External Dependencies](/doc/user-guide/external-dependencies) documentation,
 where an alternative is demonstrated for each of these schemes.

@@ -11,7 +11,8 @@ usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R]
                   targets [targets ...]
 
 positional arguments:
-  targets        .dvc files to update.
+  targets      import stage .dvc files to update. Using -R, directories
+               to search for .dvc files can also be given.
 ```
 
 ## Description
@@ -47,8 +48,8 @@ dvc update --rev master
   > revision.
 
 - `-R`, `--recursive` - determines the files to update by searching each target
-  directory and its subdirectories for `.dvc` files to inspect. If there are no
-  directories among the targets, this option is ignored.
+  directory and its subdirectories for import stage `.dvc` files to inspect. If
+  there are no directories among the targets, this option is ignored.
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
