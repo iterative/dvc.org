@@ -5,13 +5,14 @@ directory (`.dvc/`) with the
 [internal directories and files](#internal-directories-and-files) needed for DVC
 operation.
 
-Additionally, there are two special files created by certain
+Additionally, there are two special kind of files created by certain
 [DVC commands](/doc/command-reference):
 
-- Files ending with the `.dvc` extension are basic placeholders to version data
-  files and directories. A <abbr>DVC project</abbr> can have multiple
-  [`.dvc` files](#dvc-files).
-- The [`dvc.yaml` file](#dvcyaml-file) or _pipeline(s) file_ specifies stages
+- Files ending with the `.dvc` extension are placeholders to version data files
+  and directories. A <abbr>DVC project</abbr> usually has one
+  [`.dvc` file](#dvc-files) per large data file or dataset directory being
+  tracked.
+- The [`dvc.yaml` file](#dvcyaml-files) or _pipeline(s) file_ specifies stages
   that form the pipeline(s) of a project, and their connections (_dependency
   graph_ or DAG).
 
@@ -23,11 +24,11 @@ should be versioned with Git (for Git-enabled <abbr>repositories</abbr>).
 
 When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add` or
 `dvc import`, a `.dvc` file is created based on the data file name (e.g.
-`data.xml.dvc`). These files contain the basic information needed to track the
-data with DVC.
+`data.xml.dvc`). These files contain the information needed to track the data
+with DVC.
 
-They use a simple YAML format that can be easily written or altered manually.
-Here is a full sample:
+They use a simple [YAML](https://yaml.org/) format, meant to be easy to read,
+edit, or even created manually by users. Here is a full sample:
 
 ```yaml
 outs:
@@ -61,6 +62,8 @@ A `.dvc` file dependency entry consists of a these possible fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
 - `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
+- `etag` (optional): Strong ETag response header (only HTTP <abbr>external
+  dependencies</abbr> created with `dvc import-url`)
 - `repo` (optional): This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
@@ -71,10 +74,6 @@ A `.dvc` file dependency entry consists of a these possible fields:
     dependency from.
   - `rev_lock`: Git commit hash of the external <abbr>DVC repository</abbr> at
     the time of importing or updating (with `dvc update`) the dependency.
-
-  > See the examples in
-  > [External Dependencies](/doc/user-guide/external-dependencies) for more
-  > info.
 
 Note that comments can be added to `.dvc` files and `dvc.yaml` using the
 `# comment` syntax.
@@ -122,11 +121,11 @@ fields:
 - `frozen` (optional): Whether or not this stage is frozen from reproduction
 - `always_changed` (optional): Whether or not this stage is considered as
   changed by commands such as `dvc status` and `dvc repro`. `false` by default
-- `meta` (manual): Arbitrary information can be added here manually. Any YAML
+- `meta` (optional): Arbitrary information can be added here manually. Any YAML
   contents can be added. `meta` contents are ignored by DVC, but they can be
   useful for user processes that read `.dvc` files.
 
-> `meta` fields and `#` comments are always preserved in `dvc.yaml` files.
+> `meta` fields and `#` comments are always preserved in `dvc.yaml` stages.
 
 An output entry (`outs`, `metrics`, or `plots`) consists of these fields:
 
@@ -140,12 +139,6 @@ A `dvc.yaml` dependency entry consists of a these possible fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
 - `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
-- `etag` (optional): Strong ETag response header (only HTTP <abbr>external
-  dependencies</abbr> created with `dvc import-url`)
-
-  > See the examples in
-  > [External Dependencies](/doc/user-guide/external-dependencies) for more
-  > info.
 
 `dvc.yaml` files also support `# comments`.
 
