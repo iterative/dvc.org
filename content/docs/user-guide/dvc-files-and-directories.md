@@ -43,8 +43,9 @@ meta:
 
 `.dvc` files can contain the following fields:
 
-- `outs` (always present): List of <abbr>output</abbr> entries for this `.dvc`
-  file. Typically there is only one (but several can be added manually).
+- `outs` (always present): List of <abbr>output</abbr> entries that represent
+  the files or directories tracked with DVC. Typically there is only one per
+  `.dvc` file (but several can be added or combined manually).
 - `deps`: List of <abbr>dependency</abbr> entries for this stage, only present
   when `dvc import` and `dvc import-url` are used. Typically there is only one
   (but several can be added manually).
@@ -54,10 +55,11 @@ meta:
 
 An _output entry_ can consist of these fields:
 
-- `md5`: Hash value for the output file
-- `path`: Path to the output in the <abbr>workspace</abbr>, relative to the
-  location of the `.dvc` file
-- `cache`: Whether or not DVC should cache the output. `true` by default
+- `md5`: Hash value for the file or directory being tracked with DVC
+- `path`: Path to the file or directory, relative to the location of the `.dvc`
+  file
+- `cache`: Whether or not DVC should cache the file or directory. `true` by
+  default
 
 A _dependency entry_ consists of a these possible fields:
 
