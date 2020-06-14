@@ -131,7 +131,7 @@ the possible following fields:
   commands such as `dvc status` and `dvc repro`. `false` by default
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
-  can be meaningful for user processes that read `.dvc` files.
+  can be meaningful for user processes that read or write `.dvc` files directly.
 
 `dvc.yaml` files also support `# comments`. `meta` fields and `#` comments are
 always preserved in `dvc.yaml` stages.
@@ -160,12 +160,12 @@ always preserved in `dvc.yaml` stages.
   > are needed to download or reproduce them.
 
 - `.dvc/plots`: Directory for
-  [Plot templates](/doc/command-reference/plots#plot-templates).
+  [Plot templates](/doc/command-reference/plots#plot-templates)
 
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 
 - `.dvc/tmp/index`: Directory for remote index files that are used for
-  optimizing `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c` operations.
+  optimizing `dvc push`, `dvc pull`, `dvc fetch` and `dvc status -c` operations
 
 - `.dvc/tmp/state`: This file is used for optimization. It is a SQLite database,
   that contains hash values for files tracked in a DVC project, with respective
@@ -187,7 +187,7 @@ always preserved in `dvc.yaml` stages.
 
 - `.dvc/tmp/rwlock`: JSON file that contains read and write locks for specific
   dependencies and outputs, to allow safely running multiple DVC commands in
-  parallel.
+  parallel
 
 ## Structure of cache directory
 
