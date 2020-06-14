@@ -76,7 +76,7 @@ A _dependency entry_ consists of a these possible fields:
     [Git revision](https://git-scm.com/docs/revisions)) used to import the
     dependency from.
   - `rev_lock`: Git commit hash of the external <abbr>DVC repository</abbr> at
-    the time of importing or updating (with `dvc update`) the dependency.
+    the time of importing or updating the dependency (with `dvc update`)
 
 Note that comments can be added to `.dvc` files and `dvc.yaml` using the
 `# comment` syntax. `meta` fields and `#` comments are preserved among
@@ -128,7 +128,7 @@ the possible following fields:
 - `metrics`: List of [metric files](/doc/command-reference/metrics)
 - `plots`: List of [plot metrics](/doc/command-reference/plots) and optionally,
   their default configuration (subfields matching the options of
-  `dvc plots modify`).
+  `dvc plots modify`)
 - `frozen`: Whether or not this stage is frozen from reproduction
 - `always_changed`: Whether or not this stage is considered as changed by
   commands such as `dvc status` and `dvc repro`. `false` by default
