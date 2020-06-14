@@ -121,8 +121,9 @@ the possible following fields:
 
 - `cmd` (always present): Executable command defined in this stage
 - `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
-- `params`: List of the [parameters](/doc/command-reference/params). These are
-  key paths referring to another YAML file (`params.yaml` by default).
+- `params`: List of [parameter dependencies](/doc/command-reference/params).
+  These are key paths referring to a YAML or JSON file (`params.yaml` by
+  default).
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
 - `metrics`: List of [metric files](/doc/command-reference/metrics)
 - `plots`: List of [plot metrics](/doc/command-reference/plots) and optionally,
@@ -135,8 +136,7 @@ the possible following fields:
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read or write `.dvc` files directly.
 
-`dvc.yaml` files also support `# comments`. `meta` fields and `#` comments are
-always preserved in `dvc.yaml` stages.
+`dvc.yaml` files also support `# comments`.
 
 ## Internal directories and files
 
@@ -162,7 +162,7 @@ always preserved in `dvc.yaml` stages.
   > are needed to download or reproduce them.
 
 - `.dvc/plots`: Directory for
-  [Plot templates](/doc/command-reference/plots#plot-templates)
+  [plot templates](/doc/command-reference/plots#plot-templates)
 
 - `.dvc/tmp`: Directory for miscellaneous temporary files
 
