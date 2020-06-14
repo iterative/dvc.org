@@ -77,11 +77,9 @@ A _dependency entry_ consists of a these possible fields:
     the time of importing or updating (with `dvc update`) the dependency.
 
 Note that comments can be added to `.dvc` files and `dvc.yaml` using the
-`# comment` syntax.
-
-> `meta` fields and `#` comments are preserved among executions of the
-> `dvc repro` and `dvc commit` commands, but not when a `.dvc` file is
-> overwritten by `dvc add`,`dvc import`, or `dvc import-url`.
+`# comment` syntax. `meta` fields and `#` comments are preserved among
+executions of the `dvc repro` and `dvc commit` commands, but not when a `.dvc`
+file is overwritten by `dvc add`,`dvc import`, or `dvc import-url`.
 
 ## dvc.yaml files
 
@@ -135,9 +133,8 @@ the possible following fields:
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
 
-`dvc.yaml` files also support `# comments`.
-
-> `meta` fields and `#` comments are always preserved in `dvc.yaml` stages.
+`dvc.yaml` files also support `# comments`. `meta` fields and `#` comments are
+always preserved in `dvc.yaml` stages.
 
 ## Internal directories and files
 
