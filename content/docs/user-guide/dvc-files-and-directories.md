@@ -41,18 +41,18 @@ meta:
   email: john@doe.com
 ```
 
-`.dvc` files can contain the following two fields:
+`.dvc` files can contain the following fields:
 
 - `outs`: List of <abbr>outputs</abbr> for this `.dvc` file
 - `deps` (optional): List of <abbr>dependencies</abbr> for this stage, only
   present when `dvc import` and `dvc import-url` are used.
-- `meta` (manual): Arbitrary information can be added here manually. Any YAML
+- `meta` (optional): Arbitrary information can be added here manually. Any YAML
   contents can be added. `meta` contents are ignored by DVC, but they can be
   useful for user processes that read `.dvc` files.
 
 An output entry can consist of these fields:
 
-- `md5`: Hash value for the output file
+- `md5` (optional): Hash value for the output file
 - `path`: Path to the output in the <abbr>workspace</abbr>, relative to the
   location of the `.dvc` file
 - `cache` (optional): Whether or not DVC should cache the output. `true` by
@@ -61,7 +61,8 @@ An output entry can consist of these fields:
 A `.dvc` file dependency entry consists of a these possible fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
-- `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
+- `md5` (optional): MD5 hash for the dependency (most
+  [stages](/doc/command-reference/run))
 - `etag` (optional): Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
 - `repo` (optional): This entry is only for external dependencies created with
@@ -129,7 +130,7 @@ fields:
 
 An output entry (`outs`, `metrics`, or `plots`) consists of these fields:
 
-- `md5`: Hash value for the output file
+- `md5` (optional): Hash value for the output file
 - `path`: Path to the output in the <abbr>workspace</abbr>, relative to the
   location of the `.dvc` file
 - `cache` (optional): Whether or not DVC should cache the output. `true` by
@@ -138,7 +139,8 @@ An output entry (`outs`, `metrics`, or `plots`) consists of these fields:
 A `dvc.yaml` dependency entry consists of a these possible fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
-- `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
+- `md5` (optional): MD5 hash for the dependency (most
+  [stages](/doc/command-reference/run))
 
 `dvc.yaml` files also support `# comments`.
 
