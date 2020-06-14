@@ -43,14 +43,16 @@ meta:
 
 `.dvc` files can contain the following fields:
 
-- `outs`: List of <abbr>outputs</abbr> for this `.dvc` file
-- `deps` (optional): List of <abbr>dependencies</abbr> for this stage, only
-  present when `dvc import` and `dvc import-url` are used.
-- `meta` (optional): Arbitrary information can be added here manually. Any YAML
-  contents can be added. `meta` contents are ignored by DVC, but they can be
-  useful for user processes that read `.dvc` files.
+- `outs`: List of <abbr>output</abbr> entries for this `.dvc` file. Typically
+  there is only one (but several can be added manually).
+- `deps` (optional): List of <abbr>dependency</abbr> entries for this stage,
+  only present when `dvc import` and `dvc import-url` are used. Typically there
+  is only one (but several can be added manually).
+- `meta` (optional): Arbitrary metadata can be added manually with this field.
+  Any YAML contents is supported. `meta` contents are ignored by DVC, but they
+  can be meaningful for user processes that read `.dvc` files.
 
-An output entry can consist of these fields:
+An _output entry_ can consist of these fields:
 
 - `md5` (optional): Hash value for the output file
 - `path`: Path to the output in the <abbr>workspace</abbr>, relative to the
@@ -58,7 +60,7 @@ An output entry can consist of these fields:
 - `cache` (optional): Whether or not DVC should cache the output. `true` by
   default
 
-A `.dvc` file dependency entry consists of a these possible fields:
+A _dependency entry_ consists of a these possible fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
 - `md5` (optional): MD5 hash for the dependency (most
@@ -90,19 +92,29 @@ created or updated. Here's a simple example:
 
 ```yaml
 stages:
-  stageone:
-    cmd: python cmd.py input.data output.data metrics.json
+  features:
+    cmd: jupyter nbconvert --execute featurize.ipynb
     deps:
-      - cmd.py
-      - input.data
+      - data/clean
+    params:
+      - levels.no
     outs:
-      - output.data
+      - features
     metrics:
-      - metrics.json
-  stagetwo:
-    cmd: python ...
-    meta: '2nd stage' # User metadata and comments are supported.
-    deps: ...
+      - performance.json
+  training:
+    cmd: python train.py
+    deps:
+      - train.py
+      - features
+    outs:
+      - model.pkl
+    plots:
+      - logs.csv:
+          x: epoch
+          x_label: Epoch
+    meta: 'For deployment'
+    # User metadata and comments are supported.
 ```
 
 `dvc.yaml` files consists of a group of `stages` with names provided explicitly
@@ -113,36 +125,26 @@ they can contain more information in `dvc.yaml` These are the possible following
 fields:
 
 - `cmd`: Executable command defined in this stage
-- `deps` (optional): List of <abbr>dependencies</abbr> for this stage
-- `outs` (optional): List of <abbr>outputs</abbr> for this stage
-- `params` (optional): List of the [parameter](/doc/command-reference/params)
-  names and their current values
-- `metrics` (optional): List of [metrics](/doc/command-reference/metrics)
-- `plots` (optional): List of [plot metrics](/doc/command-reference/plots)
+- `deps` (optional): List of <abbr>dependency</abbr> file or directory paths of
+  this stage
+- `params` (optional): List of the [parameters](/doc/command-reference/params).
+  These are key paths referring to another YAML file (`params.yaml` by default).
+- `outs` (optional): List of <abbr>output</abbr> file or directory paths of this
+  stage
+- `metrics` (optional): List of [metric files](/doc/command-reference/metrics)
+- `plots` (optional): List of [plot metrics](/doc/command-reference/plots) and
+  optionally, their default configuration (subfields matching the options of
+  `dvc plots modify`).
 - `frozen` (optional): Whether or not this stage is frozen from reproduction
 - `always_changed` (optional): Whether or not this stage is considered as
   changed by commands such as `dvc status` and `dvc repro`. `false` by default
-- `meta` (optional): Arbitrary information can be added here manually. Any YAML
-  contents can be added. `meta` contents are ignored by DVC, but they can be
-  useful for user processes that read `.dvc` files.
-
-> `meta` fields and `#` comments are always preserved in `dvc.yaml` stages.
-
-An output entry (`outs`, `metrics`, or `plots`) consists of these fields:
-
-- `md5` (optional): Hash value for the output file
-- `path`: Path to the output in the <abbr>workspace</abbr>, relative to the
-  location of the `.dvc` file
-- `cache` (optional): Whether or not DVC should cache the output. `true` by
-  default
-
-A `dvc.yaml` dependency entry consists of a these possible fields:
-
-- `path`: Path to the dependency, relative to the `wdir` path (always present)
-- `md5` (optional): MD5 hash for the dependency (most
-  [stages](/doc/command-reference/run))
+- `meta` (optional): Arbitrary metadata can be added manually with this field.
+  Any YAML contents is supported. `meta` contents are ignored by DVC, but they
+  can be meaningful for user processes that read `.dvc` files.
 
 `dvc.yaml` files also support `# comments`.
+
+> `meta` fields and `#` comments are always preserved in `dvc.yaml` stages.
 
 ## Internal directories and files
 
