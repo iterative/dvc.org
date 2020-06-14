@@ -43,31 +43,29 @@ meta:
 
 `.dvc` files can contain the following fields:
 
-- `outs`: List of <abbr>output</abbr> entries for this `.dvc` file. Typically
-  there is only one (but several can be added manually).
-- `deps` (optional): List of <abbr>dependency</abbr> entries for this stage,
-  only present when `dvc import` and `dvc import-url` are used. Typically there
-  is only one (but several can be added manually).
+- `outs` (always present): List of <abbr>output</abbr> entries for this `.dvc`
+  file. Typically there is only one (but several can be added manually).
+- `deps`: List of <abbr>dependency</abbr> entries for this stage, only present
+  when `dvc import` and `dvc import-url` are used. Typically there is only one
+  (but several can be added manually).
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
 
 An _output entry_ can consist of these fields:
 
-- `md5` (optional): Hash value for the output file
+- `md5`: Hash value for the output file
 - `path`: Path to the output in the <abbr>workspace</abbr>, relative to the
   location of the `.dvc` file
-- `cache` (optional): Whether or not DVC should cache the output. `true` by
-  default
+- `cache`: Whether or not DVC should cache the output. `true` by default
 
 A _dependency entry_ consists of a these possible fields:
 
 - `path`: Path to the dependency, relative to the `wdir` path (always present)
-- `md5` (optional): MD5 hash for the dependency (most
-  [stages](/doc/command-reference/run))
-- `etag` (optional): Strong ETag response header (only HTTP <abbr>external
+- `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
+- `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
-- `repo` (optional): This entry is only for external dependencies created with
+- `repo`: This entry is only for external dependencies created with
   `dvc import`, and can contains the following fields:
 
   - `url`: URL of Git repository with source DVC project
@@ -118,26 +116,21 @@ stages:
 ```
 
 `dvc.yaml` files consists of a group of `stages` with names provided explicitly
-by the user with the `--name` (`-n`) option of `dvc run`.
+by the user with the `--name` (`-n`) option of `dvc run`. Each stage can contain
+the possible following fields:
 
-Each stage's contents are similar to individual [`dvc` files](#dvcfiles) but
-they can contain more information in `dvc.yaml` These are the possible following
-fields:
-
-- `cmd`: Executable command defined in this stage
-- `deps` (optional): List of <abbr>dependency</abbr> file or directory paths of
-  this stage
-- `params` (optional): List of the [parameters](/doc/command-reference/params).
-  These are key paths referring to another YAML file (`params.yaml` by default).
-- `outs` (optional): List of <abbr>output</abbr> file or directory paths of this
-  stage
-- `metrics` (optional): List of [metric files](/doc/command-reference/metrics)
-- `plots` (optional): List of [plot metrics](/doc/command-reference/plots) and
-  optionally, their default configuration (subfields matching the options of
+- `cmd` (always present): Executable command defined in this stage
+- `deps`: List of <abbr>dependency</abbr> file or directory paths of this stage
+- `params`: List of the [parameters](/doc/command-reference/params). These are
+  key paths referring to another YAML file (`params.yaml` by default).
+- `outs`: List of <abbr>output</abbr> file or directory paths of this stage
+- `metrics`: List of [metric files](/doc/command-reference/metrics)
+- `plots`: List of [plot metrics](/doc/command-reference/plots) and optionally,
+  their default configuration (subfields matching the options of
   `dvc plots modify`).
-- `frozen` (optional): Whether or not this stage is frozen from reproduction
-- `always_changed` (optional): Whether or not this stage is considered as
-  changed by commands such as `dvc status` and `dvc repro`. `false` by default
+- `frozen`: Whether or not this stage is frozen from reproduction
+- `always_changed`: Whether or not this stage is considered as changed by
+  commands such as `dvc status` and `dvc repro`. `false` by default
 - `meta` (optional): Arbitrary metadata can be added manually with this field.
   Any YAML contents is supported. `meta` contents are ignored by DVC, but they
   can be meaningful for user processes that read `.dvc` files.
