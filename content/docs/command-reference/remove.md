@@ -18,7 +18,7 @@ from the <abbr>workspace</abbr>. It takes one or more stage names (see `-n`
 option of `dvc run`) or
 [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) as target,
 removes all of its outputs (outs field), and optionally removes the stage entry
-from [dvc.yaml](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) or the
+from [dvc.yaml](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or the
 `.dvc` file itself.
 
 Note that it does not remove files from the DVC cache or remote storage (see

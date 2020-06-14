@@ -44,7 +44,7 @@ The `path` argument is used to specify the location of the target to be
 downloaded within the source repository at `url`. `path` can specify any file or
 directory in the source repo, including those tracked by DVC, or by Git. Note
 that DVC-tracked targets should be found in a
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) or
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
 [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) file of the
 project.
 

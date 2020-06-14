@@ -2,7 +2,7 @@
 
 When you add a file or a stage to your pipeline, DVC creates a special
 [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) or
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) file
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) file
 (respectively) that contains all the needed information to track your data and
 transformations.
 

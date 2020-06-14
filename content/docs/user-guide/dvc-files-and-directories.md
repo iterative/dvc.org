@@ -12,7 +12,7 @@ Additionally, there are two special kind of files created by certain
   and directories. A <abbr>DVC project</abbr> usually has one
   [`.dvc` file](#dvc-files) per large data file or dataset directory being
   tracked.
-- The [`dvc.yaml` file](#dvcyaml-files) or _pipeline(s) file_ specifies stages
+- The [`dvc.yaml` file](#dvcyaml-file) or _pipeline(s) file_ specifies stages
   that form the pipeline(s) of a project, and their connections (_dependency
   graph_ or DAG).
 
@@ -20,7 +20,7 @@ Both use human-friendly YAML schemas, described below. We encourage you to get
 familiar with them so you may edit them freely, as needed. Both type of files
 should be versioned with Git (for Git-enabled <abbr>repositories</abbr>).
 
-## .dvc files
+## .dvc file
 
 When you add a file or directory to a <abbr>DVC project</abbr> with `dvc add` or
 `dvc import`, a `.dvc` file is created based on the data file name (e.g.

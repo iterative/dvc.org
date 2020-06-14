@@ -106,9 +106,9 @@ $ dvc run -d https://example.com/path/to/data.csv \
 `dvc import-url` generates an import stage
 [`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) and `dvc run`
 a regular stage (in
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files)). Both
-have an external dependency, but the one created by `dvc import-url` preserves
-the connection to the data source. We call this an _import stage_.
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)). Both have
+an external dependency, but the one created by `dvc import-url` preserves the
+connection to the data source. We call this an _import stage_.
 
 Note that import stages are considered always
 [frozen](/doc/command-reference/freeze), meaning that if you run `dvc repro`,

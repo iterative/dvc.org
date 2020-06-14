@@ -62,7 +62,7 @@ easily tracked with Git.
 > Note that `.dvc` files can be considered _orphan stages_, because they have no
 > <abbr>dependencies</abbr>, only outputs. These are treated as _always changed_
 > by `dvc status` and `dvc repro`, which always executes them. See
-> [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) to learn
+> [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) to learn
 > more about stages.
 
 To avoid adding files inside a directory accidentally, you can add the

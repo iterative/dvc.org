@@ -46,8 +46,8 @@ please see `dvc plots`.
 ## Options
 
 - `--targets <path>` - specific metric files to visualize. These must be listed
-  in a [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files)
-  file (see the `--plots` option of `dvc run`).
+  in a [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) file
+  (see the `--plots` option of `dvc run`).
 
 - `-o <path>, --out <path>` - name of the generated file. By default, the output
   file name is equal to the input filename with a `.html` file extension (or

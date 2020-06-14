@@ -23,7 +23,7 @@ of the project, but without placing them in the <abbr>workspace</abbr>. This
 makes the data files available for linking (or copying) into the workspace.
 (Refer to [dvc config cache.type](/doc/command-reference/config#cache).) Along
 with `dvc checkout`, it's performed automatically by `dvc pull` when the target
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) or
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) or
 [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files are not
 already in the cache:
 
@@ -196,7 +196,7 @@ Note that the `.dvc/cache` directory was created and populated.
 > for more info.
 
 Used without arguments (as above), `dvc fetch` downloads all assets needed by
-all [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) and
+all [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
 [`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files in the
 current branch, including for directories. The hash values
 `3863d0e317dee0a55c4e59d2ec0eef33` and `42c7025fc0edeb174069280d17add2d4`
