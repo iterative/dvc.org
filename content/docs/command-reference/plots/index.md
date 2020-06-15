@@ -125,25 +125,26 @@ header (first row) are equivalent to field names.
 
 #### DVC template anchors
 
-- `<DVC_METRIC_DATA>` - the plot data from any kind of metric files is converted
-  to a single JSON array internally, and injected instead of this anchor. Two
-  additional fields will be added: `index` and `rev` (explained above).
+- `<DVC_METRIC_DATA>`(required) - the plot data from any kind of metric files is
+  converted to a single JSON array internally, and injected instead of this
+  anchor. Two additional fields will be added: `index` and `rev` (explained
+  above).
 
-- `<DVC_METRIC_TITLE>` - a title for the plot, that can be defined with the
-  `--title` option of the `dvc plot` subcommands.
+- `<DVC_METRIC_TITLE>`(optional) - a title for the plot, that can be defined
+  with the `--title` option of the `dvc plot` subcommands.
 
-- `<DVC_METRIC_X>` - field name of the data for the X axis. It can be defined
-  with the `-x` option of the `dvc plot` subcommands. The auto-generated `index`
-  field (explained above) is the default.
+- `<DVC_METRIC_X>`(optional) - field name of the data for the X axis. It can be
+  defined with the `-x` option of the `dvc plot` subcommands. The auto-generated
+  `index` field (explained above) is the default.
 
-- `<DVC_METRIC_Y>` - field name of the data for the Y axis. It can be defined
-  with the `-y` option of the `dvc plot` subcommands. The default is the last
-  one found in the metrics file: the last column for CSV/TSV, or the last field
-  for JSON/YAML.
+- `<DVC_METRIC_Y>`(optional) - field name of the data for the Y axis. It can be
+  defined with the `-y` option of the `dvc plot` subcommands. The default is the
+  last one found in the metrics file: the last column for CSV/TSV, or the last
+  field for JSON/YAML.
 
-- `<DVC_METRIC_X_TITLE>` - field name to display as the X axis label
+- `<DVC_METRIC_X_TITLE>`(optional) - field name to display as the X axis label
 
-- `<DVC_METRIC_Y_TITLE>` - field name to display as the X axis label
+- `<DVC_METRIC_Y_TITLE>`(optional) - field name to display as the X axis label
 
 ## Options
 
