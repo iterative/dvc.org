@@ -15,7 +15,7 @@ positional arguments:
 ## Description
 
 Finds and prints all metrics in the <abbr>project</abbr> by examining all of its
-[DVC-files](/doc/user-guide/dvc-file-format).
+[DVC-files](/doc/user-guide/dvc-files-and-directories).
 
 > This kind of metrics can be defined with the `-m` (`--metrics`) and `-M`
 > (`--metrics-no-cache`) options of `dvc run`.
@@ -79,7 +79,7 @@ history use `--all-commits` option:
 
 ```dvc
 $ dvc metrics show --all-commits
-working tree:
+workspace:
         eval.json:
                 AUC: 0.66729
                 error: 0.16982
@@ -100,7 +100,7 @@ Metrics from different branches can be shown by `--all-branches` (`-a`) option:
 
 ```dvc
 $ dvc metrics show -a
-working tree:
+workspace:
         eval.json:
                 AUC: 0.66729
                 error: 0.16982

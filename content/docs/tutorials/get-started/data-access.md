@@ -52,10 +52,10 @@ $ dvc import https://github.com/iterative/dataset-registry \
              use-cases/cats-dogs
 ```
 
-This is similar to `dvc get`+`dvc add`, but the resulting
-[DVC-file](/doc/user-guide/dvc-file-format) includes metadata to track changes
-in the source repository. This allows you to bring in changes from the data
-source later, using `dvc update`.
+This is similar to `dvc get` + `dvc add`, but the resulting
+[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) includes
+metadata to track changes in the source repository. This allows you to bring in
+changes from the data source later, using `dvc update`.
 
 <details>
 
@@ -66,8 +66,8 @@ source later, using `dvc update`.
 > doesn't actually contain a `cats-dogs/` directory. Like `dvc get`,
 > `dvc import` downloads from [remote storage](/doc/command-reference/remote).
 
-DVC-files created by `dvc import` are called _import stages_. These have special
-fields, such as the data source `repo`, and `path` (under `deps`):
+`.dvc` files created by `dvc import` are called _import stages_. These have
+special fields, such as the data source `repo`, and `path` (under `deps`):
 
 ```yaml
 deps:

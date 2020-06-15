@@ -1,20 +1,20 @@
 # plots
 
-Contains commands to visualize _plot metrics_ in structured files (JSON, CSV, or
-TSV): [show](/doc/command-reference/plots/show),
-[diff](/doc/command-reference/plots/diff).
+A set of commands to visualize and compare _plot metrics_ in structured files
+(JSON, YAML, CSV, or TSV): [show](/doc/command-reference/plots/show),
+[diff](/doc/command-reference/plots/diff), and
+[modify](/doc/command-reference/plots/modify).
 
 ## Synopsis
 
 ```usage
-usage: dvc plots [-h] [-q | -v] {show,diff} ...
+usage: dvc plots [-h] [-q | -v] {show,diff,modify} ...
 
 positional arguments:
   COMMAND
-    show         Generate a plot image file from a metrics file.
-    diff         Plot differences in metrics between commits in the
-                 DVC repository, or between the last commit and the
-                 workspace.
+    show         Generate plot from a metrics file.
+    diff         Plot differences in metrics between commits.
+    modify       Modify plot properties associated with a target file.
 ```
 
 ## Types of metrics
@@ -48,13 +48,13 @@ differences between the metrics in different experiments.
 
 ### Supported file formats
 
-Continuous metrics can be organized as data series in JSON, CSV, or TSV files.
+Plot metrics can be organized as data series in JSON, YAML, CSV, or TSV files.
 DVC expects to see an array (or multiple arrays) of objects (usually _float
 numbers_) in the file.
 
-In tabular file formats such as CSV and TSV, each column (or field) is an array.
-`dvc plots show` can generate visuals for a specified column or a set of
-columns. Like `AUC` column:
+In tabular file formats such as CSV and TSV, each column is an array.
+`dvc plots` subcommands can produce plots for a specified column or a set of
+them. For example, `epoch`, `AUC`, and `loss` are the column names below:
 
 ```
 epoch, AUC, loss
@@ -64,10 +64,12 @@ epoch, AUC, loss
 37, 0.92302, 0.0299015
 ```
 
-In hierarchical file formats such as JSON, an array of JSON objects is expected.
-`dvc plots show` command can generate visuals for a specified field name or a
-set of fields from the array's object. Like `val_loss` field in the `train`
-array in this example:
+In hierarchical file formats (JSON or YAML), an array of consistent objects is
+expected: every object should have the same structure.
+
+`dvc plots` subcommands can produce plots for a specified field or a set of
+them, from the array's objects. For example, `val_loss` is one of the field
+names in the `train` array below:
 
 ```
 {
@@ -85,11 +87,11 @@ array in this example:
 
 ## Plot templates
 
-DVC gives users the ability to change the
-[Vega JSON schema](https://github.com/vega/schema), and generate plots in the
-format that best fits the their needs. This doesn't make <abbr>DVC
-projects</abbr> dependent on user visualization code, programming language, or
-specific environments, keeping DVC agnostic.
+Users have the ability to change the way plots are displayed by modifying the
+[Vega specification](https://vega.github.io/vega/docs/specification/), thus
+generating plots in the style that best fits the their needs. This keeps
+<abbr>DVC projects</abbr> programming language agnostic, as it's independent
+from user display configuration and visualization code.
 
 Built-in _plot templates_ are stored in the `.dvc/plots/` directory. The default
 one is called `default.json`. It can be changed with the `--template` (`-t`)
@@ -99,13 +101,16 @@ can specify only the base name e.g. `--template scatter`.
 
 ### Custom templates
 
-Plot template files are just JSON specifications with predefined DVC anchors
-that help DVC to inject user's data properly. You can create a custom template
-from scratch or modify an existing one from `.dvc/plots/`. Custom templates can
-be added to the template directory.
+Plot template files are
+[Vega specification](https://vega.github.io/vega/docs/specification/) files that
+use predefined DVC anchors as placeholders for DVC to inject the plot values.
+You can create a custom template from scratch, or modify an existing one from
+`.dvc/plots/`.
 
-All JSON files given to `dvc plots show` and `dvc plots diff` as input are
-combined together into a single data array for the injection to a template file.
+💡 Note that custom templates can be safely added to the template directory.
+
+All metric files given to `dvc plots show` and `dvc plots diff` as input are
+combined together into a single data array for injection into a template file.
 There are two important fields that DVC adds to the plot data:
 
 - `index` - self-incrementing, zero-based counter for the data rows/values. In
@@ -115,29 +120,31 @@ There are two important fields that DVC adds to the plot data:
   distinguish between different versions when using the `dvc plots diff`
   command.
 
-DVC applies the same logic to all CSV/TSV files, but first transforms the data
-into JSON. DVC uses column names from a header for JSON conversion into fields.
+Note that in the case of CSV/TSV metric files, column names from the table
+header (first row) are equivalent to field names.
 
-DVC template anchors:
+#### DVC template anchors
 
-- `<DVC_METRIC_DATA>` - plotting command input data from either CSV or JSON
-  files is converted to JSON array and injected instead of this anchor. Two
-  additional fields will be added: `index` and `rev` (explained above).
+- `<DVC_METRIC_DATA>`(required) - the plot data from any kind of metric files is
+  converted to a single JSON array internally, and injected instead of this
+  anchor. Two additional fields will be added: `index` and `rev` (explained
+  above).
 
-- `<DVC_METRIC_TITLE>` - a title for the plot, that can be defined by `--title`
-  option.
+- `<DVC_METRIC_TITLE>`(optional) - a title for the plot, that can be defined
+  with the `--title` option of the `dvc plot` subcommands.
 
-- `<DVC_METRIC_Y>` - a field name for Y axis of the plot. It can be defined by
-  `-y` option of the commands. The default field is the last field found in the
-  input file: the last column in CSV file or the last field in the JSON array
-  object.
+- `<DVC_METRIC_X>`(optional) - field name of the data for the X axis. It can be
+  defined with the `-x` option of the `dvc plot` subcommands. The auto-generated
+  `index` field (explained above) is the default.
 
-- `<DVC_METRIC_X>` - a field name for Y axes. It can be defined by `-x` option.
-  `index` is the default field for X.
+- `<DVC_METRIC_Y>`(optional) - field name of the data for the Y axis. It can be
+  defined with the `-y` option of the `dvc plot` subcommands. The default is the
+  last one found in the metrics file: the last column for CSV/TSV, or the last
+  field for JSON/YAML.
 
-- `<DVC_METRIC_Y_TITLE>` - a displayed field label for Y.
+- `<DVC_METRIC_X_TITLE>`(optional) - field name to display as the X axis label
 
-- `<DVC_METRIC_X_TITLE>` - a displayed field label for X.
+- `<DVC_METRIC_Y_TITLE>`(optional) - field name to display as the X axis label
 
 ## Options
 
@@ -195,7 +202,7 @@ file:///Users/usr/src/plots/logs.html
 
 We'll use `classes.csv` for this example:
 
-```csv
+```
 actual,predicted
 cat,cat
 cat,cat

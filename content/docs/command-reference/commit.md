@@ -1,8 +1,8 @@
 # commit
 
 Record changes to DVC-tracked files in the <abbr>project</abbr>, by updating
-[DVC-files](/doc/user-guide/dvc-file-format) and saving <abbr>outputs</abbr> to
-the <abbr>cache</abbr>.
+[DVC-files](/doc/user-guide/dvc-files-and-directories) and saving
+<abbr>outputs</abbr> to the <abbr>cache</abbr>.
 
 ## Synopsis
 
@@ -11,8 +11,9 @@ usage: dvc commit [-h] [-q | -v] [-f] [-d] [-R]
                   [targets [targets ...]]
 
 positional arguments:
-  targets          DVC-files to commit. Optional. (Finds all DVC-files
-                   in the workspace by default.)
+  targets        Limit command scope to these stages or .dvc files.
+                 Using -R, directories to search for stages or .dvc
+                 files can also be given.
 ```
 
 ## Description
@@ -66,8 +67,8 @@ cache. This is where the `dvc commit` command comes into play. It performs that
 last step (saving the data in cache).
 
 Note that it's best to avoid the last two scenarios. They essentially
-force-update the [DVC-files](/doc/user-guide/dvc-file-format) and save data to
-cache. They are still useful, but keep in mind that DVC can't guarantee
+force-update the [DVC-files](/doc/user-guide/dvc-files-and-directories) and save
+data to cache. They are still useful, but keep in mind that DVC can't guarantee
 reproducibility in those cases.
 
 ## Options
@@ -226,7 +227,7 @@ the new instance of `model.pkl` is there.
 It is also possible to execute the commands that are executed by `dvc repro` by
 hand. You won't have DVC helping you, but you have the freedom to run any
 command you like, even ones not defined in a
-[DVC-file](/doc/user-guide/dvc-file-format). For example:
+[DVC-file](/doc/user-guide/dvc-files-and-directories). For example:
 
 ```dvc
 $ python src/featurization.py data/prepared data/features

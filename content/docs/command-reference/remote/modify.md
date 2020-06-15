@@ -62,7 +62,8 @@ The following config options are available for all remote types:
   DVC will recalculate the file hashes upon download (e.g. `dvc pull`) to make
   sure that these haven't been modified, or corrupted during download. It may
   slow down the aforementioned commands. The calculated hash is compared to the
-  value saved in the corresponding [DVC-file](/doc/user-guide/dvc-file-format).
+  value saved in the corresponding
+  [DVC-file](/doc/user-guide/dvc-files-and-directories).
 
   > Note that this option is enabled on **Google Drive** remotes by default.
 
@@ -78,7 +79,7 @@ The following are the customizable types of remote storage (protocols):
 
 ### Click for Amazon S3
 
-By default DVC expects your AWS CLI is already
+By default, DVC expects your AWS CLI is already
 [configured](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-configure.html).
 DVC will be using default AWS credentials file to access S3. To override some of
 these settings, you could use the following options:

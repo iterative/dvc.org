@@ -38,9 +38,9 @@ Luigi, etc.
   result, but we expect some GUI services will be created on top of DVC.
 
 - DVC has transparent design. Its
-  [internal files and directories](/doc/user-guide/dvc-files-and-directories)
-  (including the <abbr>cache</abbr> directory) have a human-readable format and
-  can be easily reused by external tools.
+  [files and directories](/doc/user-guide/dvc-files-and-directories) (including
+  the <abbr>cache</abbr> directory) have a human-readable format and can be
+  easily reused by external tools.
 
 ### Git workflows/methodologies such as Gitflow
 
@@ -60,8 +60,9 @@ Luigi, etc.
   (DAG):
 
   - The DAG or dependency graph is defined implicitly by the connections between
-    [DVC-files](/doc/user-guide/dvc-file-format) (with file names `<file>.dvc`
-    or `Dvcfile`), based on their dependencies and <abbr>outputs</abbr>.
+    [DVC-files](/doc/user-guide/dvc-files-and-directories) (with file names
+    `<file>.dvc` or `Dvcfile`), based on their dependencies and
+    <abbr>outputs</abbr>.
 
   - Each DVC-file defines one node in the DAG. All DVC-files in a repository
     make up a single pipeline (think a single Makefile). All DVC-files (and
@@ -99,9 +100,9 @@ Luigi, etc.
   Git-annex repository is cloned via `git clone`, data files won't be copied to
   the local machine, as file contents are stored in separate
   [remotes](/doc/command-reference/remote). With DVC,
-  [DVC-files](/doc/user-guide/dvc-file-format), which provide the reproducible
-  workflow, are always included in the Git repository. Hence, they can be
-  executed locally with minimal effort.
+  [DVC-files](/doc/user-guide/dvc-files-and-directories), which provide the
+  reproducible workflow, are always included in the Git repository. Hence, they
+  can be executed locally with minimal effort.
 
 - DVC is not fundamentally bound to Git, and users have the option of using DVC
   without Git.

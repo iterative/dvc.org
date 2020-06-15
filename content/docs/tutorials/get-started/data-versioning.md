@@ -30,11 +30,11 @@ to rename it locally to `datadir/`.
 $ dvc add datadir
 ```
 
-DVC stores information about the added directory in a special _DVC-file_ named
+DVC stores information about the added directory in a special file named
 `datadir.dvc`, a small text file with a human-readable
-[format](/doc/user-guide/dvc-file-format). This file can be easily **versioned
-like source code** with Git, as a placeholder for the original data (which is
-listed in `.gitignore`):
+[format](/doc/user-guide/dvc-files-and-directories#dvc-files). This `.dvc` file
+can be easily **versioned like source code** with Git, as a placeholder for the
+original data (which is listed in `.gitignore`):
 
 ```dvc
 $ git add .gitignore datadir.dvc
@@ -98,8 +98,8 @@ $ dvc add datadir
 ```
 
 DVC caches the changes to the `datadir/` directory, and updates the
-`datadir.dvc` [DVC-file](/doc/user-guide/dvc-file-format) to match the changes.
-Let's commit this new version with Git:
+`datadir.dvc` [`.dvc` file](/dvc-files-and-directories#dvc-files) to match the
+updated data. Let's commit this new version with Git:
 
 <details>
 
@@ -140,8 +140,8 @@ $ dvc checkout datadir.dvc
 
 ### Expand to see what happened internally
 
-`git checkout` brought the `datadir.dvc` DVC-file back to the version, with the
-previous hash value of the data (`a304afb...`):
+`git checkout` brought the `datadir.dvc` `.dvc` file back to the previous
+version, with the original hash value of the data (`a304afb...`):
 
 ```yaml
 outs:
@@ -194,7 +194,7 @@ $ dvc push
 ```
 
 Usually, we also want to `git commit` and `git push` the corresponding
-[DVC-files](/doc/user-guide/dvc-file-format).
+[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files).
 
 <details>
 
