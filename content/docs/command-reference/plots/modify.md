@@ -23,8 +23,9 @@ plots are generated with `dvc plot show` or `dvc plot diff`. This command sets
 (or unsets) default display properties for a specific metrics file.
 
 The path to the metrics file `target` is required. It must be listed in a
-[`dvc.yaml`](/doc/user-guide/dvc-file-format) file (see the `--plots` option of
-`dvc run`). `dvc plots modify` adds the display properties to `dvc.yaml`.
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) file (see
+the `--plots` option of `dvc run`). `dvc plots modify` adds the display
+properties to `dvc.yaml`.
 
 Property names are passed as [options](#options) to this command (prefixed with
 `--`). These are based on the full

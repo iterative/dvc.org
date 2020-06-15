@@ -19,9 +19,9 @@ automation tools ([Make](https://www.gnu.org/software/make/), Maven, Ant,
 Rakefile etc). It was designed in such a way to localize specification of the
 graph nodes (pipeline [stages](/doc/command-reference/run)).
 
-If you run `repro` on any [DVC-file](/doc/user-guide/dvc-file-format) from our
-repository, nothing happens because nothing was changed in the pipeline defined
-in the <abbr>project</abbr>: There's nothing to reproduce.
+If you run `repro` on any [DVC-file](/doc/user-guide/dvc-files-and-directories)
+from our repository, nothing happens because nothing was changed in the pipeline
+defined in the <abbr>project</abbr>: There's nothing to reproduce.
 
 ```dvc
 $ dvc repro model.p.dvc

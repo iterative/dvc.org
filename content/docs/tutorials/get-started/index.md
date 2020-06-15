@@ -10,7 +10,8 @@ and concepts of DVC step by step.
 Move into the directory you want to use as <abbr>workspace</abbr>, and use
 `dvc init` inside to create a <abbr>DVC project</abbr>. It can contain existing
 project files. At initialization, a new `.dvc/` directory is created for the
-internal [files and directories](/doc/user-guide/dvc-files-and-directories):
+internal
+[files and directories](/doc/user-guide/dvc-files-and-directories#internal-directories-and-files):
 
 ```dvc
 $ dvc init

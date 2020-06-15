@@ -1,8 +1,8 @@
 # update
 
 Update <abbr>data artifacts</abbr> imported from external <abbr>DVC
-projects</abbr>, and corresponding
-[`.dvc` files](/doc/user-guide/dvc-file-format).
+projects</abbr>, and corresponding import stage
+[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files).
 
 ## Synopsis
 
@@ -11,16 +11,17 @@ usage: dvc update [-h] [-q | -v] [--rev <commit>] [-R]
                   targets [targets ...]
 
 positional arguments:
-  targets      import stage .dvc files to update. Using -R, directories
+  targets      Import stage .dvc files to update. Using -R, directories
                to search for .dvc files can also be given.
 ```
 
 ## Description
 
 After creating <abbr>import stages</abbr>
-([`.dvc` files](/doc/user-guide/dvc-file-format)) with `dvc import` or
-`dvc import-url`, the data source can change. Use `dvc update` to bring these
-imported file, directory, or <abbr>data artifact</abbr> up to date.
+([`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files)) with
+`dvc import` or `dvc import-url`, the data source can change. Use `dvc update`
+to bring these imported file, directory, or <abbr>data artifact</abbr> up to
+date.
 
 To indicate which import stages to update, we must specify the corresponding
 `.dvc` file `targets` as command arguments.
@@ -85,8 +86,8 @@ This time nothing has changed, since the source <abbr>project</abbr> is rather
 stable.
 
 > Note that `dvc update` updates the `rev_lock` field of the corresponding
-> [`.dvc` file](/doc/user-guide/dvc-file-format) (when there are changes to
-> bring in).
+> [`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) (when there
+> are changes to bring in).
 
 ## Example: Updating fixed revisions to a different version
 
