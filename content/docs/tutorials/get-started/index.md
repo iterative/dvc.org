@@ -30,8 +30,8 @@ $ git init
 $ dvc init
 ```
 
-A few [directories and files](<(/doc/user-guide/dvc-files-and-directories)>) are
-created that should be added into Git:
+A few [directories and files](/doc/user-guide/dvc-files-and-directories) are
+created that should be added to Git:
 
 ```dvc
 $ git status
