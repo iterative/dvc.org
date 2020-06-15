@@ -52,8 +52,8 @@ the next few sections:
   files with Git. Think "Git for data".
 
 - [**Data pipelines**](/doc/tutorials/get-started/data-pipelines) desribe how
-  models and other data artifacts are built, and provide an efficient way to reproduce them.
-  Think "Makefiles done right" for data and ML projects.
+  models and other data artifacts are built, and provide an efficient way to
+  reproduce them. Think "Makefiles done right" for data and ML projects.
 
 - [**Experiments**](/doc/tutorials/get-started/experiments) attach parameters,
   metrics, plots. You can capture and navigate experiments not leaving Git.
