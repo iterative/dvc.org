@@ -39,10 +39,10 @@ with `git commit` and `git push`).
 Under the hood a few actions are taken:
 
 - The push command by default uses all
-  [`dvc.yaml`](/doc/user-guide/dvc-file-format) and
-  [`.dvc` files](/doc/user-guide/dvc-file-format) in the <abbr>workspace</abbr>.
-  The command options listed below will either limit or expand the set of stages
-  (in dvc.yaml) or `.dvc` files to consult.
+  [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
+  [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) in the
+  <abbr>workspace</abbr>. The command options listed below will either limit or
+  expand the set of stages (in dvc.yaml) or `.dvc` files to consult.
 
 - For each <abbr>output</abbr> referenced in every selected stage or `.dvc`
   file, DVC finds a corresponding file or directory in the <abbr>cache</abbr>.

@@ -3,7 +3,7 @@
 Download a file or directory from a supported URL (for example `s3://`,
 `ssh://`, and other protocols) into the <abbr>workspace</abbr>, and track
 changes in the remote data source. Creates a
-[`.dvc` file](/doc/user-guide/dvc-file-format).
+[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files).
 
 > See `dvc import` to download and tack data/model files or directories from
 > other <abbr>DVC repositories</abbr> (e.g. hosted on Github).
@@ -42,8 +42,8 @@ while `out` can be used to specify the directory and/or file name desired for
 the downloaded data. If an existing directory is specified, the file or
 directory will be placed inside.
 
-[`.dvc` files](/doc/user-guide/dvc-file-format) support references to data in an
-external location, see
+[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) support
+references to data in an external location, see
 [External Dependencies](/doc/user-guide/external-dependencies). In such a `.dvc`
 file, the `deps` field stores the remote URL, and the `outs` field contains the
 corresponding local path in the <abbr>workspace</abbr>. It records enough
@@ -104,10 +104,11 @@ $ dvc run -d https://example.com/path/to/data.csv \
 ```
 
 `dvc import-url` generates an import stage
-[`.dvc` file](/doc/user-guide/dvc-file-format) and `dvc run` a regular stage (in
-[`dvc.yaml`](/doc/user-guide/dvc-file-format)). Both have an external
-dependency, but the one created by `dvc import-url` preserves the connection to
-the data source. We call this an _import stage_.
+[`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files) and `dvc run`
+a regular stage (in
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file)). Both have
+an external dependency, but the one created by `dvc import-url` preserves the
+connection to the data source. We call this an _import stage_.
 
 Note that import stages are considered always
 [frozen](/doc/command-reference/freeze), meaning that if you run `dvc repro`,
@@ -192,8 +193,8 @@ The `etag` field in the `.dvc` file contains the
 If the remote file changes, its ETag will be different. This metadata allows DVC
 to determine whether its necessary to download it again.
 
-> See [DVC-File Format](/doc/user-guide/dvc-file-format) for more details on the
-> text format above.
+> See [`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files) for
+> more details on the format above.
 
 You may want to get out of and remove the `example-get-started/` directory after
 trying this example (especially if trying out the following one).

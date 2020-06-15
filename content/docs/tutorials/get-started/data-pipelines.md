@@ -67,11 +67,8 @@ $ dvc run -f prepare.dvc \
           python src/prepare.py data/data.xml data/prepared
 ```
 
-A `prepare.dvc` _stage file_ is generated with the same
-[format](/doc/user-guide/dvc-file-format) as the DVC-file we created previously
-to
-[tack existing data](/doc/tutorials/get-started/data-versioning#tracking-changes).
-Additionally, it includes information about the command we ran
+A [`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) is
+generated. It includes information about the command we ran
 (`python src/prepare.py`), its <abbr>dependencies</abbr>, and
 <abbr>outputs</abbr>.
 
@@ -157,7 +154,7 @@ $ dvc run -f train.dvc \
 ```
 
 This would be a good point to commit the changes with Git. This includes any
-`.gitignore` files, and all the stage files that describe our pipeline so far.
+`.gitignore` files, and `dvc.yaml` — which describes our pipeline.
 
 > 📖 See also the `dvc pipeline` command.
 
@@ -177,7 +174,6 @@ Move to another location in your file system and do this:
 $ git clone https://github.com/iterative/example-get-started
 $ cd example-get-started
 $ git checkout 7-train
-$ dvc unlock data/data.xml.dvc
 ```
 
 </details>

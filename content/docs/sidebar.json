@@ -105,12 +105,8 @@
     "source": "user-guide/index.md",
     "children": [
       {
-        "label": "Files and Directories",
+        "label": "DVC Files and Directories",
         "slug": "dvc-files-and-directories"
-      },
-      {
-        "label": "File Format (.dvc)",
-        "slug": "dvc-file-format"
       },
       {
         "slug": "dvcignore",

@@ -8,10 +8,10 @@ DVC allows versioning data files and directories, intermediate results, and ML
 models using Git, but without storing the file contents in the Git repository.
 It's useful when dealing with files that are too large for Git to handle
 properly in general. DVC saves information about your data in special
-[DVC-files](/doc/user-guide/dvc-file-format), and these metafiles can be used
-for versioning. To actually store the data, DVC supports various types of
-[remote storage](/doc/command-reference/remote). This allows easily saving and
-sharing data alongside code.
+[`.dvc` files](/doc/user-guide/dvc-files-and-directories#dvc-files), and these
+files can be used for versioning. To actually store the data, DVC supports
+various types of [remote storage](/doc/command-reference/remote). This allows
+easily saving and sharing data alongside code.
 
 ![](/img/model-versioning-diagram.png)
 

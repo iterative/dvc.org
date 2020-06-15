@@ -29,12 +29,13 @@ Run without arguments, this command compares metrics currently present in the
 <abbr>workspace</abbr> uncommitted changes) with the latest committed version.
 
 The differences shown by this command include the new value, and numeric
-difference (delta) from the previous value of metrics. All values and the delta
-are [round](https://docs.python.org/3/library/functions.html#round)ed to 5
-digits precision after the decimal point. They're calculated between two commits
-(hash, branch, tag, or any [Git revision](https://git-scm.com/docs/revisions))
-for all metrics in the <abbr>project</abbr>, found by examining all of the
-[DVC-files](/doc/user-guide/dvc-file-format) in both references.
+difference (delta) from the previous value of metrics (rounded to 5 digits
+precision). They're calculated between two commits (hash, branch, tag, or any
+[Git revision](https://git-scm.com/docs/revisions)) for all metrics in the
+<abbr>project</abbr>, found by examining all of the
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-file) and
+[`.dvc`](/doc/user-guide/dvc-files-and-directories#dvc-files) files in both
+versions.
 
 Another way to display metrics is the `dvc metrics show` command, which just
 lists all the current metrics without comparisons.
