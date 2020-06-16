@@ -98,8 +98,8 @@ $ dvc add datadir
 ```
 
 DVC caches the changes to the `datadir/` directory, and updates the
-`datadir.dvc` [`.dvc` file](/dvc-files-and-directories#dvc-files) to match the
-updated data. Let's commit this new version with Git:
+`datadir.dvc` [`.dvc` file](/doc/user-guide/dvc-files-and-directories#dvc-files)
+to match the updated data. Let's commit this new version with Git:
 
 <details>
 
