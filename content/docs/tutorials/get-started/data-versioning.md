@@ -1,9 +1,10 @@
 # Data Versioning
 
 How cool would it be to make Git handle arbitraty large files and directories
-with the same performance as with small code files? Imagine you can do a `git clone` and
-see data files and ML model files in the workspace. Or do `git checkout` and
-switch to a different version of a 100Gb size file in a less than a second?
+with the same performance as with small code files? Imagine you can do a
+`git clone` and see data files and ML model files in the workspace. Or do
+`git checkout` and switch to a different version of a 100Gb size file in a less
+than a second?
 
 The core part of DVC is a few commands that you can run along with Git to track
 a large file, ML model or a directory. To start tracking a file or directory,
@@ -146,8 +147,8 @@ after `git clone` and `git pull`.
 
 ### ⚙️ Expand to explode 💣 the project
 
-If you've run `dvc push`, you can delete the
-cache (`.dvc/cache`) and `data/data.xml` to experiment with `dvc pull`:
+If you've run `dvc push`, you can delete the cache (`.dvc/cache`) and
+`data/data.xml` to experiment with `dvc pull`:
 
 ```dvc
 $ rm -rf .dvc/cache
@@ -166,12 +167,8 @@ $ dvc pull
 
 ## Making changes
 
-When you make a change to a file or directory, run `dvc add` again to track
-the latest version:
-
-```dvc
-$ dvc add data/data.xml
-```
+When you make a change to a file or directory, run `dvc add` again to track the
+latest version:
 
 <details>
 
@@ -187,7 +184,11 @@ $ cat /tmp/data.xml >> data/data/xml
 
 </details>
 
-Usually you would also `git commit` and `dvc push` to save the changes:
+```dvc
+$ dvc add data/data.xml
+```
+
+Usually you would also run `git commit` and `dvc push` to save the changes:
 
 ```dvc
 $ git commit data/data.xml.dvc -m "Dataset updates"
@@ -225,25 +226,24 @@ $ git commit data/data.xml.dvc -m "Revert dataset updates"
 
 </details>
 
-Please note that DVC is technically  not a version control system. `.dvc`
-files content defines data file versions. Git itself serves as the version control
-system. DVC in turn creates these `.dvc` files, updates them, and
-synchronizes DVC-tracked data in the workspace efficiently to match them.
+Yes, DVC is technically even not a version control system! `.dvc` files content
+defines data file versions. Git itself serves as the version control system. DVC
+in turn creates these `.dvc` files, updates them, and synchronizes DVC-tracked
+data in the workspace efficiently to match them.
 
 ## Large datasets versioning
 
-In cases where you process very large datasets, you need an efficient
-mechanism (in terms of space and performance) to share a lot of data, including
-different versions of itself. Do you use a network attached storage? or a
-large external volume?
+In cases where you process very large datasets, you need an efficient mechanism
+(in terms of space and performance) to share a lot of data, including different
+versions of itself. Do you use a network attached storage? Or a large external
+volume?
 
-While these cases are not covered in the Get
-Started, we recommend reading the following sections next to learn more about
-advanced workflows:
+While these cases are not covered in the Get Started, we recommend reading the
+following sections next to learn more about advanced workflows:
 
-- A shared [external cache](/doc/use-cases/shared-development-server) can be set up
-  to store, version and access very a lot of data on a large
-  shared volume efficiently.
+- A shared [external cache](/doc/use-cases/shared-development-server) can be set
+  up to store, version and access a lot of data on a large shared volume
+  efficiently.
 - A quite advanced scenario is to track and version data directly on the remote
   storage (e.g. S3). Check out
   [Managing External Data](https://dvc.org/doc/user-guide/managing-external-data)
