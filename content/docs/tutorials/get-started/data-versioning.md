@@ -1,7 +1,7 @@
 # Data Versioning
 
 How cool would it be to make Git handle arbitraty large files and directories
-with the same performance as Git itself? Imagine you can do a `git clone` and
+with the same performance as with small code files? Imagine you can do a `git clone` and
 see data files and ML model files in the workspace. Or do `git checkout` and
 switch to a different version of a 100Gb size file in a less than a second?
 
@@ -39,7 +39,7 @@ DVC stores information about the added file (or a directory) in a special `.dvc`
 file named `data/data.dvc`, a small text file with a human-readable
 [format](/doc/user-guide/dvc-files-and-directories#dvc-files). This file can be
 easily versioned like source code with Git, as a placeholder for the original
-data (which is listed in `.gitignore`):
+data (which gets listed in `.gitignore`):
 
 ```dvc
 $ git add .gitignore datadir.dvc
@@ -48,7 +48,7 @@ $ git commit -m "Add raw data"
 
 <details>
 
-### 💡Expand to see what happens under the hood
+### 💡 Expand to see what happens under the hood
 
 `dvc add` moved the data to the project's <abbr>cache</abbr>, and linked\* it
 back to the <abbr>workspace</abbr>.
@@ -81,7 +81,7 @@ outs:
 You can upload DVC-tracked data or models with `dvc push`, so they're safely
 stored [remotely](/doc/command-reference/remote). This also means they can be
 retrieved on other environments later with `dvc pull`. First, we need to setup a
-storage.
+storage:
 
 ```dvc
 $ dvc remote add -d storage s3://my-bucket/dvc-storage
@@ -122,7 +122,7 @@ Usually, we also want to `git commit` and `git push` the corresponding
 
 <details>
 
-### 💡 Expand to see what happens internally
+### 💡 Expand to see what happens under the hood
 
 `dvc push` copied the data <abbr>cached</abbr> locally to the remote storage we
 set up earlier. You can check that the data has been stored in the DVC remote
@@ -146,8 +146,8 @@ after `git clone` and `git pull`.
 
 ### ⚙️ Expand to explode 💣 the project
 
-If you've run `dvc push` successfully previously, you can just safely delete the
-cache `.dvc/cache` and `data/data.xml` to experiment with `dvc pull`:
+If you've run `dvc push`, you can delete the
+cache (`.dvc/cache`) and `data/data.xml` to experiment with `dvc pull`:
 
 ```dvc
 $ rm -rf .dvc/cache
@@ -167,7 +167,7 @@ $ dvc pull
 ## Making changes
 
 When you make a change to a file or directory, run `dvc add` again to track
-changes:
+the latest version:
 
 ```dvc
 $ dvc add data/data.xml
@@ -187,7 +187,7 @@ $ cat /tmp/data.xml >> data/data/xml
 
 </details>
 
-Usually you would do `git commit` and `dvc push` to save the changes:
+Usually you would also `git commit` and `dvc push` to save the changes:
 
 ```dvc
 $ git commit data/data.xml.dvc -m "Dataset updates"
@@ -197,7 +197,7 @@ $ dvc push
 ## Switching between versions
 
 The regular worfklow is to use `git checkout` first to switch a branch, checkout
-a commit, checkout a revision of a file, and then run `dvc checkout` to sync
+a commit, or a revision of a `.dvc` file, and then run `dvc checkout` to sync
 data:
 
 ```dvc
@@ -225,25 +225,26 @@ $ git commit data/data.xml.dvc -m "Revert dataset updates"
 
 </details>
 
-As you can see, DVC technically is not even a version control system. `.dvc`
-files content defines data file versions. Git itself serves as a version control
-system. DVC in turn is a tool to create these `.dvc` files, update them, and
-update DVC-tracked files in the workspace efficiently to match the `.dvc` files.
+Please note that DVC is technically  not a version control system. `.dvc`
+files content defines data file versions. Git itself serves as the version control
+system. DVC in turn creates these `.dvc` files, updates them, and
+synchronizes DVC-tracked data in the workspace efficiently to match them.
 
 ## Large datasets versioning
 
-There are cases when you process very large datasets, you need efficient (in
-terms of space and performance) mechanism to share a lot of data including
-different versions of it (you use some network attached storage? or some
-external large volume?). There is no goal to cover these cases in the Get
-Started, but we would recommend to read these sections next to learn more about
-advanced workflow:
+In cases where you process very large datasets, you need an efficient
+mechanism (in terms of space and performance) to share a lot of data, including
+different versions of itself. Do you use a network attached storage? or a
+large external volume?
 
-- The shared extental cache idea described, for example,
-  [here](https://dvc.org/doc/use-cases/shared-development-server) can be applied
-  to store, version and access very efficienlty a lot of data on some (large)
-  shared volume.
+While these cases are not covered in the Get
+Started, we recommend reading the following sections next to learn more about
+advanced workflows:
+
+- A shared [external cache](/doc/use-cases/shared-development-server) can be set up
+  to store, version and access very a lot of data on a large
+  shared volume efficiently.
 - A quite advanced scenario is to track and version data directly on the remote
-  storage (e.g. S3). Check the
+  storage (e.g. S3). Check out
   [Managing External Data](https://dvc.org/doc/user-guide/managing-external-data)
   to learn more.
