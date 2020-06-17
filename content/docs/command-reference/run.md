@@ -27,25 +27,28 @@ positional arguments:
 individual data processes, including their input and resulting outputs. They are
 defined in a
 [`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-files),
-which gets created or updated in the current working directory.
+which gets created or updated in the current working directory. This command
+[executes](#stage-execution) stage upon creating or updating then, unless the
+`--no-exec` option is used.
 
-A stage name is required and should be provided using the `-n` (`--name`)
-option. The other available [options](#options) are mainly meant to describe
-stage [dependencies and outputs](#dependencies-and-outputs).
+A stage name is required and can be provided using the `-n` (`--name`) option.
+The other available [options](#options) are mainly meant to describe stage
+[dependencies and outputs](#dependencies-and-outputs), which are explained
+further down).
 
 The remaining terminal input provided to `dvc run` after the command options
 (`-`/`--` flags) will become the required `command` argument. For example, a
 minimal stage definition is:
 
 ```dvc
-$ dvc run --name hello-world echo Hi
+$ dvc run --name hello_world echo Hi
 ```
 
 This results in the following stage entry in `dvc.yaml`:
 
 ```yaml
 stages:
-  hello-world:
+  hello_world:
     cmd: echo Hi
 ```
 
@@ -53,56 +56,105 @@ Note that in order to update a stage that is already defined in this `dvc.yaml`,
 the `-f` (`--force`) option is needed:
 
 ```dvc
-$ dvc run -n hello-world -f echo "Hello world"
+$ dvc run -n hello_world -f echo "Hello world"
 ```
 
 For longer `dvc run` usage (which is typical), its recommended to use new line
 continuation (`\`) for readability:
 
 ```dvc
-$ dvc run -n mystage \
+$ dvc run -n my_stage \
           -d input.dat \
           -o output.dat \
           -M metrics.json \
-          ./myscript.sh input.dat
+          ./my_script.sh input.dat
 ```
 
 ### Stage commands
 
 The `command` argument should be the very last part of the full `dvc run ...`
 line(s) written to the system terminal. It can be anything your terminal would
-accept and execute directly, for example a shell built-in, expression, or binary
+accept and run directly, for example a shell built-in, expression, or binary
 found in `PATH`. Any flags sent after the command are interpreted by the command
-itself, not by run. Some examples:
+itself, not by `dvc run`. Some illustrative examples:
 
 ```dvc
-$ dvc run -n cpfile -d file -o file_copy cp file file_copy
-$ dvc run -n mystage -d myscript.sh ./myscript.sh
-$ dvc run -n mystage -f -d myscript.py python myscript.py
-$ dvc run -n mystage -f python -c 'import sys; print(sys.maxsize)'
+$ dvc run -n remove_word -d words.txt sed 's/word//' words.txt
+$ dvc run -n my_sh-stage -d my_script.sh ./my_script.sh
+$ dvc run -n my_py-stage -d my_script.py python my_script.py
+$ dvc run -n my_py-maxsize python -c 'import sys; print(sys.maxsize)'
 ```
+
+> Note how files needed for the command, including any scripts being run, are
+> marked as [dependencies](#dependencies-and-outputs) with `-d`.
 
 Wrap the command with double quotes `"` if there are special characters in it
 like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
 `dvc run` as a whole. For example:
 
 ```dvc
-$ dvc run -n mystage "./myscript.sh > /dev/null 2>&1"
+$ dvc run -n my_stage "./my_script.sh > /dev/null 2>&1"
 ```
 
 Use single quotes `'` instead if there are environment variables in it that
 should be evaluated dynamically, for example:
 
 ```dvc
-$ dvc run -n mystage './myscript.sh $MYENVVAR'
+$ dvc run -n my_stage './my_script.sh $MYENVVAR'
 ```
 
 ⚠️Note that while DVC is platform-agnostic, the commands defined in your
-pipeline stages may only work on specific operating systems and require certain
-software packages to be installed and available in the machine where they are
-[executed](#stage-execution). (This affects `dvc repro`.)
+[pipeline](/doc/command-reference/pipeline) stages may only work on specific
+operating systems and require certain software packages to be installed on the
+machine where they are executed. (This affects `dvc repro`.)
 
-### Dependencies and outputs
+<details>
+
+### 💡 Avoiding unexpected behavior
+
+We don't want to tell anyone how to write their code or what programs to use!
+However, please be aware that in order to prevent unexpected results when DVC
+reproduce pipeline stages, the underlying implementation should ideally follow
+these rules:
+
+- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
+  <abbr>outputs</abbr> (including parameters files, metrics, and plots).
+
+- Completely rewrite outputs (i.e. do not append or edit).
+
+  ⚠️ Note that DVC removes cached outputs before running the stages that produce
+  them (including at `dvc repro`).
+
+- Stop reading and writing files when the `command` exits.
+
+Also, if your pipeline reproducibility goals include consistent output data, its
+code should be
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
+the same output for any given input). For this, avoid code that brings
+[entropy](https://en.wikipedia.org/wiki/Software_entropy) into your data
+pipeline (e.g. random numbers, time functions, hardware dependencies, etc.)
+
+</details>
+
+### Stage execution
+
+`dvc run` executes the given `command` in order to check its validity and so the
+defined outputs are written, unless the same `dvc run` has already happened in
+this <abbr>workspace</abbr>. Put in other words, if an identical stage already
+exists in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files),
+and its outputs correspond to the <abbr>cached</abbr> files (hash values are
+compared), then `dvc run` does not execute the `command`.
+
+Note that `dvc repro` provides an interface to check the state, and reproduce
+pipelines created with `dvc repro` by executing (again) the necessary stages.
+This concept is similar to the one of [Make](https://www.gnu.org/software/make/)
+in software build automation, but DVC captures data and caches relevant
+<abbr>data artifacts</abbr> along the way.
+
+> See [this tutorial](/doc/tutorials/pipelines) to learn more and try creating a
+> pipeline.
+
+## Dependencies and outputs
 
 By specifying lists of <abbr>dependencies</abbr> (`-d` option) and/or
 <abbr>outputs</abbr> (`-o` and `-O` options) for each stage, we can outline a
@@ -132,52 +184,11 @@ alternatives.
 > that uses the params. Metrics and plots outputs can be dependencies of other
 > stages normally, though.
 
-### Stage execution
-
-`dvc run` executes the given `command` in order to check its validity and so the
-defined outputs are written, unless the same `dvc run` has already happened in
-this <abbr>workspace</abbr>. Put in other words, if an identical stage already
-exists in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files),
-and its outputs correspond to the <abbr>cached</abbr> files (hash values are
-compared), then `dvc run` does not execute the `command`.
-
-Note that `dvc repro` provides an interface to check the state, and reproduce
-pipelines created with `dvc repro` by executing (again) the necessary stages.
-This concept is similar to the one of [Make](https://www.gnu.org/software/make/)
-in software build automation, but DVC captures data and caches relevant
-<abbr>data artifacts</abbr> along the way.
-
-> See [this tutorial](/doc/tutorials/pipelines) to learn more and try creating a
-> pipeline.
-
-### Avoiding unexpected behavior
-
-We don't want to tell anyone how to write code! However, please be aware that in
-order to prevent unexpected results when DVC executes or reproduces commands,
-the underlying programs should ideally follow these rules:
-
-- Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
-  <abbr>outputs</abbr> (including parameters files, metrics, and plots).
-
-- Completely rewrite outputs (i.e. do not append or edit).
-
-  ⚠️ Note that DVC removes cached outputs before running the stages that produce
-  them (including at `dvc repro`).
-
-- Stop reading and writing files when the `command` exits.
-
-Also, if your [pipeline](/doc/command-reference/pipeline) reproducibility goals
-include consistent output data, its code should be
-[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
-the same output for any given input). For this, avoid code that brings
-[entropy](https://en.wikipedia.org/wiki/Software_entropy) into your data
-pipeline (e.g. random numbers, time functions, hardware dependencies, etc.)
-
 ## Options
 
 - `-n <stage>`, `--name <stage>` (required) - specify a name for the stage
-  generated by this command (e.g. `-n preparation`). Stage names can only
-  contain letters, numbers, `-` and `_`.
+  generated by this command (e.g. `-n train`). Stage names can only contain
+  letters, numbers, `-` and `_`.
 
 - `-d <path>`, `--deps <path>` - specify a file or a directory the stage depends
   on. Multiple dependencies can be specified like this:
