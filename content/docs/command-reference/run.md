@@ -1,7 +1,8 @@
 # run
 
-Generate a stage file ([DVC-file](/doc/user-guide/dvc-files-and-directories))
-from a given command and execute the command.
+Define a pipeline _stage_ in
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) from a given command,
+and execute the command.
 
 ## Synopsis
 
@@ -21,28 +22,56 @@ positional arguments:
 
 ## Description
 
-`dvc run` provides an interface to describe stages: individual commands and the
-data input and output that go into creating a result. By specifying lists of
-<abbr>dependencies</abbr> (`-d` option),
-[parameters](/doc/command-reference/params) (`-p` option), <abbr>outputs</abbr>
-(`-o`, `-O` options), and/or [metrics](/doc/command-reference/metrics) (`-m`,
-`-M` options), DVC can later connect each stage by building a dependency graph
-([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph)). This graph is
-used by DVC to restore a full data [pipeline](/doc/command-reference/pipeline).
+`dvc run` provides an interface to describe
+[pipelines](/doc/command-reference/pipeline), stage by stage. _Stages_ represent
+individual data processes, including their input and resulting outputs.
+
+A stage name is required and should be provided using the `-n` (`--name`)
+option. Stages are stored in a YAML pipelines file named
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) using this name. The
+other available [options](#options) are mainly meant to describe the stage
+dependencies (input) an output files or directories.
 
 The remaining terminal input provided to `dvc run` after the command options
 (`-`/`--` flags) will become the required `command` argument. Please wrap the
 `command` with `"` quotes if there are special characters in it like `|` (pipe)
-or `<`, `>` (redirection) that would otherwise apply to `dvc run` itself e.g.
-`dvc run -d script.sh "./script.sh > /dev/null 2>&1"`. Use single quotes `'`
-instead of `"` to wrap the `command` if there are environment variables in it,
-that you want to be evaluated dynamically. E.g.
-`dvc run -d script.sh './myscript.sh $MYENVVAR'`
+or `<`, `>` (redirection) e.g.
+`dvc run -n mystage "./script.sh > /dev/null 2>&1"` (otherwise they would apply
+to `dvc run` itself). Use single quotes `'` instead of `"` to wrap the `command`
+if there are environment variables in it that should be evaluated dynamically
+e.g. `dvc run -n mystage './myscript.sh $MYENVVAR'`
 
-Since `dvc run` provides a way to build a dependency graph using dependencies
-and outputs to connect different stages, it checks the graph's integrity before
-creating a new stage. For example, for every output there should be only one
-stage that explicitly specifies it, there should be no cycles, etc.
+### Dependencies and outputs
+
+By specifying lists of <abbr>dependencies</abbr> (`-d` option) and/or
+<abbr>outputs</abbr> (`-o` and `-O` options) for each stage, we can outline a
+_dependency graph_ ([DAG](https://en.wikipedia.org/wiki/Directed_acyclic_graph))
+that connects them, i.e. the output of a stage becomes the input of another, and
+so on. This graph can be restored by DVC later to modify or
+[reproduce](/doc/command-reference/repro) the full
+[pipeline](/doc/command-reference/pipeline).
+
+`dvc run` checks the dependency graph integrity before creating a new stage. For
+example, for every output there should be only one stage that explicitly
+specifies it, there should be no cycles, etc.
+
+A special type of key/value dependencies,
+[parameters](/doc/command-reference/params) (`-p` option), is supported.
+Multiple parameter dependencies can be specified from one or more YAML or JSON
+parameters files (`params.yaml` by default).
+
+Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
+and `-M` options) and [plots](/doc/command-reference/plots), are also supported.
+Metrics files have specific formats (JSON, YAML, CSV, or TSV) and allow for
+managing data science experiments by different display and comparison
+alternatives.
+
+> Note that regular stage outputs cannot become parameter dependencies of other
+> stages, and outputting a parameters file doesn't connect this stage to the one
+> that uses the parameters. Metrics and plots outputs can be dependencies of
+> other stages normally, though.
+
+<!-- WIP: updated desc. for 1.0 up to here -->
 
 Unless the `-f` options is used, the stage file (DVC-file) is generated in the
 current working directory and named `<file>.dvc`, where `<file>` is file name of
