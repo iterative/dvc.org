@@ -42,7 +42,8 @@ lists all the current metrics without comparisons.
 
 ## Options
 
-- `--targets <paths>` - limit the comparison to these specific metric files.
+- `--targets <paths>` - limit command scope to these metric files. Using -R,
+  directories to search metric files in can also be given.
 
 - `-R`, `--recursive` - determines the metric files to use by searching each
   target directory and its subdirectories for DVC-files to inspect. If there are
