@@ -71,13 +71,6 @@ alternatives.
 > that uses the parameters. Metrics and plots outputs can be dependencies of
 > other stages normally, though.
 
-<!-- WIP: updated desc. for 1.0 up to here -->
-
-Unless the `-f` options is used, the stage file (DVC-file) is generated in the
-current working directory and named `<file>.dvc`, where `<file>` is file name of
-the first output (`-o`, `-O`, `-m`, or `-M` option). If neither `-f` nor outputs
-are specified, the file name defaults to `Dvcfile`.
-
 Note that `dvc run` executes the given `command` in order to check its validity
 and to write the defined outputs, unless the same `dvc run` command has already
 been run in this workspace (meaning an identical stage file already exists, and
