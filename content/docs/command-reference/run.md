@@ -49,8 +49,8 @@ stages:
     cmd: echo Hi
 ```
 
-Note that in order to update a stage that is already defined, the `-f`
-(`--force`) option is needed:
+Note that in order to update a stage that is already defined in this `dvc.yaml`,
+the `-f` (`--force`) option is needed:
 
 ```dvc
 $ dvc run -n hello-world -f echo "Hello world"
@@ -61,17 +61,30 @@ continuation (`\`) for readability:
 
 ```dvc
 $ dvc run -n mystage \
-          -d input.dat
-          -o output.dat
-          -M metrics.json
+          -d input.dat \
+          -o output.dat \
+          -M metrics.json \
           ./myscript.sh input.dat
 ```
 
-### Escaping commands to run
+### Stage commands
+
+The `command` argument should be the very last part of the full `dvc run ...`
+line(s) written to the system terminal. It can be any command your terminal
+would accept and execute directly, for example a shell built-in, expression, or
+binary found in `PATH`. Any flags sent after the command are interpreted by the
+command itself, not by run. Some examples:
+
+```dvc
+$ dvc run -n cpfile -d file -o file_copy cp file file_copy
+$ dvc run -n mystage -d myscript.sh ./myscript.sh
+$ dvc run -n mystage -f -d myscript.py python myscript.py
+$ dvc run -n mystage -f python -c 'import sys; print(sys.maxsize)'
+```
 
 Wrap the command with `"` quotes if there are special characters in it like `|`
-(pipe) or `<`, `>` (redirection), otherwise they would apply to `dvc run`
-itself. For example:
+(pipe) or `<`, `>` (redirection), otherwise they would apply to `dvc run` as a
+whole. For example:
 
 ```dvc
 $ dvc run -n mystage "./myscript.sh > /dev/null 2>&1"
