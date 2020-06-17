@@ -28,9 +28,9 @@ individual data processes, including their input and resulting outputs.
 
 A stage name is required and should be provided using the `-n` (`--name`)
 option. Stages are stored in a YAML pipelines file named
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) using this name. The
-other available [options](#options) are mainly meant to describe the stage
-dependencies (input) an output files or directories.
+[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) using this
+name. The other available [options](#options) are mainly meant to describe the
+stage dependencies (input) an output files or directories.
 
 The remaining terminal input provided to `dvc run` after the command options
 (`-`/`--` flags) will become the required `command` argument. Please wrap the
@@ -71,37 +71,46 @@ alternatives.
 > that uses the parameters. Metrics and plots outputs can be dependencies of
 > other stages normally, though.
 
-Note that `dvc run` executes the given `command` in order to check its validity
-and to write the defined outputs, unless the same `dvc run` command has already
-been run in this workspace (meaning an identical stage file already exists, and
-its outputs correspond to the stored file hash values).
+### Stage execution
 
-Note that `dvc repro` provides an interface to check state and reproduce this
-graph (pipeline) later. This concept is similar to the one of the
-[Make](https://www.gnu.org/software/make/) in software build automation, but DVC
-captures data and <abbr>caches</abbr> relevant <abbr>data artifacts</abbr> along
-the way. See [this tutorial](/doc/tutorials/pipelines) to learn more and try
-creating a pipeline.
+`dvc run` executes the given `command` in order to check its validity and so the
+defined outputs are written, unless the same `dvc run` has already happened in
+this <abbr>workspace</abbr>. Put in other words, if an identical stage already
+exists in [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files),
+and its outputs correspond to the <abbr>cached</abbr> files (hash values are
+compared), then `dvc run` does not execute the `command`.
+
+Note that `dvc repro` provides an interface to check the state, and reproduce
+pipelines created with `dvc repro` by executing (again) the necessary stages.
+This concept is similar to the one of [Make](https://www.gnu.org/software/make/)
+in software build automation, but DVC captures data and caches relevant
+<abbr>data artifacts</abbr> along the way.
+
+> See [this tutorial](/doc/tutorials/pipelines) to learn more and try creating a
+> pipeline.
 
 ### Avoiding unexpected behavior
 
-We don't want to tell you how to write your code! However, please be aware that
-in order to prevent unexpected results when DVC executes or reproduces your
-commands, they should ideally follow these rules:
+We don't want to tell anyone how to write code! However, please be aware that in
+order to prevent unexpected results when DVC executes or reproduces commands,
+the underlying programs should ideally follow these rules:
 
 - Read/write exclusively from/to the specified <abbr>dependencies</abbr> and
-  <abbr>outputs</abbr>.
-- Completely rewrite outputs (i.e. do not append or edit).<br/> Note that DVC
-  removes cached outputs before running the stages that produce them (including
-  at `dvc repro`).
+  <abbr>outputs</abbr> (including parameters files, metrics, and plots).
+
+- Completely rewrite outputs (i.e. do not append or edit).
+
+  ⚠️ Note that DVC removes cached outputs before running the stages that produce
+  them (including at `dvc repro`).
+
 - Stop reading and writing files when the `command` exits.
 
-Keep in mind that if the [pipeline](/doc/command-reference/pipeline)'s
-reproducibility goals include consistent output data, its code should be as
-[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) as
-possible (produce the same output for a given input). In this case, avoid code
-that brings [entropy](https://en.wikipedia.org/wiki/Software_entropy) into your
-data pipeline (e.g. random numbers, time functions, hardware dependency, etc.)
+Also, if your [pipeline](/doc/command-reference/pipeline) reproducibility goals
+include consistent output data, its code should be
+[deterministic](https://en.wikipedia.org/wiki/Deterministic_algorithm) (produce
+the same output for any given input). For this, avoid code that brings
+[entropy](https://en.wikipedia.org/wiki/Software_entropy) into your data
+pipeline (e.g. random numbers, time functions, hardware dependencies, etc.)
 
 ## Options
 
