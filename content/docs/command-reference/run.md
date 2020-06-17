@@ -62,8 +62,8 @@ parameters files (`params.yaml` by default).
 
 Special types of output files, [metrics](/doc/command-reference/metrics) (`-m`
 and `-M` options) and [plots](/doc/command-reference/plots), are also supported.
-Metrics files have specific formats (JSON, YAML, CSV, or TSV) and allow for
-managing data science experiments by different display and comparison
+Metrics and plots files have specific formats (JSON, YAML, CSV, or TSV) and
+allow for managing data science experiments by different display and comparison
 alternatives.
 
 > Note that regular stage outputs cannot become parameter dependencies of other
