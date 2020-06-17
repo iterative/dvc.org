@@ -11,7 +11,7 @@ changes in the remote data source. Creates a
 ## Synopsis
 
 ```usage
-usage: dvc import-url [-h] [-q | -v] [-f <filename>] url [out]
+usage: dvc import-url [-h] [-q | -v] [--file <filename>] url [out]
 
 positional arguments:
   url                   (See supported URLs in the description.)
@@ -117,10 +117,10 @@ from the external data source.
 
 ## Options
 
-- `-f <filename>`, `--file <filename>` - specify a path and/or file name for the
-  `.dvc` file created by this command (e.g. `-f stages/stage.dvc`). This
-  overrides the default file name: `<file>.dvc`, where `<file>` is the desired
-  file name of the imported data (`out`).
+- `--file <filename>` - specify a path and/or file name for the `.dvc` file
+  created by this command (e.g. `--file stages/stage.dvc`). This overrides the
+  default file name: `<file>.dvc`, where `<file>` is the desired file name of
+  the imported data (`out`).
 
 - `-h`, `--help` - prints the usage/help message, and exit.
 
@@ -279,7 +279,7 @@ $ pip install -r src/requirements.txt
 </details>
 
 ```dvc
-$ dvc run -f prepare.dvc \
+$ dvc run --file prepare.dvc \
           -d src/prepare.py -d data/data.xml \
           -o data/prepared \
           python src/prepare.py data/data.xml
