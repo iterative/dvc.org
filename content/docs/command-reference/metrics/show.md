@@ -9,7 +9,9 @@ usage: dvc metrics show [-h] [-q | -v] [-a] [-T] [--all-commits] [-R]
                         [--show-json] [targets [targets ...]]
 
 positional arguments:
-  targets               Metric files (see -R) to show
+  targets               Limit command scope to these metric files.
+                        Using -R, directories to search metric files
+                        in can also be given.
 ```
 
 ## Description
