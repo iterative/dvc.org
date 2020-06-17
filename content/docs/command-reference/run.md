@@ -1,6 +1,6 @@
 # run
 
-Define a pipeline _stage_ in
+Create a pipeline _stage_ in
 [`dvc.yaml`](/doc/user-guide/dvc-files-and-directories) from a given command,
 and execute the command.
 
@@ -27,19 +27,62 @@ positional arguments:
 individual data processes, including their input and resulting outputs.
 
 A stage name is required and should be provided using the `-n` (`--name`)
-option. Stages are stored in a YAML pipelines file named
-[`dvc.yaml`](/doc/user-guide/dvc-files-and-directories#dvcyaml-files) using this
-name. The other available [options](#options) are mainly meant to describe the
-stage dependencies (input) an output files or directories.
+option. Stages are stored using this name in a
+[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-files),
+which gets created or updated in the current working directory. The other
+available [options](#options) are mainly meant to describe the stage
+dependencies (input) an output files or directories.
 
 The remaining terminal input provided to `dvc run` after the command options
-(`-`/`--` flags) will become the required `command` argument. Please wrap the
-`command` with `"` quotes if there are special characters in it like `|` (pipe)
-or `<`, `>` (redirection) e.g.
-`dvc run -n mystage "./script.sh > /dev/null 2>&1"` (otherwise they would apply
-to `dvc run` itself). Use single quotes `'` instead of `"` to wrap the `command`
-if there are environment variables in it that should be evaluated dynamically
-e.g. `dvc run -n mystage './myscript.sh $MYENVVAR'`
+(`-`/`--` flags) will become the required `command` argument. For example, a
+minimal stage definition is:
+
+```dvc
+$ dvc run --name hello-world echo Hi
+```
+
+This results in the following stage entry in `dvc.yaml`:
+
+```yaml
+stages:
+  hello-world:
+    cmd: echo Hi
+```
+
+Note that in order to update a stage that is already defined, the `-f`
+(`--force`) option is needed:
+
+```dvc
+$ dvc run -n hello-world -f echo "Hello world"
+```
+
+For longer `dvc run` usage (which is typical), its recommended to use new line
+continuation (`\`) for readability:
+
+```dvc
+$ dvc run -n mystage \
+          -d input.dat
+          -o output.dat
+          -M metrics.json
+          ./myscript.sh input.dat
+```
+
+### Escaping commands to run
+
+Wrap the command with `"` quotes if there are special characters in it like `|`
+(pipe) or `<`, `>` (redirection), otherwise they would apply to `dvc run`
+itself. For example:
+
+```dvc
+$ dvc run -n mystage "./myscript.sh > /dev/null 2>&1"
+```
+
+Use single quotes `'` instead if there are environment variables in it that
+should be evaluated dynamically, for example:
+
+```dvc
+$ dvc run -n mystage './myscript.sh $MYENVVAR'
+```
 
 ### Dependencies and outputs
 
