@@ -63,7 +63,7 @@ An _output entry_ can consist of these fields:
 
 A _dependency entry_ consists of a these possible fields:
 
-- `path`: Path to the dependency, relative to the `wdir` path (always present)
+- `path`: Path to the dependency, relative to the `.dvc` file location
 - `md5`: MD5 hash for the dependency (most [stages](/doc/command-reference/run))
 - `etag`: Strong ETag response header (only HTTP <abbr>external
   dependencies</abbr> created with `dvc import-url`)
@@ -129,6 +129,7 @@ the possible following fields:
 - `plots`: List of [plot metrics](/doc/command-reference/plots) and optionally,
   their default configuration (subfields matching the options of
   `dvc plots modify`)
+- `wdir`: Working directory for the stage command to run in
 - `frozen`: Whether or not this stage is frozen from reproduction
 - `always_changed`: Whether or not this stage is considered as changed by
   commands such as `dvc status` and `dvc repro`. `false` by default
