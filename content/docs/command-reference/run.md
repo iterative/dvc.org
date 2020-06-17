@@ -24,14 +24,14 @@ positional arguments:
 
 `dvc run` provides an interface to describe
 [pipelines](/doc/command-reference/pipeline), stage by stage. _Stages_ represent
-individual data processes, including their input and resulting outputs.
+individual data processes, including their input and resulting outputs. They are
+defined in a
+[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-files),
+which gets created or updated in the current working directory.
 
 A stage name is required and should be provided using the `-n` (`--name`)
-option. Stages are stored using this name in a
-[`dvc.yaml` file](/doc/user-guide/dvc-files-and-directories#dvcyaml-files),
-which gets created or updated in the current working directory. The other
-available [options](#options) are mainly meant to describe the stage
-dependencies (input) an output files or directories.
+option. The other available [options](#options) are mainly meant to describe
+stage [dependencies and outputs](#dependencies-and-outputs).
 
 The remaining terminal input provided to `dvc run` after the command options
 (`-`/`--` flags) will become the required `command` argument. For example, a
@@ -70,10 +70,10 @@ $ dvc run -n mystage \
 ### Stage commands
 
 The `command` argument should be the very last part of the full `dvc run ...`
-line(s) written to the system terminal. It can be any command your terminal
-would accept and execute directly, for example a shell built-in, expression, or
-binary found in `PATH`. Any flags sent after the command are interpreted by the
-command itself, not by run. Some examples:
+line(s) written to the system terminal. It can be anything your terminal would
+accept and execute directly, for example a shell built-in, expression, or binary
+found in `PATH`. Any flags sent after the command are interpreted by the command
+itself, not by run. Some examples:
 
 ```dvc
 $ dvc run -n cpfile -d file -o file_copy cp file file_copy
@@ -82,9 +82,9 @@ $ dvc run -n mystage -f -d myscript.py python myscript.py
 $ dvc run -n mystage -f python -c 'import sys; print(sys.maxsize)'
 ```
 
-Wrap the command with `"` quotes if there are special characters in it like `|`
-(pipe) or `<`, `>` (redirection), otherwise they would apply to `dvc run` as a
-whole. For example:
+Wrap the command with double quotes `"` if there are special characters in it
+like `|` (pipe) or `<`, `>` (redirection), otherwise they would apply to
+`dvc run` as a whole. For example:
 
 ```dvc
 $ dvc run -n mystage "./myscript.sh > /dev/null 2>&1"
@@ -96,6 +96,11 @@ should be evaluated dynamically, for example:
 ```dvc
 $ dvc run -n mystage './myscript.sh $MYENVVAR'
 ```
+
+⚠️Note that while DVC is platform-agnostic, the commands defined in your
+pipeline stages may only work on specific operating systems and require certain
+software packages to be installed and available in the machine where they are
+[executed](#stage-execution). (This affects `dvc repro`.)
 
 ### Dependencies and outputs
 
