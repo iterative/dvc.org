@@ -61,7 +61,7 @@ Please also add or commit the source code directory with Git at this point.
 </details>
 
 ```dvc
-$ dvc run --file prepare.dvc \
+$ dvc run -f prepare.dvc \
           -d src/prepare.py -d data/data.xml \
           -o data/prepared \
           python src/prepare.py data/data.xml data/prepared
@@ -142,12 +142,12 @@ feature extraction. And a third one for training a machine learning model, based
 on the features:
 
 ```dvc
-$ dvc run --file featurize.dvc \
+$ dvc run -f featurize.dvc \
           -d src/featurization.py -d data/prepared \
           -o data/features \
           python src/featurization.py data/prepared data/features
 
-$ dvc run --file train.dvc \
+$ dvc run -f train.dvc \
           -d src/train.py -d data/features \
           -o model.pkl \
           python src/train.py data/features model.pkl
