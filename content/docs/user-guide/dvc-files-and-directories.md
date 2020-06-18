@@ -64,8 +64,8 @@ An _output entry_ can consist of these fields:
 - `md5`: Hash value for the file or directory being tracked with DVC
 - `path`: Path to the file or directory (relative to `wdir` which defaults to
   the file's location)
-- `cache`: Whether or not DVC should cache the file or directory. `true` by
-  default
+- `cache`: Whether or not this file or directory is <abbr>cached</abbr> (`true`
+  by default, if not present). See the `--no-commit` option of `dvc add`.
 
 A _dependency entry_ consists of a these possible fields:
 
@@ -141,11 +141,18 @@ the possible following fields:
   These are key paths referring to a YAML or JSON file (`params.yaml` by
   default).
 - `outs`: List of <abbr>output</abbr> file or directory paths of this stage
-  (relative to `wdir` which defaults to the file's location)
-- `metrics`: List of [metric files](/doc/command-reference/metrics)
-- `plots`: List of [plot metrics](/doc/command-reference/plots) and optionally,
+  (relative to `wdir` which defaults to the file's location), and optionally,
+  whether or not this file or directory is <abbr>cached</abbr> (`true` by
+  default, if not present). See the `--no-commit` option of `dvc run`.
+- `metrics`: List of [metrics files](/doc/command-reference/metrics), and
+  optionally, whether or not this metrics file is <abbr>cached</abbr> (`true` by
+  default, if not present). See the `--metrics-no-cache` (`-M`) option of
+  `dvc run`.
+- `plots`: List of [plot metrics](/doc/command-reference/plots), and optionally,
   their default configuration (subfields matching the options of
-  `dvc plots modify`)
+  `dvc plots modify`), and whether or not this plots file is <abbr>cached</abbr>
+  ( `true` by default, if not present). See the `--plots-no-cache` option of
+  `dvc run`.
 - `frozen`: Whether or not this stage is frozen from reproduction
 - `always_changed`: Whether or not this stage is considered as changed by
   commands such as `dvc status` and `dvc repro`. `false` by default
@@ -200,10 +207,13 @@ additions to <abbr>dependency</abbr> and <abbr>output</abbr> fields:
   (typically only `params.yaml`), as well as sub-lists of the specific
   parameters tracked by this stage (per params file), and their latest value.
 - `outs`: Each item of the list becomes an object with 2 properties:
+
   - `path`: Same as the `deps` value from `dvc.yaml`
   - `md5`: The hash value of the file
-- `metrics`: List of [metric files](/doc/command-reference/metrics)
-- `plots`: List of [plot metrics](/doc/command-reference/plots)
+
+  This includes any [metrics files](/doc/command-reference/metrics) or
+  [plots file](/doc/command-reference/plots) specified in the `metrics` and
+  `plots` fields of `dvc.yaml`.
 
 ## Internal directories and files
 
